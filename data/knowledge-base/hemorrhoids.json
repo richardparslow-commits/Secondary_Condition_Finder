@@ -2,7 +2,70 @@
   "id": "hemorrhoids",
   "draft": true,
   "todo": [
-    "Rebuild secondary-condition suggestions with condition-specific clinical evidence before publication."
+    "D1 draft-authoring batch 44 (2026-09-24): one ASSOCIATION_ONLY draft mapping pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: the single authored edge asserts association only (etiologicalConsensus NOT_ESTABLISHED, hypothesizedOnly:true) - it records that hemorrhoidal bleeding is a recognized source of chronic blood loss and severe anemia in case-level and single-center series, not that hemorrhoids caused anemia in any individual; individual claims require a documented hemorrhoidal bleeding source, blood counts and iron studies with chronology, and exclusion of the competing gastrointestinal and non-gastrointestinal causes of anemia.",
+    "Prior-proposition screen: the master-resolution program closed the harvested hemorrhoids-to-epicondylitis proposition (PMID 35334594) as FINAL-CLOSE-PROPOSITION-MISMATCH with no approved targets, and that proposition is NOT reasserted here; the edge authored in this batch rests on separate, condition-specific bleeding-anemia evidence.",
+    "Family/duplicate-scope guard: the anemia identity already receives nineteen ASSOCIATION_ONLY windows, including the ulcer-bleeding window owned by peptic-ulcer-disease and the inflammatory and hepatic windows owned by inflammatory-bowel-disease and chronic-liver-disease; this batch adds only the hemorrhoidal-bleeding window, and no iron-deficiency-anemia identity exists in the catalog (wrong-target guard), so bleeding-source attribution is expressed by the primary whose bleeding is documented rather than by a generic blood-loss identity."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 44 (2026-09-24): one bounded association edge authored - hemorrhoids to anemia (rank 1), ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true, and mechanismCategory THROMBOTIC_OR_VASCULAR (hemorrhoidal vascular-cushion bleeding). The proposition rests on two independent clinical anchors: the Deng 2024 retrospective study of 128 patients with hemorrhoidal severe anemia, which quantifies preoperative transfusion requirements, transfusion reactions, and hospitalization burden in that population, and the Dong 2025 case report of mixed hemorrhoids with severe anemia in which sclerotherapy was used for the anemia-related presentation - a severity-and-dechallenge-flavored case anchor. The edge is not raised to causation: the located evidence documents that hemorrhoidal bleeding can produce clinically severe anemia and quantifies treatment burden, but no cohort quantifies incident anemia attributable to hemorrhoids against matched controls, chronic bleeding is frequently multifactorial in the same populations, and competing gastrointestinal and systemic causes of anemia must be excluded per case, so no probability estimate is asserted.",
+    "Negative screens recorded 2026-09-24: (i) no epicondylitis edge - the master-resolution FINAL-CLOSE-PROPOSITION-MISMATCH closure of the harvested epicondylitis proposition remains in force and no condition-specific supporting evidence was located (prior-closure guard); (ii) no anemia-family duplicate edges - iron deficiency expresses itself through the anemia identity here, and no iron-deficiency-anemia, menorrhagia, or gastrointestinal-hemorrhage identity exists in the catalog (wrong-target guard); the bleeding-source windows are owned by peptic-ulcer-disease (ulcer), inflammatory-bowel-disease (mucosal inflammation), chronic-liver-disease (portal and coagulopathic), and now hemorrhoids (vascular cushions), each on its own primary; (iii) no varicose-veins edge - hemorrhoids and varicose veins are analogous venous-dilatation phenotypes without located directional evidence between them (shared-driver and zero-record guards); (iv) no colorectal-cancer edge - the cancer identity owns its own published windows and no hemorrhoid-to-malignancy direction data were located (duplicate-scope and zero-record guards); (v) no depressive-disorder or quality-of-life edge - no condition-specific directional evidence was located (zero-record guard); (vi) no fecal-incontinence, anal-fissure, anal-fistula, or anorectal-stricture edge from this side - the anal-fissure, anal-fistula, rectal-prolapse, and anorectal-stricture identities hold their own windows, and no hemorrhoid-primary direction evidence was located (duplicate-scope guard)."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "anemia",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Clinical reports and a single-center retrospective series document that hemorrhoidal bleeding can produce severe anemia requiring transfusion: the Deng 2024 study of 128 patients with hemorrhoidal severe anemia quantifies preoperative transfusion requirements, transfusion reactions, and hospitalization burden, and the Dong 2025 case report describes mixed hemorrhoids presenting with severe anemia managed by sclerotherapy - a reproducible bleeding-to-anemia association that is not an individual causal nexus.",
+        "causationStatus": "Neither causation nor aggravation is established: the located evidence is case-level plus one single-center retrospective series without matched comparators, anemia in these populations is frequently multifactorial, and other gastrointestinal (ulcer, malignancy, angiodysplasia, inflammatory bowel disease, medication-related) and non-gastrointestinal causes of anemia must be excluded, so an individual determination requires a documented hemorrhoidal bleeding source, blood counts and iron studies with compatible chronology, and competing-cause review."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "THROMBOTIC_OR_VASCULAR",
+        "primaryVector": "A hypothesized bleeding-to-depletion route is described: repeated bleeding from engorged hemorrhoidal vascular cushions produces chronic blood loss that depletes iron stores faster than absorption can replace them, and if bleeding continues the marrow cannot maintain hemoglobin, producing microcytic iron-deficiency anemia that can become severe enough to require transfusion - documented in the located case report and the 128-patient transfusion series - while the absence of matched-cohort incidence data and the multifactorial anemia context leave individual attribution hypothesized.",
+        "secondaryVector": "Acute bleeding from thrombosed or ulcerated hemorrhoidal tissue can produce faster hemoglobin decline, and coexisting anticoagulant or antiplatelet therapy can amplify blood loss in the same patients.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The edge asserts an association only: the located evidence is one case report and one single-center retrospective series of transfusion-requiring hemorrhoidal anemia, without matched-cohort incidence data, and anemia in the reported populations is frequently multifactorial with competing gastrointestinal and systemic causes requiring exclusion, so no at-least-as-likely-as-not probability is asserted.",
+        "evidenceGaps": "Documentation of hemorrhoidal disease with bleeding (grade, examination or endoscopic findings, date); serial blood counts and iron studies with chronology relative to the bleeding; documentation of the bleeding source and exclusion of other gastrointestinal sources (ulcer, malignancy, angiodysplasia, inflammatory bowel disease, medication-related mucosal injury); assessment of anticoagulant, antiplatelet, or nonsteroidal anti-inflammatory use; evaluation for non-gastrointestinal anemia causes (renal, hematologic, nutritional, chronic inflammatory); transfusion history and response to hemorrhoid-directed treatment; gastroenterology or hematology assessment of the individual relationship",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Peptic ulcer or other upper gastrointestinal bleeding source",
+          "Colorectal malignancy or adenomatous bleeding",
+          "Angiodysplasia or other lower gastrointestinal vascular lesion",
+          "Inflammatory bowel disease or medication-related mucosal injury",
+          "Nutritional, renal, hematologic, or chronic-inflammatory anemia"
+        ]
+      },
+      "evidenceGaps": [
+        "Documentation of hemorrhoidal disease with bleeding (grade, examination or endoscopic findings, date); serial blood counts and iron studies with chronology relative to the bleeding; documentation of the bleeding source and exclusion of other gastrointestinal sources (ulcer, malignancy, angiodysplasia, inflammatory bowel disease, medication-related mucosal injury); assessment of anticoagulant, antiplatelet, or nonsteroidal anti-inflammatory use; evaluation for non-gastrointestinal anemia causes (renal, hematologic, nutritional, chronic inflammatory); transfusion history and response to hemorrhoid-directed treatment; gastroenterology or hematology assessment of the individual relationship"
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY: a 128-patient single-center series and a case report document hemorrhoidal severe anemia and its transfusion burden, establishing that hemorrhoidal bleeding can produce clinically significant blood loss, but no matched-cohort incidence data exist and competing gastrointestinal and systemic causes of anemia are common in the same populations, so the consensus remains NOT_ESTABLISHED with source-documentation, chronology, and competing-cause requirements; no probability estimate is asserted.",
+      "sourceReferences": [
+        {
+          "citation": "Deng H, Fang J, Chen K, et al. Preoperative Blood Transfusion Requirements for Hemorrhoidal Severe Anemia: A Retrospective Study of 128 Patients. Med Sci Monit. 2024 May 5;30:e943126. doi:10.12659/MSM.943126. PMID 38704632.",
+          "note": "Retrospective single-center series of 128 patients with hemorrhoidal severe anemia quantifying preoperative transfusion volume, transfusion reactions, and hospitalization burden - the severity-and-burden anchor for the bleeding-to-anemia association.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38704632/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-24",
+          "sourceLocator": "PMID 38704632; 128 patients with hemorrhoidal severe anemia, preoperative transfusion requirements"
+        },
+        {
+          "citation": "Dong Y, Zhang L, Wang Q, Wang L, Zhang T, Ju F, Yang J. Polidocanol foam injection sclerotherapy in patients with mixed hemorrhoids with severe anemia: a case report. J Surg Case Rep. 2025 Oct 7;2025(10):rjaf801. doi:10.1093/jscr/rjaf801. PMID 41064030.",
+          "note": "Case report of mixed hemorrhoids presenting with severe anemia in which sclerotherapy was used for the anemia-related presentation - a case-level, dechallenge-flavored anchor recording that hemorrhoidal bleeding led to severe anemia and that bleeding-directed treatment was undertaken.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41064030/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-24",
+          "sourceLocator": "PMID 41064030; mixed hemorrhoids with severe anemia treated by sclerotherapy"
+        }
+      ]
+    }
+  ]
 }

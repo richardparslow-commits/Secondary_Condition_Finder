@@ -2,8 +2,77 @@
   "id": "guyon-s-canal-syndrome",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review neurologic, neuropathic, post-traumatic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 41 (2026-09-24): one DIRECT_CAUSATION draft mapping pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: the mapping asserts the chronic-compression-to-denervation-muscle-wasting chain at PROBABLE strength with hypothesizedOnly:false on the obstruction-mechanical family precedent (chronic mechanical compression producing a downstream structural deficit) - individual claims require electrodiagnostically or clinically confirmed Guyon's canal (ulnar tunnel) syndrome with zone documentation, intrinsic hand-muscle atrophy or strength loss documented on examination (thenar-adjacent hypothenar/interossei/adductor pollicis distribution) with chronology after symptom onset, and exclusion of C8-T1 radiculopathy, lower-trunk brachial plexopathy, coexisting cubital tunnel syndrome, motor neuron disease, hereditary neuropathy with liability to pressure palsies, and diabetic polyneuropathy per case; atrophy that is fully explained by a coexisting proximal lesion does not qualify."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 41 (2026-09-24): one bounded DIRECT edge authored. The Tong 2026 retrospective series of 11 type-I Guyon's canal syndrome patients with established claw hand deformity documents intrinsic muscle weakness with deformity, improvement of intrinsic muscle strength achieved in all 11 hands with 72.7% regaining MRC grade 5 and claw deformity completely corrected in 90.9% after decompression at minimum one-year follow-up, the Wang 2014 review of nine cases of ulnar nerve deep-branch compression by ganglion documents different degrees of muscular atrophy and weakness of the interossei and adductor pollicis with a mean symptom duration of 16 months (range 5-32) before surgery and grip/tip-pinch strength recovery after decompression, and the Chen 2014 Journal of Hand Surgery review of ulnar tunnel syndrome documents the compressive-neuropathy construct with diagnosis made difficult by coexisting carpal tunnel, cubital tunnel, thoracic outlet, C8-T1 radiculopathy, and peripheral neuropathy - chronic mechanical compression of the ulnar nerve (or its deep motor branch) within Guyon's canal produces axonal degeneration and denervation of the intrinsic hand muscles until motor units are lost and the muscle bulk wastes, matching the mechanical-compression-to-deficit family (MECHANICAL_OR_COMPRESSIVE, PROBABLE, hypothesizedOnly:false). WELL_ESTABLISHED is withheld because the evidence is two small retrospective surgical series with selection for established deformity at baseline, reversal of deformity and substantial strength recovery are documented after decompression (dynamic and potentially incomplete fixed deficit), no prospective compression-to-atrophy incidence cohort exists, and the mimic list (C8-T1, plexopathy, motor neuron disease) must be excluded per case. Duplicate-scope note: muscle-atrophy gains its first incoming registry edge from this window; ulnar-neuropathy (the generic elbow/whole-nerve identity) and peripheral-neuropathy remain zero-edge backlog identities with their own windows - the site-specific Guyon identity owns this pathway (site-specific-owns-window guard, femoral-neuropathy versus peripheral-neuropathy pattern), and the femoral-neuropathy batch-34 file recorded no atrophy screen so no sibling constraint binds.",
+    "Negative screens recorded 2026-09-24: (i) no unexplained-chronic-pain edge - the targeted Guyon-canal diagnostic-delay and mimic searches returned no condition-specific delay-quantification records in this window (the earlier case-matching pain edges each rested on explicit delay or unexplained-presentation documentation) (zero-record guard); (ii) no weakness or hand-function edge - no muscle-weakness, difficulty-walking, or hand-function catalog identity exists (wrong-target guard); (iii) no disability or carpal-tunnel-syndrome edge - coexisting carpal tunnel is a documented mimic rather than an outcome, and the ganglion-cysts identity owns its carpal-tunnel pathway (batch 36) (wrong-identity and duplicate-scope guards); (iv) no vascular or vasospastic edge - hypothenar hammer and Raynaud-type vascular comorbidity lack quantified forward-outcome cohorts here (zero-record guard); (v) no scars or surgery edge - decompression outcomes are treatment-state (treatment-state guard). Reopening condition for upgrade: a prospective electrodiagnostic incidence cohort of compression-to-atrophy progression would move toward WELL_ESTABLISHED. Reopening condition for a pain edge: a condition-specific series quantifying diagnostic delay or unexplained-pain presentations attributable to Guyon's canal syndrome."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "muscle-atrophy",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "DIRECT_CAUSATION",
+        "etiologicalTrigger": "Electrodiagnostically or clinically confirmed Guyon's canal (ulnar tunnel) syndrome with documented compression of the ulnar nerve or its deep motor branch and intrinsic hand-muscle atrophy or strength loss documented after symptom onset - sustained mechanical compression axotomies the motor axons supplying the hypothenar, interossei, and adductor pollicis muscles, so denervated motor units are lost and muscle bulk wastes until the atrophy is measurable on examination.",
+        "mechanismSummary": "A chronic mechanical compression cascade: a space-occupying or anatomic lesion (ganglion most commonly, also fracture callus, aberrant muscle, vascular anomaly, or external compression) within Guyon's canal compresses the ulnar nerve - zone II involvement isolates the deep motor branch - and sustained pressure causes focal demyelination progressing to axonal degeneration; the denervated intrinsic hand muscles lose motor units and undergo neurogenic atrophy (documented as interossei and adductor pollicis wasting with claw hand deformity after a mean 16-month symptom duration), and decompression halts the process so that bulk and strength partially return (all 11 hands improved, 72.7% regained grade-5 strength, deformity corrected in 90.9%) - the compression-to-deficit-to-partial-reversal pattern of the mechanical family, with reversal potential and baseline-established deformity in the surgical series keeping the consensus at PROBABLE rather than WELL_ESTABLISHED."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MECHANICAL_OR_COMPRESSIVE",
+        "primaryVector": "A focal compressive axonopathy vector: a mass or anatomic lesion inside the fibro-osseous Guyon's canal mechanically constricts the ulnar nerve (or its deep motor branch in zone II), pressure gradients exceeding capillary perfusion cause ischemic axonal injury that progresses from conduction block to Wallerian degeneration, and the denervated intrinsic hand muscles are stripped of trophic input so myofibers shrink and are replaced by fibrofatty tissue - producing the documented degree-graded muscular atrophy and claw deformity that reverses substantially when the compressive lesion is removed - matching the chronic-compression-to-structural-deficit family while mimic exclusion and reversal potential keep individual attribution at PROBABLE.",
+        "hypothesizedOnly": false
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "PROBABLE",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The chain is supported by condition-specific surgical series documenting degree-graded intrinsic muscle atrophy in the exact ulnar-innervated distribution with mean 16-month symptom duration before surgery, documented reversal of deformity and strength recovery after decompression (a dechallenge signal consistent with the compression causing the deficit), zone-based anatomic localization of motor involvement, and mechanistic identity with the compression-neuropathy family, which justifies PROBABLE direct causation; WELL_ESTABLISHED is withheld because the evidence is two small retrospective series selected for established deformity at baseline rather than an incidence cohort, substantial recovery after decompression shows the deficit is dynamic and was in part reversible, electrodiagnostic confirmation is not uniformly documented across the series, and proximal or systemic mimics (C8-T1 radiculopathy, lower-trunk plexopathy, motor neuron disease, HNPP, diabetic neuropathy) must be excluded per case; no probability estimate is asserted.",
+        "evidenceGaps": "Nerve-conduction studies or high-resolution ultrasound confirming ulnar neuropathy at or distal to the wrist with Guyon's canal zone localization; serial examination documentation (grip and pinch dynamometry, MRC grading of hypothenar/interossei/adductor pollicis, thenar-preserved pattern) showing atrophy or strength loss developing after symptom onset with chronology; imaging (ultrasound or MRI) documenting the compressive lesion and its canal location; exclusion of C8-T1 radiculopathy, lower-trunk brachial plexopathy, coexisting cubital tunnel syndrome, motor neuron disease, hereditary neuropathy with liability to pressure palsies, and diabetic or other polyneuropathy; hand-surgery and electrodiagnostic-medicine assessment of the individual relationship",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "C8-T1 radiculopathy or lower-trunk brachial plexopathy",
+          "Coexisting cubital tunnel syndrome at the elbow",
+          "Motor neuron disease or other anterior horn cell disorder",
+          "Hereditary neuropathy with liability to pressure palsies",
+          "Diabetic or other systemic polyneuropathy"
+        ]
+      },
+      "evidenceGaps": [
+        "Nerve-conduction studies or high-resolution ultrasound confirming ulnar neuropathy at or distal to the wrist with Guyon's canal zone localization; serial examination documentation (grip and pinch dynamometry, MRC grading of hypothenar/interossei/adductor pollicis, thenar-preserved pattern) showing atrophy or strength loss developing after symptom onset with chronology; imaging (ultrasound or MRI) documenting the compressive lesion and its canal location; exclusion of C8-T1 radiculopathy, lower-trunk brachial plexopathy, coexisting cubital tunnel syndrome, motor neuron disease, hereditary neuropathy with liability to pressure palsies, and diabetic or other polyneuropathy; hand-surgery and electrodiagnostic-medicine assessment of the individual relationship"
+      ],
+      "rationale": "Authored at DIRECT_CAUSATION, PROBABLE, hypothesizedOnly:false on the mechanical-compression family: condition-specific series document ulnar-distribution intrinsic atrophy after prolonged symptom duration with substantial reversal after decompression, and the anatomic mechanism is mechanically direct, while retrospective surgical selection, dynamic reversibility, and the proximal-mimic exclusion list keep the consensus at PROBABLE with electrodiagnostic and chronology requirements; no probability estimate is asserted.",
+      "sourceReferences": [
+        {
+          "citation": "Tong J, Xu B, Zhang C, Dong Z. Surgical outcome for type I Guyon's canal syndrome with claw hand deformity: a review of 11 patients. Acta Neurochir (Wien). 2026 May 1;168(1):118. PMID 42065727.",
+          "note": "Retrospective series of 11 type-I Guyon's canal syndrome patients with established claw hand deformity and intrinsic muscle weakness, documenting strength improvement in all hands, 72.7% regaining MRC grade 5 and complete deformity correction in 90.9% after decompression at minimum one-year follow-up - the atrophy-distribution and dechallenge-reversal anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42065727/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 42065727; 11 claw-hand hands, intrinsic strength improved all, 72.7% grade 5, 90.9% corrected"
+        },
+        {
+          "citation": "Wang B, Zhao Y, Lu A, Chen C. Ulnar nerve deep branch compression by a ganglion: a review of nine cases. Injury. 2014 Jul;45(7):1126-30. PMID 24774037.",
+          "note": "Review of nine cases documenting different degrees of muscular atrophy and weakness of the interossei and adductor pollicis without sensory loss, with mean symptom duration of 16 months (range 5-32) before surgery and grip and tip-pinch strength recovery after ganglion excision and decompression - the dose-duration atrophy and recovery anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/24774037/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 24774037; 9 cases, interossei/adductor atrophy, 16-month mean symptom duration"
+        },
+        {
+          "citation": "Chen SH, Tsai TM. Ulnar tunnel syndrome. J Hand Surg Am. 2014 Mar;39(3):571-9. PMID 24559635.",
+          "note": "Journal of Hand Surgery review of ulnar tunnel (Guyon's canal) syndrome documenting the compressive-neuropathy construct and the diagnostic difficulty from coexisting carpal tunnel syndrome, cubital tunnel syndrome, thoracic outlet syndrome, C8-T1 radiculopathy, and peripheral neuropathy - the mechanism and mimic-exclusion anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/24559635/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 24559635; ulnar tunnel syndrome review, mimic list C8-T1/plexopathy/carpal-cubital"
+        }
+      ]
+    }
+  ]
 }

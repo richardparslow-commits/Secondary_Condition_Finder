@@ -2,8 +2,77 @@
   "id": "glomus-tumor",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review hemodynamic, vascular, thrombotic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 38 (2026-09-23): one ASSOCIATION_ONLY case-matching draft mapping pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: the mapping asserts association only (etiologicalConsensus NOT_ESTABLISHED, hypothesizedOnly:true) following the femoral-neuropathy, episcleritis, and genitofemoral-nerve-neuralgia case-matching pain precedent - it records that glomus tumor presents as severe focal chronic pain with prolonged diagnostic delay whose exclusionary workup mirrors the unexplained-chronic-pain evaluation, not that the tumor caused a distinct pain disorder; individual claims require histopathologically confirmed glomus tumor with documented pain chronology and site-appropriate exclusion of mimickers per case."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 38 (2026-09-23): one bounded case-matching association edge authored. The Mostafa 2026 report documents delayed diagnosis of a subungual glomus tumor in a ring finger whose chronic unexplained fingertip pain remained undiagnosed across an extended interval, underscores the characteristic triad of severe localized pain, point tenderness, and cold hypersensitivity with early Love-test application, and records pain-free status after complete excision, the Pandey 2026 case report with diagnostic-challenges review documents glomus-tumor finger pain aggravated by cold with an average misdiagnosis delay of seven years, and the Park 2024 report documents a toe glomus tumor with pain more than five times daily worsening with cold water, positive Love test, and pre-surgical pain improving after total excision - the delayed-diagnosis chronic-pain profile is what the case-matching pattern records (femoral-neuropathy batch 34, genitofemoral batch 37 precedents). Category PSYCHOPHYSIOLOGICAL matches the pain-edge precedent family (femoral-neuropathy, episcleritis, erythromelalgia, genitofemoral-nerve-neuralgia).",
+    "Negative screens recorded 2026-09-23: (i) no scars edge is authored - scar formation after routine tumor excision is a trivial postsurgical artifact of any minor operation rather than a disease-mediated outcome, and it does not match the destruction-and-reconstruction (fournier) or self-induced (excoriation, factitious) scars precedents (trivial-outcome guard); (ii) no amputation edge - digital amputation is rare with malignant glomus tumors exceptional, no condition-specific series quantifies the risk, and the amputation-of-thumb-fingers-toes identity's scope was not met by any located record (zero-record guard); (iii) no malignant-transformation or metastasis edge - malignant glomangiosarcoma is a case-report rarity without catalog identity fit; (iv) vascular-sibling scope: hemangioma remains a zero-edge backlog identity with its own upcoming window - no parallel pathway exists today; (v) direction guard - trauma and glomus-body hyperplasia drivers are upstream, and post-excision pain relief documents reversibility rather than an outgoing edge. Duplicate-scope note: the unexplained-chronic-pain target gains a sixth incoming case-matching edge (erythromelalgia, femoral-neuropathy, flexor-hallucis-longus-tendinitis, episcleritis, genitofemoral-nerve-neuralgia, now glomus-tumor), each with independent condition-specific evidence bases and no pooled duplication. Reopening condition: a series quantifying chronic-pain outcomes attributable to glomus tumors beyond pain constitutive of the tumor itself, or a malignant-transformation cohort."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "unexplained-chronic-pain",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The Mostafa 2026 report documents a subungual glomus tumor of the ring finger whose chronic unexplained fingertip pain remained undiagnosed across an extended interval, describing the characteristic triad of severe localized pain, point tenderness, and cold hypersensitivity with the call for early Love-test application and pain-free status after excision, the Pandey 2026 case report and diagnostic-review documents glomus-tumor finger pain aggravated by cold with an average misdiagnosis delay of seven years, and the Park 2024 report documents a toe glomus tumor causing pain more than five times daily worsening on cold exposure with a positive Love test and improvement after total excision; the literature documents a reproducible severe focal chronic-pain presentation with delayed exclusionary diagnosis without establishing that the tumor caused a distinct chronic pain disorder in any individual.",
+        "causationStatus": "The mapping does not assert that glomus tumor caused a separate chronic pain disorder: the severe focal pain is largely constitutive of the tumor diagnosis itself, so the edge records case-matching of presentations rather than a distinct downstream arrow (femoral-neuropathy and episcleritis precedent); digital neuroma, osteoarthritis or bony erosion, glomangiectasia, rheumatoid or gouty nodules, occult fracture, and radiculopathy independently produce focal digit pain in the same populations before the tumor is found, and the diagnosis itself rests on the characteristic triad with Love-test and MRI confirmation after mimickers are excluded; individual claims require histopathologically confirmed glomus tumor after excision, documented pain chronology and distribution within the unexplained-chronic-pain identity's scope, and exclusion of the mimickers with the site-appropriate workup documented."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "PSYCHOPHYSIOLOGICAL",
+        "primaryVector": "A nerve-rich glomus-body excitation pathway: the neuromyoarterial glomus body of the digit contains unmyelinated succharic nerve terminals whose tumor transformation generates ectopic paroxysmal discharge, amplified by cold-induced vasoconcention concentrating mediators around the lesion - producing severe pin-point, cold-exacerbated focal pain that loops through repeated workups without diagnosis until imaging or Love testing identifies the mass - the documented delayed-diagnosis chronic-pain profile that grounds the case-matching pain edges while individual attribution of a distinct pain disorder remains an association hypothesis.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The edge asserts an association only: the located evidence is case reports and a diagnostic-review case with a seven-year mean delay rather than any distinct downstream pain-outcome cohort, the pain is largely constitutive of the tumor so a causal arrow to a separate pain disorder would double-count the same symptom, focal digital pain mimickers are common in the same populations, and the pain-case-matching precedents all rest at NOT_ESTABLISHED; no probability estimate is asserted.",
+        "evidenceGaps": "Histopathologically confirmed glomus tumor (smooth-muscle-actin-immunoreactive glomus body lesion) after excision; documented pain chronology with the characteristic triad (severe focal pain, point tenderness, cold hypersensitivity) and Love-test or MRI confirmation within the unexplained-chronic-pain identity's scope; the site-appropriate exclusionary workup (radiograph or MRI for bony erosion or occult fracture, Doppler or ultrasound for vascular mimickers) documented; exclusion of digital neuroma, osteoarthritis, glomangiectasia, rheumatoid or gouty nodules, occult fracture, and radiculopathy or referred pain; pain-medicine and hand-surgery assessment of the individual relationship",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Digital neuroma or nerve-sheath tumor",
+          "Osteoarthritis or occult bony erosion",
+          "Glomangiectasia or other vascular malformation",
+          "Rheumatoid, gouty, or infectious nodules",
+          "Occult fracture or radiculopathy-referred pain"
+        ]
+      },
+      "evidenceGaps": [
+        "Histopathologically confirmed glomus tumor (smooth-muscle-actin-immunoreactive glomus body lesion) after excision; documented pain chronology with the characteristic triad (severe focal pain, point tenderness, cold hypersensitivity) and Love-test or MRI confirmation within the unexplained-chronic-pain identity's scope; the site-appropriate exclusionary workup (radiograph or MRI for bony erosion or occult fracture, Doppler or ultrasound for vascular mimickers) documented; exclusion of digital neuroma, osteoarthritis, glomangiectasia, rheumatoid or gouty nodules, occult fracture, and radiculopathy or referred pain; pain-medicine and hand-surgery assessment of the individual relationship"
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY as a case-matching pain edge on the femoral-neuropathy and genitofemoral precedent: condition-specific case evidence documents severe cold-exacerbated focal pain with years-long diagnostic delay whose exclusionary workup mirrors the unexplained-chronic-pain evaluation, while the constitutive nature of the pain, common digital-pain mimickers, and absent distinct downstream outcome keep the consensus at NOT_ESTABLISHED with confirmation and alternative-etiology requirements.",
+      "sourceReferences": [
+        {
+          "citation": "Mostafa AA, Osman HA. Delayed Diagnosis of a Subungual Glomus Tumor of the Right Ring Finger Successfully Treated With Nail-Preserving Approach. Cureus. 2026;18(5):e109718. PMID 42367447.",
+          "note": "Case report documenting chronic unexplained fingertip pain undiagnosed across an extended interval with the classic triad of severe localized pain, point tenderness, and cold hypersensitivity, the call for early Love testing, and pain-free status after complete excision - the chronic-unexplained-pain and delayed-diagnosis anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42367447/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 42367447; chronic unexplained fingertip pain, prolonged diagnostic delay, Love test"
+        },
+        {
+          "citation": "Pandey S, Kamal M, Pandey A, et al. Glomus tumor of the right little finger: a case report and review of diagnostic challenges. Int J Surg Case Rep. 2026;138(8):3159-3162. PMID 42578039.",
+          "note": "Case report with diagnostic review documenting finger glomus-tumor pain aggravated by cold with an average misdiagnosis delay of seven years, MRI and histopathology confirmation after excision - the diagnostic-delay anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42578039/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 42578039; average misdiagnosis delay 7 years, cold-aggravated finger pain"
+        },
+        {
+          "citation": "Park YU, Han J, Seo YW. Nail-preserving excision of glomus tumor in the second toe: Case report and literature review. Medicine (Baltimore). 2024;103(11):e37398. PMID 38489706.",
+          "note": "Case report documenting toe glomus tumor with pain more than five times daily worsening with cold exposure, positive Love test, and improvement of pre-surgical pain after total excision - the pain-severity and confirmation anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38489706/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 38489706; pain >5 times daily, positive Love test, improved after excision"
+        }
+      ]
+    }
+  ]
 }

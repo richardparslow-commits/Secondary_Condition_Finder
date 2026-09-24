@@ -2,8 +2,126 @@
   "id": "hypoglycemia",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review hormonal, metabolic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 47 (2026-09-24): two ASSOCIATION_ONLY draft mappings pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: both authored edges assert association only (etiologicalConsensus NOT_ESTABLISHED, hypothesizedOnly:true). They record that dementia is diagnosed more often in people who have experienced hypoglycaemic episodes and that hypoglycaemic seizures are documented during severe hypoglycaemia, not that hypoglycaemia caused dementia or a chronic seizure disorder in any individual; the located designs are observational and the hypoglycaemic-seizure literature describes provoked, acute symptomatic events, so individual claims require glucose documentation with chronology, outcome phenotyping, and exclusion of the competing mechanisms listed on each edge.",
+    "Intermediate-node guard: batch 46 authored hyperinsulinism -> hypoglycemia as a direct-causation edge and recorded that the cognitive and seizure windows belong to this hypoglycaemia identity rather than being reached directly from hyperinsulinism; this batch authors the neuroglycopenic windows from the intermediate node as its own primary, so the same pathway is counted once and no hyperinsulinism-to-dementia or hyperinsulinism-to-seizure-disorder edge is added.",
+    "Duplicate-scope guard: the dementia identity receives no prior incoming window and the seizure-disorder identity receives eight (penetrating-head-trauma, subdural-hematoma, brain-abscess, brain-tumors, brain-cancer, cerebral-contusion, encephalitis, hashimoto-s-encephalopathy), none of which is a hypoglycaemic/neuroglycopenic window; the catalogue's separate epilepsy identity is not targeted because its boundary excludes acute symptomatic or provoked seizures, which is what the located hypoglycaemia evidence documents, and no cognitive-disorder umbrella edge is authored because the located outcome is incident dementia rather than unspecified cognitive impairment (target-specificity guard)."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 47 (2026-09-24): two bounded association edges authored - hypoglycemia to dementia (rank 1) and hypoglycemia to seizure-disorder (rank 2), both ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true, and mechanismCategory METABOLIC_OR_NUTRITIONAL (substrate deprivation of the brain during low blood glucose). The dementia proposition rests on the Huang 2022 systematic review and meta-analysis of ten cohort studies and 1,407,643 patients, which pooled an adjusted hazard ratio of 1.44 (95% CI 1.26-1.65, p<0.00001) for dementia in people with prior hypoglycaemic episodes that was stable across subgroup and leave-one-out analyses, and on the Han 2022 nationwide Korean cohort of 2,032,689 health-checkup participants in which severe hypoglycaemia was followed by dementia in 23.3% versus 7.3% (P<0.001) with a rising risk by episode count (one episode HR 1.54, 95% CI 1.48-1.60; two or more HR 1.80, 95% CI 1.66-1.94) and the highest mortality in those with both exposures (HR 5.08, 95% CI 4.83-5.35). The seizure proposition rests on the Blaabjerg 2016 review of hypoglycaemia-induced electroencephalographic change, which states that neuroglycopenia produces a graded loss of cognitive function with seizures as hypoglycaemia progresses, and on the Falip 2014 adult-onset type 1 diabetes cohort of 229 consecutive patients in which hypoglycaemic seizures were documented in 2 patients (0.87%), alongside 2 with unprovoked seizures, and were distinguished from temporal lobe epilepsy by lower anti-GAD antibody titres (18.42 versus 29.200 IU, p=0.006). Neither edge is raised to causation: the dementia evidence is observational with residual confounding by diabetes severity, duration, comorbidity, and glucose-lowering treatment intensity, and the seizure evidence describes provoked events in a rare subgroup of one diabetes population.",
+    "Counter-evidence screens recorded 2026-09-24: (i) direction - a propensity-score-matched cohort reports that dementia is associated with subsequent hypoglycaemia events in diabetes (PMID 37476614), so the dementia window is plausibly bidirectional and the located designs cannot resolve which limb dominates; that study is recorded as screened counter-evidence rather than authored as a second direction; (ii) provoked versus epileptic seizures - the located hypoglycaemia evidence describes acute symptomatic seizures during severe hypoglycaemia and does not establish an increased incidence of unprovoked seizures or epilepsy, so no epilepsy edge is authored and the seizure-disorder proposition is bounded to hypoglycaemic (provoked) events; (iii) subtypes - the Han cohort found the Alzheimer-disease incidence higher than vascular dementia, but subtype attribution is not asserted here because the dementia identity is not subtype-typed in the catalogue and competing vascular risk is not separable.",
+    "Negative screens recorded 2026-09-24: (i) no cognitive-disorder edge - the located outcome is incident dementia and routing the same studies to the broader cognitive-disorder umbrella would double-count the pathway (target-specificity and duplicate-scope guards); (ii) no coma, loss-of-consciousness, or death edge - no catalog identity exists for those outcomes (wrong-target guard); (iii) no diabetes-mellitus or diabetes-mellitus-type-2 edge - hypoglycaemia is the consequence of glucose-lowering treatment or of insulin excess rather than a cause of diabetes, so the direction would be inverted (direction-inversion guard); (iv) no visual-impairment, dizziness, or falls edge - the located hypoglycaemia literature reports blurred vision and dizziness as transient autonomic or neuroglycopenic symptoms within an episode rather than persistent impairment, and no condition-specific persistent-outcome data were located (zero-record guard); (v) no peripheral-neuropathy or chronic-kidney-disease edge - those windows belong to their own diabetes-specific primaries (duplicate-scope guard); (vi) duplicate-scope note: this batch adds the first hypoglycaemia-primary windows to the registry."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "dementia",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Observational studies document a higher incidence of dementia in people who have experienced hypoglycaemic episodes: the Huang 2022 systematic review and meta-analysis pooled ten cohort studies and 1,407,643 patients to an adjusted hazard ratio of 1.44 (95% CI 1.26-1.65, I2=89%, p<0.00001), stable on subgroup and leave-one-out analyses, and the Han 2022 nationwide cohort of 2,032,689 participants found dementia diagnosed in 23.3% of those with severe hypoglycaemia versus 7.3% without (P<0.001) with a dose-response across episode counts (HR 1.54 for one episode, 1.80 for two or more) - a reproducible co-occurrence association rather than an individual causal nexus.",
+        "causationStatus": "Neither causation nor aggravation is established: the located evidence is observational and cannot exclude confounding by diabetes severity and duration, vascular risk, comorbidity, and glucose-lowering treatment intensity; a competing cohort also reports the reverse relationship, with dementia predicting subsequent hypoglycaemia events (PMID 37476614), so the direction is not resolved; and an individual determination requires documented severe hypoglycaemia with glucose records and dates, dementia phenotyping with chronologies, and exclusion of the competing dementias listed on this edge."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "METABOLIC_OR_NUTRITIONAL",
+        "primaryVector": "A hypothesized metabolic route is described: glucose is the brain's principal metabolic fuel and the neuroglycopenic state during severe hypoglycaemia can injure vulnerable cortical and hippocampal neurons through energy failure, excitotoxicity, oxidative stress, and regional hypoperfusion, providing a substrate for later cognitive decline and dementia - consistent with the dose-response gradient reported in the Han 2022 nationwide cohort, in which risk rose from 1.54 to 1.80 as severe hypoglycaemic episodes accumulated, and with the pooled 1.44 hazard ratio in the Huang 2022 meta-analysis; the observational design, the competing explanations below, and the unresolved direction leave individual attribution hypothesized.",
+        "secondaryVector": "Hypoglycaemia also functions as a marker of diabetes severity, treatment intensity, and comorbidity burden, each of which independently increases dementia risk, and the higher Alzheimer-disease than vascular-dementia incidence in the Han cohort does not by itself separate a hypoglycaemic injury pathway from shared vascular and neurodegenerative susceptibility.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The edge asserts an association only: pooled cohort data and a national cohort show a higher dementia incidence after hypoglycaemic episodes with a dose-response gradient, but the designs are observational, the relationship is plausibly bidirectional (PMID 37476614 reports dementia predicting hypoglycaemia), and confounding by diabetes severity, vascular risk, and treatment intensity is not separable, so no at-least-as-likely-as-not probability is asserted and an individual claim requires glucose documentation with chronology, dementia phenotyping, and exclusion of competing dementias.",
+        "evidenceGaps": "Documentation of the hypoglycaemic episodes (glucose values and dates, severe versus non-severe, number of episodes, whether ambulance or hospital treatment was required) and of the glucose-lowering regimen; a dementia diagnosis with subtype, onset date, and objective cognitive testing (for example MMSE, MoCA, or formal neuropsychological assessment) plus imaging where obtained; the chronology of cognitive decline relative to the hypoglycaemic episodes; evaluation for competing causes of dementia including Alzheimer disease, vascular dementia, Lewy body disease, frontotemporal dementia, and reversible contributors such as vitamin B12 deficiency, hypothyroidism, depression, medication effects, and alcohol or substance use; assessment of diabetes duration, glycaemic control, vascular risk factors, and comorbidity; neurology or geriatric assessment of whether the hypoglycaemic history materially contributed to the individual cognitive decline",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Alzheimer disease or another primary neurodegenerative dementia",
+          "Vascular dementia from hypertension, stroke, or small-vessel cerebral disease",
+          "Diabetes-related cognitive decline through chronic hyperglycaemia, microvascular disease, or hypoglycaemia-independent mechanisms",
+          "Reversible causes (vitamin B12 or folate deficiency, hypothyroidism, depression, medication effects, alcohol or substance use)",
+          "Traumatic brain injury, Parkinson disease, Lewy body disease, or frontotemporal degeneration"
+        ]
+      },
+      "evidenceGaps": [
+        "Documentation of the hypoglycaemic episodes (glucose values and dates, severe versus non-severe, number of episodes, whether ambulance or hospital treatment was required) and of the glucose-lowering regimen; a dementia diagnosis with subtype, onset date, and objective cognitive testing (for example MMSE, MoCA, or formal neuropsychological assessment) plus imaging where obtained; the chronology of cognitive decline relative to the hypoglycaemic episodes; evaluation for competing causes of dementia including Alzheimer disease, vascular dementia, Lewy body disease, frontotemporal dementia, and reversible contributors such as vitamin B12 deficiency, hypothyroidism, depression, medication effects, and alcohol or substance use; assessment of diabetes duration, glycaemic control, vascular risk factors, and comorbidity; neurology or geriatric assessment of whether the hypoglycaemic history materially contributed to the individual cognitive decline"
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY: a ten-study meta-analysis of 1,407,643 patients pooled an adjusted hazard ratio of 1.44 (95% CI 1.26-1.65) for dementia after hypoglycaemic episodes, and a nationwide cohort of 2,032,689 participants found dementia in 23.3% versus 7.3% with a dose-response across episode counts (HR 1.54 and 1.80), establishing a reproducible and graded co-occurrence association; the edge is not raised to causation because the evidence is observational with residual confounding by diabetes severity and treatment intensity and because the reverse relationship is also reported (PMID 37476614), so the consensus remains NOT_ESTABLISHED with glucose-documentation, phenotyping, chronology, and competing-cause requirements and no probability estimate is asserted.",
+      "sourceReferences": [
+        {
+          "citation": "Huang L, Zhu M, Ji J. Association between hypoglycemia and dementia in patients with diabetes: a systematic review and meta-analysis of 1.4 million patients. Diabetol Metab Syndr. 2022 Feb 14;14(1):31. doi:10.1186/s13098-022-00799-9. PMID 35164844.",
+          "note": "Systematic review and meta-analysis of ten cohort studies and 1,407,643 patients reporting a pooled adjusted hazard ratio of 1.44 (95% CI 1.26-1.65, p<0.00001) for dementia in diabetes patients with prior hypoglycaemic episodes, stable across subgroups and leave-one-out analysis - the pooled quantitative anchor for the dementia association.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35164844/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-24",
+          "sourceLocator": "PMID 35164844; pooled HR 1.44 (95% CI 1.26-1.65) for dementia after hypoglycaemic episodes, ten studies, 1,407,643 patients"
+        },
+        {
+          "citation": "Han E, Han KD, Lee BW, Kang ES, Cha BS, Ko SH, Lee YH. Severe Hypoglycemia Increases Dementia Risk and Related Mortality: A Nationwide, Population-based Cohort Study. J Clin Endocrinol Metab. 2022 Apr 19;107(5):e1976-e1986. doi:10.1210/clinem/dgab860. PMID 35015886.",
+          "note": "Nationwide cohort of 2,032,689 Korean health-checkup participants reporting dementia in 23.3% of those with severe hypoglycaemia versus 7.3% without (P<0.001), a rising hazard with episode count (one episode HR 1.54, 95% CI 1.48-1.60; two or more HR 1.80, 95% CI 1.66-1.94), and highest mortality in those with both exposures (HR 5.08) - the population-scale anchor and the dose-response gradient.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35015886/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-24",
+          "sourceLocator": "PMID 35015886; dementia 23.3% versus 7.3%, dose-response HR 1.54 and 1.80 by severe-hypoglycaemia episode count, n=2,032,689"
+        }
+      ]
+    },
+    {
+      "conditionId": "seizure-disorder",
+      "rank": 2,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Clinical and neurophysiological literature documents seizures in severe hypoglycaemia: the Blaabjerg 2016 review of hypoglycaemia-induced electroencephalographic change states that neuroglycopenia produces a graded loss of cerebral function with seizures among the manifestations as hypoglycaemia progresses, and the Falip 2014 consecutive adult-onset type 1 diabetes cohort of 229 patients documented hypoglycaemic seizures in 2 patients (0.87%), distinguished from temporal lobe epilepsy by lower anti-GAD antibody titres (18.42 versus 29.200 IU, p=0.006) - a reproducible but rare provoked-event association rather than an individual causal nexus.",
+        "causationStatus": "Neither causation nor aggravation is established: the located hypoglycaemia evidence describes acute symptomatic (provoked) seizures occurring during severe hypoglycaemia rather than a chronic seizure disorder or epilepsy, the condition-specific cohort found hypoglycaemic seizures rare (0.87% of 229 patients) with no autoimmune association, and no increased incidence of unprovoked seizures was demonstrated, so an individual determination requires glucose documentation during the event, electroencephalographic and imaging evaluation, chronology relative to glucose-lowering therapy, and exclusion of the competing epileptogenic and metabolic causes listed on this edge."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "METABOLIC_OR_NUTRITIONAL",
+        "primaryVector": "A hypothesized metabolic route is described: glucose is the brain's primary metabolic fuel, and progressive neuroglycopenia during severe hypoglycaemia alters cortical electrical activity - the graded sequence of cognitive slowing, behavioural change, and seizure described in the Blaabjerg 2016 electroencephalographic review - so a provoked generalised or focal seizure can occur while brain glucose is critically low; the mechanism is documented at review level while the clinical evidence is limited to rare provoked events in one diabetes cohort, so individual attribution remains hypothesized.",
+        "secondaryVector": "Severe hypoglycaemia frequently coexists with electrolyte disturbance, alcohol use, central nervous system disease, and glucose-lowering or other drugs that lower the seizure threshold, and the autonomic surge during hypoglycaemia can produce convulsive syncope that mimics a seizure, all of which compete with a neuroglycopenic explanation.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The edge asserts an association only: the located review states that seizures occur as neuroglycopenia progresses and the condition-specific cohort documented hypoglycaemic seizures in 0.87% of 229 patients, but those events are acute symptomatic seizures during a provoked metabolic state rather than a chronic seizure disorder, no elevated incidence of unprovoked seizures or epilepsy was demonstrated, and competing epileptogenic, metabolic, toxic, and syncopal causes are not separable on the located evidence, so no at-least-as-likely-as-not probability is asserted.",
+        "evidenceGaps": "Glucose values documented during or immediately around the events, with dates and the relation to insulin or other glucose-lowering therapy; electroencephalography and brain imaging results; characterization of the events (provoked versus unprovoked, focal versus generalised, duration, postictal features) and whether convulsive syncope was excluded; the frequency of events and whether any occurred outside hypoglycaemia; assessment of electrolytes, renal and hepatic function, infection, alcohol or substance use, and seizure-threshold-lowering medications; neurology evaluation of whether a seizure disorder exists independently of the hypoglycaemic episodes",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Epilepsy or a structural epileptogenic lesion (for example stroke, tumour, malformation, or prior head injury)",
+          "Idiopathic or genetic generalised epilepsy",
+          "Metabolic derangements other than hypoglycaemia (hyponatraemia, hypocalcaemia, uraemia, hepatic encephalopathy)",
+          "Alcohol or benzodiazepine withdrawal or other drug-related seizures",
+          "Convulsive syncope of cardiac or reflex origin"
+        ]
+      },
+      "evidenceGaps": [
+        "Glucose values documented during or immediately around the events, with dates and the relation to insulin or other glucose-lowering therapy; electroencephalography and brain imaging results; characterization of the events (provoked versus unprovoked, focal versus generalised, duration, postictal features) and whether convulsive syncope was excluded; the frequency of events and whether any occurred outside hypoglycaemia; assessment of electrolytes, renal and hepatic function, infection, alcohol or substance use, and seizure-threshold-lowering medications; neurology evaluation of whether a seizure disorder exists independently of the hypoglycaemic episodes"
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY: a review of hypoglycaemia-induced electroencephalographic change documents seizures among the graded manifestations of neuroglycopenia, and a consecutive cohort of 229 adult-onset type 1 diabetes patients documented hypoglycaemic seizures in 2 patients (0.87%) while separating them from temporal lobe epilepsy by antibody profile, establishing a reproducible but rare provoked-event association; the edge is not raised to causation because the events are acute symptomatic seizures during a provoked metabolic state and no increased incidence of unprovoked seizures or epilepsy was shown, so the consensus remains NOT_ESTABLISHED with glucose-documentation, electroencephalographic, chronology, and competing-cause requirements and no probability estimate is asserted.",
+      "sourceReferences": [
+        {
+          "citation": "Blaabjerg L, Juhl CB. Hypoglycemia-Induced Changes in the Electroencephalogram: An Overview. J Diabetes Sci Technol. 2016 Nov;10(6):1259-1267. doi:10.1177/1932296816659744. PMID 27464753.",
+          "note": "Review of hypoglycaemia-induced electroencephalographic change stating that shortage of glucose in the brain (neuroglycopenia) results in a gradual loss of cognitive function with seizures as hypoglycaemia progresses - the mechanistic anchor for the neuroglycopenic seizure proposition.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/27464753/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-24",
+          "sourceLocator": "PMID 27464753; neuroglycopenia produces graded loss of cognitive function with seizures as hypoglycaemia progresses"
+        },
+        {
+          "citation": "Falip M, Miro J, Carreno M, Jaraba S, Becerra JL, Cayuela N, Perez Maraver M, Graus F. Hypoglycemic seizures and epilepsy in type I diabetes mellitus. J Neurol Sci. 2014 Nov 15;346(1-2):307-309. doi:10.1016/j.jns.2014.08.024. PMID 25183236.",
+          "note": "Consecutive cohort of 229 adult-onset type 1 diabetes patients documenting hypoglycaemic seizures in 2 patients (0.87%) and unprovoked seizures in 2 (0.87%), with lower anti-GAD antibody titres in the hypoglycaemic-seizure group than in temporal lobe epilepsy (18.42 versus 29.200 IU, p=0.006) - the condition-specific prevalence anchor and the provoked-versus-epileptic discrimination.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/25183236/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-24",
+          "sourceLocator": "PMID 25183236; hypoglycaemic seizures 2/229 (0.87%) with anti-GAD titres 18.42 versus 29.200 IU in temporal lobe epilepsy, p=0.006"
+        }
+      ]
+    }
+  ]
 }

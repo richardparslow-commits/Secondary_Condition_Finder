@@ -2,8 +2,124 @@
   "id": "hemangioma",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review hemodynamic, vascular, thrombotic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 43 (2026-09-24): two ASSOCIATION_ONLY draft mappings pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: both edges assert association only (etiologicalConsensus NOT_ESTABLISHED, hypothesizedOnly:true) - they record that large or diffuse hepatic hemangioma has been reported with high-output cardiac states and with consumptive hypothyroidism in case-level literature, not that hemangioma caused either outcome in any individual; the located evidence is case reports in neonatal and infantile hepatic hemangiomatosis populations without incidence denominators, so individual claims require imaging documentation of the lesion (site, size, extent), target-specific objective documentation (echocardiographic high-output phenotype and filling or pulmonary pressures; thyroid function testing with replacement requirement), and exclusion of the listed competing causes.",
+    "Entity-mismatch guard: the Kasabach-Merritt thrombocytopenia pathway is attributed in current literature to kaposiform hemangioendothelioma and tufted angioma rather than to hemangioma proper, so no thrombocytopenia, consumptive-coagulopathy, or anemia edge is authored from the generic hemangioma identity; lymphangioma is a separate sibling identity owning lymphatic windows."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 43 (2026-09-24): two bounded association edges authored - hemangioma to congestive-heart-failure (rank 1, mechanismCategory THROMBOTIC_OR_VASCULAR, mirroring the established arteriovenous-fistula high-output window) and hemangioma to hypothyroidism (rank 2, mechanismCategory METABOLIC_OR_NUTRITIONAL), both ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, and hypothesizedOnly:true. The heart-failure edge rests on the Srinivas 2025 case report of congenital hepatic hemangioma presenting with high-output cardiac failure and severe pulmonary hypertension and on the Ateeqi 2026 case report of infantile hepatic hemangioma with cardiac failure that improved under propranolol as the lesion involuted - a case-report and dechallenge-flavored pattern; the hypothyroidism edge rests on the Larbi Ouassou 2026 and Corsello 2025 case reports of diffuse infantile hepatic hemangiomatosis with consumptive hypothyroidism attributed to tumoral type-3 iodothyronine deiodinase activity. Both edges remain NOT_ESTABLISHED because the evidence is case-report level, the populations are largely neonatal and infantile diffuse hepatic hemangiomatosis rather than hemangioma generally, individual shunt volume and cardiac reserve vary widely, and no incidence denominators exist, so no probability estimate is asserted.",
+    "Negative screens recorded 2026-09-24: (i) no thrombocytopenia or consumptive-coagulopathy edge - Kasabach-Merritt phenomenon is attributed in current literature to kaposiform hemangioendothelioma and tufted angioma rather than to hemangioma proper, so an edge from the generic hemangioma identity would misattribute another entity's window (entity-mismatch guard; no kaposiform identity exists in the catalog to author the correct window); reopen only if that identity is cataloged or hemangioma-specific consumptive-coagulopathy evidence is located; (ii) no anemia edge - the located anemia-adjacent literature is entwined with the same entity-mismatch problem and with treatment-produced hemolysis, and anemia-family windows are authored on their own primaries (entity and duplicate-scope guards); (iii) no bleeding, ulceration, or pain edge - bleeding and ulceration are lesion-constitutive features rather than a separate catalog diagnosis (constitutive guard), and the unexplained-chronic-pain window requires delay and quantification evidence that was not located for hemangioma (zero-record guard); (iv) no lymphangioma edge - sibling identity with its own unbacklogged window (duplicate-scope guard); (v) no malignant-transformation edge - the relevant targets are absent from the registry and no condition-specific transformation evidence was located (wrong-target and zero-record guards); (vi) no infantile-hemangioma-regression or treatment-state edge - treatment-state windows follow their own exposure identities (treatment-state guard); (vii) duplicate-scope note: congestive heart failure and hypothyroidism each gain their first hemangioma-primary window in this batch."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "congestive-heart-failure",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Case-level published reports describe hepatic hemangiomas producing high-output cardiac states, including a congenital hepatic hemangioma presenting with high-output cardiac failure and severe pulmonary hypertension and an infantile hepatic hemangioma with cardiac failure that improved under propranolol as the lesion involuted - a case-report and dechallenge-flavored pattern without cohort denominators.",
+        "causationStatus": "Neither causation nor aggravation is established: the located evidence is case-report level in neonatal and infantile hepatic hemangiomatosis populations, individual shunt volume and cardiac reserve vary widely, coexisting cardiac and systemic disease is common in the reported populations, and no incidence data quantify heart failure attributable to hemangioma, so an individual determination requires documented lesion extent, echocardiographic high-output hemodynamics, and exclusion of competing cardiac and high-output causes."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "THROMBOTIC_OR_VASCULAR",
+        "primaryVector": "A hypothesized vascular-shunt route is described: large or diffuse hepatic hemangioma vascular channels create low-resistance arteriovenous shunting that returns a portion of cardiac output to the venous circulation without capillary exchange, increasing venous return and cardiac output and, in susceptible patients, producing a high-output failure state with elevated filling pressures and pulmonary hypertension - documented in the located case reports - while individual shunt volume, lesion size, and baseline cardiac function determine whether that load becomes failure, so no individual-level causal claim is made.",
+        "secondaryVector": "Chronic volume loading and neurohormonal activation may contribute to ventricular remodeling, and reported improvement after propranolol-induced lesion involution suggests a load-dependent mechanism, but that observation remains single-patient evidence.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The edge asserts an association only: the located evidence is case reports and small case-level observations in neonatal and infantile hepatic hemangiomatosis populations without controlled denominators, shunt volume and cardiac reserve vary widely between individuals, and competing structural and systemic high-output causes are common in the reported populations, so an individual nexus requires imaging-documented lesion extent, echocardiographic high-output documentation, and exclusion of other causes; no probability estimate is asserted.",
+        "evidenceGaps": "Imaging documentation of the hemangioma (site, size, extent, imaging modality); echocardiographic documentation of the high-output phenotype and filling or pulmonary pressures; exclusion of primary cardiac disease, structural congenital heart disease, and other high-output states (severe anemia, thyrotoxicosis, sepsis, arteriovenous malformation elsewhere); documentation of lesion-directed or supportive treatment and its temporal relationship to the cardiac findings; cardiology or neonatology assessment of the individual relationship",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Structural congenital heart disease",
+          "Other high-output states (severe anemia, thyrotoxicosis, sepsis)",
+          "Primary or familial cardiomyopathy",
+          "Arteriovenous malformation not attributable to the hemangioma",
+          "Metabolic or peripartum cardiac disease where applicable"
+        ]
+      },
+      "evidenceGaps": [
+        "Imaging documentation of the hemangioma (site, size, extent, imaging modality); echocardiographic documentation of the high-output phenotype and filling or pulmonary pressures; exclusion of primary cardiac disease, structural congenital heart disease, and other high-output states (severe anemia, thyrotoxicosis, sepsis, arteriovenous malformation elsewhere); documentation of lesion-directed or supportive treatment and its temporal relationship to the cardiac findings; cardiology or neonatology assessment of the individual relationship"
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY: case reports document hepatic hemangioma with high-output cardiac failure, including improvement after lesion-directed therapy, but the evidence is case-level without incidence denominators, the populations are neonatal and infantile hepatic hemangiomatosis, and competing high-output and structural causes are common, so the consensus remains NOT_ESTABLISHED with imaging, hemodynamic, and exclusion requirements; no probability estimate is asserted.",
+      "sourceReferences": [
+        {
+          "citation": "Srinivas S, Kotinatot S, Janjua D, Alsaqban HQH, El Atawi K. High-output cardiac failure and severe pulmonary hypertension due to congenital hepatic hemangioma: a case report. Pan Afr Med J. 2025 Aug 21;51:100. doi:10.11604/pamj.2025.51.100.47785. PMID 41116821.",
+          "note": "Case report of a congenital hepatic hemangioma presenting with high-output cardiac failure and severe pulmonary hypertension - the high-output shunt- physiology case anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41116821/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-24",
+          "sourceLocator": "PMID 41116821; congenital hepatic hemangioma with high-output cardiac failure and pulmonary hypertension"
+        },
+        {
+          "citation": "Ateeqi FA, Shaikhkhalil AK, Talo H, Jagirdar N, Al-Haidar M. Successful propranolol therapy for infantile hepatic hemangioma with cardiac failure. JPGN Rep. 2026 Apr 9;7(3):387-390. doi:10.1002/jpr3.70180. PMID 42499732.",
+          "note": "Case report of infantile hepatic hemangioma with cardiac failure improving under propranolol as the lesion involuted - a dechallenge-flavored observation supporting a load-dependent association.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42499732/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-24",
+          "sourceLocator": "PMID 42499732; infantile hepatic hemangioma with cardiac failure responding to propranolol"
+        }
+      ]
+    },
+    {
+      "conditionId": "hypothyroidism",
+      "rank": 2,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Case reports describe diffuse infantile hepatic hemangiomatosis presenting with consumptive hypothyroidism in which the hypothyroidism is attributed to tumoral type-3 iodothyronine deiodinase activity that inactivates thyroid hormone, in one report accompanied by anemia that raised suspicion for the syndrome - a case-level mechanistic observation without cohort denominators.",
+        "causationStatus": "Neither causation nor aggravation is established: the located evidence is case-report level, no incidence data quantify consumptive hypothyroidism attributable to hemangioma, and the reported populations are diffuse hepatic hemangiomatosis in infants in whom transient neonatal thyroid dysfunction is also common, so an individual determination requires imaging-documented diffuse hemangiomatosis, thyroid function testing with chronology, replacement requirement and response, and exclusion of primary and central thyroid disease."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "METABOLIC_OR_NUTRITIONAL",
+        "primaryVector": "A hypothesized metabolic-consumption route is described: diffuse hepatic hemangioma tissue expresses type-3 iodothyronine deiodinase, accelerating inactivation of thyroxine and triiodothyronine and producing consumptive hypothyroidism that can require supraphysiologic replacement while the lesion persists - the mechanism described in the located case reports - while the case-level evidence base leaves individual attribution hypothesized.",
+        "secondaryVector": "Reversal of the thyroid abnormality after lesion regression or treatment would support a consumption mechanism, but the located observations are single-patient and do not quantify the effect.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The edge asserts an association only: the located evidence is case-report level in infants with diffuse hepatic hemangiomatosis, no incidence data quantify the association, and transient neonatal thyroid dysfunction, primary thyroid disease, and central hypothyroidism are competing explanations that require exclusion, so no at-least-as-likely-as-not probability is asserted.",
+        "evidenceGaps": "Imaging documentation of diffuse hepatic hemangiomatosis; thyroid function testing (thyroid-stimulating hormone, free thyroxine, total triiodothyronine) with chronology relative to lesion detection; documentation of replacement requirement and response, including supraphysiologic dosing; exclusion of primary thyroid disease, central hypothyroidism, and medication effects; endocrinology and pediatric assessment of the individual relationship",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Primary thyroid disease (Hashimoto thyroiditis, thyroid dysgenesis)",
+          "Central (pituitary or hypothalamic) hypothyroidism",
+          "Medication-induced thyroid dysfunction",
+          "Transient neonatal thyroid dysfunction",
+          "Other causes not yet identified in this mapping"
+        ]
+      },
+      "evidenceGaps": [
+        "Imaging documentation of diffuse hepatic hemangiomatosis; thyroid function testing (thyroid-stimulating hormone, free thyroxine, total triiodothyronine) with chronology relative to lesion detection; documentation of replacement requirement and response, including supraphysiologic dosing; exclusion of primary thyroid disease, central hypothyroidism, and medication effects; endocrinology and pediatric assessment of the individual relationship"
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY: case reports describe diffuse infantile hepatic hemangiomatosis with consumptive hypothyroidism attributed to tumoral type-3 deiodinase activity, but the evidence is case-level without incidence data, the population is a specific infantile phenotype, and competing thyroid disorders require exclusion, so the consensus remains NOT_ESTABLISHED with imaging, laboratory, and exclusion requirements; no probability estimate is asserted.",
+      "sourceReferences": [
+        {
+          "citation": "Larbi Ouassou K, Laaraje A, Abdelilah R, Amale H, Abilkassem R. Diffuse Infantile Hepatic Hemangiomatosis: A Rare Cause of Consumptive Hypothyroidism. Cureus. 2026 May 2;18(5):e108137. doi:10.7759/cureus.108137. PMID 42232014.",
+          "note": "Case report of diffuse infantile hepatic hemangiomatosis presenting as a rare cause of consumptive hypothyroidism - the consumptive-deiodinase case anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42232014/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-24",
+          "sourceLocator": "PMID 42232014; diffuse infantile hepatic hemangiomatosis with consumptive hypothyroidism"
+        },
+        {
+          "citation": "Corsello G, Costantini E, Sciveres M, Figuccia A, Maggio MC. Diffuse infantile hepatic haemangioma and consumptive hypothyroidism: a clinical case with anaemia that raises suspicion. Ital J Pediatr. 2025 Jul 1;51(1):200. doi:10.1186/s13052-025-02027-2. PMID 40597219.",
+          "note": "Case report of diffuse infantile hepatic haemangioma with consumptive hypothyroidism, including anemia that raised clinical suspicion - the second case-level anchor for the consumptive-deiodinase mechanism.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40597219/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-24",
+          "sourceLocator": "PMID 40597219; diffuse infantile hepatic haemangioma with consumptive hypothyroidism"
+        }
+      ]
+    }
+  ]
 }

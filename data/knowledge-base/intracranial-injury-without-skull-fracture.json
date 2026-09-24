@@ -2,7 +2,122 @@
   "id": "intracranial-injury-without-skull-fracture",
   "draft": true,
   "todo": [
-    "Rebuild secondary-condition suggestions using condition-specific clinical evidence before publication."
+    "D1 draft-authoring batch 49 (2026-09-24): two DIRECT_CAUSATION draft mappings pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: both authored edges are classified DIRECT_CAUSATION with etiologicalConsensus PROBABLE and hypothesizedOnly:false because traumatic brain injury is an established cause of both post-traumatic epilepsy and post-traumatic hypopituitarism, documented at review and cohort level; individual claims still require injury characterization with severity, imaging and dates, outcome-specific documentation with chronologies, and exclusion of the competing mechanisms listed on each edge.",
+    "Prior-closure and target-boundary guards: the master-resolution program closed the harvested intracranial-injury-without-skull-fracture-to-cardiac-arrhythmia proposition (PMID 37318429) as FINAL-CLOSE-PROPOSITION-MISMATCH with no approved targets, and that proposition is NOT reasserted here - no cardiac, arrhythmia, or cardiac-arrhythmia edge is authored. The seizure target is the catalogue's epilepsy identity rather than seizure-disorder because the located outcome is post-traumatic epilepsy meeting diagnostic criteria for an epilepsy diagnosis, and the epilepsy identity's boundary excludes acute symptomatic or provoked seizures, which is the distinction the authored proposition honours.",
+    "Duplicate-scope guard: the epilepsy identity currently receives one incoming window (malaria) and the hypopituitarism identity receives none, so neither window is pre-empted; the catalog's other head-injury identities (cerebral-contusion, subdural-hematoma, penetrating-head-trauma, diffuse-axonal-injury) each author their own windows, and this batch adds the intracranial-injury-without-skull-fracture windows on this identity's own evidence rather than restating theirs."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 49 (2026-09-24): two bounded direct-causation edges authored - intracranial injury without skull fracture to epilepsy (rank 1) and to hypopituitarism (rank 2). Both carry DIRECT_CAUSATION with etiologicalConsensus PROBABLE, vaNexusProbabilityAlignment AT_LEAST_AS_LIKELY_AS_NOT, and hypothesizedOnly:false; mechanismCategory NEUROLOGICAL_DEGENERATION (post-traumatic epileptogenesis) for the epilepsy window and MULTIFACTORIAL (heterogeneous vascular, mechanical, and neuroendocrine pathogenesis) for the pituitary window, consistent with the existing cerebral-contusion-to-seizure-disorder, subdural-hematoma-to-seizure-disorder, and diffuse-axonal-injury-to-cognitive-disorder precedents. The epilepsy proposition rests on the Zhong 2025 systematic review and meta-analysis of 24 studies and 505,720 patients, which found a pooled post-traumatic epilepsy prevalence of 9% (95% CI 8-11%), rising to 15% (95% CI 11-20%) in studies using International League Against Epilepsy diagnostic criteria, 16% in severe cases, and 14% in early post-traumatic seizure studies, and on the Laing 2022 registry-based cohort of 15,152 adults with moderate to severe traumatic brain injury in which early post-traumatic seizures occurred in 416 patients (2.7%), including 27 (0.2%) with status epilepticus, and were associated with subsequent post-traumatic epilepsy after adjustment for confounders. The pituitary proposition rests on the Kalas 2023 review of post-traumatic hypopituitarism, which states that its prevalence has been significantly underestimated, that its pathogenesis is heterogeneous, and that unrecognized and untreated disease has negative socioeconomic and quality-of-life consequences, and on the Zaben 2013 review, which records that the hypophyseal vessels are anatomically vulnerable to shearing injuries and raised intracranial pressure with pituitary ischaemia or haemorrhage a common autopsy finding, that post-traumatic hypopituitarism can affect all grades of injury severity and is difficult to diagnose because its features overlap post-concussive symptoms, and that no screening consensus exists.",
+    "Counter-evidence and caveat screens recorded 2026-09-24: (i) severity gradient rather than uniform risk - the located epilepsy evidence reports prevalence varying with injury severity and diagnostic criteria (9% overall, 15% under ILAE criteria, 16% in severe injury), and the hypopituitarism reviews record that some cases recover partially while late-onset cases occur, so neither edge asserts a fixed risk for any individual; (ii) bone-fracture mechanism overlap - the pituitary reviews list anterior skull-base fracture among the mechanisms, which is outside this identity's fracture-free scope, so the authored proposition rests on the shearing and intracranial-pressure mechanisms they also describe and does not rely on the fracture pathway; (iii) diagnostic attribution - post-traumatic hypopituitarism features overlap post-concussive symptoms and acute-phase neuroendocrine testing may reflect a non-specific trauma response rather than pituitary damage, so the evidence gaps require interval testing rather than acute-phase sampling.",
+    "Negative screens recorded 2026-09-24: (i) no cardiac-arrhythmia edge - the harvested proposition remains FINAL-CLOSED under FINAL-CLOSE-PROPOSITION-MISMATCH and is not reasserted (prior-closure guard); (ii) no seizure-disorder edge - the located outcome is post-traumatic epilepsy meeting epilepsy diagnostic criteria and the epilepsy identity is the entity-exact target, so routing to the broader seizure-disorder identity as well would double-count the pathway (target-specificity guard); (iii) no cognitive-disorder edge - no condition-specific post-traumatic cognitive cohort was retrieved in this batch window, and the located evidence addresses epilepsy and pituitary outcomes (zero-record guard); (iv) no cranial-nerve-palsy, anosmia, or visual-impairment edge - no condition-specific quantification for those outcomes was retrieved here and their windows belong to their own primaries (zero-record and duplicate-scope guards); (v) no subdural-hematoma, epidural-hematoma, or cerebral-contusion edge - those are distinct catalogue identities rather than downstream consequences of this identity (wrong-target guard); (vi) no osteopenia or anemia edge - those windows belong to the hypopituitarism identity, which is the intermediate node for pituitary effects, so an edge would skip and double-count that pathway (intermediate-chain guard); (vii) no depression, fatigue, or cognitive-symptom edge from the pituitary proposition - those manifestations are recorded inside the hypopituitarism evidence base and the depressive-disorder identity belongs to its own primaries (intermediate-chain and duplicate-scope guards)."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "epilepsy",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "DIRECT_CAUSATION",
+        "etiologicalTrigger": "Documented intracranial injury without skull fracture (traumatic brain injury characterized by severity, mechanism, imaging findings, and date, including moderate to severe injury or a mild injury with compatible features) -> structural and gliotic cerebral injury with neuronal loss, hemosiderin deposition, and altered cortical excitability (epileptogenesis) -> claimed post-traumatic epilepsy when the seizure semiology and electroencephalographic findings meet epilepsy diagnostic criteria, the latency and chronology are documented, and competing epileptogenic causes are excluded."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "NEUROLOGICAL_DEGENERATION",
+        "primaryVector": "Traumatic brain injury initiates epileptogenesis through contusional neuronal loss, gliosis and scar formation, hemosiderin deposition from subarachnoid or intraparenchymal bleeding, and gradual reorganisation of cortical and hippocampal excitability, producing a lowered seizure threshold that can generate unprovoked recurrent seizures years after the injury - the structural basis reflected in the Zhong 2025 meta-analysis, which pooled a post-traumatic epilepsy prevalence of 9% across 24 studies and 505,720 patients with higher estimates under International League Against Epilepsy criteria, and in the Laing 2022 cohort of 15,152 adults with moderate to severe traumatic brain injury in which early post-traumatic seizures in 2.7% were associated with later post-traumatic epilepsy.",
+        "hypothesizedOnly": false
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "PROBABLE",
+        "vaNexusProbabilityAlignment": "AT_LEAST_AS_LIKELY_AS_NOT",
+        "conservativeRationale": "The edge is authored at direct causation with probable etiologic consensus because post-traumatic epilepsy is a recognized structural-epilepsy entity and the located evidence quantifies its prevalence in traumatic brain injury populations (9% pooled across 505,720 patients, 15% under ILAE criteria) with a cohort-level association between early post-traumatic seizures and later epilepsy; an at-least-as-likely-as-not alignment is asserted only where the injury is documented with severity and imaging, seizure semiology and electroencephalography meet epilepsy criteria, and competing epileptogenic causes are excluded, consistent with the existing cerebral-contusion and subdural-hematoma seizure windows.",
+        "evidenceGaps": "Documentation of the traumatic brain injury (date, mechanism, loss of consciousness and duration, Glasgow Coma Scale or Abbreviated Injury Scale score, admission findings, and whether surgery or intracranial pressure monitoring was required) with imaging reports showing contusion, haemorrhage, or diffuse injury and their location and dates; electroencephalography results including any epileptiform discharges; seizure characterization (focal or generalised, duration, frequency, and semiology) with dates and the latency from the injury; treatment history with antiseizure medications and responses; assessment of competing causes of epilepsy including pre-existing or genetic epilepsy, structural lesions unrelated to the trauma, alcohol or benzodiazepine withdrawal, metabolic causes, central nervous system infection, and hypoglycaemia; neurology or epilepsy assessment of whether the traumatic injury materially contributed to the epilepsy",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Pre-existing or genetic generalised or focal epilepsy",
+          "Structural epileptogenic lesions unrelated to the injury (tumour, malformation, stroke, prior neurosurgery)",
+          "Alcohol, benzodiazepine, or drug withdrawal seizures",
+          "Metabolic or infectious causes (hyponatraemia, hypoglycaemia, meningitis, encephalitis)",
+          "Syncope with convulsive features or psychogenic non-epileptic seizures"
+        ]
+      },
+      "evidenceGaps": [
+        "Documentation of the traumatic brain injury (date, mechanism, loss of consciousness and duration, Glasgow Coma Scale or Abbreviated Injury Scale score, admission findings, and whether surgery or intracranial pressure monitoring was required) with imaging reports showing contusion, haemorrhage, or diffuse injury and their location and dates; electroencephalography results including any epileptiform discharges; seizure characterization (focal or generalised, duration, frequency, and semiology) with dates and the latency from the injury; treatment history with antiseizure medications and responses; assessment of competing causes of epilepsy including pre-existing or genetic epilepsy, structural lesions unrelated to the trauma, alcohol or benzodiazepine withdrawal, metabolic causes, central nervous system infection, and hypoglycaemia; neurology or epilepsy assessment of whether the traumatic injury materially contributed to the epilepsy"
+      ],
+      "rationale": "Authored at DIRECT_CAUSATION / PROBABLE: a 2025 systematic review and meta-analysis of 24 studies and 505,720 patients pooled a post-traumatic epilepsy prevalence of 9% (15% under International League Against Epilepsy criteria) after traumatic brain injury, and a registry-based cohort of 15,152 adults with moderate to severe injury documented early post-traumatic seizures in 2.7% with an association to later epilepsy, establishing the injury as a structural cause of epilepsy with the mechanism of contusional injury, gliosis, and hemosiderin deposition; the alignment is asserted at at-least-as-likely-as-not only where injury severity and imaging, epilepsy-criteria electroclinical findings, latency, and competing-cause exclusion are documented, mirroring the existing cerebral-contusion and subdural-hematoma seizure windows.",
+      "sourceReferences": [
+        {
+          "citation": "Zhong J, Lan Y, Sun L, Zhao Z, Liu X, Shi J, Ren L, Zuo Q, Wei X, Dou X. Global prevalence of post-traumatic epilepsy in traumatic brain injury patients: a systematic review and meta-analysis (1997-2024). Neuroscience. 2025 Oct 1;584:180-189. doi:10.1016/j.neuroscience.2025.07.008. PMID 40835018.",
+          "note": "Systematic review and meta-analysis of 24 studies and 505,720 patients reporting a pooled post-traumatic epilepsy prevalence of 9% (95% CI 8-11%), 15% under International League Against Epilepsy diagnostic criteria, 16% for severe cases, and 14% for early post-traumatic seizure studies, concluding that post-traumatic epilepsy is a common complication of traumatic brain injury - the quantitative prevalence anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40835018/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-24",
+          "sourceLocator": "PMID 40835018; pooled post-traumatic epilepsy prevalence 9% (95% CI 8-11%) after traumatic brain injury, 24 studies, n=505,720; 15% under ILAE criteria"
+        },
+        {
+          "citation": "Laing J, Gabbe B, Chen Z, Perucca P, Kwan P, O'Brien TJ. Risk Factors and Prognosis of Early Posttraumatic Seizures in Moderate to Severe Traumatic Brain Injury. JAMA Neurol. 2022 Apr 1;79(4):334-341. doi:10.1001/jamaneurol.2021.5420. PMID 35188950.",
+          "note": "Registry-based cohort of 15,152 adults with moderate to severe traumatic brain injury with two-year follow-up in which 416 patients (2.7%) had early post-traumatic seizures, including 27 (0.2%) with status epilepticus, and early seizures were associated with subsequent post-traumatic epilepsy after adjustment for confounders - the cohort-level severity and progression anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35188950/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-24",
+          "sourceLocator": "PMID 35188950; early post-traumatic seizures in 416/15,152 (2.7%) moderate-to-severe TBI patients and association with later post-traumatic epilepsy"
+        }
+      ]
+    },
+    {
+      "conditionId": "hypopituitarism",
+      "rank": 2,
+      "nexusClaim": {
+        "nexusClassification": "DIRECT_CAUSATION",
+        "etiologicalTrigger": "Documented intracranial injury without skull fracture (traumatic brain injury characterized by severity, mechanism, imaging, and date) -> shearing injury to the hypophyseal vessels and stalk with ischaemia, haemorrhage, or raised intracranial pressure effects -> claimed hypopituitarism when interval neuroendocrine testing documents one or more anterior pituitary axis deficiencies, the chronology relative to the injury is established, and competing causes of pituitary dysfunction are excluded."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MULTIFACTORIAL",
+        "primaryVector": "Several mechanisms converge after traumatic brain injury: the hypophyseal vessels are anatomically vulnerable to shearing forces, so vascular disruption with pituitary ischaemia or haemorrhage is a common autopsy finding; raised intracranial pressure and secondary injury add to the vascular insult; and hypothalamic or stalk damage can interrupt portal delivery of releasing hormones - as recorded in the Zaben 2013 review, which states that post-traumatic hypopituitarism can affect all grades of injury severity and is difficult to diagnose because its features overlap post-concussive symptoms, and in the Kalas 2023 review, which describes the pathogenesis as heterogeneous, records that prevalence has been significantly underestimated, and notes that unrecognized and untreated disease has negative socioeconomic and quality-of-life consequences with no settled screening algorithm.",
+        "hypothesizedOnly": false
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "PROBABLE",
+        "vaNexusProbabilityAlignment": "AT_LEAST_AS_LIKELY_AS_NOT",
+        "conservativeRationale": "The edge is authored at direct causation with probable etiologic consensus because post-traumatic hypopituitarism is a recognized consequence of traumatic brain injury with a coherent vascular and mechanical mechanism and review-level agreement that it affects all injury grades and has been underestimated; the pathogenesis is heterogeneous and some cases recover while others have late onset, so an at-least-as-likely-as-not alignment is asserted only where the injury is documented, interval pituitary-axis testing demonstrates a deficiency, chronology is established, and competing causes of pituitary dysfunction are excluded.",
+        "evidenceGaps": "Documentation of the traumatic brain injury (date, mechanism, Glasgow Coma Scale score, imaging findings, and whether neurosurgery or intracranial pressure monitoring was required) and of the fracture-free status of the injury; interval neuroendocrine testing rather than acute-phase sampling, with baseline and stimulated results such as morning cortisol, adrenocorticotropic hormone, thyroid-stimulating hormone and free thyroxine, insulin-like growth factor 1 and growth-hormone stimulation where performed, luteinising and follicle-stimulating hormone with testosterone, oestradiol, or menstrual history, and prolactin, with laboratory dates; results of any dynamic testing such as the insulin tolerance, glucagon, or corticotropin-releasing hormone stimulation test; documentation of the onset of symptoms such as fatigue, weakness, weight change, hypotension, hyponatraemia, or cognitive change with chronology relative to the injury; imaging of the hypothalamic-pituitary region where obtained; assessment of competing causes including pre-existing pituitary disease, previous cranial radiotherapy or other brain injury, hypophysitis, medications such as glucocorticoids or opioids, primary thyroid, adrenal, or gonadal disease, and critical illness with non-specific hormone abnormalities; endocrinology assessment of whether the traumatic injury materially contributed to the pituitary deficiency",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Pre-existing pituitary adenoma, hypophysitis, or other intrinsic pituitary disease",
+          "Prior cranial radiotherapy, prior traumatic brain injury, or prior pituitary surgery",
+          "Primary thyroid, adrenal, or gonadal disease independent of the pituitary",
+          "Medication, alcohol, or critical-illness-related hormonal abnormalities including non-thyroidal illness syndrome",
+          "Congenital or genetic hypopituitarism and structural hypothalamic-pituitary malformation"
+        ]
+      },
+      "evidenceGaps": [
+        "Documentation of the traumatic brain injury (date, mechanism, Glasgow Coma Scale score, imaging findings, and whether neurosurgery or intracranial pressure monitoring was required) and of the fracture-free status of the injury; interval neuroendocrine testing rather than acute-phase sampling, with baseline and stimulated results such as morning cortisol, adrenocorticotropic hormone, thyroid-stimulating hormone and free thyroxine, insulin-like growth factor 1 and growth-hormone stimulation where performed, luteinising and follicle-stimulating hormone with testosterone, oestradiol, or menstrual history, and prolactin, with laboratory dates; results of any dynamic testing such as the insulin tolerance, glucagon, or corticotropin-releasing hormone stimulation test; documentation of the onset of symptoms such as fatigue, weakness, weight change, hypotension, hyponatraemia, or cognitive change with chronology relative to the injury; imaging of the hypothalamic-pituitary region where obtained; assessment of competing causes including pre-existing pituitary disease, previous cranial radiotherapy or other brain injury, hypophysitis, medications such as glucocorticoids or opioids, primary thyroid, adrenal, or gonadal disease, and critical illness with non-specific hormone abnormalities; endocrinology assessment of whether the traumatic injury materially contributed to the pituitary deficiency"
+      ],
+      "rationale": "Authored at DIRECT_CAUSATION / PROBABLE: a dedicated review of post-traumatic hypopituitarism states that its prevalence in traumatic brain injury has been significantly underestimated, describes its pathogenesis as heterogeneous, and records negative consequences of unrecognized or untreated disease with no settled screening algorithm, and a second review documents that the hypophyseal vessels are vulnerable to shearing injuries and raised intracranial pressure with pituitary ischaemia or haemorrhage common at autopsy and that the condition affects all grades of injury severity; the alignment is asserted at at-least-as-likely-as-not only where the injury is documented, interval pituitary-axis testing demonstrates a deficiency, chronology is established, and competing causes are excluded, and the edge does not rely on the skull-base-fracture mechanism that falls outside this identity's fracture-free scope.",
+      "sourceReferences": [
+        {
+          "citation": "Kalas M, Miksiewicz M, Kowalke A, Sieminski M. Post-Traumatic Hypopituitarism: A Neglected Consequence of Traumatic Brain Injury. Neuroendocrinology. 2023;113(6):579-588. doi:10.1159/000529327. PMID 36693336.",
+          "note": "Dedicated review of post-traumatic hypopituitarism stating that its prevalence has been significantly underestimated over the past twenty years, that its pathogenesis is heterogeneous, that unrecognized and untreated disease has negative socioeconomic and quality-of-life consequences, and that no clear follow-up or screening algorithm has been established - the condition-definition and neglect anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36693336/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-24",
+          "sourceLocator": "PMID 36693336; post-traumatic hypopituitarism prevalence significantly underestimated, heterogeneous pathogenesis, no settled screening follow-up"
+        },
+        {
+          "citation": "Zaben M, El Ghoul W, Belli A. Post-traumatic head injury pituitary dysfunction. Disabil Rehabil. 2013 Mar;35(6):522-525. doi:10.3109/09638288.2012.697252. PMID 22779906.",
+          "note": "Review recording that the hypophyseal vessels are anatomically vulnerable to shearing injuries, raised intracranial pressure, and anterior skull-base fractures with pituitary ischaemia or haemorrhage common at autopsy, that post-traumatic hypopituitarism can affect all grades of injury severity and is difficult to diagnose because features overlap post-concussive symptoms, and that no screening consensus exists - the mechanism and severity-breadth anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/22779906/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-24",
+          "sourceLocator": "PMID 22779906; hypophyseal vascular vulnerability to shearing and raised intracranial pressure, pituitary ischaemia/haemorrhage at autopsy, post-traumatic hypopituitarism affecting all injury grades"
+        }
+      ]
+    }
+  ]
 }

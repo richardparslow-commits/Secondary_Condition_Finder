@@ -2,7 +2,77 @@
   "id": "fungal-skin-infection",
   "draft": true,
   "todo": [
-    "Rebuild secondary-condition suggestions with condition-specific clinical evidence before publication."
+    "D1 draft-authoring batch 36 (2026-09-23): ASSOCIATION_ONLY draft pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: the mapping asserts only the documented foot-fungal-infection-to-cellulitis risk association from case-control and cohort evidence; individual claims require documented tinea pedis or foot dermatophytosis with documented lower-limb cellulitis, chronology, and exclusion of independent portals of entry (venous insufficiency, edema, prior ulceration, dermatitis, excoriation) and of other cellulitis etiologies - no causal claim of fungal infection producing cellulitis in an individual is forced."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 36 (2026-09-23): one bounded cellulitis association authored from the fungal-foot-infection risk-factor literature - the Björnsdóttir 2005 prospective case-control study of 100 cellulitis cases and 200 matched controls places particular emphasis on dermatophytic infections of the foot and bacterial infection and colonization of the toe webs as predisposing factors, the Bristow 2009 structured review of 16 studies (eight case-control) evaluates fungal foot infection (tinea pedis and toenail onychomycosis) as a risk factor for lower-limb cellulitis particularly in diabetes, and the Solomon 2021 cohort study of 200 toe-web infection patients documents that the infection is in most cases secondary to chronic fungal infection (dermatophytosis) with interdigital tinea among the predisposing factors; the maceration-and-barrier-break portal-of-entry pathway is accepted clinical teaching but individual attribution remains association-level.",
+    "Negative screens recorded 2026-09-23: (i) no randomized or treated-cohort evidence quantifies cellulitis incidence reduction after antifungal eradication - the Bristow review itself records that only two of the case-control studies employed microbiological confirmation of tinea, so the eradication-response pattern available to the DIRECT_CAUSATION precedents is absent here; (ii) osteomyelitis and abscess outcomes returned no fungal-identity cohort (the cellulitis target's own outgoing osteomyelitis edge is out of scope for this identity); (iii) no necrotizing-infection or amputation outcome is documented for tinea pedis itself. Duplicate-scope note: the cellulitis target carries five incoming edges (abscesses, agranulocytosis, contact-dermatitis, bullosis-diabeticorum, dermatitis), all on barrier-break or immune-compromise mechanisms; contact-dermatitis and dermatitis carry the inflammatory-barrier pathways while this edge adds the fungal-maceration portal with an independent dermatology and diabetic-medicine evidence base."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "cellulitis",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The Björnsdóttir 2005 prospective case-control study of 100 lower-limb cellulitis cases and 200 matched controls documents dermatophytic foot infection and toe-web bacterial colonization among the predisposing factors with particular study emphasis, the Bristow 2009 structured review of 16 studies evaluates fungal foot infection as a cellulitis risk factor (only two case-control studies with microbiological confirmation), and the Solomon 2021 cohort of 200 toe-web infection patients documents that most such infections are secondary to chronic dermatophytosis with interdigital tinea as a predisposing factor; the literature documents a reproducible risk association without establishing that a fungal skin infection caused an individual's cellulitis.",
+        "causationStatus": "The mapping does not assert that fungal skin infection caused an individual's cellulitis: the evidence is case-control and cohort risk-factor data without an eradication-response trial, venous insufficiency, lymphedema, edema, obesity, diabetes, prior cellulitis, and skin-break portals (dermatitis, excoriation, ulceration) independently produce lower-limb cellulitis and commonly coexist with foot tinea, and the documented fungal infection may be a marker of the shared humid-macerated skin environment rather than the operative cause; individual claims require documented tinea pedis or foot dermatophytosis, documented lower-limb cellulitis with chronology placing the fungal infection first, and exclusion of the independent portals and risk factors per case."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "INFECTIOUS_SPREAD",
+        "primaryVector": "A hypothesized barrier-break portal-of-entry pathway: chronic dermatophyte infection of the interdigital spaces and plantar skin produces maceration, scaling, and fissuring that breach the stratum corneum barrier of the foot; the fissured skin is colonized by bacteria (the toe-web infection literature documents secondary gram-negative infection of chronic fungal maceration), and the breached portal permits streptococcal or staphylococcal entry into the dermis and lymphatics of the lower leg, where the inoculum provokes the spreading dermal-lymphatic inflammation that defines cellulitis - the same portal-of-entry logic the contact-dermatitis and dermatitis cellulitis edges carry, while the pathway remains a hypothesis about an individual's course because no eradication-response trial quantifies cellulitis prevention.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The edge asserts an association only: the evidence is one prospective case-control study with emphasis on dermatophyte status, a structured review whose included studies mostly diagnosed tinea clinically rather than microbiologically, and a toe-web infection cohort describing the fungal-to-bacterial sequence; no trial or treated cohort quantifies cellulitis incidence after fungal eradication, shared drivers (venous disease, edema, diabetes, obesity) are incompletely controlled across the set, and individual attribution requires excluding the independent portals of entry; no probability estimate is asserted.",
+        "evidenceGaps": "Documented tinea pedis or foot dermatophytosis (clinical examination, KOH or culture confirmation) predating documented lower-limb cellulitis; cellulitis laterality documentation relative to the fungal infection; assessment and exclusion of venous insufficiency, lymphedema, edema, obesity, diabetes, prior ulceration, dermatitis, and excoriation as independent portals; microbiological confirmation where feasible given cellulitis misdiagnosis rates documented in the referral literature; infectious-disease or dermatology assessment of the individual relationship",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Chronic venous insufficiency or varicose veins with skin breakdown",
+          "Lymphedema or dependent edema",
+          "Dermatitis, excoriation, or ulceration as an independent portal of entry",
+          "Diabetes with neuropathic skin injury",
+          "Prior cellulitis with residual lymphatic damage"
+        ]
+      },
+      "evidenceGaps": [
+        "Documented tinea pedis or foot dermatophytosis (clinical examination, KOH or culture confirmation) predating documented lower-limb cellulitis; cellulitis laterality documentation relative to the fungal infection; assessment and exclusion of venous insufficiency, lymphedema, edema, obesity, diabetes, prior ulceration, dermatitis, and excoriation as independent portals; microbiological confirmation where feasible given cellulitis misdiagnosis rates documented in the referral literature; infectious-disease or dermatology assessment of the individual relationship"
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY consistent with the cellulitis target's other barrier-break edges: case-control and cohort evidence documents fungal foot infection as a reproducible predisposing factor while absent eradication-response data, shared vascular drivers, and common coexisting portals defeat individual causal attribution, so the mapping asserts the association with chronology and alternative-portal requirements.",
+      "sourceReferences": [
+        {
+          "citation": "Björnsdóttir S, Gottfredsson M, Thórisdóttir AS, et al. Risk factors for acute cellulitis of the lower limb: a prospective case-control study. Clin Infect Dis. 2005;41(10):1416-1422. PMID 16231251.",
+          "note": "Prospective case-control study of 100 cellulitis cases and 200 matched controls placing particular emphasis on dermatophytic infections of the foot and bacterial infection and colonization of the toe webs - the risk-factor anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/16231251/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 16231251; dermatophytic foot infection emphasized among cellulitis risk factors"
+        },
+        {
+          "citation": "Bristow IR, Spruce MC. Fungal foot infection, cellulitis and diabetes: a review. Diabet Med. 2009;26(5):548-551. PMID 19646196.",
+          "note": "Structured review of 16 studies (eight case-control) evaluating tinea pedis and onychomycosis as cellulitis risk factors, recording that only two case-control studies used microbiological diagnosis - the evidence-quality and diabetes-scope anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/19646196/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 19646196; 16-study review of fungal foot infection as cellulitis risk factor"
+        },
+        {
+          "citation": "Solomon M, Greenbaum H, Shemer A, et al. Toe Web Infection: Epidemiology and Risk Factors in a Large Cohort Study. Dermatology. 2021;237(6):902-906. PMID 33105147.",
+          "note": "Cohort study of 200 toe-web infection patients documenting that in most cases the infection is secondary to chronic fungal infection (dermatophytosis) with interdigital tinea among the predisposing factors - the fungal-to-bacterial sequence anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33105147/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 33105147; toe-web infection secondary to chronic dermatophytosis"
+        }
+      ]
+    }
+  ]
 }

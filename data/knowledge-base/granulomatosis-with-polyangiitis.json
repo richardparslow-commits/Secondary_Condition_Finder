@@ -2,8 +2,141 @@
   "id": "granulomatosis-with-polyangiitis",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review airway, aspiration, inflammatory, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 40 (2026-09-23): two draft mappings (one DIRECT_CAUSATION, one ASSOCIATION_ONLY) pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: the chronic-kidney-disease mapping asserts the ANCA pauci-immune crescentic-destruction-to-chronic-kidney-disease chain at PROBABLE strength with hypothesizedOnly:false on the Goodpasture anti-GBM DIRECT precedent (batch 39) - individual claims require PR3-ANCA (or MPO-ANCA) confirmation with renal biopsy documenting pauci-immune necrotizing/crescentic glomerulonephritis, subsequent staged chronic kidney disease or renal-replacement dependence with documented chronology, and exclusion of anti-GBM, lupus, IgA, membranous, and diabetic and other secondary glomerulonephropathies per case; the hearing-loss mapping asserts association only (etiologicalConsensus NOT_ESTABLISHED, hypothesizedOnly:true) with the effusion-mediated conductive component scoped out because the otitis-media identity already carries its own hearing-loss edge - individual claims require audiometry-documented hearing loss with ANCA-confirmed GPA, chronology, and exclusion of presbycusis, noise, ototoxic, and infectious otitis-media-mediated causes per case."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 40 (2026-09-23): two bounded edges authored. Kidney edge: the Shen 2011 OPTN/UNOS analysis of 919 transplant recipients documents Wegener granulomatosis as the leading cause of rapidly-progressive-glomerulonephritis-induced end-stage renal disease, the James 2017 childhood-onset GPA cohort documents 37% of children at chronic kidney disease stage >2 at median 3.3-year follow-up with renal failure accounting for most readmissions despite 85% remission achievement, and the Sattui 2024 retrospective cohort of older adults with incident ANCA-associated vasculitis documents end-stage renal disease or death incidence concentrated in the first two years after diagnosis - PR3-ANCA-activated neutrophils injure glomerular capillary walls producing pauci-immune crescentic necrotizing glomerulonephritis that destroys nephrons until filtration falls into staged chronic kidney disease or permanent renal-replacement dependence, matching the immune-destruction family (IMMUNE_MEDIATED, PROBABLE, hypothesizedOnly:false). WELL_ESTABLISHED is withheld because a treatment-responsive majority achieves remission (85% in the pediatric cohort) with only a subset progressing to chronic kidney disease, flares recur in about one third, presentation timing confounds individual attribution, and alternative glomerulonephropathies are excluded per case. Hearing edge: the Tabei 2022 retrospective study of 30 patients with otitis media with ANCA-associated vasculitis documents that all audiometry-evaluated patients had hearing impairment (85% bilateral; mixed type in 80% of impaired ears) with median air-conduction levels improving from 66.1 to 43.4 dB after immunosuppression and hypertrophic pachymeningitis or treatment delay predicting poor hearing outcome, the Yoshida 2014 review of otitis media with ANCA-associated vasculitis documents rapidly progressive hearing loss as a localized-disease presentation with PR3-ANCA causing granulomatous middle-ear formation, peripheral facial palsy in 25% and hypertrophic pachymeningitis in 18% of cases, and the Busch 2022 case documents GPA presenting as complete mixed sensorineural-conductive hearing loss presumed secondary to chronic otitis media - an immune-mediated cochlear, labyrinthine, and pachymeningeal injury profile without any GPA-versus-control hearing-incidence cohort, so the edge rests at NOT_ESTABLISHED.",
+    "Negative screens recorded 2026-09-23: (i) no otitis-media edge authored by this identity - the otitis-media identity already carries its own hearing-loss edge (batch state: one ASSOCIATION_ONLY incoming-target suggestion), so a GPA-to-otitis-media arrow combined with this hearing-loss edge would double-count the effusion-mediated conductive route through the mediated chain (duplicate-mediated guard; the scoped mechanism below routes only the vasculitic and pachymeningeal components); (ii) no pulmonary-fibrosis edge - GPA pulmonary involvement is documented as nodules, cavities, and airway stenosis, and no quantified GPA-attributable pulmonary-fibrosis outcome cohort was located in this window while the pulmonary-fibrosis target's incoming evidence is dominated by interstitial and connective-tissue-disease pathways (zero-record guard); (iii) no eye, skin, or peripheral-neuropathy edge - manifestations lack condition-specific quantified forward-outcome cohorts in this window and the peripheral-neuropathy generic identity is scoped out per the GBS do-not-merge catalog note (zero-record and wrong-identity guards); (iv) duplicate-scope note: microscopic-polyangiitis and systemic-vasculitis remain zero-edge backlog identities with their own windows, and goodpasture-syndrome (batch 39) owns the anti-GBM chain to the same chronic-kidney-disease target with distinct serology and biopsy evidence - no parallel-pathway duplication exists (14 incoming edges now reach chronic-kidney-disease, this adds the ANCA crescentic pathway); (v) no depression or fatigue edge - downstream psychological and constitutional outcomes lack GSPA-specific quantification beyond general AAV burden studies in this window (zero-record guard). Reopening condition for upgrade on the kidney edge: an untreated-natural-history cohort stratified by Birmingham Vasculitis Activity Score and eGFR trajectory would move toward WELL_ESTABLISHED but is ethically unavailable given treatment standards. Reopening condition for hearing upgrade: a GPA-versus-matched-control audiometric incidence cohort."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "chronic-kidney-disease",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "DIRECT_CAUSATION",
+        "etiologicalTrigger": "ANCA-confirmed (PR3-ANCA or MPO-ANCA) granulomatosis with polyangiitis with renal biopsy documenting pauci-immune necrotizing crescentic glomerulonephritis - neutrophil recruitment to glomerular capillary walls drives crescents that obliterate glomeruli, so nephron mass is destroyed until filtration capacity falls into staged chronic kidney disease or permanent renal-replacement dependence.",
+        "mechanismSummary": "An ANCA-triggered neutrophil destruction cascade: PR3-ANCA (classically in Wegener-type disease) binds neutrophil surfaces and activates them to adhere to and lyse glomerular endothelium, producing necrotizing pauci-immune crescents in Bowman's space that compress and sclerose the tuft while granulomatous interstitial inflammation adds tubulointerstitial injury; nephron loss is initially catastrophic (rapidly progressive glomerulonephritis, frequently dialysis-requiring at presentation, with the transplant-registry literature identifying Wegener granulomatosis as the leading cause of RPGN-induced end-stage renal disease) and, where recovery occurs under immunosuppression it is partial - residual sclerosis and fibrosis consolidate into chronic kidney disease (37% of a childhood cohort past stage 2 at median 3.3 years), and renal flares in about one third re-destroy recovered nephrons."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "IMMUNE_MEDIATED",
+        "primaryVector": "A pauci-immune vasculitic destruction vector: PR3-ANCA-activated neutrophils adhere to glomerular capillary endothelium, release oxidants and proteases that necrose capillary loops, and drive cellular crescent formation with scant immune-complex deposition; sclerotic conversion of crescents plus tubulointerstitial fibrosis permanently reduces nephron number so filtration rate settles below the chronic-kidney-disease threshold (or fails to recover from dialysis dependence) - documented at cohort and registry level with RPGN-induced ESRD attribution and one-third pediatric stage-2-plus progression, matching the immune-destruction-to-organ-failure family while remission-majority treatment response keeps the consensus at PROBABLE.",
+        "hypothesizedOnly": false
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "PROBABLE",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The chain is supported by disease-specific ANCA serology with biopsy-proven pauci-immune crescentic glomerulonephritis, transplant-registry attribution of RPGN-induced end-stage renal disease to Wegener granulomatosis as the leading cause, pediatric cohort progression to chronic kidney disease stage >2 in 37% at median 3.3 years with renal failure driving readmissions, and mechanistic identity with the immune-destruction family including the batch-39 Goodpasture anti-GBM precedent, which justifies PROBABLE direct causation; WELL_ESTABLISHED is withheld because a treatment-responsive majority achieves remission (85% in the pediatric cohort) with only a subset progressing to chronic kidney disease, flares recur in about one third and restate risk dynamically, presentation timing confounds individual attribution, and alternative glomerulonephropathies (anti-GBM, lupus, IgA, membranous, diabetic) are excluded per case; no probability estimate is asserted.",
+        "evidenceGaps": "PR3-ANCA or MPO-ANCA serology confirmation with renal biopsy documenting pauci-immune necrotizing crescentic glomerulonephritis (crescent burden quantified) documented; serial eGFR, creatinine, and proteinuria records documenting the transition to staged chronic kidney disease (or continued renal-replacement dependence) with chronology after GPA onset; flare and remission timeline with treatment courses (rituximab, cyclophosphamide, corticosteroids, plasma exchange) documented; exclusion of anti-GBM disease, lupus nephritis, IgA nephropathy, membranous nephropathy, diabetic kidney disease, and other secondary or double-positive ANCA/anti-GBM glomerulonephropathies; nephrology assessment of the individual relationship",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Anti-GBM (Goodpasture) disease or double-positive anti-GBM/ANCA disease",
+          "Lupus nephritis or IgA nephropathy",
+          "Diabetic kidney disease or hypertensive nephrosclerosis",
+          "Drug-induced or infection-associated glomerulonephritis",
+          "Age-related or obstructive renal decline independent of vasculitis"
+        ]
+      },
+      "evidenceGaps": [
+        "PR3-ANCA or MPO-ANCA serology confirmation with renal biopsy documenting pauci-immune necrotizing crescentic glomerulonephritis (crescent burden quantified) documented; serial eGFR, creatinine, and proteinuria records documenting the transition to staged chronic kidney disease (or continued renal-replacement dependence) with chronology after GPA onset; flare and remission timeline with treatment courses (rituximab, cyclophosphamide, corticosteroids, plasma exchange) documented; exclusion of anti-GBM disease, lupus nephritis, IgA nephropathy, membranous nephropathy, diabetic kidney disease, and other secondary or double-positive ANCA/anti-GBM glomerulonephropathies; nephrology assessment of the individual relationship"
+      ],
+      "rationale": "Authored at DIRECT_CAUSATION, PROBABLE, hypothesizedOnly:false following the Goodpasture anti-GBM chronic-kidney-disease precedent (batch 39) and the immune-destruction family: ANCA-confirmed biopsy-proven crescentic destruction with transplant-registry attribution of RPGN-induced ESRD and pediatric cohort progression supports the direct cascade while remission-majority treatment response, flare dynamics, presentation-timing confounding, and alternative glomerulonephropathies keep the consensus at PROBABLE with per-case exclusion; no probability estimate is asserted.",
+      "sourceReferences": [
+        {
+          "citation": "Shen J, Gill J, Shangguan M, Sampaio MS, Bunnapradist S. Outcomes of renal transplantation in recipients with Wegener's granulomatosis. Clin Transplant. 2011 May-Jun;25(3):380-7. PMID 20394635.",
+          "note": "OPTN/UNOS analysis of 919 transplant recipients with end-stage renal disease caused by Wegener granulomatosis documenting it as the leading cause of rapidly-progressive-glomerulonephritis-induced end-stage renal disease - the registry-level renal-destruction attribution anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/20394635/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 20394635; 919 WG transplant recipients, leading cause of RPGN-induced ESRD"
+        },
+        {
+          "citation": "James KE, Xiao R, Merkel PA, Weiss PF. Clinical course and outcomes of childhood-onset granulomatosis with polyangiitis. Clin Exp Rheumatol. 2017 Mar-Apr;35 Suppl 103(1):202-208. PMID 27749233.",
+          "note": "Retrospective cohort of 28 children with GPA documenting 37% at chronic kidney disease stage greater than 2 at median 3.3-year follow-up, renal failure accounting for most readmissions, and dialysis required at presentation in 14% despite 85% remission achievement with 11 subsequent flares - the progression, flare, and remission-stratification anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/27749233/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 27749233; 28 children, 37% CKD >stage 2, renal failure readmissions, 85% remission"
+        },
+        {
+          "citation": "Sattui SE, Jiang B, Fu X, et al. The effects of age and frailty on the risks of end-stage renal disease, death, and severe infection in older adults with antineutrophil cytoplasmic antibody-associated vasculitis: a retrospective cohort study. Lancet Rheumatol. 2024 Nov;6(11):e771-e779. PMID 39305914.",
+          "note": "Retrospective cohort of 234 older adults with incident ANCA-associated vasculitis documenting end-stage renal disease or death concentrated within two years of diagnosis with incidence rates stratified by age and frailty - the contemporary adult renal-outcome and chronology anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39305914/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 39305914; 234 patients, ESRD or death within 2 years of diagnosis"
+        }
+      ]
+    },
+    {
+      "conditionId": "hearing-loss",
+      "rank": 2,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The Tabei 2022 retrospective study of 30 patients with otitis media with ANCA-associated vasculitis documents that every audiometry-evaluated patient had hearing impairment (85% bilateral; mixed type in 80% and sensorineural in 20% of impaired ears) with median air-conduction levels improving from 66.1 to 43.4 dB under immunosuppressive therapy and with hypertrophic pachymeningitis or a long onset-to-treatment interval significantly predicting poor hearing prognosis, the Yoshida 2014 review documents otitis media with ANCA-associated vasculitis as a recognized otologic presentation with rapidly progressive hearing loss (PR3-ANCA causing granulomatous middle-ear formation; peripheral facial palsy in 25% and hypertrophic pachymeningitis in 18% of cases), and the Busch 2022 case documents GPA presenting as complete mixed sensorineural-conductive hearing loss in a 29-year-old; the literature documents reproducible severe bilateral hearing impairment accompanying GPA-spectrum disease without establishing incident hearing loss attributable to GPA in any individual against matched non-GPA controls.",
+        "causationStatus": "The mapping does not assert that GPA caused a distinct hearing-loss disorder in any individual: the effusion-mediated conductive component overlaps the middle-ear pathway the otitis-media identity already routes to hearing-loss (shared-component guard - only the vasculitic cochlear, labyrinthine, and pachymeningeal components are claimed here), presbycusis, noise exposure, ototoxic drugs, and infectious otitis media independently produce hearing loss in the same populations, and audiometric recovery after immunosuppression documents a reversible inflammatory component rather than fixed downstream injury in every case; individual claims require ANCA-confirmed GPA with audiometry-documented hearing loss, chronology after disease onset, and exclusion of the mimickers with the site-appropriate workup documented."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "IMMUNE_MEDIATED",
+        "primaryVector": "An immune-mediated otologic injury pathway: ANCA-activated neutrophil vasculitis of the middle-ear, cochlear, and labyrinthine microvasculature plus granulomatous mucosal disease and hypertrophic pachymeningeal thickening around the eighth cranial nerve produce mixed conductive and sensorineural injury - stria vascularis and hair-cell ischemia, middle-ear effusion or granulomatous formation, and compressive neuropathy of the vestibulocochlear nerve - generating the documented bilateral rapidly progressive hearing loss that partially reverses when immunosuppression halts the inflammation; the association rests on cohort audiometry without incidence comparison, so individual attribution remains an association hypothesis.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The edge asserts an association only: the located condition-specific evidence is a 30-patient retrospective otologic series, a narrative review, and a single case rather than any GPA-versus-matched-control audiometric incidence cohort, the effusion-mediated conductive component overlaps the otitis-media identity's existing hearing-loss edge (shared-component guard), hearing-loss etiologies (presbycusis, noise, ototoxicity, infection) are common in the same populations, audiometric reversibility under therapy documents a treatment-responsive inflammatory component rather than fixed causation, and sensory-deficit target precedents rest at NOT_ESTABLISHED; no probability estimate is asserted.",
+        "evidenceGaps": "ANCA (PR3 or MPO) serology confirmation of GPA with dated diagnosis; audiometry documenting the hearing-loss type (conductive, sensorineural, or mixed), severity, and bilaterality with chronology after GPA onset; ENT examination and tympanometry or imaging (and MRI for hypertrophic pachymeningeal or eighth-nerve involvement) documenting the route of injury; exclusion of presbycusis, noise exposure, ototoxic medication (aminoglycosides, cisplatin), MEN2A or other hereditary hearing-loss genotypes, and infectious or chronic suppurative otitis media as the sole cause; otolaryngology and audiology assessment of the individual relationship",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Presbycusis or noise-induced sensorineural hearing loss",
+          "Ototoxic medication exposure (aminoglycosides, cisplatin, loop diuretics)",
+          "Chronic suppurative or infectious otitis media without vasculitis",
+          "Hereditary or congenital hearing loss (including NF2 or MEN2A schwannoma)",
+          "Sudden sensorineural hearing loss of viral or idiopathic origin"
+        ]
+      },
+      "evidenceGaps": [
+        "ANCA (PR3 or MPO) serology confirmation of GPA with dated diagnosis; audiometry documenting the hearing-loss type (conductive, sensorineural, or mixed), severity, and bilaterality with chronology after GPA onset; ENT examination and tympanometry or imaging (and MRI for hypertrophic pachymeningeal or eighth-nerve involvement) documenting the route of injury; exclusion of presbycusis, noise exposure, ototoxic medication (aminoglycosides, cisplatin), MEN2A or other hereditary hearing-loss genotypes, and infectious or chronic suppurative otitis media as the sole cause; otolaryngology and audiology assessment of the individual relationship"
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY as an outcome-of-claim edge with the effusion route scoped out to the otitis-media identity's existing hearing-loss pathway: condition-specific cohort and review evidence documents severe bilateral vasculitic hearing impairment in the GPA spectrum with treatment-response reversibility, while the absent incidence cohort, shared middle-ear component, common competing etiologies, and sensory-deficit precedent norms keep the consensus at NOT_ESTABLISHED with audiometry and alternative-etiology requirements.",
+      "sourceReferences": [
+        {
+          "citation": "Tabei A, Sakairi T, Ohishi Y, et al. Otitis media with ANCA-associated vasculitis: A retrospective study of 30 patients. Mod Rheumatol. 2022;32(5):923-929. PMID 34915561.",
+          "note": "Retrospective study of 30 patients documenting universal audiometric hearing impairment (85% bilateral; mixed 80%, sensorineural 20% of impaired ears) with median air conduction improving from 66.1 to 43.4 dB after immunosuppression and hypertrophic pachymeningitis or treatment delay predicting poor hearing outcome - the cohort audiometry anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34915561/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 34915561; 30 patients, all impaired, 85% bilateral, 66.1 to 43.4 dB improvement"
+        },
+        {
+          "citation": "Yoshida N, Iino Y. Pathogenesis and diagnosis of otitis media with ANCA-associated vasculitis. Allergol Int. 2014 Dec;63(4):523-32. PMID 25339433.",
+          "note": "Review of otitis media with ANCA-associated vasculitis documenting rapidly progressive hearing loss as the localized-disease presentation, PR3-ANCA-driven granulomatous middle-ear formation, peripheral facial palsy in 25% and hypertrophic pachymeningitis in 18% of cases, and hearing recovery with early immunosuppression - the mechanism and rapid-progressive-loss anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/25339433/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 25339433; OMAAV review, rapidly progressive hearing loss, facial palsy 25%, HPM 18%"
+        },
+        {
+          "citation": "Busch BH, Wilhelm D, Johnson P, Pfeifer M. Granulomatosis With Polyangiitis Presenting as Complete Hearing Loss. Cureus. 2022 May 3;14(5):e24711. PMID 35663680.",
+          "note": "Case report of a 29-year-old man with mixed sensorineural-conductive hearing loss presumed secondary to chronic otitis media who was subsequently diagnosed with granulomatosis with polyangiitis - the complete-hearing-loss presentation anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35663680/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 35663680; GPA presenting as complete hearing loss, mixed SNHL-conductive"
+        }
+      ]
+    }
+  ]
 }

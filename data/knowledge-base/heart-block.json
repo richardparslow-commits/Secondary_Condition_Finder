@@ -2,8 +2,69 @@
   "id": "heart-block",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review hemodynamic, vascular, thrombotic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 43 (2026-09-24): one ASSOCIATION_ONLY draft mapping pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: the single authored edge asserts association only (etiologicalConsensus NOT_ESTABLISHED, hypothesizedOnly:true) - it records that bradyarrhythmia and conduction delay have been reported with ventricular dysfunction in selected patients, not that atrioventricular block caused cardiomyopathy in any individual; the located evidence is a guideline evaluation framework plus single-patient observations without cohort incidence denominators, and the located 2025 French nationwide cohort of isolated non-immune congenital and childhood atrioventricular block reported that no patient developed dilated cardiomyopathy over median ten-year follow-up (counter-evidence in that population, recorded as a screened denial rather than cited as support); individual claims require documented atrioventricular block (degree, documentation method, date), a separately documented cardiomyopathy phenotype with later chronology, and exclusion of ischemic, hypertensive, valvular, infiltrative, and tachyarrhythmia-related causes.",
+    "Duplicate-scope guard: cardiac-arrhythmia is not a permitted target because atrioventricular block is itself a conduction disorder within that identity (constitutive identity guard); congestive heart failure is not a second target because the located ventricular-dysfunction literature describes pump dysfunction under the cardiomyopathy identity (duplicate-scope guard); device and pacing windows are owned by the published implantable-cardiac-pacemaker identity, and syncope and falls have no catalog identity (treatment-state and wrong-target guards)."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 43 (2026-09-24): one bounded association edge authored - heart-block to cardiomyopathy (rank 1), ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, and hypothesizedOnly:true, mechanismCategory MULTIFACTORIAL. The edge rests on the 2018 ACC/AHA/HRS guideline on the evaluation and management of patients with bradycardia and cardiac conduction delay (PMID 30586772) as the authoritative evaluation and management framework within which bradycardia-attributable symptoms and ventricular dysfunction are determined case by case, and on the Miric 2024 case report (PMID 39286730) documenting a patient with bradycardia-induced heart failure with preserved ejection fraction whose phenotype improved under rate-directed therapy - a single-patient dechallenge-flavored observation. The edge is not raised to causation: the evidence base is a guideline framework plus single-patient observations without cohort incidence denominators, and the located 2025 French nationwide cohort of isolated non-immune congenital and childhood atrioventricular block (Mycinski, Europace, PMID 40067976) reported that no patient developed endomyocardial fibrosis or dilated cardiomyopathy over median ten-year follow-up despite 74.3% pacemaker implantation - counter-evidence in that population, screened and excluded as a source for this edge and recorded here as a denial rather than used as support.",
+    "Negative screens recorded 2026-09-24: (i) no syncope or falls edge - Stokes-Adams events are the classic complete atrioventricular block presentation, but no syncope or falls identity exists in the catalog (wrong-target guard); (ii) no cardiac-arrhythmia edge - atrioventricular block is itself a bradyarrhythmic conduction disorder within that identity, so the edge would assert an identity-is-member-of-target-class relationship (constitutive identity guard); (iii) no congestive-heart-failure edge - the located ventricular-dysfunction literature describes the pump-dysfunction entity under the cardiomyopathy identity, and a second edge to congestive heart failure would re-assert the same hemodynamic window under a downstream label (duplicate-scope guard); (iv) no sleep-apnea edge - the located literature runs from obstructive sleep apnea and sleep-disordered breathing to nocturnal bradyarrhythmia, atrioventricular block, and pacemaker implantation (prevalence of bradycardia in obstructive sleep apnea meta-analysis; sleep-disordered breathing as a risk factor for unnecessary pacemaker implantation), which is the reverse of a heart-block-primary assertion (direction-inversion guard); (v) no implantable-cardiac-pacemaker edge - device and pacing windows belong to the published pacemaker identity and pacing introduces a separate treatment-state exposure (treatment-state guard); (vi) no depressive-disorder edge - no condition-specific directional evidence for heart-block-primary mood outcomes was located, and cross-sectional prevalence in device populations is confounded by the device and by age (zero-record and population guards); (vii) duplicate-scope note: cardiomyopathy currently receives three registry edges (cardiac-arrhythmia, breast-cancer, esophageal-cancer, all ASSOCIATION_ONLY); this adds the first conduction-disease-primary window."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "cardiomyopathy",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The 2018 ACC/AHA/HRS guideline on bradycardia and cardiac conduction delay provides the authoritative evaluation and management framework for bradycardia, within which bradycardia-attributable symptom and ventricular-dysfunction determinations are made case by case, and the Miric 2024 case report documents a patient with bradycardia-induced heart failure with preserved ejection fraction whose phenotype improved under rate-directed therapy - a single-patient dechallenge-flavored observation that supports an association, not incidence data.",
+        "causationStatus": "Neither causation nor aggravation is established: the located ventricular-dysfunction evidence is a guideline framework plus single-patient case observations without cohort incidence denominators, and a 2025 French nationwide cohort of isolated non-immune congenital and childhood atrioventricular block reported that no patient developed dilated cardiomyopathy over median ten-year follow-up (counter-evidence in that population); individual claims require documented atrioventricular block (degree, documentation method, date), a separately documented cardiomyopathy phenotype with later chronology, and exclusion of ischemic, hypertensive, valvular, infiltrative, and tachyarrhythmia-related causes."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MULTIFACTORIAL",
+        "primaryVector": "A hypothesized hemodynamic route is described: sustained bradycardia and loss of atrioventricular synchrony reduce cardiac output and create chronic rate- and loading-related ventricular stress, which in selected patients has been reported to produce reversible ventricular dysfunction that improves after rate correction - documented in single-patient observations - while the absence of cohort incidence data and the population-specific counter-evidence leave the individual causal pathway hypothesized.",
+        "secondaryVector": "Compensatory neurohormonal activation and, where a permanent pacemaker is later required, device-related ventricular dyssynchrony are additional exposures that can contribute to ventricular dysfunction and must be separated from the underlying conduction disease (treatment-state guard).",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The edge asserts an association only: the located evidence is a guideline evaluation framework plus single-patient observations of reversible bradycardia-related ventricular dysfunction, no cohort quantifies incident cardiomyopathy attributable to atrioventricular block, and the located nationwide cohort of isolated congenital and childhood atrioventricular block reported no incident dilated cardiomyopathy over ten-year follow-up, so no at-least-as-likely-as-not probability is asserted.",
+        "evidenceGaps": "Documentation of the atrioventricular block (degree, documentation method, date of onset); a separately documented cardiomyopathy phenotype by echocardiography or equivalent with onset chronology after the conduction abnormality; assessment of ischemic, hypertensive, valvular, infiltrative, and tachyarrhythmia-related causes; characterization of pacing history and device-related dyssynchrony where a pacemaker is present; cardiology assessment of whether the conduction abnormality materially contributed to the ventricular dysfunction; documentation of response to rate-directed therapy where available",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Ischemic cardiomyopathy or prior myocardial infarction",
+          "Hypertensive or valvular heart disease",
+          "Tachyarrhythmia-related (tachycardia-mediated) cardiomyopathy",
+          "Infiltrative or inflammatory cardiomyopathy",
+          "Device-related (pacing-induced) ventricular dyssynchrony in pacemaker patients"
+        ]
+      },
+      "evidenceGaps": [
+        "Documentation of the atrioventricular block (degree, documentation method, date of onset); a separately documented cardiomyopathy phenotype by echocardiography or equivalent with onset chronology after the conduction abnormality; assessment of ischemic, hypertensive, valvular, infiltrative, and tachyarrhythmia-related causes; characterization of pacing history and device-related dyssynchrony where a pacemaker is present; cardiology assessment of whether the conduction abnormality materially contributed to the ventricular dysfunction; documentation of response to rate-directed therapy where available"
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY: the located evidence is the guideline evaluation framework plus single-patient observations of reversible bradycardia-related ventricular dysfunction, with no cohort incidence data and a nationwide cohort of isolated congenital and childhood atrioventricular block reporting no incident dilated cardiomyopathy, so the consensus remains NOT_ESTABLISHED with documentation, chronology, and competing-cause requirements; no probability estimate is asserted.",
+      "sourceReferences": [
+        {
+          "citation": "Kusumoto FM, Schoenfeld MH, Barrett C, et al. 2018 ACC/AHA/HRS Guideline on the Evaluation and Management of Patients With Bradycardia and Cardiac Conduction Delay: A Report of the American College of Cardiology/American Heart Association Task Force on Clinical Practice Guidelines and the Heart Rhythm Society. Circulation. 2019 Aug 20;140(8):e382-e482. doi:10.1161/CIR.0000000000000628. PMID 30586772.",
+          "note": "Authoritative guideline framework for the evaluation and management of bradycardia and cardiac conduction delay, within which bradycardia-attributable symptom and ventricular-dysfunction determinations are framed as case-specific clinical assessments - the evaluation-framework anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/30586772/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-24",
+          "sourceLocator": "PMID 30586772; bradycardia and cardiac conduction delay guideline, case-specific attribution framework"
+        },
+        {
+          "citation": "Miric D, Juric Paic M, Borovac JA. Bradycardia-induced heart failure with preserved ejection fraction successfully treated with empagliflozin and theophylline: a case report. Eur Heart J Case Rep. 2024 Sep 5;8(9):ytae481. doi:10.1093/ehjcr/ytae481. PMID 39286730.",
+          "note": "Single-patient case report of bradycardia-induced heart failure with preserved ejection fraction improving under rate-directed therapy - a dechallenge-flavored observation supporting a reversible bradycardia-related ventricular-dysfunction association, not incidence data.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39286730/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-24",
+          "sourceLocator": "PMID 39286730; single-patient reversible bradycardia-induced heart failure with preserved ejection fraction"
+        }
+      ]
+    }
+  ]
 }

@@ -2,8 +2,122 @@
   "id": "hepatic-steatosis",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review gastrointestinal, nutritional, motility, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 44 (2026-09-24): one DIRECT_CAUSATION and one ASSOCIATION_ONLY draft mapping pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: the fibrosis-progression edge to cirrhosis is classified DIRECT_CAUSATION with etiologicalConsensus PROBABLE and hypothesizedOnly:false because steatotic liver disease is the prototype metabolic fibrosing liver injury and its progression to cirrhosis is documented at meta-analytic level; the malignancy edge to liver cancer is classified ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED and hypothesizedOnly:true because the located evidence is relative-risk and risk-factor quantification in steatotic-liver-disease populations in which fibrosis stage, diabetes, and other confounders are the dominant drivers, not an individual causal demonstration. Individual claims require condition-specific documentation, chronology, and competing-cause review in both cases.",
+    "Duplicate-scope guard: the chronic-liver-disease umbrella identity already carries a DIRECT_CAUSATION edge to cirrhosis-of-the-liver, but that identity's own pathway notes state that chronic liver disease is an etiologically heterogeneous umbrella that must not be treated as one disease mechanism and expressly require the specific underlying etiology to be documented rather than relying on the umbrella label; this batch authors the steatosis-specific metabolic window on its own primary, and liver cancer currently receives no registry edges (zero-record pre-check), so the steatotic-liver-disease-to-malignancy window is opened here rather than inferred from the umbrella."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 44 (2026-09-24): two bounded edges authored on this primary. The cirrhosis edge is DIRECT_CAUSATION with etiologicalConsensus PROBABLE, vaNexusProbabilityAlignment AT_LEAST_AS_LIKELY_AS_NOT, and hypothesizedOnly:false, resting on the Barritt 2026 systematic literature review and meta-analysis of the prognostic value of liver histology in steatotic liver disease, which pools 32 studies and shows that increasing histologic fibrosis stage is associated with increasing risk of major adverse liver outcomes including cirrhosis, decompensation, and hepatocellular carcinoma, corroborated by the Wang 2026 systematic review and meta-analysis of non-invasive tests for the prediction of liver-related events in MASLD; together these document the natural-history pathway of metabolic fibrosing liver injury progressing to cirrhosis. The liver-cancer edge is ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true, and mechanismCategory MALIGNANT_TRANSFORMATION, resting on the Yin 2024 systematic review and meta-analysis of hepatocellular carcinoma risk factors in nonalcoholic fatty liver disease (12 cohort studies, 738,934 patients, 1,480 hepatocellular carcinoma cases; within-NAFLD hazard ratios for advanced age 1.81, male sex 2.51, hypertension 1.87, and diabetes 2.27) and the Wallace 2026 systematic review and meta-analysis comparing liver-cancer risk from major causes including steatotic liver disease against smoking and lung cancer; the malignancy edge is not raised to causation because the located literature quantifies relative risk and within-population risk factors, hepatocellular carcinoma in steatotic liver disease is strongly conditioned by coexisting fibrosis/cirrhosis stage and diabetes, and no matched-cohort natural-history demonstration of steatosis-attributable carcinogenesis was located.",
+    "Negative screens recorded 2026-09-24: (i) no chronic-liver-disease edge - the umbrella identity is a broad container that authors its own metabolic fibrosis window and is not a distinct downstream condition of steatosis (duplicate-scope and direction guards); (ii) no duplicate cirrhosis edge - the steatosis-specific metabolic pathway is distinct from the umbrella's generic fibrosis pathway, and the cirrhosis target already receives that single umbrella edge, so this batch adds only the etiology-specific window (no same-primary duplicate); (iii) no diabetes or obesity edge - no diabetes-mellitus or obesity identity exists in the catalog and the metabolic substrates are shared drivers rather than secondary conditions of steatosis (wrong-target and shared-driver guards); (iv) no cardiovascular-disease or chronic-kidney-disease edge - no condition-specific directional cohort in a steatosis-primary design was located, and both identities own their own incoming windows (zero-record guard); (v) no esophageal-varices, portal-hypertension, or gastrointestinal-hemorrhage edge - those identities are absent from the catalog (wrong-target guard) and their reappearance would require a separate authoring decision; (vi) no live-cancer directions beyond the malignancy edge - no metastatic, cholangiocarcinoma, or other malignancy window was located for this primary (zero-record guard)."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "cirrhosis-of-the-liver",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "DIRECT_CAUSATION",
+        "etiologicalTrigger": "Documented steatotic liver disease (metabolic dysfunction-associated steatotic liver disease or steatohepatitis) with progressive or advanced histologic fibrosis -> ongoing metabolic lipotoxic injury and hepatic fibrogenesis with architectural remodeling -> claimed progression to cirrhosis when the individual fibrosis stage, chronology, and competing etiologies support that pathway."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "METABOLIC_OR_NUTRITIONAL",
+        "primaryVector": "Chronic metabolic lipotoxic injury drives hepatocyte injury, inflammation, and activation of hepatic stellate cells that deposit scar matrix; as fibrosis advances the normal lobular architecture is progressively replaced by regenerative nodules and fibrous septa, and once bridging fibrosis and nodular remodeling are established the process culminates in cirrhosis - the natural-history pathway documented at meta-analytic level by the Barritt 2026 review of histologic fibrosis stage against major adverse liver outcomes and corroborated by the Wang 2026 review of non-invasive testing for liver-related events in MASLD, which support a probable nexus when the individual fibrosis stage, chronology, and competing etiologies are documented.",
+        "hypothesizedOnly": false
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "PROBABLE",
+        "vaNexusProbabilityAlignment": "AT_LEAST_AS_LIKELY_AS_NOT",
+        "conservativeRationale": "In medically conservative terms, the evidence supports the nexus at the at-least-as-likely-as-not level for this individual's presentation: metabolic steatotic liver injury is a prototype fibrosing hepatopathy and pooled histologic data show that advancing fibrosis stage carries progressively higher risk of cirrhosis, so when the individual record documents steatosis with progressive or advanced fibrosis before a cirrhosis diagnosis the pathway is coherent; case-specific review must still document the fibrosis trajectory objectively and exclude competing etiologies, and the edge does not assert an individual nexus without that documentation.",
+        "evidenceGaps": "Objective documentation of hepatic steatosis and its metabolic context (imaging, biopsy, or validated non-invasive assessment with date); objective fibrosis assessment and its progression (biopsy, elastography, or validated non-invasive fibrosis testing); chronology showing steatosis and advancing fibrosis before the cirrhosis diagnosis; assessment of competing liver etiologies (alcohol-related disease, viral hepatitis, autoimmune or cholestatic disease, drug or toxin exposure, vascular disease, other metabolic disease); hepatology assessment of whether the documented steatosis and fibrosis progression materially contributed to the individual cirrhosis",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Alcohol-related liver disease",
+          "Chronic viral hepatitis (B or C)",
+          "Autoimmune, cholestatic, or overlap liver disease",
+          "Drug- or toxin-induced hepatotoxicity",
+          "Other metabolic, vascular, or infiltrative liver disease"
+        ]
+      },
+      "evidenceGaps": [
+        "Objective documentation of hepatic steatosis and its metabolic context (imaging, biopsy, or validated non-invasive assessment with date); objective fibrosis assessment and its progression (biopsy, elastography, or validated non-invasive fibrosis testing); chronology showing steatosis and advancing fibrosis before the cirrhosis diagnosis; assessment of competing liver etiologies (alcohol-related disease, viral hepatitis, autoimmune or cholestatic disease, drug or toxin exposure, vascular disease, other metabolic disease); hepatology assessment of whether the documented steatosis and fibrosis progression materially contributed to the individual cirrhosis"
+      ],
+      "rationale": "Authored at DIRECT_CAUSATION with etiologicalConsensus PROBABLE: the Barritt 2026 systematic review and meta-analysis of histologic liver fibrosis in steatotic liver disease pools 32 studies and shows increasing risk of cirrhosis and other major adverse liver outcomes with advancing fibrosis stage, and the Wang 2026 systematic review and meta-analysis documents the progression of MASLD to liver-related events, together establishing the natural-history pathway by which metabolic steatotic liver injury and progressive fibrosis produce cirrhosis; the steatosis-specific metabolic window is authored on this primary because the umbrella chronic-liver-disease identity expressly defers to etiology-specific documentation; individual nexus still requires objective steatosis and fibrosis documentation, chronology, and exclusion of competing liver etiologies.",
+      "sourceReferences": [
+        {
+          "citation": "Barritt AS 4th, Qasim A, Kim Y, Miller SD, O'Donnell J, Johnston K. Prognostic value of liver histology in steatotic liver disease: a systematic literature review and meta-analysis. J Comp Eff Res. 2026 Sep 3:e260148. doi:10.57264/cer-2026-0148. PMID 42690133.",
+          "note": "Systematic literature review and meta-analysis pooling 32 studies of histologic liver fibrosis in steatotic liver disease showing that higher fibrosis stage is associated with increasing risk of major adverse liver outcomes including cirrhosis, hepatic decompensation, and hepatocellular carcinoma - the meta-analytic natural-history anchor for a probable direct nexus.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42690133/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-24",
+          "sourceLocator": "PMID 42690133; histologic fibrosis stage versus cirrhosis and major adverse liver outcomes in steatotic liver disease"
+        },
+        {
+          "citation": "Wang X, Dong X, Qian L, Yang Z, Yang D, Niu Y. Non-invasive Tests for the Prediction of Liver-related Events in Patients with MASLD: A Systematic Review and Meta-analysis. Acad Radiol. 2026 Jul 22:S1076-6332(26)00476-9. doi:10.1016/j.acra.2026.06.068. PMID 42481370.",
+          "note": "Systematic review and meta-analysis of non-invasive tests for the prediction of liver-related events in MASLD, documenting the progression of metabolic steatotic liver disease to cirrhosis and its complications - the independent corroboration anchor for the fibrosing-progression pathway.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42481370/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-24",
+          "sourceLocator": "PMID 42481370; non-invasive prediction of liver-related events including cirrhosis in MASLD"
+        }
+      ]
+    },
+    {
+      "conditionId": "liver-cancer",
+      "rank": 2,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Pooled cohort evidence documents that patients with nonalcoholic fatty liver disease carry an elevated risk of hepatocellular carcinoma and that metabolic and demographic factors modify that risk: the Yin 2024 systematic review and meta-analysis of 12 high-quality cohort studies (738,934 patients with NAFLD, 1,480 hepatocellular carcinoma cases) reports hazard ratios of 1.81 for advanced age, 2.51 for male sex, 1.87 for hypertension, and 2.27 for diabetes, and the Wallace 2026 systematic review and meta-analysis places liver cancer from major causes, including steatotic liver disease, in comparative risk context - a reproducible population-level malignancy association that is not an individual causal nexus.",
+        "causationStatus": "Neither causation nor aggravation is established: the located evidence quantifies relative risk and within-population risk factors rather than demonstrating a natural-history pathway of steatosis-attributable carcinogenesis, hepatocellular carcinoma in steatotic liver disease is strongly conditioned by coexisting fibrosis or cirrhosis stage, diabetes, and other factors, and backgrounds of viral hepatitis or alcohol-related disease frequently coexist, so an individual determination requires histologic or imaging documentation of the hepatic malignancy, characterization and staging of the underlying steatotic liver disease, and exclusion of competing hepatic carcinogenic exposures."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MALIGNANT_TRANSFORMATION",
+        "primaryVector": "A hypothesized malignant-transformation route is described: chronic metabolic lipotoxic injury with inflammation, oxidative and endoplasmic-reticulum stress, and fibrogenesis creates a microenvironment of hepatocyte turnover and genomic instability in which dysplastic clones can accumulate driver mutations and progress to hepatocellular carcinoma, a pathway that in steatotic liver disease is largely mediated through advanced fibrosis and cirrhosis - reflected in the pooled within-NAFLD risk-factor estimates and comparative cause-level risk data - while the dominant influence of fibrosis stage, diabetes, and coexisting liver disease and the absence of a matched-cohort natural-history demonstration leave individual attribution hypothesized.",
+        "secondaryVector": "Metabolic and endocrine comorbidities, particularly diabetes and obesity-related insulin resistance, may contribute independent proliferative and inflammatory signals, and coexisting viral hepatitis or alcohol-related injury can act as additional carcinogenic exposures in the same patients.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The edge asserts an association only: pooled cohort meta-analyses document an elevated hepatocellular carcinoma risk in nonalcoholic fatty liver disease populations and identify fibrosis stage, age, sex, hypertension, and diabetes as risk factors, but the evidence is relative-risk and risk-factor quantification in which carcinogenesis is substantially mediated by coexisting fibrosis or cirrhosis and other hepatic exposures, and no matched-cohort demonstration of steatosis-attributable malignancy in an individual was located; an individual claim therefore requires malignancy documentation, characterization of the underlying liver disease, and competing-exposure review, so no at-least-as-likely-as-not probability is asserted.",
+        "evidenceGaps": "Histologic or imaging documentation of the hepatic malignancy with staging; characterization of the steatotic liver disease including fibrosis or cirrhosis stage and the method of assessment; assessment of metabolic and demographic risk factors (diabetes, obesity, hypertension status with chronology); evaluation for competing hepatic carcinogenic exposures (viral hepatitis serology, alcohol use, aflatoxin or other toxin exposure, hereditary hemochromatosis or other genetic disease); chronological relationship between the steatotic liver disease and the malignancy diagnosis; hepatology or oncology assessment of the individual relationship",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Chronic viral hepatitis (B or C) with or without cirrhosis",
+          "Alcohol-related liver disease and alcohol-related carcinogenesis",
+          "Hereditary hemochromatosis or other genetic/metabolic liver disease",
+          "Aflatoxin or other environmental hepatocarcinogen exposure",
+          "Metastatic disease or primary biliary malignancy rather than hepatocellular carcinoma"
+        ]
+      },
+      "evidenceGaps": [
+        "Histologic or imaging documentation of the hepatic malignancy with staging; characterization of the steatotic liver disease including fibrosis or cirrhosis stage and the method of assessment; assessment of metabolic and demographic risk factors (diabetes, obesity, hypertension status with chronology); evaluation for competing hepatic carcinogenic exposures (viral hepatitis serology, alcohol use, aflatoxin or other toxin exposure, hereditary hemochromatosis or other genetic disease); chronological relationship between the steatotic liver disease and the malignancy diagnosis; hepatology or oncology assessment of the individual relationship"
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY: pooled cohort meta-analyses document an elevated hepatocellular carcinoma risk in nonalcoholic fatty liver disease and identify advanced age, male sex, hypertension, and diabetes as within-population risk factors, and comparative cause-level analyses place steatotic liver disease among the recognized liver-cancer causes, establishing a reproducible population-level association; the edge is not raised to causation because the located evidence is relative-risk and risk-factor quantification with carcinogenesis largely mediated by coexisting fibrosis or cirrhosis and competing hepatic exposures, so the consensus remains NOT_ESTABLISHED with malignancy-documentation, fibrosis-staging, chronology, and competing-exposure requirements; no probability estimate is asserted.",
+      "sourceReferences": [
+        {
+          "citation": "Yin H, Yan Z, Zhao F. Risk factors of hepatocellular carcinoma associated with nonalcoholic fatty liver disease: Systematic review and meta-analysis. Technol Health Care. 2024;32(6):3943-3954. doi:10.3233/THC-231331. PMID 39269862.",
+          "note": "Systematic review and meta-analysis of 12 high-quality cohort studies (738,934 patients with NAFLD, 1,480 hepatocellular carcinoma cases) quantifying within-NAFLD hazard ratios for advanced age, male sex, hypertension, and diabetes - the risk-magnitude anchor for the malignancy association.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39269862/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-24",
+          "sourceLocator": "PMID 39269862; hepatocellular carcinoma risk factors in nonalcoholic fatty liver disease, pooled cohort hazard ratios"
+        },
+        {
+          "citation": "Wallace C, Razavi-Shearer D, Hall S, et al. Risk of Liver Cancer From Major Causes Compared to Smoking and Lung Cancer: A Systematic Review and Meta-Analysis. J Viral Hepat. 2026 Sep;33(9):e70222. doi:10.1111/jvh.70222. PMID 42605247.",
+          "note": "Systematic review and meta-analysis placing liver-cancer risk from major causes, including steatotic liver disease, in comparative risk context against smoking and lung cancer - the comparative cause-level risk anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42605247/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-24",
+          "sourceLocator": "PMID 42605247; comparative liver-cancer risk from major causes including steatotic liver disease"
+        }
+      ]
+    }
+  ]
 }

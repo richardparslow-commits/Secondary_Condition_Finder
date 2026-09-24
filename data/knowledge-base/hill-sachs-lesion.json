@@ -2,8 +2,69 @@
   "id": "hill-sachs-lesion",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review biomechanical, post-injury, orthopedic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 44 (2026-09-24): one ASSOCIATION_ONLY draft mapping pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: the single authored edge asserts association only (etiologicalConsensus NOT_ESTABLISHED, hypothesizedOnly:true) - it records that the humeral-head impaction defect and the chondral damage it accompanies are associated with arthroscopic and imaging evidence of glenohumeral cartilage injury and with later glenohumeral osteoarthritis in instability cohorts, not that the Hill-Sachs lesion caused osteoarthritis in any individual; individual claims require imaging or arthroscopic documentation of the lesion and of the glenohumeral cartilage, instability chronology with dislocation frequency, and exclusion of primary osteoarthritis and other arthropathies.",
+    "Duplicate-scope guard: the post-traumatic-osteoarthritis identity already receives the knee-injury and bankart-lesion windows, and this batch adds the humeral-head-impaction window on its own primary, which is biomechanically distinct from the glenoid-labral (Bankart) lesion because it concerns the humeral-side articular surface; no osteoarthritis-of-the-shoulder, glenohumeral-arthritis, or shoulder-instability identity exists in the catalog (wrong-target guard), so the shoulder-instability arthropathy pathway is expressed by the osteoarthritic target rather than by a nonexistent instability identity."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 44 (2026-09-24): one bounded association edge authored - Hill-Sachs lesion to post-traumatic osteoarthritis (rank 1), ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true, and mechanismCategory BIOMECHANICAL_ALTERATION (humeral-head impaction altering glenohumeral joint mechanics and accompanying chondral injury). The proposition rests on the Luengo-Alonso 2024 arthroscopic cohort of 140 shoulders treated for recurrent glenohumeral instability, which reports that 95% had synovial or chondral lesions, that a Hill-Sachs lesion and anteroinferior glenoid cartilage fibrillation were the most common findings, and that the severity of glenohumeral osteoarthritis correlated with age, age at first dislocation, and the number of dislocations, together with the Saxena 2016 T1rho MRI study demonstrating quantifiable glenohumeral cartilage damage after a primary shoulder dislocation. The edge is not raised to causation: both sources are observational and cross-sectional or case-control in design without prospective incidence data, coined the lesion with the broader instability and dislocation complex, and report osteoarthritis prevalence varying widely (4% to 60%), so no probability estimate is asserted.",
+    "Negative screens recorded 2026-09-24: (i) no duplicate instability edge - no shoulder-instability, recurrent-dislocation, or glenohumeral-arthritis identity exists in the catalog, and the humeral-head-impaction mechanism is distinct from the glenoid-labral Bankart window (wrong-target and duplicate-scope guards); (ii) no osteoarthritis-of-the-shoulder edge - the specific identity is absent, so the generic post-traumatic-osteoarthritis identity carries the shoulder window (wrong-target guard); (iii) no rotator-cuff or tendon-injury edge - no condition-specific Hill-Sachs-primary tendon data were located and those identities own their own windows (zero-record guard); (iv) no peripheral-neuropathy edge - no condition-specific direction data were located for a Hill-Sachs-primary neural injury, and the axillary-nerve window belongs to the dislocation complex rather than the humeral-head defect (zero-record guard); (v) no pain-syndrome or depressive-disorder edge - no condition-specific directional evidence was located (zero-record guard); (vi) duplicate-scope note: post-traumatic-osteoarthritis currently receives the knee-injury and bankart-lesion windows; this batch adds the first Hill-Sachs-primary window to the registry."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "post-traumatic-osteoarthritis",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The Luengo-Alonso 2024 arthroscopic study of 140 shoulders with recurrent glenohumeral instability reports that a Hill-Sachs lesion was among the most common findings and that the severity of glenohumeral osteoarthritis correlated with age, age at the first dislocation, and the number of dislocations, and the Saxena 2016 T1rho MRI study demonstrates quantifiable glenohumeral cartilage damage after a primary shoulder dislocation - establishing a reproducible association between the humeral-head impaction lesion, instability, and later glenohumeral cartilage degeneration rather than an individual causal nexus.",
+        "causationStatus": "Neither causation nor aggravation is established: the located evidence is observational and cross-sectional or case-control without prospective incidence data, the Hill-Sachs lesion is studied within the broader instability and dislocation complex, and reported osteoarthritis prevalence varies widely (4% to 60%), so an individual determination requires imaging or arthroscopic documentation of the lesion and of glenohumeral cartilage status, an instability history with dislocation frequency and chronology, and exclusion of primary osteoarthritis and other arthropathies."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "BIOMECHANICAL_ALTERATION",
+        "primaryVector": "A hypothesized biomechanical route is described: an impaction fracture of the posterolateral humeral head sustained during anterior dislocation creates a chondral and osseous defect that alters glenohumeral congruity and load distribution, and recurrent instability episodes with repeated engagement of the defect against the glenoid rim produce cumulative shear and compression on the humeral and glenoid articular surfaces that can initiate and propagate chondral degeneration - the mechanism under which the located arthroscopic and T1rho MRI studies detect cartilage damage in unstable shoulders and report rising osteoarthritis severity with increasing dislocation number - while the observational design and the wide reported prevalence range leave individual attribution hypothesized.",
+        "secondaryVector": "Glenoid bone loss and labral insufficiency that frequently accompany the humeral-head defect further destabilize the joint and increase shear across the articular cartilage, and surgical stabilization procedures can add their own articular insult.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The edge asserts an association only: an arthroscopic cohort and a quantitative MRI study document chondral damage and osteoarthritis in unstable shoulders in which Hill-Sachs lesions are common, but the evidence is observational without prospective incidence data, the lesion is studied within the broader instability complex, and the reported osteoarthritis prevalence varies widely; an individual claim therefore requires lesion and cartilage documentation, instability chronology, and competing-cause review, so no at-least-as-likely-as-not probability is asserted.",
+        "evidenceGaps": "Imaging or arthroscopic documentation of the Hill-Sachs lesion (size, location, engagement or off-track status, date); documentation of glenohumeral articular cartilage status and of the onset and progression of osteoarthritis; instability history including number of dislocations, age at first dislocation, and interval to evaluation; characterization of accompanying glenoid bone loss or labral injury; prior shoulder surgery or stabilization history; evaluation for primary osteoarthritis, inflammatory arthritis, crystalline arthropathy, and other non-traumatic arthropathies; orthopedic assessment of whether the lesion and instability materially contributed to the individual arthropathy",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Primary (non-traumatic) glenohumeral osteoarthritis",
+          "Inflammatory or crystalline arthropathy (rheumatoid, gout, CPPD)",
+          "Rotator-cuff arthropathy or cuff-tear arthropathy",
+          "Avascular necrosis of the humeral head",
+          "Post-infectious or post-surgical arthropathy"
+        ]
+      },
+      "evidenceGaps": [
+        "Imaging or arthroscopic documentation of the Hill-Sachs lesion (size, location, engagement or off-track status, date); documentation of glenohumeral articular cartilage status and of the onset and progression of osteoarthritis; instability history including number of dislocations, age at first dislocation, and interval to evaluation; characterization of accompanying glenoid bone loss or labral injury; prior shoulder surgery or stabilization history; evaluation for primary osteoarthritis, inflammatory arthritis, crystalline arthropathy, and other non-traumatic arthropathies; orthopedic assessment of whether the lesion and instability materially contributed to the individual arthropathy"
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY: an arthroscopic cohort of 140 unstable shoulders found the Hill-Sachs lesion among the most common findings and reported that glenohumeral osteoarthritis severity correlated with age, age at first dislocation, and number of dislocations, and a quantitative T1rho MRI study detected cartilage damage after primary shoulder dislocation, establishing a reproducible association between the humeral-head impaction lesion, instability, and later chondral degeneration; the edge is not raised to causation because the evidence is observational without prospective incidence data and the lesion is studied within the broader instability complex, so the consensus remains NOT_ESTABLISHED with lesion, cartilage, chronology, and competing-cause requirements; no probability estimate is asserted.",
+      "sourceReferences": [
+        {
+          "citation": "Luengo-Alonso G, Valencia M, Martinez-Catalan N, Delgado C, Calvo E. Characterization of articular lesions associated with glenohumeral instability using arthroscopy. Bone Joint J. 2024 Oct 1;106-B(10):1125-1132. doi:10.1302/0301-620X.106B10.BJJ-2024-0262.R1. PMID 39348905.",
+          "note": "Arthroscopic study of 140 shoulders with recurrent glenohumeral instability reporting that Hill-Sachs lesions and glenoid cartilage fibrillation were the most common findings and that osteoarthritis severity correlated with age, age at first dislocation, and number of dislocations - the lesion-specific association anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39348905/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-24",
+          "sourceLocator": "PMID 39348905; arthroscopic chondral lesions in glenohumeral instability, Hill-Sachs lesion among most common findings, osteoarthritis severity correlation"
+        },
+        {
+          "citation": "Saxena V, D'Aquilla K, Marcoon S, et al. T1rho Magnetic Resonance Imaging to Assess Cartilage Damage After Primary Shoulder Dislocation. Am J Sports Med. 2016 Nov;44(11):2800-2806. doi:10.1177/0363546516655338. PMID 27466221.",
+          "note": "T1rho MRI study demonstrating quantifiable glenohumeral cartilage damage after a primary shoulder dislocation - the quantitative cartilage-damage anchor corroborating early chondral injury in the dislocating shoulder.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/27466221/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-24",
+          "sourceLocator": "PMID 27466221; T1rho MRI detection of glenohumeral cartilage damage after primary shoulder dislocation"
+        }
+      ]
+    }
+  ]
 }

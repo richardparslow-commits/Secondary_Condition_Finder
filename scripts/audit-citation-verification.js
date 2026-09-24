@@ -176,16 +176,133 @@ const retirements = Array.isArray(retirementLedger.retirements) ? retirementLedg
 // diplopia deferred (symptom-identity). Debt ratchet advances per the SOP:
 // the 12 new refs stay pending-verification pending qualified-human review.
 const CITATION_DEBT_BASELINE = Object.freeze({
-  references: 746,  /* batch 34 (2026-09-23): +9 reference uses */
-  liveVerified: 380,
+  references: 943,  /* batch 50 (2026-09-24): +13 reference uses */  /* batch 49 (2026-09-24): +8 reference uses */  /* batch 48 (2026-09-24): +8 reference uses */  /* batch 47 (2026-09-24): +12 reference uses */  /* batch 46 (2026-09-24): +8 reference uses */  /* batch 45 (2026-09-24): +6 reference uses */  /* batch 44 (2026-09-24): +12 reference uses */  /* batch 43 (2026-09-24): +16 reference uses */  /* batch 42 (2026-09-24): +21 reference uses */  /* batch 41 (2026-09-24): +9 reference uses */  /* batch 40 (2026-09-23): +15 reference uses */  /* batch 39 (2026-09-23): +9 reference uses */  /* batch 38 (2026-09-23): +15 reference uses */  /* batch 37 (2026-09-23): +12 reference uses */  /* batch 36 (2026-09-23): +18 reference uses */  /* batch 35 (2026-09-23): +15 reference uses */  /* batch 34 (2026-09-23): +9 reference uses */
+  liveVerified: 382,  /* batch 45 (2026-09-24): +1 verified-source reuse (PMID 28242264) */
   retiredVerified: 6,
-  verifiedProvenance: 386,
-  unverified: 366,  /* batch 34 (2026-09-23): +9 pending-verification */
+  verifiedProvenance: 388,  /* batch 45 (2026-09-24): +1 */
+  unverified: 561,  /* batch 50 (2026-09-24): +13 pending-verification */  /* batch 49 (2026-09-24): +8 pending-verification */  /* batch 48 (2026-09-24): +8 pending-verification */  /* batch 47 (2026-09-24): +12 pending-verification */  /* batch 46 (2026-09-24): +8 pending-verification */  /* batch 45 (2026-09-24): +5 pending-verification */  /* batch 44 (2026-09-24): +12 pending-verification */  /* batch 43 (2026-09-24): +15 pending-verification, +1 verified-source reuse */  /* batch 42 (2026-09-24): +21 pending-verification */  /* batch 41 (2026-09-24): +9 pending-verification */  /* batch 40 (2026-09-23): +15 pending-verification */  /* batch 39 (2026-09-23): +9 pending-verification */  /* batch 38 (2026-09-23): +15 pending-verification */  /* batch 37 (2026-09-23): +12 pending-verification */  /* batch 36 (2026-09-23): +18 pending-verification */  /* batch 35 (2026-09-23): +15 pending-verification */  /* batch 34 (2026-09-23): +9 pending-verification */
   reviewFindings: 0,
-  liveClinicalEvidenceWithUrls: 741,  /* batch 34 (2026-09-23): +9 */
+  liveClinicalEvidenceWithUrls: 938,  /* batch 50 (2026-09-24): +13 */  /* batch 49 (2026-09-24): +8 */  /* batch 48 (2026-09-24): +8 */  /* batch 47 (2026-09-24): +12 */  /* batch 46 (2026-09-24): +8 */  /* batch 45 (2026-09-24): +6 */  /* batch 44 (2026-09-24): +12 */  /* batch 43 (2026-09-24): +16 */  /* batch 41 (2026-09-24): +9 */  /* batch 40 (2026-09-23): +15 */  /* batch 39 (2026-09-23): +9 */  /* batch 38 (2026-09-23): +15 */  /* batch 37 (2026-09-23): +12 */  /* batch 36 (2026-09-23): +18 */  /* batch 35 (2026-09-23): +15 */  /* batch 34 (2026-09-23): +9 */
   retiredClinicalEvidenceWithUrls: 4,
-  clinicalEvidenceProvenanceWithUrls: 745,  /* batch 34 (2026-09-23): +9 */
+  clinicalEvidenceProvenanceWithUrls: 942,  /* batch 50 (2026-09-24): +13 */  /* batch 49 (2026-09-24): +8 */  /* batch 48 (2026-09-24): +8 */  /* batch 47 (2026-09-24): +12 */  /* batch 46 (2026-09-24): +8 */  /* batch 45 (2026-09-24): +6 */  /* batch 44 (2026-09-24): +12 */  /* batch 43 (2026-09-24): +16 */  /* batch 42 (2026-09-24): +21 */  /* batch 41 (2026-09-24): +9 */  /* batch 40 (2026-09-23): +15 */  /* batch 39 (2026-09-23): +9 */  /* batch 38 (2026-09-23): +15 */  /* batch 37 (2026-09-23): +12 */  /* batch 36 (2026-09-23): +18 */  /* batch 35 (2026-09-23): +15 */
 });
+// Batch 50 (2026-09-24): +13 pending-verification clinical references across 5 screened
+// identities and 6 new edges (keratitis->corneal-scarring, kienbock-s-disease->osteoarthritis,
+// kaposi-s-sarcoma->lymphedema and ->cellulitis, keloids->depressive-disorder,
+// katayama-fever->urticaria); 13 unique PMIDs with no reuse and no sharing, so every new use adds
+// a source; all refs stay verified:false pending qualified-human review and no primary publication
+// state changed. Every identity in the batch was retained with at least one window, so unlike
+// batches 48 and 49 there were no deferrals: screened-out propositions were recorded on the edges
+// and in the batch ledger instead of being deferred identities (keratitis->visual-impairment
+// reassertion refused under the existing FINAL-CLOSE-PROPOSITION-MISMATCH; keloids->scars refused
+// as constitutive; keloids->anxiety-disorder, ->contractures, and ->squamous-cell-carcinoma refused
+// on mediator and zero-record grounds; kienbock-s-disease->avascular-necrosis refused as
+// constitutive; kaposi-s-sarcoma->pulmonary and ->anemia refused for zero-record; katayama-fever->
+// pulmonary-hypertension and ->anemia refused on disease-stage grounds and
+// ->tropical-pulmonary-eosinophilia and ->eosinophilic-gastroenteritis refused as distinct
+// identities).
+// Batch 49 (2026-09-24): +8 pending-verification clinical references across 5 screened
+// identities and 4 new edges (intracranial-injury-without-skull-fracture->epilepsy and
+// ->hypopituitarism as the batch's two DIRECT_CAUSATION edges, joint-replacement-residuals->
+// deep-vein-thrombosis and ->contractures); 8 unique PMIDs with no reuse and no sharing, so every
+// new use adds a source; all refs stay verified:false pending qualified-human review and no primary
+// publication state changed. Three deferrals were recorded without relationships and are not
+// packeted: intervertebral-disc-syndrome (FINAL-CLOSE-NO-SUPPORTED-SECONDARY honoured, plus the
+// degenerative-disc-disease synonym/parallel-pathway screen), iritis (synonym of anterior uveitis,
+// whose glaucoma and cataract windows the uveitis identity already carries), and jersey-finger
+// (zero-record: the located literature reports total active motion, QuickDASH, and Buck-Gramcko
+// grades without a catalog-fit secondary diagnosis).
+// Batch 48 (2026-09-24): +8 pending-verification clinical references across 5 screened
+// identities and 4 new edges (iliohypogastric-ilioinguinal-nerve-neuralgia->unexplained-chronic-pain,
+// impetigo->nephritis and insulinoma->hyperinsulinism as the batch's two DIRECT_CAUSATION edges,
+// inappropriate-sinus-tachycardia->dizziness); 8 unique PMIDs with no reuse and no sharing, so every
+// new use adds a source; all refs stay verified:false pending qualified-human review and no primary
+// publication state changed. interosseous-muscle-atrophy was deferred on manifestation-identity
+// grounds (site-specific denervating finding whose located literature documents upward nerve-lesion
+// causes) and is not packeted; the Hsu 2012 randomized meta-analysis and the Shabtaie 2020 IST cohort
+// are recorded as screened counter-evidence rather than as sources on their respective edges.
+// Batch 47 (2026-09-24): +12 pending-verification clinical references across 5 screened
+// identities and 6 new edges (hypoglycemia->dementia, hypoglycemia->seizure-disorder,
+// hypopituitarism->osteopenia, hypopituitarism->anemia, hypotension->visual-impairment,
+// ichthyosis->dry-eye-syndrome); 12 unique PMIDs with no reuse and no sharing, so every new
+// use adds a source; all six edges are authored at ASSOCIATION_ONLY / NOT_ESTABLISHED /
+// hypothesizedOnly:true and stay verified:false pending qualified-human review. hypopigmentation
+// was deferred on manifestation-identity grounds (generic cutaneous sign; located literature is
+// vitiligo-, drug-, and disease-site-specific) and is not packeted, and no primary publication
+// state changed.
+// Batch 46 (2026-09-24): +8 pending-verification clinical references across 5 screened
+// identities and 4 new edges (hyperinsulinism->hypoglycemia as the batch's DIRECT_CAUSATION
+// edge, hypertensive-retinopathy->visual-impairment, hyperopia->glaucoma,
+// hyperhidrosis->anxiety-disorder); 8 unique PMIDs, no reuse or sharing; hyperpigmentation
+// deferred (manifestation identity) and not packeted; all refs stay verified:false pending
+// qualified-human review and no primary publication state changed. The harvested
+// hyperhidrosis-to-depressive-disorder proposition stays FINAL-CLOSED and is not reasserted.
+// Batch 45 (2026-09-24): +6 clinical reference uses across 5 screened identities and 3 new
+// edges (hip-disarticulation->phantom-limb-pain, hip-labral-tear->post-traumatic-osteoarthritis,
+// hydrocephalus->visual-impairment); one use is a verified-source reuse (PMID 28242264, the
+// Kelle 2017 level-stratified phantom-limb study already human-verified and carried verified:true
+// from the ankle-disarticulation edge per the family precedent), so the debt ratchet advances by
+// 5 pending-verification uses; hip-strain deferred (zero-record) and pulmonary histoplasmosis
+// deferred (RESOLVED-PRIOR-SITE-SPECIFIC-TAXONOMY; adrenal window owned by adrenal-histoplasmosis),
+// neither packeted, and no primary publication state changed.
+// Batch 44 (2026-09-24): +12 pending-verification clinical references across 5 authored
+// identities and 6 new edges (hemorrhoids->anemia, hemothorax->anemia,
+// hepatic-steatosis->cirrhosis-of-the-liver as the batch's DIRECT_CAUSATION edge,
+// hepatic-steatosis->liver-cancer, heterotopic-ossification->peripheral-neuropathy,
+// hill-sachs-lesion->post-traumatic-osteoarthritis); 12 unique PMIDs, no reuse and no
+// sharing; all refs stay verified:false pending qualified-human review and no primary
+// publication state changed. FINAL-CLOSE-PROPOSITION-MISMATCH screens honoured for
+// hemorrhoids (harvested epicondylitis) and heterotopic-ossification (harvested
+// osteoarthritis).
+// Batch 43 (2026-09-24): +15 pending-verification clinical references plus one verified-source
+// reuse (PMID 34583023, already human-verified and carried verified:true per the
+// elbow-disarticulation family precedent) across 5 authored
+// identities and 8 new edges (hearing-loss->cognitive-disorder, hearing-loss->depressive-disorder,
+// heart-block->cardiomyopathy, heart-valve-disorders->congestive-heart-failure as the batch's
+// DIRECT_CAUSATION edge, heart-valve-disorders->cardiac-inflammatory-disease,
+// hemangioma->congestive-heart-failure, hemangioma->hypothyroidism,
+// hemipelvectomy->phantom-limb-pain); 16 unique PMIDs, PMID 34583023 reused from the existing
+// per-site phantom-limb-pain edges (added use, no new source entity); all refs stay
+// verified:false pending qualified-human review and no primary publication state changed.
+// Batch 42 (2026-09-24): +21 pending-verification clinical references across 4 new
+// relationships (hallux-valgus x2, hammertoe, halo-nevus, hashimoto-s-encephalopathy
+// x3); 17 unique PMIDs, three reused across edge pairs. head-and-neck-cancers deferred
+// (class scope) with no citations added.
+// Batch 41 (2026-09-24): +9 pending-verification clinical references across 3 new
+// edges (hairy-cell-leukemia->anemia, guyon-s-canal-syndrome->muscle-atrophy
+// DIRECT_CAUSATION, halitosis->depressive-disorder); hairy-tongue and hallux-rigidus
+// deferred. Debt ratchet advances per the SOP: the 9 new refs stay pending-verification
+// pending qualified-human review.
+// Batch 40 (2026-09-23): +15 pending-verification clinical references across 5 new
+// edges (granulomatosis-with-polyangiitis->chronic-kidney-disease DIRECT_CAUSATION
+// and ->hearing-loss, guillain-barre-syndrome->unexplained-chronic-pain and
+// ->depressive-disorder, greater-trochanteric-pain-syndrome->unexplained-chronic-pain);
+// granulomatous-disease and granulomatous-rhinitis deferred. Debt ratchet advances
+// per the SOP: the 15 new refs stay pending-verification pending qualified-human review
+// (PMID 39687605 is shared across both GBS edges; 14 unique new sources).
+// Batch 39 (2026-09-23): +9 pending-verification clinical references across 3 new
+// edges (glucagonoma->diabetes-mellitus DIRECT_CAUSATION,
+// glucagonoma->malnutrition-residuals, goodpasture-syndrome->chronic-kidney-disease
+// DIRECT_CAUSATION); glossitis, goiter, and granuloma-annulare deferred. Debt
+// ratchet advances per the SOP: the 9 new refs stay pending-verification pending
+// qualified-human review.
+// Batch 38 (2026-09-23): +15 pending-verification clinical references across 5 new
+// draft-quarantined edges (giant-cell-myocarditis congestive-heart-failure DIRECT
+// and cardiac-arrhythmia, gingivitis periodontitis, glaucoma visual-impairment,
+// glomus-tumor case-matching unexplained-chronic-pain); the debt ratchet advances
+// per the SOP - all 15 refs stay verified:false pending qualified-human review, and
+// no primary publication state changed (1 deferral carries no references).
+// Batch 37 (2026-09-23): +12 pending-verification clinical references across 4 new
+// draft-quarantined edges (gastrointestinal-stromal-tumors anemia,
+// malnutrition-residuals, and depressive-disorder; genitofemoral-nerve-neuralgia
+// case-matching unexplained-chronic-pain); the debt ratchet advances per the SOP -
+// all 12 refs stay verified:false pending qualified-human review, and no primary
+// publication state changed (3 deferrals in this batch carry no references).
+// Batch 36 (2026-09-23): +18 pending-verification clinical references across 6 new
+// draft-quarantined edges (fungal cellulitis, gamekeeper's-thumb OA, ganglion CTS,
+// gastrinoma and gastritis peptic-ulcer DIRECT edges, gastritis anemia); the debt
+// ratchet advances per the SOP - all 18 refs stay verified:false pending
+// qualified-human review, and no primary publication state changed.
 
 const hardFindings = [];
 const reviewFindings = [];

@@ -2,8 +2,69 @@
   "id": "impetigo",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review dermatologic, autoimmune, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 48 (2026-09-24): one DIRECT_CAUSATION draft mapping pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: the single authored edge is classified DIRECT_CAUSATION with etiologicalConsensus PROBABLE and hypothesizedOnly:false because post-streptococcal acute glomerulonephritis after cutaneous group A streptococcal infection is an established immune-complex post-infectious pathway documented at reference-work and review level; individual claims still require documented impetigo (clinical or microbiological), a compatible latency interval, urinalysis and renal-function evidence, and exclusion of the competing glomerulonephritides listed below.",
+    "Target-specificity guard: nephritis is the entity-exact catalog target because the located evidence addresses acute glomerulonephritis rather than chronic kidney disease, and no edge is authored to chronic-kidney-disease because that progression is the downstream window of the nephritis identity rather than of impetigo (intermediate-chain guard); the nephritis identity receives no prior incoming window, so this batch opens it on its own primary.",
+    "Duplicate-scope guard: the cellulitis identity already receives six windows (abscesses, agranulocytosis, contact-dermatitis, bullosis-diabeticorum, dermatitis, fungal-skin-infection), none of which is an impetigo window, and no impetigo-to-cellulitis edge is authored because the located reference work presents impetigo, erysipelas, and cellulitis as depth-defined syndromes of the same organism rather than documenting impetigo progression into cellulitis (depth-classification guard)."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 48 (2026-09-24): one bounded direct-causation edge authored - impetigo to nephritis (rank 1), DIRECT_CAUSATION with etiologicalConsensus PROBABLE, vaNexusProbabilityAlignment AT_LEAST_AS_LIKELY_AS_NOT, hypothesizedOnly:false, and mechanismCategory IMMUNE_MEDIATED (nephritogenic group A streptococcal infection with immune-complex deposition in the glomerulus). The proposition rests on the Stevens and Bryant reference chapter on Streptococcus pyogenes impetigo, erysipelas, and cellulitis, which states that impetigo is a non-life-threatening infection but can result in post-streptococcal acute glomerulonephritis, and on the Ilyas and Tolaymat comparative epidemiological study of paediatric acute post-streptococcal glomerulonephritis in Northeast Florida, in which 66% of the earlier cohort had antecedent pyoderma while the recent cohort was predominantly pharyngitis-associated - the disease-specific complication statement plus the cohort-level antecedent-skin-infection anchor, a pattern consistent with the existing goodpasture-syndrome and granulomatosis-with-polyangiitis direct-causation windows onto chronic-kidney-disease. Individual claims remain bounded by latency, serology, and competing-cause requirements, and no conclusion about chronic kidney disease progression is drawn from this evidence.",
+    "Counter-evidence and caveat screens recorded 2026-09-24: (i) strain and epidemiology - post-streptococcal glomerulonephritis incidence and severity have declined in high-income settings and the antecedent site has shifted from skin to pharynx, so the skin-infection attributable fraction varies by era and population and the edge does not assert a fixed risk; (ii) outcome severity - the located paediatric cohort recorded milder presentations with full recovery, so nephritis is authored as the complication without any claim about residual renal impairment, and the chronic-kidney-disease window remains with the nephritis identity (intermediate-chain guard); (iii) diagnostic overlap - impetigo and erysipelas/cellulitis can coexist at different depths, so the recorded infection must be documented clinically or microbiologically rather than inferred from a skin lesion alone.",
+    "Negative screens recorded 2026-09-24: (i) no chronic-kidney-disease edge - that progression belongs to the nephritis identity and would double-count the pathway (intermediate-chain guard); (ii) no cellulitis, abscesses, or erysipelas edge - the located reference work classifies those as depth-defined syndromes of the same organism rather than documented impetigo progression, and no condition-specific progression denominators were located (depth-classification and zero-record guards); (iii) no acute-rheumatic-fever or rheumatic-heart-disease edge - neither identity exists in the catalog (wrong-target guard); (iv) no scarlet-fever, post-streptococcal-reactive-arthritis, or guttate-psoriasis edge - those identities are absent or, where psoriasis exists, the located evidence is not impetigo-primary (wrong-target and zero-record guards); (v) no scars or pigmentary-change edge - no condition-specific data were located and the cosmetic-severity evidence base is not indexed to impetigo (zero-record guard); (vi) no dermatitis or atopic-dermatitis-eczema edge - the existing incoming window runs in the dermatosis-to-impetigo direction and would be inverted (direction-inversion guard); (vii) duplicate-scope note: this batch adds the first impetigo-primary window to the registry and the first incoming window to the nephritis identity."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "nephritis",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "DIRECT_CAUSATION",
+        "etiologicalTrigger": "Documented impetigo (cutaneous group A streptococcal infection, clinically or microbiologically confirmed) -> nephritogenic streptococcal antigens drive immune-complex formation and glomerular deposition with complement activation and proliferative glomerular injury -> claimed acute glomerulonephritis when the latency interval, urinalysis and renal function, serologic evidence, and competing renal diagnoses support that pathway."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "IMMUNE_MEDIATED",
+        "primaryVector": "Impetigo caused by nephritogenic group A streptococcal strains provides a cutaneous source of streptococcal antigens that form circulating and in-situ immune complexes deposited in the glomerulus, activating complement and producing an acute proliferative glomerulonephritis with haematuria, proteinuria, oedema, and hypertension - the post-infectious pathway recorded in the Stevens and Bryant reference chapter, which states that impetigo can result in post-streptococcal acute glomerulonephritis, and reflected in the Ilyas and Tolaymat cohort in which 66% of the earlier paediatric cases had antecedent pyoderma before the epidemiological shift to pharyngitis-associated disease; the pathway is documented at reference-work level while individual attribution requires the latency, urinalysis, serologic, and exclusion criteria below.",
+        "hypothesizedOnly": false
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "PROBABLE",
+        "vaNexusProbabilityAlignment": "AT_LEAST_AS_LIKELY_AS_NOT",
+        "conservativeRationale": "The edge is authored at direct causation with probable etiologic consensus because a reference chapter states that impetigo can result in post-streptococcal acute glomerulonephritis and a comparative cohort documents antecedent pyoderma in a majority of earlier paediatric cases, and because the immune-complex mechanism is established; an at-least-as-likely-as-not alignment is asserted only where documented impetigo, a compatible latency interval, urinalysis and renal-function evidence, and exclusion of competing glomerulonephritides are all present, consistent with the existing goodpasture-syndrome and granulomatosis-with-polyangiitis windows onto chronic-kidney-disease.",
+        "evidenceGaps": "Documentation of the impetigo (clinical description with site and date, microbiological or rapid antigen confirmation of group A streptococcus where obtained, and treatment given); the interval between the skin infection and the onset of renal signs; urinalysis with microscopy, serum creatinine, complement C3, and anti-streptolysin O or anti-DNase B titres with dates; blood pressure and oedema documentation; renal imaging or biopsy where performed; assessment of competing causes of acute nephritis including IgA nephropathy, post-pharyngitis post-streptococcal glomerulonephritis, lupus nephritis, ANCA-associated or anti-GBM disease, membranoproliferative glomerulonephritis, infective endocarditis-related nephritis, and drug-induced interstitial nephritis; nephrology assessment of whether the antecedent impetigo materially contributed to the renal disease",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "IgA nephropathy or other primary glomerulonephritis",
+          "Post-pharyngitis post-streptococcal or other post-infectious glomerulonephritis",
+          "Lupus nephritis or other systemic autoimmune renal disease",
+          "Anti-GBM (Goodpasture) disease or ANCA-associated vasculitis",
+          "Membranoproliferative or infection-related (endocarditis, shunt) glomerulonephritis and drug-induced interstitial nephritis"
+        ]
+      },
+      "evidenceGaps": [
+        "Documentation of the impetigo (clinical description with site and date, microbiological or rapid antigen confirmation of group A streptococcus where obtained, and treatment given); the interval between the skin infection and the onset of renal signs; urinalysis with microscopy, serum creatinine, complement C3, and anti-streptolysin O or anti-DNase B titres with dates; blood pressure and oedema documentation; renal imaging or biopsy where performed; assessment of competing causes of acute nephritis including IgA nephropathy, post-pharyngitis post-streptococcal glomerulonephritis, lupus nephritis, ANCA-associated or anti-GBM disease, membranoproliferative glomerulonephritis, infective endocarditis-related nephritis, and drug-induced interstitial nephritis; nephrology assessment of whether the antecedent impetigo materially contributed to the renal disease"
+      ],
+      "rationale": "Authored at DIRECT_CAUSATION / PROBABLE: a streptococcal reference chapter states that impetigo can result in post-streptococcal acute glomerulonephritis, and a comparative paediatric cohort documents antecedent pyoderma in 66% of earlier cases of acute post-streptococcal glomerulonephritis, with the immune-complex deposition mechanism established at review level; the alignment is asserted at at-least-as-likely-as-not only where documented impetigo, a compatible latency interval, urinalysis, renal-function and serologic evidence, and exclusion of competing nephritides are satisfied, consistent with the established direct-causation immune-mediated windows from goodpasture-syndrome and granulomatosis-with-polyangiitis onto chronic-kidney-disease.",
+      "sourceReferences": [
+        {
+          "citation": "Stevens DL, Bryant AE. Streptococcus pyogenes Impetigo, Erysipelas, and Cellulitis. In: Ferretti JJ, Stevens DL, Fischetti VA, editors. Streptococcus pyogenes: Basic Biology to Clinical Manifestations [Internet]. 2nd edition. Oklahoma City (OK): University of Oklahoma Health Sciences Center; 2022 Oct 8. Chapter 23. PMID 36479753.",
+          "note": "Reference chapter on group A streptococcal skin and soft-tissue infection stating that impetigo is a non-life-threatening infection but can result in post-streptococcal acute glomerulonephritis - the disease-specific complication statement anchoring the impetigo-to-nephritis proposition.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36479753/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-24",
+          "sourceLocator": "PMID 36479753; impetigo can result in post-streptococcal acute glomerulonephritis (chapter 23, Streptococcus pyogenes: Basic Biology to Clinical Manifestations)"
+        },
+        {
+          "citation": "Ilyas M, Tolaymat A. Changing epidemiology of acute post-streptococcal glomerulonephritis in Northeast Florida: a comparative study. Pediatr Nephrol. 2008 Jul;23(7):1101-1106. doi:10.1007/s00467-008-0778-1. PMID 18373105.",
+          "note": "Comparative epidemiological study of paediatric acute post-streptococcal glomerulonephritis in which 66% of the earlier cohort had antecedent pyoderma (versus a recent cohort predominantly pharyngitis-associated) - the cohort-level antecedent-skin-infection anchor and the basis for the recorded era and population caveat.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/18373105/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-24",
+          "sourceLocator": "PMID 18373105; 66% of earlier paediatric acute post-streptococcal glomerulonephritis cases had antecedent pyoderma"
+        }
+      ]
+    }
+  ]
 }

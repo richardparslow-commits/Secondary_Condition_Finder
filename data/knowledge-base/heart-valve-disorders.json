@@ -2,7 +2,123 @@
   "id": "heart-valve-disorders",
   "draft": true,
   "todo": [
-    "Rebuild secondary-condition suggestions with condition-specific clinical evidence before publication."
+    "D1 draft-authoring batch 43 (2026-09-24): one DIRECT_CAUSATION and one ASSOCIATION_ONLY draft mapping pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Prior-proposition screen: the master-resolution program closed the harvested heart-valve-disorders-to-osteoarthritis proposition (PMID 26971132) as FINAL-CLOSE-PROPOSITION-MISMATCH with no approved targets, and that proposition is NOT reasserted here; this batch authors only fresh condition-specific windows - a valvular-overload-to-heart-failure edge classified DIRECT_CAUSATION with etiologicalConsensus PROBABLE, and a valvular-substrate-to-infective-endocarditis edge classified ASSOCIATION_ONLY with NOT_ESTABLISHED and hypothesizedOnly:true because infection additionally requires a separate bacteremic exposure.",
+    "Duplicate-scope guard: the post-prosthetic hemolytic anemia window is owned by heart-valve-replacement-residuals, conduction and device windows are owned by heart-block and implantable-cardiac-pacemaker, and atrial fibrillation, stroke, and infective-endocarditis have no standalone catalog identities (wrong-target guard) - the endocarditis window is authored onto the cardiac-inflammatory-disease umbrella consistent with the existing actinomycosis and brucellosis windows."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 43 (2026-09-24): two edges authored on this rebuild instruction, replacing no prior suggestion. The heart-failure edge is DIRECT_CAUSATION with etiologicalConsensus PROBABLE and vaNexusProbabilityAlignment AT_LEAST_AS_LIKELY_AS_NOT, resting on the 2020 ACC/AHA guideline for the management of patients with valvular heart disease (PMID 33332150), corroborated by the 2021 ESC/EACTS guideline for the management of valvular heart disease (PMID 34453165), as the natural-history and management framework in which progressive valvular stenosis or regurgitation produces pressure or volume overload with compensatory remodeling and symptomatic heart failure - guideline-level clinical consensus from two independent guideline bodies, not rating-schedule authority. The endocarditis edge is ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, hypothesizedOnly:true, and vaNexusProbabilityAlignment NOT_ASSERTED, resting on the AHA infective endocarditis scientific statement (PMID 26373316), which lists preexisting valve disease among the major predisposing cardiac conditions, and the 2023 ESC endocarditis guideline (PMID 37622656) as the contemporary framework; classification stays association-only because the abnormal valve is a predisposing substrate rather than a sufficient cause and infective endocarditis additionally requires a bacteremic or fungemic exposure.",
+    "FINAL-CLOSE-PROPOSITION-MISMATCH screen recorded 2026-09-24: the master-resolution disposition closed only the harvested osteoarthritis proposition for this identity (originalDisposition HOLD-PROPOSITION-MISMATCH, masterResolution FINAL-CLOSE-PROPOSITION-MISMATCH, approvedTargets empty, reason noting that co-mentioned osteoarthritis evidence did not establish a sufficiently specific heart-valve-disorders-to-osteoarthritis relationship). That proposition remains closed and is not reasserted; the identity itself was retained as a draft with an explicit rebuild instruction, and the two edges authored here are supported by separate, condition-specific clinical evidence.",
+    "Negative screens recorded 2026-09-24: (i) no osteoarthritis edge - the FINAL-CLOSE-PROPOSITION-MISMATCH closure remains in force and no new condition-specific valvular-disease-to-osteoarthritis evidence was located (prior-closure guard); (ii) no anemia or hemolytic-anemia edge - the hemolytic anemia window is owned by heart-valve-replacement-residuals through a prosthetic-surface mechanism, and native valve disease does not produce hemolysis (sibling-duplicate and mechanism guards); (iii) no heart-block or conduction edge - conduction windows belong to the heart-block and pacemaker identities (duplicate-scope guard); (iv) no atrial fibrillation, stroke, or infective-endocarditis edge - those targets have no standalone catalog identities, and the endocarditis proposition was folded into the cardiac-inflammatory-disease umbrella where the infectious windows already live (wrong-target guard); (v) no myocardial-infarction edge - coronary embolism from valvular vegetation is a described phenomenon but no condition-specific directional cohort was located and the myocardial-infarction identity authors its own windows (zero-record guard); (vi) no depressive-disorder edge - no condition-specific directional evidence was located (zero-record guard); (vii) duplicate-scope note: congestive heart failure currently receives twelve registry edges and cardiac-inflammatory-disease receives the actinomycosis and brucellosis windows; this batch adds the first native-valve-disease-primary windows to both."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "congestive-heart-failure",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "DIRECT_CAUSATION",
+        "etiologicalTrigger": "Documented valvular stenosis or regurgitation -> sustained pressure and/or volume overload with compensatory chamber remodeling -> congestive heart failure when the individual lesion severity, ventricular phenotype, and chronology support that pathway."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MECHANICAL_OR_COMPRESSIVE",
+        "primaryVector": "Valvular stenosis imposes a fixed outflow or inflow obstruction and valvular regurgitation imposes a volume load; the affected chamber responds with hypertrophy and dilation together with neurohormonal activation, and when compensatory reserve is exhausted the resulting elevated filling pressures and reduced forward output produce the congestive-heart-failure syndrome - the natural-history pathway described at guideline level in the 2020 ACC/AHA valvular heart disease guideline and the 2021 ESC/EACTS valvular heart disease guideline, which support a probable nexus when the individual lesion severity, ventricular phenotype, and chronology are documented.",
+        "hypothesizedOnly": false
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "PROBABLE",
+        "vaNexusProbabilityAlignment": "AT_LEAST_AS_LIKELY_AS_NOT",
+        "conservativeRationale": "In medically conservative terms, the evidence supports the nexus at the at-least-as-likely-as-not level for this individual's presentation: valvular stenosis or regurgitation imposes chronic pressure or volume overload with compensatory remodeling that progresses to symptomatic heart failure when the individual lesion severity, ventricular phenotype, and chronology support that pathway; case-specific assessment must document the valve lesion and exclude competing ischemic, hypertensive, and myocardial causes, and the edge does not assert an individual nexus without that documentation.",
+        "evidenceGaps": "Echocardiographic or catheterization documentation of the valve lesion (type, severity, date); documentation of the heart-failure phenotype and ventricular function; chronology of valvular disease relative to heart-failure onset; assessment of competing ischemic, hypertensive, myocardial, and rhythm causes; cardiology assessment of whether the valvular lesion materially contributed to the individual heart-failure course",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Ischemic heart disease or prior myocardial infarction",
+          "Hypertensive heart disease",
+          "Primary cardiomyopathy (dilated, hypertrophic, infiltrative)",
+          "Tachyarrhythmia-related cardiomyopathy",
+          "Other causes not yet identified in this mapping"
+        ]
+      },
+      "evidenceGaps": [
+        "Echocardiographic or catheterization documentation of the valve lesion (type, severity, date); documentation of the heart-failure phenotype and ventricular function; chronology of valvular disease relative to heart-failure onset; assessment of competing ischemic, hypertensive, myocardial, and rhythm causes; cardiology assessment of whether the valvular lesion materially contributed to the individual heart-failure course"
+      ],
+      "rationale": "Authored at DIRECT_CAUSATION with etiologicalConsensus PROBABLE: the 2020 ACC/AHA and the 2021 ESC/EACTS valvular heart disease guidelines document the natural history in which progressive stenosis or regurgitation produces pressure or volume overload with compensatory remodeling and symptomatic heart failure, a mechanical overload pathway that is clinically established at guideline consensus level across two independent guideline bodies; individual nexus still requires documented lesion severity, ventricular phenotype, chronology, and exclusion of competing causes.",
+      "sourceReferences": [
+        {
+          "citation": "Otto CM, Nishimura RA, Bonow RO, et al. 2020 ACC/AHA Guideline for the Management of Patients With Valvular Heart Disease: A Report of the American College of Cardiology/American Heart Association Joint Committee on Clinical Practice Guidelines. Circulation. 2021 Feb 2;143(5):e72-e227. doi:10.1161/CIR.0000000000000923. PMID 33332150.",
+          "note": "Guideline-level natural-history and management framework in which progressive valvular stenosis or regurgitation produces pressure or volume overload with compensatory chamber remodeling and symptomatic heart failure - the clinical-consensus anchor for a probable direct nexus.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33332150/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-24",
+          "sourceLocator": "PMID 33332150; valvular heart disease guideline, natural history of overload to heart failure"
+        },
+        {
+          "citation": "Vahanian A, Beyersdorf F, Praz F, et al. 2021 ESC/EACTS Guidelines for the management of valvular heart disease. Eur Heart J. 2022 Feb 12;43(7):561-632. PMID 34453165.",
+          "note": "European guideline framework for the management of valvular heart disease, documenting the progression of valvular stenosis and regurgitation to symptomatic heart failure and its management - the independent-guideline corroboration anchor for the probable direct nexus.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34453165/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-24",
+          "sourceLocator": "PMID 34453165; ESC/EACTS valvular heart disease guideline, overload progression to heart failure"
+        }
+      ]
+    },
+    {
+      "conditionId": "cardiac-inflammatory-disease",
+      "rank": 2,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The American Heart Association infective endocarditis scientific statement documents preexisting valvular heart disease among the major predisposing cardiac conditions for infective endocarditis, and the 2023 ESC endocarditis guideline provides the contemporary risk, diagnostic, and management framework in which structurally abnormal valves are the principal substrate; the literature establishes a predisposition rather than a disease process that by itself produces endocarditis.",
+        "causationStatus": "Neither causation nor aggravation is established: the abnormal valve is a predisposing substrate rather than a sufficient cause, infective endocarditis additionally requires a bacteremic or fungemic exposure, the located evidence is guideline-level risk characterization without valve-lesion-specific incidence denominators, and individual claims require Duke-criteria infective endocarditis documentation, characterization of the underlying valve lesion, and exclusion of prosthetic material, indwelling devices, injection drug use, and healthcare-associated sources."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "INFECTIOUS_SPREAD",
+        "primaryVector": "A hypothesized infectious-seeding route is described: turbulent flow across a stenotic or regurgitant valve injures valvular endothelium and promotes platelet-fibrin deposition forming a non-bacterial thrombotic vegetation, which transiently circulating organisms can colonize during bacteremia, producing an infected vegetation - the mechanism under which preexisting valve disease is listed among predisposing cardiac conditions - while the separate exposure requirement and the absence of lesion-specific incidence data keep individual attribution hypothesized.",
+        "secondaryVector": "Calcific degeneration and prosthetic or repair material introduce additional surface and flow characteristics that modify colonization risk; native-lesion-specific risk quantification remains absent from the located literature.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The edge asserts an association only: guideline-level statements characterize preexisting valve disease as a major predisposing substrate for infective endocarditis, but the lesion is not a sufficient cause because a separate bacteremic or fungemic exposure is always required, and no valve-lesion-specific incidence data were located; an individual claim therefore requires Duke-criteria infection documentation, valve-lesion characterization, exposure temporality, and exclusion of prosthetic, device, injection-drug-use, and healthcare-associated sources, so no at-least-as-likely-as-not probability is asserted.",
+        "evidenceGaps": "Duke-criteria documentation of infective endocarditis with organism identification; characterization of the underlying valve lesion (type, severity, documentation method); documentation and temporality of the bacteremic or fungemic exposure; evaluation for prosthetic material, indwelling cardiac devices, injection drug use, and healthcare-associated sources; blood-culture and echocardiographic findings; cardiology and infectious-disease assessment of the individual relationship",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Prosthetic valve or annuloplasty material endocarditis",
+          "Indwelling cardiac device (lead or catheter) infection",
+          "Injection drug use-associated right-sided endocarditis",
+          "Healthcare-associated or nosocomial bacteremia",
+          "Non-infective (marantic, Libman-Sacks, or Loeffler) endocarditis"
+        ]
+      },
+      "evidenceGaps": [
+        "Duke-criteria documentation of infective endocarditis with organism identification; characterization of the underlying valve lesion (type, severity, documentation method); documentation and temporality of the bacteremic or fungemic exposure; evaluation for prosthetic material, indwelling cardiac devices, injection drug use, and healthcare-associated sources; blood-culture and echocardiographic findings; cardiology and infectious-disease assessment of the individual relationship"
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY: guideline-level statements characterize preexisting valve disease as a major predisposing substrate for infective endocarditis, but the lesion is not a sufficient cause because a separate bacteremic or fungemic exposure is required and no lesion-specific incidence data were located, so the consensus remains NOT_ESTABLISHED with Duke-criteria, exposure, and exclusion requirements; no probability estimate is asserted.",
+      "sourceReferences": [
+        {
+          "citation": "Baddour LM, Wilson WR, Bayer AS, et al. Infective Endocarditis in Adults: Diagnosis, Antimicrobial Therapy, and Management of Complications: A Scientific Statement for Healthcare Professionals From the American Heart Association. Circulation. 2015 Oct 13;132(15):1435-86. doi:10.1161/CIR.0000000000000296. PMID 26373316.",
+          "note": "AHA scientific statement on infective endocarditis in adults documenting preexisting valvular heart disease among the major predisposing cardiac conditions - the guideline-level predisposition anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/26373316/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-24",
+          "sourceLocator": "PMID 26373316; AHA infective endocarditis statement, predisposing valve conditions"
+        },
+        {
+          "citation": "Delgado V, Ajmone Marsan N, de Waha S, et al. 2023 ESC Guidelines for the management of endocarditis. Eur Heart J. 2023 Oct 14;44(39):3948-4042. PMID 37622656.",
+          "note": "Contemporary European guideline framework for endocarditis risk, diagnosis, and management in which structurally abnormal native valves are the principal substrate - the currency and risk-framework anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/37622656/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-24",
+          "sourceLocator": "PMID 37622656; ESC endocarditis guideline, native valve substrate framework"
+        }
+      ]
+    }
+  ]
 }

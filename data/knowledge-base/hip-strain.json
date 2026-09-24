@@ -2,7 +2,11 @@
   "id": "hip-strain",
   "draft": true,
   "todo": [
-    "Rebuild secondary-condition suggestions using condition-specific clinical evidence before publication."
+    "D1 batch 45 (2026-09-24): deferred on zero-record grounds - no edges authored; the identity is retained as a draft with suggestions: [] pending a qualified-human governance decision.",
+    "Revisit only if a condition-specific evidence base (a hip-strain-primary cohort or series with a catalog-fit secondary outcome such as chronic pain, muscle atrophy, or subsequent hip arthrosis and with adjustment for competing injury) becomes available; do not author edges by pooling generic thigh, groin, or hamstring strain literature under this label, and do not mirror the ankle-strain-to-osteoarthritis or cervical-strain-to-post-traumatic-headache edges without hip-strain-specific directional data because those mechanisms (recurrent instability arthropathy, cervical facet-mediated headache) do not transfer to a hip muscle strain."
+  ],
+  "governanceNotes": [
+    "D1 batch 45 (2026-09-24): deferred. Zero-record screen recorded 2026-09-24: (i) bibliographic searches for hip-strain-primary outcomes (hip muscle strain, hip flexor or iliopsoas strain, adductor strain, and gluteal strain, each paired with chronic pain, osteoarthritis, or long-term outcome terms) returned no condition-specific cohort or series that quantifies a hip-strain-to-secondary-condition relationship; the nearest literature concerns athletic pubalgia and groin injuries, iliotibial band syndrome, piriformis syndrome, hamstring-strain rehabilitation, and ankle-sprain prevention in other populations, none of which is the hip-strain identity (entity-mismatch and zero-record guards); (ii) the harvested hip-strain-to-diabetes-mellitus-type-2 proposition (PMID 41363156) was closed by the master-resolution program as FINAL-CLOSE-PROPOSITION-MISMATCH with no approved targets and is not reasserted here (prior-closure guard); (iii) no anemia, muscle-atrophy, osteoarthritis, or unexplained-chronic-pain edge was authored because the located material does not establish a hip-strain-specific direction, and the sibling ankle-strain and cervical-strain identities author their own mechanistically distinct windows (zero-record and mechanism-transfer guards). Reopening condition: a hip-strain-primary evidence source with a catalog-fit secondary outcome, or a governance decision defining hip-strain as part of a broader hip soft-tissue-injury identity."
   ],
   "suggestions": []
 }

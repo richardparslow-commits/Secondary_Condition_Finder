@@ -2,8 +2,77 @@
   "id": "halo-nevus",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review dermatologic, autoimmune, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 42 (2026-09-24): one ASSOCIATION_ONLY draft mapping pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: the mapping asserts association only (etiologicalConsensus NOT_ESTABLISHED, hypothesizedOnly:true) - it records that halo nevi and vitiligo co-occur far more often than expected and share a melanocyte-directed T-cell autoimmune substrate, not that a halo nevus caused vitiligo in any individual; individual claims require documented halo nevus (leukoderma band surrounding a melanocytic nevus, ideally serially photographed) with separately documented vitiligo of the nonsegmental type with onset chronology after the halo nevus, and exclusion of postinflammatory hypopigmentation, pityriasis versicolor, chemical leukoderma, and depigmentation of melanoma regression per case; direction is indeterminate in cross-sectional data (vitiligo can also precede or accompany halo nevus appearance)."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 42 (2026-09-24): one bounded association edge authored. The Ezzedine 2012 prospective observational study of 553 confirmed nonsegmental-vitiligo clinic patients documents halo nevi in 130 patients (23.5%) with the halo-nevus subgroup showing distinct demographic and distribution correlates (younger age at onset, trunk localization, familial premature hair-graying link) - the prospective co-prevalence anchor; the Kano 2023 study of 54 halo-nevus patients documents the surrounding perinevic leukoderma, its dependence on vitiligo-vulgaris status for improvement after nevus excision, and a CD8/CD3/CD4-skewed immune microenvironment - the immunologic-coupling anchor with a dechallenge-flavored observation (halo persistence despite excision in the absence of vitiligo vulgaris); the de Vijlder 2004 HLA case-control study of 76 individuals documents that halo-nevi-associated vitiligo carries a distinct HLA-DR class-II association profile from vitiligo vulgaris - the shared-substrate-but-distinct-pathogenesis anchor. Classification rests at NOT_ESTABLISHED because no cohort documents incident vitiligo after halo nevus onset in initially vitiligo-free subjects, cross-sectional data cannot orient the arrow (vitiligo may precede, accompany, or follow halo nevi), the HLA study itself argues partially distinct pathogenic mechanisms between the two phenotypes, and both entities sit on a shared autoimmune diathesis that can independently produce each (shared-driver guard).",
+    "Negative screens recorded 2026-09-24: (i) no skin-cancer or melanoma edge - the melanoma identity is ABSENT from the registry (wrong-target guard), and while the halo-nevus/melanoma association is classically described, the located direction of the strongest evidence runs from melanoma immune response to halo phenomenon (melanoma-associated depigmentation as regression/immune activation), i.e. the reverse arrow, and the generic nevi-to-melanoma literature located this window (Olsen 2019 QSkin n=38,854 prospective phenotype cohort; Haenssle 2016 nevus-associated melanoma series) quantifies common and atypical nevus burden rather than halo-nevus-specific risk - direction-reversal and zero condition-specific record guards; a halo-nevus-to-melanoma claim requires halo-specific prospective risk data (reopening condition); (ii) no thyroiditis or autoimmune-polyspecificity edge - halo nevi associate with multiple autoimmune conditions (the de Vijlder and Turner-syndrome reviews) but the associations run through shared autoimmune diathesis rather than an arrow from this finding (shared-driver guard; thyroiditis owns its own published windows); (iii) no scarring-alopecia, pernicious-anemia, or other autoimmune-target edge - associations are prevalence co-occurrences without condition-specific direction data (zero-record guard); (iv) no depression or cosmetic-burden edge - no halo-nevus-specific mood cohort located and the halitosis batch-41 edge owns the odor-independent cosmetic-psychological pattern where independently evidenced (zero-record and shared-target guards); (v) duplicate-scope note: vitiligo gains its first incoming registry edge from this window - vitiligo's own outgoing window remains backlog-owned. Reopening condition for a melanoma edge: a prospective cohort quantifying incident melanoma risk in halo-nevus patients versus matched controls, with the melanoma-family identity cataloged."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "vitiligo",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The Ezzedine 2012 prospective observational study of 553 confirmed nonsegmental-vitiligo patients documents halo nevi in 130 of them (23.5%) with distinct associated features (younger age at onset, trunk involvement, premature hair-graying family history), the Kano 2023 series of 54 halo-nevus patients documents the perinevic vitiligo-like leukoderma, its clinical coupling to vitiligo vulgaris status (surrounding pigment improved after excision only when vitiligo vulgaris was present or absent depending on group), and a CD8-positive and CD3/CD4-skewed T-cell microenvironment in non-improving cases, and the de Vijlder 2004 HLA case-control study of 76 individuals documents that halo-nevi-associated vitiligo and vitiligo vulgaris share autoimmune linkage yet differ in HLA-DR association profile and clinical course; the literature documents a reproducible co-occurrence of halo nevi and vitiligo on a shared melanocyte-directed autoimmune substrate without establishing that the halo nevus caused vitiligo in any individual.",
+        "causationStatus": "The mapping does not assert that halo nevus caused vitiligo in any individual: all located evidence is cross-sectional or clinic-based co-occurrence with no cohort documenting incident vitiligo after halo nevus onset in initially vitiligo-free subjects, the arrow is indeterminate in these designs (vitiligo may precede, accompany, or follow halo nevi and both may simply declare an underlying autoimmune diathesis), the HLA data indicate partially distinct pathogenic mechanisms between the phenotypes, and halo nevi can also arise as a melanoma-directed immune phenomenon whose depigmentation mimics vitiligo (regression guard); individual claims require documented halo nevus with serial photography, separately documented nonsegmental vitiligo with onset after the halo nevus, serologic or clinical assessment of the shared autoimmune diathesis, and exclusion of postinflammatory hypopigmentation, pityriasis versicolor, chemical leukoderma, and melanoma-regression depigmentation per case."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "IMMUNE_MEDIATED",
+        "primaryVector": "A shared melanocyte-antigen T-cell autoimmunity vector: CD8-positive cytotoxic T-lymphocytes sensitized to melanocytic antigens (including shared melanocyte-differentiation antigens such as MART-1/Melan-A and gp100) attack melanocytes within the nevus producing the perinevic halo, and when the same clonal response extends to melanocytes in widely distributed epidermis it produces depigmenting macules of nonsegmental vitiligo - documented as the T-cell-dominant perinevic microenvironment, the clinical co-occurrence in nearly a quarter of a vitiligo clinic population, and the shared autoimmune-diathesis correlates - while the partially distinct HLA profiles and unoriented cross-sectional co-occurrence keep the extension hypothesized for individual attribution.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The edge asserts an association only: the located condition-specific evidence is one prospective clinic cross-section of vitiligo patients with halo-nevus prevalence, one halo-nevus series with immune-microenvironment characterization, and one HLA case-control study, none of which follows initially vitiligo-free halo-nevus patients to incident vitiligo, the arrow is unoriented in the designs and the HLA study supports partially distinct mechanisms, a shared autoimmune diathesis is a sufficient common cause of both phenotypes (shared-driver guard), and the melanoma-regression mimic confounds individual depigmentation attribution; no probability estimate is asserted.",
+        "evidenceGaps": "Serial photographic documentation of a halo nevus with date of appearance; separately documented nonsegmental vitiligo with depigmented macules confirmed by examination or Wood's lamp with onset after the halo nevus; longitudinal follow-up of initially vitiligo-free halo-nevus patients quantifying incident vitiligo versus matched controls; autoimmune-diathesis characterization (personal or family history of thyroid autoimmunity, pernicious anemia, alopecia areata, adrenal autoimmunity; thyroid-peroxidase antibodies where indicated); exclusion of postinflammatory hypopigmentation, pityriasis versicolor, chemical leukoderma, hypomelanosis of Ito, and depigmentation of regressing melanoma (dermoscopic or histopathologic clearance of the index nevus); dermatology assessment of the individual relationship",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Postinflammatory hypopigmentation or pityriasis versicolor",
+          "Chemical leukoderma",
+          "Depigmentation of melanoma regression (nevus-associated or independent)",
+          "Segmental or nevus-associated depigmentation without generalized vitiligo",
+          "Shared autoimmune diathesis independently producing both findings"
+        ]
+      },
+      "evidenceGaps": [
+        "Serial photographic documentation of a halo nevus with date of appearance; separately documented nonsegmental vitiligo with depigmented macules confirmed by examination or Wood's lamp with onset after the halo nevus; longitudinal follow-up of initially vitiligo-free halo-nevus patients quantifying incident vitiligo versus matched controls; autoimmune-diathesis characterization (personal or family history of thyroid autoimmunity, pernicious anemia, alopecia areata, adrenal autoimmunity; thyroid-peroxidase antibodies where indicated); exclusion of postinflammatory hypopigmentation, pityriasis versicolor, chemical leukoderma, hypomelanosis of Ito, and depigmentation of regressing melanoma (dermoscopic or histopathologic clearance of the index nevus); dermatology assessment of the individual relationship"
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY: a prospective vitiligo-clinic cross-section, a halo-nevus immune-microenvironment series, and an HLA case-control study triangulate a reproducible halo-nevus/vitiligo co-occurrence on a shared melanocyte-directed T-cell substrate, while absent longitudinal direction data, partially distinct HLA mechanisms, the shared-autoimmune common cause, and the melanoma-regression mimic keep the consensus at NOT_ESTABLISHED with chronology and clearance requirements; no probability estimate is asserted.",
+      "sourceReferences": [
+        {
+          "citation": "Ezzedine K, Diallo A, Leauté-Labrèze C, et al. Halo nevi association in nonsegmental vitiligo affects age at onset and depigmentation pattern. Arch Dermatol. 2012 Apr;148(4):497-502. PMID 22508876.",
+          "note": "Prospective observational study of 553 confirmed nonsegmental-vitiligo clinic patients documenting halo nevi in 130 (23.5%) with distinct correlates (younger onset, trunk localization, premature-hair-graying association) - the prospective co-prevalence anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/22508876/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-24",
+          "sourceLocator": "PMID 22508876; 553 NSV patients, 130 (23.5%) with halo nevi, distinct onset/distribution correlates"
+        },
+        {
+          "citation": "Kano S, Nakamura M, Nojiri Y, et al. Differences in the immune microenvironment between improved and non-improved cases of vitiligo after halo nevus excision. J Dermatol Sci. 2023 Mar;109(3):136-142. PMID 36966028.",
+          "note": "Series of 54 halo-nevus patients with immunohistochemistry and PhenoCycler spatial phenotyping documenting CD8/CD3/CD4-dominant infiltration in non-improving perinevic leukoderma, vitiligo-vulgaris status as the determinant of improvement, and relevance to melanoma-associated vitiligo - the immunologic-coupling anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36966028/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-24",
+          "sourceLocator": "PMID 36966028; 54 halo nevus patients, CD8/CD3/CD4 infiltration, vitiligo vulgaris status determines improvement"
+        },
+        {
+          "citation": "de Vijlder HC, Westerhof W, Schreuder GM, de Lange P, Claas FH. Difference in pathogenesis between vitiligo vulgaris and halo nevi associated with vitiligo is supported by an HLA association study. Pigment Cell Res. 2004 Jun;17(3):270-4. PMID 15140072.",
+          "note": "HLA class-II case-control study of 40 vitiligo-vulgaris and 36 halo-nevi-associated-vitiligo patients versus 2400 typed blood-donor controls documenting distinct HLA-DR association profiles (DR4/DR53 positive and DR3 negative for vulgaris; DR11 negative for the halo-nevus subtype) - the shared-autoimmune-linkage-but-distinct-pathogenesis anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/15140072/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-24",
+          "sourceLocator": "PMID 15140072; 76 HLA-typed subjects vs 2400 controls, distinct DR profiles between subtypes"
+        }
+      ]
+    }
+  ]
 }

@@ -2,8 +2,67 @@
   "id": "hyperinsulinism",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review hormonal, metabolic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 46 (2026-09-24): one DIRECT_CAUSATION draft mapping pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: the single authored edge is classified DIRECT_CAUSATION with etiologicalConsensus PROBABLE and hypothesizedOnly:false because inappropriate insulin secretion in the face of low plasma glucose is the established proximate mechanism of hyperinsulinaemic hypoglycaemia, a textbook metabolic pathway documented at review level; individual claims still require documented hyperinsulinism (insulin/glucose or C-peptide findings, genetics, or histopathology), hypoglycemia documentation with a compatible insulin profile, chronology, and exclusion of the competing hypoglycemia mechanisms listed below.",
+    "Duplicate-scope and family guard: the hypoglycemia identity currently receives no registry edges (zero-record pre-check), so this batch opens the hyperinsulinaemic-hypoglycaemia window on its own primary; the sibling insulin-resistance-syndrome identity authors its own diabetes-mellitus-type-2 window and does not produce hypoglycaemia, so no parallel pathway is created (mechanism-representativeness guard), and no hyperglycaemia or diabetes edge is authored from hyperinsulinism."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 46 (2026-09-24): one bounded direct-causation edge authored - hyperinsulinism to hypoglycemia (rank 1), DIRECT_CAUSATION with etiologicalConsensus PROBABLE, vaNexusProbabilityAlignment AT_LEAST_AS_LIKELY_AS_NOT, hypothesizedOnly:false, and mechanismCategory METABOLIC_OR_NUTRITIONAL. The proposition rests on the Demirbilek 2017 congenital-hyperinsulinism diagnosis and treatment update, which states that hyperinsulinaemic hypoglycaemia is the inappropriate secretion of insulin in the presence of low plasma glucose and leads to severe and persistent hypoglycaemia, and that insulin's inhibitory effect on lipolysis and ketogenesis suppresses ketone-body formation and heightens hypoglycaemic brain injury, and on the Giri 2021 congenital-hyperinsulinism update, which describes unregulated insulin release leading to hypoglycaemia as the most frequent cause of persistent and severe hypoglycaemia in the neonatal period and early childhood. The pathway (β-cell insulin excess -> suppressed hepatic glucose output and enhanced tissue glucose uptake -> hypoglycaemia) is a well-established proximate mechanism rather than a merely statistical association, so a probable nexus is recorded; individual nexus still requires documented hyperinsulinism, a compatible insulin-glucose or C-peptide profile during the hypoglycaemic event, chronology, and exclusion of competing mechanisms.",
+    "Negative screens recorded 2026-09-24: (i) no diabetes-mellitus or diabetes-mellitus-type-2 edge - hyperinsulinism through inappropriate insulin excess produces hypoglycaemia rather than hyperglycaemia, and the diabetes identities author their own windows from their own primaries (duplicate-scope and direction guards); (ii) no insulin-resistance-syndrome edge - that identity is a distinct sibling whose direction runs to diabetes-mellitus-type-2, and no condition-specific hyperinsulinism-primary data link the two (duplicate-scope guard); (iii) no cognitive-disorder or seizure-disorder edge - the located reviews document hypoglycaemic brain injury and neurodisability, but the cognitive and seizure windows belong to their own primaries and hypoglycaemia is the intermediate node, so a further hyperinsulinism-to-cognition edge would double-count the same pathway (intermediate-chain and duplicate-scope guards; revisit as a two-hop pathway if governance wants the hyperinsulinism -> hypoglycemia -> cognitive-disorder chain expressed); (iv) no obesity or metabolic-syndrome edge - no obesity identity exists and metabolic-syndrome owns its own windows (wrong-target guard); (v) no pancreatic or malignancy edge - insulinoma is a distinct identity with its own potential windows and the generic hyperinsulinism edge does not absorb it (duplicate-scope guard)."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "hypoglycemia",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "DIRECT_CAUSATION",
+        "etiologicalTrigger": "Documented hyperinsulinism (inappropriate insulin secretion, whether congenital-channel/genetic or otherwise established) -> insulin excess suppresses hepatic glucose output and drives tissue glucose uptake while antagonising counter-regulatory lipolysis and ketogenesis -> claimed hypoglycaemia when the individual insulin-glucose profile, glucose documentation, chronology, and competing mechanisms support that pathway."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "METABOLIC_OR_NUTRITIONAL",
+        "primaryVector": "Inappropriate pancreatic β-cell insulin secretion in the presence of low plasma glucose drives glucose out of the circulation by suppressing hepatic glycogenolysis and gluconeogenesis and by promoting insulin-sensitive tissue uptake, and the same insulin excess suppresses lipolysis, ketogenesis, and counter-regulatory responses, so the low glucose is not offset by alternative fuel generation - the metabolic pathway documented in the Demirbilek 2017 congenital-hyperinsulinism update (which frames hyperinsulinaemic hypoglycaemia as inappropriate insulin secretion at low glucose with suppressed ketone-body formation) and in the Giri 2021 update (unregulated insulin release leading to hypoglycaemia); this supports a probable nexus when the individual insulin-glucose profile, glucose documentation, and chronology are compatible.",
+        "hypothesizedOnly": false
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "PROBABLE",
+        "vaNexusProbabilityAlignment": "AT_LEAST_AS_LIKELY_AS_NOT",
+        "conservativeRationale": "In medically conservative terms, the evidence supports the nexus at the at-least-as-likely-as-not level for this individual's presentation: inappropriate insulin secretion at low plasma glucose is the established proximate mechanism of hyperinsulinaemic hypoglycaemia, documented at review level across two independent congenital-hyperinsulinism updates, so when the individual record documents hyperinsulinism and a compatible insulin-glucose profile the pathway is coherent; case-specific review must still confirm the insulin-glucose relationship during the event and exclude competing hypoglycaemia mechanisms, and the edge does not assert an individual nexus without that documentation.",
+        "evidenceGaps": "Documentation of hyperinsulinism (plasma insulin, C-peptide, or proinsulin during a spontaneous or provoked hypoglycaemic episode; relevant genetic testing; or histopathology where available); documentation of hypoglycaemia with the glucose value, timing, and sampling conditions; chronology linking the hyperinsulinism to the hypoglycaemic episodes; assessment of counter-regulatory status (cortisol, growth hormone, glucagon) and of hepatic, renal, and nutritional status; review of medication or exogenous-insulin exposure; endocrinology assessment of whether the hyperinsulinism materially caused the individual hypoglycaemia",
+        "alternativeEtiologiesToRuleOut": [
+          "Exogenous insulin or insulin-secretagogue exposure",
+          "Counter-regulatory hormone deficiency (adrenal insufficiency, hypopituitarism)",
+          "Severe hepatic or renal failure",
+          "Alcohol-related or fasting/starvation ketotic hypoglycaemia",
+          "Insulinoma or other insulin-secreting pancreatic lesion"
+        ],
+        "requiresSpecificDbqEvidence": false
+      },
+      "evidenceGaps": [
+        "Documentation of hyperinsulinism (plasma insulin, C-peptide, or proinsulin during a spontaneous or provoked hypoglycaemic episode; relevant genetic testing; or histopathology where available); documentation of hypoglycaemia with the glucose value, timing, and sampling conditions; chronology linking the hyperinsulinism to the hypoglycaemic episodes; assessment of counter-regulatory status (cortisol, growth hormone, glucagon) and of hepatic, renal, and nutritional status; review of medication or exogenous-insulin exposure; endocrinology assessment of whether the hyperinsulinism materially caused the individual hypoglycaemia"
+      ],
+      "rationale": "Authored at DIRECT_CAUSATION with etiologicalConsensus PROBABLE: two independent congenital-hyperinsulinism reviews document that inappropriate insulin secretion at low plasma glucose leads to severe and persistent hypoglycaemia, with insulin additionally suppressing lipolysis and ketogenesis so that alternative fuels are unavailable - a textbook proximate metabolic pathway rather than a statistical association; individual nexus still requires documented hyperinsulinism, a compatible insulin-glucose profile during the hypoglycaemic event, chronology, and exclusion of exogenous insulin, counter-regulatory deficiency, organ failure, and insulinoma.",
+      "sourceReferences": [
+        {
+          "citation": "Demirbilek H, Hussain K. Congenital Hyperinsulinism: Diagnosis and Treatment Update. J Clin Res Pediatr Endocrinol. 2017 Dec 30;9(Suppl 2):69-87. doi:10.4274/jcrpe.2017.S007. PMID 29280746.",
+          "note": "Congenital-hyperinsulinism diagnosis and treatment update defining hyperinsulinaemic hypoglycaemia as inappropriate insulin secretion at low plasma glucose leading to severe and persistent hypoglycaemia, with suppressed ketogenesis from insulin's inhibitory effect - the mechanism anchor for the probable direct nexus.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/29280746/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-24",
+          "sourceLocator": "PMID 29280746; inappropriate insulin secretion leading to severe and persistent hypoglycaemia in congenital hyperinsulinism"
+        },
+        {
+          "citation": "Giri D, Hawton K, Senniappan S. Congenital hyperinsulinism: recent updates on molecular mechanisms, diagnosis and management. J Pediatr Endocrinol Metab. 2021 Sep 21;35(3):279-296. doi:10.1515/jpem-2021-0369. PMID 34547194.",
+          "note": "Congenital-hyperinsulinism update describing unregulated insulin release leading to hypoglycaemia as the most frequent cause of persistent and severe hypoglycaemia in the neonatal period and early childhood - the independent corroboration anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34547194/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-24",
+          "sourceLocator": "PMID 34547194; unregulated insulin release leading to hypoglycaemia in congenital hyperinsulinism"
+        }
+      ]
+    }
+  ]
 }

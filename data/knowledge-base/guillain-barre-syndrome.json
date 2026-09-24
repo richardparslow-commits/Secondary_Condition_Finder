@@ -2,7 +2,141 @@
   "id": "guillain-barre-syndrome",
   "draft": true,
   "todo": [
-    "Target-only taxonomy identity added by Clinical Mapping Master Resolution 2026. Research downstream secondary-condition pathways before any independent publication of this identity."
+    "D1 draft-authoring batch 40 (2026-09-23): two ASSOCIATION_ONLY draft mappings pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: both mappings assert association only (etiologicalConsensus NOT_ESTABLISHED, hypothesizedOnly:true) following the case-matching pain precedent (femoral-neuropathy, episcleritis, glomus-tumor, genitofemoral-nerve-neuralgia) and the psychological-burden depression precedent (female-infertility, frontal-fibrosizing-alopecia) - they record that GBS produces a documented chronic pain profile and a post-illness depression excess whose exclusionary workups mirror the respective target evaluations, not that GBS caused a distinct pain or depressive disorder in any individual; individual claims require electrodiagnostically or clinically confirmed GBS with documented symptom chronology and site-appropriate exclusion of mimickers per case."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 40 (2026-09-23): two bounded association edges authored. Pain edge: the Papri 2024 prospective cohort of 644 Bangladeshi GBS patients documents pain in 71% during enrollment persisting in 38% at week 13 and 26% at week 26 with chronic pain associated with higher age, male sex, preceding diarrhoea and dysautonomia and with the anxiety/depression quality-of-life domain, the Levison 2020 Danish 30-year nationwide pediatric cohort documents medically treated pain in 70% of chart-reviewed cases mainly confined to the lower extremities, and the Yao 2018 retrospective cohort of 252 acute-phase patients documents pain in 34.5% with a third experiencing pain within the two weeks before weakness onset - a documented acute-to-chronic neuropathic pain profile whose early presentations are frequently unexplained before the neurologic diagnosis lands (case-matching pattern). Category PSYCHOPHYSIOLOGICAL matches the pain-edge precedent family (femoral-neuropathy, episcleritis, erythromelalgia, genitofemoral-nerve-neuralgia, glomus-tumor, flexor-hallucis-longus-tendinitis). Depression edge: the Walteros 2019 prospective cohort of 34 Zika-associated GBS patients assessed at median 17 months documents moderate or moderate-severe depression in GBS survivors at adjusted odds 3.89 versus neighborhood comparison subjects with ongoing disability excess (ODSS at least 1, OR 8.8), the Witsch 2013 nine-center cohort of 110 mechanically ventilated GBS patients assessed at mean 52.6 months documents anxiety/depression-dimension impairment in about half of survivors with long-term quality of life compromised foremost by immobility and chronic pain, and the shared Papri 2024 cohort links chronic pain with the anxiety/depression quality-of-life domain - a psychological-burden association consistent with the depression-precedent family.",
+    "Negative screens recorded 2026-09-23: (i) no weakness, paralysis, gait, or respiratory-failure edge - the catalog contains no paralysis, muscle-weakness, difficulty-walking, gait-abnormality, or respiratory-failure identity (the weakness/respiratory keywords resolve to no catalog target), so the core acute motor and ventilatory outcomes have no correct target (wrong-target guard; reopening if governance adds such identities); (ii) no CIDP or chronic-inflammatory-demyelinating-neuropathy conversion edge - A-CIDP conversion is a distinct catalog-relevant diagnostic identity rather than a GBS downstream outcome, and wrong-identity mapping is barred (the batch-40 Shenzhen cohort itself documents three A-CIDP conversions as separate diagnoses); (iii) no cardiac-arrhythmia edge - the located condition-specific record (Dimario 2012 childhood autonomic dysfunction, tachycardia in 77% with 92% recovering by 2-6 months) documents transient acute-phase autonomic manifestations that resolve with recovery rather than a chronic arrhythmia outcome, and no quantified post-GBS chronic-arrhythmia cohort was located (acute-manifestation and zero-record guards); (iv) no peripheral-neuropathy merge - the catalog note directs that GBS not be merged with the generic peripheral-neuropathy identity, which remains zero-edge backlog (wrong-identity and do-not-merge guards); (v) no amputation, deep-vein-thrombosis, pressure-ulcer, or urinary-incontinence edge - immobility-mediated complications lack GBS-specific quantified forward-outcome cohorts in this window (zero-record guard); (vi) duplicate-scope note: campylobacter-jejuni-infection already carries an ASSOCIATION_ONLY incoming edge to GBS (antecedent trigger direction) and this batch adds two outgoing GBS edges - no parallel pathway; unexplained-chronic-pain gains a seventh incoming case-matching edge and depressive-disorder a seventeenth-family psychological incoming edge, each with independent condition-specific evidence bases and no pooled duplication. Reopening conditions: a quantified post-GBS chronic-arrhythmia cohort, a catalog identity for weakness or respiratory failure, or a controlled depression-incidence cohort beyond the located survivor series."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "unexplained-chronic-pain",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The Papri 2024 prospective cohort of 644 GBS patients documents pain in 71% at enrollment persisting in 38% at week 13 and 26% at week 26 with chronic pain associated with dysautonomia, preceding diarrhoea, higher age, and male sex and with the anxiety/depression quality-of-life domain, the Levison 2020 Danish 30-year nationwide pediatric cohort documents medically treated pain in 70% of cases mainly in the lower extremities, and the Yao 2018 cohort of 252 acute-phase patients documents pain in 34.5% with a third of pain-reporters experiencing pain in the two weeks preceding weakness onset - the literature documents a reproducible acute-to-chronic neuropathic pain profile, frequently the presenting and unexplained complaint before the neurologic diagnosis, without establishing that GBS caused a distinct chronic pain disorder in any individual.",
+        "causationStatus": "The mapping does not assert that GBS caused a separate chronic pain disorder: pain is in substantial part a documented feature of the immune-mediated neuropathy itself (radicular and neuropathic pain tracks disease severity and dysautonomia), so the edge records case-matching of presentations - early unexplained pain complaints and persistent post-illness pain whose exclusionary workup mirrors the unexplained-chronic-pain evaluation (femoral-neuropathy and glomus-tumor precedent) - rather than a distinct downstream arrow; fibromyalgia, diabetic or other small-fiber polyneuropathy, musculoskeletal deconditioning pain, radiculopathy, and central post-stroke or post-critical-illness pain independently produce chronic regional pain in the same populations, and residual limb weakness plus immobility confound pain attribution; individual claims require confirmed GBS (clinical criteria with electrodiagnostic or nerve-biopsy support where obtained), documented pain chronology and distribution within the unexplained-chronic-pain identity's scope, and exclusion of the mimickers with the site-appropriate workup documented."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "PSYCHOPHYSIOLOGICAL",
+        "primaryVector": "An immune-mediated sensory-fiber excitation pathway: post-infectious molecular mimicry antibodies attack dorsal-root-ganglion and peripheral nerve structures producing ectopic discharge in injured axons, with residual deafferentation and central sensitization maintaining nociceptive gain after motor recovery - generating radicular and distal neuropathic pain that presents before or outlasts the weakness (26% still reporting pain at week 26) and loops through workups without diagnosis until the neurologic picture consolidates - the documented acute-to-chronic pain profile that grounds the case-matching edge while individual attribution of a distinct pain disorder remains an association hypothesis.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The edge asserts an association only: the located condition-specific evidence is observational cohort data on pain frequency and persistence without any distinct chronic-pain-disorder diagnosis attributable to GBS in an individual, pain is in substantial part constitutive of the neuropathy itself (tracking severity and dysautonomia) so a separate causal arrow risks double-counting the symptom, competing chronic-pain etiologies (fibromyalgia, small-fiber neuropathy, deconditioning, radiculopathy) are common in the same populations, and all case-matching pain precedents rest at NOT_ESTABLISHED; no probability estimate is asserted.",
+        "evidenceGaps": "Clinical or electrodiagnostically confirmed GBS (Brighton criteria with nerve-conduction studies where obtained) with documented antecedent infection timeline; pain chronology with documented onset (before, during, or after weakness), distribution, and serial severity scores persisting past week 26 within the unexplained-chronic-pain identity's scope; exclusionary workup (nerve-conduction studies or small-fiber testing, glucose tolerance and B12, imaging of the spine) documented; exclusion of fibromyalgia, diabetic or other small-fiber polyneuropathy, musculoskeletal deconditioning pain, radiculopathy, and central post-critical-illness pain; neurology and pain-medicine assessment of the individual relationship",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Fibromyalgia or widespread pain syndrome",
+          "Diabetic, small-fiber, or other metabolic polyneuropathy",
+          "Musculoskeletal deconditioning or joint pain after prolonged immobility",
+          "Lumbosacral radiculopathy or spinal stenosis",
+          "Central post-critical-illness or post-stroke pain"
+        ]
+      },
+      "evidenceGaps": [
+        "Clinical or electrodiagnostically confirmed GBS (Brighton criteria with nerve-conduction studies where obtained) with documented antecedent infection timeline; pain chronology with documented onset (before, during, or after weakness), distribution, and serial severity scores persisting past week 26 within the unexplained-chronic-pain identity's scope; exclusionary workup (nerve-conduction studies or small-fiber testing, glucose tolerance and B12, imaging of the spine) documented; exclusion of fibromyalgia, diabetic or other small-fiber polyneuropathy, musculoskeletal deconditioning pain, radiculopathy, and central post-critical-illness pain; neurology and pain-medicine assessment of the individual relationship"
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY as a case-matching pain edge on the femoral-neuropathy, glomus-tumor, and genitofemoral precedent: condition-specific cohort data documents a high-frequency acute-to-chronic neuropathic pain profile whose early presentations are unexplained and whose exclusionary workup mirrors the unexplained-chronic-pain evaluation, while the constitutive nature of neuropathy pain, competing chronic-pain etiologies, and absent distinct-disorder attribution keep the consensus at NOT_ESTABLISHED with confirmation and alternative-etiology requirements.",
+      "sourceReferences": [
+        {
+          "citation": "Papri N, Mohammed A, Rahman MM, et al. Pain determinants and quality of life in Guillain-Barre syndrome: a prospective cohort study. BMJ Neurol Open. 2024 Dec 11;6(2):e000925. PMID 39687605.",
+          "note": "Prospective cohort of 644 GBS patients documenting pain in 71% at enrollment, 38% at week 13, and 26% at week 26 with chronic pain associated with dysautonomia and the anxiety/depression quality-of-life domain - the acute-to-chronic persistence anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39687605/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 39687605; 644 patients, pain 71% acute, 38% wk13, 26% wk26"
+        },
+        {
+          "citation": "Levison LS, Thomsen RW, Markvardsen LK, et al. Pediatric Guillain-Barre Syndrome in a 30-Year Nationwide Cohort. Pediatr Neurol. 2020 Jun;107:57-63. PMID 32192820.",
+          "note": "Nationwide 30-year pediatric cohort with medical-file review documenting medically treated pain in 70% of GBS cases, mainly confined to the lower extremities - the population-level pain-frequency anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/32192820/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 32192820; nationwide cohort, medically treated pain 70%, lower extremities"
+        },
+        {
+          "citation": "Yao S, Chen H, Zhang Q, et al. Pain during the acute phase of Guillain-Barre syndrome. Medicine (Baltimore). 2018 Aug;97(34):e11595. PMID 30142753.",
+          "note": "Retrospective cohort of 252 acute-phase GBS patients documenting pain in 34.5% with a third reporting pain in the two weeks preceding weakness onset and pain associated with cerebrospinal-fluid protein - the presenting-pain and pre-weakness unexplained-presentation anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/30142753/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 30142753; 252 patients, pain 34.5%, 33% pain before weakness"
+        }
+      ]
+    },
+    {
+      "conditionId": "depressive-disorder",
+      "rank": 2,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The Walteros 2019 prospective cohort of 34 Zika-associated GBS survivors assessed at a median of 17 months documents moderate or moderate-severe depression at age- and sex-adjusted odds of 3.89 versus neighborhood comparison subjects without GBS alongside persistent disability excess, the Witsch 2013 nine-center cohort of 110 mechanically ventilated GBS patients assessed at mean 52.6 months documents anxiety/depression-dimension impairment in about half of survivors with long-term quality of life compromised foremost by immobility and chronic pain, and the Papri 2024 cohort of 644 patients links chronic pain with the anxiety/depression quality-of-life domain - the literature documents a reproducible depression excess in GBS survivors against comparison populations without establishing that GBS caused a major depressive disorder in any individual.",
+        "causationStatus": "The mapping does not assert that GBS caused a distinct depressive disorder in any individual: the depression signal is inseparable from its mediators - persistent disability, chronic pain, immobility, fatigue, and the psychological burden of acute paralysis and ventilation - so the edge records association across the post-illness burden rather than an independent causal arrow (female-infertility and frontal-fibrosizing-alopecia psychological-burden precedent); pre-existing mood disorder, socioeconomic strain, and the single etiology-specific survivor series (Zika-associated) confound attribution, and reverse-direction influence of depression on rehabilitation participation and symptom reporting is plausible; individual claims require confirmed GBS with a structured psychiatric diagnostic assessment (SCID or equivalent) documenting depressive symptoms of grade and duration meeting the depressive-disorder identity's scope, chronology after the neurologic illness, and exclusion of bipolar, substance-induced, medication-induced (corticosteroid, interferon), and thyroid or B12-deficiency mimics per case."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "PSYCHOPHYSIOLOGICAL",
+        "primaryVector": "A post-illness psychological-burden pathway: acute immune-mediated paralysis, ICU care and mechanical ventilation, prolonged immobility, neuropathic pain, and fatigue sustain helplessness and loss-of-role stress while cytokine-mediated sickness behavior and disrupted sleep maintain mood dysregulation - producing a depression excess in survivors (adjusted odds near 4 in the located cohort, impairment in about half of ventilated survivors at mean 4.4 years) that tracks disability and chronic pain rather than a discrete endogenous disease process, so individual attribution remains an association hypothesis under the psychological-burden precedent.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The edge asserts an association only: the located condition-specific evidence is a single etiology-specific survivor cohort with comparison subjects (Zika-associated GBS), a ventilated-patient series without a non-GBS control, and cohort quality-of-life domain data rather than any structured diagnostic-incidence study, the depression signal is mediated through disability, pain, and immobility so an independent causal arrow would overstate the direct pathway, psychiatric and reverse-direction confounders are unexcluded, and the psychological-burden depression precedents all rest at NOT_ESTABLISHED; no probability estimate is asserted.",
+        "evidenceGaps": "Clinical or electrodiagnostically confirmed GBS with documented illness severity, ventilation status, and recovery trajectory; structured psychiatric diagnostic assessment (SCID or equivalent) documenting depressive symptoms of grade and duration meeting the depressive-disorder identity's scope with onset chronology after the neurologic illness; serial disability (GBS disability scale or ODSS), pain, fatigue, and sleep measures documenting the mediating burden; exclusion of pre-existing or recurrent depressive and bipolar disorder, substance-induced mood disorder, corticosteroid- or interferon-induced mood symptoms, and hypothyroidism or B12 deficiency; psychiatry assessment of the individual relationship",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Pre-existing or recurrent major depressive or bipolar disorder",
+          "Substance-induced or medication-induced (corticosteroid, interferon) mood disorder",
+          "Hypothyroidism or vitamin B12 deficiency mimicking fatigue and mood symptoms",
+          "Adjustment disorder or grief reactions without meeting depressive-disorder scope",
+          "Post-critical-illness cognitive or fatigue syndromes without primary depression"
+        ]
+      },
+      "evidenceGaps": [
+        "Clinical or electrodiagnostically confirmed GBS with documented illness severity, ventilation status, and recovery trajectory; structured psychiatric diagnostic assessment (SCID or equivalent) documenting depressive symptoms of grade and duration meeting the depressive-disorder identity's scope with onset chronology after the neurologic illness; serial disability (GBS disability scale or ODSS), pain, fatigue, and sleep measures documenting the mediating burden; exclusion of pre-existing or recurrent depressive and bipolar disorder, substance-induced mood disorder, corticosteroid- or interferon-induced mood symptoms, and hypothyroidism or B12 deficiency; psychiatry assessment of the individual relationship"
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY under the psychological-burden precedent (female-infertility, frontal-fibrosizing-alopecia to depressive-disorder): survivor cohorts document a depression excess against comparison populations and impairment in about half of ventilated survivors at long-term follow-up, while mediation through disability and pain, single-series and no-control limitations, psychiatric and reverse-direction confounders, and precedent norms keep the consensus at NOT_ESTABLISHED with structured-diagnosis and alternative-etiology requirements.",
+      "sourceReferences": [
+        {
+          "citation": "Walteros DM, Soares J, Styczynski AR, et al. Long-term outcomes of Guillain-Barre syndrome possibly associated with Zika virus infection. PLoS One. 2019 Aug 1;14(8):e0220049. PMID 31369576.",
+          "note": "Prospective cohort of 34 Zika-associated GBS survivors assessed at median 17 months documenting moderate or moderate-severe depression at adjusted odds 3.89 and persistent disability excess versus neighborhood comparison subjects - the controlled depression-excess anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/31369576/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 31369576; 34 survivors, depression OR 3.89 vs controls at 17 months"
+        },
+        {
+          "citation": "Witsch J, Galldiks N, Bender A, et al. Long-term outcome in patients with Guillain-Barre syndrome requiring mechanical ventilation. J Neurol. 2013 May;260(5):1367-74. PMID 23299621.",
+          "note": "Nine-center cohort of 110 mechanically ventilated GBS patients assessed at mean 52.6 months documenting anxiety/depression-dimension impairment in about half of survivors, severe fatigue in 30%, and long-term quality of life compromised foremost by immobility and chronic pain - the long-term ventilated-survivor burden anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/23299621/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 23299621; 110 ventilated patients, anxiety/depression impairment ~50% at mean 52.6 months"
+        },
+        {
+          "citation": "Papri N, Mohammed A, Rahman MM, et al. Pain determinants and quality of life in Guillain-Barre syndrome: a prospective cohort study. BMJ Neurol Open. 2024 Dec 11;6(2):e000925. PMID 39687605.",
+          "note": "Prospective cohort of 644 GBS patients documenting that chronic pain at week 26 was significantly associated with the anxiety/depression quality-of-life domain - the pain-to-mood mediating-burden anchor (registry source shared with this batch's pain edge; lockstep dedupes).",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39687605/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 39687605; chronic pain associated with anxiety/depression QoL domain"
+        }
+      ]
+    }
+  ]
 }

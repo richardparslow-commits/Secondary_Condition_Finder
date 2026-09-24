@@ -2,8 +2,69 @@
   "id": "hypertensive-retinopathy",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review otologic, vestibular, audiologic, visual, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 46 (2026-09-24): one ASSOCIATION_ONLY draft mapping pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: the single authored edge asserts association only (etiologicalConsensus NOT_ESTABLISHED, hypothesizedOnly:true) - it records that severe hypertensive retinopathy includes macular and optic-disc edema and that malignant hypertensive retinopathy can produce severe visual loss, not that hypertensive retinopathy caused visual impairment in any individual; individual claims require documentation of the retinopathy grade and of the ocular findings, blood-pressure records with chronology, and exclusion of diabetic, thrombotic, inflammatory, and other retinopathies and of primary ocular disease.",
+    "Duplicate-scope and family guard: the visual-impairment identity already receives nine ocular and optic-nerve windows (glaucoma, cataracts, aphakia, retinal-dystrophy, corneal-scarring, chalazion, ptosis, pituitary-neoplasm, hydrocephalus), none of which is a hypertensive-retinal-microvasculopathy window, so this batch adds the hypertensive-retinopathy window on its own primary; the sibling diabetic-retinopathy identity authors its own retinopathy-specific windows and is not pre-empted (duplicate-scope guard), and no hypertensive-heart-disease, chronic-kidney-disease, or stroke edge is authored because those are consequences of hypertension rather than of the retinopathy."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 46 (2026-09-24): one bounded association edge authored - hypertensive retinopathy to visual impairment (rank 1), ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true, and mechanismCategory MICROVASCULAR_METABOLIC (hypertensive retinal microvascular injury with macular and optic-disc edema). The proposition rests on the Bhargava 2012 review of how hypertension affects the eye, which states that hypertensive retinopathy comprises retinal arteriolar narrowing, arteriovenous nicking, hemorrhages, microaneurysms, and in severe cases optic-disc and macular edema - the anatomic basis for visual impairment - and on the Cortina 2015 case report of acute bilateral loss of central visual acuity due to hypertensive retinopathy level IV from unrecognized malignant hypertension. The edge is not raised to causation: the located evidence is a narrative review plus a single pediatric case, mild-to-moderate hypertensive retinopathy is typically asymptomatic, and visual impairment in the same patients may derive from coexisting diabetic retinopathy, retinal vascular occlusion, or primary ocular disease, so no probability estimate is asserted.",
+    "Negative screens recorded 2026-09-24: (i) no blindness edge - the located evidence documents severe visual loss in malignant hypertensive retinopathy but not incident blindness incidence, and the blindness identity has no current incoming window (zero-record guard); (ii) no retinal-detachment edge - the diabetic-retinopathy identity authors a retinal-detachment window and no condition-specific hypertensive-retinopathy-to-detachment evidence was located (duplicate-scope and zero-record guards); (iii) no stroke, ischemic-heart-disease, congestive-heart-failure, or chronic-kidney-disease edge - those complications flow from hypertension rather than from the retinopathy, and the hypertension identity authors those windows directly (direction and duplicate-scope guards; the Wong and Mitchell review's use of retinopathy as a risk marker for systemic events is noted but is not a retinopathy-to-event causal pathway); (iv) no diabetic-retinopathy edge - that identity is a sibling retinopathy with its own windows and the two are frequently co-present, which would create a parallel pathway (duplicate-scope guard); (v) no glaucoma edge - no condition-specific hypertensive-retinopathy-to-glaucoma evidence was located and glaucoma receives its own incoming windows (zero-record guard); (vi) duplicate-scope note: this batch adds the first hypertensive-retinopathy-primary window to the registry."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "visual-impairment",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Clinical evidence documents visual consequences of severe hypertensive retinopathy: the Bhargava 2012 review describes hypertensive retinopathy as retinal microvascular change that, in severe cases, includes optic-disc and macular edema, and the Cortina 2015 case report documents acute bilateral loss of central visual acuity due to hypertensive retinopathy level IV from unrecognized malignant hypertension - a reproducible severe-retinopathy-to-visual-impairment association rather than an individual causal nexus.",
+        "causationStatus": "Neither causation nor aggravation is established: the located evidence is a narrative review plus a single case report, mild-to-moderate hypertensive retinopathy is typically asymptomatic, and visual impairment in the same patients may derive from coexisting diabetic retinopathy, retinal vascular occlusion, or primary ocular disease, so an individual determination requires documentation of the retinopathy grade and ocular findings, blood-pressure records with chronology, and exclusion of competing retinopathies and ocular causes."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MICROVASCULAR_METABOLIC",
+        "primaryVector": "A hypothesized microvascular route is described: sustained raised blood pressure injures the retinal arterioles and capillary bed, producing arteriolar narrowing, arteriovenous nicking, hemorrhage, and microaneurysm formation, and in severe or accelerated hypertension the breakdown of the blood-retinal barrier leads to macular edema and optic-disc edema with ischemia, which degrades central visual acuity - the anatomic sequence documented in the Bhargava 2012 review and illustrated by the Cortina 2015 case of level-IV retinopathy with acute bilateral visual loss; the review-plus-case evidence base, the typical asymptomatic course of milder grades, and competing retinopathies leave individual attribution hypothesized.",
+        "secondaryVector": "Coexisting diabetic microangiopathy, retinal vascular occlusion, and hypertensive choroidopathy can compound retinal injury, and chronic hypertension also accelerates cataract and other ocular disease, complicating attribution to the retinopathy itself.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The edge asserts an association only: the located evidence is a narrative review plus one case report linking severe hypertensive retinopathy with macular and optic-disc edema and with severe visual loss, without cohort incidence data, and visual impairment in these patients is frequently attributable to coexisting diabetic or vascular retinopathy and to primary ocular disease; an individual claim therefore requires retinopathy grading, ocular and blood-pressure documentation, chronology, and competing-cause review, so no at-least-as-likely-as-not probability is asserted.",
+        "evidenceGaps": "Ophthalmologic documentation of the hypertensive retinopathy grade and findings (arteriolar changes, hemorrhages, macular or optic-disc edema, imaging) with date; serial blood-pressure records with chronology relative to the visual loss; documentation of visual acuity, visual fields, and the ocular examination; evaluation for coexisting diabetic retinopathy, retinal vascular occlusion, and primary ocular disease; assessment of renal function and other end-organ involvement; ophthalmologic assessment of whether the retinopathy materially contributed to the individual visual impairment",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Diabetic retinopathy or diabetic macular edema",
+          "Retinal vein or artery occlusion",
+          "Primary ocular disease (glaucoma, cataract, age-related macular degeneration)",
+          "Inflammatory, infectious, or autoimmune retinopathy",
+          "Optic neuropathy unrelated to blood pressure"
+        ]
+      },
+      "evidenceGaps": [
+        "Ophthalmologic documentation of the hypertensive retinopathy grade and findings (arteriolar changes, hemorrhages, macular or optic-disc edema, imaging) with date; serial blood-pressure records with chronology relative to the visual loss; documentation of visual acuity, visual fields, and the ocular examination; evaluation for coexisting diabetic retinopathy, retinal vascular occlusion, and primary ocular disease; assessment of renal function and other end-organ involvement; ophthalmologic assessment of whether the retinopathy materially contributed to the individual visual impairment"
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY: a review of hypertension's ocular effects documents that severe hypertensive retinopathy includes macular and optic-disc edema, and a case report documents acute bilateral visual loss from level-IV hypertensive retinopathy in malignant hypertension, establishing a reproducible severe-retinopathy-to-visual-impairment association; the edge is not raised to causation because the evidence is a review plus a single case without cohort incidence data and competing retinopathies and ocular disease are common, so the consensus remains NOT_ESTABLISHED with retinopathy-grading, blood-pressure, chronology, and competing-cause requirements; no probability estimate is asserted.",
+      "sourceReferences": [
+        {
+          "citation": "Bhargava M, Ikram MK, Wong TY. How does hypertension affect your eyes? J Hum Hypertens. 2012 Feb;26(2):71-83. doi:10.1038/jhh.2011.37. PMID 21509040.",
+          "note": "Review of the ocular effects of hypertension describing hypertensive retinopathy as retinal microvascular change that in severe cases includes optic-disc and macular edema - the anatomic-basis anchor for the retinopathy-to-visual-impairment association.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/21509040/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-24",
+          "sourceLocator": "PMID 21509040; hypertensive retinopathy with optic-disc and macular edema in severe cases"
+        },
+        {
+          "citation": "Cortina G, Hofer J, Giner T, Jungraithmayr T. Severe visual loss caused by unrecognized malignant hypertension in a 15-year-old girl. Pediatr Int. 2015 Apr;57(2):e42-4. doi:10.1111/ped.12525. PMID 25868960.",
+          "note": "Case report of acute bilateral loss of central visual acuity due to hypertensive retinopathy level IV from unrecognized malignant hypertension - the case-level anchor recording severe visual loss attributable to high-grade hypertensive retinopathy.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/25868960/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-24",
+          "sourceLocator": "PMID 25868960; acute bilateral central visual loss with level-IV hypertensive retinopathy in malignant hypertension"
+        }
+      ]
+    }
+  ]
 }

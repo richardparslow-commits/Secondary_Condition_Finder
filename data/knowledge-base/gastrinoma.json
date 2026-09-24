@@ -2,8 +2,77 @@
   "id": "gastrinoma",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review hormonal, metabolic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 36 (2026-09-23): DIRECT_CAUSATION draft pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: the mapping asserts the gastrinoma-to-peptic-ulcer causal chain at PROBABLE strength under the obstruction-mechanical and structural-lesion DIRECT precedents - documented gastrinoma with hypergastrinemia-driven acid hypersecretion producing peptic ulceration, with healing and prevention documented under antisecretory control and tumor treatment; individual claims require biochemical confirmation of the syndrome (fasting gastrin, acid output), documented ulcer disease, chronology (symptoms may precede tumor localization by years, so date the tumor's biological presence conservatively), and exclusion of Helicobacter pylori, NSAID, and stress-related ulcer etiologies as independent causes."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 36 (2026-09-23): one DIRECT_CAUSATION edge authored under the hormonal-excess-with-treatment-response pattern - the Norton 2005 review defines Zollinger-Ellison syndrome as a clinical syndrome with severe peptic ulcer disease and diarrhea caused by gastric acid hypersecretion secondary to the gastrin-secreting neuroendocrine tumor (the textbook causal statement), the Wilcox 2011 prospective 20-year lansoprazole trial of 72 patients documents the stereotypical presentation with ulcers, median nine-year symptom delay before diagnosis, gastric acid analysis, and sustained response to antisecretory therapy, and the Guarnotta 2018 review documents that treatment of gastrinoma and Zollinger-Ellison syndrome is aimed at controlling acid hypersecretion with proton pump inhibitors as the cornerstone; the gastrin-to-acid-to-ulcer chain with antisecretory response is the defining pathophysiology, so PROBABLE with hypothesizedOnly:false mirrors the esophagitis-to-stricture and fecal-impaction precedents rather than the stronger-than-supported WELL_ESTABLISHED tier.",
+    "Negative screens recorded 2026-09-23: (i) the Zollinger-Ellison diarrhea and steatorrhea literature returned only a 1980 case-level report and exocrine-pancreatic-insufficiency guidance with no modern condition-specific malabsorption quantification, so no malabsorption-syndrome edge is authored; (ii) no catalog identity exists for chronic diarrhea; (iii) malignant-gastrinoma hepatic metastasis outcomes have no catalog-fit target (liver-cancer identity is primary hepatic cancer). Guards recorded in-file: Helicobacter pylori and NSAID ulcers are excluded per case (no Helicobacter identity exists in the catalog, so attribution for ulcer disease runs through documented etiologies rather than an infection identity); MEN1 and familial gastrinoma scope is preserved; an ulcer may present years before tumor localization, so chronology requires the tumor's biological presence to be established rather than its diagnosis date."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "peptic-ulcer-disease",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "DIRECT_CAUSATION",
+        "etiologicalTrigger": "Documented gastrinoma (the Zollinger-Ellison syndrome alias of this identity) with biochemical confirmation of hypergastrinemia and inappropriate gastric acid hypersecretion - gastrin drives ECL-cell and parietal-cell hyperplasia and sustained maximal acid output, and the resulting ulcer disease is the syndrome's defining complication at locations that may extend beyond the stomach and duodenum.",
+        "mechanismSummary": "The tumor's unrestrained gastrin secretion stimulates enterochromaffin-like cell and parietal-cell proliferation with sustained maximal acid output; acid-pepsin injury overwhelms mucosal defense (mucus-bicarbonate barrier, prostaglandin-mediated perfusion, epithelial restitution) and breaches the mucosa into the submucosa as peptic ulceration, conventionally at atypical distal sites in this syndrome; antisecretory proton pump inhibition heals ulcers and prevents recurrence while tumor control removes the gastrin drive - the treatment-response pattern that grounds the obstruction-mechanical and structural-lesion DIRECT precedents."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "NEUROENDOCRINE_CASCADE",
+        "primaryVector": "A hormonal hypersecretion cascade: gastrinoma cells secrete gastrin autonomously (loss of normal feedback), circulating gastrin expands the oxyntic mucosa through ECL-cell trophic drive and parietal-cell stimulation, basal and stimulated acid output rise to the upper physiologic range or beyond, and the chronically acidified duodenal and gastric lumens injure the mucosa faster than defenses (bicarbonate, mucus, prostaglandins, mucosal blood flow) can repair, progressing from erosions to full-thickness peptic ulcers; acid suppression collapses the final step (ulcer healing with recurrence only while the drive persists), confirming the chain as a graded causal mechanism documented prospectively in Zollinger-Ellison cohorts.",
+        "hypothesizedOnly": false
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "PROBABLE",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The causal chain is the defining pathophysiology of the syndrome with prospective treatment-response documentation (antisecretory therapy heals and prevents ulcers; tumor-directed therapy removes the drive), but PROBABLE rather than WELL_ESTABLISHED is used because the supporting series are modest in size (a 72-patient prospective trial and narrative reviews), ulcers in an individual with a gastrinoma can still arise from Helicobacter pylori, NSAID, or stress pathways, and no population-level counterfactual quantifies ulcer incidence attributable to gastrinoma alone; no probability estimate is asserted.",
+        "evidenceGaps": "Biochemical confirmation of gastrinoma (fasting serum gastrin with secretin stimulation if needed, basal and maximal acid output documentation); endoscopic documentation of gastric or duodenal (or atypical distal) ulcer with healing evidence under antisecretory therapy or after tumor treatment; Helicobacter pylori status testing and NSAID or antiplatelet exposure history; chronology documentation dating the tumor's biological presence rather than diagnosis (symptoms precede diagnosis by a median of nine years in the prospective cohort); MEN1/familial context workup; gastroenterology and endocrinology assessment of the individual relationship",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Helicobacter pylori-associated gastric or duodenal ulcer",
+          "NSAID or antiplatelet medication ulcer",
+          "Stress-related mucosal disease",
+          "Idiopathic Helicobacter-negative ulcer",
+          "Other gastrin-independent acid hypersecretion states"
+        ]
+      },
+      "evidenceGaps": [
+        "Biochemical confirmation of gastrinoma (fasting serum gastrin with secretin stimulation if needed, basal and maximal acid output documentation); endoscopic documentation of gastric or duodenal (or atypical distal) ulcer with healing evidence under antisecretory therapy or after tumor treatment; Helicobacter pylori status testing and NSAID or antiplatelet exposure history; chronology documentation dating the tumor's biological presence rather than diagnosis (symptoms precede diagnosis by a median of nine years in the prospective cohort); MEN1/familial context workup; gastroenterology and endocrinology assessment of the individual relationship"
+      ],
+      "rationale": "Authored at DIRECT_CAUSATION, PROBABLE, hypothesizedOnly:false under the obstruction-mechanical and structural-lesion precedents: the gastrin-acid-ulcer chain is definitional pathophysiology with prospective antisecretory and tumor-treatment response documentation, while independent ulcer etiologies (H. pylori, NSAID, stress) and modest series sizes keep the consensus at PROBABLE with per-case etiology exclusion required.",
+      "sourceReferences": [
+        {
+          "citation": "Norton JA. Surgical treatment and prognosis of gastrinoma. Best Pract Res Clin Gastroenterol. 2005;19(5):799-805. PMID 16253901.",
+          "note": "Review defining Zollinger-Ellison syndrome as severe peptic ulcer disease and diarrhea caused by gastric acid hypersecretion secondary to the gastrin-secreting neuroendocrine tumor, with tumor-size-based malignant potential and surgical cure settings - the causal-definition anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/16253901/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 16253901; gastrinoma acid hypersecretion defined as cause of severe peptic ulcer disease"
+        },
+        {
+          "citation": "Wilcox CM, Seay T, Arcury JT, et al. Zollinger-Ellison syndrome: presentation, response to therapy, and outcome. Dig Liver Dis. 2011;43(6):439-443. PMID 21193359.",
+          "note": "Twenty-year prospective lansoprazole trial of 72 patients documenting stereotypical presentation with ulcer disease, median nine-year symptom delay before diagnosis, gastric acid analysis follow-up, and sustained antisecretory response - the prospective presentation-and-response anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/21193359/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 21193359; 72-patient prospective ZES presentation with acid analysis and therapy response"
+        },
+        {
+          "citation": "Guarnotta V, Martini C, Davì MV, et al. The Zollinger-Ellison syndrome: is there a role for somatostatin analogues in the treatment of the gastrinoma? Endocrine. 2018;60(1):15-27. PMID 29019150.",
+          "note": "Review documenting that treatment of gastrinoma and Zollinger-Ellison syndrome is aimed at controlling acid hypersecretion and tumor progression, with proton pump inhibition as the cornerstone of syndrome control - the acid-control and prevention anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/29019150/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 29019150; PPI cornerstone controlling gastrinoma acid hypersecretion"
+        }
+      ]
+    }
+  ]
 }

@@ -2,8 +2,69 @@
   "id": "insulinoma",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review hormonal, metabolic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 48 (2026-09-24): one DIRECT_CAUSATION draft mapping pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: the single authored edge is classified DIRECT_CAUSATION with etiologicalConsensus PROBABLE and hypothesizedOnly:false because autonomous insulin secretion by a pancreatic beta-cell tumour is the established proximate mechanism of endogenous hyperinsulinism, documented at review level and mirrored by the existing glucagonoma-to-diabetes-mellitus direct-causation window; individual claims still require biochemical documentation of hyperinsulinaemic hypoglycaemia, tumour localization or histopathology, chronology, and exclusion of the competing causes of endogenous hyperinsulinism listed below.",
+    "Intermediate-node guard: the direct target is hyperinsulinism rather than hypoglycemia because the catalogue carries hyperinsulinism as the immediate functional node and that identity already authors the hypoglycemia window (with dementia and seizure-disorder downstream of it), so an insulinoma-to-hypoglycemia edge would skip and double-count the intermediate pathway; no edge is authored to cognitive-disorder or seizure-disorder for the same reason.",
+    "Duplicate-scope and constitutive guards: the hyperinsulinism identity receives only the batch-46 window from hyperinsulinism's own authoring and no incoming window, so this batch adds the first insulinoma-primary window; insulinoma is not treated as identical to hyperinsulinism because the tumour is an anatomical and histological entity while the hyperinsulinaemic state is its functional consequence, consistent with the glucagonoma-to-diabetes-mellitus precedent; no diabetes-mellitus edge is authored from insulinoma because the located literature addresses pre-operative hypoglycaemia rather than post-resection glycaemic outcomes (treatment-state and zero-record guards)."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 48 (2026-09-24): one bounded direct-causation edge authored - insulinoma to hyperinsulinism (rank 1), DIRECT_CAUSATION with etiologicalConsensus PROBABLE, vaNexusProbabilityAlignment AT_LEAST_AS_LIKELY_AS_NOT, hypothesizedOnly:false, and mechanismCategory NEUROENDOCRINE_CASCADE (autonomous beta-cell insulin secretion uncoupled from glucose). The proposition rests on the Arya 2014 review of hyperinsulinaemic hypoglycaemia, which states that insulin secretion from pancreatic beta cells is tightly regulated to maintain fasting blood glucose between 3.5 and 5.5 mmol/L and that in hyperinsulinaemic hypoglycaemia insulin secretion becomes unregulated so that it persists despite low blood glucose, and records that in adults an insulinoma is the commonest cause of hyperinsulinaemic hypoglycaemia, and on the Shah 2017 Lancet Diabetes and Endocrinology review, which states that insulin secretion becomes dysregulated and uncoupled from glucose metabolism in hyperinsulinaemic hypoglycaemia and that in adults the disorder can be due either to beta-cell tumours (insulinomas) or to beta-cell hyperplasia. Both sources name the tumour as the cause of the dysregulated insulin-secretion state, matching the mechanism standard applied to the existing glucagonoma-to-diabetes-mellitus direct-causation window; the edge is bounded to the hyperinsulinaemic state, with hypoglycaemia, dementia, and seizure-disorder remaining downstream windows of the hyperinsulinism identity.",
+    "Counter-evidence and caveat screens recorded 2026-09-24: (i) differential causes - post-bariatric hypoglycaemia, non-insulinoma pancreatogenous hypoglycaemia syndrome, insulinomatosis, congenital channel and enzyme defects, and exogenous insulin or sulfonylurea exposure all produce the same dysregulated-insulin phenotype, so the biochemical pattern alone does not attribute the state to a tumour and the tumour must be documented by imaging or histopathology; (ii) population and age caveat - the located statements about insulinoma as the commonest adult cause of hyperinsulinaemic hypoglycaemia apply to adults, whereas in neonates and children the disorder is predominantly genetic; (iii) treatment and prognosis caveat - the located insulinoma-surgery literature addresses cure and hypoglycaemia prevention rather than post-resection diabetes, so no diabetes-mellitus edge is authored (treatment-state guard).",
+    "Negative screens recorded 2026-09-24: (i) no hypoglycemia edge - hyperinsulinism is the immediate catalogue node and already authors the hypoglycaemia window, so a direct edge would skip and double-count the intermediate pathway (intermediate-chain guard); (ii) no cognitive-disorder, seizure-disorder, or dementia edge - those windows sit downstream of hypoglycaemia in the registry and would triple-count the same pathway (intermediate-chain guard); (iii) no diabetes-mellitus or diabetes-mellitus-type-2 edge - the located evidence concerns hypoglycaemia and cure rather than post-resection glycaemic outcomes and no condition-specific denominators for diabetes after insulinoma resection were located (treatment-state and zero-record guards); (iv) no pancreatitis or pancreatic-cancer edge - the located literature addresses tumour localization and management rather than incident pancreatitis, and both identities belong to their own primaries (zero-record and duplicate-scope guards); (v) no hyperinsulinism-to-hypoglycaemia duplication, no insulinomatosis or nesidioblastosis edge, and no malnutrition or weight-gain edge - those identities are absent or lack condition-specific data (wrong-target and zero-record guards); (vi) duplicate-scope note: this batch adds the first insulinoma-primary window to the registry."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "hyperinsulinism",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "DIRECT_CAUSATION",
+        "etiologicalTrigger": "Documented insulinoma (pancreatic beta-cell tumour localized by imaging or confirmed histologically) -> autonomous insulin secretion uncoupled from the prevailing glucose concentration -> claimed endogenous hyperinsulinism when the biochemical profile of hyperinsulinaemic hypoglycaemia is documented, the tumour is confirmed, and competing causes of dysregulated insulin secretion are excluded."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "NEUROENDOCRINE_CASCADE",
+        "primaryVector": "Autonomous insulin secretion from a pancreatic beta-cell tumour bypasses the normal glucose-dependent regulation of the beta cell so that insulin release persists when plasma glucose is low, which is the defining physiological derangement of hyperinsulinaemic hypoglycaemia described in the Arya 2014 review (insulin secretion becomes unregulated and persists despite low blood glucose) and in the Shah 2017 Lancet review (insulin secretion becomes dysregulated and uncoupled from glucose metabolism, and in adults the disorder can be due to beta-cell tumours); because the same insulin excess suppresses lipolysis and ketogenesis, the resulting state is the hyperinsulinaemic one that the hyperinsulinism identity carries, with hypoglycaemia as its downstream window.",
+        "hypothesizedOnly": false
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "PROBABLE",
+        "vaNexusProbabilityAlignment": "AT_LEAST_AS_LIKELY_AS_NOT",
+        "conservativeRationale": "The edge is authored at direct causation with probable etiologic consensus because two review-level sources state that insulin secretion in hyperinsulinaemic hypoglycaemia becomes dysregulated and uncoupled from glucose and that in adults an insulinoma is the commonest cause of that state, and because autonomous tumoural insulin secretion is the established proximate mechanism, mirroring the glucagonoma-to-diabetes-mellitus window; an at-least-as-likely-as-not alignment is asserted only where the biochemical hyperinsulinaemic profile and a confirmed tumour are documented and competing causes of dysregulated insulin secretion are excluded.",
+        "evidenceGaps": "Biochemical documentation of the hyperinsulinaemic state during a spontaneous or provoked hypoglycaemic episode (plasma glucose, insulin, C-peptide, proinsulin, beta-hydroxybutyrate, and the response to glucagon) with dates; documentation of the tumour (cross-sectional or functional imaging findings, endoscopic ultrasound or selective arterial calcium stimulation results, intraoperative findings, and histopathology or grade where obtained); the chronology of the episodes relative to diagnosis and to the tumour confirmation; a supervised fast or mixed-meal test result where performed; exclusion of competing causes of endogenous hyperinsulinism including post-bariatric hypoglycaemia, non-insulinoma pancreatogenous hypoglycaemia syndrome, insulinomatosis, congenital channel or enzyme defects, and exogenous insulin or sulfonylurea exposure; relevant genetic testing where a congenital form is suspected; endocrinology or surgical assessment of whether the insulinoma materially contributed to the hyperinsulinaemic state",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Post-bariatric (post-gastric-bypass) hypoglycaemia",
+          "Non-insulinoma pancreatogenous hypoglycaemia syndrome or insulinomatosis",
+          "Congenital hyperinsulinism from channel or enzyme gene variants",
+          "Exogenous insulin, sulfonylurea, or other hypoglycaemic drug exposure",
+          "Counter-regulatory or organ failure-related hypoglycaemia (adrenal, hepatic, or renal disease)"
+        ]
+      },
+      "evidenceGaps": [
+        "Biochemical documentation of the hyperinsulinaemic state during a spontaneous or provoked hypoglycaemic episode (plasma glucose, insulin, C-peptide, proinsulin, beta-hydroxybutyrate, and the response to glucagon) with dates; documentation of the tumour (cross-sectional or functional imaging findings, endoscopic ultrasound or selective arterial calcium stimulation results, intraoperative findings, and histopathology or grade where obtained); the chronology of the episodes relative to diagnosis and to the tumour confirmation; a supervised fast or mixed-meal test result where performed; exclusion of competing causes of endogenous hyperinsulinism including post-bariatric hypoglycaemia, non-insulinoma pancreatogenous hypoglycaemia syndrome, insulinomatosis, congenital channel or enzyme defects, and exogenous insulin or sulfonylurea exposure; relevant genetic testing where a congenital form is suspected; endocrinology or surgical assessment of whether the insulinoma materially contributed to the hyperinsulinaemic state"
+      ],
+      "rationale": "Authored at DIRECT_CAUSATION / PROBABLE: two review-level sources state that insulin secretion in hyperinsulinaemic hypoglycaemia becomes dysregulated and uncoupled from glucose metabolism and that in adults an insulinoma is the commonest cause of that state (with beta-cell tumours or beta-cell hyperplasia named as the adult causes), establishing autonomous tumoural insulin secretion as the proximate mechanism; the alignment is asserted at at-least-as-likely-as-not only where the biochemical hyperinsulinaemic profile and a confirmed tumour are documented and competing causes are excluded, mirroring the existing glucagonoma-to-diabetes-mellitus direct-causation window; the edge is bounded to the hyperinsulinaemic state because the hyperinsulinism identity already carries the hypoglycaemia window.",
+      "sourceReferences": [
+        {
+          "citation": "Arya VB, Mohammed Z, Blankenstein O, De Lonlay P, Hussain K. Hyperinsulinaemic hypoglycaemia. Horm Metab Res. 2014 Mar;46(3):157-170. doi:10.1055/s-0034-1367063. PMID 24557504.",
+          "note": "Review of hyperinsulinaemic hypoglycaemia stating that insulin secretion from pancreatic beta cells becomes unregulated in the disorder so that it persists despite low blood glucose, and recording that in adults an insulinoma is the commonest cause of hyperinsulinaemic hypoglycaemia - the explicit insulinoma-as-cause statement anchoring the edge.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/24557504/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-24",
+          "sourceLocator": "PMID 24557504; unregulated insulin secretion persisting at low blood glucose; in adults an insulinoma is the commonest cause of hyperinsulinaemic hypoglycaemia"
+        },
+        {
+          "citation": "Shah P, Rahman SA, Demirbilek H, Guemes M, Hussain K. Hyperinsulinaemic hypoglycaemia in children and adults. Lancet Diabetes Endocrinol. 2017 Sep;5(9):729-742. doi:10.1016/S2213-8587(16)30323-0. PMID 27915035.",
+          "note": "Lancet review stating that in hyperinsulinaemic hypoglycaemia insulin secretion becomes dysregulated and uncoupled from glucose metabolism so that it persists at low plasma glucose, and that in adults the disorder accounts for 0.5-5.0% of hypoglycaemia cases and can be due either to beta-cell tumours (insulinomas) or beta-cell hyperplasia - the mechanism and adult-cause anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/27915035/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-24",
+          "sourceLocator": "PMID 27915035; dysregulated insulin secretion uncoupled from glucose; in adults due either to beta-cell tumours (insulinomas) or beta-cell hyperplasia"
+        }
+      ]
+    }
+  ]
 }

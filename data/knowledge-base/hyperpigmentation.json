@@ -2,8 +2,11 @@
   "id": "hyperpigmentation",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review dermatologic, autoimmune, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 batch 46 (2026-09-24): deferred on manifestation-identity grounds - no edges authored; the identity is retained as a draft with suggestions: [] pending a qualified-human governance decision.",
+    "Revisit only if a condition-specific evidence base for the generic hyperpigmentation identity (a cohort or series of hyperpigmentation patients, not melasma-, drug-, or disease-site-specific subgroups, with a catalog-fit secondary outcome such as depressive-disorder or a defined dermatologic complication) becomes available, or if governance redefines this identity around a specific pigmentary disorder; do not author edges by pooling melasma, post-inflammatory, or drug-induced hyperpigmentation literature under the generic label, and do not mirror the vitiligo-to-depressive-disorder or alopecia-areata-to-depressive-disorder edges without hyperpigmentation-specific directional data."
+  ],
+  "governanceNotes": [
+    "D1 batch 46 (2026-09-24): deferred. Manifestation-identity screen recorded 2026-09-24: (i) the catalog identity is a generic dermatologic sign rather than a specific disease, and the located literature concerns defined pigmentary or exposure-specific entities - melasma quality-of-life and treatment studies, imipramine-induced hyperpigmentation, and disease-site hyperpigmentation - so applying those results to the generic identity would be an entity mismatch (entity-mismatch guard); (ii) the nearest catalog-fit targets for a pigmentary-disorder psychosocial window are depressive-disorder and anxiety-disorder, whose existing incoming windows are owned by defined primary dermatoses (vitiligo, alopecia-areata, acne-scarring, hidradenitis-suppurativa), not by a generic sign, and no condition-specific hyperpigmentation-primary psychosocial quantification was located (zero-record and duplicate-scope guards); (iii) no secondary-skin-infection, endocrine, or malignancy edge was authored - hyperpigmentation is a downstream manifestation of those primaries (Addison disease, hemochromatosis, drug exposure) rather than their cause, so the direction would be inverted (direction-inversion guard). Reopening condition: a generic-hyperpigmentation-primary evidence base with a catalog-fit outcome, or a governance decision that narrows this identity to a specific pigmentary disorder."
   ],
   "suggestions": []
 }

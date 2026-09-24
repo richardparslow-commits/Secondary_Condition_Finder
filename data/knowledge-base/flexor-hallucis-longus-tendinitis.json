@@ -2,8 +2,77 @@
   "id": "flexor-hallucis-longus-tendinitis",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review biomechanical, post-injury, orthopedic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 35 (2026-09-23): ASSOCIATION_ONLY draft pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: case-matching edge following the batch-30 episcleritis and erythromelalgia and batch-34 femoral-neuropathy unexplained-chronic-pain precedent - the documented posterior-ankle and hallux pain feature of flexor hallucis longus tendinitis is mapped as a pain-burden association only, with the target's own criteria requiring competing pain generators excluded at the individual level; individual claims require documented FHL tendinopathy (clinical provocation testing and/or MRI or ultrasound confirmation), documented pain distribution and chronology, and exclusion of osteochondral, tarsal, entrapment, inflammatory, and referred lumbar generators."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 35 (2026-09-23): one bounded unexplained-chronic-pain association authored under the pain-constitutive case-matching precedent - the Rietveld 2018 systematic review of operative treatment of posterior ankle impingement syndrome and FHL tendinopathy in dancers (27 studies, 324 dancers, 376 ankles) documents pain-directed treatment outcomes with good-to-excellent results in 89% and mean return to dance of 11 weeks, the Baillie 2022 case-control study of 82 elite participants documents posterior ankle pain on body chart and plantarflexion provocation as the clinical features evaluated against FHL and os-trigonum imaging findings, and the Ivanova 2023 dance-medicine review documents significant plantarflexion producing FHL tendonitis as a recognized overload entity; the pain feature is constitutive/presenting rather than a proven downstream outcome, so the edge serves case-matching only exactly as the batch-30 and batch-34 pain edges do.",
+    "Negative screens recorded 2026-09-23: (i) no cohort quantifies FHL tendinitis evolving into an incident chronic-pain syndrome - the outcome literature is treatment-response series measuring pain relief after intervention rather than chronic-pain incidence; (ii) posterior ankle impingement syndrome is not a catalog identity and frequently coexists with FHL tendinopathy (Rietveld review scope), so the edge is scoped to the FHL tendinitis identity with coexisting impingement documented rather than assumed; (iii) falls, gait, and hallux-rigidus progression outcomes returned no FHL-identity outcome cohort. Duplicate-scope note: the unexplained-chronic-pain target carries three incoming edges (episcleritis and erythromelalgia on small-fiber mechanisms, femoral-neuropathy on large-fiber mononeuropathy); this edge adds the tendinopathic overuse-nociception mechanism with an independent dance-medicine evidence base."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "unexplained-chronic-pain",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The Rietveld 2018 systematic review documents FHL tendinopathy ('dancers' tendinitis') alongside posterior ankle impingement syndrome with pain-directed treatment outcomes across 324 dancers, the Baillie 2022 case-control study documents posterior ankle pain on body chart and provocation testing as the clinical feature set evaluated alongside FHL imaging findings in 82 elite participants, and the Ivanova 2023 review documents repetitive extreme plantarflexion overload producing FHL tendonitis as a recognized dance-medicine entity; the literature documents the pain feature of the identity without establishing that FHL tendinitis produces a primary chronic-pain syndrome in an individual.",
+        "causationStatus": "The mapping does not assert that flexor hallucis longus tendinitis causes the target's unexplained-pain state: the pain is the presenting complaint constitutive of the identity rather than a demonstrated downstream outcome, the documented tendon pathology is itself a pain generator that the target's own criteria treat as a competing generator to characterize carefully, and osteochondral injury of the talar dome or metatarsal heads, tarsal coalition, sinus tarsi pathology, tarsal tunnel or digital nerve entrapment, inflammatory arthropathy, and referred lumbar radiculopathy mimic or accompany posterior-ankle and first-ray pain; individual claims require documented FHL tendinopathy with provocation testing and/or imaging confirmation, documented pain distribution and chronology, and exclusion of the competing generators per the target's criteria."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "BIOMECHANICAL_ALTERATION",
+        "primaryVector": "A hypothesized overuse-nociception pathway: repetitive extreme plantarflexion and pointe work load the flexor hallucis longus tendon within its retromalleolar groove and sheath, producing mechanical tenosynovitis and tendinopathy that generates persistent nociceptive input from the posterior ankle and hallux region; sustained nociceptive input can outlast the provocative activity and, in a subset of patients, drive pain persistence beyond the expected healing window with secondary pain amplification - consistent with the treatment literature reporting pain as the symptom that brings dancers to care and pain relief as its endpoint - while the pathway remains a hypothesis about an individual's evolution into a chronic-pain state because no cohort tracks FHL tendinitis patients for incident chronic-pain syndromes.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is a case-matching association only: the pain evidence is presenting-symptom and treatment-response data from a surgical systematic review, a case-control study of clinical features, and a narrative mechanism review, no FHL-tendinitis cohort quantifies chronic-pain incidence or chronic-pain-syndrome evolution, the identity's defining pathology is tendon overload rather than a primary pain disorder, and competing posterior-ankle and foot pain generators are common in the same distributions; no probability estimate is asserted.",
+        "evidenceGaps": "Clinical examination documenting FHL tendinopathy (posteromedial ankle and hallux pain with provocation on resisted hallux extension or maximal plantarflexion) with MRI or ultrasound confirmation of tenosynovitis or tendinopathy; pain documentation with distribution, severity scale, and chronology relative to tendinitis onset and activity exposure; persistence of pain beyond the expected healing course if a chronic-pain state is claimed; exclusion of osteochondral lesions, tarsal coalition, sinus tarsi pathology, tarsal tunnel or digital nerve entrapment, inflammatory arthropathy, and referred lumbar radiculopathy; sports-medicine, podiatry, or orthopedic assessment of the individual relationship",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Osteochondral lesions of the talar dome or metatarsal heads",
+          "Tarsal coalition or sinus tarsi pathology",
+          "Tarsal tunnel or digital nerve entrapment",
+          "Inflammatory arthropathy of the ankle or first metatarsophalangeal joint",
+          "Referred lumbar radiculopathy or peripheral arterial disease"
+        ]
+      },
+      "evidenceGaps": [
+        "Clinical examination documenting FHL tendinopathy (posteromedial ankle and hallux pain with provocation on resisted hallux extension or maximal plantarflexion) with MRI or ultrasound confirmation of tenosynovitis or tendinopathy; pain documentation with distribution, severity scale, and chronology relative to tendinitis onset and activity exposure; persistence of pain beyond the expected healing course if a chronic-pain state is claimed; exclusion of osteochondral lesions, tarsal coalition, sinus tarsi pathology, tarsal tunnel or digital nerve entrapment, inflammatory arthropathy, and referred lumbar radiculopathy; sports-medicine, podiatry, or orthopedic assessment of the individual relationship"
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY following the batch-30 pain-constitutive case-matching precedent: the documented posterior-ankle pain feature of FHL tendinitis supports case matching with the chronic-pain target while the target's competing-generator criteria govern individual claims; no causal claim of primary-pain-syndrome evolution is forced.",
+      "sourceReferences": [
+        {
+          "citation": "Rietveld ABM, Hagemans FMT, Haitjema S, et al. Results of Treatment of Posterior Ankle Impingement Syndrome and Flexor Hallucis Longus Tendinopathy in Dancers: A Systematic Review. J Dance Med Sci. 2018;22(1). PMID 29510786.",
+          "note": "Systematic review of 27 studies (324 dancers, 376 ankles) of operative treatment for posterior ankle impingement syndrome and FHL tendinopathy with good-to-excellent outcomes in 89% and mean 11-week return to dance - the pain-outcome anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/29510786/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 29510786; 89% good-to-excellent pain outcomes, mean 11-week return to dance"
+        },
+        {
+          "citation": "Baillie P, Ferrar K, Cook J, et al. Posterior Ankle Impingement Syndrome Clinical Features Are Not Associated With Imaging Findings in Elite Ballet Dancers and Athletes. Clin J Sport Med. 2022;32(6). PMID 36315819.",
+          "note": "Case-control study of 82 elite participants documenting posterior ankle pain on body chart and plantarflexion provocation as the clinical features evaluated alongside FHL and os-trigonum imaging findings - the pain-presentation anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36315819/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 36315819; clinical pain features versus imaging in 82 elite participants"
+        },
+        {
+          "citation": "Ivanova V, Todd NW, Yurgelon J, et al. Dance-Related Foot and Ankle Injuries and Pathologies. Clin Podiatr Med Surg. 2023;40(1). PMID 36368843.",
+          "note": "Dance-medicine review documenting that significant plantarflexion leads to posterior joint impingement and FHL tendonitis, with conservative treatment beginning with immobilization, physical therapy, and activity cessation - the overload-mechanism anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36368843/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 36368843; plantarflexion overload producing FHL tendonitis"
+        }
+      ]
+    }
+  ]
 }

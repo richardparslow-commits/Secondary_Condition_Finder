@@ -146,7 +146,7 @@ describe("Mapping Expansion Batch ME-4", () => {
     expect(files).toHaveLength(813);
     expect(mappings.filter((mapping) => mapping.draft === false)).toHaveLength(140);
     expect(mappings.filter((mapping) => mapping.draft === true)).toHaveLength(673);
-    expect(mappings.reduce((sum, mapping) => sum + (mapping.suggestions ?? []).length, 0)).toBe(500);
+    expect(mappings.reduce((sum, mapping) => sum + (mapping.suggestions ?? []).length, 0)).toBe(579);
     expect(
       mappings.filter((mapping) => mapping.draft === false && (mapping.suggestions ?? []).length === 1),
     ).toHaveLength(67);
@@ -156,9 +156,9 @@ describe("Mapping Expansion Batch ME-4", () => {
     const refs = mappings.flatMap((mapping) =>
       (mapping.suggestions ?? []).flatMap((suggestion) => suggestion.sourceReferences ?? []),
     );
-expect(refs).toHaveLength(746);
-    expect(refs.filter((ref) => ref.verified === true)).toHaveLength(380);
-expect(refs.filter((r) => r.verified === false)).toHaveLength(366);
+expect(refs).toHaveLength(943);
+    expect(refs.filter((ref) => ref.verified === true)).toHaveLength(382);
+expect(refs.filter((r) => r.verified === false)).toHaveLength(561);
   });
 
   it("passes citation and master-registry gates after ME-7 verification", { timeout: 30_000 }, () => {
@@ -175,10 +175,10 @@ expect(refs.filter((r) => r.verified === false)).toHaveLength(366);
       hardFindingCount: number;
     };
     expect(citation).toMatchObject({
-      references: 746,
-      verified: 380,
-      verifiedProvenance: 386,
-      unverified: 366,
+      references: 943,
+      verified: 382,
+      verifiedProvenance: 388,
+      unverified: 561,
       reviewFindingCount: 0,
       hardFindingCount: 0,
     });
@@ -194,8 +194,8 @@ expect(refs.filter((r) => r.verified === false)).toHaveLength(366);
     };
     expect(master).toMatchObject({
       status: "PASS",
-      relationships: 500,
-      pendingVerificationSourceEntities: 327,
+      relationships: 579,
+      pendingVerificationSourceEntities: 515,
     });
   });
 });

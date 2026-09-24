@@ -2,7 +2,142 @@
   "id": "hallux-valgus",
   "draft": true,
   "todo": [
-    "Rebuild secondary-condition suggestions with condition-specific clinical evidence before publication."
+    "D1 draft-authoring batch 42 (2026-09-24): two ASSOCIATION_ONLY draft mappings pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: both edges assert association only (etiologicalConsensus NOT_ESTABLISHED, hypothesizedOnly:true) - they record that hallux-valgus populations carry excess lesser-metatarsal pain and chronic forefoot pain, not that the bunion deformity caused metatarsalgia or a chronic pain syndrome in any individual; individual claims require documented hallux valgus (angular deformity on weight-bearing imaging or clinical measurement) with separately documented metatarsalgia or chronic forefoot pain of onset after the deformity, and exclusion of Morton's neuroma, first-ray osteoarthritis, inflammatory arthropathy, metatarsal stress fracture, prior forefoot trauma, and cavovarus overload per case."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 42 (2026-09-24): two bounded association edges authored. The Murahashi 2026 Hallux Valgus and Pain Epidemiology Study (n=1700 adults with foot-photograph-measured HV angle, propensity-matched, 419 HV-positive) documents lower SAFE-Q scores across all subscales in HV, foot pain rising from 33.6% in mild to 57.1% in severe HV, and pain migrating from the hallux to the lesser toes and metatarsal regions in severe deformity - the population severity-gradient and metatarsal-region pain anchor; the Gines-Cespedosa 2013 series of 94 preoperative HV surgical candidates documents 30.8% with coexisting metatarsalgia and 10.6% with both metatarsalgia and lesser-toe deformity, with significantly worse physical function, bodily pain, and mental-health SF-36 domains in the comorbid groups - the coexistence and burden anchor; and the Chaiwanichsiri 2009 survey of 213 adults aged 60-80 documents foot pain in 14% with hallux valgus and metatarsalgia among the documented pain causes - the population attribution anchor. Classification rests at NOT_ESTABLISHED because all three sources are cross-sectional or surgical-selection designs: coexistence is documented but incident metatarsalgia attributable to HV onset, and the reverse sequence (metatarsalgia or prior trauma predisposing to HV), are untested (indeterminant-direction guard), matching the flatfoot-to-osteoarthritis forefoot precedent (BIOMECHANICAL_ALTERATION, hypothesizedOnly:true).",
+    "Second edge: unexplained-chronic-pain case-matching on the greater-trochanteric-pain-syndrome / glomus-tumor / flexor-hallucis-longus-tendinitis family - the Murahashi population study quantifies chronic forefoot pain prevalence graded by deformity severity (33.6% mild to 57.1% severe, pain the dominant SAFE-Q pain-subscale deficit), the Bock 2015 Scarf osteotomy cohort of 93 feet at mean 124-month follow-up documents pain as the operative indication with VAS and AOFAS improvement (57 to 95) and 30% recurrence - i.e. pain relief is the treatment goal and pain recurs with deformity recurrence - and the Chaiwanichsiri survey documents hallux valgus as a documented cause of foot pain with slower walking speed in the foot-pain group. All 8 existing unexplained-chronic-pain incoming edges rest at ASSOCIATION_ONLY (family norm).",
+    "Negative screens recorded 2026-09-24: (i) no osteoarthritis edge - the forefoot family (flatfoot, freiberg-s-infraction, avascular-necrosis, acl/pcl-injury, femoroacetabular-impingement) carries 10 incoming ASSOCIATION_ONLY osteoarthritis edges, but the targeted screening this window located no hallux-valgus-specific first-metatarsophalangeal osteoarthritis incidence quantification, and the hallux-rigidus batch-41 deferral recorded the adjacent constitutive identity-is-osteoarthritis barrier (zero-record and constitutive guards); (ii) no falls or gait edge - the Chaiwanichsiri survey documents foot deformities were NOT significantly associated with walking performance or falls and multivariate fall risks were plantar fasciitis, knee osteoarthritis, female sex, visual deficit, and impaired protective sensation rather than hallux valgus (counter-evidence guard), and difficulty-walking and gait-abnormality identities are absent (wrong-target guard); (iii) no lesser-toe-deformity or hammertoe edge - lesser-toe deformities are distinct catalog identities (hammertoe batch 42 authors its own window, mallet-toes owns the distal-interphalangeal window; wrong-identity and duplicate-scope guards); (iv) no depression edge - the SF-36 mental-component differences in the Gines-Cespedosa comorbid groups track bodily pain and physical role limitation rather than structured mood diagnosis, and depressive-disorder carries a 64-edge incoming family with independent evidence bases (shared-target, independent-evidence guard); (v) no postoperative or scars edge - surgical outcomes are treatment-state (treatment-state guard). Reopening condition: a longitudinal cohort with HV onset or correction preceding incident metatarsalgia, or a HV-specific first-MTP osteoarthritis incidence series."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "metatarsalgia",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The Murahashi 2026 cross-sectional study of 1700 adults documents that severe hallux valgus shifts the dominant pain location from the hallux to the lesser toes and metatarsal regions (foot pain 33.6% in mild versus 57.1% in severe deformity, HV angle the significant multivariate correlate of HV pain), the Gines-Cespedosa 2013 series of 94 preoperative hallux valgus surgical candidates documents coexisting metatarsalgia in 30.8% (16% with additional lesser-toe deformity, 10.6% with both) with significantly worse physical-function, bodily-pain, and mental-health SF-36 domains than hallux valgus alone, and the Chaiwanichsiri 2009 survey of 213 community-dwelling older adults documents hallux valgus and metatarsalgia together among the documented causes of foot pain; the literature documents reproducible coexistence and a severity-gradient of metatarsal-region pain in hallux valgus populations without establishing that the deformity caused metatarsalgia in any individual.",
+        "causationStatus": "The mapping does not assert that hallux valgus caused metatarsalgia in any individual: the evidence is cross-sectional coexistence and pain-location description rather than incident-metatarsalgia follow-up, the reverse sequence (pre-existing metatarsalgia from Morton's neuroma, first-ray osteoarthritis, metatarsal malalignment, or prior trauma predisposing to deformity progression) is untested in the located literature, metatarsalgia itself is a heterogeneous pain descriptor with multiple independent etiologies, and the Chaiwanichsiri survey documents that most foot deformities including hallux valgus were asymptomatic at baseline (forefoot precedent, flatfoot pattern); individual claims require documented hallux valgus on weight-bearing assessment with separately documented metatarsal-head pain of onset after deformity onset, and exclusion of Morton's neuroma, first-ray or lesser-MTP osteoarthritis, inflammatory arthropathy, metatarsal stress fracture, prior forefoot trauma, and cavovarus or acquired-flatfoot malalignment per case."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "BIOMECHANICAL_ALTERATION",
+        "primaryVector": "A first-ray load-transfer hypothesis: hallux valgus rotation and lateral deviation of the great toe destabilizes the first metatarsocuneiform segment, reducing first-ray load bearing during push-off so ground-reaction force transfers to the second through fifth metatarsal heads, where repetitive plantar pressure concentrates on the lesser-MTP joints and provokes metatarsal-head pain - the documented shift of maximal pain to the lesser toes and metatarsal regions in severe deformity and the excess metatarsalgia coexistence are the clinical correlates, while the multifactorial etiology of metatarsal-head pain keeps the vector hypothesized for individual attribution.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The edge asserts an association only: the located condition-specific evidence is cross-sectional (population photograph-measured coexistence, surgical-candidate series, community survey) with no cohort documenting incident metatarsalgia after hallux valgus onset or after deformity correction, the reverse causal sequence is untested, metatarsalgia is a heterogeneous pain descriptor whose etiologies (neuroma, osteoarthritis, malalignment, trauma) independently generate the same complaint, the forefoot osteoarthritis family rests at NOT_ESTABLISHED, and the population survey documents most deformities are asymptomatic; no probability estimate is asserted.",
+        "evidenceGaps": "Weight-bearing clinical or radiographic documentation of hallux valgus with deformity-onset chronology; separate documentation of metatarsalgia (plantar metatarsal-head pain on examination, with dynamic plantar-pressure mapping or intra-articular/neural diagnostic block where indicated) with onset after deformity onset; longitudinal follow-up or pre-post deformity correction demonstrating metatarsalgia incidence or improvement tracking deformity correction; exclusion of Morton's neuroma, first-ray or lesser-MTP osteoarthritis, inflammatory arthropathy, metatarsal stress fracture, prior forefoot trauma, and cavovarus or acquired-flatfoot malalignment; foot-and-ankle orthopedic assessment of the individual relationship",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Morton's intermetatarsal neuroma",
+          "First-ray or lesser metatarsophalangeal osteoarthritis",
+          "Inflammatory arthropathy with MTP synovitis",
+          "Metatarsal stress fracture or prior forefoot trauma",
+          "Cavovarus or acquired-flatfoot malalignment"
+        ]
+      },
+      "evidenceGaps": [
+        "Weight-bearing clinical or radiographic documentation of hallux valgus with deformity-onset chronology; separate documentation of metatarsalgia (plantar metatarsal-head pain on examination, with dynamic plantar-pressure mapping or intra-articular/neural diagnostic block where indicated) with onset after deformity onset; longitudinal follow-up or pre-post deformity correction demonstrating metatarsalgia incidence or improvement tracking deformity correction; exclusion of Morton's neuroma, first-ray or lesser-MTP osteoarthritis, inflammatory arthropathy, metatarsal stress fracture, prior forefoot trauma, and cavovarus or acquired-flatfoot malalignment; foot-and-ankle orthopedic assessment of the individual relationship"
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY on the forefoot precedent: a population severity-gradient study, a surgical-candidate coexistence series, and a community survey triangulate metatarsal-region pain excess in hallux valgus populations, while cross-sectional design, the untested reverse sequence, the heterogeneous etiology of metatarsal-head pain, and the asymptomatically-common deformity finding keep the consensus at NOT_ESTABLISHED with chronology and exclusion requirements; no probability estimate is asserted.",
+      "sourceReferences": [
+        {
+          "citation": "Murahashi Y, Matsuoka M, Kimura S, et al. Association between hallux valgus pain and foot-related quality of life: the hallux valgus and pain epidemiology study. J Orthop Sci. 2026 Mar;31(2):392-400. PMID 41093741.",
+          "note": "Cross-sectional study of 1700 adults with photograph-measured HV angle and propensity matching (419 HV-positive) documenting foot pain in 33.6% of mild versus 57.1% of severe HV, pain migrating from the hallux to the lesser toes and metatarsal regions in severe deformity, and HV angle as the significant multivariate correlate of HV pain - the severity-gradient and metatarsal-region pain anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41093741/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-24",
+          "sourceLocator": "PMID 41093741; n=1700, 419 HV, pain 33.6% mild vs 57.1% severe, pain shifts to metatarsal regions"
+        },
+        {
+          "citation": "Gines-Cespedosa A, Alentorn-Geli E, Sanchez JF, et al. Influence of common associated forefoot disorders on preoperative quality of life in patients with hallux valgus. Foot Ankle Int. 2013 Dec;34(12):1634-7. PMID 23943654.",
+          "note": "Series of 94 preoperative hallux valgus surgical candidates documenting coexisting metatarsalgia in 30.8% (plus 16% with lesser-toe deformity and 10.6% with both comorbidities) and significantly worse physical-function, bodily-pain, role-emotional, and mental-health SF-36 domains in the comorbid groups - the coexistence and functional-burden anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/23943654/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-24",
+          "sourceLocator": "PMID 23943654; 94 HV patients, 30.8% HV+metatarsalgia, worse SF-36 in comorbid groups"
+        },
+        {
+          "citation": "Chaiwanichsiri D, Janchai S, Tantisiriwat N. Foot disorders and falls in older persons. Gerontology. 2009;55(3):296-302. PMID 19052445.",
+          "note": "Survey of 213 community-dwiling adults aged 60-80 documenting foot pain in 14% with hallux valgus and metatarsalgia among the documented pain causes, slower walking speed in the foot-pain group, and that foot deformities (present in 87%) were mostly asymptomatic and not significantly associated with falls - the population attribution and asymptomatically-common guard anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/19052445/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-24",
+          "sourceLocator": "PMID 19052445; 213 subjects, foot pain 14%, HV and metatarsalgia pain causes, deformities mostly asymptomatic"
+        }
+      ]
+    },
+    {
+      "conditionId": "unexplained-chronic-pain",
+      "rank": 2,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The Murahashi 2026 population study documents chronic forefoot pain in 33.6% to 57.1% of hallux valgus participants graded by deformity severity with the pain subscale the dominant SAFE-Q deficit, the Bock 2015 Scarf osteotomy cohort of 93 feet followed a mean 124 months documents pain as the operative indication with VAS and AOFAS improvement (median 57 to 95) and recurrent deformity (30%) accompanying recurrent symptoms - pain relief being the treatment goal - and the Chaiwanichsiri 2009 survey documents hallux valgus among the documented causes of foot pain with slower walking speed in the symptomatic group; the literature documents a high chronic forefoot-pain burden in hallux valgus populations without establishing that the deformity generated a distinct chronic pain syndrome in any individual.",
+        "causationStatus": "The mapping does not assert that hallux valgus caused a chronic pain syndrome in any individual: the evidence is population pain-prevalence and surgical-indication series rather than a condition-specific diagnostic-delay or centralized-pain cohort, foot pain in these populations is attributable to coexisting forefoot pathology (metatarsalgia, lesser-toe deformity, first-ray osteoarthritis, neuroma) in a substantial share, most deformities are asymptomatic at baseline per the population survey, and the case-matching family (greater-trochanteric-pain-syndrome, glomus-tumor, flexor-hallucis-longus-tendinitis) rests at NOT_ESTABLISHED; individual claims require documented hallux valgus with separately documented chronic foot pain (of the grade, duration, and functional impact within the unexplained-chronic-pain identity's scope) of onset after deformity onset, and exclusion of neuroma, osteoarthritis, inflammatory arthropathy, stress fracture, prior trauma, tarsal pathology, and centralized or nociplastic pain per case."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MECHANICAL_OR_COMPRESSIVE",
+        "primaryVector": "A chronic deformity-load vector: the valgus angulation and pronation of the first ray produce abnormal hallux-esamoid and lesser-MTP joint loading, bursal and soft-tissue impingement against footwear, and transfer metatarsal pressure, generating recurrent nociceptive input during weight-bearing that persists as long as the deformity persists - documented as severity-graded pain prevalence and as pain that recurs with deformity recurrence after correction - while the asymptomatic majority with the same deformity, the coexisting pathology burden, and the absence of centralized-pain assessment keep the vector hypothesized for individual attribution.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The edge case-matches on the established unexplained-chronic-pain family (all 8 incoming edges ASSOCIATION_ONLY/NOT_ESTABLISHED): population pain-prevalence graded by deformity severity and surgical-indication series document a reproducible chronic forefoot-pain excess, but no condition-specific cohort quantifies diagnostic delay, centralized pain, or pain persisting beyond mechanical correction, most deformities are asymptomatic in the population survey, coexisting forefoot pathology provides competing pain generators, and treatment-response evidence is confounded by selection for pain as the surgical indication; no probability estimate is asserted.",
+        "evidenceGaps": "Documented hallux valgus with deformity-onset chronology; chronic foot-pain documentation meeting the unexplained-chronic-pain identity's grade, duration, and functional-impact scope with onset after deformity onset and anatomical concordance (forefoot distribution); exclusion of Morton's neuroma, first-ray or MTP osteoarthritis, inflammatory arthropathy, metatarsal stress fracture, prior forefoot trauma, tarsal-tunnel or distal-nerve entrapment, and lumbar radiculopathy; assessment of centralized or nociplastic pain features (Widespread Pain Index, central-sensitization features); pain-medicine and foot-and-ankle orthopedic assessment of the individual relationship",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Morton's intermetatarsal neuroma or distal nerve entrapment",
+          "First-ray or MTP osteoarthritis / inflammatory arthropathy",
+          "Metatarsal stress fracture or prior forefoot trauma",
+          "Centralized or nociplastic pain amplification",
+          "Lumbar radiculopathy or tarsal-tunnel pathology"
+        ]
+      },
+      "evidenceGaps": [
+        "Documented hallux valgus with deformity-onset chronology; chronic foot-pain documentation meeting the unexplained-chronic-pain identity's grade, duration, and functional-impact scope with onset after deformity onset and anatomical concordance (forefoot distribution); exclusion of Morton's neuroma, first-ray or MTP osteoarthritis, inflammatory arthropathy, metatarsal stress fracture, prior forefoot trauma, tarsal-tunnel or distal-nerve entrapment, and lumbar radiculopathy; assessment of centralized or nociplastic pain features (Widespread Pain Index, central-sensitization features); pain-medicine and foot-and-ankle orthopedic assessment of the individual relationship"
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY by case-matching the unexplained-chronic-pain family: severity-graded population pain prevalence, pain-driven surgical indications with symptom recurrence alongside deformity recurrence, and community-survey pain attribution triangulate chronic forefoot-pain burden in hallux valgus, while asymptomatic-deformity prevalence, competing pain generators, absent delay or centralized-pain cohorts, and family NOT_ESTABLISHED norms keep individual attribution guarded; no probability estimate is asserted.",
+      "sourceReferences": [
+        {
+          "citation": "Murahashi Y, Matsuoka M, Kimura S, et al. Association between hallux valgus pain and foot-related quality of life: the hallux valgus and pain epidemiology study. J Orthop Sci. 2026 Mar;31(2):392-400. PMID 41093741.",
+          "note": "Population anchor (n=1700, 419 HV): foot pain 33.6% mild to 57.1% severe HV with SAFE-Q pain-subscale the dominant deficit and HV angle the multivariate pain correlate - the chronic-pain prevalence gradient.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41093741/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-24",
+          "sourceLocator": "PMID 41093741; pain 33.6% mild vs 57.1% severe, SAFE-Q pain subscale"
+        },
+        {
+          "citation": "Bock P, Kluger R, Kristen KH, Mittlböck M, Schuh R, Trnka HJ. The Scarf osteotomy with minimally invasive lateral release for treatment of hallux valgus deformity: intermediate and long-term results. J Bone Joint Surg Am. 2015 Aug 5;97(15):1238-45. PMID 26246258.",
+          "note": "Cohort of 93 feet at mean 124-month follow-up documenting pain as the operative indication, median AOFAS improvement from 57 to 95 with VAS pain scoring, and 30% radiographic recurrence at final follow-up - pain as the treatment goal with symptoms tracking deformity status.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/26246258/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-24",
+          "sourceLocator": "PMID 26246258; 93 feet, 124-month follow-up, AOFAS 57 to 95, recurrence 30%"
+        },
+        {
+          "citation": "Chaiwanichsiri D, Janchai S, Tantisiriwat N. Foot disorders and falls in older persons. Gerontology. 2009;55(3):296-302. PMID 19052445.",
+          "note": "Community survey documenting hallux valgus among the causes of foot pain in 14% of 213 older adults with slower walking speed in the symptomatic group - independent population pain attribution plus the asymptomatic-deformity guard.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/19052445/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-24",
+          "sourceLocator": "PMID 19052445; foot pain 14%, HV a documented pain cause, deformities mostly asymptomatic"
+        }
+      ]
+    }
+  ]
 }

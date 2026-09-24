@@ -15,7 +15,7 @@ import { readFileSync } from "node:fs";
  * action. These tests pin that contract behaviorally (mocked session module)
  * and structurally (every write site is guarded).
  *
- * Note: #386 also moved secret misconfiguration to fail-fast-at-request-time
+ * Note: #387 also moved secret misconfiguration to fail-fast-at-request-time
  * (workflowSessionSecret() throws in production; pinned by
  * tests/secret-fallback-contract.test.ts and tests/deployment-readiness.test.ts),
  * so the report's headline scenario (missing secret in production) throws at
