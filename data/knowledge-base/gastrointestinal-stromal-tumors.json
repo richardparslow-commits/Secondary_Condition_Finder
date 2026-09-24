@@ -2,8 +2,205 @@
   "id": "gastrointestinal-stromal-tumors",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review gastrointestinal, nutritional, motility, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 37 (2026-09-23): three ASSOCIATION_ONLY draft mappings pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: all three edges assert association only (etiologicalConsensus NOT_ESTABLISHED, hypothesizedOnly:true) - no cohort orders GIST onset before incident anemia, malnutrition, or depressive disorder with individual-level chronology and confounder control; every individual claim requires documented GIST (endoscopic, imaging, and histopathologic KIT/DOG1 confirmation), documented chronology (the tumor's biological presence predating the outcome, not its date of diagnosis), and exclusion of the alternative etiologies listed per edge."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 37 (2026-09-23): three bounded association edges authored. anemia: the Askarova 2026 case report documents a giant jejunal GIST presenting as refractory iron-deficiency anemia with hemoglobin 60 g/L requiring transfusion and chronic mucosal ulceration as the iron-loss mechanism, the Yacob 2015 single-centre review of 150 GIST cases documents intestinal bleeding (40%) and abdominal mass (25%) among the common clinical presentations, and the Aourarh 2026 case report background documents that small-bowel GISTs usually present with gastrointestinal bleeding, anemia, abdominal pain, or nonspecific symptoms; the bleeding-mediated iron-loss pathway stays ASSOCIATION_ONLY because anemia is a subset presentation (not universal), chronology at presentation runs tumor-present-before-diagnosis, and the independent iron-deficiency etiologies are numerous - category MECHANICAL_OR_COMPRESSIVE matching the peptic-ulcer-disease-to-anemia bleeding-lesion precedent. malnutrition-residuals: the Ou 2025 GLIM-criteria outpatient study documents malnutrition in 27.75% and high nutritional risk in 18.50% of GIST outpatients with low hemoglobin a significant associated factor and GLIM malnutrition significantly affecting progression-free survival, the Ding 2021 study documents 77.76% of newly diagnosed GIST patients at nutritional risk (NRS2002) with 10.09% PG-SGA-defined malnutrition incidence, and the Gu 2025 body-composition study documents sarcopenia (HR 3.067) and myosteatosis (HR 6.985) as independent disease-free-survival predictors with targeted nutritional and exercise interventions recommended - category METABOLIC_OR_NUTRITIONAL; the biliary-tract-cancer-to-malnutrition-residuals sibling edge uses the obstructive pathway while this edge adds the GIST catabolic/ulcerative/treatment-toxicity pathway under a different source identity (no parallel-pathway duplication). depressive-disorder: the van de Wal 2024 prospective observational study of 328 GIST patients documents 13% depression, 15% anxiety, and 43% severe fear of progression on the Hospital Anxiety and Depression Scale with current TKI treatment associated with depression, the van de Wal 2024 financial-difficulties study documents significantly lower global quality of life and functioning under financial difficulty on the same instrument battery, and the van de Wal 2023 coping-style study documents psychological distress and health-related quality-of-life burden - category PSYCHOPHYSIOLOGICAL matching the stomach-cancer and frontal-fibrosizing-alopecia depressive edges; the edge stays at screening level because HADS cutoffs are not diagnostic and the source documents depression levels comparable to population norms, so diagnosis burden, TKI pharmacological effects, and financial toxicity act as shared drivers.",
+    "Negative screens recorded 2026-09-23: (i) no obstruction edge is authored - the Aourarh 2026 report documents intestinal obstruction as uncommon for GIST (exophytic outward growth) and the chronic-intestinal-pseudo-obstruction identity owns the dysmotility pathway; (ii) no liver-directed edge is authored - GIST hepatic involvement is metastatic spread within the oncologic identity itself rather than chronic-liver-disease (cirrhosis/inflammatory pathway) and no hepatic-decompensation identity fits (wrong-identity guard); (iii) no unexplained-gastrointestinal-issues edge is authored - zero incoming edges exist for that target and a located tumor explains rather than leaves symptoms unexplained (direction guard); (iv) no peptic-ulcer or esophageal-stricture edge - GIST is submucosal and does not participate in the acid-injury or reflux stricturing pathways owned by other identities; (v) malignant-transformation category is not used because GIST is already the neoplasm - the edges here describe downstream systemic and psychological correlates of the tumor, not transformation. Reopening condition for any upgrade: a directional cohort ordering GIST onset before the outcome with confounder control would still require reclassification review, but none was located in this screen."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "anemia",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The Askarova 2026 case report documents a giant jejunal GIST presenting after four months of melena with hemoglobin 60 g/L requiring transfusion of three packed red-cell units, microcytosis on admission, and chronic mucosal ulceration as the stated iron-deficiency-anemia mechanism, the Yacob 2015 review of 150 GIST cases from a single centre documents intestinal bleeding (40%) and abdominal mass (25%) among the commonest clinical presentations, and the Aourarh 2026 case report background documents that small-bowel GISTs usually present with gastrointestinal bleeding, anemia, abdominal pain, or nonspecific symptoms; the literature documents a reproducible bleeding-mediated iron-loss association at case and case-series level without establishing that a GIST produced an individual's anemia.",
+        "causationStatus": "The mapping does not assert that gastrointestinal stromal tumors caused an individual's anemia: anemia is a subset presentation (intestinal bleeding in 40% of the 150-case series, not universal progression), at presentation the tumor's biological presence predates its diagnosis rather than the reverse chronology being documented per case, and menstrual blood loss, chronic kidney disease, nutritional deficiency without tumor bleeding, inflammatory bowel disease, other gastrointestinal bleeding (including peptic ulcer), malignancy-associated anemia of chronic disease, hemoglobinopathy, and hemolysis independently produce iron-deficient or anemic states in the same populations; individual claims require a histopathologically confirmed GIST (KIT/DOG1), documented tumor-to-gut-lumen bleeding (endoscopic, imaging, or operative correlation), iron-study-confirmed iron-deficiency phenotype within the anemia identity's scope, documented chronology, and exclusion of the independent etiologies."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MECHANICAL_OR_COMPRESSIVE",
+        "primaryVector": "A bleeding-lesion iron-loss pathway: the exophytic mesenchymal tumor breaches or ulcerates the overlying mucosa as it enlarges (small-bowel lesions classically through mucosal stretching over the dome), producing chronic occult or overt luminal bleeding that exports iron faster than diet and stores can replace it; sustained negative iron balance depletes ferritin and then hemoglobin into transfusion-requiring iron-deficiency anemia that resolves when the bleeding lesion is resected - documented at case and case-series level in GIST populations while individual-level attribution remains an association requiring iron-study phenotype confirmation and alternative-etiology exclusion.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The edge asserts an association only: the evidence base is case reports and a single-centre presentation series showing that bleeding-mediated anemia occurs in a subset of GIST patients, no cohort orders GIST onset before incident iron-deficiency anemia with confounder control, chronology at presentation is confounded by the tumor predating its own diagnosis, and the independent iron-deficiency etiologies are numerous in the same age group; no probability estimate is asserted.",
+        "evidenceGaps": "Histopathologically confirmed gastrointestinal stromal tumor (KIT/DOG1 or PDGFRA-characterized) with documented tumor burden and location; documented bleeding from the tumor (endoscopic visualization, tagged-red-cell or imaging-confirmed hemorrhage, or operative findings) preceding or coincident with the anemia workup; iron-study confirmation of the iron-deficiency phenotype (low ferritin, transferrin saturation, red-cell indices) within the anemia identity's scope; hemoglobin and ferritin trajectory documented before and after tumor resection or bleeding control; exclusion of menstrual blood loss, chronic kidney disease, nutritional iron deficiency without tumor bleeding, inflammatory bowel disease, peptic-ulcer or other gastrointestinal bleeding, malignancy, hemoglobinopathy, and hemolysis; gastroenterology and hematology assessment of the individual relationship",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Menstrual blood loss or pregnancy-related iron demand",
+          "Chronic kidney disease with anemia of chronic disease or dialysis losses",
+          "Nutritional iron deficiency without tumor bleeding",
+          "Inflammatory bowel disease or peptic-ulcer bleeding",
+          "Malignancy, hemoglobinopathy, or hemolysis"
+        ]
+      },
+      "evidenceGaps": [
+        "Histopathologically confirmed gastrointestinal stromal tumor (KIT/DOG1 or PDGFRA-characterized) with documented tumor burden and location; documented bleeding from the tumor (endoscopic visualization, tagged-red-cell or imaging-confirmed hemorrhage, or operative findings) preceding or coincident with the anemia workup; iron-study confirmation of the iron-deficiency phenotype (low ferritin, transferrin saturation, red-cell indices) within the anemia identity's scope; hemoglobin and ferritin trajectory documented before and after tumor resection or bleeding control; exclusion of menstrual blood loss, chronic kidney disease, nutritional iron deficiency without tumor bleeding, inflammatory bowel disease, peptic-ulcer or other gastrointestinal bleeding, malignancy, hemoglobinopathy, and hemolysis; gastroenterology and hematology assessment of the individual relationship"
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY: case-level and case-series evidence documents a reproducible bleeding-mediated iron-loss association while subset presentation, diagnosis-predating-chronology, and numerous independent iron-deficiency etiologies defeat individual causal attribution, so the mapping asserts the association with confirmed-bleeding, iron-study, chronology, and alternative-etiology requirements.",
+      "sourceReferences": [
+        {
+          "citation": "Askarova K, Suleymanova N, Usmonova G, et al. Giant jejunal gastrointestinal stromal tumor presenting as refractory anemia: a case report of complex R0 resection. Int J Surg Case Rep. 2026;138(9):3752-3756. PMID 42699893.",
+          "note": "Case report documenting a giant jejunal GIST presenting with four months of melena and hemoglobin 60 g/L requiring transfusion, with chronic mucosal ulceration stated as the iron-deficiency-anemia mechanism - the transfusion-level refractory-anemia anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42699893/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 42699893; refractory iron-deficiency anemia Hb 60 g/L at jejunal GIST presentation"
+        },
+        {
+          "citation": "Yacob M, Inian S, Sudhakar CB. Gastrointestinal Stromal Tumours: Review of 150 Cases from a Single Centre. Indian J Surg. 2015;77(Suppl 2):505-510. PMID 26730054.",
+          "note": "Single-centre review of 150 GIST cases documenting intestinal bleeding (40%) and abdominal mass (25%) among the common clinical presentations with hematemesis and recurrent bleeding also recorded - the case-series frequency anchor establishing bleeding as a subset presentation.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/26730054/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 26730054; intestinal bleeding 40% of 150 cases"
+        },
+        {
+          "citation": "Aourarh B, Belkouchi O, Belkouchi L, et al. Ileal Gastrointestinal Stromal Tumor Presenting With Subacute Intestinal Obstruction and Synchronous Peritoneal Metastases: A Case Report. Cureus. 2026;18(8):e114770. PMID 42761235.",
+          "note": "Case report whose background documents that small-bowel GISTs usually present with gastrointestinal bleeding, anemia, abdominal pain, or nonspecific symptoms while intestinal obstruction is uncommon because tumors grow outward from the bowel wall - the presentation-pattern anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42761235/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 42761235; small-bowel GIST usually presents with GI bleeding and anemia"
+        }
+      ]
+    },
+    {
+      "conditionId": "malnutrition-residuals",
+      "rank": 2,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The Ou 2025 GLIM-criteria study of GIST outpatients documents nutritional risk in the majority screened with high risk in 18.50% and GLIM-defined malnutrition in 27.75%, low hemoglobin a significant factor associated with malnutrition, and GLIM malnutrition significantly affecting progression-free survival (HR up to 9.902), the Ding 2021 study of newly diagnosed GIST patients documents 77.76% at nutritional risk (NRS2002 score at least 3) with 10.09% incidence of PG-SGA-defined malnutrition and age, BMI, and weight loss as associated factors, and the Gu 2025 body-composition study documents sarcopenia (HR 3.067) and myosteatosis (HR 6.985) as independent predictors of disease-free survival with targeted nutritional and exercise interventions recommended; the literature documents a reproducible cross-sectional and prognostic malnutrition association in GIST populations without establishing that the tumor produced an individual's malnutrition.",
+        "causationStatus": "The mapping does not assert that gastrointestinal stromal tumors caused an individual's malnutrition: the screening studies are cross-sectional at or near diagnosis so onset chronology (tumor before nutritional decline) is not documented per case, imatinib and other TKI gastrointestinal toxicity, postoperative malabsorption after bowel resection, tumor catabolism, and pre-existing nutritional disease act as co-drivers, and chronic kidney disease, liver disease, hyperthyroidism, malabsorption syndromes, eating disorders, food insecurity, alcohol use disorder, and other malignancies independently produce the malnutrition phenotype within the malnutrition-residuals identity's scope; individual claims require GLIM- or PG-SGA-confirmed malnutrition, documented GIST status and body-composition or weight trajectory with chronology, and exclusion of the independent etiologies including treatment-toxicity attribution where relevant."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "METABOLIC_OR_NUTRITIONAL",
+        "primaryVector": "A tumor-burden catabolic and intake-limiting pathway: chronic neoplastic disease sustains cytokine-driven catabolism and lean-mass loss while the tumor's mass effect and treatment toxicity (TKI anorexia, nausea, post-resection malabsorption) suppress intake and assimilation; the resulting negative energy and protein balance depletes functional reserve - documented as elevated nutritional-risk and GLIM-malnutrition prevalence with body-composition predictors of survival at case-cohort level in GIST populations while individual-level attribution through the tumor identity remains an association with treatment and pre-existing-disease co-drivers guarded.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The edge asserts an association only: the evidence is cross-sectional screening-prevalence studies and prognostic body-composition cohorts without onset chronology, treatment toxicity and pre-existing disease are co-drivers the sources do not separate, the sibling biliary-tract-cancer edge keeps cancer-malnutrition at association strength across the catalog, and no interventional study reverses malnutrition by tumor control alone; no probability estimate is asserted.",
+        "evidenceGaps": "GLIM-, PG-SGA-, or NRS2002-confirmed malnutrition or documented weight and lean-mass trajectory within the malnutrition-residuals identity's scope; histopathologically confirmed gastrointestinal stromal tumor with documented burden, location, and timeline placing tumor presence before nutritional decline; treatment timeline (TKI exposure, surgery with bowel resection, targeted therapy toxicities) to separate tumor-driven from treatment-driven nutritional loss; exclusion of chronic kidney disease, liver disease, hyperthyroidism, malabsorption and inflammatory bowel disease, eating disorders, food insecurity and alcohol use disorder, and other malignancies; oncology and dietetics assessment of the individual relationship",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Pre-existing malnutrition, eating disorder, or food insecurity",
+          "Chronic kidney disease, liver disease, or hyperthyroid catabolism",
+          "Malabsorption syndromes or inflammatory bowel disease",
+          "Treatment-driven toxicity (TKI, postoperative malabsorption) without tumor-burden catabolism",
+          "Other malignancy or chronic infection"
+        ]
+      },
+      "evidenceGaps": [
+        "GLIM-, PG-SGA-, or NRS2002-confirmed malnutrition or documented weight and lean-mass trajectory within the malnutrition-residuals identity's scope; histopathologically confirmed gastrointestinal stromal tumor with documented burden, location, and timeline placing tumor presence before nutritional decline; treatment timeline (TKI exposure, surgery with bowel resection, targeted therapy toxicities) to separate tumor-driven from treatment-driven nutritional loss; exclusion of chronic kidney disease, liver disease, hyperthyroidism, malabsorption and inflammatory bowel disease, eating disorders, food insecurity and alcohol use disorder, and other malignancies; oncology and dietetics assessment of the individual relationship"
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY: screening-prevalence and body-composition cohort evidence documents a reproducible malnutrition association while cross-sectional design, treatment-toxicity co-driving, sibling-class consistency, and numerous independent nutritional etiologies defeat individual causal attribution, so the mapping asserts the association with confirmed-phenotype, chronology, treatment-separation, and alternative-etiology requirements.",
+      "sourceReferences": [
+        {
+          "citation": "Ou Y, Ran P, Zhang Q, et al. Investigation of Nutritional Status by GLIM Criteria in Outpatients with GIST. Nutr Cancer. 2025;77(7-8):772-783. PMID 40457820.",
+          "note": "GLIM-criteria outpatient study documenting high nutritional risk in 18.50% and malnutrition in 27.75% of GIST outpatients, low hemoglobin as a significant associated factor, and GLIM malnutrition significantly affecting progression-free survival - the diagnostic-criteria malnutrition anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40457820/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 40457820; GLIM malnutrition 27.75% in GIST outpatients"
+        },
+        {
+          "citation": "Ding P, Guo H, Yang P, et al. Association Between the Nutritional Risk and the Survival Rate in Newly Diagnosed GIST Patients. Front Nutr. 2021;8:743475. PMID 34778339.",
+          "note": "Study of newly diagnosed GIST patients documenting 77.76% at nutritional risk (NRS2002 at least 3) and 10.09% incidence of PG-SGA-defined malnutrition with age, BMI, and weight loss associated - the newly-diagnosed risk-screening anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34778339/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 34778339; 77.76% at nutritional risk, 10.09% malnutrition incidence"
+        },
+        {
+          "citation": "Gu T, Li T, Zhang J, et al. Using body composition to predict treatment-related adverse events and disease-free survival in patients with gastrointestinal stromal tumors. Front Immunol. 2025;16:1576834. PMID 40260254.",
+          "note": "Body-composition cohort documenting sarcopenia (HR 3.067) and myosteatosis (HR 6.985) as independent disease-free-survival predictors in moderate-to-high-risk GIST patients with personalized nutritional and exercise interventions recommended - the lean-mass prognostic anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40260254/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 40260254; sarcopenia HR 3.067 and myosteatosis HR 6.985 for DFS"
+        }
+      ]
+    },
+    {
+      "conditionId": "depressive-disorder",
+      "rank": 3,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The van de Wal 2024 prospective observational study of 328 GIST patients documents 13% depression, 15% anxiety, and 43% severe fear of cancer recurrence or progression on the Hospital Anxiety and Depression Scale and EORTC QLQ-C30 with current tyrosine-kinase-inhibitor treatment associated with depression, the van de Wal 2024 financial-difficulties study on the same instrument battery documents significantly lower global quality of life and functioning among GIST patients with financial difficulty, and the van de Wal 2023 coping-style study documents psychological distress and health-related quality-of-life burden with monitoring/blunting coping styles; the literature documents a screening-level depression association in GIST populations without establishing that the tumor produced a major depressive disorder in an individual.",
+        "causationStatus": "The mapping does not assert that gastrointestinal stromal tumors caused an individual's depressive disorder: HADS thresholds are screening instruments rather than diagnostic interviews and the source itself records depression levels comparable between the GIST cohort and norm groups, TKI pharmacological effects, cancer-diagnosis fear, surveillance burden, financial toxicity, and pre-existing psychiatric vulnerability act as shared drivers the sources do not disentangle, and independent depressive etiologies (prior or recurrent primary depressive disorder, substance use, thyroid disease, other chronic illness, bereavement) apply; individual claims require a diagnostic-standard depressive assessment within the depressive-disorder identity's scope, documented chronology placing GIST diagnosis before depressive onset, and exclusion of the independent etiologies with pre-existing psychiatric history documented."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "PSYCHOPHYSIOLOGICAL",
+        "primaryVector": "A diagnosis-and-treatment burden pathway: learning of a rare metastatic-capable mesenchymal tumor activates persistent threat appraisal and fear of progression, surveillance imaging cycles sustain anticipatory anxiety, chronic TKI therapy adds fatigue and physiological load, and financial toxicity constrains functioning - the sustained stress load disrupts serotonergic and stress-axis regulation long enough to precipitate depressive episodes in psychologically vulnerable patients - documented at screening-instrument level in GIST cohorts with treatment and financial associations while individual-level causation remains an association hypothesis with pre-existing psychiatric vulnerability guarded.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The edge asserts an association only: the evidence is screening-instrument prevalence (HADS cutoffs, not diagnostic interviews) in which the source records depression comparable to norm groups, no cohort orders GIST diagnosis before incident major depressive disorder with psychiatric-history control, TKI effects and financial toxicity are separable co-drivers, and the stomach-cancer sibling edge keeps cancer-depression at association strength; no probability estimate is asserted.",
+        "evidenceGaps": "Diagnostic-standard depressive assessment (structured clinical interview or documented diagnostic criteria) within the depressive-disorder identity's scope rather than HADS screening alone; documented chronology placing GIST diagnosis before depressive onset with pre-existing psychiatric history recorded; treatment timeline separating tyrosine-kinase-inhibitor effects (fatigue, sleep disruption) from mood disorder; severity, functional-impact, and treatment documentation for the depressive episode; exclusion of prior or recurrent primary depressive disorder, substance-induced mood disorder, thyroid disease, bereavement, and other chronic-illness depression; psychiatry or psychology assessment of the individual relationship",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Pre-existing or recurrent primary depressive disorder",
+          "Tyrosine-kinase-inhibitor pharmacological effects without depressive disorder",
+          "Substance-induced or bereavement-related mood symptoms",
+          "Thyroid, metabolic, or other chronic-illness depression",
+          "Anxiety and fear-of-progression screening signals without depressive disorder"
+        ]
+      },
+      "evidenceGaps": [
+        "Diagnostic-standard depressive assessment (structured clinical interview or documented diagnostic criteria) within the depressive-disorder identity's scope rather than HADS screening alone; documented chronology placing GIST diagnosis before depressive onset with pre-existing psychiatric history recorded; treatment timeline separating tyrosine-kinase-inhibitor effects (fatigue, sleep disruption) from mood disorder; severity, functional-impact, and treatment documentation for the depressive episode; exclusion of prior or recurrent primary depressive disorder, substance-induced mood disorder, thyroid disease, bereavement, and other chronic-illness depression; psychiatry or psychology assessment of the individual relationship"
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY: screening-level cohorts document a reproducible depression-signal association with GIST diagnosis and treatment while screening-instrument design, norm-comparable prevalence, separable TKI and financial co-drivers, and independent psychiatric etiologies defeat individual causal attribution, so the mapping asserts the association with diagnostic-standard, chronology, treatment-separation, and alternative-etiology requirements.",
+      "sourceReferences": [
+        {
+          "citation": "van de Wal D, den Hollander D, Desar IME, et al. Fear, anxiety and depression in gastrointestinal stromal tumor (GIST) patients in the Netherlands: Data from a prospective observational study. Int J Clin Health Psychol. 2024;24(1):100434. PMID 38226006.",
+          "note": "Prospective observational study of 328 GIST patients documenting 13% depression, 15% anxiety, and 43% severe fear of progression on HADS with current TKI treatment associated with depression - the depression-prevalence and treatment-association anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38226006/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 38226006; 328 patients, 13% depression, 15% anxiety, 43% severe fear"
+        },
+        {
+          "citation": "van de Wal D, den Hollander D, Desar IME, et al. Financial difficulties experienced by patients with gastrointestinal stromal tumours (GIST) in the Netherlands. Support Care Cancer. 2024;32(5):279. PMID 38594390.",
+          "note": "Study on the HADS and EORTC QLQ-C30 battery documenting significantly lower global quality of life and functioning among GIST patients with financial difficulties and examining anxiety, depression, and cancer worry - the financial-toxicity and functioning anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38594390/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 38594390; financial difficulty with lower global QoL and functioning"
+        },
+        {
+          "citation": "van de Wal D, van Doorn B, den Hollander D, et al. The association of having a monitoring or blunting coping style with psychological distress, health-related quality of life and satisfaction with care in GIST patients. Acta Oncol. 2023;62(12):1616-1624. PMID 37856077.",
+          "note": "Study documenting psychological distress, health-related quality of life, and cancer-related concerns in GIST patients using HADS and related instruments - the distress-and-coping anchor supporting the psychophysiological burden pathway.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/37856077/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 37856077; psychological distress and HRQoL in GIST patients"
+        }
+      ]
+    }
+  ]
 }

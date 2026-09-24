@@ -2,8 +2,77 @@
   "id": "goodpasture-syndrome",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review airway, aspiration, inflammatory, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 39 (2026-09-23): one DIRECT_CAUSATION draft mapping pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: the mapping asserts the anti-GBM crescentic-destruction-to-chronic-kidney-disease chain at PROBABLE strength with hypothesizedOnly:false following the immune-destruction family precedent (eosinophilic-myocarditis and giant-cell-myocarditis to congestive-heart-failure) and the chronic-pyelonephritis-to-chronic-kidney-disease DIRECT precedent - individual claims require serology-confirmed (circulating anti-GBM antibody) or biopsy-confirmed anti-GBM disease with crescentic glomerulonephritis documented, subsequent chronic kidney disease or renal-replacement dependence staged within the identity's scope with documented chronology, and exclusion of ANCA-associated (granulomatosis-with-polyangiitis, microscopic polyangiitis), lupus, IgA, membranous, and diabetic and other secondary glomerulonephropathies per case; the pulmonary-hemorrhage arm is NOT mapped because no catalog identity fits (negative screen recorded in governanceNotes)."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 39 (2026-09-23): one bounded DIRECT edge authored. The Catarina Oliveira 2026 contemporary case series documents anti-GBM disease with 92.6% of patients requiring renal replacement therapy at presentation, crescentic glomerulonephritis in 80% of biopsies with high mean crescent burden, and renal recovery limited to 18.5% of those who required renal replacement at presentation with crescentic involvement over 40% and absence of preserved normal glomeruli significantly associated with poor outcome despite guideline-directed therapy, the Suhlrie 2026 cohort of 72 children and adults documents anti-GBM disease causing rapidly progressive glomerulonephritis with dialysis at diagnosis a strong predictor of outcome regardless of age, and the Wang 2026 multicenter study of 66 patients documents dialysis independence in only about half recovering and rituximab addition accelerating dialysis independence with a trend toward higher renal survival - anti-GBM antibody attack on the glomerular basement membrane producing crescentic necrotizing glomerulonephritis that destroys nephrons until chronic kidney disease or dialysis dependence meets the identity's scope mirrors the immune-destruction family (IMMUNE_MEDIATED, PROBABLE, hypothesizedOnly:false); WELL_ESTABLISHED is withheld because a treatment-responsive subset achieves partial or full renal recovery (up to half dialysis-independent), presentation-dialysis status and crescent burden stratify outcomes, atypical seronegative variants with minimal renal impact exist (the Oxf Med Case Reports atypical cases), and alternative glomerulonephropathies are excluded per case.",
+    "Negative screens recorded 2026-09-23: (i) no pulmonary-hemorrhage or hemoptysis edge - the catalog contains no diffuse-alveolar-hemorrhage, pulmonary-hemorrhage, or hemoptysis identity (the hemorrh keyword resolves only to hemorrhoids and traumatic-subarachnoid-hemorrhage), so the classic pulmonary arm of Goodpasture disease has no correct target (wrong-target guard; reopening if governance adds a pulmonary-hemorrhage identity); (ii) no anemia edge - renal anemia is mediated through the chronic-kidney-disease pathway this edge establishes (the anemia target already carries the chronic-kidney-disease incoming edge), so a direct anemia arrow would double-count the mediated chain (duplicate-mediated guard); (iii) no dialysis or transplant edge - renal replacement is a treatment state rather than a disease outcome and heart-transplant-residuals analog scope does not exist for kidney transplant here (treatment-state guard); (iv) no pneumonia or respiratory-infection edge - pulmonary hemorrhage aspiration and infection risk lack condition-specific quantification and no pneumonia identity fits the hemorrhage-mediated pattern (zero-record guard); (v) duplicate-scope note: granulomatosis-with-polyangiitis and the other pauci-immune/ANCA glomerulonephritis identities remain zero-edge backlog identities with their own windows, and this edge rests on anti-GBM-specific serology and biopsy evidence distinct from the ANCA pathway (sibling scope, no parallel-pathway duplication); the chronic-kidney-disease target carries thirteen incoming edges including the chronic-pyelonephritis DIRECT precedent, and this adds the anti-GBM crescentic-immune pathway. Reopening condition for pulmonary mapping: a catalog identity for diffuse alveolar hemorrhage or hemoptysis. Reopening condition for upgrade: an untreated-natural-history cohort would move toward WELL_ESTABLISHED but is ethically unavailable given treatment standards."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "chronic-kidney-disease",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "DIRECT_CAUSATION",
+        "etiologicalTrigger": "Serology-confirmed (circulating anti-GBM antibody) or biopsy-confirmed anti-GBM (Goodpasture) disease with crescentic necrotizing glomerulonephritis - antibody attack on the glomerular basement membrane strips capillary walls and recruits crescents that obliterate glomeruli, so nephron mass is destroyed until filtration capacity falls into staged chronic kidney disease or permanent renal-replacement dependence.",
+        "mechanismSummary": "An antibody-mediated destruction cascade: IgG anti-GBM antibodies bind the alpha-3 chain of type IV collagen in the glomerular basement membrane, fix complement and recruit neutrophils and macrophages that necrose capillary loops, and drive epithelial crescent formation that compresses and scleroses the tuft; the loss of functioning nephrons is initially catastrophic (rapidly progressive glomerulonephritis, frequently dialysis-requiring at presentation) and, where recovery occurs it is partial - residual sclerosis and tubulointerstitial fibrosis consolidate into chronic kidney disease, with crescent burden above 40% and absent preserved glomeruli predicting the non-recovering course and dialysis-dependence at presentation predicting outcome regardless of age."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "IMMUNE_MEDIATED",
+        "primaryVector": "A humoral immune destruction vector: pathogenic anti-GBM antibodies target the glomerular basement membrane's collagen IV scaffold, activating complement and recruiting inflammatory cells that lyse capillary walls and form cellular crescents in Bowman's space; sclerotic conversion of crescents and downstream tubulointerstitial fibrosis permanently reduces nephron number so filtration rate settles below the chronic-kidney-disease threshold (or fails to recover from dialysis dependence) - documented at cohort level with 80-92% crescentic or renal-replacement presentation and limited recovery, matching the immune-destruction-to-organ-failure family while subset treatment response keeps the consensus at PROBABLE.",
+        "hypothesizedOnly": false
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "PROBABLE",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The chain is supported by disease-specific serology and biopsy evidence (crescentic glomerulonephritis in 80% of biopsies), near-universal severe renal presentation (92.6% requiring renal replacement in one contemporary series), outcome stratification by crescent burden and presentation-dialysis status, and mechanistic identity with the immune-destruction family, which justifies PROBABLE direct causation; WELL_ESTABLISHED is withheld because a treatment-responsive subset achieves dialysis independence (about half in the multicenter series) and partial recovery, atypical seronegative variants carry minimal renal impact, presentation timing confounds individual attribution, and alternative glomerulonephropathies (ANCA-associated, lupus, IgA, membranous, diabetic) are excluded per case; no probability estimate is asserted.",
+        "evidenceGaps": "Serologic confirmation of circulating anti-GBM antibodies and/or renal biopsy with linear IgG deposition and crescentic necrotizing glomerulonephritis documented; serial eGFR, creatinine, and proteinuria records documenting the transition to staged chronic kidney disease (or continued renal-replacement dependence) with chronology after disease onset; crescent burden and preserved-glomeruli quantification from the diagnostic biopsy; treatment timeline (plasmapheresis, corticosteroids, cyclophosphamide or rituximab) with recovery documentation; exclusion of ANCA-associated vasculitis (granulomatosis-with-polyangiitis, microscopic polyangiitis), lupus nephritis, IgA nephropathy, membranous nephropathy, diabetic kidney disease, and other secondary glomerulonephropathies including double-positive anti-GBM/anti-MPO disease; nephrology assessment of the individual relationship",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "ANCA-associated glomerulonephritis (granulomatosis-with-polyangiitis, microscopic polyangiitis)",
+          "Double-positive anti-GBM and anti-MPO disease",
+          "Lupus nephritis or IgA nephropathy",
+          "Diabetic kidney disease or other secondary glomerulonephropathies",
+          "Atypical seronegative anti-GBM variants with minimal renal impact versus no disease"
+        ]
+      },
+      "evidenceGaps": [
+        "Serologic confirmation of circulating anti-GBM antibodies and/or renal biopsy with linear IgG deposition and crescentic necrotizing glomerulonephritis documented; serial eGFR, creatinine, and proteinuria records documenting the transition to staged chronic kidney disease (or continued renal-replacement dependence) with chronology after disease onset; crescent burden and preserved-glomeruli quantification from the diagnostic biopsy; treatment timeline (plasmapheresis, corticosteroids, cyclophosphamide or rituximab) with recovery documentation; exclusion of ANCA-associated vasculitis (granulomatosis-with-polyangiitis, microscopic polyangiitis), lupus nephritis, IgA nephropathy, membranous nephropathy, diabetic kidney disease, and other secondary glomerulonephropathies including double-positive anti-GBM/anti-MPO disease; nephrology assessment of the individual relationship"
+      ],
+      "rationale": "Authored at DIRECT_CAUSATION, PROBABLE, hypothesizedOnly:false following the immune-destruction family (eosinophilic and giant-cell myocarditis to congestive-heart-failure) and the chronic-pyelonephritis chronic-kidney-disease precedent: serology- and biopsy-confirmed crescentic destruction with near-universal severe renal presentation and crescent-burden outcome stratification supports the direct cascade while treatment-responsive subset recovery, presentation-timing confounding, atypical variants, and alternative glomerulonephropathies keep the consensus at PROBABLE with per-case exclusion; no probability estimate is asserted.",
+      "sourceReferences": [
+        {
+          "citation": "Catarina Oliveira A, Figueiredo R, Correia R, et al. Anti-glomerular basement membrane disease: A contemporary case series from a large university hospital. Nefrologia (Engl Ed). 2026;46(7):501522. PMID 42618193.",
+          "note": "Contemporary case series documenting 92.6% renal replacement requirement at presentation, crescentic glomerulonephritis in 80% of biopsies, and limited renal recovery (18.5% of those presenting on renal replacement) with crescent burden above 40% and absent preserved glomeruli predicting poor outcome despite therapy - the renal-destruction and non-recovery anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42618193/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 42618193; 92.6% RRT at presentation, crescents 80%, limited recovery 18.5%"
+        },
+        {
+          "citation": "Suhlrie A, van der Meijden WAG, Faguer S, et al. Outcomes in Children and Adults With Antiglomerular Basement Membrane Disease. Kidney Int Rep. 2026;11(5):106353. PMID 42006224.",
+          "note": "Cohort of 72 children and adults with anti-GBM disease documenting rapidly progressive glomerulonephritis with dialysis at diagnosis a strong predictor of outcome regardless of age under plasma-exchange-based treatment - the dialysis-outcome predictor anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42006224/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 42006224; 72 patients, dialysis at diagnosis predicts outcome"
+        },
+        {
+          "citation": "Wang Y, Zhai Z, Wang L, et al. Rituximab is associated with accelerated dialysis independence in anti-glomerular basement membrane disease: a multicenter retrospective study. Front Immunol. 2026;17:1835889. PMID 42199438.",
+          "note": "Multicenter study of 66 confirmed anti-GBM patients documenting dialysis independence in about half recovering, accelerated dialysis independence with rituximab addition, and a trend toward higher renal survival with initial dialysis dependency a predictor - the subset-recovery and treatment-response anchor that grounds the PROBABLE (not WELL_ESTABLISHED) ceiling.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42199438/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 42199438; 66 patients, dialysis independence about 50%, RTX accelerates recovery"
+        }
+      ]
+    }
+  ]
 }

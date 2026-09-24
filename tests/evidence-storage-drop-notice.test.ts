@@ -11,7 +11,7 @@ import type { EvidenceAnalysis } from "@/lib/evidence/extract";
 
 /**
  * Contract for silent-data-loss prevention in evidence storage (audit
- * finding #3, remediated in #386):
+ * finding #3, remediated in #387):
  *
  * 1. serializeStoredEvidenceWithInfo reports an accurate dropped count when
  *    byte-budget or source-cap eviction discards oldest-first.

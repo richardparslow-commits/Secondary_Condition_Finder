@@ -1,6 +1,78 @@
 {
   "id": "greater-trochanteric-pain-syndrome",
   "draft": true,
-  "todo": ["Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.", "Review direct-secondary, aggravation, biomechanical, medication/treatment, intermediate-factor, and organ-system pathways only where applicable; do not infer medical causation from rating-schedule authority."],
-  "suggestions": []
+  "todo": [
+    "D1 draft-authoring batch 40 (2026-09-23): one ASSOCIATION_ONLY case-matching draft mapping pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: the mapping asserts association only (etiologicalConsensus NOT_ESTABLISHED, hypothesizedOnly:true) following the femoral-neuropathy, episcleritis, and glomus-tumor case-matching pain precedent - it records that greater trochanteric pain syndrome is a chronic lateral-hip pain presentation historically misattributed to bursitis, osteoarthritis, or spinal sources whose exclusionary workup mirrors the unexplained-chronic-pain evaluation, not that the syndrome caused a distinct pain disorder; individual claims require clinical or imaging-confirmed gluteal tendinopathy/bursal pathology within the syndrome's scope with documented pain chronology and site-appropriate exclusion of mimickers per case."
+  ],
+  "governanceNotes": [
+    "D1 batch 40 (2026-09-23): one bounded case-matching association edge authored. The Williams 2009 review of anatomy, diagnosis and treatment defines greater trochanteric pain syndrome as chronic pain overlying the lateral aspect of the hip, notes it was once described as trochanteric bursitis and often mimics pain generated from myofascial sources, degenerative joint disease, and spinal pathology, and records incidence around 1.8 per 1,000 per year with persistence radiating to the knee, the Pianka 2021 review evaluates the syndrome as a wide spectrum of pathology (trochanteric bursitis, abductor tendon pathology, external coxa saltans) that is primarily a clinical diagnosis requiring careful differentiation from osteoarthritis, femoroacetabular impingement, and referred spinal sources, and the Mary McMillan 2022 factorial randomized trial characterizes it as a debilitating chronic condition most prevalent in postmenopausal women with outcomes tracked to 52 weeks - the mimicking, misattribution, and chronicity profile is what the case-matching pattern records (femoral-neuropathy batch 34, glomus-tumor batch 38 precedents). Category PSYCHOPHYSIOLOGICAL matches the pain-edge precedent family.",
+    "Negative screens recorded 2026-09-23: (i) sibling scope - the generic bursitis and tendinopathy identities are zero-edge backlog identities with their own windows; greater trochanteric pain syndrome is the site-specific lateral-hip identity, and the generic siblings cannot substitute for a site-specific pathway (site-specific-owns-window guard, femoral-neuropathy versus peripheral-neuropathy pattern), while the catalog reviewNotes warning that the syndrome overlaps clinically with bursitis and tendinopathy is honored by requiring site-appropriate confirmation rather than treating catalog identity as proof of a separate rating or nexus; (ii) no osteoarthritis edge - hip osteoarthritis is an alternative explanation and possible shared driver rather than a documented forward outcome of the syndrome (shared-driver guard; the flatfoot-to-osteoarthritis batch-34 edge runs the other direction for a different joint); (iii) no insomnia edge - sleep disturbance in lateral-hip pain populations lacks syndrome-specific quantification beyond generic chronic-pain sleep literature in this window (zero-record guard); (iv) no depression, difficulty-walking, or amputation edge - downstream outcomes lack syndrome-specific quantified cohorts, and difficulty-walking and amputation have no catalog identity anyway (zero-record and wrong-target guards); (v) no surgery or hip-replacement edge - arthroplasty is a treatment state for coexisting end-stage osteoarthritis rather than a GTPS outcome (treatment-state guard). Duplicate-scope note: unexplained-chronic-pain gains a seventh incoming case-matching edge (erythromelalgia, episcleritis, femoral-neuropathy, flexor-hallucis-longus-tendinitis, genitofemoral-nerve-neuralgia, glomus-tumor, now greater-trochanteric-pain-syndrome) with independent condition-specific evidence and no pooled duplication. Reopening condition: a cohort quantifying chronic-pain-disorder outcomes attributable to the syndrome beyond the constitutive lateral-hip pain, or an insomnia or depression cohort specific to the syndrome."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "unexplained-chronic-pain",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The Williams 2009 review defines greater trochanteric pain syndrome as chronic pain overlying the lateral aspect of the hip - once described as trochanteric bursitis - that often mimics pain generated from myofascial sources, degenerative joint disease, and spinal pathology, with symptoms persisting as pain radiating along the lateral thigh to the knee, the Pianka 2021 review documents the syndrome as a wide-spectrum pathology (trochanteric bursitis, abductor tendon pathology, external coxa saltans) that is primarily a clinical diagnosis requiring differentiation from osteoarthritis, femoroacetabular impingement, and referred spinal disease, and the Mary McMillan 2022 randomized trial characterizes it as a debilitating chronic condition most prevalent in postmenopausal women with pain and function outcomes tracked prospectively to 52 weeks - the literature documents a reproducible chronic lateral-hip pain presentation whose historical misattribution and mimicking drive exclusionary workups without establishing that the syndrome caused a distinct chronic pain disorder in any individual.",
+        "causationStatus": "The mapping does not assert that greater trochanteric pain syndrome caused a separate chronic pain disorder: the lateral-hip pain is constitutive of the syndrome diagnosis itself, so the edge records case-matching of presentations - chronic pain historically coded as bursitis, osteoarthritis, or spinal in origin whose exclusionary workup mirrors the unexplained-chronic-pain evaluation (femoral-neuropathy and glomus-tumor precedent) - rather than a distinct downstream arrow; hip osteoarthritis, femoroacetabular impingement, lumbosacral radiculopathy, referred pain from the hip joint itself, iliotibial-band friction, and gluteal myofascial or trigger-point sources independently produce lateral-hip and thigh pain in the same populations (predominantly postmenopausal women with obesity or low back pain co-morbidity), and the catalog reviewNotes caution that the syndrome overlaps clinically with bursitis and tendinopathy so identity is not proof of a separate nexus; individual claims require clinical examination with point tenderness over the greater trochanter plus confirmatory ultrasound or MRI documenting gluteal tendinopathy or bursal pathology, documented pain chronology within the unexplained-chronic-pain identity's scope, and exclusion of the mimickers with the site-appropriate workup documented."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "PSYCHOPHYSIOLOGICAL",
+        "primaryVector": "A peripheral-to-central sensitization pathway: repetitive gluteal tendon compression and bursal irritation at the greater trochanter generate persistent nociceptive input from the lateral hip that, under unresolved mechanical loading, sustains wind-up and central sensitization with pain radiating to the thigh and knee - producing chronic lateral-hip pain that loops through bursitis, osteoarthritis, and spinal workups without a settled diagnosis until the tendinopathy-bursal spectrum is named - the documented mimicking and chronicity profile that grounds the case-matching edge while individual attribution of a distinct pain disorder remains an association hypothesis.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The edge asserts an association only: the located condition-specific evidence consists of two narrative reviews and a treatment trial describing a chronic constitutive pain syndrome without any distinct chronic-pain-disorder diagnosis attributable to the syndrome in an individual, the lateral-hip pain is constitutive of the diagnosis so a separate causal arrow would double-count the symptom, competing lateral-hip pain etiologies (osteoarthritis, femoroacetabular impingement, radiculopathy, myofascial sources) are common in the same predominantly postmenopausal population, and all case-matching pain precedents rest at NOT_ESTABLISHED; no probability estimate is asserted.",
+        "evidenceGaps": "Clinical examination documentation of greater-trochanter point tenderness with confirmatory ultrasound or MRI showing gluteal tendinopathy, abductor tearing, or trochanteric bursal pathology within the syndrome's scope; documented pain chronology with onset, distribution (lateral hip radiating to thigh or knee), duration past the acute phase, and serial severity scores within the unexplained-chronic-pain identity's scope; exclusionary workup (hip radiographs or MRI, lumbosacral imaging or electrodiagnostics where indicated) documented; exclusion of hip osteoarthritis, femoroacetabular impingement, lumbosacral radiculopathy, referred hip-joint pain, iliotibial-band disorder, and gluteal myofascial or trigger-point sources; sports-medicine, orthopedic, or pain-medicine assessment of the individual relationship",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Hip osteoarthritis or femoroacetabular impingement",
+          "Lumbosacral radiculopathy or referred spinal pain",
+          "Hip-joint internal derangement referred to the lateral hip",
+          "Iliotibial-band friction or gluteal myofascial trigger points",
+          "Greater trochanter apophyseal stress injury or occult fracture"
+        ]
+      },
+      "evidenceGaps": [
+        "Clinical examination documentation of greater-trochanter point tenderness with confirmatory ultrasound or MRI showing gluteal tendinopathy, abductor tearing, or trochanteric bursal pathology within the syndrome's scope; documented pain chronology with onset, distribution (lateral hip radiating to thigh or knee), duration past the acute phase, and serial severity scores within the unexplained-chronic-pain identity's scope; exclusionary workup (hip radiographs or MRI, lumbosacral imaging or electrodiagnostics where indicated) documented; exclusion of hip osteoarthritis, femoroacetabular impingement, lumbosacral radiculopathy, referred hip-joint pain, iliotibial-band disorder, and gluteal myofascial or trigger-point sources; sports-medicine, orthopedic, or pain-medicine assessment of the individual relationship"
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY as a case-matching pain edge on the femoral-neuropathy and glomus-tumor precedent: condition-specific review and trial evidence documents a chronic constitutive lateral-hip pain syndrome historically misattributed to bursitis, osteoarthritis, or spinal sources whose exclusionary workup mirrors the unexplained-chronic-pain evaluation, while the constitutive nature of the pain, common competing lateral-hip etiologies, catalog overlap caution, and absent distinct-disorder attribution keep the consensus at NOT_ESTABLISHED with confirmation and alternative-etiology requirements.",
+      "sourceReferences": [
+        {
+          "citation": "Williams BS, Cohen SP. Greater trochanteric pain syndrome: a review of anatomy, diagnosis and treatment. Anesth Analg. 2009 May;108(5):1662-70. PMID 19372352.",
+          "note": "Review defining greater trochanteric pain syndrome as chronic lateral-hip pain once described as trochanteric bursitis that often mimics myofascial, degenerative joint, and spinal pain sources with incidence around 1.8 per 1,000 per year - the mimicking and historical-misattribution anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/19372352/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 19372352; chronic lateral hip pain, mimics myofascial/DJD/spinal sources"
+        },
+        {
+          "citation": "Pianka MA, Serino J, DeFroda SF, Bodendorfer BM. Greater trochanteric pain syndrome: Evaluation and management of a wide spectrum of pathology. SAGE Open Med. 2021 Jun 3;9:20503121211022582. PMID 34158938.",
+          "note": "Review documenting the syndrome as a spectrum including trochanteric bursitis, abductor tendon pathology, and external coxa saltans that is primarily a clinical diagnosis requiring differentiation from osteoarthritis, femoroacetabular impingement, and other hip-pain sources - the spectrum and differential-diagnosis anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34158938/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 34158938; wide spectrum of pathology, clinical diagnosis, differential vs OA/FAI"
+        },
+        {
+          "citation": "Mary McMillan R, Ganderton CL, Cook J, et al. Does Menopausal Hormone Therapy, Exercise, or Both Improve Pain and Function in Postmenopausal Women With Greater Trochanteric Pain Syndrome? A 2 x 2 Factorial Randomized Clinical Trial. Am J Sports Med. 2022 Feb;50(2):515-525. PMID 34898293.",
+          "note": "Factorial randomized trial of 132 postmenopausal women characterizing the syndrome as a debilitating chronic condition with pain and function outcomes measured at 12 and 52 weeks - the chronicity and population anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34898293/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 34898293; 132 postmenopausal women, debilitating chronic condition, 52-week follow-up"
+        }
+      ]
+    }
+  ]
 }

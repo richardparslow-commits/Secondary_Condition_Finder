@@ -2,8 +2,141 @@
   "id": "glucagonoma",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review hormonal, metabolic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 39 (2026-09-23): one DIRECT_CAUSATION and one ASSOCIATION_ONLY draft mapping pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: (i) the diabetes-mellitus mapping asserts the glucagon-excess-to-hyperglycemia cascade at PROBABLE strength with hypothesizedOnly:false following the gastrinoma-to-peptic-ulcer-disease hormonal-excess precedent - individual claims require biochemically confirmed glucagonoma (elevated fasting plasma glucagon with tumor localization), new-onset or clearly worsening diabetes documented around the tumor's course, chronology dating the tumor's biological presence rather than diagnosis, and exclusion of type 1, type 2, other pancreatic endocrine-tumor hormone co-secretion, steroid-induced, and secondary diabetes etiologies per case; (ii) the malnutrition-residuals mapping asserts association only (etiologicalConsensus NOT_ESTABLISHED, hypothesizedOnly:true) because catabolic weight loss is a subset feature with treatment-mediated and tumor-burden co-drivers."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 39 (2026-09-23): two bounded edges authored. DIRECT diabetes-mellitus: the Kuiper 2026 primary-hyperglucagonemia clinical approach documents that glucagonoma syndrome presents clinically by diabetes mellitus, weight loss, thromboembolic complications, and necrolytic migratory erythema with diagnosis requiring elevated fasting plasma glucagon, the Perrier 2023 national study of the French Reference Center defines glucagonoma by major criteria including recent-onset diabetes with diabetes present at diagnosis in 50% and documenting partial or complete resolution of glucagonoma symptoms after treatment, and the Anelli 2025 updated review series documents diabetes in 70.3% (50/74) at presentation alongside necrolytic migratory erythema in 93.2% - glucagon excess driving hepatic gluconeogenesis, glycogenolysis, and insulin antagonism until hyperglycemia meets diabetes criteria follows the gastrinoma precedent (NEUROENDOCRINE_CASCADE, PROBABLE, hypothesizedOnly:false); WELL_ESTABLISHED is withheld because progression affects a subset rather than every patient (50-70% at diagnosis), common type 2 diabetes is a competing antecedent requiring exclusion, other functional pancreatic tumors can co-secrete, and no individual-level cohort orders tumor onset before diabetes with confounder control. ASSOCIATION malnutrition-residuals: the Perrier 2023 national study documents weight loss at diagnosis in 68.4% of glucagonoma patients, the Anelli 2025 review documents weight loss among the core presenting features of the 74-patient series, and the Mastoraki 2026 review documents weight loss as one of the cardinal manifestations in its epidemiology and therapeutic algorithm - the catabolic and intake-limiting pathway stays at NOT_ESTABLISHED matching the eight existing malnutrition-residuals incoming edges (all association) because weight loss is a subset feature, treatment response and tumor reduction are separable co-drivers, and non-tumor nutritional etiologies are numerous.",
+    "Negative screens recorded 2026-09-23: (i) no necrolytic-migratory-erythema edge - no such catalog identity exists and the rash is constitutive of the syndrome definition itself rather than a secondary outcome (wrong-target and phenotype-barrier guards); (ii) no deep-vein-thrombosis or pulmonary-embolism edge - the Kuiper 2026 review mentions thromboembolic complications among the clinical tetrad but no glucagonoma-specific thrombosis quantification or case series was located in this screen, and the deep-vein-thrombosis target's existing incoming edges (achilles-tendinopathy, varicose-veins) rest on local-stasis mechanisms (zero-record guard); (iii) no anemia edge - anemia is documented at feature level in reviews (the StatPearls-style Glucagonoma review lists anemia among commonly included findings) but multifactorial (chronic disease, NME exudative loss, occult gastrointestinal loss) without glucagonoma-specific quantification separating the pathways (feature-level-only guard); (iv) no depressive-disorder edge - diagnosis-burden literature for this rare tumor was not condition-specific enough in this screen; (v) metastatic-liver involvement is recorded in the causationStatus as tumor staging rather than an outgoing edge to liver identities (staging not outcome guard). Duplicate-scope note: diabetes-mellitus receives its first incoming edge with this mapping while remaining a zero-outgoing-edge backlog identity (its own window will screen later), and the malnutrition-residuals target's eight existing incoming edges each carry independent evidence bases with no pooled duplication. Reopening condition for upgrades: a prospective cohort ordering glucagonoma onset before diabetes with type 2 exclusion, or a glucagonoma-specific thrombosis series."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "diabetes-mellitus",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "DIRECT_CAUSATION",
+        "etiologicalTrigger": "Biochemically confirmed glucagonoma (elevated fasting plasma glucagon with localized pancreatic alpha-cell tumor) - chronic glucagon excess antagonizes insulin at the liver and periphery, so hepatic glucose output rises and glucose tolerance degrades until hyperglycemia crosses diagnostic diabetes thresholds as new-onset or clearly worsening diabetes during the tumor's course.",
+        "mechanismSummary": "A hormonal hypersecretion cascade: tumor-derived glucagon drives hepatic gluconeogenesis and glycogenolysis while suppressing glycogen synthesis and insulin action, producing persistent hyperglycemia with the catabolic sequelae of gluconeogenic overload; the glucose derangement tracks tumor activity - worsening with tumor burden and improving toward resolution after surgical or somatostatin-directed treatment - the treatment-response pattern that grounds the hormonal-excess DIRECT precedents, with common type 2 diabetes and other functional tumors excluded per case."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "NEUROENDOCRINE_CASCADE",
+        "primaryVector": "A glucagon-excess glucose-toxicity vector: chronic alpha-cell tumor secretion raises fasting and postprandial glucagon above physiologic set points, amplifying hepatic gluconeogenesis and glycogenolysis while insulin-mediated peripheral uptake is relatively antagonized; sustained positive hepatic glucose output depletes glycogen and worsens insulin resistance until beta-cell compensation fails and diabetes criteria are met - documented at series level in which half to seven-tenths of diagnosed patients carry diabetes and recent-onset diabetes is itself a diagnostic major criterion, with partial or complete symptom resolution following treatment.",
+        "hypothesizedOnly": false
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "PROBABLE",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The chain is supported by defining-syndrome evidence (recent-onset diabetes as a diagnostic major criterion), high presentation prevalence (50% national cohort, 70.3% single-center series), an mechanistically definitional glucagon-liver axis, and treatment-response documentation, which justifies PROBABLE direct causation like the gastrinoma-to-peptic-ulcer precedent; WELL_ESTABLISHED is withheld because diabetes affects a subset rather than every glucagonoma patient, type 2 diabetes is highly prevalent in the same age group and must be excluded per case, other functional pancreatic tumors can co-secret hormones, and no individual-level cohort orders tumor onset before diabetes onset; no probability estimate is asserted.",
+        "evidenceGaps": "Biochemical confirmation of glucagonoma (elevated fasting plasma glucagon, suppressibility testing where applicable, pancreatic tumor localization with cross-sectional imaging or PET); documented new-onset or objectively worsened diabetes (HbA1c, fasting glucose, treatment-escalation records) with chronology during the tumor's course; glucose trajectory before and after tumor-directed treatment (resection, embolization, or somatostatin analog); exclusion of type 1 diabetes, longstanding or newly diagnosed type 2 diabetes unrelated to the tumor, steroid-induced and other secondary causes, and co-secretion from other functional pancreatic neuroendocrine tumors; endocrinology assessment of the individual relationship",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Type 2 diabetes antedating the tumor (most common competing cause)",
+          "Type 1 diabetes or latent autoimmune diabetes",
+          "Steroid-induced, post-pancreatectomy, or other secondary diabetes",
+          "Co-secretion from other functional pancreatic neuroendocrine tumors",
+          "Pancreatic tumor mass effect destroying islets (distinct from glucagon-mediated hyperglycemia)"
+        ]
+      },
+      "evidenceGaps": [
+        "Biochemical confirmation of glucagonoma (elevated fasting plasma glucagon, suppressibility testing where applicable, pancreatic tumor localization with cross-sectional imaging or PET); documented new-onset or objectively worsened diabetes (HbA1c, fasting glucose, treatment-escalation records) with chronology during the tumor's course; glucose trajectory before and after tumor-directed treatment (resection, embolization, or somatostatin analog); exclusion of type 1 diabetes, longstanding or newly diagnosed type 2 diabetes unrelated to the tumor, steroid-induced and other secondary causes, and co-secretion from other functional pancreatic neuroendocrine tumors; endocrinology assessment of the individual relationship"
+      ],
+      "rationale": "Authored at DIRECT_CAUSATION, PROBABLE, hypothesizedOnly:false following the gastrinoma-to-peptic-ulcer hormonal-excess precedent: recent-onset diabetes as a diagnostic criterion, 50-70% presentation prevalence, a definitional glucagon-hepatic glucose axis, and treatment-response documentation support the direct cascade while subset progression, ubiquitous type 2 confounding, and absent individual-level chronology keep the consensus at PROBABLE with per-case exclusion; no probability estimate is asserted.",
+      "sourceReferences": [
+        {
+          "citation": "Kuiper J, de Herder WW, Feelders RA, et al. Approach to the patient with primary hyperglucagonemia. J Clin Endocrinol Metab. 2026. PMID 42766419.",
+          "note": "Clinical approach review documenting that glucagonoma syndrome presents clinically by diabetes mellitus, weight loss, thromboembolic complications, and necrolytic migratory erythema, with diagnosis requiring elevated fasting plasma glucagon levels and tumor localization - the syndrome-definition and biochemical-criteria anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42766419/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 42766419; glucagonoma syndrome presents clinically by diabetes mellitus among core features"
+        },
+        {
+          "citation": "Perrier M, Brugel M, Gérard L, et al. Characteristics and treatment options of glucagonomas: a national study from the French Reference Center for Pancreatic Neuroendocrine Tumors. Eur J Endocrinol. 2023;189(6):575-583. PMID 38039101.",
+          "note": "National cohort study defining glucagonoma by major criteria including recent-onset diabetes, documenting diabetes at diagnosis in 50% and weight loss in 68.4% of patients, with partial or complete resolution of glucagonoma symptoms after treatment - the prevalence and treatment-response anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38039101/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 38039101; diabetes 50% and weight loss 68.4% at diagnosis, recent-onset diabetes a major criterion"
+        },
+        {
+          "citation": "Anelli S, Mazzilli R, Zamponi V, et al. Glucagonoma and Glucagonoma Syndrome: An Updated Review. Clin Endocrinol (Oxf). 2025;103(4):417-426. PMID 40613421.",
+          "note": "Updated review of 74 glucagonoma patients documenting diabetes mellitus at presentation in 70.3% (50/74) with necrolytic migratory erythema in 93.2% and weight loss among the core features - the series-prevalence anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40613421/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 40613421; DM 70.3% (50/74) at presentation"
+        }
+      ]
+    },
+    {
+      "conditionId": "malnutrition-residuals",
+      "rank": 2,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The Perrier 2023 national cohort study documents weight loss at diagnosis in 68.4% of glucagonoma patients as one of the most frequent presenting symptoms, the Anelli 2025 updated review of 74 patients documents weight loss among the core presenting features alongside necrolytic migratory erythema and diabetes, and the Mastoraki 2026 diagnostic and therapeutic algorithm review documents weight loss as one of the cardinal manifestations of pancreatic glucagonoma; the literature documents a reproducible catabolic weight-loss association in glucagonoma populations without establishing that the tumor produced an individual's malnutrition.",
+        "causationStatus": "The mapping does not assert that glucagonoma caused an individual's malnutrition: catabolic weight loss is a subset feature (roughly two-thirds at diagnosis, not universal), tumor-directed treatment and somatostatin analog responses are separable co-drivers of nutritional change, hypoalbuminemia and nutrient wasting in the syndrome are multifactorial (NME protein losses, intake reduction from dysgeusia and anorexia, pancreatic endocrine insufficiency), and chronic kidney disease, liver disease, hyperthyroidism, malabsorption, eating disorders, food insecurity, alcohol use disorder, and other malignancies independently produce the malnutrition phenotype within the malnutrition-residuals identity's scope; individual claims require GLIM- or PG-SGA-confirmed malnutrition, biochemically confirmed glucagonoma with documented weight trajectory placing tumor presence before nutritional decline, and exclusion of the independent etiologies with treatment timeline documented."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "METABOLIC_OR_NUTRITIONAL",
+        "primaryVector": "A tumor-catabolism and intake-limiting pathway: chronic glucagon excess enforces a fasting-like catabolic state (gluconeogenesis, lipolysis, protein breakdown) while anorexia, dysgeusia, and the exudative skin losses of necrolytic migratory erythema add negative protein and energy balance; the sustained deficit depletes lean mass and serum proteins until GLIM-definable malnutrition develops - documented as high presentation prevalence in cohort and review material while individual-level attribution through the tumor identity remains an association hypothesis with treatment and non-tumor co-drivers guarded.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The edge asserts an association only: the evidence is cohort and review presentation-prevalence data without onset chronology, roughly a third of patients present without weight loss, treatment responses and NME-driven losses are co-drivers the sources do not separate, all eight existing malnutrition-residuals incoming edges rest at association strength, and non-tumor nutritional etiologies are numerous in the same population; no probability estimate is asserted.",
+        "evidenceGaps": "GLIM-, PG-SGA-, or documented weight-trajectory confirmation of malnutrition within the malnutrition-residuals identity's scope; biochemically confirmed glucagonoma (fasting glucagon, localization) with documented timeline placing tumor presence before nutritional decline; treatment timeline separating resection, embolization, and somatostatin-analog effects from tumor-driven catabolism; NME-associated exudative protein loss documented where present; exclusion of chronic kidney disease, liver disease, hyperthyroidism, malabsorption, eating disorders, food insecurity, alcohol use disorder, and other malignancies; oncology and dietetics assessment of the individual relationship",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Pre-existing malnutrition, eating disorder, or food insecurity",
+          "Chronic kidney disease, liver disease, or hyperthyroid catabolism",
+          "Malabsorption or pancreatic endocrine insufficiency",
+          "NME-driven protein losses or treatment effects without tumor catabolism",
+          "Other malignancy or chronic infection"
+        ]
+      },
+      "evidenceGaps": [
+        "GLIM-, PG-SGA-, or documented weight-trajectory confirmation of malnutrition within the malnutrition-residuals identity's scope; biochemically confirmed glucagonoma (fasting glucagon, localization) with documented timeline placing tumor presence before nutritional decline; treatment timeline separating resection, embolization, and somatostatin-analog effects from tumor-driven catabolism; NME-associated exudative protein loss documented where present; exclusion of chronic kidney disease, liver disease, hyperthyroidism, malabsorption, eating disorders, food insecurity, alcohol use disorder, and other malignancies; oncology and dietetics assessment of the individual relationship"
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY matching the malnutrition-residuals target's eight-edge association norm: cohort and review evidence documents a reproducible catabolic weight-loss association while subset prevalence, treatment and NME co-drivers, cross-sectional design, and numerous non-tumor nutritional etiologies defeat individual causal attribution, so the mapping asserts the association with confirmed-phenotype, chronology, treatment-separation, and alternative-etiology requirements.",
+      "sourceReferences": [
+        {
+          "citation": "Perrier M, Brugel M, Gérard L, et al. Characteristics and treatment options of glucagonomas: a national study from the French Reference Center for Pancreatic Neuroendocrine Tumors. Eur J Endocrinol. 2023;189(6):575-583. PMID 38039101.",
+          "note": "National cohort study documenting weight loss at diagnosis in 68.4% of glucagonoma patients among the most frequent presenting symptoms - the prevalence anchor (shared with the diabetes edge, deduplicated in the registry).",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38039101/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 38039101; weight loss 68.4% at diagnosis"
+        },
+        {
+          "citation": "Anelli S, Mazzilli R, Zamponi V, et al. Glucagonoma and Glucagonoma Syndrome: An Updated Review. Clin Endocrinol (Oxf). 2025;103(4):417-426. PMID 40613421.",
+          "note": "Updated review of 74 patients documenting weight loss among the core presenting features of glucagonoma syndrome alongside necrolytic migratory erythema and diabetes - the series anchor (shared with the diabetes edge, deduplicated in the registry).",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40613421/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 40613421; weight loss among core presenting features, 74-patient series"
+        },
+        {
+          "citation": "Mastoraki A, Spyropoulos D, Stamatiadi S, et al. Glucagonoma of the pancreas: diagnostic approach and therapeutic algorithm for a rare pancreatic neuroendocrine tumor. Ann Gastroenterol. 2026;39(2):184-190. PMID 41868867.",
+          "note": "Review of epidemiology, clinical presentation, and therapeutic algorithm documenting weight loss among the manifestations of pancreatic glucagonoma - the clinical-manifestation anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41868867/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 41868867; weight loss among cardinal manifestations"
+        }
+      ]
+    }
+  ]
 }

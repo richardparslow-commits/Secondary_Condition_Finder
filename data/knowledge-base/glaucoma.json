@@ -2,7 +2,77 @@
   "id": "glaucoma",
   "draft": true,
   "todo": [
-    "Rebuild secondary-condition suggestions with condition-specific clinical evidence before publication."
+    "D1 draft-authoring batch 38 (2026-09-23): one ASSOCIATION_ONLY draft mapping pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: the mapping asserts association only (etiologicalConsensus NOT_ESTABLISHED, hypothesizedOnly:true) following the eye-identity-to-visual-impairment cluster norm (cataracts, corneal-scarring, retinal-dystrophy, chalazion, ptosis, aphakia all association-only; only compressive pituitary-neoplasm reaches PROBABLE) - most treated glaucoma does not progress to impairment, so individual claims require ophthalmologist-confirmed glaucoma, standardized visual-impairment criteria (best-corrected acuity and/or visual-field criteria) with chronology, treatment-adherence documentation, and exclusion of coexisting cataract, retinal, and corneal contributors per case."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 38 (2026-09-23): one bounded association edge authored. The Tham 2014 systematic review and meta-analysis documents glaucoma as the leading cause of global irreversible blindness with pooled global prevalence of 3.54% at ages 40-80 and projections beyond 111 million affected, the Soh 2021 systematic review and meta-analysis documents that on average more than half of all glaucoma cases are undetected globally with the call to prevent excess visual disability and blindness, and the Salari 2025 series documents the burden framing (glaucoma a leading cause of irreversible blindness with millions of blindness and moderate-to-severe visual-impairment cases worldwide) among advanced refractory glaucoma patients treated with transscleral cyclodiode laser - the irreversible-optic-neuropathy-to-field-loss pathway, category MECHANICAL_OR_COMPRESSIVE (intraocular-pressure-mediated mechanostress at the optic nerve head), consensus NOT_ESTABLISHED matching the six-of-seven association-only incoming edges to visual-impairment; PROBABLE is not claimed because progression to impairment affects a treated minority, field loss can be compensated until late stages, and coexisting ocular pathology independently produces the impairment criteria.",
+    "Negative screens recorded 2026-09-23: (i) no blindness edge is authored - blindness is the end-stage extreme with zero incoming edges across the catalog (no identity maps to it), the visual-impairment identity is the calibrated target used by all seven incoming eye edges, and claiming blindness would overstate a subset endpoint (target-selection guard); (ii) no depressive-disorder edge - blindness owns the depressive pathway downstream and glaucoma-specific depression quantification (screening-instrument studies of QoL) was not condition-specific enough to separate from visual-loss shared drivers in this screen; (iii) no falls-fractures or motor-accident edge - field-loss driving those outcomes is mediated through visual-impairment (already the authored pathway) and no glaucoma-specific quantification adjusting for impairment was located; (iv) incoming-edge context: uveitis already carries an association edge INTO glaucoma (secondary glaucoma from inflammatory pressure rises - upstream direction, unaffected); (v) cataract comorbidity guard recorded in the causationStatus because cataract surgery and cataract coexistence confound acuity-based impairment attribution in the same elderly population. Reopening condition: a longitudinal cohort ordering glaucoma onset before standardized-criteria visual impairment with coexisting-pathology adjustment, or a glaucoma-specific depression/falls quantification study."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "visual-impairment",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The Tham 2014 systematic review and meta-analysis documents glaucoma as the leading cause of global irreversible blindness with pooled global prevalence of 3.54% (95% CrI 2.09-5.82) at ages 40-80 and projections to 111.8 million affected by 2040, the Soh 2021 systematic review and meta-analysis documents that on average more than half of all glaucoma cases are undetected at diagnosis across geographical regions with the stated need to prevent excess visual disability and blindness, and the Salari 2025 single-center series documents advanced treatment-resistant glaucoma in a population carrying the worldwide burden of blindness and moderate-to-severe visual-impairment cases; the literature documents a reproducible population-level association between glaucoma and irreversible visual impairment without establishing that glaucoma produced an individual's impairment.",
+        "causationStatus": "The mapping does not assert that glaucoma caused an individual's visual impairment: most treated glaucoma does not progress to impairment endpoints (intraocular-pressure therapy slows field loss and a treated minority reaches impairment criteria), impairment is diagnosed on best-corrected acuity and visual-field criteria with better-eye baseline while coexisting cataract, age-related macular degeneration, diabetic retinopathy, and corneal disease independently meet the same criteria in the same elderly population, late detection (more than half of cases undetected) confounds population attributions, and treatment adherence and access modify individual risk; individual claims require ophthalmologist-confirmed glaucoma (applanation tonometry, gonioscopy, optic-nerve and field documentation), standardized visual-impairment criteria with chronology placing field or acuity loss after glaucoma diagnosis, documented treatment status and adherence, and exclusion of the coexisting ocular contributors per case."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MECHANICAL_OR_COMPRESSIVE",
+        "primaryVector": "A pressure-mediated optic-neuropathy pathway: elevated intraocular pressure (or pressure in the susceptible optic nerve at normal ranges) produces mechanostress and ischemic compromise at the lamina cribrosa, killing retinal ganglion-cell axons in a characteristic arcuate pattern; the accumulated axon loss narrows the visual field and reduces acuity in late stages, and because central nervous system axons do not regenerate the deficit is irreversible - documented at population level as glaucoma's share of global irreversible blindness and impairment while individual-level attribution remains an association requiring standardized criteria and coexisting-pathology exclusion.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The edge asserts an association only: the evidence is population prevalence, projection, and undetected-case meta-analysis rather than a cohort ordering glaucoma onset before standardized-criteria impairment with comorbidity adjustment, most treated glaucoma does not progress to impairment, the catalog's incoming visual-impairment edges (cataracts, corneal-scarring, retinal-dystrophy, chalazion, ptosis, aphakia) are all association-only with only the compressive pituitary lesion at PROBABLE, and cataract and retinal comorbidities independently meet impairment criteria in the same age group; no probability estimate is asserted.",
+        "evidenceGaps": "Ophthalmologist-confirmed glaucoma with baseline and longitudinal optic-nerve head photography, pachymetry, applanation tonometry, gonioscopy, and standard automated perimetry fields; standardized visual-impairment criteria (best-corrected acuity and/or field criteria) documented after glaucoma diagnosis with chronology; treatment timeline including intraocular-pressure-lowering medications, laser, or surgery with adherence documentation; exclusion of cataract, age-related macular degeneration, diabetic retinopathy, corneal disease, and amblyopia as independent or contributing causes of the measured impairment; ophthalmology assessment of the individual relationship",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Cataract (very common coexistence; surgical reversibility confounds acuity)",
+          "Age-related macular degeneration or diabetic retinopathy",
+          "Corneal disease or prior ocular surgery",
+          "Amblyopia or neuro-ophthalmic field loss",
+          "Normal-tension versus treated-controlled glaucoma without progression"
+        ]
+      },
+      "evidenceGaps": [
+        "Ophthalmologist-confirmed glaucoma with baseline and longitudinal optic-nerve head photography, pachymetry, applanation tonometry, gonioscopy, and standard automated perimetry fields; standardized visual-impairment criteria (best-corrected acuity and/or field criteria) documented after glaucoma diagnosis with chronology; treatment timeline including intraocular-pressure-lowering medications, laser, or surgery with adherence documentation; exclusion of cataract, age-related macular degeneration, diabetic retinopathy, corneal disease, and amblyopia as independent or contributing causes of the measured impairment; ophthalmology assessment of the individual relationship"
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY following the eye-identity visual-impairment cluster: population-level meta-analytic evidence documents glaucoma's irreversible optic-neuropathy burden meeting the impairment pathway while treated-minority progression, late-detection confounding, coexisting ocular pathology, and the cluster's association-only norm defeat individual causal attribution, so the mapping asserts the association with confirmed-glaucoma, standardized-criteria, chronology, treatment-status, and comorbidity-exclusion requirements.",
+      "sourceReferences": [
+        {
+          "citation": "Tham YC, Li X, Wong TY, et al. Global prevalence of glaucoma and projections of glaucoma burden through 2040: a systematic review and meta-analysis. Ophthalmology. 2014;121(11):2081-90. PMID 24974815.",
+          "note": "Systematic review and meta-analysis documenting glaucoma as the leading cause of global irreversible blindness, pooled prevalence of 3.54% at ages 40-80, and projections to 111.8 million affected by 2040 - the global irreversible-blindness burden anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/24974815/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 24974815; leading cause of global irreversible blindness, 3.54% prevalence, 111.8M by 2040"
+        },
+        {
+          "citation": "Soh Z, Yu M, Betzler BK, et al. The Global Extent of Undetected Glaucoma in Adults: A Systematic Review and Meta-analysis. Ophthalmology. 2021;128(10):1393-1404. PMID 33865875.",
+          "note": "Systematic review and meta-analysis documenting that on average more than half of all glaucoma cases are undetected at diagnosis globally (43.78 million projected undetected POAG cases in 2020) with the stated goal of preventing excess visual disability and blindness - the late-detection and disability anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33865875/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 33865875; more than half of glaucoma cases undetected, excess visual disability"
+        },
+        {
+          "citation": "Salari Y, Venugopal D, Sohail T, et al. Safety and Efficacy of Transscleral Cyclodiode Laser in Advanced Glaucoma: A Retrospective, Single-center Study. J Curr Glaucoma Pract. 2025;19(4):175-181. PMID 41523174.",
+          "note": "Advanced-glaucoma series whose background documents glaucoma as a leading cause of irreversible blindness worldwide carrying millions of blindness and moderate-to-severe visual-impairment cases with 3-17% of patients developing refractory disease - the advanced-disease impairment anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41523174/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 41523174; millions of blindness and moderate-severe VI cases, refractory 3-17%"
+        }
+      ]
+    }
+  ]
 }

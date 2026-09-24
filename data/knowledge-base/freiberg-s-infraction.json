@@ -2,8 +2,77 @@
   "id": "freiberg-s-infraction",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review biomechanical, post-injury, orthopedic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 35 (2026-09-23): ASSOCIATION_ONLY draft pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: consistent with the avascular-necrosis osteoarthritis precedent, the mapping asserts only the association between Freiberg's infraction and secondary metatarsophalangeal degenerative arthritis - the collapse-to-arthritis progression is documented at staging and end-stage levels but not quantified for individuals; individual claims require documented Freiberg's infraction (Smillie staging or imaging/operative confirmation) predating documented metatarsophalangeal osteoarthritis, with early-stage arrest, primary idiopathic degenerative arthritis, inflammatory arthropathy, and prior-trauma causes addressed."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 35 (2026-09-23): one bounded osteoarthritis association authored from the Freiberg disease surgical and end-stage literature, following the avascular-necrosis-to-osteoarthritis precedent (ASSOCIATION_ONLY, NOT_ESTABLISHED - osteonecrotic collapse to degenerative arthritis documented without individual progression attribution) - the Kilmartin 2020 synthetic cartilage implant hemiarthroplasty series of 23 consecutive patients treats second metatarsophalangeal joint osteoarthrosis and Freiberg disease as one surgical pathology continuum with 43-month mean follow-up, the Lee 2013 operative series reports dorsal closing-wedge osteotomy outcomes in Smillie-staged Freiberg disease with debridement of the joint, and the Carro 2004 arthroscopic Keller case documents a Smillie stage IV late-stage lesion treated as established secondary joint degeneration; the osteonecrotic-collapse-to-incongruity-to-degeneration pathway is accepted biomechanics but no natural-history cohort quantifies progression.",
+    "Duplicate-scope note: the osteoarthritis target carries eight incoming edges (acl-injury, femoroacetabular-impingement, osteitis-deformans, pcl-injury, avascular-necrosis, ankle-strain, ankylosis, flatfoot), all on local-joint, structural, or biomechanical mechanisms; the avascular-necrosis edge is the closest precedent (osteonecrotic collapse to degenerative arthritis) and is femoral-head scoped, while this edge adds the Freiberg metatarsal-head osteochondrosis pathway with Smillie-staged evidence of its own. Negative screens recorded 2026-09-23: (i) no longitudinal cohort quantifies the proportion of Freiberg disease progressing to radiographic metatarsophalangeal osteoarthritis - the outcome literature is surgical series of established late-stage disease; (ii) metatarsalgia and hallux-rigidus alternative edges were screened and rejected - metatarsalgia is the presenting anterior-foot pain syndrome rather than a downstream outcome, and no Freiberg-to-hallux-rigidus progression data were found; (iii) the primary (non-Freiberg) second metatarsophalangeal degenerative-arthritis anatomy literature (long second metatarsal, PMID 23892518) documents an independent degenerative-arthritis etiology that must be excluded per case."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "osteoarthritis",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The Kilmartin 2020 hemiarthroplasty series treats second metatarsophalangeal joint osteoarthrosis and Freiberg disease as one surgical pathology continuum in 23 consecutive patients, the Lee 2013 operative series reports joint debridement and wedge osteotomy in Smillie-staged Freiberg disease, and the Carro 2004 case documents a Smillie stage IV late-stage lesion managed by debridement and excision arthroplasty for established secondary degeneration; the literature documents end-stage Freiberg disease and second metatarsophalangeal degenerative arthritis as overlapping surgical pathologies without establishing that every individual's osteoarthritis followed Freiberg's infraction.",
+        "causationStatus": "The mapping does not assert that Freiberg's infraction caused an individual's osteoarthritis: no natural-history cohort quantifies progression from Freiberg disease to incident metatarsophalangeal osteoarthritis, early-stage disease (Smillie I-II) can arrest or remodel without degeneration, primary idiopathic second metatarsophalangeal degenerative arthritis with a long second metatarsal anatomy variant is an independent etiology, inflammatory arthropathy and prior-trauma arthropathy independently produce metatarsophalangeal degeneration, and the surgical series are cross-sectional at end stage; individual claims require documented Freiberg's infraction predating documented metatarsophalangeal osteoarthritis with staging, chronology, and alternative-cause exclusion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "BIOMECHANICAL_ALTERATION",
+        "primaryVector": "A hypothesized osteonecrotic-collapse incongruity pathway: idiopathic osteochondrosis of a metatarsal head compromises subchondral blood supply, and as Smillie staging describes, the necrotic head progresses through fragmentation, collapse, and flattening; the deformed head-articular surface loses congruency with the opposing phalangeal base, redistributing contact stress and producing abnormal joint loading during weight bearing - the same collapse-to-degeneration logic the avascular-necrosis literature carries at the hip - while the pathway remains a hypothesis about an individual's course because early-stage disease can arrest and no cohort quantifies progression to degenerative arthritis.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "Following the avascular-necrosis osteoarthritis precedent, the edge asserts an association only: progression is supported by staging-based natural history and cross-sectional end-stage surgical series, no Freiberg cohort quantifies incident metatarsophalangeal osteoarthritis or progression rates, early-stage arrest is documented behavior, and primary idiopathic, inflammatory, and post-traumatic degenerative etiologies independently produce the same radiographic endpoint; no probability estimate is asserted.",
+        "evidenceGaps": "Documented Freiberg's infraction with Smillie staging (or imaging or operative confirmation) and symptom chronology; metatarsophalangeal osteoarthritis diagnosis (radiographic joint-space narrowing, subchondral sclerosis, osteophytes) at the affected joint with onset chronology relative to documented Freiberg disease; documentation excluding a long second metatarsal anatomy variant or other primary degenerative-arthritis morphology; exclusion of inflammatory arthropathy, prior metatarsal fracture or dislocation, and crystal arthropathy; orthopedic or podiatric assessment of the individual relationship",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Primary idiopathic second metatarsophalangeal degenerative arthritis (long second metatarsal anatomy variant)",
+          "Inflammatory arthritis or crystal arthropathy of the metatarsophalangeal joint",
+          "Post-traumatic arthropathy after metatarsal fracture or dislocation",
+          "Morton's neuroma or intermetatarsal bursitis mimicking forefoot pain",
+          "Degeneration at an adjacent joint level attributed to the Freiberg joint"
+        ]
+      },
+      "evidenceGaps": [
+        "Documented Freiberg's infraction with Smillie staging (or imaging or operative confirmation) and symptom chronology; metatarsophalangeal osteoarthritis diagnosis (radiographic joint-space narrowing, subchondral sclerosis, osteophytes) at the affected joint with onset chronology relative to documented Freiberg disease; documentation excluding a long second metatarsal anatomy variant or other primary degenerative-arthritis morphology; exclusion of inflammatory arthropathy, prior metatarsal fracture or dislocation, and crystal arthropathy; orthopedic or podiatric assessment of the individual relationship"
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY exactly following the avascular-necrosis osteoarthritis precedent: staging-based natural history and end-stage surgical series document the collapse-to-arthritis continuum while unquantified progression, early-stage arrest, and independent primary degenerative etiologies defeat individual attribution, so the mapping asserts the association with staging, chronology, and alternative-cause requirements.",
+      "sourceReferences": [
+        {
+          "citation": "Kilmartin TE, Posmyk L. Synthetic Cartilage Implant Hemiarthroplasty for Second MTP Joint Osteoarthrosis. J Foot Ankle Surg. 2020;59(5). PMID 32505725.",
+          "note": "Series of 23 consecutive patients treating second metatarsophalangeal joint osteoarthritis and Freiberg disease as one painful joint-disease continuum with 43-month mean follow-up - the Freiberg-to-OA continuum anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/32505725/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 32505725; second MTP osteoarthrosis and Freiberg disease treated as one pathology"
+        },
+        {
+          "citation": "Lee HJ, Kim JW, Min WK, et al. Operative treatment of Freiberg disease using extra-articular dorsal closing-wedge osteotomy: technical tip and clinical outcomes in 13 patients. Foot Ankle Int. 2013;34(1). PMID 23386770.",
+          "note": "Smillie-staged operative series of Freiberg disease with debridement of the joint and wedge osteotomy, mean 44-month follow-up - the staging and degenerated-joint anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/23386770/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 23386770; Smillie-staged Freiberg disease with intraoperative joint debridement"
+        },
+        {
+          "citation": "Carro LP, Golano P, Fariñas O, et al. Arthroscopic Keller technique for Freiberg disease. Arthroscopy. 2004;20 Suppl 2. PMID 15243427.",
+          "note": "Case documenting a Smillie stage IV late-stage Freiberg lesion treated by debridement, free-body removal, and arthroscopic Keller excision - the late-stage secondary-degeneration anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/15243427/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 15243427; Smillie IV late-stage disease treated as secondary joint degeneration"
+        }
+      ]
+    }
+  ]
 }

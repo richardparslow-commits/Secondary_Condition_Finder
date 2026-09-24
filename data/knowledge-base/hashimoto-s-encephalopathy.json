@@ -2,8 +2,206 @@
   "id": "hashimoto-s-encephalopathy",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review hormonal, metabolic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 42 (2026-09-24): three ASSOCIATION_ONLY draft mappings pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: all three edges assert association only (etiologicalConsensus NOT_ESTABLISHED, hypothesizedOnly:true) - they record that Hashimoto encephalopathy (SREAT) populations carry excess seizures, cognitive impairment, and depressive-spectrum neuropsychiatric burden, not that the encephalopathy caused a chronic seizure disorder, a distinct cognitive disorder, or a major depressive disorder in any individual; the DIRECT_CAUSATION bar set by the encephalitis-to-seizure-disorder precedent (documented parenchymal epileptogenic lesion plus post-infectious incidence data) is NOT met because HE typically shows a normal brain MRI, and individual claims in all three cases require a diagnosis of HE that itself meets objective criteria (subacute encephalopathy, thyroid antibodies, exclusion of specific neural antibodies and alternative causes) with documented chronology and case-specific exclusion lists recorded on each edge."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 42 (2026-09-24): three bounded association edges authored. HE population anchors: the Matsunaga 2021 review records consciousness disturbance and psychosis as the common neuropsychiatric features followed by cognitive dysfunction, involuntary movements, seizures, and ataxia, with abnormal EEG common and brain-MRI abnormalities RARE (except diffuse subcortical or limbic lesions), most patients euthyroid with universal antithyroid antibodies, and phenotypes spanning acute encephalopathy, chronic psychiatric form, limbic-encephalitis mimic, cerebellar ataxic form, and CJD-mimic; the Valencia-Sanchez 2021 Mayo series of 144 antibody-positive referrals documents that only 27% were ultimately diagnosed with an autoimmune CNS disorder while 73% carried alternative diagnoses (functional neurological disorder n=20, neurodegenerative n=18, subjective cognitive complaints n=14, chronic pain syndrome n=12, primary psychiatric n=11) - the diagnostic-specificity guard that binds every edge in this file; the Bien 2013 review positions SREAT among the immune-mediated brain disorders frequently associated with recurrent epileptic seizures; the Schenck 2025 literature review plus comprehensive neuropsychological case documents persistent neuropsychological impairment at two discrete timepoints with a largely subcortical neurocognitive pattern and impactful neuropsychiatric symptoms significantly affecting quality of life and functional status; the Adams 2020 pediatric criteria study follows 17 treated HE patients with domain-based outcome measurement showing cognitive, language, psychiatric-disturbance, movement, and sleep improvements from onset to follow-up (i.e. deficits documented at onset with measurable residual burden).",
+    "Edge classifications: (1) seizure-disorder at ASSOCIATION_ONLY rather than the encephalitis precedent's DIRECT_CAUSATION because the encephalitis DIRECT bar requires a documented parenchymal epileptogenic lesion (MRI signal change, necrotizing focus, or established cortical tropism) with post-lesion epilepsy incidence (53.6% pediatric HSE), whereas HE shows rare MRI abnormalities and no located cohort quantifies incident chronic epilepsy after HE - seizures are documented as presenting and common features (Hilberath: characterized by altered mental status, seizures, cognitive dysfunction with refractory status epilepticus; Pocsay: onset may be focal then progressively generalized seizures) but acute symptomatic seizures during encephalopathy are constitutionally distinct from chronic seizure disorder (acute-versus-chronic guard), and the Mayo series documents non-autoimmune seizure disorders among the mimics; (2) cognitive-disorder at ASSOCIATION_ONLY/NOT_ESTABLISHED matching the encephalitis-to-cognitive-disorder sibling classification exactly (family-match guard) with persistent-impairment case evidence but no incidence cohort; (3) depressive-disorder at ASSOCIATION_ONLY/NOT_ESTABLISHED matching the 64-edge incoming depressive-disorder family norm, with the Ellul case documenting HE presenting as drug-resistant depression responsive to immunomodulation (immune-activation to neurotransmitter-synthesis-deficit model) and the Adams cohort tracking a psychiatric-disturbance outcome domain.",
+    "Negative screens recorded 2026-09-24: (i) no thyroiditis or hypothyroidism edge from this identity - HE is associated with thyroid autoimmunity but does not CAUSE thyroiditis (shared-driver guard: the shared autoimmune diathesis produces both), most HE patients are euthyroid per Matsunaga, and the published thyroiditis-to-hypothyroidism edge owns the functional-thyroid pathway (duplicate-scope; direction guard); (ii) no ataxia, movement-disorder, or myoclonus edge - cerebellar ataxic and movement phenotypes are documented (Matsunaga) but the catalog lacks ataxia, dyskinesia, and myoclonus identities (wrong-target guard); (iii) no stroke-like-episode, aphasia, or focal-deficit edge - documented HE features (Valencia-Sanchez: stroke-like episodes and aphasia overrepresented in the autoimmune subgroup) without catalog targets (wrong-target guard); (iv) no psychosis or anxiety edge - psychiatric-form HE documents psychosis (Matsunaga) and anxiety burden, but psychosis and anxiety-disorder-specific HE cohorts were not located beyond feature lists (zero-record guard; the depressive-disorder edge carries the mood dimension); (v) no mortality or coma edge - the Erdoğan fatal pediatric case and Hilberath refractory-status case document severity without a catalog endpoint identity (wrong-target guard); (vi) treatment-mediated guard: corticosteroid therapy for HE can itself produce mood and sleep effects, so steroid-exposed periods must be characterized in any individual mood attribution (alternative-etiology guard recorded on the depression edge). Reopening condition for any edge upgrade: a prospective HE cohort with objective diagnostic criteria quantifying incident seizure disorder, persistent cognitive disorder, or structured-diagnostic depression after HE onset with matched controls."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "seizure-disorder",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The Bien 2013 review positions steroid-responsive encephalopathy associated with autoimmune thyroiditis (SREAT, formerly Hashimoto encephalopathy) among the immune-mediated brain disorders frequently associated with recurrent epileptic seizures, the Matsunaga 2021 review records seizures among the common neuropsychiatric features of HE (after consciousness disturbance, psychosis, cognitive dysfunction, and involuntary movements) with abnormal EEG a common finding, and the Hilberath 2014 patient-and-review report documents that SREAT is characterized by altered mental status, seizures, and cognitive dysfunction with a pediatric case of refractory status epilepticus requiring intubation and multi-modal immunotherapy; the literature documents a reproducible seizure excess in HE populations without establishing that HE caused a chronic seizure disorder in any individual.",
+        "causationStatus": "The mapping does not assert that Hashimoto encephalopathy caused a chronic seizure disorder in any individual: the DIRECT_CAUSATION bar set by the encephalitis precedent (documented parenchymal epileptogenic lesion plus post-encephalitic epilepsy incidence) is not met because HE typically shows normal brain imaging (Matsunaga: MRI abnormalities rare except diffuse subcortical or limbic lesions) so no structural epileptogenic substrate is established, the located evidence documents seizures as presenting and common features during the acute illness rather than incident chronic epilepsy after HE, acute symptomatic seizures during encephalopathy are constitutionally distinct from the seizure-disorder identity's chronic scope, no located cohort quantifies post-HE epilepsy incidence, and the Mayo 144-referral series documents non-autoimmune seizure disorders among the common mimics with thyroid antibodies failing to discriminate; individual claims require a diagnostically objective HE diagnosis (subacute encephalopathy, thyroid antibodies, negative specific neural antibodies, exclusion of infectious, neoplastic, metabolic, and toxic causes), a seizure meeting the seizure-disorder identity's chronic scope documented after HE onset with EEG confirmation, and exclusion of non-autoimmune epilepsy, structural-lesion epilepsy, convulsive and non-convulsive status sequelae, and medication or metabolic triggers per case."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "IMMUNE_MEDIATED",
+        "primaryVector": "A cortical-irritability-through-neuroinflammation vector: circulating thyroid-autoantibody-associated immune activation with cerebral inflammatory mediators lowers neuronal seizure thresholds and, where present, produces limbic or subcortical signal change and EEG slowing or epileptiform activity, so cortical networks generate spontaneous recurrent seizures during the immune-mediated encephalopathic process - documented as the recurrent-seizure association of the immune-mediated encephalopathy family, the common ictal presentations (focal onset progressing to generalized seizures, refractory status), and the abnormal-EEG rate - while the typically normal MRI (no established structural epileptogenic scar), the acute-versus-chronic seizure distinction, and the mimic burden keep the vector hypothesized for individual attribution.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The edge asserts an association only: reviews and case material document seizures as common presenting and course features of HE, but no located cohort quantifies incident chronic epilepsy after HE, the encephalitis DIRECT precedent's lesion-and-incidence bar is unmet (normal imaging is the HE norm), the located sources do not separate acute symptomatic ictal events from chronic seizure disorder, thyroid-antibody-positive referral populations are dominated by non-autoimmune mimics including non-autoimmune seizure disorders, and family precedent for autoimmune/inflammatory brain-to-seizure association rests at NOT_ESTABLISHED for unlesioned disease; no probability estimate is asserted.",
+        "evidenceGaps": "Objective HE diagnosis documentation (subacute encephalopathy, elevated thyroid antibodies, negative specific neural autoantibodies, CSF and imaging workup excluding infection, neoplasm, metabolic and toxic causes, per the Graus-style autoimmune-encephalitis criteria); EEG documentation of epileptiform activity or seizure confirmation with date relative to HE onset; a seizure meeting the seizure-disorder identity's chronic scope (recurrent unprovoked seizures) documented beyond the acute illness with serial follow-up; MRI or advanced imaging characterization (typical HE is normal - documented structural substrate changes the classification pathway to the encephalitis precedent); exclusion of non-autoimmune epilepsy, structural-lesion epilepsy, prior stroke or trauma, alcohol or drug withdrawal, and medication-induced seizures; neurology assessment of the individual relationship",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Non-autoimmune epilepsy (primary seizure disorder)",
+          "Structural lesion epilepsy (tumor, stroke, malformation)",
+          "Acute symptomatic seizures from the encephalopathy itself without chronic recurrence",
+          "Infectious, metabolic, or toxic encephalopathy mimic",
+          "Alcohol or drug withdrawal seizure"
+        ]
+      },
+      "evidenceGaps": [
+        "Objective HE diagnosis documentation (subacute encephalopathy, elevated thyroid antibodies, negative specific neural autoantibodies, CSF and imaging workup excluding infection, neoplasm, metabolic and toxic causes, per the Graus-style autoimmune-encephalitis criteria); EEG documentation of epileptiform activity or seizure confirmation with date relative to HE onset; a seizure meeting the seizure-disorder identity's chronic scope (recurrent unprovoked seizures) documented beyond the acute illness with serial follow-up; MRI or advanced imaging characterization (typical HE is normal - documented structural substrate changes the classification pathway to the encephalitis precedent); exclusion of non-autoimmune epilepsy, structural-lesion epilepsy, prior stroke or trauma, alcohol or drug withdrawal, and medication-induced seizures; neurology assessment of the individual relationship"
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY rather than the encephalitis sibling's DIRECT_CAUSATION: three independent sources document recurrent-seizure association and common ictal presentations in HE, but the lesion-and-incidence bar of the direct precedent is unmet on typically normal imaging, acute-versus-chronic seizures are unseparated, no post-HE epilepsy cohort exists, and the Mayo mimic series carries non-autoimmune seizure disorders among the alternatives, keeping the consensus at NOT_ESTABLISHED with objective-diagnosis and chronic-scope requirements; no probability estimate is asserted.",
+      "sourceReferences": [
+        {
+          "citation": "Bien CG, Vincent A. Immune-mediated pediatric epilepsies. Handb Clin Neurol. 2013;111:521-31. PMID 23622200.",
+          "note": "Handbook review positioning SREAT (formerly Hashimoto encephalopathy) among the immune-mediated brain disorders frequently associated with recurrent epileptic seizures and describing SREAT as the catch-all for encephalopathic immune-mediated brain diseases often with seizures sharing thyroid antibodies and steroid responsiveness - the family-association anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/23622200/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-24",
+          "sourceLocator": "PMID 23622200; SREAT among immune-mediated epilepsies, often with seizures"
+        },
+        {
+          "citation": "Matsunaga A, Yoneda M. [Hashimoto encephalopathy]. Brain Nerve. 2021 May;73(5):544-551. PMID 34006687.",
+          "note": "Japanese-language review with institutional case aggregation documenting that consciousness disturbance and psychosis are the common neuropsychiatric features followed by cognitive dysfunction, involuntary movements, seizures, and atxia, that EEG abnormalities are common while brain-MRI abnormalities are rare, and that most patients are euthyroid with universal antithyroid antibodies - the seizure-frequency and normal-imaging guard anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34006687/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-24",
+          "sourceLocator": "PMID 34006687; seizures among common features, EEG common, MRI rare, euthyroid majority"
+        },
+        {
+          "citation": "Hilberath JM, Schmidt H, Wolf GK. Steroid-responsive encephalopathy associated with autoimmune thyroiditis patient and review of the literature. Eur J Pediatr. 2014 Oct;173(10):1263-73. PMID 25084973.",
+          "note": "Patient plus literature review documenting SREAT as characterized by altered mental status, seizures, and cognitive dysfunction with courses from complete recovery to relapse and long-term cognitive sequelae, including a pediatric refractory status epilepticus presentation - the ictal-presentation and severity anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/25084973/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-24",
+          "sourceLocator": "PMID 25084973; characterized by altered mental status, seizures, cognitive dysfunction; refractory status case"
+        }
+      ]
+    },
+    {
+      "conditionId": "cognitive-disorder",
+      "rank": 2,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The Schenck 2025 literature review plus comprehensive neuropsychological case documents persistent neuropsychological impairment at two discrete timepoints in a confirmed HE patient with a largely subcortical neurocognitive pattern and impactful neuropsychiatric symptoms significantly affecting quality of life and functional status, the Adams 2020 pediatric criteria study of 17 treated HE patients documents cognitive regression as a presenting diagnostic domain with cognitive, language, psychiatric, movement, and sleep deficits tracked from onset to follow-up (improvement documented but residual burden measurable), and the Valencia-Sanchez 2021 Mayo series of 144 thyroid-antibody-positive referrals documents subjective cognitive complaints as a prominent presentation among patients ultimately found NOT to have autoimmune CNS disease; the literature documents a reproducible cognitive-burden excess in HE populations without establishing that the encephalopathy caused a distinct chronic cognitive disorder in any individual.",
+        "causationStatus": "The mapping does not assert that Hashimoto encephalopathy caused a distinct cognitive disorder in any individual: the located condition-specific evidence is a literature review with an index case showing persistent impairment, a 17-patient criteria study without a control group, and feature-level documentation rather than any incidence cohort, cognitive dysfunction is a defining feature of the acute encephalopathy state itself so persistence beyond the acute phase must be separately documented (acute-constitutive-versus-persistent-sequela guard), the Mayo mimic series documents that the majority of thyroid-antibody-positive cognitive presentations had alternative diagnoses (functional neurological disorder, neurodegenerative disorder, subjective cognitive complaints), and the encephalitis-to-cognitive-disorder sibling rests at NOT_ESTABLISHED; individual claims require an objectively diagnosed HE episode, cognitive testing meeting the cognitive-disorder identity's scope with deficits persisting beyond the acute illness and after steroid response, and exclusion of functional neurological disorder, neurodegenerative disease, delirium of other cause, primary psychiatric disorder, hypothyroid cognitive effects, and medication (including steroid) effects per case."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "IMMUNE_MEDIATED",
+        "primaryVector": "A subcortical-network-inflammation vector: the immune-mediated encephalopathic process with its documented subcortical and limbic predominance, EEG slowing, and cerebral blood-flow disturbance disrupts thalamocortical and limbic circuitry supporting attention, executive function, and memory encoding, so a share of patients carry a subcortical-pattern cognitive deficit beyond the acute illness - documented as the persistent subcortical neurocognitive profile at discrete timepoints and the cognitive-regression presenting domain - while the acute-illness constitutive overlap, the mimic burden (functional and neurodegenerative cognitive presentations among antibody-positive referrals), and the absence of incidence data keep the vector hypothesized for individual attribution.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The edge asserts an association only and family-matches the encephalitis-to-cognitive-disorder classification exactly (ASSOCIATION_ONLY/NOT_ESTABLISHED): HE sources document cognitive dysfunction as a presenting domain with documented persistence in case-level follow-up and domain-based outcome tracking in a small uncontrolled cohort, but no incidence or controlled persistence cohort exists, cognitive dysfunction is constitutive to the acute encephalopathy state so only post-acute persistence counts as downstream, the Mayo mimic series shows most antibody-positive cognitive presentations resolve to alternative diagnoses, and the diffuse-axonal-injury and coronary-bypass DIRECT classifications rest on documented structural or iatrogenic insults that HE lacks on typical imaging; no probability estimate is asserted.",
+        "evidenceGaps": "Objective HE diagnosis documentation (subacute encephalopathy, thyroid antibodies, negative specific neural antibodies, exclusion workup); neuropsychological testing meeting the cognitive-disorder identity's scope (standardized battery with domain scores) performed after the acute illness and after steroid response, with a baseline or serial comparison documenting persistence beyond the acute phase; structural and functional characterization (MRI typically normal; SPECT/EEG where obtained) documenting the substrate; exclusion of functional neurological disorder, Alzheimer or other neurodegenerative disease, delirium of metabolic, infectious, or medication cause, hypothyroid cognitive effects, primary psychiatric disorder, and predating cognitive baseline; neurology and neuropsychology assessment of the individual relationship",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Functional neurological disorder with subjective cognitive complaints",
+          "Neurodegenerative disease (Alzheimer, frontotemporal, Lewy body)",
+          "Delirium from metabolic, infectious, or medication cause",
+          "Hypothyroid cognitive effects independent of the encephalopathy",
+          "Primary psychiatric disorder or predating cognitive impairment"
+        ]
+      },
+      "evidenceGaps": [
+        "Objective HE diagnosis documentation (subacute encephalopathy, thyroid antibodies, negative specific neural antibodies, exclusion workup); neuropsychological testing meeting the cognitive-disorder identity's scope (standardized battery with domain scores) performed after the acute illness and after steroid response, with a baseline or serial comparison documenting persistence beyond the acute phase; structural and functional characterization (MRI typically normal; SPECT/EEG where obtained) documenting the substrate; exclusion of functional neurological disorder, Alzheimer or other neurodegenerative disease, delirium of metabolic, infectious, or medication cause, hypothyroid cognitive effects, primary psychiatric disorder, and predating cognitive baseline; neurology and neuropsychology assessment of the individual relationship"
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY by exact family-match with the encephalitis-to-cognitive-disorder edge: HE literature documents subcortical-pattern cognitive impairment persisting at discrete timepoints with domain-based tracking in a small cohort, while the acute-illness constitutive overlap, absence of controlled persistence data, the dominant mimic burden in antibody-positive referrals, and the sibling NOT_ESTABLISHED norm keep individual attribution guarded; no probability estimate is asserted.",
+      "sourceReferences": [
+        {
+          "citation": "Schenck LA, McCracken HT, Andrasik F, Baughman BC. Hashimoto encephalopathy: a literature review and case report with comprehensive neuropsychological evaluation. Clin Neuropsychol. 2025 May;39(4):988-1007. PMID 39154259.",
+          "note": "Literature review plus 57-year-old confirmed-HE case with neuropsychological evaluation at two discrete timepoints documenting persistent largely subcortical neurocognitive impairment, impactful neuropsychiatric symptoms significantly affecting quality of life and functional status, and partial improvement at six-month re-evaluation - the persistent-impairment anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39154259/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-24",
+          "sourceLocator": "PMID 39154259; persistent impairment at two timepoints, subcortical pattern, QoL impact"
+        },
+        {
+          "citation": "Adams AV, Mooneyham GC, Van Mater H, Gallentine W. Evaluation of diagnostic criteria for Hashimoto encephalopathy among children and adolescents. Pediatr Neurol. 2020 Jun;107:41-47. PMID 32173161.",
+          "note": "Evaluation of 17 pediatric HE patients at onset and at least one year after immunomodulatory treatment using domain-based outcome scales, documenting abrupt-onset cognitive regression among presenting diagnostic domains and statistically significant cognitive, language, psychiatric-disturbance, movement, and sleep improvements from onset to follow-up with measurable residual burden - the domain-trajectory anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/32173161/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-24",
+          "sourceLocator": "PMID 32173161; 17 pediatric HE patients, cognitive regression presenting domain, domain outcomes to 1 year"
+        },
+        {
+          "citation": "Valencia-Sanchez C, Pittock SJ, Mead-Harvey C, et al. Brain dysfunction and thyroid antibodies: autoimmune diagnosis and misdiagnosis. Brain Commun. 2021 Jan 5;3(2):fcaa233. PMID 34061124.",
+          "note": "Mayo Clinic retrospective review of 144 thyroid-antibody-positive referrals over 13 years documenting that only 27% had an autoimmune CNS disorder while 73% carried alternative diagnoses including functional neurological disorder (n=20), neurodegenerative disorder (n=18), subjective cognitive complaints (n=14), chronic pain syndrome (n=12), and primary psychiatric disorder (n=11) - the diagnostic-specificity and mimic guard anchor binding all three HE edges.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34061124/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-24",
+          "sourceLocator": "PMID 34061124; 144 referrals, 27% autoimmune CNS, 73% alternatives incl. subjective cognitive complaints n=14"
+        }
+      ]
+    },
+    {
+      "conditionId": "depressive-disorder",
+      "rank": 3,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The Schenck 2025 review and neuropsychological case documents impactful neuropsychiatric symptoms including psychological dysfunction significantly affecting quality of life and functional status in HE, the Ellul 2020 case report documents HE initially presenting as drug-resistant depression with predominant apathy and asthenia that responded to cyclophosphamide with an immune-activation to neurotransmitter-synthesis-deficit model proposed for the depressive symptoms, and the Adams 2020 cohort of 17 HE patients documents psychiatric disturbance as a tracked presenting and outcome domain with significant improvement from onset to follow-up after immunomodulation; the literature documents a reproducible depressive-spectrum burden in HE populations without establishing that the encephalopathy caused a major depressive disorder in any individual.",
+        "causationStatus": "The mapping does not assert that Hashimoto encephalopathy caused a major depressive disorder in any individual: the located evidence is one index case, one literature review, and one small uncontrolled cohort tracking a psychiatric-disturbance domain rather than structured diagnostic depression incidence, the depressive presentation itself can BE the primary psychiatric mimic (the Mayo 144-referral series documents primary psychiatric disorder in 11 non-autoimmune cases and the reverse-arrow hazard that primary depression with incident thyroid autoimmunity is labeled HE), corticosteroid therapy for HE independently produces mood effects (steroid confound), illness-burden and neuropsychiatric responses to a relapsing encephalopathy are nonspecific, and the 64-edge incoming depressive-disorder family rests predominantly at NOT_ESTABLISHED; individual claims require an objectively diagnosed HE episode, structured psychiatric diagnostic assessment meeting the depressive-disorder identity's scope with onset after HE onset, documentation that mood symptoms tracked the illness or its treatment (improvement with immunomodulation supports but does not prove the arrow), and exclusion of primary psychiatric disorder predating HE, steroid-induced mood effects, hypothyroid depression, and medication effects per case."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "IMMUNE_MEDIATED",
+        "primaryVector": "A neuroimmune-neurotransmitter vector: immune activation during the encephalopathic process is proposed to disturb monoamine neurotransmitter synthesis and signaling in limbic and subcortical circuitry (documented as the model accompanying a depression-presentation HE case that responded to immunomodulation), compounded by the neuropsychiatric burden of a relapsing encephalopathy with cognitive and functional loss - together producing depressive-spectrum symptoms during and after the illness - while the primary-psychiatric-mimic hazard, the steroid mood confound, the shared-thyroid-autoimmunity driver, and family NOT_ESTABLISHED norms keep the vector hypothesized for individual attribution.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The edge asserts an association only following the GBS and halitosis psychological-burden precedents and the 64-edge incoming depressive-disorder family norm: HE sources document depressive-spectrum and neuropsychiatric burden with a treatment-responsive index case, but the evidence is case-level and domain-level rather than structured-diagnostic incidence, the reverse arrow (primary psychiatric disorder presenting before or without recognition of alternative causes) is documented as a leading mimic in the Mayo referral series, corticosteroid treatment confounds mood attribution, thyroid autoimmunity independently associates with mood disorder (shared-driver), and no controlled mood-incidence cohort exists; no probability estimate is asserted.",
+        "evidenceGaps": "Objective HE diagnosis documentation (subacute encephalopathy, thyroid antibodies, negative specific neural antibodies, exclusion workup including the alternative-diagnosis screen); structured psychiatric diagnostic assessment (SCID or equivalent) documenting depressive symptoms of grade and duration meeting the depressive-disorder identity's scope with onset after HE onset; chronology relative to immunotherapy (mood course tracking treatment supports the arrow); documentation of steroid exposure, dose, and taper with mood course; thyroid-function documentation excluding hypothyroid depression; exclusion of primary anxiety or depressive disorder predating HE, substance-induced mood disorder, and medication effects; psychiatry and neurology assessment of the individual relationship",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Primary psychiatric disorder predating or independent of HE",
+          "Corticosteroid-induced mood effects during HE treatment",
+          "Hypothyroid depression from independent thyroid dysfunction",
+          "Reactive or adjustment mood symptoms to chronic illness burden",
+          "Substance-induced or medication-induced mood disorder"
+        ]
+      },
+      "evidenceGaps": [
+        "Objective HE diagnosis documentation (subacute encephalopathy, thyroid antibodies, negative specific neural antibodies, exclusion workup including the alternative-diagnosis screen); structured psychiatric diagnostic assessment (SCID or equivalent) documenting depressive symptoms of grade and duration meeting the depressive-disorder identity's scope with onset after HE onset; chronology relative to immunotherapy (mood course tracking treatment supports the arrow); documentation of steroid exposure, dose, and taper with mood course; thyroid-function documentation excluding hypothyroid depression; exclusion of primary anxiety or depressive disorder predating HE, substance-induced mood disorder, and medication effects; psychiatry and neurology assessment of the individual relationship"
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY on the psychological-burden precedent and the incoming family norm: a treatment-responsive depression-presentation case, a review documenting impactful neuropsychiatric symptoms, and a cohort tracking psychiatric disturbance triangulate depressive-spectrum excess in HE, while case-level evidence, the documented primary-psychiatric mimic hazard, the steroid mood confound, the shared-thyroid driver, and NOT_ESTABLISHED family norms keep individual attribution guarded; no probability estimate is asserted.",
+      "sourceReferences": [
+        {
+          "citation": "Schenck LA, McCracken HT, Andrasik F, Baughman BC. Hashimoto encephalopathy: a literature review and case report with comprehensive neuropsychological evaluation. Clin Neuropsychol. 2025 May;39(4):988-1007. PMID 39154259.",
+          "note": "Review plus confirmed-HE case documenting impactful neuropsychiatric symptoms (psychological dysfunction) significantly affecting quality of life and functional status with partial improvement at six-month re-evaluation - the neuropsychiatric-burden anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39154259/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-24",
+          "sourceLocator": "PMID 39154259; neuropsychiatric symptoms impacting QoL and function, improvement at 6 months"
+        },
+        {
+          "citation": "Ellul P, Gasnier M, Trebossen V, Gaillard R. Immune activation and deficit in neurotransmitters synthesis in treatment resistant depression: about a case of Hashimoto encephalopathy. Clin Psychopharmacol Neurosci. 2020 Aug 31;18(3):463-466. PMID 32702227.",
+          "note": "Case report of HE initially presenting as drug-resistant depression with predominant apathy and asthenia, improving with cyclophosphamide, with an immune-activation to neurotransmitter-synthesis-deficit model proposed for the depressive symptoms - the depression-presentation and mechanism anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/32702227/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-24",
+          "sourceLocator": "PMID 32702227; HE presenting as drug-resistant depression, responded to immunomodulation"
+        },
+        {
+          "citation": "Adams AV, Mooneyham GC, Van Mater H, Gallentine W. Evaluation of diagnostic criteria for Hashimoto encephalopathy among children and adolescents. Pediatr Neurol. 2020 Jun;107:41-47. PMID 32173161.",
+          "note": "Cohort of 17 HE patients with domain-based outcomes documenting psychiatric disturbance as a tracked presenting and follow-up domain with statistically significant improvement from onset to follow-up after immunomodulation - the psychiatric-domain trajectory anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/32173161/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-24",
+          "sourceLocator": "PMID 32173161; 17 patients, psychiatric-disturbance domain improved onset to follow-up"
+        }
+      ]
+    }
+  ]
 }

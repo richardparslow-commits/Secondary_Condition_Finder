@@ -2,8 +2,77 @@
   "id": "genitofemoral-nerve-neuralgia",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review neurologic, neuropathic, post-traumatic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 37 (2026-09-23): one ASSOCIATION_ONLY case-matching draft mapping pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: the mapping asserts association only (etiologicalConsensus NOT_ESTABLISHED, hypothesizedOnly:true) following the femoral-neuropathy and episcleritis case-matching pain precedent - it records that genitofemoral neuralgia presents as chronic unexplained-region pain whose diagnostic workup mirrors the unexplained-chronic-pain evaluation, not that the neuralgia caused a distinct pain disorder; individual claims require a block-confirmed or imaging-confirmed genitofemoral diagnosis with documented pain chronology and exclusion of the alternative groin and pelvic pain etiologies."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 37 (2026-09-23): one bounded case-matching association edge authored. The Lobaina 2024 StatPearls chapter documents genitofemoral neuralgia as a chronic painful neuropathic condition caused by compression or trauma to the nerve presenting with constant burning pain or discomfort in the inguinal region with hyperalgesia or anesthesia in the genitals and inner thighs and being a common cause of groin pain in both sexes, particularly after surgical interventions that damaged the nerve, the Lakhiani 2026 compression-neuropathy review documents that neuropathic groin and pelvic pain syndromes including ilioinguinal, genitofemoral, and pudendal neuropathies require rigorous clinical assessment, exclusion of proximal pathology, and confirmatory diagnostic nerve blocks before intervention, and the Alfarawan 2025 retrospective analysis documents ten patients with refractory neuropathic groin pain of at least six months duration (including genitofemoral nerve involvement in tailored triple neurectomy) with preoperative nerve mapping, CT/MRI/sonography to exclude non-neuropathic causes, failed nerve blocks and analgesics, and mean pain scores falling from 7.8 to 1.2 at 180 days - the exclusionary-workup profile is what the case-matching pattern records (femoral-neuropathy batch 34, episcleritis and erythromelalgia batch 30 precedents). Category PSYCHOPHYSIOLOGICAL matches the femoral-neuropathy pain edge exactly.",
+    "Negative screens recorded 2026-09-23: (i) no chronic-pelvic-pain-syndrome edge - that identity's urological/chronic-prostatitis scope does not fit a peripheral nerve entrapment source in both sexes (wrong-identity guard); (ii) no pudendal-neuralgia or iliohypogastric-ilioinguinal-nerve-neuralgia parallel edge authored here - both remain zero-edge backlog identities with their own upcoming windows (sibling scope, no batch-parallel authoring); (iii) no sexual-dysfunction edge - genital-branch sensory overlap does not document an erectile or arousal outcome at condition-specific level and the female-sexual-arousal-disorder deferral stands; (iv) no fecal- or urinary-incontinence edge - the cremasteric and sensory branches carry no motor outcome of that kind and zero condition-specific records were located; (v) direction guard - post-surgical injury (hernia repair, appendicectomy, retroperitoneal surgery) and penetrating trauma are upstream causes of the neuralgia and are recorded in the causationStatus rather than as outgoing edges. Reopening condition: a directional cohort linking genitofemoral neuralgia to a catalog-fit secondary identity with documented chronology."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "unexplained-chronic-pain",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The Lobaina 2024 StatPearls chapter documents genitofemoral neuralgia as a chronic painful neuropathic condition presenting with constant burning pain or discomfort in the inguinal region with hyperalgesia or anesthesia in the genitals and inner thighs and as a common cause of groin pain in both sexes, the Lakhiani 2026 review documents that genitofemoral among groin and pelvic neuropathies requires rigorous clinical assessment with exclusion of proximal pathology and confirmatory diagnostic nerve blocks before intervention, and the Alfarawan 2025 series documents refractory neuropathic groin pain of at least six months duration worked up with nerve mapping, cross-sectional imaging to exclude non-neuropathic causes, and failed blocks before neurectomy with pain scores falling from 7.8 to 1.2 - the documented pain presentation and exclusionary diagnostic pathway mirror the unexplained-chronic-pain case-matching profile without establishing that the neuralgia caused a distinct pain disorder in any individual.",
+        "causationStatus": "The mapping does not assert that genitofemoral neuralgia caused a separate chronic pain disorder: the pain is largely constitutive of the neuralgia diagnosis itself, so the edge records case-matching of presentations rather than a distinct downstream arrow (femoral-neuropathy and episcleritis precedent); alternative antecedents (inguinal hernia repair or other retroperitoneal and pelvic surgery, femoral-vascular access injury, nephrolithiasis and ureteral pathology, endometriosis or pelvic pathology, hip disease referred pain, and central sensitization without identifiable nerve lesion) independently produce inguinal-genital chronic pain, and the diagnosis itself is one of exclusion with imaging and block confirmation; individual claims require block-confirmed or imaging-confirmed genitofemoral neuralgia, documented pain chronology within the unexplained-chronic-pain identity's scope, and exclusion of the antecedent and alternative etiologies."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "PSYCHOPHYSIOLOGICAL",
+        "primaryVector": "A peripheral-nerve injury-to-central-sensitization pathway: traction, compression, or iatrogenic injury to the genitofemoral nerve triggers ectopic discharge and ectopic burst activity in injured afferents, degrades inhibitory gating at the dorsal horn, and sustains burning inguinal-genital pain with hyperalgesia that outlasts tissue healing; the persistent unlocalized groin pain drives repeated imaging, specialist, and block workups before the nerve is identified - the documented presentation and exclusionary workup pattern that grounds the case-matching pain edges while individual attribution of a distinct pain disorder remains an association hypothesis.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The edge asserts an association only: the located evidence is a textbook chapter, a review, and a ten-patient surgical series all documenting presentation and exclusionary workup rather than any distinct downstream pain outcome, the pain is largely constitutive of the neuralgia so a causal arrow to a separate pain disorder would double-count the same symptom, alternative groin-pain antecedents are common in the same populations, and the pain-case-matching precedents all rest at NOT_ESTABLISHED; no probability estimate is asserted.",
+        "evidenceGaps": "Block-confirmed (fluoroscopic, CT-guided, or ultrasound-guided genitofemoral block with defined response) or electrodiagnostic/imaging-confirmed genitofemoral neuralgia; documented pain chronology and distribution (inguinal region with genital or inner-thigh referral) within the unexplained-chronic-pain identity's scope; identification and documentation of the antecedent (hernia repair or other pelvic-retroperitoneal surgery, vascular access, trauma, or compressive lesion) where present; exclusion of inguinal and urogenital causes, nephrolithiasis, endometriosis and pelvic pathology, hip disease, lumbar radiculopathy, and central sensitization without nerve lesion; functional-impact documentation of the chronic pain presentation; pain-medicine and neurology assessment of the individual relationship",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Lumbar radiculopathy or referred hip pain mimicking groin pain",
+          "Nephrolithiasis or ureteral pathology",
+          "Inguinal, urogenital, or endometriotic pelvic pathology without nerve lesion",
+          "Central sensitization or nociplastic pain without identifiable nerve injury",
+          "Ilioinguinal or iliohypogastric neuralgia overlapping the same dermatome"
+        ]
+      },
+      "evidenceGaps": [
+        "Block-confirmed (fluoroscopic, CT-guided, or ultrasound-guided genitofemoral block with defined response) or electrodiagnostic/imaging-confirmed genitofemoral neuralgia; documented pain chronology and distribution (inguinal region with genital or inner-thigh referral) within the unexplained-chronic-pain identity's scope; identification and documentation of the antecedent (hernia repair or other pelvic-retroperitoneal surgery, vascular access, trauma, or compressive lesion) where present; exclusion of inguinal and urogenital causes, nephrolithiasis, endometriosis and pelvic pathology, hip disease, lumbar radiculopathy, and central sensitization without nerve lesion; functional-impact documentation of the chronic pain presentation; pain-medicine and neurology assessment of the individual relationship"
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY as a case-matching pain edge on the femoral-neuropathy precedent: condition-specific sources document a chronic burning inguinal-genital pain presentation with an exclusionary block-confirmed workup mirroring the unexplained-chronic-pain evaluation, while the constitutive nature of the pain, common alternative groin-pain antecedents, and absent distinct downstream outcome keep the consensus at NOT_ESTABLISHED with confirmation and alternative-etiology requirements.",
+      "sourceReferences": [
+        {
+          "citation": "Lobaina M, Leslie SW, Shanina E. Genitofemoral Neuralgia. StatPearls [Internet]. Treasure Island (FL): StatPearls Publishing; 2024 Jan-. PMID 39163445.",
+          "note": "Chapter documenting genitofemoral neuralgia as a chronic painful neuropathic condition caused by compression or trauma presenting with constant burning inguinal-region pain with hyperalgesia or anesthesia in the genitals and inner thighs and as a common cause of groin pain in both sexes - the condition-specific chronic-pain presentation anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39163445/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 39163445; chronic burning inguinal-genital neuropathic pain definition"
+        },
+        {
+          "citation": "Lakhiani C, Chang TN, Chuang DC, et al. Trends in Compression Neuropathy: What's New? Semin Plast Surg. 2026;40(1):39-49. PMID 42037624.",
+          "note": "Review documenting that neuropathic groin and pelvic pain syndromes including ilioinguinal, genitofemoral, and pudendal neuropathies require rigorous clinical assessment, exclusion of proximal pathology, and confirmatory diagnostic nerve blocks before intervention - the exclusionary-workup anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42037624/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 42037624; genitofemoral neuropathy workup requires exclusion and confirmatory blocks"
+        },
+        {
+          "citation": "Alfarawan F, Kaiser GM, El-Sourani N, et al. Robot-Assisted Tailored Neurectomy in Chronic Postherniorrhaphic Inguinal Neuralgia: A Retrospective Analysis. Ann Surg Open. 2025;6(4):e617. PMID 41451194.",
+          "note": "Retrospective series documenting ten patients with refractory neuropathic groin pain of at least six months duration (genitofemoral nerve included in tailored neurectomy) worked up with nerve mapping, imaging to exclude non-neuropathic causes, and failed blocks, with mean pain scores falling from 7.8 to 1.2 at 180 days - the chronic-refractory-course and exclusion anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41451194/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 41451194; refractory neuropathic groin pain at least 6 months, NRS 7.8 to 1.2"
+        }
+      ]
+    }
+  ]
 }

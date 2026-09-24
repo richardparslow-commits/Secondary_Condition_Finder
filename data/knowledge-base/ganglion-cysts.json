@@ -2,8 +2,77 @@
   "id": "ganglion-cysts",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review biomechanical, post-injury, orthopedic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 36 (2026-09-23): ASSOCIATION_ONLY draft pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: the mapping asserts only the mass-effect association between ganglion cysts and carpal tunnel syndrome documented in imaging-confirmed, electrophysiologically documented, and surgically confirmed cases; individual claims require a documented ganglion within or adjacent to the carpal canal with imaging evidence of median nerve compression, electrodiagnostic confirmation of carpal tunnel syndrome, documented chronology, and exclusion of idiopathic, inflammatory, and other mass-cause carpal tunnel syndrome."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 36 (2026-09-23): one bounded carpal-tunnel-syndrome association authored from the ganglion mass-effect literature - the Yalcinkaya 2014 report of two cases documents unilateral carpal tunnel syndrome caused by an occult ganglion within the carpal tunnel with the reasoning that secondary etiology should be suspected in unilateral presentations and that space-occupying lesions are more prevalent in unilateral than bilateral carpal tunnel syndrome, the Kang 2009 retrospective series of 11 patients (12 cases) operated for carpal tunnel syndrome caused by space-occupying lesions includes ganglion among the pathologic lesion types with all cases showing symptom alleviation without recurrence after release and lesion removal, and the Alsharif 2026 case documents a histopathologically confirmed flexor tendon sheath ganglion compressing the median nerve with complete symptom resolution after surgical excision via carpal tunnel approach; the mass-compression pathway is accepted anatomy but case-level evidence dominates.",
+    "Duplicate-scope note: the carpal-tunnel-syndrome target carries one incoming edge (de-quervain-s-tenosynovitis on the tenosynovial-thickening pathway); this edge adds the discrete space-occupying-ganglion mechanism with an independent hand-surgery evidence base. Negative screens recorded 2026-09-23: (i) no cohort quantifies ganglion prevalence among carpal tunnel syndrome cases - the evidence is two case reports and a small mixed-lesion surgical series with one ganglion; (ii) tarsal-tunnel syndrome from foot ganglia returned literature but no catalog identity exists for tarsal tunnel syndrome, so no foot-ganglion edge is authored; (iii) recurrence after incomplete ganglion resection is documented in the literature but carries no catalog target; malignancy mimics (giant-cell tumor, sarcoma) are recorded as per-case exclusions rather than outcomes."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "carpal-tunnel-syndrome",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The Yalcinkaya 2014 report documents two cases of unilateral carpal tunnel syndrome caused by occult ganglia within the carpal tunnel with the observation that space-occupying lesions are more prevalent in unilateral than bilateral carpal tunnel syndrome, the Kang 2009 retrospective series documents 12 carpal tunnel syndrome cases caused by space-occupying lesions (pathology including ganglion) treated by release and lesion removal with symptom alleviation in all cases, and the Alsharif 2026 case documents a histopathology-confirmed flexor tendon sheath ganglion compressing the median nerve with complete resolution after excision; the literature documents ganglion mass effect producing carpal tunnel syndrome in specific cases without establishing how often a ganglion is the operative cause in an individual.",
+        "causationStatus": "The mapping does not assert that a ganglion cyst caused an individual's carpal tunnel syndrome: idiopathic median nerve compression is the dominant etiology and ganglia are common incidental findings that do not cause symptoms, intracanalicular versus ganglion-related distributions vary, other space-occupying lesions (tenosynovitis including tuberculous and gouty, calcifying masses, tumors, lipoma) independently compress the nerve, and the cited evidence is case-level with a single mixed-lesion series; individual claims require imaging (MRI or ultrasound) documenting the ganglion within or adjacent to the canal with median nerve compression, electrodiagnostic confirmation of carpal tunnel syndrome, documented chronology, and exclusion of idiopathic, inflammatory, and alternative mass causes."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MECHANICAL_OR_COMPRESSIVE",
+        "primaryVector": "A hypothesized space-occupying mass-effect pathway: a ganglion arising from the wrist joint, flexor tendon sheath, or intraosseous bone expands within the unyielding fibro-osseous carpal canal, raising interstitial pressure against the median nerve against the transverse carpal ligament; sustained compression impairs epineural blood flow and directly deforms the nerve fibers, producing the demyelinating conduction block and axonal injury that electromyography records as carpal tunnel syndrome - the same compressive logic the de-quervain tenosynovitis carpal-tunnel edge carries through a different occupying lesion - while the pathway remains a hypothesis about an individual's course because most ganglia are asymptomatic and no cohort quantifies compression risk.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The edge asserts an association only: the evidence is two case reports and a retrospective series of 11 patients in which ganglia were a minority of the space-occupying lesions, no cohort quantifies the proportion of carpal tunnel syndrome attributable to ganglia, ganglia are common incidental findings on imaging of asymptomatic wrists, and idiopathic and inflammatory mass causes independently produce the syndrome; no probability estimate is asserted.",
+        "evidenceGaps": "Imaging (MRI or ultrasound) documenting a ganglion within or adjacent to the carpal canal with median nerve compression or flattened nerve cross-section; electrodiagnostic studies (nerve conduction studies with needle EMG) confirming carpal tunnel syndrome and its severity; documented chronology of ganglion onset before or with neurologic symptoms; exclusion of idiopathic carpal tunnel syndrome, inflammatory tenosynovitis (rheumatoid, tuberculous, gouty), other space-occupying lesions, cervical radiculopathy, and polyneuropathy; hand-surgery or neurology assessment of the individual relationship",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Idiopathic carpal tunnel syndrome without mass lesion",
+          "Inflammatory or infectious tenosynovitis (rheumatoid, tuberculous, gouty)",
+          "Other space-occupying lesions (lipoma, giant-cell tumor, sarcoma, calcifying mass)",
+          "Cervical radiculopathy or peripheral polyneuropathy mimicking hand paresthesia",
+          "Hypothyroid or diabetic-associated median neuropathy"
+        ]
+      },
+      "evidenceGaps": [
+        "Imaging (MRI or ultrasound) documenting a ganglion within or adjacent to the carpal canal with median nerve compression or flattened nerve cross-section; electrodiagnostic studies (nerve conduction studies with needle EMG) confirming carpal tunnel syndrome and its severity; documented chronology of ganglion onset before or with neurologic symptoms; exclusion of idiopathic carpal tunnel syndrome, inflammatory tenosynovitis (rheumatoid, tuberculous, gouty), other space-occupying lesions, cervical radiculopathy, and polyneuropathy; hand-surgery or neurology assessment of the individual relationship"
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY consistent with the de-quervain carpal-tunnel edge: case-level and small-series evidence documents ganglion mass effect compressing the median nerve while idiopathic predominance, incidental-ganglion prevalence, and absent cohort quantification defeat individual causal attribution, so the mapping asserts the association with imaging, electrodiagnostic, and alternative-cause requirements.",
+      "sourceReferences": [
+        {
+          "citation": "Yalcinkaya M, Akman YE, Bagatur AE, et al. Unilateral carpal tunnel syndrome caused by an occult ganglion in the carpal tunnel: a report of two cases. Case Rep Orthop. 2014;2014:589021. PMID 25105046.",
+          "note": "Two cases of unilateral carpal tunnel syndrome caused by occult ganglia within the carpal tunnel, noting that space-occupying lesion incidence is higher in unilateral than bilateral carpal tunnel syndrome - the occult-ganglion etiology anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/25105046/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 25105046; occult ganglion causing unilateral carpal tunnel syndrome"
+        },
+        {
+          "citation": "Kang HJ, Jung SH, Yoon HK, et al. Carpal tunnel syndrome caused by space occupying lesions. Yonsei Med J. 2009;50(2):257-261. PMID 19430560.",
+          "note": "Retrospective series of 11 patients (12 cases) operated for carpal tunnel syndrome caused by space-occupying lesions with pathology including ganglion and calcifying masses, all showing symptom alleviation without recurrence after release and removal - the surgical-series and treatment-response anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/19430560/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 19430560; space-occupying-lesion carpal tunnel series including ganglion"
+        },
+        {
+          "citation": "Alsharif M, Mhannayeh A, Jabri A, et al. Flexor Tendon Sheath Ganglion Causing Concurrent Trigger Wrist and Carpal Tunnel Syndrome. Case Rep Orthop. 2026;2026:8963799. PMID 42253780.",
+          "note": "Case with imaging and histopathology confirming a flexor tendon sheath ganglion compressing the median nerve and causing carpal tunnel syndrome, with complete symptom resolution after surgical excision via carpal tunnel approach - the compression-and-response anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42253780/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 42253780; flexor sheath ganglion compressing median nerve with excision response"
+        }
+      ]
+    }
+  ]
 }

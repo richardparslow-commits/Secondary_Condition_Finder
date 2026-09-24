@@ -2,8 +2,69 @@
   "id": "hyperopia",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review otologic, vestibular, audiologic, visual, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 46 (2026-09-24): one ASSOCIATION_ONLY draft mapping pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: the single authored edge asserts association only (etiologicalConsensus NOT_ESTABLISHED, hypothesizedOnly:true) - it records that hyperopia (short axial length) is a recognized risk factor for the primary angle-closure disease spectrum in refractive and gonioscopic studies, not that hyperopia caused glaucoma in any individual; individual claims require refraction and axial-length documentation, gonioscopic or angle-assessment evidence, compatible chronology, and exclusion of the competing open-angle, secondary, and inflammatory glaucoma mechanisms.",
+    "Duplicate-scope and family guard: the glaucoma identity already receives the uveitis window (a secondary/inflammatory mechanism) and authors its own visual-impairment edge, and this batch adds the hyperopic-ocular-biometry risk window on its own primary; hyperopia does not produce open-angle glaucoma by this mechanism and no other catalog identity is proposed, while no high-myopia, nanophthalmos, or short-axial-length identity exists in the catalog (wrong-target guard)."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 46 (2026-09-24): one bounded association edge authored - hyperopia to glaucoma (rank 1), ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true, and mechanismCategory MECHANICAL_OR_COMPRESSIVE (short axial length with a crowded anterior segment and appositional angle closure). The proposition rests on the Martínez-Blanco 2021 Colombian Glaucoma Study, a cross-sectional gonioscopic study of 1749 patients in which high hyperopia was identified as an independent factor related to the primary angle-closure disease spectrum alongside advanced age and female sex, and on the Zhang 2015 review of choroidal physiology and primary angle-closure disease, which states that angle-closure disease is generally associated with a shallower anterior chamber, a shorter axial length, a thicker lens, and hyperopia. The edge is not raised to causation: both sources are cross-sectional or narrative and report risk-factor associations without incident-glaucoma follow-up, hyperopia is neither necessary nor sufficient for angle closure, and competing mechanisms (age-related lens thickening, plateau iris, secondary and inflammatory glaucoma) can independently produce the disease, so no probability estimate is asserted.",
+    "Negative screens recorded 2026-09-24: (i) no visual-impairment edge - the visual consequences of angle closure flow through the glaucoma intermediate, and direct hyperopia-to-visual-impairment would double-count the pathway; the refractive-error-to-visual-impairment direction is a separate proposition that would require its own corrected/unimpaired-snellen framing and is not authored here (intermediate-chain guard); (ii) no retinal-detachment edge - myopic rather than hyperopic eyes carry the detachment risk, and the direction would be inverted (direction-inversion guard); (iii) no cataract edge - hyperopia is associated with a thicker lens and cataract formation is a confounded, age-driven relationship with no condition-specific refraction-primary data located (zero-record guard); (iv) no diabetic-retinopathy, glaucoma-sibling, or open-angle-glaucoma edge - the located association is specific to the angle-closure spectrum (mechanism-specificity guard); (v) no headache, asthenopia, or amblyopia edge - those identities are absent from the catalog (wrong-target guard); (vi) duplicate-scope note: the glaucoma identity currently receives one incoming window (uveitis, a secondary glaucoma) and this batch adds the first hyperopia-primary window to the registry."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "glaucoma",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Clinical evidence documents hyperopia among the ocular-biometry risk factors for angle-closure glaucoma: the Martínez-Blanco 2021 cross-sectional gonioscopic study of 1749 patients identified high hyperopia as an independent factor related to the primary angle-closure disease spectrum, and the Zhang 2015 review states that primary angle-closure disease is generally associated with a shallower anterior chamber, a shorter axial length, and hyperopia - a reproducible risk-factor association rather than an individual causal nexus.",
+        "causationStatus": "Neither causation nor aggravation is established: the located evidence is cross-sectional or narrative and reports risk-factor associations without incident-glaucoma follow-up, hyperopia is neither necessary nor sufficient for angle closure, and competing mechanisms such as age-related lens thickening, plateau iris, and secondary or inflammatory glaucoma can independently produce the disease, so an individual determination requires refraction and axial-length documentation, angle-assessment evidence, chronology, and exclusion of competing glaucoma mechanisms."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MECHANICAL_OR_COMPRESSIVE",
+        "primaryVector": "A hypothesized mechanical route is described: a hyperopic eye is typically shorter in axial length with a proportionally larger crystalline lens, leaving a shallower anterior chamber and a narrower iridocorneal angle, so the peripheral iris comes into apposition with the trabecular meshwork and obstructs aqueous outflow, raising intraocular pressure and producing angle-closure glaucoma - the anatomic relationship recorded in the Zhang 2015 review and reflected in the Martínez-Blanco 2021 gonioscopic study in which high hyperopia was independently related to the angle-closure disease spectrum; the cross-sectional design and the presence of competing mechanisms leave individual attribution hypothesized.",
+        "secondaryVector": "Age-related lens thickening and growth further crowd an already shallow anterior segment, and plateau-iris configuration, choroidal expansion, and pharmacologic pupil dilation can trigger episodic closure in predisposed hyperopic eyes.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The edge asserts an association only: the located evidence is a cross-sectional risk-factor study plus a narrative review linking hyperopia and short axial length to the angle-closure spectrum, without incident-glaucoma follow-up, and angle closure has multiple competing mechanisms (lens thickening, plateau iris, secondary and inflammatory causes) in the same patients; an individual claim therefore requires refraction and biometry documentation, angle assessment, chronology, and competing-cause review, so no at-least-as-likely-as-not probability is asserted.",
+        "evidenceGaps": "Documentation of hyperopia (manifest or cycloplegic refraction, axial length or biometry) with date; gonioscopic or anterior-segment imaging documentation of angle configuration and closure; documentation of intraocular pressure, optic-nerve, and visual-field findings and of the glaucoma subtype; chronology of the hyperopic biometry relative to the glaucoma diagnosis; evaluation for competing mechanisms (age-related lens thickening, plateau iris, pseudoexfoliation, uveitic or other secondary glaucoma) and for medication-related angle closure; ophthalmologic assessment of whether the hyperopic biometry materially contributed to the individual glaucoma",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Primary open-angle glaucoma",
+          "Secondary glaucoma (pseudoexfoliative, pigmentary, neovascular, or medication-related)",
+          "Uveitic or inflammatory glaucoma with synechial closure",
+          "Plateau-iris or lens-induced angle closure independent of refractive status",
+          "Ocular hypertension without angle closure"
+        ]
+      },
+      "evidenceGaps": [
+        "Documentation of hyperopia (manifest or cycloplegic refraction, axial length or biometry) with date; gonioscopic or anterior-segment imaging documentation of angle configuration and closure; documentation of intraocular pressure, optic-nerve, and visual-field findings and of the glaucoma subtype; chronology of the hyperopic biometry relative to the glaucoma diagnosis; evaluation for competing mechanisms (age-related lens thickening, plateau iris, pseudoexfoliation, uveitic or other secondary glaucoma) and for medication-related angle closure; ophthalmologic assessment of whether the hyperopic biometry materially contributed to the individual glaucoma"
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY: a cross-sectional gonioscopic study of 1749 patients identifies high hyperopia as an independent factor for the primary angle-closure disease spectrum, and a review states that angle-closure disease is generally associated with a shorter axial length and hyperopia, establishing a reproducible ocular-biometry risk-factor association; the edge is not raised to causation because the evidence is cross-sectional or narrative without incident follow-up and angle closure has multiple competing mechanisms, so the consensus remains NOT_ESTABLISHED with refraction, angle-assessment, chronology, and competing-cause requirements; no probability estimate is asserted.",
+      "sourceReferences": [
+        {
+          "citation": "Martínez-Blanco AM, Cantor EJ, Valencia-Peña C. Prevalence and risk factors for primary angle-closure disease spectrum: The Colombian Glaucoma Study. Eur J Ophthalmol. 2021 Nov 19:11206721211060153. doi:10.1177/11206721211060153. PMID 34796746.",
+          "note": "Cross-sectional gonioscopic study of 1749 patients identifying high hyperopia as an independent factor related to the primary angle-closure disease spectrum - the quantitative risk-factor anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34796746/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-24",
+          "sourceLocator": "PMID 34796746; high hyperopia as an independent factor for the primary angle-closure disease spectrum"
+        },
+        {
+          "citation": "Zhang X, Wang W, Aung T, Jonas JB, Wang N. Choroidal physiology and primary angle closure disease. Surv Ophthalmol. 2015 Nov-Dec;60(6):547-556. doi:10.1016/j.survophthal.2015.06.005. PMID 26164737.",
+          "note": "Review of primary angle-closure disease stating that it is generally associated with a shallower anterior chamber, a shorter axial length, a thicker lens, and hyperopia - the anatomic-mechanism anchor for the association.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/26164737/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-24",
+          "sourceLocator": "PMID 26164737; primary angle-closure disease associated with shorter axial length and hyperopia"
+        }
+      ]
+    }
+  ]
 }

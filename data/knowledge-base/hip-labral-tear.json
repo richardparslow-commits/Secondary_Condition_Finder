@@ -1,6 +1,72 @@
 {
   "id": "hip-labral-tear",
   "draft": true,
-  "todo": ["Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.", "Review direct-secondary, aggravation, biomechanical, medication/treatment, intermediate-factor, and organ-system pathways only where applicable; do not infer medical causation from rating-schedule authority."],
-  "suggestions": []
+  "todo": [
+    "D1 draft-authoring batch 45 (2026-09-24): one ASSOCIATION_ONLY draft mapping pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: the single authored edge asserts association only (etiologicalConsensus NOT_ESTABLISHED, hypothesizedOnly:true) - it records that chondrolabral damage in symptomatic labral tears is associated with subsequent hip-arthroplasty conversion and arthritic progression in hip-arthroscopy cohorts, not that the labral tear caused osteoarthritis in any individual; individual claims require imaging or arthroscopic documentation of the labral tear and of the articular cartilage, chronology, and exclusion of primary osteoarthritis and other arthropathies, noting that labral tears are also a consequence of established hip arthritis.",
+    "Prior-proposition screen: the master-resolution program closed the harvested hip-labral-tear-to-abdominal-hernia proposition (PMID 41549479) as FINAL-CLOSE-PROPOSITION-MISMATCH with no approved targets, and that proposition is NOT reasserted here; the edge authored in this batch rests on separate, condition-specific chondrolabral-degeneration evidence and targets post-traumatic osteoarthritis.",
+    "Duplicate-scope guard: the post-traumatic-osteoarthritis identity already receives the knee-injury, bankart-lesion, and hill-sachs-lesion windows, and this batch adds the hip-acetabular-labrum window on its own primary, which is distinct from the femoroacetabular-impingement, acl-injury, and other windows already routed to the generic osteoarthritis identity; no hip-osteoarthritis, acetabular-labral-reconstruction, or hip-arthroscopy identity exists in the catalog (wrong-target guard), so the hip-labrum arthropathy pathway is expressed by the osteoarthritic target."
+  ],
+  "governanceNotes": [
+    "D1 batch 45 (2026-09-24): one bounded association edge authored - hip labral tear to post-traumatic osteoarthritis (rank 1), ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true, and mechanismCategory BIOMECHANICAL_ALTERATION (chondrolabral-junction failure and altered hip-joint load), matching the shoulder bankart-lesion and hill-sachs-lesion precedent for structural labral/articular lesions. The proposition rests on the Dean 2024 minimum-eight-year hip-arthroscopy cohort, which associates chondrolabral junction breakdown with conversion to total hip arthroplasty after arthroscopic treatment of symptomatic labral tears, and on the Martin 2024 randomized trial of hip arthroscopy versus physical therapy for symptomatic acetabular labral tears in patients older than 40 years, which reports conversion to total hip arthroplasty among the outcome measures. The edge is not raised to causation: both sources are treatment cohorts in which arthroplasty conversion is a composite clinical endpoint rather than a direct osteoarthritis-incidence measurement, labral tears are themselves frequently a manifestation of established hip degeneration (direction can run the other way), and age, femoroacetabular morphology, and baseline cartilage grade are strong confounders, so no probability estimate is asserted.",
+    "FINAL-CLOSE-PROPOSITION-MISMATCH screen recorded 2026-09-24: the master-resolution disposition closed the harvested hip-labral-tear-to-abdominal-hernia proposition (originalDisposition HOLD-PROPOSITION-MISMATCH, masterResolution FINAL-CLOSE-PROPOSITION-MISMATCH, approvedTargets empty, reason noting that co-mentioned abdominal-hernia evidence did not establish a sufficiently specific hip-labral-tear secondary relationship). That proposition remains closed and is not reasserted; the identity was retained as a draft with an explicit rebuild instruction, and the edge authored here is supported by separate, condition-specific chondrolabral-degeneration evidence.",
+    "Negative screens recorded 2026-09-24: (i) no abdominal-hernia edge - the FINAL-CLOSE-PROPOSITION-MISMATCH closure remains in force and no condition-specific supporting evidence was located (prior-closure guard); (ii) no femoroacetabular-impingement edge - the direction runs from femoroacetabular morphology to labral injury, and that identity already authors its own osteoarthritis window (direction-inversion and duplicate-scope guards); (iii) no generic-osteoarthritis edge - the femoroacetabular-impingement, acl-injury, pcl-injury, avascular-necrosis, and other windows already route there, and this batch keeps the labral-tear window on the post-traumatic target to avoid a parallel pathway for the same hip joint (duplicate-scope guard); (iv) no avascular-necrosis edge - no condition-specific directional data were located and that identity owns its own incoming window (zero-record guard); (v) no unexplained-chronic-pain edge - a labral tear is a defined structural cause rather than a medically unexplained pain syndrome, and no condition-specific case-matching quantification was located (identity-fit guard); (vi) no hip-strain or hip-disarticulation edge - those sibling identities keep their own unbacklogged windows (duplicate-scope guard)."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "post-traumatic-osteoarthritis",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Hip-arthroscopy cohorts document that chondrolabral damage accompanying symptomatic labral tears is associated with progressive hip-joint degeneration: the Dean 2024 minimum-eight-year cohort associates chondrolabral junction breakdown with conversion to total hip arthroplasty after arthroscopic treatment of labral tears, and the Martin 2024 randomized trial reports conversion to total hip arthroplasty among the outcomes of treating symptomatic acetabular labral tears - a reproducible lesion-to-arthropathy association rather than an individual causal nexus.",
+        "causationStatus": "Neither causation nor aggravation is established: the located evidence comprises treatment cohorts in which arthroplasty conversion is a composite clinical endpoint rather than a direct osteoarthritis-incidence measurement, labral tears are frequently themselves a manifestation of established hip degeneration so the direction can be reversed, and age, femoroacetabular morphology, and baseline cartilage grade are strong confounders, so an individual determination requires documentation of the tear and the articular cartilage, chronology, and exclusion of competing arthropathies."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "BIOMECHANICAL_ALTERATION",
+        "primaryVector": "A hypothesized biomechanical route is described: a tear of the acetabular labrum and the adjacent chondrolabral junction compromises the labrum's role in sealing the joint, distributing load, and maintaining hip-joint fluid-film lubrication, so the acetabular cartilage is exposed to higher and more edge-loaded contact stresses that can initiate and propagate degeneration and lead to arthroplasty - the mechanism under which the located hip-arthroscopy cohorts associate chondrolabral-junction breakdown with conversion to total hip arthroplasty; the treatment-cohort design, the reverse-direction possibility, and the confounding by age and femoroacetabular morphology leave individual attribution hypothesized.",
+        "secondaryVector": "Concurrent femoroacetabular morphology, gluteal or capsular insufficiency, and prior hip injury or surgery can redistribute load further, and the surgical intervention itself alters joint mechanics, complicating attribution.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The edge asserts an association only: the located evidence is hip-arthroscopy treatment cohorts associating chondrolabral damage with arthroplasty conversion, an endpoint that reflects composite clinical deterioration rather than measured osteoarthritis incidence, and labral tears can be a consequence as well as a precursor of hip degeneration, with age and joint morphology confounding the relationship; an individual claim therefore requires tear and cartilage documentation, chronology, and competing-cause review, so no at-least-as-likely-as-not probability is asserted.",
+        "evidenceGaps": "Imaging or arthroscopic documentation of the hip labral tear (location, grade, date); documentation of acetabular and femoral articular cartilage status at the time of the tear; chronology of the tear relative to the onset and progression of degenerative change; characterization of femoroacetabular morphology, hip dysplasia, or prior trauma or surgery; evaluation for primary osteoarthritis, inflammatory arthritis, and crystalline arthropathy; orthopedic assessment of whether the labral tear materially contributed to the individual arthropathy",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Primary (non-traumatic) hip osteoarthritis",
+          "Femoroacetabular impingement or hip dysplasia",
+          "Avascular necrosis of the femoral head",
+          "Inflammatory or crystalline arthropathy",
+          "Prior hip fracture, dislocation, or surgical intervention"
+        ]
+      },
+      "evidenceGaps": [
+        "Imaging or arthroscopic documentation of the hip labral tear (location, grade, date); documentation of acetabular and femoral articular cartilage status at the time of the tear; chronology of the tear relative to the onset and progression of degenerative change; characterization of femoroacetabular morphology, hip dysplasia, or prior trauma or surgery; evaluation for primary osteoarthritis, inflammatory arthritis, and crystalline arthropathy; orthopedic assessment of whether the labral tear materially contributed to the individual arthropathy"
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY: hip-arthroscopy cohorts document that chondrolabral-junction breakdown in symptomatic labral tears is associated with conversion to total hip arthroplasty, and a randomized trial of labral-tear treatment reports arthroplasty conversion among its outcomes, establishing a reproducible association between labral/chondrolabral damage and hip-joint degeneration; the edge is not raised to causation because the evidence comprises treatment cohorts with a composite endpoint, labral tears may be a consequence of established degeneration, and age and joint morphology are strong confounders, so the consensus remains NOT_ESTABLISHED with tear, cartilage, chronology, and competing-cause requirements; no probability estimate is asserted.",
+      "sourceReferences": [
+        {
+          "citation": "Dean MC, Cherian NJ, LaPorte ZL, et al. Association Between Chondrolabral Junction Breakdown and Conversion to Total Hip Arthroplasty After Hip Arthroscopy for Symptomatic Labral Tears: Minimum 8-Year Follow-up. Am J Sports Med. 2024 Apr;52(5):1153-1164. doi:10.1177/03635465241234258. PMID 38476016.",
+          "note": "Minimum-eight-year hip-arthroscopy cohort associating chondrolabral junction breakdown with conversion to total hip arthroplasty after treatment of symptomatic labral tears - the long-term chondrolabral-degeneration anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38476016/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-24",
+          "sourceLocator": "PMID 38476016; chondrolabral junction breakdown and conversion to total hip arthroplasty after hip arthroscopy for labral tears"
+        },
+        {
+          "citation": "Martin SD, Dean MC, Gillinov SM, et al. Hip Arthroscopy Versus Physical Therapy for the Treatment of Symptomatic Acetabular Labral Tears in Patients Older Than 40 Years: 24-Month Results From a Randomized Controlled Trial. Am J Sports Med. 2024 Aug;52(10):2574-2585. doi:10.1177/03635465241263595. PMID 39101607.",
+          "note": "Randomized trial of hip arthroscopy versus physical therapy for symptomatic acetabular labral tears reporting conversion to total hip arthroplasty among the outcomes - the treatment-cohort corroboration anchor for arthritic progression risk.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39101607/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-24",
+          "sourceLocator": "PMID 39101607; randomized trial of acetabular labral tears reporting conversion to total hip arthroplasty among outcomes"
+        }
+      ]
+    }
+  ]
 }

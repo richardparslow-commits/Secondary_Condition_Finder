@@ -1,6 +1,78 @@
 {
   "id": "hammertoe",
   "draft": true,
-  "todo": ["Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.", "Review direct-secondary, aggravation, biomechanical, medication/treatment, intermediate-factor, and organ-system pathways only where applicable; do not infer medical causation from rating-schedule authority."],
-  "suggestions": []
+  "todo": [
+    "D1 draft-authoring batch 42 (2026-09-24): one ASSOCIATION_ONLY draft mapping pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: the mapping asserts association only (etiologicalConsensus NOT_ESTABLISHED, hypothesizedOnly:true) following the flexor-hallucis-longus-tendinitis and greater-trochanteric-pain-syndrome case-matching precedent - it records that hammertoe surgical populations universally present with chronic forefoot pain and that pain relief is the treatment goal, not that the digital deformity caused a distinct chronic pain syndrome in any individual; individual claims require documented hammertoe (fixed or flexible PIP-flexion deformity of a lesser toe on examination) with separately documented chronic forefoot pain of onset after deformity onset meeting the unexplained-chronic-pain identity's grade, duration, and functional-impact scope, and exclusion of Morton's neuroma, metatarsalgia from independent causes, MTP osteoarthritis, inflammatory arthropathy, metatarsal stress fracture, prior forefoot trauma, tarsal or distal-nerve entrapment, and lumbar radiculopathy per case."
+  ],
+  "governanceNotes": [
+    "D1 batch 42 (2026-09-24): one bounded association edge authored by case-matching on the unexplained-chronic-pain family (all 8 incoming edges ASSOCIATION_ONLY). The Matthews 2018 series of 215 toes in 126 patients undergoing Cobb-Stainsby excision arthroplasty for clawed or hammer toes documents that preoperatively ALL patients presented with pain and shoe-wear problems (with plantar callosities an explicit primary-outcome target), 96% satisfied and 96% reporting pain relief postoperatively at median 45-month follow-up - universal preoperative chronic pain in a consecutive treated deformity series; the Olsen 2023 JBJS surgical-technique review documents that nonoperative measures (wide toe-box, padding) provide only temporary symptom alleviation, surgical treatment is often necessary for definitive treatment, the degenerative bone changes associated with hammer toe drive persistent symptoms, and pain relief is achieved in up to 92% with 83-100% satisfaction - chronicity and the degenerative-pain substrate; the Arbab 2017 review of flexor-to-extensor tendon transfer for flexible lesser-toe deformity states the operative objective as realignment and pain relief of toes 2-5 - pain as the defining treatment endpoint across the deformity literature. Classification rests at NOT_ESTABLISHED because all three sources are surgical-treatment series selected for pain as the operative indication (selection-on-outcome guard), no cohort documents incident chronic pain after hammertoe onset with non-pain-referred comparison, no diagnostic-delay or centralized-pain quantification exists for the identity (zero-record for the delay component of the case-matching family), and the flexible-versus-fixed deformity spectrum and underlying etiologies (neuromuscular, inflammatory, iatrogenic) are heterogeneous.",
+    "Negative screens recorded 2026-09-24: (i) no metatarsalgia edge from this identity - the hallux-valgus batch-42 file owns the transfer-overload metatarsalgia arrow where hallux valgus is the documented driver, and hammertoe-specific metatarsalgia-coexistence quantification was not located in this window (zero-record and shared-target guards); the hammertoe-to-plantar-pressure relationship routes through callosity and MTP-head pressure documented only as surgical outcomes here; (ii) no osteoarthritis edge - MTP and PIP degenerative change is constitutive-adjacent to the chronic deformity (hallux-rigidus batch-41 constitutive barrier pattern) and no hammertoe-specific incident-osteoarthritis cohort was located (zero-record and constitutive guards); (iii) no difficulty-walking or gait edge - identities absent (wrong-target guard; hallux-valgus batch-42 recorded the counter-evidence that foot deformities were not significantly associated with falls or walking performance); (iv) no mallet-toes duplicate - mallet-toe is a distinct distal-interphalangeal deformity identity owning its own backlog window while hammertoe is the proximal-interphalangeal deformity (wrong-identity guard, record explicitly separates hammer (PIP) from mallet (DIP) from claw (MTP hyperextension plus PIP flexion plus DIP hyperextension) toes); (v) no diabetes or peripheral-neuropathy edge - the ulceration-amputation pathway in insensate feet is owned by the diabetic identities and no hammertoe-specific incident-outcome cohort exists (duplicate-scope and zero-record guards); (vi) no postoperative or scars edge - surgical outcomes are treatment-state (treatment-state guard). Reopening condition: a prospective forefoot cohort documenting incident chronic pain temporally after hammertoe onset with adjustment for coexisting forefoot pathology, or a hammertoe-specific diagnostic-delay or centralized-pain series."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "unexplained-chronic-pain",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The Matthews 2018 consecutive surgical series documents that preoperatively all 126 patients (215 toes) with clawed or hammer toes presented with pain and shoe-wear problems, with plantar callosities an explicit outcome target and 96% pain relief at median 45-month follow-up after excision arthroplasty, the Olsen 2023 review documents that hammer-toe symptoms arise from the fixed-flexion deformity with associated degenerative bone changes, that conservative measures provide only temporary alleviation so surgery is often required for definitive treatment, and that pain relief is achieved in up to 92% of operated patients, and the Arbab 2017 review documents pain relief as the operative objective for flexible lesser-toe deformity correction; the literature documents a universal chronic forefoot-pain presenting burden in treated hammertoe populations without establishing that the deformity caused a distinct chronic pain syndrome in any individual.",
+        "causationStatus": "The mapping does not assert that hammertoe caused a chronic pain syndrome in any individual: every located source is a surgical-treatment series selected on pain as the operative indication (selection-on-outcome), no cohort documents incident chronic pain after hammertoe onset in unselected populations, the identity's flexible-to-fixed deformity spectrum and heterogeneous etiologies (neuromuscular imbalance, inflammatory arthropathy, iatrogenic, congenital) provide competing pain generators in the same foot, no diagnostic-delay quantification exists for the identity, and the case-matching family (flexor-hallucis-longus-tendinitis, greater-trochanteric-pain-syndrome, glomus-tumor) rests at NOT_ESTABLISHED; individual claims require documented hammertoe with separately documented chronic forefoot pain of onset after deformity onset meeting the unexplained-chronic-pain identity's scope, and exclusion of Morton's neuroma, independent metatarsalgia causes, MTP osteoarthritis, inflammatory arthropathy, metatarsal stress fracture, prior forefoot trauma, distal-nerve or tarsal entrapment, lumbar radiculopathy, and centralized or nociplastic pain per case."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MECHANICAL_OR_COMPRESSIVE",
+        "primaryVector": "A chronic digital-deformity load vector: PIP-flexion contracture of a lesser toe displaces the metatarsal head plantarly and dorsally prominences the interphalangeal joints against footwear, producing repetitive impingement, bursal inflammation, and plantar callosity under the metatarsal head or phalangeal crest with each stance-phase loading, so nociceptive input recurs with every step as long as the contracture persists - documented as universal preoperative pain, degenerative bone change at the joints, and callosity reduction as a treatment goal - while surgical selection on pain, the heterogeneous deformity etiologies, and coexisting forefoot pathology keep the vector hypothesized for individual attribution.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The edge case-matches on the established unexplained-chronic-pain family (all 8 incoming edges ASSOCIATION_ONLY/NOT_ESTABLISHED): consecutive surgical series document a universal chronic pain presenting burden in treated hammertoe populations with pain relief as the treatment endpoint, but all located evidence is treatment-selected (pain is the inclusion criterion for surgery), no unselected cohort documents incident chronic pain after hammertoe onset, no diagnostic-delay or centralized-pain quantification exists, coexisting forefoot pathology in the same feet supplies competing generators, and family norms rest at NOT_ESTABLISHED; no probability estimate is asserted.",
+        "evidenceGaps": "Documented hammertoe (clinical examination recording the PIP-flexion deformity of a named lesser toe, flexible versus fixed) with deformity-onset chronology; chronic forefoot pain documentation meeting the unexplained-chronic-pain identity's grade, duration, and functional-impact scope with onset after deformity onset and anatomical concordance; exclusion of Morton's neuroma, independent metatarsalgia causes (MTP osteoarthritis, stress fracture, malalignment), inflammatory arthropathy, prior forefoot trauma, distal-nerve or tarsal-tunnel entrapment, and lumbar radiculopathy; assessment of centralized or nociplastic pain features; documentation of the deformity etiology (neuromuscular, inflammatory, iatrogenic, congenital); pain-medicine and foot-and-ankle orthopedic assessment of the individual relationship",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Morton's intermetatarsal neuroma or distal nerve entrapment",
+          "Metatarsophalangeal osteoarthritis or inflammatory arthropathy",
+          "Metatarsal stress fracture or prior forefoot trauma",
+          "Centralized or nociplastic pain amplification",
+          "Lumbar radiculopathy or tarsal-tunnel pathology"
+        ]
+      },
+      "evidenceGaps": [
+        "Documented hammertoe (clinical examination recording the PIP-flexion deformity of a named lesser toe, flexible versus fixed) with deformity-onset chronology; chronic forefoot pain documentation meeting the unexplained-chronic-pain identity's grade, duration, and functional-impact scope with onset after deformity onset and anatomical concordance; exclusion of Morton's neuroma, independent metatarsalgia causes (MTP osteoarthritis, stress fracture, malalignment), inflammatory arthropathy, prior forefoot trauma, distal-nerve or tarsal-tunnel entrapment, and lumbar radiculopathy; assessment of centralized or nociplastic pain features; documentation of the deformity etiology (neuromuscular, inflammatory, iatrogenic, congenital); pain-medicine and foot-and-ankle orthopedic assessment of the individual relationship"
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY by case-matching the unexplained-chronic-pain family: three independent treatment-series sources document universal preoperative chronic forefoot pain, degenerative change at the deformed joints, and pain relief as the defining operative endpoint in hammertoe populations, while treatment-selection on pain, absent unselected incident-pain cohorts, absent delay quantification, heterogeneous deformity etiology, and family NOT_ESTABLISHED norms keep individual attribution guarded; no probability estimate is asserted.",
+      "sourceReferences": [
+        {
+          "citation": "Matthews AH, Jagodzinski NA, Westwood M, Metcalfe JE, Trimble KT. Effectiveness of the Cobb-Stainsby excision arthroplasty. Foot Ankle Surg. 2018 Feb;24(1):49-53. PMID 29413774.",
+          "note": "Retrospective three-surgeon series of 215 toes in 126 patients with clawed or hammer toes documenting that preoperatively ALL patients presented with pain and shoe-wear problems, plantar callosities as an explicit primary outcome, and 96% satisfaction with 96% pain relief at median 45-month follow-up - the universal preoperative chronic-pain and dechallenge anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/29413774/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-24",
+          "sourceLocator": "PMID 29413774; 215 toes/126 patients, all pre-op pain, 96% pain relief, median 45-month follow-up"
+        },
+        {
+          "citation": "Olsen E, King J, Pollock JR, Squires M, Meremikwu R, Walton D. Hammer toe correction with proximal interphalangeal joint arthrodesis. JBJS Essent Surg Tech. 2023 Feb 28;13(1):e21.00046. PMID 38274283.",
+          "note": "Surgical-technique review documenting that hammer toe is a fixed PIP-flexion deformity with degenerative bone changes, that nonoperative measures provide only temporary symptom alleviation so surgery is often necessary for definitive treatment, and that pain relief is achieved in up to 92% with 83-100% satisfaction - the chronicity, degenerative-substrate, and pain-endpoint anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38274283/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-24",
+          "sourceLocator": "PMID 38274283; PIP flexion deformity, degenerative changes, pain relief up to 92%"
+        },
+        {
+          "citation": "Arbab D, Frank D, Bouillon B, Lüring C. [Correction of flexible lesser toe deformity: transfer of the flexor digitorum longus tendon]. Oper Orthop Traumatol. 2017 Oct;29(5):452-458. PMID 28676916.",
+          "note": "Review of flexor-to-extensor tendon transfer for flexible lesser-toe (hammer/claw) deformity with the operative objective stated as realignment and pain relief of toes 2-5 - pain as the defining treatment endpoint across an independent national series.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/28676916/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-24",
+          "sourceLocator": "PMID 28676916; flexible lesser-toe deformity, objective realignment and pain relief toes 2-5"
+        }
+      ]
+    }
+  ]
 }

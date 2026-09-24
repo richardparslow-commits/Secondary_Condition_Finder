@@ -90,10 +90,10 @@ describe("Mapping Expansion Batch ME-34", () => {
   it("ratchets the authoritative counts without changing publication totals", () => {
     expect(relationships.currentState).toBe("D1-DRAFT-AUTHORED");
     expect(sources.currentState).toBe("D1-DRAFT-AUTHORED");
-    expect(relationships.counts).toEqual({ relationships: 500, explicitPublicationGuards: 426, legacyRationaleBoundaries: 74 });
-    expect(relationships.relationships).toHaveLength(500);
-    expect(sources.counts).toMatchObject({ liveSourceReferenceUses: 746, pendingVerificationSourceEntities: 327, pendingClinicalSourceEntities: 327, totalSourceEntitiesIncludingLineage: 682, });
-    expect(sources.sources).toHaveLength(682);
+    expect(relationships.counts).toEqual({ relationships: 579, explicitPublicationGuards: 505, legacyRationaleBoundaries: 74 });
+    expect(relationships.relationships).toHaveLength(579);
+    expect(sources.counts).toMatchObject({ liveSourceReferenceUses: 943, pendingVerificationSourceEntities: 515, pendingClinicalSourceEntities: 515, totalSourceEntitiesIncludingLineage: 870, });
+    expect(sources.sources).toHaveLength(870);
   });
 
   it("keeps the deferred and rejected candidates out of ME-34", () => {

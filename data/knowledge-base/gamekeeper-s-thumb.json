@@ -2,8 +2,77 @@
   "id": "gamekeeper-s-thumb",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review biomechanical, post-injury, orthopedic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 36 (2026-09-23): ASSOCIATION_ONLY draft pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: the mapping asserts only the chronic thumb UCL-injury-to-metacarpophalangeal-osteoarthritis association documented in long-term surgical follow-up; individual claims require documented chronic thumb ulnar collateral ligament injury (clinical valgus laxity with or without imaging) predating documented metacarpophalangeal joint osteoarthritis at the injured joint, with primary basal-thumb osteoarthritis, prior fracture or dislocation, and inflammatory arthropathy excluded."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 36 (2026-09-23): one bounded osteoarthritis association authored from the chronic thumb UCL outcome literature, following the acl-injury, ankle-strain, avascular-necrosis, and freiberg-s-infraction osteoarthritis precedents (post-traumatic degeneration at ASSOCIATION_ONLY) - the Christensen 2016 long-term follow-up of primary repair of chronic thumb UCL injuries (12 of 21 living patients at a mean 24.5 years, minimum 15 years) documents some degree of osteoarthritis in 88% of patients with increased age at injury and higher DASH scores correlating with increased radiographic grades, the Daley 2020 review of thumb MCP collateral ligament injuries covers acute and chronic management, and the Fairhurst 2002 series documents ligament reconstruction for chronic gamekeeper's-thumb laxity in 22 thumbs with functional stability regained and two thumbs having ongoing MCP pain; the chronic-instability-to-altered-contact-stress pathway is accepted biomechanics but progression quantification is absent.",
+    "Duplicate-scope note: the osteoarthritis target will carry nine incoming edges after this batch (acl-injury, femoroacetabular-impingement, osteitis-deformans, pcl-injury, avascular-necrosis, ankle-strain, ankylosis, flatfoot, freiberg-s-infraction), all on local-joint, structural, or biomechanical mechanisms at other joints or on other pathways; the acl-injury and ankle-strain edges are the closest post-traumatic precedents (knee and ankle), while this edge adds the thumb MCP pathway with an independent hand-surgery evidence base. The skier-s-thumb identity (acute ulnar collateral ligament injury) carries zero outgoing edges and retains its own pathway for a future batch - acute-injury outcomes are not imported here. Negative screens recorded 2026-09-23: (i) no natural-history cohort follows untreated chronic gamekeeper's-thumb patients to incident radiographic osteoarthritis - the 88% figure derives from a 12-patient long-term subset of surgically treated injuries with survivorship and selection caveats; (ii) pinch-strength, grip-loss, and amputation outcomes returned no identity-fitting cohort; (iii) first carpometacarpal (basal) osteoarthritis literature was screened and excluded as a different joint with independent prevalence."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "osteoarthritis",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The Christensen 2016 long-term follow-up of primary repair for chronic thumb ulnar collateral ligament injuries documents some degree of osteoarthritis in 88% of evaluated patients at a mean 24.5 years after repair of injuries greater than six weeks old, with increased age at injury and higher DASH scores correlating with increased radiographic grades, the Daley 2020 review characterizes chronic collateral ligament injuries of the thumb MCP joint as a distinct management entity, and the Fairhurst 2002 series documents ongoing MCP joint pain in two of 22 reconstructed gamekeeper's thumbs; the literature documents post-traumatic degeneration at the chronically injured joint without establishing that a gamekeeper's thumb caused an individual's osteoarthritis.",
+        "causationStatus": "The mapping does not assert that gamekeeper's thumb caused an individual's osteoarthritis: the 88% figure derives from a 12-patient long-term subset of surgically treated chronic injuries with selection and survivorship bias, no natural-history cohort follows untreated chronic UCL insufficiency to incident radiographic osteoarthritis, primary first carpometacarpal (basal) thumb osteoarthritis is far more common and occurs at a different joint, prior MCP fracture or dislocation and inflammatory or crystal arthropathy independently produce MCP degeneration, and degeneration may predate or accompany the ligament injury; individual claims require documented chronic UCL injury predating documented osteoarthritis at the injured MCP joint with alternative joint and inflammatory causes excluded."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "BIOMECHANICAL_ALTERATION",
+        "primaryVector": "A hypothesized chronic-instability contact-stress pathway: an incompletely healed or reconstructed ulnar collateral ligament leaves the thumb metacarpophalangeal joint with persistent valgus laxity, so pinch and grip load drives the proximal phalanx into excessive valgus and lateral translation with each grasp cycle; the altered joint kinematics redistribute contact stress onto the ulnar and dorsal cartilage surfaces, producing cumulative microtrauma, cartilage matrix breakdown, and subchondral remodeling that conventional radiographs capture as post-traumatic osteoarthritis - the same instability-to-degeneration logic the acl-injury and ankle-strain osteoarthritis edges carry - while the pathway remains a hypothesis about an individual's course because no cohort quantifies progression from chronic UCL insufficiency to incident osteoarthritis.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "Following the acl-injury and ankle-strain osteoarthritis precedents, the edge asserts an association only: the outcome evidence is a 12-patient long-term radiographic subset of surgically treated chronic injuries plus narrative reviews and a 22-thumb reconstruction series, no untreated natural-history cohort quantifies progression, the operated cohort is selected for symptomatic chronic instability, and primary basal-thumb osteoarthritis, prior fracture, and inflammatory arthropathy independently produce thumb-joint degeneration; no probability estimate is asserted.",
+        "evidenceGaps": "Documented chronic thumb UCL injury (valgus stress testing, radiocarpal/MCP ultrasound or MRI) with injury date; osteoarthritis documented at the same MCP joint (radiographic joint-space narrowing, osteophytes, subchondral changes) with onset chronology after the ligament injury; exclusion of primary first carpometacarpal basal-thumb osteoarthritis, prior MCP fracture or dislocation, inflammatory or crystal arthropathy, and ligament reconstruction complications; hand-surgery or orthopedic assessment of the individual relationship",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Primary first carpometacarpal (basal) thumb osteoarthritis at a different joint",
+          "Prior metacarpophalangeal fracture or dislocation",
+          "Rheumatoid, psoriatic, or crystal arthropathy of the MCP joint",
+          "Concomitant acute skier's-thumb injury or Stener lesion with its own course",
+          "Age-related degeneration unrelated to the ligament injury"
+        ]
+      },
+      "evidenceGaps": [
+        "Documented chronic thumb UCL injury (valgus stress testing, radiocarpal/MCP ultrasound or MRI) with injury date; osteoarthritis documented at the same MCP joint (radiographic joint-space narrowing, osteophytes, subchondral changes) with onset chronology after the ligament injury; exclusion of primary first carpometacarpal basal-thumb osteoarthritis, prior MCP fracture or dislocation, inflammatory or crystal arthropathy, and ligament reconstruction complications; hand-surgery or orthopedic assessment of the individual relationship"
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY following the post-traumatic osteoarthritis precedents for ligament and strain injuries: long-term radiographic follow-up documents degeneration at the chronically injured MCP joint while selection bias, absent natural-history data, and the far more common primary basal-thumb alternative defeat individual causal attribution, so the mapping asserts the association with joint-level, chronology, and alternative-cause requirements.",
+      "sourceReferences": [
+        {
+          "citation": "Christensen T, Sarfani S, Shin AY, et al. Long-Term Outcomes of Primary Repair of Chronic Thumb Ulnar Collateral Ligament Injuries. Hand (N Y). 2016;11(3):303-309. PMID 27698632.",
+          "note": "Follow-up of at least 15 years (mean 24.5 years) after repair of chronic thumb UCL injuries documenting some degree of osteoarthritis in 88% of evaluated patients with radiographic grade correlations - the post-traumatic osteoarthritis anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/27698632/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 27698632; 88% osteoarthritis at mean 24.5 years after chronic UCL repair"
+        },
+        {
+          "citation": "Daley D, Geary M, Gaston RG, et al. Thumb Metacarpophalangeal Ulnar and Radial Collateral Ligament Injuries. Clin Sports Med. 2020;39(2):443-455. PMID 32115093.",
+          "note": "Review of thumb MCP collateral ligament injuries distinguishing acute from chronic injury management and documenting chronic collateral ligament insufficiency as a distinct entity - the chronicity and identity anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/32115093/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 32115093; chronic thumb MCP collateral ligament injuries reviewed"
+        },
+        {
+          "citation": "Fairhurst M, Hansen L. Treatment of \"Gamekeeper's Thumb\" by reconstruction of the ulnar collateral ligament. J Hand Surg Br. 2002;27(6):542-545. PMID 12475512.",
+          "note": "Series of 22 thumbs with symptomatic chronic UCL laxity (one week to ten years after injury) treated by reconstruction with functional stability regained and two thumbs having ongoing MCP joint pain - the chronic-gamekeeper's-identity and persistent-symptom anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/12475512/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 12475512; chronic gamekeeper's thumb reconstruction with ongoing MCP pain"
+        }
+      ]
+    }
+  ]
 }

@@ -2,8 +2,69 @@
   "id": "hip-disarticulation",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review biomechanical, post-injury, orthopedic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 45 (2026-09-24): one ASSOCIATION_ONLY draft mapping pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: the single authored edge asserts association only (etiologicalConsensus NOT_ESTABLISHED, hypothesizedOnly:true) - it records that hip disarticulation is followed by phantom limb pain in clinical series and reports, not that the amputation caused phantom pain in any individual; individual claims require documentation of the amputation level and date, validated phantom-pain characterization with chronology, and separation from residual-limb, stump, neuroma, pre-amputation, and other pain sources.",
+    "Family/duplicate-scope guard: the phantom-limb-pain identity already receives the member amputation (arm, foot, hand, leg) and ankle-, elbow-, and hemipelvectomy-level windows, and this batch adds the hip-disarticulation-level window on its own primary; the sibling disarticulation identities (knee-disarticulation, shoulder-disarticulation, wrist-disarticulation) keep their own unbacklogged windows and are not pre-empted, while the generic post-amputation mood window is owned by amputation-or-loss-of-use (duplicate-scope guard), so this edge is limited to phantom limb pain."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 45 (2026-09-24): one bounded association edge authored - hip disarticulation to phantom limb pain (rank 1), ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true, and mechanismCategory NEUROLOGICAL_DEGENERATION (post-amputation deafferentation pain), matching the existing amputation-level phantom-limb-pain family. The proposition rests on the Kelle 2017 cross-sectional study of 101 lower-limb amputees stratified by amputation level, which reports the highest early-postoperative phantom-limb-pain visual-analogue scores in the most proximal group (hip disarticulation through knee disarticulation), and on the Steritz 2024 case report of refractory phantom limb pain coexisting with sacroiliac pain in a hip disarticulation patient. The edge is not raised to causation: the located evidence is cross-sectional or case-level without prospective hip-disarticulation-specific incidence data, phantom-limb-pain intensity differences between levels attenuated by six months in the stratified cohort, and pre-amputation pain, stump and residual-limb sources, and perineural factors can independently produce the reported pain, so no probability estimate is asserted.",
+    "Negative screens recorded 2026-09-24: (i) no depressive-disorder edge - the generic post-amputation mood window is owned by the published amputation-or-loss-of-use container and no hip-disarticulation-specific directional data were located (duplicate-scope guard); (ii) no unexplained-chronic-pain edge - no condition-specific hip-disarticulation quantification beyond the phantom-pain literature was located, and the amputation family authors the phantom window rather than a generic pain window (zero-record and family-consistency guards); (iii) no osteoarthritis or contralateral-joint edge - no condition-specific directional cohort was located, and the Ebrahimzadeh 2013 long-term hip-disarticulation and transpelvic series reported stump pain rather than contralateral-joint degeneration and is retained as screened background (zero-record guard); (iv) no shunt or infection edge - those identities are absent from the catalog (wrong-target guard); (v) no mobility, gait, or prosthetic-fit edge - no such catalog identities exist (wrong-target guard); (vi) duplicate-scope note: this batch adds the first hip-disarticulation-primary window to the registry, and hemipelvectomy, which overlaps the proximal hindquarter region, keeps its own separately authored window."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "phantom-limb-pain",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Clinical reports document phantom limb pain after hip disarticulation: the Kelle 2017 study stratified 101 lower-limb amputees by level and found that the most proximal group (hip disarticulation through knee disarticulation) had the highest phantom-limb-pain visual-analogue scores in the early postoperative period, and the Steritz 2024 case report describes refractory phantom limb pain in a hip disarticulation patient - a reproducible amputation-level association rather than an individual causal nexus.",
+        "causationStatus": "Neither causation nor aggravation is established: the located evidence is cross-sectional or case-level without prospective hip-disarticulation-specific incidence data, the reported level-related intensity differences attenuated over time, and pre-amputation pain, residual-limb and stump pathology, and perineural factors can independently produce the reported pain, so an individual determination requires documentation of the amputation level and date, validated phantom-pain characterization with chronology, and separation from competing pain sources."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "NEUROLOGICAL_DEGENERATION",
+        "primaryVector": "A hypothesized deafferentation route is described: transection of the sciatic and femoral nerve supply during hip disarticulation removes afferent input and provokes maladaptive central and peripheral reorganization, with ectopic discharges from severed nerve endings and dorsal-root and cortical somatosensory reorganization generating the perception of pain in the absent limb, a proximal-level pattern consistent with the level-stratified phantom-limb-pain findings and the refractory phantom-limb presentation described in the located case report; the cross-sectional design and the presence of competing pain generators leave individual attribution hypothesized.",
+        "secondaryVector": "Pre-amputation pain, stump and residual-limb pathology, and perineural scarring or neuroma formation can amplify or mimic phantom pain in the same patients, and coexisting mechanical pain such as sacroiliac dysfunction may complicate the clinical picture.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The edge asserts an association only: the located evidence is a level-stratified cross-sectional cohort and a single case report documenting phantom limb pain after hip disarticulation without prospective incidence data, the level-related intensity difference attenuated over time, and competing pain sources are common in this population; an individual claim therefore requires amputation documentation, validated phantom-pain characterization, chronology, and separation from residual-limb and other pain sources, so no at-least-as-likely-as-not probability is asserted.",
+        "evidenceGaps": "Documentation of the hip disarticulation (indication, level, date, operative record); validated characterization of phantom limb pain (onset, quality, frequency, intensity) with chronology relative to the amputation; assessment of pre-amputation pain and of stump, residual-limb, and neuroma pathology; evaluation for coexisting mechanical or neuropathic pain sources; record of prosthetic use, desensitization, or pain-directed treatment and response; orthopedic, pain, or rehabilitation assessment of whether the amputation materially contributed to the individual pain",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Residual-limb or stump pain including neuroma",
+          "Pre-amputation pain and central sensitization",
+          "Sacroiliac or other regional mechanical pain",
+          "Nerve-injury pain at the operative site",
+          "Non-amputation-related neuropathic or musculoskeletal pain"
+        ]
+      },
+      "evidenceGaps": [
+        "Documentation of the hip disarticulation (indication, level, date, operative record); validated characterization of phantom limb pain (onset, quality, frequency, intensity) with chronology relative to the amputation; assessment of pre-amputation pain and of stump, residual-limb, and neuroma pathology; evaluation for coexisting mechanical or neuropathic pain sources; record of prosthetic use, desensitization, or pain-directed treatment and response; orthopedic, pain, or rehabilitation assessment of whether the amputation materially contributed to the individual pain"
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY: a level-stratified cohort of 101 lower-limb amputees and a case report document phantom limb pain after hip disarticulation, with the most proximal amputation group reporting the highest early phantom-pain intensity, establishing a reproducible amputation-level association; the edge is not raised to causation because the evidence is cross-sectional or case-level without prospective incidence data and competing pain sources are common, so the consensus remains NOT_ESTABLISHED with amputation, phantom-pain-characterization, chronology, and competing-source requirements; no probability estimate is asserted.",
+      "sourceReferences": [
+        {
+          "citation": "Kelle B, Kozanoğlu E, Biçer ÖS, Tan İ. Association between phantom limb complex and the level of amputation in lower limb amputee. Acta Orthop Traumatol Turc. 2017 Mar;51(2):142-145. doi:10.1016/j.aott.2017.02.007. PMID 28242264.",
+          "note": "Already human-verified source (approve-as-implemented, 2026-09-04) reused from the ankle-disarticulation phantom-limb-pain edge and carried verified:true per the elbow-disarticulation and hemipelvectomy family precedent; cross-sectional study of 101 lower-limb amputees stratified by amputation level reporting that the most proximal group (hip disarticulation through knee disarticulation) had the highest early-postoperative phantom-limb-pain visual-analogue scores - the level-gradient anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/28242264/",
+          "verified": true,
+          "sourceCheckedOn": "2026-09-24",
+          "sourceLocator": "PMID 28242264; phantom limb complex by amputation level, hip-disarticulation-to-knee-disarticulation group with highest early phantom-limb-pain intensity"
+        },
+        {
+          "citation": "Steritz M, Jayaraj Ranjini N, Bazil T, et al. A Case Report of Successful Off-Label Neuromodulation for Concurrent Refractory Sacroiliac Pain and Phantom Limb in a Hip Disarticulation Patient. A A Pract. 2024 Oct 8;18(10):e01850. doi:10.1213/XAA.0000000000001850. PMID 39670650.",
+          "note": "Case report of a hip disarticulation patient with refractory phantom limb pain coexisting with sacroiliac mechanical pain - the case-level anchor recording phantom limb pain after hip disarticulation and its clinical salience.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39670650/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-24",
+          "sourceLocator": "PMID 39670650; refractory phantom limb pain in a hip disarticulation patient"
+        }
+      ]
+    }
+  ]
 }

@@ -2,8 +2,70 @@
   "id": "hemipelvectomy",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review biomechanical, post-injury, orthopedic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 43 (2026-09-24): one ASSOCIATION_ONLY draft mapping pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: the single authored edge asserts association only (etiologicalConsensus NOT_ESTABLISHED, hypothesizedOnly:true) - it records that phantom pain is a frequent and clinically salient post-amputation phenomenon, documented in a hemipelvectomy/hindquarter series and in a nationwide amputee survey, not that hemipelvectomy caused phantom pain in any individual; individual claims require documented amputation level and date, validated phantom-pain characterization with chronology, and separation of phantom pain from residual-limb pain, neuroma pain, and other pain generators.",
+    "Family-scope guard: phantom-limb-pain is owned per-site by the limb-loss identities (six existing site-specific edges), and hemipelvectomy is the most proximal lower-limb hindquarter loss identity, so this edge follows the established per-site pattern rather than duplicating the published amputation-or-loss-of-use container, which owns the generic amputation-to-depression window."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 43 (2026-09-24): one bounded association edge authored - hemipelvectomy to phantom-limb-pain (rank 1), ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true, and mechanismCategory NEUROLOGICAL_DEGENERATION mirroring the existing per-site limb-loss edges. The proposition rests on the Grimer 2013 hindquarter-amputation series of 157 procedures, which reports that phantom pain was a significant problem in that population and documents the amputation-level and oncologic context, supported by the Diers 2022 nationwide survey of 3,374 unilateral limb amputees as the family-level prevalence and phenomenology anchor. The edge is not raised to causation: the located evidence documents high post-amputation prevalence and clinical salience without prospectively quantifying incident phantom pain attributable to hemipelvectomy specifically, the primary population is oncologic, and phantom phenomena overlap with residual-limb and neuroma pain, so no probability estimate is asserted.",
+    "Amputation-family screen recorded 2026-09-24: (i) no depressive-disorder edge - the published amputation-or-loss-of-use container identity already owns the generic amputation-to-depression window (Mckechnie 2014 systematic review of anxiety and depression after traumatic limb amputation), and no hemipelvectomy-specific depressive-disorder prevalence or direction data were located; the Werenski 2026 cohort on patient perspectives, recovery, and satisfaction after hemipelvectomy for pelvic tumors reports functional, psychosocial, and care-burden outcomes rather than depressive-disorder incidence or direction, so it was screened and not cited as a depressive-disorder source (population and zero-record guards); (ii) no unexplained-chronic-pain edge - post-amputation pain is phenotype-explained by the amputation and its phantom and residual-limb mechanisms, and the unexplained-chronic-pain window requires delay and quantification evidence absent here (constitutive and zero-record guards); (iii) no lymphedema edge - lymphedema is a master-resolution target-only-draft identity whose zero-suggestion invariant must be preserved (target-integrity guard); (iv) no heterotopic-ossification, wound-infection, prosthetic-complication, or rehabilitation-limitation edge - no condition-specific directional data were located for this primary (zero-record guard); (v) sibling scope - hip-disarticulation, knee-disarticulation, amputation-of-thumb-fingers-toes, shoulder-disarticulation, and wrist-disarticulation remain unbacklogged sibling identities with their own site windows that this edge does not pre-empt (duplicate-scope guard).",
+    "Source-reuse note recorded 2026-09-24: PMID 34583023 already anchors five existing per-site phantom-limb-pain edges in the registry as a human-verified (verified:true, active) source; it is reused here as the family-level prevalence anchor and is therefore carried verified:true in this draft edge, matching the elbow-disarticulation family precedent, while the hemipelvectomy-specific proposition rests on the Grimer hindquarter series (verified:false, pending human review) rather than on the reused survey alone. Deduplication is handled by the registry lockstep: the reuse adds one live use to the existing source entity without adding a new source."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "phantom-limb-pain",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The Grimer 2013 series of 157 hindquarter amputations reports that phantom pain was a significant problem in that population, and the Diers 2022 nationwide survey of 3,374 unilateral limb amputees characterizes phantom limb pain prevalence and phenomenology across amputation levels - a reproducible post-amputation association that is not an individual causal nexus.",
+        "causationStatus": "Neither causation nor aggravation is established: the located evidence documents high post-amputation prevalence and clinical salience without prospectively quantifying incident phantom pain attributable to hemipelvectomy specifically, the primary hemipelvectomy population is oncologic, and phantom sensation overlaps with residual-limb pain, neuroma pain, and pre-amputation pain, so an individual determination requires documented amputation level and date, validated phantom-pain characterization with chronology, and competing-generator review."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "NEUROLOGICAL_DEGENERATION",
+        "primaryVector": "Peripheral nerve transection at the hindquarter level with subsequent maladaptive dorsal-horn and cortical sensorimotor reorganization is hypothesized to generate phantom sensation and phantom pain in the absent limb; the located evidence documents that phantom pain is a frequent and clinically significant problem after hindquarter amputation and characterizes its prevalence across amputation levels, while the individual pathway must be established from pain characterization, amputation records, and specialist evaluation.",
+        "secondaryVector": "Pre-amputation pain intensity, residual-limb and neuroma pathology, and prosthetic or rehabilitation factors may modify the individual pain course and must be separated from the phantom-pain proposition.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The edge asserts an association only: a hemipelvectomy/hindquarter series reports phantom pain as a significant problem in that population and a nationwide amputee survey characterizes phantom-limb-pain prevalence across levels, but population prevalence and series reporting do not establish an individual medical nexus without documentation of the amputation and the phantom-pain syndrome, compatible chronology, and competing-cause review, so no at-least-as-likely-as-not probability is asserted.",
+        "evidenceGaps": "Independent documentation of the hemipelvectomy or hindquarter amputation (level, cause, date); documented phantom limb pain by validated assessment with onset chronology after the amputation; distinction of phantom pain from residual-limb pain, neuroma pain, and pre-amputation pain; assessment of pre-amputation pain, oncologic treatment history, and prosthetic or rehabilitation factors; specialist assessment distinguishing phantom pain from other post-amputation pain generators",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Residual-limb or stump pain",
+          "Neuroma-related pain",
+          "Pre-amputation pain persistence",
+          "Neuropathic pain from tumor involvement or oncologic treatment",
+          "Musculoskeletal or prosthetic-fit pain of the remaining pelvis and spine"
+        ]
+      },
+      "evidenceGaps": [
+        "Independent documentation of the hemipelvectomy or hindquarter amputation (level, cause, date); documented phantom limb pain by validated assessment with onset chronology after the amputation; distinction of phantom pain from residual-limb pain, neuroma pain, and pre-amputation pain; assessment of pre-amputation pain, oncologic treatment history, and prosthetic or rehabilitation factors; specialist assessment distinguishing phantom pain from other post-amputation pain generators"
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY: a hindquarter-amputation series documents phantom pain as a significant problem in that population and a nationwide amputee survey characterizes phantom-limb-pain prevalence across levels, but no prospective design quantifies incident hemipelvectomy-attributable phantom pain and the population is oncologic, so the consensus remains NOT_ESTABLISHED with amputation-documentation, chronology, and competing-generator requirements; no probability estimate is asserted.",
+      "sourceReferences": [
+        {
+          "citation": "Grimer RJ, Chandrasekar CR, Carter SR, Abudu A, Tillman RM, Jeys L. Hindquarter amputation: is it still needed and what are the outcomes? Bone Joint J. 2013 Jan;95-B(1):127-31. doi:10.1302/0301-620X.95B1.29131. PMID 23307686.",
+          "note": "Series of 157 hindquarter amputations over 30 years at a single institution reporting that phantom pain was a significant problem and documenting the amputation-level, oncologic, and functional context - the hemipelvectomy-specific anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/23307686/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-24",
+          "sourceLocator": "PMID 23307686; 157 hindquarter amputations, phantom pain a significant problem"
+        },
+        {
+          "citation": "Diers M, Krumm B, Fuchs X, Bekrater-Bodmann R, Milde C, Trojan J, Foell J, Becker S, Rumenapf G, Flor H. The Prevalence and Characteristics of Phantom Limb Pain and Non-Painful Phantom Phenomena in a Nationwide Survey of 3,374 Unilateral Limb Amputees. J Pain. 2022 Mar;23(3):411-423. doi:10.1016/j.jpain.2021.09.003. PMID 34583023.",
+          "note": "Nationwide survey characterizing phantom limb pain prevalence and phenomenology in 3,374 unilateral limb amputees, reused as the family-level prevalence anchor for the per-site limb-loss window - it supports a bounded post-amputation association, not individual causation.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34583023/",
+          "verified": true,
+          "sourceCheckedOn": "2026-09-24",
+          "sourceLocator": "PMID 34583023; nationwide amputee survey, phantom limb pain prevalence and phenomenology"
+        }
+      ]
+    }
+  ]
 }

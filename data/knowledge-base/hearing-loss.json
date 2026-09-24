@@ -2,8 +2,124 @@
   "id": "hearing-loss",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review otologic, vestibular, audiologic, visual, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 43 (2026-09-24): two ASSOCIATION_ONLY draft mappings pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: both edges assert association only (etiologicalConsensus NOT_ESTABLISHED, hypothesizedOnly:true) - they record that audiometrically documented hearing loss co-occurs with cognitive impairment/dementia and with depression far more often than expected in pooled observational cohorts, not that hearing loss caused either outcome in any individual; a shared aging, cerebrovascular, and neurodegenerative substrate is a sufficient common cause of both sides, the located moderator and mediator analyses leave the mediating route unresolved, and no randomized evidence shows that hearing intervention prevents incident cognitive decline or incident depressive disorder; individual claims require audiometric documentation of the hearing loss (type, laterality, severity, date), a separately documented target diagnosis with later chronology, competing-cause review, and - for cognitive claims - exclusion of primary neurodegenerative disease.",
+    "Duplicate-scope guard: noise-induced-hearing-loss and conductive-hearing-loss are separate catalog identities owning the noise-exposure and middle-ear-mechanism windows, and conductive-hearing-loss already holds the hearing-deficit-to-tinnitus edge from this family; ototoxic-medication pathways run from the medication and oncologic-exposure side INTO hearing loss (this identity already receives otitis-media, meningitis, granulomatosis-with-polyangiitis, and acoustic-neuroma edges, and the head-and-neck-cancers scope note previews platinum and radiation ototoxicity as a class-level incoming target), so no ototoxic edge is authored from this side and the direction-inversion guard applies."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 43 (2026-09-24): two bounded association edges authored - hearing-loss to cognitive-disorder (rank 1) and hearing-loss to depressive-disorder (rank 2), both ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, and hypothesizedOnly:true. The cognitive edge rests on the Loughrey 2018 systematic review and meta-analysis of prospective cohort studies documenting pooled associations between age-related hearing loss and cognitive impairment and dementia, paired with the Zhang 2025 systematic review and meta-analysis of moderators and mediators documenting that the association persists across analyzed moderators while the mediating pathway remains unresolved - the association-robust-but-mechanism-unresolved anchor; the depression edge rests on the Li F 2025 systematic review and meta-analysis of age-related hearing loss and depression, a pooled observational association without directional or interventional resolution - the pooled-prevalence anchor - paired with the Li J 2026 systematic review and meta-analysis of 19 studies documenting that social activity mediates and moderates part of the hearing-loss and mental-health relationship across depressive-symptom and cognitive outcomes - the social-mediation anchor. Neither edge is raised to causation: no randomized trial shows that hearing intervention prevents incident cognitive decline or incident depressive disorder, the pooled designs cannot orient the arrow in either window (depression and cognitive impairment may precede, accompany, or follow hearing loss), and a shared aging, cerebrovascular, and neurodegenerative substrate can independently produce both sides (shared-driver guard), so no probability estimate is asserted.",
+    "Negative screens recorded 2026-09-24: (i) no tinnitus edge - conductive-hearing-loss already owns the hearing-deficit-to-tinnitus window (recorded sibling edge with three source references) and cochlear damage commonly produces hearing loss and tinnitus in parallel from one lesion (duplicate-scope and shared-driver guards); reopen only with directional evidence separating hearing-loss-primary from tinnitus-primary attribution; (ii) no vestibular-disorder, vertigo, or menieres-disease edge - no condition-specific directional evidence was located, and combined cochleo-vestibular presentations are typically one shared end-organ process rather than one identity causing the other (shared-driver guard); (iii) no ototoxic or medication edge - ototoxicity is authored from the medication or oncologic-exposure side (this identity is the target of that window per the head-and-neck-cancers scope preview and the otitis-media and acoustic-neuroma competing-cause notes), so an ototoxic edge from hearing loss would invert direction (direction-inversion guard); (iv) no social-isolation, falls, or cognitive-fatigue edge - no catalog identity exists for social isolation or falls (wrong-target guard) and no condition-specific direction evidence was located for the remaining windows (zero-record guard); (v) no acoustic-neuroma, meningitis, otitis-media, or granulomatosis-with-polyangiitis edge from this side - those are incoming primaries whose own windows hold the direction of evidence (duplicate-scope and direction guards); (vi) duplicate-scope note: this batch adds hearing loss's first outgoing edges while noise-induced-hearing-loss and conductive-hearing-loss keep their own unbacklogged windows."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "cognitive-disorder",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The Loughrey 2018 systematic review and meta-analysis of prospective cohort studies documents that age-related hearing loss is associated with cognitive impairment and dementia, and the Zhang 2025 systematic review and meta-analysis of moderators and mediators documents that the association persists across analyzed moderators while the mediating mechanism remains unresolved - a reproducible pooled longitudinal and cross-sectional association that is not etiologically oriented.",
+        "causationStatus": "Neither causation nor aggravation is established: the located evidence is observational with residual confounding by age, education, vascular risk, and shared neurodegenerative burden, the direction and mediation remain unresolved in the moderator and mediator analyses, and no randomized intervention demonstrates that hearing amplification prevents incident cognitive decline, so an individual claim requires audiometric documentation of the hearing loss, a separately documented cognitive diagnosis with later chronology, and exclusion of primary neurodegenerative and vascular disease."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MULTIFACTORIAL",
+        "primaryVector": "A hypothesized convergence of routes is described: degraded auditory input and effortful listening reallocate cognitive resources and reduce cortical stimulation, communication difficulty and social withdrawal reduce cognitive and social engagement, and a shared aging, cerebrovascular, and neurodegenerative substrate may independently produce both hearing loss and cognitive decline - documented as the reproducible pooled association, the unresolved mediator analyses, and the persistence of the association across moderators - while no design or intervention establishes which route, if any, causes an individual's cognitive decline.",
+        "secondaryVector": "Depression and social-isolation mediation may carry part of the association, and subgroup analyses of amplification use have not resolved whether restoring hearing input modifies the cognitive trajectory at the individual level.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The edge asserts an association only: the located evidence is one meta-analysis of prospective cohort associations and one meta-analysis of moderators and mediators showing the association is robust but mechanistically unresolved, with no randomized or quasi-experimental demonstration that hearing intervention prevents incident cognitive decline; shared age, vascular, and neurodegenerative causes can independently produce both hearing loss and cognitive impairment (shared-driver guard), and the pooled designs cannot orient the arrow, so no at-least-as-likely-as-not probability is asserted.",
+        "evidenceGaps": "Audiometric documentation of the hearing loss (type, laterality, severity, date of onset); separately documented cognitive impairment or dementia by validated assessment with onset chronology after the hearing loss; longitudinal cognitive trajectory and, where available, neuroimaging or specialist assessment distinguishing primary neurodegenerative disease; characterization of vascular risk factors (hypertension, diabetes, smoking, stroke or transient ischemic attack history); assessment of depression, social engagement, amplification use, and medication or sleep contributions; otolaryngology and neurology or neuropsychology assessment of the individual relationship; exclusion of competing causes of cognitive decline",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Primary neurodegenerative dementia (Alzheimer disease, Lewy body, frontotemporal)",
+          "Cerebrovascular disease and vascular cognitive impairment",
+          "Depression, delirium, or medication effects presenting as cognitive complaints",
+          "Metabolic, thyroid, vitamin B12, or sleep-disorder contributions",
+          "Shared age-related cognitive slowing without a dementia diagnosis"
+        ]
+      },
+      "evidenceGaps": [
+        "Audiometric documentation of the hearing loss (type, laterality, severity, date of onset); separately documented cognitive impairment or dementia by validated assessment with onset chronology after the hearing loss; longitudinal cognitive trajectory and, where available, neuroimaging or specialist assessment distinguishing primary neurodegenerative disease; characterization of vascular risk factors (hypertension, diabetes, smoking, stroke or transient ischemic attack history); assessment of depression, social engagement, amplification use, and medication or sleep contributions; otolaryngology and neurology or neuropsychology assessment of the individual relationship; exclusion of competing causes of cognitive decline"
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY: two meta-analyses (prospective cohort association; moderators and mediators) document a reproducible hearing-loss and cognitive-impairment or dementia association while the mediating pathway stays unresolved, no intervention evidence establishes prevention, and shared aging, vascular, and neurodegenerative causes independently produce both sides, so the consensus remains NOT_ESTABLISHED with audiometric, chronological, and exclusion requirements; no probability estimate is asserted.",
+      "sourceReferences": [
+        {
+          "citation": "Loughrey DG, Kelly ME, Kelley GA, Brennan S, Lawlor BA. Association of Age-Related Hearing Loss With Cognitive Function, Cognitive Impairment, and Dementia: A Systematic Review and Meta-analysis. JAMA Otolaryngol Head Neck Surg. 2018 Feb 1;144(2):115-126. doi:10.1001/jamaoto.2017.2513. PMID 29222544.",
+          "note": "Systematic review and meta-analysis of prospective cohort studies documenting pooled associations between age-related hearing loss and cognitive impairment and dementia, with heterogeneity and confounding discussed - the pooled longitudinal association anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/29222544/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-24",
+          "sourceLocator": "PMID 29222544; meta-analysis of prospective cohorts, age-related hearing loss vs cognitive impairment and dementia"
+        },
+        {
+          "citation": "Zhang Z, Wang T, Cao H, Yang L, Chen X, Han Y. How to Break Stubborn Association Between Hearing Loss and Cognitive Impairment: A Systematic Review and Meta-Analysis of Moderators and Mediators. J Geriatr Psychiatry Neurol. 2025 Sep;38(5):339-352. doi:10.1177/08919887251328880. PMID 40103444.",
+          "note": "Systematic review and meta-analysis of moderators and mediators documenting that the hearing-loss and cognitive-impairment association persists across analyzed moderators while candidate mediating pathways remain unresolved - the association-robustness-but-mechanism-unresolved anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40103444/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-24",
+          "sourceLocator": "PMID 40103444; moderator and mediator meta-analysis, unresolved mediation pathway"
+        }
+      ]
+    },
+    {
+      "conditionId": "depressive-disorder",
+      "rank": 2,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The Li 2025 systematic review and meta-analysis of age-related hearing loss and depression reports a pooled observational association between hearing loss and depression in older adults, and the Li J 2026 systematic review and meta-analysis of 19 studies (11 longitudinal, 8 cross-sectional) examining social activity in the hearing-loss and mental-health relationship reports a significant mediating and moderating role for social activity across depressive-symptom and cognitive-function outcomes - pooled observational associations that do not establish direction, mechanism, or individual causation.",
+        "causationStatus": "Neither causation nor aggravation is established: the pooled evidence is observational and largely cross-sectional, the arrow is unoriented (depression can precede, accompany, or follow hearing loss and both can arise from a shared aging and chronic-illness substrate), and individual claims require audiometric documentation of the hearing loss, a separately documented depressive disorder with chronology, and competing-cause review."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "PSYCHOPHYSIOLOGICAL",
+        "primaryVector": "A hypothesized psychophysiological route is described: chronic communication difficulty and effortful listening increase listening-related fatigue and cognitive effort, promote social withdrawal and participation restriction, and reduce social support, producing or sustaining depressive symptoms - documented as the pooled observational association and the communication-burden literature - while the cross-sectional and unoriented designs leave the individual pathway hypothesized.",
+        "secondaryVector": "Social activity mediates and moderates part of the hearing-loss and mental-health relationship in pooled analyses (a small but significant mediating effect), and hearing-aid non-use and untreated hearing loss are reported correlates of higher depressive-symptom burden, but the associations remain confounded by shared aging, chronic illness, and social factors.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The edge asserts an association only: the located pooled meta-analysis documents an observational hearing-loss and depression association in older adults without direction or interventional resolution, much of the pooled evidence is cross-sectional, and a shared aging and chronic-illness substrate can independently produce both sides (shared-driver guard), so no at-least-as-likely-as-not probability is asserted.",
+        "evidenceGaps": "Audiometric documentation of the hearing loss (type, laterality, severity, date of onset); separately documented depressive disorder by validated diagnostic assessment with onset chronology relative to the hearing loss; assessment of social engagement, communication burden, and amplification use; screening for competing causes including chronic illness or pain, bereavement, socioeconomic stressors, medication effects, sleep disturbance, and substance use; psychiatric assessment distinguishing hearing-related mood burden from a primary mood disorder",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Primary major depressive disorder independent of hearing status",
+          "Chronic illness, pain, or disability burden",
+          "Bereavement, social isolation, or socioeconomic stressors",
+          "Medication-induced or substance-related mood symptoms",
+          "Sleep disturbance or other psychiatric comorbidity"
+        ]
+      },
+      "evidenceGaps": [
+        "Audiometric documentation of the hearing loss (type, laterality, severity, date of onset); separately documented depressive disorder by validated diagnostic assessment with onset chronology relative to the hearing loss; assessment of social engagement, communication burden, and amplification use; screening for competing causes including chronic illness or pain, bereavement, socioeconomic stressors, medication effects, sleep disturbance, and substance use; psychiatric assessment distinguishing hearing-related mood burden from a primary mood disorder"
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY: the located pooled meta-analyses (an age-related hearing-loss and depression association; social-activity mediation and moderation across 19 studies) document observational hearing-loss and depression links in older adults without direction or intervention resolution, a shared aging and chronic-illness substrate can independently produce both sides, and the pooled designs cannot orient the arrow, so the consensus remains NOT_ESTABLISHED with audiometric, chronological, and competing-cause requirements; no probability estimate is asserted.",
+      "sourceReferences": [
+        {
+          "citation": "Li F, Jin M, Ma T, Cui C. Association between age-related hearing loss and depression: A systematic review and meta-analysis. PLoS One. 2025 Jan 3;20(1):e0298495. doi:10.1371/journal.pone.0298495. PMID 39752630.",
+          "note": "Systematic review and meta-analysis reporting a pooled observational association between age-related hearing loss and depression without directional or interventional resolution - the pooled-prevalence association anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39752630/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-24",
+          "sourceLocator": "PMID 39752630; systematic review and meta-analysis, age-related hearing loss vs depression"
+        },
+        {
+          "citation": "Li J, Sun L, Zhao YY, Wang HT, Liu JE. What role does social activity play in the relationship between hearing loss and cognitive decline or mental health in older adults: A systematic review and meta-analysis. J Psychosom Res. 2026 Jan;200:112449. doi:10.1016/j.jpsychores.2025.112449. PMID 41275674.",
+          "note": "Systematic review and meta-analysis of 19 studies (11 longitudinal, 8 cross-sectional) covering cognitive function, depressive symptoms, and positive emotional outcomes, reporting a small but significant mediating and a significant moderating role for social activity in the hearing-loss and mental-health relationship - the social-mediation anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41275674/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-24",
+          "sourceLocator": "PMID 41275674; 19 studies, social activity mediates and moderates hearing-loss and mental-health outcomes"
+        }
+      ]
+    }
+  ]
 }

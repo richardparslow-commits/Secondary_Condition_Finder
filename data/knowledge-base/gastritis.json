@@ -2,7 +2,141 @@
   "id": "gastritis",
   "draft": true,
   "todo": [
-    "Rebuild secondary-condition suggestions using condition-specific clinical evidence before publication."
+    "D1 draft-authoring batch 36 (2026-09-23): one DIRECT_CAUSATION and one ASSOCIATION_ONLY draft pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: (i) the peptic-ulcer mapping asserts the gastritis-to-ulcer causal chain at PROBABLE strength under the esophagitis-to-stricture mucosal-injury precedent - documented gastritis with inflammatory defense failure and (in antral disease) acid hypersecretion progressing to endoscopically confirmed ulcer, with healing and recurrence-prevention documented under anti-Helicobacter eradication; individual claims require gastritis documented before ulcer, depth distinction (erosion versus ulcer), and exclusion of NSAID-only, stress, gastrinoma, and idiopathic ulcer etiologies. (ii) the anemia mapping asserts only a screening and meta-analytic association - iron-deficiency phenotype must be separately documented with iron studies, and shared-driver attribution through Helicobacter pylori infection (no catalog identity) requires gastritis documentation with exclusion of menstrual, renal, nutritional, inflammatory-bowel, and other bleeding sources."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 36 (2026-09-23): two bounded edges authored - DIRECT peptic-ulcer-disease: the Naito 2002 mechanisms review documents that Helicobacter pylori infection leads to chronic gastritis, peptic ulcer disease, and gastric neoplasia with outcomes determined by the severity and distribution of inflammation (antral-type gastritis associated with excessive acid secretion and high duodenal-ulcer risk), the Ford 2016 Cochrane review documents that 95% of duodenal and 70% of gastric ulcers are associated with Helicobacter pylori and that eradication reduces ulcer relapse, and the Tomtitchong 2012 meta-analysis documents one-year ulcer recurrence of 5.2% after eradication following simple closure of perforated duodenal ulcer; the inflammation-to-defense-failure-to-ulceration chain with eradication-response mirrors the esophagitis-to-stricture precedent, so PROBABLE with hypothesizedOnly:false, scoped to documented gastritis progressing to endoscopically confirmed ulcer. ASSOCIATION anemia: the Hudak 2017 updated systematic review and meta-analysis documents increased iron-deficiency anemia likelihood in infected individuals (pooled OR 1.72, 95% CI 1.23-2.42, 14 observational studies) with eradication-plus-iron compared against iron alone, the Zhang 2010 meta-analysis of eight randomized trials (800 participants) documents that eradication accelerated ferritin improvement (mean difference 7.74 microg/L), and the Qu 2010 meta-analysis documents pooled observational OR 2.22 with heterogeneous trial results.",
+    "Negative screens recorded 2026-09-23: (i) the gastric-cancer progression pathway is deliberately NOT authored here - the autoimmune-metaplastic-atrophic-gastritis identity already carries the atrophic-gastritis-to-stomach-cancer edge and the modern atrophic/Correa literature is that identity's pathway (wrong-identity and duplicate-scope guards); (ii) vitamin-B12-deficiency and pernicious-anemia outcomes belong to the autoimmune-atrophic identity and are not authored under this general gastritis identity; (iii) no longitudinal cohort orders gastritis onset before ulcer onset at the individual level - progression rests on distribution-mechanism and eradication-prevention evidence; (iv) the iron-deficiency association is explicitly recorded as controversial in the source literature (heterogeneity across comparisons), which is why the anemia edge stays at ASSOCIATION_ONLY with NOT_ESTABLISHED. Duplicate-scope note: the peptic-ulcer-disease target gains two incoming edges this batch (gastrinoma on the hormonal-hyperacidity pathway, gastritis on the inflammatory-defense-failure pathway) and already carries the anemia outgoing edge; the anemia target carries sixteen incoming edges including peptic-ulcer-disease (bleeding), inflammatory-bowel-disease, and blind-loop-syndrome - this edge adds the Helicobacter-gastritis-associated iron-restriction pathway with an independent meta-analytic evidence base. No Helicobacter pylori identity exists in the catalog, so attribution for both edges runs through the documented gastritis identity with per-case etiology exclusion."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "peptic-ulcer-disease",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "DIRECT_CAUSATION",
+        "etiologicalTrigger": "Documented gastritis (endoscopic or histologic mucosal inflammation, Helicobacter-associated or erosive) - inflammatory injury impairs the mucus-bicarbonate barrier and epithelial restitution, and in antral-predominant disease gastrin-driven acid hypersecretion raises luminal acid-pepsin injury, so the inflamed mucosa breaches beyond the muscularis mucosae into the submucosa as a gastric or duodenal peptic ulcer.",
+        "mechanismSummary": "Mucosal inflammation (infection-driven or erosive) degrades barrier defenses - mucus continuity, bicarbonate secretion, prostaglandin-mediated perfusion, and epithelial turnover - while antral-predominant inflammation shifts the gastrin-parietal axis toward excessive acid secretion; acid-pepsin attack on the defense-depleted mucosa deepens erosive injury into submucosal ulceration, and eradication of the inflammatory driver heals ulcers and reduces relapse (Cochrane-level evidence), the treatment-response pattern that grounds the mucosal-injury DIRECT precedents."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "SYSTEMIC_INFLAMMATORY",
+        "primaryVector": "A mucosal defense-failure cascade: inflammatory infiltrate and cytokine signaling in gastritis damage surface epithelium and foveolar mucus cells, reduce bicarbonate delivery and mucosal blood-flow reserve, and - when inflammation concentrates in the antrum - disinhibit gastrin output so acid secretion rises against a thinned defense; the imbalance lets acid-pepsin digestion excavate the mucosa past erosion depth into submucosal ulceration with its bleeding and perforation risks, while removing the inflammatory driver (eradication therapy) restores defense and collapses relapse rates, documenting the graded causal chain prospectively in ulcer cohorts.",
+        "hypothesizedOnly": false
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "PROBABLE",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The chain is supported by distribution-mechanism evidence (antral gastritis with acid excess and duodenal-ulcer risk) plus Cochrane-level treatment-response (eradication reduces relapse; post-perforation recurrence 5.2% under eradication), which justifies PROBABLE direct causation like the esophagitis-to-stricture precedent; WELL_ESTABLISHED is withheld because progression affects a subset rather than every gastritis patient, NSAID, stress, gastrinoma, and idiopathic Helicobacter-negative ulcers are independent etiologies, and no individual-level cohort orders gastritis before ulcer onset; no probability estimate is asserted.",
+        "evidenceGaps": "Endoscopic or histologic documentation of gastritis with anatomic distribution (antral versus corpus) predating endoscopic documentation of gastric or duodenal ulcer; Helicobacter pylori testing (histology, urease, or stool antigen) with eradication treatment and confirmation where applicable; NSAID, antiplatelet, and corticosteroid exposure history; ulcer healing and recurrence documentation under eradication or antisecretory therapy; exclusion of stress-related mucosal disease, gastrinoma/Zollinger-Ellison hyperacidity, and idiopathic Helicobacter-negative ulcer; smoking and alcohol documentation; gastroenterology assessment of the individual relationship",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "NSAID or antiplatelet medication ulcer without gastritis background",
+          "Stress-related mucosal disease",
+          "Gastrinoma/Zollinger-Ellison hyperacidity (separate identity with its own edge)",
+          "Idiopathic Helicobacter-negative ulcer",
+          "Tobacco, alcohol, and other mucosal irritant exposures"
+        ]
+      },
+      "evidenceGaps": [
+        "Endoscopic or histologic documentation of gastritis with anatomic distribution (antral versus corpus) predating endoscopic documentation of gastric or duodenal ulcer; Helicobacter pylori testing (histology, urease, or stool antigen) with eradication treatment and confirmation where applicable; NSAID, antiplatelet, and corticosteroid exposure history; ulcer healing and recurrence documentation under eradication or antisecretory therapy; exclusion of stress-related mucosal disease, gastrinoma/Zollinger-Ellison hyperacidity, and idiopathic Helicobacter-negative ulcer; smoking and alcohol documentation; gastroenterology assessment of the individual relationship"
+      ],
+      "rationale": "Authored at DIRECT_CAUSATION, PROBABLE, hypothesizedOnly:false following the esophagitis-to-stricture mucosal-injury precedent: distribution-mechanism evidence and Cochrane-level eradication prevention document the inflammation-to-ulceration chain with treatment response, while subset progression, independent ulcer etiologies, and absent individual-level chronology keep the consensus at PROBABLE with per-case etiology exclusion required.",
+      "sourceReferences": [
+        {
+          "citation": "Naito Y, Yoshikawa T. Molecular and cellular mechanisms involved in Helicobacter pylori-induced inflammation and oxidative stress. Free Radic Biol Med. 2002;33(3):323-336. PMID 12126754.",
+          "note": "Mechanisms review documenting that Helicobacter pylori infection leads to chronic gastritis, peptic ulcer disease, and gastric neoplasia with outcomes determined by the severity and distribution of inflammation - antral-type gastritis with excessive acid secretion and high duodenal-ulcer risk - the mechanism and distribution anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/12126754/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 12126754; antral gastritis distribution with acid excess and duodenal-ulcer risk"
+        },
+        {
+          "citation": "Ford AC, Gurusamy KS, Delaney B, et al. Eradication therapy for peptic ulcer disease in Helicobacter pylori-positive people. Cochrane Database Syst Rev. 2016;4(4):CD003840. PMID 27092708.",
+          "note": "Cochrane review documenting that 95% of duodenal and 70% of gastric ulcers are associated with Helicobacter pylori and that eradication reduces ulcer relapse - the association-and-treatment-response anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/27092708/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 27092708;95% duodenal and 70% gastric ulcers Hp-associated, eradication reduces relapse"
+        },
+        {
+          "citation": "Tomtitchong P, Siribumrungwong B, Vilaichone RK, et al. Systematic review and meta-analysis: Helicobacter pylori eradication therapy after simple closure of perforated duodenal ulcer. Helicobacter. 2012;17(2):148-152. PMID 22404446.",
+          "note": "Systematic review and meta-analysis documenting pooled one-year ulcer recurrence of 5.2% after eradication therapy following simple closure of perforated duodenal ulcer versus higher recurrence without eradication - the recurrence-prevention anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/22404446/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 22404446; 5.2% one-year ulcer recurrence after eradication"
+        }
+      ]
+    },
+    {
+      "conditionId": "anemia",
+      "rank": 2,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The Hudak 2017 updated systematic review and meta-analysis documents that Helicobacter pylori-infected individuals show an increased likelihood of iron-deficiency anemia versus uninfected persons (pooled OR 1.72, 95% CI 1.23-2.42, across 14 observational studies) with eradication-plus-iron compared against iron alone, the Zhang 2010 meta-analysis of eight randomized trials involving 800 participants documents that eradication accelerated ferritin improvement in iron-deficient people (mean difference 7.74 microg/L), and the Qu 2010 meta-analysis documents a pooled observational OR of 2.22 with heterogeneous trial results; the literature documents a reproducible infection-associated iron-deficiency association with partial eradication response without establishing that gastritis produced an individual's anemia.",
+        "causationStatus": "The mapping does not assert that gastritis caused an individual's anemia: the underlying driver documented in the sources is Helicobacter pylori infection itself, for which no catalog identity exists, so attribution runs through the gastritis manifestation as the documented mucosal mediator (achlorhydric iron malabsorption, mucosal occult loss, and hepcidin-mediated iron restriction) while shared-driver attribution is guarded; the source literature itself records the relationship as controversial with heterogeneous comparisons, menstrual blood loss, chronic kidney disease, inflammatory bowel disease, other gastrointestinal bleeding (including peptic ulcer), nutritional deficiency, malignancy, and chronic-disease anemia independently produce iron-deficient or anemic states; individual claims require documented gastritis (with Helicobacter testing), iron-study-confirmed iron-deficiency phenotype (low ferritin with the anemia identity's scope), documented chronology, and exclusion of the independent etiologies."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "METABOLIC_OR_NUTRITIONAL",
+        "primaryVector": "A hypothesized iron-restriction pathway: chronic gastric mucosal inflammation reduces acid-dependent dietary-iron solubilization and divalent-metal transport absorption at the duodenum, sustains low-grade mucosal occult loss from inflamed epithelium, and (through infection-driven hepcidin modulation) restricts iron release from stores; the net negative iron balance depletes ferritin first and then hemoglobin, producing iron-deficiency anemia that partially reverses when the inflammatory driver is eradicated - documented at meta-analytic level in infected and eradicated populations while individual-level attribution through the gastritis identity remains an association hypothesis.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The edge asserts an association only: the evidence is pooled observational odds ratios with documented heterogeneity plus small eradication trials showing ferritin rather than uniformly hemoglobin improvement, the source literature itself records controversy, no cohort orders gastritis onset before incident iron-deficiency anemia with confounder control, the true shared driver (Helicobacter pylori) has no catalog identity, and the independent iron-deficiency etiologies are numerous in the same populations; no probability estimate is asserted.",
+        "evidenceGaps": "Documented gastritis (endoscopic, histologic, or urease-confirmed Helicobacter pylori) with chronology before documented iron deficiency; iron-study confirmation of the iron-deficiency phenotype (low ferritin, transferrin saturation, red-cell indices) within the anemia identity's scope; hemoglobin trajectory documented before and after eradication or iron therapy; exclusion of menstrual blood loss, chronic kidney disease, inflammatory bowel disease, peptic-ulcer or other gastrointestinal bleeding, nutritional deficiency, malignancy, hemoglobinopathy, and chronic-disease anemia; gastroenterology and hematology assessment of the individual relationship",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Menstrual blood loss or pregnancy-related iron demand",
+          "Chronic kidney disease with anemia of chronic disease or dialysis losses",
+          "Inflammatory bowel disease or other gastrointestinal blood loss",
+          "Nutritional iron deficiency without gastritis",
+          "Malignancy or hemoglobinopathy"
+        ]
+      },
+      "evidenceGaps": [
+        "Documented gastritis (endoscopic, histologic, or urease-confirmed Helicobacter pylori) with chronology before documented iron deficiency; iron-study confirmation of the iron-deficiency phenotype (low ferritin, transferrin saturation, red-cell indices) within the anemia identity's scope; hemoglobin trajectory documented before and after eradication or iron therapy; exclusion of menstrual blood loss, chronic kidney disease, inflammatory bowel disease, peptic-ulcer or other gastrointestinal bleeding, nutritional deficiency, malignancy, hemoglobinopathy, and chronic-disease anemia; gastroenterology and hematology assessment of the individual relationship"
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY: meta-analytic evidence documents a reproducible iron-deficiency association with partial eradication response while documented controversy, shared-driver attribution through a non-catalog infection identity, and numerous independent iron-deficiency etiologies defeat individual causal attribution, so the mapping asserts the association with iron-study, chronology, and alternative-etiology requirements.",
+      "sourceReferences": [
+        {
+          "citation": "Hudak L, Jaraisy A, Haj S, et al. An updated systematic review and meta-analysis on the association between Helicobacter pylori infection and iron deficiency anemia. Helicobacter. 2017;22(1). PMID 27411077.",
+          "note": "Updated systematic review and meta-analysis documenting increased iron-deficiency anemia likelihood in infected versus uninfected persons (pooled OR 1.72, 95% CI 1.23-2.42, 14 observational studies) plus eradication-plus-iron trial comparisons - the pooled-association anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/27411077/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 27411077; pooled OR 1.72 for IDA in infected individuals"
+        },
+        {
+          "citation": "Zhang ZF, Yang N, Zhao G, et al. Effect of Helicobacter pylori eradication on iron deficiency. Chin Med J (Engl). 2010;123(14):1924-1930. PMID 20819579.",
+          "note": "Meta-analysis of eight randomized trials involving 800 participants documenting that eradication accelerated ferritin improvement in iron-deficient people (mean difference 7.74 microg/L, 95% CI 4.61-10.88) - the randomized eradication-response anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/20819579/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 20819579; eight-trial meta-analysis ferritin improvement after eradication"
+        },
+        {
+          "citation": "Qu XH, Huang XL, Xiong P, et al. Does Helicobacter pylori infection play a role in iron deficiency anemia? A meta-analysis. World J Gastroenterol. 2010;16(7):886-896. PMID 20143469.",
+          "note": "Meta-analysis of 15 observational studies and five randomized trials documenting pooled observational OR 2.22 (95% CI 1.52-3.24) with heterogeneous trial comparisons - the association-with-heterogeneity anchor that grounds the conservative posture.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/20143469/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 20143469; pooled OR 2.22 with heterogeneous trial results"
+        }
+      ]
+    }
+  ]
 }

@@ -2,8 +2,70 @@
   "id": "hydrocephalus",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review neurologic, neuropathic, post-traumatic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 45 (2026-09-24): one ASSOCIATION_ONLY draft mapping pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: the single authored edge asserts association only (etiologicalConsensus NOT_ESTABLISHED, hypothesizedOnly:true) - it records that raised intracranial pressure in hydrocephalus is associated with papilledema and with ocular-motility and visual-outcome abnormalities in clinical series, not that hydrocephalus caused visual impairment in any individual; individual claims require neuroimaging and intracranial-pressure documentation, ophthalmologic assessment including optic-nerve findings, compatible chronology, and exclusion of primary ocular and optic-nerve disease.",
+    "Duplicate-scope guard: the visual-impairment identity already receives eight ocular and optic-nerve windows (glaucoma, cataracts, aphakia, retinal-dystrophy, corneal-scarring, chalazion, ptosis, pituitary-neoplasm), none of which is a raised-intracranial-pressure window, so this batch adds the papilledema/optic-nerve-compression window on its own primary; the sibling normal-pressure-hydrocephalus identity is a communicating form that does not characteristically raise pressure and keeps its own unbacklogged windows, so the generic raised-pressure visual pathway is authored here rather than pre-empting that subtype (duplicate-scope guard)."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 45 (2026-09-24): one bounded association edge authored - hydrocephalus to visual impairment (rank 1), ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true, and mechanismCategory MECHANICAL_OR_COMPRESSIVE (raised intracranial pressure with papilledema and optic-nerve compromise). The proposition rests on the Lee 2017 pediatric study of 46 children with hydrocephalus, which reports papilledema in 27 patients and a strong association with higher intracranial pressure, and on the AlObaisi 2022 record review of children with hydrocephalus and a ventriculoperitoneal shunt, which documents ocular-motility abnormalities and reduced visual outcomes in that population. The edge is not raised to causation: the located evidence is retrospective and single-center without prospective visual-outcome incidence data, papilledema was absent in a substantial minority of the raised-pressure children, and primary ocular and optic-nerve disease, refractive error, and prematurity-related factors can independently produce visual impairment, so no probability estimate is asserted.",
+    "Screen recorded 2026-09-24 on the cognitive window: no hydrocephalus-to-cognitive-disorder edge is authored in this batch. The strongest located cognition evidence is idiopathic-normal-pressure-hydrocephalus-specific (the third-edition iNPH management guideline, a Cochrane review of shunting, and an iNPH randomized trial) and would be an entity mismatch against the generic raised-pressure hydrocephalus identity, and the catalog carries a distinct normal-pressure-hydrocephalus identity that is queued to author its own NPH-specific neurocognitive windows; authoring a generic-hydrocephalus cognitive edge would therefore create a parallel pathway for the same NPH patient (entity-mismatch and duplicate-scope guards). Reopen only if hydrocephalus-general neurodevelopmental evidence accrues or governance merges the NPH subtype.",
+    "Negative screens recorded 2026-09-24: (i) no dementia or cognitive-disorder edge - deferred to the normal-pressure-hydrocephalus subtype as recorded above (duplicate-scope and entity-mismatch guards); (ii) no headache edge - no generic headache identity exists (only post-traumatic-headache), and the raised-pressure headache direction was not located in a hydrocephalus-primary design (wrong-target guard); (iii) no seizure-disorder edge - no condition-specific hydrocephalus-primary epilepsy-incidence data were located and the seizure identities own their own windows (zero-record guard); (iv) no gait-abnormality, balance-disorder, or urinary-incontinence edge - those catalog identities are absent (wrong-target guard); (v) no shunt-complication or infection edge - those identities are absent and post-surgical windows would require their own authoring decision (wrong-target guard); (vi) no empty-sella or pituitary edge - no condition-specific directional data were located (zero-record guard); (vii) duplicate-scope note: hydrocephalus is already a target of the dandy-walker-syndrome edge, and this batch adds the first hydrocephalus-primary window to the registry."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "visual-impairment",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Clinical series document visual-pathway involvement in hydrocephalus: the Lee 2017 pediatric study reports papilledema in 27 of 46 children with hydrocephalus and a strong association with higher intracranial pressure, and the AlObaisi 2022 record review of children with hydrocephalus and a ventriculoperitoneal shunt documents ocular-motility abnormalities and reduced visual outcomes - a reproducible raised-pressure-to-visual-involvement association rather than an individual causal nexus.",
+        "causationStatus": "Neither causation nor aggravation is established: the located evidence is retrospective and single-center without prospective visual-outcome incidence data, papilledema was absent in a substantial minority of the raised-pressure children, and primary ocular or optic-nerve disease, refractive error, and prematurity-related factors can independently produce visual impairment, so an individual determination requires neuroimaging and pressure documentation, ophthalmologic assessment including optic-nerve findings, compatible chronology, and exclusion of competing ocular causes."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MECHANICAL_OR_COMPRESSIVE",
+        "primaryVector": "A hypothesized compression route is described: impaired cerebrospinal-fluid absorption or obstructed flow raises intracranial pressure, and the transmitted pressure is conveyed along the optic-nerve sheath, producing axoplasmic-flow stasis, optic-disc swelling (papilledema), and, if sustained, optic-nerve atrophy with visual-field and acuity loss, while raised pressure and ventricular enlargement can also disturb the ocular-motor pathways and produce motility abnormalities - the mechanism reflected in the located pediatric series associating higher pressure with papilledema and documenting reduced visual outcomes; the retrospective design, the incomplete penetrance of papilledema, and competing ocular pathology leave individual attribution hypothesized.",
+        "secondaryVector": "Ventricular enlargement and periventricular white-matter compression may contribute to visual-pathway dysfunction, and shunt surgery itself, prematurity, and coexisting intracranial pathology can add independent ocular morbidity.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The edge asserts an association only: the located evidence is retrospective single-center series documenting papilledema and reduced visual outcomes in hydrocephalus without prospective incidence data, papilledema is incompletely penetrant and its absence does not exclude raised pressure, and primary ocular and optic-nerve disease and prematurity-related factors can independently cause visual impairment; an individual claim therefore requires imaging and pressure documentation, ophthalmologic assessment, chronology, and competing-cause review, so no at-least-as-likely-as-not probability is asserted.",
+        "evidenceGaps": "Neuroimaging and intracranial-pressure documentation of the hydrocephalus (cause, ventricular findings, pressure measurements, shunt status, date); ophthalmologic assessment including optic-disc findings, visual acuity, visual fields, and ocular motility; chronology of the hydrocephalus relative to the onset and progression of visual impairment; evaluation for primary ocular and optic-nerve disease (glaucoma, cataract, retinal disease, hereditary optic neuropathy) and for prematurity-related ocular morbidity; neurosurgical and ophthalmologic assessment of whether the hydrocephalus materially contributed to the individual visual impairment",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Primary optic-nerve disease or hereditary optic neuropathy",
+          "Glaucoma, cataract, or retinal disease",
+          "Refractive error or amblyopia",
+          "Prematurity-related retinopathy or cortical visual impairment",
+          "Idiopathic intracranial hypertension unrelated to hydrocephalus"
+        ]
+      },
+      "evidenceGaps": [
+        "Neuroimaging and intracranial-pressure documentation of the hydrocephalus (cause, ventricular findings, pressure measurements, shunt status, date); ophthalmologic assessment including optic-disc findings, visual acuity, visual fields, and ocular motility; chronology of the hydrocephalus relative to the onset and progression of visual impairment; evaluation for primary ocular and optic-nerve disease (glaucoma, cataract, retinal disease, hereditary optic neuropathy) and for prematurity-related ocular morbidity; neurosurgical and ophthalmologic assessment of whether the hydrocephalus materially contributed to the individual visual impairment"
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY: a pediatric series of 46 children with hydrocephalus reports papilledema in a majority and a strong association with higher intracranial pressure, and a record review of shunted children documents ocular-motility abnormalities and reduced visual outcomes, establishing a reproducible raised-pressure-to-visual-involvement association; the edge is not raised to causation because the evidence is retrospective without prospective incidence data, papilledema is incompletely penetrant, and competing ocular disease is common, so the consensus remains NOT_ESTABLISHED with imaging, ophthalmologic, chronology, and competing-cause requirements; no probability estimate is asserted.",
+      "sourceReferences": [
+        {
+          "citation": "Lee HJ, Phi JH, Kim SK, Wang KC, Kim SJ. Papilledema in children with hydrocephalus: incidence and associated factors. J Neurosurg Pediatr. 2017 Jun;19(6):627-631. doi:10.3171/2017.2.PEDS16561. PMID 28387641.",
+          "note": "Retrospective pediatric study of 46 children with hydrocephalus reporting papilledema in 27 and a strong association between papilledema and higher intracranial pressure - the raised-pressure-to-optic-disc-involvement anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/28387641/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-24",
+          "sourceLocator": "PMID 28387641; papilledema incidence in children with hydrocephalus and association with intracranial pressure"
+        },
+        {
+          "citation": "AlObaisi SS, Alnasser BN, Almuhawas HA, et al. The prevalence of strabismus and visual outcomes in children with hydrocephalus and a ventriculoperitoneal shunt: medical record review. Ann Saudi Med. 2022 Nov-Dec;42(6):391-396. doi:10.5144/0256-4947.2022.391. PMID 36444928.",
+          "note": "Medical record review of children with congenital hydrocephalus after ventriculoperitoneal shunt documenting ocular-motility abnormalities and reduced visual outcomes - the visual-outcome anchor for the hydrocephalus-to-visual-impairment association.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36444928/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-24",
+          "sourceLocator": "PMID 36444928; strabismus prevalence and visual outcomes in children with hydrocephalus and a ventriculoperitoneal shunt"
+        }
+      ]
+    }
+  ]
 }

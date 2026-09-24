@@ -2,8 +2,141 @@
   "id": "giant-cell-myocarditis",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review hemodynamic, vascular, thrombotic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 38 (2026-09-23): one DIRECT_CAUSATION and one ASSOCIATION_ONLY draft mapping pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: (i) the congestive-heart-failure mapping asserts the granulomatous-myocardial-destruction-to-pump-failure chain at PROBABLE strength with hypothesizedOnly:false following the eosinophilic-myocarditis-to-congestive-heart-failure precedent - individual claims require specialist- or biopsy-confirmed giant cell myocarditis with new-onset heart failure documented during the disease course and exclusion of ischemic, valvular, tachycardia-mediated, peripartum, toxic-metabolic, and cardiac-sarcoidosis etiologies per case; (ii) the cardiac-arrhythmia mapping asserts association only (etiologicalConsensus NOT_ESTABLISHED, hypothesizedOnly:true) because ventricular arrhythmia is a subset presentation rather than a universal progression, matching the cardiac-inflammatory-disease and cardiomyopathy arrhythmia edges."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 38 (2026-09-23): two bounded edges authored. DIRECT congestive-heart-failure: the Kundnani 2026 review of giant cell myocarditis outcomes documents that clinical onset is new-onset heart failure refractory to usual therapy with a frequently fulminant and severe course and that, absent rapid diagnosis and immunosuppression, the disease runs a fulminant often fatal course, the Sacher 2025 case report documents giant cell myocarditis as a rare rapidly progressive inflammatory cardiomyopathy often manifesting with ventricular arrhythmias or heart failure with biopsy confirmation, and the Harling 2026 report documents fatal rapidly progressing biventricular heart failure in an 18-year-old with new-onset giant cell myocarditis - granulomatous T-cell-mediated myocyte destruction reducing contractile mass until pump failure meets the eosinophilic-myocarditis precedent (IMMUNE_MEDIATED, PROBABLE) with hypothesizedOnly:false; WELL_ESTABLISHED is withheld because the disease is rare with case-dominant evidence, immunosuppression can arrest destruction before failure in a subset, and alternative heart-failure etiologies are excluded per case. ASSOCIATION cardiac-arrhythmia: the Jaiswal 2025 propensity-score comparison documents ventricular tachycardia at six months among giant cell myocarditis versus cardiac sarcoidosis patients with distinct arrhythmia burdens, the Bartz-Overman 2024 report documents two fulminant giant cell myocarditis cases presenting with ventricular arrhythmias treated with rabbit anti-thymocyte globulin, and the Jakulla 2025 report documents an electrical storm with pleomorphic ventricular tachycardia confirmed as giant cell myocarditis on endomyocardial biopsy - the inflammatory-and-fibrotic substrate pathway stays at NOT_ESTABLISHED because arrhythmia is a subset presentation (the cardiac-inflammatory-disease and cardiomyopathy sibling edges are also association-only), the sources are comparative and case-level rather than cohort-incidence, and independent arrhythmia etiologies coexist. Category SYSTEMIC_INFLAMMATORY matches the cardiac-inflammatory-disease arrhythmia edge.",
+    "Negative screens recorded 2026-09-23: (i) no heart-transplant-residuals edge is authored - transplantation is a treatment decision made under the oncology-like rescue paradigm documented in the sources rather than a natural secondary outcome, and the transplant identity's scope is post-transplant state rather than disease consequence (treatment-mediated guard, matching why immunosuppression response is not itself an edge); (ii) no cardiomyopathy edge - inflammatory cardiomyopathy is largely constitutive of the giant cell myocarditis diagnosis itself (the sources call the disease a rapidly progressive inflammatory cardiomyopathy), so a separate cardiomyopathy outcome would double-count the phenotype (ME-41 phenotype barrier); (iii) no cardiac-sarcoidosis parallel - cardiac sarcoidosis is a distinct catalog-absent mimic identity and is recorded as the leading differential in the causationStatus rather than as an edge (wrong-identity guard); (iv) no mortality edge - no catalog identity for disease-attributable death exists. Duplicate-scope note: the eosinophilic-myocarditis sibling owns the immune-mediated myocarditis-to-failure pathway with identical classification, and these are distinct pathological entities (eosinophilic versus granulomatous infiltrates) with independent evidence bases, so no parallel-pathway duplication arises; the congestive-heart-failure target carries eleven incoming edges and this adds the granulomatous-immune pathway. Reopening condition for any upgrade: a prospective incidence cohort of biopsy-confirmed cases quantifying heart-failure or arrhythmia rates against excluded etiologies."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "congestive-heart-failure",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "DIRECT_CAUSATION",
+        "etiologicalTrigger": "Specialist- or endomyocardial-biopsy-confirmed giant cell myocarditis - diffuse T-cell-mediated granulomatous myocardial inflammation with myocyte necrosis and replacement fibrosis - so contractile myocardial mass is destroyed faster than it can be replaced and the ventricles fail with new-onset, often therapy-refractory heart failure during the disease course.",
+        "mechanismSummary": "An immune-mediated myocardial-destruction cascade: CD4/CD8 lymphocyte and giant-cell granulomas invade working myocardium, incite necrotizing myocarditis with cytokine-mediated contractile stunning, and heal as patchy fibrosis that stiffens and weakens the ventricles; as destruction outpaces compensation, ejection fraction falls and filling pressures rise into overt biventricular pump failure - documented as the characteristic presenting syndrome with fulminant fatal courses in the located reviews and case reports, and arrestable when immunosuppression halts the destructive infiltrate before the failure threshold is crossed."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "IMMUNE_MEDIATED",
+        "primaryVector": "A granulomatous immune-destruction pathway: activated T lymphocytes and multinucleated giant cells infiltrate the myocardial interstitium, release cytokines and cytotoxic effectors that lyse cardiomyocytes, and organize granulomas that replace contracting muscle with fibrotic scar; the progressive loss of functional syncytium reduces stroke volume and raises ventricular filling pressures until the clinical syndrome of new-onset heart failure emerges - the same immune-destruction-to-pump-failure vector the eosinophilic-myocarditis precedent asserts, with immunosuppressive rescue demonstrating that removing the infiltrate arrests the cascade.",
+        "hypothesizedOnly": false
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "PROBABLE",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The chain is supported by disease-specific review evidence that new-onset refractory heart failure is the characteristic clinical onset, biopsy-confirmed cases deteriorating to biventricular failure, and mechanistic identity with the eosinophilic-myocarditis DIRECT precedent (immune infiltrate destroying myocardium until pump failure), which justifies PROBABLE direct causation; WELL_ESTABLISHED is withheld because giant cell myocarditis is rare with case-dominant evidence, no cohort quantifies what fraction of confirmed cases progresses to failure, immunosuppression and transplant bridging can interrupt the course, and ischemic, valvular, tachycardia-mediated, and sarcoid etiologies are independent heart-failure causes excluded per case; no probability estimate is asserted.",
+        "evidenceGaps": "Endomyocardial-biopsy or specialist-consensus confirmation of giant cell myocarditis (granulomatous infiltrate with eosinophilic-negative distinguishing from hypersensitivity and cardiac sarcoidosis); echocardiographic or cardiac-MRI documentation of new-onset ventricular dysfunction or heart failure with chronology during the giant cell myocarditis course; NYHA class, ejection fraction, and natriuretic-peptide trajectories before and after immunosuppression; exclusion of ischemic coronary disease, valvular heart disease, tachycardia-mediated and peripartum cardiomyopathy, toxic-metabolic and thyroid causes, familial cardiomyopathy, and cardiac sarcoidosis; cardiology and advanced-heart-failure assessment of the individual relationship",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Ischemic coronary disease or prior infarction",
+          "Valvular heart disease",
+          "Tachycardia-mediated, peripartum, or toxic-metabolic cardiomyopathy",
+          "Cardiac sarcoidosis (giant-cell mimic with different treatment and prognosis)",
+          "Viral, thyroid, alcohol-related, or familial cardiomyopathy"
+        ]
+      },
+      "evidenceGaps": [
+        "Endomyocardial-biopsy or specialist-consensus confirmation of giant cell myocarditis (granulomatous infiltrate with eosinophilic-negative distinguishing from hypersensitivity and cardiac sarcoidosis); echocardiographic or cardiac-MRI documentation of new-onset ventricular dysfunction or heart failure with chronology during the giant cell myocarditis course; NYHA class, ejection fraction, and natriuretic-peptide trajectories before and after immunosuppression; exclusion of ischemic coronary disease, valvular heart disease, tachycardia-mediated and peripartum cardiomyopathy, toxic-metabolic and thyroid causes, familial cardiomyopathy, and cardiac sarcoidosis; cardiology and advanced-heart-failure assessment of the individual relationship"
+      ],
+      "rationale": "Authored at DIRECT_CAUSATION, PROBABLE, hypothesizedOnly:false following the eosinophilic-myocarditis-to-congestive-heart-failure precedent: disease-specific reviews and biopsy-confirmed cases document granulomatous immune destruction presenting as new-onset refractory heart failure with fulminant courses, while rarity, case-dominant evidence, interruptibility by immunosuppression, and independent heart-failure etiologies keep the consensus at PROBABLE with per-case exclusion; no probability estimate is asserted.",
+      "sourceReferences": [
+        {
+          "citation": "Kundnani NR, Kumar A, Sharma A, et al. Impact of Early Diagnosis and Immunosuppressive Therapy on Giant Cell Myocarditis Outcomes: A Review. Life (Basel). 2026;16(4):575. PMID 42073389.",
+          "note": "Review documenting that giant cell myocarditis clinical onset is new-onset heart failure refractory to usual therapy with a frequently fulminant severe course, and that without rapid diagnosis and immunosuppressive therapy the disease runs a fulminant often fatal course - the presenting-syndrome and course anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42073389/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 42073389; GCM onset as new-onset refractory heart failure, fulminant course"
+        },
+        {
+          "citation": "Sacher AC, Ahmed R, Kung A, et al. Early Recognition of Giant Cell Myocarditis in a Patient With Fascicular Ventricular Tachycardia. JACC Case Rep. 2025;30(31):105333. PMID 41072973.",
+          "note": "Biopsy-confirmed case report documenting giant cell myocarditis as a rare rapidly progressive inflammatory cardiomyopathy often manifesting with ventricular arrhythmias or heart failure with rapid clinical deterioration - the biopsy-confirmed phenotype anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41072973/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 41072973; GCM rapidly progressive, often manifests with HF or ventricular arrhythmias"
+        },
+        {
+          "citation": "Harling LC, Wacker M, Ruhparwar A, et al. Giant cell myocarditis in an 18-year-old patient with new-onset systemic lupus erythematosus: A fatal case of rapidly progressing heart failure. Lupus. 2026;35(10):1090-1098. PMID 42393943.",
+          "note": "Case report documenting giant cell myocarditis presenting with biventricular heart failure that deteriorated rapidly to death before transplantation - the biventricular-failure case anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42393943/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 42393943; fatal rapidly progressing biventricular heart failure in GCM"
+        }
+      ]
+    },
+    {
+      "conditionId": "cardiac-arrhythmia",
+      "rank": 2,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The Jaiswal 2025 propensity-score comparison of giant cell myocarditis versus cardiac sarcoidosis documents distinct ventricular-tachycardia and conduction-block burdens at six months between the two giant-cell myocardial diseases, the Bartz-Overman 2024 report documents two fulminant giant cell myocarditis cases presenting with ventricular arrhythmias (managed with rabbit anti-thymocyte globulin, one requiring transplantation), and the Jakulla 2025 report documents an electrical storm with pleomorphic ventricular tachycardia confirmed as giant cell myocarditis on endomyocardial biopsy - the literature documents a reproducible ventricular-arrhythmia association in giant cell myocarditis populations without establishing that the disease produced an individual's arrhythmia.",
+        "causationStatus": "The mapping does not assert that giant cell myocarditis caused an individual's cardiac arrhythmia: ventricular arrhythmia is a subset presentation rather than a universal progression (the sources document it in referral and case-level material, not incidence cohorts), the inflamed-and-fibrotic myocardial substrate is mechanistically plausible but idiopathic ventricular ectopy, ischemic substrates, channelopathies, electrolyte disturbance, and drug effects independently produce the same rhythms in the same populations, and cardiac sarcoidosis - the closest giant-cell mimic - carries its own arrhythmia literature that must be distinguished histologically; individual claims require specialist- or biopsy-confirmed giant cell myocarditis, ECG or monitoring-documented ventricular arrhythmia with chronology during the disease course, and exclusion of the independent arrhythmia etiologies."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "SYSTEMIC_INFLAMMATORY",
+        "primaryVector": "An inflammation-and-scar substrate pathway: granulomatous infiltrates and their fibrotic healing create patchy conduction heterogeneity across the ventricular wall, shortening refractory-period dispersion so re-entrant circuits arise around granuloma borders - producing monomorphic or pleomorphic ventricular tachycardia and atrioventricular block during active disease - documented at comparative and case level in giant cell myocarditis populations while individual-level causation remains an association hypothesis with independent arrhythmia etiologies guarded.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The edge asserts an association only: the evidence is a propensity-matched comparison plus case reports (electrical storm, fulminant cases) without a biopsy-confirmed incidence cohort for arrhythmia, arrhythmia is a subset presentation, the catalog's sibling edges (cardiac-inflammatory-disease and cardiomyopathy to cardiac-arrhythmia) are both association-only at NOT_ESTABLISHED, and independent rhythm etiologies are common in the same population; no probability estimate is asserted.",
+        "evidenceGaps": "Specialist- or endomyocardial-biopsy-confirmed giant cell myocarditis; ECG, telemetry, or implantable-monitor documentation of ventricular arrhythmia or conduction block with chronology during the disease course; exclusion of ischemic coronary disease, channelopathies (Brugada, long QT, catecholaminergic), electrolyte and thyroid disturbance, stimulant or drug effects, and structurally normal-heart idiopathic ventricular tachycardia; histologic distinction from cardiac sarcoidosis; cardiology and electrophysiology assessment of the individual relationship",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Ischemic coronary disease with post-infarction re-entry",
+          "Cardiac sarcoidosis (giant-cell mimic)",
+          "Channelopathies or structurally normal-heart idiopathic ventricular tachycardia",
+          "Electrolyte, thyroid, or stimulant/drug effects",
+          "Atrioventricular block from degenerative conduction disease"
+        ]
+      },
+      "evidenceGaps": [
+        "Specialist- or endomyocardial-biopsy-confirmed giant cell myocarditis; ECG, telemetry, or implantable-monitor documentation of ventricular arrhythmia or conduction block with chronology during the disease course; exclusion of ischemic coronary disease, channelopathies (Brugada, long QT, catecholaminergic), electrolyte and thyroid disturbance, stimulant or drug effects, and structurally normal-heart idiopathic ventricular tachycardia; histologic distinction from cardiac sarcoidosis; cardiology and electrophysiology assessment of the individual relationship"
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY matching the cardiac-inflammatory-disease and cardiomyopathy arrhythmia edges: comparative and case-level evidence documents a reproducible ventricular-arrhythmia association with the granulomatous substrate while subset presentation, absent incidence cohorts, the giant-cell sarcoid mimic, and common independent rhythm etiologies defeat individual causal attribution, so the mapping asserts the association with confirmed-diagnosis, rhythm-documentation, and alternative-etiology requirements.",
+      "sourceReferences": [
+        {
+          "citation": "Jaiswal V, Hanif M, Mashkoor Y, et al. Cardiovascular outcomes among giant cell myocarditis compared with cardiac sarcoidosis: A propensity score analysis. Prog Cardiovasc Dis. 2025;89:63-68. PMID 39557143.",
+          "note": "Propensity-score comparison documenting distinct ventricular tachycardia and conduction-block burdens at six months between giant cell myocarditis and cardiac sarcoidosis patients - the comparative arrhythmia-burden anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39557143/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 39557143; VT at 6 months compared between GCM and cardiac sarcoidosis"
+        },
+        {
+          "citation": "Bartz-Overman C, Li S, Puligandla B, et al. Two case reports of fulminant giant cell myocarditis treated with rabbit anti-thymocyte globulin. Eur Heart J Case Rep. 2024;8(4):ytae128. PMID 38567279.",
+          "note": "Two biopsy-confirmed fulminant giant cell myocarditis cases presenting with ventricular arrhythmias with ejection-fraction recovery and arrhythmia freedom under immunosuppression - the fulminant-case arrhythmia anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38567279/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 38567279; ventricular arrhythmias in two fulminant GCM cases"
+        },
+        {
+          "citation": "Jakulla RS, Almohtasib Y, Garcia RA, et al. Advanced management of electrical storm: beyond antiarrhythmics. BMJ Case Rep. 2025;18(9):e266174. PMID 40967662.",
+          "note": "Case report documenting pleomorphic ventricular tachycardia electrical storm with endomyocardial-biopsy-confirmed giant cell myocarditis - the biopsy-confirmed severe-arrhythmia anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40967662/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 40967662; electrical storm pleomorphic VT, EMB-confirmed GCM"
+        }
+      ]
+    }
+  ]
 }

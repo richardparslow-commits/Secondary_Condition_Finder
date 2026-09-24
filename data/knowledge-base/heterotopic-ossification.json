@@ -1,6 +1,72 @@
 {
   "id": "heterotopic-ossification",
   "draft": true,
-  "todo": ["Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.", "Review direct-secondary, aggravation, biomechanical, medication/treatment, intermediate-factor, and organ-system pathways only where applicable; do not infer medical causation from rating-schedule authority."],
-  "suggestions": []
+  "todo": [
+    "D1 draft-authoring batch 44 (2026-09-24): one ASSOCIATION_ONLY draft mapping pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: the single authored edge asserts association only (etiologicalConsensus NOT_ESTABLISHED, hypothesizedOnly:true) - it records that developing heterotopic bone can mechanically compress an adjacent peripheral nerve in case-level and small-series reports, not that heterotopic ossification caused neuropathy in any individual; individual claims require imaging or operative documentation of the heterotopic bone and its relation to the affected nerve, electrodiagnostic confirmation of the neuropathy, compatible chronology, and exclusion of entrapment, metabolic, and other neuropathic causes.",
+    "Prior-proposition screen: the master-resolution program closed the harvested heterotopic-ossification-to-osteoarthritis proposition (PMID 39661773) as FINAL-CLOSE-PROPOSITION-MISMATCH with no approved targets, and that proposition is NOT reasserted here; the edge authored in this batch rests on separate, condition-specific perineural-compression evidence and targets peripheral neuropathy rather than osteoarthritis.",
+    "Duplicate-scope and entity guard: the peripheral-neuropathy identity already receives six incoming windows (breast, colorectal, and ovarian cancer; non-Hodgkins lymphoma; HIV/AIDS; and cold-injury residuals), none of which is a mechanical perineural-compression window, so this batch adds the heterotopic-bone-compression window on its own primary; no fibrothorax-style or myositis-ossificans sibling identity exists in the catalog (wrong-target guard), and the compressive lesion is expressed by its own primary rather than folded into a generic entrapment identity."
+  ],
+  "governanceNotes": [
+    "D1 batch 44 (2026-09-24): one bounded association edge authored - heterotopic ossification to peripheral neuropathy (rank 1), ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true, and mechanismCategory MECHANICAL_OR_COMPRESSIVE (perineural compression by heterotopic bone). The proposition rests on two independent perineural-compression anchors: the Akhavan 2023 case report and literature review of bony cubital tunnel syndrome, in which heterotopic ossification caused circumferential ulnar-nerve encasement at the elbow with electrodiagnostically confirmed ulnar neuropathy and recovery after excision, and the Daskalakis 2022 case report of elbow heterotopic ossification after distal biceps tendon repair presenting as median-nerve neuropathy. The edge is not raised to causation: the located evidence is case-level plus a narrative literature review without incidence denominators or controlled comparison, perineural heterotopic ossification is rare, and neuropathy in the same patients may arise from concurrent trauma, surgery, or alternative entrapment sites, so no probability estimate is asserted.",
+    "FINAL-CLOSE-PROPOSITION-MISMATCH screen recorded 2026-09-24: the master-resolution disposition closed the harvested osteoarthritis proposition for this identity (originalDisposition HOLD-PROPOSITION-MISMATCH, masterResolution FINAL-CLOSE-PROPOSITION-MISMATCH, approvedTargets empty, reason noting that co-mentioned osteoarthritis evidence did not establish a sufficiently specific heterotopic-ossification-to-osteoarthritis relationship). That proposition remains closed and is not reasserted; the identity itself was retained as a draft with an explicit rebuild instruction, and the edge authored here is supported by separate, condition-specific perineural-compression evidence.",
+    "Negative screens recorded 2026-09-24: (i) no osteoarthritis edge - the FINAL-CLOSE-PROPOSITION-MISMATCH closure remains in force and no new condition-specific heterotopic-ossification-to-osteoarthritis evidence was located (prior-closure guard); (ii) no joint-movement-restriction, joint-stiffness, or contracture edge - no such catalog identities exist (wrong-target guard); (iii) no complex-regional-pain-syndrome or unexplained-chronic-pain edge - the located evidence concerns mechanical nerve compression rather than pain-syndromes, and no condition-specific directional data were located (zero-record guard); (iv) no burn or traumatic-brain-injury edge - heterotopic ossification is a consequence of those injuries rather than their cause, so the direction runs the other way (direction-inversion guard); (v) no pressure-ulcer or decubitus-edge - no such identity exists and the located evidence is neuropathic rather than skin-integrity (wrong-target guard); (vi) no malignant-transformation or sarcoma edge - no condition-specific directional data were located (zero-record guard); (vii) duplicate-scope note: this batch adds the first heterotopic-ossification-primary window to the registry."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "peripheral-neuropathy",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Case-level and narrative-review evidence documents that heterotopic bone developing near a peripheral nerve can mechanically encase and compress it: the Akhavan 2023 report describes circumferential ulnar-nerve encasement by heterotopic ossification at the elbow with electrodiagnostically confirmed ulnar neuropathy and functional recovery after excision, and the Daskalakis 2022 report describes elbow heterotopic ossification presenting as median-nerve neuropathy after distal biceps tendon repair - a reproducible lesion-to-compression association that is not an individual causal nexus.",
+        "causationStatus": "Neither causation nor aggravation is established: the located evidence is case-level plus a narrative literature review without incidence denominators or controlled comparison, perineural heterotopic ossification is rare, and neuropathy in the affected patients may arise from concurrent trauma, the inciting operation, or alternative entrapment sites, so an individual determination requires imaging or operative documentation of the heterotopic bone and its relationship to the affected nerve, electrodiagnostic confirmation of the neuropathy, compatible chronology, and exclusion of other compressive and non-compressive neuropathic causes."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MECHANICAL_OR_COMPRESSIVE",
+        "primaryVector": "A hypothesized compression route is described: heterotopic bone forming in the periarticular soft tissues adjacent to a peripheral nerve narrows or obliterates the nerve's anatomic course, and progressive ossification and soft-tissue swelling raise intraneural pressure, impairing axonal transport and myelin perfusion to produce focal demyelinating and ultimately axonal neuropathy - documented in the located reports of ulnar-nerve encasement at the elbow and median-nerve neuropathy after distal biceps repair, with functional recovery following excision - while the case-level evidence base and the high background of concurrent trauma and surgery leave individual attribution hypothesized.",
+        "secondaryVector": "Post-traumatic or post-surgical soft-tissue inflammation and fibrosis around the ossification can further tether and compress the nerve, and direct mechanical irritation from the ossific mass during joint motion can add dynamic compression.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The edge asserts an association only: the located evidence is case reports and a narrative literature review documenting perineural encasement and compression by heterotopic bone, without incidence denominators, controlled comparison, or a cohort demonstrating attributable neuropathy, and the affected patients commonly carry concurrent trauma, surgery, and alternative entrapment exposures; an individual claim therefore requires imaging or operative documentation of the heterotopic bone and its nerve relationship, electrodiagnostic confirmation, chronology, and competing-cause review, so no at-least-as-likely-as-not probability is asserted.",
+        "evidenceGaps": "Imaging or operative documentation of heterotopic ossification (location, extent, relationship to the affected nerve, date); electrodiagnostic confirmation and characterization of the peripheral neuropathy; chronology of the ossification relative to neuropathy onset; documentation of the inciting injury, surgery, or neurologic event; evaluation for alternative or coexisting entrapment sites and for metabolic, toxic, infectious, and hereditary neuropathic causes; orthopedic, neurosurgical, or neurology assessment of whether the ossification materially compressed the individual nerve",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Traumatic or post-surgical nerve injury at the operative site",
+          "Alternative or coexisting entrapment syndromes (cubital tunnel, carpal tunnel, Guyon canal)",
+          "Metabolic or toxic neuropathy (diabetes, alcohol, medication-related)",
+          "Cervical radiculopathy or plexopathy referred to the limb",
+          "Infectious, inflammatory, or hereditary neuropathy"
+        ]
+      },
+      "evidenceGaps": [
+        "Imaging or operative documentation of heterotopic ossification (location, extent, relationship to the affected nerve, date); electrodiagnostic confirmation and characterization of the peripheral neuropathy; chronology of the ossification relative to neuropathy onset; documentation of the inciting injury, surgery, or neurologic event; evaluation for alternative or coexisting entrapment sites and for metabolic, toxic, infectious, and hereditary neuropathic causes; orthopedic, neurosurgical, or neurology assessment of whether the ossification materially compressed the individual nerve"
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY: two independent case reports document heterotopic bone encasing and compressing a peripheral nerve with electrodiagnostic correlation and functional recovery after excision, establishing a reproducible lesion-to-compression association, but the evidence is case-level and narrative-review without incidence denominators and the affected patients carry concurrent trauma, surgery, and alternative entrapment exposures, so the consensus remains NOT_ESTABLISHED with imaging/operative, electrodiagnostic, chronology, and competing-cause requirements; no probability estimate is asserted.",
+      "sourceReferences": [
+        {
+          "citation": "Akhavan AA, Catterall LC, Deune EG. Bony Cubital Tunnel Syndrome: A Case Report of Heterotopic Ossification Causing Circumferential Ulnar Nerve Encasement at the Elbow and Review of Current Management. Ann Plast Surg. 2023 Jan 1;90(1):41-46. doi:10.1097/SAP.0000000000003337. PMID 36534099.",
+          "note": "Case report and literature review of heterotopic ossification causing circumferential ulnar-nerve encasement at the elbow with electrodiagnostically confirmed ulnar neuropathy and functional recovery after excision - the perineural-encasement anchor for the compression association.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36534099/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-24",
+          "sourceLocator": "PMID 36534099; heterotopic ossification with circumferential ulnar nerve encasement at the elbow, bony cubital tunnel syndrome"
+        },
+        {
+          "citation": "Daskalakis I, Sperelakis I, Tosounidis TH, Galanakis I. Elbow heterotopic ossification after distal biceps tendon repair presenting as median nerve neuropathy: A case report. Trauma Case Rep. 2022 Mar 21;39:100636. doi:10.1016/j.tcr.2022.100636. PMID 35368721.",
+          "note": "Case report of elbow heterotopic ossification presenting as median-nerve neuropathy after distal biceps tendon repair, recording nerve compression among the symptomatic presentations of heterotopic ossification - the second independent compression anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35368721/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-24",
+          "sourceLocator": "PMID 35368721; elbow heterotopic ossification presenting as median nerve neuropathy"
+        }
+      ]
+    }
+  ]
 }

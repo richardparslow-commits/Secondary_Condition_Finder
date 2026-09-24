@@ -2,8 +2,77 @@
   "id": "gingivitis",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review oral, dental, maxillofacial, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 38 (2026-09-23): one ASSOCIATION_ONLY draft mapping pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: the mapping asserts association only (etiologicalConsensus NOT_ESTABLISHED, hypothesizedOnly:true) with an explicit shared-driver guard - subgingival biofilm is the common etiologic driver of both gingivitis and periodontitis, the 2017 World Workshop classifies them as separable disease stages with periodontitis diagnosed on its own attachment-loss criteria, and not every gingivitis progresses; individual claims require documented plaque-induced gingivitis predating incident clinical attachment loss or radiographic bone loss, with existing periodontitis, host-susceptibility modifiers, and non-plaque etiologies addressed per case."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 38 (2026-09-23): one bounded association edge authored. The Lang 2024 natural-history review of the original Sri Lanka and Oslo longitudinal studies documents that the role of gingivitis in the pathogenesis of attachment loss was identified, with continuous gingivitis marking the trajectory into attachment loss while teeth with absent inflammation largely did not progress, the LaMonte 2021 cohort of 1,016 postmenopausal women documents that baseline subgingival microbiome and gingival status are associated with radiographic alveolar crestal-height loss or new tooth loss to periodontitis measured five years later, and the Papapanou 2018 2017-World-Workshop consensus documents periodontitis staging and grading with progression rate and risk for further attachment loss assessed case by case - progression association with documented heterogeneity; category SYSTEMIC_INFLAMMATORY (biofilm-driven inflammation extending toward the attachment apparatus), consensus NOT_ESTABLISHED because plaque is the shared driver of both diseases (the LaMonte biofilm finding is itself the confound), the consensus classification diagnoses gingival disease and periodontitis as separable entities rather than a necessary sequence, progression affects subsets under host-susceptibility modulation (diabetes, smoking, hyper-response), and no interventional trial demonstrates that curing gingivitis prevents periodontitis.",
+    "Negative screens recorded 2026-09-23: (ii - i reserved for the classification guard) no loss-of-teeth edge is authored here - the periodontal-disease identity already carries the loss-of-teeth association edge covering the downstream tooth-loss pathway, and a gingivitis-to-tooth-loss edge would run a longer-horizon parallel path over the same mediated chain (duplicate-scope guard); (iii) no osteoporosis edge - periodontal-disease owns that pathway and no gingivitis-specific evidence distinguishes it; (iv) no systemic-outcome edges (cardiovascular, diabetic control, adverse pregnancy outcomes) - those literatures are pooled across periodontitis rather than gingivitis and belong to the periodontal-disease or periodontitis identities when evidenced (wrong-identity guard); (v) direction guard - periodontitis can arise without documented prior gingivitis in susceptible hosts, so chronology must be documented per case rather than presumed. Duplicate-scope note: periodontitis receives its first incoming edge with this mapping while remaining a zero-outgoing-edge backlog identity (its own outgoing window will screen later), and the periodontal-disease umbrella retains its loss-of-teeth and osteoporosis edges without overlap. Reopening condition: a plaque-control or gingivitis-elimination trial with incident periodontitis as the endpoint would support classification upgrade review."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "periodontitis",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The Lang 2024 natural-history review of the original Sri Lanka and Oslo longitudinal studies documents that the role of gingivitis in the pathogenesis of attachment loss was identified, with continuous gingivitis marking teeth that progressed into attachment loss while teeth without inflammation largely did not, the LaMonte 2021 cohort of 1,016 postmenopausal women documents that baseline subgingival microbiome composition and gingival status are associated with radiographic alveolar crestal-height loss of at least 1 mm or new tooth loss to periodontitis measured five years later, and the Papapanou 2018 2017-World-Workshop consensus documents periodontitis as a distinct staged and graded entity whose progression rate and future risk are assessed case by case; the literature documents a reproducible longitudinal progression association between the gingivitis state and incident attachment loss without establishing that gingivitis produced periodontitis in an individual.",
+        "causationStatus": "The mapping does not assert that gingivitis caused an individual's periodontitis: subgingival biofilm is the shared etiologic driver of both diseases (the LaMonte finding that baseline microbiota predict progression is itself evidence that plaque burden - the very exposure that produces gingivitis - carries the risk), the 2017 World Workshop classifies gingival disease and periodontitis as separable diagnoses rather than a necessary sequence, progression affects subsets under host-susceptibility modulation (poorly controlled diabetes, smoking, exaggerated inflammatory response), and early or rapidly progressive periodontitis can be present without documented prior gingivitis; individual claims require documented plaque-induced gingivitis predating incident clinical attachment loss or radiographic bone loss (staging examination), plaque and oral-hygiene history, and exclusion of pre-existing periodontitis, non-plaque-induced gingival disease, systemic susceptibility modifiers, and occlusal or traumatic contributors per case."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "SYSTEMIC_INFLAMMATORY",
+        "primaryVector": "A biofilm-inflammation extension pathway: sustained subgingival plaque biofilm keeps the gingival connecture inflamed with neutrophil and cytokine-mediated tissue turnover, and in susceptible hosts the inflammatory front extends apically along the junctional epithelium into the periodontal ligament and alveolar crest, where osteoclast-mediated resorption and collagen-fiber breakdown convert gingival-margin inflammation into clinical attachment loss and radiographic bone loss - documented longitudinally as continuous gingivitis marking the progression trajectory while un-inflamed teeth largely did not progress, while individual-level attribution remains an association hypothesis with shared plaque driver and host susceptibility guarded.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The edge asserts an association only: the natural-history evidence shows progression concentrated in continuously inflamed teeth but comes from observational cohorts in which plaque exposure confounds the gingivitis marker, the 2017 consensus deliberately diagnoses gingivitis and periodontitis as separable entities precisely because the sequence is not necessary, host-susceptibility modifiers (diabetes, smoking, hyper-response) drive a large share of progression risk, and no randomized trial demonstrates that resolving gingivitis prevents incident periodontitis; no probability estimate is asserted.",
+        "evidenceGaps": "Documented plaque-induced gingivitis (bleeding on probing, no attachment loss at baseline staging examination) predating incident clinical attachment loss or radiographic alveolar bone loss at periodontal recall; full-mouth staging and grading at baseline and follow-up with radiographic bone-height comparison; plaque control and oral-hygiene history with adherence documentation; exclusion of pre-existing periodontitis or periodontitis-prone phenotype, non-plaque-induced gingival disease (lichen plana, desquamative), poorly controlled diabetes and smoking as uncontrolled susceptibility drivers, and occlusal or traumatic contributors; periodontology assessment of the individual relationship",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Periodontitis already present at baseline (reverse chronology)",
+          "Non-plaque-induced gingival or periodontal disease",
+          "Poorly controlled diabetes, smoking, or other susceptibility modifiers acting as the real drivers",
+          "Periodontitis-prone (Grade C / rapidly progressive) phenotype independent of the gingivitis state",
+          "Occlusal trauma or iatrogenic factors"
+        ]
+      },
+      "evidenceGaps": [
+        "Documented plaque-induced gingivitis (bleeding on probing, no attachment loss at baseline staging examination) predating incident clinical attachment loss or radiographic alveolar bone loss at periodontal recall; full-mouth staging and grading at baseline and follow-up with radiographic bone-height comparison; plaque control and oral-hygiene history with adherence documentation; exclusion of pre-existing periodontitis or periodontitis-prone phenotype, non-plaque-induced gingival disease (lichen plana, desquamative), poorly controlled diabetes and smoking as uncontrolled susceptibility drivers, and occlusal or traumatic contributors; periodontology assessment of the individual relationship"
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY: longitudinal natural-history and cohort evidence documents a reproducible progression association between the continuous-gingivitis state and incident attachment loss while the shared plaque driver, the consensus separation of gingival disease from periodontitis, host-susceptibility modulation, and absent gingivitis-elimination trials defeat individual causal attribution, so the mapping asserts the association with baseline-staging, chronology, susceptibility, and alternative-etiology requirements.",
+      "sourceReferences": [
+        {
+          "citation": "Lang NP, Schätzle M, Ramseier CA. Natural history of periodontal disease: The original Sri Lanka and Oslo studies. Periodontol 2000. 2024. PMID 38520126.",
+          "note": "Natural-history review documenting that the role of gingivitis in the pathogenesis of attachment loss was identified in the original longitudinal studies, with continuous gingivitis marking the trajectory into attachment loss while teeth without inflammation largely did not progress - the progression-trajectory anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38520126/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 38520126; gingivitis role in pathogenesis of attachment loss, continuous gingivitis trajectory"
+        },
+        {
+          "citation": "LaMonte MJ, Andrews CA, Hovey KM, et al. Subgingival microbiome is associated with alveolar bone loss measured 5 years later in postmenopausal women. J Periodontol. 2021;92(5):648-661. PMID 33141988.",
+          "note": "Prospective cohort of 1,016 postmenopausal women documenting that baseline subgingival microbiome and gingival status are associated with radiographic alveolar crestal-height loss or new tooth loss to periodontitis five years later - the longitudinal progression and shared-plaque-driver anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33141988/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 33141988; baseline microbiota and gingival status associated with 5-year progression"
+        },
+        {
+          "citation": "Papapanou PN, Sanz M, Buduneli N, et al. Periodontitis: Consensus report of workgroup 2 of the 2017 World Workshop on the Classification of Periodontal and Peri-Implant Diseases and Conditions. J Clin Periodontol. 2018;45 Suppl 20:S162-S170. PMID 29926490.",
+          "note": "Consensus report establishing periodontitis as a distinct staged and graded entity characterized by progression rate and assessed future risk - the classification and heterogeneous-progression anchor grounding the conservative not-inevitable-sequence posture.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/29926490/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 29926490; staging/grading with progression rate and risk assessment"
+        }
+      ]
+    }
+  ]
 }

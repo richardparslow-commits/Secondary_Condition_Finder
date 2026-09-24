@@ -2,8 +2,77 @@
   "id": "fournier-s-gangrene",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review urologic, gynecologic, hormonal, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 35 (2026-09-23): ASSOCIATION_ONLY draft pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: the mapping asserts the perineogenital tissue-loss-to-scar association documented in the Fournier's gangrene reconstruction and graft-complication literature; individual claims require documented Fournier's gangrene with debridement or tissue loss, scars or contractures arising at the involved perineogenital sites with chronology documented, compatible anatomic distribution, and exclusion of unrelated traumatic, surgical, burn, and dermatologic scarring."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 35 (2026-09-23): one bounded scars association authored from the Fournier's gangrene reconstruction literature - the Crane 2026 Matriderm penile-resurfacing case series (36 patients, 38 operations) names Fournier's gangrene among the conditions producing scarring and contractures that prompt resurfacing, the Tremblay 2026 rehabilitation paper evaluates patients after necrotizing fasciitis or Fournier's gangrene with genital graft complications including pain, contractures, hypertrophic scars, hypersensitivity, and recurrent wounds that directly affect walking, sitting, voiding, bowel elimination, sexual function, and intimacy, and the Griffin 2016 case documents a man after extensive Fournier's gangrene genital and perineal debridement who, despite successful reconstruction with extensive skin grafting, suffered intractable discomfort from the developed scarring requiring ablative fractional laser resurfacing; the tissue-destruction-to-fibrotic-repair sequence is accepted wound biology but individual scar burden is defect-size, healing-path, and graft-dependent.",
+    "Negative screens recorded 2026-09-23: (i) the 2026 long-term-outcomes systematic review of Fournier's gangrene survivors (PMID 41982033) documents a sustained burden including fecal incontinence, sexual dysfunction, urinary symptoms, and psychosocial impairment across five retrospective studies, but the incontinence and urinary findings are not attributable to the infection at mechanism level and diversionary colostomy and indwelling-catheter histories confound them (wrong-identity, procedure-mediation guard), so no fecal-incontinence or urinary-incontinence edge is authored; (ii) the Austrian seven-center survivor questionnaire study at mean 4.5 years (PMID 39837294) documents lower quality of life and self-esteem but with only 18 of 44 survivors responding and without structured depression instruments, so no depressive-disorder edge is authored; (iii) amputation is deliberately not authored under duplicate-scope with the fasciitis identity's batch-33 necrotizing-fasciitis amputation edge - Fournier's gangrene is the perineogenital anatomic form of the same disease process and limb amputation is not its documented outcome vector. Duplicate-scope note: the scars target carries two incoming edges on behavioral-self-injury mechanisms (excoriation-disorder picking, factitious-disorder conscious self-injury); this edge adds the infectious-destruction and reconstruction pathway with an independent urologic and plastic-surgery evidence base."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "scars",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The Crane 2026 penile-resurfacing series names Fournier's gangrene among the conditions generating scarring and contractures that require surgical resurfacing, the Tremblay 2026 rehabilitation evaluation documents genital skin-graft complications after necrotizing fasciitis and Fournier's gangrene including pain, contractures, and hypertrophic scars that impair walking, sitting, voiding, bowel elimination, and sexual function, and the Griffin 2016 case documents intractable scar discomfort after Fournier's gangrene debridement and grafting requiring laser resurfacing; the literature documents symptomatic scar and contracture burden at the involved perineogenital sites without establishing that Fournier's gangrene produced an individual's scar.",
+        "causationStatus": "The mapping does not assert that Fournier's gangrene caused an individual's scar: scar extent and symptoms are mediated by defect size, debridement extent, healing path (secondary intention versus graft versus flap), graft take, and individual healing tendency, and burn, traumatic, unrelated surgical, hidradenitis-suppurativa, chronic fissure, and keloid-prone scarring of the perineum mimic or accompany the pattern; individual claims require documented Fournier's gangrene with debridement or tissue loss, scars or contractures arising at the involved sites with chronology documented, compatible anatomic distribution, and exclusion of unrelated scarring causes."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "POST_SURGICAL_OR_TREATMENT",
+        "primaryVector": "A hypothesized destruction-and-reconstruction fibrosis pathway: fulminant necrotizing infection of the perineogenital fascial planes produces full-thickness skin and soft-tissue loss, and life-saving serial debridement leaves large perineogenital defects that heal by secondary intention, skin graft, or flap; each healing path resolves through the standard repair sequence of inflammation, granulation, and collagen deposition, and in this anatomic region under tension, moisture, and repeated mechanical stress, fibrotic repair frequently organizes into symptomatic scar and scar contracture that the reconstruction and rehabilitation literature documents as a sustained burden after survival; individual scar burden tracks defect size, healing path, and graft take rather than the diagnosis label itself.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The edge asserts an association only: the cited evidence is a reconstructive-indication case series, a rehabilitation case series, and a single laser-resurfacing case, no Fournier's-gangrene cohort quantifies scar incidence or symptomatic-scar risk, symptom burden is inseparable from the reconstruction pathway because healing path and graft take drive outcomes, and general perineal wound-healing scar biology is not condition-specific quantification; no probability estimate is asserted.",
+        "evidenceGaps": "Documentation of Fournier's gangrene with anatomic extent, debridement performed, and tissue-loss record; scar or contracture documentation at the involved perineogenital sites with clinical characterization (hypertrophic, contracture, symptomatic) and chronology relative to the acute episode; healing-path documentation (secondary intention, graft, flap) and graft-take history; exclusion of burn, traumatic, unrelated surgical, hidradenitis-suppurativa, chronic fissure, and keloid-prone scarring; urology, plastic surgery, or dermatology assessment of the individual relationship",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Burn or other thermal or chemical injury scarring",
+          "Prior urologic or anorectal surgical scarring unrelated to Fournier's gangrene",
+          "Hidradenitis suppurativa or chronic perineal inflammatory disease with its own scarring",
+          "Traumatic perineal injury scarring",
+          "Individual keloid or hypertrophic healing diathesis"
+        ]
+      },
+      "evidenceGaps": [
+        "Documentation of Fournier's gangrene with anatomic extent, debridement performed, and tissue-loss record; scar or contracture documentation at the involved perineogenital sites with clinical characterization (hypertrophic, contracture, symptomatic) and chronology relative to the acute episode; healing-path documentation (secondary intention, graft, flap) and graft-take history; exclusion of burn, traumatic, unrelated surgical, hidradenitis-suppurativa, chronic fissure, and keloid-prone scarring; urology, plastic surgery, or dermatology assessment of the individual relationship"
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY consistent with the scars target's behavioral-wound edges: case-level and reconstructive-series evidence documents symptomatic scar and contracture at Fournier's gangrene sites while healing-path mediation and unquantified incidence defeat individual causal attribution, so the mapping asserts the association with chronology and alternative-cause requirements.",
+      "sourceReferences": [
+        {
+          "citation": "Crane J, Lloyd A, Kaul A, et al. Matriderm as a biological scaffold in penile resurfacing: A single-centre case series. J Plast Reconstr Aesthet Surg. 2026;115. PMID 41819034.",
+          "note": "Single-centre case series of 36 patients (38 operations) for penile resurfacing that names Fournier's gangrene among the conditions producing scarring and contractures - the Fournier's-to-scar-indication anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41819034/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 41819034; Fournier's gangrene listed among scar-contracture indications for resurfacing"
+        },
+        {
+          "citation": "Tremblay C, Edger-Lacoursiere Z, Schneider G, et al. Rehabilitation Evaluation and Treatment for Skin Graft Complications of the Genitalia. J Burn Care Res. 2026;47(3). PMID 41615004.",
+          "note": "Evaluation and treatment of patients after necrotizing fasciitis or Fournier's gangrene documenting genital graft complications including pain, contractures, hypertrophic scars, hypersensitivity, and recurrent wounds that directly affect walking, sitting, voiding, bowel elimination, and sexual function - the symptomatic-scar-burden anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41615004/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 41615004; necrotizing fasciitis/Fournier's genital graft complications with pain and contractures"
+        },
+        {
+          "citation": "Griffin D, Brelsford M, O'Reilly E, et al. Ablative Fractional Laser Resurfacing: A Promising Adjunct to Surgical Reconstruction. Mil Med. 2016;181(6). PMID 27244076.",
+          "note": "Case of a man after extensive Fournier's gangrene genital and perineal debridement who, despite successful reconstruction with extensive skin grafting, suffered intractable discomfort from the developed scarring requiring ablative fractional laser resurfacing - the painful-scar anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/27244076/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 27244076; intractable scar discomfort after Fournier's gangrene debridement and grafting"
+        }
+      ]
+    }
+  ]
 }

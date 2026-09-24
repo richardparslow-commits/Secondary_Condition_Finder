@@ -2,8 +2,77 @@
   "id": "hairy-cell-leukemia",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review immunologic, hematologic, infectious, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 41 (2026-09-24): one ASSOCIATION_ONLY draft mapping pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: the mapping asserts association only (etiologicalConsensus NOT_ESTABLISHED, hypothesizedOnly:true) following the uniform anemia-target family norm - all eighteen incoming anemia edges rest at ASSOCIATION_ONLY/NOT_ESTABLISHED, including the chronic-b-cell-leukemias sibling whose scope (CLL/B-CLL aliases) excludes hairy cell leukemia so no parallel-pathway duplication exists - individual claims require confirmed HCL (BRAF V600E or characteristic immunophenotype with bone-marrow hairy-cell infiltration) with a separately established anemia subtype, hemolysis or marrow-failure evidence, disease-versus-treatment chronology, and competing hematologic causes excluded per case."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 41 (2026-09-24): one bounded association edge authored. The Sarvaria 2016 JAMA Oncology review describes hairy cell leukemia as a chronic B-cell leukemia with an indolent course that ultimately results in cytopenias and massive splenomegaly, framing significant anemia among the treatment triggers, the Mackowiak 2024 etiopathogenesis review documents that leukopenia with monocytopenia and granulocytopenia as well as aplastic anemia and/or thrombocytopenia occur in the basic blood count of HCL, and the Plenderleith 1970 series of 12 patients records anemia and thrombocytopenia with the characteristic hairy cells present in peripheral blood and bone marrow in most patients - clonal hairy-cell infiltration of bone marrow physically replaces erythropoietic niches while splenic sequestration and extramedullary hematopoiesis pool red cells, with thrombocytopenic bleeding and treatment myelosuppression as contributing routes (MULTIFACTORIAL). The edge follows the anemia family norm: every incoming anemia edge (eighteen as of this batch) is ASSOCIATION_ONLY/NOT_ESTABLISHED because individual attribution requires anemia subtype documentation and exclusion of iron deficiency, bleeding, renal, inflammatory, and treatment-mediated causes. Duplicate-scope note: chronic-b-cell-leukemias owns its CLL-scoped autoimmune-hemolytic anemia edge (IMMUNE_MEDIATED) with aliases limited to chronic lymphocytic leukemia/b-cell CLL, and the generic leukemia umbrella identity remains zero-edge backlog with its own window - this edge rests on HCL-specific infiltration and sequestration evidence distinct from both (no parallel pathway).",
+    "Negative screens recorded 2026-09-24: (i) no splenomegaly edge - the catalog contains no splenomegaly identity (wrong-target guard; massive splenomegaly is a defining manifestation constitutive of the diagnosis rather than a downstream outcome); (ii) no infection, sepsis, or pneumonia edge - no catalog identity fits (ABSENT screen) and infection risk in HCL is mediated through the neutropenia/monocytopenia of the disease itself (duplicate-mediated guard); (iii) no fatigue or constitutional-symptom edge - no fatigue identity exists and constitutional symptoms are constitutive (wrong-target and constitutive guards); (iv) no neuropathy edge - hairy-cell leukemic neuropathy is a case-report rarity without quantification (zero-record guard); (v) no treatment-response or relapse edge - outcomes of purine-analogue therapy are treatment-state rather than disease outcomes (treatment-state guard). Reopening condition: an HCL-specific cohort quantifying incident anemia by subtype (marrow-failure versus bleeding versus treatment-mediated) with chronology, or a catalog identity for the constitution or infection outcomes."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "anemia",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The Sarvaria 2016 JAMA Oncology review describes hairy cell leukemia as an indolent chronic B-cell leukemia that ultimately results in cytopenias and massive splenomegaly with significant anemia listed among the treatment triggers, the Mackowiak 2024 etiopathogenesis review documents aplastic anemia and/or thrombocytopenia occurring alongside leukopenia with monocytopenia and granulocytopenia in the basic blood count of HCL, and the Plenderleith 1970 clinical series of 12 patients records anemia and thrombocytopenia with characteristic hairy cells in peripheral blood and bone marrow in most patients; the literature documents a reproducible cytopenic picture accompanying HCL at review and series level without establishing incident anemia attributable to HCL in any individual against competing anemia etiologies.",
+        "causationStatus": "The mapping does not assert that hairy cell leukemia caused a distinct anemia disorder in any individual: anemia in HCL populations is multifactorial - marrow infiltration by clonal hairy cells, splenic sequestration with extramedullary hematopoiesis, thrombocytopenic bleeding, and purine-analogue or rituximab myelosuppression all reduce circulating red-cell mass or production, so a single causal arrow would collapse distinguishable routes (chronic-b-cell-leukemias sibling precedent); iron deficiency, chronic kidney disease, anemia of chronic inflammation from comorbidity, gastrointestinal blood loss, and hemolysis independently produce anemia in the same (typically male, over-55) population, and the uniform anemia-target family norm holds every incoming edge at association; individual claims require confirmed HCL with a separately documented anemia subtype (morphology, reticulocyte count, iron/B12/folate, haptoglobin, hemoglobin electrophoresis where indicated), dated marrow and treatment chronology, and exclusion of the competing etiologies with hematology assessment documented."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MULTIFACTORIAL",
+        "primaryVector": "A multi-route red-cell mass reduction: clonal hairy-cell infiltration of bone marrow physically replaces erythropoietic niches and distorts the hematopoietic microenvironment, while massive splenic sequestration and extramedullary hematopoiesis pool and destroy circulating red cells - producing the documented anemia-and-thrombocytopenia cytopenic picture that accompanies the disease at presentation and ultimately declares the treatment trigger - with thrombocytopenic bleeding and treatment myelosuppression as additive contributing routes whose shares are not separated in the located literature, keeping individual attribution an association hypothesis.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The edge asserts an association only: the located condition-specific evidence is two narrative reviews and a small historical case series rather than an HCL cohort quantifying incident anemia by subtype with chronology, anemia in HCL is explicitly multifactorial (infiltration, sequestration, bleeding, treatment myelosuppression) so a single causal arrow would overstate any one route, competing anemia etiologies are common in the same older-male population, and all eighteen incoming anemia edges including the chronic-b-cell-leukemias sibling rest at NOT_ESTABLISHED; no probability estimate is asserted.",
+        "evidenceGaps": "Confirmed hairy cell leukemia (BRAF V600E mutation or characteristic CD19/CD20/CD25/CD103 immunophenotype with bone-marrow hairy-cell infiltration) with dated diagnosis; separately documented anemia subtype with morphology, reticulocyte count, iron/B12/folate studies, haptoglobin and indirect bilirubin where hemolysis is suspected; serial hemoglobin and cytopenia records with chronology against disease activity and treatment courses (cladribine, pentostatin, interferon, rituximab, splenectomy); bone-marrow cellularity and hairy-cell burden documentation at anemia onset; exclusion of iron deficiency, gastrointestinal blood loss, chronic kidney disease, anemia of chronic inflammation, myelodysplasia, and treatment-mediated myelosuppression; hematology assessment of the individual relationship",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Iron deficiency or gastrointestinal blood loss anemia",
+          "Chronic kidney disease or anemia of chronic inflammation",
+          "Treatment-mediated myelosuppression (purine analogues, rituximab)",
+          "Myelodysplastic syndrome or other marrow-failure states",
+          "Autoimmune hemolytic anemia or other hemolytic processes"
+        ]
+      },
+      "evidenceGaps": [
+        "Confirmed hairy cell leukemia (BRAF V600E mutation or characteristic CD19/CD20/CD25/CD103 immunophenotype with bone-marrow hairy-cell infiltration) with dated diagnosis; separately documented anemia subtype with morphology, reticulocyte count, iron/B12/folate studies, haptoglobin and indirect bilirubin where hemolysis is suspected; serial hemoglobin and cytopenia records with chronology against disease activity and treatment courses (cladribine, pentostatin, interferon, rituximab, splenectomy); bone-marrow cellularity and hairy-cell burden documentation at anemia onset; exclusion of iron deficiency, gastrointestinal blood loss, chronic kidney disease, anemia of chronic inflammation, myelodysplasia, and treatment-mediated myelosuppression; hematology assessment of the individual relationship"
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY following the uniform anemia-target family norm (eighteen incoming edges, all NOT_ESTABLISHED) and the chronic-b-cell-leukemias sibling: review and series evidence documents the HCL cytopenic picture with marrow-infiltration and splenic-sequestration mechanisms, while multifactorial route overlap, treatment-myelosuppression confounding, competing common anemia etiologies, and absent subtype-quantified cohorts keep the consensus at NOT_ESTABLISHED with anemia-subtype and alternative-etiology requirements; no probability estimate is asserted.",
+      "sourceReferences": [
+        {
+          "citation": "Sarvaria A, Topp Z, Saven A. Current Therapy and New Directions in the Treatment of Hairy Cell Leukemia: A Review. JAMA Oncol. 2016 Jan;2(1):123-9. PMID 26513168.",
+          "note": "Review describing HCL as an indolent chronic B-cell leukemia that ultimately results in cytopenias and massive splenomegaly with significant anemia among the treatment triggers - the natural-history cytopenia anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/26513168/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 26513168; indolent course ultimately results in cytopenias and massive splenomegaly"
+        },
+        {
+          "citation": "Mackowiak K, Jankowiak M, Szewczyk-Golec K, Holynska-Iwan I. Hairy cell leukemia - etiopathogenesis, diagnosis and modern therapeutic approach. Biochem Med (Zagreb). 2024 Jun 15;34(2):020502. PMID 38882583.",
+          "note": "Etiopathogenesis review documenting leukopenia with monocytopenia and granulocytopenia as well as aplastic anemia and/or thrombocytopenia occurring in the basic blood count of HCL, with splenomegaly among the most common symptoms and BRAF mutation in nearly 100% - the contemporary anemia-and-cytopenia occurrence anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38882583/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 38882583; aplastic anemia and/or thrombocytopenia in basic blood count, BRAF ~100%"
+        },
+        {
+          "citation": "Plenderleith IH. Hairy cell leukemia. Can Med Assoc J. 1970 May 23;102(10):1056-60. PMID 4939244.",
+          "note": "Clinical review of 12 patients documenting that hematologic findings in most patients have been anemia and thrombocytopenia with the characteristic abnormal cells present in peripheral blood and bone marrow - the clinical-series anemia-frequency anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/4939244/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 4939244; 12 patients, anemia and thrombocytopenia in most"
+        }
+      ]
+    }
+  ]
 }

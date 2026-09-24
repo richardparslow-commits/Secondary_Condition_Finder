@@ -607,3 +607,860 @@ Mapping Expansion D1 batch 31 authored five draft-quarantined relationships acro
 Mapping Expansion D1 batch 32 authored four draft-quarantined relationships across four identities: `excoriation-disorder -> scars` (ASSOCIATION_ONLY; behavioral-self-injury wound-repair pathway — the Bowes 2004 report documents compulsive picking producing linear and stellate facial ulcers with hypertrophic and erythematous scarring, the Ekore 2021 study documents excoriation disorder among adolescents and young adults with acne-induced postinflammatory hyperpigmentation and scars, and the Grant 2012 review documents repetitive picking causing tissue damage; guards: coexisting acne and primary dermatologic disease independently scar, postinflammatory hyperpigmentation mimics scar, and individual claims require documented picking preceding documented scars with primary-disease exclusion), `factitious-disorder -> scars` (ASSOCIATION_ONLY; deliberate-self-injury wound-repair pathway on the dermatitis-artefacta literature — the Alcolado 1993 case documents four decades of persistent self-excoriation of a scar site producing an enlarged disfiguring lesion and death from Marjolin-type malignant transformation, the Rodriguez Pichardo 2013 review of 201 patients documents chronic self-inflicted lesions including ulcers, and the Choudhary 2009 case documents keloids and foreign-body granuloma from self-inflicted injury; guards: diagnosis by exclusion, organic disease and self-harm from other psychiatric conditions as confounders, duplicate-scope note that excoriation-disorder carries the compulsive-picking scars edge while this identity carries the conscious-self-injury pathway), `exophthalmos -> keratitis` (ASSOCIATION_ONLY; incomplete-eyelid-closure exposure-keratopathy pathway on the bell-s-palsy ME-35 mechanism family — the Rodriguez-Garcia 2025 Surv Ophthalmol review names ocular globe protrusion among the causes of eyelid insufficiency producing exposure keratopathy with progression from superficial punctate keratitis to epithelial defects, stromal melting, and vision loss, and the Gheorghe 2007 review identifies exophthalmos/proptosis among the most frequent causes of lagophthalmos; guards: exposure-pattern corneal findings and objective lagophthalmos required, thyroid eye disease contributes independent ocular-surface disease, and the infectious, contact-lens, autoimmune, neurotrophic, traumatic, and medication-related alternative causes the ME-35 guard preserves remain excluded per case), and `exploding-head-syndrome -> insomnia` (ASSOCIATION_ONLY with a reverse-direction guard; sleep-wake transition dysregulation co-occurrence pathway — the Kirwan 2021 135-participant young-adult study documents lifetime EHS in 20.0% with participants experiencing EHS reporting poorer PSQI sleep quality and more anxiety symptoms and parasomnia co-occurrence at OR 1.62, the Sharpless 2014 review documents the parasomnia identity with five unresolved etiological theories, and the Mars 2025 StatPearls entry anchors the transition-timing diagnostic criteria; guards: the association is cross-sectional and univariate, causal direction is unresolved because arousal instability may precipitate episodes as well as result from them, and polysomnographic exclusion of seizure, hypnic-headache, and sleep-apnea mimics is required). `extensor-digitorum-brevis-strain` was deferred on evidence-ground zero-record screening under the camptodactyly precedent: targeted PubMed queries returned only anatomy, surgical-flap (Chattar-Cora 2006, del Pinal 2000), and anatomic-variant (Coskey 2022 EDB manus) literature with no clinical cohort or case series of EDB strain outcomes, and the chronic-ankle-pain and gait outcomes the strain plausibly threatens are documented for the peroneal and ligamentous identities rather than the EDB identity, so an edge would force a causal claim the evidence does not carry. Process notes: all eleven citations were NCBI-verified via efetch BEFORE file authoring (batch-30 lesson institutionalized, second consecutive clean verification cycle); two write-tool file writes were emitted with corrupted placeholder fragments and non-canonical URL domains, both were caught by the post-write structural self-audit, restored with targeted string replacements, and re-verified — the final files parse with the exact reference shape (citation, note, verificationScope, authorityCategory, sourceUrl, verified, sourceCheckedOn, sourceLocator) and a repo-wide scan confirmed zero residual contamination. All four new edges remain ASSOCIATION_ONLY, NOT_ESTABLISHED, hypothesizedOnly:true, and pending qualified-human citation verification; no primary publication state changed. Registry state after batch 32: 493 relationships (419 explicit guards / 74 legacy boundaries); 725 live references with 380 verified and 345 pending qualified-human verification; 661 source entities (346 active / 306 pending). Packet regenerated to 130 worksheets / 345 rows, matching live debt exactly. Remaining backlog by the reproducible dual-marker zero-edge/undispositioned filter (windowed-verb ledger reading): 394 drafts, of which the next five are `farmer-s-lung`, `fasciitis`, `fecal-impaction`, `female-infertility`, and `female-reproductive-disorders` (each pre-screened clean against every ledger). The uncommitted tree now holds thirty-two batches of D1 work — landing the PR through the CI gate remains the standing recommendation before continuing.
 Mapping Expansion D1 batch 33 authored four draft-quarantined relationships across four identities, including one obstruction-mechanical DIRECT_CAUSATION edge: `farmer-s-lung -> pulmonary-fibrosis` (ASSOCIATION_ONLY on the bird-fancier-s-lung and bagassosis HP-family precedents; immune-complex alveolitis-to-fibrosis pathway — the Braun 1979 141-patient FL cohort with mean 14.8 years of follow-up documents radiographic interstitial changes in 39% of survivors, the Lalancette 1993 33-patient long-term outcome study with HRCT and BAL fibrosing markers characterizes persistent fibrotic change, and the Soumagne 2017 paper records fibrosis as the most frequent finding in chronic FL while documenting emphysema across three cohort studies as the alternative chronic outcome; guards: acute FL frequently resolves without fibrosis, progression is exposure- and recurrence-dependent, alternative-ILD causes excluded, and the three HP-family edges are sibling exposure identities with distinct antigen literatures rather than synonym restatements), `fasciitis -> amputation-or-loss-of-use` (ASSOCIATION_ONLY; necrotizing-fasciitis fascial-plane destruction pathway under the identity's alias — the White 2026 Bone Joint J review documents incidence 0.63 per 100,000 with limbs affected in 40% of cases and 22% 30-day mortality, the Itsiopoulos 2020 case report with literature review is dedicated to the amputation decision in NF, and the Momtaz 2024 cohort documents amputation and mortality as the composite unfavorable outcome with rates varying by socioeconomic status; guards: the amputation decision is care-pathway- and comorbidity-mediated, matching the ASSOCIATION_ONLY convention of the target's three existing vascular and neuroarthropathic edges, with vascular, diabetic, and traumatic amputation etiologies excluded), `fecal-impaction -> fecal-incontinence` (DIRECT_CAUSATION, PROBABLE, hypothesizedOnly:false under the obstruction-mechanical precedents — urethral-stricture -> hydronephrosis and esophageal-stricture -> dysphagia; mechanical-overflow pathway — the Wald 2008 management review lists fecal incontinence among the clinical manifestations of impaction, the Wald 2005 review documents impaction-with-overflow-incontinence as identifiable and appropriately treatable (the disimpaction-response dependency, the Pregun treatment-response pattern), and the Fox 1988 geriatric series documents the impaction-with-incontinence presentation; scope: documented retained stool mass with overflow leakage resolving on disimpaction, sphincter-insufficiency, neurogenic, prolapse, and diarrheal incontinence excluded; the target's seven incoming edges all sit on other mechanisms so this is no parallel pathway), and `female-infertility -> depressive-disorder` (ASSOCIATION_ONLY with reverse-direction guard; infertility-burden psychological pathway — the Crawford 2017 prospective cohort of 416 infertile women records depression and anxiety screening positivity in approximately 40% (twice fertile controls) with depressed screeners less likely to initiate treatment, the Kucur Suna 2016 BDI study documents depression across infertility etiologies in 142 women, and the Yang 2024 analysis is cited as live counter-evidence documenting the opposite arrow (depression to infertility risk); guards: screening-based rather than structured-diagnosis quantification, documented reverse arrow, and a duplicate-scope note distinguishing this state-burden pathway from the endometriosis and PCOS disease-symptom depressive-disorder edges). `female-reproductive-disorders` was deferred on duplicate-scope class-identity grounds under the diabetes-mellitus (batch 22) and eczema (batch 27) precedents: the alias 'gynecologic disorders' is a class label rather than a disease entity, the catalog carries six typed gynecologic children (endometriosis, ovarian-cysts, pelvic-inflammatory-disease, polycystic-ovary-syndrome, uterine-fibroids, vaginismus) plus ovarian-cancer with four of the six already carrying published outgoing edges, any umbrella edge would restate a typed child's pathway under the class identity, and a class has no condition-specific literature of its own — recorded in-file with reopening conditions. Process notes: all twelve citations were NCBI-verified via efetch BEFORE file authoring (batch-30 lesson institutionalized, third consecutive clean verification cycle); two candidate PMIDs resolved to off-topic papers during screening (a rituximab case for the farmer's-lung fibrosis query and a spinal-dysraphism chapter for the impaction query) and were replaced before any file write; the post-write structural self-audit passed on the first attempt for all five files with zero contamination. All four new edges carry the full CRG trio; the three association edges remain NOT_ESTABLISHED with hypothesizedOnly:true, and no primary publication state changed. Registry state after batch 33: 497 relationships (423 explicit guards / 74 legacy boundaries); 737 live references with 380 verified and 357 pending qualified-human verification; 673 source entities (346 active / 318 pending). Packet regenerated to 134 worksheets / 357 rows, matching live debt exactly. Remaining backlog by the reproducible dual-marker zero-edge/undispositioned filter (windowed-verb ledger reading): 389 drafts, of which the next five are `female-sexual-arousal-disorder`, `femoral-neuropathy`, `fissured-tongue`, `fitz-hugh-curtis-syndrome`, and `flatfoot` (each pre-screened clean against every ledger). The uncommitted tree now holds thirty-three batches of D1 work — landing the PR through the CI gate remains the standing recommendation before continuing.
 Mapping Expansion D1 batch 34 authored three draft-quarantined relationships across three identities: `femoral-neuropathy -> unexplained-chronic-pain` (ASSOCIATION_ONLY as a case-matching edge under the batch-30 episcleritis and erythromelalgia pain-constitutive precedent; peripheral-nerve-injury central-sensitization pathway — the Santilli 2024 Mayo Clinic review of 159 isolated femoral neuropathy patients documents pain as a presenting feature in 53% with weakness in 96% and only 48% achieving nearly complete recovery over a mean 14.8-month course, the Martinoli 2013 review documents that hip-region neuropathies may cause chronic pain and disability, and the Malik 2023 case documents severe neuropathic pain with femoral nerve palsy; guards: pain is presenting rather than a proven downstream outcome, the documented nerve lesion is itself a generator under the target's competing-generator criteria, and electrodiagnostic confirmation with lumbar, vascular, hip, CRPS, and centralized generators excluded — with two in-file negative screens: falls/knee-injury outcomes returned only case-level records (a five-patient immobilizer series and the Kromoser recurrent-falls case) with no cohort and no catalog falls identity, and the knee-hit set is dominated by deficit descriptions), `fitz-hugh-curtis-syndrome -> female-infertility` (ASSOCIATION_ONLY on the shared-driver pattern; shared-infection dissemination pathway — the Kobayashi 2006 pathological study of 3,568 laparoscopies with 108 FHCS cases stratified 104 chronic cases by hydrosalpinx status documenting fallopian-tube damage, the Sharma 2002 320-woman study finding incidental FHCS across infertility-workup laparoscopies, and the Onoh 2016 case documenting FHCS with bilateral tubal blockage in a four-year infertility workup; guards: the same chlamydial or gonococcal episode produces both perihepatitis and tubal scarring so attribution runs through documented tubal factor, with microbiologic confirmation and male-factor, ovulatory, endometriosis, and prior-surgery exclusion; the peritoneal-adhesions alternative target was rejected under ME-41 because violin-string adhesions are constitutive of FHCS itself), and `flatfoot -> osteoarthritis` (ASSOCIATION_ONLY consistent with the osteoarthritis target's seven incoming edges; altered-load-axis biomechanical pathway — the Liang 2025 population epidemiological analysis of knee OA and flatfoot, the Zhang 2022 study of 95 knee-OA patients reporting strong flatfoot-severity-to-knee-symptom correlation, and the Patil 2024 study associating pes planus with medial-compartment knee OA through altered lower-limb biomechanics; guards: cross-sectional designs without temporal ordering, age and BMI shared drivers, live reverse gait-compensation arrow, adult symptomatic scope — pediatric flatfoot is physiologic per the Carr 2016 review context, with an in-file note recording that the Wearing 2006 pathomechanics review was screened and rejected for a plantar-fasciitis alternative edge because it explicitly records histological evidence failing the tensile-strain doctrine). `female-sexual-arousal-disorder` was deferred on evidence-gap and nosology-stability grounds: the targeted FSAD-specific mood query returned ZERO records and all seven top broader-query hits fail the condition-specific outcome bar (identity review, distress-instrument validation, prevalence study without mood figures, ISSM review without outcome quantification, three sildenafil RCTs), DSM-5 merged FSAD with HSDD into Female Sexual Interest/Arousal Disorder while the catalog carries the DSM-IV-era identity, and the batch-26 GPPPD-merger precedent governs this identity family. `fissured-tongue` was deferred on zero-record and directionality grounds: the dedicated identity paper (PMID 34447218) documents only benignity, the sole quantified association (Cetin 2025, PMID 41121042) is direction-reversed (fissured tongue as a symptom-burden correlate inside a geographic-tongue-recruited sample), no Melkersson-Rosenthal identity exists in the catalog, and a static benign developmental variant with no outcome cohort fails the camptodactyly evidence bar. Process notes: all nine citations were NCBI-verified via efetch BEFORE file authoring (batch-30 lesson institutionalized, fourth consecutive clean verification cycle); the meralgia-paresthetica and squat-posture candidates resolved to wrong-nerve and wrong-meaning papers during screening and were replaced pre-write; the post-write structural self-audit passed on the first attempt for all five files with zero contamination. All three new edges are ASSOCIATION_ONLY, NOT_ESTABLISHED, hypothesizedOnly:true, and pending qualified-human citation verification; no primary publication state changed. Registry state after batch 34: 500 relationships (426 explicit guards / 74 legacy boundaries); 746 live references with 380 verified and 366 pending qualified-human verification; 682 source entities (346 active / 327 pending). Packet regenerated to 137 worksheets / 366 rows, matching live debt exactly. Remaining backlog by the reproducible dual-marker zero-edge/undispositioned filter (windowed-verb ledger reading): 384 drafts, of which the next five are `flexor-hallucis-longus-tendinitis`, `fournier-s-gangrene`, `fregoli-syndrome`, `freiberg-s-infraction`, and `frontal-fibrosizing-alopecia` (each pre-screened clean against every ledger). The uncommitted tree now holds thirty-four batches of D1 work — landing the PR through the CI gate remains the standing recommendation before continuing.
+
+Mapping Expansion D1 batch 35 authored five draft-quarantined relationships across four identities: `flexor-hallucis-longus-tendinitis -> unexplained-chronic-pain` (ASSOCIATION_ONLY as a case-matching edge under the batch-30 episcleritis and erythromelalgia and batch-34 femoral-neuropathy pain-constitutive precedent; overuse-nociception pathway - the Rietveld 2018 systematic review of posterior ankle impingement and FHL tendinopathy treatment in dancers (27 studies, 324 dancers) documents pain-directed outcomes with good-to-excellent results in 89% and mean 11-week return to dance, the Baillie 2022 case-control study of 82 elite participants documents posterior ankle pain as the clinical feature set evaluated against FHL imaging findings, and the Ivanova 2023 review documents plantarflexion overload producing FHL tendonitis; guards: pain is constitutive/presenting rather than a proven downstream outcome, the documented tendon pathology is itself a generator under the target's competing-generator criteria, and osteochondral, tarsal, entrapment, inflammatory, and referred lumbar generators are excluded per case), `fournier-s-gangrene -> scars` (ASSOCIATION_ONLY; destruction-and-reconstruction fibrosis pathway - the Crane 2026 penile-resurfacing series of 36 patients names Fournier's gangrene among the scar-contracture indications, the Tremblay 2026 rehabilitation evaluation documents genital graft complications after necrotizing fasciitis and Fournier's gangrene including pain, contractures, and hypertrophic scars that impair walking, sitting, voiding, bowel elimination, and sexual function, and the Griffin 2016 case documents intractable scar discomfort after Fournier's debridement and grafting requiring laser resurfacing; guards: scar burden is defect-size, healing-path, and graft-take mediated with burn, traumatic, unrelated surgical, hidradenitis, and keloid-prone perineal scarring excluded; two in-file negative screens: the 2026 survivor systematic review (PMID 41982033) fecal-incontinence and urinary findings are procedure-mediation confounded (diversionary colostomy and catheter histories, wrong-identity guard) so no incontinence edge was authored, and the seven-center survivor study (PMID 39837294) self-esteem and quality-of-life findings are screening-level with 18 of 44 responders so no depressive edge was authored; amputation deliberately avoided under duplicate-scope with the fasciitis identity's batch-33 necrotizing-fasciitis edge), `freiberg-s-infraction -> osteoarthritis` (ASSOCIATION_ONLY following the avascular-necrosis osteoarthritis precedent - osteonecrotic-collapse incongruity pathway; the Kilmartin 2020 hemiarthroplasty series of 23 consecutive patients treats second-MTP osteoarthrosis and Freiberg disease as one surgical pathology continuum, the Lee 2013 operative series reports Smillie-staged Freiberg surgery with joint debridement, and the Carro 2004 case documents a Smillie stage IV late-stage lesion treated as established secondary degeneration; guards: no natural-history cohort quantifies progression, early-stage Smillie I-II arrest is documented behavior, primary idiopathic second-MTP degenerative arthritis with a long second metatarsal variant (PMID 23892518 screened in-file) is an independent etiology, and the osteoarthritis target's eight incoming edges include the femoral-head-scoped avascular-necrosis collapse precedent this metatarsal-head pathway extends), and `frontal-fibrosizing-alopecia -> loss-of-eyebrow` and `frontal-fibrosizing-alopecia -> depressive-disorder` (two bounded associations - brow edge on the Doche 2025 dedicated clinical and histopathological study of 25 patients, the Kerkemeyer 2021 classic-phenotype review (bilateral eyebrow loss with symmetrical frontotemporal recession), and the Melián-Olivera 2025 review quantifying eyebrow alopecia at 43-94.9% in male FFA, with guards: temporal order not asserted because brow loss may precede scalp recognition and alopecia areata, trichotillomania, dermatitis, thyroid disease, medications, and age-related thinning are excluded madarosis causes; depressive edge on the Melián-Olivera 2026 multicenter study of 81 men documenting moderate-to-severe emotional impairment in 39.5% with HADS distress, the Saceda-Corralo 2018 FFA health-related quality-of-life cohort, and the Chiang 2015 study of 105 primary cicatricial alopecia patients, with guards: screening-level cross-sectional instruments rather than structured diagnosis, absent temporality with premorbid mood uncontrolled, and the live reverse arrow; FFA-to-alopecia and FFA-to-scarring-alopecia edges rejected as constitutive under the wrong-identity guard). `fregoli-syndrome` was deferred on directionality and evidence-ground grounds: the located literature documents primary psychiatric, neurodegenerative, and brain-injury conditions producing Fregoli episodes (PMID 30183352 acquired-brain-pathology review, PMID 22922811 DMS in severe OCD, PMID 29754115 DMS spectrum review, PMID 42436607 post-ABI scoping review that is Capgras-dominated and almost entirely single-case) while the targeted outcome and treatment queries returned only that scoping review and zero records respectively, with no Fregoli-specific comorbidity quantification available, so mirroring the capgras and cotard depressive edges would import another identity's evidence base and force the documented reverse direction (reverse-arrow guard, batch-33 pattern; euthyroid-sick-syndrome direction-inverted precedent). Process notes: all twenty candidate citations were NCBI-verified via efetch BEFORE file authoring with a 20/20 title match (batch-30 lesson institutionalized, fifth consecutive clean verification cycle); the batch's opening disposition screen initially computed the backlog as 377 because it matched unbackticked id mentions and read a batch-34 adjacency false positive where an unbackticked mention of the plantar fasciitis identity sat inside the 160-character window of the disposition wording that belonged to female-sexual-arousal-disorder - the documented rule is the backticked-id window, which reproduces the batch-34 figure of 384 exactly, and the backtick-anchored filter is what the closing count uses; the post-write structural self-audit passed on the first attempt for all five files with zero contamination. All five new edges are ASSOCIATION_ONLY, NOT_ESTABLISHED, hypothesizedOnly:true, and pending qualified-human citation verification; no primary publication state changed. Registry state after batch 35: 505 relationships (431 explicit guards / 74 legacy boundaries); 761 live references with 380 verified and 381 pending qualified-human verification; 697 source entities (346 active / 342 pending). Packet regenerated to 142 worksheets / 381 rows, matching live debt exactly. Remaining backlog by the reproducible dual-marker zero-edge/undispositioned filter (windowed-verb ledger reading on backticked ids): 379 drafts, of which the next five are `fungal-skin-infection`, `gamekeeper-s-thumb`, `ganglion-cysts`, `gastrinoma`, and `gastritis` (each pre-screened clean against every ledger). The tree now holds thirty-five batches of D1 work, of which batches 1-34 are landed on origin/main via PR #469 - landing batch 35 through the CI gate is the immediate next step before batch 36.
+
+Mapping Expansion D1 batch 36 authored six draft-quarantined relationships across five identities, including two DIRECT_CAUSATION edges: `fungal-skin-infection -> cellulitis` (ASSOCIATION_ONLY; fungal-maceration barrier-break portal-of-entry pathway - the Björnsdóttir 2005 prospective case-control study of 100 cellulitis cases and 200 matched controls places particular emphasis on dermatophytic foot infection and toe-web bacterial colonization as predisposing factors, the Bristow 2009 structured review of 16 studies evaluates fungal foot infection as a cellulitis risk factor while recording that only two case-controls used microbiological diagnosis, and the Solomon 2021 cohort of 200 toe-web infections documents that most are secondary to chronic dermatophytosis; guards: no eradication-response trial exists, venous, edema, obesity, diabetes, and non-fungal portals are excluded per case, duplicate-scope noted against the dermatitis and contact-dermatitis cellulitis edges), `gamekeeper-s-thumb -> osteoarthritis` (ASSOCIATION_ONLY on the acl-injury and ankle-strain post-traumatic precedent; chronic-instability contact-stress pathway - the Christensen 2016 long-term follow-up of chronic thumb UCL repairs at mean 24.5 years documents some degree of osteoarthritis in 88% of evaluated patients with radiographic grade correlations, the Daley 2020 review characterizes chronic collateral ligament insufficiency as a distinct entity, and the Fairhurst 2002 series documents reconstruction of chronic gamekeeper's laxity in 22 thumbs with two having ongoing MCP pain; guards: the 88% derives from a 12-patient surgically-treated subset, primary first-carpometacarpal basal-thumb osteoarthritis at a different joint is the dominant alternative, and the skier-s-thumb acute sibling retains its own pathway), `ganglion-cysts -> carpal-tunnel-syndrome` (ASSOCIATION_ONLY on the de-quervain carpal-tunnel precedent; space-occupying mass-effect pathway - the Yalcinkaya 2014 report documents two unilateral carpal-tunnel cases caused by occult ganglia, the Kang 2009 series documents 11 patients operated for space-occupying-lesion carpal tunnel syndrome (pathology including ganglion) with symptom alleviation in all cases, and the Alsharif 2026 case documents a histopathology-confirmed flexor-sheath ganglion compressing the median nerve with complete resolution after excision; guards: idiopathic carpal tunnel is the dominant etiology, ganglia are common incidental findings, imaging and electrodiagnostic confirmation with alternative masses excluded is required), `gastrinoma -> peptic-ulcer-disease` (DIRECT_CAUSATION, PROBABLE, hypothesizedOnly:false under the obstruction-mechanical and structural-lesion precedents; gastrin-hypersecretion acid-injury cascade - the Norton 2005 review defines Zollinger-Ellison syndrome as severe peptic ulcer disease caused by gastric acid hypersecretion secondary to the gastrin-secreting tumor, the Wilcox 2011 prospective 20-year trial of 72 patients documents stereotypical ulcer presentation with median nine-year symptom delay and sustained lansoprazole response, and the Guarnotta 2018 review documents proton pump inhibition as the cornerstone controlling acid hypersecretion; scope: biochemically confirmed syndrome with endoscopic ulcer, chronology dating the tumor's biological presence rather than diagnosis, Helicobacter, NSAID, and stress etiologies excluded per case), and `gastritis -> peptic-ulcer-disease` (DIRECT_CAUSATION, PROBABLE, hypothesizedOnly:false on the esophagitis-to-stricture mucosal-injury pattern; inflammation-to-defense-failure-to-ulceration chain - the Naito 2002 mechanisms review documents antral-type gastritis with excessive acid secretion and high duodenal-ulcer risk, the Ford 2016 Cochrane review documents 95% of duodenal and 70% of gastric ulcers as Helicobacter-associated with eradication reducing relapse, and the Tomtitchong 2012 meta-analysis documents 5.2% one-year recurrence after eradication; scope: documented gastritis predating endoscopically confirmed ulcer with erosion-versus-ulcer depth distinction and NSAID-only, stress, gastrinoma, and idiopathic etiologies excluded) plus `gastritis -> anemia` (ASSOCIATION_ONLY; iron-restriction pathway with shared-driver attribution guard - the Hudak 2017 updated meta-analysis documents pooled OR 1.72 for iron-deficiency anemia in infected persons across 14 observational studies, the Zhang 2010 meta-analysis of eight randomized trials documents accelerated ferritin improvement after eradication (mean difference 7.74 microg/L), and the Qu 2010 meta-analysis documents pooled OR 2.22 with heterogeneous trial results; guards: no Helicobacter identity exists so attribution runs through the gastritis mucosal mediator, iron-study-confirmed iron-deficiency phenotype required, and menstrual, renal, nutritional, inflammatory-bowel, other bleeding, malignancy, and hemoglobinopathy causes excluded; in-file negative screens reserve the gastric-cancer and vitamin-B12 pathways to the autoimmune-metaplastic-atrophic-gastritis identity, which already carries the atrophic-to-stomach-cancer edge). No deferrals in this batch. Process notes: all eighteen citations were NCBI-verified via efetch BEFORE file authoring with an 18/18 title match (batch-30 lesson institutionalized, sixth consecutive clean verification cycle); the post-write structural self-audit caught one dual-shape evidenceGaps divergence in the gamekeeper's-thumb file caused by a carpometacarpal spelling variant between the profile string and the top-level array, fixed with a targeted replacement and re-audited to zero errors. All six new edges carry the full CRG trio (two DIRECT at PROBABLE with hypothesizedOnly:false, four ASSOCIATION_ONLY with NOT_ESTABLISHED and hypothesizedOnly:true) and remain pending qualified-human citation verification; no primary publication state changed. Registry state after batch 36: 511 relationships (437 explicit guards / 74 legacy boundaries); 779 live references with 380 verified and 399 pending qualified-human verification; 715 source entities (346 active / 360 pending). Packet regenerated to 148 worksheets / 399 rows, matching live debt exactly. Remaining backlog by the reproducible dual-marker zero-edge/undispositioned filter (windowed-verb ledger reading on backticked ids): 374 drafts, of which the next five are `gastrointestinal-cancers`, `gastrointestinal-stromal-tumors`, `genitofemoral-nerve-neuralgia`, `geographic-tongue`, and `gerstmann-s-syndrome` (each pre-screened clean against every ledger; note the gastrointestinal-cancers identity is a class-label candidate for the duplicate-scope screen and geographic-tongue was already referenced in the fissured-tongue deferral). The tree now holds thirty-six batches of D1 work, of which batches 1-34 are landed on origin/main via PR #469 while batches 35-36 await the CI gate - landing both through CI is the immediate next step before batch 37.
+
+Mapping Expansion D1 batch 37 authored four draft-quarantined ASSOCIATION_ONLY relationships across two identities, with three deferrals: `gastrointestinal-stromal-tumors -> anemia` (bleeding-lesion iron-loss pathway matching the peptic-ulcer anemia edge's category - the Askarova 2026 case report documents a giant jejunal GIST presenting with four months of melena and hemoglobin 60 g/L requiring transfusion with chronic mucosal ulceration as the stated iron-loss mechanism, the Yacob 2015 single-centre review of 150 GIST cases documents intestinal bleeding (40%) among the commonest presentations, and the Aourarh 2026 report background documents that small-bowel GISTs usually present with gastrointestinal bleeding and anemia; guards: subset rather than universal progression, chronology confounded by the tumor predating its own diagnosis, and iron-study-confirmed phenotype with menstrual, renal, nutritional, inflammatory-bowel, other-bleeding, malignancy, hemoglobinopathy, and hemolysis etiologies excluded), `gastrointestinal-stromal-tumors -> malnutrition-residuals` (tumor-burden catabolic and intake-limiting pathway distinct from the biliary sibling's obstructive mechanism - the Ou 2025 GLIM-criteria outpatient study documents malnutrition in 27.75% and high nutritional risk in 18.50% of GIST outpatients with GLIM malnutrition significantly affecting progression-free survival, the Ding 2021 study documents 77.76% of newly diagnosed patients at nutritional risk (NRS2002) with 10.09% PG-SGA incidence, and the Gu 2025 body-composition cohort documents sarcopenia (HR 3.067) and myosteatosis (HR 6.985) as independent disease-free-survival predictors; guards: cross-sectional design without onset chronology, TKI toxicity and postoperative malabsorption as separable co-drivers, and GLIM/PG-SGA confirmation with non-tumor nutritional etiologies excluded), and `gastrointestinal-stromal-tumors -> depressive-disorder` (diagnosis-and-treatment burden pathway matching the stomach-cancer and frontal-fibrosizing-alopecia depressive edges - the van de Wal 2024 prospective study of 328 GIST patients documents 13% depression and 15% anxiety on HADS with current TKI treatment associated with depression, the van de Wal 2024 financial-difficulties study documents significantly lower global quality of life and functioning under financial toxicity, and the van de Wal 2023 coping-style study documents psychological distress and HRQoL burden; guards: screening-instrument cutoffs rather than diagnostic interviews with source-recorded norm-comparable prevalence, separable TKI and financial co-drivers, and diagnostic-standard assessment with pre-existing psychiatric history documented) plus `genitofemoral-nerve-neuralgia -> unexplained-chronic-pain` (case-matching pain edge on the femoral-neuropathy and episcleritis precedent - the Lobaina 2024 StatPearls chapter documents genitofemoral neuralgia as a chronic painful neuropathic condition with constant burning inguinal-genital pain and as a common cause of groin pain in both sexes, the Lakhiani 2026 compression-neuropathy review documents that genitofemoral among groin neuropathies requires exclusion of proximal pathology and confirmatory nerve blocks, and the Alfarawan 2025 series documents refractory neuropathic groin pain of at least six months with imaging exclusion of non-neuropathic causes and pain scores falling from 7.8 to 1.2 after neurectomy; guards: pain largely constitutive of the neuralgia so the edge records presentation-and-workup matching rather than a distinct downstream arrow, with block- or imaging-confirmed diagnosis and lumbar, urogenital, nephrolithiasis, endometriotic, hip, overlapping-ilioinguinal, and central-sensitization etiologies excluded). Deferrals: `gastrointestinal-cancers` on duplicate-scope class grounds - the catalog carries organ-specific identities (esophageal-, stomach-, colorectal-, biliary-tract-, liver-, pancreatic-, small-intestine-cancer) with their own edges so any umbrella edge would run parallel pathways to the member identities' evidence (the batch-22 diabetes-mellitus, batch-27 eczema, and batch-33 female-reproductive-disorders class bans), and the umbrella's mixed histologies and organs defeat a single mechanism; `geographic-tongue` on wrong-identity/synonym-duplicate grounds - geographic tongue and benign migratory glossitis name the same disease (the Kalra 2024 report title reads benign migratory glossitis or geographic tongue) while benign-migratory-glossitis already carries the psoriasis edge, so mapping both identities would duplicate one pathway (reopening via governance merge); `gerstmann-s-syndrome` on directionality and constitutive-component grounds - the Sanjo 2016 PML report, Tanei 2012 melanoma-metastases report, and Russell 2005 parietal-glioma series all document lesions producing Gerstmann manifestations (reverse arrow for outcome purposes), zero records quantify Gerstmann-specific downstream outcomes, and the tetrad's components are constitutive of the syndrome (ME-41 phenotype barrier) with upstream stroke/tumor identities already owning the lesion-to-deficit direction. Process notes: all twelve citations were NCBI-verified via efetch BEFORE file authoring with a 12/12 title match (seventh consecutive clean verification cycle); the post-write structural self-audit passed on the first attempt with zero contamination; the backlog screen opened at a one-count discrepancy (373 versus the batch-36 end state of 374) traced to a deviation in the author's own filter - the pre-window disposition rule checks reaffirm-verbs (reaffirmed, reaffirmation) only, and including bare "retained" created a cross-row adjacency false positive on strongyloidiasis (the retained belonged to histoplasmosis's adjacent table row); with the canonical rule restored the filter reproduced 374 exactly before any batch-37 file was written. All four new edges carry the full CRG trio at ASSOCIATION_ONLY with NOT_ESTABLISHED and hypothesizedOnly:true and remain pending qualified-human citation verification; no primary publication state changed. Registry state after batch 37: 515 relationships (441 explicit guards / 74 legacy boundaries); 791 live references with 380 verified and 411 pending qualified-human verification; 727 source entities (346 active / 372 pending). Packet regenerated to 152 worksheets / 411 rows, matching live debt exactly. Remaining backlog by the reproducible dual-marker zero-edge/undispositioned filter (windowed-verb ledger reading on backticked ids): 369 drafts, of which the next five are `giant-cell-myocarditis`, `gigantism`, `gingivitis`, `glaucoma`, and `glomus-tumor` (each pre-screened clean against every ledger; glomus-tumor should be screened against the existing vascular-tumor identities). The tree now holds thirty-seven batches of D1 work, of which batches 1-34 are landed on origin/main via PR #469 while batches 35-37 await the CI gate - landing all three through CI is the immediate next step before batch 38.
+
+Mapping Expansion D1 batch 38 authored five draft-quarantined relationships across four identities, including one DIRECT_CAUSATION edge: `giant-cell-myocarditis -> congestive-heart-failure` (DIRECT_CAUSATION, PROBABLE, hypothesizedOnly:false under the eosinophilic-myocarditis precedent - granulomatous T-cell-mediated myocyte destruction reducing contractile mass until pump failure; the Kundnani 2026 outcomes review documents new-onset heart failure refractory to usual therapy as the characteristic clinical onset with a frequently fulminant fatal course, the Sacher 2025 biopsy-confirmed case documents giant cell myocarditis as a rare rapidly progressive inflammatory cardiomyopathy often manifesting with heart failure or ventricular arrhythmias, and the Harling 2026 report documents fatal rapidly progressing biventricular heart failure; scope: specialist- or biopsy-confirmed disease with new-onset dysfunction documented during the course, exclusion of ischemic, valvular, tachycardia-mediated, peripartum, toxic-metabolic, familial, and cardiac-sarcoidosis giant-cell-mimic etiologies per case) and `giant-cell-myocarditis -> cardiac-arrhythmia` (ASSOCIATION_ONLY matching the cardiac-inflammatory-disease and cardiomyopathy arrhythmia edges - inflammation-and-fibrotic-scar re-entry substrate; the Jaiswal 2025 propensity-score comparison documents distinct ventricular-tachycardia and conduction-block burdens versus cardiac sarcoidosis at six months, the Bartz-Overman 2024 report documents two fulminant cases with ventricular arrhythmias, and the Jakulla 2025 report documents an electrical storm with pleomorphic ventricular tachycardia confirmed on endomyocardial biopsy; guards: subset presentation without incidence cohorts, sarcoid mimic, and independent rhythm etiologies excluded) plus `gingivitis -> periodontitis` (ASSOCIATION_ONLY with an explicit shared-driver guard - subgingival biofilm drives both diseases; the Lang 2024 natural-history review of the Sri Lanka and Oslo studies documents the role of gingivitis in the pathogenesis of attachment loss with continuous gingivitis marking the progression trajectory, the LaMonte 2021 cohort of 1,016 postmenopausal women documents baseline microbiome and gingival status associated with radiographic progression five years later (the confound itself), and the Papapanou 2018 2017-World-Workshop consensus stages and grades periodontitis with case-by-case progression risk; guards: baseline staging, susceptibility modifiers, and non-plaque etiologies addressed per case), `glaucoma -> visual-impairment` (ASSOCIATION_ONLY following the eye-identity cluster norm where six-of-seven incoming visual-impairment edges are association-only; the Tham 2014 meta-analysis documents glaucoma as the leading cause of global irreversible blindness with 3.54% prevalence and 111.8 million projected by 2040, the Soh 2021 meta-analysis documents more than half of cases undetected globally, and the Salari 2025 advanced-glaucoma series carries the millions-of-impairment burden framing; guards: treated-minority progression, standardized impairment criteria with chronology, cataract/macular/corneal co-pathology excluded; no blindness edge authored because blindness has zero incoming edges catalog-wide), and `glomus-tumor -> unexplained-chronic-pain` (ASSOCIATION_ONLY case-matching on the femoral-neuropathy, episcleritis, and genitofemoral precedent - nerve-rich glomus-body excitation producing severe cold-exacerbated focal pain with years-long diagnostic delay; the Mostafa 2026 report documents chronic unexplained fingertip pain with the classic triad and Love-test guidance, the Pandey 2026 report documents a seven-year average misdiagnosis delay, and the Park 2024 report documents pain more than five times daily resolving after excision; guards: pain largely constitutive of the tumor so the edge records presentation-and-workup matching, histopath confirmation with digital-pain mimickers excluded). One deferral: `gigantism` on evidence-gap/zero-record grounds - targeted heart-failure, cardiomyopathy, and diabetes-outcome queries return only adult acromegaly records (PMID 38810595, 34795812), syndromic overgrowth cases (PMID 30592149, 35713067), Carney-complex surveillance (PMID 20301463), or unrelated records, the dedicated pediatric literature is surgical (Kumar 2026 cure rates with post-treatment hypopituitarism - treatment-mediated, reverse direction) and molecular (PMID 39904816) without comorbidity quantification, a pediatric quality-of-life query returns zero records, and the published acromegaly identity already owns the growth-hormone-excess systemic edges (hypertension, sleep-apnea) so pooled authoring would run a shared-driver parallel pathway across two identities; reopening via a gigantism-specific directional cohort or a governance merge. Process notes: all fifteen citations were NCBI-verified via efetch BEFORE file authoring with a 15/15 title match (eighth consecutive clean verification cycle); the post-write structural self-audit caught one stray empty `causationStatusNote` key in the giant-cell-myocarditis arrhythmia nexus (removed with a targeted replacement; the assertion also fixed an adjacent monitoring-documented typo) and re-audited to zero errors; the ruled-set pin sweep ran with a pre-compile guard and matched every expected context on the first attempt (57 files, zero stale, HTTP-status 1/2/1, draft-673 x7, PER_HOST 500, verified-380 all untouched). All five new edges carry the full CRG trio (one DIRECT at PROBABLE with hypothesizedOnly:false, four ASSOCIATION_ONLY with NOT_ESTABLISHED and hypothesizedOnly:true) and remain pending qualified-human citation verification; no primary publication state changed. Registry state after batch 38: 520 relationships (446 explicit guards / 74 legacy boundaries); 806 live references with 380 verified and 426 pending qualified-human verification; 742 source entities (346 active / 387 pending). Packet regenerated to 157 worksheets / 426 rows, matching live debt exactly. Remaining backlog by the reproducible dual-marker zero-edge/undispositioned filter (windowed-verb ledger reading on backticked ids): 364 drafts, of which the next five are `glossitis`, `glucagonoma`, `goiter`, `goodpasture-syndrome`, and `granuloma-annulare` (each pre-screened clean against every ledger; glossitis must be screened against the gingivitis and atrophic-glossitis oral-inflammation pathways authored nearby, and goodpasture-syndrome against the autoimmune-renal/pulmonary dual-organ scope). The tree now holds thirty-eight batches of D1 work, of which batches 1-34 are landed on origin/main via PR #469 while batches 35-38 await the CI gate - landing all four through CI is the immediate next step before batch 39.
+
+### Batch 39 (2026-09-23) — glossitis, glucagonoma, goiter, goodpasture-syndrome, granuloma-annulare
+
+Authored 3 new pending-verification relationships across 2 identities over 7 new
+pending-verification clinical sources (all 7 PMIDs NCBI-verified via efetch before
+file authoring, 7/7, ninth consecutive clean cycle), plus 3 deferrals:
+
+- `glucagonoma` -> `diabetes-mellitus` (DIRECT_CAUSATION/PROBABLE,
+  NEUROENDOCRINE_CASCADE: glucagon-driven hepatic gluconeogenesis/glycogenolysis
+  overflow vs the type-2 shared-risk driver guard) and -> `malnutrition-residuals`
+  (ASSOCIATION_ONLY: catabolic state, necrolytic migratory erythema losses, intake
+  limitation; oncologic sibling precedent `biliary-tract-cancer->malnutrition-residuals`).
+- `glossitis` deferred: oral-candidiasis plus atrophic/glossitis-tongue subtype
+  identities own the space (duplicate-scope/parallel-pathway guard).
+- `goiter` deferred: compressive downstream pathway lives inside the
+  `nontoxic-thyroid-enlargement` nontoxic subset (synonym-scope guard).
+- `granuloma-annulare` deferred: JAMA Dermatol 2021 anchor (PMID 34106218) frames
+  diabetes/hyperlipidemia as risk factors FOR granuloma annulare — direction
+  inverted; no quantified forward-outcome cohort (shared-driver/direction guard).
+- `goodpasture-syndrome` -> `chronic-kidney-disease` (DIRECT_CAUSATION/PROBABLE,
+  IMMUNE_MEDIATED: anti-GBM crescentic rapidly-progressive glomerulonephritis to
+  dialysis-dependent outcomes; `granulomatosis-with-polyangiitis` recorded in-file
+  as the ANCA-mimic exclusion).
+
+Registry after lockstep: 523 relationships (449 explicit / 74 legacy), 815 reference
+uses (380 verified / 435 pending-verification), 749 source entities (346 active /
+394 pending). Citation packet regenerated at 160 worksheets / 435 reference rows =
+live citation debt. Backlog after batch 39: **359** undispositioned zero-edge drafts.
+Next-five: `granulomatosis-with-polyangiitis`, `granulomatous-disease`,
+`granulomatous-rhinitis`, `greater-trochanteric-pain-syndrome`,
+`guillain-barre-syndrome`. Standing recommendation unchanged: land the accumulated
+uncommitted batches (35-39) through CI in one PR, as with PR #469 for batches 1-34.
+
+### Batch 40 (2026-09-23) — granulomatosis-with-polyangiitis, guillain-barre-syndrome, greater-trochanteric-pain-syndrome, granulomatous-disease, granulomatous-rhinitis
+
+Authored 5 new pending-verification relationships across 3 identities over 14 new
+pending-verification clinical sources (14/14 PMIDs NCBI-verified via efetch before file
+authoring, tenth consecutive clean cycle; PMID 39687605 is shared across both GBS edges
+and deduped by lockstep, so 15 reference uses over 14 sources), plus 2 deferrals:
+
+- `granulomatosis-with-polyangiitis` -> `chronic-kidney-disease` (DIRECT_CAUSATION/PROBABLE,
+  IMMUNE_MEDIATED: PR3-ANCA pauci-immune crescentic destruction to staged CKD or
+  renal-replacement dependence - Shen 2011 PMID 20394635 RPGN-induced ESRD attribution,
+  James 2017 PMID 27749233 pediatric 37% past stage 2, Sattui 2024 PMID 39305914 older-adult
+  cohort) and -> `hearing-loss` (ASSOCIATION_ONLY: OMAAV cohort audiometry - Tabei 2022
+  PMID 34915561 all impaired 85% bilateral, Yoshida 2014 PMID 25339433 rapid-progressive
+  loss review, Busch 2022 PMID 35663680 complete-loss case; effusion-mediated conductive
+  component scoped to the otitis-media identity's existing hearing-loss edge).
+- `guillain-barre-syndrome` -> `unexplained-chronic-pain` (ASSOCIATION_ONLY case-matching:
+  Papri 2024 PMID 39687605 prospective 644-patient pain persistence 71%/38%/26% across
+  weeks, Levison 2020 PMID 32192820 nationwide 70% medically treated pain, Yao 2018
+  PMID 30142753 presenting pre-weakness pain) and -> `depressive-disorder`
+  (ASSOCIATION_ONLY psychological burden: Walteros 2019 PMID 31369576 adjusted OR 3.89
+  vs controls, Witsch 2013 PMID 23299621 ventilated survivors ~50% anxiety/depression
+  impairment at mean 52.6 months, shared Papri 2024).
+- `greater-trochanteric-pain-syndrome` -> `unexplained-chronic-pain` (ASSOCIATION_ONLY
+  case-matching: chronic lateral-hip pain historically misattributed to bursitis,
+  osteoarthritis, and spinal sources - Williams 2009 PMID 19372352, Pianka 2021
+  PMID 34158938, Mary McMillan 2022 PMID 34898293; the generic bursitis and tendinopathy
+  siblings remain zero-edge backlog identities with their own windows, site-specific
+  identity owns this pathway).
+- `granulomatous-disease` deferred: class/umbrella identity under Infectious & Tropical
+  Diseases beneath member and sibling identities (tuberculosis with its own two edges,
+  sarcoidosis with its own two, histoplasmosis and granuloma-annulare with recorded
+  windows) - duplicate-scope parallel-pathway class ban (batch 22/27/33/37 precedents);
+  no umbrella-specific quantified forward-outcome cohort exists.
+- `granulomatous-rhinitis` deferred: finding-level identity with direction reversed
+  (Rimmer and Lund 2023 PMID 36410993 documents granulomatous airway disease as a
+  manifestation of underlying systemic or isolated disease mimicking plain rhinitis)
+  plus duplicate scope against the edge-bearing chronic-rhinitis identity and a
+  zero-record screen for forward outcomes attributable to the finding itself.
+
+Registry after lockstep: 528 relationships (454 explicit / 74 legacy), 830 reference uses
+(380 verified / 450 pending-verification), 763 source entities (346 active / 408 pending).
+Citation packet regenerated at 165 worksheets / 450 reference rows = live citation debt.
+Backlog after batch 40: **354** undispositioned zero-edge drafts. Next-five:
+`guyon-s-canal-syndrome`, `hairy-cell-leukemia`, `hairy-tongue`, `halitosis`,
+`hallux-rigidus`. Standing recommendation unchanged: land the accumulated uncommitted
+batches (35-40) through CI in one PR, as with PR #469 for batches 1-34.
+
+### Batch 41 (2026-09-24) — hairy-cell-leukemia, guyon-s-canal-syndrome, halitosis, hairy-tongue, hallux-rigidus
+
+Authored 3 new pending-verification relationships across 3 identities over 9 new
+pending-verification clinical sources (13/13 PMIDs NCBI-verified via efetch before file
+authoring, eleventh consecutive clean cycle), plus 2 deferrals:
+
+- `hairy-cell-leukemia` -> `anemia` (ASSOCIATION_ONLY, MULTIFACTORIAL: marrow
+  infiltration plus splenic sequestration with bleeding and treatment routes -
+  Sarvaria 2016 PMID 26513168 "ultimately results in cytopenias", Mackowiak 2024
+  PMID 38882583, Plenderleith 1970 PMID 4939244; follows the uniform anemia family
+  norm - all 18 incoming anemia edges rest at NOT_ESTABLISHED - and the
+  chronic-b-cell-leukemias sibling scope is CLL-aliased autoimmune hemolysis only,
+  so no parallel pathway exists; the generic leukemia umbrella stays zero-edge).
+- `guyon-s-canal-syndrome` -> `muscle-atrophy` (DIRECT_CAUSATION/PROBABLE,
+  MECHANICAL_OR_COMPRESSIVE: chronic ulnar-canal compression to denervation
+  wasting with dechallenge reversal - Tong 2026 PMID 42065727 claw-hand series
+  72.7% grade-5 recovery, Wang 2014 PMID 24774037 nine cases with 16-month
+  symptom duration, Chen 2014 PMID 24559635 mimic-list review; first incoming
+  edge to muscle-atrophy, site-specific identity owns the pathway while generic
+  ulnar-neuropathy and peripheral-neuropathy siblings stay zero-edge).
+- `halitosis` -> `depressive-disorder` (ASSOCIATION_ONLY, PSYCHOPHYSIOLOGICAL:
+  odor-confirmed psychological-burden association on the burning-mouth precedent -
+  Lu 2017 PMID 27516401 VSC-confirmed OHIP 15.7 vs 7.9 psych-domain dominance,
+  Renvert 2020 PMID 32753975 expert consensus, Mento 2021 PMID 34204752 38-study
+  review; reverse-arrow guard records that emotional state modulates odor
+  self-perception and halitophobia runs distress to complaint, requiring
+  objective odor confirmation per case).
+- `hairy-tongue` deferred: benign self-limited finding with zero condition-specific
+  forward-outcome records (targeted searches returned only driver studies), a
+  smoking shared-driver guard (Just-Sarobe 2008 PMID 18358192: smoking causes both
+  black hairy tongue and halitosis), and a wrong-identity guard against
+  oral-hairy-leukoplakia; the oral-dorsum sibling window chain (fissured-tongue,
+  geographic-tongue, glossitis, atrophic-glossitis, median-rhomboid-glossitis) is
+  already dispositioned.
+- `hallux-rigidus` deferred: constitutive identity-is-osteoarthritis barrier
+  (ME-41; identity-to-osteoarthritis would assert the diagnosis against its own
+  definition), wrong-target guard for the documented gait outcomes
+  (difficulty-walking and gait-abnormality identities absent), and counter-evidence
+  - Stevens 2022 PMID 35717495 found no significant plantar-pressure difference vs
+  controls and de Bot 2023 PMID 38025694 found gait comparable to healthy controls
+  22 years post-surgery (no fixed downstream sequela).
+
+Registry after lockstep: 531 relationships (457 explicit / 74 legacy), 839 reference
+uses (380 verified / 459 pending-verification), 772 source entities (346 active / 417
+pending). Citation packet regenerated at 168 worksheets / 459 reference rows = live
+citation debt. Backlog after batch 41: **349** undispositioned zero-edge drafts.
+Next-five: `hallux-valgus`, `halo-nevus`, `hammertoe`,
+`hashimoto-s-encephalopathy`, `head-and-neck-cancers`. Standing recommendation
+unchanged: land the accumulated uncommitted batches (35-41) through CI in one PR, as
+with PR #469 for batches 1-34.
+
+### Batch 42 (2026-09-24) — hallux-valgus, halo-nevus, hammertoe, hashimoto-s-encephalopathy, head-and-neck-cancers
+
+Authored 7 new pending-verification relationships across 4 identities over 21 new
+pending-verification clinical reference uses (17 unique PMIDs, all NCBI-verified via
+efetch before file authoring, twelfth consecutive clean cycle), plus 1 deferral:
+
+- `hallux-valgus` -> `metatarsalgia` (ASSOCIATION_ONLY, BIOMECHANICAL_ALTERATION:
+  first-ray load-transfer hypothesis - Murahashi 2026 PMID 41093741 n=1700 pain
+  gradient 33.6% mild to 57.1% severe with pain migrating to metatarsal regions,
+  Gines-Cespedosa 2013 PMID 23943654 30.8% coexisting metatarsalgia with worse
+  SF-36, Chaiwanichsiri 2009 PMID 19052445 community attribution plus the
+  asymptomatic-deformity guard; cross-sectional designs leave direction unproven).
+- `hallux-valgus` -> `unexplained-chronic-pain` (ASSOCIATION_ONLY case-matching on
+  the 8-edge family: shared Murahashi severity gradient, Bock 2015 PMID 26246258
+  Scarf osteotomy 93 feet 124-month pain-as-indication with 30% recurrence,
+  shared Chaiwanichsiri; independent pain generators and centralized-pain
+  assessment required per case).
+- `hammertoe` -> `unexplained-chronic-pain` (ASSOCIATION_ONLY case-matching:
+  Matthews 2018 PMID 29413774 215 toes with ALL patients in preoperative pain
+  and 96% relief post-op, Olsen 2023 PMID 38274283 degenerative substrate with
+  pain relief up to 92%, Arbab 2017 PMID 28676916 pain as the operative
+  objective; selection-on-outcome guard recorded - surgical series select on
+  pain as the indication).
+- `halo-nevus` -> `vitiligo` (ASSOCIATION_ONLY, IMMUNE_MEDIATED: shared
+  melanocyte-directed CD8 T-cell autoimmunity - Ezzedine 2012 PMID 22508876
+  prospective 553 with halo nevi in 130 (23.5%), Kano 2023 PMID 36966028 54-patient
+  immune-microenvironment series, de Vijlder 2004 PMID 15140072 HLA case-control
+  showing partially distinct pathogenic mechanisms; indeterminant-direction and
+  melanoma-regression guards recorded).
+- `hashimoto-s-encephalopathy` -> `seizure-disorder` (ASSOCIATION_ONLY - deliberately
+  BELOW the encephalitis DIRECT precedent because HE typically shows normal MRI (no
+  documented epileptogenic lesion) and no post-HE epilepsy incidence cohort exists;
+  Bien 2013 PMID 23622200, Matsunaga 2021 PMID 34006687, Hilberath 2014 PMID 25084973;
+  acute-symptomatic-versus-chronic-epilepsy guard).
+- `hashimoto-s-encephalopathy` -> `cognitive-disorder` (ASSOCIATION_ONLY/NOT_ESTABLISHED
+  by exact family-match with the encephalitis->cognitive-disorder sibling; Schenck 2025
+  PMID 39154259 persistent subcortical impairment at two timepoints, Adams 2020
+  PMID 32173161 17-patient domain outcomes, Valencia-Sanchez 2021 PMID 34061124 Mayo
+  144-referral mimic guard - 73% alternative diagnoses).
+- `hashimoto-s-encephalopathy` -> `depressive-disorder` (ASSOCIATION_ONLY on the
+  64-edge incoming family norm; Schenck 2025 shared, Ellul 2020 PMID 32702227
+  drug-resistant-depression presentation responsive to immunomodulation, Adams 2020
+  shared; primary-psychiatric-mimic and corticosteroid-mood confounds recorded).
+- `head-and-neck-cancers` **deferred**: class/umbrella identity - member
+  `laryngeal-cancer` already owns an outgoing edge, `oral-cancer` and
+  `salivary-gland-cancer` members are queued for their own windows, and most
+  plausible targets (hearing-loss, dysphagia, xerostomia) are treatment-mediated
+  site-specific pathways (parallel-pathway class ban, batch 22/27/33/37/40).
+
+Governance highlights: shared-PMID reuse inside the batch (41093741 and 19052445
+across both hallux-valgus edges; 39154259 and 32173161 across two HE edges) deduped
+in the source registry; no falls/gait edge (Chaiwanichsiri counter-evidence that foot
+deformities were not associated with falls, plus absent target identities); no
+osteoarthritis edge from hallux-valgus (zero-record for HV-specific incident MTP-osteoarthritis,
+adjacent to the hallux-rigidus constitutive barrier); no thyroiditis edge from HE
+(shared-autoimmunity driver guard - HE does not cause thyroiditis, most HE patients
+euthyroid, and the published thyroiditis->hypothyroidism edge owns the functional
+pathway).
+
+Backlog accounting note: the opening screen re-derived the canonical backlog rule from
+primary data (in-file D1 dispositions across governanceNotes AND all todo entries,
+plus ledger-only ME-closures), recalibrating the batch-41 figure of 349 to 344 because
+five todo-only withdrawal/rescreen records (adjustment-disorder, hydronephrosis,
+myasthenia-gravis, post-concussion-syndrome, seizure-disorder) are dispositions, not
+open work. With this batch's 5 identities dispositioned, backlog after batch 42:
+**339** undispositioned zero-edge drafts. Next-five: `hearing-loss`, `heart-block`,
+`heart-valve-disorders`, `hemangioma`, `hemipelvectomy`.
+
+Registry after lockstep: 538 relationships (464 explicit / 74 legacy), 860 reference
+uses (380 verified / 480 pending-verification), 789 source entities (346 active / 434
+pending). Citation packet regenerated at 175 worksheets / 480 reference rows = live
+citation debt. Standing recommendation unchanged: land the accumulated uncommitted
+batches (35-42) through CI in one PR, as with PR #469 for batches 1-34.
+
+### Batch 43 (2026-09-24) — hearing-loss, heart-block, heart-valve-disorders, hemangioma, hemipelvectomy
+
+Authored 8 new pending-verification relationships across 5 identities over 16 clinical
+reference uses (16 unique PMIDs, all NCBI-verified via efetch before file authoring,
+thirteenth consecutive clean cycle; one use is a verified-source reuse of the already
+human-verified Diers 2022 phantom-limb-pain survey, carried verified:true per the
+elbow-disarticulation family precedent, so the debt ratchet advances by 15
+pending-verification uses):
+
+- `hearing-loss` -> `cognitive-disorder` (ASSOCIATION_ONLY, MULTIFACTORIAL:
+  Loughrey 2018 PMID 29222544 meta-analysis of prospective cohorts plus Zhang 2025
+  PMID 40103444 moderator and mediator meta-analysis showing the association is robust
+  across moderators while mediation stays unresolved; no intervention evidence that
+  amplification prevents incident decline, shared aging/vascular/neurodegenerative
+  substrate guard).
+- `hearing-loss` -> `depressive-disorder` (ASSOCIATION_ONLY, PSYCHOPHYSIOLOGICAL:
+  Li 2025 PMID 39752630 pooled association plus Li 2026 PMID 41275674 19-study
+  social-activity mediation and moderation meta-analysis; unoriented cross-sectional
+  designs and shared aging/chronic-illness guard).
+- `heart-block` -> `cardiomyopathy` (ASSOCIATION_ONLY, MULTIFACTORIAL: the 2018
+  ACC/AHA/HRS bradycardia and conduction-delay guideline PMID 30586772 as the
+  evaluation framework plus Miric 2024 PMID 39286730 single-patient reversible
+  bradycardia-induced heart failure with preserved ejection fraction; Mycinski 2025
+  PMID 40067976 385-patient isolated atrioventricular block cohort reported no
+  incident dilated cardiomyopathy over median ten-year follow-up and is recorded as
+  screened counter-evidence rather than cited as support).
+- `heart-valve-disorders` -> `congestive-heart-failure` (DIRECT_CAUSATION/PROBABLE,
+  MECHANICAL_OR_COMPRESSIVE: overload-to-remodeling natural history at guideline
+  consensus across two independent bodies - Otto 2020 PMID 33332150 and the ESC/EACTS
+  2021 guideline PMID 34453165).
+- `heart-valve-disorders` -> `cardiac-inflammatory-disease` (ASSOCIATION_ONLY,
+  INFECTIOUS_SPREAD: Baddour 2015 AHA infective endocarditis statement PMID 26373316
+  plus the ESC 2023 endocarditis guideline PMID 37622656; the abnormal valve is a
+  substrate requiring a separate bacteremic exposure, keeping the proposition
+  association-only). The FINAL-CLOSE-PROPOSITION-MISMATCH resolution of the harvested
+  valvular-disease-to-osteoarthritis proposition is not reasserted and no
+  osteoarthritis edge is authored.
+- `hemangioma` -> `congestive-heart-failure` (ASSOCIATION_ONLY, THROMBOTIC_OR_VASCULAR
+  mirroring the arteriovenous-fistula high-output window: Srinivas 2025 PMID 41116821
+  congenital hepatic hemangioma with high-output failure and severe pulmonary
+  hypertension, Ateeqi 2026 PMID 42499732 infantile hepatic hemangioma with cardiac
+  failure improving under propranolol).
+- `hemangioma` -> `hypothyroidism` (ASSOCIATION_ONLY, METABOLIC_OR_NUTRITIONAL:
+  Larbi Ouassou 2026 PMID 42232014 and Corsello 2025 PMID 40597219 diffuse infantile
+  hepatic hemangiomatosis with consumptive hypothyroidism via tumoral type-3
+  deiodinase).
+- `hemipelvectomy` -> `phantom-limb-pain` (ASSOCIATION_ONLY, NEUROLOGICAL_DEGENERATION
+  following the six existing per-site limb-loss edges: Grimer 2013 PMID 23307686
+  157 hindquarter amputations with phantom pain a significant problem, plus the
+  reused Diers 2022 survey as the family-level anchor).
+
+Screens recorded for this batch: no hearing-loss-to-tinnitus edge (conductive-hearing-loss
+already owns that sibling window and single-lesion shared-driver adjacency applies); no
+ototoxic edge authored from hearing loss (that direction runs from the medication or
+oncologic exposure into hearing loss); no heart-block-to-cardiac-arrhythmia edge
+(constitutive identity-is-a-member barrier); no heart-block-to-sleep-apnea edge (the
+located literature runs sleep-disordered breathing to nocturnal bradyarrhythmia, the
+reverse arrow); no hemangioma-to-thrombocytopenia edge (Kasabach-Merritt phenomenon is
+attributed to kaposiform hemangioendothelioma and tufted angioma, an entity mismatch
+against the generic hemangioma identity); no hemipelvectomy-to-depressive-disorder edge
+(the published amputation container identity owns the generic post-amputation mood
+window and no hemipelvectomy-specific directional data were located, with the Werenski
+2026 recovery and satisfaction cohort screened and not used); the sibling amputation
+identities (hip-disarticulation, knee-disarticulation, amputation-of-thumb-fingers-toes,
+shoulder-disarticulation, wrist-disarticulation) keep their own unbacklogged windows.
+
+### Batch 44 (2026-09-24) — hemorrhoids, hemothorax, hepatic-steatosis, heterotopic-ossification, hill-sachs-lesion
+
+Authored 6 new pending-verification relationships across 5 identities over 12 clinical
+reference uses (12 unique PMIDs, all NCBI-verified via efetch before file authoring,
+fourteenth consecutive clean cycle; no verified-source reuse and no cross-edge sharing,
+so the debt ratchet advances by 12 pending-verification uses):
+
+- `hemorrhoids` -> `anemia` (ASSOCIATION_ONLY, THROMBOTIC_OR_VASCULAR: vascular-cushion
+  bleeding-to-depletion pathway - Deng 2024 PMID 38704632 retrospective 128-patient
+  hemorrhoidal severe-anemia series quantifying preoperative transfusion requirement and
+  hospitalization burden, Dong 2025 PMID 41064030 mixed hemorrhoids with severe anemia
+  managed by sclerotherapy; no matched-cohort incidence data and multifactorial-anemia
+  guard).
+- `hemothorax` -> `anemia` (ASSOCIATION_ONLY, THROMBOTIC_OR_VASCULAR: intrathoracic
+  hemorrhage-to-depletion pathway - Heller 2026 PMID 40812400 multicenter pediatric
+  trauma analysis of hemothorax volume thresholds for chest-tube placement, Morgan 2015
+  PMID 26448354 spontaneous-hemothorax clinical review; the retained-hemothorax
+  fibrothorax/empyema literature was screened against absent identities).
+- `hepatic-steatosis` -> `cirrhosis-of-the-liver` (DIRECT_CAUSATION/PROBABLE,
+  METABOLIC_OR_NUTRITIONAL: fatty-injury-to-fibrosis-to-cirrhosis natural history -
+  Barritt 2026 PMID 42690133 systematic review and 32-study meta-analysis of histologic
+  liver fibrosis in steatotic liver disease showing rising cirrhosis and
+  major-adverse-liver-outcome risk by fibrosis stage, Wang 2026 PMID 42481370 MASLD
+  non-invasive-test meta-analysis; the chronic-liver-disease umbrella edge is held
+  non-duplicative because that identity's own pathway notes require the specific
+  etiology to be documented rather than relying on the umbrella label).
+- `hepatic-steatosis` -> `liver-cancer` (ASSOCIATION_ONLY, MALIGNANT_TRANSFORMATION:
+  Yin 2024 PMID 39269862 12-cohort meta-analysis of 738,934 NAFLD patients with 1,480
+  hepatocellular-carcinoma cases reporting within-population hazard ratios (age 1.81,
+  male sex 2.51, hypertension 1.87, diabetes 2.27), Wallace 2026 PMID 42605247
+  comparative cause-level liver-cancer risk meta-analysis; relative-risk-only evidence
+  with fibrosis-stage and diabetes mediation guard keeps the proposition
+  association-only).
+- `heterotopic-ossification` -> `peripheral-neuropathy` (ASSOCIATION_ONLY,
+  MECHANICAL_OR_COMPRESSIVE: perineural-compression pathway - Akhavan 2023
+  PMID 36534099 heterotopic ossification with circumferential ulnar-nerve encasement at
+  the elbow and electrodiagnostic confirmation, Daskalakis 2022 PMID 35368721 elbow
+  heterotopic ossification presenting as median-nerve neuropathy after distal biceps
+  repair; the harvested heterotopic-ossification-to-osteoarthritis proposition stays
+  FINAL-CLOSED and is not reasserted).
+- `hill-sachs-lesion` -> `post-traumatic-osteoarthritis` (ASSOCIATION_ONLY,
+  BIOMECHANICAL_ALTERATION: humeral-head-impaction-and-chondral-injury pathway -
+  Luengo-Alonso 2024 PMID 39348905 arthroscopic 140-shoulder instability cohort
+  reporting Hill-Sachs lesions among the most common findings with osteoarthritis
+  severity correlating with age, age at first dislocation, and dislocation number,
+  Saxena 2016 PMID 27466221 T1rho MRI cartilage damage after primary shoulder
+  dislocation; the humeral-side window is distinct from the sibling bankart-lesion
+  glenoid-labral window).
+
+Screens recorded for this batch: no hemorrhoids-to-epicondylitis edge (master-resolution
+FINAL-CLOSE-PROPOSITION-MISMATCH stays in force); no iron-deficiency-anemia,
+gastrointestinal-hemorrhage, portal-hypertension, or esophageal-varices edge (identities
+absent from the catalog); no hemorrhoids-to-varicose-veins edge (shared venous-dilatation
+driver, zero directional record); no hemothorax-to-pleural-effusion edge (retained
+hemothorax is a blood collection rather than a pleural effusion, and the fibrothorax and
+empyema complication identities are absent); no hepatic-steatosis-to-diabetes-mellitus or
+obesity edge (shared metabolic driver and absent identity); no heterotopic-ossification-to-
+osteoarthritis edge (prior closure) and no direction-inverted burn or traumatic-brain-
+injury edge; no hill-sachs-lesion-to-instability edge (absent identity) and no
+rotator-cuff or axillary-nerve direction data located.
+
+Registry after lockstep: 552 relationships (478 explicit / 74 legacy), 888 reference
+uses (381 verified / 507 pending-verification), 816 source entities (346 active / 461
+pending-verification). Citation packet regenerated at 189 worksheets / 507 reference rows
+= live citation debt. Backlog after batch 44: **329** undispositioned zero-edge drafts.
+Next-five: `hip-disarticulation`, `hip-labral-tear`, `hip-strain`, `histoplasmosis`,
+`hydrocephalus`. Standing recommendation unchanged: land the accumulated uncommitted
+batches (35-44) through CI in one PR, as with PR #469 for batches 1-34.
+
+### Batch 45 (2026-09-24) — hip-disarticulation, hip-labral-tear, hip-strain, histoplasmosis, hydrocephalus
+
+Authored 3 new pending-verification relationships across 3 identities over 6 clinical
+reference uses (6 PMIDs, all NCBI-verified via efetch before file authoring, fifteenth
+consecutive clean cycle; one use is a verified-source reuse of the already human-verified
+Kelle 2017 level-stratified phantom-limb study, carried verified:true per the
+elbow-disarticulation and hemipelvectomy family precedent, so 5 new source entities and the
+debt ratchet advances by 5 pending-verification uses), plus 2 deferrals:
+
+- `hip-disarticulation` -> `phantom-limb-pain` (ASSOCIATION_ONLY, NEUROLOGICAL_DEGENERATION
+  matching the amputation-level phantom-limb family: the Kelle 2017 cross-sectional study of
+  101 lower-limb amputees stratified by level reports the highest early phantom-limb-pain
+  scores in the most proximal group - hip disarticulation through knee disarticulation - and
+  the Steritz 2024 case report describes refractory phantom limb pain in a hip disarticulation
+  patient; competing residual-limb, stump, neuroma, and pre-amputation pain sources guard).
+- `hip-labral-tear` -> `post-traumatic-osteoarthritis` (ASSOCIATION_ONLY, BIOMECHANICAL_ALTERATION
+  matching the shoulder bankart-lesion and hill-sachs-lesion precedent: the Dean 2024
+  minimum-eight-year hip-arthroscopy cohort associates chondrolabral junction breakdown with
+  conversion to total hip arthroplasty after treatment of symptomatic labral tears, and the
+  Martin 2024 randomized trial of labral-tear treatment reports arthroplasty conversion among
+  its outcomes; composite-endpoint, reverse-direction, and age/morphology-confounding guards).
+- `hydrocephalus` -> `visual-impairment` (ASSOCIATION_ONLY, MECHANICAL_OR_COMPRESSIVE: the Lee
+  2017 pediatric study of 46 children with hydrocephalus reports papilledema in 27 with a
+  strong association to higher intracranial pressure, and the AlObaisi 2022 record review of
+  shunted children documents ocular-motility abnormalities and reduced visual outcomes;
+  incomplete-penetrance and competing-ocular-disease guards).
+- `hip-strain` **deferred** (zero-record): bibliographic searches for hip-strain-primary
+  outcomes (hip muscle, flexor/iliopsoas, adductor, and gluteal strain paired with chronic
+  pain, osteoarthritis, or long-term outcome terms) returned no condition-specific cohort or
+  series, the nearest literature concerns pubalgia, groin, iliotibial-band, piriformis, and
+  hamstring conditions in other populations, and the harvested hip-strain-to-diabetes
+  proposition was already FINAL-CLOSED; the sibling ankle-strain and cervical-strain mechanisms
+  do not transfer.
+- `histoplasmosis` **deferred** (RESOLVED-PRIOR-SITE-SPECIFIC-TAXONOMY): the adrenal window is
+  owned by the separately approved and verified adrenal-histoplasmosis identity, and the
+  pulmonary identity cannot enforce the adrenal-complication restriction because the intake
+  does not encode disease site; the recognized pulmonary complications (fibrosing
+  mediastinitis, mediastinal granuloma, broncholithiasis) have no catalog identities.
+
+Screens recorded for this batch: no hydrocephalus-to-cognitive-disorder edge authored - the
+strongest located cognition evidence is idiopathic-normal-pressure-hydrocephalus-specific and
+would be an entity mismatch against the generic raised-pressure identity, and the catalog
+carries a distinct normal-pressure-hydrocephalus identity queued to author its own
+NPH-specific neurocognitive windows, so a generic-hydrocephalus cognitive edge would create a
+parallel pathway for the same patient (reopen only if hydrocephalus-general neurodevelopmental
+evidence accrues or governance merges the NPH subtype); no hip-labral-tear-to-abdominal-hernia
+edge (harvested proposition FINAL-CLOSED); no hip-labral-tear-to-generic-osteoarthritis edge
+(the femoroacetabular-impingement and acl/pcl-injury windows already route there, so the
+labral window stays on the post-traumatic target); no hip-disarticulation-to-depressive-disorder
+edge (the amputation-or-loss-of-use container owns the generic mood window); no
+hydrocephalus-to-headache, seizure, gait, or shunt-complication edge (absent or zero-record
+identities).
+
+Registry after lockstep: 555 relationships (481 explicit / 74 legacy), 894 reference uses (382
+verified / 512 pending-verification), 821 source entities (346 active / 466 pending-verification).
+Citation packet regenerated at 192 worksheets / 512 reference rows = live citation debt.
+Backlog after batch 45: **324** undispositioned zero-edge drafts. Next-five: `hyperhidrosis`,
+`hyperinsulinism`, `hyperopia`, `hyperpigmentation`, `hypertensive-retinopathy`. Standing
+recommendation unchanged: land the accumulated uncommitted batches (35-45) through CI in one PR,
+as with PR #469 for batches 1-34.
+
+---
+
+Mapping Expansion D1 batch 46 (2026-09-24) authored four draft-quarantined relationships across
+four identities and recorded one deferral. `hyperinsulinism -> hypoglycemia` (rank 1) is the
+batch's only direct-causation edge: DIRECT_CAUSATION with etiologicalConsensus PROBABLE,
+vaNexusProbabilityAlignment AT_LEAST_AS_LIKELY_AS_NOT, hypothesizedOnly:false, and
+mechanismCategory METABOLIC_OR_NUTRITIONAL - inappropriate beta-cell insulin secretion in the
+presence of low plasma glucose suppresses hepatic glycogenolysis and gluconeogenesis, promotes
+insulin-sensitive tissue uptake, and suppresses lipolysis, ketogenesis, and counter-regulation,
+so the low glucose is not offset by alternative fuel generation (Demirbilek 2017 congenital-
+hyperinsulinism diagnosis and treatment update, PMID 29280746; Giri 2021 congenital-
+hyperinsulinism update, PMID 34547194). Individual claims still require documented
+hyperinsulinism (insulin/glucose or C-peptide findings, genetics, or histopathology),
+hypoglycaemia documentation with a compatible insulin profile, chronology, and exclusion of
+insulinoma, factitious or sulfonylurea exposure, and counter-regulatory failure.
+`hyperhidrosis -> anxiety-disorder` (rank 1) is association-only (NOT_ESTABLISHED,
+NOT_ASSERTED, hypothesizedOnly:true, PSYCHOPHYSIOLOGICAL): the Bahar 2016 study of 2017
+consecutive dermatology outpatients found anxiety in 21.3% of hyperhidrosis patients versus 7.5%
+of patients without hyperhidrosis (p<0.001) in a severity-dependent pattern that persisted on
+multivariable analysis, and the Kamikava 2021 observational study evaluated anxiety symptoms in
+81 primary-hyperhidrosis patients before and after oxybutynin treatment (PMIDs 27567033,
+34190853). `hyperopia -> glaucoma` (rank 1) is association-only (MECHANICAL_OR_COMPRESSIVE): the
+Martinez-Blanco 2021 Colombian Glaucoma Study of 1749 patients identified high hyperopia as an
+independent factor related to the primary angle-closure disease spectrum, and the Zhang 2015
+choroidal-physiology review records the shallow-anterior-chamber, short-axial-length, thicker-
+lens configuration (PMIDs 34796746, 26164737). `hypertensive-retinopathy -> visual-impairment`
+(rank 1) is association-only (MICROVASCULAR_METABOLIC): the Bhargava 2012 review documents
+retinal arteriolar narrowing, arteriovenous nicking, haemorrhages, microaneurysms, and in severe
+cases optic-disc and macular edema, and the Cortina 2015 case report documents acute bilateral
+loss of central visual acuity from hypertensive retinopathy level IV in unrecognized malignant
+hypertension (PMIDs 21509040, 25868960). Every new reference remains `verified: false` and
+pending qualified-human citation verification under `docs/citation-verification-sop.md`; no edge
+is raised to causation or aggravation without that review.
+
+- `hyperpigmentation` **deferred** (MANIFESTATION-IDENTITY / ENTITY-MISMATCH): the catalog
+  identity is a generic dermatologic sign rather than a defined disease, and the located
+  literature concerns defined pigmentary or exposure-specific entities (melasma quality-of-life
+  and treatment cohorts, imipramine-induced hyperpigmentation, disease-site pigmentation), so
+  applying those results to the generic identity would be an entity mismatch; the nearest
+  catalog-fit psychosocial targets (depressive-disorder, anxiety-disorder) are each already
+  served by their own disease-specific primaries. Revisit only if a cohort or series of a generic
+  hyperpigmentation identity accrues, or if governance redefines the identity around a specific
+  pigmentary disorder.
+
+Screens recorded for this batch: no hyperhidrosis-to-depressive-disorder edge - the harvested
+proposition (PMID 28881483) remains closed under FINAL-CLOSE-PROPOSITION-MISMATCH with no
+approved targets, and only the anxiety window was authored on its own condition-specific
+evidence (prior-closure guard); no hyperhidrosis-to-social-anxiety-disorder edge (the located
+studies measure general anxiety symptoms, so a social-anxiety window would create a parallel
+pathway); no hyperhidrosis-to-fungal-skin-infection or cellulitis edge (quality-of-life and
+psychiatric literature rather than maceration-driven infection with denominators; zero-record
+guard); no hyperinsulinism-to-diabetes-mellitus, hyperglycaemia, or insulin-resistance-syndrome
+edge (direction and duplicate-scope guards - hyperinsulinism produces hypoglycaemia, and the
+sibling insulin-resistance-syndrome identity authors its own diabetes-mellitus-type-2 window); no
+hyperinsulinism-to-cognitive-disorder or seizure-disorder edge (hypoglycaemia is the intermediate
+node and the cognition and seizure windows belong to their own primaries - intermediate-chain
+guard); no hyperopia-to-visual-impairment edge (the consequences flow through the glaucoma
+intermediate, and the refractive-error-to-visual-impairment proposition would need its own
+corrected/unimpaired-acuity framing); no hyperopia-to-retinal-detachment edge (myopic rather than
+hyperopic eyes carry the risk - direction-inversion guard); no hyperopia-to-cataract edge
+(age-confounded association with no refraction-primary condition-specific data - zero-record
+guard); no hypertensive-retinopathy-to-blindness edge (severe visual loss is documented but not
+incident blindness - zero-record guard); no hypertensive-retinopathy-to-retinal-detachment edge
+(the diabetic-retinopathy identity authors the detachment window); and no
+hypertensive-retinopathy-to-stroke, ischemic-heart-disease, congestive-heart-failure, or
+chronic-kidney-disease edge (those complications flow from hypertension rather than from the
+retinopathy, and the hypertension identity authors them directly - direction and duplicate-scope
+guards).
+
+Registry after lockstep: 559 relationships (485 explicit / 74 legacy), 902 reference uses (382
+verified / 520 pending-verification), 829 source entities (346 active / 474 pending-verification).
+Citation packet regenerated at 196 worksheets / 520 reference rows = live citation debt. Backlog
+after batch 46: **320** undispositioned zero-edge drafts. Next-five: `hypoglycemia`,
+`hypopigmentation`, `hypopituitarism`, `hypotension`, `ichthyosis`. Standing recommendation
+unchanged: land the accumulated uncommitted batches (35-46) through CI in one PR, as with PR #469
+for batches 1-34.
+
+---
+
+Mapping Expansion D1 batch 47 (2026-09-24) authored six draft-quarantined association edges across
+four identities and recorded one deferral, continuing the walked alphabet at `hypo-`/`i-`. Every
+new edge is ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment
+NOT_ASSERTED, and hypothesizedOnly:true; the twelve new sources are unique (no reuse, no sharing)
+and all remain `verified: false` pending qualified-human citation verification under
+`docs/citation-verification-sop.md`.
+
+`hypoglycemia -> dementia` (rank 1, METABOLIC_OR_NUTRITIONAL) rests on the Huang 2022 systematic
+review and meta-analysis of ten cohort studies and 1,407,643 patients (pooled adjusted hazard
+ratio 1.44, 95% CI 1.26-1.65, stable on subgroup and leave-one-out analysis; PMID 35164844) and on
+the Han 2022 nationwide cohort of 2,032,689 participants (dementia in 23.3% with severe
+hypoglycaemia versus 7.3% without, rising from HR 1.54 for one episode to 1.80 for two or more,
+with the highest mortality in those carrying both exposures; PMID 35015886). `hypoglycemia ->
+seizure-disorder` (rank 2, METABOLIC_OR_NUTRITIONAL) rests on the Blaabjerg 2016 review of
+hypoglycaemia-induced electroencephalographic change, which places seizures among the graded
+manifestations of neuroglycopenia (PMID 27464753), and on the Falip 2014 consecutive cohort of 229
+adult-onset type 1 diabetes patients, in which hypoglycaemic seizures occurred in 2 patients
+(0.87%) and were separated from temporal lobe epilepsy by lower anti-GAD antibody titres (18.42
+versus 29.200 IU, p=0.006; PMID 25183236). Both hypoglycaemia windows are authored from the
+intermediate node that batch 46 explicitly left to this identity when it published
+`hyperinsulinism -> hypoglycemia`, so the pathway is counted once.
+
+`hypopituitarism -> osteopenia` (rank 1, NEUROENDOCRINE_CASCADE) rests on the Chihaoui 2016 study
+of bone mineral density in Sheehan's syndrome, which states that hypopituitarism is a known cause
+of bone mineral loss and reports the frequency of low bone mass with associated factors (PMID
+26993664), and on the Akirov 2024 review of hypopituitarism and bone disease, which names
+osteopenia among the skeletal consequences of pituitary hormone deficiency (PMID 38709467).
+`hypopituitarism -> anemia` (rank 2, METABOLIC_OR_NUTRITIONAL) rests on the Nishioka 2005
+retrospective study of 68 patients with anterior pituitary deficiency, in which haemoglobin was
+significantly lower (p=0.0012), haemoglobin below 12.0 g/dl occurred in 22 patients (32.4%), the
+reduction related to hypocortisolism and hypothyroidism, and replacement improved haemoglobin
+(PMID 16117194), and on the Aguiar 2025 pituitary adenoma cohort reporting anaemia prevalence and
+its correlation with hypopituitarism (PMID 40621322).
+
+`hypotension -> visual-impairment` (rank 1, MICROVASCULAR_METABOLIC) rests on the Donaldson 2022
+case series and review of dialysis-associated non-arteritic anterior ischaemic optic neuropathy,
+which describes the condition as secondary to intradialytic hypotension and reports three cases
+with catastrophic visual consequences and same-eye recurrence (PMID 34974487), and on the Desai
+2005 review listing nocturnal hypotension among the risk factors for a disorder presenting as
+sudden painless visual loss (PMID 15722660). `ichthyosis -> dry-eye-syndrome` (rank 1,
+MECHANICAL_OR_COMPRESSIVE) rests on the Palamar 2015 lamellar-ichthyosis cohort of twelve
+patients, in which mean tear break-up time was 6.58 seconds in both eyes with ocular surface
+staining grades of 0.36 and 0.39 and preserved mean Schirmer 1 production of 18.75 mm, concluding
+that eyelid malformations with decreased tear break-up time might cause sight-threatening
+complications (PMID 24397709), and on the Al-Amry 2016 series of eleven ichthyosis patients in
+which bilateral ectropion was the most common ocular diagnosis and most patients required skin
+grafting (PMID 26949357).
+
+- `hypopigmentation` **deferred** (MANIFESTATION-IDENTITY / ENTITY-MISMATCH): the catalog identity
+  is a generic cutaneous sign rather than a defined disease and the located literature is
+  vitiligo-, post-inflammatory-, drug-, and disease-site-specific, so those results would be an
+  entity mismatch and would also duplicate the catalog's dedicated vitiligo identity, which
+  already authors its own depressive-disorder window; this mirrors the batch-46 hyperpigmentation
+  deferral so the two generic pigmentary-sign identities are treated consistently. Revisit only if
+  a generic-hypopigmentation-primary cohort with a catalog-fit outcome accrues, or if governance
+  narrows the identity to a specific pigmentary disorder.
+
+Screens recorded for this batch: no `hypoglycemia -> cognitive-disorder` edge (the located outcome
+is incident dementia, and routing the same studies to the broader umbrella would double-count the
+pathway - target-specificity guard); no epilepsy edge (the located evidence documents provoked
+acute symptomatic seizures, and the catalog's separate epilepsy identity excludes exactly that
+population by its own boundary); no `hypopituitarism -> osteoporosis` edge (the condition-specific
+measurement is low bone mass, and the established hypogonadism-to-osteoporosis window owns the
+gonadal-mechanism route while the pituitary literature's bone-quality-over-quantity pattern argues
+against a pure BMD residual framing); no edge to hypothyroidism, hypogonadism, adrenal-
+insufficiency, or diabetes-insipidus (those are the defining hormone-deficiency components of
+hypopituitarism, so an edge would restate the identity - constitutive-axis guard); no dizziness,
+syncope, falls, or orthostatic edge from hypotension (the orthostatic-specific literature belongs
+to the catalog's distinct orthostatic-hypotension identity, which is queued to author its own
+symptomatic windows, and a hypotension-to-vasovagal-syncope edge would invert the direction); no
+blindness, optic-atrophy, or other optic-neuropathy edge from hypotension (zero-record and
+target-specificity guards); no `ichthyosis -> visual-impairment` or `-> corneal-scarring` edge (the
+condition-specific series records an excellent visual prognosis with timely eyelid surgery and
+perforation in only two of eleven patients); no `ichthyosis -> hearing-loss` edge (the located
+deafness evidence is specific to the separate keratitis-ichthyosis-deafness syndrome); and no
+`ichthyosis -> cellulitis`/`-> impetigo` edge (barrier failure is plausible but no ichthyosis-
+specific infection denominators were located - zero-record guard).
+
+Registry after lockstep: 565 relationships (491 explicit / 74 legacy), 914 reference uses (382
+verified / 532 pending-verification), 841 source entities (346 active / 486 pending-verification).
+Citation packet regenerated at 202 worksheets / 532 reference rows = live citation debt. Backlog
+after batch 47: **314** undispositioned zero-edge drafts, and the walked window
+(`hemangioma` .. `ichthyosis`) verifies empty of unprocessed identities. Next-five:
+`iliohypogastric-ilioinguinal-nerve-neuralgia`, `impetigo`, `inappropriate-sinus-tachycardia`,
+`insulinoma`, `interosseous-muscle-atrophy`. Standing recommendation unchanged: land the
+accumulated uncommitted batches (35-47) through CI in one PR, as with PR #469 for batches 1-34.
+
+---
+
+Mapping Expansion D1 batch 48 (2026-09-24) authored four draft-quarantined relationships across four
+identities and recorded one deferral, continuing the walked alphabet at `i-`. Eight unique PMIDs
+were used (no reuse, no sharing) and every new reference remains `verified: false` pending
+qualified-human citation verification under `docs/citation-verification-sop.md`.
+
+`iliohypogastric-ilioinguinal-nerve-neuralgia -> unexplained-chronic-pain` (rank 1) is
+ASSOCIATION_ONLY with mechanismCategory MECHANICAL_OR_COMPRESSIVE: the Thomassen 2013 series of 43
+patients treated with ilioinguinal/iliohypogastric nerve blocks for chronic inguinal
+post-herniorrhaphy pain reported that 21 of 38 respondents (55.3%) no longer had DN4-defined
+neuropathic pain and concluded the blocks can be effective before more invasive procedures (PMID
+23015156), and the Deepika 2026 prospective study of 31 patients per arm reports chronic
+postoperative discomfort in 0.7-36.7% of open hernioplasty patients, enumerates ilioinguinal
+injury mechanisms (suture entrapment, partial division, crushing, diathermy), and finds that
+prophylactic neurectomy reduced persistent pain to six months (PMID 40452294). The Hsu 2012
+meta-analysis of six randomized trials with 1,286 patients, which found no reduction in chronic
+groin pain with nerve division while division increased sensory loss (PMID 22644622), is recorded
+as screened counter-evidence and is why the mechanism is not asserted at causation strength.
+
+`impetigo -> nephritis` (rank 1) publishes as DIRECT_CAUSATION with etiologicalConsensus PROBABLE,
+vaNexusProbabilityAlignment AT_LEAST_AS_LIKELY_AS_NOT, hypothesizedOnly:false, and
+mechanismCategory IMMUNE_MEDIATED (nephritogenic group A streptococcal infection with immune-
+complex deposition in the glomerulus), mirroring the existing goodpasture-syndrome and
+granulomatosis-with-polyangiitis direct-causation windows onto chronic-kidney-disease: the Stevens
+and Bryant streptococcal reference chapter states that impetigo can result in post-streptococcal
+acute glomerulonephritis (PMID 36479753) and the Ilyas and Tolaymat comparative paediatric cohort
+documents antecedent pyoderma in 66% of earlier cases before the epidemiological shift to
+pharyngitis-associated disease (PMID 18373105). The target is the acute nephritis identity rather
+than chronic-kidney-disease, which remains the downstream window of the nephritis node.
+
+`inappropriate-sinus-tachycardia -> dizziness` (rank 1) is ASSOCIATION_ONLY with
+mechanismCategory MULTIFACTORIAL on two review-level syndrome descriptions: the JACC 2022 review
+topic of the week records that the most common symptom is palpitations but that the syndrome can
+be accompanied by anxiety, dizziness, presyncope, and syncope, with pathogenesis considered
+multifactorial and autonomic dysfunction central and diagnosis by exclusion (PMID 35710196), and
+the Ruzieh 2018 review defines the syndrome as an inexplicable resting sinus rate above one
+hundred beats per minute with symptoms such as palpitations, dyspnoea, or dizziness and enumerates
+the secondary causes the diagnosis must exclude (PMID 29189171). The Shabtaie 2020 Mayo cohort of
+305 patients (stable ejection fraction, no cardiomyopathy, and no excess mortality versus
+atrioventricular nodal reentry tachycardia controls; depression in 25.6% and anxiety in 24.6% as
+comorbidities only) is recorded as a negative-cohort screen, which is why no cardiomyopathy,
+congestive-heart-failure, cardiac-arrhythmia, or psychiatric edge is authored from this identity.
+
+`insulinoma -> hyperinsulinism` (rank 1) publishes as DIRECT_CAUSATION with etiologicalConsensus
+PROBABLE, vaNexusProbabilityAlignment AT_LEAST_AS_LIKELY_AS_NOT, hypothesizedOnly:false, and
+mechanismCategory NEUROENDOCRINE_CASCADE (autonomous beta-cell insulin secretion uncoupled from
+glucose), matching the existing glucagonoma-to-diabetes-mellitus window: the Arya 2014 review
+states that insulin secretion becomes unregulated so that it persists despite low blood glucose and
+records that in adults an insulinoma is the commonest cause of hyperinsulinaemic hypoglycaemia
+(PMID 24557504), and the Shah 2017 Lancet review states that insulin secretion becomes dysregulated
+and uncoupled from glucose metabolism and that in adults the disorder can be due to beta-cell
+tumours (insulinomas) or beta-cell hyperplasia (PMID 27915035). The direct target is the immediate
+functional node rather than hypoglycaemia, because the hyperinsulinism identity already authors the
+hypoglycaemia window (with dementia and seizure-disorder downstream of it) and a direct edge would
+skip and double-count that pathway.
+
+- `interosseous-muscle-atrophy` **deferred** (MANIFESTATION-IDENTITY / DIRECTION-INVERSION): the
+  catalogue identity is a site-specific denervating finding rather than a disease, and the located
+  literature documents it as a sign of an upstream nerve lesion (a QJM clinical-image record, and
+  ultrasound/nerve-transfer, mid-palm ganglion-cyst, and neuralgic-amyotrophy series in which the
+  atrophy follows the nerve injury), so an outgoing edge would invert the direction of the located
+  evidence; the only catalog-fit outward target is the muscle-atrophy umbrella this identity
+  instantiates, and no condition-specific evidence quantifying a downstream catalogue outcome in
+  patients identified by interosseous atrophy was located. The sibling finding identity
+  thenar-hypotenar-atrophy is queued under the same manifest-identity treatment. Reopening
+  condition: a series in which interosseous atrophy is the index finding with a catalog-fit
+  secondary outcome, or a governance decision folding this identity into the nerve lesions that
+  produce it.
+
+Screens recorded for this batch: no `impetigo -> cellulitis`/`abscesses` edge (the located
+reference work classifies impetigo, erysipelas, and cellulitis as depth-defined syndromes of the
+same organism rather than documenting impetigo progression, and no condition-specific progression
+denominators were located); no `impetigo -> chronic-kidney-disease` edge (that progression belongs
+to the nephritis node - intermediate-chain guard); no acute-rheumatic-fever, scarlet-fever, or
+guttate-psoriasis edge (absent identities or non-impetigo-primary evidence); no
+`inappropriate-sinus-tachycardia -> cardiac-arrhythmia` edge (the identity is itself a sinus
+arrhythmia - constitutive/umbrella guard); no `inappropriate-sinus-tachycardia -> syncope`,
+`presyncope`, or postural-tachycardia edge (no syncope identity, and the postural and reflex
+mechanisms belong to the distinct postural-orthostatic-tachycardia-syndrome and vasovagal-syncope
+identities); no `insulinoma -> hypoglycemia`, `-> cognitive-disorder`, or `-> seizure-disorder`
+edge (downstream of the hyperinsulinism node - intermediate-chain guard); no `insulinoma ->
+diabetes-mellitus` edge (the located literature addresses hypoglycaemia and cure rather than
+post-resection glycaemic outcomes - treatment-state and zero-record guards); no
+`iliohypogastric-ilioinguinal -> chronic-pelvic-pain-syndrome` edge (wrong-identity guard, matching
+the genitofemoral sibling); and no psychiatric, scars, or mesh-complication edge from the inguinal
+neuralgia (zero-record and duplicate-scope guards).
+
+Registry after lockstep: 569 relationships (495 explicit / 74 legacy), 922 reference uses (382
+verified / 540 pending-verification), 849 source entities (346 active / 494 pending-verification).
+Citation packet regenerated at 206 worksheets / 540 reference rows = live citation debt. Backlog
+after batch 48: **309** undispositioned zero-edge drafts, and the walked window
+(`ichthyosis` .. `interosseous-muscle-atrophy`) verifies empty of unprocessed identities.
+Next-five: `intervertebral-disc-syndrome`, `intracranial-injury-without-skull-fracture`, `iritis`,
+`jersey-finger`, `joint-replacement-residuals`.
+
+Test-pin note (durable): the numeric sweep that advances current-state pins now collides with a
+frozen historical helper value - `tests/helpers/master-2026-current.ts` pins
+`master.conditionDispositions.length === 245`, a master-resolution artifact property unrelated to
+the draft-singles counter, and the draft-singles pin itself now also reads 245. That file is
+excluded from the sweep and its value must be treated as immutable; the same collision class
+(number-means-two-things) is what the batch-45 audit first surfaced. Standing recommendation
+unchanged: land the accumulated uncommitted batches (35-48) through CI in one PR, as with PR #469
+for batches 1-34.
+
+---
+
+Mapping Expansion D1 batch 49 (2026-09-24) authored four draft-quarantined relationships across
+two identities and recorded three deferrals. Both edges from
+`intracranial-injury-without-skull-fracture` are DIRECT_CAUSATION with etiologicalConsensus
+PROBABLE, vaNexusProbabilityAlignment AT_LEAST_AS_LIKELY_AS_NOT, and hypothesizedOnly:false, and
+are the batch's only direct-causation pair. `intracranial-injury-without-skull-fracture -> epilepsy`
+(rank 1, NEUROLOGICAL_DEGENERATION - post-traumatic epileptogenesis) rests on the Zhong 2025
+systematic review and meta-analysis of 24 studies and 505,720 patients, which found a pooled
+post-traumatic epilepsy prevalence of 9% (95% CI 8-11%), rising to 15% under International League
+Against Epilepsy diagnostic criteria, 16% in severe injury, and 14% in early-seizure studies
+(PMID 40835018), and on the Laing 2022 registry cohort of 15,152 adults with moderate to severe
+traumatic brain injury in which early post-traumatic seizures occurred in 416 patients (2.7%),
+including 27 with status epilepticus, and were associated with later post-traumatic epilepsy after
+confounder adjustment (PMID 35188950). The target is the catalogue's `epilepsy` identity rather
+than `seizure-disorder` because the located outcome is post-traumatic epilepsy meeting diagnostic
+criteria, and that identity's boundary excludes acute symptomatic or provoked seizures.
+`intracranial-injury-without-skull-fracture -> hypopituitarism` (rank 2, MULTIFACTORIAL -
+heterogeneous vascular, mechanical, and neuroendocrine pathogenesis) rests on the Kalas 2023 review
+recording that post-traumatic hypopituitarism prevalence has been significantly underestimated and
+that unrecognized disease has negative socioeconomic and quality-of-life consequences
+(PMID 36693336), and on the Zaben 2013 review recording that the hypophyseal vessels are
+anatomically vulnerable to shearing injury and raised intracranial pressure with pituitary
+ischaemia or haemorrhage a common autopsy finding (PMID 22779906); both edges plus the
+`cerebral-contusion`, `subdural-hematoma`, and `diffuse-axonal-injury` precedents keep the
+head-injury family's direct-causation conventions. Both edges from `joint-replacement-residuals`
+are ASSOCIATION_ONLY (NOT_ESTABLISHED, NOT_ASSERTED, hypothesizedOnly:true):
+`joint-replacement-residuals -> deep-vein-thrombosis` (rank 1, THROMBOTIC_OR_VASCULAR - surgical
+venous stasis, endothelial injury, and postoperative hypercoagulability) rests on the Simon 2023
+claims-database cohort of 29,264 hip and knee arthroplasty patients reporting a 30-day
+post-discharge venous thromboembolism incidence of 1.19% (95% CI 1.06-1.32%) alongside 3.43%
+bleeding (PMID 38039005), and on the Lieberman 2021 prophylaxis review recording that American
+College of Chest Physicians guidelines recommend at least 10 to 14 days of thromboprophylaxis with
+risk-stratified agent selection (PMID 34133395); `joint-replacement-residuals -> contractures`
+(rank 2, POST_SURGICAL_OR_TREATMENT - post-arthroplasty scar-tissue formation and soft-tissue
+contracture) rests on the Ries and Badalamente revision series of six total knee arthroplasties in
+which no cause of stiffness was identified other than soft-tissue contracture and the arc of
+motion improved from a mean 36 degrees to 86 degrees after revision (PMID 11064989), and on the
+Bong and Di Cesare stiffness review setting out the mobilization, manipulation, lysis, and
+revision algorithm (PMID 15161169). No edge was raised to causation: the thromboembolic cohort is a
+claims-based prophylaxis-comparison study measured in patients already anticoagulated with residual
+confounding, and the stiffness evidence is a small revision series plus a treatment review.
+
+Three deferrals were recorded without relationships. `intervertebral-disc-syndrome` is deferred on
+a prior closure plus a parallel-pathway screen: the harvested proposition remains FINAL-CLOSED
+under FINAL-CLOSE-NO-SUPPORTED-SECONDARY, and the located literature is
+degenerative-disc-disease-specific, which is the synonym/parallel pathway for the same
+disc-degeneration patient, so a generic syndrome window would double-count that route.
+`iritis` is deferred as a synonym of anterior uveitis: the separately approved uveitis identity
+already carries the glaucoma and cataract windows, so authoring them again on this identity would
+create two catalogue entries for one clinical entity. `jersey-finger` is deferred as zero-record:
+the located literature reports total active motion, QuickDASH, and Buck-Gramcko grades without a
+catalog-fit secondary diagnosis, and the mallet-finger and gamekeeper's-thumb siblings do not
+transfer their mechanisms.
+
+Screens recorded for this batch: no `intracranial-injury-without-skull-fracture ->
+cardiac-arrhythmia` edge (the harvested proposition remains FINAL-CLOSED under
+FINAL-CLOSE-PROPOSITION-MISMATCH and is not reasserted - prior-closure guard); no `->
+seizure-disorder` edge alongside the epilepsy window (target-specificity guard against
+double-counting one pathway); no `-> cognitive-disorder` edge (no condition-specific
+post-traumatic cognitive cohort retrieved in this window - zero-record guard); no `->
+cranial-nerve-palsy`, `anosmia`, or `visual-impairment` edge (zero-record and duplicate-scope
+guards); no `-> subdural-hematoma`, `epidural-hematoma`, or `cerebral-contusion` edge (those are
+distinct catalogue identities, not downstream consequences - wrong-target guard); no `->
+osteopenia` or `anemia` edge (those windows belong to the `hypopituitarism` intermediate node -
+intermediate-chain guard); and no `joint-replacement-residuals -> pulmonary-embolism` edge (the
+`deep-vein-thrombosis` identity already authors that downstream window - intermediate-chain guard),
+no nerve-palsy, prosthetic-infection, or osteomyelitis edge (zero-record and wrong-target guards),
+no `-> unexplained-chronic-pain` edge (the located series measures range of motion rather than
+persistent pain as a distinct outcome), no `-> heterotopic-ossification` edge (heterotopic bone was
+an incidental finding in the stiffness series, not a quantified post-arthroplasty outcome), and no
+psychosocial edge (zero-record guard).
+
+Registry after lockstep: 573 relationships (499 explicit / 74 legacy), 930 reference uses (382
+verified / 548 pending-verification), 857 source entities (346 active / 502 pending-verification).
+Citation packet regenerated at 210 worksheets / 548 reference rows = live citation debt. Backlog
+after batch 49: **304** undispositioned zero-edge drafts, and the walked window
+(`interosseous-muscle-atrophy` .. `joint-replacement-residuals`) verifies empty of unprocessed
+identities. Next-five: `kaposi-s-sarcoma`, `katayama-fever`, `keloids`, `keratitis`,
+`kienbock-s-disease`. Standing recommendation unchanged: land the accumulated uncommitted batches
+(35-49) through CI in one PR, as with PR #469 for batches 1-34.
+
+---
+
+Mapping Expansion D1 batch 50 (2026-09-24) authored six draft-quarantined relationships across
+all five screened identities and recorded no deferrals: every identity was retained with at least
+one window, so the screened-out propositions were recorded on the edges and below rather than as
+deferred identities. All six edges are ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED,
+vaNexusProbabilityAlignment NOT_ASSERTED, and hypothesizedOnly:true. `keratitis -> corneal-scarring`
+(rank 1, INFECTIOUS_SPREAD) rests on a consecutive series of 63 eyes with corneal scarring due to
+Acanthamoeba (20), bacterial (35), and fungal (8) keratitis in which total-cornea higher-order
+aberrations exceeded normal controls (1.15 +/- 2.06, 0.91 +/- 0.88, and 1.39 +/- 1.46 versus
+0.09 +/- 0.01 micrometre; all P < .001) with visual acuity correlating with anterior, posterior,
+and total-cornea aberrations (PMID 28040524), and on a 55-eye penetrating-keratoplasty series for
+herpes simplex keratitis scarring (42 quiescent scars, 13 descemetocele or perforation; 61.8%
+reaching 0.6 logMAR or better) (PMID 28380101); the harvested keratitis-to-visual-impairment
+proposition remains FINAL-CLOSED (PMID 37802392) and is not reasserted, and the adenoviral
+subepithelial-infiltrate route stays with the conjunctivitis window. `kienbock-s-disease ->
+osteoarthritis` (rank 1, BIOMECHANICAL_ALTERATION) rests on a scaphocapitate-arthrodesis series for
+late-stage Kienbock disease reporting radiographic radioscaphoid arthritis often beyond ten years
+of follow-up (PMID 23824220) and on a treatment review documenting stage-dependent progression from
+limited lunate affection through progressive collapse of a non-reconstructable lunate to loss of
+all functional wrist articulations (PMID 29549407); because the arthritis was measured in
+surgically realigned wrists and no natural-history cohort exists, and because Kienbock's disease IS
+lunate osteonecrosis (so the generic avascular-necrosis identity is the umbrella rather than a
+downstream target), the edge is bounded accordingly. `kaposi-s-sarcoma -> lymphedema` (rank 1,
+MALIGNANT_TRANSFORMATION) rests on a narrative review of HHV-8 lymphatic-endothelial tropism with
+multicentric endothelial proliferation occluding the lymphatic lumen and producing chronic
+lymphedema that tumour treatment barely reduces (PMID 38035924), a 65-patient classic-sarcoma
+series in which 60% of stockings-treated patients had limb volume reduction while all 15 untreated
+patients increased (PMID 16848816), and a lymphedema classification naming Kaposi sarcoma among the
+major neoplastic causes of secondary lymphedema (PMID 12162199); `kaposi-s-sarcoma -> cellulitis`
+(rank 2, INFECTIOUS_SPREAD) rests on a 39-patient series of HIV-related sarcoma with chronic
+lower-limb lymphedema reporting cellulitis with 46.1% first-episode hospitalization, 35.8%
+recurrence, and 25.3% mortality (PMID 34965797) and on a large-cohort microbiological study of
+toe web intertrigo in sarcoma patients warning of progression to cellulitis and sepsis
+(PMID 29150768); the cellulitis window is authored on the sarcoma primary because the lymphedema
+identity is target-only and authors no windows, so the infection risk would otherwise be
+uncaptured. `keloids -> depressive-disorder` (rank 1, PSYCHOPHYSIOLOGICAL) rests on a 202-patient
+keloid survey reporting mean HADS scores of 9.82 (anxiety) and 7.96 (depression) with coping
+tendencies mediating 38.58% of the social-support-to-depression relationship (PMID 41169494) and on
+a comparative keloid survey reporting higher SCL-90 depression, anxiety, and interpersonal-sensitivity
+scores than controls, greatest for visible lesions and in women (PMID 33841685). `katayama-fever ->
+urticaria` (rank 1, IMMUNE_MEDIATED) rests on a same-source cohort of 34 patients with
+simultaneously acquired acute schistosomiasis mansoni in which 16 developed angioedema and/or
+urticaria about 30 days post-infection independently of worm burden and eosinophilia
+(PMID 7487229) and on a travel-medicine review identifying acute schistosomiasis as the most
+common parasitic cause of acute urticaria in travellers (PMID 39485933).
+
+Screens recorded for this batch: no `keratitis -> visual-impairment`, `blindness`, or
+`night-blindness` edge (the harvested proposition remains FINAL-CLOSED under
+FINAL-CLOSE-PROPOSITION-MISMATCH - prior-closure guard, and no condition-specific blindness
+quantification was located); no `kienbock-s-disease -> avascular-necrosis` edge (constitutive - the
+identity IS lunate osteonecrosis), no `-> unexplained-chronic-pain` edge (the pain is
+lesion-explained and the identity is reserved for unexplained presentations), no
+`-> loss-of-use-of-extremities` edge (rating-framework container without condition-specific
+evidence of extremity loss), and no `-> muscle-atrophy` or `-> carpal-tunnel-syndrome` edge
+(zero-record and distinct-entity guards); no `keloids -> scars` edge (constitutive - a keloid is a
+scar and the scars identity is the lesion's own rating view), no `keloids -> anxiety-disorder` edge
+(the located anxiety signal tracks pain, income, self-efficacy, and coping style rather than the
+lesion and is deferred pending independent evidence), no `keloids -> contractures` edge (the
+located contracture literature is burn, congenital-naevus, and neuromuscular-specific -
+zero-record), and no `keloids -> squamous-cell-carcinoma` edge (a single case report of carcinoma
+in a keloid scar, PMID 31065195, against Marjolin evidence that concentrates in burn scars -
+zero-record and magnitude guards); no `kaposi-s-sarcoma -> pulmonary`, `pleural-effusion`,
+`pulmonary-hypertension`, or `anemia` edge (zero-record for discrete secondary diagnoses, and the
+reverse relationship in which sarcoma arises within chronic post-mastectomy lymphedema (PMID
+26264753) means direction is not asserted on the lymphedema edge); and no `katayama-fever ->
+pulmonary-hypertension`, `anemia`, or `malnutrition-residuals` edge (the located schistosomiasis
+literature for those outcomes concerns chronic hepatosplenic disease rather than the acute
+Katayama phase - disease-stage guard) and no `-> tropical-pulmonary-eosinophilia` or
+`-> eosinophilic-gastroenteritis` edge (those are distinct disease identities with their own
+aetiologies - wrong-target guard).
+
+Registry after lockstep: 579 relationships (505 explicit / 74 legacy), 943 reference uses (382
+verified / 561 pending-verification), 938 clinical / 5 legal uses, 870 source entities (346 active /
+515 pending-verification). Citation packet regenerated at 216 worksheets / 561 reference rows =
+live citation debt. Backlog after batch 50: **299** undispositioned zero-edge drafts (304 minus the
+five processed identities, none of which was deferred), and the walked window (`kaposi-s-sarcoma` ..
+`kienbock-s-disease`) verifies empty of unprocessed identities. Next-five: `knee-disarticulation`,
+`labyrinthitis`, `laryngeal-stenosis`, `laryngitis`, `laryngocele`.
+
+Test-pin note (durable, extended): the sweep now excludes exactly one frozen file,
+`tests/helpers/master-2026-current.ts`, which pins master-resolution artifact properties
+(`conditionDispositions.length === 245`, `=== 236` unverified baseline refs) that are unrelated to
+the live registry counters; its similarly named sibling
+`tests/helpers/master-resolution-2026-current.ts` does hold live counter pins (refs, unverified,
+clinical) and must be swept. This batch also hit a genuine second collision class for the first
+time - an HTTP-status list (`[425, 429, 500, 502, 503, 504]` in the citation-decay probe resilience
+test) where `502` means "Bad Gateway" rather than the pending-verification source count - so the
+sweep rule is now line-scoped: any line carrying a transport-status list (425/429) is skipped and
+verified afterwards as an intentional residue. The draft-singles counter (draft files carrying
+exactly one suggestion), which is pinned in twelve of the ME-wave test files and is not a registry
+field, advanced 249 -> 253 because four of this batch's five identities hold a single edge (Kaposi
+sarcoma holds two, so it is not a single); that counter lives outside both audit scripts and so must
+be added to the sweep map explicitly each time a single-edge identity is authored. Standing recommendation unchanged: land the
+accumulated uncommitted batches (35-50) through CI in one PR, as with PR #469 for batches 1-34.

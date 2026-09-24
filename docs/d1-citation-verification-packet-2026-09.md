@@ -5121,6 +5121,2802 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 **Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
 
+### `flexor-hallucis-longus-tendinitis` → `unexplained-chronic-pain` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** The Rietveld 2018 systematic review documents FHL tendinopathy ('dancers' tendinitis') alongside posterior ankle impingement syndrome with pain-directed treatment outcomes across 324 dancers, the Baillie 2022 case-control study documents posterior ankle pain on body chart and provocation testing as the clinical feature set evaluated alongside FHL imaging findings in 82 elite participants, and the Ivanova 2023 review documents repetitive extreme plantarflexion overload producing FHL tendonitis as a recognized dance-medicine entity; the literature documents the pain feature of the identity without establishing that FHL tendinitis produces a primary chronic-pain syndrome in an individual.
+
+**Causation boundary (causationStatus):** The mapping does not assert that flexor hallucis longus tendinitis causes the target's unexplained-pain state: the pain is the presenting complaint constitutive of the identity rather than a demonstrated downstream outcome, the documented tendon pathology is itself a pain generator that the target's own criteria treat as a competing generator to characterize carefully, and osteochondral injury of the talar dome or metatarsal heads, tarsal coalition, sinus tarsi pathology, tarsal tunnel or digital nerve entrapment, inflammatory arthropathy, and referred lumbar radiculopathy mimic or accompany posterior-ankle and first-ray pain; individual claims require documented FHL tendinopathy with provocation testing and/or imaging confirmation, documented pain distribution and chronology, and exclusion of the competing generators per the target's criteria.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 138.1 — Rietveld ABM, Hagemans FMT, Haitjema S, et al. Results of Treatment of Posterior Ankle Impingement Syndrome and Flexor Hallucis Longus Tendinopathy in Dancers: A Systematic Review. J Dance Med Sci. 2018;22(1). PMID 29510786.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/29510786/
+- Source checked on: 2026-09-23
+- Locator: PMID 29510786; 89% good-to-excellent pain outcomes, mean 11-week return to dance
+- Note under review: Systematic review of 27 studies (324 dancers, 376 ankles) of operative treatment for posterior ankle impingement syndrome and FHL tendinopathy with good-to-excellent outcomes in 89% and mean 11-week return to dance - the pain-outcome anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 138.2 — Baillie P, Ferrar K, Cook J, et al. Posterior Ankle Impingement Syndrome Clinical Features Are Not Associated With Imaging Findings in Elite Ballet Dancers and Athletes. Clin J Sport Med. 2022;32(6). PMID 36315819.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/36315819/
+- Source checked on: 2026-09-23
+- Locator: PMID 36315819; clinical pain features versus imaging in 82 elite participants
+- Note under review: Case-control study of 82 elite participants documenting posterior ankle pain on body chart and plantarflexion provocation as the clinical features evaluated alongside FHL and os-trigonum imaging findings - the pain-presentation anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 138.3 — Ivanova V, Todd NW, Yurgelon J, et al. Dance-Related Foot and Ankle Injuries and Pathologies. Clin Podiatr Med Surg. 2023;40(1). PMID 36368843.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/36368843/
+- Source checked on: 2026-09-23
+- Locator: PMID 36368843; plantarflexion overload producing FHL tendonitis
+- Note under review: Dance-medicine review documenting that significant plantarflexion leads to posterior joint impingement and FHL tendonitis, with conservative treatment beginning with immobilization, physical therapy, and activity cessation - the overload-mechanism anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `fournier-s-gangrene` → `scars` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** The Crane 2026 penile-resurfacing series names Fournier's gangrene among the conditions generating scarring and contractures that require surgical resurfacing, the Tremblay 2026 rehabilitation evaluation documents genital skin-graft complications after necrotizing fasciitis and Fournier's gangrene including pain, contractures, and hypertrophic scars that impair walking, sitting, voiding, bowel elimination, and sexual function, and the Griffin 2016 case documents intractable scar discomfort after Fournier's gangrene debridement and grafting requiring laser resurfacing; the literature documents symptomatic scar and contracture burden at the involved perineogenital sites without establishing that Fournier's gangrene produced an individual's scar.
+
+**Causation boundary (causationStatus):** The mapping does not assert that Fournier's gangrene caused an individual's scar: scar extent and symptoms are mediated by defect size, debridement extent, healing path (secondary intention versus graft versus flap), graft take, and individual healing tendency, and burn, traumatic, unrelated surgical, hidradenitis-suppurativa, chronic fissure, and keloid-prone scarring of the perineum mimic or accompany the pattern; individual claims require documented Fournier's gangrene with debridement or tissue loss, scars or contractures arising at the involved sites with chronology documented, compatible anatomic distribution, and exclusion of unrelated scarring causes.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 139.1 — Crane J, Lloyd A, Kaul A, et al. Matriderm as a biological scaffold in penile resurfacing: A single-centre case series. J Plast Reconstr Aesthet Surg. 2026;115. PMID 41819034.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/41819034/
+- Source checked on: 2026-09-23
+- Locator: PMID 41819034; Fournier's gangrene listed among scar-contracture indications for resurfacing
+- Note under review: Single-centre case series of 36 patients (38 operations) for penile resurfacing that names Fournier's gangrene among the conditions producing scarring and contractures - the Fournier's-to-scar-indication anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 139.2 — Tremblay C, Edger-Lacoursiere Z, Schneider G, et al. Rehabilitation Evaluation and Treatment for Skin Graft Complications of the Genitalia. J Burn Care Res. 2026;47(3). PMID 41615004.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/41615004/
+- Source checked on: 2026-09-23
+- Locator: PMID 41615004; necrotizing fasciitis/Fournier's genital graft complications with pain and contractures
+- Note under review: Evaluation and treatment of patients after necrotizing fasciitis or Fournier's gangrene documenting genital graft complications including pain, contractures, hypertrophic scars, hypersensitivity, and recurrent wounds that directly affect walking, sitting, voiding, bowel elimination, and sexual function - the symptomatic-scar-burden anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 139.3 — Griffin D, Brelsford M, O'Reilly E, et al. Ablative Fractional Laser Resurfacing: A Promising Adjunct to Surgical Reconstruction. Mil Med. 2016;181(6). PMID 27244076.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/27244076/
+- Source checked on: 2026-09-23
+- Locator: PMID 27244076; intractable scar discomfort after Fournier's gangrene debridement and grafting
+- Note under review: Case of a man after extensive Fournier's gangrene genital and perineal debridement who, despite successful reconstruction with extensive skin grafting, suffered intractable discomfort from the developed scarring requiring ablative fractional laser resurfacing - the painful-scar anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `freiberg-s-infraction` → `osteoarthritis` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** The Kilmartin 2020 hemiarthroplasty series treats second metatarsophalangeal joint osteoarthrosis and Freiberg disease as one surgical pathology continuum in 23 consecutive patients, the Lee 2013 operative series reports joint debridement and wedge osteotomy in Smillie-staged Freiberg disease, and the Carro 2004 case documents a Smillie stage IV late-stage lesion managed by debridement and excision arthroplasty for established secondary degeneration; the literature documents end-stage Freiberg disease and second metatarsophalangeal degenerative arthritis as overlapping surgical pathologies without establishing that every individual's osteoarthritis followed Freiberg's infraction.
+
+**Causation boundary (causationStatus):** The mapping does not assert that Freiberg's infraction caused an individual's osteoarthritis: no natural-history cohort quantifies progression from Freiberg disease to incident metatarsophalangeal osteoarthritis, early-stage disease (Smillie I-II) can arrest or remodel without degeneration, primary idiopathic second metatarsophalangeal degenerative arthritis with a long second metatarsal anatomy variant is an independent etiology, inflammatory arthropathy and prior-trauma arthropathy independently produce metatarsophalangeal degeneration, and the surgical series are cross-sectional at end stage; individual claims require documented Freiberg's infraction predating documented metatarsophalangeal osteoarthritis with staging, chronology, and alternative-cause exclusion.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 140.1 — Kilmartin TE, Posmyk L. Synthetic Cartilage Implant Hemiarthroplasty for Second MTP Joint Osteoarthrosis. J Foot Ankle Surg. 2020;59(5). PMID 32505725.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/32505725/
+- Source checked on: 2026-09-23
+- Locator: PMID 32505725; second MTP osteoarthrosis and Freiberg disease treated as one pathology
+- Note under review: Series of 23 consecutive patients treating second metatarsophalangeal joint osteoarthritis and Freiberg disease as one painful joint-disease continuum with 43-month mean follow-up - the Freiberg-to-OA continuum anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 140.2 — Lee HJ, Kim JW, Min WK, et al. Operative treatment of Freiberg disease using extra-articular dorsal closing-wedge osteotomy: technical tip and clinical outcomes in 13 patients. Foot Ankle Int. 2013;34(1). PMID 23386770.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/23386770/
+- Source checked on: 2026-09-23
+- Locator: PMID 23386770; Smillie-staged Freiberg disease with intraoperative joint debridement
+- Note under review: Smillie-staged operative series of Freiberg disease with debridement of the joint and wedge osteotomy, mean 44-month follow-up - the staging and degenerated-joint anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 140.3 — Carro LP, Golano P, Fariñas O, et al. Arthroscopic Keller technique for Freiberg disease. Arthroscopy. 2004;20 Suppl 2. PMID 15243427.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/15243427/
+- Source checked on: 2026-09-23
+- Locator: PMID 15243427; Smillie IV late-stage disease treated as secondary joint degeneration
+- Note under review: Case documenting a Smillie stage IV late-stage Freiberg lesion treated by debridement, free-body removal, and arthroscopic Keller excision - the late-stage secondary-degeneration anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `frontal-fibrosizing-alopecia` → `loss-of-eyebrow` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** The Doche 2025 clinical and histopathological study of 25 patients with eyebrow alopecia in frontal fibrosing alopecia documents the brow as a site of FFA involvement with dedicated clinical and histopathological characterization, the Kerkemeyer 2021 review describes the classic phenotype of symmetrical frontotemporal hairline recession together with bilateral eyebrow loss, and the Melián-Olivera 2025 review quantifies eyebrow alopecia prevalence of 43-94.9% across studies of men with FFA; the literature documents a high-prevalence association of eyebrow loss with the FFA identity without establishing temporal order or an individual causal nexus.
+
+**Causation boundary (causationStatus):** The mapping does not assert that frontal fibrosing alopecia caused an individual's eyebrow loss: brow loss may precede or parallel recognition of scalp hairline recession so temporal ordering is frequently unavailable, alopecia areata, trichotillomania, seborrheic or atopic dermatitis, thyroid disease, medications, infection, and age-related brow thinning independently produce madarosis, and brow involvement may mark a shared systemic phenotype rather than a downstream consequence of scalp disease activity; individual claims require documented FFA with brow-site disease activity (perifollicular erythema, trichoscopic follicular-opening loss, or lichenoid histology at the brow), documented chronology, and exclusion of other madarosis causes.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 141.1 — Doche I, Gerlero P, Melhado IP, et al. Eyebrow alopecia in frontal fibrosing alopecia: A clinical and histopathological study of 25 patients. J Am Acad Dermatol. 2025;93(6). PMID 40886835.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/40886835/
+- Source checked on: 2026-09-23
+- Locator: PMID 40886835; clinical and histopathological eyebrow alopecia in 25 FFA patients
+- Note under review: Dedicated clinical and histopathological study of 25 patients documenting eyebrow alopecia as FFA involvement of the brow site - the condition-specific brow anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 141.2 — Kerkemeyer KLS, Eisman S, Bhoyrul B, et al. Frontal fibrosing alopecia. Clin Dermatol. 2021;39(2). PMID 34272007.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/34272007/
+- Source checked on: 2026-09-23
+- Locator: PMID 34272007; FFA phenotype with bilateral eyebrow loss
+- Note under review: FFA review describing the classic phenotype of symmetrical progressive frontotemporal hairline recession together with bilateral eyebrow loss beginning in postmenopausal women - the phenotype anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 141.3 — Melián-Olivera A, Imbernón-Moya A, Porriño-Bustamante ML, et al. Frontal Fibrosing Alopecia in Men: A Review of the Literature. J Clin Med. 2025;14(6). PMID 40142720.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/40142720/
+- Source checked on: 2026-09-23
+- Locator: PMID 40142720; eyebrow alopecia prevalence 43-94.9% in male FFA
+- Note under review: Narrative review quantifying a high prevalence of eyebrow alopecia (43-94.9%) across studies of men with FFA alongside beard and sideburn involvement - the prevalence anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `frontal-fibrosizing-alopecia` → `depressive-disorder` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** The Melián-Olivera 2026 multicenter cross-sectional study of 81 men with FFA documents moderate-to-severe emotional impairment in 39.5% with Hospital Anxiety and Depression Scale distress and the finding that FFA significantly affects quality of life, the Saceda-Corralo 2018 cohort specifically evaluates health-related quality of life in patients with FFA, and the Chiang 2015 study of 105 primary cicatricial alopecia patients including FFA documents HADS psychological distress and emotionally negative illness perceptions; the literature documents screening-level psychological burden associated with the FFA identity without establishing that FFA produced an individual's major depressive disorder.
+
+**Causation boundary (causationStatus):** The mapping does not assert that frontal fibrosing alopecia caused an individual's major depressive disorder: the evidence is cross-sectional with screening instruments (HADS, Skindex, quality-of-life measures) rather than structured diagnostic interviews, temporal ordering is absent and premorbid psychiatric history is uncontrolled, psychosocial stressors and other dermatologic, endocrine, and autoimmune conditions independently affect mood, the reverse arrow is live (depression independently worsens perceived hair-loss burden and care engagement), and one anchor pools FFA with lichen planopilaris; individual claims require a separately established major depressive disorder with onset chronology documented relative to FFA diagnosis and activity, and distress, appearance concern, or quality-of-life impairment alone must not be used to infer the disorder.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 142.1 — Melián-Olivera A, Lobato-Berezo A, Hermosa-Gelbard A, et al. The Psychological Impact of Frontal Fibrosing Alopecia in Men: A Multicenter Cross-Sectional Study. Skin Appendage Disord. 2026. PMID 42257043.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42257043/
+- Source checked on: 2026-09-23
+- Locator: PMID 42257043; 39.5% moderate-to-severe emotional impairment in 81 men with FFA
+- Note under review: Multicenter cross-sectional study of 81 men with FFA documenting moderate-to-severe emotional impairment in 39.5% with HADS psychological distress and significant quality-of-life impact - the condition-specific distress anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 142.2 — Saceda-Corralo D, Pindado-Ortega C, Moreno-Arrones OM, et al. Health-Related Quality of Life in Patients With Frontal Fibrosing Alopecia. JAMA Dermatol. 2018;154(4). PMID 29516093.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/29516093/
+- Source checked on: 2026-09-23
+- Locator: PMID 29516093; FFA cohort with health-related quality-of-life association
+- Note under review: Cohort study evaluating the association between frontal fibrosing alopecia and health-related quality of life - the FFA-specific quality-of-life anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 142.3 — Chiang YZ, Bundy C, Griffiths CE, et al. The role of beliefs: lessons from a pilot study on illness perception, psychological distress and quality of life in patients with primary cicatricial alopecia. Br J Dermatol. 2015;172(1). PMID 25039441.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/25039441/
+- Source checked on: 2026-09-23
+- Locator: PMID 25039441; 105 primary cicatricial alopecia patients with HADS psychological distress
+- Note under review: Study of 105 primary cicatricial alopecia patients (lichen planopilaris and FFA) documenting HADS psychological distress, negative illness perceptions, and quality-of-life impact - the cicatricial-distress screening anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `fungal-skin-infection` → `cellulitis` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** The Björnsdóttir 2005 prospective case-control study of 100 lower-limb cellulitis cases and 200 matched controls documents dermatophytic foot infection and toe-web bacterial colonization among the predisposing factors with particular study emphasis, the Bristow 2009 structured review of 16 studies evaluates fungal foot infection as a cellulitis risk factor (only two case-control studies with microbiological confirmation), and the Solomon 2021 cohort of 200 toe-web infection patients documents that most such infections are secondary to chronic dermatophytosis with interdigital tinea as a predisposing factor; the literature documents a reproducible risk association without establishing that a fungal skin infection caused an individual's cellulitis.
+
+**Causation boundary (causationStatus):** The mapping does not assert that fungal skin infection caused an individual's cellulitis: the evidence is case-control and cohort risk-factor data without an eradication-response trial, venous insufficiency, lymphedema, edema, obesity, diabetes, prior cellulitis, and skin-break portals (dermatitis, excoriation, ulceration) independently produce lower-limb cellulitis and commonly coexist with foot tinea, and the documented fungal infection may be a marker of the shared humid-macerated skin environment rather than the operative cause; individual claims require documented tinea pedis or foot dermatophytosis, documented lower-limb cellulitis with chronology placing the fungal infection first, and exclusion of the independent portals and risk factors per case.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 143.1 — Björnsdóttir S, Gottfredsson M, Thórisdóttir AS, et al. Risk factors for acute cellulitis of the lower limb: a prospective case-control study. Clin Infect Dis. 2005;41(10):1416-1422. PMID 16231251.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/16231251/
+- Source checked on: 2026-09-23
+- Locator: PMID 16231251; dermatophytic foot infection emphasized among cellulitis risk factors
+- Note under review: Prospective case-control study of 100 cellulitis cases and 200 matched controls placing particular emphasis on dermatophytic infections of the foot and bacterial infection and colonization of the toe webs - the risk-factor anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 143.2 — Bristow IR, Spruce MC. Fungal foot infection, cellulitis and diabetes: a review. Diabet Med. 2009;26(5):548-551. PMID 19646196.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/19646196/
+- Source checked on: 2026-09-23
+- Locator: PMID 19646196; 16-study review of fungal foot infection as cellulitis risk factor
+- Note under review: Structured review of 16 studies (eight case-control) evaluating tinea pedis and onychomycosis as cellulitis risk factors, recording that only two case-control studies used microbiological diagnosis - the evidence-quality and diabetes-scope anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 143.3 — Solomon M, Greenbaum H, Shemer A, et al. Toe Web Infection: Epidemiology and Risk Factors in a Large Cohort Study. Dermatology. 2021;237(6):902-906. PMID 33105147.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/33105147/
+- Source checked on: 2026-09-23
+- Locator: PMID 33105147; toe-web infection secondary to chronic dermatophytosis
+- Note under review: Cohort study of 200 toe-web infection patients documenting that in most cases the infection is secondary to chronic fungal infection (dermatophytosis) with interdigital tinea among the predisposing factors - the fungal-to-bacterial sequence anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `gamekeeper-s-thumb` → `osteoarthritis` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** The Christensen 2016 long-term follow-up of primary repair for chronic thumb ulnar collateral ligament injuries documents some degree of osteoarthritis in 88% of evaluated patients at a mean 24.5 years after repair of injuries greater than six weeks old, with increased age at injury and higher DASH scores correlating with increased radiographic grades, the Daley 2020 review characterizes chronic collateral ligament injuries of the thumb MCP joint as a distinct management entity, and the Fairhurst 2002 series documents ongoing MCP joint pain in two of 22 reconstructed gamekeeper's thumbs; the literature documents post-traumatic degeneration at the chronically injured joint without establishing that a gamekeeper's thumb caused an individual's osteoarthritis.
+
+**Causation boundary (causationStatus):** The mapping does not assert that gamekeeper's thumb caused an individual's osteoarthritis: the 88% figure derives from a 12-patient long-term subset of surgically treated chronic injuries with selection and survivorship bias, no natural-history cohort follows untreated chronic UCL insufficiency to incident radiographic osteoarthritis, primary first carpometacarpal (basal) thumb osteoarthritis is far more common and occurs at a different joint, prior MCP fracture or dislocation and inflammatory or crystal arthropathy independently produce MCP degeneration, and degeneration may predate or accompany the ligament injury; individual claims require documented chronic UCL injury predating documented osteoarthritis at the injured MCP joint with alternative joint and inflammatory causes excluded.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 144.1 — Christensen T, Sarfani S, Shin AY, et al. Long-Term Outcomes of Primary Repair of Chronic Thumb Ulnar Collateral Ligament Injuries. Hand (N Y). 2016;11(3):303-309. PMID 27698632.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/27698632/
+- Source checked on: 2026-09-23
+- Locator: PMID 27698632; 88% osteoarthritis at mean 24.5 years after chronic UCL repair
+- Note under review: Follow-up of at least 15 years (mean 24.5 years) after repair of chronic thumb UCL injuries documenting some degree of osteoarthritis in 88% of evaluated patients with radiographic grade correlations - the post-traumatic osteoarthritis anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 144.2 — Daley D, Geary M, Gaston RG, et al. Thumb Metacarpophalangeal Ulnar and Radial Collateral Ligament Injuries. Clin Sports Med. 2020;39(2):443-455. PMID 32115093.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/32115093/
+- Source checked on: 2026-09-23
+- Locator: PMID 32115093; chronic thumb MCP collateral ligament injuries reviewed
+- Note under review: Review of thumb MCP collateral ligament injuries distinguishing acute from chronic injury management and documenting chronic collateral ligament insufficiency as a distinct entity - the chronicity and identity anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 144.3 — Fairhurst M, Hansen L. Treatment of "Gamekeeper's Thumb" by reconstruction of the ulnar collateral ligament. J Hand Surg Br. 2002;27(6):542-545. PMID 12475512.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/12475512/
+- Source checked on: 2026-09-23
+- Locator: PMID 12475512; chronic gamekeeper's thumb reconstruction with ongoing MCP pain
+- Note under review: Series of 22 thumbs with symptomatic chronic UCL laxity (one week to ten years after injury) treated by reconstruction with functional stability regained and two thumbs having ongoing MCP joint pain - the chronic-gamekeeper's-identity and persistent-symptom anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `ganglion-cysts` → `carpal-tunnel-syndrome` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** The Yalcinkaya 2014 report documents two cases of unilateral carpal tunnel syndrome caused by occult ganglia within the carpal tunnel with the observation that space-occupying lesions are more prevalent in unilateral than bilateral carpal tunnel syndrome, the Kang 2009 retrospective series documents 12 carpal tunnel syndrome cases caused by space-occupying lesions (pathology including ganglion) treated by release and lesion removal with symptom alleviation in all cases, and the Alsharif 2026 case documents a histopathology-confirmed flexor tendon sheath ganglion compressing the median nerve with complete resolution after excision; the literature documents ganglion mass effect producing carpal tunnel syndrome in specific cases without establishing how often a ganglion is the operative cause in an individual.
+
+**Causation boundary (causationStatus):** The mapping does not assert that a ganglion cyst caused an individual's carpal tunnel syndrome: idiopathic median nerve compression is the dominant etiology and ganglia are common incidental findings that do not cause symptoms, intracanalicular versus ganglion-related distributions vary, other space-occupying lesions (tenosynovitis including tuberculous and gouty, calcifying masses, tumors, lipoma) independently compress the nerve, and the cited evidence is case-level with a single mixed-lesion series; individual claims require imaging (MRI or ultrasound) documenting the ganglion within or adjacent to the canal with median nerve compression, electrodiagnostic confirmation of carpal tunnel syndrome, documented chronology, and exclusion of idiopathic, inflammatory, and alternative mass causes.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 145.1 — Yalcinkaya M, Akman YE, Bagatur AE, et al. Unilateral carpal tunnel syndrome caused by an occult ganglion in the carpal tunnel: a report of two cases. Case Rep Orthop. 2014;2014:589021. PMID 25105046.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/25105046/
+- Source checked on: 2026-09-23
+- Locator: PMID 25105046; occult ganglion causing unilateral carpal tunnel syndrome
+- Note under review: Two cases of unilateral carpal tunnel syndrome caused by occult ganglia within the carpal tunnel, noting that space-occupying lesion incidence is higher in unilateral than bilateral carpal tunnel syndrome - the occult-ganglion etiology anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 145.2 — Kang HJ, Jung SH, Yoon HK, et al. Carpal tunnel syndrome caused by space occupying lesions. Yonsei Med J. 2009;50(2):257-261. PMID 19430560.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/19430560/
+- Source checked on: 2026-09-23
+- Locator: PMID 19430560; space-occupying-lesion carpal tunnel series including ganglion
+- Note under review: Retrospective series of 11 patients (12 cases) operated for carpal tunnel syndrome caused by space-occupying lesions with pathology including ganglion and calcifying masses, all showing symptom alleviation without recurrence after release and removal - the surgical-series and treatment-response anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 145.3 — Alsharif M, Mhannayeh A, Jabri A, et al. Flexor Tendon Sheath Ganglion Causing Concurrent Trigger Wrist and Carpal Tunnel Syndrome. Case Rep Orthop. 2026;2026:8963799. PMID 42253780.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42253780/
+- Source checked on: 2026-09-23
+- Locator: PMID 42253780; flexor sheath ganglion compressing median nerve with excision response
+- Note under review: Case with imaging and histopathology confirming a flexor tendon sheath ganglion compressing the median nerve and causing carpal tunnel syndrome, with complete symptom resolution after surgical excision via carpal tunnel approach - the compression-and-response anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `gastrinoma` → `peptic-ulcer-disease` — DIRECT_CAUSATION
+
+**Proposition (direct_causation):** Documented gastrinoma (the Zollinger-Ellison syndrome alias of this identity) with biochemical confirmation of hypergastrinemia and inappropriate gastric acid hypersecretion - gastrin drives ECL-cell and parietal-cell hyperplasia and sustained maximal acid output, and the resulting ulcer disease is the syndrome's defining complication at locations that may extend beyond the stomach and duodenum.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 146.1 — Norton JA. Surgical treatment and prognosis of gastrinoma. Best Pract Res Clin Gastroenterol. 2005;19(5):799-805. PMID 16253901.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/16253901/
+- Source checked on: 2026-09-23
+- Locator: PMID 16253901; gastrinoma acid hypersecretion defined as cause of severe peptic ulcer disease
+- Note under review: Review defining Zollinger-Ellison syndrome as severe peptic ulcer disease and diarrhea caused by gastric acid hypersecretion secondary to the gastrin-secreting neuroendocrine tumor, with tumor-size-based malignant potential and surgical cure settings - the causal-definition anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 146.2 — Wilcox CM, Seay T, Arcury JT, et al. Zollinger-Ellison syndrome: presentation, response to therapy, and outcome. Dig Liver Dis. 2011;43(6):439-443. PMID 21193359.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/21193359/
+- Source checked on: 2026-09-23
+- Locator: PMID 21193359; 72-patient prospective ZES presentation with acid analysis and therapy response
+- Note under review: Twenty-year prospective lansoprazole trial of 72 patients documenting stereotypical presentation with ulcer disease, median nine-year symptom delay before diagnosis, gastric acid analysis follow-up, and sustained antisecretory response - the prospective presentation-and-response anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 146.3 — Guarnotta V, Martini C, Davì MV, et al. The Zollinger-Ellison syndrome: is there a role for somatostatin analogues in the treatment of the gastrinoma? Endocrine. 2018;60(1):15-27. PMID 29019150.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/29019150/
+- Source checked on: 2026-09-23
+- Locator: PMID 29019150; PPI cornerstone controlling gastrinoma acid hypersecretion
+- Note under review: Review documenting that treatment of gastrinoma and Zollinger-Ellison syndrome is aimed at controlling acid hypersecretion and tumor progression, with proton pump inhibition as the cornerstone of syndrome control - the acid-control and prevention anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `gastritis` → `peptic-ulcer-disease` — DIRECT_CAUSATION
+
+**Proposition (direct_causation):** Documented gastritis (endoscopic or histologic mucosal inflammation, Helicobacter-associated or erosive) - inflammatory injury impairs the mucus-bicarbonate barrier and epithelial restitution, and in antral-predominant disease gastrin-driven acid hypersecretion raises luminal acid-pepsin injury, so the inflamed mucosa breaches beyond the muscularis mucosae into the submucosa as a gastric or duodenal peptic ulcer.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 147.1 — Naito Y, Yoshikawa T. Molecular and cellular mechanisms involved in Helicobacter pylori-induced inflammation and oxidative stress. Free Radic Biol Med. 2002;33(3):323-336. PMID 12126754.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/12126754/
+- Source checked on: 2026-09-23
+- Locator: PMID 12126754; antral gastritis distribution with acid excess and duodenal-ulcer risk
+- Note under review: Mechanisms review documenting that Helicobacter pylori infection leads to chronic gastritis, peptic ulcer disease, and gastric neoplasia with outcomes determined by the severity and distribution of inflammation - antral-type gastritis with excessive acid secretion and high duodenal-ulcer risk - the mechanism and distribution anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 147.2 — Ford AC, Gurusamy KS, Delaney B, et al. Eradication therapy for peptic ulcer disease in Helicobacter pylori-positive people. Cochrane Database Syst Rev. 2016;4(4):CD003840. PMID 27092708.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/27092708/
+- Source checked on: 2026-09-23
+- Locator: PMID 27092708;95% duodenal and 70% gastric ulcers Hp-associated, eradication reduces relapse
+- Note under review: Cochrane review documenting that 95% of duodenal and 70% of gastric ulcers are associated with Helicobacter pylori and that eradication reduces ulcer relapse - the association-and-treatment-response anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 147.3 — Tomtitchong P, Siribumrungwong B, Vilaichone RK, et al. Systematic review and meta-analysis: Helicobacter pylori eradication therapy after simple closure of perforated duodenal ulcer. Helicobacter. 2012;17(2):148-152. PMID 22404446.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/22404446/
+- Source checked on: 2026-09-23
+- Locator: PMID 22404446; 5.2% one-year ulcer recurrence after eradication
+- Note under review: Systematic review and meta-analysis documenting pooled one-year ulcer recurrence of 5.2% after eradication therapy following simple closure of perforated duodenal ulcer versus higher recurrence without eradication - the recurrence-prevention anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `gastritis` → `anemia` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** The Hudak 2017 updated systematic review and meta-analysis documents that Helicobacter pylori-infected individuals show an increased likelihood of iron-deficiency anemia versus uninfected persons (pooled OR 1.72, 95% CI 1.23-2.42, across 14 observational studies) with eradication-plus-iron compared against iron alone, the Zhang 2010 meta-analysis of eight randomized trials involving 800 participants documents that eradication accelerated ferritin improvement in iron-deficient people (mean difference 7.74 microg/L), and the Qu 2010 meta-analysis documents a pooled observational OR of 2.22 with heterogeneous trial results; the literature documents a reproducible infection-associated iron-deficiency association with partial eradication response without establishing that gastritis produced an individual's anemia.
+
+**Causation boundary (causationStatus):** The mapping does not assert that gastritis caused an individual's anemia: the underlying driver documented in the sources is Helicobacter pylori infection itself, for which no catalog identity exists, so attribution runs through the gastritis manifestation as the documented mucosal mediator (achlorhydric iron malabsorption, mucosal occult loss, and hepcidin-mediated iron restriction) while shared-driver attribution is guarded; the source literature itself records the relationship as controversial with heterogeneous comparisons, menstrual blood loss, chronic kidney disease, inflammatory bowel disease, other gastrointestinal bleeding (including peptic ulcer), nutritional deficiency, malignancy, and chronic-disease anemia independently produce iron-deficient or anemic states; individual claims require documented gastritis (with Helicobacter testing), iron-study-confirmed iron-deficiency phenotype (low ferritin with the anemia identity's scope), documented chronology, and exclusion of the independent etiologies.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 148.1 — Hudak L, Jaraisy A, Haj S, et al. An updated systematic review and meta-analysis on the association between Helicobacter pylori infection and iron deficiency anemia. Helicobacter. 2017;22(1). PMID 27411077.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/27411077/
+- Source checked on: 2026-09-23
+- Locator: PMID 27411077; pooled OR 1.72 for IDA in infected individuals
+- Note under review: Updated systematic review and meta-analysis documenting increased iron-deficiency anemia likelihood in infected versus uninfected persons (pooled OR 1.72, 95% CI 1.23-2.42, 14 observational studies) plus eradication-plus-iron trial comparisons - the pooled-association anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 148.2 — Zhang ZF, Yang N, Zhao G, et al. Effect of Helicobacter pylori eradication on iron deficiency. Chin Med J (Engl). 2010;123(14):1924-1930. PMID 20819579.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/20819579/
+- Source checked on: 2026-09-23
+- Locator: PMID 20819579; eight-trial meta-analysis ferritin improvement after eradication
+- Note under review: Meta-analysis of eight randomized trials involving 800 participants documenting that eradication accelerated ferritin improvement in iron-deficient people (mean difference 7.74 microg/L, 95% CI 4.61-10.88) - the randomized eradication-response anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 148.3 — Qu XH, Huang XL, Xiong P, et al. Does Helicobacter pylori infection play a role in iron deficiency anemia? A meta-analysis. World J Gastroenterol. 2010;16(7):886-896. PMID 20143469.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/20143469/
+- Source checked on: 2026-09-23
+- Locator: PMID 20143469; pooled OR 2.22 with heterogeneous trial results
+- Note under review: Meta-analysis of 15 observational studies and five randomized trials documenting pooled observational OR 2.22 (95% CI 1.52-3.24) with heterogeneous trial comparisons - the association-with-heterogeneity anchor that grounds the conservative posture.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `gastrointestinal-stromal-tumors` → `anemia` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** The Askarova 2026 case report documents a giant jejunal GIST presenting after four months of melena with hemoglobin 60 g/L requiring transfusion of three packed red-cell units, microcytosis on admission, and chronic mucosal ulceration as the stated iron-deficiency-anemia mechanism, the Yacob 2015 review of 150 GIST cases from a single centre documents intestinal bleeding (40%) and abdominal mass (25%) among the commonest clinical presentations, and the Aourarh 2026 case report background documents that small-bowel GISTs usually present with gastrointestinal bleeding, anemia, abdominal pain, or nonspecific symptoms; the literature documents a reproducible bleeding-mediated iron-loss association at case and case-series level without establishing that a GIST produced an individual's anemia.
+
+**Causation boundary (causationStatus):** The mapping does not assert that gastrointestinal stromal tumors caused an individual's anemia: anemia is a subset presentation (intestinal bleeding in 40% of the 150-case series, not universal progression), at presentation the tumor's biological presence predates its diagnosis rather than the reverse chronology being documented per case, and menstrual blood loss, chronic kidney disease, nutritional deficiency without tumor bleeding, inflammatory bowel disease, other gastrointestinal bleeding (including peptic ulcer), malignancy-associated anemia of chronic disease, hemoglobinopathy, and hemolysis independently produce iron-deficient or anemic states in the same populations; individual claims require a histopathologically confirmed GIST (KIT/DOG1), documented tumor-to-gut-lumen bleeding (endoscopic, imaging, or operative correlation), iron-study-confirmed iron-deficiency phenotype within the anemia identity's scope, documented chronology, and exclusion of the independent etiologies.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 149.1 — Askarova K, Suleymanova N, Usmonova G, et al. Giant jejunal gastrointestinal stromal tumor presenting as refractory anemia: a case report of complex R0 resection. Int J Surg Case Rep. 2026;138(9):3752-3756. PMID 42699893.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42699893/
+- Source checked on: 2026-09-23
+- Locator: PMID 42699893; refractory iron-deficiency anemia Hb 60 g/L at jejunal GIST presentation
+- Note under review: Case report documenting a giant jejunal GIST presenting with four months of melena and hemoglobin 60 g/L requiring transfusion, with chronic mucosal ulceration stated as the iron-deficiency-anemia mechanism - the transfusion-level refractory-anemia anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 149.2 — Yacob M, Inian S, Sudhakar CB. Gastrointestinal Stromal Tumours: Review of 150 Cases from a Single Centre. Indian J Surg. 2015;77(Suppl 2):505-510. PMID 26730054.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/26730054/
+- Source checked on: 2026-09-23
+- Locator: PMID 26730054; intestinal bleeding 40% of 150 cases
+- Note under review: Single-centre review of 150 GIST cases documenting intestinal bleeding (40%) and abdominal mass (25%) among the common clinical presentations with hematemesis and recurrent bleeding also recorded - the case-series frequency anchor establishing bleeding as a subset presentation.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 149.3 — Aourarh B, Belkouchi O, Belkouchi L, et al. Ileal Gastrointestinal Stromal Tumor Presenting With Subacute Intestinal Obstruction and Synchronous Peritoneal Metastases: A Case Report. Cureus. 2026;18(8):e114770. PMID 42761235.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42761235/
+- Source checked on: 2026-09-23
+- Locator: PMID 42761235; small-bowel GIST usually presents with GI bleeding and anemia
+- Note under review: Case report whose background documents that small-bowel GISTs usually present with gastrointestinal bleeding, anemia, abdominal pain, or nonspecific symptoms while intestinal obstruction is uncommon because tumors grow outward from the bowel wall - the presentation-pattern anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `gastrointestinal-stromal-tumors` → `malnutrition-residuals` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** The Ou 2025 GLIM-criteria study of GIST outpatients documents nutritional risk in the majority screened with high risk in 18.50% and GLIM-defined malnutrition in 27.75%, low hemoglobin a significant factor associated with malnutrition, and GLIM malnutrition significantly affecting progression-free survival (HR up to 9.902), the Ding 2021 study of newly diagnosed GIST patients documents 77.76% at nutritional risk (NRS2002 score at least 3) with 10.09% incidence of PG-SGA-defined malnutrition and age, BMI, and weight loss as associated factors, and the Gu 2025 body-composition study documents sarcopenia (HR 3.067) and myosteatosis (HR 6.985) as independent predictors of disease-free survival with targeted nutritional and exercise interventions recommended; the literature documents a reproducible cross-sectional and prognostic malnutrition association in GIST populations without establishing that the tumor produced an individual's malnutrition.
+
+**Causation boundary (causationStatus):** The mapping does not assert that gastrointestinal stromal tumors caused an individual's malnutrition: the screening studies are cross-sectional at or near diagnosis so onset chronology (tumor before nutritional decline) is not documented per case, imatinib and other TKI gastrointestinal toxicity, postoperative malabsorption after bowel resection, tumor catabolism, and pre-existing nutritional disease act as co-drivers, and chronic kidney disease, liver disease, hyperthyroidism, malabsorption syndromes, eating disorders, food insecurity, alcohol use disorder, and other malignancies independently produce the malnutrition phenotype within the malnutrition-residuals identity's scope; individual claims require GLIM- or PG-SGA-confirmed malnutrition, documented GIST status and body-composition or weight trajectory with chronology, and exclusion of the independent etiologies including treatment-toxicity attribution where relevant.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 150.1 — Ou Y, Ran P, Zhang Q, et al. Investigation of Nutritional Status by GLIM Criteria in Outpatients with GIST. Nutr Cancer. 2025;77(7-8):772-783. PMID 40457820.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/40457820/
+- Source checked on: 2026-09-23
+- Locator: PMID 40457820; GLIM malnutrition 27.75% in GIST outpatients
+- Note under review: GLIM-criteria outpatient study documenting high nutritional risk in 18.50% and malnutrition in 27.75% of GIST outpatients, low hemoglobin as a significant associated factor, and GLIM malnutrition significantly affecting progression-free survival - the diagnostic-criteria malnutrition anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 150.2 — Ding P, Guo H, Yang P, et al. Association Between the Nutritional Risk and the Survival Rate in Newly Diagnosed GIST Patients. Front Nutr. 2021;8:743475. PMID 34778339.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/34778339/
+- Source checked on: 2026-09-23
+- Locator: PMID 34778339; 77.76% at nutritional risk, 10.09% malnutrition incidence
+- Note under review: Study of newly diagnosed GIST patients documenting 77.76% at nutritional risk (NRS2002 at least 3) and 10.09% incidence of PG-SGA-defined malnutrition with age, BMI, and weight loss associated - the newly-diagnosed risk-screening anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 150.3 — Gu T, Li T, Zhang J, et al. Using body composition to predict treatment-related adverse events and disease-free survival in patients with gastrointestinal stromal tumors. Front Immunol. 2025;16:1576834. PMID 40260254.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/40260254/
+- Source checked on: 2026-09-23
+- Locator: PMID 40260254; sarcopenia HR 3.067 and myosteatosis HR 6.985 for DFS
+- Note under review: Body-composition cohort documenting sarcopenia (HR 3.067) and myosteatosis (HR 6.985) as independent disease-free-survival predictors in moderate-to-high-risk GIST patients with personalized nutritional and exercise interventions recommended - the lean-mass prognostic anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `gastrointestinal-stromal-tumors` → `depressive-disorder` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** The van de Wal 2024 prospective observational study of 328 GIST patients documents 13% depression, 15% anxiety, and 43% severe fear of cancer recurrence or progression on the Hospital Anxiety and Depression Scale and EORTC QLQ-C30 with current tyrosine-kinase-inhibitor treatment associated with depression, the van de Wal 2024 financial-difficulties study on the same instrument battery documents significantly lower global quality of life and functioning among GIST patients with financial difficulty, and the van de Wal 2023 coping-style study documents psychological distress and health-related quality-of-life burden with monitoring/blunting coping styles; the literature documents a screening-level depression association in GIST populations without establishing that the tumor produced a major depressive disorder in an individual.
+
+**Causation boundary (causationStatus):** The mapping does not assert that gastrointestinal stromal tumors caused an individual's depressive disorder: HADS thresholds are screening instruments rather than diagnostic interviews and the source itself records depression levels comparable between the GIST cohort and norm groups, TKI pharmacological effects, cancer-diagnosis fear, surveillance burden, financial toxicity, and pre-existing psychiatric vulnerability act as shared drivers the sources do not disentangle, and independent depressive etiologies (prior or recurrent primary depressive disorder, substance use, thyroid disease, other chronic illness, bereavement) apply; individual claims require a diagnostic-standard depressive assessment within the depressive-disorder identity's scope, documented chronology placing GIST diagnosis before depressive onset, and exclusion of the independent etiologies with pre-existing psychiatric history documented.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 151.1 — van de Wal D, den Hollander D, Desar IME, et al. Fear, anxiety and depression in gastrointestinal stromal tumor (GIST) patients in the Netherlands: Data from a prospective observational study. Int J Clin Health Psychol. 2024;24(1):100434. PMID 38226006.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/38226006/
+- Source checked on: 2026-09-23
+- Locator: PMID 38226006; 328 patients, 13% depression, 15% anxiety, 43% severe fear
+- Note under review: Prospective observational study of 328 GIST patients documenting 13% depression, 15% anxiety, and 43% severe fear of progression on HADS with current TKI treatment associated with depression - the depression-prevalence and treatment-association anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 151.2 — van de Wal D, den Hollander D, Desar IME, et al. Financial difficulties experienced by patients with gastrointestinal stromal tumours (GIST) in the Netherlands. Support Care Cancer. 2024;32(5):279. PMID 38594390.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/38594390/
+- Source checked on: 2026-09-23
+- Locator: PMID 38594390; financial difficulty with lower global QoL and functioning
+- Note under review: Study on the HADS and EORTC QLQ-C30 battery documenting significantly lower global quality of life and functioning among GIST patients with financial difficulties and examining anxiety, depression, and cancer worry - the financial-toxicity and functioning anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 151.3 — van de Wal D, van Doorn B, den Hollander D, et al. The association of having a monitoring or blunting coping style with psychological distress, health-related quality of life and satisfaction with care in GIST patients. Acta Oncol. 2023;62(12):1616-1624. PMID 37856077.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/37856077/
+- Source checked on: 2026-09-23
+- Locator: PMID 37856077; psychological distress and HRQoL in GIST patients
+- Note under review: Study documenting psychological distress, health-related quality of life, and cancer-related concerns in GIST patients using HADS and related instruments - the distress-and-coping anchor supporting the psychophysiological burden pathway.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `genitofemoral-nerve-neuralgia` → `unexplained-chronic-pain` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** The Lobaina 2024 StatPearls chapter documents genitofemoral neuralgia as a chronic painful neuropathic condition presenting with constant burning pain or discomfort in the inguinal region with hyperalgesia or anesthesia in the genitals and inner thighs and as a common cause of groin pain in both sexes, the Lakhiani 2026 review documents that genitofemoral among groin and pelvic neuropathies requires rigorous clinical assessment with exclusion of proximal pathology and confirmatory diagnostic nerve blocks before intervention, and the Alfarawan 2025 series documents refractory neuropathic groin pain of at least six months duration worked up with nerve mapping, cross-sectional imaging to exclude non-neuropathic causes, and failed blocks before neurectomy with pain scores falling from 7.8 to 1.2 - the documented pain presentation and exclusionary diagnostic pathway mirror the unexplained-chronic-pain case-matching profile without establishing that the neuralgia caused a distinct pain disorder in any individual.
+
+**Causation boundary (causationStatus):** The mapping does not assert that genitofemoral neuralgia caused a separate chronic pain disorder: the pain is largely constitutive of the neuralgia diagnosis itself, so the edge records case-matching of presentations rather than a distinct downstream arrow (femoral-neuropathy and episcleritis precedent); alternative antecedents (inguinal hernia repair or other retroperitoneal and pelvic surgery, femoral-vascular access injury, nephrolithiasis and ureteral pathology, endometriosis or pelvic pathology, hip disease referred pain, and central sensitization without identifiable nerve lesion) independently produce inguinal-genital chronic pain, and the diagnosis itself is one of exclusion with imaging and block confirmation; individual claims require block-confirmed or imaging-confirmed genitofemoral neuralgia, documented pain chronology within the unexplained-chronic-pain identity's scope, and exclusion of the antecedent and alternative etiologies.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 152.1 — Lobaina M, Leslie SW, Shanina E. Genitofemoral Neuralgia. StatPearls [Internet]. Treasure Island (FL): StatPearls Publishing; 2024 Jan-. PMID 39163445.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/39163445/
+- Source checked on: 2026-09-23
+- Locator: PMID 39163445; chronic burning inguinal-genital neuropathic pain definition
+- Note under review: Chapter documenting genitofemoral neuralgia as a chronic painful neuropathic condition caused by compression or trauma presenting with constant burning inguinal-region pain with hyperalgesia or anesthesia in the genitals and inner thighs and as a common cause of groin pain in both sexes - the condition-specific chronic-pain presentation anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 152.2 — Lakhiani C, Chang TN, Chuang DC, et al. Trends in Compression Neuropathy: What's New? Semin Plast Surg. 2026;40(1):39-49. PMID 42037624.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42037624/
+- Source checked on: 2026-09-23
+- Locator: PMID 42037624; genitofemoral neuropathy workup requires exclusion and confirmatory blocks
+- Note under review: Review documenting that neuropathic groin and pelvic pain syndromes including ilioinguinal, genitofemoral, and pudendal neuropathies require rigorous clinical assessment, exclusion of proximal pathology, and confirmatory diagnostic nerve blocks before intervention - the exclusionary-workup anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 152.3 — Alfarawan F, Kaiser GM, El-Sourani N, et al. Robot-Assisted Tailored Neurectomy in Chronic Postherniorrhaphic Inguinal Neuralgia: A Retrospective Analysis. Ann Surg Open. 2025;6(4):e617. PMID 41451194.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/41451194/
+- Source checked on: 2026-09-23
+- Locator: PMID 41451194; refractory neuropathic groin pain at least 6 months, NRS 7.8 to 1.2
+- Note under review: Retrospective series documenting ten patients with refractory neuropathic groin pain of at least six months duration (genitofemoral nerve included in tailored neurectomy) worked up with nerve mapping, imaging to exclude non-neuropathic causes, and failed blocks, with mean pain scores falling from 7.8 to 1.2 at 180 days - the chronic-refractory-course and exclusion anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `giant-cell-myocarditis` → `congestive-heart-failure` — DIRECT_CAUSATION
+
+**Proposition (direct_causation):** Specialist- or endomyocardial-biopsy-confirmed giant cell myocarditis - diffuse T-cell-mediated granulomatous myocardial inflammation with myocyte necrosis and replacement fibrosis - so contractile myocardial mass is destroyed faster than it can be replaced and the ventricles fail with new-onset, often therapy-refractory heart failure during the disease course.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 153.1 — Kundnani NR, Kumar A, Sharma A, et al. Impact of Early Diagnosis and Immunosuppressive Therapy on Giant Cell Myocarditis Outcomes: A Review. Life (Basel). 2026;16(4):575. PMID 42073389.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42073389/
+- Source checked on: 2026-09-23
+- Locator: PMID 42073389; GCM onset as new-onset refractory heart failure, fulminant course
+- Note under review: Review documenting that giant cell myocarditis clinical onset is new-onset heart failure refractory to usual therapy with a frequently fulminant severe course, and that without rapid diagnosis and immunosuppressive therapy the disease runs a fulminant often fatal course - the presenting-syndrome and course anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 153.2 — Sacher AC, Ahmed R, Kung A, et al. Early Recognition of Giant Cell Myocarditis in a Patient With Fascicular Ventricular Tachycardia. JACC Case Rep. 2025;30(31):105333. PMID 41072973.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/41072973/
+- Source checked on: 2026-09-23
+- Locator: PMID 41072973; GCM rapidly progressive, often manifests with HF or ventricular arrhythmias
+- Note under review: Biopsy-confirmed case report documenting giant cell myocarditis as a rare rapidly progressive inflammatory cardiomyopathy often manifesting with ventricular arrhythmias or heart failure with rapid clinical deterioration - the biopsy-confirmed phenotype anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 153.3 — Harling LC, Wacker M, Ruhparwar A, et al. Giant cell myocarditis in an 18-year-old patient with new-onset systemic lupus erythematosus: A fatal case of rapidly progressing heart failure. Lupus. 2026;35(10):1090-1098. PMID 42393943.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42393943/
+- Source checked on: 2026-09-23
+- Locator: PMID 42393943; fatal rapidly progressing biventricular heart failure in GCM
+- Note under review: Case report documenting giant cell myocarditis presenting with biventricular heart failure that deteriorated rapidly to death before transplantation - the biventricular-failure case anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `giant-cell-myocarditis` → `cardiac-arrhythmia` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** The Jaiswal 2025 propensity-score comparison of giant cell myocarditis versus cardiac sarcoidosis documents distinct ventricular-tachycardia and conduction-block burdens at six months between the two giant-cell myocardial diseases, the Bartz-Overman 2024 report documents two fulminant giant cell myocarditis cases presenting with ventricular arrhythmias (managed with rabbit anti-thymocyte globulin, one requiring transplantation), and the Jakulla 2025 report documents an electrical storm with pleomorphic ventricular tachycardia confirmed as giant cell myocarditis on endomyocardial biopsy - the literature documents a reproducible ventricular-arrhythmia association in giant cell myocarditis populations without establishing that the disease produced an individual's arrhythmia.
+
+**Causation boundary (causationStatus):** The mapping does not assert that giant cell myocarditis caused an individual's cardiac arrhythmia: ventricular arrhythmia is a subset presentation rather than a universal progression (the sources document it in referral and case-level material, not incidence cohorts), the inflamed-and-fibrotic myocardial substrate is mechanistically plausible but idiopathic ventricular ectopy, ischemic substrates, channelopathies, electrolyte disturbance, and drug effects independently produce the same rhythms in the same populations, and cardiac sarcoidosis - the closest giant-cell mimic - carries its own arrhythmia literature that must be distinguished histologically; individual claims require specialist- or biopsy-confirmed giant cell myocarditis, ECG or monitoring-documented ventricular arrhythmia with chronology during the disease course, and exclusion of the independent arrhythmia etiologies.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 154.1 — Jaiswal V, Hanif M, Mashkoor Y, et al. Cardiovascular outcomes among giant cell myocarditis compared with cardiac sarcoidosis: A propensity score analysis. Prog Cardiovasc Dis. 2025;89:63-68. PMID 39557143.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/39557143/
+- Source checked on: 2026-09-23
+- Locator: PMID 39557143; VT at 6 months compared between GCM and cardiac sarcoidosis
+- Note under review: Propensity-score comparison documenting distinct ventricular tachycardia and conduction-block burdens at six months between giant cell myocarditis and cardiac sarcoidosis patients - the comparative arrhythmia-burden anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 154.2 — Bartz-Overman C, Li S, Puligandla B, et al. Two case reports of fulminant giant cell myocarditis treated with rabbit anti-thymocyte globulin. Eur Heart J Case Rep. 2024;8(4):ytae128. PMID 38567279.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/38567279/
+- Source checked on: 2026-09-23
+- Locator: PMID 38567279; ventricular arrhythmias in two fulminant GCM cases
+- Note under review: Two biopsy-confirmed fulminant giant cell myocarditis cases presenting with ventricular arrhythmias with ejection-fraction recovery and arrhythmia freedom under immunosuppression - the fulminant-case arrhythmia anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 154.3 — Jakulla RS, Almohtasib Y, Garcia RA, et al. Advanced management of electrical storm: beyond antiarrhythmics. BMJ Case Rep. 2025;18(9):e266174. PMID 40967662.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/40967662/
+- Source checked on: 2026-09-23
+- Locator: PMID 40967662; electrical storm pleomorphic VT, EMB-confirmed GCM
+- Note under review: Case report documenting pleomorphic ventricular tachycardia electrical storm with endomyocardial-biopsy-confirmed giant cell myocarditis - the biopsy-confirmed severe-arrhythmia anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `gingivitis` → `periodontitis` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** The Lang 2024 natural-history review of the original Sri Lanka and Oslo longitudinal studies documents that the role of gingivitis in the pathogenesis of attachment loss was identified, with continuous gingivitis marking teeth that progressed into attachment loss while teeth without inflammation largely did not, the LaMonte 2021 cohort of 1,016 postmenopausal women documents that baseline subgingival microbiome composition and gingival status are associated with radiographic alveolar crestal-height loss of at least 1 mm or new tooth loss to periodontitis measured five years later, and the Papapanou 2018 2017-World-Workshop consensus documents periodontitis as a distinct staged and graded entity whose progression rate and future risk are assessed case by case; the literature documents a reproducible longitudinal progression association between the gingivitis state and incident attachment loss without establishing that gingivitis produced periodontitis in an individual.
+
+**Causation boundary (causationStatus):** The mapping does not assert that gingivitis caused an individual's periodontitis: subgingival biofilm is the shared etiologic driver of both diseases (the LaMonte finding that baseline microbiota predict progression is itself evidence that plaque burden - the very exposure that produces gingivitis - carries the risk), the 2017 World Workshop classifies gingival disease and periodontitis as separable diagnoses rather than a necessary sequence, progression affects subsets under host-susceptibility modulation (poorly controlled diabetes, smoking, exaggerated inflammatory response), and early or rapidly progressive periodontitis can be present without documented prior gingivitis; individual claims require documented plaque-induced gingivitis predating incident clinical attachment loss or radiographic bone loss (staging examination), plaque and oral-hygiene history, and exclusion of pre-existing periodontitis, non-plaque-induced gingival disease, systemic susceptibility modifiers, and occlusal or traumatic contributors per case.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 155.1 — Lang NP, Schätzle M, Ramseier CA. Natural history of periodontal disease: The original Sri Lanka and Oslo studies. Periodontol 2000. 2024. PMID 38520126.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/38520126/
+- Source checked on: 2026-09-23
+- Locator: PMID 38520126; gingivitis role in pathogenesis of attachment loss, continuous gingivitis trajectory
+- Note under review: Natural-history review documenting that the role of gingivitis in the pathogenesis of attachment loss was identified in the original longitudinal studies, with continuous gingivitis marking the trajectory into attachment loss while teeth without inflammation largely did not progress - the progression-trajectory anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 155.2 — LaMonte MJ, Andrews CA, Hovey KM, et al. Subgingival microbiome is associated with alveolar bone loss measured 5 years later in postmenopausal women. J Periodontol. 2021;92(5):648-661. PMID 33141988.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/33141988/
+- Source checked on: 2026-09-23
+- Locator: PMID 33141988; baseline microbiota and gingival status associated with 5-year progression
+- Note under review: Prospective cohort of 1,016 postmenopausal women documenting that baseline subgingival microbiome and gingival status are associated with radiographic alveolar crestal-height loss or new tooth loss to periodontitis five years later - the longitudinal progression and shared-plaque-driver anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 155.3 — Papapanou PN, Sanz M, Buduneli N, et al. Periodontitis: Consensus report of workgroup 2 of the 2017 World Workshop on the Classification of Periodontal and Peri-Implant Diseases and Conditions. J Clin Periodontol. 2018;45 Suppl 20:S162-S170. PMID 29926490.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/29926490/
+- Source checked on: 2026-09-23
+- Locator: PMID 29926490; staging/grading with progression rate and risk assessment
+- Note under review: Consensus report establishing periodontitis as a distinct staged and graded entity characterized by progression rate and assessed future risk - the classification and heterogeneous-progression anchor grounding the conservative not-inevitable-sequence posture.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `glaucoma` → `visual-impairment` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** The Tham 2014 systematic review and meta-analysis documents glaucoma as the leading cause of global irreversible blindness with pooled global prevalence of 3.54% (95% CrI 2.09-5.82) at ages 40-80 and projections to 111.8 million affected by 2040, the Soh 2021 systematic review and meta-analysis documents that on average more than half of all glaucoma cases are undetected at diagnosis across geographical regions with the stated need to prevent excess visual disability and blindness, and the Salari 2025 single-center series documents advanced treatment-resistant glaucoma in a population carrying the worldwide burden of blindness and moderate-to-severe visual-impairment cases; the literature documents a reproducible population-level association between glaucoma and irreversible visual impairment without establishing that glaucoma produced an individual's impairment.
+
+**Causation boundary (causationStatus):** The mapping does not assert that glaucoma caused an individual's visual impairment: most treated glaucoma does not progress to impairment endpoints (intraocular-pressure therapy slows field loss and a treated minority reaches impairment criteria), impairment is diagnosed on best-corrected acuity and visual-field criteria with better-eye baseline while coexisting cataract, age-related macular degeneration, diabetic retinopathy, and corneal disease independently meet the same criteria in the same elderly population, late detection (more than half of cases undetected) confounds population attributions, and treatment adherence and access modify individual risk; individual claims require ophthalmologist-confirmed glaucoma (applanation tonometry, gonioscopy, optic-nerve and field documentation), standardized visual-impairment criteria with chronology placing field or acuity loss after glaucoma diagnosis, documented treatment status and adherence, and exclusion of the coexisting ocular contributors per case.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 156.1 — Tham YC, Li X, Wong TY, et al. Global prevalence of glaucoma and projections of glaucoma burden through 2040: a systematic review and meta-analysis. Ophthalmology. 2014;121(11):2081-90. PMID 24974815.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/24974815/
+- Source checked on: 2026-09-23
+- Locator: PMID 24974815; leading cause of global irreversible blindness, 3.54% prevalence, 111.8M by 2040
+- Note under review: Systematic review and meta-analysis documenting glaucoma as the leading cause of global irreversible blindness, pooled prevalence of 3.54% at ages 40-80, and projections to 111.8 million affected by 2040 - the global irreversible-blindness burden anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 156.2 — Soh Z, Yu M, Betzler BK, et al. The Global Extent of Undetected Glaucoma in Adults: A Systematic Review and Meta-analysis. Ophthalmology. 2021;128(10):1393-1404. PMID 33865875.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/33865875/
+- Source checked on: 2026-09-23
+- Locator: PMID 33865875; more than half of glaucoma cases undetected, excess visual disability
+- Note under review: Systematic review and meta-analysis documenting that on average more than half of all glaucoma cases are undetected at diagnosis globally (43.78 million projected undetected POAG cases in 2020) with the stated goal of preventing excess visual disability and blindness - the late-detection and disability anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 156.3 — Salari Y, Venugopal D, Sohail T, et al. Safety and Efficacy of Transscleral Cyclodiode Laser in Advanced Glaucoma: A Retrospective, Single-center Study. J Curr Glaucoma Pract. 2025;19(4):175-181. PMID 41523174.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/41523174/
+- Source checked on: 2026-09-23
+- Locator: PMID 41523174; millions of blindness and moderate-severe VI cases, refractory 3-17%
+- Note under review: Advanced-glaucoma series whose background documents glaucoma as a leading cause of irreversible blindness worldwide carrying millions of blindness and moderate-to-severe visual-impairment cases with 3-17% of patients developing refractory disease - the advanced-disease impairment anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `glomus-tumor` → `unexplained-chronic-pain` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** The Mostafa 2026 report documents a subungual glomus tumor of the ring finger whose chronic unexplained fingertip pain remained undiagnosed across an extended interval, describing the characteristic triad of severe localized pain, point tenderness, and cold hypersensitivity with the call for early Love-test application and pain-free status after excision, the Pandey 2026 case report and diagnostic-review documents glomus-tumor finger pain aggravated by cold with an average misdiagnosis delay of seven years, and the Park 2024 report documents a toe glomus tumor causing pain more than five times daily worsening on cold exposure with a positive Love test and improvement after total excision; the literature documents a reproducible severe focal chronic-pain presentation with delayed exclusionary diagnosis without establishing that the tumor caused a distinct chronic pain disorder in any individual.
+
+**Causation boundary (causationStatus):** The mapping does not assert that glomus tumor caused a separate chronic pain disorder: the severe focal pain is largely constitutive of the tumor diagnosis itself, so the edge records case-matching of presentations rather than a distinct downstream arrow (femoral-neuropathy and episcleritis precedent); digital neuroma, osteoarthritis or bony erosion, glomangiectasia, rheumatoid or gouty nodules, occult fracture, and radiculopathy independently produce focal digit pain in the same populations before the tumor is found, and the diagnosis itself rests on the characteristic triad with Love-test and MRI confirmation after mimickers are excluded; individual claims require histopathologically confirmed glomus tumor after excision, documented pain chronology and distribution within the unexplained-chronic-pain identity's scope, and exclusion of the mimickers with the site-appropriate workup documented.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 157.1 — Mostafa AA, Osman HA. Delayed Diagnosis of a Subungual Glomus Tumor of the Right Ring Finger Successfully Treated With Nail-Preserving Approach. Cureus. 2026;18(5):e109718. PMID 42367447.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42367447/
+- Source checked on: 2026-09-23
+- Locator: PMID 42367447; chronic unexplained fingertip pain, prolonged diagnostic delay, Love test
+- Note under review: Case report documenting chronic unexplained fingertip pain undiagnosed across an extended interval with the classic triad of severe localized pain, point tenderness, and cold hypersensitivity, the call for early Love testing, and pain-free status after complete excision - the chronic-unexplained-pain and delayed-diagnosis anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 157.2 — Pandey S, Kamal M, Pandey A, et al. Glomus tumor of the right little finger: a case report and review of diagnostic challenges. Int J Surg Case Rep. 2026;138(8):3159-3162. PMID 42578039.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42578039/
+- Source checked on: 2026-09-23
+- Locator: PMID 42578039; average misdiagnosis delay 7 years, cold-aggravated finger pain
+- Note under review: Case report with diagnostic review documenting finger glomus-tumor pain aggravated by cold with an average misdiagnosis delay of seven years, MRI and histopathology confirmation after excision - the diagnostic-delay anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 157.3 — Park YU, Han J, Seo YW. Nail-preserving excision of glomus tumor in the second toe: Case report and literature review. Medicine (Baltimore). 2024;103(11):e37398. PMID 38489706.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/38489706/
+- Source checked on: 2026-09-23
+- Locator: PMID 38489706; pain >5 times daily, positive Love test, improved after excision
+- Note under review: Case report documenting toe glomus tumor with pain more than five times daily worsening with cold exposure, positive Love test, and improvement of pre-surgical pain after total excision - the pain-severity and confirmation anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `glucagonoma` → `diabetes-mellitus` — DIRECT_CAUSATION
+
+**Proposition (direct_causation):** Biochemically confirmed glucagonoma (elevated fasting plasma glucagon with localized pancreatic alpha-cell tumor) - chronic glucagon excess antagonizes insulin at the liver and periphery, so hepatic glucose output rises and glucose tolerance degrades until hyperglycemia crosses diagnostic diabetes thresholds as new-onset or clearly worsening diabetes during the tumor's course.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 158.1 — Kuiper J, de Herder WW, Feelders RA, et al. Approach to the patient with primary hyperglucagonemia. J Clin Endocrinol Metab. 2026. PMID 42766419.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42766419/
+- Source checked on: 2026-09-23
+- Locator: PMID 42766419; glucagonoma syndrome presents clinically by diabetes mellitus among core features
+- Note under review: Clinical approach review documenting that glucagonoma syndrome presents clinically by diabetes mellitus, weight loss, thromboembolic complications, and necrolytic migratory erythema, with diagnosis requiring elevated fasting plasma glucagon levels and tumor localization - the syndrome-definition and biochemical-criteria anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 158.2 — Perrier M, Brugel M, Gérard L, et al. Characteristics and treatment options of glucagonomas: a national study from the French Reference Center for Pancreatic Neuroendocrine Tumors. Eur J Endocrinol. 2023;189(6):575-583. PMID 38039101.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/38039101/
+- Source checked on: 2026-09-23
+- Locator: PMID 38039101; diabetes 50% and weight loss 68.4% at diagnosis, recent-onset diabetes a major criterion
+- Note under review: National cohort study defining glucagonoma by major criteria including recent-onset diabetes, documenting diabetes at diagnosis in 50% and weight loss in 68.4% of patients, with partial or complete resolution of glucagonoma symptoms after treatment - the prevalence and treatment-response anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 158.3 — Anelli S, Mazzilli R, Zamponi V, et al. Glucagonoma and Glucagonoma Syndrome: An Updated Review. Clin Endocrinol (Oxf). 2025;103(4):417-426. PMID 40613421.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/40613421/
+- Source checked on: 2026-09-23
+- Locator: PMID 40613421; DM 70.3% (50/74) at presentation
+- Note under review: Updated review of 74 glucagonoma patients documenting diabetes mellitus at presentation in 70.3% (50/74) with necrolytic migratory erythema in 93.2% and weight loss among the core features - the series-prevalence anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `glucagonoma` → `malnutrition-residuals` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** The Perrier 2023 national cohort study documents weight loss at diagnosis in 68.4% of glucagonoma patients as one of the most frequent presenting symptoms, the Anelli 2025 updated review of 74 patients documents weight loss among the core presenting features alongside necrolytic migratory erythema and diabetes, and the Mastoraki 2026 diagnostic and therapeutic algorithm review documents weight loss as one of the cardinal manifestations of pancreatic glucagonoma; the literature documents a reproducible catabolic weight-loss association in glucagonoma populations without establishing that the tumor produced an individual's malnutrition.
+
+**Causation boundary (causationStatus):** The mapping does not assert that glucagonoma caused an individual's malnutrition: catabolic weight loss is a subset feature (roughly two-thirds at diagnosis, not universal), tumor-directed treatment and somatostatin analog responses are separable co-drivers of nutritional change, hypoalbuminemia and nutrient wasting in the syndrome are multifactorial (NME protein losses, intake reduction from dysgeusia and anorexia, pancreatic endocrine insufficiency), and chronic kidney disease, liver disease, hyperthyroidism, malabsorption, eating disorders, food insecurity, alcohol use disorder, and other malignancies independently produce the malnutrition phenotype within the malnutrition-residuals identity's scope; individual claims require GLIM- or PG-SGA-confirmed malnutrition, biochemically confirmed glucagonoma with documented weight trajectory placing tumor presence before nutritional decline, and exclusion of the independent etiologies with treatment timeline documented.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 159.1 — Perrier M, Brugel M, Gérard L, et al. Characteristics and treatment options of glucagonomas: a national study from the French Reference Center for Pancreatic Neuroendocrine Tumors. Eur J Endocrinol. 2023;189(6):575-583. PMID 38039101.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/38039101/
+- Source checked on: 2026-09-23
+- Locator: PMID 38039101; weight loss 68.4% at diagnosis
+- Note under review: National cohort study documenting weight loss at diagnosis in 68.4% of glucagonoma patients among the most frequent presenting symptoms - the prevalence anchor (shared with the diabetes edge, deduplicated in the registry).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 159.2 — Anelli S, Mazzilli R, Zamponi V, et al. Glucagonoma and Glucagonoma Syndrome: An Updated Review. Clin Endocrinol (Oxf). 2025;103(4):417-426. PMID 40613421.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/40613421/
+- Source checked on: 2026-09-23
+- Locator: PMID 40613421; weight loss among core presenting features, 74-patient series
+- Note under review: Updated review of 74 patients documenting weight loss among the core presenting features of glucagonoma syndrome alongside necrolytic migratory erythema and diabetes - the series anchor (shared with the diabetes edge, deduplicated in the registry).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 159.3 — Mastoraki A, Spyropoulos D, Stamatiadi S, et al. Glucagonoma of the pancreas: diagnostic approach and therapeutic algorithm for a rare pancreatic neuroendocrine tumor. Ann Gastroenterol. 2026;39(2):184-190. PMID 41868867.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/41868867/
+- Source checked on: 2026-09-23
+- Locator: PMID 41868867; weight loss among cardinal manifestations
+- Note under review: Review of epidemiology, clinical presentation, and therapeutic algorithm documenting weight loss among the manifestations of pancreatic glucagonoma - the clinical-manifestation anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `goodpasture-syndrome` → `chronic-kidney-disease` — DIRECT_CAUSATION
+
+**Proposition (direct_causation):** Serology-confirmed (circulating anti-GBM antibody) or biopsy-confirmed anti-GBM (Goodpasture) disease with crescentic necrotizing glomerulonephritis - antibody attack on the glomerular basement membrane strips capillary walls and recruits crescents that obliterate glomeruli, so nephron mass is destroyed until filtration capacity falls into staged chronic kidney disease or permanent renal-replacement dependence.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 160.1 — Catarina Oliveira A, Figueiredo R, Correia R, et al. Anti-glomerular basement membrane disease: A contemporary case series from a large university hospital. Nefrologia (Engl Ed). 2026;46(7):501522. PMID 42618193.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42618193/
+- Source checked on: 2026-09-23
+- Locator: PMID 42618193; 92.6% RRT at presentation, crescents 80%, limited recovery 18.5%
+- Note under review: Contemporary case series documenting 92.6% renal replacement requirement at presentation, crescentic glomerulonephritis in 80% of biopsies, and limited renal recovery (18.5% of those presenting on renal replacement) with crescent burden above 40% and absent preserved glomeruli predicting poor outcome despite therapy - the renal-destruction and non-recovery anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 160.2 — Suhlrie A, van der Meijden WAG, Faguer S, et al. Outcomes in Children and Adults With Antiglomerular Basement Membrane Disease. Kidney Int Rep. 2026;11(5):106353. PMID 42006224.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42006224/
+- Source checked on: 2026-09-23
+- Locator: PMID 42006224; 72 patients, dialysis at diagnosis predicts outcome
+- Note under review: Cohort of 72 children and adults with anti-GBM disease documenting rapidly progressive glomerulonephritis with dialysis at diagnosis a strong predictor of outcome regardless of age under plasma-exchange-based treatment - the dialysis-outcome predictor anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 160.3 — Wang Y, Zhai Z, Wang L, et al. Rituximab is associated with accelerated dialysis independence in anti-glomerular basement membrane disease: a multicenter retrospective study. Front Immunol. 2026;17:1835889. PMID 42199438.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42199438/
+- Source checked on: 2026-09-23
+- Locator: PMID 42199438; 66 patients, dialysis independence about 50%, RTX accelerates recovery
+- Note under review: Multicenter study of 66 confirmed anti-GBM patients documenting dialysis independence in about half recovering, accelerated dialysis independence with rituximab addition, and a trend toward higher renal survival with initial dialysis dependency a predictor - the subset-recovery and treatment-response anchor that grounds the PROBABLE (not WELL_ESTABLISHED) ceiling.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `granulomatosis-with-polyangiitis` → `chronic-kidney-disease` — DIRECT_CAUSATION
+
+**Proposition (direct_causation):** ANCA-confirmed (PR3-ANCA or MPO-ANCA) granulomatosis with polyangiitis with renal biopsy documenting pauci-immune necrotizing crescentic glomerulonephritis - neutrophil recruitment to glomerular capillary walls drives crescents that obliterate glomeruli, so nephron mass is destroyed until filtration capacity falls into staged chronic kidney disease or permanent renal-replacement dependence.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 161.1 — Shen J, Gill J, Shangguan M, Sampaio MS, Bunnapradist S. Outcomes of renal transplantation in recipients with Wegener's granulomatosis. Clin Transplant. 2011 May-Jun;25(3):380-7. PMID 20394635.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/20394635/
+- Source checked on: 2026-09-23
+- Locator: PMID 20394635; 919 WG transplant recipients, leading cause of RPGN-induced ESRD
+- Note under review: OPTN/UNOS analysis of 919 transplant recipients with end-stage renal disease caused by Wegener granulomatosis documenting it as the leading cause of rapidly-progressive-glomerulonephritis-induced end-stage renal disease - the registry-level renal-destruction attribution anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 161.2 — James KE, Xiao R, Merkel PA, Weiss PF. Clinical course and outcomes of childhood-onset granulomatosis with polyangiitis. Clin Exp Rheumatol. 2017 Mar-Apr;35 Suppl 103(1):202-208. PMID 27749233.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/27749233/
+- Source checked on: 2026-09-23
+- Locator: PMID 27749233; 28 children, 37% CKD >stage 2, renal failure readmissions, 85% remission
+- Note under review: Retrospective cohort of 28 children with GPA documenting 37% at chronic kidney disease stage greater than 2 at median 3.3-year follow-up, renal failure accounting for most readmissions, and dialysis required at presentation in 14% despite 85% remission achievement with 11 subsequent flares - the progression, flare, and remission-stratification anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 161.3 — Sattui SE, Jiang B, Fu X, et al. The effects of age and frailty on the risks of end-stage renal disease, death, and severe infection in older adults with antineutrophil cytoplasmic antibody-associated vasculitis: a retrospective cohort study. Lancet Rheumatol. 2024 Nov;6(11):e771-e779. PMID 39305914.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/39305914/
+- Source checked on: 2026-09-23
+- Locator: PMID 39305914; 234 patients, ESRD or death within 2 years of diagnosis
+- Note under review: Retrospective cohort of 234 older adults with incident ANCA-associated vasculitis documenting end-stage renal disease or death concentrated within two years of diagnosis with incidence rates stratified by age and frailty - the contemporary adult renal-outcome and chronology anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `granulomatosis-with-polyangiitis` → `hearing-loss` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** The Tabei 2022 retrospective study of 30 patients with otitis media with ANCA-associated vasculitis documents that every audiometry-evaluated patient had hearing impairment (85% bilateral; mixed type in 80% and sensorineural in 20% of impaired ears) with median air-conduction levels improving from 66.1 to 43.4 dB under immunosuppressive therapy and with hypertrophic pachymeningitis or a long onset-to-treatment interval significantly predicting poor hearing prognosis, the Yoshida 2014 review documents otitis media with ANCA-associated vasculitis as a recognized otologic presentation with rapidly progressive hearing loss (PR3-ANCA causing granulomatous middle-ear formation; peripheral facial palsy in 25% and hypertrophic pachymeningitis in 18% of cases), and the Busch 2022 case documents GPA presenting as complete mixed sensorineural-conductive hearing loss in a 29-year-old; the literature documents reproducible severe bilateral hearing impairment accompanying GPA-spectrum disease without establishing incident hearing loss attributable to GPA in any individual against matched non-GPA controls.
+
+**Causation boundary (causationStatus):** The mapping does not assert that GPA caused a distinct hearing-loss disorder in any individual: the effusion-mediated conductive component overlaps the middle-ear pathway the otitis-media identity already routes to hearing-loss (shared-component guard - only the vasculitic cochlear, labyrinthine, and pachymeningeal components are claimed here), presbycusis, noise exposure, ototoxic drugs, and infectious otitis media independently produce hearing loss in the same populations, and audiometric recovery after immunosuppression documents a reversible inflammatory component rather than fixed downstream injury in every case; individual claims require ANCA-confirmed GPA with audiometry-documented hearing loss, chronology after disease onset, and exclusion of the mimickers with the site-appropriate workup documented.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 162.1 — Tabei A, Sakairi T, Ohishi Y, et al. Otitis media with ANCA-associated vasculitis: A retrospective study of 30 patients. Mod Rheumatol. 2022;32(5):923-929. PMID 34915561.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/34915561/
+- Source checked on: 2026-09-23
+- Locator: PMID 34915561; 30 patients, all impaired, 85% bilateral, 66.1 to 43.4 dB improvement
+- Note under review: Retrospective study of 30 patients documenting universal audiometric hearing impairment (85% bilateral; mixed 80%, sensorineural 20% of impaired ears) with median air conduction improving from 66.1 to 43.4 dB after immunosuppression and hypertrophic pachymeningitis or treatment delay predicting poor hearing outcome - the cohort audiometry anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 162.2 — Yoshida N, Iino Y. Pathogenesis and diagnosis of otitis media with ANCA-associated vasculitis. Allergol Int. 2014 Dec;63(4):523-32. PMID 25339433.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/25339433/
+- Source checked on: 2026-09-23
+- Locator: PMID 25339433; OMAAV review, rapidly progressive hearing loss, facial palsy 25%, HPM 18%
+- Note under review: Review of otitis media with ANCA-associated vasculitis documenting rapidly progressive hearing loss as the localized-disease presentation, PR3-ANCA-driven granulomatous middle-ear formation, peripheral facial palsy in 25% and hypertrophic pachymeningitis in 18% of cases, and hearing recovery with early immunosuppression - the mechanism and rapid-progressive-loss anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 162.3 — Busch BH, Wilhelm D, Johnson P, Pfeifer M. Granulomatosis With Polyangiitis Presenting as Complete Hearing Loss. Cureus. 2022 May 3;14(5):e24711. PMID 35663680.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/35663680/
+- Source checked on: 2026-09-23
+- Locator: PMID 35663680; GPA presenting as complete hearing loss, mixed SNHL-conductive
+- Note under review: Case report of a 29-year-old man with mixed sensorineural-conductive hearing loss presumed secondary to chronic otitis media who was subsequently diagnosed with granulomatosis with polyangiitis - the complete-hearing-loss presentation anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `guillain-barre-syndrome` → `unexplained-chronic-pain` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** The Papri 2024 prospective cohort of 644 GBS patients documents pain in 71% at enrollment persisting in 38% at week 13 and 26% at week 26 with chronic pain associated with dysautonomia, preceding diarrhoea, higher age, and male sex and with the anxiety/depression quality-of-life domain, the Levison 2020 Danish 30-year nationwide pediatric cohort documents medically treated pain in 70% of cases mainly in the lower extremities, and the Yao 2018 cohort of 252 acute-phase patients documents pain in 34.5% with a third of pain-reporters experiencing pain in the two weeks preceding weakness onset - the literature documents a reproducible acute-to-chronic neuropathic pain profile, frequently the presenting and unexplained complaint before the neurologic diagnosis, without establishing that GBS caused a distinct chronic pain disorder in any individual.
+
+**Causation boundary (causationStatus):** The mapping does not assert that GBS caused a separate chronic pain disorder: pain is in substantial part a documented feature of the immune-mediated neuropathy itself (radicular and neuropathic pain tracks disease severity and dysautonomia), so the edge records case-matching of presentations - early unexplained pain complaints and persistent post-illness pain whose exclusionary workup mirrors the unexplained-chronic-pain evaluation (femoral-neuropathy and glomus-tumor precedent) - rather than a distinct downstream arrow; fibromyalgia, diabetic or other small-fiber polyneuropathy, musculoskeletal deconditioning pain, radiculopathy, and central post-stroke or post-critical-illness pain independently produce chronic regional pain in the same populations, and residual limb weakness plus immobility confound pain attribution; individual claims require confirmed GBS (clinical criteria with electrodiagnostic or nerve-biopsy support where obtained), documented pain chronology and distribution within the unexplained-chronic-pain identity's scope, and exclusion of the mimickers with the site-appropriate workup documented.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 163.1 — Papri N, Mohammed A, Rahman MM, et al. Pain determinants and quality of life in Guillain-Barre syndrome: a prospective cohort study. BMJ Neurol Open. 2024 Dec 11;6(2):e000925. PMID 39687605.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/39687605/
+- Source checked on: 2026-09-23
+- Locator: PMID 39687605; 644 patients, pain 71% acute, 38% wk13, 26% wk26
+- Note under review: Prospective cohort of 644 GBS patients documenting pain in 71% at enrollment, 38% at week 13, and 26% at week 26 with chronic pain associated with dysautonomia and the anxiety/depression quality-of-life domain - the acute-to-chronic persistence anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 163.2 — Levison LS, Thomsen RW, Markvardsen LK, et al. Pediatric Guillain-Barre Syndrome in a 30-Year Nationwide Cohort. Pediatr Neurol. 2020 Jun;107:57-63. PMID 32192820.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/32192820/
+- Source checked on: 2026-09-23
+- Locator: PMID 32192820; nationwide cohort, medically treated pain 70%, lower extremities
+- Note under review: Nationwide 30-year pediatric cohort with medical-file review documenting medically treated pain in 70% of GBS cases, mainly confined to the lower extremities - the population-level pain-frequency anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 163.3 — Yao S, Chen H, Zhang Q, et al. Pain during the acute phase of Guillain-Barre syndrome. Medicine (Baltimore). 2018 Aug;97(34):e11595. PMID 30142753.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/30142753/
+- Source checked on: 2026-09-23
+- Locator: PMID 30142753; 252 patients, pain 34.5%, 33% pain before weakness
+- Note under review: Retrospective cohort of 252 acute-phase GBS patients documenting pain in 34.5% with a third reporting pain in the two weeks preceding weakness onset and pain associated with cerebrospinal-fluid protein - the presenting-pain and pre-weakness unexplained-presentation anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `guillain-barre-syndrome` → `depressive-disorder` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** The Walteros 2019 prospective cohort of 34 Zika-associated GBS survivors assessed at a median of 17 months documents moderate or moderate-severe depression at age- and sex-adjusted odds of 3.89 versus neighborhood comparison subjects without GBS alongside persistent disability excess, the Witsch 2013 nine-center cohort of 110 mechanically ventilated GBS patients assessed at mean 52.6 months documents anxiety/depression-dimension impairment in about half of survivors with long-term quality of life compromised foremost by immobility and chronic pain, and the Papri 2024 cohort of 644 patients links chronic pain with the anxiety/depression quality-of-life domain - the literature documents a reproducible depression excess in GBS survivors against comparison populations without establishing that GBS caused a major depressive disorder in any individual.
+
+**Causation boundary (causationStatus):** The mapping does not assert that GBS caused a distinct depressive disorder in any individual: the depression signal is inseparable from its mediators - persistent disability, chronic pain, immobility, fatigue, and the psychological burden of acute paralysis and ventilation - so the edge records association across the post-illness burden rather than an independent causal arrow (female-infertility and frontal-fibrosizing-alopecia psychological-burden precedent); pre-existing mood disorder, socioeconomic strain, and the single etiology-specific survivor series (Zika-associated) confound attribution, and reverse-direction influence of depression on rehabilitation participation and symptom reporting is plausible; individual claims require confirmed GBS with a structured psychiatric diagnostic assessment (SCID or equivalent) documenting depressive symptoms of grade and duration meeting the depressive-disorder identity's scope, chronology after the neurologic illness, and exclusion of bipolar, substance-induced, medication-induced (corticosteroid, interferon), and thyroid or B12-deficiency mimics per case.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 164.1 — Walteros DM, Soares J, Styczynski AR, et al. Long-term outcomes of Guillain-Barre syndrome possibly associated with Zika virus infection. PLoS One. 2019 Aug 1;14(8):e0220049. PMID 31369576.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/31369576/
+- Source checked on: 2026-09-23
+- Locator: PMID 31369576; 34 survivors, depression OR 3.89 vs controls at 17 months
+- Note under review: Prospective cohort of 34 Zika-associated GBS survivors assessed at median 17 months documenting moderate or moderate-severe depression at adjusted odds 3.89 and persistent disability excess versus neighborhood comparison subjects - the controlled depression-excess anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 164.2 — Witsch J, Galldiks N, Bender A, et al. Long-term outcome in patients with Guillain-Barre syndrome requiring mechanical ventilation. J Neurol. 2013 May;260(5):1367-74. PMID 23299621.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/23299621/
+- Source checked on: 2026-09-23
+- Locator: PMID 23299621; 110 ventilated patients, anxiety/depression impairment ~50% at mean 52.6 months
+- Note under review: Nine-center cohort of 110 mechanically ventilated GBS patients assessed at mean 52.6 months documenting anxiety/depression-dimension impairment in about half of survivors, severe fatigue in 30%, and long-term quality of life compromised foremost by immobility and chronic pain - the long-term ventilated-survivor burden anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 164.3 — Papri N, Mohammed A, Rahman MM, et al. Pain determinants and quality of life in Guillain-Barre syndrome: a prospective cohort study. BMJ Neurol Open. 2024 Dec 11;6(2):e000925. PMID 39687605.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/39687605/
+- Source checked on: 2026-09-23
+- Locator: PMID 39687605; chronic pain associated with anxiety/depression QoL domain
+- Note under review: Prospective cohort of 644 GBS patients documenting that chronic pain at week 26 was significantly associated with the anxiety/depression quality-of-life domain - the pain-to-mood mediating-burden anchor (registry source shared with this batch's pain edge; lockstep dedupes).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `greater-trochanteric-pain-syndrome` → `unexplained-chronic-pain` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** The Williams 2009 review defines greater trochanteric pain syndrome as chronic pain overlying the lateral aspect of the hip - once described as trochanteric bursitis - that often mimics pain generated from myofascial sources, degenerative joint disease, and spinal pathology, with symptoms persisting as pain radiating along the lateral thigh to the knee, the Pianka 2021 review documents the syndrome as a wide-spectrum pathology (trochanteric bursitis, abductor tendon pathology, external coxa saltans) that is primarily a clinical diagnosis requiring differentiation from osteoarthritis, femoroacetabular impingement, and referred spinal disease, and the Mary McMillan 2022 randomized trial characterizes it as a debilitating chronic condition most prevalent in postmenopausal women with pain and function outcomes tracked prospectively to 52 weeks - the literature documents a reproducible chronic lateral-hip pain presentation whose historical misattribution and mimicking drive exclusionary workups without establishing that the syndrome caused a distinct chronic pain disorder in any individual.
+
+**Causation boundary (causationStatus):** The mapping does not assert that greater trochanteric pain syndrome caused a separate chronic pain disorder: the lateral-hip pain is constitutive of the syndrome diagnosis itself, so the edge records case-matching of presentations - chronic pain historically coded as bursitis, osteoarthritis, or spinal in origin whose exclusionary workup mirrors the unexplained-chronic-pain evaluation (femoral-neuropathy and glomus-tumor precedent) - rather than a distinct downstream arrow; hip osteoarthritis, femoroacetabular impingement, lumbosacral radiculopathy, referred pain from the hip joint itself, iliotibial-band friction, and gluteal myofascial or trigger-point sources independently produce lateral-hip and thigh pain in the same populations (predominantly postmenopausal women with obesity or low back pain co-morbidity), and the catalog reviewNotes caution that the syndrome overlaps clinically with bursitis and tendinopathy so identity is not proof of a separate nexus; individual claims require clinical examination with point tenderness over the greater trochanter plus confirmatory ultrasound or MRI documenting gluteal tendinopathy or bursal pathology, documented pain chronology within the unexplained-chronic-pain identity's scope, and exclusion of the mimickers with the site-appropriate workup documented.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 165.1 — Williams BS, Cohen SP. Greater trochanteric pain syndrome: a review of anatomy, diagnosis and treatment. Anesth Analg. 2009 May;108(5):1662-70. PMID 19372352.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/19372352/
+- Source checked on: 2026-09-23
+- Locator: PMID 19372352; chronic lateral hip pain, mimics myofascial/DJD/spinal sources
+- Note under review: Review defining greater trochanteric pain syndrome as chronic lateral-hip pain once described as trochanteric bursitis that often mimics myofascial, degenerative joint, and spinal pain sources with incidence around 1.8 per 1,000 per year - the mimicking and historical-misattribution anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 165.2 — Pianka MA, Serino J, DeFroda SF, Bodendorfer BM. Greater trochanteric pain syndrome: Evaluation and management of a wide spectrum of pathology. SAGE Open Med. 2021 Jun 3;9:20503121211022582. PMID 34158938.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/34158938/
+- Source checked on: 2026-09-23
+- Locator: PMID 34158938; wide spectrum of pathology, clinical diagnosis, differential vs OA/FAI
+- Note under review: Review documenting the syndrome as a spectrum including trochanteric bursitis, abductor tendon pathology, and external coxa saltans that is primarily a clinical diagnosis requiring differentiation from osteoarthritis, femoroacetabular impingement, and other hip-pain sources - the spectrum and differential-diagnosis anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 165.3 — Mary McMillan R, Ganderton CL, Cook J, et al. Does Menopausal Hormone Therapy, Exercise, or Both Improve Pain and Function in Postmenopausal Women With Greater Trochanteric Pain Syndrome? A 2 x 2 Factorial Randomized Clinical Trial. Am J Sports Med. 2022 Feb;50(2):515-525. PMID 34898293.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/34898293/
+- Source checked on: 2026-09-23
+- Locator: PMID 34898293; 132 postmenopausal women, debilitating chronic condition, 52-week follow-up
+- Note under review: Factorial randomized trial of 132 postmenopausal women characterizing the syndrome as a debilitating chronic condition with pain and function outcomes measured at 12 and 52 weeks - the chronicity and population anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `hairy-cell-leukemia` → `anemia` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** The Sarvaria 2016 JAMA Oncology review describes hairy cell leukemia as an indolent chronic B-cell leukemia that ultimately results in cytopenias and massive splenomegaly with significant anemia listed among the treatment triggers, the Mackowiak 2024 etiopathogenesis review documents aplastic anemia and/or thrombocytopenia occurring alongside leukopenia with monocytopenia and granulocytopenia in the basic blood count of HCL, and the Plenderleith 1970 clinical series of 12 patients records anemia and thrombocytopenia with characteristic hairy cells in peripheral blood and bone marrow in most patients; the literature documents a reproducible cytopenic picture accompanying HCL at review and series level without establishing incident anemia attributable to HCL in any individual against competing anemia etiologies.
+
+**Causation boundary (causationStatus):** The mapping does not assert that hairy cell leukemia caused a distinct anemia disorder in any individual: anemia in HCL populations is multifactorial - marrow infiltration by clonal hairy cells, splenic sequestration with extramedullary hematopoiesis, thrombocytopenic bleeding, and purine-analogue or rituximab myelosuppression all reduce circulating red-cell mass or production, so a single causal arrow would collapse distinguishable routes (chronic-b-cell-leukemias sibling precedent); iron deficiency, chronic kidney disease, anemia of chronic inflammation from comorbidity, gastrointestinal blood loss, and hemolysis independently produce anemia in the same (typically male, over-55) population, and the uniform anemia-target family norm holds every incoming edge at association; individual claims require confirmed HCL with a separately documented anemia subtype (morphology, reticulocyte count, iron/B12/folate, haptoglobin, hemoglobin electrophoresis where indicated), dated marrow and treatment chronology, and exclusion of the competing etiologies with hematology assessment documented.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 166.1 — Sarvaria A, Topp Z, Saven A. Current Therapy and New Directions in the Treatment of Hairy Cell Leukemia: A Review. JAMA Oncol. 2016 Jan;2(1):123-9. PMID 26513168.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/26513168/
+- Source checked on: 2026-09-23
+- Locator: PMID 26513168; indolent course ultimately results in cytopenias and massive splenomegaly
+- Note under review: Review describing HCL as an indolent chronic B-cell leukemia that ultimately results in cytopenias and massive splenomegaly with significant anemia among the treatment triggers - the natural-history cytopenia anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 166.2 — Mackowiak K, Jankowiak M, Szewczyk-Golec K, Holynska-Iwan I. Hairy cell leukemia - etiopathogenesis, diagnosis and modern therapeutic approach. Biochem Med (Zagreb). 2024 Jun 15;34(2):020502. PMID 38882583.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/38882583/
+- Source checked on: 2026-09-23
+- Locator: PMID 38882583; aplastic anemia and/or thrombocytopenia in basic blood count, BRAF ~100%
+- Note under review: Etiopathogenesis review documenting leukopenia with monocytopenia and granulocytopenia as well as aplastic anemia and/or thrombocytopenia occurring in the basic blood count of HCL, with splenomegaly among the most common symptoms and BRAF mutation in nearly 100% - the contemporary anemia-and-cytopenia occurrence anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 166.3 — Plenderleith IH. Hairy cell leukemia. Can Med Assoc J. 1970 May 23;102(10):1056-60. PMID 4939244.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/4939244/
+- Source checked on: 2026-09-23
+- Locator: PMID 4939244; 12 patients, anemia and thrombocytopenia in most
+- Note under review: Clinical review of 12 patients documenting that hematologic findings in most patients have been anemia and thrombocytopenia with the characteristic abnormal cells present in peripheral blood and bone marrow - the clinical-series anemia-frequency anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `guyon-s-canal-syndrome` → `muscle-atrophy` — DIRECT_CAUSATION
+
+**Proposition (direct_causation):** Electrodiagnostically or clinically confirmed Guyon's canal (ulnar tunnel) syndrome with documented compression of the ulnar nerve or its deep motor branch and intrinsic hand-muscle atrophy or strength loss documented after symptom onset - sustained mechanical compression axotomies the motor axons supplying the hypothenar, interossei, and adductor pollicis muscles, so denervated motor units are lost and muscle bulk wastes until the atrophy is measurable on examination.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 167.1 — Tong J, Xu B, Zhang C, Dong Z. Surgical outcome for type I Guyon's canal syndrome with claw hand deformity: a review of 11 patients. Acta Neurochir (Wien). 2026 May 1;168(1):118. PMID 42065727.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42065727/
+- Source checked on: 2026-09-23
+- Locator: PMID 42065727; 11 claw-hand hands, intrinsic strength improved all, 72.7% grade 5, 90.9% corrected
+- Note under review: Retrospective series of 11 type-I Guyon's canal syndrome patients with established claw hand deformity and intrinsic muscle weakness, documenting strength improvement in all hands, 72.7% regaining MRC grade 5 and complete deformity correction in 90.9% after decompression at minimum one-year follow-up - the atrophy-distribution and dechallenge-reversal anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 167.2 — Wang B, Zhao Y, Lu A, Chen C. Ulnar nerve deep branch compression by a ganglion: a review of nine cases. Injury. 2014 Jul;45(7):1126-30. PMID 24774037.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/24774037/
+- Source checked on: 2026-09-23
+- Locator: PMID 24774037; 9 cases, interossei/adductor atrophy, 16-month mean symptom duration
+- Note under review: Review of nine cases documenting different degrees of muscular atrophy and weakness of the interossei and adductor pollicis without sensory loss, with mean symptom duration of 16 months (range 5-32) before surgery and grip and tip-pinch strength recovery after ganglion excision and decompression - the dose-duration atrophy and recovery anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 167.3 — Chen SH, Tsai TM. Ulnar tunnel syndrome. J Hand Surg Am. 2014 Mar;39(3):571-9. PMID 24559635.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/24559635/
+- Source checked on: 2026-09-23
+- Locator: PMID 24559635; ulnar tunnel syndrome review, mimic list C8-T1/plexopathy/carpal-cubital
+- Note under review: Journal of Hand Surgery review of ulnar tunnel (Guyon's canal) syndrome documenting the compressive-neuropathy construct and the diagnostic difficulty from coexisting carpal tunnel syndrome, cubital tunnel syndrome, thoracic outlet syndrome, C8-T1 radiculopathy, and peripheral neuropathy - the mechanism and mimic-exclusion anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `halitosis` → `depressive-disorder` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** The Lu 2017 cohort study comparing 102 objectively confirmed halitosis patients (volatile-sulfur-compound, Oral Chroma, and organoleptic testing) with 102 controls documents significantly poorer oral health-related quality of life (OHIP-14 severity 15.7 versus 7.9, p less than 0.001) with the most commonly reported negative impacts within the psychological discomfort and psychological disability domains, the Renvert 2020 expert consensus review documents that halitosis has a significant impact on patients' quality of life and can result in psychological consequences including social, professional, and affective limitations, and the Mento 2021 systematic review of 38 studies documents that self-perceived halitosis carries anxiety, reduced self-esteem, embarrassment, relational discomfort, and social isolation; the literature documents a reproducible psychological-burden excess in halitosis populations without establishing that odor caused a major depressive disorder in any individual.
+
+**Causation boundary (causationStatus):** The mapping does not assert that halitosis caused a distinct depressive disorder in any individual: the documented endpoints are oral-health-quality-of-life psychological domains, anxiety, and self-esteem rather than structured major-depression diagnosis, the reverse arrow is active in the same literature (emotional state and body image modulate self-perception of halitosis, and psychogenic halitosis or halitophobia produces odor complaints driven by psychological distress), and shared upstream drivers (periodontitis, tongue coating, smoking, xerostomia) independently generate both odor and psychosocial strain in the same populations (burning-mouth-syndrome precedent); individual claims require objectively confirmed halitosis (organoleptic and volatile-sulfur-compound measurement) with documented mood-disorder chronology after odor onset, a structured psychiatric diagnostic assessment meeting the depressive-disorder identity's scope, and exclusion of halitophobia, primary psychiatric disorder, medication-induced mood symptoms, and reflux- or xerostomia-driven odor per case.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 168.1 — Lu HX, Chen XL, Wong M, Zhu C, Ye W. Oral health impact of halitosis in Chinese adults. Int J Dent Hyg. 2017 Nov;15(4):e85-e92. PMID 27516401.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/27516401/
+- Source checked on: 2026-09-23
+- Locator: PMID 27516401; 102 halitosis vs controls, OHIP-14 15.7 vs 7.9, psych discomfort/disability domains
+- Note under review: Cohort of objectively confirmed halitosis patients (VSC, Oral Chroma, organoleptic testing) versus controls documenting OHIP-14 severity 15.7 versus 7.9 with the most common negative impacts in the psychological discomfort and psychological disability domains - the odor-confirmed psychological-burden anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 168.2 — Renvert S, Noack MJ, Lequart C, Roldan S, Laine ML. The Underestimated Problem of Intra-Oral Halitosis in Dental Practice: An Expert Consensus Review. Clin Cosmet Investig Dent. 2020 Jul 3;12:251-262. PMID 32753975.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/32753975/
+- Source checked on: 2026-09-23
+- Locator: PMID 32753975; ~90% intra-oral origin, psychological consequences incl. affective limitations
+- Note under review: Expert consensus review documenting that about 90% of halitosis originates in the oral cavity, that the condition has a significant quality-of-life impact, and that it can result in psychological consequences including social, professional, and affective limitations - the consensus prevalence-and-consequence anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 168.3 — Mento C, Lombardo C, Milazzo M, et al. Adolescence, Adulthood and Self-Perceived Halitosis: A Role of Psychological Factors. Medicina (Kaunas). 2021 Jun 12;57(6):614. PMID 34204752.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/34204752/
+- Source checked on: 2026-09-23
+- Locator: PMID 34204752; 38-study review, anxiety/self-esteem/social isolation, perception modulated by emotion
+- Note under review: PRISMA systematic review of 38 studies documenting that self-perceived halitosis carries anxiety, reduced self-esteem, misinterpretation of others' attitudes, embarrassment, and relational discomfort often resulting in social isolation, while also recording emotional-state modulation of self-perception - the systematic-review consequence anchor and reverse-arrow source.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `hallux-valgus` → `metatarsalgia` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** The Murahashi 2026 cross-sectional study of 1700 adults documents that severe hallux valgus shifts the dominant pain location from the hallux to the lesser toes and metatarsal regions (foot pain 33.6% in mild versus 57.1% in severe deformity, HV angle the significant multivariate correlate of HV pain), the Gines-Cespedosa 2013 series of 94 preoperative hallux valgus surgical candidates documents coexisting metatarsalgia in 30.8% (16% with additional lesser-toe deformity, 10.6% with both) with significantly worse physical-function, bodily-pain, and mental-health SF-36 domains than hallux valgus alone, and the Chaiwanichsiri 2009 survey of 213 community-dwelling older adults documents hallux valgus and metatarsalgia together among the documented causes of foot pain; the literature documents reproducible coexistence and a severity-gradient of metatarsal-region pain in hallux valgus populations without establishing that the deformity caused metatarsalgia in any individual.
+
+**Causation boundary (causationStatus):** The mapping does not assert that hallux valgus caused metatarsalgia in any individual: the evidence is cross-sectional coexistence and pain-location description rather than incident-metatarsalgia follow-up, the reverse sequence (pre-existing metatarsalgia from Morton's neuroma, first-ray osteoarthritis, metatarsal malalignment, or prior trauma predisposing to deformity progression) is untested in the located literature, metatarsalgia itself is a heterogeneous pain descriptor with multiple independent etiologies, and the Chaiwanichsiri survey documents that most foot deformities including hallux valgus were asymptomatic at baseline (forefoot precedent, flatfoot pattern); individual claims require documented hallux valgus on weight-bearing assessment with separately documented metatarsal-head pain of onset after deformity onset, and exclusion of Morton's neuroma, first-ray or lesser-MTP osteoarthritis, inflammatory arthropathy, metatarsal stress fracture, prior forefoot trauma, and cavovarus or acquired-flatfoot malalignment per case.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 169.1 — Murahashi Y, Matsuoka M, Kimura S, et al. Association between hallux valgus pain and foot-related quality of life: the hallux valgus and pain epidemiology study. J Orthop Sci. 2026 Mar;31(2):392-400. PMID 41093741.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/41093741/
+- Source checked on: 2026-09-24
+- Locator: PMID 41093741; n=1700, 419 HV, pain 33.6% mild vs 57.1% severe, pain shifts to metatarsal regions
+- Note under review: Cross-sectional study of 1700 adults with photograph-measured HV angle and propensity matching (419 HV-positive) documenting foot pain in 33.6% of mild versus 57.1% of severe HV, pain migrating from the hallux to the lesser toes and metatarsal regions in severe deformity, and HV angle as the significant multivariate correlate of HV pain - the severity-gradient and metatarsal-region pain anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 169.2 — Gines-Cespedosa A, Alentorn-Geli E, Sanchez JF, et al. Influence of common associated forefoot disorders on preoperative quality of life in patients with hallux valgus. Foot Ankle Int. 2013 Dec;34(12):1634-7. PMID 23943654.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/23943654/
+- Source checked on: 2026-09-24
+- Locator: PMID 23943654; 94 HV patients, 30.8% HV+metatarsalgia, worse SF-36 in comorbid groups
+- Note under review: Series of 94 preoperative hallux valgus surgical candidates documenting coexisting metatarsalgia in 30.8% (plus 16% with lesser-toe deformity and 10.6% with both comorbidities) and significantly worse physical-function, bodily-pain, role-emotional, and mental-health SF-36 domains in the comorbid groups - the coexistence and functional-burden anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 169.3 — Chaiwanichsiri D, Janchai S, Tantisiriwat N. Foot disorders and falls in older persons. Gerontology. 2009;55(3):296-302. PMID 19052445.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/19052445/
+- Source checked on: 2026-09-24
+- Locator: PMID 19052445; 213 subjects, foot pain 14%, HV and metatarsalgia pain causes, deformities mostly asymptomatic
+- Note under review: Survey of 213 community-dwiling adults aged 60-80 documenting foot pain in 14% with hallux valgus and metatarsalgia among the documented pain causes, slower walking speed in the foot-pain group, and that foot deformities (present in 87%) were mostly asymptomatic and not significantly associated with falls - the population attribution and asymptomatically-common guard anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `hallux-valgus` → `unexplained-chronic-pain` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** The Murahashi 2026 population study documents chronic forefoot pain in 33.6% to 57.1% of hallux valgus participants graded by deformity severity with the pain subscale the dominant SAFE-Q deficit, the Bock 2015 Scarf osteotomy cohort of 93 feet followed a mean 124 months documents pain as the operative indication with VAS and AOFAS improvement (median 57 to 95) and recurrent deformity (30%) accompanying recurrent symptoms - pain relief being the treatment goal - and the Chaiwanichsiri 2009 survey documents hallux valgus among the documented causes of foot pain with slower walking speed in the symptomatic group; the literature documents a high chronic forefoot-pain burden in hallux valgus populations without establishing that the deformity generated a distinct chronic pain syndrome in any individual.
+
+**Causation boundary (causationStatus):** The mapping does not assert that hallux valgus caused a chronic pain syndrome in any individual: the evidence is population pain-prevalence and surgical-indication series rather than a condition-specific diagnostic-delay or centralized-pain cohort, foot pain in these populations is attributable to coexisting forefoot pathology (metatarsalgia, lesser-toe deformity, first-ray osteoarthritis, neuroma) in a substantial share, most deformities are asymptomatic at baseline per the population survey, and the case-matching family (greater-trochanteric-pain-syndrome, glomus-tumor, flexor-hallucis-longus-tendinitis) rests at NOT_ESTABLISHED; individual claims require documented hallux valgus with separately documented chronic foot pain (of the grade, duration, and functional impact within the unexplained-chronic-pain identity's scope) of onset after deformity onset, and exclusion of neuroma, osteoarthritis, inflammatory arthropathy, stress fracture, prior trauma, tarsal pathology, and centralized or nociplastic pain per case.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 170.1 — Murahashi Y, Matsuoka M, Kimura S, et al. Association between hallux valgus pain and foot-related quality of life: the hallux valgus and pain epidemiology study. J Orthop Sci. 2026 Mar;31(2):392-400. PMID 41093741.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/41093741/
+- Source checked on: 2026-09-24
+- Locator: PMID 41093741; pain 33.6% mild vs 57.1% severe, SAFE-Q pain subscale
+- Note under review: Population anchor (n=1700, 419 HV): foot pain 33.6% mild to 57.1% severe HV with SAFE-Q pain-subscale the dominant deficit and HV angle the multivariate pain correlate - the chronic-pain prevalence gradient.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 170.2 — Bock P, Kluger R, Kristen KH, Mittlböck M, Schuh R, Trnka HJ. The Scarf osteotomy with minimally invasive lateral release for treatment of hallux valgus deformity: intermediate and long-term results. J Bone Joint Surg Am. 2015 Aug 5;97(15):1238-45. PMID 26246258.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/26246258/
+- Source checked on: 2026-09-24
+- Locator: PMID 26246258; 93 feet, 124-month follow-up, AOFAS 57 to 95, recurrence 30%
+- Note under review: Cohort of 93 feet at mean 124-month follow-up documenting pain as the operative indication, median AOFAS improvement from 57 to 95 with VAS pain scoring, and 30% radiographic recurrence at final follow-up - pain as the treatment goal with symptoms tracking deformity status.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 170.3 — Chaiwanichsiri D, Janchai S, Tantisiriwat N. Foot disorders and falls in older persons. Gerontology. 2009;55(3):296-302. PMID 19052445.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/19052445/
+- Source checked on: 2026-09-24
+- Locator: PMID 19052445; foot pain 14%, HV a documented pain cause, deformities mostly asymptomatic
+- Note under review: Community survey documenting hallux valgus among the causes of foot pain in 14% of 213 older adults with slower walking speed in the symptomatic group - independent population pain attribution plus the asymptomatic-deformity guard.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `hammertoe` → `unexplained-chronic-pain` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** The Matthews 2018 consecutive surgical series documents that preoperatively all 126 patients (215 toes) with clawed or hammer toes presented with pain and shoe-wear problems, with plantar callosities an explicit outcome target and 96% pain relief at median 45-month follow-up after excision arthroplasty, the Olsen 2023 review documents that hammer-toe symptoms arise from the fixed-flexion deformity with associated degenerative bone changes, that conservative measures provide only temporary alleviation so surgery is often required for definitive treatment, and that pain relief is achieved in up to 92% of operated patients, and the Arbab 2017 review documents pain relief as the operative objective for flexible lesser-toe deformity correction; the literature documents a universal chronic forefoot-pain presenting burden in treated hammertoe populations without establishing that the deformity caused a distinct chronic pain syndrome in any individual.
+
+**Causation boundary (causationStatus):** The mapping does not assert that hammertoe caused a chronic pain syndrome in any individual: every located source is a surgical-treatment series selected on pain as the operative indication (selection-on-outcome), no cohort documents incident chronic pain after hammertoe onset in unselected populations, the identity's flexible-to-fixed deformity spectrum and heterogeneous etiologies (neuromuscular imbalance, inflammatory arthropathy, iatrogenic, congenital) provide competing pain generators in the same foot, no diagnostic-delay quantification exists for the identity, and the case-matching family (flexor-hallucis-longus-tendinitis, greater-trochanteric-pain-syndrome, glomus-tumor) rests at NOT_ESTABLISHED; individual claims require documented hammertoe with separately documented chronic forefoot pain of onset after deformity onset meeting the unexplained-chronic-pain identity's scope, and exclusion of Morton's neuroma, independent metatarsalgia causes, MTP osteoarthritis, inflammatory arthropathy, metatarsal stress fracture, prior forefoot trauma, distal-nerve or tarsal entrapment, lumbar radiculopathy, and centralized or nociplastic pain per case.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 171.1 — Matthews AH, Jagodzinski NA, Westwood M, Metcalfe JE, Trimble KT. Effectiveness of the Cobb-Stainsby excision arthroplasty. Foot Ankle Surg. 2018 Feb;24(1):49-53. PMID 29413774.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/29413774/
+- Source checked on: 2026-09-24
+- Locator: PMID 29413774; 215 toes/126 patients, all pre-op pain, 96% pain relief, median 45-month follow-up
+- Note under review: Retrospective three-surgeon series of 215 toes in 126 patients with clawed or hammer toes documenting that preoperatively ALL patients presented with pain and shoe-wear problems, plantar callosities as an explicit primary outcome, and 96% satisfaction with 96% pain relief at median 45-month follow-up - the universal preoperative chronic-pain and dechallenge anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 171.2 — Olsen E, King J, Pollock JR, Squires M, Meremikwu R, Walton D. Hammer toe correction with proximal interphalangeal joint arthrodesis. JBJS Essent Surg Tech. 2023 Feb 28;13(1):e21.00046. PMID 38274283.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/38274283/
+- Source checked on: 2026-09-24
+- Locator: PMID 38274283; PIP flexion deformity, degenerative changes, pain relief up to 92%
+- Note under review: Surgical-technique review documenting that hammer toe is a fixed PIP-flexion deformity with degenerative bone changes, that nonoperative measures provide only temporary symptom alleviation so surgery is often necessary for definitive treatment, and that pain relief is achieved in up to 92% with 83-100% satisfaction - the chronicity, degenerative-substrate, and pain-endpoint anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 171.3 — Arbab D, Frank D, Bouillon B, Lüring C. [Correction of flexible lesser toe deformity: transfer of the flexor digitorum longus tendon]. Oper Orthop Traumatol. 2017 Oct;29(5):452-458. PMID 28676916.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/28676916/
+- Source checked on: 2026-09-24
+- Locator: PMID 28676916; flexible lesser-toe deformity, objective realignment and pain relief toes 2-5
+- Note under review: Review of flexor-to-extensor tendon transfer for flexible lesser-toe (hammer/claw) deformity with the operative objective stated as realignment and pain relief of toes 2-5 - pain as the defining treatment endpoint across an independent national series.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `halo-nevus` → `vitiligo` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** The Ezzedine 2012 prospective observational study of 553 confirmed nonsegmental-vitiligo patients documents halo nevi in 130 of them (23.5%) with distinct associated features (younger age at onset, trunk involvement, premature hair-graying family history), the Kano 2023 series of 54 halo-nevus patients documents the perinevic vitiligo-like leukoderma, its clinical coupling to vitiligo vulgaris status (surrounding pigment improved after excision only when vitiligo vulgaris was present or absent depending on group), and a CD8-positive and CD3/CD4-skewed T-cell microenvironment in non-improving cases, and the de Vijlder 2004 HLA case-control study of 76 individuals documents that halo-nevi-associated vitiligo and vitiligo vulgaris share autoimmune linkage yet differ in HLA-DR association profile and clinical course; the literature documents a reproducible co-occurrence of halo nevi and vitiligo on a shared melanocyte-directed autoimmune substrate without establishing that the halo nevus caused vitiligo in any individual.
+
+**Causation boundary (causationStatus):** The mapping does not assert that halo nevus caused vitiligo in any individual: all located evidence is cross-sectional or clinic-based co-occurrence with no cohort documenting incident vitiligo after halo nevus onset in initially vitiligo-free subjects, the arrow is indeterminate in these designs (vitiligo may precede, accompany, or follow halo nevi and both may simply declare an underlying autoimmune diathesis), the HLA data indicate partially distinct pathogenic mechanisms between the phenotypes, and halo nevi can also arise as a melanoma-directed immune phenomenon whose depigmentation mimics vitiligo (regression guard); individual claims require documented halo nevus with serial photography, separately documented nonsegmental vitiligo with onset after the halo nevus, serologic or clinical assessment of the shared autoimmune diathesis, and exclusion of postinflammatory hypopigmentation, pityriasis versicolor, chemical leukoderma, and melanoma-regression depigmentation per case.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 172.1 — Ezzedine K, Diallo A, Leauté-Labrèze C, et al. Halo nevi association in nonsegmental vitiligo affects age at onset and depigmentation pattern. Arch Dermatol. 2012 Apr;148(4):497-502. PMID 22508876.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/22508876/
+- Source checked on: 2026-09-24
+- Locator: PMID 22508876; 553 NSV patients, 130 (23.5%) with halo nevi, distinct onset/distribution correlates
+- Note under review: Prospective observational study of 553 confirmed nonsegmental-vitiligo clinic patients documenting halo nevi in 130 (23.5%) with distinct correlates (younger onset, trunk localization, premature-hair-graying association) - the prospective co-prevalence anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 172.2 — Kano S, Nakamura M, Nojiri Y, et al. Differences in the immune microenvironment between improved and non-improved cases of vitiligo after halo nevus excision. J Dermatol Sci. 2023 Mar;109(3):136-142. PMID 36966028.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/36966028/
+- Source checked on: 2026-09-24
+- Locator: PMID 36966028; 54 halo nevus patients, CD8/CD3/CD4 infiltration, vitiligo vulgaris status determines improvement
+- Note under review: Series of 54 halo-nevus patients with immunohistochemistry and PhenoCycler spatial phenotyping documenting CD8/CD3/CD4-dominant infiltration in non-improving perinevic leukoderma, vitiligo-vulgaris status as the determinant of improvement, and relevance to melanoma-associated vitiligo - the immunologic-coupling anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 172.3 — de Vijlder HC, Westerhof W, Schreuder GM, de Lange P, Claas FH. Difference in pathogenesis between vitiligo vulgaris and halo nevi associated with vitiligo is supported by an HLA association study. Pigment Cell Res. 2004 Jun;17(3):270-4. PMID 15140072.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/15140072/
+- Source checked on: 2026-09-24
+- Locator: PMID 15140072; 76 HLA-typed subjects vs 2400 controls, distinct DR profiles between subtypes
+- Note under review: HLA class-II case-control study of 40 vitiligo-vulgaris and 36 halo-nevi-associated-vitiligo patients versus 2400 typed blood-donor controls documenting distinct HLA-DR association profiles (DR4/DR53 positive and DR3 negative for vulgaris; DR11 negative for the halo-nevus subtype) - the shared-autoimmune-linkage-but-distinct-pathogenesis anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `hashimoto-s-encephalopathy` → `seizure-disorder` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** The Bien 2013 review positions steroid-responsive encephalopathy associated with autoimmune thyroiditis (SREAT, formerly Hashimoto encephalopathy) among the immune-mediated brain disorders frequently associated with recurrent epileptic seizures, the Matsunaga 2021 review records seizures among the common neuropsychiatric features of HE (after consciousness disturbance, psychosis, cognitive dysfunction, and involuntary movements) with abnormal EEG a common finding, and the Hilberath 2014 patient-and-review report documents that SREAT is characterized by altered mental status, seizures, and cognitive dysfunction with a pediatric case of refractory status epilepticus requiring intubation and multi-modal immunotherapy; the literature documents a reproducible seizure excess in HE populations without establishing that HE caused a chronic seizure disorder in any individual.
+
+**Causation boundary (causationStatus):** The mapping does not assert that Hashimoto encephalopathy caused a chronic seizure disorder in any individual: the DIRECT_CAUSATION bar set by the encephalitis precedent (documented parenchymal epileptogenic lesion plus post-encephalitic epilepsy incidence) is not met because HE typically shows normal brain imaging (Matsunaga: MRI abnormalities rare except diffuse subcortical or limbic lesions) so no structural epileptogenic substrate is established, the located evidence documents seizures as presenting and common features during the acute illness rather than incident chronic epilepsy after HE, acute symptomatic seizures during encephalopathy are constitutionally distinct from the seizure-disorder identity's chronic scope, no located cohort quantifies post-HE epilepsy incidence, and the Mayo 144-referral series documents non-autoimmune seizure disorders among the common mimics with thyroid antibodies failing to discriminate; individual claims require a diagnostically objective HE diagnosis (subacute encephalopathy, thyroid antibodies, negative specific neural antibodies, exclusion of infectious, neoplastic, metabolic, and toxic causes), a seizure meeting the seizure-disorder identity's chronic scope documented after HE onset with EEG confirmation, and exclusion of non-autoimmune epilepsy, structural-lesion epilepsy, convulsive and non-convulsive status sequelae, and medication or metabolic triggers per case.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 173.1 — Bien CG, Vincent A. Immune-mediated pediatric epilepsies. Handb Clin Neurol. 2013;111:521-31. PMID 23622200.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/23622200/
+- Source checked on: 2026-09-24
+- Locator: PMID 23622200; SREAT among immune-mediated epilepsies, often with seizures
+- Note under review: Handbook review positioning SREAT (formerly Hashimoto encephalopathy) among the immune-mediated brain disorders frequently associated with recurrent epileptic seizures and describing SREAT as the catch-all for encephalopathic immune-mediated brain diseases often with seizures sharing thyroid antibodies and steroid responsiveness - the family-association anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 173.2 — Matsunaga A, Yoneda M. [Hashimoto encephalopathy]. Brain Nerve. 2021 May;73(5):544-551. PMID 34006687.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/34006687/
+- Source checked on: 2026-09-24
+- Locator: PMID 34006687; seizures among common features, EEG common, MRI rare, euthyroid majority
+- Note under review: Japanese-language review with institutional case aggregation documenting that consciousness disturbance and psychosis are the common neuropsychiatric features followed by cognitive dysfunction, involuntary movements, seizures, and atxia, that EEG abnormalities are common while brain-MRI abnormalities are rare, and that most patients are euthyroid with universal antithyroid antibodies - the seizure-frequency and normal-imaging guard anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 173.3 — Hilberath JM, Schmidt H, Wolf GK. Steroid-responsive encephalopathy associated with autoimmune thyroiditis patient and review of the literature. Eur J Pediatr. 2014 Oct;173(10):1263-73. PMID 25084973.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/25084973/
+- Source checked on: 2026-09-24
+- Locator: PMID 25084973; characterized by altered mental status, seizures, cognitive dysfunction; refractory status case
+- Note under review: Patient plus literature review documenting SREAT as characterized by altered mental status, seizures, and cognitive dysfunction with courses from complete recovery to relapse and long-term cognitive sequelae, including a pediatric refractory status epilepticus presentation - the ictal-presentation and severity anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `hashimoto-s-encephalopathy` → `cognitive-disorder` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** The Schenck 2025 literature review plus comprehensive neuropsychological case documents persistent neuropsychological impairment at two discrete timepoints in a confirmed HE patient with a largely subcortical neurocognitive pattern and impactful neuropsychiatric symptoms significantly affecting quality of life and functional status, the Adams 2020 pediatric criteria study of 17 treated HE patients documents cognitive regression as a presenting diagnostic domain with cognitive, language, psychiatric, movement, and sleep deficits tracked from onset to follow-up (improvement documented but residual burden measurable), and the Valencia-Sanchez 2021 Mayo series of 144 thyroid-antibody-positive referrals documents subjective cognitive complaints as a prominent presentation among patients ultimately found NOT to have autoimmune CNS disease; the literature documents a reproducible cognitive-burden excess in HE populations without establishing that the encephalopathy caused a distinct chronic cognitive disorder in any individual.
+
+**Causation boundary (causationStatus):** The mapping does not assert that Hashimoto encephalopathy caused a distinct cognitive disorder in any individual: the located condition-specific evidence is a literature review with an index case showing persistent impairment, a 17-patient criteria study without a control group, and feature-level documentation rather than any incidence cohort, cognitive dysfunction is a defining feature of the acute encephalopathy state itself so persistence beyond the acute phase must be separately documented (acute-constitutive-versus-persistent-sequela guard), the Mayo mimic series documents that the majority of thyroid-antibody-positive cognitive presentations had alternative diagnoses (functional neurological disorder, neurodegenerative disorder, subjective cognitive complaints), and the encephalitis-to-cognitive-disorder sibling rests at NOT_ESTABLISHED; individual claims require an objectively diagnosed HE episode, cognitive testing meeting the cognitive-disorder identity's scope with deficits persisting beyond the acute illness and after steroid response, and exclusion of functional neurological disorder, neurodegenerative disease, delirium of other cause, primary psychiatric disorder, hypothyroid cognitive effects, and medication (including steroid) effects per case.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 174.1 — Schenck LA, McCracken HT, Andrasik F, Baughman BC. Hashimoto encephalopathy: a literature review and case report with comprehensive neuropsychological evaluation. Clin Neuropsychol. 2025 May;39(4):988-1007. PMID 39154259.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/39154259/
+- Source checked on: 2026-09-24
+- Locator: PMID 39154259; persistent impairment at two timepoints, subcortical pattern, QoL impact
+- Note under review: Literature review plus 57-year-old confirmed-HE case with neuropsychological evaluation at two discrete timepoints documenting persistent largely subcortical neurocognitive impairment, impactful neuropsychiatric symptoms significantly affecting quality of life and functional status, and partial improvement at six-month re-evaluation - the persistent-impairment anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 174.2 — Adams AV, Mooneyham GC, Van Mater H, Gallentine W. Evaluation of diagnostic criteria for Hashimoto encephalopathy among children and adolescents. Pediatr Neurol. 2020 Jun;107:41-47. PMID 32173161.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/32173161/
+- Source checked on: 2026-09-24
+- Locator: PMID 32173161; 17 pediatric HE patients, cognitive regression presenting domain, domain outcomes to 1 year
+- Note under review: Evaluation of 17 pediatric HE patients at onset and at least one year after immunomodulatory treatment using domain-based outcome scales, documenting abrupt-onset cognitive regression among presenting diagnostic domains and statistically significant cognitive, language, psychiatric-disturbance, movement, and sleep improvements from onset to follow-up with measurable residual burden - the domain-trajectory anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 174.3 — Valencia-Sanchez C, Pittock SJ, Mead-Harvey C, et al. Brain dysfunction and thyroid antibodies: autoimmune diagnosis and misdiagnosis. Brain Commun. 2021 Jan 5;3(2):fcaa233. PMID 34061124.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/34061124/
+- Source checked on: 2026-09-24
+- Locator: PMID 34061124; 144 referrals, 27% autoimmune CNS, 73% alternatives incl. subjective cognitive complaints n=14
+- Note under review: Mayo Clinic retrospective review of 144 thyroid-antibody-positive referrals over 13 years documenting that only 27% had an autoimmune CNS disorder while 73% carried alternative diagnoses including functional neurological disorder (n=20), neurodegenerative disorder (n=18), subjective cognitive complaints (n=14), chronic pain syndrome (n=12), and primary psychiatric disorder (n=11) - the diagnostic-specificity and mimic guard anchor binding all three HE edges.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `hashimoto-s-encephalopathy` → `depressive-disorder` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** The Schenck 2025 review and neuropsychological case documents impactful neuropsychiatric symptoms including psychological dysfunction significantly affecting quality of life and functional status in HE, the Ellul 2020 case report documents HE initially presenting as drug-resistant depression with predominant apathy and asthenia that responded to cyclophosphamide with an immune-activation to neurotransmitter-synthesis-deficit model proposed for the depressive symptoms, and the Adams 2020 cohort of 17 HE patients documents psychiatric disturbance as a tracked presenting and outcome domain with significant improvement from onset to follow-up after immunomodulation; the literature documents a reproducible depressive-spectrum burden in HE populations without establishing that the encephalopathy caused a major depressive disorder in any individual.
+
+**Causation boundary (causationStatus):** The mapping does not assert that Hashimoto encephalopathy caused a major depressive disorder in any individual: the located evidence is one index case, one literature review, and one small uncontrolled cohort tracking a psychiatric-disturbance domain rather than structured diagnostic depression incidence, the depressive presentation itself can BE the primary psychiatric mimic (the Mayo 144-referral series documents primary psychiatric disorder in 11 non-autoimmune cases and the reverse-arrow hazard that primary depression with incident thyroid autoimmunity is labeled HE), corticosteroid therapy for HE independently produces mood effects (steroid confound), illness-burden and neuropsychiatric responses to a relapsing encephalopathy are nonspecific, and the 64-edge incoming depressive-disorder family rests predominantly at NOT_ESTABLISHED; individual claims require an objectively diagnosed HE episode, structured psychiatric diagnostic assessment meeting the depressive-disorder identity's scope with onset after HE onset, documentation that mood symptoms tracked the illness or its treatment (improvement with immunomodulation supports but does not prove the arrow), and exclusion of primary psychiatric disorder predating HE, steroid-induced mood effects, hypothyroid depression, and medication effects per case.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 175.1 — Schenck LA, McCracken HT, Andrasik F, Baughman BC. Hashimoto encephalopathy: a literature review and case report with comprehensive neuropsychological evaluation. Clin Neuropsychol. 2025 May;39(4):988-1007. PMID 39154259.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/39154259/
+- Source checked on: 2026-09-24
+- Locator: PMID 39154259; neuropsychiatric symptoms impacting QoL and function, improvement at 6 months
+- Note under review: Review plus confirmed-HE case documenting impactful neuropsychiatric symptoms (psychological dysfunction) significantly affecting quality of life and functional status with partial improvement at six-month re-evaluation - the neuropsychiatric-burden anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 175.2 — Ellul P, Gasnier M, Trebossen V, Gaillard R. Immune activation and deficit in neurotransmitters synthesis in treatment resistant depression: about a case of Hashimoto encephalopathy. Clin Psychopharmacol Neurosci. 2020 Aug 31;18(3):463-466. PMID 32702227.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/32702227/
+- Source checked on: 2026-09-24
+- Locator: PMID 32702227; HE presenting as drug-resistant depression, responded to immunomodulation
+- Note under review: Case report of HE initially presenting as drug-resistant depression with predominant apathy and asthenia, improving with cyclophosphamide, with an immune-activation to neurotransmitter-synthesis-deficit model proposed for the depressive symptoms - the depression-presentation and mechanism anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 175.3 — Adams AV, Mooneyham GC, Van Mater H, Gallentine W. Evaluation of diagnostic criteria for Hashimoto encephalopathy among children and adolescents. Pediatr Neurol. 2020 Jun;107:41-47. PMID 32173161.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/32173161/
+- Source checked on: 2026-09-24
+- Locator: PMID 32173161; 17 patients, psychiatric-disturbance domain improved onset to follow-up
+- Note under review: Cohort of 17 HE patients with domain-based outcomes documenting psychiatric disturbance as a tracked presenting and follow-up domain with statistically significant improvement from onset to follow-up after immunomodulation - the psychiatric-domain trajectory anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `hearing-loss` → `cognitive-disorder` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** The Loughrey 2018 systematic review and meta-analysis of prospective cohort studies documents that age-related hearing loss is associated with cognitive impairment and dementia, and the Zhang 2025 systematic review and meta-analysis of moderators and mediators documents that the association persists across analyzed moderators while the mediating mechanism remains unresolved - a reproducible pooled longitudinal and cross-sectional association that is not etiologically oriented.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established: the located evidence is observational with residual confounding by age, education, vascular risk, and shared neurodegenerative burden, the direction and mediation remain unresolved in the moderator and mediator analyses, and no randomized intervention demonstrates that hearing amplification prevents incident cognitive decline, so an individual claim requires audiometric documentation of the hearing loss, a separately documented cognitive diagnosis with later chronology, and exclusion of primary neurodegenerative and vascular disease.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 176.1 — Loughrey DG, Kelly ME, Kelley GA, Brennan S, Lawlor BA. Association of Age-Related Hearing Loss With Cognitive Function, Cognitive Impairment, and Dementia: A Systematic Review and Meta-analysis. JAMA Otolaryngol Head Neck Surg. 2018 Feb 1;144(2):115-126. doi:10.1001/jamaoto.2017.2513. PMID 29222544.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/29222544/
+- Source checked on: 2026-09-24
+- Locator: PMID 29222544; meta-analysis of prospective cohorts, age-related hearing loss vs cognitive impairment and dementia
+- Note under review: Systematic review and meta-analysis of prospective cohort studies documenting pooled associations between age-related hearing loss and cognitive impairment and dementia, with heterogeneity and confounding discussed - the pooled longitudinal association anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 176.2 — Zhang Z, Wang T, Cao H, Yang L, Chen X, Han Y. How to Break Stubborn Association Between Hearing Loss and Cognitive Impairment: A Systematic Review and Meta-Analysis of Moderators and Mediators. J Geriatr Psychiatry Neurol. 2025 Sep;38(5):339-352. doi:10.1177/08919887251328880. PMID 40103444.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/40103444/
+- Source checked on: 2026-09-24
+- Locator: PMID 40103444; moderator and mediator meta-analysis, unresolved mediation pathway
+- Note under review: Systematic review and meta-analysis of moderators and mediators documenting that the hearing-loss and cognitive-impairment association persists across analyzed moderators while candidate mediating pathways remain unresolved - the association-robustness-but-mechanism-unresolved anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `hearing-loss` → `depressive-disorder` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** The Li 2025 systematic review and meta-analysis of age-related hearing loss and depression reports a pooled observational association between hearing loss and depression in older adults, and the Li J 2026 systematic review and meta-analysis of 19 studies (11 longitudinal, 8 cross-sectional) examining social activity in the hearing-loss and mental-health relationship reports a significant mediating and moderating role for social activity across depressive-symptom and cognitive-function outcomes - pooled observational associations that do not establish direction, mechanism, or individual causation.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established: the pooled evidence is observational and largely cross-sectional, the arrow is unoriented (depression can precede, accompany, or follow hearing loss and both can arise from a shared aging and chronic-illness substrate), and individual claims require audiometric documentation of the hearing loss, a separately documented depressive disorder with chronology, and competing-cause review.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 177.1 — Li F, Jin M, Ma T, Cui C. Association between age-related hearing loss and depression: A systematic review and meta-analysis. PLoS One. 2025 Jan 3;20(1):e0298495. doi:10.1371/journal.pone.0298495. PMID 39752630.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/39752630/
+- Source checked on: 2026-09-24
+- Locator: PMID 39752630; systematic review and meta-analysis, age-related hearing loss vs depression
+- Note under review: Systematic review and meta-analysis reporting a pooled observational association between age-related hearing loss and depression without directional or interventional resolution - the pooled-prevalence association anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 177.2 — Li J, Sun L, Zhao YY, Wang HT, Liu JE. What role does social activity play in the relationship between hearing loss and cognitive decline or mental health in older adults: A systematic review and meta-analysis. J Psychosom Res. 2026 Jan;200:112449. doi:10.1016/j.jpsychores.2025.112449. PMID 41275674.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/41275674/
+- Source checked on: 2026-09-24
+- Locator: PMID 41275674; 19 studies, social activity mediates and moderates hearing-loss and mental-health outcomes
+- Note under review: Systematic review and meta-analysis of 19 studies (11 longitudinal, 8 cross-sectional) covering cognitive function, depressive symptoms, and positive emotional outcomes, reporting a small but significant mediating and a significant moderating role for social activity in the hearing-loss and mental-health relationship - the social-mediation anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `heart-block` → `cardiomyopathy` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** The 2018 ACC/AHA/HRS guideline on bradycardia and cardiac conduction delay provides the authoritative evaluation and management framework for bradycardia, within which bradycardia-attributable symptom and ventricular-dysfunction determinations are made case by case, and the Miric 2024 case report documents a patient with bradycardia-induced heart failure with preserved ejection fraction whose phenotype improved under rate-directed therapy - a single-patient dechallenge-flavored observation that supports an association, not incidence data.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established: the located ventricular-dysfunction evidence is a guideline framework plus single-patient case observations without cohort incidence denominators, and a 2025 French nationwide cohort of isolated non-immune congenital and childhood atrioventricular block reported that no patient developed dilated cardiomyopathy over median ten-year follow-up (counter-evidence in that population); individual claims require documented atrioventricular block (degree, documentation method, date), a separately documented cardiomyopathy phenotype with later chronology, and exclusion of ischemic, hypertensive, valvular, infiltrative, and tachyarrhythmia-related causes.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 178.1 — Kusumoto FM, Schoenfeld MH, Barrett C, et al. 2018 ACC/AHA/HRS Guideline on the Evaluation and Management of Patients With Bradycardia and Cardiac Conduction Delay: A Report of the American College of Cardiology/American Heart Association Task Force on Clinical Practice Guidelines and the Heart Rhythm Society. Circulation. 2019 Aug 20;140(8):e382-e482. doi:10.1161/CIR.0000000000000628. PMID 30586772.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/30586772/
+- Source checked on: 2026-09-24
+- Locator: PMID 30586772; bradycardia and cardiac conduction delay guideline, case-specific attribution framework
+- Note under review: Authoritative guideline framework for the evaluation and management of bradycardia and cardiac conduction delay, within which bradycardia-attributable symptom and ventricular-dysfunction determinations are framed as case-specific clinical assessments - the evaluation-framework anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 178.2 — Miric D, Juric Paic M, Borovac JA. Bradycardia-induced heart failure with preserved ejection fraction successfully treated with empagliflozin and theophylline: a case report. Eur Heart J Case Rep. 2024 Sep 5;8(9):ytae481. doi:10.1093/ehjcr/ytae481. PMID 39286730.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/39286730/
+- Source checked on: 2026-09-24
+- Locator: PMID 39286730; single-patient reversible bradycardia-induced heart failure with preserved ejection fraction
+- Note under review: Single-patient case report of bradycardia-induced heart failure with preserved ejection fraction improving under rate-directed therapy - a dechallenge-flavored observation supporting a reversible bradycardia-related ventricular-dysfunction association, not incidence data.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `heart-valve-disorders` → `congestive-heart-failure` — DIRECT_CAUSATION
+
+**Proposition (direct_causation):** Documented valvular stenosis or regurgitation -> sustained pressure and/or volume overload with compensatory chamber remodeling -> congestive heart failure when the individual lesion severity, ventricular phenotype, and chronology support that pathway.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 179.1 — Otto CM, Nishimura RA, Bonow RO, et al. 2020 ACC/AHA Guideline for the Management of Patients With Valvular Heart Disease: A Report of the American College of Cardiology/American Heart Association Joint Committee on Clinical Practice Guidelines. Circulation. 2021 Feb 2;143(5):e72-e227. doi:10.1161/CIR.0000000000000923. PMID 33332150.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/33332150/
+- Source checked on: 2026-09-24
+- Locator: PMID 33332150; valvular heart disease guideline, natural history of overload to heart failure
+- Note under review: Guideline-level natural-history and management framework in which progressive valvular stenosis or regurgitation produces pressure or volume overload with compensatory chamber remodeling and symptomatic heart failure - the clinical-consensus anchor for a probable direct nexus.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 179.2 — Vahanian A, Beyersdorf F, Praz F, et al. 2021 ESC/EACTS Guidelines for the management of valvular heart disease. Eur Heart J. 2022 Feb 12;43(7):561-632. PMID 34453165.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/34453165/
+- Source checked on: 2026-09-24
+- Locator: PMID 34453165; ESC/EACTS valvular heart disease guideline, overload progression to heart failure
+- Note under review: European guideline framework for the management of valvular heart disease, documenting the progression of valvular stenosis and regurgitation to symptomatic heart failure and its management - the independent-guideline corroboration anchor for the probable direct nexus.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `heart-valve-disorders` → `cardiac-inflammatory-disease` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** The American Heart Association infective endocarditis scientific statement documents preexisting valvular heart disease among the major predisposing cardiac conditions for infective endocarditis, and the 2023 ESC endocarditis guideline provides the contemporary risk, diagnostic, and management framework in which structurally abnormal valves are the principal substrate; the literature establishes a predisposition rather than a disease process that by itself produces endocarditis.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established: the abnormal valve is a predisposing substrate rather than a sufficient cause, infective endocarditis additionally requires a bacteremic or fungemic exposure, the located evidence is guideline-level risk characterization without valve-lesion-specific incidence denominators, and individual claims require Duke-criteria infective endocarditis documentation, characterization of the underlying valve lesion, and exclusion of prosthetic material, indwelling devices, injection drug use, and healthcare-associated sources.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 180.1 — Baddour LM, Wilson WR, Bayer AS, et al. Infective Endocarditis in Adults: Diagnosis, Antimicrobial Therapy, and Management of Complications: A Scientific Statement for Healthcare Professionals From the American Heart Association. Circulation. 2015 Oct 13;132(15):1435-86. doi:10.1161/CIR.0000000000000296. PMID 26373316.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/26373316/
+- Source checked on: 2026-09-24
+- Locator: PMID 26373316; AHA infective endocarditis statement, predisposing valve conditions
+- Note under review: AHA scientific statement on infective endocarditis in adults documenting preexisting valvular heart disease among the major predisposing cardiac conditions - the guideline-level predisposition anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 180.2 — Delgado V, Ajmone Marsan N, de Waha S, et al. 2023 ESC Guidelines for the management of endocarditis. Eur Heart J. 2023 Oct 14;44(39):3948-4042. PMID 37622656.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/37622656/
+- Source checked on: 2026-09-24
+- Locator: PMID 37622656; ESC endocarditis guideline, native valve substrate framework
+- Note under review: Contemporary European guideline framework for endocarditis risk, diagnosis, and management in which structurally abnormal native valves are the principal substrate - the currency and risk-framework anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `hemangioma` → `congestive-heart-failure` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Case-level published reports describe hepatic hemangiomas producing high-output cardiac states, including a congenital hepatic hemangioma presenting with high-output cardiac failure and severe pulmonary hypertension and an infantile hepatic hemangioma with cardiac failure that improved under propranolol as the lesion involuted - a case-report and dechallenge-flavored pattern without cohort denominators.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established: the located evidence is case-report level in neonatal and infantile hepatic hemangiomatosis populations, individual shunt volume and cardiac reserve vary widely, coexisting cardiac and systemic disease is common in the reported populations, and no incidence data quantify heart failure attributable to hemangioma, so an individual determination requires documented lesion extent, echocardiographic high-output hemodynamics, and exclusion of competing cardiac and high-output causes.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 181.1 — Srinivas S, Kotinatot S, Janjua D, Alsaqban HQH, El Atawi K. High-output cardiac failure and severe pulmonary hypertension due to congenital hepatic hemangioma: a case report. Pan Afr Med J. 2025 Aug 21;51:100. doi:10.11604/pamj.2025.51.100.47785. PMID 41116821.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/41116821/
+- Source checked on: 2026-09-24
+- Locator: PMID 41116821; congenital hepatic hemangioma with high-output cardiac failure and pulmonary hypertension
+- Note under review: Case report of a congenital hepatic hemangioma presenting with high-output cardiac failure and severe pulmonary hypertension - the high-output shunt- physiology case anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 181.2 — Ateeqi FA, Shaikhkhalil AK, Talo H, Jagirdar N, Al-Haidar M. Successful propranolol therapy for infantile hepatic hemangioma with cardiac failure. JPGN Rep. 2026 Apr 9;7(3):387-390. doi:10.1002/jpr3.70180. PMID 42499732.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42499732/
+- Source checked on: 2026-09-24
+- Locator: PMID 42499732; infantile hepatic hemangioma with cardiac failure responding to propranolol
+- Note under review: Case report of infantile hepatic hemangioma with cardiac failure improving under propranolol as the lesion involuted - a dechallenge-flavored observation supporting a load-dependent association.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `hemangioma` → `hypothyroidism` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Case reports describe diffuse infantile hepatic hemangiomatosis presenting with consumptive hypothyroidism in which the hypothyroidism is attributed to tumoral type-3 iodothyronine deiodinase activity that inactivates thyroid hormone, in one report accompanied by anemia that raised suspicion for the syndrome - a case-level mechanistic observation without cohort denominators.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established: the located evidence is case-report level, no incidence data quantify consumptive hypothyroidism attributable to hemangioma, and the reported populations are diffuse hepatic hemangiomatosis in infants in whom transient neonatal thyroid dysfunction is also common, so an individual determination requires imaging-documented diffuse hemangiomatosis, thyroid function testing with chronology, replacement requirement and response, and exclusion of primary and central thyroid disease.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 182.1 — Larbi Ouassou K, Laaraje A, Abdelilah R, Amale H, Abilkassem R. Diffuse Infantile Hepatic Hemangiomatosis: A Rare Cause of Consumptive Hypothyroidism. Cureus. 2026 May 2;18(5):e108137. doi:10.7759/cureus.108137. PMID 42232014.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42232014/
+- Source checked on: 2026-09-24
+- Locator: PMID 42232014; diffuse infantile hepatic hemangiomatosis with consumptive hypothyroidism
+- Note under review: Case report of diffuse infantile hepatic hemangiomatosis presenting as a rare cause of consumptive hypothyroidism - the consumptive-deiodinase case anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 182.2 — Corsello G, Costantini E, Sciveres M, Figuccia A, Maggio MC. Diffuse infantile hepatic haemangioma and consumptive hypothyroidism: a clinical case with anaemia that raises suspicion. Ital J Pediatr. 2025 Jul 1;51(1):200. doi:10.1186/s13052-025-02027-2. PMID 40597219.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/40597219/
+- Source checked on: 2026-09-24
+- Locator: PMID 40597219; diffuse infantile hepatic haemangioma with consumptive hypothyroidism
+- Note under review: Case report of diffuse infantile hepatic haemangioma with consumptive hypothyroidism, including anemia that raised clinical suspicion - the second case-level anchor for the consumptive-deiodinase mechanism.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `hemipelvectomy` → `phantom-limb-pain` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** The Grimer 2013 series of 157 hindquarter amputations reports that phantom pain was a significant problem in that population, and the Diers 2022 nationwide survey of 3,374 unilateral limb amputees characterizes phantom limb pain prevalence and phenomenology across amputation levels - a reproducible post-amputation association that is not an individual causal nexus.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established: the located evidence documents high post-amputation prevalence and clinical salience without prospectively quantifying incident phantom pain attributable to hemipelvectomy specifically, the primary hemipelvectomy population is oncologic, and phantom sensation overlaps with residual-limb pain, neuroma pain, and pre-amputation pain, so an individual determination requires documented amputation level and date, validated phantom-pain characterization with chronology, and competing-generator review.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 183.1 — Grimer RJ, Chandrasekar CR, Carter SR, Abudu A, Tillman RM, Jeys L. Hindquarter amputation: is it still needed and what are the outcomes? Bone Joint J. 2013 Jan;95-B(1):127-31. doi:10.1302/0301-620X.95B1.29131. PMID 23307686.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/23307686/
+- Source checked on: 2026-09-24
+- Locator: PMID 23307686; 157 hindquarter amputations, phantom pain a significant problem
+- Note under review: Series of 157 hindquarter amputations over 30 years at a single institution reporting that phantom pain was a significant problem and documenting the amputation-level, oncologic, and functional context - the hemipelvectomy-specific anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `hemorrhoids` → `anemia` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Clinical reports and a single-center retrospective series document that hemorrhoidal bleeding can produce severe anemia requiring transfusion: the Deng 2024 study of 128 patients with hemorrhoidal severe anemia quantifies preoperative transfusion requirements, transfusion reactions, and hospitalization burden, and the Dong 2025 case report describes mixed hemorrhoids presenting with severe anemia managed by sclerotherapy - a reproducible bleeding-to-anemia association that is not an individual causal nexus.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established: the located evidence is case-level plus one single-center retrospective series without matched comparators, anemia in these populations is frequently multifactorial, and other gastrointestinal (ulcer, malignancy, angiodysplasia, inflammatory bowel disease, medication-related) and non-gastrointestinal causes of anemia must be excluded, so an individual determination requires a documented hemorrhoidal bleeding source, blood counts and iron studies with compatible chronology, and competing-cause review.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 184.1 — Deng H, Fang J, Chen K, et al. Preoperative Blood Transfusion Requirements for Hemorrhoidal Severe Anemia: A Retrospective Study of 128 Patients. Med Sci Monit. 2024 May 5;30:e943126. doi:10.12659/MSM.943126. PMID 38704632.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/38704632/
+- Source checked on: 2026-09-24
+- Locator: PMID 38704632; 128 patients with hemorrhoidal severe anemia, preoperative transfusion requirements
+- Note under review: Retrospective single-center series of 128 patients with hemorrhoidal severe anemia quantifying preoperative transfusion volume, transfusion reactions, and hospitalization burden - the severity-and-burden anchor for the bleeding-to-anemia association.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 184.2 — Dong Y, Zhang L, Wang Q, Wang L, Zhang T, Ju F, Yang J. Polidocanol foam injection sclerotherapy in patients with mixed hemorrhoids with severe anemia: a case report. J Surg Case Rep. 2025 Oct 7;2025(10):rjaf801. doi:10.1093/jscr/rjaf801. PMID 41064030.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/41064030/
+- Source checked on: 2026-09-24
+- Locator: PMID 41064030; mixed hemorrhoids with severe anemia treated by sclerotherapy
+- Note under review: Case report of mixed hemorrhoids presenting with severe anemia in which sclerotherapy was used for the anemia-related presentation - a case-level, dechallenge-flavored anchor recording that hemorrhoidal bleeding led to severe anemia and that bleeding-directed treatment was undertaken.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `hemothorax` → `anemia` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** The Heller 2026 multicenter pediatric trauma analysis documents hemothorax volume thresholds that determine whether chest-tube drainage is required, and the Morgan 2015 clinical review frames spontaneous hemothorax as an intrathoracic hemorrhage - documenting that hemothorax sequesters measurable blood volume outside the circulation, a bounded hemorrhage-to-anemia association rather than an individual causal nexus.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established: the located evidence quantifies retained pleural blood volume and drainage thresholds without matched-cohort hemoglobin-decline data, anemia in trauma populations is frequently multifactorial (concurrent bleeding, hemodilution, injury-related inflammation, pre-existing deficiency), and individual determination requires documented hemothorax with drainage or imaging quantification, serial blood counts with chronology, and exclusion of other bleeding sites and non-hemorrhagic anemia causes.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 185.1 — Heller K, Knapp C, Brierley SF, et al. Management of pediatric traumatic hemothorax and volume threshold for chest tube placement: Multicenter pediatric trauma center retrospective analysis. J Pediatr Surg. 2026 Jan;61(1):162556. doi:10.1016/j.jpedsurg.2025.162556. PMID 40812400.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/40812400/
+- Source checked on: 2026-09-24
+- Locator: PMID 40812400; multicenter pediatric traumatic hemothorax, volume threshold for chest tube placement
+- Note under review: Multicenter pediatric trauma analysis documenting hemothorax volume thresholds that determine chest-tube drainage, quantifying the blood volume that can be sequestered in the pleural space - the volume-magnitude anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 185.2 — Morgan CK, Bashoura L, Balachandran D, Faiz SA. Spontaneous Hemothorax. Ann Am Thorac Soc. 2015 Oct;12(10):1578-82. doi:10.1513/AnnalsATS.201505-305CC. PMID 26448354.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/26448354/
+- Source checked on: 2026-09-24
+- Locator: PMID 26448354; spontaneous hemothorax clinical review, intrathoracic hemorrhage context
+- Note under review: Clinical review of spontaneous hemothorax framing the entity as an intrathoracic hemorrhage with systemic consequences - the hemorrhage-consequence anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `hepatic-steatosis` → `cirrhosis-of-the-liver` — DIRECT_CAUSATION
+
+**Proposition (direct_causation):** Documented steatotic liver disease (metabolic dysfunction-associated steatotic liver disease or steatohepatitis) with progressive or advanced histologic fibrosis -> ongoing metabolic lipotoxic injury and hepatic fibrogenesis with architectural remodeling -> claimed progression to cirrhosis when the individual fibrosis stage, chronology, and competing etiologies support that pathway.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 186.1 — Barritt AS 4th, Qasim A, Kim Y, Miller SD, O'Donnell J, Johnston K. Prognostic value of liver histology in steatotic liver disease: a systematic literature review and meta-analysis. J Comp Eff Res. 2026 Sep 3:e260148. doi:10.57264/cer-2026-0148. PMID 42690133.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42690133/
+- Source checked on: 2026-09-24
+- Locator: PMID 42690133; histologic fibrosis stage versus cirrhosis and major adverse liver outcomes in steatotic liver disease
+- Note under review: Systematic literature review and meta-analysis pooling 32 studies of histologic liver fibrosis in steatotic liver disease showing that higher fibrosis stage is associated with increasing risk of major adverse liver outcomes including cirrhosis, hepatic decompensation, and hepatocellular carcinoma - the meta-analytic natural-history anchor for a probable direct nexus.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 186.2 — Wang X, Dong X, Qian L, Yang Z, Yang D, Niu Y. Non-invasive Tests for the Prediction of Liver-related Events in Patients with MASLD: A Systematic Review and Meta-analysis. Acad Radiol. 2026 Jul 22:S1076-6332(26)00476-9. doi:10.1016/j.acra.2026.06.068. PMID 42481370.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42481370/
+- Source checked on: 2026-09-24
+- Locator: PMID 42481370; non-invasive prediction of liver-related events including cirrhosis in MASLD
+- Note under review: Systematic review and meta-analysis of non-invasive tests for the prediction of liver-related events in MASLD, documenting the progression of metabolic steatotic liver disease to cirrhosis and its complications - the independent corroboration anchor for the fibrosing-progression pathway.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `hepatic-steatosis` → `liver-cancer` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Pooled cohort evidence documents that patients with nonalcoholic fatty liver disease carry an elevated risk of hepatocellular carcinoma and that metabolic and demographic factors modify that risk: the Yin 2024 systematic review and meta-analysis of 12 high-quality cohort studies (738,934 patients with NAFLD, 1,480 hepatocellular carcinoma cases) reports hazard ratios of 1.81 for advanced age, 2.51 for male sex, 1.87 for hypertension, and 2.27 for diabetes, and the Wallace 2026 systematic review and meta-analysis places liver cancer from major causes, including steatotic liver disease, in comparative risk context - a reproducible population-level malignancy association that is not an individual causal nexus.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established: the located evidence quantifies relative risk and within-population risk factors rather than demonstrating a natural-history pathway of steatosis-attributable carcinogenesis, hepatocellular carcinoma in steatotic liver disease is strongly conditioned by coexisting fibrosis or cirrhosis stage, diabetes, and other factors, and backgrounds of viral hepatitis or alcohol-related disease frequently coexist, so an individual determination requires histologic or imaging documentation of the hepatic malignancy, characterization and staging of the underlying steatotic liver disease, and exclusion of competing hepatic carcinogenic exposures.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 187.1 — Yin H, Yan Z, Zhao F. Risk factors of hepatocellular carcinoma associated with nonalcoholic fatty liver disease: Systematic review and meta-analysis. Technol Health Care. 2024;32(6):3943-3954. doi:10.3233/THC-231331. PMID 39269862.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/39269862/
+- Source checked on: 2026-09-24
+- Locator: PMID 39269862; hepatocellular carcinoma risk factors in nonalcoholic fatty liver disease, pooled cohort hazard ratios
+- Note under review: Systematic review and meta-analysis of 12 high-quality cohort studies (738,934 patients with NAFLD, 1,480 hepatocellular carcinoma cases) quantifying within-NAFLD hazard ratios for advanced age, male sex, hypertension, and diabetes - the risk-magnitude anchor for the malignancy association.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 187.2 — Wallace C, Razavi-Shearer D, Hall S, et al. Risk of Liver Cancer From Major Causes Compared to Smoking and Lung Cancer: A Systematic Review and Meta-Analysis. J Viral Hepat. 2026 Sep;33(9):e70222. doi:10.1111/jvh.70222. PMID 42605247.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42605247/
+- Source checked on: 2026-09-24
+- Locator: PMID 42605247; comparative liver-cancer risk from major causes including steatotic liver disease
+- Note under review: Systematic review and meta-analysis placing liver-cancer risk from major causes, including steatotic liver disease, in comparative risk context against smoking and lung cancer - the comparative cause-level risk anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `heterotopic-ossification` → `peripheral-neuropathy` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Case-level and narrative-review evidence documents that heterotopic bone developing near a peripheral nerve can mechanically encase and compress it: the Akhavan 2023 report describes circumferential ulnar-nerve encasement by heterotopic ossification at the elbow with electrodiagnostically confirmed ulnar neuropathy and functional recovery after excision, and the Daskalakis 2022 report describes elbow heterotopic ossification presenting as median-nerve neuropathy after distal biceps tendon repair - a reproducible lesion-to-compression association that is not an individual causal nexus.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established: the located evidence is case-level plus a narrative literature review without incidence denominators or controlled comparison, perineural heterotopic ossification is rare, and neuropathy in the affected patients may arise from concurrent trauma, the inciting operation, or alternative entrapment sites, so an individual determination requires imaging or operative documentation of the heterotopic bone and its relationship to the affected nerve, electrodiagnostic confirmation of the neuropathy, compatible chronology, and exclusion of other compressive and non-compressive neuropathic causes.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 188.1 — Akhavan AA, Catterall LC, Deune EG. Bony Cubital Tunnel Syndrome: A Case Report of Heterotopic Ossification Causing Circumferential Ulnar Nerve Encasement at the Elbow and Review of Current Management. Ann Plast Surg. 2023 Jan 1;90(1):41-46. doi:10.1097/SAP.0000000000003337. PMID 36534099.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/36534099/
+- Source checked on: 2026-09-24
+- Locator: PMID 36534099; heterotopic ossification with circumferential ulnar nerve encasement at the elbow, bony cubital tunnel syndrome
+- Note under review: Case report and literature review of heterotopic ossification causing circumferential ulnar-nerve encasement at the elbow with electrodiagnostically confirmed ulnar neuropathy and functional recovery after excision - the perineural-encasement anchor for the compression association.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 188.2 — Daskalakis I, Sperelakis I, Tosounidis TH, Galanakis I. Elbow heterotopic ossification after distal biceps tendon repair presenting as median nerve neuropathy: A case report. Trauma Case Rep. 2022 Mar 21;39:100636. doi:10.1016/j.tcr.2022.100636. PMID 35368721.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/35368721/
+- Source checked on: 2026-09-24
+- Locator: PMID 35368721; elbow heterotopic ossification presenting as median nerve neuropathy
+- Note under review: Case report of elbow heterotopic ossification presenting as median-nerve neuropathy after distal biceps tendon repair, recording nerve compression among the symptomatic presentations of heterotopic ossification - the second independent compression anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `hill-sachs-lesion` → `post-traumatic-osteoarthritis` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** The Luengo-Alonso 2024 arthroscopic study of 140 shoulders with recurrent glenohumeral instability reports that a Hill-Sachs lesion was among the most common findings and that the severity of glenohumeral osteoarthritis correlated with age, age at the first dislocation, and the number of dislocations, and the Saxena 2016 T1rho MRI study demonstrates quantifiable glenohumeral cartilage damage after a primary shoulder dislocation - establishing a reproducible association between the humeral-head impaction lesion, instability, and later glenohumeral cartilage degeneration rather than an individual causal nexus.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established: the located evidence is observational and cross-sectional or case-control without prospective incidence data, the Hill-Sachs lesion is studied within the broader instability and dislocation complex, and reported osteoarthritis prevalence varies widely (4% to 60%), so an individual determination requires imaging or arthroscopic documentation of the lesion and of glenohumeral cartilage status, an instability history with dislocation frequency and chronology, and exclusion of primary osteoarthritis and other arthropathies.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 189.1 — Luengo-Alonso G, Valencia M, Martinez-Catalan N, Delgado C, Calvo E. Characterization of articular lesions associated with glenohumeral instability using arthroscopy. Bone Joint J. 2024 Oct 1;106-B(10):1125-1132. doi:10.1302/0301-620X.106B10.BJJ-2024-0262.R1. PMID 39348905.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/39348905/
+- Source checked on: 2026-09-24
+- Locator: PMID 39348905; arthroscopic chondral lesions in glenohumeral instability, Hill-Sachs lesion among most common findings, osteoarthritis severity correlation
+- Note under review: Arthroscopic study of 140 shoulders with recurrent glenohumeral instability reporting that Hill-Sachs lesions and glenoid cartilage fibrillation were the most common findings and that osteoarthritis severity correlated with age, age at first dislocation, and number of dislocations - the lesion-specific association anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 189.2 — Saxena V, D'Aquilla K, Marcoon S, et al. T1rho Magnetic Resonance Imaging to Assess Cartilage Damage After Primary Shoulder Dislocation. Am J Sports Med. 2016 Nov;44(11):2800-2806. doi:10.1177/0363546516655338. PMID 27466221.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/27466221/
+- Source checked on: 2026-09-24
+- Locator: PMID 27466221; T1rho MRI detection of glenohumeral cartilage damage after primary shoulder dislocation
+- Note under review: T1rho MRI study demonstrating quantifiable glenohumeral cartilage damage after a primary shoulder dislocation - the quantitative cartilage-damage anchor corroborating early chondral injury in the dislocating shoulder.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `hip-disarticulation` → `phantom-limb-pain` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Clinical reports document phantom limb pain after hip disarticulation: the Kelle 2017 study stratified 101 lower-limb amputees by level and found that the most proximal group (hip disarticulation through knee disarticulation) had the highest phantom-limb-pain visual-analogue scores in the early postoperative period, and the Steritz 2024 case report describes refractory phantom limb pain in a hip disarticulation patient - a reproducible amputation-level association rather than an individual causal nexus.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established: the located evidence is cross-sectional or case-level without prospective hip-disarticulation-specific incidence data, the reported level-related intensity differences attenuated over time, and pre-amputation pain, residual-limb and stump pathology, and perineural factors can independently produce the reported pain, so an individual determination requires documentation of the amputation level and date, validated phantom-pain characterization with chronology, and separation from competing pain sources.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 190.2 — Steritz M, Jayaraj Ranjini N, Bazil T, et al. A Case Report of Successful Off-Label Neuromodulation for Concurrent Refractory Sacroiliac Pain and Phantom Limb in a Hip Disarticulation Patient. A A Pract. 2024 Oct 8;18(10):e01850. doi:10.1213/XAA.0000000000001850. PMID 39670650.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/39670650/
+- Source checked on: 2026-09-24
+- Locator: PMID 39670650; refractory phantom limb pain in a hip disarticulation patient
+- Note under review: Case report of a hip disarticulation patient with refractory phantom limb pain coexisting with sacroiliac mechanical pain - the case-level anchor recording phantom limb pain after hip disarticulation and its clinical salience.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `hip-labral-tear` → `post-traumatic-osteoarthritis` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Hip-arthroscopy cohorts document that chondrolabral damage accompanying symptomatic labral tears is associated with progressive hip-joint degeneration: the Dean 2024 minimum-eight-year cohort associates chondrolabral junction breakdown with conversion to total hip arthroplasty after arthroscopic treatment of labral tears, and the Martin 2024 randomized trial reports conversion to total hip arthroplasty among the outcomes of treating symptomatic acetabular labral tears - a reproducible lesion-to-arthropathy association rather than an individual causal nexus.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established: the located evidence comprises treatment cohorts in which arthroplasty conversion is a composite clinical endpoint rather than a direct osteoarthritis-incidence measurement, labral tears are frequently themselves a manifestation of established hip degeneration so the direction can be reversed, and age, femoroacetabular morphology, and baseline cartilage grade are strong confounders, so an individual determination requires documentation of the tear and the articular cartilage, chronology, and exclusion of competing arthropathies.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 191.1 — Dean MC, Cherian NJ, LaPorte ZL, et al. Association Between Chondrolabral Junction Breakdown and Conversion to Total Hip Arthroplasty After Hip Arthroscopy for Symptomatic Labral Tears: Minimum 8-Year Follow-up. Am J Sports Med. 2024 Apr;52(5):1153-1164. doi:10.1177/03635465241234258. PMID 38476016.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/38476016/
+- Source checked on: 2026-09-24
+- Locator: PMID 38476016; chondrolabral junction breakdown and conversion to total hip arthroplasty after hip arthroscopy for labral tears
+- Note under review: Minimum-eight-year hip-arthroscopy cohort associating chondrolabral junction breakdown with conversion to total hip arthroplasty after treatment of symptomatic labral tears - the long-term chondrolabral-degeneration anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 191.2 — Martin SD, Dean MC, Gillinov SM, et al. Hip Arthroscopy Versus Physical Therapy for the Treatment of Symptomatic Acetabular Labral Tears in Patients Older Than 40 Years: 24-Month Results From a Randomized Controlled Trial. Am J Sports Med. 2024 Aug;52(10):2574-2585. doi:10.1177/03635465241263595. PMID 39101607.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/39101607/
+- Source checked on: 2026-09-24
+- Locator: PMID 39101607; randomized trial of acetabular labral tears reporting conversion to total hip arthroplasty among outcomes
+- Note under review: Randomized trial of hip arthroscopy versus physical therapy for symptomatic acetabular labral tears reporting conversion to total hip arthroplasty among the outcomes - the treatment-cohort corroboration anchor for arthritic progression risk.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `hydrocephalus` → `visual-impairment` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Clinical series document visual-pathway involvement in hydrocephalus: the Lee 2017 pediatric study reports papilledema in 27 of 46 children with hydrocephalus and a strong association with higher intracranial pressure, and the AlObaisi 2022 record review of children with hydrocephalus and a ventriculoperitoneal shunt documents ocular-motility abnormalities and reduced visual outcomes - a reproducible raised-pressure-to-visual-involvement association rather than an individual causal nexus.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established: the located evidence is retrospective and single-center without prospective visual-outcome incidence data, papilledema was absent in a substantial minority of the raised-pressure children, and primary ocular or optic-nerve disease, refractive error, and prematurity-related factors can independently produce visual impairment, so an individual determination requires neuroimaging and pressure documentation, ophthalmologic assessment including optic-nerve findings, compatible chronology, and exclusion of competing ocular causes.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 192.1 — Lee HJ, Phi JH, Kim SK, Wang KC, Kim SJ. Papilledema in children with hydrocephalus: incidence and associated factors. J Neurosurg Pediatr. 2017 Jun;19(6):627-631. doi:10.3171/2017.2.PEDS16561. PMID 28387641.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/28387641/
+- Source checked on: 2026-09-24
+- Locator: PMID 28387641; papilledema incidence in children with hydrocephalus and association with intracranial pressure
+- Note under review: Retrospective pediatric study of 46 children with hydrocephalus reporting papilledema in 27 and a strong association between papilledema and higher intracranial pressure - the raised-pressure-to-optic-disc-involvement anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 192.2 — AlObaisi SS, Alnasser BN, Almuhawas HA, et al. The prevalence of strabismus and visual outcomes in children with hydrocephalus and a ventriculoperitoneal shunt: medical record review. Ann Saudi Med. 2022 Nov-Dec;42(6):391-396. doi:10.5144/0256-4947.2022.391. PMID 36444928.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/36444928/
+- Source checked on: 2026-09-24
+- Locator: PMID 36444928; strabismus prevalence and visual outcomes in children with hydrocephalus and a ventriculoperitoneal shunt
+- Note under review: Medical record review of children with congenital hydrocephalus after ventriculoperitoneal shunt documenting ocular-motility abnormalities and reduced visual outcomes - the visual-outcome anchor for the hydrocephalus-to-visual-impairment association.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `hyperhidrosis` → `anxiety-disorder` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Clinical series document a higher prevalence of anxiety in hyperhidrosis patients than in controls: the Bahar 2016 study of 2017 consecutive dermatology outpatients found anxiety in 21.3% of hyperhidrosis patients versus 7.5% without hyperhidrosis (p<0.001) in a severity-dependent pattern that persisted on multivariable analysis, and the Kamikava 2021 observational study evaluated anxiety symptoms in 81 primary-hyperhidrosis patients before and after treatment - a reproducible co-occurrence association rather than an individual causal nexus.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established: the designs are cross-sectional or observational without incident-anxiety follow-up, the relationship is plausibly bidirectional with a shared autonomic and emotional-regulation substrate, and the estimates are of co-occurrence rather than attributable incidence, so an individual determination requires validated anxiety assessment with chronology relative to hyperhidrosis onset and severity, and exclusion of primary anxiety disorder and of medication-, endocrine-, and substance-related sweating.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 193.1 — Bahar R, Zhou P, Liu Y, et al. The prevalence of anxiety and depression in patients with or without hyperhidrosis (HH). J Am Acad Dermatol. 2016 Dec;75(6):1126-1133. doi:10.1016/j.jaad.2016.07.001. PMID 27567033.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/27567033/
+- Source checked on: 2026-09-24
+- Locator: PMID 27567033; anxiety prevalence 21.3% in hyperhidrosis versus 7.5% in non-hyperhidrosis outpatients, severity-dependent
+- Note under review: Study of 2017 consecutive dermatology outpatients reporting anxiety in 21.3% of hyperhidrosis patients versus 7.5% without hyperhidrosis (p<0.001), severity-dependent and independent of demographics on multivariable analysis - the quantitative co-occurrence anchor for the anxiety association.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 193.2 — Kamikava DYF, Wolosker N, Silva MFAD, Campos JRM, Puech-Leão P. Symptoms of anxiety and depression in patients with primary hyperhidrosis and its association with the result of clinical treatment with oxybutynin. Clinics (Sao Paulo). 2021;76:e2892. doi:10.6061/clinics/2021/e2892. PMID 34190853.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/34190853/
+- Source checked on: 2026-09-24
+- Locator: PMID 34190853; anxiety symptoms in 81 primary-hyperhidrosis patients before and after oxybutynin treatment
+- Note under review: Observational study of 81 patients with primary hyperhidrosis evaluating anxiety symptoms before and after oxybutynin treatment - the treatment-cohort anchor documenting anxiety symptoms in a primary-hyperhidrosis population and their course with sweating-directed therapy.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `hyperinsulinism` → `hypoglycemia` — DIRECT_CAUSATION
+
+**Proposition (direct_causation):** Documented hyperinsulinism (inappropriate insulin secretion, whether congenital-channel/genetic or otherwise established) -> insulin excess suppresses hepatic glucose output and drives tissue glucose uptake while antagonising counter-regulatory lipolysis and ketogenesis -> claimed hypoglycaemia when the individual insulin-glucose profile, glucose documentation, chronology, and competing mechanisms support that pathway.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 194.1 — Demirbilek H, Hussain K. Congenital Hyperinsulinism: Diagnosis and Treatment Update. J Clin Res Pediatr Endocrinol. 2017 Dec 30;9(Suppl 2):69-87. doi:10.4274/jcrpe.2017.S007. PMID 29280746.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/29280746/
+- Source checked on: 2026-09-24
+- Locator: PMID 29280746; inappropriate insulin secretion leading to severe and persistent hypoglycaemia in congenital hyperinsulinism
+- Note under review: Congenital-hyperinsulinism diagnosis and treatment update defining hyperinsulinaemic hypoglycaemia as inappropriate insulin secretion at low plasma glucose leading to severe and persistent hypoglycaemia, with suppressed ketogenesis from insulin's inhibitory effect - the mechanism anchor for the probable direct nexus.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 194.2 — Giri D, Hawton K, Senniappan S. Congenital hyperinsulinism: recent updates on molecular mechanisms, diagnosis and management. J Pediatr Endocrinol Metab. 2021 Sep 21;35(3):279-296. doi:10.1515/jpem-2021-0369. PMID 34547194.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/34547194/
+- Source checked on: 2026-09-24
+- Locator: PMID 34547194; unregulated insulin release leading to hypoglycaemia in congenital hyperinsulinism
+- Note under review: Congenital-hyperinsulinism update describing unregulated insulin release leading to hypoglycaemia as the most frequent cause of persistent and severe hypoglycaemia in the neonatal period and early childhood - the independent corroboration anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `hyperopia` → `glaucoma` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Clinical evidence documents hyperopia among the ocular-biometry risk factors for angle-closure glaucoma: the Martínez-Blanco 2021 cross-sectional gonioscopic study of 1749 patients identified high hyperopia as an independent factor related to the primary angle-closure disease spectrum, and the Zhang 2015 review states that primary angle-closure disease is generally associated with a shallower anterior chamber, a shorter axial length, and hyperopia - a reproducible risk-factor association rather than an individual causal nexus.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established: the located evidence is cross-sectional or narrative and reports risk-factor associations without incident-glaucoma follow-up, hyperopia is neither necessary nor sufficient for angle closure, and competing mechanisms such as age-related lens thickening, plateau iris, and secondary or inflammatory glaucoma can independently produce the disease, so an individual determination requires refraction and axial-length documentation, angle-assessment evidence, chronology, and exclusion of competing glaucoma mechanisms.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 195.1 — Martínez-Blanco AM, Cantor EJ, Valencia-Peña C. Prevalence and risk factors for primary angle-closure disease spectrum: The Colombian Glaucoma Study. Eur J Ophthalmol. 2021 Nov 19:11206721211060153. doi:10.1177/11206721211060153. PMID 34796746.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/34796746/
+- Source checked on: 2026-09-24
+- Locator: PMID 34796746; high hyperopia as an independent factor for the primary angle-closure disease spectrum
+- Note under review: Cross-sectional gonioscopic study of 1749 patients identifying high hyperopia as an independent factor related to the primary angle-closure disease spectrum - the quantitative risk-factor anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 195.2 — Zhang X, Wang W, Aung T, Jonas JB, Wang N. Choroidal physiology and primary angle closure disease. Surv Ophthalmol. 2015 Nov-Dec;60(6):547-556. doi:10.1016/j.survophthal.2015.06.005. PMID 26164737.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/26164737/
+- Source checked on: 2026-09-24
+- Locator: PMID 26164737; primary angle-closure disease associated with shorter axial length and hyperopia
+- Note under review: Review of primary angle-closure disease stating that it is generally associated with a shallower anterior chamber, a shorter axial length, a thicker lens, and hyperopia - the anatomic-mechanism anchor for the association.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `hypertensive-retinopathy` → `visual-impairment` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Clinical evidence documents visual consequences of severe hypertensive retinopathy: the Bhargava 2012 review describes hypertensive retinopathy as retinal microvascular change that, in severe cases, includes optic-disc and macular edema, and the Cortina 2015 case report documents acute bilateral loss of central visual acuity due to hypertensive retinopathy level IV from unrecognized malignant hypertension - a reproducible severe-retinopathy-to-visual-impairment association rather than an individual causal nexus.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established: the located evidence is a narrative review plus a single case report, mild-to-moderate hypertensive retinopathy is typically asymptomatic, and visual impairment in the same patients may derive from coexisting diabetic retinopathy, retinal vascular occlusion, or primary ocular disease, so an individual determination requires documentation of the retinopathy grade and ocular findings, blood-pressure records with chronology, and exclusion of competing retinopathies and ocular causes.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 196.1 — Bhargava M, Ikram MK, Wong TY. How does hypertension affect your eyes? J Hum Hypertens. 2012 Feb;26(2):71-83. doi:10.1038/jhh.2011.37. PMID 21509040.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/21509040/
+- Source checked on: 2026-09-24
+- Locator: PMID 21509040; hypertensive retinopathy with optic-disc and macular edema in severe cases
+- Note under review: Review of the ocular effects of hypertension describing hypertensive retinopathy as retinal microvascular change that in severe cases includes optic-disc and macular edema - the anatomic-basis anchor for the retinopathy-to-visual-impairment association.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 196.2 — Cortina G, Hofer J, Giner T, Jungraithmayr T. Severe visual loss caused by unrecognized malignant hypertension in a 15-year-old girl. Pediatr Int. 2015 Apr;57(2):e42-4. doi:10.1111/ped.12525. PMID 25868960.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/25868960/
+- Source checked on: 2026-09-24
+- Locator: PMID 25868960; acute bilateral central visual loss with level-IV hypertensive retinopathy in malignant hypertension
+- Note under review: Case report of acute bilateral loss of central visual acuity due to hypertensive retinopathy level IV from unrecognized malignant hypertension - the case-level anchor recording severe visual loss attributable to high-grade hypertensive retinopathy.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `hypoglycemia` → `dementia` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Observational studies document a higher incidence of dementia in people who have experienced hypoglycaemic episodes: the Huang 2022 systematic review and meta-analysis pooled ten cohort studies and 1,407,643 patients to an adjusted hazard ratio of 1.44 (95% CI 1.26-1.65, I2=89%, p<0.00001), stable on subgroup and leave-one-out analyses, and the Han 2022 nationwide cohort of 2,032,689 participants found dementia diagnosed in 23.3% of those with severe hypoglycaemia versus 7.3% without (P<0.001) with a dose-response across episode counts (HR 1.54 for one episode, 1.80 for two or more) - a reproducible co-occurrence association rather than an individual causal nexus.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established: the located evidence is observational and cannot exclude confounding by diabetes severity and duration, vascular risk, comorbidity, and glucose-lowering treatment intensity; a competing cohort also reports the reverse relationship, with dementia predicting subsequent hypoglycaemia events (PMID 37476614), so the direction is not resolved; and an individual determination requires documented severe hypoglycaemia with glucose records and dates, dementia phenotyping with chronologies, and exclusion of the competing dementias listed on this edge.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 197.1 — Huang L, Zhu M, Ji J. Association between hypoglycemia and dementia in patients with diabetes: a systematic review and meta-analysis of 1.4 million patients. Diabetol Metab Syndr. 2022 Feb 14;14(1):31. doi:10.1186/s13098-022-00799-9. PMID 35164844.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/35164844/
+- Source checked on: 2026-09-24
+- Locator: PMID 35164844; pooled HR 1.44 (95% CI 1.26-1.65) for dementia after hypoglycaemic episodes, ten studies, 1,407,643 patients
+- Note under review: Systematic review and meta-analysis of ten cohort studies and 1,407,643 patients reporting a pooled adjusted hazard ratio of 1.44 (95% CI 1.26-1.65, p<0.00001) for dementia in diabetes patients with prior hypoglycaemic episodes, stable across subgroups and leave-one-out analysis - the pooled quantitative anchor for the dementia association.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 197.2 — Han E, Han KD, Lee BW, Kang ES, Cha BS, Ko SH, Lee YH. Severe Hypoglycemia Increases Dementia Risk and Related Mortality: A Nationwide, Population-based Cohort Study. J Clin Endocrinol Metab. 2022 Apr 19;107(5):e1976-e1986. doi:10.1210/clinem/dgab860. PMID 35015886.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/35015886/
+- Source checked on: 2026-09-24
+- Locator: PMID 35015886; dementia 23.3% versus 7.3%, dose-response HR 1.54 and 1.80 by severe-hypoglycaemia episode count, n=2,032,689
+- Note under review: Nationwide cohort of 2,032,689 Korean health-checkup participants reporting dementia in 23.3% of those with severe hypoglycaemia versus 7.3% without (P<0.001), a rising hazard with episode count (one episode HR 1.54, 95% CI 1.48-1.60; two or more HR 1.80, 95% CI 1.66-1.94), and highest mortality in those with both exposures (HR 5.08) - the population-scale anchor and the dose-response gradient.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `hypoglycemia` → `seizure-disorder` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Clinical and neurophysiological literature documents seizures in severe hypoglycaemia: the Blaabjerg 2016 review of hypoglycaemia-induced electroencephalographic change states that neuroglycopenia produces a graded loss of cerebral function with seizures among the manifestations as hypoglycaemia progresses, and the Falip 2014 consecutive adult-onset type 1 diabetes cohort of 229 patients documented hypoglycaemic seizures in 2 patients (0.87%), distinguished from temporal lobe epilepsy by lower anti-GAD antibody titres (18.42 versus 29.200 IU, p=0.006) - a reproducible but rare provoked-event association rather than an individual causal nexus.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established: the located hypoglycaemia evidence describes acute symptomatic (provoked) seizures occurring during severe hypoglycaemia rather than a chronic seizure disorder or epilepsy, the condition-specific cohort found hypoglycaemic seizures rare (0.87% of 229 patients) with no autoimmune association, and no increased incidence of unprovoked seizures was demonstrated, so an individual determination requires glucose documentation during the event, electroencephalographic and imaging evaluation, chronology relative to glucose-lowering therapy, and exclusion of the competing epileptogenic and metabolic causes listed on this edge.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 198.1 — Blaabjerg L, Juhl CB. Hypoglycemia-Induced Changes in the Electroencephalogram: An Overview. J Diabetes Sci Technol. 2016 Nov;10(6):1259-1267. doi:10.1177/1932296816659744. PMID 27464753.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/27464753/
+- Source checked on: 2026-09-24
+- Locator: PMID 27464753; neuroglycopenia produces graded loss of cognitive function with seizures as hypoglycaemia progresses
+- Note under review: Review of hypoglycaemia-induced electroencephalographic change stating that shortage of glucose in the brain (neuroglycopenia) results in a gradual loss of cognitive function with seizures as hypoglycaemia progresses - the mechanistic anchor for the neuroglycopenic seizure proposition.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 198.2 — Falip M, Miro J, Carreno M, Jaraba S, Becerra JL, Cayuela N, Perez Maraver M, Graus F. Hypoglycemic seizures and epilepsy in type I diabetes mellitus. J Neurol Sci. 2014 Nov 15;346(1-2):307-309. doi:10.1016/j.jns.2014.08.024. PMID 25183236.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/25183236/
+- Source checked on: 2026-09-24
+- Locator: PMID 25183236; hypoglycaemic seizures 2/229 (0.87%) with anti-GAD titres 18.42 versus 29.200 IU in temporal lobe epilepsy, p=0.006
+- Note under review: Consecutive cohort of 229 adult-onset type 1 diabetes patients documenting hypoglycaemic seizures in 2 patients (0.87%) and unprovoked seizures in 2 (0.87%), with lower anti-GAD antibody titres in the hypoglycaemic-seizure group than in temporal lobe epilepsy (18.42 versus 29.200 IU, p=0.006) - the condition-specific prevalence anchor and the provoked-versus-epileptic discrimination.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `hypopituitarism` → `osteopenia` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Clinical and review literature documents reduced bone mineral density in hypopituitarism: the Chihaoui 2016 study of bone mineral density in Sheehan's syndrome states that hypopituitarism is a known cause of bone mineral loss and reports the prevalence of low bone mass with its associated factors in that population, and the Akirov 2024 review of hypopituitarism and bone disease examines the pathophysiology, diagnosis, and treatment outcomes of the association between pituitary hormone deficiency and bone health and names osteopenia among the skeletal consequences - a reproducible co-occurrence association rather than an individual causal nexus.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established by the located evidence: the condition-specific data are cross-sectional prevalence estimates and a narrative review without incident-outcome follow-up, the affected populations include pituitary adenoma and Sheehan's syndrome patients in whom tumour, radiotherapy, and hypopituitarism are not separable, and competing drivers of low bone mass such as postmenopausal status, glucocorticoid exposure, and nutritional deficiency are common, so an individual determination requires axis and replacement documentation, dual-energy X-ray absorptiometry measurements with dates, and exclusion of the competing causes listed on this edge.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 199.1 — Chihaoui M, Yazidi M, Chaker F, Belouidhnine M, Kanoun F, Lamine F, Ftouhi B, Sahli H, Slimane H. Bone Mineral Density in Sheehan's Syndrome; Prevalence of Low Bone Mass and Associated Factors. J Clin Densitom. 2016 Oct;19(4):413-418. doi:10.1016/j.jocd.2016.02.002. PMID 26993664.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/26993664/
+- Source checked on: 2026-09-24
+- Locator: PMID 26993664; osteopenia and osteoporosis prevalence with low bone mass in Sheehan's syndrome, hypopituitarism as known cause of bone mineral loss
+- Note under review: Condition-specific study of bone mineral density in hypopituitarism (Sheehan's syndrome) stating that hypopituitarism is a known cause of bone mineral loss and reporting the frequency of osteopenia and osteoporosis with associated factors - the prevalence anchor for the low-bone-mass association.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 199.2 — Akirov A, Rudman Y, Fleseriu M. Hypopituitarism and bone disease: pathophysiology, diagnosis and treatment outcomes. Pituitary. 2024 Dec;27(6):778-788. doi:10.1007/s11102-024-01391-2. PMID 38709467.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/38709467/
+- Source checked on: 2026-09-24
+- Locator: PMID 38709467; review of hypopituitarism and bone disease naming osteopenia and recording diagnosis and treatment outcomes
+- Note under review: Dedicated review of hypopituitarism and bone disease covering pathophysiology, diagnosis, and treatment outcomes, which names osteopenia among the skeletal consequences of pituitary hormone deficiency - the mechanism and entity anchor for the bone window.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `hypopituitarism` → `anemia` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Clinical series document lower haemoglobin in hypopituitarism: the Nishioka 2005 retrospective study of 68 patients with anterior pituitary deficiency for more than twelve months found haemoglobin significantly lower than in controls (p=0.0012), haemoglobin below 12.0 g/dl in 22 patients (32.4%), the reduction related to hypocortisolism and hypothyroidism, and an improvement in haemoglobin with hydrocortisone and/or levothyroxine replacement, and the Aguiar 2025 pituitary adenoma cohort reported the prevalence of anemia at diagnosis and its correlation with hypopituitarism - a reproducible co-occurrence association rather than an individual causal nexus.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established: the located evidence is a small retrospective series and a single-centre adenoma cohort without incident-anaemia follow-up or control for the common competing causes of anaemia, and the treatment-response observation is uncontrolled; an individual determination therefore requires a complete blood count with indices and dates, iron, vitamin B12 and folate studies, renal function and inflammatory markers, endoscopy or other source evaluation where indicated, and exclusion of the competing anaemias listed on this edge, together with chronology relative to the onset of pituitary deficiency and its replacement.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 200.1 — Nishioka H, Haraoka J. Hypopituitarism and anemia: effect of replacement therapy with hydrocortisone and/or levothyroxine. J Endocrinol Invest. 2005 Jun;28(6):528-533. doi:10.1007/BF03347241. PMID 16117194.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/16117194/
+- Source checked on: 2026-09-24
+- Locator: PMID 16117194; haemoglobin lower in hypopituitarism (p=0.0012), Hb<12.0 g/dl in 32.4% of 68 patients, improved with hydrocortisone and/or levothyroxine
+- Note under review: Retrospective study of 68 patients with anterior pituitary deficiency for more than twelve months reporting significantly lower haemoglobin (p=0.0012), haemoglobin below 12.0 g/dl in 22 patients (32.4%), a relation to hypocortisolism and hypothyroidism, and improvement with hydrocortisone and/or levothyroxine replacement - the condition-specific prevalence and treatment-response anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 200.2 — Paixao Cortes Aguiar D, Chitolina Nesello A, Araujo B, Mafalda Dos Santos T, Diniz Lima V, Semmelmann Pereira Lima JF, da Costa Oliveira M. Anemia in Patients With Pituitary Adenomas: Prevalence and Correlation With Hypopituitarism. Cureus. 2025 Jun 5;17(6):e85422. doi:10.7759/cureus.85422. PMID 40621322.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/40621322/
+- Source checked on: 2026-09-24
+- Locator: PMID 40621322; anemia prevalence at diagnosis in pituitary adenoma patients and its correlation with hypopituitarism
+- Note under review: Cohort of patients with acromegaly, non-functioning pituitary adenoma, and prolactinoma reporting the prevalence of anemia at diagnosis and its correlation with hypopituitarism - the population-scale prevalence anchor for the haematologic association.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `hypotension` → `visual-impairment` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Clinical literature documents ischaemic optic neuropathy in the setting of low blood pressure: the Donaldson 2022 case series and review of dialysis-associated non-arteritic anterior ischaemic optic neuropathy states that the condition occurs secondary to intradialytic hypotension, presents three cases with catastrophic visual consequences and recurrence in the same eye, and relates them to the intradialytic blood-pressure fall, and the Desai 2005 review lists nocturnal hypotension together with hypertension and diabetes among the risk factors for a disorder whose presentation is sudden painless loss of vision - a reproducible co-occurrence association rather than an individual causal nexus.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established: the condition-specific evidence is a three-patient haemodialysis series in which fluid shifts, anaemia, and uraemia are not separable from the hypotensive episode, the review-level evidence lists hypotension among several coexisting vascular risk factors for a multifactorial optic neuropathy with a structural predisposition, and no incident cohort relates blood-pressure levels to subsequent visual loss; an individual determination therefore requires blood-pressure records including ambulatory or nocturnal measurements with dates, ophthalmologic documentation of the optic neuropathy and its acuity and field deficits, temporal proximity of the visual loss to the hypotensive episodes, and exclusion of the competing optic neuropathies listed on this edge.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 201.1 — Donaldson L, Freund P, Aslahi R, Margolin E. Dialysis-Associated Nonarteritic Anterior Ischemic Optic Neuropathy: A Case Series and Review. J Neuroophthalmol. 2022 Mar 1;42(1):e116-e123. doi:10.1097/WNO.0000000000001493. PMID 34974487.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/34974487/
+- Source checked on: 2026-09-24
+- Locator: PMID 34974487; dialysis-associated ischaemic optic neuropathy secondary to intradialytic hypotension, three cases with severe visual loss and same-eye recurrence
+- Note under review: Case series and review of dialysis-associated non-arteritic anterior ischaemic optic neuropathy describing the condition as occurring secondary to intradialytic hypotension, reporting three cases with catastrophic visual consequences and recurrence in the same eye - the condition-specific anchor for the hypotensive-hypoperfusion proposition.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 201.2 — Desai N, Patel MR, Prisant LM, Thomas DA. Nonarteritic anterior ischemic optic neuropathy. J Clin Hypertens (Greenwich). 2005 Feb;7(2):130-133. doi:10.1111/j.1524-6175.2005.04095.x. PMID 15722660.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/15722660/
+- Source checked on: 2026-09-24
+- Locator: PMID 15722660; nocturnal hypotension listed among risk factors for non-arteritic anterior ischaemic optic neuropathy with sudden painless visual loss
+- Note under review: Review of non-arteritic anterior ischaemic optic neuropathy listing nocturnal hypotension alongside hypertension and diabetes among the risk factors for a disorder presenting as sudden painless loss of vision, typically on awakening - the review-level anchor locating hypotension among the perfusion-related exposures.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `ichthyosis` → `dry-eye-syndrome` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Clinical cohorts document ocular surface changes in ichthyosis: the Palamar 2015 study of twelve patients with lamellar ichthyosis found mean tear break-up time of 6.58 seconds in both eyes - below the conventional ten-second threshold - with ocular surface staining grades of 0.36 and 0.39, and concluded that eyelid malformations together with decreased tear break-up time might cause sight-threatening complications, while the Al-Amry 2016 series of eleven ichthyosis patients found bilateral ectropion to be the most common ocular diagnosis, with most patients requiring skin grafting for the eyelid malformation - a reproducible co-occurrence association rather than an individual causal nexus.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established: the located cohorts are small, single-centre, and uncontrolled, mean aqueous tear production was preserved, and coexisting blepharitis, meibomian gland disease, retinoid or topical therapy, cicatricial conjunctival disease, and age-related ocular surface disease are not excluded, so an individual determination requires ocular surface examination with tear break-up time, Schirmer testing and staining on dated examinations, documentation of eyelid position and malformation, symptom history, and exclusion of the competing causes of ocular surface disease listed on this edge.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 202.1 — Palamar M, Onay H, Ertam I, Ates EA, Dereli T, Ozkinay F, Yagci A. Genotype and Anterior Segment Phenotype in a Cohort of Turkish Patients with Lamellar Ichthyosis. Ophthalmic Genet. 2015;36(3):229-233. doi:10.3109/13816810.2013.870215. PMID 24397709.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/24397709/
+- Source checked on: 2026-09-24
+- Locator: PMID 24397709; lamellar ichthyosis tear break-up time 6.58 seconds, ocular surface staining 0.36-0.39, Schirmer 1 18.75 mm
+- Note under review: Cohort of twelve patients with lamellar ichthyosis reporting mean tear break-up time of 6.58 seconds in both eyes with ocular surface staining grades of 0.36 and 0.39 and preserved mean Schirmer 1 production of 18.75 mm, concluding that eyelid malformations together with decreased tear break-up time might cause sight-threatening complications - the tear-film stability anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 202.2 — Al-Amry MA. Ocular manifestation of Ichthyosis. Saudi J Ophthalmol. 2016 Jan-Mar;30(1):39-43. doi:10.1016/j.sjopt.2015.12.004. PMID 26949357.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/26949357/
+- Source checked on: 2026-09-24
+- Locator: PMID 26949357; bilateral ectropion the most common ocular diagnosis in 11 ichthyosis patients, skin grafting for ectropion, corneal perforation in two
+- Note under review: Retrospective series of eleven ichthyosis patients over twenty years in which bilateral ectropion of the lids was the most common presenting ocular diagnosis, most patients underwent skin grafting to repair eyelid ectropion, and two patients developed corneal perforation - the eyelid-malformation mechanism anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `iliohypogastric-ilioinguinal-nerve-neuralgia` → `unexplained-chronic-pain` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Condition-specific clinical series document chronic inguinal pain attributable to ilioinguinal and iliohypogastric nerve injury and its relief with nerve-directed treatment: the Thomassen 2013 series of 43 patients with chronic inguinal post-herniorrhaphy pain treated with ilioinguinal/iliohypogastric nerve blocks found that 21 of 38 respondents (55.3%) no longer reported DN4-defined neuropathic pain and concluded that these blocks can be effective to treat chronic inguinal pain after groin surgery, and the Deepika 2026 prospective study of 31 patients per arm reports chronic postoperative discomfort in 0.7-36.7% of open inguinal hernioplasty patients, enumerates ilioinguinal injury mechanisms (suture entrapment, partial division, crushing, diathermy), and finds significantly reduced groin discomfort and persistent pain to six months after prophylactic ilioinguinal neurectomy - a reproducible co-occurrence association rather than an individual causal nexus.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established: the randomized evidence on the same mechanism is mixed, because a meta-analysis of six trials with 1,286 patients found no difference in chronic groin pain between preservation and division of the ilioinguinal nerve while division increased sensory loss (PMID 22644622), the located treatment series are single-centre and unblinded, and chronic post-herniorrhaphy pain is multifactorial (mesh fixation, recurrence, fibrosis, and pre-existing pain) with nociceptive and neuropathic components that the located outcome measures do not separate; an individual determination therefore requires documented nerve injury or entrapment with chronology relative to the repair, pain characterization, and exclusion of the competing causes listed on this edge.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 203.1 — Thomassen I, van Suijlekom JA, van de Gaag A, Ponten JE, Nienhuijs SW. Ultrasound-guided ilioinguinal/iliohypogastric nerve blocks for chronic pain after inguinal hernia repair. Hernia. 2013 Jun;17(3):329-332. doi:10.1007/s10029-012-0998-y. PMID 23015156.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/23015156/
+- Source checked on: 2026-09-24
+- Locator: PMID 23015156; ilioinguinal/iliohypogastric nerve blocks for chronic inguinal post-herniorrhaphy pain, 21/38 (55.3%) free of DN4-defined neuropathic pain
+- Note under review: Series of 43 patients who received ilioinguinal/iliohypogastric nerve blocks for chronic inguinal post-herniorrhaphy pain, with 38 respondents of whom 21 (55.3%) no longer reported DN4-defined neuropathic pain and the authors concluding that such blocks can be effective to treat chronic inguinal pain after groin surgery and should be considered before neurectomy - the nerve-directed treatment-response anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 203.2 — Deepika CA, Raj DV, Bhat RR, Kumar Y, Ahmed T. Prophylactic Ilioinguinal Neurectomy: Prevention of Chronic Pain after Open Inguinal Hernioplasty. Ann Afr Med. 2026 Jan 1;25(1):177-181. doi:10.4103/aam.aam_81_25. PMID 40452294.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/40452294/
+- Source checked on: 2026-09-24
+- Locator: PMID 40452294; chronic post-hernioplasty discomfort in 0.7-36.7%, ilioinguinal injury mechanisms enumerated, neurectomy reduced persistent pain to 6 months
+- Note under review: Prospective observational study of 31 patients per arm reporting chronic postoperative discomfort in 0.7-36.7% of open inguinal hernioplasty patients, enumerating ilioinguinal injury mechanisms during elective repair (suture entrapment, partial division, crushing, diathermy), and finding significantly reduced groin discomfort and persistent pain to six months after prophylactic ilioinguinal neurectomy - the mechanism and intervention anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `impetigo` → `nephritis` — DIRECT_CAUSATION
+
+**Proposition (direct_causation):** Documented impetigo (cutaneous group A streptococcal infection, clinically or microbiologically confirmed) -> nephritogenic streptococcal antigens drive immune-complex formation and glomerular deposition with complement activation and proliferative glomerular injury -> claimed acute glomerulonephritis when the latency interval, urinalysis and renal function, serologic evidence, and competing renal diagnoses support that pathway.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 204.1 — Stevens DL, Bryant AE. Streptococcus pyogenes Impetigo, Erysipelas, and Cellulitis. In: Ferretti JJ, Stevens DL, Fischetti VA, editors. Streptococcus pyogenes: Basic Biology to Clinical Manifestations [Internet]. 2nd edition. Oklahoma City (OK): University of Oklahoma Health Sciences Center; 2022 Oct 8. Chapter 23. PMID 36479753.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/36479753/
+- Source checked on: 2026-09-24
+- Locator: PMID 36479753; impetigo can result in post-streptococcal acute glomerulonephritis (chapter 23, Streptococcus pyogenes: Basic Biology to Clinical Manifestations)
+- Note under review: Reference chapter on group A streptococcal skin and soft-tissue infection stating that impetigo is a non-life-threatening infection but can result in post-streptococcal acute glomerulonephritis - the disease-specific complication statement anchoring the impetigo-to-nephritis proposition.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 204.2 — Ilyas M, Tolaymat A. Changing epidemiology of acute post-streptococcal glomerulonephritis in Northeast Florida: a comparative study. Pediatr Nephrol. 2008 Jul;23(7):1101-1106. doi:10.1007/s00467-008-0778-1. PMID 18373105.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/18373105/
+- Source checked on: 2026-09-24
+- Locator: PMID 18373105; 66% of earlier paediatric acute post-streptococcal glomerulonephritis cases had antecedent pyoderma
+- Note under review: Comparative epidemiological study of paediatric acute post-streptococcal glomerulonephritis in which 66% of the earlier cohort had antecedent pyoderma (versus a recent cohort predominantly pharyngitis-associated) - the cohort-level antecedent-skin-infection anchor and the basis for the recorded era and population caveat.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `inappropriate-sinus-tachycardia` → `dizziness` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Review-level descriptions of the inappropriate sinus tachycardia syndrome document dizziness among its reported symptoms: the Ahmed 2022 JACC review describes the condition as a clinical syndrome associated with distressing symptoms whose most common symptom is palpitations but which can be accompanied by a myriad of symptoms including anxiety, dizziness, presyncope, and syncope, and the Ruzieh 2018 review defines it as a resting sinus rate inexplicably above one hundred beats per minute associated with symptoms such as palpitations, dyspnoea, or dizziness in the absence of primary causes of tachycardia - a reproducible co-occurrence association rather than an individual causal nexus.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established: the located evidence is review-level symptom enumeration rather than condition-specific measurement of incident dizziness, dizziness is plausibly attributable to the shared autonomic abnormality or to concurrent conditions rather than to the heart rate itself, and the diagnosis of inappropriate sinus tachycardia is one of exclusion that requires ruling out medications and substances, panic attacks, pulmonary embolism, fever, hyperthyroidism, hypovolaemia, anaemia, and pain; an individual determination therefore requires heart-rate and rhythm documentation with dates, symptom characterization and chronology, and exclusion of the competing causes of dizziness listed on this edge.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 205.1 — Ahmed A, Pothineni NVK, Charate R, Garg J, Elbey M, de Asmundis C, LaMeir M, Romeya A, Shivamurthy P, Olshansky B, Russo A, Gopinathannair R, Lakkireddy D. Inappropriate Sinus Tachycardia: Etiology, Pathophysiology, and Management: JACC Review Topic of the Week. J Am Coll Cardiol. 2022 Jun 21;79(24):2450-2462. doi:10.1016/j.jacc.2022.04.019. PMID 35710196.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/35710196/
+- Source checked on: 2026-09-24
+- Locator: PMID 35710196; inappropriate sinus tachycardia syndrome with distressing symptoms including dizziness, presyncope, and syncope; multifactorial pathogenesis with autonomic dysfunction
+- Note under review: JACC review topic of the week describing inappropriate sinus tachycardia as a clinical syndrome associated with distressing symptoms whose most common symptom is palpitations but which can be accompanied by anxiety, dizziness, presyncope, and syncope, with multifactorial pathogenesis and autonomic dysfunction as the central abnormality and diagnosis by exclusion - the syndrome-definition and symptom anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 205.2 — Ruzieh M, Moustafa A, Sabbagh E, Karim MM, Karim S. Challenges in Treatment of Inappropriate Sinus Tachycardia. Curr Cardiol Rev. 2018 Mar 14;14(1):42-44. doi:10.2174/1573403X13666171129183826. PMID 29189171.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/29189171/
+- Source checked on: 2026-09-24
+- Locator: PMID 29189171; resting sinus rate above 100 bpm with symptoms such as palpitations, dyspnoea, or dizziness; secondary causes and substances must be excluded
+- Note under review: Review defining inappropriate sinus tachycardia as a sinus heart rate inexplicably above one hundred beats per minute at rest associated with symptoms such as palpitations, dyspnoea, or dizziness, and enumerating the secondary causes and substances the diagnosis requires excluding - the symptom anchor and the differential-exclusion list.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `insulinoma` → `hyperinsulinism` — DIRECT_CAUSATION
+
+**Proposition (direct_causation):** Documented insulinoma (pancreatic beta-cell tumour localized by imaging or confirmed histologically) -> autonomous insulin secretion uncoupled from the prevailing glucose concentration -> claimed endogenous hyperinsulinism when the biochemical profile of hyperinsulinaemic hypoglycaemia is documented, the tumour is confirmed, and competing causes of dysregulated insulin secretion are excluded.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 206.1 — Arya VB, Mohammed Z, Blankenstein O, De Lonlay P, Hussain K. Hyperinsulinaemic hypoglycaemia. Horm Metab Res. 2014 Mar;46(3):157-170. doi:10.1055/s-0034-1367063. PMID 24557504.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/24557504/
+- Source checked on: 2026-09-24
+- Locator: PMID 24557504; unregulated insulin secretion persisting at low blood glucose; in adults an insulinoma is the commonest cause of hyperinsulinaemic hypoglycaemia
+- Note under review: Review of hyperinsulinaemic hypoglycaemia stating that insulin secretion from pancreatic beta cells becomes unregulated in the disorder so that it persists despite low blood glucose, and recording that in adults an insulinoma is the commonest cause of hyperinsulinaemic hypoglycaemia - the explicit insulinoma-as-cause statement anchoring the edge.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 206.2 — Shah P, Rahman SA, Demirbilek H, Guemes M, Hussain K. Hyperinsulinaemic hypoglycaemia in children and adults. Lancet Diabetes Endocrinol. 2017 Sep;5(9):729-742. doi:10.1016/S2213-8587(16)30323-0. PMID 27915035.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/27915035/
+- Source checked on: 2026-09-24
+- Locator: PMID 27915035; dysregulated insulin secretion uncoupled from glucose; in adults due either to beta-cell tumours (insulinomas) or beta-cell hyperplasia
+- Note under review: Lancet review stating that in hyperinsulinaemic hypoglycaemia insulin secretion becomes dysregulated and uncoupled from glucose metabolism so that it persists at low plasma glucose, and that in adults the disorder accounts for 0.5-5.0% of hypoglycaemia cases and can be due either to beta-cell tumours (insulinomas) or beta-cell hyperplasia - the mechanism and adult-cause anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `intracranial-injury-without-skull-fracture` → `epilepsy` — DIRECT_CAUSATION
+
+**Proposition (direct_causation):** Documented intracranial injury without skull fracture (traumatic brain injury characterized by severity, mechanism, imaging findings, and date, including moderate to severe injury or a mild injury with compatible features) -> structural and gliotic cerebral injury with neuronal loss, hemosiderin deposition, and altered cortical excitability (epileptogenesis) -> claimed post-traumatic epilepsy when the seizure semiology and electroencephalographic findings meet epilepsy diagnostic criteria, the latency and chronology are documented, and competing epileptogenic causes are excluded.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 207.1 — Zhong J, Lan Y, Sun L, Zhao Z, Liu X, Shi J, Ren L, Zuo Q, Wei X, Dou X. Global prevalence of post-traumatic epilepsy in traumatic brain injury patients: a systematic review and meta-analysis (1997-2024). Neuroscience. 2025 Oct 1;584:180-189. doi:10.1016/j.neuroscience.2025.07.008. PMID 40835018.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/40835018/
+- Source checked on: 2026-09-24
+- Locator: PMID 40835018; pooled post-traumatic epilepsy prevalence 9% (95% CI 8-11%) after traumatic brain injury, 24 studies, n=505,720; 15% under ILAE criteria
+- Note under review: Systematic review and meta-analysis of 24 studies and 505,720 patients reporting a pooled post-traumatic epilepsy prevalence of 9% (95% CI 8-11%), 15% under International League Against Epilepsy diagnostic criteria, 16% for severe cases, and 14% for early post-traumatic seizure studies, concluding that post-traumatic epilepsy is a common complication of traumatic brain injury - the quantitative prevalence anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 207.2 — Laing J, Gabbe B, Chen Z, Perucca P, Kwan P, O'Brien TJ. Risk Factors and Prognosis of Early Posttraumatic Seizures in Moderate to Severe Traumatic Brain Injury. JAMA Neurol. 2022 Apr 1;79(4):334-341. doi:10.1001/jamaneurol.2021.5420. PMID 35188950.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/35188950/
+- Source checked on: 2026-09-24
+- Locator: PMID 35188950; early post-traumatic seizures in 416/15,152 (2.7%) moderate-to-severe TBI patients and association with later post-traumatic epilepsy
+- Note under review: Registry-based cohort of 15,152 adults with moderate to severe traumatic brain injury with two-year follow-up in which 416 patients (2.7%) had early post-traumatic seizures, including 27 (0.2%) with status epilepticus, and early seizures were associated with subsequent post-traumatic epilepsy after adjustment for confounders - the cohort-level severity and progression anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `intracranial-injury-without-skull-fracture` → `hypopituitarism` — DIRECT_CAUSATION
+
+**Proposition (direct_causation):** Documented intracranial injury without skull fracture (traumatic brain injury characterized by severity, mechanism, imaging, and date) -> shearing injury to the hypophyseal vessels and stalk with ischaemia, haemorrhage, or raised intracranial pressure effects -> claimed hypopituitarism when interval neuroendocrine testing documents one or more anterior pituitary axis deficiencies, the chronology relative to the injury is established, and competing causes of pituitary dysfunction are excluded.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 208.1 — Kalas M, Miksiewicz M, Kowalke A, Sieminski M. Post-Traumatic Hypopituitarism: A Neglected Consequence of Traumatic Brain Injury. Neuroendocrinology. 2023;113(6):579-588. doi:10.1159/000529327. PMID 36693336.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/36693336/
+- Source checked on: 2026-09-24
+- Locator: PMID 36693336; post-traumatic hypopituitarism prevalence significantly underestimated, heterogeneous pathogenesis, no settled screening follow-up
+- Note under review: Dedicated review of post-traumatic hypopituitarism stating that its prevalence has been significantly underestimated over the past twenty years, that its pathogenesis is heterogeneous, that unrecognized and untreated disease has negative socioeconomic and quality-of-life consequences, and that no clear follow-up or screening algorithm has been established - the condition-definition and neglect anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 208.2 — Zaben M, El Ghoul W, Belli A. Post-traumatic head injury pituitary dysfunction. Disabil Rehabil. 2013 Mar;35(6):522-525. doi:10.3109/09638288.2012.697252. PMID 22779906.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/22779906/
+- Source checked on: 2026-09-24
+- Locator: PMID 22779906; hypophyseal vascular vulnerability to shearing and raised intracranial pressure, pituitary ischaemia/haemorrhage at autopsy, post-traumatic hypopituitarism affecting all injury grades
+- Note under review: Review recording that the hypophyseal vessels are anatomically vulnerable to shearing injuries, raised intracranial pressure, and anterior skull-base fractures with pituitary ischaemia or haemorrhage common at autopsy, that post-traumatic hypopituitarism can affect all grades of injury severity and is difficult to diagnose because features overlap post-concussive symptoms, and that no screening consensus exists - the mechanism and severity-breadth anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `joint-replacement-residuals` → `deep-vein-thrombosis` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Clinical cohorts and guideline reviews document venous thromboembolism after total hip and knee arthroplasty: the Simon 2023 retrospective cohort of 29,264 arthroplasty patients reported a 30-day cumulative incidence of post-discharge venous thromboembolism of 1.19% (95% CI 1.06-1.32%) with knee arthroplasty, prior venous thromboembolism, and hereditary hypercoagulable state among the leading risk factors, and the Lieberman 2021 review records that American College of Chest Physicians guidelines recommend at least 10 to 14 days of thromboprophylaxis after these procedures and that risk stratification is essential to balance thrombosis against bleeding - a reproducible co-occurrence association rather than an individual causal nexus.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established: the located cohort is a claims-based study of prophylaxis strategies rather than an untreated natural-history cohort, the measured incidence of 1.19% was observed in patients already receiving pharmacologic thromboprophylaxis, and the same study recorded bleeding in 3.43%, so the postoperative risk is treatment-modified and influenced by patient-level thrombophilia, prior venous thromboembolism, procedure type, and mobilization; an individual determination therefore requires the operative and prophylaxis records with dates, imaging confirmation of the thrombosis, symptom chronology, and exclusion of the competing causes listed on this edge.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 209.1 — Simon SJ, Patell R, Zwicker JI, Kazi DS, Hollenbeck BL. Venous Thromboembolism in Total Hip and Total Knee Arthroplasty. JAMA Netw Open. 2023 Dec 1;6(12):e2345883. doi:10.1001/jamanetworkopen.2023.45883. PMID 38039005.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/38039005/
+- Source checked on: 2026-09-24
+- Locator: PMID 38039005; 30-day post-discharge VTE incidence 1.19% (95% CI 1.06-1.32%) after hip or knee arthroplasty, n=29,264
+- Note under review: Retrospective cohort of 29,264 patients undergoing hip or knee arthroplasty reporting a 30-day cumulative incidence of post-discharge venous thromboembolism of 1.19% (95% CI 1.06-1.32%) and bleeding of 3.43%, with prior venous thromboembolism (OR 5.94), hereditary hypercoagulable state (OR 2.64), knee arthroplasty (OR 1.65), and male sex (OR 1.34) as leading risk factors - the quantified incidence anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 209.2 — Lieberman JR, Bell JA. Venous Thromboembolic Prophylaxis After Total Hip and Knee Arthroplasty. J Bone Joint Surg Am. 2021 Aug 18;103(16):1556-1564. doi:10.2106/JBJS.20.02250. PMID 34133395.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/34133395/
+- Source checked on: 2026-09-24
+- Locator: PMID 34133395; ACCP-recommended 10-14 day thromboprophylaxis after total hip or knee arthroplasty with risk-stratified agent selection
+- Note under review: Review of thromboprophylaxis after total hip and knee arthroplasty recording that agent selection balances efficacy against bleeding, that American College of Chest Physicians guidelines recommend at least 10 to 14 days of one of the listed agents after these procedures, and that validated risk stratification is essential - the guideline-level anchor that post-arthroplasty venous thromboembolism is a recognized risk requiring routine prevention.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `joint-replacement-residuals` → `contractures` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Clinical series and reviews document post-arthroplasty joint stiffness attributed to soft-tissue contracture: the Ries and Badalamente series of six total knee arthroplasties in five patients revised for persistent limited motion found no cause of stiffness other than soft tissue contracture, with arc of motion improving from a mean 36 degrees to 86 degrees after revision, and the Bong and Di Cesare review of stiffness after total knee arthroplasty sets out the physical therapy, manipulation, lysis of adhesions, and revision algorithm with its timing and identifies intrinsic and extrinsic causes including component malposition - a reproducible co-occurrence association rather than an individual causal nexus.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established: the located series is a small revision cohort without a denominator for the arthroplasty population, heterotopic bone was recorded in seven of the eleven knee observations, and the review notes that stiffness may arise from malpositioned or oversize components, inadequate rehabilitation, infection, or patient predisposition rather than from soft-tissue contracture alone; an individual determination therefore requires operative records and implant position documentation, serial range-of-motion measurements with dates, imaging and inflammatory-marker evaluation for infection and heterotopic bone, and exclusion of the competing mechanisms listed on this edge.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 210.1 — Ries MD, Badalamente M. Arthrofibrosis after total knee arthroplasty. Clin Orthop Relat Res. 2000 Nov;(380):177-183. doi:10.1097/00003086-200011000-00024. PMID 11064989.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/11064989/
+- Source checked on: 2026-09-24
+- Locator: PMID 11064989; six revised TKAs with stiffness attributed to soft tissue contracture only, arc of motion 36 degrees to 86 degrees after revision
+- Note under review: Series of six total knee arthroplasties in five patients revised for persistent limited motion in which all implants were appropriately sized and not malpositioned, no cause of stiffness was identified other than soft tissue contracture, heterotopic bone was present in two knees before and five after revision, and arc of motion increased from a mean 36 degrees to 86 degrees - the soft-tissue contracture anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 210.2 — Bong MR, Di Cesare PE. Stiffness after total knee arthroplasty. J Am Acad Orthop Surg. 2004 May-Jun;12(3):164-171. doi:10.5435/00124635-200405000-00004. PMID 15161169.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/15161169/
+- Source checked on: 2026-09-24
+- Locator: PMID 15161169; post-TKA stiffness management by mobilization, manipulation, lysis of adhesions, and revision, with intrinsic and extrinsic causes assessed
+- Note under review: Review of stiffness after total knee arthroplasty setting out the sequence of mobilization and physical therapy, manipulation within the first three months, arthroscopic or modified open lysis of adhesions thereafter, and revision arthroplasty for malpositioned or oversize components, and noting that patients losing motion beyond three months require assessment for intrinsic and extrinsic causes - the clinical-recognition and management anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `keratitis` → `corneal-scarring` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** The Shimizu 2017 retrospective consecutive series examined 63 eyes of 62 patients with corneal scarring due to Acanthamoeba keratitis (20 eyes), bacterial keratitis (35 eyes), and fungal keratitis (8 eyes) together with 18 normal subjects, finding total-cornea higher-order aberrations within a 4-mm diameter significantly larger in the keratitis eyes (Acanthamoeba 1.15 +/- 2.06 micrometre, bacterial 0.91 +/- 0.88, fungal 1.39 +/- 1.46) than in controls (0.09 +/- 0.01, all P < .001), an asymmetric topographic pattern as the commonest (30%, 51.4%, and 37.5%), and visual acuity correlating significantly with anterior-surface (R = 0.764), posterior-surface (R = 0.745), and total-cornea (R = 0.669) aberrations (all P < .0001); the Altay 2017 retrospective analysis of 55 eyes undergoing penetrating keratoplasty for corneal scarring caused by herpes simplex keratitis reported 42 eyes with a quiescent herpetic scar and 13 with a descemetocele or perforation secondary to persistent epithelial defects, with 34 eyes (61.8%) reaching 0.6 logMAR or better and three-year graft survival of 65.1% and 63.6%; the literature documents corneal opacity as the structural sequela that degrades ocular-surface optics and that serves as the operative indication, without establishing that any individual's scarring followed the keratitis episode.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established at the mapping level: no cohort quantifies the incidence of permanent corneal opacity after a defined keratitis episode, mild epithelial disease resolves without residual scarring, the located series are tertiary referral and surgical populations selected for severity, the degree of opacity depends on organism, depth of stromal involvement, treatment delay, and host response, and unrelated corneal disease (trauma, contact-lens pathology, ectasia, degenerations, dystrophies, and surgical scarring) produces identical opacification - so no directional claim is made at the keratitis level.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 211.1 — Shimizu E, Yamaguchi T, Yagi-Yaguchi Y, Dogru M, Satake Y, Tsubota K, Shimazaki J. Corneal Higher-Order Aberrations in Infectious Keratitis. Am J Ophthalmol. 2017 Mar;175:148-158. doi:10.1016/j.ajo.2016.12.014. PMID 28040524.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/28040524/
+- Source checked on: 2026-09-24
+- Locator: PMID 28040524; corneal scarring in 63 eyes after Acanthamoeba, bacterial, and fungal keratitis with higher-order aberrations correlating with visual acuity
+- Note under review: Retrospective consecutive series of 63 eyes with corneal scarring due to Acanthamoeba (20), bacterial (35), and fungal (8) keratitis versus 18 normal subjects: total-cornea higher-order aberrations larger in the keratitis eyes (1.15 +/- 2.06, 0.91 +/- 0.88, and 1.39 +/- 1.46 micrometre versus 0.09 +/- 0.01; all P < .001), asymmetric topography the commonest pattern, and visual acuity correlating with anterior (R = 0.764), posterior (R = 0.745), and total-cornea (R = 0.669) aberrations - the measured-opacity anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 211.2 — Altay Y, Tamer S, Kaya AS, Balta O, Burcu A, Ornek F. The outcome of penetrating keratoplasty for corneal scarring due to herpes simplex keratitis. Arq Bras Oftalmol. 2017 Jan-Feb;80(1):41-45. doi:10.5935/0004-2749.20170011. PMID 28380101.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/28380101/
+- Source checked on: 2026-09-24
+- Locator: PMID 28380101; penetrating keratoplasty for corneal scarring due to herpes simplex keratitis in 55 eyes
+- Note under review: Retrospective analysis of 55 eyes undergoing penetrating keratoplasty for corneal scarring caused by herpes simplex keratitis (42 quiescent herpetic scars and 13 with descemetocele or perforation), with 34 eyes (61.8%) reaching 0.6 logMAR or better and three-year graft survival of 65.1% and 63.6% - the scarring-as-surgical-indication anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `kienbock-s-disease` → `osteoarthritis` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** The Luegmair and Saffar 2014 series of scaphocapitate arthrodesis for late-stage Kienbock disease reports functional ranges of motion and good grip strengths with substantial pain reduction and a mean QuickDASH of 27 (range 9.1-56.3), radiographic union in nine patients with maintained carpal height and a corrected radioscaphoid angle, and documents that radiographic signs of radioscaphoid arthritis were often observed in patients with follow-up greater than 10 years; the Kalb 2018 review of lunate necrosis treatment sets out a stage-dependent algorithm in which limited lunate affection is managed by immobilization or restoration, progressive collapse of a non-reconstructable lunate bone shifts treatment to mobility-preserving procedures using the still-functional articulations of the wrist, and once all functional articulations are lost only classical salvage procedures are feasible; the literature documents late-stage Kienbock disease as a collapsed-lunate, degenerating-wrist pathology managed at end stage without establishing that every individual's radiocarpal or midcarpal osteoarthritis followed the lunate necrosis.
+
+**Causation boundary (causationStatus):** The mapping does not assert that Kienbock's disease caused an individual's wrist osteoarthritis: no natural-history cohort quantifies the incidence of radiocarpal or midcarpal arthritis after an unoperated lunate osteonecrosis, early-stage disease carries joint-preserving and immobilization options and may arrest, the located arthritis measurements come from wrists that underwent scaphocapitate arthrodesis - a procedure that itself alters carpal kinematics and loads the radioscaphoid joint - and the salvage series group Kienbock disease with scapholunate advanced collapse and scaphoid non-union advanced collapse, which independently produce degenerative wrist change; primary wrist osteoarthritis, post-traumatic arthritis after distal radius or scaphoid fracture, inflammatory arthropathy, and ulnar-impaction pathology independently produce the same degeneration.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 212.1 — Luegmair M, Saffar P. Scaphocapitate arthrodesis for treatment of late stage Kienbock disease. J Hand Surg Eur Vol. 2014 May;39(4):416-22. doi:10.1177/1753193413496177. PMID 23824220.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/23824220/
+- Source checked on: 2026-09-24
+- Locator: PMID 23824220; radioscaphoid arthritis often observed with follow-up greater than 10 years after scaphocapitate arthrodesis for late-stage Kienbock disease
+- Note under review: Consecutive series of scaphocapitate arthrodesis for late-stage (collapsed) Kienbock disease with functional motion, good grip strength, mean QuickDASH 27, radiographic union in nine patients and maintained carpal height, and radiographic signs of radioscaphoid arthritis often observed beyond ten years of follow-up - the long-term degeneration anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 212.2 — Kalb K, van Schoonhoven J, Windolf J, Pillukat T. [Treatment of necrosis of the lunate bone]. Unfallchirurg. 2018 May;121(5):381-390. doi:10.1007/s00113-018-0477-8. PMID 29549407.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/29549407/
+- Source checked on: 2026-09-24
+- Locator: PMID 29549407; progressive collapse of a non-reconstructable lunate bone and loss of all functional articulations
+- Note under review: Treatment review of lunate necrosis with a stage-dependent algorithm: immobilization or restoration for limited and reconstructable lunate disease, mobility-preserving procedures using still-functional wrist articulations in progressive collapse of a non-reconstructable lunate, and classical salvage procedures once all functional articulations are lost - the staged collapse-to-articular-loss anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `kaposi-s-sarcoma` → `lymphedema` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** The Dauguet 2023 narrative review of lymphedema and Kaposi sarcoma records that lymphedema is a complication of the disease, that HHV-8 has a privileged tropism for lymphatic endothelial cells and induces multicentric endothelial proliferation leading to occlusion of the lymphatic vascular lumen so that lymphatic obstruction progressively blocks drainage and produces lymph stasis and lymphedema, that lymphedema usually involves the lower limb affected by the sarcoma, that it may appear simultaneously with or after the lesions and may be the first sign long before skin lesions appear, and that it remains a chronic disease whose volume is only slightly reduced or unchanged by treating the sarcoma; the Brambilla 2006 series of 65 patients with classic sarcoma-associated lymphedema limited to below the knee found that 60% (30/50) of those given below-knee elastic stockings had a limb volume reduction while all 15 untreated patients had volume increase, with no correlation to systemic or local chemotherapy; the Lazareth 2002 lymphedema classification lists neoplastic disease - naming Kaposi sarcoma alongside breast and prostatic cancer - among the major causes of secondary lymphedema arising from disruption or obstruction of the lymphatic pathways; the literature documents a frequent, chronic limb-swelling complication with a described occlusion mechanism without establishing that the sarcoma caused an individual's lymphedema.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established at the mapping level: lymphedema may precede the visible sarcoma lesions and can be the presenting sign, so temporal precedence cannot establish direction in an individual; tumour-directed treatment may or may not reduce limb volume; regional surgery and radiotherapy independently cause secondary lymphedema in the same populations; filarial lymphatic disease, chronic venous insufficiency, obesity, and primary lymphedema independently produce the same limb swelling; and no cohort quantifies the incidence of lymphedema after a defined sarcoma stage - so the edge records a documented complication at association-only strength.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 213.1 — Dauguet M, Lebbe C, Vignes S. Lymphedema and Kaposi sarcoma: A narrative review. J Med Vasc. 2023 Nov-Dec;48(5-6):181-187. doi:10.1016/j.jdmv.2023.10.007. PMID 38035924.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/38035924/
+- Source checked on: 2026-09-24
+- Locator: PMID 38035924; Kaposi sarcoma-associated lymphedema mechanism with lymphatic lumen occlusion and chronic course
+- Note under review: Narrative review recording that lymphedema is a frequent complication of Kaposi sarcoma, that HHV-8 tropism for lymphatic endothelial cells drives multicentric endothelial proliferation that occludes the lymphatic lumen producing lymph stasis and lymphedema, that lymphedema may reveal the sarcoma or occur through its course, and that it remains chronic with only slight or no volume reduction from sarcoma treatment - the mechanism and chronicity anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 213.2 — Brambilla L, Tourlaki A, Ferrucci S, Brambati M, Boneschi V. Treatment of classic Kaposi's sarcoma-associated lymphedema with elastic stockings. J Dermatol. 2006 Jul;33(7):451-6. doi:10.1111/j.1346-8138.2006.00108.x. PMID 16848816.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/16848816/
+- Source checked on: 2026-09-24
+- Locator: PMID 16848816; lymphedema of the lower extremities as a frequent complication of classic Kaposi sarcoma in 65 patients
+- Note under review: Series of 65 patients with classic Kaposi sarcoma-associated lymphedema limited to below the knee: 60% (30/50) of those given below-knee elastic stockings had limb volume reduction while all 15 untreated patients had volume increase, with no correlation between lymphedema reduction and systemic or local chemotherapy - the quantified limb-swelling anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 213.3 — Lazareth I. [Classification of lymphedema]. Rev Med Interne. 2002 Jun;23 Suppl 3:375s-378s. doi:10.1016/s0248-8663(02)80378-2. PMID 12162199.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/12162199/
+- Source checked on: 2026-09-24
+- Locator: PMID 12162199; neoplastic disease including Kaposi sarcoma as a major cause of secondary lymphedema
+- Note under review: Classification review defining secondary lymphedema as developing from disruption or obstruction of the lymphatic pathways and listing neoplastic disease - naming breast and prostatic cancer and Kaposi sarcoma - among its major causes, alongside iatrogenic and post-infectious mechanisms - the classification anchor for the sarcoma-to-secondary-lymphedema proposition.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `kaposi-s-sarcoma` → `cellulitis` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** The Volkow-Fernandez 2022 series of 39 HIV-positive patients with Kaposi sarcoma, chronic lower-limb lymphedema, and at least one cellulitis episode - described as the first study to report chronic lower-limb lymphedema secondary to Kaposi sarcoma as a risk factor for cellulitis - reports that 18 patients (46.1%) were hospitalized for the first episode and eight (20.5%) for recurrence, that six patients (25.3%) died including two from toxic shock syndrome and one from septic shock, that 14 (35.8%) had at least one recurrent episode, and that the associated clinical factors were groin or lymph-node sarcoma infiltration (69.2%), onychomycosis or tinea pedis (44.7%), and ulcerated lesions (38.4%); the Nazzaro 2018 microbiological study of toe web intertrigo in a large Kaposi sarcoma cohort found the sarcoma patients' interdigital flora significantly different from non-sarcoma patients (Trichophyton mentagrophytes 16%, Staphylococcus aureus 14.9%, Pseudomonas aeruginosa 13.9%, Serratia marcescens 5.9% versus S. aureus 26.9%, Candida albicans 22%, Streptococcus agalactiae 7.7%, Escherichia coli 9.9%; P < .01) and states that careful inspection is necessary for early diagnosis of toe web intertrigo in order to prevent serious complications such as cellulitis and sepsis; the literature documents a recurring bacterial soft-tissue infection burden in sarcoma-affected limbs with lymphatic impairment without establishing that the sarcoma caused an individual's cellulitis.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established at the mapping level: the located series is single-centre, hospital-based, and confined to HIV-related disease with chronic lower-limb lymphedema, so it cannot separate the sarcoma's contribution from that of the lymphedema, HIV-related immunosuppression, interdigital fungal or bacterial portals, and ulcerated lesions; the reported factors were not adjusted for competing risks; and cellulitis, erysipelas, deep vein thrombosis, and contact or stasis dermatitis independently produce the same red, warm, swollen limb - so no directional claim is made.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 214.1 — Volkow-Fernandez P, Islas-Munoz B, Alatorre-Fernandez P, Cornejo-Juarez P. Cellulitis in patients with chronic lower-limb lymphedema due to HIV-related Kaposi sarcoma. Int J STD AIDS. 2022 Mar;33(3):296-303. doi:10.1177/09564624211059359. PMID 34965797.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/34965797/
+- Source checked on: 2026-09-24
+- Locator: PMID 34965797; chronic lower-limb lymphedema due to HIV-related Kaposi sarcoma as a risk factor for cellulitis in 39 patients
+- Note under review: Series of 39 HIV-positive patients with Kaposi sarcoma, chronic lower-limb lymphedema, and at least one cellulitis episode: 46.1% hospitalized for the first episode, 35.8% with recurrence, 25.3% mortality including toxic shock and septic shock, and associated factors of groin or lymph-node infiltration (69.2%), onychomycosis or tinea pedis (44.7%), and ulcerated lesions (38.4%) - the cellulitis-risk anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 214.2 — Nazzaro G, Tourlaki A, Scoppio B, Restelli A, Grancini A, Brambilla L. Toe web intertrigo in Kaposi's sarcoma patients: a microbiological study in a large cohort of patients. Eur J Clin Microbiol Infect Dis. 2018 Feb;37(2):301-303. doi:10.1007/s10096-017-3132-3. PMID 29150768.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/29150768/
+- Source checked on: 2026-09-24
+- Locator: PMID 29150768; toe web intertrigo in Kaposi sarcoma patients with risk of progression to cellulitis and sepsis
+- Note under review: Microbiological study of toe web intertrigo in a large Kaposi sarcoma cohort showing significantly different interdigital flora from non-sarcoma patients (dermatophytes and Gram-negative organisms predominating) and stating that careful inspection is required for early diagnosis in order to prevent serious complications such as cellulitis and sepsis - the portal-of-entry anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `keloids` → `depressive-disorder` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** The Huang 2025 study of 202 Chinese patients with keloids, which states that in addition to producing pain and itching keloids can cause psychological symptoms including anxiety and depression, reports mean Hospital Anxiety and Depression Scale scores of 9.82 +/- 2.20 for anxiety and 7.96 +/- 2.70 for depression, with HADS depression significantly associated with use of social support (odds ratio 0.607) and coping tendencies partially mediating the relationship between social support and depression (38.58% of the total effect); the Lu 2021 study of quality of life and psychosocial wellbeing in Chinese patients with keloids using the Dermatology Life Quality Index and the Symptom Checklist-90 found interpersonal-sensitivity, depression, and anxiety scores higher in the visible-scar group than in either the invisible-scar group or the normal group (P < .05), higher depression and anxiety scores in the invisible-scar group than in the normal group (P < .05) while other indices did not differ, and a greater effect on female patients' mental health (P < .05); the literature documents a reproducible depressive-symptom burden in keloid patients without establishing that the keloid caused an individual's depressive disorder.
+
+**Causation boundary (causationStatus):** The mapping does not assert that keloids caused an individual's depressive disorder: the located studies are cross-sectional questionnaire surveys without a pre-keloid baseline, so direction cannot be established and pre-existing depression may precede the lesion; the instruments are screening scales rather than diagnostic interviews and some group means sit near rather than clearly beyond common cut-offs; disfigurement, pain, pruritus, treatment burden, and surgical history independently affect mood; and the depression signal is partially mediated by social support and coping style - so individual claims require a documented depressive disorder with chronology relative to the keloid and assessment of competing psychosocial contributors.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 215.1 — Huang Y, Xu S, Wu Y, Gu Z, Dong C, Zhang L, Chen X. Coping tendencies play partial mediating role between social support and anxiety/depression among Chinese keloid patients. Front Psychiatry. 2025;16:1543484. doi:10.3389/fpsyt.2025.1543484. PMID 41169494.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/41169494/
+- Source checked on: 2026-09-24
+- Locator: PMID 41169494; mean HADS anxiety 9.82 and depression 7.96 in 202 keloid patients with coping-mediated depression
+- Note under review: Survey of 202 Chinese keloid patients stating that keloids can cause psychological symptoms including anxiety and depression: mean HADS scores 9.82 +/- 2.20 (anxiety) and 7.96 +/- 2.70 (depression), with depression associated with use of social support (OR 0.607) and coping tendencies partially mediating 38.58% of the social-support-to-depression relationship - the keloid-specific symptom-burden anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 215.2 — Lu W, Chu H, Zheng X. Effects on quality of life and psychosocial wellbeing in Chinese patients with keloids. Am J Transl Res. 2021;13(3):1636-1642. PMID 33841685.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/33841685/
+- Source checked on: 2026-09-24
+- Locator: PMID 33841685; higher SCL-90 depression and anxiety scores in keloid patients with visible scars
+- Note under review: Comparative survey of Chinese keloid patients using the Dermatology Life Quality Index and Symptom Checklist-90: interpersonal-sensitivity, depression, and anxiety scores higher in the visible-scar group than in the invisible-scar or normal groups (P < .05), depression and anxiety also elevated in the invisible-scar group versus normal (P < .05), and a greater effect on female patients (P < .05) - the comparative psychosocial-impairment anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `katayama-fever` → `urticaria` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** The Rocha 1995 study of secondary cutaneous manifestations of acute schistosomiasis mansoni followed 34 patients infected simultaneously at the same location and found that 16 developed angioedema and/or urticaria, generally of short duration and mild intensity and usually appearing about 30 days after infection, with no apparent association between the skin manifestations and worm burden, blood eosinophilia, or immediate intradermal reaction to worm antigen, leading the authors to attribute the manifestations to host immunological reactivity; the Wilder-Smith and Caumes 2024 clinical review of skin problems in travellers states that acute schistosomiasis is the most common parasitic cause of acute urticaria in travellers, within a pruritus-associated differential that also includes cercarial dermatitis, scabies, and creeping dermatitis; the literature documents urticaria and angioedema as manifestations of the acute schistosomal syndrome without establishing that the syndrome caused an individual's urticarial episode.
+
+**Causation boundary (causationStatus):** The mapping does not assert that the acute schistosomal syndrome caused an individual's urticaria: urticaria and angioedema are partly constitutive of the acute syndrome itself rather than a distinct downstream disorder, so the edge records case-matching of the presentation; the located cohort was small and contemporaneous and found the manifestations independent of worm burden and eosinophilia, and acute urticaria has many alternative causes in the same populations (viral infection, drug or food exposure, cercarial dermatitis, scabies, and other parasitic infection) - so no directional claim is made.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 216.1 — Rocha MO, Greco DB, Pedroso ER, Lambertucci JR, Rocha RL, Rezende DF, Neves J. Secondary cutaneous manifestations of acute schistosomiasis mansoni. Ann Trop Med Parasitol. 1995 Aug;89(4):425-30. doi:10.1080/00034983.1995.11812971. PMID 7487229.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/7487229/
+- Source checked on: 2026-09-24
+- Locator: PMID 7487229; angioedema and/or urticaria in 16 of 34 patients with acute schistosomiasis mansoni
+- Note under review: Cohort of 34 patients infected simultaneously at the same location with acute schistosomiasis mansoni, of whom 16 developed angioedema and/or urticaria of short duration and mild intensity usually about 30 days post-infection, with no apparent association to worm burden, blood eosinophilia, or intradermal antigen reaction, which the authors attributed to host immunological reactivity - the cutaneous-manifestation anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 216.2 — Wilder-Smith AB, Caumes E. Approach to skin problems in travellers: clinical and epidemiological clues. J Travel Med. 2024 Dec 10;31(8):taae142. doi:10.1093/jtm/taae142. PMID 39485933.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/39485933/
+- Source checked on: 2026-09-24
+- Locator: PMID 39485933; acute schistosomiasis as the most common parasitic cause of acute urticaria in travellers
+- Note under review: Clinical review of skin problems in travellers stating that acute schistosomiasis is the most common parasitic cause of acute urticaria in travellers, within a pruritus-associated differential that also includes cercarial dermatitis, scabies, and creeping dermatitis - the traveller-population urticaria anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
 ## Implementation mechanics after decisions
 
 - Mapping edits and registry edits must land in lockstep (the registry audit's canonical-JSON hashes and live-use sets will fail otherwise).

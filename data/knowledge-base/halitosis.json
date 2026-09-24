@@ -2,8 +2,77 @@
   "id": "halitosis",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review oral, dental, maxillofacial, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 41 (2026-09-24): one ASSOCIATION_ONLY draft mapping pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: the mapping asserts association only (etiologicalConsensus NOT_ESTABLISHED, hypothesizedOnly:true) following the burning-mouth-syndrome to depressive-disorder oral-psychological precedent - it records that halitosis cohorts carry excess psychological discomfort, disability, anxiety, and self-esteem loss, not that odor caused a major depressive disorder in any individual; individual claims require objectively confirmed halitosis (organoleptic plus volatile-sulfur-compound measurement) with documented mood chronology and exclusion of psychogenic halitosis/halitophobia, primary psychiatric disorder, and xerostomia or reflux-driven odor, and the reverse-arrow confound (emotional state modulating self-perception) must be addressed by objective odor measurement per case."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 41 (2026-09-24): one bounded association edge authored. The Lu 2017 study of 104 Chinese adults (102-patient comparison cohort at a specialist halitosis clinic with volatile-sulfur-compound, Oral Chroma, and organoleptic confirmation) documents significantly poorer oral health-related quality of life in the halitosis group (OHIP-14 severity 15.7 versus 7.9) with the most commonly reported negative impacts falling within the psychological discomfort and psychological disability domains, the Renvert 2020 expert consensus review documents that intra-oral halitosis affects substantial populations (about 90% of cases oral in origin) and can result in psychological consequences including social, professional, and affective limitations, and the Mento 2021 systematic review of 38 studies documents that self-perceived halitosis carries anxiety, reduced self-esteem, misinterpretation of others' attitudes, embarrassment, and relational discomfort often resulting in social isolation - an odor-confirmed cohort plus consensus and systematic-review triangulation of psychological burden whose endpoints are oral-health-quality-of-life psychological domains and anxiety rather than structured major-depression diagnosis, so the edge rests at NOT_ESTABLISHED (burning-mouth precedent family, PSYCHOPHYSIOLOGICAL).",
+    "Negative screens recorded 2026-09-24: (i) reverse-arrow guard recorded in-file: the Mento review documents that self-perception of halitosis is modulated by emotional state and body image and is rarely self-perceived, and psychogenic halitosis (halitophobia) runs the arrow psychological-distress to odor-complaint - the edge therefore requires objective odor confirmation (VSC or organoleptic) as its evidence anchor and cannot rest on self-perception alone; (ii) shared-driver guard: periodontitis, tongue coating, smoking, and xerostomia are upstream drivers of organic halitosis (the periodontal-disease identity owns its own windows; smoking independently causes both halitosis and black hairy tongue per the Just-Sarobe review recorded in the hairy-tongue deferral), so driver-mediated mood effects route through those identities rather than this arrow; (iii) no dysphagia, oral-pain, or taste edge - halitosis itself produces no quantified forward functional outcome in the located literature, and dysgeusia/taste identities are absent (zero-record and wrong-target guards); (iv) no gastroesophageal or systemic-disease edge - extra-oral halitosis (about 10%) is manifestation of upstream reflux or pulmonary or metabolic disease whose identities own that direction (direction guard; duplicate-scope with GERD if cataloged); (v) duplicate-scope note: depressive-disorder gains a psychological-burden incoming edge with an independent odor-confirmed evidence base (63 incoming edges total), and burning-mouth-syndrome owns its parallel oral-burning pathway (shared-target, independent-evidence guard). Reopening condition: a structured-diagnostic (SCID) depression-incidence cohort in objectively confirmed halitosis patients, or a halitosis-treatment randomized trial with mood endpoints."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "depressive-disorder",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The Lu 2017 cohort study comparing 102 objectively confirmed halitosis patients (volatile-sulfur-compound, Oral Chroma, and organoleptic testing) with 102 controls documents significantly poorer oral health-related quality of life (OHIP-14 severity 15.7 versus 7.9, p less than 0.001) with the most commonly reported negative impacts within the psychological discomfort and psychological disability domains, the Renvert 2020 expert consensus review documents that halitosis has a significant impact on patients' quality of life and can result in psychological consequences including social, professional, and affective limitations, and the Mento 2021 systematic review of 38 studies documents that self-perceived halitosis carries anxiety, reduced self-esteem, embarrassment, relational discomfort, and social isolation; the literature documents a reproducible psychological-burden excess in halitosis populations without establishing that odor caused a major depressive disorder in any individual.",
+        "causationStatus": "The mapping does not assert that halitosis caused a distinct depressive disorder in any individual: the documented endpoints are oral-health-quality-of-life psychological domains, anxiety, and self-esteem rather than structured major-depression diagnosis, the reverse arrow is active in the same literature (emotional state and body image modulate self-perception of halitosis, and psychogenic halitosis or halitophobia produces odor complaints driven by psychological distress), and shared upstream drivers (periodontitis, tongue coating, smoking, xerostomia) independently generate both odor and psychosocial strain in the same populations (burning-mouth-syndrome precedent); individual claims require objectively confirmed halitosis (organoleptic and volatile-sulfur-compound measurement) with documented mood-disorder chronology after odor onset, a structured psychiatric diagnostic assessment meeting the depressive-disorder identity's scope, and exclusion of halitophobia, primary psychiatric disorder, medication-induced mood symptoms, and reflux- or xerostomia-driven odor per case."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "PSYCHOPHYSIOLOGICAL",
+        "primaryVector": "A social-stigma and self-monitoring pathway: persistent oral malodor detectable by others activates anticipatory embarrassment and negative-feedback self-monitoring, producing avoidance of close social interaction, reduced self-esteem, misinterpretation of others' attitudes, and anxiety about social exposure that accumulates into affective limitation and depressive-spectrum mood dysregulation - the documented psychological-discomfort, psychological-disability, and social-isolation profile of halitosis cohorts - while the reverse arrow (distress amplifying odor perception) and shared oral drivers keep individual attribution an association hypothesis.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The edge asserts an association only: the located condition-specific evidence is one objective-odor cohort measuring oral-health-quality-of-life psychological domains, one expert consensus review, and one systematic review of self-perception studies rather than any structured-diagnostic depression-incidence cohort, the measured endpoints (OHIP psychological discomfort/disability, anxiety, self-esteem) are not major-depression diagnoses, the reverse arrow from emotional state to odor perception and the existence of psychogenic halitosis confound direction in the same literature, and shared oral drivers independently produce odor and distress; the burning-mouth psychological precedent rests at NOT_ESTABLISHED; no probability estimate is asserted.",
+        "evidenceGaps": "Objective halitosis confirmation (organoleptic score plus volatile-sulfur-compound measurement or Oral Chroma) with documented organic intra-oral source (tongue coating, periodontal, or tonsillar) and chronology; structured psychiatric diagnostic assessment (SCID or equivalent) documenting depressive symptoms of grade and duration meeting the depressive-disorder identity's scope with onset after odor onset; serial oral-health-quality-of-life and mood measures tracking odor treatment response; exclusion of halitophobia or psychogenic halitosis, primary anxiety or depressive disorder predating the odor, medication-induced mood symptoms, xerostomia, and gastroesophageal-reflux-driven extra-oral odor; psychiatry and oral-medicine assessment of the individual relationship",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Psychogenic halitosis or halitophobia without objective odor",
+          "Primary psychiatric disorder predating the odor complaint",
+          "Medication-induced mood or taste disturbance (xerostomia-producing drugs)",
+          "Gastroesophageal reflux or extra-oral systemic-disease odor",
+          "Periodontitis or tongue-coating driver with independent psychosocial burden"
+        ]
+      },
+      "evidenceGaps": [
+        "Objective halitosis confirmation (organoleptic score plus volatile-sulfur-compound measurement or Oral Chroma) with documented organic intra-oral source (tongue coating, periodontal, or tonsillar) and chronology; structured psychiatric diagnostic assessment (SCID or equivalent) documenting depressive symptoms of grade and duration meeting the depressive-disorder identity's scope with onset after odor onset; serial oral-health-quality-of-life and mood measures tracking odor treatment response; exclusion of halitophobia or psychogenic halitosis, primary anxiety or depressive disorder predating the odor, medication-induced mood symptoms, xerostomia, and gastroesophageal-reflux-driven extra-oral odor; psychiatry and oral-medicine assessment of the individual relationship"
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY under the burning-mouth oral-psychological precedent: an odor-confirmed cohort, an expert consensus, and a systematic review triangulate excess psychological discomfort, disability, anxiety, and social isolation in halitosis populations, while non-diagnostic endpoints, the active reverse arrow from distress to odor perception, shared oral drivers, and precedent norms keep the consensus at NOT_ESTABLISHED with objective-odor and structured-diagnosis requirements; no probability estimate is asserted.",
+      "sourceReferences": [
+        {
+          "citation": "Lu HX, Chen XL, Wong M, Zhu C, Ye W. Oral health impact of halitosis in Chinese adults. Int J Dent Hyg. 2017 Nov;15(4):e85-e92. PMID 27516401.",
+          "note": "Cohort of objectively confirmed halitosis patients (VSC, Oral Chroma, organoleptic testing) versus controls documenting OHIP-14 severity 15.7 versus 7.9 with the most common negative impacts in the psychological discomfort and psychological disability domains - the odor-confirmed psychological-burden anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/27516401/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 27516401; 102 halitosis vs controls, OHIP-14 15.7 vs 7.9, psych discomfort/disability domains"
+        },
+        {
+          "citation": "Renvert S, Noack MJ, Lequart C, Roldan S, Laine ML. The Underestimated Problem of Intra-Oral Halitosis in Dental Practice: An Expert Consensus Review. Clin Cosmet Investig Dent. 2020 Jul 3;12:251-262. PMID 32753975.",
+          "note": "Expert consensus review documenting that about 90% of halitosis originates in the oral cavity, that the condition has a significant quality-of-life impact, and that it can result in psychological consequences including social, professional, and affective limitations - the consensus prevalence-and-consequence anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/32753975/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 32753975; ~90% intra-oral origin, psychological consequences incl. affective limitations"
+        },
+        {
+          "citation": "Mento C, Lombardo C, Milazzo M, et al. Adolescence, Adulthood and Self-Perceived Halitosis: A Role of Psychological Factors. Medicina (Kaunas). 2021 Jun 12;57(6):614. PMID 34204752.",
+          "note": "PRISMA systematic review of 38 studies documenting that self-perceived halitosis carries anxiety, reduced self-esteem, misinterpretation of others' attitudes, embarrassment, and relational discomfort often resulting in social isolation, while also recording emotional-state modulation of self-perception - the systematic-review consequence anchor and reverse-arrow source.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34204752/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 34204752; 38-study review, anxiety/self-esteem/social isolation, perception modulated by emotion"
+        }
+      ]
+    }
+  ]
 }

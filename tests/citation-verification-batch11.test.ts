@@ -25,4 +25,4 @@ describe("batch 11 ratchet",()=>{it("pins the approved baseline",()=>{
       assertMasterResolution2026CurrentState();
       return;
     }
-const a=fs.readFileSync(path.join(root,"scripts/audit-citation-verification.js"),"utf8");expect(a).toContain("liveVerified: 142,");expect(a).toContain("verifiedProvenance: 148,");expect(a).toContain("unverified: 366,");expect(a).toContain("reviewFindings: 0,");});});
+const a=fs.readFileSync(path.join(root,"scripts/audit-citation-verification.js"),"utf8");expect(a).toContain("liveVerified: 142,");expect(a).toContain("verifiedProvenance: 148,");expect(a).toContain("unverified: 480,");expect(a).toContain("reviewFindings: 0,");});});

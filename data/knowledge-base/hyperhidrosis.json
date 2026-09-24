@@ -1,6 +1,72 @@
 {
   "id": "hyperhidrosis",
   "draft": true,
-  "todo": ["Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.", "Review primary-versus-secondary etiologies, medication/treatment, endocrine/neurologic, dermatologic complications, and functional impairment pathways only where supported; do not infer cause from sweating symptoms alone."],
-  "suggestions": []
+  "todo": [
+    "D1 draft-authoring batch 46 (2026-09-24): one ASSOCIATION_ONLY draft mapping pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: the single authored edge asserts association only (etiologicalConsensus NOT_ESTABLISHED, hypothesizedOnly:true) - it records that anxiety is more prevalent in hyperhidrosis patients than in controls in cross-sectional and observational series, not that hyperhidrosis caused anxiety in any individual; the relationship is plausibly bidirectional and shares an autonomic/emotional-regulation substrate, so individual claims require validated anxiety assessment with chronology relative to hyperhidrosis onset and severity, and exclusion of primary anxiety disorder and of medication-, endocrine-, and substance-related sweating.",
+    "Prior-proposition screen: the master-resolution program closed the harvested hyperhidrosis-to-depressive-disorder proposition (PMID 28881483) as FINAL-CLOSE-PROPOSITION-MISMATCH with no approved targets, and that proposition is NOT reasserted here; this batch authors only the anxiety window, on separate condition-specific anxiety evidence, and authors no depressive-disorder edge.",
+    "Duplicate-scope guard: the anxiety-disorder identity already receives eight incoming windows (sleep-apnea, bipolar-disorder, benign-paroxysmal-positional-vertigo, charles-bonnet-syndrome, aphonia, dermatitis, dizziness, dementia), none of which is a hyperhidrosis/autonomic-sweating window, so this batch adds the hyperhidrosis window on its own primary; no social-anxiety-disorder edge is authored because the located evidence measures general anxiety symptoms and the social-anxiety identity would create a parallel pathway (mechanism-specificity guard)."
+  ],
+  "governanceNotes": [
+    "D1 batch 46 (2026-09-24): one bounded association edge authored - hyperhidrosis to anxiety-disorder (rank 1), ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true, and mechanismCategory PSYCHOPHYSIOLOGICAL (autonomic emotional sweating and anxiety-related arousal). The proposition rests on the Bahar 2016 study of 2017 consecutive dermatology outpatients, which found anxiety in 21.3% of hyperhidrosis patients versus 7.5% of patients without hyperhidrosis (p<0.001) in a severity-dependent pattern that persisted on multivariable analysis, and on the Kamikava 2021 observational study of 81 patients evaluating anxiety symptoms before and after oxybutynin treatment for primary hyperhidrosis - a severity-gradient anchor plus a treatment-cohort anchor. The edge is not raised to causation: the designs are cross-sectional or observational without incident-anxiety follow-up, the relationship is plausibly bidirectional (anxiety involves sympathetic arousal that itself drives sweating) and shares an autonomic/emotional substrate, and the estimates are of co-occurrence rather than attributable incidence, so no probability estimate is asserted.",
+    "FINAL-CLOSE-PROPOSITION-MISMATCH screen recorded 2026-09-24: the master-resolution disposition closed the harvested hyperhidrosis-to-depressive-disorder proposition (originalDisposition HOLD-PROPOSITION-MISMATCH, masterResolution FINAL-CLOSE-PROPOSITION-MISMATCH, approvedTargets empty, reason noting that co-mentioned depressive-disorder evidence did not establish a sufficiently specific hyperhidrosis-to-depressive-disorder secondary relationship). That proposition remains closed and is not reasserted; no depressive-disorder edge is authored, and the authoring evidence here is condition-specific anxiety evidence.",
+    "Negative screens recorded 2026-09-24: (i) no depressive-disorder edge - the FINAL-CLOSE-PROPOSITION-MISMATCH closure remains in force (prior-closure guard); (ii) no social-anxiety-disorder edge - the located studies measure general anxiety symptoms and no condition-specific hyperhidrosis-to-social-anxiety directional data were located that would not parallel the anxiety-disorder window (duplicate-scope and mechanism-specificity guards); (iii) no fungal-skin-infection or cellulitis edge - the located hyperhidrosis literature addresses quality-of-life and psychiatric comorbidity rather than documentation of maceration-driven infection with denominators, and the fungal-skin-infection identity receives no current incoming window (zero-record guard); (iv) no dermatitis or atopic-dermatitis-eczema edge - hyperhidrosis is a sweating disorder rather than an eczematous one and no condition-specific directional data were located (zero-record guard); (v) no endocrine or thyroid edge - secondary hyperhidrosis is a manifestation of those primaries, so the direction would be inverted (direction-inversion guard); (vi) no insomnia, bromhidrosis, or social-functioning edge - insomnia is confounded and bromhidrosis is absent from the catalog (zero-record and wrong-target guards); (vii) duplicate-scope note: this batch adds the first hyperhidrosis-primary window to the registry."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "anxiety-disorder",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Clinical series document a higher prevalence of anxiety in hyperhidrosis patients than in controls: the Bahar 2016 study of 2017 consecutive dermatology outpatients found anxiety in 21.3% of hyperhidrosis patients versus 7.5% without hyperhidrosis (p<0.001) in a severity-dependent pattern that persisted on multivariable analysis, and the Kamikava 2021 observational study evaluated anxiety symptoms in 81 primary-hyperhidrosis patients before and after treatment - a reproducible co-occurrence association rather than an individual causal nexus.",
+        "causationStatus": "Neither causation nor aggravation is established: the designs are cross-sectional or observational without incident-anxiety follow-up, the relationship is plausibly bidirectional with a shared autonomic and emotional-regulation substrate, and the estimates are of co-occurrence rather than attributable incidence, so an individual determination requires validated anxiety assessment with chronology relative to hyperhidrosis onset and severity, and exclusion of primary anxiety disorder and of medication-, endocrine-, and substance-related sweating."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "PSYCHOPHYSIOLOGICAL",
+        "primaryVector": "A hypothesized psychophysiological route is described: primary hyperhidrosis reflects sympathetic overactivity of eccrine sweat glands and is clinically diagnosed when the excess sweating produces significant emotional and social distress, and the reciprocal limb is that anticipatory anxiety and social vigilance amplify sympathetic outflow to the same glands, so a self-reinforcing cycle of sweating and anxiety can develop - consistent with the severity-dependent anxiety gradient reported in the Bahar 2016 outpatient study and with the anxiety-symptom course followed in the Kamikava 2021 treatment cohort; the cross-sectional design and the shared-substrate confound leave individual attribution hypothesized.",
+        "secondaryVector": "Social embarrassment, occupational and relationship limitations, and avoidance behaviour can maintain or worsen anxiety, and the anxiety may in turn increase sweating frequency and severity, which is why the direction is not resolved by the located evidence.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The edge asserts an association only: cross-sectional and observational series show a higher anxiety prevalence in hyperhidrosis patients than in controls with a severity gradient, but the evidence does not resolve direction, the relationship shares an autonomic substrate, and estimates are of co-occurrence rather than attributable incidence; an individual claim therefore requires validated anxiety assessment, documented chronology, and exclusion of primary anxiety disorder and of other sweating causes, so no at-least-as-likely-as-not probability is asserted.",
+        "evidenceGaps": "Documentation and characterization of the hyperhidrosis (primary versus secondary, distribution, severity, age of onset, date); validated anxiety assessment (structured diagnostic evaluation or standardized instrument such as GAD-7) with scoring and date; chronology of the anxiety relative to the onset and course of the hyperhidrosis; evaluation for primary anxiety disorder and for medication-, endocrine (thyroid, pheochromocytoma), neurologic, and substance-related sweating; assessment of occupational and social functional impact; dermatologic, psychiatric, or primary-care assessment of whether the hyperhidrosis materially contributed to the individual anxiety",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Primary anxiety or panic disorder independent of sweating",
+          "Medication-related (SSRI, opioid, cholinesterase-inhibitor) or substance-related sweating",
+          "Endocrine causes of secondary hyperhidrosis (hyperthyroidism, pheochromocytoma, diabetes)",
+          "Neurologic or malignant causes of secondary hyperhidrosis",
+          "Menopausal or physiologic thermoregulatory sweating"
+        ]
+      },
+      "evidenceGaps": [
+        "Documentation and characterization of the hyperhidrosis (primary versus secondary, distribution, severity, age of onset, date); validated anxiety assessment (structured diagnostic evaluation or standardized instrument such as GAD-7) with scoring and date; chronology of the anxiety relative to the onset and course of the hyperhidrosis; evaluation for primary anxiety disorder and for medication-, endocrine (thyroid, pheochromocytoma), neurologic, and substance-related sweating; assessment of occupational and social functional impact; dermatologic, psychiatric, or primary-care assessment of whether the hyperhidrosis materially contributed to the individual anxiety"
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY: a 2017-outpatient study found anxiety in 21.3% of hyperhidrosis patients versus 7.5% of controls in a severity-dependent pattern that persisted on multivariable analysis, and an observational treatment cohort followed anxiety symptoms in primary hyperhidrosis, establishing a reproducible co-occurrence association; the edge is not raised to causation because the designs are cross-sectional or observational without incident-anxiety follow-up and the relationship is plausibly bidirectional with a shared autonomic substrate, so the consensus remains NOT_ESTABLISHED with validated-assessment, chronology, and competing-cause requirements; no probability estimate is asserted.",
+      "sourceReferences": [
+        {
+          "citation": "Bahar R, Zhou P, Liu Y, et al. The prevalence of anxiety and depression in patients with or without hyperhidrosis (HH). J Am Acad Dermatol. 2016 Dec;75(6):1126-1133. doi:10.1016/j.jaad.2016.07.001. PMID 27567033.",
+          "note": "Study of 2017 consecutive dermatology outpatients reporting anxiety in 21.3% of hyperhidrosis patients versus 7.5% without hyperhidrosis (p<0.001), severity-dependent and independent of demographics on multivariable analysis - the quantitative co-occurrence anchor for the anxiety association.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/27567033/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-24",
+          "sourceLocator": "PMID 27567033; anxiety prevalence 21.3% in hyperhidrosis versus 7.5% in non-hyperhidrosis outpatients, severity-dependent"
+        },
+        {
+          "citation": "Kamikava DYF, Wolosker N, Silva MFAD, Campos JRM, Puech-Leão P. Symptoms of anxiety and depression in patients with primary hyperhidrosis and its association with the result of clinical treatment with oxybutynin. Clinics (Sao Paulo). 2021;76:e2892. doi:10.6061/clinics/2021/e2892. PMID 34190853.",
+          "note": "Observational study of 81 patients with primary hyperhidrosis evaluating anxiety symptoms before and after oxybutynin treatment - the treatment-cohort anchor documenting anxiety symptoms in a primary-hyperhidrosis population and their course with sweating-directed therapy.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34190853/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-24",
+          "sourceLocator": "PMID 34190853; anxiety symptoms in 81 primary-hyperhidrosis patients before and after oxybutynin treatment"
+        }
+      ]
+    }
+  ]
 }

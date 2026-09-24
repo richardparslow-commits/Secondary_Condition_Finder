@@ -2,8 +2,126 @@
   "id": "hypopituitarism",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review hormonal, metabolic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 47 (2026-09-24): two ASSOCIATION_ONLY draft mappings pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: both authored edges assert association only (etiologicalConsensus NOT_ESTABLISHED, hypothesizedOnly:true). Reviews describe hypopituitarism as a recognized cause of bone mineral loss and clinical series document lower haemoglobin in hypopituitarism, but the condition-specific data are prevalence and association studies rather than intervention or incident-outcome designs, so this mapping deliberately stays at ASSOCIATION_ONLY rather than raised to causation - mirroring the existing celiac-disease and hyperparathyroidism osteoporosis windows - and individual claims require axis documentation, replacement status, outcome measurement, chronology, and exclusion of the competing mechanisms listed on each edge.",
+    "Duplicate-scope guard: the osteopenia identity receives no prior incoming window, and the anemia identity already receives twenty-one windows (none of which is a hypopituitarism/panhypopituitarism window); the established hypogonadism-to-osteoporosis window remains the gonadal-mechanism route and is not duplicated here, and no edge is authored to the osteoporosis residuals identity because the condition-specific cohort measures osteopenia/low bone mass directly and the review literature emphasizes bone-quality loss that can coexist with preserved bone mineral density (target-specificity and parallel-pathway guards).",
+    "Constitutive-axis guard: no edge is authored to hypothyroidism, hypogonadism, diabetes-insipidus, or adrenal-insufficiency, because those are the defining hormone-deficiency components of hypopituitarism rather than downstream secondary conditions - an edge would restate the identity - and the catalogue has no identity for the individual anterior-pituitary axis deficits as consequences."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 47 (2026-09-24): two bounded association edges authored - hypopituitarism to osteopenia (rank 1) and hypopituitarism to anemia (rank 2), both ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, and hypothesizedOnly:true; mechanismCategory NEUROENDOCRINE_CASCADE for the bone window (pituitary hormone deficiency altering bone remodelling) and METABOLIC_OR_NUTRITIONAL for the haematologic window (hormone-deficient erythropoiesis). The osteopenia proposition rests on the Chihaoui 2016 study of bone mineral density in Sheehan's syndrome, which states that hypopituitarism is a known cause of bone mineral loss and reports the prevalence of low bone mass with associated factors in that population, and on the Akirov 2024 review of hypopituitarism and bone disease, which examines the pathophysiology, diagnosis, and treatment outcomes of the association between pituitary hormone deficiency and bone health and names osteopenia among the skeletal consequences. The anemia proposition rests on the Nishioka 2005 retrospective study of 68 patients with anterior pituitary deficiency for more than twelve months, in which haemoglobin was significantly lower in hypopituitarism (p=0.0012), haemoglobin below 12.0 g/dl was present in 22 patients (32.4%), the reduction was related to hypocortisolism and hypothyroidism, and replacement with hydrocortisone and/or levothyroxine improved the haemoglobin level, and on the Aguiar 2025 pituitary adenoma cohort, which reported the prevalence of anemia at diagnosis and its correlation with hypopituitarism across acromegaly, non-functioning adenoma, and prolactinoma subgroups. Neither edge is raised to causation: the bone evidence is a prevalence study plus a narrative review, the anaemia evidence is retrospective with a small treated subgroup, and neither establishes attributable incidence in an individual.",
+    "Counter-evidence and caveat screens recorded 2026-09-24: (i) bone quality versus bone quantity - the pituitary-bone literature indicates that skeletal fragility in pituitary disease can reflect impaired bone quality with fractures occurring at normal or low-normal bone mineral density, so a low-bone-mass window understates that pathway; this is recorded as a screen rather than authored into the osteoporosis residuals identity, which already receives ten windows including the gonadal route (parallel-pathway guard); (ii) growth-hormone and gonadal contributions - the located reviews attribute bone loss to deficient growth-hormone/IGF-1 signalling together with gonadal and adrenal deficiencies and to glucocorticoid over-replacement, so the mechanism is multi-axis and the review-group framing of a single dominant axis is not asserted; (iii) reverse direction - bone and haematologic abnormalities are not established causes of hypopituitarism, so no reverse edge is authored (direction guard); (iv) tumour and radiotherapy context - part of the located literature concerns patients with pituitary adenomas or treated Sheehan's syndrome, so tumour mass effect, cranial radiotherapy, and hypopituitarism are not separable on the located evidence, which is recorded in the evidence gaps of each edge.",
+    "Negative screens recorded 2026-09-24: (i) no hypogonadism, hypothyroidism, adrenal-insufficiency, or diabetes-insipidus edge - those are the constitutive hormone-deficiency components of the identity rather than downstream conditions (constitutive-axis and identity-restatement guards); (ii) no osteoporosis-residuals edge - the located condition-specific measurement is osteopenia/low bone mass and the established hypogonadism window already owns the gonadal-mechanism route (target-specificity and parallel-pathway guards); (iii) no fracture, growth-disorder, short-stature, delayed-puberty, or infertility edge - no such catalog identities exist (wrong-target guard); (iv) no cognitive-disorder or depressive-disorder edge - the located literature is endocrine and skeletal and no condition-specific mood or cognition cohort in hypopituitarism was located in this batch (zero-record guard); (v) no seizure-disorder or coma edge - hyponatraemia-driven and hypoglycaemia-driven events route through their own primaries (intermediate-chain guard); (vi) duplicate-scope note: this batch adds the first hypopituitarism-primary windows to the registry."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "osteopenia",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Clinical and review literature documents reduced bone mineral density in hypopituitarism: the Chihaoui 2016 study of bone mineral density in Sheehan's syndrome states that hypopituitarism is a known cause of bone mineral loss and reports the prevalence of low bone mass with its associated factors in that population, and the Akirov 2024 review of hypopituitarism and bone disease examines the pathophysiology, diagnosis, and treatment outcomes of the association between pituitary hormone deficiency and bone health and names osteopenia among the skeletal consequences - a reproducible co-occurrence association rather than an individual causal nexus.",
+        "causationStatus": "Neither causation nor aggravation is established by the located evidence: the condition-specific data are cross-sectional prevalence estimates and a narrative review without incident-outcome follow-up, the affected populations include pituitary adenoma and Sheehan's syndrome patients in whom tumour, radiotherapy, and hypopituitarism are not separable, and competing drivers of low bone mass such as postmenopausal status, glucocorticoid exposure, and nutritional deficiency are common, so an individual determination requires axis and replacement documentation, dual-energy X-ray absorptiometry measurements with dates, and exclusion of the competing causes listed on this edge."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "NEUROENDOCRINE_CASCADE",
+        "primaryVector": "A hypothesized endocrine route is described: pituitary hormone deficiency removes anabolic and permissive signalling to bone - growth-hormone/IGF-1 deficiency reduces osteoblast-mediated bone formation, gonadotropin deficiency lowers oestrogen or testosterone support of remodelling, and thyrotropin and corticotropin deficiencies alter turnover - so bone mineral loss accumulates, as described at review level in the Akirov 2024 account of hypopituitarism and bone disease and reflected in the low bone mass prevalence reported by the Chihaoui 2016 Sheehan's syndrome study; the prevalence-and-review evidence base and the competing causes leave individual attribution hypothesized.",
+        "secondaryVector": "Patients with hypopituitarism frequently receive glucocorticoid replacement, may have hypogonadism as a component deficit, and can carry residual effects of pituitary surgery or radiotherapy, each of which independently lowers bone mineral density and complicates attribution to the pituitary deficiency itself.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The edge asserts an association only: a condition-specific prevalence study and a narrative review document low bone mass in hypopituitarism and the review names osteopenia among its skeletal consequences, but the designs cannot separate the pituitary deficiency from glucocorticoid replacement, hypogonadism, tumour, surgery, or radiotherapy, and there is no incident-outcome follow-up, so no at-least-as-likely-as-not probability is asserted and an individual claim requires axis documentation, dual-energy X-ray absorptiometry results, and exclusion of competing causes of low bone mass.",
+        "evidenceGaps": "Documentation of the hypopituitarism (affected axes, aetiology such as pituitary adenoma, surgery, radiotherapy, or Sheehan's syndrome, date of onset) and of the current replacement regimen including glucocorticoid dose; dual-energy X-ray absorptiometry bone mineral density with T-scores, dates, and the reference population used; fracture history with imaging where fractures occurred; calcium, vitamin D, parathyroid hormone, gonadal status, and thyroid status with dates; assessment of competing causes including postmenopausal status, glucocorticoid exposure, hyperparathyroidism, malabsorption or bariatric surgery, chronic kidney disease, immobilisation, alcohol use, and smoking; endocrinology assessment of whether the pituitary deficiency materially contributed to the low bone mass",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Postmenopausal or age-related primary osteopenia",
+          "Glucocorticoid-induced bone loss from replacement therapy or other steroid exposure",
+          "Primary hyperparathyroidism or vitamin D and calcium deficiency",
+          "Malabsorption (celiac disease, bariatric surgery) or other nutritional causes",
+          "Chronic kidney disease, immobilisation, alcohol use, or hypogonadism as an independent determinant"
+        ]
+      },
+      "evidenceGaps": [
+        "Documentation of the hypopituitarism (affected axes, aetiology such as pituitary adenoma, surgery, radiotherapy, or Sheehan's syndrome, date of onset) and of the current replacement regimen including glucocorticoid dose; dual-energy X-ray absorptiometry bone mineral density with T-scores, dates, and the reference population used; fracture history with imaging where fractures occurred; calcium, vitamin D, parathyroid hormone, gonadal status, and thyroid status with dates; assessment of competing causes including postmenopausal status, glucocorticoid exposure, hyperparathyroidism, malabsorption or bariatric surgery, chronic kidney disease, immobilisation, alcohol use, and smoking; endocrinology assessment of whether the pituitary deficiency materially contributed to the low bone mass"
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY: a condition-specific study of bone mineral density in hypopituitarism states that hypopituitarism is a known cause of bone mineral loss and reports low bone mass with its associated factors, and a dedicated 2024 review of hypopituitarism and bone disease names osteopenia among the skeletal consequences of pituitary hormone deficiency, establishing a reproducible co-occurrence association; the edge is not raised to causation because the evidence is prevalence and review based without incident-outcome follow-up and because glucocorticoid replacement, hypogonadism, tumour, surgery, and radiotherapy are not separable, so the consensus remains NOT_ESTABLISHED with axis-documentation, densitometry, chronology, and competing-cause requirements and no probability estimate is asserted.",
+      "sourceReferences": [
+        {
+          "citation": "Chihaoui M, Yazidi M, Chaker F, Belouidhnine M, Kanoun F, Lamine F, Ftouhi B, Sahli H, Slimane H. Bone Mineral Density in Sheehan's Syndrome; Prevalence of Low Bone Mass and Associated Factors. J Clin Densitom. 2016 Oct;19(4):413-418. doi:10.1016/j.jocd.2016.02.002. PMID 26993664.",
+          "note": "Condition-specific study of bone mineral density in hypopituitarism (Sheehan's syndrome) stating that hypopituitarism is a known cause of bone mineral loss and reporting the frequency of osteopenia and osteoporosis with associated factors - the prevalence anchor for the low-bone-mass association.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/26993664/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-24",
+          "sourceLocator": "PMID 26993664; osteopenia and osteoporosis prevalence with low bone mass in Sheehan's syndrome, hypopituitarism as known cause of bone mineral loss"
+        },
+        {
+          "citation": "Akirov A, Rudman Y, Fleseriu M. Hypopituitarism and bone disease: pathophysiology, diagnosis and treatment outcomes. Pituitary. 2024 Dec;27(6):778-788. doi:10.1007/s11102-024-01391-2. PMID 38709467.",
+          "note": "Dedicated review of hypopituitarism and bone disease covering pathophysiology, diagnosis, and treatment outcomes, which names osteopenia among the skeletal consequences of pituitary hormone deficiency - the mechanism and entity anchor for the bone window.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38709467/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-24",
+          "sourceLocator": "PMID 38709467; review of hypopituitarism and bone disease naming osteopenia and recording diagnosis and treatment outcomes"
+        }
+      ]
+    },
+    {
+      "conditionId": "anemia",
+      "rank": 2,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Clinical series document lower haemoglobin in hypopituitarism: the Nishioka 2005 retrospective study of 68 patients with anterior pituitary deficiency for more than twelve months found haemoglobin significantly lower than in controls (p=0.0012), haemoglobin below 12.0 g/dl in 22 patients (32.4%), the reduction related to hypocortisolism and hypothyroidism, and an improvement in haemoglobin with hydrocortisone and/or levothyroxine replacement, and the Aguiar 2025 pituitary adenoma cohort reported the prevalence of anemia at diagnosis and its correlation with hypopituitarism - a reproducible co-occurrence association rather than an individual causal nexus.",
+        "causationStatus": "Neither causation nor aggravation is established: the located evidence is a small retrospective series and a single-centre adenoma cohort without incident-anaemia follow-up or control for the common competing causes of anaemia, and the treatment-response observation is uncontrolled; an individual determination therefore requires a complete blood count with indices and dates, iron, vitamin B12 and folate studies, renal function and inflammatory markers, endoscopy or other source evaluation where indicated, and exclusion of the competing anaemias listed on this edge, together with chronology relative to the onset of pituitary deficiency and its replacement."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "METABOLIC_OR_NUTRITIONAL",
+        "primaryVector": "A hypothesized endocrine-metabolic route is described: cortisol and thyroid hormone deficiency reduce erythroid progenitor proliferation and blunted erythropoietin responsiveness, and growth-hormone and androgen deficiency further reduce red-cell mass, producing a typically normocytic normochromic anaemia - the pattern documented in the Nishioka 2005 series, in which the reduced haemoglobin was related to hypocortisolism and hypothyroidism and improved with hydrocortisone and/or levothyroxine replacement, and reflected in the prevalence reported by the Aguiar 2025 pituitary adenoma cohort; the retrospective designs and the competing causes leave individual attribution hypothesized.",
+        "secondaryVector": "Hypopituitarism coexists with intractable causes of anaemia in the same patients - chronic kidney disease, chronic inflammation, iron or B12 deficiency, and myelosuppression after pituitary surgery or cranial radiotherapy - so a deficiency-driven fall in haemoglobin is often superimposed on another anaemia mechanism.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The edge asserts an association only: a 68-patient retrospective series found lower haemoglobin in hypopituitarism with a 32.4% prevalence of haemoglobin below 12.0 g/dl and a relation to hypocortisolism and hypothyroidism, and a pituitary adenoma cohort reported anaemia prevalence and its correlation with hypopituitarism, but there is no incident-outcome follow-up and the common competing anaemias are not excluded, so no at-least-as-likely-as-not probability is asserted and an individual claim requires complete blood-count documentation, iron and vitamin studies, and evaluation for competing sources.",
+        "evidenceGaps": "Complete blood count with red-cell indices, haemoglobin values and dates, before and after hormone replacement where available; iron studies, ferritin, vitamin B12, folate, and where indicated haemoglobin electrophoresis; renal function, erythropoietin level where obtained, and inflammatory markers; documentation of the hypopituitarism (affected axes, aetiology, onset date) and of current replacement therapy including glucocorticoid and thyroid hormone doses; evaluation for blood loss (gastrointestinal, menstrual) and for marrow infiltration or suppression after surgery or cranial radiotherapy; haematology or endocrinology assessment of whether the pituitary deficiency materially contributed to the anaemia",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Iron-deficiency anaemia from gastrointestinal or menstrual blood loss",
+          "Vitamin B12 or folate deficiency",
+          "Anaemia of chronic kidney disease or of chronic inflammation",
+          "Myelosuppression or marrow infiltration related to pituitary tumour, surgery, or cranial radiotherapy",
+          "Primary haematologic disease (myelodysplasia, malignancy) or drug-induced marrow suppression"
+        ]
+      },
+      "evidenceGaps": [
+        "Complete blood count with red-cell indices, haemoglobin values and dates, before and after hormone replacement where available; iron studies, ferritin, vitamin B12, folate, and where indicated haemoglobin electrophoresis; renal function, erythropoietin level where obtained, and inflammatory markers; documentation of the hypopituitarism (affected axes, aetiology, onset date) and of current replacement therapy including glucocorticoid and thyroid hormone doses; evaluation for blood loss (gastrointestinal, menstrual) and for marrow infiltration or suppression after surgery or cranial radiotherapy; haematology or endocrinology assessment of whether the pituitary deficiency materially contributed to the anaemia"
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY: a retrospective series of 68 patients with anterior pituitary deficiency found significantly lower haemoglobin (p=0.0012) with haemoglobin below 12.0 g/dl in 32.4%, related to hypocortisolism and hypothyroidism and improving with replacement, and a pituitary adenoma cohort reported anaemia prevalence correlated with hypopituitarism, establishing a reproducible co-occurrence association; the edge is not raised to causation because the designs are retrospective and single-centre without incident-anaemia follow-up and the competing causes of anaemia in the same patients are not excluded, so the consensus remains NOT_ESTABLISHED with blood-count documentation, competing-cause evaluation, chronology, and source-assessment requirements and no probability estimate is asserted.",
+      "sourceReferences": [
+        {
+          "citation": "Nishioka H, Haraoka J. Hypopituitarism and anemia: effect of replacement therapy with hydrocortisone and/or levothyroxine. J Endocrinol Invest. 2005 Jun;28(6):528-533. doi:10.1007/BF03347241. PMID 16117194.",
+          "note": "Retrospective study of 68 patients with anterior pituitary deficiency for more than twelve months reporting significantly lower haemoglobin (p=0.0012), haemoglobin below 12.0 g/dl in 22 patients (32.4%), a relation to hypocortisolism and hypothyroidism, and improvement with hydrocortisone and/or levothyroxine replacement - the condition-specific prevalence and treatment-response anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/16117194/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-24",
+          "sourceLocator": "PMID 16117194; haemoglobin lower in hypopituitarism (p=0.0012), Hb<12.0 g/dl in 32.4% of 68 patients, improved with hydrocortisone and/or levothyroxine"
+        },
+        {
+          "citation": "Paixao Cortes Aguiar D, Chitolina Nesello A, Araujo B, Mafalda Dos Santos T, Diniz Lima V, Semmelmann Pereira Lima JF, da Costa Oliveira M. Anemia in Patients With Pituitary Adenomas: Prevalence and Correlation With Hypopituitarism. Cureus. 2025 Jun 5;17(6):e85422. doi:10.7759/cureus.85422. PMID 40621322.",
+          "note": "Cohort of patients with acromegaly, non-functioning pituitary adenoma, and prolactinoma reporting the prevalence of anemia at diagnosis and its correlation with hypopituitarism - the population-scale prevalence anchor for the haematologic association.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40621322/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-24",
+          "sourceLocator": "PMID 40621322; anemia prevalence at diagnosis in pituitary adenoma patients and its correlation with hypopituitarism"
+        }
+      ]
+    }
+  ]
 }

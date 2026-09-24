@@ -2,8 +2,141 @@
   "id": "frontal-fibrosizing-alopecia",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review dermatologic, autoimmune, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 35 (2026-09-23): two ASSOCIATION_ONLY draft suggestions pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: (i) the eyebrow-loss mapping asserts the documented association between frontal fibrosing alopecia and eyebrow alopecia without asserting temporal order (brow loss may precede or parallel recognition of scalp hairline recession) and requires brow-site disease documentation plus exclusion of other madarosis causes; (ii) the depressive-disorder mapping asserts a screening-level psychological-burden association only and requires a separately established major depressive disorder with onset chronology, not inference from distress, appearance concern, or quality-of-life impairment alone."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 35 (2026-09-23): two bounded associations authored from condition-specific frontal fibrosing alopecia evidence - eyebrow edge: the Doche 2025 JAAD clinical and histopathological study of 25 patients dedicated to eyebrow alopecia in FFA documents the brow as a disease target site, the Kerkemeyer 2021 review documents the classic phenotype beginning with symmetrical frontotemporal hairline recession together with bilateral eyebrow loss, and the Melián-Olivera 2025 review quantifies eyebrow alopecia prevalence of 43-94.9% in male FFA; depressive edge: the Melián-Olivera 2026 multicenter cross-sectional study of 81 men with FFA documents moderate-to-severe emotional impairment in 39.5% with HADS-measured psychological distress, the Saceda-Corralo 2018 JAMA Dermatol cohort evaluates health-related quality of life in FFA, and the Chiang 2015 study of 105 primary cicatricial alopecia patients (lichen planopilaris and FFA) documents HADS psychological distress and emotionally negative illness perceptions.",
+    "Negative screens recorded 2026-09-23: (i) no longitudinal cohort orders eyebrow loss after FFA diagnosis - brow loss frequently precedes or coincides with recognition of scalp recession, so temporal attribution is guarded rather than asserted; (ii) the FFA psychological studies are cross-sectional with screening instruments (HADS, Skindex, quality-of-life measures) rather than structured depression diagnoses, so the depressive edge stays at screening-level association; (iii) FFA-to-alopecia and FFA-to-scarring-alopecia edges were rejected as constitutive (frontal fibrosing alopecia is itself a form of scarring alopecia - wrong-identity guard under the ME-41 family); (iv) lichen-planopilaris and scarring-alopecia identities carry no outgoing edges, so no sibling pathway is duplicated, while the alopecia-areata ME-18 depressive-disorder edge rests on a comorbidity meta-analysis pathway distinct from this permanent-scarring visible-loss pathway. Duplicate-scope note: the loss-of-eyebrow target carries no incoming edges, so the eyebrow edge is the sole FFA-to-brow pathway; the depressive-disorder target's closest dermatologic precedents (alopecia-areata, acne-scarring, vitiligo) are distinct identities with independent evidence bases."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "loss-of-eyebrow",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The Doche 2025 clinical and histopathological study of 25 patients with eyebrow alopecia in frontal fibrosing alopecia documents the brow as a site of FFA involvement with dedicated clinical and histopathological characterization, the Kerkemeyer 2021 review describes the classic phenotype of symmetrical frontotemporal hairline recession together with bilateral eyebrow loss, and the Melián-Olivera 2025 review quantifies eyebrow alopecia prevalence of 43-94.9% across studies of men with FFA; the literature documents a high-prevalence association of eyebrow loss with the FFA identity without establishing temporal order or an individual causal nexus.",
+        "causationStatus": "The mapping does not assert that frontal fibrosing alopecia caused an individual's eyebrow loss: brow loss may precede or parallel recognition of scalp hairline recession so temporal ordering is frequently unavailable, alopecia areata, trichotillomania, seborrheic or atopic dermatitis, thyroid disease, medications, infection, and age-related brow thinning independently produce madarosis, and brow involvement may mark a shared systemic phenotype rather than a downstream consequence of scalp disease activity; individual claims require documented FFA with brow-site disease activity (perifollicular erythema, trichoscopic follicular-opening loss, or lichenoid histology at the brow), documented chronology, and exclusion of other madarosis causes."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "IMMUNE_MEDIATED",
+        "primaryVector": "A hypothesized lymphocytic follicular-destruction pathway: the same band-like lichenoid interface lymphocytic infiltrate that attacks scalp follicles in frontal fibrosing alopecia targets eyebrow follicles, with T-cell-mediated destruction of the follicular bulge and perifollicular fibrosis converting brow terminal hairs to vellus and then to permanent follicular loss; because the brow is a distinct anatomic site with its own disease activity, brow involvement can emerge at any point in the disease course including before scalp recession is recognized, and dedicated histopathological confirmation at the brow anchors the site-level mechanism while keeping individual-level attribution an association.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The edge asserts an association only: prevalence and phenotype evidence is cross-sectional with dedicated histopathology in a 25-patient cohort, brow loss frequently precedes scalp recognition so temporal ordering is unavailable, numerous independent madarosis causes are common in the same demographics, no FFA cohort quantifies brow-loss incidence or its chronology relative to scalp disease, and the target identity itself carries no outcome literature of its own; no probability estimate is asserted.",
+        "evidenceGaps": "Documented frontal fibrosing alopecia diagnosis with trichoscopic or histopathological confirmation; brow-site disease documentation (perifollicular erythema, follicular-opening loss, lichenoid histology) and brow-loss chronology relative to scalp disease recognition and treatment; exclusion of alopecia areata, trichotillomania, seborrheic or atopic dermatitis, thyroid disease, medications (retinoids, anticoagulants), infection, and age-related brow thinning; dermatology assessment of the individual relationship",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Alopecia areata including eyebrow-site patch disease",
+          "Trichotillomania or other hair-pulling disorder",
+          "Seborrheic or atopic dermatitis of the brow",
+          "Thyroid disease or systemic medication effects",
+          "Age-related brow thinning or prior cosmetic brow trauma"
+        ]
+      },
+      "evidenceGaps": [
+        "Documented frontal fibrosing alopecia diagnosis with trichoscopic or histopathological confirmation; brow-site disease documentation (perifollicular erythema, follicular-opening loss, lichenoid histology) and brow-loss chronology relative to scalp disease recognition and treatment; exclusion of alopecia areata, trichotillomania, seborrheic or atopic dermatitis, thyroid disease, medications (retinoids, anticoagulants), infection, and age-related brow thinning; dermatology assessment of the individual relationship"
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY: dedicated histopathological and prevalence evidence documents eyebrow loss as a high-frequency feature of frontal fibrosing alopecia while absent temporal ordering and common independent madarosis causes defeat individual causal attribution, so the mapping asserts the association with brow-site activity and alternative-cause requirements.",
+      "sourceReferences": [
+        {
+          "citation": "Doche I, Gerlero P, Melhado IP, et al. Eyebrow alopecia in frontal fibrosing alopecia: A clinical and histopathological study of 25 patients. J Am Acad Dermatol. 2025;93(6). PMID 40886835.",
+          "note": "Dedicated clinical and histopathological study of 25 patients documenting eyebrow alopecia as FFA involvement of the brow site - the condition-specific brow anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40886835/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 40886835; clinical and histopathological eyebrow alopecia in 25 FFA patients"
+        },
+        {
+          "citation": "Kerkemeyer KLS, Eisman S, Bhoyrul B, et al. Frontal fibrosing alopecia. Clin Dermatol. 2021;39(2). PMID 34272007.",
+          "note": "FFA review describing the classic phenotype of symmetrical progressive frontotemporal hairline recession together with bilateral eyebrow loss beginning in postmenopausal women - the phenotype anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34272007/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 34272007; FFA phenotype with bilateral eyebrow loss"
+        },
+        {
+          "citation": "Melián-Olivera A, Imbernón-Moya A, Porriño-Bustamante ML, et al. Frontal Fibrosing Alopecia in Men: A Review of the Literature. J Clin Med. 2025;14(6). PMID 40142720.",
+          "note": "Narrative review quantifying a high prevalence of eyebrow alopecia (43-94.9%) across studies of men with FFA alongside beard and sideburn involvement - the prevalence anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40142720/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 40142720; eyebrow alopecia prevalence 43-94.9% in male FFA"
+        }
+      ]
+    },
+    {
+      "conditionId": "depressive-disorder",
+      "rank": 2,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The Melián-Olivera 2026 multicenter cross-sectional study of 81 men with FFA documents moderate-to-severe emotional impairment in 39.5% with Hospital Anxiety and Depression Scale distress and the finding that FFA significantly affects quality of life, the Saceda-Corralo 2018 cohort specifically evaluates health-related quality of life in patients with FFA, and the Chiang 2015 study of 105 primary cicatricial alopecia patients including FFA documents HADS psychological distress and emotionally negative illness perceptions; the literature documents screening-level psychological burden associated with the FFA identity without establishing that FFA produced an individual's major depressive disorder.",
+        "causationStatus": "The mapping does not assert that frontal fibrosing alopecia caused an individual's major depressive disorder: the evidence is cross-sectional with screening instruments (HADS, Skindex, quality-of-life measures) rather than structured diagnostic interviews, temporal ordering is absent and premorbid psychiatric history is uncontrolled, psychosocial stressors and other dermatologic, endocrine, and autoimmune conditions independently affect mood, the reverse arrow is live (depression independently worsens perceived hair-loss burden and care engagement), and one anchor pools FFA with lichen planopilaris; individual claims require a separately established major depressive disorder with onset chronology documented relative to FFA diagnosis and activity, and distress, appearance concern, or quality-of-life impairment alone must not be used to infer the disorder."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "PSYCHOPHYSIOLOGICAL",
+        "primaryVector": "A hypothesized visible-disfigurement psychological-burden pathway: irreversible frontotemporal hairline recession with eyebrow and body-hair loss alters facial appearance during ordinary social interaction, producing sustained appearance-related distress, negative illness perceptions, and social-evaluative preoccupation that the FFA quality-of-life and HADS literature documents at screening level; chronic irreversible visible loss with limited disease control plausibly maintains distress long enough to contribute to depressive syndrome vulnerability in susceptible individuals, while cross-sectional designs, screening instruments, and premorbid-mood confounding keep the pathway an association hypothesis about an individual's course.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The edge asserts an association only: the condition-specific evidence is cross-sectional HADS, Skindex, and quality-of-life screening in an 81-male cohort, an FFA quality-of-life cohort, and a pooled primary-cicatricial-alopecia pilot, no FFA cohort quantifies major depressive disorder incidence or orders mood onset after FFA onset, screening positivity is not diagnosis, shared drivers (premorbid mood, stress, other visible-loss dermatoses) are uncontrolled, and the reverse arrow is live; no probability estimate is asserted.",
+        "evidenceGaps": "Independent documentation of frontal fibrosing alopecia (trichoscopic or histopathological confirmation) with disease activity and chronology; separately established major depressive disorder by structured diagnostic criteria or psychiatric assessment with onset date documented relative to FFA onset or flare; validated severity tracking (HADS or PHQ-9 serial scores) linking mood course to disease course; assessment of premorbid psychiatric history, psychosocial stressors, autoimmune and thyroid comorbidity, medications, substance use, and other visible-loss dermatologic disease; psychiatry or psychology assessment of the individual relationship",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Premorbid major depressive disorder or recurrent mood disorder independent of skin disease",
+          "Psychosocial stressors or life events unrelated to FFA",
+          "Other visible-loss dermatologic disease (alopecia areata, vitiligo, acne scarring)",
+          "Autoimmune or thyroid comorbidity affecting mood",
+          "Medication effects or substance use affecting mood"
+        ]
+      },
+      "evidenceGaps": [
+        "Independent documentation of frontal fibrosing alopecia (trichoscopic or histopathological confirmation) with disease activity and chronology; separately established major depressive disorder by structured diagnostic criteria or psychiatric assessment with onset date documented relative to FFA onset or flare; validated severity tracking (HADS or PHQ-9 serial scores) linking mood course to disease course; assessment of premorbid psychiatric history, psychosocial stressors, autoimmune and thyroid comorbidity, medications, substance use, and other visible-loss dermatologic disease; psychiatry or psychology assessment of the individual relationship"
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY consistent with the dermatologic depressive-disorder precedents (alopecia-areata, acne-scarring, vitiligo): condition-specific cross-sectional screening documents psychological burden in FFA while absent temporality, screening-level instruments, shared drivers, and the live reverse arrow defeat individual causal attribution, so the mapping asserts the association with separate-diagnosis and chronology requirements.",
+      "sourceReferences": [
+        {
+          "citation": "Melián-Olivera A, Lobato-Berezo A, Hermosa-Gelbard A, et al. The Psychological Impact of Frontal Fibrosing Alopecia in Men: A Multicenter Cross-Sectional Study. Skin Appendage Disord. 2026. PMID 42257043.",
+          "note": "Multicenter cross-sectional study of 81 men with FFA documenting moderate-to-severe emotional impairment in 39.5% with HADS psychological distress and significant quality-of-life impact - the condition-specific distress anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42257043/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 42257043; 39.5% moderate-to-severe emotional impairment in 81 men with FFA"
+        },
+        {
+          "citation": "Saceda-Corralo D, Pindado-Ortega C, Moreno-Arrones OM, et al. Health-Related Quality of Life in Patients With Frontal Fibrosing Alopecia. JAMA Dermatol. 2018;154(4). PMID 29516093.",
+          "note": "Cohort study evaluating the association between frontal fibrosing alopecia and health-related quality of life - the FFA-specific quality-of-life anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/29516093/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 29516093; FFA cohort with health-related quality-of-life association"
+        },
+        {
+          "citation": "Chiang YZ, Bundy C, Griffiths CE, et al. The role of beliefs: lessons from a pilot study on illness perception, psychological distress and quality of life in patients with primary cicatricial alopecia. Br J Dermatol. 2015;172(1). PMID 25039441.",
+          "note": "Study of 105 primary cicatricial alopecia patients (lichen planopilaris and FFA) documenting HADS psychological distress, negative illness perceptions, and quality-of-life impact - the cicatricial-distress screening anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/25039441/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-23",
+          "sourceLocator": "PMID 25039441; 105 primary cicatricial alopecia patients with HADS psychological distress"
+        }
+      ]
+    }
+  ]
 }
