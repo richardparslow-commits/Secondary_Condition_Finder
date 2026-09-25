@@ -2,8 +2,79 @@
   "id": "lymphangioma",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review hemodynamic, vascular, thrombotic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 57 (2026-09-25): one ASSOCIATION_ONLY draft mapping pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: the single edge asserts association only (etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true, mechanismCategory MECHANICAL_OR_COMPRESSIVE). The evidence base is case class for this congenital lymphatic malformation, so individual claims require dated imaging and swallow documentation localizing the lesion with competing-cause exclusion, and review by a qualified medical professional.",
+    "Pathway and duplicate-scope screens: no -> cellulitis or infection edge (diagnostic-mimic and scope guard - the orbital case documents lymphangioma mimicking cellulitis (PMID 42293490), and the remaining infection material is intralesional superinfection that enlarges lesions rather than quantified cellulitis incidence); no -> airway-obstruction edge (no catalog identity exists; fatal airway obstruction (PMID 29782340) and macroglossia obstruction (PMID 11283514) recorded as context on the dysphagia edge's alts and screens); no -> anemia edge (intralysional bleeding and hemorrhagic effusions are general lymphatic-anomaly class (PMID 39762764) without lymphangioma-specific quantification); no -> depressive-disorder or anxiety-disorder edge (the psychological-disturbance mention in the tongue case is an unquantified single-sentence list without condition-specific measurement); no -> Plummer-Vinson or esophageal-web edge (wrong-identity guard - the association in the macroglossia case is comorbid with inverted direction)."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 57 (2026-09-25): one bounded association edge authored - lymphangioma to dysphagia (rank 1) - classified ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, and hypothesizedOnly:true; mechanismCategory MECHANICAL_OR_COMPRESSIVE. The proposition rests on site-specific mass-effect case material: the adult hypopharyngeal case causing persistent dysphagia (PMID 41245682), the paediatric tongue case with swallowing and mastication difficulties (PMID 38022192), and the adult postcricoid case with aerodigestive-preservation resection and literature review (PMID 38321774).",
+    "Counter-evidence and caveat screens recorded 2026-09-25: (i) evidence class - case class only with anatomical site dependence and no incidence denominators; (ii) mimic and scope record - orbital lymphangioma mimics cellulitis (PMID 42293490) so infection presentations require imaging confirmation, and intralesional superinfection enlarges lesions without constituting a cellulitis window; (iii) treatment mediation - resection, sclerotherapy, embolization, and OK-432 therapy all alter the mass effect; (iv) comorbidity guard - the Plummer-Vinson association in the macroglossia case is comorbid with inverted direction and is recorded only among alternative etiologies."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "dysphagia",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Lymphangioma documents dysphagia by direct mass effect: the adult case is titled as hypopharyngeal lymphangioma causing persistent dysphagia (PMID 41245682), the paediatric tongue case documents difficulties during swallowing and mastication with speech disturbances from a 2-3 cm cystic lymphangioma (PMID 38022192), and the adult postcricoid case documents a large lymphatic malformation whose en bloc resection was designed to preserve aerodigestive functions, with a review of adult postcricoid and hypopharyngeal cases (PMID 38321774); the obstructive relationship is documented at case class with explicit direction in the titles and presentations.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: the located material documents dysphagia in the setting of tongue, hypopharyngeal, and postcricoid lymphangioma, but whether an individual dysphagia arose from the malformation, from treatment sequelae, or from another structural or neurologic cause requires individual imaging, endoscopic, and functional review."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MECHANICAL_OR_COMPRESSIVE",
+        "primaryVector": "A cystic lymphatic malformation expanding in the tongue base, hypopharynx, or postcricoid region mechanically displaces and narrows the aerodigestive tract so swallowing passage is obstructed, the mass-effect route documented in the persistent-dysphagia case and the large postcricoid case, but whether this route produced any individual dysphagia remains hypothesized until imaging and functional swallow records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at case class only: the located material is three case reports with anatomical site dependence (tongue, hypopharynx, postcricoid), no incidence denominators for dysphagia within lymphangioma populations, and lesion enlargement from infection or bleeding modulates symptoms.",
+        "evidenceGaps": "No cohort quantifies dysphagia incidence in lymphangioma; outcome is site- and size-dependent, intralesional infection and bleeding enlarge lesions and modulate symptoms, and resection, sclerotherapy, and embolization all mediate the swallowing course.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "squamous neoplasm of tongue or hypopharynx",
+          "ranula or dermoid cyst",
+          "venous malformation or hemangioma",
+          "lingual thyroid",
+          "esophageal web (the Plummer-Vinson association in the macroglossia case is comorbid and direction-inverted)",
+          "neurogenic or post-stroke dysphagia"
+        ]
+      },
+      "evidenceGaps": [
+        "No cohort quantifies dysphagia incidence in lymphangioma; outcome is site- and size-dependent, intralesional infection and bleeding enlarge lesions and modulate symptoms, and resection, sclerotherapy, and embolization all mediate the swallowing course."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY on the anatomic-mechanics precedent mirroring the ankyloglossia dysphagia window's bounded framing: the adult case is titled as hypopharyngeal lymphangioma causing persistent dysphagia (PMID 41245682), the six-year-old case documents a large cystic tongue lymphangioma with swallowing and mastication difficulties and speech disturbances, noting that tongue lymphangiomas may produce functional issues including dysphagia and airway obstruction (PMID 38022192), and the adult postcricoid case documents a large lymphatic malformation resected en bloc with laryngeal suspension specifically to preserve aerodigestive functions, with a review of adult postcricoid and hypopharyngeal presentations (PMID 38321774); because the evidence is case class with strong site dependence and treatment mediates the course, the conservative standard keeps the edge at association only and routes individual claims through dated imaging and swallow studies localizing the lesion with neoplastic and neurologic exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Zhao M, Darwich NF, Thaler ER. Hypopharyngeal Lymphangioma Causing Persistent Dysphagia in an Adult: A Case Report. Clin Case Rep. 2025 Nov;13:e71344. doi:10.1002/ccr3.71344. PMID 41245682.",
+          "note": "Adult case report titled as hypopharyngeal lymphangioma causing persistent dysphagia, documenting the direction of the mass effect; supports the bounded direction proposition only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41245682/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 41245682; case report title and presentation (hypopharyngeal lymphangioma with persistent dysphagia)"
+        },
+        {
+          "citation": "Andreadis D, Ndreu A, Tsekos A, Panta P. Diagnostic and Therapeutic Challenges of a Large Tongue Lymphangioma in a Child: A Case Report. Cureus. 2023 Oct;15:e47363. doi:10.7759/cureus.47363. PMID 38022192.",
+          "note": "Paediatric case of a large cystic tongue lymphangioma with swallowing and mastication difficulties and speech disturbances, documenting functional burden and infection-related enlargement; supports the bounded functional proposition only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38022192/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 38022192; case presentation (tongue lymphangioma with swallowing difficulties)"
+        },
+        {
+          "citation": "Klibngern H, Ariyanon T, Pornchaisakuldee C, Chowsilpa S, Sittitrai P. A Large Adult Postcricoid Lymphatic Malformation: A Case Report and Literature Review. Ear Nose Throat J. 2026 Sep;105:532-537. doi:10.1177/01455613241229979. PMID 38321774.",
+          "note": "Adult postcricoid lymphatic malformation case with literature review of adult postcricoid and hypopharyngeal presentations, resected to preserve aerodigestive function; supports the bounded aerodigestive-obstruction proposition only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38321774/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 38321774; case report and literature review (postcricoid malformation, aerodigestive preservation)"
+        }
+      ]
+    }
+  ]
 }

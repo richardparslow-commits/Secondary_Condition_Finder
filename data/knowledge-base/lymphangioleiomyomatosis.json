@@ -2,8 +2,196 @@
   "id": "lymphangioleiomyomatosis",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review airway, aspiration, inflammatory, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 57 (2026-09-25): three ASSOCIATION_ONLY draft mappings pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: all three edges assert association only (etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true, mechanismCategory MECHANICAL_OR_COMPRESSIVE for the pneumothorax and pleural-effusion edges and NOT_ESTABLISHED for the pulmonary-hypertension edge, mirroring the interstitial-lung-disease window). The evidence base mixes case class with one subtype-level epidemiologic cohort and one single-centre screening cohort for this rare cystic lung disease, so individual claims require dated HRCT, fluid, or catheterization documentation with competing-cause exclusion, and review by a qualified medical professional.",
+    "Pathway and duplicate-scope screens: no -> sleep-apnea or respiratory-failure edge (no located identity-level quantification and no catalog identity for respiratory failure); no -> renal-angiomyolipoma or other TSC-manifestation edges (no catalog identity and the TSC-associated material is tuberous-sclerosis scoped per ME-29); no -> lung-cancer edge despite the Japanese cohort naming LAM a risk factor (PMID 38654512 - malignancy-risk class rather than a documented secondary condition of this identity, and the intermediate-node and duplicate-scope screens keep the single pulmonary window bounded); no -> anxiety-disorder or depressive-disorder edge (zero located condition-specific psychiatric quantification); the pleural-effusion edge is scoped to the chylous lymphatic route with the tuberculosis-mimic recorded on the edge, and the pulmonary-hypertension edge mirrors the interstitial-lung-disease window's NOT_ESTABLISHED framing without recycling its evidence (ME-29 scope rule)."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 57 (2026-09-25): three bounded association edges authored - lymphangioleiomyomatosis to pneumothorax (rank 1), to pleural-effusion (rank 2), and to pulmonary-hypertension (rank 3) - classified ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, and hypothesizedOnly:true. The pneumothorax proposition rests on cyst-rupture material with the severe bilateral pregnancy case (PMID 42682943), the directionally titled case (PMID 42441190), and the 1747-patient nationwide subtype cohort (PMID 42289172). The pleural-effusion proposition rests on three chylothorax cases with explicit secondary attribution (PMID 38371459, 37435256, 42701434). The pulmonary-hypertension proposition rests on the 234-patient LAM-PH screening cohort with 8.98 percent prevalence (PMID 39069851) and the 2025 rare-disease review (PMID 40575830).",
+    "Counter-evidence and caveat screens recorded 2026-09-25: (i) evidence class - direct-attribution anchors are case class, the pneumothorax epidemiologic anchor runs subtype-level rather than incidence-level, and the PH anchor is echocardiographic screening with catheterization in only 5 patients; (ii) route scope - the pleural edge is scoped to the chylous lymphatic route and the PH edge mirrors the interstitial-lung-disease window's bounded NOT_ESTABLISHED framing; (iii) mimic and confound record - lymphocyte-predominant effusions mimic tuberculosis in high-burden settings (PMID 42701434), PH concentrates in advanced disease where hypoxia confounds attribution, and pregnancy and estrogen status modulate both pneumothorax and disease course; (iv) treatment mediation - sirolimus, thoracentesis, pleurodesis, decortication, and transplant all alter the pulmonary and pleural course."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "pneumothorax",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Lymphangioleiomyomatosis documents pneumothorax as a presenting and recurring complication: the pregnancy case presented with severe bilateral pneumothorax with near-complete lung collapse and biopsy-confirmed LAM (PMID 42682943), the titled case report documents pneumothorax secondary to LAM (PMID 42441190), and the 1747-patient nationwide Japanese spontaneous-pneumothorax cohort identifies LAM among the female-specific secondary subtypes shaping the distinctive trimodal female age distribution (PMID 42289172); the direction LAM to pneumothorax is explicit in the case material and subtype-level in the cohort.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: the located material documents pneumothorax in the setting of LAM, but whether an individual pneumothorax arose from a LAM cyst rupture, from catamenial endometriosis, from bleb disease, or from another cystic lung disease requires individual imaging, hormonal, and genetic review."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MECHANICAL_OR_COMPRESSIVE",
+        "primaryVector": "Proliferating LAM cells infiltrate and weaken the alveolar walls of thin-walled pulmonary cysts so a subpleural cyst ruptures and leaks air into the pleural space, the structural rupture documented in the bilateral-pneumothorax pregnancy case and the secondary-pneumothorax case, but whether this route produced any individual pneumothorax remains hypothesized until cyst morphology and imaging records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at case class plus one epidemiologic subtype cohort: the direct-attribution anchors are single cases, and the national cohort (PMID 42289172) indexes pneumothorax patients with LAM as a subtype cause rather than quantifying pneumothorax incidence within LAM.",
+        "evidenceGaps": "No cohort in the located material quantifies pneumothorax incidence within an LAM population; the epidemiologic anchor runs pneumothorax-to-subtype rather than LAM-to-incidence, pregnancy and estrogen status modulate the course, and sirolimus alters disease progression.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Birt-Hogg-Dube syndrome cystic lung",
+          "primary spontaneous pneumothorax with blebs in smokers",
+          "catamenial pneumothorax from thoracic endometriosis",
+          "pulmonary Langerhans cell histiocytosis",
+          "centrilobular emphysema bullae"
+        ]
+      },
+      "evidenceGaps": [
+        "No cohort in the located material quantifies pneumothorax incidence within an LAM population; the epidemiologic anchor runs pneumothorax-to-subtype rather than LAM-to-incidence, pregnancy and estrogen status modulate the course, and sirolimus alters disease progression."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY on the cyst-rupture mechanical precedent: the 23-year-old pregnancy case presented with severe bilateral pneumothorax and near-complete lung collapse with multiple small parenchymal cysts, confirmed by VATS biopsy and managed with decortication and sirolimus (PMID 42682943), the Kansas case report is titled as pneumothorax secondary to LAM (PMID 42441190), and the 1747-patient nationwide cohort identifies LAM among the female-specific subtypes generating the second peak of the trimodal female spontaneous-pneumothorax age distribution (PMID 42289172); because the direct anchors are case class and the cohort runs subtype-level rather than incidence-level, the conservative standard keeps the edge at association only and routes individual claims through dated cyst imaging with hormonal, genetic, and bleb-disease exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Ebrahimi S, Abdollahzadeh A, Barghaman M, Hajialigol A. Multidisciplinary Management of Lymphangioleiomyomatosis Presenting With Severe Bilateral Pneumothorax During Pregnancy: A Case Report. Case Rep Pulmonol. 2026;2026:5512688. doi:10.1155/crpu/5512688. PMID 42682943.",
+          "note": "Case report of a 23-year-old pregnant woman presenting with severe bilateral pneumothorax and near-complete lung collapse with parenchymal cysts, confirmed as LAM by VATS biopsy; supports the bounded presentation proposition only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42682943/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 42682943; case presentation (bilateral pneumothorax with cystic parenchymal changes, biopsy-confirmed LAM)"
+        },
+        {
+          "citation": "Coy AM. Pneumothorax Secondary to Lymphangioleiomyomatosis. Kans J Med. 2026 May-Jun;19:64-67. doi:10.17161/kjm.vol19.24389. PMID 42441190.",
+          "note": "Case report titled as pneumothorax secondary to lymphangioleiomyomatosis, documenting the direction of the complication; supports the bounded direction proposition only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42441190/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 42441190; case report title and presentation (pneumothorax secondary to LAM)"
+        },
+        {
+          "citation": "Takeda M, Sano Y, Ihara Y, Sawabata N, Obuchi T, Tsuboshima K, Matsutani N, Okamoto S, Igai H, Hayashi A. Sex-specific epidemiological and clinical differences in spontaneous pneumothorax: A cross-sectional cohort study in Japan. Respir Investig. 2026 Jul;64:101470. doi:10.1016/j.resinv.2026.101470. PMID 42289172.",
+          "note": "Nationwide cross-sectional cohort of 1747 spontaneous-pneumothorax patients identifying LAM among the female-specific secondary subtypes producing the distinctive trimodal female age distribution; subtype-level epidemiologic support only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42289172/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 42289172; cohort results (trimodal female distribution, second peak corresponding to catamenial pneumothorax and LAM)"
+        }
+      ]
+    },
+    {
+      "conditionId": "pleural-effusion",
+      "rank": 2,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Lymphangioleiomyomatosis documents chylous pleural effusion as a direct complication: the young-woman case reports a chylous effusion found to be secondary to LAM (PMID 38371459), the cystic-lung-disease case presents recurrent non-traumatic chylothorax with elevated VEGF-D as the presenting feature of LAM (PMID 37435256), and the sporadic-LAM case documents recurrent lymphocyte-predominant exudative effusions with milky fluid and elevated triglycerides that had been misdiagnosed as tuberculosis (PMID 42701434); the effusion is documented at case class with explicit secondary attribution.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: the located material documents chylous or lymphocyte-predominant effusion attributed to LAM, but whether an individual effusion arose from LAM lymphatic involvement, from thoracic duct obstruction by another cause, from infection, or from heart failure requires individual fluid-analytic and imaging review."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MECHANICAL_OR_COMPRESSIVE",
+        "primaryVector": "LAM cells infiltrate and obstruct thoracic and pulmonary lymphatic channels so lymphatic fluid with high triglyceride content leaks into the pleural space as a chylous effusion, the lymphatic-obstruction route documented in the secondary-chylothorax case and the misdiagnosed-tuberculosis case, but whether this route produced any individual effusion remains hypothesized until fluid triglycerides, lymphangiography, and imaging records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at case class only: the located material is three case reports with explicit secondary attribution, without incidence denominators for pleural effusion within LAM populations, and the effusion composition varies between chylous and lymphocyte-predominant exudative.",
+        "evidenceGaps": "No cohort quantifies chylothorax incidence within LAM; effusion composition varies and can mimic tuberculosis, thoracentesis and sirolimus mediate the course, and post-transplant lymphatic leaks are a separate route.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "tuberculous pleuritis (the documented mimic in TB-burden settings)",
+          "transudative effusion from heart failure or cirrhosis",
+          "chylothorax from thoracic duct obstruction by malignancy or surgery",
+          "pseudochylothorax of chronic effusions",
+          "pulmonary Langerhans cell histiocytosis"
+        ]
+      },
+      "evidenceGaps": [
+        "No cohort quantifies chylothorax incidence within LAM; effusion composition varies and can mimic tuberculosis, thoracentesis and sirolimus mediate the course, and post-transplant lymphatic leaks are a separate route."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY on the lymphatic-obstruction precedent with route scope to the chylous limb: the young-woman pleural-clinic case reports a chylous effusion found to be secondary to LAM with remission on mTOR inhibition and interventional radiology (PMID 38371459), the cystic-lung-disease case presents recurrent non-traumatic chylothorax requiring three thoracenteses with VEGF-D of 2001 pg/ml and five years of sirolimus-controlled remission (PMID 37435256), and the sporadic-LAM case documents recurrent lymphocyte-predominant exudative effusions with milky triglyceride-rich fluid misdiagnosed as tuberculosis before HRCT and retroperitoneal lymphatic involvement confirmed LAM (PMID 42701434); because the evidence is case class without incidence denominators and thoracentesis and sirolimus alter the course, the conservative standard keeps the edge at association only, scopes it to the chylous lymphatic route, and routes individual claims through dated pleural-fluid analysis with tuberculous and cardiac exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Barton EC, Johnson S, Collin N, Bhatt N, Maskell NA. A chylothorax in a young woman: The difficulties of medical management. Respirol Case Rep. 2024 Feb;12:e01303. doi:10.1002/rcr2.1303. PMID 38371459.",
+          "note": "Case report of a young woman with a chylous effusion found to be secondary to lymphangioleiomyomatosis, with remission on mTOR inhibition and interventional radiology; supports the bounded secondary-chylothorax proposition only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38371459/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 38371459; case presentation (chylous effusion secondary to LAM)"
+        },
+        {
+          "citation": "Gupta S, Paul V. Cystic Lung Disease Presenting as Recurrent Non-traumatic Chylothorax: Case Report and a Mini-Review. Cureus. 2023 Jun;15:e40217. doi:10.7759/cureus.40217. PMID 37435256.",
+          "note": "Case report with mini-review of recurrent non-traumatic chylothorax as the presenting feature of LAM with elevated VEGF-D and bilateral thin-walled cysts; supports the bounded presenting-complication proposition only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/37435256/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 37435256; case presentation and mini-review (recurrent chylothorax leading to LAM diagnosis)"
+        },
+        {
+          "citation": "Lamboro BT, Belachew Dejene M, Belisa TK, Gashaw Dessie M. Sporadic lymphangioleiomyomatosis with lymphocyte-predominant pleural effusion misdiagnosed as tuberculosis: a case report. Respir Med Case Rep. 2026;63:102491. doi:10.1016/j.rmcr.2026.102491. PMID 42701434.",
+          "note": "Case report documenting recurrent lymphocyte-predominant exudative pleural effusions with milky triglyceride-rich fluid in sporadic LAM, initially misdiagnosed as tuberculosis; supports the bounded effusion proposition and the tuberculosis-mimic caveat.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42701434/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 42701434; case presentation (recurrent chylous effusions confirmed on repeat analysis, LAM on HRCT)"
+        }
+      ]
+    },
+    {
+      "conditionId": "pulmonary-hypertension",
+      "rank": 3,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Lymphangioleiomyomatosis documents pulmonary hypertension at cohort level: the single-centre LAM-PH study echocardiographed 167 of 234 LAM patients and found pulmonary hypertension in 15 (8.98%), with right heart catheterization showing pre-capillary patterns and the LAM-PH group showing lower FEV1, FVC, and DLCO and higher serum VEGF-D (PMID 39069851), and the rare-pulmonary-disease review describes PH in LAM as uncommon but clinically relevant in advanced disease, reclassified from Group 5 to Group 3 (PMID 40575830); the prevalence is quantified at identity level.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: the located material documents PH prevalence and hemodynamic patterns in LAM cohorts, but whether an individual elevation arose from LAM parenchymal destruction, from left heart disease, from thromboembolic disease, or from another pulmonary vasculopathy requires individual catheterization and cardiac review."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "NOT_ESTABLISHED",
+        "primaryVector": "Diffuse cystic destruction of the pulmonary vascular bed plus hypoxic vasoconstriction raises pulmonary vascular resistance to produce pre-capillary pulmonary hypertension, the route described in the rare-disease review as parenchymal-destruction driven rather than directly vascular, but the mechanism remains hypothesized for any individual until catheterization, imaging, and cardiac records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at single-centre cohort class with echocardiographic screening: only 5 patients underwent right heart catheterization, the prevalence is low (8.98 percent), and the review describes the mechanism as parenchymal-destruction and hypoxia driven rather than an established vasculopathy.",
+        "evidenceGaps": "Echocardiography-based screening without systematic catheterization overstates or understates prevalence, PH concentrates in advanced disease where hypoxia confounds attribution, and sirolimus effects on pulmonary pressures remain unproven.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "group 1 pulmonary arterial hypertension",
+          "left heart disease (group 2)",
+          "chronic thromboembolic pulmonary hypertension (group 4)",
+          "pulmonary Langerhans cell histiocytosis vasculopathy",
+          "Birt-Hogg-Dube cystic lung disease"
+        ]
+      },
+      "evidenceGaps": [
+        "Echocardiography-based screening without systematic catheterization overstates or understates prevalence, PH concentrates in advanced disease where hypoxia confounds attribution, and sirolimus effects on pulmonary pressures remain unproven."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY mirroring the interstitial-lung-disease pulmonary-hypertension window's bounded framing: the single-centre study of 234 LAM patients found PH by echocardiography in 15 of 167 screened (8.98 percent), with pre-capillary patterns on catheterization, more oxygen therapy, lower FEV1, FVC, FEV1/FVC and DLCO, and higher serum VEGF-D in the LAM-PH group (PMID 39069851), and the 2025 review describes PH in LAM as uncommon but clinically relevant in advanced disease, resulting from parenchymal destruction and hypoxic vasoconstriction rather than direct vascular involvement and reclassified from Group 5 to Group 3 (PMID 40575830); because screening was echocardiographic without systematic catheterization and advanced-disease hypoxia confounds attribution, the conservative standard keeps the edge at association only and routes individual claims through dated right-heart catheterization with cardiac and thromboembolic exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Liang PQ, Xu BN, Pan YX, Huang HY, Zhao Z, Hong C, Wu XF, Liu J. Clinical features of pulmonary hypertension in lymphangioleiomyomatosis. Zhonghua Jie He He Hu Xi Za Zhi. 2024 Aug 12;47:746-753. doi:10.3760/cma.j.cn112147-20240301-00121. PMID 39069851.",
+          "note": "Chinese-language single-centre cohort of 234 LAM patients: echocardiographic PH in 15 of 167 screened (8.98%), pre-capillary patterns on catheterization, worse lung function and higher VEGF-D in the PH group; supports the bounded prevalence proposition only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39069851/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 39069851; cohort results (PH prevalence 8.98%, hemodynamic and functional comparison)"
+        },
+        {
+          "citation": "Tagariello F, Elia D, Harari SA. Rare pulmonary diseases and pulmonary hypertension. Curr Opin Pulm Med. 2025 Sep 1;31:470-475. doi:10.1097/MCP.0000000000001188. PMID 40575830.",
+          "note": "Narrative review describing PH in LAM as uncommon but clinically relevant in advanced disease, driven by parenchymal destruction and hypoxic vasoconstriction rather than direct vascular involvement, with reclassification from Group 5 to Group 3; supports the bounded mechanism framing only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40575830/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 40575830; review section on LAM (pathophysiology and reclassification)"
+        }
+      ]
+    }
+  ]
 }

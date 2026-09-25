@@ -6,8 +6,8 @@
  "installedFrom": "Master Registry Discrepancy Resolution 2026",
  "authorityBoundary": "Authoritative for current relationship direction, proposition text, guard state, source linkage, and KB parity; does not establish an individual VA medical nexus.",
  "counts": {
-  "relationships": 615,
-  "explicitPublicationGuards": 541,
+  "relationships": 623,
+  "explicitPublicationGuards": 549,
   "legacyRationaleBoundaries": 74
  },
  "relationships": [
@@ -19942,6 +19942,252 @@
    "sourceReferenceCount": 3,
    "pathwayIntelligencePresent": false,
    "suggestionObjectHash": "c5b02e85727490416ae9a68e9c6a188d72cd944b37db6d245e56c7ab576d8133"
+  },
+  {
+   "relationshipId": "rel-lung-abscess-to-pleural-effusion",
+   "primaryId": "lung-abscess",
+   "targetId": "pleural-effusion",
+   "direction": "lung-abscess -> pleural-effusion",
+   "primaryPublicationState": "draft",
+   "rank": 1,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY on the trans-pleural extension precedent mirroring the batch-55 liver-abscess pleural window: the three-patient series documents lung abscesses rupturing into the pleural cavity with secondary pleural empyema, all managed by percutaneous intracavitary drainage with long-term drainage of 94 to 290 days (PMID 39598106), the 65-year-old COPD case documents an incidental lower-lobe abscess rupture with a bronchopleural fistula (PMID 40190862), and the 153-patient paediatric empyema cohort found concurrent lung abscess in 16.3 percent with longer chest-tube duration (median 9 versus 5 days), longer stay, and repeat operation in 12.0 versus 1.6 percent (PMID 42573817); because the strongest cohort anchor is concurrent-occurrence class and treatment mediates the course, the conservative standard keeps the edge at association only, scopes it to the pyogenic rupture route, and routes individual claims through dated imaging and pleural-fluid documentation with competing-cause exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY on the trans-pleural extension precedent mirroring the batch-55 liver-abscess pleural window: the three-patient series documents lung abscesses rupturing into the pleural cavity with secondary pleural empyema, all managed by percutaneous intracavitary drainage with long-term drainage of 94 to 290 days (PMID 39598106), the 65-year-old COPD case documents an incidental lower-lobe abscess rupture with a bronchopleural fistula (PMID 40190862), and the 153-patient paediatric empyema cohort found concurrent lung abscess in 16.3 percent with longer chest-tube duration (median 9 versus 5 days), longer stay, and repeat operation in 12.0 versus 1.6 percent (PMID 42573817); because the strongest cohort anchor is concurrent-occurrence class and treatment mediates the course, the conservative standard keeps the edge at association only, scopes it to the pyogenic rupture route, and routes individual claims through dated imaging and pleural-fluid documentation with competing-cause exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to the pyogenic rupture route: the three-patient series documents lung abscesses rupturing into the pleural cavity with secondary pleural empyema (PMID 39598106), the COPD case documents abscess rupture with bronchopleural fistula (PMID 40190862), and the 153-patient paediatric empyema cohort found concurrent lung abscess in 16.3 percent with significantly worse short-term outcomes (PMID 42573817); the cohort anchor is concurrent-occurrence class, the amebic trans-diaphragmatic route rides the amebic-liver-abscess identity's window, so individual claims route through dated imaging and pleural-fluid documentation with competing-cause exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No cohort quantifies empyema incidence after lung abscess, the paediatric cohort anchor is concurrent-occurrence rather than sequential attribution, and drainage, decortication, and prolonged antibiotics all mediate the pleural course."
+   ],
+   "sourceIds": [
+    "pmid-39598106",
+    "pmid-40190862",
+    "pmid-42573817"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "accb3b515e8e9c7eb7cac003a1f9509e020375223074d13798669cddc9d1770e"
+  },
+  {
+   "relationshipId": "rel-lung-abscess-to-pneumothorax",
+   "primaryId": "lung-abscess",
+   "targetId": "pneumothorax",
+   "direction": "lung-abscess -> pneumothorax",
+   "primaryPublicationState": "draft",
+   "rank": 2,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY on the destructive-rupture precedent: the 67-year-old case documents the concomitant lateralizing triad of lung abscess, parapneumonic effusion, and pneumothorax with separated individualized management (PMID 41164071), the invasive Hafnia alvei case documents rapidly progressive cavities with secondary abscess and tension pneumothorax (PMID 41876249), and the paediatric severe lung abscess case documents bronchopleural fistula formation requiring ECMO with full recovery (PMID 41293207); because the evidence is case class without incidence denominators and drainage and ventilation mediate the course, the conservative standard keeps the edge at association only and routes individual claims through dated imaging documenting cavity-to-pleural communication with procedure and bullous-cause exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY on the destructive-rupture precedent: the 67-year-old case documents the concomitant lateralizing triad of lung abscess, parapneumonic effusion, and pneumothorax with separated individualized management (PMID 41164071), the invasive Hafnia alvei case documents rapidly progressive cavities with secondary abscess and tension pneumothorax (PMID 41876249), and the paediatric severe lung abscess case documents bronchopleural fistula formation requiring ECMO with full recovery (PMID 41293207); because the evidence is case class without incidence denominators and drainage and ventilation mediate the course, the conservative standard keeps the edge at association only and routes individual claims through dated imaging documenting cavity-to-pleural communication with procedure and bullous-cause exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to the destructive-rupture route: the concomitant triad case documents lung abscess with same-side parapneumonic effusion and pneumothorax (PMID 41164071), the invasive Hafnia alvei case documents progressive cavities with secondary abscess and tension pneumothorax (PMID 41876249), and the paediatric severe-abscess case documents bronchopleural fistula formation (PMID 41293207); evidence is case class without incidence denominators and procedures, barotrauma, and bullous disease must be excluded, so individual claims route through dated imaging documenting cavity-to-pleural communication with competing-cause exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No cohort quantifies pneumothorax incidence after lung abscess; tension versus simple pneumothorax is unstratified, and chest-tube drainage, surgery, and ventilation settings all alter the pleural-air course."
+   ],
+   "sourceIds": [
+    "pmid-41164071",
+    "pmid-41876249",
+    "pmid-41293207"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "ef985605d8757d4df7efd98b53fb58dbbb34dfed7860f6e9e05c0999b1914cca"
+  },
+  {
+   "relationshipId": "rel-lymphangioleiomyomatosis-to-pneumothorax",
+   "primaryId": "lymphangioleiomyomatosis",
+   "targetId": "pneumothorax",
+   "direction": "lymphangioleiomyomatosis -> pneumothorax",
+   "primaryPublicationState": "draft",
+   "rank": 1,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY on the cyst-rupture mechanical precedent: the 23-year-old pregnancy case presented with severe bilateral pneumothorax and near-complete lung collapse with multiple small parenchymal cysts, confirmed by VATS biopsy and managed with decortication and sirolimus (PMID 42682943), the Kansas case report is titled as pneumothorax secondary to LAM (PMID 42441190), and the 1747-patient nationwide cohort identifies LAM among the female-specific subtypes generating the second peak of the trimodal female spontaneous-pneumothorax age distribution (PMID 42289172); because the direct anchors are case class and the cohort runs subtype-level rather than incidence-level, the conservative standard keeps the edge at association only and routes individual claims through dated cyst imaging with hormonal, genetic, and bleb-disease exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY on the cyst-rupture mechanical precedent: the 23-year-old pregnancy case presented with severe bilateral pneumothorax and near-complete lung collapse with multiple small parenchymal cysts, confirmed by VATS biopsy and managed with decortication and sirolimus (PMID 42682943), the Kansas case report is titled as pneumothorax secondary to LAM (PMID 42441190), and the 1747-patient nationwide cohort identifies LAM among the female-specific subtypes generating the second peak of the trimodal female spontaneous-pneumothorax age distribution (PMID 42289172); because the direct anchors are case class and the cohort runs subtype-level rather than incidence-level, the conservative standard keeps the edge at association only and routes individual claims through dated cyst imaging with hormonal, genetic, and bleb-disease exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to the cyst-rupture route: the pregnancy case presents severe bilateral pneumothorax with biopsy-confirmed LAM (PMID 42682943), the titled case documents pneumothorax secondary to LAM (PMID 42441190), and the 1747-patient nationwide Japanese cohort identifies LAM among the female-specific secondary subtypes of the trimodal female age distribution (PMID 42289172); the cohort runs subtype-level rather than incidence-level, so individual claims route through dated cyst imaging with hormonal, genetic, and bleb-disease exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No cohort in the located material quantifies pneumothorax incidence within an LAM population; the epidemiologic anchor runs pneumothorax-to-subtype rather than LAM-to-incidence, pregnancy and estrogen status modulate the course, and sirolimus alters disease progression."
+   ],
+   "sourceIds": [
+    "pmid-42682943",
+    "pmid-42441190",
+    "pmid-42289172"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "6633e5149d777aa2a9d39a501d3bc2114a2ec149f779ad4a7cab1683c04e3941"
+  },
+  {
+   "relationshipId": "rel-lymphangioleiomyomatosis-to-pleural-effusion",
+   "primaryId": "lymphangioleiomyomatosis",
+   "targetId": "pleural-effusion",
+   "direction": "lymphangioleiomyomatosis -> pleural-effusion",
+   "primaryPublicationState": "draft",
+   "rank": 2,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY on the lymphatic-obstruction precedent with route scope to the chylous limb: the young-woman pleural-clinic case reports a chylous effusion found to be secondary to LAM with remission on mTOR inhibition and interventional radiology (PMID 38371459), the cystic-lung-disease case presents recurrent non-traumatic chylothorax requiring three thoracenteses with VEGF-D of 2001 pg/ml and five years of sirolimus-controlled remission (PMID 37435256), and the sporadic-LAM case documents recurrent lymphocyte-predominant exudative effusions with milky triglyceride-rich fluid misdiagnosed as tuberculosis before HRCT and retroperitoneal lymphatic involvement confirmed LAM (PMID 42701434); because the evidence is case class without incidence denominators and thoracentesis and sirolimus alter the course, the conservative standard keeps the edge at association only, scopes it to the chylous lymphatic route, and routes individual claims through dated pleural-fluid analysis with tuberculous and cardiac exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY on the lymphatic-obstruction precedent with route scope to the chylous limb: the young-woman pleural-clinic case reports a chylous effusion found to be secondary to LAM with remission on mTOR inhibition and interventional radiology (PMID 38371459), the cystic-lung-disease case presents recurrent non-traumatic chylothorax requiring three thoracenteses with VEGF-D of 2001 pg/ml and five years of sirolimus-controlled remission (PMID 37435256), and the sporadic-LAM case documents recurrent lymphocyte-predominant exudative effusions with milky triglyceride-rich fluid misdiagnosed as tuberculosis before HRCT and retroperitoneal lymphatic involvement confirmed LAM (PMID 42701434); because the evidence is case class without incidence denominators and thoracentesis and sirolimus alter the course, the conservative standard keeps the edge at association only, scopes it to the chylous lymphatic route, and routes individual claims through dated pleural-fluid analysis with tuberculous and cardiac exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to the chylous lymphatic route: the young-woman case reports a chylous effusion found to be secondary to LAM (PMID 38371459), the cystic-lung-disease case presents recurrent non-traumatic chylothorax with VEGF-D of 2001 pg/ml (PMID 37435256), and the sporadic-LAM case documents recurrent lymphocyte-predominant exudative effusions with milky triglyceride-rich fluid misdiagnosed as tuberculosis (PMID 42701434); evidence is case class and the tuberculosis-mimic is documented, so individual claims route through dated pleural-fluid analysis with tuberculous and cardiac exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No cohort quantifies chylothorax incidence within LAM; effusion composition varies and can mimic tuberculosis, thoracentesis and sirolimus mediate the course, and post-transplant lymphatic leaks are a separate route."
+   ],
+   "sourceIds": [
+    "pmid-38371459",
+    "pmid-37435256",
+    "pmid-42701434"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "f358ac3ad2472c9c917710ab2fcd8d0d9848108a0dbc2e7f41dfd23e8b932434"
+  },
+  {
+   "relationshipId": "rel-lymphangioleiomyomatosis-to-pulmonary-hypertension",
+   "primaryId": "lymphangioleiomyomatosis",
+   "targetId": "pulmonary-hypertension",
+   "direction": "lymphangioleiomyomatosis -> pulmonary-hypertension",
+   "primaryPublicationState": "draft",
+   "rank": 3,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY mirroring the interstitial-lung-disease pulmonary-hypertension window's bounded framing: the single-centre study of 234 LAM patients found PH by echocardiography in 15 of 167 screened (8.98 percent), with pre-capillary patterns on catheterization, more oxygen therapy, lower FEV1, FVC, FEV1/FVC and DLCO, and higher serum VEGF-D in the LAM-PH group (PMID 39069851), and the 2025 review describes PH in LAM as uncommon but clinically relevant in advanced disease, resulting from parenchymal destruction and hypoxic vasoconstriction rather than direct vascular involvement and reclassified from Group 5 to Group 3 (PMID 40575830); because screening was echocardiographic without systematic catheterization and advanced-disease hypoxia confounds attribution, the conservative standard keeps the edge at association only and routes individual claims through dated right-heart catheterization with cardiac and thromboembolic exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY mirroring the interstitial-lung-disease pulmonary-hypertension window's bounded framing: the single-centre study of 234 LAM patients found PH by echocardiography in 15 of 167 screened (8.98 percent), with pre-capillary patterns on catheterization, more oxygen therapy, lower FEV1, FVC, FEV1/FVC and DLCO, and higher serum VEGF-D in the LAM-PH group (PMID 39069851), and the 2025 review describes PH in LAM as uncommon but clinically relevant in advanced disease, resulting from parenchymal destruction and hypoxic vasoconstriction rather than direct vascular involvement and reclassified from Group 5 to Group 3 (PMID 40575830); because screening was echocardiographic without systematic catheterization and advanced-disease hypoxia confounds attribution, the conservative standard keeps the edge at association only and routes individual claims through dated right-heart catheterization with cardiac and thromboembolic exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), mirroring the interstitial-lung-disease window's bounded framing: the single-centre study of 234 LAM patients found PH by echocardiography in 15 of 167 screened (8.98 percent) with pre-capillary patterns on catheterization (PMID 39069851), and the 2025 review describes PH in LAM as uncommon but clinically relevant in advanced disease, driven by parenchymal destruction and hypoxic vasoconstriction and reclassified from Group 5 to Group 3 (PMID 40575830); screening was echocardiographic with catheterization in only 5 patients and advanced-disease hypoxia confounds attribution, so individual claims route through dated right-heart catheterization with cardiac and thromboembolic exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "Echocardiography-based screening without systematic catheterization overstates or understates prevalence, PH concentrates in advanced disease where hypoxia confounds attribution, and sirolimus effects on pulmonary pressures remain unproven."
+   ],
+   "sourceIds": [
+    "pmid-39069851",
+    "pmid-40575830"
+   ],
+   "sourceReferenceCount": 2,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "dbcbea7cef2cfe1dfd0f14d2425780ee37c5d4a97033676d50afc2353e03f9bb"
+  },
+  {
+   "relationshipId": "rel-lupus-profundus-to-systemic-lupus-erythematosus",
+   "primaryId": "lupus-profundus",
+   "targetId": "systemic-lupus-erythematosus",
+   "direction": "lupus-profundus -> systemic-lupus-erythematosus",
+   "primaryPublicationState": "draft",
+   "rank": 1,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY on the cutaneous-to-systemic lupus precedent mirroring the published discoid-lupus window with LEP-specific evidence only: the 54-case biopsy-proven retrospective found coexistent SLE in 24.1 percent (13 of 54), ANA in 24.1 percent, anti-dsDNA in 16.6 percent, and direct immunofluorescence positivity in 72.2 percent, with delayed diagnosis significantly associated with lipoatrophy (PMID 42504242), and the 50-year-old lupus-mastitis case documents the panniculitis presentation preceding the SLE diagnosis after several indeterminate biopsies (PMID 41716945); because coexistence is cross-sectional rather than progressive and the histologic overlap with discoid lupus is substantial (68.5 percent discoid features), the conservative standard keeps the edge at association only and routes individual claims through dated serologic and organ-level documentation with lymphoma and drug-exposure exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY on the cutaneous-to-systemic lupus precedent mirroring the published discoid-lupus window with LEP-specific evidence only: the 54-case biopsy-proven retrospective found coexistent SLE in 24.1 percent (13 of 54), ANA in 24.1 percent, anti-dsDNA in 16.6 percent, and direct immunofluorescence positivity in 72.2 percent, with delayed diagnosis significantly associated with lipoatrophy (PMID 42504242), and the 50-year-old lupus-mastitis case documents the panniculitis presentation preceding the SLE diagnosis after several indeterminate biopsies (PMID 41716945); because coexistence is cross-sectional rather than progressive and the histologic overlap with discoid lupus is substantial (68.5 percent discoid features), the conservative standard keeps the edge at association only and routes individual claims through dated serologic and organ-level documentation with lymphoma and drug-exposure exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to the cutaneous-to-systemic lupus association with LEP-specific evidence only: the 54-case biopsy-proven retrospective found coexistent SLE in 24.1 percent (PMID 42504242) and the lupus-mastitis case documents the panniculitis presentation preceding the SLE diagnosis (PMID 41716945); coexistence is cross-sectional rather than progressive, 68.5 percent of biopsies showed discoid features and the discoid identity owns its own windows (ME-29), so individual claims route through dated serologic and organ-level documentation with lymphoma and drug-exposure exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "Retrospective single-centre design with 54 patients, no pre-diagnostic serologic trajectories, cross-sectional coexistence that cannot establish progression, and treatment with hydroxychloroquine, corticosteroids, and mycophenolate that alters both cutaneous and systemic course."
+   ],
+   "sourceIds": [
+    "pmid-42504242",
+    "pmid-41716945"
+   ],
+   "sourceReferenceCount": 2,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "11f7e3648135dfe95328d284a4ba94cfd8eff3ed6474d9293f54811fb1008921"
+  },
+  {
+   "relationshipId": "rel-lupus-profundus-to-scarring-alopecia",
+   "primaryId": "lupus-profundus",
+   "targetId": "scarring-alopecia",
+   "direction": "lupus-profundus -> scarring-alopecia",
+   "primaryPublicationState": "draft",
+   "rank": 2,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY on the follicular-destruction precedent with LEP-specific evidence only: the five-year-old case presented with a localized alopecic patch with reduced follicular openings suggestive of early scarring alopecia and trichoscopic absent follicles, histologically lobular lymphocytic and histiocytic panniculitis extending into subcutaneous fat, with hydroxychloroquine stabilizing the lesion and the authors stressing early recognition to reduce permanent scarring risk (PMID 41994712), the StatPearls review describes resolving nodules leaving depressions from lipoatrophy and disfiguring cosmetic morbidity (PMID 42777106), and the counter-case documents patchy nonscarring scalp LEP with complete alopecia recovery on prednisolone and methotrexate (PMID 40900661); because the evidence is case class with directly conflicting presentations and treatment mediates the outcome, the conservative standard keeps the edge at association only, records the nonscarring counter-case on the edge, and routes individual claims through dated trichoscopic and histologic documentation distinguishing scarring from reversible alopecia."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY on the follicular-destruction precedent with LEP-specific evidence only: the five-year-old case presented with a localized alopecic patch with reduced follicular openings suggestive of early scarring alopecia and trichoscopic absent follicles, histologically lobular lymphocytic and histiocytic panniculitis extending into subcutaneous fat, with hydroxychloroquine stabilizing the lesion and the authors stressing early recognition to reduce permanent scarring risk (PMID 41994712), the StatPearls review describes resolving nodules leaving depressions from lipoatrophy and disfiguring cosmetic morbidity (PMID 42777106), and the counter-case documents patchy nonscarring scalp LEP with complete alopecia recovery on prednisolone and methotrexate (PMID 40900661); because the evidence is case class with directly conflicting presentations and treatment mediates the outcome, the conservative standard keeps the edge at association only, records the nonscarring counter-case on the edge, and routes individual claims through dated trichoscopic and histologic documentation distinguishing scarring from reversible alopecia.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to scalp LEP follicular destruction with LEP-specific evidence only: the paediatric case documents localized scarring alopecia with trichoscopic absent follicles and lobular panniculitis (PMID 41994712), the StatPearls review documents chronic relapsing course with disfiguring morbidity (PMID 42777106), and the counter-case documents patchy nonscarring presentation with complete recovery (PMID 40900661); the discoid window's evidence is not recycled (ME-29) and scarring is not universal, so individual claims route through dated trichoscopic and histologic documentation distinguishing scarring from reversible alopecia.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "Case-class evidence with directly conflicting presentations (scarring versus nonscarring), no cohort quantifying scarring-alopecia incidence in scalp LEP, pediatric single-case anchoring on the scarring side, and immunosuppressive treatment that mediates the outcome."
+   ],
+   "sourceIds": [
+    "pmid-41994712",
+    "pmid-42777106",
+    "pmid-40900661"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "ed2b53d3f7b216816de81a4866c95647941a0650e63849859f208d1e370a8d15"
+  },
+  {
+   "relationshipId": "rel-lymphangioma-to-dysphagia",
+   "primaryId": "lymphangioma",
+   "targetId": "dysphagia",
+   "direction": "lymphangioma -> dysphagia",
+   "primaryPublicationState": "draft",
+   "rank": 1,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY on the anatomic-mechanics precedent mirroring the ankyloglossia dysphagia window's bounded framing: the adult case is titled as hypopharyngeal lymphangioma causing persistent dysphagia (PMID 41245682), the six-year-old case documents a large cystic tongue lymphangioma with swallowing and mastication difficulties and speech disturbances, noting that tongue lymphangiomas may produce functional issues including dysphagia and airway obstruction (PMID 38022192), and the adult postcricoid case documents a large lymphatic malformation resected en bloc with laryngeal suspension specifically to preserve aerodigestive functions, with a review of adult postcricoid and hypopharyngeal presentations (PMID 38321774); because the evidence is case class with strong site dependence and treatment mediates the course, the conservative standard keeps the edge at association only and routes individual claims through dated imaging and swallow studies localizing the lesion with neoplastic and neurologic exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY on the anatomic-mechanics precedent mirroring the ankyloglossia dysphagia window's bounded framing: the adult case is titled as hypopharyngeal lymphangioma causing persistent dysphagia (PMID 41245682), the six-year-old case documents a large cystic tongue lymphangioma with swallowing and mastication difficulties and speech disturbances, noting that tongue lymphangiomas may produce functional issues including dysphagia and airway obstruction (PMID 38022192), and the adult postcricoid case documents a large lymphatic malformation resected en bloc with laryngeal suspension specifically to preserve aerodigestive functions, with a review of adult postcricoid and hypopharyngeal presentations (PMID 38321774); because the evidence is case class with strong site dependence and treatment mediates the course, the conservative standard keeps the edge at association only and routes individual claims through dated imaging and swallow studies localizing the lesion with neoplastic and neurologic exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to site-specific aerodigestive mass effect: the adult case is titled as hypopharyngeal lymphangioma causing persistent dysphagia (PMID 41245682), the paediatric tongue case documents swallowing and mastication difficulties (PMID 38022192), and the adult postcricoid case documents a large lymphatic malformation resected to preserve aerodigestive functions with literature review (PMID 38321774); evidence is case class with anatomical site dependence and treatment mediation, and the Plummer-Vinson association is comorbid with inverted direction, so individual claims route through dated imaging and swallow studies localizing the lesion with neoplastic and neurologic exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No cohort quantifies dysphagia incidence in lymphangioma; outcome is site- and size-dependent, intralesional infection and bleeding enlarge lesions and modulate symptoms, and resection, sclerotherapy, and embolization all mediate the swallowing course."
+   ],
+   "sourceIds": [
+    "pmid-41245682",
+    "pmid-38022192",
+    "pmid-38321774"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "aa791efa5540aeabbb735a901c2feb5e6030d527d336c1ed4f9bbd3ef6fdb9f9"
   }
  ],
  "lastUpdatedBy": "batch-D1-draft-authoring",

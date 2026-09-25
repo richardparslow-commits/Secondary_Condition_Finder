@@ -9173,6 +9173,310 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 **Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
 
+### `lung-abscess` → `pleural-effusion` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Lung abscess documents pleural-space contamination at rupture: a three-patient case series with literature review reports post-COVID lung abscesses rupturing into the pleural cavity with secondary pleural empyema (PMID 39598106), the incidental-imaging case documents a lower-lobe abscess rupture with a bronchopleural fistula (PMID 40190862), and the 153-patient paediatric empyema cohort found concurrent lung abscess in 25 (16.3%) with significantly longer chest-tube duration and length of stay and more repeat operations (PMID 42573817); attribution is explicit in the rupture series and concurrent-association class in the cohort, so the edge records the documented pleural-space pathway only.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: the located material documents abscess rupture into the pleural cavity and concurrent abscess-empyema presentations, but whether any individual pleural effusion arose from a given abscess, from the antecedent pneumonia, or from another cause requires individual imaging, microbiology, and fluid-analytic review.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 253.1 — Palade E, Titu IM, Goia AE, Simu TD, Ciulic SA, Manole S, Mlesnite M. Management of COVID-19 Infection Associated Lung Abscess with Secondary Pleural Empyema Using Percutaneous Intracavitary Drainage: Case Series and Review of the Literature. J Clin Med. 2024 Nov 19;13:6962. doi:10.3390/jcm13226962. PMID 39598106.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/39598106/
+- Source checked on: 2026-09-25
+- Locator: PMID 39598106; case series (abscesses rupturing into the pleural cavity with pleural empyema)
+- Note under review: Three-patient case series with literature review documenting lung abscesses rupturing into the pleural cavity with secondary pleural empyema in critically ill post-COVID patients; supports the bounded rupture-to-empyema proposition only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 253.2 — Malik D, Khawar Z, Abbas A, Beizaeipour Z, Radhakrishnan R, Dongre J, Mahmood N. Ruptured Lung Abscess Into the Pleural Cavity: The Significance of Imaging and Medication Compliance. Cureus. 2025 Mar;17:e80077. doi:10.7759/cureus.80077. PMID 40190862.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/40190862/
+- Source checked on: 2026-09-25
+- Locator: PMID 40190862; case presentation (abscess rupture with bronchopleural fistula)
+- Note under review: Case report documenting an incidental left lower lobe abscess rupture with a bronchopleural fistula in a 65-year-old man with COPD; supports the bounded pleural-space-rupture proposition only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 253.3 — Giles T, Hutchison DLH, Chua TH, Varadhan H, Gibbs C, Kumar R. Outcomes of paediatric empyema with lung abscess treated by video-assisted thoracoscopic surgery (VATS): a retrospective cohort study. Pediatr Surg Int. 2026 Aug 10;42:333. doi:10.1007/s00383-026-06567-4. PMID 42573817.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42573817/
+- Source checked on: 2026-09-25
+- Locator: PMID 42573817; cohort results (25/153 concurrent lung abscess, outcomes comparison)
+- Note under review: Retrospective cohort of 153 paediatric empyema patients finding concurrent lung abscess in 25 (16.3%) with significantly longer chest-tube duration and length of stay and more repeat operations; concurrent-occurrence class only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `lung-abscess` → `pneumothorax` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Lung abscess documents pleural air leaks at the abscess wall: the concomitant-presentation case reports a lung abscess with same-side parapneumonic effusion and pneumothorax requiring separated individualized management (PMID 41164071), the invasive Hafnia alvei case describes progressive pulmonary cavities complicated by secondary lung abscess and tension pneumothorax (PMID 41876249), and the paediatric severe-abscess case documents bronchopleural fistula formation, the pleural communication through which cavity air escapes (PMID 41293207); the co-occurrence and complication are documented at case class without incidence denominators.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: the located material documents pneumothorax and bronchopleural fistula in the setting of lung abscess, but whether an individual pneumothorax arose from abscess rupture, from the antecedent necrotizing infection, or from a procedure or underlying bullous disease requires individual imaging and procedural review.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 254.1 — Desai P, Gaudin J, Parekh S, Vulasala SR, Reddy P. Lateralizing Lung Logjam: A Unique Case of Concomitant Lateralizing Lung Abscess, Parapneumonic Effusion, and Pneumothorax. Cureus. 2025 Sep;17:e93410. doi:10.7759/cureus.93410. PMID 41164071.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/41164071/
+- Source checked on: 2026-09-25
+- Locator: PMID 41164071; case presentation (concomitant lung abscess, parapneumonic effusion, and pneumothorax)
+- Note under review: Case report of a 67-year-old man with concomitant same-laterality lung abscess, parapneumonic effusion, and pneumothorax managed with multidisciplinary individualized treatment; supports the bounded concomitant-presentation proposition only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 254.2 — Mo M, Peng C, Peng G, Yuan H, Zhang Z, Xie J, Cheng W. Invasive Hafnia alvei pneumonia complicated with lung abscess and pneumothorax triad: imaging features and therapeutic dilemmas in an extremely rare case of severe infection. Zhonghua Wei Zhong Bing Ji Jiu Yi Xue. 2026 Jan;38:198-201. doi:10.3760/cma.j.cn121430-20250531-00305. PMID 41876249.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/41876249/
+- Source checked on: 2026-09-25
+- Locator: PMID 41876249; case course (cavity progression with secondary abscess and tension pneumothorax)
+- Note under review: Chinese-language case report documenting progressive pulmonary cavities complicated by secondary lung abscess and tension pneumothorax in a diabetic cirrhotic patient; supports the bounded complication proposition only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 254.3 — Dan L, Yuqian M. Case Report: Evidence-based case management of ECMO treatment for children with severe lung abscess complicated with bronchopleural fistula. Front Pediatr. 2025;13:1676151. doi:10.3389/fped.2025.1676151. PMID 41293207.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/41293207/
+- Source checked on: 2026-09-25
+- Locator: PMID 41293207; case report (severe lung abscess complicated with bronchopleural fistula)
+- Note under review: Paediatric case report documenting severe lung abscess complicated by bronchopleural fistula, the pleural communication through which cavity air escapes; supports the bounded fistula-mechanism proposition only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `lymphangioleiomyomatosis` → `pneumothorax` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Lymphangioleiomyomatosis documents pneumothorax as a presenting and recurring complication: the pregnancy case presented with severe bilateral pneumothorax with near-complete lung collapse and biopsy-confirmed LAM (PMID 42682943), the titled case report documents pneumothorax secondary to LAM (PMID 42441190), and the 1747-patient nationwide Japanese spontaneous-pneumothorax cohort identifies LAM among the female-specific secondary subtypes shaping the distinctive trimodal female age distribution (PMID 42289172); the direction LAM to pneumothorax is explicit in the case material and subtype-level in the cohort.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: the located material documents pneumothorax in the setting of LAM, but whether an individual pneumothorax arose from a LAM cyst rupture, from catamenial endometriosis, from bleb disease, or from another cystic lung disease requires individual imaging, hormonal, and genetic review.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 255.1 — Ebrahimi S, Abdollahzadeh A, Barghaman M, Hajialigol A. Multidisciplinary Management of Lymphangioleiomyomatosis Presenting With Severe Bilateral Pneumothorax During Pregnancy: A Case Report. Case Rep Pulmonol. 2026;2026:5512688. doi:10.1155/crpu/5512688. PMID 42682943.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42682943/
+- Source checked on: 2026-09-25
+- Locator: PMID 42682943; case presentation (bilateral pneumothorax with cystic parenchymal changes, biopsy-confirmed LAM)
+- Note under review: Case report of a 23-year-old pregnant woman presenting with severe bilateral pneumothorax and near-complete lung collapse with parenchymal cysts, confirmed as LAM by VATS biopsy; supports the bounded presentation proposition only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 255.2 — Coy AM. Pneumothorax Secondary to Lymphangioleiomyomatosis. Kans J Med. 2026 May-Jun;19:64-67. doi:10.17161/kjm.vol19.24389. PMID 42441190.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42441190/
+- Source checked on: 2026-09-25
+- Locator: PMID 42441190; case report title and presentation (pneumothorax secondary to LAM)
+- Note under review: Case report titled as pneumothorax secondary to lymphangioleiomyomatosis, documenting the direction of the complication; supports the bounded direction proposition only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 255.3 — Takeda M, Sano Y, Ihara Y, Sawabata N, Obuchi T, Tsuboshima K, Matsutani N, Okamoto S, Igai H, Hayashi A. Sex-specific epidemiological and clinical differences in spontaneous pneumothorax: A cross-sectional cohort study in Japan. Respir Investig. 2026 Jul;64:101470. doi:10.1016/j.resinv.2026.101470. PMID 42289172.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42289172/
+- Source checked on: 2026-09-25
+- Locator: PMID 42289172; cohort results (trimodal female distribution, second peak corresponding to catamenial pneumothorax and LAM)
+- Note under review: Nationwide cross-sectional cohort of 1747 spontaneous-pneumothorax patients identifying LAM among the female-specific secondary subtypes producing the distinctive trimodal female age distribution; subtype-level epidemiologic support only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `lymphangioleiomyomatosis` → `pleural-effusion` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Lymphangioleiomyomatosis documents chylous pleural effusion as a direct complication: the young-woman case reports a chylous effusion found to be secondary to LAM (PMID 38371459), the cystic-lung-disease case presents recurrent non-traumatic chylothorax with elevated VEGF-D as the presenting feature of LAM (PMID 37435256), and the sporadic-LAM case documents recurrent lymphocyte-predominant exudative effusions with milky fluid and elevated triglycerides that had been misdiagnosed as tuberculosis (PMID 42701434); the effusion is documented at case class with explicit secondary attribution.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: the located material documents chylous or lymphocyte-predominant effusion attributed to LAM, but whether an individual effusion arose from LAM lymphatic involvement, from thoracic duct obstruction by another cause, from infection, or from heart failure requires individual fluid-analytic and imaging review.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 256.1 — Barton EC, Johnson S, Collin N, Bhatt N, Maskell NA. A chylothorax in a young woman: The difficulties of medical management. Respirol Case Rep. 2024 Feb;12:e01303. doi:10.1002/rcr2.1303. PMID 38371459.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/38371459/
+- Source checked on: 2026-09-25
+- Locator: PMID 38371459; case presentation (chylous effusion secondary to LAM)
+- Note under review: Case report of a young woman with a chylous effusion found to be secondary to lymphangioleiomyomatosis, with remission on mTOR inhibition and interventional radiology; supports the bounded secondary-chylothorax proposition only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 256.2 — Gupta S, Paul V. Cystic Lung Disease Presenting as Recurrent Non-traumatic Chylothorax: Case Report and a Mini-Review. Cureus. 2023 Jun;15:e40217. doi:10.7759/cureus.40217. PMID 37435256.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/37435256/
+- Source checked on: 2026-09-25
+- Locator: PMID 37435256; case presentation and mini-review (recurrent chylothorax leading to LAM diagnosis)
+- Note under review: Case report with mini-review of recurrent non-traumatic chylothorax as the presenting feature of LAM with elevated VEGF-D and bilateral thin-walled cysts; supports the bounded presenting-complication proposition only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 256.3 — Lamboro BT, Belachew Dejene M, Belisa TK, Gashaw Dessie M. Sporadic lymphangioleiomyomatosis with lymphocyte-predominant pleural effusion misdiagnosed as tuberculosis: a case report. Respir Med Case Rep. 2026;63:102491. doi:10.1016/j.rmcr.2026.102491. PMID 42701434.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42701434/
+- Source checked on: 2026-09-25
+- Locator: PMID 42701434; case presentation (recurrent chylous effusions confirmed on repeat analysis, LAM on HRCT)
+- Note under review: Case report documenting recurrent lymphocyte-predominant exudative pleural effusions with milky triglyceride-rich fluid in sporadic LAM, initially misdiagnosed as tuberculosis; supports the bounded effusion proposition and the tuberculosis-mimic caveat.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `lymphangioleiomyomatosis` → `pulmonary-hypertension` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Lymphangioleiomyomatosis documents pulmonary hypertension at cohort level: the single-centre LAM-PH study echocardiographed 167 of 234 LAM patients and found pulmonary hypertension in 15 (8.98%), with right heart catheterization showing pre-capillary patterns and the LAM-PH group showing lower FEV1, FVC, and DLCO and higher serum VEGF-D (PMID 39069851), and the rare-pulmonary-disease review describes PH in LAM as uncommon but clinically relevant in advanced disease, reclassified from Group 5 to Group 3 (PMID 40575830); the prevalence is quantified at identity level.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: the located material documents PH prevalence and hemodynamic patterns in LAM cohorts, but whether an individual elevation arose from LAM parenchymal destruction, from left heart disease, from thromboembolic disease, or from another pulmonary vasculopathy requires individual catheterization and cardiac review.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 257.1 — Liang PQ, Xu BN, Pan YX, Huang HY, Zhao Z, Hong C, Wu XF, Liu J. Clinical features of pulmonary hypertension in lymphangioleiomyomatosis. Zhonghua Jie He He Hu Xi Za Zhi. 2024 Aug 12;47:746-753. doi:10.3760/cma.j.cn112147-20240301-00121. PMID 39069851.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/39069851/
+- Source checked on: 2026-09-25
+- Locator: PMID 39069851; cohort results (PH prevalence 8.98%, hemodynamic and functional comparison)
+- Note under review: Chinese-language single-centre cohort of 234 LAM patients: echocardiographic PH in 15 of 167 screened (8.98%), pre-capillary patterns on catheterization, worse lung function and higher VEGF-D in the PH group; supports the bounded prevalence proposition only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 257.2 — Tagariello F, Elia D, Harari SA. Rare pulmonary diseases and pulmonary hypertension. Curr Opin Pulm Med. 2025 Sep 1;31:470-475. doi:10.1097/MCP.0000000000001188. PMID 40575830.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/40575830/
+- Source checked on: 2026-09-25
+- Locator: PMID 40575830; review section on LAM (pathophysiology and reclassification)
+- Note under review: Narrative review describing PH in LAM as uncommon but clinically relevant in advanced disease, driven by parenchymal destruction and hypoxic vasoconstriction rather than direct vascular involvement, with reclassification from Group 5 to Group 3; supports the bounded mechanism framing only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `lupus-profundus` → `systemic-lupus-erythematosus` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Lupus erythematosus panniculitis documents systemic lupus association at cohort level: the 54-case biopsy-proven LEP retrospective found coexistent systemic lupus erythematosus in 24.1 percent of cases with ANA positivity in 24.1 percent and anti-double-stranded DNA in 16.6 percent (PMID 42504242), and the lupus-mastitis case documents the panniculitis presentation preceding the SLE diagnosis after several indeterminate breast biopsies (PMID 41716945); the association is quantified cross-sectionally at identity level and temporally at case class.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: the located material documents coexistent SLE in a quarter of the LEP cohort and one case of panniculitis preceding SLE diagnosis, but whether an individual LEP portends, aggravates, or merely coexists with systemic disease requires individual serologic, organ-level, and longitudinal review.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 258.1 — Nasimi M, Ramezani N, Kamyab K, Abdshah A, Ghiasi M, Montazeri S, Babaie H, Saberi F. Clinicopathological Features of Lupus Erythematosus Panniculitis (LEP): A Retrospective Analysis of 54 Cases. Health Sci Rep. 2026 Jul 25;9:e72871. doi:10.1002/hsr2.72871. PMID 42504242.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42504242/
+- Source checked on: 2026-09-25
+- Locator: PMID 42504242; cohort results (coexistent SLE 24.1%, ANA 24.1%, anti-dsDNA 16.6%)
+- Note under review: Retrospective analysis of 54 biopsy-proven LEP cases finding coexistent SLE in 24.1 percent with serologic profiles and histopathologic reassessment; supports the bounded coexistence proposition only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 258.2 — Mohammed SR, Capildeo K, Davis-King K, Barrow M. A Diagnostic Pitfall: Lupus Mastitis Presenting Before Diagnosis of Systemic Lupus Erythematosus. Case Rep Rheumatol. 2026;2026:5593452. doi:10.1155/crrh/5593452. PMID 41716945.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/41716945/
+- Source checked on: 2026-09-25
+- Locator: PMID 41716945; case presentation (LM diagnosed before SLE)
+- Note under review: Case report documenting lupus mastitis, a panniculitis presentation, diagnosed before the systemic lupus diagnosis after several indeterminate breast biopsies; supports the bounded preceding-presentation proposition only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `lupus-profundus` → `scarring-alopecia` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Lupus erythematosus profundus documents scarring alopecia at scalp presentation: the paediatric case presented with a localized alopecic patch with reduced follicular openings suggestive of early scarring alopecia and absent follicles on trichoscopy, histologically lobular panniculitis extending into subcutaneous fat (PMID 41994712), the StatPearls review describes a chronic relapsing course with disfiguring cosmetic morbidity (PMID 42777106), and the counter-case documents scalp LEP presenting as patchy NONscarring alopecia with complete recovery on treatment (PMID 40900661); scarring potential is documented at case class with one explicit contrary presentation.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: the located material documents both scarring and nonscarring scalp presentations of LEP, so whether an individual alopecia is permanent scarring, a treatment-responsive inflammatory state, or a different alopecia entity requires individual trichoscopic, histologic, and longitudinal review.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 259.1 — Almoosawi H, Samiey F, Al Awadhi A. A Unique Case of Lupus Erythematosus Profundus Presenting With Localized Scarring Alopecia and Perioral Swelling in a Pediatric Patient. Cureus. 2026 Mar;18:e105300. doi:10.7759/cureus.105300. PMID 41994712.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/41994712/
+- Source checked on: 2026-09-25
+- Locator: PMID 41994712; case presentation and trichoscopy (early scarring alopecia, absent follicles)
+- Note under review: Paediatric case of lupus erythematosus profundus presenting with localized scarring alopecia (reduced follicular openings, trichoscopic absent follicles) and perioral swelling, histologically lobular panniculitis; supports the bounded scarring proposition only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 259.2 — Arnold DL, Blum MA, Shitabata P. Lupus Panniculitis. In: StatPearls [Internet]. Treasure Island (FL): StatPearls Publishing; 2026 Jan-. 2026 Sep 14. PMID 42777106.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42777106/
+- Source checked on: 2026-09-25
+- Locator: PMID 42777106; review section (clinical course and morbidity)
+- Note under review: Continuing-education review describing the chronic relapsing course of lupus panniculitis with resolving nodules leaving lipoatrophic depressions and significant disfiguring morbidity; supports the bounded structural-morbidity framing only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 259.3 — Behera B, Sethy M, Ameta B, Khatib FSRA, Ayyanar P. Lupus Panniculitis of the Scalp Presenting as a Patchy Nonscarring Alopecia: Report of an Uncommon Case. Am J Dermatopathol. 2025 Dec 1;47:957-960. doi:10.1097/DAD.0000000000003115. PMID 40900661.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/40900661/
+- Source checked on: 2026-09-25
+- Locator: PMID 40900661; case presentation and outcome (nonscarring alopecia, complete recovery)
+- Note under review: Counter-evidence case: scalp lupus panniculitis presenting as patchy nonscarring alopecia with complete recovery on prednisolone and methotrexate; bounds the scarring proposition by documenting reversibility.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `lymphangioma` → `dysphagia` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Lymphangioma documents dysphagia by direct mass effect: the adult case is titled as hypopharyngeal lymphangioma causing persistent dysphagia (PMID 41245682), the paediatric tongue case documents difficulties during swallowing and mastication with speech disturbances from a 2-3 cm cystic lymphangioma (PMID 38022192), and the adult postcricoid case documents a large lymphatic malformation whose en bloc resection was designed to preserve aerodigestive functions, with a review of adult postcricoid and hypopharyngeal cases (PMID 38321774); the obstructive relationship is documented at case class with explicit direction in the titles and presentations.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: the located material documents dysphagia in the setting of tongue, hypopharyngeal, and postcricoid lymphangioma, but whether an individual dysphagia arose from the malformation, from treatment sequelae, or from another structural or neurologic cause requires individual imaging, endoscopic, and functional review.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 260.1 — Zhao M, Darwich NF, Thaler ER. Hypopharyngeal Lymphangioma Causing Persistent Dysphagia in an Adult: A Case Report. Clin Case Rep. 2025 Nov;13:e71344. doi:10.1002/ccr3.71344. PMID 41245682.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/41245682/
+- Source checked on: 2026-09-25
+- Locator: PMID 41245682; case report title and presentation (hypopharyngeal lymphangioma with persistent dysphagia)
+- Note under review: Adult case report titled as hypopharyngeal lymphangioma causing persistent dysphagia, documenting the direction of the mass effect; supports the bounded direction proposition only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 260.2 — Andreadis D, Ndreu A, Tsekos A, Panta P. Diagnostic and Therapeutic Challenges of a Large Tongue Lymphangioma in a Child: A Case Report. Cureus. 2023 Oct;15:e47363. doi:10.7759/cureus.47363. PMID 38022192.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/38022192/
+- Source checked on: 2026-09-25
+- Locator: PMID 38022192; case presentation (tongue lymphangioma with swallowing difficulties)
+- Note under review: Paediatric case of a large cystic tongue lymphangioma with swallowing and mastication difficulties and speech disturbances, documenting functional burden and infection-related enlargement; supports the bounded functional proposition only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 260.3 — Klibngern H, Ariyanon T, Pornchaisakuldee C, Chowsilpa S, Sittitrai P. A Large Adult Postcricoid Lymphatic Malformation: A Case Report and Literature Review. Ear Nose Throat J. 2026 Sep;105:532-537. doi:10.1177/01455613241229979. PMID 38321774.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/38321774/
+- Source checked on: 2026-09-25
+- Locator: PMID 38321774; case report and literature review (postcricoid malformation, aerodigestive preservation)
+- Note under review: Adult postcricoid lymphatic malformation case with literature review of adult postcricoid and hypopharyngeal presentations, resected to preserve aerodigestive function; supports the bounded aerodigestive-obstruction proposition only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
 ## Implementation mechanics after decisions
 
 - Mapping edits and registry edits must land in lockstep (the registry audit's canonical-JSON hashes and live-use sets will fail otherwise).
