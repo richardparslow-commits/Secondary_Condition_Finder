@@ -32,6 +32,7 @@
     "citations:decay": "node scripts/audit-citation-decay.js",
     "citations:queue": "node scripts/report-citation-verification-queue.js --markdown",
     "citations:dashboard": "node scripts/generate-citation-verification-dashboard.js",
+    "citations:preflight": "node scripts/preflight-source-status.js",
     "probe:va-gov-walkthrough": "node scripts/probe-va-gov-links.js",
     "audit:me-compliance": "node scripts/audit-me-compliance.js",
     "kb:validate": "node scripts/validate-knowledge-base.js",
