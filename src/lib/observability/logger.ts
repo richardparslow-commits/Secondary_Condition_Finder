@@ -3,7 +3,10 @@
  *
  * Emits timestamped, JSON-formatted lines to stdout/stderr so Vercel / OTel
  * ingestors can collect them without extra infrastructure. No PII, no raw
- * evidence, no workflow payloads — callers must pass only sanitized fields.
+ * evidence, no workflow payloads. Callers should still pass only sanitized
+ * fields; `PROHIBITED_LOG_FIELDS` are additionally suppressed recursively and
+ * case-insensitively at emit time as a second line of defence, so a nested or
+ * renamed key cannot carry PHI through to the sink.
  *
  * Usage:
  *   import { createLogger } from "@/lib/observability/logger";
@@ -31,13 +34,69 @@ function isTestEnv(): boolean {
   return process.env.NODE_ENV === "test" || process.env.VITEST === "true";
 }
 
-function redactFields(fields: LogFields): LogFields {
-  // Shallow copy and strip any accidental sensitive keys if present.
-  const sanitized: LogFields = { ...fields };
-  for (const key of ["payload", "rawText", "evidence", "cookie", "secret", "apiKey", "ssn", "fullSsn", "zip"]) {
-    if (key in sanitized) delete (sanitized as Record<string, unknown>)[key];
+/**
+ * Governance contract: log field names that must never reach a sink.
+ *
+ * Exported so tests and future callers assert against one authoritative list
+ * instead of a private inline array. Matching is case-insensitive and applied
+ * at every nesting depth: a shallow, exact-case, top-level blocklist is
+ * defeated by wrapping the same value (`{ meta: { ssn } }`) or by renaming a
+ * key (`SSN`, `RawNotes`) — which is exactly how PHI reaches stdout and from
+ * there the platform log ingest.
+ */
+export const PROHIBITED_LOG_FIELDS: readonly string[] = [
+  // Free-form clinical text and document payloads
+  "freeText", "rawText", "rawNotes", "clinicalNotes", "notes", "evidence",
+  "payload", "ocrText", "documentText", "extractedText",
+  // Direct identifiers and quasi-identifiers
+  "ssn", "fullSsn", "patientName", "dob", "dateOfBirth", "address",
+  "streetAddress", "phone", "phoneNumber", "email", "zip", "zipCode",
+  // Secrets and session material
+  "cookie", "cookies", "secret", "apiKey", "api_key", "token", "accessToken",
+  "refreshToken", "authorization", "password", "session", "sessionId",
+];
+
+const PROHIBITED_LOG_FIELD_SET = new Set(
+  PROHIBITED_LOG_FIELDS.map((field) => field.toLowerCase()),
+);
+
+/** Suppressed values are replaced rather than dropped, so suppression stays auditable. */
+const REDACTION_MARKER = "[redacted]";
+
+/** Depth cap: bounds cost and terminates on accidental cyclic structures. */
+const MAX_REDACTION_DEPTH = 8;
+
+function isProhibitedKey(key: string): boolean {
+  return PROHIBITED_LOG_FIELD_SET.has(key.toLowerCase());
+}
+
+function redactValue(value: unknown, depth: number): unknown {
+  if (depth > MAX_REDACTION_DEPTH) return REDACTION_MARKER;
+  if (value instanceof Date) return value.toISOString();
+  if (Array.isArray(value)) return value.map((entry) => redactValue(entry, depth + 1));
+  if (value && typeof value === "object") {
+    const nested: Record<string, unknown> = {};
+    for (const [key, entry] of Object.entries(value as Record<string, unknown>)) {
+      nested[key] = isProhibitedKey(key) ? REDACTION_MARKER : redactValue(entry, depth + 1);
+    }
+    return nested;
   }
-  return sanitized;
+  return value;
+}
+
+/**
+ * Recursively suppress prohibited fields before a record is serialized.
+ *
+ * Operational correlation fields (`requestId`, `service`, `path`, `status`,
+ * `durationMs`, `outcome`, `component`) are preserved — `path` is a VA API
+ * pathname, never a full request URL carrying a query string.
+ */
+export function redactLogFields(fields: LogFields): LogFields {
+  const sanitized: Record<string, unknown> = {};
+  for (const [key, value] of Object.entries(fields)) {
+    sanitized[key] = isProhibitedKey(key) ? REDACTION_MARKER : redactValue(value, 1);
+  }
+  return sanitized as LogFields;
 }
 
 function emit(level: LogLevel, component: string, message: string, fields: LogFields = {}): void {
@@ -49,7 +108,7 @@ function emit(level: LogLevel, component: string, message: string, fields: LogFi
     level,
     component,
     message,
-    ...redactFields(fields),
+    ...redactLogFields(fields),
   };
 
   const line = JSON.stringify(record);

@@ -19,6 +19,7 @@ const REQUIRED_EXECUTABLE_IMPORTS = [
   "@/lib/va/sandbox",
   "@/lib/va/reference-cache",
   "@/lib/va/forms-finder",
+  "@/lib/observability/logger",
 ];
 const REQUIRED_PERCENT = 100;
 
