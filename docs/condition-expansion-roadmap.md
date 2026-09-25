@@ -1845,3 +1845,120 @@ found only the two intentional survivor classes: the frozen sibling `tests/helpe
 pins (245 and 236, excluded wholesale) and the `61(5):566-574` page range inside the ME-7 citation
 strings. Standing recommendation: batches 51-53 await the CI gate (35-50 landed via PR #470); landing
 them through branch, PR, CI, and merge is the immediate next step before batch 54.
+
+Mapping Expansion D1 batch 54 (2026-09-25) authored six draft-quarantined relationships across four
+of the five screened identities, with one identity deferral (`limitation-of-motion`). All six edges are
+ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED,
+and hypothesizedOnly:true.
+`linear-iga -> keratitis` (rank 1, IMMUNE_MEDIATED) rests on the Haidar 2026 childhood linear IgA
+bullous dermatosis series documenting corneal shield ulceration with persistent epithelial failure
+requiring repeated grafting (PMID 42241023) and the Ramos-Castellon 2010 case documenting the ocular
+blistering disease's destructive course (PMID 21234343), scoped to the corneal-surface limb of the
+same ocular-surface process whose conjunctival limb is recorded as context only.
+`linear-iga -> visual-impairment` (rank 2, IMMUNE_MEDIATED) carries an explicit pathway distinction
+from the keratitis window: it is scoped to the deeper and bilateral end-stage limb - the 2010 case
+documents blindness from retinal and choroidal detachments with torpid evolution and minimal
+immunoglobulin response (PMID 21234343) and the 2026 series documents bilateral progression through
+repeated grafting (PMID 42241023) - so the corneal-surface chain is deliberately not reasserted here
+(it rides the published keratitis-to-corneal-scarring-to-visual-impairment window; intermediate-node
+rule).
+`lingual-neuralgia -> unexplained-chronic-pain` (rank 1, PSYCHOPHYSIOLOGICAL) is a case-matching
+presentation-and-workup edge on the genitofemoral-nerve-neuralgia and levator-ani-syndrome precedent:
+the Chuang 2026 retrospective re-evaluation of six treatment-refractory non-odontogenic orofacial pain
+patients documents chronic neuropathic tongue pain with a mean 17-month diagnostic delay resolved to
+lingual nerve injury after exclusionary dental, neurologic, and neuropathic workup (PMID 42220291),
+the Renton and Yilmaz 2012 cohort of 216 iatrogenic trigeminal injuries - including 93 lingual nerve
+injuries - lays out the assessment and management pathway (PMID 22326447), and the Renton 2006
+simplified-assessment series of 94 lingual nerve injuries documents the same workup structure (PMID
+16732250); the pain is constitutive of the neuralgia, so the edge records presentation-and-workup
+matching rather than a causal arrow.
+`lipoid-pneumonia -> pulmonary-fibrosis` (rank 1, SYSTEMIC_INFLAMMATORY) is scoped to documented
+perilesional remodeling: the Cozzi 2021 high-resolution CT series of 10 exogenous lipid pneumonia
+patients documents fibrosis around the oldest lipid consolidations (PMID 32451884), and the Annobil
+1995 pediatric histology series of four ghee-aspiration children documents fibrosis alongside
+continuing interstitial pneumonia and granuloma formation in longstanding disease (PMID 7773510).
+`lipoid-pneumonia -> bronchiectasis` (rank 2, SYSTEMIC_INFLAMMATORY) is a distinct structural outcome
+node on the same two anchors - bronchiectasis around the oldest lesions on CT (PMID 32451884) and
+radiographic plus histologic bronchiectasis in longstanding childhood disease (PMID 7773510) - with
+site-matched dated CT documentation required per claim and infectious and post-obstructive
+alternatives excluded in these aspiration-prone patients.
+`livedo-reticularis -> cerebrovascular-accident-stroke-residuals` (rank 1, THROMBOTIC_OR_VASCULAR) is
+a risk-marker edge with an explicit marker-not-cause guard on the dysplastic-nevus-syndrome precedent:
+the Starmans 2021 53-patient Sneddon syndrome cohort documents 66 ischaemic strokes and 62 transient
+ischaemic attacks with biopsy-documented microangiopathy in 67 percent and conventional vascular risk
+factors co-present in 60 percent (PMID 33515066), and the Mascarenhas 2003 and Lossos 1995 familial
+series document livedo with cerebrovascular disease across kindreds (PMID 12804991, PMID 7751860);
+because the syndrome is defined by co-occurrence of both findings, the edge records risk-marker and
+workup matching through persistent-phenotype documentation plus dated cerebrovascular imaging with
+competing-cause exclusion.
+`limitation-of-motion` is deferred, not packeted: outcome-not-diagnosis and rating-framework-container
+screen - the identity is an impairment measurement of the same container class already screened at the
+loss-of-use-of-extremities and joint-replacement-residuals steps (batches 44-45) and the batch-24
+contractures deferral. Every located human cohort runs upstream - range of motion is the dependent
+variable in the Klim 2023 thumb-carpometacarpal-arthroplasty trial (PMID 37140370) and the Schultheis
+2024 dorsal-root-ganglion-stimulation cohort (PMID 36464561), and the Patel 2020 adhesive-capsulitis
+review runs fibrosis-to-stiffness (PMID 33633420) - so any outgoing edge would invert the documented
+direction. The only located material running toward a secondary is the Zhou 2020 rabbit immobilization
+model (PMID 30562834), in which limitation of motion and contracture are successive descriptions of
+one capsular fibrosis process (constitutive guard, matching the batch-24 contractures deferral), and
+the disuse-atrophy literature is exposure-scoped to immobilization and unloading rather than to graded
+motion loss (PMID 39106083, PMID 32167129). Reopening condition: a condition-specific cohort in which
+documented, graded goniometric range-of-motion loss precedes and quantifies a catalog-fit secondary
+with the exposure defined by the motion loss rather than by immobilization or disease activity, or a
+qualified-human governance decision treating this impairment-container identity as a mappable source
+with an approved target list.
+
+Screens recorded for this batch: no `linear-iga -> conjunctivitis` edge (the conjunctival limb is
+documented context, PMID 8294597, and the conjunctival and corneal limbs are parallel manifestations
+rather than a primary-secondary pair), no `-> corneal-scarring` or `-> blindness` edge (blindness has
+zero incoming edges catalog-wide per the glaucoma-batch scope note, so visual-impairment is the
+authored target), and no `-> dysphagia` or `-> esophageal-stricture` edge (the IgA-deposit esophageal
+case is an IgA-variant cicatricial pemphigoid, a different disease); no `lingual-neuralgia ->
+trigeminal-neuralgia` edge (wrong-identity guard - the Chuang series lists lingual nerve injury and
+trigeminal neuralgia as separate final diagnoses in the same differential, and the catalog's
+trigeminal-neuralgia identity owns the paroxysmal syndrome), and no `-> depressive-disorder` edge
+(CBT was offered to 8 percent of the injury cohort and quality-of-life improvement was documented
+after surgery, PMID 22326447, but no condition-specific depression prevalence was quantified;
+reopening condition recorded); no `lipoid-pneumonia -> respiratory-cancer` or `-> lung-cancer` edge
+(the Cozzi series documents spiculated tumor-like nodules in 2 of 10 patients and stresses that the
+disease is confused WITH lung tumors - diagnostic-mimic guard, not malignant transformation, PMID
+32451884), no `-> interstitial-lung-disease` edge (constitutive-proximity - the pneumonitis is
+interstitial), no amiodarone or treatment edge (PMID 39712692 is pharmacologically mediated), and no
+Niemann-Pick endogenous-lipid edge (PMID 16623786 belongs to a lysosomal-storage disease with its own
+identity); no `livedo-reticularis -> systemic-vasculitis` edge (direction guard - vasculitis produces
+livedo, not the reverse), no `-> deep-vein-thrombosis` or `-> pulmonary-embolism` edge (the
+antiphospholipid venous axis is shared-driver co-scope, and the deep-vein-thrombosis ->
+pulmonary-embolism window owns the venous chain), and no `-> skin-ulcer` or `-> decubitus-ulcers` edge
+(livedoid vasculopathy and atrophie blanche are distinct entities).
+
+Process notes: all ten citations were NCBI-verified via efetch BEFORE file authoring with a 10/10 title
+match (batch-30 lesson institutionalized, tenth consecutive clean verification cycle); the post-write
+structural self-audit passed on the first attempt for all five files with zero errors and zero
+contamination, extended for this batch with a deferral branch (a zero-suggestion file must carry
+governanceNotes plus reopening/disposition prose), and `npm run kb:validate` reports zero errors. The
+four edge-bearing identities carry 14 reference uses over the 10 new sources, with PMIDs 42241023 and
+21234343 shared across the two linear-iga edges and PMIDs 32451884 and 7773510 shared across the two
+lipoid-pneumonia edges.
+
+Registry after lockstep: 602 relationships (528 explicit / 74 legacy), 996 reference uses (383
+verified / 613 pending-verification), 991 clinical / 5 legal uses, 913 source entities (346 active /
+558 pending-verification). Citation packet regenerated at 239 worksheets / 613 reference rows = live
+citation debt. Backlog after batch 54: **279** undispositioned zero-edge drafts (284 minus the five
+processed identities, the reproducible series continuing 364, 294, 289, 284, 279 at the recorded
+minus-five convention); the raw walk agrees up to the deferral: template-only unmarked zero-edge
+drafts 239 (244 before the batch) and 222 after subtracting the disposition ledgers (227 before), the
+one-count gap being the `limitation-of-motion` deferral, which is zero-edge but now dispositioned via
+its governance notes. The walked window (`limitation-of-motion` .. `livedo-reticularis`) verifies empty
+of unprocessed identities. Next-five: `liver-abscess`, `loeffler-s-endocarditis`, `long-qt-syndrome`,
+`loss-of-auricle`, `loss-of-eyebrow`.
+
+Test-pin note: the sweep touched 52 files and replaced 310 counter tokens in one pass with the
+batch-53 per-token context predicates carried over unchanged (relationships 596 -> 602,
+references/uses 982 -> 996, unverified 599 -> 613, pending source entities 548 -> 558, total source
+entities 903 -> 913, explicit guards 522 -> 528, clinical references 977 -> 991, clinical provenance
+981 -> 995, and the twelve-file draft-singles counter 258 -> 260 for this batch's two single-edge
+identities). The dry run reported zero lines lacking registry vocabulary, and the residue check found
+only the two intentional survivor classes: the frozen sibling `tests/helpers/master-2026-current.ts`
+pins (245 and 236, excluded wholesale) and the `61(5):566-574` page range inside the ME-7 citation
+strings. Standing recommendation: batches 51-53 landed via PR #471 (merge 8bdae4c); batch 54 awaits
+the CI gate and lands through the same branch, PR, CI, and merge path.

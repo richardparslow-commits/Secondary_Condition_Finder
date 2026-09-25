@@ -6,8 +6,8 @@
  "installedFrom": "Master Registry Discrepancy Resolution 2026",
  "authorityBoundary": "Authoritative for current relationship direction, proposition text, guard state, source linkage, and KB parity; does not establish an individual VA medical nexus.",
  "counts": {
-  "relationships": 596,
-  "explicitPublicationGuards": 522,
+  "relationships": 602,
+  "explicitPublicationGuards": 528,
   "legacyRationaleBoundaries": 74
  },
  "relationships": [
@@ -19363,6 +19363,188 @@
    "sourceReferenceCount": 2,
    "pathwayIntelligencePresent": false,
    "suggestionObjectHash": "5cc8b0aff3a0fdda7e1daf07d30384d0e853c6318a08354a60fccdea6aaacbbb"
+  },
+  {
+   "relationshipId": "rel-linear-iga-to-keratitis",
+   "primaryId": "linear-iga",
+   "targetId": "keratitis",
+   "direction": "linear-iga -> keratitis",
+   "primaryPublicationState": "draft",
+   "rank": 1,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY on the autoimmune-blistering ocular precedent: case-level material documents corneal shield ulceration and persistent epithelial failure in biopsy-confirmed linear IgA bullous dermatosis with graft-level intervention required and a conjunctival limb of the same ocular-surface blistering process; because the evidence is single-case reports without incidence data, infectious and exposure mimics were worked up in both anchors before the autoimmune diagnosis, and treatment alters the course, the conservative standard keeps the edge at association only and routes individual claims through biopsy-confirmed disease plus dated lesion-level ocular documentation."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY on the autoimmune-blistering ocular precedent: case-level material documents corneal shield ulceration and persistent epithelial failure in biopsy-confirmed linear IgA bullous dermatosis with graft-level intervention required and a conjunctival limb of the same ocular-surface blistering process; because the evidence is single-case reports without incidence data, infectious and exposure mimics were worked up in both anchors before the autoimmune diagnosis, and treatment alters the course, the conservative standard keeps the edge at association only and routes individual claims through biopsy-confirmed disease plus dated lesion-level ocular documentation.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to ocular-surface involvement in biopsy-confirmed linear IgA bullous dermatosis: a 2026 childhood case series documents corneal shield ulceration with persistent epithelial failure requiring repeated grafting (PMID 42241023), and the conjunctival limb of the same blistering process is documented in cicatrizing conjunctivitis material; evidence is case-report class without incidence data, infectious and exposure mimics were excluded before the autoimmune diagnosis, and treatment alters the course, so individual claims route through biopsy-confirmed disease plus dated lesion-level ocular documentation.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "Dermatology documentation of linear IgA bullous dermatosis with skin-biopsy direct immunofluorescence showing linear IgA at the basement membrane zone, disease activity, and treatment history (dapsone, systemic corticosteroids, intravenous immune globulin) with dates; ophthalmology documentation of the ocular surface examination with lesion type (shield ulcer, persistent epithelial defect, conjunctival inflammation), laterality, corneal sensation, and fluorescein staining with dates; microbiology (viral PCR, bacterial culture) excluding infectious keratitis; serial photographs or examination-under-anesthesia records where performed; documentation of any tarsorrhaphy, amniotic-membrane graft, or keratolimbal procedure and the response; dermatology-ophthalmology joint assessment of the ocular attribution"
+   ],
+   "sourceIds": [
+    "pmid-42241023",
+    "pmid-21234343"
+   ],
+   "sourceReferenceCount": 2,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "d76eb78036004b44a4432849cd226cd974d2ef4c3fd62dc6517d2377201a7c83"
+  },
+  {
+   "relationshipId": "rel-linear-iga-to-visual-impairment",
+   "primaryId": "linear-iga",
+   "targetId": "visual-impairment",
+   "direction": "linear-iga -> visual-impairment",
+   "primaryPublicationState": "draft",
+   "rank": 2,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY with an explicit pathway distinction from the keratitis window: the blindness-level anchor documents retinal and choroidal detachments with torpid evolution and minimal immunoglobulin response, and the second anchor documents bilateral progression through repeated grafting, so the edge is scoped to the deeper and bilateral end-stage limb that the keratitis-to-corneal-scarring-to-visual-impairment chain does not carry; because the evidence is case-report class, surface and deep contributions are separable only per case, and treatment alters the course, the conservative standard keeps the edge at association only and routes individual claims through dated surface-versus-deep attribution."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY with an explicit pathway distinction from the keratitis window: the blindness-level anchor documents retinal and choroidal detachments with torpid evolution and minimal immunoglobulin response, and the second anchor documents bilateral progression through repeated grafting, so the edge is scoped to the deeper and bilateral end-stage limb that the keratitis-to-corneal-scarring-to-visual-impairment chain does not carry; because the evidence is case-report class, surface and deep contributions are separable only per case, and treatment alters the course, the conservative standard keeps the edge at association only and routes individual claims through dated surface-versus-deep attribution.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to the deeper and bilateral end-stage limb distinct from the keratitis-to-corneal-scarring chain: a 2010 case documents blindness from retinal and choroidal detachments with torpid evolution and minimal immunoglobulin response (PMID 21234343), and the 2026 childhood series documents bilateral progression through repeated grafting (PMID 42241023); surface and deep contributions are separable only per case, so individual claims route through dated surface-versus-deep attribution.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "Dermatology documentation of linear IgA bullous dermatosis with direct immunofluorescence confirmation and disease-activity and treatment chronology (dapsone, systemic corticosteroids, intravenous immune globulin); ophthalmology records with dated best-corrected visual acuity, slit-lamp findings (corneal opacification, limbal stem-cell deficiency, symblepharon), and fundus findings (retinal or choroidal detachment, with imaging where performed); documentation of which limb - corneal-surface or retinal/choroidal - accounts for the visual loss and its chronology relative to the blistering disease; surgical records (keratolimbal transplantation, amniotic membrane, tarsorrhaphy, retinal surgery); exclusion of competing causes (infectious keratitis scarring, cataract, glaucoma, amblyopia in children, retinal detachment from other causes); dermatology-ophthalmology joint assessment of the attribution"
+   ],
+   "sourceIds": [
+    "pmid-21234343",
+    "pmid-42241023"
+   ],
+   "sourceReferenceCount": 2,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "411077543b832334fbef93f3f63bafd44081413c175e925954f2ab2d9e9fdd55"
+  },
+  {
+   "relationshipId": "rel-lingual-neuralgia-to-unexplained-chronic-pain",
+   "primaryId": "lingual-neuralgia",
+   "targetId": "unexplained-chronic-pain",
+   "direction": "lingual-neuralgia -> unexplained-chronic-pain",
+   "primaryPublicationState": "draft",
+   "rank": 1,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY as a case-matching pain edge on the genitofemoral-nerve-neuralgia and levator-ani-syndrome precedent: management and diagnostic-re-evaluation cohorts document a chronic neuropathic tongue-pain presentation with long diagnostic delay whose exclusionary dental, neurologic, and neuropathic workup mirrors the unexplained-chronic-pain evaluation, with documented improvement after the correct pathway (surgery, medication, or reassurance) was identified; because the pain is constitutive of the neuralgia, the cohorts are management-class without denominators, and competing orofacial diagnoses are enumerated in the same literature, the conservative standard keeps the edge at association only and records presentation-and-workup matching rather than a causal arrow."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY as a case-matching pain edge on the genitofemoral-nerve-neuralgia and levator-ani-syndrome precedent: management and diagnostic-re-evaluation cohorts document a chronic neuropathic tongue-pain presentation with long diagnostic delay whose exclusionary dental, neurologic, and neuropathic workup mirrors the unexplained-chronic-pain evaluation, with documented improvement after the correct pathway (surgery, medication, or reassurance) was identified; because the pain is constitutive of the neuralgia, the cohorts are management-class without denominators, and competing orofacial diagnoses are enumerated in the same literature, the conservative standard keeps the edge at association only and records presentation-and-workup matching rather than a causal arrow.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly) as presentation-and-workup case matching on the genitofemoral-nerve-neuralgia and levator-ani-syndrome precedent: diagnostic re-evaluation and management cohorts document chronic neuropathic tongue pain with long diagnostic delay whose exclusionary dental, neurologic, and neuropathic workup mirrors the unexplained-chronic-pain evaluation (PMID 42220291, 22326447, 16732250); the pain is constitutive of the neuralgia, cohorts are management-class without denominators, and competing orofacial diagnoses are enumerated in the same literature, so this records presentation-and-workup matching rather than a causal arrow.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "Documentation of the lingual neuralgia diagnosis with etiology (idiopathic or iatrogenic, with any third molar or dental procedure records and dates), neurosensory findings (subjective pain distribution, allodynia, dysgeusia, with mechanosensory or trigeminal-evoked testing where performed) and their chronology; documentation of pain severity (numerical rating or visual analogue scores) and duration with dates; the exclusionary workup - dental examination with negative findings, imaging to exclude mandibular or tongue pathology, temporomandibular evaluation, and neurologic assessment distinguishing trigeminal neuralgia, burning mouth syndrome, and persistent idiopathic dentoalveolar pain; management history (reassurance, medications, topical lidocaine, cognitive behaviour therapy, exploratory surgery or neurectomy) with response; oral-surgery, orofacial-pain, or neurology assessment of the attribution"
+   ],
+   "sourceIds": [
+    "pmid-42220291",
+    "pmid-22326447",
+    "pmid-16732250"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "556a7381c69a2a4cdb01b0af6c133ee7ce22b3866d7c0caccb621eb7d1b1a324"
+  },
+  {
+   "relationshipId": "rel-lipoid-pneumonia-to-pulmonary-fibrosis",
+   "primaryId": "lipoid-pneumonia",
+   "targetId": "pulmonary-fibrosis",
+   "direction": "lipoid-pneumonia -> pulmonary-fibrosis",
+   "primaryPublicationState": "draft",
+   "rank": 1,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY on the hypersensitivity-pneumonitis fibrotic precedent, scoped to the documented perilesional remodeling: the 10-patient CT series documents fibrosis around the oldest lipid consolidations and the pediatric histology series documents fibrosis alongside continuing interstitial pneumonia and granuloma formation in longstanding cases; because the fibrosis is perilesional and described as minimal in the only histology measurement, the evidence class is small series without denominators, exposure and chronicity are heterogeneous, and competing fibrotic etiologies coexist in these often-older patients, the conservative standard keeps the edge at association only and routes individual claims through exposure-confirmed disease plus dated serial imaging."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY on the hypersensitivity-pneumonitis fibrotic precedent, scoped to the documented perilesional remodeling: the 10-patient CT series documents fibrosis around the oldest lipid consolidations and the pediatric histology series documents fibrosis alongside continuing interstitial pneumonia and granuloma formation in longstanding cases; because the fibrosis is perilesional and described as minimal in the only histology measurement, the evidence class is small series without denominators, exposure and chronicity are heterogeneous, and competing fibrotic etiologies coexist in these often-older patients, the conservative standard keeps the edge at association only and routes individual claims through exposure-confirmed disease plus dated serial imaging.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to documented perilesional remodeling on the hypersensitivity-pneumonitis fibrotic precedent: the 10-patient CT series documents fibrosis around the oldest lipid consolidations (PMID 32451884) and the pediatric histology series documents fibrosis alongside continuing interstitial pneumonia and granuloma formation (PMID 7773510); fibrosis is perilesional and described as minimal in the only histology measurement, exposure and chronicity are heterogeneous, and competing fibrotic etiologies coexist, so individual claims route through exposure-confirmed disease plus dated serial imaging.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "Documentation of the lipoid pneumonia diagnosis: exposure history (mineral oil, petroleum jelly, vegetable oil, animal fat aspiration, or endogenous obstructive cause) with chronology; CT documentation with attenuation values in Hounsfield units showing fat-density consolidation, crazy-paving, or ground-glass change, and serial imaging showing the fibrotic evolution with dates; bronchoalveolar lavage results (lipid-laden macrophages, oil red O staining) and lung biopsy where performed; pulmonary-function tests (restrictive pattern, diffusion capacity) with dates; exclusion of competing fibrotic causes (idiopathic pulmonary fibrosis, hypersensitivity pneumonitis, connective-tissue-disease lung involvement, other inhalational exposures, radiation); pulmonology assessment of the attribution with exposure-cessation response where documented"
+   ],
+   "sourceIds": [
+    "pmid-32451884",
+    "pmid-7773510"
+   ],
+   "sourceReferenceCount": 2,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "9a1c7df48bb24a9e764ec2616852407a025ca551b615066f9a1fde8287a116a9"
+  },
+  {
+   "relationshipId": "rel-lipoid-pneumonia-to-bronchiectasis",
+   "primaryId": "lipoid-pneumonia",
+   "targetId": "bronchiectasis",
+   "direction": "lipoid-pneumonia -> bronchiectasis",
+   "primaryPublicationState": "draft",
+   "rank": 2,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY alongside the fibrosis edge as a distinct structural outcome node: both anchors document bronchiectasis in the chronic phase of lipid pneumonia - the imaging series in the oldest lesions around the consolidations and the pediatric series radiographically and histologically in longstanding disease; because the evidence is small series without denominators, infectious and post-obstructive alternatives are common in aspiration-prone patients, and the bronchiectasis co-occurs with perilesional fibrosis in the same lesions, the conservative standard keeps the edge at association only and routes individual claims through site-matched, dated CT documentation with competing-cause exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY alongside the fibrosis edge as a distinct structural outcome node: both anchors document bronchiectasis in the chronic phase of lipid pneumonia - the imaging series in the oldest lesions around the consolidations and the pediatric series radiographically and histologically in longstanding disease; because the evidence is small series without denominators, infectious and post-obstructive alternatives are common in aspiration-prone patients, and the bronchiectasis co-occurs with perilesional fibrosis in the same lesions, the conservative standard keeps the edge at association only and routes individual claims through site-matched, dated CT documentation with competing-cause exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly) as a distinct structural outcome node alongside the fibrosis edge: both anchors document bronchiectasis in the chronic phase of lipid pneumonia - imaging in the oldest lesions around the consolidations (PMID 32451884) and radiographic plus histologic longstanding disease in children (PMID 7773510); evidence is small series without denominators, infectious and post-obstructive alternatives are common in aspiration-prone patients, and the bronchiectasis co-occurs with perilesional fibrosis in the same lesions, so individual claims route through site-matched dated CT documentation with competing-cause exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "Documentation of the lipoid pneumonia diagnosis (exposure history with chronology, CT fat-density attenuation, lavage or histology where performed) and of the bronchiectasis (CT with distribution matching the lipid consolidations, with dates and serial comparison); sputum microbiology and exacerbation history; pulmonary-function tests with dates; exclusion of competing bronchiectasis causes (cystic fibrosis, primary ciliary dyskinesia, immunodeficiency, post-infectious, allergic bronchopulmonary aspergillosis, obstructing lesion, connective-tissue disease); pulmonology assessment of the attribution"
+   ],
+   "sourceIds": [
+    "pmid-32451884",
+    "pmid-7773510"
+   ],
+   "sourceReferenceCount": 2,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "da5ac3a4bba1f1b0efdf4bc04fa31222930eaf1d6eab1653837c25a40b09abca"
+  },
+  {
+   "relationshipId": "rel-livedo-reticularis-to-cerebrovascular-accident-stroke-residuals",
+   "primaryId": "livedo-reticularis",
+   "targetId": "cerebrovascular-accident-stroke-residuals",
+   "direction": "livedo-reticularis -> cerebrovascular-accident-stroke-residuals",
+   "primaryPublicationState": "draft",
+   "rank": 1,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY as a risk-marker edge on the dysplastic-nevus-syndrome precedent with an explicit marker-not-cause guard: a 53-patient Sneddon syndrome cohort documents 66 ischaemic strokes and 62 transient ischaemic attacks preceding diagnosis with biopsy-documented microangiopathy, and two familial series document livedo with cerebrovascular disease across kindreds; because the syndrome is defined by the co-occurrence of both findings, the cohorts lack exposed-population denominators, conventional risk factors are co-present in most patients, and physiologic livedo is common, the conservative standard keeps the edge at association only and routes individual claims through persistent-phenotype documentation plus dated cerebrovascular imaging with competing-cause exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY as a risk-marker edge on the dysplastic-nevus-syndrome precedent with an explicit marker-not-cause guard: a 53-patient Sneddon syndrome cohort documents 66 ischaemic strokes and 62 transient ischaemic attacks preceding diagnosis with biopsy-documented microangiopathy, and two familial series document livedo with cerebrovascular disease across kindreds; because the syndrome is defined by the co-occurrence of both findings, the cohorts lack exposed-population denominators, conventional risk factors are co-present in most patients, and physiologic livedo is common, the conservative standard keeps the edge at association only and routes individual claims through persistent-phenotype documentation plus dated cerebrovascular imaging with competing-cause exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly) as a risk-marker edge with an explicit marker-not-cause guard on the dysplastic-nevus-syndrome precedent: a 53-patient Sneddon syndrome cohort documents 66 ischaemic strokes and 62 transient ischaemic attacks with biopsy-documented microangiopathy (PMID 33515066), and two familial series document livedo with cerebrovascular disease across kindreds (PMID 12804991, 7751860); the syndrome is defined by co-occurrence of both findings, cohorts lack exposed-population denominators, conventional risk factors are co-present in most patients, and physiologic livedo is common, so individual claims route through persistent-phenotype documentation plus dated cerebrovascular imaging with competing-cause exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "Dermatology documentation of livedo reticularis with distribution (generalized versus acral), persistence, onset date relative to the neurologic events, and skin-biopsy findings where performed (vessel-wall thickening, neovascularization, thrombi); neurology documentation with dated brain imaging (computed tomography or magnetic resonance) of the ischaemic strokes or transient ischaemic attacks and their chronology relative to the livedo; antiphospholipid antibody panel results (lupus anticoagulant, anticardiolipin, anti-beta-2-glycoprotein) with dates; cardiovascular risk-factor assessment (hypertension, diabetes, lipids, smoking, atrial fibrillation screening); exclusion of competing stroke causes (large-artery atherosclerosis, small-vessel disease, cardioembolism, dissection, migraine-with-aura vasospasm, vasculitis); dermatology and neurology assessment of the attribution"
+   ],
+   "sourceIds": [
+    "pmid-33515066",
+    "pmid-12804991",
+    "pmid-7751860"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "db8a0915f4c05c60d6c6bd35ce3c3e7902a10424f67ac77a4d4a2bbc603b5a37"
   }
  ],
  "lastUpdatedBy": "batch-D1-draft-authoring",

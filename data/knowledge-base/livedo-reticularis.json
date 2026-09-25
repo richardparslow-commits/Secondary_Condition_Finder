@@ -2,8 +2,80 @@
   "id": "livedo-reticularis",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review hemodynamic, vascular, thrombotic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 54 (2026-09-25): one ASSOCIATION_ONLY draft mapping pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: the single edge asserts association only (etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true, mechanismCategory THROMBOTIC_OR_VASCULAR) as a risk-marker edge on the dysplastic-nevus-syndrome-to-skin-cancer precedent, with an explicit marker-not-cause guard. Livedo reticularis is a cutaneous sign of disturbed blood flow that marks the microangiopathic and antiphospholipid conditions whose cerebrovascular events are the asserted secondary; the shared obliterative microangiopathy is the driver of both findings. Individual claims require dermatologist-documented livedo reticularis with distribution and duration, documented cerebrovascular events with dated imaging, and exclusion of the competing stroke causes, with review by a qualified medical professional.",
+    "Pathway and duplicate-scope screens: no -> systemic-vasculitis edge (direction guard - vasculitis produces livedo, not the reverse); no -> deep-vein-thrombosis or -> pulmonary-embolism edge (the antiphospholipid venous-thrombosis axis is shared-driver co-scope rather than a downstream of the skin sign, and the deep-vein-thrombosis -> pulmonary-embolism window already carries the venous chain); no -> chilblains, decubitus-ulcers, or skin-ulcer edge (the atrophie-blanche and ulcerating presentations belong to livedoid vasculopathy, a distinct entity the located familial material records as a co-occurring process - wrong-identity guard); no -> thrombocytopenia or hematologic edge (co-scoped to the antiphospholipid and lupus identities)."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 54 (2026-09-25): one bounded association edge authored - livedo-reticularis to cerebrovascular-accident-stroke-residuals (rank 1) - classified ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, and hypothesizedOnly:true; mechanismCategory THROMBOTIC_OR_VASCULAR. The proposition rests on the Starmans 2021 comprehensive clinical review of 53 consecutive Sneddon syndrome patients (79 percent female, median age at diagnosis 40 years), in whom livedo reticularis is the defining cutaneous sign and 129 previous vascular events (66 ischaemic strokes, 62 transient ischaemic attacks, and 1 amaurosis fugax) had occurred over a median two years between first event and diagnosis, skin biopsy showing thickened vessel walls with deep-dermal neovascularization in 67 percent, about 60 percent carrying three or more cardiovascular risk factors, and recurrent stroke in 4 patients despite antiplatelet or anticoagulation therapy (PMID 33515066); on the Mascarenhas 2003 familial series of three brothers with long-lasting livedo reticularis extending beyond the lower limbs and cerebrovascular disease (ischaemic stroke in two, cerebral haemorrhage in one) with repeatedly negative antiphospholipid antibodies and an autosomal-dominant inheritance pattern across the kindred (PMID 12804991); and on the Lossos 1995 familial report of a proband with livedo reticularis and progressive neurologic deterioration following stroke, confirmed by cerebral angiogram and skin biopsy, with similarly affected sisters and vasospastic skin phenomena across the kindred (PMID 7751860). The literature documents elevated cerebrovascular event burdens in patients whose livedo reticularis marks Sneddon syndrome or antiphospholipid states without establishing that the livedo caused an individual's stroke.",
+    "Counter-evidence and caveat screens recorded 2026-09-25: (i) constitutive-proximity guard - Sneddon syndrome is DEFINED by livedo reticularis plus recurrent otherwise-unexplained cerebrovascular events, so the edge records risk-marker and workup matching rather than a causal arrow; (ii) shared-driver - the obliterative microangiopathy (thickened vessel walls, neovascularization, endothelial injury) produces both the cutaneous pattern and the cerebrovascular events, and antiphospholipid antibodies are positive in only a minority (14 of 53 in the Starmans series) with few clinical differences between seropositive and seronegative patients; (iii) conventional risk factors - about 60 percent of the cohort carried three or more cardiovascular risk factors, so traditional stroke risk is co-present; (iv) benign livedo is common (physiologic livedo in cold exposure) and only the persistent generalized pattern marks disease, so claims require the persistent disease-associated phenotype; (v) recurrence despite therapy in 4 of 53 patients documents residual risk rather than treatment failure as the asserted pathway.",
+    "Negative screens recorded 2026-09-25: (i) no livedo-reticularis-to-systemic-vasculitis edge (direction guard); (ii) no -> deep-vein-thrombosis or -> pulmonary-embolism edge (antiphospholipid venous axis is shared-driver co-scope; the deep-vein-thrombosis -> pulmonary-embolism window carries the venous chain); (iii) no -> skin-ulcer or -> decubitus-ulcers edge (livedoid vasculopathy and atrophie blanche are a distinct entity - the Mascarenhas familial cases recorded livedoid vasculitis as a co-occurring process within the kindred, not as a downstream of livedo reticularis itself); (iv) no -> systemic-lupus-erythematosus or -> antiphospholipid edge (the livedo is a manifestation of those states - inbound direction; no antiphospholipid identity exists in the catalog); (v) no -> migraine or other neurologic edge (no condition-specific quantification located beyond the cerebrovascular axis)."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "cerebrovascular-accident-stroke-residuals",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The Starmans 2021 comprehensive review of 53 consecutive Sneddon syndrome patients - diagnosed only after other stroke causes were excluded - documents that livedo reticularis in patients with ischaemic stroke is associated with the syndrome, that 129 previous vascular events (66 ischaemic strokes, 62 transient ischaemic attacks, 1 amaurosis fugax) occurred over a median two years before diagnosis, that skin biopsy showed thickened vessel walls with deep-dermal neovascularization in 67 percent, and that 4 patients had recurrent stroke despite antiplatelet or anticoagulation therapy (PMID 33515066); the Mascarenhas 2003 familial series documents three brothers with long-lasting livedo reticularis extending beyond the lower limbs and cerebrovascular disease (ischaemic stroke in two, cerebral haemorrhage in one) with repeatedly negative antiphospholipid antibodies and an apparent autosomal-dominant pattern across the kindred (PMID 12804991); the Lossos 1995 familial report documents livedo reticularis with progressive neurologic deterioration following stroke confirmed by cerebral angiogram and skin biopsy, with similarly affected siblings (PMID 7751860); the literature documents an elevated cerebrovascular event burden in patients whose persistent livedo reticularis marks an obliterative microangiopathic or antiphospholipid state without establishing that the livedo caused an individual's stroke.",
+        "causationStatus": "The mapping does not assert that livedo reticularis caused an individual's cerebrovascular accident: the livedo is a cutaneous marker of the same microangiopathy that produces the cerebrovascular events, and Sneddon syndrome is defined by the co-occurrence of both, so the edge records risk-marker and workup matching rather than a causal arrow; the evidence is a 53-patient retrospective cohort and two small familial series without exposed-population denominators, about 60 percent of the cohort carried three or more conventional cardiovascular risk factors, antiphospholipid antibodies were positive in only 14 of 53, and benign physiologic livedo is common - so no directional claim is made and the persistent disease-associated phenotype is required."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "THROMBOTIC_OR_VASCULAR",
+        "primaryVector": "A hypothesized obliterative-microangiopathy route is described: endothelial injury with intimal thickening and deep-dermal neovascularization narrows small vessels, producing the netlike cutaneous flow pattern and, in the same vasculature, cerebral ischaemic events through occlusion or artery-to-artery embolization of damaged vessel segments; antiphospholipid antibodies amplify the thrombotic tendency in a minority of cases; the located cohorts document the co-occurrence and the biopsy findings, but the individual share of microangiopathy, conventional risk factors, and antibody status remains a hypothesis.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Elevated cerebrovascular event burdens are documented in Sneddon syndrome cohorts and familial series defined by livedo reticularis plus cerebrovascular disease, but individual determination requires dermatologist-documented persistent livedo reticularis with distribution and duration, dated brain imaging documenting the cerebrovascular events, antiphospholipid antibody testing, cardiovascular risk-factor assessment, and exclusion of the competing stroke causes, with review by a qualified medical professional.",
+        "evidenceGaps": "Dermatology documentation of livedo reticularis with distribution (generalized versus acral), persistence, onset date relative to the neurologic events, and skin-biopsy findings where performed (vessel-wall thickening, neovascularization, thrombi); neurology documentation with dated brain imaging (computed tomography or magnetic resonance) of the ischaemic strokes or transient ischaemic attacks and their chronology relative to the livedo; antiphospholipid antibody panel results (lupus anticoagulant, anticardiolipin, anti-beta-2-glycoprotein) with dates; cardiovascular risk-factor assessment (hypertension, diabetes, lipids, smoking, atrial fibrillation screening); exclusion of competing stroke causes (large-artery atherosclerosis, small-vessel disease, cardioembolism, dissection, migraine-with-aura vasospasm, vasculitis); dermatology and neurology assessment of the attribution",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Large-artery atherosclerotic or small-vessel lacunar cerebrovascular disease",
+          "Cardiogenic embolism (atrial fibrillation, valvular disease)",
+          "Migraine-associated vasospasm or reversible cerebral vasoconstriction",
+          "Systemic vasculitis or central-nervous-system vasculitis",
+          "Benign physiologic livedo (cold exposure) without underlying disease",
+          "Livedoid vasculopathy or Sneddon-like phenocopies"
+        ]
+      },
+      "evidenceGaps": [
+        "Dermatology documentation of livedo reticularis with distribution (generalized versus acral), persistence, onset date relative to the neurologic events, and skin-biopsy findings where performed (vessel-wall thickening, neovascularization, thrombi); neurology documentation with dated brain imaging (computed tomography or magnetic resonance) of the ischaemic strokes or transient ischaemic attacks and their chronology relative to the livedo; antiphospholipid antibody panel results (lupus anticoagulant, anticardiolipin, anti-beta-2-glycoprotein) with dates; cardiovascular risk-factor assessment (hypertension, diabetes, lipids, smoking, atrial fibrillation screening); exclusion of competing stroke causes (large-artery atherosclerosis, small-vessel disease, cardioembolism, dissection, migraine-with-aura vasospasm, vasculitis); dermatology and neurology assessment of the attribution"
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY as a risk-marker edge on the dysplastic-nevus-syndrome precedent with an explicit marker-not-cause guard: a 53-patient Sneddon syndrome cohort documents 66 ischaemic strokes and 62 transient ischaemic attacks preceding diagnosis with biopsy-documented microangiopathy, and two familial series document livedo with cerebrovascular disease across kindreds; because the syndrome is defined by the co-occurrence of both findings, the cohorts lack exposed-population denominators, conventional risk factors are co-present in most patients, and physiologic livedo is common, the conservative standard keeps the edge at association only and routes individual claims through persistent-phenotype documentation plus dated cerebrovascular imaging with competing-cause exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Starmans NLP, van Dijk MR, Kappelle LJ, Frijns CJM. Sneddon syndrome: a comprehensive clinical review of 53 patients. J Neurol. 2021 Jul;268(7):2450-2457. doi:10.1007/s00415-021-10407-x. PMID 33515066.",
+          "note": "Retrospective review of 53 consecutive Sneddon syndrome patients (79 percent female, median age 40): 129 prior vascular events (66 ischaemic strokes, 62 TIAs, 1 amaurosis fugax) before diagnosis, skin biopsy positive in 67 percent with thickened vessel walls and deep-dermal neovascularization, 60 percent with three or more cardiovascular risk factors, and recurrent stroke in 4 despite therapy - the cohort and event-burden anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33515066/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 33515066; 53-patient Sneddon cohort, 66 ischaemic strokes and 62 TIAs preceding diagnosis, biopsy microangiopathy"
+        },
+        {
+          "citation": "Mascarenhas R, Santo G, Gonçalo M, Ferro MA, Tellechea O, Figueiredo A. Familial Sneddon's syndrome. Eur J Dermatol. 2003 May-Jun;13(3):283-287. PMID 12804991.",
+          "note": "Familial series of three brothers with long-lasting livedo reticularis beyond the lower limbs and cerebrovascular disease (ischaemic stroke in two, cerebral haemorrhage in one), repeatedly negative antiphospholipid antibodies, and apparent autosomal-dominant inheritance across the kindred - the familial and seronegative anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/12804991/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 12804991; three brothers with livedo reticularis and stroke or cerebral haemorrhage, APS-negative familial Sneddon"
+        },
+        {
+          "citation": "Lossos A, Ben-Hur T, Ben-Nariah Z, Enk C, Gomori M, Soffer D. Familial Sneddon's syndrome. J Neurol. 1995 Feb;242(3):164-168. doi:10.1007/BF00936890. PMID 7751860.",
+          "note": "Familial report of a proband with livedo reticularis and progressive neurologic deterioration following stroke confirmed by cerebral angiogram and skin biopsy, with similarly affected sisters and vasospastic skin phenomena across the kindred - the second familial and diagnostic-confirmation anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/7751860/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 7751860; familial Sneddon syndrome with livedo reticularis and post-stroke deterioration, angiogram and biopsy confirmed"
+        }
+      ]
+    }
+  ]
 }
