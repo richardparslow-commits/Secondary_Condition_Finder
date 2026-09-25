@@ -28,9 +28,20 @@
  *
  * Severity model:
  *  - violations  -> status FAIL, exit 1 (always).
- *  - review      -> status REVIEW, exit 0 by default; --strict upgrades review
- *                   findings to violations for maintainer gates once the
- *                   governance notes have been authored.
+ *  - review      -> status REVIEW, exit 0 by default; --strict upgrades every
+ *                   review finding, association cycles included, to a violation
+ *                   for maintainer gates.
+ *  - review and redundancy are human-decision backlogs, so they are ratcheted
+ *    rather than zero-tolerance: exceeding CRG_REVIEW_BASELINE or
+ *    CRG_REDUNDANCY_BASELINE is a CRG-STRUCTURAL-DEBT-RATCHET violation, which
+ *    makes the backlog monotonic. Lower each pin as a qualified human resolves
+ *    findings. Without the ratchet a gate that exits 0 on REVIEW could absorb
+ *    unbounded new structural debt while still reporting green.
+ *
+ * This audit is enforced by CI (.github/workflows/ci.yml, steps "Audit CRG
+ * graph structure" and "Audit CRG adjacency graph"). Wiring is load-bearing:
+ * an audit whose FAIL path no job executes cannot signal anything, no matter
+ * how correct its analysis is.
  *
  * No writes are performed: this is an audit, not a mutator.
  */
@@ -41,6 +52,18 @@ const path = require("path");
 const MAX_REPORTED_CYCLES = 100;
 const MAX_REPORTED_REDUNDANCY = 50;
 const MAX_CYCLE_LENGTH = 12;
+
+/**
+ * Human-decision backlog ratchets, pinned to the corpus as of 2026-09-25.
+ *
+ * Both backlogs require a qualified human to decide (author governance notes
+ * on a bidirectional pair, or choose between a direct edge and the chain it
+ * duplicates), so zero-tolerance would block every PR on legitimately queued
+ * work. Ratcheting instead keeps the backlog from growing silently. Counted
+ * independently of --strict so the pin means the same thing in both modes.
+ */
+const CRG_REVIEW_BASELINE = 12;
+const CRG_REDUNDANCY_BASELINE = 28;
 
 /**
  * Enumerates every simple directed cycle exactly once, rooted at the
@@ -79,9 +102,20 @@ function enumerateSimpleCycles(sortedNodes, nodeOrder, adjacency) {
 /**
  * Pure graph analysis over parsed knowledge-base mappings.
  * Exported so tests can exercise it without touching the filesystem.
+ *
+ * reviewBaseline / redundancyBaseline exist so tests can exercise the ratchet
+ * without fabricating a dozen cycles. They are deliberately NOT exposed as CLI
+ * flags: the shipped pin can only be changed by editing this file, so a gate
+ * run cannot loosen its own ratchet.
  */
 function analyzeGraph(mappings, options = {}) {
   const strict = options.strict === true;
+  const reviewBaseline = Number.isFinite(options.reviewBaseline)
+    ? options.reviewBaseline
+    : CRG_REVIEW_BASELINE;
+  const redundancyBaseline = Number.isFinite(options.redundancyBaseline)
+    ? options.redundancyBaseline
+    : CRG_REDUNDANCY_BASELINE;
   const edges = [];
   const nodeIds = new Set();
 
@@ -108,6 +142,9 @@ function analyzeGraph(mappings, options = {}) {
   const violations = [];
   const review = [];
   const redundancy = [];
+  // Strict-independent tally of review-class findings, so the ratchet pins the
+  // same backlog whether or not --strict moved those findings into violations.
+  let reviewClassCount = 0;
 
   // --- Self-loops and duplicate edges ---
   const seenEdges = new Map();
@@ -167,14 +204,20 @@ function analyzeGraph(mappings, options = {}) {
     // after the required human justification is authored. Longer cycles are
     // not clearable by pair notes and remain review findings.
     if (cycle.length === 2) continue;
-    review.push({
+    const finding = {
       code: cycle.containsAssociationOnly ? "CRG-ASSOCIATION-CYCLE" : "CRG-CYCLE",
       subject: cycle.path,
       message: cycle.containsAssociationOnly
         ? `cycle contains an ASSOCIATION_ONLY edge — composed hypothesized links must not read as circular causation: ${cycle.path}`
         : `directed cycle present (each direction must be independently guarded): ${cycle.path}`,
       fullyPublished: cycle.fullyPublished,
-    });
+    };
+    reviewClassCount += 1;
+    // --strict is documented as upgrading review findings to violations, and
+    // that has to include cycles: otherwise a maintainer running the strict
+    // gate believes association cycles are enforced while they stay advisory.
+    if (strict) violations.push(finding);
+    else review.push(finding);
   }
 
   // --- Bidirectional pairs and their governance notes ---
@@ -200,6 +243,7 @@ function analyzeGraph(mappings, options = {}) {
         subject: pair.pair,
         message: `bidirectional pair ${pair.pair} lacks a governanceNotes justification on both mapping files; each direction must be independently guarded for causation vs. aggravation before it is treated as reviewed.`,
       };
+      reviewClassCount += 1;
       if (strict) violations.push(finding);
       else review.push(finding);
     }
@@ -225,7 +269,29 @@ function analyzeGraph(mappings, options = {}) {
   }
 
   const associationEdgeCount = edges.filter((edge) => edge.classification === "ASSOCIATION_ONLY").length;
-  const status = violations.length > 0 ? "FAIL" : review.length > 0 ? "REVIEW" : "PASS";
+
+  // --- Structural-debt ratchet ---
+  // Review and redundancy findings are informational by design, because each
+  // needs a qualified-human decision. Nothing else bounds their growth, so
+  // exceeding a pin is a hard violation: the backlog can only shrink.
+  const reviewDebtExceeded = reviewClassCount > reviewBaseline;
+  const redundancyDebtExceeded = redundancy.length > redundancyBaseline;
+  if (reviewDebtExceeded) {
+    violations.push({
+      code: "CRG-STRUCTURAL-DEBT-RATCHET",
+      subject: `review-class findings ${reviewClassCount} > baseline ${reviewBaseline}`,
+      message: `review-class findings grew from the pinned baseline of ${reviewBaseline} to ${reviewClassCount}. Each new cycle or unguarded bidirectional pair needs a qualified-human decision recorded in the mapping's governanceNotes; resolve them or deliberately re-pin CRG_REVIEW_BASELINE in scripts/audit-crg-graph.js.`,
+    });
+  }
+  if (redundancyDebtExceeded) {
+    violations.push({
+      code: "CRG-STRUCTURAL-DEBT-RATCHET",
+      subject: `redundancy conflicts ${redundancy.length} > baseline ${redundancyBaseline}`,
+      message: `transitive redundancy grew from the pinned baseline of ${redundancyBaseline} to ${redundancy.length}. Each conflict means a direct edge overstates the evidence or an authored chain is redundant, and only a qualified human can decide which; resolve them or deliberately re-pin CRG_REDUNDANCY_BASELINE in scripts/audit-crg-graph.js.`,
+    });
+  }
+
+  const status = violations.length > 0 ? "FAIL" : reviewClassCount > 0 ? "REVIEW" : "PASS";
 
   return {
     status,
@@ -238,6 +304,13 @@ function analyzeGraph(mappings, options = {}) {
       cycles: cycles.length,
       bidirectionalPairs: bidirectionalPairs.length,
       redundancyConflicts: redundancy.length,
+    },
+    reviewDebt: {
+      reviewClassCount,
+      reviewBaseline,
+      redundancyConflicts: redundancy.length,
+      redundancyBaseline,
+      exceeded: reviewDebtExceeded || redundancyDebtExceeded,
     },
     violations,
     review,
@@ -277,4 +350,9 @@ if (require.main === module) {
   });
 }
 
-module.exports = { analyzeGraph, enumerateSimpleCycles };
+module.exports = {
+  analyzeGraph,
+  enumerateSimpleCycles,
+  CRG_REVIEW_BASELINE,
+  CRG_REDUNDANCY_BASELINE,
+};
