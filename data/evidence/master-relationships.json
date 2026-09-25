@@ -6,8 +6,8 @@
  "installedFrom": "Master Registry Discrepancy Resolution 2026",
  "authorityBoundary": "Authoritative for current relationship direction, proposition text, guard state, source linkage, and KB parity; does not establish an individual VA medical nexus.",
  "counts": {
-  "relationships": 602,
-  "explicitPublicationGuards": 528,
+  "relationships": 610,
+  "explicitPublicationGuards": 536,
   "legacyRationaleBoundaries": 74
  },
  "relationships": [
@@ -19545,6 +19545,252 @@
    "sourceReferenceCount": 3,
    "pathwayIntelligencePresent": false,
    "suggestionObjectHash": "db8a0915f4c05c60d6c6bd35ce3c3e7902a10424f67ac77a4d4a2bbc603b5a37"
+  },
+  {
+   "relationshipId": "rel-liver-abscess-to-brain-abscess",
+   "primaryId": "liver-abscess",
+   "targetId": "brain-abscess",
+   "direction": "liver-abscess -> brain-abscess",
+   "primaryPublicationState": "draft",
+   "rank": 1,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY on the invasive-disease dissemination precedent: a hemorrhagic brain abscess growing Klebsiella pneumoniae in the setting of invasive Klebsiella pneumoniae syndrome was traced to a primary hepatic focus with multi-organ involvement (PMID 42766866), and the six-patient invasive liver-abscess syndrome case series with narrative review lists cerebral septic emboli among the metastatic infections, with the metastatic-infection patients younger, more often male, and more often critically ill (PMID 42339155); because the evidence is case class without denominators, competing bacteremic sources and metabolic triggers co-present, and treatment alters the course, the conservative standard keeps the edge at association only and routes individual claims through culture-confirmed hepatic and cerebral isolates plus dated neuroimaging with competing-cause exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY on the invasive-disease dissemination precedent: a hemorrhagic brain abscess growing Klebsiella pneumoniae in the setting of invasive Klebsiella pneumoniae syndrome was traced to a primary hepatic focus with multi-organ involvement (PMID 42766866), and the six-patient invasive liver-abscess syndrome case series with narrative review lists cerebral septic emboli among the metastatic infections, with the metastatic-infection patients younger, more often male, and more often critically ill (PMID 42339155); because the evidence is case class without denominators, competing bacteremic sources and metabolic triggers co-present, and treatment alters the course, the conservative standard keeps the edge at association only and routes individual claims through culture-confirmed hepatic and cerebral isolates plus dated neuroimaging with competing-cause exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to the invasive Klebsiella pneumoniae liver-abscess syndrome dissemination route: a hemorrhagic brain abscess growing Klebsiella pneumoniae was traced to a primary hepatic focus with multi-organ involvement (PMID 42766866) and the six-patient invasive liver-abscess syndrome series with narrative review lists cerebral septic emboli among its metastatic infections (PMID 42339155); evidence is case and small-series class without denominators, so individual claims route through culture-confirmed hepatic and cerebral isolates plus dated neuroimaging with competing-cause exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No cohort quantifies brain-abscess incidence after pyogenic liver abscess; the located evidence is case and narrative-review class with diabetes, surgery, or trauma triggers co-present."
+   ],
+   "sourceIds": [
+    "pmid-42766866",
+    "pmid-42339155"
+   ],
+   "sourceReferenceCount": 2,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "7a02b70061e185d459d112af6e5532563416b5734bcc1565e29d148aa131e53a"
+  },
+  {
+   "relationshipId": "rel-liver-abscess-to-meningitis",
+   "primaryId": "liver-abscess",
+   "targetId": "meningitis",
+   "direction": "liver-abscess -> meningitis",
+   "primaryPublicationState": "draft",
+   "rank": 2,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY on the invasive-disease dissemination precedent: the trauma-induced Klebsiella pneumoniae invasive syndrome case presented with liver abscess, lung abscess, endophthalmitis, and purulent meningitis confirmed on cultures and imaging (PMID 39839614), the Canadian community-acquired hypervirulent Klebsiella meningitis case was found to have a liver abscess, a finding the authors note is commonly reported with hypervirulent Klebsiella infections (PMID 42027211), and the invasive liver-abscess syndrome series documents meningitis with ventriculitis followed by full neurological recovery under critical care (PMID 42339155); because the evidence is case and small-series class without denominators, competing meningeal routes and metabolic triggers co-present, and antimicrobial therapy alters the course, the conservative standard keeps the edge at association only and routes individual claims through blood and cerebrospinal fluid culture matching plus dated neuroimaging with competing-cause exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY on the invasive-disease dissemination precedent: the trauma-induced Klebsiella pneumoniae invasive syndrome case presented with liver abscess, lung abscess, endophthalmitis, and purulent meningitis confirmed on cultures and imaging (PMID 39839614), the Canadian community-acquired hypervirulent Klebsiella meningitis case was found to have a liver abscess, a finding the authors note is commonly reported with hypervirulent Klebsiella infections (PMID 42027211), and the invasive liver-abscess syndrome series documents meningitis with ventriculitis followed by full neurological recovery under critical care (PMID 42339155); because the evidence is case and small-series class without denominators, competing meningeal routes and metabolic triggers co-present, and antimicrobial therapy alters the course, the conservative standard keeps the edge at association only and routes individual claims through blood and cerebrospinal fluid culture matching plus dated neuroimaging with competing-cause exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to the metastatic meningeal route of invasive Klebsiella pneumoniae liver-abscess syndrome: the trauma-triggered multi-organ case documented liver abscess with purulent meningitis (PMID 39839614), the Canadian community-acquired hypervirulent Klebsiella meningitis case found a concurrent liver abscess (PMID 42027211), and the invasive liver-abscess series documents meningitis with ventriculitis (PMID 42339155); evidence is case and small-series class, so individual claims route through blood and cerebrospinal fluid culture matching plus dated neuroimaging with competing-cause exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No cohort quantifies meningitis incidence after pyogenic liver abscess; the located evidence is case and small-series class with diabetes, trauma, or immunologic triggers co-present."
+   ],
+   "sourceIds": [
+    "pmid-39839614",
+    "pmid-42027211",
+    "pmid-42339155"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "9ab3746d64ef642589d30c12d7505c36c8a3258122159e0de576d86c03e40ec5"
+  },
+  {
+   "relationshipId": "rel-liver-abscess-to-lung-abscess",
+   "primaryId": "liver-abscess",
+   "targetId": "lung-abscess",
+   "direction": "liver-abscess -> lung-abscess",
+   "primaryPublicationState": "draft",
+   "rank": 3,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY on the invasive-disease dissemination precedent: the trauma-induced Klebsiella pneumoniae invasive syndrome case presented with liver abscess and lung abscess in the same patient with diabetes after a traumatic fall (PMID 39839614), and the single-center cohort of 127 community-acquired Klebsiella pneumoniae liver abscess cases found pulmonary affection in 57.5 percent, the majority manifesting as nodular lesions with cavities and pleural effusion, with abscess diameter over 3 cm, multiple abscesses, and bacteremia among the independent risk factors (PMID 36130707); because the evidence is case and single-center cohort class without lung-abscess-specific denominators, aspiration and other hematogenous routes compete in these often-diabetic patients, and drainage and antibiotics alter the course, the conservative standard keeps the edge at association only and routes individual claims through culture-matched hepatic and pulmonary isolates plus dated chest imaging with competing-cause exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY on the invasive-disease dissemination precedent: the trauma-induced Klebsiella pneumoniae invasive syndrome case presented with liver abscess and lung abscess in the same patient with diabetes after a traumatic fall (PMID 39839614), and the single-center cohort of 127 community-acquired Klebsiella pneumoniae liver abscess cases found pulmonary affection in 57.5 percent, the majority manifesting as nodular lesions with cavities and pleural effusion, with abscess diameter over 3 cm, multiple abscesses, and bacteremia among the independent risk factors (PMID 36130707); because the evidence is case and single-center cohort class without lung-abscess-specific denominators, aspiration and other hematogenous routes compete in these often-diabetic patients, and drainage and antibiotics alter the course, the conservative standard keeps the edge at association only and routes individual claims through culture-matched hepatic and pulmonary isolates plus dated chest imaging with competing-cause exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to septic pulmonary involvement of pyogenic liver abscess: the trauma-triggered invasive Klebsiella case developed a lung abscess with the hepatic focus (PMID 39839614) and the 127-case community-acquired Klebsiella liver-abscess cohort found pulmonary affection in 57.5 percent, the majority as nodular lesions with cavities and pleural effusion (PMID 36130707); the cohort quantifies pulmonary affection rather than lung-abscess incidence specifically, so individual claims route through culture-matched hepatic and pulmonary isolates plus dated chest imaging with competing-cause exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "The pulmonary cohort quantifies affection but not lung-abscess incidence specifically; aspiration and non-hepatic hematogenous sources compete in the documented populations."
+   ],
+   "sourceIds": [
+    "pmid-39839614",
+    "pmid-36130707"
+   ],
+   "sourceReferenceCount": 2,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "30913a442572985fd82ebfb09bdfba757d09af1cab9ba7a0eb8904714080ad94"
+  },
+  {
+   "relationshipId": "rel-liver-abscess-to-visual-impairment",
+   "primaryId": "liver-abscess",
+   "targetId": "visual-impairment",
+   "direction": "liver-abscess -> visual-impairment",
+   "primaryPublicationState": "draft",
+   "rank": 4,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY on the invasive-disease dissemination precedent, scoped to the endogenous-endophthalmitis limb: the 103-patient retrospective cohort of endogenous endophthalmitis found vision loss the chief complaint in 96.12 percent, extraocular infection sources in 63.11 percent with liver abscess the most common at 45 percent, and Klebsiella pneumoniae dominating the culture-positive cases with hypervirulent lineages, intravitreal antimicrobial injection being the independent protective factor for visual prognosis (PMID 42755882); the Klebsiella endophthalmitis clinical series documents the classic presentation of eye pain, redness, and reduced vision with identifiable bacteremic sources most prominently liver abscess (PMID 42460187), and the invasive liver-abscess syndrome series documents very poor residual visual acuity in its endophthalmitis patient and recommends routine endophthalmitis screening (PMID 42339155); because the cohorts are ocular-series class selected on endophthalmitis, ocular comorbidity and treatment delay modify outcomes, and diabetes is a shared driver of both the hepatic and ocular disease, the conservative standard keeps the edge at association only and routes individual claims through dated ophthalmologic examination documenting endophthalmitis with culture-matched hepatic isolate and competing-cause exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY on the invasive-disease dissemination precedent, scoped to the endogenous-endophthalmitis limb: the 103-patient retrospective cohort of endogenous endophthalmitis found vision loss the chief complaint in 96.12 percent, extraocular infection sources in 63.11 percent with liver abscess the most common at 45 percent, and Klebsiella pneumoniae dominating the culture-positive cases with hypervirulent lineages, intravitreal antimicrobial injection being the independent protective factor for visual prognosis (PMID 42755882); the Klebsiella endophthalmitis clinical series documents the classic presentation of eye pain, redness, and reduced vision with identifiable bacteremic sources most prominently liver abscess (PMID 42460187), and the invasive liver-abscess syndrome series documents very poor residual visual acuity in its endophthalmitis patient and recommends routine endophthalmitis screening (PMID 42339155); because the cohorts are ocular-series class selected on endophthalmitis, ocular comorbidity and treatment delay modify outcomes, and diabetes is a shared driver of both the hepatic and ocular disease, the conservative standard keeps the edge at association only and routes individual claims through dated ophthalmologic examination documenting endophthalmitis with culture-matched hepatic isolate and competing-cause exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to the endogenous-endophthalmitis limb: the 103-patient endophthalmitis cohort found vision loss in 96 percent with liver abscess the most common extraocular source at 45 percent (PMID 42755882), the Klebsiella endophthalmitis series identifies liver abscess as the most prominent bacteremic source with reduced vision in all cases (PMID 42460187), and the invasive liver-abscess series documents very poor residual visual acuity in its endophthalmitis patient (PMID 42339155); the cohorts are ocular-series selected, so individual claims route through dated ophthalmologic examination with culture-matched hepatic isolate and competing-cause exclusion, and the blindness target remains unused per the glaucoma-batch scope note.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "The endophthalmitis cohorts are ocular-series selected rather than liver-abscess selected, so they establish the hepatic source share of endophthalmitis rather than the endophthalmitis rate of liver abscess; treatment delay strongly modifies visual outcomes."
+   ],
+   "sourceIds": [
+    "pmid-42755882",
+    "pmid-42460187",
+    "pmid-42339155"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "97a725d78f6f9e1d9d4de55821f26288af7360477a006acf30438fef26f54853"
+  },
+  {
+   "relationshipId": "rel-liver-abscess-to-pleural-effusion",
+   "primaryId": "liver-abscess",
+   "targetId": "pleural-effusion",
+   "direction": "liver-abscess -> pleural-effusion",
+   "primaryPublicationState": "draft",
+   "rank": 5,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY on the trans-diaphragmatic extension precedent, scoped to the pyogenic route: the case report documents a massive expanding pyogenic pleural effusion arising from trans-diaphragmatic extension of a pyogenic liver abscess, producing an S1Q3T3 electrocardiographic pattern of acute right-heart strain (PMID 39926638), the 127-case community-acquired Klebsiella pneumoniae liver abscess cohort found pulmonary affection in 57.5 percent with pleural effusion among the predominant chest-CT manifestations (PMID 36130707), and the 1572-patient 12-year pyogenic liver abscess retrospective identifies pleural effusion, fever, multiple organ dysfunction, and hospital stay as factors useful in predicting outcomes (PMID 33314531); because the evidence is case and cohort class without quantified extension rates, competing hydrothorax and parapneumonic mechanisms are common in these often-older patients, and drainage and antibiotics alter the course, the conservative standard keeps the edge at association only and routes individual claims through site-matched dated imaging with fluid analysis and competing-cause exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY on the trans-diaphragmatic extension precedent, scoped to the pyogenic route: the case report documents a massive expanding pyogenic pleural effusion arising from trans-diaphragmatic extension of a pyogenic liver abscess, producing an S1Q3T3 electrocardiographic pattern of acute right-heart strain (PMID 39926638), the 127-case community-acquired Klebsiella pneumoniae liver abscess cohort found pulmonary affection in 57.5 percent with pleural effusion among the predominant chest-CT manifestations (PMID 36130707), and the 1572-patient 12-year pyogenic liver abscess retrospective identifies pleural effusion, fever, multiple organ dysfunction, and hospital stay as factors useful in predicting outcomes (PMID 33314531); because the evidence is case and cohort class without quantified extension rates, competing hydrothorax and parapneumonic mechanisms are common in these often-older patients, and drainage and antibiotics alter the course, the conservative standard keeps the edge at association only and routes individual claims through site-matched dated imaging with fluid analysis and competing-cause exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to the PYOGENIC route only - the amebic route rides the sibling amebic-liver-abscess identity and its published pleural-effusion window, and no amebic source is recycled here (ME-29 scope rule): the massive-empyema case attributes a pyogenic pleural effusion to trans-diaphragmatic extension of a liver abscess (PMID 39926638), the 127-case Klebsiella liver-abscess cohort documents pleural effusion among predominant chest-CT manifestations (PMID 36130707), and the 1572-patient pyogenic liver abscess cohort identifies pleural effusion as an outcome-predictive factor (PMID 33314531); individual claims route through site-matched dated imaging with fluid analysis and competing-cause exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "The cohorts document pleural effusion as a co-occurring finding and outcome predictor rather than a quantified hepatic-extension rate; hydrothorax and parapneumonic mechanisms commonly compete."
+   ],
+   "sourceIds": [
+    "pmid-39926638",
+    "pmid-36130707",
+    "pmid-33314531"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "de47f5dcff67a538bf5343621864bcfe46c42e3e892894c8e91661bb1383c5c5"
+  },
+  {
+   "relationshipId": "rel-loeffler-s-endocarditis-to-heart-valve-disorders",
+   "primaryId": "loeffler-s-endocarditis",
+   "targetId": "heart-valve-disorders",
+   "direction": "loeffler-s-endocarditis -> heart-valve-disorders",
+   "primaryPublicationState": "draft",
+   "rank": 1,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY on the endomyocardial-fibrosis valvular precedent, mirroring the libman-sacks-endocarditis valve window's bounded framing: the FIP1L1-PDGFRA-positive hypereosinophilia case presented a 24 by 15 mm mobile echogenic mass attached to the mitral valve with severe mitral regurgitation and subendocardial fibrosis on cardiac MRI, the authors explicitly associating Loeffler's endocarditis with endomyocardial fibrosis, thrombus formation, and valvular dysfunction (PMID 42130655), the JACC multimodality-imaging review describes the final common cardiac phenotype of endomyocardial fibrosis and intracardiac thrombosis arising from diverse causes of hypereosinophilia (PMID 42301176), and the 18-patient tertiary registry characterizes Loeffler's endomyocarditis as eosinophilic myocardial infiltration and thrombus formation leading to restrictive cardiomyopathy, with frequent ventricular thrombi and two patients requiring transplantation (PMID 42425179); because the evidence is case and review class without valve-specific denominators, degenerative and functional regurgitation compete in these patients, and corticosteroid, imatinib, and anticoagulation therapy alter the course, the conservative standard keeps the edge at association only and routes individual claims through dated echocardiography documenting the valve lesion with eosinophil-burden records and competing-cause exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY on the endomyocardial-fibrosis valvular precedent, mirroring the libman-sacks-endocarditis valve window's bounded framing: the FIP1L1-PDGFRA-positive hypereosinophilia case presented a 24 by 15 mm mobile echogenic mass attached to the mitral valve with severe mitral regurgitation and subendocardial fibrosis on cardiac MRI, the authors explicitly associating Loeffler's endocarditis with endomyocardial fibrosis, thrombus formation, and valvular dysfunction (PMID 42130655), the JACC multimodality-imaging review describes the final common cardiac phenotype of endomyocardial fibrosis and intracardiac thrombosis arising from diverse causes of hypereosinophilia (PMID 42301176), and the 18-patient tertiary registry characterizes Loeffler's endomyocarditis as eosinophilic myocardial infiltration and thrombus formation leading to restrictive cardiomyopathy, with frequent ventricular thrombi and two patients requiring transplantation (PMID 42425179); because the evidence is case and review class without valve-specific denominators, degenerative and functional regurgitation compete in these patients, and corticosteroid, imatinib, and anticoagulation therapy alter the course, the conservative standard keeps the edge at association only and routes individual claims through dated echocardiography documenting the valve lesion with eosinophil-burden records and competing-cause exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to valvular involvement of the eosinophilic endomyocardial process: the FIP1L1-PDGFRA case documents a mitral-valve mass with severe mitral regurgitation and names valvular dysfunction among the established associations of Loeffler's endocarditis (PMID 42130655), the multimodality-imaging review describes the final common phenotype of endomyocardial fibrosis and intracardiac thrombosis (PMID 42301176), and the 18-patient tertiary registry characterizes the disease as infiltration and thrombus leading to restrictive cardiomyopathy (PMID 42425179); evidence is case and review class without valve-specific denominators, so individual claims route through dated echocardiography with eosinophil-burden records and competing-cause exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No cohort quantifies valve-dysfunction incidence in Loeffler endocarditis at identity level; the registry documents thrombi and restrictive physiology more than valve gradients, and degenerative and functional regurgitation compete."
+   ],
+   "sourceIds": [
+    "pmid-42130655",
+    "pmid-42301176",
+    "pmid-42425179"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "e230b6b2ad5e4e1bc4acc86f851a6c77882159c914ab19ecefaec40d29164d77"
+  },
+  {
+   "relationshipId": "rel-loeffler-s-endocarditis-to-cerebrovascular-accident-stroke-residuals",
+   "primaryId": "loeffler-s-endocarditis",
+   "targetId": "cerebrovascular-accident-stroke-residuals",
+   "direction": "loeffler-s-endocarditis -> cerebrovascular-accident-stroke-residuals",
+   "primaryPublicationState": "draft",
+   "rank": 2,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY on the mural-thrombus cardioembolic precedent, mirroring the libman-sacks-endocarditis stroke window's bounded framing: the hypereosinophilic syndrome case with Loeffler endocarditis developed multiple cerebral infarctions while a slightly enlarged mural thrombus persisted on six-month cardiac MRI despite normalized eosinophil counts, the authors recommending long-term imaging and anticoagulation surveillance (PMID 42688267), the HES central-nervous-system case and literature review states cerebral infarction is the most common neurological complication in hypereosinophilic syndromes, typically border-zone, and documents acute ischemic stroke with severe middle-cerebral-artery stenosis responding to immunosuppression (PMID 42028114), and the 18-patient Loeffler's endomyocarditis registry documents frequent ventricular thrombi with 88.2 percent of patients receiving oral anticoagulation (PMID 42425179); because the evidence is case, review, and small-registry class without stroke-rate denominators, the hypereosinophilic stroke literature mixes mural-thrombus embolization with eosinophilic vasculitis mechanisms, and anticoagulation and immunosuppression alter the course, the conservative standard keeps the edge at association only and routes individual claims through dated brain imaging plus cardiac MRI documenting the thrombus with eosinophil-burden records and competing-cause exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY on the mural-thrombus cardioembolic precedent, mirroring the libman-sacks-endocarditis stroke window's bounded framing: the hypereosinophilic syndrome case with Loeffler endocarditis developed multiple cerebral infarctions while a slightly enlarged mural thrombus persisted on six-month cardiac MRI despite normalized eosinophil counts, the authors recommending long-term imaging and anticoagulation surveillance (PMID 42688267), the HES central-nervous-system case and literature review states cerebral infarction is the most common neurological complication in hypereosinophilic syndromes, typically border-zone, and documents acute ischemic stroke with severe middle-cerebral-artery stenosis responding to immunosuppression (PMID 42028114), and the 18-patient Loeffler's endomyocarditis registry documents frequent ventricular thrombi with 88.2 percent of patients receiving oral anticoagulation (PMID 42425179); because the evidence is case, review, and small-registry class without stroke-rate denominators, the hypereosinophilic stroke literature mixes mural-thrombus embolization with eosinophilic vasculitis mechanisms, and anticoagulation and immunosuppression alter the course, the conservative standard keeps the edge at association only and routes individual claims through dated brain imaging plus cardiac MRI documenting the thrombus with eosinophil-burden records and competing-cause exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to the mural-thrombus thromboembolic route of hypereosinophilic cardiac disease: the HES case with Loeffler endocarditis documents multiple cerebral infarctions with persistent mural thrombus (PMID 42688267), the HES CNS review states cerebral infarction is the most common neurological complication of the syndrome (PMID 42028114), and the tertiary registry documents frequent ventricular thrombi with 88 percent anticoagulated (PMID 42425179); the hypereosinophilic stroke literature mixes mural-thrombus embolization with eosinophilic vasculitis, so individual claims route through dated brain imaging plus cardiac MRI documenting the thrombus with competing-cause exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No cohort quantifies stroke incidence after Loeffler endocarditis specifically; the hypereosinophilic stroke literature mixes cardiac-embolic and vasculitic mechanisms and conventional risk factors co-present."
+   ],
+   "sourceIds": [
+    "pmid-42688267",
+    "pmid-42028114",
+    "pmid-42425179"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "4af77a4357fe315f4b688126a4c69024c33f996c27b67d76f33884c730de44fd"
+  },
+  {
+   "relationshipId": "rel-long-qt-syndrome-to-cardiac-arrhythmia",
+   "primaryId": "long-qt-syndrome",
+   "targetId": "cardiac-arrhythmia",
+   "direction": "long-qt-syndrome -> cardiac-arrhythmia",
+   "primaryPublicationState": "draft",
+   "rank": 1,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY on the brugada-syndrome channelopathy precedent, matching its bounded event-risk framing: the Korean multicenter cohort of 202 pediatric long QT syndrome patients found breakthrough cardiac events in 29 percent and independent risk factors for life-threatening arrhythmic events including LQT2 and LQT3 genotype, fetal arrhythmia, QTc at or above 500 ms, and beta-blocker exposure (PMID 42669865), the Rochester LQTS Registry analysis of 435 genetically confirmed women quantified the burden of syncope, aborted cardiac arrest, and LQTS-related sudden cardiac death over 20 years of follow-up with menarche timing modifying cardiac-event risk (PMID 42466517), and the integrative review synthesizes molecular pathogenesis with multi-factorial risk and risk stratification for QT prolongation and sudden cardiac death, noting that QTc threshold alone is insufficient and that nonpenetrant long QT syndrome carries near-population-level event risk (PMID 42274161); because the evidence is risk-stratification class that identifies event predictors in diagnosed patients rather than proving individual causation, trigger and medication exposures modify risk, and treatment alters the course, the conservative standard keeps the edge at association only and routes individual claims through electrocardiographic and electrophysiologic confirmation of the syndrome plus dated rhythm documentation with competing-substrate exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY on the brugada-syndrome channelopathy precedent, matching its bounded event-risk framing: the Korean multicenter cohort of 202 pediatric long QT syndrome patients found breakthrough cardiac events in 29 percent and independent risk factors for life-threatening arrhythmic events including LQT2 and LQT3 genotype, fetal arrhythmia, QTc at or above 500 ms, and beta-blocker exposure (PMID 42669865), the Rochester LQTS Registry analysis of 435 genetically confirmed women quantified the burden of syncope, aborted cardiac arrest, and LQTS-related sudden cardiac death over 20 years of follow-up with menarche timing modifying cardiac-event risk (PMID 42466517), and the integrative review synthesizes molecular pathogenesis with multi-factorial risk and risk stratification for QT prolongation and sudden cardiac death, noting that QTc threshold alone is insufficient and that nonpenetrant long QT syndrome carries near-population-level event risk (PMID 42274161); because the evidence is risk-stratification class that identifies event predictors in diagnosed patients rather than proving individual causation, trigger and medication exposures modify risk, and treatment alters the course, the conservative standard keeps the edge at association only and routes individual claims through electrocardiographic and electrophysiologic confirmation of the syndrome plus dated rhythm documentation with competing-substrate exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly) as a bounded event-risk edge on the brugada-syndrome channelopathy precedent - arrhythmic event risk in diagnosed patients, never causation of any particular arrhythmia: the 202-patient Korean multicenter cohort quantifies life-threatening arrhythmic and breakthrough cardiac events with genotype-dependent risk (PMID 42669865), the Rochester LQTS Registry analysis of 435 genetically confirmed women models the 20-year burden of syncope, aborted cardiac arrest, and LQTS-related sudden cardiac death (PMID 42466517), and the integrative review frames multi-factorial risk for QT prolongation and sudden cardiac death (PMID 42274161); individual claims route through electrocardiographic and electrophysiologic confirmation plus dated rhythm documentation with competing-substrate exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "The cohorts identify arrhythmic-event risk factors in diagnosed long QT syndrome without an unexposed comparator; breakthrough-event risk is modified by beta-blocker adherence and trigger exposure."
+   ],
+   "sourceIds": [
+    "pmid-42669865",
+    "pmid-42466517",
+    "pmid-42274161"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "d73b2a64bb2ec74a6f238b5c7e9a78bf1f9304a13ba4d19a1c7dd113e7bc0a19"
   }
  ],
  "lastUpdatedBy": "batch-D1-draft-authoring",

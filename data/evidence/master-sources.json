@@ -16,16 +16,16 @@
   "citationPromotionMustAtomicallyUpdateKbAndMasterSourceState": true
  },
  "counts": {
-  "liveSourceReferenceUses": 996,
+  "liveSourceReferenceUses": 1018,
   "activeSourceEntities": 346,
-  "pendingVerificationSourceEntities": 558,
+  "pendingVerificationSourceEntities": 575,
   "activeClinicalSourceEntities": 345,
-  "pendingClinicalSourceEntities": 558,
+  "pendingClinicalSourceEntities": 575,
   "activeLegalAuthorityEntities": 1,
   "retiredOnlySourceEntities": 1,
   "supersededUnverifiedSourceEntities": 7,
   "bibliographicCorrectionOnlyEntities": 1,
-  "totalSourceEntitiesIncludingLineage": 913,
+  "totalSourceEntitiesIncludingLineage": 930,
   "retiredVerifiedRelationshipSourceUses": 6
  },
  "retirementLedger": {
@@ -33886,6 +33886,636 @@
    "retiredUses": [],
    "rawReferenceHashes": [
     "c53303eaa0832bfe47fcafe5ebb1acd9469e1f65dec357db3a807ce5e6ed62e5"
+   ]
+  },
+  {
+   "sourceId": "pmid-42766866",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "42766866",
+   "doi": "10.3171/CASE26593",
+   "canonicalCitation": "Suzuki Y, Yanaka K, Maruyama S, Takahashi T, Kishi N, Aiyama H, Takahashi N, Marushima A, Ishikawa E. Hemorrhagic brain abscess mimicking an intracranial neoplasm in invasive Klebsiella pneumoniae syndrome: illustrative case. J Neurosurg Case Lessons. 2026 Sep 21;12:CASE26593. doi:10.3171/CASE26593. PMID 42766866.",
+   "citationVariants": [
+    "Suzuki Y, Yanaka K, Maruyama S, Takahashi T, Kishi N, Aiyama H, Takahashi N, Marushima A, Ishikawa E. Hemorrhagic brain abscess mimicking an intracranial neoplasm in invasive Klebsiella pneumoniae syndrome: illustrative case. J Neurosurg Case Lessons. 2026 Sep 21;12:CASE26593. doi:10.3171/CASE26593. PMID 42766866."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42766866/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/42766866/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-25"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-liver-abscess-to-brain-abscess",
+     "primaryId": "liver-abscess",
+     "targetId": "brain-abscess",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "9cfec4709f26587928a1ec37c419e806ac4eca5c25339fa0c8c55139740888b9"
+   ]
+  },
+  {
+   "sourceId": "pmid-42339155",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "42339155",
+   "doi": "10.1155/crcc/5579095",
+   "canonicalCitation": "Chen J, Horan C, Wadhwani K, Dammert PM, Sophy E. Critical Care Management Considerations in Klebsiella pneumoniae Invasive Liver Abscess Syndrome: Case Reports and Narrative Review. Case Rep Crit Care. 2026;2026:5579095. doi:10.1155/crcc/5579095. PMID 42339155.",
+   "citationVariants": [
+    "Chen J, Horan C, Wadhwani K, Dammert PM, Sophy E. Critical Care Management Considerations in Klebsiella pneumoniae Invasive Liver Abscess Syndrome: Case Reports and Narrative Review. Case Rep Crit Care. 2026;2026:5579095. doi:10.1155/crcc/5579095. PMID 42339155."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42339155/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/42339155/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-25"
+   ],
+   "liveUsageCount": 3,
+   "liveUses": [
+    {
+     "relationshipId": "rel-liver-abscess-to-brain-abscess",
+     "primaryId": "liver-abscess",
+     "targetId": "brain-abscess",
+     "sourceIndex": 1
+    },
+    {
+     "relationshipId": "rel-liver-abscess-to-meningitis",
+     "primaryId": "liver-abscess",
+     "targetId": "meningitis",
+     "sourceIndex": 2
+    },
+    {
+     "relationshipId": "rel-liver-abscess-to-visual-impairment",
+     "primaryId": "liver-abscess",
+     "targetId": "visual-impairment",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "fdf74039f502487fb92c240fc3e0d55326b67d4611df34255521d20c209f7068",
+    "7b5529879088661c20fc837ced44748538dc5ed0b0254c9425f494700bd65684",
+    "068236eb56e5d977d47bbb37265ba8ba65808f4ca07193fd7ac70362fa4350ad"
+   ]
+  },
+  {
+   "sourceId": "pmid-39839614",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "39839614",
+   "doi": "10.3389/fmed.2024.1513831",
+   "canonicalCitation": "Chen HQ, Mo ZH, Wei WX. Case report: Trauma-induced Klebsiella pneumoniae invasive syndrome presenting with liver abscess, lung abscess, endophthalmitis, and purulent meningitis. Front Med (Lausanne). 2025 Jan 7;11:1513831. doi:10.3389/fmed.2024.1513831. PMID 39839614.",
+   "citationVariants": [
+    "Chen HQ, Mo ZH, Wei WX. Case report: Trauma-induced Klebsiella pneumoniae invasive syndrome presenting with liver abscess, lung abscess, endophthalmitis, and purulent meningitis. Front Med (Lausanne). 2025 Jan 7;11:1513831. doi:10.3389/fmed.2024.1513831. PMID 39839614."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39839614/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/39839614/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-25"
+   ],
+   "liveUsageCount": 2,
+   "liveUses": [
+    {
+     "relationshipId": "rel-liver-abscess-to-meningitis",
+     "primaryId": "liver-abscess",
+     "targetId": "meningitis",
+     "sourceIndex": 0
+    },
+    {
+     "relationshipId": "rel-liver-abscess-to-lung-abscess",
+     "primaryId": "liver-abscess",
+     "targetId": "lung-abscess",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "bcf20c96ce440ca1264b72ae741bb89f71911fc1c8fb5101b77f5a4a06c24678",
+    "051d2557d33b6760c4f05253e9519e021d18e16d05adad6640d43c28770b8436"
+   ]
+  },
+  {
+   "sourceId": "pmid-42027211",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "42027211",
+   "doi": "10.1016/j.idcr.2026.e02567",
+   "canonicalCitation": "Ghossein J, Tilmont A, Ho J, Kinsara R, Tan C, Chen YA, Tam E, Goffi A. Community-acquired hypervirulent Klebsiella pneumoniae meningitis in Canada: A case report. IDCases. 2026 Apr 10;44:e02567. doi:10.1016/j.idcr.2026.e02567. PMID 42027211.",
+   "citationVariants": [
+    "Ghossein J, Tilmont A, Ho J, Kinsara R, Tan C, Chen YA, Tam E, Goffi A. Community-acquired hypervirulent Klebsiella pneumoniae meningitis in Canada: A case report. IDCases. 2026 Apr 10;44:e02567. doi:10.1016/j.idcr.2026.e02567. PMID 42027211."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42027211/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/42027211/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-25"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-liver-abscess-to-meningitis",
+     "primaryId": "liver-abscess",
+     "targetId": "meningitis",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "85aa3279086e2c58cf1c53040c1c9ef9708faaa85bbcd41d1ad5dd74913d6964"
+   ]
+  },
+  {
+   "sourceId": "pmid-36130707",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "36130707",
+   "doi": "10.1016/j.jiac.2022.09.011",
+   "canonicalCitation": "Zhu Z, Zhang B, Wang Y, Jing S, Ning W, Liu C, Chen C. A wide clinical spectrum of pulmonary affection in subjects with community-acquired Klebsiella pneumoniae liver abscess (CA-KPLA). J Infect Chemother. 2023 Jan;29:48-54. doi:10.1016/j.jiac.2022.09.011. PMID 36130707.",
+   "citationVariants": [
+    "Zhu Z, Zhang B, Wang Y, Jing S, Ning W, Liu C, Chen C. A wide clinical spectrum of pulmonary affection in subjects with community-acquired Klebsiella pneumoniae liver abscess (CA-KPLA). J Infect Chemother. 2023 Jan;29:48-54. doi:10.1016/j.jiac.2022.09.011. PMID 36130707."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36130707/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/36130707/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-25"
+   ],
+   "liveUsageCount": 2,
+   "liveUses": [
+    {
+     "relationshipId": "rel-liver-abscess-to-lung-abscess",
+     "primaryId": "liver-abscess",
+     "targetId": "lung-abscess",
+     "sourceIndex": 1
+    },
+    {
+     "relationshipId": "rel-liver-abscess-to-pleural-effusion",
+     "primaryId": "liver-abscess",
+     "targetId": "pleural-effusion",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "740fdd62d7aa93a253752eb41517017e641dcd8e29c13dab09b48a7e43deeff2",
+    "90422f30772f74db19456b095f6b02cd0e91686ade7c8bb7eb56eb3ac8996265"
+   ]
+  },
+  {
+   "sourceId": "pmid-42755882",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "42755882",
+   "doi": "10.3389/fcimb.2026.1805346",
+   "canonicalCitation": "Zhang D, Gu F, Zhang X, Zhang X, Tian S, Chen B, Chu Y, Zhang J, Zhang X. Retrospective single-center study of endogenous endophthalmitis, Northeastern China, 2010-2023. Front Cell Infect Microbiol. 2026 Sep 3;16:1805346. doi:10.3389/fcimb.2026.1805346. PMID 42755882.",
+   "citationVariants": [
+    "Zhang D, Gu F, Zhang X, Zhang X, Tian S, Chen B, Chu Y, Zhang J, Zhang X. Retrospective single-center study of endogenous endophthalmitis, Northeastern China, 2010-2023. Front Cell Infect Microbiol. 2026 Sep 3;16:1805346. doi:10.3389/fcimb.2026.1805346. PMID 42755882."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42755882/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/42755882/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-25"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-liver-abscess-to-visual-impairment",
+     "primaryId": "liver-abscess",
+     "targetId": "visual-impairment",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "888043857918fa4d1e1872486e7c426e98f65a73d9c54efcbf53aa82127cacd8"
+   ]
+  },
+  {
+   "sourceId": "pmid-42460187",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "42460187",
+   "doi": "10.7759/cureus.110847",
+   "canonicalCitation": "Wan Khairuzzaman A, Che Hamzah J, Nasaruddin RA, Bastion ML, Othman O, Lam C, Wai Wye NH. Clinical Series of Endogenous Klebsiella Endophthalmitis: Understanding an Aggressive Invasive Pathogen. Cureus. 2026 Jun 14;18:e110847. doi:10.7759/cureus.110847. PMID 42460187.",
+   "citationVariants": [
+    "Wan Khairuzzaman A, Che Hamzah J, Nasaruddin RA, Bastion ML, Othman O, Lam C, Wai Wye NH. Clinical Series of Endogenous Klebsiella Endophthalmitis: Understanding an Aggressive Invasive Pathogen. Cureus. 2026 Jun 14;18:e110847. doi:10.7759/cureus.110847. PMID 42460187."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42460187/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/42460187/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-25"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-liver-abscess-to-visual-impairment",
+     "primaryId": "liver-abscess",
+     "targetId": "visual-impairment",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "94178f66b4bb22a00359f4a0494690a969cf970cf84bdc19949a62133e7ea9ee"
+   ]
+  },
+  {
+   "sourceId": "pmid-39926638",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "39926638",
+   "doi": "10.1002/ccr3.70191",
+   "canonicalCitation": "Mohammadi M, Valizadeh M, Rahmani-Ju N, Khosravaninezhad Y. The S1Q3T3 Electrocardiographic Abnormality as a Result of Massive Empyema due to Pyogenic Liver Abscess: A Case Report. Clin Case Rep. 2025 Feb 7;13:e70191. doi:10.1002/ccr3.70191. PMID 39926638.",
+   "citationVariants": [
+    "Mohammadi M, Valizadeh M, Rahmani-Ju N, Khosravaninezhad Y. The S1Q3T3 Electrocardiographic Abnormality as a Result of Massive Empyema due to Pyogenic Liver Abscess: A Case Report. Clin Case Rep. 2025 Feb 7;13:e70191. doi:10.1002/ccr3.70191. PMID 39926638."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39926638/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/39926638/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-25"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-liver-abscess-to-pleural-effusion",
+     "primaryId": "liver-abscess",
+     "targetId": "pleural-effusion",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "8e4b13ea6b7a56280cad0749a4c49cb5e62df65379c7e8f965b07f5a17e278b2"
+   ]
+  },
+  {
+   "sourceId": "pmid-33314531",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "33314531",
+   "doi": "10.1111/liv.14760",
+   "canonicalCitation": "Yin D, Ji C, Zhang S, Wang J, Lu Z, Song X, Jiang H, Lau WY, Liu L. Clinical characteristics and management of 1572 patients with pyogenic liver abscess: A 12-year retrospective study. Liver Int. 2021 Apr;41:810-818. doi:10.1111/liv.14760. PMID 33314531.",
+   "citationVariants": [
+    "Yin D, Ji C, Zhang S, Wang J, Lu Z, Song X, Jiang H, Lau WY, Liu L. Clinical characteristics and management of 1572 patients with pyogenic liver abscess: A 12-year retrospective study. Liver Int. 2021 Apr;41:810-818. doi:10.1111/liv.14760. PMID 33314531."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33314531/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/33314531/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-25"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-liver-abscess-to-pleural-effusion",
+     "primaryId": "liver-abscess",
+     "targetId": "pleural-effusion",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "79ddade6d29399a1412e03a1503594206955cc5fee882f784b89e80471546878"
+   ]
+  },
+  {
+   "sourceId": "pmid-42130655",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "42130655",
+   "doi": "10.1093/ehjcr/ytag296",
+   "canonicalCitation": "Rao NS, Biswas A, Kothari SS, Vyas P, Kanabar K. Hypereosinophilic endocarditis presenting with intracardiac mass and severe mitral regurgitation: a case report of FIP1L1-PDGFRA positive myeloid neoplasm. Eur Heart J Case Rep. 2026 May 12;10:ytag296. doi:10.1093/ehjcr/ytag296. PMID 42130655.",
+   "citationVariants": [
+    "Rao NS, Biswas A, Kothari SS, Vyas P, Kanabar K. Hypereosinophilic endocarditis presenting with intracardiac mass and severe mitral regurgitation: a case report of FIP1L1-PDGFRA positive myeloid neoplasm. Eur Heart J Case Rep. 2026 May 12;10:ytag296. doi:10.1093/ehjcr/ytag296. PMID 42130655."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42130655/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/42130655/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-25"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-loeffler-s-endocarditis-to-heart-valve-disorders",
+     "primaryId": "loeffler-s-endocarditis",
+     "targetId": "heart-valve-disorders",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "097e0ee5ce691f9e9686ce4f9a182c4a21204e6c2d442f915e41b2cbeec70a8d"
+   ]
+  },
+  {
+   "sourceId": "pmid-42301176",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "42301176",
+   "doi": "10.1016/j.jaccas.2026.108674",
+   "canonicalCitation": "Salar T, Feitell S, Parikh V, Baibhav B. Loeffler Endocarditis: Multimodality Imaging of a Common Cardiac Phenotype in Distinct Hypereosinophilic Syndromes. JACC Case Rep. 2026 Aug 5;31:108674. doi:10.1016/j.jaccas.2026.108674. PMID 42301176.",
+   "citationVariants": [
+    "Salar T, Feitell S, Parikh V, Baibhav B. Loeffler Endocarditis: Multimodality Imaging of a Common Cardiac Phenotype in Distinct Hypereosinophilic Syndromes. JACC Case Rep. 2026 Aug 5;31:108674. doi:10.1016/j.jaccas.2026.108674. PMID 42301176."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42301176/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/42301176/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-25"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-loeffler-s-endocarditis-to-heart-valve-disorders",
+     "primaryId": "loeffler-s-endocarditis",
+     "targetId": "heart-valve-disorders",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "24020335088da828dcf289ecd2968011ba0f93dce22dbccb816aca1d7767e573"
+   ]
+  },
+  {
+   "sourceId": "pmid-42425179",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "42425179",
+   "doi": "10.1016/j.ijcard.2026.134666",
+   "canonicalCitation": "Buske P, Krieghoff C, Lucke C, Gutberlet M, Paetsch I, Jahnke C, Koehle M, Klingel K, Thiele H, Jozwiak-Nozdrzykowska J, Sandri M. Loeffler's Endomyocarditis: Clinical characteristics and outcomes from a tertiary care centre registry. Int J Cardiol. 2026 Oct 15;461:134666. doi:10.1016/j.ijcard.2026.134666. PMID 42425179.",
+   "citationVariants": [
+    "Buske P, Krieghoff C, Lucke C, Gutberlet M, Paetsch I, Jahnke C, Koehle M, Klingel K, Thiele H, Jozwiak-Nozdrzykowska J, Sandri M. Loeffler's Endomyocarditis: Clinical characteristics and outcomes from a tertiary care centre registry. Int J Cardiol. 2026 Oct 15;461:134666. doi:10.1016/j.ijcard.2026.134666. PMID 42425179."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42425179/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/42425179/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-25"
+   ],
+   "liveUsageCount": 2,
+   "liveUses": [
+    {
+     "relationshipId": "rel-loeffler-s-endocarditis-to-heart-valve-disorders",
+     "primaryId": "loeffler-s-endocarditis",
+     "targetId": "heart-valve-disorders",
+     "sourceIndex": 2
+    },
+    {
+     "relationshipId": "rel-loeffler-s-endocarditis-to-cerebrovascular-accident-stroke-residuals",
+     "primaryId": "loeffler-s-endocarditis",
+     "targetId": "cerebrovascular-accident-stroke-residuals",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "a768aaca17e9b054fd7667ad1f3ee43ccb8a9e8a46b84b2552ac6be2191fd746",
+    "d610e683e62f32806d5eeeae4d80fd1cd3c068ca31c81e23f6936c03f1cba3ce"
+   ]
+  },
+  {
+   "sourceId": "pmid-42688267",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "42688267",
+   "doi": "10.3389/fcvm.2026.1924869",
+   "canonicalCitation": "Wang H, Zhu F, Hu H. Hypereosinophilic syndrome with Loffler endocarditis and multiple cerebral infarctions in a patient with a CLL-phenotype clonal B-cell population: a case report. Front Cardiovasc Med. 2026 Aug 19;13:1924869. doi:10.3389/fcvm.2026.1924869. PMID 42688267.",
+   "citationVariants": [
+    "Wang H, Zhu F, Hu H. Hypereosinophilic syndrome with Loffler endocarditis and multiple cerebral infarctions in a patient with a CLL-phenotype clonal B-cell population: a case report. Front Cardiovasc Med. 2026 Aug 19;13:1924869. doi:10.3389/fcvm.2026.1924869. PMID 42688267."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42688267/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/42688267/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-25"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-loeffler-s-endocarditis-to-cerebrovascular-accident-stroke-residuals",
+     "primaryId": "loeffler-s-endocarditis",
+     "targetId": "cerebrovascular-accident-stroke-residuals",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "b0a1720e32108a88598b61abe63f730735b341cf2425a79431dc4c8d0196f811"
+   ]
+  },
+  {
+   "sourceId": "pmid-42028114",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "42028114",
+   "doi": "10.3389/fnimg.2026.1783329",
+   "canonicalCitation": "Xu W, Zhang C, Wang F, Liu X, Zhang X, Mao F, Wang X, Zhang X. Hypereosinophilic syndrome with central nervous system involvement: a case report. Front Neuroimaging. 2026 Apr 8;5:1783329. doi:10.3389/fnimg.2026.1783329. PMID 42028114.",
+   "citationVariants": [
+    "Xu W, Zhang C, Wang F, Liu X, Zhang X, Mao F, Wang X, Zhang X. Hypereosinophilic syndrome with central nervous system involvement: a case report. Front Neuroimaging. 2026 Apr 8;5:1783329. doi:10.3389/fnimg.2026.1783329. PMID 42028114."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42028114/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/42028114/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-25"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-loeffler-s-endocarditis-to-cerebrovascular-accident-stroke-residuals",
+     "primaryId": "loeffler-s-endocarditis",
+     "targetId": "cerebrovascular-accident-stroke-residuals",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "6a16ec277bcd7a37a727fccc0e5d33e7804d279176f4c7656de01ef86e39c847"
+   ]
+  },
+  {
+   "sourceId": "pmid-42669865",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "42669865",
+   "doi": "10.4070/kcj.2025.0506",
+   "canonicalCitation": "Song MK, Jun SY, Kwon J, Ban JE, Kwon HW, Ryu YH, Baek SM, Kim AY, Kim MJ, Baek JS, Yoon JK, Choi HJ, Cho MJ, Kim CS, Choi I, You J, Byun JH, Lee H, Na JY, Lee JS, Cho Y, Lee J, Eun LY, Lim YT, Huh J, Bae EJ. Clinical Characteristics and Outcomes of Pediatric Patients With Long QT Syndrome: A Korean Multicenter Cohort Study. Korean Circ J. 2026 Jul 8. doi:10.4070/kcj.2025.0506. PMID 42669865.",
+   "citationVariants": [
+    "Song MK, Jun SY, Kwon J, Ban JE, Kwon HW, Ryu YH, Baek SM, Kim AY, Kim MJ, Baek JS, Yoon JK, Choi HJ, Cho MJ, Kim CS, Choi I, You J, Byun JH, Lee H, Na JY, Lee JS, Cho Y, Lee J, Eun LY, Lim YT, Huh J, Bae EJ. Clinical Characteristics and Outcomes of Pediatric Patients With Long QT Syndrome: A Korean Multicenter Cohort Study. Korean Circ J. 2026 Jul 8. doi:10.4070/kcj.2025.0506. PMID 42669865."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42669865/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/42669865/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-25"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-long-qt-syndrome-to-cardiac-arrhythmia",
+     "primaryId": "long-qt-syndrome",
+     "targetId": "cardiac-arrhythmia",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "f6fb5638f043b63bff08766ad168bfa9f8463b6899bccb0c24c26be1db76863f"
+   ]
+  },
+  {
+   "sourceId": "pmid-42466517",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "42466517",
+   "doi": "10.1161/JAHA.125.047140",
+   "canonicalCitation": "Goldenberg M, Gelikas S, Huang DT, Aktas MK, Cutter K, MacKecknie BD, Horn R, McNitt S, Polonsky B, Zareba W, Goldenberg I, Younis A. Age at Menarche and the Risk of Cardiac Events in Women With Congenital Long QT Syndrome. J Am Heart Assoc. 2026 Jul 21;15:e047140. doi:10.1161/JAHA.125.047140. PMID 42466517.",
+   "citationVariants": [
+    "Goldenberg M, Gelikas S, Huang DT, Aktas MK, Cutter K, MacKecknie BD, Horn R, McNitt S, Polonsky B, Zareba W, Goldenberg I, Younis A. Age at Menarche and the Risk of Cardiac Events in Women With Congenital Long QT Syndrome. J Am Heart Assoc. 2026 Jul 21;15:e047140. doi:10.1161/JAHA.125.047140. PMID 42466517."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42466517/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/42466517/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-25"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-long-qt-syndrome-to-cardiac-arrhythmia",
+     "primaryId": "long-qt-syndrome",
+     "targetId": "cardiac-arrhythmia",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "a2dbc86bd96426d333432ca51f2041a2127c21e3503917af683455ae13ccc88a"
+   ]
+  },
+  {
+   "sourceId": "pmid-42274161",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "42274161",
+   "doi": "10.1002/clc.70370",
+   "canonicalCitation": "Farjam M, Yazdanpanah MH, Fereydouni N. From Molecules to Machines: An Integrative Framework Linking Molecular Pathogenesis, Multi-Factorial Risk, Risk Stratification, Clinical Management, and Artificial Intelligence in QT Prolongation and Sudden Cardiac Death. Clin Cardiol. 2026 Jun;49:e70370. doi:10.1002/clc.70370. PMID 42274161.",
+   "citationVariants": [
+    "Farjam M, Yazdanpanah MH, Fereydouni N. From Molecules to Machines: An Integrative Framework Linking Molecular Pathogenesis, Multi-Factorial Risk, Risk Stratification, Clinical Management, and Artificial Intelligence in QT Prolongation and Sudden Cardiac Death. Clin Cardiol. 2026 Jun;49:e70370. doi:10.1002/clc.70370. PMID 42274161."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42274161/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/42274161/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-25"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-long-qt-syndrome-to-cardiac-arrhythmia",
+     "primaryId": "long-qt-syndrome",
+     "targetId": "cardiac-arrhythmia",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "66c31b28b8807afb54e025406e1081ee15367125157964838e1393fd8404ddb8"
    ]
   }
  ],

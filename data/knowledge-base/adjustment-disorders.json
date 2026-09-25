@@ -2,8 +2,11 @@
   "id": "adjustment-disorders",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review psychiatric, neuropsychiatric, medication-related, and sleep-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 backlog-tooling pass (2026-09-25): identity deferred - prior qualified-human dispositions reaffirmed; no edge authored. The ME-30 duplicate-identity closure is now carried in this file's governance notes (batch-14 precedent) so the deterministic backlog filter in scripts/report-authoring-backlog.js inherits it automatically.",
+    "ME-30 closed this plural synonym as a duplicate identity of adjustment-disorder, which itself sits under the ME-30 FINAL-CLOSE-DIRECTION resolution re-tested and upheld by ME-41: the only defensible review evidence for a depression progression edge is the same broad psychosocial category that caused the original withdrawal. Revisit only if a qualified-human governance decision reopens the adjustment-disorder direction closure or establishes the plural form as a distinct identity with its own condition-specific evidence base."
+  ],
+  "governanceNotes": [
+    "Deferral reason (reaffirmed 2026-09-25): duplicate-identity closure - this file is the plural synonym of adjustment-disorder and owns no independent evidence base; ME-30 deferred it on those grounds, and D1 batches 8 and 14 left it untouched after disposition re-screening confirmed the closure. No edge may be authored here while the adjustment-disorder FINAL-CLOSE-DIRECTION resolution stands. Every individual determination remains with a qualified medical professional under docs/citation-verification-sop.md."
   ],
   "suggestions": []
 }

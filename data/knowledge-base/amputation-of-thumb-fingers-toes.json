@@ -2,8 +2,11 @@
   "id": "amputation-of-thumb-fingers-toes",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review biomechanical, post-injury, orthopedic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 backlog-tooling pass (2026-09-25): identity deferred - prior deferrals reaffirmed; no edge authored. The ME-31/ME-32 evidence-scope closure is now carried in this file's governance notes (batch-14 precedent) so the deterministic backlog filter in scripts/report-authoring-backlog.js inherits it automatically.",
+    "ME-31 deferred this identity as outside the limb-level evidence scope of the amputation-family sources - the nationwide amputee survey supports the limb-level siblings' phantom-limb-pain windows, not a digit-level window - and ME-32 deferred it again for lack of credible in-scope targets; batch 43 confirmed the sibling amputation identities keep their own unbacklogged windows. Revisit only if a digit-level (thumb/fingers/toes) amputation cohort with condition-specific secondary-condition evidence is located, or a qualified-human governance decision approves a target list for this identity."
+  ],
+  "governanceNotes": [
+    "Deferral reason (reaffirmed 2026-09-25): evidence-scope closure - the located amputation evidence base is limb-level and does not transfer to digit-level amputation, so no defensible condition-specific edge exists among current catalog identities. Every individual determination remains with a qualified medical professional under docs/citation-verification-sop.md."
   ],
   "suggestions": []
 }
