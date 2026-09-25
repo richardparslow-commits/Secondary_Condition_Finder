@@ -108,3 +108,35 @@ describe("citation-decay-watch surfaces content-drift observability", () => {
     expect(js).not.toContain("`");
   });
 });
+
+describe("citation-decay-watch attributes verification debt to its owning gate", () => {
+  const workflow = readWorkflow("citation-decay-watch.yml");
+
+  /**
+   * The ceiling once counted unverified references — debt that
+   * audit-citation-verification.js already ratchets at
+   * CITATION_DEBT_BASELINE.unverified. At 690 unverified against a budget of 10
+   * the weekly gate failed on every run irrespective of link rot or drift, so
+   * it could signal neither. Both human-facing surfaces must now state what the
+   * ceiling actually measures and where the debt is gated; otherwise a reader
+   * sees "unverified: 690" beside "ceiling usage: 0/10" and concludes the gate
+   * is ignoring the debt rather than delegating it.
+   */
+  it("labels the ceiling with the decay classes it measures in the step summary", () => {
+    expect(workflow).toContain("ceiling usage (link rot + stale + drift)");
+  });
+
+  it("states that verification debt is ratcheted by citations:audit", () => {
+    expect(workflow).toContain("debt ratcheted by citations:audit, not gated here");
+  });
+
+  it("carries both labels into the tracking issue body", () => {
+    // The tracking issue is the surface a qualified human acts on, so the
+    // step summary alone is not sufficient.
+    const issueStart = workflow.indexOf("--input-type=module - <<'NODE'");
+    expect(issueStart).toBeGreaterThan(-1);
+    const issueJs = workflow.slice(issueStart);
+    expect(issueJs).toContain("ceiling usage (link rot + stale + drift)");
+    expect(issueJs).toContain("debt ratcheted by citations:audit, not gated here");
+  });
+});
