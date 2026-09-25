@@ -20,6 +20,10 @@ const preflight = require_(
     esummaryDoc?: { title: string; pubtypes: string[] },
     efetchDoc?: { pubtypes: string[]; commentsCorrections: { refType: string; refSource: string }[] },
   ) => { flags: { flag: string }[]; notes: { note: string }[] };
+  collectRegistryRefs: (
+    registryJson: unknown,
+    options?: { statuses?: string[] | null },
+  ) => { ref: { sourceUrl: string; citation: string }; where: string }[];
 };
 
 const script = path.join(process.cwd(), "scripts/preflight-source-status.js");
@@ -139,6 +143,49 @@ describe("source-status preflight", () => {
     );
     expect(erratum.flags).toHaveLength(0);
     expect(erratum.notes.length).toBeGreaterThan(0);
+  });
+
+  it("classifies retracted-and-republished articles as retracted", () => {
+    const republished = preflight.classifyRecord("10000008", {
+      title: "A republished study",
+      pubtypes: ["Journal Article", "Retracted and Republished Article"],
+    });
+    expect(republished.flags.map(f => f.flag)).toContain(preflight.FLAG_CLASSES.RETRACTED);
+  });
+
+  it("collects registry entities as pseudo-refs with status filtering", () => {
+    const registry = {
+      sources: [
+        {
+          sourceId: "pmid-123",
+          status: "active",
+          pmid: "123",
+          canonicalCitation: "A et al. A study. J Test. 2024;1:1-2.",
+          citationVariants: ["A et al. A study. J Test. 2024;1:1-2."],
+          canonicalSourceUrl: "https://pubmed.ncbi.nlm.nih.gov/123/",
+        },
+        {
+          sourceId: "legal-38-cfr-3.310",
+          status: "active",
+          pmid: null,
+          canonicalCitation: "38 CFR 3.310(a)-(b)",
+          canonicalSourceUrl: "https://www.ecfr.gov/current/title-38",
+        },
+        {
+          sourceId: "pmid-456",
+          status: "pending-verification",
+          pmid: "456",
+          canonicalCitation: "B et al. Another study. 2025.",
+          canonicalSourceUrl: "https://pubmed.ncbi.nlm.nih.gov/456/",
+        },
+      ],
+    };
+    const all = preflight.collectRegistryRefs(registry, {});
+    expect(all).toHaveLength(3);
+    expect(all[0].where).toBe("registry:pmid-123 [active]");
+    expect(all[0].ref.citation).toContain("PMID 123.");
+    const activeOnly = preflight.collectRegistryRefs(registry, { statuses: ["active"] });
+    expect(activeOnly).toHaveLength(2);
   });
 
   it("blocks on flagged anchors with non-zero exit and reports each flag class", () => {
