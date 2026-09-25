@@ -2,8 +2,125 @@
   "id": "lipoid-pneumonia",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review airway, aspiration, inflammatory, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 54 (2026-09-25): two ASSOCIATION_ONLY draft mappings pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: both edges assert association only (etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true, mechanismCategory SYSTEMIC_INFLAMMATORY - chronic lipid-pneumonitis inflammatory remodeling). The evidence base is retrospective imaging and histology series for a rare exposure-defined disease, so individual claims require documented lipoid pneumonia (exposure history plus CT fat-density or lavage/histology confirmation) with dated serial imaging documenting the chronic change, and review by a qualified medical professional.",
+    "Pathway and duplicate-scope screens: no -> respiratory-cancer edge despite the tumor-mimic signal (the Cozzi series documents spiculated tumor-like nodules in 2 of 10 patients and stresses that ELP is confused WITH lung tumors - that is a diagnostic-mimic relationship, not malignant transformation; the pulmonary-fibrosis -> respiratory-cancer window owns the fibrotic-cancer pathway if it applies); no -> interstitial-lung-disease edge (the pneumonitis itself is interstitial - constitutive-proximity guard - and the hypersensitivity-pneumonitis family members that author that target do so at syndrome level; the chronic remodeling outcomes are authored instead); no -> aspiration-pneumonia or -> respiratory-failure edges (no such catalog identities); no amiodarone-scoped edge (the amiodarone-induced interstitial pneumonitis material, PMID 39712692, is pharmacologically mediated and belongs to treatment effect per the program's treatment-mediation guard); no Niemann-Pick-scoped edge (the endogenous lipid pneumonia of Niemann-Pick disease, PMID 16623786, is the lysosomal-storage disease's pulmonary manifestation and would run under that genetic identity if added); no -> dysphagia or -> gerd edge (aspiration risk factors are upstream drivers shared with the aspiration pathway, not downstream of the lipoid pneumonia)."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 54 (2026-09-25): two bounded association edges authored - lipoid-pneumonia to pulmonary-fibrosis (rank 1) and to bronchiectasis (rank 2) - both classified ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, and hypothesizedOnly:true; mechanismCategory SYSTEMIC_INFLAMMATORY. Both propositions rest on the Cozzi 2021 high-resolution CT series of 10 patients with exogenous lipoid pneumonia confirmed by CT, bronchoalveolar lavage, and (in five) lung biopsy, all with chronic exposure to animal fat or mineral or vegetable oils, in which the oldest lesions were characterized by bronchiectasis and fibrosis around the lipidic consolidations alongside fat-density consolidations, crazy-paving, tumor-like nodules in 2 patients, and reactive lymph-node enlargement (PMID 32451884), and on the Annobil 1995 clinicopathological study of four children following forced feeding with animal fat (ghee), whose radiographs ranged from bronchopneumonia to collapse or consolidation and bronchiectasis, whose light microscopy showed diffuse mononuclear interstitial pneumonia, lipid granuloma formation, and bronchiectasis, and in whom the two longstanding cases showed continuing interstitial pneumonia, bronchiectasis, and minimal lung fibrosis (PMID 7773510). The Hu 2015 Chest review of aspiration-related pulmonary syndromes classifies exogenous lipoid pneumonia among the parenchymal aspiration disorders and documents that the resulting syndrome depends on the quantity and nature of the aspirated material, the chronicity, and host responses (PMID 25732447) - recorded as the syndrome-classification context.",
+    "Counter-evidence and caveat screens recorded 2026-09-25: (i) evidence class - a 10-patient retrospective imaging series and a four-case pediatric histology series with no incidence denominators and no quantified progression rates; (ii) fibrosis magnitude - the only histology series describes the fibrosis as minimal and perilesional in its longstanding cases (PMID 7773510), so the fibrotic end-stage of the hypersensitivity-pneumonitis family is NOT asserted and the edge is scoped to the documented perilesional fibrotic remodeling; (iii) exposure heterogeneity - mineral, vegetable, and animal-fat aspiration with differing chronicity, plus endogenous obstructive lipid pneumonia as a partly distinct entity, are pooled under this identity; (iv) treatment and cessation effects - exposure cessation, corticosteroids, and whole-lung lavage alter the course; (v) the bronchiectasis and fibrosis findings co-occur in the same oldest lesions (PMID 32451884), so the two edges record two structural outcomes of one remodeling process rather than two independent pathways, mirroring the laryngomalacia two-outcome-node construction.",
+    "Negative screens recorded 2026-09-25: (i) no respiratory-cancer or lung-cancer edge (tumor-mimic only, PMID 32451884 - diagnostic-mimic guard); (ii) no interstitial-lung-disease edge (constitutive-proximity - the pneumonitis is interstitial); (iii) no amiodarone or treatment edge (PMID 39712692 pharmacologically mediated); (iv) no Niemann-Pick endogenous-lipid edge (PMID 16623786 belongs to a lysosomal-storage identity not present in the catalog); (v) no -> pulmonary-hypertension edge (no lipoid-specific pulmonary-hypertension quantification located; the bronchiectasis -> pulmonary-hypertension and pulmonary-fibrosis -> pulmonary-hypertension windows carry that pathway through the intermediate nodes if it applies - intermediate-node rule)."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "pulmonary-fibrosis",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The Cozzi 2021 high-resolution CT series of 10 patients with exogenous lipoid pneumonia confirmed by CT, bronchoalveolar lavage, and (in five) lung biopsy documents that the oldest lesions were characterized by bronchiectasis and fibrosis around the lipidic consolidations, alongside fat-density consolidation in 8 of 10, ground-glass opacities in 10 of 10, crazy-paving in 6 of 10, and tumor-like nodules in 2 of 10 (PMID 32451884); the Annobil 1995 clinicopathological study of four children with aspiration of animal fat (ghee) documents diffuse mononuclear interstitial pneumonia, lipid granuloma formation, and - in the two children with longstanding reactions - continuation of the interstitial pneumonia with bronchiectasis and lung fibrosis (PMID 7773510); the literature documents perilesional fibrotic remodeling around longstanding lipid consolidations in imaging and histology material without establishing that lipoid pneumonia caused an individual's pulmonary fibrosis.",
+        "causationStatus": "The mapping does not assert that lipoid pneumonia caused an individual's pulmonary fibrosis: the fibrosis is documented as perilesional and (histologically) minimal in the only series that measured it, the fibrotic end-stage pattern of the hypersensitivity-pneumonitis family is deliberately not asserted, the evidence is a 10-patient imaging series and a four-case pediatric histology series without incidence denominators, exposure type and chronicity differ across the pooled cases, and idiopathic, connective-tissue-disease, and other inhalational fibrotic drivers must be excluded per case - so no directional claim is made."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "SYSTEMIC_INFLAMMATORY",
+        "primaryVector": "A hypothesized chronic lipoid-inflammation remodeling route is described: retained lipid (exogenous aspirated oils or endogenous surfactant accumulation) drives a mononuclear interstitial pneumonia with lipid-laden granulomas, and sustained inflammation around the lipid consolidations organizes into perilesional fibrosis over time; the anchors document the granulomatous interstitial inflammation and the perilesional fibrosis in the oldest lesions, but the progression rate and individual attributable share remain hypotheses.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Perilesional fibrosis around longstanding lipid consolidations is documented in an imaging series and a pediatric histology series of lipoid pneumonia, but individual determination requires documented lipoid pneumonia (exposure history with CT fat-density attenuation, lavage lipid-laden macrophages, or histology), dated serial imaging documenting the fibrotic change, and exclusion of the competing fibrotic causes, with review by a qualified medical professional.",
+        "evidenceGaps": "Documentation of the lipoid pneumonia diagnosis: exposure history (mineral oil, petroleum jelly, vegetable oil, animal fat aspiration, or endogenous obstructive cause) with chronology; CT documentation with attenuation values in Hounsfield units showing fat-density consolidation, crazy-paving, or ground-glass change, and serial imaging showing the fibrotic evolution with dates; bronchoalveolar lavage results (lipid-laden macrophages, oil red O staining) and lung biopsy where performed; pulmonary-function tests (restrictive pattern, diffusion capacity) with dates; exclusion of competing fibrotic causes (idiopathic pulmonary fibrosis, hypersensitivity pneumonitis, connective-tissue-disease lung involvement, other inhalational exposures, radiation); pulmonology assessment of the attribution with exposure-cessation response where documented",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Idiopathic pulmonary fibrosis or another idiopathic interstitial pneumonia",
+          "Hypersensitivity pneumonitis from a non-lipid inhalational exposure",
+          "Connective-tissue-disease-associated interstitial lung disease",
+          "Radiation-induced or drug-induced pulmonary fibrosis",
+          "Aspiration pneumonia organizing into fibrosis from non-lipid aspiration",
+          "Endogenous lipoid pneumonia from airway obstruction as the primary process"
+        ]
+      },
+      "evidenceGaps": [
+        "Documentation of the lipoid pneumonia diagnosis: exposure history (mineral oil, petroleum jelly, vegetable oil, animal fat aspiration, or endogenous obstructive cause) with chronology; CT documentation with attenuation values in Hounsfield units showing fat-density consolidation, crazy-paving, or ground-glass change, and serial imaging showing the fibrotic evolution with dates; bronchoalveolar lavage results (lipid-laden macrophages, oil red O staining) and lung biopsy where performed; pulmonary-function tests (restrictive pattern, diffusion capacity) with dates; exclusion of competing fibrotic causes (idiopathic pulmonary fibrosis, hypersensitivity pneumonitis, connective-tissue-disease lung involvement, other inhalational exposures, radiation); pulmonology assessment of the attribution with exposure-cessation response where documented"
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY on the hypersensitivity-pneumonitis fibrotic precedent, scoped to the documented perilesional remodeling: the 10-patient CT series documents fibrosis around the oldest lipid consolidations and the pediatric histology series documents fibrosis alongside continuing interstitial pneumonia and granuloma formation in longstanding cases; because the fibrosis is perilesional and described as minimal in the only histology measurement, the evidence class is small series without denominators, exposure and chronicity are heterogeneous, and competing fibrotic etiologies coexist in these often-older patients, the conservative standard keeps the edge at association only and routes individual claims through exposure-confirmed disease plus dated serial imaging.",
+      "sourceReferences": [
+        {
+          "citation": "Cozzi D, Bindi A, Cavigli E, Grosso AM, Luvarà S, Morelli N, Moroni C, Piperio R, Miele V, Bartolucci M. Exogenous lipoid pneumonia: when radiologist makes the difference. Radiol Med. 2021 Jan;126(1):22-28. doi:10.1007/s11547-020-01230-x. PMID 32451884.",
+          "note": "High-resolution CT series of 10 patients with biopsy- or lavage-confirmed exogenous lipoid pneumonia: fat-density consolidation in 8 of 10, crazy-paving in 6 of 10, tumor-like nodules in 2 of 10, and oldest lesions characterized by bronchiectasis and fibrosis around the lipidic consolidations - the imaging-remodeling anchor for both edges.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/32451884/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 32451884; fibrosis and bronchiectasis around oldest lipid consolidations in 10-patient ELP CT series"
+        },
+        {
+          "citation": "Annobil SH, Morad NA, Khurana P, Kameswaran M, Ogunbiyi O, al-Malki T. Reaction of human lungs to aspirated animal fat (ghee): a clinicopathological study. Virchows Arch. 1995;426(4):301-305. doi:10.1007/BF00191368. PMID 7773510.",
+          "note": "Clinicopathological study of four children with ghee aspiration: diffuse mononuclear interstitial pneumonia, lipid granuloma formation, bronchiectasis radiographically and histologically, and - in the two longstanding cases - continuing interstitial pneumonia with bronchiectasis and minimal lung fibrosis - the histology anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/7773510/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 7773510; interstitial pneumonia with lipid granulomas, bronchiectasis, and fibrosis in longstanding ghee-aspiration cases"
+        }
+      ]
+    },
+    {
+      "conditionId": "bronchiectasis",
+      "rank": 2,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The Cozzi 2021 high-resolution CT series of 10 patients with exogenous lipoid pneumonia documents that the oldest lesions were characterized by bronchiectasis and fibrosis around the lipidic consolidations (PMID 32451884); the Annobil 1995 clinicopathological study of four children with animal-fat (ghee) aspiration documents bronchiectasis radiographically (among findings ranging from bronchopneumonia to collapse or consolidation and bronchiectasis) and the continuation of bronchiectasis in the two children with longstanding reactions alongside mononuclear interstitial pneumonia (PMID 7773510); the literature documents bronchiectatic airway damage around longstanding lipid consolidations in imaging and histology material without establishing that lipoid pneumonia caused an individual's bronchiectasis.",
+        "causationStatus": "The mapping does not assert that lipoid pneumonia caused an individual's bronchiectasis: the bronchiectasis is documented in the oldest lesions of a 10-patient imaging series and in two longstanding pediatric cases without incidence denominators or progression rates, the airway damage co-occurs with perilesional fibrosis in the same lesions so the two edges record two structural outcomes of one remodeling process, post-obstructive and infectious bronchiectasis are competing explanations in aspiration-prone patients, and exposure type and chronicity are heterogeneous - so no directional claim is made."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "SYSTEMIC_INFLAMMATORY",
+        "primaryVector": "A hypothesized airway-wall remodeling route is described: retained peribronchiolar lipid with macrophage and granulomatous inflammation damages the bronchial wall and its supporting structures, producing permanent bronchiectatic dilatation around the lipid consolidations as the lesions age; both anchors document bronchiectasis in the chronic phase, but the progression rate and individual attributable share remain hypotheses.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Bronchiectasis around longstanding lipid consolidations is documented in an imaging series and a pediatric histology series of lipoid pneumonia, but individual determination requires documented lipoid pneumonia with dated serial imaging showing the development or presence of bronchiectasis at the site of the lipid consolidation, and exclusion of the competing bronchiectasis causes, with review by a qualified medical professional.",
+        "evidenceGaps": "Documentation of the lipoid pneumonia diagnosis (exposure history with chronology, CT fat-density attenuation, lavage or histology where performed) and of the bronchiectasis (CT with distribution matching the lipid consolidations, with dates and serial comparison); sputum microbiology and exacerbation history; pulmonary-function tests with dates; exclusion of competing bronchiectasis causes (cystic fibrosis, primary ciliary dyskinesia, immunodeficiency, post-infectious, allergic bronchopulmonary aspergillosis, obstructing lesion, connective-tissue disease); pulmonology assessment of the attribution",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Post-infectious or tuberculosis-related bronchiectasis at a different site",
+          "Cystic fibrosis, primary ciliary dyskinesia, or immunodeficiency bronchiectasis",
+          "Allergic bronchopulmonary aspergillosis",
+          "Obstructing endobronchial lesion with post-obstructive changes",
+          "Aspiration-related bronchiectasis from non-lipid aspiration",
+          "Bronchiectasis predating and unrelated to the lipoid pneumonia"
+        ]
+      },
+      "evidenceGaps": [
+        "Documentation of the lipoid pneumonia diagnosis (exposure history with chronology, CT fat-density attenuation, lavage or histology where performed) and of the bronchiectasis (CT with distribution matching the lipid consolidations, with dates and serial comparison); sputum microbiology and exacerbation history; pulmonary-function tests with dates; exclusion of competing bronchiectasis causes (cystic fibrosis, primary ciliary dyskinesia, immunodeficiency, post-infectious, allergic bronchopulmonary aspergillosis, obstructing lesion, connective-tissue disease); pulmonology assessment of the attribution"
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY alongside the fibrosis edge as a distinct structural outcome node: both anchors document bronchiectasis in the chronic phase of lipid pneumonia - the imaging series in the oldest lesions around the consolidations and the pediatric series radiographically and histologically in longstanding disease; because the evidence is small series without denominators, infectious and post-obstructive alternatives are common in aspiration-prone patients, and the bronchiectasis co-occurs with perilesional fibrosis in the same lesions, the conservative standard keeps the edge at association only and routes individual claims through site-matched, dated CT documentation with competing-cause exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Cozzi D, Bindi A, Cavigli E, Grosso AM, Luvarà S, Morelli N, Moroni C, Piperio R, Miele V, Bartolucci M. Exogenous lipoid pneumonia: when radiologist makes the difference. Radiol Med. 2021 Jan;126(1):22-28. doi:10.1007/s11547-020-01230-x. PMID 32451884.",
+          "note": "High-resolution CT series of 10 patients with exogenous lipoid pneumonia documenting bronchiectasis around the oldest lipid consolidations alongside fat-density consolidation, crazy-paving, and tumor-like nodules - the imaging anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/32451884/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 32451884; bronchiectasis in oldest lipid-consolidation lesions in 10-patient ELP CT series"
+        },
+        {
+          "citation": "Annobil SH, Morad NA, Khurana P, Kameswaran M, Ogunbiyi O, al-Malki T. Reaction of human lungs to aspirated animal fat (ghee): a clinicopathological study. Virchows Arch. 1995;426(4):301-305. doi:10.1007/BF00191368. PMID 7773510.",
+          "note": "Clinicopathological study of four children with ghee aspiration documenting bronchiectasis radiographically and histologically, with continuing bronchiectasis in the two longstanding cases alongside mononuclear interstitial pneumonia - the histology anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/7773510/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 7773510; bronchiectasis radiographic and histologic in longstanding ghee-aspiration cases"
+        }
+      ]
+    }
+  ]
 }

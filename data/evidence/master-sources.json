@@ -16,16 +16,16 @@
   "citationPromotionMustAtomicallyUpdateKbAndMasterSourceState": true
  },
  "counts": {
-  "liveSourceReferenceUses": 982,
+  "liveSourceReferenceUses": 996,
   "activeSourceEntities": 346,
-  "pendingVerificationSourceEntities": 548,
+  "pendingVerificationSourceEntities": 558,
   "activeClinicalSourceEntities": 345,
-  "pendingClinicalSourceEntities": 548,
+  "pendingClinicalSourceEntities": 558,
   "activeLegalAuthorityEntities": 1,
   "retiredOnlySourceEntities": 1,
   "supersededUnverifiedSourceEntities": 7,
   "bibliographicCorrectionOnlyEntities": 1,
-  "totalSourceEntitiesIncludingLineage": 903,
+  "totalSourceEntitiesIncludingLineage": 913,
   "retiredVerifiedRelationshipSourceUses": 6
  },
  "retirementLedger": {
@@ -33508,6 +33508,384 @@
    "rawReferenceHashes": [
     "f16b4cd15a52a650c59a8ac02590a1e791d5ba74e4c2a93a195441d6f2ecbe4e",
     "2dd72704d4f7db973fe54fbbac3c31abba0d2f708da6a93cc1f79dbe6b1e4527"
+   ]
+  },
+  {
+   "sourceId": "pmid-42241023",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "42241023",
+   "doi": "10.1097/ICO.0000000000004087",
+   "canonicalCitation": "Haidar H, Amos-Oluwole O, Loomba A, Joy R, Sudhakaran S, Zaman R, Jacob D, Wood M, Amin H, Goel S. A Case of Linear IgA Bullous Dermatosis of Childhood With Ocular Involvement: A Diagnostic Challenge. Cornea. 2026 Aug;45(8):1051-1055. doi:10.1097/ICO.0000000000004087. PMID 42241023.",
+   "citationVariants": [
+    "Haidar H, Amos-Oluwole O, Loomba A, Joy R, Sudhakaran S, Zaman R, Jacob D, Wood M, Amin H, Goel S. A Case of Linear IgA Bullous Dermatosis of Childhood With Ocular Involvement: A Diagnostic Challenge. Cornea. 2026 Aug;45(8):1051-1055. doi:10.1097/ICO.0000000000004087. PMID 42241023."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42241023/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/42241023/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-25"
+   ],
+   "liveUsageCount": 2,
+   "liveUses": [
+    {
+     "relationshipId": "rel-linear-iga-to-keratitis",
+     "primaryId": "linear-iga",
+     "targetId": "keratitis",
+     "sourceIndex": 0
+    },
+    {
+     "relationshipId": "rel-linear-iga-to-visual-impairment",
+     "primaryId": "linear-iga",
+     "targetId": "visual-impairment",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "28097228d241f170653298121332dfb88456367348bcac9d767dd7bcbde16ef2",
+    "f96bdecae029b18edf3fe3a6b744366e7c3d869eae0aadc5157086cea2070d3a"
+   ]
+  },
+  {
+   "sourceId": "pmid-21234343",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "21234343",
+   "doi": "10.1155/2010/280396",
+   "canonicalCitation": "Ramos-Castellón C, Ortiz-Nieva G, Fresán F, Villalvazo L, Garfias Y, Navas A, Jiménez-Martínez MC. Ocular involvement and blindness secondary to linear IgA dermatosis. J Ophthalmol. 2010;2010:280396. doi:10.1155/2010/280396. PMID 21234343.",
+   "citationVariants": [
+    "Ramos-Castellón C, Ortiz-Nieva G, Fresán F, Villalvazo L, Garfias Y, Navas A, Jiménez-Martínez MC. Ocular involvement and blindness secondary to linear IgA dermatosis. J Ophthalmol. 2010;2010:280396. doi:10.1155/2010/280396. PMID 21234343."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/21234343/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/21234343/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-25"
+   ],
+   "liveUsageCount": 2,
+   "liveUses": [
+    {
+     "relationshipId": "rel-linear-iga-to-keratitis",
+     "primaryId": "linear-iga",
+     "targetId": "keratitis",
+     "sourceIndex": 1
+    },
+    {
+     "relationshipId": "rel-linear-iga-to-visual-impairment",
+     "primaryId": "linear-iga",
+     "targetId": "visual-impairment",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "c20f3839f6b8b6336784494cd703c402d6ffc3331c8c22aa82d2ea3b610892ad",
+    "59587c24285bc62272e6517203c14e7bf1f931bb73bc8b0b5c796d766c4afd90"
+   ]
+  },
+  {
+   "sourceId": "pmid-42220291",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "42220291",
+   "doi": "10.22514/jofph.2026.039",
+   "canonicalCitation": "Chuang HC, Sato H, Kubota K, Kobayashi W. Diagnostic re-evaluation of non-odontogenic orofacial pain after treatment failure: a retrospective case series. J Oral Facial Pain Headache. 2026 May;40(2):93-104. doi:10.22514/jofph.2026.039. PMID 42220291.",
+   "citationVariants": [
+    "Chuang HC, Sato H, Kubota K, Kobayashi W. Diagnostic re-evaluation of non-odontogenic orofacial pain after treatment failure: a retrospective case series. J Oral Facial Pain Headache. 2026 May;40(2):93-104. doi:10.22514/jofph.2026.039. PMID 42220291."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42220291/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/42220291/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-25"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-lingual-neuralgia-to-unexplained-chronic-pain",
+     "primaryId": "lingual-neuralgia",
+     "targetId": "unexplained-chronic-pain",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "8820d79fa2717add5ff25a57db7a1aa36dd9a666e0dd3c7e3f3d2a32d18242c8"
+   ]
+  },
+  {
+   "sourceId": "pmid-22326447",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "22326447",
+   "doi": "10.1016/j.ijom.2011.11.002",
+   "canonicalCitation": "Renton T, Yilmaz Z. Managing iatrogenic trigeminal nerve injury: a case series and review of the literature. Int J Oral Maxillofac Surg. 2012 May;41(5):629-637. doi:10.1016/j.ijom.2011.11.002. PMID 22326447.",
+   "citationVariants": [
+    "Renton T, Yilmaz Z. Managing iatrogenic trigeminal nerve injury: a case series and review of the literature. Int J Oral Maxillofac Surg. 2012 May;41(5):629-637. doi:10.1016/j.ijom.2011.11.002. PMID 22326447."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/22326447/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/22326447/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-25"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-lingual-neuralgia-to-unexplained-chronic-pain",
+     "primaryId": "lingual-neuralgia",
+     "targetId": "unexplained-chronic-pain",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "f199487813cedd4379b253c29bc032d73eb8876caf3238f34863f91e7678d7bb"
+   ]
+  },
+  {
+   "sourceId": "pmid-16732250",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "16732250",
+   "doi": "10.1038/sj.bdj.4813584",
+   "canonicalCitation": "Renton T, Thexton A, Crean SJ, Hankins M. Simplifying the assessment of the recovery from surgical injury to the lingual nerve. Br Dent J. 2006 May 27;200(10):569-573. doi:10.1038/sj.bdj.4813584. PMID 16732250.",
+   "citationVariants": [
+    "Renton T, Thexton A, Crean SJ, Hankins M. Simplifying the assessment of the recovery from surgical injury to the lingual nerve. Br Dent J. 2006 May 27;200(10):569-573. doi:10.1038/sj.bdj.4813584. PMID 16732250."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/16732250/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/16732250/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-25"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-lingual-neuralgia-to-unexplained-chronic-pain",
+     "primaryId": "lingual-neuralgia",
+     "targetId": "unexplained-chronic-pain",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "2f9229bf721b1671ef7567f254fa955d60941aff7ab9d7f8d4d788725c6f8405"
+   ]
+  },
+  {
+   "sourceId": "pmid-32451884",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "32451884",
+   "doi": "10.1007/s11547-020-01230-x",
+   "canonicalCitation": "Cozzi D, Bindi A, Cavigli E, Grosso AM, Luvarà S, Morelli N, Moroni C, Piperio R, Miele V, Bartolucci M. Exogenous lipoid pneumonia: when radiologist makes the difference. Radiol Med. 2021 Jan;126(1):22-28. doi:10.1007/s11547-020-01230-x. PMID 32451884.",
+   "citationVariants": [
+    "Cozzi D, Bindi A, Cavigli E, Grosso AM, Luvarà S, Morelli N, Moroni C, Piperio R, Miele V, Bartolucci M. Exogenous lipoid pneumonia: when radiologist makes the difference. Radiol Med. 2021 Jan;126(1):22-28. doi:10.1007/s11547-020-01230-x. PMID 32451884."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/32451884/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/32451884/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-25"
+   ],
+   "liveUsageCount": 2,
+   "liveUses": [
+    {
+     "relationshipId": "rel-lipoid-pneumonia-to-pulmonary-fibrosis",
+     "primaryId": "lipoid-pneumonia",
+     "targetId": "pulmonary-fibrosis",
+     "sourceIndex": 0
+    },
+    {
+     "relationshipId": "rel-lipoid-pneumonia-to-bronchiectasis",
+     "primaryId": "lipoid-pneumonia",
+     "targetId": "bronchiectasis",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "044339df0c3b1a82e96f9f3aa083848760886f518741c26db0005d20a51a561b",
+    "e730c83e09f74b30869d197ef09d751b682db0a9cd88e884b5354e398f866b25"
+   ]
+  },
+  {
+   "sourceId": "pmid-7773510",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "7773510",
+   "doi": "10.1007/BF00191368",
+   "canonicalCitation": "Annobil SH, Morad NA, Khurana P, Kameswaran M, Ogunbiyi O, al-Malki T. Reaction of human lungs to aspirated animal fat (ghee): a clinicopathological study. Virchows Arch. 1995;426(4):301-305. doi:10.1007/BF00191368. PMID 7773510.",
+   "citationVariants": [
+    "Annobil SH, Morad NA, Khurana P, Kameswaran M, Ogunbiyi O, al-Malki T. Reaction of human lungs to aspirated animal fat (ghee): a clinicopathological study. Virchows Arch. 1995;426(4):301-305. doi:10.1007/BF00191368. PMID 7773510."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/7773510/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/7773510/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-25"
+   ],
+   "liveUsageCount": 2,
+   "liveUses": [
+    {
+     "relationshipId": "rel-lipoid-pneumonia-to-pulmonary-fibrosis",
+     "primaryId": "lipoid-pneumonia",
+     "targetId": "pulmonary-fibrosis",
+     "sourceIndex": 1
+    },
+    {
+     "relationshipId": "rel-lipoid-pneumonia-to-bronchiectasis",
+     "primaryId": "lipoid-pneumonia",
+     "targetId": "bronchiectasis",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "1c60844d9bb4cafacb3de73f3137d4657e486e4dc94f65420f0486a15bf66682",
+    "228b53e89c8fa226f982ec3a6c8770f61cfb052fadbdb13e152bb708f60265bd"
+   ]
+  },
+  {
+   "sourceId": "pmid-33515066",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "33515066",
+   "doi": "10.1007/s00415-021-10407-x",
+   "canonicalCitation": "Starmans NLP, van Dijk MR, Kappelle LJ, Frijns CJM. Sneddon syndrome: a comprehensive clinical review of 53 patients. J Neurol. 2021 Jul;268(7):2450-2457. doi:10.1007/s00415-021-10407-x. PMID 33515066.",
+   "citationVariants": [
+    "Starmans NLP, van Dijk MR, Kappelle LJ, Frijns CJM. Sneddon syndrome: a comprehensive clinical review of 53 patients. J Neurol. 2021 Jul;268(7):2450-2457. doi:10.1007/s00415-021-10407-x. PMID 33515066."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33515066/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/33515066/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-25"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-livedo-reticularis-to-cerebrovascular-accident-stroke-residuals",
+     "primaryId": "livedo-reticularis",
+     "targetId": "cerebrovascular-accident-stroke-residuals",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "e3a8984cae71c9d97c0a8801308acfbd89c2f791c5f2c44783c0c20fc3feeb13"
+   ]
+  },
+  {
+   "sourceId": "pmid-12804991",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "12804991",
+   "doi": null,
+   "canonicalCitation": "Mascarenhas R, Santo G, Gonçalo M, Ferro MA, Tellechea O, Figueiredo A. Familial Sneddon's syndrome. Eur J Dermatol. 2003 May-Jun;13(3):283-287. PMID 12804991.",
+   "citationVariants": [
+    "Mascarenhas R, Santo G, Gonçalo M, Ferro MA, Tellechea O, Figueiredo A. Familial Sneddon's syndrome. Eur J Dermatol. 2003 May-Jun;13(3):283-287. PMID 12804991."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/12804991/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/12804991/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-25"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-livedo-reticularis-to-cerebrovascular-accident-stroke-residuals",
+     "primaryId": "livedo-reticularis",
+     "targetId": "cerebrovascular-accident-stroke-residuals",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "2ae2d1513268ea9be1eaa851df9c0da887f28f2459d38a64f772181bab4eebc2"
+   ]
+  },
+  {
+   "sourceId": "pmid-7751860",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "7751860",
+   "doi": "10.1007/BF00936890",
+   "canonicalCitation": "Lossos A, Ben-Hur T, Ben-Nariah Z, Enk C, Gomori M, Soffer D. Familial Sneddon's syndrome. J Neurol. 1995 Feb;242(3):164-168. doi:10.1007/BF00936890. PMID 7751860.",
+   "citationVariants": [
+    "Lossos A, Ben-Hur T, Ben-Nariah Z, Enk C, Gomori M, Soffer D. Familial Sneddon's syndrome. J Neurol. 1995 Feb;242(3):164-168. doi:10.1007/BF00936890. PMID 7751860."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/7751860/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/7751860/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-25"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-livedo-reticularis-to-cerebrovascular-accident-stroke-residuals",
+     "primaryId": "livedo-reticularis",
+     "targetId": "cerebrovascular-accident-stroke-residuals",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "c53303eaa0832bfe47fcafe5ebb1acd9469e1f65dec357db3a807ce5e6ed62e5"
    ]
   }
  ],

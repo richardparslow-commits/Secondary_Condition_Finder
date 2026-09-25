@@ -8493,6 +8493,214 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 **Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
 
+### `linear-iga` → `keratitis` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** The Haidar 2026 report documents linear IgA bullous dermatosis of childhood presenting with a corneal shield ulcer that progressed despite topical antibiotics, corticosteroids, and lubricants, requiring partial tarsorrhaphy and then amniotic-membrane grafting, with worsening corneal ulceration and conjunctival inflammation on repeat examination under anesthesia and direct immunofluorescence confirming subepidermal blisters with linear IgA deposits (PMID 42241023); the Ramos-Castellon 2010 report documents ocular involvement secondary to linear IgA dermatosis severe enough to require keratolimbal allogenic transplantation and cryopreserved amniotic membrane, with the authors noting that these blistering diseases are rare in the eye and that even with adequate local treatment ocular prognosis can be unsatisfactory (PMID 21234343); the literature documents corneal epithelial ulceration and ocular-surface failure in linear IgA bullous dermatosis in case-level material without establishing that the disease caused an individual's keratitis.
+
+**Causation boundary (causationStatus):** The mapping does not assert that linear IgA bullous dermatosis caused an individual's keratitis: the anchors are single-case reports of a rare disease without incidence denominators, the ocular-surface blistering spans conjunctival and corneal epithelium so lesion attribution requires biopsy-confirmation of the systemic disease plus lesion-level ocular documentation, viral and bacterial keratitis are the presenting mimics both anchor cases were initially managed for, and topical and systemic immunosuppression plus grafting alter the course - so no directional claim is made.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 234.1 — Haidar H, Amos-Oluwole O, Loomba A, Joy R, Sudhakaran S, Zaman R, Jacob D, Wood M, Amin H, Goel S. A Case of Linear IgA Bullous Dermatosis of Childhood With Ocular Involvement: A Diagnostic Challenge. Cornea. 2026 Aug;45(8):1051-1055. doi:10.1097/ICO.0000000000004087. PMID 42241023.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42241023/
+- Source checked on: 2026-09-25
+- Locator: PMID 42241023; corneal shield ulcer with progression to grafting in biopsy-confirmed childhood linear IgA bullous dermatosis
+- Note under review: Case report of a 3-year-old with linear IgA bullous dermatosis presenting with a corneal shield ulcer that progressed to require partial tarsorrhaphy and amniotic-membrane grafting, with worsening corneal ulceration and conjunctival inflammation, initial misdiagnosis as viral keratitis, and biopsy-confirmed linear IgA deposits - the corneal-ulcer and diagnostic-mimic anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 234.2 — Ramos-Castellón C, Ortiz-Nieva G, Fresán F, Villalvazo L, Garfias Y, Navas A, Jiménez-Martínez MC. Ocular involvement and blindness secondary to linear IgA dermatosis. J Ophthalmol. 2010;2010:280396. doi:10.1155/2010/280396. PMID 21234343.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/21234343/
+- Source checked on: 2026-09-25
+- Locator: PMID 21234343; end-stage ocular-surface failure in linear IgA dermatosis requiring keratolimbal transplantation and amniotic membrane
+- Note under review: Case report of severe ocular involvement in linear IgA dermatosis treated with keratolimbal allogenic transplantation and amniotic membrane for end-stage ocular-surface failure, the authors noting these blistering diseases are rare in the eye and ocular prognosis can be unsatisfactory even with adequate local treatment - the ocular-surface-failure anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `linear-iga` → `visual-impairment` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** The Ramos-Castellon 2010 report documents ocular involvement and blindness secondary to linear IgA dermatosis in a patient treated with keratolimbal allogenic transplantation and cryopreserved amniotic membrane who persisted with torpid evolution developing retinal and choroidal detachments, with intravenous immune globulin producing only very slight improvement and the authors concluding that ocular prognosis in these blistering diseases can be unsatisfactory regardless of adequate local treatment (PMID 21234343); the Haidar 2026 report documents bilateral ocular involvement developing in the course of biopsy-confirmed linear IgA bullous dermatosis of childhood, with the second eye requiring grafting after the first progressed through tarsorrhaphy and two membrane grafts (PMID 42241023); the literature documents sight-threatening and blindness-level ocular involvement in linear IgA bullous dermatosis in case-level material without establishing that the disease caused an individual's visual impairment.
+
+**Causation boundary (causationStatus):** The mapping does not assert that linear IgA bullous dermatosis caused an individual's visual impairment: the blindness-level anchor is a single case in which retinal and choroidal detachments - a deeper limb than the corneal-surface disease - drove the outcome, the corneal-surface limb of visual loss is deliberately not reasserted here because it rides the published keratitis to corneal-scarring to visual-impairment windows, the evidence is case-report class without incidence data, and surgical, infectious, and treatment factors all contribute to end-stage outcomes - so no directional claim is made.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 235.1 — Ramos-Castellón C, Ortiz-Nieva G, Fresán F, Villalvazo L, Garfias Y, Navas A, Jiménez-Martínez MC. Ocular involvement and blindness secondary to linear IgA dermatosis. J Ophthalmol. 2010;2010:280396. doi:10.1155/2010/280396. PMID 21234343.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/21234343/
+- Source checked on: 2026-09-25
+- Locator: PMID 21234343; blindness with retinal and choroidal detachments secondary to linear IgA dermatosis
+- Note under review: Case report of blindness secondary to linear IgA dermatosis with torpid evolution to retinal and choroidal detachments despite keratolimbal transplantation, amniotic membrane, and intravenous immune globulin, concluding ocular prognosis can be unsatisfactory even with adequate local treatment - the deep-limb and blindness anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 235.2 — Haidar H, Amos-Oluwole O, Loomba A, Joy R, Sudhakaran S, Zaman R, Jacob D, Wood M, Amin H, Goel S. A Case of Linear IgA Bullous Dermatosis of Childhood With Ocular Involvement: A Diagnostic Challenge. Cornea. 2026 Aug;45(8):1051-1055. doi:10.1097/ICO.0000000000004087. PMID 42241023.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42241023/
+- Source checked on: 2026-09-25
+- Locator: PMID 42241023; bilateral ocular involvement with repeated grafting in childhood linear IgA bullous dermatosis
+- Note under review: Case report documenting bilateral ocular involvement developing in biopsy-confirmed linear IgA bullous dermatosis of childhood, with the second eye requiring grafting after the first progressed through tarsorrhaphy and two membrane grafts - the bilateral-progression anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `lingual-neuralgia` → `unexplained-chronic-pain` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** The Chuang 2026 retrospective case series of treatment-refractory non-odontogenic orofacial pain documents six patients with objective negative dental findings and a median 17-month diagnostic delay whose re-evaluation under the International Classification of Orofacial Pain produced final diagnoses including lingual nerve injury, with pain intensity improving from a median numerical rating score of 8 to 0-2 after systematic diagnostic re-evaluation, and identifies premature single-cause attribution, overreliance on imaging or prior medication history, and insufficient neurologic examination as common pitfalls (PMID 42220291); the Renton and Yilmaz 2012 cohort of 216 iatrogenic trigeminal nerve injuries, 93 of them lingual nerve injuries, documents the chronic neuropathic pain management pathway - reassurance and counselling for 55 percent, medication for 5 percent, cognitive behaviour therapy for 8 percent, topical lidocaine patches reducing pain and allodynia, and exploratory surgery improving symptoms and reducing the neuropathic area in 18 lingual nerve injury patients (PMID 22326447); the Renton 2006 prospective series of 94 lingual nerve injuries after third molar surgery documents that conventional sensory tests were often unable to diagnose injury and were not predictive of outcome, with patient-reported subjective function identifying those at risk of permanent injury (PMID 16732250); the literature documents a reproducible chronic neuropathic tongue-pain presentation requiring an exclusionary dental, neurologic, and neuropathic workup without establishing that lingual neuralgia caused a distinct chronic pain disorder in any individual.
+
+**Causation boundary (causationStatus):** The mapping does not assert that lingual neuralgia caused an individual's chronic pain disorder: the neuropathic pain is the defining presentation of the neuralgia rather than a separate downstream condition, so the edge records presentation-and-workup matching; the evidence is a six-case re-evaluation series and two management cohorts dominated by iatrogenic injury after third molar surgery without incidence denominators, burning pain, allodynia, and dysgeusia are constitutive symptoms recorded in the same cohorts, and dental disease, temporomandibular disorders, trigeminal neuralgia, and burning mouth syndrome are competing explanations enumerated in the same literature - so no directional claim is made.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 236.1 — Chuang HC, Sato H, Kubota K, Kobayashi W. Diagnostic re-evaluation of non-odontogenic orofacial pain after treatment failure: a retrospective case series. J Oral Facial Pain Headache. 2026 May;40(2):93-104. doi:10.22514/jofph.2026.039. PMID 42220291.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42220291/
+- Source checked on: 2026-09-25
+- Locator: PMID 42220291; lingual nerve injury among refractory orofacial pain diagnoses, 17-month median delay, systematic re-evaluation outcome
+- Note under review: Retrospective case series of six patients with treatment-refractory non-odontogenic orofacial pain and negative dental findings (median diagnostic delay 17 months) whose re-evaluation produced final diagnoses including lingual nerve injury, with pain improving from median 8 to 0-2 and documented diagnostic pitfalls - the workup-matching and diagnostic-delay anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 236.2 — Renton T, Yilmaz Z. Managing iatrogenic trigeminal nerve injury: a case series and review of the literature. Int J Oral Maxillofac Surg. 2012 May;41(5):629-637. doi:10.1016/j.ijom.2011.11.002. PMID 22326447.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/22326447/
+- Source checked on: 2026-09-25
+- Locator: PMID 22326447; 93 lingual nerve injuries within 216 iatrogenic trigeminal injuries, management pathway with CBT, medication, and surgery outcomes
+- Note under review: Management cohort of 216 iatrogenic trigeminal nerve injuries including 93 lingual nerve injuries: reassurance and counselling sufficed for 55 percent, medication for 5 percent, cognitive behaviour therapy for 8 percent, lidocaine patches reduced pain and allodynia, and exploratory surgery improved symptoms in 18 lingual nerve injury patients - the chronic-neuropathic-pain management anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 236.3 — Renton T, Thexton A, Crean SJ, Hankins M. Simplifying the assessment of the recovery from surgical injury to the lingual nerve. Br Dent J. 2006 May 27;200(10):569-573. doi:10.1038/sj.bdj.4813584. PMID 16732250.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/16732250/
+- Source checked on: 2026-09-25
+- Locator: PMID 16732250; 94 lingual nerve injuries after third molar surgery, subjective function predicting permanent injury
+- Note under review: Prospective case series of 94 lingual nerve injuries after third molar surgery documenting that conventional sensory tests often failed to diagnose injury and were not predictive of outcome, with patient-reported subjective function identifying patients at risk of permanent injury - the injury-assessment and permanence anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `lipoid-pneumonia` → `pulmonary-fibrosis` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** The Cozzi 2021 high-resolution CT series of 10 patients with exogenous lipoid pneumonia confirmed by CT, bronchoalveolar lavage, and (in five) lung biopsy documents that the oldest lesions were characterized by bronchiectasis and fibrosis around the lipidic consolidations, alongside fat-density consolidation in 8 of 10, ground-glass opacities in 10 of 10, crazy-paving in 6 of 10, and tumor-like nodules in 2 of 10 (PMID 32451884); the Annobil 1995 clinicopathological study of four children with aspiration of animal fat (ghee) documents diffuse mononuclear interstitial pneumonia, lipid granuloma formation, and - in the two children with longstanding reactions - continuation of the interstitial pneumonia with bronchiectasis and lung fibrosis (PMID 7773510); the literature documents perilesional fibrotic remodeling around longstanding lipid consolidations in imaging and histology material without establishing that lipoid pneumonia caused an individual's pulmonary fibrosis.
+
+**Causation boundary (causationStatus):** The mapping does not assert that lipoid pneumonia caused an individual's pulmonary fibrosis: the fibrosis is documented as perilesional and (histologically) minimal in the only series that measured it, the fibrotic end-stage pattern of the hypersensitivity-pneumonitis family is deliberately not asserted, the evidence is a 10-patient imaging series and a four-case pediatric histology series without incidence denominators, exposure type and chronicity differ across the pooled cases, and idiopathic, connective-tissue-disease, and other inhalational fibrotic drivers must be excluded per case - so no directional claim is made.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 237.1 — Cozzi D, Bindi A, Cavigli E, Grosso AM, Luvarà S, Morelli N, Moroni C, Piperio R, Miele V, Bartolucci M. Exogenous lipoid pneumonia: when radiologist makes the difference. Radiol Med. 2021 Jan;126(1):22-28. doi:10.1007/s11547-020-01230-x. PMID 32451884.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/32451884/
+- Source checked on: 2026-09-25
+- Locator: PMID 32451884; fibrosis and bronchiectasis around oldest lipid consolidations in 10-patient ELP CT series
+- Note under review: High-resolution CT series of 10 patients with biopsy- or lavage-confirmed exogenous lipoid pneumonia: fat-density consolidation in 8 of 10, crazy-paving in 6 of 10, tumor-like nodules in 2 of 10, and oldest lesions characterized by bronchiectasis and fibrosis around the lipidic consolidations - the imaging-remodeling anchor for both edges.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 237.2 — Annobil SH, Morad NA, Khurana P, Kameswaran M, Ogunbiyi O, al-Malki T. Reaction of human lungs to aspirated animal fat (ghee): a clinicopathological study. Virchows Arch. 1995;426(4):301-305. doi:10.1007/BF00191368. PMID 7773510.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/7773510/
+- Source checked on: 2026-09-25
+- Locator: PMID 7773510; interstitial pneumonia with lipid granulomas, bronchiectasis, and fibrosis in longstanding ghee-aspiration cases
+- Note under review: Clinicopathological study of four children with ghee aspiration: diffuse mononuclear interstitial pneumonia, lipid granuloma formation, bronchiectasis radiographically and histologically, and - in the two longstanding cases - continuing interstitial pneumonia with bronchiectasis and minimal lung fibrosis - the histology anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `lipoid-pneumonia` → `bronchiectasis` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** The Cozzi 2021 high-resolution CT series of 10 patients with exogenous lipoid pneumonia documents that the oldest lesions were characterized by bronchiectasis and fibrosis around the lipidic consolidations (PMID 32451884); the Annobil 1995 clinicopathological study of four children with animal-fat (ghee) aspiration documents bronchiectasis radiographically (among findings ranging from bronchopneumonia to collapse or consolidation and bronchiectasis) and the continuation of bronchiectasis in the two children with longstanding reactions alongside mononuclear interstitial pneumonia (PMID 7773510); the literature documents bronchiectatic airway damage around longstanding lipid consolidations in imaging and histology material without establishing that lipoid pneumonia caused an individual's bronchiectasis.
+
+**Causation boundary (causationStatus):** The mapping does not assert that lipoid pneumonia caused an individual's bronchiectasis: the bronchiectasis is documented in the oldest lesions of a 10-patient imaging series and in two longstanding pediatric cases without incidence denominators or progression rates, the airway damage co-occurs with perilesional fibrosis in the same lesions so the two edges record two structural outcomes of one remodeling process, post-obstructive and infectious bronchiectasis are competing explanations in aspiration-prone patients, and exposure type and chronicity are heterogeneous - so no directional claim is made.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 238.1 — Cozzi D, Bindi A, Cavigli E, Grosso AM, Luvarà S, Morelli N, Moroni C, Piperio R, Miele V, Bartolucci M. Exogenous lipoid pneumonia: when radiologist makes the difference. Radiol Med. 2021 Jan;126(1):22-28. doi:10.1007/s11547-020-01230-x. PMID 32451884.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/32451884/
+- Source checked on: 2026-09-25
+- Locator: PMID 32451884; bronchiectasis in oldest lipid-consolidation lesions in 10-patient ELP CT series
+- Note under review: High-resolution CT series of 10 patients with exogenous lipoid pneumonia documenting bronchiectasis around the oldest lipid consolidations alongside fat-density consolidation, crazy-paving, and tumor-like nodules - the imaging anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 238.2 — Annobil SH, Morad NA, Khurana P, Kameswaran M, Ogunbiyi O, al-Malki T. Reaction of human lungs to aspirated animal fat (ghee): a clinicopathological study. Virchows Arch. 1995;426(4):301-305. doi:10.1007/BF00191368. PMID 7773510.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/7773510/
+- Source checked on: 2026-09-25
+- Locator: PMID 7773510; bronchiectasis radiographic and histologic in longstanding ghee-aspiration cases
+- Note under review: Clinicopathological study of four children with ghee aspiration documenting bronchiectasis radiographically and histologically, with continuing bronchiectasis in the two longstanding cases alongside mononuclear interstitial pneumonia - the histology anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `livedo-reticularis` → `cerebrovascular-accident-stroke-residuals` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** The Starmans 2021 comprehensive review of 53 consecutive Sneddon syndrome patients - diagnosed only after other stroke causes were excluded - documents that livedo reticularis in patients with ischaemic stroke is associated with the syndrome, that 129 previous vascular events (66 ischaemic strokes, 62 transient ischaemic attacks, 1 amaurosis fugax) occurred over a median two years before diagnosis, that skin biopsy showed thickened vessel walls with deep-dermal neovascularization in 67 percent, and that 4 patients had recurrent stroke despite antiplatelet or anticoagulation therapy (PMID 33515066); the Mascarenhas 2003 familial series documents three brothers with long-lasting livedo reticularis extending beyond the lower limbs and cerebrovascular disease (ischaemic stroke in two, cerebral haemorrhage in one) with repeatedly negative antiphospholipid antibodies and an apparent autosomal-dominant pattern across the kindred (PMID 12804991); the Lossos 1995 familial report documents livedo reticularis with progressive neurologic deterioration following stroke confirmed by cerebral angiogram and skin biopsy, with similarly affected siblings (PMID 7751860); the literature documents an elevated cerebrovascular event burden in patients whose persistent livedo reticularis marks an obliterative microangiopathic or antiphospholipid state without establishing that the livedo caused an individual's stroke.
+
+**Causation boundary (causationStatus):** The mapping does not assert that livedo reticularis caused an individual's cerebrovascular accident: the livedo is a cutaneous marker of the same microangiopathy that produces the cerebrovascular events, and Sneddon syndrome is defined by the co-occurrence of both, so the edge records risk-marker and workup matching rather than a causal arrow; the evidence is a 53-patient retrospective cohort and two small familial series without exposed-population denominators, about 60 percent of the cohort carried three or more conventional cardiovascular risk factors, antiphospholipid antibodies were positive in only 14 of 53, and benign physiologic livedo is common - so no directional claim is made and the persistent disease-associated phenotype is required.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 239.1 — Starmans NLP, van Dijk MR, Kappelle LJ, Frijns CJM. Sneddon syndrome: a comprehensive clinical review of 53 patients. J Neurol. 2021 Jul;268(7):2450-2457. doi:10.1007/s00415-021-10407-x. PMID 33515066.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/33515066/
+- Source checked on: 2026-09-25
+- Locator: PMID 33515066; 53-patient Sneddon cohort, 66 ischaemic strokes and 62 TIAs preceding diagnosis, biopsy microangiopathy
+- Note under review: Retrospective review of 53 consecutive Sneddon syndrome patients (79 percent female, median age 40): 129 prior vascular events (66 ischaemic strokes, 62 TIAs, 1 amaurosis fugax) before diagnosis, skin biopsy positive in 67 percent with thickened vessel walls and deep-dermal neovascularization, 60 percent with three or more cardiovascular risk factors, and recurrent stroke in 4 despite therapy - the cohort and event-burden anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 239.2 — Mascarenhas R, Santo G, Gonçalo M, Ferro MA, Tellechea O, Figueiredo A. Familial Sneddon's syndrome. Eur J Dermatol. 2003 May-Jun;13(3):283-287. PMID 12804991.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/12804991/
+- Source checked on: 2026-09-25
+- Locator: PMID 12804991; three brothers with livedo reticularis and stroke or cerebral haemorrhage, APS-negative familial Sneddon
+- Note under review: Familial series of three brothers with long-lasting livedo reticularis beyond the lower limbs and cerebrovascular disease (ischaemic stroke in two, cerebral haemorrhage in one), repeatedly negative antiphospholipid antibodies, and apparent autosomal-dominant inheritance across the kindred - the familial and seronegative anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 239.3 — Lossos A, Ben-Hur T, Ben-Nariah Z, Enk C, Gomori M, Soffer D. Familial Sneddon's syndrome. J Neurol. 1995 Feb;242(3):164-168. doi:10.1007/BF00936890. PMID 7751860.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/7751860/
+- Source checked on: 2026-09-25
+- Locator: PMID 7751860; familial Sneddon syndrome with livedo reticularis and post-stroke deterioration, angiogram and biopsy confirmed
+- Note under review: Familial report of a proband with livedo reticularis and progressive neurologic deterioration following stroke confirmed by cerebral angiogram and skin biopsy, with similarly affected sisters and vasospastic skin phenomena across the kindred - the second familial and diagnostic-confirmation anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
 ## Implementation mechanics after decisions
 
 - Mapping edits and registry edits must land in lockstep (the registry audit's canonical-JSON hashes and live-use sets will fail otherwise).

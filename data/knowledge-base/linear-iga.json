@@ -2,8 +2,125 @@
   "id": "linear-iga",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review dermatologic, autoimmune, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 54 (2026-09-25): two ASSOCIATION_ONLY draft mappings pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: both edges assert association only (etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true, mechanismCategory IMMUNE_MEDIATED). The evidence base is case-report class for this rare autoimmune subepidermal blistering disease, so individual claims require dermatologist- and ophthalmologist-confirmed linear IgA bullous dermatosis (direct immunofluorescence demonstrating linear IgA at the basement membrane zone) with dated ocular examinations documenting the lesion type, site, and laterality, and review by a qualified medical professional.",
+    "Pathway and duplicate-scope screens: no -> conjunctivitis edge despite the documented conjunctival limb (Webster 1994 documented cicatrizing conjunctivitis as the predominant manifestation in two patients with irreversible conjunctival scarring, PMID 8294597) - the conjunctival and corneal limbs are one ocular-surface blistering pathway, and the conjunctivitis -> corneal-scarring and keratitis -> corneal-scarring windows would run it in parallel, so a single ocular-surface edge is authored and the conjunctival limb is recorded as context on the keratitis edge; no -> corneal-scarring edge (intermediate-node rule - the keratitis -> corneal-scarring window carries the scarring pathway); the visual-impairment edge is deliberately scoped to the retinal/choroidal and bilateral end-stage limb that does NOT ride the keratitis-to-corneal-scarring-to-visual-impairment chain (see governance notes); no -> dysphagia or esophageal edge (the located IgA-deposit esophageal-stenosis case was diagnosed as cicatricial pemphigoid and belongs to the cicatricial-pemphigoid identity's evidence, PMID 28533859 - wrong-identity guard); no -> cellulitis edge (zero located condition-specific infection-rate records; impetiginization is textbook-level only); no -> bullous-pemphigoid edge (distinct antigen and nosology; the linear IgA disease identity is explicitly distinct from dermatitis herpetiformis and bullous pemphigoid)."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 54 (2026-09-25): two bounded association edges authored - linear-iga to keratitis (rank 1) and to visual-impairment (rank 2) - both classified ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, and hypothesizedOnly:true; mechanismCategory IMMUNE_MEDIATED. The keratitis proposition rests on the Haidar 2026 report of linear IgA bullous dermatosis of childhood presenting with a corneal shield ulcer that progressed despite topical therapy to require partial tarsorrhaphy and then amniotic-membrane grafting, with worsening corneal ulceration and conjunctival inflammation, bilateral involvement developing, and skin biopsy with direct immunofluorescence confirming linear IgA deposits (PMID 42241023), and on the Ramos-Castellon 2010 report of ocular involvement and blindness secondary to linear IgA dermatosis treated with keratolimbal allogenic transplantation and amniotic membrane for end-stage ocular-surface failure (PMID 21234343). The visual-impairment proposition rests on the same Ramos-Castellon report, in which the patient persisted with torpid evolution developing retinal and choroidal detachments despite adequate local treatment with intravenous immune globulin giving only slight improvement, the authors concluding that ocular prognosis in these blistering diseases can be unsatisfactory even with adequate local treatment (PMID 21234343), and on the Haidar report's documented bilateral progression with repeated grafting (PMID 42241023).",
+    "Counter-evidence and caveat screens recorded 2026-09-25: (i) evidence class - single-case reports for a rare disease, with no incidence or natural-history cohorts for ocular involvement rates in linear IgA bullous dermatosis; (ii) pathway distinction for the visual-impairment edge - the corneal-surface limb of visual loss is deliberately NOT reasserted here because it rides the published keratitis -> corneal-scarring -> visual-impairment windows (intermediate-node rule); this edge is scoped to the retinal and choroidal detachment limb documented in the Ramos case and to bilateral end-stage ocular-surface failure, which are deeper or wider processes than the corneal window carries; (iii) age and phenotype scope - the Haidar case is childhood linear IgA bullous dermatosis while the Ramos and Webster cases are adults with predominantly mucosal disease, so the identity spans both phenotypes and no magnitude is extrapolated; (iv) treatment mediation - systemic corticosteroids, dapsone, intravenous immune globulin, and grafting all alter the ocular course.",
+    "Negative screens recorded 2026-09-25: (i) no conjunctivitis, corneal-scarring, or blindness-target edge (conjunctival limb recorded as context, PMID 8294597; blindness has zero incoming edges catalog-wide per the glaucoma-batch scope note, so visual-impairment is the authored target); (ii) no dysphagia or esophageal-stricture edge - the IgA-deposit esophageal case is an IgA-variant cicatricial pemphigoid (PMID 28533859) and its esophageal-stenosis pathway belongs to the cicatricial-pemphigoid identity; (iii) no cellulitis or impetigo edge (zero records); (iv) no -> skin-cancer or scarring edge (cutaneous disease heals without scarring in the located material); (v) no -> anemia or systemic edge (dapsone hemolysis is treatment-mediated)."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "keratitis",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The Haidar 2026 report documents linear IgA bullous dermatosis of childhood presenting with a corneal shield ulcer that progressed despite topical antibiotics, corticosteroids, and lubricants, requiring partial tarsorrhaphy and then amniotic-membrane grafting, with worsening corneal ulceration and conjunctival inflammation on repeat examination under anesthesia and direct immunofluorescence confirming subepidermal blisters with linear IgA deposits (PMID 42241023); the Ramos-Castellon 2010 report documents ocular involvement secondary to linear IgA dermatosis severe enough to require keratolimbal allogenic transplantation and cryopreserved amniotic membrane, with the authors noting that these blistering diseases are rare in the eye and that even with adequate local treatment ocular prognosis can be unsatisfactory (PMID 21234343); the literature documents corneal epithelial ulceration and ocular-surface failure in linear IgA bullous dermatosis in case-level material without establishing that the disease caused an individual's keratitis.",
+        "causationStatus": "The mapping does not assert that linear IgA bullous dermatosis caused an individual's keratitis: the anchors are single-case reports of a rare disease without incidence denominators, the ocular-surface blistering spans conjunctival and corneal epithelium so lesion attribution requires biopsy-confirmation of the systemic disease plus lesion-level ocular documentation, viral and bacterial keratitis are the presenting mimics both anchor cases were initially managed for, and topical and systemic immunosuppression plus grafting alter the course - so no directional claim is made."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "IMMUNE_MEDIATED",
+        "primaryVector": "A hypothesized autoantibody blistering route is described: circulating IgA autoantibody binds a basement-membrane-zone antigen of the conjunctival and corneal epithelium, producing subepidermal blistering that manifests as shield ulcer and persistent epithelial defects with conjunctival inflammation; the anchors document biopsy-confirmed linear IgA deposition with corneal ulceration and the need for membrane grafting when the epithelium failed to heal, but the individual antigenic target and attributable share in ocular tissue remain hypotheses.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Corneal ulceration and ocular-surface failure are documented in case reports of biopsy-confirmed linear IgA bullous dermatosis, but individual determination requires dermatologist- and ophthalmologist-confirmed linear IgA bullous dermatosis with direct immunofluorescence documentation, dated ocular examinations documenting the corneal lesion type and laterality, exclusion of viral, bacterial, and exposure keratitis, and review by a qualified medical professional.",
+        "evidenceGaps": "Dermatology documentation of linear IgA bullous dermatosis with skin-biopsy direct immunofluorescence showing linear IgA at the basement membrane zone, disease activity, and treatment history (dapsone, systemic corticosteroids, intravenous immune globulin) with dates; ophthalmology documentation of the ocular surface examination with lesion type (shield ulcer, persistent epithelial defect, conjunctival inflammation), laterality, corneal sensation, and fluorescein staining with dates; microbiology (viral PCR, bacterial culture) excluding infectious keratitis; serial photographs or examination-under-anesthesia records where performed; documentation of any tarsorrhaphy, amniotic-membrane graft, or keratolimbal procedure and the response; dermatology-ophthalmology joint assessment of the ocular attribution",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Viral keratitis (herpes simplex, varicella-zoster) or bacterial keratitis",
+          "Exposure keratopathy from lid malposition or reduced blink",
+          "Neurotrophic keratopathy",
+          "Ocular cicatricial pemphigoid or mucous-membrane pemphigoid (IgG/IgA-variant)",
+          "Dry-eye or graft-versus-host ocular-surface disease",
+          "Topical medication toxicity (preservatives) causing epitheliopathy"
+        ]
+      },
+      "evidenceGaps": [
+        "Dermatology documentation of linear IgA bullous dermatosis with skin-biopsy direct immunofluorescence showing linear IgA at the basement membrane zone, disease activity, and treatment history (dapsone, systemic corticosteroids, intravenous immune globulin) with dates; ophthalmology documentation of the ocular surface examination with lesion type (shield ulcer, persistent epithelial defect, conjunctival inflammation), laterality, corneal sensation, and fluorescein staining with dates; microbiology (viral PCR, bacterial culture) excluding infectious keratitis; serial photographs or examination-under-anesthesia records where performed; documentation of any tarsorrhaphy, amniotic-membrane graft, or keratolimbal procedure and the response; dermatology-ophthalmology joint assessment of the ocular attribution"
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY on the autoimmune-blistering ocular precedent: case-level material documents corneal shield ulceration and persistent epithelial failure in biopsy-confirmed linear IgA bullous dermatosis with graft-level intervention required and a conjunctival limb of the same ocular-surface blistering process; because the evidence is single-case reports without incidence data, infectious and exposure mimics were worked up in both anchors before the autoimmune diagnosis, and treatment alters the course, the conservative standard keeps the edge at association only and routes individual claims through biopsy-confirmed disease plus dated lesion-level ocular documentation.",
+      "sourceReferences": [
+        {
+          "citation": "Haidar H, Amos-Oluwole O, Loomba A, Joy R, Sudhakaran S, Zaman R, Jacob D, Wood M, Amin H, Goel S. A Case of Linear IgA Bullous Dermatosis of Childhood With Ocular Involvement: A Diagnostic Challenge. Cornea. 2026 Aug;45(8):1051-1055. doi:10.1097/ICO.0000000000004087. PMID 42241023.",
+          "note": "Case report of a 3-year-old with linear IgA bullous dermatosis presenting with a corneal shield ulcer that progressed to require partial tarsorrhaphy and amniotic-membrane grafting, with worsening corneal ulceration and conjunctival inflammation, initial misdiagnosis as viral keratitis, and biopsy-confirmed linear IgA deposits - the corneal-ulcer and diagnostic-mimic anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42241023/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 42241023; corneal shield ulcer with progression to grafting in biopsy-confirmed childhood linear IgA bullous dermatosis"
+        },
+        {
+          "citation": "Ramos-Castellón C, Ortiz-Nieva G, Fresán F, Villalvazo L, Garfias Y, Navas A, Jiménez-Martínez MC. Ocular involvement and blindness secondary to linear IgA dermatosis. J Ophthalmol. 2010;2010:280396. doi:10.1155/2010/280396. PMID 21234343.",
+          "note": "Case report of severe ocular involvement in linear IgA dermatosis treated with keratolimbal allogenic transplantation and amniotic membrane for end-stage ocular-surface failure, the authors noting these blistering diseases are rare in the eye and ocular prognosis can be unsatisfactory even with adequate local treatment - the ocular-surface-failure anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/21234343/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 21234343; end-stage ocular-surface failure in linear IgA dermatosis requiring keratolimbal transplantation and amniotic membrane"
+        }
+      ]
+    },
+    {
+      "conditionId": "visual-impairment",
+      "rank": 2,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The Ramos-Castellon 2010 report documents ocular involvement and blindness secondary to linear IgA dermatosis in a patient treated with keratolimbal allogenic transplantation and cryopreserved amniotic membrane who persisted with torpid evolution developing retinal and choroidal detachments, with intravenous immune globulin producing only very slight improvement and the authors concluding that ocular prognosis in these blistering diseases can be unsatisfactory regardless of adequate local treatment (PMID 21234343); the Haidar 2026 report documents bilateral ocular involvement developing in the course of biopsy-confirmed linear IgA bullous dermatosis of childhood, with the second eye requiring grafting after the first progressed through tarsorrhaphy and two membrane grafts (PMID 42241023); the literature documents sight-threatening and blindness-level ocular involvement in linear IgA bullous dermatosis in case-level material without establishing that the disease caused an individual's visual impairment.",
+        "causationStatus": "The mapping does not assert that linear IgA bullous dermatosis caused an individual's visual impairment: the blindness-level anchor is a single case in which retinal and choroidal detachments - a deeper limb than the corneal-surface disease - drove the outcome, the corneal-surface limb of visual loss is deliberately not reasserted here because it rides the published keratitis to corneal-scarring to visual-impairment windows, the evidence is case-report class without incidence data, and surgical, infectious, and treatment factors all contribute to end-stage outcomes - so no directional claim is made."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "IMMUNE_MEDIATED",
+        "primaryVector": "A hypothesized deep-and-surface ocular injury route is described: beyond the epithelial blistering carried on the keratitis edge, the autoimmune process is hypothesized to involve deeper ocular tissues - the anchor case developed retinal and choroidal detachments with torpid course - while bilateral ocular-surface failure produces limbal stem-cell deficiency and vascularized corneal opacification; the located cases document these end-stage outcomes but the relative share of surface versus deep injury in the visual loss remains a hypothesis.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Blindness-level and sight-threatening ocular involvement is documented in case reports of linear IgA bullous dermatosis, but individual determination requires dermatologist- and ophthalmologist-confirmed disease, dated visual-acuity and retinal documentation distinguishing the surface from the deep limb, exclusion of the competing causes of visual loss in these patients, and review by a qualified medical professional.",
+        "evidenceGaps": "Dermatology documentation of linear IgA bullous dermatosis with direct immunofluorescence confirmation and disease-activity and treatment chronology (dapsone, systemic corticosteroids, intravenous immune globulin); ophthalmology records with dated best-corrected visual acuity, slit-lamp findings (corneal opacification, limbal stem-cell deficiency, symblepharon), and fundus findings (retinal or choroidal detachment, with imaging where performed); documentation of which limb - corneal-surface or retinal/choroidal - accounts for the visual loss and its chronology relative to the blistering disease; surgical records (keratolimbal transplantation, amniotic membrane, tarsorrhaphy, retinal surgery); exclusion of competing causes (infectious keratitis scarring, cataract, glaucoma, amblyopia in children, retinal detachment from other causes); dermatology-ophthalmology joint assessment of the attribution",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Corneal scarring from infectious keratitis or trauma",
+          "Retinal detachment from a non-inflammatory cause",
+          "Cataract, glaucoma, or amblyopia (in children) as the visual-loss driver",
+          "Ocular cicatricial pemphigoid or mucous-membrane pemphigoid end-stage disease",
+          "Treatment-related visual morbidity (corticosteroid cataract or glaucoma)",
+          "Visual loss attributable to the surgical course rather than the disease"
+        ]
+      },
+      "evidenceGaps": [
+        "Dermatology documentation of linear IgA bullous dermatosis with direct immunofluorescence confirmation and disease-activity and treatment chronology (dapsone, systemic corticosteroids, intravenous immune globulin); ophthalmology records with dated best-corrected visual acuity, slit-lamp findings (corneal opacification, limbal stem-cell deficiency, symblepharon), and fundus findings (retinal or choroidal detachment, with imaging where performed); documentation of which limb - corneal-surface or retinal/choroidal - accounts for the visual loss and its chronology relative to the blistering disease; surgical records (keratolimbal transplantation, amniotic membrane, tarsorrhaphy, retinal surgery); exclusion of competing causes (infectious keratitis scarring, cataract, glaucoma, amblyopia in children, retinal detachment from other causes); dermatology-ophthalmology joint assessment of the attribution"
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY with an explicit pathway distinction from the keratitis window: the blindness-level anchor documents retinal and choroidal detachments with torpid evolution and minimal immunoglobulin response, and the second anchor documents bilateral progression through repeated grafting, so the edge is scoped to the deeper and bilateral end-stage limb that the keratitis-to-corneal-scarring-to-visual-impairment chain does not carry; because the evidence is case-report class, surface and deep contributions are separable only per case, and treatment alters the course, the conservative standard keeps the edge at association only and routes individual claims through dated surface-versus-deep attribution.",
+      "sourceReferences": [
+        {
+          "citation": "Ramos-Castellón C, Ortiz-Nieva G, Fresán F, Villalvazo L, Garfias Y, Navas A, Jiménez-Martínez MC. Ocular involvement and blindness secondary to linear IgA dermatosis. J Ophthalmol. 2010;2010:280396. doi:10.1155/2010/280396. PMID 21234343.",
+          "note": "Case report of blindness secondary to linear IgA dermatosis with torpid evolution to retinal and choroidal detachments despite keratolimbal transplantation, amniotic membrane, and intravenous immune globulin, concluding ocular prognosis can be unsatisfactory even with adequate local treatment - the deep-limb and blindness anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/21234343/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 21234343; blindness with retinal and choroidal detachments secondary to linear IgA dermatosis"
+        },
+        {
+          "citation": "Haidar H, Amos-Oluwole O, Loomba A, Joy R, Sudhakaran S, Zaman R, Jacob D, Wood M, Amin H, Goel S. A Case of Linear IgA Bullous Dermatosis of Childhood With Ocular Involvement: A Diagnostic Challenge. Cornea. 2026 Aug;45(8):1051-1055. doi:10.1097/ICO.0000000000004087. PMID 42241023.",
+          "note": "Case report documenting bilateral ocular involvement developing in biopsy-confirmed linear IgA bullous dermatosis of childhood, with the second eye requiring grafting after the first progressed through tarsorrhaphy and two membrane grafts - the bilateral-progression anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42241023/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 42241023; bilateral ocular involvement with repeated grafting in childhood linear IgA bullous dermatosis"
+        }
+      ]
+    }
+  ]
 }
