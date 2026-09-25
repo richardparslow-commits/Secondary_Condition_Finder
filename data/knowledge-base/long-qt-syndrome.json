@@ -2,8 +2,77 @@
   "id": "long-qt-syndrome",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review hemodynamic, vascular, thrombotic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 55 (2026-09-25): one ASSOCIATION_ONLY draft mapping pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: the single edge asserts association only (etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true, mechanismCategory MULTIFACTORIAL), matching the brugada-syndrome channelopathy precedent's bounded event-risk framing. The evidence base is risk-stratification class - cohorts of diagnosed patients quantifying arrhythmic-event predictors - so individual claims require electrocardiographic and genetic confirmation of the syndrome plus dated rhythm documentation of the arrhythmia, and review by a qualified medical professional.",
+    "Pathway and duplicate-scope screens: no -> seizure-disorder or epilepsy edge (diagnostic-mimic guard - arrhythmic syncope with convulsive movements is misdiagnosed as epilepsy in the located material, which documents prior arrhythmic syncope or seizure as a risk marker rather than a secondary condition; the seizure-disorder window's incoming edges are all structural-CNS primaries); no -> vasovagal-syncope edge (wrong-identity guard - long QT arrhythmic syncope is not vasovagal syncope, and the catalog's vasovagal-syncope identity owns the neurally mediated window); no -> sudden-cardiac-death edge (no catalog identity exists for this outcome; the sudden-death framing is recorded as context in the rationale and review anchor, PMID 42274161); no -> anxiety-disorder edge (the located quality-of-life material after ICD implantation is device-experience class without condition-specific quantification); no -> congestive-heart-failure edge (long QT syndrome is an electrical disease without a pump-failure pathway at identity level)."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 55 (2026-09-25): one bounded association edge authored - long-qt-syndrome to cardiac-arrhythmia (rank 1) - classified ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, and hypothesizedOnly:true; mechanismCategory MULTIFACTORIAL. The proposition rests on congenital long QT syndrome event-risk literature: the Korean multicenter cohort of 202 pediatric patients quantifies life-threatening arrhythmic events and breakthrough cardiac events (29 percent) with genotype-dependent risk (LQT2 and LQT3 hazard ratios over 5 and 8 respectively versus LQT1) and beta-blocker protection (PMID 42669865), the Rochester LQTS Registry analysis of 435 genetically confirmed women models the 20-year burden of syncope, aborted cardiac arrest, and LQTS-related sudden cardiac death (PMID 42466517), and the integrative review frames QT prolongation and sudden cardiac death around multi-factorial risk, noting that nonpenetrant long QT syndrome carries near-population-level event risk and that QTc threshold alone is insufficient (PMID 42274161).",
+    "Counter-evidence and caveat screens recorded 2026-09-25: (i) constitutive framing - ventricular arrhythmia is the defining clinical event of the long-QT substrate rather than an independent comorbidity, so the edge records documented event risk in diagnosed patients and never asserts that any particular arrhythmia in an individual was caused by the syndrome (brugada-syndrome precedent); (ii) evidence class - risk-stratification cohorts without an unexposed comparator population; (iii) genotype and trigger dependence - event risk varies by genotype, QTc, sex hormones, medications, and autonomic triggers; (iv) treatment mediation - beta-blockers, mexiletine, left cardiac sympathetic denervation, and ICD therapy materially alter event rates."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "cardiac-arrhythmia",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Congenital long QT syndrome cohorts quantify arrhythmic-event burden: the 202-patient Korean multicenter cohort reports breakthrough cardiac events in 29 percent with genotype-dependent risk of life-threatening arrhythmic events (PMID 42669865), the Rochester LQTS Registry analysis of 435 genetically confirmed women models the burden of syncope, aborted cardiac arrest, and LQTS-related sudden cardiac death as the cardiac-event endpoint (PMID 42466517), and the integrative review frames QT prolongation around ventricular-arrhythmia risk and sudden cardiac death (PMID 42274161); the co-occurrence is documented at cohort, registry, and review class, so the edge records event risk only.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: the located material quantifies arrhythmic-event risk in diagnosed long QT syndrome, but genotype, QTc duration, medication exposures, autonomic triggers, and competing arrhythmia substrates all require individual review before any causal statement."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MULTIFACTORIAL",
+        "primaryVector": "Congenital long-qt cardiac ion-channel dysfunction creates an electrical substrate vulnerable to torsades de pointes and other ventricular arrhythmias, with genotype, QTc duration, sex hormones, medications, and autonomic state modifying risk, but the individual's arrhythmic pathway remains hypothesized until electrophysiologic records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported as an event-risk proposition only: the cohorts identify arrhythmic-event risk factors in diagnosed long QT syndrome but do not prove that any particular arrhythmia in an individual was caused by the syndrome, and breakthrough-event risk is modified by beta-blocker adherence and trigger exposure.",
+        "evidenceGaps": "The cohorts identify arrhythmic-event risk factors in diagnosed long QT syndrome without an unexposed comparator; breakthrough-event risk is modified by beta-blocker adherence and trigger exposure.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "drug-induced QT prolongation without congenital syndrome",
+          "catecholaminergic polymorphic ventricular tachycardia overlap",
+          "structural heart disease ventricular arrhythmia",
+          "electrolyte-mediated arrhythmia"
+        ]
+      },
+      "evidenceGaps": [
+        "The cohorts identify arrhythmic-event risk factors in diagnosed long QT syndrome without an unexposed comparator; breakthrough-event risk is modified by beta-blocker adherence and trigger exposure."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY on the brugada-syndrome channelopathy precedent, matching its bounded event-risk framing: the Korean multicenter cohort of 202 pediatric long QT syndrome patients found breakthrough cardiac events in 29 percent and independent risk factors for life-threatening arrhythmic events including LQT2 and LQT3 genotype, fetal arrhythmia, QTc at or above 500 ms, and beta-blocker exposure (PMID 42669865), the Rochester LQTS Registry analysis of 435 genetically confirmed women quantified the burden of syncope, aborted cardiac arrest, and LQTS-related sudden cardiac death over 20 years of follow-up with menarche timing modifying cardiac-event risk (PMID 42466517), and the integrative review synthesizes molecular pathogenesis with multi-factorial risk and risk stratification for QT prolongation and sudden cardiac death, noting that QTc threshold alone is insufficient and that nonpenetrant long QT syndrome carries near-population-level event risk (PMID 42274161); because the evidence is risk-stratification class that identifies event predictors in diagnosed patients rather than proving individual causation, trigger and medication exposures modify risk, and treatment alters the course, the conservative standard keeps the edge at association only and routes individual claims through electrocardiographic and electrophysiologic confirmation of the syndrome plus dated rhythm documentation with competing-substrate exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Song MK, Jun SY, Kwon J, Ban JE, Kwon HW, Ryu YH, Baek SM, Kim AY, Kim MJ, Baek JS, Yoon JK, Choi HJ, Cho MJ, Kim CS, Choi I, You J, Byun JH, Lee H, Na JY, Lee JS, Cho Y, Lee J, Eun LY, Lim YT, Huh J, Bae EJ. Clinical Characteristics and Outcomes of Pediatric Patients With Long QT Syndrome: A Korean Multicenter Cohort Study. Korean Circ J. 2026 Jul 8. doi:10.4070/kcj.2025.0506. PMID 42669865.",
+          "note": "Retrospective multicenter cohort of 202 pediatric long QT syndrome patients quantifying life-threatening arrhythmic events and breakthrough cardiac events (29 percent) with genotype- and phenotype-based risk factors; supports the bounded event-risk proposition only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42669865/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 42669865; METHODS and RESULTS (risk factors for life-threatening arrhythmic and breakthrough cardiac events) sections"
+        },
+        {
+          "citation": "Goldenberg M, Gelikas S, Huang DT, Aktas MK, Cutter K, MacKecknie BD, Horn R, McNitt S, Polonsky B, Zareba W, Goldenberg I, Younis A. Age at Menarche and the Risk of Cardiac Events in Women With Congenital Long QT Syndrome. J Am Heart Assoc. 2026 Jul 21;15:e047140. doi:10.1161/JAHA.125.047140. PMID 42466517.",
+          "note": "Rochester LQTS Registry analysis of 435 genetically confirmed women modeling the burden of syncope, aborted cardiac arrest, and LQTS-related sudden cardiac death over 20 years of follow-up; supports the bounded event-risk proposition only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42466517/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 42466517; METHODS (cardiac-event endpoint definition) and RESULTS sections"
+        },
+        {
+          "citation": "Farjam M, Yazdanpanah MH, Fereydouni N. From Molecules to Machines: An Integrative Framework Linking Molecular Pathogenesis, Multi-Factorial Risk, Risk Stratification, Clinical Management, and Artificial Intelligence in QT Prolongation and Sudden Cardiac Death. Clin Cardiol. 2026 Jun;49:e70370. doi:10.1002/clc.70370. PMID 42274161.",
+          "note": "Integrative review synthesizing molecular pathogenesis, multi-factorial risk, and risk stratification for QT prolongation and sudden cardiac death, noting that QTc threshold alone is insufficient for prognostication; supports the bounded event-risk framing only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42274161/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 42274161; abstract (risk stratification and prognostic value) section"
+        }
+      ]
+    }
+  ]
 }

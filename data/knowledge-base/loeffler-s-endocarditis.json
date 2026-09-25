@@ -2,8 +2,140 @@
   "id": "loeffler-s-endocarditis",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review hemodynamic, vascular, thrombotic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 55 (2026-09-25): two ASSOCIATION_ONLY draft mappings pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: both edges assert association only (etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true; mechanismCategory IMMUNE_MEDIATED for the valve edge and THROMBOTIC_OR_VASCULAR for the stroke edge). The evidence base is case, review, and small-registry class for this rare hypereosinophilic cardiac phenotype, so individual claims require hematology-confirmed hypereosinophilia with cardiac MRI documenting endomyocardial disease and dated echocardiographic or neurologic records, and review by a qualified medical professional.",
+    "Pathway and duplicate-scope screens: no -> congestive-heart-failure edge (intermediate-node rule - the heart-valve-disorders -> congestive-heart-failure window carries pump failure downstream of the valve lesion, exactly as the batch-53 libman-sacks-endocarditis screen held, and the sibling eosinophilic-myocarditis identity already owns the eosinophilic pump-failure window); no -> cardiac-arrhythmia edge (zero located condition-specific arrhythmia-rate quantification in Loeffler material at identity level); no -> pulmonary-embolism or deep-vein-thrombosis edge (the documented thrombi are intracardiac mural thrombi on the arterial side, and the venous chain rides the deep-vein-thrombosis -> pulmonary-embolism window); no -> restrictive-cardiomyopathy or cardiomyopathy edge (constitutive-proximity - restrictive physiology is the end-stage description of the same endomyocardial process); no -> visual-impairment or peripheral-neuropathy edge (hypereosinophilic ocular and neurologic involvement outside the CNS is case-class only without identity-level quantification)."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 55 (2026-09-25): two bounded association edges authored - loeffler-s-endocarditis to heart-valve-disorders (rank 1) and to cerebrovascular-accident-stroke-residuals (rank 2) - classified ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, and hypothesizedOnly:true. The propositions rest on the Loeffler endocarditis and hypereosinophilic syndrome literature: the JACC multimodality-imaging review describes a final common cardiac phenotype of endomyocardial fibrosis and intracardiac thrombosis across distinct hypereosinophilic syndromes with imaging central to staging and targeted-therapy decisions (PMID 42301176), the FIP1L1-PDGFRA case documents a mitral-valve mass with severe mitral regurgitation and names valvular dysfunction among the established associations of Loeffler's endocarditis (PMID 42130655), the 18-patient tertiary registry characterizes the disease as eosinophilic infiltration and thrombus formation leading to restrictive cardiomyopathy with frequent ventricular thrombi and two transplantations (PMID 42425179), the HES case with Loeffler endocarditis documents multiple cerebral infarctions with persistent mural thrombus (PMID 42688267), and the HES CNS review states cerebral infarction is the most common neurological complication of the syndrome (PMID 42028114).",
+    "Counter-evidence and caveat screens recorded 2026-09-25: (i) evidence class - case reports, one imaging review, and one 18-patient single-center registry with no valve-dysfunction or stroke denominators; (ii) mechanism mix - the hypereosinophilic stroke literature combines mural-thrombus embolization with eosinophilic vasculitis and intracranial stenosis, so the stroke edge cannot assert one mechanism; (iii) stage dependence - valve involvement and thrombus burden differ between the acute inflammatory and subacute/chronic fibrotic stages the registry describes; (iv) treatment mediation - corticosteroids, imatinib for FIP1L1-PDGFRA disease, anticoagulation (88.2 percent of registry patients), and transplantation all alter outcomes."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "heart-valve-disorders",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Loeffler endocarditis documents valvular dysfunction from the eosinophilic endomyocardial process: the FIP1L1-PDGFRA case presented a mobile mass attached to the mitral valve with severe mitral regurgitation and subendocardial fibrosis on cardiac MRI, the authors framing Loeffler's endocarditis as associated with endomyocardial fibrosis, thrombus formation, and valvular dysfunction (PMID 42130655), and the multimodality-imaging review describes a final common cardiac phenotype of endomyocardial fibrosis and intracardiac thrombosis across distinct hypereosinophilic syndromes (PMID 42301176); the co-occurrence is documented at case and review class, so the edge records complication risk only.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: the located material documents valvular involvement in hypereosinophilic endocardial disease, but eosinophil burden and duration, thrombus versus fibrosis contribution, rheumatic and degenerative valve disease, and treatment timing all require individual review before any causal statement."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "IMMUNE_MEDIATED",
+        "primaryVector": "Eosinophilic infiltration of the endocardium progresses through an inflammatory stage to endomyocardial fibrosis, and fibrotic thickening plus superimposed mural thrombus on the valve apparatus produces mitral or tricuspid regurgitation, the valvular-dysfunction phenotype documented in Loeffler endocarditis case and review material, but whether any individual valve lesion arose from the eosinophilic process remains hypothesized until imaging, hematology, and operative records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at case-report and review class: no cohort quantifies valve-dysfunction incidence in Loeffler endocarditis at identity level, the registry documents thrombi and restrictive physiology more than valve gradients, and regurgitation in these patients may have degenerative, rheumatic, or functional causes.",
+        "evidenceGaps": "No cohort quantifies valve-dysfunction incidence in Loeffler endocarditis at identity level; the registry documents thrombi and restrictive physiology more than valve gradients, and degenerative and functional regurgitation compete.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "degenerative mitral or aortic valve disease",
+          "rheumatic valvular heart disease",
+          "functional regurgitation from ventricular dilation",
+          "infective endocarditis valvular destruction"
+        ]
+      },
+      "evidenceGaps": [
+        "No cohort quantifies valve-dysfunction incidence in Loeffler endocarditis at identity level; the registry documents thrombi and restrictive physiology more than valve gradients, and degenerative and functional regurgitation compete."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY on the endomyocardial-fibrosis valvular precedent, mirroring the libman-sacks-endocarditis valve window's bounded framing: the FIP1L1-PDGFRA-positive hypereosinophilia case presented a 24 by 15 mm mobile echogenic mass attached to the mitral valve with severe mitral regurgitation and subendocardial fibrosis on cardiac MRI, the authors explicitly associating Loeffler's endocarditis with endomyocardial fibrosis, thrombus formation, and valvular dysfunction (PMID 42130655), the JACC multimodality-imaging review describes the final common cardiac phenotype of endomyocardial fibrosis and intracardiac thrombosis arising from diverse causes of hypereosinophilia (PMID 42301176), and the 18-patient tertiary registry characterizes Loeffler's endomyocarditis as eosinophilic myocardial infiltration and thrombus formation leading to restrictive cardiomyopathy, with frequent ventricular thrombi and two patients requiring transplantation (PMID 42425179); because the evidence is case and review class without valve-specific denominators, degenerative and functional regurgitation compete in these patients, and corticosteroid, imatinib, and anticoagulation therapy alter the course, the conservative standard keeps the edge at association only and routes individual claims through dated echocardiography documenting the valve lesion with eosinophil-burden records and competing-cause exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Rao NS, Biswas A, Kothari SS, Vyas P, Kanabar K. Hypereosinophilic endocarditis presenting with intracardiac mass and severe mitral regurgitation: a case report of FIP1L1-PDGFRA positive myeloid neoplasm. Eur Heart J Case Rep. 2026 May 12;10:ytag296. doi:10.1093/ehjcr/ytag296. PMID 42130655.",
+          "note": "Case report documenting Loeffler's endocarditis associated with endomyocardial fibrosis, thrombus formation, and valvular dysfunction, presenting as a mitral-valve mass with severe mitral regurgitation and subendocardial fibrosis; supports the bounded valvular-complication proposition only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42130655/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 42130655; BACKGROUND (valvular dysfunction association) and CASE SUMMARY (severe mitral regurgitation) sections"
+        },
+        {
+          "citation": "Salar T, Feitell S, Parikh V, Baibhav B. Loeffler Endocarditis: Multimodality Imaging of a Common Cardiac Phenotype in Distinct Hypereosinophilic Syndromes. JACC Case Rep. 2026 Aug 5;31:108674. doi:10.1016/j.jaccas.2026.108674. PMID 42301176.",
+          "note": "Multimodality-imaging case review describing Loeffler endocarditis as a final common cardiac phenotype of endomyocardial fibrosis and intracardiac thrombosis across distinct hypereosinophilic syndromes; supports the bounded structural-complication proposition only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42301176/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 42301176; BACKGROUND and CASE SUMMARY (fibrotic-stage disease and ventricular thrombi) sections"
+        },
+        {
+          "citation": "Buske P, Krieghoff C, Lucke C, Gutberlet M, Paetsch I, Jahnke C, Koehle M, Klingel K, Thiele H, Jozwiak-Nozdrzykowska J, Sandri M. Loeffler's Endomyocarditis: Clinical characteristics and outcomes from a tertiary care centre registry. Int J Cardiol. 2026 Oct 15;461:134666. doi:10.1016/j.ijcard.2026.134666. PMID 42425179.",
+          "note": "Eighteen-patient tertiary registry characterizing Loeffler's endomyocarditis as eosinophilic myocardial infiltration and thrombus formation leading to restrictive cardiomyopathy, with frequent ventricular thrombi and two transplantations over follow-up; supports the bounded structural-complication proposition only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42425179/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 42425179; BACKGROUND and RESULTS (thrombus formation, restrictive cardiomyopathy) sections"
+        }
+      ]
+    },
+    {
+      "conditionId": "cerebrovascular-accident-stroke-residuals",
+      "rank": 2,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Loeffler endocarditis and hypereosinophilic cardiac disease document cerebrovascular events from intracardiac thrombus: the HES case with Loeffler endocarditis developed multiple cerebral infarctions with a persistent mural thrombus on serial cardiac MRI (PMID 42688267), the HES central-nervous-system review states that cerebral infarction is the most common neurological complication of hypereosinophilic syndromes, typically in border-zone regions (PMID 42028114), and the tertiary registry documents frequent ventricular thrombi with 88 percent of patients anticoagulated (PMID 42425179); the co-occurrence is documented at case, review, and registry class, so the edge records thromboembolic risk only.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: the located material documents cerebral infarction in hypereosinophilic cardiac disease, but mural thrombus versus eosinophilic vasculitis, cardioembolic sources, conventional vascular risk factors, and anticoagulation status all require individual review before any causal statement."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "THROMBOTIC_OR_VASCULAR",
+        "primaryVector": "Endomyocardial fibrosis and endocardial damage create a prothrombotic surface on which mural thrombus forms inside the ventricles, and embolization of that thrombus occludes cerebral vessels, the route documented in Loeffler endocarditis case material with multiple cerebral infarctions, but whether any individual stroke arose from a given mural thrombus remains hypothesized until imaging, cardiac, and hematologic records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at case, review, and small-registry class: no cohort quantifies stroke incidence after Loeffler endocarditis specifically, the hypereosinophilic stroke literature mixes cardiac-embolic and vasculitic mechanisms, and conventional stroke risk factors co-present.",
+        "evidenceGaps": "No cohort quantifies stroke incidence after Loeffler endocarditis specifically; the hypereosinophilic stroke literature mixes cardiac-embolic and vasculitic mechanisms and conventional risk factors co-present.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "cardioembolic stroke from atrial fibrillation or other cardiac source",
+          "large-artery atherosclerotic stroke",
+          "eosinophilic vasculitis with intracranial stenosis",
+          "lacunar stroke from hypertensive arteriopathy"
+        ]
+      },
+      "evidenceGaps": [
+        "No cohort quantifies stroke incidence after Loeffler endocarditis specifically; the hypereosinophilic stroke literature mixes cardiac-embolic and vasculitic mechanisms and conventional risk factors co-present."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY on the mural-thrombus cardioembolic precedent, mirroring the libman-sacks-endocarditis stroke window's bounded framing: the hypereosinophilic syndrome case with Loeffler endocarditis developed multiple cerebral infarctions while a slightly enlarged mural thrombus persisted on six-month cardiac MRI despite normalized eosinophil counts, the authors recommending long-term imaging and anticoagulation surveillance (PMID 42688267), the HES central-nervous-system case and literature review states cerebral infarction is the most common neurological complication in hypereosinophilic syndromes, typically border-zone, and documents acute ischemic stroke with severe middle-cerebral-artery stenosis responding to immunosuppression (PMID 42028114), and the 18-patient Loeffler's endomyocarditis registry documents frequent ventricular thrombi with 88.2 percent of patients receiving oral anticoagulation (PMID 42425179); because the evidence is case, review, and small-registry class without stroke-rate denominators, the hypereosinophilic stroke literature mixes mural-thrombus embolization with eosinophilic vasculitis mechanisms, and anticoagulation and immunosuppression alter the course, the conservative standard keeps the edge at association only and routes individual claims through dated brain imaging plus cardiac MRI documenting the thrombus with eosinophil-burden records and competing-cause exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Wang H, Zhu F, Hu H. Hypereosinophilic syndrome with Loffler endocarditis and multiple cerebral infarctions in a patient with a CLL-phenotype clonal B-cell population: a case report. Front Cardiovasc Med. 2026 Aug 19;13:1924869. doi:10.3389/fcvm.2026.1924869. PMID 42688267.",
+          "note": "Case report documenting Loffler endocarditis with multiple cerebral infarctions and a persistent mural thrombus on serial cardiac MRI despite hematologic response; supports the bounded thromboembolic proposition only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42688267/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 42688267; abstract (multiple cerebral infarctions, persistent endocardial disease, mural thrombus)"
+        },
+        {
+          "citation": "Xu W, Zhang C, Wang F, Liu X, Zhang X, Mao F, Wang X, Zhang X. Hypereosinophilic syndrome with central nervous system involvement: a case report. Front Neuroimaging. 2026 Apr 8;5:1783329. doi:10.3389/fnimg.2026.1783329. PMID 42028114.",
+          "note": "Case report with literature review stating cerebral infarction is the most common neurological complication in hypereosinophilic syndromes, typically border-zone, and documenting acute ischemic stroke with intracranial large-artery stenosis; supports the bounded cerebrovascular-complication proposition only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42028114/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 42028114; abstract opening (cerebral infarction as most common neurological complication) and literature review"
+        },
+        {
+          "citation": "Buske P, Krieghoff C, Lucke C, Gutberlet M, Paetsch I, Jahnke C, Koehle M, Klingel K, Thiele H, Jozwiak-Nozdrzykowska J, Sandri M. Loeffler's Endomyocarditis: Clinical characteristics and outcomes from a tertiary care centre registry. Int J Cardiol. 2026 Oct 15;461:134666. doi:10.1016/j.ijcard.2026.134666. PMID 42425179.",
+          "note": "Eighteen-patient tertiary registry documenting frequent ventricular thrombi in Loeffler's endomyocarditis with 88.2 percent of patients receiving oral anticoagulation and most thrombi resolving under therapy; supports the bounded thromboembolic-risk proposition only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42425179/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 42425179; RESULTS (ventricular thrombi and anticoagulation) section"
+        }
+      ]
+    }
+  ]
 }

@@ -2,8 +2,310 @@
   "id": "liver-abscess",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review gastrointestinal, nutritional, motility, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 55 (2026-09-25): five ASSOCIATION_ONLY draft mappings pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: all five edges assert association only (etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true, mechanismCategory INFECTIOUS_SPREAD). The evidence base is case, small-series, and single-center cohort class for the invasive Klebsiella pneumoniae liver-abscess syndrome, so individual claims require culture-confirmed hepatic infection with dated imaging of the secondary site, matched isolates where obtainable, and review by a qualified medical professional.",
+    "Pathway and duplicate-scope screens: the identity is scoped to the pyogenic/bacterial route - the amebic route rides the sibling amebic-liver-abscess identity and its published pleural-effusion window (the disposition ledger's amebiasis -> amebic-liver-abscess relationship), so the pleural-effusion edge here cites only pyogenic and Klebsiella-route evidence and no amebic source is recycled (ME-29 scope rule); no -> sepsis, septicemia, or septic-shock edge (no catalog identity exists for these outcomes; the progression-to-sepsis literature, PMID 42114024, is recorded as context); no -> seizure-disorder edge (intermediate-node rule - the brain-abscess -> seizure-disorder window carries the convulsive pathway); no -> hearing-loss edge (intermediate-node rule - the meningitis -> hearing-loss window carries the otologic pathway); no -> endocarditis or thrombophlebitis edge (metastatic Klebsiella endovascular infections are recorded in the same case material but no condition-specific cohort separates them); no -> anemia or chronic-liver-disease edge (the located anemia-of-inflammation material is generic sepsis-class without liver-abscess-specific quantification)."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 55 (2026-09-25): five bounded association edges authored - liver-abscess to brain-abscess (rank 1), meningitis (rank 2), lung-abscess (rank 3), visual-impairment (rank 4), and pleural-effusion (rank 5) - all classified ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, and hypothesizedOnly:true; mechanismCategory INFECTIOUS_SPREAD. The propositions rest on the invasive Klebsiella pneumoniae liver-abscess syndrome literature: the Scripps six-patient case series with narrative review documents distant metastatic infections in 50 percent - emphysematous cystitis, pulmonary septic emboli, complicated parapneumonic pleural effusions, meningitis, ventriculitis, cerebral septic emboli, and endophthalmitis - with the metastatic-infection patients younger, more often male, more often needing intensive care, an endophthalmitis patient left with very poor residual visual acuity, and routine endophthalmitis screening recommended (PMID 42339155).",
+    "Pre-verification rejection recorded 2026-09-25: the Goto 2026 hvKp meningoencephalitis case with subsequent brain abscess formation (PMID 42456941) was fetched before authoring and REJECTED as an anchor - its abstract explicitly records that no typical remote focus of infection such as a liver abscess was identified, so it is a primary meningoencephalitis case and cannot support any liver-abscess edge; the batch-30 lesson (verify before authoring) is what caught it.",
+    "Counter-evidence and caveat screens recorded 2026-09-25: (i) evidence class - case reports, one six-patient series with narrative review, one 127-patient single-center cohort, and one 1572-patient retrospective without metastatic-rate denominators; (ii) shared-driver screen - poorly controlled diabetes is a common risk factor for both the hepatic abscess and its metastatic complications (the endophthalmitis cohort names diabetes as the only independent risk factor for endophthalmitis, PMID 33314531), so part of each association is shared-host-risk rather than dissemination; (iii) organism scope - the located dissemination material is dominated by hypervirulent Klebsiella pneumoniae, and non-Klebsiellel etiologies may differ; (iv) treatment mediation - percutaneous drainage, carbapenem therapy, and intravitreal antimicrobials materially alter outcomes (intravitreal injection reduced poor-visual-prognosis risk, PMID 42755882)."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "brain-abscess",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Invasive Klebsiella pneumoniae liver-abscess syndrome documents hematogenous dissemination to the brain: the illustrative hemorrhagic brain-abscess case identifies a primary hepatic focus with metastatic infection involving brain, spine, psoas muscle, and urinary tract (PMID 42766866), and the Scripps case series with narrative review reports cerebral septic emboli among the distant metastatic infections of invasive liver-abscess syndrome (PMID 42339155); the co-occurrence is documented at case and small-series class without population denominators, so the edge records dissemination risk only.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: the located material documents metastatic cerebral infection in the setting of a hepatic abscess focus, but hematogenous seeding, the competing sources of bacteremia, immune status, glycemic control, and treatment timing all require individual review before any causal statement."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "INFECTIOUS_SPREAD",
+        "primaryVector": "Hematogenous dissemination of hypervirulent Klebsiella pneumoniae or other pyogenic organisms from a hepatic abscess focus seeds cerebral tissue as septic emboli or direct metastatic abscess, a route documented in invasive Klebsiella pneumoniae syndrome, but whether any individual brain abscess arose from a given liver abscess remains hypothesized until culture, imaging, and chronology records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported only at case-report and narrative-review class: no cohort quantifies brain-abscess incidence after pyogenic liver abscess, and the documented cases combine dissemination with diabetes, surgery, or trauma triggers.",
+        "evidenceGaps": "No cohort quantifies brain-abscess incidence after pyogenic liver abscess; the located evidence is case and narrative-review class with diabetes, surgery, or trauma triggers co-present.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "cryptogenic or cardioembolic brain abscess sources",
+          "otogenic or odontogenic cerebral seeding",
+          "hemorrhagic transformation mimicking intracranial neoplasm",
+          "immunosuppression-related dissemination from other foci"
+        ]
+      },
+      "evidenceGaps": [
+        "No cohort quantifies brain-abscess incidence after pyogenic liver abscess; the located evidence is case and narrative-review class with diabetes, surgery, or trauma triggers co-present."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY on the invasive-disease dissemination precedent: a hemorrhagic brain abscess growing Klebsiella pneumoniae in the setting of invasive Klebsiella pneumoniae syndrome was traced to a primary hepatic focus with multi-organ involvement (PMID 42766866), and the six-patient invasive liver-abscess syndrome case series with narrative review lists cerebral septic emboli among the metastatic infections, with the metastatic-infection patients younger, more often male, and more often critically ill (PMID 42339155); because the evidence is case class without denominators, competing bacteremic sources and metabolic triggers co-present, and treatment alters the course, the conservative standard keeps the edge at association only and routes individual claims through culture-confirmed hepatic and cerebral isolates plus dated neuroimaging with competing-cause exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Suzuki Y, Yanaka K, Maruyama S, Takahashi T, Kishi N, Aiyama H, Takahashi N, Marushima A, Ishikawa E. Hemorrhagic brain abscess mimicking an intracranial neoplasm in invasive Klebsiella pneumoniae syndrome: illustrative case. J Neurosurg Case Lessons. 2026 Sep 21;12:CASE26593. doi:10.3171/CASE26593. PMID 42766866.",
+          "note": "Case report documenting hematogenous dissemination from a primary hepatic focus causing a metastatic hemorrhagic brain abscess in invasive Klebsiella pneumoniae syndrome, with liver, spine, psoas, and urinary tract involvement confirmed on systemic workup; supports the bounded dissemination association, not individual causation.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42766866/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 42766866; BACKGROUND (hematogenous dissemination from a primary hepatic focus) and LESSONS sections"
+        },
+        {
+          "citation": "Chen J, Horan C, Wadhwani K, Dammert PM, Sophy E. Critical Care Management Considerations in Klebsiella pneumoniae Invasive Liver Abscess Syndrome: Case Reports and Narrative Review. Case Rep Crit Care. 2026;2026:5579095. doi:10.1155/crcc/5579095. PMID 42339155.",
+          "note": "Six-patient case series with narrative review of invasive Klebsiella pneumoniae liver abscess syndrome in which 50 percent developed distant metastatic infections including cerebral septic emboli, meningitis, ventriculitis, and endophthalmitis; supports the bounded metastatic-dissemination proposition only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42339155/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 42339155; RESULTS (metastatic infection characteristics) and CONCLUSIONS sections"
+        }
+      ]
+    },
+    {
+      "conditionId": "meningitis",
+      "rank": 2,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Invasive Klebsiella pneumoniae liver-abscess syndrome documents purulent meningitis as a metastatic complication: the trauma-triggered multi-organ case developed liver abscess, lung abscess, endophthalmitis, and purulent meningitis together (PMID 39839614), the Canadian community-acquired case found a liver abscess in a patient with hypervirulent Klebsiella pneumoniae meningitis (PMID 42027211), and the Scripps series documents meningitis and ventriculitis among its metastatic infections (PMID 42339155); the co-occurrence is documented at case and small-series class, so the edge records dissemination risk only.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: the located material documents meningitis alongside or following a hepatic abscess focus, but the seeding route, concurrent bacteremia, diabetes and trauma triggers, and treatment timing all require individual review before any causal statement."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "INFECTIOUS_SPREAD",
+        "primaryVector": "Bacteremia from a pyogenic hepatic abscess, most often hypervirulent Klebsiella pneumoniae, seeds the meninges to produce purulent meningitis or meningoencephalitis, a metastatic route documented in invasive Klebsiella pneumoniae syndrome, but whether any individual meningitis arose from a given liver abscess remains hypothesized until culture and chronology records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported only at case-report and small-series class: no cohort quantifies meningitis incidence after pyogenic liver abscess, and the documented cases carry diabetes, trauma, or immunologic triggers that independently affect infection risk.",
+        "evidenceGaps": "No cohort quantifies meningitis incidence after pyogenic liver abscess; the located evidence is case and small-series class with diabetes, trauma, or immunologic triggers co-present.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "community-acquired meningitis of other bacterial etiology",
+          "nosocomial or post-procedural meningitis",
+          "contiguous spread from an intracranial focus",
+          "recurrent meningitis from anatomic defects"
+        ]
+      },
+      "evidenceGaps": [
+        "No cohort quantifies meningitis incidence after pyogenic liver abscess; the located evidence is case and small-series class with diabetes, trauma, or immunologic triggers co-present."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY on the invasive-disease dissemination precedent: the trauma-induced Klebsiella pneumoniae invasive syndrome case presented with liver abscess, lung abscess, endophthalmitis, and purulent meningitis confirmed on cultures and imaging (PMID 39839614), the Canadian community-acquired hypervirulent Klebsiella meningitis case was found to have a liver abscess, a finding the authors note is commonly reported with hypervirulent Klebsiella infections (PMID 42027211), and the invasive liver-abscess syndrome series documents meningitis with ventriculitis followed by full neurological recovery under critical care (PMID 42339155); because the evidence is case and small-series class without denominators, competing meningeal routes and metabolic triggers co-present, and antimicrobial therapy alters the course, the conservative standard keeps the edge at association only and routes individual claims through blood and cerebrospinal fluid culture matching plus dated neuroimaging with competing-cause exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Chen HQ, Mo ZH, Wei WX. Case report: Trauma-induced Klebsiella pneumoniae invasive syndrome presenting with liver abscess, lung abscess, endophthalmitis, and purulent meningitis. Front Med (Lausanne). 2025 Jan 7;11:1513831. doi:10.3389/fmed.2024.1513831. PMID 39839614.",
+          "note": "Case report of hypervirulent Klebsiella pneumoniae invasive syndrome in which imaging revealed multi-organ involvement including liver abscess and purulent meningitis; supports the bounded metastatic co-occurrence proposition only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39839614/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 39839614; CASE PRESENTATION (multiple infections confirmed on imaging and cultures) section"
+        },
+        {
+          "citation": "Ghossein J, Tilmont A, Ho J, Kinsara R, Tan C, Chen YA, Tam E, Goffi A. Community-acquired hypervirulent Klebsiella pneumoniae meningitis in Canada: A case report. IDCases. 2026 Apr 10;44:e02567. doi:10.1016/j.idcr.2026.e02567. PMID 42027211.",
+          "note": "Fatal community-acquired hypervirulent Klebsiella pneumoniae meningitis case in which a liver abscess was discovered, a finding the authors note is commonly reported with hypervirulent Klebsiella infections; supports the bounded co-occurrence proposition only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42027211/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 42027211; CASE PRESENTATION (liver abscess discovery) section"
+        },
+        {
+          "citation": "Chen J, Horan C, Wadhwani K, Dammert PM, Sophy E. Critical Care Management Considerations in Klebsiella pneumoniae Invasive Liver Abscess Syndrome: Case Reports and Narrative Review. Case Rep Crit Care. 2026;2026:5579095. doi:10.1155/crcc/5579095. PMID 42339155.",
+          "note": "Six-patient case series with narrative review documenting meningitis and ventriculitis among the distant metastatic infections of invasive Klebsiella pneumoniae liver abscess syndrome; supports the bounded dissemination proposition only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42339155/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 42339155; RESULTS (metastatic infection characteristics) section"
+        }
+      ]
+    },
+    {
+      "conditionId": "lung-abscess",
+      "rank": 3,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Pyogenic liver abscess documents pulmonary septic involvement: the trauma-triggered invasive Klebsiella pneumoniae syndrome case developed a lung abscess alongside the hepatic focus (PMID 39839614), and the 127-case community-acquired Klebsiella liver-abscess cohort found pulmonary affection in 57.5 percent, the majority manifesting as nodular lesions with cavities and pleural effusion on chest CT (PMID 36130707); the co-occurrence is documented at case and single-center cohort class, so the edge records dissemination risk only.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: the located material documents cavitating pulmonary lesions in the setting of a hepatic abscess, but septic embolization versus contiguous extension, concurrent bacteremia, and treatment timing all require individual review before any causal statement."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "INFECTIOUS_SPREAD",
+        "primaryVector": "Hematogenous septic embolization from a pyogenic hepatic abscess, most often hypervirulent Klebsiella pneumoniae, implants in pulmonary parenchyma and cavitates to form lung abscesses, the nodular-with-cavities pattern documented in community-acquired Klebsiella liver abscess cohorts, but whether any individual lung abscess arose from a given liver abscess remains hypothesized until imaging and culture records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at single-center cohort and case class only: the pulmonary cohort quantifies affection but not lung-abscess incidence specifically, and aspiration, airway obstruction, and hematogenous sources other than the liver commonly produce lung abscesses.",
+        "evidenceGaps": "The pulmonary cohort quantifies affection but not lung-abscess incidence specifically; aspiration and non-hepatic hematogenous sources compete in the documented populations.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "aspiration pneumonia progressing to lung abscess",
+          "septic emboli from right-sided endocarditis",
+          "post-obstructive lung abscess",
+          "tuberculous or fungal cavitation"
+        ]
+      },
+      "evidenceGaps": [
+        "The pulmonary cohort quantifies affection but not lung-abscess incidence specifically; aspiration and non-hepatic hematogenous sources compete in the documented populations."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY on the invasive-disease dissemination precedent: the trauma-induced Klebsiella pneumoniae invasive syndrome case presented with liver abscess and lung abscess in the same patient with diabetes after a traumatic fall (PMID 39839614), and the single-center cohort of 127 community-acquired Klebsiella pneumoniae liver abscess cases found pulmonary affection in 57.5 percent, the majority manifesting as nodular lesions with cavities and pleural effusion, with abscess diameter over 3 cm, multiple abscesses, and bacteremia among the independent risk factors (PMID 36130707); because the evidence is case and single-center cohort class without lung-abscess-specific denominators, aspiration and other hematogenous routes compete in these often-diabetic patients, and drainage and antibiotics alter the course, the conservative standard keeps the edge at association only and routes individual claims through culture-matched hepatic and pulmonary isolates plus dated chest imaging with competing-cause exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Chen HQ, Mo ZH, Wei WX. Case report: Trauma-induced Klebsiella pneumoniae invasive syndrome presenting with liver abscess, lung abscess, endophthalmitis, and purulent meningitis. Front Med (Lausanne). 2025 Jan 7;11:1513831. doi:10.3389/fmed.2024.1513831. PMID 39839614.",
+          "note": "Case report documenting liver abscess and lung abscess in the same hypervirulent Klebsiella pneumoniae invasive syndrome with multi-organ involvement on imaging; supports the bounded co-occurrence proposition only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39839614/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 39839614; CASE PRESENTATION (multi-organ involvement imaging) section"
+        },
+        {
+          "citation": "Zhu Z, Zhang B, Wang Y, Jing S, Ning W, Liu C, Chen C. A wide clinical spectrum of pulmonary affection in subjects with community-acquired Klebsiella pneumoniae liver abscess (CA-KPLA). J Infect Chemother. 2023 Jan;29:48-54. doi:10.1016/j.jiac.2022.09.011. PMID 36130707.",
+          "note": "Single-center cohort of 127 community-acquired Klebsiella pneumoniae liver abscess cases in which pulmonary affection occurred in 57.5 percent, the majority as nodular lesions with cavities and pleural effusion; supports the bounded pulmonary-dissemination proposition only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36130707/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 36130707; RESULTS (incidence of pulmonary affection and chest CT manifestations) section"
+        }
+      ]
+    },
+    {
+      "conditionId": "visual-impairment",
+      "rank": 4,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Endogenous endophthalmitis complicating pyogenic liver abscess documents visual loss: the 103-patient endogenous endophthalmitis cohort found vision loss the chief complaint in 96 percent with extraocular infection sources most commonly liver abscess at 45 percent (PMID 42755882), the Klebsiella endophthalmitis clinical series identifies liver abscess as the most prominent bacteremic source with reduced vision in all cases (PMID 42460187), and the invasive liver-abscess syndrome series documents an endophthalmitis patient left with very poor residual visual acuity (PMID 42339155); the co-occurrence is documented at cohort and series class, so the edge records dissemination risk only.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: the located material documents visual loss in endogenous endophthalmitis with hepatic bacteremic sources, but the seeding route, ocular comorbidity, treatment delay, and glycemic control all require individual review before any causal statement."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "INFECTIOUS_SPREAD",
+        "primaryVector": "Bacteremia from a pyogenic hepatic abscess, most often hypervirulent Klebsiella pneumoniae, seeds the choroid and retina to produce endogenous endophthalmitis with visual loss, the ocular-damage route documented in endophthalmitis cohorts in which liver abscess is the leading extraocular focus, but whether any individual visual impairment arose from a given liver abscess remains hypothesized until ocular and culture records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at cohort and clinical-series class: the cohorts are endophthalmitis-selected rather than liver-abscess-selected, so they establish the hepatic source share of endophthalmitis rather than the endophthalmitis rate of liver abscess, and treatment timing strongly modifies visual outcomes.",
+        "evidenceGaps": "The endophthalmitis cohorts are ocular-series selected rather than liver-abscess selected, so they establish the hepatic source share of endophthalmitis rather than the endophthalmitis rate of liver abscess; treatment delay strongly modifies visual outcomes.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "diabetic or immune-related ocular infection of other source",
+          "retinal vascular occlusion or diabetic retinopathy",
+          "post-cataract or post-surgical endophthalmitis",
+          "toxic or inflammatory optic injury"
+        ]
+      },
+      "evidenceGaps": [
+        "The endophthalmitis cohorts are ocular-series selected rather than liver-abscess selected, so they establish the hepatic source share of endophthalmitis rather than the endophthalmitis rate of liver abscess; treatment delay strongly modifies visual outcomes."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY on the invasive-disease dissemination precedent, scoped to the endogenous-endophthalmitis limb: the 103-patient retrospective cohort of endogenous endophthalmitis found vision loss the chief complaint in 96.12 percent, extraocular infection sources in 63.11 percent with liver abscess the most common at 45 percent, and Klebsiella pneumoniae dominating the culture-positive cases with hypervirulent lineages, intravitreal antimicrobial injection being the independent protective factor for visual prognosis (PMID 42755882); the Klebsiella endophthalmitis clinical series documents the classic presentation of eye pain, redness, and reduced vision with identifiable bacteremic sources most prominently liver abscess (PMID 42460187), and the invasive liver-abscess syndrome series documents very poor residual visual acuity in its endophthalmitis patient and recommends routine endophthalmitis screening (PMID 42339155); because the cohorts are ocular-series class selected on endophthalmitis, ocular comorbidity and treatment delay modify outcomes, and diabetes is a shared driver of both the hepatic and ocular disease, the conservative standard keeps the edge at association only and routes individual claims through dated ophthalmologic examination documenting endophthalmitis with culture-matched hepatic isolate and competing-cause exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Zhang D, Gu F, Zhang X, Zhang X, Tian S, Chen B, Chu Y, Zhang J, Zhang X. Retrospective single-center study of endogenous endophthalmitis, Northeastern China, 2010-2023. Front Cell Infect Microbiol. 2026 Sep 3;16:1805346. doi:10.3389/fcimb.2026.1805346. PMID 42755882.",
+          "note": "Retrospective cohort of 103 endogenous endophthalmitis patients in which vision loss was the chief complaint in 96.12 percent, extraocular infection sources were present in 63.11 percent most commonly liver abscess at 45 percent, and Klebsiella pneumoniae comprised 81.82 percent of culture-positive cases; supports the bounded hepatic-source visual-loss proposition only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42755882/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 42755882; OBJECTIVE and RESULTS (vision loss chief complaint; extraocular infection sources) sections"
+        },
+        {
+          "citation": "Wan Khairuzzaman A, Che Hamzah J, Nasaruddin RA, Bastion ML, Othman O, Lam C, Wai Wye NH. Clinical Series of Endogenous Klebsiella Endophthalmitis: Understanding an Aggressive Invasive Pathogen. Cureus. 2026 Jun 14;18:e110847. doi:10.7759/cureus.110847. PMID 42460187.",
+          "note": "Clinical series of endogenous Klebsiella endophthalmitis in which all patients presented with eye pain, redness, and reduced vision and identifiable bacteremic sources were most prominently liver abscess; supports the bounded ocular-dissemination proposition only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42460187/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 42460187; abstract (clinical manifestations, systemic risk factors, and sources of the microorganism)"
+        },
+        {
+          "citation": "Chen J, Horan C, Wadhwani K, Dammert PM, Sophy E. Critical Care Management Considerations in Klebsiella pneumoniae Invasive Liver Abscess Syndrome: Case Reports and Narrative Review. Case Rep Crit Care. 2026;2026:5579095. doi:10.1155/crcc/5579095. PMID 42339155.",
+          "note": "Six-patient case series with narrative review documenting an endophthalmitis patient with very poor residual visual acuity and recommending endophthalmitis screening in invasive liver-abscess syndrome; supports the bounded ocular-outcome proposition only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42339155/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 42339155; RESULTS and CONCLUSIONS (endophthalmitis outcome and screening recommendation) sections"
+        }
+      ]
+    },
+    {
+      "conditionId": "pleural-effusion",
+      "rank": 5,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Pyogenic liver abscess documents pleural involvement by direct and hematogenous routes: the massive-empyema case attributes an expanding pyogenic pleural effusion to trans-diaphragmatic extension of a liver abscess (PMID 39926638), the 127-case community-acquired Klebsiella liver-abscess cohort found pleural effusion among the predominant chest-CT manifestations of pulmonary affection (PMID 36130707), and the 1572-patient pyogenic liver abscess cohort identifies pleural effusion as a factor in predicting outcomes (PMID 33314531); the co-occurrence is documented at case and cohort class, so the edge records complication risk only.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: the located material documents pleural effusion in the setting of a hepatic abscess, but direct extension versus parapneumonic and bacteremic routes, heart and renal comorbidity, and treatment timing all require individual review before any causal statement."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "INFECTIOUS_SPREAD",
+        "primaryVector": "A pyogenic hepatic abscess irritates or penetrates the diaphragm to produce a parapneumonic or empyematous pleural effusion, the trans-diaphragmatic extension route documented in pyogenic liver abscess case material and the pleural-effusion burden documented in Klebsiella liver-abscess chest-CT cohorts, but whether any individual effusion arose from a given liver abscess remains hypothesized until imaging and fluid-culture records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at case and cohort class: the cohorts document pleural effusion as a co-occurring finding and outcome predictor rather than a quantified hepatic-extension rate, and pleural effusions in these patients commonly arise from heart failure, renal disease, or pneumonia.",
+        "evidenceGaps": "The cohorts document pleural effusion as a co-occurring finding and outcome predictor rather than a quantified hepatic-extension rate; hydrothorax and parapneumonic mechanisms commonly compete.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "parapneumonic effusion from pneumonia of other source",
+          "heart-failure or renal hydrothorax",
+          "tuberculous pleurisy",
+          "malignant pleural effusion"
+        ]
+      },
+      "evidenceGaps": [
+        "The cohorts document pleural effusion as a co-occurring finding and outcome predictor rather than a quantified hepatic-extension rate; hydrothorax and parapneumonic mechanisms commonly compete."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY on the trans-diaphragmatic extension precedent, scoped to the pyogenic route: the case report documents a massive expanding pyogenic pleural effusion arising from trans-diaphragmatic extension of a pyogenic liver abscess, producing an S1Q3T3 electrocardiographic pattern of acute right-heart strain (PMID 39926638), the 127-case community-acquired Klebsiella pneumoniae liver abscess cohort found pulmonary affection in 57.5 percent with pleural effusion among the predominant chest-CT manifestations (PMID 36130707), and the 1572-patient 12-year pyogenic liver abscess retrospective identifies pleural effusion, fever, multiple organ dysfunction, and hospital stay as factors useful in predicting outcomes (PMID 33314531); because the evidence is case and cohort class without quantified extension rates, competing hydrothorax and parapneumonic mechanisms are common in these often-older patients, and drainage and antibiotics alter the course, the conservative standard keeps the edge at association only and routes individual claims through site-matched dated imaging with fluid analysis and competing-cause exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Mohammadi M, Valizadeh M, Rahmani-Ju N, Khosravaninezhad Y. The S1Q3T3 Electrocardiographic Abnormality as a Result of Massive Empyema due to Pyogenic Liver Abscess: A Case Report. Clin Case Rep. 2025 Feb 7;13:e70191. doi:10.1002/ccr3.70191. PMID 39926638.",
+          "note": "Case report documenting an expanding pyogenic pleural effusion as a result of trans-diaphragmatic extension of a pyogenic liver abscess, presenting as massive empyema with acute right-heart strain; supports the bounded direct-extension proposition only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39926638/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 39926638; abstract (trans-diaphragmatic extension of the liver abscess) and case presentation"
+        },
+        {
+          "citation": "Zhu Z, Zhang B, Wang Y, Jing S, Ning W, Liu C, Chen C. A wide clinical spectrum of pulmonary affection in subjects with community-acquired Klebsiella pneumoniae liver abscess (CA-KPLA). J Infect Chemother. 2023 Jan;29:48-54. doi:10.1016/j.jiac.2022.09.011. PMID 36130707.",
+          "note": "Single-center cohort of 127 community-acquired Klebsiella pneumoniae liver abscess cases in which pulmonary affection most commonly manifested as nodular lesions with cavities and pleural effusion on chest CT; supports the bounded pleural-complication proposition only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36130707/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 36130707; RESULTS (chest CT manifestations of pulmonary affection) section"
+        },
+        {
+          "citation": "Yin D, Ji C, Zhang S, Wang J, Lu Z, Song X, Jiang H, Lau WY, Liu L. Clinical characteristics and management of 1572 patients with pyogenic liver abscess: A 12-year retrospective study. Liver Int. 2021 Apr;41:810-818. doi:10.1111/liv.14760. PMID 33314531.",
+          "note": "Twelve-year retrospective cohort of 1572 pyogenic liver abscess patients in which pleural effusion and pulmonary infection were identified as factors in predicting outcomes and organ dysfunction; supports the bounded pleural-complication proposition only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33314531/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 33314531; RESULTS (multivariate analyses: pleural effusion and pulmonary infection) section"
+        }
+      ]
+    }
+  ]
 }

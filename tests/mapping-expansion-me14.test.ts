@@ -96,13 +96,13 @@ describe("Mapping Expansion ME-14 local implementation", () => {
     const maps = fs.readdirSync(path.join(ROOT, "data", "knowledge-base")).filter((f) => f.endsWith(".json")).map((f) => load<Mapping>(path.join(ROOT, "data", "knowledge-base", f)));
     const refs = maps.flatMap((m: Mapping) => m.suggestions.flatMap((s: Suggestion) => s.sourceReferences || []));
     const clinical = refs.filter((r: SourceReference) => r.verificationScope === "clinical-evidence");
-    expect(maps.reduce((n: number, m: Mapping) => n + m.suggestions.length, 0)).toBe(602);
+    expect(maps.reduce((n: number, m: Mapping) => n + m.suggestions.length, 0)).toBe(610);
     expect(maps.filter((m: Mapping) => m.draft === false && m.suggestions.length === 1)).toHaveLength(67);
     expect(maps.filter((m: Mapping) => m.draft === false && m.suggestions.length >= 2)).toHaveLength(73);
-    expect(maps.filter((m: Mapping) => m.draft === true && m.suggestions.length === 1)).toHaveLength(260);
-    expect(refs).toHaveLength(996);
+    expect(maps.filter((m: Mapping) => m.draft === true && m.suggestions.length === 1)).toHaveLength(261);
+    expect(refs).toHaveLength(1018);
     expect(refs.filter((r: SourceReference) => r.verified === true)).toHaveLength(383);
-    expect(refs.filter((r: SourceReference) => r.verified === false)).toHaveLength(613);
-    expect(clinical).toHaveLength(991);
+    expect(refs.filter((r: SourceReference) => r.verified === false)).toHaveLength(635);
+    expect(clinical).toHaveLength(1013);
   });
 });

@@ -2,8 +2,12 @@
   "id": "loss-of-eyebrow",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review otologic, vestibular, audiologic, visual, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 batch 55 (2026-09-25): deferred - anatomic-loss identity with no located condition-specific outgoing evidence base; recorded as a deferral per the repo's deferral convention with suggestions: [].",
+    "Direction screen: the located eyebrow literature runs upstream - the two-part madarosis review enumerates etiologies and management (scarring disorders in part II, PMID 42696332, with part I covering non-scarring causes), so causes flow toward eyebrow loss rather than eyebrow loss flowing toward a secondary condition; a loss-of-eyebrow primary would invert the documented direction of every located pair.",
+    "Condition-scope screens: the psychiatric hair-loss material is alopecia-areata-scoped (the same rule-11 finding that blocked the batch-14 broad-alopecia edge), so a depressive-disorder edge here would recycle the narrower areata identity's evidence; and the theoretical ocular-surface route (eyebrows channel sweat and debris away from the eye) is protective-function mechanistic reasoning with zero located condition-specific dry-eye or ocular-surface cohorts in madarosis. Reopening condition: a cohort of acquired eyebrow loss (alopecia totalis, madarosis of any cause, or surgical) that quantifies ocular-surface outcomes or psychiatric outcomes against matched controls, or a qualified-human governance decision that treats eyebrow-absence evidence as a mappable source with an approved target list."
+  ],
+  "governanceNotes": [
+    "D1 batch 55 (2026-09-25): deferred. Direction and scope screens recorded 2026-09-25: the eyebrow evidence base is etiology literature flowing toward eyebrow loss (the madarosis reviews, PMID 42696332), the psychiatric comorbidity base is alopecia-areata-scoped and belongs to the alopecia-areata identity's windows per expansion rule 11 and the ME-29 scope decision, and no ocular-surface complication cohort exists in the located material. No edges authored; the identity is retained as a draft with suggestions: [] pending a qualified-human governance decision or a condition-specific cohort meeting the recorded reopening condition. Every individual determination remains with a qualified medical professional under docs/citation-verification-sop.md."
   ],
   "suggestions": []
 }

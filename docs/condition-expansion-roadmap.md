@@ -1962,3 +1962,119 @@ only the two intentional survivor classes: the frozen sibling `tests/helpers/mas
 pins (245 and 236, excluded wholesale) and the `61(5):566-574` page range inside the ME-7 citation
 strings. Standing recommendation: batches 51-53 landed via PR #471 (merge 8bdae4c); batch 54 awaits
 the CI gate and lands through the same branch, PR, CI, and merge path.
+
+Mapping Expansion D1 batch 55 (2026-09-25) authored eight draft-quarantined relationships across three
+of the five screened identities, with two identity deferrals (`loss-of-auricle`, `loss-of-eyebrow`).
+All eight edges are ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED,
+vaNexusProbabilityAlignment NOT_ASSERTED, and hypothesizedOnly:true.
+`liver-abscess -> brain-abscess` (rank 1, INFECTIOUS_SPREAD) rests on invasive Klebsiella pneumoniae
+liver-abscess syndrome dissemination material: the hemorrhagic brain-abscess case identifies a primary
+hepatic focus with metastatic infection of brain, spine, psoas, and urinary tract (PMID 42766866), and
+the six-patient Scripps case series with narrative review lists cerebral septic emboli among its distant
+metastatic infections (PMID 42339155).
+`liver-abscess -> meningitis` (rank 2, INFECTIOUS_SPREAD) rests on the trauma-triggered multi-organ case
+documenting liver abscess with purulent meningitis (PMID 39839614), the Canadian community-acquired
+hypervirulent Klebsiella meningitis case with a concurrently discovered liver abscess (PMID 42027211),
+and the Scripps series' meningitis-with-ventriculitis patient (PMID 42339155).
+`liver-abscess -> lung-abscess` (rank 3, INFECTIOUS_SPREAD) rests on the same trauma-triggered case's
+lung abscess (PMID 39839614) and the 127-case community-acquired Klebsiella liver-abscess cohort in
+which pulmonary affection occurred in 57.5 percent, the majority as nodular lesions with cavities and
+pleural effusion (PMID 36130707).
+`liver-abscess -> visual-impairment` (rank 4, INFECTIOUS_SPREAD) is scoped to the endogenous-
+endophthalmitis limb: the 103-patient endophthalmitis cohort found vision loss the chief complaint in 96
+percent with liver abscess the most common extraocular source at 45 percent and Klebsiella pneumoniae
+dominating cultures (PMID 42755882), the Klebsiella endophthalmitis clinical series identifies liver
+abscess as the most prominent bacteremic source with reduced vision in all cases (PMID 42460187), and
+the Scripps series documents very poor residual visual acuity in its endophthalmitis patient and
+recommends routine screening (PMID 42339155).
+`liver-abscess -> pleural-effusion` (rank 5, INFECTIOUS_SPREAD) is scoped to the PYOGENIC route only
+(the amebic route rides the sibling amebic-liver-abscess identity's published window): the massive-
+empyema case attributes a pyogenic pleural effusion to trans-diaphragmatic extension of a liver abscess
+(PMID 39926638), the 127-case cohort documents pleural effusion among predominant chest-CT
+manifestations (PMID 36130707), and the 1572-patient 12-year pyogenic liver abscess retrospective
+identifies pleural effusion as an outcome-predictive factor (PMID 33314531).
+`loeffler-s-endocarditis -> heart-valve-disorders` (rank 1, IMMUNE_MEDIATED) rests on the FIP1L1-PDGFRA
+case documenting a mitral-valve mass with severe mitral regurgitation and naming valvular dysfunction
+among the established associations of Loeffler's endocarditis (PMID 42130655), the JACC multimodality-
+imaging review describing the final common cardiac phenotype of endomyocardial fibrosis and intracardiac
+thrombosis (PMID 42301176), and the 18-patient tertiary registry characterizing the disease as
+eosinophilic infiltration and thrombus formation leading to restrictive cardiomyopathy (PMID 42425179).
+`loeffler-s-endocarditis -> cerebrovascular-accident-stroke-residuals` (rank 2, THROMBOTIC_OR_VASCULAR)
+rests on the HES case with Loeffler endocarditis documenting multiple cerebral infarctions with a
+persistent mural thrombus on serial cardiac MRI (PMID 42688267), the HES CNS case with literature review
+stating cerebral infarction is the most common neurological complication of the syndrome (PMID 42028114),
+and the registry's frequent ventricular thrombi with 88.2 percent of patients anticoagulated (PMID
+42425179).
+`long-qt-syndrome -> cardiac-arrhythmia` (rank 1, MULTIFACTORIAL) is a bounded event-risk edge on the
+brugada-syndrome channelopathy precedent: the Korean multicenter cohort of 202 pediatric patients
+quantifies life-threatening arrhythmic events and breakthrough cardiac events in 29 percent with
+genotype-dependent risk and beta-blocker protection (PMID 42669865), the Rochester LQTS Registry
+analysis of 435 genetically confirmed women models the 20-year burden of syncope, aborted cardiac
+arrest, and LQTS-related sudden cardiac death (PMID 42466517), and the integrative review frames
+multi-factorial risk for QT prolongation and sudden cardiac death (PMID 42274161).
+`loss-of-auricle` is deferred, not packeted: every located human cohort on the psychological burden of
+an absent ear is congenital-microtia or craniofacial-microsomia scoped (PMID 42530869, 42507356,
+42523195) and congenital malformation is not acquired loss, so recycling that evidence would repeat the
+ME-29 scope error; the located acquired-loss material is reconstruction and prosthesis outcome series
+running from the loss toward its treatment (PMID 42037918, 42661737, 41019697); and no acquired-loss
+audiology cohort was located. Reopening condition: a cohort of acquired auricular loss (traumatic,
+surgical, or oncologic) quantifying psychiatric outcomes or air- and bone-conduction thresholds against
+matched controls, or a qualified-human governance decision treating congenital absence evidence as
+transferable with an approved target list.
+`loss-of-eyebrow` is deferred, not packeted: the located eyebrow literature runs etiology-upstream (the
+two-part madarosis review, PMID 42696332), the psychiatric hair-loss base is alopecia-areata-scoped and
+belongs to the areata identity's windows per expansion rule 11 and the ME-29 scope decision, and the
+theoretical ocular-surface route is protective-function mechanistic reasoning with zero located
+condition-specific cohorts. Reopening condition: a cohort of acquired eyebrow loss quantifying
+ocular-surface or psychiatric outcomes against matched controls, or a qualified-human governance
+decision with an approved target list.
+
+Screens recorded for this batch: no `liver-abscess -> sepsis` or `-> septic-shock` edge (no catalog
+identity exists; the progression-to-sepsis literature, PMID 42114024, recorded as context), no `->
+seizure-disorder` edge (intermediate-node rule - brain-abscess -> seizure-disorder carries the
+convulsive pathway), no `-> hearing-loss` edge (intermediate-node rule - meningitis -> hearing-loss
+carries the otologic pathway), no `-> anemia` edge (generic sepsis-class anemia-of-inflammation without
+identity-level quantification); no `loeffler-s-endocarditis -> congestive-heart-failure` edge
+(intermediate-node rule exactly as the batch-53 libman-sacks screen held - pump failure rides the
+heart-valve-disorders -> congestive-heart-failure window, and the sibling eosinophilic-myocarditis
+identity owns the eosinophilic pump-failure window), no `-> cardiac-arrhythmia` edge (zero located
+identity-level arrhythmia-rate quantification), no `-> pulmonary-embolism` or `-> deep-vein-thrombosis`
+edge (intracardiac mural thrombi are arterial-side; the venous chain rides the deep-vein-thrombosis ->
+pulmonary-embolism window), and no `-> cardiomyopathy` edge (constitutive-proximity - restrictive
+physiology is the end-stage description of the same process); no `long-qt-syndrome -> seizure-disorder`
+or `-> epilepsy` edge (diagnostic-mimic guard - convulsive arrhythmic syncope is documented as a
+misdiagnosis risk marker, not a secondary condition), no `-> vasovagal-syncope` edge (wrong-identity
+guard - arrhythmic syncope is not neurally mediated syncope), no `-> sudden-cardiac-death` edge (no
+catalog identity; recorded as context in the review anchor), and no `-> anxiety-disorder` edge
+(ICD-experience material is device-experience class).
+
+Process notes: all seventeen citations were NCBI-verified via efetch BEFORE file authoring with a 17/17
+title-and-abstract match (batch-30 lesson institutionalized, eleventh consecutive clean verification
+cycle) - and the verification caught one live reject: the Goto 2026 hvKp meningoencephalitis case with
+subsequent brain abscess formation (PMID 42456941) explicitly records that no liver abscess focus was
+identified, so it is a primary meningoencephalitis case and was rejected as a liver-abscess anchor
+before authoring. The post-write structural self-audit passed on the first attempt for all five files
+with zero errors and zero contamination, `npm run kb:validate` reports zero errors, and the four
+edge-bearing identities carry 22 reference uses over 17 new sources (PMID 42339155 shared across three
+liver-abscess edges, 36130707 across two, and 42425179 across the two loeffler edges).
+
+Registry after lockstep: 610 relationships (536 explicit / 74 legacy), 1018 reference uses (383
+verified / 635 pending-verification), 1013 clinical / 5 legal uses, 930 source entities (346 active /
+575 pending-verification). Citation packet regenerated at 247 worksheets / 635 reference rows = live
+citation debt; the verification dashboard regenerated at 635 rows in 27 reviewer batches. Backlog after
+batch 55: **215** undispositioned zero-edge drafts, computed for the first time by the deterministic
+`npm run authoring:backlog` tool (the hand-reconstructed filter and its minus-five continuity series
+are retired; the tool's filter is zero-edge, unmarked, and undispositioned, and this batch's five
+processed identities left the queue exactly). Next-five: `loss-of-eyelashes`, `loss-of-eyelids`,
+`loss-of-jaw`, `loss-of-testicle`, `loss-of-tongue`.
+
+Test-pin note: the sweep touched 52 files and replaced 310 counter tokens in one pass with the
+batch-54 per-token context predicates carried over unchanged (relationships 602 -> 610, references/uses
+996 -> 1018, unverified 613 -> 635, pending source entities 558 -> 575, total source entities 913 ->
+930, explicit guards 528 -> 536, clinical references 991 -> 1013, clinical provenance 995 -> 1017, and
+the twelve-file draft-singles counter 260 -> 261 for this batch's single single-edge identity,
+long-qt-syndrome). The dry run reported zero lines lacking registry vocabulary, and the residue check
+found only the two intentional survivor classes: the frozen sibling `tests/helpers/master-2026-current.ts`
+pins (245 and 236, excluded wholesale) and the `61(5):566-574` page range inside the ME-7 citation
+strings. Standing recommendation: batch 55 lands with its tooling (deterministic backlog report,
+verification dashboard) through branch, PR, CI, and merge.

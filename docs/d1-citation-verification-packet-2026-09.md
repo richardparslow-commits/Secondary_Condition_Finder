@@ -8701,6 +8701,310 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 **Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
 
+### `liver-abscess` → `brain-abscess` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Invasive Klebsiella pneumoniae liver-abscess syndrome documents hematogenous dissemination to the brain: the illustrative hemorrhagic brain-abscess case identifies a primary hepatic focus with metastatic infection involving brain, spine, psoas muscle, and urinary tract (PMID 42766866), and the Scripps case series with narrative review reports cerebral septic emboli among the distant metastatic infections of invasive liver-abscess syndrome (PMID 42339155); the co-occurrence is documented at case and small-series class without population denominators, so the edge records dissemination risk only.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: the located material documents metastatic cerebral infection in the setting of a hepatic abscess focus, but hematogenous seeding, the competing sources of bacteremia, immune status, glycemic control, and treatment timing all require individual review before any causal statement.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 240.1 — Suzuki Y, Yanaka K, Maruyama S, Takahashi T, Kishi N, Aiyama H, Takahashi N, Marushima A, Ishikawa E. Hemorrhagic brain abscess mimicking an intracranial neoplasm in invasive Klebsiella pneumoniae syndrome: illustrative case. J Neurosurg Case Lessons. 2026 Sep 21;12:CASE26593. doi:10.3171/CASE26593. PMID 42766866.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42766866/
+- Source checked on: 2026-09-25
+- Locator: PMID 42766866; BACKGROUND (hematogenous dissemination from a primary hepatic focus) and LESSONS sections
+- Note under review: Case report documenting hematogenous dissemination from a primary hepatic focus causing a metastatic hemorrhagic brain abscess in invasive Klebsiella pneumoniae syndrome, with liver, spine, psoas, and urinary tract involvement confirmed on systemic workup; supports the bounded dissemination association, not individual causation.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 240.2 — Chen J, Horan C, Wadhwani K, Dammert PM, Sophy E. Critical Care Management Considerations in Klebsiella pneumoniae Invasive Liver Abscess Syndrome: Case Reports and Narrative Review. Case Rep Crit Care. 2026;2026:5579095. doi:10.1155/crcc/5579095. PMID 42339155.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42339155/
+- Source checked on: 2026-09-25
+- Locator: PMID 42339155; RESULTS (metastatic infection characteristics) and CONCLUSIONS sections
+- Note under review: Six-patient case series with narrative review of invasive Klebsiella pneumoniae liver abscess syndrome in which 50 percent developed distant metastatic infections including cerebral septic emboli, meningitis, ventriculitis, and endophthalmitis; supports the bounded metastatic-dissemination proposition only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `liver-abscess` → `meningitis` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Invasive Klebsiella pneumoniae liver-abscess syndrome documents purulent meningitis as a metastatic complication: the trauma-triggered multi-organ case developed liver abscess, lung abscess, endophthalmitis, and purulent meningitis together (PMID 39839614), the Canadian community-acquired case found a liver abscess in a patient with hypervirulent Klebsiella pneumoniae meningitis (PMID 42027211), and the Scripps series documents meningitis and ventriculitis among its metastatic infections (PMID 42339155); the co-occurrence is documented at case and small-series class, so the edge records dissemination risk only.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: the located material documents meningitis alongside or following a hepatic abscess focus, but the seeding route, concurrent bacteremia, diabetes and trauma triggers, and treatment timing all require individual review before any causal statement.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 241.1 — Chen HQ, Mo ZH, Wei WX. Case report: Trauma-induced Klebsiella pneumoniae invasive syndrome presenting with liver abscess, lung abscess, endophthalmitis, and purulent meningitis. Front Med (Lausanne). 2025 Jan 7;11:1513831. doi:10.3389/fmed.2024.1513831. PMID 39839614.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/39839614/
+- Source checked on: 2026-09-25
+- Locator: PMID 39839614; CASE PRESENTATION (multiple infections confirmed on imaging and cultures) section
+- Note under review: Case report of hypervirulent Klebsiella pneumoniae invasive syndrome in which imaging revealed multi-organ involvement including liver abscess and purulent meningitis; supports the bounded metastatic co-occurrence proposition only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 241.2 — Ghossein J, Tilmont A, Ho J, Kinsara R, Tan C, Chen YA, Tam E, Goffi A. Community-acquired hypervirulent Klebsiella pneumoniae meningitis in Canada: A case report. IDCases. 2026 Apr 10;44:e02567. doi:10.1016/j.idcr.2026.e02567. PMID 42027211.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42027211/
+- Source checked on: 2026-09-25
+- Locator: PMID 42027211; CASE PRESENTATION (liver abscess discovery) section
+- Note under review: Fatal community-acquired hypervirulent Klebsiella pneumoniae meningitis case in which a liver abscess was discovered, a finding the authors note is commonly reported with hypervirulent Klebsiella infections; supports the bounded co-occurrence proposition only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 241.3 — Chen J, Horan C, Wadhwani K, Dammert PM, Sophy E. Critical Care Management Considerations in Klebsiella pneumoniae Invasive Liver Abscess Syndrome: Case Reports and Narrative Review. Case Rep Crit Care. 2026;2026:5579095. doi:10.1155/crcc/5579095. PMID 42339155.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42339155/
+- Source checked on: 2026-09-25
+- Locator: PMID 42339155; RESULTS (metastatic infection characteristics) section
+- Note under review: Six-patient case series with narrative review documenting meningitis and ventriculitis among the distant metastatic infections of invasive Klebsiella pneumoniae liver abscess syndrome; supports the bounded dissemination proposition only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `liver-abscess` → `lung-abscess` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Pyogenic liver abscess documents pulmonary septic involvement: the trauma-triggered invasive Klebsiella pneumoniae syndrome case developed a lung abscess alongside the hepatic focus (PMID 39839614), and the 127-case community-acquired Klebsiella liver-abscess cohort found pulmonary affection in 57.5 percent, the majority manifesting as nodular lesions with cavities and pleural effusion on chest CT (PMID 36130707); the co-occurrence is documented at case and single-center cohort class, so the edge records dissemination risk only.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: the located material documents cavitating pulmonary lesions in the setting of a hepatic abscess, but septic embolization versus contiguous extension, concurrent bacteremia, and treatment timing all require individual review before any causal statement.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 242.1 — Chen HQ, Mo ZH, Wei WX. Case report: Trauma-induced Klebsiella pneumoniae invasive syndrome presenting with liver abscess, lung abscess, endophthalmitis, and purulent meningitis. Front Med (Lausanne). 2025 Jan 7;11:1513831. doi:10.3389/fmed.2024.1513831. PMID 39839614.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/39839614/
+- Source checked on: 2026-09-25
+- Locator: PMID 39839614; CASE PRESENTATION (multi-organ involvement imaging) section
+- Note under review: Case report documenting liver abscess and lung abscess in the same hypervirulent Klebsiella pneumoniae invasive syndrome with multi-organ involvement on imaging; supports the bounded co-occurrence proposition only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 242.2 — Zhu Z, Zhang B, Wang Y, Jing S, Ning W, Liu C, Chen C. A wide clinical spectrum of pulmonary affection in subjects with community-acquired Klebsiella pneumoniae liver abscess (CA-KPLA). J Infect Chemother. 2023 Jan;29:48-54. doi:10.1016/j.jiac.2022.09.011. PMID 36130707.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/36130707/
+- Source checked on: 2026-09-25
+- Locator: PMID 36130707; RESULTS (incidence of pulmonary affection and chest CT manifestations) section
+- Note under review: Single-center cohort of 127 community-acquired Klebsiella pneumoniae liver abscess cases in which pulmonary affection occurred in 57.5 percent, the majority as nodular lesions with cavities and pleural effusion; supports the bounded pulmonary-dissemination proposition only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `liver-abscess` → `visual-impairment` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Endogenous endophthalmitis complicating pyogenic liver abscess documents visual loss: the 103-patient endogenous endophthalmitis cohort found vision loss the chief complaint in 96 percent with extraocular infection sources most commonly liver abscess at 45 percent (PMID 42755882), the Klebsiella endophthalmitis clinical series identifies liver abscess as the most prominent bacteremic source with reduced vision in all cases (PMID 42460187), and the invasive liver-abscess syndrome series documents an endophthalmitis patient left with very poor residual visual acuity (PMID 42339155); the co-occurrence is documented at cohort and series class, so the edge records dissemination risk only.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: the located material documents visual loss in endogenous endophthalmitis with hepatic bacteremic sources, but the seeding route, ocular comorbidity, treatment delay, and glycemic control all require individual review before any causal statement.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 243.1 — Zhang D, Gu F, Zhang X, Zhang X, Tian S, Chen B, Chu Y, Zhang J, Zhang X. Retrospective single-center study of endogenous endophthalmitis, Northeastern China, 2010-2023. Front Cell Infect Microbiol. 2026 Sep 3;16:1805346. doi:10.3389/fcimb.2026.1805346. PMID 42755882.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42755882/
+- Source checked on: 2026-09-25
+- Locator: PMID 42755882; OBJECTIVE and RESULTS (vision loss chief complaint; extraocular infection sources) sections
+- Note under review: Retrospective cohort of 103 endogenous endophthalmitis patients in which vision loss was the chief complaint in 96.12 percent, extraocular infection sources were present in 63.11 percent most commonly liver abscess at 45 percent, and Klebsiella pneumoniae comprised 81.82 percent of culture-positive cases; supports the bounded hepatic-source visual-loss proposition only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 243.2 — Wan Khairuzzaman A, Che Hamzah J, Nasaruddin RA, Bastion ML, Othman O, Lam C, Wai Wye NH. Clinical Series of Endogenous Klebsiella Endophthalmitis: Understanding an Aggressive Invasive Pathogen. Cureus. 2026 Jun 14;18:e110847. doi:10.7759/cureus.110847. PMID 42460187.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42460187/
+- Source checked on: 2026-09-25
+- Locator: PMID 42460187; abstract (clinical manifestations, systemic risk factors, and sources of the microorganism)
+- Note under review: Clinical series of endogenous Klebsiella endophthalmitis in which all patients presented with eye pain, redness, and reduced vision and identifiable bacteremic sources were most prominently liver abscess; supports the bounded ocular-dissemination proposition only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 243.3 — Chen J, Horan C, Wadhwani K, Dammert PM, Sophy E. Critical Care Management Considerations in Klebsiella pneumoniae Invasive Liver Abscess Syndrome: Case Reports and Narrative Review. Case Rep Crit Care. 2026;2026:5579095. doi:10.1155/crcc/5579095. PMID 42339155.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42339155/
+- Source checked on: 2026-09-25
+- Locator: PMID 42339155; RESULTS and CONCLUSIONS (endophthalmitis outcome and screening recommendation) sections
+- Note under review: Six-patient case series with narrative review documenting an endophthalmitis patient with very poor residual visual acuity and recommending endophthalmitis screening in invasive liver-abscess syndrome; supports the bounded ocular-outcome proposition only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `liver-abscess` → `pleural-effusion` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Pyogenic liver abscess documents pleural involvement by direct and hematogenous routes: the massive-empyema case attributes an expanding pyogenic pleural effusion to trans-diaphragmatic extension of a liver abscess (PMID 39926638), the 127-case community-acquired Klebsiella liver-abscess cohort found pleural effusion among the predominant chest-CT manifestations of pulmonary affection (PMID 36130707), and the 1572-patient pyogenic liver abscess cohort identifies pleural effusion as a factor in predicting outcomes (PMID 33314531); the co-occurrence is documented at case and cohort class, so the edge records complication risk only.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: the located material documents pleural effusion in the setting of a hepatic abscess, but direct extension versus parapneumonic and bacteremic routes, heart and renal comorbidity, and treatment timing all require individual review before any causal statement.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 244.1 — Mohammadi M, Valizadeh M, Rahmani-Ju N, Khosravaninezhad Y. The S1Q3T3 Electrocardiographic Abnormality as a Result of Massive Empyema due to Pyogenic Liver Abscess: A Case Report. Clin Case Rep. 2025 Feb 7;13:e70191. doi:10.1002/ccr3.70191. PMID 39926638.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/39926638/
+- Source checked on: 2026-09-25
+- Locator: PMID 39926638; abstract (trans-diaphragmatic extension of the liver abscess) and case presentation
+- Note under review: Case report documenting an expanding pyogenic pleural effusion as a result of trans-diaphragmatic extension of a pyogenic liver abscess, presenting as massive empyema with acute right-heart strain; supports the bounded direct-extension proposition only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 244.2 — Zhu Z, Zhang B, Wang Y, Jing S, Ning W, Liu C, Chen C. A wide clinical spectrum of pulmonary affection in subjects with community-acquired Klebsiella pneumoniae liver abscess (CA-KPLA). J Infect Chemother. 2023 Jan;29:48-54. doi:10.1016/j.jiac.2022.09.011. PMID 36130707.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/36130707/
+- Source checked on: 2026-09-25
+- Locator: PMID 36130707; RESULTS (chest CT manifestations of pulmonary affection) section
+- Note under review: Single-center cohort of 127 community-acquired Klebsiella pneumoniae liver abscess cases in which pulmonary affection most commonly manifested as nodular lesions with cavities and pleural effusion on chest CT; supports the bounded pleural-complication proposition only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 244.3 — Yin D, Ji C, Zhang S, Wang J, Lu Z, Song X, Jiang H, Lau WY, Liu L. Clinical characteristics and management of 1572 patients with pyogenic liver abscess: A 12-year retrospective study. Liver Int. 2021 Apr;41:810-818. doi:10.1111/liv.14760. PMID 33314531.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/33314531/
+- Source checked on: 2026-09-25
+- Locator: PMID 33314531; RESULTS (multivariate analyses: pleural effusion and pulmonary infection) section
+- Note under review: Twelve-year retrospective cohort of 1572 pyogenic liver abscess patients in which pleural effusion and pulmonary infection were identified as factors in predicting outcomes and organ dysfunction; supports the bounded pleural-complication proposition only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `loeffler-s-endocarditis` → `heart-valve-disorders` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Loeffler endocarditis documents valvular dysfunction from the eosinophilic endomyocardial process: the FIP1L1-PDGFRA case presented a mobile mass attached to the mitral valve with severe mitral regurgitation and subendocardial fibrosis on cardiac MRI, the authors framing Loeffler's endocarditis as associated with endomyocardial fibrosis, thrombus formation, and valvular dysfunction (PMID 42130655), and the multimodality-imaging review describes a final common cardiac phenotype of endomyocardial fibrosis and intracardiac thrombosis across distinct hypereosinophilic syndromes (PMID 42301176); the co-occurrence is documented at case and review class, so the edge records complication risk only.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: the located material documents valvular involvement in hypereosinophilic endocardial disease, but eosinophil burden and duration, thrombus versus fibrosis contribution, rheumatic and degenerative valve disease, and treatment timing all require individual review before any causal statement.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 245.1 — Rao NS, Biswas A, Kothari SS, Vyas P, Kanabar K. Hypereosinophilic endocarditis presenting with intracardiac mass and severe mitral regurgitation: a case report of FIP1L1-PDGFRA positive myeloid neoplasm. Eur Heart J Case Rep. 2026 May 12;10:ytag296. doi:10.1093/ehjcr/ytag296. PMID 42130655.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42130655/
+- Source checked on: 2026-09-25
+- Locator: PMID 42130655; BACKGROUND (valvular dysfunction association) and CASE SUMMARY (severe mitral regurgitation) sections
+- Note under review: Case report documenting Loeffler's endocarditis associated with endomyocardial fibrosis, thrombus formation, and valvular dysfunction, presenting as a mitral-valve mass with severe mitral regurgitation and subendocardial fibrosis; supports the bounded valvular-complication proposition only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 245.2 — Salar T, Feitell S, Parikh V, Baibhav B. Loeffler Endocarditis: Multimodality Imaging of a Common Cardiac Phenotype in Distinct Hypereosinophilic Syndromes. JACC Case Rep. 2026 Aug 5;31:108674. doi:10.1016/j.jaccas.2026.108674. PMID 42301176.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42301176/
+- Source checked on: 2026-09-25
+- Locator: PMID 42301176; BACKGROUND and CASE SUMMARY (fibrotic-stage disease and ventricular thrombi) sections
+- Note under review: Multimodality-imaging case review describing Loeffler endocarditis as a final common cardiac phenotype of endomyocardial fibrosis and intracardiac thrombosis across distinct hypereosinophilic syndromes; supports the bounded structural-complication proposition only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 245.3 — Buske P, Krieghoff C, Lucke C, Gutberlet M, Paetsch I, Jahnke C, Koehle M, Klingel K, Thiele H, Jozwiak-Nozdrzykowska J, Sandri M. Loeffler's Endomyocarditis: Clinical characteristics and outcomes from a tertiary care centre registry. Int J Cardiol. 2026 Oct 15;461:134666. doi:10.1016/j.ijcard.2026.134666. PMID 42425179.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42425179/
+- Source checked on: 2026-09-25
+- Locator: PMID 42425179; BACKGROUND and RESULTS (thrombus formation, restrictive cardiomyopathy) sections
+- Note under review: Eighteen-patient tertiary registry characterizing Loeffler's endomyocarditis as eosinophilic myocardial infiltration and thrombus formation leading to restrictive cardiomyopathy, with frequent ventricular thrombi and two transplantations over follow-up; supports the bounded structural-complication proposition only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `loeffler-s-endocarditis` → `cerebrovascular-accident-stroke-residuals` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Loeffler endocarditis and hypereosinophilic cardiac disease document cerebrovascular events from intracardiac thrombus: the HES case with Loeffler endocarditis developed multiple cerebral infarctions with a persistent mural thrombus on serial cardiac MRI (PMID 42688267), the HES central-nervous-system review states that cerebral infarction is the most common neurological complication of hypereosinophilic syndromes, typically in border-zone regions (PMID 42028114), and the tertiary registry documents frequent ventricular thrombi with 88 percent of patients anticoagulated (PMID 42425179); the co-occurrence is documented at case, review, and registry class, so the edge records thromboembolic risk only.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: the located material documents cerebral infarction in hypereosinophilic cardiac disease, but mural thrombus versus eosinophilic vasculitis, cardioembolic sources, conventional vascular risk factors, and anticoagulation status all require individual review before any causal statement.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 246.1 — Wang H, Zhu F, Hu H. Hypereosinophilic syndrome with Loffler endocarditis and multiple cerebral infarctions in a patient with a CLL-phenotype clonal B-cell population: a case report. Front Cardiovasc Med. 2026 Aug 19;13:1924869. doi:10.3389/fcvm.2026.1924869. PMID 42688267.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42688267/
+- Source checked on: 2026-09-25
+- Locator: PMID 42688267; abstract (multiple cerebral infarctions, persistent endocardial disease, mural thrombus)
+- Note under review: Case report documenting Loffler endocarditis with multiple cerebral infarctions and a persistent mural thrombus on serial cardiac MRI despite hematologic response; supports the bounded thromboembolic proposition only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 246.2 — Xu W, Zhang C, Wang F, Liu X, Zhang X, Mao F, Wang X, Zhang X. Hypereosinophilic syndrome with central nervous system involvement: a case report. Front Neuroimaging. 2026 Apr 8;5:1783329. doi:10.3389/fnimg.2026.1783329. PMID 42028114.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42028114/
+- Source checked on: 2026-09-25
+- Locator: PMID 42028114; abstract opening (cerebral infarction as most common neurological complication) and literature review
+- Note under review: Case report with literature review stating cerebral infarction is the most common neurological complication in hypereosinophilic syndromes, typically border-zone, and documenting acute ischemic stroke with intracranial large-artery stenosis; supports the bounded cerebrovascular-complication proposition only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 246.3 — Buske P, Krieghoff C, Lucke C, Gutberlet M, Paetsch I, Jahnke C, Koehle M, Klingel K, Thiele H, Jozwiak-Nozdrzykowska J, Sandri M. Loeffler's Endomyocarditis: Clinical characteristics and outcomes from a tertiary care centre registry. Int J Cardiol. 2026 Oct 15;461:134666. doi:10.1016/j.ijcard.2026.134666. PMID 42425179.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42425179/
+- Source checked on: 2026-09-25
+- Locator: PMID 42425179; RESULTS (ventricular thrombi and anticoagulation) section
+- Note under review: Eighteen-patient tertiary registry documenting frequent ventricular thrombi in Loeffler's endomyocarditis with 88.2 percent of patients receiving oral anticoagulation and most thrombi resolving under therapy; supports the bounded thromboembolic-risk proposition only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `long-qt-syndrome` → `cardiac-arrhythmia` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Congenital long QT syndrome cohorts quantify arrhythmic-event burden: the 202-patient Korean multicenter cohort reports breakthrough cardiac events in 29 percent with genotype-dependent risk of life-threatening arrhythmic events (PMID 42669865), the Rochester LQTS Registry analysis of 435 genetically confirmed women models the burden of syncope, aborted cardiac arrest, and LQTS-related sudden cardiac death as the cardiac-event endpoint (PMID 42466517), and the integrative review frames QT prolongation around ventricular-arrhythmia risk and sudden cardiac death (PMID 42274161); the co-occurrence is documented at cohort, registry, and review class, so the edge records event risk only.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: the located material quantifies arrhythmic-event risk in diagnosed long QT syndrome, but genotype, QTc duration, medication exposures, autonomic triggers, and competing arrhythmia substrates all require individual review before any causal statement.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 247.1 — Song MK, Jun SY, Kwon J, Ban JE, Kwon HW, Ryu YH, Baek SM, Kim AY, Kim MJ, Baek JS, Yoon JK, Choi HJ, Cho MJ, Kim CS, Choi I, You J, Byun JH, Lee H, Na JY, Lee JS, Cho Y, Lee J, Eun LY, Lim YT, Huh J, Bae EJ. Clinical Characteristics and Outcomes of Pediatric Patients With Long QT Syndrome: A Korean Multicenter Cohort Study. Korean Circ J. 2026 Jul 8. doi:10.4070/kcj.2025.0506. PMID 42669865.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42669865/
+- Source checked on: 2026-09-25
+- Locator: PMID 42669865; METHODS and RESULTS (risk factors for life-threatening arrhythmic and breakthrough cardiac events) sections
+- Note under review: Retrospective multicenter cohort of 202 pediatric long QT syndrome patients quantifying life-threatening arrhythmic events and breakthrough cardiac events (29 percent) with genotype- and phenotype-based risk factors; supports the bounded event-risk proposition only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 247.2 — Goldenberg M, Gelikas S, Huang DT, Aktas MK, Cutter K, MacKecknie BD, Horn R, McNitt S, Polonsky B, Zareba W, Goldenberg I, Younis A. Age at Menarche and the Risk of Cardiac Events in Women With Congenital Long QT Syndrome. J Am Heart Assoc. 2026 Jul 21;15:e047140. doi:10.1161/JAHA.125.047140. PMID 42466517.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42466517/
+- Source checked on: 2026-09-25
+- Locator: PMID 42466517; METHODS (cardiac-event endpoint definition) and RESULTS sections
+- Note under review: Rochester LQTS Registry analysis of 435 genetically confirmed women modeling the burden of syncope, aborted cardiac arrest, and LQTS-related sudden cardiac death over 20 years of follow-up; supports the bounded event-risk proposition only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 247.3 — Farjam M, Yazdanpanah MH, Fereydouni N. From Molecules to Machines: An Integrative Framework Linking Molecular Pathogenesis, Multi-Factorial Risk, Risk Stratification, Clinical Management, and Artificial Intelligence in QT Prolongation and Sudden Cardiac Death. Clin Cardiol. 2026 Jun;49:e70370. doi:10.1002/clc.70370. PMID 42274161.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42274161/
+- Source checked on: 2026-09-25
+- Locator: PMID 42274161; abstract (risk stratification and prognostic value) section
+- Note under review: Integrative review synthesizing molecular pathogenesis, multi-factorial risk, and risk stratification for QT prolongation and sudden cardiac death, noting that QTc threshold alone is insufficient for prognostication; supports the bounded event-risk framing only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
 ## Implementation mechanics after decisions
 
 - Mapping edits and registry edits must land in lockstep (the registry audit's canonical-JSON hashes and live-use sets will fail otherwise).
