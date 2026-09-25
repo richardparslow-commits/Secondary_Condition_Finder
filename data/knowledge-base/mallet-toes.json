@@ -2,8 +2,78 @@
   "id": "mallet-toes",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review biomechanical, post-injury, orthopedic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 58 (2026-09-25): one ASSOCIATION_ONLY draft mapping pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: the single edge asserts association only (etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true, mechanismCategory BIOMECHANICAL_ALTERATION). The evidence base is pooled lesser-toe review class with mallet toe named inclusively, so individual claims require dated forefoot examination and plantar-pressure documentation with competing-cause exclusion, and review by a qualified medical professional.",
+    "Pathway and duplicate-scope screens: no -> unexplained-chronic-pain edge (ME-29 duplicate-scope - the sibling hammertoe identity owns its unexplained-chronic-pain window and the located pain material is pooled lesser-toe class; this identity's window is scoped to the named metatarsalgia target instead); no -> diabetic-foot-ulcer or skin-ulcer edge (no catalog identity exists, and the neuropathic-ulcer tenotomy material is diabetic-neuropathy scoped with the deformity as a contributing mechanical factor rather than the primary exposure); no -> contractures edge (constitutive-proximity - the fixed DIP flexion is the mallet deformity itself); no -> metatarsalgia evidence from bunion or hallux windows (sibling identities keep their own forefoot windows); the pooled-class evidence limit is recorded on the edge rather than resolved, per the amputation-of-thumb-fingers-toes evidence-scope convention."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 58 (2026-09-25): one bounded association edge authored - mallet-toes to metatarsalgia (rank 1) - classified ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, and hypothesizedOnly:true; mechanismCategory BIOMECHANICAL_ALTERATION. The proposition rests on the orthoses review naming mallet toe among the deformities producing metatarsalgia (PMID 39500821), the conservative-management review of metatarsalgia and lesser toe deformities (PMID 29362036), and the forefoot pathophysiology review with competing pain sources (PMID 24559872).",
+    "Counter-evidence and caveat screens recorded 2026-09-25: (i) pooled-class limit - the located material treats mallet, hammertoe, and claw deformities as a class without mallet-specific incidence stratification, so the edge records the inclusive-class relationship only and the limit is carried openly rather than resolved; (ii) competing pain sources - plantar plate injury, interdigital neuritis, hallux disorders, and gastrocsoleus contracture are documented within the same material; (iii) diabetic context - the neuropathic-ulcer literature pools digital deformities with the deformity as a contributing mechanical factor in neuropathic feet, and no catalog ulcer identity exists to carry that route; (iv) treatment mediation - shoe modifications, orthoses, and tenotomy all alter the load pattern and the located orthoses evidence is comfort-class rather than disease-modifying."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "metatarsalgia",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Mallet toes document metatarsalgia through altered forefoot loading: the orthoses review names mallet toe among the deformities whose resulting metatarsalgia responds best to orthotic comfort measures (PMID 39500821), the conservative-management review documents metatarsal head pain arising from intrinsic and extrinsic imbalances of the gait cycle with secondary metatarsalgia classification (PMID 29362036), and the forefoot review documents the complex pathophysiology of lesser toe deformities with forefoot pain attributable to multiple competing structures (PMID 24559872); the anchors are lesser-toe class with mallet toe named inclusively, so the edge records the documented load-transfer relationship only.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: the located material pools lesser toe deformities without mallet-specific stratification, and whether an individual metatarsalgia arose from a mallet toe, from plantar plate injury, Morton neuritis, hallux pathology, or footwear requires individual forefoot examination and pressure review."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "BIOMECHANICAL_ALTERATION",
+        "primaryVector": "A rigid or flexible mallet toe displaces the toe-tip load and alters metatarsal head weight transfer during push-off so focal plantar pressure rises under the metatarsal heads and metatarsalgia develops, the load-transfer account documented in the lesser-toe orthoses and conservative-management reviews, but whether this route produced any individual metatarsalgia remains hypothesized until plantar-pressure and forefoot examination records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at pooled lesser-toe review class only: the anchors treat mallet, hammertoe, and claw deformities as a class without mallet-specific incidence data, the orthoses review is narrative, and competing forefoot pain sources are documented within the same material.",
+        "evidenceGaps": "No cohort quantifies metatarsalgia incidence specifically in mallet toes; the evidence is pooled lesser-toe class shared with sibling deformity identities (ME-29 scope limit recorded), plantar plate injury, interdigital neuritis, and hallux disorders are documented competing causes, and footwear, orthoses, and tenotomy all alter the load pattern.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "plantar plate injury and MTP instability",
+          "interdigital (Morton) neuritis",
+          "hallux valgus and hallux rigidus (sibling identities owning their windows)",
+          "stress fracture of a metatarsal",
+          "capsulitis or synovitis of the MTP joint"
+        ]
+      },
+      "evidenceGaps": [
+        "No cohort quantifies metatarsalgia incidence specifically in mallet toes; the evidence is pooled lesser-toe class shared with sibling deformity identities (ME-29 scope limit recorded), plantar plate injury, interdigital neuritis, and hallux disorders are documented competing causes, and footwear, orthoses, and tenotomy all alter the load pattern."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY on the forefoot load-transfer precedent with the pooled-class limit carried openly: the orthoses review of lesser toe deformities names mallet toe among the deformities producing metatarsalgia whose conservative comfort measures are best supported (PMID 39500821), the conservative-management review documents metatarsalgia arising from gait-cycle intrinsic and extrinsic imbalances with primary, secondary, and iatrogenic classification (PMID 29362036), and the forefoot review documents lesser-toe deformity pathophysiology with multiple competing pain structures (PMID 24559872); because the evidence is pooled lesser-toe class without mallet-specific stratification and the sibling hammertoe identity keeps its own pain window (ME-29), the conservative standard keeps the edge at association only and routes individual claims through dated forefoot examination and plantar-pressure documentation with plantar-plate, neuritic, and hallux exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Colò G, Fusini F, Melato M, De Tullio V, Logrieco G, Leigheb M, Surace MF. The effectiveness of shoe modifications and foot orthoses in conservative treatment of lesser toe deformities: a review of literature. Musculoskelet Surg. 2025 Sep;109:225-232. doi:10.1007/s12306-024-00871-9. PMID 39500821.",
+          "note": "Narrative review of orthotic treatment for lesser toe deformities naming mallet toe among the deformities whose resulting metatarsalgia responds best to orthotic comfort measures; supports the bounded inclusive-class proposition only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39500821/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 39500821; review section (orthotic relevance for metatarsalgia from mallet and claw toe)"
+        },
+        {
+          "citation": "Federer AE, Tainter DM, Adams SB, Schweitzer KM Jr. Conservative Management of Metatarsalgia and Lesser Toe Deformities. Foot Ankle Clin. 2018 Mar;23:9-20. doi:10.1016/j.fcl.2017.09.003. PMID 29362036.",
+          "note": "Review documenting metatarsal head pain arising from intrinsic and extrinsic gait-cycle imbalances with primary, secondary, and iatrogenic metatarsalgia classification; supports the bounded load-transfer framing only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/29362036/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 29362036; review (pathophysiology and classification of metatarsalgia)"
+        },
+        {
+          "citation": "DiPreta JA. Metatarsalgia, lesser toe deformities, and associated disorders of the forefoot. Med Clin North Am. 2014 Mar;98:233-251. doi:10.1016/j.mcna.2013.10.003. PMID 24559872.",
+          "note": "Review documenting the complex pathophysiology of lesser toe deformities and the competing sources of forefoot pain including interdigital neuritis, plantar skin disorders, and gastrocsoleus contracture; supports the bounded class framing and the alternative-etiology record.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/24559872/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 24559872; review (lesser toe deformity pathophysiology and forefoot pain sources)"
+        }
+      ]
+    }
+  ]
 }

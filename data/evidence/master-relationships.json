@@ -6,8 +6,8 @@
  "installedFrom": "Master Registry Discrepancy Resolution 2026",
  "authorityBoundary": "Authoritative for current relationship direction, proposition text, guard state, source linkage, and KB parity; does not establish an individual VA medical nexus.",
  "counts": {
-  "relationships": 623,
-  "explicitPublicationGuards": 549,
+  "relationships": 634,
+  "explicitPublicationGuards": 560,
   "legacyRationaleBoundaries": 74
  },
  "relationships": [
@@ -20188,6 +20188,336 @@
    "sourceReferenceCount": 3,
    "pathwayIntelligencePresent": false,
    "suggestionObjectHash": "aa791efa5540aeabbb735a901c2feb5e6030d527d336c1ed4f9bbd3ef6fdb9f9"
+  },
+  {
+   "relationshipId": "rel-macroglossia-to-dysphagia",
+   "primaryId": "macroglossia",
+   "targetId": "dysphagia",
+   "direction": "macroglossia -> dysphagia",
+   "primaryPublicationState": "draft",
+   "rank": 1,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY on the anatomic-mechanics precedent mirroring the ankyloglossia and loss-of-tongue dysphagia windows with macroglossia-specific evidence only: the 60-year-old light-chain-amyloidosis case presented with a progressively enlarging giant tongue over six months causing dysphagia and reduced oral opening, histologically confirmed amyloid on tongue biopsy (PMID 37995383); because the evidence is case class in a secondary-amyloidosis patient and no incidence denominators exist by tongue size or etiology, the conservative standard keeps the edge at association only and routes individual claims through dated imaging and videofluoroscopic swallow studies documenting tongue bulk with neoplastic and neurogenic exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY on the anatomic-mechanics precedent mirroring the ankyloglossia and loss-of-tongue dysphagia windows with macroglossia-specific evidence only: the 60-year-old light-chain-amyloidosis case presented with a progressively enlarging giant tongue over six months causing dysphagia and reduced oral opening, histologically confirmed amyloid on tongue biopsy (PMID 37995383); because the evidence is case class in a secondary-amyloidosis patient and no incidence denominators exist by tongue size or etiology, the conservative standard keeps the edge at association only and routes individual claims through dated imaging and videofluoroscopic swallow studies documenting tongue bulk with neoplastic and neurogenic exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to tongue-bulk mass effect with macroglossia-specific evidence only: the light-chain-amyloidosis giant-tongue case documents dysphagia and reduced oral opening over six months with amyloid confirmed on biopsy (PMID 37995383); evidence is case class in a secondary-amyloidosis patient and the ankyloglossia and loss-of-tongue windows keep their own evidence (ME-29), so individual claims route through dated imaging and videofluoroscopic swallow studies documenting tongue bulk with neoplastic and neurogenic exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No cohort quantifies dysphagia incidence in macroglossia; etiologies range from amyloidosis to endocrinopathy, myopathy, and congenital syndromes with different trajectories, and tongue reduction, treatment of the underlying disease, and dental prosthetics all mediate the swallowing course."
+   ],
+   "sourceIds": [
+    "pmid-37995383"
+   ],
+   "sourceReferenceCount": 1,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "8f2b7f44ebe0dedee4f53f2f473ab4abe6c165df5e0d7c34ee7f6eb65ef1b310"
+  },
+  {
+   "relationshipId": "rel-macroglossia-to-sleep-apnea",
+   "primaryId": "macroglossia",
+   "targetId": "sleep-apnea",
+   "direction": "macroglossia -> sleep-apnea",
+   "primaryPublicationState": "draft",
+   "rank": 2,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY on the airway-obstruction mechanical precedent: the systematic review of tongue reduction for pediatric OSA identified 9 studies (146 patients) in which every study reported apnea-hypopnea index reduction and improved minimum oxygen saturation after tongue base reduction regardless of technique (PMID 41783520), and the pharyngeal-MRI and upper-airway-pressure cohort of 19 OSAS patients with macroglossia versus 19 controls localized the obstruction to the velopharyngeal plane through backward soft-palate displacement by the hypertrophic tongue (PMID 40946365); because the reduction design supports direction but is pediatric and treatment-selected and the mechanism cohort is small, the conservative standard keeps the edge at association only and routes individual claims through dated polysomnography with anatomic and obesity-related exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY on the airway-obstruction mechanical precedent: the systematic review of tongue reduction for pediatric OSA identified 9 studies (146 patients) in which every study reported apnea-hypopnea index reduction and improved minimum oxygen saturation after tongue base reduction regardless of technique (PMID 41783520), and the pharyngeal-MRI and upper-airway-pressure cohort of 19 OSAS patients with macroglossia versus 19 controls localized the obstruction to the velopharyngeal plane through backward soft-palate displacement by the hypertrophic tongue (PMID 40946365); because the reduction design supports direction but is pediatric and treatment-selected and the mechanism cohort is small, the conservative standard keeps the edge at association only and routes individual claims through dated polysomnography with anatomic and obesity-related exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to tongue-base airway obstruction: the paediatric tongue-reduction systematic review reports AHI reduction and improved oxygen saturation in all 9 studies (146 patients) (PMID 41783520) and the 19-versus-19 MRI and airway-pressure cohort localizes velopharyngeal obstruction from the hypertrophic tongue (PMID 40946365); the reduction design supports direction but is pediatric and treatment-selected, so individual claims route through dated polysomnography with anatomic and obesity-related exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No adult incidence cohort quantifies OSA risk by macroglossia severity; the reduction literature is pediatric with heterogeneous techniques and selection effects, and weight change, tonsillectomy, CPAP, and growth all alter the airway course."
+   ],
+   "sourceIds": [
+    "pmid-41783520",
+    "pmid-40946365"
+   ],
+   "sourceReferenceCount": 2,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "a3e48fadb4ad6007facf7977323c7a2f34bcf2fdec38297c71530cc97c848499"
+  },
+  {
+   "relationshipId": "rel-malabsorption-syndrome-to-macular-degeneration",
+   "primaryId": "malabsorption-syndrome",
+   "targetId": "macular-degeneration",
+   "direction": "malabsorption-syndrome -> macular-degeneration",
+   "primaryPublicationState": "draft",
+   "rank": 1,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY on the metabolic-deficiency precedent with the stratum-level record carried openly: the TriNetX propensity-matched study of adults with celiac disease, ulcerative colitis, Crohn disease, chronic pancreatitis, or short bowel syndrome found elevated early/intermediate AMD risk in the Crohn stratum (RR 1.42) and the chronic pancreatitis stratum (RR 1.82, persisting at RR 1.83 in the pancreatic-enzyme-replacement subset) and elevated advanced/exudative AMD risk in the short bowel stratum (RR 1.98), while the celiac stratum was null (RR 1.09) (PMID 41519378); because exposure is claims-code defined, the IBD strata carry inflammatory confounding, and the celiac null bounds the generalization, the conservative standard keeps the edge at association only and routes individual claims through dated retinal OCT with smoking, genetic, and diabetic exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY on the metabolic-deficiency precedent with the stratum-level record carried openly: the TriNetX propensity-matched study of adults with celiac disease, ulcerative colitis, Crohn disease, chronic pancreatitis, or short bowel syndrome found elevated early/intermediate AMD risk in the Crohn stratum (RR 1.42) and the chronic pancreatitis stratum (RR 1.82, persisting at RR 1.83 in the pancreatic-enzyme-replacement subset) and elevated advanced/exudative AMD risk in the short bowel stratum (RR 1.98), while the celiac stratum was null (RR 1.09) (PMID 41519378); because exposure is claims-code defined, the IBD strata carry inflammatory confounding, and the celiac null bounds the generalization, the conservative standard keeps the edge at association only and routes individual claims through dated retinal OCT with smoking, genetic, and diabetic exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to the fat-soluble and carotenoid deficiency route with stratum-level record: the TriNetX propensity-matched cohort found AMD risk elevated in Crohn disease (RR 1.42), chronic pancreatitis (RR 1.82, persisting in the PERT subset), and short bowel syndrome (advanced AMD RR 1.98), with the celiac stratum null (RR 1.09) (PMID 41519378); exposure is claims-code defined with inflammatory confounding in the IBD strata, so individual claims route through dated retinal OCT with smoking, genetic, and diabetic exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "Claims-code exposure ascertainment without functional malabsorption measurement, inflammatory confounding in the IBD strata, the null celiac stratum limiting generalization, AMD multifactoriality (smoking, genetics, complement), and no serum carotenoid or retinal-OCT-level dose data in the located material."
+   ],
+   "sourceIds": [
+    "pmid-41519378"
+   ],
+   "sourceReferenceCount": 1,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "bda32f05fb2280657c842406e06e26ba7f5983eb60ec92f69d62d4b3f5379044"
+  },
+  {
+   "relationshipId": "rel-malabsorption-syndrome-to-peripheral-neuropathy",
+   "primaryId": "malabsorption-syndrome",
+   "targetId": "peripheral-neuropathy",
+   "direction": "malabsorption-syndrome -> peripheral-neuropathy",
+   "primaryPublicationState": "draft",
+   "rank": 2,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY on the deficiency-route precedent with a repletion-reversal anchor: the chronic-pancreatitis exocrine-insufficiency case documents clinically symptomatic sensorimotor peripheral neuropathy from vitamin E deficiency that resolved on vitamin E administration, the authors noting the sequela is routinely misattributed to diabetes per se (PMID 41943771), the food-cobalamin malabsorption review documents peripheral neuropathy among the neurological manifestations of cobalamin deficiency with risk of irreversible sequelae (PMID 40283381), and the nutritional-neuropathies review covers deficiency-based neuropathy etiologies including malabsorptive routes (PMID 41161993); because the direct anchor is case class and diabetic and alcoholic neuropathy dominate the differential in these populations, the conservative standard keeps the edge at association only and routes individual claims through dated serologic testing of absorbed nutrients with electrodiagnostic confirmation and diabetic and alcohol-related exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY on the deficiency-route precedent with a repletion-reversal anchor: the chronic-pancreatitis exocrine-insufficiency case documents clinically symptomatic sensorimotor peripheral neuropathy from vitamin E deficiency that resolved on vitamin E administration, the authors noting the sequela is routinely misattributed to diabetes per se (PMID 41943771), the food-cobalamin malabsorption review documents peripheral neuropathy among the neurological manifestations of cobalamin deficiency with risk of irreversible sequelae (PMID 40283381), and the nutritional-neuropathies review covers deficiency-based neuropathy etiologies including malabsorptive routes (PMID 41161993); because the direct anchor is case class and diabetic and alcoholic neuropathy dominate the differential in these populations, the conservative standard keeps the edge at association only and routes individual claims through dated serologic testing of absorbed nutrients with electrodiagnostic confirmation and diabetic and alcohol-related exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to absorbed-nutrient deficiency neuropathy: the chronic-pancreatitis exocrine-insufficiency case documents sensorimotor neuropathy from vitamin E deficiency resolving on repletion (PMID 41943771), the food-cobalamin malabsorption review documents peripheral neuropathy among cobalamin-deficiency manifestations (PMID 40283381), and the nutritional-neuropathies review covers deficiency etiologies including malabsorptive routes (PMID 41161993); diabetic and alcoholic neuropathy are dominant competing causes, so individual claims route through dated serologic and electrodiagnostic documentation with diabetic and alcohol-related exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No cohort quantifies neuropathy incidence in unselected malabsorption populations; deficiency-specific mechanisms differ (vitamin E, cobalamin, copper, thiamine), diabetic and alcoholic neuropathy confound attribution, and reversibility on repletion is documented inconsistently."
+   ],
+   "sourceIds": [
+    "pmid-41943771",
+    "pmid-40283381",
+    "pmid-41161993"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "9ab656c98cf70e40055fad540c4c88138973cc956ec24c19376f1b93ea168d6f"
+  },
+  {
+   "relationshipId": "rel-malabsorption-syndrome-to-anemia",
+   "primaryId": "malabsorption-syndrome",
+   "targetId": "anemia",
+   "direction": "malabsorption-syndrome -> anemia",
+   "primaryPublicationState": "draft",
+   "rank": 3,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY on the metabolic-deficiency precedent with sibling-window discipline: the food-cobalamin malabsorption review names megaloblastic anemia among the hematological manifestations of the cobalamin deficiency that food-cobalamin malabsorption produces (PMID 40283381), and the 12-patient tropical-sprue series documents profuse diarrhea and malabsorption notably of vitamin B12 and folate with histologic response to folate and doxycycline (PMID 24441659); because the anchors are review class and small-series class without anemia-rate quantification and the celiac and pernicious-anemia windows belong to sibling identities (ME-29), the conservative standard keeps the edge at association only and routes individual claims through dated blood counts and iron, B12, and folate studies with bleeding-source and inflammatory exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY on the metabolic-deficiency precedent with sibling-window discipline: the food-cobalamin malabsorption review names megaloblastic anemia among the hematological manifestations of the cobalamin deficiency that food-cobalamin malabsorption produces (PMID 40283381), and the 12-patient tropical-sprue series documents profuse diarrhea and malabsorption notably of vitamin B12 and folate with histologic response to folate and doxycycline (PMID 24441659); because the anchors are review class and small-series class without anemia-rate quantification and the celiac and pernicious-anemia windows belong to sibling identities (ME-29), the conservative standard keeps the edge at association only and routes individual claims through dated blood counts and iron, B12, and folate studies with bleeding-source and inflammatory exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to the cobalamin-folate deficiency route with sibling-window discipline: the food-cobalamin malabsorption review names megaloblastic anemia among hematological manifestations (PMID 40283381) and the 12-patient tropical-sprue series documents B12 and folate malabsorption with histologic response to folate and doxycycline (PMID 24441659); the celiac and pernicious-anemia windows keep their own evidence (ME-29), so individual claims route through dated blood counts and iron, B12, and folate studies with bleeding-source and inflammatory exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No cohort quantifies anemia incidence in unselected malabsorption populations; the sprue series predates modern anemia classification without rates; iron deficiency from occult blood loss, anemia of inflammation, and renal anemia are competing causes, and the pernicious-anemia and celiac windows belong to other identities."
+   ],
+   "sourceIds": [
+    "pmid-40283381",
+    "pmid-24441659"
+   ],
+   "sourceReferenceCount": 2,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "3426296f0ce168a311dd824ce6cf4551c66b9cf98fa86bbf664a2c046921d6a4"
+  },
+  {
+   "relationshipId": "rel-mallet-finger-to-swan-neck-deformity",
+   "primaryId": "mallet-finger",
+   "targetId": "swan-neck-deformity",
+   "direction": "mallet-finger -> swan-neck-deformity",
+   "primaryPublicationState": "draft",
+   "rank": 1,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY on the tendon-imbalance mechanical precedent: the 25-patient 20-year review of surgical management states that swan neck deformity develops as a sequela of chronic mallet finger and documents the injury classes and failed splinting trials (PMID 37872782), the three-case series documents chronic terminal extensor tendon injury producing mallet deformity and secondary swan neck deformity corrected by dynamic-mechanical SORL reconstruction (PMID 36796158), and the index-finger case documents chronic mallet finger resulting in swan neck deformity from flexor and extensor mechanism imbalance (PMID 35734714); because the evidence is surgical-series and case class on an explicitly rare sequela with selection for operative correction, the conservative standard keeps the edge at association only and routes individual claims through dated hand examination and imaging documenting the mallet-to-swan-neck sequence with inflammatory-arthropathy exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY on the tendon-imbalance mechanical precedent: the 25-patient 20-year review of surgical management states that swan neck deformity develops as a sequela of chronic mallet finger and documents the injury classes and failed splinting trials (PMID 37872782), the three-case series documents chronic terminal extensor tendon injury producing mallet deformity and secondary swan neck deformity corrected by dynamic-mechanical SORL reconstruction (PMID 36796158), and the index-finger case documents chronic mallet finger resulting in swan neck deformity from flexor and extensor mechanism imbalance (PMID 35734714); because the evidence is surgical-series and case class on an explicitly rare sequela with selection for operative correction, the conservative standard keeps the edge at association only and routes individual claims through dated hand examination and imaging documenting the mallet-to-swan-neck sequence with inflammatory-arthropathy exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to the tendon-imbalance sequela chain: the 25-patient 20-year surgical review names swan neck as a sequela of chronic mallet finger and records the sequela as rare (PMID 37872782), the SORL reconstruction case series documents secondary swan neck from chronic terminal extensor injury (PMID 36796158), and the index-finger case documents the flexor-extensor imbalance route (PMID 35734714); surgical-series selection and inflammatory-arthropathy exclusions bound the frequency, so individual claims route through dated hand examination documenting the mallet-to-swan-neck sequence with rheumatoid exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "The sequela is rare (the 25-patient review spans 20 years at one institution), surgical-series selection inflates apparent frequency, splinting and primary repair alter the trajectory, and inflammatory arthropathy must be excluded before attribution."
+   ],
+   "sourceIds": [
+    "pmid-37872782",
+    "pmid-36796158",
+    "pmid-35734714"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "4ad4cdca4e8f9e2eec1cf0819ba7b0162206bcc9619a75d8269a59f5de613d4d"
+  },
+  {
+   "relationshipId": "rel-mallet-finger-to-post-traumatic-osteoarthritis",
+   "primaryId": "mallet-finger",
+   "targetId": "post-traumatic-osteoarthritis",
+   "direction": "mallet-finger -> post-traumatic-osteoarthritis",
+   "primaryPublicationState": "draft",
+   "rank": 2,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY on the joint-incongruence precedent with the cohort's counter-framing recorded openly: the 52-patient follow-up study a mean 12.1 years after nonsurgical treatment of mallet finger fractures found radiographic osteoarthritis increase in 41 to 44 percent of fractures with 23 to 25 percent worse than the healthy contralateral DIP joint and only weak-to-moderate correlation with function and patient-reported outcomes (PMID 37191605), and the companion report documents rater-agreement assessment of the same post-traumatic osteoarthritis at 12 years (PMID 38839197); because the cohort itself concludes the osteoarthritis is similar to the natural degenerative process of the DIP joint and the excess over the control joint is partial, the conservative standard keeps the edge at association only, records the natural-degeneration counter-framing on the edge, and routes individual claims through dated radiographs documenting injury-to-joint-surface congruence with degenerative and inflammatory exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY on the joint-incongruence precedent with the cohort's counter-framing recorded openly: the 52-patient follow-up study a mean 12.1 years after nonsurgical treatment of mallet finger fractures found radiographic osteoarthritis increase in 41 to 44 percent of fractures with 23 to 25 percent worse than the healthy contralateral DIP joint and only weak-to-moderate correlation with function and patient-reported outcomes (PMID 37191605), and the companion report documents rater-agreement assessment of the same post-traumatic osteoarthritis at 12 years (PMID 38839197); because the cohort itself concludes the osteoarthritis is similar to the natural degenerative process of the DIP joint and the excess over the control joint is partial, the conservative standard keeps the edge at association only, records the natural-degeneration counter-framing on the edge, and routes individual claims through dated radiographs documenting injury-to-joint-surface congruence with degenerative and inflammatory exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to DIP joint incongruency with the natural-degeneration counter-framing recorded: the 52-patient cohort 12.1 years after nonsurgical mallet-fracture treatment found radiographic OA increase in 41-44% with 23-25% worse than the healthy contralateral joint and concludes the pattern is similar to natural DIP degeneration (PMID 37191605), with the rater-agreement companion (PMID 38839197); the partial excess over the control joint bounds the claim, so individual claims route through dated radiographs documenting injury-to-surface congruence with degenerative and inflammatory exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "The 12-year cohort concludes the osteoarthritis pattern resembles natural DIP degeneration (a counter-framing recorded on the edge), radiographic grading carries the rater-agreement limitation the companion report addresses, functional correlates were weak to moderate, and surgical versus conservative treatment heterogeneity modifies the joint surface."
+   ],
+   "sourceIds": [
+    "pmid-37191605",
+    "pmid-38839197"
+   ],
+   "sourceReferenceCount": 2,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "4d070980c78e56f822f6e144238165caaaaa4d428c0457de10cae56f0f383f2b"
+  },
+  {
+   "relationshipId": "rel-mallet-toes-to-metatarsalgia",
+   "primaryId": "mallet-toes",
+   "targetId": "metatarsalgia",
+   "direction": "mallet-toes -> metatarsalgia",
+   "primaryPublicationState": "draft",
+   "rank": 1,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY on the forefoot load-transfer precedent with the pooled-class limit carried openly: the orthoses review of lesser toe deformities names mallet toe among the deformities producing metatarsalgia whose conservative comfort measures are best supported (PMID 39500821), the conservative-management review documents metatarsalgia arising from gait-cycle intrinsic and extrinsic imbalances with primary, secondary, and iatrogenic classification (PMID 29362036), and the forefoot review documents lesser-toe deformity pathophysiology with multiple competing pain structures (PMID 24559872); because the evidence is pooled lesser-toe class without mallet-specific stratification and the sibling hammertoe identity keeps its own pain window (ME-29), the conservative standard keeps the edge at association only and routes individual claims through dated forefoot examination and plantar-pressure documentation with plantar-plate, neuritic, and hallux exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY on the forefoot load-transfer precedent with the pooled-class limit carried openly: the orthoses review of lesser toe deformities names mallet toe among the deformities producing metatarsalgia whose conservative comfort measures are best supported (PMID 39500821), the conservative-management review documents metatarsalgia arising from gait-cycle intrinsic and extrinsic imbalances with primary, secondary, and iatrogenic classification (PMID 29362036), and the forefoot review documents lesser-toe deformity pathophysiology with multiple competing pain structures (PMID 24559872); because the evidence is pooled lesser-toe class without mallet-specific stratification and the sibling hammertoe identity keeps its own pain window (ME-29), the conservative standard keeps the edge at association only and routes individual claims through dated forefoot examination and plantar-pressure documentation with plantar-plate, neuritic, and hallux exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to forefoot load transfer with the pooled-class limit carried openly: the orthoses review names mallet toe among the deformities producing metatarsalgia (PMID 39500821), the conservative-management review documents secondary metatarsalgia from gait-cycle imbalances (PMID 29362036), and the forefoot review documents competing pain structures (PMID 24559872); the evidence is pooled lesser-toe class without mallet-specific stratification and the hammertoe pain window stays with its identity (ME-29), so individual claims route through dated forefoot examination and plantar-pressure documentation with plantar-plate, neuritic, and hallux exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No cohort quantifies metatarsalgia incidence specifically in mallet toes; the evidence is pooled lesser-toe class shared with sibling deformity identities (ME-29 scope limit recorded), plantar plate injury, interdigital neuritis, and hallux disorders are documented competing causes, and footwear, orthoses, and tenotomy all alter the load pattern."
+   ],
+   "sourceIds": [
+    "pmid-39500821",
+    "pmid-29362036",
+    "pmid-24559872"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "20d9d29dae88f68a7a5d01056bddbf8eb9bc5c09dc1051b96d425a669350f39c"
+  },
+  {
+   "relationshipId": "rel-malnutrition-residuals-to-anemia",
+   "primaryId": "malnutrition-residuals",
+   "targetId": "anemia",
+   "direction": "malnutrition-residuals -> anemia",
+   "primaryPublicationState": "draft",
+   "rank": 1,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY on the metabolic-deficiency precedent: the 2024 current-perspective review of micronutrient status and protein-energy malnutrition in free-living older adults states that protein-energy malnutrition, impacting over 25 percent of those aged 65 and above, results in a range of health issues including anemia, and that iron and iodine deficiencies contribute to anemia (PMID 38193299); because the anchor is narrative-review class without anemia-rate quantification and bleeding, inflammatory, and renal causes compete in the population studied, the conservative standard keeps the edge at association only and routes individual claims through dated blood counts and iron, B12, and folate studies with bleeding-source and inflammatory exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY on the metabolic-deficiency precedent: the 2024 current-perspective review of micronutrient status and protein-energy malnutrition in free-living older adults states that protein-energy malnutrition, impacting over 25 percent of those aged 65 and above, results in a range of health issues including anemia, and that iron and iodine deficiencies contribute to anemia (PMID 38193299); because the anchor is narrative-review class without anemia-rate quantification and bleeding, inflammatory, and renal causes compete in the population studied, the conservative standard keeps the edge at association only and routes individual claims through dated blood counts and iron, B12, and folate studies with bleeding-source and inflammatory exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to the intake-deficiency erythropoiesis route: the protein-energy malnutrition review names anemia among the consequences of malnutrition and attributes anemia to iron and iodine deficiencies (PMID 38193299); the anchor is narrative-review class in free-living older adults without rates, so individual claims route through dated blood counts and iron, B12, and folate studies with bleeding-source and inflammatory exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No cohort quantifies anemia incidence attributable to malnutrition alone; the anchor is review class in older adults without rates, micronutrient-specific mechanisms differ, and bleeding, inflammation, and renal causes compete in every relevant population."
+   ],
+   "sourceIds": [
+    "pmid-38193299"
+   ],
+   "sourceReferenceCount": 1,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "86745768a4762d76502e8967fdac0d3129e2d9e4955728578f989e67de370a31"
+  },
+  {
+   "relationshipId": "rel-malnutrition-residuals-to-peripheral-neuropathy",
+   "primaryId": "malnutrition-residuals",
+   "targetId": "peripheral-neuropathy",
+   "direction": "malnutrition-residuals -> peripheral-neuropathy",
+   "primaryPublicationState": "draft",
+   "rank": 2,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY on the metabolic-deficiency precedent: the 2025 specialty review of nutritional neuropathies covers the etiologies, presentations, and treatments of neuropathies caused by nutritional deficiency and excess (PMID 41161993), and the 2024 protein-energy malnutrition review states that B12 and C deficiencies pose neurological-disorder risks in free-living older adults (PMID 38193299); because both anchors are review class without incidence denominators and diabetic and alcoholic neuropathy dominate the differential wherever malnutrition occurs, the conservative standard keeps the edge at association only and routes individual claims through dated serologic testing of neurotrophic nutrients with electrodiagnostic confirmation and diabetic, alcohol-related, and hereditary exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY on the metabolic-deficiency precedent: the 2025 specialty review of nutritional neuropathies covers the etiologies, presentations, and treatments of neuropathies caused by nutritional deficiency and excess (PMID 41161993), and the 2024 protein-energy malnutrition review states that B12 and C deficiencies pose neurological-disorder risks in free-living older adults (PMID 38193299); because both anchors are review class without incidence denominators and diabetic and alcoholic neuropathy dominate the differential wherever malnutrition occurs, the conservative standard keeps the edge at association only and routes individual claims through dated serologic testing of neurotrophic nutrients with electrodiagnostic confirmation and diabetic, alcohol-related, and hereditary exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to neurotrophic-nutrient deficiency with sibling-window discipline: the nutritional-neuropathies specialty review covers deficiency-based neuropathy etiologies (PMID 41161993) and the malnutrition review states B12 and C deficiencies carry neurological-disorder risks (PMID 38193299); beriberi, pernicious-anemia, and metformin B12 windows keep their own evidence (ME-29) and diabetic and alcoholic neuropathy compete, so individual claims route through dated serologic and electrodiagnostic documentation with diabetic, alcohol-related, and hereditary exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No cohort quantifies neuropathy incidence attributable to malnutrition alone; the beriberi identity keeps its own thiamine windows and the pernicious-anemia and metformin B12 material is etiology-scoped and not recycled (ME-29); diabetes, alcohol, and chemotherapy neuropathy compete in every relevant population, and reversibility on repletion is documented inconsistently."
+   ],
+   "sourceIds": [
+    "pmid-41161993",
+    "pmid-38193299"
+   ],
+   "sourceReferenceCount": 2,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "cae53becf6aae972efd40395573b2377f6c4796e31301772720122494a751376"
+  },
+  {
+   "relationshipId": "rel-malnutrition-residuals-to-osteoporosis",
+   "primaryId": "malnutrition-residuals",
+   "targetId": "osteoporosis",
+   "direction": "malnutrition-residuals -> osteoporosis",
+   "primaryPublicationState": "draft",
+   "rank": 3,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY on the metabolic-deficiency precedent with cross-sectional limits carried openly: the 108-patient fragility-fracture study found malnourished patients had significantly lower femoral neck BMD and 25-hydroxyvitamin D and higher bone turnover markers, with GNRI, PNI, and CONUT independently associated with femoral neck BMD after adjustment for age, sex, and BMI (PMID 42356105), and the 1202-patient study of adults aged 70 and over found vitamin D deficiency in 68.6 percent, secondary hyperparathyroidism in 13.7 percent, and significantly lower hip BMD with elevated PTH (PMID 42563160); because both designs are cross-sectional in selected populations with reverse causation plausible and the second pathway runs partly through secondary hyperparathyroidism, the conservative standard keeps the edge at association only and routes individual claims through dated densitometry with PTH, gonadal, glucocorticoid, and dietary exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY on the metabolic-deficiency precedent with cross-sectional limits carried openly: the 108-patient fragility-fracture study found malnourished patients had significantly lower femoral neck BMD and 25-hydroxyvitamin D and higher bone turnover markers, with GNRI, PNI, and CONUT independently associated with femoral neck BMD after adjustment for age, sex, and BMI (PMID 42356105), and the 1202-patient study of adults aged 70 and over found vitamin D deficiency in 68.6 percent, secondary hyperparathyroidism in 13.7 percent, and significantly lower hip BMD with elevated PTH (PMID 42563160); because both designs are cross-sectional in selected populations with reverse causation plausible and the second pathway runs partly through secondary hyperparathyroidism, the conservative standard keeps the edge at association only and routes individual claims through dated densitometry with PTH, gonadal, glucocorticoid, and dietary exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to nutritional bone loss with cross-sectional limits carried openly: the 108-patient fragility-fracture cohort found malnourished patients had significantly lower femoral neck BMD and higher turnover markers with independent nutritional-index associations (PMID 42356105) and the 1202-patient very-old-hospitalized cohort found vitamin D deficiency in 68.6% with secondary hyperparathyroidism and lower hip BMD (PMID 42563160); both are cross-sectional in selected populations with reverse causation plausible and the hyperparathyroidism route partly intermediate, so individual claims route through dated densitometry with PTH, gonadal, glucocorticoid, and dietary exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "Cross-sectional designs in selected populations cannot establish direction; reverse causation (frailty and fracture cause poor intake) is plausible; secondary hyperparathyroidism is an intermediate endocrine state; glucocorticoids, hypogonadism, immobility, and low body weight are competing causes; the celiac and bariatric bone literatures are sibling or post-surgical scoped and not recycled."
+   ],
+   "sourceIds": [
+    "pmid-42356105",
+    "pmid-42563160"
+   ],
+   "sourceReferenceCount": 2,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "99f0b179c0dc7e8afeebe447870f5305ff887ad441ebdba39a2c7c6c86828039"
   }
  ],
  "lastUpdatedBy": "batch-D1-draft-authoring",

@@ -9477,6 +9477,358 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 **Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
 
+### `macroglossia` → `dysphagia` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Macroglossia documents dysphagia by direct tongue bulk: the light-chain-amyloidosis case presents a progressively enlarging giant tongue causing dysphagia and reduced oral opening over six months, with amyloid confirmed on tongue biopsy (PMID 37995383); the mechanical obstruction is documented at case class without incidence denominators, so the edge records the bulk-effect relationship only.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: the located material documents dysphagia in the setting of massive tongue enlargement, but tongue size and site of enlargement, dental and palatal geometry, treatment timing, and the underlying cause of the macroglossia all require individual review before any causal statement.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 261.1 — Gómez-Piña JJ, Quiroz DM, Sierra-Hernández A, Mendoza-Álvarez SA, Vera-Lastra OL. Lengua gigante causante de disfagia en paciente con amiloidosis de cadenas ligeras [Giant tongue leading to dysphagia in light chain amyloidosis patient]. Rev Med Inst Mex Seguro Soc. 2023 Nov 6;61:863-867. doi:10.5281/zenodo.10064470. PMID 37995383.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/37995383/
+- Source checked on: 2026-09-25
+- Locator: PMID 37995383; case presentation (giant tongue causing dysphagia and reduced oral opening)
+- Note under review: Spanish-language case report of a 60-year-old man with a progressively enlarging giant tongue causing dysphagia and reduced oral opening, with amyloid confirmed on tongue biopsy; supports the bounded mass-effect proposition only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `macroglossia` → `sleep-apnea` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Macroglossia documents obstructive sleep apnea by tongue-base obstruction: the systematic review of tongue reduction for pediatric OSA found all nine included studies (146 patients) reported reduced apnea-hypopnea index and increased minimum oxygen saturation after tongue reduction (PMID 41783520), and the MRI-plus-airway-pressure cohort of 19 OSAS patients with macroglossia versus 19 healthy controls identified velopharyngeal obstruction driven by backward soft-palate displacement from the hypertrophic tongue (PMID 40946365); the improvement-on-reduction design supports the direction tongue enlargement to obstruction.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: the located material documents airway obstruction mechanics and post-reduction improvement in selected patients, but obesity, tonsillar size, craniofacial anatomy, nasal obstruction, and the underlying cause of the macroglossia all require individual review before any causal statement.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 262.1 — Williamson A 4th, Nallani R, Brown JR. Tongue Reduction for Pediatric Obstructive Sleep Apnea: A Systematic Review. OTO Open. 2026 Jan-Mar;10:e70215. doi:10.1002/oto2.70215. PMID 41783520.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/41783520/
+- Source checked on: 2026-09-25
+- Locator: PMID 41783520; systematic review results (AHI reduction across all included studies)
+- Note under review: Systematic review of 9 studies (146 paediatric patients) in which all studies reported reduced apnea-hypopnea index and increased minimum oxygen saturation after tongue reduction for OSA; supports the bounded reduction-design proposition only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 262.2 — Huang M, Chen G. Analysis on the plane and mechanism of tongue-originated obstruction in Obstructive Sleep Apnea Syndrome (OSAS) patients with macroglossia. Braz J Otorhinolaryngol. 2026 Jan-Feb;92:101709. doi:10.1016/j.bjorl.2025.101709. PMID 40946365.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/40946365/
+- Source checked on: 2026-09-25
+- Locator: PMID 40946365; cohort results (RP and RP/RL significantly smaller than controls; obstruction plane analysis)
+- Note under review: Level IV cohort of 19 OSAS patients with macroglossia versus 19 healthy controls using pharyngeal MRI and upper-airway pressure monitoring, localizing velopharyngeal obstruction from the hypertrophic tongue; supports the bounded mechanism proposition only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `malabsorption-syndrome` → `macular-degeneration` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Malabsorption syndromes document age-related macular degeneration risk at claims-network cohort level: the TriNetX retrospective study of propensity-matched adult cohorts found increased AMD risk for Crohn disease (n = 9537, RR 1.42, 95% CI 1.15-1.74), chronic pancreatitis (n = 12856, RR 1.82, 1.53-2.16, persisting in the pancreatic-enzyme-replacement subset), and short bowel syndrome (n = 3747, advanced/exudative AMD RR 1.98, 1.31-2.98), while the celiac stratum was null (n = 9315, RR 1.09, 0.88-1.35) (PMID 41519378); the study frames the exposure class as malabsorption syndromes and the stratum-level heterogeneity including the celiac null is recorded on the edge.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: the located material is a claims-encounter-design retrospective study where diagnosis codes carry misclassification, the inflammatory bowel disease strata carry inflammatory confounding beyond malabsorption, and retinal OCT confirmation of AMD requires individual ophthalmologic review.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 263.1 — Jeong H, Eppel PS, Kaelber DC, Singh RP, Talcott KE. Malabsorption Syndromes and Risk of Age-Related Macular Degeneration. Ophthalmol Retina. 2026 May;10:490-498. doi:10.1016/j.oret.2026.01.002. PMID 41519378.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/41519378/
+- Source checked on: 2026-09-25
+- Locator: PMID 41519378; cohort results (stratum risk ratios with 95% confidence intervals)
+- Note under review: TriNetX retrospective propensity-matched cohort comparing AMD risk across malabsorption-syndrome strata (Crohn RR 1.42; chronic pancreatitis RR 1.82; short bowel advanced AMD RR 1.98; celiac null RR 1.09); supports the bounded stratum-level association only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `malabsorption-syndrome` → `peripheral-neuropathy` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Malabsorption syndromes document peripheral neuropathy through absorbed-nutrient deficiency: the chronic-pancreatitis exocrine-insufficiency case documents sensorimotor peripheral neuropathy from vitamin E deficiency that resolved on vitamin E repletion (PMID 41943771), the food-cobalamin malabsorption review documents peripheral neuropathy among the neurological manifestations of the resulting cobalamin deficiency (PMID 40283381), and the nutritional-neuropathies review covers deficiency-based neuropathy etiologies including malabsorptive routes (PMID 41161993); the repletion-reversal case supports the deficiency route directly.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: the located material documents neuropathy in the setting of specific absorbed-nutrient deficiencies, but which deficiency operated, whether the neuropathy is reversible, diabetes and alcohol comorbidity, and the cause of the malabsorption all require individual electrodiagnostic, serologic, and dietary review.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 264.1 — Chanday R, Sethi B, Ahluwalia S. Clinically Symptomatic Vitamin E-Associated Peripheral Neuropathy: An Overlooked Reversible Neurological Sequela of Exocrine Insufficiency of Chronic Pancreatitis With Type 3c Diabetes. Cureus. 2026 Mar;18:e104766. doi:10.7759/cureus.104766. PMID 41943771.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/41943771/
+- Source checked on: 2026-09-25
+- Locator: PMID 41943771; case presentation and outcome (neuropathy resolved on vitamin E administration)
+- Note under review: Case report of chronic-pancreatitis exocrine-insufficiency vitamin E deficiency causing sensorimotor peripheral neuropathy that resolved on vitamin E repletion, with the authors noting routine misattribution to diabetes; supports the bounded deficiency-route proposition only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 264.2 — Andrès E, Terrade JE, Alonso Ortiz MB, Méndez-Bailón M, Ghiura C, Habib C, Lavigne T, Jannot X, Lorenzo-Villalba N. Unraveling the Enigma: Food Cobalamin Malabsorption and the Persistent Shadow of Cobalamin Deficiency. J Clin Med. 2025 Apr 8;14:2550. doi:10.3390/jcm14082550. PMID 40283381.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/40283381/
+- Source checked on: 2026-09-25
+- Locator: PMID 40283381; review section (neurological manifestations of cobalamin deficiency)
+- Note under review: Narrative review documenting the clinical spectrum of food-cobalamin malabsorption, including peripheral neuropathy and other neurological manifestations with risk of irreversible sequelae; supports the bounded deficiency-spectrum proposition only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 264.3 — Varon M, Pasnoor M, Dimachkie MM. Nutritional Neuropathies. Neurol Clin. 2025 Nov;43:727-741. doi:10.1016/j.ncl.2025.05.010. PMID 41161993.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/41161993/
+- Source checked on: 2026-09-25
+- Locator: PMID 41161993; review (etiologies of nutritional neuropathies)
+- Note under review: Specialty review of nutritional neuropathy etiologies and presentations covering deficiency and excess syndromes including malabsorptive routes; supports the bounded etiologic-class framing only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `malabsorption-syndrome` → `anemia` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Malabsorption syndromes document anemia through absorbed-nutrient deficiency: the food-cobalamin malabsorption review names megaloblastic anemia among the hematological manifestations of the resulting cobalamin deficiency (PMID 40283381), and the tropical-sprue series of 12 patients documents malabsorption notably of vitamin B12 and folate, the substrate of megaloblastic anemia, with histologic response to folate and doxycycline (PMID 24441659); the anemia mechanism is deficiency-class with the sprue cohort providing the malabsorption context.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: the located material documents the deficiency substrate and named hematological manifestation, but which deficiency operated, iron studies and B12/folate levels, bleeding sources, and the cause of the malabsorption all require individual hematologic and gastrointestinal review.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 265.1 — Andrès E, Terrade JE, Alonso Ortiz MB, Méndez-Bailón M, Ghiura C, Habib C, Lavigne T, Jannot X, Lorenzo-Villalba N. Unraveling the Enigma: Food Cobalamin Malabsorption and the Persistent Shadow of Cobalamin Deficiency. J Clin Med. 2025 Apr 8;14:2550. doi:10.3390/jcm14082550. PMID 40283381.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/40283381/
+- Source checked on: 2026-09-25
+- Locator: PMID 40283381; review section (hematological manifestations of cobalamin deficiency)
+- Note under review: Narrative review naming megaloblastic anemia among the hematological manifestations of the cobalamin deficiency produced by food-cobalamin malabsorption; supports the bounded deficiency-anemia proposition only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 265.2 — Brown IS, Bettington A, Bettington M, Rosty C. Tropical sprue: revisiting an underrecognized disease. Am J Surg Pathol. 2014 May;38:666-672. doi:10.1097/PAS.0000000000000153. PMID 24441659.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/24441659/
+- Source checked on: 2026-09-25
+- Locator: PMID 24441659; case series presentation (B12 and folate malabsorption) and treatment response)
+- Note under review: Series of 12 tropical-sprue patients documenting profuse diarrhea and malabsorption notably of vitamin B12 and folate with histologic response to folate and doxycycline; supports the bounded malabsorption-substrate proposition only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `mallet-finger` → `swan-neck-deformity` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Mallet finger documents swan neck deformity as a sequela: the 20-year single-institution review of 25 patients undergoing surgery for swan neck deformity following traumatic mallet finger states that swan neck develops as a sequela of chronic mallet finger, with 64 percent of mallet fingers chronic and 40 percent of injuries failing nonoperative splinting (PMID 37872782), the three-case series documents chronic terminal extensor tendon injury producing mallet deformity with secondary swan neck deformity treated by spiral oblique retinacular ligament reconstruction (PMID 36796158), and the index-finger case documents chronic mallet finger resulting in swan neck deformity from flexor-extensor imbalance (PMID 35734714); the direction is explicit in all three and the review records the sequela as rare.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: the located material documents swan neck deformity in patients selected for its surgical correction, but whether an individual swan neck arose from a mallet injury, from rheumatoid or other inflammatory arthropathy, or from a different extensor imbalance requires individual radiographic, inflammatory-marker, and operative review.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 266.1 — Rode MM, Mullen BL, Zhu AQ, Helsper EA, Moran SL. Surgical Management of Swan Neck Deformity Following Mallet Finger Injury: A Review of 25 Patients Over 20 Years. Hand (N Y). 2025 Mar;20:197-202. doi:10.1177/15589447231205616. PMID 37872782.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/37872782/
+- Source checked on: 2026-09-25
+- Locator: PMID 37872782; cohort characteristics (25 surgical patients, chronic mallet share, failed splinting trials)
+- Note under review: Retrospective 20-year single-institution review of 25 patients with swan neck deformity following traumatic mallet finger, stating the deformity develops as a sequela of chronic mallet finger and that symptomatic cases are rare; supports the bounded sequela proposition only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 266.2 — Suroto H, Aprilya D, Prajasari T, Nugraha AB. Treatment of chronic mallet finger with swan neck deformity using a modified Spiral Oblique Retinacular Ligament (SORL) reconstruction procedure: A case series and technical note. Int J Surg Case Rep. 2023 Mar;104:107925. doi:10.1016/j.ijscr.2023.107925. PMID 36796158.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/36796158/
+- Source checked on: 2026-09-25
+- Locator: PMID 36796158; case series introduction and outcomes (chronic mallet with secondary swan neck)
+- Note under review: Three-case series documenting chronic terminal extensor tendon injury producing mallet deformity and secondary swan neck deformity treated by SORL reconstruction with excellent Crawford outcomes; supports the bounded secondary-deformity proposition only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 266.3 — Sandjaya G, Prabowo I, Patih ID. Terminal extensor tendon reconstruction as a reliable options for chronic mallet finger with swan neck deformity of index finger: A case report. Ann Med Surg (Lond). 2022 Jun;78:103924. doi:10.1016/j.amsu.2022.103924. PMID 35734714.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/35734714/
+- Source checked on: 2026-09-25
+- Locator: PMID 35734714; case presentation (chronic mallet finger with swan neck deformity)
+- Note under review: Case report documenting chronic mallet finger resulting in swan neck deformity from flexor and extensor mechanism imbalance, corrected by terminal extensor tendon reconstruction; supports the bounded imbalance-route proposition only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `mallet-finger` → `post-traumatic-osteoarthritis` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Mallet finger fractures document distal interphalangeal post-traumatic osteoarthritis at long-term cohort level: the 52-patient follow-up study a mean 12.1 years after nonsurgical treatment of mallet finger fractures found radiographic osteoarthritis increase in 41 to 44 percent of fractures, with 23 to 25 percent showing a higher degree than the healthy contralateral joint (PMID 37191605), and the companion methodological report documents the same 12-year post-fracture osteoarthritis assessments (PMID 38839197); the within-person contralateral control design bounds the excess over natural degeneration, and that limitation is recorded on the edge.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: the located material documents long-term radiographic osteoarthritis after mallet fractures but concludes the pattern is similar to the natural degenerative process of the DIP joint, so whether an individual osteoarthritis arose from the injury or from ordinary degeneration requires individual radiographic and occupational review.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 267.1 — Slichter ME, Mathijssen NMC, Yau CCL, Koobs L, Kraan GA. Posttraumatic Osteoarthritis of the Distal Interphalangeal Joint: A Follow-Up Study of 12 Years After Nonsurgical Treatment of Mallet Finger Fractures. J Hand Surg Am. 2023 Jul;48:691-698. doi:10.1016/j.jhsa.2023.03.027. PMID 37191605.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/37191605/
+- Source checked on: 2026-09-25
+- Locator: PMID 37191605; cohort results (OA prevalence, contralateral comparison, PROM correlations)
+- Note under review: Cohort of 52 patients at a mean 12.1 years after nonsurgical treatment of mallet finger fractures: radiographic OA increase in 41-44% of fractures, 23-25% higher degree than the healthy contralateral joint, with the conclusion that the pattern is similar to natural DIP degeneration; supports the bounded long-term association and its counter-framing.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 267.2 — Slichter ME, Mathijssen NMC, Yau CCL, Koobs L, Kraan GA. Rater Agreement of Post-Traumatic Osteoarthritis of the Distal Interphalangeal Joint 12 Years After a Mallet Finger Fracture. J Hand Surg Am. 2024 Jun;49:e5-e6. doi:10.1016/j.jhsa.2024.03.012. PMID 38839197.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/38839197/
+- Source checked on: 2026-09-25
+- Locator: PMID 38839197; report title and scope (rater agreement for PTOA assessment post mallet fracture)
+- Note under review: Companion methodological report on rater agreement for the post-traumatic osteoarthritis assessments 12 years after mallet finger fracture; supports the bounded assessment-reliability context only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `mallet-toes` → `metatarsalgia` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Mallet toes document metatarsalgia through altered forefoot loading: the orthoses review names mallet toe among the deformities whose resulting metatarsalgia responds best to orthotic comfort measures (PMID 39500821), the conservative-management review documents metatarsal head pain arising from intrinsic and extrinsic imbalances of the gait cycle with secondary metatarsalgia classification (PMID 29362036), and the forefoot review documents the complex pathophysiology of lesser toe deformities with forefoot pain attributable to multiple competing structures (PMID 24559872); the anchors are lesser-toe class with mallet toe named inclusively, so the edge records the documented load-transfer relationship only.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: the located material pools lesser toe deformities without mallet-specific stratification, and whether an individual metatarsalgia arose from a mallet toe, from plantar plate injury, Morton neuritis, hallux pathology, or footwear requires individual forefoot examination and pressure review.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 268.1 — Colò G, Fusini F, Melato M, De Tullio V, Logrieco G, Leigheb M, Surace MF. The effectiveness of shoe modifications and foot orthoses in conservative treatment of lesser toe deformities: a review of literature. Musculoskelet Surg. 2025 Sep;109:225-232. doi:10.1007/s12306-024-00871-9. PMID 39500821.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/39500821/
+- Source checked on: 2026-09-25
+- Locator: PMID 39500821; review section (orthotic relevance for metatarsalgia from mallet and claw toe)
+- Note under review: Narrative review of orthotic treatment for lesser toe deformities naming mallet toe among the deformities whose resulting metatarsalgia responds best to orthotic comfort measures; supports the bounded inclusive-class proposition only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 268.2 — Federer AE, Tainter DM, Adams SB, Schweitzer KM Jr. Conservative Management of Metatarsalgia and Lesser Toe Deformities. Foot Ankle Clin. 2018 Mar;23:9-20. doi:10.1016/j.fcl.2017.09.003. PMID 29362036.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/29362036/
+- Source checked on: 2026-09-25
+- Locator: PMID 29362036; review (pathophysiology and classification of metatarsalgia)
+- Note under review: Review documenting metatarsal head pain arising from intrinsic and extrinsic gait-cycle imbalances with primary, secondary, and iatrogenic metatarsalgia classification; supports the bounded load-transfer framing only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 268.3 — DiPreta JA. Metatarsalgia, lesser toe deformities, and associated disorders of the forefoot. Med Clin North Am. 2014 Mar;98:233-251. doi:10.1016/j.mcna.2013.10.003. PMID 24559872.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/24559872/
+- Source checked on: 2026-09-25
+- Locator: PMID 24559872; review (lesser toe deformity pathophysiology and forefoot pain sources)
+- Note under review: Review documenting the complex pathophysiology of lesser toe deformities and the competing sources of forefoot pain including interdigital neuritis, plantar skin disorders, and gastrocsoleus contracture; supports the bounded class framing and the alternative-etiology record.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `malnutrition-residuals` → `anemia` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Malnutrition documents anemia at review level: the micronutrient and protein-energy malnutrition review of free-living older adults states that protein-energy malnutrition results in a range of health issues including anemia, and that iron and iodine deficiencies contribute to anemia (PMID 38193299); the relationship is named at narrative-review class in an older-adult population without incidence denominators, so the edge records the named consequence only.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: the located material names anemia among the consequences of protein-energy and specific micronutrient deficiencies, but which deficiency operated, iron studies and B12/folate levels, bleeding sources, and chronic disease status all require individual hematologic review.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 269.1 — Alvarez-Nuncio MDC, Ziegler TR. Micronutrient status and protein-energy malnutrition in free-living older adults: a current perspective. Curr Opin Gastroenterol. 2024 Mar 1;40:99-105. doi:10.1097/MOG.0000000000001000. PMID 38193299.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/38193299/
+- Source checked on: 2026-09-25
+- Locator: PMID 38193299; review summary (malnutrition consequences including anemia)
+- Note under review: Current-perspective review naming anemia among the health consequences of protein-energy malnutrition in free-living older adults and attributing anemia to iron and iodine deficiencies; supports the named-consequence proposition only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `malnutrition-residuals` → `peripheral-neuropathy` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Malnutrition documents peripheral neuropathy through deficiency of neurotrophic nutrients: the nutritional-neuropathies specialty review covers the etiologies and presentations of neuropathies caused by nutritional deficiency and excess (PMID 41161993), and the protein-energy malnutrition review states that B12 and C deficiencies pose health risks including neurological disorders (PMID 38193299); the relationship is review class without incidence denominators, so the edge records the deficiency route only.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: the located material documents deficiency-based neuropathy etiologies, but which deficiency operated, electrodiagnostic findings, diabetes and alcohol comorbidity, and reversibility on repletion all require individual neurologic and serologic review.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 270.1 — Varon M, Pasnoor M, Dimachkie MM. Nutritional Neuropathies. Neurol Clin. 2025 Nov;43:727-741. doi:10.1016/j.ncl.2025.05.010. PMID 41161993.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/41161993/
+- Source checked on: 2026-09-25
+- Locator: PMID 41161993; review (etiologies of nutritional neuropathies)
+- Note under review: Specialty review of the etiologies and varied presentations of nutritional neuropathies covering deficiency and excess syndromes with epidemiology, risk factors, prevention, and treatment; supports the bounded deficiency-route proposition only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 270.2 — Alvarez-Nuncio MDC, Ziegler TR. Micronutrient status and protein-energy malnutrition in free-living older adults: a current perspective. Curr Opin Gastroenterol. 2024 Mar 1;40:99-105. doi:10.1097/MOG.0000000000001000. PMID 38193299.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/38193299/
+- Source checked on: 2026-09-25
+- Locator: PMID 38193299; review summary (B12 and C deficiency neurological risks)
+- Note under review: Current-perspective review stating that B12 and C deficiencies in older adults pose health risks including neurological disorders; supports the bounded deficiency-neurology proposition only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `malnutrition-residuals` → `osteoporosis` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Malnutrition documents reduced bone mineral density at observational cohort level: the 108-patient proximal femoral fragility-fracture study found patients classified as malnourished by GNRI or PNI had significantly lower femoral neck bone mineral density, lower 25-hydroxyvitamin D, and higher bone turnover markers than well-nourished patients, with nutritional indices independently associated with femoral neck BMD after adjustment for age, sex, and body mass index (PMID 42356105), and the 1202-patient study of very old hospitalized adults found vitamin D deficiency in 68.6 percent with secondary hyperparathyroidism in 13.7 percent and significantly lower hip BMD with elevated PTH (PMID 42563160); the association is cross-sectional in both, so the edge records the documented bone-density relationship only.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: the located material is cross-sectional in fracture and hospitalized populations where low body weight, immobility, inflammation, and hypogonadism co-vary with malnutrition, so whether an individual osteoporosis arose from nutritional deficit, from the secondary hyperparathyroidism mediator, or from another cause requires individual densitometry, endocrine, and dietary review.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 271.1 — Iinuma M, Hideshima T, Machida S, Uehara K, Karube T, Sato K, Haraguchi N. Nutritional Status Is Associated with Bone Mineral Density, Vitamin D Levels, and Bone Turnover Markers in Patients with Proximal Femoral Fragility Fractures: A Retrospective Observational Study. Medicina (Kaunas). 2026 Jun 4;62:1092. doi:10.3390/medicina62061092. PMID 42356105.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42356105/
+- Source checked on: 2026-09-25
+- Locator: PMID 42356105; cohort results (GNRI/PNI/CONUT correlations and multivariate models)
+- Note under review: Retrospective observational study of 108 proximal femoral fragility-fracture patients: malnourished patients had significantly lower femoral neck BMD and 25(OH)D and higher bone turnover markers, with nutritional indices independently associated with femoral neck BMD; supports the bounded cross-sectional association only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 271.2 — Kopanos S, Scheel S, Eggert B, Rübberdt A, Muth C, Thiem U, Feldkamp J. Secondary hyperparathyroidism and lower hip bone mineral density in very old hospitalized adults: a real-world endocrine bone study. BMC Endocr Disord. 2026 Aug 6;26:225. doi:10.1186/s12902-026-02456-y. PMID 42563160.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42563160/
+- Source checked on: 2026-09-25
+- Locator: PMID 42563160; cohort results (vitamin D prevalence, PTH-BMD association)
+- Note under review: Cross-sectional study of 1202 hospitalized adults aged 70 and over: vitamin D deficiency in 68.6%, secondary hyperparathyroidism in 13.7%, and significantly lower hip BMD with elevated PTH after age and sex adjustment; supports the bounded endocrine-mediation route only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
 ## Implementation mechanics after decisions
 
 - Mapping edits and registry edits must land in lockstep (the registry audit's canonical-JSON hashes and live-use sets will fail otherwise).
