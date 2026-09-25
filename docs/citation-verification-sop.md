@@ -42,6 +42,8 @@ console.log('sha256-' + createHash('sha256').update(body, 'utf8').digest('hex'))
 
 The digest is anchored to the URL and the `sourceCheckedOn` date (the schema rejects one without the other). A mismatch on a later probe means the source changed under the claim: re-verify the proposition, refresh the digest and date, or withdraw the reference — never leave a drifted digest attached to a live claim. Dynamic pages whose body changes per fetch (search endpoints, rotating dashboards) must not receive a digest; omit it rather than record a value that will false-positive.
 
+**Coverage is ratcheted, not backfilled.** Because a digest may only be recorded at this step, no script may populate one after the fact: a digest computed later is not anchored to the recorded `sourceCheckedOn` date, so it would misrepresent when the content was actually verified. `npm run citations:decay` therefore reports how much of the verified corpus drift detection can genuinely see (`contentDriftDetectable`, `contentDriftCoveragePercent`, `verifiedWithoutDigestCount`) and pins the undigested backlog at `MAX_UNDIGESTED_VERIFIED_REFS` in `scripts/audit-citation-decay.js`. Recording a digest shrinks the backlog; adding a `verified: true` reference without one fails the audit. Lower the pin as digests are recorded — never raise it to accommodate new debt.
+
 ## Retiring a previously verified citation
 
 A verified citation must not remain attached to a live relationship solely to protect a verification count when later review shows that the source is inapplicable to that relationship or the relationship itself should be withdrawn.

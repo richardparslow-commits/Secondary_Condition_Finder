@@ -49,6 +49,10 @@ jobs:
               '- live references: ' + report.liveReferences,
               '- link rot: ' + report.linkRotCount,
               '- content drift: ' + report.contentDriftCount,
+              '- content drift detectable: ' + report.contentDriftDetectable +
+                ' (' + report.contentDriftCoveragePercent + '% of ' + report.verifiedReferenceCount +
+                ' verified references carry a digest; ' + report.verifiedWithoutDigestCount +
+                ' await a qualified-human digest, ratchet ' + report.maxUndigestedVerifiedRefs + ')',
               '- stale (tiered windows): ' + report.staleCount,
               '- bot-blocked (unverifiable by probe): ' + report.botBlockedUnverifiableCount,
               '- unverified: ' + report.unverifiedCount,
@@ -111,6 +115,8 @@ jobs:
             `| --- | --- |`,
             `| link rot | ${report.linkRotCount} |`,
             `| content drift | ${report.contentDriftCount} |`,
+            `| content drift detectable | ${report.contentDriftDetectable} (${report.contentDriftCoveragePercent}% digest coverage) |`,
+            `| verified refs awaiting a digest | ${report.verifiedWithoutDigestCount}/${report.verifiedReferenceCount} (ratchet ${report.maxUndigestedVerifiedRefs}) |`,
             `| stale | ${report.staleCount} |`,
             `| unverified | ${report.unverifiedCount} |`,
             `| ceiling usage | ${report.citationCeilingUsage}/${report.citationCeiling} |`,
