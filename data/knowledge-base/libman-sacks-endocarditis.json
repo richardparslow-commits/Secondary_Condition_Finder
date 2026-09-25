@@ -2,8 +2,145 @@
   "id": "libman-sacks-endocarditis",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review hemodynamic, vascular, thrombotic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 53 (2026-09-25): two ASSOCIATION_ONLY draft mappings pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: both edges assert association only (etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true) - the stroke edge on mechanismCategory THROMBOTIC_OR_VASCULAR and the valvular edge on IMMUNE_MEDIATED - because the evidence base for this rare entity is diagnostic-series and case-report class. Individual claims require echocardiographic documentation of Libman-Sacks vegetations (transesophageal echocardiography where transthoracic studies are nondiagnostic), documented chronology between the endocarditis and the claimed secondary, and exclusion of the competing embolic, valvular, and lupus-related causes recorded on each edge.",
+    "Pathway and duplicate-scope screens: no direct -> congestive-heart-failure edge (the documented pump-failure pathway runs through progressive valvular dysfunction and is carried by the published heart-valve-disorders -> congestive-heart-failure window on the intermediate-node rule, the laryngomalacia-to-malnutrition precedent of batch 52; the located heart-failure material is recorded on the valvular edge as mediator context); no -> systemic-lupus-erythematosus edge (direction guard - Libman-Sacks endocarditis is a cardinal cardiac manifestation of systemic lupus erythematosus, so the pair is inbound and belongs to the lupus identity's mapping); no -> valvular-heart-disease edge (near-synonymous valve identity in the same catalog wave - one valvular target only, heart-valve-disorders, to avoid parallel pathways across the twin valve identities); no -> pulmonary-embolism or -> deep-vein-thrombosis edge (left-sided sterile vegetations embolize arterially, while venous thrombosis is antiphospholipid-syndrome co-scope); no -> thrombocytopenia or -> cardiac-arrhythmia edge (treatment and comorbidity context only - the atrial fibrillation in the Ishizu case predates the endocarditis presentation and no Libman-Sacks-specific arrhythmia quantification was located)."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 53 (2026-09-25): two bounded association edges authored - libman-sacks-endocarditis to cerebrovascular-accident-stroke-residuals (rank 1, THROMBOTIC_OR_VASCULAR) and to heart-valve-disorders (rank 2, IMMUNE_MEDIATED) - both classified ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, and hypothesizedOnly:true. The stroke proposition rests on the Roldan 2008 randomized paired-transthoracic-versus-transesophageal echocardiography study of 81 patients with systemic lupus erythematosus and 75 controls, in which Libman-Sacks endocarditis was more common in patients than controls by both modalities (p < 0.001), the authors framing the entity as complicated by thromboembolism, severe valve regurgitation, need for high-risk valve surgery, or death, and recommending transesophageal imaging in suspected cardioembolism (PMID 18085739); on the Malvar 2011 report of recurrent transient ischemic attacks with visual loss and central facial palsy, multiple small right-hemisphere ischemic lesions, and mitral verrucous vegetations requiring mitral replacement for extensive valvular damage, with negative valve microbiology establishing Libman-Sacks endocarditis (PMID 22693297); and on the Yazidi 2023 report of ischemic stroke revealing Libman-Sacks endocarditis with mitral vegetations, severe mitral regurgitation, negative blood cultures, and positive antibodies in a man with lupus and antiphospholipid syndrome (PMID 38116400). The valvular proposition rests on the Ishizu 2019 case documenting that Libman-Sacks vegetations cause valvular stenosis and/or regurgitation, with oedematous leaflet thickening and poor coaptation producing severe mitral regurgitation and acute decompensated heart failure (PMID 31377769), on the Georghiou 2003 double-valve report of moderate aortic and moderate-to-severe mitral regurgitation from Libman-Sacks endocarditis requiring double valve replacement for intractable heart failure, whose literature survey disclosed only nine prior double-valve replacements in lupus and concluded that the valvular disease changes with time and carries substantial morbidity and mortality (PMID 14658823), and on the Ningyan 2021 report of severe mitral regurgitation from Libman-Sacks endocarditis with progressive left ventricular dilatation and ejection-fraction reduction treated by transcatheter edge-to-edge repair (PMID 34661053). Both propositions record sterile vegetation embolization and immune-complex valvular injury as hypotheses rather than established individual causation.",
+    "Counter-evidence and caveat screens recorded 2026-09-25: (i) evidence class - Libman-Sacks endocarditis is rare and the quantified material is a single 81-patient imaging study plus case reports and surgical series, with no incidence cohorts for stroke or valvular progression; (ii) antiphospholipid co-scope - three of the stroke and valve cases carry antiphospholipid syndrome or antibodies, whose prothrombotic state independently produces arterial and venous thrombosis and whose immunoglobulin and complement deposits are found in the affected valves, so vegetation embolization and antibody-mediated thrombosis are not separable case by case; (iii) detection bias - transthoracic echocardiography sensitivity for Libman-Sacks endocarditis was 63 percent overall and 11 percent for vegetations against the transesophageal standard (PMID 18085739), so prevalence and event attribution are modality-dependent; (iv) treatment mediation - anticoagulation, immunosuppression, and valve surgery alter both the embolic risk and the valvular natural history, and corticosteroids are reported to increase leaflet fibrosis and scarring even as they suppress the acute inflammatory thickening (PMID 31377769); (v) the identity is a secondary-leukemia-style target of the systemic-lupus-erythematosus mapping for the inbound direction only.",
+    "Negative screens recorded 2026-09-25: (i) no direct congestive-heart-failure edge - heart failure is documented in the Georghiou, Ishizu, Ningyan, and Bani Hani reports but always through severe valvular regurgitation, so the pathway is carried by the heart-valve-disorders -> congestive-heart-failure window (intermediate-node rule); (ii) no systemic-lupus-erythematosus edge (upstream manifestation, direction guard); (iii) no pulmonary-embolism, deep-vein-thrombosis, or thrombocytopenia edge (arterial-left-sided embolization only; venous and cytopenic phenomena are antiphospholipid and treatment co-scope); (iv) no infective-endocarditis or cardiac-inflammatory-disease edge (the sterile vegetations are the diagnostic lesion itself - constitutive guard - and superimposed culture-negative infective endocarditis is a differential to exclude rather than a secondary); (v) no -> renal or -> pulmonary edge (no Libman-Sacks-specific renal or pulmonary outcome quantification was located; lupus nephritis and bronchiectasis in the case material are lupus comorbidity)."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "cerebrovascular-accident-stroke-residuals",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The Roldan 2008 randomized study of paired transthoracic and transesophageal echocardiography in 81 patients with systemic lupus erythematosus and 75 controls found Libman-Sacks endocarditis significantly more common in patients than controls by both modalities (p < 0.001), framed the entity as complicated by thromboembolism, severe valve regurgitation, need for high-risk valve surgery, or death, and recommended transesophageal echocardiography as the initial test in patients with suspected cardioembolism (PMID 18085739); the Malvar 2011 report documents recurrent transient ischemic attacks followed by central facial palsy with multiple small right-hemisphere ischemic lesions and mitral verrucous vegetations requiring mitral valve replacement for extensive valvular damage, with negative valve microbiology establishing Libman-Sacks endocarditis as the embolic source (PMID 22693297); the Yazidi 2023 report documents ischemic stroke as the presenting event that revealed Libman-Sacks endocarditis, with mitral vegetations, severe mitral regurgitation, negative blood cultures, and positive antibodies in a patient with lupus and antiphospholipid syndrome (PMID 38116400); the literature documents recurrent cerebral ischemic events attributed to sterile vegetation embolization in imaging-series and case-level material without establishing that the endocarditis caused an individual's stroke.",
+        "causationStatus": "The mapping does not assert that Libman-Sacks endocarditis caused an individual's cerebrovascular accident: the vegetations are one of several embolic and thrombotic sources in the same populations, antiphospholipid antibodies independently produce arterial thrombosis and were positive in two of the three anchor cases, lupus vasculopathy and traditional stroke risks coexist, the quantified material is a single imaging study plus case reports, and transesophageal imaging is required to even detect most vegetations (transthoracic sensitivity 11 percent for vegetations) - so attribution requires echocardiographic documentation, chronology, and competing-cause exclusion per case, and no directional claim is made."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "THROMBOTIC_OR_VASCULAR",
+        "primaryVector": "A hypothesized embolic route is described: sterile verrucous vegetations of fibrin and platelets deposited on the mitral and aortic valve endothelium organize and fragment, releasing systemic arterial emboli that occlude cerebral vessels and produce ischemic infarction, a route the anchor case material illustrates with recurrent cerebral ischemic events and valve-level vegetations and surgery; antiphospholipid antibodies may amplify the thrombotic tendency at the vegetation surface, so the individual share of embolization versus antibody-mediated thrombosis remains a hypothesis.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Cerebral ischemic events are documented in imaging-series framing and case reports of echocardiographically confirmed Libman-Sacks endocarditis, but individual determination requires transesophageal echocardiographic documentation of vegetations with valve localization, dated brain imaging, documentation of the chronology between the endocarditis and the stroke, antiphospholipid antibody testing, and exclusion of the competing embolic and thrombotic causes, with review by a qualified medical professional.",
+        "evidenceGaps": "Echocardiographic documentation of Libman-Sacks vegetations (transesophageal study preferred, with the transthoracic study and any nondiagnostic transthoracic results noted), valve involved, vegetation size and mobility, and any associated regurgitation, with study dates; brain imaging (computed tomography or magnetic resonance) documenting the infarct pattern and date, and any prior transient ischemic attacks; antiphospholipid antibody panel results (lupus anticoagulant, anticardiolipin, anti-beta-2-glycoprotein) with dates and anticoagulation status; systemic lupus erythematosus disease activity documentation and treatment (immunosuppression, anticoagulation, antiplatelet) with chronology; documentation of competing stroke etiologies - atrial fibrillation or other cardioembolic sources, large-artery atherosclerosis, small-vessel disease, hypotension, cerebral vasculitis; neurology and rheumatology or cardiology assessment attributing the stroke to vegetation embolization",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Antiphospholipid-syndrome thrombosis without vegetation embolization",
+          "Cardiogenic embolism from atrial fibrillation, valvular stasis, or infective endocarditis",
+          "Large-artery atherosclerotic or small-vessel lacunar cerebrovascular disease",
+          "Systemic lupus erythematosus cerebral vasculitis or antiphospholipid cerebral vasculopathy",
+          "Perioperative or peri-hypotensive watershed infarction",
+          "Coagulopathy of chronic illness or anticoagulation-related hemorrhage converted to infarct"
+        ]
+      },
+      "evidenceGaps": [
+        "Echocardiographic documentation of Libman-Sacks vegetations (transesophageal study preferred, with the transthoracic study and any nondiagnostic transthoracic results noted), valve involved, vegetation size and mobility, and any associated regurgitation, with study dates; brain imaging (computed tomography or magnetic resonance) documenting the infarct pattern and date, and any prior transient ischemic attacks; antiphospholipid antibody panel results (lupus anticoagulant, anticardiolipin, anti-beta-2-glycoprotein) with dates and anticoagulation status; systemic lupus erythematosus disease activity documentation and treatment (immunosuppression, anticoagulation, antiplatelet) with chronology; documentation of competing stroke etiologies - atrial fibrillation or other cardioembolic sources, large-artery atherosclerosis, small-vessel disease, hypotension, cerebral vasculitis; neurology and rheumatology or cardiology assessment attributing the stroke to vegetation embolization"
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY: an 81-patient randomized paired-imaging study frames Libman-Sacks endocarditis as complicated by thromboembolism and recommends transesophageal imaging in suspected cardioembolism, and case-level material documents recurrent cerebral ischemic events with echocardiographic vegetations and negative valve microbiology, but the evidence class is imaging-series plus case reports, antiphospholipid antibodies are a parallel prothrombotic driver in most anchors, and vegetations are detectable only on transesophageal studies in the majority of cases, so the conservative standard keeps the edge at association only with the embolic route reported as a hypothesis.",
+      "sourceReferences": [
+        {
+          "citation": "Roldan CA, Qualls CR, Sopko KS, Sibbitt WL Jr. Transthoracic versus transesophageal echocardiography for detection of Libman-Sacks endocarditis: a randomized controlled study. J Rheumatol. 2008 Feb;35(2):224-229. PMID 18085739.",
+          "note": "Randomized paired-imaging study of 81 patients with systemic lupus erythematosus and 75 controls: Libman-Sacks endocarditis more common in patients (p < 0.001), complicated by thromboembolism, severe valve regurgitation, high-risk valve surgery, or death, with transesophageal echocardiography recommended in suspected cardioembolism and transthoracic sensitivity 63 percent overall and 11 percent for vegetations - the prevalence, complication-framing, and detection-bias anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/18085739/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 18085739; Libman-Sacks endocarditis complicated by thromboembolism in 81-patient SLE imaging study, TEE for suspected cardioembolism"
+        },
+        {
+          "citation": "Malvar B, Almeida FM, Rebocho L, Moniz JC, Azevedo F. Cerebral embolism from Libman-Sacks endocarditis. BMJ Case Rep. 2011 Jun 30;2011:bcr0420114071. doi:10.1136/bcr.04.2011.4071. PMID 22693297.",
+          "note": "Case report of recurrent transient ischemic attacks with visual loss and central facial palsy, multiple small right-hemisphere ischemic lesions, and mitral verrucous vegetations requiring mitral replacement for extensive valvular damage, with negative valve microbiology establishing Libman-Sacks endocarditis and the authors urging endocarditis suspicion in sequential cerebral ischaemia - the case-level cerebral-embolism anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/22693297/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 22693297; cerebral embolism from Libman-Sacks mitral vegetations, sequential cerebral ischaemia, sterile valve at surgery"
+        },
+        {
+          "citation": "Yazidi MA, Merzouk FZ, Rabii H, Benyoussef H, Bensahi I, Habbal R. Ischemic Stroke Revealing Libman-Sacks Endocarditis: A Case Report. J Saudi Heart Assoc. 2023 Nov 27;35:335-338. doi:10.37616/2212-5043.1360. PMID 38116400.",
+          "note": "Case report of ischemic stroke presenting with fever that revealed mitral vegetations with severe mitral regurgitation, negative blood cultures, and positive antibodies establishing Libman-Sacks endocarditis with lupus and antiphospholipid syndrome - the stroke-as-presentation anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38116400/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 38116400; ischemic stroke revealing Libman-Sacks endocarditis, mitral vegetations with severe regurgitation, negative cultures"
+        }
+      ]
+    },
+    {
+      "conditionId": "heart-valve-disorders",
+      "rank": 2,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The Ishizu 2019 case report describes Libman-Sacks endocarditis as characterized by non-bacterial verrucous vegetations causing valvular stenosis and/or regurgitation, documenting oedematous thickening and poor coaptation of mitral segments producing severe mitral regurgitation and acute decompensated heart failure, with corticosteroid therapy reported elsewhere to increase valve fibrosis and scarring and worsen valve function (PMID 31377769); the Georghiou 2003 report documents moderate aortic regurgitation and moderate-to-severe mitral regurgitation due to Libman-Sacks endocarditis requiring double valve replacement for intractable heart failure, with a literature survey disclosing only nine prior double-valve replacements in systemic lupus erythematosus and concluding that the valvular disease changes frequently with time, is temporally unrelated to other lupus features, and carries substantial morbidity and mortality (PMID 14658823); the Ningyan 2021 report documents severe mitral regurgitation from Libman-Sacks endocarditis with progressive exertional dyspnea, left ventricular dilatation, and ejection-fraction reduction treated by transcatheter edge-to-edge repair (PMID 34661053); the literature documents progressive valvular thickening and dysfunction following Libman-Sacks vegetations in case and surgical-series material without establishing that the endocarditis produced valvular disease in any individual.",
+        "causationStatus": "The mapping does not assert that Libman-Sacks endocarditis caused an individual's valvular disorder: the vegetations themselves are the diagnostic lesion of the endocarditis, so the edge is scoped to the progressive dysfunction - leaflet thickening, fibrosis, retraction, and the resulting regurgitation or stenosis - documented after the endocarditis is established; the anchors are case reports and a surgical literature survey without incidence denominators, degenerative, rheumatic, and functional valve disease coexist in the same age and sex range, antiphospholipid antibody deposits are found in affected valves as a parallel driver, and treatment (immunosuppression, anticoagulation, surgery) alters the natural history - so no directional claim is made."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "IMMUNE_MEDIATED",
+        "primaryVector": "A hypothesized immune-injury route is described: immunoglobulin and complement deposits on valvular endothelium provoke inflammation that deposits sterile fibrin-and-platelet verrucous vegetations on the leaflets; organization of the vegetations produces fibrosis and scarring, with leaflet thickening, retraction, and impaired coaptation yielding regurgitation (mitral more than aortic) or, less often, stenosis; the anchor cases illustrate the sequence from vegetation to oedematous thickening to severe regurgitation and to surgically resected sterile verrucous vegetations, but the progression rate and individual attributable share remain hypotheses.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Progressive valvular thickening and regurgitation are documented in case reports and surgical series of echocardiographically confirmed Libman-Sacks endocarditis, but individual determination requires transesophageal echocardiographic documentation of vegetations with serial valve imaging, dated severity grading of the regurgitation or stenosis, exclusion of degenerative, rheumatic, infective, and functional valve disease, and review by a qualified medical professional.",
+        "evidenceGaps": "Serial echocardiographic documentation (transesophageal preferred) of Libman-Sacks vegetations with valve localization, leaflet thickness and mobility, coaptation, and the grade and hemodynamics of any regurgitation or stenosis, with study dates and any progression on serial studies; operative or pathology records where valve surgery was performed (sterile verrucous vegetation confirmation, negative cultures); systemic lupus erythematosus and antiphospholipid antibody documentation with disease-activity and treatment chronology (corticosteroids, immunosuppression, anticoagulation); documentation of New York Heart Association functional status, heart-failure diagnostics (ejection fraction, chamber dimensions, natriuretic peptides) where the dysfunction progressed; exclusion of competing valve etiologies (degenerative or myxomatous disease, rheumatic heart disease, infective endocarditis, functional regurgitation from annular dilatation or cardiomyopathy, congenital valve disease); cardiology and cardiothoracic-surgery assessment of the valvular dysfunction attribution",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Degenerative or myxomatous valvular disease",
+          "Rheumatic heart disease",
+          "Superimposed culture-negative or infective endocarditis",
+          "Functional regurgitation from annular dilatation (cardiomyopathy, volume overload, atrial fibrillation)",
+          "Antiphospholipid antibody valvulopathy without vegetation embolization or inflammation",
+          "Corticosteroid-related or treatment-mediated fibrotic progression"
+        ]
+      },
+      "evidenceGaps": [
+        "Serial echocardiographic documentation (transesophageal preferred) of Libman-Sacks vegetations with valve localization, leaflet thickness and mobility, coaptation, and the grade and hemodynamics of any regurgitation or stenosis, with study dates and any progression on serial studies; operative or pathology records where valve surgery was performed (sterile verrucous vegetation confirmation, negative cultures); systemic lupus erythematosus and antiphospholipid antibody documentation with disease-activity and treatment chronology (corticosteroids, immunosuppression, anticoagulation); documentation of New York Heart Association functional status, heart-failure diagnostics (ejection fraction, chamber dimensions, natriuretic peptides) where the dysfunction progressed; exclusion of competing valve etiologies (degenerative or myxomatous disease, rheumatic heart disease, infective endocarditis, functional regurgitation from annular dilatation or cardiomyopathy, congenital valve disease); cardiology and cardiothoracic-surgery assessment of the valvular dysfunction attribution"
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY following the aneurysm-to-valve structural precedent: case reports and a surgical literature survey document that Libman-Sacks verrucous vegetations cause valvular stenosis and regurgitation progressing to severe dysfunction and valve replacement, with immune-complex deposition and fibrosis as the described pathway, but the evidence class is case-level without incidence denominators, the vegetations are themselves the diagnostic lesion so the edge is scoped to the progressive dysfunction, and competing degenerative, rheumatic, and functional valve disease must be excluded per case; the pump-failure pathway downstream of the regurgitation is deliberately not double-authored and rides the published heart-valve-disorders -> congestive-heart-failure window (intermediate-node rule).",
+      "sourceReferences": [
+        {
+          "citation": "Ishizu K, Isotani A, Yamaji K, Ando K. Immunosuppressive therapy to reduce mitral regurgitation in Libman-Sacks endocarditis: a case report. Eur Heart J Case Rep. 2019 Sep;3(3):ytz133. doi:10.1093/ehjcr/ytz133. PMID 31377769.",
+          "note": "Case report describing Libman-Sacks endocarditis as non-bacterial verrucous vegetations causing valvular stenosis and/or regurgitation, with oedematous leaflet thickening and poor coaptation producing severe mitral regurgitation and acute decompensated heart failure, and corticosteroid therapy documented to increase valve fibrosis and scarring - the vegetation-to-dysfunction and treatment-fibrosis anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/31377769/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 31377769; Libman-Sacks vegetations causing valvular stenosis and/or regurgitation, severe mitral regurgitation with acute decompensated heart failure"
+        },
+        {
+          "citation": "Georghiou GP, Shapira Y, Drozd T, Erez E, Raanani E, Vidne BA, Sahar G. Double-valve Libman-Sacks endocarditis: an entity that demands special consideration. J Heart Valve Dis. 2003 Nov;12(6):797-801. PMID 14658823.",
+          "note": "Case report with literature survey: moderate aortic and moderate-to-severe mitral regurgitation due to Libman-Sacks endocarditis required double valve replacement for intractable heart failure; only nine prior double-valve replacements in lupus were found, and the valvular disease changes frequently with time and carries substantial morbidity and mortality - the surgical-progression anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/14658823/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 14658823; double-valve Libman-Sacks regurgitation requiring replacement, literature survey of nine prior cases, substantial morbidity and mortality"
+        },
+        {
+          "citation": "Ningyan W, Jappar IA, See Hooi E, Khung Keong Y. Severe mitral regurgitation from Libman-Sacks endocarditis treated with MitraClip: a case report. Eur Heart J Case Rep. 2021 Oct;5(10):ytab361. doi:10.1093/ehjcr/ytab361. PMID 34661053.",
+          "note": "Case report of severe mitral regurgitation from Libman-Sacks endocarditis with progressive exertional dyspnea (NYHA II to III), left ventricular dilatation, and ejection-fraction reduction treated with transcatheter edge-to-edge repair - the dysfunction-progression and ventricular-remodeling anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34661053/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 34661053; severe mitral regurgitation from Libman-Sacks endocarditis with LV dilatation and EF reduction, MitraClip treatment"
+        }
+      ]
+    }
+  ]
 }

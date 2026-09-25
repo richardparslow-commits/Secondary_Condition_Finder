@@ -16,16 +16,16 @@
   "citationPromotionMustAtomicallyUpdateKbAndMasterSourceState": true
  },
  "counts": {
-  "liveSourceReferenceUses": 943,
+  "liveSourceReferenceUses": 982,
   "activeSourceEntities": 346,
-  "pendingVerificationSourceEntities": 515,
+  "pendingVerificationSourceEntities": 548,
   "activeClinicalSourceEntities": 345,
-  "pendingClinicalSourceEntities": 515,
+  "pendingClinicalSourceEntities": 548,
   "activeLegalAuthorityEntities": 1,
   "retiredOnlySourceEntities": 1,
   "supersededUnverifiedSourceEntities": 7,
   "bibliographicCorrectionOnlyEntities": 1,
-  "totalSourceEntitiesIncludingLineage": 870,
+  "totalSourceEntitiesIncludingLineage": 903,
   "retiredVerifiedRelationshipSourceUses": 6
  },
  "retirementLedger": {
@@ -12846,7 +12846,7 @@
    "sourceCheckedOnValues": [
     "2026-09-03"
    ],
-   "liveUsageCount": 2,
+   "liveUsageCount": 3,
    "liveUses": [
     {
      "relationshipId": "rel-ankle-disarticulation-to-phantom-limb-pain",
@@ -12859,12 +12859,19 @@
      "primaryId": "hip-disarticulation",
      "targetId": "phantom-limb-pain",
      "sourceIndex": 0
+    },
+    {
+     "relationshipId": "rel-knee-disarticulation-to-phantom-limb-pain",
+     "primaryId": "knee-disarticulation",
+     "targetId": "phantom-limb-pain",
+     "sourceIndex": 1
     }
    ],
    "retiredUses": [],
    "rawReferenceHashes": [
     "fa3ed98c2cf42d3e12cb664b659a94fa4d9d336efa67c0687d1409b60a821a1d",
-    "abad38354243626c00868073c575638f025c2bee0f96954c0e72a89aaf879d9c"
+    "abad38354243626c00868073c575638f025c2bee0f96954c0e72a89aaf879d9c",
+    "3f15626f97565ce45482bcc1981b2de6250163b9942bd6147327fec8876623ff"
    ],
    "verificationState": {
     "qualifiedHumanCitationReviewRequired": false,
@@ -32311,6 +32318,1196 @@
    "retiredUses": [],
    "rawReferenceHashes": [
     "4116e90a6ed0814fe5de13bd97136c2106637f4cffd056670b7e0be58954ba53"
+   ]
+  },
+  {
+   "sourceId": "pmid-39597072",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "39597072",
+   "doi": "10.3390/medicina60111887",
+   "canonicalCitation": "Nees TA, Matt C, Deisenhofer J, Block J, Wolf SI, Renkawitz T, Lehner B, Alimusaj M. Pain After Lower Limb Amputations: Insights from the Heidelberg Amputation Registry. Medicina (Kaunas). 2024 Nov 18;60(11):1887. doi:10.3390/medicina60111887. PMID 39597072.",
+   "citationVariants": [
+    "Nees TA, Matt C, Deisenhofer J, Block J, Wolf SI, Renkawitz T, Lehner B, Alimusaj M. Pain After Lower Limb Amputations: Insights from the Heidelberg Amputation Registry. Medicina (Kaunas). 2024 Nov 18;60(11):1887. doi:10.3390/medicina60111887. PMID 39597072."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39597072/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/39597072/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-24"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-knee-disarticulation-to-phantom-limb-pain",
+     "primaryId": "knee-disarticulation",
+     "targetId": "phantom-limb-pain",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "a04b20c3f56db76ea8940a607350589361a5528c7497b3e696e5aacea0d2560e"
+   ]
+  },
+  {
+   "sourceId": "pmid-26718959",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "26718959",
+   "doi": "10.1016/j.bjorl.2014.12.012",
+   "canonicalCitation": "Maranhao AS, Godofredo VR, Penido Nde O. Suppurative labyrinthitis associated with otitis media: 26 years' experience. Braz J Otorhinolaryngol. 2016 Jan-Feb;82(1):82-7. doi:10.1016/j.bjorl.2014.12.012. PMID 26718959.",
+   "citationVariants": [
+    "Maranhao AS, Godofredo VR, Penido Nde O. Suppurative labyrinthitis associated with otitis media: 26 years' experience. Braz J Otorhinolaryngol. 2016 Jan-Feb;82(1):82-7. doi:10.1016/j.bjorl.2014.12.012. PMID 26718959."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/26718959/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/26718959/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-24"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-labyrinthitis-to-hearing-loss",
+     "primaryId": "labyrinthitis",
+     "targetId": "hearing-loss",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "260d305628a9c4209ebe0a2f6f7d16edd378216504c8d135425e7b1ae75cce93"
+   ]
+  },
+  {
+   "sourceId": "pmid-33082921",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "33082921",
+   "doi": "10.3941/jrcr.v14i5.3706",
+   "canonicalCitation": "Taxak P, Ram C. Labyrinthitis and Labyrinthitis Ossificans - A case report and review of the literature. J Radiol Case Rep. 2020 May;14(5):1-6. doi:10.3941/jrcr.v14i5.3706. PMID 33082921.",
+   "citationVariants": [
+    "Taxak P, Ram C. Labyrinthitis and Labyrinthitis Ossificans - A case report and review of the literature. J Radiol Case Rep. 2020 May;14(5):1-6. doi:10.3941/jrcr.v14i5.3706. PMID 33082921."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33082921/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/33082921/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-24"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-labyrinthitis-to-hearing-loss",
+     "primaryId": "labyrinthitis",
+     "targetId": "hearing-loss",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "8db68763d64ed54ca46cf536987a66f56be46a36873ffc6fe88192f4e22294f5"
+   ]
+  },
+  {
+   "sourceId": "pmid-39654324",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "39654324",
+   "doi": "10.1177/00034894241305880",
+   "canonicalCitation": "Lackey TG, Allen A, McCabe N, Clary M, Green KK, Fink DS. Are We Missing Obstructive Sleep Apnea in Patients With Non-traumatic Subglottic Stenosis? Ann Otol Rhinol Laryngol. 2025 Apr;134(4):266-273. doi:10.1177/00034894241305880. PMID 39654324.",
+   "citationVariants": [
+    "Lackey TG, Allen A, McCabe N, Clary M, Green KK, Fink DS. Are We Missing Obstructive Sleep Apnea in Patients With Non-traumatic Subglottic Stenosis? Ann Otol Rhinol Laryngol. 2025 Apr;134(4):266-273. doi:10.1177/00034894241305880. PMID 39654324."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39654324/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/39654324/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-24"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-laryngeal-stenosis-to-sleep-apnea",
+     "primaryId": "laryngeal-stenosis",
+     "targetId": "sleep-apnea",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "dbc8f9edd4f4766fdcfdd109825d8a8c5fef0b0c60a0f34d2c5eaedd054abd8d"
+   ]
+  },
+  {
+   "sourceId": "pmid-28112014",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "28112014",
+   "doi": "10.1177/0194599816675323",
+   "canonicalCitation": "Gadkaree SK, Pandian V, Best S, Motz KM, Allen C, Kim Y, Akst L, Hillel AT. Laryngotracheal Stenosis: Risk Factors for Tracheostomy Dependence and Dilation Interval. Otolaryngol Head Neck Surg. 2017 Feb;156(2):321-328. doi:10.1177/0194599816675323. PMID 28112014.",
+   "citationVariants": [
+    "Gadkaree SK, Pandian V, Best S, Motz KM, Allen C, Kim Y, Akst L, Hillel AT. Laryngotracheal Stenosis: Risk Factors for Tracheostomy Dependence and Dilation Interval. Otolaryngol Head Neck Surg. 2017 Feb;156(2):321-328. doi:10.1177/0194599816675323. PMID 28112014."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/28112014/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/28112014/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-24"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-laryngeal-stenosis-to-sleep-apnea",
+     "primaryId": "laryngeal-stenosis",
+     "targetId": "sleep-apnea",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "f8c032134030950d31bdfe5bb7354553d04bd0292dda724a3a235df08b6519f6"
+   ]
+  },
+  {
+   "sourceId": "pmid-32896360",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "32896360",
+   "doi": "10.1016/j.ijporl.2020.110255",
+   "canonicalCitation": "Verkest V, Verhulst S, Van Hoorenbeeck K, Vanderveken O, Saldien V, Boudewyns A. Prevalence of obstructive sleep apnea in children with laryngomalacia and value of polysomnography in treatment decisions. Int J Pediatr Otorhinolaryngol. 2020 Oct;137:110255. doi:10.1016/j.ijporl.2020.110255. PMID 32896360.",
+   "citationVariants": [
+    "Verkest V, Verhulst S, Van Hoorenbeeck K, Vanderveken O, Saldien V, Boudewyns A. Prevalence of obstructive sleep apnea in children with laryngomalacia and value of polysomnography in treatment decisions. Int J Pediatr Otorhinolaryngol. 2020 Oct;137:110255. doi:10.1016/j.ijporl.2020.110255. PMID 32896360."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/32896360/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/32896360/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-24"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-laryngomalacia-to-sleep-apnea",
+     "primaryId": "laryngomalacia",
+     "targetId": "sleep-apnea",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "1a6414f1981a52181326152bf0d3d9b8cd52b4d62fc88e34a8e6b21e219da16f"
+   ]
+  },
+  {
+   "sourceId": "pmid-38573510",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "38573510",
+   "doi": "10.1007/s00405-024-08623-y",
+   "canonicalCitation": "Lajili M, Teissier N, Dudoignon B, Benoit C, Bellanger S, Kahn L, Van Den Abbeele T, Delclaux C, Bokov P. Nap polysomnography in infants with laryngomalacia as a tool to predict treatment strategy. Eur Arch Otorhinolaryngol. 2024 Jun;281(6):3107-3113. doi:10.1007/s00405-024-08623-y. PMID 38573510.",
+   "citationVariants": [
+    "Lajili M, Teissier N, Dudoignon B, Benoit C, Bellanger S, Kahn L, Van Den Abbeele T, Delclaux C, Bokov P. Nap polysomnography in infants with laryngomalacia as a tool to predict treatment strategy. Eur Arch Otorhinolaryngol. 2024 Jun;281(6):3107-3113. doi:10.1007/s00405-024-08623-y. PMID 38573510."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38573510/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/38573510/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-24"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-laryngomalacia-to-sleep-apnea",
+     "primaryId": "laryngomalacia",
+     "targetId": "sleep-apnea",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "ae8d513c57c4afc8864d03d4ab6278179c0b9f8e40a1f026e13aae9e50f70c11"
+   ]
+  },
+  {
+   "sourceId": "pmid-30589926",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "30589926",
+   "doi": "10.1001/jamaoto.2018.3642",
+   "canonicalCitation": "Irace AL, Dombrowski ND, Kawai K, Watters K, Choi S, Perez J, Dodrill P, Hernandez K, Davidson K, Rahbar R. Evaluation of Aspiration in Infants With Laryngomalacia and Recurrent Respiratory and Feeding Difficulties. JAMA Otolaryngol Head Neck Surg. 2019 Feb 1;145(2):146-151. doi:10.1001/jamaoto.2018.3642. PMID 30589926.",
+   "citationVariants": [
+    "Irace AL, Dombrowski ND, Kawai K, Watters K, Choi S, Perez J, Dodrill P, Hernandez K, Davidson K, Rahbar R. Evaluation of Aspiration in Infants With Laryngomalacia and Recurrent Respiratory and Feeding Difficulties. JAMA Otolaryngol Head Neck Surg. 2019 Feb 1;145(2):146-151. doi:10.1001/jamaoto.2018.3642. PMID 30589926."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/30589926/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/30589926/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-24"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-laryngomalacia-to-dysphagia",
+     "primaryId": "laryngomalacia",
+     "targetId": "dysphagia",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "902feff5c691c1ac4c6471fb355de1e326f2c823dd7aef0b2ace759861cea239"
+   ]
+  },
+  {
+   "sourceId": "pmid-26152504",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "26152504",
+   "doi": "10.1002/lary.25440",
+   "canonicalCitation": "Simons JP, Greenberg LL, Mehta DK, Fabio A, Maguire RC, Mandell DL. Laryngomalacia and swallowing function in children. Laryngoscope. 2016 Feb;126(2):478-84. doi:10.1002/lary.25440. PMID 26152504.",
+   "citationVariants": [
+    "Simons JP, Greenberg LL, Mehta DK, Fabio A, Maguire RC, Mandell DL. Laryngomalacia and swallowing function in children. Laryngoscope. 2016 Feb;126(2):478-84. doi:10.1002/lary.25440. PMID 26152504."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/26152504/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/26152504/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-24"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-laryngomalacia-to-dysphagia",
+     "primaryId": "laryngomalacia",
+     "targetId": "dysphagia",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "74a98151c9f1ca98b3a58b1514b007ad1b7f393e9cc7473c604ea3745f92e349"
+   ]
+  },
+  {
+   "sourceId": "pmid-21258809",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "21258809",
+   "doi": "10.1007/s00402-011-1264-y",
+   "canonicalCitation": "Onishi E, Ikeda N, Ueo T. Degenerative osteoarthritis after Perthes' disease: a 36-year follow-up. Arch Orthop Trauma Surg. 2011 May;131(5):701-7. doi:10.1007/s00402-011-1264-y. PMID 21258809.",
+   "citationVariants": [
+    "Onishi E, Ikeda N, Ueo T. Degenerative osteoarthritis after Perthes' disease: a 36-year follow-up. Arch Orthop Trauma Surg. 2011 May;131(5):701-7. doi:10.1007/s00402-011-1264-y. PMID 21258809."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/21258809/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/21258809/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-24"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-legg-calve-perthes-disease-to-osteoarthritis",
+     "primaryId": "legg-calve-perthes-disease",
+     "targetId": "osteoarthritis",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "1093679ac3b70f92b4a01488880631b4f1a4add0e057d7903e665f8abc76cb13"
+   ]
+  },
+  {
+   "sourceId": "pmid-27489318",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "27489318",
+   "doi": "10.2106/JBJS.15.01349",
+   "canonicalCitation": "Shohat N, Copeliovitch L, Smorgick Y, Atzmon R, Mirovsky Y, Shabshin N, Beer Y, Agar G. The Long-Term Outcome After Varus Derotational Osteotomy for Legg-Calve-Perthes Disease: A Mean Follow-up of 42 Years. J Bone Joint Surg Am. 2016 Aug 3;98(15):1277-85. doi:10.2106/JBJS.15.01349. PMID 27489318.",
+   "citationVariants": [
+    "Shohat N, Copeliovitch L, Smorgick Y, Atzmon R, Mirovsky Y, Shabshin N, Beer Y, Agar G. The Long-Term Outcome After Varus Derotational Osteotomy for Legg-Calve-Perthes Disease: A Mean Follow-up of 42 Years. J Bone Joint Surg Am. 2016 Aug 3;98(15):1277-85. doi:10.2106/JBJS.15.01349. PMID 27489318."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/27489318/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/27489318/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-24"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-legg-calve-perthes-disease-to-osteoarthritis",
+     "primaryId": "legg-calve-perthes-disease",
+     "targetId": "osteoarthritis",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "e0b532e1aa5b7cfe2db2488a3e0079d594e832ee2e7d3228e1de2ad4486fe2e6"
+   ]
+  },
+  {
+   "sourceId": "pmid-25642253",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "25642253",
+   "doi": null,
+   "canonicalCitation": "Tofighi Naeem A, Mahmoudi S, Saboui F, Hajjaran H, Pourakbari B, Mohebali M, Zarkesh MR, Mamishi S. Clinical Features and Laboratory Findings of Visceral Leishmaniasis in Children Referred To Children Medical Center Hospital, Tehran, Iran during 2004-2011. Iran J Parasitol. 2014 Mar;9(1):1-5. PMID 25642253.",
+   "citationVariants": [
+    "Tofighi Naeem A, Mahmoudi S, Saboui F, Hajjaran H, Pourakbari B, Mohebali M, Zarkesh MR, Mamishi S. Clinical Features and Laboratory Findings of Visceral Leishmaniasis in Children Referred To Children Medical Center Hospital, Tehran, Iran during 2004-2011. Iran J Parasitol. 2014 Mar;9(1):1-5. PMID 25642253."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/25642253/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/25642253/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-24"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-leishmaniasis-to-anemia",
+     "primaryId": "leishmaniasis",
+     "targetId": "anemia",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "31cfd028a100bb8fcc3d061484686d10f6f17953e65a4a04dd7f9fb2fd6c8e91"
+   ]
+  },
+  {
+   "sourceId": "pmid-30141437",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "30141437",
+   "doi": null,
+   "canonicalCitation": "Sarkar SR, Ray NC, Khan ER, Haque N, Hossain MA, Paul SK, Noiri E, Matsumoto Y, Sanjoba C. Clinical Characteristics and Haematological Parameters Associated With Visceral Leishmaniasis in Bangladeshi Individuals. Mymensingh Med J. 2018 Jul;27(3):496-503. PMID 30141437.",
+   "citationVariants": [
+    "Sarkar SR, Ray NC, Khan ER, Haque N, Hossain MA, Paul SK, Noiri E, Matsumoto Y, Sanjoba C. Clinical Characteristics and Haematological Parameters Associated With Visceral Leishmaniasis in Bangladeshi Individuals. Mymensingh Med J. 2018 Jul;27(3):496-503. PMID 30141437."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/30141437/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/30141437/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-24"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-leishmaniasis-to-anemia",
+     "primaryId": "leishmaniasis",
+     "targetId": "anemia",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "c50ace9a5fa231389390aed3f64881ac6e1f3da5365bb83845c677308ae27c50"
+   ]
+  },
+  {
+   "sourceId": "pmid-33437694",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "33437694",
+   "doi": "10.4103/ajm.ajm_168_20",
+   "canonicalCitation": "Hamwi AO, Mohammad AA, Hamwi SO, Mohammad RA, Shahin KY. Pediatric visceral leishmaniasis in Tartous, Syria. Avicenna J Med. 2020 Oct-Dec;10(4):223-226. doi:10.4103/ajm.ajm_168_20. PMID 33437694.",
+   "citationVariants": [
+    "Hamwi AO, Mohammad AA, Hamwi SO, Mohammad RA, Shahin KY. Pediatric visceral leishmaniasis in Tartous, Syria. Avicenna J Med. 2020 Oct-Dec;10(4):223-226. doi:10.4103/ajm.ajm_168_20. PMID 33437694."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33437694/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/33437694/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-24"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-leishmaniasis-to-thrombocytopenia",
+     "primaryId": "leishmaniasis",
+     "targetId": "thrombocytopenia",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "14a5eb515537e724f16cb3b37cf2ce3294bd28f21c13f8dfdef11e6ea15500de"
+   ]
+  },
+  {
+   "sourceId": "pmid-38654944",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "38654944",
+   "doi": "10.18502/ijpa.v19i1.15190",
+   "canonicalCitation": "Khodabandeh M, Moradian E, Sarvari M, Khiabani MS. Visceral Leishmaniasis (VL) Clinical Presentation, Laboratory Findings, Treatment Options and Outcome. Iran J Parasitol. 2024 Jan-Mar;19(1):28-37. doi:10.18502/ijpa.v19i1.15190. PMID 38654944.",
+   "citationVariants": [
+    "Khodabandeh M, Moradian E, Sarvari M, Khiabani MS. Visceral Leishmaniasis (VL) Clinical Presentation, Laboratory Findings, Treatment Options and Outcome. Iran J Parasitol. 2024 Jan-Mar;19(1):28-37. doi:10.18502/ijpa.v19i1.15190. PMID 38654944."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38654944/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/38654944/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-24"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-leishmaniasis-to-thrombocytopenia",
+     "primaryId": "leishmaniasis",
+     "targetId": "thrombocytopenia",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "628bc924e869c9348207ecc16f5a847668e14da292eb645e26fa08a4b859f02a"
+   ]
+  },
+  {
+   "sourceId": "pmid-27712641",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "27712641",
+   "doi": "10.1016/j.mayocp.2016.08.011",
+   "canonicalCitation": "Bharucha AE, Lee TH. Anorectal and Pelvic Pain. Mayo Clin Proc. 2016 Oct;91(10):1471-1486. doi:10.1016/j.mayocp.2016.08.011. PMID 27712641.",
+   "citationVariants": [
+    "Bharucha AE, Lee TH. Anorectal and Pelvic Pain. Mayo Clin Proc. 2016 Oct;91(10):1471-1486. doi:10.1016/j.mayocp.2016.08.011. PMID 27712641."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/27712641/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/27712641/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-25"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-levator-ani-syndrome-to-unexplained-chronic-pain",
+     "primaryId": "levator-ani-syndrome",
+     "targetId": "unexplained-chronic-pain",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "a118f4b54eac5cbf9c2f7cb94ceb8da0b4b18b113418bb6c798cd750913cc842"
+   ]
+  },
+  {
+   "sourceId": "pmid-35649568",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "35649568",
+   "doi": "10.3949/ccjm.89a.21102",
+   "canonicalCitation": "Knowles CH, Cohen RC. Chronic anal pain: A review of causes, diagnosis, and treatment. Cleve Clin J Med. 2022 Jun;89:336-343. doi:10.3949/ccjm.89a.21102. PMID 35649568.",
+   "citationVariants": [
+    "Knowles CH, Cohen RC. Chronic anal pain: A review of causes, diagnosis, and treatment. Cleve Clin J Med. 2022 Jun;89:336-343. doi:10.3949/ccjm.89a.21102. PMID 35649568."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35649568/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/35649568/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-25"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-levator-ani-syndrome-to-unexplained-chronic-pain",
+     "primaryId": "levator-ani-syndrome",
+     "targetId": "unexplained-chronic-pain",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "3a9accd40dc3b2264a171d5fb93ce0960c7c2f7bf62a88f9b3da22fcf4b84f8d"
+   ]
+  },
+  {
+   "sourceId": "pmid-22110274",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "22110274",
+   "doi": "10.3748/wjg.v17.i40.4447",
+   "canonicalCitation": "Chiarioni G, Asteria C, Whitehead WE. Chronic proctalgia and chronic pelvic pain syndromes: new etiologic insights and treatment options. World J Gastroenterol. 2011 Oct 28;17(40):4447-4455. doi:10.3748/wjg.v17.i40.4447. PMID 22110274.",
+   "citationVariants": [
+    "Chiarioni G, Asteria C, Whitehead WE. Chronic proctalgia and chronic pelvic pain syndromes: new etiologic insights and treatment options. World J Gastroenterol. 2011 Oct 28;17(40):4447-4455. doi:10.3748/wjg.v17.i40.4447. PMID 22110274."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/22110274/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/22110274/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-25"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-levator-ani-syndrome-to-unexplained-chronic-pain",
+     "primaryId": "levator-ani-syndrome",
+     "targetId": "unexplained-chronic-pain",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "e3a3f5cc297f5621a5c6583bd181fa4ca0f8b58a03e8f5b286772399d3b74f19"
+   ]
+  },
+  {
+   "sourceId": "pmid-18085739",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "18085739",
+   "doi": null,
+   "canonicalCitation": "Roldan CA, Qualls CR, Sopko KS, Sibbitt WL Jr. Transthoracic versus transesophageal echocardiography for detection of Libman-Sacks endocarditis: a randomized controlled study. J Rheumatol. 2008 Feb;35(2):224-229. PMID 18085739.",
+   "citationVariants": [
+    "Roldan CA, Qualls CR, Sopko KS, Sibbitt WL Jr. Transthoracic versus transesophageal echocardiography for detection of Libman-Sacks endocarditis: a randomized controlled study. J Rheumatol. 2008 Feb;35(2):224-229. PMID 18085739."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/18085739/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/18085739/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-25"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-libman-sacks-endocarditis-to-cerebrovascular-accident-stroke-residuals",
+     "primaryId": "libman-sacks-endocarditis",
+     "targetId": "cerebrovascular-accident-stroke-residuals",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "c2119e7f4ef23990d670dfeb14f14265983bd30aeaaa097ff41c5c474ecbaff7"
+   ]
+  },
+  {
+   "sourceId": "pmid-22693297",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "22693297",
+   "doi": "10.1136/bcr.04.2011.4071",
+   "canonicalCitation": "Malvar B, Almeida FM, Rebocho L, Moniz JC, Azevedo F. Cerebral embolism from Libman-Sacks endocarditis. BMJ Case Rep. 2011 Jun 30;2011:bcr0420114071. doi:10.1136/bcr.04.2011.4071. PMID 22693297.",
+   "citationVariants": [
+    "Malvar B, Almeida FM, Rebocho L, Moniz JC, Azevedo F. Cerebral embolism from Libman-Sacks endocarditis. BMJ Case Rep. 2011 Jun 30;2011:bcr0420114071. doi:10.1136/bcr.04.2011.4071. PMID 22693297."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/22693297/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/22693297/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-25"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-libman-sacks-endocarditis-to-cerebrovascular-accident-stroke-residuals",
+     "primaryId": "libman-sacks-endocarditis",
+     "targetId": "cerebrovascular-accident-stroke-residuals",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "755aab36f6f381c5fd5b195afe3e5d490d2c3fed8160f2dd0d6decd8db90f9cd"
+   ]
+  },
+  {
+   "sourceId": "pmid-38116400",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "38116400",
+   "doi": "10.37616/2212-5043.1360",
+   "canonicalCitation": "Yazidi MA, Merzouk FZ, Rabii H, Benyoussef H, Bensahi I, Habbal R. Ischemic Stroke Revealing Libman-Sacks Endocarditis: A Case Report. J Saudi Heart Assoc. 2023 Nov 27;35:335-338. doi:10.37616/2212-5043.1360. PMID 38116400.",
+   "citationVariants": [
+    "Yazidi MA, Merzouk FZ, Rabii H, Benyoussef H, Bensahi I, Habbal R. Ischemic Stroke Revealing Libman-Sacks Endocarditis: A Case Report. J Saudi Heart Assoc. 2023 Nov 27;35:335-338. doi:10.37616/2212-5043.1360. PMID 38116400."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38116400/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/38116400/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-25"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-libman-sacks-endocarditis-to-cerebrovascular-accident-stroke-residuals",
+     "primaryId": "libman-sacks-endocarditis",
+     "targetId": "cerebrovascular-accident-stroke-residuals",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "1c92bd64a050f37fa1a49b83895df37db70414d582f78cf650e5a0ef82765d27"
+   ]
+  },
+  {
+   "sourceId": "pmid-31377769",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "31377769",
+   "doi": "10.1093/ehjcr/ytz133",
+   "canonicalCitation": "Ishizu K, Isotani A, Yamaji K, Ando K. Immunosuppressive therapy to reduce mitral regurgitation in Libman-Sacks endocarditis: a case report. Eur Heart J Case Rep. 2019 Sep;3(3):ytz133. doi:10.1093/ehjcr/ytz133. PMID 31377769.",
+   "citationVariants": [
+    "Ishizu K, Isotani A, Yamaji K, Ando K. Immunosuppressive therapy to reduce mitral regurgitation in Libman-Sacks endocarditis: a case report. Eur Heart J Case Rep. 2019 Sep;3(3):ytz133. doi:10.1093/ehjcr/ytz133. PMID 31377769."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/31377769/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/31377769/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-25"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-libman-sacks-endocarditis-to-heart-valve-disorders",
+     "primaryId": "libman-sacks-endocarditis",
+     "targetId": "heart-valve-disorders",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "ce75e961215c9e8ed0a63af49b7e38b1fbf2dad4a722eb41390e96d62ac49075"
+   ]
+  },
+  {
+   "sourceId": "pmid-14658823",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "14658823",
+   "doi": null,
+   "canonicalCitation": "Georghiou GP, Shapira Y, Drozd T, Erez E, Raanani E, Vidne BA, Sahar G. Double-valve Libman-Sacks endocarditis: an entity that demands special consideration. J Heart Valve Dis. 2003 Nov;12(6):797-801. PMID 14658823.",
+   "citationVariants": [
+    "Georghiou GP, Shapira Y, Drozd T, Erez E, Raanani E, Vidne BA, Sahar G. Double-valve Libman-Sacks endocarditis: an entity that demands special consideration. J Heart Valve Dis. 2003 Nov;12(6):797-801. PMID 14658823."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/14658823/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/14658823/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-25"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-libman-sacks-endocarditis-to-heart-valve-disorders",
+     "primaryId": "libman-sacks-endocarditis",
+     "targetId": "heart-valve-disorders",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "92cd9232bc2022191eb4d65375be54b40263b529bd5c1d3d9cc60d21b20fd102"
+   ]
+  },
+  {
+   "sourceId": "pmid-34661053",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "34661053",
+   "doi": "10.1093/ehjcr/ytab361",
+   "canonicalCitation": "Ningyan W, Jappar IA, See Hooi E, Khung Keong Y. Severe mitral regurgitation from Libman-Sacks endocarditis treated with MitraClip: a case report. Eur Heart J Case Rep. 2021 Oct;5(10):ytab361. doi:10.1093/ehjcr/ytab361. PMID 34661053.",
+   "citationVariants": [
+    "Ningyan W, Jappar IA, See Hooi E, Khung Keong Y. Severe mitral regurgitation from Libman-Sacks endocarditis treated with MitraClip: a case report. Eur Heart J Case Rep. 2021 Oct;5(10):ytab361. doi:10.1093/ehjcr/ytab361. PMID 34661053."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34661053/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/34661053/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-25"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-libman-sacks-endocarditis-to-heart-valve-disorders",
+     "primaryId": "libman-sacks-endocarditis",
+     "targetId": "heart-valve-disorders",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "9a717e4e86750800a38576bd7615379c39a0e0060c9e7983058a9e8570db86ea"
+   ]
+  },
+  {
+   "sourceId": "pmid-30970367",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "30970367",
+   "doi": "10.1159/000499135",
+   "canonicalCitation": "Alirezaei P, Ahmadpanah M, Rezanejad A, Soltanian A, Sadeghi Bahmani D, Brand S. Compared to Controls, Individuals with Lichen Planopilaris Have More Depression, a Lower Self-Esteem, and a Lower Quality of Life. Neuropsychobiology. 2019;78(2):95-103. doi:10.1159/000499135. PMID 30970367.",
+   "citationVariants": [
+    "Alirezaei P, Ahmadpanah M, Rezanejad A, Soltanian A, Sadeghi Bahmani D, Brand S. Compared to Controls, Individuals with Lichen Planopilaris Have More Depression, a Lower Self-Esteem, and a Lower Quality of Life. Neuropsychobiology. 2019;78(2):95-103. doi:10.1159/000499135. PMID 30970367."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/30970367/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/30970367/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-25"
+   ],
+   "liveUsageCount": 2,
+   "liveUses": [
+    {
+     "relationshipId": "rel-lichen-planopilaris-to-depressive-disorder",
+     "primaryId": "lichen-planopilaris",
+     "targetId": "depressive-disorder",
+     "sourceIndex": 0
+    },
+    {
+     "relationshipId": "rel-lichen-planopilaris-to-anxiety-disorder",
+     "primaryId": "lichen-planopilaris",
+     "targetId": "anxiety-disorder",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "6b9babb97e91694e576665a43d171aab2ddf370cf093c442714c025171844e66",
+    "f6a0d9df6c90b38ab83c1a5cc6ccc7fee1b59c557d154da2e591459724950dbe"
+   ]
+  },
+  {
+   "sourceId": "pmid-39152785",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "39152785",
+   "doi": "10.1093/ced/llae339",
+   "canonicalCitation": "Kelati A, Jafferany M. Quality-of-life assessment and the impact of early diagnosis and treatment in lichen planopilaris: a systematic review. Clin Exp Dermatol. 2024 Dec;50:146-149. doi:10.1093/ced/llae339. PMID 39152785.",
+   "citationVariants": [
+    "Kelati A, Jafferany M. Quality-of-life assessment and the impact of early diagnosis and treatment in lichen planopilaris: a systematic review. Clin Exp Dermatol. 2024 Dec;50:146-149. doi:10.1093/ced/llae339. PMID 39152785."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39152785/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/39152785/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-25"
+   ],
+   "liveUsageCount": 2,
+   "liveUses": [
+    {
+     "relationshipId": "rel-lichen-planopilaris-to-depressive-disorder",
+     "primaryId": "lichen-planopilaris",
+     "targetId": "depressive-disorder",
+     "sourceIndex": 1
+    },
+    {
+     "relationshipId": "rel-lichen-planopilaris-to-anxiety-disorder",
+     "primaryId": "lichen-planopilaris",
+     "targetId": "anxiety-disorder",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "848c32f69d581b40236ade29d303eed154c3244efe6c699f563a77b5722fae39",
+    "b1967e61ff9bfb9fcdc13e09cc4560e7107418aa884facfea20afc3eb3091e57"
+   ]
+  },
+  {
+   "sourceId": "pmid-12224690",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "12224690",
+   "doi": "10.1046/j.1468-3083.2002.00467.x",
+   "canonicalCitation": "Akay A, Pekcanlar A, Bozdag KE, Altintas L, Karaman A. Assessment of depression in subjects with psoriasis vulgaris and lichen planus. J Eur Acad Dermatol Venereol. 2002 Jul;16(4):347-352. doi:10.1046/j.1468-3083.2002.00467.x. PMID 12224690.",
+   "citationVariants": [
+    "Akay A, Pekcanlar A, Bozdag KE, Altintas L, Karaman A. Assessment of depression in subjects with psoriasis vulgaris and lichen planus. J Eur Acad Dermatol Venereol. 2002 Jul;16(4):347-352. doi:10.1046/j.1468-3083.2002.00467.x. PMID 12224690."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/12224690/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/12224690/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-25"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-lichen-planus-to-depressive-disorder",
+     "primaryId": "lichen-planus",
+     "targetId": "depressive-disorder",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "3556142ac4071d156925f6d05e89e62b64a84bfbab656c57865c6fdfc6060a6e"
+   ]
+  },
+  {
+   "sourceId": "pmid-32250441",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "32250441",
+   "doi": "10.2340/00015555-3477",
+   "canonicalCitation": "Sampogna F, Abeni D, Gieler U, et al. Exploring the EQ-5D Dimension of Pain/Discomfort in Dermatology Outpatients from a Multicentre Study in 13 European Countries. Acta Derm Venereol. 2020 Apr 21;100(7):adv00120. doi:10.2340/00015555-3477. PMID 32250441.",
+   "citationVariants": [
+    "Sampogna F, Abeni D, Gieler U, et al. Exploring the EQ-5D Dimension of Pain/Discomfort in Dermatology Outpatients from a Multicentre Study in 13 European Countries. Acta Derm Venereol. 2020 Apr 21;100(7):adv00120. doi:10.2340/00015555-3477. PMID 32250441."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/32250441/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/32250441/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-25"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-lichen-planus-to-depressive-disorder",
+     "primaryId": "lichen-planus",
+     "targetId": "depressive-disorder",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "260920514a3e4d6f199951e24880734441bbf58631581cb6a8fdf8f67e0a12a7"
+   ]
+  },
+  {
+   "sourceId": "pmid-38982032",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "38982032",
+   "doi": "10.1007/s40257-024-00878-9",
+   "canonicalCitation": "Tekin B, Xie F, Lehman JS. Lichen Planus: What is New in Diagnosis and Treatment? Am J Clin Dermatol. 2024 Sep;25(5):735-764. doi:10.1007/s40257-024-00878-9. PMID 38982032.",
+   "citationVariants": [
+    "Tekin B, Xie F, Lehman JS. Lichen Planus: What is New in Diagnosis and Treatment? Am J Clin Dermatol. 2024 Sep;25(5):735-764. doi:10.1007/s40257-024-00878-9. PMID 38982032."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38982032/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/38982032/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-25"
+   ],
+   "liveUsageCount": 2,
+   "liveUses": [
+    {
+     "relationshipId": "rel-lichen-planus-to-depressive-disorder",
+     "primaryId": "lichen-planus",
+     "targetId": "depressive-disorder",
+     "sourceIndex": 2
+    },
+    {
+     "relationshipId": "rel-lichen-planus-to-squamous-cell-carcinoma",
+     "primaryId": "lichen-planus",
+     "targetId": "squamous-cell-carcinoma",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "5315dd8dc6b5f6bf98945f69c31775be2740c95bf81732eb2681cf5a9aeaec35",
+    "47f7e2dfd0bb58608322db829a48815ddaeb98718bb777f29c8bc15cdc571c3c"
+   ]
+  },
+  {
+   "sourceId": "pmid-30002207",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "30002207",
+   "doi": "10.1136/bcr-2017-224044",
+   "canonicalCitation": "Haenen CCP, Buurma AAJ, Genders RE, Quint KD. Squamous cell carcinoma arising in hypertrophic lichen planus. BMJ Case Rep. 2018 Jul 11;2018:bcr2017224044. doi:10.1136/bcr-2017-224044. PMID 30002207.",
+   "citationVariants": [
+    "Haenen CCP, Buurma AAJ, Genders RE, Quint KD. Squamous cell carcinoma arising in hypertrophic lichen planus. BMJ Case Rep. 2018 Jul 11;2018:bcr2017224044. doi:10.1136/bcr-2017-224044. PMID 30002207."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/30002207/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/30002207/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-25"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-lichen-planus-to-squamous-cell-carcinoma",
+     "primaryId": "lichen-planus",
+     "targetId": "squamous-cell-carcinoma",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "6dc532d6ee9d3b340308d4b2d0281172744b1598d2245e85d9f69729f8bc12cb"
+   ]
+  },
+  {
+   "sourceId": "pmid-39912658",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "39912658",
+   "doi": "10.1097/DAD.0000000000002940",
+   "canonicalCitation": "Xu KR, Honda K, Rohr BR. Expression of p16 in Hypertrophic Lichen Planus. Am J Dermatopathol. 2025 Jun;47(6):448-452. doi:10.1097/DAD.0000000000002940. PMID 39912658.",
+   "citationVariants": [
+    "Xu KR, Honda K, Rohr BR. Expression of p16 in Hypertrophic Lichen Planus. Am J Dermatopathol. 2025 Jun;47(6):448-452. doi:10.1097/DAD.0000000000002940. PMID 39912658."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39912658/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/39912658/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-25"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-lichen-planus-to-squamous-cell-carcinoma",
+     "primaryId": "lichen-planus",
+     "targetId": "squamous-cell-carcinoma",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "e4b15dd093515bfc32c7fa480461cb25520a414086fdd81c9e96dd2b218b9fe7"
+   ]
+  },
+  {
+   "sourceId": "pmid-33034929",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "33034929",
+   "doi": "10.1111/dth.14389",
+   "canonicalCitation": "Yalçın M, Baş A, Ergelen M, Gökçe E, Usta Sağlam NG, Öcek Baş T, Gıynaş FF. Psychiatric comorbidity and temperament-character traits of the patients with lichen simplex chronicus: The relation with the symptom severity of the disease. Dermatol Ther. 2020 Nov;33(6):e14389. doi:10.1111/dth.14389. PMID 33034929.",
+   "citationVariants": [
+    "Yalçın M, Baş A, Ergelen M, Gökçe E, Usta Sağlam NG, Öcek Baş T, Gıynaş FF. Psychiatric comorbidity and temperament-character traits of the patients with lichen simplex chronicus: The relation with the symptom severity of the disease. Dermatol Ther. 2020 Nov;33(6):e14389. doi:10.1111/dth.14389. PMID 33034929."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33034929/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/33034929/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-25"
+   ],
+   "liveUsageCount": 2,
+   "liveUses": [
+    {
+     "relationshipId": "rel-lichen-simplex-chronicus-to-depressive-disorder",
+     "primaryId": "lichen-simplex-chronicus",
+     "targetId": "depressive-disorder",
+     "sourceIndex": 0
+    },
+    {
+     "relationshipId": "rel-lichen-simplex-chronicus-to-anxiety-disorder",
+     "primaryId": "lichen-simplex-chronicus",
+     "targetId": "anxiety-disorder",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "d098b2733d048cad07b4c15129e008a83bb50718b349649767e3510888f9e103",
+    "4db181bb9834fcca47baaaaef82e868cd8043a0ad557e2b120ca57558ca5f7cf"
+   ]
+  },
+  {
+   "sourceId": "pmid-39812844",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "39812844",
+   "doi": "10.1007/s00403-024-03775-7",
+   "canonicalCitation": "Shafiyev J, Gahramanov I. Evaluating duloxetine for pruritus and psychiatric comorbidities in lichen simplex chronicus. Arch Dermatol Res. 2025 Jan;317(1):249. doi:10.1007/s00403-024-03775-7. PMID 39812844.",
+   "citationVariants": [
+    "Shafiyev J, Gahramanov I. Evaluating duloxetine for pruritus and psychiatric comorbidities in lichen simplex chronicus. Arch Dermatol Res. 2025 Jan;317(1):249. doi:10.1007/s00403-024-03775-7. PMID 39812844."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39812844/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/39812844/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-25"
+   ],
+   "liveUsageCount": 2,
+   "liveUses": [
+    {
+     "relationshipId": "rel-lichen-simplex-chronicus-to-depressive-disorder",
+     "primaryId": "lichen-simplex-chronicus",
+     "targetId": "depressive-disorder",
+     "sourceIndex": 1
+    },
+    {
+     "relationshipId": "rel-lichen-simplex-chronicus-to-anxiety-disorder",
+     "primaryId": "lichen-simplex-chronicus",
+     "targetId": "anxiety-disorder",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "f16b4cd15a52a650c59a8ac02590a1e791d5ba74e4c2a93a195441d6f2ecbe4e",
+    "2dd72704d4f7db973fe54fbbac3c31abba0d2f708da6a93cc1f79dbe6b1e4527"
    ]
   }
  ],

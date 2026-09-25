@@ -2,8 +2,125 @@
   "id": "lichen-planopilaris",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review dermatologic, autoimmune, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 53 (2026-09-25): two ASSOCIATION_ONLY draft mappings pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: both edges assert association only (etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true, mechanismCategory PSYCHOPHYSIOLOGICAL) on the frontal-fibrosizing-alopecia and alopecia-areata psychiatric precedents. The anchors are cross-sectional screening- and expert-rating-class studies and a systematic review rather than structured-diagnosis cohorts, and the direction is unasserted because visible scarring hair loss and mood disorder influence each other. Individual claims require dermatologist-confirmed lichen planopilaris with activity and alopecia-severity grading, dated psychiatric assessment, and review by a qualified medical professional.",
+    "Pathway and duplicate-scope screens: no edge to scarring-alopecia or to alopecia (constitutive guard - lichen planopilaris IS a primary cicatricial alopecia, so those edges would restate the diagnostic lesion, exactly as the frontal-fibrosizing-alopecia-to-alopecia and -to-scarring-alopecia edges were rejected as constitutive under the wrong-identity guard; the discoid-lupus -> scarring-alopecia window is a different construction in which lupus inflammation produces the alopecia); no edge to loss-of-eyebrow (the frontal-fibrosizing-alopecia identity owns the eyebrow pathway); no edge to insomnia despite the sleep signal (see governance notes); no edge to squamous-cell-carcinoma (chronic cutaneous lupus carries that literature; no lichen-planopilaris-specific malignant transformation records were located)."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 53 (2026-09-25): two bounded association edges authored - lichen-planopilaris to depressive-disorder (rank 1) and to anxiety-disorder (rank 2) - both classified ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, and hypothesizedOnly:true; mechanismCategory PSYCHOPHYSIOLOGICAL. The depressive proposition rests on the Alirezaei 2019 case-control study comparing 38 individuals with lichen planopilaris and 58 gender- and age-matched healthy controls, in which expert-rated depression scores were higher in the lichen planopilaris group, self-esteem, physical functioning, and mental health scores were lower, role limitations (physical and emotional) were higher, higher disease activity and greater hair-loss severity correlated with higher depression and lower quality-of-life scores, and illness duration was statistically unrelated to the mental-health differences (PMID 30970367), and on the Kelati and Jafferany 2024 systematic review documenting that lichen planopilaris and frontal fibrosizing alopecia cause significant psychological distress and impaired quality of life, that higher disease activity and severity are associated with higher depression and anxiety scores and greater role limitations, and that active and severe disease causes psychiatric conditions including anxiety and depression (PMID 39152785). The anxiety proposition rests on the same systematic review and on the Alirezaei finding that higher anxiety scores predicted poorer quality of life within the lichen planopilaris group.",
+    "Counter-evidence and caveat screens recorded 2026-09-25: (i) instrument class - depression and anxiety were assessed by questionnaire and expert rating rather than structured diagnostic interview, so prevalence of depressive-disorder or anxiety-disorder is not established; (ii) temporality - the studies are cross-sectional with no premorbid mood history, and visible scarring alopecia plausibly produces distress as much as distress accompanies inflammation (the Alairezaei study found illness duration unrelated to mental-health scores, arguing against simple cumulative-burden attribution); (iii) scope - the systematic review pools lichen planopilaris with frontal fibrosizing alopecia, a sibling identity that authors its own depressive edge, so the review is shared-family evidence while the case-control anchor is lichen-planopilaris-specific; (iv) treatment confound - disease-activity grading and immunosuppressive or topical treatment courses were not adjusted as mood determinants; (v) sample size - 38 cases in a single-center case-control.",
+    "Negative screens recorded 2026-09-25: (i) no lichen-planopilaris-to-insomnia edge - the Boghosian 2026 systematic review of sleep and hair loss includes a single lichen planopilaris study among its 29 included studies and concludes a bidirectional sleep-hair-loss relationship at the hair-loss-class level, with chronic pruritus and pain named as the lichen-planopilaris mechanistic theme, without lichen-planopilaris-specific sleep quantification (PMID 41535530); reopening condition: a condition-specific PSQI or actigraphy cohort in lichen planopilaris; (ii) no -> scarring-alopecia, -> alopecia, or -> loss-of-eyebrow edge (constitutive and wrong-identity guards; the follicular destruction is the disease); (iii) no -> squamous-cell-carcinoma or -> skin-cancer edge (no malignant transformation records for scarring alopecia; the chronic-lupus cutaneous malignancy literature belongs to discoid-lupus); (iv) no -> trichotillomania or -> body-dysmorphic-disorder edge (differential diagnoses to exclude rather than downstream conditions)."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "depressive-disorder",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The Alirezaei 2019 case-control study compared 38 individuals with lichen planopilaris and 58 gender- and age-matched healthy controls and found expert-rated depression scores higher in the lichen planopilaris group, lower self-esteem, physical functioning, and mental health, greater physical and emotional role limitations, correlations of higher disease activity and hair-loss severity with higher depression and lower quality-of-life scores, and no statistical relationship between illness duration and the mental-health differences (PMID 30970367); the Kelati and Jafferany 2024 systematic review documents that lichen planopilaris and frontal fibrosizing alopecia cause significant psychological distress and impaired quality of life, with higher disease activity and severity associated with higher depression and anxiety scores, and identifies psychiatric conditions including anxiety and depression as consequences of active and severe disease (PMID 39152785); the literature documents elevated depressive symptom scores in individuals with lichen planopilaris compared with matched controls without establishing that the disease caused a depressive disorder in any individual.",
+        "causationStatus": "The mapping does not assert that lichen planopilaris caused an individual's depressive disorder: the anchors are cross-sectional instruments and expert ratings rather than structured diagnostic interviews, premorbid mood is uncontrolled and illness duration was unrelated to the mental-health differences, the visible scarring hair loss plausibly produces distress independently of disease biology, the systematic review pools lichen planopilaris with the sibling frontal fibrosizing alopecia identity, and treatment courses were not adjusted - so no directional claim is made."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "PSYCHOPHYSIOLOGICAL",
+        "primaryVector": "A hypothesized psychosocial-stress route is described: visible scarring hair loss with irritated scalp symptoms (itching, erythema, scaling, burning) threatens body image and self-esteem, and the documented activity-gradient (higher lichen planopilaris disease activity and hair-loss severity tracking with higher depression scores) is consistent with either inflammatory cytokine signaling or psychosocial burden or both; the located studies quantify the co-occurrence and its activity gradient but do not separate a biological mood pathway from the psychosocial response to visible disfigurement.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Higher depression scores and lower quality of life are documented in a matched case-control study and a systematic review of lichen planopilaris and its variants, with an activity and severity gradient, but individual determination requires dermatologist-confirmed lichen planopilaris with activity and alopecia-severity grading, dated psychiatric assessment with diagnostic criteria for depressive disorder, documentation of premorbid mood and psychosocial stressors, and review by a qualified medical professional.",
+        "evidenceGaps": "Dermatologist documentation of lichen planopilaris diagnosis (clinical, trichoscopic, and where performed histopathologic criteria), the Lichen Planopilaris Activity Index and alopecia-severity grading with dates, disease duration and treatment history (topical and systemic immunosuppression, intralesional steroids) with response; psychiatric assessment with dates (structured interview where performed, or validated depression instruments such as HADS or Beck Depression Inventory with scores); documentation of premorbid mood history, psychosocial stressors, and any prior psychiatric treatment; exclusion of other contributors to depressive symptoms (thyroid disease, anemia, medication effects, other chronic dermatoses, primary mood disorder predating the hair loss); dermatology and psychiatry or psychology assessment of the attribution",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Primary depressive disorder predating the hair loss",
+          "Psychosocial disfigurement distress from visible scarring alopecia without comorbid mood disorder",
+          "Thyroid disease, anemia, or medication effect producing mood symptoms",
+          "Alopecia areata, trichotillomania, or another hair-loss mimic carrying its own mood literature",
+          "Adjustment disorder or grief reaction to hair loss",
+          "Systemic corticosteroid or immunosuppressant neuropsychiatric effects"
+        ]
+      },
+      "evidenceGaps": [
+        "Dermatologist documentation of lichen planopilaris diagnosis (clinical, trichoscopic, and where performed histopathologic criteria), the Lichen Planopilaris Activity Index and alopecia-severity grading with dates, disease duration and treatment history (topical and systemic immunosuppression, intralesional steroids) with response; psychiatric assessment with dates (structured interview where performed, or validated depression instruments such as HADS or Beck Depression Inventory with scores); documentation of premorbid mood history, psychosocial stressors, and any prior psychiatric treatment; exclusion of other contributors to depressive symptoms (thyroid disease, anemia, medication effects, other chronic dermatoses, primary mood disorder predating the hair loss); dermatology and psychiatry or psychology assessment of the attribution"
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY on the frontal-fibrosizing-alopecia and alopecia-areata psychiatric precedents: a matched case-control study documents higher expert-rated depression scores in 38 lichen planopilaris individuals against 58 controls with an activity and severity gradient and no illness-duration effect, and a systematic review identifies depression among the psychiatric conditions of active and severe disease; because the instruments are screening-class rather than structured diagnosis, premorbid mood is uncontrolled, the review pools the sibling frontal fibrosizing alopecia identity, and disfigurement distress is a parallel explanation, the conservative standard keeps the edge at association only and routes individual claims through graded disease documentation plus dated psychiatric assessment.",
+      "sourceReferences": [
+        {
+          "citation": "Alirezaei P, Ahmadpanah M, Rezanejad A, Soltanian A, Sadeghi Bahmani D, Brand S. Compared to Controls, Individuals with Lichen Planopilaris Have More Depression, a Lower Self-Esteem, and a Lower Quality of Life. Neuropsychobiology. 2019;78(2):95-103. doi:10.1159/000499135. PMID 30970367.",
+          "note": "Case-control study of 38 individuals with lichen planopilaris versus 58 gender- and age-matched controls: higher expert-rated depression, lower self-esteem, physical functioning, and mental health, greater role limitations, disease-activity and hair-loss-severity gradients tracking with depression and quality of life, and illness duration unrelated to the mental-health differences - the matched comparison and activity-gradient anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/30970367/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 30970367; 38 lichen planopilaris vs 58 controls, higher depression scores, activity and severity gradient"
+        },
+        {
+          "citation": "Kelati A, Jafferany M. Quality-of-life assessment and the impact of early diagnosis and treatment in lichen planopilaris: a systematic review. Clin Exp Dermatol. 2024 Dec;50:146-149. doi:10.1093/ced/llae339. PMID 39152785.",
+          "note": "Systematic review documenting that lichen planopilaris and frontal fibrosizing alopecia cause significant psychological distress and impaired quality of life, with higher disease activity and severity associated with higher depression and anxiety scores and psychiatric conditions including anxiety and depression identified in active and severe disease - the systematic-review anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39152785/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 39152785; systematic review of LPP psychoemotional impact, depression and anxiety with activity and severity"
+        }
+      ]
+    },
+    {
+      "conditionId": "anxiety-disorder",
+      "rank": 2,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The Kelati and Jafferany 2024 systematic review documents that lichen planopilaris and frontal fibrosizing alopecia cause significant psychological distress, that higher lichen planopilaris disease activity and severity are associated with higher depression and anxiety scores and greater physical and emotional role limitations, and that active and severe disease causes psychiatric conditions including anxiety and depression (PMID 39152785); the Alirezaei 2019 case-control study of 38 lichen planopilaris individuals and 58 matched controls measured anxiety alongside depression and found that higher anxiety scores predicted poorer quality of life within the lichen planopilaris group while the disease group showed lower self-esteem and mental-health scores than controls (PMID 30970367); the literature documents elevated anxiety scores accompanying lichen planopilaris without establishing that the disease caused an anxiety disorder in any individual.",
+        "causationStatus": "The mapping does not assert that lichen planopilaris caused an individual's anxiety disorder: the between-group anxiety difference is documented at systematic-review level while the case-control anchor reports anxiety as a within-group predictor of quality of life rather than a matched comparison, the instruments are screening-class rather than structured diagnostic interviews, premorbid anxiety is uncontrolled, the systematic review pools lichen planopilaris with the sibling frontal fibrosizing alopecia identity, and scalp-symptom burden and disfigurement distress are parallel explanations - so no directional claim is made."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "PSYCHOPHYSIOLOGICAL",
+        "primaryVector": "A hypothesized symptom-burden and anticipatory-distress route is described: visible scarring hair loss with burning, itching, and erythema of the scalp plausibly sustains worry about progression and appearance, and the documented association of higher disease activity and severity with higher anxiety scores is consistent with either inflammatory signaling or symptom-driven distress or both; the located evidence quantifies the co-occurrence and quality-of-life gradient but does not separate the pathways.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Higher anxiety scores are documented in a systematic review of lichen planopilaris psychoemotional impact and as a quality-of-life predictor in a matched case-control study, but individual determination requires dermatologist-confirmed lichen planopilaris with activity grading, dated psychiatric assessment with diagnostic criteria for anxiety disorder, documentation of premorbid anxiety, and review by a qualified medical professional.",
+        "evidenceGaps": "Dermatologist documentation of lichen planopilaris diagnosis with the Lichen Planopilaris Activity Index, alopecia-severity grading, scalp-symptom burden (burning, itching, tenderness), and treatment history with dates; psychiatric assessment with dates (structured interview where performed, or validated anxiety instruments such as HADS-anxiety or Beck Anxiety Inventory with scores); documentation of premorbid anxiety, worry content (progression, appearance), psychosocial stressors, and any prior psychiatric treatment; exclusion of other contributors (hyperthyroidism, stimulant or caffeine effects, medication effects, primary anxiety disorder predating the hair loss, adjustment disorder); dermatology and psychiatry or psychology assessment of the attribution",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Primary anxiety disorder predating the hair loss",
+          "Adjustment disorder with anxiety about visible hair loss",
+          "Hyperthyroidism, stimulant, or medication effect producing anxiety symptoms",
+          "Social anxiety or body-image distress without comorbid anxiety disorder",
+          "Obsessive-compulsive spectrum or illness-anxiety presentation around scalp symptoms",
+          "Corticosteroid or immunosuppressant neuropsychiatric effects"
+        ]
+      },
+      "evidenceGaps": [
+        "Dermatologist documentation of lichen planopilaris diagnosis with the Lichen Planopilaris Activity Index, alopecia-severity grading, scalp-symptom burden (burning, itching, tenderness), and treatment history with dates; psychiatric assessment with dates (structured interview where performed, or validated anxiety instruments such as HADS-anxiety or Beck Anxiety Inventory with scores); documentation of premorbid anxiety, worry content (progression, appearance), psychosocial stressors, and any prior psychiatric treatment; exclusion of other contributors (hyperthyroidism, stimulant or caffeine effects, medication effects, primary anxiety disorder predating the hair loss, adjustment disorder); dermatology and psychiatry or psychology assessment of the attribution"
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY on the frontal-fibrosizing-alopecia psychiatric precedent: a systematic review documents higher anxiety scores with lichen planopilaris activity and severity and names anxiety among the psychiatric conditions of active disease, and a matched case-control study reports anxiety as an independent predictor of poorer quality of life in the disease group; because the between-group anxiety comparison is review-level, the instruments are screening-class, premorbid anxiety is uncontrolled, and the review pools the sibling frontal fibrosizing alopecia identity, the conservative standard keeps the edge at association only with graded disease documentation and dated psychiatric assessment required per case.",
+      "sourceReferences": [
+        {
+          "citation": "Kelati A, Jafferany M. Quality-of-life assessment and the impact of early diagnosis and treatment in lichen planopilaris: a systematic review. Clin Exp Dermatol. 2024 Dec;50:146-149. doi:10.1093/ced/llae339. PMID 39152785.",
+          "note": "Systematic review documenting higher depression and anxiety scores with higher lichen planopilaris disease activity and severity, significant psychological distress and impaired quality of life, and psychiatric conditions including anxiety and depression in active and severe disease - the between-group systematic-review anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39152785/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 39152785; systematic review, higher anxiety scores with LPP activity and severity, psychiatric conditions including anxiety"
+        },
+        {
+          "citation": "Alirezaei P, Ahmadpanah M, Rezanejad A, Soltanian A, Sadeghi Bahmani D, Brand S. Compared to Controls, Individuals with Lichen Planopilaris Have More Depression, a Lower Self-Esteem, and a Lower Quality of Life. Neuropsychobiology. 2019;78(2):95-103. doi:10.1159/000499135. PMID 30970367.",
+          "note": "Case-control study of 38 individuals with lichen planopilaris versus 58 matched controls measuring anxiety alongside depression: higher anxiety scores predicted poorer quality of life within the lichen planopilaris group, with lower self-esteem and mental health than controls - the anxiety-quality-of-life anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/30970367/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 30970367; anxiety scores predicting poorer quality of life in lichen planopilaris, 38 vs 58 matched controls"
+        }
+      ]
+    }
+  ]
 }

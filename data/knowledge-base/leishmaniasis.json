@@ -2,7 +2,127 @@
   "id": "leishmaniasis",
   "draft": true,
   "todo": [
-    "Rebuild secondary-condition suggestions with condition-specific clinical evidence before publication."
+    "D1 draft-authoring batch 52 (2026-09-24): two ASSOCIATION_ONLY draft mappings pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: both edges assert association only (etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true). The anemia edge uses mechanismCategory INFECTIOUS_SPREAD following the malaria-to-anemia convention, and the thrombocytopenia edge uses MULTIFACTORIAL because the located evidence documents splenic sequestration, marrow dysmegakaryopoiesis, and immune-mediated destruction as parallel routes. Individual claims require parasitologically or serologically confirmed leishmaniasis with species and clinical form, a separately documented cytopenia with its own laboratory characterization and severity grade, dated treatment chronology, and exclusion of the competing causes listed on each edge.",
+    "Scope and prior-closure guards: the catalog identity is the generic Leishmaniasis while the located quantitative evidence is visceral leishmaniasis in pediatric cohorts plus one mixed-age cohort, so both edges are explicitly scoped to visceral disease and no cutaneous or mucosal proposition is asserted. The harvested leishmaniasis-to-keratitis proposition remains FINAL-CLOSED under FINAL-CLOSE-PROPOSITION-MISMATCH (PMID 33913831) and is NOT reasserted in any form; no ocular, dermatologic, or mucosal edge is authored.",
+    "Pathway and duplicate-scope guards: the two windows record distinct cytopenic nodes rather than one pancytopenia statement twice, and no pancytopenia identity exists (absent-identity guard) - the pancytopenia figures are recorded as co-occurrence context within the anemia edge. No leishmaniasis -> chronic-kidney-disease edge is authored: the located renal cohort quantified acute kidney injury in 17.4% of 298 visceral leishmaniasis patients with pre-renal azotemia as the admission mechanism and drug-induced injury in 50% of post-admission cases, so the outcome is acute rather than chronic, half of the post-admission events are treatment-mediated, and HIV co-infection was the dominant independent associate (PMID 34101727) - acute-kidney-injury target mismatch, treatment-mediation, and confounding guards. No -> splenomegaly or -> hepatomegaly edge (no catalog identities), no -> malnutrition-residuals edge (weight loss is part of the case definition and is quantified only as a presenting feature), and no -> hemophagocytic-lymphohistiocytosis edge (no catalog identity; the located case literature is a leukemia-cohort association)."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 52 (2026-09-24): two bounded association edges authored - leishmaniasis to anemia (rank 1, INFECTIOUS_SPREAD) and leishmaniasis to thrombocytopenia (rank 2, MULTIFACTORIAL) - both ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, and hypothesizedOnly:true. The anemia edge rests on the Tofighi Naeem 2014 review of 34 children with confirmed visceral leishmaniasis in Tehran (fever and pallor or weakness in 97.1% each, splenomegaly in 97.1%, hepatomegaly in 88.2%, and hematological abnormalities led by anemia in 97.1%, thrombocytopenia in 91.2%, and leukopenia in 67.6%; direct agglutination positive in all 23 tested at titers of 1:3200 or above, rK39 positive in 90%, and bone marrow amastigotes in 83.3%) (PMID 25642253) and on the Sarkar 2018 cross-sectional study of 90 rK39-positive leishmaniasis cases across five divisions of Bangladesh, in which primary kala-azar cases showed anemia in 62.7%, leukopenia in 57.6%, and thrombocytopenia in 61.7% with pancytopenia in 33 cases overall across groups (PMID 30141437). The thrombocytopenia edge rests on the Hamwi 2020 review of 19 children with visceral leishmaniasis in Tartous, Syria (median age 45.5 months; pallor and anemia in all cases, thrombocytopenia in 15 patients or 78.95%, leukopenia in 9 or 47.4%, splenomegaly in 18 or 94.7%, and bone marrow amastigotes in all) (PMID 33437694) and on the Khodabandeh 2024 retrospective study of 27 children with visceral leishmaniasis in Tehran (mean age 28.13 months; fever in 96.2%, splenomegaly in 92.59%, anemia in 85.1%, and thrombocytopenia in 44.4%) (PMID 38654944). Cytopenias are therefore documented as a leading laboratory abnormality of visceral leishmaniasis with condition-specific denominators across four independent cohorts.",
+    "Counter-evidence and caveat screens recorded 2026-09-24: (i) case-definition circularity - cytopenias, fever, and splenomegaly are the classic triad of visceral leishmaniasis, so the cohorts quantify a presentation phenotype rather than a distinct incident disease in most patients, and this is why both edges are held at association with hypothesizedOnly mechanisms; (ii) pediatric referral selection - three of the four cohorts are pediatric hospital series from endemic referral centres with median or mean ages under four years, so no magnitude can be extrapolated to adults; (iii) route multiplicity - marrow infiltration and dyserythropoiesis, splenic sequestration, hemolysis, and immune-mediated destruction operate together, and one cohort documented megakaryocyte abnormalities, dysgranulopoiesis in 31%, and dyserythropoiesis features in 71% (PMID 26433577), so no single causal arrow is asserted; (iv) treatment mediation - antimonial and amphotericin therapy and any transfusion support both modify the cytopenic picture, and the renal cohort attributed half of its post-admission kidney injury to drugs (PMID 34101727); (v) competing etiologies - iron, B12, and folate deficiency, chronic inflammation from co-infection, HIV co-infection, malaria and other co-endemic infections, marrow disease, hypersplenism from another cause, and drug-induced myelosuppression independently produce the same findings.",
+    "Negative screens recorded 2026-09-24: (i) no leishmaniasis-to-keratitis edge - the harvested proposition remains FINAL-CLOSED under FINAL-CLOSE-PROPOSITION-MISMATCH (PMID 33913831) and no ocular window is authored (prior-closure guard); (ii) no leishmaniasis-to-chronic-kidney-disease edge - the located renal evidence is acute kidney injury in 17.4% of 298 patients with pre-renal azotemia as the dominant admission mechanism and drug-induced injury in 50% of post-admission cases, with HIV co-infection independently associated (AOR 6.01) and concomitant infections also independent (AOR 3.44), so target, mediation, and confounding guards all apply (PMID 34101727); (iii) no -> splenomegaly, -> hepatomegaly, -> pancytopenia, -> hemophagocytic-lymphohistiocytosis, or -> malnutrition-residuals edge (absent-identity and constitutive-presentation guards, with no catalog identity for the first four and weight loss quantified only as a presenting feature); (iv) no -> depressive-disorder or -> post-traumatic-stress-disorder edge (no condition-specific quantification was located in this window); (v) no -> malaria or -> tuberculosis edge (distinct disease identities); (vi) scope note recorded: the catalog identity is the generic Leishmaniasis but both windows are scoped to visceral disease, and cutaneous and mucosal forms author nothing here."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "anemia",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The Tofighi Naeem 2014 review of 34 children with confirmed visceral leishmaniasis documented anemia in 97.1% alongside thrombocytopenia in 91.2% and leukopenia in 67.6%, with fever and pallor or weakness each in 97.1% and splenomegaly in 97.1%; the Sarkar 2018 cross-sectional study of 90 rK39-positive leishmaniasis cases in Bangladesh found anemia in 62.7%, leukopenia in 57.6%, and thrombocytopenia in 61.7% among primary kala-azar cases with pancytopenia in 33 cases across groups; hemolysis of parasitized and unparasitized erythrocytes, marrow infiltration and dyserythropoiesis, splenic sequestration, and immune-mediated destruction are the documented routes by which visceral leishmaniasis reduces circulating red-cell mass; the literature documents anemia as a leading laboratory abnormality of visceral leishmaniasis without establishing that the infection caused an individual's anemia.",
+        "causationStatus": "The mapping does not assert that the leishmaniasis caused an individual's anemia: cytopenia is part of the classical presentation triad of visceral leishmaniasis so the cohorts largely quantify a phenotype rather than a distinct incident disease, three of the four located cohorts are pediatric endemic-area referral series, iron, B12, and folate deficiency, co-infection and HIV-related chronic inflammation, other co-endemic infections, marrow disease, and treatment-related myelosuppression independently produce anemia in the same patients, and no cohort isolates incident anemia attributable to the infection - so no directional or probability claim is made."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "INFECTIOUS_SPREAD",
+        "primaryVector": "A hypothesized parasitemia-driven route is described, following the malaria-to-anemia convention: intracellular Leishmania infection of reticuloendothelial cells drives marrow infiltration and dyserythropoiesis, splenic sequestration of erythrocytes, hemolysis, and cytokine-mediated suppression of erythropoiesis, and the located cohorts record anemia in 97.1% of 34 children and 62.7% of 90 mixed-age cases with the anemia frequently present at the diagnostic presentation; because the same patients carry nutritional deficiency, co-infection, and treatment exposures that also reduce hemoglobin, the individual share attributable to the infection remains a hypothesis.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Anemia is documented in 97.1% and 62.7% of two independent visceral leishmaniasis cohorts, but individual determination requires parasitological or serological confirmation with species and clinical form, a separately documented anemia phenotype with morphology and iron studies, dated treatment and transfusion chronology, and exclusion of the competing causes, with review by a qualified medical professional.",
+        "evidenceGaps": "Parasitological or serological documentation of leishmaniasis with date, clinical form (visceral, cutaneous, or mucosal), species where identified, geographic exposure history, and treatment with dates; a separately documented anemia with hemoglobin and indices, reticulocyte count, peripheral smear, and any marrow findings, plus its chronology relative to the leishmaniasis diagnosis and treatment; iron, B12, and folate studies, haptoglobin, lactate dehydrogenase, and direct antiglobulin testing where hemolysis is suspected; documentation of splenic and hepatic enlargement and its course; assessment of co-infection exposures including HIV testing, malaria and other co-endemic infections, tuberculosis, and intestinal parasites; documentation of transfusion support, antimonial or amphotericin therapy, and any myelosuppressive co-medication; exclusion of chronic kidney disease, chronic inflammatory disease of another cause, and an independent marrow disorder; hematology or infectious-disease assessment of whether the leishmaniasis materially contributed to the anemia",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Iron, B12, or folate deficiency anemia",
+          "Anemia of chronic inflammation or chronic kidney disease from another cause",
+          "HIV co-infection or another chronic infection with marrow suppression",
+          "Malaria, hookworm, schistosomiasis, or another co-endemic parasitic infection",
+          "An independent marrow disorder (myelodysplasia, marrow infiltration by another malignancy, or aplastic anemia)",
+          "Hypersplenism from a cause other than leishmaniasis",
+          "Drug-induced myelosuppression (antimonials, amphotericin, or other myelotoxic therapy) and blood loss"
+        ]
+      },
+      "evidenceGaps": [
+        "Parasitological or serological documentation of leishmaniasis with date, clinical form (visceral, cutaneous, or mucosal), species where identified, geographic exposure history, and treatment with dates; a separately documented anemia with hemoglobin and indices, reticulocyte count, peripheral smear, and any marrow findings, plus its chronology relative to the leishmaniasis diagnosis and treatment; iron, B12, and folate studies, haptoglobin, lactate dehydrogenase, and direct antiglobulin testing where hemolysis is suspected; documentation of splenic and hepatic enlargement and its course; assessment of co-infection exposures including HIV testing, malaria and other co-endemic infections, tuberculosis, and intestinal parasites; documentation of transfusion support, antimonial or amphotericin therapy, and any myelosuppressive co-medication; exclusion of chronic kidney disease, chronic inflammatory disease of another cause, and an independent marrow disorder; hematology or infectious-disease assessment of whether the leishmaniasis materially contributed to the anemia"
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY following the malaria-to-anemia convention in the anemia target's incoming-edge family: two independent visceral leishmaniasis cohorts document anemia in 97.1% of 34 children and 62.7% of 90 mixed-age cases, with platelet and white-cell cytopenias alongside, but the presentation triad of visceral disease, pediatric referral selection, multiple simultaneous mechanisms, and unexcluded nutritional, co-infective, and treatment causes all prevent a causal claim, and the harvested keratitis proposition remains FINAL-CLOSED.",
+      "sourceReferences": [
+        {
+          "citation": "Tofighi Naeem A, Mahmoudi S, Saboui F, Hajjaran H, Pourakbari B, Mohebali M, Zarkesh MR, Mamishi S. Clinical Features and Laboratory Findings of Visceral Leishmaniasis in Children Referred To Children Medical Center Hospital, Tehran, Iran during 2004-2011. Iran J Parasitol. 2014 Mar;9(1):1-5. PMID 25642253.",
+          "note": "Review of 34 children with confirmed visceral leishmaniasis (2004-2011, Tehran) reporting fever and pallor or weakness in 97.1% each, splenomegaly in 97.1%, hepatomegaly in 88.2%, and hematological abnormalities of anemia in 97.1%, thrombocytopenia in 91.2%, and leukopenia in 67.6%, with direct agglutination positive in all 23 tested at 1:3200 or above, rK39 positive in 90%, and bone marrow amastigotes in 83.3% - the pediatric cytopenia anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/25642253/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-24",
+          "sourceLocator": "PMID 25642253; anemia in 97.1% of 34 children with visceral leishmaniasis"
+        },
+        {
+          "citation": "Sarkar SR, Ray NC, Khan ER, Haque N, Hossain MA, Paul SK, Noiri E, Matsumoto Y, Sanjoba C. Clinical Characteristics and Haematological Parameters Associated With Visceral Leishmaniasis in Bangladeshi Individuals. Mymensingh Med J. 2018 Jul;27(3):496-503. PMID 30141437.",
+          "note": "Cross-sectional study of 90 rK39-positive leishmaniasis cases aged 3 to 80 years from five divisions of Bangladesh, in which primary kala-azar cases showed anemia in 62.7%, leukopenia in 57.6%, and thrombocytopenia in 61.7% with fever in all and splenomegaly in 70.2%, and pancytopenia was present in 33 cases across groups - the mixed-age denominator anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/30141437/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-24",
+          "sourceLocator": "PMID 30141437; anemia in 62.7% of 90 kala-azar cases including adults"
+        }
+      ]
+    },
+    {
+      "conditionId": "thrombocytopenia",
+      "rank": 2,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The Hamwi 2020 review of 19 children with visceral leishmaniasis in Tartous, Syria (median age 45.5 months) recorded thrombocytopenia in 15 patients (78.95%) with anemia and pallor in all, leukopenia in 9 (47.4%), splenomegaly in 18 (94.7%), and bone marrow amastigotes in every patient; the Khodabandeh 2024 retrospective study of 27 children with visceral leishmaniasis in Tehran (mean age 28.13 months) found thrombocytopenia in 44.4% with anemia in 85.1%, fever in 96.2%, and splenomegaly in 92.59%; the thrombocytopenia of visceral leishmaniasis is documented as multifactorial, with splenic sequestration, immune-mediated platelet destruction, and dysmegakaryopoiesis each described (marrow studies record quantitative and qualitative megakaryocyte abnormalities); the literature documents thrombocytopenia across independent visceral leishmaniasis cohorts without establishing that the infection caused an individual's thrombocytopenia.",
+        "causationStatus": "The mapping does not assert that the leishmaniasis caused an individual's thrombocytopenia: cytopenia is constitutive of the visceral leishmaniasis presentation, the cohorts are pediatric endemic-area referral series with prevalence figures of 78.95% and 44.4% reflecting different case mixes and severity, splenic sequestration, immune destruction, marrow dysmegakaryopoiesis, and treatment effects operate simultaneously, and hypersplenism from another cause, marrow disease, drug-induced thrombocytopenia, disseminated intravascular coagulation from sepsis, and immune thrombocytopenia independently produce the same finding - so no directional claim is made."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MULTIFACTORIAL",
+        "primaryVector": "A hypothesized multifactorial route is described: Leishmania-infected reticuloendothelial cells expand the spleen and accelerate splenic platelet pooling and destruction, marrow infiltration and dysmegakaryopoiesis impair platelet production, and immune-mediated clearance further reduces platelet survival; the located cohorts recorded thrombocytopenia in 78.95% of 19 children and 44.4% of 27 children alongside anemia and splenomegaly, and marrow studies documented megakaryocyte abnormalities, which supports several routes operating together but leaves their individual contributions a hypothesis.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Thrombocytopenia is documented in 78.95% and 44.4% of two visceral leishmaniasis cohorts and its mechanisms are described at review and marrow-study level, but individual determination requires confirmed leishmaniasis with species and clinical form, a separately documented platelet count with a severity grade and any bleeding assessment, spleen and marrow documentation, treatment chronology, and exclusion of the competing causes, with review by a qualified medical professional.",
+        "evidenceGaps": "Parasitological or serological confirmation of leishmaniasis with date, clinical form, species where identified, and treatment with dates; a separately documented thrombocytopenia with serial platelet counts, severity grade, and any bleeding manifestations, plus its chronology relative to the diagnosis and treatment; documentation of splenic size and any hypersplenism features; bone marrow findings including megakaryocyte morphology where available; assessment for disseminated intravascular coagulation, sepsis, and other co-infection; documentation of all medications with thrombocytopenic potential (including antimonials, amphotericin, and any heparin exposure) and of transfusion support; exclusion of immune thrombocytopenia, marrow disease or infiltration by another cause, liver disease with portal hypertension, and hypersplenism from another cause; hematology or infectious-disease assessment of whether the leishmaniasis materially contributed to the thrombocytopenia",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Hypersplenism from another cause (portal hypertension, cirrhosis, or a hematologic malignancy)",
+          "Drug-induced thrombocytopenia (heparin, antimonials, amphotericin, or other agents)",
+          "Disseminated intravascular coagulation from sepsis or another infection",
+          "Immune thrombocytopenic purpura or another autoimmune cytopenia",
+          "Marrow infiltration or failure from an independent hematologic disorder",
+          "Co-existing HIV infection or another co-endemic infection with cytopenia"
+        ]
+      },
+      "evidenceGaps": [
+        "Parasitological or serological confirmation of leishmaniasis with date, clinical form, species where identified, and treatment with dates; a separately documented thrombocytopenia with serial platelet counts, severity grade, and any bleeding manifestations, plus its chronology relative to the diagnosis and treatment; documentation of splenic size and any hypersplenism features; bone marrow findings including megakaryocyte morphology where available; assessment for disseminated intravascular coagulation, sepsis, and other co-infection; documentation of all medications with thrombocytopenic potential (including antimonials, amphotericin, and any heparin exposure) and of transfusion support; exclusion of immune thrombocytopenia, marrow disease or infiltration by another cause, liver disease with portal hypertension, and hypersplenism from another cause; hematology or infectious-disease assessment of whether the leishmaniasis materially contributed to the thrombocytopenia"
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY: two independent pediatric visceral leishmaniasis cohorts document thrombocytopenia in 78.95% of 19 patients and 44.4% of 27 patients, with one cohort also documenting marrow megakaryocyte abnormalities; because presentation-triad circularity, pediatric referral selection, simultaneous sequestration, immune, and marrow routes, and unexcluded competing causes prevent a causal claim, the conservative standard keeps the edge at association only with a multifactorial mechanism and records the distinct platelet node rather than restating pancytopenia.",
+      "sourceReferences": [
+        {
+          "citation": "Hamwi AO, Mohammad AA, Hamwi SO, Mohammad RA, Shahin KY. Pediatric visceral leishmaniasis in Tartous, Syria. Avicenna J Med. 2020 Oct-Dec;10(4):223-226. doi:10.4103/ajm.ajm_168_20. PMID 33437694.",
+          "note": "Retrospective review of 19 children with visceral leishmaniasis (median age 45.5 months) reporting thrombocytopenia in 15 patients (78.95%), pallor and anemia in all, leukopenia in 9 (47.4%), fever in 13 (68.42%), splenomegaly in 18 (94.7%), hepatomegaly in 11 (57.9%), and bone marrow amastigotes in every patient - the high-prevalence pediatric anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33437694/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-24",
+          "sourceLocator": "PMID 33437694; thrombocytopenia in 15 of 19 children (78.95%) with visceral leishmaniasis"
+        },
+        {
+          "citation": "Khodabandeh M, Moradian E, Sarvari M, Khiabani MS. Visceral Leishmaniasis (VL) Clinical Presentation, Laboratory Findings, Treatment Options and Outcome. Iran J Parasitol. 2024 Jan-Mar;19(1):28-37. doi:10.18502/ijpa.v19i1.15190. PMID 38654944.",
+          "note": "Retrospective cross-sectional study of 27 children under 18 with visceral leishmaniasis (mean age 28.13 months) reporting thrombocytopenia in 44.4% with anemia in 85.1%, fever in 96.2%, and splenomegaly in 92.59%, and noting liposomal amphotericin B as the shortest-hospitalization treatment - the independent cohort with a lower platelet prevalence anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38654944/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-24",
+          "sourceLocator": "PMID 38654944; thrombocytopenia in 44.4% of 27 children with visceral leishmaniasis"
+        }
+      ]
+    }
+  ]
 }

@@ -2,8 +2,145 @@
   "id": "lichen-planus",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review dermatologic, autoimmune, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 53 (2026-09-25): two ASSOCIATION_ONLY draft mappings pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: the depressive edge asserts association only (etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true, mechanismCategory PSYCHOPHYSIOLOGICAL), and the squamous-cell-carcinoma edge asserts association only (MALIGNANT_TRANSFORMATION, hypothesizedOnly:true) scoped to cutaneous hypertrophic lichen planus. Individual claims require dermatologist-confirmed lichen planus with morphology and site documented, dated psychiatric assessment for the mood edge, and biopsy-confirmed malignant change arising in a documented lichen planus lesion with chronology for the cancer edge.",
+    "Pathway and duplicate-scope screens: the squamous-cell-carcinoma edge is deliberately scoped to the cutaneous hypertrophic form - the quantified oral lichen planus malignant-transformation rates (0.44 to 1.2 percent under strict meta-analytic criteria, PMID 31981238; 1.37 percent for oral lichen planus and 2.43 percent for oral lichenoid lesions in a systematic review, PMID 29738106; the erosive oral series, PMID 39198076) are ORAL-scoped and belong to the narrower oral-lichen-planus-lichenoid-lesions identity, which already authors its own -> oral-cancer window; recycling that evidence on the broad identity would run a parallel pathway contrary to expansion rule 11 and the ME-29 scope decision, so those sources are recorded as negative screens and not cited on the edge; no edge to oral-cancer or oral-candidiasis (oral-scoped pathways belong to the oral identity); no edge to lichen-planopilaris, scarring-alopecia, or alopecia (the follicular variant is the separate lichen-planopilaris identity which authors its own windows); no edge to anxiety-disorder (the located anxiety quantification is oral-scoped HADS material); no edge to diabetes-mellitus-type-2 or other metabolic targets (the systemic associations in the 2024 review - autoimmune conditions, glucose intolerance, dyslipidemia, cardiovascular disorders - are shared-driver class without lichen-planus-specific directional quantification)."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 53 (2026-09-25): two bounded association edges authored - lichen-planus to depressive-disorder (rank 1, PSYCHOPHYSIOLOGICAL) and to squamous-cell-carcinoma (rank 2, MALIGNANT_TRANSFORMATION) - both classified ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, and hypothesizedOnly:true. The depressive proposition rests on the Akay 2002 dermatology-clinic case-control study of 50 psoriasis vulgaris, 30 lichen planus, and 40 healthy control subjects, in which depression scores (Beck) were 58 percent in psoriasis, 53 percent in lichen planus, and 20 percent in controls, the authors concluding that depressive symptoms are important in both dermatological diseases and affect clinical outlook and treatment response (PMID 12224690); on the Sampogna 2020 multicentre study of 3509 consecutive dermatology outpatients across 13 European countries, in which moderate or extreme pain/discomfort was reported by 55.5 percent of patients versus 31.5 percent of skin-clear controls and by 75.6 percent of lichen planus patients - among the highest of all dermatoses - and pain/discomfort was associated with depression, anxiety, low quality of life, and thoughts of suicide (PMID 32250441); and on the Tekin 2024 American Journal of Clinical Dermatology review documenting frequent quality-of-life impairment in lichen planus and the need for psychological evaluation and support (PMID 38982032). The malignant-transformation proposition rests on the same Tekin 2024 review statement that cutaneous hypertrophic and mucosal forms of lichen planus are at heightened risk for malignant transformation (PMID 38982032), on the Haenen 2018 report of squamous cell carcinoma arising in a 12-year hypertrophic lichen planus plaque of the lower leg in an 87-year-old woman, with fewer than 50 malignancy cases in cutaneous lichen planus reported in the literature (PMID 30002207), and on the Xu 2025 immunohistochemical study of 34 hypertrophic lichen planus biopsies documenting cytoplasmic p16 overexpression relative to matched invasive squamous cell carcinoma and normal skin, suggesting p16-mediated cell-cycle dysregulation as a contributor to malignant transformation (PMID 39912658); the 2024 Cureus report of cutaneous squamous cell carcinoma in the background of chronic hypertrophic lichen planus of the shin (PMID 38571860) is recorded as corroborating case context and is not cited on the edge, which carries three registered anchors.",
+    "Counter-evidence and caveat screens recorded 2026-09-25: (i) for the depressive edge - the 2002 case-control reports depression frequency and states the significant comparison for psoriasis versus controls while the lichen planus comparison is frequency-level; the multicentre pain/discomfort association is pan-dermatological and pain-mediated, so the mood link may run through symptom burden rather than lichen planus itself; instruments are screening-class without structured diagnosis; (ii) for the cancer edge - the cutaneous transformation evidence is case-report class with fewer than 50 reported cases and no incidence denominator, while the systematic review note in the same literature describes reported oral transformation rates as exaggerated under strict diagnostic criteria (PMID 31981238); the p16 study is mechanistic with no outcome follow-up; longstanding hypertrophic plaques share risk factors (chronic inflammation, sun exposure on lower legs, scarring) with de novo cutaneous squamous cell carcinoma; (iii) the mucosal and oral pathway is explicitly excluded from both edges (see todo screens).",
+    "Negative screens recorded 2026-09-25: (i) no oral-scoped cancer edge on this identity - the oral lichen planus malignant-transformation evidence (PMID 31981238, PMID 29738106, PMID 39198076) is carried by the oral-lichen-planus-lichenoid-lesions -> oral-cancer window and is deliberately not recycled here (ME-29 scope decision; expansion rule 11); (ii) no -> anxiety-disorder edge (oral-scoped HADS studies only; reopening condition: cutaneous-lichen-planus-specific anxiety quantification); (iii) no -> lichen-planopilaris or -> scarring-alopecia edge (follicular variant is a separate identity with its own windows; intermediate-node and wrong-identity guards); (iv) no -> oral-candidiasis edge (secondary oral infection belongs to the oral identity's scope); (v) no metabolic or cardiovascular edge (glucose intolerance, dyslipidemia, and cardiovascular associations in PMID 38982032 are shared-driver autoimmune and metabolic class without directional quantification); (vi) no -> vulvodynia-vestibulitis or genital-mucosal edge (vulvar lichen planus is a site subset without a distinct catalog identity and the located vulvar-clinic mood data are not lichen-planus-specific, PMID 41954173)."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "depressive-disorder",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The Akay 2002 dermatology-clinic case-control study of 50 subjects with psoriasis vulgaris, 30 with lichen planus, and 40 healthy controls found depression scores of 58 percent, 53 percent, and 20 percent respectively, concluding that depressive symptoms are important in both common dermatological diseases and affect clinical outlook and treatment response (PMID 12224690); the Sampogna 2020 multicentre study of 3509 consecutive dermatology outpatients from 13 European countries found moderate or extreme pain/discomfort in 75.6 percent of lichen planus patients - among the highest prevalences of all dermatoses studied - and documented that pain/discomfort is associated with depression, anxiety, low quality of life, and thoughts of suicide (PMID 32250441); the Tekin 2024 review documents frequent quality-of-life impairment in lichen planus and underscores the need for a comprehensive approach including psychological evaluation and support (PMID 38982032); the literature documents elevated depressive symptom frequency in individuals with lichen planus compared with healthy controls without establishing that the disease caused a depressive disorder in any individual.",
+        "causationStatus": "The mapping does not assert that lichen planus caused an individual's depressive disorder: the case-control comparison is frequency-level from a single 2002 dermatology clinic with screening instruments rather than structured diagnosis, the large multicentre association is pan-dermatological and pain-mediated so the mood link may run through symptom burden rather than the lichen planus itself, premorbid mood is uncontrolled, and pruritus, sleep disruption, visible lesions, and treatment burden are parallel drivers - so no directional claim is made."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "PSYCHOPHYSIOLOGICAL",
+        "primaryVector": "A hypothesized symptom-burden route is described: pruritic, painful, and visible lichen planus lesions with chronic relapsing course plausibly drive distress through itch-arousal, pain, disfigurement, and treatment burden, and the documented association of pain/discomfort with depression and suicidal ideation across dermatology outpatients is consistent with this route; a psychobiological contribution from the T-cell-mediated inflammatory process is also hypothesized in the literature, but the located studies do not separate the inflammatory and psychosocial pathways.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Higher depression scores and quality-of-life impairment are documented in a case-control study, a 13-country multicentre outpatients study, and a contemporary review of lichen planus, but individual determination requires dermatologist-confirmed lichen planus with morphology and site documented, dated psychiatric assessment with diagnostic criteria for depressive disorder, documentation of premorbid mood and symptom burden (itch, pain, sleep), and review by a qualified medical professional.",
+        "evidenceGaps": "Dermatologist documentation of lichen planus diagnosis with morphology (cutaneous, hypertrophic, mucosal), site, extent and severity grading, disease duration, relapse course, and treatment history with dates; psychiatric assessment with dates (structured interview where performed, or validated instruments such as HADS or Beck Depression Inventory with scores); documentation of symptom burden - pruritus severity, pain/discomfort scores, sleep disruption - with dates; documentation of premorbid mood history, psychosocial stressors, and prior psychiatric treatment; exclusion of other contributors (thyroid disease, anemia, medication effects, primary mood disorder predating the eruption); dermatology and psychiatry or psychology assessment of the attribution",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Primary depressive disorder predating the eruption",
+          "Psychosocial disfigurement or pruritus-burden distress without comorbid mood disorder",
+          "Thyroid disease, anemia, or medication effect producing mood symptoms",
+          "Other chronic pruritic dermatoses (eczema, psoriasis, lichen simplex chronicus) with their own mood pathways",
+          "Systemic corticosteroid or immunosuppressant neuropsychiatric effects",
+          "Oral-scoped lichen planus mood burden carried by the oral-lichen-planus-lichenoid-lesions identity"
+        ]
+      },
+      "evidenceGaps": [
+        "Dermatologist documentation of lichen planus diagnosis with morphology (cutaneous, hypertrophic, mucosal), site, extent and severity grading, disease duration, relapse course, and treatment history with dates; psychiatric assessment with dates (structured interview where performed, or validated instruments such as HADS or Beck Depression Inventory with scores); documentation of symptom burden - pruritus severity, pain/discomfort scores, sleep disruption - with dates; documentation of premorbid mood history, psychosocial stressors, and prior psychiatric treatment; exclusion of other contributors (thyroid disease, anemia, medication effects, primary mood disorder predating the eruption); dermatology and psychiatry or psychology assessment of the attribution"
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY on the dermatitis and alopecia-family psychiatric precedents: a case-control study documents depression scores of 53 percent in lichen planus against 20 percent in controls, a 13-country multicentre study places lichen planus among the dermatoses with the highest pain/discomfort burden and links that burden to depression and suicidal ideation, and a contemporary review documents frequent quality-of-life impairment with the need for psychological support; because the comparison is frequency-level with screening instruments, the multicentre link is pain-mediated and pan-dermatological, and pruritus and treatment burden are parallel drivers, the conservative standard keeps the edge at association only and routes individual claims through documented morphology and severity plus dated psychiatric assessment.",
+      "sourceReferences": [
+        {
+          "citation": "Akay A, Pekcanlar A, Bozdag KE, Altintas L, Karaman A. Assessment of depression in subjects with psoriasis vulgaris and lichen planus. J Eur Acad Dermatol Venereol. 2002 Jul;16(4):347-352. doi:10.1046/j.1468-3083.2002.00467.x. PMID 12224690.",
+          "note": "Dermatology-clinic case-control study: depression scores of 58 percent in psoriasis, 53 percent in lichen planus, and 20 percent in healthy controls, concluding depressive symptoms are important in both dermatoses and affect clinical outlook and treatment response - the frequency-comparison anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/12224690/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 12224690; depression scores 53% in 30 lichen planus subjects vs 20% in 40 controls (Beck)"
+        },
+        {
+          "citation": "Sampogna F, Abeni D, Gieler U, et al. Exploring the EQ-5D Dimension of Pain/Discomfort in Dermatology Outpatients from a Multicentre Study in 13 European Countries. Acta Derm Venereol. 2020 Apr 21;100(7):adv00120. doi:10.2340/00015555-3477. PMID 32250441.",
+          "note": "Cross-sectional multicentre study of 3509 consecutive dermatology outpatients across 13 countries: moderate or extreme pain/discomfort in 55.5 percent of patients versus 31.5 percent of skin-clear controls and 75.6 percent of lichen planus patients - among the highest of all dermatoses - with pain/discomfort associated with depression, anxiety, low quality of life, and thoughts of suicide - the symptom-burden and mood-association anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/32250441/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 32250441; pain/discomfort in 75.6% of lichen planus outpatients among highest of all dermatoses, associated with depression"
+        },
+        {
+          "citation": "Tekin B, Xie F, Lehman JS. Lichen Planus: What is New in Diagnosis and Treatment? Am J Clin Dermatol. 2024 Sep;25(5):735-764. doi:10.1007/s40257-024-00878-9. PMID 38982032.",
+          "note": "Contemporary review documenting frequent quality-of-life impairment in lichen planus with the need for psychological evaluation and support, and the heightened malignant-transformation risk of cutaneous hypertrophic and mucosal forms - the review-class anchor for both the mood and malignancy propositions.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38982032/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 38982032; frequent QoL impairment in lichen planus requiring psychological evaluation; cutaneous hypertrophic and mucosal forms at heightened malignant risk"
+        }
+      ]
+    },
+    {
+      "conditionId": "squamous-cell-carcinoma",
+      "rank": 2,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The Tekin 2024 American Journal of Clinical Dermatology review states that cutaneous hypertrophic and mucosal forms of lichen planus are at a heightened risk for malignant transformation and recommends long-term follow-up and regular screening for concomitant conditions (PMID 38982032); the Haenen 2018 case report documents squamous cell carcinoma arising in a 12-year hypertrophic lichen planus plaque on the lower leg of an 87-year-old woman and notes that malignancy developing in cutaneous lichen planus is rare with fewer than 50 cases reported in the literature (PMID 30002207); the 2024 Cureus report documents cutaneous squamous cell carcinoma in the background of chronic hypertrophic lichen planus of the shin in an elderly man and concludes that chronic hypertrophic lichen planus should be considered a potential precursor lesion (recorded as corroborating case context in the governance notes, PMID 38571860); the Xu 2025 immunohistochemical study of 34 hypertrophic lichen planus biopsies found cytoplasmic p16 overexpression relative to location-matched well-differentiated squamous cell carcinoma and normal skin, suggesting p16-mediated cell-cycle dysregulation as a contributor to the malignant transformation of hypertrophic lichen planus (PMID 39912658); the literature documents carcinoma arising in longstanding hypertrophic lichen planus plaques in case-level material without establishing that the lichen planus caused an individual's carcinoma.",
+        "causationStatus": "The mapping does not assert that lichen planus caused an individual's squamous cell carcinoma: the edge is scoped to the cutaneous hypertrophic form and the evidence is case-report class with fewer than 50 reported cases and no incidence denominator, longstanding hypertrophic plaques share chronic-inflammation, scarring, and lower-leg sun-exposure risk factors with de novo cutaneous carcinoma, the p16 study is mechanistic without outcome follow-up, and the quantified oral malignant-transformation rates are deliberately excluded as the oral-lichen-planus-lichenoid-lesions identity's evidence (ME-29 scope decision) - so no directional claim is made."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MALIGNANT_TRANSFORMATION",
+        "primaryVector": "A hypothesized chronic-inflammation-to-dysplasia route is described: long-standing T-cell-mediated inflammation in hypertrophic lichen planus plaques produces sustained keratinocyte turnover with p16-associated cell-cycle dysregulation documented in the anchor immunohistochemistry, plausibly permitting clonal expansion and eventual invasive carcinoma in a subset of longstanding plaques; the route is illustrated by case material in which carcinoma arose within plaques of 10 to 12 years duration, but the transformation rate and individual attributable share remain unknown.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Carcinoma arising in longstanding hypertrophic lichen planus plaques is documented in case reports and a mechanistic immunohistochemical study, and a contemporary review places the cutaneous hypertrophic form at heightened malignant risk, but individual determination requires dermatologist-confirmed lichen planus with the hypertrophic morphology and lesion site documented, biopsy confirmation of carcinoma arising within the documented plaque, chronology showing the plaque predating the malignancy, and exclusion of de novo carcinoma risk factors, with review by a qualified medical professional.",
+        "evidenceGaps": "Dermatologist documentation of lichen planus diagnosis with morphology (specifically the hypertrophic form), lesion site (lower legs predilection), duration of the individual plaque, and prior treatment with dates; biopsy records documenting squamous cell carcinoma arising within the same plaque, with dermatopathology confirmation and the interval between the first documented lichen planus lesion and the biopsy; documentation of competing risk factors - cumulative sun exposure and actinic damage at the site, prior radiation, arsenic or other exposures, immunosuppression, prior skin cancer; serial photography or lesion-mapping where available; documentation that the mucosal and oral sites were separately examined (oral changes route to the oral-lichen-planus-lichenoid-lesions identity's evidence base); dermatology and dermatopathology or oncology assessment of the attribution",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "De novo cutaneous squamous cell carcinoma with coincidental adjacent lichen planus",
+          "Actinic keratosis or Bowen disease progression at a sun-damaged site",
+          "Keratoacanthoma or other keratinocytic tumor mimicking carcinoma in a hypertrophic plaque",
+          "Verrucous carcinoma or deep fungal infection mimicking malignant change",
+          "Mucosal or oral lichen planus transformation (carried by the oral-lichen-planus-lichenoid-lesions identity's window)",
+          "Immunosuppression-related or radiation-induced cutaneous malignancy"
+        ]
+      },
+      "evidenceGaps": [
+        "Dermatologist documentation of lichen planus diagnosis with morphology (specifically the hypertrophic form), lesion site (lower legs predilection), duration of the individual plaque, and prior treatment with dates; biopsy records documenting squamous cell carcinoma arising within the same plaque, with dermatopathology confirmation and the interval between the first documented lichen planus lesion and the biopsy; documentation of competing risk factors - cumulative sun exposure and actinic damage at the site, prior radiation, arsenic or other exposures, immunosuppression, prior skin cancer; serial photography or lesion-mapping where available; documentation that the mucosal and oral sites were separately examined (oral changes route to the oral-lichen-planus-lichenoid-lesions identity's evidence base); dermatology and dermatopathology or oncology assessment of the attribution"
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY following the lichen-sclerosus-to-squamous-cell-carcinoma pre-malignant precedent, scoped to cutaneous hypertrophic lichen planus: a contemporary review places the hypertrophic form at heightened malignant-transformation risk, case material documents carcinoma arising within 10- to 12-year plaques with fewer than 50 cutaneous cases in the literature, and immunohistochemistry documents p16-associated cell-cycle dysregulation in hypertrophic plaques; because the evidence is case-report class without incidence denominators, sun-damage and scarring confound plaque-level attribution, and the quantified oral rates are the oral identity's evidence and deliberately excluded, the conservative standard keeps the edge at association only with biopsy-and-chronology documentation required per case.",
+      "sourceReferences": [
+        {
+          "citation": "Tekin B, Xie F, Lehman JS. Lichen Planus: What is New in Diagnosis and Treatment? Am J Clin Dermatol. 2024 Sep;25(5):735-764. doi:10.1007/s40257-024-00878-9. PMID 38982032.",
+          "note": "Contemporary review stating that cutaneous hypertrophic and mucosal forms of lichen planus are at heightened risk for malignant transformation, recommending long-term follow-up and regular screening - the review-class malignant-risk anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38982032/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 38982032; cutaneous hypertrophic lichen planus at heightened risk for malignant transformation"
+        },
+        {
+          "citation": "Haenen CCP, Buurma AAJ, Genders RE, Quint KD. Squamous cell carcinoma arising in hypertrophic lichen planus. BMJ Case Rep. 2018 Jul 11;2018:bcr2017224044. doi:10.1136/bcr-2017-224044. PMID 30002207.",
+          "note": "Case report of malignant transformation of a 12-year hypertrophic lichen planus plaque on both lower legs of an 87-year-old woman into squamous cell carcinoma, noting fewer than 50 malignancy cases in cutaneous lichen planus in the literature and the need to watch suspicious changes in long-standing disease - the case-level transformation anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/30002207/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 30002207; SCC arising in 12-year hypertrophic lichen planus plaque, fewer than 50 cutaneous cases reported"
+        },
+        {
+          "citation": "Xu KR, Honda K, Rohr BR. Expression of p16 in Hypertrophic Lichen Planus. Am J Dermatopathol. 2025 Jun;47(6):448-452. doi:10.1097/DAD.0000000000002940. PMID 39912658.",
+          "note": "Immunohistochemical study of 34 hypertrophic lichen planus biopsies with location-matched well-differentiated squamous cell carcinoma and normal skin: both showed increased p16-positive cells versus normal skin, with cytoplasmic p16 overexpressed in hypertrophic lichen planus, suggesting p16-mediated cell-cycle dysregulation as a contributor to malignant transformation - the mechanistic anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39912658/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 39912658; p16 overexpression in 34 hypertrophic lichen planus biopsies, cell-cycle dysregulation mechanism"
+        }
+      ]
+    }
+  ]
 }
