@@ -45,8 +45,8 @@ describe("mapping expansion ME-8", () => {
 
   it("pins the exact final ME-8 citation totals", () => {
     const refs = kb.flatMap((mapping) => mapping.suggestions.flatMap((suggestion) => suggestion.sourceReferences ?? []));
-expect(refs).toHaveLength(1018);
+expect(refs).toHaveLength(1029);
     expect(refs.filter((source) => source.verified === true)).toHaveLength(383);
-expect(refs.filter((r) => r.verified === false)).toHaveLength(635);
+expect(refs.filter((r) => r.verified === false)).toHaveLength(646);
   });
 });

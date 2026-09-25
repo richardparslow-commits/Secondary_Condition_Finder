@@ -2,8 +2,67 @@
   "id": "loss-of-eyelids",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review otologic, vestibular, audiologic, visual, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 56 (2026-09-25): one ASSOCIATION_ONLY draft mapping pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: the single edge asserts association only (etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true, mechanismCategory MECHANICAL_OR_COMPRESSIVE). The evidence base is case and reconstructive-series class for this rare anatomic loss, so individual claims require ophthalmologist-documented full-thickness eyelid defect with dated ocular-surface findings, and review by a qualified medical professional.",
+    "Pathway and duplicate-scope screens: no -> corneal-scarring edge (intermediate-node rule - the keratitis -> corneal-scarring window carries the scarring pathway) and no -> visual-impairment edge (intermediate-node rule - the corneal-scarring -> visual-impairment window carries the visual pathway downstream of the keratitis); no -> dry-eye-syndrome edge (parallel manifestation - exposure keratopathy and aqueous-deficient dry eye are distinct ocular-surface routes and the dry-eye window's own incoming edges are lacrimal and systemic, so a single ocular-surface window is authored exactly as the batch-54 linear-iga conjunctivitis screen held); no -> conjunctivitis edge (conjunctival exposure is recorded as context on the keratitis edge, not a separate window); no -> anxiety-disorder or depressive-disorder edge (zero located condition-specific psychiatric quantification for eyelid loss; the disfigurement-psych literature is periocular-malignancy or facial-palsy scoped)."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 56 (2026-09-25): one bounded association edge authored - loss-of-eyelids to keratitis (rank 1) - classified ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, and hypothesizedOnly:true; mechanismCategory MECHANICAL_OR_COMPRESSIVE. The proposition rests on eyelid-deficiency case material: the modified Cutler-Beard reconstruction case documents significantly deficient full-thickness eyelid tissue with severe exposure keratopathy from lagophthalmos (PMID 42671095), and the single-stage buccal mucosal graft with orbicularis oculi flap case defines corneal exposure as the complication of the unreconstructed full-thickness defect (PMID 42558230).",
+    "Counter-evidence and caveat screens recorded 2026-09-25: (i) evidence class - case and reconstructive-series class without incidence denominators by defect size or site; (ii) identity separation - the larger lagophthalmos literature is facial-nerve-palsy scoped with intact eyelid tissue, so it is not recycled onto this anatomic-loss identity (ME-29 scope rule); (iii) treatment mediation - surgical reconstruction, lubrication, tarsorrhaphy, and scleral lenses all alter the ocular-surface course; (iv) upper versus lower lid and defect-width dependence are unquantified in the located material."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "keratitis",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Loss of eyelid tissue documents exposure keratopathy of the ocular surface: the double-bridge Cutler-Beard reconstruction case presented with significantly deficient full-thickness eyelid tissue and severe exposure keratopathy from lagophthalmos (PMID 42671095), and the single-stage full-thickness eyelid reconstruction case records corneal exposure among the clinical endpoints its repair was designed to prevent (PMID 42558230); the co-occurrence is documented at case and reconstructive-series class without incidence denominators, so the edge records exposure risk only.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: the located material documents exposure keratopathy in the setting of full-thickness eyelid deficiency, but defect size and site, blink function, tear production, exposure duration, and treatment timing all require individual review before any causal statement."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MECHANICAL_OR_COMPRESSIVE",
+        "primaryVector": "Loss of full-thickness eyelid tissue abolishes the protective blink and lid closure that keep the cornea covered and lubricated, so persistent corneal exposure desiccates and damages the epithelium to produce exposure keratopathy, the mechanism documented in eyelid-deficiency case material, but whether any individual keratitis arose from a given eyelid defect remains hypothesized until ocular-surface, tear, and blink records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at case and reconstructive-series class only: the located material documents exposure keratopathy as the complication that eyelid reconstruction prevents, without cohort quantification of keratitis incidence by defect size, and facial palsy lagophthalmos with intact lids is a different condition.",
+        "evidenceGaps": "No cohort quantifies keratitis incidence by eyelid-defect size or site; the located material is case and reconstructive-series class, and facial-palsy lagophthalmos is a different condition.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "facial nerve palsy lagophthalmos with intact eyelid tissue",
+          "neurotrophic or infectious keratitis",
+          "dry-eye disease of lacrimal origin",
+          "exposure from proptosis or lid retraction syndromes"
+        ]
+      },
+      "evidenceGaps": [
+        "No cohort quantifies keratitis incidence by eyelid-defect size or site; the located material is case and reconstructive-series class, and facial-palsy lagophthalmos is a different condition."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY on the protective-coverage mechanical precedent: the double-bridge Cutler-Beard reconstruction case documents significantly deficient full-thickness eyelid tissue presenting with severe exposure keratopathy due to lagophthalmos, the technique remaining a cornerstone for full-thickness defects (PMID 42671095), and the single-stage autologous buccal mucosal graft with orbicularis oculi myocutaneous flap case for a full-thickness eyelid defect records the absence of corneal exposure among its success endpoints, defining exposure as the complication of the unreconstructed defect (PMID 42558230); because the evidence is case and reconstructive-series class without incidence denominators, the facial-palsy lagophthalmos literature is a different condition with intact lids, and reconstruction plus lubrication alter the course, the conservative standard keeps the edge at association only and routes individual claims through dated ophthalmologic documentation of the defect with ocular-surface findings and competing-cause exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Pushker N, Agrawal S, Angku H, Thakur H, Raj R, Meel R, Bajaj MS. Double-bridge novel modification of Cutler-Beard flap for the reconstruction of full-thickness eyelid deformity. Indian J Ophthalmol. 2026 Sep 1;74(9):1298-1301. doi:10.4103/IJO.IJO_94_26. PMID 42671095.",
+          "note": "Case report documenting significantly deficient full-thickness eyelid tissue presenting with severe exposure keratopathy due to lagophthalmos, repaired with a modified Cutler-Beard flap; supports the bounded exposure-keratopathy proposition only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42671095/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 42671095; case presentation (full-thickness eyelid tissue deficiency with severe exposure keratopathy)"
+        },
+        {
+          "citation": "Xiong JY, Yang MX, Chen N, Xiao J, Song YH, Zheng L, Zhang L. Autologous buccal mucosal graft combined with orbicularis oculi myocutaneous flap for single-stage reconstruction of full-thickness lower eyelid defects following Mohs micrographic surgery: a case report with literature review. Front Oncol. 2026 Jul 22;16:1888362. doi:10.3389/fonc.2026.1888362. PMID 42558230.",
+          "note": "Single-stage full-thickness eyelid reconstruction case recording corneal exposure among the clinical endpoints the repair was designed to prevent, with no corneal exposure at follow-up; supports the bounded exposure-risk proposition only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42558230/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 42558230; case outcome assessment (corneal exposure as a clinical endpoint)"
+        }
+      ]
+    }
+  ]
 }

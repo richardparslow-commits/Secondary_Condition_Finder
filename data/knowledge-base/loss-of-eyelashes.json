@@ -2,8 +2,12 @@
   "id": "loss-of-eyelashes",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review otologic, vestibular, audiologic, visual, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 batch 56 (2026-09-25): deferred - anatomic-loss identity with no located condition-specific outgoing evidence base; recorded as a deferral per the repo's deferral convention with suggestions: [].",
+    "Direction and scope screens: the located lash literature runs either etiology-upstream (the madarosis reviews enumerate causes of lash loss, the same direction problem that drove the batch-55 loss-of-eyebrow deferral) or is scoped to a different exposure - the only located ocular-surface cohort studies eyelash EXTENSION wear potentiating ocular-surface disease signs (PMID 41637114), which is an additive-cosmetic exposure, not lash loss; the protective-function reasoning for lashes (wind and debris shielding) is aerodynamic modeling without condition-specific ocular-surface cohorts in lash-loss patients; and the psychiatric hair-loss base remains alopecia-areata and chemotherapy scoped per expansion rule 11 and the ME-29 scope decision.",
+    "Reopening condition: a cohort of acquired eyelash loss (madarosis of any cause, alopecia totalis, or post-treatment) that quantifies ocular-surface outcomes - tear-film breakup, corneal staining, or keratitis incidence - against matched controls, or a qualified-human governance decision that treats eyelash-absence evidence as a mappable source with an approved target list."
+  ],
+  "governanceNotes": [
+    "D1 batch 56 (2026-09-25): deferred. Direction and scope screens recorded 2026-09-25: the eyelash evidence base is etiology literature flowing toward lash loss, the one located ocular-surface cohort examines eyelash extension wear rather than lash absence (PMID 41637114), the protective-function rationale is modeling rather than condition-specific clinical evidence, and the psychiatric base is scoped to narrower sibling identities per expansion rule 11. No edges authored; the identity is retained as a draft with suggestions: [] pending a qualified-human governance decision or a condition-specific cohort meeting the recorded reopening condition. Every individual determination remains with a qualified medical professional under docs/citation-verification-sop.md."
   ],
   "suggestions": []
 }

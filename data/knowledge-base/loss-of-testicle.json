@@ -2,8 +2,120 @@
   "id": "loss-of-testicle",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review urologic, gynecologic, hormonal, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 56 (2026-09-25): two ASSOCIATION_ONLY draft mappings pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: both edges assert association only (etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true; mechanismCategory POST_SURGICAL_OR_TREATMENT for the hypogonadism edge and PSYCHOPHYSIOLOGICAL for the depressive-disorder edge). The evidence base is torsion-cohort and systematic-review class for the endocrine limb and systematic-review class for the psychological limb, so individual claims require dated serial hormone panels and structured psychiatric documentation with unilateral-versus-bilateral status recorded, and review by a qualified medical professional.",
+    "Pathway and duplicate-scope screens: no -> erectile-dysfunction edge (intermediate-node rule - the hypogonadism -> erectile-dysfunction window owns the androgen-deficiency limb of sexual dysfunction; the 240-versus-240 comparative study's erectile-dysfunction signal, PMID 41212238, is recorded as context on the hypogonadism edge, and the torsion cohort's dissociation - erectile function did not differ despite hormonal loss, PMID 42676052 - is recorded there as counter-evidence; the testicular-cancer sibling's parallel edges predate this batch's intermediate-node discipline and are not extended); no -> osteopenia or osteoporosis edge (intermediate-node rule - the hypogonadism -> osteoporosis window carries the bone pathway); no -> male-infertility edge (no catalog identity exists for male infertility; the semen-parameter findings in both anchors are recorded as context); no -> anxiety-disorder edge (the mental-health synthesis names anxiety among outcomes but the quantified impact is depression-centered; reopening condition recorded: a cohort stratifying post-orchiectomy anxiety prevalence)."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 56 (2026-09-25): two bounded association edges authored - loss-of-testicle to hypogonadism (rank 1) and to depressive-disorder (rank 2) - classified ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, and hypothesizedOnly:true. The hypogonadism proposition rests on the torsion cohort documenting higher LH and FSH with lower testosterone after orchiectomy versus orchiopexy (PMID 42676052) and the systematic review and meta-analysis documenting significantly increased FSH and LH and reduced sperm concentration with testosterone preserved by hypothalamic-pituitary-gonadal compensation (PMID 42546903). The depressive-disorder proposition rests on the mental-health systematic review quantifying psychological impacts and management strategies (PMID 41050387) and the 240-versus-240 comparative study documenting poorer genital self-image and greater dissatisfaction (PMID 41212238).",
+    "Counter-evidence and caveat screens recorded 2026-09-25: (i) the meta-analysis found testosterone levels comparable between orchiectomy and orchiopexy through compensatory mechanisms, so the endocrine signal is gonadotropin elevation and impaired spermatogenesis in mostly unilateral loss rather than universal overt testosterone deficiency; (ii) the torsion cohort found erectile function did not differ between orchiectomy and orchiopexy despite hormonal differences, dissociating the erectile limb from the androgen limb; (iii) the psychological literature mixes malignancy and non-malignancy indications with the cancer diagnosis itself as a depressogenic exposure; (iv) testosterone replacement and antihormonal therapy alter both limbs."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "hypogonadism",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Orchiectomy documents disruption of gonadal endocrine function: the testicular-torsion cohort found that patients who underwent orchiectomy had significantly higher luteinizing and follicle-stimulating hormone levels and lower testosterone than patients who underwent orchiopexy (PMID 42676052), and the systematic review and meta-analysis of 538 torsion patients found orchiectomy associated with significantly increased FSH and LH and reduced sperm concentration versus testis-sparing surgery (PMID 42546903); the co-occurrence is documented at cohort and systematic-review class, so the edge records endocrine-risk only.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: the located material documents gonadotropin elevation and testosterone change after orchiectomy, but unilateral versus bilateral loss, contralateral testicular function, replacement therapy, timing, and pituitary status all require individual review before any causal statement."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "POST_SURGICAL_OR_TREATMENT",
+        "primaryVector": "Removal of testicular tissue eliminates part of the androgen-producing gonadal mass, raising pituitary gonadotropins and lowering testosterone reserve toward compensated or overt hypogonadism, the endocrine shift documented after orchiectomy, but whether any individual hypogonadism arose from a given orchiectomy remains hypothesized until serial hormone records and replacement-therapy history are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at cohort and systematic-review class: the meta-analysis found testosterone levels comparable between orchiectomy and orchiopexy due to hypothalamic-pituitary-gonadal compensation in mostly unilateral loss, so the documented signal is gonadotropin elevation and reduced sperm concentration rather than universal overt testosterone deficiency, and bilateral loss is differently represented.",
+        "evidenceGaps": "The meta-analysis found testosterone comparable between orchiectomy and orchiopexy through hypothalamic-pituitary-gonadal compensation in mostly unilateral loss; bilateral loss is differently represented and replacement therapy alters every measure.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "primary hypogonadism from other testicular disease",
+          "pituitary or hypothalamic hypogonadism",
+          "age-related androgen decline",
+          "obesity and metabolic suppression of testosterone"
+        ]
+      },
+      "evidenceGaps": [
+        "The meta-analysis found testosterone comparable between orchiectomy and orchiopexy through hypothalamic-pituitary-gonadal compensation in mostly unilateral loss; bilateral loss is differently represented and replacement therapy alters every measure."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY on the endocrine-consequence precedent: the testicular-torsion surgical cohort found that orchiectomy patients had higher luteinizing hormone (P < 0.001) and follicle-stimulating hormone (P = 0.009) with lower testosterone (P = 0.008) than orchiopexy patients (PMID 42676052), and the systematic review and meta-analysis of eleven studies with 538 participants found orchiectomy associated with significantly increased FSH (SMD 1.63) and LH (SMD 1.31) and reduced sperm concentration versus orchiopexy, while testosterone and inhibin-B remained comparable through compensatory hypothalamic-pituitary-gonadal mechanisms (PMID 42546903); because the evidence is mostly unilateral-loss class where compensation preserves circulating testosterone, the documented signal is gonadotropin elevation and impaired spermatogenesis rather than universal overt deficiency, and replacement therapy alters every measure, the conservative standard keeps the edge at association only and routes individual claims through dated serial hormone panels with unilateral-versus-bilateral documentation and competing-cause exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Soltani MH, Dadpour M, Alishah S, Ebrahimi S, Bagheri M. Mid- To Long-Term Evaluation of Hormonal Function, Testicular Ultrasonographic Features, and Erectile Function in Children with A History of Testicular Torsion. Urol J. 2026 Aug 29;23:114-117. doi:10.22037/uj.v23i03.8807. PMID 42676052.",
+          "note": "Retrospective torsion cohort documenting that orchiectomy patients had higher LH and FSH and lower testosterone than orchiopexy patients at mid- to long-term follow-up; supports the bounded endocrine-disruption proposition only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42676052/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 42676052; RESULTS (hormonal comparison between orchiectomy and orchiopexy groups) section"
+        },
+        {
+          "citation": "Nasr AM, Zamlout A, Alghzawi HM, Youssef YA, Altell AN, Abdullah I. Gonadal function and fertility outcomes after orchiopexy versus orchiectomy for testicular torsion: A systematic review and meta-analysis. J Pediatr Surg. 2026 Oct;61:163348. doi:10.1016/j.jpedsurg.2026.163348. PMID 42546903.",
+          "note": "Systematic review and meta-analysis of 538 torsion patients finding orchiectomy associated with significantly increased FSH and LH and reduced sperm concentration versus orchiopexy, with testosterone comparable through hypothalamic-pituitary-gonadal compensation; supports the bounded endocrine-disruption proposition only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42546903/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 42546903; PRIMARY OUTCOMES and RESULTS (FSH, LH, testosterone comparisons) sections"
+        }
+      ]
+    },
+    {
+      "conditionId": "depressive-disorder",
+      "rank": 2,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Orchiectomy documents psychological impact independent of the endocrine limb: the systematic review of mental health after orchiectomy synthesizes the literature quantifying psychological impacts and stratifying cultural and demographic influences, with testosterone replacement and cognitive behavioural therapy both appearing as management strategies (PMID 41050387), and the 240-versus-240 matched comparative study documents significantly poorer genital self-image and greater sexual dissatisfaction in orchiectomized men with self-image correlating to mood-relevant psychosocial domains (PMID 41212238); the co-occurrence is documented at systematic-review and comparative-cohort class, so the edge records psychological-impact risk only.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: the located material documents psychological burden after orchiectomy, but the malignancy indication, fertility grief, body-image distress, hormonal contribution, cultural context, and pre-existing psychiatric history all require individual review before any causal statement."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "PSYCHOPHYSIOLOGICAL",
+        "primaryVector": "Loss of a sexual gland drives body-image distress, fertility grief, and altered masculine self-perception that elevate depressive-symptom burden alongside the parallel androgen-deficiency pathway, the psychological impact quantified in post-orchiectomy mental-health synthesis, but whether any individual depressive disorder arose from a given orchiectomy remains hypothesized until psychiatric, hormonal, and psychosocial records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at systematic-review and comparative-cohort class: the reviewed literature mixes cancer and non-cancer indications with the malignancy diagnosis itself as a major depressogenic exposure, most cohorts lack pre-operative psychiatric baselines, and part of the mood signal runs through androgen deficiency which is separately windowed.",
+        "evidenceGaps": "Most reviewed cohorts lack pre-operative psychiatric baselines and mix malignancy with non-malignancy indications; part of the mood signal runs through androgen deficiency, which is separately windowed.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "depressive disorder from the malignancy indication itself",
+          "pre-existing psychiatric illness",
+          "androgen-deficiency mood effects",
+          "fertility-grief reactions of other origin"
+        ]
+      },
+      "evidenceGaps": [
+        "Most reviewed cohorts lack pre-operative psychiatric baselines and mix malignancy with non-malignancy indications; part of the mood signal runs through androgen deficiency, which is separately windowed."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY on the disfigurement-and-loss psychosocial precedent, scoped to the psychological-impact limb with an explicit pathway distinction from the androgen limb: the systematic review of mental health after orchiectomy synthesizes the available literature to quantify psychological impacts, explore cultural and demographic influences, and present management strategies including testosterone replacement, cognitive behavioural therapy, and social support (PMID 41050387), and the comparative study of 240 orchiectomized men versus 240 age-matched controls found significantly lower genital self-image, sexual-satisfaction, and ejaculatory-control scores with elevated dissatisfaction in the orchiectomy group (PMID 41212238); because the reviewed literature mixes malignancy and non-malignancy indications with the cancer diagnosis itself as a depressogenic exposure, most cohorts lack pre-operative psychiatric baselines, and the androgen-deficiency limb is separately windowed on the hypogonadism edge, the conservative standard keeps the edge at association only and routes individual claims through dated psychiatric documentation with indication, hormonal status, and pre-morbid history recorded and competing-cause exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Shokaier G, Gross M, Cohen M, Hussein A. Mental health after orchiectomy: Systematic review and strategic management. Arab J Urol. 2025 Mar 16;23:245-252. doi:10.1080/20905998.2025.2478771. PMID 41050387.",
+          "note": "Systematic review synthesizing the literature on psychological impacts after orchiectomy with quantified mental-health outcomes and evidence-based management strategies including testosterone replacement and cognitive behavioural therapy; supports the bounded psychological-impact proposition only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41050387/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 41050387; abstract (quantification of psychological impacts and management strategies)"
+        },
+        {
+          "citation": "Kilic S, Duvarci M, Durak HA, Karakayali H, Kahilogullari T, Hamidi N, Demir Y. Effects of orchiectomy on genital self-image, sexual function, and satisfaction: a comparative study. World J Urol. 2025 Nov 10;43:677. doi:10.1007/s00345-025-06054-w. PMID 41212238.",
+          "note": "Comparative study of 240 orchiectomized men versus 240 age-matched controls documenting significantly poorer genital self-image and greater sexual dissatisfaction with self-image correlations across psychosocial domains; supports the bounded psychosocial-distress proposition only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41212238/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 41212238; RESULTS (genital self-image and satisfaction comparisons) section"
+        }
+      ]
+    }
+  ]
 }

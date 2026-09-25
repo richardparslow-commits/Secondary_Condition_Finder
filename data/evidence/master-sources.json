@@ -16,16 +16,16 @@
   "citationPromotionMustAtomicallyUpdateKbAndMasterSourceState": true
  },
  "counts": {
-  "liveSourceReferenceUses": 1018,
+  "liveSourceReferenceUses": 1029,
   "activeSourceEntities": 346,
-  "pendingVerificationSourceEntities": 575,
+  "pendingVerificationSourceEntities": 586,
   "activeClinicalSourceEntities": 345,
-  "pendingClinicalSourceEntities": 575,
+  "pendingClinicalSourceEntities": 586,
   "activeLegalAuthorityEntities": 1,
   "retiredOnlySourceEntities": 1,
   "supersededUnverifiedSourceEntities": 7,
   "bibliographicCorrectionOnlyEntities": 1,
-  "totalSourceEntitiesIncludingLineage": 930,
+  "totalSourceEntitiesIncludingLineage": 941,
   "retiredVerifiedRelationshipSourceUses": 6
  },
  "retirementLedger": {
@@ -34516,6 +34516,391 @@
    "retiredUses": [],
    "rawReferenceHashes": [
     "66c31b28b8807afb54e025406e1081ee15367125157964838e1393fd8404ddb8"
+   ]
+  },
+  {
+   "sourceId": "pmid-42671095",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "42671095",
+   "doi": "10.4103/IJO.IJO_94_26",
+   "canonicalCitation": "Pushker N, Agrawal S, Angku H, Thakur H, Raj R, Meel R, Bajaj MS. Double-bridge novel modification of Cutler-Beard flap for the reconstruction of full-thickness eyelid deformity. Indian J Ophthalmol. 2026 Sep 1;74(9):1298-1301. doi:10.4103/IJO.IJO_94_26. PMID 42671095.",
+   "citationVariants": [
+    "Pushker N, Agrawal S, Angku H, Thakur H, Raj R, Meel R, Bajaj MS. Double-bridge novel modification of Cutler-Beard flap for the reconstruction of full-thickness eyelid deformity. Indian J Ophthalmol. 2026 Sep 1;74(9):1298-1301. doi:10.4103/IJO.IJO_94_26. PMID 42671095."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42671095/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/42671095/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-25"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-loss-of-eyelids-to-keratitis",
+     "primaryId": "loss-of-eyelids",
+     "targetId": "keratitis",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "64805b303e1342962ffb3876b87c4720af6cbaa2aee484953daf81dfa9287365"
+   ]
+  },
+  {
+   "sourceId": "pmid-42558230",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "42558230",
+   "doi": "10.3389/fonc.2026.1888362",
+   "canonicalCitation": "Xiong JY, Yang MX, Chen N, Xiao J, Song YH, Zheng L, Zhang L. Autologous buccal mucosal graft combined with orbicularis oculi myocutaneous flap for single-stage reconstruction of full-thickness lower eyelid defects following Mohs micrographic surgery: a case report with literature review. Front Oncol. 2026 Jul 22;16:1888362. doi:10.3389/fonc.2026.1888362. PMID 42558230.",
+   "citationVariants": [
+    "Xiong JY, Yang MX, Chen N, Xiao J, Song YH, Zheng L, Zhang L. Autologous buccal mucosal graft combined with orbicularis oculi myocutaneous flap for single-stage reconstruction of full-thickness lower eyelid defects following Mohs micrographic surgery: a case report with literature review. Front Oncol. 2026 Jul 22;16:1888362. doi:10.3389/fonc.2026.1888362. PMID 42558230."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42558230/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/42558230/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-25"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-loss-of-eyelids-to-keratitis",
+     "primaryId": "loss-of-eyelids",
+     "targetId": "keratitis",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "1c3183be45beb64a715ed4fd4480ae5438beae8dacce66a859d4e1d029a0e78b"
+   ]
+  },
+  {
+   "sourceId": "pmid-36717338",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "36717338",
+   "doi": "10.1016/j.bjoms.2022.11.287",
+   "canonicalCitation": "Jenkins GW, Kennedy MP, Ellabban I, Adams JR, Sellstrom D. Functional outcomes following mandibulectomy and fibular free-flap reconstruction. Br J Oral Maxillofac Surg. 2023 Feb;61:158-164. doi:10.1016/j.bjoms.2022.11.287. PMID 36717338.",
+   "citationVariants": [
+    "Jenkins GW, Kennedy MP, Ellabban I, Adams JR, Sellstrom D. Functional outcomes following mandibulectomy and fibular free-flap reconstruction. Br J Oral Maxillofac Surg. 2023 Feb;61:158-164. doi:10.1016/j.bjoms.2022.11.287. PMID 36717338."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36717338/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/36717338/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-25"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-loss-of-jaw-to-dysphagia",
+     "primaryId": "loss-of-jaw",
+     "targetId": "dysphagia",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "5bef40fa62b716988fed38cae39bd0daf962075aa123958f1750bb6d13a0b3d9"
+   ]
+  },
+  {
+   "sourceId": "pmid-39577833",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "39577833",
+   "doi": "10.1016/j.joms.2024.10.020",
+   "canonicalCitation": "Mishra A, Nair RR, Vijay S, Attakkil A, Mullath A, Babu AK. A Comparative Study of Speech and Swallowing Postoperative Outcomes in Oral Cancer: Impact of Lateral Mandibular Continuity Restoration. J Oral Maxillofac Surg. 2025 Mar;83:374-381. doi:10.1016/j.joms.2024.10.020. PMID 39577833.",
+   "citationVariants": [
+    "Mishra A, Nair RR, Vijay S, Attakkil A, Mullath A, Babu AK. A Comparative Study of Speech and Swallowing Postoperative Outcomes in Oral Cancer: Impact of Lateral Mandibular Continuity Restoration. J Oral Maxillofac Surg. 2025 Mar;83:374-381. doi:10.1016/j.joms.2024.10.020. PMID 39577833."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39577833/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/39577833/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-25"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-loss-of-jaw-to-dysphagia",
+     "primaryId": "loss-of-jaw",
+     "targetId": "dysphagia",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "56443c4e2fd71fad1569293e2c27828d66816cffa4a7c235d2acab451b1bf71c"
+   ]
+  },
+  {
+   "sourceId": "pmid-42676052",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "42676052",
+   "doi": "10.22037/uj.v23i03.8807",
+   "canonicalCitation": "Soltani MH, Dadpour M, Alishah S, Ebrahimi S, Bagheri M. Mid- To Long-Term Evaluation of Hormonal Function, Testicular Ultrasonographic Features, and Erectile Function in Children with A History of Testicular Torsion. Urol J. 2026 Aug 29;23:114-117. doi:10.22037/uj.v23i03.8807. PMID 42676052.",
+   "citationVariants": [
+    "Soltani MH, Dadpour M, Alishah S, Ebrahimi S, Bagheri M. Mid- To Long-Term Evaluation of Hormonal Function, Testicular Ultrasonographic Features, and Erectile Function in Children with A History of Testicular Torsion. Urol J. 2026 Aug 29;23:114-117. doi:10.22037/uj.v23i03.8807. PMID 42676052."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42676052/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/42676052/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-25"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-loss-of-testicle-to-hypogonadism",
+     "primaryId": "loss-of-testicle",
+     "targetId": "hypogonadism",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "742cfeab2037dfb25ad5762bd26fbb2f60b171e75bd4b7ad8282fa2bc871ffd7"
+   ]
+  },
+  {
+   "sourceId": "pmid-42546903",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "42546903",
+   "doi": "10.1016/j.jpedsurg.2026.163348",
+   "canonicalCitation": "Nasr AM, Zamlout A, Alghzawi HM, Youssef YA, Altell AN, Abdullah I. Gonadal function and fertility outcomes after orchiopexy versus orchiectomy for testicular torsion: A systematic review and meta-analysis. J Pediatr Surg. 2026 Oct;61:163348. doi:10.1016/j.jpedsurg.2026.163348. PMID 42546903.",
+   "citationVariants": [
+    "Nasr AM, Zamlout A, Alghzawi HM, Youssef YA, Altell AN, Abdullah I. Gonadal function and fertility outcomes after orchiopexy versus orchiectomy for testicular torsion: A systematic review and meta-analysis. J Pediatr Surg. 2026 Oct;61:163348. doi:10.1016/j.jpedsurg.2026.163348. PMID 42546903."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42546903/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/42546903/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-25"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-loss-of-testicle-to-hypogonadism",
+     "primaryId": "loss-of-testicle",
+     "targetId": "hypogonadism",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "9af67d03c1f35a37cd9dae80b7402483650148b7bc9f289d622a74069bf0b00d"
+   ]
+  },
+  {
+   "sourceId": "pmid-41050387",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "41050387",
+   "doi": "10.1080/20905998.2025.2478771",
+   "canonicalCitation": "Shokaier G, Gross M, Cohen M, Hussein A. Mental health after orchiectomy: Systematic review and strategic management. Arab J Urol. 2025 Mar 16;23:245-252. doi:10.1080/20905998.2025.2478771. PMID 41050387.",
+   "citationVariants": [
+    "Shokaier G, Gross M, Cohen M, Hussein A. Mental health after orchiectomy: Systematic review and strategic management. Arab J Urol. 2025 Mar 16;23:245-252. doi:10.1080/20905998.2025.2478771. PMID 41050387."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41050387/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/41050387/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-25"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-loss-of-testicle-to-depressive-disorder",
+     "primaryId": "loss-of-testicle",
+     "targetId": "depressive-disorder",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "946299ecfa8cae88909f191fbf02f312d7521f30df12b6282dbec6e9d9a9077b"
+   ]
+  },
+  {
+   "sourceId": "pmid-41212238",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "41212238",
+   "doi": "10.1007/s00345-025-06054-w",
+   "canonicalCitation": "Kilic S, Duvarci M, Durak HA, Karakayali H, Kahilogullari T, Hamidi N, Demir Y. Effects of orchiectomy on genital self-image, sexual function, and satisfaction: a comparative study. World J Urol. 2025 Nov 10;43:677. doi:10.1007/s00345-025-06054-w. PMID 41212238.",
+   "citationVariants": [
+    "Kilic S, Duvarci M, Durak HA, Karakayali H, Kahilogullari T, Hamidi N, Demir Y. Effects of orchiectomy on genital self-image, sexual function, and satisfaction: a comparative study. World J Urol. 2025 Nov 10;43:677. doi:10.1007/s00345-025-06054-w. PMID 41212238."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41212238/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/41212238/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-25"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-loss-of-testicle-to-depressive-disorder",
+     "primaryId": "loss-of-testicle",
+     "targetId": "depressive-disorder",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "4b0db23fe9ad82f7d63a6feabeeb565de85da71a89ce67c4e38a4466d1a9a7ed"
+   ]
+  },
+  {
+   "sourceId": "pmid-42152199",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "42152199",
+   "doi": "10.29271/jcpsp.2026.05.609",
+   "canonicalCitation": "Abbas R, Rashid M, Sarwar SU, Khan MI, Shoaib M, Askari F. Evaluation of Deglutition in Patients with Tongue Reconstruction Using a Radial Forearm Free Flap. J Coll Physicians Surg Pak. 2026 May;36:609-613. doi:10.29271/jcpsp.2026.05.609. PMID 42152199.",
+   "citationVariants": [
+    "Abbas R, Rashid M, Sarwar SU, Khan MI, Shoaib M, Askari F. Evaluation of Deglutition in Patients with Tongue Reconstruction Using a Radial Forearm Free Flap. J Coll Physicians Surg Pak. 2026 May;36:609-613. doi:10.29271/jcpsp.2026.05.609. PMID 42152199."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42152199/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/42152199/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-25"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-loss-of-tongue-to-dysphagia",
+     "primaryId": "loss-of-tongue",
+     "targetId": "dysphagia",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "1d55f19ac1955694c39bd1caa7eac78209237dfe2952dc8b68afc42b9f5bb5aa"
+   ]
+  },
+  {
+   "sourceId": "pmid-42693646",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "42693646",
+   "doi": "10.1002/jso.70355",
+   "canonicalCitation": "Chen J, Cole-Price A, Peet BM, Lee KT, Hespe GE, Boe LA, Cunningham L, Shahzad F, Cohen MA, Cracchiolo JR, Nelson JA, Matros E, Allen RJ Jr. The Impact of Advanced Age on Functional Recovery Following Glossectomy. J Surg Oncol. 2026 Sep 3. doi:10.1002/jso.70355. PMID 42693646.",
+   "citationVariants": [
+    "Chen J, Cole-Price A, Peet BM, Lee KT, Hespe GE, Boe LA, Cunningham L, Shahzad F, Cohen MA, Cracchiolo JR, Nelson JA, Matros E, Allen RJ Jr. The Impact of Advanced Age on Functional Recovery Following Glossectomy. J Surg Oncol. 2026 Sep 3. doi:10.1002/jso.70355. PMID 42693646."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42693646/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/42693646/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-25"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-loss-of-tongue-to-dysphagia",
+     "primaryId": "loss-of-tongue",
+     "targetId": "dysphagia",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "9b2abf07c645ee495f0796fb830d7bb3c0c02528a3aeac561b69e6bf190c8240"
+   ]
+  },
+  {
+   "sourceId": "pmid-42218322",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "42218322",
+   "doi": "10.1007/s00405-026-10338-1",
+   "canonicalCitation": "Kumar R, Sood R, Singh A, Kumar R, Sagar P, Manchanda S, Singh CA, Bhalla AS, Thakar A. Speech and swallowing outcomes with infrahyoid myo cutaneous flap after compartmental tongue resection: a prospective observational study. Eur Arch Otorhinolaryngol. 2026 May 31. doi:10.1007/s00405-026-10338-1. PMID 42218322.",
+   "citationVariants": [
+    "Kumar R, Sood R, Singh A, Kumar R, Sagar P, Manchanda S, Singh CA, Bhalla AS, Thakar A. Speech and swallowing outcomes with infrahyoid myo cutaneous flap after compartmental tongue resection: a prospective observational study. Eur Arch Otorhinolaryngol. 2026 May 31. doi:10.1007/s00405-026-10338-1. PMID 42218322."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42218322/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/42218322/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-25"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-loss-of-tongue-to-dysphagia",
+     "primaryId": "loss-of-tongue",
+     "targetId": "dysphagia",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "abc609bdc8381f091bb00adfa9aca2f9881d815e50b5dbae7592ca483c8cab4b"
    ]
   }
  ],

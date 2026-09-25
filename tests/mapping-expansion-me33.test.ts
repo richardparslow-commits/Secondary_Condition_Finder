@@ -123,22 +123,22 @@ describe("Mapping Expansion Batch ME-33", () => {
   it("ratchets the authoritative ME-33 counts", () => {
     expect(relationships.currentState).toBe("D1-DRAFT-AUTHORED");
     expect(sources.currentState).toBe("D1-DRAFT-AUTHORED");
-    expect(relationships.counts).toEqual({ relationships: 610, explicitPublicationGuards: 536, legacyRationaleBoundaries: 74 });
-    expect(relationships.relationships).toHaveLength(610);
+    expect(relationships.counts).toEqual({ relationships: 615, explicitPublicationGuards: 541, legacyRationaleBoundaries: 74 });
+    expect(relationships.relationships).toHaveLength(615);
     expect(sources.counts).toMatchObject({
-      liveSourceReferenceUses: 1018,
-      pendingVerificationSourceEntities: 575,
-      pendingClinicalSourceEntities: 575,
-      totalSourceEntitiesIncludingLineage: 930,
+      liveSourceReferenceUses: 1029,
+      pendingVerificationSourceEntities: 586,
+      pendingClinicalSourceEntities: 586,
+      totalSourceEntitiesIncludingLineage: 941,
     });
-    expect(sources.sources).toHaveLength(930);
+    expect(sources.sources).toHaveLength(941);
 
     const mappings = fs.readdirSync(`${root}/data/knowledge-base`).filter((file) => file.endsWith(".json")).map((file) => load<Mapping>(`data/knowledge-base/${file}`));
     const references = mappings.flatMap((mapping) => mapping.suggestions.flatMap((suggestion) => suggestion.sourceReferences));
-    expect(mappings.reduce((total, mapping) => total + mapping.suggestions.length, 0)).toBe(610);
-    expect(references).toHaveLength(1018);
+    expect(mappings.reduce((total, mapping) => total + mapping.suggestions.length, 0)).toBe(615);
+    expect(references).toHaveLength(1029);
     expect(references.filter((reference) => reference.verified === true)).toHaveLength(383);
-    expect(references.filter((r) => r.verified === false)).toHaveLength(635);
+    expect(references.filter((r) => r.verified === false)).toHaveLength(646);
   });
 
   it("keeps deferred identities outside the batch", () => {
