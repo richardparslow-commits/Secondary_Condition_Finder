@@ -12,7 +12,12 @@ Health check endpoint used by Vercel's monitoring and the production readiness w
 
 **Response** (`200 OK` when healthy, `503 Service Unavailable` when degraded):
 
-```json
+<!-- jsonc: the example is executable JSON once the trailing comments are
+     stripped. Those comments record the TypeScript union each field may take
+     (see src/lib/runtime-capabilities.ts), so the block stays copy-pasteable
+     while still documenting every legal value. -->
+
+```jsonc
 {
   "status": "healthy",
   "components": {
@@ -45,7 +50,7 @@ Health check endpoint used by Vercel's monitoring and the production readiness w
       }
     },
     "vaReferenceCache": {
-      "scope": "process-local" | "disabled",
+      "scope": "process-local", // "process-local" | "disabled"
       "detail": "process-local LRU on this instance only; entries reset on cold start and are not shared with other instances",
       "hits": 42,
       "misses": 8,
@@ -54,7 +59,7 @@ Health check endpoint used by Vercel's monitoring and the production readiness w
     "rateLimit": {
       "status": "ok",
       "latencyMs": 0,
-      "scope": "per-instance" | "single-process",
+      "scope": "per-instance", // "per-instance" | "single-process"
       "detail": "per-IP limits apply per instance, so the aggregate is roughly the configured limit x instance count; the edge WAF remains the capacity layer"
     },
     "runtime": {
@@ -63,10 +68,10 @@ Health check endpoint used by Vercel's monitoring and the production readiness w
       "distributed": false,
       "reduced": [],
       "capabilities": {
-        "vaLiveIntegration": "enabled" | "disabled",
-        "vaReferenceCache": "process-local" | "disabled",
-        "rateLimit": "single-process" | "per-instance",
-        "circuitBreaker": "single-process" | "per-instance"
+        "vaLiveIntegration": "enabled", // "enabled" | "disabled"
+        "vaReferenceCache": "process-local", // "process-local" | "disabled"
+        "rateLimit": "single-process", // "single-process" | "per-instance"
+        "circuitBreaker": "single-process" // "single-process" | "per-instance"
       },
       "detail": "all process-local capabilities run at full strength in this runtime"
     }
