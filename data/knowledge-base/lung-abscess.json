@@ -2,8 +2,143 @@
   "id": "lung-abscess",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review airway, aspiration, inflammatory, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 57 (2026-09-25): two ASSOCIATION_ONLY draft mappings pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: both edges assert association only (etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true, mechanismCategory INFECTIOUS_SPREAD for the pleural-effusion edge and MECHANICAL_OR_COMPRESSIVE for the pneumothorax edge). The evidence base is case-series and small-cohort class for this suppurative infection, so individual claims require dated imaging and microbiology documentation of the abscess-to-pleural relationship with competing-cause exclusion, and review by a qualified medical professional.",
+    "Pathway and duplicate-scope screens: no -> brain-abscess edge (direction and pooling guard - the located septic-emboli material is either direction-neutral concurrent foci from an oral portal of entry (PMID 42496294), pulmonary-infection-class rather than abscess-specific (the Nocardia brain-abscess case-control, PMID 37064583, reports concomitant lung infection in 86 percent without abscess-level attribution), or direction-inverted meningitis material (PMID 39154205)); no -> meningitis edge (intermediate-node rule - the brain-abscess and meningitis windows carry the intracranial pathway and no direct lung-to-meninges cohort exists); no -> bronchiectasis edge (direction inversion - the paediatric 13-year cohort, PMID 41808029, reports 63.6 percent of childhood lung abscesses as secondary to underlying conditions including bronchiectasis, so bronchiectasis is upstream of abscess, and the residual-destructive route has no identity-level quantification); no -> anemia or hemoptysis edges (no catalog identity for hemoptysis and no identity-level anemia quantification; the pseudoaneurysm hemoptysis case material is vessel-class complication recorded as context); no -> sepsis or septic-shock edge (no catalog identity exists, as the batch-55 liver-abscess screen held); no -> cellulitis edge (the abscesses umbrella identity owns the suppurative-skin window and no located lung-abscess material supports skin extension); no -> anxiety-disorder or depressive-disorder edge (zero located condition-specific psychiatric quantification for lung abscess)."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 57 (2026-09-25): two bounded association edges authored - lung-abscess to pleural-effusion (rank 1) and to pneumothorax (rank 2) - classified ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, and hypothesizedOnly:true. The pleural-effusion proposition rests on rupture-to-empyema material: the three-patient series documents abscesses rupturing into the pleural cavity with secondary pleural empyema (PMID 39598106), the COPD case documents abscess rupture with bronchopleural fistula (PMID 40190862), and the 153-patient paediatric empyema cohort found concurrent lung abscess in 16.3 percent with significantly worse short-term outcomes (PMID 42573817). The pneumothorax proposition rests on destructive-rupture material: the concomitant triad case (PMID 41164071), the Hafnia alvei tension-pneumothorax case (PMID 41876249), and the bronchopleural-fistula case (PMID 41293207).",
+    "Counter-evidence and caveat screens recorded 2026-09-25: (i) evidence class - the direct-attribution anchors are case and small-series class, and the one cohort anchor (PMID 42573817) is concurrent-occurrence rather than sequential attribution; (ii) route scope - the pleural-effusion edge is scoped to the pyogenic rupture route, the amebic trans-diaphragmatic route riding the amebic-liver-abscess identity's published window; (iii) treatment mediation - chest-tube drainage, percutaneous intracavitary drainage, decortication, surgery, and prolonged antibiotics all alter the pleural course; (iv) competing rupture sources - procedures, barotrauma, and bullous disease must be excluded before attributing any pneumothorax to the abscess."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "pleural-effusion",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Lung abscess documents pleural-space contamination at rupture: a three-patient case series with literature review reports post-COVID lung abscesses rupturing into the pleural cavity with secondary pleural empyema (PMID 39598106), the incidental-imaging case documents a lower-lobe abscess rupture with a bronchopleural fistula (PMID 40190862), and the 153-patient paediatric empyema cohort found concurrent lung abscess in 25 (16.3%) with significantly longer chest-tube duration and length of stay and more repeat operations (PMID 42573817); attribution is explicit in the rupture series and concurrent-association class in the cohort, so the edge records the documented pleural-space pathway only.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: the located material documents abscess rupture into the pleural cavity and concurrent abscess-empyema presentations, but whether any individual pleural effusion arose from a given abscess, from the antecedent pneumonia, or from another cause requires individual imaging, microbiology, and fluid-analytic review."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "INFECTIOUS_SPREAD",
+        "primaryVector": "A suppurative lung parenchymal focus erodes or ruptures through the visceral pleura, seeding the pleural space with pus to form a parapneumonic empyema or pyopneumothorax, the transpleural extension documented in the rupture case series and the pleurocutaneous-fistula case, but whether this route produced any individual effusion remains hypothesized until pleural fluid, imaging, and operative records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at case-series class with explicit rupture attribution plus one concurrent-occurrence cohort: the cohort (PMID 42573817) indexes empyema patients with concurrent abscess rather than sequential attribution, and simple parapneumonic effusions of uncomplicated pneumonia are not stratified away.",
+        "evidenceGaps": "No cohort quantifies empyema incidence after lung abscess, the paediatric cohort anchor is concurrent-occurrence rather than sequential attribution, and drainage, decortication, and prolonged antibiotics all mediate the pleural course.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "parapneumonic effusion of uncomplicated pneumonia",
+          "tuberculous empyema",
+          "esophageal perforation empyema",
+          "pancreaticopleural fistula",
+          "chylothorax of lymphatic origin",
+          "trans-diaphragmatic amebic route carried by the amebic-liver-abscess identity"
+        ]
+      },
+      "evidenceGaps": [
+        "No cohort quantifies empyema incidence after lung abscess, the paediatric cohort anchor is concurrent-occurrence rather than sequential attribution, and drainage, decortication, and prolonged antibiotics all mediate the pleural course."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY on the trans-pleural extension precedent mirroring the batch-55 liver-abscess pleural window: the three-patient series documents lung abscesses rupturing into the pleural cavity with secondary pleural empyema, all managed by percutaneous intracavitary drainage with long-term drainage of 94 to 290 days (PMID 39598106), the 65-year-old COPD case documents an incidental lower-lobe abscess rupture with a bronchopleural fistula (PMID 40190862), and the 153-patient paediatric empyema cohort found concurrent lung abscess in 16.3 percent with longer chest-tube duration (median 9 versus 5 days), longer stay, and repeat operation in 12.0 versus 1.6 percent (PMID 42573817); because the strongest cohort anchor is concurrent-occurrence class and treatment mediates the course, the conservative standard keeps the edge at association only, scopes it to the pyogenic rupture route, and routes individual claims through dated imaging and pleural-fluid documentation with competing-cause exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Palade E, Titu IM, Goia AE, Simu TD, Ciulic SA, Manole S, Mlesnite M. Management of COVID-19 Infection Associated Lung Abscess with Secondary Pleural Empyema Using Percutaneous Intracavitary Drainage: Case Series and Review of the Literature. J Clin Med. 2024 Nov 19;13:6962. doi:10.3390/jcm13226962. PMID 39598106.",
+          "note": "Three-patient case series with literature review documenting lung abscesses rupturing into the pleural cavity with secondary pleural empyema in critically ill post-COVID patients; supports the bounded rupture-to-empyema proposition only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39598106/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 39598106; case series (abscesses rupturing into the pleural cavity with pleural empyema)"
+        },
+        {
+          "citation": "Malik D, Khawar Z, Abbas A, Beizaeipour Z, Radhakrishnan R, Dongre J, Mahmood N. Ruptured Lung Abscess Into the Pleural Cavity: The Significance of Imaging and Medication Compliance. Cureus. 2025 Mar;17:e80077. doi:10.7759/cureus.80077. PMID 40190862.",
+          "note": "Case report documenting an incidental left lower lobe abscess rupture with a bronchopleural fistula in a 65-year-old man with COPD; supports the bounded pleural-space-rupture proposition only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40190862/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 40190862; case presentation (abscess rupture with bronchopleural fistula)"
+        },
+        {
+          "citation": "Giles T, Hutchison DLH, Chua TH, Varadhan H, Gibbs C, Kumar R. Outcomes of paediatric empyema with lung abscess treated by video-assisted thoracoscopic surgery (VATS): a retrospective cohort study. Pediatr Surg Int. 2026 Aug 10;42:333. doi:10.1007/s00383-026-06567-4. PMID 42573817.",
+          "note": "Retrospective cohort of 153 paediatric empyema patients finding concurrent lung abscess in 25 (16.3%) with significantly longer chest-tube duration and length of stay and more repeat operations; concurrent-occurrence class only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42573817/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 42573817; cohort results (25/153 concurrent lung abscess, outcomes comparison)"
+        }
+      ]
+    },
+    {
+      "conditionId": "pneumothorax",
+      "rank": 2,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Lung abscess documents pleural air leaks at the abscess wall: the concomitant-presentation case reports a lung abscess with same-side parapneumonic effusion and pneumothorax requiring separated individualized management (PMID 41164071), the invasive Hafnia alvei case describes progressive pulmonary cavities complicated by secondary lung abscess and tension pneumothorax (PMID 41876249), and the paediatric severe-abscess case documents bronchopleural fistula formation, the pleural communication through which cavity air escapes (PMID 41293207); the co-occurrence and complication are documented at case class without incidence denominators.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: the located material documents pneumothorax and bronchopleural fistula in the setting of lung abscess, but whether an individual pneumothorax arose from abscess rupture, from the antecedent necrotizing infection, or from a procedure or underlying bullous disease requires individual imaging and procedural review."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MECHANICAL_OR_COMPRESSIVE",
+        "primaryVector": "A cavitating suppurative focus destroys parenchyma and erodes the visceral pleura so cavity air leaks into the pleural space, producing pneumothorax or a bronchopleural fistula, the destructive-rupture route documented in the concomitant triad case and the fistula case, but whether this route produced any individual pneumothorax remains hypothesized until imaging and operative records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at case class only: the located material is single-case and small-series documentation of concomitant presentation or fistula complication, without incidence denominators for pneumothorax after lung abscess and without stratification of tension versus simple pneumothorax.",
+        "evidenceGaps": "No cohort quantifies pneumothorax incidence after lung abscess; tension versus simple pneumothorax is unstratified, and chest-tube drainage, surgery, and ventilation settings all alter the pleural-air course.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "primary spontaneous pneumothorax in smokers with blebs",
+          "post-procedural pneumothorax after biopsy or drainage",
+          "ventilator-associated barotrauma",
+          "tuberculous cavity rupture",
+          "bullous emphysema rupture"
+        ]
+      },
+      "evidenceGaps": [
+        "No cohort quantifies pneumothorax incidence after lung abscess; tension versus simple pneumothorax is unstratified, and chest-tube drainage, surgery, and ventilation settings all alter the pleural-air course."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY on the destructive-rupture precedent: the 67-year-old case documents the concomitant lateralizing triad of lung abscess, parapneumonic effusion, and pneumothorax with separated individualized management (PMID 41164071), the invasive Hafnia alvei case documents rapidly progressive cavities with secondary abscess and tension pneumothorax (PMID 41876249), and the paediatric severe lung abscess case documents bronchopleural fistula formation requiring ECMO with full recovery (PMID 41293207); because the evidence is case class without incidence denominators and drainage and ventilation mediate the course, the conservative standard keeps the edge at association only and routes individual claims through dated imaging documenting cavity-to-pleural communication with procedure and bullous-cause exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Desai P, Gaudin J, Parekh S, Vulasala SR, Reddy P. Lateralizing Lung Logjam: A Unique Case of Concomitant Lateralizing Lung Abscess, Parapneumonic Effusion, and Pneumothorax. Cureus. 2025 Sep;17:e93410. doi:10.7759/cureus.93410. PMID 41164071.",
+          "note": "Case report of a 67-year-old man with concomitant same-laterality lung abscess, parapneumonic effusion, and pneumothorax managed with multidisciplinary individualized treatment; supports the bounded concomitant-presentation proposition only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41164071/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 41164071; case presentation (concomitant lung abscess, parapneumonic effusion, and pneumothorax)"
+        },
+        {
+          "citation": "Mo M, Peng C, Peng G, Yuan H, Zhang Z, Xie J, Cheng W. Invasive Hafnia alvei pneumonia complicated with lung abscess and pneumothorax triad: imaging features and therapeutic dilemmas in an extremely rare case of severe infection. Zhonghua Wei Zhong Bing Ji Jiu Yi Xue. 2026 Jan;38:198-201. doi:10.3760/cma.j.cn121430-20250531-00305. PMID 41876249.",
+          "note": "Chinese-language case report documenting progressive pulmonary cavities complicated by secondary lung abscess and tension pneumothorax in a diabetic cirrhotic patient; supports the bounded complication proposition only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41876249/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 41876249; case course (cavity progression with secondary abscess and tension pneumothorax)"
+        },
+        {
+          "citation": "Dan L, Yuqian M. Case Report: Evidence-based case management of ECMO treatment for children with severe lung abscess complicated with bronchopleural fistula. Front Pediatr. 2025;13:1676151. doi:10.3389/fped.2025.1676151. PMID 41293207.",
+          "note": "Paediatric case report documenting severe lung abscess complicated by bronchopleural fistula, the pleural communication through which cavity air escapes; supports the bounded fistula-mechanism proposition only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41293207/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 41293207; case report (severe lung abscess complicated with bronchopleural fistula)"
+        }
+      ]
+    }
+  ]
 }

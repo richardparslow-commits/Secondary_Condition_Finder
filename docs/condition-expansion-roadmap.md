@@ -2180,3 +2180,132 @@ page range inside the ME-7 citation strings, the `635-645` page range inside the
 citation, and the Wave-4 `261-condition` catalog checkpoint - each a page number or catalog count
 rather than a registry counter. Standing recommendation: batch 56 lands through branch, PR, CI, and
 merge.
+
+Mapping Expansion D1 batch 57 (2026-09-25) authored eight draft-quarantined relationships across four
+of the five screened identities, with one identity deferral (`loss-of-use-of-extremities`). All eight
+edges are ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED,
+vaNexusProbabilityAlignment NOT_ASSERTED, and hypothesizedOnly:true.
+`lung-abscess -> pleural-effusion` (rank 1, INFECTIOUS_SPREAD) is scoped to the pyogenic rupture
+route: the three-patient case series with literature review documents post-COVID lung abscesses
+rupturing into the pleural cavity with secondary pleural empyema, managed by percutaneous
+intracavitary drainage (PMID 39598106), the 65-year-old COPD case documents an incidental lower-lobe
+abscess rupture with a bronchopleural fistula (PMID 40190862), and the 153-patient paediatric empyema
+cohort found concurrent lung abscess in 25 (16.3%) with significantly longer chest-tube duration
+(median 9 versus 5 days), longer length of stay, and repeat operation in 12.0 versus 1.6 percent (PMID
+42573817).
+`lung-abscess -> pneumothorax` (rank 2, MECHANICAL_OR_COMPRESSIVE) rests on destructive-rupture
+material: the concomitant lateralizing triad case documents lung abscess with same-side parapneumonic
+effusion and pneumothorax requiring separated individualized management (PMID 41164071), the invasive
+Hafnia alvei case documents rapidly progressive cavities with secondary lung abscess and tension
+pneumothorax (PMID 41876249), and the paediatric severe-abscess case documents bronchopleural fistula
+formation on ECMO with full recovery (PMID 41293207).
+`lymphangioleiomyomatosis -> pneumothorax` (rank 1, MECHANICAL_OR_COMPRESSIVE) rests on cyst-rupture
+material: the pregnancy case presented with severe bilateral pneumothorax and near-complete lung
+collapse with biopsy-confirmed LAM (PMID 42682943), the directionally titled case documents
+pneumothorax secondary to LAM (PMID 42441190), and the 1747-patient nationwide Japanese cohort
+identifies LAM among the female-specific secondary subtypes producing the second peak of the trimodal
+female spontaneous-pneumothorax age distribution (PMID 42289172).
+`lymphangioleiomyomatosis -> pleural-effusion` (rank 2, MECHANICAL_OR_COMPRESSIVE) is scoped to the
+chylous lymphatic route: the young-woman pleural-clinic case reports a chylous effusion found to be
+secondary to LAM with remission on mTOR inhibition (PMID 38371459), the cystic-lung-disease case
+presents recurrent non-traumatic chylothorax with VEGF-D of 2001 pg/ml as the presenting feature (PMID
+37435256), and the sporadic-LAM case documents recurrent lymphocyte-predominant exudative effusions
+with milky triglyceride-rich fluid misdiagnosed as tuberculosis before HRCT confirmed LAM (PMID
+42701434).
+`lymphangioleiomyomatosis -> pulmonary-hypertension` (rank 3, NOT_ESTABLISHED) mirrors the
+interstitial-lung-disease window's bounded framing: the single-centre study of 234 LAM patients found
+PH by echocardiography in 15 of 167 screened (8.98%) with pre-capillary patterns on catheterization in
+five patients, more oxygen therapy, lower FEV1, FVC, and DLCO, and higher serum VEGF-D in the PH group
+(PMID 39069851), and the 2025 rare-pulmonary-disease review describes PH in LAM as uncommon but
+clinically relevant in advanced disease, driven by parenchymal destruction and hypoxic vasoconstriction
+rather than direct vascular involvement and reclassified from Group 5 to Group 3 (PMID 40575830).
+`lupus-profundus -> systemic-lupus-erythematosus` (rank 1, IMMUNE_MEDIATED) mirrors the published
+discoid-lupus window with LEP-specific evidence only: the 54-case biopsy-proven retrospective found
+coexistent SLE in 24.1%, ANA in 24.1%, anti-double-stranded DNA in 16.6%, and direct immunofluorescence
+positivity in 72.2%, with delayed diagnosis significantly associated with lipoatrophy (PMID 42504242),
+and the lupus-mastitis case documents the panniculitis presentation preceding the SLE diagnosis after
+several indeterminate breast biopsies (PMID 41716945).
+`lupus-profundus -> scarring-alopecia` (rank 2, IMMUNE_MEDIATED) rests on the paediatric case with a
+localized alopecic patch with reduced follicular openings suggestive of early scarring alopecia,
+trichoscopic absent follicles, and lobular panniculitis on histology (PMID 41994712) and the StatPearls
+course review documenting chronic relapsing course with disfiguring morbidity (PMID 42777106), with
+the counter-case recorded on the edge: scalp LEP presenting as patchy NONscarring alopecia with
+complete recovery on prednisolone and methotrexate (PMID 40900661).
+`lymphangioma -> dysphagia` (rank 1, MECHANICAL_OR_COMPRESSIVE) rests on site-specific mass-effect
+case material: the adult case titled as hypopharyngeal lymphangioma causing persistent dysphagia (PMID
+41245682), the six-year-old tongue case with swallowing and mastication difficulties and speech
+disturbances (PMID 38022192), and the adult postcricoid case resected en bloc specifically to preserve
+aerodigestive functions with a review of adult postcricoid and hypopharyngeal presentations (PMID
+38321774).
+
+`loss-of-use-of-extremities` is deferred, not packeted: the published umbrella identity
+`amputation-or-loss-of-use` already owns the depressive-disorder window at the disability-population
+level, so authoring the same window here would recycle narrower-condition evidence (ME-29 scope rule);
+the human disuse evidence is narrower-condition scoped (post-stroke hemiplegia microarchitecture, PMID
+41241310, n=10; chronic spinal-cord-injury fracture risk scores, PMID 38174130), the classic
+post-stroke osteopenia anchor is RETRACTED (PMID 17895057), and the residual disuse literature is
+animal-model class (tail-suspension and botulinum-paralysis rodent studies); contracture and thrombosis
+material is indexed by the causing disease, with joint-replacement-residuals owning the post-surgical
+DVT and contracture windows and complex-regional-pain-syndrome its osteoporosis and contracture
+windows. Reopening condition: a cohort of acquired extremity loss-of-use (any cause or mixed-cause)
+quantifying bone density, contracture, venous-thrombotic, or psychiatric outcomes against matched
+controls where the exposure is loss of use itself rather than the causing disease, or a qualified-human
+governance decision treating hemiplegia or spinal-cord-injury disuse evidence as transferable to this
+identity with an approved target list.
+
+Screens recorded for this batch: no `lung-abscess -> brain-abscess` edge (direction-and-pooling guard -
+the located septic-emboli material is either direction-neutral concurrent foci from an oral portal of
+entry (PMID 42496294), pulmonary-infection-class rather than abscess-specific (the Nocardia brain-abscess
+case-control reports concomitant lung infection in 86% without abscess-level attribution, PMID 37064583),
+or direction-inverted meningitis material (PMID 39154205)), no `-> meningitis` edge (intermediate-node
+rule), no `-> bronchiectasis` edge (direction inversion - the paediatric 13-year cohort reports 63.6% of
+childhood lung abscesses as secondary to underlying conditions including bronchiectasis, PMID 41808029),
+and no `-> sepsis`/`-> septic-shock`/`-> hemoptysis` edges (no catalog identities; the pulmonary-artery
+pseudoaneurysm hemoptysis case recorded as context); no LAM `-> lung-cancer` edge despite the Japanese
+cohort naming LAM a risk factor (PMID 38654512 - malignancy-risk class rather than a documented
+secondary condition) and no TSC-manifestation edges (tuberous-sclerosis scoped per ME-29), with the
+PH edge's prevalence ceiling (8.98%) and echocardiographic-screening limitation recorded on the edge;
+no lupus-profundus `-> scars` edge (constitutive-proximity - the lipoatrophic depressions are the
+condition's own resolving-nodule residue), no evidence recycled from the discoid window (ME-29, with
+68.5% of the cohort's biopsies showing discoid features recorded as an overlap caveat), and the
+subcutaneous-panniculitis-like-T-cell-lymphoma mimic recorded among every edge's alternatives; no
+lymphangioma `-> cellulitis` edge (diagnostic-mimic guard - the orbital case documents lymphangioma
+mimicking cellulitis, PMID 42293490, and the remaining infection material is intralesional
+superinfection that enlarges lesions), no `-> airway-obstruction` edge (no catalog identity), and no
+Plummer-Vinson edge (wrong-identity guard - the macroglossia association is comorbid with inverted
+direction, PMID 11283514).
+
+Process notes: all twenty-two citations were NCBI-verified via efetch BEFORE file authoring with a
+22/22 title-and-abstract match (batch-30 lesson institutionalized, thirteenth consecutive clean
+verification cycle), and the pre-verification step produced its first RETRACTION reject: the classic
+post-stroke hemiplegia osteopenia study (PMID 17895057) carries a retraction notice in PubMed and was
+excluded outright from the loss-of-use evidence base before authoring - a live demonstration that the
+efetch-first rule guards against retracted as well as mismatched anchors. The esummary bibliographic
+pass matched every authored author list, journal, and page range against the PubMed record. The
+post-write structural self-audit passed on the first attempt for all five files with zero errors and
+zero contamination (including its deferral branch on `loss-of-use-of-extremities`), `npm run
+kb:validate` reports zero errors, and this batch shares nothing: the four edge-bearing identities carry
+22 reference uses over exactly 22 new sources.
+
+Registry after lockstep: 623 relationships (549 explicit / 74 legacy), 1051 reference uses (383
+verified / 668 pending-verification), 1046 clinical / 5 legal uses, 963 source entities (346 active /
+608 pending-verification). Citation packet regenerated at 260 worksheets / 668 reference rows = live
+citation debt; the verification dashboard regenerated at 668 rows in 28 reviewer batches (606 distinct
+sources). Backlog after batch 57: **205** undispositioned zero-edge drafts, computed by the
+deterministic `npm run authoring:backlog` tool (210 before the batch; the four edge-bearing identities
+and the now-marked `loss-of-use-of-extremities` deferral all left the queue, so the batch again clears
+exactly five). Next-five: `macroglossia`, `malabsorption-syndrome`, `mallet-finger`, `mallet-toes`,
+`malnutrition-residuals`.
+
+Test-pin note: the sweep touched 52 files and replaced 310 counter tokens in one pass with the
+batch-56 per-token context predicates carried over unchanged (relationships 615 -> 623, references/uses
+1029 -> 1051, unverified 646 -> 668, pending source entities 586 -> 608, total source entities 941 ->
+963, explicit guards 541 -> 549, clinical references 1024 -> 1046, clinical provenance 1028 -> 1050,
+and the twelve-file draft-singles counter 264 -> 265 for this batch's single single-edge identity,
+`lymphangioma`). The dry run reported zero lines lacking registry vocabulary, and the residue check
+found only intentional survivor classes: the frozen sibling `tests/helpers/master-2026-current.ts`
+pins (excluded wholesale), the `61(5):566-574` and `635-645` and `264(4):1101-1110` page/volume ranges
+inside citation strings, byte-size arithmetic constants (`20 * 1024 * 1024`), the Wave-4
+`261-condition` catalog checkpoint, and the doc-lint volatile-count fixture strings - each a page
+number, byte size, catalog count, or test fixture rather than a registry counter. Standing
+recommendation: batch 57 lands through branch, PR, CI, and merge.

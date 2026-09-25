@@ -2,8 +2,132 @@
   "id": "lupus-profundus",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review dermatologic, autoimmune, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 57 (2026-09-25): two ASSOCIATION_ONLY draft mappings pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: both edges assert association only (etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true, mechanismCategory IMMUNE_MEDIATED). The evidence base is a single-centre 54-case retrospective plus case reports for this rare panniculitis, so individual claims require dated serologic, histologic, and trichoscopic documentation with competing-cause exclusion, and review by a qualified medical professional.",
+    "Pathway and duplicate-scope screens: no -> scarring-alopecia evidence recycled from the discoid-lupus window (ME-29 scope rule - the discoid identity owns its scalp window and this edge uses LEP-specific cases only); no -> scars edge (constitutive-proximity guard - the lipoatrophic depressions left by resolving nodules are this condition's own resolving-nodule residue rather than a separate secondary condition); no -> lymphedema edge (the lymphatic-involvement material in the LAM-style imaging literature is extrapulmonary-lymphatic context without identity-level quantification for this identity); no -> depressive-disorder or anxiety-disorder edge (zero located condition-specific psychiatric quantification - the disfigurement-morbidity material is generic quality-of-life description); no -> lupus-mastitis or breast-cancer edge (mastitis is a LEP presentation variant recorded as context on the SLE edge, not a separate catalog window)."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 57 (2026-09-25): two bounded association edges authored - lupus-profundus to systemic-lupus-erythematosus (rank 1) and to scarring-alopecia (rank 2) - classified ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, and hypothesizedOnly:true. The SLE proposition rests on the 54-case biopsy-proven LEP retrospective with coexistent SLE in 24.1 percent (PMID 42504242) and the lupus-mastitis case preceding the SLE diagnosis (PMID 41716945). The scarring-alopecia proposition rests on the paediatric scarring case (PMID 41994712) and the StatPearls course review (PMID 42777106), with the nonscarring complete-recovery counter-case recorded on the edge (PMID 40900661).",
+    "Counter-evidence and caveat screens recorded 2026-09-25: (i) evidence class - a single-centre 54-case retrospective with cross-sectional coexistence plus case reports, no progressive trajectories; (ii) counter-evidence on the alopecia edge - scalp LEP can present as patchy nonscarring alopecia with complete recovery (PMID 40900661), so scarring is not universal; (iii) overlap record - 68.5 percent of the cohort's biopsies showed histologic discoid features and the discoid identity owns its own scalp and SLE windows, so no evidence is recycled across siblings; (iv) treatment mediation - hydroxychloroquine, corticosteroids, mycophenolate, methotrexate, and dapsone all alter the cutaneous and systemic course; (v) mimic record - subcutaneous panniculitis-like T-cell lymphoma is the documented histologic mimic requiring exclusion in every individual case."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "systemic-lupus-erythematosus",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Lupus erythematosus panniculitis documents systemic lupus association at cohort level: the 54-case biopsy-proven LEP retrospective found coexistent systemic lupus erythematosus in 24.1 percent of cases with ANA positivity in 24.1 percent and anti-double-stranded DNA in 16.6 percent (PMID 42504242), and the lupus-mastitis case documents the panniculitis presentation preceding the SLE diagnosis after several indeterminate breast biopsies (PMID 41716945); the association is quantified cross-sectionally at identity level and temporally at case class.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: the located material documents coexistent SLE in a quarter of the LEP cohort and one case of panniculitis preceding SLE diagnosis, but whether an individual LEP portends, aggravates, or merely coexists with systemic disease requires individual serologic, organ-level, and longitudinal review."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "IMMUNE_MEDIATED",
+        "primaryVector": "Shared autoimmune dysregulation against subcutaneous fat and deeper tissues in LEP reflects the same type-I-interferon and lymphocytic effector program that drives systemic lupus, so cutaneous panniculitis and systemic disease co-occur through a common immune substrate, the association documented in the 54-case cohort and the preceding-presentation case, but the pathway remains hypothesized for any individual until serologic and organ-level records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at single-centre retrospective cohort class plus one case: coexistence is cross-sectional rather than progressive, SLE ascertainment used variable criteria, the cohort's own analysis found no statistically significant association with delayed diagnosis, and histologic discoid features were present in 68.5 percent of cases, overlapping the discoid window.",
+        "evidenceGaps": "Retrospective single-centre design with 54 patients, no pre-diagnostic serologic trajectories, cross-sectional coexistence that cannot establish progression, and treatment with hydroxychloroquine, corticosteroids, and mycophenolate that alters both cutaneous and systemic course.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "discoid lupus erythematosus overlap",
+          "subacute cutaneous lupus",
+          "subcutaneous panniculitis-like T-cell lymphoma (the documented LEP mimic)",
+          "drug-induced lupus",
+          "factitial or traumatic panniculitis"
+        ]
+      },
+      "evidenceGaps": [
+        "Retrospective single-centre design with 54 patients, no pre-diagnostic serologic trajectories, cross-sectional coexistence that cannot establish progression, and treatment with hydroxychloroquine, corticosteroids, and mycophenolate that alters both cutaneous and systemic course."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY on the cutaneous-to-systemic lupus precedent mirroring the published discoid-lupus window with LEP-specific evidence only: the 54-case biopsy-proven retrospective found coexistent SLE in 24.1 percent (13 of 54), ANA in 24.1 percent, anti-dsDNA in 16.6 percent, and direct immunofluorescence positivity in 72.2 percent, with delayed diagnosis significantly associated with lipoatrophy (PMID 42504242), and the 50-year-old lupus-mastitis case documents the panniculitis presentation preceding the SLE diagnosis after several indeterminate biopsies (PMID 41716945); because coexistence is cross-sectional rather than progressive and the histologic overlap with discoid lupus is substantial (68.5 percent discoid features), the conservative standard keeps the edge at association only and routes individual claims through dated serologic and organ-level documentation with lymphoma and drug-exposure exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Nasimi M, Ramezani N, Kamyab K, Abdshah A, Ghiasi M, Montazeri S, Babaie H, Saberi F. Clinicopathological Features of Lupus Erythematosus Panniculitis (LEP): A Retrospective Analysis of 54 Cases. Health Sci Rep. 2026 Jul 25;9:e72871. doi:10.1002/hsr2.72871. PMID 42504242.",
+          "note": "Retrospective analysis of 54 biopsy-proven LEP cases finding coexistent SLE in 24.1 percent with serologic profiles and histopathologic reassessment; supports the bounded coexistence proposition only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42504242/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 42504242; cohort results (coexistent SLE 24.1%, ANA 24.1%, anti-dsDNA 16.6%)"
+        },
+        {
+          "citation": "Mohammed SR, Capildeo K, Davis-King K, Barrow M. A Diagnostic Pitfall: Lupus Mastitis Presenting Before Diagnosis of Systemic Lupus Erythematosus. Case Rep Rheumatol. 2026;2026:5593452. doi:10.1155/crrh/5593452. PMID 41716945.",
+          "note": "Case report documenting lupus mastitis, a panniculitis presentation, diagnosed before the systemic lupus diagnosis after several indeterminate breast biopsies; supports the bounded preceding-presentation proposition only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41716945/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 41716945; case presentation (LM diagnosed before SLE)"
+        }
+      ]
+    },
+    {
+      "conditionId": "scarring-alopecia",
+      "rank": 2,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Lupus erythematosus profundus documents scarring alopecia at scalp presentation: the paediatric case presented with a localized alopecic patch with reduced follicular openings suggestive of early scarring alopecia and absent follicles on trichoscopy, histologically lobular panniculitis extending into subcutaneous fat (PMID 41994712), the StatPearls review describes a chronic relapsing course with disfiguring cosmetic morbidity (PMID 42777106), and the counter-case documents scalp LEP presenting as patchy NONscarring alopecia with complete recovery on treatment (PMID 40900661); scarring potential is documented at case class with one explicit contrary presentation.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: the located material documents both scarring and nonscarring scalp presentations of LEP, so whether an individual alopecia is permanent scarring, a treatment-responsive inflammatory state, or a different alopecia entity requires individual trichoscopic, histologic, and longitudinal review."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "IMMUNE_MEDIATED",
+        "primaryVector": "Inflammatory lobular panniculitis of the scalp destroys follicular units and subcutaneous fat so affected patches lose follicles permanently and develop cicatricial alopecia, the follicular-destruction route documented in the paediatric scarring case, but the route remains hypothesized for any individual because the counter-case documents reversibility on immunosuppression.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at case class only: one paediatric case documents early scarring features, one case documents complete recovery with nonscarring presentation, the review documents chronic relapsing course without alopecia-specific quantification, and treatment with hydroxychloroquine, corticosteroids, or methotrexate alters the trajectory.",
+        "evidenceGaps": "Case-class evidence with directly conflicting presentations (scarring versus nonscarring), no cohort quantifying scarring-alopecia incidence in scalp LEP, pediatric single-case anchoring on the scarring side, and immunosuppressive treatment that mediates the outcome.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "discoid lupus of the scalp (the published sibling window, not recycled per ME-29)",
+          "lichen planopilaris",
+          "frontal fibrosing alopecia",
+          "alopecia areata (nonscarring)",
+          "folliculitis decalvans"
+        ]
+      },
+      "evidenceGaps": [
+        "Case-class evidence with directly conflicting presentations (scarring versus nonscarring), no cohort quantifying scarring-alopecia incidence in scalp LEP, pediatric single-case anchoring on the scarring side, and immunosuppressive treatment that mediates the outcome."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY on the follicular-destruction precedent with LEP-specific evidence only: the five-year-old case presented with a localized alopecic patch with reduced follicular openings suggestive of early scarring alopecia and trichoscopic absent follicles, histologically lobular lymphocytic and histiocytic panniculitis extending into subcutaneous fat, with hydroxychloroquine stabilizing the lesion and the authors stressing early recognition to reduce permanent scarring risk (PMID 41994712), the StatPearls review describes resolving nodules leaving depressions from lipoatrophy and disfiguring cosmetic morbidity (PMID 42777106), and the counter-case documents patchy nonscarring scalp LEP with complete alopecia recovery on prednisolone and methotrexate (PMID 40900661); because the evidence is case class with directly conflicting presentations and treatment mediates the outcome, the conservative standard keeps the edge at association only, records the nonscarring counter-case on the edge, and routes individual claims through dated trichoscopic and histologic documentation distinguishing scarring from reversible alopecia.",
+      "sourceReferences": [
+        {
+          "citation": "Almoosawi H, Samiey F, Al Awadhi A. A Unique Case of Lupus Erythematosus Profundus Presenting With Localized Scarring Alopecia and Perioral Swelling in a Pediatric Patient. Cureus. 2026 Mar;18:e105300. doi:10.7759/cureus.105300. PMID 41994712.",
+          "note": "Paediatric case of lupus erythematosus profundus presenting with localized scarring alopecia (reduced follicular openings, trichoscopic absent follicles) and perioral swelling, histologically lobular panniculitis; supports the bounded scarring proposition only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41994712/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 41994712; case presentation and trichoscopy (early scarring alopecia, absent follicles)"
+        },
+        {
+          "citation": "Arnold DL, Blum MA, Shitabata P. Lupus Panniculitis. In: StatPearls [Internet]. Treasure Island (FL): StatPearls Publishing; 2026 Jan-. 2026 Sep 14. PMID 42777106.",
+          "note": "Continuing-education review describing the chronic relapsing course of lupus panniculitis with resolving nodules leaving lipoatrophic depressions and significant disfiguring morbidity; supports the bounded structural-morbidity framing only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42777106/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 42777106; review section (clinical course and morbidity)"
+        },
+        {
+          "citation": "Behera B, Sethy M, Ameta B, Khatib FSRA, Ayyanar P. Lupus Panniculitis of the Scalp Presenting as a Patchy Nonscarring Alopecia: Report of an Uncommon Case. Am J Dermatopathol. 2025 Dec 1;47:957-960. doi:10.1097/DAD.0000000000003115. PMID 40900661.",
+          "note": "Counter-evidence case: scalp lupus panniculitis presenting as patchy nonscarring alopecia with complete recovery on prednisolone and methotrexate; bounds the scarring proposition by documenting reversibility.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40900661/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 40900661; case presentation and outcome (nonscarring alopecia, complete recovery)"
+        }
+      ]
+    }
+  ]
 }

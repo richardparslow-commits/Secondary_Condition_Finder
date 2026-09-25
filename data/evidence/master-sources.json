@@ -16,16 +16,16 @@
   "citationPromotionMustAtomicallyUpdateKbAndMasterSourceState": true
  },
  "counts": {
-  "liveSourceReferenceUses": 1029,
+  "liveSourceReferenceUses": 1051,
   "activeSourceEntities": 346,
-  "pendingVerificationSourceEntities": 586,
+  "pendingVerificationSourceEntities": 608,
   "activeClinicalSourceEntities": 345,
-  "pendingClinicalSourceEntities": 586,
+  "pendingClinicalSourceEntities": 608,
   "activeLegalAuthorityEntities": 1,
   "retiredOnlySourceEntities": 1,
   "supersededUnverifiedSourceEntities": 7,
   "bibliographicCorrectionOnlyEntities": 1,
-  "totalSourceEntitiesIncludingLineage": 941,
+  "totalSourceEntitiesIncludingLineage": 963,
   "retiredVerifiedRelationshipSourceUses": 6
  },
  "retirementLedger": {
@@ -34901,6 +34901,776 @@
    "retiredUses": [],
    "rawReferenceHashes": [
     "abc609bdc8381f091bb00adfa9aca2f9881d815e50b5dbae7592ca483c8cab4b"
+   ]
+  },
+  {
+   "sourceId": "pmid-39598106",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "39598106",
+   "doi": "10.3390/jcm13226962",
+   "canonicalCitation": "Palade E, Titu IM, Goia AE, Simu TD, Ciulic SA, Manole S, Mlesnite M. Management of COVID-19 Infection Associated Lung Abscess with Secondary Pleural Empyema Using Percutaneous Intracavitary Drainage: Case Series and Review of the Literature. J Clin Med. 2024 Nov 19;13:6962. doi:10.3390/jcm13226962. PMID 39598106.",
+   "citationVariants": [
+    "Palade E, Titu IM, Goia AE, Simu TD, Ciulic SA, Manole S, Mlesnite M. Management of COVID-19 Infection Associated Lung Abscess with Secondary Pleural Empyema Using Percutaneous Intracavitary Drainage: Case Series and Review of the Literature. J Clin Med. 2024 Nov 19;13:6962. doi:10.3390/jcm13226962. PMID 39598106."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39598106/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/39598106/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-25"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-lung-abscess-to-pleural-effusion",
+     "primaryId": "lung-abscess",
+     "targetId": "pleural-effusion",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "a22ec4a391e66e811300747a8259b10eee4acad424dcabbd7bfca565e3b750b4"
+   ]
+  },
+  {
+   "sourceId": "pmid-40190862",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "40190862",
+   "doi": "10.7759/cureus.80077",
+   "canonicalCitation": "Malik D, Khawar Z, Abbas A, Beizaeipour Z, Radhakrishnan R, Dongre J, Mahmood N. Ruptured Lung Abscess Into the Pleural Cavity: The Significance of Imaging and Medication Compliance. Cureus. 2025 Mar;17:e80077. doi:10.7759/cureus.80077. PMID 40190862.",
+   "citationVariants": [
+    "Malik D, Khawar Z, Abbas A, Beizaeipour Z, Radhakrishnan R, Dongre J, Mahmood N. Ruptured Lung Abscess Into the Pleural Cavity: The Significance of Imaging and Medication Compliance. Cureus. 2025 Mar;17:e80077. doi:10.7759/cureus.80077. PMID 40190862."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40190862/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/40190862/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-25"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-lung-abscess-to-pleural-effusion",
+     "primaryId": "lung-abscess",
+     "targetId": "pleural-effusion",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "9aff39b16c246d84b83169df860b16b7b199366ccb714a7076520f64fdaf0862"
+   ]
+  },
+  {
+   "sourceId": "pmid-42573817",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "42573817",
+   "doi": "10.1007/s00383-026-06567-4",
+   "canonicalCitation": "Giles T, Hutchison DLH, Chua TH, Varadhan H, Gibbs C, Kumar R. Outcomes of paediatric empyema with lung abscess treated by video-assisted thoracoscopic surgery (VATS): a retrospective cohort study. Pediatr Surg Int. 2026 Aug 10;42:333. doi:10.1007/s00383-026-06567-4. PMID 42573817.",
+   "citationVariants": [
+    "Giles T, Hutchison DLH, Chua TH, Varadhan H, Gibbs C, Kumar R. Outcomes of paediatric empyema with lung abscess treated by video-assisted thoracoscopic surgery (VATS): a retrospective cohort study. Pediatr Surg Int. 2026 Aug 10;42:333. doi:10.1007/s00383-026-06567-4. PMID 42573817."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42573817/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/42573817/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-25"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-lung-abscess-to-pleural-effusion",
+     "primaryId": "lung-abscess",
+     "targetId": "pleural-effusion",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "707a805603398ee1ebad921449e69956c8508a49db7718a1927a163cd42fb323"
+   ]
+  },
+  {
+   "sourceId": "pmid-41164071",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "41164071",
+   "doi": "10.7759/cureus.93410",
+   "canonicalCitation": "Desai P, Gaudin J, Parekh S, Vulasala SR, Reddy P. Lateralizing Lung Logjam: A Unique Case of Concomitant Lateralizing Lung Abscess, Parapneumonic Effusion, and Pneumothorax. Cureus. 2025 Sep;17:e93410. doi:10.7759/cureus.93410. PMID 41164071.",
+   "citationVariants": [
+    "Desai P, Gaudin J, Parekh S, Vulasala SR, Reddy P. Lateralizing Lung Logjam: A Unique Case of Concomitant Lateralizing Lung Abscess, Parapneumonic Effusion, and Pneumothorax. Cureus. 2025 Sep;17:e93410. doi:10.7759/cureus.93410. PMID 41164071."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41164071/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/41164071/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-25"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-lung-abscess-to-pneumothorax",
+     "primaryId": "lung-abscess",
+     "targetId": "pneumothorax",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "aaea9cbbecb1edd5822a76f867371dda58b4c6f7908aedc2517c6b1c063a7e00"
+   ]
+  },
+  {
+   "sourceId": "pmid-41876249",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "41876249",
+   "doi": "10.3760/cma.j.cn121430-20250531-00305",
+   "canonicalCitation": "Mo M, Peng C, Peng G, Yuan H, Zhang Z, Xie J, Cheng W. Invasive Hafnia alvei pneumonia complicated with lung abscess and pneumothorax triad: imaging features and therapeutic dilemmas in an extremely rare case of severe infection. Zhonghua Wei Zhong Bing Ji Jiu Yi Xue. 2026 Jan;38:198-201. doi:10.3760/cma.j.cn121430-20250531-00305. PMID 41876249.",
+   "citationVariants": [
+    "Mo M, Peng C, Peng G, Yuan H, Zhang Z, Xie J, Cheng W. Invasive Hafnia alvei pneumonia complicated with lung abscess and pneumothorax triad: imaging features and therapeutic dilemmas in an extremely rare case of severe infection. Zhonghua Wei Zhong Bing Ji Jiu Yi Xue. 2026 Jan;38:198-201. doi:10.3760/cma.j.cn121430-20250531-00305. PMID 41876249."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41876249/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/41876249/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-25"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-lung-abscess-to-pneumothorax",
+     "primaryId": "lung-abscess",
+     "targetId": "pneumothorax",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "7607d9b068b2273f4b39ec64df034d3c887c32f34562decc1bda5071d73f1b69"
+   ]
+  },
+  {
+   "sourceId": "pmid-41293207",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "41293207",
+   "doi": "10.3389/fped.2025.1676151",
+   "canonicalCitation": "Dan L, Yuqian M. Case Report: Evidence-based case management of ECMO treatment for children with severe lung abscess complicated with bronchopleural fistula. Front Pediatr. 2025;13:1676151. doi:10.3389/fped.2025.1676151. PMID 41293207.",
+   "citationVariants": [
+    "Dan L, Yuqian M. Case Report: Evidence-based case management of ECMO treatment for children with severe lung abscess complicated with bronchopleural fistula. Front Pediatr. 2025;13:1676151. doi:10.3389/fped.2025.1676151. PMID 41293207."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41293207/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/41293207/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-25"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-lung-abscess-to-pneumothorax",
+     "primaryId": "lung-abscess",
+     "targetId": "pneumothorax",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "5704bd3cf0c8d0d72dbc5ff8d422f5ce056ca8efc6d0c6d1990d1f82693e72bf"
+   ]
+  },
+  {
+   "sourceId": "pmid-42682943",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "42682943",
+   "doi": "10.1155/crpu/5512688",
+   "canonicalCitation": "Ebrahimi S, Abdollahzadeh A, Barghaman M, Hajialigol A. Multidisciplinary Management of Lymphangioleiomyomatosis Presenting With Severe Bilateral Pneumothorax During Pregnancy: A Case Report. Case Rep Pulmonol. 2026;2026:5512688. doi:10.1155/crpu/5512688. PMID 42682943.",
+   "citationVariants": [
+    "Ebrahimi S, Abdollahzadeh A, Barghaman M, Hajialigol A. Multidisciplinary Management of Lymphangioleiomyomatosis Presenting With Severe Bilateral Pneumothorax During Pregnancy: A Case Report. Case Rep Pulmonol. 2026;2026:5512688. doi:10.1155/crpu/5512688. PMID 42682943."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42682943/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/42682943/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-25"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-lymphangioleiomyomatosis-to-pneumothorax",
+     "primaryId": "lymphangioleiomyomatosis",
+     "targetId": "pneumothorax",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "9369df9a868632d70f3e06701613d9b3f348e299461e4f6a3c5f6d49cc358667"
+   ]
+  },
+  {
+   "sourceId": "pmid-42441190",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "42441190",
+   "doi": "10.17161/kjm.vol19.24389",
+   "canonicalCitation": "Coy AM. Pneumothorax Secondary to Lymphangioleiomyomatosis. Kans J Med. 2026 May-Jun;19:64-67. doi:10.17161/kjm.vol19.24389. PMID 42441190.",
+   "citationVariants": [
+    "Coy AM. Pneumothorax Secondary to Lymphangioleiomyomatosis. Kans J Med. 2026 May-Jun;19:64-67. doi:10.17161/kjm.vol19.24389. PMID 42441190."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42441190/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/42441190/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-25"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-lymphangioleiomyomatosis-to-pneumothorax",
+     "primaryId": "lymphangioleiomyomatosis",
+     "targetId": "pneumothorax",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "fd971d05baafbcd741086ae026411f03cde1dc8e016662ee85e29c987892c58e"
+   ]
+  },
+  {
+   "sourceId": "pmid-42289172",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "42289172",
+   "doi": "10.1016/j.resinv.2026.101470",
+   "canonicalCitation": "Takeda M, Sano Y, Ihara Y, Sawabata N, Obuchi T, Tsuboshima K, Matsutani N, Okamoto S, Igai H, Hayashi A. Sex-specific epidemiological and clinical differences in spontaneous pneumothorax: A cross-sectional cohort study in Japan. Respir Investig. 2026 Jul;64:101470. doi:10.1016/j.resinv.2026.101470. PMID 42289172.",
+   "citationVariants": [
+    "Takeda M, Sano Y, Ihara Y, Sawabata N, Obuchi T, Tsuboshima K, Matsutani N, Okamoto S, Igai H, Hayashi A. Sex-specific epidemiological and clinical differences in spontaneous pneumothorax: A cross-sectional cohort study in Japan. Respir Investig. 2026 Jul;64:101470. doi:10.1016/j.resinv.2026.101470. PMID 42289172."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42289172/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/42289172/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-25"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-lymphangioleiomyomatosis-to-pneumothorax",
+     "primaryId": "lymphangioleiomyomatosis",
+     "targetId": "pneumothorax",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "c46100fcbd15786624c9171d7e695c821f9d69c6330fd669cb5b4ac8bb701176"
+   ]
+  },
+  {
+   "sourceId": "pmid-38371459",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "38371459",
+   "doi": "10.1002/rcr2.1303",
+   "canonicalCitation": "Barton EC, Johnson S, Collin N, Bhatt N, Maskell NA. A chylothorax in a young woman: The difficulties of medical management. Respirol Case Rep. 2024 Feb;12:e01303. doi:10.1002/rcr2.1303. PMID 38371459.",
+   "citationVariants": [
+    "Barton EC, Johnson S, Collin N, Bhatt N, Maskell NA. A chylothorax in a young woman: The difficulties of medical management. Respirol Case Rep. 2024 Feb;12:e01303. doi:10.1002/rcr2.1303. PMID 38371459."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38371459/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/38371459/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-25"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-lymphangioleiomyomatosis-to-pleural-effusion",
+     "primaryId": "lymphangioleiomyomatosis",
+     "targetId": "pleural-effusion",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "29dc99e412c45efdacbfb272632e3ebba2ca9287b63f703786b31324cb018cdc"
+   ]
+  },
+  {
+   "sourceId": "pmid-37435256",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "37435256",
+   "doi": "10.7759/cureus.40217",
+   "canonicalCitation": "Gupta S, Paul V. Cystic Lung Disease Presenting as Recurrent Non-traumatic Chylothorax: Case Report and a Mini-Review. Cureus. 2023 Jun;15:e40217. doi:10.7759/cureus.40217. PMID 37435256.",
+   "citationVariants": [
+    "Gupta S, Paul V. Cystic Lung Disease Presenting as Recurrent Non-traumatic Chylothorax: Case Report and a Mini-Review. Cureus. 2023 Jun;15:e40217. doi:10.7759/cureus.40217. PMID 37435256."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/37435256/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/37435256/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-25"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-lymphangioleiomyomatosis-to-pleural-effusion",
+     "primaryId": "lymphangioleiomyomatosis",
+     "targetId": "pleural-effusion",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "f94cf41872568d3a9ed7426cbb913946b6a4c4acb1bec84f967d0fb0eab98342"
+   ]
+  },
+  {
+   "sourceId": "pmid-42701434",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "42701434",
+   "doi": "10.1016/j.rmcr.2026.102491",
+   "canonicalCitation": "Lamboro BT, Belachew Dejene M, Belisa TK, Gashaw Dessie M. Sporadic lymphangioleiomyomatosis with lymphocyte-predominant pleural effusion misdiagnosed as tuberculosis: a case report. Respir Med Case Rep. 2026;63:102491. doi:10.1016/j.rmcr.2026.102491. PMID 42701434.",
+   "citationVariants": [
+    "Lamboro BT, Belachew Dejene M, Belisa TK, Gashaw Dessie M. Sporadic lymphangioleiomyomatosis with lymphocyte-predominant pleural effusion misdiagnosed as tuberculosis: a case report. Respir Med Case Rep. 2026;63:102491. doi:10.1016/j.rmcr.2026.102491. PMID 42701434."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42701434/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/42701434/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-25"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-lymphangioleiomyomatosis-to-pleural-effusion",
+     "primaryId": "lymphangioleiomyomatosis",
+     "targetId": "pleural-effusion",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "7227aafaf17e682d242f3648136435c1a1175ffcb041b2c362724b3366a84c01"
+   ]
+  },
+  {
+   "sourceId": "pmid-39069851",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "39069851",
+   "doi": "10.3760/cma.j.cn112147-20240301-00121",
+   "canonicalCitation": "Liang PQ, Xu BN, Pan YX, Huang HY, Zhao Z, Hong C, Wu XF, Liu J. Clinical features of pulmonary hypertension in lymphangioleiomyomatosis. Zhonghua Jie He He Hu Xi Za Zhi. 2024 Aug 12;47:746-753. doi:10.3760/cma.j.cn112147-20240301-00121. PMID 39069851.",
+   "citationVariants": [
+    "Liang PQ, Xu BN, Pan YX, Huang HY, Zhao Z, Hong C, Wu XF, Liu J. Clinical features of pulmonary hypertension in lymphangioleiomyomatosis. Zhonghua Jie He He Hu Xi Za Zhi. 2024 Aug 12;47:746-753. doi:10.3760/cma.j.cn112147-20240301-00121. PMID 39069851."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39069851/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/39069851/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-25"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-lymphangioleiomyomatosis-to-pulmonary-hypertension",
+     "primaryId": "lymphangioleiomyomatosis",
+     "targetId": "pulmonary-hypertension",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "55afaa1f244e68d8a94201cf381801c315a2092cb7ba02417c3dd29180406080"
+   ]
+  },
+  {
+   "sourceId": "pmid-40575830",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "40575830",
+   "doi": "10.1097/MCP.0000000000001188",
+   "canonicalCitation": "Tagariello F, Elia D, Harari SA. Rare pulmonary diseases and pulmonary hypertension. Curr Opin Pulm Med. 2025 Sep 1;31:470-475. doi:10.1097/MCP.0000000000001188. PMID 40575830.",
+   "citationVariants": [
+    "Tagariello F, Elia D, Harari SA. Rare pulmonary diseases and pulmonary hypertension. Curr Opin Pulm Med. 2025 Sep 1;31:470-475. doi:10.1097/MCP.0000000000001188. PMID 40575830."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40575830/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/40575830/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-25"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-lymphangioleiomyomatosis-to-pulmonary-hypertension",
+     "primaryId": "lymphangioleiomyomatosis",
+     "targetId": "pulmonary-hypertension",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "59f08e292abeb0cef9fdd3c78039f290232aa9b3b8e6c12eee5037cdfda9a145"
+   ]
+  },
+  {
+   "sourceId": "pmid-42504242",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "42504242",
+   "doi": "10.1002/hsr2.72871",
+   "canonicalCitation": "Nasimi M, Ramezani N, Kamyab K, Abdshah A, Ghiasi M, Montazeri S, Babaie H, Saberi F. Clinicopathological Features of Lupus Erythematosus Panniculitis (LEP): A Retrospective Analysis of 54 Cases. Health Sci Rep. 2026 Jul 25;9:e72871. doi:10.1002/hsr2.72871. PMID 42504242.",
+   "citationVariants": [
+    "Nasimi M, Ramezani N, Kamyab K, Abdshah A, Ghiasi M, Montazeri S, Babaie H, Saberi F. Clinicopathological Features of Lupus Erythematosus Panniculitis (LEP): A Retrospective Analysis of 54 Cases. Health Sci Rep. 2026 Jul 25;9:e72871. doi:10.1002/hsr2.72871. PMID 42504242."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42504242/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/42504242/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-25"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-lupus-profundus-to-systemic-lupus-erythematosus",
+     "primaryId": "lupus-profundus",
+     "targetId": "systemic-lupus-erythematosus",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "40bcb8bdf6087d38897bc4897ecb97614d85789579922acd7b164721920ccd56"
+   ]
+  },
+  {
+   "sourceId": "pmid-41716945",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "41716945",
+   "doi": "10.1155/crrh/5593452",
+   "canonicalCitation": "Mohammed SR, Capildeo K, Davis-King K, Barrow M. A Diagnostic Pitfall: Lupus Mastitis Presenting Before Diagnosis of Systemic Lupus Erythematosus. Case Rep Rheumatol. 2026;2026:5593452. doi:10.1155/crrh/5593452. PMID 41716945.",
+   "citationVariants": [
+    "Mohammed SR, Capildeo K, Davis-King K, Barrow M. A Diagnostic Pitfall: Lupus Mastitis Presenting Before Diagnosis of Systemic Lupus Erythematosus. Case Rep Rheumatol. 2026;2026:5593452. doi:10.1155/crrh/5593452. PMID 41716945."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41716945/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/41716945/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-25"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-lupus-profundus-to-systemic-lupus-erythematosus",
+     "primaryId": "lupus-profundus",
+     "targetId": "systemic-lupus-erythematosus",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "9fa7079213fdc346889cd4870b35cd6dd99c2b7cabf8607586c5204b31d85876"
+   ]
+  },
+  {
+   "sourceId": "pmid-41994712",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "41994712",
+   "doi": "10.7759/cureus.105300",
+   "canonicalCitation": "Almoosawi H, Samiey F, Al Awadhi A. A Unique Case of Lupus Erythematosus Profundus Presenting With Localized Scarring Alopecia and Perioral Swelling in a Pediatric Patient. Cureus. 2026 Mar;18:e105300. doi:10.7759/cureus.105300. PMID 41994712.",
+   "citationVariants": [
+    "Almoosawi H, Samiey F, Al Awadhi A. A Unique Case of Lupus Erythematosus Profundus Presenting With Localized Scarring Alopecia and Perioral Swelling in a Pediatric Patient. Cureus. 2026 Mar;18:e105300. doi:10.7759/cureus.105300. PMID 41994712."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41994712/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/41994712/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-25"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-lupus-profundus-to-scarring-alopecia",
+     "primaryId": "lupus-profundus",
+     "targetId": "scarring-alopecia",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "319da84c3a7c01c00633847163c1b1c52bcdf7597d313da6bcdcbb4fc3b6b71e"
+   ]
+  },
+  {
+   "sourceId": "pmid-42777106",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "42777106",
+   "doi": null,
+   "canonicalCitation": "Arnold DL, Blum MA, Shitabata P. Lupus Panniculitis. In: StatPearls [Internet]. Treasure Island (FL): StatPearls Publishing; 2026 Jan-. 2026 Sep 14. PMID 42777106.",
+   "citationVariants": [
+    "Arnold DL, Blum MA, Shitabata P. Lupus Panniculitis. In: StatPearls [Internet]. Treasure Island (FL): StatPearls Publishing; 2026 Jan-. 2026 Sep 14. PMID 42777106."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42777106/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/42777106/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-25"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-lupus-profundus-to-scarring-alopecia",
+     "primaryId": "lupus-profundus",
+     "targetId": "scarring-alopecia",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "2e846d0eb6cbbc5ec16afe4dd0ff30e64bb1be7923be1d9124f8295e02cca011"
+   ]
+  },
+  {
+   "sourceId": "pmid-40900661",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "40900661",
+   "doi": "10.1097/DAD.0000000000003115",
+   "canonicalCitation": "Behera B, Sethy M, Ameta B, Khatib FSRA, Ayyanar P. Lupus Panniculitis of the Scalp Presenting as a Patchy Nonscarring Alopecia: Report of an Uncommon Case. Am J Dermatopathol. 2025 Dec 1;47:957-960. doi:10.1097/DAD.0000000000003115. PMID 40900661.",
+   "citationVariants": [
+    "Behera B, Sethy M, Ameta B, Khatib FSRA, Ayyanar P. Lupus Panniculitis of the Scalp Presenting as a Patchy Nonscarring Alopecia: Report of an Uncommon Case. Am J Dermatopathol. 2025 Dec 1;47:957-960. doi:10.1097/DAD.0000000000003115. PMID 40900661."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40900661/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/40900661/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-25"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-lupus-profundus-to-scarring-alopecia",
+     "primaryId": "lupus-profundus",
+     "targetId": "scarring-alopecia",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "58429d81dd4f25a93ba9871b70a9f21eec8e4471acaf6e542a16a6649bef1f6e"
+   ]
+  },
+  {
+   "sourceId": "pmid-41245682",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "41245682",
+   "doi": "10.1002/ccr3.71344",
+   "canonicalCitation": "Zhao M, Darwich NF, Thaler ER. Hypopharyngeal Lymphangioma Causing Persistent Dysphagia in an Adult: A Case Report. Clin Case Rep. 2025 Nov;13:e71344. doi:10.1002/ccr3.71344. PMID 41245682.",
+   "citationVariants": [
+    "Zhao M, Darwich NF, Thaler ER. Hypopharyngeal Lymphangioma Causing Persistent Dysphagia in an Adult: A Case Report. Clin Case Rep. 2025 Nov;13:e71344. doi:10.1002/ccr3.71344. PMID 41245682."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41245682/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/41245682/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-25"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-lymphangioma-to-dysphagia",
+     "primaryId": "lymphangioma",
+     "targetId": "dysphagia",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "c7e7b05f570e7964681f514a7f71c6d905aa5a6e69bae2062e5e6aaf3d3f6b29"
+   ]
+  },
+  {
+   "sourceId": "pmid-38022192",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "38022192",
+   "doi": "10.7759/cureus.47363",
+   "canonicalCitation": "Andreadis D, Ndreu A, Tsekos A, Panta P. Diagnostic and Therapeutic Challenges of a Large Tongue Lymphangioma in a Child: A Case Report. Cureus. 2023 Oct;15:e47363. doi:10.7759/cureus.47363. PMID 38022192.",
+   "citationVariants": [
+    "Andreadis D, Ndreu A, Tsekos A, Panta P. Diagnostic and Therapeutic Challenges of a Large Tongue Lymphangioma in a Child: A Case Report. Cureus. 2023 Oct;15:e47363. doi:10.7759/cureus.47363. PMID 38022192."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38022192/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/38022192/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-25"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-lymphangioma-to-dysphagia",
+     "primaryId": "lymphangioma",
+     "targetId": "dysphagia",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "e8611f173b54243cbe5c9e4fa0357ef2317523fc1d321cd151c63586adbbfd6b"
+   ]
+  },
+  {
+   "sourceId": "pmid-38321774",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "38321774",
+   "doi": "10.1177/01455613241229979",
+   "canonicalCitation": "Klibngern H, Ariyanon T, Pornchaisakuldee C, Chowsilpa S, Sittitrai P. A Large Adult Postcricoid Lymphatic Malformation: A Case Report and Literature Review. Ear Nose Throat J. 2026 Sep;105:532-537. doi:10.1177/01455613241229979. PMID 38321774.",
+   "citationVariants": [
+    "Klibngern H, Ariyanon T, Pornchaisakuldee C, Chowsilpa S, Sittitrai P. A Large Adult Postcricoid Lymphatic Malformation: A Case Report and Literature Review. Ear Nose Throat J. 2026 Sep;105:532-537. doi:10.1177/01455613241229979. PMID 38321774."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38321774/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/38321774/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-25"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-lymphangioma-to-dysphagia",
+     "primaryId": "lymphangioma",
+     "targetId": "dysphagia",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "eec651cf298674f8ba2a9a7bd7526a5fe901448cdeba805a43981a0a6d97699d"
    ]
   }
  ],
