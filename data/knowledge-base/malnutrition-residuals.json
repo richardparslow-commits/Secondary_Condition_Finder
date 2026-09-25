@@ -2,8 +2,166 @@
   "id": "malnutrition-residuals",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review infectious, immunologic, and post-infectious pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 58 (2026-09-25): three ASSOCIATION_ONLY draft mappings pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: all three edges assert association only (etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true, mechanismCategory METABOLIC_OR_NUTRITIONAL). The evidence base is narrative and specialty review class plus cross-sectional observational cohort class, so individual claims require dated serologic, hematologic, or densitometric documentation of the deficiency state with competing-cause exclusion, and review by a qualified medical professional.",
+    "Pathway and duplicate-scope screens: no -> muscle-atrophy edge (constitutive-proximity guard - reduced muscle mass is a GLIM diagnostic criterion for malnutrition itself, so sarcopenia and muscle wasting are constitutive of the condition rather than secondary to it); no -> cognitive-disorder edge (the review's neurocognitive material is iodine- and B12-deficiency scoped with the hypothyroidism and pernicious-anemia identities owning their own windows, and no malnutrition-specific cognitive quantification exists); no -> rickets edge (constitutive-proximity and sibling scope - nutritional rickets is the pediatric bone-phenotype expression of the same deficiency state and the rickets identity owns its window); no -> depressive-disorder or anxiety-disorder edge (zero located condition-specific psychiatric quantification; the famine-cohort mental-health material is exposure-epidemiology class without identity-level quantification); no -> diabetes-mellitus edge from the famine-programming literature (the Ethiopian famine 40-year cohort, PMID 41730569, reports mixed cardiometabolic patterns including lower blood pressure in the exposed and no clean diabetes signal, so the thrifty-phenotype route is recorded as screened context rather than an edge); no evidence recycled from the celiac, beriberi, or pernicious-anemia windows (ME-29 scope rule)."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 58 (2026-09-25): three bounded association edges authored - malnutrition-residuals to anemia (rank 1), to peripheral-neuropathy (rank 2), and to osteoporosis (rank 3) - classified ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, and hypothesizedOnly:true. The anemia proposition rests on the protein-energy malnutrition review naming anemia as a consequence (PMID 38193299); the neuropathy proposition rests on the nutritional-neuropathies specialty review (PMID 41161993) and the same malnutrition review's neurological-risk statements; the osteoporosis proposition rests on the fragility-fracture nutritional-status cohort (PMID 42356105) and the very-old-hospitalized vitamin D and PTH cohort (PMID 42563160).",
+    "Counter-evidence and caveat screens recorded 2026-09-25: (i) evidence class - narrative and specialty reviews without incidence denominators plus two cross-sectional cohorts in selected populations; (ii) direction limits - reverse causation is plausible in both bone cohorts (frailty and fracture degrade intake) and the second cohort's route runs partly through secondary hyperparathyroidism as an intermediate endocrine state; (iii) constitutive boundary - reduced muscle mass is a malnutrition diagnostic criterion, so sarcopenia material is constitutive rather than secondary; (iv) sibling-window discipline - celiac, beriberi, pernicious-anemia, rickets, and hypothyroidism windows keep their own evidence and none is recycled (ME-29); (v) screened context - the Ethiopian famine 40-year cohort (PMID 41730569) documents mixed long-term cardiometabolic patterns (lower height and weight, lower diastolic pressure) without a clean diabetes signal, so developmental-programming routes remain open questions recorded in the todo rather than edges."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "anemia",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Malnutrition documents anemia at review level: the micronutrient and protein-energy malnutrition review of free-living older adults states that protein-energy malnutrition results in a range of health issues including anemia, and that iron and iodine deficiencies contribute to anemia (PMID 38193299); the relationship is named at narrative-review class in an older-adult population without incidence denominators, so the edge records the named consequence only.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: the located material names anemia among the consequences of protein-energy and specific micronutrient deficiencies, but which deficiency operated, iron studies and B12/folate levels, bleeding sources, and chronic disease status all require individual hematologic review."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "METABOLIC_OR_NUTRITIONAL",
+        "primaryVector": "Inadequate intake or stores of iron, folate, cobalamin, and protein removes the substrates required for erythropoiesis so anemia develops, the deficiency route named in the protein-energy malnutrition review, but whether this route produced any individual anemia remains hypothesized until serum levels, blood counts, and dietary records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at narrative-review class in one population: the anchor is a current-perspective review of free-living older adults naming anemia among malnutrition consequences without anemia-rate quantification, and iron deficiency from bleeding, anemia of inflammation, and renal anemia remain dominant competing causes in that population.",
+        "evidenceGaps": "No cohort quantifies anemia incidence attributable to malnutrition alone; the anchor is review class in older adults without rates, micronutrient-specific mechanisms differ, and bleeding, inflammation, and renal causes compete in every relevant population.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "iron deficiency from occult gastrointestinal blood loss",
+          "anemia of chronic inflammation",
+          "renal anemia",
+          "myelodysplastic anemia",
+          "pernicious anemia (gastric-autoimmune scope, not recycled)"
+        ]
+      },
+      "evidenceGaps": [
+        "No cohort quantifies anemia incidence attributable to malnutrition alone; the anchor is review class in older adults without rates, micronutrient-specific mechanisms differ, and bleeding, inflammation, and renal causes compete in every relevant population."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY on the metabolic-deficiency precedent: the 2024 current-perspective review of micronutrient status and protein-energy malnutrition in free-living older adults states that protein-energy malnutrition, impacting over 25 percent of those aged 65 and above, results in a range of health issues including anemia, and that iron and iodine deficiencies contribute to anemia (PMID 38193299); because the anchor is narrative-review class without anemia-rate quantification and bleeding, inflammatory, and renal causes compete in the population studied, the conservative standard keeps the edge at association only and routes individual claims through dated blood counts and iron, B12, and folate studies with bleeding-source and inflammatory exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Alvarez-Nuncio MDC, Ziegler TR. Micronutrient status and protein-energy malnutrition in free-living older adults: a current perspective. Curr Opin Gastroenterol. 2024 Mar 1;40:99-105. doi:10.1097/MOG.0000000000001000. PMID 38193299.",
+          "note": "Current-perspective review naming anemia among the health consequences of protein-energy malnutrition in free-living older adults and attributing anemia to iron and iodine deficiencies; supports the named-consequence proposition only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38193299/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 38193299; review summary (malnutrition consequences including anemia)"
+        }
+      ]
+    },
+    {
+      "conditionId": "peripheral-neuropathy",
+      "rank": 2,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Malnutrition documents peripheral neuropathy through deficiency of neurotrophic nutrients: the nutritional-neuropathies specialty review covers the etiologies and presentations of neuropathies caused by nutritional deficiency and excess (PMID 41161993), and the protein-energy malnutrition review states that B12 and C deficiencies pose health risks including neurological disorders (PMID 38193299); the relationship is review class without incidence denominators, so the edge records the deficiency route only.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: the located material documents deficiency-based neuropathy etiologies, but which deficiency operated, electrodiagnostic findings, diabetes and alcohol comorbidity, and reversibility on repletion all require individual neurologic and serologic review."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "METABOLIC_OR_NUTRITIONAL",
+        "primaryVector": "Deficiency of cobalamin, thiamine, vitamin E, copper, and other neurotrophic nutrients removes the substrates required for axonal maintenance and myelin integrity so peripheral nerves degenerate into sensorimotor neuropathy, the deficiency route reviewed in the nutritional-neuropathies material, but whether this route produced any individual neuropathy remains hypothesized until serum levels and electrodiagnostic records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at specialty-review and narrative-review class: neither anchor provides incidence denominators for a malnutrition population, deficiency-specific mechanisms and severities differ, and diabetic and alcoholic neuropathy are dominant competing causes wherever malnutrition is found.",
+        "evidenceGaps": "No cohort quantifies neuropathy incidence attributable to malnutrition alone; the beriberi identity keeps its own thiamine windows and the pernicious-anemia and metformin B12 material is etiology-scoped and not recycled (ME-29); diabetes, alcohol, and chemotherapy neuropathy compete in every relevant population, and reversibility on repletion is documented inconsistently.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "diabetic polyneuropathy",
+          "alcoholic neuropathy",
+          "chemotherapy-induced neuropathy",
+          "beriberi-related neurologic involvement (the sibling identity's window)",
+          "hereditary neuropathy"
+        ]
+      },
+      "evidenceGaps": [
+        "No cohort quantifies neuropathy incidence attributable to malnutrition alone; the beriberi identity keeps its own thiamine windows and the pernicious-anemia and metformin B12 material is etiology-scoped and not recycled (ME-29); diabetes, alcohol, and chemotherapy neuropathy compete in every relevant population, and reversibility on repletion is documented inconsistently."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY on the metabolic-deficiency precedent: the 2025 specialty review of nutritional neuropathies covers the etiologies, presentations, and treatments of neuropathies caused by nutritional deficiency and excess (PMID 41161993), and the 2024 protein-energy malnutrition review states that B12 and C deficiencies pose neurological-disorder risks in free-living older adults (PMID 38193299); because both anchors are review class without incidence denominators and diabetic and alcoholic neuropathy dominate the differential wherever malnutrition occurs, the conservative standard keeps the edge at association only and routes individual claims through dated serologic testing of neurotrophic nutrients with electrodiagnostic confirmation and diabetic, alcohol-related, and hereditary exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Varon M, Pasnoor M, Dimachkie MM. Nutritional Neuropathies. Neurol Clin. 2025 Nov;43:727-741. doi:10.1016/j.ncl.2025.05.010. PMID 41161993.",
+          "note": "Specialty review of the etiologies and varied presentations of nutritional neuropathies covering deficiency and excess syndromes with epidemiology, risk factors, prevention, and treatment; supports the bounded deficiency-route proposition only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41161993/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 41161993; review (etiologies of nutritional neuropathies)"
+        },
+        {
+          "citation": "Alvarez-Nuncio MDC, Ziegler TR. Micronutrient status and protein-energy malnutrition in free-living older adults: a current perspective. Curr Opin Gastroenterol. 2024 Mar 1;40:99-105. doi:10.1097/MOG.0000000000001000. PMID 38193299.",
+          "note": "Current-perspective review stating that B12 and C deficiencies in older adults pose health risks including neurological disorders; supports the bounded deficiency-neurology proposition only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38193299/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 38193299; review summary (B12 and C deficiency neurological risks)"
+        }
+      ]
+    },
+    {
+      "conditionId": "osteoporosis",
+      "rank": 3,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Malnutrition documents reduced bone mineral density at observational cohort level: the 108-patient proximal femoral fragility-fracture study found patients classified as malnourished by GNRI or PNI had significantly lower femoral neck bone mineral density, lower 25-hydroxyvitamin D, and higher bone turnover markers than well-nourished patients, with nutritional indices independently associated with femoral neck BMD after adjustment for age, sex, and body mass index (PMID 42356105), and the 1202-patient study of very old hospitalized adults found vitamin D deficiency in 68.6 percent with secondary hyperparathyroidism in 13.7 percent and significantly lower hip BMD with elevated PTH (PMID 42563160); the association is cross-sectional in both, so the edge records the documented bone-density relationship only.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: the located material is cross-sectional in fracture and hospitalized populations where low body weight, immobility, inflammation, and hypogonadism co-vary with malnutrition, so whether an individual osteoporosis arose from nutritional deficit, from the secondary hyperparathyroidism mediator, or from another cause requires individual densitometry, endocrine, and dietary review."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "METABOLIC_OR_NUTRITIONAL",
+        "primaryVector": "Inadequate protein, calcium, vitamin D, and micronutrient intake impairs osteoblast function and mineralization while secondary hyperparathyroidism raises bone turnover so bone mineral density falls and osteoporosis develops, the endocrine and nutritional route documented in both observational cohorts, but whether this route produced any individual osteoporosis remains hypothesized until densitometry, PTH, and dietary records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at cross-sectional observational class only: both cohorts are selected (fragility-fracture patients and very old hospitalized adults), direction cannot be established cross-sectionally, the second cohort's pathway runs partly through secondary hyperparathyroidism, and the celiac identity's published osteoporosis window is not recycled (ME-29).",
+        "evidenceGaps": "Cross-sectional designs in selected populations cannot establish direction; reverse causation (frailty and fracture cause poor intake) is plausible; secondary hyperparathyroidism is an intermediate endocrine state; glucocorticoids, hypogonadism, immobility, and low body weight are competing causes; the celiac and bariatric bone literatures are sibling or post-surgical scoped and not recycled.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "age-related and postmenopausal bone loss",
+          "glucocorticoid-induced osteoporosis",
+          "hypogonadism-related bone loss (the published hypogonadism window)",
+          "celiac-associated osteoporosis (the published celiac window, not recycled)",
+          "disuse osteoporosis of immobility"
+        ]
+      },
+      "evidenceGaps": [
+        "Cross-sectional designs in selected populations cannot establish direction; reverse causation (frailty and fracture cause poor intake) is plausible; secondary hyperparathyroidism is an intermediate endocrine state; glucocorticoids, hypogonadism, immobility, and low body weight are competing causes; the celiac and bariatric bone literatures are sibling or post-surgical scoped and not recycled."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY on the metabolic-deficiency precedent with cross-sectional limits carried openly: the 108-patient fragility-fracture study found malnourished patients had significantly lower femoral neck BMD and 25-hydroxyvitamin D and higher bone turnover markers, with GNRI, PNI, and CONUT independently associated with femoral neck BMD after adjustment for age, sex, and BMI (PMID 42356105), and the 1202-patient study of adults aged 70 and over found vitamin D deficiency in 68.6 percent, secondary hyperparathyroidism in 13.7 percent, and significantly lower hip BMD with elevated PTH (PMID 42563160); because both designs are cross-sectional in selected populations with reverse causation plausible and the second pathway runs partly through secondary hyperparathyroidism, the conservative standard keeps the edge at association only and routes individual claims through dated densitometry with PTH, gonadal, glucocorticoid, and dietary exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Iinuma M, Hideshima T, Machida S, Uehara K, Karube T, Sato K, Haraguchi N. Nutritional Status Is Associated with Bone Mineral Density, Vitamin D Levels, and Bone Turnover Markers in Patients with Proximal Femoral Fragility Fractures: A Retrospective Observational Study. Medicina (Kaunas). 2026 Jun 4;62:1092. doi:10.3390/medicina62061092. PMID 42356105.",
+          "note": "Retrospective observational study of 108 proximal femoral fragility-fracture patients: malnourished patients had significantly lower femoral neck BMD and 25(OH)D and higher bone turnover markers, with nutritional indices independently associated with femoral neck BMD; supports the bounded cross-sectional association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42356105/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 42356105; cohort results (GNRI/PNI/CONUT correlations and multivariate models)"
+        },
+        {
+          "citation": "Kopanos S, Scheel S, Eggert B, Rübberdt A, Muth C, Thiem U, Feldkamp J. Secondary hyperparathyroidism and lower hip bone mineral density in very old hospitalized adults: a real-world endocrine bone study. BMC Endocr Disord. 2026 Aug 6;26:225. doi:10.1186/s12902-026-02456-y. PMID 42563160.",
+          "note": "Cross-sectional study of 1202 hospitalized adults aged 70 and over: vitamin D deficiency in 68.6%, secondary hyperparathyroidism in 13.7%, and significantly lower hip BMD with elevated PTH after age and sex adjustment; supports the bounded endocrine-mediation route only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42563160/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 42563160; cohort results (vitamin D prevalence, PTH-BMD association)"
+        }
+      ]
+    }
+  ]
 }

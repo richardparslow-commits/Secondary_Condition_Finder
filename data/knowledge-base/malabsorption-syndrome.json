@@ -2,8 +2,176 @@
   "id": "malabsorption-syndrome",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review gastrointestinal, nutritional, motility, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 58 (2026-09-25): three ASSOCIATION_ONLY draft mappings pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: all three edges assert association only (etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true, mechanismCategory METABOLIC_OR_NUTRITIONAL). The evidence base is one claims-network cohort with stratum-level risk ratios plus case and review class material, so individual claims require dated serologic and organ-level documentation of the absorbed-nutrient deficit with competing-cause exclusion, and review by a qualified medical professional.",
+    "Pathway and duplicate-scope screens: no -> osteoporosis edge (ME-29 duplicate-scope - the published celiac-disease identity owns its osteoporosis window and the located generic bone material is celiac or bariatric scoped); no -> schizophrenia or other psychiatric edges (the celiac window owns its schizophrenia edge and no identity-generic psychiatric quantification exists); no -> kidney-stones edge (ME-29 - the published short-bowel-syndrome identity owns its oxalate kidney-stone window); no -> malnutrition-residuals edge (constitutive-proximity and direction guard - malnutrition is the downstream state of untreated malabsorption and the two identities' windows are kept separate rather than chained); no -> diabetes-mellitus edge (wrong-identity - the type 3c diabetes material is pancreatic-disease scoped and diabetes is a co-diagnosis in the neuropathy anchor rather than a consequence); the pancreatic-exocrine-insufficiency and inflammatory-bowel strata are recorded on the edges as member-condition context whose own identities carry their own windows."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 58 (2026-09-25): three bounded association edges authored - malabsorption-syndrome to macular-degeneration (rank 1), to peripheral-neuropathy (rank 2), and to anemia (rank 3) - classified ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, and hypothesizedOnly:true. The macular-degeneration proposition rests on the TriNetX stratum-level cohort (PMID 41519378) with the celiac null recorded on the edge; the peripheral-neuropathy proposition rests on the repletion-reversible vitamin E case (PMID 41943771), the food-cobalamin malabsorption review (PMID 40283381), and the nutritional-neuropathies review (PMID 41161993); the anemia proposition rests on the cobalamin review's named megaloblastic anemia and the tropical-sprue malabsorption substrate (PMID 24441659).",
+    "Counter-evidence and caveat screens recorded 2026-09-25: (i) stratum heterogeneity - the AMD cohort's Crohn and ulcerative-colitis strata carry inflammatory confounding independent of malabsorption and the celiac stratum is null (RR 1.09), bounding generalization; (ii) claims-code ascertainment - exposure was defined by ICD encounter codes without functional malabsorption testing; (iii) attribution traps - in pancreatitis populations neuropathy is routinely misattributed to diabetes (PMID 41943771), and in cobalamin deficiency the neurological sequelae can be irreversible if late-treated; (iv) sibling-window discipline - celiac, short-bowel, pancreatic, and pernicious-anemia windows keep their own evidence and none is recycled here (ME-29); (v) treatment mediation - enzyme replacement, vitamin repletion, immunosuppression, and parenteral nutrition all alter the deficiency course."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "macular-degeneration",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Malabsorption syndromes document age-related macular degeneration risk at claims-network cohort level: the TriNetX retrospective study of propensity-matched adult cohorts found increased AMD risk for Crohn disease (n = 9537, RR 1.42, 95% CI 1.15-1.74), chronic pancreatitis (n = 12856, RR 1.82, 1.53-2.16, persisting in the pancreatic-enzyme-replacement subset), and short bowel syndrome (n = 3747, advanced/exudative AMD RR 1.98, 1.31-2.98), while the celiac stratum was null (n = 9315, RR 1.09, 0.88-1.35) (PMID 41519378); the study frames the exposure class as malabsorption syndromes and the stratum-level heterogeneity including the celiac null is recorded on the edge.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: the located material is a claims-encounter-design retrospective study where diagnosis codes carry misclassification, the inflammatory bowel disease strata carry inflammatory confounding beyond malabsorption, and retinal OCT confirmation of AMD requires individual ophthalmologic review."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "METABOLIC_OR_NUTRITIONAL",
+        "primaryVector": "Chronic fat-soluble vitamin and carotenoid malabsorption lowers circulating lutein, zeaxanthin, and vitamin A available to the retinal pigment epithelium so macular oxidative defence weakens and degenerative change accelerates, the gut-retina and malnutrition route the study cites as its mechanistic premise, but whether this route produced any individual macular degeneration remains hypothesized until serum micronutrient levels and retinal imaging are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at claims-network retrospective cohort class with propensity matching: exposure is defined by ICD encounter codes rather than functional malabsorption testing, the strata are heterogeneous (Crohn disease and ulcerative colitis carry inflammatory pathways independent of malabsorption), and the celiac stratum is null, so the pooled class effect is not uniform across members.",
+        "evidenceGaps": "Claims-code exposure ascertainment without functional malabsorption measurement, inflammatory confounding in the IBD strata, the null celiac stratum limiting generalization, AMD multifactoriality (smoking, genetics, complement), and no serum carotenoid or retinal-OCT-level dose data in the located material.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "age-related drusen and complement-factor genetics",
+          "smoking-related macular change",
+          "diabetic retinopathy and diabetic macular edema (separate identities)",
+          "inflammatory bowel disease retinal manifestations",
+          "hypertensive retinopathy (a separate identity)"
+        ]
+      },
+      "evidenceGaps": [
+        "Claims-code exposure ascertainment without functional malabsorption measurement, inflammatory confounding in the IBD strata, the null celiac stratum limiting generalization, AMD multifactoriality (smoking, genetics, complement), and no serum carotenoid or retinal-OCT-level dose data in the located material."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY on the metabolic-deficiency precedent with the stratum-level record carried openly: the TriNetX propensity-matched study of adults with celiac disease, ulcerative colitis, Crohn disease, chronic pancreatitis, or short bowel syndrome found elevated early/intermediate AMD risk in the Crohn stratum (RR 1.42) and the chronic pancreatitis stratum (RR 1.82, persisting at RR 1.83 in the pancreatic-enzyme-replacement subset) and elevated advanced/exudative AMD risk in the short bowel stratum (RR 1.98), while the celiac stratum was null (RR 1.09) (PMID 41519378); because exposure is claims-code defined, the IBD strata carry inflammatory confounding, and the celiac null bounds the generalization, the conservative standard keeps the edge at association only and routes individual claims through dated retinal OCT with smoking, genetic, and diabetic exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Jeong H, Eppel PS, Kaelber DC, Singh RP, Talcott KE. Malabsorption Syndromes and Risk of Age-Related Macular Degeneration. Ophthalmol Retina. 2026 May;10:490-498. doi:10.1016/j.oret.2026.01.002. PMID 41519378.",
+          "note": "TriNetX retrospective propensity-matched cohort comparing AMD risk across malabsorption-syndrome strata (Crohn RR 1.42; chronic pancreatitis RR 1.82; short bowel advanced AMD RR 1.98; celiac null RR 1.09); supports the bounded stratum-level association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41519378/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 41519378; cohort results (stratum risk ratios with 95% confidence intervals)"
+        }
+      ]
+    },
+    {
+      "conditionId": "peripheral-neuropathy",
+      "rank": 2,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Malabsorption syndromes document peripheral neuropathy through absorbed-nutrient deficiency: the chronic-pancreatitis exocrine-insufficiency case documents sensorimotor peripheral neuropathy from vitamin E deficiency that resolved on vitamin E repletion (PMID 41943771), the food-cobalamin malabsorption review documents peripheral neuropathy among the neurological manifestations of the resulting cobalamin deficiency (PMID 40283381), and the nutritional-neuropathies review covers deficiency-based neuropathy etiologies including malabsorptive routes (PMID 41161993); the repletion-reversal case supports the deficiency route directly.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: the located material documents neuropathy in the setting of specific absorbed-nutrient deficiencies, but which deficiency operated, whether the neuropathy is reversible, diabetes and alcohol comorbidity, and the cause of the malabsorption all require individual electrodiagnostic, serologic, and dietary review."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "METABOLIC_OR_NUTRITIONAL",
+        "primaryVector": "Fat-soluble vitamin E and cobalamin malabsorption removes the nutrients required for axonal maintenance and myelin integrity so peripheral nerves degenerate into sensorimotor neuropathy, the deficiency route documented in the repletion-reversible vitamin E case and the cobalamin-malabsorption review, but whether this route produced any individual neuropathy remains hypothesized until serum levels and electrodiagnostic records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at case class plus review class: the direct repletion anchor is a single case, the cobalamin material is a narrative review of one malabsorptive subtype, and diabetes-related and alcohol-related neuropathy are dominant competing causes in the populations where malabsorption is found.",
+        "evidenceGaps": "No cohort quantifies neuropathy incidence in unselected malabsorption populations; deficiency-specific mechanisms differ (vitamin E, cobalamin, copper, thiamine), diabetic and alcoholic neuropathy confound attribution, and reversibility on repletion is documented inconsistently.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "diabetic polyneuropathy (the documented attribution trap in pancreatitis populations)",
+          "alcoholic neuropathy",
+          "chemotherapy-induced neuropathy",
+          "chronic inflammatory demyelinating polyneuropathy",
+          "hereditary neuropathy"
+        ]
+      },
+      "evidenceGaps": [
+        "No cohort quantifies neuropathy incidence in unselected malabsorption populations; deficiency-specific mechanisms differ (vitamin E, cobalamin, copper, thiamine), diabetic and alcoholic neuropathy confound attribution, and reversibility on repletion is documented inconsistently."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY on the deficiency-route precedent with a repletion-reversal anchor: the chronic-pancreatitis exocrine-insufficiency case documents clinically symptomatic sensorimotor peripheral neuropathy from vitamin E deficiency that resolved on vitamin E administration, the authors noting the sequela is routinely misattributed to diabetes per se (PMID 41943771), the food-cobalamin malabsorption review documents peripheral neuropathy among the neurological manifestations of cobalamin deficiency with risk of irreversible sequelae (PMID 40283381), and the nutritional-neuropathies review covers deficiency-based neuropathy etiologies including malabsorptive routes (PMID 41161993); because the direct anchor is case class and diabetic and alcoholic neuropathy dominate the differential in these populations, the conservative standard keeps the edge at association only and routes individual claims through dated serologic testing of absorbed nutrients with electrodiagnostic confirmation and diabetic and alcohol-related exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Chanday R, Sethi B, Ahluwalia S. Clinically Symptomatic Vitamin E-Associated Peripheral Neuropathy: An Overlooked Reversible Neurological Sequela of Exocrine Insufficiency of Chronic Pancreatitis With Type 3c Diabetes. Cureus. 2026 Mar;18:e104766. doi:10.7759/cureus.104766. PMID 41943771.",
+          "note": "Case report of chronic-pancreatitis exocrine-insufficiency vitamin E deficiency causing sensorimotor peripheral neuropathy that resolved on vitamin E repletion, with the authors noting routine misattribution to diabetes; supports the bounded deficiency-route proposition only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41943771/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 41943771; case presentation and outcome (neuropathy resolved on vitamin E administration)"
+        },
+        {
+          "citation": "Andrès E, Terrade JE, Alonso Ortiz MB, Méndez-Bailón M, Ghiura C, Habib C, Lavigne T, Jannot X, Lorenzo-Villalba N. Unraveling the Enigma: Food Cobalamin Malabsorption and the Persistent Shadow of Cobalamin Deficiency. J Clin Med. 2025 Apr 8;14:2550. doi:10.3390/jcm14082550. PMID 40283381.",
+          "note": "Narrative review documenting the clinical spectrum of food-cobalamin malabsorption, including peripheral neuropathy and other neurological manifestations with risk of irreversible sequelae; supports the bounded deficiency-spectrum proposition only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40283381/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 40283381; review section (neurological manifestations of cobalamin deficiency)"
+        },
+        {
+          "citation": "Varon M, Pasnoor M, Dimachkie MM. Nutritional Neuropathies. Neurol Clin. 2025 Nov;43:727-741. doi:10.1016/j.ncl.2025.05.010. PMID 41161993.",
+          "note": "Specialty review of nutritional neuropathy etiologies and presentations covering deficiency and excess syndromes including malabsorptive routes; supports the bounded etiologic-class framing only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41161993/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 41161993; review (etiologies of nutritional neuropathies)"
+        }
+      ]
+    },
+    {
+      "conditionId": "anemia",
+      "rank": 3,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Malabsorption syndromes document anemia through absorbed-nutrient deficiency: the food-cobalamin malabsorption review names megaloblastic anemia among the hematological manifestations of the resulting cobalamin deficiency (PMID 40283381), and the tropical-sprue series of 12 patients documents malabsorption notably of vitamin B12 and folate, the substrate of megaloblastic anemia, with histologic response to folate and doxycycline (PMID 24441659); the anemia mechanism is deficiency-class with the sprue cohort providing the malabsorption context.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: the located material documents the deficiency substrate and named hematological manifestation, but which deficiency operated, iron studies and B12/folate levels, bleeding sources, and the cause of the malabsorption all require individual hematologic and gastrointestinal review."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "METABOLIC_OR_NUTRITIONAL",
+        "primaryVector": "Cobalamin, folate, and iron malabsorption removes the substrates required for erythropoiesis so megaloblastic or microcytic anemia develops, the deficiency route named in the cobalamin review and implied by the tropical-sprue cohort's documented B12 and folate malabsorption, but whether this route produced any individual anemia remains hypothesized until serum levels, blood counts, and absorption studies are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at review class plus a small histology-series class: the cobalamin anchor names the manifestation within one malabsorptive subtype, the tropical-sprue series (12 patients) documents the malabsorption substrate without anemia-rate quantification, and the celiac and pernicious-anemia literatures are sibling-identity scoped and not recycled.",
+        "evidenceGaps": "No cohort quantifies anemia incidence in unselected malabsorption populations; the sprue series predates modern anemia classification without rates; iron deficiency from occult blood loss, anemia of inflammation, and renal anemia are competing causes, and the pernicious-anemia and celiac windows belong to other identities.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "iron deficiency from occult gastrointestinal blood loss",
+          "anemia of chronic inflammation",
+          "renal anemia",
+          "myelodysplastic anemia",
+          "pernicious anemia (gastric-autoimmune scope, not recycled)"
+        ]
+      },
+      "evidenceGaps": [
+        "No cohort quantifies anemia incidence in unselected malabsorption populations; the sprue series predates modern anemia classification without rates; iron deficiency from occult blood loss, anemia of inflammation, and renal anemia are competing causes, and the pernicious-anemia and celiac windows belong to other identities."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY on the metabolic-deficiency precedent with sibling-window discipline: the food-cobalamin malabsorption review names megaloblastic anemia among the hematological manifestations of the cobalamin deficiency that food-cobalamin malabsorption produces (PMID 40283381), and the 12-patient tropical-sprue series documents profuse diarrhea and malabsorption notably of vitamin B12 and folate with histologic response to folate and doxycycline (PMID 24441659); because the anchors are review class and small-series class without anemia-rate quantification and the celiac and pernicious-anemia windows belong to sibling identities (ME-29), the conservative standard keeps the edge at association only and routes individual claims through dated blood counts and iron, B12, and folate studies with bleeding-source and inflammatory exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Andrès E, Terrade JE, Alonso Ortiz MB, Méndez-Bailón M, Ghiura C, Habib C, Lavigne T, Jannot X, Lorenzo-Villalba N. Unraveling the Enigma: Food Cobalamin Malabsorption and the Persistent Shadow of Cobalamin Deficiency. J Clin Med. 2025 Apr 8;14:2550. doi:10.3390/jcm14082550. PMID 40283381.",
+          "note": "Narrative review naming megaloblastic anemia among the hematological manifestations of the cobalamin deficiency produced by food-cobalamin malabsorption; supports the bounded deficiency-anemia proposition only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40283381/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 40283381; review section (hematological manifestations of cobalamin deficiency)"
+        },
+        {
+          "citation": "Brown IS, Bettington A, Bettington M, Rosty C. Tropical sprue: revisiting an underrecognized disease. Am J Surg Pathol. 2014 May;38:666-672. doi:10.1097/PAS.0000000000000153. PMID 24441659.",
+          "note": "Series of 12 tropical-sprue patients documenting profuse diarrhea and malabsorption notably of vitamin B12 and folate with histologic response to folate and doxycycline; supports the bounded malabsorption-substrate proposition only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/24441659/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 24441659; case series presentation (B12 and folate malabsorption) and treatment response)"
+        }
+      ]
+    }
+  ]
 }

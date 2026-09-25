@@ -16,16 +16,16 @@
   "citationPromotionMustAtomicallyUpdateKbAndMasterSourceState": true
  },
  "counts": {
-  "liveSourceReferenceUses": 1051,
+  "liveSourceReferenceUses": 1073,
   "activeSourceEntities": 346,
-  "pendingVerificationSourceEntities": 608,
+  "pendingVerificationSourceEntities": 627,
   "activeClinicalSourceEntities": 345,
-  "pendingClinicalSourceEntities": 608,
+  "pendingClinicalSourceEntities": 627,
   "activeLegalAuthorityEntities": 1,
   "retiredOnlySourceEntities": 1,
   "supersededUnverifiedSourceEntities": 7,
   "bibliographicCorrectionOnlyEntities": 1,
-  "totalSourceEntitiesIncludingLineage": 963,
+  "totalSourceEntitiesIncludingLineage": 982,
   "retiredVerifiedRelationshipSourceUses": 6
  },
  "retirementLedger": {
@@ -35671,6 +35671,692 @@
    "retiredUses": [],
    "rawReferenceHashes": [
     "eec651cf298674f8ba2a9a7bd7526a5fe901448cdeba805a43981a0a6d97699d"
+   ]
+  },
+  {
+   "sourceId": "pmid-37995383",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "37995383",
+   "doi": "10.5281/zenodo.10064470",
+   "canonicalCitation": "Gómez-Piña JJ, Quiroz DM, Sierra-Hernández A, Mendoza-Álvarez SA, Vera-Lastra OL. Lengua gigante causante de disfagia en paciente con amiloidosis de cadenas ligeras [Giant tongue leading to dysphagia in light chain amyloidosis patient]. Rev Med Inst Mex Seguro Soc. 2023 Nov 6;61:863-867. doi:10.5281/zenodo.10064470. PMID 37995383.",
+   "citationVariants": [
+    "Gómez-Piña JJ, Quiroz DM, Sierra-Hernández A, Mendoza-Álvarez SA, Vera-Lastra OL. Lengua gigante causante de disfagia en paciente con amiloidosis de cadenas ligeras [Giant tongue leading to dysphagia in light chain amyloidosis patient]. Rev Med Inst Mex Seguro Soc. 2023 Nov 6;61:863-867. doi:10.5281/zenodo.10064470. PMID 37995383."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/37995383/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/37995383/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-25"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-macroglossia-to-dysphagia",
+     "primaryId": "macroglossia",
+     "targetId": "dysphagia",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "b74408fa692db4c89a0b398cf9b8269430cdd913cab1e1702b114531c7c3261d"
+   ]
+  },
+  {
+   "sourceId": "pmid-41783520",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "41783520",
+   "doi": "10.1002/oto2.70215",
+   "canonicalCitation": "Williamson A 4th, Nallani R, Brown JR. Tongue Reduction for Pediatric Obstructive Sleep Apnea: A Systematic Review. OTO Open. 2026 Jan-Mar;10:e70215. doi:10.1002/oto2.70215. PMID 41783520.",
+   "citationVariants": [
+    "Williamson A 4th, Nallani R, Brown JR. Tongue Reduction for Pediatric Obstructive Sleep Apnea: A Systematic Review. OTO Open. 2026 Jan-Mar;10:e70215. doi:10.1002/oto2.70215. PMID 41783520."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41783520/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/41783520/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-25"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-macroglossia-to-sleep-apnea",
+     "primaryId": "macroglossia",
+     "targetId": "sleep-apnea",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "5a481bf0fbd74e739040d10b0be934257234da4df5f9a06672bedfa129d6038a"
+   ]
+  },
+  {
+   "sourceId": "pmid-40946365",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "40946365",
+   "doi": "10.1016/j.bjorl.2025.101709",
+   "canonicalCitation": "Huang M, Chen G. Analysis on the plane and mechanism of tongue-originated obstruction in Obstructive Sleep Apnea Syndrome (OSAS) patients with macroglossia. Braz J Otorhinolaryngol. 2026 Jan-Feb;92:101709. doi:10.1016/j.bjorl.2025.101709. PMID 40946365.",
+   "citationVariants": [
+    "Huang M, Chen G. Analysis on the plane and mechanism of tongue-originated obstruction in Obstructive Sleep Apnea Syndrome (OSAS) patients with macroglossia. Braz J Otorhinolaryngol. 2026 Jan-Feb;92:101709. doi:10.1016/j.bjorl.2025.101709. PMID 40946365."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40946365/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/40946365/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-25"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-macroglossia-to-sleep-apnea",
+     "primaryId": "macroglossia",
+     "targetId": "sleep-apnea",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "e7e482ea092cccc17e28272bba0f629e936647955fee6843597e576e554ef486"
+   ]
+  },
+  {
+   "sourceId": "pmid-41519378",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "41519378",
+   "doi": "10.1016/j.oret.2026.01.002",
+   "canonicalCitation": "Jeong H, Eppel PS, Kaelber DC, Singh RP, Talcott KE. Malabsorption Syndromes and Risk of Age-Related Macular Degeneration. Ophthalmol Retina. 2026 May;10:490-498. doi:10.1016/j.oret.2026.01.002. PMID 41519378.",
+   "citationVariants": [
+    "Jeong H, Eppel PS, Kaelber DC, Singh RP, Talcott KE. Malabsorption Syndromes and Risk of Age-Related Macular Degeneration. Ophthalmol Retina. 2026 May;10:490-498. doi:10.1016/j.oret.2026.01.002. PMID 41519378."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41519378/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/41519378/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-25"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-malabsorption-syndrome-to-macular-degeneration",
+     "primaryId": "malabsorption-syndrome",
+     "targetId": "macular-degeneration",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "fe6d0e7cac7a173eb44308a526c49e05d603eacbbd6ff3b82cfca8525696f295"
+   ]
+  },
+  {
+   "sourceId": "pmid-41943771",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "41943771",
+   "doi": "10.7759/cureus.104766",
+   "canonicalCitation": "Chanday R, Sethi B, Ahluwalia S. Clinically Symptomatic Vitamin E-Associated Peripheral Neuropathy: An Overlooked Reversible Neurological Sequela of Exocrine Insufficiency of Chronic Pancreatitis With Type 3c Diabetes. Cureus. 2026 Mar;18:e104766. doi:10.7759/cureus.104766. PMID 41943771.",
+   "citationVariants": [
+    "Chanday R, Sethi B, Ahluwalia S. Clinically Symptomatic Vitamin E-Associated Peripheral Neuropathy: An Overlooked Reversible Neurological Sequela of Exocrine Insufficiency of Chronic Pancreatitis With Type 3c Diabetes. Cureus. 2026 Mar;18:e104766. doi:10.7759/cureus.104766. PMID 41943771."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41943771/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/41943771/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-25"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-malabsorption-syndrome-to-peripheral-neuropathy",
+     "primaryId": "malabsorption-syndrome",
+     "targetId": "peripheral-neuropathy",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "856613715c0e554baf9128fc84a26b4ea3c8ecbbac541717a2f3d34e5657219f"
+   ]
+  },
+  {
+   "sourceId": "pmid-40283381",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "40283381",
+   "doi": "10.3390/jcm14082550",
+   "canonicalCitation": "Andrès E, Terrade JE, Alonso Ortiz MB, Méndez-Bailón M, Ghiura C, Habib C, Lavigne T, Jannot X, Lorenzo-Villalba N. Unraveling the Enigma: Food Cobalamin Malabsorption and the Persistent Shadow of Cobalamin Deficiency. J Clin Med. 2025 Apr 8;14:2550. doi:10.3390/jcm14082550. PMID 40283381.",
+   "citationVariants": [
+    "Andrès E, Terrade JE, Alonso Ortiz MB, Méndez-Bailón M, Ghiura C, Habib C, Lavigne T, Jannot X, Lorenzo-Villalba N. Unraveling the Enigma: Food Cobalamin Malabsorption and the Persistent Shadow of Cobalamin Deficiency. J Clin Med. 2025 Apr 8;14:2550. doi:10.3390/jcm14082550. PMID 40283381."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40283381/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/40283381/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-25"
+   ],
+   "liveUsageCount": 2,
+   "liveUses": [
+    {
+     "relationshipId": "rel-malabsorption-syndrome-to-peripheral-neuropathy",
+     "primaryId": "malabsorption-syndrome",
+     "targetId": "peripheral-neuropathy",
+     "sourceIndex": 1
+    },
+    {
+     "relationshipId": "rel-malabsorption-syndrome-to-anemia",
+     "primaryId": "malabsorption-syndrome",
+     "targetId": "anemia",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "49dcd9d5911e6611df632b4424d49d6338092caeb26bc6b0422e8af6a2232f9e",
+    "b5cb035c640c2dee7e37bb2d59762ca067e0de706564613965fe39304133093d"
+   ]
+  },
+  {
+   "sourceId": "pmid-41161993",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "41161993",
+   "doi": "10.1016/j.ncl.2025.05.010",
+   "canonicalCitation": "Varon M, Pasnoor M, Dimachkie MM. Nutritional Neuropathies. Neurol Clin. 2025 Nov;43:727-741. doi:10.1016/j.ncl.2025.05.010. PMID 41161993.",
+   "citationVariants": [
+    "Varon M, Pasnoor M, Dimachkie MM. Nutritional Neuropathies. Neurol Clin. 2025 Nov;43:727-741. doi:10.1016/j.ncl.2025.05.010. PMID 41161993."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41161993/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/41161993/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-25"
+   ],
+   "liveUsageCount": 2,
+   "liveUses": [
+    {
+     "relationshipId": "rel-malabsorption-syndrome-to-peripheral-neuropathy",
+     "primaryId": "malabsorption-syndrome",
+     "targetId": "peripheral-neuropathy",
+     "sourceIndex": 2
+    },
+    {
+     "relationshipId": "rel-malnutrition-residuals-to-peripheral-neuropathy",
+     "primaryId": "malnutrition-residuals",
+     "targetId": "peripheral-neuropathy",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "322c1c554fe82a84aac89cb35438ff7903061f33cd0401b83abef9afbc769a4f",
+    "f3d82b2afd745e84f8460ac8403200336009be68f2bec66b165afcd05bbcad06"
+   ]
+  },
+  {
+   "sourceId": "pmid-24441659",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "24441659",
+   "doi": "10.1097/PAS.0000000000000153",
+   "canonicalCitation": "Brown IS, Bettington A, Bettington M, Rosty C. Tropical sprue: revisiting an underrecognized disease. Am J Surg Pathol. 2014 May;38:666-672. doi:10.1097/PAS.0000000000000153. PMID 24441659.",
+   "citationVariants": [
+    "Brown IS, Bettington A, Bettington M, Rosty C. Tropical sprue: revisiting an underrecognized disease. Am J Surg Pathol. 2014 May;38:666-672. doi:10.1097/PAS.0000000000000153. PMID 24441659."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/24441659/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/24441659/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-25"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-malabsorption-syndrome-to-anemia",
+     "primaryId": "malabsorption-syndrome",
+     "targetId": "anemia",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "53a8c0fa8d97ac6d74f89c7cc32ca6afb46f916a756fb6d42ee4f6fa35bdd378"
+   ]
+  },
+  {
+   "sourceId": "pmid-37872782",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "37872782",
+   "doi": "10.1177/15589447231205616",
+   "canonicalCitation": "Rode MM, Mullen BL, Zhu AQ, Helsper EA, Moran SL. Surgical Management of Swan Neck Deformity Following Mallet Finger Injury: A Review of 25 Patients Over 20 Years. Hand (N Y). 2025 Mar;20:197-202. doi:10.1177/15589447231205616. PMID 37872782.",
+   "citationVariants": [
+    "Rode MM, Mullen BL, Zhu AQ, Helsper EA, Moran SL. Surgical Management of Swan Neck Deformity Following Mallet Finger Injury: A Review of 25 Patients Over 20 Years. Hand (N Y). 2025 Mar;20:197-202. doi:10.1177/15589447231205616. PMID 37872782."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/37872782/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/37872782/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-25"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-mallet-finger-to-swan-neck-deformity",
+     "primaryId": "mallet-finger",
+     "targetId": "swan-neck-deformity",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "dc936e1009ab0dd01d77ac23364b890a22062f90de3969561fff69fd230a22ed"
+   ]
+  },
+  {
+   "sourceId": "pmid-36796158",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "36796158",
+   "doi": "10.1016/j.ijscr.2023.107925",
+   "canonicalCitation": "Suroto H, Aprilya D, Prajasari T, Nugraha AB. Treatment of chronic mallet finger with swan neck deformity using a modified Spiral Oblique Retinacular Ligament (SORL) reconstruction procedure: A case series and technical note. Int J Surg Case Rep. 2023 Mar;104:107925. doi:10.1016/j.ijscr.2023.107925. PMID 36796158.",
+   "citationVariants": [
+    "Suroto H, Aprilya D, Prajasari T, Nugraha AB. Treatment of chronic mallet finger with swan neck deformity using a modified Spiral Oblique Retinacular Ligament (SORL) reconstruction procedure: A case series and technical note. Int J Surg Case Rep. 2023 Mar;104:107925. doi:10.1016/j.ijscr.2023.107925. PMID 36796158."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36796158/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/36796158/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-25"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-mallet-finger-to-swan-neck-deformity",
+     "primaryId": "mallet-finger",
+     "targetId": "swan-neck-deformity",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "fa72e03eb0d007e1e441823c41037c0cd141f4f5bba5ed5590bad35349bc342c"
+   ]
+  },
+  {
+   "sourceId": "pmid-35734714",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "35734714",
+   "doi": "10.1016/j.amsu.2022.103924",
+   "canonicalCitation": "Sandjaya G, Prabowo I, Patih ID. Terminal extensor tendon reconstruction as a reliable options for chronic mallet finger with swan neck deformity of index finger: A case report. Ann Med Surg (Lond). 2022 Jun;78:103924. doi:10.1016/j.amsu.2022.103924. PMID 35734714.",
+   "citationVariants": [
+    "Sandjaya G, Prabowo I, Patih ID. Terminal extensor tendon reconstruction as a reliable options for chronic mallet finger with swan neck deformity of index finger: A case report. Ann Med Surg (Lond). 2022 Jun;78:103924. doi:10.1016/j.amsu.2022.103924. PMID 35734714."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35734714/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/35734714/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-25"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-mallet-finger-to-swan-neck-deformity",
+     "primaryId": "mallet-finger",
+     "targetId": "swan-neck-deformity",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "2149c0de63a92f6a03370456603b905e27a9c3260f7b37fe3a5863a364baafc2"
+   ]
+  },
+  {
+   "sourceId": "pmid-37191605",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "37191605",
+   "doi": "10.1016/j.jhsa.2023.03.027",
+   "canonicalCitation": "Slichter ME, Mathijssen NMC, Yau CCL, Koobs L, Kraan GA. Posttraumatic Osteoarthritis of the Distal Interphalangeal Joint: A Follow-Up Study of 12 Years After Nonsurgical Treatment of Mallet Finger Fractures. J Hand Surg Am. 2023 Jul;48:691-698. doi:10.1016/j.jhsa.2023.03.027. PMID 37191605.",
+   "citationVariants": [
+    "Slichter ME, Mathijssen NMC, Yau CCL, Koobs L, Kraan GA. Posttraumatic Osteoarthritis of the Distal Interphalangeal Joint: A Follow-Up Study of 12 Years After Nonsurgical Treatment of Mallet Finger Fractures. J Hand Surg Am. 2023 Jul;48:691-698. doi:10.1016/j.jhsa.2023.03.027. PMID 37191605."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/37191605/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/37191605/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-25"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-mallet-finger-to-post-traumatic-osteoarthritis",
+     "primaryId": "mallet-finger",
+     "targetId": "post-traumatic-osteoarthritis",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "c3aba5386c56aa74c9a77bbe20b2f5db26eb1552e241944743dbf8a1b6f19d18"
+   ]
+  },
+  {
+   "sourceId": "pmid-38839197",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "38839197",
+   "doi": "10.1016/j.jhsa.2024.03.012",
+   "canonicalCitation": "Slichter ME, Mathijssen NMC, Yau CCL, Koobs L, Kraan GA. Rater Agreement of Post-Traumatic Osteoarthritis of the Distal Interphalangeal Joint 12 Years After a Mallet Finger Fracture. J Hand Surg Am. 2024 Jun;49:e5-e6. doi:10.1016/j.jhsa.2024.03.012. PMID 38839197.",
+   "citationVariants": [
+    "Slichter ME, Mathijssen NMC, Yau CCL, Koobs L, Kraan GA. Rater Agreement of Post-Traumatic Osteoarthritis of the Distal Interphalangeal Joint 12 Years After a Mallet Finger Fracture. J Hand Surg Am. 2024 Jun;49:e5-e6. doi:10.1016/j.jhsa.2024.03.012. PMID 38839197."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38839197/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/38839197/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-25"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-mallet-finger-to-post-traumatic-osteoarthritis",
+     "primaryId": "mallet-finger",
+     "targetId": "post-traumatic-osteoarthritis",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "7807cf5340e0595c45ba28e05a44dd9cf9617c9fd0ab287f2b0904afb5fb2aad"
+   ]
+  },
+  {
+   "sourceId": "pmid-39500821",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "39500821",
+   "doi": "10.1007/s12306-024-00871-9",
+   "canonicalCitation": "Colò G, Fusini F, Melato M, De Tullio V, Logrieco G, Leigheb M, Surace MF. The effectiveness of shoe modifications and foot orthoses in conservative treatment of lesser toe deformities: a review of literature. Musculoskelet Surg. 2025 Sep;109:225-232. doi:10.1007/s12306-024-00871-9. PMID 39500821.",
+   "citationVariants": [
+    "Colò G, Fusini F, Melato M, De Tullio V, Logrieco G, Leigheb M, Surace MF. The effectiveness of shoe modifications and foot orthoses in conservative treatment of lesser toe deformities: a review of literature. Musculoskelet Surg. 2025 Sep;109:225-232. doi:10.1007/s12306-024-00871-9. PMID 39500821."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39500821/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/39500821/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-25"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-mallet-toes-to-metatarsalgia",
+     "primaryId": "mallet-toes",
+     "targetId": "metatarsalgia",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "2abbd0f292633dd4ee3649219b669aa1f0d998c24776e859cd35f8c2e0a6ea23"
+   ]
+  },
+  {
+   "sourceId": "pmid-29362036",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "29362036",
+   "doi": "10.1016/j.fcl.2017.09.003",
+   "canonicalCitation": "Federer AE, Tainter DM, Adams SB, Schweitzer KM Jr. Conservative Management of Metatarsalgia and Lesser Toe Deformities. Foot Ankle Clin. 2018 Mar;23:9-20. doi:10.1016/j.fcl.2017.09.003. PMID 29362036.",
+   "citationVariants": [
+    "Federer AE, Tainter DM, Adams SB, Schweitzer KM Jr. Conservative Management of Metatarsalgia and Lesser Toe Deformities. Foot Ankle Clin. 2018 Mar;23:9-20. doi:10.1016/j.fcl.2017.09.003. PMID 29362036."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/29362036/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/29362036/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-25"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-mallet-toes-to-metatarsalgia",
+     "primaryId": "mallet-toes",
+     "targetId": "metatarsalgia",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "c6b6ac07e61b797396f84e204b60baed8ee62b9b38243acf0df36ddf9e1a1e68"
+   ]
+  },
+  {
+   "sourceId": "pmid-24559872",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "24559872",
+   "doi": "10.1016/j.mcna.2013.10.003",
+   "canonicalCitation": "DiPreta JA. Metatarsalgia, lesser toe deformities, and associated disorders of the forefoot. Med Clin North Am. 2014 Mar;98:233-251. doi:10.1016/j.mcna.2013.10.003. PMID 24559872.",
+   "citationVariants": [
+    "DiPreta JA. Metatarsalgia, lesser toe deformities, and associated disorders of the forefoot. Med Clin North Am. 2014 Mar;98:233-251. doi:10.1016/j.mcna.2013.10.003. PMID 24559872."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/24559872/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/24559872/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-25"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-mallet-toes-to-metatarsalgia",
+     "primaryId": "mallet-toes",
+     "targetId": "metatarsalgia",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "91440c0bca1dea7f4264f253f59b7e3cd6e706af355471d9464de574555e5ede"
+   ]
+  },
+  {
+   "sourceId": "pmid-38193299",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "38193299",
+   "doi": "10.1097/MOG.0000000000001000",
+   "canonicalCitation": "Alvarez-Nuncio MDC, Ziegler TR. Micronutrient status and protein-energy malnutrition in free-living older adults: a current perspective. Curr Opin Gastroenterol. 2024 Mar 1;40:99-105. doi:10.1097/MOG.0000000000001000. PMID 38193299.",
+   "citationVariants": [
+    "Alvarez-Nuncio MDC, Ziegler TR. Micronutrient status and protein-energy malnutrition in free-living older adults: a current perspective. Curr Opin Gastroenterol. 2024 Mar 1;40:99-105. doi:10.1097/MOG.0000000000001000. PMID 38193299."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38193299/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/38193299/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-25"
+   ],
+   "liveUsageCount": 2,
+   "liveUses": [
+    {
+     "relationshipId": "rel-malnutrition-residuals-to-anemia",
+     "primaryId": "malnutrition-residuals",
+     "targetId": "anemia",
+     "sourceIndex": 0
+    },
+    {
+     "relationshipId": "rel-malnutrition-residuals-to-peripheral-neuropathy",
+     "primaryId": "malnutrition-residuals",
+     "targetId": "peripheral-neuropathy",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "7005e026d54015bd0cbf08f754d1ed3463e8b85d2b011b8a29a7f964421f4be5",
+    "7df406b1a1f96056ea094a2fa8e56daa6474ac0a4a152444ce300f37710a9683"
+   ]
+  },
+  {
+   "sourceId": "pmid-42356105",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "42356105",
+   "doi": "10.3390/medicina62061092",
+   "canonicalCitation": "Iinuma M, Hideshima T, Machida S, Uehara K, Karube T, Sato K, Haraguchi N. Nutritional Status Is Associated with Bone Mineral Density, Vitamin D Levels, and Bone Turnover Markers in Patients with Proximal Femoral Fragility Fractures: A Retrospective Observational Study. Medicina (Kaunas). 2026 Jun 4;62:1092. doi:10.3390/medicina62061092. PMID 42356105.",
+   "citationVariants": [
+    "Iinuma M, Hideshima T, Machida S, Uehara K, Karube T, Sato K, Haraguchi N. Nutritional Status Is Associated with Bone Mineral Density, Vitamin D Levels, and Bone Turnover Markers in Patients with Proximal Femoral Fragility Fractures: A Retrospective Observational Study. Medicina (Kaunas). 2026 Jun 4;62:1092. doi:10.3390/medicina62061092. PMID 42356105."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42356105/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/42356105/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-25"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-malnutrition-residuals-to-osteoporosis",
+     "primaryId": "malnutrition-residuals",
+     "targetId": "osteoporosis",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "1bdb92052d56058aba9303fceaad89db1b7473766bf576bfc35c9565c8292c54"
+   ]
+  },
+  {
+   "sourceId": "pmid-42563160",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "42563160",
+   "doi": "10.1186/s12902-026-02456-y",
+   "canonicalCitation": "Kopanos S, Scheel S, Eggert B, Rübberdt A, Muth C, Thiem U, Feldkamp J. Secondary hyperparathyroidism and lower hip bone mineral density in very old hospitalized adults: a real-world endocrine bone study. BMC Endocr Disord. 2026 Aug 6;26:225. doi:10.1186/s12902-026-02456-y. PMID 42563160.",
+   "citationVariants": [
+    "Kopanos S, Scheel S, Eggert B, Rübberdt A, Muth C, Thiem U, Feldkamp J. Secondary hyperparathyroidism and lower hip bone mineral density in very old hospitalized adults: a real-world endocrine bone study. BMC Endocr Disord. 2026 Aug 6;26:225. doi:10.1186/s12902-026-02456-y. PMID 42563160."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42563160/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/42563160/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-25"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-malnutrition-residuals-to-osteoporosis",
+     "primaryId": "malnutrition-residuals",
+     "targetId": "osteoporosis",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "9fae6f0f069b3e613b312e1c7d715f71ef5f17e943bc091cfc17e445249afb83"
    ]
   }
  ],

@@ -2,8 +2,131 @@
   "id": "mallet-finger",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review biomechanical, post-injury, orthopedic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 58 (2026-09-25): two ASSOCIATION_ONLY draft mappings pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: both edges assert association only (etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true, mechanismCategory MECHANICAL_OR_COMPRESSIVE for the swan-neck-deformity edge and BIOMECHANICAL_ALTERATION for the post-traumatic-osteoarthritis edge). The evidence base is surgical-series and long-term cohort class, so individual claims require dated hand examination and radiographic documentation of the injury-to-sequela chain with competing-cause exclusion, and review by a qualified medical professional.",
+    "Pathway and duplicate-scope screens: no -> unexplained-chronic-pain edge (zero located mallet-specific pain quantification; the extensor-lag and pinch-deformity material is functional description rather than quantified pain, and the swan-neck and osteoarthritis windows carry the structural pathways); no -> contractures edge (constitutive-proximity guard - the fixed extensor lag is the mallet deformity itself rather than a separate secondary contracture); no -> scars edge (surgical-scar material is treatment-mediated context); no -> muscle-atrophy edge (disuse atrophy of the intrinsic musculature is unquantified in the located material); the swan-neck edge's evidence is mallet-specific and does not recycle any other finger-deformity window (ME-29), and rheumatoid and inflammatory arthropathy causes of swan neck are recorded among the alternatives."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 58 (2026-09-25): two bounded association edges authored - mallet-finger to swan-neck-deformity (rank 1) and to post-traumatic-osteoarthritis (rank 2) - classified ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, and hypothesizedOnly:true. The swan-neck proposition rests on the 25-patient 20-year surgical review naming the sequela explicitly (PMID 37872782) with two reconstruction case anchors (PMID 36796158, 35734714). The osteoarthritis proposition rests on the 52-patient 12-year cohort with contralateral-joint comparison (PMID 37191605) and its rater-agreement companion (PMID 38839197).",
+    "Counter-evidence and caveat screens recorded 2026-09-25: (i) rarity and selection - the swan-neck review describes the sequela as rare and its cohort is selected for operative correction; (ii) natural-degeneration counter-framing - the osteoarthritis cohort concludes its findings are similar to the natural degenerative process of the DIP joint with only 23 to 25 percent exceeding the healthy control joint, and this counter-framing is carried on the edge; (iii) measurement limits - radiographic osteoarthritis correlates weakly to moderately with function and patient-reported outcomes and rater agreement bounds the grading; (iv) treatment mediation - splinting, pinning, open reduction, and arthrodesis all alter the joint and tendon course; (v) exclusion record - rheumatoid and inflammatory arthropathy produce swan neck through a different route and were excluded from the anchor review."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "swan-neck-deformity",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Mallet finger documents swan neck deformity as a sequela: the 20-year single-institution review of 25 patients undergoing surgery for swan neck deformity following traumatic mallet finger states that swan neck develops as a sequela of chronic mallet finger, with 64 percent of mallet fingers chronic and 40 percent of injuries failing nonoperative splinting (PMID 37872782), the three-case series documents chronic terminal extensor tendon injury producing mallet deformity with secondary swan neck deformity treated by spiral oblique retinacular ligament reconstruction (PMID 36796158), and the index-finger case documents chronic mallet finger resulting in swan neck deformity from flexor-extensor imbalance (PMID 35734714); the direction is explicit in all three and the review records the sequela as rare.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: the located material documents swan neck deformity in patients selected for its surgical correction, but whether an individual swan neck arose from a mallet injury, from rheumatoid or other inflammatory arthropathy, or from a different extensor imbalance requires individual radiographic, inflammatory-marker, and operative review."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MECHANICAL_OR_COMPRESSIVE",
+        "primaryVector": "A chronic mallet tendon rupture leaves the terminal extensor incompetent so the lateral bands drift volarly and the extensor force redistributes to hyperextend the proximal interphalangeal joint, producing the secondary swan neck pattern, the rebalancing mechanism documented in the reconstruction case series and case report, but whether this route produced any individual deformity remains hypothesized until operative and dynamic-examination records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at surgical-series and case class: the largest anchor is a retrospective review of patients selected for surgical correction of an established sequela, symptomatic swan neck after mallet finger is described as rare in that review, and rheumatoid arthritis was an explicit exclusion criterion.",
+        "evidenceGaps": "The sequela is rare (the 25-patient review spans 20 years at one institution), surgical-series selection inflates apparent frequency, splinting and primary repair alter the trajectory, and inflammatory arthropathy must be excluded before attribution.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "rheumatoid or inflammatory arthritis swan neck (explicitly excluded in the anchor review)",
+          "idiopathic swan neck from other extensor imbalance",
+          "post-trigger-finger-release swan neck (PMID 37255647 records this separate route)",
+          "neuromuscular imbalance"
+        ]
+      },
+      "evidenceGaps": [
+        "The sequela is rare (the 25-patient review spans 20 years at one institution), surgical-series selection inflates apparent frequency, splinting and primary repair alter the trajectory, and inflammatory arthropathy must be excluded before attribution."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY on the tendon-imbalance mechanical precedent: the 25-patient 20-year review of surgical management states that swan neck deformity develops as a sequela of chronic mallet finger and documents the injury classes and failed splinting trials (PMID 37872782), the three-case series documents chronic terminal extensor tendon injury producing mallet deformity and secondary swan neck deformity corrected by dynamic-mechanical SORL reconstruction (PMID 36796158), and the index-finger case documents chronic mallet finger resulting in swan neck deformity from flexor and extensor mechanism imbalance (PMID 35734714); because the evidence is surgical-series and case class on an explicitly rare sequela with selection for operative correction, the conservative standard keeps the edge at association only and routes individual claims through dated hand examination and imaging documenting the mallet-to-swan-neck sequence with inflammatory-arthropathy exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Rode MM, Mullen BL, Zhu AQ, Helsper EA, Moran SL. Surgical Management of Swan Neck Deformity Following Mallet Finger Injury: A Review of 25 Patients Over 20 Years. Hand (N Y). 2025 Mar;20:197-202. doi:10.1177/15589447231205616. PMID 37872782.",
+          "note": "Retrospective 20-year single-institution review of 25 patients with swan neck deformity following traumatic mallet finger, stating the deformity develops as a sequela of chronic mallet finger and that symptomatic cases are rare; supports the bounded sequela proposition only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/37872782/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 37872782; cohort characteristics (25 surgical patients, chronic mallet share, failed splinting trials)"
+        },
+        {
+          "citation": "Suroto H, Aprilya D, Prajasari T, Nugraha AB. Treatment of chronic mallet finger with swan neck deformity using a modified Spiral Oblique Retinacular Ligament (SORL) reconstruction procedure: A case series and technical note. Int J Surg Case Rep. 2023 Mar;104:107925. doi:10.1016/j.ijscr.2023.107925. PMID 36796158.",
+          "note": "Three-case series documenting chronic terminal extensor tendon injury producing mallet deformity and secondary swan neck deformity treated by SORL reconstruction with excellent Crawford outcomes; supports the bounded secondary-deformity proposition only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36796158/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 36796158; case series introduction and outcomes (chronic mallet with secondary swan neck)"
+        },
+        {
+          "citation": "Sandjaya G, Prabowo I, Patih ID. Terminal extensor tendon reconstruction as a reliable options for chronic mallet finger with swan neck deformity of index finger: A case report. Ann Med Surg (Lond). 2022 Jun;78:103924. doi:10.1016/j.amsu.2022.103924. PMID 35734714.",
+          "note": "Case report documenting chronic mallet finger resulting in swan neck deformity from flexor and extensor mechanism imbalance, corrected by terminal extensor tendon reconstruction; supports the bounded imbalance-route proposition only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35734714/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 35734714; case presentation (chronic mallet finger with swan neck deformity)"
+        }
+      ]
+    },
+    {
+      "conditionId": "post-traumatic-osteoarthritis",
+      "rank": 2,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Mallet finger fractures document distal interphalangeal post-traumatic osteoarthritis at long-term cohort level: the 52-patient follow-up study a mean 12.1 years after nonsurgical treatment of mallet finger fractures found radiographic osteoarthritis increase in 41 to 44 percent of fractures, with 23 to 25 percent showing a higher degree than the healthy contralateral joint (PMID 37191605), and the companion methodological report documents the same 12-year post-fracture osteoarthritis assessments (PMID 38839197); the within-person contralateral control design bounds the excess over natural degeneration, and that limitation is recorded on the edge.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: the located material documents long-term radiographic osteoarthritis after mallet fractures but concludes the pattern is similar to the natural degenerative process of the DIP joint, so whether an individual osteoarthritis arose from the injury or from ordinary degeneration requires individual radiographic and occupational review."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "BIOMECHANICAL_ALTERATION",
+        "primaryVector": "A mallet fracture with residual extension lag and joint subluxation leaves the DIP joint incongruent so abnormal contact stress drives cartilage wear and post-traumatic osteoarthritis, the incongruency route the cohort names as its premise, but whether this route produced any individual osteoarthritis remains hypothesized until radiographs and injury-severity records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at cohort class with a contralateral-joint control: the cohort's own conclusion states radiological osteoarthritis after a mallet fracture is similar to the natural degenerative process in the DIP joint, functional correlates were weak to moderate, and the excess over the healthy control joint was 23 to 25 percent rather than universal.",
+        "evidenceGaps": "The 12-year cohort concludes the osteoarthritis pattern resembles natural DIP degeneration (a counter-framing recorded on the edge), radiographic grading carries the rater-agreement limitation the companion report addresses, functional correlates were weak to moderate, and surgical versus conservative treatment heterogeneity modifies the joint surface.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "ordinary age-related DIP degeneration (the cohort's own alternative reading)",
+          "erosive hand osteoarthritis",
+          "psoriatic or inflammatory arthritis of the DIP",
+          "post-fracture malunion of the distal phalanx",
+          "Heberden nodes as a degenerative counterpart"
+        ]
+      },
+      "evidenceGaps": [
+        "The 12-year cohort concludes the osteoarthritis pattern resembles natural DIP degeneration (a counter-framing recorded on the edge), radiographic grading carries the rater-agreement limitation the companion report addresses, functional correlates were weak to moderate, and surgical versus conservative treatment heterogeneity modifies the joint surface."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY on the joint-incongruence precedent with the cohort's counter-framing recorded openly: the 52-patient follow-up study a mean 12.1 years after nonsurgical treatment of mallet finger fractures found radiographic osteoarthritis increase in 41 to 44 percent of fractures with 23 to 25 percent worse than the healthy contralateral DIP joint and only weak-to-moderate correlation with function and patient-reported outcomes (PMID 37191605), and the companion report documents rater-agreement assessment of the same post-traumatic osteoarthritis at 12 years (PMID 38839197); because the cohort itself concludes the osteoarthritis is similar to the natural degenerative process of the DIP joint and the excess over the control joint is partial, the conservative standard keeps the edge at association only, records the natural-degeneration counter-framing on the edge, and routes individual claims through dated radiographs documenting injury-to-joint-surface congruence with degenerative and inflammatory exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Slichter ME, Mathijssen NMC, Yau CCL, Koobs L, Kraan GA. Posttraumatic Osteoarthritis of the Distal Interphalangeal Joint: A Follow-Up Study of 12 Years After Nonsurgical Treatment of Mallet Finger Fractures. J Hand Surg Am. 2023 Jul;48:691-698. doi:10.1016/j.jhsa.2023.03.027. PMID 37191605.",
+          "note": "Cohort of 52 patients at a mean 12.1 years after nonsurgical treatment of mallet finger fractures: radiographic OA increase in 41-44% of fractures, 23-25% higher degree than the healthy contralateral joint, with the conclusion that the pattern is similar to natural DIP degeneration; supports the bounded long-term association and its counter-framing.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/37191605/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 37191605; cohort results (OA prevalence, contralateral comparison, PROM correlations)"
+        },
+        {
+          "citation": "Slichter ME, Mathijssen NMC, Yau CCL, Koobs L, Kraan GA. Rater Agreement of Post-Traumatic Osteoarthritis of the Distal Interphalangeal Joint 12 Years After a Mallet Finger Fracture. J Hand Surg Am. 2024 Jun;49:e5-e6. doi:10.1016/j.jhsa.2024.03.012. PMID 38839197.",
+          "note": "Companion methodological report on rater agreement for the post-traumatic osteoarthritis assessments 12 years after mallet finger fracture; supports the bounded assessment-reliability context only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38839197/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 38839197; report title and scope (rater agreement for PTOA assessment post mallet fracture)"
+        }
+      ]
+    }
+  ]
 }

@@ -2,8 +2,112 @@
   "id": "macroglossia",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review oral, dental, maxillofacial, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 58 (2026-09-25): two ASSOCIATION_ONLY draft mappings pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: both edges assert association only (etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true, mechanismCategory MECHANICAL_OR_COMPRESSIVE). The evidence base is case class for the dysphagia edge and pediatric systematic-review plus small mechanism-cohort class for the sleep-apnea edge, so individual claims require dated imaging and swallow or polysomnographic documentation with competing-cause exclusion, and review by a qualified medical professional.",
+    "Pathway and duplicate-scope screens: no dysphagia evidence recycled from the ankyloglossia or loss-of-tongue windows (ME-29 scope rule - those published sibling windows keep their own evidence, and this identity uses macroglossia-specific material only); no -> airway-obstruction edge (no catalog identity; the giant-tongue case's airway caveat and the reduction-review adverse events recorded as context on the sleep-apnea edge); no -> speech-disorder or dysarthria edge (no catalog identity); no -> malocclusion or dental edge (no catalog identity); no -> anxiety-disorder or depressive-disorder edge (zero located condition-specific psychiatric quantification); the etiological systematic review (PMID 36229262) is recorded as scope context - amyloidosis (13.7% of acquired cases), endocrinopathies (8.8%), myopathies (4%), and Beckwith-Wiedemann syndrome lead the etiologies, and each underlying cause has its own identity whose windows carry its own systemic consequences."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 58 (2026-09-25): two bounded association edges authored - macroglossia to dysphagia (rank 1) and to sleep-apnea (rank 2) - classified ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, and hypothesizedOnly:true. The dysphagia proposition rests on the light-chain-amyloidosis giant-tongue case causing dysphagia and reduced oral opening (PMID 37995383). The sleep-apnea proposition rests on the paediatric tongue-reduction systematic review with improvement across all 9 studies (PMID 41783520) and the 19-versus-19 MRI and airway-pressure mechanism cohort (PMID 40946365).",
+    "Counter-evidence and caveat screens recorded 2026-09-25: (i) evidence class - one case anchor for dysphagia and pediatric treatment-selected reduction studies plus a small Level IV cohort for sleep-apnea; (ii) etiology heterogeneity - macroglossia causes range from amyloidosis to endocrine, myopathic, and congenital syndromes (PMID 36229262), each with its own identity-level window; (iii) treatment mediation - tongue reduction, treatment of the underlying deposition or endocrine disease, CPAP, and growth all alter the course; (iv) confound record - obesity, tonsillar hypertrophy, and craniofacial anatomy co-determine the airway and require individual exclusion."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "dysphagia",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Macroglossia documents dysphagia by direct tongue bulk: the light-chain-amyloidosis case presents a progressively enlarging giant tongue causing dysphagia and reduced oral opening over six months, with amyloid confirmed on tongue biopsy (PMID 37995383); the mechanical obstruction is documented at case class without incidence denominators, so the edge records the bulk-effect relationship only.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: the located material documents dysphagia in the setting of massive tongue enlargement, but tongue size and site of enlargement, dental and palatal geometry, treatment timing, and the underlying cause of the macroglossia all require individual review before any causal statement."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MECHANICAL_OR_COMPRESSIVE",
+        "primaryVector": "Enlarged tongue bulk physically obstructs and displaces the oropharyngeal bolus path so swallowing passage is narrowed and dysphagia results, the mass-effect route documented in the giant-tongue case that presented with dysphagia and reduced oral opening, but whether this route produced any individual dysphagia remains hypothesized until imaging, swallow studies, and measurement of tongue size are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at case class only: the single located anchor is a one-patient amyloidosis case in which the tongue enlargement was secondary to light-chain deposition, and no cohort quantifies dysphagia incidence by macroglossia severity or etiology.",
+        "evidenceGaps": "No cohort quantifies dysphagia incidence in macroglossia; etiologies range from amyloidosis to endocrinopathy, myopathy, and congenital syndromes with different trajectories, and tongue reduction, treatment of the underlying disease, and dental prosthetics all mediate the swallowing course.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "ankyloglossia (the published sibling window, not recycled per ME-29)",
+          "post-stroke or neurogenic dysphagia",
+          "esophageal or hypopharyngeal neoplasm",
+          "esophageal web (Plummer-Vinson)",
+          "pharyngeal dysmotility"
+        ]
+      },
+      "evidenceGaps": [
+        "No cohort quantifies dysphagia incidence in macroglossia; etiologies range from amyloidosis to endocrinopathy, myopathy, and congenital syndromes with different trajectories, and tongue reduction, treatment of the underlying disease, and dental prosthetics all mediate the swallowing course."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY on the anatomic-mechanics precedent mirroring the ankyloglossia and loss-of-tongue dysphagia windows with macroglossia-specific evidence only: the 60-year-old light-chain-amyloidosis case presented with a progressively enlarging giant tongue over six months causing dysphagia and reduced oral opening, histologically confirmed amyloid on tongue biopsy (PMID 37995383); because the evidence is case class in a secondary-amyloidosis patient and no incidence denominators exist by tongue size or etiology, the conservative standard keeps the edge at association only and routes individual claims through dated imaging and videofluoroscopic swallow studies documenting tongue bulk with neoplastic and neurogenic exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Gómez-Piña JJ, Quiroz DM, Sierra-Hernández A, Mendoza-Álvarez SA, Vera-Lastra OL. Lengua gigante causante de disfagia en paciente con amiloidosis de cadenas ligeras [Giant tongue leading to dysphagia in light chain amyloidosis patient]. Rev Med Inst Mex Seguro Soc. 2023 Nov 6;61:863-867. doi:10.5281/zenodo.10064470. PMID 37995383.",
+          "note": "Spanish-language case report of a 60-year-old man with a progressively enlarging giant tongue causing dysphagia and reduced oral opening, with amyloid confirmed on tongue biopsy; supports the bounded mass-effect proposition only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/37995383/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 37995383; case presentation (giant tongue causing dysphagia and reduced oral opening)"
+        }
+      ]
+    },
+    {
+      "conditionId": "sleep-apnea",
+      "rank": 2,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Macroglossia documents obstructive sleep apnea by tongue-base obstruction: the systematic review of tongue reduction for pediatric OSA found all nine included studies (146 patients) reported reduced apnea-hypopnea index and increased minimum oxygen saturation after tongue reduction (PMID 41783520), and the MRI-plus-airway-pressure cohort of 19 OSAS patients with macroglossia versus 19 healthy controls identified velopharyngeal obstruction driven by backward soft-palate displacement from the hypertrophic tongue (PMID 40946365); the improvement-on-reduction design supports the direction tongue enlargement to obstruction.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: the located material documents airway obstruction mechanics and post-reduction improvement in selected patients, but obesity, tonsillar size, craniofacial anatomy, nasal obstruction, and the underlying cause of the macroglossia all require individual review before any causal statement."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MECHANICAL_OR_COMPRESSIVE",
+        "primaryVector": "Enlarged tongue mass narrows the retrolingual and velopharyngeal airway so pharyngeal collapse occurs during sleep and obstructive apneas result, the obstruction route documented in the MRI cohort and the tongue-reduction systematic review whose improvement-on-reduction design supports directionality, but whether this route produced any individual apnea remains hypothesized until polysomnography and imaging records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at systematic-review class for the reduction design plus one small mechanism cohort: the review's studies are pediatric and technique-heterogeneous without long-term follow-up, the MRI cohort is Level IV with 19 cases, and both anchor populations are treatment-selected.",
+        "evidenceGaps": "No adult incidence cohort quantifies OSA risk by macroglossia severity; the reduction literature is pediatric with heterogeneous techniques and selection effects, and weight change, tonsillectomy, CPAP, and growth all alter the airway course.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "obesity-related pharyngeal collapse",
+          "tonsillar or adenoid hypertrophy",
+          "craniofacial micrognathia",
+          "nasal obstruction",
+          "central sleep apnea"
+        ]
+      },
+      "evidenceGaps": [
+        "No adult incidence cohort quantifies OSA risk by macroglossia severity; the reduction literature is pediatric with heterogeneous techniques and selection effects, and weight change, tonsillectomy, CPAP, and growth all alter the airway course."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY on the airway-obstruction mechanical precedent: the systematic review of tongue reduction for pediatric OSA identified 9 studies (146 patients) in which every study reported apnea-hypopnea index reduction and improved minimum oxygen saturation after tongue base reduction regardless of technique (PMID 41783520), and the pharyngeal-MRI and upper-airway-pressure cohort of 19 OSAS patients with macroglossia versus 19 controls localized the obstruction to the velopharyngeal plane through backward soft-palate displacement by the hypertrophic tongue (PMID 40946365); because the reduction design supports direction but is pediatric and treatment-selected and the mechanism cohort is small, the conservative standard keeps the edge at association only and routes individual claims through dated polysomnography with anatomic and obesity-related exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Williamson A 4th, Nallani R, Brown JR. Tongue Reduction for Pediatric Obstructive Sleep Apnea: A Systematic Review. OTO Open. 2026 Jan-Mar;10:e70215. doi:10.1002/oto2.70215. PMID 41783520.",
+          "note": "Systematic review of 9 studies (146 paediatric patients) in which all studies reported reduced apnea-hypopnea index and increased minimum oxygen saturation after tongue reduction for OSA; supports the bounded reduction-design proposition only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41783520/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 41783520; systematic review results (AHI reduction across all included studies)"
+        },
+        {
+          "citation": "Huang M, Chen G. Analysis on the plane and mechanism of tongue-originated obstruction in Obstructive Sleep Apnea Syndrome (OSAS) patients with macroglossia. Braz J Otorhinolaryngol. 2026 Jan-Feb;92:101709. doi:10.1016/j.bjorl.2025.101709. PMID 40946365.",
+          "note": "Level IV cohort of 19 OSAS patients with macroglossia versus 19 healthy controls using pharyngeal MRI and upper-airway pressure monitoring, localizing velopharyngeal obstruction from the hypertrophic tongue; supports the bounded mechanism proposition only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40946365/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 40946365; cohort results (RP and RP/RL significantly smaller than controls; obstruction plane analysis)"
+        }
+      ]
+    }
+  ]
 }

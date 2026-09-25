@@ -2307,5 +2307,118 @@ found only intentional survivor classes: the frozen sibling `tests/helpers/maste
 pins (excluded wholesale), the `61(5):566-574` and `635-645` and `264(4):1101-1110` page/volume ranges
 inside citation strings, byte-size arithmetic constants (`20 * 1024 * 1024`), the Wave-4
 `261-condition` catalog checkpoint, and the doc-lint volatile-count fixture strings - each a page
-number, byte size, catalog count, or test fixture rather than a registry counter. Standing
-recommendation: batch 57 lands through branch, PR, CI, and merge.
+number, byte size, catalog count, or test fixture rather than a registry counter. Standingrecommendation: batch 57 lands through branch, PR, CI, and
+merge.
+
+Mapping Expansion D1 batch 58 (2026-09-25) authored eleven draft-quarantined relationships across all
+five screened identities, with no deferrals - every identity in the window carried at least one bounded
+edge. All eleven edges are ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED,
+vaNexusProbabilityAlignment NOT_ASSERTED, and hypothesizedOnly:true.
+`macroglossia -> dysphagia` (rank 1, MECHANICAL_OR_COMPRESSIVE) rests on the light-chain-amyloidosis
+case of a progressively enlarging giant tongue causing dysphagia and reduced oral opening over six
+months with amyloid confirmed on tongue biopsy (PMID 37995383), authored with macroglossia-specific
+evidence only so the published ankyloglossia and loss-of-tongue windows keep theirs.
+`macroglossia -> sleep-apnea` (rank 2, MECHANICAL_OR_COMPRESSIVE) rests on the paediatric
+tongue-reduction systematic review in which all nine studies (146 patients) reported apnea-hypopnea
+index reduction and improved oxygen saturation after tongue reduction (PMID 41783520) and the 19-versus-
+19 pharyngeal-MRI and airway-pressure cohort localizing velopharyngeal obstruction to backward
+soft-palate displacement by the hypertrophic tongue (PMID 40946365).
+`malabsorption-syndrome -> macular-degeneration` (rank 1, METABOLIC_OR_NUTRITIONAL) rests on the
+TriNetX propensity-matched cohort with stratum-level risk ratios: Crohn disease RR 1.42 (n = 9537),
+chronic pancreatitis RR 1.82 (n = 12856, persisting at RR 1.83 in the pancreatic-enzyme-replacement
+subset), short bowel syndrome advanced/exudative AMD RR 1.98 (n = 3747) - and the celiac stratum null
+at RR 1.09 (n = 9315), recorded on the edge as counter-evidence bounding generalization (PMID 41519378).
+`malabsorption-syndrome -> peripheral-neuropathy` (rank 2, METABOLIC_OR_NUTRITIONAL) rests on the
+chronic-pancreatitis exocrine-insufficiency case of sensorimotor neuropathy from vitamin E deficiency
+resolving on repletion, with the authors noting routine misattribution to diabetes (PMID 41943771),
+the food-cobalamin malabsorption review naming peripheral neuropathy among cobalamin-deficiency
+manifestations (PMID 40283381), and the nutritional-neuropathies specialty review (PMID 41161993).
+`malabsorption-syndrome -> anemia` (rank 3, METABOLIC_OR_NUTRITIONAL) rests on the food-cobalamin
+review's named megaloblastic anemia (PMID 40283381) and the 12-patient tropical-sprue series
+documenting malabsorption notably of vitamin B12 and folate with histologic response to folate and
+doxycycline (PMID 24441659).
+`mallet-finger -> swan-neck-deformity` (rank 1, MECHANICAL_OR_COMPRESSIVE) rests on the 25-patient
+20-year single-institution review naming swan neck as a sequela of chronic mallet finger and recording
+the sequela as rare (PMID 37872782), the three-case SORL reconstruction series documenting secondary
+swan neck from chronic terminal extensor injury (PMID 36796158), and the index-finger case documenting
+the flexor-extensor imbalance route (PMID 35734714).
+`mallet-finger -> post-traumatic-osteoarthritis` (rank 2, BIOMECHANICAL_ALTERATION) rests on the
+52-patient cohort a mean 12.1 years after nonsurgical mallet-fracture treatment finding radiographic
+OA increase in 41 to 44 percent of fractures with 23 to 25 percent worse than the healthy contralateral
+DIP joint (PMID 37191605) and its rater-agreement companion (PMID 38839197) - with the cohort's own
+conclusion that the pattern is similar to natural DIP degeneration recorded on the edge as counter-framing.
+`mallet-toes -> metatarsalgia` (rank 1, BIOMECHANICAL_ALTERATION) rests on the orthoses review naming
+mallet toe among the deformities producing metatarsalgia (PMID 39500821), the conservative-management
+review of metatarsalgia and lesser toe deformities (PMID 29362036), and the forefoot pathophysiology
+review with competing pain sources (PMID 24559872), with the pooled lesser-toe class limit carried
+openly on the edge rather than resolved.
+`malnutrition-residuals -> anemia` (rank 1, METABOLIC_OR_NUTRITIONAL) rests on the protein-energy
+malnutrition review naming anemia among the consequences of malnutrition and attributing anemia to
+iron and iodine deficiencies (PMID 38193299).
+`malnutrition-residuals -> peripheral-neuropathy` (rank 2, METABOLIC_OR_NUTRITIONAL) rests on the
+nutritional-neuropathies specialty review (PMID 41161993) and the same malnutrition review's B12 and C
+deficiency neurological-risk statements (PMID 38193299).
+`malnutrition-residuals -> osteoporosis` (rank 3, METABOLIC_OR_NUTRITIONAL) rests on the 108-patient
+proximal femoral fragility-fracture cohort finding malnourished patients had significantly lower femoral
+neck BMD and higher turnover markers with independent nutritional-index associations (PMID 42356105)
+and the 1202-patient very-old-hospitalized cohort finding vitamin D deficiency in 68.6 percent with
+secondary hyperparathyroidism in 13.7 percent and significantly lower hip BMD with elevated PTH (PMID
+42563160), both cross-sectional with reverse causation recorded as plausible.
+
+Screens recorded for this batch: no macroglossia dysphagia evidence recycled from the ankyloglossia or
+loss-of-tongue windows (ME-29) and no `-> airway-obstruction`, `-> speech-disorder`, or `-> malocclusion`
+edges (no catalog identities), with the etiological systematic review (PMID 36229262) recorded as scope
+context - amyloidosis (13.7% of acquired cases), endocrinopathies (8.8%), myopathies, and Beckwith-
+Wiedemann syndrome lead the etiologies and each cause keeps its own identity-level windows; no
+malabsorption `-> osteoporosis` edge (ME-29 duplicate-scope - the published celiac-disease identity owns
+its osteoporosis window and the located generic bone material is celiac or bariatric scoped), no
+`-> schizophrenia` edge (the celiac window owns it), no `-> kidney-stones` edge (the published
+short-bowel-syndrome identity owns its oxalate window), no `-> malnutrition-residuals` edge (constitutive-
+proximity and direction guard - malnutrition is the downstream state of untreated malabsorption and the
+windows are kept separate rather than chained), and no `-> diabetes-mellitus` edge (wrong-identity -
+type 3c diabetes is pancreatic-disease scoped and a co-diagnosis in the neuropathy anchor); no mallet-finger
+`-> unexplained-chronic-pain` edge (no mallet-specific pain quantification), no `-> contractures` edge
+(constitutive-proximity - the fixed extensor lag is the deformity itself), and rheumatoid and inflammatory
+arthropathy swan neck recorded among the alternatives (PMID 37255647 documents a separate post-trigger-
+release route); no mallet-toes `-> unexplained-chronic-pain` edge (ME-29 - the sibling hammertoe identity
+owns its pain window and the located material is pooled lesser-toe class), no `-> skin-ulcer` edge (no
+catalog identity and the neuropathic-ulcer tenotomy material is diabetic-neuropathy scoped); no
+malnutrition-residuals `-> muscle-atrophy` edge (constitutive-proximity - reduced muscle mass is a GLIM
+diagnostic criterion for malnutrition itself), no `-> cognitive-disorder` edge (iodine- and B12-deficiency
+material is hypothyroidism and pernicious-anemia scoped), no `-> rickets` edge (constitutive-proximity
+and sibling scope), and no `-> diabetes-mellitus` edge from the famine-programming literature (the
+Ethiopian famine 40-year cohort reports mixed cardiometabolic patterns including LOWER diastolic pressure
+in the exposed with no clean diabetes signal, PMID 41730569, recorded as screened context).
+
+Process notes: all nineteen citations were NCBI-verified via efetch BEFORE file authoring with a 19/19
+title-and-abstract match (batch-30 lesson institutionalized, fourteenth consecutive clean verification
+cycle), the esummary bibliographic pass matched every authored author list, journal, and page range
+against the PubMed record, and two live rejects were recorded before authoring: the double-burden
+malnutrition meta-analysis (PMID 42755021) documents anemia coexisting with overweight rather than
+following malnutrition (direction reject), and the trauma-fracture nutrition literature was rejected as
+reverse-causation-prone except where carried with explicit cross-sectional caveats. The post-write
+structural self-audit passed on the first attempt for all five files with zero errors and zero
+contamination, `npm run kb:validate` reports zero errors, and three single-ref suggestions carry the
+standing draft-quarantine warning class. The four edge-bearing identities sharing sources - PMIDs
+40283381 across the malabsorption neuropathy and anemia edges, 41161993 across the malabsorption and
+malnutrition neuropathy edges, and 38193299 across the malnutrition anemia and neuropathy edges - give
+22 reference uses over 19 new sources.
+
+Registry after lockstep: 634 relationships (560 explicit / 74 legacy), 1073 reference uses (383
+verified / 690 pending-verification), 1068 clinical / 5 legal uses, 982 source entities (346 active /
+627 pending-verification). Citation packet regenerated at 271 worksheets / 690 reference rows = live
+citation debt; the verification dashboard regenerated at 690 rows in 29 reviewer batches (625 distinct
+sources). Backlog after batch 58: **200** undispositioned zero-edge drafts, computed by the
+deterministic `npm run authoring:backlog` tool (205 before the batch; all five identities left the queue
+by gaining edges, so this is the first window since batch 50 with no deferral). Next-five: `malocclusion`,
+`malunion-nonunion-of-fractures`, `marantic-endocarditis`, `mastoiditis`, `meatal-stenosis`.
+
+Test-pin note: the sweep touched 52 files and replaced 310 counter tokens in one pass with the
+batch-57 per-token context predicates carried over unchanged (relationships 623 -> 634, references/uses
+1051 -> 1073, unverified 668 -> 690, pending source entities 608 -> 627, total source entities 963 ->
+982, explicit guards 549 -> 560, clinical references 1046 -> 1068, clinical provenance 1050 -> 1072,
+and the twelve-file draft-singles counter 265 -> 266 for this batch's single single-edge identity,
+`mallet-toes`). The dry run reported zero lines lacking registry vocabulary, and the residue check found
+no survivors outside the standing benign classes (frozen sibling pins, citation page and volume ranges,
+byte-size arithmetic, the Wave-4 catalog checkpoint, and the doc-lint fixture strings). Standing
+recommendation: batch 58 lands through branch, PR, CI, and merge.
