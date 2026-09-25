@@ -6,8 +6,8 @@
  "installedFrom": "Master Registry Discrepancy Resolution 2026",
  "authorityBoundary": "Authoritative for current relationship direction, proposition text, guard state, source linkage, and KB parity; does not establish an individual VA medical nexus.",
  "counts": {
-  "relationships": 579,
-  "explicitPublicationGuards": 505,
+  "relationships": 596,
+  "explicitPublicationGuards": 522,
   "legacyRationaleBoundaries": 74
  },
  "relationships": [
@@ -18848,6 +18848,521 @@
    "sourceReferenceCount": 2,
    "pathwayIntelligencePresent": false,
    "suggestionObjectHash": "a935f0df6579e7fbb80e06065b6939395d253674cb834adbe0f79511683e8f60"
+  },
+  {
+   "relationshipId": "rel-knee-disarticulation-to-phantom-limb-pain",
+   "primaryId": "knee-disarticulation",
+   "targetId": "phantom-limb-pain",
+   "direction": "knee-disarticulation -> phantom-limb-pain",
+   "primaryPublicationState": "draft",
+   "rank": 1,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY: a 459-patient amputation registry reported phantom limb pain in 58% and phantom sensation in 66% with level-dependent sensory disturbances, and a 101-patient level-stratified series reported the highest early postoperative phantom-pain intensity in the most proximal group that includes knee disarticulation. Because the registry is cross-sectional, the level gradient attenuated by six months, and multiple competing causes of post-amputation limb pain exist, the conservative standard keeps the edge at association only, consistent with the amputation-of-arm, amputation-of-foot, amputation-of-hand, amputation-of-leg, ankle-disarticulation, elbow-disarticulation, hip-disarticulation, and hemipelvectomy windows already carried by the phantom-limb-pain identity."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY: a 459-patient amputation registry reported phantom limb pain in 58% and phantom sensation in 66% with level-dependent sensory disturbances, and a 101-patient level-stratified series reported the highest early postoperative phantom-pain intensity in the most proximal group that includes knee disarticulation. Because the registry is cross-sectional, the level gradient attenuated by six months, and multiple competing causes of post-amputation limb pain exist, the conservative standard keeps the edge at association only, consistent with the amputation-of-arm, amputation-of-foot, amputation-of-hand, amputation-of-leg, ankle-disarticulation, elbow-disarticulation, hip-disarticulation, and hemipelvectomy windows already carried by the phantom-limb-pain identity.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly): a 459-patient cross-sectional amputation-registry study (knee disarticulations 3.5%, hip disarticulations 3.7%, transfemoral 39%, transtibial 43%, hemipelvectomies 1%; mean 15 years since amputation) reports abnormal sensations in 85% with phantom limb pain 58%, phantom limb sensation 66%, and residual limb pain 46%, and that sensory disturbances other than residual limb pain were significantly affected by the level of amputation with age at amputation an independent risk factor, while a 101-patient level-stratified series found the highest early-postoperative phantom-pain visual-analogue scores in the most proximal group (hip disarticulation through knee disarticulation, including knee disarticulation) with that difference absent at six months, so the level-stratified evidence places knee disarticulation in the proximal group but no inception cohort establishes incidence and the level effect attenuates; the edge follows the amputation-of-arm, amputation-of-foot, amputation-of-hand, amputation-of-leg, ankle-disarticulation, elbow-disarticulation, hip-disarticulation, and hemipelvectomy precedents targeting the same identity, and PMID 28242264 is a previously human-verified source (approve-as-implemented, 2026-09-04) reused verified:true per family precedent; no depressive-disorder edge is authored because the amputation-or-loss-of-use container owns the generic post-amputation mood window, no contractures edge on zero-record grounds (the located knee-disarticulation literature quantifies reamputation, reoperation, prosthetic fitting, and mortality), and no muscle-atrophy or loss-of-use-of-extremities edge; no claim that the amputation level caused the phantom pain without operative and amputation documentation (level, date, indication, primary versus reamputation, stump findings), phantom characterization with chronology and distribution distinguished from phantom sensation and residual limb pain, prosthetic and gait assessment, evaluation for neuroma, heterotopic ossification, or nerve entrapment, pre-amputation pain and amputation cause, and exclusion of residual-limb pain, radiculopathy, complex regional pain syndrome, and prosthetic-fit pain as competing causes.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "Operative and amputation documentation (date, level, indication, whether the procedure was a primary amputation or a reamputation after a failed more distal amputation, wound healing, and stump findings); characterisation of the phantom experience with onset, frequency, duration, intensity, provoking and relieving factors, laterality, and its relationship to the missing segment, distinguished from phantom sensation, residual limb pain, and stump pain; assessment of the residual limb and prosthesis including socket fit, end-bearing tolerance, skin integrity, and gait; examination and, where indicated, imaging or electrodiagnostic evaluation for neuroma, heterotopic ossification, radiculopathy, or nerve entrapment; documentation of pre-amputation pain and of the cause of amputation (trauma, neoplasm, peripheral vascular disease, diabetes, or infection); exclusion of complex regional pain syndrome, referred spinal pain, and prosthetic-fit pain as competing causes; qualified clinical assessment of whether the amputation level materially contributed to the phantom pain"
+   ],
+   "sourceIds": [
+    "pmid-39597072",
+    "pmid-28242264"
+   ],
+   "sourceReferenceCount": 2,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "242cb348750a01028acf1af26c79e90936e4670e282b878c9be05366c0258e88"
+  },
+  {
+   "relationshipId": "rel-labyrinthitis-to-hearing-loss",
+   "primaryId": "labyrinthitis",
+   "targetId": "hearing-loss",
+   "direction": "labyrinthitis -> hearing-loss",
+   "primaryPublicationState": "draft",
+   "rank": 1,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY: a 26-year retrospective cohort of 14 patients with middle-ear-infection-associated labyrinthitis found that 57% became deaf and 43% acquired mixed hearing loss with the authors concluding the hearing sequela was significant, and a case report with literature review defines the ossificans pathway as pathological ossification of the labyrinthine spaces presenting with progressive bilateral sensorineural hearing loss. Because the cohort is small, inpatient, complication-rich, and mixed in audiometric character, and because sudden sensorineural hearing loss has multiple independent causes, the conservative standard keeps the edge at association only; the FINAL-CLOSED vestibular-disorder proposition is not reasserted and no vestibular or tinnitus window is authored."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY: a 26-year retrospective cohort of 14 patients with middle-ear-infection-associated labyrinthitis found that 57% became deaf and 43% acquired mixed hearing loss with the authors concluding the hearing sequela was significant, and a case report with literature review defines the ossificans pathway as pathological ossification of the labyrinthine spaces presenting with progressive bilateral sensorineural hearing loss. Because the cohort is small, inpatient, complication-rich, and mixed in audiometric character, and because sudden sensorineural hearing loss has multiple independent causes, the conservative standard keeps the edge at association only; the FINAL-CLOSED vestibular-disorder proposition is not reasserted and no vestibular or tinnitus window is authored.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly): a 26-year retrospective cohort of inpatient middle-ear-infection-associated labyrinthitis identified 14 patients (mean age 40 years; cholesteatomatous chronic otitis media six, acute suppurative otitis media six, chronic otitis media without cholesteatoma two) with 24 concomitant complications (labyrinthine fistula six, meningitis five, facial paralysis five, mastoiditis five, cerebellar abscess two, temporal abscess one, one death) of whom eight (57%) became deaf and six (43%) acquired mixed hearing loss, the authors concluding the hearing sequela was significant, and a case report with literature review defines labyrinthitis ossificans as pathological ossification of the membranous labyrinthine spaces presenting with progressive bilateral sensorineural hearing loss, so hearing loss is the documented residual sequela but the series is small, inpatient, complication-rich, partly mixed in audiometric character, and pathway-specific; the harvested labyrinthitis-to-vestibular-disorder proposition remains FINAL-CLOSED under FINAL-CLOSE-PROPOSITION-MISMATCH (PMID 22388730) and is not reasserted, and no dizziness, vertigo, benign-paroxysmal-positional-vertigo, or tinnitus edge is authored on constitutive and zero-record grounds; no claim that the labyrinthitis caused the hearing loss without otologic and audiologic documentation of the episode with aetiology and dates, pure-tone audiometry establishing type and degree with chronology, inner-ear imaging (enhancement, fistula, or ossification), documentation of coexisting middle-ear disease and any mastoiditis, meningitis, facial paralysis, or intracranial complication, and exclusion of noise, ototoxic medication, Meniere's disease, vascular or thromboembolic events, retrocochlear pathology including vestibular schwannoma, autoimmune inner-ear disease, genetic causes, and otosclerosis.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "Otologic and audiologic documentation of the labyrinthitis episode(s) with aetiology where available (suppurative, cholesteatomatous, viral, or other), laterality, presenting symptoms including vertigo, nystagmus, and hearing change, and treatment with dates; pure-tone audiometry and speech testing establishing the type and degree of hearing loss (sensorineural, mixed, or conductive) with serial measurements and chronology; imaging of the inner ear (high-resolution computed tomography or magnetic resonance imaging) documenting labyrinthine enhancement, fistula, or ossification; documentation of coexisting middle-ear disease (acute suppurative otitis media, cholesteatomatous chronic otitis media, or chronic otitis media without cholesteatoma) and of any mastoiditis, meningitis, facial paralysis, or intracranial complication; vestibular assessment where relevant, distinguishing peripheral vestibular findings from other causes of dizziness; exclusion of independent causes of sensorineural hearing loss, including noise exposure, ototoxic medication, Meniere's disease, autoimmune inner-ear disease, vascular events, genetic causes, and retrocochlear pathology such as vestibular schwannoma; otolaryngologic or audiologic assessment of whether the labyrinthitis episode materially contributed to the documented hearing loss"
+   ],
+   "sourceIds": [
+    "pmid-26718959",
+    "pmid-33082921"
+   ],
+   "sourceReferenceCount": 2,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "b3e27e798ce37bb7a8da9e9ccb57b1626aedebacc31668c815159e4b49eee077"
+  },
+  {
+   "relationshipId": "rel-laryngeal-stenosis-to-sleep-apnea",
+   "primaryId": "laryngeal-stenosis",
+   "targetId": "sleep-apnea",
+   "direction": "laryngeal-stenosis -> sleep-apnea",
+   "primaryPublicationState": "draft",
+   "rank": 1,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY: a twenty-subject pilot cohort with home sleep testing found obstructive sleep apnoea in 40% of patients with non-traumatic subglottic stenosis with elevated screening scores, and a 262-patient laryngotracheal-stenosis series records apnoea among prevalent comorbidities, but the pilot is small and uncontrolled, its flow measure did not correlate with apnoea severity, the larger series describes apnoea as pre-existing, and shared risk factors are unadjusted; the conservative standard therefore keeps the edge at association only and avoids the FINAL-CLOSED lupus proposition and the direction-inverted autoimmune framing."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY: a twenty-subject pilot cohort with home sleep testing found obstructive sleep apnoea in 40% of patients with non-traumatic subglottic stenosis with elevated screening scores, and a 262-patient laryngotracheal-stenosis series records apnoea among prevalent comorbidities, but the pilot is small and uncontrolled, its flow measure did not correlate with apnoea severity, the larger series describes apnoea as pre-existing, and shared risk factors are unadjusted; the conservative standard therefore keeps the edge at association only and avoids the FINAL-CLOSED lupus proposition and the direction-inverted autoimmune framing.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly): a twenty-subject cross-sectional pilot cohort with non-traumatic subglottic stenosis (all female, mean age 48.4 years, mean body-mass index 24.1, 80% idiopathic) completed peak expiratory flow, Epworth Sleepiness Scale, Pittsburgh Sleep Quality Index, and one night of home sleep testing and found obstructive sleep apnea in 40% (15% moderate), poor sleep quality in 70%, and daytime sleepiness in 20% with the authors concluding prevalence is elevated and screening and surveillance may need to be considered, while peak expiratory flow percentage did not correlate with the apnoea-hypopnea index and symptom scores did not separate subjects with and without apnoea, and a 262-patient laryngotracheal-stenosis case series records obstructive sleep apnea among prevalent comorbidities of the iatrogenic cohort rather than as an outcome, so direction is not asserted and body-mass index, coexisting airway lesions, sedative or opioid exposure, and reflux compete; the harvested laryngeal-stenosis-to-systemic-lupus-erythematosus proposition remains FINAL-CLOSED under FINAL-CLOSE-PROPOSITION-MISMATCH (PMID 32533778) with the established direction running from the autoimmune disease to laryngeal involvement, so no lupus or autoimmune edge is authored, and no aphonia, vocal-cord-dysfunction, vocal-cord-paralysis, dysphagia, asthma, or tracheostomy-dependence edge is authored on zero-record, duplicate-scope, and absent-identity grounds with the subglottis authored here because it is a laryngeal structure while the separately catalogued tracheal-stenosis identity authors its own windows; no claim that the stenosis caused or aggravated the sleep apnoea without airway documentation (aetiology, level, length, grading, endoscopy and imaging, prior surgery or dilation), polysomnography or home sleep testing with apnoea-hypopnea index and desaturation dated against the stenosis diagnosis, assessment of body-mass index and other competing risk factors, identification of other obstructing airway lesions, and sleep-medicine assessment of whether the stenosis materially contributed.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "Airway documentation establishing the stenosis with date of onset or diagnosis, aetiology (iatrogenic after intubation or tracheostomy, autoimmune, idiopathic, traumatic, or neoplastic), anatomic level and length, and grading (for example Cotton-Myer grade) with endoscopic and imaging findings and any prior airway surgery or dilation; polysomnography or home sleep testing with the apnoea-hypopnea index, oxygen desaturation, and the study date, together with the time relationship between the stenosis diagnosis and the sleep study; documentation of daytime symptoms and validated questionnaire scores with dates; assessment of shared and competing risk factors including body-mass index and weight trajectory, nasal obstruction, adenotonsillar hypertrophy, craniofacial anatomy, sedative, opioid, or alcohol exposure, thyroid disease, and gastro-oesophageal reflux; identification of other airway lesions (laryngomalacia, tracheomalacia, vocal-fold pathology, or tracheal stenosis) that could independently produce obstruction; sleep-medicine, pulmonology, or otolaryngology assessment of whether the documented stenosis materially contributed to the obstructive sleep apnoea"
+   ],
+   "sourceIds": [
+    "pmid-39654324",
+    "pmid-28112014"
+   ],
+   "sourceReferenceCount": 2,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "2e11db51ff13878fa736c53280d9572643bb226128434b1aab61e9173da7f123"
+  },
+  {
+   "relationshipId": "rel-laryngomalacia-to-sleep-apnea",
+   "primaryId": "laryngomalacia",
+   "targetId": "sleep-apnea",
+   "direction": "laryngomalacia -> sleep-apnea",
+   "primaryPublicationState": "draft",
+   "rank": 1,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY: two pediatric referral cohorts report obstructive sleep apnoea in approximately 77% of infants with laryngomalacia, and one documents a fall in the apnoea-hypopnea index from 8.9 to 2.4 events per hour after supraglottoplasty, but both are retrospective tested-population series, the apnoea case definitions vary, and multiple independent upper-airway and neurologic drivers coexist, so the conservative standard keeps the edge at association only with the anatomic contribution reported as a hypothesis."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY: two pediatric referral cohorts report obstructive sleep apnoea in approximately 77% of infants with laryngomalacia, and one documents a fall in the apnoea-hypopnea index from 8.9 to 2.4 events per hour after supraglottoplasty, but both are retrospective tested-population series, the apnoea case definitions vary, and multiple independent upper-airway and neurologic drivers coexist, so the conservative standard keeps the edge at association only with the anatomic contribution reported as a hypothesis.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly): a retrospective review of children with laryngoscopy-confirmed laryngomalacia found concomitant obstructive sleep apnea in 34 of 44 patients with complete data (77.4%) at a median age of 12 weeks, with the apnoea diagnosis changing severity classification and treatment decision in 54.5% and the obstructive apnoea-hypopnea index falling from 8.9 to 2.4 events/hour after supraglottoplasty (p = 0.009), and a retrospective analysis of 39 infants with moderate-to-severe laryngomalacia found obstructive sleep apnea in 77% (69% moderate-to-severe) on nap polysomnography with weight-gain rate correlating negatively with apnoea severity and only the apnoea-hypopnea index predicting the treatment decision (OR 2.1, 95% CI 1.6-2.8), but both are single-centre symptom-referred series reporting tested-population prevalences rather than incidence and neurologic impairment, prematurity, trisomy, laryngeal cleft, adenotonsillar hypertrophy, and craniofacial anomaly independently produce obstructive events; no laryngomalacia-to-gerd edge is authored because reflux is co-prevalent (69.8% of the 324-patient cohort) and treatment-responsive without established direction and acid suppression showed no outcome benefit (PMID 34186104), no laryngomalacia-to-malnutrition-residuals edge is authored because the failure-to-thrive signal (31/324, 9.6%) is carried by the published dysphagia-to-malnutrition-residuals window through the intermediate node, and no aspiration-pneumonia or airway-obstruction edge is authored because no such catalog identity exists; no claim that the laryngomalacia caused an individual's sleep apnoea without laryngoscopy confirmation with severity grade, polysomnography with dated results, comorbidity assessment, evaluation for synchronous airway lesions, and competing-cause exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "Laryngoscopy documentation of laryngomalacia with severity grade and the site of collapse, plus the age at diagnosis and any surgical or conservative management with dates; polysomnography or nap polysomnography reporting the apnoea-hypopnea index, oxygen desaturation, and event type with the study date and its relationship to the laryngomalacia diagnosis and any supraglottoplasty or ventilation trial; documentation of presenting symptoms (stridor, noisy breathing, feeding difficulty, apnoeas, growth faltering) and their chronology; assessment of coexisting contributors including prematurity, neurologic impairment, hypotonia, Down syndrome or other trisomy, craniofacial anomaly, macroglossia, laryngeal cleft, adenotonsillar hypertrophy, and obesity; airway examination for synchronous lesions (tracheomalacia, subglottic or tracheal stenosis, vocal-fold immobility) that could independently produce obstruction; otolaryngology or sleep-medicine assessment of whether the laryngomalacia materially contributed to the obstructive sleep apnoea"
+   ],
+   "sourceIds": [
+    "pmid-32896360",
+    "pmid-38573510"
+   ],
+   "sourceReferenceCount": 2,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "059a2d7c219cfec2462ae5a4466ccf8ad29838a2d5a9433307537cddc8b01073"
+  },
+  {
+   "relationshipId": "rel-laryngomalacia-to-dysphagia",
+   "primaryId": "laryngomalacia",
+   "targetId": "dysphagia",
+   "direction": "laryngomalacia -> dysphagia",
+   "primaryPublicationState": "draft",
+   "rank": 2,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY: instrumental swallow studies documented dysfunction in 90.1% of 142 tested children with laryngomalacia and in 75.7% of 185 tested patients in a 324-patient cohort, with aspiration in 42.3% and silent aspiration in 98.3% of aspirators, and failure to thrive in 9.6%; because the cohorts are symptom-referred series, severity did not track swallowing dysfunction, and laryngeal cleft, seizures, and prematurity were independent associates, the conservative standard keeps the edge at association only and routes the growth-failure pathway through the existing dysphagia-to-malnutrition-residuals window rather than authoring it twice."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY: instrumental swallow studies documented dysfunction in 90.1% of 142 tested children with laryngomalacia and in 75.7% of 185 tested patients in a 324-patient cohort, with aspiration in 42.3% and silent aspiration in 98.3% of aspirators, and failure to thrive in 9.6%; because the cohorts are symptom-referred series, severity did not track swallowing dysfunction, and laryngeal cleft, seizures, and prematurity were independent associates, the conservative standard keeps the edge at association only and routes the growth-failure pathway through the existing dysphagia-to-malnutrition-residuals window rather than authoring it twice.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly): of 395 children diagnosed with laryngomalacia in one year, 142 (35.9%) presented with recurrent respiratory issues, feeding difficulties, or both and underwent modified barium swallow study, which documented swallowing dysfunction in 128 (90.1%) and aspiration in 60 (42.3%) with silent aspiration in 59 of those 60 (98.3%), and a 324-patient cohort found dysphagia or feeding-difficulty symptoms in 163 (50.3%), at least one abnormal swallowing assessment in 140 of 185 tested (75.7%) and in 43 of 65 without subjective dysphagia (66.2%), and failure to thrive in 31 (9.6%) with greater severity more likely affected but no significant relationship between laryngomalacia severity and abnormal swallowing function, while epilepsy or seizures, laryngeal cleft, and prematurity were significantly associated with abnormal studies; the cohorts are instrumental-swallow referral series in which the prevalence figures describe children tested because of symptoms, so no aspiration, pneumonia, or feeding-failure outcome is asserted and the growth-failure pathway is not authored as a second window; no claim that the laryngomalacia caused an individual's dysphagia without laryngoscopy confirmation with severity grade, instrumental swallowing assessment reporting penetration or aspiration by consistency with dates, assessment of prematurity, epilepsy or neurologic impairment, laryngeal cleft, Down syndrome, and reflux, documentation of management and response, and speech-language pathology assessment of contribution.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "Laryngoscopy documentation of laryngomalacia with severity grade and age at diagnosis; instrumental swallowing assessment (modified barium swallow, fiberoptic endoscopic evaluation of swallowing, or clinical feeding evaluation) reporting the presence, type, and consistency-specific nature of penetration or aspiration with the study date; documentation of feeding and respiratory symptoms (choking, coughing with feeds, recurrent pneumonia or respiratory illness, prolonged feeding times, stridor) and their chronology relative to the laryngomalacia diagnosis; assessment of associated and competing conditions including prematurity, epilepsy or other neurologic impairment, hypotonia, laryngeal cleft or other laryngeal anomaly, Down syndrome, gastrointestinal or airway anomalies, and gastroesophageal reflux disease; documentation of any supraglottoplasty, thickening of feeds, or other management and the response; speech-language pathology or otolaryngology assessment of whether the laryngomalacia materially contributed to the swallowing dysfunction"
+   ],
+   "sourceIds": [
+    "pmid-30589926",
+    "pmid-26152504"
+   ],
+   "sourceReferenceCount": 2,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "1f164acc96b6827bb05ad56e2e0c77d7af3ef748cc7df31f3533da109ad7ec9c"
+  },
+  {
+   "relationshipId": "rel-legg-calve-perthes-disease-to-osteoarthritis",
+   "primaryId": "legg-calve-perthes-disease",
+   "targetId": "osteoarthritis",
+   "direction": "legg-calve-perthes-disease -> osteoarthritis",
+   "primaryPublicationState": "draft",
+   "rank": 1,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY following the freiberg-s-infraction, kienbock-s-disease, and avascular-necrosis osteoarthritis family: two long-term follow-up cohorts (36.1 and 42.5 years) document that a substantial proportion of treated hips develop osteoarthritis, one with a clear age-dependency and both with the residual deformity grade as the dominant predictor. Because the cohorts are surgically treated series without untreated comparisons, the outcome is strongly age-linked, and several structural and inflammatory hip causes produce the same pattern, the conservative standard keeps the edge at association only and does not author the constitutive avascular-necrosis twin or the post-traumatic-osteoarthritis variant."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY following the freiberg-s-infraction, kienbock-s-disease, and avascular-necrosis osteoarthritis family: two long-term follow-up cohorts (36.1 and 42.5 years) document that a substantial proportion of treated hips develop osteoarthritis, one with a clear age-dependency and both with the residual deformity grade as the dominant predictor. Because the cohorts are surgically treated series without untreated comparisons, the outcome is strongly age-linked, and several structural and inflammatory hip causes produce the same pattern, the conservative standard keeps the edge at association only and does not author the constitutive avascular-necrosis twin or the post-traumatic-osteoarthritis variant.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly): a 36.1-year follow-up of 67 patients (70 hips) treated for Perthes' disease found only 48% of radiographically evaluated hips free of osteoarthritis (Tonnis grade 0) with the Tonnis grade and JOA score declining after age 40, all patients older than 50 years showing severe osteoarthritis, osteoarthritis severity correlating significantly with age at follow-up, and younger age at diagnosis (under 8 years) correlating with a better result, and a 42.5-year follow-up of 40 patients (43 hips) after varus derotational osteotomy reported total hip arthroplasty in 7 patients (17% of the 41 hips with information available), no or minimal osteoarthritis signs in 16 of 28 hips with radiographs (57.1%), and the Stulberg classification as the only factor associated with fair or poor outcomes on multivariate analysis, but both are treated surgical series without untreated natural-history comparison and the outcome is strongly age-driven and deformity-grade-dependent; no legg-calve-perthes-disease-to-avascular-necrosis edge is authored because the disease IS femoral-head osteonecrosis and the generic avascular-necrosis identity is the umbrella (the kienbock-s-disease and freiberg-s-infraction pattern), the target is the generic osteoarthritis identity rather than post-traumatic-osteoarthritis because the condition is non-traumatic, and no muscle-atrophy, unexplained-chronic-pain, joint-replacement-residuals, or loss-of-use-of-extremities edge is authored (zero-record, wrong-target, post-surgical-container, and rating-framework guards); no claim that the childhood disease caused an individual's hip osteoarthritis without age and date at diagnosis with Stulberg grading, treatment history, dated radiographs with a validated osteoarthritis grade, documentation of any arthroplasty, and exclusion of developmental dysplasia, slipped capital femoral epiphysis, prior trauma or infection, femoroacetabular impingement, inflammatory arthropathy, osteonecrosis from another cause, and age-related primary osteoarthritis.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "Orthopedic documentation of Legg-Calve-Perthes disease with the age and date at diagnosis, laterality, radiologic stage or Stulberg classification at skeletal maturity, and any treatment (non-operative containment, varus derotational osteotomy, pelvic or femoral osteotomy) with dates; dated hip radiographs with a validated osteoarthritis grade (for example Tonnis) and serial comparison showing progression, plus the residual deformity findings (coxa magna, femoral-head sphericity, acetabular dysplasia, limb-length difference); functional documentation (Harris hip score, JOA score, range of motion, Trendelenburg sign, gait, and pain pattern) with dates; documentation of any total hip arthroplasty or other reconstructive surgery and its indication; exclusion of developmental dysplasia of the hip, slipped capital femoral epiphysis, prior hip trauma, septic or tuberculous arthritis, femoroacetabular impingement, inflammatory arthropathy, osteonecrosis from another cause (corticosteroid, alcohol, sickle cell, or diving-related), and age-related primary osteoarthritis; orthopedic assessment of whether the documented Perthes' disease materially contributed to the osteoarthritis"
+   ],
+   "sourceIds": [
+    "pmid-21258809",
+    "pmid-27489318"
+   ],
+   "sourceReferenceCount": 2,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "a19543f5ecd265c015c51eabe054a2056468548979014076ab4979d0e90ade0f"
+  },
+  {
+   "relationshipId": "rel-leishmaniasis-to-anemia",
+   "primaryId": "leishmaniasis",
+   "targetId": "anemia",
+   "direction": "leishmaniasis -> anemia",
+   "primaryPublicationState": "draft",
+   "rank": 1,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY following the malaria-to-anemia convention in the anemia target's incoming-edge family: two independent visceral leishmaniasis cohorts document anemia in 97.1% of 34 children and 62.7% of 90 mixed-age cases, with platelet and white-cell cytopenias alongside, but the presentation triad of visceral disease, pediatric referral selection, multiple simultaneous mechanisms, and unexcluded nutritional, co-infective, and treatment causes all prevent a causal claim, and the harvested keratitis proposition remains FINAL-CLOSED."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY following the malaria-to-anemia convention in the anemia target's incoming-edge family: two independent visceral leishmaniasis cohorts document anemia in 97.1% of 34 children and 62.7% of 90 mixed-age cases, with platelet and white-cell cytopenias alongside, but the presentation triad of visceral disease, pediatric referral selection, multiple simultaneous mechanisms, and unexcluded nutritional, co-infective, and treatment causes all prevent a causal claim, and the harvested keratitis proposition remains FINAL-CLOSED.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly): a review of 34 children with confirmed visceral leishmaniasis recorded anemia in 97.1% alongside thrombocytopenia in 91.2% and leukopenia in 67.6% with fever and pallor or weakness in 97.1% each and splenomegaly in 97.1%, and a cross-sectional study of 90 rK39-positive leishmaniasis cases aged 3 to 80 years found anemia in 62.7%, leukopenia in 57.6%, and thrombocytopenia in 61.7% among primary kala-azar cases with pancytopenia in 33 cases overall, but cytopenias, fever, and splenomegaly are the classical presentation triad of visceral disease so the cohorts largely quantify a phenotype rather than incident disease, three of the four located cohorts are pediatric endemic-area referral series, and iron, B12, or folate deficiency, co-infection and HIV-related inflammation, other co-endemic infections, marrow disease, and treatment-related myelosuppression compete; the harvested leishmaniasis-to-keratitis proposition remains FINAL-CLOSED under FINAL-CLOSE-PROPOSITION-MISMATCH (PMID 33913831) and is not reasserted, no renal, splenic, hepatic, or hemophagocytic edge is authored (acute-kidney-injury target mismatch with half of post-admission injury drug-induced and HIV co-infection independently associated, plus absent-identity and constitutive-presentation guards), and the generic catalog identity is explicitly scoped to the visceral evidence base; no claim that the infection caused an individual's anemia without parasitological or serological confirmation with species and clinical form, a separately documented anemia phenotype with morphology and iron studies, co-infection assessment including HIV, dated treatment and transfusion chronology, and exclusion of the competing causes.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "Parasitological or serological documentation of leishmaniasis with date, clinical form (visceral, cutaneous, or mucosal), species where identified, geographic exposure history, and treatment with dates; a separately documented anemia with hemoglobin and indices, reticulocyte count, peripheral smear, and any marrow findings, plus its chronology relative to the leishmaniasis diagnosis and treatment; iron, B12, and folate studies, haptoglobin, lactate dehydrogenase, and direct antiglobulin testing where hemolysis is suspected; documentation of splenic and hepatic enlargement and its course; assessment of co-infection exposures including HIV testing, malaria and other co-endemic infections, tuberculosis, and intestinal parasites; documentation of transfusion support, antimonial or amphotericin therapy, and any myelosuppressive co-medication; exclusion of chronic kidney disease, chronic inflammatory disease of another cause, and an independent marrow disorder; hematology or infectious-disease assessment of whether the leishmaniasis materially contributed to the anemia"
+   ],
+   "sourceIds": [
+    "pmid-25642253",
+    "pmid-30141437"
+   ],
+   "sourceReferenceCount": 2,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "1fcb34bdc34ce18723897b3bcc1483926af28fb5872c033fa4cae8806d9953f8"
+  },
+  {
+   "relationshipId": "rel-leishmaniasis-to-thrombocytopenia",
+   "primaryId": "leishmaniasis",
+   "targetId": "thrombocytopenia",
+   "direction": "leishmaniasis -> thrombocytopenia",
+   "primaryPublicationState": "draft",
+   "rank": 2,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY: two independent pediatric visceral leishmaniasis cohorts document thrombocytopenia in 78.95% of 19 patients and 44.4% of 27 patients, with one cohort also documenting marrow megakaryocyte abnormalities; because presentation-triad circularity, pediatric referral selection, simultaneous sequestration, immune, and marrow routes, and unexcluded competing causes prevent a causal claim, the conservative standard keeps the edge at association only with a multifactorial mechanism and records the distinct platelet node rather than restating pancytopenia."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY: two independent pediatric visceral leishmaniasis cohorts document thrombocytopenia in 78.95% of 19 patients and 44.4% of 27 patients, with one cohort also documenting marrow megakaryocyte abnormalities; because presentation-triad circularity, pediatric referral selection, simultaneous sequestration, immune, and marrow routes, and unexcluded competing causes prevent a causal claim, the conservative standard keeps the edge at association only with a multifactorial mechanism and records the distinct platelet node rather than restating pancytopenia.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly): a review of 19 children with visceral leishmaniasis (median age 45.5 months) recorded thrombocytopenia in 15 patients (78.95%) with anemia and pallor in all, leukopenia in 9 (47.4%), splenomegaly in 18 (94.7%), and bone marrow amastigotes in every patient, and a retrospective study of 27 children (mean age 28.13 months) found thrombocytopenia in 44.4% with anemia in 85.1%, fever in 96.2%, and splenomegaly in 92.59%, while marrow studies document quantitative and qualitative megakaryocyte abnormalities; because cytopenia is constitutive of the visceral presentation, the cohorts are pediatric referral series whose prevalence differs with case mix, and splenic sequestration, immune-mediated destruction, dysmegakaryopoiesis, and treatment effects operate simultaneously, the edge is held at association with a multifactorial mechanism and the distinct platelet node is recorded rather than restating pancytopenia (no pancytopenia identity exists); no claim that the leishmaniasis caused an individual's thrombocytopenia without confirmed infection with species and clinical form, serial platelet counts with a severity grade and bleeding assessment, spleen and marrow documentation, assessment for disseminated intravascular coagulation and sepsis, a full medication review including antimonials and amphotericin, and exclusion of hypersplenism from another cause, drug-induced thrombocytopenia, immune thrombocytopenia, and independent marrow disease.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "Parasitological or serological confirmation of leishmaniasis with date, clinical form, species where identified, and treatment with dates; a separately documented thrombocytopenia with serial platelet counts, severity grade, and any bleeding manifestations, plus its chronology relative to the diagnosis and treatment; documentation of splenic size and any hypersplenism features; bone marrow findings including megakaryocyte morphology where available; assessment for disseminated intravascular coagulation, sepsis, and other co-infection; documentation of all medications with thrombocytopenic potential (including antimonials, amphotericin, and any heparin exposure) and of transfusion support; exclusion of immune thrombocytopenia, marrow disease or infiltration by another cause, liver disease with portal hypertension, and hypersplenism from another cause; hematology or infectious-disease assessment of whether the leishmaniasis materially contributed to the thrombocytopenia"
+   ],
+   "sourceIds": [
+    "pmid-33437694",
+    "pmid-38654944"
+   ],
+   "sourceReferenceCount": 2,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "5f8a4171714f391dc239c9db34ad2e424bd314379716e71a4384d8bbb0cfdedc"
+  },
+  {
+   "relationshipId": "rel-levator-ani-syndrome-to-unexplained-chronic-pain",
+   "primaryId": "levator-ani-syndrome",
+   "targetId": "unexplained-chronic-pain",
+   "direction": "levator-ani-syndrome -> unexplained-chronic-pain",
+   "primaryPublicationState": "draft",
+   "rank": 1,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY as a case-matching pain edge on the genitofemoral-nerve-neuralgia and glomus-tumor precedent: specialty and systematic reviews document a chronic idiopathic anorectal pain syndrome defined by pain duration and puborectalis tenderness whose exclusionary local, functional, and neuropathic workup mirrors the unexplained-chronic-pain evaluation, with pelvic floor striated-muscle tension and central sensitization as implicated factors; because the pain is constitutive of the syndrome, the evidence class is review-level, and competing neuropathic and local explanations are enumerated in the same reviews, the conservative standard keeps the edge at association only and records presentation-and-workup matching rather than a causal arrow."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY as a case-matching pain edge on the genitofemoral-nerve-neuralgia and glomus-tumor precedent: specialty and systematic reviews document a chronic idiopathic anorectal pain syndrome defined by pain duration and puborectalis tenderness whose exclusionary local, functional, and neuropathic workup mirrors the unexplained-chronic-pain evaluation, with pelvic floor striated-muscle tension and central sensitization as implicated factors; because the pain is constitutive of the syndrome, the evidence class is review-level, and competing neuropathic and local explanations are enumerated in the same reviews, the conservative standard keeps the edge at association only and records presentation-and-workup matching rather than a causal arrow.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly): specialty and systematic reviews document levator ani syndrome among the chronic anorectal and pelvic pain conditions sharing comorbid depression and fibromyalgia, impaired quality of life, and increased health care utilization, with pelvic floor muscle tension and peripheral and central sensitization implicated (PMID 27712641), an exclusionary workup into local causes, functional anorectal pain, and neuropathic pain syndromes (PMID 35649568), and 7-24% population prevalence of chronic anorectal and pelvic pain with pelvic floor spasm common to the family and 85% biofeedback success in levator-tenderness-selected proctalgia (PMID 22110274); the pain is constitutive of the syndrome so the edge records presentation-and-workup matching on the genitofemoral and glomus-tumor precedent; no -> anismus-pelvic-floor-dyssynergia, -> fecal-incontinence (anismus window owns it), -> chronic-pelvic-pain-syndrome (constitutive), or -> irritable-bowel-syndrome (negative overlap clustering, PMID 33555092) edge, and no -> depressive-disorder edge (review-level association only, reopening condition recorded).",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "Documentation of the levator ani syndrome diagnosis (Rome IV criteria: recurrent or continuous rectal pain lasting more than 30 minutes, with tenderness of the levator ani muscle on digital rectal examination) with the date of diagnosis and the examining clinician; anorectal physiology testing where performed (anorectal manometry, balloon expulsion test, defecography or magnetic resonance defecography) and pelvic floor physiotherapy or biofeedback records with response; documentation of pain severity, location, duration, and aggravating or relieving factors with chronology; the exclusionary workup for local causes (hemorrhoids, anal fissure, abscess, fistula, rectal prolapse, solitary rectal ulcer, neoplasm, proctitis, inflammatory bowel disease) and for neuropathic and referred causes (pudendal neuralgia, coccygodynia, sacroiliac or lumbar spine disease, urologic chronic pelvic pain, prostatitis, interstitial cystitis, vulvodynia); records of comorbid functional pain conditions (fibromyalgia, irritable bowel syndrome, chronic fatigue) and psychological screening with dates; colorectal, pain-medicine, or pelvic-floor-medicine assessment of the chronic pain attribution"
+   ],
+   "sourceIds": [
+    "pmid-27712641",
+    "pmid-35649568",
+    "pmid-22110274"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "7e5b7c2e443e8b6fcb9abea522080a73ba4a90cb13c1a6c9d3d4109c9e11baf6"
+  },
+  {
+   "relationshipId": "rel-libman-sacks-endocarditis-to-cerebrovascular-accident-stroke-residuals",
+   "primaryId": "libman-sacks-endocarditis",
+   "targetId": "cerebrovascular-accident-stroke-residuals",
+   "direction": "libman-sacks-endocarditis -> cerebrovascular-accident-stroke-residuals",
+   "primaryPublicationState": "draft",
+   "rank": 1,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY: an 81-patient randomized paired-imaging study frames Libman-Sacks endocarditis as complicated by thromboembolism and recommends transesophageal imaging in suspected cardioembolism, and case-level material documents recurrent cerebral ischemic events with echocardiographic vegetations and negative valve microbiology, but the evidence class is imaging-series plus case reports, antiphospholipid antibodies are a parallel prothrombotic driver in most anchors, and vegetations are detectable only on transesophageal studies in the majority of cases, so the conservative standard keeps the edge at association only with the embolic route reported as a hypothesis."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY: an 81-patient randomized paired-imaging study frames Libman-Sacks endocarditis as complicated by thromboembolism and recommends transesophageal imaging in suspected cardioembolism, and case-level material documents recurrent cerebral ischemic events with echocardiographic vegetations and negative valve microbiology, but the evidence class is imaging-series plus case reports, antiphospholipid antibodies are a parallel prothrombotic driver in most anchors, and vegetations are detectable only on transesophageal studies in the majority of cases, so the conservative standard keeps the edge at association only with the embolic route reported as a hypothesis.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly): an 81-patient randomized paired-imaging study frames Libman-Sacks endocarditis as complicated by thromboembolism with transesophageal echocardiography recommended in suspected cardioembolism (PMID 18085739), and case material documents recurrent cerebral ischemic events with mitral verrucous vegetations and negative valve microbiology (PMID 22693297, PMID 38116400); antiphospholipid antibodies are a parallel prothrombotic driver in most anchors and vegetations are detectable only on transesophageal studies in the majority of cases, so no directional claim is made.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "Echocardiographic documentation of Libman-Sacks vegetations (transesophageal study preferred, with the transthoracic study and any nondiagnostic transthoracic results noted), valve involved, vegetation size and mobility, and any associated regurgitation, with study dates; brain imaging (computed tomography or magnetic resonance) documenting the infarct pattern and date, and any prior transient ischemic attacks; antiphospholipid antibody panel results (lupus anticoagulant, anticardiolipin, anti-beta-2-glycoprotein) with dates and anticoagulation status; systemic lupus erythematosus disease activity documentation and treatment (immunosuppression, anticoagulation, antiplatelet) with chronology; documentation of competing stroke etiologies - atrial fibrillation or other cardioembolic sources, large-artery atherosclerosis, small-vessel disease, hypotension, cerebral vasculitis; neurology and rheumatology or cardiology assessment attributing the stroke to vegetation embolization"
+   ],
+   "sourceIds": [
+    "pmid-18085739",
+    "pmid-22693297",
+    "pmid-38116400"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "caf9c0f6e40f50f146d502028fa0f0b3b73709c9bdd404008f9d871ad7337cca"
+  },
+  {
+   "relationshipId": "rel-libman-sacks-endocarditis-to-heart-valve-disorders",
+   "primaryId": "libman-sacks-endocarditis",
+   "targetId": "heart-valve-disorders",
+   "direction": "libman-sacks-endocarditis -> heart-valve-disorders",
+   "primaryPublicationState": "draft",
+   "rank": 2,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY following the aneurysm-to-valve structural precedent: case reports and a surgical literature survey document that Libman-Sacks verrucous vegetations cause valvular stenosis and regurgitation progressing to severe dysfunction and valve replacement, with immune-complex deposition and fibrosis as the described pathway, but the evidence class is case-level without incidence denominators, the vegetations are themselves the diagnostic lesion so the edge is scoped to the progressive dysfunction, and competing degenerative, rheumatic, and functional valve disease must be excluded per case; the pump-failure pathway downstream of the regurgitation is deliberately not double-authored and rides the published heart-valve-disorders -> congestive-heart-failure window (intermediate-node rule)."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY following the aneurysm-to-valve structural precedent: case reports and a surgical literature survey document that Libman-Sacks verrucous vegetations cause valvular stenosis and regurgitation progressing to severe dysfunction and valve replacement, with immune-complex deposition and fibrosis as the described pathway, but the evidence class is case-level without incidence denominators, the vegetations are themselves the diagnostic lesion so the edge is scoped to the progressive dysfunction, and competing degenerative, rheumatic, and functional valve disease must be excluded per case; the pump-failure pathway downstream of the regurgitation is deliberately not double-authored and rides the published heart-valve-disorders -> congestive-heart-failure window (intermediate-node rule).",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to progressive valvular dysfunction after the vegetations: case material documents that Libman-Sacks vegetations cause valvular stenosis and/or regurgitation (PMID 31377769), double-valve regurgitation requiring replacement for intractable heart failure with only nine prior surgical reports (PMID 14658823), and severe mitral regurgitation with ventricular dilatation and ejection-fraction reduction (PMID 34661053); the vegetations are themselves the diagnostic lesion (constitutive-proximity guard) and the pump-failure pathway rides the heart-valve-disorders -> congestive-heart-failure window (intermediate-node rule); no -> systemic-lupus-erythematosus (upstream), -> valvular-heart-disease (twin-identity parallel-pathway ban), -> pulmonary-embolism, -> thrombocytopenia, or -> cardiac-arrhythmia edge.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "Serial echocardiographic documentation (transesophageal preferred) of Libman-Sacks vegetations with valve localization, leaflet thickness and mobility, coaptation, and the grade and hemodynamics of any regurgitation or stenosis, with study dates and any progression on serial studies; operative or pathology records where valve surgery was performed (sterile verrucous vegetation confirmation, negative cultures); systemic lupus erythematosus and antiphospholipid antibody documentation with disease-activity and treatment chronology (corticosteroids, immunosuppression, anticoagulation); documentation of New York Heart Association functional status, heart-failure diagnostics (ejection fraction, chamber dimensions, natriuretic peptides) where the dysfunction progressed; exclusion of competing valve etiologies (degenerative or myxomatous disease, rheumatic heart disease, infective endocarditis, functional regurgitation from annular dilatation or cardiomyopathy, congenital valve disease); cardiology and cardiothoracic-surgery assessment of the valvular dysfunction attribution"
+   ],
+   "sourceIds": [
+    "pmid-31377769",
+    "pmid-14658823",
+    "pmid-34661053"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "e0622caa14728bd02e1a88f928d07a3ffbfd650ed92650f818fdf3fdd17172bf"
+  },
+  {
+   "relationshipId": "rel-lichen-planopilaris-to-depressive-disorder",
+   "primaryId": "lichen-planopilaris",
+   "targetId": "depressive-disorder",
+   "direction": "lichen-planopilaris -> depressive-disorder",
+   "primaryPublicationState": "draft",
+   "rank": 1,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY on the frontal-fibrosizing-alopecia and alopecia-areata psychiatric precedents: a matched case-control study documents higher expert-rated depression scores in 38 lichen planopilaris individuals against 58 controls with an activity and severity gradient and no illness-duration effect, and a systematic review identifies depression among the psychiatric conditions of active and severe disease; because the instruments are screening-class rather than structured diagnosis, premorbid mood is uncontrolled, the review pools the sibling frontal fibrosizing alopecia identity, and disfigurement distress is a parallel explanation, the conservative standard keeps the edge at association only and routes individual claims through graded disease documentation plus dated psychiatric assessment."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY on the frontal-fibrosizing-alopecia and alopecia-areata psychiatric precedents: a matched case-control study documents higher expert-rated depression scores in 38 lichen planopilaris individuals against 58 controls with an activity and severity gradient and no illness-duration effect, and a systematic review identifies depression among the psychiatric conditions of active and severe disease; because the instruments are screening-class rather than structured diagnosis, premorbid mood is uncontrolled, the review pools the sibling frontal fibrosizing alopecia identity, and disfigurement distress is a parallel explanation, the conservative standard keeps the edge at association only and routes individual claims through graded disease documentation plus dated psychiatric assessment.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly): a case-control study of 38 lichen planopilaris individuals versus 58 matched controls documents higher expert-rated depression with disease-activity and hair-loss-severity gradients and no illness-duration effect (PMID 30970367), and a systematic review documents psychological distress and psychiatric conditions including depression in active and severe disease (PMID 39152785); screening instruments rather than structured diagnosis, uncontrolled premorbid mood, and disfigurement distress as a parallel explanation; no -> scarring-alopecia or -> alopecia edge (constitutive - the disease IS a primary cicatricial alopecia; FFA rejection precedent).",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "Dermatologist documentation of lichen planopilaris diagnosis (clinical, trichoscopic, and where performed histopathologic criteria), the Lichen Planopilaris Activity Index and alopecia-severity grading with dates, disease duration and treatment history (topical and systemic immunosuppression, intralesional steroids) with response; psychiatric assessment with dates (structured interview where performed, or validated depression instruments such as HADS or Beck Depression Inventory with scores); documentation of premorbid mood history, psychosocial stressors, and any prior psychiatric treatment; exclusion of other contributors to depressive symptoms (thyroid disease, anemia, medication effects, other chronic dermatoses, primary mood disorder predating the hair loss); dermatology and psychiatry or psychology assessment of the attribution"
+   ],
+   "sourceIds": [
+    "pmid-30970367",
+    "pmid-39152785"
+   ],
+   "sourceReferenceCount": 2,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "b8922b9eb57d6951b9217df7f4cb99632019f24f3cef6b2f4dda8c17ec1d5fcc"
+  },
+  {
+   "relationshipId": "rel-lichen-planopilaris-to-anxiety-disorder",
+   "primaryId": "lichen-planopilaris",
+   "targetId": "anxiety-disorder",
+   "direction": "lichen-planopilaris -> anxiety-disorder",
+   "primaryPublicationState": "draft",
+   "rank": 2,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY on the frontal-fibrosizing-alopecia psychiatric precedent: a systematic review documents higher anxiety scores with lichen planopilaris activity and severity and names anxiety among the psychiatric conditions of active disease, and a matched case-control study reports anxiety as an independent predictor of poorer quality of life in the disease group; because the between-group anxiety comparison is review-level, the instruments are screening-class, premorbid anxiety is uncontrolled, and the review pools the sibling frontal fibrosizing alopecia identity, the conservative standard keeps the edge at association only with graded disease documentation and dated psychiatric assessment required per case."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY on the frontal-fibrosizing-alopecia psychiatric precedent: a systematic review documents higher anxiety scores with lichen planopilaris activity and severity and names anxiety among the psychiatric conditions of active disease, and a matched case-control study reports anxiety as an independent predictor of poorer quality of life in the disease group; because the between-group anxiety comparison is review-level, the instruments are screening-class, premorbid anxiety is uncontrolled, and the review pools the sibling frontal fibrosizing alopecia identity, the conservative standard keeps the edge at association only with graded disease documentation and dated psychiatric assessment required per case.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly): the systematic review documents higher anxiety scores with lichen planopilaris activity and severity and names anxiety among the psychiatric conditions of active disease (PMID 39152785), and the case-control study reports anxiety as an independent predictor of poorer quality of life in the disease group (PMID 30970367); the between-group anxiety comparison is review-level and the review pools the sibling frontal fibrosizing alopecia identity; no -> insomnia edge (sleep-and-hair-loss systematic review includes only one lichen planopilaris study, PMID 41535530; reopening condition recorded).",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "Dermatologist documentation of lichen planopilaris diagnosis with the Lichen Planopilaris Activity Index, alopecia-severity grading, scalp-symptom burden (burning, itching, tenderness), and treatment history with dates; psychiatric assessment with dates (structured interview where performed, or validated anxiety instruments such as HADS-anxiety or Beck Anxiety Inventory with scores); documentation of premorbid anxiety, worry content (progression, appearance), psychosocial stressors, and any prior psychiatric treatment; exclusion of other contributors (hyperthyroidism, stimulant or caffeine effects, medication effects, primary anxiety disorder predating the hair loss, adjustment disorder); dermatology and psychiatry or psychology assessment of the attribution"
+   ],
+   "sourceIds": [
+    "pmid-39152785",
+    "pmid-30970367"
+   ],
+   "sourceReferenceCount": 2,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "e901e42462daaad06d62c0b648d5170e95e1b774340faa6b4c3bd9472c80bc4f"
+  },
+  {
+   "relationshipId": "rel-lichen-planus-to-depressive-disorder",
+   "primaryId": "lichen-planus",
+   "targetId": "depressive-disorder",
+   "direction": "lichen-planus -> depressive-disorder",
+   "primaryPublicationState": "draft",
+   "rank": 1,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY on the dermatitis and alopecia-family psychiatric precedents: a case-control study documents depression scores of 53 percent in lichen planus against 20 percent in controls, a 13-country multicentre study places lichen planus among the dermatoses with the highest pain/discomfort burden and links that burden to depression and suicidal ideation, and a contemporary review documents frequent quality-of-life impairment with the need for psychological support; because the comparison is frequency-level with screening instruments, the multicentre link is pain-mediated and pan-dermatological, and pruritus and treatment burden are parallel drivers, the conservative standard keeps the edge at association only and routes individual claims through documented morphology and severity plus dated psychiatric assessment."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY on the dermatitis and alopecia-family psychiatric precedents: a case-control study documents depression scores of 53 percent in lichen planus against 20 percent in controls, a 13-country multicentre study places lichen planus among the dermatoses with the highest pain/discomfort burden and links that burden to depression and suicidal ideation, and a contemporary review documents frequent quality-of-life impairment with the need for psychological support; because the comparison is frequency-level with screening instruments, the multicentre link is pain-mediated and pan-dermatological, and pruritus and treatment burden are parallel drivers, the conservative standard keeps the edge at association only and routes individual claims through documented morphology and severity plus dated psychiatric assessment.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly): a dermatology-clinic case-control documents depression scores of 53% in lichen planus versus 20% in controls (PMID 12224690), a 13-country multicentre study of 3509 outpatients places lichen planus among the dermatoses with the highest pain/discomfort burden (75.6%) with that burden linked to depression and suicidal ideation (PMID 32250441), and a contemporary review documents frequent quality-of-life impairment requiring psychological support (PMID 38982032); frequency-level comparison, pan-dermatological pain-mediated association, and screening instruments; no -> anxiety-disorder edge (oral-scoped HADS evidence only).",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "Dermatologist documentation of lichen planus diagnosis with morphology (cutaneous, hypertrophic, mucosal), site, extent and severity grading, disease duration, relapse course, and treatment history with dates; psychiatric assessment with dates (structured interview where performed, or validated instruments such as HADS or Beck Depression Inventory with scores); documentation of symptom burden - pruritus severity, pain/discomfort scores, sleep disruption - with dates; documentation of premorbid mood history, psychosocial stressors, and prior psychiatric treatment; exclusion of other contributors (thyroid disease, anemia, medication effects, primary mood disorder predating the eruption); dermatology and psychiatry or psychology assessment of the attribution"
+   ],
+   "sourceIds": [
+    "pmid-12224690",
+    "pmid-32250441",
+    "pmid-38982032"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "9f20a517cafcc9eafc0aa557824887887ae5ec216d80ebf180d0c330546f9c53"
+  },
+  {
+   "relationshipId": "rel-lichen-planus-to-squamous-cell-carcinoma",
+   "primaryId": "lichen-planus",
+   "targetId": "squamous-cell-carcinoma",
+   "direction": "lichen-planus -> squamous-cell-carcinoma",
+   "primaryPublicationState": "draft",
+   "rank": 2,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY following the lichen-sclerosus-to-squamous-cell-carcinoma pre-malignant precedent, scoped to cutaneous hypertrophic lichen planus: a contemporary review places the hypertrophic form at heightened malignant-transformation risk, case material documents carcinoma arising within 10- to 12-year plaques with fewer than 50 cutaneous cases in the literature, and immunohistochemistry documents p16-associated cell-cycle dysregulation in hypertrophic plaques; because the evidence is case-report class without incidence denominators, sun-damage and scarring confound plaque-level attribution, and the quantified oral rates are the oral identity's evidence and deliberately excluded, the conservative standard keeps the edge at association only with biopsy-and-chronology documentation required per case."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY following the lichen-sclerosus-to-squamous-cell-carcinoma pre-malignant precedent, scoped to cutaneous hypertrophic lichen planus: a contemporary review places the hypertrophic form at heightened malignant-transformation risk, case material documents carcinoma arising within 10- to 12-year plaques with fewer than 50 cutaneous cases in the literature, and immunohistochemistry documents p16-associated cell-cycle dysregulation in hypertrophic plaques; because the evidence is case-report class without incidence denominators, sun-damage and scarring confound plaque-level attribution, and the quantified oral rates are the oral identity's evidence and deliberately excluded, the conservative standard keeps the edge at association only with biopsy-and-chronology documentation required per case.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to cutaneous hypertrophic lichen planus: a contemporary review places cutaneous hypertrophic and mucosal forms at heightened malignant-transformation risk (PMID 38982032), case material documents carcinoma arising within 10- to 12-year hypertrophic plaques with fewer than 50 cutaneous cases in the literature (PMID 30002207), and immunohistochemistry of 34 hypertrophic biopsies documents p16-associated cell-cycle dysregulation (PMID 39912658); the quantified oral lichen planus transformation rates (PMID 31981238, PMID 29738106, PMID 39198076) are ORAL-scoped and deliberately NOT recycled - the oral-lichen-planus-lichenoid-lesions identity owns that pathway via its -> oral-cancer window (ME-29 scope decision, expansion rule 11).",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "Dermatologist documentation of lichen planus diagnosis with morphology (specifically the hypertrophic form), lesion site (lower legs predilection), duration of the individual plaque, and prior treatment with dates; biopsy records documenting squamous cell carcinoma arising within the same plaque, with dermatopathology confirmation and the interval between the first documented lichen planus lesion and the biopsy; documentation of competing risk factors - cumulative sun exposure and actinic damage at the site, prior radiation, arsenic or other exposures, immunosuppression, prior skin cancer; serial photography or lesion-mapping where available; documentation that the mucosal and oral sites were separately examined (oral changes route to the oral-lichen-planus-lichenoid-lesions identity's evidence base); dermatology and dermatopathology or oncology assessment of the attribution"
+   ],
+   "sourceIds": [
+    "pmid-38982032",
+    "pmid-30002207",
+    "pmid-39912658"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "3dc0160ccb8e552bbffffa233fd369958e0c72167dd3bdd7335fec6f2abf14fa"
+  },
+  {
+   "relationshipId": "rel-lichen-simplex-chronicus-to-depressive-disorder",
+   "primaryId": "lichen-simplex-chronicus",
+   "targetId": "depressive-disorder",
+   "direction": "lichen-simplex-chronicus -> depressive-disorder",
+   "primaryPublicationState": "draft",
+   "rank": 1,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY on the dermatitis psychiatric precedent: a DSM-5 case-control study documents psychiatric comorbidity in 62 percent of 50 lichen simplex chronicus patients with major depressive disorder in 32 percent and depression scores of 18.60 versus 7.40 in controls tied to symptom severity, and a 219-patient prospective study documents depression-score dynamics under duloxetine-plus-corticosteroid treatment; because the design is cross-sectional without premorbid mood history, the treatment study is confounded by antidepressant indication, and the itch-scratch-distress loop is bidirectional, the conservative standard keeps the edge at association only and routes individual claims through severity-documented disease plus dated psychiatric assessment."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY on the dermatitis psychiatric precedent: a DSM-5 case-control study documents psychiatric comorbidity in 62 percent of 50 lichen simplex chronicus patients with major depressive disorder in 32 percent and depression scores of 18.60 versus 7.40 in controls tied to symptom severity, and a 219-patient prospective study documents depression-score dynamics under duloxetine-plus-corticosteroid treatment; because the design is cross-sectional without premorbid mood history, the treatment study is confounded by antidepressant indication, and the itch-scratch-distress loop is bidirectional, the conservative standard keeps the edge at association only and routes individual claims through severity-documented disease plus dated psychiatric assessment.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly): a DSM-5 case-control of 50 lichen simplex chronicus patients versus 49 controls documents psychiatric comorbidity in 62%, major depressive disorder in 32%, and depression scores of 18.60 versus 7.40 tied to symptom severity (PMID 33034929), and a 219-patient prospective study documents depression-score dynamics under duloxetine plus topical corticosteroid treatment (PMID 39812844); cross-sectional design without premorbid mood history, treatment study confounded by antidepressant indication, and the itch-scratch-distress loop is bidirectional; no -> insomnia (PMID 29943835 names lichen simplex chronicus only as a lesser pediatric nocturnal-itch contributor without LSC-specific quantification; reopening condition recorded), -> cellulitis (zero condition-specific infection-rate records), or -> scars edge (lichenification is not scar tissue).",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "Dermatologist documentation of lichen simplex chronicus diagnosis (lichenified plaque morphology, site, duration), symptom-severity grading (pruritus numeric rating, Skindex-16 or DLQI) with dates, itch-scratch chronology, and treatment history (topical corticosteroids, antipruritics, antidepressants such as duloxetine, phototherapy) with response; psychiatric assessment with dates (structured interview where performed, or Beck Depression Inventory or HADS scores); documentation of premorbid mood history, psychosocial stressors, sleep quality, and prior psychiatric treatment; exclusion of other contributors (atopic dermatitis or other pruritic dermatoses, thyroid disease, anemia, neuropathy, medication effects, primary mood disorder predating the eruption); dermatology and psychiatry or psychology assessment of the attribution"
+   ],
+   "sourceIds": [
+    "pmid-33034929",
+    "pmid-39812844"
+   ],
+   "sourceReferenceCount": 2,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "79e620c369dbadd8b70187031de09692b151fe4a005805d0d1df189bcb2216f2"
+  },
+  {
+   "relationshipId": "rel-lichen-simplex-chronicus-to-anxiety-disorder",
+   "primaryId": "lichen-simplex-chronicus",
+   "targetId": "anxiety-disorder",
+   "direction": "lichen-simplex-chronicus -> anxiety-disorder",
+   "primaryPublicationState": "draft",
+   "rank": 2,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY on the dermatitis psychiatric precedent: the same DSM-5 case-control study documents generalized anxiety disorder in 12 percent of lichen simplex chronicus patients with anxiety scores of 18.56 versus 5.18 in controls and a harm-avoidance temperament signal tied to symptom severity, and the 219-patient prospective study documents anxiety-score dynamics under combined duloxetine and corticosteroid treatment; because the design is cross-sectional without premorbid anxiety history, the treatment study is confounded by psychiatric indication, and the itch-anxiety loop is bidirectional, the conservative standard keeps the edge at association only and routes individual claims through severity-documented disease plus dated psychiatric assessment."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY on the dermatitis psychiatric precedent: the same DSM-5 case-control study documents generalized anxiety disorder in 12 percent of lichen simplex chronicus patients with anxiety scores of 18.56 versus 5.18 in controls and a harm-avoidance temperament signal tied to symptom severity, and the 219-patient prospective study documents anxiety-score dynamics under combined duloxetine and corticosteroid treatment; because the design is cross-sectional without premorbid anxiety history, the treatment study is confounded by psychiatric indication, and the itch-anxiety loop is bidirectional, the conservative standard keeps the edge at association only and routes individual claims through severity-documented disease plus dated psychiatric assessment.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly): the same DSM-5 case-control documents generalized anxiety disorder in 12%, anxiety scores of 18.56 versus 5.18, and a harm-avoidance temperament signal tied to symptom severity (PMID 33034929), and the 219-patient prospective study documents anxiety-score dynamics under combined therapy (PMID 39812844); cross-sectional design without premorbid anxiety history, duloxetine confound, and the itch-anxiety loop is bidirectional.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "Dermatologist documentation of lichen simplex chronicus diagnosis with site, severity grading (pruritus numeric rating, Skindex-16 or DLQI) and itch-scratch chronology with dates; psychiatric assessment with dates (structured interview where performed, or Beck Anxiety Inventory or HADS-anxiety scores); documentation of premorbid anxiety and temperament, worry content, psychosocial stressors, sleep quality, and prior psychiatric treatment; exclusion of other contributors (hyperthyroidism, stimulant or caffeine effects, atopic dermatitis or other pruritic dermatoses, medication effects, primary anxiety disorder predating the eruption); dermatology and psychiatry or psychology assessment of the attribution"
+   ],
+   "sourceIds": [
+    "pmid-33034929",
+    "pmid-39812844"
+   ],
+   "sourceReferenceCount": 2,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "5cc8b0aff3a0fdda7e1daf07d30384d0e853c6318a08354a60fccdea6aaacbbb"
   }
  ],
  "lastUpdatedBy": "batch-D1-draft-authoring",

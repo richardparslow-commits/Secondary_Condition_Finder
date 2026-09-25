@@ -2,8 +2,125 @@
   "id": "laryngomalacia",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review airway, aspiration, inflammatory, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 52 (2026-09-24): two ASSOCIATION_ONLY draft mappings pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: both edges assert association only (etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true, mechanismCategory MECHANICAL_OR_COMPRESSIVE, following the dwarfism-to-sleep-apnea and eosinophilic-esophagitis-to-dysphagia precedents). The located cohorts are single-centre pediatric series using sleep-laboratory or instrumental swallow definitions at tertiary referral centres, so individual claims require laryngoscopy-confirmed laryngomalacia with a severity grade, polysomnography or modified barium swallow documentation with dates, comorbidity assessment (neurologic impairment, prematurity, trisomy, laryngeal cleft, adenotonsillar hypertrophy, obesity), and exclusion of the competing causes recorded on each edge.",
+    "Pathway and duplicate-scope guards: the two authored windows record distinct outcome nodes (sleep-disordered breathing and swallowing dysfunction) rather than one pathway twice. The growth-failure signal is deliberately NOT authored as a separate malnutrition-residuals edge - failure to thrive was present in 31 of 324 patients (9.6%) with greater severity more likely affected (PMID 26152504) and weight-gain rate correlated negatively with apnoea severity (PMID 38573510) - because the published dysphagia -> malnutrition-residuals window already carries that nutritional pathway through the intermediate node, so authoring both would restate one feeding-failure process twice. No laryngomalacia -> gerd edge is authored: the located literature reports reflux co-prevalence (gastroesophageal reflux disease diagnosed in 69.8% of the 324-patient cohort) and treatment response without establishing direction, and the acid-suppression cohort found no improvement in supraglottoplasty or hospitalization outcomes (PMID 34186104), so the direction of that pair is at best inbound. No -> tracheal-stenosis, -> chronic-laryngitis, -> vocal-cord-dysfunction, -> laryngeal-cancer, or -> aspiration-pneumonia edge is authored (zero-record, distinct-entity, and absent-identity guards)."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 52 (2026-09-24): one bounded association edge authored - laryngomalacia to sleep-apnea (rank 1) - classified ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, and hypothesizedOnly:true; mechanismCategory MECHANICAL_OR_COMPRESSIVE. The proposition rests on the Verkest 2020 retrospective review of children with laryngoscopy-confirmed laryngomalacia in which 34 of 44 patients with complete data (77.4%) had concomitant obstructive sleep apnea at a median age of 12 weeks (6.3-29.8), the apnoea diagnosis changed the severity classification and treatment decision in 24 cases (54.5%), and the obstructive apnoea-hypopnea index fell from 8.9 events/hour (4.4-12.1) to 2.4 (1.5-4.4) after supraglottoplasty (p = 0.009) (PMID 32896360), and on the Lajili 2024 retrospective analysis of 39 infants with moderate-to-severe laryngomalacia (median age 3.3 months) in which nap polysomnography found obstructive sleep apnea in 77% with 69% moderate-to-severe (apnoea-hypopnea index above 5 per hour), weight-gain rate correlated negatively with the hypopnea and apnoea-hypopnea indices, and only the apnoea-hypopnea index predicted the surgical or non-invasive-ventilation decision (OR 2.1, 95% CI 1.6-2.8) (PMID 38573510). Dynamic inspiratory collapse of the supraglottic structures narrowing the airway therefore co-occurs with, and is quantified alongside, obstructive sleep-disordered breathing in the same patients.",
+    "Counter-evidence and caveat screens recorded 2026-09-24: (i) no incidence or natural history - both cohorts are retrospective single-centre series in which every child was referred for sleep testing because of symptoms, so the 77.4% and 77% figures are tested-population prevalences and not population incidence; (ii) definition sensitivity - apnoea-hypopnea thresholds, nap versus overnight studies, and central versus obstructive event scoring differ between the cohorts; (iii) multifactorial apnoea - neurologic impairment, prematurity, trisomy, laryngeal cleft, adenotonsillar hypertrophy, craniofacial anomaly, and obesity independently cause obstructive events, and in the 324-patient swallowing cohort 3.1% had Down syndrome, 6.5% neurologic impairment, and 0.9% congenital heart disease (PMID 26152504); (iv) treatment effect is not causation - the postoperative apnoea-hypopnea index improvement documents that the airway lesion contributes, not that it is the sole driver on an individual basis.",
+    "Negative screens recorded 2026-09-24: (i) no laryngomalacia-to-gerd edge - reflux is documented as co-prevalent and treatment-responsive without established direction, and acid suppression did not reduce supraglottoplasty frequency or related hospitalization while thickened feeds were protective (PMID 34186104), so the association is recorded on the edge screens rather than authored; (ii) no laryngomalacia-to-malnutrition-residuals edge - the failure-to-thrive and weight-gain signals are recorded within this batch's edge notes and are carried by the published dysphagia -> malnutrition-residuals window (intermediate-node guard); (iii) no laryngomalacia-to-laryngeal-cancer, -> chronic-laryngitis, -> vocal-cord-dysfunction, or -> tracheal-stenosis edge (zero-record and distinct-entity guards); (iv) no aspiration-pneumonia or airway-obstruction edge (no such catalog identity exists - absent-identity guard), with the aspiration prevalence of 42.3% recorded on the dysphagia edge as swallow-safety context. Scope note: the catalog identity is inherently pediatric; the evidence base is infant and toddler cohorts and no magnitude is extrapolated to adults."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "sleep-apnea",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The Verkest 2020 retrospective review of children with laryngoscopy-confirmed laryngomalacia found concomitant obstructive sleep apnea in 34 of 44 patients with complete data (77.4%) at a median age of 12 weeks, with the apnoea diagnosis changing the severity classification and treatment decision in 54.5% and the obstructive apnoea-hypopnea index falling from 8.9 to 2.4 events/hour after supraglottoplasty (p = 0.009); the Lajili 2024 retrospective analysis of 39 infants with moderate-to-severe laryngomalacia found obstructive sleep apnea in 77% (69% moderate-to-severe) on nap polysomnography, with weight-gain rate correlating negatively with apnoea severity indices and only the apnoea-hypopnea index predicting the treatment decision (OR 2.1, 95% CI 1.6-2.8); the literature documents elevated obstructive sleep apnoea prevalence in infants with laryngomalacia without establishing that the laryngomalacia caused an individual's sleep apnoea.",
+        "causationStatus": "The mapping does not assert that laryngomalacia caused an individual's obstructive sleep apnoea or that the airway lesion is its sole driver: both located cohorts are retrospective single-centre referral series with tested-population prevalences rather than incidence, the apnoea definitions and study protocols differ between them, and neurologic impairment, prematurity, trisomy, laryngeal cleft, adenotonsillar hypertrophy, and craniofacial anomaly independently produce obstructive events in the same population - so no directional claim is made."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MECHANICAL_OR_COMPRESSIVE",
+        "primaryVector": "A hypothesized dynamic-collapse route is described: the supraglottic structures that are abnormally folded and lax in laryngomalacia prolapse into the airway during inspiration, increasing upper-airway resistance and promoting further collapse during sleep, which produces obstructive apnoea and hypopnoea events; the located cohorts found obstructive sleep apnoea in 77% of tested infants and documented a fall in the apnoea-hypopnea index from 8.9 to 2.4 events per hour after supraglottoplasty, which is consistent with an anatomic contribution but does not establish the individual causal share of the lesion relative to coexisting airway and neurologic factors.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Obstructive sleep apnoea is documented in roughly three-quarters of symptomatic laryngomalacia cohorts including an infant series with postoperative improvement, but individual determination requires laryngoscopy-confirmed laryngomalacia with severity grading, polysomnography with dated results, comorbidity assessment, and consideration of competing causes, with review by a qualified medical professional.",
+        "evidenceGaps": "Laryngoscopy documentation of laryngomalacia with severity grade and the site of collapse, plus the age at diagnosis and any surgical or conservative management with dates; polysomnography or nap polysomnography reporting the apnoea-hypopnea index, oxygen desaturation, and event type with the study date and its relationship to the laryngomalacia diagnosis and any supraglottoplasty or ventilation trial; documentation of presenting symptoms (stridor, noisy breathing, feeding difficulty, apnoeas, growth faltering) and their chronology; assessment of coexisting contributors including prematurity, neurologic impairment, hypotonia, Down syndrome or other trisomy, craniofacial anomaly, macroglossia, laryngeal cleft, adenotonsillar hypertrophy, and obesity; airway examination for synchronous lesions (tracheomalacia, subglottic or tracheal stenosis, vocal-fold immobility) that could independently produce obstruction; otolaryngology or sleep-medicine assessment of whether the laryngomalacia materially contributed to the obstructive sleep apnoea",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Adenotonsillar hypertrophy or other obstructive airway lesions",
+          "Neurologic impairment, hypotonia, or neuromuscular disease causing central or obstructive events",
+          "Prematurity or craniofacial anomaly (including micrognathia and macroglossia) with airway obstruction",
+          "Down syndrome or another trisomy with multifactorial obstruction",
+          "Obesity or gastroesophageal reflux disease aggravating obstructive events",
+          "Central or mixed sleep apnoea syndromes"
+        ]
+      },
+      "evidenceGaps": [
+        "Laryngoscopy documentation of laryngomalacia with severity grade and the site of collapse, plus the age at diagnosis and any surgical or conservative management with dates; polysomnography or nap polysomnography reporting the apnoea-hypopnea index, oxygen desaturation, and event type with the study date and its relationship to the laryngomalacia diagnosis and any supraglottoplasty or ventilation trial; documentation of presenting symptoms (stridor, noisy breathing, feeding difficulty, apnoeas, growth faltering) and their chronology; assessment of coexisting contributors including prematurity, neurologic impairment, hypotonia, Down syndrome or other trisomy, craniofacial anomaly, macroglossia, laryngeal cleft, adenotonsillar hypertrophy, and obesity; airway examination for synchronous lesions (tracheomalacia, subglottic or tracheal stenosis, vocal-fold immobility) that could independently produce obstruction; otolaryngology or sleep-medicine assessment of whether the laryngomalacia materially contributed to the obstructive sleep apnoea"
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY: two pediatric referral cohorts report obstructive sleep apnoea in approximately 77% of infants with laryngomalacia, and one documents a fall in the apnoea-hypopnea index from 8.9 to 2.4 events per hour after supraglottoplasty, but both are retrospective tested-population series, the apnoea case definitions vary, and multiple independent upper-airway and neurologic drivers coexist, so the conservative standard keeps the edge at association only with the anatomic contribution reported as a hypothesis.",
+      "sourceReferences": [
+        {
+          "citation": "Verkest V, Verhulst S, Van Hoorenbeeck K, Vanderveken O, Saldien V, Boudewyns A. Prevalence of obstructive sleep apnea in children with laryngomalacia and value of polysomnography in treatment decisions. Int J Pediatr Otorhinolaryngol. 2020 Oct;137:110255. doi:10.1016/j.ijporl.2020.110255. PMID 32896360.",
+          "note": "Retrospective review of 46 children with laryngoscopy-confirmed laryngomalacia (complete data in 44; median age at polysomnography 12 weeks) reporting concomitant obstructive sleep apnea in 34 patients (77.4%), a change in severity classification and treatment decision in 24 cases (54.5%), and a fall in the obstructive apnoea-hypopnea index from 8.9 to 2.4 events/hour after supraglottoplasty (p = 0.009) - the prevalence and treatment-response anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/32896360/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-24",
+          "sourceLocator": "PMID 32896360; obstructive sleep apnea in 34 of 44 children with laryngomalacia (77.4%), apnoea-hypopnea index 8.9 to 2.4 events/hour after supraglottoplasty"
+        },
+        {
+          "citation": "Lajili M, Teissier N, Dudoignon B, Benoit C, Bellanger S, Kahn L, Van Den Abbeele T, Delclaux C, Bokov P. Nap polysomnography in infants with laryngomalacia as a tool to predict treatment strategy. Eur Arch Otorhinolaryngol. 2024 Jun;281(6):3107-3113. doi:10.1007/s00405-024-08623-y. PMID 38573510.",
+          "note": "Retrospective analysis of 39 infants with moderate-to-severe laryngomalacia (median age 3.3 months) in which nap polysomnography showed obstructive sleep apnea in 77% with 69% moderate-to-severe (apnoea-hypopnea index above 5 per hour), weight-gain rate correlated negatively with hypopnea and apnoea-hypopnea indices, and only the apnoea-hypopnea index predicted surgical or non-invasive-ventilation treatment (OR 2.1, 95% CI 1.6-2.8) - the severity-gradient anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38573510/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-24",
+          "sourceLocator": "PMID 38573510; obstructive sleep apnea in 77% of 39 infants with laryngomalacia, 69% moderate-to-severe"
+        }
+      ]
+    },
+    {
+      "conditionId": "dysphagia",
+      "rank": 2,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The Irace 2019 retrospective review identified 395 children diagnosed with laryngomalacia in one year, of whom 142 (35.9%) presented with recurrent respiratory issues, feeding difficulties, or both and underwent modified barium swallow study, which documented swallowing dysfunction in 128 patients (90.1%) and aspiration in 60 (42.3%) with silent aspiration in 59 of those 60 (98.3%), and found epilepsy or seizures, laryngeal cleft, and premature birth significantly associated with abnormal studies (PMID 30589926); the Simons 2016 retrospective cohort of 324 children with laryngomalacia found dysphagia or feeding-difficulty symptoms in 163 patients (50.3%), at least one abnormal swallowing assessment in 140 of 185 tested patients (75.7%) and in 43 of 65 patients (66.2%) without subjective dysphagia, with failure to thrive in 31 patients (9.6%) and greater severity more likely affected (PMID 26152504); the literature documents swallowing dysfunction and aspiration as common in children with laryngomalacia without establishing that the laryngomalacia caused an individual's dysphagia.",
+        "causationStatus": "The mapping does not assert that laryngomalacia caused an individual's dysphagia: the cohorts are instrumental-swallow referral series in which 90.1% and 75.7% figures describe children tested because of symptoms, laryngeal cleft, seizures or epilepsy, prematurity, and neurologic impairment were independently associated with abnormal swallow studies, and severity of laryngomalacia was not significantly related to swallowing dysfunction in the 324-patient cohort - so no directional claim is made and no aspiration or pneumonia outcome is asserted."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MECHANICAL_OR_COMPRESSIVE",
+        "primaryVector": "A hypothesized airway-swallow interaction is described: the abnormally folded and prolapsing supraglottic structures that obstruct inspiratory airflow also disturb bolus handling and laryngeal protection, and the immature infant swallow compounds this, producing penetration, aspiration, and feeding-related distress; the located cohorts found instrumental swallowing dysfunction in 75.7% to 90.1% of tested children with aspiration in 42.3% and silent aspiration in almost all of those, but the same cohorts show prematurity, seizures, laryngeal cleft, and neurologic impairment as independent associates, so the individual laryngomalacia-attributable share remains a hypothesis.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Instrumental studies document swallowing dysfunction in the great majority of tested children with laryngomalacia and aspiration in a large minority, but individual determination requires laryngoscopy-confirmed laryngomalacia with severity grading, modified barium swallow or endoscopic swallow documentation with dates, assessment of the associated conditions noted above, and consideration of competing neurologic and structural causes, with review by a qualified medical professional.",
+        "evidenceGaps": "Laryngoscopy documentation of laryngomalacia with severity grade and age at diagnosis; instrumental swallowing assessment (modified barium swallow, fiberoptic endoscopic evaluation of swallowing, or clinical feeding evaluation) reporting the presence, type, and consistency-specific nature of penetration or aspiration with the study date; documentation of feeding and respiratory symptoms (choking, coughing with feeds, recurrent pneumonia or respiratory illness, prolonged feeding times, stridor) and their chronology relative to the laryngomalacia diagnosis; assessment of associated and competing conditions including prematurity, epilepsy or other neurologic impairment, hypotonia, laryngeal cleft or other laryngeal anomaly, Down syndrome, gastrointestinal or airway anomalies, and gastroesophageal reflux disease; documentation of any supraglottoplasty, thickening of feeds, or other management and the response; speech-language pathology or otolaryngology assessment of whether the laryngomalacia materially contributed to the swallowing dysfunction",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Laryngeal cleft or other structural laryngeal or pharyngeal anomaly",
+          "Neurologic impairment, epilepsy, hypotonia, or neuromuscular disease with oromotor dysfunction",
+          "Prematurity-associated immature swallow and feeding incoordination",
+          "Down syndrome or another syndromic cause of feeding difficulty",
+          "Gastroesophageal or laryngopharyngeal reflux with feeding aversion",
+          "Aspiration from an independent cause (vocal-fold immobility, tracheoesophageal fistula, or esophageal obstruction)"
+        ]
+      },
+      "evidenceGaps": [
+        "Laryngoscopy documentation of laryngomalacia with severity grade and age at diagnosis; instrumental swallowing assessment (modified barium swallow, fiberoptic endoscopic evaluation of swallowing, or clinical feeding evaluation) reporting the presence, type, and consistency-specific nature of penetration or aspiration with the study date; documentation of feeding and respiratory symptoms (choking, coughing with feeds, recurrent pneumonia or respiratory illness, prolonged feeding times, stridor) and their chronology relative to the laryngomalacia diagnosis; assessment of associated and competing conditions including prematurity, epilepsy or other neurologic impairment, hypotonia, laryngeal cleft or other laryngeal anomaly, Down syndrome, gastrointestinal or airway anomalies, and gastroesophageal reflux disease; documentation of any supraglottoplasty, thickening of feeds, or other management and the response; speech-language pathology or otolaryngology assessment of whether the laryngomalacia materially contributed to the swallowing dysfunction"
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY: instrumental swallow studies documented dysfunction in 90.1% of 142 tested children with laryngomalacia and in 75.7% of 185 tested patients in a 324-patient cohort, with aspiration in 42.3% and silent aspiration in 98.3% of aspirators, and failure to thrive in 9.6%; because the cohorts are symptom-referred series, severity did not track swallowing dysfunction, and laryngeal cleft, seizures, and prematurity were independent associates, the conservative standard keeps the edge at association only and routes the growth-failure pathway through the existing dysphagia-to-malnutrition-residuals window rather than authoring it twice.",
+      "sourceReferences": [
+        {
+          "citation": "Irace AL, Dombrowski ND, Kawai K, Watters K, Choi S, Perez J, Dodrill P, Hernandez K, Davidson K, Rahbar R. Evaluation of Aspiration in Infants With Laryngomalacia and Recurrent Respiratory and Feeding Difficulties. JAMA Otolaryngol Head Neck Surg. 2019 Feb 1;145(2):146-151. doi:10.1001/jamaoto.2018.3642. PMID 30589926.",
+          "note": "Retrospective review of 142 of 395 children diagnosed with laryngomalacia in one year (35.9%) who presented with recurrent respiratory issues and/or feeding difficulty and underwent modified barium swallow study: swallowing dysfunction in 128 (90.1%), aspiration in 60 (42.3%) with silent aspiration in 59 of 60 (98.3%), and significant association of seizures, laryngeal cleft, and prematurity with abnormal studies - the instrumental-swallow and aspiration anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/30589926/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-24",
+          "sourceLocator": "PMID 30589926; swallowing dysfunction in 128 of 142 tested children (90.1%), aspiration in 60 (42.3%) with silent aspiration in 59 of 60"
+        },
+        {
+          "citation": "Simons JP, Greenberg LL, Mehta DK, Fabio A, Maguire RC, Mandell DL. Laryngomalacia and swallowing function in children. Laryngoscope. 2016 Feb;126(2):478-84. doi:10.1002/lary.25440. PMID 26152504.",
+          "note": "Retrospective cohort of 324 children with laryngomalacia (62.7% mild, 28.7% moderate, 8.6% severe) reporting dysphagia or feeding-difficulty symptoms in 163 (50.3%), at least one abnormal swallowing assessment in 140 of 185 tested patients (75.7%) and in 43 of 65 without subjective dysphagia (66.2%), failure to thrive in 31 (9.6%) with greater severity more likely affected, and no significant relationship between laryngomalacia severity and abnormal swallowing function - the cohort-size and severity-relationship anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/26152504/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-24",
+          "sourceLocator": "PMID 26152504; dysphagia or feeding difficulty in 163 of 324 children (50.3%), failure to thrive in 31 (9.6%), abnormal swallowing assessment in 140 of 185 tested (75.7%)"
+        }
+      ]
+    }
+  ]
 }

@@ -7917,6 +7917,582 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 **Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
 
+### `knee-disarticulation` → `phantom-limb-pain` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** The Nees 2024 Heidelberg Amputation Registry cross-sectional study analysed 459 patients with lower-limb amputation (transfemoral 39%, transtibial 43%, partial foot 10%, hip disarticulation 3.7%, knee disarticulation 3.5%, hemipelvectomy 1%; mean 15 years since amputation) and found that 85% reported abnormal sensations, with prevalences of phantom limb pain of 58%, phantom limb sensation of 66%, and residual limb pain of 46%, that the occurrence of sensory disturbances with the exception of residual limb pain was significantly affected by the level of amputation, and that age at amputation was an independent risk factor for abnormal sensations; the Kelle 2017 cross-sectional study of 101 lower-limb amputees stratified by level found statistically significant between-group differences in stump-pain and phantom-limb-pain intensity in the early postoperative period, with the most proximal group - hip disarticulation through knee disarticulation, including knee disarticulation - showing the highest visual-analogue scores, a difference that did not persist at the six-month assessment; the literature documents a level-stratified phantom-pain burden that includes knee disarticulation without establishing that the amputation caused an individual's phantom pain.
+
+**Causation boundary (causationStatus):** The mapping does not assert that knee disarticulation caused an individual's phantom limb pain: no inception cohort quantifies phantom-pain incidence after this amputation level, the located proximal-group elevation was an early-postoperative finding that had disappeared by six months, the registry is cross-sectional and reports phantom sensation and residual limb pain alongside phantom limb pain at comparable prevalences, age at amputation is an independent risk factor, and pre-amputation pain, residual-limb and stump pathology, neuroma, prosthetic-fit problems, radiculopathy, and complex regional pain syndrome independently produce limb pain after amputation - so no directional claim is made.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 217.1 — Nees TA, Matt C, Deisenhofer J, Block J, Wolf SI, Renkawitz T, Lehner B, Alimusaj M. Pain After Lower Limb Amputations: Insights from the Heidelberg Amputation Registry. Medicina (Kaunas). 2024 Nov 18;60(11):1887. doi:10.3390/medicina60111887. PMID 39597072.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/39597072/
+- Source checked on: 2026-09-24
+- Locator: PMID 39597072; phantom limb pain 58%, phantom limb sensation 66%, residual limb pain 46% in 459 lower-limb amputees with level-dependent sensory disturbances
+- Note under review: Cross-sectional analysis of 459 patients in the Heidelberg Amputation Registry (knee disarticulations 3.5%, hip disarticulations 3.7%, hemipelvectomies 1%; mean 15 years since amputation) reporting abnormal sensations in 85% with phantom limb pain 58%, phantom limb sensation 66%, and residual limb pain 46%, level-dependent occurrence of sensory disturbances other than residual limb pain, and age at amputation as an independent risk factor - the prevalence-by-level anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `labyrinthitis` → `hearing-loss` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** The Maranhao 2016 retrospective cohort of 26 years of admissions for middle-ear-infection-associated labyrinthitis identified 14 patients (mean age 40 years) with 24 concomitant complications, of whom eight (57%) became deaf and six (43%) acquired mixed hearing loss, concluding that the hearing sequela of labyrinthitis was significant; the Taxak and Ram 2020 case report and literature review describes labyrinthitis as inflammation of the inner ear that disrupts transmission of sensory information from the ear to the brain and defines labyrinthitis ossificans as pathological ossification of the membranous labyrinthine spaces in response to an inner-ear insult, presenting with progressive bilateral sensorineural hearing loss; the literature documents hearing loss as the principal residual sequela of labyrinthitis without establishing that the infection caused an individual's hearing loss.
+
+**Causation boundary (causationStatus):** The mapping does not assert that the labyrinthitis caused an individual's hearing loss: no population cohort quantifies hearing outcome after a defined labyrinthitis episode, the located series is an inpatient complication-rich referral group of fourteen patients in which 57% became deaf, mixed rather than purely sensorineural loss occurred in 43% because of coexisting middle-ear disease, vestibular symptoms are part of the acute presentation rather than a separate outcome, and sudden sensorineural hearing loss has several independent causes (vascular, viral, autoimmune, and retrocochlear disease including vestibular schwannoma) that can produce identical audiometric findings - so no directional claim is made.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 218.1 — Maranhao AS, Godofredo VR, Penido Nde O. Suppurative labyrinthitis associated with otitis media: 26 years' experience. Braz J Otorhinolaryngol. 2016 Jan-Feb;82(1):82-7. doi:10.1016/j.bjorl.2014.12.012. PMID 26718959.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/26718959/
+- Source checked on: 2026-09-24
+- Locator: PMID 26718959; eight of 14 patients (57%) deaf and six (43%) with mixed hearing loss after suppurative labyrinthitis
+- Note under review: Retrospective cohort of 14 patients admitted over 26 years with middle-ear-infection-associated labyrinthitis: eight (57%) became deaf and six (43%) acquired mixed hearing loss, with 24 concomitant complications (labyrinthine fistula six, meningitis five, facial paralysis five, mastoiditis five, cerebellar abscess two, temporal abscess one) and one death - the quantified hearing-sequela anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 218.2 — Taxak P, Ram C. Labyrinthitis and Labyrinthitis Ossificans - A case report and review of the literature. J Radiol Case Rep. 2020 May;14(5):1-6. doi:10.3941/jrcr.v14i5.3706. PMID 33082921.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/33082921/
+- Source checked on: 2026-09-24
+- Locator: PMID 33082921; labyrinthitis ossificans as ossification of the membranous labyrinth with progressive bilateral sensorineural hearing loss
+- Note under review: Case report with literature review describing labyrinthitis as inner-ear inflammation that disrupts transmission of sensory information from ear to brain and defining labyrinthitis ossificans as pathological ossification of the membranous labyrinthine spaces in response to an inner-ear insult, in a patient presenting with progressive bilateral sensorineural hearing loss and positional vertigo - the ossificans-mechanism anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `laryngeal-stenosis` → `sleep-apnea` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** The Lackey 2025 cross-sectional pilot cohort of twenty adults with non-traumatic subglottic stenosis (all female, mean age 48.4 years, mean body-mass index 24.1, 80% idiopathic) completed peak expiratory flow measurement and validated sleep questionnaires with one night of home sleep testing and found obstructive sleep apnea in 40% of subjects (15% moderate), poor sleep quality in 70%, and excessive daytime sleepiness in 20%, concluding that obstructive sleep apnea prevalence is elevated in subjects with subglottic stenosis and that screening and surveillance may need to be considered, while peak expiratory flow percentage did not correlate with the apnoea-hypopnea index; the Gadkaree 2017 case series of 262 adults with laryngotracheal stenosis documents obstructive sleep apnea among the prevalent comorbidities of the iatrogenic cohort alongside type II diabetes, hypertension, chronic obstructive pulmonary disease, and stroke history; the literature documents elevated obstructive sleep apnoea prevalence in patients with a narrowed laryngeal airway without establishing that the stenosis caused an individual's sleep apnoea.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established at the mapping level: the pilot cohort is twenty subjects at one tertiary centre without a matched control group and its authors call for further study of whether airway dilation affects apnoea, peak expiratory flow did not correlate with the apnoea-hypopnea index, symptom scores did not distinguish subjects with and without apnoea, the larger case series records apnoea as a prevalent pre-existing comorbidity rather than an outcome of stenosis, and body-mass index, coexisting airway diagnoses, sedative or opioid exposure, and gastro-oesophageal reflux independently cause obstructive sleep apnoea in the same populations - so no directional claim is made.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 219.1 — Lackey TG, Allen A, McCabe N, Clary M, Green KK, Fink DS. Are We Missing Obstructive Sleep Apnea in Patients With Non-traumatic Subglottic Stenosis? Ann Otol Rhinol Laryngol. 2025 Apr;134(4):266-273. doi:10.1177/00034894241305880. PMID 39654324.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/39654324/
+- Source checked on: 2026-09-24
+- Locator: PMID 39654324; obstructive sleep apnea in 40% of 20 patients with non-traumatic subglottic stenosis
+- Note under review: Cross-sectional pilot cohort of twenty adults with non-traumatic subglottic stenosis (80% idiopathic) completing peak expiratory flow, Epworth Sleepiness Scale, Pittsburgh Sleep Quality Index, and one night of home sleep testing: obstructive sleep apnea in 40% (15% moderate), poor sleep quality in 70%, daytime sleepiness in 20%, with peak expiratory flow percentage not correlating with the apnoea-hypopnea index - the elevated-prevalence anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 219.2 — Gadkaree SK, Pandian V, Best S, Motz KM, Allen C, Kim Y, Akst L, Hillel AT. Laryngotracheal Stenosis: Risk Factors for Tracheostomy Dependence and Dilation Interval. Otolaryngol Head Neck Surg. 2017 Feb;156(2):321-328. doi:10.1177/0194599816675323. PMID 28112014.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/28112014/
+- Source checked on: 2026-09-24
+- Locator: PMID 28112014; obstructive sleep apnea among prevalent comorbidities in 262 adults with laryngotracheal stenosis
+- Note under review: Case series of 262 adults with laryngotracheal stenosis recording obstructive sleep apnea among the prevalent comorbidities of the iatrogenic cohort (with type II diabetes, hypertension, chronic obstructive pulmonary disease, and stroke history) and associating iatrogenic aetiology, Cotton-Myer grade 3-4 stenosis, and lack of intraoperative steroids with tracheostomy dependence - the co-occurrence and severity anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `laryngomalacia` → `sleep-apnea` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** The Verkest 2020 retrospective review of children with laryngoscopy-confirmed laryngomalacia found concomitant obstructive sleep apnea in 34 of 44 patients with complete data (77.4%) at a median age of 12 weeks, with the apnoea diagnosis changing the severity classification and treatment decision in 54.5% and the obstructive apnoea-hypopnea index falling from 8.9 to 2.4 events/hour after supraglottoplasty (p = 0.009); the Lajili 2024 retrospective analysis of 39 infants with moderate-to-severe laryngomalacia found obstructive sleep apnea in 77% (69% moderate-to-severe) on nap polysomnography, with weight-gain rate correlating negatively with apnoea severity indices and only the apnoea-hypopnea index predicting the treatment decision (OR 2.1, 95% CI 1.6-2.8); the literature documents elevated obstructive sleep apnoea prevalence in infants with laryngomalacia without establishing that the laryngomalacia caused an individual's sleep apnoea.
+
+**Causation boundary (causationStatus):** The mapping does not assert that laryngomalacia caused an individual's obstructive sleep apnoea or that the airway lesion is its sole driver: both located cohorts are retrospective single-centre referral series with tested-population prevalences rather than incidence, the apnoea definitions and study protocols differ between them, and neurologic impairment, prematurity, trisomy, laryngeal cleft, adenotonsillar hypertrophy, and craniofacial anomaly independently produce obstructive events in the same population - so no directional claim is made.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 220.1 — Verkest V, Verhulst S, Van Hoorenbeeck K, Vanderveken O, Saldien V, Boudewyns A. Prevalence of obstructive sleep apnea in children with laryngomalacia and value of polysomnography in treatment decisions. Int J Pediatr Otorhinolaryngol. 2020 Oct;137:110255. doi:10.1016/j.ijporl.2020.110255. PMID 32896360.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/32896360/
+- Source checked on: 2026-09-24
+- Locator: PMID 32896360; obstructive sleep apnea in 34 of 44 children with laryngomalacia (77.4%), apnoea-hypopnea index 8.9 to 2.4 events/hour after supraglottoplasty
+- Note under review: Retrospective review of 46 children with laryngoscopy-confirmed laryngomalacia (complete data in 44; median age at polysomnography 12 weeks) reporting concomitant obstructive sleep apnea in 34 patients (77.4%), a change in severity classification and treatment decision in 24 cases (54.5%), and a fall in the obstructive apnoea-hypopnea index from 8.9 to 2.4 events/hour after supraglottoplasty (p = 0.009) - the prevalence and treatment-response anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 220.2 — Lajili M, Teissier N, Dudoignon B, Benoit C, Bellanger S, Kahn L, Van Den Abbeele T, Delclaux C, Bokov P. Nap polysomnography in infants with laryngomalacia as a tool to predict treatment strategy. Eur Arch Otorhinolaryngol. 2024 Jun;281(6):3107-3113. doi:10.1007/s00405-024-08623-y. PMID 38573510.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/38573510/
+- Source checked on: 2026-09-24
+- Locator: PMID 38573510; obstructive sleep apnea in 77% of 39 infants with laryngomalacia, 69% moderate-to-severe
+- Note under review: Retrospective analysis of 39 infants with moderate-to-severe laryngomalacia (median age 3.3 months) in which nap polysomnography showed obstructive sleep apnea in 77% with 69% moderate-to-severe (apnoea-hypopnea index above 5 per hour), weight-gain rate correlated negatively with hypopnea and apnoea-hypopnea indices, and only the apnoea-hypopnea index predicted surgical or non-invasive-ventilation treatment (OR 2.1, 95% CI 1.6-2.8) - the severity-gradient anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `laryngomalacia` → `dysphagia` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** The Irace 2019 retrospective review identified 395 children diagnosed with laryngomalacia in one year, of whom 142 (35.9%) presented with recurrent respiratory issues, feeding difficulties, or both and underwent modified barium swallow study, which documented swallowing dysfunction in 128 patients (90.1%) and aspiration in 60 (42.3%) with silent aspiration in 59 of those 60 (98.3%), and found epilepsy or seizures, laryngeal cleft, and premature birth significantly associated with abnormal studies (PMID 30589926); the Simons 2016 retrospective cohort of 324 children with laryngomalacia found dysphagia or feeding-difficulty symptoms in 163 patients (50.3%), at least one abnormal swallowing assessment in 140 of 185 tested patients (75.7%) and in 43 of 65 patients (66.2%) without subjective dysphagia, with failure to thrive in 31 patients (9.6%) and greater severity more likely affected (PMID 26152504); the literature documents swallowing dysfunction and aspiration as common in children with laryngomalacia without establishing that the laryngomalacia caused an individual's dysphagia.
+
+**Causation boundary (causationStatus):** The mapping does not assert that laryngomalacia caused an individual's dysphagia: the cohorts are instrumental-swallow referral series in which 90.1% and 75.7% figures describe children tested because of symptoms, laryngeal cleft, seizures or epilepsy, prematurity, and neurologic impairment were independently associated with abnormal swallow studies, and severity of laryngomalacia was not significantly related to swallowing dysfunction in the 324-patient cohort - so no directional claim is made and no aspiration or pneumonia outcome is asserted.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 221.1 — Irace AL, Dombrowski ND, Kawai K, Watters K, Choi S, Perez J, Dodrill P, Hernandez K, Davidson K, Rahbar R. Evaluation of Aspiration in Infants With Laryngomalacia and Recurrent Respiratory and Feeding Difficulties. JAMA Otolaryngol Head Neck Surg. 2019 Feb 1;145(2):146-151. doi:10.1001/jamaoto.2018.3642. PMID 30589926.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/30589926/
+- Source checked on: 2026-09-24
+- Locator: PMID 30589926; swallowing dysfunction in 128 of 142 tested children (90.1%), aspiration in 60 (42.3%) with silent aspiration in 59 of 60
+- Note under review: Retrospective review of 142 of 395 children diagnosed with laryngomalacia in one year (35.9%) who presented with recurrent respiratory issues and/or feeding difficulty and underwent modified barium swallow study: swallowing dysfunction in 128 (90.1%), aspiration in 60 (42.3%) with silent aspiration in 59 of 60 (98.3%), and significant association of seizures, laryngeal cleft, and prematurity with abnormal studies - the instrumental-swallow and aspiration anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 221.2 — Simons JP, Greenberg LL, Mehta DK, Fabio A, Maguire RC, Mandell DL. Laryngomalacia and swallowing function in children. Laryngoscope. 2016 Feb;126(2):478-84. doi:10.1002/lary.25440. PMID 26152504.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/26152504/
+- Source checked on: 2026-09-24
+- Locator: PMID 26152504; dysphagia or feeding difficulty in 163 of 324 children (50.3%), failure to thrive in 31 (9.6%), abnormal swallowing assessment in 140 of 185 tested (75.7%)
+- Note under review: Retrospective cohort of 324 children with laryngomalacia (62.7% mild, 28.7% moderate, 8.6% severe) reporting dysphagia or feeding-difficulty symptoms in 163 (50.3%), at least one abnormal swallowing assessment in 140 of 185 tested patients (75.7%) and in 43 of 65 without subjective dysphagia (66.2%), failure to thrive in 31 (9.6%) with greater severity more likely affected, and no significant relationship between laryngomalacia severity and abnormal swallowing function - the cohort-size and severity-relationship anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `legg-calve-perthes-disease` → `osteoarthritis` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** The Onishi 2011 retrospective analysis of 67 patients (70 hips) treated for Perthes' disease at a mean follow-up of 36.1 years (mean age 43.1 years) found that only 48% of hips in the radiographically evaluated group had no osteoarthritis (Tonnis grade 0), that the Tonnis grade and JOA score declined after 40 years of age with all patients older than 50 years showing severe osteoarthritis and osteoarthritis severity correlating significantly with age at follow-up, and that younger age at diagnosis (under 8 years) correlated with a better result; the Shohat 2016 long-term follow-up of 40 patients (43 hips) after varus derotational osteotomy at a mean 42.5 years reported total hip arthroplasty in 7 patients (17% of the 41 hips with information available), no or minimal osteoarthritis signs in 16 of 28 hips with radiographs (57.1%), an association of the Stulberg classification with Harris hip score, SF-36, hip pain, Trendelenburg sign, coxa magna, and Tonnis grade, and the Stulberg classification as the only factor associated with fair or poor outcomes on multivariate analysis; the literature documents graded hip osteoarthritis decades after Perthes' disease without establishing that the childhood disease caused an individual's arthritis.
+
+**Causation boundary (causationStatus):** The mapping does not assert that Perthes' disease caused an individual's hip osteoarthritis: both cohorts are treated surgical series without an untreated natural-history comparison, osteoarthritis expression in the located data is strongly age-dependent (all patients older than 50 years showed severe osteoarthritis in one cohort while the other reported no arthroplasty), the dominant predictor was the residual Stulberg deformity rather than the diagnosis itself, and developmental dysplasia, slipped capital femoral epiphysis, prior trauma or infection, femoroacetabular impingement, inflammatory arthritis, and age-related primary osteoarthritis independently produce the same radiographic pattern - so no directional or probability claim is made.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 222.1 — Onishi E, Ikeda N, Ueo T. Degenerative osteoarthritis after Perthes' disease: a 36-year follow-up. Arch Orthop Trauma Surg. 2011 May;131(5):701-7. doi:10.1007/s00402-011-1264-y. PMID 21258809.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/21258809/
+- Source checked on: 2026-09-24
+- Locator: PMID 21258809; osteoarthritis (Tonnis grade above 0) in 52% of evaluated hips at a mean 36.1-year follow-up
+- Note under review: Retrospective analysis of 67 patients (70 hips) treated for Perthes' disease at a mean follow-up of 36.1 years (mean age 43.1 years): only 48% of radiographically evaluated hips had no osteoarthritis (Tonnis grade 0), Stulberg class I or II in 59%, Tonnis grade and JOA score declining after age 40 with all patients older than 50 years showing severe osteoarthritis and osteoarthritis severity correlating with age, and younger age at diagnosis (under 8 years) correlating with a better result - the natural-history-duration anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 222.2 — Shohat N, Copeliovitch L, Smorgick Y, Atzmon R, Mirovsky Y, Shabshin N, Beer Y, Agar G. The Long-Term Outcome After Varus Derotational Osteotomy for Legg-Calve-Perthes Disease: A Mean Follow-up of 42 Years. J Bone Joint Surg Am. 2016 Aug 3;98(15):1277-85. doi:10.2106/JBJS.15.01349. PMID 27489318.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/27489318/
+- Source checked on: 2026-09-24
+- Locator: PMID 27489318; total hip arthroplasty in 7 of 41 hips (17%) and no or minimal osteoarthritis in 16 of 28 hips at a mean 42.5 years
+- Note under review: Long-term follow-up of 40 patients (43 hips) treated with varus derotational osteotomy at a mean 42.5 years (mean age 50.2 years): total hip arthroplasty in 7 patients (17% of the 41 hips with information available), no or minimal osteoarthritis signs in 16 of 28 hips with radiographs (57.1%), Stulberg classification associated with Harris hip score, SF-36, hip pain, Trendelenburg sign, coxa magna, and Tonnis grade, and Stulberg the only factor associated with fair or poor outcome on multivariate analysis - the deformity-graded-outcome anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `leishmaniasis` → `anemia` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** The Tofighi Naeem 2014 review of 34 children with confirmed visceral leishmaniasis documented anemia in 97.1% alongside thrombocytopenia in 91.2% and leukopenia in 67.6%, with fever and pallor or weakness each in 97.1% and splenomegaly in 97.1%; the Sarkar 2018 cross-sectional study of 90 rK39-positive leishmaniasis cases in Bangladesh found anemia in 62.7%, leukopenia in 57.6%, and thrombocytopenia in 61.7% among primary kala-azar cases with pancytopenia in 33 cases across groups; hemolysis of parasitized and unparasitized erythrocytes, marrow infiltration and dyserythropoiesis, splenic sequestration, and immune-mediated destruction are the documented routes by which visceral leishmaniasis reduces circulating red-cell mass; the literature documents anemia as a leading laboratory abnormality of visceral leishmaniasis without establishing that the infection caused an individual's anemia.
+
+**Causation boundary (causationStatus):** The mapping does not assert that the leishmaniasis caused an individual's anemia: cytopenia is part of the classical presentation triad of visceral leishmaniasis so the cohorts largely quantify a phenotype rather than a distinct incident disease, three of the four located cohorts are pediatric endemic-area referral series, iron, B12, and folate deficiency, co-infection and HIV-related chronic inflammation, other co-endemic infections, marrow disease, and treatment-related myelosuppression independently produce anemia in the same patients, and no cohort isolates incident anemia attributable to the infection - so no directional or probability claim is made.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 223.1 — Tofighi Naeem A, Mahmoudi S, Saboui F, Hajjaran H, Pourakbari B, Mohebali M, Zarkesh MR, Mamishi S. Clinical Features and Laboratory Findings of Visceral Leishmaniasis in Children Referred To Children Medical Center Hospital, Tehran, Iran during 2004-2011. Iran J Parasitol. 2014 Mar;9(1):1-5. PMID 25642253.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/25642253/
+- Source checked on: 2026-09-24
+- Locator: PMID 25642253; anemia in 97.1% of 34 children with visceral leishmaniasis
+- Note under review: Review of 34 children with confirmed visceral leishmaniasis (2004-2011, Tehran) reporting fever and pallor or weakness in 97.1% each, splenomegaly in 97.1%, hepatomegaly in 88.2%, and hematological abnormalities of anemia in 97.1%, thrombocytopenia in 91.2%, and leukopenia in 67.6%, with direct agglutination positive in all 23 tested at 1:3200 or above, rK39 positive in 90%, and bone marrow amastigotes in 83.3% - the pediatric cytopenia anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 223.2 — Sarkar SR, Ray NC, Khan ER, Haque N, Hossain MA, Paul SK, Noiri E, Matsumoto Y, Sanjoba C. Clinical Characteristics and Haematological Parameters Associated With Visceral Leishmaniasis in Bangladeshi Individuals. Mymensingh Med J. 2018 Jul;27(3):496-503. PMID 30141437.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/30141437/
+- Source checked on: 2026-09-24
+- Locator: PMID 30141437; anemia in 62.7% of 90 kala-azar cases including adults
+- Note under review: Cross-sectional study of 90 rK39-positive leishmaniasis cases aged 3 to 80 years from five divisions of Bangladesh, in which primary kala-azar cases showed anemia in 62.7%, leukopenia in 57.6%, and thrombocytopenia in 61.7% with fever in all and splenomegaly in 70.2%, and pancytopenia was present in 33 cases across groups - the mixed-age denominator anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `leishmaniasis` → `thrombocytopenia` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** The Hamwi 2020 review of 19 children with visceral leishmaniasis in Tartous, Syria (median age 45.5 months) recorded thrombocytopenia in 15 patients (78.95%) with anemia and pallor in all, leukopenia in 9 (47.4%), splenomegaly in 18 (94.7%), and bone marrow amastigotes in every patient; the Khodabandeh 2024 retrospective study of 27 children with visceral leishmaniasis in Tehran (mean age 28.13 months) found thrombocytopenia in 44.4% with anemia in 85.1%, fever in 96.2%, and splenomegaly in 92.59%; the thrombocytopenia of visceral leishmaniasis is documented as multifactorial, with splenic sequestration, immune-mediated platelet destruction, and dysmegakaryopoiesis each described (marrow studies record quantitative and qualitative megakaryocyte abnormalities); the literature documents thrombocytopenia across independent visceral leishmaniasis cohorts without establishing that the infection caused an individual's thrombocytopenia.
+
+**Causation boundary (causationStatus):** The mapping does not assert that the leishmaniasis caused an individual's thrombocytopenia: cytopenia is constitutive of the visceral leishmaniasis presentation, the cohorts are pediatric endemic-area referral series with prevalence figures of 78.95% and 44.4% reflecting different case mixes and severity, splenic sequestration, immune destruction, marrow dysmegakaryopoiesis, and treatment effects operate simultaneously, and hypersplenism from another cause, marrow disease, drug-induced thrombocytopenia, disseminated intravascular coagulation from sepsis, and immune thrombocytopenia independently produce the same finding - so no directional claim is made.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 224.1 — Hamwi AO, Mohammad AA, Hamwi SO, Mohammad RA, Shahin KY. Pediatric visceral leishmaniasis in Tartous, Syria. Avicenna J Med. 2020 Oct-Dec;10(4):223-226. doi:10.4103/ajm.ajm_168_20. PMID 33437694.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/33437694/
+- Source checked on: 2026-09-24
+- Locator: PMID 33437694; thrombocytopenia in 15 of 19 children (78.95%) with visceral leishmaniasis
+- Note under review: Retrospective review of 19 children with visceral leishmaniasis (median age 45.5 months) reporting thrombocytopenia in 15 patients (78.95%), pallor and anemia in all, leukopenia in 9 (47.4%), fever in 13 (68.42%), splenomegaly in 18 (94.7%), hepatomegaly in 11 (57.9%), and bone marrow amastigotes in every patient - the high-prevalence pediatric anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 224.2 — Khodabandeh M, Moradian E, Sarvari M, Khiabani MS. Visceral Leishmaniasis (VL) Clinical Presentation, Laboratory Findings, Treatment Options and Outcome. Iran J Parasitol. 2024 Jan-Mar;19(1):28-37. doi:10.18502/ijpa.v19i1.15190. PMID 38654944.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/38654944/
+- Source checked on: 2026-09-24
+- Locator: PMID 38654944; thrombocytopenia in 44.4% of 27 children with visceral leishmaniasis
+- Note under review: Retrospective cross-sectional study of 27 children under 18 with visceral leishmaniasis (mean age 28.13 months) reporting thrombocytopenia in 44.4% with anemia in 85.1%, fever in 96.2%, and splenomegaly in 92.59%, and noting liposomal amphotericin B as the shortest-hospitalization treatment - the independent cohort with a lower platelet prevalence anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `levator-ani-syndrome` → `unexplained-chronic-pain` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** The Bharucha and Lee 2016 Mayo Clinic Proceedings review documents that chronic anorectal and pelvic pain conditions including levator ani syndrome share associations with dysfunctional voiding or defecation, comorbid conditions such as fibromyalgia and depression, impaired quality of life, and increased health care utilization, with pelvic floor muscle tension, peripheral inflammation, peripheral and central sensitization, and psychosocial factors implicated in pathogenesis and multidisciplinary management recommended (PMID 27712641); the Knowles and Cohen 2022 review organizes chronic anal pain into local causes, functional anorectal pain including levator ani syndrome, and neuropathic pain syndromes such as pudendal neuralgia and coccygodynia, describing the diagnostic tests and treatments that separate them (PMID 35649568); the Chiarioni 2011 systematic review documents that chronic or recurrent anorectal and pelvic pain affects 7 to 24 percent of the population with impaired quality of life, that excessive striated-muscle tension of the pelvic floor is common to most pelvic pain syndromes, and that a randomized trial achieved 85 percent success with biofeedback in chronic proctalgia selected by levator tenderness (PMID 22110274); the literature documents a reproducible severe chronic idiopathic anorectal pain presentation requiring an exclusionary local, functional, and neuropathic workup without establishing that levator ani syndrome caused a distinct chronic pain disorder in any individual.
+
+**Causation boundary (causationStatus):** The mapping does not assert that levator ani syndrome caused an individual's chronic pain disorder: the pain lasting more than 30 minutes with puborectalis tenderness is the defining diagnostic presentation of the syndrome rather than a separate downstream condition, so the edge records presentation-and-workup matching; the anchor literature is systematic- and specialty-review class with one randomized treatment trial rather than incidence cohorts, central sensitization and psychosocial factors may drive both the pain and the documented health care utilization, and pudendal neuralgia, coccygodynia, local anorectal disease, urologic chronic pelvic pain, and referred spine or sacroiliac pain are competing explanations of the same presentation - so no directional claim is made.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 225.1 — Bharucha AE, Lee TH. Anorectal and Pelvic Pain. Mayo Clin Proc. 2016 Oct;91(10):1471-1486. doi:10.1016/j.mayocp.2016.08.011. PMID 27712641.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/27712641/
+- Source checked on: 2026-09-25
+- Locator: PMID 27712641; levator ani syndrome among chronic pelvic pain conditions with comorbid depression, impaired quality of life, sensitization and psychosocial factors
+- Note under review: Specialty review of chronic anorectal and pelvic pain conditions including levator ani syndrome, documenting shared associations with dysfunctional voiding or defecation, comorbid fibromyalgia and depression, impaired quality of life, and increased health care utilization, with pelvic floor muscle tension, inflammation, peripheral and central sensitization, and psychosocial factors implicated in pathogenesis - the presentation, comorbidity, and workup-matching anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 225.2 — Knowles CH, Cohen RC. Chronic anal pain: A review of causes, diagnosis, and treatment. Cleve Clin J Med. 2022 Jun;89:336-343. doi:10.3949/ccjm.89a.21102. PMID 35649568.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/35649568/
+- Source checked on: 2026-09-25
+- Locator: PMID 35649568; three diagnostic categories of chronic anal pain with the tests separating functional anorectal pain from neuropathic and local causes
+- Note under review: Review organizing chronic anal pain into local causes, functional anorectal pain (proctalgia fugax, levator ani syndrome), and neuropathic pain syndromes (pudendal neuralgia, coccygodynia) with the diagnostic tests and treatments that distinguish them - the differential-workup anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 225.3 — Chiarioni G, Asteria C, Whitehead WE. Chronic proctalgia and chronic pelvic pain syndromes: new etiologic insights and treatment options. World J Gastroenterol. 2011 Oct 28;17(40):4447-4455. doi:10.3748/wjg.v17.i40.4447. PMID 22110274.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/22110274/
+- Source checked on: 2026-09-25
+- Locator: PMID 22110274; chronic proctalgia and pelvic pain syndromes, 7-24% population prevalence, pelvic floor spasm common to the family
+- Note under review: Systematic review documenting chronic or recurrent anorectal and pelvic pain in 7 to 24 percent of the population with impaired quality of life and high health care costs, excessive pelvic-floor striated-muscle tension common to most pelvic pain syndromes, and 85 percent biofeedback success in levator-tenderness-selected chronic proctalgia - the population-burden and spasm-pathway anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `libman-sacks-endocarditis` → `cerebrovascular-accident-stroke-residuals` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** The Roldan 2008 randomized study of paired transthoracic and transesophageal echocardiography in 81 patients with systemic lupus erythematosus and 75 controls found Libman-Sacks endocarditis significantly more common in patients than controls by both modalities (p < 0.001), framed the entity as complicated by thromboembolism, severe valve regurgitation, need for high-risk valve surgery, or death, and recommended transesophageal echocardiography as the initial test in patients with suspected cardioembolism (PMID 18085739); the Malvar 2011 report documents recurrent transient ischemic attacks followed by central facial palsy with multiple small right-hemisphere ischemic lesions and mitral verrucous vegetations requiring mitral valve replacement for extensive valvular damage, with negative valve microbiology establishing Libman-Sacks endocarditis as the embolic source (PMID 22693297); the Yazidi 2023 report documents ischemic stroke as the presenting event that revealed Libman-Sacks endocarditis, with mitral vegetations, severe mitral regurgitation, negative blood cultures, and positive antibodies in a patient with lupus and antiphospholipid syndrome (PMID 38116400); the literature documents recurrent cerebral ischemic events attributed to sterile vegetation embolization in imaging-series and case-level material without establishing that the endocarditis caused an individual's stroke.
+
+**Causation boundary (causationStatus):** The mapping does not assert that Libman-Sacks endocarditis caused an individual's cerebrovascular accident: the vegetations are one of several embolic and thrombotic sources in the same populations, antiphospholipid antibodies independently produce arterial thrombosis and were positive in two of the three anchor cases, lupus vasculopathy and traditional stroke risks coexist, the quantified material is a single imaging study plus case reports, and transesophageal imaging is required to even detect most vegetations (transthoracic sensitivity 11 percent for vegetations) - so attribution requires echocardiographic documentation, chronology, and competing-cause exclusion per case, and no directional claim is made.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 226.1 — Roldan CA, Qualls CR, Sopko KS, Sibbitt WL Jr. Transthoracic versus transesophageal echocardiography for detection of Libman-Sacks endocarditis: a randomized controlled study. J Rheumatol. 2008 Feb;35(2):224-229. PMID 18085739.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/18085739/
+- Source checked on: 2026-09-25
+- Locator: PMID 18085739; Libman-Sacks endocarditis complicated by thromboembolism in 81-patient SLE imaging study, TEE for suspected cardioembolism
+- Note under review: Randomized paired-imaging study of 81 patients with systemic lupus erythematosus and 75 controls: Libman-Sacks endocarditis more common in patients (p < 0.001), complicated by thromboembolism, severe valve regurgitation, high-risk valve surgery, or death, with transesophageal echocardiography recommended in suspected cardioembolism and transthoracic sensitivity 63 percent overall and 11 percent for vegetations - the prevalence, complication-framing, and detection-bias anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 226.2 — Malvar B, Almeida FM, Rebocho L, Moniz JC, Azevedo F. Cerebral embolism from Libman-Sacks endocarditis. BMJ Case Rep. 2011 Jun 30;2011:bcr0420114071. doi:10.1136/bcr.04.2011.4071. PMID 22693297.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/22693297/
+- Source checked on: 2026-09-25
+- Locator: PMID 22693297; cerebral embolism from Libman-Sacks mitral vegetations, sequential cerebral ischaemia, sterile valve at surgery
+- Note under review: Case report of recurrent transient ischemic attacks with visual loss and central facial palsy, multiple small right-hemisphere ischemic lesions, and mitral verrucous vegetations requiring mitral replacement for extensive valvular damage, with negative valve microbiology establishing Libman-Sacks endocarditis and the authors urging endocarditis suspicion in sequential cerebral ischaemia - the case-level cerebral-embolism anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 226.3 — Yazidi MA, Merzouk FZ, Rabii H, Benyoussef H, Bensahi I, Habbal R. Ischemic Stroke Revealing Libman-Sacks Endocarditis: A Case Report. J Saudi Heart Assoc. 2023 Nov 27;35:335-338. doi:10.37616/2212-5043.1360. PMID 38116400.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/38116400/
+- Source checked on: 2026-09-25
+- Locator: PMID 38116400; ischemic stroke revealing Libman-Sacks endocarditis, mitral vegetations with severe regurgitation, negative cultures
+- Note under review: Case report of ischemic stroke presenting with fever that revealed mitral vegetations with severe mitral regurgitation, negative blood cultures, and positive antibodies establishing Libman-Sacks endocarditis with lupus and antiphospholipid syndrome - the stroke-as-presentation anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `libman-sacks-endocarditis` → `heart-valve-disorders` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** The Ishizu 2019 case report describes Libman-Sacks endocarditis as characterized by non-bacterial verrucous vegetations causing valvular stenosis and/or regurgitation, documenting oedematous thickening and poor coaptation of mitral segments producing severe mitral regurgitation and acute decompensated heart failure, with corticosteroid therapy reported elsewhere to increase valve fibrosis and scarring and worsen valve function (PMID 31377769); the Georghiou 2003 report documents moderate aortic regurgitation and moderate-to-severe mitral regurgitation due to Libman-Sacks endocarditis requiring double valve replacement for intractable heart failure, with a literature survey disclosing only nine prior double-valve replacements in systemic lupus erythematosus and concluding that the valvular disease changes frequently with time, is temporally unrelated to other lupus features, and carries substantial morbidity and mortality (PMID 14658823); the Ningyan 2021 report documents severe mitral regurgitation from Libman-Sacks endocarditis with progressive exertional dyspnea, left ventricular dilatation, and ejection-fraction reduction treated by transcatheter edge-to-edge repair (PMID 34661053); the literature documents progressive valvular thickening and dysfunction following Libman-Sacks vegetations in case and surgical-series material without establishing that the endocarditis produced valvular disease in any individual.
+
+**Causation boundary (causationStatus):** The mapping does not assert that Libman-Sacks endocarditis caused an individual's valvular disorder: the vegetations themselves are the diagnostic lesion of the endocarditis, so the edge is scoped to the progressive dysfunction - leaflet thickening, fibrosis, retraction, and the resulting regurgitation or stenosis - documented after the endocarditis is established; the anchors are case reports and a surgical literature survey without incidence denominators, degenerative, rheumatic, and functional valve disease coexist in the same age and sex range, antiphospholipid antibody deposits are found in affected valves as a parallel driver, and treatment (immunosuppression, anticoagulation, surgery) alters the natural history - so no directional claim is made.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 227.1 — Ishizu K, Isotani A, Yamaji K, Ando K. Immunosuppressive therapy to reduce mitral regurgitation in Libman-Sacks endocarditis: a case report. Eur Heart J Case Rep. 2019 Sep;3(3):ytz133. doi:10.1093/ehjcr/ytz133. PMID 31377769.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/31377769/
+- Source checked on: 2026-09-25
+- Locator: PMID 31377769; Libman-Sacks vegetations causing valvular stenosis and/or regurgitation, severe mitral regurgitation with acute decompensated heart failure
+- Note under review: Case report describing Libman-Sacks endocarditis as non-bacterial verrucous vegetations causing valvular stenosis and/or regurgitation, with oedematous leaflet thickening and poor coaptation producing severe mitral regurgitation and acute decompensated heart failure, and corticosteroid therapy documented to increase valve fibrosis and scarring - the vegetation-to-dysfunction and treatment-fibrosis anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 227.2 — Georghiou GP, Shapira Y, Drozd T, Erez E, Raanani E, Vidne BA, Sahar G. Double-valve Libman-Sacks endocarditis: an entity that demands special consideration. J Heart Valve Dis. 2003 Nov;12(6):797-801. PMID 14658823.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/14658823/
+- Source checked on: 2026-09-25
+- Locator: PMID 14658823; double-valve Libman-Sacks regurgitation requiring replacement, literature survey of nine prior cases, substantial morbidity and mortality
+- Note under review: Case report with literature survey: moderate aortic and moderate-to-severe mitral regurgitation due to Libman-Sacks endocarditis required double valve replacement for intractable heart failure; only nine prior double-valve replacements in lupus were found, and the valvular disease changes frequently with time and carries substantial morbidity and mortality - the surgical-progression anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 227.3 — Ningyan W, Jappar IA, See Hooi E, Khung Keong Y. Severe mitral regurgitation from Libman-Sacks endocarditis treated with MitraClip: a case report. Eur Heart J Case Rep. 2021 Oct;5(10):ytab361. doi:10.1093/ehjcr/ytab361. PMID 34661053.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/34661053/
+- Source checked on: 2026-09-25
+- Locator: PMID 34661053; severe mitral regurgitation from Libman-Sacks endocarditis with LV dilatation and EF reduction, MitraClip treatment
+- Note under review: Case report of severe mitral regurgitation from Libman-Sacks endocarditis with progressive exertional dyspnea (NYHA II to III), left ventricular dilatation, and ejection-fraction reduction treated with transcatheter edge-to-edge repair - the dysfunction-progression and ventricular-remodeling anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `lichen-planopilaris` → `depressive-disorder` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** The Alirezaei 2019 case-control study compared 38 individuals with lichen planopilaris and 58 gender- and age-matched healthy controls and found expert-rated depression scores higher in the lichen planopilaris group, lower self-esteem, physical functioning, and mental health, greater physical and emotional role limitations, correlations of higher disease activity and hair-loss severity with higher depression and lower quality-of-life scores, and no statistical relationship between illness duration and the mental-health differences (PMID 30970367); the Kelati and Jafferany 2024 systematic review documents that lichen planopilaris and frontal fibrosizing alopecia cause significant psychological distress and impaired quality of life, with higher disease activity and severity associated with higher depression and anxiety scores, and identifies psychiatric conditions including anxiety and depression as consequences of active and severe disease (PMID 39152785); the literature documents elevated depressive symptom scores in individuals with lichen planopilaris compared with matched controls without establishing that the disease caused a depressive disorder in any individual.
+
+**Causation boundary (causationStatus):** The mapping does not assert that lichen planopilaris caused an individual's depressive disorder: the anchors are cross-sectional instruments and expert ratings rather than structured diagnostic interviews, premorbid mood is uncontrolled and illness duration was unrelated to the mental-health differences, the visible scarring hair loss plausibly produces distress independently of disease biology, the systematic review pools lichen planopilaris with the sibling frontal fibrosizing alopecia identity, and treatment courses were not adjusted - so no directional claim is made.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 228.1 — Alirezaei P, Ahmadpanah M, Rezanejad A, Soltanian A, Sadeghi Bahmani D, Brand S. Compared to Controls, Individuals with Lichen Planopilaris Have More Depression, a Lower Self-Esteem, and a Lower Quality of Life. Neuropsychobiology. 2019;78(2):95-103. doi:10.1159/000499135. PMID 30970367.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/30970367/
+- Source checked on: 2026-09-25
+- Locator: PMID 30970367; 38 lichen planopilaris vs 58 controls, higher depression scores, activity and severity gradient
+- Note under review: Case-control study of 38 individuals with lichen planopilaris versus 58 gender- and age-matched controls: higher expert-rated depression, lower self-esteem, physical functioning, and mental health, greater role limitations, disease-activity and hair-loss-severity gradients tracking with depression and quality of life, and illness duration unrelated to the mental-health differences - the matched comparison and activity-gradient anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 228.2 — Kelati A, Jafferany M. Quality-of-life assessment and the impact of early diagnosis and treatment in lichen planopilaris: a systematic review. Clin Exp Dermatol. 2024 Dec;50:146-149. doi:10.1093/ced/llae339. PMID 39152785.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/39152785/
+- Source checked on: 2026-09-25
+- Locator: PMID 39152785; systematic review of LPP psychoemotional impact, depression and anxiety with activity and severity
+- Note under review: Systematic review documenting that lichen planopilaris and frontal fibrosizing alopecia cause significant psychological distress and impaired quality of life, with higher disease activity and severity associated with higher depression and anxiety scores and psychiatric conditions including anxiety and depression identified in active and severe disease - the systematic-review anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `lichen-planopilaris` → `anxiety-disorder` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** The Kelati and Jafferany 2024 systematic review documents that lichen planopilaris and frontal fibrosizing alopecia cause significant psychological distress, that higher lichen planopilaris disease activity and severity are associated with higher depression and anxiety scores and greater physical and emotional role limitations, and that active and severe disease causes psychiatric conditions including anxiety and depression (PMID 39152785); the Alirezaei 2019 case-control study of 38 lichen planopilaris individuals and 58 matched controls measured anxiety alongside depression and found that higher anxiety scores predicted poorer quality of life within the lichen planopilaris group while the disease group showed lower self-esteem and mental-health scores than controls (PMID 30970367); the literature documents elevated anxiety scores accompanying lichen planopilaris without establishing that the disease caused an anxiety disorder in any individual.
+
+**Causation boundary (causationStatus):** The mapping does not assert that lichen planopilaris caused an individual's anxiety disorder: the between-group anxiety difference is documented at systematic-review level while the case-control anchor reports anxiety as a within-group predictor of quality of life rather than a matched comparison, the instruments are screening-class rather than structured diagnostic interviews, premorbid anxiety is uncontrolled, the systematic review pools lichen planopilaris with the sibling frontal fibrosizing alopecia identity, and scalp-symptom burden and disfigurement distress are parallel explanations - so no directional claim is made.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 229.1 — Kelati A, Jafferany M. Quality-of-life assessment and the impact of early diagnosis and treatment in lichen planopilaris: a systematic review. Clin Exp Dermatol. 2024 Dec;50:146-149. doi:10.1093/ced/llae339. PMID 39152785.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/39152785/
+- Source checked on: 2026-09-25
+- Locator: PMID 39152785; systematic review, higher anxiety scores with LPP activity and severity, psychiatric conditions including anxiety
+- Note under review: Systematic review documenting higher depression and anxiety scores with higher lichen planopilaris disease activity and severity, significant psychological distress and impaired quality of life, and psychiatric conditions including anxiety and depression in active and severe disease - the between-group systematic-review anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 229.2 — Alirezaei P, Ahmadpanah M, Rezanejad A, Soltanian A, Sadeghi Bahmani D, Brand S. Compared to Controls, Individuals with Lichen Planopilaris Have More Depression, a Lower Self-Esteem, and a Lower Quality of Life. Neuropsychobiology. 2019;78(2):95-103. doi:10.1159/000499135. PMID 30970367.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/30970367/
+- Source checked on: 2026-09-25
+- Locator: PMID 30970367; anxiety scores predicting poorer quality of life in lichen planopilaris, 38 vs 58 matched controls
+- Note under review: Case-control study of 38 individuals with lichen planopilaris versus 58 matched controls measuring anxiety alongside depression: higher anxiety scores predicted poorer quality of life within the lichen planopilaris group, with lower self-esteem and mental health than controls - the anxiety-quality-of-life anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `lichen-planus` → `depressive-disorder` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** The Akay 2002 dermatology-clinic case-control study of 50 subjects with psoriasis vulgaris, 30 with lichen planus, and 40 healthy controls found depression scores of 58 percent, 53 percent, and 20 percent respectively, concluding that depressive symptoms are important in both common dermatological diseases and affect clinical outlook and treatment response (PMID 12224690); the Sampogna 2020 multicentre study of 3509 consecutive dermatology outpatients from 13 European countries found moderate or extreme pain/discomfort in 75.6 percent of lichen planus patients - among the highest prevalences of all dermatoses studied - and documented that pain/discomfort is associated with depression, anxiety, low quality of life, and thoughts of suicide (PMID 32250441); the Tekin 2024 review documents frequent quality-of-life impairment in lichen planus and underscores the need for a comprehensive approach including psychological evaluation and support (PMID 38982032); the literature documents elevated depressive symptom frequency in individuals with lichen planus compared with healthy controls without establishing that the disease caused a depressive disorder in any individual.
+
+**Causation boundary (causationStatus):** The mapping does not assert that lichen planus caused an individual's depressive disorder: the case-control comparison is frequency-level from a single 2002 dermatology clinic with screening instruments rather than structured diagnosis, the large multicentre association is pan-dermatological and pain-mediated so the mood link may run through symptom burden rather than the lichen planus itself, premorbid mood is uncontrolled, and pruritus, sleep disruption, visible lesions, and treatment burden are parallel drivers - so no directional claim is made.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 230.1 — Akay A, Pekcanlar A, Bozdag KE, Altintas L, Karaman A. Assessment of depression in subjects with psoriasis vulgaris and lichen planus. J Eur Acad Dermatol Venereol. 2002 Jul;16(4):347-352. doi:10.1046/j.1468-3083.2002.00467.x. PMID 12224690.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/12224690/
+- Source checked on: 2026-09-25
+- Locator: PMID 12224690; depression scores 53% in 30 lichen planus subjects vs 20% in 40 controls (Beck)
+- Note under review: Dermatology-clinic case-control study: depression scores of 58 percent in psoriasis, 53 percent in lichen planus, and 20 percent in healthy controls, concluding depressive symptoms are important in both dermatoses and affect clinical outlook and treatment response - the frequency-comparison anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 230.2 — Sampogna F, Abeni D, Gieler U, et al. Exploring the EQ-5D Dimension of Pain/Discomfort in Dermatology Outpatients from a Multicentre Study in 13 European Countries. Acta Derm Venereol. 2020 Apr 21;100(7):adv00120. doi:10.2340/00015555-3477. PMID 32250441.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/32250441/
+- Source checked on: 2026-09-25
+- Locator: PMID 32250441; pain/discomfort in 75.6% of lichen planus outpatients among highest of all dermatoses, associated with depression
+- Note under review: Cross-sectional multicentre study of 3509 consecutive dermatology outpatients across 13 countries: moderate or extreme pain/discomfort in 55.5 percent of patients versus 31.5 percent of skin-clear controls and 75.6 percent of lichen planus patients - among the highest of all dermatoses - with pain/discomfort associated with depression, anxiety, low quality of life, and thoughts of suicide - the symptom-burden and mood-association anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 230.3 — Tekin B, Xie F, Lehman JS. Lichen Planus: What is New in Diagnosis and Treatment? Am J Clin Dermatol. 2024 Sep;25(5):735-764. doi:10.1007/s40257-024-00878-9. PMID 38982032.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/38982032/
+- Source checked on: 2026-09-25
+- Locator: PMID 38982032; frequent QoL impairment in lichen planus requiring psychological evaluation; cutaneous hypertrophic and mucosal forms at heightened malignant risk
+- Note under review: Contemporary review documenting frequent quality-of-life impairment in lichen planus with the need for psychological evaluation and support, and the heightened malignant-transformation risk of cutaneous hypertrophic and mucosal forms - the review-class anchor for both the mood and malignancy propositions.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `lichen-planus` → `squamous-cell-carcinoma` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** The Tekin 2024 American Journal of Clinical Dermatology review states that cutaneous hypertrophic and mucosal forms of lichen planus are at a heightened risk for malignant transformation and recommends long-term follow-up and regular screening for concomitant conditions (PMID 38982032); the Haenen 2018 case report documents squamous cell carcinoma arising in a 12-year hypertrophic lichen planus plaque on the lower leg of an 87-year-old woman and notes that malignancy developing in cutaneous lichen planus is rare with fewer than 50 cases reported in the literature (PMID 30002207); the 2024 Cureus report documents cutaneous squamous cell carcinoma in the background of chronic hypertrophic lichen planus of the shin in an elderly man and concludes that chronic hypertrophic lichen planus should be considered a potential precursor lesion (recorded as corroborating case context in the governance notes, PMID 38571860); the Xu 2025 immunohistochemical study of 34 hypertrophic lichen planus biopsies found cytoplasmic p16 overexpression relative to location-matched well-differentiated squamous cell carcinoma and normal skin, suggesting p16-mediated cell-cycle dysregulation as a contributor to the malignant transformation of hypertrophic lichen planus (PMID 39912658); the literature documents carcinoma arising in longstanding hypertrophic lichen planus plaques in case-level material without establishing that the lichen planus caused an individual's carcinoma.
+
+**Causation boundary (causationStatus):** The mapping does not assert that lichen planus caused an individual's squamous cell carcinoma: the edge is scoped to the cutaneous hypertrophic form and the evidence is case-report class with fewer than 50 reported cases and no incidence denominator, longstanding hypertrophic plaques share chronic-inflammation, scarring, and lower-leg sun-exposure risk factors with de novo cutaneous carcinoma, the p16 study is mechanistic without outcome follow-up, and the quantified oral malignant-transformation rates are deliberately excluded as the oral-lichen-planus-lichenoid-lesions identity's evidence (ME-29 scope decision) - so no directional claim is made.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 231.1 — Tekin B, Xie F, Lehman JS. Lichen Planus: What is New in Diagnosis and Treatment? Am J Clin Dermatol. 2024 Sep;25(5):735-764. doi:10.1007/s40257-024-00878-9. PMID 38982032.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/38982032/
+- Source checked on: 2026-09-25
+- Locator: PMID 38982032; cutaneous hypertrophic lichen planus at heightened risk for malignant transformation
+- Note under review: Contemporary review stating that cutaneous hypertrophic and mucosal forms of lichen planus are at heightened risk for malignant transformation, recommending long-term follow-up and regular screening - the review-class malignant-risk anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 231.2 — Haenen CCP, Buurma AAJ, Genders RE, Quint KD. Squamous cell carcinoma arising in hypertrophic lichen planus. BMJ Case Rep. 2018 Jul 11;2018:bcr2017224044. doi:10.1136/bcr-2017-224044. PMID 30002207.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/30002207/
+- Source checked on: 2026-09-25
+- Locator: PMID 30002207; SCC arising in 12-year hypertrophic lichen planus plaque, fewer than 50 cutaneous cases reported
+- Note under review: Case report of malignant transformation of a 12-year hypertrophic lichen planus plaque on both lower legs of an 87-year-old woman into squamous cell carcinoma, noting fewer than 50 malignancy cases in cutaneous lichen planus in the literature and the need to watch suspicious changes in long-standing disease - the case-level transformation anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 231.3 — Xu KR, Honda K, Rohr BR. Expression of p16 in Hypertrophic Lichen Planus. Am J Dermatopathol. 2025 Jun;47(6):448-452. doi:10.1097/DAD.0000000000002940. PMID 39912658.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/39912658/
+- Source checked on: 2026-09-25
+- Locator: PMID 39912658; p16 overexpression in 34 hypertrophic lichen planus biopsies, cell-cycle dysregulation mechanism
+- Note under review: Immunohistochemical study of 34 hypertrophic lichen planus biopsies with location-matched well-differentiated squamous cell carcinoma and normal skin: both showed increased p16-positive cells versus normal skin, with cytoplasmic p16 overexpressed in hypertrophic lichen planus, suggesting p16-mediated cell-cycle dysregulation as a contributor to malignant transformation - the mechanistic anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `lichen-simplex-chronicus` → `depressive-disorder` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** The Yalcin 2020 case-control study of 50 patients with lichen simplex chronicus and 49 controls administered the Structured Clinical Interview for DSM-5 and the Beck Depression Inventory found psychiatric comorbidity in 62 percent of the lichen simplex chronicus group (14 percent with two psychiatric diagnoses), with major depressive disorder the most common diagnosis (32 percent, alongside dysthymia 18 percent and generalized anxiety disorder 12 percent), mean depression scores of 18.60 versus 7.40 in controls, and relationships between these findings and the symptom severity of the disease (PMID 33034929); the Shafiyev 2025 prospective observational study of 219 lichen simplex chronicus patients assessed quality of life, pruritus, and Beck depression inventory scores before and after three months of duloxetine and topical corticosteroid treatment, documenting the greatest depression-score reduction in the combined-treatment group and relating the psychopathological measures to the clinical state in regression analysis (PMID 39812844); the literature documents elevated depression scores and depressive-disorder frequency in individuals with lichen simplex chronicus compared with controls without establishing that the disease caused a depressive disorder in any individual.
+
+**Causation boundary (causationStatus):** The mapping does not assert that lichen simplex chronicus caused an individual's depressive disorder: the case-control is cross-sectional without premorbid mood history and mood-severity relationships in chronic itch are bidirectional, the treatment study prescribes duloxetine (an antidepressant) on the psychiatric indication so mood improvement cannot separate direct pharmacologic effect from itch relief, screening inventories and a single SCID-5 assessment do not establish longitudinal diagnosis, and referral-clinic ascertainment may enrich distressed patients - so no directional claim is made.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 232.1 — Yalçın M, Baş A, Ergelen M, Gökçe E, Usta Sağlam NG, Öcek Baş T, Gıynaş FF. Psychiatric comorbidity and temperament-character traits of the patients with lichen simplex chronicus: The relation with the symptom severity of the disease. Dermatol Ther. 2020 Nov;33(6):e14389. doi:10.1111/dth.14389. PMID 33034929.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/33034929/
+- Source checked on: 2026-09-25
+- Locator: PMID 33034929; 50 lichen simplex chronicus vs 49 controls, 62% psychiatric comorbidity, MDD 32%, BDI 18.60 vs 7.40
+- Note under review: Case-control study of 50 lichen simplex chronicus patients and 49 controls with SCID-5, Temperament and Character Inventory, and Beck inventories: psychiatric comorbidity in 62 percent (14 percent with two diagnoses), major depressive disorder 32 percent, dysthymia 18 percent, generalized anxiety disorder 12 percent, depression scores 18.60 versus 7.40 and anxiety scores 18.56 versus 5.18, related to symptom severity - the structured-assessment anchor for both edges.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 232.2 — Shafiyev J, Gahramanov I. Evaluating duloxetine for pruritus and psychiatric comorbidities in lichen simplex chronicus. Arch Dermatol Res. 2025 Jan;317(1):249. doi:10.1007/s00403-024-03775-7. PMID 39812844.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/39812844/
+- Source checked on: 2026-09-25
+- Locator: PMID 39812844; 219 lichen simplex chronicus patients, BDI-II and BAI dynamics under duloxetine plus clobetasol
+- Note under review: Prospective observational study of 219 lichen simplex chronicus (neurodermatitis) patients assessing quality of life, pruritus, and Beck depression and anxiety inventories before and after three months of duloxetine and topical corticosteroid treatment, with the greatest depression and anxiety score reductions in the combined group and psychopathological measures related to the clinical state in regression - the treatment-response and scale-dynamics anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `lichen-simplex-chronicus` → `anxiety-disorder` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** The Yalcin 2020 case-control study of 50 patients with lichen simplex chronicus and 49 controls found generalized anxiety disorder in 12 percent of the lichen simplex chronicus group under structured DSM-5 interview, mean Beck Anxiety Inventory scores of 18.56 versus 5.18 in controls, higher harm-avoidance temperament scores, and relationships between the anxiety findings and the symptom severity of the disease (PMID 33034929); the Shafiyev 2025 prospective observational study of 219 lichen simplex chronicus patients assessed Beck Anxiety Inventory scores before and after three months of duloxetine and topical corticosteroid treatment, documenting the greatest anxiety-score reduction in the combined-treatment group and relating anxiety measures to the clinical state in regression analysis (PMID 39812844); the literature documents elevated anxiety scores and anxiety-disorder frequency in individuals with lichen simplex chronicus compared with controls without establishing that the disease caused an anxiety disorder in any individual.
+
+**Causation boundary (causationStatus):** The mapping does not assert that lichen simplex chronicus caused an individual's anxiety disorder: the case-control is cross-sectional without premorbid anxiety history and the anxiety-severity relationship in chronic pruritus is bidirectional (anxiety lowers the pruritus threshold and intensifies scratching), the treatment study cannot separate direct anxiolytic pharmacology from itch relief because duloxetine is prescribed on the psychiatric indication, screening inventories dominate the instruments, and referral-clinic ascertainment may enrich distressed patients - so no directional claim is made.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 233.1 — Yalçın M, Baş A, Ergelen M, Gökçe E, Usta Sağlam NG, Öcek Baş T, Gıynaş FF. Psychiatric comorbidity and temperament-character traits of the patients with lichen simplex chronicus: The relation with the symptom severity of the disease. Dermatol Ther. 2020 Nov;33(6):e14389. doi:10.1111/dth.14389. PMID 33034929.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/33034929/
+- Source checked on: 2026-09-25
+- Locator: PMID 33034929; GAD 12%, BAI 18.56 vs 5.18 in 50 lichen simplex chronicus vs 49 controls
+- Note under review: Case-control study of 50 lichen simplex chronicus patients and 49 controls: generalized anxiety disorder 12 percent under SCID-5, Beck Anxiety Inventory 18.56 versus 5.18, higher harm-avoidance temperament, findings related to symptom severity - the structured-assessment anxiety anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 233.2 — Shafiyev J, Gahramanov I. Evaluating duloxetine for pruritus and psychiatric comorbidities in lichen simplex chronicus. Arch Dermatol Res. 2025 Jan;317(1):249. doi:10.1007/s00403-024-03775-7. PMID 39812844.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/39812844/
+- Source checked on: 2026-09-25
+- Locator: PMID 39812844; BAI dynamics in 219 lichen simplex chronicus patients under duloxetine plus clobetasol
+- Note under review: Prospective observational study of 219 lichen simplex chronicus patients: Beck Anxiety Inventory scores assessed before and after three months of duloxetine and topical corticosteroid treatment, with the greatest anxiety-score reduction in the combined group and anxiety measures related to the clinical state in regression analysis - the treatment-response anxiety anchor.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
 ## Implementation mechanics after decisions
 
 - Mapping edits and registry edits must land in lockstep (the registry audit's canonical-JSON hashes and live-use sets will fail otherwise).

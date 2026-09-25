@@ -1464,3 +1464,384 @@ field, advanced 249 -> 253 because four of this batch's five identities hold a s
 sarcoma holds two, so it is not a single); that counter lives outside both audit scripts and so must
 be added to the sweep map explicitly each time a single-edge identity is authored. Standing recommendation unchanged: land the
 accumulated uncommitted batches (35-50) through CI in one PR, as with PR #469 for batches 1-34.
+
+
+---
+
+Mapping Expansion D1 batch 51 (2026-09-24) authored three draft-quarantined relationships across
+three of the five screened identities and recorded two deferrals. All three edges are
+ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment
+NOT_ASSERTED, and hypothesizedOnly:true. `knee-disarticulation -> phantom-limb-pain` (rank 1,
+NEUROLOGICAL_DEGENERATION) rests on the Nees 2024 Heidelberg Amputation Registry cross-sectional
+study of 459 patients with lower-limb amputation (hemipelvectomies 1%, hip disarticulations 3.7%,
+knee disarticulations 3.5%, partial foot 10%, transfemoral 39%, transtibial 43%; mean 15 years since
+amputation), which reported abnormal sensations in 85% with phantom limb pain in 58%, phantom limb
+sensation in 66%, and residual limb pain in 46%, found that sensory disturbances other than residual
+limb pain were significantly affected by the level of amputation with age at amputation an
+independent risk factor, and named trauma (32%) and neoplasm (22%) as the leading causes
+(PMID 39597072), and on the previously human-verified Kelle 2017 level-stratified cross-sectional
+study of 101 lower-limb amputees, which reported statistically significant between-level differences
+in stump-pain and phantom-limb-pain intensity with the most proximal group - hip disarticulation
+through knee disarticulation, including knee disarticulation - showing the highest early
+postoperative visual-analogue scores, a difference that had disappeared at six months
+(PMID 28242264, reused verified:true from the ankle-disarticulation and hip-disarticulation windows,
+so it added a live use without adding a source entity); the edge follows the amputation-of-arm,
+amputation-of-foot, amputation-of-hand, amputation-of-leg, ankle-disarticulation,
+elbow-disarticulation, hip-disarticulation, and hemipelvectomy precedents that already open this
+target. `labyrinthitis -> hearing-loss` (rank 1, INFECTIOUS_SPREAD) rests on the Maranhao 2016
+retrospective cohort drawn from 26 years of admissions for middle-ear-infection-associated
+labyrinthitis, which identified 14 patients (mean age 40 years; cholesteatomatous chronic otitis
+media in six, acute suppurative otitis media in six, chronic otitis media without cholesteatoma in
+two) with 24 concomitant complications (labyrinthine fistula six, meningitis five, facial paralysis
+five, mastoiditis five, cerebellar abscess two, temporal abscess one, one death), of whom eight
+(57%) became deaf and six (43%) acquired mixed hearing loss, the authors concluding that the hearing
+sequela of labyrinthitis was significant (PMID 26718959), and on the Taxak and Ram 2020 case report
+and literature review, which describes labyrinthitis as inner-ear inflammation disrupting
+transmission of sensory information from ear to brain and defines labyrinthitis ossificans as
+pathological ossification of the membranous labyrinthine spaces in response to an inner-ear insult,
+presenting with progressive bilateral sensorineural hearing loss (PMID 33082921); the harvested
+labyrinthitis-to-vestibular-disorder proposition remains FINAL-CLOSED under
+FINAL-CLOSE-PROPOSITION-MISMATCH (PMID 22388730) and is not reasserted in any form.
+`laryngeal-stenosis -> sleep-apnea` (rank 1, MECHANICAL_OR_COMPRESSIVE) rests on the Lackey 2025
+cross-sectional pilot cohort of twenty adults with non-traumatic subglottic stenosis (all female,
+mean age 48.4 years, mean body-mass index 24.1, 80% idiopathic), in which one night of home sleep
+testing found obstructive sleep apnea in 40% (15% moderate) with poor sleep quality in 70% and
+excessive daytime sleepiness in 20%, the authors concluding that prevalence is elevated and that
+screening and surveillance may need to be considered, while peak expiratory flow percentage did not
+correlate with the apnoea-hypopnea index and symptom scores did not separate subjects with and
+without apnoea (PMID 39654324), and on the Gadkaree 2017 case series of 262 adults with
+laryngotracheal stenosis, which records obstructive sleep apnea among the prevalent comorbidities of
+the iatrogenic cohort and associates iatrogenic aetiology, Cotton-Myer grade 3-4 stenosis, and lack
+of intraoperative steroids with tracheostomy dependence (PMID 28112014); the harvested
+laryngeal-stenosis-to-systemic-lupus-erythematosus proposition remains FINAL-CLOSED under
+FINAL-CLOSE-PROPOSITION-MISMATCH (PMID 32533778) and is not reasserted, the established direction
+for that pair running from the autoimmune disease to laryngeal involvement.
+
+Deferrals recorded this batch. `laryngitis` was deferred on self-limited-course, synonym-identity, and
+zero-record grounds: the identity carries the alias "acute laryngitis", whose located literature
+reports symptom-level voice impairment rather than a distinct downstream catalog diagnosis, while the
+chronic form is a separate published identity that already authors
+chronic-laryngitis -> vocal-cord-nodules-polyps-cysts-paralysis, so an acute-to-chronic edge would
+restate one disease process under two identity names (the eczema, iritis,
+intervertebral-disc-syndrome pattern); the located aphonia evidence is recurrent-laryngeal-nerve
+paralysis and functional laryngeal disorders rather than laryngitis, the located laryngospasm cohort
+is amyotrophic-lateral-sclerosis-specific (4% of 571 patients, triggered by saliva irritating the
+vocal cords and by meals), the laryngeal-cancer search returned tumour biology and
+predictive-marker studies rather than laryngitis-primary risk cohorts under dominant smoking and
+alcohol confounding, and the vocal-fold nodule window belongs to the chronic identity and to
+phonotrauma. `laryngocele` was deferred on magnitude, wrong-target, and direction grounds: the
+located literature is case reports and small series of presentation and management, the nearest
+catalog-fit proposition is a two-case report presenting laryngocele (one after partial laryngectomy)
+and an epiglottic cyst as rare causes of obstructive sleep apnea (PMID 19288148), which supplies no
+quantified laryngocele-specific association, the adjacent pharyngocele literature - including
+bilateral pharyngocoeles attributed to high-pressure continuous positive airway pressure
+(PMID 37663982) - concerns a different entity, secondary laryngoceles arise from laryngeal tumour
+obstruction or raised intralaryngeal pressure so a laryngocele-to-cancer edge would invert the
+established direction, and dysphonia, dysphagia, and stridor are manifestations of the lesion itself;
+a one-citation draft would also have raised the packet's quarantined-single-citation warning count,
+so no edge was authored. Both deferral records carry their reopening conditions in-file.
+
+Screens recorded for this batch: no `knee-disarticulation -> depressive-disorder` edge (the
+amputation-or-loss-of-use container owns the generic post-amputation mood window), no
+`-> contractures` edge (the located knee-disarticulation literature quantifies reamputation - 36%
+versus 15% after transfemoral reamputation - reoperation, prosthetic fitting, and mortality rather
+than stump contracture, and the disarticulation stump preserves the femoral condyles as an
+end-bearing surface), no `-> muscle-atrophy` or `-> loss-of-use-of-extremities` edge (zero-record and
+rating-framework-container guards), and no stump osteomyelitis or cellulitis edge (no
+condition-specific quantification located); no `labyrinthitis -> vestibular-disorder`, `dizziness`,
+`vertigo`, or benign-paroxysmal-positional-vertigo edge (prior closure plus constitutive-symptom and
+zero-record guards, with the secondary-BPPV literature head-trauma, Meniere, vestibular-neuritis, and
+sensorineural-hearing-loss anchored), no `-> tinnitus` edge (zero-record), and no `-> meningitis`,
+`-> facial-paralysis`, or `-> mastoiditis` edge (those were concomitant complications in a mixed
+middle-ear-disease cohort rather than labyrinthitis-specific downstream diagnoses, and the hearing-loss
+identity's meningitis window is authored from its own primary); and no `laryngeal-stenosis -> aphonia`,
+`-> vocal-cord-dysfunction`, `-> vocal-cord-paralysis`, `-> dysphagia`, `-> asthma`, or
+`-> tracheostomy-dependence` edge (zero-record, duplicate-scope, and absent-identity guards), with the
+subglottis authored on the laryngeal identity because it is a laryngeal structure while the separately
+catalogued tracheal-stenosis identity authors its own windows.
+
+Registry after lockstep: 582 relationships (508 explicit / 74 legacy), 949 reference uses (383
+verified / 566 pending-verification), 944 clinical / 5 legal uses, 875 source entities (346 active /
+520 pending-verification). Citation packet regenerated at 219 worksheets / 566 reference rows = live
+citation debt. Backlog after batch 51: **294** undispositioned zero-edge drafts (299 minus the five
+processed identities; the two deferrals leave the backlog by virtue of their disposition records), and
+the walked window (`kienbock-s-disease` .. `laryngocele`) verifies empty of unprocessed identities.
+Next-five: `laryngomalacia`, `laryngospasm`, `legg-calve-perthes-disease`, `leishmaniasis`, `leukemia`.
+
+Test-pin note (durable, extended again): the sweep touched 52 files and replaced 354 counter tokens in
+the first pass (relationships 579 -> 582, references/uses 943 -> 949, liveVerified 382 -> 383,
+unverified 561 -> 566, pending source entities 515 -> 520, total source entities 870 -> 875,
+explicit guards 505 -> 508, clinical references 938 -> 944, clinical provenance 942 -> 948, and the
+twelve-file draft-singles counter 253 -> 256 for this batch's three single-edge identities), with the
+`verifiedBaseline` line in `tests/helpers/master-resolution-2026-current.ts` skipped by an explicit
+line-scope guard and the frozen sibling `tests/helpers/master-2026-current.ts` (pins
+`conditionDispositions.length === 245` and the 236 unverified baseline) excluded wholesale; zero
+residue was confirmed afterwards. The battery then caught an omission the survey had missed:
+`verifiedProvenance` (388 -> 389) is pinned in ten ME-wave test files but is a derived value rather
+than a registry field, so the sweep map must carry every derived counter the audit scripts emit, not
+only the registry's own counts; a second targeted pass fixed nine files and the full suite returned
+green. Lesson recorded: run the suite as the sweep's verifier rather than trusting the survey's
+coverage, because a derived counter that appears in no registry file is invisible to a
+registry-diff-driven sweep. Standing recommendation updated: batches 35-50 are landed on origin/main
+via PR #470 (merge commit 239c104), so only batch 51 remains uncommitted and awaits the CI gate.
+
+
+---
+
+Mapping Expansion D1 batch 52 (2026-09-24) authored five draft-quarantined relationships across
+three of the five screened identities and recorded two deferrals. All five edges are
+ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment
+NOT_ASSERTED, and hypothesizedOnly:true. `laryngomalacia -> sleep-apnea` (rank 1,
+MECHANICAL_OR_COMPRESSIVE) rests on the Verkest 2020 retrospective review of children with
+laryngoscopy-confirmed laryngomalacia, in which 34 of 44 patients with complete data (77.4%) had
+concomitant obstructive sleep apnea at a median age of 12 weeks, the diagnosis changed severity
+classification and treatment decision in 24 cases (54.5%), and the obstructive apnoea-hypopnea index
+fell from 8.9 events/hour (4.4-12.1) to 2.4 (1.5-4.4) after supraglottoplasty (p = 0.009)
+(PMID 32896360), and on the Lajili 2024 analysis of 39 infants with moderate-to-severe
+laryngomalacia (median age 3.3 months) in which nap polysomnography found obstructive sleep apnea in
+77% with 69% moderate-to-severe (apnoea-hypopnea index above 5 per hour), weight-gain rate
+correlated negatively with the hypopnea and apnoea-hypopnea indices, and only the apnoea-hypopnea
+index predicted the surgical or non-invasive-ventilation decision (OR 2.1, 95% CI 1.6-2.8)
+(PMID 38573510). `laryngomalacia -> dysphagia` (rank 2, MECHANICAL_OR_COMPRESSIVE) rests on the
+Irace 2019 retrospective review, in which 142 of 395 children diagnosed with laryngomalacia in one
+year (35.9%) presented with recurrent respiratory issues, feeding difficulties, or both and
+underwent modified barium swallow study that documented swallowing dysfunction in 128 (90.1%) and
+aspiration in 60 (42.3%) with silent aspiration in 59 of those 60 (98.3%), epilepsy or seizures,
+laryngeal cleft, and prematurity being significantly associated with abnormal studies
+(PMID 30589926), and on the Simons 2016 cohort of 324 children with laryngomalacia, which recorded
+dysphagia or feeding-difficulty symptoms in 163 (50.3%), at least one abnormal swallowing
+assessment in 140 of 185 tested patients (75.7%) and in 43 of 65 without subjective dysphagia
+(66.2%), failure to thrive in 31 (9.6%) with greater severity more likely affected, and no
+significant relationship between laryngomalacia severity and abnormal swallowing function
+(PMID 26152504). `legg-calve-perthes-disease -> osteoarthritis` (rank 1, BIOMECHANICAL_ALTERATION)
+rests on the Onishi 2011 analysis of 67 patients (70 hips) at a mean 36.1-year follow-up in which
+only 48% of radiographically evaluated hips had no osteoarthritis (Tonnis grade 0), the Tonnis grade
+and JOA score declined after age 40, all patients older than 50 years showed severe osteoarthritis,
+osteoarthritis severity correlated significantly with age at follow-up, and younger age at diagnosis
+(under 8 years) correlated with a better result (PMID 21258809), and on the Shohat 2016 follow-up of
+40 patients (43 hips) after varus derotational osteotomy at a mean 42.5 years in which 7 patients
+(17% of the 41 hips with information available) underwent total hip arthroplasty, 16 of 28 hips with
+radiographs (57.1%) had no or minimal osteoarthritis signs, and the Stulberg classification was the
+only factor associated with fair or poor outcomes on multivariate analysis (PMID 27489318).
+`leishmaniasis -> anemia` (rank 1, INFECTIOUS_SPREAD) rests on the Tofighi Naeem 2014 review of 34
+children with confirmed visceral leishmaniasis (anemia in 97.1%, thrombocytopenia in 91.2%,
+leukopenia in 67.6%, fever and pallor or weakness in 97.1% each, splenomegaly in 97.1%)
+(PMID 25642253) and on the Sarkar 2018 cross-sectional study of 90 rK39-positive cases aged 3 to 80
+years (anemia in 62.7%, leukopenia in 57.6%, thrombocytopenia in 61.7% among primary kala-azar
+cases, pancytopenia in 33 cases overall) (PMID 30141437). `leishmaniasis -> thrombocytopenia`
+(rank 2, MULTIFACTORIAL) rests on the Hamwi 2020 review of 19 children (thrombocytopenia in 15,
+78.95%; anemia and pallor in all; splenomegaly in 18, 94.7%; marrow amastigotes in all)
+(PMID 33437694) and on the Khodabandeh 2024 study of 27 children (thrombocytopenia in 44.4%, anemia
+in 85.1%, fever in 96.2%, splenomegaly in 92.59%) (PMID 38654944), with marrow studies documenting
+megakaryocyte abnormalities as a third route alongside splenic sequestration and immune-mediated
+destruction.
+
+Deferrals recorded this batch. `laryngospasm` was deferred on direction-inversion, procedure-context,
+and magnitude grounds: the located spontaneous adult literature runs the other way, with a
+two-year series of 15 patients (mean age 56 years) showing an 80% association with gastroesophageal
+reflux disease, complete symptom resolution on proton pump inhibitors in six and partial relief in
+four, and the two patients with continuing syncopal episodes remitting after botulinum toxin
+injection (PMID 17319986), and a 19-patient sleep-related laryngospasm series in which every patient
+had at least one laryngopharyngeal reflux risk factor and 17 (89.5%) were symptom-free at one year on
+lifestyle and acid-suppression therapy (PMID 35099721); the located consequences are syncope
+(two of those 15 patients) and negative-pressure pulmonary edema, whose evidence is procedural - a
+four-case post-extubation series after general anesthesia (PMID 30591273) and a five-case
+post-anesthesia-recovery series in which four cases followed glossoptosis (PMID 40087571) - with only
+a Chest review naming laryngospasm among the usual causes of the syndrome (PMID 27063348). No catalog
+identity exists for syncope of this type or for aspiration, and an edge from this identity would
+invert the reflux-to-laryngospasm direction. `leukemia` was deferred on class/umbrella
+duplicate-scope grounds: the catalog identity is named "Leukemia (Acute & Chronic)" and aggregates the
+phenotypes whose member identities already own the pathways - chronic-b-cell-leukemias and
+hairy-cell-leukemia each author an anemia window - while leukemia itself is the target of four
+secondary-leukemia windows (myelodysplastic-syndrome, essential-thrombocythemia, polycythemia-vera,
+and primary-myelofibrosis), the same class-scope disposition applied to gastrointestinal-cancers and
+head-and-neck-cancers; the harvested leukemia-to-breast-cancer proposition remains FINAL-CLOSED under
+FINAL-CLOSE-PROPOSITION-MISMATCH (PMID 40445187), and the located quantitative outcomes within the
+identity's own evidence base are treatment-mediated (a randomized induction trial reporting grade 3
+or higher infections in 32% versus 67% and severe thrombocytopenia duration of 13 versus 19 days by
+regimen, PMID 40009498; bleeding outcomes in thrombocytopenic leukemic patients with venous
+thromboembolism, PMID 35845011; and post-treatment cataracts associated with cranial radiation,
+PMID 35187841). Both deferral records carry their reopening conditions in-file.
+
+Screens recorded for this batch: no `laryngomalacia -> gerd` edge (reflux is co-prevalent at 69.8% and
+treatment-responsive without established direction, and acid suppression did not reduce
+supraglottoplasty frequency or related hospitalization while thickened feeds were protective,
+PMID 34186104), no `laryngomalacia -> malnutrition-residuals` edge (the 9.6% failure-to-thrive and
+negative weight-gain correlations are carried by the published dysphagia-to-malnutrition-residuals
+window through the intermediate node, so authoring both would restate one feeding-failure pathway),
+and no `-> aspiration-pneumonia` or `-> airway-obstruction` edge (no catalog identity exists); no
+`legg-calve-perthes-disease -> avascular-necrosis` edge (the disease IS femoral-head osteonecrosis and
+the generic identity is the umbrella, following kienbock-s-disease and freiberg-s-infraction), no
+`-> post-traumatic-osteoarthritis` edge (that identity is reserved for injury-driven pathways), no
+`-> muscle-atrophy` or `-> unexplained-chronic-pain` edge (zero-record and lesion-explained guards),
+and no `-> joint-replacement-residuals` or `-> loss-of-use-of-extremities` edge (post-surgical-container
+and rating-framework guards); no `leishmaniasis -> keratitis` edge (FINAL-CLOSED under
+FINAL-CLOSE-PROPOSITION-MISMATCH, PMID 33913831), no `-> chronic-kidney-disease` edge (the located
+renal cohort quantified acute kidney injury in 17.4% of 298 patients with pre-renal azotemia dominating
+at admission and drug-induced injury in 50% of post-admission cases, with HIV co-infection
+independently associated at AOR 6.01 and concomitant infections at AOR 3.44 - target, treatment-mediation,
+and confounding guards, PMID 34101727), and no `-> splenomegaly`, `-> hepatomegaly`, `-> pancytopenia`,
+`-> hemophagocytic-lymphohistiocytosis`, or `-> malnutrition-residuals` edge (absent-identity and
+constitutive-presentation guards). Scope note: the generic Leishmaniasis identity carries a visceral-scoped
+evidence base, and both cytopenia windows are explicitly written to that scope.
+
+Registry after lockstep: 587 relationships (513 explicit / 74 legacy), 959 reference uses (383
+verified / 576 pending-verification), 954 clinical / 5 legal uses, 885 source entities (346 active /
+530 pending-verification). Citation packet regenerated at 224 worksheets / 576 reference rows = live
+citation debt. Backlog after batch 52: **289** undispositioned zero-edge drafts (294 minus the five
+processed identities), and the walked window (`laryngocele` .. `leukemia`) verifies empty of
+unprocessed identities. Next-five: `levator-ani-syndrome`, `libman-sacks-endocarditis`,
+`lichen-planopilaris`, `lichen-planus`, `lichen-simplex-chronicus`.
+
+Test-pin note (durable, extended once more): the sweep touched 52 files and replaced 308 counter tokens
+in one pass with per-token context predicates (relationships 582 -> 587, references/uses 949 -> 959,
+unverified 566 -> 576, pending source entities 520 -> 530, total source entities 875 -> 885, explicit
+guards 508 -> 513, clinical references 944 -> 954, clinical provenance 948 -> 958, and the twelve-file
+draft-singles counter 256 -> 257 for this batch's single single-edge identity). Two new false-positive
+classes were identified and guarded before any write: the accessibility and Section 508 test files
+contain "Section 508" as a standard number rather than the explicit-guard count, and the byte-limit and
+crypto tests contain "256 * 1024" and "aes-256" rather than the draft-singles count - so the sweep now
+requires each token to appear on a line matching that token's own vocabulary (a per-token context
+predicate) instead of relying on magnitude plus a global skip list. The dry run reported zero lines
+lacking registry vocabulary, and a residue check afterwards found only three intentional survivors: the
+"61(5):566-574" page range inside the ME-7 citation strings, plus the frozen sibling
+`tests/helpers/master-2026-current.ts` (pins 245 and 236) which remains excluded wholesale while the
+live `tests/helpers/master-resolution-2026-current.ts` is swept with its `verifiedBaseline` line
+skipped. Two unverified-count pins written without spaced operators (`verified===false)).toHaveLength(566)`)
+were missed by the first predicate pass and corrected by a targeted second pass, then verified by the
+full suite - the third consecutive batch in which the battery, not the survey, was the sweep's real
+verifier. Standing recommendation unchanged: batch 52 awaits the CI gate as the only uncommitted batch
+(35-50 landed via PR #470, batch 51 pending with this one).
+
+Mapping Expansion D1 batch 53 (2026-09-25) authored nine draft-quarantined relationships across all
+five screened identities, with no deferrals. All nine edges are ASSOCIATION_ONLY with
+etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, and
+hypothesizedOnly:true. `levator-ani-syndrome -> unexplained-chronic-pain` (rank 1,
+PSYCHOPHYSIOLOGICAL) is a case-matching presentation-and-workup edge on the genitofemoral-nerve-neuralgia
+and glomus-tumor precedent: the Bharucha and Lee 2016 Mayo Clinic Proceedings review places levator ani
+syndrome among the chronic anorectal and pelvic pain conditions sharing comorbid fibromyalgia and
+depression, impaired quality of life, and increased health care utilization, with pelvic floor muscle
+tension and peripheral and central sensitization implicated in pathogenesis (PMID 27712641), the Knowles
+and Cohen 2022 review organizes chronic anal pain into local causes, functional anorectal pain, and
+neuropathic pain syndromes with the diagnostic tests that separate them (PMID 35649568), and the
+Chiarioni 2011 systematic review documents chronic anorectal and pelvic pain in 7 to 24 percent of the
+population with pelvic-floor striated-muscle tension common to the family and 85 percent biofeedback
+success in levator-tenderness-selected proctalgia (PMID 22110274); the pain is constitutive of the
+syndrome (Rome IV defines chronic proctalgia as the pain presentation itself), so the edge records
+presentation-and-workup matching rather than a causal arrow.
+`libman-sacks-endocarditis -> cerebrovascular-accident-stroke-residuals` (rank 1,
+THROMBOTIC_OR_VASCULAR) rests on the Roldan 2008 randomized paired-imaging study of 81 patients with
+systemic lupus erythematosus and 75 controls, in which Libman-Sacks endocarditis was more common in
+patients (p < 0.001), the authors framing the entity as complicated by thromboembolism, severe valve
+regurgitation, need for high-risk valve surgery, or death and recommending transesophageal imaging in
+suspected cardioembolism (PMID 18085739), and on case material documenting recurrent transient ischemic
+attacks with multiple small right-hemisphere infarcts and mitral verrucous vegetations requiring valve
+replacement for extensive damage (PMID 22693297) and ischemic stroke revealing the endocarditis with
+mitral vegetations, severe regurgitation, and negative cultures (PMID 38116400).
+`libman-sacks-endocarditis -> heart-valve-disorders` (rank 2, IMMUNE_MEDIATED) rests on the Ishizu 2019
+case documenting that Libman-Sacks vegetations cause valvular stenosis and/or regurgitation, with
+oedematous leaflet thickening and poor coaptation producing severe mitral regurgitation and acute
+decompensated heart failure (PMID 31377769), the Georghiou 2003 double-valve report of moderate aortic
+and moderate-to-severe mitral regurgitation requiring double replacement for intractable heart failure
+whose literature survey disclosed only nine prior double-valve replacements in lupus (PMID 14658823),
+and the Ningyan 2021 report of severe mitral regurgitation with left ventricular dilatation and
+ejection-fraction reduction treated by transcatheter edge-to-edge repair (PMID 34661053); the edge is
+scoped to the progressive dysfunction after the vegetations, and the pump-failure pathway downstream of
+the regurgitation deliberately rides the published heart-valve-disorders -> congestive-heart-failure
+window (intermediate-node rule, the laryngomalacia batch-52 precedent).
+`lichen-planopilaris -> depressive-disorder` (rank 1) and `lichen-planopilaris -> anxiety-disorder`
+(rank 2) (both PSYCHOPHYSIOLOGICAL) rest on the Alirezaei 2019 case-control study of 38 lichen
+planopilaris individuals versus 58 gender- and age-matched controls, in which expert-rated depression
+scores were higher, self-esteem and mental health lower, higher disease activity and hair-loss severity
+tracked with higher depression and lower quality-of-life scores, illness duration was statistically
+unrelated to the mental-health differences, and higher anxiety scores predicted poorer quality of life
+within the disease group (PMID 30970367), and on the Kelati and Jafferany 2024 systematic review
+documenting that lichen planopilaris and frontal fibrosizing alopecia cause significant psychological
+distress with higher depression and anxiety scores at higher disease activity and severity (PMID
+39152785). `lichen-planus -> depressive-disorder` (rank 1, PSYCHOPHYSIOLOGICAL) rests on the Akay 2002
+dermatology-clinic case-control documenting depression scores of 53 percent in lichen planus versus 20
+percent in controls (PMID 12224690), the Sampogna 2020 13-country multicentre study of 3509 outpatients
+in which lichen planus carried pain/discomfort in 75.6 percent - among the highest of all dermatoses -
+with that burden linked to depression, anxiety, and thoughts of suicide (PMID 32250441), and the Tekin
+2024 review documenting frequent quality-of-life impairment requiring psychological support (PMID
+38982032). `lichen-planus -> squamous-cell-carcinoma` (rank 2, MALIGNANT_TRANSFORMATION) is scoped to
+cutaneous hypertrophic lichen planus: the Tekin 2024 review places cutaneous hypertrophic and mucosal
+forms at heightened malignant-transformation risk (PMID 38982032), the Haenen 2018 case documents
+squamous cell carcinoma arising in a 12-year hypertrophic plaque with fewer than 50 cutaneous cases in
+the literature (PMID 30002207), and the Xu 2025 immunohistochemical study of 34 hypertrophic biopsies
+documents p16 overexpression with cell-cycle dysregulation as a proposed contributor to transformation
+(PMID 39912658); the quantified oral lichen planus transformation rates (0.44 to 1.2 percent under
+strict meta-analytic criteria, PMID 31981238; 1.37 percent for oral lichen planus in systematic review,
+PMID 29738106) are ORAL-scoped and deliberately not recycled - the oral-lichen-planus-lichenoid-lesions
+identity owns that pathway via its -> oral-cancer window (ME-29 scope decision, expansion rule 11).
+`lichen-simplex-chronicus -> depressive-disorder` (rank 1) and `lichen-simplex-chronicus ->
+anxiety-disorder` (rank 2) (both PSYCHOPHYSIOLOGICAL) rest on the Yalcin 2020 case-control study of 50
+lichen simplex chronicus patients and 49 controls under Structured Clinical Interview for DSM-5, which
+found psychiatric comorbidity in 62 percent (major depressive disorder 32 percent, dysthymia 18 percent,
+generalized anxiety disorder 12 percent), depression scores of 18.60 versus 7.40, anxiety scores of
+18.56 versus 5.18, and relationships with symptom severity (PMID 33034929), and on the Shafiyev 2025
+prospective observational study of 219 patients documenting depression and anxiety score dynamics under
+duloxetine plus topical corticosteroid treatment (PMID 39812844).
+
+No deferrals this batch; every screened identity authored at least one window.
+
+Screens recorded for this batch: no `levator-ani-syndrome -> anismus-pelvic-floor-dyssynergia` edge
+(Rome IV separates the pain syndrome from the defecation disorder; co-prevalence is comorbidity), no
+`-> fecal-incontinence` edge (the published anismus -> fecal-incontinence window owns the pelvic-floor
+outlet pathway, and the located soiling and postprandial-defecation cohorts are functional-GI-overlap
+class, PMID 29987361 and PMID 27824643), no `-> chronic-pelvic-pain-syndrome` edge (constitutive - the
+Chiarioni review treats chronic proctalgia as a chronic pelvic pain syndrome), no `->
+irritable-bowel-syndrome` edge (the Rome-III overlap clustering of 2819 outpatients found levator ani
+syndrome a homogeneous single-disorder group - negative overlap evidence, PMID 33555092), and no `->
+depressive-disorder` edge (review-level association and a 5-of-10 chronic idiopathic anal pain pilot,
+PMID 23692279, without a condition-specific quantified depression cohort; reopening condition
+recorded); no direct `libman-sacks-endocarditis -> congestive-heart-failure` edge (intermediate-node
+rule - the pump-failure pathway rides the heart-valve-disorders -> congestive-heart-failure window), no
+`-> systemic-lupus-erythematosus` edge (upstream manifestation - direction guard), no `->
+valvular-heart-disease` edge (near-synonymous twin valve identity; one valvular target only), and no
+`-> pulmonary-embolism`, `-> deep-vein-thrombosis`, `-> thrombocytopenia`, or `-> cardiac-arrhythmia`
+edge (left-sided arterial embolization only; venous, cytopenic, and rhythm phenomena are antiphospholipid
+and treatment co-scope); no `lichen-planopilaris -> scarring-alopecia` or `-> alopecia` edge
+(constitutive - the disease IS a primary cicatricial alopecia, following the
+frontal-fibrosizing-alopecia rejection), no `-> loss-of-eyebrow` edge (the FFA identity owns the eyebrow
+pathway), no `-> insomnia` edge (the Boghosian 2026 sleep-and-hair-loss systematic review includes only
+one lichen planopilaris study and concludes at the hair-loss-class level, PMID 41535530; reopening
+condition recorded), and no `-> squamous-cell-carcinoma` edge (no scarring-alopecia malignant
+transformation records); no `lichen-planus -> anxiety-disorder` edge (oral-scoped HADS studies only),
+no `-> oral-cancer` or `-> oral-candidiasis` edge (oral identity's scope), no `-> lichen-planopilaris`,
+`-> scarring-alopecia`, or `-> alopecia` edge (the follicular variant is its own identity with its own
+windows), and no metabolic edge (glucose intolerance, dyslipidemia, and cardiovascular associations in
+PMID 38982032 are shared-driver class); no `lichen-simplex-chronicus -> insomnia` edge (the Boozalis
+2018 nocturnal-pruritus review names lichen simplex chronicus among the lesser pediatric contributors
+without condition-specific sleep quantification, so the dermatitis-to-insomnia adult band does not
+transfer, PMID 29943835; reopening condition recorded), no `-> cellulitis` edge (zero condition-specific
+infection-rate records; impetiginization is textbook-level only), and no `-> scars` edge (lichenification
+and post-inflammatory pigment change are not scar tissue).
+
+Process notes: all nineteen citations were NCBI-verified via efetch BEFORE file authoring with a 19/19
+title match (batch-30 lesson institutionalized, ninth consecutive clean verification cycle); the
+post-write structural self-audit passed on the first attempt for all five files with zero contamination
+after one pre-emptive fix (the lichen-planus squamous-cell-carcinoma edge carried four references and
+was trimmed to the registered trio of review, case, and p16-mechanism anchors with the second case
+report - PMID 38571860 - retained as corroborating context in the governance notes).
+
+Registry after lockstep: 596 relationships (522 explicit / 74 legacy), 982 reference uses (383
+verified / 599 pending-verification), 977 clinical / 5 legal uses, 903 source entities (346 active /
+548 pending-verification). Citation packet regenerated at 233 worksheets / 599 reference rows = live
+citation debt. Backlog after batch 53: **284** undispositioned zero-edge drafts (289 minus the five
+processed identities, the reproducible series continuing 364, 294, 289, 284), and the walked window
+(`levator-ani-syndrome` .. `lichen-simplex-chronicus`) verifies empty of unprocessed identities.
+Next-five: `limitation-of-motion`, `linear-iga`, `lingual-neuralgia`, `lipoid-pneumonia`,
+`livedo-reticularis` (each pre-screened clean against every ledger).
+
+Test-pin note (durable, extended once more): the sweep touched 52 files and replaced 310 counter tokens
+in one pass with the batch-52 per-token context predicates carried over unchanged (relationships 587 ->
+596, references/uses 959 -> 982, unverified 576 -> 599, pending source entities 530 -> 548, total source
+entities 885 -> 903, explicit guards 513 -> 522, clinical references 954 -> 977, clinical provenance
+958 -> 981, and the twelve-file draft-singles counter 257 -> 258 for this batch's single single-edge
+identity). The dry run reported zero lines lacking registry vocabulary, the compact-syntax pins
+(`verified===false)).toHaveLength(576)` class) were replaced in the same pass, and the residue check
+found only the two intentional survivor classes: the frozen sibling `tests/helpers/master-2026-current.ts`
+pins (245 and 236, excluded wholesale) and the `61(5):566-574` page range inside the ME-7 citation
+strings. Standing recommendation: batches 51-53 await the CI gate (35-50 landed via PR #470); landing
+them through branch, PR, CI, and merge is the immediate next step before batch 54.

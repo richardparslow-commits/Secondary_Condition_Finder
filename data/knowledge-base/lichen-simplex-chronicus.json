@@ -2,8 +2,125 @@
   "id": "lichen-simplex-chronicus",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review dermatologic, autoimmune, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 53 (2026-09-25): two ASSOCIATION_ONLY draft mappings pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: both edges assert association only (etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true, mechanismCategory PSYCHOPHYSIOLOGICAL) on the dermatitis psychiatric precedent. The anchors are cross-sectional case-control and treatment-observational class with screening instruments (Beck inventories, SCID-5 in one study) rather than longitudinal onset data, and the direction is unasserted because itch-scratch distress and mood disorder influence each other. Individual claims require dermatologist-confirmed lichen simplex chronicus with symptom-severity grading, dated psychiatric assessment, and review by a qualified medical professional.",
+    "Pathway and duplicate-scope screens: no edge to insomnia despite the itch-arousal precedent (see governance notes for the reopening condition); no edge to cellulitis (zero located PubMed records for lichen-simplex-chronicus-specific infection or cellulitis rates; impetiginization is textbook-level only and the dermatitis -> cellulitis portal-of-entry evidence does not transfer without condition-specific data); no edge to scars (lichen simplex chronicus produces lichenified plaques and post-inflammatory pigment change rather than scar tissue - the excoriation-disorder -> scars wound-depth pathway is not shared); no edge to dermatitis or contact-dermatitis (sibling inflammatory dermatoses with their own windows); no edge to pruritus or itch-type targets (constitutive symptom)."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 53 (2026-09-25): two bounded association edges authored - lichen-simplex-chronicus to depressive-disorder (rank 1) and to anxiety-disorder (rank 2) - both classified ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, and hypothesizedOnly:true; mechanismCategory PSYCHOPHYSIOLOGICAL. Both propositions rest on the Yalcin 2020 case-control study of 50 patients with lichen simplex chronicus and 49 controls administered the Structured Clinical Interview for DSM-5, the Temperament and Character Inventory, and the Beck Anxiety and Depression inventories, which found psychiatric comorbidity in 62 percent of the lichen simplex chronicus group (14 percent carrying two psychiatric diagnoses), the most common disorders being major depressive disorder (32 percent), dysthymia (18 percent), and generalized anxiety disorder (12 percent), with significantly higher mean depression scores (18.60 versus 7.40) and anxiety scores (18.56 versus 5.18) than controls and relationships between these findings and symptom severity (PMID 33034929), and on the Shafiyev 2025 prospective observational study of 219 lichen simplex chronicus (neurodermatitis) patients in which quality of life, pruritus, and Beck depression and anxiety inventories were assessed before and after three months of duloxetine and topical corticosteroid treatment, with the greatest reductions in depression and anxiety scores in the combined treatment group and regression analysis relating the psychopathological measures to the clinical state (PMID 39812844).",
+    "Counter-evidence and caveat screens recorded 2026-09-25: (i) direction - the 2020 case-control is cross-sectional without premorbid mood history and the mood-severity relationship is bidirectional (psychic distress aggravates itch-scratch cycling while the lichenified pruritic plaque degrades mood and sleep); (ii) treatment mediation in the 2025 study - duloxetine is itself a serotonin-norepinephrine antidepressant prescribed on the psychiatric indication, so within-study mood improvement cannot separate direct antidepressant effect from itch relief, and the combined-treatment group also received the potent topical corticosteroid; (iii) instrument class - screening inventories and one SCID-5 assessment without longitudinal diagnostic confirmation; (iv) single-country single-center evidence base; (v) comorbidity attribution - the psychiatric diagnoses in the case-control may reflect referral-clinic ascertainment of distressed patients.",
+    "Negative screens recorded 2026-09-25: (i) no lichen-simplex-chronicus-to-insomnia edge - the Boozalis 2018 review of nocturnal pruritus names lichen simplex chronicus among the lesser contributors to nocturnal itch in children (after atopic dermatitis and psoriasis) and documents poor sleep quality as the consequence of nocturnal itching, but provides no lichen-simplex-chronicus-specific sleep quantification and is pediatric-scoped, so the dermatitis -> insomnia adult itch-arousal band does not transfer (PMID 29943835); reopening condition: a condition-specific ISI, PSQI, or actigraphy cohort in lichen simplex chronicus; (ii) no -> cellulitis edge (zero condition-specific infection-rate records; the dermatitis -> cellulitis barrier-break evidence does not transfer); (iii) no -> scars edge (lichenification and post-inflammatory pigment change, not scar tissue); (iv) no -> pruritus-ani or site-specific itch edge (site variants are the same pruritus-scratch pathway, constitutive); (v) no -> substance-use-disorder edge despite the neurodermatitis treatment literature (no condition-specific quantification located)."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "depressive-disorder",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The Yalcin 2020 case-control study of 50 patients with lichen simplex chronicus and 49 controls administered the Structured Clinical Interview for DSM-5 and the Beck Depression Inventory found psychiatric comorbidity in 62 percent of the lichen simplex chronicus group (14 percent with two psychiatric diagnoses), with major depressive disorder the most common diagnosis (32 percent, alongside dysthymia 18 percent and generalized anxiety disorder 12 percent), mean depression scores of 18.60 versus 7.40 in controls, and relationships between these findings and the symptom severity of the disease (PMID 33034929); the Shafiyev 2025 prospective observational study of 219 lichen simplex chronicus patients assessed quality of life, pruritus, and Beck depression inventory scores before and after three months of duloxetine and topical corticosteroid treatment, documenting the greatest depression-score reduction in the combined-treatment group and relating the psychopathological measures to the clinical state in regression analysis (PMID 39812844); the literature documents elevated depression scores and depressive-disorder frequency in individuals with lichen simplex chronicus compared with controls without establishing that the disease caused a depressive disorder in any individual.",
+        "causationStatus": "The mapping does not assert that lichen simplex chronicus caused an individual's depressive disorder: the case-control is cross-sectional without premorbid mood history and mood-severity relationships in chronic itch are bidirectional, the treatment study prescribes duloxetine (an antidepressant) on the psychiatric indication so mood improvement cannot separate direct pharmacologic effect from itch relief, screening inventories and a single SCID-5 assessment do not establish longitudinal diagnosis, and referral-clinic ascertainment may enrich distressed patients - so no directional claim is made."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "PSYCHOPHYSIOLOGICAL",
+        "primaryVector": "A hypothesized itch-scratch-distress route is described: the self-perpetuating itch-scratch-lichenification cycle produces chronic pruritus, sleep disruption, and visible thickened plaques that plausibly drive depressive symptoms, while stress and negative affect lower the pruritus threshold and intensify scratching, forming a loop; the documented symptom-severity relationship and the combined antidepressant-plus-anti-inflammatory treatment response are consistent with this loop, but the individual share of itch burden, sleep loss, and premorbid mood remains a hypothesis.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Depressive-disorder frequency of 32 percent and mean depression scores roughly 2.5 times control levels are documented in a DSM-5 case-control study of lichen simplex chronicus with a symptom-severity relationship, and a 219-patient prospective treatment study documents depression-score dynamics under combined therapy, but individual determination requires dermatologist-confirmed lichen simplex chronicus with symptom-severity grading, dated psychiatric assessment with diagnostic criteria for depressive disorder, documentation of premorbid mood and itch-scratch chronology, and review by a qualified medical professional.",
+        "evidenceGaps": "Dermatologist documentation of lichen simplex chronicus diagnosis (lichenified plaque morphology, site, duration), symptom-severity grading (pruritus numeric rating, Skindex-16 or DLQI) with dates, itch-scratch chronology, and treatment history (topical corticosteroids, antipruritics, antidepressants such as duloxetine, phototherapy) with response; psychiatric assessment with dates (structured interview where performed, or Beck Depression Inventory or HADS scores); documentation of premorbid mood history, psychosocial stressors, sleep quality, and prior psychiatric treatment; exclusion of other contributors (atopic dermatitis or other pruritic dermatoses, thyroid disease, anemia, neuropathy, medication effects, primary mood disorder predating the eruption); dermatology and psychiatry or psychology assessment of the attribution",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Primary depressive disorder predating the eruption",
+          "Itch-burden or sleep-loss distress without comorbid mood disorder",
+          "Atopic dermatitis, psoriasis, or another pruritic dermatosis with its own mood pathway",
+          "Thyroid disease, anemia, or neuropathy producing mood symptoms or pruritus",
+          "Direct pharmacologic mood effect of prescribed antidepressant therapy",
+          "Substance use or medication effect"
+        ]
+      },
+      "evidenceGaps": [
+        "Dermatologist documentation of lichen simplex chronicus diagnosis (lichenified plaque morphology, site, duration), symptom-severity grading (pruritus numeric rating, Skindex-16 or DLQI) with dates, itch-scratch chronology, and treatment history (topical corticosteroids, antipruritics, antidepressants such as duloxetine, phototherapy) with response; psychiatric assessment with dates (structured interview where performed, or Beck Depression Inventory or HADS scores); documentation of premorbid mood history, psychosocial stressors, sleep quality, and prior psychiatric treatment; exclusion of other contributors (atopic dermatitis or other pruritic dermatoses, thyroid disease, anemia, neuropathy, medication effects, primary mood disorder predating the eruption); dermatology and psychiatry or psychology assessment of the attribution"
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY on the dermatitis psychiatric precedent: a DSM-5 case-control study documents psychiatric comorbidity in 62 percent of 50 lichen simplex chronicus patients with major depressive disorder in 32 percent and depression scores of 18.60 versus 7.40 in controls tied to symptom severity, and a 219-patient prospective study documents depression-score dynamics under duloxetine-plus-corticosteroid treatment; because the design is cross-sectional without premorbid mood history, the treatment study is confounded by antidepressant indication, and the itch-scratch-distress loop is bidirectional, the conservative standard keeps the edge at association only and routes individual claims through severity-documented disease plus dated psychiatric assessment.",
+      "sourceReferences": [
+        {
+          "citation": "Yalçın M, Baş A, Ergelen M, Gökçe E, Usta Sağlam NG, Öcek Baş T, Gıynaş FF. Psychiatric comorbidity and temperament-character traits of the patients with lichen simplex chronicus: The relation with the symptom severity of the disease. Dermatol Ther. 2020 Nov;33(6):e14389. doi:10.1111/dth.14389. PMID 33034929.",
+          "note": "Case-control study of 50 lichen simplex chronicus patients and 49 controls with SCID-5, Temperament and Character Inventory, and Beck inventories: psychiatric comorbidity in 62 percent (14 percent with two diagnoses), major depressive disorder 32 percent, dysthymia 18 percent, generalized anxiety disorder 12 percent, depression scores 18.60 versus 7.40 and anxiety scores 18.56 versus 5.18, related to symptom severity - the structured-assessment anchor for both edges.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33034929/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 33034929; 50 lichen simplex chronicus vs 49 controls, 62% psychiatric comorbidity, MDD 32%, BDI 18.60 vs 7.40"
+        },
+        {
+          "citation": "Shafiyev J, Gahramanov I. Evaluating duloxetine for pruritus and psychiatric comorbidities in lichen simplex chronicus. Arch Dermatol Res. 2025 Jan;317(1):249. doi:10.1007/s00403-024-03775-7. PMID 39812844.",
+          "note": "Prospective observational study of 219 lichen simplex chronicus (neurodermatitis) patients assessing quality of life, pruritus, and Beck depression and anxiety inventories before and after three months of duloxetine and topical corticosteroid treatment, with the greatest depression and anxiety score reductions in the combined group and psychopathological measures related to the clinical state in regression - the treatment-response and scale-dynamics anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39812844/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 39812844; 219 lichen simplex chronicus patients, BDI-II and BAI dynamics under duloxetine plus clobetasol"
+        }
+      ]
+    },
+    {
+      "conditionId": "anxiety-disorder",
+      "rank": 2,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The Yalcin 2020 case-control study of 50 patients with lichen simplex chronicus and 49 controls found generalized anxiety disorder in 12 percent of the lichen simplex chronicus group under structured DSM-5 interview, mean Beck Anxiety Inventory scores of 18.56 versus 5.18 in controls, higher harm-avoidance temperament scores, and relationships between the anxiety findings and the symptom severity of the disease (PMID 33034929); the Shafiyev 2025 prospective observational study of 219 lichen simplex chronicus patients assessed Beck Anxiety Inventory scores before and after three months of duloxetine and topical corticosteroid treatment, documenting the greatest anxiety-score reduction in the combined-treatment group and relating anxiety measures to the clinical state in regression analysis (PMID 39812844); the literature documents elevated anxiety scores and anxiety-disorder frequency in individuals with lichen simplex chronicus compared with controls without establishing that the disease caused an anxiety disorder in any individual.",
+        "causationStatus": "The mapping does not assert that lichen simplex chronicus caused an individual's anxiety disorder: the case-control is cross-sectional without premorbid anxiety history and the anxiety-severity relationship in chronic pruritus is bidirectional (anxiety lowers the pruritus threshold and intensifies scratching), the treatment study cannot separate direct anxiolytic pharmacology from itch relief because duloxetine is prescribed on the psychiatric indication, screening inventories dominate the instruments, and referral-clinic ascertainment may enrich distressed patients - so no directional claim is made."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "PSYCHOPHYSIOLOGICAL",
+        "primaryVector": "A hypothesized itch-anxiety-arousal route is described: chronic pruritus with compulsive scratching and visible lichenified plaques plausibly sustains anticipatory worry and arousal, while anxiety and stress lower the pruritus threshold through central itch-scratch modulation, forming a self-reinforcing loop; the documented anxiety-score elevation, harm-avoidance temperament signal, and symptom-severity relationship are consistent with this loop, but the individual share of itch burden and premorbid temperament remains a hypothesis.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Anxiety-disorder frequency of 12 percent and anxiety scores roughly 3.5 times control levels are documented in a DSM-5 case-control study of lichen simplex chronicus with a symptom-severity relationship, and a 219-patient prospective study documents anxiety-score dynamics under combined therapy, but individual determination requires dermatologist-confirmed lichen simplex chronicus with symptom-severity grading, dated psychiatric assessment with diagnostic criteria for anxiety disorder, documentation of premorbid anxiety and itch-scratch chronology, and review by a qualified medical professional.",
+        "evidenceGaps": "Dermatologist documentation of lichen simplex chronicus diagnosis with site, severity grading (pruritus numeric rating, Skindex-16 or DLQI) and itch-scratch chronology with dates; psychiatric assessment with dates (structured interview where performed, or Beck Anxiety Inventory or HADS-anxiety scores); documentation of premorbid anxiety and temperament, worry content, psychosocial stressors, sleep quality, and prior psychiatric treatment; exclusion of other contributors (hyperthyroidism, stimulant or caffeine effects, atopic dermatitis or other pruritic dermatoses, medication effects, primary anxiety disorder predating the eruption); dermatology and psychiatry or psychology assessment of the attribution",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Primary anxiety disorder predating the eruption",
+          "Itch-burden or sleep-loss arousal without comorbid anxiety disorder",
+          "Obsessive-compulsive spectrum or habit-tic scratching without generalized anxiety",
+          "Hyperthyroidism, stimulant, or medication effect producing anxiety symptoms",
+          "Atopic dermatitis or another pruritic dermatosis with its own anxiety pathway",
+          "Direct anxiolytic pharmacologic effect of prescribed duloxetine or similar therapy"
+        ]
+      },
+      "evidenceGaps": [
+        "Dermatologist documentation of lichen simplex chronicus diagnosis with site, severity grading (pruritus numeric rating, Skindex-16 or DLQI) and itch-scratch chronology with dates; psychiatric assessment with dates (structured interview where performed, or Beck Anxiety Inventory or HADS-anxiety scores); documentation of premorbid anxiety and temperament, worry content, psychosocial stressors, sleep quality, and prior psychiatric treatment; exclusion of other contributors (hyperthyroidism, stimulant or caffeine effects, atopic dermatitis or other pruritic dermatoses, medication effects, primary anxiety disorder predating the eruption); dermatology and psychiatry or psychology assessment of the attribution"
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY on the dermatitis psychiatric precedent: the same DSM-5 case-control study documents generalized anxiety disorder in 12 percent of lichen simplex chronicus patients with anxiety scores of 18.56 versus 5.18 in controls and a harm-avoidance temperament signal tied to symptom severity, and the 219-patient prospective study documents anxiety-score dynamics under combined duloxetine and corticosteroid treatment; because the design is cross-sectional without premorbid anxiety history, the treatment study is confounded by psychiatric indication, and the itch-anxiety loop is bidirectional, the conservative standard keeps the edge at association only and routes individual claims through severity-documented disease plus dated psychiatric assessment.",
+      "sourceReferences": [
+        {
+          "citation": "Yalçın M, Baş A, Ergelen M, Gökçe E, Usta Sağlam NG, Öcek Baş T, Gıynaş FF. Psychiatric comorbidity and temperament-character traits of the patients with lichen simplex chronicus: The relation with the symptom severity of the disease. Dermatol Ther. 2020 Nov;33(6):e14389. doi:10.1111/dth.14389. PMID 33034929.",
+          "note": "Case-control study of 50 lichen simplex chronicus patients and 49 controls: generalized anxiety disorder 12 percent under SCID-5, Beck Anxiety Inventory 18.56 versus 5.18, higher harm-avoidance temperament, findings related to symptom severity - the structured-assessment anxiety anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33034929/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 33034929; GAD 12%, BAI 18.56 vs 5.18 in 50 lichen simplex chronicus vs 49 controls"
+        },
+        {
+          "citation": "Shafiyev J, Gahramanov I. Evaluating duloxetine for pruritus and psychiatric comorbidities in lichen simplex chronicus. Arch Dermatol Res. 2025 Jan;317(1):249. doi:10.1007/s00403-024-03775-7. PMID 39812844.",
+          "note": "Prospective observational study of 219 lichen simplex chronicus patients: Beck Anxiety Inventory scores assessed before and after three months of duloxetine and topical corticosteroid treatment, with the greatest anxiety-score reduction in the combined group and anxiety measures related to the clinical state in regression analysis - the treatment-response anxiety anchor.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39812844/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 39812844; BAI dynamics in 219 lichen simplex chronicus patients under duloxetine plus clobetasol"
+        }
+      ]
+    }
+  ]
 }
