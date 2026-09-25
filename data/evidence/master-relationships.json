@@ -6,8 +6,8 @@
  "installedFrom": "Master Registry Discrepancy Resolution 2026",
  "authorityBoundary": "Authoritative for current relationship direction, proposition text, guard state, source linkage, and KB parity; does not establish an individual VA medical nexus.",
  "counts": {
-  "relationships": 610,
-  "explicitPublicationGuards": 536,
+  "relationships": 615,
+  "explicitPublicationGuards": 541,
   "legacyRationaleBoundaries": 74
  },
  "relationships": [
@@ -19791,6 +19791,157 @@
    "sourceReferenceCount": 3,
    "pathwayIntelligencePresent": false,
    "suggestionObjectHash": "d73b2a64bb2ec74a6f238b5c7e9a78bf1f9304a13ba4d19a1c7dd113e7bc0a19"
+  },
+  {
+   "relationshipId": "rel-loss-of-eyelids-to-keratitis",
+   "primaryId": "loss-of-eyelids",
+   "targetId": "keratitis",
+   "direction": "loss-of-eyelids -> keratitis",
+   "primaryPublicationState": "draft",
+   "rank": 1,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY on the protective-coverage mechanical precedent: the double-bridge Cutler-Beard reconstruction case documents significantly deficient full-thickness eyelid tissue presenting with severe exposure keratopathy due to lagophthalmos, the technique remaining a cornerstone for full-thickness defects (PMID 42671095), and the single-stage autologous buccal mucosal graft with orbicularis oculi myocutaneous flap case for a full-thickness eyelid defect records the absence of corneal exposure among its success endpoints, defining exposure as the complication of the unreconstructed defect (PMID 42558230); because the evidence is case and reconstructive-series class without incidence denominators, the facial-palsy lagophthalmos literature is a different condition with intact lids, and reconstruction plus lubrication alter the course, the conservative standard keeps the edge at association only and routes individual claims through dated ophthalmologic documentation of the defect with ocular-surface findings and competing-cause exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY on the protective-coverage mechanical precedent: the double-bridge Cutler-Beard reconstruction case documents significantly deficient full-thickness eyelid tissue presenting with severe exposure keratopathy due to lagophthalmos, the technique remaining a cornerstone for full-thickness defects (PMID 42671095), and the single-stage autologous buccal mucosal graft with orbicularis oculi myocutaneous flap case for a full-thickness eyelid defect records the absence of corneal exposure among its success endpoints, defining exposure as the complication of the unreconstructed defect (PMID 42558230); because the evidence is case and reconstructive-series class without incidence denominators, the facial-palsy lagophthalmos literature is a different condition with intact lids, and reconstruction plus lubrication alter the course, the conservative standard keeps the edge at association only and routes individual claims through dated ophthalmologic documentation of the defect with ocular-surface findings and competing-cause exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to the protective-coverage exposure route: the modified Cutler-Beard case documents significantly deficient full-thickness eyelid tissue with severe exposure keratopathy from lagophthalmos (PMID 42671095) and the single-stage buccal-mucosal-graft reconstruction case defines corneal exposure as the complication of the unreconstructed full-thickness defect (PMID 42558230); evidence is case and reconstructive-series class, the facial-palsy lagophthalmos literature is a different condition with intact lids and is not recycled, so individual claims route through dated ophthalmologic documentation of the defect with ocular-surface findings and competing-cause exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No cohort quantifies keratitis incidence by eyelid-defect size or site; the located material is case and reconstructive-series class, and facial-palsy lagophthalmos is a different condition."
+   ],
+   "sourceIds": [
+    "pmid-42671095",
+    "pmid-42558230"
+   ],
+   "sourceReferenceCount": 2,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "01a872ab25ab4b41ec46a291872a356320c1ba0948cda34c215b235119a2abc2"
+  },
+  {
+   "relationshipId": "rel-loss-of-jaw-to-dysphagia",
+   "primaryId": "loss-of-jaw",
+   "targetId": "dysphagia",
+   "direction": "loss-of-jaw -> dysphagia",
+   "primaryPublicationState": "draft",
+   "rank": 1,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY on the anatomic-mechanics precedent, mirroring the ankyloglossia dysphagia window's bounded framing: the prospective consecutive cohort of 25 segmental mandibulectomy patients with virtual-planning fibular free-flap reconstruction used validated functional measures and found a 35 percent decline in the MD Anderson Dysphagia Inventory score at three months from the preoperative baseline, with the dysphagia score improving at twelve months while the speech handicap persisted (PMID 36717338), and the 201-patient retrospective comparative cohort of lateral mandibulectomy for oral squamous cell carcinoma - explicitly excluding any glossectomy to isolate the mandibular variable - assessed swallowing on the functional oral intake scale at one, three, and six months and found outcomes independent of whether mandibular continuity was restored (PMID 39577833); because the evidence is oral-cancer-surgery class where adjuvant radiation and soft-tissue resection co-vary, reconstruction recovers part of the function, and no jaw-intact control arm exists, the conservative standard keeps the edge at association only and routes individual claims through dated videofluoroscopic swallowing studies with defect-level documentation and competing-cause exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY on the anatomic-mechanics precedent, mirroring the ankyloglossia dysphagia window's bounded framing: the prospective consecutive cohort of 25 segmental mandibulectomy patients with virtual-planning fibular free-flap reconstruction used validated functional measures and found a 35 percent decline in the MD Anderson Dysphagia Inventory score at three months from the preoperative baseline, with the dysphagia score improving at twelve months while the speech handicap persisted (PMID 36717338), and the 201-patient retrospective comparative cohort of lateral mandibulectomy for oral squamous cell carcinoma - explicitly excluding any glossectomy to isolate the mandibular variable - assessed swallowing on the functional oral intake scale at one, three, and six months and found outcomes independent of whether mandibular continuity was restored (PMID 39577833); because the evidence is oral-cancer-surgery class where adjuvant radiation and soft-tissue resection co-vary, reconstruction recovers part of the function, and no jaw-intact control arm exists, the conservative standard keeps the edge at association only and routes individual claims through dated videofluoroscopic swallowing studies with defect-level documentation and competing-cause exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to mandibular-resection functional decline: the prospective 25-patient segmental mandibulectomy cohort documents a 35 percent MD Anderson Dysphagia Inventory decline at three months with partial twelve-month recovery (PMID 36717338), and the 201-patient comparative lateral-mandibulectomy cohort with glossectomy excluded documents swallowing outcomes independent of continuity restoration (PMID 39577833); evidence is oral-cancer-surgery class with radiation and soft-tissue covariates, so individual claims route through dated videofluoroscopic swallowing studies with defect-level documentation and competing-cause exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No jaw-intact control arm exists in the located cohorts; oral-cancer radiation and soft-tissue resection co-vary with the jaw defect, and reconstruction recovers part of the function."
+   ],
+   "sourceIds": [
+    "pmid-36717338",
+    "pmid-39577833"
+   ],
+   "sourceReferenceCount": 2,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "7fef9ee88d41c40cf2af5727c7b9c3d1f12cca8646b521d61d7d21b977af2af4"
+  },
+  {
+   "relationshipId": "rel-loss-of-testicle-to-hypogonadism",
+   "primaryId": "loss-of-testicle",
+   "targetId": "hypogonadism",
+   "direction": "loss-of-testicle -> hypogonadism",
+   "primaryPublicationState": "draft",
+   "rank": 1,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY on the endocrine-consequence precedent: the testicular-torsion surgical cohort found that orchiectomy patients had higher luteinizing hormone (P < 0.001) and follicle-stimulating hormone (P = 0.009) with lower testosterone (P = 0.008) than orchiopexy patients (PMID 42676052), and the systematic review and meta-analysis of eleven studies with 538 participants found orchiectomy associated with significantly increased FSH (SMD 1.63) and LH (SMD 1.31) and reduced sperm concentration versus orchiopexy, while testosterone and inhibin-B remained comparable through compensatory hypothalamic-pituitary-gonadal mechanisms (PMID 42546903); because the evidence is mostly unilateral-loss class where compensation preserves circulating testosterone, the documented signal is gonadotropin elevation and impaired spermatogenesis rather than universal overt deficiency, and replacement therapy alters every measure, the conservative standard keeps the edge at association only and routes individual claims through dated serial hormone panels with unilateral-versus-bilateral documentation and competing-cause exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY on the endocrine-consequence precedent: the testicular-torsion surgical cohort found that orchiectomy patients had higher luteinizing hormone (P < 0.001) and follicle-stimulating hormone (P = 0.009) with lower testosterone (P = 0.008) than orchiopexy patients (PMID 42676052), and the systematic review and meta-analysis of eleven studies with 538 participants found orchiectomy associated with significantly increased FSH (SMD 1.63) and LH (SMD 1.31) and reduced sperm concentration versus orchiopexy, while testosterone and inhibin-B remained comparable through compensatory hypothalamic-pituitary-gonadal mechanisms (PMID 42546903); because the evidence is mostly unilateral-loss class where compensation preserves circulating testosterone, the documented signal is gonadotropin elevation and impaired spermatogenesis rather than universal overt deficiency, and replacement therapy alters every measure, the conservative standard keeps the edge at association only and routes individual claims through dated serial hormone panels with unilateral-versus-bilateral documentation and competing-cause exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to the endocrine limb of gonadal loss: the torsion cohort documents higher LH and FSH with lower testosterone after orchiectomy versus orchiopexy (PMID 42676052) and the systematic review and meta-analysis of 538 torsion patients documents significantly increased FSH and LH and reduced sperm concentration with testosterone preserved by hypothalamic-pituitary-gonadal compensation (PMID 42546903); the documented signal is gonadotropin elevation and impaired spermatogenesis in mostly unilateral loss rather than universal overt deficiency, so individual claims route through dated serial hormone panels with unilateral-versus-bilateral documentation and competing-cause exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "The meta-analysis found testosterone comparable between orchiectomy and orchiopexy through hypothalamic-pituitary-gonadal compensation in mostly unilateral loss; bilateral loss is differently represented and replacement therapy alters every measure."
+   ],
+   "sourceIds": [
+    "pmid-42676052",
+    "pmid-42546903"
+   ],
+   "sourceReferenceCount": 2,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "d0ea06d195c28dafcb8cc134019a107115bb4b7aa71167927c3ceb198bae9904"
+  },
+  {
+   "relationshipId": "rel-loss-of-testicle-to-depressive-disorder",
+   "primaryId": "loss-of-testicle",
+   "targetId": "depressive-disorder",
+   "direction": "loss-of-testicle -> depressive-disorder",
+   "primaryPublicationState": "draft",
+   "rank": 2,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY on the disfigurement-and-loss psychosocial precedent, scoped to the psychological-impact limb with an explicit pathway distinction from the androgen limb: the systematic review of mental health after orchiectomy synthesizes the available literature to quantify psychological impacts, explore cultural and demographic influences, and present management strategies including testosterone replacement, cognitive behavioural therapy, and social support (PMID 41050387), and the comparative study of 240 orchiectomized men versus 240 age-matched controls found significantly lower genital self-image, sexual-satisfaction, and ejaculatory-control scores with elevated dissatisfaction in the orchiectomy group (PMID 41212238); because the reviewed literature mixes malignancy and non-malignancy indications with the cancer diagnosis itself as a depressogenic exposure, most cohorts lack pre-operative psychiatric baselines, and the androgen-deficiency limb is separately windowed on the hypogonadism edge, the conservative standard keeps the edge at association only and routes individual claims through dated psychiatric documentation with indication, hormonal status, and pre-morbid history recorded and competing-cause exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY on the disfigurement-and-loss psychosocial precedent, scoped to the psychological-impact limb with an explicit pathway distinction from the androgen limb: the systematic review of mental health after orchiectomy synthesizes the available literature to quantify psychological impacts, explore cultural and demographic influences, and present management strategies including testosterone replacement, cognitive behavioural therapy, and social support (PMID 41050387), and the comparative study of 240 orchiectomized men versus 240 age-matched controls found significantly lower genital self-image, sexual-satisfaction, and ejaculatory-control scores with elevated dissatisfaction in the orchiectomy group (PMID 41212238); because the reviewed literature mixes malignancy and non-malignancy indications with the cancer diagnosis itself as a depressogenic exposure, most cohorts lack pre-operative psychiatric baselines, and the androgen-deficiency limb is separately windowed on the hypogonadism edge, the conservative standard keeps the edge at association only and routes individual claims through dated psychiatric documentation with indication, hormonal status, and pre-morbid history recorded and competing-cause exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to the psychological-impact limb with an explicit pathway distinction from the androgen limb (which rides the hypogonadism window): the mental-health systematic review quantifies psychological impacts and management strategies after orchiectomy (PMID 41050387) and the 240-versus-240 matched comparative study documents poorer genital self-image and greater sexual dissatisfaction (PMID 41212238); the reviewed literature mixes malignancy and non-malignancy indications with the cancer diagnosis itself as a depressogenic exposure, so individual claims route through dated psychiatric documentation with indication, hormonal status, and pre-morbid history recorded and competing-cause exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "Most reviewed cohorts lack pre-operative psychiatric baselines and mix malignancy with non-malignancy indications; part of the mood signal runs through androgen deficiency, which is separately windowed."
+   ],
+   "sourceIds": [
+    "pmid-41050387",
+    "pmid-41212238"
+   ],
+   "sourceReferenceCount": 2,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "69dc27f18fe4871249d934229b71689ed7d58f550beac20908b04f27226237f6"
+  },
+  {
+   "relationshipId": "rel-loss-of-tongue-to-dysphagia",
+   "primaryId": "loss-of-tongue",
+   "targetId": "dysphagia",
+   "direction": "loss-of-tongue -> dysphagia",
+   "primaryPublicationState": "draft",
+   "rank": 1,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY on the anatomic-mechanics precedent, mirroring the ankyloglossia dysphagia window's bounded framing: the deglutition series of 30 tongue-reconstruction patients found a progressive decline in swallowing outcomes with increasing extent of glossectomy (p = 0.001) - excellent function in all partial and 76.19 percent of hemiglossectomies but none after near-total resection (PMID 42152199) - the 206-patient glossectomy cohort documents speech-and-swallowing functional outcomes with gastrostomy-tube and tracheostomy dependence tracked across age strata (PMID 42693646), and the prospective compartmental-glossectomy series documented all patients starting oral feeds at a mean of three weeks postoperatively with videofluoroscopic swallowing assessment (PMID 42218322); because the evidence is oral-cancer-surgery class where radiation and floor-of-mouth resection co-vary, reconstruction recovers part of the function, and partial resections reach excellent outcomes, the conservative standard keeps the edge at association only and routes individual claims through dated videofluoroscopic swallowing studies with resection-extent documentation and competing-cause exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY on the anatomic-mechanics precedent, mirroring the ankyloglossia dysphagia window's bounded framing: the deglutition series of 30 tongue-reconstruction patients found a progressive decline in swallowing outcomes with increasing extent of glossectomy (p = 0.001) - excellent function in all partial and 76.19 percent of hemiglossectomies but none after near-total resection (PMID 42152199) - the 206-patient glossectomy cohort documents speech-and-swallowing functional outcomes with gastrostomy-tube and tracheostomy dependence tracked across age strata (PMID 42693646), and the prospective compartmental-glossectomy series documented all patients starting oral feeds at a mean of three weeks postoperatively with videofluoroscopic swallowing assessment (PMID 42218322); because the evidence is oral-cancer-surgery class where radiation and floor-of-mouth resection co-vary, reconstruction recovers part of the function, and partial resections reach excellent outcomes, the conservative standard keeps the edge at association only and routes individual claims through dated videofluoroscopic swallowing studies with resection-extent documentation and competing-cause exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to tongue-resection functional decline with a documented dose-response: the 30-patient deglutition series documents progressive swallowing decline with increasing glossectomy extent (p = 0.001) (PMID 42152199), the 206-patient cohort documents speech-and-swallowing burden with tube-dependence tracking (PMID 42693646), and the prospective compartmental-glossectomy series documents delayed oral feeding with videofluoroscopic assessment (PMID 42218322); evidence is oral-cancer-surgery class with radiation and floor-of-mouth covariates and partial resections reach excellent outcomes, so individual claims route through dated videofluoroscopic swallowing studies with resection-extent documentation and competing-cause exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "Excellent swallowing outcomes are documented after partial and most hemiglossectomies, so the burden is extent-dependent; radiation and floor-of-mouth resection confound the oral-cancer cohorts."
+   ],
+   "sourceIds": [
+    "pmid-42152199",
+    "pmid-42693646",
+    "pmid-42218322"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "c5b02e85727490416ae9a68e9c6a188d72cd944b37db6d245e56c7ab576d8133"
   }
  ],
  "lastUpdatedBy": "batch-D1-draft-authoring",

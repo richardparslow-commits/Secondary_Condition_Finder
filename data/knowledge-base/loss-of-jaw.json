@@ -2,8 +2,67 @@
   "id": "loss-of-jaw",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review oral, dental, maxillofacial, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 56 (2026-09-25): one ASSOCIATION_ONLY draft mapping pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: the single edge asserts association only (etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true, mechanismCategory MECHANICAL_OR_COMPRESSIVE). The evidence base is prospective and comparative cohort class within oral-cancer surgery, so individual claims require defect-level surgical documentation plus dated videofluoroscopic swallowing studies with radiation and soft-tissue covariates recorded, and review by a qualified medical professional.",
+    "Pathway and duplicate-scope screens: no -> malnutrition-residuals edge (intermediate-node rule - the dysphagia -> malnutrition-residuals window carries the nutrition pathway downstream of swallowing impairment); no -> speech or dysarthria edge (no catalog identity exists for dysarthria; the speech handicap in the located cohorts is quantified on the Speech Handicap Index but has no catalog target, and aphonia is vocal-fold loss, a different anatomy); no -> depressive-disorder edge (the mandibular QoL and psychology literature is oral-cancer and reconstruction scoped, so recycling it would repeat the ME-29 scope error; reopening condition recorded: a jaw-loss cohort with quantified psychiatric outcomes not conditioned on malignancy); no -> osteonecrosis-of-the-jaw edge (distinct process - medication-related and radiation necrosis of bone, not anatomic loss); no -> temporomandibular-joint edge (no catalog identity)."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 56 (2026-09-25): one bounded association edge authored - loss-of-jaw to dysphagia (rank 1) - classified ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, and hypothesizedOnly:true; mechanismCategory MECHANICAL_OR_COMPRESSIVE. The proposition rests on mandibular-resection functional cohorts: the prospective 25-patient segmental mandibulectomy cohort documents a 35 percent MD Anderson Dysphagia Inventory decline at three months with partial twelve-month recovery (PMID 36717338), and the 201-patient comparative cohort with glossectomy excluded documents swallowing outcomes after lateral mandibulectomy independent of continuity restoration (PMID 39577833).",
+    "Counter-evidence and caveat screens recorded 2026-09-25: (i) the continuity-restoration comparison is a between-group null - both arms had jaw loss and neither reached a jaw-intact baseline, so the design bounds the reconstruction effect rather than the jaw-loss effect; (ii) radiation and soft-tissue co-resection confound oral-cancer cohorts; (iii) reconstruction recovers part of the function (the dysphagia score improved at twelve months while speech did not); (iv) extent-dependence (segmental versus marginal mandibulectomy) is not stratified in the located material."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "dysphagia",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Segmental mandibulectomy documents measurable swallowing decline: the prospective 25-patient cohort with fibular free-flap reconstruction found a 35 percent decline in the MD Anderson Dysphagia Inventory score from the preoperative baseline at three months, improving but not normalizing by twelve months (PMID 36717338), and the 201-patient comparative oral-cancer cohort with glossectomy patients deliberately excluded found swallowing scores impaired after lateral mandibulectomy regardless of whether mandibular continuity was restored (PMID 39577833); the co-occurrence is documented at prospective and comparative cohort class, so the edge records functional-risk only.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: the located material documents swallowing decline after mandibular resection, but defect extent, soft-tissue involvement, reconstruction type, adjuvant radiation, and baseline function all require individual review before any causal statement."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MECHANICAL_OR_COMPRESSIVE",
+        "primaryVector": "Loss of mandibular continuity and its attached masticatory and floor-of-mouth mechanics disrupts bolus preparation and oral transit, producing dysphagia after jaw resection, the functional decline quantified on validated swallowing inventories, but whether any individual dysphagia arose from a given jaw loss remains hypothesized until videofluoroscopic and diet-level records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at prospective and comparative cohort class: the cohorts are oral-cancer-surgery populations where radiation and soft-tissue resection co-vary with the jaw defect, reconstruction recovers part of the function, and the continuity-restoration comparison found no between-group difference, so the jaw-specific magnitude is bounded by the pre-post decline rather than a controlled effect size.",
+        "evidenceGaps": "No jaw-intact control arm exists in the located cohorts; oral-cancer radiation and soft-tissue resection co-vary with the jaw defect, and reconstruction recovers part of the function.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "radiation-associated dysphagia",
+          "soft-tissue or glossectomy-related swallowing impairment",
+          "neuropathic or post-surgical cranial-nerve dysphagia",
+          "esophageal dysphagia of other cause"
+        ]
+      },
+      "evidenceGaps": [
+        "No jaw-intact control arm exists in the located cohorts; oral-cancer radiation and soft-tissue resection co-vary with the jaw defect, and reconstruction recovers part of the function."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY on the anatomic-mechanics precedent, mirroring the ankyloglossia dysphagia window's bounded framing: the prospective consecutive cohort of 25 segmental mandibulectomy patients with virtual-planning fibular free-flap reconstruction used validated functional measures and found a 35 percent decline in the MD Anderson Dysphagia Inventory score at three months from the preoperative baseline, with the dysphagia score improving at twelve months while the speech handicap persisted (PMID 36717338), and the 201-patient retrospective comparative cohort of lateral mandibulectomy for oral squamous cell carcinoma - explicitly excluding any glossectomy to isolate the mandibular variable - assessed swallowing on the functional oral intake scale at one, three, and six months and found outcomes independent of whether mandibular continuity was restored (PMID 39577833); because the evidence is oral-cancer-surgery class where adjuvant radiation and soft-tissue resection co-vary, reconstruction recovers part of the function, and no jaw-intact control arm exists, the conservative standard keeps the edge at association only and routes individual claims through dated videofluoroscopic swallowing studies with defect-level documentation and competing-cause exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Jenkins GW, Kennedy MP, Ellabban I, Adams JR, Sellstrom D. Functional outcomes following mandibulectomy and fibular free-flap reconstruction. Br J Oral Maxillofac Surg. 2023 Feb;61:158-164. doi:10.1016/j.bjoms.2022.11.287. PMID 36717338.",
+          "note": "Prospective service review of 25 consecutive segmental mandibulectomy patients with fibular free-flap reconstruction documenting a 35 percent decline in the MD Anderson Dysphagia Inventory score at three months with partial improvement at twelve months; supports the bounded functional-decline proposition only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36717338/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 36717338; functional outcome results (MD Anderson Dysphagia Inventory decline from preoperative baseline)"
+        },
+        {
+          "citation": "Mishra A, Nair RR, Vijay S, Attakkil A, Mullath A, Babu AK. A Comparative Study of Speech and Swallowing Postoperative Outcomes in Oral Cancer: Impact of Lateral Mandibular Continuity Restoration. J Oral Maxillofac Surg. 2025 Mar;83:374-381. doi:10.1016/j.joms.2024.10.020. PMID 39577833.",
+          "note": "Retrospective comparative cohort of 201 lateral mandibulectomy patients with glossectomy patients excluded, assessing swallowing on the functional oral intake scale at one, three, and six months; supports the bounded post-mandibulectomy swallowing proposition only, with the between-group null result recorded on the edge.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39577833/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-25",
+          "sourceLocator": "PMID 39577833; METHODS (exclusion of glossectomy; functional oral intake scale outcome) and RESULTS sections"
+        }
+      ]
+    }
+  ]
 }

@@ -2078,3 +2078,105 @@ found only the two intentional survivor classes: the frozen sibling `tests/helpe
 pins (245 and 236, excluded wholesale) and the `61(5):566-574` page range inside the ME-7 citation
 strings. Standing recommendation: batch 55 lands with its tooling (deterministic backlog report,
 verification dashboard) through branch, PR, CI, and merge.
+
+Mapping Expansion D1 batch 56 (2026-09-25) authored five draft-quarantined relationships across four
+of the five screened identities, with one identity deferral (`loss-of-eyelashes`). All five edges are
+ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED,
+vaNexusProbabilityAlignment NOT_ASSERTED, and hypothesizedOnly:true.
+`loss-of-eyelids -> keratitis` (rank 1, MECHANICAL_OR_COMPRESSIVE) rests on eyelid-deficiency case
+material: the modified Cutler-Beard double-bridge reconstruction case documents significantly
+deficient full-thickness eyelid tissue presenting with severe exposure keratopathy due to lagophthalmos
+(PMID 42671095), and the single-stage autologous buccal mucosal graft with orbicularis oculi
+myocutaneous flap case for a full-thickness lower-eyelid defect after Mohs resection, with its
+literature review, documents the ocular-surface course of uncovered defects (PMID 42558230).
+`loss-of-jaw -> dysphagia` (rank 1, MECHANICAL_OR_COMPRESSIVE) rests on mandibular-resection
+functional cohorts: the prospective consecutive 25-patient segmental mandibulectomy cohort with
+virtual-planning fibular free-flap reconstruction found a 35 percent decline in the MD Anderson
+Dysphagia Inventory score at three months from the preoperative baseline, with the dysphagia score
+improving at twelve months while speech did not (PMID 36717338), and the 201-patient comparative
+cohort of lateral mandibulectomy with glossectomy excluded documents the continuity-restoration
+comparison as a between-group null (PMID 39577833).
+`loss-of-testicle -> hypogonadism` (rank 1, POST_SURGICAL_OR_TREATMENT) rests on the
+testicular-torsion surgical cohort finding orchiectomy patients had higher luteinizing hormone
+(P < 0.001) and follicle-stimulating hormone (P = 0.009) with lower testosterone (P = 0.008) than
+orchiopexy patients (PMID 42676052), and the systematic review and meta-analysis of eleven studies
+with 538 participants finding orchiectomy associated with significantly increased FSH (SMD 1.63) and
+LH (SMD 1.31) and reduced sperm concentration (PMID 42546903) - with that meta-analysis's
+counter-evidence recorded on the edge: testosterone remained comparable between orchiectomy and
+orchiopexy through hypothalamic-pituitary-gonadal compensation in mostly unilateral loss, so the
+endocrine signal is gonadotropin elevation and impaired spermatogenesis rather than universal overt
+testosterone deficiency.
+`loss-of-testicle -> depressive-disorder` (rank 2, PSYCHOPHYSIOLOGICAL) is scoped to the
+psychological-impact limb with an explicit pathway distinction from the androgen limb: the systematic
+review of mental health after orchiectomy synthesizing psychological impacts, cultural and
+demographic influences, and management strategies (PMID 41050387), and the 240-versus-240
+comparative study of orchiectomy patients against matched controls (PMID 41212238).
+`loss-of-tongue -> dysphagia` (rank 1, MECHANICAL_OR_COMPRESSIVE) rests on glossectomy functional
+cohorts with a documented dose-response: the 30-patient deglutition series found a progressive
+decline in swallowing outcomes with increasing extent of tongue loss (p = 0.001) - excellent function
+in all partial and 76.19 percent of hemiglossectomies but none after near-total resection (PMID
+42152199), the 206-patient glossectomy cohort documents speech-and-swallowing functional burden with
+tube-dependence tracking extent (PMID 42693646), and the 36-patient compartmental tongue-resection
+series documents the compartment-specific functional gradient (PMID 42218322).
+
+`loss-of-eyelashes` is deferred, not packeted: the located lash literature runs etiology-upstream (the
+madarosis reviews enumerate causes of lash loss, the same direction problem that drove the batch-55
+loss-of-eyebrow deferral), the only located ocular-surface cohort studies eyelash EXTENSION wear
+potentiating ocular-surface disease signs (PMID 41637114), which is an additive-cosmetic exposure,
+not lash loss; the protective-function reasoning for lashes (wind and debris shielding) is aerodynamic
+modeling without condition-specific ocular-surface cohorts in lash-loss patients; and the psychiatric
+hair-loss base remains alopecia-areata and chemotherapy scoped per expansion rule 11 and the ME-29
+scope decision. Reopening condition: a cohort of acquired eyelash loss (madarosis of any cause,
+alopecia totalis, or post-treatment) that quantifies ocular-surface outcomes - tear-film breakup,
+corneal staining, or keratitis incidence - against matched controls, or a qualified-human governance
+decision that treats eyelash-absence evidence as a mappable source with an approved target list.
+
+Screens recorded for this batch are the counter-evidence and caveat screens carried on each edge:
+no universal hypogonadism framing (the meta-analysis counter-evidence above), no `loss-of-testicle ->
+erectile-dysfunction` edge (the torsion cohort found erectile function did not differ between
+orchiectomy and orchiopexy despite hormonal differences, dissociating the erectile limb from the
+androgen limb, and the androgen route rides the `hypogonadism -> erectile-dysfunction` window under
+the intermediate-node rule), no androgen-limb attribution on the depressive-disorder edge (explicit
+pathway distinction; most reviewed cohorts lack pre-operative psychiatric baselines and mix
+malignancy with non-malignancy indications), no ME-29 recycling of the facial-nerve-palsy
+lagophthalmos literature onto `loss-of-eyelids` (intact eyelid tissue in that base), no universal
+dysphagia framing on either jaw or tongue edges (excellent swallowing outcomes are documented after
+partial and most hemiglossectomies, and the continuity-restoration comparison is a between-group null
+in which both arms had jaw loss and neither reached a jaw-intact baseline), and no reconstruction-
+independent effect claims (surgical reconstruction, lubrication, tarsorrhaphy, scleral lenses,
+free-flap repair, and structured rehabilitation all mediate the functional course; radiation and
+soft-tissue co-resection confound the oral-cancer cohorts; extent-dependence is unstratified for the
+jaw material and age modifies recovery in the 206-patient tongue cohort).
+
+Process notes: all eleven citations were NCBI-verified via efetch BEFORE file authoring with an 11/11
+title-and-abstract match (batch-30 lesson institutionalized, twelfth consecutive clean verification
+cycle), and an esummary bibliographic pass corrected two authored author lists before writing (the
+eyelid-deficiency anchors are Pushker N et al., Indian J Ophthalmol 2026;74(9):1298-1301, and Xiong
+JY et al., Front Oncol 2026;16:1888362 - guessed names had been wrong and were replaced against the
+PubMed record, the esummary check now standing alongside efetch in the pre-authoring step). The
+post-write structural self-audit passed on the first attempt for all five files with zero errors and
+zero contamination, `npm run kb:validate` reports zero errors, and this batch shares nothing: the
+four edge-bearing identities carry 11 reference uses over exactly 11 new sources.
+
+Registry after lockstep: 615 relationships (541 explicit / 74 legacy), 1029 reference uses (383
+verified / 646 pending-verification), 1024 clinical / 5 legal uses, 941 source entities (346 active /
+586 pending-verification). Citation packet regenerated at 252 worksheets / 646 reference rows = live
+citation debt; the verification dashboard regenerated at 646 rows in 27 reviewer batches. Backlog
+after batch 56: **210** undispositioned zero-edge drafts, computed by the deterministic
+`npm run authoring:backlog` tool (215 before the batch; the four edge-bearing identities and the now-
+marked `loss-of-eyelashes` deferral all left the queue, so the batch again clears exactly five).
+Next-five: `loss-of-use-of-extremities`, `lung-abscess`, `lupus-profundus`,
+`lymphangioleiomyomatosis`, `lymphangioma`.
+
+Test-pin note: the sweep touched 52 files and replaced 310 counter tokens in one pass with the
+batch-55 per-token context predicates carried over unchanged (relationships 610 -> 615,
+references/uses 1018 -> 1029, unverified 635 -> 646, pending source entities 575 -> 586, total source
+entities 930 -> 941, explicit guards 536 -> 541, clinical references 1013 -> 1024, clinical
+provenance 1017 -> 1028, and the draft-singles counter 261 -> 264 for this batch's three single-edge
+identities, `loss-of-eyelids`, `loss-of-jaw`, and `loss-of-tongue`). The dry run reported zero lines
+lacking registry vocabulary, and the residue check found only intentional survivor classes: the
+frozen sibling `tests/helpers/master-2026-current.ts` pins (excluded wholesale), the `61(5):566-574`
+page range inside the ME-7 citation strings, the `635-645` page range inside the batch-5 promotion
+citation, and the Wave-4 `261-condition` catalog checkpoint - each a page number or catalog count
+rather than a registry counter. Standing recommendation: batch 56 lands through branch, PR, CI, and
+merge.

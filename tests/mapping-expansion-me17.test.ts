@@ -91,14 +91,14 @@ describe("Mapping Expansion ME-17 local implementation", () => {
     const maps = fs.readdirSync(path.join(ROOT, "data", "knowledge-base")).filter((f) => f.endsWith(".json")).map((f) => load<Mapping>(path.join(ROOT, "data", "knowledge-base", f)));
     const refs = maps.flatMap((m: Mapping) => m.suggestions.flatMap((s: Suggestion) => s.sourceReferences || []));
     const clinical = refs.filter((r: SourceReference) => r.verificationScope === "clinical-evidence");
-    expect(maps.reduce((n: number, m: Mapping) => n + m.suggestions.length, 0)).toBe(610);
+    expect(maps.reduce((n: number, m: Mapping) => n + m.suggestions.length, 0)).toBe(615);
     expect(maps.filter((m: Mapping) => m.draft === false && m.suggestions.length === 1)).toHaveLength(67);
     expect(maps.filter((m: Mapping) => m.draft === false && m.suggestions.length >= 2)).toHaveLength(73);
-    expect(maps.filter((m: Mapping) => m.draft === true && m.suggestions.length === 1)).toHaveLength(261);
-    expect(refs).toHaveLength(1018);
+    expect(maps.filter((m: Mapping) => m.draft === true && m.suggestions.length === 1)).toHaveLength(264);
+    expect(refs).toHaveLength(1029);
     expect(refs.filter((r: SourceReference) => r.verified === true)).toHaveLength(383);
-    expect(refs.filter((r: SourceReference) => r.verified === false)).toHaveLength(635);
-    expect(clinical).toHaveLength(1013);
+    expect(refs.filter((r: SourceReference) => r.verified === false)).toHaveLength(646);
+    expect(clinical).toHaveLength(1024);
   });
 
   it("documents the current authoritative snapshot and ME-20 implementation state", () => {
@@ -108,8 +108,8 @@ describe("Mapping Expansion ME-17 local implementation", () => {
     expect(src.baselineCommit).toBe("ea005e50ccbc30800dd46f3872f764f98e977c1f");
     expect(rel.currentState).toBe("D1-DRAFT-AUTHORED");
     expect(src.currentState).toBe("D1-DRAFT-AUTHORED");
-    expect(rel.relationships).toHaveLength(610);
-    expect(src.sources).toHaveLength(930);
+    expect(rel.relationships).toHaveLength(615);
+    expect(src.sources).toHaveLength(941);
     const me20 = [
       "rel-pheochromocytoma-to-hypertension",
       "rel-sjogren-s-syndrome-to-dry-eye-syndrome",

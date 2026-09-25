@@ -9005,6 +9005,174 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 **Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
 
+### `loss-of-eyelids` → `keratitis` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Loss of eyelid tissue documents exposure keratopathy of the ocular surface: the double-bridge Cutler-Beard reconstruction case presented with significantly deficient full-thickness eyelid tissue and severe exposure keratopathy from lagophthalmos (PMID 42671095), and the single-stage full-thickness eyelid reconstruction case records corneal exposure among the clinical endpoints its repair was designed to prevent (PMID 42558230); the co-occurrence is documented at case and reconstructive-series class without incidence denominators, so the edge records exposure risk only.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: the located material documents exposure keratopathy in the setting of full-thickness eyelid deficiency, but defect size and site, blink function, tear production, exposure duration, and treatment timing all require individual review before any causal statement.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 248.1 — Pushker N, Agrawal S, Angku H, Thakur H, Raj R, Meel R, Bajaj MS. Double-bridge novel modification of Cutler-Beard flap for the reconstruction of full-thickness eyelid deformity. Indian J Ophthalmol. 2026 Sep 1;74(9):1298-1301. doi:10.4103/IJO.IJO_94_26. PMID 42671095.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42671095/
+- Source checked on: 2026-09-25
+- Locator: PMID 42671095; case presentation (full-thickness eyelid tissue deficiency with severe exposure keratopathy)
+- Note under review: Case report documenting significantly deficient full-thickness eyelid tissue presenting with severe exposure keratopathy due to lagophthalmos, repaired with a modified Cutler-Beard flap; supports the bounded exposure-keratopathy proposition only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 248.2 — Xiong JY, Yang MX, Chen N, Xiao J, Song YH, Zheng L, Zhang L. Autologous buccal mucosal graft combined with orbicularis oculi myocutaneous flap for single-stage reconstruction of full-thickness lower eyelid defects following Mohs micrographic surgery: a case report with literature review. Front Oncol. 2026 Jul 22;16:1888362. doi:10.3389/fonc.2026.1888362. PMID 42558230.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42558230/
+- Source checked on: 2026-09-25
+- Locator: PMID 42558230; case outcome assessment (corneal exposure as a clinical endpoint)
+- Note under review: Single-stage full-thickness eyelid reconstruction case recording corneal exposure among the clinical endpoints the repair was designed to prevent, with no corneal exposure at follow-up; supports the bounded exposure-risk proposition only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `loss-of-jaw` → `dysphagia` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Segmental mandibulectomy documents measurable swallowing decline: the prospective 25-patient cohort with fibular free-flap reconstruction found a 35 percent decline in the MD Anderson Dysphagia Inventory score from the preoperative baseline at three months, improving but not normalizing by twelve months (PMID 36717338), and the 201-patient comparative oral-cancer cohort with glossectomy patients deliberately excluded found swallowing scores impaired after lateral mandibulectomy regardless of whether mandibular continuity was restored (PMID 39577833); the co-occurrence is documented at prospective and comparative cohort class, so the edge records functional-risk only.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: the located material documents swallowing decline after mandibular resection, but defect extent, soft-tissue involvement, reconstruction type, adjuvant radiation, and baseline function all require individual review before any causal statement.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 249.1 — Jenkins GW, Kennedy MP, Ellabban I, Adams JR, Sellstrom D. Functional outcomes following mandibulectomy and fibular free-flap reconstruction. Br J Oral Maxillofac Surg. 2023 Feb;61:158-164. doi:10.1016/j.bjoms.2022.11.287. PMID 36717338.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/36717338/
+- Source checked on: 2026-09-25
+- Locator: PMID 36717338; functional outcome results (MD Anderson Dysphagia Inventory decline from preoperative baseline)
+- Note under review: Prospective service review of 25 consecutive segmental mandibulectomy patients with fibular free-flap reconstruction documenting a 35 percent decline in the MD Anderson Dysphagia Inventory score at three months with partial improvement at twelve months; supports the bounded functional-decline proposition only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 249.2 — Mishra A, Nair RR, Vijay S, Attakkil A, Mullath A, Babu AK. A Comparative Study of Speech and Swallowing Postoperative Outcomes in Oral Cancer: Impact of Lateral Mandibular Continuity Restoration. J Oral Maxillofac Surg. 2025 Mar;83:374-381. doi:10.1016/j.joms.2024.10.020. PMID 39577833.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/39577833/
+- Source checked on: 2026-09-25
+- Locator: PMID 39577833; METHODS (exclusion of glossectomy; functional oral intake scale outcome) and RESULTS sections
+- Note under review: Retrospective comparative cohort of 201 lateral mandibulectomy patients with glossectomy patients excluded, assessing swallowing on the functional oral intake scale at one, three, and six months; supports the bounded post-mandibulectomy swallowing proposition only, with the between-group null result recorded on the edge.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `loss-of-testicle` → `hypogonadism` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Orchiectomy documents disruption of gonadal endocrine function: the testicular-torsion cohort found that patients who underwent orchiectomy had significantly higher luteinizing and follicle-stimulating hormone levels and lower testosterone than patients who underwent orchiopexy (PMID 42676052), and the systematic review and meta-analysis of 538 torsion patients found orchiectomy associated with significantly increased FSH and LH and reduced sperm concentration versus testis-sparing surgery (PMID 42546903); the co-occurrence is documented at cohort and systematic-review class, so the edge records endocrine-risk only.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: the located material documents gonadotropin elevation and testosterone change after orchiectomy, but unilateral versus bilateral loss, contralateral testicular function, replacement therapy, timing, and pituitary status all require individual review before any causal statement.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 250.1 — Soltani MH, Dadpour M, Alishah S, Ebrahimi S, Bagheri M. Mid- To Long-Term Evaluation of Hormonal Function, Testicular Ultrasonographic Features, and Erectile Function in Children with A History of Testicular Torsion. Urol J. 2026 Aug 29;23:114-117. doi:10.22037/uj.v23i03.8807. PMID 42676052.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42676052/
+- Source checked on: 2026-09-25
+- Locator: PMID 42676052; RESULTS (hormonal comparison between orchiectomy and orchiopexy groups) section
+- Note under review: Retrospective torsion cohort documenting that orchiectomy patients had higher LH and FSH and lower testosterone than orchiopexy patients at mid- to long-term follow-up; supports the bounded endocrine-disruption proposition only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 250.2 — Nasr AM, Zamlout A, Alghzawi HM, Youssef YA, Altell AN, Abdullah I. Gonadal function and fertility outcomes after orchiopexy versus orchiectomy for testicular torsion: A systematic review and meta-analysis. J Pediatr Surg. 2026 Oct;61:163348. doi:10.1016/j.jpedsurg.2026.163348. PMID 42546903.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42546903/
+- Source checked on: 2026-09-25
+- Locator: PMID 42546903; PRIMARY OUTCOMES and RESULTS (FSH, LH, testosterone comparisons) sections
+- Note under review: Systematic review and meta-analysis of 538 torsion patients finding orchiectomy associated with significantly increased FSH and LH and reduced sperm concentration versus orchiopexy, with testosterone comparable through hypothalamic-pituitary-gonadal compensation; supports the bounded endocrine-disruption proposition only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `loss-of-testicle` → `depressive-disorder` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Orchiectomy documents psychological impact independent of the endocrine limb: the systematic review of mental health after orchiectomy synthesizes the literature quantifying psychological impacts and stratifying cultural and demographic influences, with testosterone replacement and cognitive behavioural therapy both appearing as management strategies (PMID 41050387), and the 240-versus-240 matched comparative study documents significantly poorer genital self-image and greater sexual dissatisfaction in orchiectomized men with self-image correlating to mood-relevant psychosocial domains (PMID 41212238); the co-occurrence is documented at systematic-review and comparative-cohort class, so the edge records psychological-impact risk only.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: the located material documents psychological burden after orchiectomy, but the malignancy indication, fertility grief, body-image distress, hormonal contribution, cultural context, and pre-existing psychiatric history all require individual review before any causal statement.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 251.1 — Shokaier G, Gross M, Cohen M, Hussein A. Mental health after orchiectomy: Systematic review and strategic management. Arab J Urol. 2025 Mar 16;23:245-252. doi:10.1080/20905998.2025.2478771. PMID 41050387.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/41050387/
+- Source checked on: 2026-09-25
+- Locator: PMID 41050387; abstract (quantification of psychological impacts and management strategies)
+- Note under review: Systematic review synthesizing the literature on psychological impacts after orchiectomy with quantified mental-health outcomes and evidence-based management strategies including testosterone replacement and cognitive behavioural therapy; supports the bounded psychological-impact proposition only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 251.2 — Kilic S, Duvarci M, Durak HA, Karakayali H, Kahilogullari T, Hamidi N, Demir Y. Effects of orchiectomy on genital self-image, sexual function, and satisfaction: a comparative study. World J Urol. 2025 Nov 10;43:677. doi:10.1007/s00345-025-06054-w. PMID 41212238.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/41212238/
+- Source checked on: 2026-09-25
+- Locator: PMID 41212238; RESULTS (genital self-image and satisfaction comparisons) section
+- Note under review: Comparative study of 240 orchiectomized men versus 240 age-matched controls documenting significantly poorer genital self-image and greater sexual dissatisfaction with self-image correlations across psychosocial domains; supports the bounded psychosocial-distress proposition only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `loss-of-tongue` → `dysphagia` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Glossectomy documents a graded swallowing burden: the 30-patient deglutition series found excellent swallowing in all partial glossectomies and 76 percent of hemiglossectomies but no excellent outcomes after near-total glossectomy, a progressive decline in swallowing with increasing extent of tongue loss (p = 0.001) (PMID 42152199), the 206-patient glossectomy cohort documents speech-and-swallowing functional concerns with gastrostomy-tube dependence tracked as an outcome (PMID 42693646), and the prospective compartmental-glossectomy series required delayed oral feeding at a mean of three weeks with swallowing assessed on videofluoroscopy (PMID 42218322); the co-occurrence is documented at dose-response and cohort class, so the edge records functional-risk only.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: the located material documents swallowing decline after tongue resection, but resection extent, floor-of-mouth involvement, reconstruction type, adjuvant radiation, and baseline function all require individual review before any causal statement.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 252.1 — Abbas R, Rashid M, Sarwar SU, Khan MI, Shoaib M, Askari F. Evaluation of Deglutition in Patients with Tongue Reconstruction Using a Radial Forearm Free Flap. J Coll Physicians Surg Pak. 2026 May;36:609-613. doi:10.29271/jcpsp.2026.05.609. PMID 42152199.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42152199/
+- Source checked on: 2026-09-25
+- Locator: PMID 42152199; RESULTS (postoperative deglutition stratified by extent of glossectomy) section
+- Note under review: Deglutition series of 30 tongue-reconstruction patients documenting progressive decline in swallowing outcomes with increasing extent of glossectomy (p = 0.001), with excellent function after partial and most hemiglossectomies but none after near-total resection; supports the bounded dose-response proposition only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 252.2 — Chen J, Cole-Price A, Peet BM, Lee KT, Hespe GE, Boe LA, Cunningham L, Shahzad F, Cohen MA, Cracchiolo JR, Nelson JA, Matros E, Allen RJ Jr. The Impact of Advanced Age on Functional Recovery Following Glossectomy. J Surg Oncol. 2026 Sep 3. doi:10.1002/jso.70355. PMID 42693646.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42693646/
+- Source checked on: 2026-09-25
+- Locator: PMID 42693646; BACKGROUND and RESULTS (functional outcomes and tube dependence) sections
+- Note under review: Retrospective cohort of 206 glossectomy patients documenting speech-and-swallowing functional concerns with gastrostomy-tube dependence tracked as an outcome and glossectomy type as an independent predictor of long-term function; supports the bounded functional-risk proposition only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 252.3 — Kumar R, Sood R, Singh A, Kumar R, Sagar P, Manchanda S, Singh CA, Bhalla AS, Thakar A. Speech and swallowing outcomes with infrahyoid myo cutaneous flap after compartmental tongue resection: a prospective observational study. Eur Arch Otorhinolaryngol. 2026 May 31. doi:10.1007/s00405-026-10338-1. PMID 42218322.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42218322/
+- Source checked on: 2026-09-25
+- Locator: PMID 42218322; METHODS and RESULTS (cine fluoroscopy swallowing assessment and oral feeding timeline)
+- Note under review: Prospective observational series of 36 compartmental glossectomy patients documenting delayed oral feeding at a mean of three weeks postoperatively with videofluoroscopic swallowing assessment after tongue resection and reconstruction; supports the bounded functional-risk proposition only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
 ## Implementation mechanics after decisions
 
 - Mapping edits and registry edits must land in lockstep (the registry audit's canonical-JSON hashes and live-use sets will fail otherwise).
