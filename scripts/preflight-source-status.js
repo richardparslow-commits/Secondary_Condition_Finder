@@ -35,6 +35,10 @@
 //       check only the given knowledge-base file(s) (comma-separated)
 //   node scripts/preflight-source-status.js --pmids 123,456
 //       check explicit PMIDs before a draft file exists
+//   node scripts/preflight-source-status.js --registry
+//       check every source entity in data/evidence/master-sources.json
+//       (the retroactive audit mode; add --statuses active,pending-verification
+//       to restrict by entity status)
 //   node scripts/preflight-source-status.js --fixture path/to/fixtures.json
 //       offline evaluation of recorded esummary/efetch payloads (used by tests)
 //   node scripts/preflight-source-status.js --json
@@ -132,7 +136,12 @@ function classifyRecord(pmid, esummaryDoc, efetchDoc) {
   const isWithdrawn =
     pubtypeNorms.some(t => t.includes("withdrawn")) || titleNorm.includes("withdrawn");
   const isRetracted =
-    pubtypeNorms.some(t => t === "retractedpublication" || t === "retractionofpublication") ||
+    pubtypeNorms.some(
+      t =>
+        t === "retractedpublication" ||
+        t === "retractionofpublication" ||
+        t === "retractedandrepublishedarticle",
+    ) ||
     comments.some(c => RETRACTION_REF_TYPES.has(normalizeToken(c.refType)));
   const isEoc =
     pubtypeNorms.some(t => t === "expressionofconcern") ||
@@ -141,7 +150,7 @@ function classifyRecord(pmid, esummaryDoc, efetchDoc) {
   const evidence = [];
   for (const t of pubtypes) {
     const n = normalizeToken(t);
-    if (n === "retractedpublication" || n === "retractionofpublication" || n.includes("withdrawn") || n === "expressionofconcern") {
+    if (n === "retractedpublication" || n === "retractionofpublication" || n === "retractedandrepublishedarticle" || n.includes("withdrawn") || n === "expressionofconcern") {
       evidence.push(`publication type: ${t}`);
     }
   }
@@ -209,6 +218,27 @@ function evaluateRefs(refs, esummaryResult, efetchXml) {
     notes,
     ok: flags.length === 0,
   };
+}
+
+// Collects pseudo-refs from the master source registry (audit mode).
+function collectRegistryRefs(registryJson, { statuses } = {}) {
+  const wanted = statuses && statuses.length ? new Set(statuses) : null;
+  const sources = Array.isArray(registryJson.sources) ? registryJson.sources : [];
+  const refs = [];
+  for (const entity of sources) {
+    if (wanted && !wanted.has(entity.status)) continue;
+    const ref = {
+      sourceUrl:
+        entity.canonicalSourceUrl ||
+        (entity.pmid ? `https://pubmed.ncbi.nlm.nih.gov/${entity.pmid}/` : ""),
+      citation: Array.isArray(entity.citationVariants) && entity.citationVariants.length
+        ? entity.citationVariants[0]
+        : entity.canonicalCitation || "",
+    };
+    if (entity.pmid) ref.citation += ` PMID ${entity.pmid}.`;
+    refs.push({ ref, where: `registry:${entity.sourceId} [${entity.status}]` });
+  }
+  return refs;
 }
 
 function collectDraftRefs({ since, files }) {
@@ -296,9 +326,14 @@ async function main(argv) {
   const since = getFlag("--since");
   const fileArg = getFlag("--file");
   const pmidArg = getFlag("--pmids");
+  const statusesArg = getFlag("--statuses");
+  const statuses = statusesArg ? statusesArg.split(",").map(s => s.trim()).filter(Boolean) : null;
 
   let refs;
-  if (pmidArg) {
+  if (argv.includes("--registry")) {
+    const registryJson = JSON.parse(fs.readFileSync(path.join("data", "evidence", "master-sources.json"), "utf8"));
+    refs = collectRegistryRefs(registryJson, { statuses });
+  } else if (pmidArg) {
     refs = pmidArg
       .split(",")
       .map(s => s.trim())
@@ -366,4 +401,5 @@ module.exports = {
   parseEfetchXml,
   classifyRecord,
   evaluateRefs,
+  collectRegistryRefs,
 };
