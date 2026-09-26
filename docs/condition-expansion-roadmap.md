@@ -2731,3 +2731,105 @@ explicit fixture token (`Array\.from\({ length` in the unverified-counter contex
 gate debt fixture moved 745 -> 780 automatically alongside its own swept assertion - no manual bump
 needed. The residue check found no survivors outside the standing benign classes. Standing recommendation:
 batch 61 lands through branch, PR, CI, and merge.
+
+## Mapping Expansion D1 batch 62 (2026-09-26)
+
+Mapping Expansion D1 batch 62 (2026-09-26) authored eleven draft-quarantined relationships across three
+of the five screened identities - `muscular-dystrophy`, `myopia`, `muscle-hernias` - classified
+ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED,
+hypothesizedOnly:true, and conservative rationale and evidence-gap records on every suggestion. Two
+identities were DEFERRED with recorded dispositions - `muscle-atrophy` (MANIFESTATION-IDENTITY /
+DIRECTION-INVERSION, following the interosseous-muscle-atrophy precedent) and `myxedema-coma`
+(CONSTITUTIVE-FEATURE-SET / IDENTITY-DUPLICATION with the hypothyroidism pathway) - with reopening
+conditions recorded in their governance notes; both left the backlog queue by disposition.
+
+`muscular-dystrophy` (6 edges): contractures (rank 1, BIOMECHANICAL_ALTERATION) rests on the 178-boy
+longitudinal cohort (contracture severity increasing with age, tracking ambulatory decline; PMID
+35124659) and the 33-boy maturation-corrected trajectory study (dorsiflexion ROM -0.23 to -0.33
+z-score/year; PMID 40100909); scoliosis (rank 2) rests on the MD STARnet population-based study (513
+analysed individuals; one-quarter with curvature >=20 degrees; ambulation-loss aHR 6.2-31.6; PMID
+34787322, erratum-linked with disposition recorded in the ref note) and the 105-patient natural-history
+review (95% scoliosis after ambulation loss; asymmetric iliotibial contracture determines curve
+direction; PMID 3611341); cardiomyopathy (rank 3, MULTIFACTORIAL) rests on the 33-patient adult cohort
+(universally penetrant young-adult cardiomyopathy; LVEF 51%->45%; midwall fibrosis; PMID 42112505), the
+274-patient HOPE-MD registry (PMID 42169468), and the CMR review (inferolateral subepicardial fibrosis
+signature; PMID 41548716); sleep-apnea (rank 4, MECHANICAL_OR_COMPRESSIVE) rests on the 12-patient PSG
+cohort (OSAS 42% versus 0% controls; PMID 32740854) and the SDB review (young: obstructive apneas via
+weight gain and airway weakness; older: hypoventilation, out of scope; PMID 28397169); dysphagia (rank 5,
+NEUROLOGICAL_DEGENERATION) rests on the 48-patient adult cohort (69% abnormal SWAL-QOL; MIP <22
+predictive at 92% accuracy; PMID 37212070) and the 206-person orofacial database (100% of the 19-49 DMD
+subgroup; PMID 42142020); osteoporosis (rank 6, MULTIFACTORIAL naming glucocorticoid exposure and
+immobility) rests on the 408-patient imaging cohort (osteoporosis 4.4%->58.3% and fractures 16.5%->83.3%
+between ages 5 and 18; PMID 41912872) and the vertebral-fracture risk-factor study (PMID 36342539).
+Subtype scope recorded on every edge (anchors are Duchenne/Becker specific; MEN-umbrella precedent from
+batch 61). Withheld: -> congestive-heart-failure and -> cardiac-arrhythmia (intermediate-node via the
+cardiomyopathy identity's published windows), -> cognitive-disorder (constitutive/developmental -
+cognitive impairment is part of the primary Duchenne phenotype).
+
+`myopia` (4 edges): retinal-detachment (rank 1, MECHANICAL_OR_COMPRESSIVE) rests on the myopia-
+complications meta-analysis (RD OR 3.15/8.74/12.62 by degree; PMID 32347918) and the 168-eye high-myopia
+study (peripheral lesions 43.5%; lattice 16.1%; PMID 35188078); macular-degeneration (rank 2) rests on
+the same meta-analysis (MMD OR 13.57/72.74/845.08; PMID 32347918), the anatomy review (lacquer-crack
+cascade; PMID 40983254), and the lesion-prevalence study (central changes 66.1%; PMID 35188078), scoped
+to the MYOPIC histotype (batch-61 medullary-thyroid-carcinoma precedent - no myopic-maculopathy
+identity); glaucoma (rank 3) rests on the 514,265-individual dose-response meta-analysis (per-diopter
+OR 1.21; high myopia OR 4.14; PMID 34648776), the complications meta-analysis (OR 1.59-2.92; PMID
+32347918), and the systematic review carrying the PROGRESSION COUNTERWEIGHT on the edge (myopia raises
+occurrence OR 2.26 yet associates with slower progression OR 0.85; PMID 34883495); cataracts (rank 4)
+rests on the complications meta-analysis alone (PSC OR 1.56-4.55; nuclear OR 1.79-2.87; PMID 32347918)
+with causalMechanism NOT_ESTABLISHED because early nuclear cataract produces myopic refractive shift
+(reverse-direction tension recorded openly). Withheld: -> visual-impairment (dual guard -
+constitutive-proximity plus intermediate-node: the meta-analysis' visual-impairment figures route
+through the four authored complication edges), -> strabismus (zero condition-specific quantification).
+
+`muscle-hernias` (1 edge): peripheral-neuropathy (rank 1, MECHANICAL_OR_COMPRESSIVE) rests on the
+eleven-case literature review of muscle-herniation nerve entrapments (superficial fibular nerve most
+common; fasciotomy response; PMID 31325324), the operative popliteal common-peroneal case (PMID
+7604332), and the MRI-confirmed peroneus-brevis case (PMID 32190181); anatomical scope recorded (fibular-
+nerve entrapments; the catalog has no peroneal-specific identity). Withheld: -> unexplained-chronic-pain
+(semantic-mismatch - the hernia's pain is mechanically explained fascial-defect symptomatology), ->
+compartment-syndrome (direction-inversion: compartment syndrome causes fascial defects in the located
+literature, plus no catalog identity); ankle-sprain and sciatica diagnostic-mimic context recorded (PMID
+22417228).
+
+Deferral records: `muscle-atrophy` is the atrophy umbrella whose located literature (disuse and
+neuromuscular) documents atrophy as a parallel manifestation of upstream disease/injury/immobility -
+immobility produces atrophy, osteoporosis, and contractures together - so any outgoing edge would assert
+direction the located evidence does not establish (the interosseous-muscle-atrophy manifest-identity
+precedent); reopening conditions: a cohort with muscle atrophy as the index exposure and an adjusted
+catalog-fit outcome, or a governance decision folding the umbrella into the producing entities.
+`myxedema-coma` is the decompensated emergency of severe hypothyroidism whose located evidence (US NIS
+study of 2,495 admissions, PMID 38279788) quantifies only mortality (6.8% vs 0.7%, aOR 9.92), length of
+stay, and cost - none catalog-fit - while its documented features (hypothermia, bradycardia, hypotension,
+altered sensorium; PMID 41280597) are the syndrome's own diagnostic criteria (constitutive-proximity),
+and hypothyroidism-mediated pathways belong to the published hypothyroidism window (identity-duplication);
+reopening conditions: a cohort quantifying a catalog-fit secondary diagnosis in survivors with baseline
+adjustment, or a governance decision treating it as a severity marker within the hypothyroidism identity.
+
+Pre-authoring verification: all 21 PMIDs passed the abstract pass (`/tmp/d1-abstract47.py` in five fetch
+groups), the esummary bibliographic pass (every authored author list, journal, and page range matched the
+PubMed record), and `node scripts/preflight-source-status.js --pmids ...` (21/21 checked, zero blocking
+flags; one erratum-linked note on PMID 34787322 with the disposition recorded in its reference note).
+The post-write structural self-audit passed for all five files with zero errors (11 edges, 25 reference
+uses; one accepted single-ref quarantine warning on myopia->cataracts), and `npm run kb:validate`
+reports zero errors.
+
+Registry after lockstep: 681 relationships (607 explicit / 74 legacy), 1188 reference uses (383
+verified / 805 pending-verification), 1183 clinical / 5 legal uses, 1077 source entities (346 active /
+722 pending-verification). The two within-batch shared sources - PMID 32347918 across all four myopia
+edges and PMID 35188078 across the retinal-detachment and macular-degeneration edges - give 25 reference
+uses over 21 new sources. Citation packet regenerated at 318 worksheets / 805 reference rows = live
+citation debt; the verification dashboard regenerated at 805 rows in 34 reviewer batches (720 distinct
+sources). Backlog after batch 62: **180** undispositioned zero-edge drafts (185 before the batch; three
+identities left by gaining edges and two by recorded deferral). Next-five: `nasal-valve-collapse`,
+`necrobiosis-lipoidica`, `necrobiotic-xanthogranuloma`, `nephritis`, `nephrosis`.
+
+Test-pin note: the sweep touched 54 files and replaced 316 counter tokens in one pass with the batch-61
+per-token context predicates carried over unchanged (relationships 670 -> 681, references/uses 1163 ->
+1188, unverified 780 -> 805, pending source entities 701 -> 722, total source entities 1056 -> 1077,
+explicit guards 596 -> 607, clinical references 1158 -> 1183, clinical provenance 1162 -> 1187, and the
+draft-singles counter 272 -> 273 for this batch's single-suggestion identity `muscle-hernias`). The
+explicit fixture token added in batch 61 continued to carry the citation-decay-gate debt fixture along
+automatically (780 -> 805, including the `Array.from({ length })` fixture line and its swept assertion) -
+second consecutive batch with no manual fixture bump. The residue check found no survivors outside the
+standing benign classes. Standing recommendation: batch 62 lands through branch, PR, CI, and merge.

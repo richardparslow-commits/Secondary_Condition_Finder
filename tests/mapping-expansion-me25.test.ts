@@ -89,9 +89,9 @@ describe("Mapping Expansion Batch ME-25", () => {
   it("pins the ME-25 pre-qualified-human-citation-verification aggregate state", () => {
     expect(relationships.currentState).toBe("D1-DRAFT-AUTHORED");
     expect(sources.currentState).toBe("D1-DRAFT-AUTHORED");
-    expect(relationships.counts).toEqual({ relationships: 670, explicitPublicationGuards: 596, legacyRationaleBoundaries: 74 });
-    expect(sources.counts).toMatchObject({ liveSourceReferenceUses: 1163, pendingVerificationSourceEntities: 701, totalSourceEntitiesIncludingLineage: 1056, });
-    expect(sources.sources.filter((entry) => entry.status === "pending-verification")).toHaveLength(701);
-    expect(sources.sources.filter((entry) => entry.status === "pending-verification" && entry.kind === "clinical-evidence")).toHaveLength(701);
+    expect(relationships.counts).toEqual({ relationships: 681, explicitPublicationGuards: 607, legacyRationaleBoundaries: 74 });
+    expect(sources.counts).toMatchObject({ liveSourceReferenceUses: 1188, pendingVerificationSourceEntities: 722, totalSourceEntitiesIncludingLineage: 1077, });
+    expect(sources.sources.filter((entry) => entry.status === "pending-verification")).toHaveLength(722);
+    expect(sources.sources.filter((entry) => entry.status === "pending-verification" && entry.kind === "clinical-evidence")).toHaveLength(722);
   });
 });

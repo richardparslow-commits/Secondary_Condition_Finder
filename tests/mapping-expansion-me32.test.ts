@@ -72,15 +72,15 @@ describe("Mapping Expansion Batch ME-32", () => {
   });
 
   it("ratchets authoritative registry totals to the current ME-33 state", () => {
-    expect(relationships.counts).toEqual({ relationships: 670, explicitPublicationGuards: 596, legacyRationaleBoundaries: 74 });
-    expect(relationships.relationships).toHaveLength(670);
+    expect(relationships.counts).toEqual({ relationships: 681, explicitPublicationGuards: 607, legacyRationaleBoundaries: 74 });
+    expect(relationships.relationships).toHaveLength(681);
     expect(sources.counts).toMatchObject({
-      liveSourceReferenceUses: 1163,
-      pendingVerificationSourceEntities: 701,
-      pendingClinicalSourceEntities: 701,
-      totalSourceEntitiesIncludingLineage: 1056,
+      liveSourceReferenceUses: 1188,
+      pendingVerificationSourceEntities: 722,
+      pendingClinicalSourceEntities: 722,
+      totalSourceEntitiesIncludingLineage: 1077,
     });
-    expect(sources.sources).toHaveLength(1056);
+    expect(sources.sources).toHaveLength(1077);
   });
 
   it("keeps final-closed and deferred alphabetical-head identities at zero suggestions", () => {

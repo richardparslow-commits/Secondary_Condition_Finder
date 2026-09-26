@@ -6,8 +6,8 @@
  "installedFrom": "Master Registry Discrepancy Resolution 2026",
  "authorityBoundary": "Authoritative for current relationship direction, proposition text, guard state, source linkage, and KB parity; does not establish an individual VA medical nexus.",
  "counts": {
-  "relationships": 670,
-  "explicitPublicationGuards": 596,
+  "relationships": 681,
+  "explicitPublicationGuards": 607,
   "legacyRationaleBoundaries": 74
  },
  "relationships": [
@@ -21616,6 +21616,339 @@
    "sourceReferenceCount": 3,
    "pathwayIntelligencePresent": false,
    "suggestionObjectHash": "f007d625cbcefaa1576a30097940a390533f1da06e208829366dbe22b2e45f46"
+  },
+  {
+   "relationshipId": "rel-muscular-dystrophy-to-contractures",
+   "primaryId": "muscular-dystrophy",
+   "targetId": "contractures",
+   "direction": "muscular-dystrophy -> contractures",
+   "primaryPublicationState": "draft",
+   "rank": 1,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY on the disease-sequela precedent with the subtype-scope limit carried openly: the 178-boy longitudinal Duchenne cohort found contracture prevalence and severity increasing with age and tracking ambulatory decline (PMID 35124659) and the maturation-corrected trajectory study documented dorsiflexion range-of-motion decline of 0.23-0.33 z-score per year alongside muscle size loss (PMID 40100909); because both anchors are Duchenne-specific cohorts where glucocorticoid exposure and immobilization co-evolve and muscle imaging only moderately predicts contracture, the conservative standard keeps the edge at association only and routes individual claims through dated range-of-motion assessment with immobilization, orthopedic, and neurologic exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY on the disease-sequela precedent with the subtype-scope limit carried openly: the 178-boy longitudinal Duchenne cohort found contracture prevalence and severity increasing with age and tracking ambulatory decline (PMID 35124659) and the maturation-corrected trajectory study documented dorsiflexion range-of-motion decline of 0.23-0.33 z-score per year alongside muscle size loss (PMID 40100909); because both anchors are Duchenne-specific cohorts where glucocorticoid exposure and immobilization co-evolve and muscle imaging only moderately predicts contracture, the conservative standard keeps the edge at association only and routes individual claims through dated range-of-motion assessment with immobilization, orthopedic, and neurologic exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to Duchenne/Becker dystrophinopathy subtypes: the 178-boy longitudinal cohort found contracture prevalence and severity increasing with age tracking ambulatory decline (PMID 35124659) and the maturation-corrected trajectory study documented dorsiflexion ROM decline of 0.23-0.33 z-score/year alongside muscle size loss (PMID 40100909); glucocorticoid and immobilization co-evolution is recorded, and the joint-replacement and burns contracture windows keep their own evidence (ME-29), so individual claims route through dated range-of-motion assessment with immobilization, orthopedic, and neurologic exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No located cohort separates dystrophy-driven shortening from immobilization and positioning effects; MRI muscle quality only moderately predicts contracture severity so tendon and joint contributions are unquantified; glucocorticoid therapy and ambulation loss co-evolve with contracture; and cerebral palsy, spina bifida, and orthopedic contracture causes overlap the differential."
+   ],
+   "sourceIds": [
+    "pmid-35124659",
+    "pmid-40100909"
+   ],
+   "sourceReferenceCount": 2,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "abe273635e35e3774432c4ec98296d947cc19731fcadc9ad7ced0fe790fb3902"
+  },
+  {
+   "relationshipId": "rel-muscular-dystrophy-to-scoliosis",
+   "primaryId": "muscular-dystrophy",
+   "targetId": "scoliosis",
+   "direction": "muscular-dystrophy -> scoliosis",
+   "primaryPublicationState": "draft",
+   "rank": 2,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY on the disease-sequela precedent with the treatment-era limit carried openly: the MD STARnet population-based study found one-quarter of 513 dystrophinopathy individuals with curvature at least 20 degrees and ambulation loss carrying curvature hazards of 6.2-31.6 (PMID 34787322), and the 105-patient review found scoliosis in 95 percent after ambulation loss with asymmetric iliotibial band contracture determining curve direction (PMID 3611341); because the natural-history cohort predates modern corticosteroid practice (with steroid non-use associated with higher hazards) and radiograph ascertainment was incomplete, the conservative standard keeps the edge at association only and routes individual claims through dated radiographic assessment with idiopathic, congenital, and other neuromuscular exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY on the disease-sequela precedent with the treatment-era limit carried openly: the MD STARnet population-based study found one-quarter of 513 dystrophinopathy individuals with curvature at least 20 degrees and ambulation loss carrying curvature hazards of 6.2-31.6 (PMID 34787322), and the 105-patient review found scoliosis in 95 percent after ambulation loss with asymmetric iliotibial band contracture determining curve direction (PMID 3611341); because the natural-history cohort predates modern corticosteroid practice (with steroid non-use associated with higher hazards) and radiograph ascertainment was incomplete, the conservative standard keeps the edge at association only and routes individual claims through dated radiographic assessment with idiopathic, congenital, and other neuromuscular exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to dystrophinopathy neuromuscular scoliosis: the MD STARnet population-based study found one-quarter of 513 individuals with curvature at least 20 degrees and ambulation-loss hazards 6.2-31.6 (PMID 34787322, erratum-linked with disposition recorded) and the 105-patient review found scoliosis in 95 percent after ambulation loss with asymmetric iliotibial contracture determining curve direction (PMID 3611341); the cerebral-palsy scoliosis window keeps its own evidence (ME-29), so individual claims route through dated radiographic assessment with idiopathic, congenital, and other neuromuscular exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No located cohort reports scoliosis incidence under modern glucocorticoid-first management; radiograph ascertainment was incomplete in the population-based study; the natural-history cohort predates current therapy; brace management has documented poor efficacy in this population; and idiopathic adolescent scoliosis, congenital vertebral anomalies, and other neuromuscular causes compete for individual attribution."
+   ],
+   "sourceIds": [
+    "pmid-34787322",
+    "pmid-3611341"
+   ],
+   "sourceReferenceCount": 2,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "4805fc6d80c4fce6445f799da744f6e30f621cfba0578b962d04ca5b1fe20dc6"
+  },
+  {
+   "relationshipId": "rel-muscular-dystrophy-to-cardiomyopathy",
+   "primaryId": "muscular-dystrophy",
+   "targetId": "cardiomyopathy",
+   "direction": "muscular-dystrophy -> cardiomyopathy",
+   "primaryPublicationState": "draft",
+   "rank": 3,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY on the disease-sequela precedent with the penetrance-timing limit carried openly: the adult DMD cohort of 33 patients documents universally penetrant young-adult cardiomyopathy with ejection-fraction decline and midwall fibrosis (PMID 42112505), the HOPE-MD registry of 274 genotype-confirmed adults frames progression to dilated cardiomyopathy (PMID 42169468), and the CMR review documents subclinical myocardial involvement years before overt dysfunction (PMID 41548716); because the registry is conditioned on established systolic dysfunction and early cardioprotection alters the course, the conservative standard keeps the edge at association only and routes individual claims through dated echocardiography/CMR and genotype review with hypertensive, inflammatory, and familial exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY on the disease-sequela precedent with the penetrance-timing limit carried openly: the adult DMD cohort of 33 patients documents universally penetrant young-adult cardiomyopathy with ejection-fraction decline and midwall fibrosis (PMID 42112505), the HOPE-MD registry of 274 genotype-confirmed adults frames progression to dilated cardiomyopathy (PMID 42169468), and the CMR review documents subclinical myocardial involvement years before overt dysfunction (PMID 41548716); because the registry is conditioned on established systolic dysfunction and early cardioprotection alters the course, the conservative standard keeps the edge at association only and routes individual claims through dated echocardiography/CMR and genotype review with hypertensive, inflammatory, and familial exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to dystrophin-related dilated cardiomyopathy: the adult DMD cohort of 33 patients documents universally penetrant young-adult cardiomyopathy with ejection-fraction decline and midwall fibrosis (PMID 42112505), the 274-patient HOPE-MD registry frames progression to dilated cardiomyopathy (PMID 42169468), and the CMR review documents inferolateral subepicardial fibrosis signatures (PMID 41548716); the cardiomyopathy identity's published heart-failure and arrhythmia windows are intermediate-node pathways not recycled (ME-29), so individual claims route through dated echo/CMR and genotype review with hypertensive, inflammatory, and familial exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No located cohort reports age-specific cardiomyopathy penetrance under contemporary early-cardioprotection protocols; the registry is conditioned on established systolic dysfunction; CMR completion was only 25 percent in the adult cohort because of positioning limitations; genotype-phenotype variation between Duchenne and Becker is unmodeled; and hypertensive, tachycardia-mediated, and familial cardiomyopathies compete for individual attribution."
+   ],
+   "sourceIds": [
+    "pmid-42112505",
+    "pmid-42169468",
+    "pmid-41548716"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "2d31423371cc79c1c796b5a915114f4d015025d0868e49bfa37808d9afbc66c3"
+  },
+  {
+   "relationshipId": "rel-muscular-dystrophy-to-sleep-apnea",
+   "primaryId": "muscular-dystrophy",
+   "targetId": "sleep-apnea",
+   "direction": "muscular-dystrophy -> sleep-apnea",
+   "primaryPublicationState": "draft",
+   "rank": 4,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY at small PSG-cohort class with the obstructive-scope limit carried openly: the prospective polysomnography study found obstructive sleep apnea in 42 percent of 12 Duchenne males versus none of controls (PMID 32740854) and the sleep-disordered-breathing review attributes young-patient obstructive apneas to weight gain and upper-airway muscle weakness (PMID 28397169); because the anchor cohort is small and the review's hypoventilation phenotype falls outside the sleep-apnea identity's obstructive scope, the conservative standard keeps the edge at association only and routes individual claims through dated polysomnography with obesity, tonsillar, and central-apnea exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY at small PSG-cohort class with the obstructive-scope limit carried openly: the prospective polysomnography study found obstructive sleep apnea in 42 percent of 12 Duchenne males versus none of controls (PMID 32740854) and the sleep-disordered-breathing review attributes young-patient obstructive apneas to weight gain and upper-airway muscle weakness (PMID 28397169); because the anchor cohort is small and the review's hypoventilation phenotype falls outside the sleep-apnea identity's obstructive scope, the conservative standard keeps the edge at association only and routes individual claims through dated polysomnography with obesity, tonsillar, and central-apnea exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to the obstructive phenotype: the prospective polysomnography study found OSAS in 42 percent of 12 Duchenne males versus none of controls (PMID 32740854) and the review attributes young-patient obstructive apneas to weight gain and upper-airway muscle weakness while older-patient hypoventilation falls outside scope (PMID 28397169); individual claims route through dated polysomnography with obesity, tonsillar, and central-apnea exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No located cohort quantifies obstructive sleep apnea incidence in a large dystrophinopathy population; the small PSG cohort is single-center; obstructive and hypoventilatory sleep-disordered breathing overlap in this population and only the obstructive component is in scope; corticosteroid-era weight trajectories are unmodeled; and obesity, craniofacial, and adenotonsillar causes of apnea compete in the same young population."
+   ],
+   "sourceIds": [
+    "pmid-32740854",
+    "pmid-28397169"
+   ],
+   "sourceReferenceCount": 2,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "369d648c9ba1bf94691e83a95aab0e54807d38dee3d8f88b53a642ce8d2c0505"
+  },
+  {
+   "relationshipId": "rel-muscular-dystrophy-to-dysphagia",
+   "primaryId": "muscular-dystrophy",
+   "targetId": "dysphagia",
+   "direction": "muscular-dystrophy -> dysphagia",
+   "primaryPublicationState": "draft",
+   "rank": 5,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY at adult-cohort plus registry-database class with the outcome-measure limit carried openly: the 48-patient adult Duchenne cohort found abnormal swallowing quality of life in 69 percent with inspiratory-pressure predictors (PMID 37212070) and the 206-person orofacial database found dysfunction in all 19-49-year-old Duchenne participants (PMID 42142020); because the anchors measure patient-reported and screening outcomes rather than instrumental swallow diagnosis and the als window keeps its own evidence (ME-29), the conservative standard keeps the edge at association only and routes individual claims through videofluoroscopy with reflux, medication, and neurologic exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY at adult-cohort plus registry-database class with the outcome-measure limit carried openly: the 48-patient adult Duchenne cohort found abnormal swallowing quality of life in 69 percent with inspiratory-pressure predictors (PMID 37212070) and the 206-person orofacial database found dysfunction in all 19-49-year-old Duchenne participants (PMID 42142020); because the anchors measure patient-reported and screening outcomes rather than instrumental swallow diagnosis and the als window keeps its own evidence (ME-29), the conservative standard keeps the edge at association only and routes individual claims through videofluoroscopy with reflux, medication, and neurologic exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to Duchenne/Becker oropharyngeal myopathy: the 48-patient adult cohort found abnormal swallowing quality of life in 69 percent with inspiratory-pressure predictors (PMID 37212070) and the 206-person orofacial database found dysfunction in all 19-49-year-old Duchenne participants (PMID 42142020); outcome measures are patient-reported and screening class, and the als dysphagia window keeps its own evidence (ME-29), so individual claims route through videofluoroscopy with reflux, medication, and neurologic exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No located cohort reports videofluoroscopically confirmed dysphagia incidence in Duchenne muscular dystrophy; patient-reported swallowing quality of life is not diagnosis; the adult cohort's predictors conflate inspiratory weakness with swallow mechanics; and medication effects, gastroesophageal reflux, and brainstem pathology are competing dysphagia causes."
+   ],
+   "sourceIds": [
+    "pmid-37212070",
+    "pmid-42142020"
+   ],
+   "sourceReferenceCount": 2,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "66f2a69f85dd34388465035bfb1123182a89879f02d7af0dc86c377559af1f1a"
+  },
+  {
+   "relationshipId": "rel-muscular-dystrophy-to-osteoporosis",
+   "primaryId": "muscular-dystrophy",
+   "targetId": "osteoporosis",
+   "direction": "muscular-dystrophy -> osteoporosis",
+   "primaryPublicationState": "draft",
+   "rank": 6,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY on the disease-and-treatment-sequela precedent with the treatment-mediation limit carried openly: the 408-patient routine-imaging cohort found osteoporosis prevalence rising from 4.4 to 58.3 percent between ages 5 and 18 with fracture prevalence rising from 16.5 to 83.3 percent (PMID 41912872) and the risk-factor study linked glucocorticoid-exposure markers to prevalent vertebral fractures (PMID 36342539); because all cohort patients were on daily glucocorticoids and immobility co-evolves, the conservative standard keeps the edge at association only with a MULTIFACTORIAL mechanism naming both documented contributors, and routes individual claims through dated densitometry with hypogonadism, vitamin-D, and immobilization exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY on the disease-and-treatment-sequela precedent with the treatment-mediation limit carried openly: the 408-patient routine-imaging cohort found osteoporosis prevalence rising from 4.4 to 58.3 percent between ages 5 and 18 with fracture prevalence rising from 16.5 to 83.3 percent (PMID 41912872) and the risk-factor study linked glucocorticoid-exposure markers to prevalent vertebral fractures (PMID 36342539); because all cohort patients were on daily glucocorticoids and immobility co-evolves, the conservative standard keeps the edge at association only with a MULTIFACTORIAL mechanism naming both documented contributors, and routes individual claims through dated densitometry with hypogonadism, vitamin-D, and immobilization exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to the joint disease-and-treatment pathway with a MULTIFACTORIAL mechanism naming glucocorticoid exposure and immobility: the 408-patient imaging cohort found osteoporosis prevalence 4.4-58.3 percent and fracture prevalence 16.5-83.3 percent between ages 5 and 18 (PMID 41912872) and the risk-factor study linked glucocorticoid-exposure markers to prevalent vertebral fractures (PMID 36342539); the hypogonadism osteoporosis window keeps its own evidence (ME-29), so individual claims route through dated densitometry with hypogonadism, vitamin-D, and immobilization exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No located cohort separates glucocorticoid from immobility contributions or reports bone outcomes in untreated dystrophinopathy; the imaging cohort is single-center retrospective; fracture prevalence figures reflect cumulative vertebral accrual; hypogonadism and vitamin-D deficiency overlap the population; and glucocorticoid-induced osteoporosis in other diseases (the published glucocorticoid window context) competes for individual attribution."
+   ],
+   "sourceIds": [
+    "pmid-41912872",
+    "pmid-36342539"
+   ],
+   "sourceReferenceCount": 2,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "f65c56ea6b9318c087cffa0b771645bda1474b1ca9059ba2bb5615cc660f8282"
+  },
+  {
+   "relationshipId": "rel-myopia-to-retinal-detachment",
+   "primaryId": "myopia",
+   "targetId": "retinal-detachment",
+   "direction": "myopia -> retinal-detachment",
+   "primaryPublicationState": "draft",
+   "rank": 1,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY at meta-analysis class with the dose-response limit carried openly: the myopia-complications meta-analysis found retinal-detachment odds of 3.15 to 12.62 rising with myopia degree (PMID 32347918) and the 168-eye high-myopia study found peripheral retinal lesions in 43.5 percent with axial length at or beyond 26.5 mm raising posterior-complication risk (PMID 35188078); because the pooled designs are heterogeneous and vitreous status is unreported, the conservative standard keeps the edge at association only and routes individual claims through dated dilated retinal examination with peripheral-degenerative, traumatic, and surgical exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY at meta-analysis class with the dose-response limit carried openly: the myopia-complications meta-analysis found retinal-detachment odds of 3.15 to 12.62 rising with myopia degree (PMID 32347918) and the 168-eye high-myopia study found peripheral retinal lesions in 43.5 percent with axial length at or beyond 26.5 mm raising posterior-complication risk (PMID 35188078); because the pooled designs are heterogeneous and vitreous status is unreported, the conservative standard keeps the edge at association only and routes individual claims through dated dilated retinal examination with peripheral-degenerative, traumatic, and surgical exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to graded refractive risk: the myopia-complications meta-analysis found retinal-detachment odds 3.15-12.62 by degree (PMID 32347918) and the 168-eye high-myopia study found peripheral retinal lesions in 43.5 percent with axial length at or beyond 26.5 mm raising risk (PMID 35188078); the diabetic-retinopathy and choroiditis detachment windows keep their own evidence (ME-29), so individual claims route through dated dilated retinal examination with peripheral-degenerative, traumatic, and surgical exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No located prospective cohort reports incident retinal detachment by refractive degree with uniform axial-length measurement; referral-sampling inflates lesion prevalence in the hospital study; posterior vitreous detachment status is unreported in the pooled sources; and trauma, aphakic/pseudophakic states, and hereditary vitreoretinopathies are competing detachment causes."
+   ],
+   "sourceIds": [
+    "pmid-32347918",
+    "pmid-35188078"
+   ],
+   "sourceReferenceCount": 2,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "2cff7495a8c5625713a3f4873aa86145e551b25ddfaeeb788b299dd4cfe95399"
+  },
+  {
+   "relationshipId": "rel-myopia-to-macular-degeneration",
+   "primaryId": "myopia",
+   "targetId": "macular-degeneration",
+   "direction": "myopia -> macular-degeneration",
+   "primaryPublicationState": "draft",
+   "rank": 2,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY at meta-analysis class with the histotype-scope limit carried openly: the myopia-complications meta-analysis found myopic macular degeneration odds of 13.57 to 845.08 rising steeply with myopia degree (PMID 32347918), the anatomy review documents the lacquer-crack-to-atrophy macular cascade of pathologic myopia (PMID 40983254), and the high-myopia study found central retinal changes in 66.1 percent of eyes (PMID 35188078); because the catalog lacks a myopic-maculopathy identity (the edge is scoped to the myopic histotype, as with the batch-61 medullary-thyroid-carcinoma scoping) and high-myopia estimates are sparse-data wide, the conservative standard keeps the edge at association only and routes individual claims through dated OCT and angiographic differentiation with age-related, inflammatory, and hereditary exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY at meta-analysis class with the histotype-scope limit carried openly: the myopia-complications meta-analysis found myopic macular degeneration odds of 13.57 to 845.08 rising steeply with myopia degree (PMID 32347918), the anatomy review documents the lacquer-crack-to-atrophy macular cascade of pathologic myopia (PMID 40983254), and the high-myopia study found central retinal changes in 66.1 percent of eyes (PMID 35188078); because the catalog lacks a myopic-maculopathy identity (the edge is scoped to the myopic histotype, as with the batch-61 medullary-thyroid-carcinoma scoping) and high-myopia estimates are sparse-data wide, the conservative standard keeps the edge at association only and routes individual claims through dated OCT and angiographic differentiation with age-related, inflammatory, and hereditary exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped explicitly to the myopic histotype because the catalog lacks a myopic-maculopathy identity (batch-61 medullary-thyroid-carcinoma precedent): the meta-analysis found myopic macular degeneration odds 13.57-845.08 by degree (PMID 32347918), the anatomy review documents the lacquer-crack-to-atrophy cascade (PMID 40983254), and the high-myopia study found central retinal changes in 66.1 percent (PMID 35188078); the age-related macular-degeneration histotype's own windows are not recycled (ME-29), so individual claims route through dated OCT and angiographic differentiation with age-related, inflammatory, and hereditary exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No located prospective cohort separates atrophic from neovascular myopic maculopathy incidence by refractive degree; definitions vary across pooled studies; the catalog lacks a myopic-maculopathy identity so the edge is scoped to the myopic histotype of the macular-degeneration identity; and age-related macular degeneration, inflammatory chorioretinopathy, and hereditary maculopathies compete for individual attribution."
+   ],
+   "sourceIds": [
+    "pmid-32347918",
+    "pmid-40983254",
+    "pmid-35188078"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "b1c7ea53107994fc77520ea659cca2a23c7cac89a496f0e755e62ecc2492198d"
+  },
+  {
+   "relationshipId": "rel-myopia-to-glaucoma",
+   "primaryId": "myopia",
+   "targetId": "glaucoma",
+   "direction": "myopia -> glaucoma",
+   "primaryPublicationState": "draft",
+   "rank": 3,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY at dose-response meta-analysis class with the progression counterweight carried openly: the 514,265-individual dose-response meta-analysis found per-diopter open-angle glaucoma odds of 1.21 rising to 4.14 in high myopia (PMID 34648776) and the myopia-complications meta-analysis found open-angle glaucoma odds of 1.59-2.92 (PMID 32347918); because the systematic review documents myopia associated with slower glaucoma progression (OR 0.85; PMID 34883495) and myopic discs complicate diagnosis, the conservative standard keeps the edge at association only scoped to glaucoma occurrence, records the progression counterweight on the edge, and routes individual claims through dated perimetry and OCT with myopic-disc, ocular-hypertension, and secondary-glaucoma exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY at dose-response meta-analysis class with the progression counterweight carried openly: the 514,265-individual dose-response meta-analysis found per-diopter open-angle glaucoma odds of 1.21 rising to 4.14 in high myopia (PMID 34648776) and the myopia-complications meta-analysis found open-angle glaucoma odds of 1.59-2.92 (PMID 32347918); because the systematic review documents myopia associated with slower glaucoma progression (OR 0.85; PMID 34883495) and myopic discs complicate diagnosis, the conservative standard keeps the edge at association only scoped to glaucoma occurrence, records the progression counterweight on the edge, and routes individual claims through dated perimetry and OCT with myopic-disc, ocular-hypertension, and secondary-glaucoma exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to glaucoma occurrence with the progression counterweight carried openly: the 514,265-individual dose-response meta-analysis found per-diopter open-angle glaucoma odds 1.21 rising to 4.14 in high myopia (PMID 34648776), the complications meta-analysis found odds 1.59-2.92 (PMID 32347918), and the systematic review documents myopia associated with slower progression (OR 0.85) as documented counterweight (PMID 34883495); the hyperopia glaucoma window keeps its own evidence (ME-29), so individual claims route through dated perimetry and OCT with myopic-disc, ocular-hypertension, and secondary-glaucoma exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No located study resolves the occurrence-versus-progression paradox (higher incidence but slower progression in myopic eyes); diagnostic ascertainment is harder in myopic discs (tilted, large, peripapillary atrophy) so misclassification is likely in both directions; shared genetic architecture between myopia and glaucoma is documented and unresolved; and ocular hypertension, pseudoexfoliation, and pigmentary glaucoma compete for individual attribution."
+   ],
+   "sourceIds": [
+    "pmid-34648776",
+    "pmid-32347918",
+    "pmid-34883495"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "8a52eea55776ff19952174418af5044d86f66d306a2d116f2cd01fc01320b2a8"
+  },
+  {
+   "relationshipId": "rel-myopia-to-cataracts",
+   "primaryId": "myopia",
+   "targetId": "cataracts",
+   "direction": "myopia -> cataracts",
+   "primaryPublicationState": "draft",
+   "rank": 4,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY at single meta-analysis class with the direction tension and no-mechanism stance carried openly: the myopia-complications meta-analysis found posterior subcapsular cataract odds of 1.56-4.55 and nuclear cataract odds of 1.79-2.87 rising with myopia degree (PMID 32347918); because early nuclear cataract produces a myopic refractive shift that inflates cross-sectional associations and no prospective incident-cataract data by baseline refraction were located, the conservative standard keeps the edge at association only with causalMechanism recorded as not established, and routes individual claims through dated lens examination with refractive-history, steroid, and glycemic exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY at single meta-analysis class with the direction tension and no-mechanism stance carried openly: the myopia-complications meta-analysis found posterior subcapsular cataract odds of 1.56-4.55 and nuclear cataract odds of 1.79-2.87 rising with myopia degree (PMID 32347918); because early nuclear cataract produces a myopic refractive shift that inflates cross-sectional associations and no prospective incident-cataract data by baseline refraction were located, the conservative standard keeps the edge at association only with causalMechanism recorded as not established, and routes individual claims through dated lens examination with refractive-history, steroid, and glycemic exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly) with causalMechanism NOT_ESTABLISHED and the direction tension recorded: the myopia-complications meta-analysis found posterior subcapsular cataract odds 1.56-4.55 and nuclear cataract odds 1.79-2.87 by degree (PMID 32347918), but early nuclear cataract produces myopic refractive shift so the cross-sectional association cannot establish direction; individual claims route through dated lens examination with refractive-history, steroid, and glycemic exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No located study separates antecedent myopia from lens-induced myopic shift prospectively; the posterior subcapsular and nuclear subtypes likely differ in mechanism and are pooled here only at association level; glucocorticoid exposure is a documented posterior subcapsular cataract cause and is unadjusted in pooled sources; and age, diabetes, ultraviolet exposure, and trauma are competing cataract causes."
+   ],
+   "sourceIds": [
+    "pmid-32347918"
+   ],
+   "sourceReferenceCount": 1,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "6c795cfc6a68d933530387faff2b8c08c205a51f180bbc8716708ad3d53a3c41"
+  },
+  {
+   "relationshipId": "rel-muscle-hernias-to-peripheral-neuropathy",
+   "primaryId": "muscle-hernias",
+   "targetId": "peripheral-neuropathy",
+   "direction": "muscle-hernias -> peripheral-neuropathy",
+   "primaryPublicationState": "draft",
+   "rank": 1,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY at case-plus-small-review class with the anatomical-scope limit carried openly: the eleven-case literature review identifies superficial fibular nerve entrapment as the most common muscle-hernia nerve lesion with fasciotomy response (PMID 31325324), the popliteal case documents common peroneal compression with symptom relief after fascial repair (PMID 7604332), and the MRI case documents peroneus brevis herniation compressing the superficial peroneal nerve (PMID 32190181); because the evidence is case class with publication bias toward unusual entrapments and the edge targets the general peripheral-neuropathy identity (no peroneal-specific identity exists in the catalog), the conservative standard keeps the edge at association only and routes individual claims through electrodiagnostic and imaging confirmation with radiculopathic, metabolic, and compartment-syndrome exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY at case-plus-small-review class with the anatomical-scope limit carried openly: the eleven-case literature review identifies superficial fibular nerve entrapment as the most common muscle-hernia nerve lesion with fasciotomy response (PMID 31325324), the popliteal case documents common peroneal compression with symptom relief after fascial repair (PMID 7604332), and the MRI case documents peroneus brevis herniation compressing the superficial peroneal nerve (PMID 32190181); because the evidence is case class with publication bias toward unusual entrapments and the edge targets the general peripheral-neuropathy identity (no peroneal-specific identity exists in the catalog), the conservative standard keeps the edge at association only and routes individual claims through electrodiagnostic and imaging confirmation with radiculopathic, metabolic, and compartment-syndrome exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to mechanical nerve entrapment (superficial fibular and common peroneal distribution): the eleven-case literature review identifies superficial fibular nerve as the most common muscle-hernia entrapment with fasciotomy response (PMID 31325324), the operative popliteal case documents common peroneal compression relieved by fascial repair (PMID 7604332), and the MRI case documents peroneus brevis herniation compressing the superficial peroneal nerve (PMID 32190181); the unexplained-chronic-pain edge is withheld on semantic-mismatch and the compartment-syndrome edge on direction-inversion, so individual claims route through electrodiagnostic and imaging confirmation with radiculopathic, metabolic, and compartment-syndrome exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No cohort quantifies nerve-entrapment incidence among muscle-hernia patients; publication bias favors unusual entrapment cases; dynamic ultrasound and MRI confirmation varies across the case literature; compartment syndrome is the dominant fascial-defect context and was explicitly excluded from the anchor review; and lumbar radiculopathy, diabetic neuropathy, and fibular-head entrapment from other causes compete for individual attribution."
+   ],
+   "sourceIds": [
+    "pmid-31325324",
+    "pmid-7604332",
+    "pmid-32190181"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "5786007545811d4a8155e4864b5d2fd4c9d447cffbbd2383f707d42ecd8ea8b5"
   }
  ],
  "lastUpdatedBy": "batch-D1-draft-authoring",
