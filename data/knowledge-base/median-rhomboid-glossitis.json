@@ -2,8 +2,58 @@
   "id": "median-rhomboid-glossitis",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review oral, dental, maxillofacial, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 60 (2026-09-26): one ASSOCIATION_ONLY draft mapping pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: the edge asserts association only (etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true, mechanismCategory MALIGNANT_TRANSFORMATION). The evidence base is a single fourteen-case 1979 series with a qualitative malignant-change statement and no denominators, so individual claims require dated biopsy with competing-cause exclusion, and review by a qualified medical professional.",
+    "Pathway and duplicate-scope screens: no -> oral-candidiasis edge (WITHHELD - constitutive identity: the anchor series reframes median rhomboid glossitis itself as chronic hyperplastic oral candidiasis, so the lesion is a candidiasis presentation rather than a cause of candidiasis; the published oral-candidiasis window keeps its own scope); no -> halitosis or dysphagia edge (zero located condition-specific quantification; the denture-stomatitis review records median rhomboid glossitis as a co-occurring candidal lesion, which is shared-etiology co-occurrence rather than a secondary pathway); no -> burning-mouth-syndrome edge (the located burning-glossitis literature is etiology-upstream and separate-identity scoped); no evidence recycled from the lichen-planus or erythroplasia-of-queyrat squamous-cell-carcinoma windows (ME-29 scope rule)."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 60 (2026-09-26): one bounded association edge authored - median-rhomboid-glossitis to squamous-cell-carcinoma (rank 1) - classified ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, and hypothesizedOnly:true. The proposition rests solely on the fourteen-case 1979 clinicopathologic series (PMID 485023), which reframes the lesion as chronic hyperplastic oral candidiasis and states that later lesions become permanent and in a few cases may go further to malignant change.",
+    "Counter-evidence and caveat screens recorded 2026-09-26: (i) evidence class - one small 1979 case series with a qualitative malignant-change statement, no transformation cases enumerated, and no modern cohort confirmation; (ii) historical-natural-history limit - the series predates modern antifungal practice (its own early-lesion antifungal response data suggest treatment alters the historical course) and HPV attribution; (iii) constitutive boundary - the lesion is itself candidal hyperplasia per the anchor series, so no candidiasis edge was authored; (iv) shared-etiology co-occurrence - the denture-stomatitis review's association list is candidal-biofilm co-occurrence, not a secondary pathway; (v) sibling-window discipline - the lichen-planus and erythroplasia-of-queyrat squamous-cell-carcinoma windows keep their own evidence and none is recycled (ME-29)."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "squamous-cell-carcinoma",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Median rhomboid glossitis documents rare malignant change at case-series level: the fourteen-case clinicopathologic series reframing the lesion as chronic hyperplastic oral candidiasis states that later lesions become permanent and in a few cases may go further to malignant change, with yeast invasion of the parakeratotic epithelial layers and proliferating acanthosis documented histologically (PMID 485023); the association is recorded as reported malignant-change potential in a small 1979 series only.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: the located malignant-change statement is a qualitative observation in a fourteen-case 1979 series without incidence denominators, transformation case detail, or modern cohort confirmation, so any individual oral malignancy requires biopsy with leukoplakia, lichen planus, tobacco, and alcohol exclusion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MALIGNANT_TRANSFORMATION",
+        "primaryVector": "Chronic persistent candidal infection of the midline tongue epithelium drives long-standing hyperplastic inflammation and proliferating acanthosis so malignant transformation results in rare cases, the chronic-inflammation route implied by the series' malignant-change statement and its permanent-lesion observation, but whether this route produced any individual carcinoma remains hypothesized until biopsy and histopathologic records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at single small 1979 case-series class only: the malignant-change claim is qualitative with no transformation cases enumerated, the series predates modern antifungal practice and HPV attribution, and no cohort quantifies squamous-cell-carcinoma incidence in median rhomboid glossitis.",
+        "evidenceGaps": "No modern cohort quantifies oral cancer incidence in median rhomboid glossitis; the malignant-change statement is a 1979 observation without denominators; the lesion's modern status as candidal hyperplasia with effective antifungal therapy changes the historical natural history; and leukoplakia, lichen planus, tobacco, and alcohol are dominant competing oral-cancer causes.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "tobacco- and alcohol-related oral squamous cell carcinoma",
+          "oral lichen planus malignant transformation (the published lichen-planus window, not recycled per ME-29)",
+          "leukoplakia and erythroplakia premalignancy",
+          "HPV-associated oropharyngeal carcinoma",
+          "denture trauma and chronic irritation"
+        ]
+      },
+      "evidenceGaps": [
+        "No modern cohort quantifies oral cancer incidence in median rhomboid glossitis; the malignant-change statement is a 1979 observation without denominators; the lesion's modern status as candidal hyperplasia with effective antifungal therapy changes the historical natural history; and leukoplakia, lichen planus, tobacco, and alcohol are dominant competing oral-cancer causes."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY at single small case-series class with the historical-evidence limit carried openly: the fourteen-case clinicopathologic series reframing median rhomboid glossitis as chronic hyperplastic candidiasis states that later lesions become permanent and in a few cases may go further to malignant change (PMID 485023); because the malignant-change claim is qualitative in a 1979 series without denominators or modern cohort confirmation and competing oral-cancer causes dominate, the conservative standard keeps the edge at association only and routes individual claims through dated biopsy with leukoplakia, lichen planus, tobacco, alcohol, and HPV exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Grosshans E, Dossmann L, Basset M. [Median candidiasis of the tongue (glossitis mediana candidamycetica) (author's transl)] Ann Dermatol Venereol. 1979 Mar;106(3):259-64. PMID 485023.",
+          "note": "Fourteen-case clinicopathologic series (French, 1979) reframing median rhomboid glossitis as chronic hyperplastic oral candidiasis: yeast invasion with proliferating acanthosis documented; states later lesions become permanent and in a few cases may go further to malignant change; supports the bounded historical malignant-change potential only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/485023/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 485023; series discussion (malignant change in a few cases) and histopathology"
+        }
+      ]
+    }
+  ]
 }

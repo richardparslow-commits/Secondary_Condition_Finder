@@ -71,16 +71,16 @@ describe("mapping expansion ME-8 qualified-human citation verification", () => {
     const output = execFileSync(process.execPath, ["scripts/audit-citation-verification.js"], { cwd: root, encoding: "utf8" });
     const result = JSON.parse(output);
     expect(result).toMatchObject({
-      references: 1101,
+      references: 1128,
       verified: 383,
       retiredVerified: 6,
       verifiedProvenance: 389,
-      unverified: 718,
+      unverified: 745,
       reviewFindingCount: 0,
       hardFindingCount: 0,
-      clinicalEvidenceReferences: 1096,
-      clinicalEvidenceReferencesWithUrls: 1096,
-      clinicalEvidenceProvenanceWithUrls: 1100,
+      clinicalEvidenceReferences: 1123,
+      clinicalEvidenceReferencesWithUrls: 1123,
+      clinicalEvidenceProvenanceWithUrls: 1127,
     });
   });
 
@@ -89,15 +89,15 @@ describe("mapping expansion ME-8 qualified-human citation verification", () => {
     const result = JSON.parse(output);
     expect(result).toMatchObject({
       status: "PASS",
-      relationships: 646,
-      liveSourceReferenceUses: 1101,
+      relationships: 658,
+      liveSourceReferenceUses: 1128,
       verifiedLiveSourceUses: 383,
-      pendingVerificationLiveSourceUses: 718,
+      pendingVerificationLiveSourceUses: 745,
       activeSourceEntities: 346,
-      pendingVerificationSourceEntities: 653,
+      pendingVerificationSourceEntities: 674,
       activeClinicalSourceEntities: 345,
-      pendingClinicalSourceEntities: 653,
-      totalSourceEntities: 1008,
+      pendingClinicalSourceEntities: 674,
+      totalSourceEntities: 1029,
     });
   });
 });

@@ -6,8 +6,8 @@
  "installedFrom": "Master Registry Discrepancy Resolution 2026",
  "authorityBoundary": "Authoritative for current relationship direction, proposition text, guard state, source linkage, and KB parity; does not establish an individual VA medical nexus.",
  "counts": {
-  "relationships": 646,
-  "explicitPublicationGuards": 572,
+  "relationships": 658,
+  "explicitPublicationGuards": 584,
   "legacyRationaleBoundaries": 74
  },
  "relationships": [
@@ -20882,6 +20882,369 @@
    "sourceReferenceCount": 2,
    "pathwayIntelligencePresent": false,
    "suggestionObjectHash": "a1db66b8e7f1da5cc9b219eb75d6273fcdedcd40aa323f2de6e6a828e8872059"
+  },
+  {
+   "relationshipId": "rel-median-rhomboid-glossitis-to-squamous-cell-carcinoma",
+   "primaryId": "median-rhomboid-glossitis",
+   "targetId": "squamous-cell-carcinoma",
+   "direction": "median-rhomboid-glossitis -> squamous-cell-carcinoma",
+   "primaryPublicationState": "draft",
+   "rank": 1,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY at single small case-series class with the historical-evidence limit carried openly: the fourteen-case clinicopathologic series reframing median rhomboid glossitis as chronic hyperplastic candidiasis states that later lesions become permanent and in a few cases may go further to malignant change (PMID 485023); because the malignant-change claim is qualitative in a 1979 series without denominators or modern cohort confirmation and competing oral-cancer causes dominate, the conservative standard keeps the edge at association only and routes individual claims through dated biopsy with leukoplakia, lichen planus, tobacco, alcohol, and HPV exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY at single small case-series class with the historical-evidence limit carried openly: the fourteen-case clinicopathologic series reframing median rhomboid glossitis as chronic hyperplastic candidiasis states that later lesions become permanent and in a few cases may go further to malignant change (PMID 485023); because the malignant-change claim is qualitative in a 1979 series without denominators or modern cohort confirmation and competing oral-cancer causes dominate, the conservative standard keeps the edge at association only and routes individual claims through dated biopsy with leukoplakia, lichen planus, tobacco, alcohol, and HPV exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to historical malignant-change potential of chronic candidal hyperplasia: the fourteen-case 1979 clinicopathologic series reframes the lesion as chronic hyperplastic oral candidiasis and states later lesions become permanent and in a few cases may go further to malignant change (PMID 485023); evidence is a single small case series without denominators and the lichen-planus and erythroplasia-of-queyrat SCC windows keep their own evidence (ME-29), so individual claims route through dated biopsy with leukoplakia, lichen planus, tobacco, alcohol, and HPV exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No modern cohort quantifies oral cancer incidence in median rhomboid glossitis; the malignant-change statement is a 1979 observation without denominators; the lesion's modern status as candidal hyperplasia with effective antifungal therapy changes the historical natural history; and leukoplakia, lichen planus, tobacco, and alcohol are dominant competing oral-cancer causes."
+   ],
+   "sourceIds": [
+    "pmid-485023"
+   ],
+   "sourceReferenceCount": 1,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "d15476a0e98e2816a115ee2c5936369b3ab97f70471d9ae0d37c7b2d07880399"
+  },
+  {
+   "relationshipId": "rel-memory-loss-to-depressive-disorder",
+   "primaryId": "memory-loss",
+   "targetId": "depressive-disorder",
+   "direction": "memory-loss -> depressive-disorder",
+   "primaryPublicationState": "draft",
+   "rank": 1,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY on the prospective-memory-to-mood precedent with the reciprocal-pathway limit carried openly: the three-wave cross-lagged panel network analysis of 14,961 adults found memory and orientation predicted depressive symptoms at the earlier interval with memory as a key bridge symptom and the cognitive-to-depressive pathway more prominent in women (PMID 40550276), and the ACTIVE longitudinal cohort of 2,365 older adults found subjective memory problems independently linked to more depressive symptoms (PMID 40939773); because the same cross-lagged study documents the reverse pathway (hopelessness and low energy predicting later cognitive decline, more prominent in men) and late-onset depression independently predicts cognitive impairment and dementia (PMID 41804263), the conservative standard keeps the edge at association only, records the reciprocity openly, and routes individual claims through longitudinal clinical review with neurodegenerative, sleep, and medication exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY on the prospective-memory-to-mood precedent with the reciprocal-pathway limit carried openly: the three-wave cross-lagged panel network analysis of 14,961 adults found memory and orientation predicted depressive symptoms at the earlier interval with memory as a key bridge symptom and the cognitive-to-depressive pathway more prominent in women (PMID 40550276), and the ACTIVE longitudinal cohort of 2,365 older adults found subjective memory problems independently linked to more depressive symptoms (PMID 40939773); because the same cross-lagged study documents the reverse pathway (hopelessness and low energy predicting later cognitive decline, more prominent in men) and late-onset depression independently predicts cognitive impairment and dementia (PMID 41804263), the conservative standard keeps the edge at association only, records the reciprocity openly, and routes individual claims through longitudinal clinical review with neurodegenerative, sleep, and medication exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to reciprocal memory-mood association with the reverse direction recorded: the 14,961-participant three-wave cross-lagged panel network analysis found memory and orientation predicted depressive symptoms earlier with memory a key bridge symptom (PMID 40550276), the ACTIVE 2,365-participant cohort linked subjective memory problems to more depressive symptoms (PMID 40939773), and the late-onset-depression cohort (PMID 41804263) is carried as reverse-direction counterweight; cognitive-disorder and alzheimer-s-disease windows keep their own evidence (ME-29), so individual claims route through longitudinal review with neurodegenerative, sleep, and medication exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No randomized evidence establishes direction; the anchor study documents the reverse pathway (hopelessness and low energy predicting later cognitive decline) as prominently as the forward one; late-onset depression itself predicts cognitive impairment and dementia (PMID 41804263), complicating attribution; subjective memory complaints overlap with depression's cognitive symptoms; and neurodegenerative disease, sleep disturbance, medication effects, and social isolation are co-determinants."
+   ],
+   "sourceIds": [
+    "pmid-40550276",
+    "pmid-40939773",
+    "pmid-41804263"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "c08243098acf947861273ed9e5559c0c8408163d88541e7bb0a2bf5b5a42a767"
+  },
+  {
+   "relationshipId": "rel-menetrier-s-disease-to-anemia",
+   "primaryId": "menetrier-s-disease",
+   "targetId": "anemia",
+   "direction": "menetrier-s-disease -> anemia",
+   "primaryPublicationState": "draft",
+   "rank": 1,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY at case-report class with the denominators limit carried openly: the 1969 case documents intractable iron-deficiency anemia with isotopically confirmed gastrointestinal haemorrhage attributed to diapedesis from the greatly increased mucosal capillary network, resolving after total gastrectomy (PMID 5311583), and the 2025 two-case series documents severe anemia with melena and hypoproteinemia in a 35-year-old man with histopathologically confirmed Menetrier disease (PMID 40887784); because the evidence is two single cases without incidence denominators and competing bleeding sources abound, the conservative standard keeps the edge at association only and routes individual claims through dated endoscopy and iron panels with ulcer, malignancy, and malabsorption exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY at case-report class with the denominators limit carried openly: the 1969 case documents intractable iron-deficiency anemia with isotopically confirmed gastrointestinal haemorrhage attributed to diapedesis from the greatly increased mucosal capillary network, resolving after total gastrectomy (PMID 5311583), and the 2025 two-case series documents severe anemia with melena and hypoproteinemia in a 35-year-old man with histopathologically confirmed Menetrier disease (PMID 40887784); because the evidence is two single cases without incidence denominators and competing bleeding sources abound, the conservative standard keeps the edge at association only and routes individual claims through dated endoscopy and iron panels with ulcer, malignancy, and malabsorption exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to capillary diapedesis iron loss: the 1969 case documents intractable iron-deficiency anaemia with isotopically confirmed gastrointestinal haemorrhage resolving after total gastrectomy (PMID 5311583) and the 2025 adult case documents severe anemia with melena and hypoproteinemia (PMID 40887784); evidence is case-report class and the peptic-ulcer, celiac, and malabsorption anemia windows keep their own evidence (ME-29), so individual claims route through dated endoscopy and iron panels with ulcer, malignancy, and malabsorption exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No cohort quantifies anemia incidence in Menetrier disease; both anchors are single cases; the disease's defining protein loss and hypoproteinemia are separate from the iron-loss route and can confound interpretation; and peptic ulcer, malignancy, portal hypertensive gastropathy, and dietary iron deficiency are competing anemia causes in this population."
+   ],
+   "sourceIds": [
+    "pmid-5311583",
+    "pmid-40887784"
+   ],
+   "sourceReferenceCount": 2,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "8d317be885ec76d4b5cceb77df80be752e5c2b8376d7c6dc5b7be557bea2583b"
+  },
+  {
+   "relationshipId": "rel-menetrier-s-disease-to-malnutrition-residuals",
+   "primaryId": "menetrier-s-disease",
+   "targetId": "malnutrition-residuals",
+   "direction": "menetrier-s-disease -> malnutrition-residuals",
+   "primaryPublicationState": "draft",
+   "rank": 2,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY on the protein-losing gastropathy precedent with the endpoint-definition limit carried openly: the pediatric case-series review describes Menetrier disease as abdominal pain, vomiting, anorexia, and edema secondary to hypoalbuminemia with supportive protein-directed treatment (PMID 33505900), the 2025 pediatric case documents hypoalbuminemia at 2.3 g/dL with hypoproteinemia and hypogammaglobulinemia treated with albumin infusions and a high-protein diet (PMID 41209104), and the radiology case report and review documents protein loss with widespread edema (PMID 37868436); because the documented endpoints are hypoalbuminemia and edema rather than standardized malnutrition diagnoses and the pediatric CMV-associated form is usually self-limiting, the conservative standard keeps the edge at association only and routes individual claims through dated albumin, prealbumin, and dietary assessment with hepatic, renal, and intake exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY on the protein-losing gastropathy precedent with the endpoint-definition limit carried openly: the pediatric case-series review describes Menetrier disease as abdominal pain, vomiting, anorexia, and edema secondary to hypoalbuminemia with supportive protein-directed treatment (PMID 33505900), the 2025 pediatric case documents hypoalbuminemia at 2.3 g/dL with hypoproteinemia and hypogammaglobulinemia treated with albumin infusions and a high-protein diet (PMID 41209104), and the radiology case report and review documents protein loss with widespread edema (PMID 37868436); because the documented endpoints are hypoalbuminemia and edema rather than standardized malnutrition diagnoses and the pediatric CMV-associated form is usually self-limiting, the conservative standard keeps the edge at association only and routes individual claims through dated albumin, prealbumin, and dietary assessment with hepatic, renal, and intake exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to gastric protein-losing gastropathy with the defining hypoproteinemia treated as constitutive rather than secondary: the pediatric case-series review documents edema secondary to hypoalbuminemia with protein-directed treatment (PMID 33505900), the 2025 pediatric case documents hypoalbuminemia 2.3 g/dL treated with albumin and high-protein diet (PMID 41209104), and the radiology review documents protein loss with widespread edema (PMID 37868436); endpoints are hypoalbuminemia rather than standardized malnutrition, so individual claims route through dated albumin, prealbumin, and dietary assessment with hepatic, renal, and intake exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No cohort quantifies malnutrition incidence in Menetrier disease using standardized criteria; the documented endpoint in the located material is hypoalbuminemia with edema, which overlaps nephrotic and hepatic hypoproteinemia; the pediatric CMV-associated form is usually self-limiting; and anorexia, vomiting, and dietary restriction are co-determinants of nutritional status in this population."
+   ],
+   "sourceIds": [
+    "pmid-33505900",
+    "pmid-41209104",
+    "pmid-37868436"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "4ef3e01cd5fb789ccc5125b86301248144a4d8dd5f1e50fa7efd022ad4849500"
+  },
+  {
+   "relationshipId": "rel-menetrier-s-disease-to-stomach-cancer",
+   "primaryId": "menetrier-s-disease",
+   "targetId": "stomach-cancer",
+   "direction": "menetrier-s-disease -> stomach-cancer",
+   "primaryPublicationState": "draft",
+   "rank": 3,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY on the precancerous-lesion precedent with the unestablished-association limit carried openly: the 1996 operative report of two men aged 62 and 81 with histologically confirmed Menetrier disease and gastric adenocarcinoma states the disease should be viewed as a precancerous gastric lesion (PMID 8920077), the 2023 review frames early recognition as preventing gastric carcinoma (PMID 37868436), and the 2025 mechanistic case series explicitly records that further studies are needed to explore the Menetrier, H. pylori, and gastric-cancer association (PMID 40887784); because the anchor is a two-case operative report from 1996 and the modern literature treats the association as unestablished, the conservative standard keeps the edge at association only and routes individual claims through dated endoscopic surveillance with atrophic-gastritis, H. pylori, and smoking exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY on the precancerous-lesion precedent with the unestablished-association limit carried openly: the 1996 operative report of two men aged 62 and 81 with histologically confirmed Menetrier disease and gastric adenocarcinoma states the disease should be viewed as a precancerous gastric lesion (PMID 8920077), the 2023 review frames early recognition as preventing gastric carcinoma (PMID 37868436), and the 2025 mechanistic case series explicitly records that further studies are needed to explore the Menetrier, H. pylori, and gastric-cancer association (PMID 40887784); because the anchor is a two-case operative report from 1996 and the modern literature treats the association as unestablished, the conservative standard keeps the edge at association only and routes individual claims through dated endoscopic surveillance with atrophic-gastritis, H. pylori, and smoking exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to reported precancerous potential with the modern unestablished counter-record carried on the edge: the 1996 two-case operative report frames Menetrier disease as a precancerous gastric lesion (PMID 8920077), the 2023 review frames recognition as preventing gastric carcinoma (PMID 37868436), and the 2025 series states the association needs further study (PMID 40887784); the autoimmune-metaplastic-atrophic-gastritis stomach-cancer window keeps its evidence (ME-29), so individual claims route through dated endoscopic surveillance with atrophic-gastritis, H. pylori, and smoking exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No cohort quantifies gastric cancer incidence in Menetrier disease; the operative-series cases are from 1996 without denominators; the modern mechanistic literature treats the cancer association as unestablished and needing further study; the 2025 adult cases had a gastric mass and multiple nodules that were inflammatory rather than malignant, illustrating diagnostic overlap; and H. pylori, atrophic gastritis, and smoking are dominant competing gastric-cancer causes."
+   ],
+   "sourceIds": [
+    "pmid-8920077",
+    "pmid-37868436",
+    "pmid-40887784"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "15a0388e8ad3bd5f8b415e0c3e3fd624e953fba57075fa4d1841947d82186ba3"
+  },
+  {
+   "relationshipId": "rel-microscopic-colitis-to-malnutrition-residuals",
+   "primaryId": "microscopic-colitis",
+   "targetId": "malnutrition-residuals",
+   "direction": "microscopic-colitis -> malnutrition-residuals",
+   "primaryPublicationState": "draft",
+   "rank": 1,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY on the diarrheal-nutritional-loss precedent with the celiac-comorbidity limit carried openly: the 162-patient prospective MCDAI cohort found weight loss independently associated with disease severity alongside stool frequency, nocturnal stools, pain, urgency, and incontinence (PMID 27965284), the etiopathology review names weight loss among core symptoms (PMID 35913459), and the retrospective collagenous colitis survey found hypoalbuminemia in 4 of 7 patients and anemia in 2 (PMID 22024068); because the cohort records weight loss as a severity symptom rather than standardized malnutrition and the retrospective series had celiac comorbidity in 2 of 7 patients, the conservative standard keeps the edge at association only and routes individual claims through dated nutritional assessment with celiac, pancreatic, and intake exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY on the diarrheal-nutritional-loss precedent with the celiac-comorbidity limit carried openly: the 162-patient prospective MCDAI cohort found weight loss independently associated with disease severity alongside stool frequency, nocturnal stools, pain, urgency, and incontinence (PMID 27965284), the etiopathology review names weight loss among core symptoms (PMID 35913459), and the retrospective collagenous colitis survey found hypoalbuminemia in 4 of 7 patients and anemia in 2 (PMID 22024068); because the cohort records weight loss as a severity symptom rather than standardized malnutrition and the retrospective series had celiac comorbidity in 2 of 7 patients, the conservative standard keeps the edge at association only and routes individual claims through dated nutritional assessment with celiac, pancreatic, and intake exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to diarrheal weight loss and hypoalbuminemia: the 162-patient prospective MCDAI cohort found weight loss independently associated with disease severity (PMID 27965284), the etiopathology review names weight loss among core symptoms (PMID 35913459), and the seven-case retrospective survey found hypoalbuminemia in 4 and anemia in 2 with celiac comorbidity in 2 of 7 (PMID 22024068); celiac comorbidity blocks anemia attribution and the celiac window keeps its evidence (ME-29), so individual claims route through dated nutritional assessment with celiac, pancreatic, and intake exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No located study applies standardized malnutrition criteria to microscopic colitis; the MCDAI cohort records weight loss as a severity symptom rather than malnutrition; the retrospective series is seven patients with celiac comorbidity in 2; and celiac disease, exocrine pancreatic insufficiency, small-intestinal bacterial overgrowth, and dietary restriction are competing weight-loss causes in this population."
+   ],
+   "sourceIds": [
+    "pmid-27965284",
+    "pmid-35913459",
+    "pmid-22024068"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "06aad5e89d3ff5bf64ace291d2dcdda2daecc284b8867bd7038bd08834579b9f"
+  },
+  {
+   "relationshipId": "rel-microscopic-colitis-to-non-hodgkins-lymphoma",
+   "primaryId": "microscopic-colitis",
+   "targetId": "non-hodgkins-lymphoma",
+   "direction": "microscopic-colitis -> non-hodgkins-lymphoma",
+   "primaryPublicationState": "draft",
+   "rank": 2,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY at single nationwide cohort class with the detection-bias and subtype limits carried openly: the Swedish nationwide cohort of 11,758 incident cases with 50,828 matched controls found lymphoma risk elevated (aHR 1.43, 95% CI 1.06-1.92) with overall cancer risk highest in the first year of follow-up and the composite risk persisting in sibling comparisons (PMID 32710780); because the hazard ratio is modest with a near-unity lower bound, the first-year peak suggests detection bias, lymphoma subtypes are unadjudicated, and celiac overlap and treatment effects compete, the conservative standard keeps the edge at association only and routes individual claims through dated hematopathology with celiac, treatment, and infection exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY at single nationwide cohort class with the detection-bias and subtype limits carried openly: the Swedish nationwide cohort of 11,758 incident cases with 50,828 matched controls found lymphoma risk elevated (aHR 1.43, 95% CI 1.06-1.92) with overall cancer risk highest in the first year of follow-up and the composite risk persisting in sibling comparisons (PMID 32710780); because the hazard ratio is modest with a near-unity lower bound, the first-year peak suggests detection bias, lymphoma subtypes are unadjudicated, and celiac overlap and treatment effects compete, the conservative standard keeps the edge at association only and routes individual claims through dated hematopathology with celiac, treatment, and infection exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to the Swedish nationwide cohort's lymphoma signal with detection-bias and subtype limits recorded: 11,758 incident cases with 50,828 matched references found lymphoma aHR 1.43 (1.06-1.92) with risk highest in the first year (PMID 32710780); subtypes are unadjudicated, celiac overlap and treatment effects compete, and the celiac lymphoma window keeps its evidence (ME-29), so individual claims route through dated hematopathology with celiac, treatment, and infection exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No located study reports lymphoma subtype distribution in microscopic colitis; the first-year risk peak suggests surveillance and detection bias; celiac disease (a known lymphoma-risk enteropathy) overlaps the microscopic colitis population; immunosuppressive and biologic therapies carry their own lymphoma risk; and smoking, the strongest microscopic-colitis risk factor, is a confounder the register design cannot fully adjust."
+   ],
+   "sourceIds": [
+    "pmid-32710780"
+   ],
+   "sourceReferenceCount": 1,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "35344f9030a5ae0bb18d233041ac5dfedbf8d0c899f6e4d7508c017f8cf777c8"
+  },
+  {
+   "relationshipId": "rel-microscopic-colitis-to-respiratory-cancer",
+   "primaryId": "microscopic-colitis",
+   "targetId": "respiratory-cancer",
+   "direction": "microscopic-colitis -> respiratory-cancer",
+   "primaryPublicationState": "draft",
+   "rank": 3,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY at single nationwide cohort class with the smoking-confounding limit carried openly and no mechanism asserted: the Swedish nationwide cohort found lung cancer aHR 1.32 (95% CI 1.04-1.68) in 11,758 incident microscopic colitis patients versus 50,828 matched references (PMID 32710780); because microscopic colitis is strongly smoking-associated, register data cannot adjust pack-year exposure, the hazard ratio is modest with a near-unity lower bound, and tobacco dominates lung-cancer etiology, the conservative standard keeps the edge at association only with etiologicalConsensus NOT_ESTABLISHED and the causalMechanism recorded as not established, and routes individual claims through individual smoking-history attribution with occupational and imaging-detection exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY at single nationwide cohort class with the smoking-confounding limit carried openly and no mechanism asserted: the Swedish nationwide cohort found lung cancer aHR 1.32 (95% CI 1.04-1.68) in 11,758 incident microscopic colitis patients versus 50,828 matched references (PMID 32710780); because microscopic colitis is strongly smoking-associated, register data cannot adjust pack-year exposure, the hazard ratio is modest with a near-unity lower bound, and tobacco dominates lung-cancer etiology, the conservative standard keeps the edge at association only with etiologicalConsensus NOT_ESTABLISHED and the causalMechanism recorded as not established, and routes individual claims through individual smoking-history attribution with occupational and imaging-detection exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly, mechanism NOT_ESTABLISHED), scoped to the cohort's lung-cancer signal with smoking confounding explicitly unresolved: the Swedish nationwide cohort found lung cancer aHR 1.32 (1.04-1.68) (PMID 32710780); microscopic colitis is strongly smoking-associated, register data cannot adjust pack-years, and the emphysema respiratory-cancer window keeps its evidence (ME-29), so individual claims route through individual smoking-history attribution with occupational and imaging-detection exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No located study adjusts for pack-year smoking history in the microscopic-colitis lung-cancer association; the hazard ratio is modest with a near-unity lower bound; the first-year risk peak suggests detection bias; and tobacco exposure dominates lung cancer etiology so thoroughly that residual confounding cannot be excluded."
+   ],
+   "sourceIds": [
+    "pmid-32710780"
+   ],
+   "sourceReferenceCount": 1,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "d7514303b242034df219b466f39bddd5847a1115f201cdc277487c0bb86cb94d"
+  },
+  {
+   "relationshipId": "rel-microscopic-polyangiitis-to-chronic-kidney-disease",
+   "primaryId": "microscopic-polyangiitis",
+   "targetId": "chronic-kidney-disease",
+   "direction": "microscopic-polyangiitis -> chronic-kidney-disease",
+   "primaryPublicationState": "draft",
+   "rank": 1,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY on the pauci-immune-glomerulonephritis precedent with the ME-29 sibling rule carried openly: the French Vasculitis Study Group registry of 378 MPA patients found renal involvement in 74 percent at diagnosis with mean creatinine 217 micromol/L (PMID 32340774), the 271-patient cohort found 19.2 percent progressing to ESKD though ANCA positivity was not independently predictive after adjustment (PMID 42796306), and the AAV imaging cohort found ESKD rates significantly higher in MPA (PMID 39136785); the granulomatosis-with-polyangiitis CKD window keeps its own evidence and none is recycled; because the registry spans 1966-2017 treatment eras and rituximab-era renal survival is unlocated, the conservative standard keeps the edge at association only and routes individual claims through dated biopsy and renal trajectories with hypertensive, diabetic, and obstructive exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY on the pauci-immune-glomerulonephritis precedent with the ME-29 sibling rule carried openly: the French Vasculitis Study Group registry of 378 MPA patients found renal involvement in 74 percent at diagnosis with mean creatinine 217 micromol/L (PMID 32340774), the 271-patient cohort found 19.2 percent progressing to ESKD though ANCA positivity was not independently predictive after adjustment (PMID 42796306), and the AAV imaging cohort found ESKD rates significantly higher in MPA (PMID 39136785); the granulomatosis-with-polyangiitis CKD window keeps its own evidence and none is recycled; because the registry spans 1966-2017 treatment eras and rituximab-era renal survival is unlocated, the conservative standard keeps the edge at association only and routes individual claims through dated biopsy and renal trajectories with hypertensive, diabetic, and obstructive exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to pauci-immune crescentic glomerulonephritis with MPA-specific evidence only: the 378-patient French registry found renal involvement 74% with mean creatinine 217 micromol/L (PMID 32340774), the 271-patient cohort found 19.2% ESKD progression with the ANCA-positivity null adjustment recorded (PMID 42796306), and the AAV imaging cohort found ESKD rates significantly higher in MPA (PMID 39136785); the granulomatosis-with-polyangiitis CKD window keeps its evidence (ME-29), so individual claims route through dated biopsy and renal trajectories with hypertensive, diabetic, and obstructive exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No located cohort reports renal outcomes under current first-line rituximab protocols; the ESKD predictor analysis was not independent after baseline-creatinine adjustment; historical registry eras span pre-ANCA-testing diagnosis; hypertensive and diabetic nephropathy overlap the older MPA population; and renal-recovery potential after induction is a major unmodeled determinant."
+   ],
+   "sourceIds": [
+    "pmid-32340774",
+    "pmid-42796306",
+    "pmid-39136785"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "b080c019f8f81870819d9a779828cfdb24871d07f9eca663f201dfcc9ad5376e"
+  },
+  {
+   "relationshipId": "rel-microscopic-polyangiitis-to-interstitial-lung-disease",
+   "primaryId": "microscopic-polyangiitis",
+   "targetId": "interstitial-lung-disease",
+   "direction": "microscopic-polyangiitis -> interstitial-lung-disease",
+   "primaryPublicationState": "draft",
+   "rank": 2,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY on the ANCA-ILD phenotype precedent with the direction-limit carried openly: the 94-patient AAV imaging cohort found ILD predominantly in MPA patients (PMID 39136785), the 378-patient French registry recorded 40 percent lung involvement (PMID 32340774), and the PRISMA review of 794 isolated ANCA-ILD patients found 70 percent MPO-ANCA positivity with fibrotic patterns predominating and evolution mainly toward MPA (PMID 41871820); because ILD can precede the vasculitis diagnosis in 10-40 percent of isolated cases and UIP-like patterns overlap idiopathic fibrosis, the conservative standard keeps the edge at association only and routes individual claims through dated serology and HRCT with idiopathic, drug, and connective-tissue exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY on the ANCA-ILD phenotype precedent with the direction-limit carried openly: the 94-patient AAV imaging cohort found ILD predominantly in MPA patients (PMID 39136785), the 378-patient French registry recorded 40 percent lung involvement (PMID 32340774), and the PRISMA review of 794 isolated ANCA-ILD patients found 70 percent MPO-ANCA positivity with fibrotic patterns predominating and evolution mainly toward MPA (PMID 41871820); because ILD can precede the vasculitis diagnosis in 10-40 percent of isolated cases and UIP-like patterns overlap idiopathic fibrosis, the conservative standard keeps the edge at association only and routes individual claims through dated serology and HRCT with idiopathic, drug, and connective-tissue exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to the MPA-predominant ANCA-ILD phenotype without asserting temporal direction: the 94-patient AAV imaging cohort found ILD predominantly in MPA (PMID 39136785), the registry recorded 40% lung involvement (PMID 32340774), and the 794-patient isolated ANCA-ILD review found 70% MPO-ANCA positivity with fibrotic patterns and vasculitis progression mainly toward MPA (PMID 41871820); ILD can precede vasculitis in 10-40% and CTD-ILD windows keep their evidence (ME-29), so individual claims route through dated serology and HRCT with idiopathic, drug, and connective-tissue exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No located cohort establishes temporal direction between MPA onset and ILD; the isolated-ANCA-ILD literature describes an entity where lung disease precedes systemic vasculitis in 10-40 percent; the registry's 40 percent figure conflates all pulmonary involvement; UIP-like fibrotic patterns overlap idiopathic pulmonary fibrosis; and smoking, methotrexate exposure, and age are co-determinants."
+   ],
+   "sourceIds": [
+    "pmid-39136785",
+    "pmid-32340774",
+    "pmid-41871820"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "459d46f8fb19e58c7ce38c05605142fd18566d42000c36e5717bf68c426b7a45"
+  },
+  {
+   "relationshipId": "rel-microscopic-polyangiitis-to-peripheral-neuropathy",
+   "primaryId": "microscopic-polyangiitis",
+   "targetId": "peripheral-neuropathy",
+   "direction": "microscopic-polyangiitis -> peripheral-neuropathy",
+   "primaryPublicationState": "draft",
+   "rank": 3,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY on the vasa-nervorum precedent with the hospitalized-cohort limit carried openly: the Peking Union analysis of 83 MPA patients found peripheral neuropathy in 37 (44.6 percent) with mononeuritis multiplex predominant (56.8 percent) (PMID 26710910), the French registry of 378 MPA patients recorded mononeuritis multiplex in 32 percent as an independent death risk factor (PMID 32340774), and the 61-patient ANCA-vasculitic-neuropathy electrophysiologic series included 33 MPA cases (PMID 38561284); because the prevalence figure is single-center hospitalized and outcome data are glucocorticoid-era, the conservative standard keeps the edge at association only and routes individual claims through dated electrodiagnostic studies with glycemic, toxic, and entrapment exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY on the vasa-nervorum precedent with the hospitalized-cohort limit carried openly: the Peking Union analysis of 83 MPA patients found peripheral neuropathy in 37 (44.6 percent) with mononeuritis multiplex predominant (56.8 percent) (PMID 26710910), the French registry of 378 MPA patients recorded mononeuritis multiplex in 32 percent as an independent death risk factor (PMID 32340774), and the 61-patient ANCA-vasculitic-neuropathy electrophysiologic series included 33 MPA cases (PMID 38561284); because the prevalence figure is single-center hospitalized and outcome data are glucocorticoid-era, the conservative standard keeps the edge at association only and routes individual claims through dated electrodiagnostic studies with glycemic, toxic, and entrapment exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to vasa-nervorum vasculitic neuropathy: the Peking Union analysis of 83 MPA patients found neuropathy in 37 (44.6%) with mononeuritis multiplex predominant (PMID 26710910), the French registry recorded mononeuritis multiplex in 32% as an independent death risk factor (PMID 32340774), and the 61-patient electrophysiologic series included 33 MPA cases with CNS involvement predicting poor outcomes (PMID 38561284); prevalence is single-center hospitalized, so individual claims route through dated electrodiagnostic studies with glycemic, toxic, and entrapment exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No population-based incidence data for vasculitic neuropathy in MPA; hospitalized cohorts over-represent severe presentations; the 44.6 percent prevalence figure is single-center; diabetic neuropathy and entrapment overlap the older MPA population; and neuropathy outcome depends on induction timing and axonal reserve, which are unmodeled."
+   ],
+   "sourceIds": [
+    "pmid-26710910",
+    "pmid-32340774",
+    "pmid-38561284"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "2ee066d0191df278b71b58df8efd29345e7a6a6e35e6dfce1ec60bc22777da2e"
+  },
+  {
+   "relationshipId": "rel-microscopic-polyangiitis-to-deep-vein-thrombosis",
+   "primaryId": "microscopic-polyangiitis",
+   "targetId": "deep-vein-thrombosis",
+   "direction": "microscopic-polyangiitis -> deep-vein-thrombosis",
+   "primaryPublicationState": "draft",
+   "rank": 4,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY at single nationwide register-cohort class with the composite-endpoint limit carried openly: the Swedish nationwide matched cohort of 4,317 AAV patients found MPA associated with CVD-thromboembolic risk (HR 2.45, 95% CI 2.00-2.99) with both sexes showing increased DVT and PE risk, peak risk within 3 months of diagnosis (HR 7.69), and no excess risk among first-degree siblings, implicating the vasculitis itself (PMID 42693943); because endpoints are ICD-code composites without separate MPA DVT hazard ratios or thrombus adjudication and the acute peak overlaps hospitalization and glucocorticoid exposure, the conservative standard keeps the edge at association only and routes individual claims through dated imaging with stasis, malignancy, and thrombophilia exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY at single nationwide register-cohort class with the composite-endpoint limit carried openly: the Swedish nationwide matched cohort of 4,317 AAV patients found MPA associated with CVD-thromboembolic risk (HR 2.45, 95% CI 2.00-2.99) with both sexes showing increased DVT and PE risk, peak risk within 3 months of diagnosis (HR 7.69), and no excess risk among first-degree siblings, implicating the vasculitis itself (PMID 42693943); because endpoints are ICD-code composites without separate MPA DVT hazard ratios or thrombus adjudication and the acute peak overlaps hospitalization and glucocorticoid exposure, the conservative standard keeps the edge at association only and routes individual claims through dated imaging with stasis, malignancy, and thrombophilia exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to inflammation-associated venous thromboembolism with composite-endpoint limits recorded: the Swedish nationwide matched cohort of 4,317 AAV patients found MPA CVD-TE HR 2.45 (2.00-2.99) with both sexes showing increased DVT and PE risk, peak within 3 months of diagnosis, and no sibling excess implicating the vasculitis itself (PMID 42693943); endpoints are ICD composites without separate MPA DVT hazard ratios and the antiphospholipid window keeps its evidence (ME-29), so individual claims route through dated imaging with stasis, malignancy, and thrombophilia exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No MPA-specific DVT hazard ratio is separately reported in the located material; register ICD codes are not thrombus-adjudicated; the 3-month risk peak coincides with hospitalization, immobility, and high-dose glucocorticoids; active malignancy and antiphospholipid antibodies compete; and prophylaxis practices are unmeasured in the cohort."
+   ],
+   "sourceIds": [
+    "pmid-42693943"
+   ],
+   "sourceReferenceCount": 1,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "232215f7102ceda99bf8cfd5f3253f8c983dff0cc36b8d283c117e14c19c11b2"
   }
  ],
  "lastUpdatedBy": "batch-D1-draft-authoring",

@@ -2,8 +2,196 @@
   "id": "menetrier-s-disease",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review gastrointestinal, nutritional, motility, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 60 (2026-09-26): three ASSOCIATION_ONLY draft mappings pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: all three edges assert association only (etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true; mechanismCategory METABOLIC_OR_NUTRITIONAL for the anemia and malnutrition edges and MALIGNANT_TRANSFORMATION for the cancer edge). The evidence base is case reports, a pediatric case-series review, and a two-case operative report, so individual claims require dated endoscopy, iron panels, and nutritional assessment with competing-cause exclusion, and review by a qualified medical professional.",
+    "Pathway and duplicate-scope screens: no -> gastric-outlet-obstruction edge (no catalog identity - the 2025 toddler obstruction case is recorded as context only); no -> edema or hypoproteinemia edge (no catalog identity and constitutive-proximity: protein loss is the disease's defining mechanism, so the malnutrition edge is scoped to protein-calorie malnutrition rather than the defining hypoproteinemia itself); no -> lymphoma edge (the one hypertrophic-gastritis lymphoma case in the located differential is a separate pathology); no evidence recycled from the autoimmune-metaplastic-atrophic-gastritis stomach-cancer window, the celiac or malabsorption anemia windows, or the peptic-ulcer-disease anemia window (ME-29 scope rule); no -> gastric-cancer edge as a second target (stomach-cancer is the catalog identity for gastric malignancy - no duplicate target)."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 60 (2026-09-26): three bounded association edges authored - menetrier-s-disease to anemia (rank 1), to malnutrition-residuals (rank 2), and to stomach-cancer (rank 3) - classified ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, and hypothesizedOnly:true. The anemia proposition rests on the 1969 isotopic-blood-loss case (PMID 5311583) and the 2025 adult severe-anemia case (PMID 40887784). The malnutrition proposition rests on the pediatric case-series review (PMID 33505900), the 2025 pediatric hypoalbuminemia case (PMID 41209104), and the 2023 radiology review (PMID 37868436). The stomach-cancer proposition rests on the 1996 two-case operative report (PMID 8920077) and the 2023 review framing (PMID 37868436), with the 2025 series' call for further study (PMID 40887784) carried on the edge as counterweight.",
+    "Counter-evidence and caveat screens recorded 2026-09-26: (i) evidence class - single cases, one pediatric case-series review, and a two-case operative report, all without denominators; (ii) endpoint-definition limit - the malnutrition edge records protein-calorie malnutrition from gastric protein loss, while the disease's defining hypoproteinemia and edema are constitutive rather than secondary; (iii) counter-record on the cancer edge - the modern mechanistic literature treats the Menetrier-cancer association as unestablished and the 2025 adult cases were inflammatory rather than malignant, illustrating diagnostic overlap; (iv) self-limiting pediatric course - the CMV-associated pediatric form usually recovers within weeks, limiting the pediatric malnutrition claims; (v) sibling-window discipline - the autoimmune-metaplastic-atrophic-gastritis stomach-cancer window and the celiac, malabsorption, and peptic-ulcer anemia windows keep their own evidence and none is recycled (ME-29)."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "anemia",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Menetrier disease documents iron-deficiency anemia at case level: the 1969 case of a 23-year-old woman with intractable iron-deficiency anemia attributed to gastrointestinal haemorrhage confirmed by isotopic blood labelling and blood loss attributed to diapedesis from a greatly increased capillary network, with a normal blood picture maintained after total gastrectomy (PMID 5311583), and the 2025 adult case series documents a 35-year-old man with two months of epigastric pain, vomiting, melena, and severe anemia with low hemoglobin alongside hypoproteinemia (PMID 40887784); the association is recorded as documented case-level only.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: the located material is two case-level reports decades apart where peptic ulceration, portal hypertensive gastropathy, malignancy, and other bleeding sources require individual endoscopic exclusion before attributing any anemia to the hypertrophic gastropathy."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "METABOLIC_OR_NUTRITIONAL",
+        "primaryVector": "Hypertrophic gastric mucosa with an expanded superficial capillary network loses blood and iron through mucosal diapedesis and microhaemorrhage so iron stores deplete and iron-deficiency anemia results, the capillary-loss route directly stated in the 1969 case and consistent with the melena and severe anemia of the 2025 case, but whether this route produced any individual anemia remains hypothesized until endoscopic and iron-panel records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at case-report class only: the two anchors are single cases (1969 and 2025) without denominators, the 1969 attribution rests on isotopic labelling with negative occult blood tests, and no located cohort quantifies anemia incidence or iron-loss magnitude in Menetrier disease.",
+        "evidenceGaps": "No cohort quantifies anemia incidence in Menetrier disease; both anchors are single cases; the disease's defining protein loss and hypoproteinemia are separate from the iron-loss route and can confound interpretation; and peptic ulcer, malignancy, portal hypertensive gastropathy, and dietary iron deficiency are competing anemia causes in this population.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "peptic ulcer disease with gastrointestinal blood loss (the published peptic-ulcer-disease anemia window)",
+          "gastric malignancy with bleeding (the stomach-cancer identity's own scope)",
+          "portal hypertensive gastropathy",
+          "celiac or other malabsorption iron deficiency (the published celiac and malabsorption windows, not recycled per ME-29)",
+          "dietary iron deficiency and menorrhagia"
+        ]
+      },
+      "evidenceGaps": [
+        "No cohort quantifies anemia incidence in Menetrier disease; both anchors are single cases; the disease's defining protein loss and hypoproteinemia are separate from the iron-loss route and can confound interpretation; and peptic ulcer, malignancy, portal hypertensive gastropathy, and dietary iron deficiency are competing anemia causes in this population."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY at case-report class with the denominators limit carried openly: the 1969 case documents intractable iron-deficiency anemia with isotopically confirmed gastrointestinal haemorrhage attributed to diapedesis from the greatly increased mucosal capillary network, resolving after total gastrectomy (PMID 5311583), and the 2025 two-case series documents severe anemia with melena and hypoproteinemia in a 35-year-old man with histopathologically confirmed Menetrier disease (PMID 40887784); because the evidence is two single cases without incidence denominators and competing bleeding sources abound, the conservative standard keeps the edge at association only and routes individual claims through dated endoscopy and iron panels with ulcer, malignancy, and malabsorption exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Singh AK, Cumaraswamy RC, Corrin B. Diffuse hypertrophy of gastric mucosa (Menétrier's disease) and iron-deficiency anaemia Gut. 1969 Sep;10(9):735-7. doi: 10.1136/gut.10.9.735. PMID 5311583.",
+          "note": "Case report (Gut, 1969): 23-year-old woman with intractable iron-deficiency anaemia; gastrointestinal haemorrhage confirmed by isotopic blood labelling despite negative occult blood tests; blood loss attributed to diapedesis from a greatly increased capillary network; normal blood picture after total gastrectomy; supports the bounded iron-loss route only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/5311583/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 5311583; case report (iron-deficiency anaemia with isotopically confirmed blood loss)"
+        },
+        {
+          "citation": "Wu J, Chen Y, Yin J, et al. Ménétrier Disease: Rare Manifestations and Mechanistic Insights From 2 Adult Cases Am J Case Rep. 2025 Sep 1;26:e949111. doi: 10.12659/AJCR.949111. PMID 40887784.",
+          "note": "Two adult cases (Am J Case Rep, 2025): case 1 a 35-year-old man with 2-month epigastric pain, vomiting, melena, and severe anemia with low hemoglobin and hypoproteinemia; histopathology confirmed Menetrier disease; supports the bounded case-level association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40887784/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 40887784; case 1 presentation (severe anemia with melena)"
+        }
+      ]
+    },
+    {
+      "conditionId": "malnutrition-residuals",
+      "rank": 2,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Menetrier disease documents protein malnutrition at case-series and case level: the pediatric case-series review describes Menetrier disease clinically as abdominal pain, vomiting, anorexia, and edema secondary to hypoalbuminemia with supportive treatment directed at protein repletion (PMID 33505900), the 2025 pediatric case documents a 3-year-old with significant hypoalbuminemia (2.3 g/dL), hypoproteinemia, and hypogammaglobulinemia treated with albumin infusions and a high-protein diet (PMID 41209104), and the radiology case report and literature review describes gastric mucosal hypertrophy with subsequent protein loss resulting in gastric symptoms and widespread edema (PMID 37868436); the relationship is recorded as documented protein-losing sequela only.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: the located material is pediatric case-series and case class where the protein loss is gastric and hypoalbuminemia-driven edema is the documented endpoint, so whether any individual meets malnutrition criteria requires individual nutritional assessment with intake, catabolic, and hepatic exclusion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "METABOLIC_OR_NUTRITIONAL",
+        "primaryVector": "Hypertrophic foveolar hyperplasia with TGF-alpha overexpression drives massive gastric luminal protein loss so serum albumin falls, edema develops, and protein-calorie malnutrition results, the protein-losing gastropathy route stated across the pediatric case series and both case reports, but whether this route produced any individual malnutrition remains hypothesized until albumin, prealbumin, and dietary records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at case-series and case-report class only: the anchors are small pediatric series and individual adult cases, the documented endpoints are hypoalbuminemia and edema rather than standardized malnutrition diagnoses, children with the CMV-associated form are usually self-limiting and recover within weeks (PMID 33505900), and no located cohort quantifies malnutrition incidence in Menetrier disease.",
+        "evidenceGaps": "No cohort quantifies malnutrition incidence in Menetrier disease using standardized criteria; the documented endpoint in the located material is hypoalbuminemia with edema, which overlaps nephrotic and hepatic hypoproteinemia; the pediatric CMV-associated form is usually self-limiting; and anorexia, vomiting, and dietary restriction are co-determinants of nutritional status in this population.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "nephrotic-syndrome hypoalbuminemia (the published nephrotic window's own scope)",
+          "chronic liver disease with low albumin (the published chronic-liver-disease window)",
+          "protein-losing enteropathy from other causes (congenital disorders of glycosylation, lymphangiectasia)",
+          "anorexia and vomiting from the gastric outlet obstruction the disease can produce",
+          "cancer-related cachexia in the stomach-cancer identity's own scope"
+        ]
+      },
+      "evidenceGaps": [
+        "No cohort quantifies malnutrition incidence in Menetrier disease using standardized criteria; the documented endpoint in the located material is hypoalbuminemia with edema, which overlaps nephrotic and hepatic hypoproteinemia; the pediatric CMV-associated form is usually self-limiting; and anorexia, vomiting, and dietary restriction are co-determinants of nutritional status in this population."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY on the protein-losing gastropathy precedent with the endpoint-definition limit carried openly: the pediatric case-series review describes Menetrier disease as abdominal pain, vomiting, anorexia, and edema secondary to hypoalbuminemia with supportive protein-directed treatment (PMID 33505900), the 2025 pediatric case documents hypoalbuminemia at 2.3 g/dL with hypoproteinemia and hypogammaglobulinemia treated with albumin infusions and a high-protein diet (PMID 41209104), and the radiology case report and review documents protein loss with widespread edema (PMID 37868436); because the documented endpoints are hypoalbuminemia and edema rather than standardized malnutrition diagnoses and the pediatric CMV-associated form is usually self-limiting, the conservative standard keeps the edge at association only and routes individual claims through dated albumin, prealbumin, and dietary assessment with hepatic, renal, and intake exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Krikilion J, Levy EI, Vandenplas Y. Diagnosis and Management of Ménétrier Disease in Children: A Case Series Review Pediatr Gastroenterol Hepatol Nutr. 2021 Jan;24(1):109-117. doi: 10.5223/pghn.2021.24.1.109. PMID 33505900.",
+          "note": "Pediatric case-series review (2014-2019 case reports): Menetrier disease clinically diagnosed by abdominal pain, vomiting, anorexia, and edema secondary to hypoalbuminemia; supportive treatment; children usually self-limiting, recovering within a few weeks; supports the bounded protein-loss association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33505900/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 33505900; review results (clinical presentation with hypoalbuminemia and edema)"
+        },
+        {
+          "citation": "Snoubar I, Alhendi T, Batanji D, et al. Pediatric Ménétrier's Disease Triggered by Cytomegalovirus Infection: A Rare Case of Severe Hypoalbuminemia and Edema Case Rep Pediatr. 2025;2025:2471369. doi: 10.1155/crpe/2471369. PMID 41209104.",
+          "note": "Pediatric case (2025): 3-year-old male with progressive edema and significant hypoalbuminemia (2.3 g/dL), hypoproteinemia, hypogammaglobulinemia; treated with albumin infusions, diuretics, high-protein diet, and ganciclovir with improvement; supports the bounded protein-losing sequela only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41209104/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 41209104; case presentation (severe hypoalbuminemia and edema)"
+        },
+        {
+          "citation": "Keener M, Waack A, Ranabothu M, et al. Clinical and Radiological Features of Menetrier's Disease: A Case Report and Review of the Literature Cureus. 2023 Sep;15(9):e45537. doi: 10.7759/cureus.45537. PMID 37868436.",
+          "note": "Case report and literature review (Cureus, 2023): Menetrier disease characterized by gastric mucosal hypertrophy and subsequent protein loss, resulting in gastric symptoms and widespread edema; supports the bounded protein-losing route only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/37868436/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 37868436; review framing (protein loss with edema)"
+        }
+      ]
+    },
+    {
+      "conditionId": "stomach-cancer",
+      "rank": 3,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Menetrier disease documents gastric adenocarcinoma co-occurrence at case-pair level: the 1996 operative-series report of two men aged 62 and 81 with Menetrier disease and gastric adenocarcinoma diagnosed on operative specimens emphasizes the risk of malignant transformation and states Menetrier disease should be viewed as a precancerous gastric lesion (PMID 8920077), and the 2023 case report and literature review frames recognition as preventing development of more severe manifestations such as gastric carcinoma (PMID 37868436); the association is recorded as reported precancerous potential only.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: the located material is a two-case operative report and narrative review framing where chronic atrophic gastritis, Helicobacter pylori, and the TGF-alpha overexpression pathway co-vary and surveillance benefit is unproven, so any individual gastric malignancy requires endoscopic and histologic attribution with atrophic-gastritis and H. pylori exclusion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MALIGNANT_TRANSFORMATION",
+        "primaryVector": "Chronic TGF-alpha-driven foveolar hyperplasia with sustained mucosal proliferation and long-standing inflammation so malignant transformation to gastric adenocarcinoma results in reported cases, the proliferative-drive route implied by the precancerous-lesion framing and the TGF-alpha mechanism discussions, but whether this route produced any individual carcinoma remains hypothesized until endoscopic surveillance and histologic records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at case-pair plus narrative-review class only: the malignant-transformation anchor is two 1996 operative cases without denominators or comparison groups, the review language frames risk without quantifying it, and the 2025 mechanistic case series explicitly states that further studies are needed to explore the association between Menetrier disease, H. pylori, and gastric cancer (PMID 40887784).",
+        "evidenceGaps": "No cohort quantifies gastric cancer incidence in Menetrier disease; the operative-series cases are from 1996 without denominators; the modern mechanistic literature treats the cancer association as unestablished and needing further study; the 2025 adult cases had a gastric mass and multiple nodules that were inflammatory rather than malignant, illustrating diagnostic overlap; and H. pylori, atrophic gastritis, and smoking are dominant competing gastric-cancer causes.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "chronic atrophic gastritis and intestinal metaplasia (the published autoimmune-metaplastic-atrophic-gastritis stomach-cancer window, not recycled per ME-29)",
+          "Helicobacter pylori-associated gastric carcinogenesis",
+          "smoking-related gastric cancer",
+          "gastric lymphoma (a separate pathology in the hypertrophic-gastritis differential)",
+          "inflammatory pseudotumor and foveolar hyperplasia mimicking malignancy"
+        ]
+      },
+      "evidenceGaps": [
+        "No cohort quantifies gastric cancer incidence in Menetrier disease; the operative-series cases are from 1996 without denominators; the modern mechanistic literature treats the cancer association as unestablished and needing further study; the 2025 adult cases had a gastric mass and multiple nodules that were inflammatory rather than malignant, illustrating diagnostic overlap; and H. pylori, atrophic gastritis, and smoking are dominant competing gastric-cancer causes."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY on the precancerous-lesion precedent with the unestablished-association limit carried openly: the 1996 operative report of two men aged 62 and 81 with histologically confirmed Menetrier disease and gastric adenocarcinoma states the disease should be viewed as a precancerous gastric lesion (PMID 8920077), the 2023 review frames early recognition as preventing gastric carcinoma (PMID 37868436), and the 2025 mechanistic case series explicitly records that further studies are needed to explore the Menetrier, H. pylori, and gastric-cancer association (PMID 40887784); because the anchor is a two-case operative report from 1996 and the modern literature treats the association as unestablished, the conservative standard keeps the edge at association only and routes individual claims through dated endoscopic surveillance with atrophic-gastritis, H. pylori, and smoking exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Jouini M, Ksontini R, Kacem MJ, et al. [Ménétrier disease associated with a gastric adenocarcinoma. Apropos of 2 cases] Ann Gastroenterol Hepatol (Paris). 1996 Nov-Dec;31(6):341-5. PMID 8920077.",
+          "note": "Two-case operative report (French, 1996): men aged 62 and 81 with Menetrier disease and gastric adenocarcinoma diagnosed on operative specimens; states the risk of malignant transformation and frames Menetrier disease as a precancerous gastric lesion; supports the bounded precancerous-potential proposition only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/8920077/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 8920077; case pair and conclusion (malignant transformation risk)"
+        },
+        {
+          "citation": "Keener M, Waack A, Ranabothu M, et al. Clinical and Radiological Features of Menetrier's Disease: A Case Report and Review of the Literature Cureus. 2023 Sep;15(9):e45537. doi: 10.7759/cureus.45537. PMID 37868436.",
+          "note": "Case report and literature review (Cureus, 2023): frames clinical recognition and management of Menetrier disease as preventing development of more severe manifestations such as gastric carcinoma; supports the bounded risk framing only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/37868436/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 37868436; review framing (gastric carcinoma as severe manifestation)"
+        },
+        {
+          "citation": "Wu J, Chen Y, Yin J, et al. Ménétrier Disease: Rare Manifestations and Mechanistic Insights From 2 Adult Cases Am J Case Rep. 2025 Sep 1;26:e949111. doi: 10.12659/AJCR.949111. PMID 40887784.",
+          "note": "Two adult cases (Am J Case Rep, 2025): explicitly states further studies are needed to explore the associations between Menetrier disease, H. pylori infection, and gastric cancer; carried as the counterweight recording that the association is unestablished in the modern literature.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40887784/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 40887784; conclusions (association needs further study)"
+        }
+      ]
+    }
+  ]
 }

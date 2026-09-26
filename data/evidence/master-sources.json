@@ -16,16 +16,16 @@
   "citationPromotionMustAtomicallyUpdateKbAndMasterSourceState": true
  },
  "counts": {
-  "liveSourceReferenceUses": 1101,
+  "liveSourceReferenceUses": 1128,
   "activeSourceEntities": 346,
-  "pendingVerificationSourceEntities": 653,
+  "pendingVerificationSourceEntities": 674,
   "activeClinicalSourceEntities": 345,
-  "pendingClinicalSourceEntities": 653,
+  "pendingClinicalSourceEntities": 674,
   "activeLegalAuthorityEntities": 1,
   "retiredOnlySourceEntities": 1,
   "supersededUnverifiedSourceEntities": 7,
   "bibliographicCorrectionOnlyEntities": 1,
-  "totalSourceEntitiesIncludingLineage": 1008,
+  "totalSourceEntitiesIncludingLineage": 1029,
   "retiredVerifiedRelationshipSourceUses": 6
  },
  "retirementLedger": {
@@ -37281,6 +37281,783 @@
    "retiredUses": [],
    "rawReferenceHashes": [
     "5872ce627594d2f1540a5cfc73493282332cbdca35d8f14e0f294f9a17610590"
+   ]
+  },
+  {
+   "sourceId": "pmid-485023",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "485023",
+   "doi": null,
+   "canonicalCitation": "Grosshans E, Dossmann L, Basset M. [Median candidiasis of the tongue (glossitis mediana candidamycetica) (author's transl)] Ann Dermatol Venereol. 1979 Mar;106(3):259-64. PMID 485023.",
+   "citationVariants": [
+    "Grosshans E, Dossmann L, Basset M. [Median candidiasis of the tongue (glossitis mediana candidamycetica) (author's transl)] Ann Dermatol Venereol. 1979 Mar;106(3):259-64. PMID 485023."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/485023/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/485023/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-median-rhomboid-glossitis-to-squamous-cell-carcinoma",
+     "primaryId": "median-rhomboid-glossitis",
+     "targetId": "squamous-cell-carcinoma",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "ba0a28734c96885324a09801c4028a107805caa67dcc1224a855218a944b18f3"
+   ]
+  },
+  {
+   "sourceId": "pmid-40550276",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "40550276",
+   "doi": "10.1016/j.jad.2025.119741",
+   "canonicalCitation": "Ma X, Zhou X, Qiu Y. Bidirectional relationships between cognitive decline and depression: A study of middle-aged and older adults using cross-lagged panel network analysis J Affect Disord. 2025 Nov 15;389:119741. doi: 10.1016/j.jad.2025.119741. PMID 40550276.",
+   "citationVariants": [
+    "Ma X, Zhou X, Qiu Y. Bidirectional relationships between cognitive decline and depression: A study of middle-aged and older adults using cross-lagged panel network analysis J Affect Disord. 2025 Nov 15;389:119741. doi: 10.1016/j.jad.2025.119741. PMID 40550276."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40550276/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/40550276/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-memory-loss-to-depressive-disorder",
+     "primaryId": "memory-loss",
+     "targetId": "depressive-disorder",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "4a19a2c509d0c230e0efed1d24f8fcb9795d525e52e14307a5d67ea4c17cc2df"
+   ]
+  },
+  {
+   "sourceId": "pmid-40939773",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "40939773",
+   "doi": "10.1016/j.exger.2025.112891",
+   "canonicalCitation": "Bell TR, Felix C, Gider N, et al. Chronic pain and subjective memory problems are dynamic risk factors for functional decline: An ACTIVE longitudinal study Exp Gerontol. 2025 Nov;211:112891. doi: 10.1016/j.exger.2025.112891. PMID 40939773.",
+   "citationVariants": [
+    "Bell TR, Felix C, Gider N, et al. Chronic pain and subjective memory problems are dynamic risk factors for functional decline: An ACTIVE longitudinal study Exp Gerontol. 2025 Nov;211:112891. doi: 10.1016/j.exger.2025.112891. PMID 40939773."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40939773/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/40939773/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-memory-loss-to-depressive-disorder",
+     "primaryId": "memory-loss",
+     "targetId": "depressive-disorder",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "2f76512fdd0358038b399c637eb8350a5b34c2c245ca322a5614bd8776b541e0"
+   ]
+  },
+  {
+   "sourceId": "pmid-41804263",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "41804263",
+   "doi": "10.1192/bjo.2026.10995",
+   "canonicalCitation": "Xue L, Bocharova M, Young AH, et al. Late-onset depression predicts cognitive impairment and subsequent dementia among older adults with major depressive disorder: findings from UK Biobank and primary care linked data BJPsych Open. 2026 Mar 10;12(2):e88. doi: 10.1192/bjo.2026.10995. PMID 41804263.",
+   "citationVariants": [
+    "Xue L, Bocharova M, Young AH, et al. Late-onset depression predicts cognitive impairment and subsequent dementia among older adults with major depressive disorder: findings from UK Biobank and primary care linked data BJPsych Open. 2026 Mar 10;12(2):e88. doi: 10.1192/bjo.2026.10995. PMID 41804263."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41804263/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/41804263/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-memory-loss-to-depressive-disorder",
+     "primaryId": "memory-loss",
+     "targetId": "depressive-disorder",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "eb4cd64e7da5e5bd2f60c07454a5ccbce6d7f490e1640827fc5856e39f84b0b5"
+   ]
+  },
+  {
+   "sourceId": "pmid-5311583",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "5311583",
+   "doi": "10.1136/gut.10.9.735",
+   "canonicalCitation": "Singh AK, Cumaraswamy RC, Corrin B. Diffuse hypertrophy of gastric mucosa (Menétrier's disease) and iron-deficiency anaemia Gut. 1969 Sep;10(9):735-7. doi: 10.1136/gut.10.9.735. PMID 5311583.",
+   "citationVariants": [
+    "Singh AK, Cumaraswamy RC, Corrin B. Diffuse hypertrophy of gastric mucosa (Menétrier's disease) and iron-deficiency anaemia Gut. 1969 Sep;10(9):735-7. doi: 10.1136/gut.10.9.735. PMID 5311583."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/5311583/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/5311583/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-menetrier-s-disease-to-anemia",
+     "primaryId": "menetrier-s-disease",
+     "targetId": "anemia",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "a73fdeef8cde04a483bb149fa39bd9f94fa3a6887e90f1e7b9731b8fc63f6503"
+   ]
+  },
+  {
+   "sourceId": "pmid-40887784",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "40887784",
+   "doi": "10.12659/AJCR.949111",
+   "canonicalCitation": "Wu J, Chen Y, Yin J, et al. Ménétrier Disease: Rare Manifestations and Mechanistic Insights From 2 Adult Cases Am J Case Rep. 2025 Sep 1;26:e949111. doi: 10.12659/AJCR.949111. PMID 40887784.",
+   "citationVariants": [
+    "Wu J, Chen Y, Yin J, et al. Ménétrier Disease: Rare Manifestations and Mechanistic Insights From 2 Adult Cases Am J Case Rep. 2025 Sep 1;26:e949111. doi: 10.12659/AJCR.949111. PMID 40887784."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40887784/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/40887784/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 2,
+   "liveUses": [
+    {
+     "relationshipId": "rel-menetrier-s-disease-to-anemia",
+     "primaryId": "menetrier-s-disease",
+     "targetId": "anemia",
+     "sourceIndex": 1
+    },
+    {
+     "relationshipId": "rel-menetrier-s-disease-to-stomach-cancer",
+     "primaryId": "menetrier-s-disease",
+     "targetId": "stomach-cancer",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "32a8ae9a7e8a131b154a118a2b4cc56916c6b988db76b182600dac512a1d3ad3",
+    "cc0a2c798da2e52f1a4d5af92ca87f2f90dff433e842d0db8afc532d8faab0d1"
+   ]
+  },
+  {
+   "sourceId": "pmid-33505900",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "33505900",
+   "doi": "10.5223/pghn.2021.24.1.109",
+   "canonicalCitation": "Krikilion J, Levy EI, Vandenplas Y. Diagnosis and Management of Ménétrier Disease in Children: A Case Series Review Pediatr Gastroenterol Hepatol Nutr. 2021 Jan;24(1):109-117. doi: 10.5223/pghn.2021.24.1.109. PMID 33505900.",
+   "citationVariants": [
+    "Krikilion J, Levy EI, Vandenplas Y. Diagnosis and Management of Ménétrier Disease in Children: A Case Series Review Pediatr Gastroenterol Hepatol Nutr. 2021 Jan;24(1):109-117. doi: 10.5223/pghn.2021.24.1.109. PMID 33505900."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33505900/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/33505900/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-menetrier-s-disease-to-malnutrition-residuals",
+     "primaryId": "menetrier-s-disease",
+     "targetId": "malnutrition-residuals",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "4312a957430c44517cbd953974759b1208b956baa4eaa7faa91f09d613c82a09"
+   ]
+  },
+  {
+   "sourceId": "pmid-41209104",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "41209104",
+   "doi": "10.1155/crpe/2471369",
+   "canonicalCitation": "Snoubar I, Alhendi T, Batanji D, et al. Pediatric Ménétrier's Disease Triggered by Cytomegalovirus Infection: A Rare Case of Severe Hypoalbuminemia and Edema Case Rep Pediatr. 2025;2025:2471369. doi: 10.1155/crpe/2471369. PMID 41209104.",
+   "citationVariants": [
+    "Snoubar I, Alhendi T, Batanji D, et al. Pediatric Ménétrier's Disease Triggered by Cytomegalovirus Infection: A Rare Case of Severe Hypoalbuminemia and Edema Case Rep Pediatr. 2025;2025:2471369. doi: 10.1155/crpe/2471369. PMID 41209104."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41209104/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/41209104/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-menetrier-s-disease-to-malnutrition-residuals",
+     "primaryId": "menetrier-s-disease",
+     "targetId": "malnutrition-residuals",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "2697d3e4dccbef98c7c052a45be9f24c4017c1e0e166170edc44102d8a3e5059"
+   ]
+  },
+  {
+   "sourceId": "pmid-37868436",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "37868436",
+   "doi": "10.7759/cureus.45537",
+   "canonicalCitation": "Keener M, Waack A, Ranabothu M, et al. Clinical and Radiological Features of Menetrier's Disease: A Case Report and Review of the Literature Cureus. 2023 Sep;15(9):e45537. doi: 10.7759/cureus.45537. PMID 37868436.",
+   "citationVariants": [
+    "Keener M, Waack A, Ranabothu M, et al. Clinical and Radiological Features of Menetrier's Disease: A Case Report and Review of the Literature Cureus. 2023 Sep;15(9):e45537. doi: 10.7759/cureus.45537. PMID 37868436."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/37868436/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/37868436/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 2,
+   "liveUses": [
+    {
+     "relationshipId": "rel-menetrier-s-disease-to-malnutrition-residuals",
+     "primaryId": "menetrier-s-disease",
+     "targetId": "malnutrition-residuals",
+     "sourceIndex": 2
+    },
+    {
+     "relationshipId": "rel-menetrier-s-disease-to-stomach-cancer",
+     "primaryId": "menetrier-s-disease",
+     "targetId": "stomach-cancer",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "d819591ac763c8c98880093a2a9a507deb8b54f15779e34c0cd7ca59db2546d3",
+    "4d76009fa6cf3e036e0a732426812ff9ab394a3d1a7af4b16b2cccd5da1b9066"
+   ]
+  },
+  {
+   "sourceId": "pmid-8920077",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "8920077",
+   "doi": null,
+   "canonicalCitation": "Jouini M, Ksontini R, Kacem MJ, et al. [Ménétrier disease associated with a gastric adenocarcinoma. Apropos of 2 cases] Ann Gastroenterol Hepatol (Paris). 1996 Nov-Dec;31(6):341-5. PMID 8920077.",
+   "citationVariants": [
+    "Jouini M, Ksontini R, Kacem MJ, et al. [Ménétrier disease associated with a gastric adenocarcinoma. Apropos of 2 cases] Ann Gastroenterol Hepatol (Paris). 1996 Nov-Dec;31(6):341-5. PMID 8920077."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/8920077/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/8920077/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-menetrier-s-disease-to-stomach-cancer",
+     "primaryId": "menetrier-s-disease",
+     "targetId": "stomach-cancer",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "dd55323bbcb5d0f0f50ae6771a1b8b86fd968bdf80e4622979992b1366406554"
+   ]
+  },
+  {
+   "sourceId": "pmid-27965284",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "27965284",
+   "doi": "10.1136/gutjnl-2016-313051",
+   "canonicalCitation": "Cotter TG, Binder M, Loftus EV Jr, et al. Development of a Microscopic Colitis Disease Activity Index: a prospective cohort study Gut. 2018 Mar;67(3):441-446. doi: 10.1136/gutjnl-2016-313051. PMID 27965284.",
+   "citationVariants": [
+    "Cotter TG, Binder M, Loftus EV Jr, et al. Development of a Microscopic Colitis Disease Activity Index: a prospective cohort study Gut. 2018 Mar;67(3):441-446. doi: 10.1136/gutjnl-2016-313051. PMID 27965284."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/27965284/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/27965284/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-microscopic-colitis-to-malnutrition-residuals",
+     "primaryId": "microscopic-colitis",
+     "targetId": "malnutrition-residuals",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "5f50c494717fef0d96c6c00eccfe8bb311a814383ddd28f32af14cec4447f09f"
+   ]
+  },
+  {
+   "sourceId": "pmid-35913459",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "35913459",
+   "doi": "10.7554/eLife.79397",
+   "canonicalCitation": "Nielsen OH, Fernandez-Banares F, Sato T, et al. Microscopic colitis: Etiopathology, diagnosis, and rational management Elife. 2022 Aug 1;11. doi: 10.7554/eLife.79397. PMID 35913459.",
+   "citationVariants": [
+    "Nielsen OH, Fernandez-Banares F, Sato T, et al. Microscopic colitis: Etiopathology, diagnosis, and rational management Elife. 2022 Aug 1;11. doi: 10.7554/eLife.79397. PMID 35913459."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35913459/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/35913459/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-microscopic-colitis-to-malnutrition-residuals",
+     "primaryId": "microscopic-colitis",
+     "targetId": "malnutrition-residuals",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "810dd66ca492be62d49cec1cde91ced201a1ba6ad3b722ed8fb2f0efbb887cc0"
+   ]
+  },
+  {
+   "sourceId": "pmid-22024068",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "22024068",
+   "doi": null,
+   "canonicalCitation": "Hatemi AI, Senateş E, Dobrucali A, et al. Collagenous colitis: a retrospective survey of patients with chronic diarrhea Hepatogastroenterology. 2011 Nov-Dec;58(112):1963-7. PMID 22024068.",
+   "citationVariants": [
+    "Hatemi AI, Senateş E, Dobrucali A, et al. Collagenous colitis: a retrospective survey of patients with chronic diarrhea Hepatogastroenterology. 2011 Nov-Dec;58(112):1963-7. PMID 22024068."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/22024068/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/22024068/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-microscopic-colitis-to-malnutrition-residuals",
+     "primaryId": "microscopic-colitis",
+     "targetId": "malnutrition-residuals",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "45c3b54a1f108a14e119efe3169893b501864b7b0f336a6af27b2574c702059c"
+   ]
+  },
+  {
+   "sourceId": "pmid-32710780",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "32710780",
+   "doi": "10.1093/ecco-jcc/jjaa156",
+   "canonicalCitation": "Bergman D, Khalili H, Roelstraete B, et al. Microscopic colitis and risk of cancer - a population-based cohort study J Crohns Colitis. 2021 Feb 1;15(2). doi: 10.1093/ecco-jcc/jjaa156. PMID 32710780.",
+   "citationVariants": [
+    "Bergman D, Khalili H, Roelstraete B, et al. Microscopic colitis and risk of cancer - a population-based cohort study J Crohns Colitis. 2021 Feb 1;15(2). doi: 10.1093/ecco-jcc/jjaa156. PMID 32710780."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/32710780/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/32710780/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 2,
+   "liveUses": [
+    {
+     "relationshipId": "rel-microscopic-colitis-to-non-hodgkins-lymphoma",
+     "primaryId": "microscopic-colitis",
+     "targetId": "non-hodgkins-lymphoma",
+     "sourceIndex": 0
+    },
+    {
+     "relationshipId": "rel-microscopic-colitis-to-respiratory-cancer",
+     "primaryId": "microscopic-colitis",
+     "targetId": "respiratory-cancer",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "4139bf2e42ffe5dd3f1efc3b41fb80f7bdab39bf8753f6974c64a8b4f356b9aa",
+    "e6efabe313957147759dd8accc81a7970ee51f46bdbdb42e56f4b799d5fd8902"
+   ]
+  },
+  {
+   "sourceId": "pmid-32340774",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "32340774",
+   "doi": "10.1016/j.jaut.2020.102467",
+   "canonicalCitation": "Nguyen Y, Pagnoux C, Karras A, et al. Microscopic polyangiitis: Clinical characteristics and long-term outcomes of 378 patients from the French Vasculitis Study Group Registry J Autoimmun. 2020 Aug;112:102467. doi: 10.1016/j.jaut.2020.102467. PMID 32340774.",
+   "citationVariants": [
+    "Nguyen Y, Pagnoux C, Karras A, et al. Microscopic polyangiitis: Clinical characteristics and long-term outcomes of 378 patients from the French Vasculitis Study Group Registry J Autoimmun. 2020 Aug;112:102467. doi: 10.1016/j.jaut.2020.102467. PMID 32340774."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/32340774/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/32340774/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 3,
+   "liveUses": [
+    {
+     "relationshipId": "rel-microscopic-polyangiitis-to-chronic-kidney-disease",
+     "primaryId": "microscopic-polyangiitis",
+     "targetId": "chronic-kidney-disease",
+     "sourceIndex": 0
+    },
+    {
+     "relationshipId": "rel-microscopic-polyangiitis-to-interstitial-lung-disease",
+     "primaryId": "microscopic-polyangiitis",
+     "targetId": "interstitial-lung-disease",
+     "sourceIndex": 1
+    },
+    {
+     "relationshipId": "rel-microscopic-polyangiitis-to-peripheral-neuropathy",
+     "primaryId": "microscopic-polyangiitis",
+     "targetId": "peripheral-neuropathy",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "75b2630889e6ad3233d8bb93edcb0c7893ea16c225306a8c7412a8f574acda20",
+    "6b7f2d0babb5914ff661cda5b79e0a527042c4916bb875b3a436e4b33951b765",
+    "c6946e4b1cc1a716586c2cab2560521f6207c8eb1c7b2be0090e15b8c7969e7f"
+   ]
+  },
+  {
+   "sourceId": "pmid-42796306",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "42796306",
+   "doi": "10.3390/medicina62091699",
+   "canonicalCitation": "Ha JW, Whang JY, Kwon OC, et al. Association Between Any Circulating ANCA Positivity at Diagnosis and Subsequent End-Stage Kidney Disease in Microscopic Polyangiitis and Granulomatosis with Polyangiitis Medicina (Kaunas). 2026 Sep 4;62(9). doi: 10.3390/medicina62091699. PMID 42796306.",
+   "citationVariants": [
+    "Ha JW, Whang JY, Kwon OC, et al. Association Between Any Circulating ANCA Positivity at Diagnosis and Subsequent End-Stage Kidney Disease in Microscopic Polyangiitis and Granulomatosis with Polyangiitis Medicina (Kaunas). 2026 Sep 4;62(9). doi: 10.3390/medicina62091699. PMID 42796306."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42796306/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/42796306/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-microscopic-polyangiitis-to-chronic-kidney-disease",
+     "primaryId": "microscopic-polyangiitis",
+     "targetId": "chronic-kidney-disease",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "89e6add811c2980bf1a253d51cfd3604cf4f245db31d0446af828f6de3eb184b"
+   ]
+  },
+  {
+   "sourceId": "pmid-39136785",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "39136785",
+   "doi": "10.1007/s00296-024-05664-8",
+   "canonicalCitation": "Vogt K, Fink CB, Schreibing TM, et al. Distinct pulmonary patterns in ANCA-associated vasculitides: insights from a retrospective single center cohort study Rheumatol Int. 2024 Nov;44(11):2435-2443. doi: 10.1007/s00296-024-05664-8. PMID 39136785.",
+   "citationVariants": [
+    "Vogt K, Fink CB, Schreibing TM, et al. Distinct pulmonary patterns in ANCA-associated vasculitides: insights from a retrospective single center cohort study Rheumatol Int. 2024 Nov;44(11):2435-2443. doi: 10.1007/s00296-024-05664-8. PMID 39136785."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39136785/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/39136785/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 2,
+   "liveUses": [
+    {
+     "relationshipId": "rel-microscopic-polyangiitis-to-chronic-kidney-disease",
+     "primaryId": "microscopic-polyangiitis",
+     "targetId": "chronic-kidney-disease",
+     "sourceIndex": 2
+    },
+    {
+     "relationshipId": "rel-microscopic-polyangiitis-to-interstitial-lung-disease",
+     "primaryId": "microscopic-polyangiitis",
+     "targetId": "interstitial-lung-disease",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "42bc535326b60d64f5ec5fa79f3c9c5622f22e9bbf997b6e71e9b4d4fe540976",
+    "7e8fba04094059a772a3e7cb270ab277223bf8ebc5274aaffeff16d88d00d0ac"
+   ]
+  },
+  {
+   "sourceId": "pmid-41871820",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "41871820",
+   "doi": "10.1016/j.autrev.2026.104037",
+   "canonicalCitation": "Narváez J, Maymó P. Isolated antineutrophil cytoplasmic antibody-associated interstitial lung disease: A systematic review of an emerging condition Autoimmun Rev. 2026 Apr;25(4):104037. doi: 10.1016/j.autrev.2026.104037. PMID 41871820.",
+   "citationVariants": [
+    "Narváez J, Maymó P. Isolated antineutrophil cytoplasmic antibody-associated interstitial lung disease: A systematic review of an emerging condition Autoimmun Rev. 2026 Apr;25(4):104037. doi: 10.1016/j.autrev.2026.104037. PMID 41871820."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41871820/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/41871820/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-microscopic-polyangiitis-to-interstitial-lung-disease",
+     "primaryId": "microscopic-polyangiitis",
+     "targetId": "interstitial-lung-disease",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "88785615e4503354e5f9655dc03cabda554c697907ddf7c24684bfa25bea2c66"
+   ]
+  },
+  {
+   "sourceId": "pmid-26710910",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "26710910",
+   "doi": null,
+   "canonicalCitation": "Wang L, Li J, Qian M, et al. [Clinical features of microscopic polyangiitis associated with peripheral neuropathy] Zhonghua Yi Xue Za Zhi. 2015 Jul 21;95(27):2190-3. PMID 26710910.",
+   "citationVariants": [
+    "Wang L, Li J, Qian M, et al. [Clinical features of microscopic polyangiitis associated with peripheral neuropathy] Zhonghua Yi Xue Za Zhi. 2015 Jul 21;95(27):2190-3. PMID 26710910."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/26710910/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/26710910/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-microscopic-polyangiitis-to-peripheral-neuropathy",
+     "primaryId": "microscopic-polyangiitis",
+     "targetId": "peripheral-neuropathy",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "34053b694820c0d8198f8e9053b5452c326c2a824387b2c4e8658decd4d4a923"
+   ]
+  },
+  {
+   "sourceId": "pmid-38561284",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "38561284",
+   "doi": "10.3760/cma.j.cn112138-20231031-00267",
+   "canonicalCitation": "Li YF, Li M, Yang F, et al. [Clinical and electrophysiological characteristics and treatment outcomes of anti-neutrophil cytoplasmic antibody ANCA-associated vasculitic neuropathy] Zhonghua Nei Ke Za Zhi. 2024 Apr 1;63(4):386-393. doi: 10.3760/cma.j.cn112138-20231031-00267. PMID 38561284.",
+   "citationVariants": [
+    "Li YF, Li M, Yang F, et al. [Clinical and electrophysiological characteristics and treatment outcomes of anti-neutrophil cytoplasmic antibody ANCA-associated vasculitic neuropathy] Zhonghua Nei Ke Za Zhi. 2024 Apr 1;63(4):386-393. doi: 10.3760/cma.j.cn112138-20231031-00267. PMID 38561284."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38561284/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/38561284/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-microscopic-polyangiitis-to-peripheral-neuropathy",
+     "primaryId": "microscopic-polyangiitis",
+     "targetId": "peripheral-neuropathy",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "e74917216629b2c67b5349866bf40dfb4248ed66d937ea764146633333b0a47b"
+   ]
+  },
+  {
+   "sourceId": "pmid-42693943",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "42693943",
+   "doi": "10.1093/rheumatology/keag467",
+   "canonicalCitation": "Lindberg H, Voudouri K, Lindhagen L, et al. Cardiovascular and thromboembolic risk in ANCA-associated vasculitis: a nationwide matched cohort study by disease, sex and familial risk Rheumatology (Oxford). 2026 Sep 1;65(9). doi: 10.1093/rheumatology/keag467. PMID 42693943.",
+   "citationVariants": [
+    "Lindberg H, Voudouri K, Lindhagen L, et al. Cardiovascular and thromboembolic risk in ANCA-associated vasculitis: a nationwide matched cohort study by disease, sex and familial risk Rheumatology (Oxford). 2026 Sep 1;65(9). doi: 10.1093/rheumatology/keag467. PMID 42693943."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42693943/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/42693943/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-microscopic-polyangiitis-to-deep-vein-thrombosis",
+     "primaryId": "microscopic-polyangiitis",
+     "targetId": "deep-vein-thrombosis",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "10d8668c75b5a678ba2bb3f0e6cc1969102e8709cabe60f03a8790f3d72607e3"
    ]
   }
  ],
