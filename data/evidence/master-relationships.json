@@ -6,8 +6,8 @@
  "installedFrom": "Master Registry Discrepancy Resolution 2026",
  "authorityBoundary": "Authoritative for current relationship direction, proposition text, guard state, source linkage, and KB parity; does not establish an individual VA medical nexus.",
  "counts": {
-  "relationships": 691,
-  "explicitPublicationGuards": 617,
+  "relationships": 698,
+  "explicitPublicationGuards": 624,
   "legacyRationaleBoundaries": 74
  },
  "relationships": [
@@ -22251,6 +22251,218 @@
    "sourceReferenceCount": 1,
    "pathwayIntelligencePresent": false,
    "suggestionObjectHash": "56ee6456295d7c5743dcd74ba5fe1c4bf94fa6c1a2c7af11268c7be694c435b5"
+  },
+  {
+   "relationshipId": "rel-neuroblastoma-to-anemia",
+   "primaryId": "neuroblastoma",
+   "targetId": "anemia",
+   "direction": "neuroblastoma -> anemia",
+   "primaryPublicationState": "draft",
+   "rank": 1,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY at comparative-cohort plus supportive-care class with the infiltration-versus-treatment conflation carried openly: the comparative hematology study found erythrocytopenia strongly associated with marrow involvement (PMID 28801367) and the transfusion study documents erythrocyte needs driven by marrow infiltration and hematopoietic capacity (PMID 34197634); because both anchors conflate infiltration with chemotherapy myelosuppression and neither quantifies anemia incidence, the conservative standard keeps the edge at association only and routes individual claims through dated blood-count and marrow review with treatment-timing, bleeding, and nutritional exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY at comparative-cohort plus supportive-care class with the infiltration-versus-treatment conflation carried openly: the comparative hematology study found erythrocytopenia strongly associated with marrow involvement (PMID 28801367) and the transfusion study documents erythrocyte needs driven by marrow infiltration and hematopoietic capacity (PMID 34197634); because both anchors conflate infiltration with chemotherapy myelosuppression and neither quantifies anemia incidence, the conservative standard keeps the edge at association only and routes individual claims through dated blood-count and marrow review with treatment-timing, bleeding, and nutritional exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to the marrow-infiltration and treatment-myelosuppression pathways: the comparative hematology study found erythrocytopenia strongly associated with marrow involvement (PMID 28801367) and the transfusion-requirements cohort documents erythrocyte needs driven by infiltration and hematopoietic capacity (PMID 34197634); infiltration-versus-chemotherapy conflation is carried openly and the thrombocytopenia edge shares the anchors with per-edge scope (same-identity sharing), so individual claims route through dated blood-count and marrow review with treatment-timing, bleeding, and nutritional exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No located cohort quantifies anemia incidence attributable to marrow infiltration separately from chemotherapy myelosuppression; the erythrocytopenia anchor is a diagnostic-marker study; transfusion practice varies by protocol; and iron deficiency, bleeding, and nutritional causes compete in a pediatric oncology population."
+   ],
+   "sourceIds": [
+    "pmid-28801367",
+    "pmid-34197634"
+   ],
+   "sourceReferenceCount": 2,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "77240f661f3017bf8bcc84e14536ca3be19c0da18588276f58cab7f9de5f7915"
+  },
+  {
+   "relationshipId": "rel-neuroblastoma-to-thrombocytopenia",
+   "primaryId": "neuroblastoma",
+   "targetId": "thrombocytopenia",
+   "direction": "neuroblastoma -> thrombocytopenia",
+   "primaryPublicationState": "draft",
+   "rank": 2,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY at supportive-care cohort class with the multifactorial conflation carried openly: the transfusion study attributes early-course thrombocytopenia to bone marrow infiltration and/or coagulopathy with platelet needs tracking diagnosis-time counts (PMID 34197634) and the comparative hematology study documents count differences by infiltration status (PMID 28801367); because the anchors are small and inseparable across infiltration, coagulopathy, and treatment effects, the conservative standard keeps the edge at association only and routes individual claims through dated blood-count and coagulation review with treatment-timing and consumptive exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY at supportive-care cohort class with the multifactorial conflation carried openly: the transfusion study attributes early-course thrombocytopenia to bone marrow infiltration and/or coagulopathy with platelet needs tracking diagnosis-time counts (PMID 34197634) and the comparative hematology study documents count differences by infiltration status (PMID 28801367); because the anchors are small and inseparable across infiltration, coagulopathy, and treatment effects, the conservative standard keeps the edge at association only and routes individual claims through dated blood-count and coagulation review with treatment-timing and consumptive exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to the marrow-infiltration and coagulopathy pathways: the transfusion-requirements cohort attributes early-course thrombocytopenia to marrow infiltration and/or coagulopathy (PMID 34197634) and the comparative hematology study documents count differences by infiltration status (PMID 28801367); multifactorial conflation is carried openly, so individual claims route through dated blood-count and coagulation review with treatment-timing, consumptive, and immune exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No located cohort quantifies thrombocytopenia incidence attributable to marrow infiltration separately from chemotherapy myelosuppression or disseminated intravascular coagulation; the transfusion study is small and protocol-bound; and immune thrombocytopenia, consumptive coagulopathy, and sepsis-related causes compete in a pediatric oncology population."
+   ],
+   "sourceIds": [
+    "pmid-34197634",
+    "pmid-28801367"
+   ],
+   "sourceReferenceCount": 2,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "4222df98616b8997b8578999ca0b077a47d863e981385128e004a9a12f66b382"
+  },
+  {
+   "relationshipId": "rel-neuroblastoma-to-hypertension",
+   "primaryId": "neuroblastoma",
+   "targetId": "hypertension",
+   "direction": "neuroblastoma -> hypertension",
+   "primaryPublicationState": "draft",
+   "rank": 3,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY at single-center series plus registry-survey class with the rarity and mechanism-unresolved limits carried openly: the 10-patient series documents normetanephrine elevation with refractory hypertension (PMID 34612613) and the 1,126-patient registry survey quantifies hypertension at 1.8 percent with 28 percent persistence after resection (PMID 28711167); because the mechanistic comparison found hypertension not part of the usual neuroblastoma picture (PMID 36531507) and the anchors disagree on the catecholamine correlation, the conservative standard keeps the edge at association only and routes individual claims through pediatric endocrine and nephrology workup with renal, volume, and pain exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY at single-center series plus registry-survey class with the rarity and mechanism-unresolved limits carried openly: the 10-patient series documents normetanephrine elevation with refractory hypertension (PMID 34612613) and the 1,126-patient registry survey quantifies hypertension at 1.8 percent with 28 percent persistence after resection (PMID 28711167); because the mechanistic comparison found hypertension not part of the usual neuroblastoma picture (PMID 36531507) and the anchors disagree on the catecholamine correlation, the conservative standard keeps the edge at association only and routes individual claims through pediatric endocrine and nephrology workup with renal, volume, and pain exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to the rare multifactorial hypertensive phenotype with the mechanism-unresolved and rarity limits carried openly: the 10-patient series found uniform normetanephrine elevation with refractory hypertension (PMID 34612613) and the 1,126-patient registry survey quantified prevalence 1.8 percent with 28 percent persistence after resection (PMID 28711167), with the counterweight that hypertension is NOT part of the usual neuroblastoma picture carried on the edge (PMID 36531507, erratum-linked with disposition recorded); the pheochromocytoma and paraganglioma windows keep their own evidence (ME-29), so individual claims route through pediatric endocrine and nephrology workup with renal, volume, and pain exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "The registry could not demonstrate correlation between hypertension and specific catecholamines or renal pedicle compression while the single-center series found uniform normetanephrine elevation - the mechanism is unresolved across anchors; prevalence is 1.8 percent; 28 percent of cases needed persistent treatment after resection suggesting fixed renovascular components; and renal, pain, volume, and iatrogenic causes compete in a pediatric oncology population."
+   ],
+   "sourceIds": [
+    "pmid-34612613",
+    "pmid-28711167",
+    "pmid-36531507"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "5115120477344a2f5b09f7817b6ecc14d31dcac6209d6aae4189fc10186e272c"
+  },
+  {
+   "relationshipId": "rel-neuroblastoma-to-hearing-loss",
+   "primaryId": "neuroblastoma",
+   "targetId": "hearing-loss",
+   "direction": "neuroblastoma -> hearing-loss",
+   "primaryPublicationState": "draft",
+   "rank": 4,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY at national study-cohort class with the treatment-era limit carried openly: the German cohort documents persisting hearing impairment in 12.5 percent of 1,170 survivors with 27 percent in stage 4 and 40 percent after carboplatin high-dose therapy, dose-dependent on cumulative cisplatin (PMID 12165893), and the COG task-force report documents platinum and radiation ototoxicity pathways with evaluation recommendations (PMID 20194279); because the anchor protocols are 1990s-era and risk-adapted modern therapy may differ, the conservative standard keeps the edge at association only and routes individual claims through dated serial audiology with baseline, noise, and radiation exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY at national study-cohort class with the treatment-era limit carried openly: the German cohort documents persisting hearing impairment in 12.5 percent of 1,170 survivors with 27 percent in stage 4 and 40 percent after carboplatin high-dose therapy, dose-dependent on cumulative cisplatin (PMID 12165893), and the COG task-force report documents platinum and radiation ototoxicity pathways with evaluation recommendations (PMID 20194279); because the anchor protocols are 1990s-era and risk-adapted modern therapy may differ, the conservative standard keeps the edge at association only and routes individual claims through dated serial audiology with baseline, noise, and radiation exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped explicitly as treatment-mediated (PHARMACOLOGICAL_IATROGENIC) rather than tumor-mediated: the German NB90/NB97 survivor cohort documents dose-dependent ototoxic hearing impairment at 12.5-40 percent by stage and carboplatin exposure (PMID 12165893) and the COG late-effects report documents platinum and radiation ototoxicity pathways (PMID 20194279); the 1990s treatment-era limit is carried openly, so individual claims route through dated serial audiology with baseline, noise, and radiation exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No located cohort reports hearing-outcome incidence under contemporary risk-adapted neuroblastoma protocols; the incidence anchor predates current carboplatin-sparing and otoprotective strategies; radiation and platinum effects are not separated in the COG framing; and congenital hearing loss, ototoxic co-medication, and noise exposure compete for individual attribution."
+   ],
+   "sourceIds": [
+    "pmid-12165893",
+    "pmid-20194279"
+   ],
+   "sourceReferenceCount": 2,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "9bebd4103398e68acbeb96d159f113eb2b70151572f6a0348b26570b48df3bba"
+  },
+  {
+   "relationshipId": "rel-neuroblastoma-to-cardiomyopathy",
+   "primaryId": "neuroblastoma",
+   "targetId": "cardiomyopathy",
+   "direction": "neuroblastoma -> cardiomyopathy",
+   "primaryPublicationState": "draft",
+   "rank": 5,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY at three-case class with the mechanism-unresolved limit and dechallenge evidence carried openly: the three cases document hypertrophic and dilated cardiomyopathy in neuroblastoma with elevated catecholamines and improvement after resection or alpha-blockade (PMID 36846157, PMID 41891982, PMID 41276986); because no cohort quantifies incidence and the cases disagree on mechanism (direct toxicity, hypertensive remodeling, or myocarditis), the conservative standard keeps the edge at association only, asserts no mechanism, and routes individual claims through pediatric cardiology review with familial, anthracycline, and inflammatory exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY at three-case class with the mechanism-unresolved limit and dechallenge evidence carried openly: the three cases document hypertrophic and dilated cardiomyopathy in neuroblastoma with elevated catecholamines and improvement after resection or alpha-blockade (PMID 36846157, PMID 41891982, PMID 41276986); because no cohort quantifies incidence and the cases disagree on mechanism (direct toxicity, hypertensive remodeling, or myocarditis), the conservative standard keeps the edge at association only, asserts no mechanism, and routes individual claims through pediatric cardiology review with familial, anthracycline, and inflammatory exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly) with NO mechanism asserted: three cases document hypertrophic and dilated cardiomyopathy with elevated catecholamines and resection dechallenge (PMID 36846157, PMID 41891982, PMID 41276986), with the hypertensive-remodeling versus direct-toxic versus myocarditic mechanism dispute carried openly and the somatostatin-receptor myocardial-uptake case recording the myocarditis alternative; the published hypertension window's heart-failure route is an intermediate node not recycled per ME-29, so individual claims route through pediatric cardiology review with familial, anthracycline, and inflammatory exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No located cohort quantifies cardiomyopathy incidence in neuroblastoma; mechanism is contested across the cases (catecholamine toxicity versus hypertensive remodeling versus myocarditis with somatostatin-receptor uptake); anthracycline exposure in treated cohorts confounds; and familial hypertrophic cardiomyopathy, myocarditis, and stress cardiomyopathy compete for individual attribution."
+   ],
+   "sourceIds": [
+    "pmid-36846157",
+    "pmid-41891982",
+    "pmid-41276986"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "8975453699a06cf51c0f9d0d96fc96dafae52b5c46b4344e228f5546de239898"
+  },
+  {
+   "relationshipId": "rel-neuroblastoma-to-visual-impairment",
+   "primaryId": "neuroblastoma",
+   "targetId": "visual-impairment",
+   "direction": "neuroblastoma -> visual-impairment",
+   "primaryPublicationState": "draft",
+   "rank": 6,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY at mixed-primary orbital-series class with the stratification limit carried openly: the orbital metastasis series documents neuroblastoma at 25 percent of metastatic orbital tumors with proptosis and motility disturbance and acuity improvement after treatment in a subset (PMID 7643486) and the pediatric orbital review documents the metastatic workup pathway (PMID 20303555); because the acuity outcomes are unstratified by primary and the pediatric review is diagnostic rather than outcome-bearing, the conservative standard keeps the edge at association only and routes individual claims through dated orbital imaging and ophthalmological assessment with rhabdomyosarcoma, leukemic, and inflammatory exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY at mixed-primary orbital-series class with the stratification limit carried openly: the orbital metastasis series documents neuroblastoma at 25 percent of metastatic orbital tumors with proptosis and motility disturbance and acuity improvement after treatment in a subset (PMID 7643486) and the pediatric orbital review documents the metastatic workup pathway (PMID 20303555); because the acuity outcomes are unstratified by primary and the pediatric review is diagnostic rather than outcome-bearing, the conservative standard keeps the edge at association only and routes individual claims through dated orbital imaging and ophthalmological assessment with rhabdomyosarcoma, leukemic, and inflammatory exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to orbital metastatic mass effect with the mixed-primary stratification limit carried openly: the orbital metastasis series documents neuroblastoma at 25 percent of metastatic orbital tumors with proptosis and motility disturbance (PMID 7643486) and the French-language pediatric orbital review documents the metastatic workup pathway (PMID 20303555); acuity outcomes are unstratified by primary, so individual claims route through dated orbital imaging and ophthalmological assessment with rhabdomyosarcoma, leukemic, and inflammatory exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No located cohort quantifies visual outcomes in orbital neuroblastoma specifically; the orbital series pools adult and pediatric primaries with unstratified acuity outcomes; modern orbital imaging and treatment have changed management since 1995; and rhabdomyosarcoma, leukemic orbital infiltration, and orbital inflammation compete as pediatric orbital masses."
+   ],
+   "sourceIds": [
+    "pmid-7643486",
+    "pmid-20303555"
+   ],
+   "sourceReferenceCount": 2,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "6c6cf930c60873b799fdbeb0ffa9314cd95758b8d343066f827693242a766d87"
+  },
+  {
+   "relationshipId": "rel-nightmare-disorder-to-depressive-disorder",
+   "primaryId": "nightmare-disorder",
+   "targetId": "depressive-disorder",
+   "direction": "nightmare-disorder -> depressive-disorder",
+   "primaryPublicationState": "draft",
+   "rank": 1,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY at longitudinal-trajectory plus systematic-review class with the bidirectionality limit carried openly: the 10-year earthquake-survivor cohort found nightmare dysfunction trajectories predicting young-adult depression after baseline adjustment (PMID 38082176) and the systematic review found nightmare treatment reducing depression moderately across trials (PMID 36566699); because the literature is bidirectional (PTSD and depression drive nightmares) and single-item nightmare assessment dominates, the conservative standard keeps the edge at association only and routes individual claims through dated sleep and psychiatric assessment with baseline mood, trauma, and medication exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY at longitudinal-trajectory plus systematic-review class with the bidirectionality limit carried openly: the 10-year earthquake-survivor cohort found nightmare dysfunction trajectories predicting young-adult depression after baseline adjustment (PMID 38082176) and the systematic review found nightmare treatment reducing depression moderately across trials (PMID 36566699); because the literature is bidirectional (PTSD and depression drive nightmares) and single-item nightmare assessment dominates, the conservative standard keeps the edge at association only and routes individual claims through dated sleep and psychiatric assessment with baseline mood, trauma, and medication exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to the forward adjusted trajectory and treatment-response evidence with the bidirectionality limit carried openly: the 10-year earthquake-survivor cohort found nightmare dysfunction trajectories predicting young-adult depression after baseline adjustment (PMID 38082176) and the systematic review found nightmare treatment reducing depression moderately (PMID 36566699); PTSD and depression produce nightmares in the same literature, disaster-exposed scope limits generalization, and the insomnia, alzheimer-s-disease, and circadian-rhythm windows keep their own evidence (ME-29), so individual claims route through dated sleep and psychiatric assessment with baseline mood, trauma, and medication exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "The 10-year anchor is a disaster-exposed adolescent population so generalization to non-trauma nightmare disorder is unquantified; nightmare assessment is mostly single-item frequency rather than disorder diagnosis; most treatment trials were not designed to assess depression effects; reverse-direction and shared-diathesis confounding is only partly adjusted; and the review found no experimental studies."
+   ],
+   "sourceIds": [
+    "pmid-38082176",
+    "pmid-36566699"
+   ],
+   "sourceReferenceCount": 2,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "a55e449e38d8d127756acbc09fdb735a597bcacbec701e54089fd6dca5d1fdcc"
   }
  ],
  "lastUpdatedBy": "batch-D1-draft-authoring",
