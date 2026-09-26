@@ -12837,6 +12837,86 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 **Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
 
+### `overactive-bladder` → `depressive-disorder` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Overactive bladder documents depression at national cross-sectional and survey level: the NHANES 2007-2018 analysis of 21,408 US adults found OAB strongly associated with suicidal ideation with depression the dominant mediator (79.8 percent of the total association; indirect-through-depression OR 1.62, 95 percent CI 1.49-1.76), embedding a quantified OAB-depression pathway (PMID 42222871), and the cross-sectional survey of 300 treated and untreated OAB adults found PROMIS Depression scores above US general-population values regardless of treatment type (PMID 37356462); recorded as documented association only with the counterweight carried openly - the 159-patient patient-reported cohort found Depression scores consistent with population norms and no moderate correlation with urinary symptom severity (PMID 38108212).
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: all anchors are cross-sectional with no temporal ordering, the national analyses frame depression as mediator or explanatory factor in directions that also accommodate depression preceding or amplifying OAB symptom reporting, one cohort reports depression at population norms, and individual claims require dated psychiatric assessment with pre-existing, medication, and medical-cause exclusion.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 360.1 — Su Y, Yuan H, He J, et al. Overactive Bladder and Suicidal Ideation: A National Cross-Sectional Study Identifying Depression as the Primary Mediator Neurourol Urodyn. 2026 Aug;45(6):1168-1178. PMID 42222871.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42222871/
+- Source checked on: 2026-09-26
+- Locator: PMID 42222871; results (mediation decomposition of the OAB-suicidal-ideation association)
+- Note under review: NHANES 2007-2018 national cross-sectional analysis of 21,408 US adults (Neurourol Urodyn 2026): OAB prevalence 12.0%; OAB-suicidal-ideation crude OR 2.42 (1.92-3.06); counterfactual mediation showed depression mediated 79.8% (61.1-98.4) of the total association (TNIE OR 1.62, 1.49-1.76) with non-significant direct effect; authors reframe OAB as a marker of mental-health vulnerability; supports the bounded OAB-depression association only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 360.2 — Lai HH, Walker D, Elsouda D, et al. Sleep Disturbance Among Adults With Overactive Bladder: A Cross-sectional Survey Urology. 2023 Sep;179:23-31. PMID 37356462.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/37356462/
+- Source checked on: 2026-09-26
+- Locator: PMID 37356462; results (PROMIS domain scores versus US norms)
+- Note under review: Cross-sectional survey of 300 OAB adults across three treatment groups (Urology 2023; PROMIS-29): Sleep Disturbance and Depression scores above US general-population values in all groups regardless of treatment; authors report OAB adults affected by sleep disturbance and depression; sponsor-interest limit noted; supports the bounded elevated-burden association only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 360.3 — Jensen S, Walker D, Elsouda D, et al. An observational, patient-reported outcome study of sleep quality and depression among individuals with overactive bladder syndrome Neurourol Urodyn. 2024 Feb;43(2):437-448. PMID 38108212.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/38108212/
+- Source checked on: 2026-09-26
+- Locator: PMID 38108212; results (population-norm PRO scores and null correlations)
+- Note under review: Observational patient-reported outcome study of 159 OAB patients (Neurourol Urodyn 2024): Sleep Disturbance, Fatigue, and Depression scale scores consistent with US population norms; no moderate-or-greater correlations between lower-urinary-tract symptom severity and depression; antidepressant subgroups worse across outcomes; COUNTERWEIGHT to the survey evidence, carried openly.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `papilledema` → `visual-impairment` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Papilledema documents visual acuity and field impairment at prospective-cohort and trial-protocol level: the 9-year idiopathic intracranial hypertension prospective cohort of 490 patients found those with the highest OCT retinal nerve fibre layer (most severe papilledema) had the worst visual outcomes, with delayed visual field and ganglion cell layer decline after 12 months and disease duration a key visual prognostic factor (PMID 36242625), the IIH Intervention randomized trial protocol states patients are at risk of permanent visual loss due to papilledema and uses peripapillary nerve fibre layer and perimetric mean deviation as its vision-preservation endpoints (PMID 42547236), and the CVST-versus-IIH papilledema cohort documents graded visual assessment (Frisen grade, scotomas, nerve fibre layer, perimetric mean deviation) across etiologies (PMID 42435089); recorded as documented association only with the etiology-spanning scope carried openly.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: the anchors are idiopathic-intracranial-hypertension-dominant raised-pressure populations in which papilledema severity and visual loss both track the underlying pressure burden (shared-driver confounding), so whether any individual visual impairment is attributable to the disc edema itself requires individual neuro-ophthalmologic assessment with glaucomatous, retinal, and refractive exclusion.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 361.1 — Thaller M, Homer V, Hyder Y, et al. The idiopathic intracranial hypertension prospective cohort study: evaluation of prognostic factors and outcomes J Neurol. 2023 Feb;270(2):851-863. PMID 36242625.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/36242625/
+- Source checked on: 2026-09-26
+- Locator: PMID 36242625; results (visual outcomes by papilledema severity and prognostic factors)
+- Note under review: Idiopathic intracranial hypertension prospective cohort, 490 patients over 9 years (J Neurol 2023): highest OCT retinal nerve fibre layer (most severe papilledema) had the worst visual outcomes; delayed visual field and ganglion cell layer decline after 12 months; disease duration and BMI change the key visual prognostic factors; supports the bounded severity-gradient association only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 361.2 — Tsermoulas G, Mollan SP, Homer V, et al. Cerebrospinal fluid shunting or dural venous sinus stenting to preserve vision in idiopathic intracranial hypertension (IIH Intervention): protocol for an open-label, multicentre, randomised controlled phase IIb trial BMJ Open. 2026 Aug 3;16(8):e111013. PMID 42547236.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42547236/
+- Source checked on: 2026-09-26
+- Locator: PMID 42547236; protocol framing (visual loss due to papilledema and trial endpoints)
+- Note under review: IIH Intervention randomized trial protocol (BMJ Open 2026): patients with sight-threatening IIH are at risk of permanent visual loss due to papilloedema; CSF shunting versus dural venous sinus stenting compared to preserve vision; primary outcome peripapillary retinal nerve fibre layer with perimetric mean deviation secondary; supports the bounded vision-preservation framing only (protocol, no efficacy data).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 361.3 — Martins AI, Jorge A, Matos S, et al. Papilledema and related clinical and paraclinical visual assessment in cerebral venous and sinus thrombosis versus idiopathic intracranial hypertension Neurol Sci. 2026 Jul 11;47(8).pii: 623. doi: 10.1007/s10072-026-09232-9. PMID 42435089.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42435089/
+- Source checked on: 2026-09-26
+- Locator: PMID 42435089; results (visual assessment measures across papilledema etiologies)
+- Note under review: CVST-versus-IIH papilledema comparison cohort (Neurol Sci 2026; 12 CVST and 34 IIH patients): graded papilledema (Frisen), Amsler scotomas, RNFL thickness, and perimetric mean deviation documented across etiologies with etiologic differences in severity; supports the bounded cross-etiology visual-assessment framing only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
 ## Implementation mechanics after decisions
 
 - Mapping edits and registry edits must land in lockstep (the registry audit's canonical-JSON hashes and live-use sets will fail otherwise).

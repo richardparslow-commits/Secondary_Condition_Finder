@@ -16,16 +16,16 @@
   "citationPromotionMustAtomicallyUpdateKbAndMasterSourceState": true
  },
  "counts": {
-  "liveSourceReferenceUses": 1273,
+  "liveSourceReferenceUses": 1279,
   "activeSourceEntities": 346,
-  "pendingVerificationSourceEntities": 788,
+  "pendingVerificationSourceEntities": 794,
   "activeClinicalSourceEntities": 345,
-  "pendingClinicalSourceEntities": 788,
+  "pendingClinicalSourceEntities": 794,
   "activeLegalAuthorityEntities": 1,
   "retiredOnlySourceEntities": 1,
   "supersededUnverifiedSourceEntities": 7,
   "bibliographicCorrectionOnlyEntities": 1,
-  "totalSourceEntitiesIncludingLineage": 1143,
+  "totalSourceEntitiesIncludingLineage": 1149,
   "retiredVerifiedRelationshipSourceUses": 6
  },
  "retirementLedger": {
@@ -42265,6 +42265,216 @@
    "retiredUses": [],
    "rawReferenceHashes": [
     "6d5d82efb511cbf09b0f82b6643014752986df6eeb1feafb58da47c9293a4759"
+   ]
+  },
+  {
+   "sourceId": "pmid-42222871",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "42222871",
+   "doi": null,
+   "canonicalCitation": "Su Y, Yuan H, He J, et al. Overactive Bladder and Suicidal Ideation: A National Cross-Sectional Study Identifying Depression as the Primary Mediator Neurourol Urodyn. 2026 Aug;45(6):1168-1178. PMID 42222871.",
+   "citationVariants": [
+    "Su Y, Yuan H, He J, et al. Overactive Bladder and Suicidal Ideation: A National Cross-Sectional Study Identifying Depression as the Primary Mediator Neurourol Urodyn. 2026 Aug;45(6):1168-1178. PMID 42222871."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42222871/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/42222871/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-overactive-bladder-to-depressive-disorder",
+     "primaryId": "overactive-bladder",
+     "targetId": "depressive-disorder",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "c0522dbcc049acfa2c9f2afb2ca84021ab46549bb1659f709929266a59b4799e"
+   ]
+  },
+  {
+   "sourceId": "pmid-37356462",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "37356462",
+   "doi": null,
+   "canonicalCitation": "Lai HH, Walker D, Elsouda D, et al. Sleep Disturbance Among Adults With Overactive Bladder: A Cross-sectional Survey Urology. 2023 Sep;179:23-31. PMID 37356462.",
+   "citationVariants": [
+    "Lai HH, Walker D, Elsouda D, et al. Sleep Disturbance Among Adults With Overactive Bladder: A Cross-sectional Survey Urology. 2023 Sep;179:23-31. PMID 37356462."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/37356462/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/37356462/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-overactive-bladder-to-depressive-disorder",
+     "primaryId": "overactive-bladder",
+     "targetId": "depressive-disorder",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "1ac8646390084c8dd0052dfe4aeee0cf87bc9a7c397ea5e558ea63fedd90bcf4"
+   ]
+  },
+  {
+   "sourceId": "pmid-38108212",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "38108212",
+   "doi": null,
+   "canonicalCitation": "Jensen S, Walker D, Elsouda D, et al. An observational, patient-reported outcome study of sleep quality and depression among individuals with overactive bladder syndrome Neurourol Urodyn. 2024 Feb;43(2):437-448. PMID 38108212.",
+   "citationVariants": [
+    "Jensen S, Walker D, Elsouda D, et al. An observational, patient-reported outcome study of sleep quality and depression among individuals with overactive bladder syndrome Neurourol Urodyn. 2024 Feb;43(2):437-448. PMID 38108212."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38108212/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/38108212/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-overactive-bladder-to-depressive-disorder",
+     "primaryId": "overactive-bladder",
+     "targetId": "depressive-disorder",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "83368d1664a1fe0b9648829b1bf89200b0159d852162c4b9372f4a7167ec1ad8"
+   ]
+  },
+  {
+   "sourceId": "pmid-36242625",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "36242625",
+   "doi": null,
+   "canonicalCitation": "Thaller M, Homer V, Hyder Y, et al. The idiopathic intracranial hypertension prospective cohort study: evaluation of prognostic factors and outcomes J Neurol. 2023 Feb;270(2):851-863. PMID 36242625.",
+   "citationVariants": [
+    "Thaller M, Homer V, Hyder Y, et al. The idiopathic intracranial hypertension prospective cohort study: evaluation of prognostic factors and outcomes J Neurol. 2023 Feb;270(2):851-863. PMID 36242625."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36242625/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/36242625/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-papilledema-to-visual-impairment",
+     "primaryId": "papilledema",
+     "targetId": "visual-impairment",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "472ef25da0c052d5c79318444702a3ca76d0154aeb9f191c8bc0a364efd9d99e"
+   ]
+  },
+  {
+   "sourceId": "pmid-42547236",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "42547236",
+   "doi": null,
+   "canonicalCitation": "Tsermoulas G, Mollan SP, Homer V, et al. Cerebrospinal fluid shunting or dural venous sinus stenting to preserve vision in idiopathic intracranial hypertension (IIH Intervention): protocol for an open-label, multicentre, randomised controlled phase IIb trial BMJ Open. 2026 Aug 3;16(8):e111013. PMID 42547236.",
+   "citationVariants": [
+    "Tsermoulas G, Mollan SP, Homer V, et al. Cerebrospinal fluid shunting or dural venous sinus stenting to preserve vision in idiopathic intracranial hypertension (IIH Intervention): protocol for an open-label, multicentre, randomised controlled phase IIb trial BMJ Open. 2026 Aug 3;16(8):e111013. PMID 42547236."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42547236/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/42547236/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-papilledema-to-visual-impairment",
+     "primaryId": "papilledema",
+     "targetId": "visual-impairment",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "c3956c77ff507c0d612ee39603259968066fd83cb859a7d8e228fe51ac4be8a7"
+   ]
+  },
+  {
+   "sourceId": "pmid-42435089",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "42435089",
+   "doi": "10.1007/s10072-026-09232-9",
+   "canonicalCitation": "Martins AI, Jorge A, Matos S, et al. Papilledema and related clinical and paraclinical visual assessment in cerebral venous and sinus thrombosis versus idiopathic intracranial hypertension Neurol Sci. 2026 Jul 11;47(8).pii: 623. doi: 10.1007/s10072-026-09232-9. PMID 42435089.",
+   "citationVariants": [
+    "Martins AI, Jorge A, Matos S, et al. Papilledema and related clinical and paraclinical visual assessment in cerebral venous and sinus thrombosis versus idiopathic intracranial hypertension Neurol Sci. 2026 Jul 11;47(8).pii: 623. doi: 10.1007/s10072-026-09232-9. PMID 42435089."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42435089/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/42435089/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-papilledema-to-visual-impairment",
+     "primaryId": "papilledema",
+     "targetId": "visual-impairment",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "fb9b79cf8a19fbeb61c43e669ff6922875fff9dddab7d089826acd97d24bbed0"
    ]
   }
  ],
