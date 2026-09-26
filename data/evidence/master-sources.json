@@ -16,16 +16,16 @@
   "citationPromotionMustAtomicallyUpdateKbAndMasterSourceState": true
  },
  "counts": {
-  "liveSourceReferenceUses": 1128,
+  "liveSourceReferenceUses": 1163,
   "activeSourceEntities": 346,
-  "pendingVerificationSourceEntities": 674,
+  "pendingVerificationSourceEntities": 701,
   "activeClinicalSourceEntities": 345,
-  "pendingClinicalSourceEntities": 674,
+  "pendingClinicalSourceEntities": 701,
   "activeLegalAuthorityEntities": 1,
   "retiredOnlySourceEntities": 1,
   "supersededUnverifiedSourceEntities": 7,
   "bibliographicCorrectionOnlyEntities": 1,
-  "totalSourceEntitiesIncludingLineage": 1029,
+  "totalSourceEntitiesIncludingLineage": 1056,
   "retiredVerifiedRelationshipSourceUses": 6
  },
  "retirementLedger": {
@@ -38058,6 +38058,1007 @@
    "retiredUses": [],
    "rawReferenceHashes": [
     "10d8668c75b5a678ba2bb3f0e6cc1969102e8709cabe60f03a8790f3d72607e3"
+   ]
+  },
+  {
+   "sourceId": "pmid-42314414",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "42314414",
+   "doi": "10.1016/j.socscimed.2026.119481",
+   "canonicalCitation": "Bolbocean C, Coomarasamy A, Hippisley-Cox J, et al. Miscarriage, self-harm, and psychiatric disorders in first-time pregnant women: Evidence from a linkage study Soc Sci Med. 2026 Sep;404:119481. doi: 10.1016/j.socscimed.2026.119481. PMID 42314414.",
+   "citationVariants": [
+    "Bolbocean C, Coomarasamy A, Hippisley-Cox J, et al. Miscarriage, self-harm, and psychiatric disorders in first-time pregnant women: Evidence from a linkage study Soc Sci Med. 2026 Sep;404:119481. doi: 10.1016/j.socscimed.2026.119481. PMID 42314414."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42314414/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/42314414/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 2,
+   "liveUses": [
+    {
+     "relationshipId": "rel-miscarriage-to-depressive-disorder",
+     "primaryId": "miscarriage",
+     "targetId": "depressive-disorder",
+     "sourceIndex": 0
+    },
+    {
+     "relationshipId": "rel-miscarriage-to-anxiety-disorder",
+     "primaryId": "miscarriage",
+     "targetId": "anxiety-disorder",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "ef507a8df2380595320b4d974ff00c90c777f4bcd6eb53b03b8c43d84b744bcb",
+    "2aadf3cf1c37cc02f424dfd27f135877b89dd1cdc73fd6a0d1d0c3e923194fbd"
+   ]
+  },
+  {
+   "sourceId": "pmid-41232802",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "41232802",
+   "doi": "10.1016/j.jval.2025.10.013",
+   "canonicalCitation": "Bolbocean C, Coomarasamy A, Fitzsimmons L, et al. The Compounding Burden of Pregnancy Loss: A Longitudinal Analysis of Quality-of-Life Trajectories After Miscarriage Value Health. 2026 Mar;29(3):419-428. doi: 10.1016/j.jval.2025.10.013. PMID 41232802.",
+   "citationVariants": [
+    "Bolbocean C, Coomarasamy A, Fitzsimmons L, et al. The Compounding Burden of Pregnancy Loss: A Longitudinal Analysis of Quality-of-Life Trajectories After Miscarriage Value Health. 2026 Mar;29(3):419-428. doi: 10.1016/j.jval.2025.10.013. PMID 41232802."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41232802/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/41232802/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-miscarriage-to-depressive-disorder",
+     "primaryId": "miscarriage",
+     "targetId": "depressive-disorder",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "b6a64e63ed619ca1e108cd33333d0afd0ebb483d76b01c7640fc120064af184c"
+   ]
+  },
+  {
+   "sourceId": "pmid-33685488",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "33685488",
+   "doi": "10.1186/s12955-021-01703-1",
+   "canonicalCitation": "Wang Y, Meng Z, Pei J, et al. Anxiety and depression are risk factors for recurrent pregnancy loss: a nested case-control study Health Qual Life Outcomes. 2021 Mar 8;19(1):78. doi: 10.1186/s12955-021-01703-1. PMID 33685488.",
+   "citationVariants": [
+    "Wang Y, Meng Z, Pei J, et al. Anxiety and depression are risk factors for recurrent pregnancy loss: a nested case-control study Health Qual Life Outcomes. 2021 Mar 8;19(1):78. doi: 10.1186/s12955-021-01703-1. PMID 33685488."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33685488/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/33685488/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-miscarriage-to-depressive-disorder",
+     "primaryId": "miscarriage",
+     "targetId": "depressive-disorder",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "a1de62a816ca3d39a3867d966e8ef92ae67d92fcc76e3add95ee91d877aa5d9b"
+   ]
+  },
+  {
+   "sourceId": "pmid-25565431",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "25565431",
+   "doi": "10.1111/1471-0528.13233",
+   "canonicalCitation": "McCarthy FP, Moss-Morris R, Khashan AS, et al. Previous pregnancy loss has an adverse impact on distress and behaviour in subsequent pregnancy BJOG. 2015 Dec;122(13):1757-64. doi: 10.1111/1471-0528.13233. PMID 25565431.",
+   "citationVariants": [
+    "McCarthy FP, Moss-Morris R, Khashan AS, et al. Previous pregnancy loss has an adverse impact on distress and behaviour in subsequent pregnancy BJOG. 2015 Dec;122(13):1757-64. doi: 10.1111/1471-0528.13233. PMID 25565431."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/25565431/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/25565431/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-miscarriage-to-anxiety-disorder",
+     "primaryId": "miscarriage",
+     "targetId": "anxiety-disorder",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "0de1d98752908aa09174bf6eaba71efbc8296234e8f1acc6c228374f17f20030"
+   ]
+  },
+  {
+   "sourceId": "pmid-24733508",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "24733508",
+   "doi": "10.1371/journal.pone.0095038",
+   "canonicalCitation": "Chojenta C, Harris S, Reilly N, et al. History of pregnancy loss increases the risk of mental health problems in subsequent pregnancies but not in the postpartum PLoS One. 2014;9(4):e95038. doi: 10.1371/journal.pone.0095038. PMID 24733508.",
+   "citationVariants": [
+    "Chojenta C, Harris S, Reilly N, et al. History of pregnancy loss increases the risk of mental health problems in subsequent pregnancies but not in the postpartum PLoS One. 2014;9(4):e95038. doi: 10.1371/journal.pone.0095038. PMID 24733508."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/24733508/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/24733508/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-miscarriage-to-anxiety-disorder",
+     "primaryId": "miscarriage",
+     "targetId": "anxiety-disorder",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "8300c7aa2d052e2df2e6880d75522973ab9385b33b4fe570ef3bab331e28d432"
+   ]
+  },
+  {
+   "sourceId": "pmid-33462894",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "33462894",
+   "doi": "10.1111/jog.14667",
+   "canonicalCitation": "Sevinç F, Oskovi-Kaplan ZA, Çelen Ş, et al. Identifying the risk factors and incidence of Asherman Syndrome in women with post-abortion uterine curettage J Obstet Gynaecol Res. 2021 Apr;47(4):1549-1555. doi: 10.1111/jog.14667. PMID 33462894.",
+   "citationVariants": [
+    "Sevinç F, Oskovi-Kaplan ZA, Çelen Ş, et al. Identifying the risk factors and incidence of Asherman Syndrome in women with post-abortion uterine curettage J Obstet Gynaecol Res. 2021 Apr;47(4):1549-1555. doi: 10.1111/jog.14667. PMID 33462894."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33462894/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/33462894/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-miscarriage-to-female-infertility",
+     "primaryId": "miscarriage",
+     "targetId": "female-infertility",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "39203f13377e9036b6664780307cd3b75b5cd3caab5578e437e7ce6fa84f5b1d"
+   ]
+  },
+  {
+   "sourceId": "pmid-42727502",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "42727502",
+   "doi": "10.1016/j.ejogrb.2026.115409",
+   "canonicalCitation": "Wang TH, Sung FC, Mou CH, et al. Impact of post-recurrent pregnancy loss depression and anxiety on subsequent live birth rates: A nationwide population-based cohort study Eur J Obstet Gynecol Reprod Biol. 2026 Sep 3;327:115409. doi: 10.1016/j.ejogrb.2026.115409. PMID 42727502.",
+   "citationVariants": [
+    "Wang TH, Sung FC, Mou CH, et al. Impact of post-recurrent pregnancy loss depression and anxiety on subsequent live birth rates: A nationwide population-based cohort study Eur J Obstet Gynecol Reprod Biol. 2026 Sep 3;327:115409. doi: 10.1016/j.ejogrb.2026.115409. PMID 42727502."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42727502/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/42727502/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-miscarriage-to-female-infertility",
+     "primaryId": "miscarriage",
+     "targetId": "female-infertility",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "bee9f1baff42e3b08be3f5260df14e2ac2f8716cad3b2d53510f13af29352c3b"
+   ]
+  },
+  {
+   "sourceId": "pmid-39600349",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "39600349",
+   "doi": "10.2147/IJWH.S475597",
+   "canonicalCitation": "An F, Wang S, Gao L, et al. Dietary Vitamin B12 Intake Affects the Association Between Urinary Incontinence and Depression in Women: A Cross-Sectional Study of NHANES 2007-2018 Int J Womens Health. 2024;16:1969-1980. doi: 10.2147/IJWH.S475597. PMID 39600349.",
+   "citationVariants": [
+    "An F, Wang S, Gao L, et al. Dietary Vitamin B12 Intake Affects the Association Between Urinary Incontinence and Depression in Women: A Cross-Sectional Study of NHANES 2007-2018 Int J Womens Health. 2024;16:1969-1980. doi: 10.2147/IJWH.S475597. PMID 39600349."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39600349/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/39600349/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-mixed-urinary-incontinence-to-depressive-disorder",
+     "primaryId": "mixed-urinary-incontinence",
+     "targetId": "depressive-disorder",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "15b96461b79e4957824e0c4b6bca3d5e1055fc1f7a7a3dec3e99458d03c80dec"
+   ]
+  },
+  {
+   "sourceId": "pmid-39393464",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "39393464",
+   "doi": "10.1016/j.jad.2024.10.035",
+   "canonicalCitation": "Joinson C, Drake MJ, Fraser A, et al. Bidirectional relationships between depression, anxiety and urinary symptoms in women: A prospective cohort study J Affect Disord. 2025 Jan 15;369:516-522. doi: 10.1016/j.jad.2024.10.035. PMID 39393464.",
+   "citationVariants": [
+    "Joinson C, Drake MJ, Fraser A, et al. Bidirectional relationships between depression, anxiety and urinary symptoms in women: A prospective cohort study J Affect Disord. 2025 Jan 15;369:516-522. doi: 10.1016/j.jad.2024.10.035. PMID 39393464."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39393464/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/39393464/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-mixed-urinary-incontinence-to-depressive-disorder",
+     "primaryId": "mixed-urinary-incontinence",
+     "targetId": "depressive-disorder",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "6fa9f58114e9870132b1cda92fd4fe90a527bd98d89f6184a31f9d8b3259f7ca"
+   ]
+  },
+  {
+   "sourceId": "pmid-41076405",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "41076405",
+   "doi": "10.1016/j.eururo.2025.09.4154",
+   "canonicalCitation": "Rajan Z, Dardani C, Burrows K, et al. Association of Polygenic Risk Scores for Depression, Anxiety, and Neuroticism with Lower Urinary Tract Symptoms Among Women Eur Urol. 2026 Feb;89(2):174-181. doi: 10.1016/j.eururo.2025.09.4154. PMID 41076405.",
+   "citationVariants": [
+    "Rajan Z, Dardani C, Burrows K, et al. Association of Polygenic Risk Scores for Depression, Anxiety, and Neuroticism with Lower Urinary Tract Symptoms Among Women Eur Urol. 2026 Feb;89(2):174-181. doi: 10.1016/j.eururo.2025.09.4154. PMID 41076405."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41076405/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/41076405/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-mixed-urinary-incontinence-to-depressive-disorder",
+     "primaryId": "mixed-urinary-incontinence",
+     "targetId": "depressive-disorder",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "48cde0e8149f70a33a82344d912f83dace243f14b2cc677ed9be5681ed8621e3"
+   ]
+  },
+  {
+   "sourceId": "pmid-37230133",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "37230133",
+   "doi": "10.1055/s-0043-1764388",
+   "canonicalCitation": "Afonso PD, Britto SV, Spritzer CE, et al. Differential Diagnosis of Metatarsalgia Semin Musculoskelet Radiol. 2023 Jun;27(3):337-350. doi: 10.1055/s-0043-1764388. PMID 37230133.",
+   "citationVariants": [
+    "Afonso PD, Britto SV, Spritzer CE, et al. Differential Diagnosis of Metatarsalgia Semin Musculoskelet Radiol. 2023 Jun;27(3):337-350. doi: 10.1055/s-0043-1764388. PMID 37230133."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/37230133/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/37230133/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-morton-s-neuroma-to-metatarsalgia",
+     "primaryId": "morton-s-neuroma",
+     "targetId": "metatarsalgia",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "1644cda8ed9d781165c9510c1172520447362f2303e900a0fafb6efca479508f"
+   ]
+  },
+  {
+   "sourceId": "pmid-33168237",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "33168237",
+   "doi": "10.1016/j.crad.2020.10.006",
+   "canonicalCitation": "Mak MS, Chowdhury R, Johnson R. Morton's neuroma: review of anatomy, pathomechanism, and imaging Clin Radiol. 2021 Mar;76(3):235.e15-235.e23. doi: 10.1016/j.crad.2020.10.006. PMID 33168237.",
+   "citationVariants": [
+    "Mak MS, Chowdhury R, Johnson R. Morton's neuroma: review of anatomy, pathomechanism, and imaging Clin Radiol. 2021 Mar;76(3):235.e15-235.e23. doi: 10.1016/j.crad.2020.10.006. PMID 33168237."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33168237/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/33168237/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-morton-s-neuroma-to-metatarsalgia",
+     "primaryId": "morton-s-neuroma",
+     "targetId": "metatarsalgia",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "7326ad1067f32f770be1d741ba4a02e29e2a830ccf1760afa25d7b3efbac5c64"
+   ]
+  },
+  {
+   "sourceId": "pmid-33019802",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "33019802",
+   "doi": "10.1177/1071100720961069",
+   "canonicalCitation": "Faulkner A, Mayne A, Davies P, et al. Patient-Related Outcome Measures (PROMs) With Nonoperative and Operative Management of Morton's Neuroma Foot Ankle Int. 2021 Feb;42(2):151-156. doi: 10.1177/1071100720961069. PMID 33019802.",
+   "citationVariants": [
+    "Faulkner A, Mayne A, Davies P, et al. Patient-Related Outcome Measures (PROMs) With Nonoperative and Operative Management of Morton's Neuroma Foot Ankle Int. 2021 Feb;42(2):151-156. doi: 10.1177/1071100720961069. PMID 33019802."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33019802/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/33019802/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-morton-s-neuroma-to-metatarsalgia",
+     "primaryId": "morton-s-neuroma",
+     "targetId": "metatarsalgia",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "0d9081c807d23e9a425540d3646de728cc0583a455526d63ba89a8eeaa576497"
+   ]
+  },
+  {
+   "sourceId": "pmid-38905553",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "38905553",
+   "doi": null,
+   "canonicalCitation": "Kim MJ, Milliren A, Gerold DJ Jr. Salivary Gland Disorders: Rapid Evidence Review Am Fam Physician. 2024 Jun;109(6):550-559. PMID 38905553.",
+   "citationVariants": [
+    "Kim MJ, Milliren A, Gerold DJ Jr. Salivary Gland Disorders: Rapid Evidence Review Am Fam Physician. 2024 Jun;109(6):550-559. PMID 38905553."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38905553/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/38905553/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-mucocele-to-sialadenitis",
+     "primaryId": "mucocele",
+     "targetId": "sialadenitis",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "3b1b1938a88c2dbfed2ff3f5f6446eb44a30f558a1a910fbad7a4d1ce1630147"
+   ]
+  },
+  {
+   "sourceId": "pmid-24862601",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "24862601",
+   "doi": "10.1159/000358794",
+   "canonicalCitation": "Delli K, Spijkervet FK, Vissink A. Salivary gland diseases: infections, sialolithiasis and mucoceles Monogr Oral Sci. 2014;24:135-48. doi: 10.1159/000358794. PMID 24862601.",
+   "citationVariants": [
+    "Delli K, Spijkervet FK, Vissink A. Salivary gland diseases: infections, sialolithiasis and mucoceles Monogr Oral Sci. 2014;24:135-48. doi: 10.1159/000358794. PMID 24862601."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/24862601/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/24862601/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-mucocele-to-sialadenitis",
+     "primaryId": "mucocele",
+     "targetId": "sialadenitis",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "6d62227c4b5e5722e96f5538d97024fa18b2c0c8d88a9aed47ebedcc77dd9bc9"
+   ]
+  },
+  {
+   "sourceId": "pmid-39756581",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "39756581",
+   "doi": "10.1016/j.jormas.2025.102219",
+   "canonicalCitation": "Sharif AK, Ehsan H, Abri AW, et al. Surgical management of a large plunging ranula: A case report and review of diagnostic challenges J Stomatol Oral Maxillofac Surg. 2025 Jun;126(3S):102219. doi: 10.1016/j.jormas.2025.102219. PMID 39756581.",
+   "citationVariants": [
+    "Sharif AK, Ehsan H, Abri AW, et al. Surgical management of a large plunging ranula: A case report and review of diagnostic challenges J Stomatol Oral Maxillofac Surg. 2025 Jun;126(3S):102219. doi: 10.1016/j.jormas.2025.102219. PMID 39756581."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39756581/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/39756581/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-mucocele-to-sialadenitis",
+     "primaryId": "mucocele",
+     "targetId": "sialadenitis",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "78145b2b46392a9b2c074d32e69cad310691e07e9eef93f1ecf6c544d5ba1b6c"
+   ]
+  },
+  {
+   "sourceId": "pmid-41834593",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "41834593",
+   "doi": "10.14341/probl13642",
+   "canonicalCitation": "Salimkhanov RK, Eremkina AK, Bagirova HV, et al. [Multiple endocrine neoplasia syndrome type 1: analysis of data from 102 patients from 43 families in the population of the Russian Federation] Probl Endokrinol (Mosk). 2026 Mar 7;72(1):13-22. doi: 10.14341/probl13642. PMID 41834593.",
+   "citationVariants": [
+    "Salimkhanov RK, Eremkina AK, Bagirova HV, et al. [Multiple endocrine neoplasia syndrome type 1: analysis of data from 102 patients from 43 families in the population of the Russian Federation] Probl Endokrinol (Mosk). 2026 Mar 7;72(1):13-22. doi: 10.14341/probl13642. PMID 41834593."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41834593/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/41834593/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 3,
+   "liveUses": [
+    {
+     "relationshipId": "rel-multiple-endocrine-neoplasia-to-hyperparathyroidism",
+     "primaryId": "multiple-endocrine-neoplasia",
+     "targetId": "hyperparathyroidism",
+     "sourceIndex": 0
+    },
+    {
+     "relationshipId": "rel-multiple-endocrine-neoplasia-to-pituitary-neoplasm",
+     "primaryId": "multiple-endocrine-neoplasia",
+     "targetId": "pituitary-neoplasm",
+     "sourceIndex": 1
+    },
+    {
+     "relationshipId": "rel-multiple-endocrine-neoplasia-to-gastrinoma",
+     "primaryId": "multiple-endocrine-neoplasia",
+     "targetId": "gastrinoma",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "5e21321ec28ae32102526dab856b7f7cc112d71434398b3fc109f84f84bed760",
+    "7379d92dab76735b30e7239897946c4bf8f5073e531ef8107f02413f7e6df0c7",
+    "0330f6e5610be92b371b1efbf1a85682b270942d6a83a5b302f6a771da2796e7"
+   ]
+  },
+  {
+   "sourceId": "pmid-40607214",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "40607214",
+   "doi": "10.3389/fendo.2025.1562282",
+   "canonicalCitation": "Kim KJ, Yu MH, Hwang YA, et al. Epidemiology and clinical outcomes of clinically suspected multiple endocrine neoplasia type 1 in South Korea: a nationwide cohort study Front Endocrinol (Lausanne). 2025;16:1562282. doi: 10.3389/fendo.2025.1562282. PMID 40607214.",
+   "citationVariants": [
+    "Kim KJ, Yu MH, Hwang YA, et al. Epidemiology and clinical outcomes of clinically suspected multiple endocrine neoplasia type 1 in South Korea: a nationwide cohort study Front Endocrinol (Lausanne). 2025;16:1562282. doi: 10.3389/fendo.2025.1562282. PMID 40607214."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40607214/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/40607214/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 3,
+   "liveUses": [
+    {
+     "relationshipId": "rel-multiple-endocrine-neoplasia-to-hyperparathyroidism",
+     "primaryId": "multiple-endocrine-neoplasia",
+     "targetId": "hyperparathyroidism",
+     "sourceIndex": 1
+    },
+    {
+     "relationshipId": "rel-multiple-endocrine-neoplasia-to-pituitary-neoplasm",
+     "primaryId": "multiple-endocrine-neoplasia",
+     "targetId": "pituitary-neoplasm",
+     "sourceIndex": 2
+    },
+    {
+     "relationshipId": "rel-multiple-endocrine-neoplasia-to-insulinoma",
+     "primaryId": "multiple-endocrine-neoplasia",
+     "targetId": "insulinoma",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "3dacf4ae7e01d10f1bc046e5c04bbddb800a9c552d28820b165b80f0224b2747",
+    "e7dd37e7830650516634be7b22e208a7b5f703cce3dfd4e92c4dccceec50ae21",
+    "f6e04d17eca10c1bda6ebbebed5c78998996ffedd53b6ad2f604fbe46777474e"
+   ]
+  },
+  {
+   "sourceId": "pmid-40277809",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "40277809",
+   "doi": "10.3390/diseases13040098",
+   "canonicalCitation": "Gheorghe AM, Nistor C, Florescu AF, et al. An Analysis of Primary Hyperparathyroidism in Individuals Diagnosed with Multiple Endocrine Neoplasia Type 2 Diseases. 2025 Mar 27;13(4). doi: 10.3390/diseases13040098. PMID 40277809.",
+   "citationVariants": [
+    "Gheorghe AM, Nistor C, Florescu AF, et al. An Analysis of Primary Hyperparathyroidism in Individuals Diagnosed with Multiple Endocrine Neoplasia Type 2 Diseases. 2025 Mar 27;13(4). doi: 10.3390/diseases13040098. PMID 40277809."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40277809/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/40277809/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-multiple-endocrine-neoplasia-to-hyperparathyroidism",
+     "primaryId": "multiple-endocrine-neoplasia",
+     "targetId": "hyperparathyroidism",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "75a0043e6837fca6a8825012c0bad7ba3d11e697525ce43972386029d5ef5ac2"
+   ]
+  },
+  {
+   "sourceId": "pmid-40921719",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "40921719",
+   "doi": "10.1210/clinem/dgaf497",
+   "canonicalCitation": "Valdés N, Romero-Lluch AR, Diego E, et al. Risk Factors for Pituitary Adenoma Development in Multiple Endocrine Neoplasia Type 1: A Nationwide Study of 240 Cases J Clin Endocrinol Metab. 2026 Feb 20;111(3):e811-e820. doi: 10.1210/clinem/dgaf497. PMID 40921719.",
+   "citationVariants": [
+    "Valdés N, Romero-Lluch AR, Diego E, et al. Risk Factors for Pituitary Adenoma Development in Multiple Endocrine Neoplasia Type 1: A Nationwide Study of 240 Cases J Clin Endocrinol Metab. 2026 Feb 20;111(3):e811-e820. doi: 10.1210/clinem/dgaf497. PMID 40921719."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40921719/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/40921719/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-multiple-endocrine-neoplasia-to-pituitary-neoplasm",
+     "primaryId": "multiple-endocrine-neoplasia",
+     "targetId": "pituitary-neoplasm",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "9f811113be5b4df6e18f9706a3b4adb40523d4983eff50493c939a9196a32413"
+   ]
+  },
+  {
+   "sourceId": "pmid-28605116",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "28605116",
+   "doi": "10.1111/cen.13386",
+   "canonicalCitation": "Mucha L, Leidig-Bruckner G, Frank-Raue K, et al. Phaeochromocytoma in multiple endocrine neoplasia type 2: RET codon-specific penetrance and changes in management during the last four decades Clin Endocrinol (Oxf). 2017 Oct;87(4):320-326. doi: 10.1111/cen.13386. PMID 28605116.",
+   "citationVariants": [
+    "Mucha L, Leidig-Bruckner G, Frank-Raue K, et al. Phaeochromocytoma in multiple endocrine neoplasia type 2: RET codon-specific penetrance and changes in management during the last four decades Clin Endocrinol (Oxf). 2017 Oct;87(4):320-326. doi: 10.1111/cen.13386. PMID 28605116."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/28605116/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/28605116/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 2,
+   "liveUses": [
+    {
+     "relationshipId": "rel-multiple-endocrine-neoplasia-to-pheochromocytoma",
+     "primaryId": "multiple-endocrine-neoplasia",
+     "targetId": "pheochromocytoma",
+     "sourceIndex": 0
+    },
+    {
+     "relationshipId": "rel-multiple-endocrine-neoplasia-to-thyroid-cancer",
+     "primaryId": "multiple-endocrine-neoplasia",
+     "targetId": "thyroid-cancer",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "7356bea2943800cb72983070524dbe2a039a6dde328647cf7e3d4e24b4cbc0c0",
+    "0c73856670f051430d78f08621c37ae3a8f838a65cd8b79cd9611d0a5a814916"
+   ]
+  },
+  {
+   "sourceId": "pmid-32388798",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "32388798",
+   "doi": "10.1007/s12020-020-02332-2",
+   "canonicalCitation": "Amodru V, Taieb D, Guerin C, et al. MEN2-related pheochromocytoma: current state of knowledge, specific characteristics in MEN2B, and perspectives Endocrine. 2020 Sep;69(3):496-503. doi: 10.1007/s12020-020-02332-2. PMID 32388798.",
+   "citationVariants": [
+    "Amodru V, Taieb D, Guerin C, et al. MEN2-related pheochromocytoma: current state of knowledge, specific characteristics in MEN2B, and perspectives Endocrine. 2020 Sep;69(3):496-503. doi: 10.1007/s12020-020-02332-2. PMID 32388798."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/32388798/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/32388798/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-multiple-endocrine-neoplasia-to-pheochromocytoma",
+     "primaryId": "multiple-endocrine-neoplasia",
+     "targetId": "pheochromocytoma",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "9520e76f26214d899a7d11f5089e1e1f78ce45d8c93d5f51b209431d2e5b73c6"
+   ]
+  },
+  {
+   "sourceId": "pmid-42272368",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "42272368",
+   "doi": null,
+   "canonicalCitation": "Chami A, Romanet P, Mohammedi F, et al. De novo mutation of the RET proto-oncogene revealing multiple endocrine neoplasia type 2A: a sporadic case from Western Algeria Gulf J Oncolog. 2025 Sep;1(49):35-39. PMID 42272368.",
+   "citationVariants": [
+    "Chami A, Romanet P, Mohammedi F, et al. De novo mutation of the RET proto-oncogene revealing multiple endocrine neoplasia type 2A: a sporadic case from Western Algeria Gulf J Oncolog. 2025 Sep;1(49):35-39. PMID 42272368."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42272368/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/42272368/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 2,
+   "liveUses": [
+    {
+     "relationshipId": "rel-multiple-endocrine-neoplasia-to-pheochromocytoma",
+     "primaryId": "multiple-endocrine-neoplasia",
+     "targetId": "pheochromocytoma",
+     "sourceIndex": 2
+    },
+    {
+     "relationshipId": "rel-multiple-endocrine-neoplasia-to-thyroid-cancer",
+     "primaryId": "multiple-endocrine-neoplasia",
+     "targetId": "thyroid-cancer",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "1ae431ad3f3391eb1f32b1bda39063fe8d9bcce6e5278c1671782fcd68d8220e",
+    "c0786db8be67803437b1c769d2af36da40ae1e4621caa53abd396a541b0a5f74"
+   ]
+  },
+  {
+   "sourceId": "pmid-39963300",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "39963300",
+   "doi": "10.1210/jcemcr/luaf002",
+   "canonicalCitation": "Yip AT, Kim TH, Peluso EM, et al. Medullary Thyroid Carcinoma and Clinical Outcomes in Heterozygous Carriers of the RET K666N Germline Pathogenic Variant JCEM Case Rep. 2025 Mar;3(3):luaf002. doi: 10.1210/jcemcr/luaf002. PMID 39963300.",
+   "citationVariants": [
+    "Yip AT, Kim TH, Peluso EM, et al. Medullary Thyroid Carcinoma and Clinical Outcomes in Heterozygous Carriers of the RET K666N Germline Pathogenic Variant JCEM Case Rep. 2025 Mar;3(3):luaf002. doi: 10.1210/jcemcr/luaf002. PMID 39963300."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39963300/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/39963300/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-multiple-endocrine-neoplasia-to-thyroid-cancer",
+     "primaryId": "multiple-endocrine-neoplasia",
+     "targetId": "thyroid-cancer",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "beb3f37b70cd180d6781e47d8b6527761758abea586647dbe0e795a0c9366838"
+   ]
+  },
+  {
+   "sourceId": "pmid-33649917",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "33649917",
+   "doi": "10.1007/s00268-021-06005-7",
+   "canonicalCitation": "Santucci N, Gaujoux S, Binquet C, et al. Pancreatoduodenectomy for Neuroendocrine Tumors in Patients with Multiple Endocrine Neoplasia Type 1: An AFCE (Association Francophone de Chirurgie Endocrinienne) and GTE (Groupe d'étude des Tumeurs Endocrines) Study World J Surg. 2021 Jun;45(6):1794-1802. doi: 10.1007/s00268-021-06005-7. PMID 33649917.",
+   "citationVariants": [
+    "Santucci N, Gaujoux S, Binquet C, et al. Pancreatoduodenectomy for Neuroendocrine Tumors in Patients with Multiple Endocrine Neoplasia Type 1: An AFCE (Association Francophone de Chirurgie Endocrinienne) and GTE (Groupe d'étude des Tumeurs Endocrines) Study World J Surg. 2021 Jun;45(6):1794-1802. doi: 10.1007/s00268-021-06005-7. PMID 33649917."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33649917/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/33649917/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 2,
+   "liveUses": [
+    {
+     "relationshipId": "rel-multiple-endocrine-neoplasia-to-gastrinoma",
+     "primaryId": "multiple-endocrine-neoplasia",
+     "targetId": "gastrinoma",
+     "sourceIndex": 0
+    },
+    {
+     "relationshipId": "rel-multiple-endocrine-neoplasia-to-insulinoma",
+     "primaryId": "multiple-endocrine-neoplasia",
+     "targetId": "insulinoma",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "dac38a17d39cccf7cc20a14ecf1975a1ce541baa8620fe2a9378b65ef870d460",
+    "748591f6267c63a4eea1acb561b5a510c2913c06d064bc70eba06ccbaefdde1e"
+   ]
+  },
+  {
+   "sourceId": "pmid-33597314",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "33597314",
+   "doi": null,
+   "canonicalCitation": "Ali D, Divilly P, Prichard R, et al. Primary hyperparathyroidism and Zollinger Ellison syndrome during pregnancy: a case report Endocrinol Diabetes Metab Case Rep. 2021 Jan 1;2021. PMID 33597314.",
+   "citationVariants": [
+    "Ali D, Divilly P, Prichard R, et al. Primary hyperparathyroidism and Zollinger Ellison syndrome during pregnancy: a case report Endocrinol Diabetes Metab Case Rep. 2021 Jan 1;2021. PMID 33597314."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33597314/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/33597314/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-multiple-endocrine-neoplasia-to-gastrinoma",
+     "primaryId": "multiple-endocrine-neoplasia",
+     "targetId": "gastrinoma",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "d6820d6f7fe0939a695a960cd820a3a3794db5d05db2c167f8b0a4e19337f83e"
+   ]
+  },
+  {
+   "sourceId": "pmid-32352164",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "32352164",
+   "doi": "10.1002/bjs.11632",
+   "canonicalCitation": "van Beek DJ, Nell S, Verkooijen HM, et al. Surgery for multiple endocrine neoplasia type 1-related insulinoma: long-term outcomes in a large international cohort Br J Surg. 2020 Oct;107(11):1489-1499. doi: 10.1002/bjs.11632. PMID 32352164.",
+   "citationVariants": [
+    "van Beek DJ, Nell S, Verkooijen HM, et al. Surgery for multiple endocrine neoplasia type 1-related insulinoma: long-term outcomes in a large international cohort Br J Surg. 2020 Oct;107(11):1489-1499. doi: 10.1002/bjs.11632. PMID 32352164."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/32352164/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/32352164/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-multiple-endocrine-neoplasia-to-insulinoma",
+     "primaryId": "multiple-endocrine-neoplasia",
+     "targetId": "insulinoma",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "a8dc7062925477b9b78843be6d3fe174b88aad6e17ffa5976f4ffb47b6b0aa39"
    ]
   }
  ],

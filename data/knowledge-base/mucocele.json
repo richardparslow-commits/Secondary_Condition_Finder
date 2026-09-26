@@ -2,8 +2,78 @@
   "id": "mucocele",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review oral, dental, maxillofacial, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 61 (2026-09-26): one ASSOCIATION_ONLY draft mapping pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: the edge asserts association only (etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true, mechanismCategory MECHANICAL_OR_COMPRESSIVE). The evidence base is a single rapid-evidence-review two-link chain plus definitional review material, so individual claims require sialographic and clinical confirmation with stone, stricture, and infectious exclusion, and review by a qualified medical professional.",
+    "Pathway and duplicate-scope screens: no -> oral-candidiasis edge (WITHHELD - zero located condition-specific evidence; candidal-lesion literature for other oral identities is not transferable per ME-29); no -> dysphagia edge (WITHHELD - the located ranula case material documents appearance impact, mastication difficulty, and skull-base extension without dysphagia quantification; the giant diving ranula case reports no dysphagia); no -> sialolithiasis edge (WITHHELD - direction guard: retention cysts result from obstruction in the located framing, so a forward obstruction-from-mucocele claim to stones was not authored); no -> salivary-gland-neoplasm edge (no catalog identity; the review's neoplasm material is differential-diagnosis context only); no -> halitosis or burning-mouth edge (zero located quantification); reverse-direction counterweight recorded on the authored edge - ranulas are documented to arise from ductal obstruction or trauma (PMID 39756581), so the chain's direction is carried openly as unsettled."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 61 (2026-09-26): one bounded association edge authored - mucocele to sialadenitis (rank 1) - classified ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, and hypothesizedOnly:true. The proposition rests on the two-link review chain in the salivary-gland rapid evidence review (mucoceles among obstructive causes; obstructive etiologies of sialadenitis; PMID 38905553) with the definitional monograph review (PMID 24862601) and the reverse-direction ranula case framing (PMID 39756581) carried on the edge.",
+    "Counter-evidence and caveat screens recorded 2026-09-26: (i) evidence class - the chain is assembled from statements in a single rapid evidence review with no cohort quantifying sialadenitis incidence in mucocele patients; (ii) direction tension - the located case literature predominantly frames ductal obstruction and trauma as causes of mucoceles and ranulas rather than consequences, recorded explicitly on the edge; (iii) subtype heterogeneity - extravasation phenomena, retention cysts, and ranulas differ in mechanism and only retention-type lesions plausibly obstruct outflow; (iv) competing obstruction causes - sialolithiasis accounts for up to half of salivary gland disorders and dominates obstructive sialadenitis; (v) withheld propositions - candidiasis and dysphagia propositions were withheld for zero located condition-specific quantification."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "sialadenitis",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Mucocele documents salivary obstruction as a route to sialadenitis at evidence-review level: the rapid evidence review of salivary gland disorders states that sialadenitis can be acute or chronic and caused by bacterial, viral, and obstructive etiologies, and that obstruction is caused by trauma, stenosis, and mucoceles (PMID 38905553), while the oral-disease monograph review classifies mucoceles into mucus extravasation phenomena, mucus retention cysts, and ranulas arising from extravasation of saliva into surrounding soft tissues or retention within the duct (PMID 24862601); the relationship is recorded as documented two-link review-level chain only.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: the located chain runs mucocele to obstruction to obstructive sialadenitis without any cohort quantifying sialadenitis incidence in mucocele patients, and the prominent clinical framing runs the opposite way (ranulas arising from ductal obstruction or trauma), so any individual sialadenitis attribution requires imaging and clinical exclusion of stone, stricture, and infectious causes."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MECHANICAL_OR_COMPRESSIVE",
+        "primaryVector": "A mucus retention cyst or extravasation pool obstructs salivary outflow so stasis accumulates upstream and obstructive sialadenitis results, the obstructive-stasis route assembled from the review's stated links (mucoceles among obstructive causes; obstructive etiology of sialadenitis), but whether this route produced any individual sialadenitis remains hypothesized until sialographic and clinical records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at single rapid-evidence-review chain class only: no located study quantifies sialadenitis incidence in mucocele patients, the causal chain is assembled from two statements in one review rather than directly studied, and the reverse framing (ductal obstruction and trauma causing mucoceles and ranulas) predominates in the located case literature.",
+        "evidenceGaps": "No cohort or case series quantifies sialadenitis incidence in mucocele patients; the two-link chain is inferred from review statements rather than directly demonstrated; the reverse-direction framing (obstruction and trauma causing mucoceles) predominates in the located material; the retention-versus-extravasation distinction changes the mechanism; and sialolithiasis, stricture, and sialectasis are competing obstruction causes in the same glands.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "sialolithiasis with obstructive sialadenitis (the dominant obstructive pathway; the published salivary-stone scope)",
+          "ductal striction and trauma-related obstruction",
+          "bacterial and viral sialadenitis independent of obstruction",
+          "sialadenosis and systemic salivary enlargement",
+          "ranula arising secondarily to ductal obstruction (the documented reverse-direction framing, PMID 39756581)"
+        ]
+      },
+      "evidenceGaps": [
+        "No cohort or case series quantifies sialadenitis incidence in mucocele patients; the two-link chain is inferred from review statements rather than directly demonstrated; the reverse-direction framing (obstruction and trauma causing mucoceles) predominates in the located material; the retention-versus-extravasation distinction changes the mechanism; and sialolithiasis, stricture, and sialectasis are competing obstruction causes in the same glands."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY at single review-chain class with the direction and evidence-class limits carried openly: the rapid evidence review states obstruction is caused by trauma, stenosis, and mucoceles and that sialadenitis has obstructive etiologies (PMID 38905553), and the monograph review defines mucocele subtypes as extravasation phenomena, retention cysts, and ranulas (PMID 24862601); because no cohort quantifies sialadenitis incidence in mucocele patients and the reverse framing predominates in case material (ranula arising from ductal obstruction or trauma; PMID 39756581), the conservative standard keeps the edge at association only and routes individual claims through sialography and clinical assessment with stone, stricture, and infectious exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Kim MJ, Milliren A, Gerold DJ Jr. Salivary Gland Disorders: Rapid Evidence Review Am Fam Physician. 2024 Jun;109(6):550-559. PMID 38905553.",
+          "note": "Rapid evidence review of salivary gland disorders (Am Fam Physician, 2024): sialadenitis caused by bacterial, viral, and obstructive etiologies; obstruction caused by trauma, stenosis, and mucoceles; supports the bounded two-link obstructive chain only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38905553/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 38905553; review framing (sialadenitis etiologies and causes of obstruction)"
+        },
+        {
+          "citation": "Delli K, Spijkervet FK, Vissink A. Salivary gland diseases: infections, sialolithiasis and mucoceles Monogr Oral Sci. 2014;24:135-48. doi: 10.1159/000358794. PMID 24862601.",
+          "note": "Monograph review (Monogr Oral Sci, 2014): mucoceles differentiated into mucus extravasation phenomenon, mucus retention cyst, and ranula; resulting from extravasation of saliva into soft tissues or retention within the duct; supports the bounded pathway definition only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/24862601/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 24862601; review framing (mucocele classification and pathogenesis)"
+        },
+        {
+          "citation": "Sharif AK, Ehsan H, Abri AW, et al. Surgical management of a large plunging ranula: A case report and review of diagnostic challenges J Stomatol Oral Maxillofac Surg. 2025 Jun;126(3S):102219. doi: 10.1016/j.jormas.2025.102219. PMID 39756581.",
+          "note": "Case report and review (J Stomatol Oral Maxillofac Surg, 2025): ranulas arise from the sublingual gland due to ductal obstruction or trauma; carried as the documented reverse-direction counterweight recording that obstruction is framed upstream of mucocele in the case literature.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39756581/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 39756581; introduction (ranula etiology)"
+        }
+      ]
+    }
+  ]
 }

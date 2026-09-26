@@ -2,8 +2,196 @@
   "id": "miscarriage",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review infectious, immunologic, and post-infectious pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 61 (2026-09-26): three ASSOCIATION_ONLY draft mappings pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: all three edges assert association only (etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true; mechanismCategory PSYCHOPHYSIOLOGICAL for the mood edges and POST_SURGICAL_OR_TREATMENT for the infertility edge). The evidence base is population-registry and prospective-cohort class plus one treatment cohort, so individual claims require dated psychiatric, hysteroscopic, or endocrine review with competing-cause exclusion, and review by a qualified medical professional.",
+    "Pathway and duplicate-scope screens: no -> self-harm edge (WITHHELD - no catalog identity; the anchor cohort's strongest finding, self-harm OR 2.30 at 6 months persisting to three years, is recorded as context on the depressive-disorder edge only); no -> postpartum-depression edge (no catalog identity, and the Australian cohort explicitly found no postpartum effect in a subsequent birth); no -> recurrent-pregnancy-loss or spontaneous-abortion edge as second source identity (identity-duplication: the catalog alias set for this identity already covers spontaneous abortion); no -> ectopic-pregnancy, preterm-birth, preeclampsia, gestational-diabetes, or abortion edge (no catalog identities - the 2,546-patient cohort's obstetric outcome list is recorded as context); no -> insomnia or sexual-dysfunction edge (zero located condition-specific quantification); direction guard - the nested case-control cohort (PMID 33685488) runs anxiety and depression forward to recurrent loss and the nationwide cohort (PMID 42727502) runs psychiatric comorbidity to reduced live birth, so no mood-to-loss inverse or reverse edges were authored from this identity's window; no evidence recycled from the female-infertility window's own sources (ME-29 scope rule)."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 61 (2026-09-26): three bounded association edges authored - miscarriage to depressive-disorder (rank 1), to anxiety-disorder (rank 2), and to female-infertility (rank 3) - classified ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, and hypothesizedOnly:true. The depressive proposition rests on the 1.2-million-woman England linked-records cohort (PMID 42314414), the 203-woman QoL trajectory cohort (PMID 41232802), and the 2,558-woman nested case-control counterweight (PMID 33685488). The anxiety proposition rests on the same registry cohort (PMID 42314414), the 5,465-woman SCOPE cohort (PMID 25565431), and the 584-woman Australian cohort (PMID 24733508). The infertility proposition rests on the 2,546-patient post-curettage Asherman cohort (PMID 33462894) and the Taiwan nationwide live-birth cohort (PMID 42727502).",
+    "Counter-evidence and caveat screens recorded 2026-09-26: (i) direction tension - the nested case-control anchor documents anxiety and depression after a first miscarriage predicting subsequent recurrent pregnancy loss (OR interaction 1.91), recorded on the depression edge as a reverse-direction counterweight; (ii) treatment mediation - the infertility edge is explicitly POST_SURGICAL_OR_TREATMENT: the documented pathway is uterine instrumentation causing Asherman syndrome (1.6 percent incidence, 4.6-fold risk with 3 or more procedures), not the loss itself; (iii) outcome-definition heterogeneity - the Australian cohort bundles miscarriage with termination, ectopic pregnancy, and stillbirth; (iv) selection limits - subsequent-pregnancy cohorts condition on a later conception and the Asherman ascertainment was symptom-triggered; (v) sibling-window discipline - the female-infertility and PTSD windows keep their own evidence and none is recycled (ME-29)."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "depressive-disorder",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Miscarriage documents subsequent depressive disorder at population-registry and prospective-cohort level: the England linked-records cohort of 1.2 million first recorded pregnancies found miscarriage associated with higher adjusted odds of depression at 6 months (OR 1.50) with the self-harm association persisting up to three years (PMID 42314414), the 203-woman tiered-care cohort found recurrent loss leaving women 0.12 EQ-5D utility points worse off for up to 6 months with deficits consistently arising from the anxiety/depression dimension (PMID 41232802), and the nested case-control study of 2,558 women documented high depression symptom prevalence after a first miscarriage (PMID 33685488); the relationship is recorded as documented prospective association only.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: the anchors are observational with selection-on-observables designs, and the nested case-control anchor runs depression and anxiety forward to recurrent pregnancy loss rather than the reverse, so whether any individual depressive episode followed a miscarriage requires individual longitudinal clinical review with prior-psychiatric and reverse-direction exclusion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "PSYCHOPHYSIOLOGICAL",
+        "primaryVector": "Pregnancy loss as an acute grief and fertility shock drives rumination, lost self-efficacy, and social withdrawal so major depressive symptoms emerge and persist, the grief-shock route consistent with the 6-month odds elevation and the utility decrements concentrated in the anxiety/depression dimension, but whether this route produced any individual depression remains hypothesized until longitudinal symptom records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at population-registry plus prospective-cohort class only: the 1.2-million-woman design relies on selection on observables with registries unable to capture prior unrecorded mood disorder, the QoL cohort is 203 women at one center with 71 percent questionnaire completion, and the nested case-control anchor measures mood before recurrent loss rather than after it.",
+        "evidenceGaps": "No randomized evidence establishes direction; the nested case-control anchor documents mood symptoms predicting later recurrent loss (OR interaction 1.91) rather than the reverse; prior psychiatric history is incompletely captured in registry data; the self-harm signal is the strongest finding in the anchor cohort yet has no catalog identity; and bereavement, fertility-treatment stress, and relationship strain are co-determinants.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "prior depressive disorder with recurrence (excluded per-outcome in the anchor cohort but incompletely captured)",
+          "grief reaction within expected bereavement norms",
+          "postpartum depression (no catalog identity; the located subsequent-pregnancy cohort found no postpartum effect)",
+          "hormonal and thyroid shifts after pregnancy loss",
+          "infertility distress from the companion edge pathway"
+        ]
+      },
+      "evidenceGaps": [
+        "No randomized evidence establishes direction; the nested case-control anchor documents mood symptoms predicting later recurrent loss (OR interaction 1.91) rather than the reverse; prior psychiatric history is incompletely captured in registry data; the self-harm signal is the strongest finding in the anchor cohort yet has no catalog identity; and bereavement, fertility-treatment stress, and relationship strain are co-determinants."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY on the population-registry precedent with the reverse-direction limit carried openly: the England linked-records cohort of 1.2 million first pregnancies found miscarriage associated with depression at 6 months (OR 1.50) and self-harm persisting to three years (PMID 42314414), and the 203-woman cohort found recurrent loss leaving women 0.12 utility points worse off with anxiety/depression-dimension deficits (PMID 41232802); because the nested case-control anchor documents mood predicting later recurrent loss rather than the reverse (PMID 33685488), the conservative standard keeps the edge at association only, records the direction tension openly, and routes individual claims through longitudinal clinical review with prior-psychiatric and bereavement-context exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Bolbocean C, Coomarasamy A, Hippisley-Cox J, et al. Miscarriage, self-harm, and psychiatric disorders in first-time pregnant women: Evidence from a linkage study Soc Sci Med. 2026 Sep;404:119481. doi: 10.1016/j.socscimed.2026.119481. PMID 42314414.",
+          "note": "England linked health-registry cohort of 1.2 million first recorded pregnancies (2004-2017): miscarriage associated with higher adjusted odds of self-harm at 6 months (OR 2.30), depression at 6 months (OR 1.50), and anxiety at 6 months (OR 1.25), with self-harm persisting up to three years (OR 1.60); deprivation-stratified; supports the bounded prospective association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42314414/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 42314414; results (adjusted odds of self-harm, depression, and anxiety after miscarriage)"
+        },
+        {
+          "citation": "Bolbocean C, Coomarasamy A, Fitzsimmons L, et al. The Compounding Burden of Pregnancy Loss: A Longitudinal Analysis of Quality-of-Life Trajectories After Miscarriage Value Health. 2026 Mar;29(3):419-428. doi: 10.1016/j.jval.2025.10.013. PMID 41232802.",
+          "note": "Prospective tiered-care cohort of 203 women (EQ-5D-5L at 4 time points, 71% completion): recurrent loss (3+ miscarriages) carried additional utility decrements of -0.11 at 3 months and -0.12 at 6 months exceeding MCID; deficits consistently arose from anxiety/depression; a second miscarriage triggered a roughly 30 percentage-point reduction in optimal anxiety/depression; supports the bounded QoL-association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41232802/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 41232802; results (utility trajectories and anxiety/depression dimension deficits)"
+        },
+        {
+          "citation": "Wang Y, Meng Z, Pei J, et al. Anxiety and depression are risk factors for recurrent pregnancy loss: a nested case-control study Health Qual Life Outcomes. 2021 Mar 8;19(1):78. doi: 10.1186/s12955-021-01703-1. PMID 33685488.",
+          "note": "Nested case-control study of 2,558 women in the Miscarriage Woman Cohort: depression and anxiety symptoms measured after the first miscarriage predicted subsequent recurrent pregnancy loss (multiplicative interaction OR 1.91); carried as the documented reverse-direction counterweight recording that mood symptoms in this literature run forward to loss, not only loss to mood.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33685488/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 33685488; results (mood symptoms after first miscarriage and subsequent RPL odds)"
+        }
+      ]
+    },
+    {
+      "conditionId": "anxiety-disorder",
+      "rank": 2,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Miscarriage documents subsequent anxiety symptoms at population-registry and prospective-cohort level: the England linked-records cohort of 1.2 million first recorded pregnancies found miscarriage associated with higher adjusted odds of anxiety at 6 months (OR 1.25) (PMID 42314414), the SCOPE prospective cohort of 5,465 healthy nulliparous women found one previous miscarriage associated with increased state-trait anxiety (adjusted mean difference 1.85, 95% CI 0.61-3.09), perceived stress (0.76, 0.48-1.03), and limiting/resting behaviour in a subsequent pregnancy (PMID 25565431), and the Australian longitudinal cohort of 584 women found previous pregnancy loss associated with excessive worry (AOR 2.01) and sadness or low mood (AOR 1.75) during a subsequent pregnancy (PMID 24733508); the relationship is recorded as documented prospective association only.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: the anchors are observational cohorts where the subsequent-pregnancy studies measure vulnerability in a later pregnancy rather than an anxiety disorder diagnosis, so whether any individual anxiety disorder followed a miscarriage requires individual psychiatric attribution with prior-anxiety, conception-context, and reverse-direction exclusion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "PSYCHOPHYSIOLOGICAL",
+        "primaryVector": "Pregnancy loss drives threat hypervigilance about future pregnancy outcomes so worry, somatic arousal, and avoidance behaviours consolidate and anxiety symptoms persist, the hypervigilance route consistent with the elevated state-trait anxiety and excessive-worry signals in subsequent pregnancies and the 6-month odds elevation after loss, but whether this route produced any individual anxiety disorder remains hypothesized until longitudinal symptom records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at population-registry plus prospective-cohort class only: the registry design cannot capture unrecorded prior anxiety, the SCOPE and Australian cohorts measure symptom scales in a subsequent pregnancy rather than incident anxiety disorder, and the Australian cohort's pregnancy-loss definition bundles miscarriage with termination, ectopic pregnancy, and stillbirth.",
+        "evidenceGaps": "No located study reports incident anxiety-disorder diagnoses after miscarriage using structured psychiatric interviews; the subsequent-pregnancy cohorts condition on a later conception, selecting resilient subgroups; pregnancy loss definition heterogeneity (miscarriage versus all loss types) limits attribution; and fertility-treatment exposure, prior loss count, and social support are unmodeled determinants.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "pre-existing anxiety disorder with recurrence",
+          "normal pregnancy-related worry and hypervigilance after loss",
+          "post-traumatic stress symptoms after traumatic delivery or loss (the published PTSD window)",
+          "thyroid dysfunction after pregnancy",
+          "depressive disorder with anxious distress (the companion edge)"
+        ]
+      },
+      "evidenceGaps": [
+        "No located study reports incident anxiety-disorder diagnoses after miscarriage using structured psychiatric interviews; the subsequent-pregnancy cohorts condition on a later conception, selecting resilient subgroups; pregnancy loss definition heterogeneity (miscarriage versus all loss types) limits attribution; and fertility-treatment exposure, prior loss count, and social support are unmodeled determinants."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY on the subsequent-pregnancy-vulnerability precedent with the outcome-definition limit carried openly: the England cohort of 1.2 million first pregnancies found miscarriage associated with anxiety at 6 months (OR 1.25) (PMID 42314414), the SCOPE cohort of 5,465 nulliparous women found one prior miscarriage associated with adjusted mean anxiety difference 1.85 and stress 0.76 (PMID 25565431), and the Australian cohort of 584 women found previous pregnancy loss associated with excessive worry (AOR 2.01) (PMID 24733508); because the subsequent-pregnancy anchors measure symptom scales in later conceptions rather than incident anxiety disorder and the loss definitions bundle miscarriage with other loss types, the conservative standard keeps the edge at association only and routes individual claims through structured psychiatric assessment with prior-anxiety and conception-context exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Bolbocean C, Coomarasamy A, Hippisley-Cox J, et al. Miscarriage, self-harm, and psychiatric disorders in first-time pregnant women: Evidence from a linkage study Soc Sci Med. 2026 Sep;404:119481. doi: 10.1016/j.socscimed.2026.119481. PMID 42314414.",
+          "note": "England linked health-registry cohort of 1.2 million first recorded pregnancies: miscarriage associated with higher adjusted odds of anxiety at 6 months (OR 1.25, 1.25 for anxiety per the reported model) alongside depression and self-harm; supports the bounded prospective association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42314414/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 42314414; results (adjusted odds of anxiety after miscarriage)"
+        },
+        {
+          "citation": "McCarthy FP, Moss-Morris R, Khashan AS, et al. Previous pregnancy loss has an adverse impact on distress and behaviour in subsequent pregnancy BJOG. 2015 Dec;122(13):1757-64. doi: 10.1111/1471-0528.13233. PMID 25565431.",
+          "note": "SCOPE prospective cohort of 5,465 healthy nulliparous women: one previous miscarriage associated with increased anxiety (adjusted mean difference 1.85, 0.61-3.09), perceived stress (0.76, 0.48-1.03), depression (aOR 1.26), and limiting/resting behaviour in a subsequent pregnancy; two miscarriages carried more depression; supports the bounded vulnerability association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/25565431/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 25565431; results (behavioural and mood measures by prior miscarriage count)"
+        },
+        {
+          "citation": "Chojenta C, Harris S, Reilly N, et al. History of pregnancy loss increases the risk of mental health problems in subsequent pregnancies but not in the postpartum PLoS One. 2014;9(4):e95038. doi: 10.1371/journal.pone.0095038. PMID 24733508.",
+          "note": "Australian Longitudinal Study on Women's Health sub-cohort of 584 women: previous pregnancy loss (miscarriage, termination for medical reasons, ectopic pregnancy, stillbirth) associated with sadness or low mood (AOR 1.75) and excessive worry (AOR 2.01) during a subsequent pregnancy but not postpartum; supports the bounded subsequent-pregnancy association with the mixed-loss definition recorded.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/24733508/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 24733508; results (mental health outcomes in subsequent pregnancy versus postpartum)"
+        }
+      ]
+    },
+    {
+      "conditionId": "female-infertility",
+      "rank": 3,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Miscarriage and its treatment document subsequent intrauterine-adhesion infertility at cohort level: the 2,546-patient study of post-abortion uterine evacuation and curettage found Asherman syndrome incidence 1.6 percent (43/2,546) with history of three or more abortions increasing risk 4.6 times and the symptom-based criteria including infertility, oligo-amenorrhea, and recurrent pregnancy loss (PMID 33462894), and the Taiwan nationwide cohort of recurrent-pregnancy-loss women found mental-disorder comorbidity associated with reduced subsequent live birth (adjusted HR 0.52) (PMID 42727502); the relationship is recorded as documented treatment-mediated and cohort-level association only.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: the infertility pathway is mediated by uterine instrumentation rather than the miscarriage itself, and the live-birth cohort attributes reduced fecundity jointly to psychiatric comorbidity, age, and socioeconomic factors, so any individual infertility claim requires hysteroscopic and endocrine attribution with instrumentation, adhesion, and partner-factor exclusion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "POST_SURGICAL_OR_TREATMENT",
+        "primaryVector": "Uterine curettage and evacuation after pregnancy loss injures the endometrium so intrauterine adhesions form, cavity architecture distorts, and implantation fails so infertility results, the Asherman route directly documented by the 1.6 percent post-curettage incidence and the 4.6-fold risk increase with repeated procedures, but whether this route produced any individual infertility remains hypothesized until hysteroscopic and endometrial records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at single-center cohort plus nationwide-claims class only: the Asherman incidence rests on symptom-triggered hysteroscopy in 177 of 2,546 patients rather than universal screening, the live-birth cohort is claims-based with psychiatric comorbidity entangled with age and income, and modern manual vacuum aspiration and office hysteroscopy practice may carry different adhesion rates than sharp curettage-era data.",
+        "evidenceGaps": "No located study reports infertility incidence after miscarriage managed expectantly or medically versus surgically; the Asherman ascertainment was symptom-triggered and may undercount; the live-birth cohort's reduced fecundity signal mixes psychiatric, age, and socioeconomic pathways; and endometritis, retained products, and partner factors are unmodeled determinants of any individual infertility claim.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "uterine adhesions from prior instrumentation unrelated to miscarriage",
+          "endometritis and retained products of conception",
+          "age-related and ovarian-factor infertility",
+          "partner-factor and tubal infertility",
+          "psychiatric and socioeconomic effects on conception timing (the anchor cohort's competing pathway)"
+        ]
+      },
+      "evidenceGaps": [
+        "No located study reports infertility incidence after miscarriage managed expectantly or medically versus surgically; the Asherman ascertainment was symptom-triggered and may undercount; the live-birth cohort's reduced fecundity signal mixes psychiatric, age, and socioeconomic pathways; and endometritis, retained products, and partner factors are unmodeled determinants of any individual infertility claim."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY on the treatment-mediated-Asherman precedent with the mediation limit carried openly: the 2,546-patient post-curettage cohort found Asherman syndrome in 1.6 percent with three or more abortions raising risk 4.6 times (PMID 33462894), and the Taiwan nationwide recurrent-pregnancy-loss cohort found psychiatric comorbidity associated with live birth aHR 0.52 (PMID 42727502); because the infertility pathway is mediated by uterine instrumentation rather than the loss itself and the live-birth signal is entangled with age and socioeconomic factors, the conservative standard keeps the edge at association only and routes individual claims through dated hysteroscopy and endocrine workup with instrumentation, adhesion, and partner-factor exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Sevinç F, Oskovi-Kaplan ZA, Çelen Ş, et al. Identifying the risk factors and incidence of Asherman Syndrome in women with post-abortion uterine curettage J Obstet Gynaecol Res. 2021 Apr;47(4):1549-1555. doi: 10.1111/jog.14667. PMID 33462894.",
+          "note": "Cohort of 2,546 women with post-abortion uterine evacuation and curettage: Asherman syndrome incidence 1.6% (43/2,546) by symptom criteria with hysteroscopic confirmation in 177; history of 3 or more abortions was the main risk factor (4.6-fold); supports the bounded treatment-mediated proposition only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33462894/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 33462894; results (Asherman incidence and risk-factor analysis)"
+        },
+        {
+          "citation": "Wang TH, Sung FC, Mou CH, et al. Impact of post-recurrent pregnancy loss depression and anxiety on subsequent live birth rates: A nationwide population-based cohort study Eur J Obstet Gynecol Reprod Biol. 2026 Sep 3;327:115409. doi: 10.1016/j.ejogrb.2026.115409. PMID 42727502.",
+          "note": "Taiwan NHIRD nationwide cohort (2003-2020) of recurrent-pregnancy-loss women: mental-disorder subcohorts showed reduced subsequent live birth (3.73 versus 8.19 per 1000 person-years; aHR 0.52, 0.49-0.54) alongside age and socioeconomic gradients; carried as bounded reduced-fecundity context with psychiatric and social confounding recorded.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42727502/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 42727502; results (live birth rates and adjusted hazard ratios)"
+        }
+      ]
+    }
+  ]
 }

@@ -2,8 +2,398 @@
   "id": "multiple-endocrine-neoplasia",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review hormonal, metabolic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 61 (2026-09-26): six ASSOCIATION_ONLY draft mappings pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: all six edges assert association only (etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true; mechanismCategory NEUROENDOCRINE_CASCADE for the endocrine-tumor edges and MALIGNANT_TRANSFORMATION for the medullary thyroid carcinoma edge). The evidence base is genetic cohorts, nationwide claims, and surgical series, so individual claims require germline RET/MEN1 confirmation and endocrine workup with competing-cause exclusion, and review by a qualified medical professional.",
+    "Pathway and duplicate-scope screens - intermediate-node guard: no -> kidney-stones or osteoporosis edge (WITHHELD - intermediate-node: the hyperparathyroidism identity's published windows carry those pathways and the MEN edge routes through hyperparathyroidism; no recycling per ME-29); no -> hypertension edge (WITHHELD - intermediate-node: the pheochromocytoma identity's published hypertension window carries that pathway); no -> peptic-ulcer-disease or hyperinsulinism edge (WITHHELD - intermediate-node: the gastrinoma and insulinoma identities' published windows carry those hormone-consequence pathways); no -> diabetes-mellitus edge (WITHHELD - the Korean cohort's 22.6 percent diabetes comorbidity is a prevalence association without mechanism and post-pancreatoduodenectomy diabetes (22 percent in PMID 33649917) is treatment-mediated; no condition-specific quantification separable); no -> pancreatic-cancer edge (WITHHELD - semantic-mismatch guard: MEN1 duodenopancreatic tumors are neuroendocrine neoplasms, not ductal adenocarcinoma, and the catalog lacks a pancreatic-neuroendocrine-tumor identity; the gastrinoma and insulinoma edges carry the specific propositions); no -> miscarriage edge (WITHHELD - intermediate-node: the hypercalcemia adverse-outcome list in the MEN1 pregnancy case runs through hyperparathyroidism; also identity-duplication with the miscarriage identity's own window); no -> shortened-lifespan or mortality edge (no catalog identity - the Korean cohort's HR 3.69 and younger mean age at death are recorded as context); no -> mucosal-neuroma or MEN2B-manifestation edge (no catalog identity); no -> adrenal-gland-disorder edge (the pheochromocytoma identity carries the adrenal proposition); identity-duplication screen: the catalog identity covers both MEN1 and MEN2 (aliases MEN, MEN1, MEN2) with subtype attribution recorded in each edge; no separate MEN1 or MEN2 source identities were used; ME-29 sibling discipline - the hyperparathyroidism, pheochromocytoma, gastrinoma, insulinoma, and thyroid-family windows keep their own evidence and none is recycled."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 61 (2026-09-26): six bounded association edges authored - multiple-endocrine-neoplasia to hyperparathyroidism (rank 1), to pituitary-neoplasm (rank 2), to pheochromocytoma (rank 3), to thyroid-cancer (rank 4), to gastrinoma (rank 5), and to insulinoma (rank 6) - classified ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, and hypothesizedOnly:true. The hyperparathyroidism proposition rests on the Russian 102-patient MEN1 cohort (PMID 41834593), the South Korea nationwide cohort (PMID 40607214), and the 14-study MEN2 review of 3,783 carriers (PMID 40277809). The pituitary proposition rests on the nationwide 240-patient MEN1 cohort (PMID 40921719), the Russian cohort (PMID 41834593), and the Korean cohort (PMID 40607214). The pheochromocytoma proposition rests on the 309-patient RET-genotype cohort (PMID 28605116), the MEN2 pheochromocytoma review (PMID 32388798), and the de novo MEN2A case (PMID 42272368). The thyroid-cancer proposition rests on the 309-patient cohort (PMID 28605116), the RET K666N family study (PMID 39963300), and the de novo case (PMID 42272368). The gastrinoma proposition rests on the AFCE-GTE surgical cohort (PMID 33649917), the MEN1 pregnancy case (PMID 33597314), and the Russian cohort (PMID 41834593). The insulinoma proposition rests on the 46-center international cohort (PMID 32352164), the AFCE-GTE cohort (PMID 33649917), and the Korean cohort (PMID 40607214).",
+    "Counter-evidence and caveat screens recorded 2026-09-26: (i) subtype heterogeneity - MEN1 (parathyroid, pituitary, pancreaticoduodenal) and MEN2 (medullary carcinoma, pheochromocytoma, and a minority hyperparathyroidism) differ in mechanism and penetrance; each edge records its subtype scope and the pooled identity is used only at the catalog level; (ii) histotype scope - the thyroid-cancer edge is explicitly scoped to medullary thyroid carcinoma because the catalog lacks a medullary identity, and the pancreatic-cancer proposition was withheld as a semantic mismatch (neuroendocrine versus ductal); (iii) ascertainment limits - the Korean cohort is clinically suspected rather than genetically confirmed, surgical series are referral-conditioned, and screening intensity drives pituitary detection; (iv) genotype-phenotype limits - RET codon status drives wide penetrance variation (10-80 percent for pheochromocytoma) and the exon 10 pituitary signal is single-center; (v) intermediate-node discipline - hormone-consequence pathways (kidney stones, osteoporosis, hypertension, peptic ulcer, hyperinsulinism) are withheld because the component-tumor identities' own published windows carry them (ME-29)."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "hyperparathyroidism",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Multiple endocrine neoplasia documents primary hyperparathyroidism as its most penetrant component at genetic-cohort and nationwide level: the Russian cohort of 102 genetically confirmed MEN1 patients from 43 families describes the classic triad of primary hyperparathyroidism, gastrointestinal neuroendocrine neoplasms, and pituitary adenomas and stratifies disease course by age at hyperparathyroidism onset (PMID 41834593), the South Korea nationwide cohort of 412 clinically suspected MEN1 cases found parathyroid involvement the most common manifestation at 58.6 percent (PMID 40607214), and the review of 14 studies covering 3,783 MEN2 or RET-variant carriers found MEN2-associated primary hyperparathyroidism prevalence between 7.84 and 31.3 percent with synchronous diagnosis alongside medullary thyroid carcinoma in 80 percent (PMID 40277809); the relationship is recorded as documented syndrome-component association only.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: the MEN1 and MEN2 pathways differ in penetrance and mechanism (parathyroid multiglandular hyperplasia versus RET-driven adenoma), and the Korean cohort is ICD-defined clinically suspected disease rather than genetically confirmed, so any individual hyperparathyroidism claim requires germline confirmation and endocrine attribution with vitamin-D, renal, and familial-hypocalciuric exclusion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "NEUROENDOCRINE_CASCADE",
+        "primaryVector": "Germline MEN1 loss of function or RET gain of function drives multigland parathyroid clonal proliferation so autonomous PTH secretion and primary hyperparathyroidism result, the tumor-predisposition route documented by the classic-triad framing and the nationwide parathyroid-involvement predominance, but whether this route produced any individual hyperparathyroidism remains hypothesized until germline and ionized-calcium records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at genetic-cohort plus nationwide-claims class only: the Russian cohort is 102 patients at one specialist center, the Korean cohort uses clinical-suspect operational definitions without genetic confirmation, and the MEN2 prevalence range (7.84-31.3 percent) spans heterogeneous screening intensities across 14 studies.",
+        "evidenceGaps": "No single population-based penetrance figure exists across MEN1 and MEN2 combined; the syndromic types differ in mechanism and penetrance and are pooled only at the catalog-identity level; the Korean cohort's suspected-case definition may misclassify; normocalcemic and subclinical presentations alter ascertainment; and vitamin-D deficiency, thiazide use, and renal disease are competing hypercalcemia causes.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "familial hypocalciuric hypercalcemia (benign mimicker of primary hyperparathyroidism)",
+          "vitamin-D deficiency and secondary hyperparathyroidism",
+          "thiazide and lithium effects on calcium",
+          "sporadic parathyroid adenoma in the general population",
+          "hyperparathyroidism-jaw tumor syndrome and other familial forms"
+        ]
+      },
+      "evidenceGaps": [
+        "No single population-based penetrance figure exists across MEN1 and MEN2 combined; the syndromic types differ in mechanism and penetrance and are pooled only at the catalog-identity level; the Korean cohort's suspected-case definition may misclassify; normocalcemic and subclinical presentations alter ascertainment; and vitamin-D deficiency, thiazide use, and renal disease are competing hypercalcemia causes."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY on the tumor-predisposition precedent with the syndromic-heterogeneity limit carried openly: the Russian 102-patient MEN1 cohort describes the classic triad led by primary hyperparathyroidism (PMID 41834593), the South Korea nationwide cohort found parathyroid involvement the most common manifestation at 58.6 percent (PMID 40607214), and the 14-study MEN2 review found hyperparathyroidism prevalence 7.84-31.3 percent (PMID 40277809); because the syndromic types differ in mechanism and penetrance and the nationwide cohort is clinically suspected rather than genetically confirmed, the conservative standard keeps the edge at association only and routes individual claims through germline confirmation and ionized-calcium workup with vitamin-D, renal, and familial-mimic exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Salimkhanov RK, Eremkina AK, Bagirova HV, et al. [Multiple endocrine neoplasia syndrome type 1: analysis of data from 102 patients from 43 families in the population of the Russian Federation] Probl Endokrinol (Mosk). 2026 Mar 7;72(1):13-22. doi: 10.14341/probl13642. PMID 41834593.",
+          "note": "Single-center genetic cohort of 102 MEN1 patients from 43 families (Russian Federation, 2015-2025; Russian-language record): classic triad of primary hyperparathyroidism, gastrointestinal neuroendocrine neoplasms, and pituitary adenomas; age at hyperparathyroidism onset stratified disease course; supports the bounded component association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41834593/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 41834593; background and results (classic triad and PHPT-onset stratification)"
+        },
+        {
+          "citation": "Kim KJ, Yu MH, Hwang YA, et al. Epidemiology and clinical outcomes of clinically suspected multiple endocrine neoplasia type 1 in South Korea: a nationwide cohort study Front Endocrinol (Lausanne). 2025;16:1562282. doi: 10.3389/fendo.2025.1562282. PMID 40607214.",
+          "note": "South Korea nationwide cohort (2003-2020) of 412 clinically suspected MEN1 cases matched 1:10 to 4,120 controls: parathyroid involvement most common at 58.6%, pituitary 22.3%, duodenopancreatic tumors 19.9%; elevated mortality (HR 3.69); supports the bounded manifestation-frequency proposition only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40607214/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 40607214; results (manifestation frequencies in suspected MEN1)"
+        },
+        {
+          "citation": "Gheorghe AM, Nistor C, Florescu AF, et al. An Analysis of Primary Hyperparathyroidism in Individuals Diagnosed with Multiple Endocrine Neoplasia Type 2 Diseases. 2025 Mar 27;13(4). doi: 10.3390/diseases13040098. PMID 40277809.",
+          "note": "Review of 14 studies covering 3,783 MEN2 or RET pathogenic-variant carriers: MEN2-primary hyperparathyroidism prevalence 7.84-31.3% (3.8% in non-index patients); synchronous diagnosis with medullary thyroid carcinoma in 80%; supports the bounded MEN2 component association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40277809/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 40277809; results (MEN2-PHPT prevalence and timing)"
+        }
+      ]
+    },
+    {
+      "conditionId": "pituitary-neoplasm",
+      "rank": 2,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Multiple endocrine neoplasia type 1 documents pituitary adenoma development at nationwide cohort level: the nationwide multicenter retrospective cohort of 240 MEN1 patients found pituitary adenomas in 112 (46.6 percent) at mean age 36.1 years with most diagnosed through screening, prolactinomas (49.1 percent) and microadenomas (62.5 percent) predominating and prior primary hyperparathyroidism independently marking higher risk (HR 3.09) (PMID 40921719), the Russian 102-patient cohort records pituitary adenomas as the third element of the classic triad with exon 10 mutations carrying 7.7-fold increased pituitary adenoma risk (PMID 41834593), and the South Korea nationwide cohort found pituitary involvement in 22.3 percent of suspected MEN1 cases (PMID 40607214); the relationship is recorded as documented syndrome-component association only.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: pituitary adenoma prevalence estimates range from 22 to 47 percent across screening intensities and definitions, and MEN1 tumor predisposition does not determine which carriers develop adenomas, so any individual pituitary lesion claim requires germline and dedicated sellar imaging attribution with incidentaloma and medication exclusion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "NEUROENDOCRINE_CASCADE",
+        "primaryVector": "Germline MEN1 loss of function drives anterior-pituitary clonal proliferation so pituitary adenoma results, the tumor-predisposition route consistent with the screening-detected predominance and the genotype-phenotype signal (exon 10 mutations with 7.7-fold adenoma risk), but whether this route produced any individual adenoma remains hypothesized until germline and sellar MRI records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at nationwide retrospective plus genetic-cohort class only: the 240-patient cohort is retrospective with 63.3 percent of adenomas screening-detected (ascertainment-dependent prevalence), the Russian cohort's genotype-phenotype signal is single-center with wide confidence bounds, and the Korean figure uses clinically suspected rather than genetically confirmed MEN1.",
+        "evidenceGaps": "No located study establishes penetrance by age in unselected MEN1 carriers prospectively; screening intensity drives detection; incidental pituitary microadenomas in the general population overlap the screening-detected burden; prolactinoma treatment (dopamine agonists) alters the natural history; and genotype-phenotype correlation remains unconfirmed beyond single-center signals.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "sporadic pituitary incidentaloma (common population finding)",
+          "prolactin elevation from medication or stalk effect",
+          "idiopathic hyperprolactinemia",
+          "other genetic pituitary syndromes (Carney complex, familial isolated pituitary adenoma)",
+          "hypopituitarism from treatment rather than tumor (the published hypopituitarism window)"
+        ]
+      },
+      "evidenceGaps": [
+        "No located study establishes penetrance by age in unselected MEN1 carriers prospectively; screening intensity drives detection; incidental pituitary microadenomas in the general population overlap the screening-detected burden; prolactinoma treatment (dopamine agonists) alters the natural history; and genotype-phenotype correlation remains unconfirmed beyond single-center signals."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY on the tumor-predisposition precedent with the ascertainment limit carried openly: the nationwide 240-patient MEN1 cohort found pituitary adenomas in 46.6 percent with screening predominance and prior hyperparathyroidism marking higher risk (PMID 40921719), the Russian cohort records the classic triad with exon 10 mutations carrying 7.7-fold adenoma risk (PMID 41834593), and the Korean nationwide cohort found pituitary involvement in 22.3 percent (PMID 40607214); because prevalence estimates span 22 to 47 percent across screening intensities and incidental microadenomas overlap the detected burden, the conservative standard keeps the edge at association only and routes individual claims through germline confirmation and dedicated sellar imaging with incidentaloma and medication exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Valdés N, Romero-Lluch AR, Diego E, et al. Risk Factors for Pituitary Adenoma Development in Multiple Endocrine Neoplasia Type 1: A Nationwide Study of 240 Cases J Clin Endocrinol Metab. 2026 Feb 20;111(3):e811-e820. doi: 10.1210/clinem/dgaf497. PMID 40921719.",
+          "note": "Nationwide multicenter retrospective cohort of 240 MEN1 patients: pituitary adenomas in 112 (46.6%) at mean age 36.1 years, 63.3% screening-detected; prolactinomas 49.1%, microadenomas 62.5%; prior primary hyperparathyroidism an independent marker (HR 3.09); supports the bounded component association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40921719/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 40921719; results (pituitary adenoma occurrence and risk factors)"
+        },
+        {
+          "citation": "Salimkhanov RK, Eremkina AK, Bagirova HV, et al. [Multiple endocrine neoplasia syndrome type 1: analysis of data from 102 patients from 43 families in the population of the Russian Federation] Probl Endokrinol (Mosk). 2026 Mar 7;72(1):13-22. doi: 10.14341/probl13642. PMID 41834593.",
+          "note": "Single-center genetic cohort of 102 MEN1 patients from 43 families (Russian-language record): pituitary adenomas the third element of the classic triad; exon 10 mutations associated with 7.7-fold increased pituitary adenoma risk (OR 7.7); early-onset hyperparathyroidism predicted earlier adenoma development; supports the bounded component and genotype-phenotype propositions only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41834593/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 41834593; results (pituitary adenoma prevalence and mutation association)"
+        },
+        {
+          "citation": "Kim KJ, Yu MH, Hwang YA, et al. Epidemiology and clinical outcomes of clinically suspected multiple endocrine neoplasia type 1 in South Korea: a nationwide cohort study Front Endocrinol (Lausanne). 2025;16:1562282. doi: 10.3389/fendo.2025.1562282. PMID 40607214.",
+          "note": "South Korea nationwide cohort of 412 clinically suspected MEN1 cases: pituitary involvement 22.3% (second most common manifestation); supports the bounded manifestation-frequency proposition only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40607214/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 40607214; results (manifestation frequencies in suspected MEN1)"
+        }
+      ]
+    },
+    {
+      "conditionId": "pheochromocytoma",
+      "rank": 3,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Multiple endocrine neoplasia type 2 documents pheochromocytoma as its second main component at RET-genotype cohort level: the 309-patient MEN2 cohort found pheochromocytoma in 85 patients with RET-codon-specific penetrance (exon 11: 46.6 percent; exon 16: 41.2 percent; exon 10: 29.8 percent; exons 13-15: 1.7 percent) and age-related penetrance rising steadily (PMID 28605116), the MEN2 pheochromocytoma review reports variable penetrance from 10 to 80 percent depending on the RET mutation and calls pheochromocytoma the main disease to screen in RET carriers (PMID 32388798), and the de novo MEN2A case documented bilateral medullary thyroid carcinoma with a left pheochromocytoma (PMID 42272368); the relationship is recorded as documented syndrome-component association only.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: penetrance is RET-codon-specific and age-dependent with lifelong surveillance required, and the case anchor is a single de novo presentation, so any individual pheochromocytoma claim requires germline RET confirmation and biochemical screening with essential-hypertension, medication, and incidental-renal-mass exclusion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "NEUROENDOCRINE_CASCADE",
+        "primaryVector": "Germline RET gain of function drives adrenomedullary chromaffin clonal proliferation so catecholamine-secreting pheochromocytoma results, the tumor-predisposition route documented by the codon-specific penetrance gradient and the screening framing, but whether this route produced any individual pheochromocytoma remains hypothesized until germline and plasma-metanephrine records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at single-center 309-patient cohort plus narrative review class only: the penetrance figures come from one specialist ambulatory center spanning 1968-2015 with changing diagnostic methods (clinical to biochemical/imaging), the review's 10-80 percent range reflects mutation heterogeneity rather than population incidence, and malignant pheochromocytoma in MEN2 is recorded as rare.",
+        "evidenceGaps": "No population-based incidence figure exists for MEN2 pheochromocytoma; penetrance estimates vary widely by RET codon and ascertainment; diagnostic methods changed across the four decades of the anchor cohort; variable expressivity within families is documented; and essential hypertension and incidentally discovered adrenal adenomas compete for individual attribution.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "sporadic adrenal incidentaloma",
+          "essential hypertension with elevated catecholamines from stress or medication",
+          "other hereditary pheochromocytoma syndromes (VHL, SDHx, NF1)",
+          "adrenal cortical adenoma",
+          "anxiety and panic physiology mimicking catecholamine excess"
+        ]
+      },
+      "evidenceGaps": [
+        "No population-based incidence figure exists for MEN2 pheochromocytoma; penetrance estimates vary widely by RET codon and ascertainment; diagnostic methods changed across the four decades of the anchor cohort; variable expressivity within families is documented; and essential hypertension and incidentally discovered adrenal adenomas compete for individual attribution."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY on the tumor-predisposition precedent with the codon-specific-penetrance limit carried openly: the 309-patient MEN2 cohort found pheochromocytoma in 85 patients with RET-codon-specific penetrance from 1.7 to 46.6 percent and steadily age-rising risk (PMID 28605116), the MEN2 review reports penetrance 10-80 percent by RET mutation (PMID 32388798), and the de novo MEN2A case documented pheochromocytoma alongside bilateral medullary thyroid carcinoma (PMID 42272368); because penetrance is codon-specific and age-dependent and the anchor cohort spans changing diagnostic eras, the conservative standard keeps the edge at association only and routes individual claims through germline RET confirmation and biochemical screening with hypertension, medication, and incidental-mass exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Mucha L, Leidig-Bruckner G, Frank-Raue K, et al. Phaeochromocytoma in multiple endocrine neoplasia type 2: RET codon-specific penetrance and changes in management during the last four decades Clin Endocrinol (Oxf). 2017 Oct;87(4):320-326. doi: 10.1111/cen.13386. PMID 28605116.",
+          "note": "Retrospective cohort of 309 MEN2 patients with RET mutations (one specialized center, 1968-2015): pheochromocytoma in 85; penetrance by exon 11 (46.6%), 16 (41.2%), 10 (29.8%), 13-15 (1.7%); highest age-related penetrance at Cys634Arg/Tyr; synchronous MTC in 21/40 early and 8/45 recent cases; supports the bounded component association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/28605116/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 28605116; results (RET codon-specific penetrance and MTC synchrony)"
+        },
+        {
+          "citation": "Amodru V, Taieb D, Guerin C, et al. MEN2-related pheochromocytoma: current state of knowledge, specific characteristics in MEN2B, and perspectives Endocrine. 2020 Sep;69(3):496-503. doi: 10.1007/s12020-020-02332-2. PMID 32388798.",
+          "note": "Review of MEN2-related pheochromocytoma (Endocrine, 2020): penetrance 10-80% depending on RET mutation; pheochromocytoma the main disease to screen in RET carriers; MEN2B natural history and rare malignant cases discussed; supports the bounded component association only. Preflight note: erratum-linked record (ErratumIn: Endocrine. 2020 Sep;69(3):695, PMID 32488836; Endocrine. 2020 Jul 14, PMID 32666384); disposition - cited framing taken from the indexed parent record, erratum content not indexed in abstract form, flagged for qualified-human disposition during citation verification.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/32388798/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 32388798; review framing (penetrance range and screening primacy)"
+        },
+        {
+          "citation": "Chami A, Romanet P, Mohammedi F, et al. De novo mutation of the RET proto-oncogene revealing multiple endocrine neoplasia type 2A: a sporadic case from Western Algeria Gulf J Oncolog. 2025 Sep;1(49):35-39. PMID 42272368.",
+          "note": "Sporadic case report (Gulf J Oncol, 2025): 34-year-old woman with bilateral medullary thyroid carcinoma and left pheochromocytoma revealing de novo RET Cys634Ser MEN2A; supports the bounded component co-occurrence only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42272368/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 42272368; case presentation (MTC with pheochromocytoma)"
+        }
+      ]
+    },
+    {
+      "conditionId": "thyroid-cancer",
+      "rank": 4,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Multiple endocrine neoplasia type 2 documents medullary thyroid carcinoma as its core malignant component at genotype-cohort and family-study level: the 309-patient MEN2 cohort records medullary thyroid carcinoma diagnosed synchronously or metachronously with pheochromocytoma and finds pheochromocytoma penetrance correlated with medullary thyroid carcinoma aggressiveness based on RET mutation status (PMID 28605116), the RET K666N family study documents familial medullary thyroid carcinoma with bilateral subcentimeter foci and C-cell hyperplasia across three generations (PMID 39963300), and the de novo MEN2A case presented with bilateral medullary thyroid carcinoma as the revealing manifestation (PMID 42272368); the relationship is recorded as documented syndrome-component association only, scoped to the medullary histotype.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: the medullary histotype is a specific C-cell carcinoma rather than generic thyroid carcinoma, RET codon status determines aggressiveness and timing, and the family anchors are case class, so any individual thyroid malignancy claim requires germline RET and calcitonin/histologic attribution with follicular-variant and incidental-nodule exclusion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MALIGNANT_TRANSFORMATION",
+        "primaryVector": "Germline RET gain of function drives parafollicular C-cell clonal progression through C-cell hyperplasia so medullary thyroid carcinoma results, the documented precursor sequence in the family study and the genotype-aggressiveness correlation in the cohort, but whether this route produced any individual carcinoma remains hypothesized until germline, calcitonin, and histopathologic records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at single-center genotype cohort plus family case class only: the 309-patient cohort spans 1968-2015 with changing diagnostic methods, the family study is one kindred with a rare low-penetrance RET variant (K666N), and no located material quantifies medullary carcinoma incidence in generic thyroid-cancer terms because the catalog lacks a medullary-specific identity.",
+        "evidenceGaps": "No located study reports medullary carcinoma incidence under the generic thyroid-cancer identity definition; the catalog lacks a medullary-thyroid-carcinoma identity so the edge is scoped to the medullary histotype only; the K666N family shows age-dependent expressivity with low penetrance of other MEN2 tumors; RET codon status drives wide aggressiveness variation; and sporadic medullary carcinoma (non-germline) and follicular-derived thyroid nodules compete for individual attribution.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "sporadic medullary thyroid carcinoma without RET germline variant",
+          "follicular-derived thyroid neoplasms (the published nontoxic-thyroid-enlargement and thyroiditis scopes)",
+          "C-cell hyperplasia without carcinoma",
+          "benign thyroid nodules and incidentalomas",
+          "other RET-associated phenotypes without thyroid malignancy"
+        ]
+      },
+      "evidenceGaps": [
+        "No located study reports medullary carcinoma incidence under the generic thyroid-cancer identity definition; the catalog lacks a medullary-thyroid-carcinoma identity so the edge is scoped to the medullary histotype only; the K666N family shows age-dependent expressivity with low penetrance of other MEN2 tumors; RET codon status drives wide aggressiveness variation; and sporadic medullary carcinoma (non-germline) and follicular-derived thyroid nodules compete for individual attribution."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY on the tumor-predisposition precedent with the histotype-scope limit carried openly: the 309-patient MEN2 cohort links RET mutation status to medullary thyroid carcinoma aggressiveness with synchronous or metachronous pheochromocytoma (PMID 28605116), the RET K666N family documents familial medullary carcinoma with C-cell hyperplasia (PMID 39963300), and the de novo MEN2A case presented with bilateral medullary carcinoma (PMID 42272368); because the catalog lacks a medullary-specific identity and the family anchors are case class with codon-dependent penetrance, the conservative standard keeps the edge at association only, scopes it explicitly to the medullary histotype, and routes individual claims through germline RET and calcitonin/histologic confirmation with follicular-variant and incidental-nodule exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Mucha L, Leidig-Bruckner G, Frank-Raue K, et al. Phaeochromocytoma in multiple endocrine neoplasia type 2: RET codon-specific penetrance and changes in management during the last four decades Clin Endocrinol (Oxf). 2017 Oct;87(4):320-326. doi: 10.1111/cen.13386. PMID 28605116.",
+          "note": "Retrospective cohort of 309 MEN2 patients (one specialized center, 1968-2015): medullary thyroid carcinoma and pheochromocytoma diagnosed synchronously (21/40 early, 8/45 recent) or metachronously; pheochromocytoma penetrance and age at diagnosis correlated with MTC aggressiveness by RET mutation; supports the bounded component association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/28605116/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 28605116; results (MTC-pheochromocytoma synchrony and genotype correlation)"
+        },
+        {
+          "citation": "Yip AT, Kim TH, Peluso EM, et al. Medullary Thyroid Carcinoma and Clinical Outcomes in Heterozygous Carriers of the RET K666N Germline Pathogenic Variant JCEM Case Rep. 2025 Mar;3(3):luaf002. doi: 10.1210/jcemcr/luaf002. PMID 39963300.",
+          "note": "Family study (JCEM Case Rep, 2025) of RET K666N germline carriers: 60-year-old carrier with elevated calcitonin and bilateral subcentimeter medullary thyroid carcinoma foci with C-cell hyperplasia on surgical pathology; low penetrance of other MEN2 tumors; supports the bounded familial component association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39963300/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 39963300; case family outcomes (MTC pathology in carriers)"
+        },
+        {
+          "citation": "Chami A, Romanet P, Mohammedi F, et al. De novo mutation of the RET proto-oncogene revealing multiple endocrine neoplasia type 2A: a sporadic case from Western Algeria Gulf J Oncolog. 2025 Sep;1(49):35-39. PMID 42272368.",
+          "note": "Sporadic case report (Gulf J Oncol, 2025): bilateral medullary thyroid carcinoma revealing de novo RET Cys634Ser MEN2A in a 34-year-old woman; RET testing vital in all MTC cases; supports the bounded revealing-manifestation proposition only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42272368/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 42272368; case presentation (bilateral MTC as presenting feature)"
+        }
+      ]
+    },
+    {
+      "conditionId": "gastrinoma",
+      "rank": 5,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Multiple endocrine neoplasia type 1 documents gastrinoma as its most frequent functional pancreaticoduodenal tumor at surgical-cohort and case level: the AFCE-GTE study of 31 MEN1 patients undergoing pancreatoduodenectomy for duodenopancreatic neuroendocrine tumors lists Zollinger-Ellison syndrome (gastrinoma) as the surgical indication in 18 (58 percent) and reports biochemical cure for MEN1-related gastrinomas in about 60 percent (PMID 33649917), the MEN1 pregnancy case documented biochemically proven primary hyperparathyroidism with Zollinger-Ellison syndrome evidence on endoscopy (PMID 33597314), and the Russian 102-patient cohort records gastrointestinal neuroendocrine neoplasms as the second element of the MEN1 classic triad (PMID 41834593); the relationship is recorded as documented syndrome-component association only.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: the surgical cohort is conditioned on operative selection for large or functioning tumors and the case anchor is a single pregnancy presentation, so any individual gastrinoma claim requires germline MEN1 confirmation and gastrin/secretin-stimulated attribution with proton-pump-inhibitor and antral-G-cell exclusion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "NEUROENDOCRINE_CASCADE",
+        "primaryVector": "Germline MEN1 loss of function drives duodenal gastrin-cell clonal proliferation so gastrinoma with autonomous gastrin secretion results, the tumor-predisposition route consistent with gastrinoma predominance among functioning duodenopancreatic tumors in the MEN1 surgical cohort and the triad's gastrointestinal neuroendocrine component, but whether this route produced any individual gastrinoma remains hypothesized until germline and gastrin-stimulation records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at surgical-cohort plus case class only: the 31-patient cohort is conditioned on pancreatoduodenectomy selection, the pregnancy case is a single observation, and no located population cohort reports gastrinoma incidence in MEN1 carriers under modern screening.",
+        "evidenceGaps": "No located population-based penetrance figure for gastrinoma in MEN1; surgical series are selection-conditioned; proton-pump-inhibitor therapy blunts gastrin assays and alters presentation; duodenal versus pancreatic primary sites carry different prognoses unmodeled here; and sporadic duodenal gastrinoma and antral G-cell hyperplasia compete for individual attribution.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "sporadic duodenal or pancreatic gastrinoma without MEN1",
+          "antral G-cell hyperplasia and hypergastrinemia from PPI therapy",
+          "gastric outlet and renal hypergastrinemia",
+          "peptic ulcer disease from other causes (the published peptic-ulcer-disease window; its gastrinoma pathway is not recycled per ME-29)",
+          "other MEN1 pancreaticoduodenal tumors (insulinoma on the companion edge)"
+        ]
+      },
+      "evidenceGaps": [
+        "No located population-based penetrance figure for gastrinoma in MEN1; surgical series are selection-conditioned; proton-pump-inhibitor therapy blunts gastrin assays and alters presentation; duodenal versus pancreatic primary sites carry different prognoses unmodeled here; and sporadic duodenal gastrinoma and antral G-cell hyperplasia compete for individual attribution."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY on the tumor-predisposition precedent with the surgical-selection limit carried openly: the AFCE-GTE cohort of 31 MEN1 patients found Zollinger-Ellison syndrome the indication in 58 percent of pancreatoduodenectomies for duodenopancreatic neuroendocrine tumors with biochemical cure in about 60 percent of MEN1-related gastrinomas (PMID 33649917), the MEN1 pregnancy case documented Zollinger-Ellison syndrome alongside primary hyperparathyroidism (PMID 33597314), and the Russian cohort records the gastrointestinal neuroendocrine component of the classic triad (PMID 41834593); because the surgical cohort is selection-conditioned and no population penetrance figure exists, the conservative standard keeps the edge at association only and routes individual claims through germline MEN1 confirmation and gastrin-stimulation testing with PPI and antral exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Santucci N, Gaujoux S, Binquet C, et al. Pancreatoduodenectomy for Neuroendocrine Tumors in Patients with Multiple Endocrine Neoplasia Type 1: An AFCE (Association Francophone de Chirurgie Endocrinienne) and GTE (Groupe d'étude des Tumeurs Endocrines) Study World J Surg. 2021 Jun;45(6):1794-1802. doi: 10.1007/s00268-021-06005-7. PMID 33649917.",
+          "note": "AFCE-GTE surgical cohort of 31 MEN1 patients undergoing pancreatoduodenectomy for duodenopancreatic neuroendocrine tumors (1971-2013): Zollinger-Ellison syndrome the indication in 18 (58%); biochemical cure for MEN1-related gastrinomas about 60%; supports the bounded component association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33649917/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 33649917; results (surgical indications and gastrinoma cure rates)"
+        },
+        {
+          "citation": "Ali D, Divilly P, Prichard R, et al. Primary hyperparathyroidism and Zollinger Ellison syndrome during pregnancy: a case report Endocrinol Diabetes Metab Case Rep. 2021 Jan 1;2021. PMID 33597314.",
+          "note": "Case report (Endocrinol Diabetes Metab Case Rep, 2021): MEN1 patient with biochemically proven primary hyperparathyroidism and Zollinger-Ellison syndrome evidence on endoscopy in pregnancy; supports the bounded component co-occurrence only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33597314/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 33597314; case summary (PHPT with Zollinger-Ellison syndrome)"
+        },
+        {
+          "citation": "Salimkhanov RK, Eremkina AK, Bagirova HV, et al. [Multiple endocrine neoplasia syndrome type 1: analysis of data from 102 patients from 43 families in the population of the Russian Federation] Probl Endokrinol (Mosk). 2026 Mar 7;72(1):13-22. doi: 10.14341/probl13642. PMID 41834593.",
+          "note": "Single-center genetic cohort of 102 MEN1 patients from 43 families (Russian-language record): gastrointestinal neuroendocrine neoplasms the second element of the MEN1 classic triad; neuroendocrine-tumor onset age differed significantly across strata; supports the bounded component framing only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41834593/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 41834593; background (classic triad)"
+        }
+      ]
+    },
+    {
+      "conditionId": "insulinoma",
+      "rank": 6,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Multiple endocrine neoplasia type 1 documents insulinoma at international surgical-cohort level: the 46-center international cohort of 96 MEN1-related insulinoma resections states that insulinomas are found in 10-15 percent of MEN1 patients and lead to life-threatening hypoglycaemia, with multifocal disease in 33 of 96 and recurrent or new insulinoma during follow-up (PMID 32352164), the AFCE-GTE pancreatoduodenectomy cohort lists insulinoma as the surgical indication in 2 of 31 MEN1 patients (7 percent) (PMID 33649917), and the South Korea nationwide cohort recorded duodenopancreatic tumors in 19.9 percent of clinically suspected MEN1 cases (PMID 40607214); the relationship is recorded as documented syndrome-component association only.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: the 10-15 percent figure is drawn from surgical and specialist series conditioned on symptomatic presentation, and multifocal pancreatic neuroendocrine disease complicates lesion-level attribution, so any individual insulinoma claim requires germline MEN1 confirmation and supervised fasting/insulin-proinsulin attribution with factitious and sulfonylurea exclusion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "NEUROENDOCRINE_CASCADE",
+        "primaryVector": "Germline MEN1 loss of function drives pancreatic beta-cell clonal proliferation so insulinoma with autonomous insulin secretion and hypoglycaemia results, the tumor-predisposition route consistent with the 10-15 percent frequency in MEN1 and the multifocal disease pattern in the international cohort, but whether this route produced any individual insulinoma remains hypothesized until germline and supervised-fast records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at international surgical cohort plus specialist-review class only: the 96-patient cohort is conditioned on operative referral across 46 centers over 26 years, the 10-15 percent frequency is a specialist estimate rather than a population penetrance figure, and the surgical-comparison cohort contains only 2 insulinoma indications.",
+        "evidenceGaps": "No population-based penetrance figure for insulinoma in MEN1; symptomatic ascertainment enriches severe presentations; multifocal pancreatic neuroendocrine tumors make lesion-level diagnosis difficult; metachronous new insulinomas occur in multifocal disease; and factitious hypoglycaemia, sulfonylureas, and non-insulinoma pancreatogenous hypoglycaemia compete for individual attribution.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "sporadic pancreatic insulinoma without MEN1",
+          "factitious hypoglycaemia and sulfonylurea use",
+          "nesidioblastosis and non-insulinoma pancreatogenous hypoglycaemia",
+          "adrenal insufficiency and hepatic hypoglycaemia (the published addisons-disease window)",
+          "other MEN1 pancreaticoduodenal tumors (gastrinoma on the companion edge)"
+        ]
+      },
+      "evidenceGaps": [
+        "No population-based penetrance figure for insulinoma in MEN1; symptomatic ascertainment enriches severe presentations; multifocal pancreatic neuroendocrine tumors make lesion-level diagnosis difficult; metachronous new insulinomas occur in multifocal disease; and factitious hypoglycaemia, sulfonylureas, and non-insulinoma pancreatogenous hypoglycaemia compete for individual attribution."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY on the tumor-predisposition precedent with the surgical-ascertainment limit carried openly: the 46-center international cohort of 96 MEN1-related insulinoma resections states insulinomas occur in 10-15 percent of MEN1 patients with multifocal disease in 33 of 96 and recurrent or new insulinomas during follow-up (PMID 32352164), the AFCE-GTE cohort lists insulinoma in 2 of 31 MEN1 pancreaticoduodenectomies (PMID 33649917), and the Korean nationwide cohort recorded duodenopancreatic tumors in 19.9 percent of suspected MEN1 (PMID 40607214); because the frequency estimate derives from specialist surgical series conditioned on symptomatic disease, the conservative standard keeps the edge at association only and routes individual claims through germline MEN1 confirmation and supervised fasting with factitious and sulfonylurea exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "van Beek DJ, Nell S, Verkooijen HM, et al. Surgery for multiple endocrine neoplasia type 1-related insulinoma: long-term outcomes in a large international cohort Br J Surg. 2020 Oct;107(11):1489-1499. doi: 10.1002/bjs.11632. PMID 32352164.",
+          "note": "International 46-center cohort of 96 MEN1-related insulinoma resections (1990-2016): insulinomas found in 10-15% of MEN1 patients; 63 localized and 33 multifocal; recurrent disease in 6 (four new insulinomas); 10-year hypoglycaemia-free survival 91%; supports the bounded component association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/32352164/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 32352164; background and results (MEN1 insulinoma frequency and outcomes)"
+        },
+        {
+          "citation": "Santucci N, Gaujoux S, Binquet C, et al. Pancreatoduodenectomy for Neuroendocrine Tumors in Patients with Multiple Endocrine Neoplasia Type 1: An AFCE (Association Francophone de Chirurgie Endocrinienne) and GTE (Groupe d'étude des Tumeurs Endocrines) Study World J Surg. 2021 Jun;45(6):1794-1802. doi: 10.1007/s00268-021-06005-7. PMID 33649917.",
+          "note": "AFCE-GTE surgical cohort of 31 MEN1 patients undergoing pancreatoduodenectomy: insulinoma the indication in 2 (7%) alongside Zollinger-Ellison syndrome 58% and nonfunctioning tumors 29%; supports the bounded component-frequency proposition only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33649917/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 33649917; results (surgical indications by tumor type)"
+        },
+        {
+          "citation": "Kim KJ, Yu MH, Hwang YA, et al. Epidemiology and clinical outcomes of clinically suspected multiple endocrine neoplasia type 1 in South Korea: a nationwide cohort study Front Endocrinol (Lausanne). 2025;16:1562282. doi: 10.3389/fendo.2025.1562282. PMID 40607214.",
+          "note": "South Korea nationwide cohort of 412 clinically suspected MEN1 cases: duodenopancreatic tumors 19.9% of manifestations behind parathyroid (58.6%) and pituitary (22.3%); supports the bounded manifestation-frequency proposition only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40607214/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 40607214; results (manifestation frequencies in suspected MEN1)"
+        }
+      ]
+    }
+  ]
 }
