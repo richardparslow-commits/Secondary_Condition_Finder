@@ -2,8 +2,186 @@
   "id": "otosclerosis",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review otologic, vestibular, audiologic, visual, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 67 (2026-09-26): three ASSOCIATION_ONLY draft mappings pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: all three edges assert association only (etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true). Mechanisms: conductive-hearing-loss and tinnitus MECHANICAL_OR_COMPRESSIVE (stapes-fixation conductive-deprivation route), hearing-loss NOT_ESTABLISHED (cochlear intracochlear route contested). The evidence base is surgical-candidate populations plus one advanced-disease cohort and one case report, so individual claims require dated audiometry and imaging with competing-cause exclusion, and review by a qualified medical professional.",
+    "Pathway and duplicate-scope screens: no -> dizziness or -> vertigo edge (below authoring threshold - the located vestibular evidence is either treatment-mediated post-stapedotomy transient dysfunction (vestibular disorder studies after stapedotomy, e.g. PMID 42435460, PMID 42500103) or the contested otosclerosis-hydrops interaction whose own review describes investigative boundaries (PMID 41450711); reopening condition: a cohort quantifying persistent vestibular symptoms in otosclerosis independent of surgery); mechanism-split discipline - the conductive-hearing-loss and hearing-loss edges carry different mechanisms (stapes fixation versus cochlear otosclerosis) and different identities (conductive versus sensorineural/mixed), and their scopes are kept disjoint on the edges themselves; sibling-window provenance note - the published conductive-hearing-loss to tinnitus window is anchored entirely on otosclerosis cohorts (PMIDs 31418718, 35846815, 20163050) and those sources are NOT recycled here per ME-29 (this file's tinnitus edge uses disjoint sources); the resulting tinnitus triangle (otosclerosis -> conductive-hearing-loss -> tinnitus plus otosclerosis -> tinnitus) is recorded for the standing CRG sibling/chain redundancy semantics follow-up; no -> otitis-media or -> hearing-loss-treatment-complication edge (zero located quantification outside surgical series); direction discipline - treatment-response anchors (stapedotomy tinnitus improvement) support dechallenge framing only and are not read as forward causal direction."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 67 (2026-09-26): three bounded association edges authored - otosclerosis to conductive-hearing-loss (rank 1), tinnitus (rank 2), and hearing-loss (rank 3) - classified ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, and hypothesizedOnly:true. Conductive-hearing-loss rests on the stapes-surgery systematic review (22 studies, 2,233 patients; PMID 41174987) and the prospective stapedotomy-versus-hearing-aid cohort (>= 30 dB otosclerosis-attributed conductive loss; PMID 35878633). Tinnitus rests on the same systematic review (post-stapedectomy improvement median 46.3% with air-bone-gap correlation), the 1,147-patient Shanghai surgical series (CT lesion severity related to preoperative tinnitus; PMID 41504238), and the prospective cohort (stapedotomy-specific tinnitus improvement). Hearing-loss rests on the 38-patient bilateral advanced cohort (cochlear implantation in 15; PMID 42345416) and the advanced mixed-loss case report (PMID 29891017).",
+    "Counter-evidence and caveat screens recorded 2026-09-26: (i) mechanism split - the conductive component (stapes footplate fixation) and the sensorineural/mixed component (cochlear otosclerosis, mechanism contested per the hydrops-interaction boundaries review, PMID 41450711) are carried as separate edges with separate mechanisms and NOT collapsed into one hearing claim; (ii) sibling-window provenance - the published conductive-hearing-loss to tinnitus window rests on otosclerosis cohorts (PMIDs 31418718, 35846815, 20163050), so this file's tinnitus edge uses disjoint sources and records the resulting tinnitus triangle for the standing CRG redundancy-semantics follow-up; (iii) surgical-population skew - the tinnitus and conductive-loss anchors are stapes-surgery candidates, so prevalence in unselected otosclerosis is unquantified (only symptomatic incidence 2.5 per 100,000 is estimated, PMID 41504238); (iv) withheld vestibular proposition - post-stapedotomy vestibular dysfunction is treatment-mediated and transient in the located literature, and the hydrops interaction is contested, so no dizziness edge was authored; (v) tinnitus-hearing decoupling - tinnitus severity is documented as decoupled from hearing degree, so the conductive-deprivation mechanism is partial and carried as hypothesized."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "conductive-hearing-loss",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Otosclerosis documents conductive hearing loss at systematic-review and prospective-comparative level: the systematic review of stapes surgery outcomes in otosclerosis (22 studies, 2,233 patients; PROSPERO CRD42024566593) frames the disease as a progressive hereditary temporal bone disorder causing tinnitus and conductive hearing loss with stapes surgery restoring air-bone gaps (PMID 41174987), and the prospective comparative study of unilateral otosclerosis enrolled patients with conductive hearing loss of at least 30 dB caused by otosclerosis and found stapedotomy improved pure-tone averages by 11.1 dB and air-bone gaps by 11.8 dB versus hearing aids (PMID 35878633); recorded as documented association only.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: stapes footplate fixation is the accepted mechanism of the conductive component but hearing loss in an individual may also reflect cochlear otosclerosis, chronic otitis media, prior surgery, or presbycusis and noise, so individual claims require dated audiometry with air-bone-gap characterization and otologic exclusion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MECHANICAL_OR_COMPRESSIVE",
+        "primaryVector": "Otosclerotic fixation of the stapes footplate drives failure of sound conduction through the ossicular chain so conductive hearing loss with a measurable air-bone gap results, the mechanical-fixation route documented by the disease-framing systematic review and the at-least-30 dB conductive inclusion of the prospective cohort whose air-bone gaps narrowed after stapedotomy, but whether this route produced any individual hearing loss remains hypothesized until audiometric and operative records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at systematic-review plus small prospective comparative cohort class only: the prospective study enrolled 22 surgical candidates at a single tertiary center, both anchors are treatment-selected populations referred for stapes surgery, and no population incidence of conductive loss in otosclerosis is quantified outside the Shanghai surgical series (2.5 per 100,000 symptomatic incidence; PMID 41504238).",
+        "evidenceGaps": "Both anchors are surgical-candidate populations so severity is skewed toward operable disease; the prospective cohort is small (22 patients) and single-center; population incidence of conductive loss across all otosclerosis is unquantified (only symptomatic-incidence data exist, PMID 41504238); and cochlear otosclerosis with mixed or sensorineural loss (the companion edge in this file), chronic otitis media, ossicular fixation of other causes, and prior surgery compete for individual attribution.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "cochlear otosclerosis producing sensorineural or mixed loss (the companion hearing-loss edge in this file, mechanism split carried openly)",
+          "chronic otitis media and cholesteatoma (the published windows, not recycled per ME-29)",
+          "presbycusis and noise exposure",
+          "prior stapes surgery or prosthesis dysfunction",
+          "congenital or traumatic ossicular fixation"
+        ]
+      },
+      "evidenceGaps": [
+        "Both anchors are surgical-candidate populations so severity is skewed toward operable disease; the prospective cohort is small (22 patients) and single-center; population incidence of conductive loss across all otosclerosis is unquantified (only symptomatic-incidence data exist, PMID 41504238); and cochlear otosclerosis with mixed or sensorineural loss (the companion edge in this file), chronic otitis media, ossicular fixation of other causes, and prior surgery compete for individual attribution."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY at systematic-review plus prospective-comparative class with the surgical-population limit carried openly: the stapes-surgery systematic review frames otosclerosis as causing conductive hearing loss across 22 studies and 2,233 patients (PMID 41174987) and the prospective study of unilateral otosclerosis with at-least-30 dB conductive loss documented the otosclerosis-attributed air-bone gap and its closure after stapedotomy (PMID 35878633); because both anchors are treatment-selected surgical populations, the conservative standard keeps the edge at association only and routes individual claims through dated audiometry with air-bone-gap characterization and otologic exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Hail NA, Haider H. Impact of Stapedectomy on Tinnitus Severity and Hearing Outcomes in Patients With Otosclerosis: A Systematic Review Ear Nose Throat J. 2025 Nov 1:1455613251382671. PMID 41174987.",
+          "note": "Systematic review of stapedectomy impact on tinnitus and hearing outcomes in otosclerosis (Ear Nose Throat J 2025; PROSPERO CRD42024566593; 22 studies, 2,233 patients): frames otosclerosis as a progressive hereditary temporal bone disease causing tinnitus and conductive hearing loss; stapes surgery improved hearing outcomes consistently with tinnitus improvement correlating with air-bone-gap closure; supports the bounded disease-framing association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41174987/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 41174987; review scope and hearing-outcome findings"
+        },
+        {
+          "citation": "Molinier CE, Gallois Y, Deguine O, et al. Stapedotomy Versus Hearing Aids in the Management of Conductive Hearing Loss Caused by Otosclerosis: A Prospective Comparative Study Otol Neurotol. 2022 Aug 1;43(7):773-780. PMID 35878633.",
+          "note": "Prospective comparative cohort of 22 unilateral otosclerosis patients with conductive hearing loss >= 30 dB caused by otosclerosis (Otol Neurotol 2022): stapedotomy versus hearing aids improved pure-tone averages (-11.1 dB, p=0.002) and air-bone gaps (-11.8 dB, p=0.0006) and quality of life; supports the bounded otosclerosis-attributed conductive-loss association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35878633/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 35878633; methods (inclusion criteria) and results (air-bone gap outcomes)"
+        }
+      ]
+    },
+    {
+      "conditionId": "tinnitus",
+      "rank": 2,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Otosclerosis documents tinnitus at systematic-review and clinicoepidemiological level: the systematic review of stapes surgery outcomes in otosclerosis (22 studies, 2,233 patients) reports tinnitus improvement in 15.7 to 64 percent of patients after stapedectomy (median 46.3 percent) with a moderate-to-strong correlation between tinnitus improvement and air-bone-gap closure (PMID 41174987), the Shanghai incidence study of 1,147 symptomatic otosclerosis surgical inpatients relates greater CT lesion severity to preoperative tinnitus (PMID 41504238), and the prospective stapedotomy cohort found improved self-evaluated tinnitus (Tinnitus Handicap Inventory -8.0, visual analog -28.7) after stapedotomy but not after hearing aids (PMID 35878633); recorded as documented association only with the sibling-window provenance note carried openly.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: tinnitus is multifactorial and the located otosclerosis evidence is treatment-selected surgical populations in which tinnitus improvement correlates with conductive-gap closure, so whether any individual tinnitus is attributable to the otosclerosis requires individual audiologic attribution with noise, medication, and presbycusis exclusion; the published conductive-hearing-loss to tinnitus window rests on otosclerosis-anchored cohorts and its evidence is NOT recycled here per ME-29 (disjoint sources are used)."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MECHANICAL_OR_COMPRESSIVE",
+        "primaryVector": "Stapes fixation with conductive deprivation of cochlear input, together with otic-capsule remodeling in cochlear involvement, is hypothesized to drive phantom auditory perception so tinnitus results, the deprivation-plus-cochlear route consistent with the tinnitus improvement and air-bone-gap closure correlation after stapedectomy and the CT-lesion-severity gradient, but whether this route produced any individual tinnitus remains hypothesized until audiometric and imaging records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at systematic-review plus clinicoepidemiological and small prospective cohort class only: all anchors are surgical-candidate populations, tinnitus severity is self-reported, and the relationship between tinnitus and hearing severity is documented as decoupled, so mechanism attribution remains partial and prevalence in unselected otosclerosis is unquantified.",
+        "evidenceGaps": "All anchors are surgical-candidate populations (severe enough for stapes surgery) so tinnitus burden in unselected otosclerosis is unquantified; tinnitus outcomes are self-reported; tinnitus severity is documented as decoupled from hearing degree so the conductive-deprivation mechanism is partial; the same cohorts support the conductive-hearing-loss edge in this file; and noise exposure, presbycusis, medication effects, and central tinnitus amplification compete for individual attribution.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "noise exposure and presbycusis-related tinnitus",
+          "medication-related tinnitus",
+          "the conductive-deprivation pathway via the published conductive-hearing-loss to tinnitus window (ME-29; not recycled, disjoint sources used here)",
+          "cochlear hydrops interaction (contested; the located boundaries review notes investigative constraints, PMID 41450711)",
+          "central tinnitus amplification and distress factors"
+        ]
+      },
+      "evidenceGaps": [
+        "All anchors are surgical-candidate populations (severe enough for stapes surgery) so tinnitus burden in unselected otosclerosis is unquantified; tinnitus outcomes are self-reported; tinnitus severity is documented as decoupled from hearing degree so the conductive-deprivation mechanism is partial; the same cohorts support the conductive-hearing-loss edge in this file; and noise exposure, presbycusis, medication effects, and central tinnitus amplification compete for individual attribution."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY at systematic-review plus clinicoepidemiological class with the surgical-population and sibling-provenance limits carried openly: the stapes-surgery systematic review documents tinnitus in otosclerosis with post-stapedectomy improvement in a median 46.3 percent and air-bone-gap correlation (PMID 41174987), the 1,147-patient surgical series relates CT lesion severity to preoperative tinnitus (PMID 41504238), and the prospective cohort found stapedotomy-specific tinnitus improvement (PMID 35878633); because the anchors are surgical populations with self-reported tinnitus and decoupled hearing severity, the conservative standard keeps the edge at association only and routes individual claims through dated audiologic assessment with noise, medication, and presbycusis exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Hail NA, Haider H. Impact of Stapedectomy on Tinnitus Severity and Hearing Outcomes in Patients With Otosclerosis: A Systematic Review Ear Nose Throat J. 2025 Nov 1:1455613251382671. PMID 41174987.",
+          "note": "Systematic review (22 studies, 2,233 otosclerosis patients; Ear Nose Throat J 2025): tinnitus improvement after stapes surgery in 15.7-64% of patients (median 46.3%), worsening in 2.9-11%; moderate-to-strong relation between tinnitus improvement and air-bone-gap closure (32%) and tinnitus resolution versus gap closure (55%); supports the bounded tinnitus association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41174987/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 41174987; review results (tinnitus outcomes after stapes surgery)"
+        },
+        {
+          "citation": "Fang Y, Li W, Gu D, et al. The incidence and clinicoepidemiological features of symptomatic otosclerosis Acta Otolaryngol. 2026 Mar;146(3):334-343. PMID 41504238.",
+          "note": "Shanghai incidence and clinicoepidemiological study of symptomatic otosclerosis (Acta Otolaryngol 2026; 1,147 surgical inpatients; incidence 2.5 per 100,000): increased CT lesion severity related to preoperative tinnitus and bilateral incidence; 72.8% accurately diagnosed at first visit; supports the bounded tinnitus-severity association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41504238/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 41504238; results (CT severity correlations with preoperative symptoms)"
+        },
+        {
+          "citation": "Molinier CE, Gallois Y, Deguine O, et al. Stapedotomy Versus Hearing Aids in the Management of Conductive Hearing Loss Caused by Otosclerosis: A Prospective Comparative Study Otol Neurotol. 2022 Aug 1;43(7):773-780. PMID 35878633.",
+          "note": "Prospective comparative cohort of 22 unilateral otosclerosis patients (Otol Neurotol 2022): stapedotomy, but not hearing aids, improved self-evaluated tinnitus (Tinnitus Handicap Inventory -8.0 +/- 13.4, p=0.02; visual analog intensity -28.7, p=0.006) after baseline adjustment; supports the bounded treatment-response association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35878633/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 35878633; results (tinnitus outcomes by treatment)"
+        }
+      ]
+    },
+    {
+      "conditionId": "hearing-loss",
+      "rank": 3,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Advanced otosclerosis documents progressive sensorineural and mixed hearing loss at treatment-cohort and case level: the cohort study of 38 patients with bilateral advanced otosclerosis frames the disease as a hereditary disorder causing progressive hearing loss in adults, with 15 requiring cochlear implantation and 23 managed by stapedotomy plus hearing aid, both groups improving but the cochlear-implant group showing superior speech outcomes (PMID 42345416), and the surgical case report of advanced otosclerosis with mixed hearing loss (air-bone gap 55 dB reduced to 20 dB after stapedotomy, residual mixed loss rehabilitated by active middle-ear implant) documents the mixed-loss phenotype's rehabilitative requirements (PMID 29891017); recorded as documented association only with the stage and composite limits carried openly.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: the sensorineural component reflects cochlear otosclerosis whose intracochlear mechanism is not established, the anchors are treatment-selected advanced disease, and individual claims require dated serial audiometry with air-bone-gap and bone-conduction characterization and competing otologic exclusion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "NOT_ESTABLISHED",
+        "primaryVector": "Otosclerotic remodeling of the otic capsule extending to the cochlea is hypothesized to impair cochlear hair cell and strial function so progressive sensorineural and mixed hearing loss results, but the intracochlear route remains contested (the located boundaries review describes unresolved otosclerosis-hydrops interaction, PMID 41450711) and whether it produced any individual sensorineural loss remains hypothesized until serial audiometric and imaging records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at single advanced-disease treatment cohort plus case-report class only: the cohort is treatment-selected bilateral advanced disease at one center, no population incidence of sensorineural progression is quantified, and the case report documents the mixed-loss phenotype without a denominator.",
+        "evidenceGaps": "The cohort is small (38 patients), single-center, and restricted to bilateral advanced disease referred for implant-level care; population incidence and natural history of sensorineural progression in otosclerosis are unquantified by the located anchors; the case report carries no denominator; and presbycusis, noise exposure, hydrops/Meniere overlap (contested), otosyphilis, and iatrogenic sensorineural loss after stapes surgery compete for individual attribution.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "presbycusis and noise-related sensorineural loss",
+          "the stapes-fixation conductive component carried by the companion conductive-hearing-loss edge in this file (mechanism split carried openly; ME-29)",
+          "cochlear hydrops and Meniere overlap (contested interaction)",
+          "otosyphilis and other osteosclerotic mimics",
+          "iatrogenic sensorineural loss after stapes surgery"
+        ]
+      },
+      "evidenceGaps": [
+        "The cohort is small (38 patients), single-center, and restricted to bilateral advanced disease referred for implant-level care; population incidence and natural history of sensorineural progression in otosclerosis are unquantified by the located anchors; the case report carries no denominator; and presbycusis, noise exposure, hydrops/Meniere overlap (contested), otosyphilis, and iatrogenic sensorineural loss after stapes surgery compete for individual attribution."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY at advanced-cohort plus case-report class with the stage, composite, and contested-mechanism limits carried openly: the 38-patient bilateral advanced otosclerosis cohort frames progressive hearing loss with cochlear-implant-level severity in 15 (PMID 42345416) and the surgical case documents the mixed-loss end-stage phenotype (PMID 29891017); because the mechanism of cochlear involvement is contested and the anchors are treatment-selected advanced disease, the conservative standard records mechanismCategory NOT_ESTABLISHED, keeps the edge at association only, and routes individual claims through dated serial audiometry with air-bone-gap characterization and presbycusis, noise, hydrops, and iatrogenic exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Ramasamy S, Vadivu AS, Nandhan SR, et al. Management Options and Their outcomes in Bilateral Advanced Otosclerosis J Int Adv Otol. 2026 Mar 25;22(1):1-6. PMID 42345416.",
+          "note": "Cohort study of 38 patients with bilateral advanced otosclerosis (J Int Adv Otol 2026): framing of otosclerosis as a hereditary disorder causing progressive hearing loss in adults; cochlear implantation (n=15) versus stapedotomy plus hearing aid (n=23); both improved hearing, speech outcomes superior with implantation; vertigo and tinnitus symptoms improved with treatment; supports the bounded advanced-progressive association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42345416/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 42345416; framing and results (hearing and speech outcomes in advanced disease)"
+        },
+        {
+          "citation": "Powell HRF, Pai I, Ghulam H, et al. An alternative approach to mixed hearing loss in otosclerosis: stapes surgery combined with an active middle-ear implant J Laryngol Otol. 2018 May;132(5):457-460. PMID 29891017.",
+          "note": "Surgical case report of advanced otosclerosis with mixed hearing loss (J Laryngol Otol 2018): 50-year-old male, air-bone gap 55 dB reduced to 20 dB after stapedotomy, residual mixed loss rehabilitated by active middle-ear implant (32 dB device gain); supports the bounded mixed-loss phenotype framing only, without a denominator.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/29891017/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 29891017; case description (mixed hearing loss in advanced otosclerosis)"
+        }
+      ]
+    }
+  ]
 }

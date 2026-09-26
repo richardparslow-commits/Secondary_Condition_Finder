@@ -3240,3 +3240,107 @@ automatically (860 -> 878) - sixth consecutive batch with no manual fixture bump
 the standing benign coincidences (apply-all-94's historical `explicitPublicationGuards: 273`; wave-5's
 `toBeGreaterThanOrEqual(276)` catalog floor; legal-copy's `38 U.S.C. § 1117` statute text).
 Standing recommendation: batch 66 lands through branch, PR, CI, and merge.
+
+## Mapping Expansion D1 batch 67 (2026-09-26)
+
+Mapping Expansion D1 batch 67 (2026-09-26) authored six draft-quarantined relationships across four of
+the five screened identities - `otosclerosis` (3 edges), `osgood-schlatter-disease` (1), `otitis-externa`
+(1), and `ovarian-cysts` (1) - classified ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED,
+vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true, and conservative rationale and
+evidence-gap records on every suggestion. One identity was DEFERRED - `osteopenia` (severity-continuum
+IDENTITY-DUPLICATION with osteoporosis, no-identity fragility-fracture outcomes, and zero located
+stress-fracture quantification) - with reopening conditions recorded in its governance notes; it left the
+backlog queue by disposition.
+
+`otosclerosis` (3 edges): conductive-hearing-loss (rank 1, MECHANICAL_OR_COMPRESSIVE) rests on the
+stapes-surgery systematic review (22 studies, 2,233 patients; disease framing causing tinnitus and
+conductive hearing loss; PMID 41174987) and the prospective stapedotomy-versus-hearing-aid cohort
+(unilateral otosclerosis with >= 30 dB conductive loss caused by otosclerosis; air-bone-gap closure after
+surgery; PMID 35878633); tinnitus (rank 2, MECHANICAL_OR_COMPRESSIVE) rests on the same systematic review
+(post-stapedectomy improvement median 46.3% with air-bone-gap correlation), the 1,147-patient Shanghai
+surgical series (CT lesion severity related to preoperative tinnitus; PMID 41504238), and the prospective
+cohort (stapedotomy-specific tinnitus improvement, PMID 35878633), with the sibling-window provenance
+carried openly (the published conductive-hearing-loss to tinnitus window rests entirely on otosclerosis
+cohorts - PMIDs 31418718, 35846815, 20163050 - and is not recycled per ME-29; disjoint sources used);
+hearing-loss (rank 3, mechanismCategory NOT_ESTABLISHED) rests on the 38-patient bilateral advanced
+otosclerosis cohort (progressive hearing loss framing; cochlear implantation in 15; PMID 42345416) and the
+advanced mixed-loss case report (PMID 29891017), with the contested intracochlear route (hydrops
+interaction boundaries, PMID 41450711) and the stapes-fixation/conductive mechanism split carried openly.
+
+`osgood-schlatter-disease` (1 edge): tendinopathy (rank 1, BIOMECHANICAL_ALTERATION) rests on the Danish
+national registry cohort (400 respondents of 1,281 secondary-care cases 1977-2020; jumper's knee odds
+70.4, 95% CI 32.9-155.0 versus healthy population estimates; 73% sustained tibial tubercle-area problems;
+KOOS decrements across all subscales; PMID 40439870), with the shared-substrate (extensor-mechanism
+overuse) and recall limits carried openly and an accepted single-reference quarantine warning.
+
+`otitis-externa` (1 edge): cranial-nerve-palsy (rank 1, INFECTIOUS_SPREAD) is scoped explicitly to the
+malignant/necrotizing subtype and rests on the National Inpatient Sample analysis (facial palsy 12.4% of
+5,585 malignant otitis externa stays; PMID 41503884), the 119-patient cohort (cranial nerve involvement
+27.7%, facial 26.1%, skull base osteomyelitis in half; PMID 37090887), and the TriNetX predictor analysis
+(12,032 versus 719 patients; hypertension OR 3.72, CKD OR 3.12, malnutrition OR 3.44; PMID 41492806),
+with the no-generalization limit carried openly (uncomplicated otitis externa: one complication in 133
+clinic cases, PMID 26328002).
+
+`ovarian-cysts` (1 edge): menstrual-disorders (rank 1, NEUROENDOCRINE_CASCADE) rests on the 169-patient
+abnormal-uterine-bleeding pelvic ultrasound cohort (ovarian cysts the most common reproductive-age
+finding, 27.11% early and 22.56% late; majority likely benign; PMID 42257258), with the direction and
+ascertainment limits carried openly (cohort conditioned on bleeding at presentation; polycystic ovarian
+morphology expressly excluded scope) and an accepted single-reference quarantine warning.
+
+Withholdings and refusals recorded on the files: osteopenia -> osteoporosis withheld as severity-continuum
+identity duplication (same DXA measure grade transition; consistent with the batch-66 optic-atrophy to
+blindness withhold) while the twelve-edge osteoporosis etiologic window keeps its own sources (ME-29);
+fragility fractures (vertebral, hip) and stress fractures recorded with zero condition-specific
+quantification; the retraction watch note stands (post-stroke osteopenia anchor PMID 17895057 is
+RETRACTED and excluded). Osgood-Schlatter persistence features - knee pain at 24 months (37%) and 4 years
+(60.5%), tibial tubercle prominence (85%), ununited ossicle (32%) - withheld as persistence/residuals of
+the apophysitis itself (constitutive proximity); -> osteoarthritis withheld on zero located incidence
+quantification (the national cohort measured symptoms and function, not osteoarthritis); ->
+patellofemoral-pain-syndrome withheld as parallel phenotype (the matched study treats PFP and OSD as
+distinct, PMID 31905093). Otitis-externa -> hearing-loss withheld below threshold (mild conductive loss
+16.7% in a single 60-patient necrotizing cohort, PMID 42282365) and -> tinnitus withheld as skull-base-
+osteomyelitis manifestation (imaging indicator, 96.7% specificity, PMID 37090887). Otosclerosis ->
+dizziness withheld (post-stapedotomy vestibular dysfunction is treatment-mediated and transient; the
+hydrops interaction is contested). Ovarian-cysts -> ovarian-cancer withheld below threshold (malignant-
+transformation evidence case-level; endometrioma-associated risk owned by the published endometriosis
+ovarian-cancer window, PMID 24518590, ME-29; PCOS tumour-risk literature is a different identity's scope);
+-> chronic-pelvic-pain-syndrome withheld on shared-substrate grounds (endometrioma sclerotherapy evidence
+where endometriosis drives both cyst and pain); ovarian torsion, cyst rupture with hemoperitoneum, and
+infertility recorded as withheld propositions with no catalog identities.
+
+Pre-authoring verification: all 10 PMIDs passed the abstract pass (`/tmp/d1-abstract47.py` in five fetch
+groups), the esummary bibliographic pass with every citation re-verified against the PubMed record, and
+`node scripts/preflight-source-status.js --pmids ...` (11/11 checked including the note-only necrotizing-
+cohort PMID, zero blocking flags, zero notes). The post-write structural self-audit passed for all five
+files (6 edges, 12 reference uses; two accepted single-ref warnings on osgood-schlatter-disease to
+tendinopathy and ovarian-cysts to menstrual-disorders) and `npm run kb:validate` reports zero errors.
+
+Registry after lockstep: 722 relationships (648 explicit / 74 legacy), 1273 reference uses (383
+verified / 890 pending-verification), 1268 clinical / 5 legal uses, 1143 source entities (346 active /
+788 pending-verification). Within-batch shared sources - PMIDs 41174987 and 35878633 each across the two
+otosclerosis conductive/tinnitus edges - give 12 reference uses over 10 new sources. Citation packet
+regenerated at 359 worksheets / 890 reference rows = live citation debt; the verification dashboard
+regenerated at 890 rows in 37 reviewer batches (786 distinct sources). Backlog after batch 67: **155**
+undispositioned zero-edge drafts (160 before the batch; four identities left by gaining edges and one by
+recorded deferral). Next-five: `overactive-bladder`, `overflow-incontinence`, `panner-s-disease`,
+`papilledema`, `paradoxical-vocal-fold-motion`.
+
+Structural-debt note: batch-67 edges produced zero new CRG findings - the analyzer reports review-class
+13 against baseline 13 and redundancy 28 against baseline 28 unchanged after the six edges landed. The
+otosclerosis tinnitus triangle (otosclerosis -> conductive-hearing-loss -> tinnitus plus otosclerosis ->
+tinnitus) did NOT register as a redundancy conflict under the analyzer's current semantics, compounding
+the batch-65 sibling-triangle observation; the shared evidence provenance (the conductive-hearing-loss ->
+tinnitus window's anchors are otosclerosis cohorts) is recorded on the otosclerosis file and the semantics
+question should be settled before more chain-triangle edges accumulate.
+
+Test-pin note: the sweep touched 54 files and replaced 316 counter tokens in one pass with the batch-66
+per-token context predicates carried over unchanged (relationships 716 -> 722, references/uses 1261 ->
+1273, unverified 878 -> 890, pending source entities 778 -> 788, total source entities 1133 -> 1143,
+explicit guards 642 -> 648, clinical references 1256 -> 1268, clinical provenance 1260 -> 1272, and the
+draft-singles counter 281 -> 284 for this batch's three single-suggestion identities
+`osgood-schlatter-disease`, `otitis-externa`, and `ovarian-cysts`). The explicit fixture token continued
+to carry the citation-decay-gate debt fixture automatically (878 -> 890) - seventh consecutive batch
+with no manual fixture bump. Residue clean outside the standing benign coincidences (apply-all-94's
+historical `explicitPublicationGuards: 273`; wave-5's `toBeGreaterThanOrEqual(276)` catalog floor;
+legal-copy's `38 U.S.C. § 1117` statute text).
+Standing recommendation: batch 67 lands through branch, PR, CI, and merge.

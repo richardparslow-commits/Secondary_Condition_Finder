@@ -12645,6 +12645,198 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 **Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
 
+### `osgood-schlatter-disease` → `tendinopathy` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Osgood-Schlatter disease documents patellar tendinopathy (jumper's knee) at national-registry cohort level: the Danish national cohort study of adults with adolescent Osgood-Schlatter diagnosed in secondary care 1977-2020 (400 survey respondents of 1,281 registry cases) found a large risk of jumper's knee versus healthy population estimates (odds ratio 70.4, 95 percent CI 32.9-155.0, p < 0.0001), alongside 73 percent reporting sustained pain or problems from the tibial tubercle area and significantly lower Knee injury and Osteoarthritis Outcome Score across all subscales with recalled symptom duration and pain levels negatively associated with outcomes (PMID 40439870); recorded as documented association only with the shared-substrate limit carried openly.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: the anchor is a cross-sectional survey of adults recalling adolescent Osgood-Schlatter, so the jumper's knee association may reflect shared athletic overuse of the extensor mechanism, recall bias, or malalignment rather than a sequela of the apophysitis, and individual claims require dated musculoskeletal assessment with training-load, patellar-tendon-overuse, and malalignment exclusion.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 354.1 — Krommes K, Bjerre A, Thorborg K, et al. Long-Term Knee Health in Adults with a History of Adolescent Osgood-Schlatter: A National Cohort Study of Patients in Secondary Care in Denmark 1977-2020 Sports Med. 2025 Jul;55(7):1769-1781. PMID 40439870.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/40439870/
+- Source checked on: 2026-09-26
+- Locator: PMID 40439870; results (jumper's knee odds ratio and long-term knee health comparisons)
+- Note under review: Danish national registry cohort (Sports Med 2025): 400 survey respondents of 1,281 registry cases of adolescent Osgood-Schlatter diagnosed in hospitals 1977-2020; jumper's knee risk versus healthy population estimates OR 70.4 (95% CI 32.9-155.0, p<0.0001); bony tibial tubercle prominence 85%, sustained same-area pain/problems 73%; KOOS lower on all subscales (sport/rec and quality of life worst, Cohen's d > 0.8); recalled duration and pain levels negatively associated with outcomes; supports the bounded association only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `otitis-externa` → `cranial-nerve-palsy` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Malignant (necrotizing) otitis externa documents cranial nerve palsy at national-database and cohort level: the US National Inpatient Sample analysis of 5,585 malignant otitis externa inpatient stays (2016-2022) found facial nerve palsy in 695 stays (12.4 percent), with palsy stays involving older patients, greater comorbidity burden, longer hospitalizations (7.8 versus 5.2 days), and more complex discharge needs (PMID 41503884), the single-center cohort of 119 malignant otitis externa patients found cranial nerve involvement in 27.7 percent with the facial nerve most common (26.1 percent) and skull base osteomyelitis present in 59 (PMID 37090887), and the TriNetX analysis comparing 12,032 malignant otitis externa patients with 719 who developed facial nerve palsy identified male sex and comorbid hypertension (OR 3.72), chronic kidney disease (OR 3.12), and malnutrition (OR 3.44) as predictors (PMID 41492806); recorded as documented association only with the malignant-subtype scope carried openly.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: every quantified anchor is scoped to the malignant (necrotizing) subtype of otitis externa, a rare invasive form, and the edge does not generalize to uncomplicated otitis externa (a 133-patient clinic cohort recorded complications in only one case, PMID 26328002), so individual claims require dated neurologic examination and temporal-bone imaging review with diabetic, iatrogenic, and neoplastic exclusion.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 355.1 — Thompson ER, Saad AM, Haimowitz SZ, et al. Facial Nerve Palsy in Malignant Otitis Externa Hospitalizations: Outcomes and Risk Factors Otolaryngol Head Neck Surg. 2026 Mar;174(3):733-740. PMID 41503884.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/41503884/
+- Source checked on: 2026-09-26
+- Locator: PMID 41503884; results (facial palsy frequency and outcomes in MOE stays)
+- Note under review: US National Inpatient Sample analysis 2016-2022 (Otolaryngol Head Neck Surg 2026): 5,585 malignant otitis externa inpatient stays, 695 (12.4%) involving facial nerve palsy; palsy stays older (71.2 versus 56.1 years), more comorbid, longer stays (7.8 versus 5.2 days), smaller routine-discharge proportions; supports the bounded subtype association only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 355.2 — Zonnour A, Shahnazar R, Jamshidi A, et al. Cranial nerve palsy prevalence and associated factors in patients with malignant otitis externa Laryngoscope Investig Otolaryngol. 2023 Apr;8(2):538-545. PMID 37090887.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/37090887/
+- Source checked on: 2026-09-26
+- Locator: PMID 37090887; results (cranial nerve palsy prevalence and associated factors)
+- Note under review: Single-center retrospective cohort of 119 malignant otitis externa patients 2011-2014 (Laryngoscope Investig Otolaryngol 2023): cranial nerve involvement in 33 (27.7%), facial nerve most common (26.1%); skull base osteomyelitis in 59; male gender and advanced age related to higher palsy rates; tinnitus correlated with skull base osteomyelitis on imaging (specificity 96.7%); supports the bounded subtype association only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 355.3 — Isildak H. Predictive factors for facial nerve palsy in malignant otitis externa: a TriNetX data analysis J Laryngol Otol. 2026 Mar;140(3):252-257. PMID 41492806.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/41492806/
+- Source checked on: 2026-09-26
+- Locator: PMID 41492806; results (predictive factors and cohort comparisons)
+- Note under review: TriNetX retrospective analysis (J Laryngol Otol 2026): malignant otitis externa-only (n=12,032) versus malignant otitis externa with facial nerve palsy (n=719) cohorts; male sex, Hispanic ethnicity, hypoalbuminemia, elevated BUN/glucose/ESR, hypertension (OR 3.72), chronic kidney disease (OR 3.12), malnutrition (OR 3.44), electrolyte imbalance (OR 2.59) predicted palsy; supports the bounded risk-factor association only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `otosclerosis` → `conductive-hearing-loss` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Otosclerosis documents conductive hearing loss at systematic-review and prospective-comparative level: the systematic review of stapes surgery outcomes in otosclerosis (22 studies, 2,233 patients; PROSPERO CRD42024566593) frames the disease as a progressive hereditary temporal bone disorder causing tinnitus and conductive hearing loss with stapes surgery restoring air-bone gaps (PMID 41174987), and the prospective comparative study of unilateral otosclerosis enrolled patients with conductive hearing loss of at least 30 dB caused by otosclerosis and found stapedotomy improved pure-tone averages by 11.1 dB and air-bone gaps by 11.8 dB versus hearing aids (PMID 35878633); recorded as documented association only.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: stapes footplate fixation is the accepted mechanism of the conductive component but hearing loss in an individual may also reflect cochlear otosclerosis, chronic otitis media, prior surgery, or presbycusis and noise, so individual claims require dated audiometry with air-bone-gap characterization and otologic exclusion.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 356.1 — Hail NA, Haider H. Impact of Stapedectomy on Tinnitus Severity and Hearing Outcomes in Patients With Otosclerosis: A Systematic Review Ear Nose Throat J. 2025 Nov 1:1455613251382671. PMID 41174987.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/41174987/
+- Source checked on: 2026-09-26
+- Locator: PMID 41174987; review scope and hearing-outcome findings
+- Note under review: Systematic review of stapedectomy impact on tinnitus and hearing outcomes in otosclerosis (Ear Nose Throat J 2025; PROSPERO CRD42024566593; 22 studies, 2,233 patients): frames otosclerosis as a progressive hereditary temporal bone disease causing tinnitus and conductive hearing loss; stapes surgery improved hearing outcomes consistently with tinnitus improvement correlating with air-bone-gap closure; supports the bounded disease-framing association only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 356.2 — Molinier CE, Gallois Y, Deguine O, et al. Stapedotomy Versus Hearing Aids in the Management of Conductive Hearing Loss Caused by Otosclerosis: A Prospective Comparative Study Otol Neurotol. 2022 Aug 1;43(7):773-780. PMID 35878633.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/35878633/
+- Source checked on: 2026-09-26
+- Locator: PMID 35878633; methods (inclusion criteria) and results (air-bone gap outcomes)
+- Note under review: Prospective comparative cohort of 22 unilateral otosclerosis patients with conductive hearing loss >= 30 dB caused by otosclerosis (Otol Neurotol 2022): stapedotomy versus hearing aids improved pure-tone averages (-11.1 dB, p=0.002) and air-bone gaps (-11.8 dB, p=0.0006) and quality of life; supports the bounded otosclerosis-attributed conductive-loss association only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `otosclerosis` → `tinnitus` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Otosclerosis documents tinnitus at systematic-review and clinicoepidemiological level: the systematic review of stapes surgery outcomes in otosclerosis (22 studies, 2,233 patients) reports tinnitus improvement in 15.7 to 64 percent of patients after stapedectomy (median 46.3 percent) with a moderate-to-strong correlation between tinnitus improvement and air-bone-gap closure (PMID 41174987), the Shanghai incidence study of 1,147 symptomatic otosclerosis surgical inpatients relates greater CT lesion severity to preoperative tinnitus (PMID 41504238), and the prospective stapedotomy cohort found improved self-evaluated tinnitus (Tinnitus Handicap Inventory -8.0, visual analog -28.7) after stapedotomy but not after hearing aids (PMID 35878633); recorded as documented association only with the sibling-window provenance note carried openly.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: tinnitus is multifactorial and the located otosclerosis evidence is treatment-selected surgical populations in which tinnitus improvement correlates with conductive-gap closure, so whether any individual tinnitus is attributable to the otosclerosis requires individual audiologic attribution with noise, medication, and presbycusis exclusion; the published conductive-hearing-loss to tinnitus window rests on otosclerosis-anchored cohorts and its evidence is NOT recycled here per ME-29 (disjoint sources are used).
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 357.1 — Hail NA, Haider H. Impact of Stapedectomy on Tinnitus Severity and Hearing Outcomes in Patients With Otosclerosis: A Systematic Review Ear Nose Throat J. 2025 Nov 1:1455613251382671. PMID 41174987.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/41174987/
+- Source checked on: 2026-09-26
+- Locator: PMID 41174987; review results (tinnitus outcomes after stapes surgery)
+- Note under review: Systematic review (22 studies, 2,233 otosclerosis patients; Ear Nose Throat J 2025): tinnitus improvement after stapes surgery in 15.7-64% of patients (median 46.3%), worsening in 2.9-11%; moderate-to-strong relation between tinnitus improvement and air-bone-gap closure (32%) and tinnitus resolution versus gap closure (55%); supports the bounded tinnitus association only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 357.2 — Fang Y, Li W, Gu D, et al. The incidence and clinicoepidemiological features of symptomatic otosclerosis Acta Otolaryngol. 2026 Mar;146(3):334-343. PMID 41504238.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/41504238/
+- Source checked on: 2026-09-26
+- Locator: PMID 41504238; results (CT severity correlations with preoperative symptoms)
+- Note under review: Shanghai incidence and clinicoepidemiological study of symptomatic otosclerosis (Acta Otolaryngol 2026; 1,147 surgical inpatients; incidence 2.5 per 100,000): increased CT lesion severity related to preoperative tinnitus and bilateral incidence; 72.8% accurately diagnosed at first visit; supports the bounded tinnitus-severity association only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 357.3 — Molinier CE, Gallois Y, Deguine O, et al. Stapedotomy Versus Hearing Aids in the Management of Conductive Hearing Loss Caused by Otosclerosis: A Prospective Comparative Study Otol Neurotol. 2022 Aug 1;43(7):773-780. PMID 35878633.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/35878633/
+- Source checked on: 2026-09-26
+- Locator: PMID 35878633; results (tinnitus outcomes by treatment)
+- Note under review: Prospective comparative cohort of 22 unilateral otosclerosis patients (Otol Neurotol 2022): stapedotomy, but not hearing aids, improved self-evaluated tinnitus (Tinnitus Handicap Inventory -8.0 +/- 13.4, p=0.02; visual analog intensity -28.7, p=0.006) after baseline adjustment; supports the bounded treatment-response association only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `otosclerosis` → `hearing-loss` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Advanced otosclerosis documents progressive sensorineural and mixed hearing loss at treatment-cohort and case level: the cohort study of 38 patients with bilateral advanced otosclerosis frames the disease as a hereditary disorder causing progressive hearing loss in adults, with 15 requiring cochlear implantation and 23 managed by stapedotomy plus hearing aid, both groups improving but the cochlear-implant group showing superior speech outcomes (PMID 42345416), and the surgical case report of advanced otosclerosis with mixed hearing loss (air-bone gap 55 dB reduced to 20 dB after stapedotomy, residual mixed loss rehabilitated by active middle-ear implant) documents the mixed-loss phenotype's rehabilitative requirements (PMID 29891017); recorded as documented association only with the stage and composite limits carried openly.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: the sensorineural component reflects cochlear otosclerosis whose intracochlear mechanism is not established, the anchors are treatment-selected advanced disease, and individual claims require dated serial audiometry with air-bone-gap and bone-conduction characterization and competing otologic exclusion.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 358.1 — Ramasamy S, Vadivu AS, Nandhan SR, et al. Management Options and Their outcomes in Bilateral Advanced Otosclerosis J Int Adv Otol. 2026 Mar 25;22(1):1-6. PMID 42345416.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42345416/
+- Source checked on: 2026-09-26
+- Locator: PMID 42345416; framing and results (hearing and speech outcomes in advanced disease)
+- Note under review: Cohort study of 38 patients with bilateral advanced otosclerosis (J Int Adv Otol 2026): framing of otosclerosis as a hereditary disorder causing progressive hearing loss in adults; cochlear implantation (n=15) versus stapedotomy plus hearing aid (n=23); both improved hearing, speech outcomes superior with implantation; vertigo and tinnitus symptoms improved with treatment; supports the bounded advanced-progressive association only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 358.2 — Powell HRF, Pai I, Ghulam H, et al. An alternative approach to mixed hearing loss in otosclerosis: stapes surgery combined with an active middle-ear implant J Laryngol Otol. 2018 May;132(5):457-460. PMID 29891017.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/29891017/
+- Source checked on: 2026-09-26
+- Locator: PMID 29891017; case description (mixed hearing loss in advanced otosclerosis)
+- Note under review: Surgical case report of advanced otosclerosis with mixed hearing loss (J Laryngol Otol 2018): 50-year-old male, air-bone gap 55 dB reduced to 20 dB after stapedotomy, residual mixed loss rehabilitated by active middle-ear implant (32 dB device gain); supports the bounded mixed-loss phenotype framing only, without a denominator.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `ovarian-cysts` → `menstrual-disorders` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Ovarian cysts are documented among the leading structural findings in abnormal uterine bleeding at retrospective ultrasound-cohort level: the pelvic ultrasound study of 169 patients presenting with abnormal uterine bleeding at a tertiary hospital (2018-2020) found ovarian cysts the most common sonographic finding in both early and late reproductive groups (27.11 and 22.56 percent respectively), with the majority of cysts likely benign and fibroids dominant in the menopausal group (PMID 42257258); recorded as documented association only with the direction and ascertainment limits carried openly.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: the anchor sampled women already presenting with bleeding (ascertainment conditioned on the outcome) so it cannot establish that cysts preceded the bleeding, functional cysts and anovulation are interdependent rather than sequential, and polycystic ovarian morphology is a distinct entity excluded from this mapping scope, so individual claims require dated pelvic imaging and endocrine evaluation with ovulatory, contraceptive, structural, and pregnancy exclusion.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 359.1 — Abdeen R, Almalki AS, Rahmatullah HS, et al. Pelvic Ultrasound Features of Abnormal Uterine Bleeding Curr Med Imaging. 2026;22:e15734056275637. PMID 42257258.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42257258/
+- Source checked on: 2026-09-26
+- Locator: PMID 42257258; results (sonographic finding frequencies by age group)
+- Note under review: Retrospective pelvic ultrasound study of 169 patients presenting with abnormal uterine bleeding at a tertiary hospital 2018-2020 (Curr Med Imaging 2026): ovarian cysts the most common finding in early (27.11%) and late (22.56%) reproductive groups; uterine enlargement/fibroids dominant late-reproductive and menopausal; majority of cysts likely benign; supports the bounded co-occurrence association only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
 ## Implementation mechanics after decisions
 
 - Mapping edits and registry edits must land in lockstep (the registry audit's canonical-JSON hashes and live-use sets will fail otherwise).

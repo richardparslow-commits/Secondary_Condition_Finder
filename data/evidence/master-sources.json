@@ -16,16 +16,16 @@
   "citationPromotionMustAtomicallyUpdateKbAndMasterSourceState": true
  },
  "counts": {
-  "liveSourceReferenceUses": 1261,
+  "liveSourceReferenceUses": 1273,
   "activeSourceEntities": 346,
-  "pendingVerificationSourceEntities": 778,
+  "pendingVerificationSourceEntities": 788,
   "activeClinicalSourceEntities": 345,
-  "pendingClinicalSourceEntities": 778,
+  "pendingClinicalSourceEntities": 788,
   "activeLegalAuthorityEntities": 1,
   "retiredOnlySourceEntities": 1,
   "supersededUnverifiedSourceEntities": 7,
   "bibliographicCorrectionOnlyEntities": 1,
-  "totalSourceEntitiesIncludingLineage": 1133,
+  "totalSourceEntitiesIncludingLineage": 1143,
   "retiredVerifiedRelationshipSourceUses": 6
  },
  "retirementLedger": {
@@ -41901,6 +41901,370 @@
    "retiredUses": [],
    "rawReferenceHashes": [
     "a3c21ce488894c1d3e2b75301ebb996835a532de435975a8119fb13f8b4164d8"
+   ]
+  },
+  {
+   "sourceId": "pmid-40439870",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "40439870",
+   "doi": null,
+   "canonicalCitation": "Krommes K, Bjerre A, Thorborg K, et al. Long-Term Knee Health in Adults with a History of Adolescent Osgood-Schlatter: A National Cohort Study of Patients in Secondary Care in Denmark 1977-2020 Sports Med. 2025 Jul;55(7):1769-1781. PMID 40439870.",
+   "citationVariants": [
+    "Krommes K, Bjerre A, Thorborg K, et al. Long-Term Knee Health in Adults with a History of Adolescent Osgood-Schlatter: A National Cohort Study of Patients in Secondary Care in Denmark 1977-2020 Sports Med. 2025 Jul;55(7):1769-1781. PMID 40439870."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40439870/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/40439870/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-osgood-schlatter-disease-to-tendinopathy",
+     "primaryId": "osgood-schlatter-disease",
+     "targetId": "tendinopathy",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "08d1d8bf7d98f00d9eded989980c9d4a3ce053c497fc046dc50f38dcbe4dcacf"
+   ]
+  },
+  {
+   "sourceId": "pmid-41503884",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "41503884",
+   "doi": null,
+   "canonicalCitation": "Thompson ER, Saad AM, Haimowitz SZ, et al. Facial Nerve Palsy in Malignant Otitis Externa Hospitalizations: Outcomes and Risk Factors Otolaryngol Head Neck Surg. 2026 Mar;174(3):733-740. PMID 41503884.",
+   "citationVariants": [
+    "Thompson ER, Saad AM, Haimowitz SZ, et al. Facial Nerve Palsy in Malignant Otitis Externa Hospitalizations: Outcomes and Risk Factors Otolaryngol Head Neck Surg. 2026 Mar;174(3):733-740. PMID 41503884."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41503884/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/41503884/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-otitis-externa-to-cranial-nerve-palsy",
+     "primaryId": "otitis-externa",
+     "targetId": "cranial-nerve-palsy",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "8e903ec944ef19fbb0d1466e401e5ba41b62e58a16f8cda9b59414ab25169966"
+   ]
+  },
+  {
+   "sourceId": "pmid-37090887",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "37090887",
+   "doi": null,
+   "canonicalCitation": "Zonnour A, Shahnazar R, Jamshidi A, et al. Cranial nerve palsy prevalence and associated factors in patients with malignant otitis externa Laryngoscope Investig Otolaryngol. 2023 Apr;8(2):538-545. PMID 37090887.",
+   "citationVariants": [
+    "Zonnour A, Shahnazar R, Jamshidi A, et al. Cranial nerve palsy prevalence and associated factors in patients with malignant otitis externa Laryngoscope Investig Otolaryngol. 2023 Apr;8(2):538-545. PMID 37090887."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/37090887/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/37090887/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-otitis-externa-to-cranial-nerve-palsy",
+     "primaryId": "otitis-externa",
+     "targetId": "cranial-nerve-palsy",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "d3bd44bae81a039e8028d8b0e8787ab6cec90dbebea6c8fd842608023458dc3b"
+   ]
+  },
+  {
+   "sourceId": "pmid-41492806",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "41492806",
+   "doi": null,
+   "canonicalCitation": "Isildak H. Predictive factors for facial nerve palsy in malignant otitis externa: a TriNetX data analysis J Laryngol Otol. 2026 Mar;140(3):252-257. PMID 41492806.",
+   "citationVariants": [
+    "Isildak H. Predictive factors for facial nerve palsy in malignant otitis externa: a TriNetX data analysis J Laryngol Otol. 2026 Mar;140(3):252-257. PMID 41492806."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41492806/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/41492806/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-otitis-externa-to-cranial-nerve-palsy",
+     "primaryId": "otitis-externa",
+     "targetId": "cranial-nerve-palsy",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "d25a1c8fc5dfbdb936d304f06ad628c04882060b8b77a9f4fc00cc7f141d1f15"
+   ]
+  },
+  {
+   "sourceId": "pmid-41174987",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "41174987",
+   "doi": null,
+   "canonicalCitation": "Hail NA, Haider H. Impact of Stapedectomy on Tinnitus Severity and Hearing Outcomes in Patients With Otosclerosis: A Systematic Review Ear Nose Throat J. 2025 Nov 1:1455613251382671. PMID 41174987.",
+   "citationVariants": [
+    "Hail NA, Haider H. Impact of Stapedectomy on Tinnitus Severity and Hearing Outcomes in Patients With Otosclerosis: A Systematic Review Ear Nose Throat J. 2025 Nov 1:1455613251382671. PMID 41174987."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41174987/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/41174987/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 2,
+   "liveUses": [
+    {
+     "relationshipId": "rel-otosclerosis-to-conductive-hearing-loss",
+     "primaryId": "otosclerosis",
+     "targetId": "conductive-hearing-loss",
+     "sourceIndex": 0
+    },
+    {
+     "relationshipId": "rel-otosclerosis-to-tinnitus",
+     "primaryId": "otosclerosis",
+     "targetId": "tinnitus",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "3e9b49f0defc9ce20c44fcfba133be1a411518f96c0871ec9a24550ce6fca2f4",
+    "cb634fc2e18ae3ba142b8cd08c14d6a67ce91df30f57da69dea9047544b8a9f6"
+   ]
+  },
+  {
+   "sourceId": "pmid-35878633",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "35878633",
+   "doi": null,
+   "canonicalCitation": "Molinier CE, Gallois Y, Deguine O, et al. Stapedotomy Versus Hearing Aids in the Management of Conductive Hearing Loss Caused by Otosclerosis: A Prospective Comparative Study Otol Neurotol. 2022 Aug 1;43(7):773-780. PMID 35878633.",
+   "citationVariants": [
+    "Molinier CE, Gallois Y, Deguine O, et al. Stapedotomy Versus Hearing Aids in the Management of Conductive Hearing Loss Caused by Otosclerosis: A Prospective Comparative Study Otol Neurotol. 2022 Aug 1;43(7):773-780. PMID 35878633."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35878633/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/35878633/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 2,
+   "liveUses": [
+    {
+     "relationshipId": "rel-otosclerosis-to-conductive-hearing-loss",
+     "primaryId": "otosclerosis",
+     "targetId": "conductive-hearing-loss",
+     "sourceIndex": 1
+    },
+    {
+     "relationshipId": "rel-otosclerosis-to-tinnitus",
+     "primaryId": "otosclerosis",
+     "targetId": "tinnitus",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "26332ff318335f7db9bb5aaef3a82f9ff910771f06aa37a60fe9e01c64e4e418",
+    "6aa005f3adc6a269170fdef63984772c87d674e0fdb685178a8c5fa68f3ce581"
+   ]
+  },
+  {
+   "sourceId": "pmid-41504238",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "41504238",
+   "doi": null,
+   "canonicalCitation": "Fang Y, Li W, Gu D, et al. The incidence and clinicoepidemiological features of symptomatic otosclerosis Acta Otolaryngol. 2026 Mar;146(3):334-343. PMID 41504238.",
+   "citationVariants": [
+    "Fang Y, Li W, Gu D, et al. The incidence and clinicoepidemiological features of symptomatic otosclerosis Acta Otolaryngol. 2026 Mar;146(3):334-343. PMID 41504238."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41504238/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/41504238/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-otosclerosis-to-tinnitus",
+     "primaryId": "otosclerosis",
+     "targetId": "tinnitus",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "a84d8cda17ca670a0afe87e2ab24080b908494025c34552f0a739b591f9c2488"
+   ]
+  },
+  {
+   "sourceId": "pmid-42345416",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "42345416",
+   "doi": null,
+   "canonicalCitation": "Ramasamy S, Vadivu AS, Nandhan SR, et al. Management Options and Their outcomes in Bilateral Advanced Otosclerosis J Int Adv Otol. 2026 Mar 25;22(1):1-6. PMID 42345416.",
+   "citationVariants": [
+    "Ramasamy S, Vadivu AS, Nandhan SR, et al. Management Options and Their outcomes in Bilateral Advanced Otosclerosis J Int Adv Otol. 2026 Mar 25;22(1):1-6. PMID 42345416."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42345416/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/42345416/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-otosclerosis-to-hearing-loss",
+     "primaryId": "otosclerosis",
+     "targetId": "hearing-loss",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "c3d8e62e1aa6f5f15157959b81d260d28abec2a9052ec3e6a687a2f98b191791"
+   ]
+  },
+  {
+   "sourceId": "pmid-29891017",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "29891017",
+   "doi": null,
+   "canonicalCitation": "Powell HRF, Pai I, Ghulam H, et al. An alternative approach to mixed hearing loss in otosclerosis: stapes surgery combined with an active middle-ear implant J Laryngol Otol. 2018 May;132(5):457-460. PMID 29891017.",
+   "citationVariants": [
+    "Powell HRF, Pai I, Ghulam H, et al. An alternative approach to mixed hearing loss in otosclerosis: stapes surgery combined with an active middle-ear implant J Laryngol Otol. 2018 May;132(5):457-460. PMID 29891017."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/29891017/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/29891017/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-otosclerosis-to-hearing-loss",
+     "primaryId": "otosclerosis",
+     "targetId": "hearing-loss",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "49ea85c65e5b560c712863b6f0891d5218daa7f51db4f4d3a5fd56d510d88689"
+   ]
+  },
+  {
+   "sourceId": "pmid-42257258",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "42257258",
+   "doi": null,
+   "canonicalCitation": "Abdeen R, Almalki AS, Rahmatullah HS, et al. Pelvic Ultrasound Features of Abnormal Uterine Bleeding Curr Med Imaging. 2026;22:e15734056275637. PMID 42257258.",
+   "citationVariants": [
+    "Abdeen R, Almalki AS, Rahmatullah HS, et al. Pelvic Ultrasound Features of Abnormal Uterine Bleeding Curr Med Imaging. 2026;22:e15734056275637. PMID 42257258."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42257258/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/42257258/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-ovarian-cysts-to-menstrual-disorders",
+     "primaryId": "ovarian-cysts",
+     "targetId": "menstrual-disorders",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "6d5d82efb511cbf09b0f82b6643014752986df6eeb1feafb58da47c9293a4759"
    ]
   }
  ],

@@ -2,8 +2,78 @@
   "id": "otitis-externa",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review otologic, vestibular, audiologic, visual, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 67 (2026-09-26): one ASSOCIATION_ONLY draft mapping pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: the edge asserts association only (etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true, mechanismCategory INFECTIOUS_SPREAD). The evidence base is entirely scoped to the malignant/necrotizing subtype (national database plus cohorts), so individual claims require dated neurologic examination and temporal-bone imaging with competing-cause exclusion, and review by a qualified medical professional. The edge must not be read as applying to uncomplicated otitis externa.",
+    "Pathway and duplicate-scope screens: no -> conductive-hearing-loss or -> hearing-loss edge (below authoring threshold - the sole located quantification is mild conductive hearing loss in 16.7 percent of a 60-patient diabetic necrotizing-otitis-externa cohort (PMID 42282365), while general otitis externa cohorts show near-universal symptom resolution (91 percent by second visit, complications in one case of 133, PMID 26328002) and transient canal-obstructive loss is unquantified; reopening condition: an audiometric cohort in uncomplicated otitis externa); no -> tinnitus edge (withheld - tinnitus in the located material is a skull base osteomyelitis imaging indicator within malignant otitis externa (PMID 37090887), a manifestation of the invasive process rather than a secondary condition); scope discipline - the malignant/necrotizing subtype carries all quantified evidence and is explicitly scoped on the edge; the published otitis-media hearing-loss window keeps its own evidence (ME-29) and is not recycled; direction discipline - database anchors are cross-sectional administrative cohorts, so no forward causal direction is asserted beyond the association itself."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 67 (2026-09-26): one bounded association edge authored - otitis-externa to cranial-nerve-palsy (rank 1) - classified ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, and hypothesizedOnly:true, scoped explicitly to the malignant/necrotizing subtype. The proposition rests on the National Inpatient Sample analysis (facial palsy 12.4% of 5,585 stays; PMID 41503884), the 119-patient single-center cohort (cranial nerve involvement 27.7%, facial 26.1%, skull base osteomyelitis in half; PMID 37090887), and the TriNetX predictor analysis (12,032 versus 719 patients; PMID 41492806).",
+    "Counter-evidence and caveat screens recorded 2026-09-26: (i) subtype scope - uncomplicated otitis externa rarely complicates (one complication in 133 Kaduna clinic cases, PMID 26328002), so the edge's applicability is bounded to invasive disease and generalization is expressly disclaimed; (ii) prevalence heterogeneity - palsy frequency ranges 12.4 to 27.7 percent across cohorts (administrative coding versus chart review), so no single incidence is asserted; (iii) diabetic substrate - diabetes dominates all anchors and its microvascular neuropathy competes as an independent facial-palsy cause; (iv) withheld hearing edge - mild conductive loss (16.7%) in the necrotizing cohort (PMID 42282365) is below the authoring threshold pending corroboration, and transient canal-obstructive loss in general otitis externa is unquantified; (v) withheld tinnitus proposition - tinnitus is a skull base osteomyelitis indicator within malignant otitis externa (specificity 96.7 percent for imaging findings, PMID 37090887), a manifestation of the invasive process rather than a downstream condition."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "cranial-nerve-palsy",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Malignant (necrotizing) otitis externa documents cranial nerve palsy at national-database and cohort level: the US National Inpatient Sample analysis of 5,585 malignant otitis externa inpatient stays (2016-2022) found facial nerve palsy in 695 stays (12.4 percent), with palsy stays involving older patients, greater comorbidity burden, longer hospitalizations (7.8 versus 5.2 days), and more complex discharge needs (PMID 41503884), the single-center cohort of 119 malignant otitis externa patients found cranial nerve involvement in 27.7 percent with the facial nerve most common (26.1 percent) and skull base osteomyelitis present in 59 (PMID 37090887), and the TriNetX analysis comparing 12,032 malignant otitis externa patients with 719 who developed facial nerve palsy identified male sex and comorbid hypertension (OR 3.72), chronic kidney disease (OR 3.12), and malnutrition (OR 3.44) as predictors (PMID 41492806); recorded as documented association only with the malignant-subtype scope carried openly.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: every quantified anchor is scoped to the malignant (necrotizing) subtype of otitis externa, a rare invasive form, and the edge does not generalize to uncomplicated otitis externa (a 133-patient clinic cohort recorded complications in only one case, PMID 26328002), so individual claims require dated neurologic examination and temporal-bone imaging review with diabetic, iatrogenic, and neoplastic exclusion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "INFECTIOUS_SPREAD",
+        "primaryVector": "Invasive Pseudomonas-dominant infection spreading from the external auditory canal through canal bone into the skull base (temporal bone osteomyelitis) drives facial and lower cranial nerve injury so cranial nerve palsy results, the direct-extension route supported by the skull base osteomyelitis co-occurrence and the facial nerve predominance across three independent cohorts, but whether this route produced any individual palsy remains hypothesized until imaging, culture, and neurologic records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at national-database retrospective plus single-center cohort class only: all anchors are malignant-subtype populations, palsy ascertainment relies on administrative diagnosis codes in the database studies, and the prevalence range varies widely by cohort (12.4 to 27.7 percent) reflecting referral and severity mix rather than a stable incidence.",
+        "evidenceGaps": "All quantified evidence is scoped to the rare malignant/necrotizing subtype so uncomplicated otitis externa risk is unquantified (the Kaduna clinic cohort of 133 otitis externa patients recorded a single complication, PMID 26328002); database studies rely on ICD-coded palsy ascertainment; prevalence varies 12.4 to 27.7 percent across cohorts; diabetes dominates these populations and its microvascular neuropathy competes as cause; and temporal bone neoplasm, iatrogenic injury, Bell palsy, and central causes compete for individual attribution.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "diabetic microvascular cranial neuropathy (diabetes dominates every anchor cohort)",
+          "temporal bone or skull base neoplasm mimicking malignant otitis externa (the diagnostic-mimic literature)",
+          "iatrogenic or surgical facial nerve injury",
+          "Bell palsy and other idiopathic facial neuropathy",
+          "stroke and central causes of facial weakness"
+        ]
+      },
+      "evidenceGaps": [
+        "All quantified evidence is scoped to the rare malignant/necrotizing subtype so uncomplicated otitis externa risk is unquantified (the Kaduna clinic cohort of 133 otitis externa patients recorded a single complication, PMID 26328002); database studies rely on ICD-coded palsy ascertainment; prevalence varies 12.4 to 27.7 percent across cohorts; diabetes dominates these populations and its microvascular neuropathy competes as cause; and temporal bone neoplasm, iatrogenic injury, Bell palsy, and central causes compete for individual attribution."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY at national-database plus single-center-cohort class with the malignant-subtype scope limit carried openly: the National Inpatient Sample analysis found facial palsy in 12.4 percent of 5,585 malignant otitis externa stays (PMID 41503884), the 119-patient cohort found cranial nerve involvement in 27.7 percent with skull base osteomyelitis co-occurring (PMID 37090887), and the TriNetX analysis identified independent predictors of facial palsy (PMID 41492806); because every anchor is the invasive subtype with administrative ascertainment and diabetes-dominated populations, the conservative standard keeps the edge at association only, carries the subtype scope openly rather than generalizing to uncomplicated otitis externa, and routes individual claims through dated neurologic and temporal-bone imaging review with diabetic, neoplastic, and iatrogenic exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Thompson ER, Saad AM, Haimowitz SZ, et al. Facial Nerve Palsy in Malignant Otitis Externa Hospitalizations: Outcomes and Risk Factors Otolaryngol Head Neck Surg. 2026 Mar;174(3):733-740. PMID 41503884.",
+          "note": "US National Inpatient Sample analysis 2016-2022 (Otolaryngol Head Neck Surg 2026): 5,585 malignant otitis externa inpatient stays, 695 (12.4%) involving facial nerve palsy; palsy stays older (71.2 versus 56.1 years), more comorbid, longer stays (7.8 versus 5.2 days), smaller routine-discharge proportions; supports the bounded subtype association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41503884/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 41503884; results (facial palsy frequency and outcomes in MOE stays)"
+        },
+        {
+          "citation": "Zonnour A, Shahnazar R, Jamshidi A, et al. Cranial nerve palsy prevalence and associated factors in patients with malignant otitis externa Laryngoscope Investig Otolaryngol. 2023 Apr;8(2):538-545. PMID 37090887.",
+          "note": "Single-center retrospective cohort of 119 malignant otitis externa patients 2011-2014 (Laryngoscope Investig Otolaryngol 2023): cranial nerve involvement in 33 (27.7%), facial nerve most common (26.1%); skull base osteomyelitis in 59; male gender and advanced age related to higher palsy rates; tinnitus correlated with skull base osteomyelitis on imaging (specificity 96.7%); supports the bounded subtype association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/37090887/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 37090887; results (cranial nerve palsy prevalence and associated factors)"
+        },
+        {
+          "citation": "Isildak H. Predictive factors for facial nerve palsy in malignant otitis externa: a TriNetX data analysis J Laryngol Otol. 2026 Mar;140(3):252-257. PMID 41492806.",
+          "note": "TriNetX retrospective analysis (J Laryngol Otol 2026): malignant otitis externa-only (n=12,032) versus malignant otitis externa with facial nerve palsy (n=719) cohorts; male sex, Hispanic ethnicity, hypoalbuminemia, elevated BUN/glucose/ESR, hypertension (OR 3.72), chronic kidney disease (OR 3.12), malnutrition (OR 3.44), electrolyte imbalance (OR 2.59) predicted palsy; supports the bounded risk-factor association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41492806/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 41492806; results (predictive factors and cohort comparisons)"
+        }
+      ]
+    }
+  ]
 }
