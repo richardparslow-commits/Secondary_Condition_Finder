@@ -2,8 +2,58 @@
   "id": "ovarian-cysts",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review urologic, gynecologic, hormonal, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 67 (2026-09-26): one ASSOCIATION_ONLY draft mapping pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: the edge asserts association only (etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true, mechanismCategory NEUROENDOCRINE_CASCADE). The evidence base is a single retrospective ultrasound cohort conditioned on bleeding at presentation, so individual claims require dated pelvic imaging and endocrine evaluation with competing-cause exclusion, and review by a qualified medical professional. Accepted single-reference quarantine warning on this edge (the abnormal-uterine-bleeding ultrasound cohort is the sole condition-specific quantification). PCOS scope separation is mandatory: polycystic ovarian morphology is not an ovarian cyst for this mapping.",
+    "Pathway and duplicate-scope screens: no -> ovarian-cancer edge (below authoring threshold - located malignant-transformation evidence is case-level only (malignant struma ovarii, dermoid squamous carcinoma) and the quantified endometrioma-associated ovarian-cancer risk belongs to the published endometriosis ovarian-cancer window (PMID 24518590) which is not recycled per ME-29; the PCOS tumour-risk literature is a different identity's scope; reopening condition: a cohort quantifying malignant risk in non-endometrioma ovarian cysts); no -> chronic-pelvic-pain-syndrome edge (WITHHELD on SHARED-SUBSTRATE and ME-29 grounds - the located pelvic-pain evidence is endometrioma sclerotherapy (ESCOMA protocol), where endometriosis is the shared driver of both cyst and pain and the endometriosis window family owns that evidence); no -> anemia edge (intermediate-chain - the bleeding-to-anemia pathway is already carried by the published menstrual-disorders anemia window); ovarian torsion, cyst rupture with hemoperitoneum, and infertility recorded as withheld propositions (no catalog identities - the catalog holds only testicular-torsion); direction discipline - the anchor conditions on bleeding at presentation, so no forward causal direction is asserted beyond the association itself."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 67 (2026-09-26): one bounded association edge authored - ovarian-cysts to menstrual-disorders (rank 1) - classified ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, and hypothesizedOnly:true. The proposition rests on the 169-patient abnormal-uterine-bleeding pelvic ultrasound cohort in which ovarian cysts were the most common reproductive-age sonographic finding (27.11% early, 22.56% late reproductive; majority likely benign; PMID 42257258).",
+    "Counter-evidence and caveat screens recorded 2026-09-26: (i) ascertainment direction - the cohort conditions on bleeding at presentation, so cyst-before-bleeding ordering is unestablished and the association is co-occurrence only; (ii) PCOS separation - polycystic ovarian morphology and PCOS are distinct (PCOS owns its own identity and its tumour-risk and anovulation literature is not recycled here); (iii) withheld cancer proposition - malignant-transformation evidence is case-level and the quantified endometrioma-cancer risk belongs to the endometriosis window (PMID 24518590), so no ovarian-cancer edge was authored; (iv) withheld pain proposition - pelvic-pain evidence is endometrioma-scoped with endometriosis as the shared substrate (ESCOMA sclerotherapy protocol), withheld on shared-substrate and ME-29 grounds; (v) withheld no-identity propositions - adnexal torsion, cyst rupture with hemoperitoneum, and infertility are documented ovarian-cyst complications without catalog identities (withheld propositions, not deferred identities)."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "menstrual-disorders",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Ovarian cysts are documented among the leading structural findings in abnormal uterine bleeding at retrospective ultrasound-cohort level: the pelvic ultrasound study of 169 patients presenting with abnormal uterine bleeding at a tertiary hospital (2018-2020) found ovarian cysts the most common sonographic finding in both early and late reproductive groups (27.11 and 22.56 percent respectively), with the majority of cysts likely benign and fibroids dominant in the menopausal group (PMID 42257258); recorded as documented association only with the direction and ascertainment limits carried openly.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: the anchor sampled women already presenting with bleeding (ascertainment conditioned on the outcome) so it cannot establish that cysts preceded the bleeding, functional cysts and anovulation are interdependent rather than sequential, and polycystic ovarian morphology is a distinct entity excluded from this mapping scope, so individual claims require dated pelvic imaging and endocrine evaluation with ovulatory, contraceptive, structural, and pregnancy exclusion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "NEUROENDOCRINE_CASCADE",
+        "primaryVector": "Functional follicular cyst persistence with anovulation drives unopposed estrogen exposure and irregular progesterone withdrawal so disordered endometrial shedding and irregular bleeding result, the anovulatory-hormonal route consistent with the cyst predominance among reproductive-age abnormal-bleeding ultrasounds, but whether this route produced any individual bleeding episode remains hypothesized until imaging and endocrine records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at single retrospective ultrasound cohort class only: the cohort is conditioned on abnormal bleeding at presentation so no relative risk or predictive value is derivable, findings are sonographic without hormonal or histologic confirmation, and the cysts were likely benign functional entities in the majority with no temporal documentation of cyst-before-bleeding.",
+        "evidenceGaps": "Ascertainment is conditioned on abnormal bleeding at presentation so direction cannot be established (cysts may be incidental findings); no hormone assays or ovulation documentation accompany the ultrasound findings; the majority of cysts were likely benign functional entities; PCOS and polycystic ovarian morphology are excluded scope but frequently overlap clinically; and uterine fibroids, endometrial pathology, contraceptive effects, pregnancy, coagulopathy, and thyroid disease compete for individual attribution.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "polycystic ovary syndrome and polycystic ovarian morphology (distinct catalog identity; expressly excluded scope)",
+          "uterine fibroids and endometrial pathology (dominant findings in the menopausal group)",
+          "contraceptive and medication effects on bleeding patterns",
+          "pregnancy-related bleeding",
+          "coagulopathy, thyroid disease, and perimenopausal anovulation"
+        ]
+      },
+      "evidenceGaps": [
+        "Ascertainment is conditioned on abnormal bleeding at presentation so direction cannot be established (cysts may be incidental findings); no hormone assays or ovulation documentation accompany the ultrasound findings; the majority of cysts were likely benign functional entities; PCOS and polycystic ovarian morphology are excluded scope but frequently overlap clinically; and uterine fibroids, endometrial pathology, contraceptive effects, pregnancy, coagulopathy, and thyroid disease compete for individual attribution."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY at retrospective ultrasound-cohort class with the direction and ascertainment limits carried openly: the 169-patient abnormal-uterine-bleeding ultrasound cohort found ovarian cysts the most common reproductive-age finding (27.11 and 22.56 percent; PMID 42257258); because the cohort is conditioned on bleeding at presentation, lacks hormonal confirmation, and cannot order cyst-before-bleeding, the conservative standard keeps the edge at association only, excludes polycystic morphology from scope, and routes individual claims through dated pelvic imaging and endocrine evaluation with ovulatory, contraceptive, structural, and pregnancy exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Abdeen R, Almalki AS, Rahmatullah HS, et al. Pelvic Ultrasound Features of Abnormal Uterine Bleeding Curr Med Imaging. 2026;22:e15734056275637. PMID 42257258.",
+          "note": "Retrospective pelvic ultrasound study of 169 patients presenting with abnormal uterine bleeding at a tertiary hospital 2018-2020 (Curr Med Imaging 2026): ovarian cysts the most common finding in early (27.11%) and late (22.56%) reproductive groups; uterine enlargement/fibroids dominant late-reproductive and menopausal; majority of cysts likely benign; supports the bounded co-occurrence association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42257258/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 42257258; results (sonographic finding frequencies by age group)"
+        }
+      ]
+    }
+  ]
 }

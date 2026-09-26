@@ -2,8 +2,58 @@
   "id": "osgood-schlatter-disease",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review biomechanical, post-injury, orthopedic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 67 (2026-09-26): one ASSOCIATION_ONLY draft mapping pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: the edge asserts association only (etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true, mechanismCategory BIOMECHANICAL_ALTERATION). The evidence base is a single national-registry survey cohort, so individual claims require dated musculoskeletal assessment with competing-cause exclusion, and review by a qualified medical professional. Accepted single-reference quarantine warning on this edge (the Danish national cohort is the sole jumper's-knee quantification).",
+    "Pathway and duplicate-scope screens: no -> osteoarthritis edge (below authoring threshold - zero located quantification of osteoarthritis incidence after Osgood-Schlatter; the national cohort shows worse KOOS symptom and function scores but no osteoarthritis diagnoses, and a targeted search for patellofemoral or knee osteoarthritis incidence in Osgood-Schlatter returned no cohort evidence; reopening condition: a cohort quantifying diagnosed osteoarthritis after Osgood-Schlatter); no -> patellofemoral-pain-syndrome edge (zero forward quantification - the matched cross-sectional study treats patellofemoral pain and Osgood-Schlatter as distinct parallel anterior-knee-pain phenotypes, not a sequential relationship (PMID 31905093)); persistent knee pain and activity limitation (37 percent still in pain at 24 months, 60.5 percent at median 3.75 years) recorded as persistence of the primary condition rather than a secondary condition (CONSTITUTIVE-PROXIMITY), as are tibial tubercle prominence (85 percent), ununited ossicle (32 percent on ultrasound), and patellar tendon insertion changes (De Flaviis classification); no -> knee-injury or -> stress-fractures edge (zero located quantification); direction discipline - the anchor's odds ratio is cross-sectional adult recall, so no forward causal direction is asserted beyond the association itself."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 67 (2026-09-26): one bounded association edge authored - osgood-schlatter-disease to tendinopathy (rank 1) - classified ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, and hypothesizedOnly:true. The proposition rests on the Danish national registry cohort (400 respondents of 1,281 secondary-care cases 1977-2020): jumper's knee odds 70.4 (95% CI 32.9-155.0) versus healthy population estimates, with 73% sustained tibial tubercle-area problems and KOOS decrements across all subscales (PMID 40439870).",
+    "Counter-evidence and caveat screens recorded 2026-09-26: (i) shared-substrate screen - both Osgood-Schlatter and patellar tendinopathy cluster in active adolescents with extensor-mechanism overuse, so the association may reflect common substrate rather than sequela; (ii) persistence boundary - the 37 percent two-year (PMID 34435066) and 60.5 percent four-year (PMID 31700938) persistent-pain signals, the 85 percent tibial tubercle prominence, and the 32 percent ununited ossicle are recorded as persistence and residuals of the apophysitis itself (constitutive proximity), not as secondary conditions; (iii) osteoarthritis withheld - the national cohort quantified symptoms and function, not incident osteoarthritis, and no osteoarthritis-incidence cohort was located; (iv) patellofemoral-pain separation - the matched cross-sectional study treats patellofemoral pain as a distinct parallel phenotype (PMID 31905093); (v) the prognosis literature reclassifies Osgood-Schlatter as not always self-limiting, which supports mapping residuals but does not by itself create secondary-condition edges."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "tendinopathy",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Osgood-Schlatter disease documents patellar tendinopathy (jumper's knee) at national-registry cohort level: the Danish national cohort study of adults with adolescent Osgood-Schlatter diagnosed in secondary care 1977-2020 (400 survey respondents of 1,281 registry cases) found a large risk of jumper's knee versus healthy population estimates (odds ratio 70.4, 95 percent CI 32.9-155.0, p < 0.0001), alongside 73 percent reporting sustained pain or problems from the tibial tubercle area and significantly lower Knee injury and Osteoarthritis Outcome Score across all subscales with recalled symptom duration and pain levels negatively associated with outcomes (PMID 40439870); recorded as documented association only with the shared-substrate limit carried openly.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: the anchor is a cross-sectional survey of adults recalling adolescent Osgood-Schlatter, so the jumper's knee association may reflect shared athletic overuse of the extensor mechanism, recall bias, or malalignment rather than a sequela of the apophysitis, and individual claims require dated musculoskeletal assessment with training-load, patellar-tendon-overuse, and malalignment exclusion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "BIOMECHANICAL_ALTERATION",
+        "primaryVector": "Tibial tubercle apophyseal alteration with persistent bony prominence (85 percent in the anchor cohort) drives altered extensor-mechanism load transfer so patellar tendon overload and tendinopathy result, the biomechanical route consistent with the 70-fold jumper's knee odds and the recalled duration- and pain-response relationships, but whether this route produced any individual tendinopathy remains hypothesized until imaging and training records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at single national-registry survey cohort class only: jumper's knee was survey-reported rather than clinically or imaging verified, the design is cross-sectional with recalled childhood exposure (400 responders of 1,281 identified), and shared athletic overuse of the adolescent extensor mechanism is not excluded as the common driver of both conditions.",
+        "evidenceGaps": "The anchor is a retrospective survey of adult recall (400/1,281 response) so exposure and outcome misclassification is possible; jumper's knee was self-reported; the odds ratio compares to published healthy-population estimates rather than a concurrent control group; shared overuse substrate, malalignment, and training-load confounding are not excluded; and patellar tendinopathy from other causes, quadriceps tendinopathy, and patellofemoral pain compete for individual attribution.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "shared athletic overuse of the extensor mechanism (both conditions cluster in active adolescents)",
+          "patellar tendinopathy predating or independent of the apophysitis",
+          "recall bias in adult reporting of adolescent symptoms",
+          "patellofemoral malalignment and loading factors",
+          "training-load, footwear, and sport-specialization factors"
+        ]
+      },
+      "evidenceGaps": [
+        "The anchor is a retrospective survey of adult recall (400/1,281 response) so exposure and outcome misclassification is possible; jumper's knee was self-reported; the odds ratio compares to published healthy-population estimates rather than a concurrent control group; shared overuse substrate, malalignment, and training-load confounding are not excluded; and patellar tendinopathy from other causes, quadriceps tendinopathy, and patellofemoral pain compete for individual attribution."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY at national-registry survey-cohort class with the shared-substrate and recall limits carried openly: the Danish secondary-care cohort found jumper's knee odds of 70.4 versus healthy population estimates in adults with adolescent Osgood-Schlatter (PMID 40439870); because the outcome is self-reported, the design is cross-sectional with recalled exposure, and shared extensor-mechanism overuse is not excluded, the conservative standard keeps the edge at association only and routes individual claims through dated musculoskeletal assessment with training-load, overuse, and malalignment exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Krommes K, Bjerre A, Thorborg K, et al. Long-Term Knee Health in Adults with a History of Adolescent Osgood-Schlatter: A National Cohort Study of Patients in Secondary Care in Denmark 1977-2020 Sports Med. 2025 Jul;55(7):1769-1781. PMID 40439870.",
+          "note": "Danish national registry cohort (Sports Med 2025): 400 survey respondents of 1,281 registry cases of adolescent Osgood-Schlatter diagnosed in hospitals 1977-2020; jumper's knee risk versus healthy population estimates OR 70.4 (95% CI 32.9-155.0, p<0.0001); bony tibial tubercle prominence 85%, sustained same-area pain/problems 73%; KOOS lower on all subscales (sport/rec and quality of life worst, Cohen's d > 0.8); recalled duration and pain levels negatively associated with outcomes; supports the bounded association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40439870/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 40439870; results (jumper's knee odds ratio and long-term knee health comparisons)"
+        }
+      ]
+    }
+  ]
 }

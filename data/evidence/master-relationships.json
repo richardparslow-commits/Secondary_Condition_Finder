@@ -6,8 +6,8 @@
  "installedFrom": "Master Registry Discrepancy Resolution 2026",
  "authorityBoundary": "Authoritative for current relationship direction, proposition text, guard state, source linkage, and KB parity; does not establish an individual VA medical nexus.",
  "counts": {
-  "relationships": 716,
-  "explicitPublicationGuards": 642,
+  "relationships": 722,
+  "explicitPublicationGuards": 648,
   "legacyRationaleBoundaries": 74
  },
  "relationships": [
@@ -23002,6 +23002,186 @@
    "sourceReferenceCount": 2,
    "pathwayIntelligencePresent": false,
    "suggestionObjectHash": "00282cc3f600bc42e9b129763280ba89610db723a8f31b9b81670e512378a272"
+  },
+  {
+   "relationshipId": "rel-osgood-schlatter-disease-to-tendinopathy",
+   "primaryId": "osgood-schlatter-disease",
+   "targetId": "tendinopathy",
+   "direction": "osgood-schlatter-disease -> tendinopathy",
+   "primaryPublicationState": "draft",
+   "rank": 1,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY at national-registry survey-cohort class with the shared-substrate and recall limits carried openly: the Danish secondary-care cohort found jumper's knee odds of 70.4 versus healthy population estimates in adults with adolescent Osgood-Schlatter (PMID 40439870); because the outcome is self-reported, the design is cross-sectional with recalled exposure, and shared extensor-mechanism overuse is not excluded, the conservative standard keeps the edge at association only and routes individual claims through dated musculoskeletal assessment with training-load, overuse, and malalignment exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY at national-registry survey-cohort class with the shared-substrate and recall limits carried openly: the Danish secondary-care cohort found jumper's knee odds of 70.4 versus healthy population estimates in adults with adolescent Osgood-Schlatter (PMID 40439870); because the outcome is self-reported, the design is cross-sectional with recalled exposure, and shared extensor-mechanism overuse is not excluded, the conservative standard keeps the edge at association only and routes individual claims through dated musculoskeletal assessment with training-load, overuse, and malalignment exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to the national-registry survey cohort with the shared-substrate and recall limits carried openly: the Danish secondary-care cohort (400 respondents of 1,281 registry cases 1977-2020) found jumper's knee odds 70.4 (95% CI 32.9-155.0) versus healthy population estimates with 73% sustained tibial tubercle-area problems and KOOS decrements (PMID 40439870); the outcome is self-reported with recalled exposure and shared extensor-mechanism overuse is not excluded, so individual claims route through dated musculoskeletal assessment with training-load, overuse, and malalignment exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "The anchor is a retrospective survey of adult recall (400/1,281 response) so exposure and outcome misclassification is possible; jumper's knee was self-reported; the odds ratio compares to published healthy-population estimates rather than a concurrent control group; shared overuse substrate, malalignment, and training-load confounding are not excluded; and patellar tendinopathy from other causes, quadriceps tendinopathy, and patellofemoral pain compete for individual attribution."
+   ],
+   "sourceIds": [
+    "pmid-40439870"
+   ],
+   "sourceReferenceCount": 1,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "f8765ab6bc13558ff261ec87218d0eb8fd291ed24676ec4cfe76d08d17f3c064"
+  },
+  {
+   "relationshipId": "rel-otitis-externa-to-cranial-nerve-palsy",
+   "primaryId": "otitis-externa",
+   "targetId": "cranial-nerve-palsy",
+   "direction": "otitis-externa -> cranial-nerve-palsy",
+   "primaryPublicationState": "draft",
+   "rank": 1,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY at national-database plus single-center-cohort class with the malignant-subtype scope limit carried openly: the National Inpatient Sample analysis found facial palsy in 12.4 percent of 5,585 malignant otitis externa stays (PMID 41503884), the 119-patient cohort found cranial nerve involvement in 27.7 percent with skull base osteomyelitis co-occurring (PMID 37090887), and the TriNetX analysis identified independent predictors of facial palsy (PMID 41492806); because every anchor is the invasive subtype with administrative ascertainment and diabetes-dominated populations, the conservative standard keeps the edge at association only, carries the subtype scope openly rather than generalizing to uncomplicated otitis externa, and routes individual claims through dated neurologic and temporal-bone imaging review with diabetic, neoplastic, and iatrogenic exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY at national-database plus single-center-cohort class with the malignant-subtype scope limit carried openly: the National Inpatient Sample analysis found facial palsy in 12.4 percent of 5,585 malignant otitis externa stays (PMID 41503884), the 119-patient cohort found cranial nerve involvement in 27.7 percent with skull base osteomyelitis co-occurring (PMID 37090887), and the TriNetX analysis identified independent predictors of facial palsy (PMID 41492806); because every anchor is the invasive subtype with administrative ascertainment and diabetes-dominated populations, the conservative standard keeps the edge at association only, carries the subtype scope openly rather than generalizing to uncomplicated otitis externa, and routes individual claims through dated neurologic and temporal-bone imaging review with diabetic, neoplastic, and iatrogenic exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped explicitly to the malignant/necrotizing subtype with the generalization limit carried openly: the National Inpatient Sample analysis found facial palsy in 12.4% of 5,585 malignant otitis externa stays (PMID 41503884), the 119-patient cohort found cranial nerve involvement 27.7% (facial 26.1%) with skull base osteomyelitis co-occurring (PMID 37090887), and the TriNetX analysis identified predictors (PMID 41492806); uncomplicated otitis externa rarely complicates (one of 133 clinic cases, PMID 26328002) so the edge does not generalize, and individual claims route through dated neurologic and temporal-bone imaging review with diabetic, neoplastic, and iatrogenic exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "All quantified evidence is scoped to the rare malignant/necrotizing subtype so uncomplicated otitis externa risk is unquantified (the Kaduna clinic cohort of 133 otitis externa patients recorded a single complication, PMID 26328002); database studies rely on ICD-coded palsy ascertainment; prevalence varies 12.4 to 27.7 percent across cohorts; diabetes dominates these populations and its microvascular neuropathy competes as cause; and temporal bone neoplasm, iatrogenic injury, Bell palsy, and central causes compete for individual attribution."
+   ],
+   "sourceIds": [
+    "pmid-41503884",
+    "pmid-37090887",
+    "pmid-41492806"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "247c2f6d2d86e498247644dd7496fccb90505e459c97df635e70211dd6c27a01"
+  },
+  {
+   "relationshipId": "rel-otosclerosis-to-conductive-hearing-loss",
+   "primaryId": "otosclerosis",
+   "targetId": "conductive-hearing-loss",
+   "direction": "otosclerosis -> conductive-hearing-loss",
+   "primaryPublicationState": "draft",
+   "rank": 1,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY at systematic-review plus prospective-comparative class with the surgical-population limit carried openly: the stapes-surgery systematic review frames otosclerosis as causing conductive hearing loss across 22 studies and 2,233 patients (PMID 41174987) and the prospective study of unilateral otosclerosis with at-least-30 dB conductive loss documented the otosclerosis-attributed air-bone gap and its closure after stapedotomy (PMID 35878633); because both anchors are treatment-selected surgical populations, the conservative standard keeps the edge at association only and routes individual claims through dated audiometry with air-bone-gap characterization and otologic exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY at systematic-review plus prospective-comparative class with the surgical-population limit carried openly: the stapes-surgery systematic review frames otosclerosis as causing conductive hearing loss across 22 studies and 2,233 patients (PMID 41174987) and the prospective study of unilateral otosclerosis with at-least-30 dB conductive loss documented the otosclerosis-attributed air-bone gap and its closure after stapedotomy (PMID 35878633); because both anchors are treatment-selected surgical populations, the conservative standard keeps the edge at association only and routes individual claims through dated audiometry with air-bone-gap characterization and otologic exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to the stapes-fixation conductive mechanism with the surgical-population limit carried openly: the stapes-surgery systematic review frames otosclerosis as causing tinnitus and conductive hearing loss (22 studies, 2,233 patients; PMID 41174987) and the prospective cohort of unilateral otosclerosis with >= 30 dB otosclerosis-attributed conductive loss documented air-bone-gap closure after stapedotomy (PMID 35878633); both anchors are surgical candidates, so individual claims route through dated audiometry with air-bone-gap characterization and otologic exclusion, and the cochlear sensorineural component is carried by the companion hearing-loss edge (mechanism split, ME-29).",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "Both anchors are surgical-candidate populations so severity is skewed toward operable disease; the prospective cohort is small (22 patients) and single-center; population incidence of conductive loss across all otosclerosis is unquantified (only symptomatic-incidence data exist, PMID 41504238); and cochlear otosclerosis with mixed or sensorineural loss (the companion edge in this file), chronic otitis media, ossicular fixation of other causes, and prior surgery compete for individual attribution."
+   ],
+   "sourceIds": [
+    "pmid-41174987",
+    "pmid-35878633"
+   ],
+   "sourceReferenceCount": 2,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "854da3fa151267dfec43b9dee0b8fa0a4e3b0ac6dde3f182818b623dd1f230ab"
+  },
+  {
+   "relationshipId": "rel-otosclerosis-to-tinnitus",
+   "primaryId": "otosclerosis",
+   "targetId": "tinnitus",
+   "direction": "otosclerosis -> tinnitus",
+   "primaryPublicationState": "draft",
+   "rank": 2,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY at systematic-review plus clinicoepidemiological class with the surgical-population and sibling-provenance limits carried openly: the stapes-surgery systematic review documents tinnitus in otosclerosis with post-stapedectomy improvement in a median 46.3 percent and air-bone-gap correlation (PMID 41174987), the 1,147-patient surgical series relates CT lesion severity to preoperative tinnitus (PMID 41504238), and the prospective cohort found stapedotomy-specific tinnitus improvement (PMID 35878633); because the anchors are surgical populations with self-reported tinnitus and decoupled hearing severity, the conservative standard keeps the edge at association only and routes individual claims through dated audiologic assessment with noise, medication, and presbycusis exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY at systematic-review plus clinicoepidemiological class with the surgical-population and sibling-provenance limits carried openly: the stapes-surgery systematic review documents tinnitus in otosclerosis with post-stapedectomy improvement in a median 46.3 percent and air-bone-gap correlation (PMID 41174987), the 1,147-patient surgical series relates CT lesion severity to preoperative tinnitus (PMID 41504238), and the prospective cohort found stapedotomy-specific tinnitus improvement (PMID 35878633); because the anchors are surgical populations with self-reported tinnitus and decoupled hearing severity, the conservative standard keeps the edge at association only and routes individual claims through dated audiologic assessment with noise, medication, and presbycusis exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to the conductive-deprivation-plus-cochlear hypothesis with the surgical-population and sibling-provenance limits carried openly: the systematic review reports post-stapedectomy tinnitus improvement in a median 46.3% with air-bone-gap closure correlation (PMID 41174987), the 1,147-patient Shanghai surgical series relates CT lesion severity to preoperative tinnitus (PMID 41504238), and the prospective cohort found stapedotomy-specific tinnitus improvement (PMID 35878633); the published conductive-hearing-loss to tinnitus window rests on otosclerosis cohorts and is not recycled per ME-29 (disjoint sources used; tinnitus triangle recorded for the CRG semantics follow-up), so individual claims route through dated audiologic assessment with noise, medication, and presbycusis exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "All anchors are surgical-candidate populations (severe enough for stapes surgery) so tinnitus burden in unselected otosclerosis is unquantified; tinnitus outcomes are self-reported; tinnitus severity is documented as decoupled from hearing degree so the conductive-deprivation mechanism is partial; the same cohorts support the conductive-hearing-loss edge in this file; and noise exposure, presbycusis, medication effects, and central tinnitus amplification compete for individual attribution."
+   ],
+   "sourceIds": [
+    "pmid-41174987",
+    "pmid-41504238",
+    "pmid-35878633"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "a4acf29f653c7202d2286b2859a7f289821cdd477a04e1a4a6f2e89879e663e8"
+  },
+  {
+   "relationshipId": "rel-otosclerosis-to-hearing-loss",
+   "primaryId": "otosclerosis",
+   "targetId": "hearing-loss",
+   "direction": "otosclerosis -> hearing-loss",
+   "primaryPublicationState": "draft",
+   "rank": 3,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY at advanced-cohort plus case-report class with the stage, composite, and contested-mechanism limits carried openly: the 38-patient bilateral advanced otosclerosis cohort frames progressive hearing loss with cochlear-implant-level severity in 15 (PMID 42345416) and the surgical case documents the mixed-loss end-stage phenotype (PMID 29891017); because the mechanism of cochlear involvement is contested and the anchors are treatment-selected advanced disease, the conservative standard records mechanismCategory NOT_ESTABLISHED, keeps the edge at association only, and routes individual claims through dated serial audiometry with air-bone-gap characterization and presbycusis, noise, hydrops, and iatrogenic exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY at advanced-cohort plus case-report class with the stage, composite, and contested-mechanism limits carried openly: the 38-patient bilateral advanced otosclerosis cohort frames progressive hearing loss with cochlear-implant-level severity in 15 (PMID 42345416) and the surgical case documents the mixed-loss end-stage phenotype (PMID 29891017); because the mechanism of cochlear involvement is contested and the anchors are treatment-selected advanced disease, the conservative standard records mechanismCategory NOT_ESTABLISHED, keeps the edge at association only, and routes individual claims through dated serial audiometry with air-bone-gap characterization and presbycusis, noise, hydrops, and iatrogenic exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to the cochlear otosclerosis component with the stage, composite, and contested-mechanism limits carried openly and mechanismCategory NOT_ESTABLISHED: the 38-patient bilateral advanced otosclerosis cohort frames progressive hearing loss with cochlear-implant-level severity in 15 (PMID 42345416) and the surgical case documents the advanced mixed-loss phenotype (PMID 29891017); the intracochlear route is contested (hydrops interaction boundaries, PMID 41450711) and the stapes-fixation conductive component is carried by the companion conductive-hearing-loss edge (ME-29), so individual claims route through dated serial audiometry with air-bone-gap characterization and presbycusis, noise, hydrops, and iatrogenic exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "The cohort is small (38 patients), single-center, and restricted to bilateral advanced disease referred for implant-level care; population incidence and natural history of sensorineural progression in otosclerosis are unquantified by the located anchors; the case report carries no denominator; and presbycusis, noise exposure, hydrops/Meniere overlap (contested), otosyphilis, and iatrogenic sensorineural loss after stapes surgery compete for individual attribution."
+   ],
+   "sourceIds": [
+    "pmid-42345416",
+    "pmid-29891017"
+   ],
+   "sourceReferenceCount": 2,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "b9e98d3603a34122eccca2a1ec248b65d620a3be43dfbc937e2f5a80fc3625f1"
+  },
+  {
+   "relationshipId": "rel-ovarian-cysts-to-menstrual-disorders",
+   "primaryId": "ovarian-cysts",
+   "targetId": "menstrual-disorders",
+   "direction": "ovarian-cysts -> menstrual-disorders",
+   "primaryPublicationState": "draft",
+   "rank": 1,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY at retrospective ultrasound-cohort class with the direction and ascertainment limits carried openly: the 169-patient abnormal-uterine-bleeding ultrasound cohort found ovarian cysts the most common reproductive-age finding (27.11 and 22.56 percent; PMID 42257258); because the cohort is conditioned on bleeding at presentation, lacks hormonal confirmation, and cannot order cyst-before-bleeding, the conservative standard keeps the edge at association only, excludes polycystic morphology from scope, and routes individual claims through dated pelvic imaging and endocrine evaluation with ovulatory, contraceptive, structural, and pregnancy exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY at retrospective ultrasound-cohort class with the direction and ascertainment limits carried openly: the 169-patient abnormal-uterine-bleeding ultrasound cohort found ovarian cysts the most common reproductive-age finding (27.11 and 22.56 percent; PMID 42257258); because the cohort is conditioned on bleeding at presentation, lacks hormonal confirmation, and cannot order cyst-before-bleeding, the conservative standard keeps the edge at association only, excludes polycystic morphology from scope, and routes individual claims through dated pelvic imaging and endocrine evaluation with ovulatory, contraceptive, structural, and pregnancy exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to the anovulatory-hormonal hypothesis with the direction and ascertainment limits carried openly: the 169-patient abnormal-uterine-bleeding ultrasound cohort found ovarian cysts the most common reproductive-age sonographic finding (27.11% early, 22.56% late; PMID 42257258); the cohort conditions on bleeding at presentation so cyst-before-bleeding ordering is unestablished and polycystic ovarian morphology is expressly excluded scope, so individual claims route through dated pelvic imaging and endocrine evaluation with ovulatory, contraceptive, structural, and pregnancy exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "Ascertainment is conditioned on abnormal bleeding at presentation so direction cannot be established (cysts may be incidental findings); no hormone assays or ovulation documentation accompany the ultrasound findings; the majority of cysts were likely benign functional entities; PCOS and polycystic ovarian morphology are excluded scope but frequently overlap clinically; and uterine fibroids, endometrial pathology, contraceptive effects, pregnancy, coagulopathy, and thyroid disease compete for individual attribution."
+   ],
+   "sourceIds": [
+    "pmid-42257258"
+   ],
+   "sourceReferenceCount": 1,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "43bae75dc11f85934343efe7e45c5aed5cf46973bcdd541addffbb373bd1fadf"
   }
  ],
  "lastUpdatedBy": "batch-D1-draft-authoring",
