@@ -24,6 +24,7 @@
     "test:watch": "vitest",
     "test:composition": "node scripts/audit-test-composition.js",
     "test:doc-lint": "vitest run tests/doc-lint.test.ts tests/doc-example-schema.test.ts tests/readme-consistency.test.ts",
+    "ci:failure-report": "node scripts/ci-failure-report.js",
     "readme:snapshot": "node scripts/readme-snapshot-table.js",
     "readme:snapshot:check": "node scripts/readme-snapshot-table.js --check",
     "typecheck": "tsc --noEmit",
