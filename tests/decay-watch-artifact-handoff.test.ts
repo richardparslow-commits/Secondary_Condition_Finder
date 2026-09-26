@@ -69,3 +69,42 @@ describe.each([
     expect(workflow).toContain(probeScript);
   });
 });
+
+describe("citation-decay-watch surfaces content-drift observability", () => {
+  const workflow = readWorkflow("citation-decay-watch.yml");
+
+  /**
+   * `contentDriftCount` reads 0 both when every digested source still matches
+   * and when no reference carries a digest at all, so publishing the count on
+   * its own reports a clean result on a dimension the probe cannot observe.
+   * Both human-facing surfaces — the weekly step summary and the auto-opened
+   * tracking issue a qualified human acts on — must qualify it with the digest
+   * coverage behind it.
+   */
+  it("qualifies the drift count with detectability and coverage in the step summary", () => {
+    expect(workflow).toContain("report.contentDriftDetectable");
+    expect(workflow).toContain("report.contentDriftCoveragePercent");
+    expect(workflow).toContain("content drift detectable");
+  });
+
+  it("reports the digest backlog and its ratchet in the tracking issue", () => {
+    expect(workflow).toContain("report.verifiedWithoutDigestCount");
+    expect(workflow).toContain("report.verifiedReferenceCount");
+    expect(workflow).toContain("report.maxUndigestedVerifiedRefs");
+  });
+
+  it("keeps the shell-embedded summary JS free of backticks", () => {
+    // The summary runs as `node --input-type=module -e "<js>"`, i.e. the JS sits
+    // inside a double-quoted shell string where a backtick is command
+    // substitution. The issue-body block is a quoted heredoc and may use them,
+    // so this pins only the -e payload.
+    const marker = '-e "';
+    const start = workflow.indexOf(marker);
+    expect(start).toBeGreaterThan(-1);
+    const js = workflow.slice(start + marker.length, workflow.indexOf('"', start + marker.length));
+    // Guard against the extraction silently matching an empty span.
+    expect(js.length).toBeGreaterThan(200);
+    expect(js).toContain("report.contentDriftDetectable");
+    expect(js).not.toContain("`");
+  });
+});

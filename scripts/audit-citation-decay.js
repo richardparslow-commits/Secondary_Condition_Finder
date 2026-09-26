@@ -24,7 +24,12 @@
  *     verification time), the probe hashes the fetched body and flags silent
  *     drift: the URL still returns 200 but the content a human verified has
  *     changed (retraction, correction, revision). This is the failure mode
- *     link-rot probes cannot see.
+ *     link-rot probes cannot see. Because a digest may only be recorded by the
+ *     qualified human who verified the source, coverage is ratcheted rather
+ *     than backfilled: MAX_UNDIGESTED_VERIFIED_REFS pins the backlog so it can
+ *     only shrink, and the report always states how much of the corpus drift
+ *     detection can actually see, so a zero drift count is never mistaken for
+ *     assurance the probe did not earn.
  *  4. Ceiling enforcement — a live reference that is unverified OR decayed
  *     cannot exceed CITATION_CEILING (10) before new mapping promotions must
  *     halt. This mirrors the audit-citation-verification ratchet but operates
@@ -46,6 +51,20 @@ const http = require("http");
 const https = require("https");
 
 const CITATION_CEILING = 10;
+/**
+ * Non-regression ratchet for content-drift observability. A `contentDigest`
+ * may only be recorded by the qualified human who verified the source
+ * (docs/citation-verification-sop.md: "During a qualified-human verification
+ * ... compute sha256-<hex> over the retrieved source body"), and it is anchored
+ * to that verification's `sourceCheckedOn` date — so no script may backfill it,
+ * and dynamic bodies must omit it rather than record a value that will
+ * false-positive. Every verified reference therefore arrives without one until
+ * a human records it, which means the corpus-wide backlog can only be worked
+ * down, never grown. Pinning the current count makes that monotonic: adding a
+ * `verified: true` reference without a digest fails this audit instead of
+ * silently widening the blind spot. Lower the pin as digests are recorded.
+ */
+const MAX_UNDIGESTED_VERIFIED_REFS = 383;
 const PROBE_TIMEOUT_MS = 15_000;
 const MAX_REDIRECTS = 5;
 const PROBE_USER_AGENT = "citation-decay-audit";
@@ -319,6 +338,36 @@ function buildReport(files, probeResults, todayIso) {
     }
   });
 
+  /**
+   * Content-drift observability. `contentDriftCount` is only meaningful for
+   * references that actually carry a digest; with none recorded the corpus
+   * reports "0 drift", which is textually identical to "0 drift detected" and
+   * reads as a clean result on a dimension the probe cannot observe. Count the
+   * digest population separately so the report can say which of the two it is.
+   */
+  let verifiedRefs = 0;
+  let verifiedWithDigest = 0;
+  eachReference(files, (reference) => {
+    if (reference.verified !== true || !reference.sourceUrl) return;
+    verifiedRefs += 1;
+    if (parseContentDigest(reference.contentDigest)) verifiedWithDigest += 1;
+  });
+  const verifiedWithoutDigest = verifiedRefs - verifiedWithDigest;
+
+  if (verifiedWithoutDigest > MAX_UNDIGESTED_VERIFIED_REFS) {
+    flags.push({
+      file: "(corpus-wide)",
+      primary: null,
+      target: null,
+      citation: null,
+      reason:
+        `content-drift observability regressed: ${verifiedWithoutDigest} verified references lack a ` +
+        `contentDigest (ratchet baseline ${MAX_UNDIGESTED_VERIFIED_REFS}). A digest must be recorded by ` +
+        `the qualified human who verifies the source and cannot be backfilled by a script; see ` +
+        `docs/citation-verification-sop.md ("Content digests and tiered staleness").`,
+    });
+  }
+
   const trueLinkRot = decayed.filter((entry) => !blocked.some((b) => b.sourceUrl === entry.sourceUrl));
   const decays = [...stale, ...flags];
   const ceiling = unverified.length + trueLinkRot.length + stale.length + drifted.length;
@@ -329,6 +378,13 @@ function buildReport(files, probeResults, todayIso) {
     uniqueUrlsProbed: probeResults.size,
     linkRotCount: trueLinkRot.length,
     contentDriftCount: drifted.length,
+    contentDriftDetectable: verifiedWithDigest > 0,
+    verifiedReferenceCount: verifiedRefs,
+    verifiedWithDigestCount: verifiedWithDigest,
+    verifiedWithoutDigestCount: verifiedWithoutDigest,
+    contentDriftCoveragePercent:
+      verifiedRefs === 0 ? 100 : Math.round((verifiedWithDigest / verifiedRefs) * 1000) / 10,
+    maxUndigestedVerifiedRefs: MAX_UNDIGESTED_VERIFIED_REFS,
     botBlockedUnverifiableCount: blocked.length,
     staleCount: stale.length,
     structuralFlagCount: flags.length,
@@ -394,6 +450,7 @@ if (require.main === module) {
 
 module.exports = {
   buildReport,
+  MAX_UNDIGESTED_VERIFIED_REFS,
   stalenessWindowDays,
   parseContentDigest,
   hashContent,
