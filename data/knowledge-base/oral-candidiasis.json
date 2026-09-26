@@ -2,8 +2,58 @@
   "id": "oral-candidiasis",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review oral, dental, maxillofacial, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 66 (2026-09-26): one ASSOCIATION_ONLY draft mapping pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: the edge asserts association only (etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true; mechanismCategory NOT_ESTABLISHED because the candidal-colonization versus hyposalivation routes are unresolved in the located design). The evidence base is a single retrospective taste-clinic cohort conditioned on taste disturbance at presentation, so individual claims require dated gustologic and mycological assessment with competing-cause exclusion, and review by a qualified medical professional. Accepted single-reference quarantine warning on this edge (the located Candida-status taste cohort is the sole identity-specific quantification).",
+    "Pathway and duplicate-scope screens: no -> dysphagia edge (WITHHELD on INTERMEDIATE-CHAIN and threshold grounds - the classic pathway is oral candidiasis extending to esophageal candidiasis with odynophagia and dysphagia, but esophageal candidiasis has no catalog identity and the located esophageal-candidiasis review quantifies the condition in solid-organ cancer patients rather than in oral-candidiasis progression; reopening condition: a cohort quantifying dysphagia in oral candidiasis patients with esophageal assessment); no -> malnutrition-residuals edge (below threshold - the published dysphagia and ageusia malnutrition-residuals windows already carry the intake pathway and the thrush-and-intake literature is unquantified in located material; ME-28/ME-29 family discipline); no -> esophageal-cancer or -> oral-cancer edge (zero located quantification of malignant transformation in candidiasis; the published leukoplakia and erythroplakia oral-cancer windows are premalignant-lesion evidence, not candidiasis); direction discipline - the anchor cohort cannot resolve whether candidal colonization precedes or follows taste dysfunction and hyposalivation, so no forward direction is asserted beyond the association itself."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 66 (2026-09-26): one bounded association edge authored - oral-candidiasis to ageusia (rank 1) - classified ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true, and mechanismCategory NOT_ESTABLISHED (candidal-irritation versus hyposalivation routes unresolved). The proposition rests on the 141-patient taste-disorder cohort stratified by burning mouth syndrome subtype and oral Candida culture status: Candida-positive primary BMS patients showed no normogeusia and significantly lower objective taste scores after age matching, with hyposalivation co-segregating (PMID 41824080).",
+    "Counter-evidence and caveat screens recorded 2026-09-26: (i) selected population - the cohort includes only patients already presenting with taste disturbances, so no incidence of taste loss in candidiasis is derivable and reverse ascertainment is carried openly; (ii) non-universality - the authors explicitly state positive oral Candida culture is NOT universally associated with impaired taste; (iii) mediation ambiguity - reduced stimulated salivary flow in Candida-positive groups supports a hyposalivation-mediated route in which salivary loss both impairs taste and favors candidal growth; (iv) withheld dysphagia proposition - the classic esophageal-extension pathway cannot be authored because esophageal candidiasis has no catalog identity and the located review quantifies candida esophagitis in solid-organ cancer patients rather than oral-candidiasis progression; (v) culture-versus-clinic boundary - positive culture is not equivalent to clinical pseudomembranous thrush."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "ageusia",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Oral candidiasis is associated with gustatory deficits at retrospective taste-clinic cohort level: the study of 141 patients with taste disturbances stratified by burning mouth syndrome subtype and oral Candida culture status found that Candida-positive patients with primary burning mouth syndrome showed no normogeusia and significantly lower objective taste scores after age matching, with stimulated whole salivary flow significantly reduced in Candida-positive subgroups, and concluded that a positive oral Candida culture is not universally associated with impaired taste but is associated with gustatory deficits, hyposalivation, and psychological stress in specific subgroups (PMID 41824080); recorded as documented association only with the selected-population and subgroup limits carried openly.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: the anchor cohort includes only patients already presenting with taste disturbances so it cannot estimate taste-loss incidence in candidiasis, the association held only in specific subgroups (not universally), and the direction between candidal colonization, hyposalivation, and taste dysfunction is unresolved in this design, so individual claims require dated gustologic and mycological assessment with salivary, nutritional, and medication exclusion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "NOT_ESTABLISHED",
+        "primaryVector": "Local candidal colonization of the dorsal tongue and taste papillae is hypothesized to impair taste transduction through mucosal coating and inflammatory alteration of receptor epithelium, so diminished taste function would result, but the competing route through hyposalivation (which itself impairs taste and favors candidal growth) is not excluded by the located design, and which route produced any individual taste loss remains hypothesized until salivary, mycologic, and gustologic records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at single retrospective taste-clinic cohort class only: the cohort is conditioned on taste disturbance at presentation so no incidence or relative risk for taste loss in candidiasis can be derived, the association was subgroup-specific (most pronounced in primary burning mouth syndrome) rather than universal, and hyposalivation co-segregated with Candida positivity so mediation direction is unresolved.",
+        "evidenceGaps": "The cohort is retrospective and conditioned on taste-disorder presentation so incidence of taste loss among candidiasis patients is unquantifiable from it; the Candida-taste association held only in specific subgroups and was explicitly not universal; stimulated salivary flow was reduced in Candida-positive groups so hyposalivation may mediate or confound; oral Candida culture positivity is not equivalent to clinical thrush; and burning mouth syndrome, nutritional deficiency, medication effects, dentures, and psychological distress compete for individual attribution.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "hyposalivation mediating both candidal overgrowth and taste loss (direction unresolved)",
+          "burning mouth syndrome and primary taste disorders (constitutive to the anchor population)",
+          "nutritional deficiency (zinc, B12, iron) taste loss",
+          "medication-induced dysgeusia and xerostomia",
+          "depression and psychological distress-associated taste complaints (the anchor documented greater distress in Candida-positive subgroups)"
+        ]
+      },
+      "evidenceGaps": [
+        "The cohort is retrospective and conditioned on taste-disorder presentation so incidence of taste loss among candidiasis patients is unquantifiable from it; the Candida-taste association held only in specific subgroups and was explicitly not universal; stimulated salivary flow was reduced in Candida-positive groups so hyposalivation may mediate or confound; oral Candida culture positivity is not equivalent to clinical thrush; and burning mouth syndrome, nutritional deficiency, medication effects, dentures, and psychological distress compete for individual attribution."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY at single retrospective taste-clinic cohort class with the selected-population and subgroup limits carried openly: the 141-patient taste-disorder cohort found Candida-positive primary burning mouth patients with no normogeusia and significantly lower objective taste scores after age matching with hyposalivation co-segregating (PMID 41824080); because the cohort is conditioned on taste disturbance at presentation, the association was explicitly not universal, and hyposalivation may mediate or confound, the conservative standard keeps the edge at association only with the mechanism recorded as not established, and routes individual claims through dated gustologic and mycological assessment with salivary, nutritional, medication, and burning-mouth exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Kim SM, Kho HS. Clinical and gustatory features in taste disorder patients based on oral Candida culture status Clin Oral Investig. 2026 Mar 13;30(4).doi: 10.1007/s00784-026-06816-9. PMID 41824080.",
+          "note": "Retrospective study of 141 patients with taste disturbances classified by burning mouth syndrome subtype and oral Candida culture status (Clin Oral Investig 2026): Candida-positive primary BMS patients showed no normogeusia and significantly lower objective taste scores after age matching; stimulated whole salivary flow significantly reduced in Candida-positive subgroups; authors conclude positive oral Candida culture is not universally associated with impaired taste but associates with gustatory deficits, hyposalivation, and psychological stress in specific subgroups; supports the bounded subgroup association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41824080/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 41824080; results and conclusions (gustatory findings by Candida status)"
+        }
+      ]
+    }
+  ]
 }

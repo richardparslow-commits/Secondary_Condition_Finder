@@ -2,8 +2,338 @@
   "id": "oral-cancer",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review oral, dental, maxillofacial, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 66 (2026-09-26): six ASSOCIATION_ONLY draft mappings pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: all six edges assert association only (etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true). Four edges are explicitly treatment-mediated (dysphagia, ageusia, oral-candidiasis POST_SURGICAL_OR_TREATMENT; hearing-loss PHARMACOLOGICAL_IATROGENIC with the radiation contribution carried openly) and two carry mixed etiologic framing (hypothyroidism POST_SURGICAL_OR_TREATMENT; depressive-disorder MULTIFACTORIAL). The evidence base is review-level and mixed-site cohort evidence, so individual claims require dated specialist assessment with competing-cause exclusion, and review by a qualified medical professional.",
+    "Pathway and duplicate-scope screens: no -> malnutrition-residuals edge (INTERMEDIATE-CHAIN redundancy - the nutrition pathway is already carried through registered windows (dysphagia to malnutrition-residuals, ME-28; ageusia to malnutrition-residuals, ME-29) and the radiation review notes dysphagia associated with malnutrition as part of that same chain; a direct shortcut would duplicate registered scope; reopening condition: an oral-cavity cohort quantifying malnutrition independent of swallow and taste endpoints); no -> xerostomia, trismus, speech-disorder, or osteoradionecrosis edges (withheld propositions - no catalog identities despite the 151-study radiation scoping review documenting all four as common sequelae (PMID 41862928); recorded here, not as deferred identities); no -> head-and-neck-cancers edge (UMBRELLA/IDENTITY-DUPLICATION - the head-and-neck-cancers identity was deferred in batch 42 as class/umbrella with member identities owning pathways; oral-cancer is the organ-site member and must not duplicate that scope); scope discipline - anchors mix head and neck subsites (82.9 percent oral cavity/oropharynx/larynx in the hearing cohort; C00-C06 oral cavity coding in the depression cohort; oropharynx-dominant taste cohort), and the chemotherapy meta-analysis pools solid tumors generally; all scope limits are carried on the edges."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 66 (2026-09-26): six bounded association edges authored - oral-cancer to dysphagia (rank 1), ageusia (rank 2), oral-candidiasis (rank 3), hearing-loss (rank 4), hypothyroidism (rank 5), and depressive-disorder (rank 6) - classified ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, and hypothesizedOnly:true. Dysphagia rests on the radiation-associated dysphagia narrative review (PMID 42636603) and the 151-study radiation scoping review (PMID 41862928). Ageusia rests on the prospective Waterless Empirical Taste Test cohort (17.3% decline, tongue-dose correlation; PMID 42294409) and the chemotherapy oral-manifestation meta-analysis (dysgeusia 49.62%; PMID 41914550). Oral-candidiasis rests on the same meta-analysis (candidiasis 24.11%) and the radiation scoping review. Hearing-loss rests on the prospective IMRT-plus-cisplatin audiometric study (37.1% significant hearing loss, cochlear dose-response; PMID 35641273) and the 161-patient cisplatin chemoradiation cohort (PMID 40233546). Hypothyroidism rests on the JCOG1008 supplementary analysis (16.7% at two years, weekly cisplatin OR 7.70; PMID 39111143) and the thyroid dosimetry observational study (PMID 40026960). Depressive-disorder rests on the matched German primary care cohort (HR 1.62; PMID 42782416) and the oropharyngeal depression systematic review (PMID 42325174).",
+    "Counter-evidence and caveat screens recorded 2026-09-26: (i) treatment mediation - four edges are treatment sequela rather than disease progression and are flagged POST_SURGICAL_OR_TREATMENT or PHARMACOLOGICAL_IATROGENIC, with the cisplatin-plus-radiation composite carried openly on the hearing edge; (ii) mixed-site scope - head and neck cohorts including but not limited to oral cavity are used wherever the anchor quantifies oral cavity within its population (82.9 percent low-risk region in the hearing cohort; C00-C06 coding in the depression cohort), and the taste cohort is oropharynx-dominant (66 percent) with the subsite limit carried on the edge; (iii) endpoint boundaries - the ageusia edge carries continuous taste-score decline and dysgeusia endpoints (loss spectrum) openly under the Loss of Taste identity, and the hypothyroidism edge notes the JCOG1008 cohort predated thyroid dose constraints; (iv) intermediate-chain discipline - malnutrition was NOT authored directly because the swallow and taste edges plus their registered malnutrition-residuals windows already carry the pathway (ME-28/ME-29 family discipline); (v) umbrella discipline - no head-and-neck-cancers edge (batch-42 deferral stands; member identity owns its pathways); (vi) withheld no-identity sequelae - xerostomia, trismus, speech disorder, and osteoradionecrosis are documented radiation sequelae without catalog identities (withheld propositions, not deferred identities)."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "dysphagia",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Oral cancer treatment documents dysphagia at narrative-review and scoping-review level: the Oral Oncology narrative review of radiation-associated dysphagia in head and neck cancer describes it as a major short- and long-term complication of treatment associated with malnutrition, aspiration pneumonia, and markedly reduced quality of life, while noting post-operative dysphagia after tumor resection, reconstruction, and nerve injury as an important parallel entity (PMID 42636603), and the scoping review of radiation-induced oral side effects across 151 studies lists dysphagia among the common chronic sequelae of head and neck radiotherapy (PMID 41862928); recorded as documented association only with the mixed-site cohort scope carried openly.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: the located evidence is review-level for head and neck cancer populations that include but are not limited to oral cavity primaries, and dysphagia in an individual oral cancer patient may reflect tumor obstruction, surgical resection, radiation fibrosis, or a neurologic swallow disorder, so individual claims require dated instrumental swallow assessment with tumor-recurrence and neurologic exclusion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "POST_SURGICAL_OR_TREATMENT",
+        "primaryVector": "Radiotherapy fibrosis of pharyngeal and masticatory musculature with sensory denervation and surgical resection or reconstruction of oral and pharyngeal tissue drives impaired bolus transport so dysphagia results, the treatment-injury route described across the radiation-associated dysphagia review and the radiation side-effect scoping review, but whether this route produced any individual dysphagia remains hypothesized until swallow studies and operative records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at narrative plus scoping review class only: neither anchor is a quantified incidence cohort, the reviews cover head and neck cancer broadly with oral cavity as one subsite among several, and radiation-associated and post-surgical dysphagia are distinct entities that the located material does not separate for oral cavity primaries specifically.",
+        "evidenceGaps": "No oral-cavity-specific dysphagia incidence is quantified by the located anchors; the review evidence covers head and neck cancer cohorts mixing oral cavity, oropharynx, and larynx subsites; radiation-associated and post-operative dysphagia are mechanistically distinct but not subsite-separated; treatment intensity (dose, concurrent chemotherapy, flap reconstruction) materially modifies risk; and tumor obstruction or recurrence, neurologic swallow disorders, candidiasis-related odynophagia, and pre-existing dysphagia compete for individual attribution.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "tumor obstruction or local recurrence presenting as dysphagia",
+          "neurologic oropharyngeal dysphagia (stroke, neurodegenerative disease - the published stroke and neurologic windows, not recycled per ME-29)",
+          "esophageal stricture or web (the published esophageal-stricture window, not recycled per ME-29)",
+          "candidiasis-related odynophagia (the companion oral-candidiasis mapping in this batch)",
+          "pre-existing dysphagia predating the cancer diagnosis"
+        ]
+      },
+      "evidenceGaps": [
+        "No oral-cavity-specific dysphagia incidence is quantified by the located anchors; the review evidence covers head and neck cancer cohorts mixing oral cavity, oropharynx, and larynx subsites; radiation-associated and post-operative dysphagia are mechanistically distinct but not subsite-separated; treatment intensity (dose, concurrent chemotherapy, flap reconstruction) materially modifies risk; and tumor obstruction or recurrence, neurologic swallow disorders, candidiasis-related odynophagia, and pre-existing dysphagia compete for individual attribution."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY at narrative-plus-scoping-review class with the mixed-site and unquantified-incidence limits carried openly: the radiation-associated dysphagia review documents the complication across head and neck cancer treatment with malnutrition and aspiration consequences (PMID 42636603) and the 151-study scoping review lists dysphagia among common radiation sequelae (PMID 41862928); because the anchors are review-level with mixed subsites and no oral-cavity-specific incidence, the conservative standard keeps the edge at association only and routes individual claims through dated videofluoroscopic or fiberoptic swallow assessment with tumor-recurrence, neurologic, and stricture exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Bradshaw J, Tardif J, Lott DG, et al. Radiation-associated dysphagia in head and neck cancer: A narrative review of surgical management, diagnosis, and emerging directions Oral Oncol. 2026 Oct;181:108118. PMID 42636603.",
+          "note": "Narrative review of radiation-associated dysphagia in head and neck cancer (Oral Oncol 2026): major short- and long-term treatment complication associated with malnutrition, aspiration pneumonia, and markedly reduced quality of life; pathophysiology, clinical presentations, and surgical interventions reviewed; post-operative dysphagia after resection, reconstruction, and nerve injury noted as an important separate entity; supports the bounded treatment-sequela association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42636603/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 42636603; review scope and framing of radiation-associated dysphagia"
+        },
+        {
+          "citation": "Gerlach T, Brunello G, Tenbrink C, et al. Radiation-induced oral side effects in head and neck cancer: a scoping review and interdisciplinary recommendations BMC Oral Health. 2026 Mar 21;26(1).doi: 10.1186/s12903-026-08100-4. PMID 41862928.",
+          "note": "Scoping review of radiation-induced oral side effects in head and neck cancer (BMC Oral Health 2026, 151 studies): dental caries, periodontitis, xerostomia, mucositis, candidiasis, trismus, dysphagia, and osteoradionecrosis described as common, multifactorial, and often long-lasting effects of radiotherapy; supports the bounded radiation-sequela framing only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41862928/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 41862928; review data (radiation side-effect spectrum)"
+        }
+      ]
+    },
+    {
+      "conditionId": "ageusia",
+      "rank": 2,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Oral cancer treatment documents taste-function loss at prospective objective taste-testing and meta-analysis level: the prospective observational study of 50 head and neck radiotherapy patients (>= 50 Gy, most common primary the oropharynx) measured taste with the Waterless Empirical Taste Test and found a 17.3 percent relative decline in total taste score from baseline to end of treatment (umami -62.5 percent, salty -30.9 percent) with the decrement significantly correlated with mean tongue dose (r = -0.62) and oral cavity mean dose (r = -0.58), and taste scores still 8.2 percent below baseline at 12 weeks post-treatment (PMID 42294409), and the systematic review and meta-analysis of oral manifestations during chemotherapy pooled dysgeusia prevalence at 49.62 percent across 24 studies (PMID 41914550); recorded as documented association only with the taste-score-decline endpoint limit carried openly.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: the located endpoints are continuous taste-score decline and pooled dysgeusia (distorted or diminished taste) rather than complete ageusia, so the mapping carries the loss spectrum under the catalog identity Loss of Taste, and individual claims require dated gustologic testing with medication, nutritional, and candidal exclusion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "POST_SURGICAL_OR_TREATMENT",
+        "primaryVector": "Radiation injury to rapidly turning-over taste bud receptor cells with radiation and chemotherapy effects on salivary flow and oral mucosa drives reduced taste transduction so diminished or lost taste function results, the receptor-injury route supported by the tongue-dose and oral-cavity-dose correlations with taste-score decline, but whether this route produced any individual taste loss remains hypothesized until gustologic and salivary records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at single prospective taste-testing cohort (50 patients, 32 completing follow-up) plus chemotherapy meta-analysis class only: the prospective cohort is small with most primaries in the oropharynx rather than the oral cavity, the meta-analysis pools general chemotherapy populations with considerable heterogeneity and dysgeusia rather than ageusia endpoints, and recovery was already evident by 12 weeks in the prospective cohort so persistence is unestablished.",
+        "evidenceGaps": "The prospective cohort is small (50 enrolled, 32 completing 12-week follow-up) with 66 percent oropharynx primaries so oral-cavity-specific taste loss is underrepresented; the pooled chemotherapy estimate spans solid tumors generally with acknowledged heterogeneity; the measured endpoint is taste-score decline and dysgeusia, not complete ageusia; partial recovery by 12 weeks leaves long-term persistence unquantified; and xerostomia, candidiasis, nutritional deficiency, and medication effects compete for individual attribution.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "hyposalivation and xerostomia-mediated taste change (the radiation side-effect pathway itself)",
+          "oral candidiasis-associated gustatory deficit (the companion oral-candidiasis mapping in this batch)",
+          "nutritional deficiency (zinc, B12) taste loss",
+          "medication-induced dysgeusia (antihypertensives, antimicrobials, chemotherapy agents)",
+          "burning mouth syndrome and primary taste disorders"
+        ]
+      },
+      "evidenceGaps": [
+        "The prospective cohort is small (50 enrolled, 32 completing 12-week follow-up) with 66 percent oropharynx primaries so oral-cavity-specific taste loss is underrepresented; the pooled chemotherapy estimate spans solid tumors generally with acknowledged heterogeneity; the measured endpoint is taste-score decline and dysgeusia, not complete ageusia; partial recovery by 12 weeks leaves long-term persistence unquantified; and xerostomia, candidiasis, nutritional deficiency, and medication effects compete for individual attribution."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY at prospective taste-testing plus meta-analysis class with the endpoint and subsite limits carried openly: the prospective Waterless Empirical Taste Test cohort documented a 17.3 percent relative taste-score decline at end of radiotherapy with significant tongue-dose correlation and incomplete recovery at 12 weeks (PMID 42294409) and the chemotherapy meta-analysis pooled dysgeusia at 49.62 percent (PMID 41914550); because the endpoints measure the taste-loss spectrum rather than complete ageusia and the cohort is small with oropharynx dominance, the conservative standard keeps the edge at association only and routes individual claims through dated gustologic testing with salivary, candidal, nutritional, and medication exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Yarlagadda S, Maharaj A, Nong T, et al. Time Course and Determinants of Acute Dysgeusia in Patients Receiving Head and Neck Radiation Therapy Adv Radiat Oncol. 2026 Aug;11(8):102054. PMID 42294409.",
+          "note": "Prospective observational taste-testing study of 50 head and neck radiotherapy patients (>= 50 Gy; Adv Radiat Oncol 2026; 32 completing 12-week follow-up; most common primary oropharynx 66%): Waterless Empirical Taste Test total score declined 17.3% baseline to end of treatment (umami -62.5%, salty -30.9%); decline correlated with mean tongue dose (r=-0.62, P<.003) and oral cavity mean dose (r=-0.58, P=.005); 12-week score still -8.2% versus baseline (P=.011); supports the bounded taste-function-decline association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42294409/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 42294409; results (taste score trajectories and dose correlations)"
+        },
+        {
+          "citation": "Filho VFDS, Motta LRDD, Abreu LG, et al. Prevalence of Oral Manifestations in Individuals Undergoing Chemotherapy: Systematic Review and Meta-Analysis Spec Care Dentist. 2026 Mar-Apr;46(2):e70168. PMID 41914550.",
+          "note": "Systematic review and meta-analysis of oral manifestations in individuals undergoing chemotherapy (Spec Care Dentist 2026; 24 cross-sectional studies): pooled prevalence dysgeusia 49.62%, xerostomia 39.92%, candidiasis 24.11%, dysphagia 28.28%; authors caution considerable heterogeneity; supports the bounded pooled-prevalence association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41914550/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 41914550; meta-analysis results (pooled oral manifestation prevalences)"
+        }
+      ]
+    },
+    {
+      "conditionId": "oral-candidiasis",
+      "rank": 3,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Oral cancer treatment documents oral candidiasis at meta-analysis and scoping-review level: the systematic review and meta-analysis of oral manifestations during chemotherapy pooled candidiasis prevalence at 24.11 percent across 24 cross-sectional studies (PMID 41914550), and the scoping review of radiation-induced oral side effects across 151 studies lists candidiasis among the common radiation sequelae driven by hyposalivation and mucosal compromise (PMID 41862928); recorded as documented treatment-mediated association only with the mixed-population scope carried openly.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: this edge is explicitly treatment-mediated rather than malignant-transformation-mediated, the pooled chemotherapy estimate spans solid tumors generally, and oral candidiasis in an individual cancer patient may reflect denture use, inhaled steroids, diabetes, or immunosuppression independent of the cancer treatment, so individual claims require dated oral examination with risk-factor exclusion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "POST_SURGICAL_OR_TREATMENT",
+        "primaryVector": "Radiotherapy hyposalivation and mucosal barrier compromise with chemotherapy-associated neutropenia and local immune suppression drive candidal overgrowth on compromised oral mucosa so oral candidiasis results, the treatment-predisposition route consistent with candidiasis pooling at 24 percent in chemotherapy cohorts and appearing among the radiation side-effect spectrum, but whether this route produced any individual candidal infection remains hypothesized until oral examination and blood-count records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at chemotherapy meta-analysis plus radiation scoping review class only: the meta-analysis pools general chemotherapy populations across solid tumors with considerable heterogeneity and cross-sectional designs, the scoping review is narrative-level for radiotherapy effects, and neither anchor quantifies oral-cavity-cancer-specific candidiasis incidence under modern regimens.",
+        "evidenceGaps": "The pooled candidiasis estimate comes from cross-sectional chemotherapy studies across mixed solid tumors with acknowledged heterogeneity; the scoping review aggregates radiation effects without cancer-subsite separation; candidiasis incidence varies with radiation dose, salivary-gland sparing, chemotherapy regimen, and neutropenia duration; and denture stomatitis, inhaled corticosteroid use, diabetes, xerostomia from other causes, and HIV or other immunosuppression compete for individual attribution.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "denture-related candidiasis",
+          "inhaled corticosteroid-associated oral candidiasis",
+          "diabetes-associated candidiasis",
+          "immunosuppression independent of cancer treatment (HIV, transplant - the published windows, not recycled per ME-29)",
+          "xerostomia from non-treatment causes"
+        ]
+      },
+      "evidenceGaps": [
+        "The pooled candidiasis estimate comes from cross-sectional chemotherapy studies across mixed solid tumors with acknowledged heterogeneity; the scoping review aggregates radiation effects without cancer-subsite separation; candidiasis incidence varies with radiation dose, salivary-gland sparing, chemotherapy regimen, and neutropenia duration; and denture stomatitis, inhaled corticosteroid use, diabetes, xerostomia from other causes, and HIV or other immunosuppression compete for individual attribution."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY at meta-analysis plus scoping-review class with the treatment-mediated and mixed-population limits carried openly: the chemotherapy meta-analysis pooled oral candidiasis at 24.11 percent (PMID 41914550) and the 151-study radiation scoping review lists candidiasis among common treatment sequelae driven by hyposalivation and mucosal compromise (PMID 41862928); because the anchors mix solid-tumor populations and carry no oral-cavity-specific incidence, the conservative standard keeps the edge at association only, flags it explicitly as treatment-mediated rather than malignant transformation, and routes individual claims through dated oral examination with denture, steroid, diabetic, and immunosuppression exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Filho VFDS, Motta LRDD, Abreu LG, et al. Prevalence of Oral Manifestations in Individuals Undergoing Chemotherapy: Systematic Review and Meta-Analysis Spec Care Dentist. 2026 Mar-Apr;46(2):e70168. PMID 41914550.",
+          "note": "Systematic review and meta-analysis of oral manifestations in individuals undergoing chemotherapy (Spec Care Dentist 2026; 24 cross-sectional studies): pooled candidiasis prevalence 24.11%; considerable heterogeneity across studies; supports the bounded pooled-prevalence association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41914550/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 41914550; meta-analysis results (pooled candidiasis prevalence)"
+        },
+        {
+          "citation": "Gerlach T, Brunello G, Tenbrink C, et al. Radiation-induced oral side effects in head and neck cancer: a scoping review and interdisciplinary recommendations BMC Oral Health. 2026 Mar 21;26(1).doi: 10.1186/s12903-026-08100-4. PMID 41862928.",
+          "note": "Scoping review of radiation-induced oral side effects in head and neck cancer (BMC Oral Health 2026, 151 studies): candidiasis listed among common radiation effects, with caries and periodontitis largely driven by hyposalivation and mucosal compromise; supports the bounded radiation-predisposition framing only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41862928/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 41862928; review data (candidiasis among radiation side effects)"
+        }
+      ]
+    },
+    {
+      "conditionId": "hearing-loss",
+      "rank": 4,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Oral cancer treatment documents hearing loss at prospective audiometric and comparative-cohort level: the prospective single-institution study of 35 locally advanced head and neck cancer patients (82.9 percent with primary in oral cavity, oropharynx, or larynx) treated with intensity-modulated radiotherapy and concomitant cisplatin found significant hearing loss in 37.1 percent during follow-up with a dose-dependent relationship between cochlear minimum dose and hearing loss (cochlear Dmin below 14.4 Gy associated with reduced rates) (PMID 35641273), and the two-hospital cohort of 161 head and neck squamous cell carcinoma patients treated with cisplatin-based chemoradiation evaluated cisplatin-induced hearing loss by pure-tone audiometry at baseline and three months (PMID 40233546); recorded as documented treatment-mediated association only with the composite-modality limit carried openly.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: hearing loss under combined cisplatin and radiotherapy is a composite-modality toxicity in which drug ototoxicity and cochlear radiation dose are not separable in the located anchors, so whether any individual hearing loss is attributable to the cancer treatment requires individual audiologic and otologic attribution with presbycusis, noise, and prior-ototoxic-drug exclusion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "PHARMACOLOGICAL_IATROGENIC",
+        "primaryVector": "Cisplatin platinum damage to cochlear outer hair cells with concurrent radiation injury to the cochlea drives irreversible sensorineural hearing loss so diminished auditory thresholds result, the dual-ototoxicity route supported by the prospective audiometric rate (37.1 percent significant hearing loss) and the cochlear dose-response relationship, but whether this route produced any individual hearing loss remains hypothesized until audiograms and treatment-dose records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at single-institution prospective study (35 patients) plus two-hospital comparative cohort class only: both anchors treat combined cisplatin and radiotherapy so drug and radiation contributions are composite endpoints carried openly, the prospective series is small with short follow-up for late ototoxicity, and the comparative cohort contrasts cisplatin schedules rather than treated versus untreated patients.",
+        "evidenceGaps": "Both anchors deliver combined cisplatin-based chemoradiation so the drug-versus-radiation attribution is a composite endpoint not separable in the located data; the prospective series is small (35 patients) with a single-institution design and follow-up limited for late progressive ototoxicity; the comparative cohort contrasts infusion and hydration schedules rather than treated versus untreated groups; and presbycusis, occupational noise exposure, cerumen and middle-ear disease, and prior aminoglycoside or other ototoxic exposure compete for individual attribution.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "presbycusis and age-related hearing decline",
+          "occupational and recreational noise exposure",
+          "prior or concurrent aminoglycoside or other ototoxic drug exposure",
+          "middle-ear disease and cerumen (conductive versus sensorineural distinction)",
+          "the radiation-only versus cisplatin-only attribution within the composite modality (carried openly on the edge)"
+        ]
+      },
+      "evidenceGaps": [
+        "Both anchors deliver combined cisplatin-based chemoradiation so the drug-versus-radiation attribution is a composite endpoint not separable in the located data; the prospective series is small (35 patients) with a single-institution design and follow-up limited for late progressive ototoxicity; the comparative cohort contrasts infusion and hydration schedules rather than treated versus untreated groups; and presbycusis, occupational noise exposure, cerumen and middle-ear disease, and prior aminoglycoside or other ototoxic exposure compete for individual attribution."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY at prospective audiometric plus comparative-cohort class with the composite-modality limit carried openly: the prospective IMRT-plus-cisplatin study of 35 patients (82.9 percent oral cavity, oropharynx, or larynx primaries) found significant hearing loss in 37.1 percent with cochlear dose-response relationship (PMID 35641273) and the 161-patient HNSCC cohort quantified cisplatin-induced hearing loss by serial pure-tone audiometry (PMID 40233546); because drug and radiation ototoxicity are not separable in the anchors and late progression is under-captured, the conservative standard keeps the edge at association only, flags it PHARMACOLOGICAL_IATROGENIC with the radiation contribution carried openly, and routes individual claims through dated audiologic assessment with presbycusis, noise, and prior-ototoxic-exposure exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Musio D, DE Vincentiis M, D'Urso P, et al. Hearing Loss After Cisplatin-based Chemoradiotherapy for Locally Advanced Head and Neck Cancer: A Prospective Single-institution Study Anticancer Res. 2022 Jun;42(6):3003-3009. PMID 35641273.",
+          "note": "Prospective single-institution study of 35 locally advanced head and neck cancer patients (70 cochleae) treated with IMRT plus concomitant cisplatin (Anticancer Res 2022; 82.9% oral cavity/oropharynx/larynx primaries): significant hearing loss in 13 cases (37.1%) with serial audiometry; dose-dependent relationship between cochlear Dmin and hearing loss; Dmin <14.4 Gy associated with reduced rates; supports the bounded combined-modality ototoxicity association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35641273/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 35641273; results (hearing loss rates and cochlear dosimetry)"
+        },
+        {
+          "citation": "Burger AVM, Koot MA, van Balen DEM, et al. Comparison of cisplatin-induced hearing loss in different durations of infusion and volume of hydration schedules in head and neck squamous cell carcinoma patients treated with cisplatin-based chemoradiation Oral Oncol. 2025 May;164:107246. PMID 40233546.",
+          "note": "Two-hospital cohort of 161 head and neck squamous cell carcinoma patients treated with cisplatin-based chemoradiation (Oral Oncol 2025; weekly Cis40 n=77 versus triweekly Cis100 n=88; pure-tone audiometry baseline and 3 months): evaluates cisplatin-induced hearing loss between infusion and hydration schedules; supports the bounded cisplatin-ototoxicity framing only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40233546/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 40233546; methods and results (cisplatin-induced hearing loss assessment)"
+        }
+      ]
+    },
+    {
+      "conditionId": "hypothyroidism",
+      "rank": 5,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Oral cancer treatment documents hypothyroidism at multicenter-trial-cohort and dosimetric-observational level: the JCOG1008 supplementary analysis of 162 head and neck cancer patients (57 three-dimensional conformal, 105 intensity-modulated radiotherapy, median follow-up 4.7 years) treated with postoperative chemoradiotherapy found 27 patients (16.7 percent) developed grade 2 or higher hypothyroidism within two years after radiotherapy with weekly cisplatin an independent risk factor (OR 7.70, 95 percent CI 1.63-36.34) and no thyroid dose constraints applied (PMID 39111143), and the observational thyroid-dosimetry study of head and neck cancer patients treated with conformal radiotherapy associated thyroid dose parameters with radiation-induced hypothyroidism (PMID 40026960); recorded as documented treatment-mediated association only.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: this edge is explicitly radiation- and chemotherapy-mediated rather than disease-mediated, and hypothyroidism in an individual head and neck cancer patient may reflect autoimmune thyroiditis, prior thyroid disease, or immune-checkpoint-inhibitor thyroiditis, so individual claims require dated thyroid-function testing with autoimmune and medication exclusion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "POST_SURGICAL_OR_TREATMENT",
+        "primaryVector": "Direct and scatter irradiation of the thyroid gland with cisplatin-associated thyroid vulnerability drives glandular damage and impaired hormone synthesis so hypothyroidism results, the radiation-injury route quantified by the 16.7 percent two-year incidence in the trial cohort and the thyroid dose-parameter associations, but whether this route produced any individual hypothyroidism remains hypothesized until dosimetric and thyroid-function records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at multicenter trial-cohort secondary analysis plus single observational dosimetry study class only: the trial analysis is confined to postoperative chemoradiotherapy for high-risk disease without thyroid dose constraints (historical technique), the cisplatin odds ratio has a wide confidence interval (1.63-36.34) on 27 events, and both anchors cover head and neck cancer sites broadly with oral cavity as one subsite.",
+        "evidenceGaps": "The trial cohort received no thyroid dose constraints so modern gland-sparing techniques may yield lower incidence; the weekly-cisplatin odds ratio rests on 27 events with a wide confidence interval (1.63-36.34); the analysis covers postoperative chemoradiotherapy for high-risk disease specifically; follow-up for late hypothyroidism beyond two years is limited; and Hashimoto thyroiditis, pre-existing thyroid dysfunction, iodine status, pituitary or hypothalamic causes from cranial irradiation, and immune-checkpoint-inhibitor thyroiditis compete for individual attribution.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Hashimoto and other autoimmune thyroiditis",
+          "pre-existing or subclinical thyroid dysfunction predating treatment",
+          "immune-checkpoint-inhibitor thyroiditis (increasingly co-administered in head and neck oncology)",
+          "pituitary or hypothalamic causes from cranial irradiation",
+          "iodine deficiency or excess and medication effects"
+        ]
+      },
+      "evidenceGaps": [
+        "The trial cohort received no thyroid dose constraints so modern gland-sparing techniques may yield lower incidence; the weekly-cisplatin odds ratio rests on 27 events with a wide confidence interval (1.63-36.34); the analysis covers postoperative chemoradiotherapy for high-risk disease specifically; follow-up for late hypothyroidism beyond two years is limited; and Hashimoto thyroiditis, pre-existing thyroid dysfunction, iodine status, pituitary or hypothalamic causes from cranial irradiation, and immune-checkpoint-inhibitor thyroiditis compete for individual attribution."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY at trial-cohort secondary analysis plus dosimetric-observational class with the treatment-mediated and historical-technique limits carried openly: the JCOG1008 supplementary analysis found 16.7 percent developed grade 2 or higher hypothyroidism within two years after postoperative chemoradiotherapy with weekly cisplatin an independent risk factor (PMID 39111143) and the thyroid dosimetry study associated dose parameters with radiation-induced hypothyroidism (PMID 40026960); because the trial cohort predated thyroid dose constraints and the cisplatin estimate is wide on few events, the conservative standard keeps the edge at association only, flags it explicitly as treatment-mediated, and routes individual claims through dated thyroid-function testing with autoimmune, pre-existing-thyroid, and checkpoint-inhibitor exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Shimizu H, Kodaira T, Kiyota N, et al. Incidence and risk factors associated with the development of hypothyroidism after postoperative chemoradiotherapy for head and neck cancer patients with high-risk features: Supplementary analysis of JCOG1008 Oral Oncol. 2024 Oct;157:106976. PMID 39111143.",
+          "note": "Supplementary analysis of the multicenter JCOG1008 trial (Oral Oncol 2024): 162 high-risk head and neck cancer patients treated with postoperative chemoradiotherapy (57 3D-CRT, 105 IMRT; median follow-up 4.7 years; no thyroid dose constraints); 27 (16.7%) developed CTCAE grade >= 2 hypothyroidism within 2 years; weekly cisplatin an independent risk factor (OR 7.70, 95% CI 1.63-36.34); supports the bounded incidence and risk-factor association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39111143/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 39111143; results (hypothyroidism incidence and multivariable risk factors)"
+        },
+        {
+          "citation": "Sen K, Maji T, Lahiri D, et al. Thyroid Dosimetry and Its Association With Radiation-Induced Hypothyroidism in Head and Neck Cancer Patients Treated With Conformal Radiotherapy: An Observational Study Cureus. 2025 Jan;17(1):e78220. PMID 40026960.",
+          "note": "Observational thyroid-dosimetry study of head and neck cancer patients treated with conformal radiotherapy (Cureus 2025): association between thyroid dose parameters and radiation-induced hypothyroidism; supports the bounded dose-response framing only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40026960/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 40026960; results (thyroid dosimetry and hypothyroidism association)"
+        }
+      ]
+    },
+    {
+      "conditionId": "depressive-disorder",
+      "rank": 6,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Oral cancer documents subsequent depression at population-cohort and systematic-review level: the German population-based primary care cohort of 1,852 patients with incident lip and head and neck cancer (ICD-10 C00-C06, covering lip, tongue, gum, floor of mouth, palate, and other mouth) propensity-matched 1:10 to 18,520 cancer-free individuals with prior mental health conditions excluded found a significantly higher incidence of subsequently diagnosed depression (HR 1.62, 95 percent CI 1.40-1.87) with tongue cancer strongest (HR 2.05) and distant metastasis HR 2.59 (PMID 42782416), and the systematic review of depression in oropharyngeal cancer across four studies and 3,736 patients found depressive symptoms in up to 47 percent at 12 months and a 19 percent cumulative probability within five years despite heterogeneous methods (PMID 42325174); recorded as documented association only with the overlapping-scope limit carried openly.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: the population cohort establishes relative incidence after diagnosis but cannot separate the psychological burden of disfigurement and functional loss from treatment toxicity and systemic illness, and the oropharyngeal review is heterogeneous with overlapping tongue scope rather than oral cavity specifically, so individual claims require dated psychiatric assessment with pre-existing, adjustment, and medical-cause exclusion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MULTIFACTORIAL",
+        "primaryVector": "The psychological burden of disfigurement and impaired speech, swallowing, and taste with treatment toxicity and cancer-related systemic inflammation drives depressive illness so subsequently diagnosed depression results, the combined burden route consistent with the elevated hazard in the matched population cohort and its concentration in tongue and metastatic disease, but whether this route produced any individual depression remains hypothesized until psychiatric and oncologic records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at retrospective matched population cohort plus heterogeneous systematic review class only: the cohort relies on primary-care diagnosis coding (under-detection likely), the review pools four studies with divergent instruments and follow-up windows, and the strongest subgroup signals (tongue cancer, metastasis) may reflect disease severity and functional impact rather than an independent depression pathway.",
+        "evidenceGaps": "The population cohort uses recorded diagnosis codes so depressive episodes without clinical contact are missed; prior mental-health exclusion improves specificity but residual confounding by alcohol, tobacco, and socioeconomic factors remains; the oropharyngeal review is heterogeneous (47 percent versus 14 percent at 12 months across studies) with overlapping tongue scope; depression may predate the cancer in the general population; and treatment-induced hypothyroidism (the companion edge in this file), medication effects, and adjustment disorder compete for individual attribution.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "depression predating the cancer diagnosis (excluded at cohort entry but possible in individuals)",
+          "adjustment disorder with depressed mood",
+          "treatment-induced hypothyroidism-mediated mood disorder (the companion hypothyroidism edge in this file, not recycled per ME-29)",
+          "medication effects (opioids, corticosteroids, chemotherapy agents)",
+          "alcohol use disorder and psychosocial deprivation common in head and neck cancer populations"
+        ]
+      },
+      "evidenceGaps": [
+        "The population cohort uses recorded diagnosis codes so depressive episodes without clinical contact are missed; prior mental-health exclusion improves specificity but residual confounding by alcohol, tobacco, and socioeconomic factors remains; the oropharyngeal review is heterogeneous (47 percent versus 14 percent at 12 months across studies) with overlapping tongue scope; depression may predate the cancer in the general population; and treatment-induced hypothyroidism (the companion edge in this file), medication effects, and adjustment disorder compete for individual attribution."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY at matched population-cohort plus systematic-review class with the coding-based ascertainment and overlapping-scope limits carried openly: the matched German primary care cohort found subsequent depression incidence elevated (HR 1.62) with tongue and metastatic disease strongest (PMID 42782416) and the oropharyngeal systematic review found high depressive-symptom burdens despite heterogeneous methods (PMID 42325174); because ascertainment is diagnosis-code based and the review population overlaps tongue rather than oral cavity scope, the conservative standard keeps the edge at association only and routes individual claims through dated psychiatric assessment with pre-existing, adjustment, thyroid, and medication exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Cirkel LL, Wöstmann B, Kostev K. Subsequent depression in patients with lip and head and neck cancer: a population-based primary care analysis Clin Oral Investig. 2026 Sep 24;30(10).pii: 461. doi: 10.1007/s00784-026-07158-2. PMID 42782416.",
+          "note": "Retrospective matched cohort, German Disease Analyzer primary care database (Clin Oral Investig 2026): 1,852 adults with incident lip and head and neck cancer (ICD-10 C00-C06), 2005-2023, prior mental health conditions excluded, propensity-matched 1:10 to 18,520 cancer-free individuals; subsequent depression HR 1.62 (1.40-1.87); tongue cancer HR 2.05 (1.65-2.53), base-of-tongue 2.10, distant metastasis HR 2.59 (1.85-3.63); supports the bounded subsequent-depression association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42782416/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 42782416; results (depression incidence and subgroup hazard ratios)"
+        },
+        {
+          "citation": "Salskov I, Kibsgaard CJ, Carlander AF, et al. Development of depression in patients with oropharyngeal cancer: a systematic review Acta Otorhinolaryngol Ital. 2026 Jun;46(3):161-171. PMID 42325174.",
+          "note": "Systematic review of depression development in oropharyngeal cancer (Acta Otorhinolaryngol Ital 2026; 4 studies, 3,736 patients): 47% depressive symptoms (UK) versus 14% (Australia) at 12 months; 19% cumulative probability within 5 years (US/SEER); 15% major depression symptoms before radiotherapy (US/Texas); methods heterogeneous; supports the bounded overlapping-scope association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42325174/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 42325174; review results (depression rates across cohorts)"
+        }
+      ]
+    }
+  ]
 }
