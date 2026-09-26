@@ -62,7 +62,7 @@ const MAX_CYCLE_LENGTH = 12;
  * work. Ratcheting instead keeps the backlog from growing silently. Counted
  * independently of --strict so the pin means the same thing in both modes.
  */
-const CRG_REVIEW_BASELINE = 12;
+const CRG_REVIEW_BASELINE = 13;  /* batch 63 (2026-09-26): +1 review-class finding - the nephritis->chronic-kidney-disease edge closes a new CRG-ASSOCIATION-CYCLE (chronic-kidney-disease -> congestive-heart-failure -> depressive-disorder -> sleep-apnea -> hypertension -> ischemic-heart-disease -> colorectal-cancer -> fecal-incontinence -> dermatitis -> impetigo -> nephritis -> chronic-kidney-disease) via the published impetigo->nephritis edge; composed ASSOCIATION_ONLY links with hypothesizedOnly:true on every hop, decision recorded in nephritis.json governance notes, deliberately re-pinned rather than resolved by dropping a defensible edge */
 const CRG_REDUNDANCY_BASELINE = 28;
 
 /**

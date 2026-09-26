@@ -2,8 +2,284 @@
   "id": "nephrosis",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review urologic, gynecologic, hormonal, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 63 (2026-09-26): five ASSOCIATION_ONLY draft mappings pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: all five edges assert association only (etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true; mechanisms THROMBOTIC_OR_VASCULAR and MULTIFACTORIAL). The evidence base is national matched cohort plus multicenter cohort class with composite endpoints, so individual claims require dated imaging, coagulation, and renal review with competing-cause exclusion, and review by a qualified medical professional.",
+    "Pathway and duplicate-scope screens: no -> proteinuria or edema edge (constitutive-proximity guard - both are the defining diagnostic features of the nephrotic syndrome itself); no -> hyperlipidemia edge (constitutive-metabolic feature of the syndrome; also no catalog identity pulled in scope); no -> anemia edge (WITHHELD - zero located condition-specific quantification in nephrotic populations; renal anemia evidence is CKD-stage-mediated); no -> renal-infarction or renal-vein-thrombosis edge (WITHHELD - recorded as withheld propositions rather than deferred identities: the catalog holds no renal-vein-thrombosis identity even though the classic nephrotic thrombosis site is the renal vein); bleeding-outcome proposition recorded as withheld (the cohort documents bleeding adjusted hazard 4.02 but the catalog holds no bleeding or hemorrhage identity); composite-endpoint discipline - the deep-vein-thrombosis and pulmonary-embolism edges share the composite-VTE anchor with the components-not-separable limit carried on both (same-identity shared anchor, batch-62 precedent); sibling separation - the nephritis identity's chronic-kidney-disease window keeps its own glomerular-disease anchors and no evidence was recycled between the two identities (ME-29); intermediate-node screen - no -> heart-failure or cardiomyopathy edge (the cardiovascular review's heart-failure framing routes through dyslipidemia and hypertension management, with zero located condition-specific incidence)."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 63 (2026-09-26): five bounded association edges authored - nephrosis to deep-vein-thrombosis (rank 1), to pulmonary-embolism (rank 2), to cerebrovascular-accident-stroke-residuals (rank 3), to myocardial-infarction (rank 4), and to chronic-kidney-disease (rank 5) - classified ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, and hypothesizedOnly:true. The thromboembolic propositions rest on the Danish national matched cohort of 3,967 first-time nephrotic adults (PMID 34979093), the edema-stratified multicenter cohort of 1,219 nephrotic-range patients (PMID 40043694), the antithrombin hypercoagulability multi-cohort meta-analysis (PMID 36754010), and the cardiovascular risk review (PMID 42298988). The chronic-kidney-disease proposition rests on the edema-stratified kidney-failure progression in the multicenter cohort (PMID 40043694).",
+    "Counter-evidence and caveat screens recorded 2026-09-26: (i) composite-endpoint discipline - the venous anchors measure composite VTE without component separation, so the deep-vein-thrombosis and pulmonary-embolism edges carry the not-separable limit and the arterial endpoints (stroke 8.1 percent, myocardial infarction 6.0 percent at 10 years) are composite components rather than separately powered outcomes; (ii) mechanism honesty - the antithrombin meta-analysis found antithrombin deficiency not a uniform feature and only quantitatively related to hypercoagulability in adults, so the acquired-antithrombin-loss route is carried as limited; (iii) mechanism mix on the myocardial-infarction edge - dyslipidemia mediates part of the coronary risk through atherosclerosis rather than pure thrombosis, recorded on the edge; (iv) histology heterogeneity on the renal edge - minimal change disease remits while membranous and focal-segmental disease progress; (v) prophylaxis-era - albumin-threshold anticoagulation and statin therapy change the event rates captured by these cohorts; (vi) direction discipline - bleeding (adjusted hazard 4.02) is a cohort outcome recorded as a withheld proposition, not an edge."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "deep-vein-thrombosis",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "First-time nephrotic syndrome documents venous thromboembolism at national matched-cohort and multicenter level: the Danish matched population cohort of 3,967 adults with first-time nephrotic syndrome found 1-year venous thromboembolism risk 2.8 percent and 10-year risk 7.7 percent with first-year adjusted hazard 7.11 versus matched general-population comparators (PMID 34979093), and the Danish multicenter cohort of 1,219 patients with nephrotic-range albuminuria found VTE incidence 15 versus 10 per 1,000 person-years with versus without edema (PMID 40043694), with the multi-cohort study and meta-analysis documenting nephrotic hypercoagulopathy in which antithrombin deficiency plays only a limited role (PMID 36754010); recorded as documented association only, with the composite-VTE endpoint limit carried openly.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: the anchor cohorts measure composite venous thromboembolism without separating deep vein thrombosis, pulmonary embolism, and renal vein thrombosis components, so whether any individual deep vein thrombosis is attributable to the nephrotic state requires individual hematology attribution with stasis, malignancy, and thrombophilia exclusion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "THROMBOTIC_OR_VASCULAR",
+        "primaryVector": "Urinary loss of natural anticoagulants alongside increased procoagulant factors and platelet activation drives an acquired hypercoagulable state so venous thrombosis results, the procoagulant route documented by the multi-cohort hypercoagulability analysis that found antithrombin deficiency inconsistent and only a limited mechanistic contributor, but whether this route produced any individual thrombosis remains hypothesized until coagulation and imaging records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at national matched cohort plus multicenter cohort class only: both Danish cohorts measure composite VTE endpoints without component separation, the mechanistic meta-analysis found antithrombin deficiency not a uniform feature and quantitatively related to hypercoagulability only in adults, and albumin-threshold-guided anticoagulation prophylaxis changes event rates under contemporary care.",
+        "evidenceGaps": "Component-specific deep vein thrombosis rates are not separable from the composite VTE endpoints in either anchor cohort; renal vein thrombosis is classically part of the nephrotic thromboembolism spectrum but unquantified here; the mechanistic meta-analysis found antithrombin deficiency not uniform; and edema-related stasis, immobility, malignancy-associated thrombosis, and inherited thrombophilia overlap the differential.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "malignancy-associated thrombosis (the published cancer thrombosis windows)",
+          "immobility and post-surgical venous stasis",
+          "inherited thrombophilias",
+          "estrogen- and pregnancy-related thrombosis",
+          "renal vein thrombosis as a distinct nephrotic complication not in this identity's scope"
+        ]
+      },
+      "evidenceGaps": [
+        "Component-specific deep vein thrombosis rates are not separable from the composite VTE endpoints in either anchor cohort; renal vein thrombosis is classically part of the nephrotic thromboembolism spectrum but unquantified here; the mechanistic meta-analysis found antithrombin deficiency not uniform; and edema-related stasis, immobility, malignancy-associated thrombosis, and inherited thrombophilia overlap the differential."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY at national matched-cohort class with the composite-endpoint limit carried openly: the Danish cohort of 3,967 first-time nephrotic adults found first-year VTE adjusted hazard 7.11 and 10-year VTE risk 7.7 percent (PMID 34979093), the multicenter cohort found edema-stratified VTE incidence 15 versus 10 per 1,000 person-years (PMID 40043694), and the multi-cohort analysis documents nephrotic hypercoagulopathy with antithrombin deficiency only a limited contributor (PMID 36754010); because the endpoints are composite VTE without component separation, the conservative standard keeps the edge at association only and routes individual claims through dated duplex imaging and coagulation review with stasis, malignancy, and thrombophilia exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Vestergaard SV, Birn H, Darvalics B, et al. Risk of Arterial Thromboembolism, Venous Thromboembolism, and Bleeding in Patients with Nephrotic Syndrome: A Population-Based Cohort Study Am J Med. 2022 May;135(5):615-625.e9. PMID 34979093.",
+          "note": "Danish national matched cohort of 3,967 adults with first-time nephrotic syndrome (1995-2018), each matched to 10 general-population comparators: 1-year VTE risk 2.8%, 10-year VTE risk 7.7%; first-year adjusted HR 7.11 (5.49-9.19) for VTE, 3.11 for arterial thromboembolism, 4.02 for bleeding; supports the bounded composite-VTE association only (components not separated).",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34979093/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 34979093; results (10-year cumulative risks and adjusted hazards)"
+        },
+        {
+          "citation": "Kelddal S, Tofig BJ, Hvas AM, et al. Edema and Outcome in Patients with Nephrotic-Range Albuminuria and Hypoalbuminemia: A Danish Multicenter Cohort Study Am J Nephrol. 2025;56(4):510-519. PMID 40043694.",
+          "note": "Danish multicenter cohort of 1,219 patients with nephrotic-range albuminuria and hypoalbuminemia (2012-2022): VTE in 54 (4%), incidence 15 versus 10 per 1,000 person-years with versus without edema; edema also associated with faster kidney failure progression (188 versus 364 days) and higher 1-year mortality; supports the bounded composite-VTE association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40043694/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 40043694; results (edema-stratified VTE incidence)"
+        },
+        {
+          "citation": "Abdelghani E, Waller AP, Wolfgang KJ, et al. Exploring the Role of Antithrombin in Nephrotic Syndrome-Associated Hypercoagulopathy: A Multi-Cohort Study and Meta-Analysis Clin J Am Soc Nephrol. 2023 Feb 1;18(2):234-244. PMID 36754010.",
+          "note": "Multi-cohort study with meta-analysis of antithrombin in nephrotic syndrome-associated hypercoagulopathy (CJASN 2023; PNRC, NEPTUNE cohorts): hypercoagulopathy documented across nephrotic cohorts; antithrombin deficiency not a uniform feature and only quantitatively related to hypercoagulability in adults; supports the bounded mechanistic-route framing only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36754010/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 36754010; results (thrombin generation and antithrombin meta-analyses)"
+        }
+      ]
+    },
+    {
+      "conditionId": "pulmonary-embolism",
+      "rank": 2,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "First-time nephrotic syndrome documents venous thromboembolism including the pulmonary-embolism component at national matched-cohort level: the Danish matched population cohort of 3,967 adults with first-time nephrotic syndrome found 1-year venous thromboembolism risk 2.8 percent and 10-year risk 7.7 percent with first-year adjusted hazard 7.11 versus matched comparators (PMID 34979093), and the multi-cohort study and meta-analysis documents the acquired nephrotic hypercoagulopathy that drives thromboembolic predisposition (PMID 36754010); recorded as documented association only, with the composite-VTE endpoint limit carried openly - pulmonary embolism is a component of the measured composite and component-specific rates are not separable in the anchors.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: the anchor cohorts measure composite venous thromboembolism without reporting pulmonary-embolism-specific incidence, so whether any individual pulmonary embolism is attributable to the nephrotic state requires individual hematology attribution with stasis, malignancy, and thrombophilia exclusion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "THROMBOTIC_OR_VASCULAR",
+        "primaryVector": "Urinary loss of natural anticoagulants alongside increased procoagulant factors and platelet activation drives an acquired hypercoagulable state so venous thromboembolism including pulmonary embolism results, the procoagulant route documented by the multi-cohort hypercoagulability analysis, but whether this route produced any individual embolism remains hypothesized until coagulation and imaging records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at national matched cohort plus mechanistic meta-analysis class only: the cohort's endpoint is composite VTE with no published component separation, the mechanistic meta-analysis found antithrombin deficiency not uniform, and prophylactic anticoagulation at albumin below 2.5 g/dL under contemporary guidance changes event rates.",
+        "evidenceGaps": "Pulmonary-embolism-specific incidence is not separable from the composite VTE endpoint in the anchor cohort; renal vein thrombosis shares the spectrum; the mechanistic meta-analysis found antithrombin deficiency not a uniform feature; and immobility, malignancy-associated thrombosis, post-surgical state, and inherited thrombophilia overlap the differential.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "malignancy-associated thrombosis (the published cancer thrombosis windows)",
+          "immobility and post-surgical venous stasis",
+          "inherited thrombophilias",
+          "air embolism and fat embolism (non-thrombotic embolic mimics)",
+          "chronic thromboembolic pulmonary hypertension as a sequel rather than incident embolism"
+        ]
+      },
+      "evidenceGaps": [
+        "Pulmonary-embolism-specific incidence is not separable from the composite VTE endpoint in the anchor cohort; renal vein thrombosis shares the spectrum; the mechanistic meta-analysis found antithrombin deficiency not a uniform feature; and immobility, malignancy-associated thrombosis, post-surgical state, and inherited thrombophilia overlap the differential."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY at national matched-cohort class with the composite-endpoint limit carried openly and modeled on the batch-62 composite-VTE precedent: the Danish cohort found first-year VTE adjusted hazard 7.11 and 10-year risk 7.7 percent in first-time nephrotic syndrome (PMID 34979093) and the multi-cohort analysis documents the nephrotic hypercoagulopathy driving thromboembolic predisposition (PMID 36754010); because pulmonary embolism is a component of the measured composite without separable rates, the conservative standard keeps the edge at association only and routes individual claims through dated CT pulmonary angiography with stasis, malignancy, and thrombophilia exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Vestergaard SV, Birn H, Darvalics B, et al. Risk of Arterial Thromboembolism, Venous Thromboembolism, and Bleeding in Patients with Nephrotic Syndrome: A Population-Based Cohort Study Am J Med. 2022 May;135(5):615-625.e9. PMID 34979093.",
+          "note": "Danish national matched cohort of 3,967 adults with first-time nephrotic syndrome: 1-year VTE risk 2.8% (2.3-3.3), 10-year VTE risk 7.7% (6.8-8.6); first-year adjusted HR 7.11 (5.49-9.19); composite VTE endpoint without pulmonary-embolism-specific separation; supports the bounded composite-VTE association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34979093/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 34979093; results (VTE cumulative risks and adjusted hazard)"
+        },
+        {
+          "citation": "Abdelghani E, Waller AP, Wolfgang KJ, et al. Exploring the Role of Antithrombin in Nephrotic Syndrome-Associated Hypercoagulopathy: A Multi-Cohort Study and Meta-Analysis Clin J Am Soc Nephrol. 2023 Feb 1;18(2):234-244. PMID 36754010.",
+          "note": "Multi-cohort study with meta-analysis of nephrotic syndrome-associated hypercoagulopathy (CJASN 2023): acquired hypercoagulopathy documented as driving the thromboembolic predisposition; antithrombin deficiency plays only a limited role; supports the bounded mechanistic-route framing only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36754010/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 36754010; background and results (hypercoagulopathy mechanisms)"
+        }
+      ]
+    },
+    {
+      "conditionId": "cerebrovascular-accident-stroke-residuals",
+      "rank": 3,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "First-time nephrotic syndrome documents arterial thromboembolism with ischemic stroke as its most frequent component at national matched-cohort level: the Danish matched population cohort of 3,967 adults with first-time nephrotic syndrome found 10-year arterial thromboembolism risk 14.0 percent with ischemic stroke the highest component at 8.1 percent, and first-year adjusted hazard for arterial thromboembolism 3.11 versus matched general-population comparators (PMID 34979093), with the nephrotic-syndrome cardiovascular review documenting dyslipidemia and procoagulant mechanisms driving arterial thrombosis risk and low-dose aspirin indicated where arterial thrombosis prophylaxis is needed (PMID 42298988); recorded as documented association only, scoped to ischemic stroke and the residuals identity.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: the stroke figure is a cumulative component of the arterial-thromboembolism composite at population level, so whether any individual cerebrovascular event is attributable to the nephrotic state requires individual neurology attribution with cardioembolic, atherosclerotic, and small-vessel exclusion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "THROMBOTIC_OR_VASCULAR",
+        "primaryVector": "The nephrotic procoagulant state with urinary anticoagulant loss and increased procoagulant factors alongside dyslipidemia-driven arterial vulnerability drives arterial thrombosis so ischemic cerebrovascular events result, the arterial-thrombosis route framed by the cardiovascular review's prophylaxis guidance, but whether this route produced any individual stroke remains hypothesized until imaging and coagulation records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at national matched cohort plus narrative review class only: ischemic stroke incidence is reported as a component percentage of the arterial composite rather than a separately powered endpoint, no located cohort models stroke risk with nephrotic-syndrome-specific adjustment, and contemporary statin and antithrombotic prophylaxis changes the arterial event rate.",
+        "evidenceGaps": "The ischemic-stroke figure is a cumulative component of a composite arterial endpoint rather than a separately analyzed outcome; nephrotic-syndrome-specific stroke hazard models were not located; contemporary lipid-lowering and antithrombotic prophylaxis alters event rates; and cardioembolic sources, carotid atherosclerosis, and small-vessel disease compete for individual attribution.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "cardioembolic stroke (arrhythmia and valvular pathways)",
+          "carotid and intracranial atherosclerosis",
+          "small-vessel lacunar stroke in hypertension and diabetes (the published hypertension and diabetes windows)",
+          "stroke from other hypercoagulable states (the published cancer-associated and antiphospholipid windows)",
+          "hemorrhagic stroke (outside the ischemic scope of the anchor)"
+        ]
+      },
+      "evidenceGaps": [
+        "The ischemic-stroke figure is a cumulative component of a composite arterial endpoint rather than a separately analyzed outcome; nephrotic-syndrome-specific stroke hazard models were not located; contemporary lipid-lowering and antithrombotic prophylaxis alters event rates; and cardioembolic sources, carotid atherosclerosis, and small-vessel disease compete for individual attribution."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY at national matched-cohort class with the composite-component limit carried openly: the Danish cohort found 10-year arterial thromboembolism risk 14.0 percent with ischemic stroke the most frequent component at 8.1 percent and first-year arterial adjusted hazard 3.11 (PMID 34979093), and the cardiovascular review documents the dyslipidemia and procoagulant arterial-thrombosis pathway with aspirin prophylaxis framing (PMID 42298988); because the stroke figure is a composite component rather than a separately powered endpoint, the conservative standard keeps the edge at association only and routes individual claims through dated neuroimaging and coagulation review with cardioembolic, atherosclerotic, and small-vessel exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Vestergaard SV, Birn H, Darvalics B, et al. Risk of Arterial Thromboembolism, Venous Thromboembolism, and Bleeding in Patients with Nephrotic Syndrome: A Population-Based Cohort Study Am J Med. 2022 May;135(5):615-625.e9. PMID 34979093.",
+          "note": "Danish national matched cohort of 3,967 adults with first-time nephrotic syndrome: 10-year arterial thromboembolism risk 14.0% (12.8-15.2) with ischemic stroke the highest component at 8.1%; first-year adjusted HR 3.11 (2.60-3.73) for arterial thromboembolism; supports the bounded arterial-thromboembolism association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34979093/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 34979093; results (arterial cumulative risks and components)"
+        },
+        {
+          "citation": "Untersulzner C, Gauckler P, Matyjek A, et al. Cardiovascular disease and risk management in patients with nephrotic syndrome Kidney Res Clin Pract. 2026 Jul;45(4):467-478. PMID 42298988.",
+          "note": "Review of cardiovascular disease and risk management in nephrotic syndrome (Kidney Res Clin Pract 2026): dyslipidemia, urinary loss of natural anticoagulants, increased procoagulant factors, and platelet activation drive cardiovascular vulnerability; low-dose aspirin indicated where arterial thrombosis prophylaxis is needed; standard risk scores underestimate risk; supports the bounded arterial-route framing only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42298988/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 42298988; review framing (arterial thrombosis mechanisms and prophylaxis)"
+        }
+      ]
+    },
+    {
+      "conditionId": "myocardial-infarction",
+      "rank": 4,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "First-time nephrotic syndrome documents arterial thromboembolism with myocardial infarction as a major component at national matched-cohort level: the Danish matched population cohort of 3,967 adults with first-time nephrotic syndrome found 10-year arterial thromboembolism risk 14.0 percent with myocardial infarction at 6.0 percent and first-year adjusted hazard 3.11 versus matched general-population comparators (PMID 34979093), and the nephrotic-syndrome cardiovascular review documents dyslipidemia and procoagulant mechanisms driving arterial thrombosis risk with low-dose aspirin indicated where arterial thrombosis prophylaxis is needed (PMID 42298988); recorded as documented association only, scoped to the composite-component limit.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: the myocardial-infarction figure is a cumulative component of the arterial-thromboembolism composite at population level and nephrotic dyslipidemia plausibly contributes through atherosclerotic as well as thrombotic routes, so whether any individual infarction is attributable to the nephrotic state requires individual cardiology attribution with atherosclerotic, vasospastic, and demand-ischemia exclusion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "THROMBOTIC_OR_VASCULAR",
+        "primaryVector": "The nephrotic procoagulant state with urinary anticoagulant loss and platelet activation alongside dyslipidemia-driven atherogenesis drives coronary thrombosis so myocardial infarction results, the combined atherogenic-thrombotic route framed by the cardiovascular review's dyslipidemia and arterial-thrombosis mechanisms, but whether this route produced any individual infarction remains hypothesized until coronary and lipid records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at national matched cohort plus narrative review class only: the myocardial-infarction figure is a component percentage of the arterial composite rather than a separately powered endpoint, dyslipidemia mediates part of the risk through atherosclerosis rather than pure thrombosis, and contemporary statin therapy materially alters the event rate.",
+        "evidenceGaps": "The myocardial-infarction figure is a cumulative component of a composite arterial endpoint rather than a separately analyzed outcome; nephrotic-syndrome-specific coronary hazard models were not located; dyslipidemia-mediated atherosclerosis and pure thrombotic occlusion are not separable in the anchors; and conventional coronary risk factors compete for individual attribution.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "atherosclerotic coronary artery disease from conventional risk factors",
+          "type 2 myocardial infarction from demand ischemia (the published diabetes windows)",
+          "coronary embolism (the marantic-endocarditis and arrhythmia windows)",
+          "vasospastic angina and infarction",
+          "Kounis syndrome and other inflammatory coronary causes"
+        ]
+      },
+      "evidenceGaps": [
+        "The myocardial-infarction figure is a cumulative component of a composite arterial endpoint rather than a separately analyzed outcome; nephrotic-syndrome-specific coronary hazard models were not located; dyslipidemia-mediated atherosclerosis and pure thrombotic occlusion are not separable in the anchors; and conventional coronary risk factors compete for individual attribution."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY at national matched-cohort class with the composite-component and mechanism-mix limits carried openly: the Danish cohort found 10-year arterial thromboembolism risk 14.0 percent with myocardial infarction at 6.0 percent and first-year arterial adjusted hazard 3.11 (PMID 34979093), and the cardiovascular review documents dyslipidemia plus procoagulant arterial-thrombosis mechanisms with aspirin prophylaxis framing (PMID 42298988); because the infarction figure is a composite component and dyslipidemia mediates risk through atherosclerosis as well as thrombosis, the conservative standard keeps the edge at association only and routes individual claims through dated coronary workup with atherosclerotic, embolic, and demand-ischemia exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Vestergaard SV, Birn H, Darvalics B, et al. Risk of Arterial Thromboembolism, Venous Thromboembolism, and Bleeding in Patients with Nephrotic Syndrome: A Population-Based Cohort Study Am J Med. 2022 May;135(5):615-625.e9. PMID 34979093.",
+          "note": "Danish national matched cohort of 3,967 adults with first-time nephrotic syndrome: 10-year arterial thromboembolism risk 14.0% (12.8-15.2) with myocardial infarction at 6.0% among the highest components; first-year adjusted HR 3.11 (2.60-3.73) for arterial thromboembolism; supports the bounded arterial-thromboembolism association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34979093/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 34979093; results (arterial cumulative risks and components)"
+        },
+        {
+          "citation": "Untersulzner C, Gauckler P, Matyjek A, et al. Cardiovascular disease and risk management in patients with nephrotic syndrome Kidney Res Clin Pract. 2026 Jul;45(4):467-478. PMID 42298988.",
+          "note": "Review of cardiovascular disease and risk management in nephrotic syndrome (Kidney Res Clin Pract 2026): dyslipidemia and procoagulant/platelet-activation mechanisms drive cardiovascular vulnerability; low-dose aspirin indicated where arterial thrombosis prophylaxis is needed; supports the bounded coronary-route framing only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42298988/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 42298988; review framing (dyslipidemia and arterial thrombosis)"
+        }
+      ]
+    },
+    {
+      "conditionId": "chronic-kidney-disease",
+      "rank": 5,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Nephrotic-range proteinuric kidney disease documents kidney failure progression at multicenter cohort level: the Danish multicenter cohort of 1,219 patients with nephrotic-range albuminuria and hypoalbuminemia found edema associated with faster kidney failure progression (188 days to kidney failure in edematous versus 364 days in non-edematous patients) alongside higher urine albumin-creatinine ratios and lower plasma albumin (PMID 40043694); recorded as documented association only, scoped to nephrotic-range proteinuric populations with histology-dependent progression carried openly.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: nephrotic syndrome spans histologies with very different renal trajectories (minimal change disease responding to immunosuppression versus membranous and focal-segmental disease progressing), so whether any individual chronic kidney disease is attributable to the nephrotic state requires individual nephrology attribution with biopsy histology, treatment-response, and diabetic and obstructive exclusion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MULTIFACTORIAL",
+        "primaryVector": "Sustained nephrotic-range proteinuria with hypoalbuminemia drives tubular protein toxicity, glomerular hyperfiltration injury, and interstitial fibrosis so chronic kidney disease results, the progression route consistent with the edema-stratified kidney-failure acceleration and the proteinuria-severity gradient in the multicenter cohort, but whether this route produced any individual chronic kidney disease remains hypothesized until biopsy and renal-function records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at single multicenter cohort class only: the anchor measures time-to-kidney-failure stratified by edema rather than etiology-specific progression, histology mix determines trajectory and was recorded but not stratified against the outcome in the located report, and modern immunosuppression and renin-angiotensin blockade alter nephrotic-disease progression.",
+        "evidenceGaps": "The anchor cohort reports kidney-failure progression stratified by edema status rather than by histology; minimal change disease often remits with therapy while membranous and focal-segmental disease progress, so the umbrella's trajectory is heterogeneous; no located cohort separates nephrotic-proteinuria-driven progression from underlying histology; and diabetic nephropathy, hypertensive nephrosclerosis, and obstructive uropathy compete for individual attribution.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "minimal change disease with treatment response and remission",
+          "membranous and focal-segmental histology-driven progression (heterogeneity within the umbrella)",
+          "diabetic nephropathy (the published diabetic-nephropathy window, not recycled per ME-29)",
+          "hypertensive nephrosclerosis (the published hypertension window)",
+          "obstructive uropathy and nephrolithiasis sequelae"
+        ]
+      },
+      "evidenceGaps": [
+        "The anchor cohort reports kidney-failure progression stratified by edema status rather than by histology; minimal change disease often remits with therapy while membranous and focal-segmental disease progress, so the umbrella's trajectory is heterogeneous; no located cohort separates nephrotic-proteinuria-driven progression from underlying histology; and diabetic nephropathy, hypertensive nephrosclerosis, and obstructive uropathy compete for individual attribution."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY at multicenter cohort class with the histology-heterogeneity limit carried openly: the Danish multicenter cohort of 1,219 nephrotic-range patients found edema associated with faster kidney failure progression (188 versus 364 days) with proteinuria-severity and hypoalbuminemia gradients (PMID 40043694); because the anchor stratifies by edema rather than histology and nephrotic umbrella trajectories range from treatment-responsive remission to progressive fibrosis, the conservative standard keeps the edge at association only and routes individual claims through dated renal-function and biopsy review with diabetic, hypertensive, and obstructive exclusion. Sibling separation recorded: this edge rests on nephrotic-range cohort evidence and does not recycle the nephritis window's glomerular-disease cohort anchors (ME-29).",
+      "sourceReferences": [
+        {
+          "citation": "Kelddal S, Tofig BJ, Hvas AM, et al. Edema and Outcome in Patients with Nephrotic-Range Albuminuria and Hypoalbuminemia: A Danish Multicenter Cohort Study Am J Nephrol. 2025;56(4):510-519. PMID 40043694.",
+          "note": "Danish multicenter cohort of 1,219 patients with nephrotic-range albuminuria and hypoalbuminemia (2012-2022): edema in 62%; edema associated with faster kidney failure progression (188 days IQR 28-581 versus 364 days IQR 116-920), higher UACR (4,245 versus 3,546 mg/g), lower albumin (26 versus 28 g/L), and higher 1-year mortality; supports the bounded nephrotic-progression association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40043694/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 40043694; results (kidney failure progression and edema stratification)"
+        }
+      ]
+    }
+  ]
 }

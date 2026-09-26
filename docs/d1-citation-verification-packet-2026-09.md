@@ -11501,6 +11501,342 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 **Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
 
+### `nasal-valve-collapse` → `sleep-apnea` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Nasal airway obstruction at the nasal valve is linked to obstructive sleep apnea at expert-consensus and polysomnographic subgroup level: the 2026 multidisciplinary expert consensus on nasal patency in obstructive sleep apnea concludes that nasal airway obstruction, particularly at the nasal valve, can be a fundamental limitation to CPAP success and that nasal obstruction management is an integral component of OSA management (PMID 42130488), and the polysomnography study of patients with obstructive sleep apnea syndrome found bilateral nasal valve incontinence associated with lower SaO2-nadir and a more severe nocturnal respiratory pattern than unilateral or absent valve incontinence (PMID 30715032); recorded as documented association only, and a 100-subject cross-sectional PSG study found no correlation between objective nasal anatomy and PSG-measured OSA severity (PMID 24334963, counterweight carried).
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: the consensus frames valve-level obstruction chiefly as a limitation on PAP success and management rather than as a quantified cause of incident apnea, and the PSG subgroup measures severity markers within an existing OSA population, so whether any individual apnea is attributable to valve collapse requires individual sleep-study and nasal-endoscopic attribution with obesity, adenotonsillar, and central-apnea exclusion.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 319.1 — Vahabzadeh-Hagh AM, Strollo PJ Jr, Takashima M, et al. The role of nasal patency in obstructive sleep apnea: an expert consensus Front Sleep. 2026;5:1819496. PMID 42130488.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42130488/
+- Source checked on: 2026-09-26
+- Locator: PMID 42130488; consensus framing (nasal resistance, upper-airway collapsibility, PAP outcomes)
+- Note under review: Multidisciplinary expert consensus on nasal patency in obstructive sleep apnea (2026): converging physiological evidence, large-scale observational data, and controlled trials indicate nasal airway obstruction, particularly at the nasal valve, can be a fundamental limitation to CPAP success; nasal obstruction management framed as integral to OSA management; supports the bounded airway-patency association only, with its strongest claims concerning PAP adherence.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 319.2 — Gelardi M, Intiglietta P, Porro G, et al. The role of the nasal valve in patients with obstructive sleep apnea syndrome Acta Biomed. 2019 Jan 11;90(2-S):15-8. PMID 30715032.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/30715032/
+- Source checked on: 2026-09-26
+- Locator: PMID 30715032; results (valve incontinence versus SaO2-nadir)
+- Note under review: Polysomnography study of OSAS patients (Acta Biomed 2019): patients with bilateral nasal valve incontinence had lower SaO2-nadir than patients with unilateral or no valve incontinence; bilateral valve incontinence associated with more severe nocturnal respiratory pattern; supports the bounded severity association within an existing OSA population only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 319.3 — Leitzen KP, Brietzke SE, Lindsay RW. Correlation between nasal anatomy and objective obstructive sleep apnea severity Otolaryngol Head Neck Surg. 2014 Feb;150(2):325-31. PMID 24334963.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/24334963/
+- Source checked on: 2026-09-26
+- Locator: PMID 24334963; results (null anatomy-severity correlation)
+- Note under review: Cross-sectional study of 100 subjects undergoing in-lab PSG with standardized nasal examination (59% with OSAS, mean AHI 13.1): no single nasal anatomy measurement or combined index correlated with PSG-measured sleep-disordered breathing severity (90% power to detect correlation); valve collapse correlated only with subjective NOSE scores; carried as counterweight limiting the anatomy-severity claim.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `necrobiosis-lipoidica` → `squamous-cell-carcinoma` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Squamous cell carcinoma arising in long-standing ulcerated necrobiosis lipoidica is documented at systematic-review and case level: the systematic review of cutaneous malignancies arising in necrobiosis lipoidica summarizes the characteristics, management, and outcomes of malignancies developing within NLD lesions (PMID 40538107), the fatal case report documents SCC developing in a decades-long ulcerated NLD field in a diabetic patient and frames non-healing NLD ulcers as demanding a high index of suspicion for malignancy (PMID 30870808), and the case report documents SCC arising in ulcerated necrobiosis lipoidica (PMID 24373177); recorded as documented association only.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: the anchors are a review collating case-class evidence and individual case reports arising in long-standing ulcerated plaques, so whether any individual carcinoma is attributable to the necrobiosis-lipoidica field requires individual dermatopathological attribution with chronic-wound, actinic, and radiation exclusion.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 320.1 — Seeburruth D, Sood S, Heung M, et al. Characteristics, Management, and Outcomes of Cutaneous Malignancies Arising From Necrobiosis Lipoidica: A Systematic Review J Cutan Med Surg. 2026 Mar-Apr;30(2):195-196. PMID 40538107.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/40538107/
+- Source checked on: 2026-09-26
+- Locator: PMID 40538107; review scope and findings (malignancies arising in NLD)
+- Note under review: Systematic review of cutaneous malignancies arising in necrobiosis lipoidica (J Cutan Med Surg 2025): summarizes characteristics, management, and outcomes of malignancies developing in NLD lesions; supports the bounded case-collation association only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 320.2 — Lefkovits Y, Adler A. Fatal squamous cell carcinoma from necrobiosis lipoidica diabeticorum in a diabetic patient Endocrinol Diabetes Metab Case Rep. 2019 Jan 1;2019.pii: EDM190007. doi: 10.1530/EDM-19-0007. PMID 30870808.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/30870808/
+- Source checked on: 2026-09-26
+- Locator: PMID 30870808; case description and learning points
+- Note under review: Fatal case report of squamous cell carcinoma arising from necrobiosis lipoidica diabeticorum in a diabetic patient: decades-long ulcerated NLD field; learning points state NLD provides a favorable environment for SCC formation and non-healing ulcers warrant a high index of suspicion; supports the bounded transformation-route framing only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 320.3 — Uva L, Freitas J, Soares de Almeida L, et al. Squamous cell carcinoma arising in ulcerated necrobiosis lipoidica diabeticorum Int Wound J. 2015 Dec;12(6):741-3. PMID 24373177.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/24373177/
+- Source checked on: 2026-09-26
+- Locator: PMID 24373177; case presentation
+- Note under review: Case report of squamous cell carcinoma arising in ulcerated necrobiosis lipoidica (Dermatol Online J 2013): ulcerated NLD lesion as the substrate for SCC development; supports the bounded case-level association only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `necrobiotic-xanthogranuloma` → `multiple-myeloma` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Necrobiotic xanthogranuloma with monoclonal gammopathy documents progression to multiple myeloma at cohort and long-term-follow-up level: the 35-patient tertiary-center series found monoclonal gammopathy in all evaluable patients (28 MGUS, 5 smoldering myeloma, 2 chronic lymphocytic leukemia) with 8 patients (23 percent) progressing to multiple myeloma at a median 67 months and states malignant transformation is not uncommon (PMID 27238425), and the long-term-follow-up review of NXG with benign monoclonal proteinemia estimated a 9-11 percent risk of myeloma, amyloidosis, or macroglobulinemia in followed patients (PMID 9218893); recorded as documented association only.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: progression events occur within the co-occurring monoclonal gammopathy clone rather than the cutaneous lesion itself, so whether any individual myeloma is attributable to the NXG-associated gammopathy state requires individual hematology attribution with standard MGUS-to-myeloma risk stratification and baseline marrow assessment.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 321.1 — Higgins LS, Go RS, Dingli D, et al. Clinical Features and Treatment Outcomes of Patients With Necrobiotic Xanthogranuloma Associated With Monoclonal Gammopathies Clin Lymphoma Myeloma Leuk. 2016 Aug;16(8):447-52. PMID 27238425.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/27238425/
+- Source checked on: 2026-09-26
+- Locator: PMID 27238425; results (gammopathy spectrum and progression outcomes)
+- Note under review: Single-center retrospective series of 35 patients with necrobiotic xanthogranuloma and monoclonal gammopathy (Mayo Clinic; 28 MGUS, 5 smoldering myeloma, 2 CLL): 8 patients (23%) progressed to multiple myeloma at median 67 months; malignant transformation stated as not uncommon; supports the bounded gammopathy-progression association only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 321.2 — Johnston KA, Grimwood RE, Meffert JJ, et al. Necrobiotic xanthogranuloma with paraproteinemia: an evolving presentation Cutis. 1997 Jun;59(6):333-6. PMID 9218893.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/9218893/
+- Source checked on: 2026-09-26
+- Locator: PMID 9218893; review risk estimate (gammopathy progression)
+- Note under review: Long-term-follow-up review of necrobiotic xanthogranuloma with paraproteinemia (1988): estimated 9-11% risk of myeloma, amyloidosis, or macroglobulinemia in patients with benign monoclonal proteinemia followed for years; supports the bounded long-term-risk framing only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `necrobiotic-xanthogranuloma` → `visual-impairment` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Periorbital and orbital necrobiotic xanthogranuloma threatens vision at case and cohort-frequency level: the case report of NXG associated with IgG kappa smoldering myeloma documents progressive visual decline with choroidal folding from orbital compression and frames the orbital disease as vision-threatening (PMID 42473503), and the 35-patient series found periorbital involvement in 66 percent of patients, documenting the orbital predilection that places the visual apparatus at risk (PMID 27238425); recorded as documented association only.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: measured visual decline is documented at case class while the cohort quantifies anatomical periorbital involvement rather than visual outcomes, so whether any individual visual impairment is attributable to orbital xanthogranuloma requires individual ophthalmological attribution with compressive, inflammatory, and refractive exclusion.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 322.1 — Cheema HI, Zangari M, Schinke C, et al. Necrobiotic Xanthogranuloma Associated With IgG Kappa Smoldering Myeloma Presenting as Vision-Threatening Orbital Disease: Clinical Response to Plasma Cell-Directed Therapy Cureus. 2026 Jun;18(6):e111170. PMID 42473503.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42473503/
+- Source checked on: 2026-09-26
+- Locator: PMID 42473503; case presentation (visual decline and orbital findings)
+- Note under review: Case report of necrobiotic xanthogranuloma associated with IgG kappa smoldering myeloma (2025): progressive visual decline, choroidal folding, and orbital compression; frames vision-threatening orbital disease; supports the bounded compressive-route association only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 322.2 — Higgins LS, Go RS, Dingli D, et al. Clinical Features and Treatment Outcomes of Patients With Necrobiotic Xanthogranuloma Associated With Monoclonal Gammopathies Clin Lymphoma Myeloma Leuk. 2016 Aug;16(8):447-52. PMID 27238425.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/27238425/
+- Source checked on: 2026-09-26
+- Locator: PMID 27238425; results (periorbital involvement frequency)
+- Note under review: Single-center series of 35 NXG patients (Mayo Clinic): periorbital involvement in 66% of patients, documenting the orbital predilection of the disease; supports the bounded anatomical-frequency association only, not functional visual outcomes.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `nephritis` → `chronic-kidney-disease` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Glomerular inflammatory kidney disease documents chronic kidney disease progression at long-term cohort and biopsy-prognosis level: the 25-year Brazilian cohort of 417 adults with glomerular diseases found interstitial fibrosis/tubular atrophy (HR 1.079) and higher BMI (HR 1.257) associated with CKD progression while baseline eGFR was protective (HR 0.956), framing glomerular diseases as an important cause of chronic kidney disease (PMID 40815784), and the biopsy-proven glomerulonephritis cohort of 66 adults found intrarenal arteriolosclerosis independently predicted renal function decline and the composite renal-cardiovascular outcome (OR 6.67) over 36 months (PMID 42762084); recorded as documented association only, scoped to glomerular histologies.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: the umbrella identity spans acute and chronic inflammatory nephritides with markedly different trajectories, so whether any individual chronic kidney disease is attributable to a nephritis requires individual nephrology attribution with biopsy-confirmed histology, recovery assessment, and diabetic and obstructive exclusion.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 323.1 — Sales F, Carmo PVD, Huaira RMNH, et al. Epidemiological profile and renal outcomes in a 25-year Brazilian cohort of glomerular diseases J Bras Nefrol. 2025 Oct-Dec;47(4):e20240213. PMID 40815784.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/40815784/
+- Source checked on: 2026-09-26
+- Locator: PMID 40815784; results (renal survival and CKD-progression predictors)
+- Note under review: Retrospective cohort of 417 adults with biopsy-diagnosed glomerular diseases over 25 years (Brazil; 51.1% primary, membranous nephropathy most common; lupus nephritis most common secondary): IFTA HR 1.079 and BMI HR 1.257 for CKD progression, baseline eGFR HR 0.956 protective; glomerular diseases framed as an important cause of CKD; supports the bounded glomerular-scope association only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 323.2 — Gigante A, Trombacco A, Galanti G, et al. Office Blood Pressure and Arteriolosclerosis in Biopsy-Proven Glomerulonephritis: Association With Renal Function Decline and Clinical Outcomes J Clin Hypertens (Greenwich). 2026 Sep;28(9):e70367. PMID 42762084.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42762084/
+- Source checked on: 2026-09-26
+- Locator: PMID 42762084; results (eGFR decline and composite outcomes)
+- Note under review: Retrospective longitudinal study of 66 adults with biopsy-proven glomerulonephritis followed 36 months: arteriolosclerosis associated with steeper eGFR decline (interaction beta -4.91 mL/min/1.73m2 per interval) and independently predicted composite renal-cardiovascular outcome (OR 6.67); supports the bounded renal-decline association only. Note: the study's blood-pressure analysis runs from office BP to histological lesions (SBP >130 associated with arteriolosclerosis), not the reverse direction.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `nephrosis` → `deep-vein-thrombosis` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** First-time nephrotic syndrome documents venous thromboembolism at national matched-cohort and multicenter level: the Danish matched population cohort of 3,967 adults with first-time nephrotic syndrome found 1-year venous thromboembolism risk 2.8 percent and 10-year risk 7.7 percent with first-year adjusted hazard 7.11 versus matched general-population comparators (PMID 34979093), and the Danish multicenter cohort of 1,219 patients with nephrotic-range albuminuria found VTE incidence 15 versus 10 per 1,000 person-years with versus without edema (PMID 40043694), with the multi-cohort study and meta-analysis documenting nephrotic hypercoagulopathy in which antithrombin deficiency plays only a limited role (PMID 36754010); recorded as documented association only, with the composite-VTE endpoint limit carried openly.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: the anchor cohorts measure composite venous thromboembolism without separating deep vein thrombosis, pulmonary embolism, and renal vein thrombosis components, so whether any individual deep vein thrombosis is attributable to the nephrotic state requires individual hematology attribution with stasis, malignancy, and thrombophilia exclusion.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 324.1 — Vestergaard SV, Birn H, Darvalics B, et al. Risk of Arterial Thromboembolism, Venous Thromboembolism, and Bleeding in Patients with Nephrotic Syndrome: A Population-Based Cohort Study Am J Med. 2022 May;135(5):615-625.e9. PMID 34979093.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/34979093/
+- Source checked on: 2026-09-26
+- Locator: PMID 34979093; results (10-year cumulative risks and adjusted hazards)
+- Note under review: Danish national matched cohort of 3,967 adults with first-time nephrotic syndrome (1995-2018), each matched to 10 general-population comparators: 1-year VTE risk 2.8%, 10-year VTE risk 7.7%; first-year adjusted HR 7.11 (5.49-9.19) for VTE, 3.11 for arterial thromboembolism, 4.02 for bleeding; supports the bounded composite-VTE association only (components not separated).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 324.2 — Kelddal S, Tofig BJ, Hvas AM, et al. Edema and Outcome in Patients with Nephrotic-Range Albuminuria and Hypoalbuminemia: A Danish Multicenter Cohort Study Am J Nephrol. 2025;56(4):510-519. PMID 40043694.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/40043694/
+- Source checked on: 2026-09-26
+- Locator: PMID 40043694; results (edema-stratified VTE incidence)
+- Note under review: Danish multicenter cohort of 1,219 patients with nephrotic-range albuminuria and hypoalbuminemia (2012-2022): VTE in 54 (4%), incidence 15 versus 10 per 1,000 person-years with versus without edema; edema also associated with faster kidney failure progression (188 versus 364 days) and higher 1-year mortality; supports the bounded composite-VTE association only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 324.3 — Abdelghani E, Waller AP, Wolfgang KJ, et al. Exploring the Role of Antithrombin in Nephrotic Syndrome-Associated Hypercoagulopathy: A Multi-Cohort Study and Meta-Analysis Clin J Am Soc Nephrol. 2023 Feb 1;18(2):234-244. PMID 36754010.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/36754010/
+- Source checked on: 2026-09-26
+- Locator: PMID 36754010; results (thrombin generation and antithrombin meta-analyses)
+- Note under review: Multi-cohort study with meta-analysis of antithrombin in nephrotic syndrome-associated hypercoagulopathy (CJASN 2023; PNRC, NEPTUNE cohorts): hypercoagulopathy documented across nephrotic cohorts; antithrombin deficiency not a uniform feature and only quantitatively related to hypercoagulability in adults; supports the bounded mechanistic-route framing only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `nephrosis` → `pulmonary-embolism` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** First-time nephrotic syndrome documents venous thromboembolism including the pulmonary-embolism component at national matched-cohort level: the Danish matched population cohort of 3,967 adults with first-time nephrotic syndrome found 1-year venous thromboembolism risk 2.8 percent and 10-year risk 7.7 percent with first-year adjusted hazard 7.11 versus matched comparators (PMID 34979093), and the multi-cohort study and meta-analysis documents the acquired nephrotic hypercoagulopathy that drives thromboembolic predisposition (PMID 36754010); recorded as documented association only, with the composite-VTE endpoint limit carried openly - pulmonary embolism is a component of the measured composite and component-specific rates are not separable in the anchors.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: the anchor cohorts measure composite venous thromboembolism without reporting pulmonary-embolism-specific incidence, so whether any individual pulmonary embolism is attributable to the nephrotic state requires individual hematology attribution with stasis, malignancy, and thrombophilia exclusion.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 325.1 — Vestergaard SV, Birn H, Darvalics B, et al. Risk of Arterial Thromboembolism, Venous Thromboembolism, and Bleeding in Patients with Nephrotic Syndrome: A Population-Based Cohort Study Am J Med. 2022 May;135(5):615-625.e9. PMID 34979093.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/34979093/
+- Source checked on: 2026-09-26
+- Locator: PMID 34979093; results (VTE cumulative risks and adjusted hazard)
+- Note under review: Danish national matched cohort of 3,967 adults with first-time nephrotic syndrome: 1-year VTE risk 2.8% (2.3-3.3), 10-year VTE risk 7.7% (6.8-8.6); first-year adjusted HR 7.11 (5.49-9.19); composite VTE endpoint without pulmonary-embolism-specific separation; supports the bounded composite-VTE association only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 325.2 — Abdelghani E, Waller AP, Wolfgang KJ, et al. Exploring the Role of Antithrombin in Nephrotic Syndrome-Associated Hypercoagulopathy: A Multi-Cohort Study and Meta-Analysis Clin J Am Soc Nephrol. 2023 Feb 1;18(2):234-244. PMID 36754010.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/36754010/
+- Source checked on: 2026-09-26
+- Locator: PMID 36754010; background and results (hypercoagulopathy mechanisms)
+- Note under review: Multi-cohort study with meta-analysis of nephrotic syndrome-associated hypercoagulopathy (CJASN 2023): acquired hypercoagulopathy documented as driving the thromboembolic predisposition; antithrombin deficiency plays only a limited role; supports the bounded mechanistic-route framing only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `nephrosis` → `cerebrovascular-accident-stroke-residuals` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** First-time nephrotic syndrome documents arterial thromboembolism with ischemic stroke as its most frequent component at national matched-cohort level: the Danish matched population cohort of 3,967 adults with first-time nephrotic syndrome found 10-year arterial thromboembolism risk 14.0 percent with ischemic stroke the highest component at 8.1 percent, and first-year adjusted hazard for arterial thromboembolism 3.11 versus matched general-population comparators (PMID 34979093), with the nephrotic-syndrome cardiovascular review documenting dyslipidemia and procoagulant mechanisms driving arterial thrombosis risk and low-dose aspirin indicated where arterial thrombosis prophylaxis is needed (PMID 42298988); recorded as documented association only, scoped to ischemic stroke and the residuals identity.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: the stroke figure is a cumulative component of the arterial-thromboembolism composite at population level, so whether any individual cerebrovascular event is attributable to the nephrotic state requires individual neurology attribution with cardioembolic, atherosclerotic, and small-vessel exclusion.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 326.1 — Vestergaard SV, Birn H, Darvalics B, et al. Risk of Arterial Thromboembolism, Venous Thromboembolism, and Bleeding in Patients with Nephrotic Syndrome: A Population-Based Cohort Study Am J Med. 2022 May;135(5):615-625.e9. PMID 34979093.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/34979093/
+- Source checked on: 2026-09-26
+- Locator: PMID 34979093; results (arterial cumulative risks and components)
+- Note under review: Danish national matched cohort of 3,967 adults with first-time nephrotic syndrome: 10-year arterial thromboembolism risk 14.0% (12.8-15.2) with ischemic stroke the highest component at 8.1%; first-year adjusted HR 3.11 (2.60-3.73) for arterial thromboembolism; supports the bounded arterial-thromboembolism association only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 326.2 — Untersulzner C, Gauckler P, Matyjek A, et al. Cardiovascular disease and risk management in patients with nephrotic syndrome Kidney Res Clin Pract. 2026 Jul;45(4):467-478. PMID 42298988.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42298988/
+- Source checked on: 2026-09-26
+- Locator: PMID 42298988; review framing (arterial thrombosis mechanisms and prophylaxis)
+- Note under review: Review of cardiovascular disease and risk management in nephrotic syndrome (Kidney Res Clin Pract 2026): dyslipidemia, urinary loss of natural anticoagulants, increased procoagulant factors, and platelet activation drive cardiovascular vulnerability; low-dose aspirin indicated where arterial thrombosis prophylaxis is needed; standard risk scores underestimate risk; supports the bounded arterial-route framing only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `nephrosis` → `myocardial-infarction` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** First-time nephrotic syndrome documents arterial thromboembolism with myocardial infarction as a major component at national matched-cohort level: the Danish matched population cohort of 3,967 adults with first-time nephrotic syndrome found 10-year arterial thromboembolism risk 14.0 percent with myocardial infarction at 6.0 percent and first-year adjusted hazard 3.11 versus matched general-population comparators (PMID 34979093), and the nephrotic-syndrome cardiovascular review documents dyslipidemia and procoagulant mechanisms driving arterial thrombosis risk with low-dose aspirin indicated where arterial thrombosis prophylaxis is needed (PMID 42298988); recorded as documented association only, scoped to the composite-component limit.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: the myocardial-infarction figure is a cumulative component of the arterial-thromboembolism composite at population level and nephrotic dyslipidemia plausibly contributes through atherosclerotic as well as thrombotic routes, so whether any individual infarction is attributable to the nephrotic state requires individual cardiology attribution with atherosclerotic, vasospastic, and demand-ischemia exclusion.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 327.1 — Vestergaard SV, Birn H, Darvalics B, et al. Risk of Arterial Thromboembolism, Venous Thromboembolism, and Bleeding in Patients with Nephrotic Syndrome: A Population-Based Cohort Study Am J Med. 2022 May;135(5):615-625.e9. PMID 34979093.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/34979093/
+- Source checked on: 2026-09-26
+- Locator: PMID 34979093; results (arterial cumulative risks and components)
+- Note under review: Danish national matched cohort of 3,967 adults with first-time nephrotic syndrome: 10-year arterial thromboembolism risk 14.0% (12.8-15.2) with myocardial infarction at 6.0% among the highest components; first-year adjusted HR 3.11 (2.60-3.73) for arterial thromboembolism; supports the bounded arterial-thromboembolism association only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 327.2 — Untersulzner C, Gauckler P, Matyjek A, et al. Cardiovascular disease and risk management in patients with nephrotic syndrome Kidney Res Clin Pract. 2026 Jul;45(4):467-478. PMID 42298988.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42298988/
+- Source checked on: 2026-09-26
+- Locator: PMID 42298988; review framing (dyslipidemia and arterial thrombosis)
+- Note under review: Review of cardiovascular disease and risk management in nephrotic syndrome (Kidney Res Clin Pract 2026): dyslipidemia and procoagulant/platelet-activation mechanisms drive cardiovascular vulnerability; low-dose aspirin indicated where arterial thrombosis prophylaxis is needed; supports the bounded coronary-route framing only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `nephrosis` → `chronic-kidney-disease` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Nephrotic-range proteinuric kidney disease documents kidney failure progression at multicenter cohort level: the Danish multicenter cohort of 1,219 patients with nephrotic-range albuminuria and hypoalbuminemia found edema associated with faster kidney failure progression (188 days to kidney failure in edematous versus 364 days in non-edematous patients) alongside higher urine albumin-creatinine ratios and lower plasma albumin (PMID 40043694); recorded as documented association only, scoped to nephrotic-range proteinuric populations with histology-dependent progression carried openly.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: nephrotic syndrome spans histologies with very different renal trajectories (minimal change disease responding to immunosuppression versus membranous and focal-segmental disease progressing), so whether any individual chronic kidney disease is attributable to the nephrotic state requires individual nephrology attribution with biopsy histology, treatment-response, and diabetic and obstructive exclusion.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 328.1 — Kelddal S, Tofig BJ, Hvas AM, et al. Edema and Outcome in Patients with Nephrotic-Range Albuminuria and Hypoalbuminemia: A Danish Multicenter Cohort Study Am J Nephrol. 2025;56(4):510-519. PMID 40043694.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/40043694/
+- Source checked on: 2026-09-26
+- Locator: PMID 40043694; results (kidney failure progression and edema stratification)
+- Note under review: Danish multicenter cohort of 1,219 patients with nephrotic-range albuminuria and hypoalbuminemia (2012-2022): edema in 62%; edema associated with faster kidney failure progression (188 days IQR 28-581 versus 364 days IQR 116-920), higher UACR (4,245 versus 3,546 mg/g), lower albumin (26 versus 28 g/L), and higher 1-year mortality; supports the bounded nephrotic-progression association only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
 ## Implementation mechanics after decisions
 
 - Mapping edits and registry edits must land in lockstep (the registry audit's canonical-JSON hashes and live-use sets will fail otherwise).
