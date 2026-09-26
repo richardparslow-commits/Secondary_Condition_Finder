@@ -188,8 +188,8 @@ Open `http://localhost:3000`. `/scenarios` contains repeatable demo walkthroughs
 | `npm run kb:validate` | Knowledge-base structural/integrity validation |
 | `npm run citations:audit` | Citation safety, provenance, and verification-debt audit |
 | `npm run audit:me-compliance` | Audits all mappings (incl. every ME-1..ME-33 relationship) against the CRG schema, nexus-arm, consensus, guard-honesty, citation, and quarantine rules |
-| `npm run audit:crg` | CRG structural audit: simple-cycle enumeration, bidirectional-pair governance notes, and a transitive-redundancy report (`--strict` upgrades review findings to violations) |
-| `npm run audit:crg:graph` | Adjacency-file graph audit: 3-color DFS cycle detection over `KbNodeMapping` files (self-tightening — vacuous until the first adjacency file migrates, then strict) |
+| `npm run audit:crg` | CRG structural audit: simple-cycle enumeration, bidirectional-pair governance notes, and a transitive-redundancy report. Self-loops, duplicate edges, and pure-causation cycles hard-fail; the review and redundancy backlogs are ratcheted so they can shrink but not grow (`--strict` upgrades every review finding to a violation). CI gate |
+| `npm run audit:crg:graph` | Adjacency-file graph audit: 3-color DFS cycle detection over `KbNodeMapping` files (self-tightening — vacuous until the first adjacency file migrates, then strict). CI gate |
 | `npm run citations:decay` | Live link-rot/staleness probe for citations (deliberate maintainer gate, not per-PR CI) |
 | `npm run citations:weak` | Weak-citation report (references below the repository's provenance bar) |
 | `npm run citations:queue` | Reports the qualified-human citation-verification queue as markdown |
@@ -452,6 +452,14 @@ Enforcement and auditing:
   ME-1..ME-33 relationship — for nexus-arm validity, consensus/alignment
   consistency, guard-disclaimer honesty, citation discipline, and quarantine
   compliance as a CI gate.
+- `npm run audit:crg` and `npm run audit:crg:graph` are CI gates over the
+  relationship graph's structure. Self-loops, duplicate edges, and cycles built
+  entirely from `DIRECT_CAUSATION` hard-fail, because circular causation is not
+  a defensible etiology to present to a veteran. The remaining review findings
+  (association cycles, bidirectional pairs without `governanceNotes` on both
+  files) and transitive-redundancy conflicts each need a qualified-human
+  decision, so they are ratcheted: the backlog stays visible and can shrink,
+  but growing it fails the gate.
 - `npm run citations:decay` is the maintainer-run link-rot/staleness probe.
 - Strict Zod schemas reject unknown JSON keys, and referential-integrity tests
   keep mapping IDs aligned with the catalog. Drafts may retain explicit TODO

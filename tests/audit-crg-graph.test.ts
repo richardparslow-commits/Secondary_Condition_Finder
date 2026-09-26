@@ -1,6 +1,14 @@
+import fs from "node:fs";
+import path from "node:path";
+
 import { describe, expect, it } from "vitest";
 
-import { analyzeGraph, enumerateSimpleCycles } from "../scripts/audit-crg-graph";
+import {
+  analyzeGraph,
+  enumerateSimpleCycles,
+  CRG_REVIEW_BASELINE,
+  CRG_REDUNDANCY_BASELINE,
+} from "../scripts/audit-crg-graph";
 
 type MappingFixture = {
   id: string;
@@ -194,5 +202,120 @@ describe("analyzeGraph", () => {
     expect(report.counts.redundancyConflicts).toBe(1);
     expect(report.redundancy[0]?.direct).toBe("a->c");
     expect(report.redundancy[0]?.chain).toBe("a->b->c");
+  });
+});
+
+describe("analyzeGraph --strict contract", () => {
+  // A three-node cycle containing an ASSOCIATION_ONLY edge: a review finding by
+  // default, and the case --strict used to leave behind.
+  const associationCycle = [
+    mapping("a", [edge("b", ASSOCIATION)]),
+    mapping("b", [edge("c", DIRECT)]),
+    mapping("c", [edge("a", DIRECT)]),
+  ];
+
+  it("upgrades association cycles to violations, not only bidirectional governance findings", () => {
+    const reviewReport = analyzeGraph(associationCycle);
+    expect(reviewReport.status).toBe("REVIEW");
+    expect(reviewReport.review.some((finding) => finding.code === "CRG-ASSOCIATION-CYCLE")).toBe(true);
+    expect(reviewReport.violations).toEqual([]);
+
+    const strictReport = analyzeGraph(associationCycle, { strict: true });
+    expect(strictReport.status).toBe("FAIL");
+    expect(strictReport.violations.some((finding) => finding.code === "CRG-ASSOCIATION-CYCLE")).toBe(true);
+    // --strict is documented as upgrading review findings to violations, so it
+    // must leave nothing enforceable behind in review: a maintainer gate that
+    // silently keeps a category advisory is worse than no strict mode at all.
+    expect(strictReport.review).toEqual([]);
+  });
+});
+
+describe("structural-debt ratchet", () => {
+  const associationCycle = [
+    mapping("a", [edge("b", ASSOCIATION)]),
+    mapping("b", [edge("c", DIRECT)]),
+    mapping("c", [edge("a", DIRECT)]),
+  ];
+  const redundantGraph = [
+    mapping("a", [edge("b", DIRECT), edge("c", AGGRAVATION)]),
+    mapping("b", [edge("c", DIRECT)]),
+    mapping("c", []),
+  ];
+
+  const ratchetFindings = (report: { violations: Array<{ code: string; subject: string }> }) =>
+    report.violations.filter((finding) => finding.code === "CRG-STRUCTURAL-DEBT-RATCHET");
+
+  it("hard-fails when review-class findings grow past the baseline", () => {
+    const report = analyzeGraph(associationCycle, { reviewBaseline: 0 });
+    expect(report.status).toBe("FAIL");
+    expect(ratchetFindings(report)).toHaveLength(1);
+    expect(ratchetFindings(report)[0]?.subject).toBe("review-class findings 1 > baseline 0");
+    expect(report.reviewDebt.exceeded).toBe(true);
+    expect(report.reviewDebt.reviewBaseline).toBe(0);
+  });
+
+  it("hard-fails when transitive redundancy grows past the baseline", () => {
+    const report = analyzeGraph(redundantGraph, { redundancyBaseline: 0 });
+    expect(report.status).toBe("FAIL");
+    expect(ratchetFindings(report)).toHaveLength(1);
+    expect(ratchetFindings(report)[0]?.subject).toBe("redundancy conflicts 1 > baseline 0");
+    expect(report.reviewDebt.redundancyConflicts).toBe(1);
+  });
+
+  it("stays silent at the baseline so queued human decisions do not block merge", () => {
+    const report = analyzeGraph(associationCycle, { reviewBaseline: 1 });
+    expect(ratchetFindings(report)).toEqual([]);
+    expect(report.reviewDebt.exceeded).toBe(false);
+    // Still surfaced for the qualified-human queue — ratcheted, not hidden.
+    expect(report.status).toBe("REVIEW");
+    expect(report.review).toHaveLength(1);
+  });
+
+  it("counts the review backlog identically under --strict", () => {
+    const plain = analyzeGraph(associationCycle, { reviewBaseline: 5 });
+    const strict = analyzeGraph(associationCycle, { strict: true, reviewBaseline: 5 });
+    expect(strict.reviewDebt.reviewClassCount).toBe(plain.reviewDebt.reviewClassCount);
+
+    // And the ratchet still fires under --strict rather than being masked by
+    // the findings having moved into violations.
+    const tight = analyzeGraph(associationCycle, { strict: true, reviewBaseline: 0 });
+    expect(ratchetFindings(tight)).toHaveLength(1);
+  });
+
+  it("reports both pins so a breach says which backlog grew", () => {
+    const report = analyzeGraph(associationCycle, { reviewBaseline: 0, redundancyBaseline: 0 });
+    expect(report.reviewDebt).toMatchObject({
+      reviewClassCount: 1,
+      reviewBaseline: 0,
+      redundancyConflicts: 0,
+      redundancyBaseline: 0,
+      exceeded: true,
+    });
+  });
+});
+
+describe("shipped knowledge base", () => {
+  it("sits within its pinned structural-debt baselines with no hard violations", () => {
+    const kbDir = path.join(process.cwd(), "data", "knowledge-base");
+    const mappings = fs
+      .readdirSync(kbDir)
+      .filter((file) => file.endsWith(".json"))
+      .sort()
+      .map((file) => JSON.parse(fs.readFileSync(path.join(kbDir, file), "utf8")));
+
+    expect(mappings.length).toBeGreaterThan(0);
+    const report = analyzeGraph(mappings);
+
+    // The exported pins must describe the shipped corpus: if it has grown past a
+    // baseline, either resolve the findings or re-pin deliberately in a reviewed
+    // change — never by letting the gate drift.
+    expect(report.reviewDebt.exceeded).toBe(false);
+    expect(report.reviewDebt.reviewClassCount).toBeLessThanOrEqual(CRG_REVIEW_BASELINE);
+    expect(report.reviewDebt.redundancyConflicts).toBeLessThanOrEqual(CRG_REDUNDANCY_BASELINE);
+    // A self-loop, duplicate edge, or pure-DIRECT_CAUSATION cycle is not a
+    // defensible etiology to present to a veteran.
+    expect(report.violations).toEqual([]);
+    // The backlog is real and must stay visible rather than be silently zeroed.
+    expect(report.status).toBe("REVIEW");
   });
 });

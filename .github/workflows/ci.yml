@@ -168,6 +168,25 @@ jobs:
           npm run audit:me-compliance 2>&1 | tee ci-me-compliance.log
         continue-on-error: true
         id: me_compliance
+      # CRG structural integrity: self-loops, duplicate edges, and pure
+      # DIRECT_CAUSATION cycles are hard violations, and the review/redundancy
+      # backlogs are ratcheted so they cannot grow silently. Not previously
+      # executed by any workflow, which left the audit's FAIL path unreachable.
+      - name: Audit CRG graph structure
+        run: |
+          set -o pipefail
+          npm run audit:crg 2>&1 | tee ci-crg.log
+        continue-on-error: true
+        id: crg
+      # Self-tightening adjacency audit: vacuous until the first KbNodeMapping
+      # file migrates, then a hard cycle gate. Wired now so that promise is
+      # actually enforceable when the migration lands.
+      - name: Audit CRG adjacency graph
+        run: |
+          set -o pipefail
+          npm run audit:crg:graph 2>&1 | tee ci-crg-graph.log
+        continue-on-error: true
+        id: crg_graph
       - name: Run lint
         run: |
           set -o pipefail
@@ -224,6 +243,8 @@ jobs:
             echo "- citations: ${{ steps.citations.outcome }}"
             echo "- kb-validate: ${{ steps.kb_validate.outcome }}"
             echo "- me-compliance: ${{ steps.me_compliance.outcome }}"
+            echo "- crg-structure: ${{ steps.crg.outcome }}"
+            echo "- crg-adjacency: ${{ steps.crg_graph.outcome }}"
             echo "- lint: ${{ steps.lint.outcome }}"
             echo "- typecheck: ${{ steps.typecheck.outcome }}"
             echo "- test-composition: ${{ steps.test_composition.outcome }}"
@@ -232,7 +253,7 @@ jobs:
             echo "- browser-e2e: ${{ steps.e2e.outcome }}"
             echo
             echo "## Failure excerpts"
-            for log in ci-governance.log ci-branch-rules.log ci-install.log ci-audit.log ci-citations.log ci-kb-validate.log ci-me-compliance.log ci-lint.log ci-typecheck.log ci-test-composition.log ci-test.log ci-build.log ci-e2e.log; do
+            for log in ci-governance.log ci-branch-rules.log ci-install.log ci-audit.log ci-citations.log ci-kb-validate.log ci-me-compliance.log ci-crg.log ci-crg-graph.log ci-lint.log ci-typecheck.log ci-test-composition.log ci-test.log ci-build.log ci-e2e.log; do
               if [ -f "$log" ]; then
                 echo
                 echo "### $log"
@@ -253,7 +274,7 @@ jobs:
       - name: Fail the job if any gate failed
         if: always()
         run: |
-          if [ "${{ steps.governance.outcome }}" = "failure" ] || [ "${{ steps.branch_rules.outcome }}" = "failure" ] || [ "${{ steps.install.outcome }}" = "failure" ] || [ "${{ steps.audit.outcome }}" = "failure" ] || [ "${{ steps.citations.outcome }}" = "failure" ] || [ "${{ steps.kb_validate.outcome }}" = "failure" ] || [ "${{ steps.me_compliance.outcome }}" = "failure" ] || [ "${{ steps.lint.outcome }}" = "failure" ] || [ "${{ steps.typecheck.outcome }}" = "failure" ] || [ "${{ steps.test_composition.outcome }}" = "failure" ] || [ "${{ steps.test.outcome }}" = "failure" ] || [ "${{ steps.build.outcome }}" = "failure" ] || [ "${{ steps.e2e.outcome }}" = "failure" ]; then
+          if [ "${{ steps.governance.outcome }}" = "failure" ] || [ "${{ steps.branch_rules.outcome }}" = "failure" ] || [ "${{ steps.install.outcome }}" = "failure" ] || [ "${{ steps.audit.outcome }}" = "failure" ] || [ "${{ steps.citations.outcome }}" = "failure" ] || [ "${{ steps.kb_validate.outcome }}" = "failure" ] || [ "${{ steps.me_compliance.outcome }}" = "failure" ] || [ "${{ steps.crg.outcome }}" = "failure" ] || [ "${{ steps.crg_graph.outcome }}" = "failure" ] || [ "${{ steps.lint.outcome }}" = "failure" ] || [ "${{ steps.typecheck.outcome }}" = "failure" ] || [ "${{ steps.test_composition.outcome }}" = "failure" ] || [ "${{ steps.test.outcome }}" = "failure" ] || [ "${{ steps.build.outcome }}" = "failure" ] || [ "${{ steps.e2e.outcome }}" = "failure" ]; then
             echo "One or more CI gates failed. See the diagnostic summary and artifact."
             exit 1
           fi
