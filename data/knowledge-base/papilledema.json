@@ -2,8 +2,78 @@
   "id": "papilledema",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review otologic, vestibular, audiologic, visual, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 68 (2026-09-26): one ASSOCIATION_ONLY draft mapping pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: the edge asserts association only (etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true, mechanismCategory MECHANICAL_OR_COMPRESSIVE). The evidence base is one 490-patient prospective cohort plus a trial protocol and a cross-etiology comparison, so individual claims require dated neuro-ophthalmologic assessment with competing-cause exclusion, and review by a qualified medical professional. The shared-driver limit (intracranial pressure causes both papilledema and visual loss) is carried on the edge itself.",
+    "Pathway and duplicate-scope screens: no -> optic-atrophy edge (INTERMEDIATE-PATHWAY - chronic disc edema progresses to secondary optic atrophy, but the batch-66 optic-atrophy to visual-impairment edge already carries the atrophy-to-function link and authoring both would duplicate the chain as a shortcut (the chain-triangle pattern recorded with the standing CRG semantics follow-up); the mechanism narrative on the edge carries the atrophy pathway openly; reopening condition: a cohort quantifying secondary optic atrophy incidence after papilledema); no -> cranial-nerve-palsy edge (SHARED-SUBSTRATE - sixth-nerve palsy (diplopia documented in the IIH group of the CVST comparison, PMID 42435089) is a parallel manifestation of raised intracranial pressure, not a consequence of the disc edema); no -> headaches edge (shared-substrate raised-pressure manifestation; no generic headache identity exists and the migraine-headaches identity is a distinct construct); ME-29 discipline - the published hydrocephalus visual-impairment window's papilledema-anchored pediatric evidence (Lee 2017) is NOT recycled; this file's anchors are papilledema-specific visual-outcome sources; direction discipline - severity-gradient and treatment-rationale evidence support the association only."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 68 (2026-09-26): one bounded association edge authored - papilledema to visual-impairment (rank 1) - classified ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, and hypothesizedOnly:true. The proposition rests on the 490-patient IIH prospective cohort (worst visual outcomes with the most severe papilledema; PMID 36242625), the IIH Intervention trial protocol (permanent visual loss due to papilloedema; PMID 42547236), and the CVST-versus-IIH graded visual-assessment cohort (PMID 42435089).",
+    "Counter-evidence and caveat screens recorded 2026-09-26: (i) shared-driver limit - raised intracranial pressure causes both the disc edema and (through multiple routes) the visual loss, so the edge's independent-mechanism claim is bounded and carried openly; (ii) intermediate-pathway discipline - the papilledema-to-secondary-optic-atrophy step is recorded on the edge's mechanism narrative but NOT authored as its own edge, to avoid duplicating the batch-66 optic-atrophy to visual-impairment chain (chain-triangle semantics under the standing CRG follow-up); (iii) parallel-manifestation withhold - sixth-nerve palsy (diplopia in the IIH group) is a raised-ICP manifestation shared with papilledema, not a downstream consequence; (iv) etiology scope - IIH dominates the anchors; the CVST comparison shows papilledema grade and visual measures differ by etiology; (v) ME-29 - the hydrocephalus visual-impairment window's papilledema-anchored pediatric data are not recycled here."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "visual-impairment",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Papilledema documents visual acuity and field impairment at prospective-cohort and trial-protocol level: the 9-year idiopathic intracranial hypertension prospective cohort of 490 patients found those with the highest OCT retinal nerve fibre layer (most severe papilledema) had the worst visual outcomes, with delayed visual field and ganglion cell layer decline after 12 months and disease duration a key visual prognostic factor (PMID 36242625), the IIH Intervention randomized trial protocol states patients are at risk of permanent visual loss due to papilledema and uses peripapillary nerve fibre layer and perimetric mean deviation as its vision-preservation endpoints (PMID 42547236), and the CVST-versus-IIH papilledema cohort documents graded visual assessment (Frisen grade, scotomas, nerve fibre layer, perimetric mean deviation) across etiologies (PMID 42435089); recorded as documented association only with the etiology-spanning scope carried openly.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: the anchors are idiopathic-intracranial-hypertension-dominant raised-pressure populations in which papilledema severity and visual loss both track the underlying pressure burden (shared-driver confounding), so whether any individual visual impairment is attributable to the disc edema itself requires individual neuro-ophthalmologic assessment with glaucomatous, retinal, and refractive exclusion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MECHANICAL_OR_COMPRESSIVE",
+        "primaryVector": "Sustained optic disc edema with axoplasmic flow stasis and compression of disc microcirculation drives retinal ganglion cell axon injury so visual field and acuity loss result, the compression-ischemia route supported by the severity gradient (highest nerve fibre layer worst visual outcomes) and the vision-preservation trial rationale that reducing papilledema preserves vision, but whether this route produced any individual visual impairment remains hypothesized until perimetry and OCT records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at single prospective cohort (490 patients) plus trial-protocol and cross-etiology comparison class only: the cohort is idiopathic-intracranial-hypertension-dominant so etiology generalization is partial, papilledema severity and visual loss co-vary with intracranial pressure so the disc edema's independent contribution is not isolated, and the vision-preservation trial is a protocol without efficacy data.",
+        "evidenceGaps": "The anchors are IIH-dominant so papilledema of other etiologies (mass lesions, venous sinus thrombosis, malignant hypertension) is underrepresented; severity of papilledema and severity of visual loss share the intracranial-pressure driver so independent attribution is limited; the IIH Intervention trial contributes protocol framing only; the CVST-IIH comparison shows etiologic differences in papilledema grade and visual measures; and glaucoma, retinal disease, refractive error, and medication effects compete for individual attribution.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "the underlying raised-intracranial-pressure cause driving both papilledema and visual loss (shared driver; IIH, cerebral venous sinus thrombosis, mass lesions)",
+          "glaucoma and other optic neuropathies (the published windows, not recycled per ME-29)",
+          "retinal and macular disease",
+          "refractive error and amblyopia",
+          "medication-related visual symptoms (acetazolamide, topiramate)"
+        ]
+      },
+      "evidenceGaps": [
+        "The anchors are IIH-dominant so papilledema of other etiologies (mass lesions, venous sinus thrombosis, malignant hypertension) is underrepresented; severity of papilledema and severity of visual loss share the intracranial-pressure driver so independent attribution is limited; the IIH Intervention trial contributes protocol framing only; the CVST-IIH comparison shows etiologic differences in papilledema grade and visual measures; and glaucoma, retinal disease, refractive error, and medication effects compete for individual attribution."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY at prospective-cohort plus trial-protocol class with the shared-driver and etiology limits carried openly: the 490-patient IIH prospective cohort found worst visual outcomes with the most severe papilledema on OCT with delayed decline (PMID 36242625), the IIH Intervention protocol frames permanent visual loss as due to papilloedema with vision-preservation endpoints (PMID 42547236), and the CVST-versus-IIH cohort documents graded visual assessment across etiologies (PMID 42435089); because papilledema severity and visual loss share the intracranial-pressure driver and the anchors are IIH-dominant, the conservative standard keeps the edge at association only and routes individual claims through dated neuro-ophthalmologic assessment with perimetry, OCT, and glaucomatous, retinal, and refractive exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Thaller M, Homer V, Hyder Y, et al. The idiopathic intracranial hypertension prospective cohort study: evaluation of prognostic factors and outcomes J Neurol. 2023 Feb;270(2):851-863. PMID 36242625.",
+          "note": "Idiopathic intracranial hypertension prospective cohort, 490 patients over 9 years (J Neurol 2023): highest OCT retinal nerve fibre layer (most severe papilledema) had the worst visual outcomes; delayed visual field and ganglion cell layer decline after 12 months; disease duration and BMI change the key visual prognostic factors; supports the bounded severity-gradient association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36242625/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 36242625; results (visual outcomes by papilledema severity and prognostic factors)"
+        },
+        {
+          "citation": "Tsermoulas G, Mollan SP, Homer V, et al. Cerebrospinal fluid shunting or dural venous sinus stenting to preserve vision in idiopathic intracranial hypertension (IIH Intervention): protocol for an open-label, multicentre, randomised controlled phase IIb trial BMJ Open. 2026 Aug 3;16(8):e111013. PMID 42547236.",
+          "note": "IIH Intervention randomized trial protocol (BMJ Open 2026): patients with sight-threatening IIH are at risk of permanent visual loss due to papilloedema; CSF shunting versus dural venous sinus stenting compared to preserve vision; primary outcome peripapillary retinal nerve fibre layer with perimetric mean deviation secondary; supports the bounded vision-preservation framing only (protocol, no efficacy data).",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42547236/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 42547236; protocol framing (visual loss due to papilledema and trial endpoints)"
+        },
+        {
+          "citation": "Martins AI, Jorge A, Matos S, et al. Papilledema and related clinical and paraclinical visual assessment in cerebral venous and sinus thrombosis versus idiopathic intracranial hypertension Neurol Sci. 2026 Jul 11;47(8).pii: 623. doi: 10.1007/s10072-026-09232-9. PMID 42435089.",
+          "note": "CVST-versus-IIH papilledema comparison cohort (Neurol Sci 2026; 12 CVST and 34 IIH patients): graded papilledema (Frisen), Amsler scotomas, RNFL thickness, and perimetric mean deviation documented across etiologies with etiologic differences in severity; supports the bounded cross-etiology visual-assessment framing only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42435089/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 42435089; results (visual assessment measures across papilledema etiologies)"
+        }
+      ]
+    }
+  ]
 }

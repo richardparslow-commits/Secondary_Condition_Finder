@@ -2,8 +2,78 @@
   "id": "overactive-bladder",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review urologic, gynecologic, hormonal, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 68 (2026-09-26): one ASSOCIATION_ONLY draft mapping pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: the edge asserts association only (etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true, mechanismCategory PSYCHOPHYSIOLOGICAL). The evidence base is national cross-sectional mediation plus conflicting surveys, so individual claims require dated psychiatric assessment with competing-cause exclusion, and review by a qualified medical professional. The counterweight (population-norm depression scores, PMID 38108212) is carried on the edge itself.",
+    "Pathway and duplicate-scope screens: no -> urinary-incontinence edge (CONSTITUTIVE-PROXIMITY - urge urinary incontinence is the wet subtype of the OAB syndrome itself and the target identity is Urinary Incontinence / Frequency, the same symptom domain as the defining urgency-frequency-nocturia cluster; those cluster features are withheld as constitutive presentation, not secondary conditions); no -> insomnia edge (below authoring threshold - the 300-patient survey found elevated PROMIS Sleep Disturbance (PMID 37356462) but the 159-patient cohort found sleep scores at population norms with no symptom-severity correlation (PMID 38108212), and the nocturia-insomnia trials (MINT) are nocturia-scoped rather than OAB-scoped; reopening condition: a longitudinal OAB cohort quantifying incident chronic insomnia); no -> anxiety-disorder edge (REVERSE-DIRECTION - psychological distress precedes or amplifies symptom reporting in the located material, mirroring the batch-61 mixed-urinary-incontinence anxiety withhold); no -> obstructive-sleep-apnea edge (DIRECTION-INVERSION - the OSA-OAB literature frames OSA driving nocturia/OAB with CPAP responsiveness, and the association review (PMID 42479276) is comorbidity framing); no -> falls or -> fractures edge (withheld propositions - nocturia-nighttime-falls literature has no catalog identities); suicidal ideation recorded as a WITHHELD PROPOSITION - the national analysis quantifies the association (total-effect OR 1.92 with depression mediating 79.8 percent, PMID 42222871) but the catalog holds no suicidality identity, compounding the batch-64 nightmare-disorder and batch-65 nocturnal-enuresis refusals; direction discipline - all anchors are cross-sectional, so no forward direction is asserted beyond the association itself."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 68 (2026-09-26): one bounded association edge authored - overactive-bladder to depressive-disorder (rank 1) - classified ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, and hypothesizedOnly:true. The proposition rests on the NHANES mediation analysis (depression mediates 79.8% of the OAB-suicidal-ideation association; PMID 42222871) and the 300-patient survey with elevated PROMIS Depression versus US norms (PMID 37356462), with the counterweight carried openly (159-patient cohort at population norms; PMID 38108212).",
+    "Counter-evidence and caveat screens recorded 2026-09-26: (i) counterweight discipline - the null 159-patient PRO cohort directly contradicts the positive 300-patient survey at the same evidence class and is carried on the edge and in every claim; (ii) direction ambiguity - the national SDOH-OAB analysis frames depression as an explanatory factor of the OAB association (depression toward OAB), while the mediation analysis frames depression as the OAB-to-suicidality mediator; both directions are accommodated and none asserted; (iii) withheld suicidality proposition - the strongest located association (total-effect OR 1.92) cannot be authored because the catalog holds no suicidality identity (third refusal after batch-64 nightmare-disorder and batch-65 nocturnal-enuresis; the evidence is preserved here); (iv) constitutive symptom cluster - urgency, frequency, and nocturia are the OAB presentation itself, so no edges target their domains (the Urinary Incontinence / Frequency identity is symptom-domain overlapping); (v) sponsor interest - several anchors carry OAB-therapeutics sponsor relationships."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "depressive-disorder",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Overactive bladder documents depression at national cross-sectional and survey level: the NHANES 2007-2018 analysis of 21,408 US adults found OAB strongly associated with suicidal ideation with depression the dominant mediator (79.8 percent of the total association; indirect-through-depression OR 1.62, 95 percent CI 1.49-1.76), embedding a quantified OAB-depression pathway (PMID 42222871), and the cross-sectional survey of 300 treated and untreated OAB adults found PROMIS Depression scores above US general-population values regardless of treatment type (PMID 37356462); recorded as documented association only with the counterweight carried openly - the 159-patient patient-reported cohort found Depression scores consistent with population norms and no moderate correlation with urinary symptom severity (PMID 38108212).",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: all anchors are cross-sectional with no temporal ordering, the national analyses frame depression as mediator or explanatory factor in directions that also accommodate depression preceding or amplifying OAB symptom reporting, one cohort reports depression at population norms, and individual claims require dated psychiatric assessment with pre-existing, medication, and medical-cause exclusion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "PSYCHOPHYSIOLOGICAL",
+        "primaryVector": "The social restriction, sleep interruption, and distress burden of urgency, frequency, and nocturia drive depressive symptoms so depression results, the burden route consistent with the depression-mediated decomposition of the national OAB-suicidal-ideation association and the elevated survey depression scores, but whether this route produced any individual depression remains hypothesized until psychiatric and urologic records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at national cross-sectional mediation plus cross-sectional survey class only: no anchor establishes temporal order, the null 159-patient cohort (depression at population norms) directly contradicts the positive 300-patient survey, the mediation analyses model depression as a statistical mediator without establishing the OAB-to-depression direction, and multiple anchors share sponsor interest in OAB therapeutics.",
+        "evidenceGaps": "All anchors are cross-sectional so direction is unestablished; the positive survey (300 patients) and the null cohort (159 patients at population norms) contradict each other at the same evidence class; mediation decomposition does not establish that OAB precedes depression; sponsor interest in OAB therapeutics affects several anchors; and depression predating OAB, medication effects (anticholinergics, sedatives), nocturia-driven sleep disruption (the withheld insomnia proposition in this file), comorbid chronic illness, and social determinants of health compete for individual attribution.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "depression preceding or amplifying OAB symptom reporting (reverse direction; the national SDOH analysis frames depression as explanatory of the OAB association)",
+          "medication effects (anticholinergics, sedatives, antidepressants)",
+          "sleep disruption from nocturia as the operative burden (the withheld insomnia proposition in this file)",
+          "comorbid chronic illness and pain driving both conditions",
+          "social determinants of health as common drivers (the SDOH-OAB dose-response)"
+        ]
+      },
+      "evidenceGaps": [
+        "All anchors are cross-sectional so direction is unestablished; the positive survey (300 patients) and the null cohort (159 patients at population norms) contradict each other at the same evidence class; mediation decomposition does not establish that OAB precedes depression; sponsor interest in OAB therapeutics affects several anchors; and depression predating OAB, medication effects (anticholinergics, sedatives), nocturia-driven sleep disruption (the withheld insomnia proposition in this file), comorbid chronic illness, and social determinants of health compete for individual attribution."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY at national-mediational plus survey class with the counterweight and direction limits carried openly: the NHANES mediation analysis decomposed the OAB-suicidal-ideation association with depression mediating 79.8 percent (PMID 42222871) and the 300-patient survey found elevated PROMIS Depression versus US norms (PMID 37356462), while the 159-patient cohort found depression at population norms with no symptom-severity correlation (PMID 38108212); because the surveys conflict at the same evidence class and no anchor establishes temporal order, the conservative standard keeps the edge at association only and routes individual claims through dated psychiatric assessment with pre-existing, medication, sleep, and medical-cause exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Su Y, Yuan H, He J, et al. Overactive Bladder and Suicidal Ideation: A National Cross-Sectional Study Identifying Depression as the Primary Mediator Neurourol Urodyn. 2026 Aug;45(6):1168-1178. PMID 42222871.",
+          "note": "NHANES 2007-2018 national cross-sectional analysis of 21,408 US adults (Neurourol Urodyn 2026): OAB prevalence 12.0%; OAB-suicidal-ideation crude OR 2.42 (1.92-3.06); counterfactual mediation showed depression mediated 79.8% (61.1-98.4) of the total association (TNIE OR 1.62, 1.49-1.76) with non-significant direct effect; authors reframe OAB as a marker of mental-health vulnerability; supports the bounded OAB-depression association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42222871/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 42222871; results (mediation decomposition of the OAB-suicidal-ideation association)"
+        },
+        {
+          "citation": "Lai HH, Walker D, Elsouda D, et al. Sleep Disturbance Among Adults With Overactive Bladder: A Cross-sectional Survey Urology. 2023 Sep;179:23-31. PMID 37356462.",
+          "note": "Cross-sectional survey of 300 OAB adults across three treatment groups (Urology 2023; PROMIS-29): Sleep Disturbance and Depression scores above US general-population values in all groups regardless of treatment; authors report OAB adults affected by sleep disturbance and depression; sponsor-interest limit noted; supports the bounded elevated-burden association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/37356462/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 37356462; results (PROMIS domain scores versus US norms)"
+        },
+        {
+          "citation": "Jensen S, Walker D, Elsouda D, et al. An observational, patient-reported outcome study of sleep quality and depression among individuals with overactive bladder syndrome Neurourol Urodyn. 2024 Feb;43(2):437-448. PMID 38108212.",
+          "note": "Observational patient-reported outcome study of 159 OAB patients (Neurourol Urodyn 2024): Sleep Disturbance, Fatigue, and Depression scale scores consistent with US population norms; no moderate-or-greater correlations between lower-urinary-tract symptom severity and depression; antidepressant subgroups worse across outcomes; COUNTERWEIGHT to the survey evidence, carried openly.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38108212/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 38108212; results (population-norm PRO scores and null correlations)"
+        }
+      ]
+    }
+  ]
 }

@@ -3344,3 +3344,76 @@ with no manual fixture bump. Residue clean outside the standing benign coinciden
 historical `explicitPublicationGuards: 273`; wave-5's `toBeGreaterThanOrEqual(276)` catalog floor;
 legal-copy's `38 U.S.C. § 1117` statute text).
 Standing recommendation: batch 67 lands through branch, PR, CI, and merge.
+
+## Mapping Expansion D1 batch 68 (2026-09-26)
+
+Mapping Expansion D1 batch 68 (2026-09-26) authored two draft-quarantined relationships across two of
+the five queue identities and deferred three identities without edges. overactive-bladder ->
+depressive-disorder (PSYCHOPHYSIOLOGICAL) is carried at national-mediational plus survey class with the
+full counterweight discipline open on the edge: the NHANES mediation analysis decomposed the OAB-
+suicidal-ideation association with depression mediating 79.8 percent (PMID 42222871) and the 300-patient
+survey found elevated PROMIS Depression versus US norms (PMID 37356462), while the 159-patient
+observational PRO cohort found depression scores at population norm (PMID 38108212) directly
+contradicting the survey at the same evidence class. papilledema -> visual-impairment
+(MECHANICAL_OR_COMPRESSIVE) is carried at prospective-cohort plus trial-protocol class: the 490-patient
+IIH prospective cohort found worst visual outcomes with the most severe papilledema on OCT with delayed
+decline (PMID 36242625), the IIH Intervention protocol frames permanent visual loss as due to
+papilloedema with vision-preservation endpoints (PMID 42547236), and the CNS-cancer papilledema series
+(PMID 42435089) extends the visual-assessment window; the shared-driver limit (raised intracranial
+pressure causes both the disc edema and the visual loss, bounding the edge's independent-mechanism
+claim) and the IIH-scoped etiology are carried openly.
+
+Three identities deferred without edges. overflow-incontinence (SHARED-SUBSTRATE with the
+retention/obstruction/neurogenic families plus zero condition-specific outcome quantification): the
+located literature treats overflow incontinence as a downstream manifestation of chronic urinary
+retention states rather than as a quantified source of secondary conditions, and the only located
+outcome anchors are retention-family cohorts plus one StatPearls chapter (PMID 31751034) in the wrong
+direction. panner-s-disease (SELF-LIMITED COURSE plus zero located secondary-outcome quantification
+plus continuum with the capitellar osteochondritis-dissecans spectrum): the only located outcome series
+(seven elbows, mean 37 months follow-up, PMID 40949535) documents favorable remodeling. paradoxical-
+vocal-fold-motion (DIRECTION-INVERSION dominance plus diagnostic-mimicry/comorbidity plus no-identity
+voice outcomes): the 164-patient ILO screening study (PMID 38296051) shows anxiety and depression
+predating ILO evaluation, the literature frames ILO as an asthma mimic/comorbidity rather than an
+outcome source (PMIDs 38483372, 41789306), and stridor/dysphonia outcomes have no catalog identities.
+Withholdings recorded on the files: overactive-bladder -> urinary-incontinence withheld as constitutive
+(urge UI is the wet subtype of the OAB syndrome itself), -> insomnia withheld below threshold on
+conflicting surveys, -> anxiety-disorder withheld on reverse-direction (batch-61 mixed-urinary-
+incontinence family precedent) and -> obstructive-sleep-apnea on direction-inversion; OAB suicidal
+ideation recorded as a withheld proposition with no catalog identity - the third refusal after the
+batch-64 nightmare-disorder and batch-65 nocturnal-enuresis propositions. papilledema -> optic-atrophy
+withheld as intermediate-pathway chain-triangle duplication of the batch-66 optic-atrophy window, ->
+cranial-nerve-palsy withheld as shared raised-ICP substrate, and -> headaches withheld with no generic
+catalog identity.
+
+Pre-authoring verification: nine PMIDs passed the abstract pass (`/tmp/d1-abstract47.py` in fetch
+groups), the esummary bibliographic pass with every citation re-verified against the PubMed record, and
+`node scripts/preflight-source-status.js --pmids ...` (9/9 checked covering the six registry citations
+and the note-only deferral anchors, zero blocking flags). The post-write structural self-audit passed for
+all five files (2 edges, 6 reference uses) and `npm run kb:validate` reports zero errors.
+
+Registry after lockstep: 724 relationships (650 explicit / 74 legacy), 1279 reference uses (383
+verified / 896 pending-verification), 1274 clinical / 5 legal uses, 1149 source entities (346 active /
+794 pending-verification). No within-batch source sharing: 6 reference uses over 6 new sources. Citation
+packet regenerated at 361 worksheets / 896 reference rows = live citation debt; the verification
+dashboard regenerated at 896 rows in 38 reviewer batches (792 distinct sources). Backlog after batch
+68: **150** undispositioned zero-edge drafts (155 before the batch; two identities left by gaining
+edges and three by recorded deferral). Next-five: `paraganglioma`, `paraphimosis`,
+`patellar-subluxation`, `patent-ductus-arteriosus`, `perforated-eardrum`.
+
+Structural-debt note: batch-68 edges produced zero new CRG findings - the analyzer reports review-class
+13 against baseline 13 and redundancy 28 against baseline 28 unchanged after the two edges landed. The
+would-be papilledema -> optic-atrophy -> visual-impairment chain triangle was withheld at authoring time
+(intermediate-pathway duplication), so batch 68 did not add a third data point to the batch-65/67
+chain-triangle semantics question; the question stands on those two examples and should be settled
+before more chain-shortcut edges accumulate.
+
+Test-pin note: the sweep touched 54 files and replaced 316 counter tokens in one pass with the batch-67
+per-token context predicates carried over unchanged (relationships 722 -> 724, references/uses 1273 ->
+1279, unverified 890 -> 896, pending source entities 788 -> 794, total source entities 1143 -> 1149,
+explicit guards 648 -> 650, clinical references 1268 -> 1274, clinical provenance 1272 -> 1278, and the
+draft-singles counter 284 -> 286 for this batch's two single-suggestion identities `overactive-bladder`
+and `papilledema`). The explicit fixture token continued to carry the citation-decay-gate debt fixture
+automatically (890 -> 896) - eighth consecutive batch with no manual fixture bump. Residue clean outside
+the standing benign coincidences (apply-all-94's historical `explicitPublicationGuards: 273`; wave-5's
+`toBeGreaterThanOrEqual(276)` catalog floor; legal-copy's `38 U.S.C. § 1117` statute text).
+Standing recommendation: batch 68 lands through branch, PR, CI, and merge.

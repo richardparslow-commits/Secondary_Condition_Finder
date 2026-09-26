@@ -6,8 +6,8 @@
  "installedFrom": "Master Registry Discrepancy Resolution 2026",
  "authorityBoundary": "Authoritative for current relationship direction, proposition text, guard state, source linkage, and KB parity; does not establish an individual VA medical nexus.",
  "counts": {
-  "relationships": 722,
-  "explicitPublicationGuards": 648,
+  "relationships": 724,
+  "explicitPublicationGuards": 650,
   "legacyRationaleBoundaries": 74
  },
  "relationships": [
@@ -23182,6 +23182,68 @@
    "sourceReferenceCount": 1,
    "pathwayIntelligencePresent": false,
    "suggestionObjectHash": "43bae75dc11f85934343efe7e45c5aed5cf46973bcdd541addffbb373bd1fadf"
+  },
+  {
+   "relationshipId": "rel-overactive-bladder-to-depressive-disorder",
+   "primaryId": "overactive-bladder",
+   "targetId": "depressive-disorder",
+   "direction": "overactive-bladder -> depressive-disorder",
+   "primaryPublicationState": "draft",
+   "rank": 1,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY at national-mediational plus survey class with the counterweight and direction limits carried openly: the NHANES mediation analysis decomposed the OAB-suicidal-ideation association with depression mediating 79.8 percent (PMID 42222871) and the 300-patient survey found elevated PROMIS Depression versus US norms (PMID 37356462), while the 159-patient cohort found depression at population norms with no symptom-severity correlation (PMID 38108212); because the surveys conflict at the same evidence class and no anchor establishes temporal order, the conservative standard keeps the edge at association only and routes individual claims through dated psychiatric assessment with pre-existing, medication, sleep, and medical-cause exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY at national-mediational plus survey class with the counterweight and direction limits carried openly: the NHANES mediation analysis decomposed the OAB-suicidal-ideation association with depression mediating 79.8 percent (PMID 42222871) and the 300-patient survey found elevated PROMIS Depression versus US norms (PMID 37356462), while the 159-patient cohort found depression at population norms with no symptom-severity correlation (PMID 38108212); because the surveys conflict at the same evidence class and no anchor establishes temporal order, the conservative standard keeps the edge at association only and routes individual claims through dated psychiatric assessment with pre-existing, medication, sleep, and medical-cause exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to the national-mediational and survey evidence with the counterweight and direction limits carried openly: the NHANES mediation analysis found depression mediating 79.8% of the OAB-suicidal-ideation association (indirect-through-depression OR 1.62; PMID 42222871) and the 300-patient survey found elevated PROMIS Depression versus US norms (PMID 37356462), while the 159-patient cohort found depression at population norms with no symptom-severity correlation (PMID 38108212, counterweight carried on the edge); all anchors are cross-sectional with direction ambiguity and sponsor-interest exposure, so individual claims route through dated psychiatric assessment with pre-existing, medication, sleep, and medical-cause exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "All anchors are cross-sectional so direction is unestablished; the positive survey (300 patients) and the null cohort (159 patients at population norms) contradict each other at the same evidence class; mediation decomposition does not establish that OAB precedes depression; sponsor interest in OAB therapeutics affects several anchors; and depression predating OAB, medication effects (anticholinergics, sedatives), nocturia-driven sleep disruption (the withheld insomnia proposition in this file), comorbid chronic illness, and social determinants of health compete for individual attribution."
+   ],
+   "sourceIds": [
+    "pmid-42222871",
+    "pmid-37356462",
+    "pmid-38108212"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "7489c805b605ad350f8ea604f448c7b9ea793cbfad0df3832f8eeebff5d8a13a"
+  },
+  {
+   "relationshipId": "rel-papilledema-to-visual-impairment",
+   "primaryId": "papilledema",
+   "targetId": "visual-impairment",
+   "direction": "papilledema -> visual-impairment",
+   "primaryPublicationState": "draft",
+   "rank": 1,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY at prospective-cohort plus trial-protocol class with the shared-driver and etiology limits carried openly: the 490-patient IIH prospective cohort found worst visual outcomes with the most severe papilledema on OCT with delayed decline (PMID 36242625), the IIH Intervention protocol frames permanent visual loss as due to papilloedema with vision-preservation endpoints (PMID 42547236), and the CVST-versus-IIH cohort documents graded visual assessment across etiologies (PMID 42435089); because papilledema severity and visual loss share the intracranial-pressure driver and the anchors are IIH-dominant, the conservative standard keeps the edge at association only and routes individual claims through dated neuro-ophthalmologic assessment with perimetry, OCT, and glaucomatous, retinal, and refractive exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY at prospective-cohort plus trial-protocol class with the shared-driver and etiology limits carried openly: the 490-patient IIH prospective cohort found worst visual outcomes with the most severe papilledema on OCT with delayed decline (PMID 36242625), the IIH Intervention protocol frames permanent visual loss as due to papilloedema with vision-preservation endpoints (PMID 42547236), and the CVST-versus-IIH cohort documents graded visual assessment across etiologies (PMID 42435089); because papilledema severity and visual loss share the intracranial-pressure driver and the anchors are IIH-dominant, the conservative standard keeps the edge at association only and routes individual claims through dated neuro-ophthalmologic assessment with perimetry, OCT, and glaucomatous, retinal, and refractive exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to the compression-ischemia route with the shared-driver and etiology limits carried openly: the 490-patient IIH prospective cohort found the worst visual outcomes with the most severe papilledema on OCT (PMID 36242625), the IIH Intervention trial protocol frames permanent visual loss as due to papilloedema with vision-preservation endpoints (PMID 42547236), and the CVST-versus-IIH cohort documents graded visual assessment across etiologies (PMID 42435089); raised intracranial pressure drives both disc edema and visual loss (shared driver) and the anchors are IIH-dominant, the intermediate secondary-optic-atrophy step is carried in the mechanism narrative but not authored as a separate edge (chain-triangle discipline), so individual claims route through dated neuro-ophthalmologic assessment with perimetry, OCT, and glaucomatous, retinal, and refractive exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "The anchors are IIH-dominant so papilledema of other etiologies (mass lesions, venous sinus thrombosis, malignant hypertension) is underrepresented; severity of papilledema and severity of visual loss share the intracranial-pressure driver so independent attribution is limited; the IIH Intervention trial contributes protocol framing only; the CVST-IIH comparison shows etiologic differences in papilledema grade and visual measures; and glaucoma, retinal disease, refractive error, and medication effects compete for individual attribution."
+   ],
+   "sourceIds": [
+    "pmid-36242625",
+    "pmid-42547236",
+    "pmid-42435089"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "d7c12dbe993ec1175d862b3bfb724da5d259fb472cb4d6e2e97cae7cbef4022c"
   }
  ],
  "lastUpdatedBy": "batch-D1-draft-authoring",
