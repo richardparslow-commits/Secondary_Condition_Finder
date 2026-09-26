@@ -123,22 +123,22 @@ describe("Mapping Expansion Batch ME-33", () => {
   it("ratchets the authoritative ME-33 counts", () => {
     expect(relationships.currentState).toBe("D1-DRAFT-AUTHORED");
     expect(sources.currentState).toBe("D1-DRAFT-AUTHORED");
-    expect(relationships.counts).toEqual({ relationships: 634, explicitPublicationGuards: 560, legacyRationaleBoundaries: 74 });
-    expect(relationships.relationships).toHaveLength(634);
+    expect(relationships.counts).toEqual({ relationships: 646, explicitPublicationGuards: 572, legacyRationaleBoundaries: 74 });
+    expect(relationships.relationships).toHaveLength(646);
     expect(sources.counts).toMatchObject({
-      liveSourceReferenceUses: 1073,
-      pendingVerificationSourceEntities: 627,
-      pendingClinicalSourceEntities: 627,
-      totalSourceEntitiesIncludingLineage: 982,
+      liveSourceReferenceUses: 1101,
+      pendingVerificationSourceEntities: 653,
+      pendingClinicalSourceEntities: 653,
+      totalSourceEntitiesIncludingLineage: 1008,
     });
-    expect(sources.sources).toHaveLength(982);
+    expect(sources.sources).toHaveLength(1008);
 
     const mappings = fs.readdirSync(`${root}/data/knowledge-base`).filter((file) => file.endsWith(".json")).map((file) => load<Mapping>(`data/knowledge-base/${file}`));
     const references = mappings.flatMap((mapping) => mapping.suggestions.flatMap((suggestion) => suggestion.sourceReferences));
-    expect(mappings.reduce((total, mapping) => total + mapping.suggestions.length, 0)).toBe(634);
-    expect(references).toHaveLength(1073);
+    expect(mappings.reduce((total, mapping) => total + mapping.suggestions.length, 0)).toBe(646);
+    expect(references).toHaveLength(1101);
     expect(references.filter((reference) => reference.verified === true)).toHaveLength(383);
-    expect(references.filter((r) => r.verified === false)).toHaveLength(690);
+    expect(references.filter((r) => r.verified === false)).toHaveLength(718);
   });
 
   it("keeps deferred identities outside the batch", () => {

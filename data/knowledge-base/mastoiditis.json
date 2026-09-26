@@ -2,8 +2,176 @@
   "id": "mastoiditis",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review otologic, vestibular, audiologic, visual, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 59 (2026-09-26): three ASSOCIATION_ONLY draft mappings pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: all three edges assert association only (etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true, mechanismCategory INFECTIOUS_SPREAD). The evidence base is one retrospective pediatric complication cohort, two host-modified case reports, and narrative specialty reviews, so individual claims require dated temporal-bone imaging, CSF or operative microbiology, and audiometric correlation with competing-source exclusion, and review by a qualified medical professional.",
+    "Pathway and duplicate-scope screens: no -> hearing-loss or conductive-hearing-loss edge (WITHHELD - the located hearing-loss case (PMID 41822631) is a diagnostic mimic: bilateral otomastoiditis opacification on CT in a patient whose facial palsy and hearing impairment were ultimately attributed to Ramsay Hunt zoster sine herpete, with the hearing loss anatomically and temporally uncorrelated to the imaging findings, so it does not support a mastoiditis-scoped hearing edge; residual conductive loss in mastoid disease is largely attributable to the antecedent middle-ear process, and the published otitis-media and labyrinthitis hearing windows own their evidence (ME-29 and constitutive-proximity); the StatPearls chronic-suppurative-otitis chapter (PMID 32119479) is tertiary and the citation audit's evidence-weight review list discourages resting edges on StatPearls; reopen only with mastoiditis-specific audiometric outcome data); no -> facial-nerve-paralysis edge (no catalog identity); no -> sinus-vein-thrombosis or lateral-sinus-thrombosis edge (no catalog identity; the sigmoid-sinus-thrombosis material is recorded as context in the meningitis edge's cohort definition); no -> hydrocephalus edge (otitic hydrocephalus is reported only in case literature without identity-level quantification); no evidence recycled from the otitis-media, labyrinthitis, or brain-abscess published sibling windows (ME-29 scope rule); no -> sepsis edge (the sepsis-infections identity is etiologically scoped to systemic infection syndromes and the located material documents local and intracranial extension without identity-level sepsis quantification)."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 59 (2026-09-26): three bounded association edges authored - mastoiditis to meningitis (rank 1), to brain-abscess (rank 2), and to labyrinthitis (rank 3) - classified ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, and hypothesizedOnly:true. The meningitis proposition rests on the 522-children acute-mastoiditis complication cohort's intracranial-complication definition (PMID 42223618). The brain-abscess proposition rests on the bilateral-mastoiditis temporal-lobe-abscess case (PMID 42542645), the coalescent-mastoiditis tegmen-erosion case (PMID 41527656), and the same cohort's complication enumeration (PMID 42223618). The labyrinthitis proposition rests on the interdisciplinary mastoiditis review's complicated-courses list (PMID 42546716) with the acute-otitis-media complications review (PMID 42377467) recorded as same-chain context under intermediate-node caution.",
+    "Counter-evidence and caveat screens recorded 2026-09-26: (i) evidence class - one pediatric retrospective cohort with small complication counts, two host-modified cases (uncontrolled diabetes, delayed presentation), and German-language narrative reviews without denominators; (ii) diagnostic-mimic screen - the otomastoiditis-imaging hearing-loss case (PMID 41822631) was reviewed and rejected as an anchor because the clinical picture resolved to Ramsay Hunt zoster sine herpete with hearing loss uncorrelated to the imaging findings; (iii) shared-chain limit - intracranial complications can arise from the antecedent otitis media without frank mastoiditis, so otitis-media-scoped complication material (PMID 40776681, PMID 42282302) is recorded as chain context rather than recycled evidence; (iv) constitutive boundary - conductive hearing loss in this disease complex is largely attributable to the antecedent middle-ear process owned by the otitis-media window; (v) evidence-weight discipline - the StatPearls chronic-suppurative-otitis chapter (PMID 32119479) is tertiary and was not used to anchor any edge, consistent with the 2026-09-25 registry source-status audit's weak-evidence review list."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "meningitis",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Mastoiditis documents meningitis as an intracranial complication at retrospective-cohort level: the 522-children acute-mastoiditis cohort defined complicated disease as extracranial subperiosteal abscess or intracranial complications including epidural abscess, sigmoid sinus thrombosis, brain abscess, or meningitis, directly enumerating meningitis among the intracranial complications that arise in the course of acute mastoiditis (PMID 42223618); the relationship is recorded as documented complication of mastoiditis only.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: the located material is a retrospective cohort of hospitalized acute mastoiditis where the antecedent otitis media, prior antibiotic exposure, pathogen, and host factors all co-determine intracranial spread, so whether any individual meningitis arose from mastoid extension requires individual imaging, microbiologic, and temporal review."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "INFECTIOUS_SPREAD",
+        "primaryVector": "Suppurative infection coalesces through the mastoid bone and tegmen so bacteria reach the meninges, basal cisterns, and subarachnoid space and meningitis results, the direct-extension route the cohort's intracranial-complication definition presupposes, but whether this route produced any individual meningitis remains hypothesized until CSF cultures, temporal-bone imaging, and operative findings are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at single retrospective-cohort class only: the anchor is one 522-children tertiary-center cohort whose complication counts are small, the population is pediatric and hospitalized, the paper's primary axis is prior-antibiotic exposure rather than complication incidence per se, and adult data are absent.",
+        "evidenceGaps": "No adult cohort quantifies meningitis incidence in mastoiditis; the pediatric anchor counts complications without per-complication denominators in the abstract; intracranial complication can arise from the antecedent otitis media without frank mastoiditis; prior antibiotic exposure, pathogen, and host immune status co-determine spread; and pneumococcal vaccination has shifted incidence patterns.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "bacterial meningitis from other otogenic or hematogenous sources",
+          "viral and aseptic meningitis (the published meningitis window's infectious set)",
+          "subdural empyema and epidural abscess as distinct collections",
+          "tuberculous and fungal meningitis in immunocompromised hosts",
+          "meningitis from sinusitis or neurosurgical sources"
+        ]
+      },
+      "evidenceGaps": [
+        "No adult cohort quantifies meningitis incidence in mastoiditis; the pediatric anchor counts complications without per-complication denominators in the abstract; intracranial complication can arise from the antecedent otitis media without frank mastoiditis; prior antibiotic exposure, pathogen, and host immune status co-determine spread; and pneumococcal vaccination has shifted incidence patterns."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY on the otogenic-intracranial-spread precedent with the cohort-definition limit carried openly: the 522-children acute-mastoiditis retrospective cohort defined complicated disease as subperiosteal abscess or intracranial complications (epidural abscess, sigmoid sinus thrombosis, brain abscess, meningitis), directly documenting meningitis among the intracranial complications of acute mastoiditis (PMID 42223618); because the edge rests on one pediatric hospitalized cohort whose primary axis is prior-antibiotic exposure with small per-complication counts and no adult data, the conservative standard keeps the edge at association only and routes individual claims through dated CSF and temporal-bone imaging review with competing-source exclusion. Same-chain context recorded: the chronic-otitis-media temporal-lobe-abscess case with concurrent meningitis (PMID 40776681) and the CSOM complication-pattern series where meningitis led the intracranial complications (PMID 42282302) document the otogenic chain but are otitis-media-scoped, so they are not recycled onto this mastoiditis-scoped edge (ME-29 and intermediate-node rule).",
+      "sourceReferences": [
+        {
+          "citation": "Sofer N, Hadar A, Choucroun G, et al. Incidence of mastoiditis complications in relation to prior community-based antibiotic treatment. European archives of oto-rhino-laryngology : official journal of the European Federation of Oto-Rhino-Laryngological Societies (EUFOS) : affiliated with the German Society for Oto-Rhino-Laryngology - Head and Neck Surgery. 2026 Sep;283(9):5709-5719. doi: 10.1007/s00405-026-10349-y. PMID 42223618.",
+          "note": "Retrospective cohort of 522 children hospitalized with acute mastoiditis (2015-2025): complicated disease defined as subperiosteal abscess or intracranial complications (epidural abscess, sigmoid sinus thrombosis, brain abscess, meningitis); supports the bounded intracranial-complication proposition only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42223618/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 42223618; methods and results (complicated acute mastoiditis definition and complication incidence)"
+        }
+      ]
+    },
+    {
+      "conditionId": "brain-abscess",
+      "rank": 2,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Mastoiditis documents brain abscess at case plus cohort level: the case of bilateral mastoiditis with a right temporal-lobe brain abscess presenting as acute behavioral change documents otogenic intracranial abscess requiring craniotomy evacuation and mastoidectomy (PMID 42542645), the coalescent-mastoiditis case documents tegmen tympani erosion with a temporal-lobe abscess and Wernicke's aphasia arising after inadequately treated ear infection (PMID 41527656), and the acute-mastoiditis cohort enumerates brain abscess among the intracranial complications of the disease (PMID 42223618); the direct-extension relationship is recorded as documented only.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: the located material is two individual cases and one pediatric complication cohort where the antecedent ear infection, pathogen, diabetes control, and host factors co-determine abscess formation, so whether any individual brain abscess arose from mastoid extension requires individual imaging, operative, and microbiologic review."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "INFECTIOUS_SPREAD",
+        "primaryVector": "Coalescent mastoid infection erodes the tegmen tympani and petrous apex so bacteria seed the temporal lobe parenchyma, abscess cavities form, and focal neurologic and behavioral deficits result, the bony-erosion route directly documented by the coalescent-mastoiditis case's tegmen erosion with temporal-lobe abscess and the mastoiditis case's combined mastoidectomy and abscess evacuation, but whether this route produced any individual abscess remains hypothesized until MRI with contrast and operative findings are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at case plus single-cohort class only: two individual case reports (one in uncontrolled diabetes after otitis externa, one presenting behaviorally) and one pediatric cohort enumerating brain abscess among complications without per-complication denominators in the abstract; modern antibiotic practice makes the complication rare so incidence data are thin.",
+        "evidenceGaps": "No cohort quantifies brain-abscess incidence in mastoiditis in the antibiotic era; both case anchors have major host modifiers (longstanding uncontrolled diabetes with HbA1c 14 percent; delayed presentation); otitis media and otitis externa can extend intracranially without frank mastoiditis; and immunocompromise, pathogen, and treatment timing co-determine outcomes.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "brain abscess from sinusitis, hematogenous seeding, or neurosurgical sources",
+          "epidural and subdural empyema as distinct collections (the subdural-empyema material in the meningitis literature)",
+          "otitic hydrocephalus and lateral-sinus thrombosis (distinct intracranial complications)",
+          "primary or metastatic brain neoplasm mimicking abscess",
+          "tuberculous and fungal abscess in immunocompromised hosts"
+        ]
+      },
+      "evidenceGaps": [
+        "No cohort quantifies brain-abscess incidence in mastoiditis in the antibiotic era; both case anchors have major host modifiers (longstanding uncontrolled diabetes with HbA1c 14 percent; delayed presentation); otitis media and otitis externa can extend intracranially without frank mastoiditis; and immunocompromise, pathogen, and treatment timing co-determine outcomes."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY on the otogenic-abscess precedent with the case-class limit carried openly: the bilateral-mastoiditis case documents a right temporal-lobe brain abscess with midline shift presenting as behavioral change, treated with abscess evacuation, mastoidectomy, and tympanostomy (PMID 42542645), the coalescent-mastoiditis case documents tegmen tympani erosion and a 9 x 5 x 7 mm temporal-lobe abscess after inadequately treated otitis externa in uncontrolled diabetes (PMID 41527656), and the 522-children acute-mastoiditis cohort enumerates brain abscess among its intracranial complications (PMID 42223618); because the edge rests on two host-modified cases and one complication enumeration without denominators, the conservative standard keeps the edge at association only and routes individual claims through dated contrast MRI with operative and microbiologic correlation and sinus, hematogenous, and neoplastic exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Yahya T, Barbee EC, Kittaneh A. Complications of Otitis Media: Mastoiditis and an Intracranial Abscess Presenting as Behavioral Changes. Cureus. 2026 Jul;18(7):e111924. doi: 10.7759/cureus.111924. PMID 42542645.",
+          "note": "Cureus case report: 43-year-old woman with bilateral mastoiditis and right temporal-lobe brain abscess with midline shift presenting as acute behavioral change; treated with craniotomy abscess evacuation and mastoidectomy; supports the bounded otogenic-abscess proposition only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42542645/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 42542645; case presentation (mastoiditis with intracranial abscess)"
+        },
+        {
+          "citation": "Sekar S, Murali M, Krishnan Seethapathy D, et al. From the Ear to the Brain: Otitis Externa Complicated by Coalescent Mastoiditis Leading to Temporal Lobe Abscess and Wernicke's Aphasia. Cureus. 2025 Dec;17(12):e99057. doi: 10.7759/cureus.99057. PMID 41527656.",
+          "note": "Cureus case report: 59-year-old woman with uncontrolled diabetes developing coalescent mastoiditis with tegmen tympani erosion and temporal-lobe abscess with Wernicke's aphasia after inadequately treated otitis externa; supports the bounded bony-erosion extension proposition only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41527656/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 41527656; case presentation (coalescent mastoiditis with temporal-lobe abscess)"
+        },
+        {
+          "citation": "Sofer N, Hadar A, Choucroun G, et al. Incidence of mastoiditis complications in relation to prior community-based antibiotic treatment. European archives of oto-rhino-laryngology : official journal of the European Federation of Oto-Rhino-Laryngological Societies (EUFOS) : affiliated with the German Society for Oto-Rhino-Laryngology - Head and Neck Surgery. 2026 Sep;283(9):5709-5719. doi: 10.1007/s00405-026-10349-y. PMID 42223618.",
+          "note": "Retrospective cohort of 522 children with acute mastoiditis: brain abscess enumerated among the intracranial complications of complicated disease; supports the bounded complication-pattern proposition only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42223618/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 42223618; results (intracranial complications of acute mastoiditis)"
+        }
+      ]
+    },
+    {
+      "conditionId": "labyrinthitis",
+      "rank": 3,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Mastoiditis documents labyrinthitis among its complicated courses at specialty-review level: the interdisciplinary acute and chronic mastoiditis review names labyrinthitis among the complicated courses requiring coordinated management alongside abscess formation, facial nerve palsy, and Gradenigo syndrome (PMID 42546716), and the acute-otitis-media complications review lists labyrinthitis among the intratemporal complications of the same suppurative chain in which clinically manifest mastoiditis appears as subperiosteal abscess (PMID 42377467); the relationship is recorded as documented local-extension complication only.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: the located material is narrative and specialty review class where the antecedent otitis media, cholesteatoma, pathogen, and pre-existing inner-ear status co-determine labyrinthine involvement, so whether any individual labyrinthitis arose from mastoid extension rather than from the middle-ear process itself requires individual imaging, audiologic, and operative review."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "INFECTIOUS_SPREAD",
+        "primaryVector": "Suppurative infection extends from the mastoid antrum and air cells through the lateral semicircular canal and bony labyrinthine fistula so the inner ear becomes inflamed, vertigo and sensorineural hearing loss result, and labyrinthitis follows, the local-extension route the mastoiditis review presupposes in naming labyrinthitis a complicated course, but whether this route produced any individual labyrinthitis remains hypothesized until temporal-bone imaging with fistula testing and audiometry are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at narrative specialty-review class only: both anchors are review articles (one German-language acute-otitis-media complications review, one German-language mastoiditis management review) without incidence denominators; the second review lists labyrinthitis among several complicated courses rather than quantifying it; and no located cohort measures labyrinthitis incidence in mastoiditis.",
+        "evidenceGaps": "No cohort quantifies labyrinthitis incidence in mastoiditis; both anchors are German-language review articles; labyrinthitis arises equally from the antecedent middle-ear disease and cholesteatoma without frank mastoiditis; the suppurative chain is shared with the otitis-media identity (intermediate-node caution); and antibiotics, mastoidectomy, and fistula repair all alter the course.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "labyrinthitis from acute otitis media without mastoiditis (the published labyrinthitis window's own scope)",
+          "cholesteatoma-related labyrinthine fistula",
+          "viral and autoimmune inner-ear disease",
+          "benign paroxysmal positional vertigo and Meniere disease (separate vestibular presentations)",
+          "ototoxic sensorineural loss"
+        ]
+      },
+      "evidenceGaps": [
+        "No cohort quantifies labyrinthitis incidence in mastoiditis; both anchors are German-language review articles; labyrinthitis arises equally from the antecedent middle-ear disease and cholesteatoma without frank mastoiditis; the suppurative chain is shared with the otitis-media identity (intermediate-node caution); and antibiotics, mastoidectomy, and fistula repair all alter the course."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY on the local-extension precedent with the review-class and shared-chain limits carried openly: the interdisciplinary acute and chronic mastoiditis review explicitly names labyrinthitis among the complicated courses of mastoiditis (PMID 42546716), and the acute-otitis-media complications review lists labyrinthitis among the intratemporal complications of the same suppurative chain in which mastoiditis manifests (PMID 42377467); because both anchors are narrative German-language reviews without denominators and the suppurative chain is shared with the antecedent otitis-media process, the conservative standard keeps the edge at association only, records the second review as same-chain context rather than mastoiditis-isolated incidence (intermediate-node caution), and routes individual claims through dated temporal-bone imaging with fistula testing and audiometric correlation.",
+      "sourceReferences": [
+        {
+          "citation": "Lailach S, Neudert M, Zahnert T. [Interdisciplinary Management of Acute and Chronic Mastoiditis]. Laryngo- rhino- otologie. 2026 Aug;105(8):516-532. doi: 10.1055/a-2623-3015. PMID 42546716.",
+          "note": "German-language interdisciplinary review of acute and chronic mastoiditis: names labyrinthitis among complicated courses alongside abscess formation, facial nerve palsy, Gradenigo syndrome, and intracranial complications; supports the bounded complication-listing proposition only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42546716/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 42546716; review discussion (complicated courses of mastoiditis)"
+        },
+        {
+          "citation": "Schmutzler L, Santer M, Dejaco D, et al. [Complications of acute otitis media]. HNO. 2026 Aug;74(8):554-562. doi: 10.1007/s00106-026-01788-4. PMID 42377467.",
+          "note": "German-language review of acute otitis media complications: lists labyrinthitis among intratemporal complications (with facial palsy, intratemporal abscess, sinus thrombosis, meningitis) in the chain where clinically manifest mastoiditis appears; same-chain context only, not mastoiditis-isolated incidence.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42377467/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 42377467; review summary (intratemporal and intracranial complications of AOM)"
+        }
+      ]
+    }
+  ]
 }

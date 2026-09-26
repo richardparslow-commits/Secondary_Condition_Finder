@@ -9829,6 +9829,422 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 **Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
 
+### `malocclusion` → `sleep-apnea` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Malocclusion documents pediatric obstructive sleep apnea risk at diagnostic-study level: the home-sleep-apnea-test study of 100 orthodontic-referred children aged 6 to 12 found 61 percent screened with mild and 7 percent with moderate POSA likelihood, with apnea-hypopnea index positively correlated with maxillary arch constriction, overjet, increased ANB angle, and mandibular crowding and a four-parameter model reaching AUC 0.72 and 0.91 for POSA and moderate-POSA risk (PMID 42712351), and the 763-child polysomnography cohort found Angle class II, class III, and high-angle skeletal patterns each carried significantly higher obstructive apnea-hypopnea index than class I and low-angle comparators after covariate adjustment (PMID 42270302); the association is recorded as documented risk elevation only.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: the located material is pediatric orthodontic-population screening where obesity, tonsillar and adenoid hypertrophy, nasal obstruction, and oral-breathing preference co-vary with skeletal and dental relationships, so whether any individual apnea arose from the occlusal or skeletal pattern requires individual polysomnography, cephalometric, and airway review.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 272.1 — Marincak Vrankova Z, Vranka M, Bohm J, et al. Risk of pediatric obstructive sleep apnea in preadolescent children with orthodontic anomalies: a diagnostic study. Frontiers in oral health. 2026;7:1868634. doi: 10.3389/froh.2026.1868634. PMID 42712351.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42712351/
+- Source checked on: 2026-09-26
+- Locator: PMID 42712351; results (AHI correlations and regression AUC for POSA risk)
+- Note under review: Diagnostic study of 100 orthodontic-referred children aged 6-12: 61% mild and 7% moderate POSA likelihood on HSAT screening; AHI correlated with maxillary arch constriction, overjet, ANB angle, and mandibular crowding; four-parameter model AUC 0.72/0.91; supports the bounded pediatric association only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 272.2 — He ZZ, Lyu CX, Yang XP, et al. [Polysomnographic and clinical characteristics analysis of children with different types of malocclusion]. Zhonghua er bi yan hou tou jing wai ke za zhi = Chinese journal of otorhinolaryngology head and neck surgery. 2026 May 7;61(5):553-559. doi: 10.3760/cma.j.cn115330-20260206-00087. PMID 42270302.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42270302/
+- Source checked on: 2026-09-26
+- Locator: PMID 42270302; results (OAHI by skeletal pattern with multivariable linear regression)
+- Note under review: Retrospective PSG cohort of 763 school-age children with malocclusion: class II, class III, and high-angle skeletal patterns had significantly higher OAHI than class I and low-angle comparators after multivariable adjustment; Chinese-language article with English indexing; supports the bounded pediatric association only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 272.3 — Baker ER, Chanamolu M, Weatherford DM, et al. Effect of Malocclusion on Response to Hypoglossal Nerve Stimulation for Obstructive Sleep Apnea. Laryngoscope investigative otolaryngology. 2026 Jun;11(3):e70441. doi: 10.1002/lio2.70441. PMID 42146116.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42146116/
+- Source checked on: 2026-09-26
+- Locator: PMID 42146116; results (HNS surgical success rates by occlusion group)
+- Note under review: Retrospective cohort of 64 OSA patients with hypoglossal nerve stimulators: surgical success 33.3% in the malocclusion group versus 75.5% with normal occlusion; supports the treatment-response context only, not incident-apnea causation.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `malocclusion` → `dysphagia` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Malocclusion documents impaired oral ingestion including swallowing at systematic-review level: the PRISMA systematic review of 29 studies published 2007-2023 found 20 studies showing severity of malocclusion negatively impacts oral ingestion and concluded malocclusion and ingestion impairments are associated while explicitly declining to determine causality from the observational evidence (PMID 38265668), and the matched adolescent study of orthodontic-treatment-need versus control children found significantly lower maximum voluntary bite force and significantly more bites to swallow a standardized cracker on the Test of Masticating and Swallowing Solids (PMID 41123350); the association is recorded as documented ingestion-function relationship only.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: the located material is observational with the systematic review itself declining causal attribution, the swallowing measures in the adolescent study were mostly non-significant apart from bites-to-complete, and dental pain, tongue posture, anterior open bite, prior orthodontic therapy, and neurologic swallowing disorders all require individual exclusion before any dysphagia attribution.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 273.1 — El Osta N, Chambon P, Dol G, et al. Does malocclusion affect ingestion: a systematic review. Clinical oral investigations. 2024 Jan 24;28(1):111. doi: 10.1007/s00784-024-05508-6. PMID 38265668.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/38265668/
+- Source checked on: 2026-09-26
+- Locator: PMID 38265668; systematic review results and conclusion (ingestion-function association, causality not determinable)
+- Note under review: PRISMA systematic review of 29 studies (2007-2023): 20 studies found malocclusion severity negatively impacts oral ingestion; conclusion names chewing, biting, and swallowing disorders while stating causality cannot be determined; supports the bounded ingestion-function association only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 273.2 — Aldausari R, Kumar A, Suzuki A, et al. Assessment of Orofacial Muscle Strength, Masticatory and Swallowing Function in Children Indicated for Orthodontic Treatment-A Preliminary Investigation. Journal of oral rehabilitation. 2026 Feb;53(2):348-356. doi: 10.1111/joor.70091. PMID 41123350.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/41123350/
+- Source checked on: 2026-09-26
+- Locator: PMID 41123350; results (MVBF and TOMASS measures by group)
+- Note under review: Matched study of 62 adolescents divided by orthodontic treatment need: lower maximum voluntary bite force (p = 0.009) and more bites to eat a standardized cracker (p = 0.003) in the treatment-need group; chewing cycles, swallows, and duration not significantly different; supports the bounded oral-phase association only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `malunion-nonunion-of-fractures` → `post-traumatic-osteoarthritis` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Malunion of fractures documents secondary osteoarthritis at case plus specialty-review level: the geriatric case of severe knee osteoarthritis secondary to a longstanding tibial malunion healed at 57.2-degree procurvatum and 30.9-degree valgus after failed fixation states that persistent tibial malunion introduces varus or valgus forces predisposing to knee compartment overload and promoting osteoarthritis (PMID 42211638), the proximal-tibia malunion management review directs that the mechanical axis be restored as soon as safe to prevent or slow progression of post-traumatic osteoarthritis (PMID 41438797), and the tibial plateau malunion case presenting two years after trauma with valgus deformity and articular depression underwent corrective osteotomy explicitly to prevent progression of osteoarthritis (PMID 41837061); the relationship is recorded as documented biomechanical sequel only.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: the located material is one case and two management-level reviews where joint-surface incongruity, deformity magnitude and plane, limb alignment, activity level, and fixation history all require individual radiographic review before any osteoarthritis attribution to the malunion.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 274.1 — Burton E, Haller W 3rd. Lifelong Sequelae of a Childhood Tibial Fracture: Severe Procurvatum Tibial Malunion Leading to Secondary Knee Osteoarthritis. Cureus. 2026 Apr;18(4):e107833. doi: 10.7759/cureus.107833. PMID 42211638.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42211638/
+- Source checked on: 2026-09-26
+- Locator: PMID 42211638; case presentation and discussion (malalignment mechanics and secondary knee osteoarthritis)
+- Note under review: Case report of a man in his early 70s with severe knee osteoarthritis secondary to a childhood tibial fracture malunion healed at 57.2-degree procurvatum and 30.9-degree valgus; states persistent malunion introduces varus or valgus forces promoting osteoarthritis; supports the bounded biomechanical sequel only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 274.2 — Kasha S, Yalamanchili RK, Rohit G, et al. Intra-articular and extra-articular malunion of proximal tibia: Assessment and management. Journal of clinical orthopaedics and trauma. 2026 Jan;72:103279. doi: 10.1016/j.jcot.2025.103279. PMID 41438797.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/41438797/
+- Source checked on: 2026-09-26
+- Locator: PMID 41438797; review discussion (mechanical axis restoration and PTOA prevention)
+- Note under review: Specialty review of intra-articular and extra-articular proximal tibial malunion management: directs mechanical-axis restoration as soon as safe to prevent or slow progression of post-traumatic osteoarthritis; supports the bounded management-premise proposition only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 274.3 — Mulyana RM, Budhy F, Saputra OZ. Reverse dome osteotomy for valgus knee from tibial plateau malunion in a young adult: a case report. International journal of surgery case reports. 2026 Mar;138(3):575-579. doi: 10.1097/RC9.0000000000000179. PMID 41837061.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/41837061/
+- Source checked on: 2026-09-26
+- Locator: PMID 41837061; case presentation and conclusion (malunion correction to prevent osteoarthritis progression)
+- Note under review: Case report of a 32-year-old woman with valgus knee from tibial plateau malunion two years after trauma: corrective reverse dome osteotomy performed to restore alignment and prevent progression of osteoarthritis; supports the bounded early-intervention premise only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `marantic-endocarditis` → `cerebrovascular-accident-stroke-residuals` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Marantic (nonbacterial thrombotic) endocarditis documents ischemic stroke at prospective-observational plus case level: the exploratory prospective cohort of cancer patients with acute ischemic stroke or TIA found NBTE in 6 of 16 (37.5 percent) with all NBTE patients showing multi-territory embolic infarctions and significantly more prior ischemic stroke than non-NBTE comparators (PMID 42457766), the ovarian-carcinoma case documents embolic ischemic stroke with multiple systemic infarctions from aortic valve NBTE vegetations recurring on the mitral valve despite anticoagulation (PMID 41005859), and the pancreatic-adenocarcinoma case presented multiple embolic cerebrovascular accidents from marantic endocarditis as the initial manifestation of previously undiagnosed malignancy (PMID 41869247); the embolic relationship is recorded as documented only.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: the located material is one small prospective cohort in a cancer-selected population and individual case reports, where malignancy-associated hypercoagulability, antiphospholipid antibodies, atrial fibrillation, and atherosclerotic disease all compete as stroke mechanisms and require individual workup before attributing any stroke to valvular vegetations.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 275.1 — Frydas A, Akay EM, Ran H, et al. Acute ischemic stroke, active malignancy and non-bacterial thrombotic endocarditis: an exploratory prospective observational study. Scientific reports. 2026 Jul 15;16(1). doi: 10.1038/s41598-026-61415-8. PMID 42457766.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42457766/
+- Source checked on: 2026-09-26
+- Locator: PMID 42457766; results (NBTE prevalence, embolic patterns, prior-stroke comparison)
+- Note under review: Exploratory prospective observational study at a tertiary center: among 3491 screened, 16 cancer patients with AIS/TIA underwent echocardiography; NBTE in 6 (37.5%), all with multi-territory embolic infarctions; supports the bounded cancer-associated embolic pattern only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 275.2 — Nakamura K, Yamashita Y, Koyama S, et al. Recurrent Cancer-Associated Nonbacterial Endocarditis Presenting With Systemic Embolic Complications. JACC. Case reports. 2025 Sep 24;30(29):105161. doi: 10.1016/j.jaccas.2025.105161. PMID 41005859.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/41005859/
+- Source checked on: 2026-09-26
+- Locator: PMID 41005859; case summary (systemic embolic complications of NBTE)
+- Note under review: JACC case report: 52-year-old woman with ovarian clear cell carcinoma, aortic valve NBTE vegetations, embolic ischemic stroke and multiple systemic infarctions, recurrent mitral vegetations and upper-limb arterial embolism despite anticoagulation; supports the bounded embolic proposition only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 275.3 — Harris M. Ischemic Stroke as the Initial Presentation of Advanced Pancreatic Adenocarcinoma: A Case of Marantic Endocarditis. Cureus. 2026 Feb;18(2):e103844. doi: 10.7759/cureus.103844. PMID 41869247.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/41869247/
+- Source checked on: 2026-09-26
+- Locator: PMID 41869247; case presentation (embolic CVAs from NBTE)
+- Note under review: Cureus case report: multiple embolic cerebrovascular accidents secondary to marantic endocarditis as the initial presentation of previously undiagnosed advanced pancreatic adenocarcinoma; supports the bounded embolic proposition only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `marantic-endocarditis` → `myocardial-infarction` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Marantic endocarditis documents embolic myocardial infarction at case plus literature-review level: the ulcerative-colitis case documents non-ST-elevation myocardial infarction from coronary embolism with cardiac MRI showing evolved right-coronary-territory infarct and surgical biopsy revealing thrombotic material on the aortic valve (PMID 39659453), the NBTE case of ventricular-fibrillation arrest from presumed coronary embolisation presents embolic myocardial infarction as an initial manifestation of the valvular disease (PMID 37914173), and the multi-valvular NBTE case with sequential pulmonary embolism, ST-elevation myocardial infarction, and stroke includes a literature review establishing nine prior antemortem-diagnosed myocardial infarction cases secondary to NBTE (PMID 36620810); the coronary-embolism relationship is recorded as documented rare complication only.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: the located material is case class with a nine-case literature summary where coronary atherosclerosis, coronary embolism from other sources, demand ischemia, and malignancy-associated thrombosis all compete as infarction mechanisms and require individual angiographic and pathologic review before attributing any myocardial infarction to valvular vegetations.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 276.1 — Ladera Santos D, Roldán Guerra Á, Dávila Flores V, et al. Embolic myocardial infarction secondary to marantic endocarditis in a patient with ulcerative colitis: case report. European heart journal. Case reports. 2024 Dec;8(12):ytae617. doi: 10.1093/ehjcr/ytae617. PMID 39659453.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/39659453/
+- Source checked on: 2026-09-26
+- Locator: PMID 39659453; case summary (embolic myocardial infarction secondary to marantic endocarditis)
+- Note under review: European Heart Journal case report: 16-year-old with ulcerative colitis and NSTEMI from coronary embolism; cardiac MRI showed evolved right-coronary-territory infarct; surgical biopsy of the aortic-valve mass revealed thrombotic material consistent with NBTE; supports the bounded embolic proposition only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 276.2 — Hansen AC, Piranavan P, Kundu A, et al. Embolic myocardial infarction with cardiac arrest as an initial manifestation of non-bacterial thrombotic endocarditis. BMJ case reports. 2023 Nov 1;16(11). doi: 10.1136/bcr-2023-257466. PMID 37914173.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/37914173/
+- Source checked on: 2026-09-26
+- Locator: PMID 37914173; case report summary (embolic MI with cardiac arrest in NBTE)
+- Note under review: BMJ Case Reports: ventricular fibrillation arrest from presumed coronary embolisation in non-bacterial thrombotic endocarditis; presents embolic myocardial infarction as an initial manifestation; supports the bounded embolic proposition only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 276.3 — Karameh M, Golomb M, Arad A, et al. Multi-Valvular Non-bacterial Thrombotic Endocarditis Causing Sequential Pulmonary Embolism, Myocardial Infarction, and Stroke: A Case Report and Literature Review. Cureus. 2022 Dec;14(12):e32261. doi: 10.7759/cureus.32261. PMID 36620810.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/36620810/
+- Source checked on: 2026-09-26
+- Locator: PMID 36620810; case report and literature review (nine antemortem MI cases in NBTE)
+- Note under review: Cureus case report and literature review: multi-valvular NBTE causing sequential pulmonary embolism, ST-elevation myocardial infarction, and stroke; literature search established nine antemortem-diagnosed myocardial infarction cases secondary to NBTE; supports the bounded rare-complication proposition only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `marantic-endocarditis` → `pulmonary-embolism` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Marantic endocarditis documents pulmonary embolism at case level: the multi-valvular nonbacterial thrombotic endocarditis case reports sequential pulmonary embolism, ST-elevation myocardial infarction, and stroke in a single patient, with pulmonary embolism documented among the embolic events but the embolic source within the heart versus the venous system unresolved in the located material (PMID 36620810); the relationship is recorded as documented single-case complication only.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: the located material is a single case in which deep-vein thrombosis, malignancy-associated thrombosis, and immobility all compete as pulmonary embolism sources, and distinguishing valvular-vegetation pulmonary embolism from venous thromboembolism requires individual echocardiographic and lower-extremity venous evaluation.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 277.1 — Karameh M, Golomb M, Arad A, et al. Multi-Valvular Non-bacterial Thrombotic Endocarditis Causing Sequential Pulmonary Embolism, Myocardial Infarction, and Stroke: A Case Report and Literature Review. Cureus. 2022 Dec;14(12):e32261. doi: 10.7759/cureus.32261. PMID 36620810.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/36620810/
+- Source checked on: 2026-09-26
+- Locator: PMID 36620810; case report (sequential PE, MI, and stroke in multi-valvular NBTE)
+- Note under review: Cureus case report and literature review: multi-valvular non-bacterial thrombotic endocarditis causing sequential pulmonary embolism, myocardial infarction, and stroke; pulmonary embolism is one of the three sequential embolic events; the valve side carrying vegetations is not specified in the abstract; supports the bounded single-case proposition only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `mastoiditis` → `meningitis` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Mastoiditis documents meningitis as an intracranial complication at retrospective-cohort level: the 522-children acute-mastoiditis cohort defined complicated disease as extracranial subperiosteal abscess or intracranial complications including epidural abscess, sigmoid sinus thrombosis, brain abscess, or meningitis, directly enumerating meningitis among the intracranial complications that arise in the course of acute mastoiditis (PMID 42223618); the relationship is recorded as documented complication of mastoiditis only.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: the located material is a retrospective cohort of hospitalized acute mastoiditis where the antecedent otitis media, prior antibiotic exposure, pathogen, and host factors all co-determine intracranial spread, so whether any individual meningitis arose from mastoid extension requires individual imaging, microbiologic, and temporal review.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 278.1 — Sofer N, Hadar A, Choucroun G, et al. Incidence of mastoiditis complications in relation to prior community-based antibiotic treatment. European archives of oto-rhino-laryngology : official journal of the European Federation of Oto-Rhino-Laryngological Societies (EUFOS) : affiliated with the German Society for Oto-Rhino-Laryngology - Head and Neck Surgery. 2026 Sep;283(9):5709-5719. doi: 10.1007/s00405-026-10349-y. PMID 42223618.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42223618/
+- Source checked on: 2026-09-26
+- Locator: PMID 42223618; methods and results (complicated acute mastoiditis definition and complication incidence)
+- Note under review: Retrospective cohort of 522 children hospitalized with acute mastoiditis (2015-2025): complicated disease defined as subperiosteal abscess or intracranial complications (epidural abscess, sigmoid sinus thrombosis, brain abscess, meningitis); supports the bounded intracranial-complication proposition only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `mastoiditis` → `brain-abscess` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Mastoiditis documents brain abscess at case plus cohort level: the case of bilateral mastoiditis with a right temporal-lobe brain abscess presenting as acute behavioral change documents otogenic intracranial abscess requiring craniotomy evacuation and mastoidectomy (PMID 42542645), the coalescent-mastoiditis case documents tegmen tympani erosion with a temporal-lobe abscess and Wernicke's aphasia arising after inadequately treated ear infection (PMID 41527656), and the acute-mastoiditis cohort enumerates brain abscess among the intracranial complications of the disease (PMID 42223618); the direct-extension relationship is recorded as documented only.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: the located material is two individual cases and one pediatric complication cohort where the antecedent ear infection, pathogen, diabetes control, and host factors co-determine abscess formation, so whether any individual brain abscess arose from mastoid extension requires individual imaging, operative, and microbiologic review.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 279.1 — Yahya T, Barbee EC, Kittaneh A. Complications of Otitis Media: Mastoiditis and an Intracranial Abscess Presenting as Behavioral Changes. Cureus. 2026 Jul;18(7):e111924. doi: 10.7759/cureus.111924. PMID 42542645.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42542645/
+- Source checked on: 2026-09-26
+- Locator: PMID 42542645; case presentation (mastoiditis with intracranial abscess)
+- Note under review: Cureus case report: 43-year-old woman with bilateral mastoiditis and right temporal-lobe brain abscess with midline shift presenting as acute behavioral change; treated with craniotomy abscess evacuation and mastoidectomy; supports the bounded otogenic-abscess proposition only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 279.2 — Sekar S, Murali M, Krishnan Seethapathy D, et al. From the Ear to the Brain: Otitis Externa Complicated by Coalescent Mastoiditis Leading to Temporal Lobe Abscess and Wernicke's Aphasia. Cureus. 2025 Dec;17(12):e99057. doi: 10.7759/cureus.99057. PMID 41527656.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/41527656/
+- Source checked on: 2026-09-26
+- Locator: PMID 41527656; case presentation (coalescent mastoiditis with temporal-lobe abscess)
+- Note under review: Cureus case report: 59-year-old woman with uncontrolled diabetes developing coalescent mastoiditis with tegmen tympani erosion and temporal-lobe abscess with Wernicke's aphasia after inadequately treated otitis externa; supports the bounded bony-erosion extension proposition only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 279.3 — Sofer N, Hadar A, Choucroun G, et al. Incidence of mastoiditis complications in relation to prior community-based antibiotic treatment. European archives of oto-rhino-laryngology : official journal of the European Federation of Oto-Rhino-Laryngological Societies (EUFOS) : affiliated with the German Society for Oto-Rhino-Laryngology - Head and Neck Surgery. 2026 Sep;283(9):5709-5719. doi: 10.1007/s00405-026-10349-y. PMID 42223618.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42223618/
+- Source checked on: 2026-09-26
+- Locator: PMID 42223618; results (intracranial complications of acute mastoiditis)
+- Note under review: Retrospective cohort of 522 children with acute mastoiditis: brain abscess enumerated among the intracranial complications of complicated disease; supports the bounded complication-pattern proposition only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `mastoiditis` → `labyrinthitis` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Mastoiditis documents labyrinthitis among its complicated courses at specialty-review level: the interdisciplinary acute and chronic mastoiditis review names labyrinthitis among the complicated courses requiring coordinated management alongside abscess formation, facial nerve palsy, and Gradenigo syndrome (PMID 42546716), and the acute-otitis-media complications review lists labyrinthitis among the intratemporal complications of the same suppurative chain in which clinically manifest mastoiditis appears as subperiosteal abscess (PMID 42377467); the relationship is recorded as documented local-extension complication only.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: the located material is narrative and specialty review class where the antecedent otitis media, cholesteatoma, pathogen, and pre-existing inner-ear status co-determine labyrinthine involvement, so whether any individual labyrinthitis arose from mastoid extension rather than from the middle-ear process itself requires individual imaging, audiologic, and operative review.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 280.1 — Lailach S, Neudert M, Zahnert T. [Interdisciplinary Management of Acute and Chronic Mastoiditis]. Laryngo- rhino- otologie. 2026 Aug;105(8):516-532. doi: 10.1055/a-2623-3015. PMID 42546716.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42546716/
+- Source checked on: 2026-09-26
+- Locator: PMID 42546716; review discussion (complicated courses of mastoiditis)
+- Note under review: German-language interdisciplinary review of acute and chronic mastoiditis: names labyrinthitis among complicated courses alongside abscess formation, facial nerve palsy, Gradenigo syndrome, and intracranial complications; supports the bounded complication-listing proposition only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 280.2 — Schmutzler L, Santer M, Dejaco D, et al. [Complications of acute otitis media]. HNO. 2026 Aug;74(8):554-562. doi: 10.1007/s00106-026-01788-4. PMID 42377467.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42377467/
+- Source checked on: 2026-09-26
+- Locator: PMID 42377467; review summary (intratemporal and intracranial complications of AOM)
+- Note under review: German-language review of acute otitis media complications: lists labyrinthitis among intratemporal complications (with facial palsy, intratemporal abscess, sinus thrombosis, meningitis) in the chain where clinically manifest mastoiditis appears; same-chain context only, not mastoiditis-isolated incidence.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `meatal-stenosis` → `hydronephrosis` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Meatal stenosis documents hydronephrosis at case plus cross-sectional level: the case of hydronephrosis caused by undiagnosed meatal stenosis in an 80-year-old man states the obstructive causal attribution directly (PMID 11149814), the pediatric case of urethral meatal stenosis in a girl causing severe hydronephrosis documents the same outflow-obstruction sequence (PMID 3773112), and the ultrasound study of 87 circumcised boys with severe meatal stenosis screened the upper and lower urinary tracts specifically for hydronephrosis, hydroureter, and bladder changes with the authors recommending long-term ultrasonographic follow-up to detect meatal stenosis before permanent renal damage (PMID 28537045); the obstructive relationship is recorded as documented only.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: the located material is two cases and one screening study in post-circumcision boys where stenosis severity, duration, bladder outlet adaptation, and coexisting urologic anomalies all require individual review before attributing any hydronephrosis to the meatal lesion.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 281.1 — Demirseren ME, Yenidunya MO. Hydronephrosis caused by undiagnosed meatal stenosis in an 80-year-old man. Plastic and reconstructive surgery. 1999 Dec;104(7):2337-8. doi: 10.1097/00006534-199912000-00086. PMID 11149814.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/11149814/
+- Source checked on: 2026-09-26
+- Locator: PMID 11149814; case title and presentation (hydronephrosis secondary to meatal stenosis)
+- Note under review: Case report (Plast Reconstr Surg letter-format): hydronephrosis caused by undiagnosed meatal stenosis in an 80-year-old man; direct obstructive causal attribution at case class; supports the bounded proposition only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 281.2 — Bueschen AJ, Royal SA. Urethral meatal stenosis in a girl causing severe hydronephrosis. The Journal of urology. 1986 Dec;136(6):1302-3. doi: 10.1016/s0022-5347(17)45322-5. PMID 3773112.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/3773112/
+- Source checked on: 2026-09-26
+- Locator: PMID 3773112; case title and presentation (severe hydronephrosis from meatal stenosis)
+- Note under review: Case report (J Urol): urethral meatal stenosis in a girl causing severe hydronephrosis; supports the bounded outflow-obstruction proposition only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 281.3 — Saeedi P, Ahmadnia H, Akhavan Rezayat A. Evaluation of the Effect of Meatal Stenosis on the Urinary Tract by using Ultrasonography. Urology journal. 2017 May 23;14(3):3071-3074. PMID 28537045.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/28537045/
+- Source checked on: 2026-09-26
+- Locator: PMID 28537045; methods and results (upper and lower urinary tract ultrasonography findings)
+- Note under review: Cross-sectional ultrasound study of 87 circumcised boys aged 4-8 with severe meatal stenosis: urinary-tract screening found narrow stream in about 54% and bladder-wall thickening in about 82%, with hydronephrosis and hydroureter among the evaluated upper-tract findings and a recommendation for surveillance to prevent permanent renal damage; supports the bounded screening proposition only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `meatal-stenosis` → `urinary-frequency-retention` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Meatal stenosis documents obstructive voiding dysfunction at prospective severity-grading level: the prospective study of 75 patients correlated a validated meatal stenosis severity grade with obstructive symptoms and uroflowmetry, finding odds ratios of 4 to 6.4 for parent-reported narrow stream, 6 for prolonged urination, and 10.08 to 15.12 for upward stream deviation by grade, with significantly lower maximum flow rate from 16.8 to 9.6 ml/s across grades (PMID 35491305), and the congenital meatal urethral stenosis case in a 6-year-old girl presented with voiding alterations (PMID 37722867); the obstructive voiding relationship is recorded as documented only.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: the located material documents obstructive stream symptoms and reduced flow rates where bladder outlet adaptation, functional voiding disorders, constipation, and neurologic bladder dysfunction all require individual urodynamic review, and the grading study found post-void residual did not differ significantly between severity grades, so retention was not directly demonstrated.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 282.1 — Mekayten M, Meir E, Yutkin V, et al. Is there a correlation between meatal stenosis severity, lower urinary tract symptoms and uroflowmetry?. Journal of pediatric urology. 2022 Jun;18(3):342.e1-342.e6. doi: 10.1016/j.jpurol.2022.03.021. PMID 35491305.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/35491305/
+- Source checked on: 2026-09-26
+- Locator: PMID 35491305; results (symptom odds ratios, uroflowmetry by severity grade, null PVR comparison)
+- Note under review: Prospective study of 75 patients: validated meatal stenosis severity grade correlated with obstructive symptoms (narrow stream OR 4-6.4; prolonged urination OR 6; upward deviation OR 10.08-15.12) and lower maximum flow (16.8 to 9.6 ml/s, p < 0.001); post-void residual not significantly different between grades; supports the bounded obstructive-symptom proposition only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 282.2 — Arredondo Montero J, Ayuso González L, Hernández Martín S, et al. Congenital Meatal Urethral Stenosis in a Female Patient: A Case Report. International journal of surgical pathology. 2024 Jun;32(4):817-820. doi: 10.1177/10668969231195074. PMID 37722867.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/37722867/
+- Source checked on: 2026-09-26
+- Locator: PMID 37722867; case presentation (voiding alterations from meatal stenosis)
+- Note under review: Case report (Int J Surg Pathol): congenital meatal urethral stenosis in a 6-year-old female patient presenting with voiding alterations; supports the bounded obstructive-voiding proposition only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `meatal-stenosis` → `cystitis` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Meatal stenosis documents recurrent urinary infection at case-series level: the surgical series framing stenosis of the external urethral opening as one of the causes of recurrent urinary infections in girls documents the stasis-to-infection sequence with operative relief (PMID 2485568), and the study of anatomic and functional urethral obstruction in girls with enuresis, recurrent urinary tract infections, and reflux documents the same obstructive-predisposition relationship (PMID 4039493); the relationship is recorded as documented predisposition only.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: the located material is late-1980s European pediatric series where voiding dysfunction, vesicoureteral reflux, hygiene, and toilet habits all co-determine urinary infection in girls, so whether any individual cystitis arose from the meatal lesion requires individual uroflowmetry, culture, and reflux evaluation.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 283.1 — Milanović D, Sremcević D, Perović S, et al. [Stenosis of the external urethral opening as one of the causes of recurrent urinary infections in girls--surgical treatment]. Acta chirurgica Iugoslavica. 1989;36(2):229-37. PMID 2485568.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/2485568/
+- Source checked on: 2026-09-26
+- Locator: PMID 2485568; series framing and results (recurrent urinary infection with meatal stenosis in girls)
+- Note under review: Surgical series (Acta Chir Iugosl, Serbian-language article): stenosis of the external urethral opening framed as one of the causes of recurrent urinary infections in girls, with surgical treatment; supports the bounded stasis-predisposition proposition only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 283.2 — Brüggemann VC, Ringert RH, Hartung R, et al. [Value of anatomic and functional obstruction of the urethra of girls in enuresis, recurrent urinary tract infections and reflux]. Der Urologe. Ausg. A. 1985 Mar;24(2):75-9. PMID 4039493.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/4039493/
+- Source checked on: 2026-09-26
+- Locator: PMID 4039493; study results (urethral obstruction with recurrent urinary infection)
+- Note under review: Study (Urologe A, German with English abstract): anatomic and functional urethral obstruction of girls in enuresis, recurrent urinary tract infections, and reflux; supports the bounded obstructive-predisposition proposition only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
 ## Implementation mechanics after decisions
 
 - Mapping edits and registry edits must land in lockstep (the registry audit's canonical-JSON hashes and live-use sets will fail otherwise).

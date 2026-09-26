@@ -160,11 +160,11 @@ describe("Mapping Expansion Batch ME-6 Qualified-Human Citation Verification", (
       hardFindingCount: number;
     };
     expect(result).toMatchObject({
-      references: 1073,
+      references: 1101,
       verified: 383,
       retiredVerified: 6,
       verifiedProvenance: 389,
-      unverified: 690,
+      unverified: 718,
       reviewFindingCount: 0,
       hardFindingCount: 0,
     });
@@ -184,13 +184,13 @@ describe("Mapping Expansion Batch ME-6 Qualified-Human Citation Verification", (
     };
     expect(result).toMatchObject({
       status: "PASS",
-      relationships: 634,
+      relationships: 646,
       verifiedLiveSourceUses: 383,
-      pendingVerificationLiveSourceUses: 690,
+      pendingVerificationLiveSourceUses: 718,
       activeSourceEntities: 346,
-      pendingVerificationSourceEntities: 627,
+      pendingVerificationSourceEntities: 653,
       activeClinicalSourceEntities: 345,
-      pendingClinicalSourceEntities: 627,
+      pendingClinicalSourceEntities: 653,
     });
   });
 });

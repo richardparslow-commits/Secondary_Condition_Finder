@@ -2,8 +2,132 @@
   "id": "malocclusion",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review oral, dental, maxillofacial, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 59 (2026-09-26): two ASSOCIATION_ONLY draft mappings pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: both edges assert association only (etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true, mechanismCategory MECHANICAL_OR_COMPRESSIVE). The evidence base is pediatric orthodontic-population screening class for the sleep-apnea edge and systematic-review plus small matched-study class for the dysphagia edge, so individual claims require dated polysomnography or videofluoroscopic swallow study with competing-cause exclusion, and review by a qualified medical professional.",
+    "Pathway and duplicate-scope screens: no -> tmj-disorder edge authored (WITHHELD - the catalog carries two overlapping TMJ identities, tmj-disorder in dental-and-oral and tmj-dysfunction in dental-oral-expansion-wave-7 with alias 'temporomandibular disorder', so target identity is ambiguous and a malocclusion-to-TMJ edge would land in a duplicated scope; reopen only after the TMJ identity duplication is resolved); no -> temporomandibular or bruxism edge (same target ambiguity plus bruxism is itself a co-determined parafunction); no -> loss-of-teeth edge (zero located condition-specific incidence of tooth loss attributable to malocclusion alone; the periodontal and caries literatures carry hygiene and sugar confounding); no -> depressive-disorder or anxiety-disorder edge (the psychosocial-aesthetics literature is orthodontic-outcome class without identity-level psychiatric quantification); no evidence recycled from the macroglossia, ankyloglossia, or deviated-nasal-septum windows (ME-29 scope rule); no -> airway-obstruction edge (no catalog identity)."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 59 (2026-09-26): two bounded association edges authored - malocclusion to sleep-apnea (rank 1) and to dysphagia (rank 2) - classified ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, and hypothesizedOnly:true. The sleep-apnea proposition rests on the 100-child HSAT diagnostic study (PMID 42712351) and the 763-child polysomnography cohort (PMID 42270302), with the HNS treatment-response cohort (PMID 42146116) recorded as direction-consistent context. The dysphagia proposition rests on the 29-study ingestion systematic review (PMID 38265668) and the 62-adolescent masticatory and swallowing-function study (PMID 41123350).",
+    "Counter-evidence and caveat screens recorded 2026-09-26: (i) evidence class - pediatric, orthodontic-referred samples for both edges, with the systematic review explicitly declining causal attribution; (ii) effect-size limits - per-feature correlations 0.2-0.47 for the airway edge and partial swallowing findings (bites-to-complete only) for the dysphagia edge; (iii) confound record - obesity, tonsillar and adenoid hypertrophy, nasal obstruction, and oral-breathing preference co-determine the pediatric airway; dental pain, open bite, and neurologic swallowing disorders confound ingestion; (iv) target-identity duplication - the catalog's two overlapping TMJ identities blocked a malocclusion-to-TMJ edge pending identity resolution; (v) sibling-window discipline - macroglossia, ankyloglossia, deviated-nasal-septum, and esophageal-stricture windows keep their own evidence and none is recycled (ME-29)."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "sleep-apnea",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Malocclusion documents pediatric obstructive sleep apnea risk at diagnostic-study level: the home-sleep-apnea-test study of 100 orthodontic-referred children aged 6 to 12 found 61 percent screened with mild and 7 percent with moderate POSA likelihood, with apnea-hypopnea index positively correlated with maxillary arch constriction, overjet, increased ANB angle, and mandibular crowding and a four-parameter model reaching AUC 0.72 and 0.91 for POSA and moderate-POSA risk (PMID 42712351), and the 763-child polysomnography cohort found Angle class II, class III, and high-angle skeletal patterns each carried significantly higher obstructive apnea-hypopnea index than class I and low-angle comparators after covariate adjustment (PMID 42270302); the association is recorded as documented risk elevation only.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: the located material is pediatric orthodontic-population screening where obesity, tonsillar and adenoid hypertrophy, nasal obstruction, and oral-breathing preference co-vary with skeletal and dental relationships, so whether any individual apnea arose from the occlusal or skeletal pattern requires individual polysomnography, cephalometric, and airway review."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MECHANICAL_OR_COMPRESSIVE",
+        "primaryVector": "Constricted maxillary arch, increased ANB angle, and mandibular crowding reposition the tongue and soft palate so the retroglossal and velopharyngeal airway narrows, pharyngeal collapsibility rises during sleep, and obstructive apneas result, the airway-geometry route consistent with the regression and polysomnographic findings and with the treatment-response cohort where class II and III malocclusion predicted diminished hypoglossal-nerve-stimulation benefit (PMID 42146116), but whether this route produced any individual apnea remains hypothesized until sleep and imaging records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at pediatric diagnostic-study and retrospective cohort class only: both anchors screen orthodontic-referred children using HSAT or PSG with modest effect sizes (correlation coefficients 0.2-0.47), the populations are treatment-referred rather than community samples, adult data are absent, and the treatment-response cohort shows malocclusion modifies therapy outcome rather than proving incident apnea.",
+        "evidenceGaps": "No adult community cohort quantifies OSA incidence by malocclusion class; obesity, tonsillar and adenoid hypertrophy, nasal obstruction, and oral-breathing preference are co-determinants in every located study; effect sizes per anatomic feature are small and multifactorial; and growth, orthodontic treatment, and maxillomandibular advancement all alter the airway course.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "obesity-related pharyngeal collapse (the published macroglossia window's confound set)",
+          "tonsillar or adenoid hypertrophy",
+          "craniofacial micrognathia and syndromic craniofacial patterns (the published arnold-chiari and dwarfism windows)",
+          "nasal obstruction from deviated septum or chronic rhinitis (the published sibling windows)",
+          "central sleep apnea"
+        ]
+      },
+      "evidenceGaps": [
+        "No adult community cohort quantifies OSA incidence by malocclusion class; obesity, tonsillar and adenoid hypertrophy, nasal obstruction, and oral-breathing preference are co-determinants in every located study; effect sizes per anatomic feature are small and multifactorial; and growth, orthodontic treatment, and maxillomandibular advancement all alter the airway course."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY on the craniofacial-airway precedent mirroring the macroglossia and deviated-nasal-septum sleep-apnea windows with malocclusion-specific evidence only: the HSAT diagnostic study of 100 orthodontic-referred children found AHI correlated with maxillary arch constriction, overjet, increased ANB angle, mandibular crowding, and oral breathing (coefficients 0.2-0.47) with the four-parameter model identifying POSA risk at AUC 0.72 and moderate POSA at 0.91 (PMID 42712351), and the 763-child PSG cohort found class II, class III, and high-angle patterns independently associated with higher OAHI (PMID 42270302), with the HNS treatment-response cohort recording reduced therapy success in malocclusion (33.3 versus 75.5 percent) as direction-consistent context (PMID 42146116); because the evidence is pediatric, treatment-referred, and multifactorial with small per-feature effect sizes, the conservative standard keeps the edge at association only and routes individual claims through dated polysomnography with obesity, tonsillar, and nasal exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Marincak Vrankova Z, Vranka M, Bohm J, et al. Risk of pediatric obstructive sleep apnea in preadolescent children with orthodontic anomalies: a diagnostic study. Frontiers in oral health. 2026;7:1868634. doi: 10.3389/froh.2026.1868634. PMID 42712351.",
+          "note": "Diagnostic study of 100 orthodontic-referred children aged 6-12: 61% mild and 7% moderate POSA likelihood on HSAT screening; AHI correlated with maxillary arch constriction, overjet, ANB angle, and mandibular crowding; four-parameter model AUC 0.72/0.91; supports the bounded pediatric association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42712351/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 42712351; results (AHI correlations and regression AUC for POSA risk)"
+        },
+        {
+          "citation": "He ZZ, Lyu CX, Yang XP, et al. [Polysomnographic and clinical characteristics analysis of children with different types of malocclusion]. Zhonghua er bi yan hou tou jing wai ke za zhi = Chinese journal of otorhinolaryngology head and neck surgery. 2026 May 7;61(5):553-559. doi: 10.3760/cma.j.cn115330-20260206-00087. PMID 42270302.",
+          "note": "Retrospective PSG cohort of 763 school-age children with malocclusion: class II, class III, and high-angle skeletal patterns had significantly higher OAHI than class I and low-angle comparators after multivariable adjustment; Chinese-language article with English indexing; supports the bounded pediatric association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42270302/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 42270302; results (OAHI by skeletal pattern with multivariable linear regression)"
+        },
+        {
+          "citation": "Baker ER, Chanamolu M, Weatherford DM, et al. Effect of Malocclusion on Response to Hypoglossal Nerve Stimulation for Obstructive Sleep Apnea. Laryngoscope investigative otolaryngology. 2026 Jun;11(3):e70441. doi: 10.1002/lio2.70441. PMID 42146116.",
+          "note": "Retrospective cohort of 64 OSA patients with hypoglossal nerve stimulators: surgical success 33.3% in the malocclusion group versus 75.5% with normal occlusion; supports the treatment-response context only, not incident-apnea causation.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42146116/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 42146116; results (HNS surgical success rates by occlusion group)"
+        }
+      ]
+    },
+    {
+      "conditionId": "dysphagia",
+      "rank": 2,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Malocclusion documents impaired oral ingestion including swallowing at systematic-review level: the PRISMA systematic review of 29 studies published 2007-2023 found 20 studies showing severity of malocclusion negatively impacts oral ingestion and concluded malocclusion and ingestion impairments are associated while explicitly declining to determine causality from the observational evidence (PMID 38265668), and the matched adolescent study of orthodontic-treatment-need versus control children found significantly lower maximum voluntary bite force and significantly more bites to swallow a standardized cracker on the Test of Masticating and Swallowing Solids (PMID 41123350); the association is recorded as documented ingestion-function relationship only.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: the located material is observational with the systematic review itself declining causal attribution, the swallowing measures in the adolescent study were mostly non-significant apart from bites-to-complete, and dental pain, tongue posture, anterior open bite, prior orthodontic therapy, and neurologic swallowing disorders all require individual exclusion before any dysphagia attribution."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MECHANICAL_OR_COMPRESSIVE",
+        "primaryVector": "Occlusal instability and reduced bite force impair incision, bolus formation, and oral-phase control so chewing and swallowing efficiency fall and dysphagia-spectrum ingestion difficulty results, the oral-phase mechanics route the systematic review groups under chewing, biting, and swallowing disorders, but whether this route produced any individual dysphagia remains hypothesized until videofluoroscopic swallow study and dental examination records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at systematic-review plus small matched-study class only: the review pools heterogeneous observational designs and states causality cannot be determined, the adolescent study has 62 participants with swallowing differences limited to bites-to-eat (chewing cycles, swallows, and duration were not significantly different), and both populations are orthodontic-treatment-selected.",
+        "evidenceGaps": "No cohort quantifies dysphagia incidence by malocclusion type or severity; the systematic review explicitly cannot determine causality; the matched study's swallowing findings are partial (bite force and bites-to-complete only); and dental pain, open bite, tongue dysfunction, neurologic disease, and prior orthodontic treatment confound ingestion function.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "neurogenic and post-stroke dysphagia (the published sibling windows)",
+          "esophageal or hypopharyngeal neoplasm",
+          "esophageal stricture or web (the published esophageal-stricture window)",
+          "ankyloglossia (the published ankyloglossia dysphagia window, not recycled per ME-29)",
+          "pharyngeal dysmotility and presbyphagia"
+        ]
+      },
+      "evidenceGaps": [
+        "No cohort quantifies dysphagia incidence by malocclusion type or severity; the systematic review explicitly cannot determine causality; the matched study's swallowing findings are partial (bite force and bites-to-complete only); and dental pain, open bite, tongue dysfunction, neurologic disease, and prior orthodontic treatment confound ingestion function."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY on the oral-phase-mechanics precedent with the review's own causal limits carried openly: the PRISMA systematic review of 29 studies found 20 documenting negative impact of malocclusion severity on oral ingestion and named chewing, biting, and swallowing disorders as the affected functions while stating causality cannot be determined from the observational designs (PMID 38265668), and the 62-adolescent matched study documented lower maximum voluntary bite force (p = 0.009) and more bites to complete a cracker (p = 0.003) in orthodontic-treatment-need children with chewing cycles, swallow counts, and duration not significantly different (PMID 41123350); because the review is heterogeneous observational synthesis and the matched study's swallowing signal is partial in a treatment-selected sample, the conservative standard keeps the edge at association only and routes individual claims through dated videofluoroscopic swallow study with dental, neurologic, and esophageal exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "El Osta N, Chambon P, Dol G, et al. Does malocclusion affect ingestion: a systematic review. Clinical oral investigations. 2024 Jan 24;28(1):111. doi: 10.1007/s00784-024-05508-6. PMID 38265668.",
+          "note": "PRISMA systematic review of 29 studies (2007-2023): 20 studies found malocclusion severity negatively impacts oral ingestion; conclusion names chewing, biting, and swallowing disorders while stating causality cannot be determined; supports the bounded ingestion-function association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38265668/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 38265668; systematic review results and conclusion (ingestion-function association, causality not determinable)"
+        },
+        {
+          "citation": "Aldausari R, Kumar A, Suzuki A, et al. Assessment of Orofacial Muscle Strength, Masticatory and Swallowing Function in Children Indicated for Orthodontic Treatment-A Preliminary Investigation. Journal of oral rehabilitation. 2026 Feb;53(2):348-356. doi: 10.1111/joor.70091. PMID 41123350.",
+          "note": "Matched study of 62 adolescents divided by orthodontic treatment need: lower maximum voluntary bite force (p = 0.009) and more bites to eat a standardized cracker (p = 0.003) in the treatment-need group; chewing cycles, swallows, and duration not significantly different; supports the bounded oral-phase association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41123350/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 41123350; results (MVBF and TOMASS measures by group)"
+        }
+      ]
+    }
+  ]
 }

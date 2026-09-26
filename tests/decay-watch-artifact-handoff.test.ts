@@ -115,11 +115,11 @@ describe("citation-decay-watch attributes verification debt to its owning gate",
   /**
    * The ceiling once counted unverified references — debt that
    * audit-citation-verification.js already ratchets at
-   * CITATION_DEBT_BASELINE.unverified. At 690 unverified against a budget of 10
+   * CITATION_DEBT_BASELINE.unverified. At 718 unverified against a budget of 10
    * the weekly gate failed on every run irrespective of link rot or drift, so
    * it could signal neither. Both human-facing surfaces must now state what the
    * ceiling actually measures and where the debt is gated; otherwise a reader
-   * sees "unverified: 690" beside "ceiling usage: 0/10" and concludes the gate
+   * sees "unverified: 718" beside "ceiling usage: 0/10" and concludes the gate
    * is ignoring the debt rather than delegating it.
    */
   it("labels the ceiling with the decay classes it measures in the step summary", () => {

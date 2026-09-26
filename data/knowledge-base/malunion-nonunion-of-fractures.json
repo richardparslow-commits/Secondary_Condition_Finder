@@ -2,8 +2,78 @@
   "id": "malunion-nonunion-of-fractures",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review biomechanical, post-injury, orthopedic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 59 (2026-09-26): one ASSOCIATION_ONLY draft mapping pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: the edge asserts association only (etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true, mechanismCategory BIOMECHANICAL_ALTERATION). The evidence base is single-case plus narrative management-review class, so individual claims require dated weight-bearing radiographs with alignment measurement and competing-cause exclusion, and review by a qualified medical professional.",
+    "Pathway and duplicate-scope screens: no -> unexplained-chronic-pain edge (WITHHELD - constitutive and semantic mismatch: pain from a malunited or ununited fracture is mechanically explained by the malunion itself, so it does not meet the unexplained-chronic-pain identity's unexplained-etiology boundary; the malunion literature's chronic-pain statements, including the tibial plateau case's presenting pain, are recorded as context on the osteoarthritis edge rather than as an unexplained-pain mapping); no -> osteoarthritis edge as a second target (the post-traumatic-osteoarthritis identity carries the trauma-scoped proposition; a parallel generic-osteoarthritis edge would duplicate scope); no -> depressive-disorder edge (zero located condition-specific psychiatric quantification for malunion or nonunion populations; disability-psychology material is not identity-level quantified); no -> loss-of-use or deformity edge (no catalog identity); evidence scope - no material recycled from the tarsal-metatarsal-malunion-nonunion or mandibular-nonunion sibling identities (ME-29 scope rule; both were dispositioned as researched safe drafts in the master ledgers) and none from the published knee-injury, acl-injury, or mallet-finger post-traumatic-osteoarthritis windows."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 59 (2026-09-26): one bounded association edge authored - malunion-nonunion-of-fractures to post-traumatic-osteoarthritis (rank 1) - classified ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, and hypothesizedOnly:true. The proposition rests on the geriatric tibial-malunion secondary-knee-osteoarthritis case (PMID 42211638), the proximal-tibia malunion management review (PMID 41438797), and the tibial plateau malunion corrective-osteotomy case (PMID 41837061).",
+    "Counter-evidence and caveat screens recorded 2026-09-26: (i) evidence class - one case plus two management narratives without incidence denominators by deformity magnitude, site, or angle; (ii) confound record - intra-articular fracture damage predisposes to osteoarthritis independently of alignment, and primary age-related osteoarthritis overlaps the older presentations; (iii) semantic boundary - the unexplained-chronic-pain identity's unexplained-etiology requirement excludes mechanically explained malunion pain, so no pain edge was authored; (iv) sibling-window discipline - tarsal-metatarsal-malunion-nonunion and mandibular-nonunion (both dispositioned safe drafts) and the published knee-injury, acl-injury, and mallet-finger PTOA windows keep their own evidence and none is recycled (ME-29)."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "post-traumatic-osteoarthritis",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Malunion of fractures documents secondary osteoarthritis at case plus specialty-review level: the geriatric case of severe knee osteoarthritis secondary to a longstanding tibial malunion healed at 57.2-degree procurvatum and 30.9-degree valgus after failed fixation states that persistent tibial malunion introduces varus or valgus forces predisposing to knee compartment overload and promoting osteoarthritis (PMID 42211638), the proximal-tibia malunion management review directs that the mechanical axis be restored as soon as safe to prevent or slow progression of post-traumatic osteoarthritis (PMID 41438797), and the tibial plateau malunion case presenting two years after trauma with valgus deformity and articular depression underwent corrective osteotomy explicitly to prevent progression of osteoarthritis (PMID 41837061); the relationship is recorded as documented biomechanical sequel only.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: the located material is one case and two management-level reviews where joint-surface incongruity, deformity magnitude and plane, limb alignment, activity level, and fixation history all require individual radiographic review before any osteoarthritis attribution to the malunion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "BIOMECHANICAL_ALTERATION",
+        "primaryVector": "Fracture healed in malalignment shifts the mechanical axis and concentrates joint contact load on a smaller articular area so cartilage overload, progressive degeneration, and post-traumatic osteoarthritis result, the overload route stated in the malunion case and the proximal-tibia review whose axis-restoration rationale presupposes it, but whether this route produced any individual osteoarthritis remains hypothesized until dated weight-bearing radiographs and alignment measurements are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at single-case plus narrative-review class only: the strongest anchor is one Cureus case with limited follow-up and no objective postoperative alignment data, the two reviews are management narratives rather than incidence cohorts, and no located study quantifies osteoarthritis incidence by malunion site, angle, or alignment deviation.",
+        "evidenceGaps": "No incidence cohort quantifies post-traumatic osteoarthritis risk by malunion site, deformity magnitude, or axis deviation; primary and age-related osteoarthritis overlap the presentation in older patients; intra-articular fracture damage predisposes to osteoarthritis independently of alignment; and surgical correction, activity change, and joint replacement all alter the observed course.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "primary age-related osteoarthritis",
+          "intra-articular fracture step-off arthrosis independent of alignment",
+          "post-traumatic osteoarthritis from the original injury without malunion (the published knee-injury and mallet-finger PTOA windows, not recycled per ME-29)",
+          "inflammatory arthropathy",
+          "osteonecrosis-related joint collapse"
+        ]
+      },
+      "evidenceGaps": [
+        "No incidence cohort quantifies post-traumatic osteoarthritis risk by malunion site, deformity magnitude, or axis deviation; primary and age-related osteoarthritis overlap the presentation in older patients; intra-articular fracture damage predisposes to osteoarthritis independently of alignment; and surgical correction, activity change, and joint replacement all alter the observed course."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY on the biomechanical-malalignment precedent mirroring the published post-traumatic-osteoarthritis windows with malunion-specific evidence only: the geriatric tibial-malunion case documents severe knee osteoarthritis arising in a 57.2-degree procurvatum and 30.9-degree valgus malalignment with the paper stating persistent malunion introduces varus or valgus forces promoting osteoarthritis (PMID 42211638), the proximal-tibia malunion review frames mechanical-axis restoration as the means to prevent or slow PTOA progression (PMID 41438797), and the tibial plateau malunion case documents valgus deformity with articular depression requiring corrective osteotomy to prevent osteoarthritis progression (PMID 41837061); because the evidence is one case plus management narratives without incidence denominators by deformity magnitude, the conservative standard keeps the edge at association only and routes individual claims through dated weight-bearing alignment imaging with primary-osteoarthritis and original-injury arthrosis exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Burton E, Haller W 3rd. Lifelong Sequelae of a Childhood Tibial Fracture: Severe Procurvatum Tibial Malunion Leading to Secondary Knee Osteoarthritis. Cureus. 2026 Apr;18(4):e107833. doi: 10.7759/cureus.107833. PMID 42211638.",
+          "note": "Case report of a man in his early 70s with severe knee osteoarthritis secondary to a childhood tibial fracture malunion healed at 57.2-degree procurvatum and 30.9-degree valgus; states persistent malunion introduces varus or valgus forces promoting osteoarthritis; supports the bounded biomechanical sequel only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42211638/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 42211638; case presentation and discussion (malalignment mechanics and secondary knee osteoarthritis)"
+        },
+        {
+          "citation": "Kasha S, Yalamanchili RK, Rohit G, et al. Intra-articular and extra-articular malunion of proximal tibia: Assessment and management. Journal of clinical orthopaedics and trauma. 2026 Jan;72:103279. doi: 10.1016/j.jcot.2025.103279. PMID 41438797.",
+          "note": "Specialty review of intra-articular and extra-articular proximal tibial malunion management: directs mechanical-axis restoration as soon as safe to prevent or slow progression of post-traumatic osteoarthritis; supports the bounded management-premise proposition only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41438797/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 41438797; review discussion (mechanical axis restoration and PTOA prevention)"
+        },
+        {
+          "citation": "Mulyana RM, Budhy F, Saputra OZ. Reverse dome osteotomy for valgus knee from tibial plateau malunion in a young adult: a case report. International journal of surgery case reports. 2026 Mar;138(3):575-579. doi: 10.1097/RC9.0000000000000179. PMID 41837061.",
+          "note": "Case report of a 32-year-old woman with valgus knee from tibial plateau malunion two years after trauma: corrective reverse dome osteotomy performed to restore alignment and prevent progression of osteoarthritis; supports the bounded early-intervention premise only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41837061/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 41837061; case presentation and conclusion (malunion correction to prevent osteoarthritis progression)"
+        }
+      ]
+    }
+  ]
 }
