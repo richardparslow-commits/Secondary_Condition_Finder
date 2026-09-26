@@ -2,8 +2,142 @@
   "id": "patent-ductus-arteriosus",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review hemodynamic, vascular, thrombotic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 69 (2026-09-26): two ASSOCIATION_ONLY draft mappings pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: the edges assert association only (etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true, mechanismCategory THROMBOTIC_OR_VASCULAR matching the atrial-septal-defect shunt precedent). The evidence base is narrative reviews plus one registry overview plus one small adult cohort, so individual claims require dated echocardiography with competing-cause exclusion and review by a qualified medical professional.",
+    "Pathway and duplicate-scope screens: no -> bronchopulmonary-dysplasia edge (WITHHELD PROPOSITION - no catalog identity exists, and the PDA-BPD correlation literature frames prematurity as the shared driver); no -> necrotizing-enterocolitis edge (WITHHELD PROPOSITION - no catalog identity; the PDA-NEC association literature is correlation-level with feeding and prematurity confounds); no -> hypertension edge (SHARED-SUBSTRATE - the adult cohort's elevated diastolic pressure (PMID 41986666) sits in adults born preterm where prematurity programming drives blood pressure; not attributable to PDA); no -> infective-endocarditis edge (WITHHELD PROPOSITION - no catalog identity; case-class evidence only from the closure literature); ME-29 discipline - the atrial-septal-defect pulmonary-hypertension window (PMID 30305956) and the myocarditis and cardiomyopathy windows are NOT recycled; all anchors here are PDA-specific; direction discipline - shunt-hemodynamics and closure-improvement evidence support the associations only."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 69 (2026-09-26): two bounded association edges authored - patent-ductus-arteriosus to pulmonary-hypertension (rank 1) and to congestive-heart-failure (rank 2) - both classified ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, and hypothesizedOnly:true, mechanismCategory THROMBOTIC_OR_VASCULAR consistent with the atrial-septal-defect shunt-to-pulmonary-hypertension precedent. The pulmonary-hypertension edge rests on the shunt-pathophysiology overview with Eisenmenger framing (PMID 42661256), the adult closure-registry review (PMID 42525314), and the isolated-PDA severe-PHT case (PMID 41362902); the heart-failure edge rests on the edema and closure-improvement framing (PMIDs 42661256, 42711802) and the adult preterm remodeling cohort (PMID 41986666).",
+    "Counter-evidence and caveat screens recorded 2026-09-26: (i) prematurity shared substrate - bronchopulmonary dysplasia and prematurity lung disease co-drive pulmonary hypertension in the preterm populations where PDA is common, and prematurity programming drives adult blood pressure and myocardial development; the edges are scoped with these confounds carried openly; (ii) partially definitional exposure - the adult cohort defined symptomatic PDA partly by congestive heart failure at presentation, so the heart-failure edge's basis carries this circularity openly and leans on the review anchors for the pathway; (iii) withheld propositions with no catalog identities - bronchopulmonary dysplasia, necrotizing enterocolitis, and infective endocarditis (the PDA association literature is correlation-level or case-class; evidence preserved here); (iv) ME-29 - the atrial-septal-defect pulmonary-hypertension window and the myocarditis/cardiomyopathy windows are not recycled; all anchors are PDA-specific sources."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "pulmonary-hypertension",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Patent ductus arteriosus documents pulmonary hypertension at review and registry level: the Cardiology Review PDA overview describes the left-to-right shunt manifesting with pulmonary hypertension symptoms and progressing to reversed shunt (Eisenmenger syndrome) when untreated (PMID 42661256), the multicenter adult transcatheter-closure registry review reports pulmonary arterial hypertension commonly present in adults with PDA complicating clinical decision-making (PMID 42525314), and the preterm isolated-PDA case with severe pulmonary hypertension and lung-biopsy-confirmed pulmonary interstitial glycogenosis documents the pathway's severe end (PMID 41362902); recorded as documented association only with the preterm and adult scope split carried openly.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: the anchors are narrative reviews, a registry overview, and a single case, no primary cohort quantifies incident pulmonary hypertension after PDA, prematurity and bronchopulmonary dysplasia co-drive pulmonary hypertension in the preterm population, and individual claims require dated echocardiography with prematurity-lung-disease, thromboembolic, and left-heart-disease exclusion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "THROMBOTIC_OR_VASCULAR",
+        "primaryVector": "Chronic left-to-right ductal shunting increases pulmonary blood flow and drives pulmonary vascular remodeling so pulmonary arterial hypertension results, the flow-overload route supported by the documented Eisenmenger progression and by pulmonary arterial hypertension commonly complicating adult PDA management, but whether this route produced any individual pulmonary hypertension remains hypothesized until echocardiographic and catheterization records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at narrative-review plus registry-overview plus single-case class only: no primary cohort quantifies pulmonary-hypertension incidence in PDA, the preterm evidence is confounded by bronchopulmonary dysplasia and prematurity lung disease (the PDA-BPD literature frames them as co-driven rather than causal), and adult PDA cohorts are referral-selected toward shunts surviving to closure.",
+        "evidenceGaps": "No primary cohort quantifies incident pulmonary hypertension after PDA; the preterm literature is confounded by bronchopulmonary dysplasia and prematurity lung disease with PDA-BPD correlation rather than attribution; the severe-PHT case (PMID 41362902) is a single report with a lung-biopsy confound; adult registry data are referral-selected; and prematurity lung disease, thromboembolic disease, left-heart disease, and connective-tissue disease compete for individual attribution.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "bronchopulmonary dysplasia and prematurity lung disease (shared driver in preterm populations)",
+          "left-heart and valvular disease",
+          "thromboembolic pulmonary hypertension",
+          "connective-tissue-disease pulmonary arterial hypertension (published windows, not recycled per ME-29)",
+          "idiopathic pulmonary arterial hypertension"
+        ]
+      },
+      "evidenceGaps": [
+        "No primary cohort quantifies incident pulmonary hypertension after PDA; the preterm literature is confounded by bronchopulmonary dysplasia and prematurity lung disease with PDA-BPD correlation rather than attribution; the severe-PHT case (PMID 41362902) is a single report with a lung-biopsy confound; adult registry data are referral-selected; and prematurity lung disease, thromboembolic disease, left-heart disease, and connective-tissue disease compete for individual attribution."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY at review plus registry class with the preterm-confound and incidence-gap limits carried openly: the Cardiology Review overview frames the ductal shunt as manifesting with pulmonary hypertension symptoms and Eisenmenger progression (PMID 42661256), the adult closure-registry review reports pulmonary arterial hypertension commonly complicating adult PDA management (PMID 42525314), and the isolated-PDA severe-PHT case documents the pathway's extreme (PMID 41362902); because no primary incidence cohort exists and preterm populations share the bronchopulmonary-dysplasia driver, the conservative standard keeps the edge at association only and routes individual claims through dated echocardiography with prematurity-lung-disease, thromboembolic, and left-heart exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Swamynathan R, Dolan L, Frishman WH, et al. Patent Ductus Arteriosus Cardiol Rev. 2026 Aug 28.doi: 10.1097/CRD.0000000000001456. PMID 42661256.",
+          "note": "Cardiology Review overview of patent ductus arteriosus (2026): PDA creates a left-to-right shunt from aorta to pulmonary artery, often manifesting with symptoms of pulmonary hypertension and edema; untreated progression reverses the shunt (Eisenmenger syndrome); supports the bounded shunt-pulmonary-hypertension framing only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42661256/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 42661256; pathophysiology (left-to-right shunt manifestations and Eisenmenger progression)"
+        },
+        {
+          "citation": "Un KC, Sagar P, Sheth R, et al. Transcatheter Closure of Patent Ductus Arteriosus in Adults Curr Cardiol Rep. 2026 Jul 29;28(1).doi: 10.1007/s11886-026-02395-z. PMID 42525314.",
+          "note": "Multicenter registry review of transcatheter PDA closure in adults (Curr Cardiol Rep 2026): closure safe and effective with 90-100% success; the common presence of pulmonary arterial hypertension complicates clinical decision-making in adults; supports the bounded adult-PAH-comorbidity framing only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42525314/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 42525314; recent findings (pulmonary arterial hypertension in adult PDA)"
+        },
+        {
+          "citation": "Fadel NB, Almoli E, de Nanassy J, et al. New Insights: P.I.G in Preterm Infants With Isolated PDA and Severe Pulmonary Hypertension Case Rep Pediatr. 2025;2025:6268296. PMID 41362902.",
+          "note": "Case report of a preterm infant with isolated PDA developing severe pulmonary hypertension and respiratory failure (Case Rep Pediatr 2025): lung biopsy during PDA ligation showed pulmonary interstitial glycogenosis; first such report in isolated PDA without other cardiac lesions; supports the bounded severe-end pathway only (single case, biopsy confound carried).",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41362902/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 41362902; clinical course (isolated PDA with severe pulmonary hypertension)"
+        }
+      ]
+    },
+    {
+      "conditionId": "congestive-heart-failure",
+      "rank": 2,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Patent ductus arteriosus documents heart-failure physiology at review and cohort level: the Cardiology Review PDA overview describes the left-to-right shunt manifesting with pulmonary-hypertension symptoms and edema (PMID 42661256), the adult PDA management review reports closure producing considerable hemodynamic and clinical improvement (PMID 42711802), and the 107-person young-adult preterm cohort defined symptomatic PDA in infancy by large left-to-right shunt or congestive heart failure and found those with symptomatic PDA carried higher resting diastolic pressure, lower tissue-Doppler diastolic velocities, and larger right ventricular dimensions in early adulthood (PMID 41986666); recorded as documented association only with the partially definitional exposure and subclinical-outcome limits carried openly.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: the cohort's symptomatic-PDA exposure definition includes congestive heart failure (partially definitional), the adult-outcome differences are subclinical remodeling rather than heart-failure diagnoses, and individual claims require dated echocardiography and clinical assessment with ischemic, valvular, and myocardial exclusion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "THROMBOTIC_OR_VASCULAR",
+        "primaryVector": "Chronic left-to-right ductal shunting imposes volume overload on the left heart and pulmonary circulation so high-output heart failure with edema results, the overload route supported by hemodynamic improvement after closure and by persistent diastolic and right-ventricular remodeling in adults who had symptomatic PDA, but whether this route produced any individual heart failure remains hypothesized until echocardiographic and clinical records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at narrative-review plus retrospective-cohort class only: the defining cohort exposure includes congestive heart failure at presentation (partially definitional), the adult findings are subclinical remodeling differences at group level without heart-failure diagnoses, prematurity co-drives myocardial development, and no untreated comparison exists.",
+        "evidenceGaps": "The review anchors are narrative class; the defining cohort exposure includes congestive heart failure at presentation (partially definitional); the adult follow-up differences are subclinical remodeling without clinical heart-failure outcomes; prematurity itself alters myocardial development (shared substrate in the adult cohort); and ischemic, valvular, and myocardial diseases compete for individual attribution.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "prematurity-related myocardial development differences (shared driver in the adult preterm cohort)",
+          "ischemic and valvular heart disease",
+          "myocarditis and cardiomyopathy (published windows, not recycled per ME-29)",
+          "fluid overload from renal disease",
+          "right-heart failure downstream of pulmonary hypertension (the parallel PDA pulmonary-hypertension pathway in this file)"
+        ]
+      },
+      "evidenceGaps": [
+        "The review anchors are narrative class; the defining cohort exposure includes congestive heart failure at presentation (partially definitional); the adult follow-up differences are subclinical remodeling without clinical heart-failure outcomes; prematurity itself alters myocardial development (shared substrate in the adult cohort); and ischemic, valvular, and myocardial diseases compete for individual attribution."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY at review plus cohort class with the definitional-exposure and subclinical-outcome limits carried openly: the review anchors frame the ductal shunt with edema and hemodynamic improvement after closure (PMIDs 42661256, 42711802), and the adult preterm cohort documents persistent diastolic and right-ventricular remodeling after symptomatic PDA in infancy (PMID 41986666); because the cohort exposure definition includes congestive heart failure and the adult differences are subclinical, the conservative standard keeps the edge at association only and routes individual claims through dated echocardiography with ischemic, valvular, myocardial, and renal exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Kaywood AJ, Ahmadi A, Frishman WH. Management of Patent Ductus Arteriosus in the Adult Population Cardiol Rev. 2026 Sep 9.doi: 10.1097/CRD.0000000000001470. PMID 42711802.",
+          "note": "Management review of PDA in adults (Cardiol Rev 2026): transcatheter closure preferred; closure results in considerable hemodynamic and clinical improvements in adults; supports the bounded shunt-volume-overload framing only (review class).",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42711802/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 42711802; review summary (hemodynamic and clinical improvement after closure)"
+        },
+        {
+          "citation": "Swamynathan R, Dolan L, Frishman WH, et al. Patent Ductus Arteriosus Cardiol Rev. 2026 Aug 28.doi: 10.1097/CRD.0000000000001456. PMID 42661256.",
+          "note": "Cardiology Review overview of patent ductus arteriosus (2026): the left-to-right shunt often manifests with pulmonary hypertension symptoms and edema; supports the bounded volume-overload framing only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42661256/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 42661256; pathophysiology (shunt manifestations including edema)"
+        },
+        {
+          "citation": "Joseph A, Chandra A, Barton GP, et al. Long-term outcomes in adults born preterm with symptomatic patent ductus arteriosus J Perinatol. 2026 Jul;46(7):1164-1170. PMID 41986666.",
+          "note": "Young-adult follow-up of 107 adults born preterm (23 with symptomatic PDA defined as large left-to-right shunt or congestive heart failure in the NICU; J Perinatol 2026): higher resting diastolic pressure (80 vs 74 mmHg, p=0.02), lower tissue-Doppler diastolic velocities, larger right ventricular dimensions; supports the bounded long-term-remodeling association only (exposure definition partially includes CHF; outcomes subclinical).",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41986666/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 41986666; results (adult cardiovascular findings by neonatal symptomatic-PDA status)"
+        }
+      ]
+    }
+  ]
 }

@@ -3417,3 +3417,97 @@ automatically (890 -> 896) - eighth consecutive batch with no manual fixture bum
 the standing benign coincidences (apply-all-94's historical `explicitPublicationGuards: 273`; wave-5's
 `toBeGreaterThanOrEqual(276)` catalog floor; legal-copy's `38 U.S.C. § 1117` statute text).
 Standing recommendation: batch 68 lands through branch, PR, CI, and merge.
+
+## Mapping Expansion D1 batch 69 (2026-09-26)
+
+Mapping Expansion D1 batch 69 (2026-09-26) authored eight draft-quarantined relationships across four of
+the five queue identities and deferred one identity without edges. paraganglioma carries four edges:
+-> hearing-loss (MECHANICAL_OR_COMPRESSIVE) at surgical-cohort class - variable hearing loss in 90.9
+percent of temporal bone cases (PMID 34094530), mean 18.0 dB preoperative air-bone gap narrowing to 8.0
+dB after resection (PMID 42420023), and conductive gaps wider than 30 dB with post-repair closure (PMID
+40570318), with the asymptomatic five-year glomus tympanicum case (PMID 42679647) carried as explicit
+counterweight and the conductive and sensorineural components carried together on the umbrella edge; ->
+tinnitus (THROMBOTIC_OR_VASCULAR) - pulsatile tinnitus improved in every patient after complete glomus
+tympanicum resection (PMID 38217439) with the same asymptomatic counterweight and the
+improvement-after-removal intervention-entanglement limit carried openly; -> cranial-nerve-palsy
+(MECHANICAL_OR_COMPRESSIVE) - facial nerve affected in 36.4 percent at presentation (PMID 34094530) and
+a depth-response relationship for lower cranial nerve palsy (5 of 6 deeply invasive tumors, p=0.02; PMID
+39326398), with the treatment-mediated limit carried openly (the cohort's quantified persistent palsies
+were post-surgical with normal preoperative function, so tumor and treatment contributions cannot be
+separated); -> hypertension (NEUROENDOCRINE_CASCADE) - hypertension in 82 percent of the PPGL cohort with
+similar prevalence in the paraganglioma subgroup (PMID 40641054) and sustained hypertension in 68.8
+percent of clinically suspected versus 47.1 percent of incidental tumors (PMID 41679891), scoped to
+catecholamine-secreting sympathetic tumors. patent-ductus-arteriosus carries two edges at review plus
+cohort class with the prematurity shared-substrate limits carried openly: -> pulmonary-hypertension
+(THROMBOTIC_OR_VASCULAR, the atrial-septal-defect shunt precedent) - Eisenmenger progression framing
+(PMID 42661256), pulmonary arterial hypertension commonly complicating adult PDA management (PMID
+42525314), and the isolated-PDA severe-PHT case (PMID 41362902); -> congestive-heart-failure - shunt
+edema and closure-improvement framing (PMIDs 42661256, 42711802) and persistent diastolic and
+right-ventricular remodeling in adults after symptomatic PDA in infancy (PMID 41986666), with the
+partially definitional exposure (the cohort's symptomatic-PDA definition includes CHF at presentation)
+carried openly on the edge. perforated-eardrum -> conductive-hearing-loss (MECHANICAL_OR_COMPRESSIVE) -
+the 465-procedure myringoplasty cohort's repair-responsive air-bone gap (19.1 to 9.8 dB mean; PMID
+42338397, erratum-linked record re-verified at preflight) and 85 percent conductive loss in perforated
+tubotympanic CSOM ears (PMID 41477176), with the CSOM shared substrate and the residual 8-12 dB
+counterweight carried openly. patellar-subluxation -> patellofemoral-pain-syndrome (BIOMECHANICAL_ALTERATION)
+- significantly lower KOOS-Pain, KOOS-Quality-of-Life, and Kujala scores after sustained redislocation at
+10 years (PMID 42080086) and high-grade trochlear dysplasia eleven times more likely with previous
+instability (PMID 34546985), with the shared-anatomic-substrate and dislocation-anchored limits carried
+openly.
+
+paraphimosis DEFERRED without edges (ZERO QUANTIFIED SECONDARY OUTCOMES plus no-identity complications
+plus direction-inversion on the phimosis family): the located human literature is dominated by case
+reports (Fournier's gangrene complicating ulceration, Mpox-related paraphimosis), canine surgical series,
+and circumcision technique cohorts; gangrene/penile necrosis, urinary obstruction, and retention are
+withheld propositions with no catalog identities; erectile dysfunction and meatal stenosis are
+unquantified after paraphimosis (the meatal-stenosis window's evidence is the hypospadias/circumcision
+family's, ME-29); and the phimosis relationship runs upstream (phimosis predisposes to paraphimosis; the
+balanitis-to-phimosis window owns its evidence). Reopening conditions recorded: a cohort quantifying
+long-term urologic sequelae after paraphimosis reduction, or addition of a gangrene/penile-necrosis
+identity.
+
+Withholdings recorded on the files: paraganglioma -> conductive-hearing-loss (identity-duplication with
+the umbrella hearing-loss edge), -> diabetes-mellitus and -> osteoporosis (below threshold, PPGL-pooled
+evidence owned by the pheochromocytoma family per ME-29); patent-ductus-arteriosus ->
+bronchopulmonary-dysplasia, -> necrotizing-enterocolitis, and -> infective-endocarditis (withheld
+propositions, no catalog identities), -> hypertension (prematurity shared-substrate); perforated-eardrum
+-> hearing-loss and -> tinnitus (CSOM shared-substrate; the tinnitus edge also chain-triangle
+duplication of the conductive-hearing-loss -> tinnitus chain under the standing CRG semantics follow-up),
+-> dizziness (CSOM-scoped); patellar-subluxation -> osteoarthritis (below threshold, StatPearls narrative
+only) and -> tendinopathy (shared-substrate with the osgood-schlatter window).
+
+Pre-authoring verification: all 17 PMIDs passed the abstract pass (`/tmp/d1-abstract47.py` in fetch
+groups), the esummary bibliographic pass with every citation re-verified against the PubMed record, and
+`node scripts/preflight-source-status.js --pmids ...` (17/17 checked, zero blocking flags, one
+non-blocking erratum-linked note on PMID 42338397 carried on its reference). The post-write structural
+self-audit passed for all five files (8 edges, 19 reference uses) and `npm run kb:validate` reports zero
+errors.
+
+Registry after lockstep: 732 relationships (658 explicit / 74 legacy), 1298 reference uses (383
+verified / 915 pending-verification), 1293 clinical / 5 legal uses, 1166 source entities (346 active /
+811 pending-verification). Within-batch shared sources - PMID 34094530 across the two paraganglioma
+hearing/cranial-nerve edges and PMID 42661256 across the two patent-ductus-arteriosus edges - give 19
+reference uses over 17 new sources. Citation packet regenerated at 369 worksheets / 915 reference rows =
+live citation debt; the verification dashboard regenerated at 915 rows in 38 reviewer batches (809
+distinct sources). Backlog after batch 69: **145** undispositioned zero-edge drafts (150 before the
+batch; four identities left by gaining edges and one by recorded deferral). Next-five:
+`pericardial-effusion`, `periodontitis`, `peripheral-aneurysm`, `peripheral-nerve-paralysis`,
+`persistent-postural-perceptual-dizziness`.
+
+Structural-debt note: batch-69 edges produced zero new CRG findings - the analyzer reports review-class
+13 against baseline 13 and redundancy 28 against baseline 28 unchanged after the eight edges landed. The
+perforated-eardrum -> tinnitus candidate was withheld at authoring time (chain-shortcut duplication of
+the conductive-hearing-loss -> tinnitus chain plus CSOM shared substrate), so batch 69 did not add a
+third data point to the batch-65/67 chain-triangle semantics question; the question stands on those two
+examples and should be settled before more chain-shortcut edges accumulate.
+
+Test-pin note: the sweep touched 54 files and replaced 316 counter tokens in one pass with the batch-68
+per-token context predicates carried over unchanged (relationships 724 -> 732, references/uses 1279 ->
+1298, unverified 896 -> 915, pending source entities 794 -> 811, total source entities 1149 -> 1166,
+explicit guards 650 -> 658, clinical references 1274 -> 1293, clinical provenance 1278 -> 1297, and the
+draft-singles counter 286 -> 288 for this batch's two single-suggestion identities `perforated-eardrum`
+and `patellar-subluxation`). The explicit fixture token continued to carry the citation-decay-gate debt
+fixture automatically (896 -> 915) - ninth consecutive batch with no manual fixture bump. Residue clean
+outside the standing benign coincidences (apply-all-94's historical `explicitPublicationGuards: 273`;
+wave-5's `toBeGreaterThanOrEqual(276)` catalog floor; legal-copy's `38 U.S.C. § 1117` statute text).
+Standing recommendation: batch 69 lands through branch, PR, CI, and merge.

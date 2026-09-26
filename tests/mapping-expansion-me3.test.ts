@@ -140,13 +140,13 @@ describe("Mapping Expansion Batch ME-3", () => {
     expect(files).toHaveLength(813);
     expect(mappings.filter((m) => m.draft === false)).toHaveLength(140);
     expect(mappings.filter((m) => m.draft === true)).toHaveLength(673);
-    expect(mappings.reduce((sum, m) => sum + (m.suggestions ?? []).length, 0)).toBe(724);
+    expect(mappings.reduce((sum, m) => sum + (m.suggestions ?? []).length, 0)).toBe(732);
     expect(mappings.filter((m) => m.draft === false && (m.suggestions ?? []).length === 1)).toHaveLength(67);
     expect(mappings.filter((m) => m.draft === false && (m.suggestions ?? []).length >= 2)).toHaveLength(73);
     const refs = mappings.flatMap((m) => (m.suggestions ?? []).flatMap((s) => s.sourceReferences ?? []));
-expect(refs).toHaveLength(1279);
+expect(refs).toHaveLength(1298);
     expect(refs.filter((r) => r.verified === true)).toHaveLength(383);
-    expect(refs.filter((r) => r.verified === false)).toHaveLength(896);
+    expect(refs.filter((r) => r.verified === false)).toHaveLength(915);
   });
 
   it("passes the fail-closed master-registry parity audit after approved citation promotion", () => {
@@ -156,6 +156,6 @@ expect(refs).toHaveLength(1279);
     });
     const result = JSON.parse(output) as { status: string; pendingVerificationSourceEntities: number };
     expect(result.status).toBe("PASS");
-    expect(result.pendingVerificationSourceEntities).toBe(794);
+    expect(result.pendingVerificationSourceEntities).toBe(811);
   });
 });

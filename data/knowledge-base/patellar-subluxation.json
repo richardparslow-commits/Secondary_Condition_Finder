@@ -2,8 +2,68 @@
   "id": "patellar-subluxation",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review biomechanical, post-injury, orthopedic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 69 (2026-09-26): one ASSOCIATION_ONLY draft mapping pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: the edge asserts association only (etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true, mechanismCategory BIOMECHANICAL_ALTERATION). The evidence base is one 10-year randomized-trial follow-up cohort (dislocation-anchored) plus one cross-sectional prevalence cohort (shared-substrate), so individual claims require dated orthopedic assessment with competing-cause exclusion and review by a qualified medical professional. The shared-anatomic-substrate limit is carried on the edge itself.",
+    "Pathway and duplicate-scope screens: no -> osteoarthritis edge (BELOW THRESHOLD - the StatPearls narrative progression-to-arthritis framing (PMID 29494034) is secondary-source class already flagged in the weak-citation backlog, and no cohort quantifies patellofemoral osteoarthritis incidence after subluxation; the registered osteoarthritis window's many primaries are fracture and alignment-family sources not recycled per ME-29); no -> tendinopathy edge (SHARED-SUBSTRATE plus ME-29 - the registered tendinopathy window is osgood-schlatter-anchored and not recycled; subluxation-specific tendon quantification absent); no -> patellofemoral-pain-syndrome recurrence edge (CONSTITUTIVE - redislocation and apprehension are persistence of the instability condition itself, documented in the same cohort as outcome measures, not secondary conditions); ME-29 discipline - the osteoarthritis, tendinopathy, and knee-alignment windows are NOT recycled; all anchors here are patellar-instability-anchored sources; direction discipline - the pain-gradient and shared-dysplasia evidence supports the association only, and the dysplasia finding is explicitly shared-substrate rather than causal."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 69 (2026-09-26): one bounded association edge authored - patellar-subluxation to patellofemoral-pain-syndrome (rank 1) - classified ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, and hypothesizedOnly:true, mechanismCategory BIOMECHANICAL_ALTERATION (maltracking and abnormal retropatellar loading). The proposition rests on the 10-year randomized-trial follow-up (redislocation associated with significantly lower KOOS-Pain, KOOS-Quality-of-Life, and Kujala scores; PMID 42080086) and the trochlear-dysplasia prevalence cohort (PMID 34546985).",
+    "Counter-evidence and caveat screens recorded 2026-09-26: (i) shared-substrate discipline - trochlear dysplasia and malalignment predispose to BOTH patellar instability and anterior knee pain (PMID 34546985, eleven-fold instability association), so part of the instability-pain co-occurrence is common cause rather than causal chain; this limit is carried on the edge basis, causationStatus, and rationale; (ii) dislocation-anchor limit - the quantified pain gradient is driven by sustained redislocation (dislocation-level events) rather than subluxation episodes specifically; a subluxation-specific incident-pain cohort was not located; (iii) withheld propositions - patellofemoral osteoarthritis (below threshold: StatPearls narrative (PMID 29494034) in the weak-citation class, no primary quantification) and persistent instability symptoms (constitutive: recurrence is the condition itself); (iv) ME-29 - the osteoarthritis and tendinopathy windows are not recycled; both anchors are patellar-instability sources."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "patellofemoral-pain-syndrome",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Patellar instability cohorts document anterior knee pain at cohort level: the 10-year follow-up of the randomized knee-brace versus medial patellofemoral-ligament-repair trial found patients who sustained any redislocation reported significantly lower KOOS-Pain, KOOS-Quality-of-Life, and Kujala Anterior Knee Pain Scale scores than those who remained stable (PMID 42080086), and the skeletally mature prevalence cohort found knees with high-grade trochlear dysplasia eleven times more likely to have had previous patellar instability (p=0.013), documenting the shared anatomic substrate that predisposes to both instability and anterior knee pain (PMID 34546985); recorded as documented association only with the shared-substrate and dislocation-anchored limits carried openly.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: the pain gradient is anchored to recurrent dislocation events rather than subluxation specifically, trochlear dysplasia and malalignment predispose to both instability and pain so part of the association is shared substrate rather than causal, and individual claims require dated orthopedic assessment with tendinopathy, cartilage, and referred-pain exclusion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "BIOMECHANICAL_ALTERATION",
+        "primaryVector": "Transient lateral patellar displacement disrupts patellofemoral tracking and loads retropatellar cartilage and the medial retinaculum abnormally so anterior knee pain results, the maltracking route supported by the pain-score gradient between patients with and without recurrent instability, but whether this route produced any individual pain syndrome remains hypothesized until orthopedic and imaging records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at 10-year cohort follow-up plus cross-sectional prevalence class only: the pain gradient is driven by redislocation (dislocation-level events) rather than subluxation specifically, the trochlear-dysplasia cohort documents shared anatomic predisposition to both instability and pain rather than a causal pathway, both conditions concentrate in young active populations, and no subluxation-specific incident-pain quantification was located.",
+        "evidenceGaps": "The located pain gradient is anchored to recurrent patellar dislocation rather than subluxation events; trochlear dysplasia and malalignment predispose to both instability and anterior knee pain (shared anatomic substrate carried openly); no cohort quantifies incident patellofemoral pain after documented subluxation; the samples are young and activity-selected; and patellar tendinopathy, chondral lesions, plica, and referred hip pain compete for individual attribution.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "trochlear dysplasia and malalignment predisposing to both instability and pain (shared anatomic substrate, carried openly)",
+          "patellar tendinopathy (the registered tendinopathy window, not recycled per ME-29)",
+          "chondral and cartilage lesions of the patellofemoral joint",
+          "plica and synovial irritation",
+          "referred pain from hip pathology"
+        ]
+      },
+      "evidenceGaps": [
+        "The located pain gradient is anchored to recurrent patellar dislocation rather than subluxation events; trochlear dysplasia and malalignment predispose to both instability and anterior knee pain (shared anatomic substrate carried openly); no cohort quantifies incident patellofemoral pain after documented subluxation; the samples are young and activity-selected; and patellar tendinopathy, chondral lesions, plica, and referred hip pain compete for individual attribution."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY at cohort-follow-up plus prevalence class with the shared-substrate and dislocation-anchored limits carried openly: the 10-year randomized-trial follow-up found sustained redislocation associated with significantly lower KOOS-Pain, KOOS-Quality-of-Life, and Kujala scores (PMID 42080086) and the prevalence cohort documented high-grade trochlear dysplasia eleven times more likely with previous instability (PMID 34546985); because the pain gradient is dislocation-anchored and trochlear dysplasia predisposes to both conditions (shared substrate rather than causal chain), the conservative standard keeps the edge at association only and routes individual claims through dated orthopedic assessment with tendinopathy, cartilage, plica, and referred-pain exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "von Heideken J, Arendt E, Askenberger M. Long-term Outcomes of Knee Brace Versus Operative Medial Patellofemoral Ligament Repair in Children With First-Time Traumatic Patellar Dislocation: A 10-Year Follow-up From Skeletal Immaturity to Adulthood Orthop J Sports Med. 2026 Apr;14(4):23259671261432589. PMID 42080086.",
+          "note": "Ten-year follow-up of 46 patients from a randomized trial of knee brace versus medial patellofemoral ligament repair for first-time traumatic patellar dislocation (Orthop J Sports Med 2026): redislocation rates 80% (brace) vs 62% (repair); patients with any redislocation reported significantly lower KOOS-Pain, KOOS-Quality-of-Life, and Kujala Anterior Knee Pain Scale scores than those stable; supports the bounded instability-pain-burden association only (dislocation-anchored).",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42080086/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 42080086; results (pain and function scores by redislocation status)"
+        },
+        {
+          "citation": "DeVries CA, Bomar JD, Pennock AT. Prevalence of Trochlear Dysplasia and Associations with Patellofemoral Pain and Instability in a Skeletally Mature Population J Bone Joint Surg Am. 2021 Nov 17;103(22):2126-2132. PMID 34546985.",
+          "note": "Prospective prevalence study of 102 patients (203 knees), skeletally mature (J Bone Joint Surg Am 2021): high-grade trochlear dysplasia prevalence about 10%; knees with high-grade dysplasia 11 times more likely to have had previous patellar instability (p=0.013); anterior knee pain and instability characterized together; supports the bounded shared-substrate framing only (dysplasia predisposes to both).",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34546985/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 34546985; results (trochlear dysplasia association with instability history)"
+        }
+      ]
+    }
+  ]
 }

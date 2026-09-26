@@ -2,8 +2,11 @@
   "id": "paraphimosis",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review urologic, gynecologic, hormonal, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 69 (2026-09-26): identity deferred - no edge authored; the deferral rationale is carried in this file's governance notes so the deterministic backlog filter in scripts/report-authoring-backlog.js inherits it.",
+    "Screen result: the located human literature on paraphimosis outcomes is dominated by case reports (Mpox and COVID genital ulceration complications, Fournier's gangrene), animal surgical series (canine paraphimosis repair), and circumcision technique cohorts; no secondary-condition outcome is quantified for this identity, and the documented direction of the phimosis relationship runs upstream. See governance notes for the full disposition and reopening conditions."
+  ],
+  "governanceNotes": [
+    "D1 batch 69 (2026-09-26): identity deferred (ZERO QUANTIFIED SECONDARY OUTCOMES plus no-identity complications plus direction-inversion on the phimosis family). The located evidence supports no outgoing catalog edge: (i) gangrene and penile necrosis - the severe-complication literature is case-class only (Fournier's gangrene complicating ulceration, PMID 37931275; Mpox-related paraphimosis, PMID 36679908) and the catalog holds no gangrene or penile-necrosis identity (withheld propositions); (ii) meatal stenosis - no located quantification after paraphimosis; the meatal-stenosis window's evidence is the hypospadias/circumcision family's and is not recycled (ME-29); (iii) erectile dysfunction - zero located quantification in the paraphimosis literature; (iv) secondary phimosis from scarring - DIRECTION-INVERSION: the documented direction is phimosis predisposing to paraphimosis (the phimosis identity's incoming window (balanitis-balanoposthitis to phimosis) owns its evidence), and post-reduction scarring outcomes are unquantified; (v) urinary obstruction and retention - no catalog identity and case-class evidence only. Reopening conditions: (a) a cohort quantifying long-term urologic sequelae (erectile function, meatal stenosis, recurrent phimosis) after paraphimosis reduction with follow-up; or (b) addition of a gangrene or penile-necrosis catalog identity, which would unlock the documented severe-complication case literature as bounded propositions."
   ],
   "suggestions": []
 }

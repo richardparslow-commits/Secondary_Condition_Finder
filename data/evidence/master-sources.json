@@ -16,16 +16,16 @@
   "citationPromotionMustAtomicallyUpdateKbAndMasterSourceState": true
  },
  "counts": {
-  "liveSourceReferenceUses": 1279,
+  "liveSourceReferenceUses": 1298,
   "activeSourceEntities": 346,
-  "pendingVerificationSourceEntities": 794,
+  "pendingVerificationSourceEntities": 811,
   "activeClinicalSourceEntities": 345,
-  "pendingClinicalSourceEntities": 794,
+  "pendingClinicalSourceEntities": 811,
   "activeLegalAuthorityEntities": 1,
   "retiredOnlySourceEntities": 1,
   "supersededUnverifiedSourceEntities": 7,
   "bibliographicCorrectionOnlyEntities": 1,
-  "totalSourceEntitiesIncludingLineage": 1149,
+  "totalSourceEntitiesIncludingLineage": 1166,
   "retiredVerifiedRelationshipSourceUses": 6
  },
  "retirementLedger": {
@@ -42475,6 +42475,615 @@
    "retiredUses": [],
    "rawReferenceHashes": [
     "fb9b79cf8a19fbeb61c43e669ff6922875fff9dddab7d089826acd97d24bbed0"
+   ]
+  },
+  {
+   "sourceId": "pmid-34094530",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "34094530",
+   "doi": null,
+   "canonicalCitation": "Merzouqi B, El Bouhmadi K, Oukesou Y, et al. Head and neck paragangliomas: Ten years of experience in a third health center. A cohort study Ann Med Surg (Lond). 2021 Jun;66:102412. PMID 34094530.",
+   "citationVariants": [
+    "Merzouqi B, El Bouhmadi K, Oukesou Y, et al. Head and neck paragangliomas: Ten years of experience in a third health center. A cohort study Ann Med Surg (Lond). 2021 Jun;66:102412. PMID 34094530."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34094530/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/34094530/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 2,
+   "liveUses": [
+    {
+     "relationshipId": "rel-paraganglioma-to-hearing-loss",
+     "primaryId": "paraganglioma",
+     "targetId": "hearing-loss",
+     "sourceIndex": 0
+    },
+    {
+     "relationshipId": "rel-paraganglioma-to-cranial-nerve-palsy",
+     "primaryId": "paraganglioma",
+     "targetId": "cranial-nerve-palsy",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "dc88272a7da3bc61dc8ac152e6a2378889df3a1be07cd5b0295fe6dfc5bfd0f0",
+    "a89230b011768a421c4ed4764c44e3f5b21ad8db930d334f5f582c169a6fade1"
+   ]
+  },
+  {
+   "sourceId": "pmid-42420023",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "42420023",
+   "doi": null,
+   "canonicalCitation": "Wang Q, He CF, Jiang L, et al. [Clinical outcomes of surgical management in 19 cases of tympanic paraganglioma] Zhonghua Er Bi Yan Hou Tou Jing Wai Ke Za Zhi. 2026 Jun 7;61(6):617-622. PMID 42420023.",
+   "citationVariants": [
+    "Wang Q, He CF, Jiang L, et al. [Clinical outcomes of surgical management in 19 cases of tympanic paraganglioma] Zhonghua Er Bi Yan Hou Tou Jing Wai Ke Za Zhi. 2026 Jun 7;61(6):617-622. PMID 42420023."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42420023/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/42420023/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-paraganglioma-to-hearing-loss",
+     "primaryId": "paraganglioma",
+     "targetId": "hearing-loss",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "f91d71d5d562a9bafb7bfc7d06ab7be539be79fde38a7f899deebdcb4c6d9513"
+   ]
+  },
+  {
+   "sourceId": "pmid-40570318",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "40570318",
+   "doi": null,
+   "canonicalCitation": "Natour A, Natour HH, DeDio R, et al. Carbon Dioxide (CO 2 ) Laser Glomus Tympanicum Resection: Hearing Outcomes and Recurrence Rates Otol Neurotol. 2025 Oct 1;46(9):e399-e402. PMID 40570318.",
+   "citationVariants": [
+    "Natour A, Natour HH, DeDio R, et al. Carbon Dioxide (CO 2 ) Laser Glomus Tympanicum Resection: Hearing Outcomes and Recurrence Rates Otol Neurotol. 2025 Oct 1;46(9):e399-e402. PMID 40570318."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40570318/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/40570318/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-paraganglioma-to-hearing-loss",
+     "primaryId": "paraganglioma",
+     "targetId": "hearing-loss",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "3926765f2084b6b4e4a0980001c76385ea55fcd2c0950279c20629fbe146efbc"
+   ]
+  },
+  {
+   "sourceId": "pmid-38217439",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "38217439",
+   "doi": null,
+   "canonicalCitation": "Fu X, Wu J, Lyu J, et al. Microscopic Versus Endoscopic Ear Surgery for Early-Stage Glomus Tympanicum Tumors Ear Nose Throat J. 2026 Aug;105(8):NP618-NP626. PMID 38217439.",
+   "citationVariants": [
+    "Fu X, Wu J, Lyu J, et al. Microscopic Versus Endoscopic Ear Surgery for Early-Stage Glomus Tympanicum Tumors Ear Nose Throat J. 2026 Aug;105(8):NP618-NP626. PMID 38217439."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38217439/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/38217439/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-paraganglioma-to-tinnitus",
+     "primaryId": "paraganglioma",
+     "targetId": "tinnitus",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "2da4a5c75248a4f44133e7d28bd5eacf40a2239e91fd5871598fe989f923b61f"
+   ]
+  },
+  {
+   "sourceId": "pmid-42679647",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "42679647",
+   "doi": null,
+   "canonicalCitation": "Matarazzo A, Sabatino A, Almeida G, et al. Glomus Tympanicum in an Asymptomatic 82-Year-Old Woman Am J Otolaryngol. 2026 Sep-Oct;47(5):104914. PMID 42679647.",
+   "citationVariants": [
+    "Matarazzo A, Sabatino A, Almeida G, et al. Glomus Tympanicum in an Asymptomatic 82-Year-Old Woman Am J Otolaryngol. 2026 Sep-Oct;47(5):104914. PMID 42679647."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42679647/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/42679647/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-paraganglioma-to-tinnitus",
+     "primaryId": "paraganglioma",
+     "targetId": "tinnitus",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "38a82f5feac277e2ee9726db2e21dc9f4a319400fb195f59a213424adb5ab9fb"
+   ]
+  },
+  {
+   "sourceId": "pmid-39326398",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "39326398",
+   "doi": null,
+   "canonicalCitation": "Koh SM, Song B, Cho YS. Clinical Features and Surgical Outcomes of Jugulotympanic Paraganglioma Audiol Neurootol. 2025;30(2):101-108. PMID 39326398.",
+   "citationVariants": [
+    "Koh SM, Song B, Cho YS. Clinical Features and Surgical Outcomes of Jugulotympanic Paraganglioma Audiol Neurootol. 2025;30(2):101-108. PMID 39326398."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39326398/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/39326398/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-paraganglioma-to-cranial-nerve-palsy",
+     "primaryId": "paraganglioma",
+     "targetId": "cranial-nerve-palsy",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "d91cf6e2eacaea6e3618da0bd5df850d4d71406b45696366bb6d7b6da958f744"
+   ]
+  },
+  {
+   "sourceId": "pmid-40641054",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "40641054",
+   "doi": null,
+   "canonicalCitation": "Pihlblad VED, Calissendorff J, Falhammar H. Differences in Clinical Presentation Between Pheochromocytomas and Paragangliomas Clin Endocrinol (Oxf). 2025 Nov;103(5):651-658. PMID 40641054.",
+   "citationVariants": [
+    "Pihlblad VED, Calissendorff J, Falhammar H. Differences in Clinical Presentation Between Pheochromocytomas and Paragangliomas Clin Endocrinol (Oxf). 2025 Nov;103(5):651-658. PMID 40641054."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40641054/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/40641054/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-paraganglioma-to-hypertension",
+     "primaryId": "paraganglioma",
+     "targetId": "hypertension",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "c3b406b5398887a23251b6249d77aae52d21a4cc223c1db4b2d1ac10234d373a"
+   ]
+  },
+  {
+   "sourceId": "pmid-41679891",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "41679891",
+   "doi": null,
+   "canonicalCitation": "Ferreira P, Ribeiro S, Meira I, et al. Incidentally vs nonincidentally diagnosed paragangliomas: Experience of a tertiary referral center Endocrinol Diabetes Nutr (Engl Ed). 2026 Feb;73(2):501673. PMID 41679891.",
+   "citationVariants": [
+    "Ferreira P, Ribeiro S, Meira I, et al. Incidentally vs nonincidentally diagnosed paragangliomas: Experience of a tertiary referral center Endocrinol Diabetes Nutr (Engl Ed). 2026 Feb;73(2):501673. PMID 41679891."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41679891/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/41679891/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-paraganglioma-to-hypertension",
+     "primaryId": "paraganglioma",
+     "targetId": "hypertension",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "ef1fabad21962434ee1d41dd1827dd25101bd983a8982d055effda6b71887e85"
+   ]
+  },
+  {
+   "sourceId": "pmid-42661256",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "42661256",
+   "doi": "10.1097/CRD.0000000000001456",
+   "canonicalCitation": "Swamynathan R, Dolan L, Frishman WH, et al. Patent Ductus Arteriosus Cardiol Rev. 2026 Aug 28.doi: 10.1097/CRD.0000000000001456. PMID 42661256.",
+   "citationVariants": [
+    "Swamynathan R, Dolan L, Frishman WH, et al. Patent Ductus Arteriosus Cardiol Rev. 2026 Aug 28.doi: 10.1097/CRD.0000000000001456. PMID 42661256."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42661256/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/42661256/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 2,
+   "liveUses": [
+    {
+     "relationshipId": "rel-patent-ductus-arteriosus-to-pulmonary-hypertension",
+     "primaryId": "patent-ductus-arteriosus",
+     "targetId": "pulmonary-hypertension",
+     "sourceIndex": 0
+    },
+    {
+     "relationshipId": "rel-patent-ductus-arteriosus-to-congestive-heart-failure",
+     "primaryId": "patent-ductus-arteriosus",
+     "targetId": "congestive-heart-failure",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "eda602a76a328891cc88793bcac93c3f99b8849ad947bf36e1ae78f42f535769",
+    "d47d471702eff6ab38652d19fdd245fd0adbd192193744df0deb2a5c7ae9d6e5"
+   ]
+  },
+  {
+   "sourceId": "pmid-42525314",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "42525314",
+   "doi": "10.1007/s11886-026-02395-z",
+   "canonicalCitation": "Un KC, Sagar P, Sheth R, et al. Transcatheter Closure of Patent Ductus Arteriosus in Adults Curr Cardiol Rep. 2026 Jul 29;28(1).doi: 10.1007/s11886-026-02395-z. PMID 42525314.",
+   "citationVariants": [
+    "Un KC, Sagar P, Sheth R, et al. Transcatheter Closure of Patent Ductus Arteriosus in Adults Curr Cardiol Rep. 2026 Jul 29;28(1).doi: 10.1007/s11886-026-02395-z. PMID 42525314."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42525314/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/42525314/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-patent-ductus-arteriosus-to-pulmonary-hypertension",
+     "primaryId": "patent-ductus-arteriosus",
+     "targetId": "pulmonary-hypertension",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "450819437c991b0e3361f31b3c5b6af17f18cd4fb4c8a7abfd6f3138411345b9"
+   ]
+  },
+  {
+   "sourceId": "pmid-41362902",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "41362902",
+   "doi": null,
+   "canonicalCitation": "Fadel NB, Almoli E, de Nanassy J, et al. New Insights: P.I.G in Preterm Infants With Isolated PDA and Severe Pulmonary Hypertension Case Rep Pediatr. 2025;2025:6268296. PMID 41362902.",
+   "citationVariants": [
+    "Fadel NB, Almoli E, de Nanassy J, et al. New Insights: P.I.G in Preterm Infants With Isolated PDA and Severe Pulmonary Hypertension Case Rep Pediatr. 2025;2025:6268296. PMID 41362902."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41362902/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/41362902/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-patent-ductus-arteriosus-to-pulmonary-hypertension",
+     "primaryId": "patent-ductus-arteriosus",
+     "targetId": "pulmonary-hypertension",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "0893b7a378af1e6535c2977af98295d81ab980248face95adb4785fb47daab1a"
+   ]
+  },
+  {
+   "sourceId": "pmid-42711802",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "42711802",
+   "doi": "10.1097/CRD.0000000000001470",
+   "canonicalCitation": "Kaywood AJ, Ahmadi A, Frishman WH. Management of Patent Ductus Arteriosus in the Adult Population Cardiol Rev. 2026 Sep 9.doi: 10.1097/CRD.0000000000001470. PMID 42711802.",
+   "citationVariants": [
+    "Kaywood AJ, Ahmadi A, Frishman WH. Management of Patent Ductus Arteriosus in the Adult Population Cardiol Rev. 2026 Sep 9.doi: 10.1097/CRD.0000000000001470. PMID 42711802."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42711802/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/42711802/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-patent-ductus-arteriosus-to-congestive-heart-failure",
+     "primaryId": "patent-ductus-arteriosus",
+     "targetId": "congestive-heart-failure",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "cbedcd0dae964523e140a3f9b6a527f6be3f1d19e4b84f0eddd31704a78b0daf"
+   ]
+  },
+  {
+   "sourceId": "pmid-41986666",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "41986666",
+   "doi": null,
+   "canonicalCitation": "Joseph A, Chandra A, Barton GP, et al. Long-term outcomes in adults born preterm with symptomatic patent ductus arteriosus J Perinatol. 2026 Jul;46(7):1164-1170. PMID 41986666.",
+   "citationVariants": [
+    "Joseph A, Chandra A, Barton GP, et al. Long-term outcomes in adults born preterm with symptomatic patent ductus arteriosus J Perinatol. 2026 Jul;46(7):1164-1170. PMID 41986666."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41986666/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/41986666/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-patent-ductus-arteriosus-to-congestive-heart-failure",
+     "primaryId": "patent-ductus-arteriosus",
+     "targetId": "congestive-heart-failure",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "d62577894263b6f948cb2e44dc43bb21133d65b57acdc47a9d8ff610c8efa132"
+   ]
+  },
+  {
+   "sourceId": "pmid-42338397",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "42338397",
+   "doi": null,
+   "canonicalCitation": "Öksüz RA, Thurnheer SE, Yu R, et al. Audiological Outcomes in 465 Primary Myringoplasties: Reporting Pitfalls and Lessons Learned J Laryngol Otol. 2026 Aug;140(8):878-883. PMID 42338397.",
+   "citationVariants": [
+    "Öksüz RA, Thurnheer SE, Yu R, et al. Audiological Outcomes in 465 Primary Myringoplasties: Reporting Pitfalls and Lessons Learned J Laryngol Otol. 2026 Aug;140(8):878-883. PMID 42338397."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42338397/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/42338397/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-perforated-eardrum-to-conductive-hearing-loss",
+     "primaryId": "perforated-eardrum",
+     "targetId": "conductive-hearing-loss",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "3caacb732fbc7eb99178a41cf300d1c57f2f43932ed2220a10735711565383dc"
+   ]
+  },
+  {
+   "sourceId": "pmid-41477176",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "41477176",
+   "doi": null,
+   "canonicalCitation": "Saadaldeen SY, Dawood MR, Jwery AK. Characteristics of sensorineural hearing loss in tubotympanic chronic otitis media Qatar Med J. 2025;2025(4):96. PMID 41477176.",
+   "citationVariants": [
+    "Saadaldeen SY, Dawood MR, Jwery AK. Characteristics of sensorineural hearing loss in tubotympanic chronic otitis media Qatar Med J. 2025;2025(4):96. PMID 41477176."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41477176/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/41477176/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-perforated-eardrum-to-conductive-hearing-loss",
+     "primaryId": "perforated-eardrum",
+     "targetId": "conductive-hearing-loss",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "9d3d158588ddd9b6749025897366fac00673e8e5eaa1e02be9b99dc913b91f05"
+   ]
+  },
+  {
+   "sourceId": "pmid-42080086",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "42080086",
+   "doi": null,
+   "canonicalCitation": "von Heideken J, Arendt E, Askenberger M. Long-term Outcomes of Knee Brace Versus Operative Medial Patellofemoral Ligament Repair in Children With First-Time Traumatic Patellar Dislocation: A 10-Year Follow-up From Skeletal Immaturity to Adulthood Orthop J Sports Med. 2026 Apr;14(4):23259671261432589. PMID 42080086.",
+   "citationVariants": [
+    "von Heideken J, Arendt E, Askenberger M. Long-term Outcomes of Knee Brace Versus Operative Medial Patellofemoral Ligament Repair in Children With First-Time Traumatic Patellar Dislocation: A 10-Year Follow-up From Skeletal Immaturity to Adulthood Orthop J Sports Med. 2026 Apr;14(4):23259671261432589. PMID 42080086."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42080086/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/42080086/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-patellar-subluxation-to-patellofemoral-pain-syndrome",
+     "primaryId": "patellar-subluxation",
+     "targetId": "patellofemoral-pain-syndrome",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "b0602c87dce1595ea9490ccbfa5a075423617bc4733f6df11c3a2768eb5f28ac"
+   ]
+  },
+  {
+   "sourceId": "pmid-34546985",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "34546985",
+   "doi": null,
+   "canonicalCitation": "DeVries CA, Bomar JD, Pennock AT. Prevalence of Trochlear Dysplasia and Associations with Patellofemoral Pain and Instability in a Skeletally Mature Population J Bone Joint Surg Am. 2021 Nov 17;103(22):2126-2132. PMID 34546985.",
+   "citationVariants": [
+    "DeVries CA, Bomar JD, Pennock AT. Prevalence of Trochlear Dysplasia and Associations with Patellofemoral Pain and Instability in a Skeletally Mature Population J Bone Joint Surg Am. 2021 Nov 17;103(22):2126-2132. PMID 34546985."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34546985/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/34546985/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-patellar-subluxation-to-patellofemoral-pain-syndrome",
+     "primaryId": "patellar-subluxation",
+     "targetId": "patellofemoral-pain-syndrome",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "3a0393d9816215b511894f7c9fa3a1bb1ea08d418ac7c91ad00bd51d5c8956d7"
    ]
   }
  ],

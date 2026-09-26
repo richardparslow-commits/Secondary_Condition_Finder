@@ -2,8 +2,240 @@
   "id": "paraganglioma",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review hormonal, metabolic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 69 (2026-09-26): four ASSOCIATION_ONLY draft mappings pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: the edges assert association only (etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true). The evidence base is small retrospective surgical cohorts plus tertiary-center registry cohorts, so individual claims require dated audiometric, neurologic, or biochemical assessment with competing-cause exclusion and review by a qualified medical professional.",
+    "Pathway and duplicate-scope screens: no -> conductive-hearing-loss edge (IDENTITY-DUPLICATION - the conductive-gap evidence is carried on the umbrella hearing-loss edge together with the sensorineural component of the mixed presentation; authoring both would double-register one pathway against two identities in the hearing window); no -> diabetes-mellitus edge (below threshold - pre-diabetes/diabetes prevalence in the PPGL cohort (PMID 40641054) is higher in pheochromocytomas than paragangliomas (45% versus 24%), no paraganglioma-specific incidence quantification was located, and the shared-substrate catecholamine-metabolism framing belongs to the pheochromocytoma family whose window owns its evidence (ME-29); no -> osteoporosis edge (below threshold - the adrenergic-skeletal axis report (PMID 42758342) is PPGL-pooled without paraganglioma-specific quantification and the identity is the residuals-framed Osteoporosis construct); ME-29 discipline - the acoustic-neuroma hearing-loss window (PMID 37024333), the otosclerosis and cholesteatoma hearing windows, and the pheochromocytoma hypertension window (PMID 24893135) are NOT recycled; all anchors here are paraganglioma-specific; direction discipline - surgical improvement and depth-response evidence support the associations only."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 69 (2026-09-26): four bounded association edges authored - paraganglioma to hearing-loss (rank 1), tinnitus (rank 2), cranial-nerve-palsy (rank 3), and hypertension (rank 4) - all classified ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, and hypothesizedOnly:true. The hearing and tinnitus edges rest on temporal bone and glomus tympanicum surgical cohorts (PMIDs 34094530, 42420023, 40570318, 38217439) with the asymptomatic incidental case (PMID 42679647) carried as an explicit counterweight; the cranial-nerve edge separates presentation-level facial nerve involvement (PMID 34094530) from treatment-mediated lower cranial nerve palsy (PMID 39326398); the hypertension edge uses PPGL and paraganglioma cohorts (PMIDs 40641054, 41679891) with the catecholamine-secreting sympathetic scope carried openly.",
+    "Counter-evidence and caveat screens recorded 2026-09-26: (i) asymptomatic counterweight - the incidentally discovered glomus tympanicum (PMID 42679647) remained symptom-free for five years, bounding every symptomatic edge on this file; (ii) treatment-mediated discipline - the jugulotympanic cohort's quantified persistent cranial nerve palsies were post-surgical with normal preoperative function, so the edge's causationStatus and basis carry the inseparability of tumor and treatment contributions; (iii) secretory-scope limit - non-secretory head and neck paragangliomas are frequent, and the hypertension anchors are sympathetic-tumor-dominant; (iv) withheld propositions - diabetes-mellitus and osteoporosis (below threshold, PPGL-pooled evidence with the pheochromocytoma family owning its windows per ME-29); (v) ME-29 - the acoustic-neuroma, otosclerosis, cholesteatoma, and pheochromocytoma windows are not recycled; all anchors are paraganglioma-specific sources."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "hearing-loss",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Head and neck and temporal bone paragangliomas document hearing loss at cohort level: the ten-year third-center head and neck paraganglioma cohort reports variable hearing loss in 90.9 percent of temporal bone paraganglioma cases (PMID 34094530), the 19-case tympanic paraganglioma surgical cohort measured a mean preoperative air-bone gap of 18.0 dB narrowing to 8.0 dB after resection (PMID 42420023), and the 15-case glomus tympanicum cohort documented preoperative conductive hearing loss with air-bone gaps wider than 30 dB requiring ossicular reconstruction in three patients (PMID 40570318); recorded as documented association only with the mixed conductive and sensorineural character carried openly.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: the anchors are small single-institution retrospective surgical cohorts measuring hearing at presentation, tumor extent and chronic middle-ear change both drive the conductive component, and individual claims require dated audiometry with noise, presbycusis, and ossicular exclusion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MECHANICAL_OR_COMPRESSIVE",
+        "primaryVector": "A vascular middle-ear or jugular-bulb mass displaces the ossicular chain and fills the middle-ear space so a conductive air-bone gap results, and cochlear or cochlear-aqueduct extension adds a sensorineural component, the mass-effect route supported by air-bone gaps that narrow after tumor removal, but whether this route produced any individual hearing loss remains hypothesized until audiometric and imaging records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at small retrospective surgical-cohort class only (19, 15, and 11-patient series): every surgical cohort is referral-selected toward symptomatic tumors, the incidentally discovered glomus tympanicum followed five years without otologic symptoms (PMID 42679647) shows the mass can exist without hearing complaints, and no untreated natural-history quantification exists.",
+        "evidenceGaps": "All anchors are small single-institution retrospective surgical series with referral selection toward symptomatic tumors; hearing loss is reported as variable across mixed conductive and sensorineural mechanisms without pooled quantification; chronic middle-ear effusion and ossicular erosion compete with simple mass effect for the conductive component; the asymptomatic incidental case (PMID 42679647) shows symptoms are not universal; and noise exposure, presbycusis, otosclerosis, and prior otologic surgery compete for individual attribution.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "noise exposure and presbycusis",
+          "otosclerosis or other ossicular pathology (published windows, not recycled per ME-29)",
+          "chronic middle-ear effusion behind the tumor",
+          "prior otologic surgery",
+          "retrocochlear lesions other than paraganglioma (the acoustic-neuroma window, not recycled per ME-29)"
+        ]
+      },
+      "evidenceGaps": [
+        "All anchors are small single-institution retrospective surgical series with referral selection toward symptomatic tumors; hearing loss is reported as variable across mixed conductive and sensorineural mechanisms without pooled quantification; chronic middle-ear effusion and ossicular erosion compete with simple mass effect for the conductive component; the asymptomatic incidental case (PMID 42679647) shows symptoms are not universal; and noise exposure, presbycusis, otosclerosis, and prior otologic surgery compete for individual attribution."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY at surgical-cohort class with the mixed-mechanism and referral-selection limits carried openly: the ten-year head and neck cohort documents variable hearing loss in 90.9 percent of temporal bone cases (PMID 34094530), the tympanic cohort measured an 18.0 dB mean air-bone gap narrowing to 8.0 dB after resection (PMID 42420023), and the glomus tympanicum cohort documented conductive gaps wider than 30 dB (PMID 40570318); because the cohorts are small and referral-selected and the asymptomatic case (PMID 42679647) shows the tumor can exist without otologic symptoms, the conservative standard keeps the edge at association only and routes individual claims through dated audiometry with noise, presbycusis, and ossicular exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Merzouqi B, El Bouhmadi K, Oukesou Y, et al. Head and neck paragangliomas: Ten years of experience in a third health center. A cohort study Ann Med Surg (Lond). 2021 Jun;66:102412. PMID 34094530.",
+          "note": "Ten-year head and neck paraganglioma cohort in a third-level center (Ann Med Surg 2021; 11 patients): temporal bone paragangliomas appear as a pulsatile mass behind the tympanic membrane causing variable hearing loss in 90.9% of cases; facial nerve the most frequently affected cranial nerve (36.4%); supports the bounded hearing-loss association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34094530/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 34094530; results (temporal bone paraganglioma presentation and hearing loss frequency)"
+        },
+        {
+          "citation": "Wang Q, He CF, Jiang L, et al. [Clinical outcomes of surgical management in 19 cases of tympanic paraganglioma] Zhonghua Er Bi Yan Hou Tou Jing Wai Ke Za Zhi. 2026 Jun 7;61(6):617-622. PMID 42420023.",
+          "note": "Surgical cohort of 19 tympanic paragangliomas (Zhonghua Er Bi Yan Hou Tou Jing Wai Ke Za Zhi 2026): mean air-bone gap 18.0 dB preoperatively improving to 8.0 dB postoperatively (P=0.005); type A tumors improved more than type B (17.0 vs 10.0 dB); supports the bounded conductive-gap association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42420023/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 42420023; results (preoperative and postoperative air-bone gap)"
+        },
+        {
+          "citation": "Natour A, Natour HH, DeDio R, et al. Carbon Dioxide (CO 2 ) Laser Glomus Tympanicum Resection: Hearing Outcomes and Recurrence Rates Otol Neurotol. 2025 Oct 1;46(9):e399-e402. PMID 40570318.",
+          "note": "CO2-laser glomus tympanicum resection cohort, 15 patients (Otol Neurotol 2025): three patients had preoperative conductive hearing loss with air-bone gap wider than 30 dB requiring ossicular chain reconstruction with postoperative gap closure; no significant postoperative audiometric worsening in the remainder; supports the bounded conductive-gap association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40570318/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 40570318; results (preoperative air-bone gap and ossicular reconstruction)"
+        }
+      ]
+    },
+    {
+      "conditionId": "tinnitus",
+      "rank": 2,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Glomus tympanicum tumors document pulsatile tinnitus at surgical-series level: in the 25-case early-stage glomus tympanicum comparison cohort pulsatile tinnitus was present preoperatively and improved in every patient after complete tumor removal (PMID 38217439), while the incidentally discovered glomus tympanicum followed five years without otologic symptoms (PMID 42679647) establishes the symptom is not constitutive of the tumor; recorded as documented association only with the pulsatile vascular character carried openly.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: the symptomatic anchor is a small retrospective surgical series in which post-removal improvement is entangled with the intervention, the asymptomatic case shows the tumor can exist without tinnitus, and individual claims require dated otologic assessment with vascular-auscultation and somatosound exclusion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "THROMBOTIC_OR_VASCULAR",
+        "primaryVector": "Turbulent blood flow within the highly vascular glomus tumor's neovasculature, conducted through the adjacent ossicular chain, is perceived as pulsatile tinnitus so a rhythmic ear sound results, the vascular-bruit route supported by symptom improvement in all patients after vascular-tumor removal, but whether this route produced any individual tinnitus remains hypothesized until otologic and vascular records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at small retrospective surgical-series class only (25 early-stage tumors): improvement-after-removal is intervention-entangled, the incidental case (PMID 42679647) documents an asymptomatic tumor with five-year stability, tumor grade and extent are not stratified against symptom presence, and no untreated symptom-natural-history quantification exists.",
+        "evidenceGaps": "The symptomatic anchor is a 25-case retrospective surgical series with improvement measured after intervention; the asymptomatic counterweight case (PMID 42679647) shows the tumor can exist without otologic symptoms for years; no cohort stratifies tinnitus prevalence by tumor grade or extent; and vascular stenosis, hypertension with audible bruit, superior-semicircular-canal dehiscence (published window, not recycled per ME-29), and hearing-loss-related somatosounds compete for individual attribution.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "carotid or other vascular stenosis producing an objective bruit",
+          "hypertension with audible pulsatile flow",
+          "superior semicircular canal dehiscence (published window, not recycled per ME-29)",
+          "hearing-loss-related somatosound or high-tone tinnitus",
+          "glomus tumors of the contralateral or non-aural sites"
+        ]
+      },
+      "evidenceGaps": [
+        "The symptomatic anchor is a 25-case retrospective surgical series with improvement measured after intervention; the asymptomatic counterweight case (PMID 42679647) shows the tumor can exist without otologic symptoms for years; no cohort stratifies tinnitus prevalence by tumor grade or extent; and vascular stenosis, hypertension with audible bruit, superior-semicircular-canal dehiscence (published window, not recycled per ME-29), and hearing-loss-related somatosounds compete for individual attribution."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY at surgical-series class with the intervention-entanglement and asymptomatic-counterweight limits carried openly: the 25-case early-stage cohort had pulsatile tinnitus improve in all patients after complete resection (PMID 38217439), while the incidentally discovered glomus tympanicum remained asymptomatic over five years of watchful waiting (PMID 42679647); because improvement-after-removal cannot separate natural fluctuation from treatment effect and the counterweight case shows the symptom is not constitutive, the conservative standard keeps the edge at association only and routes individual claims through dated otologic assessment with vascular-auscultation and somatosound exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Fu X, Wu J, Lyu J, et al. Microscopic Versus Endoscopic Ear Surgery for Early-Stage Glomus Tympanicum Tumors Ear Nose Throat J. 2026 Aug;105(8):NP618-NP626. PMID 38217439.",
+          "note": "Retrospective comparison of microscopic versus endoscopic surgery for 25 early-stage glomus tympanicum tumors (Ear Nose Throat J 2026): pulsatile tinnitus improved in all patients after complete tumor resection; all tumors completely resected with no major complications; supports the bounded pulsatile-tinnitus association only (improvement-after-removal, intervention-entangled).",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38217439/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 38217439; results (symptom outcomes including pulsatile tinnitus after resection)"
+        },
+        {
+          "citation": "Matarazzo A, Sabatino A, Almeida G, et al. Glomus Tympanicum in an Asymptomatic 82-Year-Old Woman Am J Otolaryngol. 2026 Sep-Oct;47(5):104914. PMID 42679647.",
+          "note": "Incidentally discovered glomus tympanicum in an 82-year-old woman (Am J Otolaryngol 2026; case report with 5-year follow-up): no otologic symptoms at presentation, mild-to-moderate ipsilateral sensorineural hearing loss on audiometry, tumor stable over 5 years of watchful waiting; COUNTERWEIGHT establishing the symptom is not constitutive, carried openly.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42679647/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 42679647; clinical course (asymptomatic presentation and 5-year stability)"
+        }
+      ]
+    },
+    {
+      "conditionId": "cranial-nerve-palsy",
+      "rank": 3,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Jugulotympanic paragangliomas document cranial nerve involvement at cohort level: the ten-year head and neck paraganglioma cohort found the facial nerve the most frequently affected cranial nerve (36.4 percent of cases, PMID 34094530), and the 19-case jugulotympanic surgical cohort documents lower cranial nerve invasion with deep medial tumor extension predicting palsy (invasion depth 9.5 mm or greater: five of six patients developed lower cranial nerve palsy, PMID 39326398); recorded as documented association only with the treatment-mediated component carried openly (the quantified persistent palsies were post-surgical with normal preoperative lower cranial nerve function).",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: the facial-nerve finding is presentation-level tumor effect but the quantified persistent lower cranial nerve palsies followed surgery, so tumor-attributable and treatment-attributable components cannot be separated in the located anchors, and individual claims require dated neurologic and operative records with stroke, idiopathic facial palsy, and other skull-base-mass exclusion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MECHANICAL_OR_COMPRESSIVE",
+        "primaryVector": "A jugular-foramen or tympanic tumor mass invades and compresses adjacent cranial nerves in the jugular foramen and facial canal so nerve palsy results, the invasion route supported by the depth-response relationship (deep medial invasion predicting palsy risk), but whether this route or its surgical treatment produced any individual palsy remains hypothesized until neurologic and operative records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at two small retrospective surgical cohorts (11 and 19 patients) only: the quantified persistent lower cranial nerve palsies occurred after surgery with normal preoperative function, deep invasion predicts treatment morbidity rather than documented untreated palsy, and facial-nerve involvement in the second cohort is presentation-level without mechanism separation.",
+        "evidenceGaps": "Both anchors are small single-institution retrospective surgical cohorts; the lower cranial nerve palsy quantification is treatment-mediated (post-surgical) while preoperative function was normal, so the untreated natural-history palsy rate is unquantified; deep medial invasion predicts surgical morbidity; and stroke, idiopathic facial palsy, skull-base infection, and other skull-base neoplasms compete for individual attribution.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "surgical or radiotherapeutic nerve injury (treatment-mediated component, carried openly)",
+          "stroke and central cranial nerve lesions",
+          "idiopathic facial palsy (Bell palsy)",
+          "other skull-base masses (published windows, not recycled per ME-29)",
+          "malignant otitis externa skull-base involvement (the otitis-externa cranial-nerve-palsy window is necrotizing-subtype scoped and not recycled per ME-29)"
+        ]
+      },
+      "evidenceGaps": [
+        "Both anchors are small single-institution retrospective surgical cohorts; the lower cranial nerve palsy quantification is treatment-mediated (post-surgical) while preoperative function was normal, so the untreated natural-history palsy rate is unquantified; deep medial invasion predicts surgical morbidity; and stroke, idiopathic facial palsy, skull-base infection, and other skull-base neoplasms compete for individual attribution."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY at surgical-cohort class with the treatment-mediated limit carried openly: the head and neck cohort found the facial nerve affected in 36.4 percent of cases at presentation (PMID 34094530) and the jugulotympanic cohort documents lower cranial nerve invasion with a depth-response relationship (five of six deeply invasive tumors developed palsy, PMID 39326398); because the cohort's quantified persistent palsies were post-surgical (preoperative lower cranial nerve function was normal in all patients), tumor and treatment contributions cannot be separated, so the conservative standard keeps the edge at association only and routes individual claims through dated neurologic and operative records with stroke, idiopathic, and competing-mass exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Koh SM, Song B, Cho YS. Clinical Features and Surgical Outcomes of Jugulotympanic Paraganglioma Audiol Neurootol. 2025;30(2):101-108. PMID 39326398.",
+          "note": "Single-institution retrospective review of 19 jugulotympanic paraganglioma resections 2004-2022 (Audiol Neurootol 2025): lower cranial nerve palsy lasting more than 1 year in 7 patients after surgery; invasion depth 9.5 mm or greater predicted lower cranial nerve palsy (5 of 6 patients, p=0.02); preoperative lower cranial nerve function normal in all patients; supports the bounded invasion association with the treatment-mediated limit carried openly.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39326398/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 39326398; results (cranial nerve outcomes and invasion-depth relationship)"
+        },
+        {
+          "citation": "Merzouqi B, El Bouhmadi K, Oukesou Y, et al. Head and neck paragangliomas: Ten years of experience in a third health center. A cohort study Ann Med Surg (Lond). 2021 Jun;66:102412. PMID 34094530.",
+          "note": "Ten-year head and neck paraganglioma cohort (Ann Med Surg 2021; 11 patients): the facial nerve is the most frequently affected cranial nerve, affected in 36.4% of cases; supports the bounded presentation-level cranial-nerve-involvement association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34094530/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 34094530; results (cranial nerve involvement frequencies)"
+        }
+      ]
+    },
+    {
+      "conditionId": "hypertension",
+      "rank": 4,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Pheochromocytoma and paraganglioma cohorts document hypertension at cohort level: the 201-patient PPGL tertiary-center cohort found hypertension in 82 percent of all patients with similar prevalence between pheochromocytoma and paraganglioma groups (PMID 40641054), and the 140-patient paraganglioma cohort found sustained hypertension more common in clinically suspected than incidentally discovered tumors (68.8 versus 47.1 percent, PMID 41679891); recorded as documented association only with the catecholamine-secreting sympathetic scope carried openly (head and neck paragangliomas are frequently non-secretory).",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: the anchors are retrospective tertiary-center cohorts mixing secreting and non-secreting tumors across sites, background hypertension prevalence at comparable ages is high, and individual claims require dated biochemical testing (plasma free metanephrines) with essential-hypertension, renal, medication, and sleep-apnea exclusion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "NEUROENDOCRINE_CASCADE",
+        "primaryVector": "Catecholamine secretion from sympathetic paraganglioma chromaffin tissue drives sustained and paroxysmal vasoconstriction so arterial hypertension results, the secretory route supported by higher sustained-hypertension prevalence in clinically suspected (secretory-presenting) than in incidental tumors, but whether this route produced any individual hypertension remains hypothesized until biochemical and imaging records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at retrospective tertiary-cohort class only: both cohorts mix tumor sites and secretory states, the comparative cohort's paraganglioma subgroup is not separately quantified for hypertension mechanism, incidental tumors show 47.1 percent sustained hypertension approaching background prevalence, and no incident-onset design establishes tumor-before-hypertension ordering.",
+        "evidenceGaps": "Both anchors are retrospective tertiary-center cohorts; the comparative cohort reports paraganglioma and pheochromocytoma together for the 82 percent figure; non-secretory head and neck paragangliomas are underrepresented in the hypertension framing; incidental tumors show 47.1 percent sustained hypertension near background prevalence; and essential hypertension, renal disease, obstructive sleep apnea, and medication effects compete for individual attribution.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "essential hypertension at age-matched background prevalence",
+          "renal and renovascular disease",
+          "obstructive sleep apnea (published window, not recycled per ME-29)",
+          "medication and substance effects",
+          "other endocrine hypertension (the published hyperaldosteronism and cushings windows, not recycled per ME-29)"
+        ]
+      },
+      "evidenceGaps": [
+        "Both anchors are retrospective tertiary-center cohorts; the comparative cohort reports paraganglioma and pheochromocytoma together for the 82 percent figure; non-secretory head and neck paragangliomas are underrepresented in the hypertension framing; incidental tumors show 47.1 percent sustained hypertension near background prevalence; and essential hypertension, renal disease, obstructive sleep apnea, and medication effects compete for individual attribution."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY at retrospective-cohort class with the secretory-scope and background-prevalence limits carried openly: the 201-patient PPGL cohort found hypertension in 82 percent with similar prevalence in the paraganglioma subgroup (PMID 40641054) and the 140-patient paraganglioma cohort found sustained hypertension in 68.8 percent of clinically suspected versus 47.1 percent of incidental tumors (PMID 41679891); because the cohorts mix secretory states and the incidental-tumor rate approaches background prevalence, the conservative standard keeps the edge at association only and routes individual claims through dated metanephrine testing with essential, renal, medication, and sleep-apnea exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Pihlblad VED, Calissendorff J, Falhammar H. Differences in Clinical Presentation Between Pheochromocytomas and Paragangliomas Clin Endocrinol (Oxf). 2025 Nov;103(5):651-658. PMID 40641054.",
+          "note": "Retrospective cohort of 201 PPGL patients at a tertiary center 2005-2024 (Clin Endocrinol 2025): hypertension in 82% of all patients, similar prevalence between pheochromocytoma and paraganglioma groups; classic triad only 12%; paragangliomas less often epinephrine-producing (25.0%); supports the bounded paraganglioma-hypertension association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40641054/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 40641054; results (blood pressure and symptom comparison between tumor groups)"
+        },
+        {
+          "citation": "Ferreira P, Ribeiro S, Meira I, et al. Incidentally vs nonincidentally diagnosed paragangliomas: Experience of a tertiary referral center Endocrinol Diabetes Nutr (Engl Ed). 2026 Feb;73(2):501673. PMID 41679891.",
+          "note": "Retrospective cohort of 140 paraganglioma patients 2004-2023 (Endocrinol Diabetes Nutr 2026): sustained hypertension in 68.8% of clinically suspected versus 47.1% of incidentally discovered tumors (p=0.016); classic symptoms more frequent in suspected cases; supports the bounded presentation-gradient association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41679891/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 41679891; results (hypertension prevalence by mode of discovery)"
+        }
+      ]
+    }
+  ]
 }
