@@ -11125,6 +11125,382 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 **Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
 
+### `muscular-dystrophy` → `contractures` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Duchenne muscular dystrophy documents progressive joint contractures at longitudinal cohort level: the 178-boy longitudinal cohort with annual range-of-motion measurement at hip, knee, and ankle found contracture prevalence and severity increasing with age and more severe contractures significantly associated with worse ambulatory function, with contracture severity moderately predicted by MRI muscle fat fraction and T2 (PMID 35124659), and the 33-boy maturation-corrected trajectory study found dorsiflexion range of motion declining 0.23-0.33 z-score per year after ages 6.6-9.4 alongside muscle size loss (PMID 40100909); the relationship is recorded as documented disease-sequela association only.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: the anchors are Duchenne-specific observational cohorts where contractures develop alongside progressive myopathy, glucocorticoid exposure, and ambulation loss, so whether any individual contracture is attributable to the dystrophy requires individual physiatric attribution with immobilization, orthopedic, and neurologic exclusion.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 308.1 — Willcocks RJ, Barnard AM, Wortman RJ, et al. Development of Contractures in DMD in Relation to MRI-Determined Muscle Quality and Ambulatory Function J Neuromuscul Dis. 2022;9(2):289-302. doi: 10.3233/JND-210731. PMID 35124659.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/35124659/
+- Source checked on: 2026-09-26
+- Locator: PMID 35124659; results (contracture trajectories and functional correlations)
+- Note under review: Longitudinal cohort of 178 boys with Duchenne muscular dystrophy (annual ROM at hip, knee, ankle; subset upper limb): contracture prevalence and severity increased with age; more severe contractures significantly associated with worse ambulatory function; MRI T2/fat fraction correlations 0.40-0.61 lower extremity and 0.20-0.47 upper extremity; supports the bounded disease-sequela association only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 308.2 — Vandekerckhove I, Van den Hauwe M, Dewit T, et al. Longitudinal trajectories of muscle impairments in growing boys with Duchenne muscular dystrophy PLoS One. 2025;20(3):e0307007. doi: 10.1371/journal.pone.0307007. PMID 40100909.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/40100909/
+- Source checked on: 2026-09-26
+- Locator: PMID 40100909; results (maturation-corrected ROM and muscle size trajectories)
+- Note under review: Longitudinal trajectory study of 33 boys with DMD (ages 4.3-17; 161 strength, 178 ROM, 64 ultrasound assessments) with maturation-corrected z-scores: dorsiflexion ROM declined 0.23-0.33 z-score/year and medial gastrocnemius size 0.56 z-score/year after ages 6.6-9.4; supports the bounded progression association only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `muscular-dystrophy` → `scoliosis` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Duchenne and Becker muscular dystrophies document scoliosis at population-based and natural-history level: the US MD STARnet population-based study of 513 analysed dystrophinopathy individuals found approximately one-quarter with curvature of at least 20 degrees and loss of independent ambulation carrying adjusted hazards of curvature 6.2 to 31.6 across Cobb thresholds, with non-use of corticosteroids associated with higher hazards (PMID 34787322), and the 105-patient natural-history review found scoliosis developing in 95 percent of patients after loss of ambulation with curve direction determined by asymmetric iliotibial band contracture and spinal orthoses failing to control progression in 94 percent (PMID 3611341); the relationship is recorded as documented disease-sequela association only.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: the anchors are dystrophinopathy cohorts where scoliosis follows ambulation loss and asymmetric soft-tissue contracture, so whether any individual curve is attributable to the dystrophy requires individual orthopedic attribution with idiopathic, neuromuscular, and congenital exclusion.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 309.1 — Conway KM, Gedlinske A, Mathews KD, et al. A population-based study of scoliosis among males diagnosed with a dystrophinopathy identified by the Muscular Dystrophy Surveillance, Tracking, and Research Network (MD STARnet) Muscle Nerve. 2022 Feb;65(2):193-202. doi: 10.1002/mus.27464. PMID 34787322.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/34787322/
+- Source checked on: 2026-09-26
+- Locator: PMID 34787322; results (curvature incidence and ambulation-loss hazard ratios)
+- Note under review: US MD STARnet population-based study of scoliosis in childhood-onset dystrophinopathy (curvature data for 513 of 1,054 ascertained individuals): about one-quarter with curvature at least 20 degrees; loss of independent ambulation aHR 6.2-31.6 across Cobb thresholds (10/20/30 degrees); corticosteroid non-use associated with higher hazards; supports the bounded population-based association only. Preflight note: erratum-linked record (ErratumIn: Muscle Nerve. 2023 Jun;67(6):E28, doi:10.1002/mus.27823); disposition - cited figures taken from the indexed parent record, erratum content not indexed in abstract form, flagged for qualified-human disposition during citation verification.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 309.2 — Cambridge W, Drennan JC. Scoliosis associated with Duchenne muscular dystrophy J Pediatr Orthop. 1987 Jul-Aug;7(4):436-40. PMID 3611341.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/3611341/
+- Source checked on: 2026-09-26
+- Locator: PMID 3611341; review results (scoliosis natural history after ambulation loss)
+- Note under review: Natural-history review of 105 Duchenne muscular dystrophy patients (1987): scoliosis developed in 95% after loss of ambulation; curve direction determined by asymmetric iliotibial band contracture; spinal orthoses failed in 94% (30/32); spinal fusion results excellent; supports the bounded natural-history association only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `muscular-dystrophy` → `cardiomyopathy` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Duchenne and Becker muscular dystrophies document dilated cardiomyopathy at adult-cohort and registry level: the adult DMD clinic cohort of 33 patients states cardiomyopathy is universally penetrant in young adults with Duchenne muscular dystrophy and is increasingly the preponderant cause of death, documenting declining left ventricular ejection fraction (51 percent at enrollment to 45 percent at follow-up) and midwall fibrosis on cardiac MRI (PMID 42112505), the European HOPE-MD registry of 274 adults with genetically confirmed DMD or Becker muscular dystrophy and ejection fraction at or below 40 percent frames both dystrophinopathies as often progressing to dilated cardiomyopathy and heart failure (PMID 42169468), and the state-of-the-art CMR review documents inferolateral subepicardial fibrosis as a dystrophinopathy signature with subclinical myocardial involvement years before overt dysfunction (PMID 41548716); the relationship is recorded as documented disease-sequela association only.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: the anchors are genotype-confirmed dystrophinopathy cohorts but the cardiomyopathy penetrance varies with age, genotype, and treatment era, so whether any individual cardiomyopathy is attributable to the dystrophy requires individual cardiology attribution with hypertensive, inflammatory, and familial exclusion.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 310.1 — Murray PC, Pollock A, Hewitt K, et al. ECG and imaging manifestations of cardiomyopathy in adults with Duchenne muscular dystrophy Int J Cardiol Heart Vasc. 2026 Feb;62:101856. doi: 10.1016/j.ijcha.2025.101856. PMID 42112505.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42112505/
+- Source checked on: 2026-09-26
+- Locator: PMID 42112505; results (ECG, echocardiography, and CMR findings)
+- Note under review: Adult DMD multidisciplinary clinic cohort (33 patients, median age 20, mean follow-up 3 years 3 months): cardiomyopathy universally penetrant in young adults and increasingly the preponderant cause of death; mean LVEF 51% at enrollment falling to 45% at follow-up; extensive midwall fibrosis on completed CMR; supports the bounded disease-sequela association only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 310.2 — Monzo L, Bobbio E, Montrasio G, et al. Heart failure guideline-directed medical therapy in young adults with dystrophin-related cardiomyopathy: the HOPE-MD registry Eur Heart J Qual Care Clin Outcomes. 2026 Sep 16;12(6):1026-1035. doi: 10.1093/ehjqcco/qcag088. PMID 42169468.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42169468/
+- Source checked on: 2026-09-26
+- Locator: PMID 42169468; background and results (dystrophin-related cardiomyopathy registry)
+- Note under review: European multicentre HOPE-MD registry of 274 adults with genetically confirmed DMD (80%) or BMD and LVEF at or below 40%: dystrophinopathies framed as often progressing to dilated cardiomyopathy and HFrEF, a major cause of death; GDMT utilization suboptimal; supports the bounded registry-level association only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 310.3 — Russo V, Hudelo J, Marchel M, et al. Role of cardiovascular magnetic resonance in diagnosis and management of muscular dystrophies J Cardiovasc Magn Reson. 2026 Jan 16;28(2):102693. doi: 10.1016/j.jocmr.2026.102693. PMID 41548716.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/41548716/
+- Source checked on: 2026-09-26
+- Locator: PMID 41548716; review results (disease-specific CMR signatures)
+- Note under review: State-of-the-art CMR review of muscular dystrophies: inferolateral subepicardial fibrosis as the dystrophinopathy tissue signature; subclinical myocardial involvement years before overt dysfunction; LGE burden associated with ventricular arrhythmias and adverse events; supports the bounded mechanistic-phenotype proposition only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `muscular-dystrophy` → `sleep-apnea` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Duchenne muscular dystrophy documents obstructive sleep apnea at polysomnographic cohort and review level: the prospective polysomnography study of 12 consecutive Duchenne males found obstructive sleep apnea syndrome in 42 percent by PSG versus none of eight controls (p=0.004), with 58 percent reporting at least one apnea-related symptom and cardiac autonomic dysfunction more pronounced with apnea (PMID 32740854), and the sleep-disordered-breathing review documents young patients at risk of obstructive apneas through weight gain from inactivity and prolonged corticosteroid therapy while older patients hypoventilate from respiratory muscle weakness (PMID 28397169); the relationship is recorded as documented disease-sequela association only, scoped to the obstructive signal.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: the polysomnographic anchor is 12 boys and the review describes mixed obstructive and hypoventilatory phenotypes, so whether any individual apnea is attributable to the dystrophy requires individual sleep-study attribution with obesity, tonsillar, and central-apnea exclusion.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 311.1 — Senel GB, Arkali NB, Kilic H, et al. Obstructive sleep apnea syndrome and autonomic dysfunction in Duchenne muscular dystrophy Sleep Breath. 2021 Jun;25(2):941-946. doi: 10.1007/s11325-020-02139-5. PMID 32740854.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/32740854/
+- Source checked on: 2026-09-26
+- Locator: PMID 32740854; results (PSG apnea prevalence and autonomic correlations)
+- Note under review: Prospective polysomnography study (12 consecutive DMD males, mean age 9, versus 8 controls): OSAS in 42% of DMD by PSG versus 0% of controls (p=0.004); 58% with at least one OSAS symptom; cardiac autonomic dysfunction more pronounced with OSAS; supports the bounded obstructive association only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 311.2 — LoMauro A, D'Angelo MG, Aliverti A. Sleep Disordered Breathing in Duchenne Muscular Dystrophy Curr Neurol Neurosci Rep. 2017 May;17(5):44. doi: 10.1007/s11910-017-0750-1. PMID 28397169.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/28397169/
+- Source checked on: 2026-09-26
+- Locator: PMID 28397169; review framing (obstructive versus hypoventilatory phenotypes)
+- Note under review: Review of sleep disordered breathing in Duchenne muscular dystrophy: young patients risk obstructive apneas through corticosteroid-associated weight gain and inactivity; older patients hypoventilate from respiratory muscle weakness; REM exacerbation documented; supports the bounded obstructive-route framing only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `muscular-dystrophy` → `dysphagia` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Duchenne muscular dystrophy documents swallowing dysfunction at adult cohort and orofacial-database level: the 48-patient adult cohort study found abnormal swallowing quality-of-life scores in 33 of 48 patients (69 percent) with independent predictors age, maximal inspiratory pressure, and autonomic symptoms, describing dysphagia as a common but often overlooked symptom attributable to progressive deterioration of swallowing muscle groups (PMID 37212070), and the national orofacial database study of 206 individuals with 21 congenital or childhood-onset neuromuscular disorders found orofacial dysfunction in 70 percent overall and in 100 percent of the 19-49-year-old Duchenne subgroup (PMID 42142020); the relationship is recorded as documented disease-sequela association only.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: the anchors measure swallowing quality of life and orofacial screening profiles rather than instrumental swallow diagnoses, so whether any individual dysphagia is attributable to the dystrophy requires individual videofluoroscopic attribution with medication, reflux, and neurologic exclusion.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 312.1 — Crescimanno G, Greco F, Bertini M, et al. Age Related Burden of Swallowing in Adult Patients Affected by Duchenne Muscular Dystrophy J Neuromuscul Dis. 2023;10(5):955-962. doi: 10.3233/JND-230055. PMID 37212070.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/37212070/
+- Source checked on: 2026-09-26
+- Locator: PMID 37212070; results (SWAL-QOL scores and predictors)
+- Note under review: Adult DMD cohort (48 patients, mean age 30): abnormal SWAL-QOL composite (under 86) in 33 of 48; independent predictors age, maximal inspiratory pressure, and Compass-31 autonomic score; MIP under 22 predicted altered swallowing QoL with 92% accuracy; supports the bounded patient-reported association only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 312.2 — Bengtsson-Stelzer L, Kroksmark AK, Persson C, et al. Orofacial dysfunction in persons with congenital or childhood-onset neuromuscular disorders J Neuromuscul Dis. 2026 May 16. doi: 10.1177/22143602261452338. PMID 42142020.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42142020/
+- Source checked on: 2026-09-26
+- Locator: PMID 42142020; results (orofacial dysfunction profiles by disease group)
+- Note under review: National Nordic Orofacial Test database study of 206 individuals (ages 3-48) with 21 congenital or childhood-onset neuromuscular disorders: orofacial dysfunction in 70% overall, 72% of myopathies, and 100% of the 19-49-year-old Duchenne subgroup; supports the bounded screening-level association only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `muscular-dystrophy` → `osteoporosis` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Duchenne muscular dystrophy documents osteoporosis at large routine-imaging cohort and risk-factor study level: the 9-year retrospective cohort of 408 Duchenne patients on daily glucocorticoids undergoing routine spine imaging found osteoporosis prevalence rising progressively with age (4.4, 20.9, and 58.3 percent at ages 5, 10, and 18) and long-bone or vertebral fracture prevalence of 16.5, 37.4, and 83.3 percent at the same ages (PMID 41912872), and the cross-sectional risk-factor study of males aged 4-25 found markers of systemic glucocorticoid exposure (shorter stature, greater bone age delay, lower lumbar spine bone density) associated with prevalent vertebral fractures (PMID 36342539); the relationship is recorded as documented disease-and-treatment-sequela association only.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: both anchors attribute bone disease jointly to glucocorticoid exposure, muscle weakness, and restricted mobility, so whether any individual osteoporosis is attributable to the dystrophy versus its treatment requires individual densitometric and endocrine attribution with hypogonadism, vitamin-D, and immobilization exclusion.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 313.1 — Nasomyont N, Tian C, Hornung L, et al. The burden of bone disease in Duchenne muscular dystrophy: age-specific prevalence of osteoporosis and low bone density Osteoporos Int. 2026 May;37(5):1319-1328. doi: 10.1007/s00198-026-07963-1. PMID 41912872.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/41912872/
+- Source checked on: 2026-09-26
+- Locator: PMID 41912872; results (age-specific osteoporosis and fracture prevalence)
+- Note under review: 9-year retrospective cohort of 408 DMD patients (mean age 8) on daily glucocorticoids with routine annual spine radiographs and DXA: osteoporosis prevalence 4.4%, 20.9%, 58.3% at ages 5, 10, 18; long-bone/vertebral fracture prevalence 16.5%, 37.4%, 83.3%; low total-body BMD preceded clinically detectable osteoporosis; supports the bounded disease-and-treatment association only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 313.2 — Phung K, McAdam L, Ma J, et al. Risk factors associated with prevalent vertebral fractures in Duchenne muscular dystrophy Osteoporos Int. 2023 Jan;34(1):147-160. doi: 10.1007/s00198-022-06578-6. PMID 36342539.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/36342539/
+- Source checked on: 2026-09-26
+- Locator: PMID 36342539; results (vertebral fracture risk factors)
+- Note under review: Cross-sectional risk-factor study of males aged 4-25 with Duchenne muscular dystrophy (Ottawa Pediatric Bone Health Research Group): systemic glucocorticoid exposure markers (shorter stature, greater bone age delay, lower lumbar spine BMD) associated with prevalent vertebral fractures; supports the bounded exposure-gradient proposition only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `myopia` → `retinal-detachment` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Myopia documents retinal detachment risk at meta-analysis level with a graded dose response: the systematic review and meta-analysis of myopia complications found retinal detachment odds ratios of 3.15 (95% CI 1.92-5.17), 8.74 (7.28-10.50), and 12.62 (6.65-23.94) for low, moderate, and high myopia respectively (PMID 32347918), and the hospital-based cross-sectional study of 168 highly myopic eyes found peripheral retinal lesions in 43.5 percent (lattice degeneration 16.1 percent, snail-track 4.2 percent) with myopia at or beyond -8.00 D and axial length at or beyond 26.5 mm carrying additional posterior-complication risk (PMID 35188078); the relationship is recorded as documented graded association only.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: the meta-analysis pools predominantly cross-sectional and case-control designs with heterogeneous refractive measurement, and retinal-detachment risk in any individual also depends on vitreous status, trauma, and prior ocular surgery, so individual attribution requires dated dilated retinal examination with high-risk peripheral-degenerative assessment.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 314.1 — Haarman AEG, Enthoven CA, Tideman JWL, et al. The Complications of Myopia: A Review and Meta-Analysis Invest Ophthalmol Vis Sci. 2020 Apr 9;61(4):49. doi: 10.1167/iovs.61.4.49. PMID 32347918.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/32347918/
+- Source checked on: 2026-09-26
+- Locator: PMID 32347918; results (retinal detachment odds ratios by spherical equivalent)
+- Note under review: Systematic review and meta-analysis of myopia complications (studies before June 2019): retinal detachment OR 3.15 (1.92-5.17) low, 8.74 (7.28-10.50) moderate, 12.62 (6.65-23.94) high myopia; supports the bounded graded association only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 314.2 — Nguyen HTT, Hoang TT, Pham CM, et al. Prevalence and related factors of myopic retinopathy - a hospital-based cross-section study in Vietnam Clin Exp Optom. 2023 May;106(4):427-430. doi: 10.1080/08164622.2022.2039555. PMID 35188078.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/35188078/
+- Source checked on: 2026-09-26
+- Locator: PMID 35188078; results (peripheral and central retinal lesion prevalence)
+- Note under review: Hospital-based cross-sectional study of 168 eyes in 88 high-myopia patients (Vietnam National Eye Hospital): peripheral retinal lesions 43.5% (lattice 16.1%, snail track 4.2%, microcystoid 1.2%); myopia at or beyond -8.00 D and axial length at or beyond 26.5 mm associated with additional posterior-complication risk; supports the bounded lesion-burden association only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `myopia` → `macular-degeneration` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Myopia documents myopic macular degeneration risk at meta-analysis and anatomy-review level with extreme dose response: the myopia-complications meta-analysis found myopic macular degeneration odds ratios of 13.57 (95% CI 6.18-29.79), 72.74 (33.18-159.48), and 845.08 (230.05-3104.34) for low, moderate, and high myopia (PMID 32347918), the anatomy review documents the myopic macular cascade of lacquer cracks, patchy atrophies, Bruch membrane defects, and choroidal thinning most pronounced at the posterior pole (PMID 40983254), and the 168-eye high-myopia study found central retinal changes in 66.1 percent including diffuse and patchy chorioretinal atrophy (PMID 35188078); the relationship is recorded as documented graded association only, scoped to the myopic histotype.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: the high-myopia odds ratio has an extremely wide confidence interval (230-3104) reflecting sparse data, and macular atrophy and neovascular outcomes in any individual interleave with age-related and inflammatory maculopathies, so individual attribution requires dated optical-coherence tomography and angiographic differentiation.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 315.1 — Haarman AEG, Enthoven CA, Tideman JWL, et al. The Complications of Myopia: A Review and Meta-Analysis Invest Ophthalmol Vis Sci. 2020 Apr 9;61(4):49. doi: 10.1167/iovs.61.4.49. PMID 32347918.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/32347918/
+- Source checked on: 2026-09-26
+- Locator: PMID 32347918; results (myopic macular degeneration odds ratios by spherical equivalent)
+- Note under review: Systematic review and meta-analysis of myopia complications: myopic macular degeneration OR 13.57 (6.18-29.79) low, 72.74 (33.18-159.48) moderate, 845.08 (230.05-3104.34) high myopia; supports the bounded graded association only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 315.2 — Jonas JB, Jonas RA, Panda-Jonas S. Clinical and histological aspects of the anatomy of myopia, myopic macular degeneration and myopia-associated optic neuropathy Prog Retin Eye Res. 2025 Nov;109:101402. doi: 10.1016/j.preteyeres.2025.101402. PMID 40983254.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/40983254/
+- Source checked on: 2026-09-26
+- Locator: PMID 40983254; review sections (macular region changes in axial myopia)
+- Note under review: Clinical and histological anatomy review (Prog Retin Eye Res, 2025): myopic macular changes including linear RPE layer defects (lacquer cracks), patchy atrophies, Bruch membrane defects in the foveal region, and choroidal thinning most pronounced at the posterior pole; supports the bounded mechanistic-anatomy framing only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 315.3 — Nguyen HTT, Hoang TT, Pham CM, et al. Prevalence and related factors of myopic retinopathy - a hospital-based cross-section study in Vietnam Clin Exp Optom. 2023 May;106(4):427-430. doi: 10.1080/08164622.2022.2039555. PMID 35188078.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/35188078/
+- Source checked on: 2026-09-26
+- Locator: PMID 35188078; results (central retinal change prevalence)
+- Note under review: Hospital-based cross-sectional study of 168 highly myopic eyes: central retinal changes in 66.1% (tessellated fundus 60.7%, diffuse chorioretinal atrophy 4.2%, patchy 1.2%); supports the bounded lesion-prevalence association only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `myopia` → `glaucoma` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Myopia documents open-angle glaucoma risk at dose-response meta-analysis level with a documented progression counterweight: the dose-response meta-analysis of 24 studies across 11 countries (514,265 individuals) found pooled open-angle glaucoma odds of 1.88 (95% CI 1.66-2.13) for any myopia rising from 1.50 to 4.14 across myopia degrees with a per-diopter odds increase of 1.21 (PMID 34648776), the myopia-complications meta-analysis found open-angle glaucoma odds of 1.59 (1.33-1.91) and 2.92 (1.89-4.52) for low and moderate/high myopia (PMID 32347918), and the systematic review found pooled primary open-angle glaucoma odds of 2.26 (1.77-2.89) across 16 cross-sectional studies while 7 longitudinal cohorts showed myopia associated with SLOWER glaucoma progression (OR 0.85, 0.73-0.99) (PMID 34883495); the relationship is recorded as documented association for glaucoma occurrence only, with the progression counterweight carried openly.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: cross-sectional association between myopia and glaucoma is complicated by shared structural features (larger discs, peripapillary changes) that make both diagnosis and attribution harder in myopic eyes, and the same literature shows myopia possibly protective for progression, so individual claims require dated perimetry and OCT with myopic-disc and ocular-hypertension exclusion.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 316.1 — Ha A, Kim CY, Shim SR, et al. Degree of Myopia and Glaucoma Risk: A Dose-Response Meta-analysis Am J Ophthalmol. 2022 Apr;236:107-119. doi: 10.1016/j.ajo.2021.10.007. PMID 34648776.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/34648776/
+- Source checked on: 2026-09-26
+- Locator: PMID 34648776; results (dose-response odds ratios by myopia degree)
+- Note under review: Dose-response meta-analysis of 24 population-based studies, 514,265 individuals, 11 countries: any myopia pooled OAG OR 1.88 (1.66-2.13); low 1.50, moderate 1.69, moderate-to-high 2.27, high 4.14; per-1-diopter OR 1.21 (1.15-1.28) with nonlinear acceleration beyond -6 D; supports the bounded dose-response association only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 316.2 — Haarman AEG, Enthoven CA, Tideman JWL, et al. The Complications of Myopia: A Review and Meta-Analysis Invest Ophthalmol Vis Sci. 2020 Apr 9;61(4):49. doi: 10.1167/iovs.61.4.49. PMID 32347918.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/32347918/
+- Source checked on: 2026-09-26
+- Locator: PMID 32347918; results (open-angle glaucoma odds ratios)
+- Note under review: Systematic review and meta-analysis of myopia complications: open-angle glaucoma OR 1.59 (1.33-1.91) low myopia and 2.92 (1.89-4.52) moderate/high myopia; supports the bounded graded association only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 316.3 — Wu J, Hao J, Du Y, et al. The Association between Myopia and Primary Open-Angle Glaucoma: A Systematic Review and Meta-Analysis Ophthalmic Res. 2022;65(4):387-397. doi: 10.1159/000520468. PMID 34883495.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/34883495/
+- Source checked on: 2026-09-26
+- Locator: PMID 34883495; results (occurrence and progression pooled odds)
+- Note under review: Systematic review and meta-analysis (16 cross-sectional studies, pooled OR 2.26, 1.77-2.89; 7 longitudinal cohorts, progression OR 0.85, 0.73-0.99): myopia a risk factor for POAG occurrence but possibly protective for progression, hypothesized via lamina cribrosa defect; carried as the documented progression counterweight.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `myopia` → `cataracts` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Myopia documents cataract association at meta-analysis level with a direction tension recorded: the myopia-complications meta-analysis found posterior subcapsular cataract odds ratios of 1.56 (95% CI 1.32-1.84), 2.55 (1.98-3.28), and 4.55 (2.66-7.75) and nuclear cataract odds of 1.79 (1.08-2.97), 2.39 (1.03-5.55), and 2.87 (1.43-5.73) for low, moderate, and high myopia (PMID 32347918); the relationship is recorded as documented graded association only, with the reverse pathway (cataract-induced myopic shift) explicitly recorded.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: nuclear lens changes produce a myopic refractive shift that inflates cross-sectional myopia-cataract associations in older adults, and the pooled designs cannot separate myopia preceding cataract from cataract producing apparent myopia, so individual attribution requires dated lens examination with refractive-history review.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 317.1 — Haarman AEG, Enthoven CA, Tideman JWL, et al. The Complications of Myopia: A Review and Meta-Analysis Invest Ophthalmol Vis Sci. 2020 Apr 9;61(4):49. doi: 10.1167/iovs.61.4.49. PMID 32347918.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/32347918/
+- Source checked on: 2026-09-26
+- Locator: PMID 32347918; results (cataract odds ratios by subtype and spherical equivalent)
+- Note under review: Systematic review and meta-analysis of myopia complications: posterior subcapsular cataract OR 1.56 (1.32-1.84) low, 2.55 (1.98-3.28) moderate, 4.55 (2.66-7.75) high myopia; nuclear cataract OR 1.79 (1.08-2.97), 2.39 (1.03-5.55), 2.87 (1.43-5.73); supports the bounded graded association only with the lens-induced myopic-shift direction tension recorded.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `muscle-hernias` → `peripheral-neuropathy` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Muscle herniation documents peripheral nerve entrapment at case-series and clinical-review level: the Muscle Nerve case with literature review identified eleven cases of nerve entrapment secondary to muscle herniation (unrelated to compartment syndrome) with the superficial fibular nerve the most commonly entrapped, patients presenting with pain, numbness, or paresthesias and a tender palpable mass with Tinel sign, responding well to fasciotomy (PMID 31325324), the popliteal case report documents gastrocnemius muscle herniation through a torn fascia compressing the common peroneal nerve with pseudoradicular symptoms relieved by fascial repair (PMID 7604332), and the radiology case report documents MRI-confirmed superficial peroneal nerve compression by peroneus brevis herniation (PMID 32190181); the relationship is recorded as documented mechanical-entrapment association at case level only.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: the located evidence is one case plus an eleven-case literature review and single case reports spanning decades with heterogeneous electrodiagnostic confirmation, so any individual neuropathy claim requires electrodiagnostic and imaging confirmation with radiculopathy, diabetic, and entrapment-at-other-sites exclusion.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 318.1 — Tong O, Bieri P, Herskovitz S. Nerve entrapments related to muscle herniation Muscle Nerve. 2019 Oct;60(4):428-433. doi: 10.1002/mus.26643. PMID 31325324.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/31325324/
+- Source checked on: 2026-09-26
+- Locator: PMID 31325324; results (case series of herniation-related nerve entrapments)
+- Note under review: Case report with literature review (Muscle Nerve, 2019): superficial fibular neuropathy from fibularis brevis herniation plus eleven identified cases of nerve entrapment secondary to muscle herniation unrelated to compartment syndrome; superficial fibular nerve most commonly entrapped; pain, numbness, paresthesias, Tinel sign; fasciotomy salutary; supports the bounded entrapment association only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 318.2 — Alhadeff J, Lee CK. Gastrocnemius muscle herniation at the knee causing peroneal nerve compression resembling sciatica Spine (Phila Pa 1976). 1995 Mar 1;20(5):612-4. PMID 7604332.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/7604332/
+- Source checked on: 2026-09-26
+- Locator: PMID 7604332; case report (operative findings and outcome)
+- Note under review: Operative case report (Spine, 1995): common peroneal nerve compression at the popliteal fossa from gastrocnemius muscle herniation through a torn fascia presenting as pseudoradicular sciatica-like symptoms; complete relief after fascial repair; supports the bounded mechanical-entrapment route only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 318.3 — Foresti M. Superficial peroneal nerve compression due to peroneus brevis muscle herniation J Radiol Case Rep. 2019 Nov;13(11):10-17. doi: 10.3941/jrcr.v13i11.3757. PMID 32190181.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/32190181/
+- Source checked on: 2026-09-26
+- Locator: PMID 32190181; case report (MRI nerve compression findings)
+- Note under review: Radiology case report (J Radiol Case Rep, 2019): MRI findings of superficial peroneal nerve compression due to peroneus brevis muscle herniation; supports the bounded imaging-confirmation proposition only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
 ## Implementation mechanics after decisions
 
 - Mapping edits and registry edits must land in lockstep (the registry audit's canonical-JSON hashes and live-use sets will fail otherwise).

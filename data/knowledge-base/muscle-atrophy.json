@@ -2,8 +2,12 @@
   "id": "muscle-atrophy",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review biomechanical, post-injury, orthopedic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 62 (2026-09-26): identity deferred - no edge authored; the deferral rationale is carried in this file's governance notes so the deterministic backlog filter in scripts/report-authoring-backlog.js inherits it.",
+    "Screen result: the located disuse and neuromuscular literature documents muscle atrophy as a manifestation parallel to its candidate outcomes (immobility produces atrophy, osteoporosis, and contractures together; DMD cohorts show muscle size loss, weakness, and range-of-motion decline as co-trajectories), so an outgoing edge would assert direction the located evidence does not establish; see governance notes for the full MANIFESTATION-IDENTITY / DIRECTION-INVERSION disposition and reopening conditions."
+  ],
+  "governanceNotes": [
+    "D1 batch 62 (2026-09-26): identity deferred (MANIFESTATION-IDENTITY / DIRECTION-INVERSION), following the interosseous-muscle-atrophy precedent. This identity is the atrophy umbrella (site-specific atrophy findings instantiate it), and the located literature documents muscle atrophy as a sign or parallel manifestation of upstream disease, injury, aging, or disuse rather than as an index condition with quantified downstream catalog outcomes: the disuse literature treats atrophy, osteoporosis, and contractures as co-consequences of immobilization (parallel-process direction guard), and the Duchenne trajectory cohorts (PMID 40100909) document muscle size loss alongside weakness and range-of-motion decline without isolating atrophy as the causal exposure. No condition-specific evidence quantifying a downstream catalog outcome in patients identified by muscle atrophy as the index finding was located. Reopening conditions: (a) a cohort in which muscle atrophy is the index exposure with a catalog-fit secondary outcome quantified and confounding (immobility, denervation, disease severity) adjusted; or (b) a governance decision folding this umbrella into the specific denervating, myopathic, or disuse entities that produce it, consistent with the interosseous-muscle-atrophy and thenar-hypothenar-atrophy manifest-identity treatment.",
+    "Sibling scope recorded 2026-09-26: the interosseous-muscle-atrophy and thenar-hypothenar-atrophy identities remain queued under the same manifest-identity treatment; no evidence was recycled from their screens or from the muscular-dystrophy window authored in this batch (ME-29)."
   ],
   "suggestions": []
 }

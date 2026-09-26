@@ -2,8 +2,240 @@
   "id": "myopia",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review otologic, vestibular, audiologic, visual, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 62 (2026-09-26): four ASSOCIATION_ONLY draft mappings pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: all four edges assert association only (etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true; mechanismCategory MECHANICAL_OR_COMPRESSIVE for the retinal, macular, and glaucoma edges and NOT_ESTABLISHED for the cataracts edge, where the direction tension between myopia and lens-induced myopic shift is unresolvable from the located material). The evidence base is meta-analysis class with one hospital cross-sectional study, so individual claims require dated ophthalmologic examination with subtype differentiation, and review by a qualified medical professional.",
+    "Pathway and duplicate-scope screens: no -> visual-impairment edge (WITHHELD - dual guard: constitutive-proximity (myopia is itself a refractive visual impairment) and intermediate-node (the meta-analysis' visual-impairment figures route through the macular, retinal, glaucoma, and cataract complications authored here; a direct edge would skip and double-count those pathways)); no -> blindness edge (same intermediate-node routing plus no catalog identity for the meta-analysis' blindness endpoint distinction); no -> strabismus edge (WITHHELD - zero located condition-specific quantification; the located strabismus material in myopia literature is accommodative-esotropia case class without cohort support); no -> macular-hole or optic-neuropathy edge (no catalog identities - the anchor anatomy review's myopia-associated optic neuropathy and macular-hole material is recorded as context); no -> retinal-detachment edge as second source identity (identity-duplication: no separate degenerative-myopia or high-myopia identities exist - this identity carries the full refractive spectrum with severity graded in the edge evidence); histotype scoping - the macular-degeneration edge is scoped to the myopic histotype because the catalog lacks a myopic-maculopathy identity (batch-61 medullary-thyroid-carcinoma precedent); ME-29 sibling discipline - the diabetic-retinopathy, choroiditis, hyperopia, and cataracts windows keep their own evidence and none is recycled."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 62 (2026-09-26): four bounded association edges authored - myopia to retinal-detachment (rank 1), to macular-degeneration (rank 2), to glaucoma (rank 3), and to cataracts (rank 4) - classified ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, and hypothesizedOnly:true. All four propositions rest centrally on the myopia-complications systematic review and meta-analysis (PMID 32347918): retinal detachment OR 3.15-12.62, myopic macular degeneration OR 13.57-845.08, open-angle glaucoma OR 1.59-2.92, and cataract OR 1.56-4.55 by myopia degree. The retinal-detachment edge adds the 168-eye peripheral-lesion study (PMID 35188078); the macular edge adds the anatomy review (PMID 40983254) and the lesion-prevalence study (PMID 35188078); the glaucoma edge adds the 514,265-individual dose-response meta-analysis (PMID 34648776) and the systematic review (PMID 34883495).",
+    "Counter-evidence and caveat screens recorded 2026-09-26: (i) the glaucoma occurrence-versus-progression paradox - myopia raises glaucoma occurrence (per-diopter OR 1.21) yet the longitudinal data show slower progression once glaucoma exists (OR 0.85), carried on the edge as documented counterweight; (ii) the cataract direction tension - early nuclear cataract produces myopic refractive shift, so the cross-sectional association cannot establish direction and the cataracts edge asserts no mechanism at all (causalMechanism NOT_ESTABLISHED); (iii) histotype scoping - the macular-degeneration edge is explicitly scoped to myopic macular degeneration; (iv) sparse-data limits - the high-myopia macular odds carry an extremely wide interval (230-3104) and the pooled designs are heterogeneous; (v) sibling-window discipline - the diabetic-retinopathy, choroiditis, hyperopia, malabsorption-macular, and cataracts windows keep their own evidence and none is recycled (ME-29)."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "retinal-detachment",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Myopia documents retinal detachment risk at meta-analysis level with a graded dose response: the systematic review and meta-analysis of myopia complications found retinal detachment odds ratios of 3.15 (95% CI 1.92-5.17), 8.74 (7.28-10.50), and 12.62 (6.65-23.94) for low, moderate, and high myopia respectively (PMID 32347918), and the hospital-based cross-sectional study of 168 highly myopic eyes found peripheral retinal lesions in 43.5 percent (lattice degeneration 16.1 percent, snail-track 4.2 percent) with myopia at or beyond -8.00 D and axial length at or beyond 26.5 mm carrying additional posterior-complication risk (PMID 35188078); the relationship is recorded as documented graded association only.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: the meta-analysis pools predominantly cross-sectional and case-control designs with heterogeneous refractive measurement, and retinal-detachment risk in any individual also depends on vitreous status, trauma, and prior ocular surgery, so individual attribution requires dated dilated retinal examination with high-risk peripheral-degenerative assessment."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MECHANICAL_OR_COMPRESSIVE",
+        "primaryVector": "Axial elongation of the myopic globe stretches and thins peripheral retina and vitreous so vitreoretinal traction and peripheral lattice-type breaks produce rhegmatogenous retinal detachment, the mechanical-stretch route consistent with the graded odds increase by spherical equivalent and the peripheral-lesion burden in highly myopic eyes, but whether this route produced any individual detachment remains hypothesized until retinal and vitreous records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at meta-analysis plus single hospital cross-sectional class only: the pooled odds ratios aggregate heterogeneous study designs with refractive error measured differently across sources, the Vietnamese cross-sectional study is a referral-hospital sample of presenting high myopes, and the pooled high-myopia confidence interval is wide (6.65-23.94) reflecting sparse data.",
+        "evidenceGaps": "No located prospective cohort reports incident retinal detachment by refractive degree with uniform axial-length measurement; referral-sampling inflates lesion prevalence in the hospital study; posterior vitreous detachment status is unreported in the pooled sources; and trauma, aphakic/pseudophakic states, and hereditary vitreoretinopathies are competing detachment causes.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "traumatic retinal detachment",
+          "post-cataract-surgery pseudophakic detachment (the published cataracts window context; the companion myopia surgery literature, not recycled per ME-29)",
+          "hereditary vitreoretinopathies (Stickler, Marfan)",
+          "diabetic tractional detachment (the published diabetic-retinopathy window)",
+          "choroiditis-associated detachment (the published choroiditis window, not recycled per ME-29)"
+        ]
+      },
+      "evidenceGaps": [
+        "No located prospective cohort reports incident retinal detachment by refractive degree with uniform axial-length measurement; referral-sampling inflates lesion prevalence in the hospital study; posterior vitreous detachment status is unreported in the pooled sources; and trauma, aphakic/pseudophakic states, and hereditary vitreoretinopathies are competing detachment causes."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY at meta-analysis class with the dose-response limit carried openly: the myopia-complications meta-analysis found retinal-detachment odds of 3.15 to 12.62 rising with myopia degree (PMID 32347918) and the 168-eye high-myopia study found peripheral retinal lesions in 43.5 percent with axial length at or beyond 26.5 mm raising posterior-complication risk (PMID 35188078); because the pooled designs are heterogeneous and vitreous status is unreported, the conservative standard keeps the edge at association only and routes individual claims through dated dilated retinal examination with peripheral-degenerative, traumatic, and surgical exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Haarman AEG, Enthoven CA, Tideman JWL, et al. The Complications of Myopia: A Review and Meta-Analysis Invest Ophthalmol Vis Sci. 2020 Apr 9;61(4):49. doi: 10.1167/iovs.61.4.49. PMID 32347918.",
+          "note": "Systematic review and meta-analysis of myopia complications (studies before June 2019): retinal detachment OR 3.15 (1.92-5.17) low, 8.74 (7.28-10.50) moderate, 12.62 (6.65-23.94) high myopia; supports the bounded graded association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/32347918/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 32347918; results (retinal detachment odds ratios by spherical equivalent)"
+        },
+        {
+          "citation": "Nguyen HTT, Hoang TT, Pham CM, et al. Prevalence and related factors of myopic retinopathy - a hospital-based cross-section study in Vietnam Clin Exp Optom. 2023 May;106(4):427-430. doi: 10.1080/08164622.2022.2039555. PMID 35188078.",
+          "note": "Hospital-based cross-sectional study of 168 eyes in 88 high-myopia patients (Vietnam National Eye Hospital): peripheral retinal lesions 43.5% (lattice 16.1%, snail track 4.2%, microcystoid 1.2%); myopia at or beyond -8.00 D and axial length at or beyond 26.5 mm associated with additional posterior-complication risk; supports the bounded lesion-burden association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35188078/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 35188078; results (peripheral and central retinal lesion prevalence)"
+        }
+      ]
+    },
+    {
+      "conditionId": "macular-degeneration",
+      "rank": 2,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Myopia documents myopic macular degeneration risk at meta-analysis and anatomy-review level with extreme dose response: the myopia-complications meta-analysis found myopic macular degeneration odds ratios of 13.57 (95% CI 6.18-29.79), 72.74 (33.18-159.48), and 845.08 (230.05-3104.34) for low, moderate, and high myopia (PMID 32347918), the anatomy review documents the myopic macular cascade of lacquer cracks, patchy atrophies, Bruch membrane defects, and choroidal thinning most pronounced at the posterior pole (PMID 40983254), and the 168-eye high-myopia study found central retinal changes in 66.1 percent including diffuse and patchy chorioretinal atrophy (PMID 35188078); the relationship is recorded as documented graded association only, scoped to the myopic histotype.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: the high-myopia odds ratio has an extremely wide confidence interval (230-3104) reflecting sparse data, and macular atrophy and neovascular outcomes in any individual interleave with age-related and inflammatory maculopathies, so individual attribution requires dated optical-coherence tomography and angiographic differentiation."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MECHANICAL_OR_COMPRESSIVE",
+        "primaryVector": "Axial elongation stretches the posterior pole so choroidal thinning, lacquer-crack RPE defects, and patchy atrophy progress and in some eyes secondary choroidal neovascularization develops, the mechanical-stretch-and-thinning route documented by the anatomy review's macular cascade and consistent with the graded odds increase, but whether this route produced any individual maculopathy remains hypothesized until OCT and angiographic records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at meta-analysis plus narrative anatomy review class only: the pooled myopic-macular-degeneration estimates aggregate heterogeneous definitions (atrophy versus neovascular endpoints combined), the high-myopia interval is extremely wide, and the anatomy review is descriptive without incidence data.",
+        "evidenceGaps": "No located prospective cohort separates atrophic from neovascular myopic maculopathy incidence by refractive degree; definitions vary across pooled studies; the catalog lacks a myopic-maculopathy identity so the edge is scoped to the myopic histotype of the macular-degeneration identity; and age-related macular degeneration, inflammatory chorioretinopathy, and hereditary maculopathies compete for individual attribution.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "age-related macular degeneration (the sibling histotype; the malabsorption-syndrome window's own macular-degeneration evidence is not recycled per ME-29)",
+          "inflammatory and infectious chorioretinopathy",
+          "hereditary macular dystrophies (the retinal-dystrophy identity's own scope)",
+          "diabetic macular edema (the published diabetic-retinopathy window)",
+          "myopia-associated optic neuropathy (a distinct entity in the anchor review, not a macular endpoint)"
+        ]
+      },
+      "evidenceGaps": [
+        "No located prospective cohort separates atrophic from neovascular myopic maculopathy incidence by refractive degree; definitions vary across pooled studies; the catalog lacks a myopic-maculopathy identity so the edge is scoped to the myopic histotype of the macular-degeneration identity; and age-related macular degeneration, inflammatory chorioretinopathy, and hereditary maculopathies compete for individual attribution."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY at meta-analysis class with the histotype-scope limit carried openly: the myopia-complications meta-analysis found myopic macular degeneration odds of 13.57 to 845.08 rising steeply with myopia degree (PMID 32347918), the anatomy review documents the lacquer-crack-to-atrophy macular cascade of pathologic myopia (PMID 40983254), and the high-myopia study found central retinal changes in 66.1 percent of eyes (PMID 35188078); because the catalog lacks a myopic-maculopathy identity (the edge is scoped to the myopic histotype, as with the batch-61 medullary-thyroid-carcinoma scoping) and high-myopia estimates are sparse-data wide, the conservative standard keeps the edge at association only and routes individual claims through dated OCT and angiographic differentiation with age-related, inflammatory, and hereditary exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Haarman AEG, Enthoven CA, Tideman JWL, et al. The Complications of Myopia: A Review and Meta-Analysis Invest Ophthalmol Vis Sci. 2020 Apr 9;61(4):49. doi: 10.1167/iovs.61.4.49. PMID 32347918.",
+          "note": "Systematic review and meta-analysis of myopia complications: myopic macular degeneration OR 13.57 (6.18-29.79) low, 72.74 (33.18-159.48) moderate, 845.08 (230.05-3104.34) high myopia; supports the bounded graded association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/32347918/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 32347918; results (myopic macular degeneration odds ratios by spherical equivalent)"
+        },
+        {
+          "citation": "Jonas JB, Jonas RA, Panda-Jonas S. Clinical and histological aspects of the anatomy of myopia, myopic macular degeneration and myopia-associated optic neuropathy Prog Retin Eye Res. 2025 Nov;109:101402. doi: 10.1016/j.preteyeres.2025.101402. PMID 40983254.",
+          "note": "Clinical and histological anatomy review (Prog Retin Eye Res, 2025): myopic macular changes including linear RPE layer defects (lacquer cracks), patchy atrophies, Bruch membrane defects in the foveal region, and choroidal thinning most pronounced at the posterior pole; supports the bounded mechanistic-anatomy framing only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40983254/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 40983254; review sections (macular region changes in axial myopia)"
+        },
+        {
+          "citation": "Nguyen HTT, Hoang TT, Pham CM, et al. Prevalence and related factors of myopic retinopathy - a hospital-based cross-section study in Vietnam Clin Exp Optom. 2023 May;106(4):427-430. doi: 10.1080/08164622.2022.2039555. PMID 35188078.",
+          "note": "Hospital-based cross-sectional study of 168 highly myopic eyes: central retinal changes in 66.1% (tessellated fundus 60.7%, diffuse chorioretinal atrophy 4.2%, patchy 1.2%); supports the bounded lesion-prevalence association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35188078/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 35188078; results (central retinal change prevalence)"
+        }
+      ]
+    },
+    {
+      "conditionId": "glaucoma",
+      "rank": 3,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Myopia documents open-angle glaucoma risk at dose-response meta-analysis level with a documented progression counterweight: the dose-response meta-analysis of 24 studies across 11 countries (514,265 individuals) found pooled open-angle glaucoma odds of 1.88 (95% CI 1.66-2.13) for any myopia rising from 1.50 to 4.14 across myopia degrees with a per-diopter odds increase of 1.21 (PMID 34648776), the myopia-complications meta-analysis found open-angle glaucoma odds of 1.59 (1.33-1.91) and 2.92 (1.89-4.52) for low and moderate/high myopia (PMID 32347918), and the systematic review found pooled primary open-angle glaucoma odds of 2.26 (1.77-2.89) across 16 cross-sectional studies while 7 longitudinal cohorts showed myopia associated with SLOWER glaucoma progression (OR 0.85, 0.73-0.99) (PMID 34883495); the relationship is recorded as documented association for glaucoma occurrence only, with the progression counterweight carried openly.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: cross-sectional association between myopia and glaucoma is complicated by shared structural features (larger discs, peripapillary changes) that make both diagnosis and attribution harder in myopic eyes, and the same literature shows myopia possibly protective for progression, so individual claims require dated perimetry and OCT with myopic-disc and ocular-hypertension exclusion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MECHANICAL_OR_COMPRESSIVE",
+        "primaryVector": "Axial elongation deforms and thins the lamina cribrosa and peripapillary tissues so optic-nerve vulnerability to intraocular-pressure injury increases and open-angle glaucoma results, the lamina-deformation route consistent with the per-diopter risk gradient (matching the hyperopia-glaucoma window's mechanical precedent), but whether this route produced any individual glaucoma remains hypothesized until perimetric and OCT records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at meta-analysis class only: the pooled cross-sectional odds carry high heterogeneity (I-squared 53-88 percent), refractive error and glaucoma definitions vary across the 24 studies, and the longitudinal progression data run opposite to the occurrence data (protective OR 0.85), leaving the net clinical course direction unresolved.",
+        "evidenceGaps": "No located study resolves the occurrence-versus-progression paradox (higher incidence but slower progression in myopic eyes); diagnostic ascertainment is harder in myopic discs (tilted, large, peripapillary atrophy) so misclassification is likely in both directions; shared genetic architecture between myopia and glaucoma is documented and unresolved; and ocular hypertension, pseudoexfoliation, and pigmentary glaucoma compete for individual attribution.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "myopic peripapillary changes mimicking glaucomatous damage (diagnostic-mimic risk recorded)",
+          "ocular hypertension without glaucoma",
+          "pseudoexfoliative and pigmentary glaucoma",
+          "normal-tension glaucoma",
+          "hyperopia-associated angle closure (the published hyperopia glaucoma window's own scope, not recycled per ME-29)"
+        ]
+      },
+      "evidenceGaps": [
+        "No located study resolves the occurrence-versus-progression paradox (higher incidence but slower progression in myopic eyes); diagnostic ascertainment is harder in myopic discs (tilted, large, peripapillary atrophy) so misclassification is likely in both directions; shared genetic architecture between myopia and glaucoma is documented and unresolved; and ocular hypertension, pseudoexfoliation, and pigmentary glaucoma compete for individual attribution."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY at dose-response meta-analysis class with the progression counterweight carried openly: the 514,265-individual dose-response meta-analysis found per-diopter open-angle glaucoma odds of 1.21 rising to 4.14 in high myopia (PMID 34648776) and the myopia-complications meta-analysis found open-angle glaucoma odds of 1.59-2.92 (PMID 32347918); because the systematic review documents myopia associated with slower glaucoma progression (OR 0.85; PMID 34883495) and myopic discs complicate diagnosis, the conservative standard keeps the edge at association only scoped to glaucoma occurrence, records the progression counterweight on the edge, and routes individual claims through dated perimetry and OCT with myopic-disc, ocular-hypertension, and secondary-glaucoma exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Ha A, Kim CY, Shim SR, et al. Degree of Myopia and Glaucoma Risk: A Dose-Response Meta-analysis Am J Ophthalmol. 2022 Apr;236:107-119. doi: 10.1016/j.ajo.2021.10.007. PMID 34648776.",
+          "note": "Dose-response meta-analysis of 24 population-based studies, 514,265 individuals, 11 countries: any myopia pooled OAG OR 1.88 (1.66-2.13); low 1.50, moderate 1.69, moderate-to-high 2.27, high 4.14; per-1-diopter OR 1.21 (1.15-1.28) with nonlinear acceleration beyond -6 D; supports the bounded dose-response association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34648776/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 34648776; results (dose-response odds ratios by myopia degree)"
+        },
+        {
+          "citation": "Haarman AEG, Enthoven CA, Tideman JWL, et al. The Complications of Myopia: A Review and Meta-Analysis Invest Ophthalmol Vis Sci. 2020 Apr 9;61(4):49. doi: 10.1167/iovs.61.4.49. PMID 32347918.",
+          "note": "Systematic review and meta-analysis of myopia complications: open-angle glaucoma OR 1.59 (1.33-1.91) low myopia and 2.92 (1.89-4.52) moderate/high myopia; supports the bounded graded association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/32347918/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 32347918; results (open-angle glaucoma odds ratios)"
+        },
+        {
+          "citation": "Wu J, Hao J, Du Y, et al. The Association between Myopia and Primary Open-Angle Glaucoma: A Systematic Review and Meta-Analysis Ophthalmic Res. 2022;65(4):387-397. doi: 10.1159/000520468. PMID 34883495.",
+          "note": "Systematic review and meta-analysis (16 cross-sectional studies, pooled OR 2.26, 1.77-2.89; 7 longitudinal cohorts, progression OR 0.85, 0.73-0.99): myopia a risk factor for POAG occurrence but possibly protective for progression, hypothesized via lamina cribrosa defect; carried as the documented progression counterweight.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34883495/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 34883495; results (occurrence and progression pooled odds)"
+        }
+      ]
+    },
+    {
+      "conditionId": "cataracts",
+      "rank": 4,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Myopia documents cataract association at meta-analysis level with a direction tension recorded: the myopia-complications meta-analysis found posterior subcapsular cataract odds ratios of 1.56 (95% CI 1.32-1.84), 2.55 (1.98-3.28), and 4.55 (2.66-7.75) and nuclear cataract odds of 1.79 (1.08-2.97), 2.39 (1.03-5.55), and 2.87 (1.43-5.73) for low, moderate, and high myopia (PMID 32347918); the relationship is recorded as documented graded association only, with the reverse pathway (cataract-induced myopic shift) explicitly recorded.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: nuclear lens changes produce a myopic refractive shift that inflates cross-sectional myopia-cataract associations in older adults, and the pooled designs cannot separate myopia preceding cataract from cataract producing apparent myopia, so individual attribution requires dated lens examination with refractive-history review."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "NOT_ESTABLISHED",
+        "primaryVector": "No mechanism is asserted for this edge: oxidative lens changes and refractive development are both plausible contributors, but the located meta-analysis cannot distinguish myopia preceding cortical or nuclear lens opacification from early nuclear cataract producing the myopic shift that defines measured myopia in older cohorts, so the vector remains unestablished pending individual refractive-history and lens-stage review.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at single meta-analysis class only: the cataract endpoints are pooled from heterogeneous cross-sectional and case-control sources, the posterior subcapsular signal (which is not a refractive-shift cataract type) is stronger than the nuclear signal and may have a different pathway, and no located prospective cohort reports incident cataract by baseline refractive state in young adults.",
+        "evidenceGaps": "No located study separates antecedent myopia from lens-induced myopic shift prospectively; the posterior subcapsular and nuclear subtypes likely differ in mechanism and are pooled here only at association level; glucocorticoid exposure is a documented posterior subcapsular cataract cause and is unadjusted in pooled sources; and age, diabetes, ultraviolet exposure, and trauma are competing cataract causes.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "lens-induced myopic shift as the reverse pathway (documented in cataract literature; recorded as counterweight)",
+          "glucocorticoid-induced posterior subcapsular cataract",
+          "diabetic and age-related cataract",
+          "traumatic and radiation cataract",
+          "congenital cataract"
+        ]
+      },
+      "evidenceGaps": [
+        "No located study separates antecedent myopia from lens-induced myopic shift prospectively; the posterior subcapsular and nuclear subtypes likely differ in mechanism and are pooled here only at association level; glucocorticoid exposure is a documented posterior subcapsular cataract cause and is unadjusted in pooled sources; and age, diabetes, ultraviolet exposure, and trauma are competing cataract causes."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY at single meta-analysis class with the direction tension and no-mechanism stance carried openly: the myopia-complications meta-analysis found posterior subcapsular cataract odds of 1.56-4.55 and nuclear cataract odds of 1.79-2.87 rising with myopia degree (PMID 32347918); because early nuclear cataract produces a myopic refractive shift that inflates cross-sectional associations and no prospective incident-cataract data by baseline refraction were located, the conservative standard keeps the edge at association only with causalMechanism recorded as not established, and routes individual claims through dated lens examination with refractive-history, steroid, and glycemic exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Haarman AEG, Enthoven CA, Tideman JWL, et al. The Complications of Myopia: A Review and Meta-Analysis Invest Ophthalmol Vis Sci. 2020 Apr 9;61(4):49. doi: 10.1167/iovs.61.4.49. PMID 32347918.",
+          "note": "Systematic review and meta-analysis of myopia complications: posterior subcapsular cataract OR 1.56 (1.32-1.84) low, 2.55 (1.98-3.28) moderate, 4.55 (2.66-7.75) high myopia; nuclear cataract OR 1.79 (1.08-2.97), 2.39 (1.03-5.55), 2.87 (1.43-5.73); supports the bounded graded association only with the lens-induced myopic-shift direction tension recorded.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/32347918/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 32347918; results (cataract odds ratios by subtype and spherical equivalent)"
+        }
+      ]
+    }
+  ]
 }

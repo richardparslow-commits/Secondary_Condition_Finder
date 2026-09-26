@@ -155,15 +155,15 @@ describe("Mapping Expansion Batch ME-6", () => {
     expect(files).toHaveLength(813);
     expect(mappings.filter((mapping) => mapping.draft === false)).toHaveLength(140);
     expect(mappings.filter((mapping) => mapping.draft === true)).toHaveLength(673);
-    expect(mappings.reduce((sum, mapping) => sum + mapping.suggestions.length, 0)).toBe(670);
+    expect(mappings.reduce((sum, mapping) => sum + mapping.suggestions.length, 0)).toBe(681);
     expect(mappings.filter((mapping) => mapping.draft === false && mapping.suggestions.length === 1)).toHaveLength(67);
     expect(mappings.filter((mapping) => mapping.draft === false && mapping.suggestions.length >= 2)).toHaveLength(73);
     const refs = mappings.flatMap((mapping) =>
       mapping.suggestions.flatMap((suggestion) => suggestion.sourceReferences ?? []),
     );
-expect(refs).toHaveLength(1163);
+expect(refs).toHaveLength(1188);
     expect(refs.filter((ref) => ref.verified === true)).toHaveLength(383);
-expect(refs.filter((r) => r.verified === false)).toHaveLength(780);
+expect(refs.filter((r) => r.verified === false)).toHaveLength(805);
   });
 
   it("passes citation and master-registry gates in the final ME-7 verified state", { timeout: 30_000 }, () => {
@@ -178,11 +178,11 @@ expect(refs.filter((r) => r.verified === false)).toHaveLength(780);
       hardFindingCount: number;
     };
     expect(citation).toMatchObject({
-      references: 1163,
+      references: 1188,
       verified: 383,
       retiredVerified: 6,
       verifiedProvenance: 389,
-      unverified: 780,
+      unverified: 805,
       reviewFindingCount: 0,
       hardFindingCount: 0,
     });
@@ -198,11 +198,11 @@ expect(refs.filter((r) => r.verified === false)).toHaveLength(780);
     };
     expect(master).toMatchObject({
       status: "PASS",
-relationships: 670,
+relationships: 681,
       verifiedLiveSourceUses: 383,
-      pendingVerificationLiveSourceUses: 780,
+      pendingVerificationLiveSourceUses: 805,
       activeSourceEntities: 346,
-      pendingVerificationSourceEntities: 701,
+      pendingVerificationSourceEntities: 722,
     });
   });
 });

@@ -16,16 +16,16 @@
   "citationPromotionMustAtomicallyUpdateKbAndMasterSourceState": true
  },
  "counts": {
-  "liveSourceReferenceUses": 1163,
+  "liveSourceReferenceUses": 1188,
   "activeSourceEntities": 346,
-  "pendingVerificationSourceEntities": 701,
+  "pendingVerificationSourceEntities": 722,
   "activeClinicalSourceEntities": 345,
-  "pendingClinicalSourceEntities": 701,
+  "pendingClinicalSourceEntities": 722,
   "activeLegalAuthorityEntities": 1,
   "retiredOnlySourceEntities": 1,
   "supersededUnverifiedSourceEntities": 7,
   "bibliographicCorrectionOnlyEntities": 1,
-  "totalSourceEntitiesIncludingLineage": 1056,
+  "totalSourceEntitiesIncludingLineage": 1077,
   "retiredVerifiedRelationshipSourceUses": 6
  },
  "retirementLedger": {
@@ -39059,6 +39059,769 @@
    "retiredUses": [],
    "rawReferenceHashes": [
     "a8dc7062925477b9b78843be6d3fe174b88aad6e17ffa5976f4ffb47b6b0aa39"
+   ]
+  },
+  {
+   "sourceId": "pmid-35124659",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "35124659",
+   "doi": "10.3233/JND-210731",
+   "canonicalCitation": "Willcocks RJ, Barnard AM, Wortman RJ, et al. Development of Contractures in DMD in Relation to MRI-Determined Muscle Quality and Ambulatory Function J Neuromuscul Dis. 2022;9(2):289-302. doi: 10.3233/JND-210731. PMID 35124659.",
+   "citationVariants": [
+    "Willcocks RJ, Barnard AM, Wortman RJ, et al. Development of Contractures in DMD in Relation to MRI-Determined Muscle Quality and Ambulatory Function J Neuromuscul Dis. 2022;9(2):289-302. doi: 10.3233/JND-210731. PMID 35124659."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35124659/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/35124659/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-muscular-dystrophy-to-contractures",
+     "primaryId": "muscular-dystrophy",
+     "targetId": "contractures",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "89a49a71f29186bb8ab1c1a77cfe6e031108c95752df68c28dcd32605fe8c978"
+   ]
+  },
+  {
+   "sourceId": "pmid-40100909",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "40100909",
+   "doi": "10.1371/journal.pone.0307007",
+   "canonicalCitation": "Vandekerckhove I, Van den Hauwe M, Dewit T, et al. Longitudinal trajectories of muscle impairments in growing boys with Duchenne muscular dystrophy PLoS One. 2025;20(3):e0307007. doi: 10.1371/journal.pone.0307007. PMID 40100909.",
+   "citationVariants": [
+    "Vandekerckhove I, Van den Hauwe M, Dewit T, et al. Longitudinal trajectories of muscle impairments in growing boys with Duchenne muscular dystrophy PLoS One. 2025;20(3):e0307007. doi: 10.1371/journal.pone.0307007. PMID 40100909."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40100909/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/40100909/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-muscular-dystrophy-to-contractures",
+     "primaryId": "muscular-dystrophy",
+     "targetId": "contractures",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "0dc6147428811856110b78ab48145144cf62afc2f9c5b82a5c56eaa342540067"
+   ]
+  },
+  {
+   "sourceId": "pmid-34787322",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "34787322",
+   "doi": "10.1002/mus.27464",
+   "canonicalCitation": "Conway KM, Gedlinske A, Mathews KD, et al. A population-based study of scoliosis among males diagnosed with a dystrophinopathy identified by the Muscular Dystrophy Surveillance, Tracking, and Research Network (MD STARnet) Muscle Nerve. 2022 Feb;65(2):193-202. doi: 10.1002/mus.27464. PMID 34787322.",
+   "citationVariants": [
+    "Conway KM, Gedlinske A, Mathews KD, et al. A population-based study of scoliosis among males diagnosed with a dystrophinopathy identified by the Muscular Dystrophy Surveillance, Tracking, and Research Network (MD STARnet) Muscle Nerve. 2022 Feb;65(2):193-202. doi: 10.1002/mus.27464. PMID 34787322."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34787322/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/34787322/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-muscular-dystrophy-to-scoliosis",
+     "primaryId": "muscular-dystrophy",
+     "targetId": "scoliosis",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "0e1ef0cb573a79728ff00d532ed2dd1821a28992613cdbd484b21aa4ef8c72d1"
+   ]
+  },
+  {
+   "sourceId": "pmid-3611341",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "3611341",
+   "doi": null,
+   "canonicalCitation": "Cambridge W, Drennan JC. Scoliosis associated with Duchenne muscular dystrophy J Pediatr Orthop. 1987 Jul-Aug;7(4):436-40. PMID 3611341.",
+   "citationVariants": [
+    "Cambridge W, Drennan JC. Scoliosis associated with Duchenne muscular dystrophy J Pediatr Orthop. 1987 Jul-Aug;7(4):436-40. PMID 3611341."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/3611341/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/3611341/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-muscular-dystrophy-to-scoliosis",
+     "primaryId": "muscular-dystrophy",
+     "targetId": "scoliosis",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "d989fe55783c8bc169be350e6fde302850d7c0d96dc08240295769930b7bf4a4"
+   ]
+  },
+  {
+   "sourceId": "pmid-42112505",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "42112505",
+   "doi": "10.1016/j.ijcha.2025.101856",
+   "canonicalCitation": "Murray PC, Pollock A, Hewitt K, et al. ECG and imaging manifestations of cardiomyopathy in adults with Duchenne muscular dystrophy Int J Cardiol Heart Vasc. 2026 Feb;62:101856. doi: 10.1016/j.ijcha.2025.101856. PMID 42112505.",
+   "citationVariants": [
+    "Murray PC, Pollock A, Hewitt K, et al. ECG and imaging manifestations of cardiomyopathy in adults with Duchenne muscular dystrophy Int J Cardiol Heart Vasc. 2026 Feb;62:101856. doi: 10.1016/j.ijcha.2025.101856. PMID 42112505."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42112505/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/42112505/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-muscular-dystrophy-to-cardiomyopathy",
+     "primaryId": "muscular-dystrophy",
+     "targetId": "cardiomyopathy",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "2afd171130790534d2cbd6fd9912834cb7a9bc42ca7c21c3dc1764b4c5df3768"
+   ]
+  },
+  {
+   "sourceId": "pmid-42169468",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "42169468",
+   "doi": "10.1093/ehjqcco/qcag088",
+   "canonicalCitation": "Monzo L, Bobbio E, Montrasio G, et al. Heart failure guideline-directed medical therapy in young adults with dystrophin-related cardiomyopathy: the HOPE-MD registry Eur Heart J Qual Care Clin Outcomes. 2026 Sep 16;12(6):1026-1035. doi: 10.1093/ehjqcco/qcag088. PMID 42169468.",
+   "citationVariants": [
+    "Monzo L, Bobbio E, Montrasio G, et al. Heart failure guideline-directed medical therapy in young adults with dystrophin-related cardiomyopathy: the HOPE-MD registry Eur Heart J Qual Care Clin Outcomes. 2026 Sep 16;12(6):1026-1035. doi: 10.1093/ehjqcco/qcag088. PMID 42169468."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42169468/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/42169468/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-muscular-dystrophy-to-cardiomyopathy",
+     "primaryId": "muscular-dystrophy",
+     "targetId": "cardiomyopathy",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "7f6ba1072032251ed223926d85aec7514d7b5f639b5a3a588a5c86c624509c82"
+   ]
+  },
+  {
+   "sourceId": "pmid-41548716",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "41548716",
+   "doi": "10.1016/j.jocmr.2026.102693",
+   "canonicalCitation": "Russo V, Hudelo J, Marchel M, et al. Role of cardiovascular magnetic resonance in diagnosis and management of muscular dystrophies J Cardiovasc Magn Reson. 2026 Jan 16;28(2):102693. doi: 10.1016/j.jocmr.2026.102693. PMID 41548716.",
+   "citationVariants": [
+    "Russo V, Hudelo J, Marchel M, et al. Role of cardiovascular magnetic resonance in diagnosis and management of muscular dystrophies J Cardiovasc Magn Reson. 2026 Jan 16;28(2):102693. doi: 10.1016/j.jocmr.2026.102693. PMID 41548716."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41548716/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/41548716/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-muscular-dystrophy-to-cardiomyopathy",
+     "primaryId": "muscular-dystrophy",
+     "targetId": "cardiomyopathy",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "33c842bc0cf4051932ef6993f2626051a209adad9a70cc6b4fa46fd3e9bb8f1e"
+   ]
+  },
+  {
+   "sourceId": "pmid-32740854",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "32740854",
+   "doi": "10.1007/s11325-020-02139-5",
+   "canonicalCitation": "Senel GB, Arkali NB, Kilic H, et al. Obstructive sleep apnea syndrome and autonomic dysfunction in Duchenne muscular dystrophy Sleep Breath. 2021 Jun;25(2):941-946. doi: 10.1007/s11325-020-02139-5. PMID 32740854.",
+   "citationVariants": [
+    "Senel GB, Arkali NB, Kilic H, et al. Obstructive sleep apnea syndrome and autonomic dysfunction in Duchenne muscular dystrophy Sleep Breath. 2021 Jun;25(2):941-946. doi: 10.1007/s11325-020-02139-5. PMID 32740854."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/32740854/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/32740854/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-muscular-dystrophy-to-sleep-apnea",
+     "primaryId": "muscular-dystrophy",
+     "targetId": "sleep-apnea",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "43c19676074ba417e37c2922db2826985b83534c077f44edf225d7e14c4ec266"
+   ]
+  },
+  {
+   "sourceId": "pmid-28397169",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "28397169",
+   "doi": "10.1007/s11910-017-0750-1",
+   "canonicalCitation": "LoMauro A, D'Angelo MG, Aliverti A. Sleep Disordered Breathing in Duchenne Muscular Dystrophy Curr Neurol Neurosci Rep. 2017 May;17(5):44. doi: 10.1007/s11910-017-0750-1. PMID 28397169.",
+   "citationVariants": [
+    "LoMauro A, D'Angelo MG, Aliverti A. Sleep Disordered Breathing in Duchenne Muscular Dystrophy Curr Neurol Neurosci Rep. 2017 May;17(5):44. doi: 10.1007/s11910-017-0750-1. PMID 28397169."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/28397169/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/28397169/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-muscular-dystrophy-to-sleep-apnea",
+     "primaryId": "muscular-dystrophy",
+     "targetId": "sleep-apnea",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "003c986c8d5955ea43980dd9825c0f5dd9d71813890c75ca206d47bc78e7127a"
+   ]
+  },
+  {
+   "sourceId": "pmid-37212070",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "37212070",
+   "doi": "10.3233/JND-230055",
+   "canonicalCitation": "Crescimanno G, Greco F, Bertini M, et al. Age Related Burden of Swallowing in Adult Patients Affected by Duchenne Muscular Dystrophy J Neuromuscul Dis. 2023;10(5):955-962. doi: 10.3233/JND-230055. PMID 37212070.",
+   "citationVariants": [
+    "Crescimanno G, Greco F, Bertini M, et al. Age Related Burden of Swallowing in Adult Patients Affected by Duchenne Muscular Dystrophy J Neuromuscul Dis. 2023;10(5):955-962. doi: 10.3233/JND-230055. PMID 37212070."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/37212070/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/37212070/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-muscular-dystrophy-to-dysphagia",
+     "primaryId": "muscular-dystrophy",
+     "targetId": "dysphagia",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "b0ee0863189addc1eebd667b68454b0783157c1376bcdf943cbf10826cd3a6c0"
+   ]
+  },
+  {
+   "sourceId": "pmid-42142020",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "42142020",
+   "doi": "10.1177/22143602261452338",
+   "canonicalCitation": "Bengtsson-Stelzer L, Kroksmark AK, Persson C, et al. Orofacial dysfunction in persons with congenital or childhood-onset neuromuscular disorders J Neuromuscul Dis. 2026 May 16. doi: 10.1177/22143602261452338. PMID 42142020.",
+   "citationVariants": [
+    "Bengtsson-Stelzer L, Kroksmark AK, Persson C, et al. Orofacial dysfunction in persons with congenital or childhood-onset neuromuscular disorders J Neuromuscul Dis. 2026 May 16. doi: 10.1177/22143602261452338. PMID 42142020."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42142020/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/42142020/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-muscular-dystrophy-to-dysphagia",
+     "primaryId": "muscular-dystrophy",
+     "targetId": "dysphagia",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "998abd00fee593009dd18388d3ceeb654a52f70421f5478f2b8ffa79a460b198"
+   ]
+  },
+  {
+   "sourceId": "pmid-41912872",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "41912872",
+   "doi": "10.1007/s00198-026-07963-1",
+   "canonicalCitation": "Nasomyont N, Tian C, Hornung L, et al. The burden of bone disease in Duchenne muscular dystrophy: age-specific prevalence of osteoporosis and low bone density Osteoporos Int. 2026 May;37(5):1319-1328. doi: 10.1007/s00198-026-07963-1. PMID 41912872.",
+   "citationVariants": [
+    "Nasomyont N, Tian C, Hornung L, et al. The burden of bone disease in Duchenne muscular dystrophy: age-specific prevalence of osteoporosis and low bone density Osteoporos Int. 2026 May;37(5):1319-1328. doi: 10.1007/s00198-026-07963-1. PMID 41912872."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41912872/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/41912872/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-muscular-dystrophy-to-osteoporosis",
+     "primaryId": "muscular-dystrophy",
+     "targetId": "osteoporosis",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "0100ce00e3fff945dbdc896ec0236edf181757bd3098645aec0e2820ab33f612"
+   ]
+  },
+  {
+   "sourceId": "pmid-36342539",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "36342539",
+   "doi": "10.1007/s00198-022-06578-6",
+   "canonicalCitation": "Phung K, McAdam L, Ma J, et al. Risk factors associated with prevalent vertebral fractures in Duchenne muscular dystrophy Osteoporos Int. 2023 Jan;34(1):147-160. doi: 10.1007/s00198-022-06578-6. PMID 36342539.",
+   "citationVariants": [
+    "Phung K, McAdam L, Ma J, et al. Risk factors associated with prevalent vertebral fractures in Duchenne muscular dystrophy Osteoporos Int. 2023 Jan;34(1):147-160. doi: 10.1007/s00198-022-06578-6. PMID 36342539."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36342539/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/36342539/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-muscular-dystrophy-to-osteoporosis",
+     "primaryId": "muscular-dystrophy",
+     "targetId": "osteoporosis",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "b7818a587cb59cc1569618473b291c235836c4adf337b2260009e25436b317af"
+   ]
+  },
+  {
+   "sourceId": "pmid-32347918",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "32347918",
+   "doi": "10.1167/iovs.61.4.49",
+   "canonicalCitation": "Haarman AEG, Enthoven CA, Tideman JWL, et al. The Complications of Myopia: A Review and Meta-Analysis Invest Ophthalmol Vis Sci. 2020 Apr 9;61(4):49. doi: 10.1167/iovs.61.4.49. PMID 32347918.",
+   "citationVariants": [
+    "Haarman AEG, Enthoven CA, Tideman JWL, et al. The Complications of Myopia: A Review and Meta-Analysis Invest Ophthalmol Vis Sci. 2020 Apr 9;61(4):49. doi: 10.1167/iovs.61.4.49. PMID 32347918."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/32347918/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/32347918/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 4,
+   "liveUses": [
+    {
+     "relationshipId": "rel-myopia-to-retinal-detachment",
+     "primaryId": "myopia",
+     "targetId": "retinal-detachment",
+     "sourceIndex": 0
+    },
+    {
+     "relationshipId": "rel-myopia-to-macular-degeneration",
+     "primaryId": "myopia",
+     "targetId": "macular-degeneration",
+     "sourceIndex": 0
+    },
+    {
+     "relationshipId": "rel-myopia-to-glaucoma",
+     "primaryId": "myopia",
+     "targetId": "glaucoma",
+     "sourceIndex": 1
+    },
+    {
+     "relationshipId": "rel-myopia-to-cataracts",
+     "primaryId": "myopia",
+     "targetId": "cataracts",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "426555cdb90542cf375c7ce8b64af8fd9fe72165d3b2cfd6d2bbbaf84d795d90",
+    "5fb2c41ef816f5fd3ff3a42f6286259d5e19d60db095764986e084fe04750937",
+    "16a1c553a3d0240cf500bb08328d3fded60f58e42375faf64e0327bd45219043",
+    "24ff76536b4adfc427aab11e269b5db313502e15ba695fdd13274fd2b57f7d99"
+   ]
+  },
+  {
+   "sourceId": "pmid-35188078",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "35188078",
+   "doi": "10.1080/08164622.2022.2039555",
+   "canonicalCitation": "Nguyen HTT, Hoang TT, Pham CM, et al. Prevalence and related factors of myopic retinopathy - a hospital-based cross-section study in Vietnam Clin Exp Optom. 2023 May;106(4):427-430. doi: 10.1080/08164622.2022.2039555. PMID 35188078.",
+   "citationVariants": [
+    "Nguyen HTT, Hoang TT, Pham CM, et al. Prevalence and related factors of myopic retinopathy - a hospital-based cross-section study in Vietnam Clin Exp Optom. 2023 May;106(4):427-430. doi: 10.1080/08164622.2022.2039555. PMID 35188078."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35188078/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/35188078/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 2,
+   "liveUses": [
+    {
+     "relationshipId": "rel-myopia-to-retinal-detachment",
+     "primaryId": "myopia",
+     "targetId": "retinal-detachment",
+     "sourceIndex": 1
+    },
+    {
+     "relationshipId": "rel-myopia-to-macular-degeneration",
+     "primaryId": "myopia",
+     "targetId": "macular-degeneration",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "cc3c3cde024323de811e75c3667e8c09ed6ee3f468ed161f5d9ee3260d27895d",
+    "24a2ecd1d67c2ece2878c2edc3e34768e22229abae12ea04cc75b7cb00a38c2d"
+   ]
+  },
+  {
+   "sourceId": "pmid-40983254",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "40983254",
+   "doi": "10.1016/j.preteyeres.2025.101402",
+   "canonicalCitation": "Jonas JB, Jonas RA, Panda-Jonas S. Clinical and histological aspects of the anatomy of myopia, myopic macular degeneration and myopia-associated optic neuropathy Prog Retin Eye Res. 2025 Nov;109:101402. doi: 10.1016/j.preteyeres.2025.101402. PMID 40983254.",
+   "citationVariants": [
+    "Jonas JB, Jonas RA, Panda-Jonas S. Clinical and histological aspects of the anatomy of myopia, myopic macular degeneration and myopia-associated optic neuropathy Prog Retin Eye Res. 2025 Nov;109:101402. doi: 10.1016/j.preteyeres.2025.101402. PMID 40983254."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40983254/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/40983254/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-myopia-to-macular-degeneration",
+     "primaryId": "myopia",
+     "targetId": "macular-degeneration",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "d8c35e940c99fd5218958641d3b3f139fec1019b2903ef61f9ca092d00152d6a"
+   ]
+  },
+  {
+   "sourceId": "pmid-34648776",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "34648776",
+   "doi": "10.1016/j.ajo.2021.10.007",
+   "canonicalCitation": "Ha A, Kim CY, Shim SR, et al. Degree of Myopia and Glaucoma Risk: A Dose-Response Meta-analysis Am J Ophthalmol. 2022 Apr;236:107-119. doi: 10.1016/j.ajo.2021.10.007. PMID 34648776.",
+   "citationVariants": [
+    "Ha A, Kim CY, Shim SR, et al. Degree of Myopia and Glaucoma Risk: A Dose-Response Meta-analysis Am J Ophthalmol. 2022 Apr;236:107-119. doi: 10.1016/j.ajo.2021.10.007. PMID 34648776."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34648776/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/34648776/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-myopia-to-glaucoma",
+     "primaryId": "myopia",
+     "targetId": "glaucoma",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "30242e8d391b9cc33201779d0e7b78c25964e874582463409644c58996163cd1"
+   ]
+  },
+  {
+   "sourceId": "pmid-34883495",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "34883495",
+   "doi": "10.1159/000520468",
+   "canonicalCitation": "Wu J, Hao J, Du Y, et al. The Association between Myopia and Primary Open-Angle Glaucoma: A Systematic Review and Meta-Analysis Ophthalmic Res. 2022;65(4):387-397. doi: 10.1159/000520468. PMID 34883495.",
+   "citationVariants": [
+    "Wu J, Hao J, Du Y, et al. The Association between Myopia and Primary Open-Angle Glaucoma: A Systematic Review and Meta-Analysis Ophthalmic Res. 2022;65(4):387-397. doi: 10.1159/000520468. PMID 34883495."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34883495/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/34883495/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-myopia-to-glaucoma",
+     "primaryId": "myopia",
+     "targetId": "glaucoma",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "ae4445e8e5e3e4507f861508920a2126b57480925b857fa286a93f634f1b0d68"
+   ]
+  },
+  {
+   "sourceId": "pmid-31325324",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "31325324",
+   "doi": "10.1002/mus.26643",
+   "canonicalCitation": "Tong O, Bieri P, Herskovitz S. Nerve entrapments related to muscle herniation Muscle Nerve. 2019 Oct;60(4):428-433. doi: 10.1002/mus.26643. PMID 31325324.",
+   "citationVariants": [
+    "Tong O, Bieri P, Herskovitz S. Nerve entrapments related to muscle herniation Muscle Nerve. 2019 Oct;60(4):428-433. doi: 10.1002/mus.26643. PMID 31325324."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/31325324/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/31325324/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-muscle-hernias-to-peripheral-neuropathy",
+     "primaryId": "muscle-hernias",
+     "targetId": "peripheral-neuropathy",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "99015c31fd66ad30ef9a84fdf480395b5ad78621f188cd01014f539a080a3aee"
+   ]
+  },
+  {
+   "sourceId": "pmid-7604332",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "7604332",
+   "doi": null,
+   "canonicalCitation": "Alhadeff J, Lee CK. Gastrocnemius muscle herniation at the knee causing peroneal nerve compression resembling sciatica Spine (Phila Pa 1976). 1995 Mar 1;20(5):612-4. PMID 7604332.",
+   "citationVariants": [
+    "Alhadeff J, Lee CK. Gastrocnemius muscle herniation at the knee causing peroneal nerve compression resembling sciatica Spine (Phila Pa 1976). 1995 Mar 1;20(5):612-4. PMID 7604332."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/7604332/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/7604332/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-muscle-hernias-to-peripheral-neuropathy",
+     "primaryId": "muscle-hernias",
+     "targetId": "peripheral-neuropathy",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "0968e16406e51b532f5d5ed79e417730034c57bfefcb0473e78657fdd02e5bc1"
+   ]
+  },
+  {
+   "sourceId": "pmid-32190181",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "32190181",
+   "doi": "10.3941/jrcr.v13i11.3757",
+   "canonicalCitation": "Foresti M. Superficial peroneal nerve compression due to peroneus brevis muscle herniation J Radiol Case Rep. 2019 Nov;13(11):10-17. doi: 10.3941/jrcr.v13i11.3757. PMID 32190181.",
+   "citationVariants": [
+    "Foresti M. Superficial peroneal nerve compression due to peroneus brevis muscle herniation J Radiol Case Rep. 2019 Nov;13(11):10-17. doi: 10.3941/jrcr.v13i11.3757. PMID 32190181."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/32190181/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/32190181/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-muscle-hernias-to-peripheral-neuropathy",
+     "primaryId": "muscle-hernias",
+     "targetId": "peripheral-neuropathy",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "51941a76fe98628fc1d35f0f7e1a80f5529912445eef95052b0dc0747eebb188"
    ]
   }
  ],
