@@ -2,8 +2,11 @@
   "id": "pericardial-effusion",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review hemodynamic, vascular, thrombotic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 batch 70 (2026-09-26): DEFERRED - zero edges authored. The cardinal complications of pericardial effusion have no catalog identities (no cardiac-tamponade identity and no constrictive-pericarditis identity), the located literature is procedure-focused (pericardiocentesis outcome cohorts), post-cardiac-surgery prevalence series, dialysis and secondary-etiology cohorts, or malignant-effusion prognosis where the malignancy is the dominant driver, and the congestive-heart-failure relationship is dominantly reverse-direction (heart failure causing effusions) so an effusion-to-dysfunction edge would invert the published direction; effusive-constrictive progression evidence is case-report class (secondary-lymphoma and peripartum cardiogenic-shock reports). Reopening via a tamponade or constrictive-pericarditis catalog identity, or a directional cohort quantifying large-effusion-before-dysfunction ordering.",
+    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication; review hemodynamic, vascular, thrombotic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+  ],
+  "governanceNotes": [
+    "D1 batch 70 (2026-09-26): pericardial-effusion deferred on missing-identity and direction-inversion grounds, matching the overflow-incontinence deferral pattern (batch 68). Searched anchors retained for reopening: malignant pericardial effusion etiology/prognosis series (PMID 35950292), post-pericardiocentesis mortality cohort (PMID 42484666), post-cardiac-surgery effusion prevalence series (PMID 42074905), dialysis-population hospitalization analysis (PMID 42471176), and effusive-constrictive case reports (PMIDs 42400575, 41717678). The cardiac-inflammatory-disease identity (pericarditis/endocarditis/myocarditis) owns the pericarditis inflammatory pathway and its effusion overlap is constitutive-proximity territory; no edge was registered against it."
   ],
   "suggestions": []
 }

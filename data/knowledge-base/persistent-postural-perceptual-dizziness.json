@@ -2,8 +2,142 @@
   "id": "persistent-postural-perceptual-dizziness",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review otologic, vestibular, audiologic, visual, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 70 (2026-09-26): two ASSOCIATION_ONLY draft mappings pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: the edges assert association only (etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true). Psychiatric comorbidity is cross-sectional at specialty referral and anxiety/depression frequently predate PPPD onset (direction-inversion guard carried on both edges); individual claims require dated psychiatric and vestibular assessment with pre-existing-disorder exclusion and review by a qualified medical professional.",
+    "Pathway and duplicate-scope screens: no -> dizziness edge (IDENTITY-DUPLICATION and constitutive proximity - PPPD is defined by persistent non-spinning dizziness, so the generic dizziness identity window owns the undifferentiated dizziness pathway and authoring both would double-register one presentation against two identities); no -> insomnia edge (below threshold - sleep disturbance in PPPD is reported within comorbidity inventories without PPPD-specific incident-quantification in the located anchors); no -> vasovagal-syncope or vestibular-disorder edge (diagnostic-mimic and shared-substrate framing - PPPD is diagnosed after vestibular causes are excluded, and the Benign-paroxysmal-positional-vertigo anxiety window (PMID window published on that edge) is not recycled per ME-29); the depression edge carries the network meta-analysis's null depression-treatment response openly as an asymmetry counterweight (PMID 42240653).",
+    "Shared-provenance disclosure (CRG redundancy-semantics follow-up): the umbrella dizziness->anxiety-disorder edge already carries the Kothari PPPD cohort (PMID 42268441) in its reference set; this member-identity edge is scoped to the PPPD-specific Barany-criteria population and the shared evidence provenance is recorded openly rather than silently duplicated (umbrella edge left untouched)."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 70 (2026-09-26): two bounded association edges authored - persistent-postural-perceptual-dizziness to anxiety-disorder (rank 1) and depressive-disorder (rank 2) - both classified ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, and hypothesizedOnly:true. The evidence base is the 75-patient prospective Barany-criteria cohort with 88% psychiatric comorbidity and GAD-7/PHQ-9 medians of 8.0 falling to 0.0 under multimodal treatment (PMID 42268441), the 11-RCT network meta-analysis in 518 patients showing anxiety improvement (SMD -0.87) but null depression outcomes (PMID 42240653, counterweight on the depression edge), the 24-patient neuro-otological HADS cohort with 38% otolith dysfunction (PMID 42732644), and the prospective 284-case post-stroke PPPD study (PMID 40929368). Both edges carry direction-inversion guards because anxiety and depression commonly predate PPPD per the Barany framework. Shared-provenance disclosure: the umbrella dizziness->anxiety-disorder edge already cites the Kothari PPPD cohort (PMID 42268441), so this batch's PPPD->anxiety-disorder edge registers the same cohort under its native member identity with the overlap recorded openly (CRG redundancy-semantics follow-up: umbrella/member parallel edges with shared evidence provenance); the dizziness umbrella has no depressive-disorder edge, so the PPPD->depressive-disorder edge has no umbrella overlap."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "anxiety-disorder",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "PPPD cohorts document anxiety comorbidity at prospective level: the 75-patient prospective cohort fulfilling Barany Society criteria found psychiatric comorbidity in 88 percent of patients, most commonly combined anxiety and depression, with median GAD-7 scores of 8.0 falling to 0.0 at three months under multimodal treatment (PMID 42268441), the network meta-analysis of 11 randomized trials in 518 patients documents significant improvement in anxiety outcomes with neuromodulation (SMD -0.87 versus control, PMID 42240653), and the 24-patient neuro-otological cohort measured HADS alongside vestibular testing with over one third showing otolith dysfunction (PMID 42732644); recorded as documented association only with the direction-inversion guard carried openly - anxiety traits and disorders commonly predate and predispose to PPPD per the Barany framework.",
+        "causationStatus": "Neither causation nor aggravation of an anxiety disorder is established for any individual: the comorbidity figure is cross-sectional in specialty-clinic populations and the anxiety treatment-response evidence is small-trial class with high risk of bias, the direction guard is material because anxiety is a recognized predisposing and precipitating factor for PPPD rather than only a consequence, and individual claims require dated psychiatric and vestibular assessment with pre-existing anxiety, vestibular migraine, and medication-effect exclusion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "PSYCHOPHYSIOLOGICAL",
+        "primaryVector": "Chronic persistent dizziness and postural vigilance drive autonomic arousal, threat appraisal, and avoidance behavior so anxiety symptoms emerge or worsen alongside the dizziness, the downstream component supported by anxiety-score improvement when PPPD-directed therapy reduces dizziness burden, but whether this route produced any individual anxiety disorder remains hypothesized because the predisposing direction (anxiety preceding PPPD) is equally documented and psychiatric records are required to separate them.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at prospective single-center and small-trial class only: psychiatric comorbidity was measured cross-sectionally at specialty referral, the network meta-analysis rates most contributing trials at high risk of bias with low-to-moderate evidence quality, no anchor establishes incident anxiety with documented PPPD-first temporal ordering, and the treatment-response signal cannot separate direct anxiolytic effects of vestibular rehabilitation and CBT from dizziness-mediated improvement.",
+        "evidenceGaps": "All anchors are specialty-clinic samples where referral selection enriches psychiatric comorbidity; the 88 percent comorbidity figure is cross-sectional without temporal ordering; the network meta-analysis found most trials at high risk of bias; anxiety frequently predates PPPD onset (direction-inversion guard carried openly); and pre-existing generalized anxiety, vestibular migraine, Meniere disease and BPPV windows (published, not recycled per ME-29), medication and substance effects, and cardiopulmonary causes of anxiety symptoms compete for individual attribution.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "pre-existing anxiety disorders preceding PPPD (direction-inversion guard carried on edge)",
+          "vestibular migraine",
+          "Meniere disease and BPPV (published windows, not recycled per ME-29)",
+          "medication, caffeine, and substance effects",
+          "cardiopulmonary causes of palpitations and dyspnea misread as anxiety"
+        ]
+      },
+      "evidenceGaps": [
+        "All anchors are specialty-clinic samples where referral selection enriches psychiatric comorbidity; the 88 percent comorbidity figure is cross-sectional without temporal ordering; the network meta-analysis found most trials at high risk of bias; anxiety frequently predates PPPD onset (direction-inversion guard carried openly); and pre-existing generalized anxiety, vestibular migraine, Meniere disease and BPPV windows (published, not recycled per ME-29), medication and substance effects, and cardiopulmonary causes of anxiety symptoms compete for individual attribution."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY at prospective-and-small-trial class with the direction-inversion guard carried openly: the 75-patient prospective cohort documents 88 percent psychiatric comorbidity with median GAD-7 falling from 8.0 to 0.0 under PPPD-directed multimodal treatment (PMID 42268441), the network meta-analysis documents anxiety improvement with neuromodulation (SMD -0.87, PMID 42240653), and the neuro-otological cohort documents the HADS-measured comorbidity frame with otolith dysfunction in over a third (PMID 42732644); because anxiety is a recognized predisposing factor for PPPD as well as a correlate, the conservative standard keeps the edge at association only and routes individual claims through dated psychiatric and vestibular assessment with pre-existing-anxiety and vestibular-migraine exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Kothari S, Bhansali D, Phalgune DS, et al. Persistent postural-perceptual dizziness: subjective-objective dissociation and response to neurologist-led multimodal therapy J Neurol. 2026 Jun 10;273(7).doi: 10.1007/s00415-026-13927-6. PMID 42268441.",
+          "note": "Prospective cohort of 75 consecutive PPPD patients fulfilling Barany Society criteria (J Neurol 2026): psychiatric comorbidity in 88%, most commonly combined anxiety and depression; median GAD-7 8.0 improving to 0.0 and DHI 40.4 to 8.0 at 3 months under multimodal treatment (all p<0.001); subjective-objective dissociation documented on posturography; supports the bounded comorbidity and treatment-response association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42268441/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 42268441; results (psychiatric comorbidity prevalence and GAD-7 outcomes)"
+        },
+        {
+          "citation": "Shen J, Zhao X, Huo Y, et al. Comparative efficacy of non-pharmacological interventions for persistent postural-perceptual dizziness: a systematic review and network meta-analysis of balance, anxiety, and depression outcomes J Neurol. 2026 Jun 4;273(6).doi: 10.1007/s00415-026-13891-1. PMID 42240653.",
+          "note": "Systematic review and network meta-analysis of 11 RCTs in 518 PPPD patients (J Neurol 2026): neuromodulation superior to control for anxiety outcomes (SMD -0.87, 95% CI -1.40 to -0.33); no significant effects on depression outcomes; 81.8% of studies at high risk of bias, evidence quality low to moderate; supports the bounded anxiety-treatment-response association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42240653/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 42240653; results (anxiety and depression outcome comparisons)"
+        },
+        {
+          "citation": "Goto F, Kaneda S, Wasano K. Clinical Significance of Neuro-Otological Examinations in Persistent Postural-Perceptual Dizziness: A Retrospective Study J Int Adv Otol. 2026 Aug 31;22(4):1-5. PMID 42732644.",
+          "note": "Retrospective cohort of 24 PPPD patients with vHIT, cVEMP, oVEMP and HADS assessment (J Int Adv Otol 2026): otolith dysfunction in 9 of 23 (38%); HADS scores did not differ between prognosis groups; early treatment within 3 months trended toward better outcome; supports the bounded neuro-otological comorbidity frame only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42732644/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 42732644; results (vestibular findings and HADS assessment)"
+        }
+      ]
+    },
+    {
+      "conditionId": "depressive-disorder",
+      "rank": 2,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "PPPD cohorts document depression comorbidity at prospective level: the 75-patient prospective Barany-criteria cohort found psychiatric comorbidity in 88 percent of patients, most commonly combined anxiety and depression, with median PHQ-9 scores of 8.0 falling to 0.0 at three months under multimodal treatment (PMID 42268441), the network meta-analysis of 11 randomized trials in 518 patients found NO significant intervention effect on depression outcomes while anxiety improved (PMID 42240653, carried openly as counterweight), and the prospective 284-case study of PPPD after stroke documents comorbidity profiling in an incident-onset population (PMID 40929368); recorded as documented association only with the depression-nonresponse asymmetry and the direction guard carried openly.",
+        "causationStatus": "Neither causation nor aggravation of a depressive disorder is established for any individual: the comorbidity figure is cross-sectional at specialty referral, the treatment literature shows depression lagging anxiety in responsiveness which weakens a purely downstream dizziness-mediated reading, depressive episodes commonly precede chronic dizziness, and individual claims require dated psychiatric assessment with pre-existing depression, medication effects, and medical-illness mood exclusion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "PSYCHOPHYSIOLOGICAL",
+        "primaryVector": "Chronic unremitting dizziness with activity restriction, loss of independence, and diminished reinforcement is hypothesized to erode mood so depressive symptoms emerge or worsen alongside the dizziness, the downstream component supported by PHQ-9 improvement in the multimodal cohort, but whether this route produced any individual depressive disorder remains hypothesized because the treatment meta-analysis found depression outcomes unresponsive to PPPD-directed interventions and psychiatric records are required to separate pre-existing from downstream mood disorder.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at prospective single-center and small-trial class only: the comorbidity measurement is cross-sectional at specialty referral, the network meta-analysis found no significant depression effect for any intervention while anxiety improved (asymmetry carried openly as counterweight), the post-stroke cohort describes comorbidities in a population with independent vascular-depression substrate, and no anchor establishes incident depression with PPPD-first temporal ordering.",
+        "evidenceGaps": "All anchors are specialty-clinic or stroke-population samples; the 88 percent comorbidity figure is cross-sectional without temporal ordering; depression outcomes were unresponsive to PPPD-directed interventions in the network meta-analysis (counterweight carried openly); depression frequently predates chronic dizziness; and pre-existing major depression, vascular depression after stroke, hypothyroidism and anemia windows (published, not recycled per ME-29), medication and substance effects, and bereavement or adjustment reactions compete for individual attribution.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "pre-existing major depressive disorder (direction-inversion guard carried on edge)",
+          "vascular depression after cerebrovascular disease",
+          "hypothyroidism and anemia (published windows, not recycled per ME-29)",
+          "medication, alcohol, and substance effects",
+          "adjustment disorder and bereavement reactions"
+        ]
+      },
+      "evidenceGaps": [
+        "All anchors are specialty-clinic or stroke-population samples; the 88 percent comorbidity figure is cross-sectional without temporal ordering; depression outcomes were unresponsive to PPPD-directed interventions in the network meta-analysis (counterweight carried openly); depression frequently predates chronic dizziness; and pre-existing major depression, vascular depression after stroke, hypothyroidism and anemia windows (published, not recycled per ME-29), medication and substance effects, and bereavement or adjustment reactions compete for individual attribution."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY at prospective-and-small-trial class with the depression-nonresponse counterweight and direction guard carried openly: the 75-patient cohort documents 88 percent psychiatric comorbidity with median PHQ-9 falling from 8.0 to 0.0 under multimodal treatment (PMID 42268441), the network meta-analysis found no significant depression effect for any intervention (PMID 42240653), and the 284-case post-stroke prospective study documents the incident-onset comorbidity frame (PMID 40929368); because depression lags anxiety in treatment responsiveness and commonly predates chronic dizziness, the conservative standard keeps the edge at association only and routes individual claims through dated psychiatric assessment with pre-existing-depression and medical-mood exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Kothari S, Bhansali D, Phalgune DS, et al. Persistent postural-perceptual dizziness: subjective-objective dissociation and response to neurologist-led multimodal therapy J Neurol. 2026 Jun 10;273(7).doi: 10.1007/s00415-026-13927-6. PMID 42268441.",
+          "note": "Prospective cohort of 75 consecutive PPPD patients fulfilling Barany Society criteria (J Neurol 2026): psychiatric comorbidity in 88%, most commonly combined anxiety and depression; median PHQ-9 8.0 improving to 0.0 at 3 months under multimodal treatment; supports the bounded comorbidity and treatment-response association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42268441/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 42268441; results (PHQ-9 depression outcomes and comorbidity prevalence)"
+        },
+        {
+          "citation": "Shen J, Zhao X, Huo Y, et al. Comparative efficacy of non-pharmacological interventions for persistent postural-perceptual dizziness: a systematic review and network meta-analysis of balance, anxiety, and depression outcomes J Neurol. 2026 Jun 4;273(6).doi: 10.1007/s00415-026-13891-1. PMID 42240653.",
+          "note": "Systematic review and network meta-analysis of 11 RCTs in 518 PPPD patients (J Neurol 2026): NO significant effects of any intervention on depression outcomes while anxiety and balance improved; COUNTERWEIGHT carried openly showing depression lags anxiety in treatment responsiveness; 81.8% of studies at high risk of bias.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42240653/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 42240653; results (depression outcomes null across interventions)"
+        },
+        {
+          "citation": "Li J, Bai X, Fang R, et al. Incidence, risk factors, and comorbidities of persistent postural-perceptual dizziness after stroke: A prospective study of 284 cases J Vestib Res. 2026 Mar;36(2):100-106. PMID 40929368.",
+          "note": "Prospective study of 284 stroke cases (J Vestib Res 2026): incidence, risk factors, and comorbidities of PPPD after stroke documented in an incident-onset population; supports the bounded post-stroke comorbidity frame only (vascular-depression substrate independent).",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40929368/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 40929368; results (PPPD incidence and comorbidities after stroke)"
+        }
+      ]
+    }
+  ]
 }

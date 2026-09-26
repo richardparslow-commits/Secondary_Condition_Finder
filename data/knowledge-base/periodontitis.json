@@ -2,8 +2,131 @@
   "id": "periodontitis",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review oral, dental, maxillofacial, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 70 (2026-09-26): two ASSOCIATION_ONLY draft mappings pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: the edges assert association only (etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true). The diabetes edge carries an explicit direction-inversion guard (established diabetes worsening periodontitis is the dominant published direction) and the stroke edge carries composite-endpoint and cohort-scope limits; individual claims require dated periodontal staging and metabolic or neurologic assessment with competing-cause exclusion and review by a qualified medical professional.",
+    "Pathway and duplicate-scope screens: no -> loss-of-teeth edge (IDENTITY-DUPLICATION - the periodontal-disease identity already owns the loss-of-teeth and osteoporosis windows as a published sibling; periodontitis must not double-register the same tooth-loss pathway under ME-29 umbrella discipline); no -> oral-cancer edge (shared-substrate guard - tobacco and alcohol drive both diseases and the leukoplakia and erythroplakia windows own the premalignant-to-oral-cancer pathway); no -> myocardial-infarction edge (below threshold - the located retrospective cohort reports a composite of coronary disease, myocardial infarction, and stroke without MI-specific quantification, and the UK Biobank incident-heart-failure trend was not significant after adjustment (HR 1.19, 95% CI 0.92-1.55)); ME-29 discipline - the gingivitis-to-periodontitis incoming edge evidence is not recycled here, and all anchors are periodontitis-specific exposures."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 70 (2026-09-26): two bounded association edges authored - periodontitis to diabetes-mellitus (rank 1) and cerebrovascular-accident-stroke-residuals (rank 2) - both classified ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, and hypothesizedOnly:true. The diabetes edge rests on the 37-RCT network meta-analysis in 1,989 patients (PMID 40356262), the 392-patient primary-care cohort with adjusted HbA1c beta -0.94 (PMID 42089456), and the 74-adult stage-gradient cross-section (PMID 42585499), with the direction-inversion guard (diabetes-to-periodontitis dominant direction) carried openly. The stroke edge rests on the UK Biobank prospective cohort of 3,707 atrial-fibrillation patients with incident stroke HR 1.60 (PMID 42736175) and the 472-patient retrospective composite-CVD cohort with adjusted OR 1.87 (PMID 41943019), with composite-endpoint and self-reported-exposure limits carried openly."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "diabetes-mellitus",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The periodontitis-diabetes relationship is documented at trial and cohort level: the Bayesian network meta-analysis of 37 randomized trials in 1,989 patients with periodontitis and type 2 diabetes documents HbA1c reduction with nonsurgical periodontal therapy (SRP with doxycycline or antimicrobial photodynamic therapy most effective for reducing glycated hemoglobin, PMID 40356262), the 392-patient primary-care retrospective cohort documents comprehensive dental treatment associated with lower final HbA1c (adjusted beta -0.94) and lower odds of glycemic decompensation (OR 0.19, PMID 42089456), and the 74-adult cross-sectional study documents stage III/IV periodontitis with mean HbA1c 6.8 versus 5.8 percent in stage I/II (PMID 42585499); recorded as documented association only with the direction-inversion guard carried openly - established diabetes worsening periodontitis is the dominant direction of the published relationship.",
+        "causationStatus": "Neither causation nor aggravation of diabetes is established for any individual: the located evidence quantifies glycemic improvement after periodontal treatment in patients who already have diabetes rather than incident diabetes caused by periodontitis, so the pathway records glycemic dysregulation and worsening control only, and individual claims require dated HbA1c with periodontal staging plus type 1 diabetes, medication adherence, obesity, and steroid exclusion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "SYSTEMIC_INFLAMMATORY",
+        "primaryVector": "Chronic periodontal inflammation with a large ulcerated periodontal inflamed surface area releases interleukin-1, interleukin-6, TNF-alpha, and prostaglandin mediators into the circulation so systemic inflammatory tone rises and insulin signaling and hepatic glucose regulation are disrupted, glycated hemoglobin worsens with advancing periodontal stage, and periodontal treatment lowers HbA1c, but whether this route produced any individual glycemic deterioration remains hypothesized until periodontal and metabolic records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at network-meta-analysis, retrospective-cohort, and cross-sectional class only: every interventional anchor measures improvement in pre-existing diabetes rather than incident diabetes onset, the cross-sectional stage gradient cannot establish periodontitis-before-dysglycemia ordering, the treatment-effect magnitude is modest and entangled with care engagement, and no cohort quantifies incident diabetes attributable to periodontitis with dated exposure ordering.",
+        "evidenceGaps": "All anchors measure glycemic control in populations where diabetes usually predates the periodontal exposure or are cross-sectional; the direction-inversion guard is carried openly because established diabetes worsening periodontitis is the dominant published direction; no incident-diabetes cohort with dated periodontitis-first ordering was located; the treatment-effect evidence is entangled with care engagement and weight, diet, and medication changes; and obesity and metabolic syndrome, type 1 and secondary diabetes, corticosteroid and antipsychotic medication effects, and smoking compete for individual attribution.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "obesity and metabolic syndrome (published windows, not recycled per ME-29)",
+          "type 1 diabetes and secondary diabetes",
+          "medication effects including corticosteroids and antipsychotics",
+          "reverse direction: established diabetes causing and worsening periodontitis (direction-inversion guard carried on edge)",
+          "smoking and other behavioral risk factors shared across both diseases"
+        ]
+      },
+      "evidenceGaps": [
+        "All anchors measure glycemic control in populations where diabetes usually predates the periodontal exposure or are cross-sectional; the direction-inversion guard is carried openly because established diabetes worsening periodontitis is the dominant published direction; no incident-diabetes cohort with dated periodontitis-first ordering was located; the treatment-effect evidence is entangled with care engagement and weight, diet, and medication changes; and obesity and metabolic syndrome, type 1 and secondary diabetes, corticosteroid and antipsychotic medication effects, and smoking compete for individual attribution."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY at network-meta-analysis and cohort class with the direction-inversion guard carried openly: the 37-trial network meta-analysis in 1,989 patients documents HbA1c reduction with nonsurgical periodontal therapy (PMID 40356262), the 392-patient cohort documents adjusted HbA1c beta -0.94 with comprehensive dental treatment (PMID 42089456), and the cross-sectional study documents a stage gradient (6.8 versus 5.8 percent HbA1c, PMID 42585499); because the evidence measures glycemic control in pre-existing diabetes and the reverse direction is dominant in the literature, the conservative standard keeps the edge at association only and routes individual claims through dated HbA1c with periodontal staging and metabolic exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Xie X, Xu J, Li Y, et al. Efficacy of nonsurgical periodontal treatment on patients with periodontitis and type 2 diabetes mellitus: a systematic review and Bayesian network meta-analysis Acta Odontol Scand. 2025 May 13;84:201-211. PMID 40356262.",
+          "note": "Bayesian network meta-analysis of 37 RCTs in 1,989 patients with periodontitis and type 2 diabetes (Acta Odontol Scand 2025): SRP with doxycycline or antimicrobial photodynamic therapy most effective for reducing HbA1c; SRP with local satranidazole gel best for probing depth and attachment level; supports the bounded glycemic-control association only (treatment-mediated, pre-existing diabetes).",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40356262/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 40356262; results (glycated hemoglobin outcomes by adjunctive therapy)"
+        },
+        {
+          "citation": "Oviedo Contreras C, Cornejo Ovalle M. Comprehensive Dental Treatment and Glycemic Control in Primary Health Care Patients With Type 2 Diabetes: A Retrospective Cohort Study Community Dent Oral Epidemiol. 2026 May 6.doi: 10.1111/cdoe.70074. PMID 42089456.",
+          "note": "Retrospective cohort of 392 primary-care adults with type 2 diabetes in Chile (Community Dent Oral Epidemiol 2026): comprehensive dental treatment associated with lower final HbA1c (adjusted beta -0.94, 95% CI -1.15 to -0.72) and lower odds of glycemic decompensation (OR 0.19, 95% CI 0.10-0.34); supports the bounded glycemic-control association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42089456/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 42089456; results (HbA1c and decompensation by dental treatment exposure)"
+        },
+        {
+          "citation": "Rodrigues MEO, Vilarinho JLPDS, Chermont JGJ, et al. Association of periodontitis stages with glycemic control in adults with and without type 2 diabetes mellitus: a cross-sectional study J Appl Oral Sci. 2026;34:e20260178. PMID 42585499.",
+          "note": "Cross-sectional study of 74 adults with periodontitis (J Appl Oral Sci 2026): stage III/IV periodontitis with mean HbA1c 6.8% versus 5.8% in stage I/II (p=0.007), higher triglycerides and lower HDL; poor glycemic control associated with advanced stages; supports the bounded stage-gradient association only (cross-sectional).",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42585499/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 42585499; results (periodontitis stages versus HbA1c and metabolic parameters)"
+        }
+      ]
+    },
+    {
+      "conditionId": "cerebrovascular-accident-stroke-residuals",
+      "rank": 2,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Periodontitis associates with incident cerebrovascular events at prospective level: the UK Biobank prospective cohort of 3,707 atrial-fibrillation patients without prior stroke documents periodontitis associated with incident stroke over a median 15.5 years (adjusted HR 1.60, 95% CI 1.11-2.30) and cardiovascular mortality (HR 1.73, PMID 42736175), and the 472-patient retrospective hospital cohort documents cardiovascular disease prevalence of 38.7 versus 21.3 percent with periodontitis independently associated after multivariable adjustment (adjusted OR 1.87, 95% CI 1.28-2.72, PMID 41943019); recorded as documented association only with the composite-endpoint and cohort-scope limits carried openly.",
+        "causationStatus": "Neither causation nor aggravation of stroke is established for any individual: the prospective anchor measured periodontitis by self-reported symptoms within an atrial-fibrillation population where cardioembolic stroke dominates, the retrospective anchor reports a composite of coronary disease, myocardial infarction, and stroke without stroke-separated quantification, and individual claims require dated neurologic and periodontal assessment with cardioembolic, hypertensive, and atherosclerotic mechanisms adjudicated per case."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "THROMBOTIC_OR_VASCULAR",
+        "primaryVector": "Chronic periodontal inflammation with bacteremia from ulcerated periodontal tissues is hypothesized to promote endothelial injury, atherothrombotic plaque progression, and a prothrombotic circulating state so atherothrombotic stroke risk rises and post-stroke residuals result, the vascular route supported by the prospective association with incident stroke after adjustment for demographic, lifestyle, and clinical comorbidities, but whether this route produced any individual stroke remains hypothesized until neurologic, imaging, and periodontal records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at one prospective cohort within a selected atrial-fibrillation population and one retrospective composite-endpoint cohort: periodontitis was self-reported in the prospective anchor, the stroke hazard estimate sits inside a population with independent cardioembolic stroke substrate, the retrospective anchor does not separate stroke from the composite, inflammatory markers and subclinical atherosclerosis were not mediated out, and no general-population incident-stroke cohort with clinical periodontal diagnosis was located.",
+        "evidenceGaps": "The prospective anchor self-reported periodontitis symptoms (loose teeth, painful gums) rather than clinical examination and studied atrial-fibrillation patients with independent cardioembolic stroke substrate; the retrospective anchor reports a composite cardiovascular endpoint without stroke-specific quantification; residual confounding by smoking, diet, and healthcare access is not excluded; and atrial fibrillation itself, hypertension, diabetes, carotid atherosclerosis (published windows, not recycled per ME-29), and hemorrhagic stroke mechanisms compete for individual attribution.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "atrial fibrillation with independent cardioembolic stroke substrate",
+          "hypertension and diabetes (published windows, not recycled per ME-29)",
+          "carotid and cerebral atherosclerosis (the arteriosclerosis window, not recycled per ME-29)",
+          "hemorrhagic stroke mechanisms distinct from atherothrombosis",
+          "smoking, diet, and healthcare-access confounding"
+        ]
+      },
+      "evidenceGaps": [
+        "The prospective anchor self-reported periodontitis symptoms (loose teeth, painful gums) rather than clinical examination and studied atrial-fibrillation patients with independent cardioembolic stroke substrate; the retrospective anchor reports a composite cardiovascular endpoint without stroke-specific quantification; residual confounding by smoking, diet, and healthcare access is not excluded; and atrial fibrillation itself, hypertension, diabetes, carotid atherosclerosis (published windows, not recycled per ME-29), and hemorrhagic stroke mechanisms compete for individual attribution."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY at prospective-and-retrospective class with the composite-endpoint and cohort-scope limits carried openly: the UK Biobank cohort documents adjusted HR 1.60 for incident stroke and 1.73 for cardiovascular mortality in 3,707 atrial-fibrillation patients (PMID 42736175) and the 472-patient cohort documents adjusted OR 1.87 for cardiovascular disease (PMID 41943019); because periodontitis was self-reported in the prospective anchor and the retrospective endpoint is composite, the conservative standard keeps the edge at association only and routes individual claims through dated neurologic and periodontal assessment with cardioembolic and atherosclerotic adjudication.",
+      "sourceReferences": [
+        {
+          "citation": "Li H, Huang Y, Li J, et al. Periodontitis and adverse outcomes in atrial fibrillation: prospective evidence from the UK Biobank Intern Med J. 2026 Sep 14.doi: 10.1111/imj.70640. PMID 42736175.",
+          "note": "Prospective UK Biobank cohort of 3,707 atrial-fibrillation patients without prior heart failure or stroke (Intern Med J 2026, median follow-up 15.5 years): self-reported periodontitis associated with all-cause mortality (HR 1.59), cardiovascular mortality (HR 1.73) and incident stroke (HR 1.60, 95% CI 1.11-2.30); incident heart failure trend not significant (HR 1.19); supports the bounded stroke association only (self-reported exposure, AF population).",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42736175/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 42736175; results (incident stroke and mortality hazard ratios)"
+        },
+        {
+          "citation": "Lu Y, Lu B. Association between periodontitis and cardiovascular disease: a retrospective analysis BMC Oral Health. 2026 Apr 6;26(1).doi: 10.1186/s12903-026-08282-x. PMID 41943019.",
+          "note": "Retrospective observational study of 472 hospital patients (BMC Oral Health 2026): cardiovascular disease prevalence 38.7% with versus 21.3% without periodontitis (P<0.001); periodontitis independently associated with cardiovascular disease (adjusted OR 1.87, 95% CI 1.28-2.72) including coronary artery disease, myocardial infarction, and stroke as a composite; stronger with stage III/IV grade C disease; supports the bounded composite association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41943019/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 41943019; results (composite cardiovascular prevalence and multivariable association)"
+        }
+      ]
+    }
+  ]
 }
