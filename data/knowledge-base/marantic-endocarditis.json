@@ -2,8 +2,186 @@
   "id": "marantic-endocarditis",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review hemodynamic, vascular, thrombotic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 59 (2026-09-26): three ASSOCIATION_ONLY draft mappings pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: all three edges assert association only (etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true, mechanismCategory THROMBOTIC_OR_VASCULAR). The evidence base is small prospective-observational cohort plus case class, so individual claims require dated echocardiography with embolic-pattern imaging and competing-mechanism exclusion, and review by a qualified medical professional.",
+    "Pathway and duplicate-scope screens: no -> renal-infarction or chronic-kidney-disease edge (systemic emboli to the kidney are documented in the located cases only as part of multi-organ infarction counts without identity-level renal quantification); no -> limb ischemia or arterial-occlusion edge (no catalog identity; the upper-limb arterial embolism in PMID 41005859 is recorded as context on the stroke edge); no -> heart-failure edge (NBTE vegetations rarely destroy valve substance; the one mitral-stenosis case in antiphospholipid syndrome is disease-sequela-atypical and unreplicated); no -> malignant-transformation or cancer edge (direction guard - the malignancy precedes and causes the hypercoagulable state producing NBTE, so cancer is upstream of this identity, not secondary to it); no evidence recycled from the libman-sacks-endocarditis, loeffler-s-endocarditis, or endocarditis-family sibling windows (ME-29 scope rule) and none from the published deep-vein-thrombosis pulmonary-embolism window; no -> disseminated-intravascular-coagulation edge (no catalog identity)."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 59 (2026-09-26): three bounded association edges authored - marantic-endocarditis to cerebrovascular-accident-stroke-residuals (rank 1), to myocardial-infarction (rank 2), and to pulmonary-embolism (rank 3) - classified ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, and hypothesizedOnly:true. The stroke proposition rests on the 16-patient cancer-associated AIS/TIA prospective cohort (PMID 42457766) and two embolic-presentation cases (PMID 41005859, PMID 41869247). The myocardial-infarction proposition rests on the coronary-embolism cases (PMID 39659453, PMID 37914173) and the multi-valvular case's nine-case antemortem literature summary (PMID 36620810). The pulmonary-embolism proposition rests on the single multi-valvular sequential-embolism case (PMID 36620810).",
+    "Counter-evidence and caveat screens recorded 2026-09-26: (i) evidence class - one exploratory prospective cohort of 16 malignancy-selected patients, individual case reports, and a nine-case literature summary; (ii) competing mechanisms - cancer-associated hypercoagulability of malignancy causes stroke and thrombosis without valvular involvement, atherosclerosis and atrial fibrillation compete for stroke and infarction, and deep-vein thrombosis dominates pulmonary-embolism etiology; (iii) direction guard - the underlying malignancies precede and produce the hypercoagulable state, so no cancer edge is authored in the secondary direction; (iv) treatment mediation - the prospective cohort recorded vegetation regression under LMWH and progression or recurrent embolism under DOACs, so anticoagulation choice materially alters recurrence; (v) sibling-window discipline - libman-sacks-endocarditis, loeffler-s-endocarditis, and the deep-vein-thrombosis window keep their own evidence and none is recycled (ME-29)."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "cerebrovascular-accident-stroke-residuals",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Marantic (nonbacterial thrombotic) endocarditis documents ischemic stroke at prospective-observational plus case level: the exploratory prospective cohort of cancer patients with acute ischemic stroke or TIA found NBTE in 6 of 16 (37.5 percent) with all NBTE patients showing multi-territory embolic infarctions and significantly more prior ischemic stroke than non-NBTE comparators (PMID 42457766), the ovarian-carcinoma case documents embolic ischemic stroke with multiple systemic infarctions from aortic valve NBTE vegetations recurring on the mitral valve despite anticoagulation (PMID 41005859), and the pancreatic-adenocarcinoma case presented multiple embolic cerebrovascular accidents from marantic endocarditis as the initial manifestation of previously undiagnosed malignancy (PMID 41869247); the embolic relationship is recorded as documented only.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: the located material is one small prospective cohort in a cancer-selected population and individual case reports, where malignancy-associated hypercoagulability, antiphospholipid antibodies, atrial fibrillation, and atherosclerotic disease all compete as stroke mechanisms and require individual workup before attributing any stroke to valvular vegetations."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "THROMBOTIC_OR_VASCULAR",
+        "primaryVector": "Sterile platelet-fibrin vegetations on cardiac valves fragment and embolize through the arterial tree so cerebral arteries occlude, multifocal infarcts result, and stroke residuals follow, the embolization route documented in the prospective cohort's multi-territory infarct pattern and both cases' valvular-vegetation pathology, but whether this route produced any individual stroke remains hypothesized until echocardiography, imaging pattern review, and malignancy and hypercoagulability workup are completed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at small prospective-observational plus case class only: the cohort screened 3491 patients to include 16 with cancer and AIS/TIA, is single-center and malignancy-selected, and cannot estimate stroke risk in non-cancer NBTE; the case reports document the mechanism at individual level without denominators.",
+        "evidenceGaps": "No population cohort estimates stroke incidence in NBTE outside malignancy; the prospective anchor is a 16-patient exploratory cohort in active cancer; cancer-associated hypercoagulability itself causes stroke without valvular involvement (marantic-associated hypercoagulability of malignancy); and anticoagulation choice and cancer treatment materially alter recurrence, with the cohort recording vegetation regression under LMWH and progression or recurrent embolism under DOACs.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "atherothrombotic large-vessel and small-vessel stroke",
+          "cardioembolic stroke from atrial fibrillation",
+          "marantic-associated hypercoagulability of malignancy without valvular involvement (the same cohort's MAH group)",
+          "antiphospholipid-syndrome thrombosis (the published antiphospholipid window)",
+          "Libman-Sacks endocarditis in systemic lupus (the separate libman-sacks-endocarditis identity, not recycled per ME-29)"
+        ]
+      },
+      "evidenceGaps": [
+        "No population cohort estimates stroke incidence in NBTE outside malignancy; the prospective anchor is a 16-patient exploratory cohort in active cancer; cancer-associated hypercoagulability itself causes stroke without valvular involvement (marantic-associated hypercoagulability of malignancy); and anticoagulation choice and cancer treatment materially alter recurrence, with the cohort recording vegetation regression under LMWH and progression or recurrent embolism under DOACs."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY on the cardioembolic precedent with the malignancy-selection limit carried openly: the exploratory prospective cohort of cancer patients with AIS/TIA identified NBTE in 6 of 16 (37.5 percent) with multi-territory embolic infarctions in all NBTE patients and significantly more prior ischemic stroke (66.7 versus 10.0 percent, p = 0.028) (PMID 42457766), the ovarian clear-cell carcinoma case documents embolic ischemic stroke and systemic infarctions from NBTE vegetations with recurrence despite edoxaban (PMID 41005859), and the pancreatic-carcinoma case documents multiple embolic CVAs from marantic endocarditis as malignancy's initial presentation (PMID 41869247); because the anchor cohort is 16 malignancy-selected patients and hypercoagulability of malignancy competes as a stroke mechanism without valvular involvement, the conservative standard keeps the edge at association only and routes individual claims through dated echocardiography and embolic-pattern imaging with atrial-fibrillation, atherosclerotic, and malignancy-hypercoagulability exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Frydas A, Akay EM, Ran H, et al. Acute ischemic stroke, active malignancy and non-bacterial thrombotic endocarditis: an exploratory prospective observational study. Scientific reports. 2026 Jul 15;16(1). doi: 10.1038/s41598-026-61415-8. PMID 42457766.",
+          "note": "Exploratory prospective observational study at a tertiary center: among 3491 screened, 16 cancer patients with AIS/TIA underwent echocardiography; NBTE in 6 (37.5%), all with multi-territory embolic infarctions; supports the bounded cancer-associated embolic pattern only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42457766/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 42457766; results (NBTE prevalence, embolic patterns, prior-stroke comparison)"
+        },
+        {
+          "citation": "Nakamura K, Yamashita Y, Koyama S, et al. Recurrent Cancer-Associated Nonbacterial Endocarditis Presenting With Systemic Embolic Complications. JACC. Case reports. 2025 Sep 24;30(29):105161. doi: 10.1016/j.jaccas.2025.105161. PMID 41005859.",
+          "note": "JACC case report: 52-year-old woman with ovarian clear cell carcinoma, aortic valve NBTE vegetations, embolic ischemic stroke and multiple systemic infarctions, recurrent mitral vegetations and upper-limb arterial embolism despite anticoagulation; supports the bounded embolic proposition only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41005859/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 41005859; case summary (systemic embolic complications of NBTE)"
+        },
+        {
+          "citation": "Harris M. Ischemic Stroke as the Initial Presentation of Advanced Pancreatic Adenocarcinoma: A Case of Marantic Endocarditis. Cureus. 2026 Feb;18(2):e103844. doi: 10.7759/cureus.103844. PMID 41869247.",
+          "note": "Cureus case report: multiple embolic cerebrovascular accidents secondary to marantic endocarditis as the initial presentation of previously undiagnosed advanced pancreatic adenocarcinoma; supports the bounded embolic proposition only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41869247/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 41869247; case presentation (embolic CVAs from NBTE)"
+        }
+      ]
+    },
+    {
+      "conditionId": "myocardial-infarction",
+      "rank": 2,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Marantic endocarditis documents embolic myocardial infarction at case plus literature-review level: the ulcerative-colitis case documents non-ST-elevation myocardial infarction from coronary embolism with cardiac MRI showing evolved right-coronary-territory infarct and surgical biopsy revealing thrombotic material on the aortic valve (PMID 39659453), the NBTE case of ventricular-fibrillation arrest from presumed coronary embolisation presents embolic myocardial infarction as an initial manifestation of the valvular disease (PMID 37914173), and the multi-valvular NBTE case with sequential pulmonary embolism, ST-elevation myocardial infarction, and stroke includes a literature review establishing nine prior antemortem-diagnosed myocardial infarction cases secondary to NBTE (PMID 36620810); the coronary-embolism relationship is recorded as documented rare complication only.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: the located material is case class with a nine-case literature summary where coronary atherosclerosis, coronary embolism from other sources, demand ischemia, and malignancy-associated thrombosis all compete as infarction mechanisms and require individual angiographic and pathologic review before attributing any myocardial infarction to valvular vegetations."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "THROMBOTIC_OR_VASCULAR",
+        "primaryVector": "Sterile valvular vegetations embolize into a coronary artery so myocardial perfusion ceases, infarction results in the downstream territory, and embolic myocardial infarction follows, the route directly documented by the ulcerative-colitis case's right-coronary-territory infarct with thrombotic valvular material on biopsy and the nine-case antemortem series summarized in the multi-valvular review, but whether this route produced any individual infarction remains hypothesized until coronary angiography showing no culprit stenosis and echocardiographic valvular documentation are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at case plus literature-summary class only: the largest located synthesis is a nine-case antemortem series, all anchors are individual case reports with varied underlying conditions (ulcerative colitis, antiphospholipid syndrome, malignancy), and no cohort quantifies infarction incidence in NBTE.",
+        "evidenceGaps": "No cohort quantifies myocardial infarction incidence in NBTE; coronary embolism is rare and often diagnosed only at angiography or autopsy; underlying malignancy and inflammatory disease carry independent thrombotic risk; and anticoagulation, revascularization, and cancer treatment all alter the observed course.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "atherosclerotic plaque-rupture myocardial infarction",
+          "demand ischemia and type 2 myocardial infarction in sepsis or malignancy",
+          "coronary embolism from atrial fibrillation or left-ventricular thrombus",
+          "Libman-Sacks endocarditis coronary embolism (the separate libman-sacks-endocarditis identity, not recycled per ME-29)",
+          "antiphospholipid-syndrome coronary thrombosis (the published antiphospholipid window)"
+        ]
+      },
+      "evidenceGaps": [
+        "No cohort quantifies myocardial infarction incidence in NBTE; coronary embolism is rare and often diagnosed only at angiography or autopsy; underlying malignancy and inflammatory disease carry independent thrombotic risk; and anticoagulation, revascularization, and cancer treatment all alter the observed course."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY on the coronary-embolism precedent with the case-class limit carried openly: the ulcerative-colitis case documents NSTEMI from coronary embolism with evolved right-coronary-territory infarct on cardiac MRI and thrombotic material on surgical biopsy of the aortic-valve mass (PMID 39659453), the NBTE ventricular-fibrillation-arrest case presents embolic myocardial infarction from presumed coronary embolisation as an initial manifestation (PMID 37914173), and the multi-valvular NBTE case with sequential PE, STEMI, and stroke summarizes nine prior antemortem myocardial-infarction cases secondary to NBTE (PMID 36620810) with the coronary-embolism letter in NBTE-related antiphospholipid syndrome recorded as consistent context (PMID 32732516); because the evidence is case class with a nine-case summary and competing coronary mechanisms abound, the conservative standard keeps the edge at association only and routes individual claims through dated coronary angiography showing no culprit stenosis with echocardiographic valvular documentation and thrombophilia exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Ladera Santos D, Roldán Guerra Á, Dávila Flores V, et al. Embolic myocardial infarction secondary to marantic endocarditis in a patient with ulcerative colitis: case report. European heart journal. Case reports. 2024 Dec;8(12):ytae617. doi: 10.1093/ehjcr/ytae617. PMID 39659453.",
+          "note": "European Heart Journal case report: 16-year-old with ulcerative colitis and NSTEMI from coronary embolism; cardiac MRI showed evolved right-coronary-territory infarct; surgical biopsy of the aortic-valve mass revealed thrombotic material consistent with NBTE; supports the bounded embolic proposition only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39659453/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 39659453; case summary (embolic myocardial infarction secondary to marantic endocarditis)"
+        },
+        {
+          "citation": "Hansen AC, Piranavan P, Kundu A, et al. Embolic myocardial infarction with cardiac arrest as an initial manifestation of non-bacterial thrombotic endocarditis. BMJ case reports. 2023 Nov 1;16(11). doi: 10.1136/bcr-2023-257466. PMID 37914173.",
+          "note": "BMJ Case Reports: ventricular fibrillation arrest from presumed coronary embolisation in non-bacterial thrombotic endocarditis; presents embolic myocardial infarction as an initial manifestation; supports the bounded embolic proposition only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/37914173/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 37914173; case report summary (embolic MI with cardiac arrest in NBTE)"
+        },
+        {
+          "citation": "Karameh M, Golomb M, Arad A, et al. Multi-Valvular Non-bacterial Thrombotic Endocarditis Causing Sequential Pulmonary Embolism, Myocardial Infarction, and Stroke: A Case Report and Literature Review. Cureus. 2022 Dec;14(12):e32261. doi: 10.7759/cureus.32261. PMID 36620810.",
+          "note": "Cureus case report and literature review: multi-valvular NBTE causing sequential pulmonary embolism, ST-elevation myocardial infarction, and stroke; literature search established nine antemortem-diagnosed myocardial infarction cases secondary to NBTE; supports the bounded rare-complication proposition only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36620810/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 36620810; case report and literature review (nine antemortem MI cases in NBTE)"
+        }
+      ]
+    },
+    {
+      "conditionId": "pulmonary-embolism",
+      "rank": 3,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Marantic endocarditis documents pulmonary embolism at case level: the multi-valvular nonbacterial thrombotic endocarditis case reports sequential pulmonary embolism, ST-elevation myocardial infarction, and stroke in a single patient, with pulmonary embolism documented among the embolic events but the embolic source within the heart versus the venous system unresolved in the located material (PMID 36620810); the relationship is recorded as documented single-case complication only.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: the located material is a single case in which deep-vein thrombosis, malignancy-associated thrombosis, and immobility all compete as pulmonary embolism sources, and distinguishing valvular-vegetation pulmonary embolism from venous thromboembolism requires individual echocardiographic and lower-extremity venous evaluation."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "THROMBOTIC_OR_VASCULAR",
+        "primaryVector": "Where right-sided sterile valvular vegetations are present they embolize into the pulmonary arterial circulation so pulmonary perfusion is obstructed and pulmonary embolism results, an embolization route consistent with the multi-valvular case whose sequential embolic events included pulmonary embolism, but whether this route produced any individual embolism remains hypothesized until echocardiography documenting right-sided vegetations and exclusion of venous thrombus are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at single-case class only: one Cureus case documents pulmonary embolism in a multi-valvular NBTE presentation, no located cohort quantifies pulmonary embolic events in NBTE, and right-sided NBTE vegetations are rarer than left-sided disease in the located literature.",
+        "evidenceGaps": "No cohort quantifies pulmonary embolism incidence in NBTE; the located abstract does not identify which valves carried the vegetations in the index case, so a right-sided cardiac source versus venous thromboembolism is not resolved in the located material; deep-vein thrombosis and malignancy-associated thrombosis are competing and statistically far more common sources of pulmonary embolism; and anticoagulation and cancer treatment alter the observed course.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "deep-vein-thrombosis pulmonary embolism (the published deep-vein-thrombosis window)",
+          "malignancy-associated thrombosis without valvular involvement",
+          "septic pulmonary emboli from right-sided endocarditis (the separate infectious identities)",
+          "immobility and post-surgical venous thromboembolism",
+          "pulmonary tumor emboli"
+        ]
+      },
+      "evidenceGaps": [
+        "No cohort quantifies pulmonary embolism incidence in NBTE; the located abstract does not identify which valves carried the vegetations in the index case, so a right-sided cardiac source versus venous thromboembolism is not resolved in the located material; deep-vein thrombosis and malignancy-associated thrombosis are competing and statistically far more common sources of pulmonary embolism; and anticoagulation and cancer treatment alter the observed course."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY at case class with the single-anchor limit carried openly: the multi-valvular NBTE case documents sequential pulmonary embolism, ST-elevation myocardial infarction, and stroke with pulmonary embolism among its embolic events while the embolic source within the heart versus the venous system is unresolved in the located material (PMID 36620810); because the edge rests on one case where deep-vein thrombosis and malignancy-associated thrombosis are statistically dominant competing sources, the conservative standard keeps the edge at association only and routes individual claims through dated echocardiography documenting right-sided vegetations with lower-extremity venous imaging and malignancy-thrombophilia exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Karameh M, Golomb M, Arad A, et al. Multi-Valvular Non-bacterial Thrombotic Endocarditis Causing Sequential Pulmonary Embolism, Myocardial Infarction, and Stroke: A Case Report and Literature Review. Cureus. 2022 Dec;14(12):e32261. doi: 10.7759/cureus.32261. PMID 36620810.",
+          "note": "Cureus case report and literature review: multi-valvular non-bacterial thrombotic endocarditis causing sequential pulmonary embolism, myocardial infarction, and stroke; pulmonary embolism is one of the three sequential embolic events; the valve side carrying vegetations is not specified in the abstract; supports the bounded single-case proposition only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36620810/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 36620810; case report (sequential PE, MI, and stroke in multi-valvular NBTE)"
+        }
+      ]
+    }
+  ]
 }

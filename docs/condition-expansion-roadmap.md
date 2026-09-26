@@ -2422,3 +2422,102 @@ and the twelve-file draft-singles counter 265 -> 266 for this batch's single sin
 no survivors outside the standing benign classes (frozen sibling pins, citation page and volume ranges,
 byte-size arithmetic, the Wave-4 catalog checkpoint, and the doc-lint fixture strings). Standing
 recommendation: batch 58 lands through branch, PR, CI, and merge.
+
+## Mapping Expansion D1 batch 59 (2026-09-26)
+
+Mapping Expansion D1 batch 59 (2026-09-26) authored twelve draft-quarantined relationships across all
+five screened identities - `malocclusion`, `malunion-nonunion-of-fractures`, `marantic-endocarditis`,
+`mastoiditis`, `meatal-stenosis` - classified ASSOCIATION_ONLY with etiologicalConsensus
+NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true, and conservative
+Rationale and evidence-gap records on every suggestion. This is the largest window since batch 53 and
+the second consecutive window with no deferred identity.
+
+`malocclusion` (2 edges): sleep-apnea (rank 1, MECHANICAL_OR_COMPRESSIVE) rests on the 100-child HSAT
+diagnostic study (AHI correlated with maxillary arch constriction, overjet, ANB angle, and mandibular
+crowding; four-parameter model AUC 0.72/0.91; PMID 42712351) and the 763-child polysomnography cohort
+(class II, class III, and high-angle patterns with higher OAHI after covariate adjustment; PMID
+42270302), with the hypoglossal-nerve-stimulation treatment-response cohort (33.3% versus 75.5%
+success; PMID 42146116) recorded as direction-consistent context; dysphagia (rank 2) rests on the
+29-study PRISMA systematic review (20 studies negative impact; causality not determinable; PMID
+38265668) and the 62-adolescent matched study (MVBF p = 0.009, bites-to-complete p = 0.003, other
+swallowing measures null; PMID 41123350). The malocclusion to tmj-disorder edge was WITHHELD on
+target-identity duplication (the catalog carries both `tmj-disorder` and `tmj-dysfunction` with an
+overlapping alias), recorded on the file rather than deferred.
+
+`malunion-nonunion-of-fractures` (1 edge): post-traumatic-osteoarthritis (rank 1,
+BIOMECHANICAL_ALTERATION) rests on the geriatric tibial-malunion secondary-knee-osteoarthritis case
+(57.2-degree procurvatum, 30.9-degree valgus; PMID 42211638), the proximal-tibia malunion management
+review (mechanical-axis restoration to prevent or slow PTOA; PMID 41438797), and the tibial plateau
+malunion corrective-osteotomy case (PMID 41837061). The unexplained-chronic-pain edge was WITHHELD on
+semantic mismatch (pain from a malunited fracture is mechanically explained and fails that identity's
+unexplained-etiology boundary).
+
+`marantic-endocarditis` (3 edges): cerebrovascular-accident-stroke-residuals (rank 1,
+THROMBOTIC_OR_VASCULAR) rests on the 16-patient cancer-associated AIS/TIA prospective cohort (NBTE in
+6/16; multi-territory embolic infarctions in all NBTE patients; prior stroke 66.7% vs 10.0%, p =
+0.028; vegetation regression under LMWH versus progression or recurrent embolism under DOACs; PMID
+42457766) plus two embolic-presentation cases (PMID 41005859, PMID 41869247); myocardial-infarction
+(rank 2) rests on the coronary-embolism cases (PMID 39659453, PMID 37914173) and the multi-valvular
+case's nine-case antemortem literature summary (PMID 36620810); pulmonary-embolism (rank 3) rests on
+the single multi-valvular sequential-embolism case (PMID 36620810) with the cardiac-versus-venous
+embolic source explicitly unresolved in the located material and deep-vein thrombosis and
+malignancy-associated thrombosis recorded as statistically dominant competing sources. A direction
+guard was recorded: the underlying malignancies precede and produce the hypercoagulable state, so no
+cancer edge was authored in the secondary direction.
+
+`mastoiditis` (3 edges): meningitis (rank 1, INFECTIOUS_SPREAD) rests on the 522-children
+acute-mastoiditis complication cohort's intracranial-complication definition (PMID 42223618);
+brain-abscess (rank 2) rests on the bilateral-mastoiditis temporal-lobe-abscess case (PMID 42542645),
+the coalescent-mastoiditis tegmen-erosion case (9 x 5 x 7 mm abscess after inadequately treated otitis
+externa in HbA1c-14% diabetes; PMID 41527656), and the same cohort (PMID 42223618); labyrinthitis
+(rank 3) rests on the interdisciplinary mastoiditis review's complicated-courses list (PMID 42546716)
+with the acute-otitis-media complications review (PMID 42377467) recorded as same-chain context under
+intermediate-node caution rather than recycled as mastoiditis-isolated incidence. The hearing-loss
+edge was WITHHELD after a diagnostic-mimic screen: the otomastoiditis-imaging case (PMID 41822631)
+resolved to Ramsay Hunt zoster sine herpete with the hearing loss anatomically and temporally
+uncorrelated to the imaging findings, residual conductive loss is largely attributable to the
+antecedent middle-ear process owned by the otitis-media window (constitutive proximity), and the
+StatPearls chronic-suppurative-otitis chapter (PMID 32119479) is tertiary and on the 2026-09-25
+registry source-status audit's weak-evidence review list.
+
+`meatal-stenosis` (3 edges): hydronephrosis (rank 1, MECHANICAL_OR_COMPRESSIVE) rests on the two
+title-level obstructive case attributions (PMID 11149814, PMID 3773112) and the 87-boy ultrasound
+screening study of severe post-circumcision meatal stenosis (PMID 28537045); urinary-frequency-retention
+(rank 2) rests on the 75-patient severity-grading study (narrow stream OR 4-6.4, prolonged urination OR
+6, upward deviation OR 10.08-15.12, Qmax 16.8 -> 9.6 ml/s) with the null PVR comparison carried openly
+on the edge (retention not directly demonstrated; PMID 35491305) and the congenital female case (PMID
+37722867); cystitis (rank 3, INFECTIOUS_SPREAD) rests on the 1985-1989 female-pediatric obstructive
+series (PMID 2485568, PMID 4039493) with voiding dysfunction, reflux, and hygiene recorded as
+competing drivers.
+
+Pre-authoring verification: all 26 PMIDs passed the abstract pass (`/tmp/d1-abstract47.py` in three
+fetch groups), the esummary bibliographic pass (every authored author list, journal, and page range
+matched the PubMed record), and `node scripts/preflight-source-status.js --pmids ...` (26/26 checked,
+zero flags). Two authoring corrections were made before the self-audit after abstract re-verification:
+PMID 2485568 relabeled from German to Serbian-language, and the pulmonary-embolism edge's
+right-sided-vegetation claim softened because PMID 36620810's abstract does not identify which valves
+carried the vegetations. The post-write structural self-audit passed for all five files with zero
+errors (two single-ref quarantine-warning rows, matching the corpus pattern of 353 single-ref edges),
+and `npm run kb:validate` reports zero errors.
+
+Registry after lockstep: 646 relationships (572 explicit / 74 legacy), 1101 reference uses (383
+verified / 718 pending-verification), 1096 clinical / 5 legal uses, 1008 source entities (346 active /
+653 pending-verification). The two edge-bearing identities sharing sources - PMID 42223618 across the
+mastoiditis meningitis and brain-abscess edges, PMID 36620810 across the marantic-endocarditis
+myocardial-infarction and pulmonary-embolism edges - give 28 reference uses over 26 new sources.
+Citation packet regenerated at 283 worksheets / 718 reference rows = live citation debt; the
+verification dashboard regenerated at 718 rows in 30 reviewer batches (651 distinct sources). Backlog
+after batch 59: **195** undispositioned zero-edge drafts (200 before the batch; all five identities
+left the queue by gaining edges). Next-five: `median-rhomboid-glossitis`, `memory-loss`,
+`menetrier-s-disease`, `microscopic-colitis`, `microscopic-polyangiitis`.
+
+Test-pin note: the sweep touched 54 files and replaced 315 counter tokens in one pass with the
+batch-58 per-token context predicates carried over unchanged (relationships 634 -> 646, references/uses
+1073 -> 1101, unverified 690 -> 718, pending source entities 627 -> 653, total source entities 982 ->
+1008, explicit guards 560 -> 572, clinical references 1068 -> 1096, clinical provenance 1072 -> 1100,
+and the draft-singles counter 266 -> 267 for this batch's single single-edge identity,
+`malunion-nonunion-of-fractures`). One follow-up fix outside the sweep's context predicates: the
+citation-decay-gate debt fixture (`Array.from({ length: 690 })`) had to be moved to 718 to stay
+consistent with its own swept assertion. The dry run reported zero lines lacking registry vocabulary,
+and the residue check found no survivors outside the standing benign classes. Standing recommendation:
+batch 59 lands through branch, PR, CI, and merge.

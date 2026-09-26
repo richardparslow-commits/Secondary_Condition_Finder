@@ -81,23 +81,23 @@ describe("Master Relationship & Evidence Registry 2026", () => {
     expect(relationships.status).toBe("AUTHORITATIVE-CURRENT-STATE");
     expect(relationships.baselineCommit).toBe("ea005e50ccbc30800dd46f3872f764f98e977c1f");
     expect(relationships.counts).toEqual({
-      relationships: 634,
-      explicitPublicationGuards: 560,
+      relationships: 646,
+      explicitPublicationGuards: 572,
       legacyRationaleBoundaries: 74,
     });
     expect(sources.status).toBe("AUTHORITATIVE-CURRENT-STATE");
     expect(sources.baselineCommit).toBe("ea005e50ccbc30800dd46f3872f764f98e977c1f");
     expect(sources.counts).toEqual({
-      liveSourceReferenceUses: 1073,
+      liveSourceReferenceUses: 1101,
       activeSourceEntities: 346,
-      pendingVerificationSourceEntities: 627,
+      pendingVerificationSourceEntities: 653,
       activeClinicalSourceEntities: 345,
-      pendingClinicalSourceEntities: 627,
+      pendingClinicalSourceEntities: 653,
       activeLegalAuthorityEntities: 1,
       retiredOnlySourceEntities: 1,
       supersededUnverifiedSourceEntities: 7,
       bibliographicCorrectionOnlyEntities: 1,
-      totalSourceEntitiesIncludingLineage: 982,
+      totalSourceEntitiesIncludingLineage: 1008,
       retiredVerifiedRelationshipSourceUses: 6,
     });
   });
@@ -255,11 +255,11 @@ describe("Master Relationship & Evidence Registry 2026", () => {
 
   it("keeps source lineage states distinct while retaining all active ME-3 sources", () => {
       expect(sources.sources.filter((source) => source.status === "active")).toHaveLength(346);
-    expect(sources.sources.filter((source) => source.status === "pending-verification")).toHaveLength(627);
+    expect(sources.sources.filter((source) => source.status === "pending-verification")).toHaveLength(653);
     expect(sources.sources.filter((source) => source.status === "superseded-unverified")).toHaveLength(7);
     expect(sources.sources.filter((source) => source.status === "bibliographic-correction-only")).toHaveLength(1);
     expect(sources.sources.filter((source) => source.status === "retired-only")).toHaveLength(1);
-    expect(new Set(sources.sources.map((source) => source.sourceId)).size).toBe(982);
+    expect(new Set(sources.sources.map((source) => source.sourceId)).size).toBe(1008);
   });
 
 
@@ -285,7 +285,7 @@ describe("Master Relationship & Evidence Registry 2026", () => {
     const explicit = relationships.relationships.filter(
       (row) => row.publicationGuard.status === "explicit",
     );
-    expect(explicit).toHaveLength(560);
+    expect(explicit).toHaveLength(572);
     for (const row of explicit) {
       expect(row.publicationGuard.structuredGuardText).not.toMatch(/supersedes unverified PMID/i);
     }
@@ -299,12 +299,12 @@ describe("Master Relationship & Evidence Registry 2026", () => {
     const result = JSON.parse(output) as AuditResult;
     expect(result).toMatchObject({
       status: "PASS",
-      relationships: 634,
-      liveSourceReferenceUses: 1073,
+      relationships: 646,
+      liveSourceReferenceUses: 1101,
       verifiedLiveSourceUses: 383,
-      pendingVerificationLiveSourceUses: 690,
+      pendingVerificationLiveSourceUses: 718,
       activeSourceEntities: 346,
-      pendingVerificationSourceEntities: 627,
+      pendingVerificationSourceEntities: 653,
     });
   });
 

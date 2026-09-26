@@ -6,8 +6,8 @@
  "installedFrom": "Master Registry Discrepancy Resolution 2026",
  "authorityBoundary": "Authoritative for current relationship direction, proposition text, guard state, source linkage, and KB parity; does not establish an individual VA medical nexus.",
  "counts": {
-  "relationships": 634,
-  "explicitPublicationGuards": 560,
+  "relationships": 646,
+  "explicitPublicationGuards": 572,
   "legacyRationaleBoundaries": 74
  },
  "relationships": [
@@ -20518,6 +20518,370 @@
    "sourceReferenceCount": 2,
    "pathwayIntelligencePresent": false,
    "suggestionObjectHash": "99f0b179c0dc7e8afeebe447870f5305ff887ad441ebdba39a2c7c6c86828039"
+  },
+  {
+   "relationshipId": "rel-malocclusion-to-sleep-apnea",
+   "primaryId": "malocclusion",
+   "targetId": "sleep-apnea",
+   "direction": "malocclusion -> sleep-apnea",
+   "primaryPublicationState": "draft",
+   "rank": 1,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY on the craniofacial-airway precedent mirroring the macroglossia and deviated-nasal-septum sleep-apnea windows with malocclusion-specific evidence only: the HSAT diagnostic study of 100 orthodontic-referred children found AHI correlated with maxillary arch constriction, overjet, increased ANB angle, mandibular crowding, and oral breathing (coefficients 0.2-0.47) with the four-parameter model identifying POSA risk at AUC 0.72 and moderate POSA at 0.91 (PMID 42712351), and the 763-child PSG cohort found class II, class III, and high-angle patterns independently associated with higher OAHI (PMID 42270302), with the HNS treatment-response cohort recording reduced therapy success in malocclusion (33.3 versus 75.5 percent) as direction-consistent context (PMID 42146116); because the evidence is pediatric, treatment-referred, and multifactorial with small per-feature effect sizes, the conservative standard keeps the edge at association only and routes individual claims through dated polysomnography with obesity, tonsillar, and nasal exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY on the craniofacial-airway precedent mirroring the macroglossia and deviated-nasal-septum sleep-apnea windows with malocclusion-specific evidence only: the HSAT diagnostic study of 100 orthodontic-referred children found AHI correlated with maxillary arch constriction, overjet, increased ANB angle, mandibular crowding, and oral breathing (coefficients 0.2-0.47) with the four-parameter model identifying POSA risk at AUC 0.72 and moderate POSA at 0.91 (PMID 42712351), and the 763-child PSG cohort found class II, class III, and high-angle patterns independently associated with higher OAHI (PMID 42270302), with the HNS treatment-response cohort recording reduced therapy success in malocclusion (33.3 versus 75.5 percent) as direction-consistent context (PMID 42146116); because the evidence is pediatric, treatment-referred, and multifactorial with small per-feature effect sizes, the conservative standard keeps the edge at association only and routes individual claims through dated polysomnography with obesity, tonsillar, and nasal exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to craniofacial-airway geometry with malocclusion-specific evidence only: the 100-child HSAT diagnostic study found AHI correlated with maxillary arch constriction, overjet, ANB angle, and mandibular crowding with a four-parameter model AUC 0.72/0.91 (PMID 42712351) and the 763-child PSG cohort found class II, class III, and high-angle patterns with higher OAHI (PMID 42270302), with the HNS treatment-response cohort recorded as direction-consistent context (PMID 42146116); evidence is pediatric and treatment-referred with small per-feature effect sizes, so individual claims route through dated polysomnography with obesity, tonsillar, and nasal exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No adult community cohort quantifies OSA incidence by malocclusion class; obesity, tonsillar and adenoid hypertrophy, nasal obstruction, and oral-breathing preference are co-determinants in every located study; effect sizes per anatomic feature are small and multifactorial; and growth, orthodontic treatment, and maxillomandibular advancement all alter the airway course."
+   ],
+   "sourceIds": [
+    "pmid-42712351",
+    "pmid-42270302",
+    "pmid-42146116"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "ec2afd65ee9dc599861521647cf99da63786927bf839cc18701b105cc6aa0435"
+  },
+  {
+   "relationshipId": "rel-malocclusion-to-dysphagia",
+   "primaryId": "malocclusion",
+   "targetId": "dysphagia",
+   "direction": "malocclusion -> dysphagia",
+   "primaryPublicationState": "draft",
+   "rank": 2,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY on the oral-phase-mechanics precedent with the review's own causal limits carried openly: the PRISMA systematic review of 29 studies found 20 documenting negative impact of malocclusion severity on oral ingestion and named chewing, biting, and swallowing disorders as the affected functions while stating causality cannot be determined from the observational designs (PMID 38265668), and the 62-adolescent matched study documented lower maximum voluntary bite force (p = 0.009) and more bites to complete a cracker (p = 0.003) in orthodontic-treatment-need children with chewing cycles, swallow counts, and duration not significantly different (PMID 41123350); because the review is heterogeneous observational synthesis and the matched study's swallowing signal is partial in a treatment-selected sample, the conservative standard keeps the edge at association only and routes individual claims through dated videofluoroscopic swallow study with dental, neurologic, and esophageal exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY on the oral-phase-mechanics precedent with the review's own causal limits carried openly: the PRISMA systematic review of 29 studies found 20 documenting negative impact of malocclusion severity on oral ingestion and named chewing, biting, and swallowing disorders as the affected functions while stating causality cannot be determined from the observational designs (PMID 38265668), and the 62-adolescent matched study documented lower maximum voluntary bite force (p = 0.009) and more bites to complete a cracker (p = 0.003) in orthodontic-treatment-need children with chewing cycles, swallow counts, and duration not significantly different (PMID 41123350); because the review is heterogeneous observational synthesis and the matched study's swallowing signal is partial in a treatment-selected sample, the conservative standard keeps the edge at association only and routes individual claims through dated videofluoroscopic swallow study with dental, neurologic, and esophageal exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to oral-phase mechanics: the 29-study PRISMA systematic review found 20 studies with negative impact of malocclusion severity on oral ingestion while declining causal attribution (PMID 38265668) and the 62-adolescent matched study documented lower bite force (p = 0.009) and more bites to complete a cracker (p = 0.003) with other swallowing measures null (PMID 41123350); the ankyloglossia and loss-of-tongue windows keep their own evidence (ME-29), so individual claims route through dated videofluoroscopic swallow study with dental, neurologic, and esophageal exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No cohort quantifies dysphagia incidence by malocclusion type or severity; the systematic review explicitly cannot determine causality; the matched study's swallowing findings are partial (bite force and bites-to-complete only); and dental pain, open bite, tongue dysfunction, neurologic disease, and prior orthodontic treatment confound ingestion function."
+   ],
+   "sourceIds": [
+    "pmid-38265668",
+    "pmid-41123350"
+   ],
+   "sourceReferenceCount": 2,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "65fd049b4a0d40d908d94ed37378c9b09e871aab46d3e86bc9bd290ea2478e71"
+  },
+  {
+   "relationshipId": "rel-malunion-nonunion-of-fractures-to-post-traumatic-osteoarthritis",
+   "primaryId": "malunion-nonunion-of-fractures",
+   "targetId": "post-traumatic-osteoarthritis",
+   "direction": "malunion-nonunion-of-fractures -> post-traumatic-osteoarthritis",
+   "primaryPublicationState": "draft",
+   "rank": 1,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY on the biomechanical-malalignment precedent mirroring the published post-traumatic-osteoarthritis windows with malunion-specific evidence only: the geriatric tibial-malunion case documents severe knee osteoarthritis arising in a 57.2-degree procurvatum and 30.9-degree valgus malalignment with the paper stating persistent malunion introduces varus or valgus forces promoting osteoarthritis (PMID 42211638), the proximal-tibia malunion review frames mechanical-axis restoration as the means to prevent or slow PTOA progression (PMID 41438797), and the tibial plateau malunion case documents valgus deformity with articular depression requiring corrective osteotomy to prevent osteoarthritis progression (PMID 41837061); because the evidence is one case plus management narratives without incidence denominators by deformity magnitude, the conservative standard keeps the edge at association only and routes individual claims through dated weight-bearing alignment imaging with primary-osteoarthritis and original-injury arthrosis exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY on the biomechanical-malalignment precedent mirroring the published post-traumatic-osteoarthritis windows with malunion-specific evidence only: the geriatric tibial-malunion case documents severe knee osteoarthritis arising in a 57.2-degree procurvatum and 30.9-degree valgus malalignment with the paper stating persistent malunion introduces varus or valgus forces promoting osteoarthritis (PMID 42211638), the proximal-tibia malunion review frames mechanical-axis restoration as the means to prevent or slow PTOA progression (PMID 41438797), and the tibial plateau malunion case documents valgus deformity with articular depression requiring corrective osteotomy to prevent osteoarthritis progression (PMID 41837061); because the evidence is one case plus management narratives without incidence denominators by deformity magnitude, the conservative standard keeps the edge at association only and routes individual claims through dated weight-bearing alignment imaging with primary-osteoarthritis and original-injury arthrosis exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to biomechanical malalignment overload: the geriatric tibial-malunion case documents secondary knee osteoarthritis with 57.2-degree procurvatum and 30.9-degree valgus deformity (PMID 42211638), the proximal-tibia malunion review directs mechanical-axis restoration to prevent or slow PTOA progression (PMID 41438797), and the tibial plateau malunion case documents corrective osteotomy to prevent osteoarthritis progression (PMID 41837061); the tarsal-metatarsal-malunion-nonunion and mandibular-nonunion windows and the published knee-injury and mallet-finger PTOA windows keep their own evidence (ME-29), so individual claims route through dated weight-bearing alignment imaging with primary-osteoarthritis and original-injury arthrosis exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No incidence cohort quantifies post-traumatic osteoarthritis risk by malunion site, deformity magnitude, or axis deviation; primary and age-related osteoarthritis overlap the presentation in older patients; intra-articular fracture damage predisposes to osteoarthritis independently of alignment; and surgical correction, activity change, and joint replacement all alter the observed course."
+   ],
+   "sourceIds": [
+    "pmid-42211638",
+    "pmid-41438797",
+    "pmid-41837061"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "9c7fb79a5ca5aa341f6abb3f3a1b281372011a34b24e053180e2a2c5606b2a2e"
+  },
+  {
+   "relationshipId": "rel-marantic-endocarditis-to-cerebrovascular-accident-stroke-residuals",
+   "primaryId": "marantic-endocarditis",
+   "targetId": "cerebrovascular-accident-stroke-residuals",
+   "direction": "marantic-endocarditis -> cerebrovascular-accident-stroke-residuals",
+   "primaryPublicationState": "draft",
+   "rank": 1,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY on the cardioembolic precedent with the malignancy-selection limit carried openly: the exploratory prospective cohort of cancer patients with AIS/TIA identified NBTE in 6 of 16 (37.5 percent) with multi-territory embolic infarctions in all NBTE patients and significantly more prior ischemic stroke (66.7 versus 10.0 percent, p = 0.028) (PMID 42457766), the ovarian clear-cell carcinoma case documents embolic ischemic stroke and systemic infarctions from NBTE vegetations with recurrence despite edoxaban (PMID 41005859), and the pancreatic-carcinoma case documents multiple embolic CVAs from marantic endocarditis as malignancy's initial presentation (PMID 41869247); because the anchor cohort is 16 malignancy-selected patients and hypercoagulability of malignancy competes as a stroke mechanism without valvular involvement, the conservative standard keeps the edge at association only and routes individual claims through dated echocardiography and embolic-pattern imaging with atrial-fibrillation, atherosclerotic, and malignancy-hypercoagulability exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY on the cardioembolic precedent with the malignancy-selection limit carried openly: the exploratory prospective cohort of cancer patients with AIS/TIA identified NBTE in 6 of 16 (37.5 percent) with multi-territory embolic infarctions in all NBTE patients and significantly more prior ischemic stroke (66.7 versus 10.0 percent, p = 0.028) (PMID 42457766), the ovarian clear-cell carcinoma case documents embolic ischemic stroke and systemic infarctions from NBTE vegetations with recurrence despite edoxaban (PMID 41005859), and the pancreatic-carcinoma case documents multiple embolic CVAs from marantic endocarditis as malignancy's initial presentation (PMID 41869247); because the anchor cohort is 16 malignancy-selected patients and hypercoagulability of malignancy competes as a stroke mechanism without valvular involvement, the conservative standard keeps the edge at association only and routes individual claims through dated echocardiography and embolic-pattern imaging with atrial-fibrillation, atherosclerotic, and malignancy-hypercoagulability exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to sterile-vegetation cerebral embolism: the exploratory prospective cohort of cancer patients with AIS/TIA found NBTE in 6 of 16 (37.5%) with multi-territory embolic infarctions in all NBTE patients and prior ischemic stroke 66.7% versus 10.0% (p = 0.028) (PMID 42457766), with embolic-presentation cases (PMID 41005859, PMID 41869247); the malignancy hypercoagulability of malignancy route competes without valvular involvement and the libman-sacks-endocarditis window keeps its own evidence (ME-29), so individual claims route through dated echocardiography and embolic-pattern imaging with atrial-fibrillation and atherosclerotic exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No population cohort estimates stroke incidence in NBTE outside malignancy; the prospective anchor is a 16-patient exploratory cohort in active cancer; cancer-associated hypercoagulability itself causes stroke without valvular involvement (marantic-associated hypercoagulability of malignancy); and anticoagulation choice and cancer treatment materially alter recurrence, with the cohort recording vegetation regression under LMWH and progression or recurrent embolism under DOACs."
+   ],
+   "sourceIds": [
+    "pmid-42457766",
+    "pmid-41005859",
+    "pmid-41869247"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "417b4a6d258b8cbbfb4f34de78deb45dfe6bf1669b955dc480632e374804fb64"
+  },
+  {
+   "relationshipId": "rel-marantic-endocarditis-to-myocardial-infarction",
+   "primaryId": "marantic-endocarditis",
+   "targetId": "myocardial-infarction",
+   "direction": "marantic-endocarditis -> myocardial-infarction",
+   "primaryPublicationState": "draft",
+   "rank": 2,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY on the coronary-embolism precedent with the case-class limit carried openly: the ulcerative-colitis case documents NSTEMI from coronary embolism with evolved right-coronary-territory infarct on cardiac MRI and thrombotic material on surgical biopsy of the aortic-valve mass (PMID 39659453), the NBTE ventricular-fibrillation-arrest case presents embolic myocardial infarction from presumed coronary embolisation as an initial manifestation (PMID 37914173), and the multi-valvular NBTE case with sequential PE, STEMI, and stroke summarizes nine prior antemortem myocardial-infarction cases secondary to NBTE (PMID 36620810) with the coronary-embolism letter in NBTE-related antiphospholipid syndrome recorded as consistent context (PMID 32732516); because the evidence is case class with a nine-case summary and competing coronary mechanisms abound, the conservative standard keeps the edge at association only and routes individual claims through dated coronary angiography showing no culprit stenosis with echocardiographic valvular documentation and thrombophilia exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY on the coronary-embolism precedent with the case-class limit carried openly: the ulcerative-colitis case documents NSTEMI from coronary embolism with evolved right-coronary-territory infarct on cardiac MRI and thrombotic material on surgical biopsy of the aortic-valve mass (PMID 39659453), the NBTE ventricular-fibrillation-arrest case presents embolic myocardial infarction from presumed coronary embolisation as an initial manifestation (PMID 37914173), and the multi-valvular NBTE case with sequential PE, STEMI, and stroke summarizes nine prior antemortem myocardial-infarction cases secondary to NBTE (PMID 36620810) with the coronary-embolism letter in NBTE-related antiphospholipid syndrome recorded as consistent context (PMID 32732516); because the evidence is case class with a nine-case summary and competing coronary mechanisms abound, the conservative standard keeps the edge at association only and routes individual claims through dated coronary angiography showing no culprit stenosis with echocardiographic valvular documentation and thrombophilia exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to coronary embolism from sterile vegetations: the ulcerative-colitis case documents NSTEMI with evolved right-coronary-territory infarct and thrombotic valvular material on biopsy (PMID 39659453), the NBTE ventricular-fibrillation-arrest case presents embolic MI as initial manifestation (PMID 37914173), and the multi-valvular case summarizes nine antemortem MI cases secondary to NBTE (PMID 36620810); evidence is case class with a nine-case summary, so individual claims route through dated coronary angiography showing no culprit stenosis with echocardiographic valvular documentation and thrombophilia exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No cohort quantifies myocardial infarction incidence in NBTE; coronary embolism is rare and often diagnosed only at angiography or autopsy; underlying malignancy and inflammatory disease carry independent thrombotic risk; and anticoagulation, revascularization, and cancer treatment all alter the observed course."
+   ],
+   "sourceIds": [
+    "pmid-39659453",
+    "pmid-37914173",
+    "pmid-36620810"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "4bd81428d0348815b672b18ff5d6afc952ff2b7fa4bbd5b946285ec0190d41e3"
+  },
+  {
+   "relationshipId": "rel-marantic-endocarditis-to-pulmonary-embolism",
+   "primaryId": "marantic-endocarditis",
+   "targetId": "pulmonary-embolism",
+   "direction": "marantic-endocarditis -> pulmonary-embolism",
+   "primaryPublicationState": "draft",
+   "rank": 3,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY at case class with the single-anchor limit carried openly: the multi-valvular NBTE case documents sequential pulmonary embolism, ST-elevation myocardial infarction, and stroke with pulmonary embolism among its embolic events while the embolic source within the heart versus the venous system is unresolved in the located material (PMID 36620810); because the edge rests on one case where deep-vein thrombosis and malignancy-associated thrombosis are statistically dominant competing sources, the conservative standard keeps the edge at association only and routes individual claims through dated echocardiography documenting right-sided vegetations with lower-extremity venous imaging and malignancy-thrombophilia exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY at case class with the single-anchor limit carried openly: the multi-valvular NBTE case documents sequential pulmonary embolism, ST-elevation myocardial infarction, and stroke with pulmonary embolism among its embolic events while the embolic source within the heart versus the venous system is unresolved in the located material (PMID 36620810); because the edge rests on one case where deep-vein thrombosis and malignancy-associated thrombosis are statistically dominant competing sources, the conservative standard keeps the edge at association only and routes individual claims through dated echocardiography documenting right-sided vegetations with lower-extremity venous imaging and malignancy-thrombophilia exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to right-sided-vegetation pulmonary embolism where present: the multi-valvular NBTE case documents sequential pulmonary embolism, STEMI, and stroke with pulmonary embolism among its embolic events while the cardiac-versus-venous embolic source is unresolved in the located material (PMID 36620810); the edge rests on one case where deep-vein thrombosis and malignancy-associated thrombosis are statistically dominant competing sources, so individual claims route through dated echocardiography documenting right-sided vegetations with lower-extremity venous imaging and malignancy-thrombophilia exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No cohort quantifies pulmonary embolism incidence in NBTE; the located abstract does not identify which valves carried the vegetations in the index case, so a right-sided cardiac source versus venous thromboembolism is not resolved in the located material; deep-vein thrombosis and malignancy-associated thrombosis are competing and statistically far more common sources of pulmonary embolism; and anticoagulation and cancer treatment alter the observed course."
+   ],
+   "sourceIds": [
+    "pmid-36620810"
+   ],
+   "sourceReferenceCount": 1,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "854fa9dc1b84ab3533cf4e3c2145b33be64902005368deedb0815191b5a18829"
+  },
+  {
+   "relationshipId": "rel-mastoiditis-to-meningitis",
+   "primaryId": "mastoiditis",
+   "targetId": "meningitis",
+   "direction": "mastoiditis -> meningitis",
+   "primaryPublicationState": "draft",
+   "rank": 1,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY on the otogenic-intracranial-spread precedent with the cohort-definition limit carried openly: the 522-children acute-mastoiditis retrospective cohort defined complicated disease as subperiosteal abscess or intracranial complications (epidural abscess, sigmoid sinus thrombosis, brain abscess, meningitis), directly documenting meningitis among the intracranial complications of acute mastoiditis (PMID 42223618); because the edge rests on one pediatric hospitalized cohort whose primary axis is prior-antibiotic exposure with small per-complication counts and no adult data, the conservative standard keeps the edge at association only and routes individual claims through dated CSF and temporal-bone imaging review with competing-source exclusion. Same-chain context recorded: the chronic-otitis-media temporal-lobe-abscess case with concurrent meningitis (PMID 40776681) and the CSOM complication-pattern series where meningitis led the intracranial complications (PMID 42282302) document the otogenic chain but are otitis-media-scoped, so they are not recycled onto this mastoiditis-scoped edge (ME-29 and intermediate-node rule)."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY on the otogenic-intracranial-spread precedent with the cohort-definition limit carried openly: the 522-children acute-mastoiditis retrospective cohort defined complicated disease as subperiosteal abscess or intracranial complications (epidural abscess, sigmoid sinus thrombosis, brain abscess, meningitis), directly documenting meningitis among the intracranial complications of acute mastoiditis (PMID 42223618); because the edge rests on one pediatric hospitalized cohort whose primary axis is prior-antibiotic exposure with small per-complication counts and no adult data, the conservative standard keeps the edge at association only and routes individual claims through dated CSF and temporal-bone imaging review with competing-source exclusion. Same-chain context recorded: the chronic-otitis-media temporal-lobe-abscess case with concurrent meningitis (PMID 40776681) and the CSOM complication-pattern series where meningitis led the intracranial complications (PMID 42282302) document the otogenic chain but are otitis-media-scoped, so they are not recycled onto this mastoiditis-scoped edge (ME-29 and intermediate-node rule).",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to direct intracranial extension of mastoid suppuration: the 522-children acute-mastoiditis retrospective cohort defines complicated disease as subperiosteal abscess or intracranial complications (epidural abscess, sigmoid sinus thrombosis, brain abscess, meningitis) (PMID 42223618); otitis-media-scoped complication material is same-chain context only (intermediate-node caution) and the published meningitis window keeps its own evidence (ME-29), so individual claims route through dated CSF cultures and temporal-bone imaging with competing-source exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No adult cohort quantifies meningitis incidence in mastoiditis; the pediatric anchor counts complications without per-complication denominators in the abstract; intracranial complication can arise from the antecedent otitis media without frank mastoiditis; prior antibiotic exposure, pathogen, and host immune status co-determine spread; and pneumococcal vaccination has shifted incidence patterns."
+   ],
+   "sourceIds": [
+    "pmid-42223618"
+   ],
+   "sourceReferenceCount": 1,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "39f4c40085ad84919f360ba083be03a6e1f698e58b4dfd34be85544418fc9f9b"
+  },
+  {
+   "relationshipId": "rel-mastoiditis-to-brain-abscess",
+   "primaryId": "mastoiditis",
+   "targetId": "brain-abscess",
+   "direction": "mastoiditis -> brain-abscess",
+   "primaryPublicationState": "draft",
+   "rank": 2,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY on the otogenic-abscess precedent with the case-class limit carried openly: the bilateral-mastoiditis case documents a right temporal-lobe brain abscess with midline shift presenting as behavioral change, treated with abscess evacuation, mastoidectomy, and tympanostomy (PMID 42542645), the coalescent-mastoiditis case documents tegmen tympani erosion and a 9 x 5 x 7 mm temporal-lobe abscess after inadequately treated otitis externa in uncontrolled diabetes (PMID 41527656), and the 522-children acute-mastoiditis cohort enumerates brain abscess among its intracranial complications (PMID 42223618); because the edge rests on two host-modified cases and one complication enumeration without denominators, the conservative standard keeps the edge at association only and routes individual claims through dated contrast MRI with operative and microbiologic correlation and sinus, hematogenous, and neoplastic exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY on the otogenic-abscess precedent with the case-class limit carried openly: the bilateral-mastoiditis case documents a right temporal-lobe brain abscess with midline shift presenting as behavioral change, treated with abscess evacuation, mastoidectomy, and tympanostomy (PMID 42542645), the coalescent-mastoiditis case documents tegmen tympani erosion and a 9 x 5 x 7 mm temporal-lobe abscess after inadequately treated otitis externa in uncontrolled diabetes (PMID 41527656), and the 522-children acute-mastoiditis cohort enumerates brain abscess among its intracranial complications (PMID 42223618); because the edge rests on two host-modified cases and one complication enumeration without denominators, the conservative standard keeps the edge at association only and routes individual claims through dated contrast MRI with operative and microbiologic correlation and sinus, hematogenous, and neoplastic exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to tegmen-erosion temporal-lobe extension: the bilateral-mastoiditis case documents a right temporal-lobe abscess with midline shift (PMID 42542645), the coalescent-mastoiditis case documents tegmen tympani erosion and a 9 x 5 x 7 mm temporal-lobe abscess after inadequately treated otitis externa in uncontrolled diabetes (PMID 41527656), and the 522-children cohort enumerates brain abscess among intracranial complications (PMID 42223618); evidence is two host-modified cases plus one complication enumeration, so individual claims route through dated contrast MRI with operative and microbiologic correlation and sinus, hematogenous, and neoplastic exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No cohort quantifies brain-abscess incidence in mastoiditis in the antibiotic era; both case anchors have major host modifiers (longstanding uncontrolled diabetes with HbA1c 14 percent; delayed presentation); otitis media and otitis externa can extend intracranially without frank mastoiditis; and immunocompromise, pathogen, and treatment timing co-determine outcomes."
+   ],
+   "sourceIds": [
+    "pmid-42542645",
+    "pmid-41527656",
+    "pmid-42223618"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "c9a0725931970b7716ee0e0a1dc9ecfd42f7ea387ac22cb03e101d2e55489209"
+  },
+  {
+   "relationshipId": "rel-mastoiditis-to-labyrinthitis",
+   "primaryId": "mastoiditis",
+   "targetId": "labyrinthitis",
+   "direction": "mastoiditis -> labyrinthitis",
+   "primaryPublicationState": "draft",
+   "rank": 3,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY on the local-extension precedent with the review-class and shared-chain limits carried openly: the interdisciplinary acute and chronic mastoiditis review explicitly names labyrinthitis among the complicated courses of mastoiditis (PMID 42546716), and the acute-otitis-media complications review lists labyrinthitis among the intratemporal complications of the same suppurative chain in which mastoiditis manifests (PMID 42377467); because both anchors are narrative German-language reviews without denominators and the suppurative chain is shared with the antecedent otitis-media process, the conservative standard keeps the edge at association only, records the second review as same-chain context rather than mastoiditis-isolated incidence (intermediate-node caution), and routes individual claims through dated temporal-bone imaging with fistula testing and audiometric correlation."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY on the local-extension precedent with the review-class and shared-chain limits carried openly: the interdisciplinary acute and chronic mastoiditis review explicitly names labyrinthitis among the complicated courses of mastoiditis (PMID 42546716), and the acute-otitis-media complications review lists labyrinthitis among the intratemporal complications of the same suppurative chain in which mastoiditis manifests (PMID 42377467); because both anchors are narrative German-language reviews without denominators and the suppurative chain is shared with the antecedent otitis-media process, the conservative standard keeps the edge at association only, records the second review as same-chain context rather than mastoiditis-isolated incidence (intermediate-node caution), and routes individual claims through dated temporal-bone imaging with fistula testing and audiometric correlation.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to local labyrinthine extension: the interdisciplinary acute and chronic mastoiditis review names labyrinthitis among complicated courses (PMID 42546716) with the acute-otitis-media complications review (PMID 42377467) recorded as same-chain context rather than mastoiditis-isolated incidence; evidence is German-language narrative review class without denominators, so individual claims route through dated temporal-bone imaging with fistula testing and audiometric correlation.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No cohort quantifies labyrinthitis incidence in mastoiditis; both anchors are German-language review articles; labyrinthitis arises equally from the antecedent middle-ear disease and cholesteatoma without frank mastoiditis; the suppurative chain is shared with the otitis-media identity (intermediate-node caution); and antibiotics, mastoidectomy, and fistula repair all alter the course."
+   ],
+   "sourceIds": [
+    "pmid-42546716",
+    "pmid-42377467"
+   ],
+   "sourceReferenceCount": 2,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "2ab5ae98a4413d03f084b40133b8078e1f7037972db534c24bf0e1bfd9f0496e"
+  },
+  {
+   "relationshipId": "rel-meatal-stenosis-to-hydronephrosis",
+   "primaryId": "meatal-stenosis",
+   "targetId": "hydronephrosis",
+   "direction": "meatal-stenosis -> hydronephrosis",
+   "primaryPublicationState": "draft",
+   "rank": 1,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY on the outflow-obstruction precedent with the evidence-heterogeneity limit carried openly: the title-level case attributions state hydronephrosis caused by undiagnosed meatal stenosis in an 80-year-old man (PMID 11149814) and severe hydronephrosis from urethral meatal stenosis in a girl (PMID 3773112), and the 87-boy ultrasound screening study of severe post-circumcision meatal stenosis evaluated hydronephrosis, hydroureter, bladder-wall thickening, and residual volume with a recommendation for ultrasonographic surveillance before permanent renal damage (PMID 28537045); because the evidence is two old single cases plus one screening study whose dominant finding was bladder-wall thickening without a reported hydronephrosis incidence rate and spanning pediatric male, adult male, and pediatric female populations, the conservative standard keeps the edge at association only and routes individual claims through dated renal ultrasound with uroflowmetry and congenital-anomaly exclusion, and the published urethral-stricture hydronephrosis edge is not recycled (ME-29)."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY on the outflow-obstruction precedent with the evidence-heterogeneity limit carried openly: the title-level case attributions state hydronephrosis caused by undiagnosed meatal stenosis in an 80-year-old man (PMID 11149814) and severe hydronephrosis from urethral meatal stenosis in a girl (PMID 3773112), and the 87-boy ultrasound screening study of severe post-circumcision meatal stenosis evaluated hydronephrosis, hydroureter, bladder-wall thickening, and residual volume with a recommendation for ultrasonographic surveillance before permanent renal damage (PMID 28537045); because the evidence is two old single cases plus one screening study whose dominant finding was bladder-wall thickening without a reported hydronephrosis incidence rate and spanning pediatric male, adult male, and pediatric female populations, the conservative standard keeps the edge at association only and routes individual claims through dated renal ultrasound with uroflowmetry and congenital-anomaly exclusion, and the published urethral-stricture hydronephrosis edge is not recycled (ME-29).",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to distal-outflow obstruction with sex and age heterogeneity recorded: the title-level case attributions document hydronephrosis caused by undiagnosed meatal stenosis in an 80-year-old man (PMID 11149814) and severe hydronephrosis in a girl (PMID 3773112), and the 87-boy ultrasound screening study evaluated hydronephrosis, hydroureter, and bladder changes with a surveillance recommendation (PMID 28537045); the published urethral-stricture hydronephrosis window keeps its own evidence (ME-29), so individual claims route through dated renal ultrasound with uroflowmetry and congenital-anomaly exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No located cohort quantifies hydronephrosis incidence by meatal stenosis severity; the evidence spans a pediatric post-circumcision male cohort, an adult male case, and a female pediatric case with sex and age heterogeneity; bladder-wall thickening dominated the screening findings rather than upper-tract dilation; and duration, bladder adaptation, and coexisting urologic anomalies are unmeasured confounders."
+   ],
+   "sourceIds": [
+    "pmid-11149814",
+    "pmid-3773112",
+    "pmid-28537045"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "c29700a8cb20b3b6bcb965bcda0d6be1a1b00735c67b9270caf01eee48cdc1be"
+  },
+  {
+   "relationshipId": "rel-meatal-stenosis-to-urinary-frequency-retention",
+   "primaryId": "meatal-stenosis",
+   "targetId": "urinary-frequency-retention",
+   "direction": "meatal-stenosis -> urinary-frequency-retention",
+   "primaryPublicationState": "draft",
+   "rank": 2,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY on the obstructive-urodynamics precedent with the null-PVR limit carried openly: the prospective 75-patient severity-grading study found meatal stenosis grade associated with parent-reported narrow stream (OR 4-6.4), prolonged urination (OR 6), and upward stream deviation (OR 10.08-15.12) with maximum flow rate falling from 16.8 to 9.6 ml/s across grades while post-void residual did not differ significantly (PMID 35491305), and the congenital meatal urethral stenosis case in a 6-year-old girl presented with voiding alterations (PMID 37722867); because retention itself was not demonstrated (null PVR comparison), the anchor population is a referred clinic sample with wide confidence intervals, and functional voiding disorders overlap the symptom set, the conservative standard keeps the edge at association only, records the obstructive-stream symptoms as the documented relationship rather than retention per se, and routes individual claims through dated uroflowmetry with post-void residual and functional-voiding exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY on the obstructive-urodynamics precedent with the null-PVR limit carried openly: the prospective 75-patient severity-grading study found meatal stenosis grade associated with parent-reported narrow stream (OR 4-6.4), prolonged urination (OR 6), and upward stream deviation (OR 10.08-15.12) with maximum flow rate falling from 16.8 to 9.6 ml/s across grades while post-void residual did not differ significantly (PMID 35491305), and the congenital meatal urethral stenosis case in a 6-year-old girl presented with voiding alterations (PMID 37722867); because retention itself was not demonstrated (null PVR comparison), the anchor population is a referred clinic sample with wide confidence intervals, and functional voiding disorders overlap the symptom set, the conservative standard keeps the edge at association only, records the obstructive-stream symptoms as the documented relationship rather than retention per se, and routes individual claims through dated uroflowmetry with post-void residual and functional-voiding exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to obstructive stream symptoms and reduced flow rather than demonstrated retention: the 75-patient severity-grading study found narrow stream OR 4-6.4, prolonged urination OR 6, upward deviation OR 10.08-15.12, and Qmax declining from 16.8 to 9.6 ml/s with PVR not significantly different (PMID 35491305), and the congenital female case presented with voiding alterations (PMID 37722867); the null PVR comparison and functional-voiding confounds are recorded on the edge, so individual claims route through dated uroflowmetry with post-void residual and functional-voiding exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No located study demonstrates elevated post-void residual or acute retention attributable to meatal stenosis (the grading study's PVR comparison was null); the symptom anchor is a single 75-patient prospective study with wide confidence intervals in a referred population; functional voiding disorders and constipation overlap the symptom set; and meatotomy outcome data in the located material are procedural rather than symptom-incidence quantifications."
+   ],
+   "sourceIds": [
+    "pmid-35491305",
+    "pmid-37722867"
+   ],
+   "sourceReferenceCount": 2,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "8265f50e959d20d21e2da6e164aa2428110c3c5a90c69a62acdc8e359611c910"
+  },
+  {
+   "relationshipId": "rel-meatal-stenosis-to-cystitis",
+   "primaryId": "meatal-stenosis",
+   "targetId": "cystitis",
+   "direction": "meatal-stenosis -> cystitis",
+   "primaryPublicationState": "draft",
+   "rank": 3,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY on the urinary-stasis-predisposition precedent with the era and sex-scope limits carried openly: the surgical series frames stenosis of the external urethral opening as one of the causes of recurrent urinary infections in girls and documents operative relief (PMID 2485568), and the study of anatomic and functional urethral obstruction in girls with enuresis, recurrent urinary tract infections, and reflux documents the obstructive predisposition (PMID 4039493); because the evidence is 1985-1989 female-pediatric series with period-specific criteria where voiding dysfunction, reflux, and hygiene are well-documented competing drivers and the severity-grading cohort (PMID 35491305) did not document infection outcomes, the conservative standard keeps the edge at association only and routes individual claims through dated urine cultures with uroflowmetry, post-void residual, and reflux exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY on the urinary-stasis-predisposition precedent with the era and sex-scope limits carried openly: the surgical series frames stenosis of the external urethral opening as one of the causes of recurrent urinary infections in girls and documents operative relief (PMID 2485568), and the study of anatomic and functional urethral obstruction in girls with enuresis, recurrent urinary tract infections, and reflux documents the obstructive predisposition (PMID 4039493); because the evidence is 1985-1989 female-pediatric series with period-specific criteria where voiding dysfunction, reflux, and hygiene are well-documented competing drivers and the severity-grading cohort (PMID 35491305) did not document infection outcomes, the conservative standard keeps the edge at association only and routes individual claims through dated urine cultures with uroflowmetry, post-void residual, and reflux exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to urinary-stasis predisposition in 1985-1989 female-pediatric series: the surgical series frames stenosis of the external urethral opening as one of the causes of recurrent urinary infections in girls (PMID 2485568) and the study of anatomic and functional urethral obstruction in girls with enuresis, recurrent UTI, and reflux documents obstructive predisposition (PMID 4039493); voiding dysfunction, reflux, and hygiene are competing drivers and the published urethral-stricture and cystitis-or-neurogenic-bladder windows keep their own evidence (ME-29), so individual claims route through dated urine cultures with uroflowmetry, post-void residual, and reflux exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No modern cohort quantifies urinary infection incidence by meatal stenosis severity; the evidence is female-pediatric scoped from 1985-1989 with period-specific urodynamic criteria; recurrent UTI in girls has well-documented alternative drivers (voiding dysfunction, reflux, hygiene); the uroflowmetry study's cohort did not document infection outcomes; and meatotomy, antibiotics, and hygiene interventions alter the observed infection course."
+   ],
+   "sourceIds": [
+    "pmid-2485568",
+    "pmid-4039493"
+   ],
+   "sourceReferenceCount": 2,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "a1db66b8e7f1da5cc9b219eb75d6273fcdedcd40aa323f2de6e6a828e8872059"
   }
  ],
  "lastUpdatedBy": "batch-D1-draft-authoring",

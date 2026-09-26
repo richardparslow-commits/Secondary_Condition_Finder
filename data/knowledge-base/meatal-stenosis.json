@@ -2,8 +2,186 @@
   "id": "meatal-stenosis",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review urologic, gynecologic, hormonal, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 59 (2026-09-26): three ASSOCIATION_ONLY draft mappings pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: all three edges assert association only (etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true; mechanismCategory MECHANICAL_OR_COMPRESSIVE for the obstructive edges and INFECTIOUS_SPREAD for the infection edge). The evidence base is two old case attributions plus one screening study, one prospective severity-grading study plus one case, and two 1980s pediatric series, so individual claims require dated renal ultrasound, uroflowmetry with post-void residual, and urine cultures with competing-cause exclusion, and review by a qualified medical professional.",
+    "Pathway and duplicate-scope screens: no -> kidney-stones edge (stasis-mediated lithogenesis is plausible but zero located condition-specific stone quantification, and the published short-bowel-syndrome and cystitis-or-neurogenic-bladder kidney-stones windows own their evidence); no -> chronic-kidney-disease edge (the located material warns of permanent renal damage at the hydronephrosis level without identity-level CKD quantification; the hydronephrosis edge carries the upper-tract warning as its gap record); no -> urinary-incontinence edge (urge incontinence appears in one screening checklist without quantified incidence; the published incontinence identities carry mixed-etiology evidence not recycled per ME-29); no -> renal-failure edge (no catalog identity and no located case); evidence scope - no material recycled from the published urethral-stricture hydronephrosis edge (ME-29 scope rule; meatal stenosis is a distal-urethral lesion and this identity uses meatal-specific evidence only), none from the cystitis-or-neurogenic-bladder window, and none from the hypospadias-surgery literature (post-surgical meatal complications are post-treatment scoped, outside this identity's acquired/congenital meatal lesion boundary)."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 59 (2026-09-26): three bounded association edges authored - meatal-stenosis to hydronephrosis (rank 1), to urinary-frequency-retention (rank 2), and to cystitis (rank 3) - classified ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, and hypothesizedOnly:true. The hydronephrosis proposition rests on the two title-level obstructive case attributions (PMID 11149814, PMID 3773112) and the 87-boy ultrasound screening study (PMID 28537045). The obstructive-voiding proposition rests on the 75-patient severity-grading study (PMID 35491305) and the congenital female case (PMID 37722867). The cystitis proposition rests on the 1980s female-pediatric obstructive series (PMID 2485568, PMID 4039493).",
+    "Counter-evidence and caveat screens recorded 2026-09-26: (i) evidence heterogeneity - the anchors span a post-circumcision boy cohort, an adult male case, a female pediatric case, a referred clinic severity-grading sample, and 1985-1989 female-pediatric series, so sex, age, era, and ascertainment vary materially; (ii) direct counter-record - the severity-grading study's post-void residual comparison was null across grades, so the obstructive-voiding edge records stream symptoms and reduced flow rather than demonstrated retention, and its cohort did not document infection outcomes; (iii) dominant-findings honesty - the screening study's most common finding was bladder-wall thickening (about 82 percent) rather than hydronephrosis, and no located cohort reports hydronephrosis incidence by severity; (iv) competing drivers - voiding dysfunction, vesicoureteral reflux, constipation, and hygiene co-determine both symptom and infection presentations; (v) sibling-window discipline - the urethral-stricture hydronephrosis edge, the cystitis-or-neurogenic-bladder window, and the hypospadias post-surgical literature are not recycled (ME-29 and post-treatment scope)."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "hydronephrosis",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Meatal stenosis documents hydronephrosis at case plus cross-sectional level: the case of hydronephrosis caused by undiagnosed meatal stenosis in an 80-year-old man states the obstructive causal attribution directly (PMID 11149814), the pediatric case of urethral meatal stenosis in a girl causing severe hydronephrosis documents the same outflow-obstruction sequence (PMID 3773112), and the ultrasound study of 87 circumcised boys with severe meatal stenosis screened the upper and lower urinary tracts specifically for hydronephrosis, hydroureter, and bladder changes with the authors recommending long-term ultrasonographic follow-up to detect meatal stenosis before permanent renal damage (PMID 28537045); the obstructive relationship is recorded as documented only.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: the located material is two cases and one screening study in post-circumcision boys where stenosis severity, duration, bladder outlet adaptation, and coexisting urologic anomalies all require individual review before attributing any hydronephrosis to the meatal lesion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MECHANICAL_OR_COMPRESSIVE",
+        "primaryVector": "Narrowing of the urethral meatus raises voiding pressure and leaves obstructive residual so ureteral and pelvic back-pressure develops, upper-tract dilation follows, and hydronephrosis results, the outflow-obstruction route directly stated in both cases and presupposed by the screening study's upper-tract protocol and its warning of permanent renal damage, but whether this route produced any individual hydronephrosis remains hypothesized until uroflowmetry, post-void residual, and renal ultrasound records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at case plus single cross-sectional screening class only: the two title-level cases are decades old (1986, 1999) and single-patient, the screening cohort of 87 boys documents bladder-wall thickening most commonly (about 82 percent) with narrow stream in about 54 percent and does not report a hydronephrosis incidence rate in the abstract, and all three populations differ in age and sex.",
+        "evidenceGaps": "No located cohort quantifies hydronephrosis incidence by meatal stenosis severity; the evidence spans a pediatric post-circumcision male cohort, an adult male case, and a female pediatric case with sex and age heterogeneity; bladder-wall thickening dominated the screening findings rather than upper-tract dilation; and duration, bladder adaptation, and coexisting urologic anomalies are unmeasured confounders.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "urethral-stricture obstruction at other urethral sites (the published urethral-stricture window owns its hydronephrosis edge; not recycled per ME-29)",
+          "posterior urethral valves and congenital obstructive uropathy",
+          "neurogenic bladder with vesicoureteral reflux (the published cystitis-or-neurogenic-bladder window)",
+          "vesicoureteral reflux and congenital ureteropelvic junction obstruction",
+          "nephrolithiasis obstruction (the published kidney-stones window)"
+        ]
+      },
+      "evidenceGaps": [
+        "No located cohort quantifies hydronephrosis incidence by meatal stenosis severity; the evidence spans a pediatric post-circumcision male cohort, an adult male case, and a female pediatric case with sex and age heterogeneity; bladder-wall thickening dominated the screening findings rather than upper-tract dilation; and duration, bladder adaptation, and coexisting urologic anomalies are unmeasured confounders."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY on the outflow-obstruction precedent with the evidence-heterogeneity limit carried openly: the title-level case attributions state hydronephrosis caused by undiagnosed meatal stenosis in an 80-year-old man (PMID 11149814) and severe hydronephrosis from urethral meatal stenosis in a girl (PMID 3773112), and the 87-boy ultrasound screening study of severe post-circumcision meatal stenosis evaluated hydronephrosis, hydroureter, bladder-wall thickening, and residual volume with a recommendation for ultrasonographic surveillance before permanent renal damage (PMID 28537045); because the evidence is two old single cases plus one screening study whose dominant finding was bladder-wall thickening without a reported hydronephrosis incidence rate and spanning pediatric male, adult male, and pediatric female populations, the conservative standard keeps the edge at association only and routes individual claims through dated renal ultrasound with uroflowmetry and congenital-anomaly exclusion, and the published urethral-stricture hydronephrosis edge is not recycled (ME-29).",
+      "sourceReferences": [
+        {
+          "citation": "Demirseren ME, Yenidunya MO. Hydronephrosis caused by undiagnosed meatal stenosis in an 80-year-old man. Plastic and reconstructive surgery. 1999 Dec;104(7):2337-8. doi: 10.1097/00006534-199912000-00086. PMID 11149814.",
+          "note": "Case report (Plast Reconstr Surg letter-format): hydronephrosis caused by undiagnosed meatal stenosis in an 80-year-old man; direct obstructive causal attribution at case class; supports the bounded proposition only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/11149814/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 11149814; case title and presentation (hydronephrosis secondary to meatal stenosis)"
+        },
+        {
+          "citation": "Bueschen AJ, Royal SA. Urethral meatal stenosis in a girl causing severe hydronephrosis. The Journal of urology. 1986 Dec;136(6):1302-3. doi: 10.1016/s0022-5347(17)45322-5. PMID 3773112.",
+          "note": "Case report (J Urol): urethral meatal stenosis in a girl causing severe hydronephrosis; supports the bounded outflow-obstruction proposition only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/3773112/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 3773112; case title and presentation (severe hydronephrosis from meatal stenosis)"
+        },
+        {
+          "citation": "Saeedi P, Ahmadnia H, Akhavan Rezayat A. Evaluation of the Effect of Meatal Stenosis on the Urinary Tract by using Ultrasonography. Urology journal. 2017 May 23;14(3):3071-3074. PMID 28537045.",
+          "note": "Cross-sectional ultrasound study of 87 circumcised boys aged 4-8 with severe meatal stenosis: urinary-tract screening found narrow stream in about 54% and bladder-wall thickening in about 82%, with hydronephrosis and hydroureter among the evaluated upper-tract findings and a recommendation for surveillance to prevent permanent renal damage; supports the bounded screening proposition only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/28537045/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 28537045; methods and results (upper and lower urinary tract ultrasonography findings)"
+        }
+      ]
+    },
+    {
+      "conditionId": "urinary-frequency-retention",
+      "rank": 2,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Meatal stenosis documents obstructive voiding dysfunction at prospective severity-grading level: the prospective study of 75 patients correlated a validated meatal stenosis severity grade with obstructive symptoms and uroflowmetry, finding odds ratios of 4 to 6.4 for parent-reported narrow stream, 6 for prolonged urination, and 10.08 to 15.12 for upward stream deviation by grade, with significantly lower maximum flow rate from 16.8 to 9.6 ml/s across grades (PMID 35491305), and the congenital meatal urethral stenosis case in a 6-year-old girl presented with voiding alterations (PMID 37722867); the obstructive voiding relationship is recorded as documented only.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: the located material documents obstructive stream symptoms and reduced flow rates where bladder outlet adaptation, functional voiding disorders, constipation, and neurologic bladder dysfunction all require individual urodynamic review, and the grading study found post-void residual did not differ significantly between severity grades, so retention was not directly demonstrated."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MECHANICAL_OR_COMPRESSIVE",
+        "primaryVector": "Meatal narrowing increases outflow resistance so stream force falls, voiding prolongs, and obstructive voiding dysfunction with residual-risk develops, the resistance route documented by the severity-grade symptom odds ratios and the flow-rate decline from 16.8 to 9.6 ml/s, but whether this route produced any individual retention episode remains hypothesized until uroflowmetry with post-void residual and voiding-cystourethrography records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at single prospective severity-grading study plus one case only: the grading study is a 75-patient clinic population referred for urinary and non-urinary complaints with parent-reported symptoms, its post-void residual comparison was not significant across grades (retention not directly demonstrated), confidence intervals are wide, and the case is a single congenital female presentation.",
+        "evidenceGaps": "No located study demonstrates elevated post-void residual or acute retention attributable to meatal stenosis (the grading study's PVR comparison was null); the symptom anchor is a single 75-patient prospective study with wide confidence intervals in a referred population; functional voiding disorders and constipation overlap the symptom set; and meatotomy outcome data in the located material are procedural rather than symptom-incidence quantifications.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "functional voiding disorder and dysfunctional voiding",
+          "constipation-related voiding symptoms",
+          "neurogenic bladder (the published cystitis-or-neurogenic-bladder window)",
+          "urethral stricture at other sites (the published urethral-stricture window)",
+          "bladder-neck obstruction and posterior urethral valves"
+        ]
+      },
+      "evidenceGaps": [
+        "No located study demonstrates elevated post-void residual or acute retention attributable to meatal stenosis (the grading study's PVR comparison was null); the symptom anchor is a single 75-patient prospective study with wide confidence intervals in a referred population; functional voiding disorders and constipation overlap the symptom set; and meatotomy outcome data in the located material are procedural rather than symptom-incidence quantifications."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY on the obstructive-urodynamics precedent with the null-PVR limit carried openly: the prospective 75-patient severity-grading study found meatal stenosis grade associated with parent-reported narrow stream (OR 4-6.4), prolonged urination (OR 6), and upward stream deviation (OR 10.08-15.12) with maximum flow rate falling from 16.8 to 9.6 ml/s across grades while post-void residual did not differ significantly (PMID 35491305), and the congenital meatal urethral stenosis case in a 6-year-old girl presented with voiding alterations (PMID 37722867); because retention itself was not demonstrated (null PVR comparison), the anchor population is a referred clinic sample with wide confidence intervals, and functional voiding disorders overlap the symptom set, the conservative standard keeps the edge at association only, records the obstructive-stream symptoms as the documented relationship rather than retention per se, and routes individual claims through dated uroflowmetry with post-void residual and functional-voiding exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Mekayten M, Meir E, Yutkin V, et al. Is there a correlation between meatal stenosis severity, lower urinary tract symptoms and uroflowmetry?. Journal of pediatric urology. 2022 Jun;18(3):342.e1-342.e6. doi: 10.1016/j.jpurol.2022.03.021. PMID 35491305.",
+          "note": "Prospective study of 75 patients: validated meatal stenosis severity grade correlated with obstructive symptoms (narrow stream OR 4-6.4; prolonged urination OR 6; upward deviation OR 10.08-15.12) and lower maximum flow (16.8 to 9.6 ml/s, p < 0.001); post-void residual not significantly different between grades; supports the bounded obstructive-symptom proposition only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35491305/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 35491305; results (symptom odds ratios, uroflowmetry by severity grade, null PVR comparison)"
+        },
+        {
+          "citation": "Arredondo Montero J, Ayuso González L, Hernández Martín S, et al. Congenital Meatal Urethral Stenosis in a Female Patient: A Case Report. International journal of surgical pathology. 2024 Jun;32(4):817-820. doi: 10.1177/10668969231195074. PMID 37722867.",
+          "note": "Case report (Int J Surg Pathol): congenital meatal urethral stenosis in a 6-year-old female patient presenting with voiding alterations; supports the bounded obstructive-voiding proposition only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/37722867/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 37722867; case presentation (voiding alterations from meatal stenosis)"
+        }
+      ]
+    },
+    {
+      "conditionId": "cystitis",
+      "rank": 3,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Meatal stenosis documents recurrent urinary infection at case-series level: the surgical series framing stenosis of the external urethral opening as one of the causes of recurrent urinary infections in girls documents the stasis-to-infection sequence with operative relief (PMID 2485568), and the study of anatomic and functional urethral obstruction in girls with enuresis, recurrent urinary tract infections, and reflux documents the same obstructive-predisposition relationship (PMID 4039493); the relationship is recorded as documented predisposition only.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: the located material is late-1980s European pediatric series where voiding dysfunction, vesicoureteral reflux, hygiene, and toilet habits all co-determine urinary infection in girls, so whether any individual cystitis arose from the meatal lesion requires individual uroflowmetry, culture, and reflux evaluation."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "INFECTIOUS_SPREAD",
+        "primaryVector": "Outflow obstruction raises residual urine and urinary stasis so bacteria multiply in the bladder and ascending cystitis results, the stasis-predisposition route the surgical series presupposes in naming meatal stenosis a cause of recurrent urinary infections and operating to relieve it, but whether this route produced any individual infection remains hypothesized until urine cultures with uroflowmetry and post-void residual are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at older case-series class only: both anchors are 1985-1989 European pediatric studies in girls with period-specific diagnostic criteria, one is framed as a surgical-treatment series, and no modern cohort quantifies cystitis incidence by meatal stenosis severity.",
+        "evidenceGaps": "No modern cohort quantifies urinary infection incidence by meatal stenosis severity; the evidence is female-pediatric scoped from 1985-1989 with period-specific urodynamic criteria; recurrent UTI in girls has well-documented alternative drivers (voiding dysfunction, reflux, hygiene); the uroflowmetry study's cohort did not document infection outcomes; and meatotomy, antibiotics, and hygiene interventions alter the observed infection course.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "vesicoureteral reflux and congenital urologic anomaly",
+          "functional voiding disorder with stasis",
+          "urethral stricture at other sites (the published urethral-stricture window)",
+          "neurogenic bladder with recurrent infection (the published cystitis-or-neurogenic-bladder window)",
+          "bladder-pain-syndrome-interstitial-cystitis (the separate identity, not an infectious cystitis)"
+        ]
+      },
+      "evidenceGaps": [
+        "No modern cohort quantifies urinary infection incidence by meatal stenosis severity; the evidence is female-pediatric scoped from 1985-1989 with period-specific urodynamic criteria; recurrent UTI in girls has well-documented alternative drivers (voiding dysfunction, reflux, hygiene); the uroflowmetry study's cohort did not document infection outcomes; and meatotomy, antibiotics, and hygiene interventions alter the observed infection course."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY on the urinary-stasis-predisposition precedent with the era and sex-scope limits carried openly: the surgical series frames stenosis of the external urethral opening as one of the causes of recurrent urinary infections in girls and documents operative relief (PMID 2485568), and the study of anatomic and functional urethral obstruction in girls with enuresis, recurrent urinary tract infections, and reflux documents the obstructive predisposition (PMID 4039493); because the evidence is 1985-1989 female-pediatric series with period-specific criteria where voiding dysfunction, reflux, and hygiene are well-documented competing drivers and the severity-grading cohort (PMID 35491305) did not document infection outcomes, the conservative standard keeps the edge at association only and routes individual claims through dated urine cultures with uroflowmetry, post-void residual, and reflux exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Milanović D, Sremcević D, Perović S, et al. [Stenosis of the external urethral opening as one of the causes of recurrent urinary infections in girls--surgical treatment]. Acta chirurgica Iugoslavica. 1989;36(2):229-37. PMID 2485568.",
+          "note": "Surgical series (Acta Chir Iugosl, Serbian-language article): stenosis of the external urethral opening framed as one of the causes of recurrent urinary infections in girls, with surgical treatment; supports the bounded stasis-predisposition proposition only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/2485568/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 2485568; series framing and results (recurrent urinary infection with meatal stenosis in girls)"
+        },
+        {
+          "citation": "Brüggemann VC, Ringert RH, Hartung R, et al. [Value of anatomic and functional obstruction of the urethra of girls in enuresis, recurrent urinary tract infections and reflux]. Der Urologe. Ausg. A. 1985 Mar;24(2):75-9. PMID 4039493.",
+          "note": "Study (Urologe A, German with English abstract): anatomic and functional urethral obstruction of girls in enuresis, recurrent urinary tract infections, and reflux; supports the bounded obstructive-predisposition proposition only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/4039493/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 4039493; study results (urethral obstruction with recurrent urinary infection)"
+        }
+      ]
+    }
+  ]
 }

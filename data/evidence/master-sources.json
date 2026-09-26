@@ -16,16 +16,16 @@
   "citationPromotionMustAtomicallyUpdateKbAndMasterSourceState": true
  },
  "counts": {
-  "liveSourceReferenceUses": 1073,
+  "liveSourceReferenceUses": 1101,
   "activeSourceEntities": 346,
-  "pendingVerificationSourceEntities": 627,
+  "pendingVerificationSourceEntities": 653,
   "activeClinicalSourceEntities": 345,
-  "pendingClinicalSourceEntities": 627,
+  "pendingClinicalSourceEntities": 653,
   "activeLegalAuthorityEntities": 1,
   "retiredOnlySourceEntities": 1,
   "supersededUnverifiedSourceEntities": 7,
   "bibliographicCorrectionOnlyEntities": 1,
-  "totalSourceEntitiesIncludingLineage": 982,
+  "totalSourceEntitiesIncludingLineage": 1008,
   "retiredVerifiedRelationshipSourceUses": 6
  },
  "retirementLedger": {
@@ -36357,6 +36357,930 @@
    "retiredUses": [],
    "rawReferenceHashes": [
     "9fae6f0f069b3e613b312e1c7d715f71ef5f17e943bc091cfc17e445249afb83"
+   ]
+  },
+  {
+   "sourceId": "pmid-42712351",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "42712351",
+   "doi": "10.3389/froh.2026.1868634",
+   "canonicalCitation": "Marincak Vrankova Z, Vranka M, Bohm J, et al. Risk of pediatric obstructive sleep apnea in preadolescent children with orthodontic anomalies: a diagnostic study. Frontiers in oral health. 2026;7:1868634. doi: 10.3389/froh.2026.1868634. PMID 42712351.",
+   "citationVariants": [
+    "Marincak Vrankova Z, Vranka M, Bohm J, et al. Risk of pediatric obstructive sleep apnea in preadolescent children with orthodontic anomalies: a diagnostic study. Frontiers in oral health. 2026;7:1868634. doi: 10.3389/froh.2026.1868634. PMID 42712351."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42712351/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/42712351/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-malocclusion-to-sleep-apnea",
+     "primaryId": "malocclusion",
+     "targetId": "sleep-apnea",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "6e54e9c5986d013279f2fb3c7f9b744d92adcacea3c15888135be4735666f715"
+   ]
+  },
+  {
+   "sourceId": "pmid-42270302",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "42270302",
+   "doi": "10.3760/cma.j.cn115330-20260206-00087",
+   "canonicalCitation": "He ZZ, Lyu CX, Yang XP, et al. [Polysomnographic and clinical characteristics analysis of children with different types of malocclusion]. Zhonghua er bi yan hou tou jing wai ke za zhi = Chinese journal of otorhinolaryngology head and neck surgery. 2026 May 7;61(5):553-559. doi: 10.3760/cma.j.cn115330-20260206-00087. PMID 42270302.",
+   "citationVariants": [
+    "He ZZ, Lyu CX, Yang XP, et al. [Polysomnographic and clinical characteristics analysis of children with different types of malocclusion]. Zhonghua er bi yan hou tou jing wai ke za zhi = Chinese journal of otorhinolaryngology head and neck surgery. 2026 May 7;61(5):553-559. doi: 10.3760/cma.j.cn115330-20260206-00087. PMID 42270302."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42270302/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/42270302/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-malocclusion-to-sleep-apnea",
+     "primaryId": "malocclusion",
+     "targetId": "sleep-apnea",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "d13c57f75662caeb32008e34f577088964ffc2d5e158c1f028a1119d2c99807a"
+   ]
+  },
+  {
+   "sourceId": "pmid-42146116",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "42146116",
+   "doi": "10.1002/lio2.70441",
+   "canonicalCitation": "Baker ER, Chanamolu M, Weatherford DM, et al. Effect of Malocclusion on Response to Hypoglossal Nerve Stimulation for Obstructive Sleep Apnea. Laryngoscope investigative otolaryngology. 2026 Jun;11(3):e70441. doi: 10.1002/lio2.70441. PMID 42146116.",
+   "citationVariants": [
+    "Baker ER, Chanamolu M, Weatherford DM, et al. Effect of Malocclusion on Response to Hypoglossal Nerve Stimulation for Obstructive Sleep Apnea. Laryngoscope investigative otolaryngology. 2026 Jun;11(3):e70441. doi: 10.1002/lio2.70441. PMID 42146116."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42146116/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/42146116/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-malocclusion-to-sleep-apnea",
+     "primaryId": "malocclusion",
+     "targetId": "sleep-apnea",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "92f3c56781dbdc2ff41c96fce1f3c5f3d7d056f18a05bf0c7be53c6cb859e3e6"
+   ]
+  },
+  {
+   "sourceId": "pmid-38265668",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "38265668",
+   "doi": "10.1007/s00784-024-05508-6",
+   "canonicalCitation": "El Osta N, Chambon P, Dol G, et al. Does malocclusion affect ingestion: a systematic review. Clinical oral investigations. 2024 Jan 24;28(1):111. doi: 10.1007/s00784-024-05508-6. PMID 38265668.",
+   "citationVariants": [
+    "El Osta N, Chambon P, Dol G, et al. Does malocclusion affect ingestion: a systematic review. Clinical oral investigations. 2024 Jan 24;28(1):111. doi: 10.1007/s00784-024-05508-6. PMID 38265668."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38265668/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/38265668/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-malocclusion-to-dysphagia",
+     "primaryId": "malocclusion",
+     "targetId": "dysphagia",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "8060c532900951f628768d6deea0529cee3a285ab8f10d2ea58ab645130341d7"
+   ]
+  },
+  {
+   "sourceId": "pmid-41123350",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "41123350",
+   "doi": "10.1111/joor.70091",
+   "canonicalCitation": "Aldausari R, Kumar A, Suzuki A, et al. Assessment of Orofacial Muscle Strength, Masticatory and Swallowing Function in Children Indicated for Orthodontic Treatment-A Preliminary Investigation. Journal of oral rehabilitation. 2026 Feb;53(2):348-356. doi: 10.1111/joor.70091. PMID 41123350.",
+   "citationVariants": [
+    "Aldausari R, Kumar A, Suzuki A, et al. Assessment of Orofacial Muscle Strength, Masticatory and Swallowing Function in Children Indicated for Orthodontic Treatment-A Preliminary Investigation. Journal of oral rehabilitation. 2026 Feb;53(2):348-356. doi: 10.1111/joor.70091. PMID 41123350."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41123350/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/41123350/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-malocclusion-to-dysphagia",
+     "primaryId": "malocclusion",
+     "targetId": "dysphagia",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "47b956218159a7803b91285c61c4686f7b4aaed0dcbe06f3327e2f2c8d4a1911"
+   ]
+  },
+  {
+   "sourceId": "pmid-42211638",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "42211638",
+   "doi": "10.7759/cureus.107833",
+   "canonicalCitation": "Burton E, Haller W 3rd. Lifelong Sequelae of a Childhood Tibial Fracture: Severe Procurvatum Tibial Malunion Leading to Secondary Knee Osteoarthritis. Cureus. 2026 Apr;18(4):e107833. doi: 10.7759/cureus.107833. PMID 42211638.",
+   "citationVariants": [
+    "Burton E, Haller W 3rd. Lifelong Sequelae of a Childhood Tibial Fracture: Severe Procurvatum Tibial Malunion Leading to Secondary Knee Osteoarthritis. Cureus. 2026 Apr;18(4):e107833. doi: 10.7759/cureus.107833. PMID 42211638."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42211638/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/42211638/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-malunion-nonunion-of-fractures-to-post-traumatic-osteoarthritis",
+     "primaryId": "malunion-nonunion-of-fractures",
+     "targetId": "post-traumatic-osteoarthritis",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "28924c533e4bb3eed33edcad8c7607b5a208ac9212526ee8d831a366d130a6b0"
+   ]
+  },
+  {
+   "sourceId": "pmid-41438797",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "41438797",
+   "doi": "10.1016/j.jcot.2025.103279",
+   "canonicalCitation": "Kasha S, Yalamanchili RK, Rohit G, et al. Intra-articular and extra-articular malunion of proximal tibia: Assessment and management. Journal of clinical orthopaedics and trauma. 2026 Jan;72:103279. doi: 10.1016/j.jcot.2025.103279. PMID 41438797.",
+   "citationVariants": [
+    "Kasha S, Yalamanchili RK, Rohit G, et al. Intra-articular and extra-articular malunion of proximal tibia: Assessment and management. Journal of clinical orthopaedics and trauma. 2026 Jan;72:103279. doi: 10.1016/j.jcot.2025.103279. PMID 41438797."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41438797/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/41438797/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-malunion-nonunion-of-fractures-to-post-traumatic-osteoarthritis",
+     "primaryId": "malunion-nonunion-of-fractures",
+     "targetId": "post-traumatic-osteoarthritis",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "ae28a9f3dcfeb04518e7428022cc85abdca521fbf9ccc4fbdb517308a53a246e"
+   ]
+  },
+  {
+   "sourceId": "pmid-41837061",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "41837061",
+   "doi": "10.1097/RC9.0000000000000179",
+   "canonicalCitation": "Mulyana RM, Budhy F, Saputra OZ. Reverse dome osteotomy for valgus knee from tibial plateau malunion in a young adult: a case report. International journal of surgery case reports. 2026 Mar;138(3):575-579. doi: 10.1097/RC9.0000000000000179. PMID 41837061.",
+   "citationVariants": [
+    "Mulyana RM, Budhy F, Saputra OZ. Reverse dome osteotomy for valgus knee from tibial plateau malunion in a young adult: a case report. International journal of surgery case reports. 2026 Mar;138(3):575-579. doi: 10.1097/RC9.0000000000000179. PMID 41837061."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41837061/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/41837061/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-malunion-nonunion-of-fractures-to-post-traumatic-osteoarthritis",
+     "primaryId": "malunion-nonunion-of-fractures",
+     "targetId": "post-traumatic-osteoarthritis",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "0a5551036e51c67fcc4024de085f8c6752c2db50d82ca3a0065fee9db68bf9c0"
+   ]
+  },
+  {
+   "sourceId": "pmid-42457766",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "42457766",
+   "doi": "10.1038/s41598-026-61415-8",
+   "canonicalCitation": "Frydas A, Akay EM, Ran H, et al. Acute ischemic stroke, active malignancy and non-bacterial thrombotic endocarditis: an exploratory prospective observational study. Scientific reports. 2026 Jul 15;16(1). doi: 10.1038/s41598-026-61415-8. PMID 42457766.",
+   "citationVariants": [
+    "Frydas A, Akay EM, Ran H, et al. Acute ischemic stroke, active malignancy and non-bacterial thrombotic endocarditis: an exploratory prospective observational study. Scientific reports. 2026 Jul 15;16(1). doi: 10.1038/s41598-026-61415-8. PMID 42457766."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42457766/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/42457766/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-marantic-endocarditis-to-cerebrovascular-accident-stroke-residuals",
+     "primaryId": "marantic-endocarditis",
+     "targetId": "cerebrovascular-accident-stroke-residuals",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "2924a65f61b0820f4c08131f53b691a63e1ff3e6348c3e6e4e102432beba8fb2"
+   ]
+  },
+  {
+   "sourceId": "pmid-41005859",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "41005859",
+   "doi": "10.1016/j.jaccas.2025.105161",
+   "canonicalCitation": "Nakamura K, Yamashita Y, Koyama S, et al. Recurrent Cancer-Associated Nonbacterial Endocarditis Presenting With Systemic Embolic Complications. JACC. Case reports. 2025 Sep 24;30(29):105161. doi: 10.1016/j.jaccas.2025.105161. PMID 41005859.",
+   "citationVariants": [
+    "Nakamura K, Yamashita Y, Koyama S, et al. Recurrent Cancer-Associated Nonbacterial Endocarditis Presenting With Systemic Embolic Complications. JACC. Case reports. 2025 Sep 24;30(29):105161. doi: 10.1016/j.jaccas.2025.105161. PMID 41005859."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41005859/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/41005859/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-marantic-endocarditis-to-cerebrovascular-accident-stroke-residuals",
+     "primaryId": "marantic-endocarditis",
+     "targetId": "cerebrovascular-accident-stroke-residuals",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "4169d6644dcacd7d4ad4950fd9c5079aa61fad2d43966fe235668e2bd3468222"
+   ]
+  },
+  {
+   "sourceId": "pmid-41869247",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "41869247",
+   "doi": "10.7759/cureus.103844",
+   "canonicalCitation": "Harris M. Ischemic Stroke as the Initial Presentation of Advanced Pancreatic Adenocarcinoma: A Case of Marantic Endocarditis. Cureus. 2026 Feb;18(2):e103844. doi: 10.7759/cureus.103844. PMID 41869247.",
+   "citationVariants": [
+    "Harris M. Ischemic Stroke as the Initial Presentation of Advanced Pancreatic Adenocarcinoma: A Case of Marantic Endocarditis. Cureus. 2026 Feb;18(2):e103844. doi: 10.7759/cureus.103844. PMID 41869247."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41869247/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/41869247/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-marantic-endocarditis-to-cerebrovascular-accident-stroke-residuals",
+     "primaryId": "marantic-endocarditis",
+     "targetId": "cerebrovascular-accident-stroke-residuals",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "180d939e845fc9fa170a2070213e92c1192254c2153f1747246aa4f338f6195f"
+   ]
+  },
+  {
+   "sourceId": "pmid-39659453",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "39659453",
+   "doi": "10.1093/ehjcr/ytae617",
+   "canonicalCitation": "Ladera Santos D, Roldán Guerra Á, Dávila Flores V, et al. Embolic myocardial infarction secondary to marantic endocarditis in a patient with ulcerative colitis: case report. European heart journal. Case reports. 2024 Dec;8(12):ytae617. doi: 10.1093/ehjcr/ytae617. PMID 39659453.",
+   "citationVariants": [
+    "Ladera Santos D, Roldán Guerra Á, Dávila Flores V, et al. Embolic myocardial infarction secondary to marantic endocarditis in a patient with ulcerative colitis: case report. European heart journal. Case reports. 2024 Dec;8(12):ytae617. doi: 10.1093/ehjcr/ytae617. PMID 39659453."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39659453/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/39659453/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-marantic-endocarditis-to-myocardial-infarction",
+     "primaryId": "marantic-endocarditis",
+     "targetId": "myocardial-infarction",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "8dfbaed1db77723b501fbfc378383aa5de90d7469932b521087aa91b9adcb5ce"
+   ]
+  },
+  {
+   "sourceId": "pmid-37914173",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "37914173",
+   "doi": "10.1136/bcr-2023-257466",
+   "canonicalCitation": "Hansen AC, Piranavan P, Kundu A, et al. Embolic myocardial infarction with cardiac arrest as an initial manifestation of non-bacterial thrombotic endocarditis. BMJ case reports. 2023 Nov 1;16(11). doi: 10.1136/bcr-2023-257466. PMID 37914173.",
+   "citationVariants": [
+    "Hansen AC, Piranavan P, Kundu A, et al. Embolic myocardial infarction with cardiac arrest as an initial manifestation of non-bacterial thrombotic endocarditis. BMJ case reports. 2023 Nov 1;16(11). doi: 10.1136/bcr-2023-257466. PMID 37914173."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/37914173/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/37914173/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-marantic-endocarditis-to-myocardial-infarction",
+     "primaryId": "marantic-endocarditis",
+     "targetId": "myocardial-infarction",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "0b4f7c8b7043c1f4608b9ae5879193908be850cd22c1861e25bad26bc5befd73"
+   ]
+  },
+  {
+   "sourceId": "pmid-36620810",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "36620810",
+   "doi": "10.7759/cureus.32261",
+   "canonicalCitation": "Karameh M, Golomb M, Arad A, et al. Multi-Valvular Non-bacterial Thrombotic Endocarditis Causing Sequential Pulmonary Embolism, Myocardial Infarction, and Stroke: A Case Report and Literature Review. Cureus. 2022 Dec;14(12):e32261. doi: 10.7759/cureus.32261. PMID 36620810.",
+   "citationVariants": [
+    "Karameh M, Golomb M, Arad A, et al. Multi-Valvular Non-bacterial Thrombotic Endocarditis Causing Sequential Pulmonary Embolism, Myocardial Infarction, and Stroke: A Case Report and Literature Review. Cureus. 2022 Dec;14(12):e32261. doi: 10.7759/cureus.32261. PMID 36620810."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36620810/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/36620810/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 2,
+   "liveUses": [
+    {
+     "relationshipId": "rel-marantic-endocarditis-to-myocardial-infarction",
+     "primaryId": "marantic-endocarditis",
+     "targetId": "myocardial-infarction",
+     "sourceIndex": 2
+    },
+    {
+     "relationshipId": "rel-marantic-endocarditis-to-pulmonary-embolism",
+     "primaryId": "marantic-endocarditis",
+     "targetId": "pulmonary-embolism",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "e2918de75f9355db54456a7755c98a39ccd614fc0ab8f677fe47aca5ccee3c6d",
+    "8d2978cfadb4651a823a83abcce9725ae26eec0ae1a74e3f0d830204c865f4e0"
+   ]
+  },
+  {
+   "sourceId": "pmid-42223618",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "42223618",
+   "doi": "10.1007/s00405-026-10349-y",
+   "canonicalCitation": "Sofer N, Hadar A, Choucroun G, et al. Incidence of mastoiditis complications in relation to prior community-based antibiotic treatment. European archives of oto-rhino-laryngology : official journal of the European Federation of Oto-Rhino-Laryngological Societies (EUFOS) : affiliated with the German Society for Oto-Rhino-Laryngology - Head and Neck Surgery. 2026 Sep;283(9):5709-5719. doi: 10.1007/s00405-026-10349-y. PMID 42223618.",
+   "citationVariants": [
+    "Sofer N, Hadar A, Choucroun G, et al. Incidence of mastoiditis complications in relation to prior community-based antibiotic treatment. European archives of oto-rhino-laryngology : official journal of the European Federation of Oto-Rhino-Laryngological Societies (EUFOS) : affiliated with the German Society for Oto-Rhino-Laryngology - Head and Neck Surgery. 2026 Sep;283(9):5709-5719. doi: 10.1007/s00405-026-10349-y. PMID 42223618."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42223618/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/42223618/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 2,
+   "liveUses": [
+    {
+     "relationshipId": "rel-mastoiditis-to-meningitis",
+     "primaryId": "mastoiditis",
+     "targetId": "meningitis",
+     "sourceIndex": 0
+    },
+    {
+     "relationshipId": "rel-mastoiditis-to-brain-abscess",
+     "primaryId": "mastoiditis",
+     "targetId": "brain-abscess",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "f867ecb6e2226b6c492ecbba72f20fa7ad6a6efef82053f50c737c792a84b9a2",
+    "706968d88b25c86139a0f679f18c8c26c8f529598f84d3dc684fb31e2816cb5e"
+   ]
+  },
+  {
+   "sourceId": "pmid-42542645",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "42542645",
+   "doi": "10.7759/cureus.111924",
+   "canonicalCitation": "Yahya T, Barbee EC, Kittaneh A. Complications of Otitis Media: Mastoiditis and an Intracranial Abscess Presenting as Behavioral Changes. Cureus. 2026 Jul;18(7):e111924. doi: 10.7759/cureus.111924. PMID 42542645.",
+   "citationVariants": [
+    "Yahya T, Barbee EC, Kittaneh A. Complications of Otitis Media: Mastoiditis and an Intracranial Abscess Presenting as Behavioral Changes. Cureus. 2026 Jul;18(7):e111924. doi: 10.7759/cureus.111924. PMID 42542645."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42542645/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/42542645/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-mastoiditis-to-brain-abscess",
+     "primaryId": "mastoiditis",
+     "targetId": "brain-abscess",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "8d8d2ce9b184d1c4661b43cb2291e7f6d7d6ef2774e1ff7929f4518c0ebf2199"
+   ]
+  },
+  {
+   "sourceId": "pmid-41527656",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "41527656",
+   "doi": "10.7759/cureus.99057",
+   "canonicalCitation": "Sekar S, Murali M, Krishnan Seethapathy D, et al. From the Ear to the Brain: Otitis Externa Complicated by Coalescent Mastoiditis Leading to Temporal Lobe Abscess and Wernicke's Aphasia. Cureus. 2025 Dec;17(12):e99057. doi: 10.7759/cureus.99057. PMID 41527656.",
+   "citationVariants": [
+    "Sekar S, Murali M, Krishnan Seethapathy D, et al. From the Ear to the Brain: Otitis Externa Complicated by Coalescent Mastoiditis Leading to Temporal Lobe Abscess and Wernicke's Aphasia. Cureus. 2025 Dec;17(12):e99057. doi: 10.7759/cureus.99057. PMID 41527656."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41527656/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/41527656/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-mastoiditis-to-brain-abscess",
+     "primaryId": "mastoiditis",
+     "targetId": "brain-abscess",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "6773eededca2666d9087238c11b7ee216c27bf87afb31d2022efeb94e921faf4"
+   ]
+  },
+  {
+   "sourceId": "pmid-42546716",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "42546716",
+   "doi": "10.1055/a-2623-3015",
+   "canonicalCitation": "Lailach S, Neudert M, Zahnert T. [Interdisciplinary Management of Acute and Chronic Mastoiditis]. Laryngo- rhino- otologie. 2026 Aug;105(8):516-532. doi: 10.1055/a-2623-3015. PMID 42546716.",
+   "citationVariants": [
+    "Lailach S, Neudert M, Zahnert T. [Interdisciplinary Management of Acute and Chronic Mastoiditis]. Laryngo- rhino- otologie. 2026 Aug;105(8):516-532. doi: 10.1055/a-2623-3015. PMID 42546716."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42546716/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/42546716/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-mastoiditis-to-labyrinthitis",
+     "primaryId": "mastoiditis",
+     "targetId": "labyrinthitis",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "a68a41fe7ecbb657b6b5d3383f071fb27d144bddeb905c33ac6005a3ccac8f20"
+   ]
+  },
+  {
+   "sourceId": "pmid-42377467",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "42377467",
+   "doi": "10.1007/s00106-026-01788-4",
+   "canonicalCitation": "Schmutzler L, Santer M, Dejaco D, et al. [Complications of acute otitis media]. HNO. 2026 Aug;74(8):554-562. doi: 10.1007/s00106-026-01788-4. PMID 42377467.",
+   "citationVariants": [
+    "Schmutzler L, Santer M, Dejaco D, et al. [Complications of acute otitis media]. HNO. 2026 Aug;74(8):554-562. doi: 10.1007/s00106-026-01788-4. PMID 42377467."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42377467/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/42377467/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-mastoiditis-to-labyrinthitis",
+     "primaryId": "mastoiditis",
+     "targetId": "labyrinthitis",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "918838c5f1f8766a7c2f164c7b0cf37b9d34ef23e36deb19716ade029e6e92cf"
+   ]
+  },
+  {
+   "sourceId": "pmid-11149814",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "11149814",
+   "doi": "10.1097/00006534-199912000-00086",
+   "canonicalCitation": "Demirseren ME, Yenidunya MO. Hydronephrosis caused by undiagnosed meatal stenosis in an 80-year-old man. Plastic and reconstructive surgery. 1999 Dec;104(7):2337-8. doi: 10.1097/00006534-199912000-00086. PMID 11149814.",
+   "citationVariants": [
+    "Demirseren ME, Yenidunya MO. Hydronephrosis caused by undiagnosed meatal stenosis in an 80-year-old man. Plastic and reconstructive surgery. 1999 Dec;104(7):2337-8. doi: 10.1097/00006534-199912000-00086. PMID 11149814."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/11149814/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/11149814/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-meatal-stenosis-to-hydronephrosis",
+     "primaryId": "meatal-stenosis",
+     "targetId": "hydronephrosis",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "99281e11acb04db070799755ee6e27876b56eaeef4f4cfc757dce5be2815bbcf"
+   ]
+  },
+  {
+   "sourceId": "pmid-3773112",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "3773112",
+   "doi": "10.1016/s0022-5347(17)45322-5",
+   "canonicalCitation": "Bueschen AJ, Royal SA. Urethral meatal stenosis in a girl causing severe hydronephrosis. The Journal of urology. 1986 Dec;136(6):1302-3. doi: 10.1016/s0022-5347(17)45322-5. PMID 3773112.",
+   "citationVariants": [
+    "Bueschen AJ, Royal SA. Urethral meatal stenosis in a girl causing severe hydronephrosis. The Journal of urology. 1986 Dec;136(6):1302-3. doi: 10.1016/s0022-5347(17)45322-5. PMID 3773112."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/3773112/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/3773112/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-meatal-stenosis-to-hydronephrosis",
+     "primaryId": "meatal-stenosis",
+     "targetId": "hydronephrosis",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "64a1453e05a32c0da64e346411100456b8d522f3366f178ede4cd7ad3a1225bc"
+   ]
+  },
+  {
+   "sourceId": "pmid-28537045",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "28537045",
+   "doi": null,
+   "canonicalCitation": "Saeedi P, Ahmadnia H, Akhavan Rezayat A. Evaluation of the Effect of Meatal Stenosis on the Urinary Tract by using Ultrasonography. Urology journal. 2017 May 23;14(3):3071-3074. PMID 28537045.",
+   "citationVariants": [
+    "Saeedi P, Ahmadnia H, Akhavan Rezayat A. Evaluation of the Effect of Meatal Stenosis on the Urinary Tract by using Ultrasonography. Urology journal. 2017 May 23;14(3):3071-3074. PMID 28537045."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/28537045/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/28537045/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-meatal-stenosis-to-hydronephrosis",
+     "primaryId": "meatal-stenosis",
+     "targetId": "hydronephrosis",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "5658115cbf486cfb0808c67073f1b168af061d26bf42ef8606986c3ca1c27a00"
+   ]
+  },
+  {
+   "sourceId": "pmid-35491305",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "35491305",
+   "doi": "10.1016/j.jpurol.2022.03.021",
+   "canonicalCitation": "Mekayten M, Meir E, Yutkin V, et al. Is there a correlation between meatal stenosis severity, lower urinary tract symptoms and uroflowmetry?. Journal of pediatric urology. 2022 Jun;18(3):342.e1-342.e6. doi: 10.1016/j.jpurol.2022.03.021. PMID 35491305.",
+   "citationVariants": [
+    "Mekayten M, Meir E, Yutkin V, et al. Is there a correlation between meatal stenosis severity, lower urinary tract symptoms and uroflowmetry?. Journal of pediatric urology. 2022 Jun;18(3):342.e1-342.e6. doi: 10.1016/j.jpurol.2022.03.021. PMID 35491305."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35491305/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/35491305/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-meatal-stenosis-to-urinary-frequency-retention",
+     "primaryId": "meatal-stenosis",
+     "targetId": "urinary-frequency-retention",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "dd984bcb208d4456883fccd144f8726e35dd2de024566c9846d0048433c941f9"
+   ]
+  },
+  {
+   "sourceId": "pmid-37722867",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "37722867",
+   "doi": "10.1177/10668969231195074",
+   "canonicalCitation": "Arredondo Montero J, Ayuso González L, Hernández Martín S, et al. Congenital Meatal Urethral Stenosis in a Female Patient: A Case Report. International journal of surgical pathology. 2024 Jun;32(4):817-820. doi: 10.1177/10668969231195074. PMID 37722867.",
+   "citationVariants": [
+    "Arredondo Montero J, Ayuso González L, Hernández Martín S, et al. Congenital Meatal Urethral Stenosis in a Female Patient: A Case Report. International journal of surgical pathology. 2024 Jun;32(4):817-820. doi: 10.1177/10668969231195074. PMID 37722867."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/37722867/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/37722867/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-meatal-stenosis-to-urinary-frequency-retention",
+     "primaryId": "meatal-stenosis",
+     "targetId": "urinary-frequency-retention",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "e453da944f9bc004796faa46fa0007d8775c81e0a9aa7032d39117ce96443772"
+   ]
+  },
+  {
+   "sourceId": "pmid-2485568",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "2485568",
+   "doi": null,
+   "canonicalCitation": "Milanović D, Sremcević D, Perović S, et al. [Stenosis of the external urethral opening as one of the causes of recurrent urinary infections in girls--surgical treatment]. Acta chirurgica Iugoslavica. 1989;36(2):229-37. PMID 2485568.",
+   "citationVariants": [
+    "Milanović D, Sremcević D, Perović S, et al. [Stenosis of the external urethral opening as one of the causes of recurrent urinary infections in girls--surgical treatment]. Acta chirurgica Iugoslavica. 1989;36(2):229-37. PMID 2485568."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/2485568/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/2485568/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-meatal-stenosis-to-cystitis",
+     "primaryId": "meatal-stenosis",
+     "targetId": "cystitis",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "0f04a9f0b54fa90754ed99f6b5986de9a0be6fe275a220eefe125a49f473ce5b"
+   ]
+  },
+  {
+   "sourceId": "pmid-4039493",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "4039493",
+   "doi": null,
+   "canonicalCitation": "Brüggemann VC, Ringert RH, Hartung R, et al. [Value of anatomic and functional obstruction of the urethra of girls in enuresis, recurrent urinary tract infections and reflux]. Der Urologe. Ausg. A. 1985 Mar;24(2):75-9. PMID 4039493.",
+   "citationVariants": [
+    "Brüggemann VC, Ringert RH, Hartung R, et al. [Value of anatomic and functional obstruction of the urethra of girls in enuresis, recurrent urinary tract infections and reflux]. Der Urologe. Ausg. A. 1985 Mar;24(2):75-9. PMID 4039493."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/4039493/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/4039493/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-meatal-stenosis-to-cystitis",
+     "primaryId": "meatal-stenosis",
+     "targetId": "cystitis",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "5872ce627594d2f1540a5cfc73493282332cbdca35d8f14e0f294f9a17610590"
    ]
   }
  ],
