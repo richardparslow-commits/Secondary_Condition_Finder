@@ -30,11 +30,16 @@ concurrency:
 
 jobs:
   post-to-clickup:
+    # Every conclusion EXCEPT the known-benign ones reaches the reporter, so a
+    # conclusion GitHub adds later fails open inside tested code instead of
+    # being dropped here by an equality list that can never anticipate it.
+    # `cancelled` is deliberately NOT filtered out: the reporter logs why it is
+    # exempt, so the skip is auditable rather than silent.
+    # tests/ci-failure-report.test.ts keeps this list in sync with the script's
+    # documented exemptions — do not edit one without the other.
     if: >-
-      github.event.workflow_run.conclusion == 'failure' ||
-      github.event.workflow_run.conclusion == 'timed_out' ||
-      github.event.workflow_run.conclusion == 'startup_failure' ||
-      github.event.workflow_run.conclusion == 'cancelled'
+      !contains(fromJSON('["success", "skipped", "neutral", "stale", "action_required"]'),
+      github.event.workflow_run.conclusion)
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:

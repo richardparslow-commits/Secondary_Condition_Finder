@@ -1,4 +1,5 @@
 import fs from "node:fs";
+import { spawnSync } from "node:child_process";
 import path from "node:path";
 
 import { describe, expect, it } from "vitest";
@@ -13,6 +14,7 @@ import {
   classifyConclusion,
   dedupeKey,
   inspectSecrets,
+  keyToken,
   normalizeJobsPayload,
   reportFailure as reportFailureRaw,
   selectFailedJobs,
@@ -105,6 +107,12 @@ const noSleep = async () => {};
 function collectLogs() {
   const logs: string[] = [];
   return { logs, log: (message: string) => logs.push(message) };
+}
+
+/** Mirror what the reporter builds, so titles stay pinned to the real identity. */
+function expectedTitle(conclusion: string, jobNames: string[], sha = SHA) {
+  const key = dedupeKey({ sha, conclusion, jobNames });
+  return buildTaskTitle({ conclusion, jobNames, omitted: 0, sha, key });
 }
 
 /**
@@ -204,8 +212,11 @@ describe("failed-job selection", () => {
       jobFixture("omega", "failure"),
     ];
     const selected = selectFailedJobs(jobs);
-    expect(selected.names).toHaveLength(MAX_JOBS_IN_TITLE);
-    expect(selected.names).toEqual(["alpha", "beta", "mid", "omega"]);
+    // Display truncates...
+    expect(selected.shown).toHaveLength(MAX_JOBS_IN_TITLE);
+    expect(selected.shown).toEqual(["alpha", "beta", "mid", "omega"]);
+    // ...but the identity set must stay complete.
+    expect(selected.names).toEqual(["alpha", "beta", "mid", "omega", "zeta"]);
     expect(selected.omitted).toBe(1);
     expect(selected.total).toBe(5);
   });
@@ -370,7 +381,8 @@ describe("escalation delivery semantics", () => {
     expect(calls[1].url).toContain(`/list/${configured.listId}/task`);
     expect(calls[1].url).not.toContain("search_task=");
     const body = JSON.parse(calls[1].body ?? "{}") as TaskPayload;
-    expect(body.name).toBe("Investigate CI failure: verify [340d2a3]");
+    expect(body.name).toBe(expectedTitle("failure", ["verify"]));
+    expect(body.name).toMatch(/^Investigate CI failure: verify \[340d2a3] #[a-z0-9]+$/);
     expect(body.priority).toBe(2);
     expect(body.notify_all).toBe(false);
   });
@@ -386,7 +398,7 @@ describe("escalation robustness", () => {
   const failedRun = { jobs: [jobFixture("verify", "failure")] };
 
   it("suppresses a duplicate escalation for the same run, conclusion and jobs", async () => {
-    const title = buildTaskTitle({ conclusion: "failure", jobNames: ["verify"], omitted: 0, sha: SHA });
+    const title = expectedTitle("failure", ["verify"]);
     const { impl, calls } = fakeFetch([{ status: 200, body: { tasks: [{ id: "86dup", name: title }] } }]);
     const result = await reportFailure({
       run: runFixture("failure"),
@@ -475,7 +487,7 @@ describe("escalation robustness", () => {
     });
     expect(result.action).toBe("dry-run");
     expect(result.exitCode).toBe(0);
-    expect(result.payload?.name).toBe("Investigate CI failure: verify [340d2a3]");
+    expect(result.payload?.name).toBe(expectedTitle("failure", ["verify"]));
     expect(calls).toEqual([]);
   });
 });
@@ -562,15 +574,23 @@ describe("ci-to-clickup workflow wiring", () => {
     expect(escalate).toContain("--jobs-file");
   });
 
-  it("keeps cancelled runs reaching the job so the skip is logged, not silent", () => {
-    // The filter is in the script (tested above); the trigger must still hand
-    // cancelled runs over so the reporter can record why it skipped them.
+  it("lets every non-benign conclusion reach the tested classifier", () => {
+    // An allowlist of equality checks here would drop any conclusion GitHub
+    // introduces later, making the script's advertised fail-open behaviour
+    // unreachable. The workflow must instead exempt ONLY the conclusions the
+    // script documents as benign, keeping the two lists in sync.
     const jobIf = workflow.match(/if:\s*>-([\s\S]*?)\n\s{4}runs-on:/)?.[1] ?? "";
-    for (const conclusion of ["failure", "timed_out", "startup_failure", "cancelled"]) {
-      expect(jobIf, `job if must accept ${conclusion}`).toContain(`'${conclusion}'`);
+    expect(jobIf, "the filter must be an exemption list, not an equality allowlist").toContain(
+      "!contains(fromJSON(",
+    );
+    const exempted = [...jobIf.matchAll(/"([a-z_]+)"/g)].map((match) => match[1]);
+    const benign = Object.keys(IGNORED_CONCLUSION_REASONS).filter((name) => name !== "cancelled");
+    expect(exempted.sort()).toEqual([...benign].sort());
+    for (const conclusion of ESCALATABLE_CONCLUSIONS) {
+      expect(exempted, `${conclusion} must reach the reporter`).not.toContain(conclusion);
     }
-    expect(jobIf).not.toContain("'success'");
-    expect(jobIf).not.toContain("'skipped'");
+    // Cancelled runs still reach the job so the skip is logged, not silent.
+    expect(exempted).not.toContain("cancelled");
   });
 
   it("fails open when job metadata cannot be collected", () => {
@@ -642,6 +662,90 @@ describe("escalation contract documentation", () => {
     for (const conclusion of Object.keys(IGNORED_CONCLUSION_REASONS)) {
       expect(governance, `${conclusion} must be documented`).toContain(`\`${conclusion}\``);
     }
+  });
+});
+
+/**
+ * Regression pins for the four automated-review findings on this change. Each
+ * one was a real hole in the fail-open policy the reporter claims to implement,
+ * so each is pinned here rather than merely fixed.
+ */
+describe("review-finding regressions", () => {
+  const script = path.join(ROOT, "scripts", "ci-failure-report.js");
+  const shared = ["alpha", "beta", "gamma", "delta"];
+
+  it("keeps the full failed-job set in the escalation identity", () => {
+    // Two reruns of one commit: same first four failures, same total, different
+    // fifth job. The displayed title is identical, so the identity must not be.
+    const first = selectFailedJobs([...shared, "zeta-one"].map((name) => jobFixture(name, "failure")));
+    const second = selectFailedJobs([...shared, "zeta-two"].map((name) => jobFixture(name, "failure")));
+    expect(first.shown).toEqual(second.shown);
+    expect(first.total).toBe(second.total);
+    expect(first.names).not.toEqual(second.names);
+    expect(dedupeKey({ sha: SHA, conclusion: "failure", jobNames: first.names })).not.toBe(
+      dedupeKey({ sha: SHA, conclusion: "failure", jobNames: second.names }),
+    );
+  });
+
+  it("does not suppress a genuinely different alert end-to-end", async () => {
+    const escalate = async (extra: string) =>
+      reportFailure({
+        run: runFixture("failure"),
+        jobs: { jobs: [...shared, extra].map((name) => jobFixture(name, "failure")) },
+        dryRun: true,
+      });
+    const first = await escalate("zeta-one");
+    const second = await escalate("zeta-two");
+    // The human-readable part collides (same first four jobs, same count)...
+    const display = (title: string) => title.slice(0, title.indexOf("#"));
+    expect(display(first.title ?? "")).toBe(display(second.title ?? ""));
+    // ...but the identity, including the token carried in the title, does not.
+    expect(first.title).not.toBe(second.title);
+    expect(first.key).not.toBe(second.key);
+  });
+
+  it("makes the title collision-free beyond the seven-character sha prefix", () => {
+    const shaA = `abcdef1${"0".repeat(33)}`;
+    const shaB = `abcdef1${"1".repeat(33)}`;
+    const titleA = expectedTitle("failure", ["verify"], shaA);
+    const titleB = expectedTitle("failure", ["verify"], shaB);
+    expect(titleA).toContain("[abcdef1]");
+    expect(titleB).toContain("[abcdef1]");
+    // Identical up to the identity token — exactly the case where title-only
+    // matching used to suppress a different alert and point at the wrong run.
+    expect(titleA.slice(0, titleA.indexOf("#"))).toBe(titleB.slice(0, titleB.indexOf("#")));
+    expect(titleA).not.toBe(titleB);
+    expect(keyToken(dedupeKey({ sha: shaA, conclusion: "failure", jobNames: ["verify"] }))).not.toBe(
+      keyToken(dedupeKey({ sha: shaB, conclusion: "failure", jobNames: ["verify"] })),
+    );
+  });
+
+  it("fails open when run metadata is missing or unparseable", async () => {
+    for (const run of [{}, "not valid json", undefined, null]) {
+      const result = await reportFailure({ run, dryRun: true });
+      expect(result.action, JSON.stringify(run)).toBe("dry-run");
+      expect(result.title, JSON.stringify(run)).toContain("unknown");
+    }
+  });
+
+  it("exits non-zero when no run metadata source is supplied at all", () => {
+    // A wiring bug must be loud; exiting successfully would hide that nothing
+    // was classified at all.
+    const proc = spawnSync(process.execPath, [script], { encoding: "utf8" });
+    expect(proc.status).toBe(1);
+    expect(proc.stdout).toMatch(/no CI run metadata supplied/);
+  });
+
+  it("still escalates when an explicitly supplied run file is unreadable", () => {
+    const proc = spawnSync(
+      process.execPath,
+      [script, "--run-file", path.join(ROOT, "no-such-run.json"), "--dry-run"],
+      { encoding: "utf8" },
+    );
+    expect(proc.status).toBe(0);
+    expect(proc.stdout).toMatch(/fail-open/);
+    expect(proc.stdout).toMatch(/would escalate/);
+    expect(proc.stdout).toContain("unknown");
   });
 });
 

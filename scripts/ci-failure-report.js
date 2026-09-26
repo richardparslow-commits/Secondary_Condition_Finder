@@ -144,6 +144,13 @@ function normalizeJobsPayload(payload) {
  * Cancelled and skipped jobs inside an otherwise failed run are excluded: a
  * run that failed because one job failed while its siblings were torn down by
  * the shutdown must not name those siblings as failures.
+ *
+ * `names` is the FULL sorted set and is the escalation identity; `shown` is the
+ * display truncation for the task title. Keeping them separate matters: if the
+ * identity were derived from the truncated list, two reruns of one commit whose
+ * first few failures and total count matched but whose remaining failures
+ * differed would collide, and the second — genuinely different — alert would be
+ * suppressed as a duplicate.
  */
 function selectFailedJobs(jobs) {
   const names = [];
@@ -155,8 +162,12 @@ function selectFailedJobs(jobs) {
     if (!names.includes(name)) names.push(name);
   }
   names.sort((a, b) => a.localeCompare(b));
-  const shown = names.slice(0, MAX_JOBS_IN_TITLE);
-  return { names: shown, omitted: names.length - shown.length, total: names.length };
+  return {
+    names,
+    shown: names.slice(0, MAX_JOBS_IN_TITLE),
+    omitted: Math.max(0, names.length - MAX_JOBS_IN_TITLE),
+    total: names.length,
+  };
 }
 
 /** Report whether the notifier's secrets are present. */
@@ -198,14 +209,31 @@ function dedupeKey({ sha, conclusion, jobNames } = {}) {
   return `ci-${parts[0].slice(0, 12)}-${hashText(parts.join("\n"))}`;
 }
 
-/** Build the task title. Deterministic, so it also serves as the dedupe identity. */
+/** The short identity token carried in a task title (the tail of a dedupe key). */
+function keyToken(key) {
+  if (typeof key !== "string" || !key) return "";
+  const tail = key.slice(key.lastIndexOf("-") + 1);
+  return tail && tail !== key ? tail : "";
+}
+
+/**
+ * Build the task title. Deterministic, so it also serves as the dedupe
+ * identity.
+ *
+ * The trailing identity token is what makes exact-title matching safe. A title
+ * built from the seven-character SHA alone would be identical for two distinct
+ * commits sharing that prefix, so a later, genuinely different alert would be
+ * suppressed as a duplicate of the earlier one and the task would point at the
+ * wrong run.
+ */
 function buildTaskTitle(options) {
-  const { conclusion, jobNames, omitted = 0, sha } = options || {};
+  const { conclusion, jobNames, omitted = 0, sha, key } = options || {};
   const shortSha = (typeof sha === "string" && sha ? sha : "unknown").slice(0, 7);
   const jobs = Array.isArray(jobNames) && jobNames.length ? jobNames.join(", ") : "unknown";
   const suffix = Number.isFinite(omitted) && omitted > 0 ? ` +${omitted} more` : "";
   const verdict = typeof conclusion === "string" && conclusion ? conclusion : "failure";
-  return `Investigate CI ${verdict}: ${jobs}${suffix} [${shortSha}]`;
+  const token = keyToken(key);
+  return `Investigate CI ${verdict}: ${jobs}${suffix} [${shortSha}]${token ? ` #${token}` : ""}`;
 }
 
 /**
@@ -365,7 +393,19 @@ async function createTask({ apiToken, listId, payload, fetchImpl, log, sleep }) 
 async function reportFailure(options) {
   const { run, jobs, apiToken, listId, fetchImpl, log, sleep, dryRun = false } = options || {};
   const emit = typeof log === "function" ? log : () => {};
-  const meta = typeof run === "string" ? JSON.parse(run) : run || {};
+  let meta = run;
+  if (typeof meta === "string") {
+    try {
+      meta = JSON.parse(meta);
+    } catch {
+      // Fail open: unusable run metadata must not suppress the alert. The
+      // workflow trigger has already established that the run was not benign,
+      // so escalating with unknown metadata is the correct default.
+      emit("run metadata is not valid JSON; escalating with unknown metadata");
+      meta = {};
+    }
+  }
+  if (!meta || typeof meta !== "object") meta = {};
   const conclusion = typeof meta.conclusion === "string" ? meta.conclusion : "";
   const decision = classifyConclusion(conclusion);
   const sha = typeof meta.head_sha === "string" ? meta.head_sha : "";
@@ -382,16 +422,18 @@ async function reportFailure(options) {
     // Fail open: unknown job names are still a real failure worth escalating.
     emit("no individually-failed job names could be determined; escalating with 'unknown'");
   }
+  // Identity uses the FULL failed-job set; only the display strings truncate.
   const key = dedupeKey({ sha, conclusion, jobNames: selected.names });
   const title = buildTaskTitle({
     conclusion,
-    jobNames: selected.names,
+    jobNames: selected.shown,
     omitted: selected.omitted,
     sha,
+    key,
   });
   const description = buildTaskDescription({
     conclusion,
-    jobNames: selected.names,
+    jobNames: selected.shown,
     omitted: selected.omitted,
     sha,
     branch,
@@ -405,6 +447,7 @@ async function reportFailure(options) {
     title,
     key,
     jobNames: selected.names,
+    shownJobNames: selected.shown,
     omitted: selected.omitted,
   };
 
@@ -481,16 +524,29 @@ function parseArgs(argv) {
 
 async function main() {
   const args = parseArgs(process.argv.slice(2));
-  const run = readOptionalFile(args.runFile) ?? process.env.CI_RUN_JSON;
-  const jobs = readOptionalFile(args.jobsFile) ?? process.env.CI_JOBS_JSON;
-  if (!run) {
-    console.log("no run metadata supplied (--run-file or CI_RUN_JSON); nothing to classify");
-    process.exitCode = 0;
+  const runSupplied = Boolean(args.runFile) || Boolean(process.env.CI_RUN_JSON);
+  if (!runSupplied) {
+    // No metadata source at all is a caller/wiring bug, not a benign no-op:
+    // exiting successfully here would hide the fact that nothing was classified.
+    annotate(
+      "error",
+      "no CI run metadata supplied (--run-file or CI_RUN_JSON); the escalation decision could not be made",
+    );
+    process.exitCode = 1;
     return;
   }
 
+  const runText = args.runFile ? readOptionalFile(args.runFile) : process.env.CI_RUN_JSON;
+  const jobs = args.jobsFile ? readOptionalFile(args.jobsFile) : process.env.CI_JOBS_JSON;
+  if (args.runFile && runText === undefined) {
+    // Fail open: an explicitly supplied but unreadable run file must still
+    // escalate with unknown metadata rather than silently drop the alert. The
+    // workflow trigger already established that the run was not benign.
+    console.log("run metadata unreadable; escalating with unknown metadata (fail-open)");
+  }
+
   const result = await reportFailure({
-    run,
+    run: runText === undefined ? {} : runText,
     jobs,
     apiToken: process.env.CLICKUP_API_TOKEN,
     listId: process.env.CLICKUP_LIST_ID,
@@ -558,6 +614,7 @@ module.exports = {
   findDuplicateTask,
   hashText,
   inspectSecrets,
+  keyToken,
   normalizeJobsPayload,
   reportFailure,
   selectFailedJobs,
