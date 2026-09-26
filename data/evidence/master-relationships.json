@@ -6,8 +6,8 @@
  "installedFrom": "Master Registry Discrepancy Resolution 2026",
  "authorityBoundary": "Authoritative for current relationship direction, proposition text, guard state, source linkage, and KB parity; does not establish an individual VA medical nexus.",
  "counts": {
-  "relationships": 706,
-  "explicitPublicationGuards": 632,
+  "relationships": 716,
+  "explicitPublicationGuards": 642,
   "legacyRationaleBoundaries": 74
  },
  "relationships": [
@@ -22704,6 +22704,304 @@
    "sourceReferenceCount": 2,
    "pathwayIntelligencePresent": false,
    "suggestionObjectHash": "0496897ce5237b29f2daaa4ed391707977261ce7a5b737f49029f579920a3152"
+  },
+  {
+   "relationshipId": "rel-optic-atrophy-to-visual-impairment",
+   "primaryId": "optic-atrophy",
+   "targetId": "visual-impairment",
+   "direction": "optic-atrophy -> visual-impairment",
+   "primaryPublicationState": "draft",
+   "rank": 1,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY at cross-sectional cohort plus perimetry-analysis class with the structural-endpoint and etiologic-mix limits carried openly: the 155-eye non-glaucomatous optic atrophy cohort found 48.4 percent at counting-fingers vision or worse with symptom-duration as the sole independent severity predictor (PMID 42293699) and the chronic Leber archetypal field analysis found total-loss patterns in 30 percent of fields concentrated in non-recovered eyes (PMID 42390170); because the anchors are cross-sectional and chronic-stage without untreated comparators and span mixed etiologies, the conservative standard keeps the edge at association only and routes individual claims through dated neuro-ophthalmologic assessment with refractive, retinal, glaucomatous, and media-opacity exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY at cross-sectional cohort plus perimetry-analysis class with the structural-endpoint and etiologic-mix limits carried openly: the 155-eye non-glaucomatous optic atrophy cohort found 48.4 percent at counting-fingers vision or worse with symptom-duration as the sole independent severity predictor (PMID 42293699) and the chronic Leber archetypal field analysis found total-loss patterns in 30 percent of fields concentrated in non-recovered eyes (PMID 42390170); because the anchors are cross-sectional and chronic-stage without untreated comparators and span mixed etiologies, the conservative standard keeps the edge at association only and routes individual claims through dated neuro-ophthalmologic assessment with refractive, retinal, glaucomatous, and media-opacity exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to the structural-endpoint functional-consequence framing with the etiologic-mix limit carried openly: the 155-eye non-glaucomatous optic atrophy cohort found 48.4 percent at counting-fingers vision or worse with symptom-duration the sole independent severity predictor (PMID 42293699) and the chronic Leber archetypal field analysis found total-loss patterns in 30 percent of fields concentrated in acuity non-recovery (PMID 42390170); acuity and field outcomes are not transposable and the glaucoma and hypotension visual-impairment windows keep their own evidence (ME-29), so individual claims route through dated neuro-ophthalmologic assessment with refractive, retinal, glaucomatous, and media-opacity exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "The acuity cohort is cross-sectional from one tertiary referral center with etiologic mix (ischemic 29.7 percent, traumatic 23.9 percent, toxic, compressive, inflammatory) so pooled impairment rates are not etiology-generalizable; the field analysis covers only chronic Leber hereditary optic neuropathy and shows acuity and field outcomes are not interchangeable; duration of symptoms confounds severity attribution; and refractive error, amblyopia, cataract, macular and retinal disease, and glaucoma compete for individual attribution."
+   ],
+   "sourceIds": [
+    "pmid-42293699",
+    "pmid-42390170"
+   ],
+   "sourceReferenceCount": 2,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "ba635416581a91852fe8399a22166ac6e2a421c26bfed32dff86c62cbe6ef8d6"
+  },
+  {
+   "relationshipId": "rel-oral-cancer-to-dysphagia",
+   "primaryId": "oral-cancer",
+   "targetId": "dysphagia",
+   "direction": "oral-cancer -> dysphagia",
+   "primaryPublicationState": "draft",
+   "rank": 1,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY at narrative-plus-scoping-review class with the mixed-site and unquantified-incidence limits carried openly: the radiation-associated dysphagia review documents the complication across head and neck cancer treatment with malnutrition and aspiration consequences (PMID 42636603) and the 151-study scoping review lists dysphagia among common radiation sequelae (PMID 41862928); because the anchors are review-level with mixed subsites and no oral-cavity-specific incidence, the conservative standard keeps the edge at association only and routes individual claims through dated videofluoroscopic or fiberoptic swallow assessment with tumor-recurrence, neurologic, and stricture exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY at narrative-plus-scoping-review class with the mixed-site and unquantified-incidence limits carried openly: the radiation-associated dysphagia review documents the complication across head and neck cancer treatment with malnutrition and aspiration consequences (PMID 42636603) and the 151-study scoping review lists dysphagia among common radiation sequelae (PMID 41862928); because the anchors are review-level with mixed subsites and no oral-cavity-specific incidence, the conservative standard keeps the edge at association only and routes individual claims through dated videofluoroscopic or fiberoptic swallow assessment with tumor-recurrence, neurologic, and stricture exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped explicitly as POST_SURGICAL_OR_TREATMENT sequelae with the mixed-site and unquantified-incidence limits carried openly: the radiation-associated dysphagia review documents the major short- and long-term treatment complication with malnutrition and aspiration consequences (PMID 42636603) and the 151-study radiation scoping review lists dysphagia among common sequelae (PMID 41862928); anchors are review-level across head and neck subsites without oral-cavity-specific incidence, so individual claims route through dated videofluoroscopic or fiberoptic swallow assessment with tumor-recurrence, neurologic, and stricture exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No oral-cavity-specific dysphagia incidence is quantified by the located anchors; the review evidence covers head and neck cancer cohorts mixing oral cavity, oropharynx, and larynx subsites; radiation-associated and post-operative dysphagia are mechanistically distinct but not subsite-separated; treatment intensity (dose, concurrent chemotherapy, flap reconstruction) materially modifies risk; and tumor obstruction or recurrence, neurologic swallow disorders, candidiasis-related odynophagia, and pre-existing dysphagia compete for individual attribution."
+   ],
+   "sourceIds": [
+    "pmid-42636603",
+    "pmid-41862928"
+   ],
+   "sourceReferenceCount": 2,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "0b181e2e129fe4241b6ec5c2ee2eb388c3d3252641466983aba4ecf9db52f9ba"
+  },
+  {
+   "relationshipId": "rel-oral-cancer-to-ageusia",
+   "primaryId": "oral-cancer",
+   "targetId": "ageusia",
+   "direction": "oral-cancer -> ageusia",
+   "primaryPublicationState": "draft",
+   "rank": 2,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY at prospective taste-testing plus meta-analysis class with the endpoint and subsite limits carried openly: the prospective Waterless Empirical Taste Test cohort documented a 17.3 percent relative taste-score decline at end of radiotherapy with significant tongue-dose correlation and incomplete recovery at 12 weeks (PMID 42294409) and the chemotherapy meta-analysis pooled dysgeusia at 49.62 percent (PMID 41914550); because the endpoints measure the taste-loss spectrum rather than complete ageusia and the cohort is small with oropharynx dominance, the conservative standard keeps the edge at association only and routes individual claims through dated gustologic testing with salivary, candidal, nutritional, and medication exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY at prospective taste-testing plus meta-analysis class with the endpoint and subsite limits carried openly: the prospective Waterless Empirical Taste Test cohort documented a 17.3 percent relative taste-score decline at end of radiotherapy with significant tongue-dose correlation and incomplete recovery at 12 weeks (PMID 42294409) and the chemotherapy meta-analysis pooled dysgeusia at 49.62 percent (PMID 41914550); because the endpoints measure the taste-loss spectrum rather than complete ageusia and the cohort is small with oropharynx dominance, the conservative standard keeps the edge at association only and routes individual claims through dated gustologic testing with salivary, candidal, nutritional, and medication exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped explicitly as POST_SURGICAL_OR_TREATMENT taste-injury sequelae with the endpoint and subsite limits carried openly: the prospective Waterless Empirical Taste Test cohort found 17.3 percent relative taste-score decline at end of radiotherapy with significant tongue-dose correlation (r = -0.62) and incomplete recovery at 12 weeks (PMID 42294409) and the chemotherapy meta-analysis pooled dysgeusia at 49.62 percent (PMID 41914550); endpoints measure the taste-loss spectrum (score decline and dysgeusia) rather than complete ageusia and the cohort is oropharynx-dominant (66 percent), so individual claims route through dated gustologic testing with salivary, candidal, nutritional, and medication exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "The prospective cohort is small (50 enrolled, 32 completing 12-week follow-up) with 66 percent oropharynx primaries so oral-cavity-specific taste loss is underrepresented; the pooled chemotherapy estimate spans solid tumors generally with acknowledged heterogeneity; the measured endpoint is taste-score decline and dysgeusia, not complete ageusia; partial recovery by 12 weeks leaves long-term persistence unquantified; and xerostomia, candidiasis, nutritional deficiency, and medication effects compete for individual attribution."
+   ],
+   "sourceIds": [
+    "pmid-42294409",
+    "pmid-41914550"
+   ],
+   "sourceReferenceCount": 2,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "fc9d632d1bfbdb675c1f6cd4e55f466504c5a7e72a645d46362df9f57afd0ec8"
+  },
+  {
+   "relationshipId": "rel-oral-cancer-to-oral-candidiasis",
+   "primaryId": "oral-cancer",
+   "targetId": "oral-candidiasis",
+   "direction": "oral-cancer -> oral-candidiasis",
+   "primaryPublicationState": "draft",
+   "rank": 3,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY at meta-analysis plus scoping-review class with the treatment-mediated and mixed-population limits carried openly: the chemotherapy meta-analysis pooled oral candidiasis at 24.11 percent (PMID 41914550) and the 151-study radiation scoping review lists candidiasis among common treatment sequelae driven by hyposalivation and mucosal compromise (PMID 41862928); because the anchors mix solid-tumor populations and carry no oral-cavity-specific incidence, the conservative standard keeps the edge at association only, flags it explicitly as treatment-mediated rather than malignant transformation, and routes individual claims through dated oral examination with denture, steroid, diabetic, and immunosuppression exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY at meta-analysis plus scoping-review class with the treatment-mediated and mixed-population limits carried openly: the chemotherapy meta-analysis pooled oral candidiasis at 24.11 percent (PMID 41914550) and the 151-study radiation scoping review lists candidiasis among common treatment sequelae driven by hyposalivation and mucosal compromise (PMID 41862928); because the anchors mix solid-tumor populations and carry no oral-cavity-specific incidence, the conservative standard keeps the edge at association only, flags it explicitly as treatment-mediated rather than malignant transformation, and routes individual claims through dated oral examination with denture, steroid, diabetic, and immunosuppression exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped explicitly as POST_SURGICAL_OR_TREATMENT predisposition rather than malignant transformation with the mixed-population limit carried openly: the chemotherapy meta-analysis pooled oral candidiasis at 24.11 percent (PMID 41914550) and the radiation scoping review lists candidiasis among common treatment sequelae driven by hyposalivation and mucosal compromise (PMID 41862928); anchors mix solid-tumor populations without oral-cavity-specific incidence, so individual claims route through dated oral examination with denture, inhaled-steroid, diabetic, and immunosuppression exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "The pooled candidiasis estimate comes from cross-sectional chemotherapy studies across mixed solid tumors with acknowledged heterogeneity; the scoping review aggregates radiation effects without cancer-subsite separation; candidiasis incidence varies with radiation dose, salivary-gland sparing, chemotherapy regimen, and neutropenia duration; and denture stomatitis, inhaled corticosteroid use, diabetes, xerostomia from other causes, and HIV or other immunosuppression compete for individual attribution."
+   ],
+   "sourceIds": [
+    "pmid-41914550",
+    "pmid-41862928"
+   ],
+   "sourceReferenceCount": 2,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "7461c4c7ee4d58c44aecb3b4356f0eb94e619e318aa11d30d7a54204ffb9c6a2"
+  },
+  {
+   "relationshipId": "rel-oral-cancer-to-hearing-loss",
+   "primaryId": "oral-cancer",
+   "targetId": "hearing-loss",
+   "direction": "oral-cancer -> hearing-loss",
+   "primaryPublicationState": "draft",
+   "rank": 4,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY at prospective audiometric plus comparative-cohort class with the composite-modality limit carried openly: the prospective IMRT-plus-cisplatin study of 35 patients (82.9 percent oral cavity, oropharynx, or larynx primaries) found significant hearing loss in 37.1 percent with cochlear dose-response relationship (PMID 35641273) and the 161-patient HNSCC cohort quantified cisplatin-induced hearing loss by serial pure-tone audiometry (PMID 40233546); because drug and radiation ototoxicity are not separable in the anchors and late progression is under-captured, the conservative standard keeps the edge at association only, flags it PHARMACOLOGICAL_IATROGENIC with the radiation contribution carried openly, and routes individual claims through dated audiologic assessment with presbycusis, noise, and prior-ototoxic-exposure exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY at prospective audiometric plus comparative-cohort class with the composite-modality limit carried openly: the prospective IMRT-plus-cisplatin study of 35 patients (82.9 percent oral cavity, oropharynx, or larynx primaries) found significant hearing loss in 37.1 percent with cochlear dose-response relationship (PMID 35641273) and the 161-patient HNSCC cohort quantified cisplatin-induced hearing loss by serial pure-tone audiometry (PMID 40233546); because drug and radiation ototoxicity are not separable in the anchors and late progression is under-captured, the conservative standard keeps the edge at association only, flags it PHARMACOLOGICAL_IATROGENIC with the radiation contribution carried openly, and routes individual claims through dated audiologic assessment with presbycusis, noise, and prior-ototoxic-exposure exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped explicitly as PHARMACOLOGICAL_IATROGENIC cisplatin ototoxicity with the radiation contribution carried openly: the prospective IMRT-plus-cisplatin study of 35 patients (82.9 percent oral cavity, oropharynx, or larynx primaries) found significant hearing loss in 37.1 percent with cochlear dose-response (Dmin below 14.4 Gy protective; PMID 35641273) and the 161-patient HNSCC cohort quantified cisplatin-induced hearing loss by serial pure-tone audiometry (PMID 40233546); drug and radiation ototoxicity are a composite endpoint not separable in the anchors, so individual claims route through dated audiologic assessment with presbycusis, noise, and prior-ototoxic-exposure exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "Both anchors deliver combined cisplatin-based chemoradiation so the drug-versus-radiation attribution is a composite endpoint not separable in the located data; the prospective series is small (35 patients) with a single-institution design and follow-up limited for late progressive ototoxicity; the comparative cohort contrasts infusion and hydration schedules rather than treated versus untreated groups; and presbycusis, occupational noise exposure, cerumen and middle-ear disease, and prior aminoglycoside or other ototoxic exposure compete for individual attribution."
+   ],
+   "sourceIds": [
+    "pmid-35641273",
+    "pmid-40233546"
+   ],
+   "sourceReferenceCount": 2,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "d47d36fe2f5ac000768857af3525a3ce0599428dcfc8903aca63de71f3252758"
+  },
+  {
+   "relationshipId": "rel-oral-cancer-to-hypothyroidism",
+   "primaryId": "oral-cancer",
+   "targetId": "hypothyroidism",
+   "direction": "oral-cancer -> hypothyroidism",
+   "primaryPublicationState": "draft",
+   "rank": 5,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY at trial-cohort secondary analysis plus dosimetric-observational class with the treatment-mediated and historical-technique limits carried openly: the JCOG1008 supplementary analysis found 16.7 percent developed grade 2 or higher hypothyroidism within two years after postoperative chemoradiotherapy with weekly cisplatin an independent risk factor (PMID 39111143) and the thyroid dosimetry study associated dose parameters with radiation-induced hypothyroidism (PMID 40026960); because the trial cohort predated thyroid dose constraints and the cisplatin estimate is wide on few events, the conservative standard keeps the edge at association only, flags it explicitly as treatment-mediated, and routes individual claims through dated thyroid-function testing with autoimmune, pre-existing-thyroid, and checkpoint-inhibitor exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY at trial-cohort secondary analysis plus dosimetric-observational class with the treatment-mediated and historical-technique limits carried openly: the JCOG1008 supplementary analysis found 16.7 percent developed grade 2 or higher hypothyroidism within two years after postoperative chemoradiotherapy with weekly cisplatin an independent risk factor (PMID 39111143) and the thyroid dosimetry study associated dose parameters with radiation-induced hypothyroidism (PMID 40026960); because the trial cohort predated thyroid dose constraints and the cisplatin estimate is wide on few events, the conservative standard keeps the edge at association only, flags it explicitly as treatment-mediated, and routes individual claims through dated thyroid-function testing with autoimmune, pre-existing-thyroid, and checkpoint-inhibitor exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped explicitly as POST_SURGICAL_OR_TREATMENT radiation-thyroid sequelae with the historical-technique limit carried openly: the JCOG1008 supplementary analysis found 16.7 percent developed grade 2 or higher hypothyroidism within two years after postoperative chemoradiotherapy with weekly cisplatin an independent risk factor (OR 7.70, wide CI 1.63-36.34; PMID 39111143) and the thyroid dosimetry study associated dose parameters with radiation-induced hypothyroidism (PMID 40026960); the trial cohort predated thyroid dose constraints and events were few, so individual claims route through dated thyroid-function testing with autoimmune, pre-existing-thyroid, and checkpoint-inhibitor exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "The trial cohort received no thyroid dose constraints so modern gland-sparing techniques may yield lower incidence; the weekly-cisplatin odds ratio rests on 27 events with a wide confidence interval (1.63-36.34); the analysis covers postoperative chemoradiotherapy for high-risk disease specifically; follow-up for late hypothyroidism beyond two years is limited; and Hashimoto thyroiditis, pre-existing thyroid dysfunction, iodine status, pituitary or hypothalamic causes from cranial irradiation, and immune-checkpoint-inhibitor thyroiditis compete for individual attribution."
+   ],
+   "sourceIds": [
+    "pmid-39111143",
+    "pmid-40026960"
+   ],
+   "sourceReferenceCount": 2,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "8cb38fe4ab06310c715c00761dbb06636693e4bb3a1daac6f860c635a8358ef1"
+  },
+  {
+   "relationshipId": "rel-oral-cancer-to-depressive-disorder",
+   "primaryId": "oral-cancer",
+   "targetId": "depressive-disorder",
+   "direction": "oral-cancer -> depressive-disorder",
+   "primaryPublicationState": "draft",
+   "rank": 6,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY at matched population-cohort plus systematic-review class with the coding-based ascertainment and overlapping-scope limits carried openly: the matched German primary care cohort found subsequent depression incidence elevated (HR 1.62) with tongue and metastatic disease strongest (PMID 42782416) and the oropharyngeal systematic review found high depressive-symptom burdens despite heterogeneous methods (PMID 42325174); because ascertainment is diagnosis-code based and the review population overlaps tongue rather than oral cavity scope, the conservative standard keeps the edge at association only and routes individual claims through dated psychiatric assessment with pre-existing, adjustment, thyroid, and medication exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY at matched population-cohort plus systematic-review class with the coding-based ascertainment and overlapping-scope limits carried openly: the matched German primary care cohort found subsequent depression incidence elevated (HR 1.62) with tongue and metastatic disease strongest (PMID 42782416) and the oropharyngeal systematic review found high depressive-symptom burdens despite heterogeneous methods (PMID 42325174); because ascertainment is diagnosis-code based and the review population overlaps tongue rather than oral cavity scope, the conservative standard keeps the edge at association only and routes individual claims through dated psychiatric assessment with pre-existing, adjustment, thyroid, and medication exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to MULTIFACTORIAL burden framing with the coding-ascertainment and overlapping-scope limits carried openly: the matched German primary care cohort (C00-C06 oral cavity coding; prior mental health excluded) found subsequent depression HR 1.62 with tongue cancer strongest (HR 2.05) and distant metastasis HR 2.59 (PMID 42782416) and the oropharyngeal depression systematic review found up to 47 percent depressive symptoms at 12 months despite heterogeneous methods (PMID 42325174); ascertainment is diagnosis-code based and the review population overlaps tongue rather than oral cavity scope, so individual claims route through dated psychiatric assessment with pre-existing, adjustment, thyroid (the companion edge, ME-29), and medication exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "The population cohort uses recorded diagnosis codes so depressive episodes without clinical contact are missed; prior mental-health exclusion improves specificity but residual confounding by alcohol, tobacco, and socioeconomic factors remains; the oropharyngeal review is heterogeneous (47 percent versus 14 percent at 12 months across studies) with overlapping tongue scope; depression may predate the cancer in the general population; and treatment-induced hypothyroidism (the companion edge in this file), medication effects, and adjustment disorder compete for individual attribution."
+   ],
+   "sourceIds": [
+    "pmid-42782416",
+    "pmid-42325174"
+   ],
+   "sourceReferenceCount": 2,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "47751d7a78f6d62659fc885179f1d8fff704b20e939061dfc94fef35feff8c60"
+  },
+  {
+   "relationshipId": "rel-oral-candidiasis-to-ageusia",
+   "primaryId": "oral-candidiasis",
+   "targetId": "ageusia",
+   "direction": "oral-candidiasis -> ageusia",
+   "primaryPublicationState": "draft",
+   "rank": 1,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY at single retrospective taste-clinic cohort class with the selected-population and subgroup limits carried openly: the 141-patient taste-disorder cohort found Candida-positive primary burning mouth patients with no normogeusia and significantly lower objective taste scores after age matching with hyposalivation co-segregating (PMID 41824080); because the cohort is conditioned on taste disturbance at presentation, the association was explicitly not universal, and hyposalivation may mediate or confound, the conservative standard keeps the edge at association only with the mechanism recorded as not established, and routes individual claims through dated gustologic and mycological assessment with salivary, nutritional, medication, and burning-mouth exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY at single retrospective taste-clinic cohort class with the selected-population and subgroup limits carried openly: the 141-patient taste-disorder cohort found Candida-positive primary burning mouth patients with no normogeusia and significantly lower objective taste scores after age matching with hyposalivation co-segregating (PMID 41824080); because the cohort is conditioned on taste disturbance at presentation, the association was explicitly not universal, and hyposalivation may mediate or confound, the conservative standard keeps the edge at association only with the mechanism recorded as not established, and routes individual claims through dated gustologic and mycological assessment with salivary, nutritional, medication, and burning-mouth exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to the subgroup taste-disorder cohort with the selected-population and mediation-ambiguity limits carried openly and mechanismCategory NOT_ESTABLISHED: the 141-patient taste-disorder cohort found Candida-positive primary burning mouth patients with no normogeusia and significantly lower objective taste scores after age matching with hyposalivation co-segregating (PMID 41824080); the cohort is conditioned on taste disturbance at presentation (no incidence derivable), the association was explicitly not universal, and candidal-irritation versus hyposalivation routes are unresolved, so individual claims route through dated gustologic and mycological assessment with salivary, nutritional, medication, and burning-mouth exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "The cohort is retrospective and conditioned on taste-disorder presentation so incidence of taste loss among candidiasis patients is unquantifiable from it; the Candida-taste association held only in specific subgroups and was explicitly not universal; stimulated salivary flow was reduced in Candida-positive groups so hyposalivation may mediate or confound; oral Candida culture positivity is not equivalent to clinical thrush; and burning mouth syndrome, nutritional deficiency, medication effects, dentures, and psychological distress compete for individual attribution."
+   ],
+   "sourceIds": [
+    "pmid-41824080"
+   ],
+   "sourceReferenceCount": 1,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "402ca9e7b34f41a99ad072a0058ff02fda97bfb764092b5f7069fe8f5fd5a6c4"
+  },
+  {
+   "relationshipId": "rel-orthostatic-hypotension-to-dizziness",
+   "primaryId": "orthostatic-hypotension",
+   "targetId": "dizziness",
+   "direction": "orthostatic-hypotension -> dizziness",
+   "primaryPublicationState": "draft",
+   "rank": 1,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY at international-consensus-diagnostic-criteria class with the definitional-boundary limit carried openly: the ICVD hemodynamic orthostatic dizziness and vertigo criteria, derived from 90 years of research by expert consensus, require positional dizziness episodes plus documented orthostatic hypotension, postural tachycardia syndrome, or syncope and explicitly attribute the symptom to global brain hypoperfusion (PMID 30883381); because the anchor is a criteria document without incidence quantification and orthostatic hypotension itself can be asymptomatic, the conservative standard keeps the edge at association only and routes individual claims through dated supine-to-standing blood pressure measurement with vestibular, anemic, medication, and arrhythmic exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY at international-consensus-diagnostic-criteria class with the definitional-boundary limit carried openly: the ICVD hemodynamic orthostatic dizziness and vertigo criteria, derived from 90 years of research by expert consensus, require positional dizziness episodes plus documented orthostatic hypotension, postural tachycardia syndrome, or syncope and explicitly attribute the symptom to global brain hypoperfusion (PMID 30883381); because the anchor is a criteria document without incidence quantification and orthostatic hypotension itself can be asymptomatic, the conservative standard keeps the edge at association only and routes individual claims through dated supine-to-standing blood pressure measurement with vestibular, anemic, medication, and arrhythmic exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to the ICVD hemodynamic hypoperfusion framing with the definitional-boundary limit carried openly: the Barany Society/ICVD diagnostic criteria for hemodynamic orthostatic dizziness/vertigo, derived by expert consensus from 90 years of research, require positional dizziness episodes plus documented orthostatic hypotension, postural tachycardia syndrome, or syncope and attribute the symptom to global brain hypoperfusion (PMID 30883381); the anchor is a criteria document without incidence quantification and orthostatic hypotension itself can be asymptomatic (dizziness is a consequence phenotype, not a defining feature), so individual claims route through dated supine-to-standing blood pressure measurement with vestibular, anemic, medication, and arrhythmic exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "The anchor is a consensus criteria document without incidence quantification; the criteria themselves acknowledge postural tachycardia syndrome and syncope as alternative documented hemodynamic substrates; orthostatic dizziness is common in older adults with multifactorial attribution; and vestibular disorders (benign paroxysmal positional vertigo, vestibular migraine), anemia, medication-induced orthostasis, arrhythmia, and presyncope versus true vertigo distinctions compete for individual attribution."
+   ],
+   "sourceIds": [
+    "pmid-30883381"
+   ],
+   "sourceReferenceCount": 1,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "d123e3ba5351bc9d96623f3029b780a8bd1c12e21b55ba882a486739467ba955"
+  },
+  {
+   "relationshipId": "rel-orthostatic-hypotension-to-cognitive-disorder",
+   "primaryId": "orthostatic-hypotension",
+   "targetId": "cognitive-disorder",
+   "direction": "orthostatic-hypotension -> cognitive-disorder",
+   "primaryPublicationState": "draft",
+   "rank": 2,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY at cross-posture systematic-review plus clinical-perspective class with the state-versus-trait and shared-substrate limits carried openly: the PROSPERO-registered systematic review found cognition worse upright than supine across multiple domains in orthostatic hypotension (PMID 42732657) and the older-adult orthostatic-disorder perspective frames the phenotype as impaired cardiovascular-cerebral reserve with cognitive consequences (PMID 42740891); because the review quantifies posture-dependent performance rather than incident cognitive disorder and shared neurodegenerative substrates produce both conditions, the conservative standard keeps the edge at association only and routes individual claims through dated neuropsychological assessment with neurodegenerative, vascular, medication, and mood exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY at cross-posture systematic-review plus clinical-perspective class with the state-versus-trait and shared-substrate limits carried openly: the PROSPERO-registered systematic review found cognition worse upright than supine across multiple domains in orthostatic hypotension (PMID 42732657) and the older-adult orthostatic-disorder perspective frames the phenotype as impaired cardiovascular-cerebral reserve with cognitive consequences (PMID 42740891); because the review quantifies posture-dependent performance rather than incident cognitive disorder and shared neurodegenerative substrates produce both conditions, the conservative standard keeps the edge at association only and routes individual claims through dated neuropsychological assessment with neurodegenerative, vascular, medication, and mood exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to MICROVASCULAR_METABOLIC cerebral-hypoperfusion framing with the state-versus-trait and shared-substrate limits carried openly: the cross-posture systematic review (eight studies) found cognition worse upright than supine across multiple domains in orthostatic hypotension (PMID 42732657) and the older-adult orthostatic-disorder perspective frames the phenotype as impaired cardiovascular-cerebral reserve with cognitive consequences (PMID 42740891); the review quantifies acute posture-dependent decrement rather than incident cognitive disorder and shared neurodegenerative substrates (Parkinson disease, dementia with Lewy bodies, multiple system atrophy) produce both conditions, so individual claims route through dated neuropsychological assessment with neurodegenerative, vascular, medication, and mood exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "The systematic review establishes acute upright cognitive decrement only, with the authors flagging heterogeneous tilt angles, durations, ambulation restrictions, and statistical methods across the eight studies; no longitudinal incident-dementia quantification was located in this pass; shared-substrate confounding is substantial (Parkinson disease, dementia with Lewy bodies, multiple system atrophy, and cerebrovascular disease produce both orthostatic hypotension and cognitive decline); medication burden (anticholinergics, sedatives, polypharmacy) is pervasive in affected populations; and depression, delirium, sleep disorders, and sensory impairment compete for individual attribution."
+   ],
+   "sourceIds": [
+    "pmid-42732657",
+    "pmid-42740891"
+   ],
+   "sourceReferenceCount": 2,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "00282cc3f600bc42e9b129763280ba89610db723a8f31b9b81670e512378a272"
   }
  ],
  "lastUpdatedBy": "batch-D1-draft-authoring",

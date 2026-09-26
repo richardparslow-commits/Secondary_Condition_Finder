@@ -3127,3 +3127,116 @@ scripts/apply-all-94-citation-verification.js pins `explicitPublicationGuards: 2
 one-time-migration guard count that shares the draft-singles token's value only by chance; its context
 matches no sweep predicate and mutating it would falsify that migration's record, so it stands.
 Standing recommendation: batch 63 lands through branch, PR, CI, and merge.
+
+## Mapping Expansion D1 batch 66 (2026-09-26)
+
+Mapping Expansion D1 batch 66 (2026-09-26) authored ten draft-quarantined relationships across four of
+the five screened identities - `oral-cancer` (6 edges), `orthostatic-hypotension` (2), `optic-atrophy`
+(1), and `oral-candidiasis` (1) - classified ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED,
+vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true, and conservative rationale and
+evidence-gap records on every suggestion. One identity was DEFERRED - `oral-hairy-leukoplakia`
+(DIRECTION-INVERSION with the HIV/immunosuppression-to-OHL sentinel evidence, SHARED-SUBSTRATE candidiasis
+coinfection, and no located downstream catalog outcome) - with reopening conditions recorded in its
+governance notes; it left the backlog queue by disposition.
+
+`oral-cancer` (6 edges): dysphagia (rank 1, POST_SURGICAL_OR_TREATMENT) rests on the radiation-associated
+dysphagia narrative review (malnutrition and aspiration consequences carried; PMID 42636603) and the
+151-study radiation oral-side-effects scoping review (PMID 41862928); ageusia (rank 2,
+POST_SURGICAL_OR_TREATMENT) rests on the prospective Waterless Empirical Taste Test cohort (17.3%
+relative taste-score decline at end of radiotherapy, umami -62.5%, tongue-dose correlation r=-0.62,
+incomplete recovery at 12 weeks; PMID 42294409) and the chemotherapy oral-manifestation meta-analysis
+(dysgeusia 49.62% pooled; PMID 41914550), with the taste-score-decline/dysgeusia endpoint limit carried
+openly under the Loss of Taste identity; oral-candidiasis (rank 3, POST_SURGICAL_OR_TREATMENT, explicitly
+treatment-mediated not malignant transformation) rests on the same meta-analysis (candidiasis 24.11%
+pooled) and the radiation scoping review; hearing-loss (rank 4, PHARMACOLOGICAL_IATROGENIC with the
+radiation contribution carried openly) rests on the prospective IMRT-plus-cisplatin audiometric study
+(37.1% significant hearing loss, cochlear Dmin <14.4 Gy protective; 82.9% oral cavity/oropharynx/larynx
+primaries; PMID 35641273) and the 161-patient HNSCC cisplatin chemoradiation cohort (PMID 40233546),
+with the drug-versus-radiation composite limit carried openly; hypothyroidism (rank 5,
+POST_SURGICAL_OR_TREATMENT) rests on the JCOG1008 supplementary analysis (16.7% grade >= 2 within two
+years after postoperative chemoradiotherapy; weekly cisplatin OR 7.70 with wide CI; no thyroid dose
+constraints; PMID 39111143) and the thyroid dosimetry observational study (PMID 40026960);
+depressive-disorder (rank 6, MULTIFACTORIAL) rests on the matched German primary care cohort (1,852
+C00-C06 patients versus 18,520 matched; prior mental health excluded; subsequent depression HR 1.62,
+tongue cancer HR 2.05, metastasis HR 2.59; PMID 42782416) and the oropharyngeal depression systematic
+review (up to 47% depressive symptoms at 12 months; PMID 42325174), with the overlapping tongue-scope
+limit carried openly.
+
+`orthostatic-hypotension` (2 edges): dizziness (rank 1, MICROVASCULAR_METABOLIC) rests on the Barany
+Society/ICVD hemodynamic orthostatic dizziness/vertigo diagnostic criteria (positional episodes plus
+documented orthostatic blood pressure failure; global brain hypoperfusion attribution; 90 years of
+research by expert consensus; PMID 30883381), with the constitutive boundary carried openly
+(orthostatic hypotension is hemodynamic and may be asymptomatic; dizziness is a consequence phenotype,
+not a defining feature) and an accepted single-reference quarantine warning; cognitive-disorder (rank 2,
+MICROVASCULAR_METABOLIC) rests on the cross-posture systematic review (eight studies; cognition worse
+upright across global, attention, executive, language, memory, and visuospatial domains; PMID 42732657)
+and the older-adult orthostatic-disorder perspective (impaired cardiovascular-cerebral reserve framing;
+PMID 42740891), with the state-versus-trait boundary (acute posture-dependent decrement, not incident
+disorder) and shared-substrate confounding (Parkinson disease, dementia with Lewy bodies, multiple system
+atrophy) carried openly.
+
+`optic-atrophy` (1 edge): visual-impairment (rank 1, NEUROLOGICAL_DEGENERATION) rests on the 155-eye
+non-glaucomatous optic atrophy cohort (48.4% at counting-fingers vision or worse; symptom-duration the
+sole independent severity predictor; PMID 42293699) and the chronic Leber archetypal perimetry analysis
+(220 fields; total-loss archetype 30%, concentrated in acuity non-recovery; PMID 42390170), with the
+acuity/field non-transposability limit carried openly and ME-29 discipline against the glaucoma and
+hypotension visual-impairment windows.
+
+`oral-candidiasis` (1 edge): ageusia (rank 1, mechanismCategory NOT_ESTABLISHED - the candidal-irritation
+versus hyposalivation routes are unresolved) rests on the 141-patient taste-disorder cohort stratified by
+burning mouth subtype and oral Candida culture status (Candida-positive primary BMS with no normogeusia
+and significantly lower objective taste scores after age matching; hyposalivation co-segregating; the
+authors' explicit non-universality caveat; PMID 41824080), with the selected-population limit carried
+openly (conditioned on taste disturbance at presentation; no incidence derivable) and an accepted
+single-reference quarantine warning.
+
+Withholdings and refusals recorded on the files: oral-cancer -> malnutrition-residuals WITHHELD as
+intermediate-chain duplication (the nutrition pathway is already carried through the registered
+dysphagia and ageusia malnutrition-residuals windows, ME-28/ME-29 family discipline); oral-cancer
+xerostomia, trismus, speech-disorder, and osteoradionecrosis recorded as withheld propositions with no
+catalog identities despite documented radiation sequelae; oral-cancer -> head-and-neck-cancers withheld
+on umbrella identity-duplication (the batch-42 deferral stands; the organ-site member owns its pathways);
+optic-atrophy -> color-blindness WITHHELD on semantic-mismatch plus constitutive-proximity (the identity
+is congenital color deficiency; acquired dyschromatopsia is a different construct and a defining optic-
+neuropathy feature) and -> blindness on identity-duplication with the visual-impairment edge;
+oral-candidiasis -> dysphagia WITHHELD (the classic esophageal-extension pathway has no catalog
+intermediate identity and the located candida-esophagitis review quantifies solid-organ cancer patients,
+not oral-candidiasis progression); orthostatic-hypotension -> falls recorded as a withheld proposition
+(no catalog identity despite dominant clinical burden), -> syncope WITHHELD on semantic-mismatch
+(vasovagal-syncope is reflex syncope; OH syncope is hemodynamic; generic syncope has no identity), and
+-> visual-impairment WITHHELD on ME-29 sibling-window discipline (orthostatic blurring is transient
+greying-out, not persistent impairment; the hypotension visual-impairment window keeps its own evidence).
+
+Pre-authoring verification: all 16 PMIDs passed the abstract pass (`/tmp/d1-abstract47.py` in four fetch
+groups), the esummary bibliographic pass with every citation re-verified against the PubMed record, and
+`node scripts/preflight-source-status.js --pmids ...` (16/16 checked, zero blocking flags, zero notes).
+The post-write structural self-audit passed for all five files (10 edges, 18 reference uses; two accepted
+single-ref warnings on oral-candidiasis->ageusia and orthostatic-hypotension->dizziness) and
+`npm run kb:validate` reports zero errors.
+
+Registry after lockstep: 716 relationships (642 explicit / 74 legacy), 1261 reference uses (383
+verified / 878 pending-verification), 1256 clinical / 5 legal uses, 1133 source entities (346 active /
+778 pending-verification). Within-batch shared sources - PMID 41862928 across the oral-cancer dysphagia
+and oral-candidiasis edges, PMID 41914550 across the oral-cancer ageusia and oral-candidiasis edges -
+give 18 reference uses over 16 new sources. Citation packet regenerated at 353 worksheets / 878
+reference rows = live citation debt; the verification dashboard regenerated at 878 rows in 37 reviewer
+batches (776 distinct sources). Backlog after batch 66: **160** undispositioned zero-edge drafts (165
+before the batch; four identities left by gaining edges and one by recorded deferral). Next-five:
+`osgood-schlatter-disease`, `osteopenia`, `otitis-externa`, `otosclerosis`, `ovarian-cysts`.
+
+Structural-debt note: batch-66 edges produced zero new CRG findings - the analyzer reports review-class
+13 against baseline 13 and redundancy 28 against baseline 28 unchanged after the ten edges landed, so
+the batch-63 review-baseline re-pin stands without adjustment. The sibling-triangle tolerance noted in
+batch 65 (apathy/anxiety -> depression double-targeting) remains open as a semantics question for a
+follow-up before more sibling-triangle edges accumulate.
+
+Test-pin note: the sweep touched 54 files and replaced 316 counter tokens in one pass with the batch-65
+per-token context predicates carried over unchanged (relationships 706 -> 716, references/uses 1243 ->
+1261, unverified 860 -> 878, pending source entities 762 -> 778, total source entities 1117 -> 1133,
+explicit guards 632 -> 642, clinical references 1238 -> 1256, clinical provenance 1242 -> 1260, and the
+draft-singles counter 279 -> 281 for this batch's two single-suggestion identities `optic-atrophy` and
+`oral-candidiasis`). The explicit fixture token continued to carry the citation-decay-gate debt fixture
+automatically (860 -> 878) - sixth consecutive batch with no manual fixture bump. Residue clean outside
+the standing benign coincidences (apply-all-94's historical `explicitPublicationGuards: 273`; wave-5's
+`toBeGreaterThanOrEqual(276)` catalog floor; legal-copy's `38 U.S.C. § 1117` statute text).
+Standing recommendation: batch 66 lands through branch, PR, CI, and merge.

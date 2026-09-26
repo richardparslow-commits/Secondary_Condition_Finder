@@ -2,8 +2,112 @@
   "id": "orthostatic-hypotension",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review hemodynamic, vascular, thrombotic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 66 (2026-09-26): two ASSOCIATION_ONLY draft mappings pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: both edges assert association only (etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true, mechanismCategory MICROVASCULAR_METABOLIC). The evidence base is one international-consensus criteria document plus one cross-posture systematic review and one clinical perspective, so individual claims require dated supine-to-standing hemodynamic documentation and neuropsychological assessment with competing-cause exclusion, and review by a qualified medical professional.",
+    "Pathway and duplicate-scope screens: no -> falls edge (withheld proposition - falls are the clinically dominant downstream harm of orthostatic hypotension and the located literature quantifies them (timing of orthostatic blood pressure changes and falls at very old ages; falls-risk cohorts) but the catalog holds no falls identity; recorded here, not as a deferred identity); no -> syncope edge (SEMANTIC-MISMATCH - the catalog identity is vasovagal-syncope, a reflex-syncope entity, while orthostatic-hypotension syncope is hemodynamic (documented in the ICVD criteria as a separate substrate); a hemodynamic-syncope pathway cannot be authored against a vasovagal identity; generic syncope has no catalog identity (withheld proposition)); no -> visual-impairment edge (ME-29 plus semantic boundary - orthostatic visual blurring is transient hypoperfusion (greying-out) rather than the persistent acuity/field impairment identity, and the published hypotension visual-impairment window already carries hypoperfusion-visual evidence from a sibling identity and is not recycled; the Brain 2009 hypoperfusion-symptom review documents the transient graying-out progression (PMID 19587129)); sibling-window discipline - the published hypotension to visual-impairment window (MICROVASCULAR_METABOLIC hypoperfusion precedent) is a sibling identity's evidence and was NOT recycled per ME-29; all evidence carried on this file's edges is orthostatic-hypotension-specific; direction discipline - anchors establish association and posture-dependence only, no forward causal direction asserted."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 66 (2026-09-26): two bounded association edges authored - orthostatic-hypotension to dizziness (rank 1) and to cognitive-disorder (rank 2) - classified ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, and hypothesizedOnly:true. The dizziness proposition rests on the Barany Society/ICVD hemodynamic orthostatic dizziness and vertigo diagnostic criteria requiring documented orthostatic blood pressure failure and attributing symptoms to global brain hypoperfusion (PMID 30883381). The cognitive-disorder proposition rests on the cross-posture systematic review (eight studies; cognition worse upright across multiple domains; PMID 42732657) and the older-adult orthostatic-disorder perspective (impaired cardiovascular-cerebral reserve framing; PMID 42740891).",
+    "Counter-evidence and caveat screens recorded 2026-09-26: (i) constitutive boundary - orthostatic hypotension is defined hemodynamically and may be asymptomatic, so dizziness is carried as a consequence phenotype with the ICVD criteria requiring documented blood pressure failure to exclude vestibular mimics; (ii) state-versus-trait - the cognitive edge carries acute posture-dependent decrement openly and supports chronic-disorder framing only at perspective level; (iii) shared substrate - Parkinson disease, dementia with Lewy bodies, multiple system atrophy, and cerebrovascular disease produce both orthostatic hypotension and cognitive decline, so the shared-substrate alternative is primary among exclusions; (iv) withheld propositions - falls (no catalog identity despite dominant clinical burden), hemodynamic syncope (vasovagal-syncope is a reflex entity; generic syncope has no identity), and orthostatic visual blurring (transient hypoperfusion, ME-29 sibling-window discipline with the published hypotension visual-impairment window); (v) evidence-class discipline - the dizziness anchor is a consensus criteria document without incidence quantification and the cognitive anchor set is eight small cross-posture studies per the authors' own limitations."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "dizziness",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Orthostatic hypotension is the documented hemodynamic substrate of orthostatic dizziness at international-consensus diagnostic-criteria level: the Barany Society and ICVD diagnostic criteria for hemodynamic orthostatic dizziness and vertigo, derived by expert consensus from an extensive review of 90 years of research, require five or more episodes of dizziness, unsteadiness, or vertigo triggered by arising or present during upright position and subsiding with sitting or lying down together with orthostatic hypotension, postural tachycardia syndrome, or syncope documented on standing or head-up tilt, explicitly attributing the symptom to global brain hypoperfusion and distinguishing it from other etiologies (PMID 30883381); recorded as documented association only with the constitutive-boundary screen carried openly.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: orthostatic hypotension is defined hemodynamically (a blood pressure fall on standing) and can be fully asymptomatic, so dizziness is a consequence phenotype rather than a defining feature, and individual claims require dated supine-to-standing blood pressure documentation with vestibular, medication, and arrhythmic exclusion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MICROVASCULAR_METABOLIC",
+        "primaryVector": "Cerebral hypoperfusion on standing from impaired blood pressure autoregulation drives transient global brain hypoperfusion so orthostatic dizziness and unsteadiness result, the hypoperfusion route explicitly named in the consensus criteria (hemodynamic orthostatic dizziness distinguished from other etiologies by documented orthostatic blood pressure failure), but whether this route produced any individual dizziness remains hypothesized until tilt-table and ambulatory records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at international consensus diagnostic-criteria class only: the anchor is an expert-consensus criteria document rather than a quantifying cohort, so no incidence or relative risk is carried from it, and the criteria deliberately require documented orthostatic blood pressure failure to exclude vestibular and other causes, meaning the association is definitional-adjacent and boundary discipline is carried openly.",
+        "evidenceGaps": "The anchor is a consensus criteria document without incidence quantification; the criteria themselves acknowledge postural tachycardia syndrome and syncope as alternative documented hemodynamic substrates; orthostatic dizziness is common in older adults with multifactorial attribution; and vestibular disorders (benign paroxysmal positional vertigo, vestibular migraine), anemia, medication-induced orthostasis, arrhythmia, and presyncope versus true vertigo distinctions compete for individual attribution.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "vestibular disorders (BPPV, vestibular migraine, neuritis)",
+          "postural tachycardia syndrome as a distinct documented substrate (the ICVD criteria name it separately)",
+          "anemia and volume depletion",
+          "medication-induced orthostasis (antihypertensives, alpha-blockers, nitrates)",
+          "cardiac arrhythmia and presyncope mimics"
+        ]
+      },
+      "evidenceGaps": [
+        "The anchor is a consensus criteria document without incidence quantification; the criteria themselves acknowledge postural tachycardia syndrome and syncope as alternative documented hemodynamic substrates; orthostatic dizziness is common in older adults with multifactorial attribution; and vestibular disorders (benign paroxysmal positional vertigo, vestibular migraine), anemia, medication-induced orthostasis, arrhythmia, and presyncope versus true vertigo distinctions compete for individual attribution."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY at international-consensus-diagnostic-criteria class with the definitional-boundary limit carried openly: the ICVD hemodynamic orthostatic dizziness and vertigo criteria, derived from 90 years of research by expert consensus, require positional dizziness episodes plus documented orthostatic hypotension, postural tachycardia syndrome, or syncope and explicitly attribute the symptom to global brain hypoperfusion (PMID 30883381); because the anchor is a criteria document without incidence quantification and orthostatic hypotension itself can be asymptomatic, the conservative standard keeps the edge at association only and routes individual claims through dated supine-to-standing blood pressure measurement with vestibular, anemic, medication, and arrhythmic exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Kim HA, Bisdorff A, Bronstein AM, et al. Hemodynamic orthostatic dizziness/vertigo: Diagnostic criteria J Vestib Res. 2019;29(2-3):45-56. PMID 30883381.",
+          "note": "Barany Society / ICVD diagnostic criteria for hemodynamic orthostatic dizziness/vertigo (J Vestib Res 2019; expert consensus from extensive review of 90 years of research): definite criteria require >= 5 episodes of dizziness/unsteadiness/vertigo triggered by arising or upright posture subsiding with sitting/lying, plus orthostatic hypotension, POTS, or syncope documented on standing or head-up tilt, and no better account; symptom attributed to global brain hypoperfusion; probable criteria add accompanying blurred vision, difficulty thinking, weakness, or tachycardia; supports the bounded hypoperfusion-symptom association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/30883381/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 30883381; diagnostic criteria (definite and probable hemodynamic orthostatic dizziness)"
+        }
+      ]
+    },
+    {
+      "conditionId": "cognitive-disorder",
+      "rank": 2,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Orthostatic hypotension documents cognitive impairment at systematic-review and clinical-perspective level: the systematic review of upright posture effects on cognition in orthostatic hypotension (PROSPERO CRD42025649093; eight studies with cognitive testing in both postures) found cognitive function significantly worse upright than supine across global function, attention and processing speed, executive function, language, memory and learning, and visuospatial domains (PMID 42732657), and the clinical perspective on orthostatic blood pressure disorders in older adults frames these disorders as markers of impaired cardiovascular-cerebral reserve with implications for cerebral perfusion, cognition, and functional status and potential to reduce falls and cognitive complications with recognition (PMID 42740891); recorded as documented association only with the state-versus-trait boundary carried openly.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: the systematic review establishes posture-dependent cognitive decrement (state) rather than a diagnosed persistent cognitive disorder (trait), the chronic-disorder framing is supported at perspective level only, and shared neurodegenerative substrates (Parkinson disease, dementia with Lewy bodies, multiple system atrophy) cause both orthostatic hypotension and cognitive decline, so individual claims require dated neuropsychological assessment with neurodegenerative, vascular, and medication exclusion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MICROVASCULAR_METABOLIC",
+        "primaryVector": "Repeated and sustained cerebral hypoperfusion during upright posture drives transient cognitive performance decrements and, hypothesized over longer exposure, increased vulnerability to cognitive decline so cognitive impairment results, the hypoperfusion route supported by the cross-posture cognitive differences in the systematic review and the cardiovascular-cerebral reserve framing of the perspective, but whether this route produced any individual cognitive disorder remains hypothesized until neuropsychological and hemodynamic records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at systematic review of eight cross-posture studies plus clinical-perspective class only: the review quantifies acute posture-dependent performance differences rather than incident cognitive disorder, study methods varied (tilt angles, durations, ambulation, statistics) per the authors' own limitations, and no longitudinal cohort quantifying dementia incidence in orthostatic hypotension was located in this pass.",
+        "evidenceGaps": "The systematic review establishes acute upright cognitive decrement only, with the authors flagging heterogeneous tilt angles, durations, ambulation restrictions, and statistical methods across the eight studies; no longitudinal incident-dementia quantification was located in this pass; shared-substrate confounding is substantial (Parkinson disease, dementia with Lewy bodies, multiple system atrophy, and cerebrovascular disease produce both orthostatic hypotension and cognitive decline); medication burden (anticholinergics, sedatives, polypharmacy) is pervasive in affected populations; and depression, delirium, sleep disorders, and sensory impairment compete for individual attribution.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "shared neurodegenerative substrate (Parkinson disease, dementia with Lewy bodies, multiple system atrophy - both orthostatic hypotension and cognitive decline are manifestations)",
+          "cerebrovascular disease and vascular cognitive impairment",
+          "depression-related cognitive complaints",
+          "medication effects (anticholinergics, sedatives, polypharmacy)",
+          "delirium and acute illness effects"
+        ]
+      },
+      "evidenceGaps": [
+        "The systematic review establishes acute upright cognitive decrement only, with the authors flagging heterogeneous tilt angles, durations, ambulation restrictions, and statistical methods across the eight studies; no longitudinal incident-dementia quantification was located in this pass; shared-substrate confounding is substantial (Parkinson disease, dementia with Lewy bodies, multiple system atrophy, and cerebrovascular disease produce both orthostatic hypotension and cognitive decline); medication burden (anticholinergics, sedatives, polypharmacy) is pervasive in affected populations; and depression, delirium, sleep disorders, and sensory impairment compete for individual attribution."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY at cross-posture systematic-review plus clinical-perspective class with the state-versus-trait and shared-substrate limits carried openly: the PROSPERO-registered systematic review found cognition worse upright than supine across multiple domains in orthostatic hypotension (PMID 42732657) and the older-adult orthostatic-disorder perspective frames the phenotype as impaired cardiovascular-cerebral reserve with cognitive consequences (PMID 42740891); because the review quantifies posture-dependent performance rather than incident cognitive disorder and shared neurodegenerative substrates produce both conditions, the conservative standard keeps the edge at association only and routes individual claims through dated neuropsychological assessment with neurodegenerative, vascular, medication, and mood exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Ramraj O, Perfetto SE, Ryoo S, et al. Impact of upright posture on cognitive function in orthostatic hypotension: A systematic review Auton Neurosci. 2026 Sep 8;268:103492. PMID 42732657.",
+          "note": "Systematic review (PROSPERO CRD42025649093; Auton Neurosci 2026) of upright posture effects on cognitive function in orthostatic hypotension: eight studies with cognitive testing in both postures included; cognitive function worse upright than supine across global function, attention and processing speed, executive function, language, memory and learning, and visuospatial skills; authors flag limitations in tilt angles, durations, ambulation restrictions, and statistics; supports the bounded posture-dependent cognition association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42732657/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 42732657; review findings (cross-posture cognitive domain comparisons)"
+        },
+        {
+          "citation": "Kabaklić A, Mušić T. Orthostatic blood pressure disorders in older adults: clinical phenotypes, diagnostic challenges, and cognitive and functional implications J Geriatr Cardiol. 2026 Jul 28;23(7):474-489. PMID 42740891.",
+          "note": "Clinical perspective on orthostatic blood pressure disorders in older adults (J Geriatr Cardiol 2026): orthostatic hypotension, supine hypertension, orthostatic hypertension, and postprandial hypotension frequently coexist and fluctuate, reflecting impaired physiological reserve; implications for cerebral perfusion, cognition, and functional status; framed as markers of impaired cardiovascular-cerebral reserve whose recognition may reduce falls and cognitive complications; supports the bounded chronic-vulnerability framing only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42740891/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 42740891; perspective scope (cognitive and functional implications)"
+        }
+      ]
+    }
+  ]
 }

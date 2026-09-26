@@ -16,16 +16,16 @@
   "citationPromotionMustAtomicallyUpdateKbAndMasterSourceState": true
  },
  "counts": {
-  "liveSourceReferenceUses": 1243,
+  "liveSourceReferenceUses": 1261,
   "activeSourceEntities": 346,
-  "pendingVerificationSourceEntities": 762,
+  "pendingVerificationSourceEntities": 778,
   "activeClinicalSourceEntities": 345,
-  "pendingClinicalSourceEntities": 762,
+  "pendingClinicalSourceEntities": 778,
   "activeLegalAuthorityEntities": 1,
   "retiredOnlySourceEntities": 1,
   "supersededUnverifiedSourceEntities": 7,
   "bibliographicCorrectionOnlyEntities": 1,
-  "totalSourceEntitiesIncludingLineage": 1117,
+  "totalSourceEntitiesIncludingLineage": 1133,
   "retiredVerifiedRelationshipSourceUses": 6
  },
  "retirementLedger": {
@@ -41327,6 +41327,580 @@
    "retiredUses": [],
    "rawReferenceHashes": [
     "ed861bd4b11310fb38fe396caba5966da9e768c596679b502d25aef221c55433"
+   ]
+  },
+  {
+   "sourceId": "pmid-42293699",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "42293699",
+   "doi": null,
+   "canonicalCitation": "Sharifi M, Zand A, Sharifi M, et al. Etiologic spectrum and predictors of visual acuity in non-glaucomatous optic atrophy SAGE Open Med. 2026;14:20503121261461345. PMID 42293699.",
+   "citationVariants": [
+    "Sharifi M, Zand A, Sharifi M, et al. Etiologic spectrum and predictors of visual acuity in non-glaucomatous optic atrophy SAGE Open Med. 2026;14:20503121261461345. PMID 42293699."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42293699/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/42293699/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-optic-atrophy-to-visual-impairment",
+     "primaryId": "optic-atrophy",
+     "targetId": "visual-impairment",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "90e5fd663c2ab6a771e5d9982b81f49d9611aeaae2911cefaa29ac66ae80eecb"
+   ]
+  },
+  {
+   "sourceId": "pmid-42390170",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "42390170",
+   "doi": null,
+   "canonicalCitation": "Coutinho CP, Zanchetta F, Carbonelli M, et al. Archetypal Visual Field Analysis of Patients With Chronic Leber Hereditary Optic Neuropathy in Relation to Visual Recovery Invest Ophthalmol Vis Sci. 2026 Jul 1;67(8):8. PMID 42390170.",
+   "citationVariants": [
+    "Coutinho CP, Zanchetta F, Carbonelli M, et al. Archetypal Visual Field Analysis of Patients With Chronic Leber Hereditary Optic Neuropathy in Relation to Visual Recovery Invest Ophthalmol Vis Sci. 2026 Jul 1;67(8):8. PMID 42390170."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42390170/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/42390170/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-optic-atrophy-to-visual-impairment",
+     "primaryId": "optic-atrophy",
+     "targetId": "visual-impairment",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "f3b8f176d021da780389455996c864a23b9aacf8e202514ea3d98fdbf867262f"
+   ]
+  },
+  {
+   "sourceId": "pmid-42636603",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "42636603",
+   "doi": null,
+   "canonicalCitation": "Bradshaw J, Tardif J, Lott DG, et al. Radiation-associated dysphagia in head and neck cancer: A narrative review of surgical management, diagnosis, and emerging directions Oral Oncol. 2026 Oct;181:108118. PMID 42636603.",
+   "citationVariants": [
+    "Bradshaw J, Tardif J, Lott DG, et al. Radiation-associated dysphagia in head and neck cancer: A narrative review of surgical management, diagnosis, and emerging directions Oral Oncol. 2026 Oct;181:108118. PMID 42636603."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42636603/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/42636603/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-oral-cancer-to-dysphagia",
+     "primaryId": "oral-cancer",
+     "targetId": "dysphagia",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "cd9ad64f20dbcfb3a0a40ef61b89e3f16c795342489a7f881f1ce9996effdfa7"
+   ]
+  },
+  {
+   "sourceId": "pmid-41862928",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "41862928",
+   "doi": "10.1186/s12903-026-08100-4",
+   "canonicalCitation": "Gerlach T, Brunello G, Tenbrink C, et al. Radiation-induced oral side effects in head and neck cancer: a scoping review and interdisciplinary recommendations BMC Oral Health. 2026 Mar 21;26(1).doi: 10.1186/s12903-026-08100-4. PMID 41862928.",
+   "citationVariants": [
+    "Gerlach T, Brunello G, Tenbrink C, et al. Radiation-induced oral side effects in head and neck cancer: a scoping review and interdisciplinary recommendations BMC Oral Health. 2026 Mar 21;26(1).doi: 10.1186/s12903-026-08100-4. PMID 41862928."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41862928/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/41862928/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 2,
+   "liveUses": [
+    {
+     "relationshipId": "rel-oral-cancer-to-dysphagia",
+     "primaryId": "oral-cancer",
+     "targetId": "dysphagia",
+     "sourceIndex": 1
+    },
+    {
+     "relationshipId": "rel-oral-cancer-to-oral-candidiasis",
+     "primaryId": "oral-cancer",
+     "targetId": "oral-candidiasis",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "b6fb61ac4ec0659a8dacfe251a144f6cd3dabfdb993b324d7f6715c3f61115b5",
+    "9f602ae8cc748daf3889c06652da4c46ad52ad7d68ff27017f61277d67ac3bd2"
+   ]
+  },
+  {
+   "sourceId": "pmid-42294409",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "42294409",
+   "doi": null,
+   "canonicalCitation": "Yarlagadda S, Maharaj A, Nong T, et al. Time Course and Determinants of Acute Dysgeusia in Patients Receiving Head and Neck Radiation Therapy Adv Radiat Oncol. 2026 Aug;11(8):102054. PMID 42294409.",
+   "citationVariants": [
+    "Yarlagadda S, Maharaj A, Nong T, et al. Time Course and Determinants of Acute Dysgeusia in Patients Receiving Head and Neck Radiation Therapy Adv Radiat Oncol. 2026 Aug;11(8):102054. PMID 42294409."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42294409/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/42294409/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-oral-cancer-to-ageusia",
+     "primaryId": "oral-cancer",
+     "targetId": "ageusia",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "ffba3bb1cb0a3af719bb380bc2b7cdc6b41dd7563bf34bc165d7ca1942d65ed5"
+   ]
+  },
+  {
+   "sourceId": "pmid-41914550",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "41914550",
+   "doi": null,
+   "canonicalCitation": "Filho VFDS, Motta LRDD, Abreu LG, et al. Prevalence of Oral Manifestations in Individuals Undergoing Chemotherapy: Systematic Review and Meta-Analysis Spec Care Dentist. 2026 Mar-Apr;46(2):e70168. PMID 41914550.",
+   "citationVariants": [
+    "Filho VFDS, Motta LRDD, Abreu LG, et al. Prevalence of Oral Manifestations in Individuals Undergoing Chemotherapy: Systematic Review and Meta-Analysis Spec Care Dentist. 2026 Mar-Apr;46(2):e70168. PMID 41914550."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41914550/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/41914550/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 2,
+   "liveUses": [
+    {
+     "relationshipId": "rel-oral-cancer-to-ageusia",
+     "primaryId": "oral-cancer",
+     "targetId": "ageusia",
+     "sourceIndex": 1
+    },
+    {
+     "relationshipId": "rel-oral-cancer-to-oral-candidiasis",
+     "primaryId": "oral-cancer",
+     "targetId": "oral-candidiasis",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "1491a74c8e38bc2287c326e02526567cb1a8e64e6dc18903c5ec0ebb3589f352",
+    "d39d198db8258c2ed68709211aa9b1a2a0cc8e99ed0d6b953f83f7bae8759780"
+   ]
+  },
+  {
+   "sourceId": "pmid-35641273",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "35641273",
+   "doi": null,
+   "canonicalCitation": "Musio D, DE Vincentiis M, D'Urso P, et al. Hearing Loss After Cisplatin-based Chemoradiotherapy for Locally Advanced Head and Neck Cancer: A Prospective Single-institution Study Anticancer Res. 2022 Jun;42(6):3003-3009. PMID 35641273.",
+   "citationVariants": [
+    "Musio D, DE Vincentiis M, D'Urso P, et al. Hearing Loss After Cisplatin-based Chemoradiotherapy for Locally Advanced Head and Neck Cancer: A Prospective Single-institution Study Anticancer Res. 2022 Jun;42(6):3003-3009. PMID 35641273."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35641273/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/35641273/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-oral-cancer-to-hearing-loss",
+     "primaryId": "oral-cancer",
+     "targetId": "hearing-loss",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "60f74a0b1bb8148f6cba9f1af4af908c89f886d0d90e67329bb2a1d9732b4ee4"
+   ]
+  },
+  {
+   "sourceId": "pmid-40233546",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "40233546",
+   "doi": null,
+   "canonicalCitation": "Burger AVM, Koot MA, van Balen DEM, et al. Comparison of cisplatin-induced hearing loss in different durations of infusion and volume of hydration schedules in head and neck squamous cell carcinoma patients treated with cisplatin-based chemoradiation Oral Oncol. 2025 May;164:107246. PMID 40233546.",
+   "citationVariants": [
+    "Burger AVM, Koot MA, van Balen DEM, et al. Comparison of cisplatin-induced hearing loss in different durations of infusion and volume of hydration schedules in head and neck squamous cell carcinoma patients treated with cisplatin-based chemoradiation Oral Oncol. 2025 May;164:107246. PMID 40233546."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40233546/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/40233546/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-oral-cancer-to-hearing-loss",
+     "primaryId": "oral-cancer",
+     "targetId": "hearing-loss",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "6fa305c6fcd1db8db55de6f4744340ba5a348210c62714a7c0ee1dd3578f7e40"
+   ]
+  },
+  {
+   "sourceId": "pmid-39111143",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "39111143",
+   "doi": null,
+   "canonicalCitation": "Shimizu H, Kodaira T, Kiyota N, et al. Incidence and risk factors associated with the development of hypothyroidism after postoperative chemoradiotherapy for head and neck cancer patients with high-risk features: Supplementary analysis of JCOG1008 Oral Oncol. 2024 Oct;157:106976. PMID 39111143.",
+   "citationVariants": [
+    "Shimizu H, Kodaira T, Kiyota N, et al. Incidence and risk factors associated with the development of hypothyroidism after postoperative chemoradiotherapy for head and neck cancer patients with high-risk features: Supplementary analysis of JCOG1008 Oral Oncol. 2024 Oct;157:106976. PMID 39111143."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39111143/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/39111143/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-oral-cancer-to-hypothyroidism",
+     "primaryId": "oral-cancer",
+     "targetId": "hypothyroidism",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "d2c01bb43c5a2c993a8e094372c33ccaf409b1b44badab5c37bfbce1ae00cf6a"
+   ]
+  },
+  {
+   "sourceId": "pmid-40026960",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "40026960",
+   "doi": null,
+   "canonicalCitation": "Sen K, Maji T, Lahiri D, et al. Thyroid Dosimetry and Its Association With Radiation-Induced Hypothyroidism in Head and Neck Cancer Patients Treated With Conformal Radiotherapy: An Observational Study Cureus. 2025 Jan;17(1):e78220. PMID 40026960.",
+   "citationVariants": [
+    "Sen K, Maji T, Lahiri D, et al. Thyroid Dosimetry and Its Association With Radiation-Induced Hypothyroidism in Head and Neck Cancer Patients Treated With Conformal Radiotherapy: An Observational Study Cureus. 2025 Jan;17(1):e78220. PMID 40026960."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40026960/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/40026960/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-oral-cancer-to-hypothyroidism",
+     "primaryId": "oral-cancer",
+     "targetId": "hypothyroidism",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "edcf474357899596dedbf32ffc6c95f0ff21f5b00d8ebf0ccc579dc5900cf20a"
+   ]
+  },
+  {
+   "sourceId": "pmid-42782416",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "42782416",
+   "doi": "10.1007/s00784-026-07158-2",
+   "canonicalCitation": "Cirkel LL, Wöstmann B, Kostev K. Subsequent depression in patients with lip and head and neck cancer: a population-based primary care analysis Clin Oral Investig. 2026 Sep 24;30(10).pii: 461. doi: 10.1007/s00784-026-07158-2. PMID 42782416.",
+   "citationVariants": [
+    "Cirkel LL, Wöstmann B, Kostev K. Subsequent depression in patients with lip and head and neck cancer: a population-based primary care analysis Clin Oral Investig. 2026 Sep 24;30(10).pii: 461. doi: 10.1007/s00784-026-07158-2. PMID 42782416."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42782416/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/42782416/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-oral-cancer-to-depressive-disorder",
+     "primaryId": "oral-cancer",
+     "targetId": "depressive-disorder",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "16d4a914317af741159febec94c1ac1bd28ad4a78dd3fe13f2a83d75cf3bbb43"
+   ]
+  },
+  {
+   "sourceId": "pmid-42325174",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "42325174",
+   "doi": null,
+   "canonicalCitation": "Salskov I, Kibsgaard CJ, Carlander AF, et al. Development of depression in patients with oropharyngeal cancer: a systematic review Acta Otorhinolaryngol Ital. 2026 Jun;46(3):161-171. PMID 42325174.",
+   "citationVariants": [
+    "Salskov I, Kibsgaard CJ, Carlander AF, et al. Development of depression in patients with oropharyngeal cancer: a systematic review Acta Otorhinolaryngol Ital. 2026 Jun;46(3):161-171. PMID 42325174."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42325174/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/42325174/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-oral-cancer-to-depressive-disorder",
+     "primaryId": "oral-cancer",
+     "targetId": "depressive-disorder",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "6354810aa7cae283b03e1f1ce03984e41848a266a9be4eb2a93236808fe8a50f"
+   ]
+  },
+  {
+   "sourceId": "pmid-41824080",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "41824080",
+   "doi": "10.1007/s00784-026-06816-9",
+   "canonicalCitation": "Kim SM, Kho HS. Clinical and gustatory features in taste disorder patients based on oral Candida culture status Clin Oral Investig. 2026 Mar 13;30(4).doi: 10.1007/s00784-026-06816-9. PMID 41824080.",
+   "citationVariants": [
+    "Kim SM, Kho HS. Clinical and gustatory features in taste disorder patients based on oral Candida culture status Clin Oral Investig. 2026 Mar 13;30(4).doi: 10.1007/s00784-026-06816-9. PMID 41824080."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41824080/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/41824080/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-oral-candidiasis-to-ageusia",
+     "primaryId": "oral-candidiasis",
+     "targetId": "ageusia",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "f6f435d024ef97c33d8b841a77cd8ea0bbffa087e59175bf7842427972d5f707"
+   ]
+  },
+  {
+   "sourceId": "pmid-30883381",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "30883381",
+   "doi": null,
+   "canonicalCitation": "Kim HA, Bisdorff A, Bronstein AM, et al. Hemodynamic orthostatic dizziness/vertigo: Diagnostic criteria J Vestib Res. 2019;29(2-3):45-56. PMID 30883381.",
+   "citationVariants": [
+    "Kim HA, Bisdorff A, Bronstein AM, et al. Hemodynamic orthostatic dizziness/vertigo: Diagnostic criteria J Vestib Res. 2019;29(2-3):45-56. PMID 30883381."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/30883381/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/30883381/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-orthostatic-hypotension-to-dizziness",
+     "primaryId": "orthostatic-hypotension",
+     "targetId": "dizziness",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "50cad13976f939cb82d3d54845293dd99880a581c9cfda9e6a64fce88a7e5585"
+   ]
+  },
+  {
+   "sourceId": "pmid-42732657",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "42732657",
+   "doi": null,
+   "canonicalCitation": "Ramraj O, Perfetto SE, Ryoo S, et al. Impact of upright posture on cognitive function in orthostatic hypotension: A systematic review Auton Neurosci. 2026 Sep 8;268:103492. PMID 42732657.",
+   "citationVariants": [
+    "Ramraj O, Perfetto SE, Ryoo S, et al. Impact of upright posture on cognitive function in orthostatic hypotension: A systematic review Auton Neurosci. 2026 Sep 8;268:103492. PMID 42732657."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42732657/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/42732657/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-orthostatic-hypotension-to-cognitive-disorder",
+     "primaryId": "orthostatic-hypotension",
+     "targetId": "cognitive-disorder",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "1934c18361895c9a9c4a3eeac49bd8c6b686f079e51514a937c46ebab3eedfe1"
+   ]
+  },
+  {
+   "sourceId": "pmid-42740891",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "42740891",
+   "doi": null,
+   "canonicalCitation": "Kabaklić A, Mušić T. Orthostatic blood pressure disorders in older adults: clinical phenotypes, diagnostic challenges, and cognitive and functional implications J Geriatr Cardiol. 2026 Jul 28;23(7):474-489. PMID 42740891.",
+   "citationVariants": [
+    "Kabaklić A, Mušić T. Orthostatic blood pressure disorders in older adults: clinical phenotypes, diagnostic challenges, and cognitive and functional implications J Geriatr Cardiol. 2026 Jul 28;23(7):474-489. PMID 42740891."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42740891/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/42740891/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-orthostatic-hypotension-to-cognitive-disorder",
+     "primaryId": "orthostatic-hypotension",
+     "targetId": "cognitive-disorder",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "a3c21ce488894c1d3e2b75301ebb996835a532de435975a8119fb13f8b4164d8"
    ]
   }
  ],
