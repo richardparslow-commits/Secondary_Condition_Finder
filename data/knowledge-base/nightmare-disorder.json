@@ -2,8 +2,68 @@
   "id": "nightmare-disorder",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review psychiatric, neuropsychiatric, medication-related, and sleep-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 64 (2026-09-26): one ASSOCIATION_ONLY draft mapping pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: the edge asserts association only (etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true, mechanismCategory PSYCHOPHYSIOLOGICAL). The evidence base is one disaster-exposed longitudinal cohort plus one heterogeneous systematic review with bidirectional signals, so individual claims require dated sleep and psychiatric assessment with competing-cause exclusion, and review by a qualified medical professional.",
+    "Pathway and duplicate-scope screens: no -> suicidal-ideation edge (WITHHELD - recorded as a withheld proposition rather than a deferred identity: the located longitudinal and meta-analytic evidence is strong (nightmares predicted later suicide outcomes across 10 studies; meta-analytic nightmares-to-suicide-attempt OR 1.81; acute-trauma cohort nightmares potentiating insomnia-associated ideation at 42.9 percent versus 6.7 percent), but the catalog holds NO suicidality identity of any kind (verified across data/conditions: zero matches), so the edge is refused on identity grounds exactly as miscarriage-to-self-harm was refused in batch 61; reopening condition: a catalog identity for suicidal ideation or behavior); no -> insomnia edge (WITHHELD - direction guard: the located prospective evidence runs nightmares potentiating insomnia's association with suicidality and PTSD treatment reducing nightmares, with zero forward-direction quantification of nightmare disorder causing incident insomnia; the comorbid-interaction framing does not establish the direction); no -> anxiety-disorder edge (WITHHELD - the systematic review's anxiety signal is small-to-moderate reductions from nightmare treatment in trials mostly not designed to assess the endpoint, below evidence threshold); no -> post-traumatic-stress-disorder edge (direction-inversion guard - PTSD produces trauma-related nightmares; the located intervention evidence runs PTSD treatment reducing nightmares); identity-duplication screens - the published insomnia, alzheimer-s-disease, and circadian-rhythm depressive windows keep their own evidence (ME-29), and this edge rests only on nightmare-specific material."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 64 (2026-09-26): one bounded association edge authored - nightmare-disorder to depressive-disorder (rank 1) - classified ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, and hypothesizedOnly:true. The proposition rests on the 10-year Wenchuan-earthquake adolescent cohort with nightmare trajectories predicting young-adult depression after baseline adjustment (PMID 38082176) and the systematic review of longitudinal and trial studies with nightmare-treatment depression reductions (PMID 36566699).",
+    "Counter-evidence and caveat screens recorded 2026-09-26: (i) bidirectionality - the located literature documents both directions (depression and PTSD produce nightmares; PTSD treatment reduces them) so the forward claim is bounded to the adjusted trajectory association and treatment-response evidence; (ii) population scope - the 10-year anchor is disaster-exposed adolescents, so non-trauma nightmare disorder generalization is unquantified; (iii) measurement - single-item nightmare frequency dominates the literature rather than nightmare-disorder diagnosis; (iv) withheld suicidality proposition - the strongest located signal (nightmares predicting later suicide outcomes, meta-analytic attempt OR 1.81) could NOT be authored because the catalog holds no suicidality identity; the proposition and its three anchors (PMID 40265245, PMID 32807889, PMID 36566699) are preserved here for the day a suicidality identity exists; note also the review's unusual caveat that two pilot trials suggested nightmare treatment might potentially prevent recovery of suicidal ideation, so intervention claims in this space are not straightforward; (v) no experimental studies located in the review."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "depressive-disorder",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Nightmares document later depressive outcomes at longitudinal-trajectory and systematic-review level: the 10-year cohort of 610 Wenchuan-earthquake adolescent survivors found relapsing/remitting, chronic, and delayed-dysfunction nightmare trajectories significantly more likely than resistant trajectories to experience depression in young adulthood after adjusting for a wide range of covariates including baseline depression and PTSD (PMID 38082176), and the systematic review of longitudinal, experimental, and clinical-trial studies found treating nightmares led to moderate reductions in depression across trials and describes the nightmares-to-depression path as the most commonly assessed (10 studies; PMID 36566699); recorded as documented association only, with the reverse-direction counterweight carried openly.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: the relationship is bidirectional in the located literature (PTSD treatment reduces trauma-related nightmares and depression drives nightmare onset), so whether any individual depression is attributable to nightmare disorder requires individual psychiatric attribution with baseline mood, trauma, and medication exclusion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "PSYCHOPHYSIOLOGICAL",
+        "primaryVector": "Recurrent nightmares drive sleep fragmentation and threat-dream distress with conditioned sleep disturbance and dysphoric anticipation so depressive symptoms emerge, the stress-sensitization route consistent with the trajectory study's adjusted forward association and the trial evidence that nightmare treatment reduces depression, but whether this route produced any individual depression remains hypothesized until sleep and psychiatric records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at single disaster-exposed cohort plus systematic review of heterogeneous studies class only: the trajectory cohort is earthquake-exposed adolescents so trauma-exposed scope limits generalization, the review found methodological shortcomings common with single-item nightmare assessment dominating and most trials not designed to test psychiatric effects of nightmare treatment, and no experimental studies were located.",
+        "evidenceGaps": "The 10-year anchor is a disaster-exposed adolescent population so generalization to non-trauma nightmare disorder is unquantified; nightmare assessment is mostly single-item frequency rather than disorder diagnosis; most treatment trials were not designed to assess depression effects; reverse-direction and shared-diathesis confounding is only partly adjusted; and the review found no experimental studies.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "post-traumatic stress disorder producing both nightmares and depression (the published ptsd windows, not recycled per ME-29)",
+          "major depression with nightmare-predominant insomnia (reverse direction)",
+          "medication and substance effects on sleep architecture",
+          "shared neuroticism or stress-sensitization diathesis",
+          "sleep apnea and other sleep-fragmentation mimics"
+        ]
+      },
+      "evidenceGaps": [
+        "The 10-year anchor is a disaster-exposed adolescent population so generalization to non-trauma nightmare disorder is unquantified; nightmare assessment is mostly single-item frequency rather than disorder diagnosis; most treatment trials were not designed to assess depression effects; reverse-direction and shared-diathesis confounding is only partly adjusted; and the review found no experimental studies."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY at longitudinal-trajectory plus systematic-review class with the bidirectionality limit carried openly: the 10-year earthquake-survivor cohort found nightmare dysfunction trajectories predicting young-adult depression after baseline adjustment (PMID 38082176) and the systematic review found nightmare treatment reducing depression moderately across trials (PMID 36566699); because the literature is bidirectional (PTSD and depression drive nightmares) and single-item nightmare assessment dominates, the conservative standard keeps the edge at association only and routes individual claims through dated sleep and psychiatric assessment with baseline mood, trauma, and medication exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Wang D, Chen XY, Sun M, et al. Trajectory of adolescents' nightmares in relation to depression and post-traumatic stress disorder in young adulthood: a 10-year cohort of Chinese Wenchuan earthquake survivors Soc Psychiatry Psychiatr Epidemiol. 2024 Aug;59(8):1347-1356. PMID 38082176.",
+          "note": "10-year cohort of 610 Wenchuan-earthquake adolescent survivors (Soc Psychiatry Psychiatr Epidemiol 2024): nightmare trajectories at 18/24/30 months (resistant 77.0%, recover 8.4%, delayed-dysfunction 7.9%, chronic 1.1%, relapsing/remitting 5.6%); relapsing/remitting, chronic, and delayed trajectories predicted depression and PTSD at 10 years after wide covariate adjustment including baseline depression/PTSD; supports the bounded forward-direction association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38082176/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 38082176; results (nightmare trajectories and adjusted young-adult outcomes)"
+        },
+        {
+          "citation": "Sheaves B, Rek S, Freeman D. Nightmares and psychiatric symptoms: A systematic review of longitudinal, experimental, and clinical trial studies Clin Psychol Rev. 2023 Mar;100:102241. PMID 36566699.",
+          "note": "Systematic review of longitudinal, experimental, and clinical-trial studies of nightmares and psychiatric symptoms (Clin Psychol Rev 2023; 24 longitudinal, 16 trials, 0 experimental): nightmares-to-depression assessed in 10 studies; treating nightmares led to moderate depression reductions; reverse path (PTSD treatment reducing nightmares) also documented; methodological shortcomings common (single-item assessment); supports the bounded contributory-direction framing only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36566699/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 36566699; review results (nightmares-to-depression path and treatment effects)"
+        }
+      ]
+    }
+  ]
 }

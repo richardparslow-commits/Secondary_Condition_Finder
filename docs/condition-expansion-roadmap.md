@@ -2930,6 +2930,95 @@ change (redundancy conflicts unchanged at 28/28). The CRG audit reports REVIEW w
 `exceeded: false` at the re-pinned baseline; lowering the pin remains the disposition path if a
 qualified human later resolves the cycle.
 
+## Mapping Expansion D1 batch 64 (2026-09-26)
+
+Mapping Expansion D1 batch 64 (2026-09-26) authored seven draft-quarantined relationships across two of
+the five screened identities - `neuroblastoma` (6 edges) and `nightmare-disorder` (1 edge) - classified
+ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED,
+hypothesizedOnly:true, and conservative rationale and evidence-gap records on every suggestion. Three
+identities were DEFERRED with recorded dispositions - `neurobehavioral-effects`
+(CONSTITUTIVE-FEATURE-SET / IDENTITY-DUPLICATION within the Gulf War cluster), `neurocognitive-disorders`
+(UMBRELLA-SCOPE / IDENTITY-DUPLICATION with the neurocognitive cluster), and `night-blindness`
+(MANIFESTATION-IDENTITY / DIRECTION-INVERSION with retinal-window duplication) - with reopening
+conditions recorded in their governance notes; all three left the backlog queue by disposition.
+
+`neuroblastoma` (6 edges): anemia (rank 1, MULTIFACTORIAL) and thrombocytopenia (rank 2, MULTIFACTORIAL)
+rest on the marrow-infiltration comparative hematology study (erythrocytopenia predicting marrow
+involvement at 90/70 sensitivity/specificity; PMID 28801367) and the 15-patient transfusion-requirements
+cohort (PMID 34197634), with the infiltration-versus-chemotherapy conflation carried openly and the
+anchors shared across the two edges with per-edge scope; hypertension (rank 3, NEUROENDOCRINE_CASCADE)
+rests on the 10-patient normetanephrine series (all elevated normetanephrine; 4 refractory; PMID
+34612613) and the 1,126-patient Italian registry survey (prevalence 1.8 percent; 28 percent persistent
+after resection; renal pedicle the only persistence factor; PMID 28711167), with the mechanistic
+counterweight carried on the edge (hypertension is NOT the usual neuroblastoma picture; catecholamines
+3.5-fold below pheochromocytoma; PMID 36531507, erratum-linked with disposition recorded); hearing-loss
+(rank 4, PHARMACOLOGICAL_IATROGENIC, explicitly treatment-mediated) rests on the German NB90/NB97
+survivor cohort (12.5 percent overall, 27 percent stage 4, 40 percent carboplatin high-dose, cumulative-
+cisplatin-dose dependent; PMID 12165893) and the COG auditory late-effects report (PMID 20194279);
+cardiomyopathy (rank 5, mechanism NOT_ESTABLISHED - none asserted) rests on three cases with resection
+dechallenge (PMID 36846157, PMID 41891982, PMID 41276986) with the hypertensive-remodeling versus
+direct-toxic versus myocarditic dispute carried openly and the somatostatin-receptor myocardial-uptake
+case recording the myocarditis alternative; visual-impairment (rank 6, MECHANICAL_OR_COMPRESSIVE) rests
+on the mixed-primary orbital metastasis series (neuroblastoma 7/28; proptosis 67.9 percent; PMID 7643486)
+and the French-language pediatric orbital review (PMID 20303555), with the unstratified-acuity limit
+carried openly.
+
+`nightmare-disorder` (1 edge): depressive-disorder (rank 1, PSYCHOPHYSIOLOGICAL) rests on the 10-year
+Wenchuan-earthquake adolescent cohort (nightmare dysfunction trajectories predicting young-adult
+depression after baseline depression/PTSD adjustment; PMID 38082176) and the systematic review of
+longitudinal and trial studies (nightmare treatment reducing depression moderately; 10 studies on the
+forward path; PMID 36566699), with the bidirectionality limit carried openly (PTSD and depression produce
+nightmares in the same literature).
+
+Withholdings and refusals recorded on the files: nightmare-disorder -> suicidal-ideation REFUSED on
+identity grounds - the located evidence is strong (nightmares predicted later suicide outcomes across 10
+studies; meta-analytic nightmares-to-suicide-attempt OR 1.81, PMID 32807889; acute-trauma cohort 42.9
+percent versus 6.7 percent ideation with nightmares potentiating insomnia, PMID 40265245) but the catalog
+holds NO suicidality identity of any kind (verified across data/conditions), so the proposition and its
+three anchors are preserved in governance notes with a reopening condition (batch-61 miscarriage-to-self-
+harm precedent); the review's caveat that two pilot trials suggested nightmare treatment might prevent
+recovery of suicidal ideation is recorded alongside; nightmare-disorder -> insomnia withheld (direction
+guard), -> anxiety-disorder withheld (below threshold), -> ptsd withheld (direction-inversion);
+neuroblastoma -> opsoclonus-myoclonus-ataxia recorded as a withheld proposition (no catalog identity), ->
+congestive-heart-failure withheld (intermediate-node via the cardiomyopathy and hypertension windows,
+ME-29), -> seizure-disorder and -> malnutrition-residuals withheld (zero condition-specific
+quantification).
+
+Pre-authoring verification: all 14 PMIDs passed the abstract pass (`/tmp/d1-abstract47.py` in five fetch
+groups), the esummary bibliographic pass (every authored citation re-verified against the PubMed record
+in the style introduced after batch 63's mis-transcription catches), and
+`node scripts/preflight-source-status.js --pmids ...` (14/14 checked, zero blocking flags, one
+erratum-linked note on PMID 36531507 with the disposition recorded in its reference note; PMID 20303555
+flagged French-language in its reference note). The post-write structural self-audit passed for all five
+files (7 edges, 16 reference uses) and `npm run kb:validate` reports zero errors.
+
+Registry after lockstep: 698 relationships (624 explicit / 74 legacy), 1226 reference uses (383
+verified / 843 pending-verification), 1221 clinical / 5 legal uses, 1106 source entities (346 active /
+751 pending-verification). The two within-batch shared sources - PMIDs 28801367 and 34197634 each across
+the two neuroblastoma cytopenia edges - give 16 reference uses over 14 new sources. Citation packet
+regenerated at 335 worksheets / 843 reference rows = live citation debt; the verification dashboard
+regenerated at 843 rows in 35 reviewer batches (749 distinct sources). Backlog after batch 64: **170**
+undispositioned zero-edge drafts (175 before the batch; two identities left by gaining edges and three by
+recorded deferral). Next-five: `nocturnal-enuresis`, `nonspecific-interstitial-pneumonia`,
+`normal-pressure-hydrocephalus`, `nutcracker-esophagus`, `occipital-neuralgia`.
+
+Structural-debt note: the CRG review-class backlog is unchanged at 13/13 and redundancy at 28/28 - the
+batch-64 edges created no new cycles or bidirectional pairs (no identity in the batch receives edges),
+so the batch-63 CRG_REVIEW_BASELINE re-pin stood without adjustment.
+
+Test-pin note: the sweep touched 54 files and replaced 316 counter tokens in one pass with the batch-63
+per-token context predicates carried over unchanged (relationships 691 -> 698, references/uses 1210 ->
+1226, unverified 827 -> 843, pending source entities 737 -> 751, total source entities 1092 -> 1106,
+explicit guards 617 -> 624, clinical references 1205 -> 1221, clinical provenance 1209 -> 1225, and the
+draft-singles counter 276 -> 277 for this batch's single-suggestion identity `nightmare-disorder`). The
+explicit fixture token continued to carry the citation-decay-gate debt fixture automatically (827 -> 843,
+including the `Array.from({ length })` fixture line and its swept assertion) - fourth consecutive batch
+with no manual fixture bump. The residue check found one standing benign coincidence:
+tests/condition-expansion-wave5.test.ts pins the "276-condition Wave 5 checkpoint" as
+`toBeGreaterThanOrEqual(276)` - a catalog-size floor, a different quantity from the draft-singles token,
+correctly skipped by the context predicate and unbreakable by growth. Standing recommendation: batch 64
+lands through branch, PR, CI, and merge.
+
 Test-pin note: the sweep touched 54 files and replaced 316 counter tokens in one pass with the batch-62
 per-token context predicates carried over unchanged (relationships 681 -> 691, references/uses 1188 ->
 1210, unverified 805 -> 827, pending source entities 722 -> 737, total source entities 1077 -> 1092,

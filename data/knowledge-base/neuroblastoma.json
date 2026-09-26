@@ -2,8 +2,358 @@
   "id": "neuroblastoma",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review hormonal, metabolic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 64 (2026-09-26): six ASSOCIATION_ONLY draft mappings pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: all six edges assert association only (etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true; mechanisms MULTIFACTORIAL, NEUROENDOCRINE_CASCADE, PHARMACOLOGICAL_IATROGENIC, NOT_ESTABLISHED, MECHANICAL_OR_COMPRESSIVE). The evidence base is comparative cohorts, registry surveys, task-force reports, and individual cases, so individual claims require dated hematology, endocrine, audiology, cardiology, and ophthalmological assessment with competing-cause exclusion, and review by a qualified medical professional.",
+    "Pathway and duplicate-scope screens: no -> opsoclonus-myoclonus-ataxia edge (WITHHELD - recorded as a withheld proposition rather than a deferred identity: the classic neuroblastoma paraneoplastic syndrome has no catalog identity (no ataxia or myoclonus identity exists), so the proposition cannot be authored); no -> malnutrition-residuals edge (WITHHELD - zero located condition-specific quantification); no -> congestive-heart-failure edge (intermediate-node guard - the cardiomyopathy identity carries the cardiac phenotype and the published hypertension window keeps its heart-failure route; ME-29); no -> seizure-disorder edge (WITHHELD - CNS metastatic disease is rare in neuroblastoma and zero located condition-specific incidence was pulled); anemia and thrombocytopenia share the marrow-infiltration and treatment anchors with per-edge scope recorded (same-identity shared anchor); hearing-loss edge is explicitly treatment-mediated (PHARMACOLOGICAL_IATROGENIC), not tumor-mediated, and the pheochromocytoma and paraganglioma hypertension windows keep their own evidence (ME-29)."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 64 (2026-09-26): six bounded association edges authored - neuroblastoma to anemia (rank 1), thrombocytopenia (rank 2), hypertension (rank 3), hearing-loss (rank 4), cardiomyopathy (rank 5), and visual-impairment (rank 6) - classified ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, and hypothesizedOnly:true. The cytopenia propositions rest on the marrow-infiltration comparative hematology study (PMID 28801367) and the transfusion-requirements cohort (PMID 34197634). The hypertension proposition rests on the 10-patient normetanephrine series (PMID 34612613) and the 1,126-patient Italian registry survey with 1.8 percent prevalence (PMID 28711167), with the mechanistic counterweight (hypertension not part of the usual picture; PMID 36531507, erratum-linked with disposition recorded) carried on the edge. The hearing-loss proposition rests on the German NB90/NB97 survivor cohort (12.5-40 percent dose-dependent; PMID 12165893) and the COG auditory late-effects report (PMID 20194279). The cardiomyopathy proposition rests on three cases with resection dechallenge (PMID 36846157, PMID 41891982, PMID 41276986). The visual-impairment proposition rests on the mixed-primary orbital metastasis series (neuroblastoma 25 percent; PMID 7643486) and the French-language pediatric orbital review (PMID 20303555).",
+    "Counter-evidence and caveat screens recorded 2026-09-26: (i) rarity - registry hypertension prevalence is 1.8 percent and 28 percent of those needed persistent treatment after resection; (ii) mechanism-unresolved - the cardiomyopathy edge asserts NO mechanism (NOT_ESTABLISHED): direct catecholamine toxicity, hypertensive remodeling, and myocarditis framings are each claimed by different cases, with the somatostatin-receptor myocardial-uptake case carrying the myocarditis alternative; (iii) conflation - the cytopenia anchors cannot separate marrow infiltration from chemotherapy myelosuppression; (iv) treatment-era - the hearing incidence anchor is 1990s German protocols with dose-dependent ototoxicity and the edge is explicitly treatment-mediated; (v) stratification - the orbital series acuity outcomes are unstratified by primary tumor; (vi) counterweight discipline - the mechanistic comparison showing neuroblastoma catecholamine biology differs from pheochromocytoma (rare neurosecretory vesicles) is carried on the hypertension edge rather than dropped."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "anemia",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Neuroblastoma with bone marrow infiltration documents anemia-class cytopenias at comparative-cohort and supportive-care level: the comparison of hematological aspects between neuroblastoma patients with and without bone marrow infiltration found erythrocytopenia substantially improving prediction of marrow involvement (sensitivity 90 percent, specificity 70 percent at cut-off 4.015x10^12/L; PMID 28801367), and the transfusion-requirements study of 15 high-risk neuroblastoma patients across five chemotherapy courses found erythrocyte transfusion needs shaped by marrow infiltration and inherent hematopoietic capacity (PMID 34197634); recorded as documented association only.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: the anchors conflate marrow infiltration with chemotherapy myelosuppression, so whether any individual anemia is attributable to the tumor requires individual hematology attribution with treatment-timing, bleeding, and nutritional exclusion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MULTIFACTORIAL",
+        "primaryVector": "Tumor infiltration of the bone marrow displaces erythropoiesis while cytotoxic chemotherapy suppresses residual hematopoiesis so anemia results, the combined infiltration-and-treatment route consistent with the erythrocytopenia association in the comparative study and the erythrocyte-transfusion trajectories across chemotherapy courses, but whether this route produced any individual anemia remains hypothesized until marrow and blood-count records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at single comparative cohort plus small supportive-care cohort class only: the hematological comparison is a diagnostic-accuracy study of marrow involvement rather than an anemia-incidence cohort, the transfusion study includes 15 patients, and both conflate infiltration with treatment myelosuppression.",
+        "evidenceGaps": "No located cohort quantifies anemia incidence attributable to marrow infiltration separately from chemotherapy myelosuppression; the erythrocytopenia anchor is a diagnostic-marker study; transfusion practice varies by protocol; and iron deficiency, bleeding, and nutritional causes compete in a pediatric oncology population.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "chemotherapy-induced myelosuppression independent of infiltration",
+          "iron deficiency and nutritional anemia in children",
+          "bleeding and surgical blood loss",
+          "anemia of chronic disease",
+          "renal erythropoietin effects from nephrotoxic therapy"
+        ]
+      },
+      "evidenceGaps": [
+        "No located cohort quantifies anemia incidence attributable to marrow infiltration separately from chemotherapy myelosuppression; the erythrocytopenia anchor is a diagnostic-marker study; transfusion practice varies by protocol; and iron deficiency, bleeding, and nutritional causes compete in a pediatric oncology population."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY at comparative-cohort plus supportive-care class with the infiltration-versus-treatment conflation carried openly: the comparative hematology study found erythrocytopenia strongly associated with marrow involvement (PMID 28801367) and the transfusion study documents erythrocyte needs driven by marrow infiltration and hematopoietic capacity (PMID 34197634); because both anchors conflate infiltration with chemotherapy myelosuppression and neither quantifies anemia incidence, the conservative standard keeps the edge at association only and routes individual claims through dated blood-count and marrow review with treatment-timing, bleeding, and nutritional exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Wang W, Peng X, Liang C, et al. Comparison of Hematological Aspects between Neuroblastoma Patients with and without Bone Marrow Infiltration Ann Clin Lab Sci. 2017 Aug;47(4):416-421. PMID 28801367.",
+          "note": "Comparative study of hematological aspects between neuroblastoma patients with and without bone marrow infiltration (Ann Clin Lab Sci 2017): erythrocytopenia substantially improved prediction of marrow involvement (Youden 0.60; sensitivity 90%, specificity 70%, cut-off 4.015x10^12/L); hematological parameters differ with infiltration status; supports the bounded infiltration-cytopenia association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/28801367/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 28801367; results (erythrocytopenia and marrow-involvement prediction)"
+        },
+        {
+          "citation": "Konno S, Yanagisawa R, Kubota N, et al. Investigation of patient factors associated with the number of transfusions required during chemotherapy for high-risk neuroblastoma Vox Sang. 2022 Jan;117(1):71-79. PMID 34197634.",
+          "note": "Transfusion-requirements study of 15 high-risk neuroblastoma patients over five chemotherapy courses (Vox Sang 2022): erythrocyte and platelet transfusion needs increased across courses; early thrombocytopenia attributed to marrow infiltration and/or coagulopathy, later erythrocyte needs to inherent hematopoietic ability; supports the bounded transfusion-burden association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34197634/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 34197634; results (transfusion trajectories and marrow factors)"
+        }
+      ]
+    },
+    {
+      "conditionId": "thrombocytopenia",
+      "rank": 2,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Neuroblastoma with bone marrow infiltration documents thrombocytopenia at supportive-care level: the transfusion-requirements study of 15 high-risk neuroblastoma patients found higher platelet transfusion needs with low peripheral platelet count and lower fibrinogen at diagnosis and attributed early-course thrombocytopenia to bone marrow infiltration and/or coagulopathy complication (PMID 34197634), and the comparative hematology study documents differing blood-count parameters between marrow-infiltrated and non-infiltrated neuroblastoma patients (PMID 28801367); recorded as documented association only.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: the anchor is a 15-patient supportive-care study conflating infiltration, coagulopathy, and chemotherapy myelosuppression, so whether any individual thrombocytopenia is attributable to the tumor requires individual hematology attribution with treatment-timing, consumptive, and immune exclusion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MULTIFACTORIAL",
+        "primaryVector": "Tumor infiltration of the bone marrow displaces megakaryopoiesis while cytotoxic chemotherapy suppresses residual hematopoiesis and coagulopathy complicates the picture so thrombocytopenia results, the combined route consistent with the platelet-transfusion trajectories and the infiltration-associated count differences, but whether this route produced any individual thrombocytopenia remains hypothesized until marrow and coagulation records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at single 15-patient supportive-care cohort plus one comparative hematology study class only: the transfusion study's early-course attribution to infiltration is stated rather than incidence-quantified, and infiltration, coagulopathy, and chemotherapy effects are not separable in its design.",
+        "evidenceGaps": "No located cohort quantifies thrombocytopenia incidence attributable to marrow infiltration separately from chemotherapy myelosuppression or disseminated intravascular coagulation; the transfusion study is small and protocol-bound; and immune thrombocytopenia, consumptive coagulopathy, and sepsis-related causes compete in a pediatric oncology population.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "chemotherapy-induced myelosuppression independent of infiltration",
+          "disseminated intravascular coagulation and consumptive thrombocytopenia",
+          "immune thrombocytopenia",
+          "sepsis-related thrombocytopenia",
+          "heparin-induced thrombocytopenia from supportive care"
+        ]
+      },
+      "evidenceGaps": [
+        "No located cohort quantifies thrombocytopenia incidence attributable to marrow infiltration separately from chemotherapy myelosuppression or disseminated intravascular coagulation; the transfusion study is small and protocol-bound; and immune thrombocytopenia, consumptive coagulopathy, and sepsis-related causes compete in a pediatric oncology population."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY at supportive-care cohort class with the multifactorial conflation carried openly: the transfusion study attributes early-course thrombocytopenia to bone marrow infiltration and/or coagulopathy with platelet needs tracking diagnosis-time counts (PMID 34197634) and the comparative hematology study documents count differences by infiltration status (PMID 28801367); because the anchors are small and inseparable across infiltration, coagulopathy, and treatment effects, the conservative standard keeps the edge at association only and routes individual claims through dated blood-count and coagulation review with treatment-timing and consumptive exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Konno S, Yanagisawa R, Kubota N, et al. Investigation of patient factors associated with the number of transfusions required during chemotherapy for high-risk neuroblastoma Vox Sang. 2022 Jan;117(1):71-79. PMID 34197634.",
+          "note": "Transfusion-requirements study of 15 high-risk neuroblastoma patients (Vox Sang 2022): platelet transfusions higher with low platelet count and lower fibrinogen at diagnosis; bone marrow infiltration and/or coagulopathy implicated in early thrombocytopenia; supports the bounded multifactorial association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34197634/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 34197634; results (platelet transfusion determinants)"
+        },
+        {
+          "citation": "Wang W, Peng X, Liang C, et al. Comparison of Hematological Aspects between Neuroblastoma Patients with and without Bone Marrow Infiltration Ann Clin Lab Sci. 2017 Aug;47(4):416-421. PMID 28801367.",
+          "note": "Comparative hematology study of neuroblastoma patients with and without marrow infiltration (Ann Clin Lab Sci 2017): hematological aspects differ by infiltration status; supports the bounded infiltration-cytopenia association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/28801367/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 28801367; results (blood-count parameters by infiltration status)"
+        }
+      ]
+    },
+    {
+      "conditionId": "hypertension",
+      "rank": 3,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Neuroblastoma documents hypertension at single-center series and national registry level: the single-center retrospective review of 10 children with neuroblastoma and stage II or worse hypertension found all patients with elevated urine normetanephrine and four with refractory hypertension requiring more than three agents (PMID 34612613), and the Italian registry survey of 1,126 registered neuroblastoma patients found hypertension in 21 (1.8 percent) with 28 percent needing persistent antihypertensive treatment at median 36 months despite tumor removal and renal pedicle involvement the only persistence risk factor (PMID 28711167); recorded as documented association only, and a mechanistic comparison found hypertension is NOT part of the usual neuroblastoma picture with plasma catecholamines 3.5-fold lower than pheochromocytoma and rare neurosecretory vesicles (PMID 36531507, counterweight carried).",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: the located anchors describe hypertension as rare (1.8 percent of registry patients) and multifactorial - renal pedicle compression, volume overload, pain, and catecholamine secretion coexist and the registry could not demonstrate correlation between hypertension and specific catecholamines while the single-center series attributes a neuroendocrine component - so individual attribution requires pediatric nephrology and endocrine workup."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "NEUROENDOCRINE_CASCADE",
+        "primaryVector": "Tumor catecholamine (normetanephrine) secretion with renal vascular pedicle compression drives sustained vasopressor tone and pressure diuresis so sustained hypertension results, the neuroendocrine route supported by uniform normetanephrine elevation in the hypertensive series and the compression route by the registry's renal-pedicle persistence signal, but whether either route produced any individual hypertension remains hypothesized until catecholamine, renal imaging, and ambulatory blood-pressure records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at single-center 10-patient series plus retrospective registry survey class only: hypertension occurred in 1.8 percent of registry patients so the phenomenon is rare, the two anchors disagree on mechanism (normetanephrine elevation versus no demonstrated catecholamine correlation), and the mechanistic comparison found the catecholamine biology of neuroblastoma unlike pheochromocytoma with hypertension not part of the usual picture.",
+        "evidenceGaps": "The registry could not demonstrate correlation between hypertension and specific catecholamines or renal pedicle compression while the single-center series found uniform normetanephrine elevation - the mechanism is unresolved across anchors; prevalence is 1.8 percent; 28 percent of cases needed persistent treatment after resection suggesting fixed renovascular components; and renal, pain, volume, and iatrogenic causes compete in a pediatric oncology population.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "renal compression or renal artery involvement independent of catecholamines",
+          "pain- and stress-related perioperative hypertension",
+          "volume overload and nephrotoxic therapy",
+          "pheochromocytoma and paraganglioma (the published windows, contrast case - neuroblastoma catecholamine biology differs)",
+          "essential hypertension"
+        ]
+      },
+      "evidenceGaps": [
+        "The registry could not demonstrate correlation between hypertension and specific catecholamines or renal pedicle compression while the single-center series found uniform normetanephrine elevation - the mechanism is unresolved across anchors; prevalence is 1.8 percent; 28 percent of cases needed persistent treatment after resection suggesting fixed renovascular components; and renal, pain, volume, and iatrogenic causes compete in a pediatric oncology population."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY at single-center series plus registry-survey class with the rarity and mechanism-unresolved limits carried openly: the 10-patient series documents normetanephrine elevation with refractory hypertension (PMID 34612613) and the 1,126-patient registry survey quantifies hypertension at 1.8 percent with 28 percent persistence after resection (PMID 28711167); because the mechanistic comparison found hypertension not part of the usual neuroblastoma picture (PMID 36531507) and the anchors disagree on the catecholamine correlation, the conservative standard keeps the edge at association only and routes individual claims through pediatric endocrine and nephrology workup with renal, volume, and pain exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Harding M, Deyell RJ, Blydt-Hansen T. Catecholamines in neuroblastoma: Driver of hypertension, or solely a marker of disease? Cancer Rep (Hoboken). 2022 Aug;5(8):e1569. PMID 34612613.",
+          "note": "Single-center retrospective review of 10 children with neuroblastoma and stage II or worse hypertension (Cancer Rep 2022): all with elevated urine normetanephrine; 8 intra-abdominal; 4 refractory requiring more than 3 agents (3 needing alpha/beta blockade); hypertension framed as multifactorial with often a neuroendocrine component; supports the bounded association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34612613/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 34612613; cases and conclusion (normetanephrine and hypertension)"
+        },
+        {
+          "citation": "Pio L, Avanzini S, Mattioli G, et al. Perioperative management of hypertensive neuroblastoma: A study from the Italian Group of Pediatric Surgical Oncologists (GICOP) J Pediatr Surg. 2017 Oct;52(10):1633-1636. PMID 28711167.",
+          "note": "Italian registry survey (GICOP) of hypertensive neuroblastoma: 21 of 1,126 registered patients (1.8%) 2006-2014; 6/21 (28%) needed persistent antihypertensives at median 36 months despite tumor removal; renal pedicle involvement the only persistence risk factor; catecholamine/compression correlation NOT demonstrable; supports the bounded prevalence and persistence association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/28711167/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 28711167; results (prevalence, persistence, risk factors)"
+        },
+        {
+          "citation": "Mühlethaler-Mottet A, Uccella S, Marchiori D, et al. Low number of neurosecretory vesicles in neuroblastoma impairs massive catecholamine release and prevents hypertension Front Endocrinol (Lausanne). 2022;13:1027856. PMID 36531507.",
+          "note": "Mechanistic comparison of catecholamine biosynthesis and storage in neuroblastoma versus pheochromocytoma (Front Endocrinol 2022): plasma catecholamines 3.5-fold lower in neuroblastoma; rare neurosecretory vesicles; hypertension stated as NOT part of the usual neuroblastoma clinical picture; carried as counterweight limiting the hypertensive-mechanism claim. Preflight note: erratum-linked record (ErratumIn: Front Endocrinol (Lausanne). 2023 Mar 08;14:1172478, doi:10.3389/fendo.2023.1172478); disposition - cited findings taken from the indexed parent record, erratum content not indexed in abstract form, flagged for qualified-human disposition during citation verification.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36531507/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 36531507; results (catecholamine storage and secretion comparison)"
+        }
+      ]
+    },
+    {
+      "conditionId": "hearing-loss",
+      "rank": 4,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Neuroblastoma treatment documents hearing impairment at national-cohort level: the German NB90 and NB97 study-cohort analysis of 1,170 one-year survivors found persisting hearing impairment greater than WHO grade 2 in 12.5 percent overall, 5 percent after localized disease, 27 percent in stage 4, and 40 percent after carboplatin-containing high-dose chemotherapy with autologous stem cell reinfusion, with ototoxicity dependent on cumulative cisplatin dose (PMID 12165893), and the Children's Oncology Group auditory late-effects report documents platinum-compound and radiation ototoxicity in childhood cancer therapy with cochlear pathophysiology and management recommendations (PMID 20194279); recorded as documented treatment-sequela association only.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: this edge is explicitly treatment-mediated rather than tumor-mediated, so whether any individual hearing loss is attributable to neuroblastoma therapy requires individual audiology attribution with baseline, noise, radiation, and otologic exclusion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "PHARMACOLOGICAL_IATROGENIC",
+        "primaryVector": "Cumulative cisplatin and carboplatin cochlear hair-cell toxicity drives irreversible sensorineural hearing loss so treatment-induced hearing impairment results, the dose-dependent ototoxicity documented by the cumulative-cisplatin-dose gradient and the carboplatin high-dose excess in the national cohort, but whether this route produced any individual hearing loss remains hypothesized until serial audiology and dosing records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at national study-cohort analysis plus expert task-force report class only: the incidence anchor is 1990s German protocols (NB90/NB97) whose dosing differs from contemporary practice, ototoxicity is dose-dependent so modern risk-adapted protocols may show lower rates, and the COG report is a general childhood-cancer framing rather than neuroblastoma-specific incidence.",
+        "evidenceGaps": "No located cohort reports hearing-outcome incidence under contemporary risk-adapted neuroblastoma protocols; the incidence anchor predates current carboplatin-sparing and otoprotective strategies; radiation and platinum effects are not separated in the COG framing; and congenital hearing loss, ototoxic co-medication, and noise exposure compete for individual attribution.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "congenital or pre-existing hearing loss (no baseline anchor in the cohort)",
+          "ototoxic co-medication (aminoglycosides, loop diuretics)",
+          "radiation-induced ototoxicity",
+          "noise exposure",
+          "chronic otitis media and effusion in children"
+        ]
+      },
+      "evidenceGaps": [
+        "No located cohort reports hearing-outcome incidence under contemporary risk-adapted neuroblastoma protocols; the incidence anchor predates current carboplatin-sparing and otoprotective strategies; radiation and platinum effects are not separated in the COG framing; and congenital hearing loss, ototoxic co-medication, and noise exposure compete for individual attribution."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY at national study-cohort class with the treatment-era limit carried openly: the German cohort documents persisting hearing impairment in 12.5 percent of 1,170 survivors with 27 percent in stage 4 and 40 percent after carboplatin high-dose therapy, dose-dependent on cumulative cisplatin (PMID 12165893), and the COG task-force report documents platinum and radiation ototoxicity pathways with evaluation recommendations (PMID 20194279); because the anchor protocols are 1990s-era and risk-adapted modern therapy may differ, the conservative standard keeps the edge at association only and routes individual claims through dated serial audiology with baseline, noise, and radiation exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Simon T, Hero B, Dupuis W, et al. The incidence of hearing impairment after successful treatment of neuroblastoma Klin Padiatr. 2002 Jul-Aug;214(4):149-52. PMID 12165893.",
+          "note": "German neuroblastoma study cohorts NB90/NB97 analysis of 1,170 one-year survivors (Klin Padiatr 2002): persisting hearing impairment greater than WHO grade 2 in 146 (12.5%); stage 1-3 5%, stage 4S 2%, stage 4 27%; ototoxicity dependent on cumulative cisplatin dose (12-26% across dose bands); carboplatin high-dose 40% versus 15% platinum-free maintenance; supports the bounded treatment-sequela association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/12165893/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 12165893; results (hearing impairment incidence by stage and dose)"
+        },
+        {
+          "citation": "Grewal S, Merchant T, Reymond R, et al. Auditory late effects of childhood cancer therapy: a report from the Children's Oncology Group Pediatrics. 2010 Apr;125(4):e938-50. PMID 20194279.",
+          "note": "Children's Oncology Group Auditory/Hearing Late Effects Task Force report (Pediatrics 2010): reviews ototoxicity from platinum compounds and radiation in childhood cancer therapy; cochlear pathophysiology and genetics of cisplatin hearing loss; impact and management recommendations; supports the bounded treatment-pathway framing only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/20194279/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 20194279; review scope (ototoxicity mechanisms and monitoring)"
+        }
+      ]
+    },
+    {
+      "conditionId": "cardiomyopathy",
+      "rank": 5,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Neuroblastoma documents catecholamine-associated cardiomyopathy at case level: the 5-year-old case with hypertrophic cardiomyopathy, hypertension, heart failure, and elevated urinary catecholamines showed normalized blood pressure and catecholamines with ventricular normalization after tumor resection (dechallenge; PMID 36846157), the infantile ganglioneuroblastoma case with hypertensive cardiomyopathy from excessive epinephrine and norepinephrine production improved with alpha-blockade and subtotal resection reducing catecholamines (PMID 41891982), and the case presenting with cardiogenic shock and dilated cardiomyopathy with elevated catecholamines showed diffuse myocardial somatostatin-receptor uptake suggestive of inflammatory myocarditis (PMID 41276986); recorded as documented association only at case class.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: mechanism is unresolved across the three cases - direct catecholamine toxicity, hypertensive remodeling, and myocarditic inflammation each claimed by different authors - and the resection dechallenge supports tumor attribution within those cases only, so individual attribution requires pediatric cardiology and oncology review with familial, treatment, and inflammatory exclusion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "NOT_ESTABLISHED",
+        "primaryVector": "The route from neuroblastoma catecholamine excess to cardiomyopathy is unestablished across the located cases: hypertrophic and dilated phenotypes both appear and the hypertensive, direct-toxic, and myocarditic framings are each claimed by different authors, so no single mechanism is asserted and the dechallenge pattern (normalization after resection) is the strongest attribution signal carried.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at individual case class only (three cases, 2023-2026): no cohort quantifies cardiomyopathy incidence in neuroblastoma, the three cases span hypertrophic and dilated phenotypes with heterogeneous mechanism attribution, and catecholamine cardiomyopathy in the pediatric oncology literature may be underreported or misclassified as hypertensive heart disease.",
+        "evidenceGaps": "No located cohort quantifies cardiomyopathy incidence in neuroblastoma; mechanism is contested across the cases (catecholamine toxicity versus hypertensive remodeling versus myocarditis with somatostatin-receptor uptake); anthracycline exposure in treated cohorts confounds; and familial hypertrophic cardiomyopathy, myocarditis, and stress cardiomyopathy compete for individual attribution.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "hypertensive cardiomyopathy mediated by the hypertension pathway (the published hypertension window's heart-failure route, an intermediate node not recycled per ME-29)",
+          "anthracycline and chemotherapy cardiotoxicity",
+          "myocarditis (the somatostatin-receptor uptake case's framing)",
+          "familial hypertrophic cardiomyopathy",
+          "stress (takotsubo-like) cardiomyopathy from critical illness"
+        ]
+      },
+      "evidenceGaps": [
+        "No located cohort quantifies cardiomyopathy incidence in neuroblastoma; mechanism is contested across the cases (catecholamine toxicity versus hypertensive remodeling versus myocarditis with somatostatin-receptor uptake); anthracycline exposure in treated cohorts confounds; and familial hypertrophic cardiomyopathy, myocarditis, and stress cardiomyopathy compete for individual attribution."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY at three-case class with the mechanism-unresolved limit and dechallenge evidence carried openly: the three cases document hypertrophic and dilated cardiomyopathy in neuroblastoma with elevated catecholamines and improvement after resection or alpha-blockade (PMID 36846157, PMID 41891982, PMID 41276986); because no cohort quantifies incidence and the cases disagree on mechanism (direct toxicity, hypertensive remodeling, or myocarditis), the conservative standard keeps the edge at association only, asserts no mechanism, and routes individual claims through pediatric cardiology review with familial, anthracycline, and inflammatory exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Xu X, Liu M, Zhang Y, et al. Case report: Catecholamine cardiomyopathy in children with neuroblastoma Front Pediatr. 2023;11:1063795. PMID 36846157.",
+          "note": "Case report of catecholamine cardiomyopathy in a child with neuroblastoma (Front Pediatr 2023): 5-year-old with ventricular hypertrophy, hypertension, heart failure (EF 40%), enlarged coronaries, elevated urinary catecholamines; tumor resection normalized BP, catecholamines, and ventricular function at 7-month follow-up (dechallenge); supports the bounded case-level association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36846157/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 36846157; case presentation and follow-up (dechallenge after resection)"
+        },
+        {
+          "citation": "Shimizu H, Shimizu Y, Nakao T, et al. Infantile Ganglioneuroblastoma Causing Growth Failure and Hypertensive Cardiomyopathy From Excessive Catecholamine Production J Pediatr Hematol Oncol. 2026 May 1;48(4):181-184. PMID 41891982.",
+          "note": "Case report of infantile ganglioneuroblastoma causing growth failure and hypertensive cardiomyopathy from excessive epinephrine and norepinephrine production (J Pediatr Hematol Oncol 2026): circulation improved with alpha-blockers enabling resection; subtotal resection reduced catecholamines; supports the bounded case-level association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41891982/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 41891982; case presentation (catecholamine-mediated cardiomyopathy)"
+        },
+        {
+          "citation": "Kumar SA, Balgi V, Goyal H, et al. Cardiac Somatostatin-receptor Expression Demonstrated by 68 Ga DOTANOC PET/CT in a Child Presenting With Neuroblastoma and Presumed Catecholamine-induced Cardiomyopathy Clin Nucl Med. 2026 Jul 1;51(7):e502-e504. PMID 41276986.",
+          "note": "Case report of neuroblastoma with cardiogenic shock and dilated cardiomyopathy (Clin Nucl Med 2026): right renal artery stenosis and elevated catecholamines; 68Ga DOTANOC PET/CT showed adrenal mass uptake with diffuse myocardial uptake suggestive of inflammatory myocarditis; supports the bounded case-level association only, with the myocarditis alternative recorded.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41276986/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 41276986; case presentation (cardiomyopathy phenotype and myocardial uptake)"
+        }
+      ]
+    },
+    {
+      "conditionId": "visual-impairment",
+      "rank": 6,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Neuroblastoma orbital metastasis documents visual compromise at metastatic-orbital-series level: the orbital metastasis case series of 28 patients found neuroblastoma the second most common primary (7 of 28, 25 percent) with proptosis (67.9 percent) and motility disturbance as presenting signs and visual acuity improvement after radiochemotherapy in a subset (PMID 7643486), and the pediatric orbital-tumor review documents the metastatic-workup pathway in which abdominal palpation and ultrasonography are mandated when metastatic orbital tumor is suspected (PMID 20303555); recorded as documented association only, with the mixed-primary, adult-cohort, and French-language scope carried openly.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: the orbital series is a 1995 mixed-primary cohort whose visual-acuity outcomes are not stratified by primary tumor, so whether any individual visual impairment is attributable to orbital neuroblastoma requires individual ophthalmological attribution with rhabdomyosarcoma, leukemic-orbital, inflammatory, and radiation exclusion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MECHANICAL_OR_COMPRESSIVE",
+        "primaryVector": "Orbital metastatic tumor mass effect on the globe and optic apparatus drives proptosis with motility disturbance and visual acuity loss so visual impairment results, the compressive route documented by the orbital-series presentation signs and the treatment-associated acuity improvement subset, but whether this route produced any individual visual impairment remains hypothesized until orbital imaging and ophthalmological records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at one 1995 mixed-primary orbital series plus a diagnostic-review class only: the visual-acuity outcomes are not stratified by primary tumor, the series is an adult-era metastatic cohort where neuroblastoma is a minority primary (25 percent), and the pediatric review is French-language diagnostic guidance rather than outcome data.",
+        "evidenceGaps": "No located cohort quantifies visual outcomes in orbital neuroblastoma specifically; the orbital series pools adult and pediatric primaries with unstratified acuity outcomes; modern orbital imaging and treatment have changed management since 1995; and rhabdomyosarcoma, leukemic orbital infiltration, and orbital inflammation compete as pediatric orbital masses.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "orbital rhabdomyosarcoma (the common pediatric orbital primary)",
+          "leukemic orbital infiltration (chloroma)",
+          "idiopathic orbital inflammatory disease",
+          "radiation optic neuropathy from treatment",
+          "refractive error and amblyopia in children"
+        ]
+      },
+      "evidenceGaps": [
+        "No located cohort quantifies visual outcomes in orbital neuroblastoma specifically; the orbital series pools adult and pediatric primaries with unstratified acuity outcomes; modern orbital imaging and treatment have changed management since 1995; and rhabdomyosarcoma, leukemic orbital infiltration, and orbital inflammation compete as pediatric orbital masses."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY at mixed-primary orbital-series class with the stratification limit carried openly: the orbital metastasis series documents neuroblastoma at 25 percent of metastatic orbital tumors with proptosis and motility disturbance and acuity improvement after treatment in a subset (PMID 7643486) and the pediatric orbital review documents the metastatic workup pathway (PMID 20303555); because the acuity outcomes are unstratified by primary and the pediatric review is diagnostic rather than outcome-bearing, the conservative standard keeps the edge at association only and routes individual claims through dated orbital imaging and ophthalmological assessment with rhabdomyosarcoma, leukemic, and inflammatory exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Günalp I, Gündüz K. Metastatic orbital tumors Jpn J Ophthalmol. 1995;39(1):65-70. PMID 7643486.",
+          "note": "Case series of 28 metastatic orbital tumors (Jpn J Ophthalmol 1995): neuroblastoma the second most common primary (7/28, 25.0%); proptosis (67.9%), motility disturbance (57.1%), mass (50.0%) presenting signs; visual acuity improvement after radiochemotherapy in 5 cases (mixed primaries); supports the bounded mixed-primary association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/7643486/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 7643486; results (primary distribution and orbital presentation signs)"
+        },
+        {
+          "citation": "George JL, Marchal JC. [Orbital tumors in children: clinical examination, imaging, specific progression] Neurochirurgie. 2010 Apr-Jun;56(2-3):244-8. PMID 20303555.",
+          "note": "French-language review of orbital tumors in children (Neurochirurgie 2010): clinical examination, imaging, and specific progression; metastatic-workup pathway mandates abdominal palpation and ultrasonography when metastatic orbital tumor is suspected; supports the bounded diagnostic-pathway framing only. Honesty note: French-language record.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/20303555/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 20303555; review scope (pediatric orbital tumor workup)"
+        }
+      ]
+    }
+  ]
 }

@@ -16,16 +16,16 @@
   "citationPromotionMustAtomicallyUpdateKbAndMasterSourceState": true
  },
  "counts": {
-  "liveSourceReferenceUses": 1210,
+  "liveSourceReferenceUses": 1226,
   "activeSourceEntities": 346,
-  "pendingVerificationSourceEntities": 737,
+  "pendingVerificationSourceEntities": 751,
   "activeClinicalSourceEntities": 345,
-  "pendingClinicalSourceEntities": 737,
+  "pendingClinicalSourceEntities": 751,
   "activeLegalAuthorityEntities": 1,
   "retiredOnlySourceEntities": 1,
   "supersededUnverifiedSourceEntities": 7,
   "bibliographicCorrectionOnlyEntities": 1,
-  "totalSourceEntitiesIncludingLineage": 1092,
+  "totalSourceEntitiesIncludingLineage": 1106,
   "retiredVerifiedRelationshipSourceUses": 6
  },
  "retirementLedger": {
@@ -40396,6 +40396,510 @@
    "rawReferenceHashes": [
     "c9663af7ee95b37075cab8007cb498bb824878473891734cda01ac3044a70c69",
     "9945f68ed512a5c90918460219b6c10eeb0ce32c1fb5b58d4df22d1279da7581"
+   ]
+  },
+  {
+   "sourceId": "pmid-28801367",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "28801367",
+   "doi": null,
+   "canonicalCitation": "Wang W, Peng X, Liang C, et al. Comparison of Hematological Aspects between Neuroblastoma Patients with and without Bone Marrow Infiltration Ann Clin Lab Sci. 2017 Aug;47(4):416-421. PMID 28801367.",
+   "citationVariants": [
+    "Wang W, Peng X, Liang C, et al. Comparison of Hematological Aspects between Neuroblastoma Patients with and without Bone Marrow Infiltration Ann Clin Lab Sci. 2017 Aug;47(4):416-421. PMID 28801367."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/28801367/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/28801367/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 2,
+   "liveUses": [
+    {
+     "relationshipId": "rel-neuroblastoma-to-anemia",
+     "primaryId": "neuroblastoma",
+     "targetId": "anemia",
+     "sourceIndex": 0
+    },
+    {
+     "relationshipId": "rel-neuroblastoma-to-thrombocytopenia",
+     "primaryId": "neuroblastoma",
+     "targetId": "thrombocytopenia",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "2b6e827736a2db543ecf9c564870b282654c2bf006e5d9694c599cd4089e56e7",
+    "af2c3a9f41ecae7e6cc07b756f7d8eabbff0d4a67525ecade8d7ec495d712d55"
+   ]
+  },
+  {
+   "sourceId": "pmid-34197634",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "34197634",
+   "doi": null,
+   "canonicalCitation": "Konno S, Yanagisawa R, Kubota N, et al. Investigation of patient factors associated with the number of transfusions required during chemotherapy for high-risk neuroblastoma Vox Sang. 2022 Jan;117(1):71-79. PMID 34197634.",
+   "citationVariants": [
+    "Konno S, Yanagisawa R, Kubota N, et al. Investigation of patient factors associated with the number of transfusions required during chemotherapy for high-risk neuroblastoma Vox Sang. 2022 Jan;117(1):71-79. PMID 34197634."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34197634/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/34197634/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 2,
+   "liveUses": [
+    {
+     "relationshipId": "rel-neuroblastoma-to-anemia",
+     "primaryId": "neuroblastoma",
+     "targetId": "anemia",
+     "sourceIndex": 1
+    },
+    {
+     "relationshipId": "rel-neuroblastoma-to-thrombocytopenia",
+     "primaryId": "neuroblastoma",
+     "targetId": "thrombocytopenia",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "20fe1893f2155aa07d65aeed844846d7c7873d3596013b7206342528bbc77dba",
+    "ec62c43d6a560c50dbc543aa3f8b8a5bb255dc3c793d6d4ef8bff06f8d3b7bf1"
+   ]
+  },
+  {
+   "sourceId": "pmid-34612613",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "34612613",
+   "doi": null,
+   "canonicalCitation": "Harding M, Deyell RJ, Blydt-Hansen T. Catecholamines in neuroblastoma: Driver of hypertension, or solely a marker of disease? Cancer Rep (Hoboken). 2022 Aug;5(8):e1569. PMID 34612613.",
+   "citationVariants": [
+    "Harding M, Deyell RJ, Blydt-Hansen T. Catecholamines in neuroblastoma: Driver of hypertension, or solely a marker of disease? Cancer Rep (Hoboken). 2022 Aug;5(8):e1569. PMID 34612613."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34612613/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/34612613/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-neuroblastoma-to-hypertension",
+     "primaryId": "neuroblastoma",
+     "targetId": "hypertension",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "fd808f56127961504d8372815898e2be884dca8c797b566134c2d4e249115f74"
+   ]
+  },
+  {
+   "sourceId": "pmid-28711167",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "28711167",
+   "doi": null,
+   "canonicalCitation": "Pio L, Avanzini S, Mattioli G, et al. Perioperative management of hypertensive neuroblastoma: A study from the Italian Group of Pediatric Surgical Oncologists (GICOP) J Pediatr Surg. 2017 Oct;52(10):1633-1636. PMID 28711167.",
+   "citationVariants": [
+    "Pio L, Avanzini S, Mattioli G, et al. Perioperative management of hypertensive neuroblastoma: A study from the Italian Group of Pediatric Surgical Oncologists (GICOP) J Pediatr Surg. 2017 Oct;52(10):1633-1636. PMID 28711167."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/28711167/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/28711167/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-neuroblastoma-to-hypertension",
+     "primaryId": "neuroblastoma",
+     "targetId": "hypertension",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "841a6b5f648f8789d546118697e5472f8790fc30a494b3a41deb035d3866240e"
+   ]
+  },
+  {
+   "sourceId": "pmid-36531507",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "36531507",
+   "doi": null,
+   "canonicalCitation": "Mühlethaler-Mottet A, Uccella S, Marchiori D, et al. Low number of neurosecretory vesicles in neuroblastoma impairs massive catecholamine release and prevents hypertension Front Endocrinol (Lausanne). 2022;13:1027856. PMID 36531507.",
+   "citationVariants": [
+    "Mühlethaler-Mottet A, Uccella S, Marchiori D, et al. Low number of neurosecretory vesicles in neuroblastoma impairs massive catecholamine release and prevents hypertension Front Endocrinol (Lausanne). 2022;13:1027856. PMID 36531507."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36531507/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/36531507/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-neuroblastoma-to-hypertension",
+     "primaryId": "neuroblastoma",
+     "targetId": "hypertension",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "e7999ca0873e420188306b3cf694f2848c2c1976b8e8ec139990d8fad054df87"
+   ]
+  },
+  {
+   "sourceId": "pmid-12165893",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "12165893",
+   "doi": null,
+   "canonicalCitation": "Simon T, Hero B, Dupuis W, et al. The incidence of hearing impairment after successful treatment of neuroblastoma Klin Padiatr. 2002 Jul-Aug;214(4):149-52. PMID 12165893.",
+   "citationVariants": [
+    "Simon T, Hero B, Dupuis W, et al. The incidence of hearing impairment after successful treatment of neuroblastoma Klin Padiatr. 2002 Jul-Aug;214(4):149-52. PMID 12165893."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/12165893/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/12165893/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-neuroblastoma-to-hearing-loss",
+     "primaryId": "neuroblastoma",
+     "targetId": "hearing-loss",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "0b8da934421ed7027aeba4531301a02cc2a7dfbd9f50ec2535f037f998c65ef1"
+   ]
+  },
+  {
+   "sourceId": "pmid-20194279",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "20194279",
+   "doi": null,
+   "canonicalCitation": "Grewal S, Merchant T, Reymond R, et al. Auditory late effects of childhood cancer therapy: a report from the Children's Oncology Group Pediatrics. 2010 Apr;125(4):e938-50. PMID 20194279.",
+   "citationVariants": [
+    "Grewal S, Merchant T, Reymond R, et al. Auditory late effects of childhood cancer therapy: a report from the Children's Oncology Group Pediatrics. 2010 Apr;125(4):e938-50. PMID 20194279."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/20194279/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/20194279/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-neuroblastoma-to-hearing-loss",
+     "primaryId": "neuroblastoma",
+     "targetId": "hearing-loss",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "10bd525e80bdc5c4ba258a63df4f1d11c9e98aa2a8eb37089fae9b3c3893050c"
+   ]
+  },
+  {
+   "sourceId": "pmid-36846157",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "36846157",
+   "doi": null,
+   "canonicalCitation": "Xu X, Liu M, Zhang Y, et al. Case report: Catecholamine cardiomyopathy in children with neuroblastoma Front Pediatr. 2023;11:1063795. PMID 36846157.",
+   "citationVariants": [
+    "Xu X, Liu M, Zhang Y, et al. Case report: Catecholamine cardiomyopathy in children with neuroblastoma Front Pediatr. 2023;11:1063795. PMID 36846157."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36846157/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/36846157/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-neuroblastoma-to-cardiomyopathy",
+     "primaryId": "neuroblastoma",
+     "targetId": "cardiomyopathy",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "aaf002b18dfbc0f444dfd0201d07cbaf2c0d7d001a23be8d0bb409b88c073624"
+   ]
+  },
+  {
+   "sourceId": "pmid-41891982",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "41891982",
+   "doi": null,
+   "canonicalCitation": "Shimizu H, Shimizu Y, Nakao T, et al. Infantile Ganglioneuroblastoma Causing Growth Failure and Hypertensive Cardiomyopathy From Excessive Catecholamine Production J Pediatr Hematol Oncol. 2026 May 1;48(4):181-184. PMID 41891982.",
+   "citationVariants": [
+    "Shimizu H, Shimizu Y, Nakao T, et al. Infantile Ganglioneuroblastoma Causing Growth Failure and Hypertensive Cardiomyopathy From Excessive Catecholamine Production J Pediatr Hematol Oncol. 2026 May 1;48(4):181-184. PMID 41891982."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41891982/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/41891982/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-neuroblastoma-to-cardiomyopathy",
+     "primaryId": "neuroblastoma",
+     "targetId": "cardiomyopathy",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "ee629bd9a80f7191f2123f292b0bc50c25e58233e189b36d84a177d1f6ea4100"
+   ]
+  },
+  {
+   "sourceId": "pmid-41276986",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "41276986",
+   "doi": null,
+   "canonicalCitation": "Kumar SA, Balgi V, Goyal H, et al. Cardiac Somatostatin-receptor Expression Demonstrated by 68 Ga DOTANOC PET/CT in a Child Presenting With Neuroblastoma and Presumed Catecholamine-induced Cardiomyopathy Clin Nucl Med. 2026 Jul 1;51(7):e502-e504. PMID 41276986.",
+   "citationVariants": [
+    "Kumar SA, Balgi V, Goyal H, et al. Cardiac Somatostatin-receptor Expression Demonstrated by 68 Ga DOTANOC PET/CT in a Child Presenting With Neuroblastoma and Presumed Catecholamine-induced Cardiomyopathy Clin Nucl Med. 2026 Jul 1;51(7):e502-e504. PMID 41276986."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41276986/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/41276986/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-neuroblastoma-to-cardiomyopathy",
+     "primaryId": "neuroblastoma",
+     "targetId": "cardiomyopathy",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "8850f55bc8cb1d91d684c10c5ef2144e4f21cf3f0dd94053ab720dcf555303cd"
+   ]
+  },
+  {
+   "sourceId": "pmid-7643486",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "7643486",
+   "doi": null,
+   "canonicalCitation": "Günalp I, Gündüz K. Metastatic orbital tumors Jpn J Ophthalmol. 1995;39(1):65-70. PMID 7643486.",
+   "citationVariants": [
+    "Günalp I, Gündüz K. Metastatic orbital tumors Jpn J Ophthalmol. 1995;39(1):65-70. PMID 7643486."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/7643486/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/7643486/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-neuroblastoma-to-visual-impairment",
+     "primaryId": "neuroblastoma",
+     "targetId": "visual-impairment",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "4a03ea71ff13dd69c41f145551aa57818a52b052055e011b270deb537d827c8b"
+   ]
+  },
+  {
+   "sourceId": "pmid-20303555",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "20303555",
+   "doi": null,
+   "canonicalCitation": "George JL, Marchal JC. [Orbital tumors in children: clinical examination, imaging, specific progression] Neurochirurgie. 2010 Apr-Jun;56(2-3):244-8. PMID 20303555.",
+   "citationVariants": [
+    "George JL, Marchal JC. [Orbital tumors in children: clinical examination, imaging, specific progression] Neurochirurgie. 2010 Apr-Jun;56(2-3):244-8. PMID 20303555."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/20303555/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/20303555/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-neuroblastoma-to-visual-impairment",
+     "primaryId": "neuroblastoma",
+     "targetId": "visual-impairment",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "bf9318a519a65372cea73098b91922105aa3d9856d00fe8769777f6439cf42b2"
+   ]
+  },
+  {
+   "sourceId": "pmid-38082176",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "38082176",
+   "doi": null,
+   "canonicalCitation": "Wang D, Chen XY, Sun M, et al. Trajectory of adolescents' nightmares in relation to depression and post-traumatic stress disorder in young adulthood: a 10-year cohort of Chinese Wenchuan earthquake survivors Soc Psychiatry Psychiatr Epidemiol. 2024 Aug;59(8):1347-1356. PMID 38082176.",
+   "citationVariants": [
+    "Wang D, Chen XY, Sun M, et al. Trajectory of adolescents' nightmares in relation to depression and post-traumatic stress disorder in young adulthood: a 10-year cohort of Chinese Wenchuan earthquake survivors Soc Psychiatry Psychiatr Epidemiol. 2024 Aug;59(8):1347-1356. PMID 38082176."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38082176/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/38082176/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-nightmare-disorder-to-depressive-disorder",
+     "primaryId": "nightmare-disorder",
+     "targetId": "depressive-disorder",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "c6513c3fcea383bd089af7ed6d235a6045569cec854f5089119a9a95ff842eb7"
+   ]
+  },
+  {
+   "sourceId": "pmid-36566699",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "36566699",
+   "doi": null,
+   "canonicalCitation": "Sheaves B, Rek S, Freeman D. Nightmares and psychiatric symptoms: A systematic review of longitudinal, experimental, and clinical trial studies Clin Psychol Rev. 2023 Mar;100:102241. PMID 36566699.",
+   "citationVariants": [
+    "Sheaves B, Rek S, Freeman D. Nightmares and psychiatric symptoms: A systematic review of longitudinal, experimental, and clinical trial studies Clin Psychol Rev. 2023 Mar;100:102241. PMID 36566699."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36566699/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/36566699/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-nightmare-disorder-to-depressive-disorder",
+     "primaryId": "nightmare-disorder",
+     "targetId": "depressive-disorder",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "e34ee3638767d2beaf7d6f911625c5a8fee713ba7df764201d01d719351a2bbf"
    ]
   }
  ],
