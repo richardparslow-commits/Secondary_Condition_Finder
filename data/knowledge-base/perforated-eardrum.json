@@ -2,8 +2,68 @@
   "id": "perforated-eardrum",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review otologic, vestibular, audiologic, visual, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 69 (2026-09-26): one ASSOCIATION_ONLY draft mapping pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: the edge asserts association only (etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true, mechanismCategory MECHANICAL_OR_COMPRESSIVE). The evidence base is two retrospective chronic-perforation surgical cohorts, so individual claims require dated tympanometry and audiometry with competing-cause exclusion and review by a qualified medical professional. The CSOM shared-substrate limit is carried on the edge itself.",
+    "Pathway and duplicate-scope screens: no -> hearing-loss edge (IDENTITY-DUPLICATION plus SHARED-SUBSTRATE - the sensorineural component in the CSOM cohort tracks disease duration and perforation size within chronic suppurative disease, whose hearing evidence belongs to the otitis-media window (PMID 22558393, not recycled per ME-29); the conductive pathway is carried on the conductive-hearing-loss edge); no -> tinnitus edge (INTERMEDIATE-PATHWAY plus SHARED-SUBSTRATE - tinnitus in 36.7 percent of the CSOM cohort (PMID 41477176) sits within chronic suppurative disease and would duplicate the registered conductive-hearing-loss to tinnitus chain as a shortcut (the chain-triangle pattern under the standing CRG semantics follow-up); reopening condition: a cohort quantifying tinnitus incidence after isolated traumatic perforation); no -> dizziness edge (SHARED-SUBSTRATE - the subclinical vestibular finding (perforation size and postural sway) is CSOM-scoped and unquantified for isolated perforation); ME-29 discipline - the cholesteatoma and otosclerosis conductive-hearing-loss windows and the otitis-media hearing-loss window are NOT recycled; all anchors here are perforation-anchored sources."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 69 (2026-09-26): one bounded association edge authored - perforated-eardrum to conductive-hearing-loss (rank 1) - classified ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, and hypothesizedOnly:true. The proposition rests on the 465-procedure myringoplasty cohort with repair-responsive air-bone gap (mean 19.1 to 9.8 dB; PMID 42338397) and the tubotympanic CSOM perforation cohort with 85 percent conductive loss (PMID 41477176).",
+    "Counter-evidence and caveat screens recorded 2026-09-26: (i) shared-substrate discipline - the CSOM cohort's perforations arise within chronic suppurative disease, so infection and mucosal change confound the perforation-specific component; the otitis-media hearing-loss window owns the infectious hearing evidence and is not recycled (ME-29); (ii) residual-gap counterweight - anatomically successful repair leaves a residual 8-12 dB gap in most ears (PMID 42338397), bounding the mechanical claim; (iii) withheld propositions - tinnitus and dizziness (CSOM-scoped, chain-shortcut and shared-substrate grounds) and the sensorineural component (disease-duration-linked within CSOM, owned by the otitis-media window); (iv) acute-perforation gap - no located cohort quantifies hearing loss in acute traumatic perforations; the anchors are chronic-perforation surgical cohorts; (v) erratum-linked anchor - PMID 42338397 carries a published erratum (non-blocking at preflight), noted on the reference for reviewers."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "conductive-hearing-loss",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Tympanic membrane perforations document a conductive air-bone gap at surgical-cohort level: the 465-procedure primary myringoplasty cohort measured a mean preoperative air-bone gap of 19.1 dB narrowing to 9.8 dB after anatomical repair, with gap closure under 10 dB in 53 percent of patients (PMID 42338397), and the unilateral tubotympanic chronic otitis media cohort found conductive hearing loss in 85 percent of perforated ears (51 of 60), with mixed loss in the remainder (PMID 41477176); recorded as documented association only with the chronic-perforation and shared-substrate scope carried openly.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: the anchors are chronic-perforation surgical cohorts where the perforation coexists with middle-ear mucosal disease and ossicular change, the conductive gap after repair retains a residual 8-12 dB component, and individual claims require dated tympanometry and audiometry with effusion, ossicular-fixation, and prior-surgery exclusion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MECHANICAL_OR_COMPRESSIVE",
+        "primaryVector": "Loss of tympanic membrane surface area and tension disrupts the pressure-transformer mechanics of the middle ear so a conductive air-bone gap results, the mechanics route supported by the mean 19.1 dB gap narrowing to 9.8 dB when the perforation is anatomically closed, but whether this route produced any individual hearing loss remains hypothesized until tympanometric and audiometric records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at retrospective surgical-cohort class only: myringoplasty cohorts are selected toward symptomatic chronic perforations, the second cohort's perforations arise within tubotympanic chronic suppurative otitis media where infection and mucosal disease share the substrate (the otitis-media hearing-loss window owns its evidence and is not recycled per ME-29), residual air-bone gaps of 8-12 dB persist despite anatomical success, and no acute-traumatic-perforation quantification was located.",
+        "evidenceGaps": "Both anchors are chronic-perforation surgical cohorts with referral selection; the CSOM cohort's perforations sit within chronic suppurative disease so infection and mucosal change confound the perforation-specific component (shared substrate carried openly); residual air-bone gap persists in most repaired ears; no cohort quantifies hearing loss in acute traumatic perforations; and middle-ear effusion, ossicular discontinuity or fixation, and prior surgery compete for individual attribution.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "chronic suppurative otitis media mucosal disease and ossicular erosion (shared substrate with the perforation in the CSOM cohort)",
+          "middle-ear effusion behind an intact or perforated membrane",
+          "otosclerosis and ossicular fixation (published windows, not recycled per ME-29)",
+          "prior otologic surgery",
+          "noise exposure and presbycusis for any sensorineural component"
+        ]
+      },
+      "evidenceGaps": [
+        "Both anchors are chronic-perforation surgical cohorts with referral selection; the CSOM cohort's perforations sit within chronic suppurative disease so infection and mucosal change confound the perforation-specific component (shared substrate carried openly); residual air-bone gap persists in most repaired ears; no cohort quantifies hearing loss in acute traumatic perforations; and middle-ear effusion, ossicular discontinuity or fixation, and prior surgery compete for individual attribution."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY at surgical-cohort class with the shared-substrate and residual-gap limits carried openly: the 465-procedure myringoplasty cohort measured a 19.1 dB mean preoperative air-bone gap narrowing to 9.8 dB after repair (PMID 42338397) and the tubotympanic CSOM cohort found conductive loss in 85 percent of perforated ears (PMID 41477176); because the perforations in both anchors are chronic and the CSOM cohort carries infection as a shared substrate (its hearing evidence belongs to the otitis-media window and is not recycled per ME-29) and residual gaps persist after anatomical success, the conservative standard keeps the edge at association only and routes individual claims through dated tympanometry and audiometry with effusion, ossicular, and surgical exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Öksüz RA, Thurnheer SE, Yu R, et al. Audiological Outcomes in 465 Primary Myringoplasties: Reporting Pitfalls and Lessons Learned J Laryngol Otol. 2026 Aug;140(8):878-883. PMID 42338397.",
+          "note": "Retrospective analysis of 465 primary myringoplasties over 2001-2024 (J Laryngol Otol 2026): mean air-bone gap improved from 19.1 dB to 9.8 dB postoperatively; closure under 10 dB in 53% of patients; posterior perforations did better (8.7 vs 10.2 dB, p=0.0226); residual 8-12 dB gap common despite anatomical success; erratum-linked record noted at preflight (ErratumIn: J Laryngol Otol. 2026 Aug 26:1) - bibliographic detail re-verified against the PubMed record; supports the bounded conductive-gap association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42338397/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 42338397; results (preoperative and postoperative air-bone gap by perforation location)"
+        },
+        {
+          "citation": "Saadaldeen SY, Dawood MR, Jwery AK. Characteristics of sensorineural hearing loss in tubotympanic chronic otitis media Qatar Med J. 2025;2025(4):96. PMID 41477176.",
+          "note": "Cross-sectional study of 60 unilateral tubotympanic chronic otitis media ears with tympanic membrane perforations (Qatar Med J 2025): 85% conductive hearing loss, 15% mixed; presenting symptoms hearing loss 86.7%, tinnitus 36.7%, dizziness 13.3%; sensorineural component associated with longer disease duration (p=0.018) and larger perforation (p=0.036); supports the bounded conductive-predominance association only (CSOM shared substrate carried openly).",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41477176/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 41477176; results (audiological profile of perforated tubotympanic CSOM ears)"
+        }
+      ]
+    }
+  ]
 }

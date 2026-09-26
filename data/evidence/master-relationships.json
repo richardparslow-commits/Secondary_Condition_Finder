@@ -6,8 +6,8 @@
  "installedFrom": "Master Registry Discrepancy Resolution 2026",
  "authorityBoundary": "Authoritative for current relationship direction, proposition text, guard state, source linkage, and KB parity; does not establish an individual VA medical nexus.",
  "counts": {
-  "relationships": 724,
-  "explicitPublicationGuards": 650,
+  "relationships": 732,
+  "explicitPublicationGuards": 658,
   "legacyRationaleBoundaries": 74
  },
  "relationships": [
@@ -23244,6 +23244,249 @@
    "sourceReferenceCount": 3,
    "pathwayIntelligencePresent": false,
    "suggestionObjectHash": "d7c12dbe993ec1175d862b3bfb724da5d259fb472cb4d6e2e97cae7cbef4022c"
+  },
+  {
+   "relationshipId": "rel-paraganglioma-to-hearing-loss",
+   "primaryId": "paraganglioma",
+   "targetId": "hearing-loss",
+   "direction": "paraganglioma -> hearing-loss",
+   "primaryPublicationState": "draft",
+   "rank": 1,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY at surgical-cohort class with the mixed-mechanism and referral-selection limits carried openly: the ten-year head and neck cohort documents variable hearing loss in 90.9 percent of temporal bone cases (PMID 34094530), the tympanic cohort measured an 18.0 dB mean air-bone gap narrowing to 8.0 dB after resection (PMID 42420023), and the glomus tympanicum cohort documented conductive gaps wider than 30 dB (PMID 40570318); because the cohorts are small and referral-selected and the asymptomatic case (PMID 42679647) shows the tumor can exist without otologic symptoms, the conservative standard keeps the edge at association only and routes individual claims through dated audiometry with noise, presbycusis, and ossicular exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY at surgical-cohort class with the mixed-mechanism and referral-selection limits carried openly: the ten-year head and neck cohort documents variable hearing loss in 90.9 percent of temporal bone cases (PMID 34094530), the tympanic cohort measured an 18.0 dB mean air-bone gap narrowing to 8.0 dB after resection (PMID 42420023), and the glomus tympanicum cohort documented conductive gaps wider than 30 dB (PMID 40570318); because the cohorts are small and referral-selected and the asymptomatic case (PMID 42679647) shows the tumor can exist without otologic symptoms, the conservative standard keeps the edge at association only and routes individual claims through dated audiometry with noise, presbycusis, and ossicular exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to the mass-effect route with the mixed-mechanism and referral-selection limits carried openly: the ten-year head and neck paraganglioma cohort reports variable hearing loss in 90.9% of temporal bone cases (PMID 34094530), the 19-case tympanic cohort measured an 18.0 dB mean air-bone gap narrowing to 8.0 dB after resection (PMID 42420023), and the 15-case glomus tympanicum cohort documented conductive gaps wider than 30 dB (PMID 40570318); the incidentally discovered glomus tympanicum remained asymptomatic for five years (PMID 42679647, counterweight carried on the edge), the conductive and sensorineural components are carried together on this umbrella edge with no separate conductive-hearing-loss edge (identity-duplication discipline), and ME-29 bars recycling the acoustic-neuroma, otosclerosis, and cholesteatoma windows, so individual claims route through dated audiometry with noise, presbycusis, and ossicular exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "All anchors are small single-institution retrospective surgical series with referral selection toward symptomatic tumors; hearing loss is reported as variable across mixed conductive and sensorineural mechanisms without pooled quantification; chronic middle-ear effusion and ossicular erosion compete with simple mass effect for the conductive component; the asymptomatic incidental case (PMID 42679647) shows symptoms are not universal; and noise exposure, presbycusis, otosclerosis, and prior otologic surgery compete for individual attribution."
+   ],
+   "sourceIds": [
+    "pmid-34094530",
+    "pmid-42420023",
+    "pmid-40570318"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "7d47da26483660027345871ff2a6a959346896e0cc6e410c457da9e2eec4648b"
+  },
+  {
+   "relationshipId": "rel-paraganglioma-to-tinnitus",
+   "primaryId": "paraganglioma",
+   "targetId": "tinnitus",
+   "direction": "paraganglioma -> tinnitus",
+   "primaryPublicationState": "draft",
+   "rank": 2,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY at surgical-series class with the intervention-entanglement and asymptomatic-counterweight limits carried openly: the 25-case early-stage cohort had pulsatile tinnitus improve in all patients after complete resection (PMID 38217439), while the incidentally discovered glomus tympanicum remained asymptomatic over five years of watchful waiting (PMID 42679647); because improvement-after-removal cannot separate natural fluctuation from treatment effect and the counterweight case shows the symptom is not constitutive, the conservative standard keeps the edge at association only and routes individual claims through dated otologic assessment with vascular-auscultation and somatosound exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY at surgical-series class with the intervention-entanglement and asymptomatic-counterweight limits carried openly: the 25-case early-stage cohort had pulsatile tinnitus improve in all patients after complete resection (PMID 38217439), while the incidentally discovered glomus tympanicum remained asymptomatic over five years of watchful waiting (PMID 42679647); because improvement-after-removal cannot separate natural fluctuation from treatment effect and the counterweight case shows the symptom is not constitutive, the conservative standard keeps the edge at association only and routes individual claims through dated otologic assessment with vascular-auscultation and somatosound exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to the vascular-bruit route with the intervention-entanglement and asymptomatic-counterweight limits carried openly: in the 25-case early-stage glomus tympanicum cohort pulsatile tinnitus improved in every patient after complete resection (PMID 38217439), while the incidentally discovered glomus tympanicum remained otologically asymptomatic for five years (PMID 42679647, counterweight carried on the edge); improvement-after-removal cannot separate treatment from natural fluctuation and the symptom is not constitutive of the tumor, and ME-29 bars recycling the conductive-hearing-loss-to-tinnitus window's otosclerosis anchors, so individual claims route through dated otologic assessment with vascular-auscultation and somatosound exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "The symptomatic anchor is a 25-case retrospective surgical series with improvement measured after intervention; the asymptomatic counterweight case (PMID 42679647) shows the tumor can exist without otologic symptoms for years; no cohort stratifies tinnitus prevalence by tumor grade or extent; and vascular stenosis, hypertension with audible bruit, superior-semicircular-canal dehiscence (published window, not recycled per ME-29), and hearing-loss-related somatosounds compete for individual attribution."
+   ],
+   "sourceIds": [
+    "pmid-38217439",
+    "pmid-42679647"
+   ],
+   "sourceReferenceCount": 2,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "c24746f967e65cf1673b8f3c403ddf95ac9f63d0b1b8c2aa31033fba5a4bacd9"
+  },
+  {
+   "relationshipId": "rel-paraganglioma-to-cranial-nerve-palsy",
+   "primaryId": "paraganglioma",
+   "targetId": "cranial-nerve-palsy",
+   "direction": "paraganglioma -> cranial-nerve-palsy",
+   "primaryPublicationState": "draft",
+   "rank": 3,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY at surgical-cohort class with the treatment-mediated limit carried openly: the head and neck cohort found the facial nerve affected in 36.4 percent of cases at presentation (PMID 34094530) and the jugulotympanic cohort documents lower cranial nerve invasion with a depth-response relationship (five of six deeply invasive tumors developed palsy, PMID 39326398); because the cohort's quantified persistent palsies were post-surgical (preoperative lower cranial nerve function was normal in all patients), tumor and treatment contributions cannot be separated, so the conservative standard keeps the edge at association only and routes individual claims through dated neurologic and operative records with stroke, idiopathic, and competing-mass exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY at surgical-cohort class with the treatment-mediated limit carried openly: the head and neck cohort found the facial nerve affected in 36.4 percent of cases at presentation (PMID 34094530) and the jugulotympanic cohort documents lower cranial nerve invasion with a depth-response relationship (five of six deeply invasive tumors developed palsy, PMID 39326398); because the cohort's quantified persistent palsies were post-surgical (preoperative lower cranial nerve function was normal in all patients), tumor and treatment contributions cannot be separated, so the conservative standard keeps the edge at association only and routes individual claims through dated neurologic and operative records with stroke, idiopathic, and competing-mass exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to the invasion-compression route with the treatment-mediated limit carried openly: the head and neck paraganglioma cohort found the facial nerve affected in 36.4% of cases at presentation (PMID 34094530) and the 19-case jugulotympanic cohort documents a depth-response relationship for lower cranial nerve palsy (invasion depth 9.5 mm or greater: 5 of 6 patients, p=0.02; PMID 39326398); the cohort's quantified persistent lower cranial nerve palsies were post-surgical with normal preoperative function, so tumor and treatment contributions cannot be separated, and ME-29 bars recycling the acoustic-neuroma and otitis-externa cranial-nerve windows, so individual claims route through dated neurologic and operative records with stroke, idiopathic facial palsy, and competing-mass exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "Both anchors are small single-institution retrospective surgical cohorts; the lower cranial nerve palsy quantification is treatment-mediated (post-surgical) while preoperative function was normal, so the untreated natural-history palsy rate is unquantified; deep medial invasion predicts surgical morbidity; and stroke, idiopathic facial palsy, skull-base infection, and other skull-base neoplasms compete for individual attribution."
+   ],
+   "sourceIds": [
+    "pmid-39326398",
+    "pmid-34094530"
+   ],
+   "sourceReferenceCount": 2,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "b7e609a73c5f63ec81ba51ca80f03d9b1cec56ea83fb52d13c7483fc8c2799cc"
+  },
+  {
+   "relationshipId": "rel-paraganglioma-to-hypertension",
+   "primaryId": "paraganglioma",
+   "targetId": "hypertension",
+   "direction": "paraganglioma -> hypertension",
+   "primaryPublicationState": "draft",
+   "rank": 4,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY at retrospective-cohort class with the secretory-scope and background-prevalence limits carried openly: the 201-patient PPGL cohort found hypertension in 82 percent with similar prevalence in the paraganglioma subgroup (PMID 40641054) and the 140-patient paraganglioma cohort found sustained hypertension in 68.8 percent of clinically suspected versus 47.1 percent of incidental tumors (PMID 41679891); because the cohorts mix secretory states and the incidental-tumor rate approaches background prevalence, the conservative standard keeps the edge at association only and routes individual claims through dated metanephrine testing with essential, renal, medication, and sleep-apnea exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY at retrospective-cohort class with the secretory-scope and background-prevalence limits carried openly: the 201-patient PPGL cohort found hypertension in 82 percent with similar prevalence in the paraganglioma subgroup (PMID 40641054) and the 140-patient paraganglioma cohort found sustained hypertension in 68.8 percent of clinically suspected versus 47.1 percent of incidental tumors (PMID 41679891); because the cohorts mix secretory states and the incidental-tumor rate approaches background prevalence, the conservative standard keeps the edge at association only and routes individual claims through dated metanephrine testing with essential, renal, medication, and sleep-apnea exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to the catecholamine-secretion route with the secretory-scope and background-prevalence limits carried openly: the 201-patient PPGL cohort found hypertension in 82% with similar prevalence in the paraganglioma subgroup (PMID 40641054) and the 140-patient paraganglioma cohort found sustained hypertension in 68.8% of clinically suspected versus 47.1% of incidental tumors (PMID 41679891); non-secretory head and neck paragangliomas are frequent and the incidental-tumor rate approaches background prevalence, and ME-29 bars recycling the pheochromocytoma hypertension window (PMID 24893135), so individual claims route through dated plasma free metanephrines with essential, renal, medication, and sleep-apnea exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "Both anchors are retrospective tertiary-center cohorts; the comparative cohort reports paraganglioma and pheochromocytoma together for the 82 percent figure; non-secretory head and neck paragangliomas are underrepresented in the hypertension framing; incidental tumors show 47.1 percent sustained hypertension near background prevalence; and essential hypertension, renal disease, obstructive sleep apnea, and medication effects compete for individual attribution."
+   ],
+   "sourceIds": [
+    "pmid-40641054",
+    "pmid-41679891"
+   ],
+   "sourceReferenceCount": 2,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "b15c486c6fe918ca5d0804feeb472b7f451abb7771de30275d7f3786c1cbfd40"
+  },
+  {
+   "relationshipId": "rel-patent-ductus-arteriosus-to-pulmonary-hypertension",
+   "primaryId": "patent-ductus-arteriosus",
+   "targetId": "pulmonary-hypertension",
+   "direction": "patent-ductus-arteriosus -> pulmonary-hypertension",
+   "primaryPublicationState": "draft",
+   "rank": 1,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY at review plus registry class with the preterm-confound and incidence-gap limits carried openly: the Cardiology Review overview frames the ductal shunt as manifesting with pulmonary hypertension symptoms and Eisenmenger progression (PMID 42661256), the adult closure-registry review reports pulmonary arterial hypertension commonly complicating adult PDA management (PMID 42525314), and the isolated-PDA severe-PHT case documents the pathway's extreme (PMID 41362902); because no primary incidence cohort exists and preterm populations share the bronchopulmonary-dysplasia driver, the conservative standard keeps the edge at association only and routes individual claims through dated echocardiography with prematurity-lung-disease, thromboembolic, and left-heart exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY at review plus registry class with the preterm-confound and incidence-gap limits carried openly: the Cardiology Review overview frames the ductal shunt as manifesting with pulmonary hypertension symptoms and Eisenmenger progression (PMID 42661256), the adult closure-registry review reports pulmonary arterial hypertension commonly complicating adult PDA management (PMID 42525314), and the isolated-PDA severe-PHT case documents the pathway's extreme (PMID 41362902); because no primary incidence cohort exists and preterm populations share the bronchopulmonary-dysplasia driver, the conservative standard keeps the edge at association only and routes individual claims through dated echocardiography with prematurity-lung-disease, thromboembolic, and left-heart exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to the shunt-flow-overload route with the preterm-confound and incidence-gap limits carried openly: the shunt-pathophysiology overview frames pulmonary hypertension symptoms and Eisenmenger progression (PMID 42661256), the adult closure-registry review reports pulmonary arterial hypertension commonly complicating adult PDA management (PMID 42525314), and the isolated-PDA severe-PHT case documents the pathway's extreme (PMID 41362902); no primary incidence cohort exists and bronchopulmonary dysplasia co-drives pulmonary hypertension in preterm populations (shared driver carried openly), and ME-29 bars recycling the atrial-septal-defect pulmonary-hypertension window (PMID 30305956), so individual claims route through dated echocardiography with prematurity-lung-disease, thromboembolic, and left-heart exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No primary cohort quantifies incident pulmonary hypertension after PDA; the preterm literature is confounded by bronchopulmonary dysplasia and prematurity lung disease with PDA-BPD correlation rather than attribution; the severe-PHT case (PMID 41362902) is a single report with a lung-biopsy confound; adult registry data are referral-selected; and prematurity lung disease, thromboembolic disease, left-heart disease, and connective-tissue disease compete for individual attribution."
+   ],
+   "sourceIds": [
+    "pmid-42661256",
+    "pmid-42525314",
+    "pmid-41362902"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "4b2a4de69209e8e499fd663acd1a2c41e704db178410a44855e3799f7f0734d6"
+  },
+  {
+   "relationshipId": "rel-patent-ductus-arteriosus-to-congestive-heart-failure",
+   "primaryId": "patent-ductus-arteriosus",
+   "targetId": "congestive-heart-failure",
+   "direction": "patent-ductus-arteriosus -> congestive-heart-failure",
+   "primaryPublicationState": "draft",
+   "rank": 2,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY at review plus cohort class with the definitional-exposure and subclinical-outcome limits carried openly: the review anchors frame the ductal shunt with edema and hemodynamic improvement after closure (PMIDs 42661256, 42711802), and the adult preterm cohort documents persistent diastolic and right-ventricular remodeling after symptomatic PDA in infancy (PMID 41986666); because the cohort exposure definition includes congestive heart failure and the adult differences are subclinical, the conservative standard keeps the edge at association only and routes individual claims through dated echocardiography with ischemic, valvular, myocardial, and renal exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY at review plus cohort class with the definitional-exposure and subclinical-outcome limits carried openly: the review anchors frame the ductal shunt with edema and hemodynamic improvement after closure (PMIDs 42661256, 42711802), and the adult preterm cohort documents persistent diastolic and right-ventricular remodeling after symptomatic PDA in infancy (PMID 41986666); because the cohort exposure definition includes congestive heart failure and the adult differences are subclinical, the conservative standard keeps the edge at association only and routes individual claims through dated echocardiography with ischemic, valvular, myocardial, and renal exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to the shunt-volume-overload route with the definitional-exposure and subclinical-outcome limits carried openly: the review anchors frame the ductal shunt with edema and hemodynamic improvement after closure (PMIDs 42661256, 42711802) and the 107-person adult preterm cohort documents persistent diastolic and right-ventricular remodeling after symptomatic PDA in infancy (PMID 41986666); the cohort's symptomatic-PDA exposure definition includes congestive heart failure at presentation (partially definitional, carried openly) and the adult differences are subclinical rather than heart-failure diagnoses, and ME-29 bars recycling the myocarditis and cardiomyopathy windows, so individual claims route through dated echocardiography with ischemic, valvular, myocardial, and renal exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "The review anchors are narrative class; the defining cohort exposure includes congestive heart failure at presentation (partially definitional); the adult follow-up differences are subclinical remodeling without clinical heart-failure outcomes; prematurity itself alters myocardial development (shared substrate in the adult cohort); and ischemic, valvular, and myocardial diseases compete for individual attribution."
+   ],
+   "sourceIds": [
+    "pmid-42711802",
+    "pmid-42661256",
+    "pmid-41986666"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "eeee91ab2b4f5ae6e17e42cedab8835a4cb6edc38ef4bdad18339b508191d9cc"
+  },
+  {
+   "relationshipId": "rel-perforated-eardrum-to-conductive-hearing-loss",
+   "primaryId": "perforated-eardrum",
+   "targetId": "conductive-hearing-loss",
+   "direction": "perforated-eardrum -> conductive-hearing-loss",
+   "primaryPublicationState": "draft",
+   "rank": 1,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY at surgical-cohort class with the shared-substrate and residual-gap limits carried openly: the 465-procedure myringoplasty cohort measured a 19.1 dB mean preoperative air-bone gap narrowing to 9.8 dB after repair (PMID 42338397) and the tubotympanic CSOM cohort found conductive loss in 85 percent of perforated ears (PMID 41477176); because the perforations in both anchors are chronic and the CSOM cohort carries infection as a shared substrate (its hearing evidence belongs to the otitis-media window and is not recycled per ME-29) and residual gaps persist after anatomical success, the conservative standard keeps the edge at association only and routes individual claims through dated tympanometry and audiometry with effusion, ossicular, and surgical exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY at surgical-cohort class with the shared-substrate and residual-gap limits carried openly: the 465-procedure myringoplasty cohort measured a 19.1 dB mean preoperative air-bone gap narrowing to 9.8 dB after repair (PMID 42338397) and the tubotympanic CSOM cohort found conductive loss in 85 percent of perforated ears (PMID 41477176); because the perforations in both anchors are chronic and the CSOM cohort carries infection as a shared substrate (its hearing evidence belongs to the otitis-media window and is not recycled per ME-29) and residual gaps persist after anatomical success, the conservative standard keeps the edge at association only and routes individual claims through dated tympanometry and audiometry with effusion, ossicular, and surgical exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to the pressure-transformer mechanics route with the shared-substrate and residual-gap limits carried openly: the 465-procedure myringoplasty cohort measured a 19.1 dB mean preoperative air-bone gap narrowing to 9.8 dB after repair with closure under 10 dB in 53% (PMID 42338397) and the tubotympanic CSOM cohort found conductive loss in 85% of perforated ears (PMID 41477176); the CSOM perforations sit within chronic suppurative disease (shared substrate carried openly, its hearing evidence owned by the otitis-media window per ME-29), residual 8-12 dB gaps persist despite anatomical success, and the sensorineural component is withheld as disease-duration-linked within CSOM, so individual claims route through dated tympanometry and audiometry with effusion, ossicular, and surgical exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "Both anchors are chronic-perforation surgical cohorts with referral selection; the CSOM cohort's perforations sit within chronic suppurative disease so infection and mucosal change confound the perforation-specific component (shared substrate carried openly); residual air-bone gap persists in most repaired ears; no cohort quantifies hearing loss in acute traumatic perforations; and middle-ear effusion, ossicular discontinuity or fixation, and prior surgery compete for individual attribution."
+   ],
+   "sourceIds": [
+    "pmid-42338397",
+    "pmid-41477176"
+   ],
+   "sourceReferenceCount": 2,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "b4e6efe2eb1afc9265a6ff5036de3b1c450fe211b1b646cb924825a3665dbb8e"
+  },
+  {
+   "relationshipId": "rel-patellar-subluxation-to-patellofemoral-pain-syndrome",
+   "primaryId": "patellar-subluxation",
+   "targetId": "patellofemoral-pain-syndrome",
+   "direction": "patellar-subluxation -> patellofemoral-pain-syndrome",
+   "primaryPublicationState": "draft",
+   "rank": 1,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY at cohort-follow-up plus prevalence class with the shared-substrate and dislocation-anchored limits carried openly: the 10-year randomized-trial follow-up found sustained redislocation associated with significantly lower KOOS-Pain, KOOS-Quality-of-Life, and Kujala scores (PMID 42080086) and the prevalence cohort documented high-grade trochlear dysplasia eleven times more likely with previous instability (PMID 34546985); because the pain gradient is dislocation-anchored and trochlear dysplasia predisposes to both conditions (shared substrate rather than causal chain), the conservative standard keeps the edge at association only and routes individual claims through dated orthopedic assessment with tendinopathy, cartilage, plica, and referred-pain exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY at cohort-follow-up plus prevalence class with the shared-substrate and dislocation-anchored limits carried openly: the 10-year randomized-trial follow-up found sustained redislocation associated with significantly lower KOOS-Pain, KOOS-Quality-of-Life, and Kujala scores (PMID 42080086) and the prevalence cohort documented high-grade trochlear dysplasia eleven times more likely with previous instability (PMID 34546985); because the pain gradient is dislocation-anchored and trochlear dysplasia predisposes to both conditions (shared substrate rather than causal chain), the conservative standard keeps the edge at association only and routes individual claims through dated orthopedic assessment with tendinopathy, cartilage, plica, and referred-pain exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to the maltracking and abnormal-retropatellar-loading route with the shared-substrate and dislocation-anchored limits carried openly: the 10-year randomized-trial follow-up found sustained redislocation associated with significantly lower KOOS-Pain, KOOS-Quality-of-Life, and Kujala Anterior Knee Pain Scale scores (PMID 42080086) and the prevalence cohort found high-grade trochlear dysplasia eleven times more likely with previous instability (PMID 34546985); trochlear dysplasia and malalignment predispose to BOTH instability and anterior knee pain (shared anatomic substrate rather than causal chain, carried openly) and the quantified pain gradient is dislocation-anchored rather than subluxation-specific, and ME-29 bars recycling the tendinopathy and osteoarthritis windows, so individual claims route through dated orthopedic assessment with tendinopathy, cartilage, plica, and referred-pain exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "The located pain gradient is anchored to recurrent patellar dislocation rather than subluxation events; trochlear dysplasia and malalignment predispose to both instability and anterior knee pain (shared anatomic substrate carried openly); no cohort quantifies incident patellofemoral pain after documented subluxation; the samples are young and activity-selected; and patellar tendinopathy, chondral lesions, plica, and referred hip pain compete for individual attribution."
+   ],
+   "sourceIds": [
+    "pmid-42080086",
+    "pmid-34546985"
+   ],
+   "sourceReferenceCount": 2,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "b34b6b4bf91a790d8dd5a628433af73fcf6f7c130600d6b6480e52a504c17f76"
   }
  ],
  "lastUpdatedBy": "batch-D1-draft-authoring",

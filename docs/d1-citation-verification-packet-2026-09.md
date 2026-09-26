@@ -12917,6 +12917,286 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 **Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
 
+### `paraganglioma` → `hearing-loss` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Head and neck and temporal bone paragangliomas document hearing loss at cohort level: the ten-year third-center head and neck paraganglioma cohort reports variable hearing loss in 90.9 percent of temporal bone paraganglioma cases (PMID 34094530), the 19-case tympanic paraganglioma surgical cohort measured a mean preoperative air-bone gap of 18.0 dB narrowing to 8.0 dB after resection (PMID 42420023), and the 15-case glomus tympanicum cohort documented preoperative conductive hearing loss with air-bone gaps wider than 30 dB requiring ossicular reconstruction in three patients (PMID 40570318); recorded as documented association only with the mixed conductive and sensorineural character carried openly.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: the anchors are small single-institution retrospective surgical cohorts measuring hearing at presentation, tumor extent and chronic middle-ear change both drive the conductive component, and individual claims require dated audiometry with noise, presbycusis, and ossicular exclusion.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 362.1 — Merzouqi B, El Bouhmadi K, Oukesou Y, et al. Head and neck paragangliomas: Ten years of experience in a third health center. A cohort study Ann Med Surg (Lond). 2021 Jun;66:102412. PMID 34094530.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/34094530/
+- Source checked on: 2026-09-26
+- Locator: PMID 34094530; results (temporal bone paraganglioma presentation and hearing loss frequency)
+- Note under review: Ten-year head and neck paraganglioma cohort in a third-level center (Ann Med Surg 2021; 11 patients): temporal bone paragangliomas appear as a pulsatile mass behind the tympanic membrane causing variable hearing loss in 90.9% of cases; facial nerve the most frequently affected cranial nerve (36.4%); supports the bounded hearing-loss association only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 362.2 — Wang Q, He CF, Jiang L, et al. [Clinical outcomes of surgical management in 19 cases of tympanic paraganglioma] Zhonghua Er Bi Yan Hou Tou Jing Wai Ke Za Zhi. 2026 Jun 7;61(6):617-622. PMID 42420023.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42420023/
+- Source checked on: 2026-09-26
+- Locator: PMID 42420023; results (preoperative and postoperative air-bone gap)
+- Note under review: Surgical cohort of 19 tympanic paragangliomas (Zhonghua Er Bi Yan Hou Tou Jing Wai Ke Za Zhi 2026): mean air-bone gap 18.0 dB preoperatively improving to 8.0 dB postoperatively (P=0.005); type A tumors improved more than type B (17.0 vs 10.0 dB); supports the bounded conductive-gap association only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 362.3 — Natour A, Natour HH, DeDio R, et al. Carbon Dioxide (CO 2 ) Laser Glomus Tympanicum Resection: Hearing Outcomes and Recurrence Rates Otol Neurotol. 2025 Oct 1;46(9):e399-e402. PMID 40570318.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/40570318/
+- Source checked on: 2026-09-26
+- Locator: PMID 40570318; results (preoperative air-bone gap and ossicular reconstruction)
+- Note under review: CO2-laser glomus tympanicum resection cohort, 15 patients (Otol Neurotol 2025): three patients had preoperative conductive hearing loss with air-bone gap wider than 30 dB requiring ossicular chain reconstruction with postoperative gap closure; no significant postoperative audiometric worsening in the remainder; supports the bounded conductive-gap association only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `paraganglioma` → `tinnitus` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Glomus tympanicum tumors document pulsatile tinnitus at surgical-series level: in the 25-case early-stage glomus tympanicum comparison cohort pulsatile tinnitus was present preoperatively and improved in every patient after complete tumor removal (PMID 38217439), while the incidentally discovered glomus tympanicum followed five years without otologic symptoms (PMID 42679647) establishes the symptom is not constitutive of the tumor; recorded as documented association only with the pulsatile vascular character carried openly.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: the symptomatic anchor is a small retrospective surgical series in which post-removal improvement is entangled with the intervention, the asymptomatic case shows the tumor can exist without tinnitus, and individual claims require dated otologic assessment with vascular-auscultation and somatosound exclusion.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 363.1 — Fu X, Wu J, Lyu J, et al. Microscopic Versus Endoscopic Ear Surgery for Early-Stage Glomus Tympanicum Tumors Ear Nose Throat J. 2026 Aug;105(8):NP618-NP626. PMID 38217439.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/38217439/
+- Source checked on: 2026-09-26
+- Locator: PMID 38217439; results (symptom outcomes including pulsatile tinnitus after resection)
+- Note under review: Retrospective comparison of microscopic versus endoscopic surgery for 25 early-stage glomus tympanicum tumors (Ear Nose Throat J 2026): pulsatile tinnitus improved in all patients after complete tumor resection; all tumors completely resected with no major complications; supports the bounded pulsatile-tinnitus association only (improvement-after-removal, intervention-entangled).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 363.2 — Matarazzo A, Sabatino A, Almeida G, et al. Glomus Tympanicum in an Asymptomatic 82-Year-Old Woman Am J Otolaryngol. 2026 Sep-Oct;47(5):104914. PMID 42679647.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42679647/
+- Source checked on: 2026-09-26
+- Locator: PMID 42679647; clinical course (asymptomatic presentation and 5-year stability)
+- Note under review: Incidentally discovered glomus tympanicum in an 82-year-old woman (Am J Otolaryngol 2026; case report with 5-year follow-up): no otologic symptoms at presentation, mild-to-moderate ipsilateral sensorineural hearing loss on audiometry, tumor stable over 5 years of watchful waiting; COUNTERWEIGHT establishing the symptom is not constitutive, carried openly.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `paraganglioma` → `cranial-nerve-palsy` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Jugulotympanic paragangliomas document cranial nerve involvement at cohort level: the ten-year head and neck paraganglioma cohort found the facial nerve the most frequently affected cranial nerve (36.4 percent of cases, PMID 34094530), and the 19-case jugulotympanic surgical cohort documents lower cranial nerve invasion with deep medial tumor extension predicting palsy (invasion depth 9.5 mm or greater: five of six patients developed lower cranial nerve palsy, PMID 39326398); recorded as documented association only with the treatment-mediated component carried openly (the quantified persistent palsies were post-surgical with normal preoperative lower cranial nerve function).
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: the facial-nerve finding is presentation-level tumor effect but the quantified persistent lower cranial nerve palsies followed surgery, so tumor-attributable and treatment-attributable components cannot be separated in the located anchors, and individual claims require dated neurologic and operative records with stroke, idiopathic facial palsy, and other skull-base-mass exclusion.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 364.1 — Koh SM, Song B, Cho YS. Clinical Features and Surgical Outcomes of Jugulotympanic Paraganglioma Audiol Neurootol. 2025;30(2):101-108. PMID 39326398.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/39326398/
+- Source checked on: 2026-09-26
+- Locator: PMID 39326398; results (cranial nerve outcomes and invasion-depth relationship)
+- Note under review: Single-institution retrospective review of 19 jugulotympanic paraganglioma resections 2004-2022 (Audiol Neurootol 2025): lower cranial nerve palsy lasting more than 1 year in 7 patients after surgery; invasion depth 9.5 mm or greater predicted lower cranial nerve palsy (5 of 6 patients, p=0.02); preoperative lower cranial nerve function normal in all patients; supports the bounded invasion association with the treatment-mediated limit carried openly.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 364.2 — Merzouqi B, El Bouhmadi K, Oukesou Y, et al. Head and neck paragangliomas: Ten years of experience in a third health center. A cohort study Ann Med Surg (Lond). 2021 Jun;66:102412. PMID 34094530.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/34094530/
+- Source checked on: 2026-09-26
+- Locator: PMID 34094530; results (cranial nerve involvement frequencies)
+- Note under review: Ten-year head and neck paraganglioma cohort (Ann Med Surg 2021; 11 patients): the facial nerve is the most frequently affected cranial nerve, affected in 36.4% of cases; supports the bounded presentation-level cranial-nerve-involvement association only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `paraganglioma` → `hypertension` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Pheochromocytoma and paraganglioma cohorts document hypertension at cohort level: the 201-patient PPGL tertiary-center cohort found hypertension in 82 percent of all patients with similar prevalence between pheochromocytoma and paraganglioma groups (PMID 40641054), and the 140-patient paraganglioma cohort found sustained hypertension more common in clinically suspected than incidentally discovered tumors (68.8 versus 47.1 percent, PMID 41679891); recorded as documented association only with the catecholamine-secreting sympathetic scope carried openly (head and neck paragangliomas are frequently non-secretory).
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: the anchors are retrospective tertiary-center cohorts mixing secreting and non-secreting tumors across sites, background hypertension prevalence at comparable ages is high, and individual claims require dated biochemical testing (plasma free metanephrines) with essential-hypertension, renal, medication, and sleep-apnea exclusion.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 365.1 — Pihlblad VED, Calissendorff J, Falhammar H. Differences in Clinical Presentation Between Pheochromocytomas and Paragangliomas Clin Endocrinol (Oxf). 2025 Nov;103(5):651-658. PMID 40641054.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/40641054/
+- Source checked on: 2026-09-26
+- Locator: PMID 40641054; results (blood pressure and symptom comparison between tumor groups)
+- Note under review: Retrospective cohort of 201 PPGL patients at a tertiary center 2005-2024 (Clin Endocrinol 2025): hypertension in 82% of all patients, similar prevalence between pheochromocytoma and paraganglioma groups; classic triad only 12%; paragangliomas less often epinephrine-producing (25.0%); supports the bounded paraganglioma-hypertension association only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 365.2 — Ferreira P, Ribeiro S, Meira I, et al. Incidentally vs nonincidentally diagnosed paragangliomas: Experience of a tertiary referral center Endocrinol Diabetes Nutr (Engl Ed). 2026 Feb;73(2):501673. PMID 41679891.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/41679891/
+- Source checked on: 2026-09-26
+- Locator: PMID 41679891; results (hypertension prevalence by mode of discovery)
+- Note under review: Retrospective cohort of 140 paraganglioma patients 2004-2023 (Endocrinol Diabetes Nutr 2026): sustained hypertension in 68.8% of clinically suspected versus 47.1% of incidentally discovered tumors (p=0.016); classic symptoms more frequent in suspected cases; supports the bounded presentation-gradient association only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `patent-ductus-arteriosus` → `pulmonary-hypertension` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Patent ductus arteriosus documents pulmonary hypertension at review and registry level: the Cardiology Review PDA overview describes the left-to-right shunt manifesting with pulmonary hypertension symptoms and progressing to reversed shunt (Eisenmenger syndrome) when untreated (PMID 42661256), the multicenter adult transcatheter-closure registry review reports pulmonary arterial hypertension commonly present in adults with PDA complicating clinical decision-making (PMID 42525314), and the preterm isolated-PDA case with severe pulmonary hypertension and lung-biopsy-confirmed pulmonary interstitial glycogenosis documents the pathway's severe end (PMID 41362902); recorded as documented association only with the preterm and adult scope split carried openly.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: the anchors are narrative reviews, a registry overview, and a single case, no primary cohort quantifies incident pulmonary hypertension after PDA, prematurity and bronchopulmonary dysplasia co-drive pulmonary hypertension in the preterm population, and individual claims require dated echocardiography with prematurity-lung-disease, thromboembolic, and left-heart-disease exclusion.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 366.1 — Swamynathan R, Dolan L, Frishman WH, et al. Patent Ductus Arteriosus Cardiol Rev. 2026 Aug 28.doi: 10.1097/CRD.0000000000001456. PMID 42661256.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42661256/
+- Source checked on: 2026-09-26
+- Locator: PMID 42661256; pathophysiology (left-to-right shunt manifestations and Eisenmenger progression)
+- Note under review: Cardiology Review overview of patent ductus arteriosus (2026): PDA creates a left-to-right shunt from aorta to pulmonary artery, often manifesting with symptoms of pulmonary hypertension and edema; untreated progression reverses the shunt (Eisenmenger syndrome); supports the bounded shunt-pulmonary-hypertension framing only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 366.2 — Un KC, Sagar P, Sheth R, et al. Transcatheter Closure of Patent Ductus Arteriosus in Adults Curr Cardiol Rep. 2026 Jul 29;28(1).doi: 10.1007/s11886-026-02395-z. PMID 42525314.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42525314/
+- Source checked on: 2026-09-26
+- Locator: PMID 42525314; recent findings (pulmonary arterial hypertension in adult PDA)
+- Note under review: Multicenter registry review of transcatheter PDA closure in adults (Curr Cardiol Rep 2026): closure safe and effective with 90-100% success; the common presence of pulmonary arterial hypertension complicates clinical decision-making in adults; supports the bounded adult-PAH-comorbidity framing only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 366.3 — Fadel NB, Almoli E, de Nanassy J, et al. New Insights: P.I.G in Preterm Infants With Isolated PDA and Severe Pulmonary Hypertension Case Rep Pediatr. 2025;2025:6268296. PMID 41362902.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/41362902/
+- Source checked on: 2026-09-26
+- Locator: PMID 41362902; clinical course (isolated PDA with severe pulmonary hypertension)
+- Note under review: Case report of a preterm infant with isolated PDA developing severe pulmonary hypertension and respiratory failure (Case Rep Pediatr 2025): lung biopsy during PDA ligation showed pulmonary interstitial glycogenosis; first such report in isolated PDA without other cardiac lesions; supports the bounded severe-end pathway only (single case, biopsy confound carried).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `patent-ductus-arteriosus` → `congestive-heart-failure` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Patent ductus arteriosus documents heart-failure physiology at review and cohort level: the Cardiology Review PDA overview describes the left-to-right shunt manifesting with pulmonary-hypertension symptoms and edema (PMID 42661256), the adult PDA management review reports closure producing considerable hemodynamic and clinical improvement (PMID 42711802), and the 107-person young-adult preterm cohort defined symptomatic PDA in infancy by large left-to-right shunt or congestive heart failure and found those with symptomatic PDA carried higher resting diastolic pressure, lower tissue-Doppler diastolic velocities, and larger right ventricular dimensions in early adulthood (PMID 41986666); recorded as documented association only with the partially definitional exposure and subclinical-outcome limits carried openly.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: the cohort's symptomatic-PDA exposure definition includes congestive heart failure (partially definitional), the adult-outcome differences are subclinical remodeling rather than heart-failure diagnoses, and individual claims require dated echocardiography and clinical assessment with ischemic, valvular, and myocardial exclusion.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 367.1 — Kaywood AJ, Ahmadi A, Frishman WH. Management of Patent Ductus Arteriosus in the Adult Population Cardiol Rev. 2026 Sep 9.doi: 10.1097/CRD.0000000000001470. PMID 42711802.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42711802/
+- Source checked on: 2026-09-26
+- Locator: PMID 42711802; review summary (hemodynamic and clinical improvement after closure)
+- Note under review: Management review of PDA in adults (Cardiol Rev 2026): transcatheter closure preferred; closure results in considerable hemodynamic and clinical improvements in adults; supports the bounded shunt-volume-overload framing only (review class).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 367.2 — Swamynathan R, Dolan L, Frishman WH, et al. Patent Ductus Arteriosus Cardiol Rev. 2026 Aug 28.doi: 10.1097/CRD.0000000000001456. PMID 42661256.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42661256/
+- Source checked on: 2026-09-26
+- Locator: PMID 42661256; pathophysiology (shunt manifestations including edema)
+- Note under review: Cardiology Review overview of patent ductus arteriosus (2026): the left-to-right shunt often manifests with pulmonary hypertension symptoms and edema; supports the bounded volume-overload framing only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 367.3 — Joseph A, Chandra A, Barton GP, et al. Long-term outcomes in adults born preterm with symptomatic patent ductus arteriosus J Perinatol. 2026 Jul;46(7):1164-1170. PMID 41986666.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/41986666/
+- Source checked on: 2026-09-26
+- Locator: PMID 41986666; results (adult cardiovascular findings by neonatal symptomatic-PDA status)
+- Note under review: Young-adult follow-up of 107 adults born preterm (23 with symptomatic PDA defined as large left-to-right shunt or congestive heart failure in the NICU; J Perinatol 2026): higher resting diastolic pressure (80 vs 74 mmHg, p=0.02), lower tissue-Doppler diastolic velocities, larger right ventricular dimensions; supports the bounded long-term-remodeling association only (exposure definition partially includes CHF; outcomes subclinical).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `perforated-eardrum` → `conductive-hearing-loss` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Tympanic membrane perforations document a conductive air-bone gap at surgical-cohort level: the 465-procedure primary myringoplasty cohort measured a mean preoperative air-bone gap of 19.1 dB narrowing to 9.8 dB after anatomical repair, with gap closure under 10 dB in 53 percent of patients (PMID 42338397), and the unilateral tubotympanic chronic otitis media cohort found conductive hearing loss in 85 percent of perforated ears (51 of 60), with mixed loss in the remainder (PMID 41477176); recorded as documented association only with the chronic-perforation and shared-substrate scope carried openly.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: the anchors are chronic-perforation surgical cohorts where the perforation coexists with middle-ear mucosal disease and ossicular change, the conductive gap after repair retains a residual 8-12 dB component, and individual claims require dated tympanometry and audiometry with effusion, ossicular-fixation, and prior-surgery exclusion.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 368.1 — Öksüz RA, Thurnheer SE, Yu R, et al. Audiological Outcomes in 465 Primary Myringoplasties: Reporting Pitfalls and Lessons Learned J Laryngol Otol. 2026 Aug;140(8):878-883. PMID 42338397.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42338397/
+- Source checked on: 2026-09-26
+- Locator: PMID 42338397; results (preoperative and postoperative air-bone gap by perforation location)
+- Note under review: Retrospective analysis of 465 primary myringoplasties over 2001-2024 (J Laryngol Otol 2026): mean air-bone gap improved from 19.1 dB to 9.8 dB postoperatively; closure under 10 dB in 53% of patients; posterior perforations did better (8.7 vs 10.2 dB, p=0.0226); residual 8-12 dB gap common despite anatomical success; erratum-linked record noted at preflight (ErratumIn: J Laryngol Otol. 2026 Aug 26:1) - bibliographic detail re-verified against the PubMed record; supports the bounded conductive-gap association only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 368.2 — Saadaldeen SY, Dawood MR, Jwery AK. Characteristics of sensorineural hearing loss in tubotympanic chronic otitis media Qatar Med J. 2025;2025(4):96. PMID 41477176.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/41477176/
+- Source checked on: 2026-09-26
+- Locator: PMID 41477176; results (audiological profile of perforated tubotympanic CSOM ears)
+- Note under review: Cross-sectional study of 60 unilateral tubotympanic chronic otitis media ears with tympanic membrane perforations (Qatar Med J 2025): 85% conductive hearing loss, 15% mixed; presenting symptoms hearing loss 86.7%, tinnitus 36.7%, dizziness 13.3%; sensorineural component associated with longer disease duration (p=0.018) and larger perforation (p=0.036); supports the bounded conductive-predominance association only (CSOM shared substrate carried openly).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `patellar-subluxation` → `patellofemoral-pain-syndrome` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Patellar instability cohorts document anterior knee pain at cohort level: the 10-year follow-up of the randomized knee-brace versus medial patellofemoral-ligament-repair trial found patients who sustained any redislocation reported significantly lower KOOS-Pain, KOOS-Quality-of-Life, and Kujala Anterior Knee Pain Scale scores than those who remained stable (PMID 42080086), and the skeletally mature prevalence cohort found knees with high-grade trochlear dysplasia eleven times more likely to have had previous patellar instability (p=0.013), documenting the shared anatomic substrate that predisposes to both instability and anterior knee pain (PMID 34546985); recorded as documented association only with the shared-substrate and dislocation-anchored limits carried openly.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: the pain gradient is anchored to recurrent dislocation events rather than subluxation specifically, trochlear dysplasia and malalignment predispose to both instability and pain so part of the association is shared substrate rather than causal, and individual claims require dated orthopedic assessment with tendinopathy, cartilage, and referred-pain exclusion.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 369.1 — von Heideken J, Arendt E, Askenberger M. Long-term Outcomes of Knee Brace Versus Operative Medial Patellofemoral Ligament Repair in Children With First-Time Traumatic Patellar Dislocation: A 10-Year Follow-up From Skeletal Immaturity to Adulthood Orthop J Sports Med. 2026 Apr;14(4):23259671261432589. PMID 42080086.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42080086/
+- Source checked on: 2026-09-26
+- Locator: PMID 42080086; results (pain and function scores by redislocation status)
+- Note under review: Ten-year follow-up of 46 patients from a randomized trial of knee brace versus medial patellofemoral ligament repair for first-time traumatic patellar dislocation (Orthop J Sports Med 2026): redislocation rates 80% (brace) vs 62% (repair); patients with any redislocation reported significantly lower KOOS-Pain, KOOS-Quality-of-Life, and Kujala Anterior Knee Pain Scale scores than those stable; supports the bounded instability-pain-burden association only (dislocation-anchored).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 369.2 — DeVries CA, Bomar JD, Pennock AT. Prevalence of Trochlear Dysplasia and Associations with Patellofemoral Pain and Instability in a Skeletally Mature Population J Bone Joint Surg Am. 2021 Nov 17;103(22):2126-2132. PMID 34546985.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/34546985/
+- Source checked on: 2026-09-26
+- Locator: PMID 34546985; results (trochlear dysplasia association with instability history)
+- Note under review: Prospective prevalence study of 102 patients (203 knees), skeletally mature (J Bone Joint Surg Am 2021): high-grade trochlear dysplasia prevalence about 10%; knees with high-grade dysplasia 11 times more likely to have had previous patellar instability (p=0.013); anterior knee pain and instability characterized together; supports the bounded shared-substrate framing only (dysplasia predisposes to both).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
 ## Implementation mechanics after decisions
 
 - Mapping edits and registry edits must land in lockstep (the registry audit's canonical-JSON hashes and live-use sets will fail otherwise).
