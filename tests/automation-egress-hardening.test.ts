@@ -19,14 +19,22 @@ describe("automation and CI hardening", () => {
 
   it("keeps ClickUp failure reporting metadata-only", () => {
     const source = read(".github/workflows/ci-to-clickup.yml");
+    // Escalation policy and the task body moved into the reporter script so
+    // they are testable; the metadata-only guarantee is asserted where the text
+    // now lives, and the no-log-egress rule across BOTH halves of the pipeline.
+    const reporter = read("scripts/ci-failure-report.js");
 
     expect(source).toContain("CLICKUP_LIST_ID: ${{ secrets.CLICKUP_LIST_ID }}");
-    expect(source).toContain(
+    expect(reporter).toContain(
       "Diagnostic logs and error excerpts remain in GitHub Actions and are not copied into ClickUp.",
     );
-    expect(source).not.toContain("/logs");
-    expect(source).not.toContain("ci-logs.zip");
-    expect(source).not.toContain("ci-error-excerpts.txt");
+
+    for (const forbidden of ["/logs", "ci-logs.zip", "ci-error-excerpts.txt", "download-artifact"]) {
+      expect(source, `ci-to-clickup.yml must not reference ${forbidden}`).not.toContain(forbidden);
+      expect(reporter, `scripts/ci-failure-report.js must not reference ${forbidden}`).not.toContain(
+        forbidden,
+      );
+    }
   });
 
   it("keeps CI verification read-only while retaining diagnostics", () => {
@@ -51,6 +59,16 @@ describe("automation and CI hardening", () => {
       "actions/upload-artifact@330a01c490aca151604b8cf639adc76d48f6c5d4",
     );
     expect(source).not.toMatch(/actions\/(?:checkout|setup-node|upload-artifact)@v\d+/);
+  });
+
+  it("pins the secrets-bearing ClickUp notifier to immutable action commits", () => {
+    const source = read(".github/workflows/ci-to-clickup.yml");
+
+    // This job can read CLICKUP_API_TOKEN, so a mutable `@v4` tag would let an
+    // upstream force-update redirect a secrets-bearing job. Same refs as ci.yml.
+    expect(source).toContain("actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09");
+    expect(source).toContain("actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444");
+    expect(source).not.toMatch(/uses:\s*actions\/[a-z0-9-]+@v\d+/);
   });
 
   it("keeps a real Chrome browser journey in the CI gate", () => {

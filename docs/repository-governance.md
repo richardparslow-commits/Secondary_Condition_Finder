@@ -47,3 +47,38 @@ After any repository-governance change, verify all of the following before consi
 - The exact PR head receives a real Vercel Agent code-review result; deployment readiness alone is insufficient.
 - Any head change after review triggers fresh exact-head CI and a fresh Vercel Agent review.
 - Independent `main` CI passes after merge, including both governance checks.
+
+## CI failure escalation
+
+`.github/workflows/ci-to-clickup.yml` turns a genuine CI failure into a tracked ClickUp task. All escalation policy lives in `scripts/ci-failure-report.js`, covered by `tests/ci-failure-report.test.ts`; the workflow itself only collects run metadata and calls `npm run ci:failure-report`. Policy changes belong in the script and its tests, not in inline shell — an untestable notifier that only runs when something else has already broken is how this workflow previously went its whole life without ever succeeding.
+
+Escalation rules:
+
+- **Escalated:** `failure`, `timed_out`, `startup_failure`, and any conclusion this repository does not recognize. An unknown conclusion is escalated rather than assumed benign, because a lost alert is worse than a duplicate task.
+- **Not escalated:** `cancelled`. `.github/workflows/ci.yml` sets `cancel-in-progress: true` per ref, so a superseding push routinely cancels the run already in flight. That is branch hygiene, not a broken build, and the superseding run escalates itself if it genuinely fails. Filing tasks for superseded runs points humans at good code and trains the queue to be ignored. A cancelled run still reaches the reporter so the skip is logged with its reason instead of passing silently. `tests/ci-failure-report.test.ts` pins this exemption to the `cancel-in-progress` setting that justifies it, so removing that setting forces the exemption to be re-examined.
+- **Not escalated:** `success`, `skipped`, `neutral`, `stale`, `action_required`.
+
+Outcome semantics keep a configuration gap distinguishable from a lost alert:
+
+| Situation | Outcome |
+| --- | --- |
+| Required secrets absent | Warns, records the gap in the job summary, exits successfully — a misconfigured notifier must not masquerade as a CI failure |
+| Same commit, conclusion and failed jobs already escalated | Suppressed as a duplicate; the existing task tracks it |
+| Duplicate lookup errors | Fails open and creates the task anyway |
+| Transport error, `429`, or `5xx` | Retried with backoff, up to a bounded attempt cap |
+| Configured notifier cannot deliver | Exits non-zero, because a real alert was lost |
+
+Task bodies are metadata-only. Diagnostic logs and error excerpts stay in GitHub Actions and are not copied into a third-party tracker.
+
+### Required configuration
+
+Escalation is **disabled** until both repository secrets exist:
+
+- `CLICKUP_API_TOKEN`
+- `CLICKUP_LIST_ID`
+
+Until they are set, CI failures are not posted anywhere and the notifier job emits a warning saying so. Supplying them is a human action in repository settings; no code change can do it.
+
+### Security constraint
+
+The workflow runs on `workflow_run`, so it can read repository secrets. It must check out the default branch and must **never** check out `github.event.workflow_run.head_sha` or `head_branch`: doing so would execute code from an untrusted pull request with `CLICKUP_API_TOKEN` in its environment. The triggering head SHA is consumed as task metadata only. `tests/ci-failure-report.test.ts` pins this.
