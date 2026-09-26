@@ -2521,3 +2521,95 @@ citation-decay-gate debt fixture (`Array.from({ length: 690 })`) had to be moved
 consistent with its own swept assertion. The dry run reported zero lines lacking registry vocabulary,
 and the residue check found no survivors outside the standing benign classes. Standing recommendation:
 batch 59 lands through branch, PR, CI, and merge.
+
+## Mapping Expansion D1 batch 60 (2026-09-26)
+
+Mapping Expansion D1 batch 60 (2026-09-26) authored twelve draft-quarantined relationships across all
+five screened identities - `median-rhomboid-glossitis`, `memory-loss`, `menetrier-s-disease`,
+`microscopic-colitis`, `microscopic-polyangiitis` - classified ASSOCIATION_ONLY with etiologicalConsensus
+NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true, and conservative
+rationale and evidence-gap records on every suggestion. Third consecutive window with no deferred
+identity; all withholdings were proposition-level and recorded on the files.
+
+`median-rhomboid-glossitis` (1 edge): squamous-cell-carcinoma (rank 1, MALIGNANT_TRANSFORMATION) rests
+solely on the fourteen-case 1979 clinicopathologic series reframing the lesion as chronic hyperplastic
+oral candidiasis, which states later lesions become permanent and in a few cases may go further to
+malignant change (PMID 485023). Withheld: -> oral-candidiasis (constitutive - the anchor series
+establishes the lesion IS a candidiasis presentation) and -> halitosis/dysphagia (zero condition-specific
+quantification; the denture-stomatitis review records shared candidal-biofilm co-occurrence only).
+
+`memory-loss` (1 edge): depressive-disorder (rank 1, PSYCHOPHYSIOLOGICAL) rests on the 14,961-participant
+three-wave cross-lagged panel network analysis (memory and orientation predicted depressive symptoms
+earlier; memory a key bridge symptom; cognitive-to-depressive pathway more prominent in women; PMID
+40550276) and the 2,365-participant ACTIVE longitudinal cohort (subjective memory problems linked to more
+depressive symptoms; PMID 40939773), with the late-onset-depression cohort (PMID 41804263) carried ON the
+edge as the documented reverse-direction counterweight. Withheld: -> dementia/Alzheimer (prodromal
+overlap - the PREVIEW material frames subjective cognitive decline as an early symptomatic phase of AD)
+and -> insomnia (direction-inversion - located material runs sleep disruption TO cognitive symptoms).
+
+`menetrier-s-disease` (3 edges): anemia (rank 1, METABOLIC_OR_NUTRITIONAL) rests on the 1969
+isotopically-confirmed blood-loss case with diapedesis from an expanded capillary network (PMID 5311583)
+and the 2025 adult severe-anemia/melena case (PMID 40887784); malnutrition-residuals (rank 2) rests on
+the pediatric case-series review (edema secondary to hypoalbuminemia; PMID 33505900), the 2025 pediatric
+hypoalbuminemia-2.3 case (PMID 41209104), and the radiology review (PMID 37868436), with the disease's
+DEFINING hypoproteinemia treated as constitutive rather than secondary; stomach-cancer (rank 3,
+MALIGNANT_TRANSFORMATION) rests on the 1996 two-case operative report framing Menetrier as a precancerous
+gastric lesion (PMID 8920077) and the 2023 review framing (PMID 37868436), with the 2025 series' explicit
+"association needs further study" statement (PMID 40887784) carried on the edge as counterweight.
+
+`microscopic-colitis` (3 edges): malnutrition-residuals (rank 1) rests on the 162-patient prospective
+MCDAI cohort (weight loss independently associated with severity; PMID 27965284), the etiopathology
+review (PMID 35913459), and the seven-case retrospective survey (hypoalbuminemia 4/7; PMID 22024068,
+with celiac comorbidity 2/7 recorded); non-hodgkins-lymphoma (rank 2, IMMUNE_MEDIATED) rests on the
+Swedish nationwide cohort of 11,758 incident cases (lymphoma aHR 1.43, 1.06-1.92; PMID 32710780);
+respiratory-cancer (rank 3) rests on the same cohort's lung-cancer signal (aHR 1.32, 1.04-1.68) but with
+causalMechanism NOT_ESTABLISHED because smoking confounding cannot be resolved from register data. The
+anchor cohort's DECREASED colorectal-cancer risk (aHR 0.52) was deliberately not authored (direction
+guard against protective-inverse edges). Withheld: -> anemia (2/7 signal inseparable from celiac
+comorbidity; reopen with celiac-excluded cohort data).
+
+`microscopic-polyangiitis` (4 edges): chronic-kidney-disease (rank 1, IMMUNE_MEDIATED) rests on the
+378-patient French registry (renal involvement 74%, mean creatinine 217 micromol/L; PMID 32340774), the
+271-patient ESKD cohort (19.2% progression; ANCA-positivity null-adjustment recorded; PMID 42796306),
+and the AAV imaging cohort (PMID 39136785); interstitial-lung-disease (rank 2) rests on the
+MPA-predominant ILD distribution (PMID 39136785), the registry's 40% lung involvement (PMID 32340774),
+and the 794-patient isolated ANCA-ILD systematic review (70% MPO-ANCA; progression mainly toward MPA;
+PMID 41871820), with the 10-40% ILD-precedes-vasculitis direction limit recorded; peripheral-neuropathy
+(rank 3) rests on the 83-patient Peking Union analysis (44.6%; mononeuritis multiplex 56.8%; PMID
+26710910), the registry's mononeuritis data (32%, independent death risk factor; PMID 32340774), and the
+61-patient electrophysiologic series (PMID 38561284); deep-vein-thrombosis (rank 4, THROMBOTIC_OR_VASCULAR)
+rests on the 4,317-patient Swedish nationwide matched cohort (MPA CVD-TE HR 2.45; both sexes with
+increased DVT/PE; peak within 3 months; sibling-null implicating the vasculitis itself; PMID 42693943)
+with the composite-endpoint limit recorded. ME-29 sibling rule honored: the granulomatosis-with-polyangiitis
+CKD and hearing-loss windows keep their own evidence.
+
+Pre-authoring verification: all 21 PMIDs passed the abstract pass (`/tmp/d1-abstract47.py` in four fetch
+groups), the esummary bibliographic pass (every authored author list, journal, and page range matched the
+PubMed record), and `node scripts/preflight-source-status.js --pmids ...` (21/21 checked, zero flags).
+One tooling correction during authoring: three PMIDs initially missing from the citation cache caused a
+KeyError before any KB file was written; the missing esummary records were fetched and the write re-run
+clean. The post-write structural self-audit passed for all five files with zero errors (four single-ref
+quarantine-warning rows, matching the corpus pattern), and `npm run kb:validate` reports zero errors.
+
+Registry after lockstep: 658 relationships (584 explicit / 74 legacy), 1128 reference uses (383
+verified / 745 pending-verification), 1123 clinical / 5 legal uses, 1029 source entities (346 active /
+674 pending-verification). The four within-identity shared sources - PMIDs 40887784 and 37868436 across
+the menetrier edges, 32340774 across the microscopic-polyangiitis renal/pulmonary/neurologic edges, and
+32710780 across the microscopic-colitis cancer edges - give 27 reference uses over 21 new sources.
+Citation packet regenerated at 295 worksheets / 745 reference rows = live citation debt; the verification
+dashboard regenerated at 745 rows in 31 reviewer batches (672 distinct sources). Backlog after batch 60:
+**190** undispositioned zero-edge drafts (195 before the batch; all five identities left the queue by
+gaining edges). Next-five: `miscarriage`, `mixed-urinary-incontinence`, `morton-s-neuroma`, `mucocele`,
+`multiple-endocrine-neoplasia`.
+
+Test-pin note: the sweep touched 54 files and replaced 315 counter tokens in one pass with the batch-59
+per-token context predicates carried over unchanged (relationships 646 -> 658, references/uses 1101 ->
+1128, unverified 718 -> 745, pending source entities 653 -> 674, total source entities 1008 -> 1029,
+explicit guards 572 -> 584, clinical references 1096 -> 1123, clinical provenance 1100 -> 1127, and the
+draft-singles counter 267 -> 269 for this batch's two single-suggestion identities,
+`median-rhomboid-glossitis` and `memory-loss`). The recurring follow-up: the citation-decay-gate debt
+fixture (`Array.from({ length: 718 })`) again needed a manual move to 745 to stay consistent with its own
+swept assertion - the fixture line carries no registry vocabulary so the sweep's context predicates skip
+it; recommend extending the sweep map with an explicit fixture token next batch. The residue check found
+no other survivors outside the standing benign classes. Standing recommendation: batch 60 lands through
+branch, PR, CI, and merge.

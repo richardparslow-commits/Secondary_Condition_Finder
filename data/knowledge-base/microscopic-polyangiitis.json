@@ -2,8 +2,250 @@
   "id": "microscopic-polyangiitis",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review airway, aspiration, inflammatory, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 60 (2026-09-26): four ASSOCIATION_ONLY draft mappings pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: all four edges assert association only (etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true; mechanismCategories IMMUNE_MEDIATED for the renal, pulmonary, and neurologic edges and THROMBOTIC_OR_VASCULAR for the thrombosis edge). The evidence base is nationwide registry and retrospective cohort class, so individual claims require dated nephrology, pulmonology, neurologic, or thrombosis workup with competing-cause exclusion, and review by a qualified medical professional.",
+    "Pathway and duplicate-scope screens: ME-29 sibling rule - the granulomatosis-with-polyangiitis chronic-kidney-disease and hearing-loss windows keep their own evidence and none is recycled; this identity uses MPA-specific registry and cohort evidence only; no -> hearing-loss or sinusitis edge (GPA-scoped manifestations - the granulomatous upper-airway phenotype belongs to the sibling identity and MPA characteristically spares it; recorded as a phenotype boundary); no -> alveolar-hemorrhage edge (no catalog identity - the registry's 16 percent alveolar hemorrhage figure is recorded as context); no -> anemia edge (anemia in the located MPA material is anemia of chronic inflammation without condition-specific quantification distinct from the CKD window's anemia pathway); no -> cerebrovascular-accident-stroke-residuals edge (the located cohort's stroke hazard ratios are sex-stratified within GPA and composite within MPA, so MPA-specific stroke attribution was not separable); no -> pulmonary-embolism edge as a second target (the anchor cohort reports DVT and PE jointly - the deep-vein-thrombosis identity carries the venous thromboembolism proposition and a parallel PE edge would duplicate scope); no evidence recycled from the antiphospholipid or hypercoagulability windows (ME-29)."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 60 (2026-09-26): four bounded association edges authored - microscopic-polyangiitis to chronic-kidney-disease (rank 1), to interstitial-lung-disease (rank 2), to peripheral-neuropathy (rank 3), and to deep-vein-thrombosis (rank 4) - classified ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, and hypothesizedOnly:true. The renal proposition rests on the 378-patient French registry (renal involvement 74 percent; PMID 32340774), the 271-patient ESKD cohort (19.2 percent progression with the ANCA-positivity null adjustment recorded; PMID 42796306), and the 94-patient AAV imaging cohort (PMID 39136785). The pulmonary proposition rests on the imaging cohort's MPA-predominant ILD distribution (PMID 39136785), the registry's 40 percent lung involvement (PMID 32340774), and the 794-patient isolated ANCA-ILD systematic review (PMID 41871820). The neurologic proposition rests on the 83-patient Peking Union analysis (44.6 percent neuropathy; PMID 26710910), the registry's mononeuritis multiplex data (PMID 32340774), and the 61-patient electrophysiologic series (PMID 38561284). The thrombosis proposition rests on the 4,317-patient Swedish nationwide matched cohort (PMID 42693943).",
+    "Counter-evidence and caveat screens recorded 2026-09-26: (i) counter-records carried on edges - the ESKD cohort's ANCA-positivity association was not independent after baseline-creatinine adjustment (PMID 42796306), and the vasculitic-neuropathy series found CNS involvement predicted poor treatment outcome (PMID 38561284); (ii) direction and phenotype limits - isolated ANCA-ILD can precede vasculitis in 10-40 percent of cases so the ILD edge records phenotype association without asserting temporal direction, and the granulomatous upper-airway manifestations (sinusitis, hearing loss) are deliberately treated as GPA-scoped; (iii) composite-endpoint limit - the DVT edge rests on ICD composites without separate MPA DVT hazard ratios or thrombus adjudication, with the 3-month risk peak overlapping hospitalization and glucocorticoid exposure; (iv) treatment-era limits - the renal registry spans 1966-2017 and rituximab-era outcomes are unlocated; (v) sibling-window discipline - granulomatosis-with-polyangiitis, antiphospholipid, and connective-tissue-ILD windows keep their own evidence and none is recycled (ME-29)."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "chronic-kidney-disease",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Microscopic polyangiitis documents severe renal involvement at nationwide registry and cohort level: the French Vasculitis Study Group registry of 378 MPA patients found renal involvement in 74 percent at diagnosis with mean serum creatinine 217 micromol/L and creatinine above 130 micromol/L retained as an independent risk factor for death (PMID 32340774), the 271-patient ANCA cohort found 52 patients (19.2 percent) progressed to end-stage kidney disease during follow-up (PMID 42796306), and the 94-patient AAV imaging cohort found end-stage kidney failure rates significantly increased in MPA patients versus GPA (PMID 39136785); the relationship is recorded as documented renal-sequela only.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: MPA renal injury is pauci-immune crescentic glomerulonephritis whose course depends on treatment timing, baseline creatinine, and histopathologic class, so whether any individual chronic impairment followed the vasculitis requires individual nephrology attribution with hypertensive, diabetic, and obstructive exclusion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "IMMUNE_MEDIATED",
+        "primaryVector": "MPO-ANCA-driven neutrophil activation attacks glomerular capillary endothelium so pauci-immune necrotizing crescentic glomerulonephritis results, nephron loss accumulates, and chronic kidney disease or end-stage kidney disease follows, the glomerulonephritis route documented by the registry's 74 percent renal involvement and the cohort's 19.2 percent ESKD progression, but whether this route produced any individual chronic impairment remains hypothesized until biopsy and renal-trajectory records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at nationwide registry plus retrospective cohort class only: the 378-patient registry spans 1966-2017 with heterogeneous treatment eras, the ESKD cohort's ANCA-positivity association lost independence after adjustment for baseline creatinine (PMID 42796306), and modern rituximab-era renal survival may differ from the registry experience.",
+        "evidenceGaps": "No located cohort reports renal outcomes under current first-line rituximab protocols; the ESKD predictor analysis was not independent after baseline-creatinine adjustment; historical registry eras span pre-ANCA-testing diagnosis; hypertensive and diabetic nephropathy overlap the older MPA population; and renal-recovery potential after induction is a major unmodeled determinant.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "hypertensive nephrosclerosis (the published hypertension CKD window)",
+          "diabetic nephropathy (the published diabetes windows)",
+          "other ANCA-associated glomerulonephritis in granulomatosis-with-polyangiitis (the sibling identity's own scope)",
+          "anti-GBM disease and lupus nephritis",
+          "obstructive and reflux nephropathy"
+        ]
+      },
+      "evidenceGaps": [
+        "No located cohort reports renal outcomes under current first-line rituximab protocols; the ESKD predictor analysis was not independent after baseline-creatinine adjustment; historical registry eras span pre-ANCA-testing diagnosis; hypertensive and diabetic nephropathy overlap the older MPA population; and renal-recovery potential after induction is a major unmodeled determinant."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY on the pauci-immune-glomerulonephritis precedent with the ME-29 sibling rule carried openly: the French Vasculitis Study Group registry of 378 MPA patients found renal involvement in 74 percent at diagnosis with mean creatinine 217 micromol/L (PMID 32340774), the 271-patient cohort found 19.2 percent progressing to ESKD though ANCA positivity was not independently predictive after adjustment (PMID 42796306), and the AAV imaging cohort found ESKD rates significantly higher in MPA (PMID 39136785); the granulomatosis-with-polyangiitis CKD window keeps its own evidence and none is recycled; because the registry spans 1966-2017 treatment eras and rituximab-era renal survival is unlocated, the conservative standard keeps the edge at association only and routes individual claims through dated biopsy and renal trajectories with hypertensive, diabetic, and obstructive exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Nguyen Y, Pagnoux C, Karras A, et al. Microscopic polyangiitis: Clinical characteristics and long-term outcomes of 378 patients from the French Vasculitis Study Group Registry J Autoimmun. 2020 Aug;112:102467. doi: 10.1016/j.jaut.2020.102467. PMID 32340774.",
+          "note": "French Vasculitis Study Group registry of 378 MPA patients (1966-2017, mean follow-up 5.5 years): renal involvement 74% at diagnosis, mean creatinine 217 micromol/L; creatinine >130 micromol/L an independent risk factor for death; supports the bounded renal-sequela proposition only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/32340774/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 32340774; results (renal involvement prevalence and outcomes)"
+        },
+        {
+          "citation": "Ha JW, Whang JY, Kwon OC, et al. Association Between Any Circulating ANCA Positivity at Diagnosis and Subsequent End-Stage Kidney Disease in Microscopic Polyangiitis and Granulomatosis with Polyangiitis Medicina (Kaunas). 2026 Sep 4;62(9). doi: 10.3390/medicina62091699. PMID 42796306.",
+          "note": "Retrospective cohort of 271 MPA/GPA patients: 52 (19.2%) progressed to end-stage kidney disease; ANCA positivity associated with ESKD univariately but not independently after adjustment for baseline renal function; supports the bounded progression proposition with the null adjustment recorded.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42796306/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 42796306; results (ESKD incidence and adjusted Cox analysis)"
+        },
+        {
+          "citation": "Vogt K, Fink CB, Schreibing TM, et al. Distinct pulmonary patterns in ANCA-associated vasculitides: insights from a retrospective single center cohort study Rheumatol Int. 2024 Nov;44(11):2435-2443. doi: 10.1007/s00296-024-05664-8. PMID 39136785.",
+          "note": "Retrospective single-center cohort of 94 AAV patients (49 GPA, 41 MPA): end-stage kidney failure rates significantly increased in MPA patients over median 37-month follow-up; supports the bounded subtype-contrast proposition only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39136785/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 39136785; results (renal outcomes by AAV subtype)"
+        }
+      ]
+    },
+    {
+      "conditionId": "interstitial-lung-disease",
+      "rank": 2,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Microscopic polyangiitis documents interstitial lung disease at cohort and systematic-review level: the 94-patient AAV imaging cohort found ground-glass opacities, interstitial lung disease, and pleural effusion predominantly in MPA patients with nodules and cavities instead characterizing GPA (PMID 39136785), the French registry of 378 MPA patients recorded lung involvement in 40 percent at diagnosis (PMID 32340774), and the PRISMA systematic review of 794 isolated ANCA-associated ILD patients found MPO-ANCA positivity in about 70 percent with fibrotic patterns predominating and progression to systemic vasculitis occurring mainly toward MPA (PMID 41871820); the relationship is recorded as documented pulmonary-phenotype association only.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: ANCA-associated ILD can precede, accompany, or follow the systemic vasculitis and the isolated-ILD trajectory is partly independent of the vasculitic one, so whether any individual fibrosis arose from the MPA requires individual rheumatology-pulmonology attribution with idiopathic, drug, and connective-tissue exclusion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "IMMUNE_MEDIATED",
+        "primaryVector": "MPO-ANCA-associated immune injury of the pulmonary interstitium and small vessels drives inflammatory and then fibrotic remodeling so interstitial lung disease results, the immune-fibrotic route consistent with the MPA-predominant ILD distribution and the MPO-ANCA predominance in isolated ANCA-ILD, but whether this route produced any individual fibrosis remains hypothesized until serology, HRCT, and biopsy records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at retrospective cohort plus systematic-review class only: the imaging cohort is 94 patients from a single center, the 40 percent registry figure is any-lung-involvement rather than ILD-specific, the isolated-ANCA-ILD review pools 24 heterogeneous studies where ILD often preceded vasculitis diagnosis, and survival was comparable to ANCA-negative idiopathic interstitial pneumonia.",
+        "evidenceGaps": "No located cohort establishes temporal direction between MPA onset and ILD; the isolated-ANCA-ILD literature describes an entity where lung disease precedes systemic vasculitis in 10-40 percent; the registry's 40 percent figure conflates all pulmonary involvement; UIP-like fibrotic patterns overlap idiopathic pulmonary fibrosis; and smoking, methotrexate exposure, and age are co-determinants.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "idiopathic pulmonary fibrosis and idiopathic interstitial pneumonia",
+          "connective-tissue-disease ILD (the published scleroderma and dermatomyositis ILD windows, not recycled per ME-29)",
+          "drug-induced pneumonitis (the published chemical-pneumonitis window)",
+          "granulomatosis-with-polyangiitis pulmonary involvement (the sibling identity's own scope)",
+          "occupational and inhalational lung disease (the published pneumoconiosis and hypersensitivity windows)"
+        ]
+      },
+      "evidenceGaps": [
+        "No located cohort establishes temporal direction between MPA onset and ILD; the isolated-ANCA-ILD literature describes an entity where lung disease precedes systemic vasculitis in 10-40 percent; the registry's 40 percent figure conflates all pulmonary involvement; UIP-like fibrotic patterns overlap idiopathic pulmonary fibrosis; and smoking, methotrexate exposure, and age are co-determinants."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY on the ANCA-ILD phenotype precedent with the direction-limit carried openly: the 94-patient AAV imaging cohort found ILD predominantly in MPA patients (PMID 39136785), the 378-patient French registry recorded 40 percent lung involvement (PMID 32340774), and the PRISMA review of 794 isolated ANCA-ILD patients found 70 percent MPO-ANCA positivity with fibrotic patterns predominating and evolution mainly toward MPA (PMID 41871820); because ILD can precede the vasculitis diagnosis in 10-40 percent of isolated cases and UIP-like patterns overlap idiopathic fibrosis, the conservative standard keeps the edge at association only and routes individual claims through dated serology and HRCT with idiopathic, drug, and connective-tissue exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Vogt K, Fink CB, Schreibing TM, et al. Distinct pulmonary patterns in ANCA-associated vasculitides: insights from a retrospective single center cohort study Rheumatol Int. 2024 Nov;44(11):2435-2443. doi: 10.1007/s00296-024-05664-8. PMID 39136785.",
+          "note": "Retrospective single-center cohort of 94 AAV patients: GGO, ILD, and pleural effusion predominantly in MPA patients whereas nodules and cavities characterized GPA; supports the bounded pulmonary-phenotype association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39136785/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 39136785; results (CT pattern distribution by AAV subtype)"
+        },
+        {
+          "citation": "Nguyen Y, Pagnoux C, Karras A, et al. Microscopic polyangiitis: Clinical characteristics and long-term outcomes of 378 patients from the French Vasculitis Study Group Registry J Autoimmun. 2020 Aug;112:102467. doi: 10.1016/j.jaut.2020.102467. PMID 32340774.",
+          "note": "French registry of 378 MPA patients: lung involvement 40% at diagnosis; supports the bounded prevalence proposition only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/32340774/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 32340774; results (clinical manifestations at diagnosis)"
+        },
+        {
+          "citation": "Narváez J, Maymó P. Isolated antineutrophil cytoplasmic antibody-associated interstitial lung disease: A systematic review of an emerging condition Autoimmun Rev. 2026 Apr;25(4):104037. doi: 10.1016/j.autrev.2026.104037. PMID 41871820.",
+          "note": "PRISMA systematic review of 24 studies, 794 isolated ANCA-ILD patients: MPO-ANCA positivity ~70%; fibrotic patterns (UIP/UIP-like 45-65%, NSIP 15-30%); progression to systemic AAV in 10-40%, mainly toward MPA; supports the bounded phenotype association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41871820/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 41871820; review results (ANCA-ILD characteristics and vasculitis progression)"
+        }
+      ]
+    },
+    {
+      "conditionId": "peripheral-neuropathy",
+      "rank": 3,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Microscopic polyangiitis documents vasculitic neuropathy at cohort level: the Peking Union retrospective analysis of 83 hospitalized MPA patients found peripheral neuropathy in 37 (44.6 percent) with mononeuritis multiplex in 56.8 percent and distal symmetrical polyneuropathy in 43.2 percent of those affected, lower limbs most frequently involved and thrombocytosis retained as a risk factor (PMID 26710910), the French registry of 378 MPA patients recorded mononeuritis multiplex in 32 percent with that finding an independent risk factor for death (PMID 32340774), and the 61-patient ANCA-vasculitic-neuropathy series included 33 MPA patients and found central nervous system involvement predicted poor neuropathy treatment outcomes (PMID 38561284); the relationship is recorded as documented neurologic-sequela only.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: vasculitic neuropathy requires electrodiagnostic and often biopsy confirmation and diabetic, toxic, and compressive neuropathies are common in the same older population, so whether any individual neuropathy followed the vasculitis requires individual neurologic attribution with glycemic, toxic, and entrapment exclusion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "IMMUNE_MEDIATED",
+        "primaryVector": "Necrotizing inflammation of the vasa nervorum supplying peripheral nerves drives ischemic axonal injury so mononeuritis multiplex and distal polyneuropathy result, the vasa-nervorum route documented by the cohort's mononeuritis-multiplex predominance and the electrophysiologic multifocal axonal patterns, but whether this route produced any individual neuropathy remains hypothesized until electrodiagnostic and biopsy records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at retrospective cohort plus registry class only: the 44.6 percent figure is from a single-center hospitalized cohort (83 patients, 2008-2014) likely enriching severe disease, the Chinese-language neuropathy series is 61 patients, and treatment-outcome data are glucocorticoid-era rather than rituximab-era.",
+        "evidenceGaps": "No population-based incidence data for vasculitic neuropathy in MPA; hospitalized cohorts over-represent severe presentations; the 44.6 percent prevalence figure is single-center; diabetic neuropathy and entrapment overlap the older MPA population; and neuropathy outcome depends on induction timing and axonal reserve, which are unmodeled.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "diabetic polyneuropathy (the published diabetes windows)",
+          "compressive and entrapment neuropathies",
+          "chemotherapy-induced and toxic neuropathy",
+          "Sjogren and rheumatoid-associated neuropathy",
+          "chronic inflammatory demyelinating polyneuropathy"
+        ]
+      },
+      "evidenceGaps": [
+        "No population-based incidence data for vasculitic neuropathy in MPA; hospitalized cohorts over-represent severe presentations; the 44.6 percent prevalence figure is single-center; diabetic neuropathy and entrapment overlap the older MPA population; and neuropathy outcome depends on induction timing and axonal reserve, which are unmodeled."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY on the vasa-nervorum precedent with the hospitalized-cohort limit carried openly: the Peking Union analysis of 83 MPA patients found peripheral neuropathy in 37 (44.6 percent) with mononeuritis multiplex predominant (56.8 percent) (PMID 26710910), the French registry of 378 MPA patients recorded mononeuritis multiplex in 32 percent as an independent death risk factor (PMID 32340774), and the 61-patient ANCA-vasculitic-neuropathy electrophysiologic series included 33 MPA cases (PMID 38561284); because the prevalence figure is single-center hospitalized and outcome data are glucocorticoid-era, the conservative standard keeps the edge at association only and routes individual claims through dated electrodiagnostic studies with glycemic, toxic, and entrapment exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Wang L, Li J, Qian M, et al. [Clinical features of microscopic polyangiitis associated with peripheral neuropathy] Zhonghua Yi Xue Za Zhi. 2015 Jul 21;95(27):2190-3. PMID 26710910.",
+          "note": "Retrospective analysis (Peking Union, 2008-2014) of 83 hospitalized MPA patients: peripheral neuropathy in 37 (44.6%); mononeuritis multiplex 56.8%, distal symmetrical polyneuropathy 43.2%; lower limbs predominant; thrombocytosis a risk factor; supports the bounded prevalence and phenotype proposition only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/26710910/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 26710910; results (neuropathy prevalence and electrophysiologic phenotype)"
+        },
+        {
+          "citation": "Nguyen Y, Pagnoux C, Karras A, et al. Microscopic polyangiitis: Clinical characteristics and long-term outcomes of 378 patients from the French Vasculitis Study Group Registry J Autoimmun. 2020 Aug;112:102467. doi: 10.1016/j.jaut.2020.102467. PMID 32340774.",
+          "note": "French registry of 378 MPA patients: mononeuritis multiplex in 32% at diagnosis and an independent risk factor for death; supports the bounded neurologic-sequela proposition only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/32340774/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 32340774; results (mononeuritis multiplex prevalence and mortality association)"
+        },
+        {
+          "citation": "Li YF, Li M, Yang F, et al. [Clinical and electrophysiological characteristics and treatment outcomes of anti-neutrophil cytoplasmic antibody ANCA-associated vasculitic neuropathy] Zhonghua Nei Ke Za Zhi. 2024 Apr 1;63(4):386-393. doi: 10.3760/cma.j.cn112138-20231031-00267. PMID 38561284.",
+          "note": "Case-series study of 61 ANCA-vasculitic-neuropathy patients (33 MPA, 17 EGPA, 11 GPA; Chinese-language): electrophysiologic characteristics by AAV subset; CNS involvement predicted poor treatment outcome; supports the bounded phenotype proposition only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38561284/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 38561284; results (neuropathy features and treatment outcomes by subset)"
+        }
+      ]
+    },
+    {
+      "conditionId": "deep-vein-thrombosis",
+      "rank": 4,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Microscopic polyangiitis documents elevated venous thromboembolism at nationwide matched-cohort level: the Swedish nationwide study of 4,317 AAV patients with 21,582 matched controls found MPA associated with increased cardiovascular and thromboembolic risk (hazard ratio 2.45, 95% CI 2.00-2.99) with both sexes showing increased deep vein thrombosis and pulmonary embolism risks and the highest risk within 3 months of diagnosis (HR 7.69, 5.93-9.99), while first-degree siblings showed no excess risk emphasizing the vasculitis itself as the risk factor (PMID 42693943); the relationship is recorded as documented cohort-level association only.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: the cohort is ICD-register-based with composite cardiovascular-thromboembolic endpoints where the MPA-specific DVT hazard ratio is not separately reported in the abstract, and hospitalization, immobility, and glucocorticoid exposure cluster at diagnosis, so any individual thrombosis requires individual attribution with stasis, malignancy, and thrombophilia exclusion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "THROMBOTIC_OR_VASCULAR",
+        "primaryVector": "Systemic endothelial injury from necrotizing small-vessel inflammation with acute-phase procoagulant shifts drives venous thrombosis so deep vein thrombosis results, the inflammation-thrombosis route consistent with the sibling-control contrast showing the vasculitis itself carries the risk and the 3-month post-diagnosis peak, but whether this route produced any individual thrombosis remains hypothesized until imaging and thrombophilia records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at single nationwide register-cohort class only: endpoints are ICD-code-defined composites, the MPA-specific DVT hazard ratio is not broken out separately from the composite 2.45 figure in the located abstract, the acute-risk peak overlaps hospitalization and immobility, and no located study adjudicates thrombus events or adjusts for ambulatory status.",
+        "evidenceGaps": "No MPA-specific DVT hazard ratio is separately reported in the located material; register ICD codes are not thrombus-adjudicated; the 3-month risk peak coincides with hospitalization, immobility, and high-dose glucocorticoids; active malignancy and antiphospholipid antibodies compete; and prophylaxis practices are unmeasured in the cohort.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "malignancy-associated thrombosis",
+          "immobility and hospitalization-related venous stasis",
+          "antiphospholipid-syndrome thrombosis (the published antiphospholipid window)",
+          "surgery and trauma-related thrombosis",
+          "inherited thrombophilia"
+        ]
+      },
+      "evidenceGaps": [
+        "No MPA-specific DVT hazard ratio is separately reported in the located material; register ICD codes are not thrombus-adjudicated; the 3-month risk peak coincides with hospitalization, immobility, and high-dose glucocorticoids; active malignancy and antiphospholipid antibodies compete; and prophylaxis practices are unmeasured in the cohort."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY at single nationwide register-cohort class with the composite-endpoint limit carried openly: the Swedish nationwide matched cohort of 4,317 AAV patients found MPA associated with CVD-thromboembolic risk (HR 2.45, 95% CI 2.00-2.99) with both sexes showing increased DVT and PE risk, peak risk within 3 months of diagnosis (HR 7.69), and no excess risk among first-degree siblings, implicating the vasculitis itself (PMID 42693943); because endpoints are ICD-code composites without separate MPA DVT hazard ratios or thrombus adjudication and the acute peak overlaps hospitalization and glucocorticoid exposure, the conservative standard keeps the edge at association only and routes individual claims through dated imaging with stasis, malignancy, and thrombophilia exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Lindberg H, Voudouri K, Lindhagen L, et al. Cardiovascular and thromboembolic risk in ANCA-associated vasculitis: a nationwide matched cohort study by disease, sex and familial risk Rheumatology (Oxford). 2026 Sep 1;65(9). doi: 10.1093/rheumatology/keag467. PMID 42693943.",
+          "note": "Swedish nationwide matched cohort (2005-2020): 4,317 AAV patients, 21,582 controls, 25,568 siblings; MPA CVD-TE HR 2.45 (2.00-2.99); both sexes with increased DVT and PE risk; highest risk within 3 months of diagnosis (HR 7.69, 5.93-9.99); siblings without excess risk; supports the bounded cohort association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42693943/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 42693943; results (CVD-TE hazard ratios by disease, sex, and period)"
+        }
+      ]
+    }
+  ]
 }

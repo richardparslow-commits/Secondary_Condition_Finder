@@ -2,8 +2,166 @@
   "id": "microscopic-colitis",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review gastrointestinal, nutritional, motility, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 60 (2026-09-26): three ASSOCIATION_ONLY draft mappings pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: all three edges assert association only (etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true). The respiratory-cancer edge additionally records mechanismCategory NOT_ESTABLISHED because the located cohort cannot distinguish tobacco confounding from any direct pathway. Evidence base is one nationwide register cohort plus prospective activity-index and small retrospective class, so individual claims require dated nutritional assessment, hematopathology, or smoking-history attribution with competing-cause exclusion, and review by a qualified medical professional.",
+    "Pathway and duplicate-scope screens: no -> anemia edge (WITHHELD - the only condition-specific anemia data are 2 of 7 patients in a 1985-2011-era retrospective survey where celiac disease co-occurred in 2 of 7, so the anemia signal is not separable from celiac malabsorption; the published celiac anemia window keeps its evidence per ME-29; reopen with a large cohort reporting anemia incidence with celiac exclusion); no -> colorectal-cancer edge (the anchor cohort found DECREASED colorectal cancer risk, aHR 0.52 - direction guard against authoring a protective-inverse edge); no -> deep-vein-thrombosis edge (zero located condition-specific quantification); no evidence recycled from the inflammatory-bowel-disease, celiac-disease, or irritable-bowel-syndrome windows (ME-29 scope rule); no -> diarrhea edge (no catalog identity - chronic watery diarrhea is the defining symptom)."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 60 (2026-09-26): three bounded association edges authored - microscopic-colitis to malnutrition-residuals (rank 1), to non-hodgkins-lymphoma (rank 2), and to respiratory-cancer (rank 3) - classified ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, and hypothesizedOnly:true. The malnutrition proposition rests on the 162-patient prospective MCDAI cohort (PMID 27965284), the etiopathology review (PMID 35913459), and the seven-case retrospective survey (PMID 22024068). The two cancer propositions rest on the single Swedish nationwide cohort of 11,758 incident cases (PMID 32710780): lymphoma aHR 1.43 (1.06-1.92) and lung cancer aHR 1.32 (1.04-1.68).",
+    "Counter-evidence and caveat screens recorded 2026-09-26: (i) detection bias - both cancer signals peak in the first year of follow-up in the anchor cohort, suggesting surveillance intensity contributes; (ii) confounding - smoking dominates both microscopic-colitis risk and lung-cancer risk and register data cannot adjust pack-years, so the respiratory-cancer edge asserts no mechanism at all (causalMechanism NOT_ESTABLISHED); celiac overlap in the malnutrition anchor series (2 of 7) prevents anemia attribution; (iii) direction guard - the cohort's decreased colorectal-cancer risk (aHR 0.52) was deliberately not authored as an inverse edge; (iv) subtype limits - lymphoma subtypes are unadjudicated in the located material; (v) sibling-window discipline - the celiac, IBD, and emphysema windows keep their own evidence and none is recycled (ME-29)."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "malnutrition-residuals",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Microscopic colitis documents weight loss and hypoalbuminemia at prospective-cohort and retrospective level: the 162-patient prospective Microscopic Colitis Disease Activity Index cohort found weight loss among the clinical features independently associated with physician global assessment of disease severity alongside stool frequency, nocturnal stools, abdominal pain, urgency, and incontinence (PMID 27965284), the etiopathology review names weight loss among the core symptoms of recurrent or chronic nonbloody watery diarrhea (PMID 35913459), and the retrospective chronic-diarrhea survey found anemia in 2 patients and hypoalbuminemia in 4 of 7 collagenous colitis patients (PMID 22024068); the relationship is recorded as documented symptom-level association only.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: the located material documents weight loss as a disease-severity feature and hypoalbuminemia in a seven-patient series where celiac disease co-occurred in 2 of those patients, so whether any individual meets malnutrition criteria requires individual nutritional assessment with celiac, intake, and inflammatory exclusion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "METABOLIC_OR_NUTRITIONAL",
+        "primaryVector": "Chronic secretory watery diarrhea with fecal urgency and nocturnal stools reduces net intake and increases fecal losses so weight declines and protein-calorie status falls, the diarrheal-loss route consistent with weight loss tracking disease severity in the activity-index cohort and with the symptom review, but whether this route produced any individual malnutrition remains hypothesized until dietary, weight-trend, and albumin records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at prospective activity-index plus small retrospective class only: weight loss is one severity feature among six in the 162-patient cohort without malnutrition diagnoses recorded, the seven-patient retrospective survey is too small for incidence claims and had celiac disease in 2 patients (a competing malabsorption cause), and budesonide-responsive diarrhea means treatment materially alters the nutritional course.",
+        "evidenceGaps": "No located study applies standardized malnutrition criteria to microscopic colitis; the MCDAI cohort records weight loss as a severity symptom rather than malnutrition; the retrospective series is seven patients with celiac comorbidity in 2; and celiac disease, exocrine pancreatic insufficiency, small-intestinal bacterial overgrowth, and dietary restriction are competing weight-loss causes in this population.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "celiac disease (diagnosed in 2 of the 7 collagenous colitis patients in the anchor series; the published celiac window, not recycled per ME-29)",
+          "exocrine pancreatic insufficiency and small-intestinal bacterial overgrowth",
+          "inflammatory bowel disease (the published IBD window)",
+          "malignancy-related weight loss including the lymphoma risk recorded on the companion edge",
+          "age-related sarcopenia and appetite loss"
+        ]
+      },
+      "evidenceGaps": [
+        "No located study applies standardized malnutrition criteria to microscopic colitis; the MCDAI cohort records weight loss as a severity symptom rather than malnutrition; the retrospective series is seven patients with celiac comorbidity in 2; and celiac disease, exocrine pancreatic insufficiency, small-intestinal bacterial overgrowth, and dietary restriction are competing weight-loss causes in this population."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY on the diarrheal-nutritional-loss precedent with the celiac-comorbidity limit carried openly: the 162-patient prospective MCDAI cohort found weight loss independently associated with disease severity alongside stool frequency, nocturnal stools, pain, urgency, and incontinence (PMID 27965284), the etiopathology review names weight loss among core symptoms (PMID 35913459), and the retrospective collagenous colitis survey found hypoalbuminemia in 4 of 7 patients and anemia in 2 (PMID 22024068); because the cohort records weight loss as a severity symptom rather than standardized malnutrition and the retrospective series had celiac comorbidity in 2 of 7 patients, the conservative standard keeps the edge at association only and routes individual claims through dated nutritional assessment with celiac, pancreatic, and intake exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Cotter TG, Binder M, Loftus EV Jr, et al. Development of a Microscopic Colitis Disease Activity Index: a prospective cohort study Gut. 2018 Mar;67(3):441-446. doi: 10.1136/gutjnl-2016-313051. PMID 27965284.",
+          "note": "Prospective cohort of 162 microscopic colitis patients: weight loss among clinical features independently associated with physician global assessment of disease severity (with stool frequency, nocturnal stools, abdominal pain, urgency, incontinence); MCDAI strongly predicted PGA (R2=0.80); supports the bounded symptom-level association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/27965284/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 27965284; results (independent severity features including weight loss)"
+        },
+        {
+          "citation": "Nielsen OH, Fernandez-Banares F, Sato T, et al. Microscopic colitis: Etiopathology, diagnosis, and rational management Elife. 2022 Aug 1;11. doi: 10.7554/eLife.79397. PMID 35913459.",
+          "note": "Etiopathology and management review (eLife, 2022): names weight loss among the core symptoms of microscopic colitis (recurrent or chronic nonbloody watery diarrhea, urgency, weight loss, female preponderance); supports the bounded symptom-level association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35913459/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 35913459; review framing (core symptom set)"
+        },
+        {
+          "citation": "Hatemi AI, Senateş E, Dobrucali A, et al. Collagenous colitis: a retrospective survey of patients with chronic diarrhea Hepatogastroenterology. 2011 Nov-Dec;58(112):1963-7. PMID 22024068.",
+          "note": "Retrospective survey of 93 chronic-diarrhea patients with 7 collagenous colitis cases: anemia in 2 patients, hypoalbuminemia in 4, elevated CRP in 3; celiac disease diagnosed in 2 of the 7; supports the bounded laboratory-finding association only with celiac comorbidity recorded.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/22024068/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 22024068; results (laboratory findings including hypoalbuminemia and anemia)"
+        }
+      ]
+    },
+    {
+      "conditionId": "non-hodgkins-lymphoma",
+      "rank": 2,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Microscopic colitis documents elevated lymphoma incidence at nationwide population-cohort level: the Swedish nationwide cohort of 11,758 incident microscopic colitis patients matched to 50,828 reference individuals and 11,614 siblings found an increased risk of lymphoma (adjusted hazard ratio 1.43, 95% CI 1.06-1.92) over a mean 6.7 years of follow-up, with overall cancer risk highest during the first year and persisting in the sibling comparison (HR 1.20, 95% CI 1.06-1.36) (PMID 32710780); the relationship is recorded as documented cohort-level association only.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: the cohort uses pathology-register and cancer-register codes without lymphoma subtype or clonality adjudication in the reported abstract, the elevated risk may reflect detection intensity, immune-dysregulation comorbidity, or celiac overlap rather than microscopic colitis itself, so any individual lymphoma requires hematopathologic attribution with celiac, immunosuppression, and infection exclusion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "IMMUNE_MEDIATED",
+        "primaryVector": "Chronic immune dysregulation of the colonic lamina propria with persistent lymphocytic infiltration drives clonal lymphoproliferation so lymphoid malignancy results, the immune-dysregulation route the cohort's authors invoke alongside smoking and genetic predisposition, but whether this route produced any individual lymphoma remains hypothesized until hematopathology and clonality records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at single nationwide register-cohort class only: the lymphoma hazard ratio is modest (1.43) with a lower bound near 1, risk was highest in the first year of follow-up suggesting detection bias, the sibling comparison addresses shared genetics only for the composite cancer outcome, and no located study adjudicates lymphoma subtypes in microscopic colitis.",
+        "evidenceGaps": "No located study reports lymphoma subtype distribution in microscopic colitis; the first-year risk peak suggests surveillance and detection bias; celiac disease (a known lymphoma-risk enteropathy) overlaps the microscopic colitis population; immunosuppressive and biologic therapies carry their own lymphoma risk; and smoking, the strongest microscopic-colitis risk factor, is a confounder the register design cannot fully adjust.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "celiac-associated enteropathy-associated T-cell lymphoma (the published celiac window's own scope)",
+          "iatrogenic lymphoma from immunosuppressive or biologic therapy for microscopic colitis",
+          "Sjogren and rheumatoid-associated lymphoproliferation",
+          "detection-bias ascertainment during initial diarrhea workup",
+          "Helicobacter pylori-associated gastric MALT lymphoma"
+        ]
+      },
+      "evidenceGaps": [
+        "No located study reports lymphoma subtype distribution in microscopic colitis; the first-year risk peak suggests surveillance and detection bias; celiac disease (a known lymphoma-risk enteropathy) overlaps the microscopic colitis population; immunosuppressive and biologic therapies carry their own lymphoma risk; and smoking, the strongest microscopic-colitis risk factor, is a confounder the register design cannot fully adjust."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY at single nationwide cohort class with the detection-bias and subtype limits carried openly: the Swedish nationwide cohort of 11,758 incident cases with 50,828 matched controls found lymphoma risk elevated (aHR 1.43, 95% CI 1.06-1.92) with overall cancer risk highest in the first year of follow-up and the composite risk persisting in sibling comparisons (PMID 32710780); because the hazard ratio is modest with a near-unity lower bound, the first-year peak suggests detection bias, lymphoma subtypes are unadjudicated, and celiac overlap and treatment effects compete, the conservative standard keeps the edge at association only and routes individual claims through dated hematopathology with celiac, treatment, and infection exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Bergman D, Khalili H, Roelstraete B, et al. Microscopic colitis and risk of cancer - a population-based cohort study J Crohns Colitis. 2021 Feb 1;15(2). doi: 10.1093/ecco-jcc/jjaa156. PMID 32710780.",
+          "note": "Swedish nationwide population-based cohort: 11,758 incident microscopic colitis patients, 50,828 matched references, 11,614 siblings; mean follow-up 6.7 years; lymphoma aHR 1.43 (1.06-1.92), lung cancer aHR 1.32 (1.04-1.68), colorectal aHR 0.52 (0.40-0.66); risk highest in first year; supports the bounded cohort association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/32710780/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 32710780; results (site-specific cancer hazard ratios including lymphoma)"
+        }
+      ]
+    },
+    {
+      "conditionId": "respiratory-cancer",
+      "rank": 3,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Microscopic colitis documents elevated lung cancer incidence at nationwide population-cohort level: the Swedish nationwide cohort of 11,758 incident microscopic colitis patients matched to 50,828 reference individuals found an increased risk of lung cancer (adjusted hazard ratio 1.32, 95% CI 1.04-1.68) over a mean 6.7 years of follow-up (PMID 32710780); the relationship is recorded as documented cohort-level association only, with smoking confounding explicitly unresolved.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: smoking is the dominant risk factor for both lung cancer and microscopic colitis and the register design cannot fully adjust it, so whether any individual lung cancer relates to the colitis rather than tobacco exposure requires individual smoking-history and pack-year attribution."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "NOT_ESTABLISHED",
+        "primaryVector": "No mechanism is asserted for this edge: the plausible routes are shared tobacco exposure as a common cause and chronic systemic immune activation as a co-carcinogenic context, but the located material cannot distinguish confounding from any direct pathway and no mechanistic evidence is located, so the vector remains unestablished pending individual smoking attribution.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at single nationwide register-cohort class only: the lung cancer hazard ratio is modest (1.32) with a lower bound near 1, smoking adjustment is limited in register data and microscopic colitis is strongly smoking-associated, and the first-year risk peak in the same cohort suggests detection intensity contributes.",
+        "evidenceGaps": "No located study adjusts for pack-year smoking history in the microscopic-colitis lung-cancer association; the hazard ratio is modest with a near-unity lower bound; the first-year risk peak suggests detection bias; and tobacco exposure dominates lung cancer etiology so thoroughly that residual confounding cannot be excluded.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "tobacco smoking as common cause (the dominant unexcluded confounder)",
+          "secondhand and occupational carcinogen exposure",
+          "COPD and emphysema-related carcinogenesis (the published emphysema respiratory-cancer window, not recycled per ME-29)",
+          "radon and asbestos exposure",
+          "detection-bias chest imaging during the diagnostic workup period"
+        ]
+      },
+      "evidenceGaps": [
+        "No located study adjusts for pack-year smoking history in the microscopic-colitis lung-cancer association; the hazard ratio is modest with a near-unity lower bound; the first-year risk peak suggests detection bias; and tobacco exposure dominates lung cancer etiology so thoroughly that residual confounding cannot be excluded."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY at single nationwide cohort class with the smoking-confounding limit carried openly and no mechanism asserted: the Swedish nationwide cohort found lung cancer aHR 1.32 (95% CI 1.04-1.68) in 11,758 incident microscopic colitis patients versus 50,828 matched references (PMID 32710780); because microscopic colitis is strongly smoking-associated, register data cannot adjust pack-year exposure, the hazard ratio is modest with a near-unity lower bound, and tobacco dominates lung-cancer etiology, the conservative standard keeps the edge at association only with etiologicalConsensus NOT_ESTABLISHED and the causalMechanism recorded as not established, and routes individual claims through individual smoking-history attribution with occupational and imaging-detection exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Bergman D, Khalili H, Roelstraete B, et al. Microscopic colitis and risk of cancer - a population-based cohort study J Crohns Colitis. 2021 Feb 1;15(2). doi: 10.1093/ecco-jcc/jjaa156. PMID 32710780.",
+          "note": "Swedish nationwide population-based cohort: 11,758 incident microscopic colitis patients versus 50,828 matched references; lung cancer aHR 1.32 (95% CI 1.04-1.68) over mean 6.7-year follow-up; supports the bounded cohort association only with smoking confounding unresolved.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/32710780/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 32710780; results (site-specific cancer hazard ratios including lung cancer)"
+        }
+      ]
+    }
+  ]
 }

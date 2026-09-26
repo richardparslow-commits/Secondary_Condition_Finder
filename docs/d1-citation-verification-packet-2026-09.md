@@ -10245,6 +10245,414 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 **Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
 
+### `median-rhomboid-glossitis` → `squamous-cell-carcinoma` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Median rhomboid glossitis documents rare malignant change at case-series level: the fourteen-case clinicopathologic series reframing the lesion as chronic hyperplastic oral candidiasis states that later lesions become permanent and in a few cases may go further to malignant change, with yeast invasion of the parakeratotic epithelial layers and proliferating acanthosis documented histologically (PMID 485023); the association is recorded as reported malignant-change potential in a small 1979 series only.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: the located malignant-change statement is a qualitative observation in a fourteen-case 1979 series without incidence denominators, transformation case detail, or modern cohort confirmation, so any individual oral malignancy requires biopsy with leukoplakia, lichen planus, tobacco, and alcohol exclusion.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 284.1 — Grosshans E, Dossmann L, Basset M. [Median candidiasis of the tongue (glossitis mediana candidamycetica) (author's transl)] Ann Dermatol Venereol. 1979 Mar;106(3):259-64. PMID 485023.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/485023/
+- Source checked on: 2026-09-26
+- Locator: PMID 485023; series discussion (malignant change in a few cases) and histopathology
+- Note under review: Fourteen-case clinicopathologic series (French, 1979) reframing median rhomboid glossitis as chronic hyperplastic oral candidiasis: yeast invasion with proliferating acanthosis documented; states later lesions become permanent and in a few cases may go further to malignant change; supports the bounded historical malignant-change potential only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `memory-loss` → `depressive-disorder` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Memory complaints document later depressive symptoms at large prospective-cohort level: the three-wave cross-lagged panel network analysis of 14,961 Chinese adults aged 45 and older found cognitive functions, particularly memory and orientation, predicted depressive symptoms at the earlier interval while hopelessness and low energy contributed to later cognitive decline, with memory a key bridge symptom and the cognitive-to-depressive pathway more prominent in women (PMID 40550276), and the ACTIVE longitudinal study of 2,365 older adults found subjective memory problems independently linked to more depressive symptoms alongside worse physical and social functioning (PMID 40939773); the relationship is recorded as documented reciprocal association only.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: both anchors are observational with the cross-lagged design explicitly supporting reciprocal vulnerability and scar pathways in opposite directions, so whether any individual depressive episode followed memory decline requires individual longitudinal clinical review with exclusion of the documented reverse direction.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 285.1 — Ma X, Zhou X, Qiu Y. Bidirectional relationships between cognitive decline and depression: A study of middle-aged and older adults using cross-lagged panel network analysis J Affect Disord. 2025 Nov 15;389:119741. doi: 10.1016/j.jad.2025.119741. PMID 40550276.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/40550276/
+- Source checked on: 2026-09-26
+- Locator: PMID 40550276; results (cross-lagged cognitive-to-depressive and depressive-to-cognitive pathways, sex-specific patterns)
+- Note under review: Three-wave (2015/2018/2020) cross-lagged panel network analysis of CHARLS, 14,961 adults aged 45+: memory and orientation predicted depressive symptoms at the earlier interval; hopelessness and low energy contributed to later cognitive decline; memory and hopelessness were key bridge symptoms; cognitive-to-depressive pathways more prominent in females; supports the bounded reciprocal association only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 285.2 — Bell TR, Felix C, Gider N, et al. Chronic pain and subjective memory problems are dynamic risk factors for functional decline: An ACTIVE longitudinal study Exp Gerontol. 2025 Nov;211:112891. doi: 10.1016/j.exger.2025.112891. PMID 40939773.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/40939773/
+- Source checked on: 2026-09-26
+- Locator: PMID 40939773; results (SMP associations with depressive symptoms and functional outcomes)
+- Note under review: ACTIVE longitudinal study of 2,365 older adults: subjective memory problems independently linked to more depressive symptoms, worse physical function, and lower social functioning; concurrent increases in memory problems paralleled further psychosocial decline; supports the bounded association only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 285.3 — Xue L, Bocharova M, Young AH, et al. Late-onset depression predicts cognitive impairment and subsequent dementia among older adults with major depressive disorder: findings from UK Biobank and primary care linked data BJPsych Open. 2026 Mar 10;12(2):e88. doi: 10.1192/bjo.2026.10995. PMID 41804263.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/41804263/
+- Source checked on: 2026-09-26
+- Locator: PMID 41804263; results (late-onset depression with incident dementia hazard ratios)
+- Note under review: UK Biobank and primary-care linked cohort of 75,064 adults aged 60+: late-onset depression predicted cognitive impairment and subsequent dementia (HR 1.42-1.52); recorded as the documented reverse-direction counterweight to this edge, not as support for memory-loss causation.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `menetrier-s-disease` → `anemia` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Menetrier disease documents iron-deficiency anemia at case level: the 1969 case of a 23-year-old woman with intractable iron-deficiency anemia attributed to gastrointestinal haemorrhage confirmed by isotopic blood labelling and blood loss attributed to diapedesis from a greatly increased capillary network, with a normal blood picture maintained after total gastrectomy (PMID 5311583), and the 2025 adult case series documents a 35-year-old man with two months of epigastric pain, vomiting, melena, and severe anemia with low hemoglobin alongside hypoproteinemia (PMID 40887784); the association is recorded as documented case-level only.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: the located material is two case-level reports decades apart where peptic ulceration, portal hypertensive gastropathy, malignancy, and other bleeding sources require individual endoscopic exclusion before attributing any anemia to the hypertrophic gastropathy.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 286.1 — Singh AK, Cumaraswamy RC, Corrin B. Diffuse hypertrophy of gastric mucosa (Menétrier's disease) and iron-deficiency anaemia Gut. 1969 Sep;10(9):735-7. doi: 10.1136/gut.10.9.735. PMID 5311583.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/5311583/
+- Source checked on: 2026-09-26
+- Locator: PMID 5311583; case report (iron-deficiency anaemia with isotopically confirmed blood loss)
+- Note under review: Case report (Gut, 1969): 23-year-old woman with intractable iron-deficiency anaemia; gastrointestinal haemorrhage confirmed by isotopic blood labelling despite negative occult blood tests; blood loss attributed to diapedesis from a greatly increased capillary network; normal blood picture after total gastrectomy; supports the bounded iron-loss route only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 286.2 — Wu J, Chen Y, Yin J, et al. Ménétrier Disease: Rare Manifestations and Mechanistic Insights From 2 Adult Cases Am J Case Rep. 2025 Sep 1;26:e949111. doi: 10.12659/AJCR.949111. PMID 40887784.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/40887784/
+- Source checked on: 2026-09-26
+- Locator: PMID 40887784; case 1 presentation (severe anemia with melena)
+- Note under review: Two adult cases (Am J Case Rep, 2025): case 1 a 35-year-old man with 2-month epigastric pain, vomiting, melena, and severe anemia with low hemoglobin and hypoproteinemia; histopathology confirmed Menetrier disease; supports the bounded case-level association only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `menetrier-s-disease` → `malnutrition-residuals` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Menetrier disease documents protein malnutrition at case-series and case level: the pediatric case-series review describes Menetrier disease clinically as abdominal pain, vomiting, anorexia, and edema secondary to hypoalbuminemia with supportive treatment directed at protein repletion (PMID 33505900), the 2025 pediatric case documents a 3-year-old with significant hypoalbuminemia (2.3 g/dL), hypoproteinemia, and hypogammaglobulinemia treated with albumin infusions and a high-protein diet (PMID 41209104), and the radiology case report and literature review describes gastric mucosal hypertrophy with subsequent protein loss resulting in gastric symptoms and widespread edema (PMID 37868436); the relationship is recorded as documented protein-losing sequela only.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: the located material is pediatric case-series and case class where the protein loss is gastric and hypoalbuminemia-driven edema is the documented endpoint, so whether any individual meets malnutrition criteria requires individual nutritional assessment with intake, catabolic, and hepatic exclusion.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 287.1 — Krikilion J, Levy EI, Vandenplas Y. Diagnosis and Management of Ménétrier Disease in Children: A Case Series Review Pediatr Gastroenterol Hepatol Nutr. 2021 Jan;24(1):109-117. doi: 10.5223/pghn.2021.24.1.109. PMID 33505900.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/33505900/
+- Source checked on: 2026-09-26
+- Locator: PMID 33505900; review results (clinical presentation with hypoalbuminemia and edema)
+- Note under review: Pediatric case-series review (2014-2019 case reports): Menetrier disease clinically diagnosed by abdominal pain, vomiting, anorexia, and edema secondary to hypoalbuminemia; supportive treatment; children usually self-limiting, recovering within a few weeks; supports the bounded protein-loss association only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 287.2 — Snoubar I, Alhendi T, Batanji D, et al. Pediatric Ménétrier's Disease Triggered by Cytomegalovirus Infection: A Rare Case of Severe Hypoalbuminemia and Edema Case Rep Pediatr. 2025;2025:2471369. doi: 10.1155/crpe/2471369. PMID 41209104.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/41209104/
+- Source checked on: 2026-09-26
+- Locator: PMID 41209104; case presentation (severe hypoalbuminemia and edema)
+- Note under review: Pediatric case (2025): 3-year-old male with progressive edema and significant hypoalbuminemia (2.3 g/dL), hypoproteinemia, hypogammaglobulinemia; treated with albumin infusions, diuretics, high-protein diet, and ganciclovir with improvement; supports the bounded protein-losing sequela only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 287.3 — Keener M, Waack A, Ranabothu M, et al. Clinical and Radiological Features of Menetrier's Disease: A Case Report and Review of the Literature Cureus. 2023 Sep;15(9):e45537. doi: 10.7759/cureus.45537. PMID 37868436.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/37868436/
+- Source checked on: 2026-09-26
+- Locator: PMID 37868436; review framing (protein loss with edema)
+- Note under review: Case report and literature review (Cureus, 2023): Menetrier disease characterized by gastric mucosal hypertrophy and subsequent protein loss, resulting in gastric symptoms and widespread edema; supports the bounded protein-losing route only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `menetrier-s-disease` → `stomach-cancer` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Menetrier disease documents gastric adenocarcinoma co-occurrence at case-pair level: the 1996 operative-series report of two men aged 62 and 81 with Menetrier disease and gastric adenocarcinoma diagnosed on operative specimens emphasizes the risk of malignant transformation and states Menetrier disease should be viewed as a precancerous gastric lesion (PMID 8920077), and the 2023 case report and literature review frames recognition as preventing development of more severe manifestations such as gastric carcinoma (PMID 37868436); the association is recorded as reported precancerous potential only.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: the located material is a two-case operative report and narrative review framing where chronic atrophic gastritis, Helicobacter pylori, and the TGF-alpha overexpression pathway co-vary and surveillance benefit is unproven, so any individual gastric malignancy requires endoscopic and histologic attribution with atrophic-gastritis and H. pylori exclusion.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 288.1 — Jouini M, Ksontini R, Kacem MJ, et al. [Ménétrier disease associated with a gastric adenocarcinoma. Apropos of 2 cases] Ann Gastroenterol Hepatol (Paris). 1996 Nov-Dec;31(6):341-5. PMID 8920077.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/8920077/
+- Source checked on: 2026-09-26
+- Locator: PMID 8920077; case pair and conclusion (malignant transformation risk)
+- Note under review: Two-case operative report (French, 1996): men aged 62 and 81 with Menetrier disease and gastric adenocarcinoma diagnosed on operative specimens; states the risk of malignant transformation and frames Menetrier disease as a precancerous gastric lesion; supports the bounded precancerous-potential proposition only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 288.2 — Keener M, Waack A, Ranabothu M, et al. Clinical and Radiological Features of Menetrier's Disease: A Case Report and Review of the Literature Cureus. 2023 Sep;15(9):e45537. doi: 10.7759/cureus.45537. PMID 37868436.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/37868436/
+- Source checked on: 2026-09-26
+- Locator: PMID 37868436; review framing (gastric carcinoma as severe manifestation)
+- Note under review: Case report and literature review (Cureus, 2023): frames clinical recognition and management of Menetrier disease as preventing development of more severe manifestations such as gastric carcinoma; supports the bounded risk framing only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 288.3 — Wu J, Chen Y, Yin J, et al. Ménétrier Disease: Rare Manifestations and Mechanistic Insights From 2 Adult Cases Am J Case Rep. 2025 Sep 1;26:e949111. doi: 10.12659/AJCR.949111. PMID 40887784.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/40887784/
+- Source checked on: 2026-09-26
+- Locator: PMID 40887784; conclusions (association needs further study)
+- Note under review: Two adult cases (Am J Case Rep, 2025): explicitly states further studies are needed to explore the associations between Menetrier disease, H. pylori infection, and gastric cancer; carried as the counterweight recording that the association is unestablished in the modern literature.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `microscopic-colitis` → `malnutrition-residuals` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Microscopic colitis documents weight loss and hypoalbuminemia at prospective-cohort and retrospective level: the 162-patient prospective Microscopic Colitis Disease Activity Index cohort found weight loss among the clinical features independently associated with physician global assessment of disease severity alongside stool frequency, nocturnal stools, abdominal pain, urgency, and incontinence (PMID 27965284), the etiopathology review names weight loss among the core symptoms of recurrent or chronic nonbloody watery diarrhea (PMID 35913459), and the retrospective chronic-diarrhea survey found anemia in 2 patients and hypoalbuminemia in 4 of 7 collagenous colitis patients (PMID 22024068); the relationship is recorded as documented symptom-level association only.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: the located material documents weight loss as a disease-severity feature and hypoalbuminemia in a seven-patient series where celiac disease co-occurred in 2 of those patients, so whether any individual meets malnutrition criteria requires individual nutritional assessment with celiac, intake, and inflammatory exclusion.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 289.1 — Cotter TG, Binder M, Loftus EV Jr, et al. Development of a Microscopic Colitis Disease Activity Index: a prospective cohort study Gut. 2018 Mar;67(3):441-446. doi: 10.1136/gutjnl-2016-313051. PMID 27965284.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/27965284/
+- Source checked on: 2026-09-26
+- Locator: PMID 27965284; results (independent severity features including weight loss)
+- Note under review: Prospective cohort of 162 microscopic colitis patients: weight loss among clinical features independently associated with physician global assessment of disease severity (with stool frequency, nocturnal stools, abdominal pain, urgency, incontinence); MCDAI strongly predicted PGA (R2=0.80); supports the bounded symptom-level association only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 289.2 — Nielsen OH, Fernandez-Banares F, Sato T, et al. Microscopic colitis: Etiopathology, diagnosis, and rational management Elife. 2022 Aug 1;11. doi: 10.7554/eLife.79397. PMID 35913459.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/35913459/
+- Source checked on: 2026-09-26
+- Locator: PMID 35913459; review framing (core symptom set)
+- Note under review: Etiopathology and management review (eLife, 2022): names weight loss among the core symptoms of microscopic colitis (recurrent or chronic nonbloody watery diarrhea, urgency, weight loss, female preponderance); supports the bounded symptom-level association only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 289.3 — Hatemi AI, Senateş E, Dobrucali A, et al. Collagenous colitis: a retrospective survey of patients with chronic diarrhea Hepatogastroenterology. 2011 Nov-Dec;58(112):1963-7. PMID 22024068.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/22024068/
+- Source checked on: 2026-09-26
+- Locator: PMID 22024068; results (laboratory findings including hypoalbuminemia and anemia)
+- Note under review: Retrospective survey of 93 chronic-diarrhea patients with 7 collagenous colitis cases: anemia in 2 patients, hypoalbuminemia in 4, elevated CRP in 3; celiac disease diagnosed in 2 of the 7; supports the bounded laboratory-finding association only with celiac comorbidity recorded.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `microscopic-colitis` → `non-hodgkins-lymphoma` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Microscopic colitis documents elevated lymphoma incidence at nationwide population-cohort level: the Swedish nationwide cohort of 11,758 incident microscopic colitis patients matched to 50,828 reference individuals and 11,614 siblings found an increased risk of lymphoma (adjusted hazard ratio 1.43, 95% CI 1.06-1.92) over a mean 6.7 years of follow-up, with overall cancer risk highest during the first year and persisting in the sibling comparison (HR 1.20, 95% CI 1.06-1.36) (PMID 32710780); the relationship is recorded as documented cohort-level association only.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: the cohort uses pathology-register and cancer-register codes without lymphoma subtype or clonality adjudication in the reported abstract, the elevated risk may reflect detection intensity, immune-dysregulation comorbidity, or celiac overlap rather than microscopic colitis itself, so any individual lymphoma requires hematopathologic attribution with celiac, immunosuppression, and infection exclusion.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 290.1 — Bergman D, Khalili H, Roelstraete B, et al. Microscopic colitis and risk of cancer - a population-based cohort study J Crohns Colitis. 2021 Feb 1;15(2). doi: 10.1093/ecco-jcc/jjaa156. PMID 32710780.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/32710780/
+- Source checked on: 2026-09-26
+- Locator: PMID 32710780; results (site-specific cancer hazard ratios including lymphoma)
+- Note under review: Swedish nationwide population-based cohort: 11,758 incident microscopic colitis patients, 50,828 matched references, 11,614 siblings; mean follow-up 6.7 years; lymphoma aHR 1.43 (1.06-1.92), lung cancer aHR 1.32 (1.04-1.68), colorectal aHR 0.52 (0.40-0.66); risk highest in first year; supports the bounded cohort association only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `microscopic-colitis` → `respiratory-cancer` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Microscopic colitis documents elevated lung cancer incidence at nationwide population-cohort level: the Swedish nationwide cohort of 11,758 incident microscopic colitis patients matched to 50,828 reference individuals found an increased risk of lung cancer (adjusted hazard ratio 1.32, 95% CI 1.04-1.68) over a mean 6.7 years of follow-up (PMID 32710780); the relationship is recorded as documented cohort-level association only, with smoking confounding explicitly unresolved.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: smoking is the dominant risk factor for both lung cancer and microscopic colitis and the register design cannot fully adjust it, so whether any individual lung cancer relates to the colitis rather than tobacco exposure requires individual smoking-history and pack-year attribution.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 291.1 — Bergman D, Khalili H, Roelstraete B, et al. Microscopic colitis and risk of cancer - a population-based cohort study J Crohns Colitis. 2021 Feb 1;15(2). doi: 10.1093/ecco-jcc/jjaa156. PMID 32710780.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/32710780/
+- Source checked on: 2026-09-26
+- Locator: PMID 32710780; results (site-specific cancer hazard ratios including lung cancer)
+- Note under review: Swedish nationwide population-based cohort: 11,758 incident microscopic colitis patients versus 50,828 matched references; lung cancer aHR 1.32 (95% CI 1.04-1.68) over mean 6.7-year follow-up; supports the bounded cohort association only with smoking confounding unresolved.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `microscopic-polyangiitis` → `chronic-kidney-disease` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Microscopic polyangiitis documents severe renal involvement at nationwide registry and cohort level: the French Vasculitis Study Group registry of 378 MPA patients found renal involvement in 74 percent at diagnosis with mean serum creatinine 217 micromol/L and creatinine above 130 micromol/L retained as an independent risk factor for death (PMID 32340774), the 271-patient ANCA cohort found 52 patients (19.2 percent) progressed to end-stage kidney disease during follow-up (PMID 42796306), and the 94-patient AAV imaging cohort found end-stage kidney failure rates significantly increased in MPA patients versus GPA (PMID 39136785); the relationship is recorded as documented renal-sequela only.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: MPA renal injury is pauci-immune crescentic glomerulonephritis whose course depends on treatment timing, baseline creatinine, and histopathologic class, so whether any individual chronic impairment followed the vasculitis requires individual nephrology attribution with hypertensive, diabetic, and obstructive exclusion.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 292.1 — Nguyen Y, Pagnoux C, Karras A, et al. Microscopic polyangiitis: Clinical characteristics and long-term outcomes of 378 patients from the French Vasculitis Study Group Registry J Autoimmun. 2020 Aug;112:102467. doi: 10.1016/j.jaut.2020.102467. PMID 32340774.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/32340774/
+- Source checked on: 2026-09-26
+- Locator: PMID 32340774; results (renal involvement prevalence and outcomes)
+- Note under review: French Vasculitis Study Group registry of 378 MPA patients (1966-2017, mean follow-up 5.5 years): renal involvement 74% at diagnosis, mean creatinine 217 micromol/L; creatinine >130 micromol/L an independent risk factor for death; supports the bounded renal-sequela proposition only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 292.2 — Ha JW, Whang JY, Kwon OC, et al. Association Between Any Circulating ANCA Positivity at Diagnosis and Subsequent End-Stage Kidney Disease in Microscopic Polyangiitis and Granulomatosis with Polyangiitis Medicina (Kaunas). 2026 Sep 4;62(9). doi: 10.3390/medicina62091699. PMID 42796306.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42796306/
+- Source checked on: 2026-09-26
+- Locator: PMID 42796306; results (ESKD incidence and adjusted Cox analysis)
+- Note under review: Retrospective cohort of 271 MPA/GPA patients: 52 (19.2%) progressed to end-stage kidney disease; ANCA positivity associated with ESKD univariately but not independently after adjustment for baseline renal function; supports the bounded progression proposition with the null adjustment recorded.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 292.3 — Vogt K, Fink CB, Schreibing TM, et al. Distinct pulmonary patterns in ANCA-associated vasculitides: insights from a retrospective single center cohort study Rheumatol Int. 2024 Nov;44(11):2435-2443. doi: 10.1007/s00296-024-05664-8. PMID 39136785.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/39136785/
+- Source checked on: 2026-09-26
+- Locator: PMID 39136785; results (renal outcomes by AAV subtype)
+- Note under review: Retrospective single-center cohort of 94 AAV patients (49 GPA, 41 MPA): end-stage kidney failure rates significantly increased in MPA patients over median 37-month follow-up; supports the bounded subtype-contrast proposition only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `microscopic-polyangiitis` → `interstitial-lung-disease` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Microscopic polyangiitis documents interstitial lung disease at cohort and systematic-review level: the 94-patient AAV imaging cohort found ground-glass opacities, interstitial lung disease, and pleural effusion predominantly in MPA patients with nodules and cavities instead characterizing GPA (PMID 39136785), the French registry of 378 MPA patients recorded lung involvement in 40 percent at diagnosis (PMID 32340774), and the PRISMA systematic review of 794 isolated ANCA-associated ILD patients found MPO-ANCA positivity in about 70 percent with fibrotic patterns predominating and progression to systemic vasculitis occurring mainly toward MPA (PMID 41871820); the relationship is recorded as documented pulmonary-phenotype association only.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: ANCA-associated ILD can precede, accompany, or follow the systemic vasculitis and the isolated-ILD trajectory is partly independent of the vasculitic one, so whether any individual fibrosis arose from the MPA requires individual rheumatology-pulmonology attribution with idiopathic, drug, and connective-tissue exclusion.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 293.1 — Vogt K, Fink CB, Schreibing TM, et al. Distinct pulmonary patterns in ANCA-associated vasculitides: insights from a retrospective single center cohort study Rheumatol Int. 2024 Nov;44(11):2435-2443. doi: 10.1007/s00296-024-05664-8. PMID 39136785.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/39136785/
+- Source checked on: 2026-09-26
+- Locator: PMID 39136785; results (CT pattern distribution by AAV subtype)
+- Note under review: Retrospective single-center cohort of 94 AAV patients: GGO, ILD, and pleural effusion predominantly in MPA patients whereas nodules and cavities characterized GPA; supports the bounded pulmonary-phenotype association only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 293.2 — Nguyen Y, Pagnoux C, Karras A, et al. Microscopic polyangiitis: Clinical characteristics and long-term outcomes of 378 patients from the French Vasculitis Study Group Registry J Autoimmun. 2020 Aug;112:102467. doi: 10.1016/j.jaut.2020.102467. PMID 32340774.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/32340774/
+- Source checked on: 2026-09-26
+- Locator: PMID 32340774; results (clinical manifestations at diagnosis)
+- Note under review: French registry of 378 MPA patients: lung involvement 40% at diagnosis; supports the bounded prevalence proposition only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 293.3 — Narváez J, Maymó P. Isolated antineutrophil cytoplasmic antibody-associated interstitial lung disease: A systematic review of an emerging condition Autoimmun Rev. 2026 Apr;25(4):104037. doi: 10.1016/j.autrev.2026.104037. PMID 41871820.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/41871820/
+- Source checked on: 2026-09-26
+- Locator: PMID 41871820; review results (ANCA-ILD characteristics and vasculitis progression)
+- Note under review: PRISMA systematic review of 24 studies, 794 isolated ANCA-ILD patients: MPO-ANCA positivity ~70%; fibrotic patterns (UIP/UIP-like 45-65%, NSIP 15-30%); progression to systemic AAV in 10-40%, mainly toward MPA; supports the bounded phenotype association only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `microscopic-polyangiitis` → `peripheral-neuropathy` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Microscopic polyangiitis documents vasculitic neuropathy at cohort level: the Peking Union retrospective analysis of 83 hospitalized MPA patients found peripheral neuropathy in 37 (44.6 percent) with mononeuritis multiplex in 56.8 percent and distal symmetrical polyneuropathy in 43.2 percent of those affected, lower limbs most frequently involved and thrombocytosis retained as a risk factor (PMID 26710910), the French registry of 378 MPA patients recorded mononeuritis multiplex in 32 percent with that finding an independent risk factor for death (PMID 32340774), and the 61-patient ANCA-vasculitic-neuropathy series included 33 MPA patients and found central nervous system involvement predicted poor neuropathy treatment outcomes (PMID 38561284); the relationship is recorded as documented neurologic-sequela only.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: vasculitic neuropathy requires electrodiagnostic and often biopsy confirmation and diabetic, toxic, and compressive neuropathies are common in the same older population, so whether any individual neuropathy followed the vasculitis requires individual neurologic attribution with glycemic, toxic, and entrapment exclusion.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 294.1 — Wang L, Li J, Qian M, et al. [Clinical features of microscopic polyangiitis associated with peripheral neuropathy] Zhonghua Yi Xue Za Zhi. 2015 Jul 21;95(27):2190-3. PMID 26710910.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/26710910/
+- Source checked on: 2026-09-26
+- Locator: PMID 26710910; results (neuropathy prevalence and electrophysiologic phenotype)
+- Note under review: Retrospective analysis (Peking Union, 2008-2014) of 83 hospitalized MPA patients: peripheral neuropathy in 37 (44.6%); mononeuritis multiplex 56.8%, distal symmetrical polyneuropathy 43.2%; lower limbs predominant; thrombocytosis a risk factor; supports the bounded prevalence and phenotype proposition only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 294.2 — Nguyen Y, Pagnoux C, Karras A, et al. Microscopic polyangiitis: Clinical characteristics and long-term outcomes of 378 patients from the French Vasculitis Study Group Registry J Autoimmun. 2020 Aug;112:102467. doi: 10.1016/j.jaut.2020.102467. PMID 32340774.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/32340774/
+- Source checked on: 2026-09-26
+- Locator: PMID 32340774; results (mononeuritis multiplex prevalence and mortality association)
+- Note under review: French registry of 378 MPA patients: mononeuritis multiplex in 32% at diagnosis and an independent risk factor for death; supports the bounded neurologic-sequela proposition only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 294.3 — Li YF, Li M, Yang F, et al. [Clinical and electrophysiological characteristics and treatment outcomes of anti-neutrophil cytoplasmic antibody ANCA-associated vasculitic neuropathy] Zhonghua Nei Ke Za Zhi. 2024 Apr 1;63(4):386-393. doi: 10.3760/cma.j.cn112138-20231031-00267. PMID 38561284.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/38561284/
+- Source checked on: 2026-09-26
+- Locator: PMID 38561284; results (neuropathy features and treatment outcomes by subset)
+- Note under review: Case-series study of 61 ANCA-vasculitic-neuropathy patients (33 MPA, 17 EGPA, 11 GPA; Chinese-language): electrophysiologic characteristics by AAV subset; CNS involvement predicted poor treatment outcome; supports the bounded phenotype proposition only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `microscopic-polyangiitis` → `deep-vein-thrombosis` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Microscopic polyangiitis documents elevated venous thromboembolism at nationwide matched-cohort level: the Swedish nationwide study of 4,317 AAV patients with 21,582 matched controls found MPA associated with increased cardiovascular and thromboembolic risk (hazard ratio 2.45, 95% CI 2.00-2.99) with both sexes showing increased deep vein thrombosis and pulmonary embolism risks and the highest risk within 3 months of diagnosis (HR 7.69, 5.93-9.99), while first-degree siblings showed no excess risk emphasizing the vasculitis itself as the risk factor (PMID 42693943); the relationship is recorded as documented cohort-level association only.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: the cohort is ICD-register-based with composite cardiovascular-thromboembolic endpoints where the MPA-specific DVT hazard ratio is not separately reported in the abstract, and hospitalization, immobility, and glucocorticoid exposure cluster at diagnosis, so any individual thrombosis requires individual attribution with stasis, malignancy, and thrombophilia exclusion.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 295.1 — Lindberg H, Voudouri K, Lindhagen L, et al. Cardiovascular and thromboembolic risk in ANCA-associated vasculitis: a nationwide matched cohort study by disease, sex and familial risk Rheumatology (Oxford). 2026 Sep 1;65(9). doi: 10.1093/rheumatology/keag467. PMID 42693943.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42693943/
+- Source checked on: 2026-09-26
+- Locator: PMID 42693943; results (CVD-TE hazard ratios by disease, sex, and period)
+- Note under review: Swedish nationwide matched cohort (2005-2020): 4,317 AAV patients, 21,582 controls, 25,568 siblings; MPA CVD-TE HR 2.45 (2.00-2.99); both sexes with increased DVT and PE risk; highest risk within 3 months of diagnosis (HR 7.69, 5.93-9.99); siblings without excess risk; supports the bounded cohort association only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
 ## Implementation mechanics after decisions
 
 - Mapping edits and registry edits must land in lockstep (the registry audit's canonical-JSON hashes and live-use sets will fail otherwise).
