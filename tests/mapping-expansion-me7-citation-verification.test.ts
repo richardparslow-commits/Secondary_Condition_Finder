@@ -158,11 +158,11 @@ describe("ME-7 qualified-human citation verification", () => {
       hardFindingCount: number;
     };
     expect(citation).toMatchObject({
-      references: 1188,
+      references: 1210,
       verified: 383,
       retiredVerified: 6,
       verifiedProvenance: 389,
-      unverified: 805,
+      unverified: 827,
       reviewFindingCount: 0,
       hardFindingCount: 0,
     });
@@ -184,14 +184,14 @@ describe("ME-7 qualified-human citation verification", () => {
     };
     expect(master).toMatchObject({
       status: "PASS",
-      relationships: 681,
-      liveSourceReferenceUses: 1188,
+      relationships: 691,
+      liveSourceReferenceUses: 1210,
       verifiedLiveSourceUses: 383,
-      pendingVerificationLiveSourceUses: 805,
+      pendingVerificationLiveSourceUses: 827,
       activeSourceEntities: 346,
-      pendingVerificationSourceEntities: 722,
+      pendingVerificationSourceEntities: 737,
       activeClinicalSourceEntities: 345,
-      pendingClinicalSourceEntities: 722,
+      pendingClinicalSourceEntities: 737,
     });
   }, 30000);
 });

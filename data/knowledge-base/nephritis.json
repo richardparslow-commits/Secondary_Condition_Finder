@@ -2,8 +2,70 @@
   "id": "nephritis",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review urologic, gynecologic, hormonal, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 63 (2026-09-26): one ASSOCIATION_ONLY draft mapping pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: the edge asserts association only (etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true, mechanismCategory IMMUNE_MEDIATED). The evidence base is retrospective cohort plus small biopsy cohort class, so individual claims require dated renal-function and histology review with competing-cause exclusion, and review by a qualified medical professional.",
+    "Pathway and duplicate-scope screens: no -> hypertension edge (WITHHELD - direction-inversion guard: the biopsy-cohort anchor documents office blood pressure predicting intrarenal lesions (SBP >130 associated with arteriolosclerosis), which runs from blood pressure to kidney lesions rather than from nephritis to hypertension; the bidirectional clinical relationship is not quantified in the forward direction in the located base); no -> anemia edge (WITHHELD - zero located condition-specific quantification in nephritis populations; renal anemia evidence is CKD-stage-mediated and belongs to the chronic-kidney-disease window); no -> proteinuria edge (constitutive-proximity guard - proteinuria is a diagnostic criterion of glomerular disease); identity-duplication screens - the published pyelonephritis, nephropathy (diabetic, analgesic, sickle-cell, polycystic), and nephrolithiasis CKD windows keep their own evidence (ME-29), and this edge rests only on glomerular-disease cohort material."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 63 (2026-09-26): one bounded association edge authored - nephritis to chronic-kidney-disease (rank 1) - classified ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, and hypothesizedOnly:true. The proposition rests on the 25-year Brazilian glomerular-disease cohort of 417 adults (PMID 40815784) and the 66-patient biopsy-proven glomerulonephritis prognosis cohort (PMID 42762084).",
+    "Counter-evidence and caveat screens recorded 2026-09-26: (i) umbrella-scope limit - the nephritis identity spans acute self-limited and chronic progressive inflammatory kidney disease, and the located progression cohorts are glomerular-histology and biopsy-selected, so acute recovery trajectories are unrepresented; (ii) direction discipline - the biopsy cohort's blood-pressure signal runs BP-to-lesion, so no hypertension edge was authored in the forward direction; (iii) sibling separation - the nephrosis identity's chronic-kidney-disease proposition in this batch rests on separate nephrotic-range cohort evidence with no recycling between the two windows (ME-29); (iv) treatment-era - modern immunosuppression and RAS blockade alter the progression captured by these cohorts.",
+    "CRG structural-debt disposition recorded 2026-09-26 (qualified-human decision recorded, pending qualified-human verification): this batch's nephritis-to-chronic-kidney-disease edge closes one new CRG-ASSOCIATION-CYCLE - chronic-kidney-disease -> congestive-heart-failure -> depressive-disorder -> sleep-apnea -> hypertension -> ischemic-heart-disease -> colorectal-cancer -> fecal-incontinence -> dermatitis -> impetigo -> nephritis -> chronic-kidney-disease - via the published impetigo-to-nephritis edge. Disposition: the cycle is composed entirely of ASSOCIATION_ONLY edges with hypothesizedOnly:true on every hop, each standing on its own identity-specific evidence, so the composition must not be read as circular causation; the finding is accepted as visible review-class debt and CRG_REVIEW_BASELINE was deliberately re-pinned 12 -> 13 in scripts/audit-crg-graph.js in this batch's reviewed change rather than resolved by dropping a defensible edge. Reopening conditions for removing the debt: a qualified human resolves the cycle by re-scoping or retiring any member edge, at which point the pin should be lowered."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "chronic-kidney-disease",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Glomerular inflammatory kidney disease documents chronic kidney disease progression at long-term cohort and biopsy-prognosis level: the 25-year Brazilian cohort of 417 adults with glomerular diseases found interstitial fibrosis/tubular atrophy (HR 1.079) and higher BMI (HR 1.257) associated with CKD progression while baseline eGFR was protective (HR 0.956), framing glomerular diseases as an important cause of chronic kidney disease (PMID 40815784), and the biopsy-proven glomerulonephritis cohort of 66 adults found intrarenal arteriolosclerosis independently predicted renal function decline and the composite renal-cardiovascular outcome (OR 6.67) over 36 months (PMID 42762084); recorded as documented association only, scoped to glomerular histologies.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: the umbrella identity spans acute and chronic inflammatory nephritides with markedly different trajectories, so whether any individual chronic kidney disease is attributable to a nephritis requires individual nephrology attribution with biopsy-confirmed histology, recovery assessment, and diabetic and obstructive exclusion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "IMMUNE_MEDIATED",
+        "primaryVector": "Glomerular immune-complex and inflammatory injury drives nephron loss with interstitial fibrosis and tubular atrophy so chronic kidney disease results, the fibrosis route quantified by the IFTA hazard in the 25-year cohort and the arteriolosclerosis renal-decline signal in the biopsy cohort, but whether this route produced any individual chronic kidney disease remains hypothesized until biopsy and renal-function records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at retrospective single-region cohort plus small biopsy cohort class only: the umbrella identity includes self-limited acute nephritides not represented in progression cohorts, both anchors are biopsy-selected populations with established chronic injury, and modern immunosuppression and renin-angiotensin blockade materially alter progression.",
+        "evidenceGaps": "The evidence base is glomerular-histology scoped while the umbrella identity includes tubulointerstitial and acute forms; acute post-infectious and rapidly reversible nephritides often recover renal function completely; biopsy cohorts are selected for persistent disease; the 66-patient biopsy cohort's blood-pressure findings run from blood pressure to lesions rather than the reverse; and diabetic nephropathy, hypertensive nephrosclerosis, and obstructive uropathy compete for individual attribution.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "diabetic nephropathy (the published diabetic-nephropathy window, not recycled per ME-29)",
+          "hypertensive nephrosclerosis (the published hypertension window)",
+          "obstructive uropathy and nephrolithiasis sequelae (the published kidney-stones window)",
+          "drug-induced tubulointerstitial nephritis",
+          "polycystic kidney disease (the published window)",
+          "acute kidney injury with recovery"
+        ]
+      },
+      "evidenceGaps": [
+        "The evidence base is glomerular-histology scoped while the umbrella identity includes tubulointerstitial and acute forms; acute post-infectious and rapidly reversible nephritides often recover renal function completely; biopsy cohorts are selected for persistent disease; the 66-patient biopsy cohort's blood-pressure findings run from blood pressure to lesions rather than the reverse; and diabetic nephropathy, hypertensive nephrosclerosis, and obstructive uropathy compete for individual attribution."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY at long-term cohort plus biopsy-prognosis class with the histology-scope limit carried openly: the 25-year glomerular-disease cohort of 417 adults identifies IFTA and BMI as CKD-progression predictors and frames glomerular diseases as an important CKD cause (PMID 40815784), and the biopsy-proven glomerulonephritis cohort documents arteriolosclerosis-predicted renal function decline with composite outcome OR 6.67 (PMID 42762084); because the umbrella identity includes self-limited acute nephritides absent from progression cohorts and the anchors are biopsy-selected, the conservative standard keeps the edge at association only and routes individual claims through dated renal-function and biopsy review with diabetic, hypertensive, and obstructive exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Sales F, Carmo PVD, Huaira RMNH, et al. Epidemiological profile and renal outcomes in a 25-year Brazilian cohort of glomerular diseases J Bras Nefrol. 2025 Oct-Dec;47(4):e20240213. PMID 40815784.",
+          "note": "Retrospective cohort of 417 adults with biopsy-diagnosed glomerular diseases over 25 years (Brazil; 51.1% primary, membranous nephropathy most common; lupus nephritis most common secondary): IFTA HR 1.079 and BMI HR 1.257 for CKD progression, baseline eGFR HR 0.956 protective; glomerular diseases framed as an important cause of CKD; supports the bounded glomerular-scope association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40815784/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 40815784; results (renal survival and CKD-progression predictors)"
+        },
+        {
+          "citation": "Gigante A, Trombacco A, Galanti G, et al. Office Blood Pressure and Arteriolosclerosis in Biopsy-Proven Glomerulonephritis: Association With Renal Function Decline and Clinical Outcomes J Clin Hypertens (Greenwich). 2026 Sep;28(9):e70367. PMID 42762084.",
+          "note": "Retrospective longitudinal study of 66 adults with biopsy-proven glomerulonephritis followed 36 months: arteriolosclerosis associated with steeper eGFR decline (interaction beta -4.91 mL/min/1.73m2 per interval) and independently predicted composite renal-cardiovascular outcome (OR 6.67); supports the bounded renal-decline association only. Note: the study's blood-pressure analysis runs from office BP to histological lesions (SBP >130 associated with arteriolosclerosis), not the reverse direction.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42762084/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 42762084; results (eGFR decline and composite outcomes)"
+        }
+      ]
+    }
+  ]
 }

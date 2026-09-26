@@ -6,8 +6,8 @@
  "installedFrom": "Master Registry Discrepancy Resolution 2026",
  "authorityBoundary": "Authoritative for current relationship direction, proposition text, guard state, source linkage, and KB parity; does not establish an individual VA medical nexus.",
  "counts": {
-  "relationships": 681,
-  "explicitPublicationGuards": 607,
+  "relationships": 691,
+  "explicitPublicationGuards": 617,
   "legacyRationaleBoundaries": 74
  },
  "relationships": [
@@ -21949,6 +21949,308 @@
    "sourceReferenceCount": 3,
    "pathwayIntelligencePresent": false,
    "suggestionObjectHash": "5786007545811d4a8155e4864b5d2fd4c9d447cffbbd2383f707d42ecd8ea8b5"
+  },
+  {
+   "relationshipId": "rel-nasal-valve-collapse-to-sleep-apnea",
+   "primaryId": "nasal-valve-collapse",
+   "targetId": "sleep-apnea",
+   "direction": "nasal-valve-collapse -> sleep-apnea",
+   "primaryPublicationState": "draft",
+   "rank": 1,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY at expert-consensus plus PSG-subgroup class with the contested-severity limit carried openly: the 2026 expert consensus identifies nasal obstruction particularly at the nasal valve as a fundamental limitation of PAP success and an integral OSA-management target (PMID 42130488), and the PSG study found bilateral nasal valve incontinence associated with lower SaO2-nadir and more severe nocturnal respiratory pattern (PMID 30715032); because a powered 100-subject cross-section found no correlation between objective nasal anatomy and PSG-measured severity (PMID 24334963) and the consensus's core claim is management and adherence rather than incident apnea, the conservative standard keeps the edge at association only and routes individual claims through dated polysomnography with nasal endoscopy and obesity, tonsillar, and central-apnea exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY at expert-consensus plus PSG-subgroup class with the contested-severity limit carried openly: the 2026 expert consensus identifies nasal obstruction particularly at the nasal valve as a fundamental limitation of PAP success and an integral OSA-management target (PMID 42130488), and the PSG study found bilateral nasal valve incontinence associated with lower SaO2-nadir and more severe nocturnal respiratory pattern (PMID 30715032); because a powered 100-subject cross-section found no correlation between objective nasal anatomy and PSG-measured severity (PMID 24334963) and the consensus's core claim is management and adherence rather than incident apnea, the conservative standard keeps the edge at association only and routes individual claims through dated polysomnography with nasal endoscopy and obesity, tonsillar, and central-apnea exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to nasal-valve obstruction and obstructive sleep apnea: the 2026 expert consensus identifies valve-level nasal obstruction as a fundamental limitation of PAP success and an integral OSA-management target (PMID 42130488) and the PSG study found bilateral valve incontinence associated with lower SaO2-nadir (PMID 30715032), with the powered null anatomy-severity cross-section carried as counterweight (PMID 24334963); the deviated-septum, nasal-polyps, sinusitis, and allergic-rhinitis sleep-apnea windows keep their own evidence (ME-29), so individual claims route through dated polysomnography with nasal endoscopy and obesity, tonsillar, and central-apnea exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No located cohort quantifies incident obstructive sleep apnea attributable to nasal valve collapse; the consensus's strongest claim concerns CPAP adherence and management rather than apnea causation; the severity linkage rests on a bilateral-valve-incontinence subgroup with oxygenation rather than event-count endpoints; and the 100-subject cross-sectional study found no objective anatomy-severity correlation."
+   ],
+   "sourceIds": [
+    "pmid-42130488",
+    "pmid-30715032",
+    "pmid-24334963"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "c2b086139c99680eee4dd396c49e0c44065fb0bad13c863fa626f6056cabc25e"
+  },
+  {
+   "relationshipId": "rel-necrobiosis-lipoidica-to-squamous-cell-carcinoma",
+   "primaryId": "necrobiosis-lipoidica",
+   "targetId": "squamous-cell-carcinoma",
+   "direction": "necrobiosis-lipoidica -> squamous-cell-carcinoma",
+   "primaryPublicationState": "draft",
+   "rank": 1,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY at systematic-review-of-cases plus case class with the incidence-unquantified limit carried openly: the systematic review documents cutaneous malignancies arising within NLD lesions (PMID 40538107), the fatal case frames decades-long ulcerated NLD as a high-index-of-suspicion malignancy field (PMID 30870808), and the ulcerated-NLD SCC case corroborates the transformation pattern (PMID 24373177); because no located cohort quantifies incidence and the evidence class is publication-prone case material, the conservative standard keeps the edge at association only and routes individual claims through dated biopsy of non-healing NLD ulcers with chronic-wound and actinic exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY at systematic-review-of-cases plus case class with the incidence-unquantified limit carried openly: the systematic review documents cutaneous malignancies arising within NLD lesions (PMID 40538107), the fatal case frames decades-long ulcerated NLD as a high-index-of-suspicion malignancy field (PMID 30870808), and the ulcerated-NLD SCC case corroborates the transformation pattern (PMID 24373177); because no located cohort quantifies incidence and the evidence class is publication-prone case material, the conservative standard keeps the edge at association only and routes individual claims through dated biopsy of non-healing NLD ulcers with chronic-wound and actinic exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to malignancy arising in long-standing ulcerated NLD fields: the systematic review of cutaneous malignancies arising in NLD (PMID 40538107), the fatal SCC case framing decades-long ulceration as a high-index-of-suspicion field (PMID 30870808), and the ulcerated-NLD SCC case (PMID 24373177) document the transformation pattern at case-collation class only with no incidence denominator; the chronic-wound SCC windows of other identities keep their own evidence (ME-29), so individual claims route through dated dermatopathological biopsy of non-healing ulcers with chronic-wound and actinic exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No located cohort quantifies squamous cell carcinoma incidence in necrobiosis lipoidica; the systematic review collates case-class evidence where publication bias toward fatal or aggressive courses is expected; duration of ulceration before transformation varies widely across reports; and malignancy in other chronic wounds overlaps the differential."
+   ],
+   "sourceIds": [
+    "pmid-40538107",
+    "pmid-30870808",
+    "pmid-24373177"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "72c81a088d2d4cd650aea81f40f4ab003611f33ef3b1587447b718a37a5f4da5"
+  },
+  {
+   "relationshipId": "rel-necrobiotic-xanthogranuloma-to-multiple-myeloma",
+   "primaryId": "necrobiotic-xanthogranuloma",
+   "targetId": "multiple-myeloma",
+   "direction": "necrobiotic-xanthogranuloma -> multiple-myeloma",
+   "primaryPublicationState": "draft",
+   "rank": 1,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY at single-center series plus follow-up-review class with the shared-substrate limit carried openly: the 35-patient series found monoclonal gammopathy in all evaluable NXG patients with 23 percent progressing to multiple myeloma at median 67 months (PMID 27238425) and the long-term follow-up review estimated 9-11 percent risk of myeloma, amyloidosis, or macroglobulinemia (PMID 9218893); because the transforming tissue is the co-occurring gammopathy clone rather than the skin lesion and baseline smoldering myeloma complicates attribution, the conservative standard keeps the edge at association only and routes individual claims through dated hematology assessment with standard MGUS risk stratification."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY at single-center series plus follow-up-review class with the shared-substrate limit carried openly: the 35-patient series found monoclonal gammopathy in all evaluable NXG patients with 23 percent progressing to multiple myeloma at median 67 months (PMID 27238425) and the long-term follow-up review estimated 9-11 percent risk of myeloma, amyloidosis, or macroglobulinemia (PMID 9218893); because the transforming tissue is the co-occurring gammopathy clone rather than the skin lesion and baseline smoldering myeloma complicates attribution, the conservative standard keeps the edge at association only and routes individual claims through dated hematology assessment with standard MGUS risk stratification.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to the monoclonal-gammopathy progression pathway: the 35-patient series found gammopathy in all evaluable patients with 23 percent progressing to myeloma at median 67 months (PMID 27238425) and the long-term follow-up review estimated 9-11 percent gammopathy-malignancy risk (PMID 9218893); the shared-substrate guard is carried on the edge - the transforming tissue is the gammopathy clone rather than the skin lesion and baseline smoldering myeloma complicates attribution - so individual claims route through dated hematology assessment with standard MGUS risk stratification.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "The transforming tissue is the associated monoclonal gammopathy clone rather than the xanthogranuloma, so NXG may mark rather than cause the malignant progression; the series is small and referral-selected; baseline smoldering myeloma in 5 of 35 complicates incidence attribution; MGUS-to-myeloma background progression makes an independent NXG contribution unquantifiable; and the cohort also contained CLL patients so lymphoid outcomes share the pathway."
+   ],
+   "sourceIds": [
+    "pmid-27238425",
+    "pmid-9218893"
+   ],
+   "sourceReferenceCount": 2,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "266e7871b96f8cc737d5e5dc45c3a753cbd60493d2d76af3e24925aefd3eea12"
+  },
+  {
+   "relationshipId": "rel-necrobiotic-xanthogranuloma-to-visual-impairment",
+   "primaryId": "necrobiotic-xanthogranuloma",
+   "targetId": "visual-impairment",
+   "direction": "necrobiotic-xanthogranuloma -> visual-impairment",
+   "primaryPublicationState": "draft",
+   "rank": 2,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY at single case plus cohort-frequency class with the functional-outcome limit carried openly: the orbital-compression case documents progressive visual decline with choroidal folding in NXG with smoldering myeloma (PMID 42473503) and the 35-patient series documents periorbital involvement in 66 percent of NXG patients (PMID 27238425); because no located cohort quantifies visual outcomes and the anatomical frequency is not a functional endpoint, the conservative standard keeps the edge at association only and routes individual claims through dated orbital imaging and ophthalmological assessment with inflammatory and neoplastic orbital exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY at single case plus cohort-frequency class with the functional-outcome limit carried openly: the orbital-compression case documents progressive visual decline with choroidal folding in NXG with smoldering myeloma (PMID 42473503) and the 35-patient series documents periorbital involvement in 66 percent of NXG patients (PMID 27238425); because no located cohort quantifies visual outcomes and the anatomical frequency is not a functional endpoint, the conservative standard keeps the edge at association only and routes individual claims through dated orbital imaging and ophthalmological assessment with inflammatory and neoplastic orbital exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to periorbital/orbital xanthogranulomatous mass effect: the orbital-compression case documents progressive visual decline with choroidal folding (PMID 42473503) and the 35-patient series documents 66 percent periorbital involvement as anatomical frequency rather than functional outcome (PMID 27238425); lymphoma, IgG4-related orbital disease, and idiopathic orbital inflammation are recorded as competing etiologies, so individual claims route through dated orbital imaging and ophthalmological assessment with inflammatory and neoplastic orbital exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No located cohort quantifies visual outcomes in orbital NXG; the 66 percent periorbital figure is anatomical rather than functional; visual decline in the anchor case was measured alongside smoldering-myeloma-directed therapy; and idiopathic orbital inflammation, lymphoma, and IgG4-related orbital disease overlap the differential."
+   ],
+   "sourceIds": [
+    "pmid-42473503",
+    "pmid-27238425"
+   ],
+   "sourceReferenceCount": 2,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "76d741848f13d395bddb9c5483f3f3ed5aa313d8708fb42a082c4433ac8d064c"
+  },
+  {
+   "relationshipId": "rel-nephritis-to-chronic-kidney-disease",
+   "primaryId": "nephritis",
+   "targetId": "chronic-kidney-disease",
+   "direction": "nephritis -> chronic-kidney-disease",
+   "primaryPublicationState": "draft",
+   "rank": 1,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY at long-term cohort plus biopsy-prognosis class with the histology-scope limit carried openly: the 25-year glomerular-disease cohort of 417 adults identifies IFTA and BMI as CKD-progression predictors and frames glomerular diseases as an important CKD cause (PMID 40815784), and the biopsy-proven glomerulonephritis cohort documents arteriolosclerosis-predicted renal function decline with composite outcome OR 6.67 (PMID 42762084); because the umbrella identity includes self-limited acute nephritides absent from progression cohorts and the anchors are biopsy-selected, the conservative standard keeps the edge at association only and routes individual claims through dated renal-function and biopsy review with diabetic, hypertensive, and obstructive exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY at long-term cohort plus biopsy-prognosis class with the histology-scope limit carried openly: the 25-year glomerular-disease cohort of 417 adults identifies IFTA and BMI as CKD-progression predictors and frames glomerular diseases as an important CKD cause (PMID 40815784), and the biopsy-proven glomerulonephritis cohort documents arteriolosclerosis-predicted renal function decline with composite outcome OR 6.67 (PMID 42762084); because the umbrella identity includes self-limited acute nephritides absent from progression cohorts and the anchors are biopsy-selected, the conservative standard keeps the edge at association only and routes individual claims through dated renal-function and biopsy review with diabetic, hypertensive, and obstructive exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to glomerular histologies: the 25-year cohort of 417 glomerular-disease adults found IFTA HR 1.079 and BMI HR 1.257 for CKD progression (PMID 40815784) and the 66-patient biopsy GN cohort found arteriolosclerosis-predicted renal decline with composite outcome OR 6.67 (PMID 42762084); the umbrella's acute self-limited forms are unrepresented in progression cohorts, the sibling nephrosis CKD edge rests on separate evidence (ME-29), and the pyelonephritis, nephropathy, and nephrolithiasis CKD windows keep their own evidence (ME-29), so individual claims route through dated renal-function and biopsy review with diabetic, hypertensive, and obstructive exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "The evidence base is glomerular-histology scoped while the umbrella identity includes tubulointerstitial and acute forms; acute post-infectious and rapidly reversible nephritides often recover renal function completely; biopsy cohorts are selected for persistent disease; the 66-patient biopsy cohort's blood-pressure findings run from blood pressure to lesions rather than the reverse; and diabetic nephropathy, hypertensive nephrosclerosis, and obstructive uropathy compete for individual attribution."
+   ],
+   "sourceIds": [
+    "pmid-40815784",
+    "pmid-42762084"
+   ],
+   "sourceReferenceCount": 2,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "a5d4bca92f5f74b5915d07f5b87b451c94c266f7f4613ef1c9e7bd429da74d19"
+  },
+  {
+   "relationshipId": "rel-nephrosis-to-deep-vein-thrombosis",
+   "primaryId": "nephrosis",
+   "targetId": "deep-vein-thrombosis",
+   "direction": "nephrosis -> deep-vein-thrombosis",
+   "primaryPublicationState": "draft",
+   "rank": 1,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY at national matched-cohort class with the composite-endpoint limit carried openly: the Danish cohort of 3,967 first-time nephrotic adults found first-year VTE adjusted hazard 7.11 and 10-year VTE risk 7.7 percent (PMID 34979093), the multicenter cohort found edema-stratified VTE incidence 15 versus 10 per 1,000 person-years (PMID 40043694), and the multi-cohort analysis documents nephrotic hypercoagulopathy with antithrombin deficiency only a limited contributor (PMID 36754010); because the endpoints are composite VTE without component separation, the conservative standard keeps the edge at association only and routes individual claims through dated duplex imaging and coagulation review with stasis, malignancy, and thrombophilia exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY at national matched-cohort class with the composite-endpoint limit carried openly: the Danish cohort of 3,967 first-time nephrotic adults found first-year VTE adjusted hazard 7.11 and 10-year VTE risk 7.7 percent (PMID 34979093), the multicenter cohort found edema-stratified VTE incidence 15 versus 10 per 1,000 person-years (PMID 40043694), and the multi-cohort analysis documents nephrotic hypercoagulopathy with antithrombin deficiency only a limited contributor (PMID 36754010); because the endpoints are composite VTE without component separation, the conservative standard keeps the edge at association only and routes individual claims through dated duplex imaging and coagulation review with stasis, malignancy, and thrombophilia exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to composite-VTE measurement with the not-separable limit carried openly: the Danish matched cohort of 3,967 first-time nephrotic adults found first-year VTE adjusted hazard 7.11 and 10-year risk 7.7 percent (PMID 34979093), the edema-stratified cohort found VTE incidence 15 versus 10 per 1,000 person-years (PMID 40043694), and the antithrombin meta-analysis documents hypercoagulopathy with antithrombin deficiency only a limited contributor (PMID 36754010); so individual claims route through dated duplex imaging and coagulation review with stasis, malignancy, and thrombophilia exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "Component-specific deep vein thrombosis rates are not separable from the composite VTE endpoints in either anchor cohort; renal vein thrombosis is classically part of the nephrotic thromboembolism spectrum but unquantified here; the mechanistic meta-analysis found antithrombin deficiency not uniform; and edema-related stasis, immobility, malignancy-associated thrombosis, and inherited thrombophilia overlap the differential."
+   ],
+   "sourceIds": [
+    "pmid-34979093",
+    "pmid-40043694",
+    "pmid-36754010"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "e8a27d261d38af7fd16dd9d8c12412979f71d9c84ae8540cace50ed11b43699d"
+  },
+  {
+   "relationshipId": "rel-nephrosis-to-pulmonary-embolism",
+   "primaryId": "nephrosis",
+   "targetId": "pulmonary-embolism",
+   "direction": "nephrosis -> pulmonary-embolism",
+   "primaryPublicationState": "draft",
+   "rank": 2,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY at national matched-cohort class with the composite-endpoint limit carried openly and modeled on the batch-62 composite-VTE precedent: the Danish cohort found first-year VTE adjusted hazard 7.11 and 10-year risk 7.7 percent in first-time nephrotic syndrome (PMID 34979093) and the multi-cohort analysis documents the nephrotic hypercoagulopathy driving thromboembolic predisposition (PMID 36754010); because pulmonary embolism is a component of the measured composite without separable rates, the conservative standard keeps the edge at association only and routes individual claims through dated CT pulmonary angiography with stasis, malignancy, and thrombophilia exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY at national matched-cohort class with the composite-endpoint limit carried openly and modeled on the batch-62 composite-VTE precedent: the Danish cohort found first-year VTE adjusted hazard 7.11 and 10-year risk 7.7 percent in first-time nephrotic syndrome (PMID 34979093) and the multi-cohort analysis documents the nephrotic hypercoagulopathy driving thromboembolic predisposition (PMID 36754010); because pulmonary embolism is a component of the measured composite without separable rates, the conservative standard keeps the edge at association only and routes individual claims through dated CT pulmonary angiography with stasis, malignancy, and thrombophilia exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to composite-VTE measurement with the component-not-separable limit carried openly per the batch-62 composite precedent: the Danish matched cohort found first-year VTE adjusted hazard 7.11 and 10-year risk 7.7 percent (PMID 34979093) and the antithrombin meta-analysis documents the nephrotic hypercoagulopathy driving thromboembolic predisposition (PMID 36754010); pulmonary-embolism-specific incidence is not separable in the anchors, so individual claims route through dated CT pulmonary angiography with stasis, malignancy, and thrombophilia exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "Pulmonary-embolism-specific incidence is not separable from the composite VTE endpoint in the anchor cohort; renal vein thrombosis shares the spectrum; the mechanistic meta-analysis found antithrombin deficiency not a uniform feature; and immobility, malignancy-associated thrombosis, post-surgical state, and inherited thrombophilia overlap the differential."
+   ],
+   "sourceIds": [
+    "pmid-34979093",
+    "pmid-36754010"
+   ],
+   "sourceReferenceCount": 2,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "1b0ceb5f1be2a9c7e8e9027afc42ab5470bcf011f7b91cbee4dbce505d341d7f"
+  },
+  {
+   "relationshipId": "rel-nephrosis-to-cerebrovascular-accident-stroke-residuals",
+   "primaryId": "nephrosis",
+   "targetId": "cerebrovascular-accident-stroke-residuals",
+   "direction": "nephrosis -> cerebrovascular-accident-stroke-residuals",
+   "primaryPublicationState": "draft",
+   "rank": 3,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY at national matched-cohort class with the composite-component limit carried openly: the Danish cohort found 10-year arterial thromboembolism risk 14.0 percent with ischemic stroke the most frequent component at 8.1 percent and first-year arterial adjusted hazard 3.11 (PMID 34979093), and the cardiovascular review documents the dyslipidemia and procoagulant arterial-thrombosis pathway with aspirin prophylaxis framing (PMID 42298988); because the stroke figure is a composite component rather than a separately powered endpoint, the conservative standard keeps the edge at association only and routes individual claims through dated neuroimaging and coagulation review with cardioembolic, atherosclerotic, and small-vessel exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY at national matched-cohort class with the composite-component limit carried openly: the Danish cohort found 10-year arterial thromboembolism risk 14.0 percent with ischemic stroke the most frequent component at 8.1 percent and first-year arterial adjusted hazard 3.11 (PMID 34979093), and the cardiovascular review documents the dyslipidemia and procoagulant arterial-thrombosis pathway with aspirin prophylaxis framing (PMID 42298988); because the stroke figure is a composite component rather than a separately powered endpoint, the conservative standard keeps the edge at association only and routes individual claims through dated neuroimaging and coagulation review with cardioembolic, atherosclerotic, and small-vessel exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to ischemic stroke as a component of the arterial-thromboembolism composite: the Danish matched cohort found 10-year arterial risk 14.0 percent with ischemic stroke the highest component at 8.1 percent and first-year arterial adjusted hazard 3.11 (PMID 34979093), and the CV review documents dyslipidemia and procoagulant arterial-thrombosis mechanisms (PMID 42298988); the stroke figure is a composite component rather than a separately powered endpoint, so individual claims route through dated neuroimaging and coagulation review with cardioembolic, atherosclerotic, and small-vessel exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "The ischemic-stroke figure is a cumulative component of a composite arterial endpoint rather than a separately analyzed outcome; nephrotic-syndrome-specific stroke hazard models were not located; contemporary lipid-lowering and antithrombotic prophylaxis alters event rates; and cardioembolic sources, carotid atherosclerosis, and small-vessel disease compete for individual attribution."
+   ],
+   "sourceIds": [
+    "pmid-34979093",
+    "pmid-42298988"
+   ],
+   "sourceReferenceCount": 2,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "4f397af0b7608af77c0db39c63d0bd98e99382cb6fe36c78239509994bcd2aab"
+  },
+  {
+   "relationshipId": "rel-nephrosis-to-myocardial-infarction",
+   "primaryId": "nephrosis",
+   "targetId": "myocardial-infarction",
+   "direction": "nephrosis -> myocardial-infarction",
+   "primaryPublicationState": "draft",
+   "rank": 4,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY at national matched-cohort class with the composite-component and mechanism-mix limits carried openly: the Danish cohort found 10-year arterial thromboembolism risk 14.0 percent with myocardial infarction at 6.0 percent and first-year arterial adjusted hazard 3.11 (PMID 34979093), and the cardiovascular review documents dyslipidemia plus procoagulant arterial-thrombosis mechanisms with aspirin prophylaxis framing (PMID 42298988); because the infarction figure is a composite component and dyslipidemia mediates risk through atherosclerosis as well as thrombosis, the conservative standard keeps the edge at association only and routes individual claims through dated coronary workup with atherosclerotic, embolic, and demand-ischemia exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY at national matched-cohort class with the composite-component and mechanism-mix limits carried openly: the Danish cohort found 10-year arterial thromboembolism risk 14.0 percent with myocardial infarction at 6.0 percent and first-year arterial adjusted hazard 3.11 (PMID 34979093), and the cardiovascular review documents dyslipidemia plus procoagulant arterial-thrombosis mechanisms with aspirin prophylaxis framing (PMID 42298988); because the infarction figure is a composite component and dyslipidemia mediates risk through atherosclerosis as well as thrombosis, the conservative standard keeps the edge at association only and routes individual claims through dated coronary workup with atherosclerotic, embolic, and demand-ischemia exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to myocardial infarction as a component of the arterial-thromboembolism composite with the mechanism-mix limit carried openly: the Danish matched cohort found 10-year arterial risk 14.0 percent with MI at 6.0 percent and first-year arterial adjusted hazard 3.11 (PMID 34979093), and the CV review documents dyslipidemia plus procoagulant coronary-thrombosis mechanisms (PMID 42298988); dyslipidemia mediates part of the coronary risk through atherosclerosis rather than pure thrombosis, so individual claims route through dated coronary workup with atherosclerotic, embolic, and demand-ischemia exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "The myocardial-infarction figure is a cumulative component of a composite arterial endpoint rather than a separately analyzed outcome; nephrotic-syndrome-specific coronary hazard models were not located; dyslipidemia-mediated atherosclerosis and pure thrombotic occlusion are not separable in the anchors; and conventional coronary risk factors compete for individual attribution."
+   ],
+   "sourceIds": [
+    "pmid-34979093",
+    "pmid-42298988"
+   ],
+   "sourceReferenceCount": 2,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "d2f2b748f4166ac84801dc32f1e012c6983c3226d9a61135e6096afbb7d570a7"
+  },
+  {
+   "relationshipId": "rel-nephrosis-to-chronic-kidney-disease",
+   "primaryId": "nephrosis",
+   "targetId": "chronic-kidney-disease",
+   "direction": "nephrosis -> chronic-kidney-disease",
+   "primaryPublicationState": "draft",
+   "rank": 5,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY at multicenter cohort class with the histology-heterogeneity limit carried openly: the Danish multicenter cohort of 1,219 nephrotic-range patients found edema associated with faster kidney failure progression (188 versus 364 days) with proteinuria-severity and hypoalbuminemia gradients (PMID 40043694); because the anchor stratifies by edema rather than histology and nephrotic umbrella trajectories range from treatment-responsive remission to progressive fibrosis, the conservative standard keeps the edge at association only and routes individual claims through dated renal-function and biopsy review with diabetic, hypertensive, and obstructive exclusion. Sibling separation recorded: this edge rests on nephrotic-range cohort evidence and does not recycle the nephritis window's glomerular-disease cohort anchors (ME-29)."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY at multicenter cohort class with the histology-heterogeneity limit carried openly: the Danish multicenter cohort of 1,219 nephrotic-range patients found edema associated with faster kidney failure progression (188 versus 364 days) with proteinuria-severity and hypoalbuminemia gradients (PMID 40043694); because the anchor stratifies by edema rather than histology and nephrotic umbrella trajectories range from treatment-responsive remission to progressive fibrosis, the conservative standard keeps the edge at association only and routes individual claims through dated renal-function and biopsy review with diabetic, hypertensive, and obstructive exclusion. Sibling separation recorded: this edge rests on nephrotic-range cohort evidence and does not recycle the nephritis window's glomerular-disease cohort anchors (ME-29).",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to nephrotic-range proteinuric populations with histology-heterogeneity carried openly: the edema-stratified multicenter cohort of 1,219 nephrotic-range patients found kidney failure at 188 versus 364 days with edema and proteinuria-severity gradients (PMID 40043694); minimal-change remission versus membranous/FSGS progression makes the umbrella trajectory heterogeneous, and the sibling nephritis CKD edge keeps its own glomerular anchors (ME-29), so individual claims route through dated renal-function and biopsy review with diabetic, hypertensive, and obstructive exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "The anchor cohort reports kidney-failure progression stratified by edema status rather than by histology; minimal change disease often remits with therapy while membranous and focal-segmental disease progress, so the umbrella's trajectory is heterogeneous; no located cohort separates nephrotic-proteinuria-driven progression from underlying histology; and diabetic nephropathy, hypertensive nephrosclerosis, and obstructive uropathy compete for individual attribution."
+   ],
+   "sourceIds": [
+    "pmid-40043694"
+   ],
+   "sourceReferenceCount": 1,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "56ee6456295d7c5743dcd74ba5fe1c4bf94fa6c1a2c7af11268c7be694c435b5"
   }
  ],
  "lastUpdatedBy": "batch-D1-draft-authoring",

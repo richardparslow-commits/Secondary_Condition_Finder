@@ -2833,3 +2833,113 @@ explicit fixture token added in batch 61 continued to carry the citation-decay-g
 automatically (780 -> 805, including the `Array.from({ length })` fixture line and its swept assertion) -
 second consecutive batch with no manual fixture bump. The residue check found no survivors outside the
 standing benign classes. Standing recommendation: batch 62 lands through branch, PR, CI, and merge.
+
+## Mapping Expansion D1 batch 63 (2026-09-26)
+
+Mapping Expansion D1 batch 63 (2026-09-26) authored ten draft-quarantined relationships across all five
+screened identities - `nasal-valve-collapse`, `necrobiosis-lipoidica`, `necrobiotic-xanthogranuloma`,
+`nephritis`, `nephrosis` - classified ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED,
+vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true, and conservative rationale and
+evidence-gap records on every suggestion. No identities were deferred this batch; withholdings were
+recorded on the files instead: nephritis -> hypertension (DIRECTION-INVERSION - the biopsy-cohort anchor
+runs BP-to-lesion), nephritis -> anemia and nephrosis -> anemia (zero located condition-specific
+quantification), nephrosis -> proteinuria and edema (CONSTITUTIVE-PROXIMITY), necrobiotic-xanthogranuloma
+-> non-hodgkins-lymphoma (comorbidity-only class: 2 CLL patients in the 35-patient series with no
+progression quantification), necrobiosis-lipoidica -> cellulitis (zero located quantification),
+nasal-valve-collapse -> hyposmia and -> CPAP-adherence (no valve-specific quantification and no catalog
+identity for PAP adherence - recorded as withheld propositions, not deferred identities), and nephrosis
+bleeding (cohort adjusted hazard 4.02 with no catalog bleeding identity).
+
+`nasal-valve-collapse` (1 edge): sleep-apnea (rank 1, MECHANICAL_OR_COMPRESSIVE) rests on the 2026
+multidisciplinary expert consensus (nasal obstruction particularly at the nasal valve as a fundamental
+limitation of PAP success and an integral OSA-management target; PMID 42130488) and the PSG study
+(bilateral valve incontinence -> lower SaO2-nadir, more severe nocturnal pattern; PMID 30715032), with
+the powered 100-subject null anatomy-severity cross-section carried ON the edge as counterweight (PMID
+24334963) and the consensus's adherence-versus-incidence scope recorded openly.
+
+`necrobiosis-lipoidica` (1 edge): squamous-cell-carcinoma (rank 1, MALIGNANT_TRANSFORMATION) rests on the
+systematic review of cutaneous malignancies arising in NLD (PMID 40538107), the fatal SCC case framing
+decades-long ulcerated NLD as a high-index-of-suspicion malignancy field (PMID 30870808), and the
+ulcerated-NLD SCC case (PMID 24373177); case-collation class only with no incidence denominator carried
+in the gaps.
+
+`necrobiotic-xanthogranuloma` (2 edges): multiple-myeloma (rank 1, MALIGNANT_TRANSFORMATION) rests on the
+35-patient monoclonal-gammopathy series (28 MGUS / 5 smoldering / 2 CLL; 23% progressed to myeloma at
+median 67 months; PMID 27238425) and the long-term follow-up risk review (9-11% gammopathy-malignancy
+risk; PMID 9218893), with the SHARED-SUBSTRATE guard carried on the edge - the transforming tissue is
+the co-occurring gammopathy clone rather than the skin lesion, and baseline smoldering myeloma
+complicates attribution; visual-impairment (rank 2, MECHANICAL_OR_COMPRESSIVE) rests on the
+vision-threatening orbital-compression case (progressive visual decline, choroidal folding; PMID
+42473503) and the cohort's 66% periorbital involvement (anatomical frequency, not functional outcome;
+PMID 27238425).
+
+`nephritis` (1 edge): chronic-kidney-disease (rank 1, IMMUNE_MEDIATED, glomerular-scope) rests on the
+25-year Brazilian cohort of 417 glomerular-disease adults (IFTA HR 1.079, BMI HR 1.257, baseline eGFR
+protective; PMID 40815784) and the 66-patient biopsy-proven GN cohort (arteriolosclerosis-predicted
+eGFR decline; composite outcome OR 6.67; PMID 42762084), with the umbrella's acute self-limited forms
+recorded as unrepresented and the sibling nephrosis CKD edge kept on separate evidence (ME-29).
+
+`nephrosis` (5 edges): deep-vein-thrombosis (rank 1) and pulmonary-embolism (rank 2) rest on the Danish
+national matched cohort of 3,967 first-time nephrotic adults (first-year VTE aHR 7.11; 10-year VTE 7.7%;
+PMID 34979093), the edema-stratified multicenter cohort of 1,219 nephrotic-range patients (VTE 15 vs 10
+per 1,000 person-years; PMID 40043694), and the antithrombin hypercoagulability multi-cohort
+meta-analysis (antithrombin deficiency only a limited contributor; PMID 36754010), with the
+composite-VTE component-not-separable limit carried on BOTH edges (batch-62 precedent);
+cerebrovascular-accident-stroke-residuals (rank 3) and myocardial-infarction (rank 4) rest on the same
+cohort's arterial composite (10-year 14.0%; ischemic stroke 8.1% and MI 6.0% as named components;
+first-year arterial aHR 3.11; PMID 34979093) plus the 2026 cardiovascular review (dyslipidemia and
+procoagulant arterial-thrombosis mechanisms; aspirin prophylaxis framing; PMID 42298988), with the
+composite-component limit on the stroke edge and the atherosclerosis-versus-thrombosis mechanism-mix
+limit on the MI edge; chronic-kidney-disease (rank 5, MULTIFACTORIAL) rests on the edema-stratified
+kidney-failure acceleration (188 vs 364 days; PMID 40043694) with the histology-heterogeneity limit
+(minimal-change remission vs membranous/FSGS progression) and is deliberately single-ref to keep the
+nephritis window's anchors unrecycled (ME-29).
+
+Pre-authoring verification: all 15 PMIDs passed the abstract pass (`/tmp/d1-abstract47.py` in six fetch
+groups), the esummary bibliographic pass, and `node scripts/preflight-source-status.js --pmids ...`
+(15/15 checked, zero blocking flags, zero notes). The bibliographic pass caught three mis-transcribed
+PMIDs before authoring - 38168455 resolved to an unrelated ArXiv paper (true record 36754010,
+antithrombin meta-analysis), 40984200 resolved to a metasurface engineering paper (replaced by verified
+nasal records 30715032/42130488/24334963), and 41466803 resolved to a nanoparticle-gel paper (true
+record 40815784, the Brazilian glomerular cohort) - every authored citation was re-verified against
+esummary before authoring. The post-write structural self-audit passed for all five files (10 edges, 22
+reference uses; one accepted single-ref quarantine warning on nephrosis->chronic-kidney-disease), and
+`npm run kb:validate` reports zero errors.
+
+Registry after lockstep: 691 relationships (617 explicit / 74 legacy), 1210 reference uses (383
+verified / 827 pending-verification), 1205 clinical / 5 legal uses, 1092 source entities (346 active /
+737 pending-verification). The four within-batch shared sources - PMID 27238425 across the two
+necrobiotic-xanthogranuloma edges, 34979093 across the four nephrosis thromboembolic edges, 42298988
+across the nephrosis stroke and myocardial-infarction edges, and 40043694 across the nephrosis
+deep-vein-thrombosis and chronic-kidney-disease edges - give 22 reference uses over 15 new sources.
+Citation packet regenerated at 328 worksheets / 827 reference rows = live citation debt; the
+verification dashboard regenerated at 827 rows in 35 reviewer batches (735 distinct sources). Backlog
+after batch 63: **175** undispositioned zero-edge drafts (180 before the batch; all five identities left
+by gaining edges, no deferrals). Next-five: `neurobehavioral-effects`, `neuroblastoma`,
+`neurocognitive-disorders`, `night-blindness`, `nightmare-disorder`.
+
+Structural-debt note: batch 63 is the first batch to grow the CRG review-class backlog - the
+nephritis->chronic-kidney-disease edge closes one new CRG-ASSOCIATION-CYCLE (chronic-kidney-disease ->
+congestive-heart-failure -> depressive-disorder -> sleep-apnea -> hypertension -> ischemic-heart-disease
+-> colorectal-cancer -> fecal-incontinence -> dermatitis -> impetigo -> nephritis ->
+chronic-kidney-disease) via the published impetigo->nephritis edge. The cycle is composed entirely of
+ASSOCIATION_ONLY edges with hypothesizedOnly:true on every hop, so it was accepted as visible review-
+class debt with the qualified-human disposition recorded in `nephritis.json` governance notes and
+CRG_REVIEW_BASELINE deliberately re-pinned 12 -> 13 in `scripts/audit-crg-graph.js` in this reviewed
+change (redundancy conflicts unchanged at 28/28). The CRG audit reports REVIEW with zero violations and
+`exceeded: false` at the re-pinned baseline; lowering the pin remains the disposition path if a
+qualified human later resolves the cycle.
+
+Test-pin note: the sweep touched 54 files and replaced 316 counter tokens in one pass with the batch-62
+per-token context predicates carried over unchanged (relationships 681 -> 691, references/uses 1188 ->
+1210, unverified 805 -> 827, pending source entities 722 -> 737, total source entities 1077 -> 1092,
+explicit guards 607 -> 617, clinical references 1183 -> 1205, clinical provenance 1187 -> 1209, and the
+draft-singles counter 273 -> 276 for this batch's three single-suggestion identities
+`nasal-valve-collapse`, `necrobiosis-lipoidica`, `nephritis`). The explicit fixture token added in batch
+61 continued to carry the citation-decay-gate debt fixture along automatically (805 -> 827, including
+the `Array.from({ length })` fixture line and its swept assertion) - third consecutive batch with no
+manual fixture bump. The residue check found one standing benign coincidence:
+scripts/apply-all-94-citation-verification.js pins `explicitPublicationGuards: 273`, a historical
+one-time-migration guard count that shares the draft-singles token's value only by chance; its context
+matches no sweep predicate and mutating it would falsify that migration's record, so it stands.
+Standing recommendation: batch 63 lands through branch, PR, CI, and merge.

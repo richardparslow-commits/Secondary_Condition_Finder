@@ -2,8 +2,122 @@
   "id": "necrobiotic-xanthogranuloma",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review dermatologic, autoimmune, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 63 (2026-09-26): two ASSOCIATION_ONLY draft mappings pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: both edges assert association only (etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true; mechanisms MALIGNANT_TRANSFORMATION and MECHANICAL_OR_COMPRESSIVE). The evidence base is single-center series plus case class, so individual claims require dated hematology and ophthalmological assessment with competing-cause exclusion, and review by a qualified medical professional.",
+    "Pathway and duplicate-scope screens: no -> non-hodgkins-lymphoma edge (WITHHELD - the 35-patient series contains 2 chronic lymphocytic leukemia patients as gammopathy-spectrum comorbidity only, with zero located progression quantification for lymphoid outcomes; reopening condition: a series quantifying lymphoma incidence in NXG); no -> amyloidosis edge (WITHHELD - recorded as a withheld proposition rather than a deferred identity: the long-term follow-up review lists amyloidosis among gammopathy outcomes but the catalog holds no amyloidosis identity and no condition-specific quantification was pulled); no -> blindness edge (identity-duplication guard - the established visual-impairment identity carries the proposition; blindness was not double-authored); shared-anchor screen - PMID 27238425 supports both edges within this identity (cohort progression figures for rank 1, periorbital frequency for rank 2), scoped per edge without evidence recycling from sibling identities (ME-29)."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 63 (2026-09-26): two bounded association edges authored - necrobiotic-xanthogranuloma to multiple-myeloma (rank 1) and to visual-impairment (rank 2) - classified ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, and hypothesizedOnly:true. The myeloma proposition rests on the 35-patient monoclonal-gammopathy series with 23 percent progression at median 67 months (PMID 27238425) and the long-term follow-up risk review (PMID 9218893). The visual-impairment proposition rests on the vision-threatening orbital-compression case (PMID 42473503) and the cohort's 66 percent periorbital involvement frequency (PMID 27238425).",
+    "Counter-evidence and caveat screens recorded 2026-09-26: (i) shared-substrate guard on the myeloma edge - the transforming tissue is the co-occurring monoclonal gammopathy clone rather than the cutaneous lesion, and baseline smoldering myeloma in 5 of 35 patients complicates incidence attribution, so NXG may mark rather than cause the malignant progression; (ii) evidence class on the visual edge - one case with measured decline plus anatomical frequency from the cohort, no functional-outcome cohort; (iii) treatment confounding - orbital cases receive heterogeneous chemotherapy and radiotherapy; (iv) differential discipline - orbital lymphoma, IgG4-related disease, and idiopathic orbital inflammation compete and are listed as alternative etiologies."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "multiple-myeloma",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Necrobiotic xanthogranuloma with monoclonal gammopathy documents progression to multiple myeloma at cohort and long-term-follow-up level: the 35-patient tertiary-center series found monoclonal gammopathy in all evaluable patients (28 MGUS, 5 smoldering myeloma, 2 chronic lymphocytic leukemia) with 8 patients (23 percent) progressing to multiple myeloma at a median 67 months and states malignant transformation is not uncommon (PMID 27238425), and the long-term-follow-up review of NXG with benign monoclonal proteinemia estimated a 9-11 percent risk of myeloma, amyloidosis, or macroglobulinemia in followed patients (PMID 9218893); recorded as documented association only.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: progression events occur within the co-occurring monoclonal gammopathy clone rather than the cutaneous lesion itself, so whether any individual myeloma is attributable to the NXG-associated gammopathy state requires individual hematology attribution with standard MGUS-to-myeloma risk stratification and baseline marrow assessment."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MALIGNANT_TRANSFORMATION",
+        "primaryVector": "The monoclonal plasma-cell clone that co-occurs with necrobiotic xanthogranuloma undergoes clonal evolution so overt multiple myeloma results, the malignant-transformation route stated in the cohort's framing that transformation is not uncommon, but whether this route produced any individual myeloma remains hypothesized until marrow and paraprotein records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at single-center retrospective series plus follow-up review class only: the 35-patient series is a tertiary-center cohort with referral bias toward systemic cases, the transforming tissue is the gammopathy clone rather than the skin lesion so NXG may mark rather than drive the malignant course, and modern anti-myeloma therapy changes precursor-state natural history.",
+        "evidenceGaps": "The transforming tissue is the associated monoclonal gammopathy clone rather than the xanthogranuloma, so NXG may mark rather than cause the malignant progression; the series is small and referral-selected; baseline smoldering myeloma in 5 of 35 complicates incidence attribution; MGUS-to-myeloma background progression makes an independent NXG contribution unquantifiable; and the cohort also contained CLL patients so lymphoid outcomes share the pathway.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "standard MGUS-to-myeloma progression independent of NXG",
+          "smoldering myeloma already present at baseline",
+          "other lymphoplasmacytic lymphomas including CLL (the cohort's 2 CLL cases)",
+          "amyloidosis and macroglobulinemia (the review's other gammopathy outcomes)",
+          "metastatic or paraprotein-related organ damage"
+        ]
+      },
+      "evidenceGaps": [
+        "The transforming tissue is the associated monoclonal gammopathy clone rather than the xanthogranuloma, so NXG may mark rather than cause the malignant progression; the series is small and referral-selected; baseline smoldering myeloma in 5 of 35 complicates incidence attribution; MGUS-to-myeloma background progression makes an independent NXG contribution unquantifiable; and the cohort also contained CLL patients so lymphoid outcomes share the pathway."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY at single-center series plus follow-up-review class with the shared-substrate limit carried openly: the 35-patient series found monoclonal gammopathy in all evaluable NXG patients with 23 percent progressing to multiple myeloma at median 67 months (PMID 27238425) and the long-term follow-up review estimated 9-11 percent risk of myeloma, amyloidosis, or macroglobulinemia (PMID 9218893); because the transforming tissue is the co-occurring gammopathy clone rather than the skin lesion and baseline smoldering myeloma complicates attribution, the conservative standard keeps the edge at association only and routes individual claims through dated hematology assessment with standard MGUS risk stratification.",
+      "sourceReferences": [
+        {
+          "citation": "Higgins LS, Go RS, Dingli D, et al. Clinical Features and Treatment Outcomes of Patients With Necrobiotic Xanthogranuloma Associated With Monoclonal Gammopathies Clin Lymphoma Myeloma Leuk. 2016 Aug;16(8):447-52. PMID 27238425.",
+          "note": "Single-center retrospective series of 35 patients with necrobiotic xanthogranuloma and monoclonal gammopathy (Mayo Clinic; 28 MGUS, 5 smoldering myeloma, 2 CLL): 8 patients (23%) progressed to multiple myeloma at median 67 months; malignant transformation stated as not uncommon; supports the bounded gammopathy-progression association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/27238425/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 27238425; results (gammopathy spectrum and progression outcomes)"
+        },
+        {
+          "citation": "Johnston KA, Grimwood RE, Meffert JJ, et al. Necrobiotic xanthogranuloma with paraproteinemia: an evolving presentation Cutis. 1997 Jun;59(6):333-6. PMID 9218893.",
+          "note": "Long-term-follow-up review of necrobiotic xanthogranuloma with paraproteinemia (1988): estimated 9-11% risk of myeloma, amyloidosis, or macroglobulinemia in patients with benign monoclonal proteinemia followed for years; supports the bounded long-term-risk framing only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/9218893/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 9218893; review risk estimate (gammopathy progression)"
+        }
+      ]
+    },
+    {
+      "conditionId": "visual-impairment",
+      "rank": 2,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Periorbital and orbital necrobiotic xanthogranuloma threatens vision at case and cohort-frequency level: the case report of NXG associated with IgG kappa smoldering myeloma documents progressive visual decline with choroidal folding from orbital compression and frames the orbital disease as vision-threatening (PMID 42473503), and the 35-patient series found periorbital involvement in 66 percent of patients, documenting the orbital predilection that places the visual apparatus at risk (PMID 27238425); recorded as documented association only.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: measured visual decline is documented at case class while the cohort quantifies anatomical periorbital involvement rather than visual outcomes, so whether any individual visual impairment is attributable to orbital xanthogranuloma requires individual ophthalmological attribution with compressive, inflammatory, and refractive exclusion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MECHANICAL_OR_COMPRESSIVE",
+        "primaryVector": "Xanthogranulomatous infiltration of the periorbital and orbital tissues drives mass effect on the globe and optic apparatus so visual decline results, the compressive route documented by the orbital-compression case with choroidal folding and progressive visual decline, but whether this route produced any individual visual impairment remains hypothesized until orbital imaging and ophthalmological records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at single case plus cohort-frequency class only: measured visual decline is documented in one case, the 35-patient series quantifies periorbital involvement frequency rather than functional visual outcomes, and treatment responses to chemotherapy and radiotherapy are heterogeneous across reported orbital cases.",
+        "evidenceGaps": "No located cohort quantifies visual outcomes in orbital NXG; the 66 percent periorbital figure is anatomical rather than functional; visual decline in the anchor case was measured alongside smoldering-myeloma-directed therapy; and idiopathic orbital inflammation, lymphoma, and IgG4-related orbital disease overlap the differential.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "orbital lymphoma (the gammopathy-associated lymphoid risk, withheld as an edge in this batch)",
+          "IgG4-related orbital disease",
+          "idiopathic orbital inflammatory disease",
+          "thyroid eye disease",
+          "refractive, cataract, and glaucoma causes of visual decline"
+        ]
+      },
+      "evidenceGaps": [
+        "No located cohort quantifies visual outcomes in orbital NXG; the 66 percent periorbital figure is anatomical rather than functional; visual decline in the anchor case was measured alongside smoldering-myeloma-directed therapy; and idiopathic orbital inflammation, lymphoma, and IgG4-related orbital disease overlap the differential."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY at single case plus cohort-frequency class with the functional-outcome limit carried openly: the orbital-compression case documents progressive visual decline with choroidal folding in NXG with smoldering myeloma (PMID 42473503) and the 35-patient series documents periorbital involvement in 66 percent of NXG patients (PMID 27238425); because no located cohort quantifies visual outcomes and the anatomical frequency is not a functional endpoint, the conservative standard keeps the edge at association only and routes individual claims through dated orbital imaging and ophthalmological assessment with inflammatory and neoplastic orbital exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Cheema HI, Zangari M, Schinke C, et al. Necrobiotic Xanthogranuloma Associated With IgG Kappa Smoldering Myeloma Presenting as Vision-Threatening Orbital Disease: Clinical Response to Plasma Cell-Directed Therapy Cureus. 2026 Jun;18(6):e111170. PMID 42473503.",
+          "note": "Case report of necrobiotic xanthogranuloma associated with IgG kappa smoldering myeloma (2025): progressive visual decline, choroidal folding, and orbital compression; frames vision-threatening orbital disease; supports the bounded compressive-route association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42473503/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 42473503; case presentation (visual decline and orbital findings)"
+        },
+        {
+          "citation": "Higgins LS, Go RS, Dingli D, et al. Clinical Features and Treatment Outcomes of Patients With Necrobiotic Xanthogranuloma Associated With Monoclonal Gammopathies Clin Lymphoma Myeloma Leuk. 2016 Aug;16(8):447-52. PMID 27238425.",
+          "note": "Single-center series of 35 NXG patients (Mayo Clinic): periorbital involvement in 66% of patients, documenting the orbital predilection of the disease; supports the bounded anatomical-frequency association only, not functional visual outcomes.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/27238425/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 27238425; results (periorbital involvement frequency)"
+        }
+      ]
+    }
+  ]
 }

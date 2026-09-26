@@ -2,8 +2,78 @@
   "id": "nasal-valve-collapse",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review airway, aspiration, inflammatory, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 63 (2026-09-26): one ASSOCIATION_ONLY draft mapping pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: the edge asserts association only (etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true, mechanismCategory MECHANICAL_OR_COMPRESSIVE). The evidence base is expert consensus plus small PSG subgroup class with a powered null counterweight, so individual claims require dated polysomnography and nasal endoscopy with competing-cause exclusion, and review by a qualified medical professional.",
+    "Pathway and duplicate-scope screens: no -> hyposmia edge (WITHHELD - the nasal-obstructive-syndrome review lists hyposmia as a consequence of nasal obstruction generally, with zero located quantification specific to valve collapse); no -> insomnia or sleep-quality edge (WITHHELD - no catalog identity for sleep-quality decrement, and the located framing routes through apnea severity); no -> CPAP-intolerance or PAP-nonadherence edge (WITHHELD - recorded as a withheld proposition rather than a deferred identity: the consensus's strongest claim is precisely that PAP adherence limitation, but the catalog holds no PAP-adherence identity); identity-duplication screen - the published deviated-septum, nasal-polyps, sinusitis, and allergic-rhinitis sleep-apnea windows keep their own evidence (ME-29), and this edge rests only on valve-specific and general-consensus material."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 63 (2026-09-26): one bounded association edge authored - nasal-valve-collapse to sleep-apnea (rank 1) - classified ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, and hypothesizedOnly:true. The proposition rests on the 2026 multidisciplinary expert consensus on nasal patency in OSA (PMID 42130488), the PSG valve-incontinence severity study (PMID 30715032), and the powered null cross-sectional anatomy-severity study carried as counterweight (PMID 24334963).",
+    "Counter-evidence and caveat screens recorded 2026-09-26: (i) evidence class - expert consensus, one small PSG subgroup analysis, and one powered cross-sectional null; (ii) severity-versus-incidence - the PSG study measures SaO2-nadir within existing OSAS patients and the consensus addresses PAP success, so incident-apnea causation is not quantified anywhere in the located base; (iii) counterweight discipline - the 100-subject study's null anatomy-severity finding is carried on the edge itself rather than dropped; (iv) mis-transcription guard - a cited review's PMID was caught in the bibliographic pass resolving to an unrelated engineering paper and was replaced by verified records only, so every citation on this edge was re-verified against esummary before authoring."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "sleep-apnea",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Nasal airway obstruction at the nasal valve is linked to obstructive sleep apnea at expert-consensus and polysomnographic subgroup level: the 2026 multidisciplinary expert consensus on nasal patency in obstructive sleep apnea concludes that nasal airway obstruction, particularly at the nasal valve, can be a fundamental limitation to CPAP success and that nasal obstruction management is an integral component of OSA management (PMID 42130488), and the polysomnography study of patients with obstructive sleep apnea syndrome found bilateral nasal valve incontinence associated with lower SaO2-nadir and a more severe nocturnal respiratory pattern than unilateral or absent valve incontinence (PMID 30715032); recorded as documented association only, and a 100-subject cross-sectional PSG study found no correlation between objective nasal anatomy and PSG-measured OSA severity (PMID 24334963, counterweight carried).",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: the consensus frames valve-level obstruction chiefly as a limitation on PAP success and management rather than as a quantified cause of incident apnea, and the PSG subgroup measures severity markers within an existing OSA population, so whether any individual apnea is attributable to valve collapse requires individual sleep-study and nasal-endoscopic attribution with obesity, adenotonsillar, and central-apnea exclusion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MECHANICAL_OR_COMPRESSIVE",
+        "primaryVector": "Nasal valve narrowing raises nasal resistance so upstream pharyngeal collapsibility increases and ventilatory drive destabilizes during sleep, the resistive-load route described in the consensus's physiological framing linking nasal resistance to upper-airway collapsibility, but whether this route produced any individual apnea remains hypothesized until polysomnographic and nasal-endoscopic records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at expert-consensus plus small PSG-subgroup class only: the consensus synthesizes physiological, observational, and trial literature rather than a valve-specific incidence cohort, the valve-incontinence study measures SaO2-nadir within OSAS patients rather than apnea incidence in valve-collapse patients, and a powered 100-subject cross-section found no correlation between objective nasal anatomy and PSG-measured severity.",
+        "evidenceGaps": "No located cohort quantifies incident obstructive sleep apnea attributable to nasal valve collapse; the consensus's strongest claim concerns CPAP adherence and management rather than apnea causation; the severity linkage rests on a bilateral-valve-incontinence subgroup with oxygenation rather than event-count endpoints; and the 100-subject cross-sectional study found no objective anatomy-severity correlation.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "obesity-related pharyngeal collapsibility",
+          "adenotonsillar hypertrophy",
+          "craniofacial and Friedman-position anatomy (the consensus's competing upper-airway factors)",
+          "central sleep apnea",
+          "subjective nasal obstruction without anatomical collapse (trigeminal-dysfunction framing in the nasal-obstructive-syndrome review)"
+        ]
+      },
+      "evidenceGaps": [
+        "No located cohort quantifies incident obstructive sleep apnea attributable to nasal valve collapse; the consensus's strongest claim concerns CPAP adherence and management rather than apnea causation; the severity linkage rests on a bilateral-valve-incontinence subgroup with oxygenation rather than event-count endpoints; and the 100-subject cross-sectional study found no objective anatomy-severity correlation."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY at expert-consensus plus PSG-subgroup class with the contested-severity limit carried openly: the 2026 expert consensus identifies nasal obstruction particularly at the nasal valve as a fundamental limitation of PAP success and an integral OSA-management target (PMID 42130488), and the PSG study found bilateral nasal valve incontinence associated with lower SaO2-nadir and more severe nocturnal respiratory pattern (PMID 30715032); because a powered 100-subject cross-section found no correlation between objective nasal anatomy and PSG-measured severity (PMID 24334963) and the consensus's core claim is management and adherence rather than incident apnea, the conservative standard keeps the edge at association only and routes individual claims through dated polysomnography with nasal endoscopy and obesity, tonsillar, and central-apnea exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Vahabzadeh-Hagh AM, Strollo PJ Jr, Takashima M, et al. The role of nasal patency in obstructive sleep apnea: an expert consensus Front Sleep. 2026;5:1819496. PMID 42130488.",
+          "note": "Multidisciplinary expert consensus on nasal patency in obstructive sleep apnea (2026): converging physiological evidence, large-scale observational data, and controlled trials indicate nasal airway obstruction, particularly at the nasal valve, can be a fundamental limitation to CPAP success; nasal obstruction management framed as integral to OSA management; supports the bounded airway-patency association only, with its strongest claims concerning PAP adherence.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42130488/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 42130488; consensus framing (nasal resistance, upper-airway collapsibility, PAP outcomes)"
+        },
+        {
+          "citation": "Gelardi M, Intiglietta P, Porro G, et al. The role of the nasal valve in patients with obstructive sleep apnea syndrome Acta Biomed. 2019 Jan 11;90(2-S):15-8. PMID 30715032.",
+          "note": "Polysomnography study of OSAS patients (Acta Biomed 2019): patients with bilateral nasal valve incontinence had lower SaO2-nadir than patients with unilateral or no valve incontinence; bilateral valve incontinence associated with more severe nocturnal respiratory pattern; supports the bounded severity association within an existing OSA population only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/30715032/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 30715032; results (valve incontinence versus SaO2-nadir)"
+        },
+        {
+          "citation": "Leitzen KP, Brietzke SE, Lindsay RW. Correlation between nasal anatomy and objective obstructive sleep apnea severity Otolaryngol Head Neck Surg. 2014 Feb;150(2):325-31. PMID 24334963.",
+          "note": "Cross-sectional study of 100 subjects undergoing in-lab PSG with standardized nasal examination (59% with OSAS, mean AHI 13.1): no single nasal anatomy measurement or combined index correlated with PSG-measured sleep-disordered breathing severity (90% power to detect correlation); valve collapse correlated only with subjective NOSE scores; carried as counterweight limiting the anatomy-severity claim.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/24334963/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 24334963; results (null anatomy-severity correlation)"
+        }
+      ]
+    }
+  ]
 }

@@ -16,16 +16,16 @@
   "citationPromotionMustAtomicallyUpdateKbAndMasterSourceState": true
  },
  "counts": {
-  "liveSourceReferenceUses": 1188,
+  "liveSourceReferenceUses": 1210,
   "activeSourceEntities": 346,
-  "pendingVerificationSourceEntities": 722,
+  "pendingVerificationSourceEntities": 737,
   "activeClinicalSourceEntities": 345,
-  "pendingClinicalSourceEntities": 722,
+  "pendingClinicalSourceEntities": 737,
   "activeLegalAuthorityEntities": 1,
   "retiredOnlySourceEntities": 1,
   "supersededUnverifiedSourceEntities": 7,
   "bibliographicCorrectionOnlyEntities": 1,
-  "totalSourceEntitiesIncludingLineage": 1077,
+  "totalSourceEntitiesIncludingLineage": 1092,
   "retiredVerifiedRelationshipSourceUses": 6
  },
  "retirementLedger": {
@@ -39822,6 +39822,580 @@
    "retiredUses": [],
    "rawReferenceHashes": [
     "51941a76fe98628fc1d35f0f7e1a80f5529912445eef95052b0dc0747eebb188"
+   ]
+  },
+  {
+   "sourceId": "pmid-42130488",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "42130488",
+   "doi": null,
+   "canonicalCitation": "Vahabzadeh-Hagh AM, Strollo PJ Jr, Takashima M, et al. The role of nasal patency in obstructive sleep apnea: an expert consensus Front Sleep. 2026;5:1819496. PMID 42130488.",
+   "citationVariants": [
+    "Vahabzadeh-Hagh AM, Strollo PJ Jr, Takashima M, et al. The role of nasal patency in obstructive sleep apnea: an expert consensus Front Sleep. 2026;5:1819496. PMID 42130488."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42130488/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/42130488/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-nasal-valve-collapse-to-sleep-apnea",
+     "primaryId": "nasal-valve-collapse",
+     "targetId": "sleep-apnea",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "b02d9f0a11fc3dd57caaef8b2255c4c00b0238b6b74b989b58779e04ccb4c853"
+   ]
+  },
+  {
+   "sourceId": "pmid-30715032",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "30715032",
+   "doi": null,
+   "canonicalCitation": "Gelardi M, Intiglietta P, Porro G, et al. The role of the nasal valve in patients with obstructive sleep apnea syndrome Acta Biomed. 2019 Jan 11;90(2-S):15-8. PMID 30715032.",
+   "citationVariants": [
+    "Gelardi M, Intiglietta P, Porro G, et al. The role of the nasal valve in patients with obstructive sleep apnea syndrome Acta Biomed. 2019 Jan 11;90(2-S):15-8. PMID 30715032."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/30715032/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/30715032/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-nasal-valve-collapse-to-sleep-apnea",
+     "primaryId": "nasal-valve-collapse",
+     "targetId": "sleep-apnea",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "56bff6e777f4008a937e413928fb30bcf1d843d45e79e0a856af0cc87fbc8ef5"
+   ]
+  },
+  {
+   "sourceId": "pmid-24334963",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "24334963",
+   "doi": null,
+   "canonicalCitation": "Leitzen KP, Brietzke SE, Lindsay RW. Correlation between nasal anatomy and objective obstructive sleep apnea severity Otolaryngol Head Neck Surg. 2014 Feb;150(2):325-31. PMID 24334963.",
+   "citationVariants": [
+    "Leitzen KP, Brietzke SE, Lindsay RW. Correlation between nasal anatomy and objective obstructive sleep apnea severity Otolaryngol Head Neck Surg. 2014 Feb;150(2):325-31. PMID 24334963."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/24334963/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/24334963/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-nasal-valve-collapse-to-sleep-apnea",
+     "primaryId": "nasal-valve-collapse",
+     "targetId": "sleep-apnea",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "20cb7769093494aee79f0895d37904996032df2242956227ae4984d986093015"
+   ]
+  },
+  {
+   "sourceId": "pmid-40538107",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "40538107",
+   "doi": null,
+   "canonicalCitation": "Seeburruth D, Sood S, Heung M, et al. Characteristics, Management, and Outcomes of Cutaneous Malignancies Arising From Necrobiosis Lipoidica: A Systematic Review J Cutan Med Surg. 2026 Mar-Apr;30(2):195-196. PMID 40538107.",
+   "citationVariants": [
+    "Seeburruth D, Sood S, Heung M, et al. Characteristics, Management, and Outcomes of Cutaneous Malignancies Arising From Necrobiosis Lipoidica: A Systematic Review J Cutan Med Surg. 2026 Mar-Apr;30(2):195-196. PMID 40538107."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40538107/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/40538107/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-necrobiosis-lipoidica-to-squamous-cell-carcinoma",
+     "primaryId": "necrobiosis-lipoidica",
+     "targetId": "squamous-cell-carcinoma",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "c940fa013b9d7ac94b662997e2cc21c974464ab65f364469e7d7e3196f598ac1"
+   ]
+  },
+  {
+   "sourceId": "pmid-30870808",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "30870808",
+   "doi": "10.1530/EDM-19-0007",
+   "canonicalCitation": "Lefkovits Y, Adler A. Fatal squamous cell carcinoma from necrobiosis lipoidica diabeticorum in a diabetic patient Endocrinol Diabetes Metab Case Rep. 2019 Jan 1;2019.pii: EDM190007. doi: 10.1530/EDM-19-0007. PMID 30870808.",
+   "citationVariants": [
+    "Lefkovits Y, Adler A. Fatal squamous cell carcinoma from necrobiosis lipoidica diabeticorum in a diabetic patient Endocrinol Diabetes Metab Case Rep. 2019 Jan 1;2019.pii: EDM190007. doi: 10.1530/EDM-19-0007. PMID 30870808."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/30870808/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/30870808/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-necrobiosis-lipoidica-to-squamous-cell-carcinoma",
+     "primaryId": "necrobiosis-lipoidica",
+     "targetId": "squamous-cell-carcinoma",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "13fcdeef5dd248073f6d6003ac0cbcc452e78c64f3a1ae1ed4b10e5d0e8b3353"
+   ]
+  },
+  {
+   "sourceId": "pmid-24373177",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "24373177",
+   "doi": null,
+   "canonicalCitation": "Uva L, Freitas J, Soares de Almeida L, et al. Squamous cell carcinoma arising in ulcerated necrobiosis lipoidica diabeticorum Int Wound J. 2015 Dec;12(6):741-3. PMID 24373177.",
+   "citationVariants": [
+    "Uva L, Freitas J, Soares de Almeida L, et al. Squamous cell carcinoma arising in ulcerated necrobiosis lipoidica diabeticorum Int Wound J. 2015 Dec;12(6):741-3. PMID 24373177."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/24373177/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/24373177/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-necrobiosis-lipoidica-to-squamous-cell-carcinoma",
+     "primaryId": "necrobiosis-lipoidica",
+     "targetId": "squamous-cell-carcinoma",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "bf18b5b207713e10d176166f85266e395072af1b703e09b79974953bbb7769b8"
+   ]
+  },
+  {
+   "sourceId": "pmid-27238425",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "27238425",
+   "doi": null,
+   "canonicalCitation": "Higgins LS, Go RS, Dingli D, et al. Clinical Features and Treatment Outcomes of Patients With Necrobiotic Xanthogranuloma Associated With Monoclonal Gammopathies Clin Lymphoma Myeloma Leuk. 2016 Aug;16(8):447-52. PMID 27238425.",
+   "citationVariants": [
+    "Higgins LS, Go RS, Dingli D, et al. Clinical Features and Treatment Outcomes of Patients With Necrobiotic Xanthogranuloma Associated With Monoclonal Gammopathies Clin Lymphoma Myeloma Leuk. 2016 Aug;16(8):447-52. PMID 27238425."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/27238425/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/27238425/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 2,
+   "liveUses": [
+    {
+     "relationshipId": "rel-necrobiotic-xanthogranuloma-to-multiple-myeloma",
+     "primaryId": "necrobiotic-xanthogranuloma",
+     "targetId": "multiple-myeloma",
+     "sourceIndex": 0
+    },
+    {
+     "relationshipId": "rel-necrobiotic-xanthogranuloma-to-visual-impairment",
+     "primaryId": "necrobiotic-xanthogranuloma",
+     "targetId": "visual-impairment",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "569e1c963807c7a1fef4c1473433bd3c80bb2830c328537452f61d6211661b4c",
+    "0b7e704fc756a23706bf23ce81791c47ef18c459a071ba9ebfeb2fb5a9f46a4e"
+   ]
+  },
+  {
+   "sourceId": "pmid-9218893",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "9218893",
+   "doi": null,
+   "canonicalCitation": "Johnston KA, Grimwood RE, Meffert JJ, et al. Necrobiotic xanthogranuloma with paraproteinemia: an evolving presentation Cutis. 1997 Jun;59(6):333-6. PMID 9218893.",
+   "citationVariants": [
+    "Johnston KA, Grimwood RE, Meffert JJ, et al. Necrobiotic xanthogranuloma with paraproteinemia: an evolving presentation Cutis. 1997 Jun;59(6):333-6. PMID 9218893."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/9218893/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/9218893/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-necrobiotic-xanthogranuloma-to-multiple-myeloma",
+     "primaryId": "necrobiotic-xanthogranuloma",
+     "targetId": "multiple-myeloma",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "02700c0ebf8f8fedb23b4292d63799116b7ea7dfbef7eab7691dbfbef42ee417"
+   ]
+  },
+  {
+   "sourceId": "pmid-42473503",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "42473503",
+   "doi": null,
+   "canonicalCitation": "Cheema HI, Zangari M, Schinke C, et al. Necrobiotic Xanthogranuloma Associated With IgG Kappa Smoldering Myeloma Presenting as Vision-Threatening Orbital Disease: Clinical Response to Plasma Cell-Directed Therapy Cureus. 2026 Jun;18(6):e111170. PMID 42473503.",
+   "citationVariants": [
+    "Cheema HI, Zangari M, Schinke C, et al. Necrobiotic Xanthogranuloma Associated With IgG Kappa Smoldering Myeloma Presenting as Vision-Threatening Orbital Disease: Clinical Response to Plasma Cell-Directed Therapy Cureus. 2026 Jun;18(6):e111170. PMID 42473503."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42473503/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/42473503/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-necrobiotic-xanthogranuloma-to-visual-impairment",
+     "primaryId": "necrobiotic-xanthogranuloma",
+     "targetId": "visual-impairment",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "94bbc31e7ad9e3800ecf94137b10e3d73404de6c422e20e957f6d6ec3228287d"
+   ]
+  },
+  {
+   "sourceId": "pmid-40815784",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "40815784",
+   "doi": null,
+   "canonicalCitation": "Sales F, Carmo PVD, Huaira RMNH, et al. Epidemiological profile and renal outcomes in a 25-year Brazilian cohort of glomerular diseases J Bras Nefrol. 2025 Oct-Dec;47(4):e20240213. PMID 40815784.",
+   "citationVariants": [
+    "Sales F, Carmo PVD, Huaira RMNH, et al. Epidemiological profile and renal outcomes in a 25-year Brazilian cohort of glomerular diseases J Bras Nefrol. 2025 Oct-Dec;47(4):e20240213. PMID 40815784."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40815784/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/40815784/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-nephritis-to-chronic-kidney-disease",
+     "primaryId": "nephritis",
+     "targetId": "chronic-kidney-disease",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "57b8f19146d6e5fbf96ecbe8af383bbbea5ecde2fac2baf6848d5cd65c6c2bcc"
+   ]
+  },
+  {
+   "sourceId": "pmid-42762084",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "42762084",
+   "doi": null,
+   "canonicalCitation": "Gigante A, Trombacco A, Galanti G, et al. Office Blood Pressure and Arteriolosclerosis in Biopsy-Proven Glomerulonephritis: Association With Renal Function Decline and Clinical Outcomes J Clin Hypertens (Greenwich). 2026 Sep;28(9):e70367. PMID 42762084.",
+   "citationVariants": [
+    "Gigante A, Trombacco A, Galanti G, et al. Office Blood Pressure and Arteriolosclerosis in Biopsy-Proven Glomerulonephritis: Association With Renal Function Decline and Clinical Outcomes J Clin Hypertens (Greenwich). 2026 Sep;28(9):e70367. PMID 42762084."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42762084/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/42762084/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-nephritis-to-chronic-kidney-disease",
+     "primaryId": "nephritis",
+     "targetId": "chronic-kidney-disease",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "a79907ab6ddeb5d11424180dfdeb1f263bb6d58f8743363731c66a7c066c66c6"
+   ]
+  },
+  {
+   "sourceId": "pmid-34979093",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "34979093",
+   "doi": null,
+   "canonicalCitation": "Vestergaard SV, Birn H, Darvalics B, et al. Risk of Arterial Thromboembolism, Venous Thromboembolism, and Bleeding in Patients with Nephrotic Syndrome: A Population-Based Cohort Study Am J Med. 2022 May;135(5):615-625.e9. PMID 34979093.",
+   "citationVariants": [
+    "Vestergaard SV, Birn H, Darvalics B, et al. Risk of Arterial Thromboembolism, Venous Thromboembolism, and Bleeding in Patients with Nephrotic Syndrome: A Population-Based Cohort Study Am J Med. 2022 May;135(5):615-625.e9. PMID 34979093."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34979093/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/34979093/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 4,
+   "liveUses": [
+    {
+     "relationshipId": "rel-nephrosis-to-deep-vein-thrombosis",
+     "primaryId": "nephrosis",
+     "targetId": "deep-vein-thrombosis",
+     "sourceIndex": 0
+    },
+    {
+     "relationshipId": "rel-nephrosis-to-pulmonary-embolism",
+     "primaryId": "nephrosis",
+     "targetId": "pulmonary-embolism",
+     "sourceIndex": 0
+    },
+    {
+     "relationshipId": "rel-nephrosis-to-cerebrovascular-accident-stroke-residuals",
+     "primaryId": "nephrosis",
+     "targetId": "cerebrovascular-accident-stroke-residuals",
+     "sourceIndex": 0
+    },
+    {
+     "relationshipId": "rel-nephrosis-to-myocardial-infarction",
+     "primaryId": "nephrosis",
+     "targetId": "myocardial-infarction",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "b1d893738f70e2671f3832adb53654d5682a6c3e09bd2e1b8d864401cc78a8ae",
+    "9eb5849ce8d82518bde03d4bda76b6d0bab17682c3c502200f5a0524765e7f55",
+    "31927aad13f8ce042d45dfed32896f25396ab04965310839b6259a70c6cb35e5",
+    "447626813b5799a7aa6476ba6cfdbb7a0610c2d3c84493a944298cce315ac89c"
+   ]
+  },
+  {
+   "sourceId": "pmid-40043694",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "40043694",
+   "doi": null,
+   "canonicalCitation": "Kelddal S, Tofig BJ, Hvas AM, et al. Edema and Outcome in Patients with Nephrotic-Range Albuminuria and Hypoalbuminemia: A Danish Multicenter Cohort Study Am J Nephrol. 2025;56(4):510-519. PMID 40043694.",
+   "citationVariants": [
+    "Kelddal S, Tofig BJ, Hvas AM, et al. Edema and Outcome in Patients with Nephrotic-Range Albuminuria and Hypoalbuminemia: A Danish Multicenter Cohort Study Am J Nephrol. 2025;56(4):510-519. PMID 40043694."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40043694/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/40043694/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 2,
+   "liveUses": [
+    {
+     "relationshipId": "rel-nephrosis-to-deep-vein-thrombosis",
+     "primaryId": "nephrosis",
+     "targetId": "deep-vein-thrombosis",
+     "sourceIndex": 1
+    },
+    {
+     "relationshipId": "rel-nephrosis-to-chronic-kidney-disease",
+     "primaryId": "nephrosis",
+     "targetId": "chronic-kidney-disease",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "356f3e62dde4965d008728b84d1331e40d794e4c65d782638201e41e2ffab855",
+    "19d24a171302f6fb295b997492ee4703826c00bae078ed3768cd0e5f094b14f5"
+   ]
+  },
+  {
+   "sourceId": "pmid-36754010",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "36754010",
+   "doi": null,
+   "canonicalCitation": "Abdelghani E, Waller AP, Wolfgang KJ, et al. Exploring the Role of Antithrombin in Nephrotic Syndrome-Associated Hypercoagulopathy: A Multi-Cohort Study and Meta-Analysis Clin J Am Soc Nephrol. 2023 Feb 1;18(2):234-244. PMID 36754010.",
+   "citationVariants": [
+    "Abdelghani E, Waller AP, Wolfgang KJ, et al. Exploring the Role of Antithrombin in Nephrotic Syndrome-Associated Hypercoagulopathy: A Multi-Cohort Study and Meta-Analysis Clin J Am Soc Nephrol. 2023 Feb 1;18(2):234-244. PMID 36754010."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36754010/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/36754010/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 2,
+   "liveUses": [
+    {
+     "relationshipId": "rel-nephrosis-to-deep-vein-thrombosis",
+     "primaryId": "nephrosis",
+     "targetId": "deep-vein-thrombosis",
+     "sourceIndex": 2
+    },
+    {
+     "relationshipId": "rel-nephrosis-to-pulmonary-embolism",
+     "primaryId": "nephrosis",
+     "targetId": "pulmonary-embolism",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "74f827a24b2b45a0224b51c6e8c41f4122b5d2657afa37570a6601b8b914d559",
+    "37153a0c2f04d56a49d284121b85bebbacf145d15c922b6eb7be3b7e8bb4ff73"
+   ]
+  },
+  {
+   "sourceId": "pmid-42298988",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "42298988",
+   "doi": null,
+   "canonicalCitation": "Untersulzner C, Gauckler P, Matyjek A, et al. Cardiovascular disease and risk management in patients with nephrotic syndrome Kidney Res Clin Pract. 2026 Jul;45(4):467-478. PMID 42298988.",
+   "citationVariants": [
+    "Untersulzner C, Gauckler P, Matyjek A, et al. Cardiovascular disease and risk management in patients with nephrotic syndrome Kidney Res Clin Pract. 2026 Jul;45(4):467-478. PMID 42298988."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42298988/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/42298988/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 2,
+   "liveUses": [
+    {
+     "relationshipId": "rel-nephrosis-to-cerebrovascular-accident-stroke-residuals",
+     "primaryId": "nephrosis",
+     "targetId": "cerebrovascular-accident-stroke-residuals",
+     "sourceIndex": 1
+    },
+    {
+     "relationshipId": "rel-nephrosis-to-myocardial-infarction",
+     "primaryId": "nephrosis",
+     "targetId": "myocardial-infarction",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "c9663af7ee95b37075cab8007cb498bb824878473891734cda01ac3044a70c69",
+    "9945f68ed512a5c90918460219b6c10eeb0ce32c1fb5b58d4df22d1279da7581"
    ]
   }
  ],
