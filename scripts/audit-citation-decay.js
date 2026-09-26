@@ -30,10 +30,20 @@
  *     only shrink, and the report always states how much of the corpus drift
  *     detection can actually see, so a zero drift count is never mistaken for
  *     assurance the probe did not earn.
- *  4. Ceiling enforcement — a live reference that is unverified OR decayed
- *     cannot exceed CITATION_CEILING (10) before new mapping promotions must
- *     halt. This mirrors the audit-citation-verification ratchet but operates
- *     over the union of unverified + decayed + drifted references.
+ *  4. Ceiling enforcement — the union of link-rot, stale and drifted live
+ *     references cannot exceed CITATION_CEILING (10) before new mapping
+ *     promotions must halt. Because link rot and staleness already hard-fail
+ *     at a single occurrence (items 1-2), the ceiling's operative effect is
+ *     the tolerance budget for content drift, which item 3 flags rather than
+ *     hard-fails.
+ *     Verification debt is deliberately excluded from the ceiling: it is
+ *     ratcheted exclusively by audit-citation-verification.js
+ *     (CITATION_DEBT_BASELINE.unverified), which hard-fails whenever the count
+ *     grows. Counting the same debt here as well saturated the budget - 690
+ *     unverified references against a ceiling of 10 - so this gate failed on
+ *     every run irrespective of link rot or drift and could signal neither.
+ *     The debt stays visible as `unverifiedCount` in the report and in the
+ *     weekly workflow summary; it simply no longer drives this gate's status.
  *
  * Notes:
  *  - No writes are performed: this is an audit, not a mutator. A separate
@@ -369,8 +379,14 @@ function buildReport(files, probeResults, todayIso) {
   }
 
   const trueLinkRot = decayed.filter((entry) => !blocked.some((b) => b.sourceUrl === entry.sourceUrl));
-  const decays = [...stale, ...flags];
-  const ceiling = unverified.length + trueLinkRot.length + stale.length + drifted.length;
+  // Link rot is a hard failure at a single occurrence (docblock item 1): a dead
+  // URL can never support a nexus, so it joins staleness and structural flags
+  // in `decays` rather than hiding inside the ceiling budget. Content drift is
+  // deliberately NOT here - docblock item 3 flags it and item 4 budgets it.
+  // Verification debt is deliberately NOT here either: it is ratcheted by
+  // audit-citation-verification.js, which hard-fails if the count grows.
+  const decays = [...stale, ...trueLinkRot, ...flags];
+  const ceiling = trueLinkRot.length + stale.length + drifted.length;
 
   const report = {
     status: decays.length > 0 || ceiling > CITATION_CEILING ? "FAIL" : "PASS",
@@ -451,6 +467,7 @@ if (require.main === module) {
 module.exports = {
   buildReport,
   MAX_UNDIGESTED_VERIFIED_REFS,
+  CITATION_CEILING,
   stalenessWindowDays,
   parseContentDigest,
   hashContent,

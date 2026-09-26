@@ -197,7 +197,7 @@ describe("buildReport classification", () => {
     expect(report.linkRotCount).toBe(0);
   });
 
-  it("counts stale plus unverified plus decayed plus drifted toward the ceiling", () => {
+  it("counts decay toward the ceiling but delegates verification debt to citations:audit", () => {
     const files = [
       mappingFixture("primary-x", [
         suggestionFixture("secondary-y", [
@@ -220,7 +220,10 @@ describe("buildReport classification", () => {
     const report = buildReport(files, new Map(), TODAY);
     expect(report.staleCount).toBe(1);
     expect(report.unverifiedCount).toBe(1);
-    expect(report.citationCeilingUsage).toBe(2);
+    // Verification debt is reported for context but no longer consumes this
+    // gate's ceiling: audit-citation-verification.js ratchets it instead.
+    expect(report.citationCeilingUsage).toBe(1);
+    // The single stale reference hard-fails the gate on its own.
     expect(report.status).toBe("FAIL");
   });
 });
