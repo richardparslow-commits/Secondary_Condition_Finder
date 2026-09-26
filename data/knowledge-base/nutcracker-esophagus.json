@@ -2,8 +2,58 @@
   "id": "nutcracker-esophagus",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review gastrointestinal, nutritional, motility, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 65 (2026-09-26): one ASSOCIATION_ONLY draft mapping pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: the edge asserts association only (etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true, mechanismCategory MECHANICAL_OR_COMPRESSIVE). The evidence base is a single 48-patient HRM cohort, so individual claims require dated high-resolution manometry with structural exclusion, and review by a qualified medical professional. Accepted single-reference quarantine warning on this edge (the located hypercontractile-esophagus cohort is the sole identity-specific quantification).",
+    "Pathway and duplicate-scope screens: no -> gerd edge (WITHHELD on counterweight evidence - the hypercontractile cohort found reflux symptoms no higher than symptomatic controls (37.5% versus 41.4%, GerdQ pNS) and the DES-GERD re-examination found no distinguishing clinical or physiologic differences between spasm patients with and without GERD, challenging the historical pathogenesis emphasis (PMID 39341683); the published diffuse-esophageal-spasm gerd window keeps its own evidence (ME-29) and is NOT recycled here); no -> unexplained-chronic-pain or chest-pain edge (CONSTITUTIVE-PROXIMITY - chest pain is the cardinal presenting symptom of the hypercontractile disorder itself, 29.2% presentation in the anchor cohort); no -> esophageal-cancer or -> esophageal-stricture edge (zero located quantification; the published achalasia esophageal-cancer and stricture windows are separate identities' evidence); direction discipline - the cohort is a dysphagia/reflux/chest-pain referral population, so no reverse-direction claims are drawn from its composition."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 65 (2026-09-26): one bounded association edge authored - nutcracker-esophagus to dysphagia (rank 1) - classified ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, and hypothesizedOnly:true. The proposition rests on the hypercontractile esophagus HRM cohort (48 patients; dysphagia 60% presentation with DCI correlation; elevated IDQ and Eckardt dysphagia scores versus symptomatic controls at 61-month follow-up; PMID 40698610).",
+    "Counter-evidence and caveat screens recorded 2026-09-26: (i) symptom boundary - dysphagia is the presenting symptom in 60 percent AND the outcome measure, so constitutive proximity is carried openly and the persistence signal (elevated scores at 5 years versus symptomatic controls with normal manometry) is the basis for treating it as a secondary condition; (ii) counterweight on reflux - the anchor cohort found reflux prevalence no higher than controls and the spasm-GERD re-examination challenges GERD's pathogenic role in spastic disorders (PMID 39341683), so no gerd edge was authored despite the sibling diffuse-esophageal-spasm window having one; (iii) single-reference status accepted; (iv) modern nomenclature - 'hypercontractile esophagus' is the Chicago Classification v4 name for the nutcracker phenotype, and the anchor's provocative solid-meal testing detected 85 percent of cases that water swallows alone missed."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "dysphagia",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Hypercontractile (nutcracker) esophagus documents dysphagia at HRM-cohort and long-term-follow-up level: the single-center analysis of 48 patients with hypercontractile swallows (distal contractile integral over 8000 mmHg.s.cm) found dysphagia the presenting symptom in 60 percent with dysphagia significantly associated with contractile vigor (mean and maximal DCI during solid test meals), and at mean 61-month follow-up hypercontractile patients retained significantly higher Impaction Dysphagia Questionnaire and Eckardt dysphagia scores than symptomatic controls with normal manometry (3.8 versus 1.0, p=0.03; 0.46 versus 0.14, p=0.007; PMID 40698610); recorded as documented association only.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: dysphagia is also the presenting symptom that brings hypercontractile patients to manometry (60 percent of the cohort), so the boundary between constitutive presentation and persisting secondary consequence is carried openly, and individual claims require dated high-resolution manometry and structural exclusion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MECHANICAL_OR_COMPRESSIVE",
+        "primaryVector": "Hypercontractile distal esophageal contractions with elevated contractile integral drive failed or delayed bolus transit so dysphagia results and persists, the functional-obstruction route supported by the DCI-dysphagia correlation and the persistence of elevated dysphagia scores years after diagnosis, but whether this route produced any individual dysphagia remains hypothesized until manometry and barium records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at single-center HRM cohort class only (48 hypercontractile patients versus 58 symptomatic controls): the cohort is a referral-based manometry population, dysphagia doubles as the presenting symptom and the outcome measure, and provocative solid-meal testing detected most hypercontractility so water-swallow-only series may misclassify.",
+        "evidenceGaps": "The cohort is small and referral-based; dysphagia is both the presenting symptom and the outcome; provocative solid-meal testing was needed for 85 percent of diagnoses so older water-swallow classifications may understate the phenotype; long-term outcomes were self-reported by telephone in 75 percent of the cohort; and esophageal stricture, eosinophilic esophagitis, and achalasia compete for individual attribution.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "esophageal stricture and rings (the published esophageal-stricture window, not recycled per ME-29)",
+          "eosinophilic esophagitis",
+          "achalasia and EGJ outflow obstruction (the differential on manometry)",
+          "oropharyngeal dysphagia from neurologic causes",
+          "functional dysphagia with normal manometry"
+        ]
+      },
+      "evidenceGaps": [
+        "The cohort is small and referral-based; dysphagia is both the presenting symptom and the outcome; provocative solid-meal testing was needed for 85 percent of diagnoses so older water-swallow classifications may understate the phenotype; long-term outcomes were self-reported by telephone in 75 percent of the cohort; and esophageal stricture, eosinophilic esophagitis, and achalasia compete for individual attribution."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY at single-center HRM-cohort class with the symptom-boundary and referral limits carried openly: the hypercontractile esophagus cohort found dysphagia in 60 percent with contractile-vigor correlation and persistently elevated dysphagia scores versus symptomatic controls at 61 months (PMID 40698610); because dysphagia is both presenting symptom and outcome and the cohort is a small referral population, the conservative standard keeps the edge at association only and routes individual claims through dated high-resolution manometry with structural and oropharyngeal exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Ang D, Koo SH, Hong WB, et al. Hypercontractile Esophagus: Clinical Presentation, Role of Provocative Tests in High Resolution Manometry and Long Term Outcome-Results From an Asian Cohort Neurogastroenterol Motil. 2025 Nov;37(11):e70129. PMID 40698610.",
+          "note": "Single-center HRM analysis of 48 hypercontractile esophagus patients versus 58 symptomatic controls (Neurogastroenterol Motil 2025): dysphagia presentation 60% (versus 43.1% controls), reflux 37.5% (versus 41.4%, NS), chest pain 29.2%; dysphagia significantly associated with mean/maximal DCI on solid test meal; at 61-month telephone follow-up IDQ 3.8 versus 1.0 (p=0.03) and Eckardt 0.46 versus 0.14 (p=0.007); supports the bounded dysphagia-persistence association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40698610/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 40698610; results (presentation frequencies, DCI correlations, long-term symptom scores)"
+        }
+      ]
+    }
+  ]
 }

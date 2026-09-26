@@ -12077,6 +12077,270 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 **Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
 
+### `normal-pressure-hydrocephalus` → `depressive-disorder` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Idiopathic normal pressure hydrocephalus documents depression at systematic-review meta-analysis and treatment-response level: the first systematic review and meta-analysis of neuropsychiatric features in iNPH (22 studies, n=7,670 for depression) found depression pooled prevalence 30.1 percent (95% CI 20.1-42.3) with depression scores significantly higher than controls (Hedges g 1.31) and shunt treatment associated with reduced depression scores (PMID 41657358), the lumbo-peritoneal shunt study of 22 iNPH patients found NPI depression scores significantly decreased after surgery (PMID 26810545), and the systematic review of atypical iNPH manifestations lists depression among the most frequent neuropsychiatric presentations (6 studies; PMID 41936711); recorded as documented association only.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: depression in iNPH is entangled with the triad's cognitive decline and with the disability of gait impairment, and the located meta-analysis lacked baseline data on neuropsychiatric symptoms before iNPH diagnosis, so whether any individual depression is attributable to the hydrocephalus requires individual psychiatric attribution with baseline mood, vascular, and medication exclusion.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 336.1 — Belessiotis-Richards C, Brady E, Abrol E, et al. Neuropsychiatric Features in Patients With Idiopathic Normal Pressure Hydrocephalus: A Systematic Review and Meta-Analysis Neurol Clin Pract. 2026 Apr;16(2):e200586. PMID 41657358.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/41657358/
+- Source checked on: 2026-09-26
+- Locator: PMID 41657358; meta-analysis results (depression prevalence and treatment response)
+- Note under review: Systematic review and meta-analysis of neuropsychiatric features in idiopathic normal pressure hydrocephalus (Neurol Clin Pract 2026; 22 studies): depression pooled prevalence 30.1% (20.1-42.3, n=7,670); depression scores higher than controls (Hedges g 1.31, 0.39-2.23); shunt treatment associated with reduced depression scores (-0.30, -0.62 to 0.01, CI contains null); 12/22 studies low quality; supports the bounded prevalence and contrast association only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 336.2 — Kanemoto H, Kazui H, Suzuki Y, et al. Effect of lumbo-peritoneal shunt surgery on neuropsychiatric symptoms in patients with idiopathic normal pressure hydrocephalus J Neurol Sci. 2016 Feb 15;361:206-12. PMID 26810545.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/26810545/
+- Source checked on: 2026-09-26
+- Locator: PMID 26810545; results (pre/post-shunt NPI changes)
+- Note under review: Prospective lumbo-peritoneal shunt study of 22 iNPH patients with 3-month NPI follow-up (J Neurol Sci 2016): NPI total, apathy, and depression scores significantly decreased after surgery; neuropsychiatric improvement associated with reduced caregiver burden; supports the bounded treatment-response association only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 336.3 — Demichele G, Taddei G, Iaboni E, et al. Beyond Hakim's triad: a systematic review of atypical clinical manifestations in idiopathic normal pressure hydrocephalus Acta Neurol Belg. 2026 Apr 6.doi: 10.1007/s13760-026-03057-1. PMID 41936711.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/41936711/
+- Source checked on: 2026-09-26
+- Locator: PMID 41936711; review results (atypical neuropsychiatric manifestations)
+- Note under review: Systematic review of atypical clinical manifestations in iNPH beyond Hakim's triad (Acta Neurol Belg 2026; 27 studies): neuropsychiatric manifestations most frequent, including depression (6 studies), psychosis (6), apathy (3); post-shunt resolution varied by symptom; supports the bounded atypical-manifestation framing only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `normal-pressure-hydrocephalus` → `apathy` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Idiopathic normal pressure hydrocephalus documents apathy at meta-analysis and case-control neuroimaging level: the iNPH neuropsychiatric meta-analysis found apathy pooled prevalence 69.2 percent (95% CI 63.1-74.6, n=293), the highest of all neuropsychiatric features studied (PMID 41657358), and the case-control study of 56 iNPH patients found apathy in 41 with right caudate hypoperfusion significantly associated with apathy and caudate perfusion recovery tracking post-shunt apathy improvement (PMID 30474244), with the shunt cohort finding NPI apathy scores significantly decreased after surgery (PMID 26810545); recorded as documented association only.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: apathy overlaps the dysexecutive and cognitive presentation of iNPH and shares measurement space with depression, so whether any individual apathy is attributable to the hydrocephalus requires individual neuropsychiatric attribution with depression, dementia, and medication exclusion.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 337.1 — Belessiotis-Richards C, Brady E, Abrol E, et al. Neuropsychiatric Features in Patients With Idiopathic Normal Pressure Hydrocephalus: A Systematic Review and Meta-Analysis Neurol Clin Pract. 2026 Apr;16(2):e200586. PMID 41657358.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/41657358/
+- Source checked on: 2026-09-26
+- Locator: PMID 41657358; meta-analysis results (apathy pooled prevalence)
+- Note under review: iNPH neuropsychiatric meta-analysis (22 studies): apathy pooled prevalence 69.2% (63.1-74.6, n=293), the highest of all features studied; treatment of iNPH may reduce neuropsychiatric symptoms; supports the bounded prevalence association only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 337.2 — Kanemoto H, Kazui H, Suehiro T, et al. Apathy and right caudate perfusion in idiopathic normal pressure hydrocephalus: A case-control study Int J Geriatr Psychiatry. 2019 Mar;34(3):453-462. PMID 30474244.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/30474244/
+- Source checked on: 2026-09-26
+- Locator: PMID 30474244; results (apathy prevalence and caudate perfusion correlations)
+- Note under review: Case-control SPECT study of 56 iNPH patients before lumbo-peritoneal shunt (Int J Geriatr Psychiatry 2019): apathy in 41/56; right caudate rCBF significantly lower in apathy group (P=0.004); caudate perfusion increase tracked post-shunt apathy improvement (group-by-shunt interaction P=0.002); supports the bounded frontal-striatal mechanism association only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 337.3 — Kanemoto H, Kazui H, Suzuki Y, et al. Effect of lumbo-peritoneal shunt surgery on neuropsychiatric symptoms in patients with idiopathic normal pressure hydrocephalus J Neurol Sci. 2016 Feb 15;361:206-12. PMID 26810545.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/26810545/
+- Source checked on: 2026-09-26
+- Locator: PMID 26810545; results (post-shunt apathy changes)
+- Note under review: Lumbo-peritoneal shunt study of 22 iNPH patients (J Neurol Sci 2016): NPI apathy scores significantly decreased after surgery; apathy improvement associated with frontal assessment battery improvement; supports the bounded treatment-response association only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `normal-pressure-hydrocephalus` → `anxiety-disorder` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Idiopathic normal pressure hydrocephalus documents anxiety at systematic-review meta-analysis level: the iNPH neuropsychiatric meta-analysis found anxiety pooled prevalence 21.9 percent (95% CI 13.2-34.2) alongside apathy and depression (PMID 41657358), and the systematic review of atypical iNPH manifestations documents the neuropsychiatric presentation spectrum beyond Hakim's triad within which anxiety symptoms occur (PMID 41936711); recorded as documented association only at the lower end of the evidence hierarchy.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: the anxiety estimate lacks a control contrast in the located material and anxiety in this population is entangled with gait-impairment fear of falling and cognitive concern, so whether any individual anxiety disorder is attributable to the hydrocephalus requires individual psychiatric attribution with adjustment, medical, and medication exclusion.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 338.1 — Belessiotis-Richards C, Brady E, Abrol E, et al. Neuropsychiatric Features in Patients With Idiopathic Normal Pressure Hydrocephalus: A Systematic Review and Meta-Analysis Neurol Clin Pract. 2026 Apr;16(2):e200586. PMID 41657358.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/41657358/
+- Source checked on: 2026-09-26
+- Locator: PMID 41657358; meta-analysis results (anxiety pooled prevalence)
+- Note under review: iNPH neuropsychiatric meta-analysis (22 studies): anxiety pooled prevalence 21.9% (13.2-34.2); no control contrast reported for anxiety in the located material; supports the bounded prevalence association only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 338.2 — Demichele G, Taddei G, Iaboni E, et al. Beyond Hakim's triad: a systematic review of atypical clinical manifestations in idiopathic normal pressure hydrocephalus Acta Neurol Belg. 2026 Apr 6.doi: 10.1007/s13760-026-03057-1. PMID 41936711.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/41936711/
+- Source checked on: 2026-09-26
+- Locator: PMID 41936711; review scope (atypical neuropsychiatric manifestations)
+- Note under review: Systematic review of atypical iNPH manifestations (27 studies): neuropsychiatric presentations most frequent beyond the triad; supports the bounded atypical-spectrum framing only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `normal-pressure-hydrocephalus` → `subdural-hematoma` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** CSF shunting for normal pressure hydrocephalus documents subdural hematoma as an overdrainage complication at retrospective-cohort and meta-analysis level: the single-center cohort of shunted NPH patients developing treated subdural collections (60 patients, 96 collections over 2014-2025) characterizes the overdrainage pathway with valve adjustment, middle meningeal artery embolization, and evacuation outcomes and a volume threshold for valve-adjustment failure (PMID 42599077), and the systematic review and meta-analysis of anti-siphon devices across 7 studies and 928 patients found anti-siphon devices reduced subdural hematoma (RR 0.35) and subdural hygroma (OR 0.33), quantifying the overdrainage-mediated complication rate (PMID 42486335); recorded as documented treatment-sequela association only.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: this edge is explicitly treatment-mediated (shunt overdrainage) rather than disease-mediated, so whether any individual subdural hematoma is attributable to shunting requires individual neurosurgical attribution with traumatic, anticoagulation, and spontaneous-subdural exclusion.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 339.1 — Frome S, de Souza DN, Iyanna A, et al. The Treatment of Subdural Collections in Patients With Shunted Normal Pressure Hydrocephalus: A Single-Center Experience Neurosurgery. 2026 Aug 14.doi: 10.1227/neu.0000000000004188. PMID 42599077.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42599077/
+- Source checked on: 2026-09-26
+- Locator: PMID 42599077; results (subdural collection management outcomes)
+- Note under review: Retrospective cohort of shunted NPH patients with treated subdural collections (Neurosurgery 2026; 60 patients, 96 collections, 2014-2025): valve pressure adjustment (91 procedures), MMA embolization (23), evacuation (15+8 craniotomies); pretreatment volume >40.05 cm3 predicted valve-adjustment failure (AUC 0.75); supports the bounded overdrainage-complication association only, conditioned on treated collections.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 339.2 — Corin AS, Cheidde L, Arend RB, et al. Effectiveness of anti-siphon devices in CSF shunts for preventing overdrainage in normal pressure hydrocephalus: a systematic review and meta-analysis Neurochirurgie. 2026 Jul 22;72(5):101854. PMID 42486335.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42486335/
+- Source checked on: 2026-09-26
+- Locator: PMID 42486335; meta-analysis results (subdural complication risk reduction)
+- Note under review: Systematic review and meta-analysis of anti-siphon devices in NPH CSF shunts (7 studies, 928 patients; Neurochirurgie 2026): ASDs reduced subdural hygroma (OR 0.33, p=0.0368) and subdural hematoma (RR 0.35, p=0.0014); supports the bounded overdrainage-route quantification only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `nutcracker-esophagus` → `dysphagia` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Hypercontractile (nutcracker) esophagus documents dysphagia at HRM-cohort and long-term-follow-up level: the single-center analysis of 48 patients with hypercontractile swallows (distal contractile integral over 8000 mmHg.s.cm) found dysphagia the presenting symptom in 60 percent with dysphagia significantly associated with contractile vigor (mean and maximal DCI during solid test meals), and at mean 61-month follow-up hypercontractile patients retained significantly higher Impaction Dysphagia Questionnaire and Eckardt dysphagia scores than symptomatic controls with normal manometry (3.8 versus 1.0, p=0.03; 0.46 versus 0.14, p=0.007; PMID 40698610); recorded as documented association only.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: dysphagia is also the presenting symptom that brings hypercontractile patients to manometry (60 percent of the cohort), so the boundary between constitutive presentation and persisting secondary consequence is carried openly, and individual claims require dated high-resolution manometry and structural exclusion.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 340.1 — Ang D, Koo SH, Hong WB, et al. Hypercontractile Esophagus: Clinical Presentation, Role of Provocative Tests in High Resolution Manometry and Long Term Outcome-Results From an Asian Cohort Neurogastroenterol Motil. 2025 Nov;37(11):e70129. PMID 40698610.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/40698610/
+- Source checked on: 2026-09-26
+- Locator: PMID 40698610; results (presentation frequencies, DCI correlations, long-term symptom scores)
+- Note under review: Single-center HRM analysis of 48 hypercontractile esophagus patients versus 58 symptomatic controls (Neurogastroenterol Motil 2025): dysphagia presentation 60% (versus 43.1% controls), reflux 37.5% (versus 41.4%, NS), chest pain 29.2%; dysphagia significantly associated with mean/maximal DCI on solid test meal; at 61-month telephone follow-up IDQ 3.8 versus 1.0 (p=0.03) and Eckardt 0.46 versus 0.14 (p=0.007); supports the bounded dysphagia-persistence association only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `nocturnal-enuresis` → `depressive-disorder` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Nocturnal enuresis documents depressive symptoms at case-control and population-cohort level: the case-control study of 200 children with primary monosymptomatic enuresis versus 200 age-matched controls found significantly higher Child Depression Inventory scores, Child Behavior Checklist scores, and lower quality of life in the enuresis group (PMID 27939179), and the UK population-based ALSPAC cohort of over 8,000 children at age 7.5 found higher rates of parent-reported psychological problems in children with bedwetting and combined wetting versus no wetting (PMID 17071625); recorded as documented association only with the cross-sectional direction limit carried openly.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: the located evidence is cross-sectional and case-control with parent-reported measures dominant, and the direction between bedwetting and psychological distress is unresolved in this literature, so whether any individual depression is attributable to the enuresis requires individual pediatric-psychiatric attribution with family, developmental, and reverse-direction exclusion.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 341.1 — Gulisano M, Domini C, Capelli M, et al. Importance of neuropsychiatric evaluation in children with primary monosymptomatic enuresis J Pediatr Urol. 2017 Feb;13(1):36.e1-36.e6. PMID 27939179.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/27939179/
+- Source checked on: 2026-09-26
+- Locator: PMID 27939179; results (depression and behavior instrument comparisons)
+- Note under review: Case-control study of 200 children with primary monosymptomatic enuresis versus 200 age-matched healthy controls (J Pediatr Urol 2017): significantly higher Child Depression Inventory, CBCL, Conners anxiety, and tic/OCD scores in the enuresis group (p<0.01); quality of life lower (relationship and self domains); behavioral/emotional disorder rates doubled versus controls per ICCS framing; supports the bounded cross-sectional association only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 341.2 — Joinson C, Heron J, Emond A, et al. Psychological problems in children with bedwetting and combined (day and night) wetting: A UK population-based study J Pediatr Psychol. 2007 Jun;32(5):605-16. PMID 17071625.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/17071625/
+- Source checked on: 2026-09-26
+- Locator: PMID 17071625; results (psychological problem rates by wetting status)
+- Note under review: UK population-based ALSPAC cohort of over 8,000 children at age 7.5 (J Pediatr Psychol 2007): higher rates of parent-reported psychological problems in bedwetting and combined wetting versus no wetting; combined wetting particularly associated with externalizing problems; little difference on child-reported measures; supports the bounded population association only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `nocturnal-enuresis` → `anxiety-disorder` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Nocturnal enuresis documents anxiety symptoms at case-control and population-cohort level: the case-control study of 200 children with primary monosymptomatic enuresis versus 200 age-matched controls found significantly higher Conners Multidimensional Anxiety Scale for Children scores in the enuresis group (PMID 27939179), and the UK ALSPAC population cohort of over 8,000 children found higher rates of parent-reported psychological problems in bedwetting children versus non-wetting peers (PMID 17071625); recorded as documented association only with the cross-sectional direction limit carried openly.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: the located evidence is cross-sectional and anxiety in this population overlaps anticipatory worry about bedwetting and social embarrassment, so whether any individual anxiety disorder is attributable to the enuresis requires individual pediatric-psychiatric attribution with separation, developmental, and reverse-direction exclusion.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 342.1 — Gulisano M, Domini C, Capelli M, et al. Importance of neuropsychiatric evaluation in children with primary monosymptomatic enuresis J Pediatr Urol. 2017 Feb;13(1):36.e1-36.e6. PMID 27939179.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/27939179/
+- Source checked on: 2026-09-26
+- Locator: PMID 27939179; results (anxiety scale comparison)
+- Note under review: Case-control study of 200 enuresis versus 200 control children (J Pediatr Urol 2017): Conners Multidimensional Anxiety Scale for Children scores significantly higher in the enuresis group (p<0.01); first report of OCD and tic associations in enuresis; supports the bounded cross-sectional association only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 342.2 — Joinson C, Heron J, Emond A, et al. Psychological problems in children with bedwetting and combined (day and night) wetting: A UK population-based study J Pediatr Psychol. 2007 Jun;32(5):605-16. PMID 17071625.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/17071625/
+- Source checked on: 2026-09-26
+- Locator: PMID 17071625; results (psychological problem rates by wetting status)
+- Note under review: UK ALSPAC population cohort of over 8,000 children (J Pediatr Psychol 2007): higher parent-reported psychological problems in bedwetting and combined wetting children; supports the bounded population association only, with anxiety not separately quantified.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `occipital-neuralgia` → `migraine-headaches` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Occipital neuralgia is associated with comorbid migraine and with aggravation of coexisting headache at headache-clinic prevalence and surgical-dechallenge level: the community headache-clinic prevalence study of 800 patients found occipital neuralgia in nearly 25 percent with only 15 percent of ON cases isolated, up to 85 percent occurring with an additional headache type most commonly migraine, and states that undiagnosed or inadequately treated ON can increase the frequency and intensity of other comorbid headache disorders (PMID 33968466), and the refractory-ON decompression case series of 15 patients found all patients reporting improvement of comorbid headache disorders, most commonly migraine, after greater occipital nerve decompression alongside ON symptom relief (PMID 38090265); recorded as documented association only with the reverse-direction signal carried openly.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: the prevalence study's quantified direction runs from chronic migraine to elevated odds of ON (adjusted OR 2.19), so the migraine-to-ON pathway is at least as well supported as the reverse aggravation claim, and individual claims require individual headache-specialist attribution with medication-overuse, cervicogenic, and tension-type exclusion.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 343.1 — Mathew PG, Najib U, Khaled S, et al. Prevalence of Occipital Neuralgia at a Community Hospital-based Headache Clinic Neurol Clin Pract. 2021 Feb;11(1):6-12. PMID 33968466.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/33968466/
+- Source checked on: 2026-09-26
+- Locator: PMID 33968466; results (ON prevalence, comorbidity, and odds ratios)
+- Note under review: Community hospital headache-clinic prevalence study of 800 patients (Neurol Clin Pract 2021): ON in 195 (nearly 25%); isolated ON only 15.38% of ON cases so up to 85% had a coexisting headache type; chronic migraine raised odds of ON (aOR 2.190, 1.364-3.515) - reverse-direction signal; authors state undiagnosed/undertreated ON can increase frequency and intensity of comorbid headache disorders; supports the bounded association and aggravation framing only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 343.2 — Austen WG Jr, Remy K, Packowski K, et al. Refractory occipital neuralgia treatment with nerve decompression surgery: a case series Front Neurol. 2023;14:1284101. PMID 38090265.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/38090265/
+- Source checked on: 2026-09-26
+- Locator: PMID 38090265; results (post-decompression ON and comorbid headache outcomes)
+- Note under review: Prospective case series of 15 refractory ON patients undergoing greater occipital nerve decompression (Front Neurol 2023): preoperative median 30 headache days/month, intensity 8, duration 24h after trials of 10 nerve blocks and 11.7 botox cycles; postoperative headache days 5, intensity 4 (p<0.01); ALL patients reported improvement of comorbid headache disorders, most commonly migraine; supports the bounded dechallenge association only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
 ## Implementation mechanics after decisions
 
 - Mapping edits and registry edits must land in lockstep (the registry audit's canonical-JSON hashes and live-use sets will fail otherwise).
