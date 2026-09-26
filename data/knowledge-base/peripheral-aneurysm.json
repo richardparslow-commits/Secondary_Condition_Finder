@@ -2,8 +2,77 @@
   "id": "peripheral-aneurysm",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review hemodynamic, vascular, thrombotic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 70 (2026-09-26): one ASSOCIATION_ONLY draft mapping pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: the edge asserts association only (etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true). The identity is the renamed aneurysms umbrella while the located evidence is popliteal-dominant, and amputation rates are treatment-mediated outcomes of urgent revascularization-era cohorts; individual claims require dated vascular imaging with atherosclerotic, embolic, and diabetic-foot exclusion and review by a qualified medical professional.",
+    "Pathway and duplicate-scope screens: no -> deep-vein-thrombosis edge (below threshold - popliteal-vein compression by aneurysm is documented at case-report level without cohort quantification); no -> peripheral-neuropathy edge (below threshold and ME-29 - nerve compression by popliteal aneurysm is case-report level and the common-peroneal-neuropathy and femoral-neuropathy identities own their nerve-compression windows); umbrella discipline - this identity was renamed from the ambiguous aneurysms umbrella with aortic-aneurysm kept separate, and the popliteal-dominant evidence scope is carried openly on the edge rather than generalized to all peripheral sites; ME-29 discipline - the peripheral-vascular-disease and thromboangiitis-obliterans amputation windows own their evidence and are not recycled."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 70 (2026-09-26): one bounded association edge authored - peripheral-aneurysm to amputation-or-loss-of-use (rank 1) - classified ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, and hypothesizedOnly:true. The edge rests on the 11-year multicenter urgent-repair cohort of 66 popliteal artery aneurysms with 5% primary major amputation and runoff-response limb salvage (PMID 37838652), the 51-patient thrombosed-aneurysm series with 16% 30-day major amputation (PMID 30393064), and the 48-case acute-ischemia cohort with 22.9% two-year amputation including small aneurysms (PMID 34995741). The popliteal-dominant evidence scope and treatment-mediated amputation-decision limits are carried openly on the edge; the identity is the renamed aneurysms umbrella with aortic-aneurysm separate."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "amputation-or-loss-of-use",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Popliteal artery aneurysms document limb loss at multicenter and tertiary-cohort level: the 11-year multicenter experience with 66 urgent popliteal artery aneurysm repairs documents primary major amputation in 5 percent of acute-limb-ischemia cases with five-year limb salvage 83 percent falling to zero percent when no tibial runoff vessel remains patent (PMID 37838652), the 51-patient tertiary series for acute ischemia due to thrombosed popliteal artery aneurysm documents a 30-day major amputation rate of 16 percent (8/51) with four-year limb salvage 84 percent after revascularization (PMID 30393064), and the 48-case acute-leg-ischemia cohort documents a two-year amputation rate of 22.9 percent including 25 percent among small aneurysms of 20 mm or less (PMID 34995741); recorded as documented association only with the popliteal-dominant evidence scope and the treatment-mediated amputation decision carried openly.",
+        "causationStatus": "Neither causation nor aggravation of limb loss is established for any individual: all anchors are urgent-surgical cohorts in which the amputation decision is treatment-mediated and the measured rates reflect revascularization-era practice, the identity is the renamed aneurysms umbrella while the evidence is popliteal-dominant with femoral and other peripheral sites underrepresented, and individual claims require dated vascular imaging with atherosclerotic peripheral-vascular-disease, embolic, and diabetic-foot exclusion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "THROMBOTIC_OR_VASCULAR",
+        "primaryVector": "Mural thrombus within a peripheral (predominantly popliteal) artery aneurysm sac occludes acutely or showers distal emboli into the tibial runoff so acute limb ischemia results, and when runoff vessels are already occluded or ischemia is irreversible the limb cannot be salvaged and major amputation follows, the thromboembolic route supported by the runoff-response relationship (zero patent tibial arteries giving zero percent five-year limb salvage), but whether this route produced any individual amputation remains hypothesized until vascular and operative records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at retrospective urgent-surgical-cohort class only (66, 51, and 48 patients): every anchor conditions on presentation with acute ischemia already established, amputation rates reflect revascularization practice and selection (primary versus post-revascularization), elective and asymptomatic aneurysm natural history is unquantified here, and the popliteal-dominant evidence base limits extension of the limb-loss rate to other peripheral aneurysm sites.",
+        "evidenceGaps": "All anchors are retrospective urgent-surgical cohorts conditioned on acute limb ischemia at presentation; the amputation endpoint is treatment-mediated (primary amputation versus failure of revascularization); the identity is the renamed aneurysms umbrella (aortic-aneurysm remains a separate identity) while evidence is popliteal-dominant; elective natural history is unquantified here; and atherosclerotic peripheral vascular disease, thromboangiitis obliterans, diabetes with foot disease, cardioembolism, and trauma compete for individual attribution.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "atherosclerotic peripheral vascular disease (the peripheral-vascular-disease window owns its amputation evidence, not recycled per ME-29)",
+          "thromboangiitis obliterans (published window, not recycled per ME-29)",
+          "diabetes with foot disease and infection",
+          "cardioembolic or other embolic acute limb ischemia",
+          "trauma and iatrogenic vascular injury"
+        ]
+      },
+      "evidenceGaps": [
+        "All anchors are retrospective urgent-surgical cohorts conditioned on acute limb ischemia at presentation; the amputation endpoint is treatment-mediated (primary amputation versus failure of revascularization); the identity is the renamed aneurysms umbrella (aortic-aneurysm remains a separate identity) while evidence is popliteal-dominant; elective natural history is unquantified here; and atherosclerotic peripheral vascular disease, thromboangiitis obliterans, diabetes with foot disease, cardioembolism, and trauma compete for individual attribution."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY at urgent-surgical-cohort class with the popliteal-scope and treatment-mediated limits carried openly: the multicenter series documents 5 percent primary major amputation and 83 percent five-year limb salvage tied to tibial runoff (PMID 37838652), the tertiary series documents 16 percent 30-day major amputation (PMID 30393064), and the acute-ischemia cohort documents 22.9 percent two-year amputation including small aneurysms (PMID 34995741); because the anchors condition on acute ischemia and the amputation decision is treatment-mediated, the conservative standard keeps the edge at association only and routes individual claims through dated vascular imaging with atherosclerotic, embolic, and diabetic exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Pomatto S, Faggioli G, Pini R, et al. Limb salvage and survival after urgent surgical treatment of popliteal artery aneurysm World J Emerg Surg. 2023 Oct 14;18(1):49. PMID 37838652.",
+          "note": "Multicenter retrospective cohort of 66 urgent popliteal artery aneurysm repairs over 11 years (World J Emerg Surg 2023): 82% treated for acute limb ischemia, primary major amputation in 3 cases (5%); five-year limb salvage 83 +/- 6%, falling to 0% with zero patent tibial arteries and 100% with three (P=.001); five-year survival lower after rupture; supports the bounded limb-loss association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/37838652/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 37838652; results (limb salvage and amputation by presentation and runoff)"
+        },
+        {
+          "citation": "Jungi S, Kuemmerli C, Kissling P, et al. Limb Salvage by Open Surgical Revascularisation in Acute Ischaemia due to Thrombosed Popliteal Artery Aneurysm Eur J Vasc Endovasc Surg. 2019 Mar;57(3):393-398. PMID 30393064.",
+          "note": "Tertiary-center series of 51 patients with acute ischemia due to thrombosed popliteal artery aneurysm (Eur J Vasc Endovasc Surg 2019): 4 primary major amputations plus 4 within 30 days (overall 30-day major amputation rate 16%, 95% CI 7.0-28.6); estimated four-year limb salvage 84% after open revascularization; supports the bounded limb-loss association only (treatment-mediated).",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/30393064/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 30393064; results (30-day major amputation and limb salvage rates)"
+        },
+        {
+          "citation": "Gabrielli R, Siani A, Smedile G, et al. Are Small Popliteal Aneurysm so Innocent? Ann Vasc Surg. 2022 Aug;84:265-269. PMID 34995741.",
+          "note": "Retrospective cohort of 48 acute leg ischemias from popliteal artery aneurysm thrombosis (Ann Vasc Surg 2022): two-year overall amputation rate 22.9% (11/48), 21.8% in aneurysms 20 mm or larger and 25% in small aneurysms of 20 mm or less; all underwent thrombectomy and bypass; supports the bounded limb-loss association including the small-aneurysm finding.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34995741/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 34995741; results (amputation rates by aneurysm size cohort)"
+        }
+      ]
+    }
+  ]
 }

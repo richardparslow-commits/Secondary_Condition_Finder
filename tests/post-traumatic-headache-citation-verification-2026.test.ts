@@ -105,6 +105,6 @@ describe("Post-Traumatic Headache Citation Verification 2026", () => {
 
     expect(refs).toHaveLength(160);
     expect(refs.filter((ref) => ref.verified === true)).toHaveLength(160);
-    expect(refs.filter((r) => r.verified === false)).toHaveLength(915);
+    expect(refs.filter((r) => r.verified === false)).toHaveLength(932);
   });
 });

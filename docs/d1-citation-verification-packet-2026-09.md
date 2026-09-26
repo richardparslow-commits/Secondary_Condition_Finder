@@ -13197,6 +13197,238 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 **Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
 
+### `periodontitis` → `diabetes-mellitus` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** The periodontitis-diabetes relationship is documented at trial and cohort level: the Bayesian network meta-analysis of 37 randomized trials in 1,989 patients with periodontitis and type 2 diabetes documents HbA1c reduction with nonsurgical periodontal therapy (SRP with doxycycline or antimicrobial photodynamic therapy most effective for reducing glycated hemoglobin, PMID 40356262), the 392-patient primary-care retrospective cohort documents comprehensive dental treatment associated with lower final HbA1c (adjusted beta -0.94) and lower odds of glycemic decompensation (OR 0.19, PMID 42089456), and the 74-adult cross-sectional study documents stage III/IV periodontitis with mean HbA1c 6.8 versus 5.8 percent in stage I/II (PMID 42585499); recorded as documented association only with the direction-inversion guard carried openly - established diabetes worsening periodontitis is the dominant direction of the published relationship.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation of diabetes is established for any individual: the located evidence quantifies glycemic improvement after periodontal treatment in patients who already have diabetes rather than incident diabetes caused by periodontitis, so the pathway records glycemic dysregulation and worsening control only, and individual claims require dated HbA1c with periodontal staging plus type 1 diabetes, medication adherence, obesity, and steroid exclusion.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 370.1 — Xie X, Xu J, Li Y, et al. Efficacy of nonsurgical periodontal treatment on patients with periodontitis and type 2 diabetes mellitus: a systematic review and Bayesian network meta-analysis Acta Odontol Scand. 2025 May 13;84:201-211. PMID 40356262.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/40356262/
+- Source checked on: 2026-09-26
+- Locator: PMID 40356262; results (glycated hemoglobin outcomes by adjunctive therapy)
+- Note under review: Bayesian network meta-analysis of 37 RCTs in 1,989 patients with periodontitis and type 2 diabetes (Acta Odontol Scand 2025): SRP with doxycycline or antimicrobial photodynamic therapy most effective for reducing HbA1c; SRP with local satranidazole gel best for probing depth and attachment level; supports the bounded glycemic-control association only (treatment-mediated, pre-existing diabetes).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 370.2 — Oviedo Contreras C, Cornejo Ovalle M. Comprehensive Dental Treatment and Glycemic Control in Primary Health Care Patients With Type 2 Diabetes: A Retrospective Cohort Study Community Dent Oral Epidemiol. 2026 May 6.doi: 10.1111/cdoe.70074. PMID 42089456.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42089456/
+- Source checked on: 2026-09-26
+- Locator: PMID 42089456; results (HbA1c and decompensation by dental treatment exposure)
+- Note under review: Retrospective cohort of 392 primary-care adults with type 2 diabetes in Chile (Community Dent Oral Epidemiol 2026): comprehensive dental treatment associated with lower final HbA1c (adjusted beta -0.94, 95% CI -1.15 to -0.72) and lower odds of glycemic decompensation (OR 0.19, 95% CI 0.10-0.34); supports the bounded glycemic-control association only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 370.3 — Rodrigues MEO, Vilarinho JLPDS, Chermont JGJ, et al. Association of periodontitis stages with glycemic control in adults with and without type 2 diabetes mellitus: a cross-sectional study J Appl Oral Sci. 2026;34:e20260178. PMID 42585499.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42585499/
+- Source checked on: 2026-09-26
+- Locator: PMID 42585499; results (periodontitis stages versus HbA1c and metabolic parameters)
+- Note under review: Cross-sectional study of 74 adults with periodontitis (J Appl Oral Sci 2026): stage III/IV periodontitis with mean HbA1c 6.8% versus 5.8% in stage I/II (p=0.007), higher triglycerides and lower HDL; poor glycemic control associated with advanced stages; supports the bounded stage-gradient association only (cross-sectional).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `periodontitis` → `cerebrovascular-accident-stroke-residuals` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Periodontitis associates with incident cerebrovascular events at prospective level: the UK Biobank prospective cohort of 3,707 atrial-fibrillation patients without prior stroke documents periodontitis associated with incident stroke over a median 15.5 years (adjusted HR 1.60, 95% CI 1.11-2.30) and cardiovascular mortality (HR 1.73, PMID 42736175), and the 472-patient retrospective hospital cohort documents cardiovascular disease prevalence of 38.7 versus 21.3 percent with periodontitis independently associated after multivariable adjustment (adjusted OR 1.87, 95% CI 1.28-2.72, PMID 41943019); recorded as documented association only with the composite-endpoint and cohort-scope limits carried openly.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation of stroke is established for any individual: the prospective anchor measured periodontitis by self-reported symptoms within an atrial-fibrillation population where cardioembolic stroke dominates, the retrospective anchor reports a composite of coronary disease, myocardial infarction, and stroke without stroke-separated quantification, and individual claims require dated neurologic and periodontal assessment with cardioembolic, hypertensive, and atherosclerotic mechanisms adjudicated per case.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 371.1 — Li H, Huang Y, Li J, et al. Periodontitis and adverse outcomes in atrial fibrillation: prospective evidence from the UK Biobank Intern Med J. 2026 Sep 14.doi: 10.1111/imj.70640. PMID 42736175.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42736175/
+- Source checked on: 2026-09-26
+- Locator: PMID 42736175; results (incident stroke and mortality hazard ratios)
+- Note under review: Prospective UK Biobank cohort of 3,707 atrial-fibrillation patients without prior heart failure or stroke (Intern Med J 2026, median follow-up 15.5 years): self-reported periodontitis associated with all-cause mortality (HR 1.59), cardiovascular mortality (HR 1.73) and incident stroke (HR 1.60, 95% CI 1.11-2.30); incident heart failure trend not significant (HR 1.19); supports the bounded stroke association only (self-reported exposure, AF population).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 371.2 — Lu Y, Lu B. Association between periodontitis and cardiovascular disease: a retrospective analysis BMC Oral Health. 2026 Apr 6;26(1).doi: 10.1186/s12903-026-08282-x. PMID 41943019.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/41943019/
+- Source checked on: 2026-09-26
+- Locator: PMID 41943019; results (composite cardiovascular prevalence and multivariable association)
+- Note under review: Retrospective observational study of 472 hospital patients (BMC Oral Health 2026): cardiovascular disease prevalence 38.7% with versus 21.3% without periodontitis (P<0.001); periodontitis independently associated with cardiovascular disease (adjusted OR 1.87, 95% CI 1.28-2.72) including coronary artery disease, myocardial infarction, and stroke as a composite; stronger with stage III/IV grade C disease; supports the bounded composite association only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `peripheral-aneurysm` → `amputation-or-loss-of-use` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Popliteal artery aneurysms document limb loss at multicenter and tertiary-cohort level: the 11-year multicenter experience with 66 urgent popliteal artery aneurysm repairs documents primary major amputation in 5 percent of acute-limb-ischemia cases with five-year limb salvage 83 percent falling to zero percent when no tibial runoff vessel remains patent (PMID 37838652), the 51-patient tertiary series for acute ischemia due to thrombosed popliteal artery aneurysm documents a 30-day major amputation rate of 16 percent (8/51) with four-year limb salvage 84 percent after revascularization (PMID 30393064), and the 48-case acute-leg-ischemia cohort documents a two-year amputation rate of 22.9 percent including 25 percent among small aneurysms of 20 mm or less (PMID 34995741); recorded as documented association only with the popliteal-dominant evidence scope and the treatment-mediated amputation decision carried openly.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation of limb loss is established for any individual: all anchors are urgent-surgical cohorts in which the amputation decision is treatment-mediated and the measured rates reflect revascularization-era practice, the identity is the renamed aneurysms umbrella while the evidence is popliteal-dominant with femoral and other peripheral sites underrepresented, and individual claims require dated vascular imaging with atherosclerotic peripheral-vascular-disease, embolic, and diabetic-foot exclusion.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 372.1 — Pomatto S, Faggioli G, Pini R, et al. Limb salvage and survival after urgent surgical treatment of popliteal artery aneurysm World J Emerg Surg. 2023 Oct 14;18(1):49. PMID 37838652.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/37838652/
+- Source checked on: 2026-09-26
+- Locator: PMID 37838652; results (limb salvage and amputation by presentation and runoff)
+- Note under review: Multicenter retrospective cohort of 66 urgent popliteal artery aneurysm repairs over 11 years (World J Emerg Surg 2023): 82% treated for acute limb ischemia, primary major amputation in 3 cases (5%); five-year limb salvage 83 +/- 6%, falling to 0% with zero patent tibial arteries and 100% with three (P=.001); five-year survival lower after rupture; supports the bounded limb-loss association only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 372.2 — Jungi S, Kuemmerli C, Kissling P, et al. Limb Salvage by Open Surgical Revascularisation in Acute Ischaemia due to Thrombosed Popliteal Artery Aneurysm Eur J Vasc Endovasc Surg. 2019 Mar;57(3):393-398. PMID 30393064.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/30393064/
+- Source checked on: 2026-09-26
+- Locator: PMID 30393064; results (30-day major amputation and limb salvage rates)
+- Note under review: Tertiary-center series of 51 patients with acute ischemia due to thrombosed popliteal artery aneurysm (Eur J Vasc Endovasc Surg 2019): 4 primary major amputations plus 4 within 30 days (overall 30-day major amputation rate 16%, 95% CI 7.0-28.6); estimated four-year limb salvage 84% after open revascularization; supports the bounded limb-loss association only (treatment-mediated).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 372.3 — Gabrielli R, Siani A, Smedile G, et al. Are Small Popliteal Aneurysm so Innocent? Ann Vasc Surg. 2022 Aug;84:265-269. PMID 34995741.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/34995741/
+- Source checked on: 2026-09-26
+- Locator: PMID 34995741; results (amputation rates by aneurysm size cohort)
+- Note under review: Retrospective cohort of 48 acute leg ischemias from popliteal artery aneurysm thrombosis (Ann Vasc Surg 2022): two-year overall amputation rate 22.9% (11/48), 21.8% in aneurysms 20 mm or larger and 25% in small aneurysms of 20 mm or less; all underwent thrombectomy and bypass; supports the bounded limb-loss association including the small-aneurysm finding.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `peripheral-nerve-paralysis` → `muscle-atrophy` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Denervated muscle wastes at cohort and review level: the peripheral nerve injury review documents muscle atrophy and fibrosis as frequent long-term consequences of nerve injury with limited recovery when reinnervation is delayed or incomplete (PMID 41847509), the eight-patient rib-fracture series with NCS/EMG-confirmed intercostal nerve injury documents denervation atrophy of the rectus abdominis and intercostal muscles with eventration at the denervated levels (PMID 42059538), and the common-peroneal foot-drop cohort grades anterior-compartment muscle bulk on MR neurography after electrodiagnostically confirmed neuropathy (PMID 36318320); recorded as documented association only with the atrophy-counterweight carried openly (few patients in the foot-drop cohort had demonstrated muscle atrophy at a median five-month symptom duration).
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation of atrophy is established for any individual: the mechanism is denervation (loss of motor axon trophic input) which the Guyon-canal precedent classifies as direct at probable when a localized compressive lesion and decompression reversal are documented, but this identity spans traumatic, iatrogenic, and compressive etiologies with variable reversal potential, so attribution requires dated electrodiagnostic and imaging documentation with disuse, cachexia, and myopathic exclusion.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 373.1 — Long F, Pan X, He A, et al. Skeletal muscle reprogramming in peripheral nerve injury: mechanisms, therapeutic roles, and complication management Exp Biol Med (Maywood). 2026;251:10835. PMID 41847509.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/41847509/
+- Source checked on: 2026-09-26
+- Locator: PMID 41847509; review (denervation-induced muscle atrophy mechanisms and complication management)
+- Note under review: Mechanistic review of skeletal muscle reprogramming in peripheral nerve injury (Exp Biol Med 2026): peripheral nerve injury frequently leads to long-term neuromuscular dysfunction, muscle atrophy, fibrosis, and chronic pain; denervation-induced muscle atrophy involves Wnt/beta-catenin, TGF-beta, Notch, and HDAC pathways; recovery is limited when reinnervation is delayed or incomplete; supports the bounded denervation-atrophy association only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 373.2 — Sherrier M, Daley D, Eriksson E. Intercostal nerve injury after rib fractures: A case series correlating electrodiagnostic testing with imaging, ultrasound, and surgical findings PM R. 2026 May;18(5):510-519. PMID 42059538.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42059538/
+- Source checked on: 2026-09-26
+- Locator: PMID 42059538; results (denervation atrophy and eventration after intercostal nerve injury)
+- Note under review: Case series of 8 patients with NCS/EMG-diagnosed intercostal nerve injury after rib fractures (PM M 2026): denervation of rectus abdominis and intercostal muscles causing atrophy and subsequent eventration; 17 levels of injury; intraoperative stimulation correlated with NCS/EMG in 12 of 15 cases; supports the bounded electrodiagnostic denervation-atrophy association only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 373.3 — Daniels SP, Ross AB, Sneag DB, et al. Can MR neurography of the common peroneal nerve predict a residual motor deficit in patients with foot drop? Skeletal Radiol. 2023 Apr;52(4):751-761. PMID 36318320.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/36318320/
+- Source checked on: 2026-09-26
+- Locator: PMID 36318320; results (muscle bulk grading and residual motor deficit findings)
+- Note under review: Retrospective MR neurography cohort of 23 studies in 22 foot-drop patients with common peroneal neuropathy (Skeletal Radiol 2023): anterior-compartment muscle bulk graded (Goutallier), few patients demonstrated muscle atrophy at median 5-month symptom duration, and no imaging finding predicted residual motor deficit at 12 months; COUNTERWEIGHT carried openly showing atrophy is not universal at short duration.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `persistent-postural-perceptual-dizziness` → `anxiety-disorder` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** PPPD cohorts document anxiety comorbidity at prospective level: the 75-patient prospective cohort fulfilling Barany Society criteria found psychiatric comorbidity in 88 percent of patients, most commonly combined anxiety and depression, with median GAD-7 scores of 8.0 falling to 0.0 at three months under multimodal treatment (PMID 42268441), the network meta-analysis of 11 randomized trials in 518 patients documents significant improvement in anxiety outcomes with neuromodulation (SMD -0.87 versus control, PMID 42240653), and the 24-patient neuro-otological cohort measured HADS alongside vestibular testing with over one third showing otolith dysfunction (PMID 42732644); recorded as documented association only with the direction-inversion guard carried openly - anxiety traits and disorders commonly predate and predispose to PPPD per the Barany framework.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation of an anxiety disorder is established for any individual: the comorbidity figure is cross-sectional in specialty-clinic populations and the anxiety treatment-response evidence is small-trial class with high risk of bias, the direction guard is material because anxiety is a recognized predisposing and precipitating factor for PPPD rather than only a consequence, and individual claims require dated psychiatric and vestibular assessment with pre-existing anxiety, vestibular migraine, and medication-effect exclusion.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 374.1 — Kothari S, Bhansali D, Phalgune DS, et al. Persistent postural-perceptual dizziness: subjective-objective dissociation and response to neurologist-led multimodal therapy J Neurol. 2026 Jun 10;273(7).doi: 10.1007/s00415-026-13927-6. PMID 42268441.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42268441/
+- Source checked on: 2026-09-26
+- Locator: PMID 42268441; results (psychiatric comorbidity prevalence and GAD-7 outcomes)
+- Note under review: Prospective cohort of 75 consecutive PPPD patients fulfilling Barany Society criteria (J Neurol 2026): psychiatric comorbidity in 88%, most commonly combined anxiety and depression; median GAD-7 8.0 improving to 0.0 and DHI 40.4 to 8.0 at 3 months under multimodal treatment (all p<0.001); subjective-objective dissociation documented on posturography; supports the bounded comorbidity and treatment-response association only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 374.2 — Shen J, Zhao X, Huo Y, et al. Comparative efficacy of non-pharmacological interventions for persistent postural-perceptual dizziness: a systematic review and network meta-analysis of balance, anxiety, and depression outcomes J Neurol. 2026 Jun 4;273(6).doi: 10.1007/s00415-026-13891-1. PMID 42240653.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42240653/
+- Source checked on: 2026-09-26
+- Locator: PMID 42240653; results (anxiety and depression outcome comparisons)
+- Note under review: Systematic review and network meta-analysis of 11 RCTs in 518 PPPD patients (J Neurol 2026): neuromodulation superior to control for anxiety outcomes (SMD -0.87, 95% CI -1.40 to -0.33); no significant effects on depression outcomes; 81.8% of studies at high risk of bias, evidence quality low to moderate; supports the bounded anxiety-treatment-response association only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 374.3 — Goto F, Kaneda S, Wasano K. Clinical Significance of Neuro-Otological Examinations in Persistent Postural-Perceptual Dizziness: A Retrospective Study J Int Adv Otol. 2026 Aug 31;22(4):1-5. PMID 42732644.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42732644/
+- Source checked on: 2026-09-26
+- Locator: PMID 42732644; results (vestibular findings and HADS assessment)
+- Note under review: Retrospective cohort of 24 PPPD patients with vHIT, cVEMP, oVEMP and HADS assessment (J Int Adv Otol 2026): otolith dysfunction in 9 of 23 (38%); HADS scores did not differ between prognosis groups; early treatment within 3 months trended toward better outcome; supports the bounded neuro-otological comorbidity frame only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `persistent-postural-perceptual-dizziness` → `depressive-disorder` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** PPPD cohorts document depression comorbidity at prospective level: the 75-patient prospective Barany-criteria cohort found psychiatric comorbidity in 88 percent of patients, most commonly combined anxiety and depression, with median PHQ-9 scores of 8.0 falling to 0.0 at three months under multimodal treatment (PMID 42268441), the network meta-analysis of 11 randomized trials in 518 patients found NO significant intervention effect on depression outcomes while anxiety improved (PMID 42240653, carried openly as counterweight), and the prospective 284-case study of PPPD after stroke documents comorbidity profiling in an incident-onset population (PMID 40929368); recorded as documented association only with the depression-nonresponse asymmetry and the direction guard carried openly.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation of a depressive disorder is established for any individual: the comorbidity figure is cross-sectional at specialty referral, the treatment literature shows depression lagging anxiety in responsiveness which weakens a purely downstream dizziness-mediated reading, depressive episodes commonly precede chronic dizziness, and individual claims require dated psychiatric assessment with pre-existing depression, medication effects, and medical-illness mood exclusion.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 375.1 — Kothari S, Bhansali D, Phalgune DS, et al. Persistent postural-perceptual dizziness: subjective-objective dissociation and response to neurologist-led multimodal therapy J Neurol. 2026 Jun 10;273(7).doi: 10.1007/s00415-026-13927-6. PMID 42268441.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42268441/
+- Source checked on: 2026-09-26
+- Locator: PMID 42268441; results (PHQ-9 depression outcomes and comorbidity prevalence)
+- Note under review: Prospective cohort of 75 consecutive PPPD patients fulfilling Barany Society criteria (J Neurol 2026): psychiatric comorbidity in 88%, most commonly combined anxiety and depression; median PHQ-9 8.0 improving to 0.0 at 3 months under multimodal treatment; supports the bounded comorbidity and treatment-response association only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 375.2 — Shen J, Zhao X, Huo Y, et al. Comparative efficacy of non-pharmacological interventions for persistent postural-perceptual dizziness: a systematic review and network meta-analysis of balance, anxiety, and depression outcomes J Neurol. 2026 Jun 4;273(6).doi: 10.1007/s00415-026-13891-1. PMID 42240653.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42240653/
+- Source checked on: 2026-09-26
+- Locator: PMID 42240653; results (depression outcomes null across interventions)
+- Note under review: Systematic review and network meta-analysis of 11 RCTs in 518 PPPD patients (J Neurol 2026): NO significant effects of any intervention on depression outcomes while anxiety and balance improved; COUNTERWEIGHT carried openly showing depression lags anxiety in treatment responsiveness; 81.8% of studies at high risk of bias.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 375.3 — Li J, Bai X, Fang R, et al. Incidence, risk factors, and comorbidities of persistent postural-perceptual dizziness after stroke: A prospective study of 284 cases J Vestib Res. 2026 Mar;36(2):100-106. PMID 40929368.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/40929368/
+- Source checked on: 2026-09-26
+- Locator: PMID 40929368; results (PPPD incidence and comorbidities after stroke)
+- Note under review: Prospective study of 284 stroke cases (J Vestib Res 2026): incidence, risk factors, and comorbidities of PPPD after stroke documented in an incident-onset population; supports the bounded post-stroke comorbidity frame only (vascular-depression substrate independent).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
 ## Implementation mechanics after decisions
 
 - Mapping edits and registry edits must land in lockstep (the registry audit's canonical-JSON hashes and live-use sets will fail otherwise).

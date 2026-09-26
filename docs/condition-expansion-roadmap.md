@@ -3511,3 +3511,103 @@ fixture automatically (896 -> 915) - ninth consecutive batch with no manual fixt
 outside the standing benign coincidences (apply-all-94's historical `explicitPublicationGuards: 273`;
 wave-5's `toBeGreaterThanOrEqual(276)` catalog floor; legal-copy's `38 U.S.C. § 1117` statute text).
 Standing recommendation: batch 69 lands through branch, PR, CI, and merge.
+
+## Mapping Expansion D1 batch 70 (2026-09-26)
+
+Mapping Expansion D1 batch 70 (2026-09-26) authored six draft-quarantined relationships across four of
+the five queue identities and deferred one identity without edges. periodontitis carries two edges:
+-> diabetes-mellitus (SYSTEMIC_INFLAMMATORY) - nonsurgical periodontal treatment improving glycemic
+control across 37 RCTs in 1,989 patients (PMID 40356262), adjusted HbA1c beta -0.94 after comprehensive
+dental treatment in a 392-patient primary-care cohort (PMID 42089456), and a periodontitis-stage
+gradient of glycemic control in a 74-adult cross-section (PMID 42585499), with the direction-inversion
+guard (established diabetes worsening periodontitis is the dominant published direction) carried
+openly; -> cerebrovascular-accident-stroke-residuals (THROMBOTIC_OR_VASCULAR) - incident stroke HR 1.60
+in the UK Biobank prospective cohort of 3,707 atrial-fibrillation patients (PMID 42736175) and adjusted
+OR 1.87 in a 472-patient retrospective composite-CVD cohort (PMID 41943019), with composite-endpoint
+and self-reported-exposure limits carried openly. peripheral-aneurysm ->
+amputation-or-loss-of-use (THROMBOTIC_OR_VASCULAR) - 5% primary major amputation with runoff-response
+limb salvage in the 11-year multicenter urgent-repair cohort of 66 popliteal artery aneurysms (PMID
+37838652), 16% 30-day major amputation in the 51-patient thrombosed-aneurysm series (PMID 30393064),
+and 22.9% two-year amputation including small aneurysms in the 48-case acute-ischemia cohort (PMID
+34995741), with the popliteal-dominant evidence scope and treatment-mediated amputation-decision
+limits carried openly (the identity is the renamed aneurysms umbrella with aortic-aneurysm kept
+separate). peripheral-nerve-paralysis -> muscle-atrophy (MECHANICAL_OR_COMPRESSIVE) - atrophy and
+fibrosis as frequent long-term consequences of peripheral nerve injury (PMID 41847509) and denervation
+atrophy with eventration in the eight-patient NCS/EMG-confirmed intercostal nerve injury series (PMID
+42059538), with the 22-patient foot-drop MR neurography cohort (few demonstrated atrophy at median
+five-month duration, PMID 36318320) carried openly as counterweight and the guyon-s-canal-syndrome
+DIRECT_CAUSATION precedent recorded but not inherited (wider etiologic breadth and reversal
+uncertainty). persistent-postural-perceptual-dizziness carries two PSYCHOPHYSIOLOGICAL edges with
+direction-inversion guards (anxiety and depression commonly predate PPPD per the Barany framework):
+-> anxiety-disorder - 88% psychiatric comorbidity with GAD-7 medians of 8.0 falling to 0.0 under
+multimodal treatment in the 75-patient prospective Barany-criteria cohort (PMID 42268441), anxiety
+improvement (SMD -0.87) in the 11-RCT network meta-analysis in 518 patients (PMID 42240653), and 38%
+otolith dysfunction in the 24-patient neuro-otological HADS cohort (PMID 42732644); ->
+depressive-disorder - the same cohort and meta-analysis base with the meta-analysis's null depression
+outcomes carried openly as counterweight (PMID 42240653) plus the prospective 284-case post-stroke
+PPPD study (PMID 40929368).
+
+pericardial-effusion DEFERRED without edges (MISSING IDENTITIES plus direction-inversion): the cardinal
+complications have no catalog identities (no cardiac-tamponade identity and no constrictive-pericarditis
+identity), the located literature is procedure-focused (pericardiocentesis outcome cohorts),
+post-cardiac-surgery prevalence series, dialysis and secondary-etiology cohorts, or malignant-effusion
+prognosis where the malignancy is the dominant driver, and the congestive-heart-failure relationship
+runs dominantly upstream (heart failure causing effusions) so an effusion-to-dysfunction edge would
+invert the published direction; effusive-constrictive progression evidence is case-report class.
+Searched anchors retained for reopening (governance notes): malignant effusion etiology/prognosis
+series (PMID 35950292), post-pericardiocentesis mortality cohort (PMID 42484666), post-cardiac-surgery
+effusion prevalence series (PMID 42074905), dialysis-population hospitalization analysis (PMID
+42471176), and effusive-constrictive case reports (PMIDs 42400575, 41717678). Reopening via a
+tamponade or constrictive-pericarditis catalog identity, or a directional cohort quantifying
+large-effusion-before-dysfunction ordering.
+
+Withholdings recorded on the files: periodontitis -> loss-of-teeth and -> osteoporosis (ME-29
+identity-duplication with the periodontal-disease sibling window), -> oral-cancer (shared-substrate -
+tobacco and alcohol drive both diseases and the leukoplakia and erythroplakia windows own the
+premalignant pathway), -> myocardial-infarction (below threshold, composite-endpoint cohorts);
+peripheral-aneurysm -> deep-vein-thrombosis and -> peripheral-neuropathy (below threshold,
+case-report-level compression evidence; ME-29 nerve-compression windows owned by the named neuropathy
+identities); peripheral-nerve-paralysis -> unexplained-chronic-pain (semantic-mismatch - neuropathic
+pain after nerve paralysis is explained by the nerve lesion) and -> erectile-dysfunction (below
+threshold, case-report level); persistent-postural-perceptual-dizziness -> dizziness
+(identity-duplication/constitutive proximity), -> insomnia (below threshold within comorbidity
+inventories), -> vasovagal-syncope and -> vestibular-disorder (diagnostic-mimicry/shared-substrate).
+
+Pre-authoring verification: all 15 PMIDs passed the abstract pass (`/tmp/d1-abstract47.py` in fetch
+groups), the esummary bibliographic pass with every citation re-verified against the PubMed record, and
+`node scripts/preflight-source-status.js --pmids ...` (15/15 checked, zero blocking flags). The
+post-write structural self-audit passed for all five files (6 edges, 17 reference uses) and
+`npm run kb:validate` reports zero errors.
+
+Registry after lockstep: 738 relationships (664 explicit / 74 legacy), 1315 reference uses (383
+verified / 932 pending-verification), 1310 clinical / 5 legal uses, 1180 source entities (346 active /
+825 pending-verification). Cross-edge shared sources - PMIDs 42268441 and 42240653 each carried on both
+PPPD edges - give 17 reference uses over 15 PMIDs and 14 new source entities (PMID 42268441 was already
+a registered source entity shared with the umbrella dizziness -> anxiety-disorder edge). Citation packet
+regenerated at 375 worksheets / 932 reference rows = live citation debt; the verification dashboard
+regenerated at 932 rows in 39 reviewer batches (824 distinct sources). Backlog after batch 70: **140**
+undispositioned zero-edge drafts (145 before the batch; four identities left by gaining edges and one by
+recorded deferral). Next-five: `phantom-limb-pain`, `phimosis`, `piriformis-syndrome`, `plantar-warts`,
+`pleura-cancer`.
+
+Structural-debt note: batch-70 edges produced zero new CRG findings - the analyzer reports review-class
+13 against baseline 13 and redundancy 28 against baseline 28 unchanged after the six edges landed - but
+the PPPD -> anxiety-disorder edge adds a third accumulated example to the standing CRG
+redundancy-semantics question: umbrella/member parallel edges with shared evidence provenance (the
+umbrella dizziness -> anxiety-disorder edge already cites the Kothari PPPD cohort, PMID 42268441, which
+this batch registers again under its native member identity) do not register as redundancy conflicts.
+The overlap is disclosed openly on the member edge (KB todo and governance note plus registry structured
+guard text) with the umbrella edge left untouched; the question now stands on three examples (the
+batch-65 sibling double-targeting, the batch-67 otosclerosis tinnitus shortcut, and this umbrella/member
+case) and should be settled before more parallel-edge provenance accumulates.
+
+Test-pin note: the sweep touched 54 files and replaced 316 counter tokens in one pass with the batch-69
+per-token context predicates carried over unchanged (relationships 732 -> 738, references/uses 1298 ->
+1315, unverified 915 -> 932, pending source entities 811 -> 825, total source entities 1166 -> 1180,
+explicit guards 658 -> 664, clinical references 1293 -> 1310, clinical provenance 1297 -> 1314, and the
+draft-singles counter 288 -> 290 for this batch's two single-suggestion identities `peripheral-aneurysm`
+and `peripheral-nerve-paralysis`). The explicit fixture token continued to carry the citation-decay-gate
+debt fixture automatically (915 -> 932) - tenth consecutive batch with no manual fixture bump. Residue
+clean outside the standing benign coincidences (apply-all-94's historical `explicitPublicationGuards:
+273`; wave-5's `toBeGreaterThanOrEqual(276)` catalog floor; legal-copy's `38 U.S.C. § 1117` statute
+text). Standing recommendation: batch 70 lands through branch, PR, CI, and merge.

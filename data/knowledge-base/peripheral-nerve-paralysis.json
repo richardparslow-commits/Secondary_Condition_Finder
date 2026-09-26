@@ -2,8 +2,77 @@
   "id": "peripheral-nerve-paralysis",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review neurologic, neuropathic, post-traumatic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 70 (2026-09-26): one ASSOCIATION_ONLY draft mapping pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: the edge asserts association only (etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true) even though the guyon-s-canal-syndrome muscle-atrophy precedent classifies the same denervation cascade as DIRECT_CAUSATION at PROBABLE - that precedent rests on a localized compressive lesion with documented decompression reversal, whereas this identity spans traumatic, iatrogenic, and compressive etiologies with variable reversal potential, so the draft quarantine standard keeps it at association only pending qualified-human review.",
+    "Pathway and duplicate-scope screens: no -> unexplained-chronic-pain edge (SEMANTIC-MISMATCH per the batch-65 guard - neuropathic pain after peripheral nerve paralysis is explained by the nerve lesion, and the unexplained-chronic-pain window is reserved for diagnostically-unexplained courses); no -> erectile-dysfunction edge (below threshold - located literature for pudendal and sciatic nerve injury and sexual function is case-report level only); ME-29 discipline - the named compressive-neuropathy identities (guyon-s-canal, cubital-tunnel, common-peroneal-neuropathy, femoral-neuropathy, and the median/ulnar/radial/tibial identities) own their evidence windows and none is recycled here; the anterior-interosseous-nerve-syndrome incoming edge evidence is not recycled."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 70 (2026-09-26): one bounded association edge authored - peripheral-nerve-paralysis to muscle-atrophy (rank 1) - classified ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, and hypothesizedOnly:true. The edge rests on the peripheral nerve injury review documenting atrophy and fibrosis as frequent long-term consequences (PMID 41847509), the eight-patient NCS/EMG-confirmed intercostal nerve injury series documenting denervation atrophy with eventration (PMID 42059538), and the 22-patient foot-drop MR neurography cohort carried openly as counterweight (few demonstrated atrophy at median five-month duration, PMID 36318320). Classification comparison with the guyon-s-canal-syndrome muscle-atrophy DIRECT_CAUSATION precedent is recorded in the todo rather than inherited, because etiologic breadth and reversal uncertainty here are wider than the localized compressive lesion in that precedent."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "muscle-atrophy",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Denervated muscle wastes at cohort and review level: the peripheral nerve injury review documents muscle atrophy and fibrosis as frequent long-term consequences of nerve injury with limited recovery when reinnervation is delayed or incomplete (PMID 41847509), the eight-patient rib-fracture series with NCS/EMG-confirmed intercostal nerve injury documents denervation atrophy of the rectus abdominis and intercostal muscles with eventration at the denervated levels (PMID 42059538), and the common-peroneal foot-drop cohort grades anterior-compartment muscle bulk on MR neurography after electrodiagnostically confirmed neuropathy (PMID 36318320); recorded as documented association only with the atrophy-counterweight carried openly (few patients in the foot-drop cohort had demonstrated muscle atrophy at a median five-month symptom duration).",
+        "causationStatus": "Neither causation nor aggravation of atrophy is established for any individual: the mechanism is denervation (loss of motor axon trophic input) which the Guyon-canal precedent classifies as direct at probable when a localized compressive lesion and decompression reversal are documented, but this identity spans traumatic, iatrogenic, and compressive etiologies with variable reversal potential, so attribution requires dated electrodiagnostic and imaging documentation with disuse, cachexia, and myopathic exclusion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MECHANICAL_OR_COMPRESSIVE",
+        "primaryVector": "A peripheral motor nerve axonotmesis or neurotmesis from compression, trauma, or iatrogenic injury interrupts motor axon continuity so the denervated motor units lose trophic input and undergo neurogenic atrophy with fibrofatty replacement, documented electrodiagnostically and on imaging as muscle bulk loss in the exact nerve distribution, but whether this route produced any individual atrophy remains hypothesized until electrodiagnostic and imaging records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at review class plus an eight-patient electrodiagnostic case series and a 22-patient imaging cohort: the largest clinical anchor is small and single-institution, the foot-drop cohort found few patients with demonstrated atrophy at median five-month duration and no imaging finding predicted residual deficit, reinnervation potential and time course vary widely by lesion grade and level, and no cohort quantifies atrophy incidence across the named-nerve paralysis spectrum.",
+        "evidenceGaps": "The evidence base is a mechanistic review, an eight-patient electrodiagnostic case series, and a 22-patient imaging cohort in which few patients had demonstrated muscle atrophy and no imaging finding predicted residual motor deficit; denervation atrophy is time-course dependent with partial reversibility after reinnervation; the etiologic spectrum of the identity (compression, trauma, iatrogenic, inflammatory) is heterogeneous; and disuse atrophy from immobilization, cachexia and malnutrition, primary myopathy, upper motor neuron lesions, and the named compressive-neuropathy windows (published, not recycled per ME-29) compete for individual attribution.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "disuse atrophy from immobilization or pain-related unloading",
+          "cachexia, malnutrition, and systemic illness",
+          "primary muscle disease and myopathy",
+          "upper motor neuron lesions including stroke and spinal cord injury",
+          "named compressive-neuropathy windows (Guyon, cubital, tibial, peroneal identities own their evidence, not recycled per ME-29)"
+        ]
+      },
+      "evidenceGaps": [
+        "The evidence base is a mechanistic review, an eight-patient electrodiagnostic case series, and a 22-patient imaging cohort in which few patients had demonstrated muscle atrophy and no imaging finding predicted residual motor deficit; denervation atrophy is time-course dependent with partial reversibility after reinnervation; the etiologic spectrum of the identity (compression, trauma, iatrogenic, inflammatory) is heterogeneous; and disuse atrophy from immobilization, cachexia and malnutrition, primary myopathy, upper motor neuron lesions, and the named compressive-neuropathy windows (published, not recycled per ME-29) compete for individual attribution."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY at review-plus-small-series class with the counterweight and etiologic-breadth limits carried openly: the peripheral nerve injury review documents atrophy and fibrosis as frequent long-term consequences (PMID 41847509), the rib-fracture series documents NCS/EMG-confirmed denervation with rectus and intercostal atrophy and eventration (PMID 42059538), and the foot-drop cohort shows atrophy is not universal at short duration (PMID 36318320); because the identity spans heterogeneous etiologies with variable reversal potential unlike the localized compressive lesion in the Guyon-canal precedent, the conservative standard keeps the edge at association only and routes individual claims through dated electrodiagnostic and imaging documentation with disuse and myopathic exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Long F, Pan X, He A, et al. Skeletal muscle reprogramming in peripheral nerve injury: mechanisms, therapeutic roles, and complication management Exp Biol Med (Maywood). 2026;251:10835. PMID 41847509.",
+          "note": "Mechanistic review of skeletal muscle reprogramming in peripheral nerve injury (Exp Biol Med 2026): peripheral nerve injury frequently leads to long-term neuromuscular dysfunction, muscle atrophy, fibrosis, and chronic pain; denervation-induced muscle atrophy involves Wnt/beta-catenin, TGF-beta, Notch, and HDAC pathways; recovery is limited when reinnervation is delayed or incomplete; supports the bounded denervation-atrophy association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41847509/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 41847509; review (denervation-induced muscle atrophy mechanisms and complication management)"
+        },
+        {
+          "citation": "Sherrier M, Daley D, Eriksson E. Intercostal nerve injury after rib fractures: A case series correlating electrodiagnostic testing with imaging, ultrasound, and surgical findings PM R. 2026 May;18(5):510-519. PMID 42059538.",
+          "note": "Case series of 8 patients with NCS/EMG-diagnosed intercostal nerve injury after rib fractures (PM M 2026): denervation of rectus abdominis and intercostal muscles causing atrophy and subsequent eventration; 17 levels of injury; intraoperative stimulation correlated with NCS/EMG in 12 of 15 cases; supports the bounded electrodiagnostic denervation-atrophy association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42059538/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 42059538; results (denervation atrophy and eventration after intercostal nerve injury)"
+        },
+        {
+          "citation": "Daniels SP, Ross AB, Sneag DB, et al. Can MR neurography of the common peroneal nerve predict a residual motor deficit in patients with foot drop? Skeletal Radiol. 2023 Apr;52(4):751-761. PMID 36318320.",
+          "note": "Retrospective MR neurography cohort of 23 studies in 22 foot-drop patients with common peroneal neuropathy (Skeletal Radiol 2023): anterior-compartment muscle bulk graded (Goutallier), few patients demonstrated muscle atrophy at median 5-month symptom duration, and no imaging finding predicted residual motor deficit at 12 months; COUNTERWEIGHT carried openly showing atrophy is not universal at short duration.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36318320/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 36318320; results (muscle bulk grading and residual motor deficit findings)"
+        }
+      ]
+    }
+  ]
 }

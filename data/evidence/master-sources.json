@@ -16,16 +16,16 @@
   "citationPromotionMustAtomicallyUpdateKbAndMasterSourceState": true
  },
  "counts": {
-  "liveSourceReferenceUses": 1298,
+  "liveSourceReferenceUses": 1315,
   "activeSourceEntities": 346,
-  "pendingVerificationSourceEntities": 811,
+  "pendingVerificationSourceEntities": 825,
   "activeClinicalSourceEntities": 345,
-  "pendingClinicalSourceEntities": 811,
+  "pendingClinicalSourceEntities": 825,
   "activeLegalAuthorityEntities": 1,
   "retiredOnlySourceEntities": 1,
   "supersededUnverifiedSourceEntities": 7,
   "bibliographicCorrectionOnlyEntities": 1,
-  "totalSourceEntitiesIncludingLineage": 1166,
+  "totalSourceEntitiesIncludingLineage": 1180,
   "retiredVerifiedRelationshipSourceUses": 6
  },
  "retirementLedger": {
@@ -22112,18 +22112,32 @@
    "sourceCheckedOnValues": [
     "2026-09-23"
    ],
-   "liveUsageCount": 1,
+   "liveUsageCount": 3,
    "liveUses": [
     {
      "relationshipId": "rel-dizziness-to-anxiety-disorder",
      "primaryId": "dizziness",
      "targetId": "anxiety-disorder",
      "sourceIndex": 2
+    },
+    {
+     "relationshipId": "rel-persistent-postural-perceptual-dizziness-to-anxiety-disorder",
+     "primaryId": "persistent-postural-perceptual-dizziness",
+     "targetId": "anxiety-disorder",
+     "sourceIndex": 0
+    },
+    {
+     "relationshipId": "rel-persistent-postural-perceptual-dizziness-to-depressive-disorder",
+     "primaryId": "persistent-postural-perceptual-dizziness",
+     "targetId": "depressive-disorder",
+     "sourceIndex": 0
     }
    ],
    "retiredUses": [],
    "rawReferenceHashes": [
-    "b04b8be66bc65ea8bdea53ac2471e1334fd7ca754e4b7cdfb4529d896035ad25"
+    "b04b8be66bc65ea8bdea53ac2471e1334fd7ca754e4b7cdfb4529d896035ad25",
+    "5fdde4fb230267e587f15ed154519b6b4ad2655872b614498fcddc28128c4eb1",
+    "959021aad715c33163e75b1471d2afb4dd76ce7c1a48799700db8d77996b57b5"
    ]
   },
   {
@@ -43084,6 +43098,503 @@
    "retiredUses": [],
    "rawReferenceHashes": [
     "3a0393d9816215b511894f7c9fa3a1bb1ea08d418ac7c91ad00bd51d5c8956d7"
+   ]
+  },
+  {
+   "sourceId": "pmid-40356262",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "40356262",
+   "doi": null,
+   "canonicalCitation": "Xie X, Xu J, Li Y, et al. Efficacy of nonsurgical periodontal treatment on patients with periodontitis and type 2 diabetes mellitus: a systematic review and Bayesian network meta-analysis Acta Odontol Scand. 2025 May 13;84:201-211. PMID 40356262.",
+   "citationVariants": [
+    "Xie X, Xu J, Li Y, et al. Efficacy of nonsurgical periodontal treatment on patients with periodontitis and type 2 diabetes mellitus: a systematic review and Bayesian network meta-analysis Acta Odontol Scand. 2025 May 13;84:201-211. PMID 40356262."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40356262/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/40356262/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-periodontitis-to-diabetes-mellitus",
+     "primaryId": "periodontitis",
+     "targetId": "diabetes-mellitus",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "f2b13d99c87e62bb1468be7d84baf7cf1bea64fe452f7641c2a36c774797e8ea"
+   ]
+  },
+  {
+   "sourceId": "pmid-42089456",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "42089456",
+   "doi": "10.1111/cdoe.70074",
+   "canonicalCitation": "Oviedo Contreras C, Cornejo Ovalle M. Comprehensive Dental Treatment and Glycemic Control in Primary Health Care Patients With Type 2 Diabetes: A Retrospective Cohort Study Community Dent Oral Epidemiol. 2026 May 6.doi: 10.1111/cdoe.70074. PMID 42089456.",
+   "citationVariants": [
+    "Oviedo Contreras C, Cornejo Ovalle M. Comprehensive Dental Treatment and Glycemic Control in Primary Health Care Patients With Type 2 Diabetes: A Retrospective Cohort Study Community Dent Oral Epidemiol. 2026 May 6.doi: 10.1111/cdoe.70074. PMID 42089456."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42089456/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/42089456/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-periodontitis-to-diabetes-mellitus",
+     "primaryId": "periodontitis",
+     "targetId": "diabetes-mellitus",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "847609add7c103a2b476e9962ed0182e9ab21292cda560e0ad6492539d859131"
+   ]
+  },
+  {
+   "sourceId": "pmid-42585499",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "42585499",
+   "doi": null,
+   "canonicalCitation": "Rodrigues MEO, Vilarinho JLPDS, Chermont JGJ, et al. Association of periodontitis stages with glycemic control in adults with and without type 2 diabetes mellitus: a cross-sectional study J Appl Oral Sci. 2026;34:e20260178. PMID 42585499.",
+   "citationVariants": [
+    "Rodrigues MEO, Vilarinho JLPDS, Chermont JGJ, et al. Association of periodontitis stages with glycemic control in adults with and without type 2 diabetes mellitus: a cross-sectional study J Appl Oral Sci. 2026;34:e20260178. PMID 42585499."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42585499/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/42585499/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-periodontitis-to-diabetes-mellitus",
+     "primaryId": "periodontitis",
+     "targetId": "diabetes-mellitus",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "38db6e1846747cfc58391e6a4136894d2e2d112d343a332f64c0c5ff3c68cce5"
+   ]
+  },
+  {
+   "sourceId": "pmid-42736175",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "42736175",
+   "doi": "10.1111/imj.70640",
+   "canonicalCitation": "Li H, Huang Y, Li J, et al. Periodontitis and adverse outcomes in atrial fibrillation: prospective evidence from the UK Biobank Intern Med J. 2026 Sep 14.doi: 10.1111/imj.70640. PMID 42736175.",
+   "citationVariants": [
+    "Li H, Huang Y, Li J, et al. Periodontitis and adverse outcomes in atrial fibrillation: prospective evidence from the UK Biobank Intern Med J. 2026 Sep 14.doi: 10.1111/imj.70640. PMID 42736175."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42736175/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/42736175/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-periodontitis-to-cerebrovascular-accident-stroke-residuals",
+     "primaryId": "periodontitis",
+     "targetId": "cerebrovascular-accident-stroke-residuals",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "7d0c8cd618dbcb2d0f570ecc62852918cb72d867ff47ac5cd9d830b0178be650"
+   ]
+  },
+  {
+   "sourceId": "pmid-41943019",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "41943019",
+   "doi": "10.1186/s12903-026-08282-x",
+   "canonicalCitation": "Lu Y, Lu B. Association between periodontitis and cardiovascular disease: a retrospective analysis BMC Oral Health. 2026 Apr 6;26(1).doi: 10.1186/s12903-026-08282-x. PMID 41943019.",
+   "citationVariants": [
+    "Lu Y, Lu B. Association between periodontitis and cardiovascular disease: a retrospective analysis BMC Oral Health. 2026 Apr 6;26(1).doi: 10.1186/s12903-026-08282-x. PMID 41943019."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41943019/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/41943019/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-periodontitis-to-cerebrovascular-accident-stroke-residuals",
+     "primaryId": "periodontitis",
+     "targetId": "cerebrovascular-accident-stroke-residuals",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "0aefe83ab645c105039db24d8146cd0e5ac722ee14fea29527d223aca64eaf34"
+   ]
+  },
+  {
+   "sourceId": "pmid-37838652",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "37838652",
+   "doi": null,
+   "canonicalCitation": "Pomatto S, Faggioli G, Pini R, et al. Limb salvage and survival after urgent surgical treatment of popliteal artery aneurysm World J Emerg Surg. 2023 Oct 14;18(1):49. PMID 37838652.",
+   "citationVariants": [
+    "Pomatto S, Faggioli G, Pini R, et al. Limb salvage and survival after urgent surgical treatment of popliteal artery aneurysm World J Emerg Surg. 2023 Oct 14;18(1):49. PMID 37838652."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/37838652/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/37838652/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-peripheral-aneurysm-to-amputation-or-loss-of-use",
+     "primaryId": "peripheral-aneurysm",
+     "targetId": "amputation-or-loss-of-use",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "a5afac42513ab76c5cf5eb72d75a43bc7444d456378c9343bd479d46a41c4797"
+   ]
+  },
+  {
+   "sourceId": "pmid-30393064",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "30393064",
+   "doi": null,
+   "canonicalCitation": "Jungi S, Kuemmerli C, Kissling P, et al. Limb Salvage by Open Surgical Revascularisation in Acute Ischaemia due to Thrombosed Popliteal Artery Aneurysm Eur J Vasc Endovasc Surg. 2019 Mar;57(3):393-398. PMID 30393064.",
+   "citationVariants": [
+    "Jungi S, Kuemmerli C, Kissling P, et al. Limb Salvage by Open Surgical Revascularisation in Acute Ischaemia due to Thrombosed Popliteal Artery Aneurysm Eur J Vasc Endovasc Surg. 2019 Mar;57(3):393-398. PMID 30393064."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/30393064/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/30393064/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-peripheral-aneurysm-to-amputation-or-loss-of-use",
+     "primaryId": "peripheral-aneurysm",
+     "targetId": "amputation-or-loss-of-use",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "4cc45802cf4a7066d929d6f1099f6a22705cf8860590f1081989d918f705d734"
+   ]
+  },
+  {
+   "sourceId": "pmid-34995741",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "34995741",
+   "doi": null,
+   "canonicalCitation": "Gabrielli R, Siani A, Smedile G, et al. Are Small Popliteal Aneurysm so Innocent? Ann Vasc Surg. 2022 Aug;84:265-269. PMID 34995741.",
+   "citationVariants": [
+    "Gabrielli R, Siani A, Smedile G, et al. Are Small Popliteal Aneurysm so Innocent? Ann Vasc Surg. 2022 Aug;84:265-269. PMID 34995741."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34995741/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/34995741/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-peripheral-aneurysm-to-amputation-or-loss-of-use",
+     "primaryId": "peripheral-aneurysm",
+     "targetId": "amputation-or-loss-of-use",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "31b60af9c4f603c3c36f740bc0490a07f890d41edbc3acfcd08d5fc3d636cee9"
+   ]
+  },
+  {
+   "sourceId": "pmid-41847509",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "41847509",
+   "doi": null,
+   "canonicalCitation": "Long F, Pan X, He A, et al. Skeletal muscle reprogramming in peripheral nerve injury: mechanisms, therapeutic roles, and complication management Exp Biol Med (Maywood). 2026;251:10835. PMID 41847509.",
+   "citationVariants": [
+    "Long F, Pan X, He A, et al. Skeletal muscle reprogramming in peripheral nerve injury: mechanisms, therapeutic roles, and complication management Exp Biol Med (Maywood). 2026;251:10835. PMID 41847509."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41847509/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/41847509/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-peripheral-nerve-paralysis-to-muscle-atrophy",
+     "primaryId": "peripheral-nerve-paralysis",
+     "targetId": "muscle-atrophy",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "dbc65c41be5ab8b375b9ec488e1c45fcc6c1dadc6fd39160ddb5993ce1896576"
+   ]
+  },
+  {
+   "sourceId": "pmid-42059538",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "42059538",
+   "doi": null,
+   "canonicalCitation": "Sherrier M, Daley D, Eriksson E. Intercostal nerve injury after rib fractures: A case series correlating electrodiagnostic testing with imaging, ultrasound, and surgical findings PM R. 2026 May;18(5):510-519. PMID 42059538.",
+   "citationVariants": [
+    "Sherrier M, Daley D, Eriksson E. Intercostal nerve injury after rib fractures: A case series correlating electrodiagnostic testing with imaging, ultrasound, and surgical findings PM R. 2026 May;18(5):510-519. PMID 42059538."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42059538/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/42059538/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-peripheral-nerve-paralysis-to-muscle-atrophy",
+     "primaryId": "peripheral-nerve-paralysis",
+     "targetId": "muscle-atrophy",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "7aa52382d4fd5d36b5217cc6fa6813856f75675b023750b2ddc4f04c6c2d7934"
+   ]
+  },
+  {
+   "sourceId": "pmid-36318320",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "36318320",
+   "doi": null,
+   "canonicalCitation": "Daniels SP, Ross AB, Sneag DB, et al. Can MR neurography of the common peroneal nerve predict a residual motor deficit in patients with foot drop? Skeletal Radiol. 2023 Apr;52(4):751-761. PMID 36318320.",
+   "citationVariants": [
+    "Daniels SP, Ross AB, Sneag DB, et al. Can MR neurography of the common peroneal nerve predict a residual motor deficit in patients with foot drop? Skeletal Radiol. 2023 Apr;52(4):751-761. PMID 36318320."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36318320/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/36318320/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-peripheral-nerve-paralysis-to-muscle-atrophy",
+     "primaryId": "peripheral-nerve-paralysis",
+     "targetId": "muscle-atrophy",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "b4119ede34fccc9af0a7af7298efa7b1318a34f890748b4ac909d1428b804b55"
+   ]
+  },
+  {
+   "sourceId": "pmid-42240653",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "42240653",
+   "doi": "10.1007/s00415-026-13891-1",
+   "canonicalCitation": "Shen J, Zhao X, Huo Y, et al. Comparative efficacy of non-pharmacological interventions for persistent postural-perceptual dizziness: a systematic review and network meta-analysis of balance, anxiety, and depression outcomes J Neurol. 2026 Jun 4;273(6).doi: 10.1007/s00415-026-13891-1. PMID 42240653.",
+   "citationVariants": [
+    "Shen J, Zhao X, Huo Y, et al. Comparative efficacy of non-pharmacological interventions for persistent postural-perceptual dizziness: a systematic review and network meta-analysis of balance, anxiety, and depression outcomes J Neurol. 2026 Jun 4;273(6).doi: 10.1007/s00415-026-13891-1. PMID 42240653."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42240653/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/42240653/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 2,
+   "liveUses": [
+    {
+     "relationshipId": "rel-persistent-postural-perceptual-dizziness-to-anxiety-disorder",
+     "primaryId": "persistent-postural-perceptual-dizziness",
+     "targetId": "anxiety-disorder",
+     "sourceIndex": 1
+    },
+    {
+     "relationshipId": "rel-persistent-postural-perceptual-dizziness-to-depressive-disorder",
+     "primaryId": "persistent-postural-perceptual-dizziness",
+     "targetId": "depressive-disorder",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "15215a19be55f7db52da51cd0baf4515f125f6df6de44ee28ade9033c394e752",
+    "620612437fc79fd06f83a88f2fef5f9c806a3915a9769cb02abc36fc54900db8"
+   ]
+  },
+  {
+   "sourceId": "pmid-42732644",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "42732644",
+   "doi": null,
+   "canonicalCitation": "Goto F, Kaneda S, Wasano K. Clinical Significance of Neuro-Otological Examinations in Persistent Postural-Perceptual Dizziness: A Retrospective Study J Int Adv Otol. 2026 Aug 31;22(4):1-5. PMID 42732644.",
+   "citationVariants": [
+    "Goto F, Kaneda S, Wasano K. Clinical Significance of Neuro-Otological Examinations in Persistent Postural-Perceptual Dizziness: A Retrospective Study J Int Adv Otol. 2026 Aug 31;22(4):1-5. PMID 42732644."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42732644/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/42732644/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-persistent-postural-perceptual-dizziness-to-anxiety-disorder",
+     "primaryId": "persistent-postural-perceptual-dizziness",
+     "targetId": "anxiety-disorder",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "74b64193b0a671685e74a6914cb18ec7a066b02135bff9feb4872acf1b7d63fd"
+   ]
+  },
+  {
+   "sourceId": "pmid-40929368",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "40929368",
+   "doi": null,
+   "canonicalCitation": "Li J, Bai X, Fang R, et al. Incidence, risk factors, and comorbidities of persistent postural-perceptual dizziness after stroke: A prospective study of 284 cases J Vestib Res. 2026 Mar;36(2):100-106. PMID 40929368.",
+   "citationVariants": [
+    "Li J, Bai X, Fang R, et al. Incidence, risk factors, and comorbidities of persistent postural-perceptual dizziness after stroke: A prospective study of 284 cases J Vestib Res. 2026 Mar;36(2):100-106. PMID 40929368."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40929368/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/40929368/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-persistent-postural-perceptual-dizziness-to-depressive-disorder",
+     "primaryId": "persistent-postural-perceptual-dizziness",
+     "targetId": "depressive-disorder",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "037f29877ce846531e38d6b6876fdfcb6f57aa07eba530192a2892681a9dc1f2"
    ]
   }
  ],
