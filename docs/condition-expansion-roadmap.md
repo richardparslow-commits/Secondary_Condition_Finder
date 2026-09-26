@@ -3019,6 +3019,101 @@ tests/condition-expansion-wave5.test.ts pins the "276-condition Wave 5 checkpoin
 correctly skipped by the context predicate and unbreakable by growth. Standing recommendation: batch 64
 lands through branch, PR, CI, and merge.
 
+## Mapping Expansion D1 batch 65 (2026-09-26)
+
+Mapping Expansion D1 batch 65 (2026-09-26) authored eight draft-quarantined relationships across four of
+the five screened identities - `normal-pressure-hydrocephalus` (4 edges), `nutcracker-esophagus` (1),
+`nocturnal-enuresis` (2), and `occipital-neuralgia` (1) - classified ASSOCIATION_ONLY with
+etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true,
+and conservative rationale and evidence-gap records on every suggestion. One identity was DEFERRED -
+`nonspecific-interstitial-pneumonia` (IDENTITY-DUPLICATION with the interstitial-lung-disease and
+pulmonary-fibrosis windows plus CTD-association confounding) - with reopening conditions recorded in its
+governance notes; it left the backlog queue by disposition.
+
+`normal-pressure-hydrocephalus` (4 edges): depressive-disorder (rank 1, PSYCHOPHYSIOLOGICAL) rests on the
+first iNPH neuropsychiatric meta-analysis (22 studies; depression 30.1% pooled, Hedges g 1.31 versus
+controls, post-shunt reduction CI containing the null; PMID 41657358), the lumbo-peritoneal shunt cohort
+(post-shunt NPI depression reduction; PMID 26810545), and the atypical-manifestations review (PMID
+41936711); apathy (rank 2, MECHANICAL_OR_COMPRESSIVE) rests on the same meta-analysis (69.2% pooled, the
+highest neuropsychiatric feature), the right-caudate SPECT case-control with shunt-linked perfusion and
+symptom recovery (PMID 30474244), and the shunt cohort; anxiety-disorder (rank 3) rests on the
+meta-analysis (21.9% pooled, no control contrast located) with the no-contrast limit carried openly;
+subdural-hematoma (rank 4, POST_SURGICAL_OR_TREATMENT) rests on the treated-overdrainage cohort (60
+patients, 96 collections, >40 cm3 valve-adjustment-failure threshold; PMID 42599077) and the anti-siphon
+meta-analysis (subdural hematoma RR 0.35 across 7 studies/928 patients; PMID 42486335), explicitly
+shunt-mediated rather than disease-mediated.
+
+`nutcracker-esophagus` (1 edge): dysphagia (rank 1, MECHANICAL_OR_COMPRESSIVE) rests on the
+hypercontractile-esophagus HRM cohort (48 patients; dysphagia 60% presentation with DCI correlation;
+IDQ 3.8 versus 1.0 and Eckardt 0.46 versus 0.14 versus symptomatic controls at 61 months; PMID 40698610),
+with the symptom-boundary limit carried openly (dysphagia is both presenting symptom and outcome - the
+5-year persistence signal versus manometry-normal controls is the secondary-consequence basis) and an
+accepted single-reference quarantine warning.
+
+`nocturnal-enuresis` (2 edges): depressive-disorder (rank 1) and anxiety-disorder (rank 2), both
+PSYCHOPHYSIOLOGICAL, rest on the 200-versus-200 case-control study (elevated Child Depression Inventory
+and Conners anxiety scores; PMID 27939179) and the 8,000-child ALSPAC cohort (elevated parent-reported
+psychological problems; PMID 17071625), with the cross-sectional direction limit and informant asymmetry
+(parent-report effects with little difference on child-report) carried openly.
+
+`occipital-neuralgia` (1 edge): migraine-headaches (rank 1, MECHANICAL_OR_COMPRESSIVE) rests on the
+800-patient headache-clinic prevalence study (ON nearly 25% of headache patients; up to 85% comorbid;
+authors' framing that undertreated ON increases comorbid headache frequency and intensity; PMID 33968466)
+and the refractory-ON decompression series (universal comorbid-headache improvement after nerve
+decompression; PMID 38090265), with the REVERSE-direction signal carried on the edge (the quantified aOR
+2.19 runs chronic migraine to ON odds) and semantic-mismatch discipline recorded.
+
+Withholdings and refusals recorded on the files: NPH triad features - gait impairment (no catalog
+identity; withheld proposition), cognitive decline (constitutive of Hakim's triad + neurocognitive-cluster
+duplication), urinary incontinence (constitutive) - all withheld; NPH -> dysphagia (86% preoperative) and
+-> fecal-incontinence (32%) documented by the atypical review but below the authoring threshold pending
+corroboration; NPH -> falls (no identity) and -> subdural-hygroma (related entity) recorded; nutcracker
+-> gerd WITHHELD on counterweight evidence (reflux 37.5% versus 41.4% controls, GerdQ pNS; the DES-GERD
+re-examination challenges GERD's pathogenic role, PMID 39341683) despite the sibling
+diffuse-esophageal-spasm gerd window (ME-29 separation maintained); nutcracker chest pain withheld as
+constitutive; nocturnal-enuresis -> ocd and -> tic-disorder (first-report associations, below threshold),
+-> dermatitis (zero quantification), and the suicidality proposition from the bladder-control-attainment
+cohort (PMID 16005077) refused on identity grounds, compounding the batch-64 refusal; occipital-neuralgia
+-> unexplained-chronic-pain WITHHELD on semantic-mismatch (ON pain is nerve-irritation-explained;
+refractory is not unexplained - explicitly distinguished from the lingual/genitofemoral neuralgia pain
+edges whose basis was diagnostically-unexplained courses) and -> depressive-disorder on zero located
+quantification despite the trigeminal-neuralgia precedent.
+
+Pre-authoring verification: all 11 PMIDs passed the abstract pass (`/tmp/d1-abstract47.py` in four fetch
+groups), the esummary bibliographic pass with every citation re-verified against the PubMed record, and
+`node scripts/preflight-source-status.js --pmids ...` (11/11 checked, zero blocking flags, zero notes).
+The post-write structural self-audit passed for all five files (8 edges, 17 reference uses; one accepted
+single-ref warning on nutcracker-esophagus->dysphagia) and `npm run kb:validate` reports zero errors.
+
+Registry after lockstep: 706 relationships (632 explicit / 74 legacy), 1243 reference uses (383
+verified / 860 pending-verification), 1238 clinical / 5 legal uses, 1117 source entities (346 active /
+762 pending-verification). Within-batch shared sources - PMID 41657358 across three NPH edges, 26810545
+and 41936711 each across two, and 27939179 and 17071625 each across the two enuresis edges - give 17
+reference uses over 11 new sources. Citation packet regenerated at 343 worksheets / 860 reference rows =
+live citation debt; the verification dashboard regenerated at 860 rows in 36 reviewer batches (760
+distinct sources). Backlog after batch 65: **165** undispositioned zero-edge drafts (170 before the
+batch; four identities left by gaining edges and one by recorded deferral). Next-five: `optic-atrophy`,
+`oral-cancer`, `oral-candidiasis`, `oral-hairy-leukoplakia`, `orthostatic-hypotension`.
+
+Structural-debt note: batch-65 edges produced zero new CRG findings - a differential analyzeGraph run
+with the batch's eight edges stripped confirmed review-class 13 and redundancy 28 are unchanged, so the
+batch-63 review-baseline re-pin stood without adjustment. Notably the apathy->depressive-disorder and
+anxiety-disorder->depressive-disorder triangles (NPH and enuresis double-targeting depression through
+sibling mental-health identities) did not register as redundancy conflicts under the analyzer's current
+semantics; a follow-up should confirm whether that tolerance is intentional before more sibling-triangle
+edges accumulate.
+
+Test-pin note: the sweep touched 54 files and replaced 316 counter tokens in one pass with the batch-64
+per-token context predicates carried over unchanged (relationships 698 -> 706, references/uses 1226 ->
+1243, unverified 843 -> 860, pending source entities 751 -> 762, total source entities 1106 -> 1117,
+explicit guards 624 -> 632, clinical references 1221 -> 1238, clinical provenance 1225 -> 1242, and the
+draft-singles counter 277 -> 279 for this batch's two single-suggestion identities `nutcracker-esophagus`
+and `occipital-neuralgia`). The explicit fixture token continued to carry the citation-decay-gate debt
+fixture automatically (843 -> 860) - fifth consecutive batch with no manual fixture bump. Residue clean
+outside the two standing benign coincidences (apply-all-94's historical `explicitPublicationGuards: 273`;
+wave-5's `toBeGreaterThanOrEqual(276)` catalog floor). Standing recommendation: batch 65 lands through
+branch, PR, CI, and merge.
+
 Test-pin note: the sweep touched 54 files and replaced 316 counter tokens in one pass with the batch-62
 per-token context predicates carried over unchanged (relationships 681 -> 691, references/uses 1188 ->
 1210, unverified 805 -> 827, pending source entities 722 -> 737, total source entities 1077 -> 1092,

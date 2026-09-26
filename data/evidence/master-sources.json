@@ -16,16 +16,16 @@
   "citationPromotionMustAtomicallyUpdateKbAndMasterSourceState": true
  },
  "counts": {
-  "liveSourceReferenceUses": 1226,
+  "liveSourceReferenceUses": 1243,
   "activeSourceEntities": 346,
-  "pendingVerificationSourceEntities": 751,
+  "pendingVerificationSourceEntities": 762,
   "activeClinicalSourceEntities": 345,
-  "pendingClinicalSourceEntities": 751,
+  "pendingClinicalSourceEntities": 762,
   "activeLegalAuthorityEntities": 1,
   "retiredOnlySourceEntities": 1,
   "supersededUnverifiedSourceEntities": 7,
   "bibliographicCorrectionOnlyEntities": 1,
-  "totalSourceEntitiesIncludingLineage": 1106,
+  "totalSourceEntitiesIncludingLineage": 1117,
   "retiredVerifiedRelationshipSourceUses": 6
  },
  "retirementLedger": {
@@ -40900,6 +40900,433 @@
    "retiredUses": [],
    "rawReferenceHashes": [
     "e34ee3638767d2beaf7d6f911625c5a8fee713ba7df764201d01d719351a2bbf"
+   ]
+  },
+  {
+   "sourceId": "pmid-41657358",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "41657358",
+   "doi": null,
+   "canonicalCitation": "Belessiotis-Richards C, Brady E, Abrol E, et al. Neuropsychiatric Features in Patients With Idiopathic Normal Pressure Hydrocephalus: A Systematic Review and Meta-Analysis Neurol Clin Pract. 2026 Apr;16(2):e200586. PMID 41657358.",
+   "citationVariants": [
+    "Belessiotis-Richards C, Brady E, Abrol E, et al. Neuropsychiatric Features in Patients With Idiopathic Normal Pressure Hydrocephalus: A Systematic Review and Meta-Analysis Neurol Clin Pract. 2026 Apr;16(2):e200586. PMID 41657358."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41657358/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/41657358/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 3,
+   "liveUses": [
+    {
+     "relationshipId": "rel-normal-pressure-hydrocephalus-to-depressive-disorder",
+     "primaryId": "normal-pressure-hydrocephalus",
+     "targetId": "depressive-disorder",
+     "sourceIndex": 0
+    },
+    {
+     "relationshipId": "rel-normal-pressure-hydrocephalus-to-apathy",
+     "primaryId": "normal-pressure-hydrocephalus",
+     "targetId": "apathy",
+     "sourceIndex": 0
+    },
+    {
+     "relationshipId": "rel-normal-pressure-hydrocephalus-to-anxiety-disorder",
+     "primaryId": "normal-pressure-hydrocephalus",
+     "targetId": "anxiety-disorder",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "5adae89814282b628e3ce8ab522acb3165ea4e6ceab4c5541f3a0a417c62d302",
+    "414249679f171ebd61ca3603373bfb05700a784d98aa70ee65a42b6b90dcbff1",
+    "a28a9dcb9e65218308e9f2703b559a9f04ba84777414c2fb2a558531c99015eb"
+   ]
+  },
+  {
+   "sourceId": "pmid-26810545",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "26810545",
+   "doi": null,
+   "canonicalCitation": "Kanemoto H, Kazui H, Suzuki Y, et al. Effect of lumbo-peritoneal shunt surgery on neuropsychiatric symptoms in patients with idiopathic normal pressure hydrocephalus J Neurol Sci. 2016 Feb 15;361:206-12. PMID 26810545.",
+   "citationVariants": [
+    "Kanemoto H, Kazui H, Suzuki Y, et al. Effect of lumbo-peritoneal shunt surgery on neuropsychiatric symptoms in patients with idiopathic normal pressure hydrocephalus J Neurol Sci. 2016 Feb 15;361:206-12. PMID 26810545."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/26810545/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/26810545/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 2,
+   "liveUses": [
+    {
+     "relationshipId": "rel-normal-pressure-hydrocephalus-to-depressive-disorder",
+     "primaryId": "normal-pressure-hydrocephalus",
+     "targetId": "depressive-disorder",
+     "sourceIndex": 1
+    },
+    {
+     "relationshipId": "rel-normal-pressure-hydrocephalus-to-apathy",
+     "primaryId": "normal-pressure-hydrocephalus",
+     "targetId": "apathy",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "f40dc2b162fec3b4afb2c63b28248b599b8ed8980be28fb9849a39fe60bd6497",
+    "8d22c273b7b3d251b5cc7a3cb08ba3d0c131f21e98095cf4f2bf7c3bcb9807bc"
+   ]
+  },
+  {
+   "sourceId": "pmid-41936711",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "41936711",
+   "doi": "10.1007/s13760-026-03057-1",
+   "canonicalCitation": "Demichele G, Taddei G, Iaboni E, et al. Beyond Hakim's triad: a systematic review of atypical clinical manifestations in idiopathic normal pressure hydrocephalus Acta Neurol Belg. 2026 Apr 6.doi: 10.1007/s13760-026-03057-1. PMID 41936711.",
+   "citationVariants": [
+    "Demichele G, Taddei G, Iaboni E, et al. Beyond Hakim's triad: a systematic review of atypical clinical manifestations in idiopathic normal pressure hydrocephalus Acta Neurol Belg. 2026 Apr 6.doi: 10.1007/s13760-026-03057-1. PMID 41936711."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41936711/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/41936711/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 2,
+   "liveUses": [
+    {
+     "relationshipId": "rel-normal-pressure-hydrocephalus-to-depressive-disorder",
+     "primaryId": "normal-pressure-hydrocephalus",
+     "targetId": "depressive-disorder",
+     "sourceIndex": 2
+    },
+    {
+     "relationshipId": "rel-normal-pressure-hydrocephalus-to-anxiety-disorder",
+     "primaryId": "normal-pressure-hydrocephalus",
+     "targetId": "anxiety-disorder",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "9715e21845965f7ddc716d5b8a257297419ccd8c22c97472820bca33136109c5",
+    "2bd44190d9ec8b3d2502285347895f33321cd8574a0de29d79d5bc40bdbd2f78"
+   ]
+  },
+  {
+   "sourceId": "pmid-30474244",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "30474244",
+   "doi": null,
+   "canonicalCitation": "Kanemoto H, Kazui H, Suehiro T, et al. Apathy and right caudate perfusion in idiopathic normal pressure hydrocephalus: A case-control study Int J Geriatr Psychiatry. 2019 Mar;34(3):453-462. PMID 30474244.",
+   "citationVariants": [
+    "Kanemoto H, Kazui H, Suehiro T, et al. Apathy and right caudate perfusion in idiopathic normal pressure hydrocephalus: A case-control study Int J Geriatr Psychiatry. 2019 Mar;34(3):453-462. PMID 30474244."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/30474244/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/30474244/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-normal-pressure-hydrocephalus-to-apathy",
+     "primaryId": "normal-pressure-hydrocephalus",
+     "targetId": "apathy",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "4df9bdcfce1df6f4f202f0c7af2e8b16f1133b52dee4ce2ea12263483e81c3e9"
+   ]
+  },
+  {
+   "sourceId": "pmid-42599077",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "42599077",
+   "doi": "10.1227/neu.0000000000004188",
+   "canonicalCitation": "Frome S, de Souza DN, Iyanna A, et al. The Treatment of Subdural Collections in Patients With Shunted Normal Pressure Hydrocephalus: A Single-Center Experience Neurosurgery. 2026 Aug 14.doi: 10.1227/neu.0000000000004188. PMID 42599077.",
+   "citationVariants": [
+    "Frome S, de Souza DN, Iyanna A, et al. The Treatment of Subdural Collections in Patients With Shunted Normal Pressure Hydrocephalus: A Single-Center Experience Neurosurgery. 2026 Aug 14.doi: 10.1227/neu.0000000000004188. PMID 42599077."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42599077/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/42599077/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-normal-pressure-hydrocephalus-to-subdural-hematoma",
+     "primaryId": "normal-pressure-hydrocephalus",
+     "targetId": "subdural-hematoma",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "9c3de22e77ea359aca4c836c18d7c93902fd8c4776ca12c7e32770eeb004f1e5"
+   ]
+  },
+  {
+   "sourceId": "pmid-42486335",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "42486335",
+   "doi": null,
+   "canonicalCitation": "Corin AS, Cheidde L, Arend RB, et al. Effectiveness of anti-siphon devices in CSF shunts for preventing overdrainage in normal pressure hydrocephalus: a systematic review and meta-analysis Neurochirurgie. 2026 Jul 22;72(5):101854. PMID 42486335.",
+   "citationVariants": [
+    "Corin AS, Cheidde L, Arend RB, et al. Effectiveness of anti-siphon devices in CSF shunts for preventing overdrainage in normal pressure hydrocephalus: a systematic review and meta-analysis Neurochirurgie. 2026 Jul 22;72(5):101854. PMID 42486335."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42486335/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/42486335/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-normal-pressure-hydrocephalus-to-subdural-hematoma",
+     "primaryId": "normal-pressure-hydrocephalus",
+     "targetId": "subdural-hematoma",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "0f21c010c4a7b94bad9efeac70117bf593a1f97a3b5064f6678e107b91c5b4e5"
+   ]
+  },
+  {
+   "sourceId": "pmid-40698610",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "40698610",
+   "doi": null,
+   "canonicalCitation": "Ang D, Koo SH, Hong WB, et al. Hypercontractile Esophagus: Clinical Presentation, Role of Provocative Tests in High Resolution Manometry and Long Term Outcome-Results From an Asian Cohort Neurogastroenterol Motil. 2025 Nov;37(11):e70129. PMID 40698610.",
+   "citationVariants": [
+    "Ang D, Koo SH, Hong WB, et al. Hypercontractile Esophagus: Clinical Presentation, Role of Provocative Tests in High Resolution Manometry and Long Term Outcome-Results From an Asian Cohort Neurogastroenterol Motil. 2025 Nov;37(11):e70129. PMID 40698610."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40698610/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/40698610/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-nutcracker-esophagus-to-dysphagia",
+     "primaryId": "nutcracker-esophagus",
+     "targetId": "dysphagia",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "cf98eb1339baf1ed9d0b57088064178ca416b072c197eca9bcf1257af16fe5c8"
+   ]
+  },
+  {
+   "sourceId": "pmid-27939179",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "27939179",
+   "doi": null,
+   "canonicalCitation": "Gulisano M, Domini C, Capelli M, et al. Importance of neuropsychiatric evaluation in children with primary monosymptomatic enuresis J Pediatr Urol. 2017 Feb;13(1):36.e1-36.e6. PMID 27939179.",
+   "citationVariants": [
+    "Gulisano M, Domini C, Capelli M, et al. Importance of neuropsychiatric evaluation in children with primary monosymptomatic enuresis J Pediatr Urol. 2017 Feb;13(1):36.e1-36.e6. PMID 27939179."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/27939179/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/27939179/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 2,
+   "liveUses": [
+    {
+     "relationshipId": "rel-nocturnal-enuresis-to-depressive-disorder",
+     "primaryId": "nocturnal-enuresis",
+     "targetId": "depressive-disorder",
+     "sourceIndex": 0
+    },
+    {
+     "relationshipId": "rel-nocturnal-enuresis-to-anxiety-disorder",
+     "primaryId": "nocturnal-enuresis",
+     "targetId": "anxiety-disorder",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "6fe120a39951d91105da1de3eeeafa2d2aa498916821ba282b232024835f7722",
+    "5c3bca3e25a99ba8a0cc5a41628b218277ce337f2fe712f79bc907fc6e89cbe2"
+   ]
+  },
+  {
+   "sourceId": "pmid-17071625",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "17071625",
+   "doi": null,
+   "canonicalCitation": "Joinson C, Heron J, Emond A, et al. Psychological problems in children with bedwetting and combined (day and night) wetting: A UK population-based study J Pediatr Psychol. 2007 Jun;32(5):605-16. PMID 17071625.",
+   "citationVariants": [
+    "Joinson C, Heron J, Emond A, et al. Psychological problems in children with bedwetting and combined (day and night) wetting: A UK population-based study J Pediatr Psychol. 2007 Jun;32(5):605-16. PMID 17071625."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/17071625/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/17071625/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 2,
+   "liveUses": [
+    {
+     "relationshipId": "rel-nocturnal-enuresis-to-depressive-disorder",
+     "primaryId": "nocturnal-enuresis",
+     "targetId": "depressive-disorder",
+     "sourceIndex": 1
+    },
+    {
+     "relationshipId": "rel-nocturnal-enuresis-to-anxiety-disorder",
+     "primaryId": "nocturnal-enuresis",
+     "targetId": "anxiety-disorder",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "ba28076dc73bddecafafd7c142045a7c7275f76f535c96a7a8446ece1ed66d2e",
+    "947fc305f3a2c709145d30d47dead24b0ffb3cb53ab6bca325dd40c05006baa2"
+   ]
+  },
+  {
+   "sourceId": "pmid-33968466",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "33968466",
+   "doi": null,
+   "canonicalCitation": "Mathew PG, Najib U, Khaled S, et al. Prevalence of Occipital Neuralgia at a Community Hospital-based Headache Clinic Neurol Clin Pract. 2021 Feb;11(1):6-12. PMID 33968466.",
+   "citationVariants": [
+    "Mathew PG, Najib U, Khaled S, et al. Prevalence of Occipital Neuralgia at a Community Hospital-based Headache Clinic Neurol Clin Pract. 2021 Feb;11(1):6-12. PMID 33968466."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33968466/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/33968466/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-occipital-neuralgia-to-migraine-headaches",
+     "primaryId": "occipital-neuralgia",
+     "targetId": "migraine-headaches",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "b027e663ec7448778994d9299059ab272aa7ceef4793053b97bb5cf7de7a8d4b"
+   ]
+  },
+  {
+   "sourceId": "pmid-38090265",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "38090265",
+   "doi": null,
+   "canonicalCitation": "Austen WG Jr, Remy K, Packowski K, et al. Refractory occipital neuralgia treatment with nerve decompression surgery: a case series Front Neurol. 2023;14:1284101. PMID 38090265.",
+   "citationVariants": [
+    "Austen WG Jr, Remy K, Packowski K, et al. Refractory occipital neuralgia treatment with nerve decompression surgery: a case series Front Neurol. 2023;14:1284101. PMID 38090265."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38090265/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/38090265/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-occipital-neuralgia-to-migraine-headaches",
+     "primaryId": "occipital-neuralgia",
+     "targetId": "migraine-headaches",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "ed861bd4b11310fb38fe396caba5966da9e768c596679b502d25aef221c55433"
    ]
   }
  ],

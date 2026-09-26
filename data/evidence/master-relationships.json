@@ -6,8 +6,8 @@
  "installedFrom": "Master Registry Discrepancy Resolution 2026",
  "authorityBoundary": "Authoritative for current relationship direction, proposition text, guard state, source linkage, and KB parity; does not establish an individual VA medical nexus.",
  "counts": {
-  "relationships": 698,
-  "explicitPublicationGuards": 624,
+  "relationships": 706,
+  "explicitPublicationGuards": 632,
   "legacyRationaleBoundaries": 74
  },
  "relationships": [
@@ -22463,6 +22463,247 @@
    "sourceReferenceCount": 2,
    "pathwayIntelligencePresent": false,
    "suggestionObjectHash": "a55e449e38d8d127756acbc09fdb735a597bcacbec701e54089fd6dca5d1fdcc"
+  },
+  {
+   "relationshipId": "rel-normal-pressure-hydrocephalus-to-depressive-disorder",
+   "primaryId": "normal-pressure-hydrocephalus",
+   "targetId": "depressive-disorder",
+   "direction": "normal-pressure-hydrocephalus -> depressive-disorder",
+   "primaryPublicationState": "draft",
+   "rank": 1,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY at systematic-review meta-analysis class with the baseline-data and quality limits carried openly: the iNPH neuropsychiatric meta-analysis found depression pooled prevalence 30.1 percent with scores elevated over controls (Hedges g 1.31) and post-shunt reduction (PMID 41657358), the shunt cohort found NPI depression scores significantly decreased after surgery (PMID 26810545), and the atypical-manifestations review lists depression among the most frequent neuropsychiatric presentations (PMID 41936711); because 12 of 22 studies were low quality and pre-diagnosis baselines were absent, the conservative standard keeps the edge at association only and routes individual claims through dated psychiatric assessment with baseline mood, vascular, and medication exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY at systematic-review meta-analysis class with the baseline-data and quality limits carried openly: the iNPH neuropsychiatric meta-analysis found depression pooled prevalence 30.1 percent with scores elevated over controls (Hedges g 1.31) and post-shunt reduction (PMID 41657358), the shunt cohort found NPI depression scores significantly decreased after surgery (PMID 26810545), and the atypical-manifestations review lists depression among the most frequent neuropsychiatric presentations (PMID 41936711); because 12 of 22 studies were low quality and pre-diagnosis baselines were absent, the conservative standard keeps the edge at association only and routes individual claims through dated psychiatric assessment with baseline mood, vascular, and medication exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to the iNPH neuropsychiatric phenotype with the baseline-data and quality limits carried openly: the neuropsychiatric meta-analysis found depression 30.1 percent pooled with Hedges g 1.31 versus controls and post-shunt reduction CI containing the null (PMID 41657358), the shunt cohort found NPI depression scores significantly decreased post-surgery (PMID 26810545), and the atypical-manifestations review lists depression among the most frequent presentations (PMID 41936711); 12/22 studies low quality with no pre-diagnosis baseline, and the dementia and cerebrovascular windows keep their own evidence (ME-29), so individual claims route through dated psychiatric assessment with baseline mood, vascular, and medication exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "The meta-analysis lacked baseline neuropsychiatric data before iNPH diagnosis so depression may predate the hydrocephalus; heterogeneity in populations and instruments is explicit; the shunt-response depression reduction (-0.30, CI contains null) is not conclusive; cognitive decline and gait disability confound mood attribution; and vascular depression, neurodegenerative comorbidity, and medication effects compete in an elderly population."
+   ],
+   "sourceIds": [
+    "pmid-41657358",
+    "pmid-26810545",
+    "pmid-41936711"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "cc6a13b4187f6449548d8d4cdb38f519c812885b6b78188f71328fe5373c4a90"
+  },
+  {
+   "relationshipId": "rel-normal-pressure-hydrocephalus-to-apathy",
+   "primaryId": "normal-pressure-hydrocephalus",
+   "targetId": "apathy",
+   "direction": "normal-pressure-hydrocephalus -> apathy",
+   "primaryPublicationState": "draft",
+   "rank": 2,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY at meta-analysis plus case-control neuroimaging class with the overlap-measurement limit carried openly: the meta-analysis found apathy pooled prevalence 69.2 percent, the highest neuropsychiatric feature in iNPH (PMID 41657358), the case-control SPECT study linked right caudate hypoperfusion to apathy with shunt-associated perfusion and symptom recovery (PMID 30474244), and the shunt cohort found apathy scores significantly decreased after surgery (PMID 26810545); because apathy overlaps the dysexecutive presentation and the imaging anchor is single-center, the conservative standard keeps the edge at association only and routes individual claims through dated neuropsychiatric assessment with depression, dementia, and medication exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY at meta-analysis plus case-control neuroimaging class with the overlap-measurement limit carried openly: the meta-analysis found apathy pooled prevalence 69.2 percent, the highest neuropsychiatric feature in iNPH (PMID 41657358), the case-control SPECT study linked right caudate hypoperfusion to apathy with shunt-associated perfusion and symptom recovery (PMID 30474244), and the shunt cohort found apathy scores significantly decreased after surgery (PMID 26810545); because apathy overlaps the dysexecutive presentation and the imaging anchor is single-center, the conservative standard keeps the edge at association only and routes individual claims through dated neuropsychiatric assessment with depression, dementia, and medication exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to the frontal-striatal compression phenotype: the meta-analysis found apathy 69.2 percent pooled, the highest neuropsychiatric feature (PMID 41657358), the right-caudate SPECT case-control linked caudate hypoperfusion to apathy with shunt-associated recovery (PMID 30474244), and the shunt cohort found apathy scores decreased post-surgery (PMID 26810545); dysexecutive-overlap and single-center-SPECT limits carried openly, so individual claims route through dated neuropsychiatric assessment with depression, dementia, and medication exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "The pooled apathy estimate rests on a small study base; apathy overlaps dysexecutive cognitive symptoms of iNPH and is measured with caregiver-rated instruments; the caudate-perfusion finding is single-center SPECT; post-shunt apathy improvement is inconsistent across studies (0 percent complete resolution in the atypical review); and depression, dementia, and medication effects present as overlapping apathy."
+   ],
+   "sourceIds": [
+    "pmid-41657358",
+    "pmid-30474244",
+    "pmid-26810545"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "5f581400b5f7bf3bb4511a62087d3ae0db151797aa87a091acdff8005a303738"
+  },
+  {
+   "relationshipId": "rel-normal-pressure-hydrocephalus-to-anxiety-disorder",
+   "primaryId": "normal-pressure-hydrocephalus",
+   "targetId": "anxiety-disorder",
+   "direction": "normal-pressure-hydrocephalus -> anxiety-disorder",
+   "primaryPublicationState": "draft",
+   "rank": 3,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY at meta-analysis-prevalence class with the no-contrast limit carried openly: the iNPH neuropsychiatric meta-analysis found anxiety pooled prevalence 21.9 percent (PMID 41657358) and the atypical-manifestations review documents the neuropsychiatric spectrum within which anxiety occurs (PMID 41936711); because no control contrast for anxiety was located and adjustment anxiety is not separable, the conservative standard keeps the edge at association only and routes individual claims through dated psychiatric assessment with adjustment, medical, and medication exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY at meta-analysis-prevalence class with the no-contrast limit carried openly: the iNPH neuropsychiatric meta-analysis found anxiety pooled prevalence 21.9 percent (PMID 41657358) and the atypical-manifestations review documents the neuropsychiatric spectrum within which anxiety occurs (PMID 41936711); because no control contrast for anxiety was located and adjustment anxiety is not separable, the conservative standard keeps the edge at association only and routes individual claims through dated psychiatric assessment with adjustment, medical, and medication exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to meta-analysis prevalence with the no-contrast limit carried openly: the meta-analysis found anxiety 21.9 percent pooled (PMID 41657358) and the atypical review documents the neuropsychiatric spectrum (PMID 41936711); no control contrast for anxiety was located and adjustment anxiety from gait disability is not separable, so individual claims route through dated psychiatric assessment with adjustment, medical, and medication exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No located control contrast quantifies anxiety excess in iNPH versus comparators; the pooled estimate (21.9 percent) is heterogeneous across assessment tools; fear-of-falling and adjustment reactions to disability are not separable; and generalized anxiety, medical-illness anxiety, and medication effects compete in an elderly population."
+   ],
+   "sourceIds": [
+    "pmid-41657358",
+    "pmid-41936711"
+   ],
+   "sourceReferenceCount": 2,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "bd597c9ecbc92f16b7ea675ef2b380043d48c79278f2fef8f7aea34b9adb1313"
+  },
+  {
+   "relationshipId": "rel-normal-pressure-hydrocephalus-to-subdural-hematoma",
+   "primaryId": "normal-pressure-hydrocephalus",
+   "targetId": "subdural-hematoma",
+   "direction": "normal-pressure-hydrocephalus -> subdural-hematoma",
+   "primaryPublicationState": "draft",
+   "rank": 4,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY at retrospective-cohort plus shunt-technology meta-analysis class with the treatment-mediated and incidence-unestimated limits carried openly: the shunted-NPH subdural cohort characterizes 60 patients with treated overdrainage collections and a volume threshold for valve-adjustment failure (PMID 42599077) and the anti-siphon meta-analysis quantifies the overdrainage route with subdural hematoma RR 0.35 under protective hardware (PMID 42486335); because the cohort is conditioned on treated collections and absolute incidence is unestablished, the conservative standard keeps the edge at association only and routes individual claims through dated neurosurgical and imaging review with traumatic, anticoagulation, and spontaneous-subdural exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY at retrospective-cohort plus shunt-technology meta-analysis class with the treatment-mediated and incidence-unestimated limits carried openly: the shunted-NPH subdural cohort characterizes 60 patients with treated overdrainage collections and a volume threshold for valve-adjustment failure (PMID 42599077) and the anti-siphon meta-analysis quantifies the overdrainage route with subdural hematoma RR 0.35 under protective hardware (PMID 42486335); because the cohort is conditioned on treated collections and absolute incidence is unestablished, the conservative standard keeps the edge at association only and routes individual claims through dated neurosurgical and imaging review with traumatic, anticoagulation, and spontaneous-subdural exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped explicitly as POST_SURGICAL_OR_TREATMENT shunt-overdrainage sequelae with the incidence-unestimated limit carried openly: the treated-overdrainage cohort of 60 shunted patients characterizes management with a >40 cm3 valve-adjustment-failure threshold (PMID 42599077) and the anti-siphon meta-analysis quantifies the overdrainage route (subdural hematoma RR 0.35, 7 studies/928 patients; PMID 42486335); the cohort is conditioned on treated collections, so individual claims route through dated neurosurgical and imaging review with traumatic, anticoagulation, and spontaneous-subdural exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No absolute subdural-hematoma incidence in shunted NPH populations is established by the located anchors (the cohort is conditioned on treated collections); valve technology and programmable-valve settings materially modify risk; anti-siphon benefit on most other outcomes was not significant; and traumatic subdurals, anticoagulation-associated bleeding, and chronic subdural from other causes compete for individual attribution."
+   ],
+   "sourceIds": [
+    "pmid-42599077",
+    "pmid-42486335"
+   ],
+   "sourceReferenceCount": 2,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "301b1c997da8eef5b315f2891bf3c590ca2607cfa3ccc318db624fde7df15468"
+  },
+  {
+   "relationshipId": "rel-nutcracker-esophagus-to-dysphagia",
+   "primaryId": "nutcracker-esophagus",
+   "targetId": "dysphagia",
+   "direction": "nutcracker-esophagus -> dysphagia",
+   "primaryPublicationState": "draft",
+   "rank": 1,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY at single-center HRM-cohort class with the symptom-boundary and referral limits carried openly: the hypercontractile esophagus cohort found dysphagia in 60 percent with contractile-vigor correlation and persistently elevated dysphagia scores versus symptomatic controls at 61 months (PMID 40698610); because dysphagia is both presenting symptom and outcome and the cohort is a small referral population, the conservative standard keeps the edge at association only and routes individual claims through dated high-resolution manometry with structural and oropharyngeal exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY at single-center HRM-cohort class with the symptom-boundary and referral limits carried openly: the hypercontractile esophagus cohort found dysphagia in 60 percent with contractile-vigor correlation and persistently elevated dysphagia scores versus symptomatic controls at 61 months (PMID 40698610); because dysphagia is both presenting symptom and outcome and the cohort is a small referral population, the conservative standard keeps the edge at association only and routes individual claims through dated high-resolution manometry with structural and oropharyngeal exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to the hypercontractile-esophagus HRM phenotype with the symptom-boundary limit carried openly: the 48-patient cohort found dysphagia in 60 percent with DCI correlation and persistently elevated dysphagia scores versus symptomatic controls at 61 months (PMID 40698610); dysphagia is both presenting symptom and outcome so constitutive proximity is recorded, the reflux counterweight (reflux no higher than controls; the DES-GERD re-examination, PMID 39341683) is preserved against a gerd edge, and the published esophageal-stricture dysphagia window keeps its own evidence (ME-29), so individual claims route through dated high-resolution manometry with structural and oropharyngeal exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "The cohort is small and referral-based; dysphagia is both the presenting symptom and the outcome; provocative solid-meal testing was needed for 85 percent of diagnoses so older water-swallow classifications may understate the phenotype; long-term outcomes were self-reported by telephone in 75 percent of the cohort; and esophageal stricture, eosinophilic esophagitis, and achalasia compete for individual attribution."
+   ],
+   "sourceIds": [
+    "pmid-40698610"
+   ],
+   "sourceReferenceCount": 1,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "8da1e83c332d8edb069df7d49a8d87cdd5ed01d8e501f98364251fc09543c192"
+  },
+  {
+   "relationshipId": "rel-nocturnal-enuresis-to-depressive-disorder",
+   "primaryId": "nocturnal-enuresis",
+   "targetId": "depressive-disorder",
+   "direction": "nocturnal-enuresis -> depressive-disorder",
+   "primaryPublicationState": "draft",
+   "rank": 1,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY at case-control plus population-cohort class with the cross-sectional direction limit carried openly: the 200-versus-200 case-control study found significantly higher Child Depression Inventory and behavior scores with lower quality of life in enuresis (PMID 27939179) and the 8,000-child ALSPAC cohort found higher parent-reported psychological problems in bedwetting (PMID 17071625); because both anchors are cross-sectional with parent-report dominance and reverse causation unexcluded, the conservative standard keeps the edge at association only and routes individual claims through dated pediatric-psychiatric assessment with family, developmental, and reverse-direction exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY at case-control plus population-cohort class with the cross-sectional direction limit carried openly: the 200-versus-200 case-control study found significantly higher Child Depression Inventory and behavior scores with lower quality of life in enuresis (PMID 27939179) and the 8,000-child ALSPAC cohort found higher parent-reported psychological problems in bedwetting (PMID 17071625); because both anchors are cross-sectional with parent-report dominance and reverse causation unexcluded, the conservative standard keeps the edge at association only and routes individual claims through dated pediatric-psychiatric assessment with family, developmental, and reverse-direction exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to cross-sectional case-control and population evidence with the direction limit carried openly: the 200-versus-200 case-control found elevated Child Depression Inventory scores and lower quality of life (PMID 27939179) and the 8,000-child ALSPAC cohort found elevated parent-reported psychological problems (PMID 17071625); both anchors are cross-sectional with parent-report dominance and reverse causation unexcluded, so individual claims route through dated pediatric-psychiatric assessment with family, developmental, and reverse-direction exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "Both anchors are cross-sectional so temporal direction is unestablished; the population study's effects were parent-reported with little difference on child-reported measures; family stress and socioeconomic confounding are partly adjusted at best; combined day-and-night wetting carries a different psychological profile from isolated nocturnal enuresis; and developmental, family, and reverse-direction causes compete for individual attribution."
+   ],
+   "sourceIds": [
+    "pmid-27939179",
+    "pmid-17071625"
+   ],
+   "sourceReferenceCount": 2,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "b46af0f7a7c9f02236cefb9a60eb0d1953b6538d08b6dc75e62e3df87a7f2497"
+  },
+  {
+   "relationshipId": "rel-nocturnal-enuresis-to-anxiety-disorder",
+   "primaryId": "nocturnal-enuresis",
+   "targetId": "anxiety-disorder",
+   "direction": "nocturnal-enuresis -> anxiety-disorder",
+   "primaryPublicationState": "draft",
+   "rank": 2,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY at case-control plus population-cohort class with the cross-sectional direction limit carried openly: the 200-versus-200 case-control study found significantly higher Conners anxiety scores in enuresis (PMID 27939179) and the ALSPAC cohort found elevated parent-reported psychological problems in bedwetting (PMID 17071625); because both anchors are cross-sectional with single-study anxiety quantification and reverse causation unexcluded, the conservative standard keeps the edge at association only and routes individual claims through dated pediatric-psychiatric assessment with separation, developmental, and reverse-direction exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY at case-control plus population-cohort class with the cross-sectional direction limit carried openly: the 200-versus-200 case-control study found significantly higher Conners anxiety scores in enuresis (PMID 27939179) and the ALSPAC cohort found elevated parent-reported psychological problems in bedwetting (PMID 17071625); because both anchors are cross-sectional with single-study anxiety quantification and reverse causation unexcluded, the conservative standard keeps the edge at association only and routes individual claims through dated pediatric-psychiatric assessment with separation, developmental, and reverse-direction exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to cross-sectional evidence with the direction limit carried openly: the case-control study found elevated Conners anxiety scores (PMID 27939179) and the ALSPAC cohort found elevated parent-reported psychological problems (PMID 17071625); anxiety-specific quantification is single-study and anticipatory embarrassment overlaps primary anxiety, so individual claims route through dated pediatric-psychiatric assessment with separation, developmental, and reverse-direction exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "Both anchors are cross-sectional so temporal direction is unestablished; anxiety-specific quantification exists only in the single case-control study; anticipatory embarrassment about bedwetting overlaps with primary anxiety presentations; the population measure is parent-reported and nonspecific; and separation anxiety, neurodevelopmental comorbidity, and reverse-direction causes compete for individual attribution."
+   ],
+   "sourceIds": [
+    "pmid-27939179",
+    "pmid-17071625"
+   ],
+   "sourceReferenceCount": 2,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "a285dda5fdf7bd3914aae353852127779a4475fb889155adf6dbd23299a4672b"
+  },
+  {
+   "relationshipId": "rel-occipital-neuralgia-to-migraine-headaches",
+   "primaryId": "occipital-neuralgia",
+   "targetId": "migraine-headaches",
+   "direction": "occipital-neuralgia -> migraine-headaches",
+   "primaryPublicationState": "draft",
+   "rank": 1,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY at prevalence-study plus surgical-dechallenge class with the reverse-direction signal carried openly: the 800-patient headache-clinic study found ON in nearly 25 percent with up to 85 percent comorbid with other headache types and documented the aggravation framing (PMID 33968466), and the refractory-ON decompression series found comorbid migraine improvement after nerve decompression in all 15 patients (PMID 38090265); because the quantified direction runs migraine-to-ON (aOR 2.19) and the aggravation claim is commentary-level with an uncontrolled dechallenge, the conservative standard keeps the edge at association only and routes individual claims through dated headache-diary and examination review with medication-overuse, cervicogenic, and tension-type exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY at prevalence-study plus surgical-dechallenge class with the reverse-direction signal carried openly: the 800-patient headache-clinic study found ON in nearly 25 percent with up to 85 percent comorbid with other headache types and documented the aggravation framing (PMID 33968466), and the refractory-ON decompression series found comorbid migraine improvement after nerve decompression in all 15 patients (PMID 38090265); because the quantified direction runs migraine-to-ON (aOR 2.19) and the aggravation claim is commentary-level with an uncontrolled dechallenge, the conservative standard keeps the edge at association only and routes individual claims through dated headache-diary and examination review with medication-overuse, cervicogenic, and tension-type exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to the trigeminocervical-aggravation framing with the reverse-direction signal carried openly: the 800-patient headache-clinic study found ON in nearly 25 percent with up to 85 percent comorbid and authors' aggravation framing (PMID 33968466; its quantified aOR 2.19 runs chronic migraine to ON odds, reverse to this edge) and the decompression series found universal comorbid-headache improvement after nerve decompression (PMID 38090265, uncontrolled); semantic-mismatch discipline - ON pain is nerve-irritation-explained and is NOT authored as unexplained chronic pain - so individual claims route through dated headache-diary and examination review with medication-overuse, cervicogenic, and tension-type exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "The quantified adjusted odds ratio runs chronic migraine to ON odds (aOR 2.19), reverse to this edge's direction; the ON-to-headache-worsening claim is stated in commentary rather than measured; the decompression series is uncontrolled with referral-selection toward refractory cases and regression to the mean; ON diagnosis is clinical with variable Tinel-sign sensitivity; and medication-overuse headache, cervicogenic headache, and tension-type headache compete for individual attribution."
+   ],
+   "sourceIds": [
+    "pmid-33968466",
+    "pmid-38090265"
+   ],
+   "sourceReferenceCount": 2,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "0496897ce5237b29f2daaa4ed391707977261ce7a5b737f49029f579920a3152"
   }
  ],
  "lastUpdatedBy": "batch-D1-draft-authoring",

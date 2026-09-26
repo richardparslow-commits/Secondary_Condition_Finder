@@ -2,8 +2,250 @@
   "id": "normal-pressure-hydrocephalus",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review neurologic, neuropathic, post-traumatic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 65 (2026-09-26): four ASSOCIATION_ONLY draft mappings pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: all four edges assert association only (etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true; mechanisms PSYCHOPHYSIOLOGICAL, MECHANICAL_OR_COMPRESSIVE, POST_SURGICAL_OR_TREATMENT). The evidence base is one neuropsychiatric meta-analysis, small treatment cohorts, and shunt-technology studies, so individual claims require dated psychiatric, neuropsychiatric, and neurosurgical assessment with competing-cause exclusion, and review by a qualified medical professional.",
+    "Pathway and duplicate-scope screens: no -> cognitive-disorder or dementia edge (CONSTITUTIVE-PROXIMITY + IDENTITY-DUPLICATION - cognitive decline is one of Hakim's triad's defining features and the neurocognitive cluster keeps its own windows; ME-29); no -> urinary-frequency-retention edge (CONSTITUTIVE-PROXIMITY - urinary incontinence is the triad's third defining feature); no -> gait-disorder edge (withheld proposition - the catalog holds no gait identity despite gait impairment being the triad's cardinal feature; recorded here, not as a deferred identity); no -> dysphagia and -> fecal-incontinence edge (below authoring threshold - the atypical-manifestations review reports dysphagia 86% preoperative and fecal incontinence 32% but these are review-aggregated single-study percentages without independent corroboration; reopening condition: a corroborating cohort); no -> falls edge (withheld proposition - no catalog identity); no -> hydrocephalus edge (identity-duplication guard - the published hydrocephalus visual-impairment window is a distinct identity's evidence, not recycled per ME-29); atypical-manifestation context recorded - the systematic review documents psychosis, speech impairment, tremor, palinopsia, and Parinaud's syndrome beyond the triad (PMID 41936711), preserved for future mapping if corroborating evidence appears."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 65 (2026-09-26): four bounded association edges authored - normal-pressure-hydrocephalus to depressive-disorder (rank 1), apathy (rank 2), anxiety-disorder (rank 3), and subdural-hematoma (rank 4) - classified ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, and hypothesizedOnly:true. The depressive-disorder proposition rests on the iNPH neuropsychiatric meta-analysis (depression 30.1% pooled, Hedges g 1.31 versus controls; PMID 41657358), the lumbo-peritoneal shunt cohort with post-shunt NPI depression reduction (PMID 26810545), and the atypical-manifestations review (PMID 41936711). The apathy proposition rests on the same meta-analysis (69.2% pooled, highest feature), the right-caudate SPECT case-control study (PMID 30474244), and the shunt cohort (PMID 26810545). The anxiety-disorder proposition rests on the meta-analysis (21.9% pooled) and the atypical review. The subdural-hematoma proposition rests on the treated-overdrainage cohort (60 patients, 96 collections; PMID 42599077) and the anti-siphon meta-analysis (subdural hematoma RR 0.35; PMID 42486335).",
+    "Counter-evidence and caveat screens recorded 2026-09-26: (i) triad discipline - gait impairment, cognitive decline, and urinary incontinence are the defining Hakim triad (constitutive-proximity guard) and were NOT authored as edges; gait has no catalog identity at all (withheld proposition); (ii) meta-analytic quality - 12 of 22 neuropsychiatric studies were rated low quality with heterogeneous instruments and NO pre-diagnosis baseline, so depression may predate iNPH and the treatment-response estimate contains the null; (iii) mechanism scope - the apathy edge carries the right-caudate frontal-striatal route with the single-center SPECT limit; (iv) treatment-mediated subdural edge - explicitly POST_SURGICAL_OR_TREATMENT with the incidence-unestimated limit (the cohort is conditioned on already-treated collections); (v) atypical manifestations - dysphagia (86% preoperative), speech impairment (75%), and fecal incontinence (32%) are recorded as documented but below the authoring threshold pending corroboration; (vi) post-shunt resolution varies by symptom (0% complete resolution for apathy and aggressiveness in the atypical review), so treatment-response framing is symptom-specific."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "depressive-disorder",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Idiopathic normal pressure hydrocephalus documents depression at systematic-review meta-analysis and treatment-response level: the first systematic review and meta-analysis of neuropsychiatric features in iNPH (22 studies, n=7,670 for depression) found depression pooled prevalence 30.1 percent (95% CI 20.1-42.3) with depression scores significantly higher than controls (Hedges g 1.31) and shunt treatment associated with reduced depression scores (PMID 41657358), the lumbo-peritoneal shunt study of 22 iNPH patients found NPI depression scores significantly decreased after surgery (PMID 26810545), and the systematic review of atypical iNPH manifestations lists depression among the most frequent neuropsychiatric presentations (6 studies; PMID 41936711); recorded as documented association only.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: depression in iNPH is entangled with the triad's cognitive decline and with the disability of gait impairment, and the located meta-analysis lacked baseline data on neuropsychiatric symptoms before iNPH diagnosis, so whether any individual depression is attributable to the hydrocephalus requires individual psychiatric attribution with baseline mood, vascular, and medication exclusion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "PSYCHOPHYSIOLOGICAL",
+        "primaryVector": "Ventricular enlargement with periventricular frontal-subcortical circuit disruption and the disability burden of progressive gait and cognitive impairment drive depressive symptoms so depression results, the circuit-and-burden route consistent with the pooled prevalence excess over controls and the post-shunt depression-score reduction, but whether this route produced any individual depression remains hypothesized until imaging, functional, and psychiatric records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at systematic-review meta-analysis plus small treatment-response cohorts class only: 12 of 22 studies were rated low quality, populations and assessment tools were heterogeneous, the meta-analysis lacked pre-diagnosis baseline data, and the treatment-response estimate (-0.30) had a confidence interval containing the null.",
+        "evidenceGaps": "The meta-analysis lacked baseline neuropsychiatric data before iNPH diagnosis so depression may predate the hydrocephalus; heterogeneity in populations and instruments is explicit; the shunt-response depression reduction (-0.30, CI contains null) is not conclusive; cognitive decline and gait disability confound mood attribution; and vascular depression, neurodegenerative comorbidity, and medication effects compete in an elderly population.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "vascular and neurodegenerative depression in the elderly (the published dementia and cerebrovascular windows, not recycled per ME-29)",
+          "reactive depression from gait disability and falls risk",
+          "medication effects (anticholinergics, sedatives)",
+          "hypothyroidism and other medical mood causes (the published hypothyroidism window)",
+          "depression predating the iNPH diagnosis"
+        ]
+      },
+      "evidenceGaps": [
+        "The meta-analysis lacked baseline neuropsychiatric data before iNPH diagnosis so depression may predate the hydrocephalus; heterogeneity in populations and instruments is explicit; the shunt-response depression reduction (-0.30, CI contains null) is not conclusive; cognitive decline and gait disability confound mood attribution; and vascular depression, neurodegenerative comorbidity, and medication effects compete in an elderly population."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY at systematic-review meta-analysis class with the baseline-data and quality limits carried openly: the iNPH neuropsychiatric meta-analysis found depression pooled prevalence 30.1 percent with scores elevated over controls (Hedges g 1.31) and post-shunt reduction (PMID 41657358), the shunt cohort found NPI depression scores significantly decreased after surgery (PMID 26810545), and the atypical-manifestations review lists depression among the most frequent neuropsychiatric presentations (PMID 41936711); because 12 of 22 studies were low quality and pre-diagnosis baselines were absent, the conservative standard keeps the edge at association only and routes individual claims through dated psychiatric assessment with baseline mood, vascular, and medication exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Belessiotis-Richards C, Brady E, Abrol E, et al. Neuropsychiatric Features in Patients With Idiopathic Normal Pressure Hydrocephalus: A Systematic Review and Meta-Analysis Neurol Clin Pract. 2026 Apr;16(2):e200586. PMID 41657358.",
+          "note": "Systematic review and meta-analysis of neuropsychiatric features in idiopathic normal pressure hydrocephalus (Neurol Clin Pract 2026; 22 studies): depression pooled prevalence 30.1% (20.1-42.3, n=7,670); depression scores higher than controls (Hedges g 1.31, 0.39-2.23); shunt treatment associated with reduced depression scores (-0.30, -0.62 to 0.01, CI contains null); 12/22 studies low quality; supports the bounded prevalence and contrast association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41657358/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 41657358; meta-analysis results (depression prevalence and treatment response)"
+        },
+        {
+          "citation": "Kanemoto H, Kazui H, Suzuki Y, et al. Effect of lumbo-peritoneal shunt surgery on neuropsychiatric symptoms in patients with idiopathic normal pressure hydrocephalus J Neurol Sci. 2016 Feb 15;361:206-12. PMID 26810545.",
+          "note": "Prospective lumbo-peritoneal shunt study of 22 iNPH patients with 3-month NPI follow-up (J Neurol Sci 2016): NPI total, apathy, and depression scores significantly decreased after surgery; neuropsychiatric improvement associated with reduced caregiver burden; supports the bounded treatment-response association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/26810545/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 26810545; results (pre/post-shunt NPI changes)"
+        },
+        {
+          "citation": "Demichele G, Taddei G, Iaboni E, et al. Beyond Hakim's triad: a systematic review of atypical clinical manifestations in idiopathic normal pressure hydrocephalus Acta Neurol Belg. 2026 Apr 6.doi: 10.1007/s13760-026-03057-1. PMID 41936711.",
+          "note": "Systematic review of atypical clinical manifestations in iNPH beyond Hakim's triad (Acta Neurol Belg 2026; 27 studies): neuropsychiatric manifestations most frequent, including depression (6 studies), psychosis (6), apathy (3); post-shunt resolution varied by symptom; supports the bounded atypical-manifestation framing only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41936711/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 41936711; review results (atypical neuropsychiatric manifestations)"
+        }
+      ]
+    },
+    {
+      "conditionId": "apathy",
+      "rank": 2,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Idiopathic normal pressure hydrocephalus documents apathy at meta-analysis and case-control neuroimaging level: the iNPH neuropsychiatric meta-analysis found apathy pooled prevalence 69.2 percent (95% CI 63.1-74.6, n=293), the highest of all neuropsychiatric features studied (PMID 41657358), and the case-control study of 56 iNPH patients found apathy in 41 with right caudate hypoperfusion significantly associated with apathy and caudate perfusion recovery tracking post-shunt apathy improvement (PMID 30474244), with the shunt cohort finding NPI apathy scores significantly decreased after surgery (PMID 26810545); recorded as documented association only.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: apathy overlaps the dysexecutive and cognitive presentation of iNPH and shares measurement space with depression, so whether any individual apathy is attributable to the hydrocephalus requires individual neuropsychiatric attribution with depression, dementia, and medication exclusion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MECHANICAL_OR_COMPRESSIVE",
+        "primaryVector": "Ventricular enlargement distorting frontal-striatal circuits including the right caudate drives loss of motivation and goal-directed behavior so apathy results, the frontal-striatal compression route supported by the caudate hypoperfusion-apathy association and its reversal with post-shunt perfusion recovery, but whether this route produced any individual apathy remains hypothesized until imaging and neuropsychiatric records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at meta-analysis plus single case-control neuroimaging class only: the pooled estimate draws on few studies (n=293 across studies), apathy overlaps the dysexecutive presentation so measurement attribution is difficult, and the caudate finding is a single-center SPECT study with 56 patients.",
+        "evidenceGaps": "The pooled apathy estimate rests on a small study base; apathy overlaps dysexecutive cognitive symptoms of iNPH and is measured with caregiver-rated instruments; the caudate-perfusion finding is single-center SPECT; post-shunt apathy improvement is inconsistent across studies (0 percent complete resolution in the atypical review); and depression, dementia, and medication effects present as overlapping apathy.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "dysexecutive cognitive decline of iNPH itself (constitutive overlap)",
+          "depression with apathetic presentation (the companion depression edge in this file)",
+          "dementia-related apathy (the published dementia windows, not recycled per ME-29)",
+          "medication effects (antipsychotics, sedatives)",
+          "frontal lobe lesions and neurodegenerative disease"
+        ]
+      },
+      "evidenceGaps": [
+        "The pooled apathy estimate rests on a small study base; apathy overlaps dysexecutive cognitive symptoms of iNPH and is measured with caregiver-rated instruments; the caudate-perfusion finding is single-center SPECT; post-shunt apathy improvement is inconsistent across studies (0 percent complete resolution in the atypical review); and depression, dementia, and medication effects present as overlapping apathy."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY at meta-analysis plus case-control neuroimaging class with the overlap-measurement limit carried openly: the meta-analysis found apathy pooled prevalence 69.2 percent, the highest neuropsychiatric feature in iNPH (PMID 41657358), the case-control SPECT study linked right caudate hypoperfusion to apathy with shunt-associated perfusion and symptom recovery (PMID 30474244), and the shunt cohort found apathy scores significantly decreased after surgery (PMID 26810545); because apathy overlaps the dysexecutive presentation and the imaging anchor is single-center, the conservative standard keeps the edge at association only and routes individual claims through dated neuropsychiatric assessment with depression, dementia, and medication exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Belessiotis-Richards C, Brady E, Abrol E, et al. Neuropsychiatric Features in Patients With Idiopathic Normal Pressure Hydrocephalus: A Systematic Review and Meta-Analysis Neurol Clin Pract. 2026 Apr;16(2):e200586. PMID 41657358.",
+          "note": "iNPH neuropsychiatric meta-analysis (22 studies): apathy pooled prevalence 69.2% (63.1-74.6, n=293), the highest of all features studied; treatment of iNPH may reduce neuropsychiatric symptoms; supports the bounded prevalence association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41657358/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 41657358; meta-analysis results (apathy pooled prevalence)"
+        },
+        {
+          "citation": "Kanemoto H, Kazui H, Suehiro T, et al. Apathy and right caudate perfusion in idiopathic normal pressure hydrocephalus: A case-control study Int J Geriatr Psychiatry. 2019 Mar;34(3):453-462. PMID 30474244.",
+          "note": "Case-control SPECT study of 56 iNPH patients before lumbo-peritoneal shunt (Int J Geriatr Psychiatry 2019): apathy in 41/56; right caudate rCBF significantly lower in apathy group (P=0.004); caudate perfusion increase tracked post-shunt apathy improvement (group-by-shunt interaction P=0.002); supports the bounded frontal-striatal mechanism association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/30474244/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 30474244; results (apathy prevalence and caudate perfusion correlations)"
+        },
+        {
+          "citation": "Kanemoto H, Kazui H, Suzuki Y, et al. Effect of lumbo-peritoneal shunt surgery on neuropsychiatric symptoms in patients with idiopathic normal pressure hydrocephalus J Neurol Sci. 2016 Feb 15;361:206-12. PMID 26810545.",
+          "note": "Lumbo-peritoneal shunt study of 22 iNPH patients (J Neurol Sci 2016): NPI apathy scores significantly decreased after surgery; apathy improvement associated with frontal assessment battery improvement; supports the bounded treatment-response association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/26810545/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 26810545; results (post-shunt apathy changes)"
+        }
+      ]
+    },
+    {
+      "conditionId": "anxiety-disorder",
+      "rank": 3,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Idiopathic normal pressure hydrocephalus documents anxiety at systematic-review meta-analysis level: the iNPH neuropsychiatric meta-analysis found anxiety pooled prevalence 21.9 percent (95% CI 13.2-34.2) alongside apathy and depression (PMID 41657358), and the systematic review of atypical iNPH manifestations documents the neuropsychiatric presentation spectrum beyond Hakim's triad within which anxiety symptoms occur (PMID 41936711); recorded as documented association only at the lower end of the evidence hierarchy.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: the anxiety estimate lacks a control contrast in the located material and anxiety in this population is entangled with gait-impairment fear of falling and cognitive concern, so whether any individual anxiety disorder is attributable to the hydrocephalus requires individual psychiatric attribution with adjustment, medical, and medication exclusion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "PSYCHOPHYSIOLOGICAL",
+        "primaryVector": "Frontal-subcortical circuit disruption from ventricular enlargement with the threat appraisal of progressive gait instability drives anxious symptoms so anxiety results, the circuit-and-burden route consistent with the pooled prevalence alongside other frontal neuropsychiatric features, but whether this route produced any individual anxiety remains hypothesized until psychiatric and functional records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at meta-analysis prevalence plus narrative review class only: no control-group contrast for anxiety was reported in the located material, the pooled estimate is heterogeneous across instruments, and adjustment anxiety from gait instability is not separable from primary anxiety disorder.",
+        "evidenceGaps": "No located control contrast quantifies anxiety excess in iNPH versus comparators; the pooled estimate (21.9 percent) is heterogeneous across assessment tools; fear-of-falling and adjustment reactions to disability are not separable; and generalized anxiety, medical-illness anxiety, and medication effects compete in an elderly population.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "adjustment anxiety from gait disability and falls risk",
+          "generalized anxiety disorder predating iNPH",
+          "medical-illness anxiety and dementia-related worry (the published dementia windows)",
+          "caffeine, stimulant, and medication effects",
+          "hyperthyroidism and other medical anxiety causes"
+        ]
+      },
+      "evidenceGaps": [
+        "No located control contrast quantifies anxiety excess in iNPH versus comparators; the pooled estimate (21.9 percent) is heterogeneous across assessment tools; fear-of-falling and adjustment reactions to disability are not separable; and generalized anxiety, medical-illness anxiety, and medication effects compete in an elderly population."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY at meta-analysis-prevalence class with the no-contrast limit carried openly: the iNPH neuropsychiatric meta-analysis found anxiety pooled prevalence 21.9 percent (PMID 41657358) and the atypical-manifestations review documents the neuropsychiatric spectrum within which anxiety occurs (PMID 41936711); because no control contrast for anxiety was located and adjustment anxiety is not separable, the conservative standard keeps the edge at association only and routes individual claims through dated psychiatric assessment with adjustment, medical, and medication exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Belessiotis-Richards C, Brady E, Abrol E, et al. Neuropsychiatric Features in Patients With Idiopathic Normal Pressure Hydrocephalus: A Systematic Review and Meta-Analysis Neurol Clin Pract. 2026 Apr;16(2):e200586. PMID 41657358.",
+          "note": "iNPH neuropsychiatric meta-analysis (22 studies): anxiety pooled prevalence 21.9% (13.2-34.2); no control contrast reported for anxiety in the located material; supports the bounded prevalence association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41657358/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 41657358; meta-analysis results (anxiety pooled prevalence)"
+        },
+        {
+          "citation": "Demichele G, Taddei G, Iaboni E, et al. Beyond Hakim's triad: a systematic review of atypical clinical manifestations in idiopathic normal pressure hydrocephalus Acta Neurol Belg. 2026 Apr 6.doi: 10.1007/s13760-026-03057-1. PMID 41936711.",
+          "note": "Systematic review of atypical iNPH manifestations (27 studies): neuropsychiatric presentations most frequent beyond the triad; supports the bounded atypical-spectrum framing only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41936711/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 41936711; review scope (atypical neuropsychiatric manifestations)"
+        }
+      ]
+    },
+    {
+      "conditionId": "subdural-hematoma",
+      "rank": 4,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "CSF shunting for normal pressure hydrocephalus documents subdural hematoma as an overdrainage complication at retrospective-cohort and meta-analysis level: the single-center cohort of shunted NPH patients developing treated subdural collections (60 patients, 96 collections over 2014-2025) characterizes the overdrainage pathway with valve adjustment, middle meningeal artery embolization, and evacuation outcomes and a volume threshold for valve-adjustment failure (PMID 42599077), and the systematic review and meta-analysis of anti-siphon devices across 7 studies and 928 patients found anti-siphon devices reduced subdural hematoma (RR 0.35) and subdural hygroma (OR 0.33), quantifying the overdrainage-mediated complication rate (PMID 42486335); recorded as documented treatment-sequela association only.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: this edge is explicitly treatment-mediated (shunt overdrainage) rather than disease-mediated, so whether any individual subdural hematoma is attributable to shunting requires individual neurosurgical attribution with traumatic, anticoagulation, and spontaneous-subdural exclusion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "POST_SURGICAL_OR_TREATMENT",
+        "primaryVector": "CSF shunt overdrainage drives negative intracranial pressure physiology with sagging bridging veins and subdural fluid accumulation so subdural collections and hematomas result, the overdrainage route quantified by the anti-siphon device risk reduction (RR 0.35 for hematoma), but whether this route produced any individual hematoma remains hypothesized until shunt-settings, imaging, and operative records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at single-center retrospective cohort plus meta-analysis of 7 shunt-technology studies class only: the treatment cohort is conditioned on collections already requiring intervention so incidence is not estimated from it, and the meta-analysis compares shunt technologies rather than quantifying absolute hematoma incidence in shunted NPH.",
+        "evidenceGaps": "No absolute subdural-hematoma incidence in shunted NPH populations is established by the located anchors (the cohort is conditioned on treated collections); valve technology and programmable-valve settings materially modify risk; anti-siphon benefit on most other outcomes was not significant; and traumatic subdurals, anticoagulation-associated bleeding, and chronic subdural from other causes compete for individual attribution.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "traumatic chronic subdural hematoma",
+          "anticoagulation- and antiplatelet-associated subdural bleeding (the surgical-safety literature in this population)",
+          "spontaneous subdural hematoma in the elderly",
+          "subdural hygroma as a related but distinct collection entity",
+          "cerebral atrophy-related subdural risk independent of shunting"
+        ]
+      },
+      "evidenceGaps": [
+        "No absolute subdural-hematoma incidence in shunted NPH populations is established by the located anchors (the cohort is conditioned on treated collections); valve technology and programmable-valve settings materially modify risk; anti-siphon benefit on most other outcomes was not significant; and traumatic subdurals, anticoagulation-associated bleeding, and chronic subdural from other causes compete for individual attribution."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY at retrospective-cohort plus shunt-technology meta-analysis class with the treatment-mediated and incidence-unestimated limits carried openly: the shunted-NPH subdural cohort characterizes 60 patients with treated overdrainage collections and a volume threshold for valve-adjustment failure (PMID 42599077) and the anti-siphon meta-analysis quantifies the overdrainage route with subdural hematoma RR 0.35 under protective hardware (PMID 42486335); because the cohort is conditioned on treated collections and absolute incidence is unestablished, the conservative standard keeps the edge at association only and routes individual claims through dated neurosurgical and imaging review with traumatic, anticoagulation, and spontaneous-subdural exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Frome S, de Souza DN, Iyanna A, et al. The Treatment of Subdural Collections in Patients With Shunted Normal Pressure Hydrocephalus: A Single-Center Experience Neurosurgery. 2026 Aug 14.doi: 10.1227/neu.0000000000004188. PMID 42599077.",
+          "note": "Retrospective cohort of shunted NPH patients with treated subdural collections (Neurosurgery 2026; 60 patients, 96 collections, 2014-2025): valve pressure adjustment (91 procedures), MMA embolization (23), evacuation (15+8 craniotomies); pretreatment volume >40.05 cm3 predicted valve-adjustment failure (AUC 0.75); supports the bounded overdrainage-complication association only, conditioned on treated collections.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42599077/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 42599077; results (subdural collection management outcomes)"
+        },
+        {
+          "citation": "Corin AS, Cheidde L, Arend RB, et al. Effectiveness of anti-siphon devices in CSF shunts for preventing overdrainage in normal pressure hydrocephalus: a systematic review and meta-analysis Neurochirurgie. 2026 Jul 22;72(5):101854. PMID 42486335.",
+          "note": "Systematic review and meta-analysis of anti-siphon devices in NPH CSF shunts (7 studies, 928 patients; Neurochirurgie 2026): ASDs reduced subdural hygroma (OR 0.33, p=0.0368) and subdural hematoma (RR 0.35, p=0.0014); supports the bounded overdrainage-route quantification only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42486335/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 42486335; meta-analysis results (subdural complication risk reduction)"
+        }
+      ]
+    }
+  ]
 }

@@ -2,8 +2,122 @@
   "id": "nocturnal-enuresis",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review urologic, gynecologic, hormonal, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 65 (2026-09-26): two ASSOCIATION_ONLY draft mappings pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: both edges assert association only (etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true, mechanismCategory PSYCHOPHYSIOLOGICAL). The evidence base is one case-control study plus one population cohort, both cross-sectional, so individual claims require dated pediatric-psychiatric assessment with competing-cause exclusion, and review by a qualified medical professional.",
+    "Pathway and duplicate-scope screens: no -> ocd and -> tic-disorder edges (below authoring threshold - the case-control study reports first-ever OCD and tic associations but without independent corroboration; reopening condition: replication cohorts); no -> dermatitis edge (WITHHELD - zero located condition-specific quantification of moisture-associated skin damage in enuresis populations despite targeted search; the published fecal-incontinence dermatitis window keeps its own evidence and is not recycled per ME-29); no -> insomnia edge (CONSTITUTIVE-PROXIMITY - enuresis is a disorder of arousal during sleep and sleep disruption is part of its presentation machinery); no -> self-harm or suicidality edge (no catalog identity - the 2005 cohort linking bladder-control attainment age to adolescent suicidal behavior could not be authored for identity reasons, recorded as a withheld proposition alongside the batch-64 nightmare-disorder suicidality refusal); direction discipline - all anchors are cross-sectional so no forward direction is asserted beyond the association itself."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 65 (2026-09-26): two bounded association edges authored - nocturnal-enuresis to depressive-disorder (rank 1) and to anxiety-disorder (rank 2) - classified ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, and hypothesizedOnly:true. Both propositions rest on the 200-versus-200 case-control study with elevated Child Depression Inventory and Conners anxiety scores (PMID 27939179) and the 8,000-child ALSPAC population cohort with elevated parent-reported psychological problems (PMID 17071625).",
+    "Counter-evidence and caveat screens recorded 2026-09-26: (i) cross-sectional direction - neither anchor establishes temporal order and reverse causation (psychological problems contributing to bedwetting) is unexcluded; (ii) informant asymmetry - the population study found differences on parent-reported measures with little difference on child-reported measures; (iii) phenotype split - combined day-and-night wetting carries an externalizing-weighted profile distinct from isolated nocturnal enuresis; (iv) withheld suicidality proposition - the located literature includes a cohort linking age of bladder-control attainment to adolescent suicidal behavior (PMID 16005077) that cannot be authored because the catalog holds no suicidality identity (compounding the batch-64 refusal); (v) single-study anxiety quantification accepted with the corroborating population measure being nonspecific."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "depressive-disorder",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Nocturnal enuresis documents depressive symptoms at case-control and population-cohort level: the case-control study of 200 children with primary monosymptomatic enuresis versus 200 age-matched controls found significantly higher Child Depression Inventory scores, Child Behavior Checklist scores, and lower quality of life in the enuresis group (PMID 27939179), and the UK population-based ALSPAC cohort of over 8,000 children at age 7.5 found higher rates of parent-reported psychological problems in children with bedwetting and combined wetting versus no wetting (PMID 17071625); recorded as documented association only with the cross-sectional direction limit carried openly.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: the located evidence is cross-sectional and case-control with parent-reported measures dominant, and the direction between bedwetting and psychological distress is unresolved in this literature, so whether any individual depression is attributable to the enuresis requires individual pediatric-psychiatric attribution with family, developmental, and reverse-direction exclusion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "PSYCHOPHYSIOLOGICAL",
+        "primaryVector": "Recurrent bedwetting drives shame, sleep disruption, and family stress with social withdrawal so depressive symptoms emerge, the psychosocial-stress route consistent with the elevated depression-inventory scores and quality-of-life decrement in the case-control cohort, but whether this route produced any individual depression remains hypothesized until developmental and psychiatric records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at single case-control study plus one population cohort class only: both anchors are cross-sectional, the population study found differences on parent-reported but little difference on child-reported measures, and reverse causation (psychological problems contributing to bedwetting) is not excluded by either design.",
+        "evidenceGaps": "Both anchors are cross-sectional so temporal direction is unestablished; the population study's effects were parent-reported with little difference on child-reported measures; family stress and socioeconomic confounding are partly adjusted at best; combined day-and-night wetting carries a different psychological profile from isolated nocturnal enuresis; and developmental, family, and reverse-direction causes compete for individual attribution.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "reverse direction - psychological problems contributing to bedwetting (cross-sectional designs cannot exclude)",
+          "adjustment and family-stress reactions",
+          "attention-deficit and neurodevelopmental comorbidity (the enuresis literature's behavioral comorbidity)",
+          "combined day-and-night wetting (externalizing-weighted profile)",
+          "sleep-disordered breathing as an enuresis precipitant (the published sleep-apnea window, not recycled per ME-29)"
+        ]
+      },
+      "evidenceGaps": [
+        "Both anchors are cross-sectional so temporal direction is unestablished; the population study's effects were parent-reported with little difference on child-reported measures; family stress and socioeconomic confounding are partly adjusted at best; combined day-and-night wetting carries a different psychological profile from isolated nocturnal enuresis; and developmental, family, and reverse-direction causes compete for individual attribution."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY at case-control plus population-cohort class with the cross-sectional direction limit carried openly: the 200-versus-200 case-control study found significantly higher Child Depression Inventory and behavior scores with lower quality of life in enuresis (PMID 27939179) and the 8,000-child ALSPAC cohort found higher parent-reported psychological problems in bedwetting (PMID 17071625); because both anchors are cross-sectional with parent-report dominance and reverse causation unexcluded, the conservative standard keeps the edge at association only and routes individual claims through dated pediatric-psychiatric assessment with family, developmental, and reverse-direction exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Gulisano M, Domini C, Capelli M, et al. Importance of neuropsychiatric evaluation in children with primary monosymptomatic enuresis J Pediatr Urol. 2017 Feb;13(1):36.e1-36.e6. PMID 27939179.",
+          "note": "Case-control study of 200 children with primary monosymptomatic enuresis versus 200 age-matched healthy controls (J Pediatr Urol 2017): significantly higher Child Depression Inventory, CBCL, Conners anxiety, and tic/OCD scores in the enuresis group (p<0.01); quality of life lower (relationship and self domains); behavioral/emotional disorder rates doubled versus controls per ICCS framing; supports the bounded cross-sectional association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/27939179/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 27939179; results (depression and behavior instrument comparisons)"
+        },
+        {
+          "citation": "Joinson C, Heron J, Emond A, et al. Psychological problems in children with bedwetting and combined (day and night) wetting: A UK population-based study J Pediatr Psychol. 2007 Jun;32(5):605-16. PMID 17071625.",
+          "note": "UK population-based ALSPAC cohort of over 8,000 children at age 7.5 (J Pediatr Psychol 2007): higher rates of parent-reported psychological problems in bedwetting and combined wetting versus no wetting; combined wetting particularly associated with externalizing problems; little difference on child-reported measures; supports the bounded population association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/17071625/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 17071625; results (psychological problem rates by wetting status)"
+        }
+      ]
+    },
+    {
+      "conditionId": "anxiety-disorder",
+      "rank": 2,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Nocturnal enuresis documents anxiety symptoms at case-control and population-cohort level: the case-control study of 200 children with primary monosymptomatic enuresis versus 200 age-matched controls found significantly higher Conners Multidimensional Anxiety Scale for Children scores in the enuresis group (PMID 27939179), and the UK ALSPAC population cohort of over 8,000 children found higher rates of parent-reported psychological problems in bedwetting children versus non-wetting peers (PMID 17071625); recorded as documented association only with the cross-sectional direction limit carried openly.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: the located evidence is cross-sectional and anxiety in this population overlaps anticipatory worry about bedwetting and social embarrassment, so whether any individual anxiety disorder is attributable to the enuresis requires individual pediatric-psychiatric attribution with separation, developmental, and reverse-direction exclusion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "PSYCHOPHYSIOLOGICAL",
+        "primaryVector": "Anticipatory worry about wetting episodes and social embarrassment with disrupted sleep drives anxious arousal so anxiety symptoms emerge, the anticipatory-distress route consistent with the elevated anxiety-scale scores in the case-control cohort, but whether this route produced any individual anxiety remains hypothesized until developmental and psychiatric records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at single case-control study plus one population cohort class only: both anchors are cross-sectional with parent-reported measures dominant, the population study's anxiety-specific measures were not separated from general psychological problems, and reverse causation is not excluded.",
+        "evidenceGaps": "Both anchors are cross-sectional so temporal direction is unestablished; anxiety-specific quantification exists only in the single case-control study; anticipatory embarrassment about bedwetting overlaps with primary anxiety presentations; the population measure is parent-reported and nonspecific; and separation anxiety, neurodevelopmental comorbidity, and reverse-direction causes compete for individual attribution.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "separation and generalized anxiety predating enuresis",
+          "anticipatory embarrassment specific to the wetting itself (constitutive proximity screen applied)",
+          "attention-deficit and neurodevelopmental comorbidity",
+          "family stress and environmental anxiety drivers",
+          "reverse direction - anxiety contributing to bedwetting (cross-sectional designs cannot exclude)"
+        ]
+      },
+      "evidenceGaps": [
+        "Both anchors are cross-sectional so temporal direction is unestablished; anxiety-specific quantification exists only in the single case-control study; anticipatory embarrassment about bedwetting overlaps with primary anxiety presentations; the population measure is parent-reported and nonspecific; and separation anxiety, neurodevelopmental comorbidity, and reverse-direction causes compete for individual attribution."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY at case-control plus population-cohort class with the cross-sectional direction limit carried openly: the 200-versus-200 case-control study found significantly higher Conners anxiety scores in enuresis (PMID 27939179) and the ALSPAC cohort found elevated parent-reported psychological problems in bedwetting (PMID 17071625); because both anchors are cross-sectional with single-study anxiety quantification and reverse causation unexcluded, the conservative standard keeps the edge at association only and routes individual claims through dated pediatric-psychiatric assessment with separation, developmental, and reverse-direction exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Gulisano M, Domini C, Capelli M, et al. Importance of neuropsychiatric evaluation in children with primary monosymptomatic enuresis J Pediatr Urol. 2017 Feb;13(1):36.e1-36.e6. PMID 27939179.",
+          "note": "Case-control study of 200 enuresis versus 200 control children (J Pediatr Urol 2017): Conners Multidimensional Anxiety Scale for Children scores significantly higher in the enuresis group (p<0.01); first report of OCD and tic associations in enuresis; supports the bounded cross-sectional association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/27939179/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 27939179; results (anxiety scale comparison)"
+        },
+        {
+          "citation": "Joinson C, Heron J, Emond A, et al. Psychological problems in children with bedwetting and combined (day and night) wetting: A UK population-based study J Pediatr Psychol. 2007 Jun;32(5):605-16. PMID 17071625.",
+          "note": "UK ALSPAC population cohort of over 8,000 children (J Pediatr Psychol 2007): higher parent-reported psychological problems in bedwetting and combined wetting children; supports the bounded population association only, with anxiety not separately quantified.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/17071625/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 17071625; results (psychological problem rates by wetting status)"
+        }
+      ]
+    }
+  ]
 }
