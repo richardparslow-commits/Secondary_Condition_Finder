@@ -6,8 +6,8 @@
  "installedFrom": "Master Registry Discrepancy Resolution 2026",
  "authorityBoundary": "Authoritative for current relationship direction, proposition text, guard state, source linkage, and KB parity; does not establish an individual VA medical nexus.",
  "counts": {
-  "relationships": 658,
-  "explicitPublicationGuards": 584,
+  "relationships": 670,
+  "explicitPublicationGuards": 596,
   "legacyRationaleBoundaries": 74
  },
  "relationships": [
@@ -21245,6 +21245,377 @@
    "sourceReferenceCount": 1,
    "pathwayIntelligencePresent": false,
    "suggestionObjectHash": "232215f7102ceda99bf8cfd5f3253f8c983dff0cc36b8d283c117e14c19c11b2"
+  },
+  {
+   "relationshipId": "rel-miscarriage-to-depressive-disorder",
+   "primaryId": "miscarriage",
+   "targetId": "depressive-disorder",
+   "direction": "miscarriage -> depressive-disorder",
+   "primaryPublicationState": "draft",
+   "rank": 1,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY on the population-registry precedent with the reverse-direction limit carried openly: the England linked-records cohort of 1.2 million first pregnancies found miscarriage associated with depression at 6 months (OR 1.50) and self-harm persisting to three years (PMID 42314414), and the 203-woman cohort found recurrent loss leaving women 0.12 utility points worse off with anxiety/depression-dimension deficits (PMID 41232802); because the nested case-control anchor documents mood predicting later recurrent loss rather than the reverse (PMID 33685488), the conservative standard keeps the edge at association only, records the direction tension openly, and routes individual claims through longitudinal clinical review with prior-psychiatric and bereavement-context exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY on the population-registry precedent with the reverse-direction limit carried openly: the England linked-records cohort of 1.2 million first pregnancies found miscarriage associated with depression at 6 months (OR 1.50) and self-harm persisting to three years (PMID 42314414), and the 203-woman cohort found recurrent loss leaving women 0.12 utility points worse off with anxiety/depression-dimension deficits (PMID 41232802); because the nested case-control anchor documents mood predicting later recurrent loss rather than the reverse (PMID 33685488), the conservative standard keeps the edge at association only, records the direction tension openly, and routes individual claims through longitudinal clinical review with prior-psychiatric and bereavement-context exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to documented prospective mood association with the reverse direction recorded: the England linked-records cohort of 1.2 million first pregnancies found miscarriage associated with depression at 6 months (OR 1.50; PMID 42314414), the 203-woman QoL cohort found recurrent loss leaving women 0.12 utility points worse off with anxiety/depression-dimension deficits (PMID 41232802), and the nested case-control study (PMID 33685488) is carried as reverse-direction counterweight (mood predicting later recurrent loss); evidence is registry and prospective-cohort class, so individual claims route through longitudinal clinical review with prior-psychiatric, bereavement-context, and reverse-direction exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No randomized evidence establishes direction; the nested case-control anchor documents mood symptoms predicting later recurrent loss (OR interaction 1.91) rather than the reverse; prior psychiatric history is incompletely captured in registry data; the self-harm signal is the strongest finding in the anchor cohort yet has no catalog identity; and bereavement, fertility-treatment stress, and relationship strain are co-determinants."
+   ],
+   "sourceIds": [
+    "pmid-42314414",
+    "pmid-41232802",
+    "pmid-33685488"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "63f9a0d9a82434774d3a51af05378a075411c6e7fa0f0c6c47bafebbe80cef96"
+  },
+  {
+   "relationshipId": "rel-miscarriage-to-anxiety-disorder",
+   "primaryId": "miscarriage",
+   "targetId": "anxiety-disorder",
+   "direction": "miscarriage -> anxiety-disorder",
+   "primaryPublicationState": "draft",
+   "rank": 2,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY on the subsequent-pregnancy-vulnerability precedent with the outcome-definition limit carried openly: the England cohort of 1.2 million first pregnancies found miscarriage associated with anxiety at 6 months (OR 1.25) (PMID 42314414), the SCOPE cohort of 5,465 nulliparous women found one prior miscarriage associated with adjusted mean anxiety difference 1.85 and stress 0.76 (PMID 25565431), and the Australian cohort of 584 women found previous pregnancy loss associated with excessive worry (AOR 2.01) (PMID 24733508); because the subsequent-pregnancy anchors measure symptom scales in later conceptions rather than incident anxiety disorder and the loss definitions bundle miscarriage with other loss types, the conservative standard keeps the edge at association only and routes individual claims through structured psychiatric assessment with prior-anxiety and conception-context exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY on the subsequent-pregnancy-vulnerability precedent with the outcome-definition limit carried openly: the England cohort of 1.2 million first pregnancies found miscarriage associated with anxiety at 6 months (OR 1.25) (PMID 42314414), the SCOPE cohort of 5,465 nulliparous women found one prior miscarriage associated with adjusted mean anxiety difference 1.85 and stress 0.76 (PMID 25565431), and the Australian cohort of 584 women found previous pregnancy loss associated with excessive worry (AOR 2.01) (PMID 24733508); because the subsequent-pregnancy anchors measure symptom scales in later conceptions rather than incident anxiety disorder and the loss definitions bundle miscarriage with other loss types, the conservative standard keeps the edge at association only and routes individual claims through structured psychiatric assessment with prior-anxiety and conception-context exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to subsequent-pregnancy vulnerability: the England cohort of 1.2 million first pregnancies found miscarriage associated with anxiety at 6 months (OR 1.25; PMID 42314414), the SCOPE cohort of 5,465 nulliparous women found one prior miscarriage associated with adjusted mean anxiety difference 1.85 (PMID 25565431), and the 584-woman Australian cohort found previous pregnancy loss associated with excessive worry AOR 2.01 (PMID 24733508); evidence is symptom-scale cohort class with mixed loss definitions, so individual claims route through structured psychiatric assessment with prior-anxiety, conception-context, and reverse-direction exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No located study reports incident anxiety-disorder diagnoses after miscarriage using structured psychiatric interviews; the subsequent-pregnancy cohorts condition on a later conception, selecting resilient subgroups; pregnancy loss definition heterogeneity (miscarriage versus all loss types) limits attribution; and fertility-treatment exposure, prior loss count, and social support are unmodeled determinants."
+   ],
+   "sourceIds": [
+    "pmid-42314414",
+    "pmid-25565431",
+    "pmid-24733508"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "533948763dadc24166ac61f63d44f9fc46d23e796743cdefdf08e01934d01737"
+  },
+  {
+   "relationshipId": "rel-miscarriage-to-female-infertility",
+   "primaryId": "miscarriage",
+   "targetId": "female-infertility",
+   "direction": "miscarriage -> female-infertility",
+   "primaryPublicationState": "draft",
+   "rank": 3,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY on the treatment-mediated-Asherman precedent with the mediation limit carried openly: the 2,546-patient post-curettage cohort found Asherman syndrome in 1.6 percent with three or more abortions raising risk 4.6 times (PMID 33462894), and the Taiwan nationwide recurrent-pregnancy-loss cohort found psychiatric comorbidity associated with live birth aHR 0.52 (PMID 42727502); because the infertility pathway is mediated by uterine instrumentation rather than the loss itself and the live-birth signal is entangled with age and socioeconomic factors, the conservative standard keeps the edge at association only and routes individual claims through dated hysteroscopy and endocrine workup with instrumentation, adhesion, and partner-factor exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY on the treatment-mediated-Asherman precedent with the mediation limit carried openly: the 2,546-patient post-curettage cohort found Asherman syndrome in 1.6 percent with three or more abortions raising risk 4.6 times (PMID 33462894), and the Taiwan nationwide recurrent-pregnancy-loss cohort found psychiatric comorbidity associated with live birth aHR 0.52 (PMID 42727502); because the infertility pathway is mediated by uterine instrumentation rather than the loss itself and the live-birth signal is entangled with age and socioeconomic factors, the conservative standard keeps the edge at association only and routes individual claims through dated hysteroscopy and endocrine workup with instrumentation, adhesion, and partner-factor exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to treatment-mediated Asherman pathway: the 2,546-patient post-curettage cohort found Asherman syndrome incidence 1.6 percent with 3 or more abortions raising risk 4.6-fold (PMID 33462894) and the Taiwan nationwide RPL cohort found psychiatric comorbidity associated with live birth aHR 0.52 (PMID 42727502); the infertility pathway is mediated by uterine instrumentation rather than the loss itself (POST_SURGICAL_OR_TREATMENT), so individual claims route through dated hysteroscopy and endocrine workup with instrumentation, adhesion, and partner-factor exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No located study reports infertility incidence after miscarriage managed expectantly or medically versus surgically; the Asherman ascertainment was symptom-triggered and may undercount; the live-birth cohort's reduced fecundity signal mixes psychiatric, age, and socioeconomic pathways; and endometritis, retained products, and partner factors are unmodeled determinants of any individual infertility claim."
+   ],
+   "sourceIds": [
+    "pmid-33462894",
+    "pmid-42727502"
+   ],
+   "sourceReferenceCount": 2,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "0ecce664101fd52ad23c03df0a49d658947a5795658a9ced2ea7bd56d00198a3"
+  },
+  {
+   "relationshipId": "rel-mixed-urinary-incontinence-to-depressive-disorder",
+   "primaryId": "mixed-urinary-incontinence",
+   "targetId": "depressive-disorder",
+   "direction": "mixed-urinary-incontinence -> depressive-disorder",
+   "primaryPublicationState": "draft",
+   "rank": 1,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY at single cross-sectional-subtype class with the reverse-direction counterweight carried openly: the NHANES analysis of 14,154 women found mixed urinary incontinence with the highest depression odds of any subtype (OR 2.60, 2.13-3.19; PMID 39600349), while the ALSPAC prospective cohort found depression predicting subsequent mixed UI (OR 1.97) with only stress UI predicting later depression (PMID 39393464) and the polygenic study found shared genetic liability (PMID 41076405); because the cross-sectional anchor cannot establish direction and the prospective subtype data run the opposite way for mixed incontinence, the conservative standard keeps the edge at association only, records the reciprocity openly, and routes individual claims through longitudinal clinical review with reverse-direction and shared-diathesis exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY at single cross-sectional-subtype class with the reverse-direction counterweight carried openly: the NHANES analysis of 14,154 women found mixed urinary incontinence with the highest depression odds of any subtype (OR 2.60, 2.13-3.19; PMID 39600349), while the ALSPAC prospective cohort found depression predicting subsequent mixed UI (OR 1.97) with only stress UI predicting later depression (PMID 39393464) and the polygenic study found shared genetic liability (PMID 41076405); because the cross-sectional anchor cannot establish direction and the prospective subtype data run the opposite way for mixed incontinence, the conservative standard keeps the edge at association only, records the reciprocity openly, and routes individual claims through longitudinal clinical review with reverse-direction and shared-diathesis exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to mixed-UI-subgroup-specific evidence with reciprocity recorded: the NHANES analysis of 14,154 women found mixed UI carrying the highest depression odds of any subtype (OR 2.60; PMID 39600349), while the ALSPAC prospective cohort found depression predicting subsequent mixed UI (OR 1.97) with only stress UI predicting later depression (PMID 39393464) and the polygenic study found shared genetic liability (PMID 41076405); the urinary-incontinence identity keeps its own scope (ME-29), so individual claims route through longitudinal review with reverse-direction and shared-diathesis exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No located prospective study documents mixed-UI preceding incident depression; the one prospective cohort with subtype resolution found only stress UI predicting later depression; polygenic-liability findings support shared etiology over directional causation; vitamin B12 intake, BMI, and vaginal delivery history modify the cross-sectional association; and menopause, aging, and comorbidity burden are unmodeled co-determinants."
+   ],
+   "sourceIds": [
+    "pmid-39600349",
+    "pmid-39393464",
+    "pmid-41076405"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "db8dcc31530c2d078fa92b98ec3ce058b33b56e24cbc3c03ee8f257004ce4a2f"
+  },
+  {
+   "relationshipId": "rel-morton-s-neuroma-to-metatarsalgia",
+   "primaryId": "morton-s-neuroma",
+   "targetId": "metatarsalgia",
+   "direction": "morton-s-neuroma -> metatarsalgia",
+   "primaryPublicationState": "draft",
+   "rank": 1,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY on the clinical-causation-review precedent with the constitutive-proximity tension carried openly: the metatarsalgia differential review names Morton's neuroma and plantar plate injury as the two main causes of lesser metatarsalgia (PMID 37230133), the pathomechanism review documents common plantar digital nerve compression (PMID 33168237), and the 138-patient prospective outcomes study records chronic pain and disability (PMID 33019802); because forefoot pain is both the defining symptom of Morton's neuroma and the metatarsalgia syndrome and no cohort quantifies attributable incidence, the conservative standard keeps the edge at association only and routes individual claims through ultrasound-confirmed nerve thickening with plantar-plate, bursal, and inflammatory exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY on the clinical-causation-review precedent with the constitutive-proximity tension carried openly: the metatarsalgia differential review names Morton's neuroma and plantar plate injury as the two main causes of lesser metatarsalgia (PMID 37230133), the pathomechanism review documents common plantar digital nerve compression (PMID 33168237), and the 138-patient prospective outcomes study records chronic pain and disability (PMID 33019802); because forefoot pain is both the defining symptom of Morton's neuroma and the metatarsalgia syndrome and no cohort quantifies attributable incidence, the conservative standard keeps the edge at association only and routes individual claims through ultrasound-confirmed nerve thickening with plantar-plate, bursal, and inflammatory exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to the clinical-syndrome framing (Morton's neuroma as a named cause of lesser metatarsalgia) with constitutive-proximity tension recorded: the metatarsalgia differential review names Morton's neuroma and plantar plate injury the two main causes of lesser metatarsalgia (PMID 37230133), the pathomechanism review documents common plantar digital nerve compression (PMID 33168237), and the 138-patient outcomes study records chronic pain and disability (PMID 33019802); the hallux-valgus and mallet-toes metatarsalgia windows keep their own evidence (ME-29) and intermetatarsal bursitis is a documented clinical mimic, so individual claims route through ultrasound-confirmed nerve thickening with plantar-plate, bursal, and inflammatory exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No located cohort quantifies metatarsalgia incidence attributable to Morton's neuroma; constitutive-proximity tension is recorded because forefoot pain is simultaneously the defining symptom of Morton's neuroma and the metatarsalgia syndrome; intermetatarsal bursitis is documented to mimic Morton's neuroma on clinical grounds (PMID 40677501); and plantar plate tears, Freiberg disease, and inflammatory arthritis are competing metatarsalgia causes."
+   ],
+   "sourceIds": [
+    "pmid-37230133",
+    "pmid-33168237",
+    "pmid-33019802"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "cf3af92ed78bff3ff8648e116233ad3d6dcb9436c21c251c0d9431cb5207fa2a"
+  },
+  {
+   "relationshipId": "rel-mucocele-to-sialadenitis",
+   "primaryId": "mucocele",
+   "targetId": "sialadenitis",
+   "direction": "mucocele -> sialadenitis",
+   "primaryPublicationState": "draft",
+   "rank": 1,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY at single review-chain class with the direction and evidence-class limits carried openly: the rapid evidence review states obstruction is caused by trauma, stenosis, and mucoceles and that sialadenitis has obstructive etiologies (PMID 38905553), and the monograph review defines mucocele subtypes as extravasation phenomena, retention cysts, and ranulas (PMID 24862601); because no cohort quantifies sialadenitis incidence in mucocele patients and the reverse framing predominates in case material (ranula arising from ductal obstruction or trauma; PMID 39756581), the conservative standard keeps the edge at association only and routes individual claims through sialography and clinical assessment with stone, stricture, and infectious exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY at single review-chain class with the direction and evidence-class limits carried openly: the rapid evidence review states obstruction is caused by trauma, stenosis, and mucoceles and that sialadenitis has obstructive etiologies (PMID 38905553), and the monograph review defines mucocele subtypes as extravasation phenomena, retention cysts, and ranulas (PMID 24862601); because no cohort quantifies sialadenitis incidence in mucocele patients and the reverse framing predominates in case material (ranula arising from ductal obstruction or trauma; PMID 39756581), the conservative standard keeps the edge at association only and routes individual claims through sialography and clinical assessment with stone, stricture, and infectious exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to a two-link review-level chain with the direction tension recorded: the rapid evidence review states obstruction is caused by trauma, stenosis, and mucoceles and that sialadenitis has obstructive etiologies (PMID 38905553), the monograph review defines mucocele subtypes as extravasation phenomena, retention cysts, and ranulas (PMID 24862601), and the ranula case framing (ranula arising from ductal obstruction or trauma; PMID 39756581) is carried as reverse-direction counterweight; no cohort quantifies sialadenitis incidence in mucocele patients, so individual claims route through sialography and clinical assessment with stone, stricture, and infectious exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No cohort or case series quantifies sialadenitis incidence in mucocele patients; the two-link chain is inferred from review statements rather than directly demonstrated; the reverse-direction framing (obstruction and trauma causing mucoceles) predominates in the located material; the retention-versus-extravasation distinction changes the mechanism; and sialolithiasis, stricture, and sialectasis are competing obstruction causes in the same glands."
+   ],
+   "sourceIds": [
+    "pmid-38905553",
+    "pmid-24862601",
+    "pmid-39756581"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "1c6b23306a0e450b9e6c9c2680fb1f6de468e1a3d8eb6cfb7f7c8e107d8b4679"
+  },
+  {
+   "relationshipId": "rel-multiple-endocrine-neoplasia-to-hyperparathyroidism",
+   "primaryId": "multiple-endocrine-neoplasia",
+   "targetId": "hyperparathyroidism",
+   "direction": "multiple-endocrine-neoplasia -> hyperparathyroidism",
+   "primaryPublicationState": "draft",
+   "rank": 1,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY on the tumor-predisposition precedent with the syndromic-heterogeneity limit carried openly: the Russian 102-patient MEN1 cohort describes the classic triad led by primary hyperparathyroidism (PMID 41834593), the South Korea nationwide cohort found parathyroid involvement the most common manifestation at 58.6 percent (PMID 40607214), and the 14-study MEN2 review found hyperparathyroidism prevalence 7.84-31.3 percent (PMID 40277809); because the syndromic types differ in mechanism and penetrance and the nationwide cohort is clinically suspected rather than genetically confirmed, the conservative standard keeps the edge at association only and routes individual claims through germline confirmation and ionized-calcium workup with vitamin-D, renal, and familial-mimic exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY on the tumor-predisposition precedent with the syndromic-heterogeneity limit carried openly: the Russian 102-patient MEN1 cohort describes the classic triad led by primary hyperparathyroidism (PMID 41834593), the South Korea nationwide cohort found parathyroid involvement the most common manifestation at 58.6 percent (PMID 40607214), and the 14-study MEN2 review found hyperparathyroidism prevalence 7.84-31.3 percent (PMID 40277809); because the syndromic types differ in mechanism and penetrance and the nationwide cohort is clinically suspected rather than genetically confirmed, the conservative standard keeps the edge at association only and routes individual claims through germline confirmation and ionized-calcium workup with vitamin-D, renal, and familial-mimic exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to syndrome-component association across MEN1 and MEN2 with subtype attribution recorded: the Russian 102-patient MEN1 cohort describes the classic triad led by primary hyperparathyroidism (PMID 41834593), the South Korea nationwide cohort found parathyroid involvement 58.6 percent (PMID 40607214), and the 14-study MEN2 review of 3,783 carriers found prevalence 7.84-31.3 percent (PMID 40277809); the hyperparathyroidism identity's published kidney-stones and osteoporosis windows are intermediate-node pathways not recycled (ME-29), so individual claims route through germline confirmation and ionized-calcium workup with vitamin-D, renal, and familial-mimic exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No single population-based penetrance figure exists across MEN1 and MEN2 combined; the syndromic types differ in mechanism and penetrance and are pooled only at the catalog-identity level; the Korean cohort's suspected-case definition may misclassify; normocalcemic and subclinical presentations alter ascertainment; and vitamin-D deficiency, thiazide use, and renal disease are competing hypercalcemia causes."
+   ],
+   "sourceIds": [
+    "pmid-41834593",
+    "pmid-40607214",
+    "pmid-40277809"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "3844769ff34f6534b9e8e2bf38bb3d254614aac37495b80310bcc8faeb9119aa"
+  },
+  {
+   "relationshipId": "rel-multiple-endocrine-neoplasia-to-pituitary-neoplasm",
+   "primaryId": "multiple-endocrine-neoplasia",
+   "targetId": "pituitary-neoplasm",
+   "direction": "multiple-endocrine-neoplasia -> pituitary-neoplasm",
+   "primaryPublicationState": "draft",
+   "rank": 2,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY on the tumor-predisposition precedent with the ascertainment limit carried openly: the nationwide 240-patient MEN1 cohort found pituitary adenomas in 46.6 percent with screening predominance and prior hyperparathyroidism marking higher risk (PMID 40921719), the Russian cohort records the classic triad with exon 10 mutations carrying 7.7-fold adenoma risk (PMID 41834593), and the Korean nationwide cohort found pituitary involvement in 22.3 percent (PMID 40607214); because prevalence estimates span 22 to 47 percent across screening intensities and incidental microadenomas overlap the detected burden, the conservative standard keeps the edge at association only and routes individual claims through germline confirmation and dedicated sellar imaging with incidentaloma and medication exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY on the tumor-predisposition precedent with the ascertainment limit carried openly: the nationwide 240-patient MEN1 cohort found pituitary adenomas in 46.6 percent with screening predominance and prior hyperparathyroidism marking higher risk (PMID 40921719), the Russian cohort records the classic triad with exon 10 mutations carrying 7.7-fold adenoma risk (PMID 41834593), and the Korean nationwide cohort found pituitary involvement in 22.3 percent (PMID 40607214); because prevalence estimates span 22 to 47 percent across screening intensities and incidental microadenomas overlap the detected burden, the conservative standard keeps the edge at association only and routes individual claims through germline confirmation and dedicated sellar imaging with incidentaloma and medication exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to MEN1 tumor predisposition with ascertainment limits recorded: the nationwide 240-patient MEN1 cohort found pituitary adenomas in 46.6 percent (63.3 percent screening-detected) with prior hyperparathyroidism marking higher risk (PMID 40921719), the Russian cohort records the classic triad with exon 10 mutations carrying 7.7-fold adenoma risk (PMID 41834593), and the Korean nationwide cohort found pituitary involvement 22.3 percent (PMID 40607214); prevalence estimates span 22-47 percent across screening intensities, so individual claims route through germline confirmation and dedicated sellar imaging with incidentaloma and medication exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No located study establishes penetrance by age in unselected MEN1 carriers prospectively; screening intensity drives detection; incidental pituitary microadenomas in the general population overlap the screening-detected burden; prolactinoma treatment (dopamine agonists) alters the natural history; and genotype-phenotype correlation remains unconfirmed beyond single-center signals."
+   ],
+   "sourceIds": [
+    "pmid-40921719",
+    "pmid-41834593",
+    "pmid-40607214"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "02ab08d1ca9e560bf37a412844ac12a7caa28663e5b9a78cca626d568d5f6d65"
+  },
+  {
+   "relationshipId": "rel-multiple-endocrine-neoplasia-to-pheochromocytoma",
+   "primaryId": "multiple-endocrine-neoplasia",
+   "targetId": "pheochromocytoma",
+   "direction": "multiple-endocrine-neoplasia -> pheochromocytoma",
+   "primaryPublicationState": "draft",
+   "rank": 3,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY on the tumor-predisposition precedent with the codon-specific-penetrance limit carried openly: the 309-patient MEN2 cohort found pheochromocytoma in 85 patients with RET-codon-specific penetrance from 1.7 to 46.6 percent and steadily age-rising risk (PMID 28605116), the MEN2 review reports penetrance 10-80 percent by RET mutation (PMID 32388798), and the de novo MEN2A case documented pheochromocytoma alongside bilateral medullary thyroid carcinoma (PMID 42272368); because penetrance is codon-specific and age-dependent and the anchor cohort spans changing diagnostic eras, the conservative standard keeps the edge at association only and routes individual claims through germline RET confirmation and biochemical screening with hypertension, medication, and incidental-mass exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY on the tumor-predisposition precedent with the codon-specific-penetrance limit carried openly: the 309-patient MEN2 cohort found pheochromocytoma in 85 patients with RET-codon-specific penetrance from 1.7 to 46.6 percent and steadily age-rising risk (PMID 28605116), the MEN2 review reports penetrance 10-80 percent by RET mutation (PMID 32388798), and the de novo MEN2A case documented pheochromocytoma alongside bilateral medullary thyroid carcinoma (PMID 42272368); because penetrance is codon-specific and age-dependent and the anchor cohort spans changing diagnostic eras, the conservative standard keeps the edge at association only and routes individual claims through germline RET confirmation and biochemical screening with hypertension, medication, and incidental-mass exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to MEN2 RET-codon-specific tumor predisposition: the 309-patient MEN2 cohort found pheochromocytoma in 85 with exon-specific penetrance 1.7-46.6 percent (PMID 28605116), the MEN2 review reports penetrance 10-80 percent by RET mutation (PMID 32388798), and the de novo MEN2A case documented pheochromocytoma alongside bilateral medullary thyroid carcinoma (PMID 42272368); the pheochromocytoma identity's published hypertension window is an intermediate-node pathway not recycled (ME-29), so individual claims route through germline RET confirmation and biochemical screening with hypertension, medication, and incidental-mass exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No population-based incidence figure exists for MEN2 pheochromocytoma; penetrance estimates vary widely by RET codon and ascertainment; diagnostic methods changed across the four decades of the anchor cohort; variable expressivity within families is documented; and essential hypertension and incidentally discovered adrenal adenomas compete for individual attribution."
+   ],
+   "sourceIds": [
+    "pmid-28605116",
+    "pmid-32388798",
+    "pmid-42272368"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "87306743ad2cb19f3771154af0e843e7f2a6322d64d61ce569fb5e4bf1669e3e"
+  },
+  {
+   "relationshipId": "rel-multiple-endocrine-neoplasia-to-thyroid-cancer",
+   "primaryId": "multiple-endocrine-neoplasia",
+   "targetId": "thyroid-cancer",
+   "direction": "multiple-endocrine-neoplasia -> thyroid-cancer",
+   "primaryPublicationState": "draft",
+   "rank": 4,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY on the tumor-predisposition precedent with the histotype-scope limit carried openly: the 309-patient MEN2 cohort links RET mutation status to medullary thyroid carcinoma aggressiveness with synchronous or metachronous pheochromocytoma (PMID 28605116), the RET K666N family documents familial medullary carcinoma with C-cell hyperplasia (PMID 39963300), and the de novo MEN2A case presented with bilateral medullary carcinoma (PMID 42272368); because the catalog lacks a medullary-specific identity and the family anchors are case class with codon-dependent penetrance, the conservative standard keeps the edge at association only, scopes it explicitly to the medullary histotype, and routes individual claims through germline RET and calcitonin/histologic confirmation with follicular-variant and incidental-nodule exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY on the tumor-predisposition precedent with the histotype-scope limit carried openly: the 309-patient MEN2 cohort links RET mutation status to medullary thyroid carcinoma aggressiveness with synchronous or metachronous pheochromocytoma (PMID 28605116), the RET K666N family documents familial medullary carcinoma with C-cell hyperplasia (PMID 39963300), and the de novo MEN2A case presented with bilateral medullary carcinoma (PMID 42272368); because the catalog lacks a medullary-specific identity and the family anchors are case class with codon-dependent penetrance, the conservative standard keeps the edge at association only, scopes it explicitly to the medullary histotype, and routes individual claims through germline RET and calcitonin/histologic confirmation with follicular-variant and incidental-nodule exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped explicitly to the medullary histotype because the catalog lacks a medullary-thyroid-carcinoma identity: the 309-patient MEN2 cohort links RET mutation status to medullary carcinoma aggressiveness (PMID 28605116), the RET K666N family documents familial medullary carcinoma with C-cell hyperplasia (PMID 39963300), and the de novo MEN2A case presented with bilateral medullary carcinoma (PMID 42272368); family anchors are case class with codon-dependent penetrance, so individual claims route through germline RET and calcitonin/histologic confirmation with follicular-variant and incidental-nodule exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No located study reports medullary carcinoma incidence under the generic thyroid-cancer identity definition; the catalog lacks a medullary-thyroid-carcinoma identity so the edge is scoped to the medullary histotype only; the K666N family shows age-dependent expressivity with low penetrance of other MEN2 tumors; RET codon status drives wide aggressiveness variation; and sporadic medullary carcinoma (non-germline) and follicular-derived thyroid nodules compete for individual attribution."
+   ],
+   "sourceIds": [
+    "pmid-28605116",
+    "pmid-39963300",
+    "pmid-42272368"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "09481d1d3db2d2b3dc647d85ffca1895a62bfc67e652c848f56945a0573c2959"
+  },
+  {
+   "relationshipId": "rel-multiple-endocrine-neoplasia-to-gastrinoma",
+   "primaryId": "multiple-endocrine-neoplasia",
+   "targetId": "gastrinoma",
+   "direction": "multiple-endocrine-neoplasia -> gastrinoma",
+   "primaryPublicationState": "draft",
+   "rank": 5,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY on the tumor-predisposition precedent with the surgical-selection limit carried openly: the AFCE-GTE cohort of 31 MEN1 patients found Zollinger-Ellison syndrome the indication in 58 percent of pancreatoduodenectomies for duodenopancreatic neuroendocrine tumors with biochemical cure in about 60 percent of MEN1-related gastrinomas (PMID 33649917), the MEN1 pregnancy case documented Zollinger-Ellison syndrome alongside primary hyperparathyroidism (PMID 33597314), and the Russian cohort records the gastrointestinal neuroendocrine component of the classic triad (PMID 41834593); because the surgical cohort is selection-conditioned and no population penetrance figure exists, the conservative standard keeps the edge at association only and routes individual claims through germline MEN1 confirmation and gastrin-stimulation testing with PPI and antral exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY on the tumor-predisposition precedent with the surgical-selection limit carried openly: the AFCE-GTE cohort of 31 MEN1 patients found Zollinger-Ellison syndrome the indication in 58 percent of pancreatoduodenectomies for duodenopancreatic neuroendocrine tumors with biochemical cure in about 60 percent of MEN1-related gastrinomas (PMID 33649917), the MEN1 pregnancy case documented Zollinger-Ellison syndrome alongside primary hyperparathyroidism (PMID 33597314), and the Russian cohort records the gastrointestinal neuroendocrine component of the classic triad (PMID 41834593); because the surgical cohort is selection-conditioned and no population penetrance figure exists, the conservative standard keeps the edge at association only and routes individual claims through germline MEN1 confirmation and gastrin-stimulation testing with PPI and antral exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to MEN1 tumor predisposition with surgical-selection limits recorded: the AFCE-GTE cohort of 31 MEN1 pancreaticoduodenectomies lists Zollinger-Ellison syndrome in 58 percent with about 60 percent biochemical cure of MEN1-related gastrinomas (PMID 33649917), the MEN1 pregnancy case documented Zollinger-Ellison syndrome alongside primary hyperparathyroidism (PMID 33597314), and the Russian cohort records the gastrointestinal neuroendocrine component of the classic triad (PMID 41834593); the gastrinoma identity's published peptic-ulcer-disease window is an intermediate-node pathway not recycled (ME-29), so individual claims route through germline MEN1 confirmation and gastrin-stimulation testing with PPI and antral exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No located population-based penetrance figure for gastrinoma in MEN1; surgical series are selection-conditioned; proton-pump-inhibitor therapy blunts gastrin assays and alters presentation; duodenal versus pancreatic primary sites carry different prognoses unmodeled here; and sporadic duodenal gastrinoma and antral G-cell hyperplasia compete for individual attribution."
+   ],
+   "sourceIds": [
+    "pmid-33649917",
+    "pmid-33597314",
+    "pmid-41834593"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "4eaa8f67eae3668a4d46071ab3e2bf417144c68f236db4613da78b50ee8ebb32"
+  },
+  {
+   "relationshipId": "rel-multiple-endocrine-neoplasia-to-insulinoma",
+   "primaryId": "multiple-endocrine-neoplasia",
+   "targetId": "insulinoma",
+   "direction": "multiple-endocrine-neoplasia -> insulinoma",
+   "primaryPublicationState": "draft",
+   "rank": 6,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY on the tumor-predisposition precedent with the surgical-ascertainment limit carried openly: the 46-center international cohort of 96 MEN1-related insulinoma resections states insulinomas occur in 10-15 percent of MEN1 patients with multifocal disease in 33 of 96 and recurrent or new insulinomas during follow-up (PMID 32352164), the AFCE-GTE cohort lists insulinoma in 2 of 31 MEN1 pancreaticoduodenectomies (PMID 33649917), and the Korean nationwide cohort recorded duodenopancreatic tumors in 19.9 percent of suspected MEN1 (PMID 40607214); because the frequency estimate derives from specialist surgical series conditioned on symptomatic disease, the conservative standard keeps the edge at association only and routes individual claims through germline MEN1 confirmation and supervised fasting with factitious and sulfonylurea exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY on the tumor-predisposition precedent with the surgical-ascertainment limit carried openly: the 46-center international cohort of 96 MEN1-related insulinoma resections states insulinomas occur in 10-15 percent of MEN1 patients with multifocal disease in 33 of 96 and recurrent or new insulinomas during follow-up (PMID 32352164), the AFCE-GTE cohort lists insulinoma in 2 of 31 MEN1 pancreaticoduodenectomies (PMID 33649917), and the Korean nationwide cohort recorded duodenopancreatic tumors in 19.9 percent of suspected MEN1 (PMID 40607214); because the frequency estimate derives from specialist surgical series conditioned on symptomatic disease, the conservative standard keeps the edge at association only and routes individual claims through germline MEN1 confirmation and supervised fasting with factitious and sulfonylurea exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to MEN1 tumor predisposition with surgical-ascertainment limits recorded: the 46-center international cohort of 96 MEN1-related insulinoma resections states insulinomas occur in 10-15 percent of MEN1 patients with multifocal disease in 33 of 96 (PMID 32352164), the AFCE-GTE cohort lists insulinoma in 2 of 31 pancreaticoduodenectomies (PMID 33649917), and the Korean nationwide cohort recorded duodenopancreatic tumors in 19.9 percent of suspected MEN1 (PMID 40607214); the insulinoma identity's published hyperinsulinism window is an intermediate-node pathway not recycled (ME-29), so individual claims route through germline MEN1 confirmation and supervised fasting with factitious and sulfonylurea exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No population-based penetrance figure for insulinoma in MEN1; symptomatic ascertainment enriches severe presentations; multifocal pancreatic neuroendocrine tumors make lesion-level diagnosis difficult; metachronous new insulinomas occur in multifocal disease; and factitious hypoglycaemia, sulfonylureas, and non-insulinoma pancreatogenous hypoglycaemia compete for individual attribution."
+   ],
+   "sourceIds": [
+    "pmid-32352164",
+    "pmid-33649917",
+    "pmid-40607214"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "f007d625cbcefaa1576a30097940a390533f1da06e208829366dbe22b2e45f46"
   }
  ],
  "lastUpdatedBy": "batch-D1-draft-authoring",

@@ -10653,6 +10653,478 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 **Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
 
+### `miscarriage` → `depressive-disorder` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Miscarriage documents subsequent depressive disorder at population-registry and prospective-cohort level: the England linked-records cohort of 1.2 million first recorded pregnancies found miscarriage associated with higher adjusted odds of depression at 6 months (OR 1.50) with the self-harm association persisting up to three years (PMID 42314414), the 203-woman tiered-care cohort found recurrent loss leaving women 0.12 EQ-5D utility points worse off for up to 6 months with deficits consistently arising from the anxiety/depression dimension (PMID 41232802), and the nested case-control study of 2,558 women documented high depression symptom prevalence after a first miscarriage (PMID 33685488); the relationship is recorded as documented prospective association only.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: the anchors are observational with selection-on-observables designs, and the nested case-control anchor runs depression and anxiety forward to recurrent pregnancy loss rather than the reverse, so whether any individual depressive episode followed a miscarriage requires individual longitudinal clinical review with prior-psychiatric and reverse-direction exclusion.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 296.1 — Bolbocean C, Coomarasamy A, Hippisley-Cox J, et al. Miscarriage, self-harm, and psychiatric disorders in first-time pregnant women: Evidence from a linkage study Soc Sci Med. 2026 Sep;404:119481. doi: 10.1016/j.socscimed.2026.119481. PMID 42314414.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42314414/
+- Source checked on: 2026-09-26
+- Locator: PMID 42314414; results (adjusted odds of self-harm, depression, and anxiety after miscarriage)
+- Note under review: England linked health-registry cohort of 1.2 million first recorded pregnancies (2004-2017): miscarriage associated with higher adjusted odds of self-harm at 6 months (OR 2.30), depression at 6 months (OR 1.50), and anxiety at 6 months (OR 1.25), with self-harm persisting up to three years (OR 1.60); deprivation-stratified; supports the bounded prospective association only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 296.2 — Bolbocean C, Coomarasamy A, Fitzsimmons L, et al. The Compounding Burden of Pregnancy Loss: A Longitudinal Analysis of Quality-of-Life Trajectories After Miscarriage Value Health. 2026 Mar;29(3):419-428. doi: 10.1016/j.jval.2025.10.013. PMID 41232802.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/41232802/
+- Source checked on: 2026-09-26
+- Locator: PMID 41232802; results (utility trajectories and anxiety/depression dimension deficits)
+- Note under review: Prospective tiered-care cohort of 203 women (EQ-5D-5L at 4 time points, 71% completion): recurrent loss (3+ miscarriages) carried additional utility decrements of -0.11 at 3 months and -0.12 at 6 months exceeding MCID; deficits consistently arose from anxiety/depression; a second miscarriage triggered a roughly 30 percentage-point reduction in optimal anxiety/depression; supports the bounded QoL-association only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 296.3 — Wang Y, Meng Z, Pei J, et al. Anxiety and depression are risk factors for recurrent pregnancy loss: a nested case-control study Health Qual Life Outcomes. 2021 Mar 8;19(1):78. doi: 10.1186/s12955-021-01703-1. PMID 33685488.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/33685488/
+- Source checked on: 2026-09-26
+- Locator: PMID 33685488; results (mood symptoms after first miscarriage and subsequent RPL odds)
+- Note under review: Nested case-control study of 2,558 women in the Miscarriage Woman Cohort: depression and anxiety symptoms measured after the first miscarriage predicted subsequent recurrent pregnancy loss (multiplicative interaction OR 1.91); carried as the documented reverse-direction counterweight recording that mood symptoms in this literature run forward to loss, not only loss to mood.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `miscarriage` → `anxiety-disorder` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Miscarriage documents subsequent anxiety symptoms at population-registry and prospective-cohort level: the England linked-records cohort of 1.2 million first recorded pregnancies found miscarriage associated with higher adjusted odds of anxiety at 6 months (OR 1.25) (PMID 42314414), the SCOPE prospective cohort of 5,465 healthy nulliparous women found one previous miscarriage associated with increased state-trait anxiety (adjusted mean difference 1.85, 95% CI 0.61-3.09), perceived stress (0.76, 0.48-1.03), and limiting/resting behaviour in a subsequent pregnancy (PMID 25565431), and the Australian longitudinal cohort of 584 women found previous pregnancy loss associated with excessive worry (AOR 2.01) and sadness or low mood (AOR 1.75) during a subsequent pregnancy (PMID 24733508); the relationship is recorded as documented prospective association only.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: the anchors are observational cohorts where the subsequent-pregnancy studies measure vulnerability in a later pregnancy rather than an anxiety disorder diagnosis, so whether any individual anxiety disorder followed a miscarriage requires individual psychiatric attribution with prior-anxiety, conception-context, and reverse-direction exclusion.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 297.1 — Bolbocean C, Coomarasamy A, Hippisley-Cox J, et al. Miscarriage, self-harm, and psychiatric disorders in first-time pregnant women: Evidence from a linkage study Soc Sci Med. 2026 Sep;404:119481. doi: 10.1016/j.socscimed.2026.119481. PMID 42314414.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42314414/
+- Source checked on: 2026-09-26
+- Locator: PMID 42314414; results (adjusted odds of anxiety after miscarriage)
+- Note under review: England linked health-registry cohort of 1.2 million first recorded pregnancies: miscarriage associated with higher adjusted odds of anxiety at 6 months (OR 1.25, 1.25 for anxiety per the reported model) alongside depression and self-harm; supports the bounded prospective association only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 297.2 — McCarthy FP, Moss-Morris R, Khashan AS, et al. Previous pregnancy loss has an adverse impact on distress and behaviour in subsequent pregnancy BJOG. 2015 Dec;122(13):1757-64. doi: 10.1111/1471-0528.13233. PMID 25565431.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/25565431/
+- Source checked on: 2026-09-26
+- Locator: PMID 25565431; results (behavioural and mood measures by prior miscarriage count)
+- Note under review: SCOPE prospective cohort of 5,465 healthy nulliparous women: one previous miscarriage associated with increased anxiety (adjusted mean difference 1.85, 0.61-3.09), perceived stress (0.76, 0.48-1.03), depression (aOR 1.26), and limiting/resting behaviour in a subsequent pregnancy; two miscarriages carried more depression; supports the bounded vulnerability association only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 297.3 — Chojenta C, Harris S, Reilly N, et al. History of pregnancy loss increases the risk of mental health problems in subsequent pregnancies but not in the postpartum PLoS One. 2014;9(4):e95038. doi: 10.1371/journal.pone.0095038. PMID 24733508.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/24733508/
+- Source checked on: 2026-09-26
+- Locator: PMID 24733508; results (mental health outcomes in subsequent pregnancy versus postpartum)
+- Note under review: Australian Longitudinal Study on Women's Health sub-cohort of 584 women: previous pregnancy loss (miscarriage, termination for medical reasons, ectopic pregnancy, stillbirth) associated with sadness or low mood (AOR 1.75) and excessive worry (AOR 2.01) during a subsequent pregnancy but not postpartum; supports the bounded subsequent-pregnancy association with the mixed-loss definition recorded.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `miscarriage` → `female-infertility` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Miscarriage and its treatment document subsequent intrauterine-adhesion infertility at cohort level: the 2,546-patient study of post-abortion uterine evacuation and curettage found Asherman syndrome incidence 1.6 percent (43/2,546) with history of three or more abortions increasing risk 4.6 times and the symptom-based criteria including infertility, oligo-amenorrhea, and recurrent pregnancy loss (PMID 33462894), and the Taiwan nationwide cohort of recurrent-pregnancy-loss women found mental-disorder comorbidity associated with reduced subsequent live birth (adjusted HR 0.52) (PMID 42727502); the relationship is recorded as documented treatment-mediated and cohort-level association only.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: the infertility pathway is mediated by uterine instrumentation rather than the miscarriage itself, and the live-birth cohort attributes reduced fecundity jointly to psychiatric comorbidity, age, and socioeconomic factors, so any individual infertility claim requires hysteroscopic and endocrine attribution with instrumentation, adhesion, and partner-factor exclusion.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 298.1 — Sevinç F, Oskovi-Kaplan ZA, Çelen Ş, et al. Identifying the risk factors and incidence of Asherman Syndrome in women with post-abortion uterine curettage J Obstet Gynaecol Res. 2021 Apr;47(4):1549-1555. doi: 10.1111/jog.14667. PMID 33462894.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/33462894/
+- Source checked on: 2026-09-26
+- Locator: PMID 33462894; results (Asherman incidence and risk-factor analysis)
+- Note under review: Cohort of 2,546 women with post-abortion uterine evacuation and curettage: Asherman syndrome incidence 1.6% (43/2,546) by symptom criteria with hysteroscopic confirmation in 177; history of 3 or more abortions was the main risk factor (4.6-fold); supports the bounded treatment-mediated proposition only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 298.2 — Wang TH, Sung FC, Mou CH, et al. Impact of post-recurrent pregnancy loss depression and anxiety on subsequent live birth rates: A nationwide population-based cohort study Eur J Obstet Gynecol Reprod Biol. 2026 Sep 3;327:115409. doi: 10.1016/j.ejogrb.2026.115409. PMID 42727502.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42727502/
+- Source checked on: 2026-09-26
+- Locator: PMID 42727502; results (live birth rates and adjusted hazard ratios)
+- Note under review: Taiwan NHIRD nationwide cohort (2003-2020) of recurrent-pregnancy-loss women: mental-disorder subcohorts showed reduced subsequent live birth (3.73 versus 8.19 per 1000 person-years; aHR 0.52, 0.49-0.54) alongside age and socioeconomic gradients; carried as bounded reduced-fecundity context with psychiatric and social confounding recorded.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `mixed-urinary-incontinence` → `depressive-disorder` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Mixed urinary incontinence documents depression at large cross-sectional and prospective-cohort level: the NHANES 2007-2018 analysis of 14,154 women found mixed urinary incontinence carrying the highest depression odds of any incontinence subtype (OR 2.60, 95% CI 2.13-3.19) versus stress UI (1.55) and urgency UI (1.92), with dietary vitamin B12 moderating the association (PMID 39600349), while the ALSPAC prospective cohort of parous middle-aged women found the documented prospective pathway running from depression to subsequent mixed urinary incontinence (OR 1.97, 1.16-3.33) with only stress UI predicting subsequent depression (OR 1.37) (PMID 39393464), and the polygenic-risk study found genetic liability for neuroticism and anxiety associated with mixed UI (OR 1.23 and 1.20) (PMID 41076405); the relationship is recorded as documented cross-sectional association with the prospective direction carried openly as counterweight.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: the strongest quantified association is cross-sectional and cannot establish direction, the located prospective cohort documents the reverse pathway for mixed incontinence specifically, and genetic-liability data suggest shared etiology, so whether any individual depression followed mixed incontinence requires individual longitudinal clinical review with reverse-direction and shared-diathesis exclusion.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 299.1 — An F, Wang S, Gao L, et al. Dietary Vitamin B12 Intake Affects the Association Between Urinary Incontinence and Depression in Women: A Cross-Sectional Study of NHANES 2007-2018 Int J Womens Health. 2024;16:1969-1980. doi: 10.2147/IJWH.S475597. PMID 39600349.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/39600349/
+- Source checked on: 2026-09-26
+- Locator: PMID 39600349; results (depression odds by incontinence subtype and B12 moderation)
+- Note under review: NHANES 2007-2018 cross-sectional analysis of 14,154 women: mixed UI carried the highest depression odds (OR 2.60, 2.13-3.19) versus stress UI (1.55) and urgency UI (1.92); dietary vitamin B12 intake moderated the association; supports the bounded subtype-specific cross-sectional association only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 299.2 — Joinson C, Drake MJ, Fraser A, et al. Bidirectional relationships between depression, anxiety and urinary symptoms in women: A prospective cohort study J Affect Disord. 2025 Jan 15;369:516-522. doi: 10.1016/j.jad.2024.10.035. PMID 39393464.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/39393464/
+- Source checked on: 2026-09-26
+- Locator: PMID 39393464; results (bidirectional prospective associations by LUTS subtype)
+- Note under review: ALSPAC prospective cohort of parous middle-aged women (n=5,291 and 6,147): depression predicted subsequent mixed urinary incontinence (OR 1.97, 1.16-3.33) and any UI (1.68); only stress UI predicted subsequent depression (OR 1.37); carried as the documented reverse-direction counterweight. Preflight note: erratum-linked record (ErratumIn: J Affect Disord. 2025 Oct 1;386:119426, PMID 40435777); disposition - cited figures taken from the indexed parent record, erratum content not indexed in abstract form, flagged for qualified-human disposition during citation verification.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 299.3 — Rajan Z, Dardani C, Burrows K, et al. Association of Polygenic Risk Scores for Depression, Anxiety, and Neuroticism with Lower Urinary Tract Symptoms Among Women Eur Urol. 2026 Feb;89(2):174-181. doi: 10.1016/j.eururo.2025.09.4154. PMID 41076405.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/41076405/
+- Source checked on: 2026-09-26
+- Locator: PMID 41076405; results (polygenic risk score associations by LUTS subtype)
+- Note under review: ALSPAC polygenic-risk study (4,758 and 3,026 women): neuroticism PRS associated with mixed UI (OR 1.23) and any UI (1.14), anxiety PRS with mixed UI (1.20), depression PRS with any UI (1.09-1.11); carried as the shared-genetic-liability counterweight recording common-cause confounding.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `morton-s-neuroma` → `metatarsalgia` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Morton's neuroma documents lesser metatarsalgia at review and prospective-outcome level: the educational review of metatarsalgia differential diagnosis describes Morton's neuroma and plantar plate injury as the two main causes of lesser metatarsalgia (PMID 37230133), the anatomy and pathomechanism review describes the common plantar digital nerve compression producing characteristic forefoot pain (PMID 33168237), and the prospective observational outcomes study of 138 patients records Morton's neuroma as associated with chronic pain and disability with metatarsal-region pain scores as the primary outcome measure (PMID 33019802); the relationship is recorded as documented clinical-causation framing at review class only.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: metatarsalgia is both the presenting symptom complex of Morton's neuroma and a distinct clinical syndrome with plantar plate injury, Freiberg disease, and inflammatory causes, so any individual metatarsalgia attribution requires ultrasound-confirmed nerve thickening with plantar-plate, bursal, and inflammatory exclusion.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 300.1 — Afonso PD, Britto SV, Spritzer CE, et al. Differential Diagnosis of Metatarsalgia Semin Musculoskelet Radiol. 2023 Jun;27(3):337-350. doi: 10.1055/s-0043-1764388. PMID 37230133.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/37230133/
+- Source checked on: 2026-09-26
+- Locator: PMID 37230133; review framing (two main causes of lesser metatarsalgia)
+- Note under review: Educational review of metatarsalgia differential diagnosis (Semin Musculoskelet Radiol, 2023): describes Morton's neuroma and plantar plate injury as the two main causes of lesser metatarsalgia with differential diagnoses; supports the bounded clinical-causation framing only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 300.2 — Mak MS, Chowdhury R, Johnson R. Morton's neuroma: review of anatomy, pathomechanism, and imaging Clin Radiol. 2021 Mar;76(3):235.e15-235.e23. doi: 10.1016/j.crad.2020.10.006. PMID 33168237.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/33168237/
+- Source checked on: 2026-09-26
+- Locator: PMID 33168237; review sections (anatomy and pathomechanism theories)
+- Note under review: Imaging review of Morton's neuroma anatomy, pathomechanism, and ultrasound (Clin Radiol, 2021): common plantar digital nerve compression with characteristic symptoms and sonographic confirmation; supports the bounded nerve-entrapment route only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 300.3 — Faulkner A, Mayne A, Davies P, et al. Patient-Related Outcome Measures (PROMs) With Nonoperative and Operative Management of Morton's Neuroma Foot Ankle Int. 2021 Feb;42(2):151-156. doi: 10.1177/1071100720961069. PMID 33019802.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/33019802/
+- Source checked on: 2026-09-26
+- Locator: PMID 33019802; background and results (pain and disability outcomes)
+- Note under review: Prospective observational study of 138 Morton's neuroma patients (44 nonoperative, 94 operative): Morton's neuroma associated with chronic pain and disability; MOXFQ pain scores improved in both groups at 52 weeks; supports the bounded pain-burden proposition only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `mucocele` → `sialadenitis` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Mucocele documents salivary obstruction as a route to sialadenitis at evidence-review level: the rapid evidence review of salivary gland disorders states that sialadenitis can be acute or chronic and caused by bacterial, viral, and obstructive etiologies, and that obstruction is caused by trauma, stenosis, and mucoceles (PMID 38905553), while the oral-disease monograph review classifies mucoceles into mucus extravasation phenomena, mucus retention cysts, and ranulas arising from extravasation of saliva into surrounding soft tissues or retention within the duct (PMID 24862601); the relationship is recorded as documented two-link review-level chain only.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: the located chain runs mucocele to obstruction to obstructive sialadenitis without any cohort quantifying sialadenitis incidence in mucocele patients, and the prominent clinical framing runs the opposite way (ranulas arising from ductal obstruction or trauma), so any individual sialadenitis attribution requires imaging and clinical exclusion of stone, stricture, and infectious causes.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 301.1 — Kim MJ, Milliren A, Gerold DJ Jr. Salivary Gland Disorders: Rapid Evidence Review Am Fam Physician. 2024 Jun;109(6):550-559. PMID 38905553.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/38905553/
+- Source checked on: 2026-09-26
+- Locator: PMID 38905553; review framing (sialadenitis etiologies and causes of obstruction)
+- Note under review: Rapid evidence review of salivary gland disorders (Am Fam Physician, 2024): sialadenitis caused by bacterial, viral, and obstructive etiologies; obstruction caused by trauma, stenosis, and mucoceles; supports the bounded two-link obstructive chain only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 301.2 — Delli K, Spijkervet FK, Vissink A. Salivary gland diseases: infections, sialolithiasis and mucoceles Monogr Oral Sci. 2014;24:135-48. doi: 10.1159/000358794. PMID 24862601.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/24862601/
+- Source checked on: 2026-09-26
+- Locator: PMID 24862601; review framing (mucocele classification and pathogenesis)
+- Note under review: Monograph review (Monogr Oral Sci, 2014): mucoceles differentiated into mucus extravasation phenomenon, mucus retention cyst, and ranula; resulting from extravasation of saliva into soft tissues or retention within the duct; supports the bounded pathway definition only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 301.3 — Sharif AK, Ehsan H, Abri AW, et al. Surgical management of a large plunging ranula: A case report and review of diagnostic challenges J Stomatol Oral Maxillofac Surg. 2025 Jun;126(3S):102219. doi: 10.1016/j.jormas.2025.102219. PMID 39756581.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/39756581/
+- Source checked on: 2026-09-26
+- Locator: PMID 39756581; introduction (ranula etiology)
+- Note under review: Case report and review (J Stomatol Oral Maxillofac Surg, 2025): ranulas arise from the sublingual gland due to ductal obstruction or trauma; carried as the documented reverse-direction counterweight recording that obstruction is framed upstream of mucocele in the case literature.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `multiple-endocrine-neoplasia` → `hyperparathyroidism` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Multiple endocrine neoplasia documents primary hyperparathyroidism as its most penetrant component at genetic-cohort and nationwide level: the Russian cohort of 102 genetically confirmed MEN1 patients from 43 families describes the classic triad of primary hyperparathyroidism, gastrointestinal neuroendocrine neoplasms, and pituitary adenomas and stratifies disease course by age at hyperparathyroidism onset (PMID 41834593), the South Korea nationwide cohort of 412 clinically suspected MEN1 cases found parathyroid involvement the most common manifestation at 58.6 percent (PMID 40607214), and the review of 14 studies covering 3,783 MEN2 or RET-variant carriers found MEN2-associated primary hyperparathyroidism prevalence between 7.84 and 31.3 percent with synchronous diagnosis alongside medullary thyroid carcinoma in 80 percent (PMID 40277809); the relationship is recorded as documented syndrome-component association only.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: the MEN1 and MEN2 pathways differ in penetrance and mechanism (parathyroid multiglandular hyperplasia versus RET-driven adenoma), and the Korean cohort is ICD-defined clinically suspected disease rather than genetically confirmed, so any individual hyperparathyroidism claim requires germline confirmation and endocrine attribution with vitamin-D, renal, and familial-hypocalciuric exclusion.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 302.1 — Salimkhanov RK, Eremkina AK, Bagirova HV, et al. [Multiple endocrine neoplasia syndrome type 1: analysis of data from 102 patients from 43 families in the population of the Russian Federation] Probl Endokrinol (Mosk). 2026 Mar 7;72(1):13-22. doi: 10.14341/probl13642. PMID 41834593.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/41834593/
+- Source checked on: 2026-09-26
+- Locator: PMID 41834593; background and results (classic triad and PHPT-onset stratification)
+- Note under review: Single-center genetic cohort of 102 MEN1 patients from 43 families (Russian Federation, 2015-2025; Russian-language record): classic triad of primary hyperparathyroidism, gastrointestinal neuroendocrine neoplasms, and pituitary adenomas; age at hyperparathyroidism onset stratified disease course; supports the bounded component association only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 302.2 — Kim KJ, Yu MH, Hwang YA, et al. Epidemiology and clinical outcomes of clinically suspected multiple endocrine neoplasia type 1 in South Korea: a nationwide cohort study Front Endocrinol (Lausanne). 2025;16:1562282. doi: 10.3389/fendo.2025.1562282. PMID 40607214.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/40607214/
+- Source checked on: 2026-09-26
+- Locator: PMID 40607214; results (manifestation frequencies in suspected MEN1)
+- Note under review: South Korea nationwide cohort (2003-2020) of 412 clinically suspected MEN1 cases matched 1:10 to 4,120 controls: parathyroid involvement most common at 58.6%, pituitary 22.3%, duodenopancreatic tumors 19.9%; elevated mortality (HR 3.69); supports the bounded manifestation-frequency proposition only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 302.3 — Gheorghe AM, Nistor C, Florescu AF, et al. An Analysis of Primary Hyperparathyroidism in Individuals Diagnosed with Multiple Endocrine Neoplasia Type 2 Diseases. 2025 Mar 27;13(4). doi: 10.3390/diseases13040098. PMID 40277809.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/40277809/
+- Source checked on: 2026-09-26
+- Locator: PMID 40277809; results (MEN2-PHPT prevalence and timing)
+- Note under review: Review of 14 studies covering 3,783 MEN2 or RET pathogenic-variant carriers: MEN2-primary hyperparathyroidism prevalence 7.84-31.3% (3.8% in non-index patients); synchronous diagnosis with medullary thyroid carcinoma in 80%; supports the bounded MEN2 component association only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `multiple-endocrine-neoplasia` → `pituitary-neoplasm` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Multiple endocrine neoplasia type 1 documents pituitary adenoma development at nationwide cohort level: the nationwide multicenter retrospective cohort of 240 MEN1 patients found pituitary adenomas in 112 (46.6 percent) at mean age 36.1 years with most diagnosed through screening, prolactinomas (49.1 percent) and microadenomas (62.5 percent) predominating and prior primary hyperparathyroidism independently marking higher risk (HR 3.09) (PMID 40921719), the Russian 102-patient cohort records pituitary adenomas as the third element of the classic triad with exon 10 mutations carrying 7.7-fold increased pituitary adenoma risk (PMID 41834593), and the South Korea nationwide cohort found pituitary involvement in 22.3 percent of suspected MEN1 cases (PMID 40607214); the relationship is recorded as documented syndrome-component association only.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: pituitary adenoma prevalence estimates range from 22 to 47 percent across screening intensities and definitions, and MEN1 tumor predisposition does not determine which carriers develop adenomas, so any individual pituitary lesion claim requires germline and dedicated sellar imaging attribution with incidentaloma and medication exclusion.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 303.1 — Valdés N, Romero-Lluch AR, Diego E, et al. Risk Factors for Pituitary Adenoma Development in Multiple Endocrine Neoplasia Type 1: A Nationwide Study of 240 Cases J Clin Endocrinol Metab. 2026 Feb 20;111(3):e811-e820. doi: 10.1210/clinem/dgaf497. PMID 40921719.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/40921719/
+- Source checked on: 2026-09-26
+- Locator: PMID 40921719; results (pituitary adenoma occurrence and risk factors)
+- Note under review: Nationwide multicenter retrospective cohort of 240 MEN1 patients: pituitary adenomas in 112 (46.6%) at mean age 36.1 years, 63.3% screening-detected; prolactinomas 49.1%, microadenomas 62.5%; prior primary hyperparathyroidism an independent marker (HR 3.09); supports the bounded component association only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 303.2 — Salimkhanov RK, Eremkina AK, Bagirova HV, et al. [Multiple endocrine neoplasia syndrome type 1: analysis of data from 102 patients from 43 families in the population of the Russian Federation] Probl Endokrinol (Mosk). 2026 Mar 7;72(1):13-22. doi: 10.14341/probl13642. PMID 41834593.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/41834593/
+- Source checked on: 2026-09-26
+- Locator: PMID 41834593; results (pituitary adenoma prevalence and mutation association)
+- Note under review: Single-center genetic cohort of 102 MEN1 patients from 43 families (Russian-language record): pituitary adenomas the third element of the classic triad; exon 10 mutations associated with 7.7-fold increased pituitary adenoma risk (OR 7.7); early-onset hyperparathyroidism predicted earlier adenoma development; supports the bounded component and genotype-phenotype propositions only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 303.3 — Kim KJ, Yu MH, Hwang YA, et al. Epidemiology and clinical outcomes of clinically suspected multiple endocrine neoplasia type 1 in South Korea: a nationwide cohort study Front Endocrinol (Lausanne). 2025;16:1562282. doi: 10.3389/fendo.2025.1562282. PMID 40607214.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/40607214/
+- Source checked on: 2026-09-26
+- Locator: PMID 40607214; results (manifestation frequencies in suspected MEN1)
+- Note under review: South Korea nationwide cohort of 412 clinically suspected MEN1 cases: pituitary involvement 22.3% (second most common manifestation); supports the bounded manifestation-frequency proposition only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `multiple-endocrine-neoplasia` → `pheochromocytoma` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Multiple endocrine neoplasia type 2 documents pheochromocytoma as its second main component at RET-genotype cohort level: the 309-patient MEN2 cohort found pheochromocytoma in 85 patients with RET-codon-specific penetrance (exon 11: 46.6 percent; exon 16: 41.2 percent; exon 10: 29.8 percent; exons 13-15: 1.7 percent) and age-related penetrance rising steadily (PMID 28605116), the MEN2 pheochromocytoma review reports variable penetrance from 10 to 80 percent depending on the RET mutation and calls pheochromocytoma the main disease to screen in RET carriers (PMID 32388798), and the de novo MEN2A case documented bilateral medullary thyroid carcinoma with a left pheochromocytoma (PMID 42272368); the relationship is recorded as documented syndrome-component association only.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: penetrance is RET-codon-specific and age-dependent with lifelong surveillance required, and the case anchor is a single de novo presentation, so any individual pheochromocytoma claim requires germline RET confirmation and biochemical screening with essential-hypertension, medication, and incidental-renal-mass exclusion.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 304.1 — Mucha L, Leidig-Bruckner G, Frank-Raue K, et al. Phaeochromocytoma in multiple endocrine neoplasia type 2: RET codon-specific penetrance and changes in management during the last four decades Clin Endocrinol (Oxf). 2017 Oct;87(4):320-326. doi: 10.1111/cen.13386. PMID 28605116.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/28605116/
+- Source checked on: 2026-09-26
+- Locator: PMID 28605116; results (RET codon-specific penetrance and MTC synchrony)
+- Note under review: Retrospective cohort of 309 MEN2 patients with RET mutations (one specialized center, 1968-2015): pheochromocytoma in 85; penetrance by exon 11 (46.6%), 16 (41.2%), 10 (29.8%), 13-15 (1.7%); highest age-related penetrance at Cys634Arg/Tyr; synchronous MTC in 21/40 early and 8/45 recent cases; supports the bounded component association only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 304.2 — Amodru V, Taieb D, Guerin C, et al. MEN2-related pheochromocytoma: current state of knowledge, specific characteristics in MEN2B, and perspectives Endocrine. 2020 Sep;69(3):496-503. doi: 10.1007/s12020-020-02332-2. PMID 32388798.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/32388798/
+- Source checked on: 2026-09-26
+- Locator: PMID 32388798; review framing (penetrance range and screening primacy)
+- Note under review: Review of MEN2-related pheochromocytoma (Endocrine, 2020): penetrance 10-80% depending on RET mutation; pheochromocytoma the main disease to screen in RET carriers; MEN2B natural history and rare malignant cases discussed; supports the bounded component association only. Preflight note: erratum-linked record (ErratumIn: Endocrine. 2020 Sep;69(3):695, PMID 32488836; Endocrine. 2020 Jul 14, PMID 32666384); disposition - cited framing taken from the indexed parent record, erratum content not indexed in abstract form, flagged for qualified-human disposition during citation verification.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 304.3 — Chami A, Romanet P, Mohammedi F, et al. De novo mutation of the RET proto-oncogene revealing multiple endocrine neoplasia type 2A: a sporadic case from Western Algeria Gulf J Oncolog. 2025 Sep;1(49):35-39. PMID 42272368.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42272368/
+- Source checked on: 2026-09-26
+- Locator: PMID 42272368; case presentation (MTC with pheochromocytoma)
+- Note under review: Sporadic case report (Gulf J Oncol, 2025): 34-year-old woman with bilateral medullary thyroid carcinoma and left pheochromocytoma revealing de novo RET Cys634Ser MEN2A; supports the bounded component co-occurrence only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `multiple-endocrine-neoplasia` → `thyroid-cancer` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Multiple endocrine neoplasia type 2 documents medullary thyroid carcinoma as its core malignant component at genotype-cohort and family-study level: the 309-patient MEN2 cohort records medullary thyroid carcinoma diagnosed synchronously or metachronously with pheochromocytoma and finds pheochromocytoma penetrance correlated with medullary thyroid carcinoma aggressiveness based on RET mutation status (PMID 28605116), the RET K666N family study documents familial medullary thyroid carcinoma with bilateral subcentimeter foci and C-cell hyperplasia across three generations (PMID 39963300), and the de novo MEN2A case presented with bilateral medullary thyroid carcinoma as the revealing manifestation (PMID 42272368); the relationship is recorded as documented syndrome-component association only, scoped to the medullary histotype.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: the medullary histotype is a specific C-cell carcinoma rather than generic thyroid carcinoma, RET codon status determines aggressiveness and timing, and the family anchors are case class, so any individual thyroid malignancy claim requires germline RET and calcitonin/histologic attribution with follicular-variant and incidental-nodule exclusion.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 305.1 — Mucha L, Leidig-Bruckner G, Frank-Raue K, et al. Phaeochromocytoma in multiple endocrine neoplasia type 2: RET codon-specific penetrance and changes in management during the last four decades Clin Endocrinol (Oxf). 2017 Oct;87(4):320-326. doi: 10.1111/cen.13386. PMID 28605116.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/28605116/
+- Source checked on: 2026-09-26
+- Locator: PMID 28605116; results (MTC-pheochromocytoma synchrony and genotype correlation)
+- Note under review: Retrospective cohort of 309 MEN2 patients (one specialized center, 1968-2015): medullary thyroid carcinoma and pheochromocytoma diagnosed synchronously (21/40 early, 8/45 recent) or metachronously; pheochromocytoma penetrance and age at diagnosis correlated with MTC aggressiveness by RET mutation; supports the bounded component association only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 305.2 — Yip AT, Kim TH, Peluso EM, et al. Medullary Thyroid Carcinoma and Clinical Outcomes in Heterozygous Carriers of the RET K666N Germline Pathogenic Variant JCEM Case Rep. 2025 Mar;3(3):luaf002. doi: 10.1210/jcemcr/luaf002. PMID 39963300.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/39963300/
+- Source checked on: 2026-09-26
+- Locator: PMID 39963300; case family outcomes (MTC pathology in carriers)
+- Note under review: Family study (JCEM Case Rep, 2025) of RET K666N germline carriers: 60-year-old carrier with elevated calcitonin and bilateral subcentimeter medullary thyroid carcinoma foci with C-cell hyperplasia on surgical pathology; low penetrance of other MEN2 tumors; supports the bounded familial component association only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 305.3 — Chami A, Romanet P, Mohammedi F, et al. De novo mutation of the RET proto-oncogene revealing multiple endocrine neoplasia type 2A: a sporadic case from Western Algeria Gulf J Oncolog. 2025 Sep;1(49):35-39. PMID 42272368.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42272368/
+- Source checked on: 2026-09-26
+- Locator: PMID 42272368; case presentation (bilateral MTC as presenting feature)
+- Note under review: Sporadic case report (Gulf J Oncol, 2025): bilateral medullary thyroid carcinoma revealing de novo RET Cys634Ser MEN2A in a 34-year-old woman; RET testing vital in all MTC cases; supports the bounded revealing-manifestation proposition only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `multiple-endocrine-neoplasia` → `gastrinoma` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Multiple endocrine neoplasia type 1 documents gastrinoma as its most frequent functional pancreaticoduodenal tumor at surgical-cohort and case level: the AFCE-GTE study of 31 MEN1 patients undergoing pancreatoduodenectomy for duodenopancreatic neuroendocrine tumors lists Zollinger-Ellison syndrome (gastrinoma) as the surgical indication in 18 (58 percent) and reports biochemical cure for MEN1-related gastrinomas in about 60 percent (PMID 33649917), the MEN1 pregnancy case documented biochemically proven primary hyperparathyroidism with Zollinger-Ellison syndrome evidence on endoscopy (PMID 33597314), and the Russian 102-patient cohort records gastrointestinal neuroendocrine neoplasms as the second element of the MEN1 classic triad (PMID 41834593); the relationship is recorded as documented syndrome-component association only.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: the surgical cohort is conditioned on operative selection for large or functioning tumors and the case anchor is a single pregnancy presentation, so any individual gastrinoma claim requires germline MEN1 confirmation and gastrin/secretin-stimulated attribution with proton-pump-inhibitor and antral-G-cell exclusion.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 306.1 — Santucci N, Gaujoux S, Binquet C, et al. Pancreatoduodenectomy for Neuroendocrine Tumors in Patients with Multiple Endocrine Neoplasia Type 1: An AFCE (Association Francophone de Chirurgie Endocrinienne) and GTE (Groupe d'étude des Tumeurs Endocrines) Study World J Surg. 2021 Jun;45(6):1794-1802. doi: 10.1007/s00268-021-06005-7. PMID 33649917.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/33649917/
+- Source checked on: 2026-09-26
+- Locator: PMID 33649917; results (surgical indications and gastrinoma cure rates)
+- Note under review: AFCE-GTE surgical cohort of 31 MEN1 patients undergoing pancreatoduodenectomy for duodenopancreatic neuroendocrine tumors (1971-2013): Zollinger-Ellison syndrome the indication in 18 (58%); biochemical cure for MEN1-related gastrinomas about 60%; supports the bounded component association only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 306.2 — Ali D, Divilly P, Prichard R, et al. Primary hyperparathyroidism and Zollinger Ellison syndrome during pregnancy: a case report Endocrinol Diabetes Metab Case Rep. 2021 Jan 1;2021. PMID 33597314.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/33597314/
+- Source checked on: 2026-09-26
+- Locator: PMID 33597314; case summary (PHPT with Zollinger-Ellison syndrome)
+- Note under review: Case report (Endocrinol Diabetes Metab Case Rep, 2021): MEN1 patient with biochemically proven primary hyperparathyroidism and Zollinger-Ellison syndrome evidence on endoscopy in pregnancy; supports the bounded component co-occurrence only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 306.3 — Salimkhanov RK, Eremkina AK, Bagirova HV, et al. [Multiple endocrine neoplasia syndrome type 1: analysis of data from 102 patients from 43 families in the population of the Russian Federation] Probl Endokrinol (Mosk). 2026 Mar 7;72(1):13-22. doi: 10.14341/probl13642. PMID 41834593.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/41834593/
+- Source checked on: 2026-09-26
+- Locator: PMID 41834593; background (classic triad)
+- Note under review: Single-center genetic cohort of 102 MEN1 patients from 43 families (Russian-language record): gastrointestinal neuroendocrine neoplasms the second element of the MEN1 classic triad; neuroendocrine-tumor onset age differed significantly across strata; supports the bounded component framing only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `multiple-endocrine-neoplasia` → `insulinoma` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Multiple endocrine neoplasia type 1 documents insulinoma at international surgical-cohort level: the 46-center international cohort of 96 MEN1-related insulinoma resections states that insulinomas are found in 10-15 percent of MEN1 patients and lead to life-threatening hypoglycaemia, with multifocal disease in 33 of 96 and recurrent or new insulinoma during follow-up (PMID 32352164), the AFCE-GTE pancreatoduodenectomy cohort lists insulinoma as the surgical indication in 2 of 31 MEN1 patients (7 percent) (PMID 33649917), and the South Korea nationwide cohort recorded duodenopancreatic tumors in 19.9 percent of clinically suspected MEN1 cases (PMID 40607214); the relationship is recorded as documented syndrome-component association only.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual: the 10-15 percent figure is drawn from surgical and specialist series conditioned on symptomatic presentation, and multifocal pancreatic neuroendocrine disease complicates lesion-level attribution, so any individual insulinoma claim requires germline MEN1 confirmation and supervised fasting/insulin-proinsulin attribution with factitious and sulfonylurea exclusion.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 307.1 — van Beek DJ, Nell S, Verkooijen HM, et al. Surgery for multiple endocrine neoplasia type 1-related insulinoma: long-term outcomes in a large international cohort Br J Surg. 2020 Oct;107(11):1489-1499. doi: 10.1002/bjs.11632. PMID 32352164.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/32352164/
+- Source checked on: 2026-09-26
+- Locator: PMID 32352164; background and results (MEN1 insulinoma frequency and outcomes)
+- Note under review: International 46-center cohort of 96 MEN1-related insulinoma resections (1990-2016): insulinomas found in 10-15% of MEN1 patients; 63 localized and 33 multifocal; recurrent disease in 6 (four new insulinomas); 10-year hypoglycaemia-free survival 91%; supports the bounded component association only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 307.2 — Santucci N, Gaujoux S, Binquet C, et al. Pancreatoduodenectomy for Neuroendocrine Tumors in Patients with Multiple Endocrine Neoplasia Type 1: An AFCE (Association Francophone de Chirurgie Endocrinienne) and GTE (Groupe d'étude des Tumeurs Endocrines) Study World J Surg. 2021 Jun;45(6):1794-1802. doi: 10.1007/s00268-021-06005-7. PMID 33649917.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/33649917/
+- Source checked on: 2026-09-26
+- Locator: PMID 33649917; results (surgical indications by tumor type)
+- Note under review: AFCE-GTE surgical cohort of 31 MEN1 patients undergoing pancreatoduodenectomy: insulinoma the indication in 2 (7%) alongside Zollinger-Ellison syndrome 58% and nonfunctioning tumors 29%; supports the bounded component-frequency proposition only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 307.3 — Kim KJ, Yu MH, Hwang YA, et al. Epidemiology and clinical outcomes of clinically suspected multiple endocrine neoplasia type 1 in South Korea: a nationwide cohort study Front Endocrinol (Lausanne). 2025;16:1562282. doi: 10.3389/fendo.2025.1562282. PMID 40607214.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/40607214/
+- Source checked on: 2026-09-26
+- Locator: PMID 40607214; results (manifestation frequencies in suspected MEN1)
+- Note under review: South Korea nationwide cohort of 412 clinically suspected MEN1 cases: duodenopancreatic tumors 19.9% of manifestations behind parathyroid (58.6%) and pituitary (22.3%); supports the bounded manifestation-frequency proposition only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
 ## Implementation mechanics after decisions
 
 - Mapping edits and registry edits must land in lockstep (the registry audit's canonical-JSON hashes and live-use sets will fail otherwise).

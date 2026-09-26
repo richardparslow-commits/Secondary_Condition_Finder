@@ -2,8 +2,78 @@
   "id": "morton-s-neuroma",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review biomechanical, post-injury, orthopedic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 61 (2026-09-26): one ASSOCIATION_ONLY draft mapping pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: the edge asserts association only (etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true, mechanismCategory MECHANICAL_OR_COMPRESSIVE). The evidence base is review class plus one prospective outcomes study, so individual claims require ultrasound-confirmed diagnosis with plantar-plate, bursal, and inflammatory exclusion, and review by a qualified medical professional.",
+    "Pathway and duplicate-scope screens: no -> unexplained-chronic-pain edge (WITHHELD - semantic-mismatch guard: Morton's neuropathic forefoot pain is mechanically and electrophysiologically explained nerve entrapment, not unexplained chronic pain); no -> depressive-disorder edge (WITHHELD - zero located condition-specific psychiatric quantification; the chronic-pain-and-disability framing carries no mood endpoints); no -> hammertoe or hallux-valgus edge (WITHHELD - co-occurring forefoot deformity lists without Morton's-neuroma-specific direction; the published deformity windows keep their own metatarsalgia evidence per ME-29); no -> ankle-pain or contralateral-limp edge (no catalog identity and no located quantification); diagnostic-mimic context recorded - the located ultrasound case documents intermetatarsal bursitis clinically mimicking Morton's neuroma (positive Mulder test, no nerve thickening on ultrasound; PMID 40677501), so individual metatarsalgia claims require ultrasound differentiation; constitutive-proximity tension recorded on the authored edge: forefoot pain is simultaneously the defining symptom of this identity and the metatarsalgia syndrome, so the edge is scoped to Morton's neuroma as a named cause of lesser metatarsalgia per the differential review, not to its own defining pain."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 61 (2026-09-26): one bounded association edge authored - morton-s-neuroma to metatarsalgia (rank 1) - classified ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, and hypothesizedOnly:true. The proposition rests on the metatarsalgia differential-diagnosis review naming Morton's neuroma a main cause of lesser metatarsalgia (PMID 37230133), the anatomy-pathomechanism imaging review (PMID 33168237), and the 138-patient prospective outcomes study (PMID 33019802).",
+    "Counter-evidence and caveat screens recorded 2026-09-26: (i) constitutive proximity - the edge is deliberately scoped to the clinical syndrome framing (Morton's neuroma as a named cause of lesser metatarsalgia) rather than the identity's own defining forefoot pain; (ii) diagnostic mimic - intermetatarsal bursitis is documented to present identically with positive Mulder test and is excluded only by ultrasound (PMID 40677501); (iii) evidence class - review-level causation framing plus one observational outcomes study without incidence denominators; (iv) sibling-window discipline - the hallux-valgus and mallet-toes metatarsalgia windows keep their own evidence and none is recycled (ME-29); (v) withheld psychiatric and chronic-pain propositions - the semantic-mismatch guard blocks an unexplained-chronic-pain edge and no mood quantification was located."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "metatarsalgia",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Morton's neuroma documents lesser metatarsalgia at review and prospective-outcome level: the educational review of metatarsalgia differential diagnosis describes Morton's neuroma and plantar plate injury as the two main causes of lesser metatarsalgia (PMID 37230133), the anatomy and pathomechanism review describes the common plantar digital nerve compression producing characteristic forefoot pain (PMID 33168237), and the prospective observational outcomes study of 138 patients records Morton's neuroma as associated with chronic pain and disability with metatarsal-region pain scores as the primary outcome measure (PMID 33019802); the relationship is recorded as documented clinical-causation framing at review class only.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: metatarsalgia is both the presenting symptom complex of Morton's neuroma and a distinct clinical syndrome with plantar plate injury, Freiberg disease, and inflammatory causes, so any individual metatarsalgia attribution requires ultrasound-confirmed nerve thickening with plantar-plate, bursal, and inflammatory exclusion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MECHANICAL_OR_COMPRESSIVE",
+        "primaryVector": "Chronic compression of the common plantar digital nerve between metatarsal heads drives perineural fibrosis and neuropathic firing so plantar forefoot pain in the metatarsal region results, the nerve-entrapment route documented by the pathomechanism review and consistent with the metatarsalgia framing of the differential-diagnosis review, but whether this route produced any individual metatarsalgia presentation remains hypothesized until ultrasound and clinical records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at review plus prospective-outcome class only: the causation framing is from educational and imaging reviews rather than incidence cohorts, the prospective outcomes study measures pain severity rather than metatarsalgia incidence, and the catalog's published forefoot-identity windows (hallux-valgus, mallet-toes) carry their own metatarsalgia evidence which is not recycled here (ME-29).",
+        "evidenceGaps": "No located cohort quantifies metatarsalgia incidence attributable to Morton's neuroma; constitutive-proximity tension is recorded because forefoot pain is simultaneously the defining symptom of Morton's neuroma and the metatarsalgia syndrome; intermetatarsal bursitis is documented to mimic Morton's neuroma on clinical grounds (PMID 40677501); and plantar plate tears, Freiberg disease, and inflammatory arthritis are competing metatarsalgia causes.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "intermetatarsal bursitis (documented clinical mimic; the located ultrasound case, PMID 40677501)",
+          "plantar plate injury (the review's co-primary cause of lesser metatarsalgia)",
+          "Freiberg disease and metatarsal stress fracture",
+          "hallux valgus and lesser-toe deformity mechanics (the published sibling windows, not recycled per ME-29)",
+          "inflammatory and rheumatoid forefoot disease"
+        ]
+      },
+      "evidenceGaps": [
+        "No located cohort quantifies metatarsalgia incidence attributable to Morton's neuroma; constitutive-proximity tension is recorded because forefoot pain is simultaneously the defining symptom of Morton's neuroma and the metatarsalgia syndrome; intermetatarsal bursitis is documented to mimic Morton's neuroma on clinical grounds (PMID 40677501); and plantar plate tears, Freiberg disease, and inflammatory arthritis are competing metatarsalgia causes."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY on the clinical-causation-review precedent with the constitutive-proximity tension carried openly: the metatarsalgia differential review names Morton's neuroma and plantar plate injury as the two main causes of lesser metatarsalgia (PMID 37230133), the pathomechanism review documents common plantar digital nerve compression (PMID 33168237), and the 138-patient prospective outcomes study records chronic pain and disability (PMID 33019802); because forefoot pain is both the defining symptom of Morton's neuroma and the metatarsalgia syndrome and no cohort quantifies attributable incidence, the conservative standard keeps the edge at association only and routes individual claims through ultrasound-confirmed nerve thickening with plantar-plate, bursal, and inflammatory exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Afonso PD, Britto SV, Spritzer CE, et al. Differential Diagnosis of Metatarsalgia Semin Musculoskelet Radiol. 2023 Jun;27(3):337-350. doi: 10.1055/s-0043-1764388. PMID 37230133.",
+          "note": "Educational review of metatarsalgia differential diagnosis (Semin Musculoskelet Radiol, 2023): describes Morton's neuroma and plantar plate injury as the two main causes of lesser metatarsalgia with differential diagnoses; supports the bounded clinical-causation framing only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/37230133/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 37230133; review framing (two main causes of lesser metatarsalgia)"
+        },
+        {
+          "citation": "Mak MS, Chowdhury R, Johnson R. Morton's neuroma: review of anatomy, pathomechanism, and imaging Clin Radiol. 2021 Mar;76(3):235.e15-235.e23. doi: 10.1016/j.crad.2020.10.006. PMID 33168237.",
+          "note": "Imaging review of Morton's neuroma anatomy, pathomechanism, and ultrasound (Clin Radiol, 2021): common plantar digital nerve compression with characteristic symptoms and sonographic confirmation; supports the bounded nerve-entrapment route only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33168237/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 33168237; review sections (anatomy and pathomechanism theories)"
+        },
+        {
+          "citation": "Faulkner A, Mayne A, Davies P, et al. Patient-Related Outcome Measures (PROMs) With Nonoperative and Operative Management of Morton's Neuroma Foot Ankle Int. 2021 Feb;42(2):151-156. doi: 10.1177/1071100720961069. PMID 33019802.",
+          "note": "Prospective observational study of 138 Morton's neuroma patients (44 nonoperative, 94 operative): Morton's neuroma associated with chronic pain and disability; MOXFQ pain scores improved in both groups at 52 weeks; supports the bounded pain-burden proposition only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33019802/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 33019802; background and results (pain and disability outcomes)"
+        }
+      ]
+    }
+  ]
 }

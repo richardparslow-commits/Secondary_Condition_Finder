@@ -2,8 +2,79 @@
   "id": "mixed-urinary-incontinence",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review urologic, gynecologic, hormonal, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 61 (2026-09-26): one ASSOCIATION_ONLY draft mapping pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: the edge asserts association only (etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true, mechanismCategory PSYCHOPHYSIOLOGICAL). The evidence base is one cross-sectional subtype analysis with a prospective counterweight and a polygenic shared-liability study, so individual claims require dated longitudinal psychiatric review with reverse-direction exclusion, and review by a qualified medical professional.",
+    "Pathway and duplicate-scope screens: no -> anxiety-disorder edge (WITHHELD - zero located mixed-UI-specific anxiety quantification; the located StatPearls review lists anxiety without subtype quantification and the polygenic anxiety signal runs anxiety liability forward to mixed UI, a direction guard); no -> insomnia edge (WITHHELD - the located sleep-deprivation material runs nocturia to sleep loss and nocturia is a separate symptom complex, not the mixed-incontinence identity); no -> urinary-tract-infection, cellulitis, or vaginal-infection edge (WITHHELD - StatPearls-level listing only, no condition-specific quantification, and no urinary-tract-infection catalog identity); no -> falls or fracture edge (no catalog identity - the review's falls signal is recorded as context); no -> sexual-dysfunction edge (no located condition-specific quantification; coital-incontinence material is identity-adjacent context); ME-29 sibling scope - the urinary-incontinence identity (and its stress/urge subtype scopes) keep their own evidence and none is recycled: this edge uses mixed-UI-subgroup-specific data only (the NHANES mixed-UI odds and the ALSPAC mixed-UI prospective figures); no -> stress-incontinence or urge-incontinence edge as second source identity (no catalog identities)."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 61 (2026-09-26): one bounded association edge authored - mixed-urinary-incontinence to depressive-disorder (rank 1) - classified ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, and hypothesizedOnly:true. The proposition rests on the NHANES 2007-2018 analysis of 14,154 women (mixed UI depression OR 2.60; PMID 39600349), with the ALSPAC prospective cohort (PMID 39393464) and the polygenic-risk study (PMID 41076405) carried on the edge as documented counterweights.",
+    "Counter-evidence and caveat screens recorded 2026-09-26: (i) reciprocity and direction - the prospective ALSPAC cohort documents depression preceding subsequent mixed urinary incontinence (OR 1.97) and only stress UI preceding depression, so the cross-sectional anchor's direction is unestablished and the reverse pathway is explicitly recorded; (ii) shared etiology - polygenic liability for neuroticism and anxiety tracks mixed UI, consistent with common-cause confounding; (iii) effect modification - vitamin B12 intake, BMI, and vaginal delivery history modify the association; (iv) diagnosis limit - PHQ-9 screening is not clinical diagnosis; (v) sibling-window discipline - the urinary-incontinence identity keeps its own scope and no evidence is recycled (ME-29); mixed-UI-subgroup-specific data only."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "depressive-disorder",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Mixed urinary incontinence documents depression at large cross-sectional and prospective-cohort level: the NHANES 2007-2018 analysis of 14,154 women found mixed urinary incontinence carrying the highest depression odds of any incontinence subtype (OR 2.60, 95% CI 2.13-3.19) versus stress UI (1.55) and urgency UI (1.92), with dietary vitamin B12 moderating the association (PMID 39600349), while the ALSPAC prospective cohort of parous middle-aged women found the documented prospective pathway running from depression to subsequent mixed urinary incontinence (OR 1.97, 1.16-3.33) with only stress UI predicting subsequent depression (OR 1.37) (PMID 39393464), and the polygenic-risk study found genetic liability for neuroticism and anxiety associated with mixed UI (OR 1.23 and 1.20) (PMID 41076405); the relationship is recorded as documented cross-sectional association with the prospective direction carried openly as counterweight.",
+        "causationStatus": "Neither causation nor aggravation is established for any individual: the strongest quantified association is cross-sectional and cannot establish direction, the located prospective cohort documents the reverse pathway for mixed incontinence specifically, and genetic-liability data suggest shared etiology, so whether any individual depression followed mixed incontinence requires individual longitudinal clinical review with reverse-direction and shared-diathesis exclusion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "PSYCHOPHYSIOLOGICAL",
+        "primaryVector": "Urine leakage combining stress and urge symptoms drives embarrassment, social restriction, and sleep disruption so depressive symptoms emerge, the psychosocial-burden route consistent with the subtype-highest cross-sectional odds and the review-level description of incontinence impacts, but whether this route produced any individual depression remains hypothesized until longitudinal symptom records are reviewed, since the prospective evidence runs depression forward to mixed incontinence at least as strongly.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at single cross-sectional analysis plus prospective counterweight class only: the NHANES association is cross-sectional with PHQ-9 screening rather than clinical diagnosis, the ALSPAC prospective cohort documents depression-to-mixed-UI (OR 1.97) rather than the reverse for this subtype, and the polygenic study's shared-genetic-liability finding (neuroticism PRS 1.23, anxiety PRS 1.20) is consistent with common-cause confounding.",
+        "evidenceGaps": "No located prospective study documents mixed-UI preceding incident depression; the one prospective cohort with subtype resolution found only stress UI predicting later depression; polygenic-liability findings support shared etiology over directional causation; vitamin B12 intake, BMI, and vaginal delivery history modify the cross-sectional association; and menopause, aging, and comorbidity burden are unmodeled co-determinants.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "depression preceding and contributing to incontinence (the documented prospective pathway, PMID 39393464)",
+          "shared genetic liability for neuroticism and mood (PMID 41076405)",
+          "menopause and urogenital atrophy",
+          "sleep disruption from nocturia as an intervening pathway",
+          "diuretic use and medication effects",
+          "the published urinary-incontinence window's own scope (ME-29, not recycled)"
+        ]
+      },
+      "evidenceGaps": [
+        "No located prospective study documents mixed-UI preceding incident depression; the one prospective cohort with subtype resolution found only stress UI predicting later depression; polygenic-liability findings support shared etiology over directional causation; vitamin B12 intake, BMI, and vaginal delivery history modify the cross-sectional association; and menopause, aging, and comorbidity burden are unmodeled co-determinants."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY at single cross-sectional-subtype class with the reverse-direction counterweight carried openly: the NHANES analysis of 14,154 women found mixed urinary incontinence with the highest depression odds of any subtype (OR 2.60, 2.13-3.19; PMID 39600349), while the ALSPAC prospective cohort found depression predicting subsequent mixed UI (OR 1.97) with only stress UI predicting later depression (PMID 39393464) and the polygenic study found shared genetic liability (PMID 41076405); because the cross-sectional anchor cannot establish direction and the prospective subtype data run the opposite way for mixed incontinence, the conservative standard keeps the edge at association only, records the reciprocity openly, and routes individual claims through longitudinal clinical review with reverse-direction and shared-diathesis exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "An F, Wang S, Gao L, et al. Dietary Vitamin B12 Intake Affects the Association Between Urinary Incontinence and Depression in Women: A Cross-Sectional Study of NHANES 2007-2018 Int J Womens Health. 2024;16:1969-1980. doi: 10.2147/IJWH.S475597. PMID 39600349.",
+          "note": "NHANES 2007-2018 cross-sectional analysis of 14,154 women: mixed UI carried the highest depression odds (OR 2.60, 2.13-3.19) versus stress UI (1.55) and urgency UI (1.92); dietary vitamin B12 intake moderated the association; supports the bounded subtype-specific cross-sectional association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39600349/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 39600349; results (depression odds by incontinence subtype and B12 moderation)"
+        },
+        {
+          "citation": "Joinson C, Drake MJ, Fraser A, et al. Bidirectional relationships between depression, anxiety and urinary symptoms in women: A prospective cohort study J Affect Disord. 2025 Jan 15;369:516-522. doi: 10.1016/j.jad.2024.10.035. PMID 39393464.",
+          "note": "ALSPAC prospective cohort of parous middle-aged women (n=5,291 and 6,147): depression predicted subsequent mixed urinary incontinence (OR 1.97, 1.16-3.33) and any UI (1.68); only stress UI predicted subsequent depression (OR 1.37); carried as the documented reverse-direction counterweight. Preflight note: erratum-linked record (ErratumIn: J Affect Disord. 2025 Oct 1;386:119426, PMID 40435777); disposition - cited figures taken from the indexed parent record, erratum content not indexed in abstract form, flagged for qualified-human disposition during citation verification.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39393464/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 39393464; results (bidirectional prospective associations by LUTS subtype)"
+        },
+        {
+          "citation": "Rajan Z, Dardani C, Burrows K, et al. Association of Polygenic Risk Scores for Depression, Anxiety, and Neuroticism with Lower Urinary Tract Symptoms Among Women Eur Urol. 2026 Feb;89(2):174-181. doi: 10.1016/j.eururo.2025.09.4154. PMID 41076405.",
+          "note": "ALSPAC polygenic-risk study (4,758 and 3,026 women): neuroticism PRS associated with mixed UI (OR 1.23) and any UI (1.14), anxiety PRS with mixed UI (1.20), depression PRS with any UI (1.09-1.11); carried as the shared-genetic-liability counterweight recording common-cause confounding.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41076405/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 41076405; results (polygenic risk score associations by LUTS subtype)"
+        }
+      ]
+    }
+  ]
 }

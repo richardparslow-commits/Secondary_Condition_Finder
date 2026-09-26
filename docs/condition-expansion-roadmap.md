@@ -2613,3 +2613,121 @@ swept assertion - the fixture line carries no registry vocabulary so the sweep's
 it; recommend extending the sweep map with an explicit fixture token next batch. The residue check found
 no other survivors outside the standing benign classes. Standing recommendation: batch 60 lands through
 branch, PR, CI, and merge.
+
+## Mapping Expansion D1 batch 61 (2026-09-26)
+
+Mapping Expansion D1 batch 61 (2026-09-26) authored twelve draft-quarantined relationships across all
+five screened identities - `miscarriage`, `mixed-urinary-incontinence`, `morton-s-neuroma`, `mucocele`,
+`multiple-endocrine-neoplasia` - classified ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED,
+vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true, and conservative rationale and
+evidence-gap records on every suggestion. Fourth consecutive window with no deferred identity; all
+withholdings were proposition-level and recorded on the files.
+
+`miscarriage` (3 edges): depressive-disorder (rank 1, PSYCHOPHYSIOLOGICAL) rests on the England linked-
+records cohort of 1.2 million first recorded pregnancies (depression OR 1.50 at 6 months; self-harm OR
+2.30 persisting to three years; PMID 42314414) and the 203-woman QoL trajectory cohort (recurrent loss
+-0.12 EQ-5D utility at 6 months, deficits from the anxiety/depression dimension; PMID 41232802), with the
+2,558-woman nested case-control study (PMID 33685488) carried ON the edge as the documented reverse-
+direction counterweight (mood after first miscarriage predicting later recurrent loss, interaction OR
+1.91); anxiety-disorder (rank 2) rests on the same registry cohort (anxiety OR 1.25; PMID 42314414), the
+5,465-woman SCOPE cohort (one prior miscarriage: anxiety +1.85, stress +0.76; PMID 25565431), and the
+584-woman Australian cohort (excessive worry AOR 2.01; no postpartum effect; PMID 24733508); female-
+infertility (rank 3, POST_SURGICAL_OR_TREATMENT) rests on the 2,546-patient post-curettage cohort
+(Asherman syndrome 1.6%, three-or-more abortions 4.6-fold; PMID 33462894) and the Taiwan nationwide RPL
+cohort (live birth aHR 0.52 with psychiatric comorbidity; PMID 42727502) - the infertility pathway is
+explicitly treatment-mediated (uterine instrumentation, not the loss itself). Withheld: -> self-harm (no
+catalog identity - the anchor cohort's strongest finding recorded as context) and -> postpartum-depression
+(no catalog identity; the Australian cohort found no postpartum effect).
+
+`mixed-urinary-incontinence` (1 edge): depressive-disorder (rank 1, PSYCHOPHYSIOLOGICAL) rests on the
+NHANES 2007-2018 analysis of 14,154 women (mixed UI highest depression odds of any subtype, OR 2.60,
+2.13-3.19; PMID 39600349), with the ALSPAC prospective cohort carried as reverse-direction counterweight
+(depression -> subsequent mixed UI OR 1.97; only stress UI -> later depression OR 1.37; PMID 39393464)
+and the polygenic-risk study as shared-liability counterweight (neuroticism PRS -> mixed UI 1.23; PMID
+41076405). ME-29 sibling discipline: the urinary-incontinence identity keeps its own scope; only
+mixed-UI-subgroup-specific data was used. Withheld: -> anxiety-disorder (no MUI-specific quantification;
+the PRS anxiety signal runs liability -> MUI, a direction guard), -> insomnia (nocturia-mediated, wrong
+direction and wrong identity), -> urinary-tract-infection/cellulitis/falls (StatPearls-level listings only
+and no catalog identities).
+
+`morton-s-neuroma` (1 edge): metatarsalgia (rank 1, MECHANICAL_OR_COMPRESSIVE) rests on the metatarsalgia
+differential-diagnosis review (Morton's neuroma and plantar plate injury the two main causes of lesser
+metatarsalgia; PMID 37230133), the anatomy/pathomechanism imaging review (PMID 33168237), and the
+138-patient prospective outcomes study (chronic pain and disability; PMID 33019802). Constitutive-
+proximity tension recorded openly: forefoot pain is both this identity's defining symptom and the
+metatarsalgia syndrome, so the edge is scoped to the clinical-causation framing only; the intermetatarsal
+bursitis ultrasound case (PMID 40677501) is recorded as a documented diagnostic mimic (positive Mulder
+without nerve thickening). Withheld: -> unexplained-chronic-pain (semantic-mismatch guard - the pain is
+mechanically explained nerve entrapment), -> depressive-disorder (zero condition-specific quantification),
+-> hammertoe/hallux-valgus (co-occurrence lists without direction).
+
+`mucocele` (1 edge): sialadenitis (rank 1, MECHANICAL_OR_COMPRESSIVE) rests on the two-link chain in the
+salivary-gland rapid evidence review ("obstruction is also caused by trauma, stenosis, and mucoceles";
+sialadenitis has obstructive etiologies; PMID 38905553) with the definitional monograph review (PMID
+24862601) and the ranula case framing carried as reverse-direction counterweight (ranulas arise FROM
+ductal obstruction or trauma; PMID 39756581) - the direction tension and the absence of any cohort
+quantifying sialadenitis incidence in mucocele patients are recorded on the edge. Withheld: ->
+oral-candidiasis (zero located evidence), -> dysphagia (ranula cases document appearance and mastication
+impact without dysphagia quantification), -> sialolithiasis (direction guard - retention cysts result from
+obstruction).
+
+`multiple-endocrine-neoplasia` (6 edges): hyperparathyroidism (rank 1, NEUROENDOCRINE_CASCADE) rests on
+the Russian 102-patient MEN1 cohort (classic triad led by PHPT; Russian-language record; PMID 41834593),
+the South Korea nationwide cohort (parathyroid involvement 58.6%; PMID 40607214), and the 14-study MEN2
+review of 3,783 carriers (PHPT 7.84-31.3%; PMID 40277809); pituitary-neoplasm (rank 2) rests on the
+nationwide 240-patient MEN1 cohort (adenomas 46.6%, 63.3% screening-detected; prior PHPT HR 3.09; PMID
+40921719), the Russian cohort (exon 10 mutations OR 7.7; PMID 41834593), and the Korean cohort (22.3%;
+PMID 40607214); pheochromocytoma (rank 3) rests on the 309-patient RET-genotype cohort (85/309; exon-
+specific penetrance 1.7-46.6%; PMID 28605116), the MEN2 review (penetrance 10-80% by RET mutation; PMID
+32388798), and the de novo MEN2A case (PMID 42272368); thyroid-cancer (rank 4, MALIGNANT_TRANSFORMATION)
+rests on the same cohort's MTC-aggressiveness correlation (PMID 28605116), the RET K666N family (familial
+MTC with C-cell hyperplasia; PMID 39963300), and the de novo case (bilateral MTC revealing MEN2A; PMID
+42272368), scoped explicitly to the MEDULLARY histotype because the catalog lacks a medullary identity;
+gastrinoma (rank 5) rests on the AFCE-GTE surgical cohort (ZE syndrome 58% of MEN1 pancreaticoduodenectomies;
+"MEN-1 related gastrinomas" ~60% biochemical cure; PMID 33649917), the MEN1 pregnancy case (ZE with PHPT;
+PMID 33597314), and the Russian cohort's GI-NEN triad component (PMID 41834593); insulinoma (rank 6)
+rests on the 46-center international cohort (96 MEN1-related insulinoma resections; insulinomas in 10-15%
+of MEN1; PMID 32352164), the AFCE-GTE cohort (2/31; PMID 33649917), and the Korean cohort (duodenopancreatic
+tumors 19.9%; PMID 40607214). ME-29 intermediate-node discipline: no -> kidney-stones/osteoporosis (the
+hyperparathyroidism identity's published windows), -> hypertension (the pheochromocytoma window), ->
+peptic-ulcer-disease/hyperinsulinism (the gastrinoma and insulinoma windows), -> miscarriage (via
+hyperparathyroidism); no -> pancreatic-cancer (semantic mismatch - MEN1 duodenopancreatic tumors are
+neuroendocrine, not ductal adenocarcinoma); no -> diabetes-mellitus (comorbidity prevalence unseparated
+from post-pancreatoduodenectomy treatment effects); no -> shortened-lifespan (no catalog identity; the
+Korean cohort's HR 3.69 recorded as context).
+
+Pre-authoring verification: all 27 authored PMIDs (plus 40677501 as context-only) passed the abstract
+pass (`/tmp/d1-abstract47.py` in six fetch groups), the esummary bibliographic pass (every authored author
+list, journal, and page range matched the PubMed record), and `node scripts/preflight-source-status.js
+--pmids ...` - 26/26 zero flags on the first pass and 2/2 zero flags after the mid-write cache addition.
+Tooling correction during authoring (recurring pattern): the first authoring-script run raised a KeyError
+before any KB file was written because PMIDs 33168237 and 33019802 were missing from the citation cache;
+the esummary records were fetched and the write re-run clean. Preflight surfaced three erratum-linked
+notes (PMID 39393464 -> erratum PMID 40435777; PMID 32388798 -> errata PMIDs 32488836 and 32666384); the
+erratum linkage and disposition (cited figures taken from the indexed parent record, erratum content not
+indexed in abstract form, flagged for qualified-human disposition during citation verification) are
+recorded in the affected reference notes. PMID 41834593 is a Russian-language record, recorded as such in
+its reference note. The post-write structural self-audit passed for all five files with zero errors (12
+edges, 35 reference uses), and `npm run kb:validate` reports zero errors.
+
+Registry after lockstep: 670 relationships (596 explicit / 74 legacy), 1163 reference uses (383 verified
+/ 780 pending-verification), 1158 clinical / 5 legal uses, 1056 source entities (346 active / 701
+pending-verification). The six within-batch shared sources - PMIDs 42314414 across the two miscarriage
+mood edges, 41834593 and 40607214 each across three multiple-endocrine-neoplasia edges, 28605116 and
+42272368 each across the pheochromocytoma and thyroid-cancer edges, and 33649917 across the gastrinoma
+and insulinoma edges - give 35 reference uses over 27 new sources. Citation packet regenerated at 307
+worksheets / 780 reference rows = live citation debt; the verification dashboard regenerated at 780 rows
+in 33 reviewer batches (699 distinct sources). Backlog after batch 61: **185** undispositioned zero-edge
+drafts (190 before the batch; all five identities left the queue by gaining edges). Next-five:
+`muscle-atrophy`, `muscle-hernias`, `muscular-dystrophy`, `myopia`, `myxedema-coma`.
+
+Test-pin note: the sweep touched 54 files and replaced 316 counter tokens in one pass with the per-token
+context predicates carried over (relationships 658 -> 670, references/uses 1128 -> 1163, unverified 745
+-> 780, pending source entities 674 -> 701, total source entities 1029 -> 1056, explicit guards 584 ->
+596, clinical references 1123 -> 1158, clinical provenance 1127 -> 1162, and the draft-singles counter
+269 -> 272 for this batch's three single-suggestion identities - `mixed-urinary-incontinence`,
+`morton-s-neuroma`, `mucocele`). RECURRING GAP CLOSED: this batch's sweep map carried the recommended
+explicit fixture token (`Array\.from\({ length` in the unverified-counter context), so the citation-decay-
+gate debt fixture moved 745 -> 780 automatically alongside its own swept assertion - no manual bump
+needed. The residue check found no survivors outside the standing benign classes. Standing recommendation:
+batch 61 lands through branch, PR, CI, and merge.
