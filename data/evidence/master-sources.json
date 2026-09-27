@@ -16,16 +16,16 @@
   "citationPromotionMustAtomicallyUpdateKbAndMasterSourceState": true
  },
  "counts": {
-  "liveSourceReferenceUses": 1397,
+  "liveSourceReferenceUses": 1406,
   "activeSourceEntities": 346,
-  "pendingVerificationSourceEntities": 890,
+  "pendingVerificationSourceEntities": 896,
   "activeClinicalSourceEntities": 345,
-  "pendingClinicalSourceEntities": 890,
+  "pendingClinicalSourceEntities": 896,
   "activeLegalAuthorityEntities": 1,
   "retiredOnlySourceEntities": 1,
   "supersededUnverifiedSourceEntities": 7,
   "bibliographicCorrectionOnlyEntities": 1,
-  "totalSourceEntitiesIncludingLineage": 1245,
+  "totalSourceEntitiesIncludingLineage": 1251,
   "retiredVerifiedRelationshipSourceUses": 6
  },
  "retirementLedger": {
@@ -45989,6 +45989,237 @@
    "retiredUses": [],
    "rawReferenceHashes": [
     "ab9216b5dc1b5e4f0fa8d7a50e4bede2b3c425dc8ac7b4163de22b0299012951"
+   ]
+  },
+  {
+   "sourceId": "pmid-30022021",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "30022021",
+   "doi": null,
+   "canonicalCitation": "Nahm WJ, Mota JA, Rojas S, et al. Improvement of Ulcerations in Treatment-Resistant Chronic Scarring in a Patient with Pyoderma Gangrenosum After Improving Vascular Insufficiency, Gently Removing Necrotic Debris, and Decreasing Wound Fluid Am J Case Rep. 2018 Jul 19;19:844-848. PMID 30022021.",
+   "citationVariants": [
+    "Nahm WJ, Mota JA, Rojas S, et al. Improvement of Ulcerations in Treatment-Resistant Chronic Scarring in a Patient with Pyoderma Gangrenosum After Improving Vascular Insufficiency, Gently Removing Necrotic Debris, and Decreasing Wound Fluid Am J Case Rep. 2018 Jul 19;19:844-848. PMID 30022021."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/30022021/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/30022021/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-pyoderma-gangrenosum-to-scars",
+     "primaryId": "pyoderma-gangrenosum",
+     "targetId": "scars",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "439e54c498173f4e157b925d862ec2f31a20ea611b835dee8898523eaf6908b1"
+   ]
+  },
+  {
+   "sourceId": "pmid-24410585",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "24410585",
+   "doi": null,
+   "canonicalCitation": "Thampy RS, Al-Niaimi F, Lyon C, et al. Management of cicatricial ectropion secondary to pyoderma gangrenosum Orbit. 2014 Apr;33(2):129-31. PMID 24410585.",
+   "citationVariants": [
+    "Thampy RS, Al-Niaimi F, Lyon C, et al. Management of cicatricial ectropion secondary to pyoderma gangrenosum Orbit. 2014 Apr;33(2):129-31. PMID 24410585."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/24410585/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/24410585/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-pyoderma-gangrenosum-to-scars",
+     "primaryId": "pyoderma-gangrenosum",
+     "targetId": "scars",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "1b3d9219fc0f3fa3b4f2731bdac4bd74da6fbcfeab94af6085c7420b08c3a632"
+   ]
+  },
+  {
+   "sourceId": "pmid-41424671",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "41424671",
+   "doi": null,
+   "canonicalCitation": "Ramos-Rincón JM, Esteban-Jarabo J, Senent M, et al. Pyoderma Gangrenosum in Spain: Clinical Features, Therapeutic Management, and Outcomes in a 32-Patient Case Series Health Sci Rep. 2025 Dec;8(12):e71537. PMID 41424671.",
+   "citationVariants": [
+    "Ramos-Rincón JM, Esteban-Jarabo J, Senent M, et al. Pyoderma Gangrenosum in Spain: Clinical Features, Therapeutic Management, and Outcomes in a 32-Patient Case Series Health Sci Rep. 2025 Dec;8(12):e71537. PMID 41424671."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41424671/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/41424671/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-pyoderma-gangrenosum-to-scars",
+     "primaryId": "pyoderma-gangrenosum",
+     "targetId": "scars",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "2c659a211ad82d21faa1ece1cecdcdab6d9c7b2930dd42ab96f2a7e3eae46da3"
+   ]
+  },
+  {
+   "sourceId": "pmid-18766120",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "18766120",
+   "doi": null,
+   "canonicalCitation": "De Angelis R, Salaffi F, Grassi W. Health-related quality of life in primary Raynaud phenomenon J Clin Rheumatol. 2008 Aug;14(4):206-10. PMID 18766120.",
+   "citationVariants": [
+    "De Angelis R, Salaffi F, Grassi W. Health-related quality of life in primary Raynaud phenomenon J Clin Rheumatol. 2008 Aug;14(4):206-10. PMID 18766120."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/18766120/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/18766120/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 2,
+   "liveUses": [
+    {
+     "relationshipId": "rel-raynaud-s-phenomenon-to-depressive-disorder",
+     "primaryId": "raynaud-s-phenomenon",
+     "targetId": "depressive-disorder",
+     "sourceIndex": 0
+    },
+    {
+     "relationshipId": "rel-raynaud-s-phenomenon-to-anxiety-disorder",
+     "primaryId": "raynaud-s-phenomenon",
+     "targetId": "anxiety-disorder",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "ae35399d73048970f838e7032238c016476aae6e862184c4ecefdbba4edf20ce",
+    "85413d6de007d73abc5778b233bcf34cc31d68701f7303cfd22ec0d622e63a69"
+   ]
+  },
+  {
+   "sourceId": "pmid-41546369",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "41546369",
+   "doi": null,
+   "canonicalCitation": "Vaportzis E. Cold Hands, Warm Heart: Quality of life, wellbeing, and mental health in Raynaud's disease - An international survey study J Health Psychol. 2026 Sep;31(10):4096-4112. PMID 41546369.",
+   "citationVariants": [
+    "Vaportzis E. Cold Hands, Warm Heart: Quality of life, wellbeing, and mental health in Raynaud's disease - An international survey study J Health Psychol. 2026 Sep;31(10):4096-4112. PMID 41546369."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41546369/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/41546369/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 2,
+   "liveUses": [
+    {
+     "relationshipId": "rel-raynaud-s-phenomenon-to-depressive-disorder",
+     "primaryId": "raynaud-s-phenomenon",
+     "targetId": "depressive-disorder",
+     "sourceIndex": 1
+    },
+    {
+     "relationshipId": "rel-raynaud-s-phenomenon-to-anxiety-disorder",
+     "primaryId": "raynaud-s-phenomenon",
+     "targetId": "anxiety-disorder",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "8a50bd39f7a275d40b71633813532936ea81a27b8d3327e6a0407f3942877e78",
+    "2eac07c3ea0e25694a7fe1bdbf863b106f32eedbbcd18a0461c3f04c4e2e927d"
+   ]
+  },
+  {
+   "sourceId": "pmid-38282510",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "38282510",
+   "doi": null,
+   "canonicalCitation": "Irving D, Daniels J. Psychological factors in symptom severity and quality of life in Raynaud's phenomenon Behav Cogn Psychother. 2024 Jul;52(4):426-439. PMID 38282510.",
+   "citationVariants": [
+    "Irving D, Daniels J. Psychological factors in symptom severity and quality of life in Raynaud's phenomenon Behav Cogn Psychother. 2024 Jul;52(4):426-439. PMID 38282510."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38282510/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/38282510/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 2,
+   "liveUses": [
+    {
+     "relationshipId": "rel-raynaud-s-phenomenon-to-depressive-disorder",
+     "primaryId": "raynaud-s-phenomenon",
+     "targetId": "depressive-disorder",
+     "sourceIndex": 2
+    },
+    {
+     "relationshipId": "rel-raynaud-s-phenomenon-to-anxiety-disorder",
+     "primaryId": "raynaud-s-phenomenon",
+     "targetId": "anxiety-disorder",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "af3d12035b8a276c2b45c65a99475be9b4230aefcc6f16da9b07138ad151bf2e",
+    "8b147be178a9d298ac056591666007de7461c217828ce2b34044be37422d02f4"
    ]
   }
  ],

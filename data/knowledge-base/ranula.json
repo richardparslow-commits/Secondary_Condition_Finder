@@ -2,8 +2,11 @@
   "id": "ranula",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review oral, dental, maxillofacial, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "DEFERRED (2026-09-26): zero draft mappings authored - the located literature documents ranulas as mucus-retention or extravasation phenomena with case-class complication reports, and the batch-61 mucocele screens already recorded the direction tension and the absence of quantified downstream outcomes. Withheld propositions recorded here (not as deferred identities): no -> sialadenitis edge (DIRECTION-GUARD - ranulas arise FROM ductal obstruction or trauma, so the obstruction-to-retention arrow runs upstream; the batch-61 mucocele to sialadenitis edge carried this ranula framing as reverse-direction counterweight and its sources are left untouched); no -> dysphagia edge (BELOW THRESHOLD - the batch-61 screen recorded that ranula cases document appearance and mastication impact without dysphagia quantification, and this batch's closing searches for plunging-ranula dysphagia or airway quantification returned nothing); no -> airway-obstruction or -> dyspnea propositions (MISSING IDENTITIES plus case-class plunging-ranula reports); no -> oral-candidiasis edge (ZERO RECORD - the batch-61 screen stands); no -> sialolithiasis edge (DIRECTION-GUARD - retention phenomena result from obstruction, not the reverse).",
+    "Reopening conditions: a cohort quantifying dysphagia, airway, or infection outcomes among ranula patients, or validated catalog-scope separation of the ranula identity from the obstruction pathway."
+  ],
+  "governanceNotes": [
+    "D1 batch 77 (2026-09-26): ranula DEFERRED without edges - zero quantified downstream outcomes with direction-guarded obstruction semantics. The batch-61 mucocele entry already recorded the ranula case framing as reverse-direction counterweight (ranulas arise from ductal obstruction or trauma; PMID 39756581 is registered to the mucocele window and is referenced here as already-registered material, not recycled per ME-29) and recorded the dysphagia screen (ranula cases document appearance and mastication impact without dysphagia quantification). This batch's closing searches for plunging-ranula dysphagia, airway obstruction, and complication quantification returned nothing cohort-level. Reopening: complication-outcome cohorts or validated identity separation from the obstruction pathway."
   ],
   "suggestions": []
 }

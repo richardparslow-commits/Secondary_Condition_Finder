@@ -6,8 +6,8 @@
  "installedFrom": "Master Registry Discrepancy Resolution 2026",
  "authorityBoundary": "Authoritative for current relationship direction, proposition text, guard state, source linkage, and KB parity; does not establish an individual VA medical nexus.",
  "counts": {
-  "relationships": 769,
-  "explicitPublicationGuards": 695,
+  "relationships": 772,
+  "explicitPublicationGuards": 698,
   "legacyRationaleBoundaries": 74
  },
  "relationships": [
@@ -24622,6 +24622,99 @@
    "sourceReferenceCount": 3,
    "pathwayIntelligencePresent": false,
    "suggestionObjectHash": "c4f37deaaf809ec995d49b3b4296cb62563b504de1b78d35faabde7396702945"
+  },
+  {
+   "relationshipId": "rel-pyoderma-gangrenosum-to-scars",
+   "primaryId": "pyoderma-gangrenosum",
+   "targetId": "scars",
+   "direction": "pyoderma-gangrenosum -> scars",
+   "primaryPublicationState": "draft",
+   "rank": 1,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY at case-and-series class with the case-class and healing-outcome limits carried openly, following the fournier-s-gangrene to scars precedent (destructive-wound condition to scar sequela): the chronic-scarring case (PMID 30022021) and the cicatricial-ectropion case (PMID 24410585) document the scar sequela explicitly and the 32-patient series (PMID 41424671) documents the prolonged ulcerative course with surgical closure in 15.6 percent; ME-29 discipline: the registered scars windows (fournier-s-gangrene, factitious-disorder, excoriation-disorder) own their sources and none is recycled here; because the anchors are case class without scar-specific denominators and disease-driven versus surgical scarring are not separable, the conservative standard keeps the edge at association only with those limits stated on the record and routes individual claims through dated wound photography and operative records with keloid predisposition and infection excluded."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY at case-and-series class with the case-class and healing-outcome limits carried openly, following the fournier-s-gangrene to scars precedent (destructive-wound condition to scar sequela): the chronic-scarring case (PMID 30022021) and the cicatricial-ectropion case (PMID 24410585) document the scar sequela explicitly and the 32-patient series (PMID 41424671) documents the prolonged ulcerative course with surgical closure in 15.6 percent; ME-29 discipline: the registered scars windows (fournier-s-gangrene, factitious-disorder, excoriation-disorder) own their sources and none is recycled here; because the anchors are case class without scar-specific denominators and disease-driven versus surgical scarring are not separable, the conservative standard keeps the edge at association only with those limits stated on the record and routes individual claims through dated wound photography and operative records with keloid predisposition and infection excluded.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), mechanism MULTIFACTORIAL (disease-driven secondary-intention healing plus treatment-mediated surgical scarring), following the fournier-s-gangrene to scars precedent for destructive-wound scar sequelae (that window and the factitious-disorder and excoriation-disorder scars windows own their sources, none recycled per ME-29), with the case-class and healing-outcome limits carried openly: the treatment-resistant case documents chronic scarring persisting with ulceration (PMID 30022021), the oculoplastic case documents cicatricial ectropion secondary to pyoderma gangrenosum scarring requiring surgical management (PMID 24410585), and the 32-patient case series documents a prolonged ulcerative course with median 19 months to disease control and surgical intervention including grafting in 15.6 percent (PMID 41424671); the scar outcome is the healing sequela of deep neutrophilic ulceration and is not quantified against healed-ulcer denominators in any located cohort, disease-driven and surgical scarring are not separable in the located series, postsurgical presentations (pyoderma gangrenosum arising in surgical scars) complicate direction in surgical cohorts, and pathergy risk makes surgical intervention disease-modifying; individual claims route through dated wound photography and operative records with hypertrophic-keloid predisposition, infection, and trauma causes excluded.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No cohort quantifying scar incidence or scar-specific patient-reported outcomes among healed pyoderma gangrenosum ulcers was located; the scar anchors are case class (PMID 30022021 chronic scarring, PMID 24410585 cicatricial ectropion); the 32-patient series (PMID 41424671) documents disease control and surgery without scar outcomes; and the classic cribriform-healing description is not cohort-quantified in the located literature."
+   ],
+   "sourceIds": [
+    "pmid-30022021",
+    "pmid-24410585",
+    "pmid-41424671"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "412ccf0f73365f97a299ca3b41930a14660da6782711b8777e66252a8f5ceb75"
+  },
+  {
+   "relationshipId": "rel-raynaud-s-phenomenon-to-depressive-disorder",
+   "primaryId": "raynaud-s-phenomenon",
+   "targetId": "depressive-disorder",
+   "direction": "raynaud-s-phenomenon -> depressive-disorder",
+   "primaryPublicationState": "draft",
+   "rank": 1,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY at controlled-primary-cohort class with the direction-inversion, shared-substrate, and survey-measure limits carried openly, following the PSYCHOPHYSIOLOGICAL mood-edge convention: the controlled primary-Raynaud cohort documents the mental-health deficit against matched controls (PMID 18766120), the international survey documents the depression gradient across Raynaud's groups (PMID 41546369), and the regression study documents depression's independent contribution to quality-of-life variance (PMID 38282510), all carrying within-batch sharing with the anxiety edge; because the same literature documents stress-triggered reverse direction and the undiagnosed-group counterweight, the conservative standard keeps the edge at association only with those limits stated on the record and routes individual claims through dated psychiatric and rheumatologic timelines with pre-existing mood disorder and connective-tissue-disease activity excluded."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY at controlled-primary-cohort class with the direction-inversion, shared-substrate, and survey-measure limits carried openly, following the PSYCHOPHYSIOLOGICAL mood-edge convention: the controlled primary-Raynaud cohort documents the mental-health deficit against matched controls (PMID 18766120), the international survey documents the depression gradient across Raynaud's groups (PMID 41546369), and the regression study documents depression's independent contribution to quality-of-life variance (PMID 38282510), all carrying within-batch sharing with the anxiety edge; because the same literature documents stress-triggered reverse direction and the undiagnosed-group counterweight, the conservative standard keeps the edge at association only with those limits stated on the record and routes individual claims through dated psychiatric and rheumatologic timelines with pre-existing mood disorder and connective-tissue-disease activity excluded.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), at PSYCHOPHYSIOLOGICAL, with the direction-inversion, shared-substrate, survey-measure, and undiagnosed-counterweight limits carried openly: the controlled primary-Raynaud cohort of 81 patients versus controls documents a significantly lower SF-36 mental component score (41.9 plus or minus 9.4 versus 46.1 plus or minus 10.7, P=0.006) and extreme anxiety/depression on the EQ-5D in 13.5 percent versus 2.2 percent (P<0.0001) with psychological wellbeing the most involved area (PMID 18766120), the international survey of 720 individuals documents higher anxiety and depression in Raynaud's groups with the secondary form worst (PMID 41546369), and the 210-patient cross-sectional study documents depression contributing 32 percent of quality-of-life variance alongside Raynaud's type and anxiety sensitivity (PMID 38282510); the same literature documents the REVERSE direction (emotional stress triggers vasospastic episodes; anxiety explains 23 percent of hand-symptom-severity variance, PMID 38282510), secondary Raynaud's carries connective-tissue-disease mood morbidity (shared substrate), the mood instruments are screening questionnaires (EQ-5D, DASS-21) rather than structured diagnoses, and the survey's undiagnosed comparison group paradoxically reported worse mental health than diagnosed groups (explicit counterweight); sources are shared with the anxiety edge within this batch; individual claims route through dated psychiatric and rheumatologic records with pre-existing mood disorder, connective-tissue-disease activity, medication effects, and adjustment disorder excluded.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No longitudinal incident-depression cohort among Raynaud's phenomenon patients free of mood disorder at baseline was located; the controlled anchor (81 primary-Raynaud patients) measures SF-36 mental component and EQ-5D anxiety/depression items rather than diagnosed depressive-disorder; the 720-person survey's undiagnosed comparison group reported worse mental health than diagnosed groups (counterweight carried openly); anxiety predicting episode severity leaves direction contested; and secondary-Roy cohorts are substrate-confounded by their connective-tissue disease."
+   ],
+   "sourceIds": [
+    "pmid-18766120",
+    "pmid-41546369",
+    "pmid-38282510"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "b841f625ade6f143e44812dc2e211b113ef448cd3e65e08f743dbb33a7f5da45"
+  },
+  {
+   "relationshipId": "rel-raynaud-s-phenomenon-to-anxiety-disorder",
+   "primaryId": "raynaud-s-phenomenon",
+   "targetId": "anxiety-disorder",
+   "direction": "raynaud-s-phenomenon -> anxiety-disorder",
+   "primaryPublicationState": "draft",
+   "rank": 2,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY at controlled-primary-cohort class with the direction-inversion limit carried prominently open, following the PSYCHOPHYSIOLOGICAL mood-edge convention: the controlled primary-Raynaud cohort (PMID 18766120), the international survey (PMID 41546369), and the regression study (PMID 38282510) are shared with the depressive-disorder edge within this batch; because the reverse-direction signal (anxiety predicting episode severity) is the strongest in the located literature, the conservative standard keeps the edge at association only with the direction limit stated on the record and routes individual claims through dated psychiatric and rheumatologic timelines with pre-existing anxiety disorder excluded."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY at controlled-primary-cohort class with the direction-inversion limit carried prominently open, following the PSYCHOPHYSIOLOGICAL mood-edge convention: the controlled primary-Raynaud cohort (PMID 18766120), the international survey (PMID 41546369), and the regression study (PMID 38282510) are shared with the depressive-disorder edge within this batch; because the reverse-direction signal (anxiety predicting episode severity) is the strongest in the located literature, the conservative standard keeps the edge at association only with the direction limit stated on the record and routes individual claims through dated psychiatric and rheumatologic timelines with pre-existing anxiety disorder excluded.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), at PSYCHOPHYSIOLOGICAL, with the direction-inversion limit carried prominently open and sources shared with the depressive-disorder edge within this batch (PMIDs 18766120, 41546369, 38282510): the controlled primary-Raynaud cohort documents EQ-5D at-least-some anxiety/depression problems in 77.7 percent versus 60.0 percent of controls (P=0.005) with psychological wellbeing the most involved SF-36 area (PMID 18766120), the international survey documents higher anxiety in Raynaud's groups (PMID 41546369), and the 210-patient study documents anxiety differing between Raynaud's types (P<0.004) and explaining 23 percent of hand-symptom-severity variance (PMID 38282510); the strongest directional signal in the located literature runs REVERSE (anxiety predicting episode severity; emotional stress as recognized episode trigger), autonomic arousal overlaps vasospastic physiology, secondary-Raynaud cohorts are substrate-confounded, and the instruments are screening questionnaires rather than structured diagnoses; individual claims route through dated psychiatric and rheumatologic records with pre-existing anxiety disorder, connective-tissue-disease activity, medication effects, and adjustment disorder excluded.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No longitudinal incident-anxiety cohort among Raynaud's phenomenon patients free of anxiety at baseline was located; the quantified signals are screening-questionnaire scores (EQ-5D, DASS-21) in cross-sectional designs; anxiety predicting episode severity (23% severity variance) leaves direction contested in the forward-inverting sense; and the shared anchors are carried with the depressive-disorder edge within this batch."
+   ],
+   "sourceIds": [
+    "pmid-18766120",
+    "pmid-41546369",
+    "pmid-38282510"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "147097b6fe38fc5bf8c0742f5aff499eade829e2fde5a4e1712e4f3f990a9eb5"
   }
  ],
  "lastUpdatedBy": "batch-D1-draft-authoring",

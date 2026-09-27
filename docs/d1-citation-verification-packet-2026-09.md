@@ -14581,6 +14581,126 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 **Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
 
+### `pyoderma-gangrenosum` → `scars` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Pyoderma gangrenosum associates with chronic scarring sequelae at case-and-series class: the treatment-resistant case documents chronic scarring persisting with ulceration in a patient with pyoderma gangrenosum (PMID 30022021), the oculoplastic case documents cicatricial ectropion secondary to pyoderma gangrenosum scarring requiring surgical management (PMID 24410585), and the 32-patient case series documents a prolonged ulcerative course with median 19 months to disease control and surgical intervention including grafting in 15.6 percent of patients (PMID 41424671); recorded as documented association only with the case-class and healing-outcome limits carried openly - the located series document ulcer healing and wound management without scar-specific quantification and the classic cribriform-scarring healing pattern is documented at case level rather than cohort level.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation of scarring is established for any individual: the scar outcome is the healing sequela of deep neutrophilic ulceration and is not quantified against healed-ulcer denominators in any located cohort, the disease's defining pathergy and post-surgical presentations mean iatrogenic and disease-driven scarring are intertwined (postsurgical pyoderma gangrenosum arising in surgical scars is itself a described phenomenon), the case-class anchors cannot estimate incidence, and individual claims require dated wound photography and surgical records with hypertrophic-keloid predisposition, infection, and trauma causes excluded.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 407.1 — Nahm WJ, Mota JA, Rojas S, et al. Improvement of Ulcerations in Treatment-Resistant Chronic Scarring in a Patient with Pyoderma Gangrenosum After Improving Vascular Insufficiency, Gently Removing Necrotic Debris, and Decreasing Wound Fluid Am J Case Rep. 2018 Jul 19;19:844-848. PMID 30022021.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/30022021/
+- Source checked on: 2026-09-26
+- Locator: PMID 30022021; case description (chronic scarring with ulcerations)
+- Note under review: Treatment-resistant chronic scarring case in pyoderma gangrenosum (2018): documents chronic scarring persisting alongside ulcerations with improvement directed at the inflammatory disease; supports the bounded scar-sequela association only (case class).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 407.2 — Thampy RS, Al-Niaimi F, Lyon C, et al. Management of cicatricial ectropion secondary to pyoderma gangrenosum Orbit. 2014 Apr;33(2):129-31. PMID 24410585.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/24410585/
+- Source checked on: 2026-09-26
+- Locator: PMID 24410585; case description (cicatricial scarring sequela)
+- Note under review: Cicatricial ectropion secondary to pyoderma gangrenosum case (Ophthal Plast Reconstr Surg 2014): scarring sequelae of eyelid pyoderma gangrenosum requiring surgical management; supports the bounded scar-sequela association only (case class).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 407.3 — Ramos-Rincón JM, Esteban-Jarabo J, Senent M, et al. Pyoderma Gangrenosum in Spain: Clinical Features, Therapeutic Management, and Outcomes in a 32-Patient Case Series Health Sci Rep. 2025 Dec;8(12):e71537. PMID 41424671.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/41424671/
+- Source checked on: 2026-09-26
+- Locator: PMID 41424671; results (disease course, treatments, outcomes)
+- Note under review: 32-patient case series (Health Sci Rep 2025): ulcerative PG 46.9%; median 19 months to disease control; systemic therapy 74.4%, biologics 22.6%, surgery 15.6%; mortality 9.4%; supports the bounded prolonged-course association only (series class without scar-specific outcomes).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `raynaud-s-phenomenon` → `depressive-disorder` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Raynaud's phenomenon associates with depressive symptoms at controlled primary-cohort and international-survey level: the controlled primary-Raynaud cohort of 81 patients versus control subjects documents a significantly lower SF-36 mental component score (41.9 plus or minus 9.4 versus 46.1 plus or minus 10.7, P=0.006) and far more extreme anxiety/depression on the EQ-5D (13.5 percent versus 2.2 percent, P<0.0001) with the psychological wellbeing domain the most involved area (PMID 18766120), the international survey of 720 individuals documents higher anxiety and depression scores in Raynaud's groups with the secondary form worst (PMID 41546369), and the 210-patient cross-sectional study documents depression contributing independently to quality-of-life variance alongside Raynaud's type and anxiety sensitivity (32 percent variance explained) (PMID 38282510); recorded as documented association only with the direction-inversion, shared-substrate, and survey-measure limits carried openly - psychological stress triggers and predicts episode severity within the same literature (anxiety explaining 23 percent of hand-symptom-severity variance), secondary Raynaud's carries the connective-tissue-disease mood burden, and the survey's undiagnosed comparison group paradoxically reported worse mental health than diagnosed groups.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation of depressive-disorder is established for any individual: the same literature documents the reverse direction (emotional stress is a recognized episode trigger and anxiety predicts symptom severity so psychological state commonly precedes and amplifies the vasospasm), secondary Raynaud's patients carry their underlying connective-tissue disease which independently produces mood morbidity (shared substrate), the mood instruments are screening questionnaires (EQ-5D, DASS-21) rather than structured diagnoses, the controlled cohort is rheumatology-referred and small (81 patients), the international survey's undiagnosed comparison group reported worse mental health than the diagnosed groups which undercuts a simple exposure arrow, and individual claims require dated psychiatric assessment with pre-existing mood disorder, connective-tissue-disease activity, medication effects, and adjustment disorder excluded.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 408.1 — De Angelis R, Salaffi F, Grassi W. Health-related quality of life in primary Raynaud phenomenon J Clin Rheumatol. 2008 Aug;14(4):206-10. PMID 18766120.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/18766120/
+- Source checked on: 2026-09-26
+- Locator: PMID 18766120; results (SF-36 mental component and EQ-5D anxiety/depression comparisons)
+- Note under review: Controlled primary Raynaud phenomenon cohort (J Clin Rheumatol 2008): 81 patients versus control subjects; SF-36 mental component score 41.9 +/- 9.4 versus 46.1 +/- 10.7 (P=0.006); EQ-5D extreme anxiety/depression 13.5% versus 2.2% (P<0.0001); at-least-some anxiety/depression problems 77.7% versus 60.0% (P=0.005); psychological wellbeing the most involved area; supports the bounded association only (screening instruments, small referred cohort).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 408.2 — Vaportzis E. Cold Hands, Warm Heart: Quality of life, wellbeing, and mental health in Raynaud's disease - An international survey study J Health Psychol. 2026 Sep;31(10):4096-4112. PMID 41546369.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/41546369/
+- Source checked on: 2026-09-26
+- Locator: PMID 41546369; results (RQLQ, WHO-5, DASS-21 group comparisons)
+- Note under review: International survey study (J Health Psychol 2026): 720 individuals with Raynaud's disease; secondary Raynaud's reported lower quality of life and wellbeing and higher anxiety, depression, and pain than primary Raynaud's or no diagnosis; the undiagnosed group paradoxically reported worse mental health than diagnosed groups (counterweight carried openly); supports the bounded survey association only (DASS-21, self-report).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 408.3 — Irving D, Daniels J. Psychological factors in symptom severity and quality of life in Raynaud's phenomenon Behav Cogn Psychother. 2024 Jul;52(4):426-439. PMID 38282510.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/38282510/
+- Source checked on: 2026-09-26
+- Locator: PMID 38282510; results (stepwise regressions, both directions)
+- Note under review: Cross-sectional psychological-factors study (Behav Cogn Psychother 2024): 210 adults with Raynaud's; depression, Raynaud's type, and anxiety sensitivity explained 32% of quality-of-life variance (p<0.001); anxiety explained 23% of hand-symptom-severity variance - the reverse direction carried openly (psychological factors predict episode severity); supports the bounded association only (cross-sectional, direction contested).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `raynaud-s-phenomenon` → `anxiety-disorder` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Raynaud's phenomenon associates with anxiety symptoms at controlled primary-cohort and international-survey level: the controlled primary-Raynaud cohort of 81 patients versus controls documents significantly more anxiety/depression burden on the EQ-5D (77.7 percent reporting at least some problems versus 60.0 percent, P=0.005) with psychological wellbeing the most involved SF-36 area (PMID 18766120), the international survey of 720 individuals documents higher anxiety scores in Raynaud's groups with the secondary form worst (PMID 41546369), and the 210-patient cross-sectional study documents anxiety differing between primary and secondary types (P<0.004) and explaining 23 percent of hand-symptom-severity variance (PMID 38282510); recorded as documented association only with the direction-inversion limit carried prominently open - within the same literature anxiety predicts and stress triggers the vasospastic episodes so psychological state commonly precedes rather than follows the syndrome, sources are shared with the depressive-disorder edge within this batch.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation of anxiety-disorder is established for any individual: the strongest directional signal in the located literature runs REVERSE (anxiety explains 23 percent of symptom-severity variance and emotional stress is a recognized episode trigger), secondary Raynaud's carries connective-tissue-disease substrate with independent anxiety morbidity (shared substrate), the instruments are screening questionnaires (EQ-5D, DASS-21) rather than structured diagnoses, autonomic arousal of anxiety overlaps the vasospastic physiology, and individual claims require dated psychiatric assessment with pre-existing anxiety disorder, connective-tissue-disease activity, medication effects, and adjustment disorder excluded.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 409.1 — De Angelis R, Salaffi F, Grassi W. Health-related quality of life in primary Raynaud phenomenon J Clin Rheumatol. 2008 Aug;14(4):206-10. PMID 18766120.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/18766120/
+- Source checked on: 2026-09-26
+- Locator: PMID 18766120; results (EQ-5D anxiety/depression comparison)
+- Note under review: Controlled primary Raynaud phenomenon cohort (J Clin Rheumatol 2008): EQ-5D at-least-some anxiety/depression problems 77.7% versus 60.0% controls (P=0.005); psychological wellbeing the most involved SF-36 area; supports the bounded association only (screening instruments; shared with the depressive-disorder edge within this batch).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 409.2 — Vaportzis E. Cold Hands, Warm Heart: Quality of life, wellbeing, and mental health in Raynaud's disease - An international survey study J Health Psychol. 2026 Sep;31(10):4096-4112. PMID 41546369.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/41546369/
+- Source checked on: 2026-09-26
+- Locator: PMID 41546369; results (DASS-21 anxiety group comparisons)
+- Note under review: International survey study (J Health Psychol 2026): 720 individuals; higher anxiety in Raynaud's groups (secondary worst); undiagnosed group counterweight carried openly; supports the bounded survey association only (DASS-21; shared with the depressive-disorder edge within this batch).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 409.3 — Irving D, Daniels J. Psychological factors in symptom severity and quality of life in Raynaud's phenomenon Behav Cogn Psychother. 2024 Jul;52(4):426-439. PMID 38282510.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/38282510/
+- Source checked on: 2026-09-26
+- Locator: PMID 38282510; results (regressions, severity predicted by anxiety)
+- Note under review: Cross-sectional psychological-factors study (Behav Cogn Psychother 2024): 210 adults; anxiety differed between Raynaud's types (p<0.004) and explained 23% of hand-symptom-severity variance - reverse direction carried openly (anxiety predicts episode severity); supports the bounded association only (cross-sectional; shared with the depressive-disorder edge within this batch).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
 ## Implementation mechanics after decisions
 
 - Mapping edits and registry edits must land in lockstep (the registry audit's canonical-JSON hashes and live-use sets will fail otherwise).

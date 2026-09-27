@@ -2,8 +2,76 @@
   "id": "pyoderma-gangrenosum",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review dermatologic, autoimmune, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 77 (2026-09-26): one ASSOCIATION_ONLY draft mapping pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: the edge asserts association only (etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true, MULTIFACTORIAL - disease-driven secondary-intention healing plus treatment-mediated surgical scarring) following the fournier-s-gangrene to scars precedent for destructive-wound scar sequelae. The edge carries the case-class limit openly (scar anchors are individual cases; the 32-patient series documents prolonged ulcerative course and surgical closure without scar-specific outcomes) and the healing-outcome limit (the classic cribriform-scarring pattern is textbook-documented but not cohort-quantified in the located literature). Individual claims require dated wound photography and operative records with hypertrophic-keloid predisposition, infection, and trauma causes excluded and review by a qualified medical professional.",
+    "Pathway and duplicate-scope screens and withheld propositions: no -> inflammatory-bowel-disease or -> rheumatoid-arthritis edges (DIRECTION-GUARD/SHARED-SUBSTRATE - IBD in 21.8 to 29.3 percent and rheumatoid arthritis in 10.3 to 15.6 percent of the located cohorts are associated systemic conditions that commonly precede or accompany the pyoderma gangrenosum, so the arrow runs upstream; the pyoderma-gangrenosum and hidradenitis-suppurativa overlap literature is also recorded as spectrum-adjacent, not downstream); no -> multiple-myeloma or -> non-hodgkins-lymphoma edges (PARANEOPLASTIC DIRECTION-GUARD plus SHARED-SUBSTRATE - malignancy in 15.5 percent of the 58-patient cohort is associated substrate and the pyoderma gangrenosum is commonly framed as the paraneoplastic consequence, so the arrow runs malignancy-to-skin); no -> depressive-disorder or -> anxiety-disorder edges (BELOW THRESHOLD - pain burden and psychological-care components are documented in the nursing series without condition-specific quantified mood cohorts; reopening condition recorded); no -> anemia edge (ZERO RECORD in this window); no -> sepsis proposition (MISSING IDENTITY - three deaths in the 9-patient wound series included septic shock, recorded as a screen only); no -> hidradenitis-suppurativa edge (SPECTRUM-OVERLAP/IDENTITY-DUPLICATION - the association/overlap/spectrum literature treats the pair as related constructs). ME-29 discipline: the registered scars windows (fournier-s-gangrene, factitious-disorder, excoriation-disorder) own their sources and none is recycled here."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 77 (2026-09-26): one bounded association edge authored - pyoderma-gangrenosum to scars (rank 1) - classified ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true, mechanismCategory MULTIFACTORIAL. The edge rests on the chronic-scarring case (PMID 30022021), the cicatricial-ectropion scar-sequela case (PMID 24410585), and the 32-patient Spanish case series (median 19 months to disease control; surgery 15.6 percent; mortality 9.4 percent; PMID 41424671), with the case-class and healing-outcome limits carried openly. The systemic-association windows are recorded as direction-guarded screens: IBD (29.3 percent and 21.8 percent across the two cohorts) and rheumatoid arthritis are upstream/associated substrates, and malignancy (15.5 percent) is paraneoplastic-direction material."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "scars",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Pyoderma gangrenosum associates with chronic scarring sequelae at case-and-series class: the treatment-resistant case documents chronic scarring persisting with ulceration in a patient with pyoderma gangrenosum (PMID 30022021), the oculoplastic case documents cicatricial ectropion secondary to pyoderma gangrenosum scarring requiring surgical management (PMID 24410585), and the 32-patient case series documents a prolonged ulcerative course with median 19 months to disease control and surgical intervention including grafting in 15.6 percent of patients (PMID 41424671); recorded as documented association only with the case-class and healing-outcome limits carried openly - the located series document ulcer healing and wound management without scar-specific quantification and the classic cribriform-scarring healing pattern is documented at case level rather than cohort level.",
+        "causationStatus": "Neither causation nor aggravation of scarring is established for any individual: the scar outcome is the healing sequela of deep neutrophilic ulceration and is not quantified against healed-ulcer denominators in any located cohort, the disease's defining pathergy and post-surgical presentations mean iatrogenic and disease-driven scarring are intertwined (postsurgical pyoderma gangrenosum arising in surgical scars is itself a described phenomenon), the case-class anchors cannot estimate incidence, and individual claims require dated wound photography and surgical records with hypertrophic-keloid predisposition, infection, and trauma causes excluded."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MULTIFACTORIAL",
+        "primaryVector": "Deep neutrophilic ulceration healing by secondary intention with cribriform or atrophic scar tissue is the hypothesized scarring route, with surgical closure and grafting after prolonged ulcerative courses contributing a treatment-mediated component, the dual route supported by the case-level scar documentation and the series-level surgical-closure fraction, but whether either route produced any individual's scar remains hypothesized until wound and operative records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association rests on two case-class scar anchors plus one 32-patient series documenting the prolonged ulcerative course and surgical-closure fraction without scar-specific outcomes: no healed-ulcer denominator with scar incidence is available, the characteristic cribriform-scarring pattern is textbook-documented but only case-supported here, disease-driven healing and surgical scarring are not separable in the located series, postsurgical presentations (pyoderma gangrenosum arising in scars) complicate direction in surgical cohorts, and pathergy risk makes surgical intervention itself disease-modifying.",
+        "evidenceGaps": "No cohort quantifying scar incidence or scar-specific patient-reported outcomes among healed pyoderma gangrenosum ulcers was located; the scar anchors are case class (PMID 30022021 chronic scarring, PMID 24410585 cicatricial ectropion); the 32-patient series (PMID 41424671) documents disease control and surgery without scar outcomes; and the classic cribriform-healing description is not cohort-quantified in the located literature.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "hypertrophic-keloid predisposition and genetic scarring tendency (postsurgical pyoderma gangrenosum arising in keloid resection scars is separately described)",
+          "surgical closure and skin-graft donor-site scarring as treatment-mediated contribution (treatment-mediated limit carried openly)",
+          "infection and wound complications during the prolonged ulcerative phase",
+          "factitious and excoriative skin disease producing scarring (the registered factitious-disorder and excoriation-disorder scars windows own their sources; none recycled per ME-29)"
+        ]
+      },
+      "evidenceGaps": [
+        "No cohort quantifying scar incidence or scar-specific patient-reported outcomes among healed pyoderma gangrenosum ulcers was located; the scar anchors are case class (PMID 30022021 chronic scarring, PMID 24410585 cicatricial ectropion); the 32-patient series (PMID 41424671) documents disease control and surgery without scar outcomes; and the classic cribriform-healing description is not cohort-quantified in the located literature."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY at case-and-series class with the case-class and healing-outcome limits carried openly, following the fournier-s-gangrene to scars precedent (destructive-wound condition to scar sequela): the chronic-scarring case (PMID 30022021) and the cicatricial-ectropion case (PMID 24410585) document the scar sequela explicitly and the 32-patient series (PMID 41424671) documents the prolonged ulcerative course with surgical closure in 15.6 percent; ME-29 discipline: the registered scars windows (fournier-s-gangrene, factitious-disorder, excoriation-disorder) own their sources and none is recycled here; because the anchors are case class without scar-specific denominators and disease-driven versus surgical scarring are not separable, the conservative standard keeps the edge at association only with those limits stated on the record and routes individual claims through dated wound photography and operative records with keloid predisposition and infection excluded.",
+      "sourceReferences": [
+        {
+          "citation": "Nahm WJ, Mota JA, Rojas S, et al. Improvement of Ulcerations in Treatment-Resistant Chronic Scarring in a Patient with Pyoderma Gangrenosum After Improving Vascular Insufficiency, Gently Removing Necrotic Debris, and Decreasing Wound Fluid Am J Case Rep. 2018 Jul 19;19:844-848. PMID 30022021.",
+          "note": "Treatment-resistant chronic scarring case in pyoderma gangrenosum (2018): documents chronic scarring persisting alongside ulcerations with improvement directed at the inflammatory disease; supports the bounded scar-sequela association only (case class).",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/30022021/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 30022021; case description (chronic scarring with ulcerations)"
+        },
+        {
+          "citation": "Thampy RS, Al-Niaimi F, Lyon C, et al. Management of cicatricial ectropion secondary to pyoderma gangrenosum Orbit. 2014 Apr;33(2):129-31. PMID 24410585.",
+          "note": "Cicatricial ectropion secondary to pyoderma gangrenosum case (Ophthal Plast Reconstr Surg 2014): scarring sequelae of eyelid pyoderma gangrenosum requiring surgical management; supports the bounded scar-sequela association only (case class).",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/24410585/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 24410585; case description (cicatricial scarring sequela)"
+        },
+        {
+          "citation": "Ramos-Rincón JM, Esteban-Jarabo J, Senent M, et al. Pyoderma Gangrenosum in Spain: Clinical Features, Therapeutic Management, and Outcomes in a 32-Patient Case Series Health Sci Rep. 2025 Dec;8(12):e71537. PMID 41424671.",
+          "note": "32-patient case series (Health Sci Rep 2025): ulcerative PG 46.9%; median 19 months to disease control; systemic therapy 74.4%, biologics 22.6%, surgery 15.6%; mortality 9.4%; supports the bounded prolonged-course association only (series class without scar-specific outcomes).",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41424671/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 41424671; results (disease course, treatments, outcomes)"
+        }
+      ]
+    }
+  ]
 }
