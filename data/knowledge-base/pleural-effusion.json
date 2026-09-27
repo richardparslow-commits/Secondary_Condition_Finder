@@ -2,8 +2,77 @@
   "id": "pleural-effusion",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review airway, aspiration, inflammatory, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 72 (2026-09-26): one ASSOCIATION_ONLY draft mapping pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: the edge asserts association only (etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true) and is scoped to the thoracentesis-complication window with the treatment-mediated limit carried openly (the pneumothorax arises from the pleural procedure performed because of the effusion, not from the fluid itself), following the POST_SURGICAL_OR_TREATMENT convention for treatment-mediated edges (insomnia to depressive-disorder precedent); individual claims require dated procedure and imaging records with underlying bullous disease, COPD, malignancy, and pre-procedure pneumothorax exclusion and review by a qualified medical professional.",
+    "Pathway and duplicate-scope screens and withheld propositions: no -> empyema, trapped-lung, fibrothorax, pleural-thickening, atelectasis, or respiratory-failure edges (ABSENT IDENTITIES - the chronic suppurative and fibrotic sequela landscape has no catalog targets); no -> pulmonary-embolism or deep-vein-thrombosis edges (DIRECTION-INVERSION - pulmonary embolism produces pleural effusion, not the reverse); no -> pneumonia-residuals edge (TARGET-MISMATCH - parapneumonic effusion is an acute-phase complication of the pneumonia episode rather than a residuals pathway); no -> pericardial-effusion edge (IDENTITY ADJACENCY - distinct serosal compartment and the batch-70 pericardial-effusion deferral documents the missing tamponade/constriction landscape; the pericardiocentesis-pneumothorax procedure literature is deliberately not used, the edge is scoped to thoracentesis only); bidirectional discipline: the reverse pneumothorax to pleural-effusion direction is withheld on bidirectional-pair avoidance and recorded on the pneumothorax file (CRG bidirectional-pair count kept at 4); ME-29 discipline - the amebic-liver-abscess, liver-abscess, lung-abscess, broncho-alveolar-carcinoma, lymphangioleiomyomatosis, and pleura-cancer incoming effusion windows own their trans-pleural, rupture, chylous, and tumor route evidence and none is recycled here."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 72 (2026-09-26): one bounded association edge authored - pleural-effusion to pneumothorax (rank 1) - classified ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true, and mechanismCategory POST_SURGICAL_OR_TREATMENT. The edge rests on the 550-patient thoracentesis cohort (12 percent post-procedure pneumothorax, drained volume the main associated factor, PMID 32274162), the three-trial randomized meta-analysis (1 of 99 ultrasound-guided versus 20 of 113 anatomic-landmark procedures, PMID 40738083), and the prospective ICU series (1 of 81, PMID 32337606). The treatment-mediated and procedure-scoped limits are carried openly on the edge, the references, and the guard: no disease-driven effusion-to-pneumothorax pathway is quantified and the entire window is procedural, so the edge registers the thoracentesis-complication association only. Within-batch disclosure: the reverse pneumothorax to pleural-effusion direction is withheld on bidirectional-pair avoidance so the CRG bidirectional-pair count stays at 4."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "pneumothorax",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Pleural effusion associates with procedure-related pneumothorax at retrospective-cohort and randomized-trial meta-analysis level: the 550-patient cohort of ultrasound-guided thoracentesis for pleural effusion documents post-procedure pneumothorax in 66 patients (12 percent) with drained volume the main associated factor (PMID 32274162), the meta-analysis of three randomized trials (417 patients) documents post-thoracentesis pneumothorax in 1 of 99 ultrasound-guided versus 20 of 113 anatomic-landmark procedures (PMID 40738083), and the prospective ICU cohort of 81 real-time ultrasound-guided thoracenteses documents 1 pneumothorax (1.2 percent, PMID 32337606); recorded as documented association only with the treatment-mediated and procedure-scoped limits carried openly - the pneumothorax arises from the pleural procedure performed because of the effusion, not from the fluid itself.",
+        "causationStatus": "Neither causation nor aggravation of pneumothorax is established for any individual: the entire evidence window is procedural, so the edge registers the thoracentesis-complication pathway and not any disease-driven route from effusion fluid to air leak, event rates vary widely with imaging guidance and operator technique, and individual claims require dated procedure records with needle or catheter documentation and exclusion of underlying bullous disease, chronic obstructive pulmonary disease, malignancy, and spontaneous pneumothorax predating the procedure."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "POST_SURGICAL_OR_TREATMENT",
+        "primaryVector": "Needle or catheter traversal of the visceral pleura during thoracentesis performed for the effusion creates an alveolar-pleural communication so air leaks into the pleural space and the lung partially collapses, the route supported by the sharp fall in pneumothorax events when ultrasound guidance replaces anatomic landmark technique, but whether this route produced any individual pneumothorax remains hypothesized until procedural, imaging, and pulmonary records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at one retrospective 550-patient cohort, one three-trial randomized meta-analysis, and one 81-case prospective ICU series: all three condition on undergoing thoracentesis so no effusion-managed-without-procedure cohort exists, the 12 percent single-centre rate reflects liberal post-procedure imaging detection while the trial meta-analysis counts 1 of 99 under ultrasound guidance, and technique, drained volume, and underlying lung disease are inseparable contributors.",
+        "evidenceGaps": "No cohort of pleural-effusion patients managed without pleural procedures who developed pneumothorax was located, so no disease-driven effusion-to-pneumothorax pathway is quantified; pneumothorax rates differ roughly tenfold between anatomic-landmark (20 of 113) and ultrasound-guided (1 of 99) technique so pooled rates are technique-mediated; and risk-factor attribution (larger drained volume, bilateral procedures, smaller fluid depth in PMID 32274162) is multivariable-model-dependent without external validation.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "underlying bullous lung disease, COPD, or cystic lung disease causing spontaneous pneumothorax independent of the effusion",
+          "malignant effusion with endobronchial obstruction or malignant airway invasion (the malignant-effusion windows own their route evidence per ME-29)",
+          "positive-pressure mechanical ventilation barotrauma",
+          "central venous catheter placement and other thoracic procedures performed during the same admission",
+          "reverse timing: pneumothorax predating and unmasking a paramalignant or inflammatory effusion"
+        ]
+      },
+      "evidenceGaps": [
+        "No cohort of pleural-effusion patients managed without pleural procedures who developed pneumothorax was located, so no disease-driven effusion-to-pneumothorax pathway is quantified; pneumothorax rates differ roughly tenfold between anatomic-landmark (20 of 113) and ultrasound-guided (1 of 99) technique so pooled rates are technique-mediated; and risk-factor attribution (larger drained volume, bilateral procedures, smaller fluid depth in PMID 32274162) is multivariable-model-dependent without external validation."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY at retrospective-cohort-plus-randomized-meta-analysis class with the treatment-mediated and procedure-scoped limits carried openly, following the PHARMACOLOGICAL_IATROGENIC/POST_SURGICAL_OR_TREATMENT convention for treatment-mediated edges (insomnia to depressive-disorder precedent): the 550-patient cohort documents 12 percent post-thoracentesis pneumothorax (PMID 32274162), the randomized-trial meta-analysis documents a tenfold gradient by guidance technique (PMID 40738083), and the ICU series documents 1.2 percent under real-time ultrasound (PMID 32337606); because the pathway is entirely procedural and no disease-driven route is quantified, the conservative standard keeps the edge at association only, scopes it to the thoracentesis-complication window, and routes individual claims through dated procedure and imaging records with underlying-lung-disease exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Shechtman L, Shrem M, Kleinbaum Y, et al. Incidence and risk factors of pneumothorax following pre-procedural ultrasound-guided thoracentesis J Thorac Dis. 2020 Mar;12(3):942-948. PMID 32274162.",
+          "note": "Retrospective cohort of 550 patients with pleural effusions undergoing pre-procedural ultrasound-guided thoracentesis 2016-2018 (J Thorac Dis 2020): 66 (12%) developed pneumothorax; larger drained volume independently associated (OR 1.001 per mL), with congestive heart failure, smaller fluid depth, and bilateral procedures over-represented; supports the bounded procedure-complication association only (treatment-mediated, liberal imaging detection).",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/32274162/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 32274162; results (pneumothorax incidence and multivariable risk factors)"
+        },
+        {
+          "citation": "Lakkadghatwala R, Wilson A, Sabhaney V, et al. Ultrasound guidance compared to anatomic landmark approach for thoracentesis: A systematic review and meta-analysis Am J Emerg Med. 2025 Nov;97:159-164. PMID 40738083.",
+          "note": "Systematic review and meta-analysis of three randomized trials, 417 patients (Am J Emerg Med 2025): post-thoracentesis pneumothorax in 1 of 99 ultrasound-guided versus 20 of 113 anatomic-landmark procedures; ultrasound guidance trended toward lower complication rates (OR 0.18); supports the bounded procedure-complication association only with the technique gradient carried openly.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40738083/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 40738083; results (post-procedure pneumothorax counts by guidance technique)"
+        },
+        {
+          "citation": "Rodriguez Lima DR, Yepes AF, Birchenall Jiménez CI, et al. Real-time ultrasound-guided thoracentesis in the intensive care unit: prevalence of mechanical complications Ultrasound J. 2020 Apr 26;12(1):25. PMID 32337606.",
+          "note": "Prospective observational study of 81 real-time ultrasound-guided thoracenteses performed by intensivists (Ultrasound J 2020): 1 pneumothorax (1.2% mechanical complication prevalence); supports the bounded procedure-complication association only (small series, single centre).",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/32337606/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 32337606; results (mechanical complication prevalence)"
+        }
+      ]
+    }
+  ]
 }

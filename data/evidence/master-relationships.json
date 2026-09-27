@@ -6,8 +6,8 @@
  "installedFrom": "Master Registry Discrepancy Resolution 2026",
  "authorityBoundary": "Authoritative for current relationship direction, proposition text, guard state, source linkage, and KB parity; does not establish an individual VA medical nexus.",
  "counts": {
-  "relationships": 744,
-  "explicitPublicationGuards": 670,
+  "relationships": 749,
+  "explicitPublicationGuards": 675,
   "legacyRationaleBoundaries": 74
  },
  "relationships": [
@@ -23855,6 +23855,159 @@
    "sourceReferenceCount": 2,
    "pathwayIntelligencePresent": false,
    "suggestionObjectHash": "f416b2bb5fbee23cabef3a876588e0953deed497192d788de879ac8cc1690864"
+  },
+  {
+   "relationshipId": "rel-pleural-effusion-to-pneumothorax",
+   "primaryId": "pleural-effusion",
+   "targetId": "pneumothorax",
+   "direction": "pleural-effusion -> pneumothorax",
+   "primaryPublicationState": "draft",
+   "rank": 1,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY at retrospective-cohort-plus-randomized-meta-analysis class with the treatment-mediated and procedure-scoped limits carried openly, following the PHARMACOLOGICAL_IATROGENIC/POST_SURGICAL_OR_TREATMENT convention for treatment-mediated edges (insomnia to depressive-disorder precedent): the 550-patient cohort documents 12 percent post-thoracentesis pneumothorax (PMID 32274162), the randomized-trial meta-analysis documents a tenfold gradient by guidance technique (PMID 40738083), and the ICU series documents 1.2 percent under real-time ultrasound (PMID 32337606); because the pathway is entirely procedural and no disease-driven route is quantified, the conservative standard keeps the edge at association only, scopes it to the thoracentesis-complication window, and routes individual claims through dated procedure and imaging records with underlying-lung-disease exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY at retrospective-cohort-plus-randomized-meta-analysis class with the treatment-mediated and procedure-scoped limits carried openly, following the PHARMACOLOGICAL_IATROGENIC/POST_SURGICAL_OR_TREATMENT convention for treatment-mediated edges (insomnia to depressive-disorder precedent): the 550-patient cohort documents 12 percent post-thoracentesis pneumothorax (PMID 32274162), the randomized-trial meta-analysis documents a tenfold gradient by guidance technique (PMID 40738083), and the ICU series documents 1.2 percent under real-time ultrasound (PMID 32337606); because the pathway is entirely procedural and no disease-driven route is quantified, the conservative standard keeps the edge at association only, scopes it to the thoracentesis-complication window, and routes individual claims through dated procedure and imaging records with underlying-lung-disease exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to the thoracentesis-complication window with the treatment-mediated and procedure-scoped limits carried openly: the 550-patient cohort of ultrasound-guided thoracentesis for pleural effusion documents post-procedure pneumothorax in 12 percent with drained volume the main associated factor (PMID 32274162), the three-trial randomized meta-analysis documents 1 of 99 ultrasound-guided versus 20 of 113 anatomic-landmark procedures (PMID 40738083), and the prospective ICU series documents 1 of 81 (PMID 32337606); the pneumothorax arises from the pleural procedure performed because of the effusion and no disease-driven route is quantified, so the edge registers the procedure-complication association only; the reverse pneumothorax to pleural-effusion direction is withheld on bidirectional-pair avoidance (CRG bidirectional-pair count kept at 4); individual claims route through dated procedure and imaging records with bullous disease, COPD, malignancy, and pre-procedure pneumothorax exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No cohort of pleural-effusion patients managed without pleural procedures who developed pneumothorax was located, so no disease-driven effusion-to-pneumothorax pathway is quantified; pneumothorax rates differ roughly tenfold between anatomic-landmark (20 of 113) and ultrasound-guided (1 of 99) technique so pooled rates are technique-mediated; and risk-factor attribution (larger drained volume, bilateral procedures, smaller fluid depth in PMID 32274162) is multivariable-model-dependent without external validation."
+   ],
+   "sourceIds": [
+    "pmid-32274162",
+    "pmid-40738083",
+    "pmid-32337606"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "924cb385a2ba4a45dcf0566a03a4919bfad085f7093135ccaffd22aaaacfc72c"
+  },
+  {
+   "relationshipId": "rel-pneumothorax-to-hemothorax",
+   "primaryId": "pneumothorax",
+   "targetId": "hemothorax",
+   "direction": "pneumothorax -> hemothorax",
+   "primaryPublicationState": "draft",
+   "rank": 1,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY at single-centre-cohort-plus-literature-aggregate class with the concurrent-presentation and case-aggregate limits carried openly: the 488-patient cohort documents spontaneous hemopneumothorax in 5.5 percent of spontaneous pneumothorax admissions with 33 percent in hypovolemic shock (PMID 16242469) and the pooled analysis documents 3.1 percent across 6,396 patients, with the etiology review attributing the bleeding to ruptured blebs and vascular adhesions (PMID 25922734); because the entity couples bleeding to the pneumothorax event by definition and the literature figure aggregates case series, the conservative standard keeps the edge at association only, scopes it to spontaneous (non-traumatic, non-iatrogenic) hemopneumothorax, and routes individual claims through dated imaging and drainage records with trauma, coagulopathy, and malignancy exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY at single-centre-cohort-plus-literature-aggregate class with the concurrent-presentation and case-aggregate limits carried openly: the 488-patient cohort documents spontaneous hemopneumothorax in 5.5 percent of spontaneous pneumothorax admissions with 33 percent in hypovolemic shock (PMID 16242469) and the pooled analysis documents 3.1 percent across 6,396 patients, with the etiology review attributing the bleeding to ruptured blebs and vascular adhesions (PMID 25922734); because the entity couples bleeding to the pneumothorax event by definition and the literature figure aggregates case series, the conservative standard keeps the edge at association only, scopes it to spontaneous (non-traumatic, non-iatrogenic) hemopneumothorax, and routes individual claims through dated imaging and drainage records with trauma, coagulopathy, and malignancy exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to spontaneous (non-traumatic, non-iatrogenic) hemopneumothorax with the concurrent-presentation and case-aggregate limits carried openly: the single-centre 488-patient spontaneous-pneumothorax cohort documents spontaneous hemopneumothorax in 5.5 percent with 33 percent in hypovolemic shock (PMID 16242469), the pooled literature analysis of 6,396 patients documents 3.1 percent (same source), and the etiology review attributes the bleeding to ruptured blebs and vascular pleural adhesions (PMID 25922734); bleeding and air accumulate at the same event so the edge registers bleeding complicating the pneumothorax event rather than a temporally separated disease and the pooled figure aggregates case series across decades; individual claims route through dated thoracic imaging and drainage records with trauma, iatrogenic injury, coagulopathy, anticoagulation, and malignancy exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No population-based incidence study of hemopneumothorax in unselected spontaneous pneumothorax was located; the pooled denominator combines the authors' cohort with literature case series of inconsistent completeness; predictors of bleeding (adhesion burden, anticoagulant use, size of pneumothorax) are unquantified; and older patients with secondary pneumothorax (COPD, malignancy) were not represented in the cohort window."
+   ],
+   "sourceIds": [
+    "pmid-16242469",
+    "pmid-25922734"
+   ],
+   "sourceReferenceCount": 2,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "fc893d17a5b020310e860730aa91130384e5094bb221dd8244b347961ac12708"
+  },
+  {
+   "relationshipId": "rel-pneumonia-residuals-to-bronchiectasis",
+   "primaryId": "pneumonia-residuals",
+   "targetId": "bronchiectasis",
+   "direction": "pneumonia-residuals -> bronchiectasis",
+   "primaryPublicationState": "draft",
+   "rank": 1,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY at meta-analysis-plus-case class with the parallel-targeting disclosure carried openly: the childhood-pneumonia sequelae meta-analysis names bronchiectasis among major sequelae with 5.5 to 13.6 percent at-least-one-major-sequela risk (PMID 22384005) and the adult measles-pneumonia case documents serologically confirmed post-infectious cystic bronchiectasis (PMID 41561283, case-report class carried openly); because ascertainment is heterogeneous and the adult anchor is a single case, the conservative standard keeps the edge at association only and routes individual claims through dated pneumonia and CT imaging records with inherited, immunologic, obstructive, and mycobacterial exclusion; the four existing infection- and reflux-window bronchiectasis edges are left untouched and their sources are not recycled."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY at meta-analysis-plus-case class with the parallel-targeting disclosure carried openly: the childhood-pneumonia sequelae meta-analysis names bronchiectasis among major sequelae with 5.5 to 13.6 percent at-least-one-major-sequela risk (PMID 22384005) and the adult measles-pneumonia case documents serologically confirmed post-infectious cystic bronchiectasis (PMID 41561283, case-report class carried openly); because ascertainment is heterogeneous and the adult anchor is a single case, the conservative standard keeps the edge at association only and routes individual claims through dated pneumonia and CT imaging records with inherited, immunologic, obstructive, and mycobacterial exclusion; the four existing infection- and reflux-window bronchiectasis edges are left untouched and their sources are not recycled.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to the post-infectious structural-airway route with the parallel-targeting disclosure carried openly: the 13-study childhood-pneumonia sequelae meta-analysis names bronchiectasis among major sequelae with 5.5 to 13.6 percent at-least-one-major-sequela risk and 54.8 percent after adenovirus pneumonia (PMID 22384005) and the serologically confirmed adult post-measles-pneumonia cystic bronchiectasis case documents the route end to end (PMID 41561283, case-report class carried openly); tuberculous, lipoid-pneumonia, bronchomalacia, and gastroesophageal-reflux windows already own bronchiectasis edges and their evidence is not recycled per ME-29 (CRG redundancy-semantics follow-up, parallel-targeting example: the overlap is recorded openly with all existing edges untouched); individual claims route through dated pneumonia and CT imaging records with cystic fibrosis, ciliary dyskinesia, immunodeficiency, ABPA, obstruction, and mycobacterial exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No adult cohort confirming bronchiectasis by modern computed-tomography criteria after community-acquired pneumonia was located; in the pediatric meta-analysis bronchiectasis is a named major-sequela category but not separately quantified across all component studies (restrictive lung disease carried the largest pooled estimate at 5.4 percent); pathogen-specific risk exists only for adenovirus (54.8 percent); and the adult anchor (PMID 41561283) is a single case with late retrospective etiologic attribution."
+   ],
+   "sourceIds": [
+    "pmid-22384005",
+    "pmid-41561283"
+   ],
+   "sourceReferenceCount": 2,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "dc00e758c036b187a512d9a8ddbc088dea902077496009a6c9d75958be211ad1"
+  },
+  {
+   "relationshipId": "rel-pneumonia-residuals-to-copd",
+   "primaryId": "pneumonia-residuals",
+   "targetId": "copd",
+   "direction": "pneumonia-residuals -> copd",
+   "primaryPublicationState": "draft",
+   "rank": 2,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY at pooled-meta-analysis class with the composite-endpoint, confounding, direction-inversion, and sibling-overlap limits carried openly: the early-life-exposures meta-analysis documents a pooled adjusted odds ratio of 2.23 for COPD after childhood serious respiratory infections including pneumonia or bronchitis (PMID 34541740), the childhood-pneumonia sequelae meta-analysis names obstructive lung disease among major sequelae (PMID 22384005), and the birth-cohort review documents the developmental susceptibility window (PMID 40252849, erratum-linked record J Allergy Clin Immunol 2026;157(6):1481 noted at preflight); because the exposure is composite, asthma and smoking are larger or inseparable contributors, and the dominant clinical direction runs COPD-to-pneumonia, the conservative standard keeps the edge at association only and routes individual claims through dated spirometry with smoking, asthma, occupational, and prematurity exclusion; sibling-overlap disclosure (CRG redundancy-semantics follow-up): the existing bronchitis to COPD edge rests on a childhood-TB-or-pneumonia window (PMID 40751209) and this edge registers the pneumonia-residuals side of the shared evidence field with the existing edge left untouched."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY at pooled-meta-analysis class with the composite-endpoint, confounding, direction-inversion, and sibling-overlap limits carried openly: the early-life-exposures meta-analysis documents a pooled adjusted odds ratio of 2.23 for COPD after childhood serious respiratory infections including pneumonia or bronchitis (PMID 34541740), the childhood-pneumonia sequelae meta-analysis names obstructive lung disease among major sequelae (PMID 22384005), and the birth-cohort review documents the developmental susceptibility window (PMID 40252849, erratum-linked record J Allergy Clin Immunol 2026;157(6):1481 noted at preflight); because the exposure is composite, asthma and smoking are larger or inseparable contributors, and the dominant clinical direction runs COPD-to-pneumonia, the conservative standard keeps the edge at association only and routes individual claims through dated spirometry with smoking, asthma, occupational, and prematurity exclusion; sibling-overlap disclosure (CRG redundancy-semantics follow-up): the existing bronchitis to COPD edge rests on a childhood-TB-or-pneumonia window (PMID 40751209) and this edge registers the pneumonia-residuals side of the shared evidence field with the existing edge left untouched.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to the developmental early-life-infection route with the composite-endpoint, confounding, direction-inversion, and sibling-overlap limits carried openly: the 30-study meta-analysis of 795,935 participants documents childhood serious respiratory infections including pneumonia or bronchitis associated with adult COPD at pooled adjusted OR 2.23 (95% CI 1.63-3.07, PMID 34541740), the sequelae meta-analysis names obstructive lung disease among major sequelae (PMID 22384005), and the birth-cohort review documents the developmental susceptibility window (PMID 40252849, erratum-linked record J Allergy Clin Immunol 2026;157(6):1481 carried openly); the exposure is composite and does not isolate pneumonia, childhood asthma carries aOR 3.45 and maternal smoking 1.42 inside the same analysis, and the dominant clinical direction runs COPD-to-pneumonia so the counterweight is carried openly; sibling-overlap disclosure (CRG redundancy-semantics follow-up): the existing bronchitis to COPD edge rests on a childhood-TB-or-pneumonia window (PMID 40751209) and this edge registers the pneumonia-residuals side of the shared evidence field with the existing edge untouched; individual claims route through dated spirometry with smoking-pack-year, asthma, occupational, alpha-1-antitrypsin, and prematurity exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No cohort isolates childhood pneumonia (excluding bronchitis and other serious respiratory infections) with adult spirometry-confirmed COPD; the pooled estimate (PMID 34541740) spans composite exposures and its asthma subgroup (aOR 3.45) may absorb much of the signal; dose-response by pneumonia severity is unquantified; and the birth-cohort review (PMID 40252849) is mechanistic narrative without pooled effect sizes."
+   ],
+   "sourceIds": [
+    "pmid-34541740",
+    "pmid-22384005",
+    "pmid-40252849"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "559656785e3d0888f823b2118a673cff8880a86f347771164efcfbad304a9117"
+  },
+  {
+   "relationshipId": "rel-pleurisy-to-pleural-effusion",
+   "primaryId": "pleurisy",
+   "targetId": "pleural-effusion",
+   "direction": "pleurisy -> pleural-effusion",
+   "primaryPublicationState": "draft",
+   "rank": 1,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY at cohort-plus-registry class with the presentation-manifestation/co-definition, shared-substrate, and etiologic-scoping limits carried openly, matching the pleura-cancer to pleural-effusion presentation-limit convention: the rheumatoid cohort quantifies pleural effusion incidence with pleural-fluid immune attribution (PMID 6857177), the nationwide biopsy cohort documents the effusion-associated etiologic mix of pleurisy (PMID 35243795), and the CSTAR registry documents serositis prevalence under the co-defining ACR criterion (PMID 26762471); because the effusion frequently co-presents and the etiologies drive both pleuritis and fluid, the conservative standard keeps the edge at association only, scopes it to the inflammatory/serositis route, and routes individual claims through dated imaging and fluid analysis with transudative, embolic, and malignant exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY at cohort-plus-registry class with the presentation-manifestation/co-definition, shared-substrate, and etiologic-scoping limits carried openly, matching the pleura-cancer to pleural-effusion presentation-limit convention: the rheumatoid cohort quantifies pleural effusion incidence with pleural-fluid immune attribution (PMID 6857177), the nationwide biopsy cohort documents the effusion-associated etiologic mix of pleurisy (PMID 35243795), and the CSTAR registry documents serositis prevalence under the co-defining ACR criterion (PMID 26762471); because the effusion frequently co-presents and the etiologies drive both pleuritis and fluid, the conservative standard keeps the edge at association only, scopes it to the inflammatory/serositis route, and routes individual claims through dated imaging and fluid analysis with transudative, embolic, and malignant exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to the inflammatory/serositis route with the presentation-manifestation/co-definition, shared-substrate, and etiologic-scoping limits carried openly (pleura-cancer to pleural-effusion presentation-limit convention): the rheumatoid-pleurisy cohort of 234 patients followed 5.7 years quantifies pleural effusion incidence at 0.34 percent per year in women and 1.54 percent in men with pleural-fluid immune attribution (PMID 6857177), the Japanese nationwide surgical-biopsy pleurisy cohort of 1,699 patients documents the effusion-associated etiologic mix (neoplastic 55.9 percent, infectious 24.0 percent, collagen vascular 2.8 percent, PMID 35243795), and the CSTAR lupus registry of 2,104 patients documents serositis - defined per ACR criteria as pleuritis/pleural effusion - in 345 patients (PMID 26762471); the effusion frequently co-presents with the pleurisy (tuberculous pleurisy) and the ACR criterion bundles pleuritis with effusion so part of the association is definitional, and the underlying etiologies drive both the pleuritis and the fluid; individual claims route through dated thoracic imaging and fluid analysis with heart failure, cirrhosis, nephrosis, pulmonary embolism, malignancy, and hypoalbuminemia exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No prospective cohort of patients with pleurisy measuring incident pleural effusion with dated pleurisy-before-effusion ordering was located; the rheumatoid cohort (PMID 6857177) reports annual effusion incidence in the RA population (0.34% women, 1.54% men) rather than effusion risk conditional on pleurisy; the CSTAR serositis definition (PMID 26762471) bundles pleuritis/pleural effusion as one ACR item; tuberculous pleurisy presents with effusion in most cases; and etiologic strata within the biopsy cohort are small (rheumatoid arthritis 1.3%, systemic lupus 0.3%)."
+   ],
+   "sourceIds": [
+    "pmid-6857177",
+    "pmid-35243795",
+    "pmid-26762471"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "e89499385674184e6c599bd137dfa765690ac07183b8d22a07f1b5c575c81c36"
   }
  ],
  "lastUpdatedBy": "batch-D1-draft-authoring",

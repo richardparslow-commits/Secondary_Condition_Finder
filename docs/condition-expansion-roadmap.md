@@ -3714,3 +3714,110 @@ eleventh consecutive batch with no manual fixture bump. Residue clean outside th
 coincidences (apply-all-94's historical `explicitPublicationGuards: 273`; wave-5's
 `toBeGreaterThanOrEqual(276)` catalog floor; legal-copy's `38 U.S.C. § 1117` statute text). Standing
 recommendation: batch 71 lands through branch, PR, CI, and merge.
+
+## Mapping Expansion D1 batch 72 (2026-09-26)
+
+Mapping Expansion D1 batch 72 (2026-09-26) authored five draft-quarantined relationships across four of
+the five queue identities and deferred one identity without edges. pleural-effusion -> pneumothorax
+(POST_SURGICAL_OR_TREATMENT) is scoped to the thoracentesis-complication window with the
+treatment-mediated limit carried openly: post-procedure pneumothorax in 66 of 550 ultrasound-guided
+thoracenteses (12 percent, drained volume the main associated factor, PMID 32274162), 1 of 99
+ultrasound-guided versus 20 of 113 anatomic-landmark procedures across the three-trial randomized
+meta-analysis (PMID 40738083), and 1 of 81 in the prospective ICU series (PMID 32337606), registering the
+procedure-complication association only (no disease-driven effusion-to-pneumothorax pathway is quantified).
+pneumothorax -> hemothorax (MECHANICAL_OR_COMPRESSIVE) rests on spontaneous hemopneumothorax: 27 of 488
+single-centre spontaneous-pneumothorax patients (5.5 percent; 33 percent in hypovolemic shock; mean 1,012
+mL drained) and 201 of 6,396 pooled literature patients (3.1 percent, PMID 16242469), with the etiology
+review attributing bleeding to ruptured blebs and vascular adhesions (PMID 25922734) and the
+concurrent-presentation and case-aggregate limits carried openly. pneumonia-residuals -> bronchiectasis
+(SYSTEMIC_INFLAMMATORY) rests on the 13-study childhood-pneumonia sequelae meta-analysis (bronchiectasis
+named among major sequelae; 5.5 to 13.6 percent at-least-one-major-sequela risk; adenovirus 54.8 percent,
+PMID 22384005) and the serologically confirmed adult post-measles-pneumonia cystic bronchiectasis case
+(PMID 41561283, case-report class carried openly), with the parallel-targeting disclosure (four existing
+infection- and reflux-window bronchiectasis edges, ME-29 evidence not recycled); pneumonia-residuals ->
+copd (MULTIFACTORIAL) rests on the 30-study early-life-exposures meta-analysis (pooled adjusted OR 2.23,
+95% CI 1.63-3.07, 795,935 participants, PMID 34541740) with the obstructive-sequela category of the
+sequelae meta-analysis (PMID 22384005, shared within batch) and the birth-cohort developmental-window
+review (PMID 40252849, erratum-linked record carried openly), with the composite-endpoint, confounding
+(childhood asthma aOR 3.45 and maternal smoking 1.42 in the same analysis), direction-inversion (COPD
+predisposes to pneumonia), and sibling-overlap (existing bronchitis -> COPD edge rests on a
+childhood-TB-or-pneumonia window, PMID 40751209) limits carried openly. pleurisy -> pleural-effusion
+(SYSTEMIC_INFLAMMATORY) rests on the rheumatoid-pleurisy cohort (effusion incidence 0.34 percent/year in
+women, 1.54 in men, with pleural-fluid immune attribution, PMID 6857177), the Japanese nationwide
+surgical-biopsy pleurisy cohort (effusion-associated etiologies dominate - neoplastic 55.9 percent,
+infectious 24.0 percent, collagen vascular 2.8 percent, PMID 35243795), and the CSTAR lupus serositis
+registry (345 of 2,104, defined per ACR as pleuritis/pleural effusion, PMID 26762471), with the
+presentation-manifestation/co-definition, shared-substrate, and etiologic-scoping limits carried openly.
+
+poikiloderma DEFERRED without edges (TARGET-SCARCITY plus MANIFESTATION-IDENTITY): the located poikiloderma
+vasculare atrophicans and poikilodermatous mycosis fungoides literature (PMIDs 40779276, 38913671,
+35426607, 31550709, 31855316, 27018371, 26086166, 25834361, 25814753, 23286794) documents
+mycosis-fungoides-spectrum disease with no catalog identity for mycosis fungoides, cutaneous T-cell
+lymphoma, or parapsoriasis; the acquired-poikiloderma and poikiloderma-of-Civatte literature (PMIDs
+22846690, 34235719, 24626644, 24495252, 20698875, 19686366, 19576483, 19537378, 12561039) documents
+cosmetic/treatment-only outcomes; and the connective-tissue-disease literature (PMID 29571300 documents
+extensive poikiloderma as dermatomyositis presentation) runs direction-inverted (poikiloderma is the
+manifestation). Reopening: a mycosis-fungoides/CTCL catalog identity with poikiloderma-stratified
+progression evidence, or an acquired-poikiloderma complication cohort.
+
+Withholdings recorded on the files: pneumothorax -> pleural-effusion (BIDIRECTIONAL-PAIR AVOIDANCE - the
+pleural-effusion -> pneumothorax procedure-window edge is authored this batch and the natural-history
+window is thin - the 316-patient conservative-versus-interventional trial, PMID 31995686, reports serious
+adverse events without effusion-specific quantification), -> respiratory-failure, cardiac-arrest,
+tension-pneumothorax, pneumomediastinum, and subcutaneous-emphysema (no catalog identities), ->
+pneumonia-residuals and -> anxiety-disorder/depressive-disorder (below threshold); pleural-effusion ->
+empyema, trapped-lung, fibrothorax, pleural-thickening, atelectasis, and respiratory-failure (no catalog
+identities), -> pulmonary-embolism and -> deep-vein-thrombosis (direction-inversion - embolism produces
+effusion), -> pneumonia-residuals (target-mismatch - parapneumonic effusion is acute-phase), ->
+pericardial-effusion (identity-adjacency; the pericardiocentesis-pneumothorax procedure literature
+deliberately unused, the edge is scoped to thoracentesis only); pleurisy -> constrictive-pericarditis,
+cardiac-tamponade, pleural-thickening, fibrothorax, and trapped-lung (no catalog identities), ->
+pulmonary-embolism (direction-inversion), -> pneumothorax (below threshold); pneumonia-residuals -> asthma
+(shared-substrate and direction-inversion - childhood asthma carries larger independent odds inside the
+same analysis and asthma predisposes to pneumonia), -> pulmonary-fibrosis (target-mismatch - restrictive
+patterns without fibrosis-specific evidence), -> interstitial-lung-disease and ->
+cryptogenic-organizing-pneumonia (identity-duplication - primary interstitial entities), ->
+pleural-effusion (target-mismatch - parapneumonic is acute-phase).
+
+Pre-authoring verification: all 12 PMIDs passed the abstract pass (`/tmp/d1-abstract47.py` in fetch
+groups), the esummary bibliographic pass with every citation re-verified against the PubMed record, and
+`node scripts/preflight-source-status.js --pmids ...` (12/12 checked, zero blocking flags, one
+non-blocking erratum-linked note on PMID 40252849 carried on its reference - J Allergy Clin Immunol 2026
+Jun;157(6):1481). The post-write structural self-audit passed for all five files (5 edges, 13 reference
+uses) and `npm run kb:validate` reports zero errors.
+
+Registry after lockstep: 749 relationships (675 explicit / 74 legacy), 1343 reference uses (383
+verified / 960 pending-verification), 1338 clinical / 5 legal uses, 1203 source entities (346 active /
+848 pending-verification). Within-batch shared source - PMID 22384005 carried on both pneumonia-residuals
+edges - gives 13 reference uses over 12 new sources. Citation packet regenerated at 386 worksheets / 960
+reference rows = live citation debt; the verification dashboard regenerated at 960 rows in 40 reviewer
+batches (847 distinct sources). Backlog after batch 72: **130** undispositioned zero-edge drafts (135
+before the batch; four identities left by gaining edges and one by recorded deferral). Next-five:
+`polymyalgia-rheumatica`, `polymyositis`, `porphyria-cutanea-tarda`,
+`posterior-tibial-tendon-dysfunction`, `postherpetic-neuralgia`.
+
+Structural-debt note: batch-72 edges produced zero new CRG findings - the analyzer reports review-class 13
+against baseline 13 and redundancy 28 against baseline 28 unchanged - and the reverse pleural-effusion /
+pneumothorax candidate was withheld at authoring time on bidirectional-pair avoidance so the
+bidirectional-pair count stays at 4. The batch adds a fifth and sixth accumulated example to the standing
+CRG redundancy-semantics question: sibling/parallel targeting of a shared target (bronchiectasis now
+carries five infection- and reflux-window edges and the pneumonia-residuals edge registers generic
+post-pneumonia evidence only, PMIDs 22384005, 41561283) and a sibling shared-evidence-field case (the
+bronchitis -> COPD edge and the pneumonia-residuals -> COPD edge both rest on the
+early-life-infection-to-COPD field, PMID 40751209 versus PMIDs 34541740, 22384005). Both are disclosed
+openly on the KB files (todo and governance notes) and in the registry structured guard text with all
+existing edges left untouched; the question now stands on six examples (the batch-65 sibling
+double-targeting, the batch-67 otosclerosis tinnitus shortcut, the batch-70 umbrella/member parallel
+edges, the batch-71 chain-triangle, and these two) and should be settled before more parallel pathway
+provenance accumulates.
+
+Test-pin note: the sweep touched 54 files and replaced 316 counter tokens in one pass with the batch-71
+per-token context predicates carried over unchanged (relationships 744 -> 749, references/uses 1330 ->
+1343, unverified 947 -> 960, pending source entities 836 -> 848, total source entities 1191 -> 1203,
+explicit guards 670 -> 675, clinical references 1325 -> 1338, clinical provenance 1329 -> 1342, and the
+draft-singles counter 291 -> 294 for this batch's three single-suggestion identities pleural-effusion,
+pleurisy, and pneumothorax). The explicit fixture token continued to carry the citation-decay-gate debt
+fixture automatically (947 -> 960) - twelfth consecutive batch with no manual fixture bump. Residue clean
+outside the standing benign coincidences (apply-all-94's historical `explicitPublicationGuards: 273`;
+wave-5's `toBeGreaterThanOrEqual(276)` catalog floor; legal-copy's `38 U.S.C. § 1117` statute text).
+Standing recommendation: batch 72 lands through branch, PR, CI, and merge.

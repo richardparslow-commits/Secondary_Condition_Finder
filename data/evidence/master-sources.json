@@ -16,16 +16,16 @@
   "citationPromotionMustAtomicallyUpdateKbAndMasterSourceState": true
  },
  "counts": {
-  "liveSourceReferenceUses": 1330,
+  "liveSourceReferenceUses": 1343,
   "activeSourceEntities": 346,
-  "pendingVerificationSourceEntities": 836,
+  "pendingVerificationSourceEntities": 848,
   "activeClinicalSourceEntities": 345,
-  "pendingClinicalSourceEntities": 836,
+  "pendingClinicalSourceEntities": 848,
   "activeLegalAuthorityEntities": 1,
   "retiredOnlySourceEntities": 1,
   "supersededUnverifiedSourceEntities": 7,
   "bibliographicCorrectionOnlyEntities": 1,
-  "totalSourceEntitiesIncludingLineage": 1191,
+  "totalSourceEntitiesIncludingLineage": 1203,
   "retiredVerifiedRelationshipSourceUses": 6
  },
  "retirementLedger": {
@@ -44008,6 +44008,433 @@
    "rawReferenceHashes": [
     "7fac0bf47dcdf85bf8233f06c9c1f21817e2a3cea23d0b18fcdef9f37d078018",
     "b7b943ce9560e9967a5c73add1141f7f28126bf312b982ef81d134f0cfd738fb"
+   ]
+  },
+  {
+   "sourceId": "pmid-32274162",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "32274162",
+   "doi": null,
+   "canonicalCitation": "Shechtman L, Shrem M, Kleinbaum Y, et al. Incidence and risk factors of pneumothorax following pre-procedural ultrasound-guided thoracentesis J Thorac Dis. 2020 Mar;12(3):942-948. PMID 32274162.",
+   "citationVariants": [
+    "Shechtman L, Shrem M, Kleinbaum Y, et al. Incidence and risk factors of pneumothorax following pre-procedural ultrasound-guided thoracentesis J Thorac Dis. 2020 Mar;12(3):942-948. PMID 32274162."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/32274162/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/32274162/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-pleural-effusion-to-pneumothorax",
+     "primaryId": "pleural-effusion",
+     "targetId": "pneumothorax",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "a5665ca03e6998354ab2df72dce2dffa5e868af0a23a728e63b1d4e8ceb449ac"
+   ]
+  },
+  {
+   "sourceId": "pmid-40738083",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "40738083",
+   "doi": null,
+   "canonicalCitation": "Lakkadghatwala R, Wilson A, Sabhaney V, et al. Ultrasound guidance compared to anatomic landmark approach for thoracentesis: A systematic review and meta-analysis Am J Emerg Med. 2025 Nov;97:159-164. PMID 40738083.",
+   "citationVariants": [
+    "Lakkadghatwala R, Wilson A, Sabhaney V, et al. Ultrasound guidance compared to anatomic landmark approach for thoracentesis: A systematic review and meta-analysis Am J Emerg Med. 2025 Nov;97:159-164. PMID 40738083."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40738083/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/40738083/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-pleural-effusion-to-pneumothorax",
+     "primaryId": "pleural-effusion",
+     "targetId": "pneumothorax",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "f16251e83d863802a6d5d90767fd9c4f1105176ecd773ae553e9d39481265a00"
+   ]
+  },
+  {
+   "sourceId": "pmid-32337606",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "32337606",
+   "doi": null,
+   "canonicalCitation": "Rodriguez Lima DR, Yepes AF, Birchenall Jiménez CI, et al. Real-time ultrasound-guided thoracentesis in the intensive care unit: prevalence of mechanical complications Ultrasound J. 2020 Apr 26;12(1):25. PMID 32337606.",
+   "citationVariants": [
+    "Rodriguez Lima DR, Yepes AF, Birchenall Jiménez CI, et al. Real-time ultrasound-guided thoracentesis in the intensive care unit: prevalence of mechanical complications Ultrasound J. 2020 Apr 26;12(1):25. PMID 32337606."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/32337606/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/32337606/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-pleural-effusion-to-pneumothorax",
+     "primaryId": "pleural-effusion",
+     "targetId": "pneumothorax",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "ca4c76f6222d8451936f26400e5bbb9c3e0a5f0ef0d3ac8b3b838404bf07ac44"
+   ]
+  },
+  {
+   "sourceId": "pmid-16242469",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "16242469",
+   "doi": null,
+   "canonicalCitation": "Hsu NY, Shih CS, Hsu CP, et al. Spontaneous hemopneumothorax revisited: clinical approach and systemic review of the literature Ann Thorac Surg. 2005 Nov;80(5):1859-63. PMID 16242469.",
+   "citationVariants": [
+    "Hsu NY, Shih CS, Hsu CP, et al. Spontaneous hemopneumothorax revisited: clinical approach and systemic review of the literature Ann Thorac Surg. 2005 Nov;80(5):1859-63. PMID 16242469."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/16242469/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/16242469/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-pneumothorax-to-hemothorax",
+     "primaryId": "pneumothorax",
+     "targetId": "hemothorax",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "ec9d10453e00b9fbbc4a58ee80d02d4b22c42d715f4454d2275e6a99f5f5dd8b"
+   ]
+  },
+  {
+   "sourceId": "pmid-25922734",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "25922734",
+   "doi": null,
+   "canonicalCitation": "Patrini D, Panagiotopoulos N, Pararajasingham J, et al. Etiology and management of spontaneous haemothorax J Thorac Dis. 2015 Mar;7(3):520-6. PMID 25922734.",
+   "citationVariants": [
+    "Patrini D, Panagiotopoulos N, Pararajasingham J, et al. Etiology and management of spontaneous haemothorax J Thorac Dis. 2015 Mar;7(3):520-6. PMID 25922734."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/25922734/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/25922734/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-pneumothorax-to-hemothorax",
+     "primaryId": "pneumothorax",
+     "targetId": "hemothorax",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "e936bf42bfb99989024c5272080f945f3b5b376c154ee3f69490378c06db9ddc"
+   ]
+  },
+  {
+   "sourceId": "pmid-22384005",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "22384005",
+   "doi": null,
+   "canonicalCitation": "Edmond K, Scott S, Korczak V, et al. Long term sequelae from childhood pneumonia; systematic review and meta-analysis PLoS One. 2012;7(2):e31239. PMID 22384005.",
+   "citationVariants": [
+    "Edmond K, Scott S, Korczak V, et al. Long term sequelae from childhood pneumonia; systematic review and meta-analysis PLoS One. 2012;7(2):e31239. PMID 22384005."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/22384005/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/22384005/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 2,
+   "liveUses": [
+    {
+     "relationshipId": "rel-pneumonia-residuals-to-bronchiectasis",
+     "primaryId": "pneumonia-residuals",
+     "targetId": "bronchiectasis",
+     "sourceIndex": 0
+    },
+    {
+     "relationshipId": "rel-pneumonia-residuals-to-copd",
+     "primaryId": "pneumonia-residuals",
+     "targetId": "copd",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "1d5a2d079f5d68335704a038b2b8fc427ce2c78f0a73537c58ba516686a51b8c",
+    "40aa6b62b3476ae98b7015e4080e509cf8750b28acadb590791928accf142bb5"
+   ]
+  },
+  {
+   "sourceId": "pmid-41561283",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "41561283",
+   "doi": null,
+   "canonicalCitation": "Magno Pinto S, Pereira M, Pinto PG. Preventable Pulmonary Sequelae of Measles: A Case Report of an Adult Patient With Cystic Bronchiectasis Cureus. 2025 Dec;17(12):e99687. PMID 41561283.",
+   "citationVariants": [
+    "Magno Pinto S, Pereira M, Pinto PG. Preventable Pulmonary Sequelae of Measles: A Case Report of an Adult Patient With Cystic Bronchiectasis Cureus. 2025 Dec;17(12):e99687. PMID 41561283."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41561283/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/41561283/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-pneumonia-residuals-to-bronchiectasis",
+     "primaryId": "pneumonia-residuals",
+     "targetId": "bronchiectasis",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "a9ce8714b2d2773e9c1640d61a4b312fe2f24baf97081e1e122bb7e563453248"
+   ]
+  },
+  {
+   "sourceId": "pmid-34541740",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "34541740",
+   "doi": null,
+   "canonicalCitation": "Duan P, Wang Y, Lin R, et al. Impact of early life exposures on COPD in adulthood: A systematic review and meta-analysis Respirology. 2021 Dec;26(12):1131-1151. PMID 34541740.",
+   "citationVariants": [
+    "Duan P, Wang Y, Lin R, et al. Impact of early life exposures on COPD in adulthood: A systematic review and meta-analysis Respirology. 2021 Dec;26(12):1131-1151. PMID 34541740."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34541740/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/34541740/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-pneumonia-residuals-to-copd",
+     "primaryId": "pneumonia-residuals",
+     "targetId": "copd",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "fad18b090af006ff099c001b42975fda0d7712ec70361f0cd98163d2c7c7c1eb"
+   ]
+  },
+  {
+   "sourceId": "pmid-40252849",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "40252849",
+   "doi": null,
+   "canonicalCitation": "Hartert T, Kyvsgaard JN, Thaver L, et al. Understanding the childhood origins of asthma and chronic obstructive pulmonary disease: Insights from birth cohorts and studies across the life-span J Allergy Clin Immunol. 2025 Jun;155(6):1703-1719. PMID 40252849.",
+   "citationVariants": [
+    "Hartert T, Kyvsgaard JN, Thaver L, et al. Understanding the childhood origins of asthma and chronic obstructive pulmonary disease: Insights from birth cohorts and studies across the life-span J Allergy Clin Immunol. 2025 Jun;155(6):1703-1719. PMID 40252849."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40252849/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/40252849/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-pneumonia-residuals-to-copd",
+     "primaryId": "pneumonia-residuals",
+     "targetId": "copd",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "5eb2cfe40333f99a900df6a8558401b9839a23d01d977e4a36f160709587ca21"
+   ]
+  },
+  {
+   "sourceId": "pmid-6857177",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "6857177",
+   "doi": null,
+   "canonicalCitation": "Jurik AG, Graudal H. Pleurisy in rheumatoid arthritis Scand J Rheumatol. 1983;12(2):75-80. PMID 6857177.",
+   "citationVariants": [
+    "Jurik AG, Graudal H. Pleurisy in rheumatoid arthritis Scand J Rheumatol. 1983;12(2):75-80. PMID 6857177."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/6857177/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/6857177/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-pleurisy-to-pleural-effusion",
+     "primaryId": "pleurisy",
+     "targetId": "pleural-effusion",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "4be324868bd110af5f78f5511c913f7873d5b0d882a8663f4bc2a66f4629384d"
+   ]
+  },
+  {
+   "sourceId": "pmid-35243795",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "35243795",
+   "doi": null,
+   "canonicalCitation": "Hara K, Yamasaki K, Tahara M, et al. Epidemiologic evaluation of pleurisy diagnosed by surgical pleural biopsy using data from a nationwide administrative database Thorac Cancer. 2022 Apr;13(8):1136-1142. PMID 35243795.",
+   "citationVariants": [
+    "Hara K, Yamasaki K, Tahara M, et al. Epidemiologic evaluation of pleurisy diagnosed by surgical pleural biopsy using data from a nationwide administrative database Thorac Cancer. 2022 Apr;13(8):1136-1142. PMID 35243795."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35243795/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/35243795/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-pleurisy-to-pleural-effusion",
+     "primaryId": "pleurisy",
+     "targetId": "pleural-effusion",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "f66606729f4e0fa555a5585a7c17887a1b109c53600d609d60c0103abd40510c"
+   ]
+  },
+  {
+   "sourceId": "pmid-26762471",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "26762471",
+   "doi": null,
+   "canonicalCitation": "Zhao J, Bai W, Zhu P, et al. Chinese SLE Treatment and Research group (CSTAR) registry VII: prevalence and clinical significance of serositis in Chinese patients with systemic lupus erythematosus Lupus. 2016 May;25(6):652-7. PMID 26762471.",
+   "citationVariants": [
+    "Zhao J, Bai W, Zhu P, et al. Chinese SLE Treatment and Research group (CSTAR) registry VII: prevalence and clinical significance of serositis in Chinese patients with systemic lupus erythematosus Lupus. 2016 May;25(6):652-7. PMID 26762471."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/26762471/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/26762471/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-pleurisy-to-pleural-effusion",
+     "primaryId": "pleurisy",
+     "targetId": "pleural-effusion",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "3718da263d64148e7e585bde8b6a6abd2ea04da1434360b23aaf40d5c47aaf64"
    ]
   }
  ],
