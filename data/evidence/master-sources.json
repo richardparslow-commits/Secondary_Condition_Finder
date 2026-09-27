@@ -16,16 +16,16 @@
   "citationPromotionMustAtomicallyUpdateKbAndMasterSourceState": true
  },
  "counts": {
-  "liveSourceReferenceUses": 1315,
+  "liveSourceReferenceUses": 1330,
   "activeSourceEntities": 346,
-  "pendingVerificationSourceEntities": 825,
+  "pendingVerificationSourceEntities": 836,
   "activeClinicalSourceEntities": 345,
-  "pendingClinicalSourceEntities": 825,
+  "pendingClinicalSourceEntities": 836,
   "activeLegalAuthorityEntities": 1,
   "retiredOnlySourceEntities": 1,
   "supersededUnverifiedSourceEntities": 7,
   "bibliographicCorrectionOnlyEntities": 1,
-  "totalSourceEntitiesIncludingLineage": 1180,
+  "totalSourceEntitiesIncludingLineage": 1191,
   "retiredVerifiedRelationshipSourceUses": 6
  },
  "retirementLedger": {
@@ -43595,6 +43595,419 @@
    "retiredUses": [],
    "rawReferenceHashes": [
     "037f29877ce846531e38d6b6876fdfcb6f57aa07eba530192a2892681a9dc1f2"
+   ]
+  },
+  {
+   "sourceId": "pmid-36163201",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "36163201",
+   "doi": null,
+   "canonicalCitation": "Hogan WB, Anderson G, Kovoor M, et al. Phantom limb syndrome: Assessment of psychiatric and medical comorbidities associated with Phantom pain in 44,028 below knee amputees Injury. 2022 Nov;53(11):3697-3701. PMID 36163201.",
+   "citationVariants": [
+    "Hogan WB, Anderson G, Kovoor M, et al. Phantom limb syndrome: Assessment of psychiatric and medical comorbidities associated with Phantom pain in 44,028 below knee amputees Injury. 2022 Nov;53(11):3697-3701. PMID 36163201."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36163201/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/36163201/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 2,
+   "liveUses": [
+    {
+     "relationshipId": "rel-phantom-limb-pain-to-depressive-disorder",
+     "primaryId": "phantom-limb-pain",
+     "targetId": "depressive-disorder",
+     "sourceIndex": 0
+    },
+    {
+     "relationshipId": "rel-phantom-limb-pain-to-anxiety-disorder",
+     "primaryId": "phantom-limb-pain",
+     "targetId": "anxiety-disorder",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "37d847210060c813d76a9a410712cca31f2e4b7170086cd02c824ceb1c048791",
+    "b199e2682b1dbde7e822b1d623bd3a89d45ad2ab39055e5ca87d68056f971e14"
+   ]
+  },
+  {
+   "sourceId": "pmid-42638615",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "42638615",
+   "doi": null,
+   "canonicalCitation": "Vats D, Bhatia R, Sagar S, et al. Effect of DLPFC Targeted rTMS on Phantom Limb Pain and Associated Psychological Comorbidities: A Pilot Randomized Controlled Trial Neurorehabil Neural Repair. 2026 Aug 25:15459683261477087. PMID 42638615.",
+   "citationVariants": [
+    "Vats D, Bhatia R, Sagar S, et al. Effect of DLPFC Targeted rTMS on Phantom Limb Pain and Associated Psychological Comorbidities: A Pilot Randomized Controlled Trial Neurorehabil Neural Repair. 2026 Aug 25:15459683261477087. PMID 42638615."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42638615/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/42638615/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-phantom-limb-pain-to-depressive-disorder",
+     "primaryId": "phantom-limb-pain",
+     "targetId": "depressive-disorder",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "13681756bf7c29e186e035752fad7afead80844811af15c4ac2a3d11de60fbed"
+   ]
+  },
+  {
+   "sourceId": "pmid-42232879",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "42232879",
+   "doi": null,
+   "canonicalCitation": "Smolynets R, Barroso J, Pasquina PF, et al. The association between quality of life, anxiety and depression, and residual limb and phantom limb pain in war-related amputees: a year-long observational study EClinicalMedicine. 2026 May;95:103891. PMID 42232879.",
+   "citationVariants": [
+    "Smolynets R, Barroso J, Pasquina PF, et al. The association between quality of life, anxiety and depression, and residual limb and phantom limb pain in war-related amputees: a year-long observational study EClinicalMedicine. 2026 May;95:103891. PMID 42232879."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42232879/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/42232879/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 2,
+   "liveUses": [
+    {
+     "relationshipId": "rel-phantom-limb-pain-to-depressive-disorder",
+     "primaryId": "phantom-limb-pain",
+     "targetId": "depressive-disorder",
+     "sourceIndex": 2
+    },
+    {
+     "relationshipId": "rel-phantom-limb-pain-to-anxiety-disorder",
+     "primaryId": "phantom-limb-pain",
+     "targetId": "anxiety-disorder",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "2fb1b2e194840e9fec6ba572075f0a1a213cb666be28b9dbd829e44e6475a308",
+    "0dc717f62db1f45fea7427f7bafae372792b68f7bd1869804dc35f8524ead538"
+   ]
+  },
+  {
+   "sourceId": "pmid-41203039",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "41203039",
+   "doi": null,
+   "canonicalCitation": "Paulus P, Childers L, Butowicz C, et al. Correlates of Phantom Limb Pain in Young Individuals With Lower Limb Loss Arch Phys Med Rehabil. 2026 Jul;107(7):1473-1479. PMID 41203039.",
+   "citationVariants": [
+    "Paulus P, Childers L, Butowicz C, et al. Correlates of Phantom Limb Pain in Young Individuals With Lower Limb Loss Arch Phys Med Rehabil. 2026 Jul;107(7):1473-1479. PMID 41203039."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41203039/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/41203039/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-phantom-limb-pain-to-anxiety-disorder",
+     "primaryId": "phantom-limb-pain",
+     "targetId": "anxiety-disorder",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "3769ab57be5ae5ed7c423e3f6c59a8a25961d5f36990a01b03bc2ff7d883e10d"
+   ]
+  },
+  {
+   "sourceId": "pmid-31455543",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "31455543",
+   "doi": null,
+   "canonicalCitation": "Hughes KE, Corbett HJ. Ultrasound evidence of bladder outlet obstruction secondary to lichen sclerosus et atrophicus in boys (balanitis xerotica obliterans) J Pediatr Surg. 2020 Apr;55(4):721-725. PMID 31455543.",
+   "citationVariants": [
+    "Hughes KE, Corbett HJ. Ultrasound evidence of bladder outlet obstruction secondary to lichen sclerosus et atrophicus in boys (balanitis xerotica obliterans) J Pediatr Surg. 2020 Apr;55(4):721-725. PMID 31455543."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/31455543/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/31455543/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-phimosis-to-urinary-frequency-retention",
+     "primaryId": "phimosis",
+     "targetId": "urinary-frequency-retention",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "bdf62b491abde16c070a0f4d17f47a3bde32cd09ecc50320ff3e61910237d5f2"
+   ]
+  },
+  {
+   "sourceId": "pmid-39821927",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "39821927",
+   "doi": null,
+   "canonicalCitation": "Nasr S, Lim JY, Nugapitiya SS, et al. Paediatric Acute Urinary Retention in Central Queensland J Paediatr Child Health. 2025 Mar;61(3):465-471. PMID 39821927.",
+   "citationVariants": [
+    "Nasr S, Lim JY, Nugapitiya SS, et al. Paediatric Acute Urinary Retention in Central Queensland J Paediatr Child Health. 2025 Mar;61(3):465-471. PMID 39821927."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39821927/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/39821927/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-phimosis-to-urinary-frequency-retention",
+     "primaryId": "phimosis",
+     "targetId": "urinary-frequency-retention",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "9c06566eea1ea0bfdaedcde998d158eb14e409bac677f0df1f5f4698422f9602"
+   ]
+  },
+  {
+   "sourceId": "pmid-15291873",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "15291873",
+   "doi": null,
+   "canonicalCitation": "Babu R, Harrison SK, Hutton KA. Ballooning of the foreskin and physiological phimosis: is there any objective evidence of obstructed voiding? BJU Int. 2004 Aug;94(3):384-7. PMID 15291873.",
+   "citationVariants": [
+    "Babu R, Harrison SK, Hutton KA. Ballooning of the foreskin and physiological phimosis: is there any objective evidence of obstructed voiding? BJU Int. 2004 Aug;94(3):384-7. PMID 15291873."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/15291873/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/15291873/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-phimosis-to-urinary-frequency-retention",
+     "primaryId": "phimosis",
+     "targetId": "urinary-frequency-retention",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "b848ada145a08f86a5b9b94c2cf6ee467f19b4ff045f5ad64af8d55ef84b0cd6"
+   ]
+  },
+  {
+   "sourceId": "pmid-33506102",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "33506102",
+   "doi": null,
+   "canonicalCitation": "Murphy DC, Mount A, Starkie F, et al. A review of malignant pleural mesothelioma in a large North East UK pleural centre Pleura Peritoneum. 2020 Dec;6(1):20200144. PMID 33506102.",
+   "citationVariants": [
+    "Murphy DC, Mount A, Starkie F, et al. A review of malignant pleural mesothelioma in a large North East UK pleural centre Pleura Peritoneum. 2020 Dec;6(1):20200144. PMID 33506102."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33506102/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/33506102/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-pleura-cancer-to-pleural-effusion",
+     "primaryId": "pleura-cancer",
+     "targetId": "pleural-effusion",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "1053c2855f155bf5a2de545a3e708e0b3a607b9ce89f940a84bc717a541b1b23"
+   ]
+  },
+  {
+   "sourceId": "pmid-40775245",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "40775245",
+   "doi": null,
+   "canonicalCitation": "Fennell DA, Sekido Y, Baas P, et al. Pleural mesothelioma Nat Rev Dis Primers. 2025 Aug 7;11(1):56. PMID 40775245.",
+   "citationVariants": [
+    "Fennell DA, Sekido Y, Baas P, et al. Pleural mesothelioma Nat Rev Dis Primers. 2025 Aug 7;11(1):56. PMID 40775245."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40775245/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/40775245/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-pleura-cancer-to-pleural-effusion",
+     "primaryId": "pleura-cancer",
+     "targetId": "pleural-effusion",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "c72075d7583035b39381b22e7c188023f3e51a4b771913a19d0cc3392d37e13b"
+   ]
+  },
+  {
+   "sourceId": "pmid-25525045",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "25525045",
+   "doi": null,
+   "canonicalCitation": "Koksal D, Safak O, Ozcan A, et al. Thromboembolic Events in Malignant Pleural Mesothelioma Clin Appl Thromb Hemost. 2016 May;22(4):390-4. PMID 25525045.",
+   "citationVariants": [
+    "Koksal D, Safak O, Ozcan A, et al. Thromboembolic Events in Malignant Pleural Mesothelioma Clin Appl Thromb Hemost. 2016 May;22(4):390-4. PMID 25525045."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/25525045/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/25525045/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 2,
+   "liveUses": [
+    {
+     "relationshipId": "rel-pleura-cancer-to-deep-vein-thrombosis",
+     "primaryId": "pleura-cancer",
+     "targetId": "deep-vein-thrombosis",
+     "sourceIndex": 0
+    },
+    {
+     "relationshipId": "rel-pleura-cancer-to-pulmonary-embolism",
+     "primaryId": "pleura-cancer",
+     "targetId": "pulmonary-embolism",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "dbb101ed2c77d0d095446d724b1c085814c05b7c2c30ae63df1b51c05fbc9f9d",
+    "c54574faaa83346c97e6438feb0f6676af0401812f3460157599b61a62ef3e07"
+   ]
+  },
+  {
+   "sourceId": "pmid-32113716",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "32113716",
+   "doi": null,
+   "canonicalCitation": "De León LE, Bravo-Iñiguez CE, Fox S, et al. Routine surveillance for diagnosis of venous thromboembolism after pleurectomy for malignant pleural mesothelioma J Thorac Cardiovasc Surg. 2020 Oct;160(4):1064-1073. PMID 32113716.",
+   "citationVariants": [
+    "De León LE, Bravo-Iñiguez CE, Fox S, et al. Routine surveillance for diagnosis of venous thromboembolism after pleurectomy for malignant pleural mesothelioma J Thorac Cardiovasc Surg. 2020 Oct;160(4):1064-1073. PMID 32113716."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/32113716/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/32113716/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 2,
+   "liveUses": [
+    {
+     "relationshipId": "rel-pleura-cancer-to-deep-vein-thrombosis",
+     "primaryId": "pleura-cancer",
+     "targetId": "deep-vein-thrombosis",
+     "sourceIndex": 1
+    },
+    {
+     "relationshipId": "rel-pleura-cancer-to-pulmonary-embolism",
+     "primaryId": "pleura-cancer",
+     "targetId": "pulmonary-embolism",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "7fac0bf47dcdf85bf8233f06c9c1f21817e2a3cea23d0b18fcdef9f37d078018",
+    "b7b943ce9560e9967a5c73add1141f7f28126bf312b982ef81d134f0cfd738fb"
    ]
   }
  ],

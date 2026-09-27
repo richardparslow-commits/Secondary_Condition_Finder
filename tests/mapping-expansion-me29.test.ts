@@ -71,15 +71,15 @@ describe("Mapping Expansion Batch ME-29", () => {
   });
 
   it("ratchets authoritative registry totals to ME-29", () => {
-    expect(relationships.counts).toEqual({ relationships: 738, explicitPublicationGuards: 664, legacyRationaleBoundaries: 74 });
-    expect(relationships.relationships).toHaveLength(738);
+    expect(relationships.counts).toEqual({ relationships: 744, explicitPublicationGuards: 670, legacyRationaleBoundaries: 74 });
+    expect(relationships.relationships).toHaveLength(744);
     expect(sources.counts).toMatchObject({
-      liveSourceReferenceUses: 1315,
-      pendingVerificationSourceEntities: 825,
-      pendingClinicalSourceEntities: 825,
-      totalSourceEntitiesIncludingLineage: 1180,
+      liveSourceReferenceUses: 1330,
+      pendingVerificationSourceEntities: 836,
+      pendingClinicalSourceEntities: 836,
+      totalSourceEntitiesIncludingLineage: 1191,
     });
-    expect(sources.sources).toHaveLength(1180);
+    expect(sources.sources).toHaveLength(1191);
   });
 
   it("does not duplicate the narrower alopecia-areata depressive-disorder identity scope", () => {

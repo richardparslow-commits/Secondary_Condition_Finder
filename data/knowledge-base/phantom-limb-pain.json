@@ -2,8 +2,141 @@
   "id": "phantom-limb-pain",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review neurologic, neuropathic, post-traumatic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 71 (2026-09-26): two ASSOCIATION_ONLY draft mappings pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: the edges assert association only (etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true). Both edges carry explicit direction-inversion guards (depressive and anxiety symptoms commonly precede and predict phantom limb pain per the cross-lagged cohort, PMID 42232879) and the null-pain-differentiation counterweight (the 44,028-amputee cohort's painful-versus-painless phantom comparison was not significant, PMID 36163201); individual claims require dated psychiatric and amputation-level assessment with pre-existing-disorder exclusion and review by a qualified medical professional.",
+    "Pathway and duplicate-scope screens and withheld propositions: no -> insomnia edge (BELOW THRESHOLD - sleep disturbance appears within comorbidity inventories (PMID 41203039, 34482809) without incident quantification, matching the batch-70 PPPD insomnia screen); no -> ptsd edge (SHARED-SUBSTRATE and direction-inversion - PTSD stems from the traumatic event causing the amputation and the cohort's PTSD odds (OR 1.7) attach to the syndrome level; the ptsd window is not recycled per ME-29); suicidal ideation (OR 1.62, PMID 36163201) recorded as a WITHHELD PROPOSITION with no catalog identity (fourth refusal after nightmare-disorder batch 64, nocturnal-enuresis batch 65, and overactive-bladder batch 68); no -> obesity, osteoarthritis, osteoporosis, or low-back-pain edges (ME-29 - amputation-level biomechanical, disuse, and osteopenia pathways own those windows and the cohort's pain-versus-painless comparison was null; obesity and low-back-pain have no catalog identities); chain-triangle disclosure (CRG redundancy-semantics follow-up): the published amputation-or-loss-of-use -> depressive-disorder legacy window (PMID 25294119) owns the general post-amputation mood pathway and nine amputation-family -> phantom-limb-pain edges exist, so these member-level edges register PLP-specific evidence only (PMIDs 36163201, 42638615, 42232879, 41203039) with the overlapping pathway recorded openly rather than silently duplicated (legacy edge untouched); ME-29 discipline - the amputation-family incoming edges' evidence is not recycled here."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 71 (2026-09-26): two bounded association edges authored - phantom-limb-pain to depressive-disorder (rank 1) and anxiety-disorder (rank 2) - both classified ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, and hypothesizedOnly:true. The depression edge rests on the matched 44,028-amputee cohort (MDD OR 1.86, PMID 36163201) and the 27-patient pilot rTMS sham-controlled trial with coupled pain and depression improvement (PMID 42638615); the anxiety edge rests on the same cohort (GAD OR 2.14) and the 163-person young-amputee cross-sectional cohort (PROMIS anxiety elevations, p<0.02, PMID 41203039). Both edges carry the year-long cross-lagged cohort openly as explicit direction-inversion counterweight (depressive symptoms and anxiety predict subsequent phantom limb pain with no lagged forward effect, PMID 42232879; erratum-linked record EClinicalMedicine 2026;96:103999 noted at preflight) and the null-pain-differentiation counterweight from the matched cohort. Shared-provenance disclosure (CRG redundancy-semantics follow-up, fourth accumulated example): the published amputation-or-loss-of-use -> depressive-disorder legacy edge and the amputation-family -> phantom-limb-pain edges form a chain triangle with these member-level edges; the PLP edges carry PLP-specific evidence not used by the legacy window and the overlap is recorded openly with the legacy edge left untouched."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "depressive-disorder",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Phantom limb pain associates with major depressive disorder at matched-cohort and trial level: the matched retrospective cohort of 44,028 below-knee amputees documents phantom limb syndrome associated with increased odds of coexistent major depressive disorder (OR 1.86, p<0.0001, PMID 36163201), and the pilot sham-controlled randomized trial of DLPFC rTMS in 27 traumatic amputees documents pain and depression ratings improving together (PMID 42638615); recorded as documented association only with the direction-inversion and null-pain-differentiation limits carried openly - the year-long cross-lagged cohort documents depressive symptoms predicting subsequent phantom limb pain and not the reverse (PMID 42232879).",
+        "causationStatus": "Neither causation nor aggravation of a depressive disorder is established for any individual: the largest anchor is a retrospective administrative comparison of phantom limb syndrome with and without pain showing no significant comorbidity difference attributable to pain itself, the only prospective directional analysis runs from depressive symptoms to later pain rather than the reverse, and individual claims require dated psychiatric and amputation-level assessment with pre-existing depressive disorder, medication effect, and adjustment-disorder exclusion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "PSYCHOPHYSIOLOGICAL",
+        "primaryVector": "Chronic neuropathic phantom pain with maladaptive cortical reorganization is hypothesized to sustain hypothalamic-pituitary-adrenal and autonomic stress load, sleep disruption, and participation loss so depressive vulnerability rises, the coupling supported by comorbidity odds at matched-cohort level and by depression improvement when phantom pain improves under cortical neuromodulation, but whether this route produced any individual depressive disorder remains hypothesized until psychiatric, pain, and amputation records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at one retrospective matched administrative cohort and one 27-patient pilot randomized trial: the comorbidity signal attaches to phantom limb syndrome broadly with no significant pain-specific differentiation between painful and painless phantom syndromes, the only prospective cross-lagged analysis documents the reverse ordering, the treatment-response anchor is a small pilot with short follow-up and intervention entanglement, and no cohort quantifies incident depression attributable to phantom limb pain with dated pain-before-mood ordering.",
+        "evidenceGaps": "The 44,028-patient matched cohort found no significant relationship between the presence of pain and any dependent variable when phantom limb syndrome with pain was compared with painless phantom syndrome; the year-long cross-lagged cohort (PMID 42232879) documents depressive symptoms and anxiety predicting higher subsequent phantom limb pain with no lagged association from pain to later mood; the treatment-response anchor is a 27-patient pilot randomized trial (rTMS) with intervention entanglement; and no incident-depression cohort with dated phantom-pain-first ordering was located.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "pre-existing depressive disorder and psychosocial vulnerability preceding amputation (direction-inversion guard carried on edge)",
+          "post-traumatic stress disorder and the traumatic amputation event itself (shared substrate; the ptsd window is not recycled per ME-29)",
+          "residual limb pain and other chronic post-amputation pain states (the war-amputee cohort documents stronger mood coupling to residual limb pain, PMID 42232879)",
+          "medication effects including opioids and gabapentinoids",
+          "adjustment disorder and grief responses to limb loss distinct from major depression"
+        ]
+      },
+      "evidenceGaps": [
+        "The 44,028-patient matched cohort found no significant relationship between the presence of pain and any dependent variable when phantom limb syndrome with pain was compared with painless phantom syndrome; the year-long cross-lagged cohort (PMID 42232879) documents depressive symptoms and anxiety predicting higher subsequent phantom limb pain with no lagged association from pain to later mood; the treatment-response anchor is a 27-patient pilot randomized trial (rTMS) with intervention entanglement; and no incident-depression cohort with dated phantom-pain-first ordering was located."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY at matched-cohort-plus-pilot-trial class with the direction-inversion and null-pain-differentiation limits carried openly: the matched cohort documents MDD odds of 1.86 with phantom limb syndrome (PMID 36163201), the pilot rTMS trial documents pain and depression improving together (PMID 42638615), and the prospective cross-lagged cohort is carried openly as explicit counterweight (depressive symptoms predict later pain, PMID 42232879); because the comorbidity signal attaches to the syndrome broadly and the only prospective ordering runs mood-to-pain, the conservative standard keeps the edge at association only and routes individual claims through dated psychiatric and amputation-level assessment with pre-existing-disorder exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Hogan WB, Anderson G, Kovoor M, et al. Phantom limb syndrome: Assessment of psychiatric and medical comorbidities associated with Phantom pain in 44,028 below knee amputees Injury. 2022 Nov;53(11):3697-3701. PMID 36163201.",
+          "note": "Retrospective matched cohort of 44,028 below-knee amputees in the PearlDiver database (Injury 2022): phantom limb syndrome (4.8% of the cohort) associated with increased odds of major depressive disorder (OR 1.86, p<0.0001), generalized anxiety disorder (OR 2.14, p=0.04), PTSD (OR 1.7), and suicidal ideation (OR 1.62); COUNTERWEIGHT carried openly - phantom-syndrome cohorts with versus without pain showed no significant relationship to any dependent variable; supports the bounded syndrome-level comorbidity association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36163201/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 36163201; results (matched comorbidity odds for phantom limb syndrome)"
+        },
+        {
+          "citation": "Vats D, Bhatia R, Sagar S, et al. Effect of DLPFC Targeted rTMS on Phantom Limb Pain and Associated Psychological Comorbidities: A Pilot Randomized Controlled Trial Neurorehabil Neural Repair. 2026 Aug 25:15459683261477087. PMID 42638615.",
+          "note": "Pilot randomized sham-controlled trial of DLPFC-targeted rTMS in 27 traumatic amputees with phantom limb pain (Neurorehabil Neural Repair 2026): 10 sessions over 2 weeks associated with improvement in pain (VAS), anxiety (HAM-A), depression (HAM-D), and WHOQOL-BREF; supports the bounded coupled pain-and-mood association only (pilot class, intervention entanglement).",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42638615/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 42638615; results (pain, anxiety, depression, and QoL outcomes)"
+        },
+        {
+          "citation": "Smolynets R, Barroso J, Pasquina PF, et al. The association between quality of life, anxiety and depression, and residual limb and phantom limb pain in war-related amputees: a year-long observational study EClinicalMedicine. 2026 May;95:103891. PMID 42232879.",
+          "note": "Year-long prospective observational cohort of 156 Ukrainian war-related amputees (EClinicalMedicine 2026): cross-lagged panel models show depressive symptoms and anxiety associated with higher subsequent phantom limb pain while phantom limb pain showed no lagged association with later depression, anxiety, or QoL; COUNTERWEIGHT carried openly as explicit direction-inversion evidence; erratum-linked record (EClinicalMedicine 2026 May 29;96:103999) noted at preflight and re-verified.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42232879/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 42232879; findings (cross-lagged directional associations)"
+        }
+      ]
+    },
+    {
+      "conditionId": "anxiety-disorder",
+      "rank": 2,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Phantom limb pain associates with anxiety at matched-cohort and cross-sectional level: the matched cohort of 44,028 below-knee amputees documents generalized anxiety disorder odds of 2.14 with phantom limb syndrome (p=0.04, PMID 36163201), the 163-person cross-sectional cohort of younger individuals with lower limb loss documents higher self-reported anxiety among those with phantom limb pain (p<0.02, PMID 41203039), and the pilot rTMS trial documents anxiety improvement alongside pain improvement (PMID 42638615); recorded as documented association only with the direction-inversion limit carried openly - the war-amputee cross-lagged cohort documents anxiety predicting later phantom pain with no lagged association in the forward direction (PMID 42232879).",
+        "causationStatus": "Neither causation nor aggravation of an anxiety disorder is established for any individual: the anxiety signal is cross-sectional or syndrome-level wherever quantified, the only prospective directional analysis runs from anxiety to later pain rather than the reverse, self-reported anxiety subscales are not structured psychiatric diagnoses, and individual claims require dated psychiatric assessment with pre-existing anxiety, substance, and hyperthyroid exclusion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "PSYCHOPHYSIOLOGICAL",
+        "primaryVector": "Chronic phantom pain with sustained threat signaling and autonomic arousal is hypothesized to keep central fear and worry circuits sensitized so generalized anxiety vulnerability rises, the coupling supported by anxiety odds at matched-cohort level and anxiety subscale elevations in pain-positive groups, but whether this route produced any individual anxiety disorder remains hypothesized until psychiatric, pain, and amputation records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at one retrospective matched administrative cohort and two cross-sectional questionnaire cohorts with one pilot trial: generalized anxiety odds rest on administrative coding (OR 2.14 at p=0.04, the least robust estimate in the source cohort), the 163-person cohort measures PROMIS anxiety subscales rather than diagnoses and is cross-sectional, the comorbidity signal attaches to phantom limb syndrome broadly with null pain-specific differentiation, and no incident-anxiety cohort with dated pain-first ordering was located.",
+        "evidenceGaps": "The 44,028-patient matched cohort found no significant relationship between the presence of pain and any dependent variable (painful versus painless phantom syndrome) and its GAD estimate is marginal (p=0.04); the 163-person cohort (PMID 41203039) is cross-sectional with PROMIS subscales rather than structured diagnoses; the cross-lagged cohort (PMID 42232879) documents anxiety predicting subsequent phantom limb pain and no forward lagged effect; and no incident-anxiety cohort with dated phantom-pain-first ordering was located.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "pre-existing anxiety disorder and trait anxiety preceding amputation (direction-inversion guard carried on edge)",
+          "post-traumatic stress disorder and the traumatic amputation event (shared substrate; the ptsd window is not recycled per ME-29)",
+          "caffeine, stimulant, and substance effects; hyperthyroidism and cardiopulmonary causes of anxiety symptoms",
+          "sleep disruption and pain interference as parallel correlates rather than anxiety causes",
+          "residual limb pain and other chronic post-amputation pain states (PMID 42232879)"
+        ]
+      },
+      "evidenceGaps": [
+        "The 44,028-patient matched cohort found no significant relationship between the presence of pain and any dependent variable (painful versus painless phantom syndrome) and its GAD estimate is marginal (p=0.04); the 163-person cohort (PMID 41203039) is cross-sectional with PROMIS subscales rather than structured diagnoses; the cross-lagged cohort (PMID 42232879) documents anxiety predicting subsequent phantom limb pain and no forward lagged effect; and no incident-anxiety cohort with dated phantom-pain-first ordering was located."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY at matched-cohort-plus-cross-sectional class with the direction-inversion limit carried openly: the matched cohort documents GAD odds of 2.14 (PMID 36163201), the young-amputee cohort documents anxiety elevations in the pain-positive group (PMID 41203039), and the cross-lagged cohort is carried openly as explicit counterweight (anxiety predicts later pain, PMID 42232879); because the only prospective ordering runs anxiety-to-pain and the remaining anchors are cross-sectional, the conservative standard keeps the edge at association only and routes individual claims through dated psychiatric assessment with pre-existing-anxiety and substance exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Hogan WB, Anderson G, Kovoor M, et al. Phantom limb syndrome: Assessment of psychiatric and medical comorbidities associated with Phantom pain in 44,028 below knee amputees Injury. 2022 Nov;53(11):3697-3701. PMID 36163201.",
+          "note": "Retrospective matched cohort of 44,028 below-knee amputees (Injury 2022): phantom limb syndrome associated with increased odds of generalized anxiety disorder (OR 2.14, p=0.04) alongside MDD, PTSD, and suicidal ideation; COUNTERWEIGHT carried openly - painful versus painless phantom syndromes did not differ significantly; supports the bounded syndrome-level comorbidity association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36163201/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 36163201; results (matched comorbidity odds for phantom limb syndrome)"
+        },
+        {
+          "citation": "Paulus P, Childers L, Butowicz C, et al. Correlates of Phantom Limb Pain in Young Individuals With Lower Limb Loss Arch Phys Med Rehabil. 2026 Jul;107(7):1473-1479. PMID 41203039.",
+          "note": "Cross-sectional cohort of 163 individuals aged 20-60 with lower limb loss (Arch Phys Med Rehabil 2026): 68.1% reported phantom limb pain (mean intensity 4.6/10); those with PLP reported higher PROMIS sleep disturbance, anxiety, fatigue, and pain interference (all p<0.02); supports the bounded cross-sectional association only (subscale measures, no direction).",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41203039/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 41203039; results (PROMIS subscale differences by PLP presence)"
+        },
+        {
+          "citation": "Smolynets R, Barroso J, Pasquina PF, et al. The association between quality of life, anxiety and depression, and residual limb and phantom limb pain in war-related amputees: a year-long observational study EClinicalMedicine. 2026 May;95:103891. PMID 42232879.",
+          "note": "Year-long prospective cohort of 156 Ukrainian war-related amputees (EClinicalMedicine 2026): cross-lagged models show depressive symptoms and anxiety associated with higher subsequent phantom limb pain while PLP showed no lagged association with later anxiety; COUNTERWEIGHT carried openly as explicit direction-inversion evidence; erratum-linked record (EClinicalMedicine 2026 May 29;96:103999) noted at preflight and re-verified.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42232879/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 42232879; findings (cross-lagged directional associations)"
+        }
+      ]
+    }
+  ]
 }

@@ -13429,6 +13429,222 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 **Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
 
+### `phantom-limb-pain` → `depressive-disorder` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Phantom limb pain associates with major depressive disorder at matched-cohort and trial level: the matched retrospective cohort of 44,028 below-knee amputees documents phantom limb syndrome associated with increased odds of coexistent major depressive disorder (OR 1.86, p<0.0001, PMID 36163201), and the pilot sham-controlled randomized trial of DLPFC rTMS in 27 traumatic amputees documents pain and depression ratings improving together (PMID 42638615); recorded as documented association only with the direction-inversion and null-pain-differentiation limits carried openly - the year-long cross-lagged cohort documents depressive symptoms predicting subsequent phantom limb pain and not the reverse (PMID 42232879).
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation of a depressive disorder is established for any individual: the largest anchor is a retrospective administrative comparison of phantom limb syndrome with and without pain showing no significant comorbidity difference attributable to pain itself, the only prospective directional analysis runs from depressive symptoms to later pain rather than the reverse, and individual claims require dated psychiatric and amputation-level assessment with pre-existing depressive disorder, medication effect, and adjustment-disorder exclusion.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 376.1 — Hogan WB, Anderson G, Kovoor M, et al. Phantom limb syndrome: Assessment of psychiatric and medical comorbidities associated with Phantom pain in 44,028 below knee amputees Injury. 2022 Nov;53(11):3697-3701. PMID 36163201.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/36163201/
+- Source checked on: 2026-09-26
+- Locator: PMID 36163201; results (matched comorbidity odds for phantom limb syndrome)
+- Note under review: Retrospective matched cohort of 44,028 below-knee amputees in the PearlDiver database (Injury 2022): phantom limb syndrome (4.8% of the cohort) associated with increased odds of major depressive disorder (OR 1.86, p<0.0001), generalized anxiety disorder (OR 2.14, p=0.04), PTSD (OR 1.7), and suicidal ideation (OR 1.62); COUNTERWEIGHT carried openly - phantom-syndrome cohorts with versus without pain showed no significant relationship to any dependent variable; supports the bounded syndrome-level comorbidity association only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 376.2 — Vats D, Bhatia R, Sagar S, et al. Effect of DLPFC Targeted rTMS on Phantom Limb Pain and Associated Psychological Comorbidities: A Pilot Randomized Controlled Trial Neurorehabil Neural Repair. 2026 Aug 25:15459683261477087. PMID 42638615.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42638615/
+- Source checked on: 2026-09-26
+- Locator: PMID 42638615; results (pain, anxiety, depression, and QoL outcomes)
+- Note under review: Pilot randomized sham-controlled trial of DLPFC-targeted rTMS in 27 traumatic amputees with phantom limb pain (Neurorehabil Neural Repair 2026): 10 sessions over 2 weeks associated with improvement in pain (VAS), anxiety (HAM-A), depression (HAM-D), and WHOQOL-BREF; supports the bounded coupled pain-and-mood association only (pilot class, intervention entanglement).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 376.3 — Smolynets R, Barroso J, Pasquina PF, et al. The association between quality of life, anxiety and depression, and residual limb and phantom limb pain in war-related amputees: a year-long observational study EClinicalMedicine. 2026 May;95:103891. PMID 42232879.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42232879/
+- Source checked on: 2026-09-26
+- Locator: PMID 42232879; findings (cross-lagged directional associations)
+- Note under review: Year-long prospective observational cohort of 156 Ukrainian war-related amputees (EClinicalMedicine 2026): cross-lagged panel models show depressive symptoms and anxiety associated with higher subsequent phantom limb pain while phantom limb pain showed no lagged association with later depression, anxiety, or QoL; COUNTERWEIGHT carried openly as explicit direction-inversion evidence; erratum-linked record (EClinicalMedicine 2026 May 29;96:103999) noted at preflight and re-verified.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `phantom-limb-pain` → `anxiety-disorder` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Phantom limb pain associates with anxiety at matched-cohort and cross-sectional level: the matched cohort of 44,028 below-knee amputees documents generalized anxiety disorder odds of 2.14 with phantom limb syndrome (p=0.04, PMID 36163201), the 163-person cross-sectional cohort of younger individuals with lower limb loss documents higher self-reported anxiety among those with phantom limb pain (p<0.02, PMID 41203039), and the pilot rTMS trial documents anxiety improvement alongside pain improvement (PMID 42638615); recorded as documented association only with the direction-inversion limit carried openly - the war-amputee cross-lagged cohort documents anxiety predicting later phantom pain with no lagged association in the forward direction (PMID 42232879).
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation of an anxiety disorder is established for any individual: the anxiety signal is cross-sectional or syndrome-level wherever quantified, the only prospective directional analysis runs from anxiety to later pain rather than the reverse, self-reported anxiety subscales are not structured psychiatric diagnoses, and individual claims require dated psychiatric assessment with pre-existing anxiety, substance, and hyperthyroid exclusion.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 377.1 — Hogan WB, Anderson G, Kovoor M, et al. Phantom limb syndrome: Assessment of psychiatric and medical comorbidities associated with Phantom pain in 44,028 below knee amputees Injury. 2022 Nov;53(11):3697-3701. PMID 36163201.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/36163201/
+- Source checked on: 2026-09-26
+- Locator: PMID 36163201; results (matched comorbidity odds for phantom limb syndrome)
+- Note under review: Retrospective matched cohort of 44,028 below-knee amputees (Injury 2022): phantom limb syndrome associated with increased odds of generalized anxiety disorder (OR 2.14, p=0.04) alongside MDD, PTSD, and suicidal ideation; COUNTERWEIGHT carried openly - painful versus painless phantom syndromes did not differ significantly; supports the bounded syndrome-level comorbidity association only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 377.2 — Paulus P, Childers L, Butowicz C, et al. Correlates of Phantom Limb Pain in Young Individuals With Lower Limb Loss Arch Phys Med Rehabil. 2026 Jul;107(7):1473-1479. PMID 41203039.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/41203039/
+- Source checked on: 2026-09-26
+- Locator: PMID 41203039; results (PROMIS subscale differences by PLP presence)
+- Note under review: Cross-sectional cohort of 163 individuals aged 20-60 with lower limb loss (Arch Phys Med Rehabil 2026): 68.1% reported phantom limb pain (mean intensity 4.6/10); those with PLP reported higher PROMIS sleep disturbance, anxiety, fatigue, and pain interference (all p<0.02); supports the bounded cross-sectional association only (subscale measures, no direction).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 377.3 — Smolynets R, Barroso J, Pasquina PF, et al. The association between quality of life, anxiety and depression, and residual limb and phantom limb pain in war-related amputees: a year-long observational study EClinicalMedicine. 2026 May;95:103891. PMID 42232879.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42232879/
+- Source checked on: 2026-09-26
+- Locator: PMID 42232879; findings (cross-lagged directional associations)
+- Note under review: Year-long prospective cohort of 156 Ukrainian war-related amputees (EClinicalMedicine 2026): cross-lagged models show depressive symptoms and anxiety associated with higher subsequent phantom limb pain while PLP showed no lagged association with later anxiety; COUNTERWEIGHT carried openly as explicit direction-inversion evidence; erratum-linked record (EClinicalMedicine 2026 May 29;96:103999) noted at preflight and re-verified.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `phimosis` → `urinary-frequency-retention` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Pathological phimosis documents bladder outlet obstruction at ultrasound-cohort and population-etiology level: the retrospective surgical series of boys with lichen sclerosus pathological phimosis documents abnormal urinary tract ultrasound in 19 of 78 (acute retention in 3, isolated post-void residual above 10 percent of estimated bladder capacity in 8, bladder wall thickening in 3, upper tract changes in 5) with obstructive symptoms resolving after treatment (PMID 31455543), and the 11-year regional paediatric acute urinary retention cohort documents phimosis/balanitis as a documented etiology in 6 of 56 presentations (11 percent, PMID 39821927); recorded as documented association only with the physiological-phimosis counterweight carried openly - a uroflowmetry and ultrasound study of 32 boys finds no objective obstructed voiding in physiological phimosis with or without foreskin ballooning (PMID 15291873).
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation of urinary retention is established for any individual: the ultrasound cohort is a selected surgical lichen-sclerosus subgroup, the retention cohort counts phimosis among mixed etiologies without phimosis-specific incidence, and physiological phimosis objectively does not obstruct voiding, so attribution requires documented pathological (lichen sclerosus or scarring) phimosis with uroflowmetry, post-void residual, and obstructive-symptom documentation and exclusion of neuropathic bladder, urethral stricture, infection, and constipation.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 378.1 — Hughes KE, Corbett HJ. Ultrasound evidence of bladder outlet obstruction secondary to lichen sclerosus et atrophicus in boys (balanitis xerotica obliterans) J Pediatr Surg. 2020 Apr;55(4):721-725. PMID 31455543.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/31455543/
+- Source checked on: 2026-09-26
+- Locator: PMID 31455543; results (ultrasound abnormalities and post-treatment resolution)
+- Note under review: Retrospective review of boys undergoing surgical treatment for lichen sclerosus pathological phimosis 2000-2017 (J Pediatr Surg 2020): 19 of 78 boys with preoperative ultrasound had abnormal scans - 3 acute retention, 8 isolated PVR >10% of estimated bladder capacity, 3 bladder wall thickening, 5 upper tract changes; 17 had obstructive symptoms, 13 culture-proven UTIs, 12 new-onset incontinence; abnormalities resolved after successful treatment in 5 of 6 rescanned; supports the bounded pathological-phimosis obstruction association only (selected surgical subgroup).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 378.2 — Nasr S, Lim JY, Nugapitiya SS, et al. Paediatric Acute Urinary Retention in Central Queensland J Paediatr Child Health. 2025 Mar;61(3):465-471. PMID 39821927.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/39821927/
+- Source checked on: 2026-09-26
+- Locator: PMID 39821927; results (acute retention etiology distribution)
+- Note under review: Retrospective study of paediatric acute urinary retention presentations 2008-2018 at two regional Australian hospitals (J Paediatr Child Health 2025): 56 presentations in 53 children; commonest etiologies post-operative (23%), medications (13%), UTI (11%), phimosis/balanitis (11%), faecal impaction (11%); supports the bounded etiology-attribution association only (no phimosis-specific denominators).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 378.3 — Babu R, Harrison SK, Hutton KA. Ballooning of the foreskin and physiological phimosis: is there any objective evidence of obstructed voiding? BJU Int. 2004 Aug;94(3):384-7. PMID 15291873.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/15291873/
+- Source checked on: 2026-09-26
+- Locator: PMID 15291873; results (uroflowmetry and ultrasound comparison by ballooning)
+- Note under review: Prospective uroflowmetry and ultrasound study of 32 boys with physiological phimosis, 18 with foreskin ballooning (BJU Int 2004): mean Qmax 15.3 versus 15.4 mL/s (P=0.96), all flow rates within normal limits on age nomograms, comparable post-void residuals, normal upper tracts and bladder wall thickness in all; COUNTERWEIGHT carried openly - physiological phimosis with or without ballooning shows no objective obstructed voiding.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `pleura-cancer` → `pleural-effusion` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Pleural mesothelioma documents pleural effusion at cohort and seminar level: the 10-year single-centre series of 247 confirmed malignant pleural mesothelioma patients documents pleural effusion in 71.4 percent at presentation (with pleural thickening in 64.9 percent, dyspnoea 77.4 percent, chest pain 38.5 percent, PMID 33506102), and the 2025 Nature Reviews Disease Primers seminar documents mesothelioma commonly presenting with dyspnoea or cough caused by pleural effusion (PMID 40775245); recorded as documented association only with the presentation-manifestation and treatment-mediated limits carried openly - the effusion is present at diagnosis in most patients and is often the diagnostic route, so the edge registers tumor-attributable effusion co-occurrence rather than a temporally separated complication.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation of pleural effusion is established for any individual: the effusion is present at diagnosis in most mesothelioma presentations so exposure-before-outcome ordering is not established within the cohort, malignant effusion in any individual can be paramalignant or have concurrent etiologies, and individual claims require dated thoracic imaging and fluid cytology with congestive heart failure, infection, cirrhosis, nephrosis, and pulmonary embolism exclusion.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 379.1 — Murphy DC, Mount A, Starkie F, et al. A review of malignant pleural mesothelioma in a large North East UK pleural centre Pleura Peritoneum. 2020 Dec;6(1):20200144. PMID 33506102.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/33506102/
+- Source checked on: 2026-09-26
+- Locator: PMID 33506102; results (radiological and presentation characteristics of the MPM cohort)
+- Note under review: Single-centre retrospective case series of 247 confirmed malignant pleural mesothelioma patients 2009-2019 (Pleura Peritoneum 2020): 86% male, mean age 75.7; presenting features dyspnoea 77.4%, chest pain 38.5%; pleural thickening 64.9% and pleural effusion 71.4%; histopathological confirmation in only 43.7%; supports the bounded tumor-attributable effusion co-occurrence only (presentation class).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 379.2 — Fennell DA, Sekido Y, Baas P, et al. Pleural mesothelioma Nat Rev Dis Primers. 2025 Aug 7;11(1):56. PMID 40775245.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/40775245/
+- Source checked on: 2026-09-26
+- Locator: PMID 40775245; seminar (clinical presentation and effusion-associated morbidity)
+- Note under review: Nature Reviews Disease Primers 2025 seminar on pleural mesothelioma (Fennell et al.): documents mesothelioma commonly presenting with fatigue, dyspnoea and/or cough caused by pleural effusion, pain, and reduced mobility, with malignant pleural effusion a dominant presenting and morbidity feature; supports the bounded effusion-presentation association only (review class).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `pleura-cancer` → `deep-vein-thrombosis` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Pleural mesothelioma documents venous thromboembolism at cohort level: the 178-patient histopathologically confirmed mesothelioma cohort documents thromboembolic events in 7.9 percent including deep venous thrombosis in 3.4 percent over a median 8-month follow-up (PMID 25525045), and the 100-patient pleurectomy cohort under weekly surveillance documents preoperative deep vein thrombosis in 7 patients and postoperative thrombosis in 30 of 93 analyzed (32 percent, 22 percent deep-vein-thrombosis-only) with a third of deep vein thromboses asymptomatic at detection (PMID 32113716); recorded as documented association only with the treatment-mediated, surveillance-detection, and reverse-timing limits carried openly - 5 of the 14 thromboembolic events in the disease cohort preceded the mesothelioma diagnosis.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation of deep vein thrombosis is established for any individual: the surgical cohort's rates are surveillance- and treatment-mediated under postoperative thromboprophylaxis and heparin protocols, the disease cohort's events partly preceded diagnosis so malignancy-attribution timing is mixed, and individual claims require dated venous imaging with immobilization, prior thrombosis, central catheter, chemotherapy, and inherited-thrombophilia exclusion.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 380.1 — Koksal D, Safak O, Ozcan A, et al. Thromboembolic Events in Malignant Pleural Mesothelioma Clin Appl Thromb Hemost. 2016 May;22(4):390-4. PMID 25525045.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/25525045/
+- Source checked on: 2026-09-26
+- Locator: PMID 25525045; results (thromboembolic event rates and timing relative to diagnosis)
+- Note under review: Retrospective study of 178 histopathologically diagnosed malignant pleural mesothelioma patients 2008-2014 (Clin Appl Thromb Hemost 2016): 14 thromboembolic events (7.9%) - 6 pulmonary embolism (3.4%), 6 deep venous thrombosis (3.4%), 2 myocardial infarction (1.1%); 5 events preceded, 1 coincided with, and 8 followed the MPM diagnosis; rates not associated with thrombocytosis, stage, or histopathology; supports the bounded thromboembolic association only with reverse-timing carried openly.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 380.2 — De León LE, Bravo-Iñiguez CE, Fox S, et al. Routine surveillance for diagnosis of venous thromboembolism after pleurectomy for malignant pleural mesothelioma J Thorac Cardiovasc Surg. 2020 Oct;160(4):1064-1073. PMID 32113716.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/32113716/
+- Source checked on: 2026-09-26
+- Locator: PMID 32113716; results (venous thromboembolism incidence under surveillance)
+- Note under review: Prospective surveillance cohort of 100 pleurectomy patients for malignant pleural mesothelioma 2016-2018 (J Thorac Cardiovasc Surg 2020): 7 preoperative DVTs; of 93 analyzed under weekly noninvasive studies plus pneumatic compression and heparin prophylaxis, 30 (32%) developed thrombosis - 20 (22%) DVT only, 3 (3%) PE only, 7 (7%) both; 9 of 27 DVTs (33%) asymptomatic; supports the bounded post-surgical surveillance association only (treatment-mediated).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `pleura-cancer` → `pulmonary-embolism` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Pleural mesothelioma documents pulmonary embolism at cohort level: the 178-patient mesothelioma cohort documents pulmonary thromboembolism in 3.4 percent over a median 8-month follow-up alongside deep venous thrombosis and myocardial infarction (PMID 25525045), and the 100-patient pleurectomy surveillance cohort documents pulmonary embolism in 3 patients alone and 7 with concurrent deep vein thrombosis (10 of 93 analyzed, PMID 32113716); recorded as documented association only with the treatment-mediated, surveillance-detection, and reverse-timing limits carried openly - 5 of the 14 thromboembolic events in the disease cohort preceded the mesothelioma diagnosis.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation of pulmonary embolism is established for any individual: the surgical cohort's events are surveillance-mediated under postoperative prophylaxis, the disease cohort's events partly preceded diagnosis so malignancy-attribution timing is mixed, and individual claims require dated imaging with immobilization, prior thrombosis, central catheter, chemotherapy, cardiopulmonary disease, and thrombophilia exclusion.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 381.1 — Koksal D, Safak O, Ozcan A, et al. Thromboembolic Events in Malignant Pleural Mesothelioma Clin Appl Thromb Hemost. 2016 May;22(4):390-4. PMID 25525045.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/25525045/
+- Source checked on: 2026-09-26
+- Locator: PMID 25525045; results (thromboembolic event rates and timing relative to diagnosis)
+- Note under review: Retrospective study of 178 histopathologically diagnosed malignant pleural mesothelioma patients 2008-2014 (Clin Appl Thromb Hemost 2016): 14 thromboembolic events (7.9%) including 6 pulmonary embolism (3.4%); 5 events preceded, 1 coincided with, and 8 followed the MPM diagnosis; supports the bounded pulmonary-embolic association only with reverse-timing carried openly.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 381.2 — De León LE, Bravo-Iñiguez CE, Fox S, et al. Routine surveillance for diagnosis of venous thromboembolism after pleurectomy for malignant pleural mesothelioma J Thorac Cardiovasc Surg. 2020 Oct;160(4):1064-1073. PMID 32113716.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/32113716/
+- Source checked on: 2026-09-26
+- Locator: PMID 32113716; results (venous thromboembolism incidence under surveillance)
+- Note under review: Prospective surveillance cohort of 100 pleurectomy patients for malignant pleural mesothelioma (J Thorac Cardiovasc Surg 2020): of 93 analyzed under weekly surveillance with prophylaxis, 3 (3%) developed pulmonary embolism only and 7 (7%) developed both deep vein thrombosis and pulmonary embolism (10 of 93 with PE overall); supports the bounded post-surgical surveillance association only (treatment-mediated, overlap with the deep-vein-thrombosis edge carried openly).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
 ## Implementation mechanics after decisions
 
 - Mapping edits and registry edits must land in lockstep (the registry audit's canonical-JSON hashes and live-use sets will fail otherwise).
