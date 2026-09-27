@@ -2,8 +2,202 @@
   "id": "prurigo-nodularis",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review dermatologic, autoimmune, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 75 (2026-09-26): three ASSOCIATION_ONLY draft mappings pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: the edges assert association only (etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true), all PSYCHOPHYSIOLOGICAL following the batch-53 lichen-planus and lichen-simplex-chronicus dermatologic mood-edge precedents. The mood edges carry the comorbidity-prevalence limit openly (41.1 percent depression and 35.4 percent anxiety are cross-sectional coded comorbidity in the English CPRD cohort, not incident diagnoses), the shared-substrate limit (atopic dermatitis in 52.2 percent of that cohort carries its own mood burden; itch-depression and itch-anxiety relationships are bidirectional in the pruritus literature), and within-batch source sharing across the two mood edges. The insomnia edge carries the survey-measure limit (PROM sleep items, no polysomnographic or structured insomnia diagnosis) and the research-letter-class limit on PMID 39656658 openly. Individual claims require dated dermatologic and psychiatric and sleep records with pre-existing mood disorder, atopic-disease severity, sleep-disordered breathing, restless legs, and medication effects excluded and review by a qualified medical professional.",
+    "Pathway and duplicate-scope screens and withheld propositions: no -> lichen-simplex-chronicus edge (IDENTITY-OVERLAP - prurigo nodularis is the nodular lichenified phenotype in the chronic-prurigo family and the batch-53 lichen-simplex mood edges own that window's sources, none recycled per ME-29); no -> obsessive-compulsive-disorder edge (BELOW THRESHOLD - mentioned in review-level comorbidity lists (PMID 40947069) without condition-specific quantification); no -> cellulitis or skin-infection propositions (ZERO RECORD in this window and no skin-infection identity exists; recorded only as a screen, not a refusal); no -> peripheral-neuropathy edge (SHARED-SUBSTRATE - neuropathic pain and central sensitization are comorbid features in the review, not a quantified entrapment or polyneuropathy outcome); no -> substance-use-disorder or -> opioid-use-disorder edges (ZERO RECORD); itch and sleep loss as outcomes recorded as mediation routes rather than separate edges (no itch or pruritus identity exists)."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 75 (2026-09-26): three bounded association edges authored - prurigo-nodularis to depressive-disorder (rank 1), anxiety-disorder (rank 2), and insomnia (rank 3) - all classified ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, and hypothesizedOnly:true. The mood edges rest on the English CPRD-linked database cohort (2,743 point-prevalent patients; depression 41.1 percent, anxiety 35.4 percent, atopic dermatitis 52.2 percent, PMID 35083742), the US PN TREK cross-sectional survey (132 patients; severity-graded mental-health and sleep impact, all p<0.001, PMID 40439955), and the comorbidities review (PMID 40947069), with within-batch sharing across the mood edges recorded openly. The insomnia edge rests on the PN TREK sleep signal and the comorbidities review plus the research-letter association (PMID 39656658, letter class carried openly). Direction and shared-substrate limits (bidirectional itch-mood cycle; atopic dermatitis substrate) are carried openly on all three edges."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "depressive-disorder",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Prurigo nodularis associates with depression at population-database and patient-survey level: the English CPRD-linked point-prevalent cohort of 2,743 prurigo nodularis patients documents depression in 41.1 percent and anxiety in 35.4 percent alongside atopic dermatitis in 52.2 percent (PMID 35083742), the US PN TREK cross-sectional survey of 132 patients documents greater mental-health impact in the severe-itch group (worst itch NRS at or above 7 versus 0-2, all patient-reported impacts p<0.001) (PMID 40439955), and the comorbidities review documents depression among the frequent psychiatric comorbidities complicating management (PMID 40947069); recorded as documented association only with the comorbidity-prevalence, cross-sectional, and shared-substrate limits carried openly - the quantified figure is cross-sectional comorbidity rather than incident depression, and atopic dermatitis drives both the skin disease and its own mood burden.",
+        "causationStatus": "Neither causation nor aggravation of depressive-disorder is established for any individual: the quantified 41.1 percent is cross-sectional coded comorbidity in a point-prevalent cohort with no temporal ordering, atopic dermatitis in 52.2 percent of the cohort carries independent mood comorbidity so the shared substrate is not separated, the itch-severity gradient in the survey is patient-reported and uncontrolled, the itch-depression relationship is described as bidirectional in the pruritus literature so mood state may precede rather than follow the skin disease, and individual claims require dated dermatologic and psychiatric records with pre-existing mood disorder, atopic-disease severity, and other pruritic causes excluded."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "PSYCHOPHYSIOLOGICAL",
+        "primaryVector": "The chronic itch-scratch cycle with nocturnal pruritus, skin pain, stigma, and sleep disruption is hypothesized to destabilize mood regulation over the disease course, the route supported by the severity-graded mental-health impact in the survey cohort and the psychiatric-comorbidity prevalence in the population cohort, but whether this route produced any individual's depressive episode remains hypothesized until dermatologic and psychiatric timelines are reviewed side by side.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at one population-database cohort (2,743 prevalent cases, coded comorbidity) and one 132-patient cross-sectional survey plus one review-class anchor: the endpoint is comorbidity prevalence rather than incident depressive-disorder, temporality is unestablished in all three, atopic dermatitis in over half the population cohort carries its own mood comorbidity (shared substrate), the severity gradient is patient-reported, and no longitudinal incident-depression cohort among prurigo nodularis patients was located.",
+        "evidenceGaps": "No longitudinal cohort quantifying incident depressive-disorder among prurigo nodularis patients free of mood disorder at baseline was located; the quantified 41.1 percent is cross-sectional coded comorbidity; the itch-severity mental-health gradient is survey-based (WI-NRS self-report); the third anchor is review class; and the bidirectional itch-depression cycle leaves direction unestablished.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "atopic dermatitis and other underlying pruritic dermatoses carrying their own mood comorbidity (52.2 percent atopic dermatitis in the population cohort; shared-substrate limit carried openly)",
+          "pre-existing mood disorder antedating the skin disease (individual claims require documented pre-morbid psychiatric history)",
+          "sleep disruption from nocturnal pruritus as the proximate driver rather than the skin diagnosis itself (mediation carried openly)",
+          "medication effects including systemic immunosuppressants and neuromodulators; substance use and psychosocial adversity"
+        ]
+      },
+      "evidenceGaps": [
+        "No longitudinal cohort quantifying incident depressive-disorder among prurigo nodularis patients free of mood disorder at baseline was located; the quantified 41.1 percent is cross-sectional coded comorbidity; the itch-severity mental-health gradient is survey-based (WI-NRS self-report); the third anchor is review class; and the bidirectional itch-depression cycle leaves direction unestablished."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY at population-cohort-plus-patient-survey class with the comorbidity-prevalence and shared-substrate limits carried openly, following the PSYCHOPHYSIOLOGICAL dermatologic mood-edge convention (lichen-planus and lichen-simplex-chronicus batch-53 precedents): the English CPRD cohort quantifies depression comorbidity at 41.1 percent in 2,743 prurigo nodularis patients (PMID 35083742), the PN TREK survey quantifies severity-graded mental-health impact in 132 patients (PMID 40439955), and the comorbidities review anchors the psychiatric-comorbidity framing (PMID 40947069); because the endpoint is cross-sectional comorbidity with atopic dermatitis over half the cohort and the itch-depression relationship is bidirectional, the conservative standard keeps the edge at association only, states the shared-substrate and direction limits on the record, and routes individual claims through dated dermatologic and psychiatric timelines with pre-existing mood disorder excluded.",
+      "sourceReferences": [
+        {
+          "citation": "Morgan CL, Thomas M, Ständer S, et al. Epidemiology of prurigo nodularis in England: a retrospective database analysis Br J Dermatol. 2022 Aug;187(2):188-195. PMID 35083742.",
+          "note": "English CPRD-linked retrospective database analysis (Br J Dermatol 2022): 2,743 point-prevalent prurigo nodularis patients (prevalence 3.27 per 10,000); comorbidity notably atopic dermatitis 52.2%, depression 41.1%, anxiety 35.4%; supports the bounded cross-sectional comorbidity association only (coded prevalence, no temporality).",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35083742/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 35083742; results (comorbidity prevalence)"
+        },
+        {
+          "citation": "Kwatra SG, Yang M, Martins B, et al. Prurigo Nodularis PaTient-Reported BurdEn of SicKness (PN TREK): A Cross-Sectional Survey of Patient-Reported Burden of Disease in Patients with PN from the US Adv Ther. 2025 Jul;42(7):3455-3471. PMID 40439955.",
+          "note": "PN TREK US cross-sectional survey (Adv Ther 2025): 132 patients; worst-itch NRS >=7 versus 0-2 groups differed on skin pain, neurological pain, QoL impact, sleep disturbance, mental health, and work productivity (all p<0.001); supports the bounded severity-graded impact association only (self-reported, cross-sectional).",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40439955/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 40439955; results (PROM severity-group comparisons)"
+        },
+        {
+          "citation": "Manjunath J, Akinniyi BU, Kollhoff AL, et al. Comorbidities in prurigo nodularis Clin Dermatol. 2025 Sep-Oct;43(5):681-685. PMID 40947069.",
+          "note": "Comorbidities-in-prurigo-nodularis review (Clin Dermatol 2025): documents frequent psychiatric comorbidities including depression, anxiety, and obsessive-compulsive disorder alongside sleep disturbances and neuropathic pain; supports the bounded comorbidity framing only (review class).",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40947069/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 40947069; review (psychiatric and sleep comorbidities)"
+        }
+      ]
+    },
+    {
+      "conditionId": "anxiety-disorder",
+      "rank": 2,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Prurigo nodularis associates with anxiety at population-database and patient-survey level: the English CPRD-linked point-prevalent cohort of 2,743 prurigo nodularis patients documents anxiety in 35.4 percent alongside depression in 41.1 percent (PMID 35083742), the US PN TREK cross-sectional survey of 132 patients documents greater mental-health impact in the severe-itch group (worst itch NRS at or above 7, all patient-reported impacts p<0.001) (PMID 40439955), and the comorbidities review documents anxiety among the frequent psychiatric comorbidities complicating management (PMID 40947069); recorded as documented association only with the comorbidity-prevalence, cross-sectional, and shared-substrate limits carried openly - sources are shared with the depressive-disorder edge within this batch and atopic dermatitis drives both the skin disease and its own anxiety burden.",
+        "causationStatus": "Neither causation nor aggravation of anxiety-disorder is established for any individual: the quantified 35.4 percent is cross-sectional coded comorbidity with no temporal ordering, atopic dermatitis in 52.2 percent of the cohort carries independent anxiety comorbidity so the shared substrate is not separated, pruritus-related itch catastrophizing and anxiety are described as bidirectional so psychological state may precede rather than follow the skin disease, and individual claims require dated dermatologic and psychiatric records with pre-existing anxiety disorder, atopic-disease severity, and other pruritic causes excluded."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "PSYCHOPHYSIOLOGICAL",
+        "primaryVector": "The chronic itch-scratch cycle with anticipatory itch, stigma, and sleep disruption is hypothesized to sustain anxiety symptoms over the disease course, the route supported by the severity-graded mental-health impact in the survey cohort and the anxiety prevalence in the population cohort, but whether this route produced any individual's anxiety disorder remains hypothesized until dermatologic and psychiatric timelines are reviewed side by side.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association rests on the same two cross-sectional anchors shared with the depressive-disorder edge plus one review-class source: the endpoint is comorbidity prevalence rather than incident anxiety-disorder, temporality is unestablished, atopic dermatitis over half the population cohort carries its own anxiety comorbidity, itch catastrophizing and anxiety are bidirectional in the pruritus literature, and no longitudinal incident-anxiety cohort among prurigo nodularis patients was located.",
+        "evidenceGaps": "No longitudinal cohort quantifying incident anxiety-disorder among prurigo nodularis patients free of anxiety at baseline was located; the quantified 35.4 percent is cross-sectional coded comorbidity shared with the mood edge within this batch; the mental-health impact is survey-based; and the bidirectional itch-anxiety relationship leaves direction unestablished.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "atopic dermatitis and other underlying pruritic dermatoses carrying their own anxiety comorbidity (shared-substrate limit carried openly)",
+          "pre-existing anxiety disorder antedating the skin disease (individual claims require documented pre-morbid psychiatric history)",
+          "itch catastrophizing and sleep disruption as proximate drivers rather than the skin diagnosis itself",
+          "stimulant and medication effects; substance use; adjustment disorder with anxious mood"
+        ]
+      },
+      "evidenceGaps": [
+        "No longitudinal cohort quantifying incident anxiety-disorder among prurigo nodularis patients free of anxiety at baseline was located; the quantified 35.4 percent is cross-sectional coded comorbidity shared with the mood edge within this batch; the mental-health impact is survey-based; and the bidirectional itch-anxiety relationship leaves direction unestablished."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY at population-cohort-plus-patient-survey class with the shared anchors and shared-substrate limits carried openly, following the PSYCHOPHYSIOLOGICAL dermatologic mood-edge convention (lichen-planus and lichen-simplex-chronicus batch-53 precedents): the English CPRD cohort quantifies anxiety comorbidity at 35.4 percent in 2,743 prurigo nodularis patients (PMID 35083742) with the survey and review anchors shared with the depressive-disorder edge within this batch (PMIDs 40439955, 40947069); because the endpoint is cross-sectional comorbidity and the itch-anxiety relationship is bidirectional, the conservative standard keeps the edge at association only with the shared-substrate and direction limits stated on the record and routes individual claims through dated dermatologic and psychiatric timelines with pre-existing anxiety disorder excluded.",
+      "sourceReferences": [
+        {
+          "citation": "Morgan CL, Thomas M, Ständer S, et al. Epidemiology of prurigo nodularis in England: a retrospective database analysis Br J Dermatol. 2022 Aug;187(2):188-195. PMID 35083742.",
+          "note": "English CPRD-linked retrospective database analysis (Br J Dermatol 2022): 2,743 point-prevalent prurigo nodularis patients; anxiety comorbidity 35.4% (depression 41.1%, atopic dermatitis 52.2%); supports the bounded cross-sectional comorbidity association only (shared with the depressive-disorder edge within this batch).",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35083742/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 35083742; results (comorbidity prevalence)"
+        },
+        {
+          "citation": "Kwatra SG, Yang M, Martins B, et al. Prurigo Nodularis PaTient-Reported BurdEn of SicKness (PN TREK): A Cross-Sectional Survey of Patient-Reported Burden of Disease in Patients with PN from the US Adv Ther. 2025 Jul;42(7):3455-3471. PMID 40439955.",
+          "note": "PN TREK US cross-sectional survey (Adv Ther 2025): 132 patients; severity-graded mental-health impact (WI-NRS >=7 versus 0-2, p<0.001); supports the bounded severity-graded impact association only (self-reported; shared with the depressive-disorder edge within this batch).",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40439955/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 40439955; results (PROM severity-group comparisons)"
+        },
+        {
+          "citation": "Manjunath J, Akinniyi BU, Kollhoff AL, et al. Comorbidities in prurigo nodularis Clin Dermatol. 2025 Sep-Oct;43(5):681-685. PMID 40947069.",
+          "note": "Comorbidities-in-prurigo-nodularis review (Clin Dermatol 2025): documents frequent psychiatric comorbidities including anxiety and depression; supports the bounded comorbidity framing only (review class; shared with the depressive-disorder edge within this batch).",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40947069/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 40947069; review (psychiatric comorbidities)"
+        }
+      ]
+    },
+    {
+      "conditionId": "insomnia",
+      "rank": 3,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Prurigo nodularis associates with sleep disturbance at patient-survey and review level: the US PN TREK cross-sectional survey of 132 patients documents greater sleep disturbance in the severe-itch group (worst itch NRS at or above 7 versus 0-2, all patient-reported impacts p<0.001) (PMID 40439955), the comorbidities review documents sleep disturbances among the common neurologic and symptom-domain comorbidities of prurigo nodularis (PMID 40947069), and the research-letter-class association study documents sleep disturbance tracking itch intensity with quality-of-life impairment and disease severity (PMID 39656658, letter class carried openly); recorded as documented association only with the survey-measure and letter-class limits carried openly - the quantified sleep outcomes are patient-reported sleep items rather than polysomnographic diagnoses of insomnia disorder.",
+        "causationStatus": "Neither causation nor aggravation of insomnia is established for any individual: the quantified sleep outcomes are patient-reported PROM sleep items rather than diagnosed insomnia disorder, the third anchor is research-letter class with limited methodological disclosure, all anchors are cross-sectional with nocturnal pruritus a plausible proximate driver rather than the skin diagnosis itself, and individual claims require dated sleep assessment with sleep-study records where indicated and exclusion of sleep-disordered breathing, restless legs, mood disorder, and medication effects."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "PSYCHOPHYSIOLOGICAL",
+        "primaryVector": "Nocturnal pruritus and the itch-scratch cycle are hypothesized to fragment sleep initiation and maintenance until a conditioned hyperarousal pattern persists beyond the itch itself, the route supported by the severity-graded sleep-disturbance signal in the survey cohort, but whether this route produced any individual's insomnia disorder remains hypothesized until itch timelines and sleep records are reviewed side by side.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association rests on one 132-patient cross-sectional survey with patient-reported sleep items, one review-class anchor, and one research-letter-class association: no polysomnographic or structured insomnia diagnosis was located, temporality is unestablished, nocturnal pruritus is a plausible proximate driver that the design cannot separate from conditioned insomnia, the letter-class anchor carries limited methodological disclosure, and no longitudinal incident-insomnia cohort among prurigo nodularis patients was located.",
+        "evidenceGaps": "No cohort with structured insomnia diagnosis or polysomnographic sleep measurement among prurigo nodularis patients was located; the quantified sleep signal is survey-based (PROM sleep items in 132 patients) with one letter-class anchor (PMID 39656658) noted openly; nocturnal itch is an unseparated proximate driver; and sleep-disordered breathing, restless legs, and mood-related insomnia are unexcluded.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "sleep-disordered breathing, restless legs syndrome, and primary sleep disorders (unexcluded in the located anchors)",
+          "mood and anxiety disorders producing secondary insomnia (comorbid in 41.1 and 35.4 percent of the population cohort)",
+          "nocturnal pruritus as the proximate driver rather than a conditioned insomnia disorder (mediation limit carried openly)",
+          "medication effects including sedating antihistamines, neuromodulators, and systemic immunosuppressants"
+        ]
+      },
+      "evidenceGaps": [
+        "No cohort with structured insomnia diagnosis or polysomnographic sleep measurement among prurigo nodularis patients was located; the quantified sleep signal is survey-based (PROM sleep items in 132 patients) with one letter-class anchor (PMID 39656658) noted openly; nocturnal itch is an unseparated proximate driver; and sleep-disordered breathing, restless legs, and mood-related insomnia are unexcluded."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY at patient-survey class with the letter-class and survey-measure limits carried openly: the PN TREK survey quantifies severity-graded sleep disturbance in 132 patients (PMID 40439955), the comorbidities review documents sleep disturbance as a common comorbid domain (PMID 40947069), and the research-letter association documents sleep disturbance tracking itch intensity and severity (PMID 39656658, letter class noted openly on the reference); because the endpoints are patient-reported sleep items rather than diagnosed insomnia disorder and nocturnal pruritus is an unseparated proximate driver, the conservative standard keeps the edge at association only, records the mediation limit on the file, and routes individual claims through dated sleep and dermatologic records with mood, breathing, and medication causes excluded.",
+      "sourceReferences": [
+        {
+          "citation": "Kwatra SG, Yang M, Martins B, et al. Prurigo Nodularis PaTient-Reported BurdEn of SicKness (PN TREK): A Cross-Sectional Survey of Patient-Reported Burden of Disease in Patients with PN from the US Adv Ther. 2025 Jul;42(7):3455-3471. PMID 40439955.",
+          "note": "PN TREK US cross-sectional survey (Adv Ther 2025): 132 patients; sleep disturbance among the patient-reported impacts significantly greater at WI-NRS >=7 versus 0-2 (all impacts p<0.001); supports the bounded survey-measure association only (PROM sleep items, not insomnia diagnosis).",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40439955/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 40439955; results (PROM severity-group comparisons)"
+        },
+        {
+          "citation": "Manjunath J, Akinniyi BU, Kollhoff AL, et al. Comorbidities in prurigo nodularis Clin Dermatol. 2025 Sep-Oct;43(5):681-685. PMID 40947069.",
+          "note": "Comorbidities-in-prurigo-nodularis review (Clin Dermatol 2025): documents sleep disturbances among the common comorbid domains alongside neuropathic pain and central sensitization; supports the bounded comorbidity framing only (review class).",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40947069/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 40947069; review (sleep and neurologic comorbidities)"
+        },
+        {
+          "citation": "Lu W, Yossef SM, Ma EZ, et al. Association of sleep disturbance and itch intensity with quality-of-life impairment and disease severity in prurigo nodularis Br J Dermatol. 2025 Mar 18;192(4):755-757. PMID 39656658.",
+          "note": "Association of sleep disturbance and itch intensity with quality-of-life impairment and disease severity in prurigo nodularis (Br J Dermatol 2025 research letter): documents sleep disturbance tracking itch intensity with QoL impairment and disease severity; RESEARCH-LETTER CLASS with limited methodological disclosure, noted openly; supports the bounded association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39656658/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 39656658; research letter (sleep disturbance and itch intensity association)"
+        }
+      ]
+    }
+  ]
 }

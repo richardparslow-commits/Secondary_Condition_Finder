@@ -4018,3 +4018,74 @@ citation-decay-gate debt fixture automatically (978 -> 989) - fourteenth consecu
 fixture bump. Residue clean outside the standing benign coincidences (apply-all-94's historical
 `explicitPublicationGuards: 273`; wave-5's `toBeGreaterThanOrEqual(276)` catalog floor; legal-copy's `38
 U.S.C. § 1117` statute text). Standing recommendation: batch 74 lands through branch, PR, CI, and merge.
+
+## Mapping Expansion D1 batch 75 (2026-09-26)
+
+Mapping Expansion D1 batch 75 (2026-09-26) authored six draft-quarantined relationships across three of
+the five queue identities and deferred two identities without edges. prurigo-nodularis -> depressive-
+disorder and -> anxiety-disorder (ranks 1 and 2, PSYCHOPHYSIOLOGICAL, batch-53 dermatologic mood-edge
+convention) rest on the English CPRD-linked database cohort of 2,743 point-prevalent patients (depression
+41.1 percent, anxiety 35.4 percent, atopic dermatitis 52.2 percent, PMID 35083742), the US PN TREK
+cross-sectional survey of 132 patients (severity-graded mental-health impact, all p<0.001, PMID 40439955),
+and the comorbidities review (PMID 40947069), with the comorbidity-prevalence limit (cross-sectional coded
+prevalence, not incident diagnoses), the atopic-dermatitis shared-substrate limit (52.2 percent of the
+cohort), and the bidirectional itch-mood cycle all carried openly and within-batch source sharing recorded.
+prurigo-nodularis -> insomnia (rank 3) rests on the PN TREK sleep signal (PMID 40439955) and the
+comorbidities review (PMID 40947069) plus the research-letter-class association (PMID 39656658, letter
+class carried openly); the survey-measure limit is stated on the record (PROM sleep items, no
+polysomnographic or structured insomnia diagnosis) with nocturnal pruritus carried as an unseparated
+proximate driver. pruritus-ani -> depressive-disorder (rank 1) rests on the 60-patient idiopathic-pruritus-
+ani cohort (organic causes ruled out; significant aggravation of depressive symptoms at moderate pruritus
+intensity; depressive levels varying by cause, PMID 34658714) and the SICCR practice parameters (PMID
+41222470), with the anchor cohort's OWN NULLS registered on the edge as explicit counterweights - no
+anxiety relationship and no intensity/frequency correlation - and the anxiety edge withheld on those nulls
+rather than authored with a counterweight. pseudobulbar-affect -> depressive-disorder and -> anxiety-
+disorder (ranks 1 and 2, PSYCHOPHYSIOLOGICAL) rest on the TriNetX Global matched retrospective cohorts
+(2020-2025; depression 68.7 percent in Alzheimer-PBA versus 34.7 percent in stroke-PBA, HR 2.52, 95% CI
+2.22-2.86, n=1,074 per etiology; anxiety 48.8 versus 24.9 percent, HR 1.98, 95% CI 1.70-2.30, n=946 per
+etiology; PMID 42138134), the TriNetX dementia-PBA descriptive cohort (PMID 40018468), and the Danish
+national ALS survey of 157 patients (antidepressant differential 47.4 versus 15.2 percent, P=0.002, PMID
+41616079), with the shared-substrate limit (every anchor conditions on stroke, Alzheimer disease, dementia,
+or ALS which produce both the lability and the mood outcome; no non-PBA comparator), the diagnostic-mimic
+limit (PBA commonly misdiagnosed as depression), and the treatment-mediated limit (antidepressants treat the
+lability itself) all carried openly.
+
+Deferred without edges: proctalgia-fugax - CONSTITUTIVE-PROXIMITY (Rome IV frames the syndrome as the
+transient pain episodes themselves) plus zero quantified downstream outcomes (the CMAJ practice piece,
+PMID 23184844, documents a benign self-limited course; closing searches for sleep, mood, and quality-of-life
+quantification returned nothing), with the batch-53 chronic-anorectal-pain windows left untouched (ME-29);
+pronator-teres-syndrome - BELOW-THRESHOLD quantification at case-report and treatment-outcome class (the
+lacertus-release systematic review, PMID 40082299, 446 participants, measures symptom relief in 99.6
+percent not incident atrophy; the single atrophy case report, PMID 25132940, does not meet the guyon-s-
+canal direct-causation standard which is deliberately NOT inherited; the double-crush carpal-tunnel overlap
+stays case-class without direction, PMID 40344703; review class PMID 39872334). Reopening conditions
+recorded on both files. Notable screens: pruritus-ani -> anxiety-disorder withheld on the anchor cohort's own
+null result (an explicit negative anchor discipline rather than a carried counterweight); pseudobulbar-affect
+-> cerebrovascular-accident-stroke-residuals withheld on manifestation-identity (post-stroke emotionalism is
+itself a residual; the Delphi consensus PMID 42704068 is reserved literature, not registered).
+
+Structural-debt note: batch-75 edges produced zero new CRG findings - review-class 13 against baseline 13
+and redundancy 28 against baseline 28 unchanged, and the bidirectional-pair count stays at 4. The batch adds
+a ninth accumulated example to the standing CRG redundancy-semantics question: within-batch shared-source
+provenance (the three prurigo-nodularis edges and the two pseudobulbar-affect edges each share their anchor
+sources across the family, the batch-70 shared-provenance class) disclosed openly with no published edges
+involved. The question now stands on nine examples and should be settled before more parallel pathway
+provenance accumulates - these draft edges would join the published redundancy set the moment the
+citation-verification backlog clears.
+
+Citation packet regenerated at 403 worksheets / 1,006 reference rows = live citation debt; the verification
+dashboard regenerated at 1,006 rows in 42 reviewer batches (882 distinct sources). Backlog after batch 75:
+**115** undispositioned zero-edge drafts (120 before the batch; three identities left by gaining edges and
+two by recorded deferral). Next-five: `pseudophakia`, `pudendal-neuralgia`, `pulmonary-alveolar-
+microlithiasis`, `pulmonary-edema`, `pulmonary-langerhans-cell-histiocytosis`.
+
+Test-pin note: the sweep touched 54 files and replaced 316 counter tokens in one pass with the per-token
+context predicates carried over unchanged (relationships 760 -> 766, references/uses 1372 -> 1389,
+unverified 989 -> 1006, pending source entities 874 -> 883, total source entities 1229 -> 1238, explicit
+guards 686 -> 692, clinical references 1367 -> 1384, clinical provenance 1371 -> 1388, and the draft-
+singles counter 298 -> 299 for this batch's single-suggestion identity pruritus-ani). The explicit fixture
+token continued to carry the citation-decay-gate debt fixture automatically (989 -> 1006) - fifteenth
+consecutive batch with no manual fixture bump. Residue clean outside the standing benign coincidences
+(apply-all-94's historical `explicitPublicationGuards: 273`; wave-5's `toBeGreaterThanOrEqual(276)`
+catalog floor; legal-copy's `38 U.S.C. § 1117` statute text). Standing recommendation: batch 75 lands
+through branch, PR, CI, and merge.

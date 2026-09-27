@@ -2,8 +2,139 @@
   "id": "pseudobulbar-affect",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review psychiatric, neuropsychiatric, medication-related, and sleep-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 75 (2026-09-26): two ASSOCIATION_ONLY draft mappings pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: the edges assert association only (etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true), both PSYCHOPHYSIOLOGICAL. Both edges carry the shared-substrate limit openly - every anchor conditions on underlying neurologic disease (stroke, Alzheimer disease, dementia, ALS) that itself produces both the emotional lability and the mood outcome, and the lead TriNetX study contrasts two PBA etiologies rather than PBA versus non-PBA patients (the lability effect is unseparated from the substrate). The diagnostic-mimic limit is carried openly (pseudobulbar affect is commonly misdiagnosed as depression; coded F32/F41.9 outcomes may partly reflect misattribution) and the treatment-mediated limit on the antidepressant signal (antidepressants treat the lability itself). Within-batch source sharing across the two edges is recorded openly. Individual claims require dated neurologic and psychiatric records distinguishing emotional lability from mood episodes with pre-existing mood disorder and medication effects excluded and review by a qualified medical professional.",
+    "Pathway and duplicate-scope screens and withheld propositions: no -> insomnia edge (ZERO RECORD - no PBA-specific sleep-outcome quantification located); no -> cognitive-disorder or -> dementia edges (UPSTREAM/DIRECTION - dementia and stroke are the substrates causing pseudobulbar affect, recorded as direction guard; the unregistered-disease limits noted below also apply); no -> cerebrovascular-accident-stroke-residuals edge (MANIFESTATION-IDENTITY - pseudobulbar affect is itself a recognized post-stroke emotionalism residual and an edge would register a residual as a secondary of a residual family; the Delphi consensus on post-stroke emotionalism management (PMID 42704068) is noted as reserved literature not registered here); no -> social-anxiety-disorder edge (ZERO RECORD - social embarrassment is a described impact without quantified diagnosis); no -> substance-use-disorder edge (ZERO RECORD). ME-29 discipline: the dementia, stroke, and ALS windows' literatures are used only through condition-specific PBA cohorts and none of the underlying-disease evidence is recycled as substrate-level edges."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 75 (2026-09-26): two bounded association edges authored - pseudobulbar-affect to depressive-disorder (rank 1) and anxiety-disorder (rank 2) - classified ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, and hypothesizedOnly:true. The edges rest on the TriNetX Global matched retrospective cohorts (2020-2025; 1,074 matched patients per etiology for depression - post-PBA depressive episodes 68.7 percent in Alzheimer-PBA versus 34.7 percent in stroke-PBA, HR 2.52, 95% CI 2.22-2.86; 946 per etiology for anxiety - 48.8 versus 24.9 percent, HR 1.98, 95% CI 1.70-2.30; PMID 42138134), the TriNetX dementia-PBA descriptive cohort (PMID 40018468), and the Danish national ALS survey of 157 patients (antidepressant use 47.4 versus 15.2 percent, P=0.002; PMID 41616079), with within-batch sharing across the two edges recorded openly. Shared-substrate (neurologic disease produces both outcomes; no non-PBA comparator), diagnostic-mimic (PBA misdiagnosed as depression), and treatment-mediated (antidepressants treat the lability) limits are carried openly on both edges."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "depressive-disorder",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Pseudobulbar affect associates with subsequently diagnosed depressive episodes at matched-cohort level: the TriNetX retrospective cohort study (2020-2025) with 1,074 propensity-matched patients per etiology cohort documents depressive episodes (ICD-10-CM F32) occurring AFTER pseudobulbar affect diagnosis in 68.7 percent of Alzheimer-disease-associated cases versus 34.7 percent of stroke-associated cases (absolute risk difference 34.0 percent, P<0.001; HR 2.52, 95% CI 2.22-2.86) (PMID 42138134), the TriNetX dementia-pseudobulbar-affect cohort documents frequent comorbid anxiety and depressive disorders complicating management (PMID 40018468), and the Danish national ALS survey of 157 patients documents antidepressant medication in 47.4 percent of the PBA-diagnosed versus 15.2 percent of the remainder (P=0.002) (PMID 41616079); recorded as documented association only with the shared-substrate, diagnostic-mimic, and treatment-mediated limits carried openly - every anchor conditions on underlying neurologic disease that itself produces both the emotional lability and the mood outcome, and no non-PBA comparator cohort is included.",
+        "causationStatus": "Neither causation nor aggravation of depressive-disorder is established for any individual: the design contrasts two PBA etiologies rather than PBA versus non-PBA patients so the emotional-lability effect cannot be separated from the underlying stroke or neurodegeneration, depression and pseudobulbar affect share the neurologic substrate and the diagnostic boundary is contested (pseudobulbar affect is commonly misdiagnosed as depression so coded F32 diagnoses may partly reflect misdiagnosis), antidepressants are used to treat pseudobulbar affect itself so the medication signal conflates treatment with comorbidity, and individual claims require dated neurologic and psychiatric records distinguishing emotional lability from mood episodes with pre-existing mood disorder and medication effects excluded."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "PSYCHOPHYSIOLOGICAL",
+        "primaryVector": "Disabling involuntary emotional expression with social embarrassment and loss of emotional control is hypothesized to erode mood regulation and to provoke reactive depressive episodes after the lability begins, the route supported by the post-diagnosis temporal framing and the etiology-differential risk gradient (HR 2.52 across PBA etiologies), but whether this route produced any individual's depressive episode remains hypothesized until neurologic and psychiatric timelines are reviewed side by side with the shared brain substrate held constant.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association rests on one matched retrospective cohort (1,074 per etiology) plus two descriptive anchors: there is no non-PBA comparator so the lability effect is unseparated from the underlying neurologic disease, the outcome is coded ICD-10 diagnosis rather than structured psychiatric assessment, the diagnostic boundary between pseudobulbar affect and depressive disorder is contested with misdiagnosis in both directions, the antidepressant signal in the ALS survey is treatment-mediated, and all anchors condition on stroke, Alzheimer disease, dementia, or ALS populations.",
+        "evidenceGaps": "No cohort comparing incident depression in pseudobulbar-affect versus matched non-PBA patients with the same neurologic disease was located; the quantified outcomes are coded ICD-10 F32 diagnoses occurring after PBA diagnosis within two etiology cohorts; the dementia anchor is descriptive and the ALS anchor is a 157-patient cross-sectional survey with treatment-mediated antidepressant confounding; misdiagnosis between emotional lability and depressive episodes is documented in the clinical literature and unexcluded.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "the underlying neurologic disease (stroke, Alzheimer disease, ALS) producing both emotional lability and mood outcomes through shared substrate (carried openly on every anchor)",
+          "pre-existing mood disorder antedating the neurologic event or the lability",
+          "diagnostic misattribution - pseudobulbar affect commonly misdiagnosed as depression and vice versa (diagnostic-mimic limit carried openly)",
+          "medication effects - antidepressants and dextromethorphan preparations are used to treat the lability itself (treatment-mediated limit carried openly)"
+        ]
+      },
+      "evidenceGaps": [
+        "No cohort comparing incident depression in pseudobulbar-affect versus matched non-PBA patients with the same neurologic disease was located; the quantified outcomes are coded ICD-10 F32 diagnoses occurring after PBA diagnosis within two etiology cohorts; the dementia anchor is descriptive and the ALS anchor is a 157-patient cross-sectional survey with treatment-mediated antidepressant confounding; misdiagnosis between emotional lability and depressive episodes is documented in the clinical literature and unexcluded."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY at matched-cohort class with the shared-substrate, diagnostic-mimic, and treatment-mediated limits carried openly, following the PSYCHOPHYSIOLOGICAL mood-edge convention: the TriNetX matched cohorts quantify post-PBA depressive episodes at 34.7 to 68.7 percent with an etiology-differential HR 2.52 (PMID 42138134), the dementia-PBA cohort documents comorbid mood disorders (PMID 40018468), and the Danish ALS survey documents the antidepressant differential (PMID 41616079, treatment-mediated confounding noted openly); because no non-PBA comparator exists and the diagnostic boundary with depression is contested, the conservative standard keeps the edge at association only, states the shared-substrate and misdiagnosis limits on the record, and routes individual claims through dated neurologic and psychiatric timelines distinguishing emotional lability from mood episodes.",
+      "sourceReferences": [
+        {
+          "citation": "Dereschuk KJ, Asay CC, Espiridion ED. Depression and Anxiety in Stroke-Related and Alzheimer Disease-Related Pseudobulbar Affect: A TriNetX Retrospective Cohort Study Alzheimer Dis Assoc Disord. 2026 Apr-Jun 01;40(2):129-134. PMID 42138134.",
+          "note": "TriNetX Global retrospective cohort 2020-2025 (Alzheimer Dis Assoc Disord 2026): 1,074 propensity-matched patients per etiology cohort; depressive episodes (ICD-10-CM F32) after PBA diagnosis in 68.7% of Alzheimer-PBA versus 34.7% of stroke-PBA (ARD 34.0%, P<0.001; HR 2.52, 95% CI 2.22-2.86); anxiety (F41.9) 48.8% versus 24.9% (HR 1.98); supports the bounded post-diagnosis association only (no non-PBA comparator, coded outcomes).",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42138134/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 42138134; results (depression and anxiety rates, HRs by etiology)"
+        },
+        {
+          "citation": "Charron L, Espiridion ED. Pseudobulbar Affect Among Patients With Dementia Cureus. 2025 Jan;17(1):e78116. PMID 40018468.",
+          "note": "TriNetX dementia-pseudobulbar-affect cohort description (Cureus 2025): cohort of patients with both PBA and dementia documenting frequent comorbid psychiatric disorders including anxiety and depressive disorders complicating management; supports the bounded comorbidity framing only (descriptive cohort).",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40018468/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 40018468; results (comorbid mood disorders in the cohort)"
+        },
+        {
+          "citation": "Steenkjaer CH, Storgaard JH, Levison L, et al. A national survey of pseudobulbar affect and symptomatic treatment in Amyotrophic Lateral Sclerosis Amyotroph Lateral Scler Frontotemporal Degener. 2026 Aug;27(5-6):565-571. PMID 41616079.",
+          "note": "Danish national cross-sectional ALS survey (Amyotroph Lateral Scl Frontotemporal Degener 2026): 157 participants; PBA diagnosed in 12.1%, antidepressant medication 47.4% in PBA-diagnosed versus 15.2% in others (P=0.002); 30.6% screened positive on CNS-LS; supports the bounded treatment-signal association only (antidepressant use conflates PBA treatment with depression treatment).",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41616079/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 41616079; results (PBA prevalence and antidepressant differential)"
+        }
+      ]
+    },
+    {
+      "conditionId": "anxiety-disorder",
+      "rank": 2,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Pseudobulbar affect associates with subsequently diagnosed anxiety disorders at matched-cohort level: the TriNetX retrospective cohort study (2020-2025) with 946 propensity-matched patients per etiology cohort documents anxiety disorder, unspecified (ICD-10-CM F41.9) occurring AFTER pseudobulbar affect diagnosis in 48.8 percent of Alzheimer-disease-associated cases versus 24.9 percent of stroke-associated cases (absolute risk difference 23.9 percent, P<0.001; HR 1.98, 95% CI 1.70-2.30) (PMID 42138134), with the dementia-pseudobulbar-affect cohort documenting frequent comorbid anxiety alongside depressive disorders (PMID 40018468) and the Danish national ALS survey documenting the psychiatric-treatment differential in PBA-diagnosed patients (PMID 41616079, sources shared with the depressive-disorder edge within this batch); recorded as documented association only with the shared-substrate and diagnostic-mimic limits carried openly - the design contrasts two PBA etiologies rather than PBA versus non-PBA patients and the underlying neurologic disease produces both the lability and the anxiety outcome.",
+        "causationStatus": "Neither causation nor aggravation of anxiety-disorder is established for any individual: there is no non-PBA comparator so the emotional-lability effect is unseparated from the underlying stroke or neurodegeneration, autonomic and apathy symptoms of the neurologic diseases overlap anxiety symptomatology so coded F41.9 diagnoses may partly reflect overlap or misattribution, the temporal framing is diagnosis-ordering rather than symptom-onset, and individual claims require dated neurologic and psychiatric records with pre-existing anxiety disorder, medication effects, and neurologic-symptom overlap excluded."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "PSYCHOPHYSIOLOGICAL",
+        "primaryVector": "Disabling involuntary emotional expression with anticipatory embarrassment and loss of control is hypothesized to sustain anxiety symptoms after the lability begins, the route supported by the post-diagnosis temporal framing and the etiology-differential risk gradient (HR 1.98 across PBA etiologies), but whether this route produced any individual's anxiety disorder remains hypothesized until neurologic and psychiatric timelines are reviewed side by side.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association rests on one matched retrospective cohort (946 per etiology) shared with the depressive-disorder edge plus two descriptive anchors: no non-PBA comparator exists, the outcome is coded ICD-10 diagnosis rather than structured assessment, neurologic autonomic and apathy symptoms overlap anxiety symptomatology, and all anchors condition on stroke, Alzheimer disease, dementia, or ALS populations.",
+        "evidenceGaps": "No cohort comparing incident anxiety-disorder in pseudobulbar-affect versus matched non-PBA patients with the same neurologic disease was located; the quantified outcome is coded ICD-10 F41.9 diagnosis after PBA diagnosis within two etiology cohorts; sources are shared with the depressive-disorder edge within this batch; and neurologic-symptom overlap with anxiety is unexcluded.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "the underlying neurologic disease producing both emotional lability and anxiety symptoms through shared substrate and autonomic/apathy overlap (carried openly)",
+          "pre-existing anxiety disorder antedating the neurologic event or the lability",
+          "diagnostic misattribution between pseudobulbar affect, mood episodes, and anxiety presentations",
+          "medication effects including stimulants and antidepressants used for the lability or for apathy"
+        ]
+      },
+      "evidenceGaps": [
+        "No cohort comparing incident anxiety-disorder in pseudobulbar-affect versus matched non-PBA patients with the same neurologic disease was located; the quantified outcome is coded ICD-10 F41.9 diagnosis after PBA diagnosis within two etiology cohorts; sources are shared with the depressive-disorder edge within this batch; and neurologic-symptom overlap with anxiety is unexcluded."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY at matched-cohort class with the shared-substrate and diagnostic-overlap limits carried openly, following the PSYCHOPHYSIOLOGICAL mood-edge convention: the TriNetX matched cohorts quantify post-PBA anxiety diagnoses at 24.9 to 48.8 percent with an etiology-differential HR 1.98 (PMID 42138134) and the dementia and ALS anchors are shared with the depressive-disorder edge within this batch (PMIDs 40018468, 41616079); because no non-PBA comparator exists and neurologic symptoms overlap anxiety symptomatology, the conservative standard keeps the edge at association only with the shared-substrate and overlap limits stated on the record and routes individual claims through dated neurologic and psychiatric timelines with pre-existing anxiety disorder excluded.",
+      "sourceReferences": [
+        {
+          "citation": "Dereschuk KJ, Asay CC, Espiridion ED. Depression and Anxiety in Stroke-Related and Alzheimer Disease-Related Pseudobulbar Affect: A TriNetX Retrospective Cohort Study Alzheimer Dis Assoc Disord. 2026 Apr-Jun 01;40(2):129-134. PMID 42138134.",
+          "note": "TriNetX Global retrospective cohort 2020-2025 (Alzheimer Dis Assoc Disord 2026): 946 propensity-matched patients per etiology cohort for the anxiety analysis; anxiety disorder unspecified (ICD-10-CM F41.9) after PBA diagnosis in 48.8% of Alzheimer-PBA versus 24.9% of stroke-PBA (ARD 23.9%, P<0.001; HR 1.98, 95% CI 1.70-2.30); supports the bounded post-diagnosis association only (no non-PBA comparator, coded outcomes).",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42138134/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 42138134; results (anxiety rates and HR by etiology)"
+        },
+        {
+          "citation": "Charron L, Espiridion ED. Pseudobulbar Affect Among Patients With Dementia Cureus. 2025 Jan;17(1):e78116. PMID 40018468.",
+          "note": "TriNetX dementia-pseudobulbar-affect cohort description (Cureus 2025): frequent comorbid anxiety and depressive disorders in the PBA-dementia cohort; supports the bounded comorbidity framing only (descriptive cohort; shared with the depressive-disorder edge within this batch).",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40018468/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 40018468; results (comorbid mood disorders)"
+        },
+        {
+          "citation": "Steenkjaer CH, Storgaard JH, Levison L, et al. A national survey of pseudobulbar affect and symptomatic treatment in Amyotrophic Lateral Sclerosis Amyotroph Lateral Scler Frontotemporal Degener. 2026 Aug;27(5-6):565-571. PMID 41616079.",
+          "note": "Danish national cross-sectional ALS survey (Amyotroph Lateral Scl Frontotemporal Degener 2026): 157 participants; psychiatric-treatment differential in PBA-diagnosed patients (antidepressants 47.4% versus 15.2%, P=0.002); supports the bounded treatment-signal association only (shared with the depressive-disorder edge within this batch).",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41616079/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 41616079; results (treatment differential)"
+        }
+      ]
+    }
+  ]
 }

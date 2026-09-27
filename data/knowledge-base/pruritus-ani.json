@@ -2,8 +2,66 @@
   "id": "pruritus-ani",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review gastrointestinal, nutritional, motility, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 75 (2026-09-26): one ASSOCIATION_ONLY draft mapping pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: the edge asserts association only (etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true, PSYCHOPHYSIOLOGICAL) with the single-cohort limit carried openly and the same cohort's own nulls registered on the edge itself - NO relationship for anxiety disorders and NO correlation of depressive or anxiety symptoms with pruritus intensity or frequency. The mood edge therefore records an association whose severity dose-response is explicitly null; individual claims require dated dermatologic, proctologic, and psychiatric records with pre-existing mood disorder and secondary pruritus causes excluded and review by a qualified medical professional.",
+    "Pathway and duplicate-scope screens and withheld propositions: no -> anxiety-disorder edge (NULL IN THE ANCHOR COHORT - the 60-patient cohort found no relationship for anxiety disorders and the edge is withheld on the anchor's own negative result rather than authored with a counterweight); no -> insomnia edge (ZERO RECORD - closing searches for nocturnal sleep-outcome quantification returned nothing; nocturnal itch noted only as a plausible unquantified route); no -> lichen-simplex-chronicus or -> dermatitis edges (IDENTITY-OVERLAP / manifestation - lichenified perianal skin is the scratch-response phenotype of the pruritus and the batch-53 lichen-simplex window owns its sources); no -> cellulitis edge (ZERO RECORD - secondary infection unquantified); no -> hemorrhoids or -> anal-fissure propositions (UPSTREAM/DIRECTION - these are secondary causes of pruritus ani in the practice parameters, not downstream outcomes); no -> unexplained-chronic-pain edge (SEMANTIC-MISMATCH - pruritus is not pain)."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 75 (2026-09-26): one bounded association edge authored - pruritus-ani to depressive-disorder (rank 1) - classified ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, and hypothesizedOnly:true. The edge rests on the 60-patient idiopathic-pruritus-ani cohort (organic causes ruled out; significant aggravation of depressive symptoms at moderate pruritus intensity; depressive levels influenced by the cause of pruritus ani; anxiety and intensity/frequency correlations null, PMID 34658714) and the SICCR practice parameters (PMID 41222470). The cohort's own null results are registered on the edge as explicit counterweights and the anxiety edge is withheld on those nulls. Single-cohort cross-sectional limit carried openly."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "depressive-disorder",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Idiopathic pruritus ani associates with aggravated depressive symptoms at condition-specific cohort level: the 60-patient cohort of persistent pruritus ani with organic causes ruled out documents a significant negative effect of the pruritus on psychological functioning with significant aggravation of depressive symptoms despite moderate pruritus intensity, the level of depressive symptoms varying with the cause of pruritus ani (PMID 34658714), and the Italian Society of Colorectal Surgery practice parameters frame idiopathic pruritus ani within a stepwise behavioural and therapeutic ladder extending to refractory interventions (PMID 41222470); recorded as documented association only with the single-cohort and null-counterweight limits carried openly - the same cohort found NO relationship for anxiety disorders and NO correlation of depressive or anxiety symptoms with pruritus intensity or frequency, both carried openly on the file.",
+        "causationStatus": "Neither causation nor aggravation of depressive-disorder is established for any individual: the quantified signal is one 60-patient cross-sectional cohort with no temporal ordering, the same cohort found no correlation between depressive symptoms and pruritus intensity or frequency so severity does not track the mood signal, the cause of pruritus ani influenced depressive levels so the substrate is heterogeneous, the itch-scratch-discomfort burden is chronic and bidirectional with mood state able to precede the pruritus, and individual claims require dated dermatologic and proctologic and psychiatric records with pre-existing mood disorder, perianal skin disease, and secondary pruritus causes excluded."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "PSYCHOPHYSIOLOGICAL",
+        "primaryVector": "Chronic perianal pruritus with sleep-fragmenting nocturnal discomfort, scratching, and embarrassment is hypothesized to erode mood regulation over time, the route supported by the significant aggravation of depressive symptoms in the condition-specific cohort, but whether this route produced any individual's depressive episode remains hypothesized until dermatologic, proctologic, and psychiatric timelines are reviewed side by side - and the absence of any intensity correlation in the same cohort suggests the route is not simple severity dose-response.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association rests on one 60-patient cross-sectional cohort plus one practice-parameter anchor: no temporality is established, the same cohort found no relationship for anxiety and no correlation with pruritus intensity or frequency (explicit counterweights), depressive levels varied with the cause of pruritus ani so the substrate is heterogeneous, the practice parameters are guideline class rather than outcome evidence, and no longitudinal incident-depression cohort among idiopathic pruritus ani patients was located.",
+        "evidenceGaps": "No longitudinal cohort quantifying incident depressive-disorder among idiopathic pruritus ani patients free of mood disorder at baseline was located; the quantified signal is one 60-patient cross-sectional cohort; the same cohort documents null anxiety findings and null intensity correlation (counterweights carried openly); the second anchor is practice-parameter class; and secondary pruritus causes are excluded in the cohort but heterogeneous in practice.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "perianal dermatoses, hemorrhoids, fistulae, and secondary pruritus causes with their own discomfort burden",
+          "pre-existing mood disorder antedating the pruritus (individual claims require documented pre-morbid psychiatric history)",
+          "sleep disruption from nocturnal pruritus as the proximate driver rather than the diagnosis itself",
+          "medication effects including sedating antihistamines; substance use and psychosocial adversity"
+        ]
+      },
+      "evidenceGaps": [
+        "No longitudinal cohort quantifying incident depressive-disorder among idiopathic pruritus ani patients free of mood disorder at baseline was located; the quantified signal is one 60-patient cross-sectional cohort; the same cohort documents null anxiety findings and null intensity correlation (counterweights carried openly); the second anchor is practice-parameter class; and secondary pruritus causes are excluded in the cohort but heterogeneous in practice."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY at condition-specific-cohort class with the single-cohort and null-counterweight limits carried openly, following the PSYCHOPHYSIOLOGICAL pruritic mood-edge convention (lichen-simplex-chronicus batch-53 precedent): the 60-patient idiopathic-pruritus-ani cohort quantifies significant aggravation of depressive symptoms (PMID 34658714) and the SICCR practice parameters anchor the refractory-burden framing (PMID 41222470), with the cohort's own nulls registered on the edge itself (no anxiety relationship; no intensity or frequency correlation); because the anchor is single-cohort cross-sectional and the severity null undercuts a simple dose-response, the conservative standard keeps the edge at association only, withholds the anxiety edge on the cohort's own null result, and routes individual claims through dated dermatologic, proctologic, and psychiatric timelines with secondary pruritus causes excluded.",
+      "sourceReferences": [
+        {
+          "citation": "Hadasik K, Arasiewicz H, Brzezińska-Wcisło L. Assessment of the anxiety and depression among patients with idiopathic pruritus ani Postepy Dermatol Alergol. 2021 Aug;38(4):689-693. PMID 34658714.",
+          "note": "Condition-specific cohort of 60 patients with persistent idiopathic pruritus ani, organic causes ruled out (Postepy Dermatol Alergol 2021): significant aggravation of depressive symptoms despite moderate pruritus intensity; depressive levels influenced by the cause of pruritus ani; NO relationship for anxiety disorders and NO correlation of depressive/anxiety symptoms with pruritus intensity or frequency (counterweights carried openly); supports the bounded association only (single cross-sectional cohort).",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34658714/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 34658714; results and conclusions (depression signal with anxiety and intensity nulls)"
+        },
+        {
+          "citation": "Marino F, Martellucci J, Giuffrida MC, et al. Practice Parameters for Evaluation and Management of Pruritus Ani on Behalf of the Italian Society of Colorectal Surgery (SICCR) J Cutan Med Surg. 2025 Nov 12:12034754251391800. PMID 41222470.",
+          "note": "Practice Parameters for Evaluation and Management of Pruritus Ani, Italian Society of Colorectal Surgery (J Cutan Med Surg 2025): stepwise management of idiopathic pruritus ani from irritant elimination through topical and systemic therapy to methylene-blue injection for refractory situations; supports the bounded refractory-burden framing only (guideline class).",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41222470/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 41222470; practice parameters (idiopathic PA management ladder)"
+        }
+      ]
+    }
+  ]
 }

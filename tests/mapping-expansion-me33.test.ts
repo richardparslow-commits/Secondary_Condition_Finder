@@ -123,22 +123,22 @@ describe("Mapping Expansion Batch ME-33", () => {
   it("ratchets the authoritative ME-33 counts", () => {
     expect(relationships.currentState).toBe("D1-DRAFT-AUTHORED");
     expect(sources.currentState).toBe("D1-DRAFT-AUTHORED");
-    expect(relationships.counts).toEqual({ relationships: 760, explicitPublicationGuards: 686, legacyRationaleBoundaries: 74 });
-    expect(relationships.relationships).toHaveLength(760);
+    expect(relationships.counts).toEqual({ relationships: 766, explicitPublicationGuards: 692, legacyRationaleBoundaries: 74 });
+    expect(relationships.relationships).toHaveLength(766);
     expect(sources.counts).toMatchObject({
-      liveSourceReferenceUses: 1372,
-      pendingVerificationSourceEntities: 874,
-      pendingClinicalSourceEntities: 874,
-      totalSourceEntitiesIncludingLineage: 1229,
+      liveSourceReferenceUses: 1389,
+      pendingVerificationSourceEntities: 883,
+      pendingClinicalSourceEntities: 883,
+      totalSourceEntitiesIncludingLineage: 1238,
     });
-    expect(sources.sources).toHaveLength(1229);
+    expect(sources.sources).toHaveLength(1238);
 
     const mappings = fs.readdirSync(`${root}/data/knowledge-base`).filter((file) => file.endsWith(".json")).map((file) => load<Mapping>(`data/knowledge-base/${file}`));
     const references = mappings.flatMap((mapping) => mapping.suggestions.flatMap((suggestion) => suggestion.sourceReferences));
-    expect(mappings.reduce((total, mapping) => total + mapping.suggestions.length, 0)).toBe(760);
-    expect(references).toHaveLength(1372);
+    expect(mappings.reduce((total, mapping) => total + mapping.suggestions.length, 0)).toBe(766);
+    expect(references).toHaveLength(1389);
     expect(references.filter((reference) => reference.verified === true)).toHaveLength(383);
-    expect(references.filter((r) => r.verified === false)).toHaveLength(989);
+    expect(references.filter((r) => r.verified === false)).toHaveLength(1006);
   });
 
   it("keeps deferred identities outside the batch", () => {
