@@ -3611,3 +3611,106 @@ debt fixture automatically (915 -> 932) - tenth consecutive batch with no manual
 clean outside the standing benign coincidences (apply-all-94's historical `explicitPublicationGuards:
 273`; wave-5's `toBeGreaterThanOrEqual(276)` catalog floor; legal-copy's `38 U.S.C. § 1117` statute
 text). Standing recommendation: batch 70 lands through branch, PR, CI, and merge.
+
+## Mapping Expansion D1 batch 71 (2026-09-26)
+
+Mapping Expansion D1 batch 71 (2026-09-26) authored six draft-quarantined relationships across three of
+the five queue identities and deferred two identities without edges. phantom-limb-pain carries two
+PSYCHOPHYSIOLOGICAL edges with explicit direction-inversion guards and counterweights carried openly:
+-> depressive-disorder - major depressive disorder odds of 1.86 in the matched 44,028-amputee cohort
+(PMID 36163201) and coupled pain-and-depression improvement in the 27-patient pilot sham-controlled rTMS
+trial (PMID 42638615), with the year-long cross-lagged war-amputee cohort carried as explicit
+direction-inversion counterweight (depressive symptoms predict later phantom pain with no lagged forward
+effect, PMID 42232879) and the null pain-differentiation counterweight (painful versus painless phantom
+syndromes did not differ); -> anxiety-disorder - generalized anxiety disorder odds of 2.14 (PMID
+36163201), PROMIS anxiety elevations in the 163-person young-amputee cohort (PMID 41203039), and the same
+cross-lagged counterweight (PMID 42232879). phimosis -> urinary-frequency-retention
+(MECHANICAL_OR_COMPRESSIVE) at pathological-phimosis scope - ultrasound bladder outlet obstruction in
+the lichen-sclerosus surgical series reversing after treatment (PMID 31455543) and phimosis/balanitis in
+11 percent of the 11-year paediatric acute retention cohort (PMID 39821927), with the 32-boy
+physiological-phimosis uroflowmetry study carried openly as counterweight (normal voiding with or without
+foreskin ballooning, PMID 15291873). pleura-cancer (pleural mesothelioma) carries three edges:
+-> pleural-effusion (MECHANICAL_OR_COMPRESSIVE) - effusion in 71.4 percent at presentation in the
+247-patient series (PMID 33506102) and effusion-driven presentation in the 2025 Nature Reviews seminar
+(PMID 40775245), with the presentation-manifestation limit carried openly (the effusion is often the
+diagnostic route, so the edge registers tumor-attributable effusion co-occurrence); -> deep-vein-thrombosis
+and -> pulmonary-embolism (THROMBOTIC_OR_VASCULAR) - thromboembolic events in 7.9 percent of the
+178-patient disease cohort with deep venous thrombosis and pulmonary embolism at 3.4 percent each and 5
+of 14 events preceding diagnosis (PMID 25525045), and the 100-patient pleurectomy surveillance cohort
+with 32 percent thrombosis and a third of deep vein thromboses asymptomatic (PMID 32113716), with
+treatment-mediated, surveillance-detection, composite-endpoint, and reverse-timing limits carried openly
+and within-batch shared sources on both thrombotic edges.
+
+piriformis-syndrome DEFERRED without edges (CONSTITUTIVE-PROXIMITY plus zero quantified downstream
+outcomes): the located literature measures pain, disability, and function outcomes that constitute the
+syndrome itself (the 918-patient FAIR-test cohort with injection, physical therapy, and surgical
+outcomes, PMID 11887107; the botulinum systematic review, PMID 35865325; the pulsed-radiofrequency
+versus endoscopic release comparison, PMID 40869732; the deep gluteal syndrome imaging review, PMID
+25739706), sciatic nerve compression is the defining mechanism so a neuropathy edge would register the
+defining feature as a secondary condition, and no cohort quantifies downstream denervation atrophy or
+other named secondary conditions. Reopening: a cohort quantifying secondary denervation outcomes, or a
+sciatic-neuropathy/sciatica catalog identity with piriformis-stratified evidence.
+plantar-warts DEFERRED without edges (ZERO QUANTIFIED SECONDARY OUTCOMES plus constitutive-proximity):
+the located literature is prevalence, HPV typing, BMI association, and treatment (PMIDs 41384642,
+39373174, 38305569, 38126099, 39599896) with complications only in isolated immunocompromised case
+reports (the lupus ALA-PDT report, PMID 40216318); weight-bearing pain and keratotic thickening are
+constitutive lesion features; and no catalog identity exists for verrucous carcinoma. Reopening: a
+complication cohort or immunosuppression-stratified series.
+
+Withholdings recorded on the files: phantom-limb-pain -> insomnia (below threshold - sleep disturbance in
+comorbidity inventories without incident quantification, matching the batch-70 PPPD screen), -> ptsd
+(shared-substrate and direction-inversion - PTSD stems from the traumatic amputation event), suicidal
+ideation (OR 1.62, PMID 36163201) recorded as a withheld proposition with no catalog identity (FOURTH
+refusal after nightmare-disorder batch 64, nocturnal-enuresis batch 65, and overactive-bladder batch 68),
+-> obesity, osteoarthritis, osteoporosis, and low-back-pain (ME-29 amputation-window discipline with the
+null pain-differentiation counterweight; obesity and low-back-pain have no catalog identities); phimosis
+-> cystitis (below threshold plus target-mismatch - the infant recurrent-UTI evidence is treatment-
+mediated and constitution-framed, PMID 41274309), -> paraphimosis (below threshold on the batch-69
+paraphimosis literature screen despite the documented forward clinical direction), -> hydronephrosis
+(below threshold - upper tract changes in 5 of 78 surgical lichen-sclerosus patients), ->
+balanitis-balanoposthitis (bidirectional-pair avoidance of the batch-2 cycle edge); pleura-cancer ->
+myocardial-infarction (below threshold - 2 of 178) and -> pneumothorax (case-report class), ->
+respiratory-cancer (umbrella discipline - distinct thoracic primaries), dyspnoea and chest pain (withheld
+propositions, no catalog identities).
+
+Pre-authoring verification: all 11 PMIDs passed the abstract pass (`/tmp/d1-abstract47.py` in fetch
+groups), the esummary bibliographic pass with every citation re-verified against the PubMed record, and
+`node scripts/preflight-source-status.js --pmids ...` (11/11 checked, zero blocking flags, one
+non-blocking erratum-linked note on PMID 42232879 carried on its reference). The post-write structural
+self-audit passed for all five files (6 edges, 15 reference uses) and `npm run kb:validate` reports zero
+errors.
+
+Registry after lockstep: 744 relationships (670 explicit / 74 legacy), 1330 reference uses (383
+verified / 947 pending-verification), 1325 clinical / 5 legal uses, 1191 source entities (346 active /
+836 pending-verification). Within-batch shared sources - PMIDs 36163201 and 42232879 each carried on both
+phantom-limb-pain mood edges and PMIDs 25525045 and 32113716 each carried on both pleura-cancer
+thrombotic edges - give 15 reference uses over 11 new sources. Citation packet regenerated at 381
+worksheets / 947 reference rows = live citation debt; the verification dashboard regenerated at 947
+rows in 40 reviewer batches (835 distinct sources). Backlog after batch 71: **135** undispositioned
+zero-edge drafts (140 before the batch; three identities left by gaining edges and two by recorded
+deferral). Next-five: `pleural-effusion`, `pleurisy`, `pneumonia-residuals`, `pneumothorax`,
+`poikiloderma`.
+
+Structural-debt note: batch-71 edges produced zero new CRG findings - the analyzer reports review-class
+13 against baseline 13 and redundancy 28 against baseline 28 unchanged, and the phimosis ->
+balanitis-balanoposthitis candidate was withheld at authoring time on bidirectional-pair avoidance so the
+bidirectional-pair count stays at 4 - but the phantom-limb-pain mood edges add a fourth accumulated
+example to the standing CRG redundancy-semantics question: chain-triangle paths (the amputation family ->
+phantom-limb-pain edges plus these member-level mood edges versus the published amputation-or-loss-of-use
+-> depressive-disorder legacy window) with overlapping pathway scope do not register as redundancy
+conflicts. The overlap is disclosed openly on the member edges (KB todo and governance note plus registry
+structured guard text) with the legacy edge left untouched; the question now stands on four examples (the
+batch-65 sibling double-targeting, the batch-67 otosclerosis tinnitus shortcut, the batch-70
+umbrella/member parallel edges, and this chain-triangle case) and should be settled before more parallel
+pathway provenance accumulates.
+
+Test-pin note: the sweep touched 54 files and replaced 316 counter tokens in one pass with the batch-70
+per-token context predicates carried over unchanged (relationships 738 -> 744, references/uses 1315 ->
+1330, unverified 932 -> 947, pending source entities 825 -> 836, total source entities 1180 -> 1191,
+explicit guards 664 -> 670, clinical references 1310 -> 1325, clinical provenance 1314 -> 1329, and the
+draft-singles counter 290 -> 291 for this batch's single-suggestion identity `phimosis`). The explicit
+fixture token continued to carry the citation-decay-gate debt fixture automatically (932 -> 947) -
+eleventh consecutive batch with no manual fixture bump. Residue clean outside the standing benign
+coincidences (apply-all-94's historical `explicitPublicationGuards: 273`; wave-5's
+`toBeGreaterThanOrEqual(276)` catalog floor; legal-copy's `38 U.S.C. § 1117` statute text). Standing
+recommendation: batch 71 lands through branch, PR, CI, and merge.

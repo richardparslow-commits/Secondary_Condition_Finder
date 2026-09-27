@@ -2,8 +2,175 @@
   "id": "pleura-cancer",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review oncologic, treatment-related (iatrogenic), and metastatic pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 71 (2026-09-26): three ASSOCIATION_ONLY draft mappings pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: the edges assert association only (etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true). The pleural-effusion edge carries the presentation-manifestation limit (effusion present at diagnosis in 71.4 percent and often the diagnostic route, so the edge registers tumor-attributable effusion co-occurrence, not a temporally separated complication); the thrombotic edges carry treatment-mediated (post-pleurectomy surveillance under prophylaxis), surveillance-detection (a third of deep vein thromboses asymptomatic), composite-endpoint (thromboembolic totals reported as composites), and reverse-timing (5 of 14 events preceded diagnosis) limits; individual claims require dated thoracic imaging, fluid cytology, and venous assessment with competing-cause exclusion and review by a qualified medical professional.",
+    "Pathway and duplicate-scope screens and withheld propositions: no -> myocardial-infarction edge (BELOW THRESHOLD - 2 of 178 in the disease cohort, 1.1 percent); no -> pneumothorax edge (BELOW THRESHOLD - case-report class only); no -> respiratory-cancer edge (UMBRELLA DISCIPLINE - the respiratory-cancer identity is the lung/tracheal/bronchial primary and pleural mesothelioma is a distinct primary; an edge would misregister one thoracic primary against another rather than a secondary condition); dyspnoea and chest pain recorded as WITHHELD PROPOSITIONS with no catalog identities (constitutive presenting symptoms at 77.4 and 38.5 percent); no -> pericardial-effusion edge (BELOW THRESHOLD - pericardial involvement is case-report class and the batch-70 pericardial-effusion deferral documents the missing-identity landscape); ME-29 discipline - the lung-abscess and lymphangioleiomyomatosis pleural-effusion windows own their trans-pleural and chylous route evidence and the nephrosis thromboembolic window owns its nephrotic-route evidence; none is recycled here."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 71 (2026-09-26): three bounded association edges authored - pleura-cancer to pleural-effusion (rank 1), deep-vein-thrombosis (rank 2), and pulmonary-embolism (rank 3) - all classified ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, and hypothesizedOnly:true. The effusion edge rests on the 247-patient single-centre series (effusion 71.4% at presentation, PMID 33506102) and the 2025 Nature Reviews seminar (PMID 40775245) with the presentation-manifestation limit carried openly. The thrombotic edges rest on the 178-patient disease cohort (thromboembolic events 7.9%, pulmonary embolism and deep venous thrombosis 3.4% each, with 5 of 14 events preceding diagnosis, PMID 25525045) and the 100-patient pleurectomy surveillance cohort (32% thrombosis under weekly surveillance with prophylaxis, a third of deep vein thromboses asymptomatic, PMID 32113716), with within-batch shared sources on both thrombotic edges and the treatment-mediated, surveillance-detection, and reverse-timing limits carried openly."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "pleural-effusion",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Pleural mesothelioma documents pleural effusion at cohort and seminar level: the 10-year single-centre series of 247 confirmed malignant pleural mesothelioma patients documents pleural effusion in 71.4 percent at presentation (with pleural thickening in 64.9 percent, dyspnoea 77.4 percent, chest pain 38.5 percent, PMID 33506102), and the 2025 Nature Reviews Disease Primers seminar documents mesothelioma commonly presenting with dyspnoea or cough caused by pleural effusion (PMID 40775245); recorded as documented association only with the presentation-manifestation and treatment-mediated limits carried openly - the effusion is present at diagnosis in most patients and is often the diagnostic route, so the edge registers tumor-attributable effusion co-occurrence rather than a temporally separated complication.",
+        "causationStatus": "Neither causation nor aggravation of pleural effusion is established for any individual: the effusion is present at diagnosis in most mesothelioma presentations so exposure-before-outcome ordering is not established within the cohort, malignant effusion in any individual can be paramalignant or have concurrent etiologies, and individual claims require dated thoracic imaging and fluid cytology with congestive heart failure, infection, cirrhosis, nephrosis, and pulmonary embolism exclusion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MECHANICAL_OR_COMPRESSIVE",
+        "primaryVector": "Malignant pleural mesothelioma growing along the pleural surfaces obstructs pleural lymphatic drainage and raises capillary permeability through direct tumor involvement and local inflammatory mediators so protein-rich fluid accumulates in the pleural space and malignant pleural effusion results, the mechanical lymphatic-obstruction route paralleling the registered chylothorax route, but whether this route produced any individual effusion remains hypothesized until thoracic imaging, cytology, and operative records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at retrospective single-centre case series and seminar class only: the effusion endpoint is documented at presentation without incident quantification or temporal separation from diagnosis, the seminar synthesizes rather than quantifies, effusion detection is conditioned on the effusion itself being the usual diagnostic route, and effusion recurrence burden (drainage, pleurodesis, catheter rates) is treatment-mediated and not separately attributed.",
+        "evidenceGaps": "The 247-patient series reports effusion prevalence at presentation (71.4%) without effusion incidence over follow-up or effusion-specific outcome quantification; the Nature Reviews seminar (PMID 40775245) synthesizes rather than quantifies; no cohort quantifies incident effusion after effusion-free mesothelioma diagnosis; recurrent-effusion management burden is treatment-mediated; and malignant effusion can be paramalignant without direct pleural tumor involvement.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "congestive heart failure (published window, not recycled per ME-29)",
+          "parapneumonic effusion, empyema, and tuberculosis pleuritis",
+          "pulmonary embolism with infarction (the pulmonary-embolism window is registered within this batch)",
+          "cirrhosis and nephrosis (published windows, not recycled per ME-29)",
+          "paramalignant effusion without direct pleural involvement"
+        ]
+      },
+      "evidenceGaps": [
+        "The 247-patient series reports effusion prevalence at presentation (71.4%) without effusion incidence over follow-up or effusion-specific outcome quantification; the Nature Reviews seminar (PMID 40775245) synthesizes rather than quantifies; no cohort quantifies incident effusion after effusion-free mesothelioma diagnosis; recurrent-effusion management burden is treatment-mediated; and malignant effusion can be paramalignant without direct pleural tumor involvement."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY at case-series-plus-seminar class with the presentation-manifestation and treatment-mediated limits carried openly: the 247-patient series documents effusion in 71.4 percent of confirmed mesothelioma (PMID 33506102) and the 2025 seminar documents effusion-driven presentation (PMID 40775245); because the effusion is present at diagnosis in most patients and often the diagnostic route, the conservative standard keeps the edge at association only, scoped to tumor-attributable effusion co-occurrence, and routes individual claims through dated imaging and cytology with cardiac, infectious, hepatic, and renal exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Murphy DC, Mount A, Starkie F, et al. A review of malignant pleural mesothelioma in a large North East UK pleural centre Pleura Peritoneum. 2020 Dec;6(1):20200144. PMID 33506102.",
+          "note": "Single-centre retrospective case series of 247 confirmed malignant pleural mesothelioma patients 2009-2019 (Pleura Peritoneum 2020): 86% male, mean age 75.7; presenting features dyspnoea 77.4%, chest pain 38.5%; pleural thickening 64.9% and pleural effusion 71.4%; histopathological confirmation in only 43.7%; supports the bounded tumor-attributable effusion co-occurrence only (presentation class).",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33506102/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 33506102; results (radiological and presentation characteristics of the MPM cohort)"
+        },
+        {
+          "citation": "Fennell DA, Sekido Y, Baas P, et al. Pleural mesothelioma Nat Rev Dis Primers. 2025 Aug 7;11(1):56. PMID 40775245.",
+          "note": "Nature Reviews Disease Primers 2025 seminar on pleural mesothelioma (Fennell et al.): documents mesothelioma commonly presenting with fatigue, dyspnoea and/or cough caused by pleural effusion, pain, and reduced mobility, with malignant pleural effusion a dominant presenting and morbidity feature; supports the bounded effusion-presentation association only (review class).",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40775245/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 40775245; seminar (clinical presentation and effusion-associated morbidity)"
+        }
+      ]
+    },
+    {
+      "conditionId": "deep-vein-thrombosis",
+      "rank": 2,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Pleural mesothelioma documents venous thromboembolism at cohort level: the 178-patient histopathologically confirmed mesothelioma cohort documents thromboembolic events in 7.9 percent including deep venous thrombosis in 3.4 percent over a median 8-month follow-up (PMID 25525045), and the 100-patient pleurectomy cohort under weekly surveillance documents preoperative deep vein thrombosis in 7 patients and postoperative thrombosis in 30 of 93 analyzed (32 percent, 22 percent deep-vein-thrombosis-only) with a third of deep vein thromboses asymptomatic at detection (PMID 32113716); recorded as documented association only with the treatment-mediated, surveillance-detection, and reverse-timing limits carried openly - 5 of the 14 thromboembolic events in the disease cohort preceded the mesothelioma diagnosis.",
+        "causationStatus": "Neither causation nor aggravation of deep vein thrombosis is established for any individual: the surgical cohort's rates are surveillance- and treatment-mediated under postoperative thromboprophylaxis and heparin protocols, the disease cohort's events partly preceded diagnosis so malignancy-attribution timing is mixed, and individual claims require dated venous imaging with immobilization, prior thrombosis, central catheter, chemotherapy, and inherited-thrombophilia exclusion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "THROMBOTIC_OR_VASCULAR",
+        "primaryVector": "Malignant pleural mesothelioma tissue releases tissue factor and inflammatory cytokines into the circulation so a systemic hypercoagulable state with endothelial activation rises and venous thrombus forms in the deep leg veins, the tumor-driven thrombogenic route supported by disease-level thromboembolic rates, but whether this route produced any individual thrombosis remains hypothesized until vascular, oncologic, and treatment records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at one retrospective 178-patient disease cohort and one 100-patient surgical surveillance cohort: the disease cohort reports a 3.4 percent deep-vein-thrombosis rate with 5 of 14 events preceding diagnosis and no association with stage, thrombocytosis, or histopathology, the surgical cohort's 32 percent rate reflects weekly surveillance under prophylaxis with a third of events asymptomatic, and no unselected population-based venous-thrombosis incidence cohort in mesothelioma was located.",
+        "evidenceGaps": "The disease cohort (PMID 25525045) reports deep venous thrombosis in 6 of 178 patients (3.4%) with 5 of 14 thromboembolic events preceding the mesothelioma diagnosis so exposure ordering is mixed; the surgical cohort (PMID 32113716) conditions on pleurectomy with weekly surveillance, pneumatic compression, and heparin prophylaxis so its 32 percent rate is detection- and treatment-mediated and 33 percent of its deep vein thromboses were asymptomatic; and chemotherapy, central lines, and immobility are inseparable contributors.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "chemotherapy and central venous catheter exposure (treatment-mediated)",
+          "immobility and postoperative state (the surgical cohort's rates are post-pleurectomy)",
+          "prior venous thromboembolism and inherited thrombophilia",
+          "concurrent malignancy and paraneoplastic hypercoagulability not specific to mesothelioma",
+          "reverse timing: thromboembolism predating and revealing the malignancy (carried openly on edge)"
+        ]
+      },
+      "evidenceGaps": [
+        "The disease cohort (PMID 25525045) reports deep venous thrombosis in 6 of 178 patients (3.4%) with 5 of 14 thromboembolic events preceding the mesothelioma diagnosis so exposure ordering is mixed; the surgical cohort (PMID 32113716) conditions on pleurectomy with weekly surveillance, pneumatic compression, and heparin prophylaxis so its 32 percent rate is detection- and treatment-mediated and 33 percent of its deep vein thromboses were asymptomatic; and chemotherapy, central lines, and immobility are inseparable contributors."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY at disease-cohort-plus-surgical-surveillance class with the treatment-mediated, surveillance-detection, and reverse-timing limits carried openly: the 178-patient disease cohort documents thromboembolic events in 7.9 percent including deep vein thrombosis in 3.4 percent (PMID 25525045) and the pleurectomy surveillance cohort documents a 32 percent thrombosis rate with a third asymptomatic (PMID 32113716); because the surgical rates are surveillance-mediated under prophylaxis and five events preceded diagnosis, the conservative standard keeps the edge at association only and routes individual claims through dated venous imaging with chemotherapy, catheter, and immobility exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Koksal D, Safak O, Ozcan A, et al. Thromboembolic Events in Malignant Pleural Mesothelioma Clin Appl Thromb Hemost. 2016 May;22(4):390-4. PMID 25525045.",
+          "note": "Retrospective study of 178 histopathologically diagnosed malignant pleural mesothelioma patients 2008-2014 (Clin Appl Thromb Hemost 2016): 14 thromboembolic events (7.9%) - 6 pulmonary embolism (3.4%), 6 deep venous thrombosis (3.4%), 2 myocardial infarction (1.1%); 5 events preceded, 1 coincided with, and 8 followed the MPM diagnosis; rates not associated with thrombocytosis, stage, or histopathology; supports the bounded thromboembolic association only with reverse-timing carried openly.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/25525045/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 25525045; results (thromboembolic event rates and timing relative to diagnosis)"
+        },
+        {
+          "citation": "De León LE, Bravo-Iñiguez CE, Fox S, et al. Routine surveillance for diagnosis of venous thromboembolism after pleurectomy for malignant pleural mesothelioma J Thorac Cardiovasc Surg. 2020 Oct;160(4):1064-1073. PMID 32113716.",
+          "note": "Prospective surveillance cohort of 100 pleurectomy patients for malignant pleural mesothelioma 2016-2018 (J Thorac Cardiovasc Surg 2020): 7 preoperative DVTs; of 93 analyzed under weekly noninvasive studies plus pneumatic compression and heparin prophylaxis, 30 (32%) developed thrombosis - 20 (22%) DVT only, 3 (3%) PE only, 7 (7%) both; 9 of 27 DVTs (33%) asymptomatic; supports the bounded post-surgical surveillance association only (treatment-mediated).",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/32113716/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 32113716; results (venous thromboembolism incidence under surveillance)"
+        }
+      ]
+    },
+    {
+      "conditionId": "pulmonary-embolism",
+      "rank": 3,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Pleural mesothelioma documents pulmonary embolism at cohort level: the 178-patient mesothelioma cohort documents pulmonary thromboembolism in 3.4 percent over a median 8-month follow-up alongside deep venous thrombosis and myocardial infarction (PMID 25525045), and the 100-patient pleurectomy surveillance cohort documents pulmonary embolism in 3 patients alone and 7 with concurrent deep vein thrombosis (10 of 93 analyzed, PMID 32113716); recorded as documented association only with the treatment-mediated, surveillance-detection, and reverse-timing limits carried openly - 5 of the 14 thromboembolic events in the disease cohort preceded the mesothelioma diagnosis.",
+        "causationStatus": "Neither causation nor aggravation of pulmonary embolism is established for any individual: the surgical cohort's events are surveillance-mediated under postoperative prophylaxis, the disease cohort's events partly preceded diagnosis so malignancy-attribution timing is mixed, and individual claims require dated imaging with immobilization, prior thrombosis, central catheter, chemotherapy, cardiopulmonary disease, and thrombophilia exclusion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "THROMBOTIC_OR_VASCULAR",
+        "primaryVector": "Malignant pleural mesothelioma tissue releases tissue factor and inflammatory cytokines so a systemic hypercoagulable state rises and venous thrombus forming in the deep veins embolizes to the pulmonary arteries, or in situ pulmonary arterial thrombosis forms on tumor-inflamed endothelium, the thromboembolic route supported by disease-level event rates, but whether this route produced any individual embolism remains hypothesized until vascular, oncologic, and treatment records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at one retrospective 178-patient disease cohort and one 100-patient surgical surveillance cohort: pulmonary embolism counts are small (6 and 10 patients), events are composite-reported within thromboembolic totals, the surgical cohort conditions on pleurectomy with weekly surveillance and prophylaxis, and no unselected population-based pulmonary-embolism incidence cohort in mesothelioma was located.",
+        "evidenceGaps": "The disease cohort (PMID 25525045) reports pulmonary embolism in 6 of 178 patients (3.4%) within composite thromboembolic outcomes with 5 of 14 events preceding diagnosis; the surgical cohort (PMID 32113716) reports pulmonary embolism in 10 of 93 analyzed under surveillance and prophylaxis (3 with concurrent DVT counts overlap the deep-vein-thrombosis edge, carried openly); event counts are small and composite-reported; and chemotherapy, catheters, and immobility are inseparable contributors.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "chemotherapy and central venous catheter exposure (treatment-mediated)",
+          "immobility and postoperative state (the surgical cohort's rates are post-pleurectomy)",
+          "prior venous thromboembolism and inherited thrombophilia",
+          "cardiopulmonary disease including heart failure and chronic lung disease",
+          "reverse timing: thromboembolism predating and revealing the malignancy (carried openly on edge)"
+        ]
+      },
+      "evidenceGaps": [
+        "The disease cohort (PMID 25525045) reports pulmonary embolism in 6 of 178 patients (3.4%) within composite thromboembolic outcomes with 5 of 14 events preceding diagnosis; the surgical cohort (PMID 32113716) reports pulmonary embolism in 10 of 93 analyzed under surveillance and prophylaxis (3 with concurrent DVT counts overlap the deep-vein-thrombosis edge, carried openly); event counts are small and composite-reported; and chemotherapy, catheters, and immobility are inseparable contributors."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY at disease-cohort-plus-surgical-surveillance class with the treatment-mediated, surveillance-detection, and reverse-timing limits carried openly: the disease cohort documents pulmonary thromboembolism in 3.4 percent (PMID 25525045) and the pleurectomy surveillance cohort documents pulmonary embolism in 10 of 93 analyzed (PMID 32113716); because event counts are small and composite-reported within thromboembolic totals and five events preceded diagnosis, the conservative standard keeps the edge at association only and routes individual claims through dated imaging with chemotherapy, catheter, and immobility exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Koksal D, Safak O, Ozcan A, et al. Thromboembolic Events in Malignant Pleural Mesothelioma Clin Appl Thromb Hemost. 2016 May;22(4):390-4. PMID 25525045.",
+          "note": "Retrospective study of 178 histopathologically diagnosed malignant pleural mesothelioma patients 2008-2014 (Clin Appl Thromb Hemost 2016): 14 thromboembolic events (7.9%) including 6 pulmonary embolism (3.4%); 5 events preceded, 1 coincided with, and 8 followed the MPM diagnosis; supports the bounded pulmonary-embolic association only with reverse-timing carried openly.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/25525045/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 25525045; results (thromboembolic event rates and timing relative to diagnosis)"
+        },
+        {
+          "citation": "De León LE, Bravo-Iñiguez CE, Fox S, et al. Routine surveillance for diagnosis of venous thromboembolism after pleurectomy for malignant pleural mesothelioma J Thorac Cardiovasc Surg. 2020 Oct;160(4):1064-1073. PMID 32113716.",
+          "note": "Prospective surveillance cohort of 100 pleurectomy patients for malignant pleural mesothelioma (J Thorac Cardiovasc Surg 2020): of 93 analyzed under weekly surveillance with prophylaxis, 3 (3%) developed pulmonary embolism only and 7 (7%) developed both deep vein thrombosis and pulmonary embolism (10 of 93 with PE overall); supports the bounded post-surgical surveillance association only (treatment-mediated, overlap with the deep-vein-thrombosis edge carried openly).",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/32113716/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 32113716; results (venous thromboembolism incidence under surveillance)"
+        }
+      ]
+    }
+  ]
 }

@@ -2,8 +2,77 @@
   "id": "phimosis",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review urologic, gynecologic, hormonal, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 71 (2026-09-26): one ASSOCIATION_ONLY draft mapping pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: the edge asserts association only (etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true), scoped to pathological (lichen sclerosus or scarring) phimosis with the physiological-phimosis counterweight carried openly on the edge; individual claims require urologic examination documenting foreskin pathology and retractility with uroflowmetry and post-void residual, plus neuropathic, stricture, infection, and constipation exclusion, and review by a qualified medical professional.",
+    "Pathway and duplicate-scope screens and withheld propositions: no -> cystitis edge (BELOW THRESHOLD plus target-mismatch - the infant recurrent-UTI systematic review is treatment-mediated (circumcision and topical corticosteroids) and framed on prepuce retractability where physiological phimosis is universal in infants (PMID 41274309: recurrent UTI in 8/27 with non-retractile versus 2/28 with retractile prepuce; the review's own conclusion rates the evidence limited and insufficient), the lichen-sclerosus series' 13 culture-proven UTIs come from a selected abnormal-ultrasound subgroup, and the located infection evidence is febrile or recurrent UTI rather than cystitis-specific); no -> paraphimosis edge (BELOW THRESHOLD - the paraphimosis literature is case-report and circumcision-cohort class without cohort quantification of paraphimosis incidence in phimotic foreskins per the batch-69 paraphimosis deferral screen, although the forward direction (phimosis predisposing to paraphimosis) is the documented clinical direction; reopening: a cohort quantifying paraphimosis incidence stratified by foreskin retractability); no -> hydronephrosis edge (BELOW THRESHOLD - upper tract changes in 5 of 78 surgical lichen-sclerosus patients without incident quantification); no -> balanitis-balanoposthitis edge (BIDIRECTIONAL-PAIR AVOIDANCE - the batch-2 balanitis-to-phimosis edge already documents the bidirectional inflammation-scarring cycle and a reverse edge would restate the same cycle in the opposite direction); ME-29 discipline - the meatal-stenosis urinary-obstruction window owns its hypospadias/circumcision-family evidence and is not recycled here."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 71 (2026-09-26): one bounded association edge authored - phimosis to urinary-frequency-retention (rank 1) - classified ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, and hypothesizedOnly:true, scoped to pathological phimosis. The edge rests on the lichen-sclerosus surgical series documenting ultrasound bladder outlet obstruction (retention in 3, PVR elevation in 8, upper tract changes in 5 of 78) with reversal after treatment (PMID 31455543) and the 11-year paediatric acute retention cohort documenting phimosis/balanitis in 11 percent of presentations (PMID 39821927), with the 32-boy physiological-phimosis uroflowmetry study carried openly as counterweight (normal voiding with or without ballooning, PMID 15291873). The paraphimosis forward pathway (phimosis predisposing to paraphimosis) is documented clinically but withheld below threshold on the batch-69 paraphimosis literature screen; the infant recurrent-UTI evidence is withheld as treatment-mediated and constitution-framed (PMID 41274309)."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "urinary-frequency-retention",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Pathological phimosis documents bladder outlet obstruction at ultrasound-cohort and population-etiology level: the retrospective surgical series of boys with lichen sclerosus pathological phimosis documents abnormal urinary tract ultrasound in 19 of 78 (acute retention in 3, isolated post-void residual above 10 percent of estimated bladder capacity in 8, bladder wall thickening in 3, upper tract changes in 5) with obstructive symptoms resolving after treatment (PMID 31455543), and the 11-year regional paediatric acute urinary retention cohort documents phimosis/balanitis as a documented etiology in 6 of 56 presentations (11 percent, PMID 39821927); recorded as documented association only with the physiological-phimosis counterweight carried openly - a uroflowmetry and ultrasound study of 32 boys finds no objective obstructed voiding in physiological phimosis with or without foreskin ballooning (PMID 15291873).",
+        "causationStatus": "Neither causation nor aggravation of urinary retention is established for any individual: the ultrasound cohort is a selected surgical lichen-sclerosus subgroup, the retention cohort counts phimosis among mixed etiologies without phimosis-specific incidence, and physiological phimosis objectively does not obstruct voiding, so attribution requires documented pathological (lichen sclerosus or scarring) phimosis with uroflowmetry, post-void residual, and obstructive-symptom documentation and exclusion of neuropathic bladder, urethral stricture, infection, and constipation."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MECHANICAL_OR_COMPRESSIVE",
+        "primaryVector": "Scarring fibrosis of the prepuce in pathological phimosis narrows the preputial outlet so the bladder generates elevated voiding pressures against distal obstruction with incomplete emptying and elevated post-void residual, culminating in acute retention in severe presentations, the mechanical route supported by ultrasound obstruction findings that resolve after phimosis treatment, but whether this route produced any individual retention episode remains hypothesized until urologic and urodynamic records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at retrospective surgical case series and retrospective etiology-cohort class only: the obstruction cohort selects boys with abnormal ultrasound already referred for surgery (19 of 78), the retention cohort does not quantify phimosis-specific incidence or denominators, the only physiological-phimosis evidence documents normal urodynamics, and no adult acquired-phimosis obstruction cohort was located, so the edge is scoped to pathological phimosis and cannot be generalized to physiological phimosis.",
+        "evidenceGaps": "The obstruction evidence is a selected subgroup (19 abnormal ultrasounds among 78 surgical lichen-sclerosus patients) with no unselected incidence; the acute-retention cohort (PMID 39821927) attributes 11 percent of presentations to phimosis/balanitis without phimosis-specific denominators; the physiological-phimosis uroflowmetry study (PMID 15291873) documents normal flow rates, normal post-void residuals, and normal upper tracts in 32 boys; and no adult acquired-phimosis obstruction cohort was located.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "neuropathic bladder and neurogenic voiding dysfunction (published windows, not recycled per ME-29)",
+          "urethral stricture including lichen-sclerosus urethral disease proximal to the foreskin",
+          "urinary tract infection with secondary voiding dysfunction",
+          "constipation and fecal impaction",
+          "physiological phimosis without obstruction (counterweight carried on edge)"
+        ]
+      },
+      "evidenceGaps": [
+        "The obstruction evidence is a selected subgroup (19 abnormal ultrasounds among 78 surgical lichen-sclerosus patients) with no unselected incidence; the acute-retention cohort (PMID 39821927) attributes 11 percent of presentations to phimosis/balanitis without phimosis-specific denominators; the physiological-phimosis uroflowmetry study (PMID 15291873) documents normal flow rates, normal post-void residuals, and normal upper tracts in 32 boys; and no adult acquired-phimosis obstruction cohort was located."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY at surgical-series plus etiology-cohort class with the physiological-phimosis counterweight carried openly: the lichen-sclerosus series documents ultrasound obstruction reversing after treatment (PMID 31455543) and the regional cohort documents phimosis/balanitis in 11 percent of paediatric acute retention presentations (PMID 39821927), while the 32-boy uroflowmetry study documents normal voiding in physiological phimosis (PMID 15291873); because obstruction attaches to pathological phimosis only and the anchor subgroups are selected, the conservative standard keeps the edge at association only and routes individual claims through dated urologic and urodynamic documentation with neuropathic, stricture, and infection exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Hughes KE, Corbett HJ. Ultrasound evidence of bladder outlet obstruction secondary to lichen sclerosus et atrophicus in boys (balanitis xerotica obliterans) J Pediatr Surg. 2020 Apr;55(4):721-725. PMID 31455543.",
+          "note": "Retrospective review of boys undergoing surgical treatment for lichen sclerosus pathological phimosis 2000-2017 (J Pediatr Surg 2020): 19 of 78 boys with preoperative ultrasound had abnormal scans - 3 acute retention, 8 isolated PVR >10% of estimated bladder capacity, 3 bladder wall thickening, 5 upper tract changes; 17 had obstructive symptoms, 13 culture-proven UTIs, 12 new-onset incontinence; abnormalities resolved after successful treatment in 5 of 6 rescanned; supports the bounded pathological-phimosis obstruction association only (selected surgical subgroup).",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/31455543/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 31455543; results (ultrasound abnormalities and post-treatment resolution)"
+        },
+        {
+          "citation": "Nasr S, Lim JY, Nugapitiya SS, et al. Paediatric Acute Urinary Retention in Central Queensland J Paediatr Child Health. 2025 Mar;61(3):465-471. PMID 39821927.",
+          "note": "Retrospective study of paediatric acute urinary retention presentations 2008-2018 at two regional Australian hospitals (J Paediatr Child Health 2025): 56 presentations in 53 children; commonest etiologies post-operative (23%), medications (13%), UTI (11%), phimosis/balanitis (11%), faecal impaction (11%); supports the bounded etiology-attribution association only (no phimosis-specific denominators).",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39821927/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 39821927; results (acute retention etiology distribution)"
+        },
+        {
+          "citation": "Babu R, Harrison SK, Hutton KA. Ballooning of the foreskin and physiological phimosis: is there any objective evidence of obstructed voiding? BJU Int. 2004 Aug;94(3):384-7. PMID 15291873.",
+          "note": "Prospective uroflowmetry and ultrasound study of 32 boys with physiological phimosis, 18 with foreskin ballooning (BJU Int 2004): mean Qmax 15.3 versus 15.4 mL/s (P=0.96), all flow rates within normal limits on age nomograms, comparable post-void residuals, normal upper tracts and bladder wall thickness in all; COUNTERWEIGHT carried openly - physiological phimosis with or without ballooning shows no objective obstructed voiding.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/15291873/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 15291873; results (uroflowmetry and ultrasound comparison by ballooning)"
+        }
+      ]
+    }
+  ]
 }

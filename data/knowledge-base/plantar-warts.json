@@ -2,8 +2,11 @@
   "id": "plantar-warts",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review biomechanical, post-injury, orthopedic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 71 (2026-09-26): DEFERRED - zero edges authored. The located plantar-wart literature is prevalence (Greek competitive swimmers, PMID 39599896), HPV typing and outcome (PMID 39373174, 38305569, 38126099), BMI association (retrospective case series, PMID 41384642), treatment (ALA-PDT case report in a lupus patient, PMID 40216318), and case-report-class complications (secondary infection and malignant transformation documented only in isolated immunocompromised reports); weight-bearing pain and keratotic thickening are constitutive features of the lesion rather than secondary conditions (constitutive-proximity guard); no cohort quantifies cellulitis, lymphangitis, osteomyelitis, or other named secondary conditions after plantar warts; and no catalog identity exists for verrucous carcinoma or wart-specific complications. Reopening conditions: a cohort quantifying secondary infection or structural complications after plantar warts, or an immunosuppression-stratified complication series.",
+    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication; review hemodynamic, vascular, thrombotic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+  ],
+  "governanceNotes": [
+    "D1 batch 71 (2026-09-26): plantar-warts deferred on zero-quantified-secondary-outcome and constitutive-proximity grounds, matching the paraphimosis deferral pattern (batch 69). Searched anchors retained for reopening: the clinical-characteristics and BMI retrospective case series (PMID 41384642), HPV detection and its impact on outcome (PMID 39373174), HPV biotype influence on characteristics and evolution (PMID 38305569), the Greek competitive-swimmer prevalence study (PMID 39599896), the SLE ALA-PDT case report (PMID 40216318, immunocompromised complication class), and the intractable plantar keratosis-HPV association report (PMID 38293752); the literature documents lesion behavior and treatment response rather than downstream secondary conditions, and cellulitis or malignant-transformation reports remain case-report class."
   ],
   "suggestions": []
 }
