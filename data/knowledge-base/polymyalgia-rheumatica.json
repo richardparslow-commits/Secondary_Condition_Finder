@@ -2,8 +2,76 @@
   "id": "polymyalgia-rheumatica",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review immunologic, hematologic, infectious, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 73 (2026-09-26): one ASSOCIATION_ONLY draft mapping pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: the edge asserts association only (etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true) and is scoped to the glucocorticoid-burden route (PHARMACOLOGICAL_IATROGENIC) with the treatment-mediated and fracture-endpoint limits carried openly (the quantified outcome is incident fracture - aHR 1.63 in the 12,136-patient CPRD cohort, PMID 29316928 - and the mediating condition is glucocorticoid-induced bone loss rather than PMR-specific osteoporosis measured directly); individual claims require dated DEXA and fracture records with glucocorticoid dose documentation and secondary-cause exclusion and review by a qualified medical professional.",
+    "Pathway and duplicate-scope screens and withheld propositions: no -> giant-cell-arteritis edge (WITHHELD PROPOSITION with no catalog identity - PMR progresses to or overlaps GCA in a well-quantified minority and the southern-Sweden predictor study (PMID 41140743) documents the clinical linkage, but no target identity exists; evidence preserved for a future catalog gap review); no -> aortic-aneurysm edge (REFUTED - the TriNetX cohort of 17,327 PMR patients documents aortic aneurysm/dissection/rupture incidence similar to the general population (aHR 0.95, 95% CI 0.84-1.06, PMID 40127549) and explicitly does not support screening PMR patients lacking GCA features; the null is carried openly); no -> visual-impairment or blindness edges (INTERMEDIATE-NODE - the ischemic-optic-neuropathy window belongs to giant cell arteritis, an unregistered identity); no -> diabetes-mellitus edge (BELOW THRESHOLD - glucocorticoid-induced hyperglycemia is plausible and treatment-mediated but no PMR-specific diabetes cohort was located); no -> depressive-disorder edge (BELOW THRESHOLD - the comorbidity review (PMID 29589401) documents glucocorticoid and disease comorbidity without quantified mood outcomes); no -> cataracts edge (BELOW THRESHOLD - no PMR-specific posterior-subcapsular-cataract quantification located)."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 73 (2026-09-26): one bounded association edge authored - polymyalgia-rheumatica to osteoporosis (rank 1) - classified ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true, and mechanismCategory PHARMACOLOGICAL_IATROGENIC. The edge rests on the UK CPRD population cohort of 12,136 incident PMR patients (fracture aHR 1.63, 95% CI 1.54-1.73; fewer than 13 percent bisphosphonate co-prescription, PMID 29316928) and the 652-person PMR Cohort Study (fragility fracture in 17.2 percent at baseline, PMID 34988356), with the metabolic bone health review anchoring the glucocorticoid-induced-osteoporosis route (PMID 36627860). The treatment-mediated and fracture-endpoint limits are carried openly: the quantified endpoint is incident fracture rather than BMD-defined osteoporosis, and the predominantly post-menopausal female population carries independent age-related baseline risk. Refuted-window disclosure: the 2025 TriNetX cohort (PMID 40127549) documents aortic-complication incidence in PMR similar to the general population (aHR 0.95) so no aortic-aneurysm edge is authored and the null is recorded openly on the file."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "osteoporosis",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Polymyalgia rheumatica associates with osteoporotic fracture at population-cohort level: the UK CPRD population-based cohort of 12,136 incident PMR patients documents fracture incidence of 148.05 per 10,000 person-years and an adjusted hazard ratio of 1.63 (95% CI 1.54-1.73) versus matched controls, with fewer than 13 percent of glucocorticoid-treated cases co-prescribed bisphosphonates (PMID 29316928), and the 652-person PMR Cohort Study documents self-reported fragility fracture in 17.2 percent at baseline with additional fractures at 12 and 24 months and fewer than half of respondents receiving any osteoporosis treatment (PMID 34988356); recorded as documented association only with the treatment-mediated and fracture-endpoint limits carried openly - the quantified outcome is incident fracture and the mediating condition is glucocorticoid-induced bone loss rather than PMR-specific osteoporosis measured directly.",
+        "causationStatus": "Neither causation nor aggravation of osteoporosis is established for any individual: the fracture signal is quantified against matched population controls rather than among PMR patients with bone-mineral-density-documented osteoporosis, the cohorts cannot separate cumulative glucocorticoid exposure from age and post-menopausal status, no PMR-specific bone-mineral-density decline cohort was located, and individual claims require dated DEXA and fracture records with glucocorticoid dose and duration documentation and exclusion of age-related, post-menopausal, disuse, and other secondary osteoporosis."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "PHARMACOLOGICAL_IATROGENIC",
+        "primaryVector": "Prolonged glucocorticoid therapy - the mainstay of PMR treatment, frequently requiring courses over long periods - suppresses osteoblast activity and intestinal calcium absorption so bone mineral density falls and fragility fractures follow, the pharmacological route supported by the metabolic bone health review of GCA and PMR and by the fracture excess in cohorts where fewer than 13 percent received bisphosphonate protection, but whether this route produced any individual osteoporosis remains hypothesized until prescribing, DEXA, and fracture records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at one 12,136-patient population cohort and one 652-person survey cohort with one review-class anchor: the measured endpoint is incident fracture rather than BMD-defined osteoporosis, the adjusted hazard ratio of 1.63 is modest and partially attributable to the predominantly post-menopausal female population that carries age-related baseline risk, the survey cohort is self-reported with falls history the strongest fracture correlate, and no PMR-specific BMD-decline cohort or glucocorticoid dose-response analysis was located.",
+        "evidenceGaps": "No PMR cohort measuring bone-mineral-density decline or incident BMD-defined osteoporosis was located; the quantified endpoint in the population cohort is incident fracture (aHR 1.63) which is downstream of the mediating osteoporosis; the 652-person cohort uses self-reported fracture data; glucocorticoid dose-response is unquantified; and PMR flares and re-treatment courses are not separable from cumulative exposure.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "age-related and post-menopausal osteoporosis (the predominantly post-menopausal female population carries baseline risk)",
+          "prolonged glucocorticoid exposure itself rather than PMR (treatment-mediated limit carried openly; the edge is scoped to the glucocorticoid-burden route)",
+          "falls and immobility from PMR symptoms (the PMR cohort found falls history the strongest fracture correlate)",
+          "vitamin D and calcium deficiency; other secondary causes including hyperparathyroidism, hypogonadism, and glucocorticoid-independent endocrine disease"
+        ]
+      },
+      "evidenceGaps": [
+        "No PMR cohort measuring bone-mineral-density decline or incident BMD-defined osteoporosis was located; the quantified endpoint in the population cohort is incident fracture (aHR 1.63) which is downstream of the mediating osteoporosis; the 652-person cohort uses self-reported fracture data; glucocorticoid dose-response is unquantified; and PMR flares and re-treatment courses are not separable from cumulative exposure."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY at population-cohort-plus-survey-cohort class with the treatment-mediated and fracture-endpoint limits carried openly, following the treatment-mediated convention (insomnia to depressive-disorder precedent; the edge is PHARMACOLOGICAL_IATROGENIC): the CPRD cohort documents fracture aHR 1.63 in 12,136 PMR patients (PMID 29316928) and the PMR Cohort Study documents fragility fractures in 17.2 percent (PMID 34988356), with the metabolic bone review anchoring the glucocorticoid-induced-osteoporosis route (PMID 36627860); because the measured endpoint is fracture rather than BMD-defined osteoporosis and the population carries independent age-related risk, the conservative standard keeps the edge at association only, scopes it to the glucocorticoid-burden route, and routes individual claims through dated DEXA and fracture records with dose documentation and secondary-cause exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Paskins Z, Whittle R, Sultan AA, et al. Risk of fracture among patients with polymyalgia rheumatica and giant cell arteritis: a population-based study BMC Med. 2018 Jan 10;16(1):4. PMID 29316928.",
+          "note": "UK CPRD retrospective population-based cohort (BMC Med 2018): 12,136 incident PMR and 2,673 GCA cases 1990-2004 followed to 2015 with four matched controls each; fracture incidence 148.05 per 10,000 person-years in PMR; adjusted hazard ratio 1.63 (95% CI 1.54-1.73) versus controls; fewer than 13% of glucocorticoid-treated cases co-prescribed bisphosphonates; supports the bounded fracture-endpoint association only (mediating osteoporosis not measured directly).",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/29316928/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 29316928; results (fracture incidence rates and adjusted hazard ratios)"
+        },
+        {
+          "citation": "Sokhal BS, Hider SL, Paskins Z, et al. Fragility fractures and prescriptions of medications for osteoporosis in patients with polymyalgia rheumatica: results from the PMR Cohort Study Rheumatol Adv Pract. 2021;5(3):rkab094. PMID 34988356.",
+          "note": "PMR Cohort Study cross-sectional survey with 12/24-month follow-up (Rheumatol Adv Pract 2021): 652 incident PMR respondents; 112 (17.2%) reported fragility fracture at baseline, 72 reported fracture at 12 months, 62 at 24 months; falls history most strongly associated with fracture (OR 2.35 at 12 months); fewer than 50% received osteoporosis treatments including supplements; supports the bounded fragility-fracture association only (self-reported data).",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34988356/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 34988356; results (fragility fracture prevalence and falls association)"
+        },
+        {
+          "citation": "Low C, Conway R. Metabolic bone health considerations in giant cell arteritis and polymyalgia rheumatica Womens Health (Lond). 2023 Jan-Dec;19:17455057221147385. PMID 36627860.",
+          "note": "Metabolic bone health review in GCA and PMR (Womens Health 2023): documents prolonged glucocorticoid courses with cumulative burden including glucocorticoid-induced osteoporosis and subsequent fragility fractures, in a predominantly post-menopausal female population already at baseline osteoporosis risk; supports the bounded pharmacological mechanism only (review class).",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36627860/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 36627860; review (glucocorticoid-induced osteoporosis in PMR)"
+        }
+      ]
+    }
+  ]
 }

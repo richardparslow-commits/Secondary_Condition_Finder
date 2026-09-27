@@ -2,8 +2,77 @@
   "id": "porphyria-cutanea-tarda",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review dermatologic, autoimmune, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 73 (2026-09-26): one ASSOCIATION_ONLY draft mapping pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: the edge asserts association only (etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true), MALIGNANT_TRANSFORMATION, with the shared-substrate and magnitude limits carried openly (hepatitis C, alcohol misuse, hemochromatosis, and iron overload drive both the PCT and the hepatocellular carcinoma risk; the alcohol-comparison residual is aHR 3.1 with wide intervals, PMID 30944007) and the explicit magnitude counterweight on the edge (the 17-case series documents one hepatocellular carcinoma over median 24-year follow-up and characterizes the risk as low, PMID 18720935); individual claims require dated hepatic imaging and viral-serology records with alcohol, iron, and cirrhosis exclusion and review by a qualified medical professional.",
+    "Pathway and duplicate-scope screens and withheld propositions: no -> chronic-liver-disease or -> cirrhosis-of-the-liver edges (SHARED-SUBSTRATE - the located liver-disease evidence is concomitant framing (hepatitis C in 5 of 17, alcohol abuse in 7, hemochromatosis in 4, PMID 18720935) where shared etiologies drive both the PCT and the liver disease, and the porphyria-to-liver-fibrosis field partially overlaps the published erythropoietic-protoporphyria to chronic-liver-disease window (whose route evidence is not recycled per ME-29); chain discipline also applies since chronic-liver-disease to cirrhosis-of-the-liver is a published chain); no -> diabetes-mellitus edge (BELOW THRESHOLD - no PCT-specific quantified dysglycemia window located); no -> scleroderma edge (MANIFESTATION-IDENTITY/CASE-REPORT CLASS - sclerodermoid skin changes are reported within the PCT phenotype rather than as incident systemic sclerosis); no -> skin-cancer, -> squamous-cell-carcinoma, or -> scars edges (CONSTITUTIVE-PROXIMITY - blistering, skin fragility, milia, and scarring are the defining dermatologic features); no -> anemia edge (ZERO RECORD - PCT does not cause the hematologic porphyria anemias; the acute-intermittent-porphyria window is unregistered). Shared-substrate disclosure: the Norwegian cohort's authors themselves attribute most of the excess to common lifestyle risk factors while leaving an inherent PCT contribution open (carried openly on the edge and references)."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 73 (2026-09-26): one bounded association edge authored - porphyria-cutanea-tarda to liver-cancer (rank 1) - classified ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true, and mechanismCategory MALIGNANT_TRANSFORMATION. The edge rests on the Norwegian nationwide cohort of 612 persons with PCT (hepatocellular carcinoma aHR 19.7 versus reference and 3.1 versus the chronic-alcohol-abuse comparison group, PMID 30944007) and the 19-study pooled analysis of 7,381 porphyria patients (primary liver cancer 4.8 percent, hepatocellular carcinoma 3.3 percent, cirrhosis not a prerequisite in a small group, PMID 35740611), with the 17-case single-centre series carried openly as explicit magnitude counterweight (one hepatocellular carcinoma over median 24-year follow-up, risk characterized as low, PMID 18720935) and the Danish nationwide mortality cohort cited openly (liver/gallbladder cancer death HR 11.24, PMID 31374307, no lifestyle data). The shared-substrate limit is carried openly: hepatitis C, alcohol, and iron overload drive both conditions and the residual risk against the alcohol comparison rests on small numbers with wide confidence intervals."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "liver-cancer",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Porphyria cutanea tarda associates with hepatocellular carcinoma at nationwide-cohort and pooled-analysis level: the Norwegian nationwide cohort of 612 persons with PCT documents hepatocellular carcinoma at adjusted hazard ratio 19.7 (95% CI 8.8-44.0) versus the reference population and 3.1 (95% CI 1.2-7.7) versus persons with chronic alcohol abuse, alongside gallbladder and biliary tract cancer and liver-disease mortality at HR 5.5 (PMID 30944007), and the systematic review of 19 studies covering 7,381 porphyria patients documents primary liver cancer in 4.8 percent including hepatocellular carcinoma in 3.3 percent, with cirrhosis not a prerequisite in a small group (PMID 35740611); recorded as documented association only with the shared-substrate and magnitude limits carried openly - the single-centre 17-case series documents only one hepatocellular carcinoma over a median 24-year follow-up and characterizes the risk as low (PMID 18720935, counterweight carried on the edge) and the Danish nationwide mortality cohort corroborates liver and gallbladder cancer mortality at HR 11.24 (PMID 31374307).",
+        "causationStatus": "Neither causation nor aggravation of liver cancer is established for any individual: hepatitis C, alcohol misuse, hereditary hemochromatosis, and iron overload drive both the PCT and the hepatocellular carcinoma risk so shared-substrate confounding is central, the alcohol-comparison residual (aHR 3.1) rests on a small exposed cohort with wide confidence intervals, the pooled analysis combines porphyria subtypes beyond PCT, and individual claims require dated hepatic imaging and alpha-fetoprotein records with viral hepatitis, alcohol, metabolic liver disease, hemochromatosis, and cirrhosis exclusion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MALIGNANT_TRANSFORMATION",
+        "primaryVector": "Chronic hepatic uroporphyrin accumulation with iron-mediated oxidative hepatocellular injury is hypothesized to sustain cycles of hepatocyte damage and regeneration so mutational load rises and hepatocellular carcinoma emerges on a damaged substrate, a route the nationwide cohort leaves partially open (something inherent in PCT may contribute after alcohol comparison), but whether this route produced any individual malignancy remains hypothesized until hepatic, virologic, iron, and imaging records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at one 612-person nationwide cohort and one 19-study pooled analysis with one case-series counterweight and one mortality-cohort corroboration: the adjusted hazard ratio of 19.7 falls to 3.1 against an alcohol-abuse comparison group so much of the excess is shared lifestyle and hepatic substrate, the pooled analysis combines porphyria subtypes, the counterweight series documents one case over median 24-year follow-up and characterizes the risk as low, and cancer counts are small enough that confidence intervals span an order of magnitude.",
+        "evidenceGaps": "No PCT-specific cohort isolating hepatocellular carcinoma risk after adjustment for hepatitis C, alcohol, hemochromatosis, and cirrhosis simultaneously was located; the Norwegian cohort's residual risk versus the alcohol-abuse comparison is aHR 3.1 (95% CI 1.2-7.7) with wide intervals; the systematic review (PMID 35740611) pools all porphyrias rather than PCT alone; the 17-case series (PMID 18720935) characterizes the risk as low (one HCC in median 24 years); and the Danish mortality cohort (PMID 31374307, cited openly) reports liver and gallbladder cancer death HR 11.24 without lifestyle data.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "hepatitis C and hepatitis B infection (the dominant shared substrate; hepatitis C drives both PCT expression and hepatocellular carcinoma)",
+          "chronic alcohol misuse (the cohort's own alcohol-comparison carries aHR 3.1, so most of the excess is alcohol-shared)",
+          "hereditary hemochromatosis and hepatic iron overload (iron-driven carcinogenesis independent of PCT)",
+          "cirrhosis from any cause as the premalignant substrate (the cirrhosis window's route evidence is not recycled per ME-29)",
+          "metabolic liver disease including hepatic steatosis and obesity-related liver cancer (the hepatic-steatosis window owns its evidence per ME-29)"
+        ]
+      },
+      "evidenceGaps": [
+        "No PCT-specific cohort isolating hepatocellular carcinoma risk after adjustment for hepatitis C, alcohol, hemochromatosis, and cirrhosis simultaneously was located; the Norwegian cohort's residual risk versus the alcohol-abuse comparison is aHR 3.1 (95% CI 1.2-7.7) with wide intervals; the systematic review (PMID 35740611) pools all porphyrias rather than PCT alone; the 17-case series (PMID 18720935) characterizes the risk as low (one HCC in median 24 years); and the Danish mortality cohort (PMID 31374307, cited openly) reports liver and gallbladder cancer death HR 11.24 without lifestyle data."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY at nationwide-cohort-plus-pooled-analysis class with the shared-substrate and magnitude limits carried openly: the Norwegian nationwide cohort documents hepatocellular carcinoma aHR 19.7 falling to 3.1 against an alcohol-abuse comparison (PMID 30944007), the 19-study pooled analysis documents primary liver cancer in 4.8 percent of porphyria patients (PMID 35740611), and the 17-case series is carried openly as explicit magnitude counterweight (one hepatocellular carcinoma over median 24-year follow-up, risk characterized as low, PMID 18720935); because hepatitis C, alcohol, and iron overload drive both conditions and the residual risk rests on small numbers, the conservative standard keeps the edge at association only and routes individual claims through dated hepatic imaging and viral-serology records with alcohol, iron, and cirrhosis exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Baravelli CM, Sandberg S, Aarsand AK, et al. Porphyria cutanea tarda increases risk of hepatocellular carcinoma and premature death: a nationwide cohort study Orphanet J Rare Dis. 2019 Apr 3;14(1):77. PMID 30944007.",
+          "note": "Norwegian nationwide cohort study 2000-2016 (Orphanet J Rare Dis 2019): 612 persons with PCT versus 5.4 million reference population; hepatocellular carcinoma aHR 19.7 (95% CI 8.8-44.0) and gallbladder/biliary tract cancer aHR 6.8 versus reference; residual risk versus chronic alcohol abuse comparison: HCC aHR 3.1 (95% CI 1.2-7.7); liver-disease death HR 5.5, overdose death HR 9.9; authors note most findings likely reflect shared lifestyle risk factors though something inherent in PCT may contribute; supports the bounded malignancy association only (shared-substrate confounding carried openly).",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/30944007/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 30944007; results (cancer and cause-specific mortality hazard ratios)"
+        },
+        {
+          "citation": "Ramai D, Deliwala SS, Chandan S, et al. Risk of Hepatocellular Carcinoma in Patients with Porphyria: A Systematic Review Cancers (Basel). 2022 Jun 15;14(12).doi: 10.3390/cancers14122947. PMID 35740611.",
+          "note": "Systematic review and pooled analysis of 19 studies covering 7,381 porphyria patients (Cancers 2022): primary liver cancer in 351 patients (4.8%), hepatocellular carcinoma in 243 (3.3%), cholangiocarcinoma 18 (0.3%); advanced liver disease or cirrhosis not a prerequisite for HCC in a small group; supports the bounded malignancy association only (all porphyria subtypes pooled).",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35740611/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 35740611; results (pooled primary liver cancer and HCC proportions)"
+        },
+        {
+          "citation": "Cassiman D, Vannoote J, Roelandts R, et al. Porphyria cutanea tarda and liver disease. A retrospective analysis of 17 cases from a single centre and review of the literature Acta Gastroenterol Belg. 2008 Apr-Jun;71(2):237-42. PMID 18720935.",
+          "note": "Single-centre retrospective series of 17 sporadic PCT patients plus literature review (Acta Gastroenterol Belg 2008): iron overload in 14 of 17; chronic hepatitis C in 5, alcohol abuse in 7, hereditary hemochromatosis in 4; one hepatocellular carcinoma over median 24-year follow-up; the authors characterize HCC risk in sporadic PCT as low and conclude PCT patients should be screened for concomitant liver disease; COUNTERWEIGHT carried openly as explicit magnitude and shared-substrate evidence.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/18720935/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 18720935; results and conclusions (concomitant liver disease distribution and HCC outcome)"
+        }
+      ]
+    }
+  ]
 }

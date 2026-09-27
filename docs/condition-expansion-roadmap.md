@@ -3821,3 +3821,121 @@ fixture automatically (947 -> 960) - twelfth consecutive batch with no manual fi
 outside the standing benign coincidences (apply-all-94's historical `explicitPublicationGuards: 273`;
 wave-5's `toBeGreaterThanOrEqual(276)` catalog floor; legal-copy's `38 U.S.C. § 1117` statute text).
 Standing recommendation: batch 72 lands through branch, PR, CI, and merge.
+
+## Mapping Expansion D1 batch 73 (2026-09-26)
+
+Mapping Expansion D1 batch 73 (2026-09-26) authored seven draft-quarantined relationships across four of
+the five queue identities and deferred one identity without edges. polymyalgia-rheumatica -> osteoporosis
+(PHARMACOLOGICAL_IATROGENIC) is scoped to the glucocorticoid-burden route with the treatment-mediated and
+fracture-endpoint limits carried openly: the UK CPRD population cohort of 12,136 incident PMR patients
+documents fracture incidence 148.05 per 10,000 person-years with adjusted hazard ratio 1.63 (95% CI
+1.54-1.73) and fewer than 13 percent bisphosphonate co-prescription (PMID 29316928) and the 652-person PMR
+Cohort Study documents self-reported fragility fracture in 17.2 percent (PMID 34988356), with the metabolic
+bone health review anchoring the glucocorticoid-induced-osteoporosis route (PMID 36627860); the quantified
+endpoint is incident fracture rather than BMD-defined osteoporosis and the predominantly post-menopausal
+female population carries independent age-related baseline risk. polymyositis -> interstitial-lung-disease
+(SYSTEMIC_INFLAMMATORY) rests on the 103-subject anti-Jo-1 antisynthetase cohort (polymyositis predominant
+in 64 percent, NSIP 52 percent, 10-year survival 68 percent, PMID 27578469), the 130-patient PM/DM
+risk-factor cohort (ILD in half; anti-Jo-1, dry cough, arthritis, dyspnea independent risk factors, PMID
+37005523), and the 478-patient Spanish IIM registry (ILD 23.4 percent across the spectrum, PMID 30392161);
+polymyositis -> dysphagia (SYSTEMIC_INFLAMMATORY) rests on the 51-patient mixed-IIM
+oro-pharyngeal-esophageal scintigraphy cohort (alterations in every patient, predominantly oral and
+pharyngeal, PMID 31012534, single-anchor limit carried openly); both edges carry the sibling-overlap
+disclosure openly (the dermatomyositis ILD and dysphagia edges own their DM-specific sources and none is
+recycled per ME-29, batch-65 sibling-double-targeting class). porphyria-cutanea-tarda -> liver-cancer
+(MALIGNANT_TRANSFORMATION) rests on the Norwegian nationwide cohort of 612 persons with PCT (hepatocellular
+carcinoma aHR 19.7 versus reference, 3.1 versus the chronic-alcohol-abuse comparison, PMID 30944007) and
+the 19-study pooled analysis of 7,381 porphyria patients (primary liver cancer 4.8 percent, HCC 3.3
+percent, cirrhosis not a prerequisite in a small group, PMID 35740611), with the 17-case series carried
+openly as explicit magnitude counterweight (one HCC over median 24-year follow-up, risk characterized as
+low, PMID 18720935) and the Danish mortality cohort cited openly (liver/gallbladder cancer death HR 11.24,
+PMID 31374307); the shared-substrate limit is central (hepatitis C, alcohol, hemochromatosis, and iron
+overload drive both conditions). postherpetic-neuralgia -> depressive-disorder, -> anxiety-disorder, and ->
+insomnia (all PSYCHOPHYSIOLOGICAL, batch-71 phantom-limb-pain mood precedent) rest on the 661-patient
+retrospective clinic cohort (depression 65.8 percent, anxiety 69.0 percent by HADS with female sex, pain
+magnitude, and rash extent independent associations, PMID 33326962), the 61-patient neuropathic-pain cohort
+(postherpetic pain most common etiology; depression 65.6 percent, anxiety 73.7 percent, depression-pain
+r=0.41, PMID 32617124, shared within batch across both mood edges), the 111-patient insomnia cohort
+(clinical insomnia 30.6 percent, pain intensity OR 12.42, PMID 27073226), and the 3,339-patient neuropathic
+pain cohort including 1,480 with postherpetic neuralgia (PMID 37772033), all three edges carrying the
+99-patient acute-zoster longitudinal cohort openly as explicit direction-inversion counterweight (acute-
+phase anxiety predicts later postherpetic neuralgia at 4.52-fold risk for clinically significant anxiety,
+PMID 42343723).
+
+posterior-tibial-tendon-dysfunction DEFERRED without edges (IDENTITY-OVERLAP plus CONSTITUTIVE-PROXIMITY
+plus below-threshold quantification): the 2020 international consensus renamed both posterior tibial tendon
+dysfunction and adult acquired flatfoot deformity as progressive collapsing foot deformity precisely
+because both traditional terms inadequately described one disease construct (PMID 40523163), so a flatfoot
+edge would register the defining clinical expression of the disease as its own secondary condition; the
+located evidence is instructional and imaging reviews (PMIDs 42257901, 42442878), an acute-rupture case
+report documenting rapid deformity development (PMID 41171964, case-report class), and a cadaveric
+biomechanics study (PMID 42790184, not clinical evidence) with no cohort quantifying incident acquired
+deformity among deformity-free early-stage patients (piriformis batch-71 constitutive-proximity precedent).
+Reopening: a natural-history cohort of deformity-free stage-I PTTD, or catalog-scope validation separating
+the flatfoot identity from PTTD-driven acquired deformity. Chain discipline: the published flatfoot ->
+osteoarthritis edge is left untouched and a PTTD -> osteoarthritis edge is withheld so no chain triangle is
+introduced.
+
+Withholdings recorded on the files: PMR -> giant-cell-arteritis recorded as a WITHHELD PROPOSITION with no
+catalog identity (PMR progresses to or overlaps GCA in a well-quantified minority; the southern-Sweden
+predictor cohort, PMID 41140743, evidence preserved for a future catalog gap review), -> aortic-aneurysm
+REFUTED (the TriNetX cohort of 17,327 PMR patients documents aortic aneurysm/dissection/rupture incidence
+similar to the general population, aHR 0.95, 95% CI 0.84-1.06, with no screening support, PMID 40127549;
+the null is carried openly), -> visual-impairment and -> blindness (INTERMEDIATE-NODE - the ischemic optic
+neuropathy window belongs to the unregistered GCA identity), -> diabetes-mellitus, -> depressive-disorder,
+and -> cataracts (below threshold); polymyositis -> muscle-atrophy (CONSTITUTIVE-PROXIMITY - weakness and
+atrophy are defining features), -> malignancy (UMBRELLA/TARGET-SCARCITY - cancer-associated myositis is
+concentrated in dermatomyositis), -> diabetes-mellitus and -> osteoporosis (below threshold), skin-rash
+propositions (MANIFESTATION-IDENTITY - dermatomyositis owns the cutaneous phenotype), ->
+aspiration-pneumonia, -> respiratory-failure, and -> falls (no catalog identities); PCT ->
+chronic-liver-disease and -> cirrhosis-of-the-liver (SHARED-SUBSTRATE - the located evidence is concomitant
+HCV/alcohol/hemochromatosis framing, PMID 18720935; chain discipline also applies since chronic-liver-
+disease -> cirrhosis-of-the-liver is a published chain), -> scleroderma (MANIFESTATION-IDENTITY/case-report
+class), -> skin-cancer, -> squamous-cell-carcinoma, and -> scars (CONSTITUTIVE-PROXIMITY), ->
+diabetes-mellitus and -> anemia (below threshold/zero record); PHN -> unexplained-chronic-pain
+(SEMANTIC-MISMATCH - postherpetic neuralgia pain is explained neuropathic pain), allodynia, hyperalgesia,
+and burning-pain propositions (CONSTITUTIVE-PROXIMITY, no catalog identities), -> opioid-use-disorder and
+-> substance-use-disorder (below threshold), and the zoster-level depression window is reserved for the
+unregistered herpes-zoster identity (the nationwide prospective zoster cohort, PMID 24804885, HR 1.49 for
+major depression, is deliberately not recycled per ME-29).
+
+Pre-authoring verification: all 18 PMIDs passed the abstract pass (`/tmp/d1-abstract47.py` in fetch
+groups), the esummary bibliographic pass with every citation re-verified against the PubMed record, and
+`node scripts/preflight-source-status.js --pmids ...` (18/18 checked, zero blocking flags, zero notes). The
+post-write structural self-audit passed for all five files (7 edges, 18 reference uses; one single-citation
+quarantine warning on the polymyositis dysphagia edge carried openly) and `npm run kb:validate` reports
+zero errors.
+
+Registry after lockstep: 756 relationships (682 explicit / 74 legacy), 1361 reference uses (383 verified /
+978 pending-verification), 1356 clinical / 5 legal uses, 1218 source entities (346 active / 863
+pending-verification). Within-batch shared sources - PMIDs 33326962, 32617124, and 42343723 each carried
+on both postherpetic-neuralgia mood edges - give 18 reference uses over 15 new sources. Citation packet
+regenerated at 393 worksheets / 978 reference rows = live citation debt; the verification dashboard
+regenerated at 978 rows in 41 reviewer batches (862 distinct sources). Backlog after batch 73: **125**
+undispositioned zero-edge drafts (130 before the batch; four identities left by gaining edges and one by
+recorded deferral). Next-five: `postpartum-thyroiditis`, `postural-orthostatic-tachycardia-syndrome`,
+`preiser-s-disease`, `premature-atrial-ventricular-contractions`, `premature-ejaculation`.
+
+Structural-debt note: batch-73 edges produced zero new CRG findings - the analyzer reports review-class 13
+against baseline 13 and redundancy 28 against baseline 28 unchanged (the analyzer counts redundancy chains
+only over published edges, so draft-quarantined member edges cannot grow the ratchet today) and the
+bidirectional-pair count stays at 4 (no reverse candidates authored). The batch nevertheless adds a seventh
+accumulated example to the standing CRG redundancy-semantics question: a fan-triangle (the postherpetic-
+neuralgia sleep and mood edges form chain paths with the published insomnia -> depressive-disorder and
+anxiety-disorder -> depressive-disorder edges) and a sibling-double-targeting instance (polymyositis and
+the batch-era dermatomyositis edges both targeting interstitial-lung-disease and dysphagia, the batch-65
+class). Both are disclosed openly on the KB files (todo and governance notes) and in the registry structured
+guard text with the published and sibling edges left untouched; the question now stands on seven examples
+and should be settled before more parallel pathway provenance accumulates - particularly since these draft
+edges would join the published redundancy set the moment the citation-verification backlog clears.
+
+Test-pin note: the sweep touched 54 files and replaced 316 counter tokens in one pass with the batch-72
+per-token context predicates carried over unchanged (relationships 749 -> 756, references/uses 1343 ->
+1361, unverified 960 -> 978, pending source entities 848 -> 863, total source entities 1203 -> 1218,
+explicit guards 675 -> 682, clinical references 1338 -> 1356, clinical provenance 1342 -> 1360, and the
+draft-singles counter 294 -> 296 for this batch's single-suggestion identities polymyalgia-rheumatica and
+porphyria-cutanea-tarda). The explicit fixture token continued to carry the citation-decay-gate debt
+fixture automatically (960 -> 978) - thirteenth consecutive batch with no manual fixture bump. Residue
+clean outside the standing benign coincidences (apply-all-94's historical `explicitPublicationGuards:
+273`; wave-5's `toBeGreaterThanOrEqual(276)` catalog floor; legal-copy's `38 U.S.C. § 1117` statute text).
+Standing recommendation: batch 73 lands through branch, PR, CI, and merge.

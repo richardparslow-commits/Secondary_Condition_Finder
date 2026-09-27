@@ -16,16 +16,16 @@
   "citationPromotionMustAtomicallyUpdateKbAndMasterSourceState": true
  },
  "counts": {
-  "liveSourceReferenceUses": 1343,
+  "liveSourceReferenceUses": 1361,
   "activeSourceEntities": 346,
-  "pendingVerificationSourceEntities": 848,
+  "pendingVerificationSourceEntities": 863,
   "activeClinicalSourceEntities": 345,
-  "pendingClinicalSourceEntities": 848,
+  "pendingClinicalSourceEntities": 863,
   "activeLegalAuthorityEntities": 1,
   "retiredOnlySourceEntities": 1,
   "supersededUnverifiedSourceEntities": 7,
   "bibliographicCorrectionOnlyEntities": 1,
-  "totalSourceEntitiesIncludingLineage": 1203,
+  "totalSourceEntitiesIncludingLineage": 1218,
   "retiredVerifiedRelationshipSourceUses": 6
  },
  "retirementLedger": {
@@ -44435,6 +44435,552 @@
    "retiredUses": [],
    "rawReferenceHashes": [
     "3718da263d64148e7e585bde8b6a6abd2ea04da1434360b23aaf40d5c47aaf64"
+   ]
+  },
+  {
+   "sourceId": "pmid-29316928",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "29316928",
+   "doi": null,
+   "canonicalCitation": "Paskins Z, Whittle R, Sultan AA, et al. Risk of fracture among patients with polymyalgia rheumatica and giant cell arteritis: a population-based study BMC Med. 2018 Jan 10;16(1):4. PMID 29316928.",
+   "citationVariants": [
+    "Paskins Z, Whittle R, Sultan AA, et al. Risk of fracture among patients with polymyalgia rheumatica and giant cell arteritis: a population-based study BMC Med. 2018 Jan 10;16(1):4. PMID 29316928."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/29316928/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/29316928/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-polymyalgia-rheumatica-to-osteoporosis",
+     "primaryId": "polymyalgia-rheumatica",
+     "targetId": "osteoporosis",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "55f555dc263dd17c513eb0b556ee0c25d579897c294088bc0138917530f97696"
+   ]
+  },
+  {
+   "sourceId": "pmid-34988356",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "34988356",
+   "doi": null,
+   "canonicalCitation": "Sokhal BS, Hider SL, Paskins Z, et al. Fragility fractures and prescriptions of medications for osteoporosis in patients with polymyalgia rheumatica: results from the PMR Cohort Study Rheumatol Adv Pract. 2021;5(3):rkab094. PMID 34988356.",
+   "citationVariants": [
+    "Sokhal BS, Hider SL, Paskins Z, et al. Fragility fractures and prescriptions of medications for osteoporosis in patients with polymyalgia rheumatica: results from the PMR Cohort Study Rheumatol Adv Pract. 2021;5(3):rkab094. PMID 34988356."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34988356/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/34988356/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-polymyalgia-rheumatica-to-osteoporosis",
+     "primaryId": "polymyalgia-rheumatica",
+     "targetId": "osteoporosis",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "816799e595003a26bf7d0d610318f403c28da7015a2bfdc00ddba376175df6ba"
+   ]
+  },
+  {
+   "sourceId": "pmid-36627860",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "36627860",
+   "doi": null,
+   "canonicalCitation": "Low C, Conway R. Metabolic bone health considerations in giant cell arteritis and polymyalgia rheumatica Womens Health (Lond). 2023 Jan-Dec;19:17455057221147385. PMID 36627860.",
+   "citationVariants": [
+    "Low C, Conway R. Metabolic bone health considerations in giant cell arteritis and polymyalgia rheumatica Womens Health (Lond). 2023 Jan-Dec;19:17455057221147385. PMID 36627860."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36627860/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/36627860/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-polymyalgia-rheumatica-to-osteoporosis",
+     "primaryId": "polymyalgia-rheumatica",
+     "targetId": "osteoporosis",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "79ebedd87dee160350b0b449860e503f59c9870eb4b332abf9149c001a203c7a"
+   ]
+  },
+  {
+   "sourceId": "pmid-27578469",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "27578469",
+   "doi": null,
+   "canonicalCitation": "Zamora AC, Hoskote SS, Abascal-Bolado B, et al. Clinical features and outcomes of interstitial lung disease in anti-Jo-1 positive antisynthetase syndrome Respir Med. 2016 Sep;118:39-45. PMID 27578469.",
+   "citationVariants": [
+    "Zamora AC, Hoskote SS, Abascal-Bolado B, et al. Clinical features and outcomes of interstitial lung disease in anti-Jo-1 positive antisynthetase syndrome Respir Med. 2016 Sep;118:39-45. PMID 27578469."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/27578469/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/27578469/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-polymyositis-to-interstitial-lung-disease",
+     "primaryId": "polymyositis",
+     "targetId": "interstitial-lung-disease",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "0cab8b666127606510d78f97fb6f525a337c74a6bab0e683a5fd2b51108031d3"
+   ]
+  },
+  {
+   "sourceId": "pmid-37005523",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "37005523",
+   "doi": null,
+   "canonicalCitation": "Li T, Tang ZY, Zhang QB, et al. Clinical Characteristics and Risk Factors of Polymyositis and Dermatomyositis Combined with Interstitial Lung Disease in Patients Residing in the Northeast Sichuan Province of China Curr Rheumatol Rev. 2023;19(4):455-462. PMID 37005523.",
+   "citationVariants": [
+    "Li T, Tang ZY, Zhang QB, et al. Clinical Characteristics and Risk Factors of Polymyositis and Dermatomyositis Combined with Interstitial Lung Disease in Patients Residing in the Northeast Sichuan Province of China Curr Rheumatol Rev. 2023;19(4):455-462. PMID 37005523."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/37005523/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/37005523/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-polymyositis-to-interstitial-lung-disease",
+     "primaryId": "polymyositis",
+     "targetId": "interstitial-lung-disease",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "8a8804053dec41afdebaa5ae0a52a41ced4e7d31169d62e9afe1a1ce2eb73d9e"
+   ]
+  },
+  {
+   "sourceId": "pmid-30392161",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "30392161",
+   "doi": null,
+   "canonicalCitation": "Cobo-Ibáñez T, López-Longo FJ, Joven B, et al. Long-term pulmonary outcomes and mortality in idiopathic inflammatory myopathies associated with interstitial lung disease Clin Rheumatol. 2019 Mar;38(3):803-815. PMID 30392161.",
+   "citationVariants": [
+    "Cobo-Ibáñez T, López-Longo FJ, Joven B, et al. Long-term pulmonary outcomes and mortality in idiopathic inflammatory myopathies associated with interstitial lung disease Clin Rheumatol. 2019 Mar;38(3):803-815. PMID 30392161."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/30392161/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/30392161/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-polymyositis-to-interstitial-lung-disease",
+     "primaryId": "polymyositis",
+     "targetId": "interstitial-lung-disease",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "950d6e640704c878e6eae24a333d2ff04d2a95e55a08d640a920a9208b9eb782"
+   ]
+  },
+  {
+   "sourceId": "pmid-31012534",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "31012534",
+   "doi": null,
+   "canonicalCitation": "Barsotti S, Puccini G, Tripoli A, et al. Assessment of swallowing function with oro-pharyngeal-esophageal scintigraphy in patients with idiopathic inflammatory myopathies Neurogastroenterol Motil. 2019 Jul;31(7):e13599. PMID 31012534.",
+   "citationVariants": [
+    "Barsotti S, Puccini G, Tripoli A, et al. Assessment of swallowing function with oro-pharyngeal-esophageal scintigraphy in patients with idiopathic inflammatory myopathies Neurogastroenterol Motil. 2019 Jul;31(7):e13599. PMID 31012534."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/31012534/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/31012534/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-polymyositis-to-dysphagia",
+     "primaryId": "polymyositis",
+     "targetId": "dysphagia",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "43e2764b081e5a04a8fd3651e7af04eb83bb7291d64c6bdc70ce75f6b6f0d9a6"
+   ]
+  },
+  {
+   "sourceId": "pmid-30944007",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "30944007",
+   "doi": null,
+   "canonicalCitation": "Baravelli CM, Sandberg S, Aarsand AK, et al. Porphyria cutanea tarda increases risk of hepatocellular carcinoma and premature death: a nationwide cohort study Orphanet J Rare Dis. 2019 Apr 3;14(1):77. PMID 30944007.",
+   "citationVariants": [
+    "Baravelli CM, Sandberg S, Aarsand AK, et al. Porphyria cutanea tarda increases risk of hepatocellular carcinoma and premature death: a nationwide cohort study Orphanet J Rare Dis. 2019 Apr 3;14(1):77. PMID 30944007."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/30944007/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/30944007/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-porphyria-cutanea-tarda-to-liver-cancer",
+     "primaryId": "porphyria-cutanea-tarda",
+     "targetId": "liver-cancer",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "ef20a907561e8c3f82d710c7667ddb86c43cc7a6459d9ca36b5403450adf4507"
+   ]
+  },
+  {
+   "sourceId": "pmid-35740611",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "35740611",
+   "doi": "10.3390/cancers14122947",
+   "canonicalCitation": "Ramai D, Deliwala SS, Chandan S, et al. Risk of Hepatocellular Carcinoma in Patients with Porphyria: A Systematic Review Cancers (Basel). 2022 Jun 15;14(12).doi: 10.3390/cancers14122947. PMID 35740611.",
+   "citationVariants": [
+    "Ramai D, Deliwala SS, Chandan S, et al. Risk of Hepatocellular Carcinoma in Patients with Porphyria: A Systematic Review Cancers (Basel). 2022 Jun 15;14(12).doi: 10.3390/cancers14122947. PMID 35740611."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35740611/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/35740611/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-porphyria-cutanea-tarda-to-liver-cancer",
+     "primaryId": "porphyria-cutanea-tarda",
+     "targetId": "liver-cancer",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "e22f1ab7e65731817f5c19153ad6a89e0734c81d669ed9189b97ab83d73b1755"
+   ]
+  },
+  {
+   "sourceId": "pmid-18720935",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "18720935",
+   "doi": null,
+   "canonicalCitation": "Cassiman D, Vannoote J, Roelandts R, et al. Porphyria cutanea tarda and liver disease. A retrospective analysis of 17 cases from a single centre and review of the literature Acta Gastroenterol Belg. 2008 Apr-Jun;71(2):237-42. PMID 18720935.",
+   "citationVariants": [
+    "Cassiman D, Vannoote J, Roelandts R, et al. Porphyria cutanea tarda and liver disease. A retrospective analysis of 17 cases from a single centre and review of the literature Acta Gastroenterol Belg. 2008 Apr-Jun;71(2):237-42. PMID 18720935."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/18720935/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/18720935/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-porphyria-cutanea-tarda-to-liver-cancer",
+     "primaryId": "porphyria-cutanea-tarda",
+     "targetId": "liver-cancer",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "c0419961d5cf5e5f8653ec3d2b5d425427c44cf1fc08741365cd92846b84c305"
+   ]
+  },
+  {
+   "sourceId": "pmid-33326962",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "33326962",
+   "doi": null,
+   "canonicalCitation": "Du J, Sun G, Ma H, et al. Prevalence and Risk Factors of Anxiety and Depression in Patients with Postherpetic Neuralgia: A Retrospective Study Dermatology. 2021;237(6):891-895. PMID 33326962.",
+   "citationVariants": [
+    "Du J, Sun G, Ma H, et al. Prevalence and Risk Factors of Anxiety and Depression in Patients with Postherpetic Neuralgia: A Retrospective Study Dermatology. 2021;237(6):891-895. PMID 33326962."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33326962/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/33326962/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 2,
+   "liveUses": [
+    {
+     "relationshipId": "rel-postherpetic-neuralgia-to-depressive-disorder",
+     "primaryId": "postherpetic-neuralgia",
+     "targetId": "depressive-disorder",
+     "sourceIndex": 0
+    },
+    {
+     "relationshipId": "rel-postherpetic-neuralgia-to-anxiety-disorder",
+     "primaryId": "postherpetic-neuralgia",
+     "targetId": "anxiety-disorder",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "e2cc98a1ab94a3b345123110e7aa7f971e44f3f8cd2fc7005756b14aa2adb6df",
+    "c285992db34d6994bbf5d732a43224f973fe1d9ab8b8f09849bdd20ddcdf55e1"
+   ]
+  },
+  {
+   "sourceId": "pmid-32617124",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "32617124",
+   "doi": null,
+   "canonicalCitation": "Cherif F, Zouari HG, Cherif W, et al. Depression Prevalence in Neuropathic Pain and Its Impact on the Quality of Life Pain Res Manag. 2020;2020:7408508. PMID 32617124.",
+   "citationVariants": [
+    "Cherif F, Zouari HG, Cherif W, et al. Depression Prevalence in Neuropathic Pain and Its Impact on the Quality of Life Pain Res Manag. 2020;2020:7408508. PMID 32617124."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/32617124/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/32617124/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 2,
+   "liveUses": [
+    {
+     "relationshipId": "rel-postherpetic-neuralgia-to-depressive-disorder",
+     "primaryId": "postherpetic-neuralgia",
+     "targetId": "depressive-disorder",
+     "sourceIndex": 1
+    },
+    {
+     "relationshipId": "rel-postherpetic-neuralgia-to-anxiety-disorder",
+     "primaryId": "postherpetic-neuralgia",
+     "targetId": "anxiety-disorder",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "adc06792063ae7b3c7552c942dd51a70811312015b63d882006e7103ea9b6b11",
+    "0cbda048aaf63f04e9084581a5380951c7f2982d0385dca940777a0178eb475f"
+   ]
+  },
+  {
+   "sourceId": "pmid-42343723",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "42343723",
+   "doi": null,
+   "canonicalCitation": "Ling Z, Ren M. Predictive Value of Anxiety State During Acute Herpes Zoster for the Development of Postherpetic Neuralgia Actas Esp Psiquiatr. 2026 Jun 15;54(3):808-820. PMID 42343723.",
+   "citationVariants": [
+    "Ling Z, Ren M. Predictive Value of Anxiety State During Acute Herpes Zoster for the Development of Postherpetic Neuralgia Actas Esp Psiquiatr. 2026 Jun 15;54(3):808-820. PMID 42343723."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42343723/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/42343723/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 2,
+   "liveUses": [
+    {
+     "relationshipId": "rel-postherpetic-neuralgia-to-depressive-disorder",
+     "primaryId": "postherpetic-neuralgia",
+     "targetId": "depressive-disorder",
+     "sourceIndex": 2
+    },
+    {
+     "relationshipId": "rel-postherpetic-neuralgia-to-anxiety-disorder",
+     "primaryId": "postherpetic-neuralgia",
+     "targetId": "anxiety-disorder",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "d52a4aaee250c2b6649556e4c1cebd3affee1bc1e62a056c4e9124a46e7cd1f9",
+    "cc7451145fa09c9033ac41eaccc1ca2d17504bd008b6ad22eba821c406756258"
+   ]
+  },
+  {
+   "sourceId": "pmid-27073226",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "27073226",
+   "doi": null,
+   "canonicalCitation": "Lee DH, Park JE, Yoon DM, et al. Factors Associated with Increased Risk for Clinical Insomnia in Patients with Postherpetic Neuralgia: A Retrospective Cross-Sectional Study Pain Med. 2016 Oct;17(10):1917-1922. PMID 27073226.",
+   "citationVariants": [
+    "Lee DH, Park JE, Yoon DM, et al. Factors Associated with Increased Risk for Clinical Insomnia in Patients with Postherpetic Neuralgia: A Retrospective Cross-Sectional Study Pain Med. 2016 Oct;17(10):1917-1922. PMID 27073226."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/27073226/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/27073226/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-postherpetic-neuralgia-to-insomnia",
+     "primaryId": "postherpetic-neuralgia",
+     "targetId": "insomnia",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "a6e2b9b3d3aab1cf70df907e65be2531edb22dee0b959a2fad0f84c32d85a929"
+   ]
+  },
+  {
+   "sourceId": "pmid-37772033",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "37772033",
+   "doi": null,
+   "canonicalCitation": "Sachau J, Kersebaum D, Hüllemann P, et al. The association of self-reported symptoms of central sensitization and sleep disturbances in neuropathic pain Pain Rep. 2023 Sep;8(5):e1098. PMID 37772033.",
+   "citationVariants": [
+    "Sachau J, Kersebaum D, Hüllemann P, et al. The association of self-reported symptoms of central sensitization and sleep disturbances in neuropathic pain Pain Rep. 2023 Sep;8(5):e1098. PMID 37772033."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/37772033/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/37772033/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-postherpetic-neuralgia-to-insomnia",
+     "primaryId": "postherpetic-neuralgia",
+     "targetId": "insomnia",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "71e707ed57f452fe27279f5eb7cf8d637e1aff2d36d015b76430e8612dccf034"
    ]
   }
  ],
