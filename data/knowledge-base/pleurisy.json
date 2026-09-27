@@ -2,8 +2,77 @@
   "id": "pleurisy",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review airway, aspiration, inflammatory, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 72 (2026-09-26): one ASSOCIATION_ONLY draft mapping pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: the edge asserts association only (etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true) with the presentation-manifestation/co-definition limit carried openly (the effusion frequently co-presents with the pleurisy - tuberculous pleurisy presents with effusion in most cases - and the ACR serositis criterion bundles pleuritis/pleural effusion as one item, so the edge registers effusion occurrence within pleurisy/serositis windows rather than a temporally separated complication), the shared-substrate limit (rheumatoid arthritis, systemic lupus, and tuberculosis drive both the pleuritis and the effusion), and the etiologic scoping (autoimmune serositis and infectious pleuritis routes); individual claims require dated thoracic imaging and fluid analysis with transudative, embolic, and malignant exclusion and review by a qualified medical professional.",
+    "Pathway and duplicate-scope screens and withheld propositions: no -> constrictive-pericarditis or cardiac-tamponade edges (ABSENT IDENTITIES plus wrong serosal compartment - the batch-70 pericardial-effusion deferral documents the missing pericardial-identity landscape); no -> pleural-thickening, fibrothorax, or trapped-lung edges (ABSENT IDENTITIES - the chronic fibrotic sequela route has no catalog target); no -> pulmonary-embolism edge (DIRECTION-INVERSION - pulmonary embolism produces pleuritic pain and effusion, not the reverse); no -> pneumothorax edge (BELOW THRESHOLD - no quantified pleurisy-to-pneumothorax window was located); ME-29 discipline - the pleura-cancer, broncho-alveolar-carcinoma, lung-abscess, liver-abscess, amebic-liver-abscess, and lymphangioleiomyomatosis pleural-effusion windows own their tumor, rupture, and chylous route evidence and none is recycled here."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 72 (2026-09-26): one bounded association edge authored - pleurisy to pleural-effusion (rank 1) - classified ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, and hypothesizedOnly:true. The edge rests on the rheumatoid-pleurisy cohort with quantified effusion incidence and pleural-fluid immune attribution (PMID 6857177), the Japanese nationwide surgical-biopsy pleurisy cohort documenting the effusion-associated etiologic mix (PMID 35243795), and the CSTAR lupus serositis registry under the co-defining ACR criterion (PMID 26762471). The presentation-manifestation/co-definition, shared-substrate, and etiologic-scoping limits are carried openly on the edge, the references, and the guard: part of the association is definitional (ACR bundles pleuritis/effusion) and part is co-presentation (tuberculous pleurisy), so the edge registers documented effusion occurrence within pleurisy and serositis windows only and follows the pleura-cancer to pleural-effusion presentation-limit convention."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "pleural-effusion",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Pleurisy associates with pleural effusion at cohort and registry level across autoimmune and infectious etiologic windows: the rheumatoid-pleurisy cohort of 234 patients followed a mean 5.7 years quantifies pleural effusion incidence at 0.34 percent per year in women and 1.54 percent in men with pleural-fluid immune-complex findings implicating rheumatoid mechanisms (PMID 6857177), the Japanese nationwide administrative cohort of 1,699 surgically biopsied pleurisy patients documents effusion-associated etiologies dominating the pleurisy landscape (neoplastic 55.9 percent, infectious 24.0 percent including parapneumonic effusion 3.6 percent and empyema 3.5 percent, collagen vascular diseases 2.8 percent, PMID 35243795), and the CSTAR lupus registry of 2,104 patients documents serositis - defined per ACR criteria as pleuritis/pleural effusion - in 345 patients (PMID 26762471); recorded as documented association only with the presentation-manifestation/co-definition, shared-substrate, and etiologic-scoping limits carried openly - the effusion frequently co-presents with the pleurisy rather than following it and the underlying etiologies drive both the pleuritis and the fluid.",
+        "causationStatus": "Neither causation nor aggravation of pleural effusion is established for any individual: no prospective cohort of pleurisy patients measures incident effusion with dated ordering, the ACR serositis definition co-defines pleuritis and pleural effusion as one item so part of the association is definitional, tuberculosis pleurisy typically presents with the effusion already present, rheumatoid and lupus cohorts are etiologically stratified substrates that produce pleuritis and effusion together, and individual claims require dated thoracic imaging and fluid analysis with heart failure, cirrhosis, nephrosis, pulmonary embolism, malignancy, and hypoalbuminemia exclusion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "SYSTEMIC_INFLAMMATORY",
+        "primaryVector": "Pleural inflammation from immune-complex deposition and cytokine-mediated capillary leak raises pleural fluid production while protein-rich exudate and pleural thickening impair lymphatic drainage so fluid accumulates in the pleural space, the inflammatory route supported by pleural-fluid immune findings in rheumatoid pleurisy and by the serositis-registry prevalence, but whether this route produced any individual effusion remains hypothesized until rheumatologic, infectious, and thoracic records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at one retrospective rheumatoid cohort, one nationwide administrative biopsy cohort, and one cross-sectional lupus registry: the rheumatoid data quantify effusion incidence in the RA population rather than among pleurisy patients specifically, the administrative cohort measures etiologic mix at biopsy rather than effusion incidence per pleurisy episode, the registry definition bundles pleuritis with effusion so its prevalence figure cannot separate the two, and no incident-effusion cohort with dated pleurisy-first ordering was located.",
+        "evidenceGaps": "No prospective cohort of patients with pleurisy measuring incident pleural effusion with dated pleurisy-before-effusion ordering was located; the rheumatoid cohort (PMID 6857177) reports annual effusion incidence in the RA population (0.34% women, 1.54% men) rather than effusion risk conditional on pleurisy; the CSTAR serositis definition (PMID 26762471) bundles pleuritis/pleural effusion as one ACR item; tuberculous pleurisy presents with effusion in most cases; and etiologic strata within the biopsy cohort are small (rheumatoid arthritis 1.3%, systemic lupus 0.3%).",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "heart failure, cirrhosis, and nephrotic syndrome (transudative effusions arising without pleuritis)",
+          "pulmonary embolism (reverse direction: infarction produces both pleuritic pain and effusion)",
+          "malignancy including mesothelioma and lung cancer (the pleura-cancer and broncho-alveolar-carcinoma effusion windows own their evidence per ME-29)",
+          "parapneumonic effusion and empyema arising from acute pneumonia (the lung-abscess and liver-abscess rupture windows are not recycled per ME-29)",
+          "hypoalbuminemia and iatrogenic volume overload"
+        ]
+      },
+      "evidenceGaps": [
+        "No prospective cohort of patients with pleurisy measuring incident pleural effusion with dated pleurisy-before-effusion ordering was located; the rheumatoid cohort (PMID 6857177) reports annual effusion incidence in the RA population (0.34% women, 1.54% men) rather than effusion risk conditional on pleurisy; the CSTAR serositis definition (PMID 26762471) bundles pleuritis/pleural effusion as one ACR item; tuberculous pleurisy presents with effusion in most cases; and etiologic strata within the biopsy cohort are small (rheumatoid arthritis 1.3%, systemic lupus 0.3%)."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY at cohort-plus-registry class with the presentation-manifestation/co-definition, shared-substrate, and etiologic-scoping limits carried openly, matching the pleura-cancer to pleural-effusion presentation-limit convention: the rheumatoid cohort quantifies pleural effusion incidence with pleural-fluid immune attribution (PMID 6857177), the nationwide biopsy cohort documents the effusion-associated etiologic mix of pleurisy (PMID 35243795), and the CSTAR registry documents serositis prevalence under the co-defining ACR criterion (PMID 26762471); because the effusion frequently co-presents and the etiologies drive both pleuritis and fluid, the conservative standard keeps the edge at association only, scopes it to the inflammatory/serositis route, and routes individual claims through dated imaging and fluid analysis with transudative, embolic, and malignant exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Jurik AG, Graudal H. Pleurisy in rheumatoid arthritis Scand J Rheumatol. 1983;12(2):75-80. PMID 6857177.",
+          "note": "Retrospective cohort of 157 women and 77 men with rheumatoid arthritis followed a mean 5.7 years (Scand J Rheumatol 1983): annual incidence of pleural effusion 0.34% in women and 1.54% in men; pleural fluid analyses suggested immune mechanisms implicating rheumatoid factor in some fluids and multiple etiological factors overall; supports the bounded serositis-window effusion association only (RA-population incidence, not conditional on pleurisy).",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/6857177/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 6857177; results (annual pleural effusion incidence and pleural fluid findings)"
+        },
+        {
+          "citation": "Hara K, Yamasaki K, Tahara M, et al. Epidemiologic evaluation of pleurisy diagnosed by surgical pleural biopsy using data from a nationwide administrative database Thorac Cancer. 2022 Apr;13(8):1136-1142. PMID 35243795.",
+          "note": "Nationwide Japanese administrative database study of 1,699 patients with pleurisy diagnosed by surgical pleural biopsy 2014-2020 (Thorac Cancer 2022): etiologies neoplastic 55.9% (mesothelioma 22.5%, lung cancer 15.7%), infectious 24.0% (tuberculosis 16.2%, parapneumonic pleural effusion 3.6%, empyema 3.5%), collagen vascular 2.8% (RA 1.3%, SLE 0.3%); supports the bounded etiologic-mix evidence only (effusion-associated etiologies dominate the pleurisy landscape).",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35243795/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 35243795; results (etiology distribution in the surgically biopsied pleurisy cohort)"
+        },
+        {
+          "citation": "Zhao J, Bai W, Zhu P, et al. Chinese SLE Treatment and Research group (CSTAR) registry VII: prevalence and clinical significance of serositis in Chinese patients with systemic lupus erythematosus Lupus. 2016 May;25(6):652-7. PMID 26762471.",
+          "note": "Prospective cross-sectional study of the CSTAR lupus registry, 2,104 SLE patients (Lupus 2016): serositis defined per 1999 ACR criteria as pleuritis/pleural effusion and/or pericarditis/pericardial effusion diagnosed in 345 patients (16.4%); supports the bounded serositis prevalence only with the pleuritis/effusion co-definition limit carried openly.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/26762471/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 26762471; results (serositis prevalence and clinical associations)"
+        }
+      ]
+    }
+  ]
 }

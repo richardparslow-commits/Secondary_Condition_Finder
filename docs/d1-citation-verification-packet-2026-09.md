@@ -13645,6 +13645,190 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 **Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
 
+### `pleural-effusion` → `pneumothorax` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Pleural effusion associates with procedure-related pneumothorax at retrospective-cohort and randomized-trial meta-analysis level: the 550-patient cohort of ultrasound-guided thoracentesis for pleural effusion documents post-procedure pneumothorax in 66 patients (12 percent) with drained volume the main associated factor (PMID 32274162), the meta-analysis of three randomized trials (417 patients) documents post-thoracentesis pneumothorax in 1 of 99 ultrasound-guided versus 20 of 113 anatomic-landmark procedures (PMID 40738083), and the prospective ICU cohort of 81 real-time ultrasound-guided thoracenteses documents 1 pneumothorax (1.2 percent, PMID 32337606); recorded as documented association only with the treatment-mediated and procedure-scoped limits carried openly - the pneumothorax arises from the pleural procedure performed because of the effusion, not from the fluid itself.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation of pneumothorax is established for any individual: the entire evidence window is procedural, so the edge registers the thoracentesis-complication pathway and not any disease-driven route from effusion fluid to air leak, event rates vary widely with imaging guidance and operator technique, and individual claims require dated procedure records with needle or catheter documentation and exclusion of underlying bullous disease, chronic obstructive pulmonary disease, malignancy, and spontaneous pneumothorax predating the procedure.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 382.1 — Shechtman L, Shrem M, Kleinbaum Y, et al. Incidence and risk factors of pneumothorax following pre-procedural ultrasound-guided thoracentesis J Thorac Dis. 2020 Mar;12(3):942-948. PMID 32274162.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/32274162/
+- Source checked on: 2026-09-26
+- Locator: PMID 32274162; results (pneumothorax incidence and multivariable risk factors)
+- Note under review: Retrospective cohort of 550 patients with pleural effusions undergoing pre-procedural ultrasound-guided thoracentesis 2016-2018 (J Thorac Dis 2020): 66 (12%) developed pneumothorax; larger drained volume independently associated (OR 1.001 per mL), with congestive heart failure, smaller fluid depth, and bilateral procedures over-represented; supports the bounded procedure-complication association only (treatment-mediated, liberal imaging detection).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 382.2 — Lakkadghatwala R, Wilson A, Sabhaney V, et al. Ultrasound guidance compared to anatomic landmark approach for thoracentesis: A systematic review and meta-analysis Am J Emerg Med. 2025 Nov;97:159-164. PMID 40738083.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/40738083/
+- Source checked on: 2026-09-26
+- Locator: PMID 40738083; results (post-procedure pneumothorax counts by guidance technique)
+- Note under review: Systematic review and meta-analysis of three randomized trials, 417 patients (Am J Emerg Med 2025): post-thoracentesis pneumothorax in 1 of 99 ultrasound-guided versus 20 of 113 anatomic-landmark procedures; ultrasound guidance trended toward lower complication rates (OR 0.18); supports the bounded procedure-complication association only with the technique gradient carried openly.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 382.3 — Rodriguez Lima DR, Yepes AF, Birchenall Jiménez CI, et al. Real-time ultrasound-guided thoracentesis in the intensive care unit: prevalence of mechanical complications Ultrasound J. 2020 Apr 26;12(1):25. PMID 32337606.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/32337606/
+- Source checked on: 2026-09-26
+- Locator: PMID 32337606; results (mechanical complication prevalence)
+- Note under review: Prospective observational study of 81 real-time ultrasound-guided thoracenteses performed by intensivists (Ultrasound J 2020): 1 pneumothorax (1.2% mechanical complication prevalence); supports the bounded procedure-complication association only (small series, single centre).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `pleurisy` → `pleural-effusion` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Pleurisy associates with pleural effusion at cohort and registry level across autoimmune and infectious etiologic windows: the rheumatoid-pleurisy cohort of 234 patients followed a mean 5.7 years quantifies pleural effusion incidence at 0.34 percent per year in women and 1.54 percent in men with pleural-fluid immune-complex findings implicating rheumatoid mechanisms (PMID 6857177), the Japanese nationwide administrative cohort of 1,699 surgically biopsied pleurisy patients documents effusion-associated etiologies dominating the pleurisy landscape (neoplastic 55.9 percent, infectious 24.0 percent including parapneumonic effusion 3.6 percent and empyema 3.5 percent, collagen vascular diseases 2.8 percent, PMID 35243795), and the CSTAR lupus registry of 2,104 patients documents serositis - defined per ACR criteria as pleuritis/pleural effusion - in 345 patients (PMID 26762471); recorded as documented association only with the presentation-manifestation/co-definition, shared-substrate, and etiologic-scoping limits carried openly - the effusion frequently co-presents with the pleurisy rather than following it and the underlying etiologies drive both the pleuritis and the fluid.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation of pleural effusion is established for any individual: no prospective cohort of pleurisy patients measures incident effusion with dated ordering, the ACR serositis definition co-defines pleuritis and pleural effusion as one item so part of the association is definitional, tuberculosis pleurisy typically presents with the effusion already present, rheumatoid and lupus cohorts are etiologically stratified substrates that produce pleuritis and effusion together, and individual claims require dated thoracic imaging and fluid analysis with heart failure, cirrhosis, nephrosis, pulmonary embolism, malignancy, and hypoalbuminemia exclusion.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 383.1 — Jurik AG, Graudal H. Pleurisy in rheumatoid arthritis Scand J Rheumatol. 1983;12(2):75-80. PMID 6857177.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/6857177/
+- Source checked on: 2026-09-26
+- Locator: PMID 6857177; results (annual pleural effusion incidence and pleural fluid findings)
+- Note under review: Retrospective cohort of 157 women and 77 men with rheumatoid arthritis followed a mean 5.7 years (Scand J Rheumatol 1983): annual incidence of pleural effusion 0.34% in women and 1.54% in men; pleural fluid analyses suggested immune mechanisms implicating rheumatoid factor in some fluids and multiple etiological factors overall; supports the bounded serositis-window effusion association only (RA-population incidence, not conditional on pleurisy).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 383.2 — Hara K, Yamasaki K, Tahara M, et al. Epidemiologic evaluation of pleurisy diagnosed by surgical pleural biopsy using data from a nationwide administrative database Thorac Cancer. 2022 Apr;13(8):1136-1142. PMID 35243795.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/35243795/
+- Source checked on: 2026-09-26
+- Locator: PMID 35243795; results (etiology distribution in the surgically biopsied pleurisy cohort)
+- Note under review: Nationwide Japanese administrative database study of 1,699 patients with pleurisy diagnosed by surgical pleural biopsy 2014-2020 (Thorac Cancer 2022): etiologies neoplastic 55.9% (mesothelioma 22.5%, lung cancer 15.7%), infectious 24.0% (tuberculosis 16.2%, parapneumonic pleural effusion 3.6%, empyema 3.5%), collagen vascular 2.8% (RA 1.3%, SLE 0.3%); supports the bounded etiologic-mix evidence only (effusion-associated etiologies dominate the pleurisy landscape).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 383.3 — Zhao J, Bai W, Zhu P, et al. Chinese SLE Treatment and Research group (CSTAR) registry VII: prevalence and clinical significance of serositis in Chinese patients with systemic lupus erythematosus Lupus. 2016 May;25(6):652-7. PMID 26762471.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/26762471/
+- Source checked on: 2026-09-26
+- Locator: PMID 26762471; results (serositis prevalence and clinical associations)
+- Note under review: Prospective cross-sectional study of the CSTAR lupus registry, 2,104 SLE patients (Lupus 2016): serositis defined per 1999 ACR criteria as pleuritis/pleural effusion and/or pericarditis/pericardial effusion diagnosed in 345 patients (16.4%); supports the bounded serositis prevalence only with the pleuritis/effusion co-definition limit carried openly.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `pneumonia-residuals` → `bronchiectasis` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Pneumonia residuals associate with post-infectious bronchiectasis at systematic-review meta-analysis and case level: the meta-analysis of 13 follow-up studies of childhood pneumonia documents bronchiectasis among the major respiratory sequelae with at-least-one-major-sequela risk of 5.5 percent in non-hospitalized and 13.6 percent in hospitalized children and 54.8 percent after adenovirus pneumonia (PMID 22384005), and the adult case of bilateral cystic bronchiectasis attributed by serology to severe childhood measles pneumonia documents the post-infectious structural-airway route end to end (PMID 41561283); recorded as documented association only with the parallel-targeting disclosure carried openly - tuberculous, lipoid-pneumonia, bronchomalacia, and gastroesophageal-reflux windows already own their own bronchiectasis edges and their evidence is not recycled here per ME-29.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation of bronchiectasis is established for any individual: the sequelae meta-analysis pools heterogeneous pediatric cohorts with variable bronchiectasis ascertainment and none of its component studies confirms structural airway disease by modern computed tomography criteria in adults, the corroborating anchor is a single adult case report, and individual claims require dated pneumonia records with cystic fibrosis, primary ciliary dyskinesia, immunodeficiency, allergic bronchopulmonary aspergillosis, endobronchial obstruction, and connective-tissue disease exclusion.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 384.1 — Edmond K, Scott S, Korczak V, et al. Long term sequelae from childhood pneumonia; systematic review and meta-analysis PLoS One. 2012;7(2):e31239. PMID 22384005.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/22384005/
+- Source checked on: 2026-09-26
+- Locator: PMID 22384005; results (pooled sequela risks and distribution by sequela type)
+- Note under review: Systematic review and meta-analysis of 13 studies of long-term sequelae of childhood pneumonia 1970-2011 (PLoS One 2012): at-least-one major sequelae (restrictive lung disease, obstructive lung disease, or bronchiectasis) in 5.5% (2.8-8.3) of non-hospitalized and 13.6% (6.2-21.1) of hospitalized children; adenovirus pneumonia carried the highest risk (54.8%); restrictive lung disease most common at 5.4%; supports the bounded post-pneumonia structural-sequela association only (heterogeneous pediatric ascertainment).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 384.2 — Magno Pinto S, Pereira M, Pinto PG. Preventable Pulmonary Sequelae of Measles: A Case Report of an Adult Patient With Cystic Bronchiectasis Cureus. 2025 Dec;17(12):e99687. PMID 41561283.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/41561283/
+- Source checked on: 2026-09-26
+- Locator: PMID 41561283; case presentation (etiological workup linking childhood measles pneumonia to adult cystic bronchiectasis)
+- Note under review: Adult case report (Cureus 2025): 65-year-old non-smoker with bilateral cystic bronchiectasis confirmed on high-resolution CT, attributed serologically to severe measles pneumonia in childhood, with recurrent exacerbations and Pseudomonas colonization; supports the bounded post-infectious bronchiectasis route only (case-report class, no denominators).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `pneumonia-residuals` → `copd` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Pneumonia residuals associate with adult chronic obstructive pulmonary disease at pooled-meta-analysis and birth-cohort-review level: the meta-analysis of 30 studies (795,935 participants) documents childhood serious respiratory infections including pneumonia or bronchitis associated with adult COPD at pooled adjusted odds ratio 2.23 (95% CI 1.63-3.07, PMID 34541740), and the childhood-pneumonia sequelae meta-analysis names obstructive lung disease among the major respiratory sequelae (PMID 22384005), with the birth-cohort review documenting critical early-life windows of lung growth susceptibility (PMID 40252849); recorded as documented association only with the composite-endpoint, confounding, direction-inversion, and sibling-overlap limits carried openly - the pooled estimate spans pneumonia or bronchitis or serious respiratory infections together, the dominant clinical direction is COPD predisposing to pneumonia rather than the reverse, and the existing bronchitis to COPD edge (PMID 40751209 window) already carries part of this overlapping evidence field.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation of COPD is established for any individual: the pooled odds ratio combines composite exposure definitions that do not isolate pneumonia, asthma in childhood carries a larger independent odds ratio (3.45) inside the same analysis, tobacco smoke, low birth weight, and maltreatment co-exposures are inseparable, the dominant clinical direction runs from COPD to pneumonia, and individual claims require dated spirometry with smoking-pack-year, asthma, occupational, alpha-1-antitrypsin, and prematurity exclusion.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 385.1 — Duan P, Wang Y, Lin R, et al. Impact of early life exposures on COPD in adulthood: A systematic review and meta-analysis Respirology. 2021 Dec;26(12):1131-1151. PMID 34541740.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/34541740/
+- Source checked on: 2026-09-26
+- Locator: PMID 34541740; results (pooled adjusted odds ratios by early-life exposure)
+- Note under review: Systematic review and meta-analysis of 30 studies, 795,935 participants (Respirology 2021): childhood serious respiratory infections, pneumonia or bronchitis associated with adult COPD (pooled adjusted OR 2.23, 95% CI 1.63-3.07); childhood asthma carried aOR 3.45, maternal smoking 1.42, low birth weight 1.58; supports the bounded early-life-infection association only (composite exposure, confounding carried openly).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 385.2 — Edmond K, Scott S, Korczak V, et al. Long term sequelae from childhood pneumonia; systematic review and meta-analysis PLoS One. 2012;7(2):e31239. PMID 22384005.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/22384005/
+- Source checked on: 2026-09-26
+- Locator: PMID 22384005; results (pooled sequela risks by sequela type)
+- Note under review: Systematic review and meta-analysis of 13 studies of long-term sequelae of childhood pneumonia (PLoS One 2012): obstructive lung disease named among major respiratory sequelae alongside restrictive disease and bronchiectasis, with at-least-one-major-sequela risk of 5.5% to 13.6% and 54.8% after adenovirus pneumonia; supports the bounded obstructive-sequela association only (within composite totals).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 385.3 — Hartert T, Kyvsgaard JN, Thaver L, et al. Understanding the childhood origins of asthma and chronic obstructive pulmonary disease: Insights from birth cohorts and studies across the life-span J Allergy Clin Immunol. 2025 Jun;155(6):1703-1719. PMID 40252849.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/40252849/
+- Source checked on: 2026-09-26
+- Locator: PMID 40252849; review conclusions (early-life origins of obstructive lung disease)
+- Note under review: Focused birth-cohort literature update 2021-2024 (J Allergy Clin Immunol 2025): documents critical periods of developmental plasticity in early lung growth during which adverse exposures shape asthma and COPD phenotypes across the life span; supports the bounded developmental-window mechanism only (review class, no pooled effect sizes); erratum-linked record (J Allergy Clin Immunol 2026 Jun;157(6):1481) noted at preflight and carried openly.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `pneumothorax` → `hemothorax` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Spontaneous pneumothorax documents bleeding complications at single-centre cohort and literature-aggregate level: the 488-patient single-centre cohort of spontaneous pneumothorax documents spontaneous hemopneumothorax - more than 400 mL of blood in the pleural cavity with the pneumothorax - in 27 patients (5.5 percent) with a third in hypovolemic shock on arrival and a mean 1,012 mL drained (PMID 16242469), and the pooled literature analysis across 6,396 spontaneous pneumothorax patients documents hemopneumothorax in 201 (3.1 percent, PMID 16242469), with the spontaneous-haemothorax etiology review documenting ruptured blebs and vascular pleural adhesions as the dominant mechanism (PMID 25922734); recorded as documented association only with the concurrent-presentation and case-aggregate limits carried openly - blood and air accumulate at the same event so the edge registers bleeding complicating the pneumothorax event rather than a temporally separated disease.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation of hemothorax is established for any individual: the entity is defined by blood exceeding 400 mL alongside the pneumothorax so definition and event are coupled, the pooled literature figure aggregates case series spanning five decades with inconsistent operative findings, and individual claims require dated thoracic imaging and drainage records with trauma, iatrogenic injury, coagulopathy or anticoagulation, malignancy, and major-vessel rupture exclusion.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 386.1 — Hsu NY, Shih CS, Hsu CP, et al. Spontaneous hemopneumothorax revisited: clinical approach and systemic review of the literature Ann Thorac Surg. 2005 Nov;80(5):1859-63. PMID 16242469.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/16242469/
+- Source checked on: 2026-09-26
+- Locator: PMID 16242469; results (hemopneumothorax incidence in the cohort and pooled literature)
+- Note under review: Single-centre cohort plus literature review (Ann Thorac Surg 2005): of 488 spontaneous pneumothorax patients 1997-2003, 27 (5.5%) had spontaneous hemopneumothorax develop (>400 mL blood; 25 men, mean age 22.3; mean 1,012 mL drained; 33.3% hypovolemic shock); pooled literature analysis of 6,396 spontaneous pneumothorax patients documents 201 (3.1%) with hemopneumothorax; supports the bounded bleeding-complication association only (concurrent-presentation definition, case-aggregate component carried openly).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 386.2 — Patrini D, Panagiotopoulos N, Pararajasingham J, et al. Etiology and management of spontaneous haemothorax J Thorac Dis. 2015 Mar;7(3):520-6. PMID 25922734.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/25922734/
+- Source checked on: 2026-09-26
+- Locator: PMID 25922734; review (etiology of spontaneous haemothorax)
+- Note under review: Narrative literature review of spontaneous haemothorax etiology and management (J Thorac Dis 2015): documents ruptured pleural blebs and vascular adhesions as leading causes with data limited to case reports and case series; supports the bounded mechanistic attribution only (review class).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
 ## Implementation mechanics after decisions
 
 - Mapping edits and registry edits must land in lockstep (the registry audit's canonical-JSON hashes and live-use sets will fail otherwise).

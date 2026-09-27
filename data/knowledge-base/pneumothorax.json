@@ -2,8 +2,67 @@
   "id": "pneumothorax",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review airway, aspiration, inflammatory, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 72 (2026-09-26): one ASSOCIATION_ONLY draft mapping pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: the edge asserts association only (etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true) with the concurrent-presentation limit carried openly (spontaneous hemopneumothorax couples bleeding to the pneumothorax event by definition - more than 400 mL of blood alongside the air - so the edge registers bleeding complicating the pneumothorax event rather than a temporally separated disease), the case-aggregate limit (the pooled 3.1 percent figure combines the single-centre cohort with literature case series spanning five decades), and the young-patient window (mean age 22.3 in the cohort); individual claims require dated thoracic imaging and drainage records with trauma, iatrogenic injury, coagulopathy, anticoagulation, and malignancy exclusion and review by a qualified medical professional.",
+    "Pathway and duplicate-scope screens and withheld propositions: no -> pleural-effusion edge (BIDIRECTIONAL-PAIR AVOIDANCE - the pleural-effusion to pneumothorax procedure-window edge is authored this batch and a reverse edge would create a fifth CRG bidirectional pair; the natural-history window is in any case thin - the published abstract of the 316-patient conservative-versus-interventional trial (PMID 31995686) reports serious adverse events without effusion-specific quantification); no -> respiratory-failure, cardiac-arrest, tension-pneumothorax, pneumomediastinum, or subcutaneous-emphysema edges (ABSENT IDENTITIES); no -> pneumonia-residuals edge (BELOW THRESHOLD - secondary pleural infection after pneumothorax is case-report class); no -> anxiety-disorder or depressive-disorder edges (BELOW THRESHOLD - no quantified psychiatric window after pneumothorax was located); ME-29 discipline - the lung-abscess destructive-rupture and lymphangioleiomyomatosis cyst-rupture pneumothorax windows own their route evidence and none is recycled here."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 72 (2026-09-26): one bounded association edge authored - pneumothorax to hemothorax (rank 1) - classified ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, and hypothesizedOnly:true. The edge rests on the single-centre 488-patient spontaneous-pneumothorax cohort documenting spontaneous hemopneumothorax in 27 patients (5.5 percent; 33 percent in hypovolemic shock; mean 1,012 mL drained) with the pooled literature analysis of 6,396 patients documenting 201 cases (3.1 percent, PMID 16242469) and the spontaneous-haemothorax etiology review attributing bleeding to ruptured blebs and vascular pleural adhesions (PMID 25922734). The concurrent-presentation, case-aggregate, and young-patient-window limits are carried openly; within-batch disclosure: the reverse pneumothorax to pleural-effusion direction is withheld on bidirectional-pair avoidance so the CRG bidirectional-pair count stays at 4."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "hemothorax",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Spontaneous pneumothorax documents bleeding complications at single-centre cohort and literature-aggregate level: the 488-patient single-centre cohort of spontaneous pneumothorax documents spontaneous hemopneumothorax - more than 400 mL of blood in the pleural cavity with the pneumothorax - in 27 patients (5.5 percent) with a third in hypovolemic shock on arrival and a mean 1,012 mL drained (PMID 16242469), and the pooled literature analysis across 6,396 spontaneous pneumothorax patients documents hemopneumothorax in 201 (3.1 percent, PMID 16242469), with the spontaneous-haemothorax etiology review documenting ruptured blebs and vascular pleural adhesions as the dominant mechanism (PMID 25922734); recorded as documented association only with the concurrent-presentation and case-aggregate limits carried openly - blood and air accumulate at the same event so the edge registers bleeding complicating the pneumothorax event rather than a temporally separated disease.",
+        "causationStatus": "Neither causation nor aggravation of hemothorax is established for any individual: the entity is defined by blood exceeding 400 mL alongside the pneumothorax so definition and event are coupled, the pooled literature figure aggregates case series spanning five decades with inconsistent operative findings, and individual claims require dated thoracic imaging and drainage records with trauma, iatrogenic injury, coagulopathy or anticoagulation, malignancy, and major-vessel rupture exclusion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MECHANICAL_OR_COMPRESSIVE",
+        "primaryVector": "Rupture of apical blebs at the onset of spontaneous pneumothorax tears vascular pleural adhesions bridging the lung to the chest wall so bleeding accumulates in the pleural space alongside the air leak, the mechanical route supported by operative findings of ruptured adhesions and by the young-patient presentation, but whether this route produced any individual hemothorax remains hypothesized until surgical, imaging, and coagulation records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at one single-centre 488-patient cohort (27 events) with the remainder of the window held by literature-aggregated case series: the pooled 3.1 percent figure combines heterogeneous eras and surgical practices, hemopneumothorax concentrates in young men (mean age 22.3 in the cohort) so older and secondary-pneumothorax windows are unquantified, and no population-based incidence cohort was located.",
+        "evidenceGaps": "No population-based incidence study of hemopneumothorax in unselected spontaneous pneumothorax was located; the pooled denominator combines the authors' cohort with literature case series of inconsistent completeness; predictors of bleeding (adhesion burden, anticoagulant use, size of pneumothorax) are unquantified; and older patients with secondary pneumothorax (COPD, malignancy) were not represented in the cohort window.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "blunt or penetrating chest trauma (the dominant hemothorax etiology overall)",
+          "iatrogenic injury from thoracentesis, chest tube, central line, or surgery (treatment-mediated; overlaps the pleural-effusion procedure window carried openly)",
+          "coagulopathy, anticoagulant or antiplatelet therapy",
+          "malignancy including mesothelioma and lung cancer eroding pleural vessels (the pleura-cancer windows own their route evidence per ME-29)",
+          "major-vessel rupture including aortic dissection and Boerhaave syndrome, and vascular malformations"
+        ]
+      },
+      "evidenceGaps": [
+        "No population-based incidence study of hemopneumothorax in unselected spontaneous pneumothorax was located; the pooled denominator combines the authors' cohort with literature case series of inconsistent completeness; predictors of bleeding (adhesion burden, anticoagulant use, size of pneumothorax) are unquantified; and older patients with secondary pneumothorax (COPD, malignancy) were not represented in the cohort window."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY at single-centre-cohort-plus-literature-aggregate class with the concurrent-presentation and case-aggregate limits carried openly: the 488-patient cohort documents spontaneous hemopneumothorax in 5.5 percent of spontaneous pneumothorax admissions with 33 percent in hypovolemic shock (PMID 16242469) and the pooled analysis documents 3.1 percent across 6,396 patients, with the etiology review attributing the bleeding to ruptured blebs and vascular adhesions (PMID 25922734); because the entity couples bleeding to the pneumothorax event by definition and the literature figure aggregates case series, the conservative standard keeps the edge at association only, scopes it to spontaneous (non-traumatic, non-iatrogenic) hemopneumothorax, and routes individual claims through dated imaging and drainage records with trauma, coagulopathy, and malignancy exclusion.",
+      "sourceReferences": [
+        {
+          "citation": "Hsu NY, Shih CS, Hsu CP, et al. Spontaneous hemopneumothorax revisited: clinical approach and systemic review of the literature Ann Thorac Surg. 2005 Nov;80(5):1859-63. PMID 16242469.",
+          "note": "Single-centre cohort plus literature review (Ann Thorac Surg 2005): of 488 spontaneous pneumothorax patients 1997-2003, 27 (5.5%) had spontaneous hemopneumothorax develop (>400 mL blood; 25 men, mean age 22.3; mean 1,012 mL drained; 33.3% hypovolemic shock); pooled literature analysis of 6,396 spontaneous pneumothorax patients documents 201 (3.1%) with hemopneumothorax; supports the bounded bleeding-complication association only (concurrent-presentation definition, case-aggregate component carried openly).",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/16242469/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 16242469; results (hemopneumothorax incidence in the cohort and pooled literature)"
+        },
+        {
+          "citation": "Patrini D, Panagiotopoulos N, Pararajasingham J, et al. Etiology and management of spontaneous haemothorax J Thorac Dis. 2015 Mar;7(3):520-6. PMID 25922734.",
+          "note": "Narrative literature review of spontaneous haemothorax etiology and management (J Thorac Dis 2015): documents ruptured pleural blebs and vascular adhesions as leading causes with data limited to case reports and case series; supports the bounded mechanistic attribution only (review class).",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/25922734/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 25922734; review (etiology of spontaneous haemothorax)"
+        }
+      ]
+    }
+  ]
 }

@@ -2,8 +2,133 @@
   "id": "pneumonia-residuals",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review airway, aspiration, inflammatory, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 72 (2026-09-26): two ASSOCIATION_ONLY draft mappings pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: the edges assert association only (etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true). The bronchiectasis edge carries the parallel-targeting disclosure (four existing infection- and reflux-window bronchiectasis edges, none of whose evidence is recycled per ME-29) and the case-report-class adult anchor carried openly; the COPD edge carries the composite-endpoint limit (pooled exposure spans pneumonia or bronchitis or serious respiratory infections), the confounding limit (childhood asthma aOR 3.45 and maternal smoking 1.42 inside the same analysis), the direction-inversion counterweight (COPD predisposes to pneumonia, the dominant clinical ordering), and the sibling-overlap disclosure (the existing bronchitis to COPD edge rests on a childhood-TB-or-pneumonia window, PMID 40751209); individual claims require dated pulmonary, spirometric, and microbiological assessment with inherited, immunologic, and smoking-related exclusion and review by a qualified medical professional.",
+    "Pathway and duplicate-scope screens and withheld propositions: no -> asthma edge (SHARED-SUBSTRATE and direction-inversion - childhood asthma carries larger independent odds for adult COPD inside the same analysis and asthma predisposes to pneumonia; the meta-analysis asthma sequela category is confounded); no -> pulmonary-fibrosis edge (TARGET-MISMATCH - the sequelae meta-analysis measures restrictive ventilatory patterns without fibrosis-specific evidence and post-infectious organizing pneumonia has its own identity scope; post-varicella fibrosis literature is case-report class); no -> pleural-effusion edge (TARGET-MISMATCH - parapneumonic effusion and empyema are acute-phase complications of the pneumonia episode rather than residuals, and the empyema identity does not exist); no -> interstitial-lung-disease or cryptogenic-organizing-pneumonia edges (IDENTITY-DUPLICATION - those are primary interstitial entities, not post-pneumonic residuals); chain-shortcut disclosure (CRG redundancy-semantics follow-up, fifth accumulated example): the bronchitis to COPD edge and this COPD edge share the early-life-infection-to-COPD evidence field across sibling primaries and the overlap is recorded openly rather than silently duplicated (existing edge untouched); parallel-targeting disclosure (CRG redundancy-semantics follow-up, sixth accumulated example): bronchiectasis is now targeted by five infection- and reflux-window primaries and this edge registers generic post-pneumonia evidence only (PMIDs 22384005, 41561283) with all existing edges left untouched; ME-29 discipline - the tuberculosis, lipoid-pneumonia, bronchomalacia, and gastroesophageal-reflux bronchiectasis sources and the acute-interstitial-pneumonia, cryptogenic-organizing-pneumonia, and lipoid-pneumonia fibrosis sources are not recycled here."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 72 (2026-09-26): two bounded association edges authored - pneumonia-residuals to bronchiectasis (rank 1) and COPD (rank 2) - both classified ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, and hypothesizedOnly:true. The bronchiectasis edge rests on the 13-study childhood-pneumonia sequelae meta-analysis (bronchiectasis named among major sequelae; 5.5 to 13.6 percent at-least-one-major-sequela risk; adenovirus 54.8 percent, PMID 22384005) and the serologically confirmed adult post-measles-pneumonia cystic bronchiectasis case (PMID 41561283, case-report class carried openly). The COPD edge rests on the 30-study early-life-exposures meta-analysis (pooled adjusted OR 2.23, 95% CI 1.63-3.07, 795,935 participants, PMID 34541740) with the obstructive-sequela category of the sequelae meta-analysis (PMID 22384005, shared within batch across both edges) and the birth-cohort developmental-window review (PMID 40252849, erratum-linked record carried openly). Both edges carry the shared-evidence-field disclosures openly: the bronchitis to COPD edge already registers a childhood-TB-or-pneumonia window (PMID 40751209) and bronchiectasis carries four existing infection- and reflux-window edges; the existing edges are left untouched and their sources are not recycled."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "bronchiectasis",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Pneumonia residuals associate with post-infectious bronchiectasis at systematic-review meta-analysis and case level: the meta-analysis of 13 follow-up studies of childhood pneumonia documents bronchiectasis among the major respiratory sequelae with at-least-one-major-sequela risk of 5.5 percent in non-hospitalized and 13.6 percent in hospitalized children and 54.8 percent after adenovirus pneumonia (PMID 22384005), and the adult case of bilateral cystic bronchiectasis attributed by serology to severe childhood measles pneumonia documents the post-infectious structural-airway route end to end (PMID 41561283); recorded as documented association only with the parallel-targeting disclosure carried openly - tuberculous, lipoid-pneumonia, bronchomalacia, and gastroesophageal-reflux windows already own their own bronchiectasis edges and their evidence is not recycled here per ME-29.",
+        "causationStatus": "Neither causation nor aggravation of bronchiectasis is established for any individual: the sequelae meta-analysis pools heterogeneous pediatric cohorts with variable bronchiectasis ascertainment and none of its component studies confirms structural airway disease by modern computed tomography criteria in adults, the corroborating anchor is a single adult case report, and individual claims require dated pneumonia records with cystic fibrosis, primary ciliary dyskinesia, immunodeficiency, allergic bronchopulmonary aspergillosis, endobronchial obstruction, and connective-tissue disease exclusion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "SYSTEMIC_INFLAMMATORY",
+        "primaryVector": "Severe necrotizing pneumonic inflammation damages bronchial walls and peribronchial tissue so airways dilate permanently with impaired mucociliary clearance and recurrent secondary infection that extends the damage, the inflammatory-destructive route supported by the severity gradient in the sequelae meta-analysis and by the serologically confirmed measles-pneumonia case, but whether this route produced any individual bronchiectasis remains hypothesized until pulmonary, microbiological, and imaging records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at one 13-study meta-analysis of childhood pneumonia sequelae and one adult case report: the meta-analysis pools heterogeneous cohorts published 1970-2011 with bronchiectasis defined inconsistently and most often radiographically without modern CT criteria, its sequelae categories are dominated by restrictive rather than obstructive or bronchiectatic outcomes, pathogen-specific denominators exist only for adenovirus, and no adult CT-confirmed post-pneumonia bronchiectasis incidence cohort was located.",
+        "evidenceGaps": "No adult cohort confirming bronchiectasis by modern computed-tomography criteria after community-acquired pneumonia was located; in the pediatric meta-analysis bronchiectasis is a named major-sequela category but not separately quantified across all component studies (restrictive lung disease carried the largest pooled estimate at 5.4 percent); pathogen-specific risk exists only for adenovirus (54.8 percent); and the adult anchor (PMID 41561283) is a single case with late retrospective etiologic attribution.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "cystic fibrosis and primary ciliary dyskinesia (inherited structural-airway causes)",
+          "immunodeficiency including hypogammaglobulinemia and post-transplant states",
+          "allergic bronchopulmonary aspergillosis and non-tuberculous mycobacterial infection (the nontuberculous-mycobacterial window is not recycled per ME-29)",
+          "endobronchial obstruction and foreign body",
+          "tuberculosis, gastroesophageal reflux aspiration, and bronchomalacia (each owns an existing bronchiectasis edge; evidence not recycled per ME-29)",
+          "connective-tissue disease including rheumatoid arthritis"
+        ]
+      },
+      "evidenceGaps": [
+        "No adult cohort confirming bronchiectasis by modern computed-tomography criteria after community-acquired pneumonia was located; in the pediatric meta-analysis bronchiectasis is a named major-sequela category but not separately quantified across all component studies (restrictive lung disease carried the largest pooled estimate at 5.4 percent); pathogen-specific risk exists only for adenovirus (54.8 percent); and the adult anchor (PMID 41561283) is a single case with late retrospective etiologic attribution."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY at meta-analysis-plus-case class with the parallel-targeting disclosure carried openly: the childhood-pneumonia sequelae meta-analysis names bronchiectasis among major sequelae with 5.5 to 13.6 percent at-least-one-major-sequela risk (PMID 22384005) and the adult measles-pneumonia case documents serologically confirmed post-infectious cystic bronchiectasis (PMID 41561283, case-report class carried openly); because ascertainment is heterogeneous and the adult anchor is a single case, the conservative standard keeps the edge at association only and routes individual claims through dated pneumonia and CT imaging records with inherited, immunologic, obstructive, and mycobacterial exclusion; the four existing infection- and reflux-window bronchiectasis edges are left untouched and their sources are not recycled.",
+      "sourceReferences": [
+        {
+          "citation": "Edmond K, Scott S, Korczak V, et al. Long term sequelae from childhood pneumonia; systematic review and meta-analysis PLoS One. 2012;7(2):e31239. PMID 22384005.",
+          "note": "Systematic review and meta-analysis of 13 studies of long-term sequelae of childhood pneumonia 1970-2011 (PLoS One 2012): at-least-one major sequelae (restrictive lung disease, obstructive lung disease, or bronchiectasis) in 5.5% (2.8-8.3) of non-hospitalized and 13.6% (6.2-21.1) of hospitalized children; adenovirus pneumonia carried the highest risk (54.8%); restrictive lung disease most common at 5.4%; supports the bounded post-pneumonia structural-sequela association only (heterogeneous pediatric ascertainment).",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/22384005/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 22384005; results (pooled sequela risks and distribution by sequela type)"
+        },
+        {
+          "citation": "Magno Pinto S, Pereira M, Pinto PG. Preventable Pulmonary Sequelae of Measles: A Case Report of an Adult Patient With Cystic Bronchiectasis Cureus. 2025 Dec;17(12):e99687. PMID 41561283.",
+          "note": "Adult case report (Cureus 2025): 65-year-old non-smoker with bilateral cystic bronchiectasis confirmed on high-resolution CT, attributed serologically to severe measles pneumonia in childhood, with recurrent exacerbations and Pseudomonas colonization; supports the bounded post-infectious bronchiectasis route only (case-report class, no denominators).",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41561283/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 41561283; case presentation (etiological workup linking childhood measles pneumonia to adult cystic bronchiectasis)"
+        }
+      ]
+    },
+    {
+      "conditionId": "copd",
+      "rank": 2,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Pneumonia residuals associate with adult chronic obstructive pulmonary disease at pooled-meta-analysis and birth-cohort-review level: the meta-analysis of 30 studies (795,935 participants) documents childhood serious respiratory infections including pneumonia or bronchitis associated with adult COPD at pooled adjusted odds ratio 2.23 (95% CI 1.63-3.07, PMID 34541740), and the childhood-pneumonia sequelae meta-analysis names obstructive lung disease among the major respiratory sequelae (PMID 22384005), with the birth-cohort review documenting critical early-life windows of lung growth susceptibility (PMID 40252849); recorded as documented association only with the composite-endpoint, confounding, direction-inversion, and sibling-overlap limits carried openly - the pooled estimate spans pneumonia or bronchitis or serious respiratory infections together, the dominant clinical direction is COPD predisposing to pneumonia rather than the reverse, and the existing bronchitis to COPD edge (PMID 40751209 window) already carries part of this overlapping evidence field.",
+        "causationStatus": "Neither causation nor aggravation of COPD is established for any individual: the pooled odds ratio combines composite exposure definitions that do not isolate pneumonia, asthma in childhood carries a larger independent odds ratio (3.45) inside the same analysis, tobacco smoke, low birth weight, and maltreatment co-exposures are inseparable, the dominant clinical direction runs from COPD to pneumonia, and individual claims require dated spirometry with smoking-pack-year, asthma, occupational, alpha-1-antitrypsin, and prematurity exclusion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MULTIFACTORIAL",
+        "primaryVector": "Severe pneumonic infection during the lung-growth years is hypothesized to impair alveolarization and drive airway remodeling so maximal attained lung function falls and obstructive physiology emerges in adulthood, a developmental route supported by the birth-cohort review and the pooled early-life infection estimate, but whether this route produced any individual COPD remains hypothesized until spirometric, growth, and exposure records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at one pooled meta-analysis of early-life exposures and two review-class anchors: the pooled estimate (aOR 2.23) aggregates composite exposures spanning pneumonia, bronchitis, and serious respiratory infections without pneumonia-specific stratification, heterogeneity across the 30 component studies is not resolved by exposure definition, the childhood-sequela meta-analysis reports obstructive disease only within its composite major-sequela total, and no pneumonia-specific adult COPD cohort with spirometric confirmation was located.",
+        "evidenceGaps": "No cohort isolates childhood pneumonia (excluding bronchitis and other serious respiratory infections) with adult spirometry-confirmed COPD; the pooled estimate (PMID 34541740) spans composite exposures and its asthma subgroup (aOR 3.45) may absorb much of the signal; dose-response by pneumonia severity is unquantified; and the birth-cohort review (PMID 40252849) is mechanistic narrative without pooled effect sizes.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "tobacco smoke exposure including maternal smoking during pregnancy and active smoking (maternal smoking carries its own pooled aOR 1.42 in the same analysis)",
+          "childhood asthma (pooled aOR 3.45 in the same analysis) and atopic airway disease",
+          "low birth weight and prematurity-related lung disease",
+          "occupational dust, fume, and vapor exposure; alpha-1 antitrypsin deficiency",
+          "reverse direction carried openly: COPD predisposes to pneumonia and serious respiratory infection, the dominant clinical ordering",
+          "childhood maltreatment and socioeconomic factors associated with both exposure and diagnosis ascertainment"
+        ]
+      },
+      "evidenceGaps": [
+        "No cohort isolates childhood pneumonia (excluding bronchitis and other serious respiratory infections) with adult spirometry-confirmed COPD; the pooled estimate (PMID 34541740) spans composite exposures and its asthma subgroup (aOR 3.45) may absorb much of the signal; dose-response by pneumonia severity is unquantified; and the birth-cohort review (PMID 40252849) is mechanistic narrative without pooled effect sizes."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY at pooled-meta-analysis class with the composite-endpoint, confounding, direction-inversion, and sibling-overlap limits carried openly: the early-life-exposures meta-analysis documents a pooled adjusted odds ratio of 2.23 for COPD after childhood serious respiratory infections including pneumonia or bronchitis (PMID 34541740), the childhood-pneumonia sequelae meta-analysis names obstructive lung disease among major sequelae (PMID 22384005), and the birth-cohort review documents the developmental susceptibility window (PMID 40252849, erratum-linked record J Allergy Clin Immunol 2026;157(6):1481 noted at preflight); because the exposure is composite, asthma and smoking are larger or inseparable contributors, and the dominant clinical direction runs COPD-to-pneumonia, the conservative standard keeps the edge at association only and routes individual claims through dated spirometry with smoking, asthma, occupational, and prematurity exclusion; sibling-overlap disclosure (CRG redundancy-semantics follow-up): the existing bronchitis to COPD edge rests on a childhood-TB-or-pneumonia window (PMID 40751209) and this edge registers the pneumonia-residuals side of the shared evidence field with the existing edge left untouched.",
+      "sourceReferences": [
+        {
+          "citation": "Duan P, Wang Y, Lin R, et al. Impact of early life exposures on COPD in adulthood: A systematic review and meta-analysis Respirology. 2021 Dec;26(12):1131-1151. PMID 34541740.",
+          "note": "Systematic review and meta-analysis of 30 studies, 795,935 participants (Respirology 2021): childhood serious respiratory infections, pneumonia or bronchitis associated with adult COPD (pooled adjusted OR 2.23, 95% CI 1.63-3.07); childhood asthma carried aOR 3.45, maternal smoking 1.42, low birth weight 1.58; supports the bounded early-life-infection association only (composite exposure, confounding carried openly).",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34541740/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 34541740; results (pooled adjusted odds ratios by early-life exposure)"
+        },
+        {
+          "citation": "Edmond K, Scott S, Korczak V, et al. Long term sequelae from childhood pneumonia; systematic review and meta-analysis PLoS One. 2012;7(2):e31239. PMID 22384005.",
+          "note": "Systematic review and meta-analysis of 13 studies of long-term sequelae of childhood pneumonia (PLoS One 2012): obstructive lung disease named among major respiratory sequelae alongside restrictive disease and bronchiectasis, with at-least-one-major-sequela risk of 5.5% to 13.6% and 54.8% after adenovirus pneumonia; supports the bounded obstructive-sequela association only (within composite totals).",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/22384005/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 22384005; results (pooled sequela risks by sequela type)"
+        },
+        {
+          "citation": "Hartert T, Kyvsgaard JN, Thaver L, et al. Understanding the childhood origins of asthma and chronic obstructive pulmonary disease: Insights from birth cohorts and studies across the life-span J Allergy Clin Immunol. 2025 Jun;155(6):1703-1719. PMID 40252849.",
+          "note": "Focused birth-cohort literature update 2021-2024 (J Allergy Clin Immunol 2025): documents critical periods of developmental plasticity in early lung growth during which adverse exposures shape asthma and COPD phenotypes across the life span; supports the bounded developmental-window mechanism only (review class, no pooled effect sizes); erratum-linked record (J Allergy Clin Immunol 2026 Jun;157(6):1481) noted at preflight and carried openly.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40252849/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 40252849; review conclusions (early-life origins of obstructive lung disease)"
+        }
+      ]
+    }
+  ]
 }
