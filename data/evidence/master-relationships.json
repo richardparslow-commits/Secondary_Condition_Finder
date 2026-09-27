@@ -6,8 +6,8 @@
  "installedFrom": "Master Registry Discrepancy Resolution 2026",
  "authorityBoundary": "Authoritative for current relationship direction, proposition text, guard state, source linkage, and KB parity; does not establish an individual VA medical nexus.",
  "counts": {
-  "relationships": 756,
-  "explicitPublicationGuards": 682,
+  "relationships": 760,
+  "explicitPublicationGuards": 686,
   "legacyRationaleBoundaries": 74
  },
  "relationships": [
@@ -24222,6 +24222,129 @@
    "sourceReferenceCount": 2,
    "pathwayIntelligencePresent": false,
    "suggestionObjectHash": "dffb364a6bfd6a1df108af6d1699c5bee3b16cc0dfc17b31a227a4d716b5fd5a"
+  },
+  {
+   "relationshipId": "rel-postpartum-thyroiditis-to-hypothyroidism",
+   "primaryId": "postpartum-thyroiditis",
+   "targetId": "hypothyroidism",
+   "direction": "postpartum-thyroiditis -> hypothyroidism",
+   "primaryPublicationState": "draft",
+   "rank": 1,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY at prospective-cohort-plus-long-term-follow-up class with the shared-substrate and biochemical-endpoint limits carried openly, following the thyroiditis to hypothyroidism convention (METABOLIC_OR_NUTRITIONAL): the 412-woman prospective cohort quantifies permanent hypothyroidism in 54 percent of the 63 women who developed postpartum thyroiditis (PMID 32362873) and the 8-year follow-up of 45 patients from an unselected 641-pregnancy population quantifies persistent hypothyroidism in 14 of 45 with a 56 percent probability after hypothyroid-phase episodes (PMID 16279852); because the episode and the outcome share thyroid autoimmunity as substrate and permanence is biochemically defined, the conservative standard keeps the edge at association only, records the episode as a marker of an autoimmune process that often culminates in gland failure, and routes individual claims through dated thyroid-function, antibody, and treatment records with gestational, iodine, and medication causes excluded."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY at prospective-cohort-plus-long-term-follow-up class with the shared-substrate and biochemical-endpoint limits carried openly, following the thyroiditis to hypothyroidism convention (METABOLIC_OR_NUTRITIONAL): the 412-woman prospective cohort quantifies permanent hypothyroidism in 54 percent of the 63 women who developed postpartum thyroiditis (PMID 32362873) and the 8-year follow-up of 45 patients from an unselected 641-pregnancy population quantifies persistent hypothyroidism in 14 of 45 with a 56 percent probability after hypothyroid-phase episodes (PMID 16279852); because the episode and the outcome share thyroid autoimmunity as substrate and permanence is biochemically defined, the conservative standard keeps the edge at association only, records the episode as a marker of an autoimmune process that often culminates in gland failure, and routes individual claims through dated thyroid-function, antibody, and treatment records with gestational, iodine, and medication causes excluded.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), at METABOLIC_OR_NUTRITIONAL following the thyroiditis to hypothyroidism convention, with the shared-substrate and biochemical-endpoint limits carried openly: the 412-woman prospective gestation-to-12-months postpartum cohort documents postpartum thyroiditis in 63 (15.3 percent) and permanent hypothyroidism in 34 of those 63 (54 percent) (PMID 32362873) and the 8.1-year follow-up of 45 patients from an unselected 641-pregnancy population documents persistent hypothyroidism in 14 of 45 with a 56 percent probability after hypothyroid-phase episodes and zero progression after hyperthyroidism-only episodes (PMID 16279852); the episode and the later gland failure share the same underlying thyroid autoimmunity so the episode may mark rather than cause the failure, permanence is defined biochemically at one-year persistence rather than by tissue diagnosis, levothyroxine initiation blurs the natural-history endpoint, and risk stratifiers (newborn female sex RR 3.88, TSH magnitude, maternal age) rest on the 45-patient series; individual claims route through dated thyroid-function, antithyroid-antibody, and treatment records with gestational thyroid dysfunction, iodine imbalance, and medication causes excluded.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "The quantified anchors are one 412-woman prospective cohort (63 episodes, 34 permanent outcomes) and one 45-patient follow-up series; permanence is defined biochemically (persistence at one year) rather than by tissue diagnosis; levothyroxine initiation is a treatment decision that blurs the permanence endpoint; risk stratifiers (newborn female sex RR 3.88, additional TSH units, maternal age) rest on small numbers; and no cohort separates autoimmune-episode-driven failure from pre-existing chronic thyroiditis."
+   ],
+   "sourceIds": [
+    "pmid-32362873",
+    "pmid-16279852"
+   ],
+   "sourceReferenceCount": 2,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "5a2364a6b2ce38c2f97bd8f63addae00adf4870bc040b1c2296e9900379b4b72"
+  },
+  {
+   "relationshipId": "rel-postpartum-thyroiditis-to-depressive-disorder",
+   "primaryId": "postpartum-thyroiditis",
+   "targetId": "depressive-disorder",
+   "direction": "postpartum-thyroiditis -> depressive-disorder",
+   "primaryPublicationState": "draft",
+   "rank": 2,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY at nationwide-cohort class with conflicting marker-level meta-analytic evidence carried openly in both directions, following the PSYCHOPHYSIOLOGICAL mood-edge convention (phantom-limb-pain batch-71 and postherpetic-neuralgia batch-73 precedents): the Danish nationwide cohort of 312,779 first-time mothers quantifies first-onset psychiatric disorders after postpartum autoimmune thyroid disease at IRR 1.88 (PMID 28929982), the positive marker-level meta-analysis quantifies postpartum-depression risk with TPOAb positivity at RR 1.49 (PMID 31552596), and the explicit null counterweight is registered on the edge itself (PMID 37486224: own-cohort OR 0.79, pooled OR 1.93 non-significant, I-squared 79 percent); because the endpoint is composite, the window is broader than postpartum thyroiditis, and the same cohort documents the reverse direction at IRR 2.16, the conservative standard keeps the edge at association only with the direction-inversion, window-scope, and composite-endpoint limits stated on the record, and routes individual claims through dated thyroid and psychiatric timelines with pre-existing mood disorder excluded."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY at nationwide-cohort class with conflicting marker-level meta-analytic evidence carried openly in both directions, following the PSYCHOPHYSIOLOGICAL mood-edge convention (phantom-limb-pain batch-71 and postherpetic-neuralgia batch-73 precedents): the Danish nationwide cohort of 312,779 first-time mothers quantifies first-onset psychiatric disorders after postpartum autoimmune thyroid disease at IRR 1.88 (PMID 28929982), the positive marker-level meta-analysis quantifies postpartum-depression risk with TPOAb positivity at RR 1.49 (PMID 31552596), and the explicit null counterweight is registered on the edge itself (PMID 37486224: own-cohort OR 0.79, pooled OR 1.93 non-significant, I-squared 79 percent); because the endpoint is composite, the window is broader than postpartum thyroiditis, and the same cohort documents the reverse direction at IRR 2.16, the conservative standard keeps the edge at association only with the direction-inversion, window-scope, and composite-endpoint limits stated on the record, and routes individual claims through dated thyroid and psychiatric timelines with pre-existing mood disorder excluded.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), at PSYCHOPHYSIOLOGICAL following the batch-71/73 mood-edge convention, with conflicting meta-analytic evidence, the composite-endpoint limit, the window-scope limit, and the direction-inversion counterweight all carried openly: the Danish nationwide cohort of 312,779 first-time mothers documents first-onset postpartum autoimmune thyroid disorders associating with first-onset psychiatric disorders (IRR 1.88, 95% CI 1.25-2.81) (PMID 28929982) and the marker-level meta-analysis documents TPOAb positivity associating with postpartum depression (RR 1.49, 95% CI 1.11-2.00) (PMID 31552596), while the explicit null counterweight is registered on the edge itself (PMID 37486224: own-cohort OR 0.79, 95% CI 0.47-1.33; pooled OR 1.93, 95% CI 0.91-4.10, P=0.08, I-squared 79 percent); the strongest anchor measures the psychiatric-disorders composite rather than depression isolated, its postpartum-autoimmune-thyroid window is wider than postpartum thyroiditis, and the same cohort documents the reverse direction (psychiatric disorders preceding autoimmune thyroid disease, IRR 2.16) so psychological state commonly precedes rather than follows the thyroid dysfunction; individual claims route through dated thyroid and psychiatric timelines with pre-existing mood disorder, adjustment disorder, and medication effects excluded.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No postpartum-thyroiditis-specific depression cohort with structured psychiatric diagnosis was located; the quantified nationwide signal is a composite psychiatric-disorders endpoint within a broader postpartum autoimmune thyroid window; the marker-level literature (TPOAb positivity as a predictor of postpartum depression) is heterogeneous (I-squared 79 percent) and null in the newest meta-analysis; and the same cohort documents psychiatric disorders preceding autoimmune thyroid disease at IRR 2.16 so temporal direction is contested."
+   ],
+   "sourceIds": [
+    "pmid-28929982",
+    "pmid-31552596",
+    "pmid-37486224"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "5c8557c1584bea108ffe3cea5e499263c2c8143ccc0acaa88b6e0dd9fda46807"
+  },
+  {
+   "relationshipId": "rel-postural-orthostatic-tachycardia-syndrome-to-cognitive-disorder",
+   "primaryId": "postural-orthostatic-tachycardia-syndrome",
+   "targetId": "cognitive-disorder",
+   "direction": "postural-orthostatic-tachycardia-syndrome -> cognitive-disorder",
+   "primaryPublicationState": "draft",
+   "rank": 1,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY at controlled-physiologic-study class with the sibling-overlap and small-sample limits carried openly, following the orthostatic-hypotension to cognitive-disorder convention (MICROVASCULAR_METABOLIC): the sustained-cognitive-stress study quantifies cerebral blood-flow velocity reduction and psychomotor slowing beyond controls in 22 POTS patients (PMID 33280488), the active-standing study quantifies executive-function and attention deficits in 87 participants (PMID 32526639), and the brain-fog study documents autonomic-hyperarousal tracking with water-drinking improvement (PMID 35992935); ME-29 discipline: the existing orthostatic-hypotension to cognitive-disorder edge and its sources are left untouched and none is recycled here; because the endpoints are task-state test differences in small samples with perfusion surrogates, the conservative standard keeps the edge at association only and routes individual claims through dated neuropsychological and autonomic testing with sleep, mood, medication, and metabolic causes excluded."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY at controlled-physiologic-study class with the sibling-overlap and small-sample limits carried openly, following the orthostatic-hypotension to cognitive-disorder convention (MICROVASCULAR_METABOLIC): the sustained-cognitive-stress study quantifies cerebral blood-flow velocity reduction and psychomotor slowing beyond controls in 22 POTS patients (PMID 33280488), the active-standing study quantifies executive-function and attention deficits in 87 participants (PMID 32526639), and the brain-fog study documents autonomic-hyperarousal tracking with water-drinking improvement (PMID 35992935); ME-29 discipline: the existing orthostatic-hypotension to cognitive-disorder edge and its sources are left untouched and none is recycled here; because the endpoints are task-state test differences in small samples with perfusion surrogates, the conservative standard keeps the edge at association only and routes individual claims through dated neuropsychological and autonomic testing with sleep, mood, medication, and metabolic causes excluded.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), at MICROVASCULAR_METABOLIC following the orthostatic-hypotension to cognitive-disorder convention (that edge and its sources PMID 42732657, 42740891 left untouched, none recycled per ME-29), with the small-sample and surrogate-endpoint limits carried openly: the sustained-cognitive-stress study of 22 POTS patients versus 18 matched controls documents greater cerebral blood-flow velocity reduction under prolonged cognitive stress (-7.8 versus -1.8 percent, interaction P=0.038), greater psychomotor slowing (6.1 versus 1.4 percent, interaction P=0.027), and increased concentration difficulty (interaction P<0.001) even without orthostatic stress (PMID 33280488), the active-standing study of 87 POTS participants versus 39 controls documents lower executive function (t-score 48 plus or minus 11 versus 55 plus or minus 10, P=0.009) and worse attention (reaction speed 2.78 versus 2.69, P<0.001) during standing (PMID 32526639), and the neuropathic-POTS brain-fog study documents the symptom tracking autonomic hyperarousal with improvement after water drinking (PMID 35992935; linked erratum Front Neurosci 2023;17:1178850 carried openly on the reference); the quantified deficits are task-state cognitive-test differences rather than diagnosed neurocognitive disorder, cerebral blood-flow velocity is a perfusion surrogate, orthostatic and cognitive stressors are intertwined, and comorbid sleep disruption, mood symptoms, and medication effects are not excluded; individual claims route through dated neuropsychological and autonomic testing with sleep, mood, medication, and metabolic causes excluded.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No large POTS cohort with formal neurocognitive diagnosis was located; the quantified deficits are task-state test differences (executive function, attention, psychomotor speed) in samples of 22, 87, and a small neuropathic-POTS series; cerebral blood-flow velocity is a surrogate for perfusion; orthostatic and cognitive stressors are not fully separable; and the symptom-study record carries a linked erratum (Front Neurosci 2023;17:1178850) noted openly."
+   ],
+   "sourceIds": [
+    "pmid-33280488",
+    "pmid-32526639",
+    "pmid-35992935"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "4f1f96e4588edc04c8d01358c6bbee2f27d455bbfb3db5aa52a0119674ec13b4"
+  },
+  {
+   "relationshipId": "rel-premature-atrial-ventricular-contractions-to-cardiomyopathy",
+   "primaryId": "premature-atrial-ventricular-contractions",
+   "targetId": "cardiomyopathy",
+   "direction": "premature-atrial-ventricular-contractions -> cardiomyopathy",
+   "primaryPublicationState": "draft",
+   "rank": 1,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY at consecutive-cohort-plus-reversibility class following the cardiac-arrhythmia to cardiomyopathy convention (NOT_ESTABLISHED): the 214-patient ablation cohort quantifies reduced ejection fraction in 24 percent with elevated ectopy burden (PMID 24612052), the 264-patient cohort quantifies dysfunction in 33 percent with normalization in 68 percent after ablation (PMID 23099051), and the pediatric series documents reversible cardiomyopathy in 4 of 28 with ectopy at or above 5 percent (PMID 20512569); the ectopy-suppression reversibility signal (normalization after burden removal in both adult and pediatric series) carries directional weight in the association framing while reverse causation remains unexcluded; withheld propositions recorded on the file include the congestive-heart-failure edge (intermediate-node discipline - the published cardiomyopathy to congestive-heart-failure path owns the downstream route) and the umbrella-registration limit (premature contractions are themselves arrhythmias)."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY at consecutive-cohort-plus-reversibility class following the cardiac-arrhythmia to cardiomyopathy convention (NOT_ESTABLISHED): the 214-patient ablation cohort quantifies reduced ejection fraction in 24 percent with elevated ectopy burden (PMID 24612052), the 264-patient cohort quantifies dysfunction in 33 percent with normalization in 68 percent after ablation (PMID 23099051), and the pediatric series documents reversible cardiomyopathy in 4 of 28 with ectopy at or above 5 percent (PMID 20512569); the ectopy-suppression reversibility signal (normalization after burden removal in both adult and pediatric series) carries directional weight in the association framing while reverse causation remains unexcluded; withheld propositions recorded on the file include the congestive-heart-failure edge (intermediate-node discipline - the published cardiomyopathy to congestive-heart-failure path owns the downstream route) and the umbrella-registration limit (premature contractions are themselves arrhythmias).",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), mechanism NOT_ESTABLISHED following the cardiac-arrhythmia to cardiomyopathy convention (that edge and its sources PMID 38811098 left untouched, none recycled per ME-29; the parallel-targeting overlap into one target recorded openly in the CRG redundancy-semantics follow-up), with the ectopy-window, reversibility, and reverse-causation limits carried openly: the consecutive 214-patient ablation cohort documents reduced ejection fraction in 24 percent with higher ectopy burden in the reduced-function group (19 versus 15 percent) and QRS dispersion and body-mass-index as independent predictors (PMID 24612052), the 264-patient consecutive PVC cohort documents left-ventricular dysfunction in 87 (33 percent) with ejection-fraction normalization in 68 percent within four months of ablation (PMID 23099051), and the pediatric frequent-ventricular-ectopy series (burden at or above 5 percent) documents cardiomyopathy in 4 of 28 with normalization in all four after ectopy resolution or antiarrhythmic therapy (PMID 20512569); the evidence is ventricular-ectopy specific and the combined atrial/ventricular catalog identity leaves the atrial side unquantified, the reversibility signal (normalization after ectopy suppression in adult and pediatric series) carries directional weight while reverse causation (cardiomyopathy generating ectopy) remains unexcluded in the retrospective designs, the cardiomyopathy designation rests on ejection-fraction thresholds rather than tissue diagnosis, and ectopy-burden thresholds vary (15-19 percent adult, 5 percent pediatric); individual claims route through dated Holter burden, echocardiographic, and cardiac-MRI records with ischemic, hypertensive, valvular, familial, and toxic cardiomyopathy excluded.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No prospective cohort of ectopy-positive patients free of structural disease at baseline with incident-cardiomyopathy follow-up was located; the quantified dysfunction fractions come from referral populations (ablation candidates, consecutive clinic series) subject to selection; ectopy-burden thresholds vary (15-19 percent adult, 5 percent pediatric); atrial-ectopy-specific cardiomyopathy risk is unquantified; and reverse causation is unexcluded in the retrospective designs."
+   ],
+   "sourceIds": [
+    "pmid-24612052",
+    "pmid-23099051",
+    "pmid-20512569"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "437ef9ffcd513b030f016edf378b901c625140ab4da6059a2ec9ba7b752ab771"
   }
  ],
  "lastUpdatedBy": "batch-D1-draft-authoring",

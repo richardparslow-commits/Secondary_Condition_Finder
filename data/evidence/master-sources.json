@@ -16,16 +16,16 @@
   "citationPromotionMustAtomicallyUpdateKbAndMasterSourceState": true
  },
  "counts": {
-  "liveSourceReferenceUses": 1361,
+  "liveSourceReferenceUses": 1372,
   "activeSourceEntities": 346,
-  "pendingVerificationSourceEntities": 863,
+  "pendingVerificationSourceEntities": 874,
   "activeClinicalSourceEntities": 345,
-  "pendingClinicalSourceEntities": 863,
+  "pendingClinicalSourceEntities": 874,
   "activeLegalAuthorityEntities": 1,
   "retiredOnlySourceEntities": 1,
   "supersededUnverifiedSourceEntities": 7,
   "bibliographicCorrectionOnlyEntities": 1,
-  "totalSourceEntitiesIncludingLineage": 1218,
+  "totalSourceEntitiesIncludingLineage": 1229,
   "retiredVerifiedRelationshipSourceUses": 6
  },
  "retirementLedger": {
@@ -44981,6 +44981,391 @@
    "retiredUses": [],
    "rawReferenceHashes": [
     "71e707ed57f452fe27279f5eb7cf8d637e1aff2d36d015b76430e8612dccf034"
+   ]
+  },
+  {
+   "sourceId": "pmid-32362873",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "32362873",
+   "doi": null,
+   "canonicalCitation": "Benvenga S. Targeted Antenatal Screening for Predicting Postpartum Thyroiditis and Its Evolution Into Permanent Hypothyroidism Front Endocrinol (Lausanne). 2020;11:220. PMID 32362873.",
+   "citationVariants": [
+    "Benvenga S. Targeted Antenatal Screening for Predicting Postpartum Thyroiditis and Its Evolution Into Permanent Hypothyroidism Front Endocrinol (Lausanne). 2020;11:220. PMID 32362873."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/32362873/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/32362873/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-postpartum-thyroiditis-to-hypothyroidism",
+     "primaryId": "postpartum-thyroiditis",
+     "targetId": "hypothyroidism",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "6f6bb88ad8c0317913db747b8070d5b901181577b6d82309225080bcda872d83"
+   ]
+  },
+  {
+   "sourceId": "pmid-16279852",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "16279852",
+   "doi": null,
+   "canonicalCitation": "Lucas A, Pizarro E, Granada ML, et al. Postpartum thyroiditis: long-term follow-up Thyroid. 2005 Oct;15(10):1177-81. PMID 16279852.",
+   "citationVariants": [
+    "Lucas A, Pizarro E, Granada ML, et al. Postpartum thyroiditis: long-term follow-up Thyroid. 2005 Oct;15(10):1177-81. PMID 16279852."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/16279852/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/16279852/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-postpartum-thyroiditis-to-hypothyroidism",
+     "primaryId": "postpartum-thyroiditis",
+     "targetId": "hypothyroidism",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "55d4c9e0d6d23251b418a430b26d74fe3f40fd18f5355c3662a8936c8d9e21c5"
+   ]
+  },
+  {
+   "sourceId": "pmid-28929982",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "28929982",
+   "doi": null,
+   "canonicalCitation": "Bergink V, Pop VJM, Nielsen PR, et al. Comorbidity of autoimmune thyroid disorders and psychiatric disorders during the postpartum period: a Danish nationwide register-based cohort study Psychol Med. 2018 Jun;48(8):1291-1298. PMID 28929982.",
+   "citationVariants": [
+    "Bergink V, Pop VJM, Nielsen PR, et al. Comorbidity of autoimmune thyroid disorders and psychiatric disorders during the postpartum period: a Danish nationwide register-based cohort study Psychol Med. 2018 Jun;48(8):1291-1298. PMID 28929982."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/28929982/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/28929982/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-postpartum-thyroiditis-to-depressive-disorder",
+     "primaryId": "postpartum-thyroiditis",
+     "targetId": "depressive-disorder",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "96b091ca3cfd30a46c41b7914d8ac42123789f250f473b21f9fd7e6789df34d1"
+   ]
+  },
+  {
+   "sourceId": "pmid-31552596",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "31552596",
+   "doi": null,
+   "canonicalCitation": "Minaldi E, D'Andrea S, Castellini C, et al. Thyroid autoimmunity and risk of post-partum depression: a systematic review and meta-analysis of longitudinal studies J Endocrinol Invest. 2020 Mar;43(3):271-277. PMID 31552596.",
+   "citationVariants": [
+    "Minaldi E, D'Andrea S, Castellini C, et al. Thyroid autoimmunity and risk of post-partum depression: a systematic review and meta-analysis of longitudinal studies J Endocrinol Invest. 2020 Mar;43(3):271-277. PMID 31552596."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/31552596/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/31552596/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-postpartum-thyroiditis-to-depressive-disorder",
+     "primaryId": "postpartum-thyroiditis",
+     "targetId": "depressive-disorder",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "970bb8cfcf2ad75863d5e4ece96cf5a63882a74aa33dc03a1685382f41524b47"
+   ]
+  },
+  {
+   "sourceId": "pmid-37486224",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "37486224",
+   "doi": null,
+   "canonicalCitation": "Sileo F, Osinga JAJ, Visser WE, et al. Association of gestational thyroid function and thyroid peroxidase antibody positivity with postpartum depression: a prospective cohort study and systematic literature review with meta-analysis Eur J Endocrinol. 2023 Aug 2;189(2):S26-S36. PMID 37486224.",
+   "citationVariants": [
+    "Sileo F, Osinga JAJ, Visser WE, et al. Association of gestational thyroid function and thyroid peroxidase antibody positivity with postpartum depression: a prospective cohort study and systematic literature review with meta-analysis Eur J Endocrinol. 2023 Aug 2;189(2):S26-S36. PMID 37486224."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/37486224/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/37486224/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-postpartum-thyroiditis-to-depressive-disorder",
+     "primaryId": "postpartum-thyroiditis",
+     "targetId": "depressive-disorder",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "e96ac9b77f0258ae40c0823c39c2b2e31a0f89fcd231c22d59b1fbeab89ad978"
+   ]
+  },
+  {
+   "sourceId": "pmid-33280488",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "33280488",
+   "doi": null,
+   "canonicalCitation": "Wells R, Malik V, Brooks AG, et al. Cerebral Blood Flow and Cognitive Performance in Postural Tachycardia Syndrome: Insights from Sustained Cognitive Stress Test J Am Heart Assoc. 2020 Dec 15;9(24):e017861. PMID 33280488.",
+   "citationVariants": [
+    "Wells R, Malik V, Brooks AG, et al. Cerebral Blood Flow and Cognitive Performance in Postural Tachycardia Syndrome: Insights from Sustained Cognitive Stress Test J Am Heart Assoc. 2020 Dec 15;9(24):e017861. PMID 33280488."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33280488/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/33280488/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-postural-orthostatic-tachycardia-syndrome-to-cognitive-disorder",
+     "primaryId": "postural-orthostatic-tachycardia-syndrome",
+     "targetId": "cognitive-disorder",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "96190167090ac1322feb50ea0fbcbba675de411b17168be9cc45b2501acdbc9d"
+   ]
+  },
+  {
+   "sourceId": "pmid-32526639",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "32526639",
+   "doi": null,
+   "canonicalCitation": "Miller AJ, Sheehan T, Bourne KM, et al. Attention and executive function are impaired during active standing in postural tachycardia syndrome Auton Neurosci. 2020 Sep;227:102692. PMID 32526639.",
+   "citationVariants": [
+    "Miller AJ, Sheehan T, Bourne KM, et al. Attention and executive function are impaired during active standing in postural tachycardia syndrome Auton Neurosci. 2020 Sep;227:102692. PMID 32526639."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/32526639/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/32526639/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-postural-orthostatic-tachycardia-syndrome-to-cognitive-disorder",
+     "primaryId": "postural-orthostatic-tachycardia-syndrome",
+     "targetId": "cognitive-disorder",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "4dc2b64316aa667d6fdf0ddedee6e39bafe3fbaa90071e228c9003fb3c01a350"
+   ]
+  },
+  {
+   "sourceId": "pmid-35992935",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "35992935",
+   "doi": null,
+   "canonicalCitation": "Rodriguez B, Hochstrasser A, Eugster PJ, et al. Brain fog in neuropathic postural tachycardia syndrome may be associated with autonomic hyperarousal and improves after water drinking Front Neurosci. 2022;16:968725. PMID 35992935.",
+   "citationVariants": [
+    "Rodriguez B, Hochstrasser A, Eugster PJ, et al. Brain fog in neuropathic postural tachycardia syndrome may be associated with autonomic hyperarousal and improves after water drinking Front Neurosci. 2022;16:968725. PMID 35992935."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35992935/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/35992935/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-postural-orthostatic-tachycardia-syndrome-to-cognitive-disorder",
+     "primaryId": "postural-orthostatic-tachycardia-syndrome",
+     "targetId": "cognitive-disorder",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "b7a52d0137d64fe4f454a34dacf7317c0668c2b4437ab8fac72c1c9249dd982b"
+   ]
+  },
+  {
+   "sourceId": "pmid-24612052",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "24612052",
+   "doi": null,
+   "canonicalCitation": "Kawamura M, Badhwar N, Vedantham V, et al. Coupling interval dispersion and body mass index are independent predictors of idiopathic premature ventricular complex-induced cardiomyopathy J Cardiovasc Electrophysiol. 2014 Jul;25(7):756-62. PMID 24612052.",
+   "citationVariants": [
+    "Kawamura M, Badhwar N, Vedantham V, et al. Coupling interval dispersion and body mass index are independent predictors of idiopathic premature ventricular complex-induced cardiomyopathy J Cardiovasc Electrophysiol. 2014 Jul;25(7):756-62. PMID 24612052."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/24612052/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/24612052/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-premature-atrial-ventricular-contractions-to-cardiomyopathy",
+     "primaryId": "premature-atrial-ventricular-contractions",
+     "targetId": "cardiomyopathy",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "62e357536b448d3be001e0833f907ddb55bbf3b9639594bd1e0f3a1b4aea7248"
+   ]
+  },
+  {
+   "sourceId": "pmid-23099051",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "23099051",
+   "doi": null,
+   "canonicalCitation": "Yokokawa M, Good E, Crawford T, et al. Recovery from left ventricular dysfunction after ablation of frequent premature ventricular complexes Heart Rhythm. 2013 Feb;10(2):172-5. PMID 23099051.",
+   "citationVariants": [
+    "Yokokawa M, Good E, Crawford T, et al. Recovery from left ventricular dysfunction after ablation of frequent premature ventricular complexes Heart Rhythm. 2013 Feb;10(2):172-5. PMID 23099051."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/23099051/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/23099051/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-premature-atrial-ventricular-contractions-to-cardiomyopathy",
+     "primaryId": "premature-atrial-ventricular-contractions",
+     "targetId": "cardiomyopathy",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "cff88a88ad22737a3b3e500054f9922af47e84c445d19ca7f1a3eebf38cdc59d"
+   ]
+  },
+  {
+   "sourceId": "pmid-20512569",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "20512569",
+   "doi": null,
+   "canonicalCitation": "Kakavand B, Ballard HO, Disessa TG. Frequent ventricular premature beats in children with a structurally normal heart: a cause for reversible left ventricular dysfunction? Pediatr Cardiol. 2010 Oct;31(7):986-90. PMID 20512569.",
+   "citationVariants": [
+    "Kakavand B, Ballard HO, Disessa TG. Frequent ventricular premature beats in children with a structurally normal heart: a cause for reversible left ventricular dysfunction? Pediatr Cardiol. 2010 Oct;31(7):986-90. PMID 20512569."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/20512569/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/20512569/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-premature-atrial-ventricular-contractions-to-cardiomyopathy",
+     "primaryId": "premature-atrial-ventricular-contractions",
+     "targetId": "cardiomyopathy",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "eefe4a964d1d2de1a2b77ae6471e4babbce44bef344ff068cde0053c10164707"
    ]
   }
  ],

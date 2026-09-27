@@ -2,8 +2,76 @@
   "id": "postural-orthostatic-tachycardia-syndrome",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review hemodynamic, vascular, thrombotic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 74 (2026-09-26): one ASSOCIATION_ONLY draft mapping pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: the edge asserts association only (etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true, MICROVASCULAR_METABOLIC) following the orthostatic-hypotension to cognitive-disorder convention. The endpoints are task-state cognitive-test differences rather than diagnosed neurocognitive disorder; the controlled studies are small (22 and 87 participants) with cerebral blood-flow velocity as a perfusion surrogate; the brain-fog record carries a linked erratum (Front Neurosci 2023;17:1178850) noted openly on the reference. Individual claims require dated neuropsychological and autonomic testing with sleep, mood, medication, and metabolic causes excluded and review by a qualified medical professional.",
+    "Pathway and duplicate-scope screens and withheld propositions: no -> dizziness edge (CONSTITUTIVE-PROXIMITY - orthostatic lightheadedness is a defining symptom of the syndrome and would register the presentation as its own secondary condition; divergence recorded openly from the sibling orthostatic-hypotension to dizziness and inappropriate-sinus-tachycardia to dizziness edges, which are left untouched); no -> anxiety-disorder or -> depressive-disorder edges (SHARED-SUBSTRATE plus DIRECTION-INVERSION - autonomic hyperarousal overlaps anxiety symptomatology and mood comorbidity is bidirectional in the literature); no -> chronic-fatigue-syndrome edge (SHARED-SUBSTRATE - the fatigue and exertional-intolerance constructs overlap diagnostically); no -> vasovagal-syncope edge (DIAGNOSTIC-MIMIC - sustained syncope is atypical in postural tachycardia syndrome); no -> migraine-headaches edge (SHARED-SUBSTRATE - comorbidity documented but direction unestablished and shared autonomic substrate confounds). ME-29 discipline: the orthostatic-hypotension to cognitive-disorder edge and its sources (PMID 42732657, 42740891) are left untouched and none is recycled here."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 74 (2026-09-26): one bounded association edge authored - postural-orthostatic-tachycardia-syndrome to cognitive-disorder (rank 1) - classified ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true, mechanismCategory MICROVASCULAR_METABOLIC. The edge rests on the sustained-cognitive-stress study (22 POTS patients versus 18 matched controls: cerebral blood-flow velocity reduction -7.8 versus -1.8 percent, interaction P=0.038; psychomotor slowing 6.1 versus 1.4 percent, interaction P=0.027; concentration difficulty interaction P<0.001, PMID 33280488), the active-standing study (87 POTS participants versus 39 controls: executive-function t-score 48 versus 55, P=0.009; attention reaction speed 2.78 versus 2.69, P<0.001, PMID 32526639), and the neuropathic-POTS brain-fog study (autonomic hyperarousal tracking, improvement after water drinking, PMID 35992935; linked erratum Front Neurosci 2023;17:1178850 carried openly). Sibling-overlap disclosure: the orthostatic-hypotension to cognitive-disorder edge runs a parallel window on a distinct mechanism and its sources are untouched (ME-29)."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "cognitive-disorder",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Postural orthostatic tachycardia syndrome associates with objectively measured cognitive impairment at controlled physiologic-study level: the sustained-cognitive-stress study of 22 POTS patients and 18 matched controls documents greater cerebral blood-flow velocity reduction under prolonged cognitive stress (-7.8 versus -1.8 percent, interaction P=0.038), greater psychomotor slowing (6.1 versus 1.4 percent, interaction P=0.027), and increased concentration difficulty (interaction P<0.001) even without orthostatic stress (PMID 33280488), the active-standing study of 87 POTS participants and 39 controls documents lower executive function during standing (t-score 48 plus or minus 11 versus 55 plus or minus 10, P=0.009) and worse attention (reaction speed 2.78 versus 2.69, P<0.001) (PMID 32526639), and the neuropathic-POTS brain-fog study documents the symptom tracking autonomic hyperarousal with improvement after water drinking (PMID 35992935); recorded as documented association only with the sibling-overlap and small-sample limits carried openly.",
+        "causationStatus": "Neither causation nor aggravation of cognitive-disorder is established for any individual: the quantified deficits are task-state cognitive-test differences rather than diagnosed neurocognitive disorder, the controlled studies are small (22 and 87 participants), cerebral blood-flow velocity is a surrogate for perfusion, orthostatic stress and cognitive load are intertwined so the independent contribution of each is unseparated, and individual claims require dated neuropsychological testing with sleep disorder, medication effect, mood disorder, and thyroid or anemia causes excluded."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MICROVASCULAR_METABOLIC",
+        "primaryVector": "Chronic orthostatic cerebral hypoperfusion and autonomic hyperarousal - the hemodynamic signature of postural tachycardia syndrome - are hypothesized to degrade attention, executive function, and processing speed through reduced and unstable cerebral blood flow, the microvascular route supported by the greater cerebral blood-flow velocity drop under cognitive stress (-7.8 versus -1.8 percent) and by symptom improvement after the water-drinking pressor manoeuvre, but whether this route produced any individual's cognitive complaints remains hypothesized until perfusion and neuropsychological records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association rests on two small controlled physiologic studies (22 and 87 POTS participants) and one small symptom study: the measured endpoints are cognitive-test performance differences under orthostatic or cognitive stress rather than diagnosed neurocognitive disorder, the patient population is a specialty-clinic sample, cerebral blood-flow velocity is a surrogate measure, the brain-fog study is small and intervention-responsive (improvement after water drinking) which supports a functional rather than structural substrate, and comorbid sleep disruption and medication effects are not excluded.",
+        "evidenceGaps": "No large POTS cohort with formal neurocognitive diagnosis was located; the quantified deficits are task-state test differences (executive function, attention, psychomotor speed) in samples of 22, 87, and a small neuropathic-POTS series; cerebral blood-flow velocity is a surrogate for perfusion; orthostatic and cognitive stressors are not fully separable; and the symptom-study record carries a linked erratum (Front Neurosci 2023;17:1178850) noted openly.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "sleep disruption and fatigue commonly comorbid with postural tachycardia syndrome (medication and sleep effects not excluded in the quantified studies)",
+          "anxiety and depressive symptoms with overlapping concentration complaints (shared-substrate limit carried openly; mood edges withheld)",
+          "medication effects including beta-blockers, fludrocortisone, and stimulants used in autonomic treatment",
+          "thyroid dysfunction, anemia, vitamin deficiency, and primary sleep disorders as alternative causes of cognitive complaints"
+        ]
+      },
+      "evidenceGaps": [
+        "No large POTS cohort with formal neurocognitive diagnosis was located; the quantified deficits are task-state test differences (executive function, attention, psychomotor speed) in samples of 22, 87, and a small neuropathic-POTS series; cerebral blood-flow velocity is a surrogate for perfusion; orthostatic and cognitive stressors are not fully separable; and the symptom-study record carries a linked erratum (Front Neurosci 2023;17:1178850) noted openly."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY at controlled-physiologic-study class with the sibling-overlap and small-sample limits carried openly, following the orthostatic-hypotension to cognitive-disorder convention (MICROVASCULAR_METABOLIC): the sustained-cognitive-stress study quantifies cerebral blood-flow velocity reduction and psychomotor slowing beyond controls in 22 POTS patients (PMID 33280488), the active-standing study quantifies executive-function and attention deficits in 87 participants (PMID 32526639), and the brain-fog study documents autonomic-hyperarousal tracking with water-drinking improvement (PMID 35992935); ME-29 discipline: the existing orthostatic-hypotension to cognitive-disorder edge and its sources are left untouched and none is recycled here; because the endpoints are task-state test differences in small samples with perfusion surrogates, the conservative standard keeps the edge at association only and routes individual claims through dated neuropsychological and autonomic testing with sleep, mood, medication, and metabolic causes excluded.",
+      "sourceReferences": [
+        {
+          "citation": "Wells R, Malik V, Brooks AG, et al. Cerebral Blood Flow and Cognitive Performance in Postural Tachycardia Syndrome: Insights from Sustained Cognitive Stress Test J Am Heart Assoc. 2020 Dec 15;9(24):e017861. PMID 33280488.",
+          "note": "Sustained cognitive stress test study (J Am Heart Assoc 2020): 22 POTS patients and 18 matched controls; greater cerebral blood-flow velocity reduction under prolonged cognitive stress (-7.8% vs -1.8%, interaction P=0.038), greater psychomotor slowing (6.1% vs 1.4%, interaction P=0.027), increased concentration difficulty (interaction P<0.001) even without orthostatic stress; supports the bounded physiologic association only (small sample, surrogate perfusion measure).",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33280488/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 33280488; results (CBFv and cognitive responses to prolonged cognitive stress)"
+        },
+        {
+          "citation": "Miller AJ, Sheehan T, Bourne KM, et al. Attention and executive function are impaired during active standing in postural tachycardia syndrome Auton Neurosci. 2020 Sep;227:102692. PMID 32526639.",
+          "note": "Active-standing cognitive study (Auton Neurosci 2020): 87 POTS participants and 39 healthy controls; lower executive function during standing (Stroop t-score 48 +/- 11 vs 55 +/- 10, P=0.009) and worse attention (CogState reaction speed 2.78 vs 2.69, P<0.001); supports the bounded task-state association only (cross-sectional, no diagnostic threshold).",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/32526639/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 32526639; results (executive function and attention during active standing)"
+        },
+        {
+          "citation": "Rodriguez B, Hochstrasser A, Eugster PJ, et al. Brain fog in neuropathic postural tachycardia syndrome may be associated with autonomic hyperarousal and improves after water drinking Front Neurosci. 2022;16:968725. PMID 35992935.",
+          "note": "Neuropathic POTS brain-fog study (Front Neurosci 2022): brain fog common and highly disturbing in neuropathic POTS, associated with autonomic hyperarousal and improving after water drinking; record carries a linked erratum (Front Neurosci 2023;17:1178850) noted openly; supports the bounded functional-substrate association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35992935/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 35992935; results (autonomic hyperarousal and water-drinking response)"
+        }
+      ]
+    }
+  ]
 }

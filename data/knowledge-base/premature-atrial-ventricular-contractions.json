@@ -2,8 +2,76 @@
   "id": "premature-atrial-ventricular-contractions",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review hemodynamic, vascular, thrombotic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 74 (2026-09-26): one ASSOCIATION_ONLY draft mapping pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: the edge asserts association only (etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true, NOT_ESTABLISHED mechanism following the cardiac-arrhythmia to cardiomyopathy convention). The evidence is ventricular-ectopy specific and the catalog identity combines atrial and ventricular premature contractions, so the atrial side is unquantified in the located literature (recorded as an evidence gap, not an assertion). The reversibility signal (ejection-fraction normalization in 68 percent within four months of ablation, PMID 23099051; all four pediatric cases normalized after ectopy resolution or therapy, PMID 20512569) is carried openly as directional weight while reverse causation (cardiomyopathy generating ectopy) remains unexcluded in the retrospective designs; ectopy-burden thresholds vary across studies (15-19 percent adult, 5 percent pediatric). Individual claims require dated Holter burden, echocardiographic, and cardiac-MRI records with ischemic, hypertensive, valvular, familial, and toxic cardiomyopathy excluded and review by a qualified medical professional.",
+    "Pathway and duplicate-scope screens and withheld propositions: no -> congestive-heart-failure edge (INTERMEDIATE-NODE - the published cardiomyopathy to congestive-heart-failure edge owns the downstream route; no chain shortcut authored); no -> cardiac-arrhythmia edge (UMBRELLA/IDENTITY-DUPLICATION - premature contractions are themselves arrhythmias registered under the umbrella identity); no -> atrial-fibrillation proposition (MISSING IDENTITY - the catalog carries no atrial-fibrillation identity; the documented premature-atrial-contraction to atrial-fibrillation risk signal is preserved here as evidence, the sixth evidence-preserving refusal after nightmare-disorder, nocturnal-enuresis, overactive-bladder, phantom-limb-pain, and giant-cell-arteritis); no -> muscle-atrophy or -> chronic-heart-failure propositions (ZERO RECORD). ME-29 discipline: the cardiac-arrhythmia to cardiomyopathy edge and its sources (PMID 38811098) are left untouched and none is recycled here; the parallel-targeting overlap (two distinct arrhythmia-family primaries into one target) is recorded openly (CRG redundancy-semantics follow-up, eighth accumulated example) with the published edge untouched."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 74 (2026-09-26): one bounded association edge authored - premature-atrial-ventricular-contractions to cardiomyopathy (rank 1) - classified ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true. The edge rests on the consecutive 214-patient ablation cohort (reduced ejection fraction in 24 percent; ectopy burden 19 versus 15 percent; QRS dispersion and BMI independent predictors, PMID 24612052), the 264-patient consecutive PVC cohort (dysfunction in 87 of 264, 33 percent; ejection-fraction normalization in 68 percent within four months of ablation, PMID 23099051), and the pediatric frequent-ventricular-ectopy series (cardiomyopathy in 4 of 28 with burden at or above 5 percent; normalization in all four after ectopy resolution or antiarrhythmic therapy, PMID 20512569). The ectopy-suppression reversibility signal carries directional weight while reverse causation remains unexcluded in the retrospective designs. Parallel-targeting disclosure (CRG redundancy-semantics follow-up): the published cardiac-arrhythmia to cardiomyopathy edge runs a parallel window and is left untouched (ME-29). Sixth evidence-preserving refusal recorded on the file: the premature-atrial-contraction to atrial-fibrillation risk signal has no catalog target identity."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "cardiomyopathy",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Frequent premature ventricular contractions associate with left-ventricular dysfunction and reversible cardiomyopathy at consecutive-cohort and pediatric-series level: the consecutive 214-patient ablation cohort documents reduced ejection fraction in 24 percent with higher ectopy burden in the reduced-function group (19 versus 15 percent) and QRS-dispersion and body-mass-index as independent predictors (PMID 24612052), the 264-patient consecutive PVC cohort documents left-ventricular dysfunction in 87 (33 percent) with ejection-fraction normalization in 68 percent within four months of ablation (PMID 23099051), and the pediatric frequent-ventricular-ectopy series (burden at or above 5 percent) documents cardiomyopathy in 4 of 28 with cardiac function normalizing in all four after ectopy resolution or antiarrhythmic therapy (PMID 20512569); recorded as documented association only with the ectopy-window and reversibility limits carried openly - the evidence is ventricular-ectopy specific and atrial-ectopy cardiomyopathy risk is unquantified in the located literature.",
+        "causationStatus": "Neither causation nor aggravation of cardiomyopathy is established for any individual: the cardiomyopathy designation rests on ejection-fraction thresholds rather than tissue diagnosis, retrospective single-centre cohorts cannot separate ectopy-driven dysfunction from pre-existing cardiomyopathy producing ectopy, ectopy-burden thresholds vary across studies (15-19 percent in adults, 5 percent in children), treatment with ablation or antiarrhythmic therapy confounds natural history though normalization after ectopy suppression supports the direction, and individual claims require dated Holter burden, echocardiographic, and cardiac-MRI records with ischemic, hypertensive, valvular, familial, and toxic cardiomyopathy excluded."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "NOT_ESTABLISHED",
+        "primaryVector": "High-burden ventricular ectopy with abnormal myocardial activation is hypothesized to produce dyssynchronous contraction and adverse remodeling culminating in dilated cardiomyopathy, a route supported by ejection-fraction normalization after ectopy suppression in the 264-patient cohort (68 percent within four months) and all four pediatric cases, but the precise mechanism (dyssynchrony, rate burden, calcium-handling derangement) is not established and whether it produced any individual's cardiomyopathy remains hypothesized until burden and imaging records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association rests on two single-centre consecutive adult cohorts (214 and 264 patients) and one 28-patient pediatric chart series with only four cardiomyopathy cases: the designation is ejection-fraction-based rather than tissue-diagnosed, ectopy burden overlaps between affected and unaffected patients (19 versus 15 percent) so burden alone does not discriminate, reverse causation (cardiomyopathy generating ectopy) is not excluded in retrospective data, pediatric numbers are very small, and normalization after suppression supports but does not prove the ectopy-driven route.",
+        "evidenceGaps": "No prospective cohort of ectopy-positive patients free of structural disease at baseline with incident-cardiomyopathy follow-up was located; the quantified dysfunction fractions come from referral populations (ablation candidates, consecutive clinic series) subject to selection; ectopy-burden thresholds vary (15-19 percent adult, 5 percent pediatric); atrial-ectopy-specific cardiomyopathy risk is unquantified; and reverse causation is unexcluded in the retrospective designs.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "pre-existing dilated or ischemic cardiomyopathy generating the ectopy (reverse causation, unexcluded in retrospective designs)",
+          "ischemic heart disease, hypertension, valvular disease, myocarditis, familial cardiomyopathy, and alcohol or cardiotoxic exposure",
+          "tachycardia-mediated cardiomyopathy from sustained arrhythmia rather than ectopy itself",
+          "obstructive sleep apnea and obesity (body-mass-index an independent predictor in the 214-patient cohort)"
+        ]
+      },
+      "evidenceGaps": [
+        "No prospective cohort of ectopy-positive patients free of structural disease at baseline with incident-cardiomyopathy follow-up was located; the quantified dysfunction fractions come from referral populations (ablation candidates, consecutive clinic series) subject to selection; ectopy-burden thresholds vary (15-19 percent adult, 5 percent pediatric); atrial-ectopy-specific cardiomyopathy risk is unquantified; and reverse causation is unexcluded in the retrospective designs."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY at consecutive-cohort-plus-reversibility class following the cardiac-arrhythmia to cardiomyopathy convention (NOT_ESTABLISHED): the 214-patient ablation cohort quantifies reduced ejection fraction in 24 percent with elevated ectopy burden (PMID 24612052), the 264-patient cohort quantifies dysfunction in 33 percent with normalization in 68 percent after ablation (PMID 23099051), and the pediatric series documents reversible cardiomyopathy in 4 of 28 with ectopy at or above 5 percent (PMID 20512569); the ectopy-suppression reversibility signal (normalization after burden removal in both adult and pediatric series) carries directional weight in the association framing while reverse causation remains unexcluded; withheld propositions recorded on the file include the congestive-heart-failure edge (intermediate-node discipline - the published cardiomyopathy to congestive-heart-failure path owns the downstream route) and the umbrella-registration limit (premature contractions are themselves arrhythmias).",
+      "sourceReferences": [
+        {
+          "citation": "Kawamura M, Badhwar N, Vedantham V, et al. Coupling interval dispersion and body mass index are independent predictors of idiopathic premature ventricular complex-induced cardiomyopathy J Cardiovasc Electrophysiol. 2014 Jul;25(7):756-62. PMID 24612052.",
+          "note": "Consecutive ablation-cohort study (2014): 214 patients referred for PVC ablation; reduced ejection fraction in 24%; PVC burden higher in the reduced-function group (19% vs 15%); QRS dispersion and BMI independent predictors; supports the bounded burden-dysfunction association only (referral population, retrospective).",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/24612052/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 24612052; results (ejection fraction, burden, and predictors)"
+        },
+        {
+          "citation": "Yokokawa M, Good E, Crawford T, et al. Recovery from left ventricular dysfunction after ablation of frequent premature ventricular complexes Heart Rhythm. 2013 Feb;10(2):172-5. PMID 23099051.",
+          "note": "Consecutive PVC cohort (2012): 264 patients; left-ventricular dysfunction in 87 (33%); ejection-fraction normalization in 68% within 4 months of catheter ablation; supports the bounded reversible-cardiomyopathy association only (treatment-confounded natural history).",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/23099051/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 23099051; results (dysfunction prevalence and post-ablation recovery)"
+        },
+        {
+          "citation": "Kakavand B, Ballard HO, Disessa TG. Frequent ventricular premature beats in children with a structurally normal heart: a cause for reversible left ventricular dysfunction? Pediatr Cardiol. 2010 Oct;31(7):986-90. PMID 20512569.",
+          "note": "Pediatric chart-review series (Pediatr Cardiol 2010): 28 patients under 18 with frequent ventricular premature beats (burden >=5%/24h); cardiomyopathy in 4 (14%); cardiac function normalized in all four with spontaneous ectopy resolution or antiarrhythmic therapy; supports the bounded reversible association only (very small series).",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/20512569/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 20512569; results (cardiomyopathy incidence and normalization)"
+        }
+      ]
+    }
+  ]
 }

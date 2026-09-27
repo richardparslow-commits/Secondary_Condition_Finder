@@ -2,8 +2,129 @@
   "id": "postpartum-thyroiditis",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review hormonal, metabolic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 74 (2026-09-26): two ASSOCIATION_ONLY draft mappings pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: the edges assert association only (etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true) - hypothyroidism at METABOLIC_OR_NUTRITIONAL following the thyroiditis convention, depressive-disorder at PSYCHOPHYSIOLOGICAL following the batch-71/73 mood-edge precedent. The hypothyroidism edge carries the shared-substrate limit openly (the postpartum-thyroiditis episode and the later gland failure share one autoimmune process so the episode may mark rather than cause the failure) and the biochemical-permanence definition limit. The depressive-disorder edge carries conflicting meta-analytic evidence openly (pooled RR 1.49 in the 2020 marker meta-analysis versus null in the 2023 updated meta-analysis, own-cohort OR 0.79, pooled OR 1.93 non-significant at I-squared 79 percent, PMID 37486224 registered as explicit null counterweight), the composite-endpoint limit (the nationwide anchor measures psychiatric-disorders composite, IRR 1.88), the window-scope limit (postpartum autoimmune thyroid disorder, dominated by but wider than postpartum thyroiditis), and the direction-inversion counterweight (psychiatric disorders preceding autoimmune thyroid disease at IRR 2.16 in the same cohort); individual claims require dated thyroid-function, antibody, and psychiatric records with pre-existing mood disorder, gestational thyroid dysfunction, iodine, and medication causes excluded and review by a qualified medical professional.",
+    "Pathway and duplicate-scope screens and withheld propositions: no -> cardiac-arrhythmia edge during the thyrotoxic phase (MANIFESTATION-IDENTITY plus INTERMEDIATE-NODE - the transient hyperthyroid phase is itself hyperthyroidism and the published hyperthyroidism to cardiac-arrhythmia window owns that route; no evidence recycled per ME-29); no -> thyroid-cancer or -> goiter edges (ZERO RECORD in this window); no -> cognitive-disorder or -> chronic-fatigue-syndrome edges (BELOW THRESHOLD - no postpartum-thyroid-specific quantification located); no -> postpartum-depression-specific or anxiety-disorder edges beyond the depressive-disorder edge (the composite anchor does not support member-level further splitting). ME-29 discipline: the published thyroiditis to hypothyroidism and hyperthyroidism to hypothyroidism edges and their sources are left untouched and none is recycled here."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 74 (2026-09-26): two bounded association edges authored - postpartum-thyroiditis to hypothyroidism (rank 1) and to depressive-disorder (rank 2) - classified ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, and hypothesizedOnly:true. The hypothyroidism edge rests on the 412-women prospective gestation-to-12-months cohort (PPT in 63, 15.3 percent; permanent hypothyroidism in 34 of those 63, 54 percent, PMID 32362873) and the 8.1-year follow-up of 45 patients from an unselected 641-pregnancy population (persistent hypothyroidism in 14 of 45; 56 percent probability after hypothyroid-phase episodes; zero after hyperthyroid-only episodes; newborn female sex RR 3.88, PMID 16279852). The depressive-disorder edge rests on the Danish nationwide cohort of 312,779 first-time mothers (first-onset postpartum autoimmune thyroid disease to first-onset psychiatric disorders IRR 1.88, 95% CI 1.25-2.81, PMID 28929982) and the TPOAb marker meta-analysis (RR 1.49, 95% CI 1.11-2.00, PMID 31552596), with the explicit null counterweight registered on the edge (PMID 37486224: own-cohort OR 0.79; pooled OR 1.93, P=0.08, I-squared 79 percent) and the within-cohort direction-inversion (psychiatric to thyroid IRR 2.16) carried openly."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "hypothyroidism",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Postpartum thyroiditis associates with subsequent permanent hypothyroidism at prospective-cohort and long-term-follow-up level: the 412-woman prospective cohort followed from gestation to twelve months postpartum documents postpartum thyroiditis in 63 women (15.3 percent) and permanent hypothyroidism in 34 of those 63 (54 percent) (PMID 32362873), and the long-term follow-up of 45 postpartum-thyroiditis patients drawn from an unselected population of 641 pregnant women (episode incidence 7.8 percent) followed 8.1 plus or minus 2.2 years documents persistent hypothyroidism in 14 of 45 with a computed 56 percent probability after an episode featuring a hypothyroid phase and zero progression after hyperthyroidism-only episodes (PMID 16279852); recorded as documented association only with the shared-substrate and definitional limits carried openly - the episode and the later thyroid failure share the same underlying autoimmunity so the episode may mark rather than cause gland failure.",
+        "causationStatus": "Neither causation nor aggravation of hypothyroidism is established for any individual: the postpartum-thyroiditis episode and the subsequent permanent hypothyroidism rest on the same underlying thyroid autoimmunity so the episode can mark rather than cause gland failure, permanence is defined biochemically (persistence at one year) rather than by tissue diagnosis, levothyroxine initiation during or after the episode is not separable from natural history, and individual claims require dated thyroid-function and antithyroid-antibody records with gestational thyroid dysfunction, iodine imbalance, and medication causes excluded."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "METABOLIC_OR_NUTRITIONAL",
+        "primaryVector": "Autoimmune lymphocytic thyroid inflammation in the postpartum year - the defining pathology of postpartum thyroiditis - progresses to permanent follicular failure and declining hormone output in a substantial fraction of affected women, the metabolic-failure route supported by the 54 percent permanent-hypothyroidism fraction in the 412-woman cohort and the 56 percent long-term probability after hypothyroid-phase episodes with none after hyperthyroid-only episodes, but whether this route produced any individual's thyroid failure remains hypothesized until longitudinal thyroid-function and antibody records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at one 412-woman prospective cohort and one 45-patient long-term follow-up drawn from 641 pregnancies with small absolute numbers: permanent hypothyroidism is defined biochemically at one-year persistence, the episode and outcome share thyroid autoimmunity as substrate so the quantified transition is within one disease process, risk stratifiers (newborn female sex relative risk 3.88, TSH magnitude during the episode, maternal age) rest on the 45-patient series, hyperthyroid-only episodes showed zero progression, and no untreated comparison arm exists.",
+        "evidenceGaps": "The quantified anchors are one 412-woman prospective cohort (63 episodes, 34 permanent outcomes) and one 45-patient follow-up series; permanence is defined biochemically (persistence at one year) rather than by tissue diagnosis; levothyroxine initiation is a treatment decision that blurs the permanence endpoint; risk stratifiers (newborn female sex RR 3.88, additional TSH units, maternal age) rest on small numbers; and no cohort separates autoimmune-episode-driven failure from pre-existing chronic thyroiditis.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "underlying chronic autoimmune (Hashimoto) thyroiditis that would have produced hypothyroidism regardless of the postpartum episode (shared-substrate limit carried openly)",
+          "gestational and postpartum iodine excess or deficiency",
+          "postpartum thyroid-hormone physiology and non-thyroidal illness confounding TSH interpretation",
+          "medication effects (amiodarone, lithium, immune checkpoint inhibitors) and pituitary or hypothalamic disease"
+        ]
+      },
+      "evidenceGaps": [
+        "The quantified anchors are one 412-woman prospective cohort (63 episodes, 34 permanent outcomes) and one 45-patient follow-up series; permanence is defined biochemically (persistence at one year) rather than by tissue diagnosis; levothyroxine initiation is a treatment decision that blurs the permanence endpoint; risk stratifiers (newborn female sex RR 3.88, additional TSH units, maternal age) rest on small numbers; and no cohort separates autoimmune-episode-driven failure from pre-existing chronic thyroiditis."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY at prospective-cohort-plus-long-term-follow-up class with the shared-substrate and biochemical-endpoint limits carried openly, following the thyroiditis to hypothyroidism convention (METABOLIC_OR_NUTRITIONAL): the 412-woman prospective cohort quantifies permanent hypothyroidism in 54 percent of the 63 women who developed postpartum thyroiditis (PMID 32362873) and the 8-year follow-up of 45 patients from an unselected 641-pregnancy population quantifies persistent hypothyroidism in 14 of 45 with a 56 percent probability after hypothyroid-phase episodes (PMID 16279852); because the episode and the outcome share thyroid autoimmunity as substrate and permanence is biochemically defined, the conservative standard keeps the edge at association only, records the episode as a marker of an autoimmune process that often culminates in gland failure, and routes individual claims through dated thyroid-function, antibody, and treatment records with gestational, iodine, and medication causes excluded.",
+      "sourceReferences": [
+        {
+          "citation": "Benvenga S. Targeted Antenatal Screening for Predicting Postpartum Thyroiditis and Its Evolution Into Permanent Hypothyroidism Front Endocrinol (Lausanne). 2020;11:220. PMID 32362873.",
+          "note": "Prospective cohort followed gestation to 12 months postpartum (2020): 412 women enrolled; postpartum thyroiditis in 63 (15.3%); permanent hypothyroidism in 34 of the 63 (54%); supports the bounded biochemical transition association only (one-year persistence definition).",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/32362873/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 32362873; results (PPT incidence and permanent hypothyroidism fraction)"
+        },
+        {
+          "citation": "Lucas A, Pizarro E, Granada ML, et al. Postpartum thyroiditis: long-term follow-up Thyroid. 2005 Oct;15(10):1177-81. PMID 16279852.",
+          "note": "Long-term follow-up series (Thyroid 2005): 45 PPT patients from an unselected population of 641 pregnant women (episode incidence 7.8%) followed 8.1 +/- 2.2 years; persistent hypothyroidism in 14 of 45; probability 56% after an episode featuring hypothyroidism; zero progression after hyperthyroidism-only episodes; risk higher with newborn female sex (RR 3.88), higher TSH during the episode, and maternal age; supports the bounded natural-history association only (small series, no untreated arm).",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/16279852/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 16279852; results (persistent hypothyroidism incidence and predictors)"
+        }
+      ]
+    },
+    {
+      "conditionId": "depressive-disorder",
+      "rank": 2,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Postpartum thyroid dysfunction associates with postpartum psychiatric morbidity at nationwide-cohort level with conflicting marker-level meta-analytic support carried openly: the Danish nationwide cohort of 312,779 first-time mothers documents first-onset autoimmune thyroid disorders diagnosed within the postpartum year associating with first-onset psychiatric disorders (incidence rate ratio 1.88, 95% CI 1.25-2.81) (PMID 28929982), the gestational-cohort meta-analysis documents thyroid-peroxidase-antibody positivity associating with postpartum depression at pooled relative risk 1.49 (95% CI 1.11-2.00) (PMID 31552596), and the explicit null counterweight is carried openly: the 2023 population-based prospective cohort and updated meta-analysis found no association of thyroid function or antibody positivity with postpartum depression (own-cohort OR 0.79, 95% CI 0.47-1.33; pooled OR 1.93, 95% CI 0.91-4.10, P=0.08, I-squared 79 percent) (PMID 37486224); recorded as documented association only with the composite-endpoint, window-scope, and direction-inversion limits carried openly.",
+        "causationStatus": "Neither causation nor aggravation of depressive-disorder is established for any individual: the strongest anchor measures a composite psychiatric-disorders endpoint rather than depression isolated, its window is postpartum autoimmune thyroid disorder broadly (dominated by but wider than postpartum thyroiditis), the marker-level literature conflicts with the newest meta-analysis null, the same nationwide cohort documents the reverse direction at incidence rate ratio 2.16 (psychiatric disorders preceding thyroid autoimmunity) so psychological state commonly precedes rather than follows the thyroid dysfunction, and individual claims require dated psychiatric assessment and thyroid-function records with pre-existing mood disorder, adjustment disorder, and medication effects excluded."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "PSYCHOPHYSIOLOGICAL",
+        "primaryVector": "Immune-mediated thyroid inflammation and the hormone-level swings of the postpartum thyrotoxic and hypothyroid phases are hypothesized to destabilize mood regulation through neuroendocrine and inflammatory signalling, but the route is carried as hypothesis only: the marker-level meta-analytic evidence conflicts (relative risk 1.49 versus null), the nationwide cohort's signal attaches to a composite psychiatric endpoint, and whether any individual's depressive episode followed this route remains unestablished until thyroid and psychiatric timelines are reviewed side by side.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The evidence is internally conflicted and scope-limited: the strongest anchor (312,779 women) measures first-onset psychiatric disorders as a composite (depressive, anxiety, stress, and other diagnoses) rather than depressive-disorder isolated and its postpartum-autoimmune-thyroid window is wider than postpartum thyroiditis; the marker-level meta-analyses disagree (RR 1.49 versus OR 1.93 non-significant with I-squared 79 percent heterogeneity, the 2023 own-cohort null OR 0.79); the association may reflect shared autoimmunity, health-care contact, or ascertainment rather than a thyroid-to-mood route; and the reverse direction (IRR 2.16) is documented in the same cohort.",
+        "evidenceGaps": "No postpartum-thyroiditis-specific depression cohort with structured psychiatric diagnosis was located; the quantified nationwide signal is a composite psychiatric-disorders endpoint within a broader postpartum autoimmune thyroid window; the marker-level literature (TPOAb positivity as a predictor of postpartum depression) is heterogeneous (I-squared 79 percent) and null in the newest meta-analysis; and the same cohort documents psychiatric disorders preceding autoimmune thyroid disease at IRR 2.16 so temporal direction is contested.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "pre-existing mood disorder antedating pregnancy (individual claims require documented pre-pregnancy psychiatric history)",
+          "adjustment disorder, sleep deprivation, and the ordinary postpartum mood lability of the peripartum period",
+          "shared autoimmunity or health-care-contact ascertainment rather than a thyroid-to-mood route (shared-substrate limit carried openly)",
+          "medication effects including levothyroxine initiation and glucocorticoids; substance use and psychosocial adversity"
+        ]
+      },
+      "evidenceGaps": [
+        "No postpartum-thyroiditis-specific depression cohort with structured psychiatric diagnosis was located; the quantified nationwide signal is a composite psychiatric-disorders endpoint within a broader postpartum autoimmune thyroid window; the marker-level literature (TPOAb positivity as a predictor of postpartum depression) is heterogeneous (I-squared 79 percent) and null in the newest meta-analysis; and the same cohort documents psychiatric disorders preceding autoimmune thyroid disease at IRR 2.16 so temporal direction is contested."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY at nationwide-cohort class with conflicting marker-level meta-analytic evidence carried openly in both directions, following the PSYCHOPHYSIOLOGICAL mood-edge convention (phantom-limb-pain batch-71 and postherpetic-neuralgia batch-73 precedents): the Danish nationwide cohort of 312,779 first-time mothers quantifies first-onset psychiatric disorders after postpartum autoimmune thyroid disease at IRR 1.88 (PMID 28929982), the positive marker-level meta-analysis quantifies postpartum-depression risk with TPOAb positivity at RR 1.49 (PMID 31552596), and the explicit null counterweight is registered on the edge itself (PMID 37486224: own-cohort OR 0.79, pooled OR 1.93 non-significant, I-squared 79 percent); because the endpoint is composite, the window is broader than postpartum thyroiditis, and the same cohort documents the reverse direction at IRR 2.16, the conservative standard keeps the edge at association only with the direction-inversion, window-scope, and composite-endpoint limits stated on the record, and routes individual claims through dated thyroid and psychiatric timelines with pre-existing mood disorder excluded.",
+      "sourceReferences": [
+        {
+          "citation": "Bergink V, Pop VJM, Nielsen PR, et al. Comorbidity of autoimmune thyroid disorders and psychiatric disorders during the postpartum period: a Danish nationwide register-based cohort study Psychol Med. 2018 Jun;48(8):1291-1298. PMID 28929982.",
+          "note": "Danish nationwide cohort study of 312,779 women with a first-time pregnancy (2018): first-onset autoimmune thyroid disorders diagnosed in the postpartum period associated with first-onset psychiatric disorders (IRR 1.88, 95% CI 1.25-2.81); reverse direction documented in the same cohort (psychiatric disorders preceding autoimmune thyroid disease, IRR 2.16); supports the bounded composite-endpoint association only with direction-inversion carried openly.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/28929982/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 28929982; results (incidence rate ratios both directions)"
+        },
+        {
+          "citation": "Minaldi E, D'Andrea S, Castellini C, et al. Thyroid autoimmunity and risk of post-partum depression: a systematic review and meta-analysis of longitudinal studies J Endocrinol Invest. 2020 Mar;43(3):271-277. PMID 31552596.",
+          "note": "Meta-analysis of thyroid peroxidase antibody positivity and postpartum depression (2020): pooled relative risk 1.49 (95% CI 1.11-2.00) across included studies; supports the bounded marker-level association only (TPOAb positivity is a risk marker, not postpartum thyroiditis itself).",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/31552596/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 31552596; results (pooled relative risk)"
+        },
+        {
+          "citation": "Sileo F, Osinga JAJ, Visser WE, et al. Association of gestational thyroid function and thyroid peroxidase antibody positivity with postpartum depression: a prospective cohort study and systematic literature review with meta-analysis Eur J Endocrinol. 2023 Aug 2;189(2):S26-S36. PMID 37486224.",
+          "note": "Population-based prospective cohort and systematic review with meta-analysis (Eur J Endocrinol 2023): no association of gestational thyroid function or TPOAb positivity with postpartum depression (own-cohort TPOAb OR 0.79, 95% CI 0.47-1.33; pooled OR 1.93, 95% CI 0.91-4.10, P=0.08, I-squared 79%); registered as the explicit null counterweight on this edge.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/37486224/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 37486224; results and conclusions (null association, heterogeneous meta-analysis)"
+        }
+      ]
+    }
+  ]
 }
