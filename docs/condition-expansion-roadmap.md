@@ -4162,3 +4162,69 @@ consecutive batch with no manual fixture bump. Residue clean outside the standin
 (apply-all-94's historical `explicitPublicationGuards: 273`; wave-5's `toBeGreaterThanOrEqual(276)`
 catalog floor; legal-copy's `38 U.S.C. § 1117` statute text). Standing recommendation: batch 76 lands
 through branch, PR, CI, and merge.
+
+Mapping Expansion D1 batch 77 (2026-09-26) authored three draft-quarantined relationships across two of
+the five queue identities and deferred three identities without edges. pyoderma-gangrenosum -> scars
+(rank 1, MULTIFACTORIAL) follows the fournier -> scars precedent (POST_SURGICAL_OR_TREATMENT there,
+MULTIFACTORIAL here because the scarring route runs through chronic ulceration, inflammatory tissue
+destruction and repeated surgical intervention together) and rests on the chronic-scarring case record
+(PMID 30022021), the cicatricial-ectropion case (scarring facial involvement, PMID 24410585), and the
+32-patient Spanish outcomes series (median 19 months to disease control, surgery 15.6 percent, mortality
+9.4 percent, PMID 41424671), with the case-class and healing-outcome limits carried openly (the series
+measures time-to-control and intervention, not scar incidence as a quantified cohort endpoint).
+raynaud-s-phenomenon -> depressive-disorder (rank 1) and -> anxiety-disorder (rank 2), both
+PSYCHOPHYSIOLOGICAL, rest on the controlled primary-Raynaud cohort (81 patients: SF-36 mental component
+41.9 versus 46.1, P = 0.006; extreme anxiety/depression 13.5 percent versus 2.2 percent, P < 0.0001,
+PMID 18766120), the international 720-respondent survey (secondary-Raynaud worst affected; undiagnosed-
+group counterweight recorded, PMID 41546369), and the 210-patient regression cohort (depression explains
+32 percent of quality-of-life variance; anxiety explains 23 percent of severity variance in the reverse
+direction, PMID 38282510), with the direction-inversion, shared-substrate, survey-measure and
+undiagnosed-counterweight limits carried openly and within-batch source sharing across the mood pair
+recorded openly.
+
+Deferred without edges: pyoderma - IDENTITY-DUPLICATION: the impetigo -> nephritis DIRECT_CAUSATION
+window owns the post-streptococcal route and its own evidence names antecedent pyoderma in 66 percent of
+cases (PMIDs 36479753, 18373105 registered to impetigo and not recycled per ME-29).
+quadrilateral-space-syndrome - CASE-REPORT CLASS: the guyon-s-canal-syndrome -> muscle-atrophy
+DIRECT_CAUSATION/PROBABLE precedent is not inherited for broad etiologies or case-report atrophy evidence
+(PMIDs 26075150, 41475871, 39747784, 34815962), the batch-76 pronator-teres holding standing. ranula -
+ZERO secondary-outcome records with direction-guarded obstruction semantics (the ranula obstructs rather
+than follows; the batch-61 mucocele screens stand and PMID 39756581 is registered to mucocele).
+Reopening conditions recorded on all three files.
+
+Notable dispositions: raynaud-s-phenomenon -> digital-ulcers recorded as the EIGHTH evidence-preserving
+refusal with no catalog target identity (after nightmare-disorder, nocturnal-enuresis,
+overactive-bladder, phantom-limb-pain, giant-cell-arteritis, premature-atrial-contraction to atrial-
+fibrillation, and pseudophakic cystoid macular edema), with the vascular-complications cohorts (PMID
+29804150) preserved. pyoderma-gangrenosum -> inflammatory-bowel-disease, -> rheumatoid-arthritis and ->
+malignancy withheld on the direction-guard (upstream associations and paraneoplastic ordering), ->
+pyoderma identity-duplication, -> skin-ulcer manifestation-identity. The mood-pair authoring also records
+an anchor-reversal: the initial call was to withhold both Raynaud mood edges (direction-inversion and
+survey-measure concerns), reversed after PMID 18766120 established itself as a controlled positive
+anchor with cohort-level quantification and an internal comparator; the reversal is recorded here and on
+the files.
+
+Structural-debt note: batch-77 edges produced zero new CRG findings - review-class 13 against baseline 13
+and redundancy 28 against baseline 28 unchanged, violations 0, and the bidirectional-pair count stays at
+4. The batch adds an eleventh accumulated example to the standing CRG redundancy-semantics question (the
+ledger's running count; the batch-76 entry reached ten): within-batch shared-source provenance (PMID
+18766120 shared across both raynaud-s-phenomenon mood edges, the batch-75/76 class) disclosed openly with
+no published edges involved. The question now stands on eleven examples and should be settled before more
+parallel pathway provenance accumulates.
+
+Citation packet regenerated at 409 worksheets / 1,023 reference rows = live citation debt; the verification
+dashboard regenerated at 1,023 rows in 43 reviewer batches (895 distinct sources). Backlog after batch 77:
+**105** undispositioned zero-edge drafts (110 before the batch; two identities left by gaining edges and
+three by recorded deferral). Next-five: `reinke-s-edema`, `renal-toxicity`, `reproductive-cancers`,
+`restless-leg-syndrome`, `retinitis`.
+
+Test-pin note: the sweep touched 54 files and replaced 316 counter tokens in one pass with the per-token
+context predicates carried over unchanged (relationships 769 -> 772, references/uses 1397 -> 1406,
+unverified 1014 -> 1023, pending source entities 890 -> 896, total source entities 1245 -> 1251, explicit
+guards 695 -> 698, clinical references 1392 -> 1401, clinical provenance 1396 -> 1405, and the draft-
+singles counter 300 -> 301 for this batch's single-suggestion identity pyoderma-gangrenosum). The explicit
+fixture token continued to carry the citation-decay-gate debt fixture automatically (1014 -> 1023) -
+seventeenth consecutive batch with no manual fixture bump. Residue clean outside the standing benign
+coincidences (apply-all-94's historical `explicitPublicationGuards: 273`; wave-5's
+`toBeGreaterThanOrEqual(276)` catalog floor; legal-copy's `38 U.S.C. § 1117` statute text). Standing
+recommendation: batch 77 lands through branch, PR, CI, and merge.
