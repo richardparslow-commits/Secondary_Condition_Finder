@@ -6,8 +6,8 @@
  "installedFrom": "Master Registry Discrepancy Resolution 2026",
  "authorityBoundary": "Authoritative for current relationship direction, proposition text, guard state, source linkage, and KB parity; does not establish an individual VA medical nexus.",
  "counts": {
-  "relationships": 760,
-  "explicitPublicationGuards": 686,
+  "relationships": 766,
+  "explicitPublicationGuards": 692,
   "legacyRationaleBoundaries": 74
  },
  "relationships": [
@@ -24345,6 +24345,191 @@
    "sourceReferenceCount": 3,
    "pathwayIntelligencePresent": false,
    "suggestionObjectHash": "437ef9ffcd513b030f016edf378b901c625140ab4da6059a2ec9ba7b752ab771"
+  },
+  {
+   "relationshipId": "rel-prurigo-nodularis-to-depressive-disorder",
+   "primaryId": "prurigo-nodularis",
+   "targetId": "depressive-disorder",
+   "direction": "prurigo-nodularis -> depressive-disorder",
+   "primaryPublicationState": "draft",
+   "rank": 1,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY at population-cohort-plus-patient-survey class with the comorbidity-prevalence and shared-substrate limits carried openly, following the PSYCHOPHYSIOLOGICAL dermatologic mood-edge convention (lichen-planus and lichen-simplex-chronicus batch-53 precedents): the English CPRD cohort quantifies depression comorbidity at 41.1 percent in 2,743 prurigo nodularis patients (PMID 35083742), the PN TREK survey quantifies severity-graded mental-health impact in 132 patients (PMID 40439955), and the comorbidities review anchors the psychiatric-comorbidity framing (PMID 40947069); because the endpoint is cross-sectional comorbidity with atopic dermatitis over half the cohort and the itch-depression relationship is bidirectional, the conservative standard keeps the edge at association only, states the shared-substrate and direction limits on the record, and routes individual claims through dated dermatologic and psychiatric timelines with pre-existing mood disorder excluded."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY at population-cohort-plus-patient-survey class with the comorbidity-prevalence and shared-substrate limits carried openly, following the PSYCHOPHYSIOLOGICAL dermatologic mood-edge convention (lichen-planus and lichen-simplex-chronicus batch-53 precedents): the English CPRD cohort quantifies depression comorbidity at 41.1 percent in 2,743 prurigo nodularis patients (PMID 35083742), the PN TREK survey quantifies severity-graded mental-health impact in 132 patients (PMID 40439955), and the comorbidities review anchors the psychiatric-comorbidity framing (PMID 40947069); because the endpoint is cross-sectional comorbidity with atopic dermatitis over half the cohort and the itch-depression relationship is bidirectional, the conservative standard keeps the edge at association only, states the shared-substrate and direction limits on the record, and routes individual claims through dated dermatologic and psychiatric timelines with pre-existing mood disorder excluded.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), at PSYCHOPHYSIOLOGICAL following the batch-53 dermatologic mood-edge convention (lichen-planus and lichen-simplex-chronicus precedents), with the comorbidity-prevalence, cross-sectional, and shared-substrate limits carried openly: the English CPRD-linked database cohort of 2,743 point-prevalent prurigo nodularis patients documents depression in 41.1 percent and anxiety in 35.4 percent alongside atopic dermatitis in 52.2 percent (PMID 35083742), the US PN TREK cross-sectional survey of 132 patients documents greater mental-health impact in the severe-itch group (worst itch NRS at or above 7 versus 0-2, all patient-reported impacts p<0.001) (PMID 40439955), and the comorbidities review documents depression among the frequent psychiatric comorbidities (PMID 40947069); the quantified figure is cross-sectional coded comorbidity rather than incident depression, atopic dermatitis in over half the cohort carries its own mood burden (shared substrate), the itch-depression relationship is bidirectional so mood state may precede the skin disease, and sources are shared with the anxiety edge within this batch; individual claims route through dated dermatologic and psychiatric records with pre-existing mood disorder, atopic-disease severity, and other pruritic causes excluded.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No longitudinal cohort quantifying incident depressive-disorder among prurigo nodularis patients free of mood disorder at baseline was located; the quantified 41.1 percent is cross-sectional coded comorbidity; the itch-severity mental-health gradient is survey-based (WI-NRS self-report); the third anchor is review class; and the bidirectional itch-depression cycle leaves direction unestablished."
+   ],
+   "sourceIds": [
+    "pmid-35083742",
+    "pmid-40439955",
+    "pmid-40947069"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "75693aa870a32fafa5eacb9261610cb0790bb27ee81e8ee2d2544061a7dd9dcb"
+  },
+  {
+   "relationshipId": "rel-prurigo-nodularis-to-anxiety-disorder",
+   "primaryId": "prurigo-nodularis",
+   "targetId": "anxiety-disorder",
+   "direction": "prurigo-nodularis -> anxiety-disorder",
+   "primaryPublicationState": "draft",
+   "rank": 2,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY at population-cohort-plus-patient-survey class with the shared anchors and shared-substrate limits carried openly, following the PSYCHOPHYSIOLOGICAL dermatologic mood-edge convention (lichen-planus and lichen-simplex-chronicus batch-53 precedents): the English CPRD cohort quantifies anxiety comorbidity at 35.4 percent in 2,743 prurigo nodularis patients (PMID 35083742) with the survey and review anchors shared with the depressive-disorder edge within this batch (PMIDs 40439955, 40947069); because the endpoint is cross-sectional comorbidity and the itch-anxiety relationship is bidirectional, the conservative standard keeps the edge at association only with the shared-substrate and direction limits stated on the record and routes individual claims through dated dermatologic and psychiatric timelines with pre-existing anxiety disorder excluded."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY at population-cohort-plus-patient-survey class with the shared anchors and shared-substrate limits carried openly, following the PSYCHOPHYSIOLOGICAL dermatologic mood-edge convention (lichen-planus and lichen-simplex-chronicus batch-53 precedents): the English CPRD cohort quantifies anxiety comorbidity at 35.4 percent in 2,743 prurigo nodularis patients (PMID 35083742) with the survey and review anchors shared with the depressive-disorder edge within this batch (PMIDs 40439955, 40947069); because the endpoint is cross-sectional comorbidity and the itch-anxiety relationship is bidirectional, the conservative standard keeps the edge at association only with the shared-substrate and direction limits stated on the record and routes individual claims through dated dermatologic and psychiatric timelines with pre-existing anxiety disorder excluded.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), at PSYCHOPHYSIOLOGICAL following the batch-53 dermatologic mood-edge convention, with the comorbidity-prevalence, cross-sectional, and shared-substrate limits carried openly and sources shared with the depressive-disorder edge within this batch (PMIDs 35083742, 40439955, 40947069): the English CPRD-linked cohort of 2,743 point-prevalent patients documents anxiety in 35.4 percent (PMID 35083742), the PN TREK survey of 132 patients documents severity-graded mental-health impact (PMID 40439955), and the comorbidities review documents anxiety among the frequent psychiatric comorbidities (PMID 40947069); the endpoint is cross-sectional coded comorbidity rather than incident anxiety-disorder, atopic dermatitis in 52.2 percent of the cohort carries its own anxiety comorbidity, and the itch-anxiety relationship is bidirectional so psychological state may precede the skin disease; individual claims route through dated dermatologic and psychiatric records with pre-existing anxiety disorder, atopic-disease severity, and other pruritic causes excluded.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No longitudinal cohort quantifying incident anxiety-disorder among prurigo nodularis patients free of anxiety at baseline was located; the quantified 35.4 percent is cross-sectional coded comorbidity shared with the mood edge within this batch; the mental-health impact is survey-based; and the bidirectional itch-anxiety relationship leaves direction unestablished."
+   ],
+   "sourceIds": [
+    "pmid-35083742",
+    "pmid-40439955",
+    "pmid-40947069"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "63086ee7c73df22d75d059cba9fb6b219ec3b031964d451fcdf4d46b5faf0ee2"
+  },
+  {
+   "relationshipId": "rel-prurigo-nodularis-to-insomnia",
+   "primaryId": "prurigo-nodularis",
+   "targetId": "insomnia",
+   "direction": "prurigo-nodularis -> insomnia",
+   "primaryPublicationState": "draft",
+   "rank": 3,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY at patient-survey class with the letter-class and survey-measure limits carried openly: the PN TREK survey quantifies severity-graded sleep disturbance in 132 patients (PMID 40439955), the comorbidities review documents sleep disturbance as a common comorbid domain (PMID 40947069), and the research-letter association documents sleep disturbance tracking itch intensity and severity (PMID 39656658, letter class noted openly on the reference); because the endpoints are patient-reported sleep items rather than diagnosed insomnia disorder and nocturnal pruritus is an unseparated proximate driver, the conservative standard keeps the edge at association only, records the mediation limit on the file, and routes individual claims through dated sleep and dermatologic records with mood, breathing, and medication causes excluded."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY at patient-survey class with the letter-class and survey-measure limits carried openly: the PN TREK survey quantifies severity-graded sleep disturbance in 132 patients (PMID 40439955), the comorbidities review documents sleep disturbance as a common comorbid domain (PMID 40947069), and the research-letter association documents sleep disturbance tracking itch intensity and severity (PMID 39656658, letter class noted openly on the reference); because the endpoints are patient-reported sleep items rather than diagnosed insomnia disorder and nocturnal pruritus is an unseparated proximate driver, the conservative standard keeps the edge at association only, records the mediation limit on the file, and routes individual claims through dated sleep and dermatologic records with mood, breathing, and medication causes excluded.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), at PSYCHOPHYSIOLOGICAL, with the survey-measure and letter-class limits carried openly: the US PN TREK cross-sectional survey of 132 patients documents greater sleep disturbance in the severe-itch group (worst itch NRS at or above 7 versus 0-2, all patient-reported impacts p<0.001) (PMID 40439955), the comorbidities review documents sleep disturbances among the common comorbid domains (PMID 40947069), and the research-letter-class association documents sleep disturbance tracking itch intensity with quality-of-life impairment and disease severity (PMID 39656658; RESEARCH-LETTER CLASS with limited methodological disclosure, carried openly); the quantified sleep outcomes are patient-reported PROM sleep items rather than polysomnographic or structured diagnoses of insomnia disorder, nocturnal pruritus is a plausible proximate driver the designs cannot separate from conditioned insomnia (mediation limit carried openly), and mood comorbidity (41.1 and 35.4 percent in the population cohort) is unexcluded as a driver; individual claims route through dated sleep and dermatologic records with sleep-disordered breathing, restless legs, mood disorder, and medication effects excluded.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No cohort with structured insomnia diagnosis or polysomnographic sleep measurement among prurigo nodularis patients was located; the quantified sleep signal is survey-based (PROM sleep items in 132 patients) with one letter-class anchor (PMID 39656658) noted openly; nocturnal itch is an unseparated proximate driver; and sleep-disordered breathing, restless legs, and mood-related insomnia are unexcluded."
+   ],
+   "sourceIds": [
+    "pmid-40439955",
+    "pmid-40947069",
+    "pmid-39656658"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "65e40aa28339d8fabbb75ad566c0dcd787a2b81f7844a9900893a9895814eb2a"
+  },
+  {
+   "relationshipId": "rel-pruritus-ani-to-depressive-disorder",
+   "primaryId": "pruritus-ani",
+   "targetId": "depressive-disorder",
+   "direction": "pruritus-ani -> depressive-disorder",
+   "primaryPublicationState": "draft",
+   "rank": 1,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY at condition-specific-cohort class with the single-cohort and null-counterweight limits carried openly, following the PSYCHOPHYSIOLOGICAL pruritic mood-edge convention (lichen-simplex-chronicus batch-53 precedent): the 60-patient idiopathic-pruritus-ani cohort quantifies significant aggravation of depressive symptoms (PMID 34658714) and the SICCR practice parameters anchor the refractory-burden framing (PMID 41222470), with the cohort's own nulls registered on the edge itself (no anxiety relationship; no intensity or frequency correlation); because the anchor is single-cohort cross-sectional and the severity null undercuts a simple dose-response, the conservative standard keeps the edge at association only, withholds the anxiety edge on the cohort's own null result, and routes individual claims through dated dermatologic, proctologic, and psychiatric timelines with secondary pruritus causes excluded."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY at condition-specific-cohort class with the single-cohort and null-counterweight limits carried openly, following the PSYCHOPHYSIOLOGICAL pruritic mood-edge convention (lichen-simplex-chronicus batch-53 precedent): the 60-patient idiopathic-pruritus-ani cohort quantifies significant aggravation of depressive symptoms (PMID 34658714) and the SICCR practice parameters anchor the refractory-burden framing (PMID 41222470), with the cohort's own nulls registered on the edge itself (no anxiety relationship; no intensity or frequency correlation); because the anchor is single-cohort cross-sectional and the severity null undercuts a simple dose-response, the conservative standard keeps the edge at association only, withholds the anxiety edge on the cohort's own null result, and routes individual claims through dated dermatologic, proctologic, and psychiatric timelines with secondary pruritus causes excluded.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), at PSYCHOPHYSIOLOGICAL, with the single-cohort limit and the anchor cohort's own nulls registered on the edge as explicit counterweights: the 60-patient cohort of persistent idiopathic pruritus ani with organic causes ruled out documents significant aggravation of depressive symptoms at moderate pruritus intensity with depressive levels varying by cause of pruritus ani (PMID 34658714), and the Italian Society of Colorectal Surgery practice parameters frame the refractory stepwise management ladder (PMID 41222470, guideline class); the SAME cohort found NO relationship for anxiety disorders and NO correlation of depressive or anxiety symptoms with pruritus intensity or frequency - the anxiety edge is withheld on the anchor's own null result and the severity null is carried openly so the association is explicitly not a dose-response; temporality is unestablished, the substrate is heterogeneous (cause-dependent depressive levels), and the itch-mood relationship is bidirectional; individual claims route through dated dermatologic, proctologic, and psychiatric records with pre-existing mood disorder and secondary pruritus causes excluded.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No longitudinal cohort quantifying incident depressive-disorder among idiopathic pruritus ani patients free of mood disorder at baseline was located; the quantified signal is one 60-patient cross-sectional cohort; the same cohort documents null anxiety findings and null intensity correlation (counterweights carried openly); the second anchor is practice-parameter class; and secondary pruritus causes are excluded in the cohort but heterogeneous in practice."
+   ],
+   "sourceIds": [
+    "pmid-34658714",
+    "pmid-41222470"
+   ],
+   "sourceReferenceCount": 2,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "77be29fdfcdbfaba8d6eb287b447b42be80f3467f337e4c38ccf44edde8b9d3d"
+  },
+  {
+   "relationshipId": "rel-pseudobulbar-affect-to-depressive-disorder",
+   "primaryId": "pseudobulbar-affect",
+   "targetId": "depressive-disorder",
+   "direction": "pseudobulbar-affect -> depressive-disorder",
+   "primaryPublicationState": "draft",
+   "rank": 1,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY at matched-cohort class with the shared-substrate, diagnostic-mimic, and treatment-mediated limits carried openly, following the PSYCHOPHYSIOLOGICAL mood-edge convention: the TriNetX matched cohorts quantify post-PBA depressive episodes at 34.7 to 68.7 percent with an etiology-differential HR 2.52 (PMID 42138134), the dementia-PBA cohort documents comorbid mood disorders (PMID 40018468), and the Danish ALS survey documents the antidepressant differential (PMID 41616079, treatment-mediated confounding noted openly); because no non-PBA comparator exists and the diagnostic boundary with depression is contested, the conservative standard keeps the edge at association only, states the shared-substrate and misdiagnosis limits on the record, and routes individual claims through dated neurologic and psychiatric timelines distinguishing emotional lability from mood episodes."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY at matched-cohort class with the shared-substrate, diagnostic-mimic, and treatment-mediated limits carried openly, following the PSYCHOPHYSIOLOGICAL mood-edge convention: the TriNetX matched cohorts quantify post-PBA depressive episodes at 34.7 to 68.7 percent with an etiology-differential HR 2.52 (PMID 42138134), the dementia-PBA cohort documents comorbid mood disorders (PMID 40018468), and the Danish ALS survey documents the antidepressant differential (PMID 41616079, treatment-mediated confounding noted openly); because no non-PBA comparator exists and the diagnostic boundary with depression is contested, the conservative standard keeps the edge at association only, states the shared-substrate and misdiagnosis limits on the record, and routes individual claims through dated neurologic and psychiatric timelines distinguishing emotional lability from mood episodes.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), at PSYCHOPHYSIOLOGICAL, with the shared-substrate, diagnostic-mimic, and treatment-mediated limits carried openly: the TriNetX Global matched retrospective cohorts (2020-2025) with 1,074 propensity-matched patients per etiology document depressive episodes (ICD-10-CM F32) occurring AFTER pseudobulbar affect diagnosis in 68.7 percent of Alzheimer-disease-associated cases versus 34.7 percent of stroke-associated cases (absolute risk difference 34.0 percent, P<0.001; HR 2.52, 95% CI 2.22-2.86) (PMID 42138134), the TriNetX dementia-PBA descriptive cohort documents frequent comorbid anxiety and depressive disorders (PMID 40018468), and the Danish national ALS survey of 157 patients documents antidepressant medication in 47.4 percent of PBA-diagnosed versus 15.2 percent of others (P=0.002) (PMID 41616079); EVERY anchor conditions on underlying neurologic disease (stroke, Alzheimer disease, dementia, ALS) that itself produces both the emotional lability and the mood outcome, and the lead study contrasts two PBA etiologies rather than PBA versus non-PBA patients so the lability effect is unseparated from the substrate; pseudobulbar affect is commonly misdiagnosed as depression so coded F32 outcomes may partly reflect misattribution (diagnostic-mimic limit); antidepressants treat the lability itself so the medication signal conflates treatment with comorbidity (treatment-mediated limit); sources are shared with the anxiety edge within this batch; individual claims route through dated neurologic and psychiatric records distinguishing emotional lability from mood episodes with pre-existing mood disorder and medication effects excluded.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No cohort comparing incident depression in pseudobulbar-affect versus matched non-PBA patients with the same neurologic disease was located; the quantified outcomes are coded ICD-10 F32 diagnoses occurring after PBA diagnosis within two etiology cohorts; the dementia anchor is descriptive and the ALS anchor is a 157-patient cross-sectional survey with treatment-mediated antidepressant confounding; misdiagnosis between emotional lability and depressive episodes is documented in the clinical literature and unexcluded."
+   ],
+   "sourceIds": [
+    "pmid-42138134",
+    "pmid-40018468",
+    "pmid-41616079"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "f3c3d96bdf2368feafc3b4b64ab59f41a7766c8de453cc0768895716219de509"
+  },
+  {
+   "relationshipId": "rel-pseudobulbar-affect-to-anxiety-disorder",
+   "primaryId": "pseudobulbar-affect",
+   "targetId": "anxiety-disorder",
+   "direction": "pseudobulbar-affect -> anxiety-disorder",
+   "primaryPublicationState": "draft",
+   "rank": 2,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY at matched-cohort class with the shared-substrate and diagnostic-overlap limits carried openly, following the PSYCHOPHYSIOLOGICAL mood-edge convention: the TriNetX matched cohorts quantify post-PBA anxiety diagnoses at 24.9 to 48.8 percent with an etiology-differential HR 1.98 (PMID 42138134) and the dementia and ALS anchors are shared with the depressive-disorder edge within this batch (PMIDs 40018468, 41616079); because no non-PBA comparator exists and neurologic symptoms overlap anxiety symptomatology, the conservative standard keeps the edge at association only with the shared-substrate and overlap limits stated on the record and routes individual claims through dated neurologic and psychiatric timelines with pre-existing anxiety disorder excluded."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY at matched-cohort class with the shared-substrate and diagnostic-overlap limits carried openly, following the PSYCHOPHYSIOLOGICAL mood-edge convention: the TriNetX matched cohorts quantify post-PBA anxiety diagnoses at 24.9 to 48.8 percent with an etiology-differential HR 1.98 (PMID 42138134) and the dementia and ALS anchors are shared with the depressive-disorder edge within this batch (PMIDs 40018468, 41616079); because no non-PBA comparator exists and neurologic symptoms overlap anxiety symptomatology, the conservative standard keeps the edge at association only with the shared-substrate and overlap limits stated on the record and routes individual claims through dated neurologic and psychiatric timelines with pre-existing anxiety disorder excluded.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), at PSYCHOPHYSIOLOGICAL, with the shared-substrate and diagnostic-overlap limits carried openly and sources shared with the depressive-disorder edge within this batch (PMIDs 42138134, 40018468, 41616079): the TriNetX Global matched retrospective cohorts with 946 propensity-matched patients per etiology document anxiety disorder, unspecified (ICD-10-CM F41.9) occurring AFTER pseudobulbar affect diagnosis in 48.8 percent of Alzheimer-disease-associated cases versus 24.9 percent of stroke-associated cases (absolute risk difference 23.9 percent, P<0.001; HR 1.98, 95% CI 1.70-2.30) (PMID 42138134); every anchor conditions on underlying neurologic disease that produces both the lability and the anxiety outcome with no non-PBA comparator, neurologic autonomic and apathy symptoms overlap anxiety symptomatology so coded F41.9 diagnoses may partly reflect overlap or misattribution, and the temporal framing is diagnosis-ordering rather than symptom-onset; individual claims route through dated neurologic and psychiatric records with pre-existing anxiety disorder, medication effects, and neurologic-symptom overlap excluded.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No cohort comparing incident anxiety-disorder in pseudobulbar-affect versus matched non-PBA patients with the same neurologic disease was located; the quantified outcome is coded ICD-10 F41.9 diagnosis after PBA diagnosis within two etiology cohorts; sources are shared with the depressive-disorder edge within this batch; and neurologic-symptom overlap with anxiety is unexcluded."
+   ],
+   "sourceIds": [
+    "pmid-42138134",
+    "pmid-40018468",
+    "pmid-41616079"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "d6aeda5779256b8ff671bec6a064d4d992ec665385bb1dbadc6bc65577918c18"
   }
  ],
  "lastUpdatedBy": "batch-D1-draft-authoring",

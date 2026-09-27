@@ -14237,6 +14237,238 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 **Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
 
+### `prurigo-nodularis` → `depressive-disorder` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Prurigo nodularis associates with depression at population-database and patient-survey level: the English CPRD-linked point-prevalent cohort of 2,743 prurigo nodularis patients documents depression in 41.1 percent and anxiety in 35.4 percent alongside atopic dermatitis in 52.2 percent (PMID 35083742), the US PN TREK cross-sectional survey of 132 patients documents greater mental-health impact in the severe-itch group (worst itch NRS at or above 7 versus 0-2, all patient-reported impacts p<0.001) (PMID 40439955), and the comorbidities review documents depression among the frequent psychiatric comorbidities complicating management (PMID 40947069); recorded as documented association only with the comorbidity-prevalence, cross-sectional, and shared-substrate limits carried openly - the quantified figure is cross-sectional comorbidity rather than incident depression, and atopic dermatitis drives both the skin disease and its own mood burden.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation of depressive-disorder is established for any individual: the quantified 41.1 percent is cross-sectional coded comorbidity in a point-prevalent cohort with no temporal ordering, atopic dermatitis in 52.2 percent of the cohort carries independent mood comorbidity so the shared substrate is not separated, the itch-severity gradient in the survey is patient-reported and uncontrolled, the itch-depression relationship is described as bidirectional in the pruritus literature so mood state may precede rather than follow the skin disease, and individual claims require dated dermatologic and psychiatric records with pre-existing mood disorder, atopic-disease severity, and other pruritic causes excluded.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 398.1 — Morgan CL, Thomas M, Ständer S, et al. Epidemiology of prurigo nodularis in England: a retrospective database analysis Br J Dermatol. 2022 Aug;187(2):188-195. PMID 35083742.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/35083742/
+- Source checked on: 2026-09-26
+- Locator: PMID 35083742; results (comorbidity prevalence)
+- Note under review: English CPRD-linked retrospective database analysis (Br J Dermatol 2022): 2,743 point-prevalent prurigo nodularis patients (prevalence 3.27 per 10,000); comorbidity notably atopic dermatitis 52.2%, depression 41.1%, anxiety 35.4%; supports the bounded cross-sectional comorbidity association only (coded prevalence, no temporality).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 398.2 — Kwatra SG, Yang M, Martins B, et al. Prurigo Nodularis PaTient-Reported BurdEn of SicKness (PN TREK): A Cross-Sectional Survey of Patient-Reported Burden of Disease in Patients with PN from the US Adv Ther. 2025 Jul;42(7):3455-3471. PMID 40439955.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/40439955/
+- Source checked on: 2026-09-26
+- Locator: PMID 40439955; results (PROM severity-group comparisons)
+- Note under review: PN TREK US cross-sectional survey (Adv Ther 2025): 132 patients; worst-itch NRS >=7 versus 0-2 groups differed on skin pain, neurological pain, QoL impact, sleep disturbance, mental health, and work productivity (all p<0.001); supports the bounded severity-graded impact association only (self-reported, cross-sectional).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 398.3 — Manjunath J, Akinniyi BU, Kollhoff AL, et al. Comorbidities in prurigo nodularis Clin Dermatol. 2025 Sep-Oct;43(5):681-685. PMID 40947069.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/40947069/
+- Source checked on: 2026-09-26
+- Locator: PMID 40947069; review (psychiatric and sleep comorbidities)
+- Note under review: Comorbidities-in-prurigo-nodularis review (Clin Dermatol 2025): documents frequent psychiatric comorbidities including depression, anxiety, and obsessive-compulsive disorder alongside sleep disturbances and neuropathic pain; supports the bounded comorbidity framing only (review class).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `prurigo-nodularis` → `anxiety-disorder` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Prurigo nodularis associates with anxiety at population-database and patient-survey level: the English CPRD-linked point-prevalent cohort of 2,743 prurigo nodularis patients documents anxiety in 35.4 percent alongside depression in 41.1 percent (PMID 35083742), the US PN TREK cross-sectional survey of 132 patients documents greater mental-health impact in the severe-itch group (worst itch NRS at or above 7, all patient-reported impacts p<0.001) (PMID 40439955), and the comorbidities review documents anxiety among the frequent psychiatric comorbidities complicating management (PMID 40947069); recorded as documented association only with the comorbidity-prevalence, cross-sectional, and shared-substrate limits carried openly - sources are shared with the depressive-disorder edge within this batch and atopic dermatitis drives both the skin disease and its own anxiety burden.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation of anxiety-disorder is established for any individual: the quantified 35.4 percent is cross-sectional coded comorbidity with no temporal ordering, atopic dermatitis in 52.2 percent of the cohort carries independent anxiety comorbidity so the shared substrate is not separated, pruritus-related itch catastrophizing and anxiety are described as bidirectional so psychological state may precede rather than follow the skin disease, and individual claims require dated dermatologic and psychiatric records with pre-existing anxiety disorder, atopic-disease severity, and other pruritic causes excluded.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 399.1 — Morgan CL, Thomas M, Ständer S, et al. Epidemiology of prurigo nodularis in England: a retrospective database analysis Br J Dermatol. 2022 Aug;187(2):188-195. PMID 35083742.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/35083742/
+- Source checked on: 2026-09-26
+- Locator: PMID 35083742; results (comorbidity prevalence)
+- Note under review: English CPRD-linked retrospective database analysis (Br J Dermatol 2022): 2,743 point-prevalent prurigo nodularis patients; anxiety comorbidity 35.4% (depression 41.1%, atopic dermatitis 52.2%); supports the bounded cross-sectional comorbidity association only (shared with the depressive-disorder edge within this batch).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 399.2 — Kwatra SG, Yang M, Martins B, et al. Prurigo Nodularis PaTient-Reported BurdEn of SicKness (PN TREK): A Cross-Sectional Survey of Patient-Reported Burden of Disease in Patients with PN from the US Adv Ther. 2025 Jul;42(7):3455-3471. PMID 40439955.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/40439955/
+- Source checked on: 2026-09-26
+- Locator: PMID 40439955; results (PROM severity-group comparisons)
+- Note under review: PN TREK US cross-sectional survey (Adv Ther 2025): 132 patients; severity-graded mental-health impact (WI-NRS >=7 versus 0-2, p<0.001); supports the bounded severity-graded impact association only (self-reported; shared with the depressive-disorder edge within this batch).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 399.3 — Manjunath J, Akinniyi BU, Kollhoff AL, et al. Comorbidities in prurigo nodularis Clin Dermatol. 2025 Sep-Oct;43(5):681-685. PMID 40947069.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/40947069/
+- Source checked on: 2026-09-26
+- Locator: PMID 40947069; review (psychiatric comorbidities)
+- Note under review: Comorbidities-in-prurigo-nodularis review (Clin Dermatol 2025): documents frequent psychiatric comorbidities including anxiety and depression; supports the bounded comorbidity framing only (review class; shared with the depressive-disorder edge within this batch).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `prurigo-nodularis` → `insomnia` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Prurigo nodularis associates with sleep disturbance at patient-survey and review level: the US PN TREK cross-sectional survey of 132 patients documents greater sleep disturbance in the severe-itch group (worst itch NRS at or above 7 versus 0-2, all patient-reported impacts p<0.001) (PMID 40439955), the comorbidities review documents sleep disturbances among the common neurologic and symptom-domain comorbidities of prurigo nodularis (PMID 40947069), and the research-letter-class association study documents sleep disturbance tracking itch intensity with quality-of-life impairment and disease severity (PMID 39656658, letter class carried openly); recorded as documented association only with the survey-measure and letter-class limits carried openly - the quantified sleep outcomes are patient-reported sleep items rather than polysomnographic diagnoses of insomnia disorder.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation of insomnia is established for any individual: the quantified sleep outcomes are patient-reported PROM sleep items rather than diagnosed insomnia disorder, the third anchor is research-letter class with limited methodological disclosure, all anchors are cross-sectional with nocturnal pruritus a plausible proximate driver rather than the skin diagnosis itself, and individual claims require dated sleep assessment with sleep-study records where indicated and exclusion of sleep-disordered breathing, restless legs, mood disorder, and medication effects.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 400.1 — Kwatra SG, Yang M, Martins B, et al. Prurigo Nodularis PaTient-Reported BurdEn of SicKness (PN TREK): A Cross-Sectional Survey of Patient-Reported Burden of Disease in Patients with PN from the US Adv Ther. 2025 Jul;42(7):3455-3471. PMID 40439955.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/40439955/
+- Source checked on: 2026-09-26
+- Locator: PMID 40439955; results (PROM severity-group comparisons)
+- Note under review: PN TREK US cross-sectional survey (Adv Ther 2025): 132 patients; sleep disturbance among the patient-reported impacts significantly greater at WI-NRS >=7 versus 0-2 (all impacts p<0.001); supports the bounded survey-measure association only (PROM sleep items, not insomnia diagnosis).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 400.2 — Manjunath J, Akinniyi BU, Kollhoff AL, et al. Comorbidities in prurigo nodularis Clin Dermatol. 2025 Sep-Oct;43(5):681-685. PMID 40947069.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/40947069/
+- Source checked on: 2026-09-26
+- Locator: PMID 40947069; review (sleep and neurologic comorbidities)
+- Note under review: Comorbidities-in-prurigo-nodularis review (Clin Dermatol 2025): documents sleep disturbances among the common comorbid domains alongside neuropathic pain and central sensitization; supports the bounded comorbidity framing only (review class).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 400.3 — Lu W, Yossef SM, Ma EZ, et al. Association of sleep disturbance and itch intensity with quality-of-life impairment and disease severity in prurigo nodularis Br J Dermatol. 2025 Mar 18;192(4):755-757. PMID 39656658.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/39656658/
+- Source checked on: 2026-09-26
+- Locator: PMID 39656658; research letter (sleep disturbance and itch intensity association)
+- Note under review: Association of sleep disturbance and itch intensity with quality-of-life impairment and disease severity in prurigo nodularis (Br J Dermatol 2025 research letter): documents sleep disturbance tracking itch intensity with QoL impairment and disease severity; RESEARCH-LETTER CLASS with limited methodological disclosure, noted openly; supports the bounded association only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `pruritus-ani` → `depressive-disorder` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Idiopathic pruritus ani associates with aggravated depressive symptoms at condition-specific cohort level: the 60-patient cohort of persistent pruritus ani with organic causes ruled out documents a significant negative effect of the pruritus on psychological functioning with significant aggravation of depressive symptoms despite moderate pruritus intensity, the level of depressive symptoms varying with the cause of pruritus ani (PMID 34658714), and the Italian Society of Colorectal Surgery practice parameters frame idiopathic pruritus ani within a stepwise behavioural and therapeutic ladder extending to refractory interventions (PMID 41222470); recorded as documented association only with the single-cohort and null-counterweight limits carried openly - the same cohort found NO relationship for anxiety disorders and NO correlation of depressive or anxiety symptoms with pruritus intensity or frequency, both carried openly on the file.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation of depressive-disorder is established for any individual: the quantified signal is one 60-patient cross-sectional cohort with no temporal ordering, the same cohort found no correlation between depressive symptoms and pruritus intensity or frequency so severity does not track the mood signal, the cause of pruritus ani influenced depressive levels so the substrate is heterogeneous, the itch-scratch-discomfort burden is chronic and bidirectional with mood state able to precede the pruritus, and individual claims require dated dermatologic and proctologic and psychiatric records with pre-existing mood disorder, perianal skin disease, and secondary pruritus causes excluded.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 401.1 — Hadasik K, Arasiewicz H, Brzezińska-Wcisło L. Assessment of the anxiety and depression among patients with idiopathic pruritus ani Postepy Dermatol Alergol. 2021 Aug;38(4):689-693. PMID 34658714.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/34658714/
+- Source checked on: 2026-09-26
+- Locator: PMID 34658714; results and conclusions (depression signal with anxiety and intensity nulls)
+- Note under review: Condition-specific cohort of 60 patients with persistent idiopathic pruritus ani, organic causes ruled out (Postepy Dermatol Alergol 2021): significant aggravation of depressive symptoms despite moderate pruritus intensity; depressive levels influenced by the cause of pruritus ani; NO relationship for anxiety disorders and NO correlation of depressive/anxiety symptoms with pruritus intensity or frequency (counterweights carried openly); supports the bounded association only (single cross-sectional cohort).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 401.2 — Marino F, Martellucci J, Giuffrida MC, et al. Practice Parameters for Evaluation and Management of Pruritus Ani on Behalf of the Italian Society of Colorectal Surgery (SICCR) J Cutan Med Surg. 2025 Nov 12:12034754251391800. PMID 41222470.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/41222470/
+- Source checked on: 2026-09-26
+- Locator: PMID 41222470; practice parameters (idiopathic PA management ladder)
+- Note under review: Practice Parameters for Evaluation and Management of Pruritus Ani, Italian Society of Colorectal Surgery (J Cutan Med Surg 2025): stepwise management of idiopathic pruritus ani from irritant elimination through topical and systemic therapy to methylene-blue injection for refractory situations; supports the bounded refractory-burden framing only (guideline class).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `pseudobulbar-affect` → `depressive-disorder` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Pseudobulbar affect associates with subsequently diagnosed depressive episodes at matched-cohort level: the TriNetX retrospective cohort study (2020-2025) with 1,074 propensity-matched patients per etiology cohort documents depressive episodes (ICD-10-CM F32) occurring AFTER pseudobulbar affect diagnosis in 68.7 percent of Alzheimer-disease-associated cases versus 34.7 percent of stroke-associated cases (absolute risk difference 34.0 percent, P<0.001; HR 2.52, 95% CI 2.22-2.86) (PMID 42138134), the TriNetX dementia-pseudobulbar-affect cohort documents frequent comorbid anxiety and depressive disorders complicating management (PMID 40018468), and the Danish national ALS survey of 157 patients documents antidepressant medication in 47.4 percent of the PBA-diagnosed versus 15.2 percent of the remainder (P=0.002) (PMID 41616079); recorded as documented association only with the shared-substrate, diagnostic-mimic, and treatment-mediated limits carried openly - every anchor conditions on underlying neurologic disease that itself produces both the emotional lability and the mood outcome, and no non-PBA comparator cohort is included.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation of depressive-disorder is established for any individual: the design contrasts two PBA etiologies rather than PBA versus non-PBA patients so the emotional-lability effect cannot be separated from the underlying stroke or neurodegeneration, depression and pseudobulbar affect share the neurologic substrate and the diagnostic boundary is contested (pseudobulbar affect is commonly misdiagnosed as depression so coded F32 diagnoses may partly reflect misdiagnosis), antidepressants are used to treat pseudobulbar affect itself so the medication signal conflates treatment with comorbidity, and individual claims require dated neurologic and psychiatric records distinguishing emotional lability from mood episodes with pre-existing mood disorder and medication effects excluded.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 402.1 — Dereschuk KJ, Asay CC, Espiridion ED. Depression and Anxiety in Stroke-Related and Alzheimer Disease-Related Pseudobulbar Affect: A TriNetX Retrospective Cohort Study Alzheimer Dis Assoc Disord. 2026 Apr-Jun 01;40(2):129-134. PMID 42138134.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42138134/
+- Source checked on: 2026-09-26
+- Locator: PMID 42138134; results (depression and anxiety rates, HRs by etiology)
+- Note under review: TriNetX Global retrospective cohort 2020-2025 (Alzheimer Dis Assoc Disord 2026): 1,074 propensity-matched patients per etiology cohort; depressive episodes (ICD-10-CM F32) after PBA diagnosis in 68.7% of Alzheimer-PBA versus 34.7% of stroke-PBA (ARD 34.0%, P<0.001; HR 2.52, 95% CI 2.22-2.86); anxiety (F41.9) 48.8% versus 24.9% (HR 1.98); supports the bounded post-diagnosis association only (no non-PBA comparator, coded outcomes).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 402.2 — Charron L, Espiridion ED. Pseudobulbar Affect Among Patients With Dementia Cureus. 2025 Jan;17(1):e78116. PMID 40018468.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/40018468/
+- Source checked on: 2026-09-26
+- Locator: PMID 40018468; results (comorbid mood disorders in the cohort)
+- Note under review: TriNetX dementia-pseudobulbar-affect cohort description (Cureus 2025): cohort of patients with both PBA and dementia documenting frequent comorbid psychiatric disorders including anxiety and depressive disorders complicating management; supports the bounded comorbidity framing only (descriptive cohort).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 402.3 — Steenkjaer CH, Storgaard JH, Levison L, et al. A national survey of pseudobulbar affect and symptomatic treatment in Amyotrophic Lateral Sclerosis Amyotroph Lateral Scler Frontotemporal Degener. 2026 Aug;27(5-6):565-571. PMID 41616079.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/41616079/
+- Source checked on: 2026-09-26
+- Locator: PMID 41616079; results (PBA prevalence and antidepressant differential)
+- Note under review: Danish national cross-sectional ALS survey (Amyotroph Lateral Scl Frontotemporal Degener 2026): 157 participants; PBA diagnosed in 12.1%, antidepressant medication 47.4% in PBA-diagnosed versus 15.2% in others (P=0.002); 30.6% screened positive on CNS-LS; supports the bounded treatment-signal association only (antidepressant use conflates PBA treatment with depression treatment).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `pseudobulbar-affect` → `anxiety-disorder` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Pseudobulbar affect associates with subsequently diagnosed anxiety disorders at matched-cohort level: the TriNetX retrospective cohort study (2020-2025) with 946 propensity-matched patients per etiology cohort documents anxiety disorder, unspecified (ICD-10-CM F41.9) occurring AFTER pseudobulbar affect diagnosis in 48.8 percent of Alzheimer-disease-associated cases versus 24.9 percent of stroke-associated cases (absolute risk difference 23.9 percent, P<0.001; HR 1.98, 95% CI 1.70-2.30) (PMID 42138134), with the dementia-pseudobulbar-affect cohort documenting frequent comorbid anxiety alongside depressive disorders (PMID 40018468) and the Danish national ALS survey documenting the psychiatric-treatment differential in PBA-diagnosed patients (PMID 41616079, sources shared with the depressive-disorder edge within this batch); recorded as documented association only with the shared-substrate and diagnostic-mimic limits carried openly - the design contrasts two PBA etiologies rather than PBA versus non-PBA patients and the underlying neurologic disease produces both the lability and the anxiety outcome.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation of anxiety-disorder is established for any individual: there is no non-PBA comparator so the emotional-lability effect is unseparated from the underlying stroke or neurodegeneration, autonomic and apathy symptoms of the neurologic diseases overlap anxiety symptomatology so coded F41.9 diagnoses may partly reflect overlap or misattribution, the temporal framing is diagnosis-ordering rather than symptom-onset, and individual claims require dated neurologic and psychiatric records with pre-existing anxiety disorder, medication effects, and neurologic-symptom overlap excluded.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 403.1 — Dereschuk KJ, Asay CC, Espiridion ED. Depression and Anxiety in Stroke-Related and Alzheimer Disease-Related Pseudobulbar Affect: A TriNetX Retrospective Cohort Study Alzheimer Dis Assoc Disord. 2026 Apr-Jun 01;40(2):129-134. PMID 42138134.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42138134/
+- Source checked on: 2026-09-26
+- Locator: PMID 42138134; results (anxiety rates and HR by etiology)
+- Note under review: TriNetX Global retrospective cohort 2020-2025 (Alzheimer Dis Assoc Disord 2026): 946 propensity-matched patients per etiology cohort for the anxiety analysis; anxiety disorder unspecified (ICD-10-CM F41.9) after PBA diagnosis in 48.8% of Alzheimer-PBA versus 24.9% of stroke-PBA (ARD 23.9%, P<0.001; HR 1.98, 95% CI 1.70-2.30); supports the bounded post-diagnosis association only (no non-PBA comparator, coded outcomes).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 403.2 — Charron L, Espiridion ED. Pseudobulbar Affect Among Patients With Dementia Cureus. 2025 Jan;17(1):e78116. PMID 40018468.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/40018468/
+- Source checked on: 2026-09-26
+- Locator: PMID 40018468; results (comorbid mood disorders)
+- Note under review: TriNetX dementia-pseudobulbar-affect cohort description (Cureus 2025): frequent comorbid anxiety and depressive disorders in the PBA-dementia cohort; supports the bounded comorbidity framing only (descriptive cohort; shared with the depressive-disorder edge within this batch).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 403.3 — Steenkjaer CH, Storgaard JH, Levison L, et al. A national survey of pseudobulbar affect and symptomatic treatment in Amyotrophic Lateral Sclerosis Amyotroph Lateral Scler Frontotemporal Degener. 2026 Aug;27(5-6):565-571. PMID 41616079.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/41616079/
+- Source checked on: 2026-09-26
+- Locator: PMID 41616079; results (treatment differential)
+- Note under review: Danish national cross-sectional ALS survey (Amyotroph Lateral Scl Frontotemporal Degener 2026): 157 participants; psychiatric-treatment differential in PBA-diagnosed patients (antidepressants 47.4% versus 15.2%, P=0.002); supports the bounded treatment-signal association only (shared with the depressive-disorder edge within this batch).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
 ## Implementation mechanics after decisions
 
 - Mapping edits and registry edits must land in lockstep (the registry audit's canonical-JSON hashes and live-use sets will fail otherwise).

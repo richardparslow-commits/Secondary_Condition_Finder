@@ -16,16 +16,16 @@
   "citationPromotionMustAtomicallyUpdateKbAndMasterSourceState": true
  },
  "counts": {
-  "liveSourceReferenceUses": 1372,
+  "liveSourceReferenceUses": 1389,
   "activeSourceEntities": 346,
-  "pendingVerificationSourceEntities": 874,
+  "pendingVerificationSourceEntities": 883,
   "activeClinicalSourceEntities": 345,
-  "pendingClinicalSourceEntities": 874,
+  "pendingClinicalSourceEntities": 883,
   "activeLegalAuthorityEntities": 1,
   "retiredOnlySourceEntities": 1,
   "supersededUnverifiedSourceEntities": 7,
   "bibliographicCorrectionOnlyEntities": 1,
-  "totalSourceEntitiesIncludingLineage": 1229,
+  "totalSourceEntitiesIncludingLineage": 1238,
   "retiredVerifiedRelationshipSourceUses": 6
  },
  "retirementLedger": {
@@ -45366,6 +45366,377 @@
    "retiredUses": [],
    "rawReferenceHashes": [
     "eefe4a964d1d2de1a2b77ae6471e4babbce44bef344ff068cde0053c10164707"
+   ]
+  },
+  {
+   "sourceId": "pmid-35083742",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "35083742",
+   "doi": null,
+   "canonicalCitation": "Morgan CL, Thomas M, Ständer S, et al. Epidemiology of prurigo nodularis in England: a retrospective database analysis Br J Dermatol. 2022 Aug;187(2):188-195. PMID 35083742.",
+   "citationVariants": [
+    "Morgan CL, Thomas M, Ständer S, et al. Epidemiology of prurigo nodularis in England: a retrospective database analysis Br J Dermatol. 2022 Aug;187(2):188-195. PMID 35083742."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35083742/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/35083742/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 2,
+   "liveUses": [
+    {
+     "relationshipId": "rel-prurigo-nodularis-to-depressive-disorder",
+     "primaryId": "prurigo-nodularis",
+     "targetId": "depressive-disorder",
+     "sourceIndex": 0
+    },
+    {
+     "relationshipId": "rel-prurigo-nodularis-to-anxiety-disorder",
+     "primaryId": "prurigo-nodularis",
+     "targetId": "anxiety-disorder",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "ecaa4b177b20db37426e65622a0c64a038ca8bbb0dcfc9648cc6fd6a31e0d028",
+    "ce538e7235a996df0f246bc8d297c7e87a3a9558ca5a159a9c3055b31b4167c7"
+   ]
+  },
+  {
+   "sourceId": "pmid-40439955",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "40439955",
+   "doi": null,
+   "canonicalCitation": "Kwatra SG, Yang M, Martins B, et al. Prurigo Nodularis PaTient-Reported BurdEn of SicKness (PN TREK): A Cross-Sectional Survey of Patient-Reported Burden of Disease in Patients with PN from the US Adv Ther. 2025 Jul;42(7):3455-3471. PMID 40439955.",
+   "citationVariants": [
+    "Kwatra SG, Yang M, Martins B, et al. Prurigo Nodularis PaTient-Reported BurdEn of SicKness (PN TREK): A Cross-Sectional Survey of Patient-Reported Burden of Disease in Patients with PN from the US Adv Ther. 2025 Jul;42(7):3455-3471. PMID 40439955."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40439955/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/40439955/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 3,
+   "liveUses": [
+    {
+     "relationshipId": "rel-prurigo-nodularis-to-depressive-disorder",
+     "primaryId": "prurigo-nodularis",
+     "targetId": "depressive-disorder",
+     "sourceIndex": 1
+    },
+    {
+     "relationshipId": "rel-prurigo-nodularis-to-anxiety-disorder",
+     "primaryId": "prurigo-nodularis",
+     "targetId": "anxiety-disorder",
+     "sourceIndex": 1
+    },
+    {
+     "relationshipId": "rel-prurigo-nodularis-to-insomnia",
+     "primaryId": "prurigo-nodularis",
+     "targetId": "insomnia",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "6502c2c8e77d9eceb1ce8cc36942f3fab6438f37804ca93ae98bdfbafcd3f821",
+    "20e39003a4503d178eff0dbebe2e16ca58f98ce988e8bdfcf91973e0e580d3bf",
+    "a0230e57c7066efa8f9642144914f8772ba1c9721be10382b6ccc4849c277dc1"
+   ]
+  },
+  {
+   "sourceId": "pmid-40947069",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "40947069",
+   "doi": null,
+   "canonicalCitation": "Manjunath J, Akinniyi BU, Kollhoff AL, et al. Comorbidities in prurigo nodularis Clin Dermatol. 2025 Sep-Oct;43(5):681-685. PMID 40947069.",
+   "citationVariants": [
+    "Manjunath J, Akinniyi BU, Kollhoff AL, et al. Comorbidities in prurigo nodularis Clin Dermatol. 2025 Sep-Oct;43(5):681-685. PMID 40947069."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40947069/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/40947069/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 3,
+   "liveUses": [
+    {
+     "relationshipId": "rel-prurigo-nodularis-to-depressive-disorder",
+     "primaryId": "prurigo-nodularis",
+     "targetId": "depressive-disorder",
+     "sourceIndex": 2
+    },
+    {
+     "relationshipId": "rel-prurigo-nodularis-to-anxiety-disorder",
+     "primaryId": "prurigo-nodularis",
+     "targetId": "anxiety-disorder",
+     "sourceIndex": 2
+    },
+    {
+     "relationshipId": "rel-prurigo-nodularis-to-insomnia",
+     "primaryId": "prurigo-nodularis",
+     "targetId": "insomnia",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "aae6a8703b0f8619ddb2f768db353545b8e58f843859103a8773bc3092d13a25",
+    "85ccb5b5d84417762266d9976dc7ecb0d9f7e572ba61f8c2ce11e1ecc07be0f4",
+    "e1ce9ddf7452333bf7d5be2d96186a81a155712e3df4c73228b41e3fce0ec060"
+   ]
+  },
+  {
+   "sourceId": "pmid-39656658",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "39656658",
+   "doi": null,
+   "canonicalCitation": "Lu W, Yossef SM, Ma EZ, et al. Association of sleep disturbance and itch intensity with quality-of-life impairment and disease severity in prurigo nodularis Br J Dermatol. 2025 Mar 18;192(4):755-757. PMID 39656658.",
+   "citationVariants": [
+    "Lu W, Yossef SM, Ma EZ, et al. Association of sleep disturbance and itch intensity with quality-of-life impairment and disease severity in prurigo nodularis Br J Dermatol. 2025 Mar 18;192(4):755-757. PMID 39656658."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39656658/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/39656658/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-prurigo-nodularis-to-insomnia",
+     "primaryId": "prurigo-nodularis",
+     "targetId": "insomnia",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "77f63e152cabaa385b520550668df6d66b852876deee31da329534cb4c44e889"
+   ]
+  },
+  {
+   "sourceId": "pmid-34658714",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "34658714",
+   "doi": null,
+   "canonicalCitation": "Hadasik K, Arasiewicz H, Brzezińska-Wcisło L. Assessment of the anxiety and depression among patients with idiopathic pruritus ani Postepy Dermatol Alergol. 2021 Aug;38(4):689-693. PMID 34658714.",
+   "citationVariants": [
+    "Hadasik K, Arasiewicz H, Brzezińska-Wcisło L. Assessment of the anxiety and depression among patients with idiopathic pruritus ani Postepy Dermatol Alergol. 2021 Aug;38(4):689-693. PMID 34658714."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34658714/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/34658714/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-pruritus-ani-to-depressive-disorder",
+     "primaryId": "pruritus-ani",
+     "targetId": "depressive-disorder",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "42f80f5ab10dc20821c5c4127f5a33c9472c58365f17cbc9f1168fffa9017806"
+   ]
+  },
+  {
+   "sourceId": "pmid-41222470",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "41222470",
+   "doi": null,
+   "canonicalCitation": "Marino F, Martellucci J, Giuffrida MC, et al. Practice Parameters for Evaluation and Management of Pruritus Ani on Behalf of the Italian Society of Colorectal Surgery (SICCR) J Cutan Med Surg. 2025 Nov 12:12034754251391800. PMID 41222470.",
+   "citationVariants": [
+    "Marino F, Martellucci J, Giuffrida MC, et al. Practice Parameters for Evaluation and Management of Pruritus Ani on Behalf of the Italian Society of Colorectal Surgery (SICCR) J Cutan Med Surg. 2025 Nov 12:12034754251391800. PMID 41222470."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41222470/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/41222470/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-pruritus-ani-to-depressive-disorder",
+     "primaryId": "pruritus-ani",
+     "targetId": "depressive-disorder",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "4ccb21e3be164406e814d14016fa17b8de3e0c8e35786b820607eaaf2f041d89"
+   ]
+  },
+  {
+   "sourceId": "pmid-42138134",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "42138134",
+   "doi": null,
+   "canonicalCitation": "Dereschuk KJ, Asay CC, Espiridion ED. Depression and Anxiety in Stroke-Related and Alzheimer Disease-Related Pseudobulbar Affect: A TriNetX Retrospective Cohort Study Alzheimer Dis Assoc Disord. 2026 Apr-Jun 01;40(2):129-134. PMID 42138134.",
+   "citationVariants": [
+    "Dereschuk KJ, Asay CC, Espiridion ED. Depression and Anxiety in Stroke-Related and Alzheimer Disease-Related Pseudobulbar Affect: A TriNetX Retrospective Cohort Study Alzheimer Dis Assoc Disord. 2026 Apr-Jun 01;40(2):129-134. PMID 42138134."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42138134/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/42138134/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 2,
+   "liveUses": [
+    {
+     "relationshipId": "rel-pseudobulbar-affect-to-depressive-disorder",
+     "primaryId": "pseudobulbar-affect",
+     "targetId": "depressive-disorder",
+     "sourceIndex": 0
+    },
+    {
+     "relationshipId": "rel-pseudobulbar-affect-to-anxiety-disorder",
+     "primaryId": "pseudobulbar-affect",
+     "targetId": "anxiety-disorder",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "e9d3bb90336bccb4e116dd39f325611e4907925401aadc48163b7abf71a739a1",
+    "df446bc7367bd0c237e2af8a774404d65a7fc71fdf90c788d7d9c5b04fea7de9"
+   ]
+  },
+  {
+   "sourceId": "pmid-40018468",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "40018468",
+   "doi": null,
+   "canonicalCitation": "Charron L, Espiridion ED. Pseudobulbar Affect Among Patients With Dementia Cureus. 2025 Jan;17(1):e78116. PMID 40018468.",
+   "citationVariants": [
+    "Charron L, Espiridion ED. Pseudobulbar Affect Among Patients With Dementia Cureus. 2025 Jan;17(1):e78116. PMID 40018468."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40018468/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/40018468/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 2,
+   "liveUses": [
+    {
+     "relationshipId": "rel-pseudobulbar-affect-to-depressive-disorder",
+     "primaryId": "pseudobulbar-affect",
+     "targetId": "depressive-disorder",
+     "sourceIndex": 1
+    },
+    {
+     "relationshipId": "rel-pseudobulbar-affect-to-anxiety-disorder",
+     "primaryId": "pseudobulbar-affect",
+     "targetId": "anxiety-disorder",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "6a70f3f4a0986b36acf09027ca6925f052a6e8a5575f2c4e3a2d8f4e2a319742",
+    "543a35e23bf2acb9a22d0615b131f5196685b45cd4b395e7e52509f016cf9ef2"
+   ]
+  },
+  {
+   "sourceId": "pmid-41616079",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "41616079",
+   "doi": null,
+   "canonicalCitation": "Steenkjaer CH, Storgaard JH, Levison L, et al. A national survey of pseudobulbar affect and symptomatic treatment in Amyotrophic Lateral Sclerosis Amyotroph Lateral Scler Frontotemporal Degener. 2026 Aug;27(5-6):565-571. PMID 41616079.",
+   "citationVariants": [
+    "Steenkjaer CH, Storgaard JH, Levison L, et al. A national survey of pseudobulbar affect and symptomatic treatment in Amyotrophic Lateral Sclerosis Amyotroph Lateral Scler Frontotemporal Degener. 2026 Aug;27(5-6):565-571. PMID 41616079."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41616079/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/41616079/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 2,
+   "liveUses": [
+    {
+     "relationshipId": "rel-pseudobulbar-affect-to-depressive-disorder",
+     "primaryId": "pseudobulbar-affect",
+     "targetId": "depressive-disorder",
+     "sourceIndex": 2
+    },
+    {
+     "relationshipId": "rel-pseudobulbar-affect-to-anxiety-disorder",
+     "primaryId": "pseudobulbar-affect",
+     "targetId": "anxiety-disorder",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "6b48a1799fb5ac80833faef80d6809353da4bcf5e29615806852177d520b4b8d",
+    "457293ff95a012431e92decd7d482946e8a11106b70a2ff9a318d5511e37b567"
    ]
   }
  ],
