@@ -2,8 +2,204 @@
   "id": "restless-leg-syndrome",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review neurologic, neuropathic, post-traumatic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 78 (2026-09-27): three ASSOCIATION_ONLY draft mappings pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: the edges assert association only (etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true) - the insomnia edge at PSYCHOPHYSIOLOGICAL following the symptom-disrupted-sleep convention, the mood pair at PSYCHOPHYSIOLOGICAL following the mood-edge convention. Both mood edges carry the intermediate-node limit openly (depressive symptoms track insomnia symptoms within the matched-control anchor and the registered insomnia to depressive-disorder window exists), the null-anchor discipline is applied (the pregnancy case-control depression null, P=0.269, is carried openly on both mood edges), and the shared-substrate and scale-measure limits are stated (magnesium/zinc and iron/dopaminergic substrate; Beck and Edinburgh questionnaire scales rather than structured diagnoses). Deliberately NO within-batch source sharing this batch: all nine references across the three edges are disjoint. Individual claims require dated psychiatric, neurologic, and sleep records with pre-existing mood disorder, iron deficiency, medication effects, and adjustment disorder excluded and review by a qualified medical professional.",
+    "Pathway and duplicate-scope screens and withheld propositions: no -> sleep-apnea edge (SHARED-SUBSTRATE/COMORBIDITY-WITHOUT-DIRECTION - obstructive sleep apnea and restless legs syndrome co-occur in the sleep-disorder literature without located prospective direction, and the Sleep Heart Health anchor adjusts for apnea-hypopnea index precisely because apnea fragments sleep independently); no -> chronic-fatigue-syndrome edge (SEMANTIC-MISMATCH - the explained sleep-loss fatigue of restless legs syndrome is not the idiopathic chronic-fatigue identity; the explained/unexplained pain precedent applies symmetrically); no -> hypertension edge (BELOW THRESHOLD - cardiovascular-risk association literature is confounded and no incident-hypertension cohort specific to restless legs syndrome met the threshold; the registered insomnia to hypertension window owns its route); no -> peripheral-neuropathy and no -> iron-deficiency-anemia propositions (DIRECTION-GUARD/SHARED-SUBSTRATE plus MISSING IDENTITY - neuropathy and iron deficiency are upstream mimics and etiologic substrates of restless legs syndrome, not downstream outcomes); NO -> suicidal-ideation and no -> self-harm edges (MISSING IDENTITY) recorded as the NINTH evidence-preserving refusal after nightmare-disorder, nocturnal-enuresis, overactive-bladder, phantom-limb-pain, giant-cell-arteritis, premature-atrial-contraction to atrial-fibrillation, pseudophakic cystoid macular edema, and raynaud digital-ulcer disease: the suicidality literature is authoring-quality (the MarketScan claims cohort of 24,179 restless legs syndrome versus 145,194 matched participants documents incident suicide or self-harm adjusted hazard ratio 2.66, 95 percent CI 1.70-4.15, adjusted for depression and insomnia among other comorbidities, PMID 31441941; the community case-control study of 192 versus 158 participants documents lifetime suicidal ideation or behavior in 27.1 versus 7.0 percent with odds 2.80 after accounting for depression, PMID 30529070; the matched-control cohort documents suicidal thoughts in 28 percent of untreated patients, 3-fold over controls, with restless legs syndrome treatment improving depressive symptoms but NOT suicidal thoughts, PMID 34985142 registered on the depressive-disorder edge within this batch) and the catalog carries no suicidal-ideation or self-harm identity (catalog gap screened 2026-09-27; zero matches)."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 78 (2026-09-27): three bounded association edges authored - restless-leg-syndrome to insomnia (rank 1), depressive-disorder (rank 2), and anxiety-disorder (rank 3) - all classified ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true, mechanismCategory PSYCHOPHYSIOLOGICAL on all three. The edges rest on disjoint sources this batch (deliberately no within-batch shared-source provenance while the CRG redundancy-semantics question stands at eleven accumulated examples): the insomnia edge on the REST primary care study (88.4 percent sleep-symptom burden, PMID 15165529), the Sleep Heart Health home-PSG cohort (adjusted sleep latency 39.8 versus 26.4 minutes, PMID 19544754), and the REST general population study (PMID 15956009); the depressive-disorder edge on the 549-versus-549 matched-control cohort (32.5 percent depressive symptoms, 10-fold; treatment-responsive, PMID 34985142), the prospective perinatal incident-depression cohort (hazard ratio 3.04, PMID 42675332), and the 24-study pooled-prevalence meta-analysis (30.39 percent, PMID 39024776); the anxiety-disorder edge on the 21-study healthy-control meta-analysis (Beck Anxiety Inventory mean difference 9.30, zero heterogeneity, PMID 38562425), the 2,289-adolescent cohort (anxiety odds ratio 1.514, PMID 42601325), and the pregnancy case-control cohort (PMID 32676936). Null-anchor discipline: the pregnancy case-control depression null (P=0.269) is carried openly on both mood edges as explicit counterweight. Intermediate-node and direction limits (insomnia mediation; antidepressant precipitation of restlessness; anxious arousal amplifying symptoms) are carried openly. NINTH evidence-preserving refusal recorded on the file: suicidal ideation and self-harm have no catalog target identity (claims-cohort adjusted hazard ratio 2.66, PMID 31441941; lifetime ideation 27.1 versus 7.0 percent, PMID 30529070; treatment-resistant suicidal thoughts, PMID 34985142; evidence preserved pending identity creation)."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "insomnia",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Restless legs syndrome associates with disrupted sleep at multinational primary-care and population-polysomnographic level: the REST primary care study of 23,052 screened patients documents that 88.4 percent of the 551 treatment-warranting sufferers reported at least one sleep-related symptom with most reporting impaired sleep consistent with a diagnosis of insomnia and the authors concluding that restless legs syndrome often severely disrupts sleep (PMID 15165529), the Sleep Heart Health Study home-polysomnography cohort of 3,433 community participants documents longer adjusted mean sleep latency (39.8 versus 26.4 minutes, P<0.0001) and higher arousal index (20.1 versus 18.0, P=0.0145) with latency rising as symptom frequency increased, adjusted for apnea-hypopnea index and demographic and health variables (PMID 19544754), and the REST general population study of 15,391 respondents documents clinically significant restless legs syndrome in 2.7 percent with SF-36 scores significantly below population norms and sleep significantly affected (PMID 15956009); recorded as documented association only with the cross-sectional and sleep-measure limits carried openly - the polysomnographic anchor measures latency and arousal rather than a structured insomnia diagnosis and the primary-care anchor screens symptoms rather than diagnosing insomnia.",
+        "causationStatus": "Neither causation nor aggravation of insomnia is established for any individual: the located anchors are cross-sectional and measure co-occurrence at one point, restless legs syndrome mimics (nocturnal leg cramps, positional discomfort, neuropathic dysesthesias) produce similar sleep disruption and inflate screening-based estimates, reverse amplification is plausible since sleep loss heightens sensory symptom perception, and the evening predominance and rest-provocation of symptoms are the defining criteria while sleep disruption itself is the dominant morbidity rather than a diagnostic criterion; individual claims require dated sleep studies or a documented insomnia diagnosis with sleep apnea (adjusted for at cohort level only), nocturnal leg cramps, medication and caffeine effects, and mood-disorder causes excluded."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "PSYCHOPHYSIOLOGICAL",
+        "primaryVector": "Nocturnal sensorimotor symptoms - the irresistible urge to move with unpleasant dysesthesias provoked by rest and gated by evening circadian timing - are hypothesized to delay sleep onset and fragment maintenance until conditioned hyperarousal persists past the symptoms themselves, the route supported by the polysomnographic latency gradient with symptom frequency and the primary-care symptom quantification, but whether the route produced any individual's insomnia remains hypothesized until sleep and neurologic timelines are reviewed side by side.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "Authored at ASSOCIATION_ONLY at multinational primary-care and population-PSG class following the symptom-disrupted-sleep convention (the prurigo-nodularis to insomnia and dermatitis to insomnia family): the polysomnographic anchor objectively quantifies sleep-onset latency against non-RLS comparators with apnea-hypopnea-index adjustment (PMID 19544754), the primary-care anchor documents that most sufferers report impaired sleep consistent with a diagnosis of insomnia (PMID 15165529), and the general-population anchor quantifies the clinically significant subgroup with SF-36 impact (PMID 15956009); constitutive-proximity was screened and cleared on the record (sleep disruption is the dominant morbidity of restless legs syndrome but is not part of its diagnostic criteria); because the anchors are cross-sectional with screening- or questionnaire-defined restless legs syndrome and mimics inflate screening estimates, the conservative standard keeps the edge at association only with those limits stated and routes individual claims through dated polysomnography or insomnia diagnosis with mimics excluded.",
+        "evidenceGaps": "No longitudinal incident-insomnia cohort among restless legs syndrome patients free of sleep disorder at baseline was located; the polysomnographic anchor (PMID 19544754) quantifies sleep latency and arousal index rather than an insomnia diagnosis and its restless legs syndrome definition is questionnaire-based (NIH criteria, symptoms at least five times per month); the primary-care anchor (PMID 15165529) reports symptom screens consistent with an insomnia diagnosis rather than structured insomnia diagnoses; the general-population anchor (PMID 15956009) measures SF-36 impact rather than sleep diagnoses; cross-sectional designs leave direction contested at individual level.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "obstructive sleep apnea producing sleep fragmentation with restless-leg symptoms reported secondarily (adjusted for at cohort level in the polysomnographic anchor via apnea-hypopnea index; individual claims require polysomnography)",
+          "nocturnal leg cramps, positional discomfort, and peripheral neuropathy producing mimicking restlessness and sleep disruption",
+          "mood disorders (depressive-disorder, anxiety-disorder) producing both insomnia and somatic restlessness (the registered mood windows own their sources; none recycled per ME-29)",
+          "caffeine, stimulant, and substance effects; shift-work and circadian schedule constraints"
+        ]
+      },
+      "evidenceGaps": [
+        "No longitudinal incident-insomnia cohort among restless legs syndrome patients free of sleep disorder at baseline was located; the polysomnographic anchor (PMID 19544754) quantifies sleep latency and arousal index rather than an insomnia diagnosis and its restless legs syndrome definition is questionnaire-based (NIH criteria, symptoms at least five times per month); the primary-care anchor (PMID 15165529) reports symptom screens consistent with an insomnia diagnosis rather than structured insomnia diagnoses; the general-population anchor (PMID 15956009) measures SF-36 impact rather than sleep diagnoses; cross-sectional designs leave direction contested at individual level."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY at multinational primary-care and population-PSG class with the cross-sectional and sleep-measure limits carried openly, following the symptom-disrupted-sleep edge convention: the REST primary care study quantifies sleep-related symptoms in 88.4 percent of treatment-warranting sufferers with most reporting impaired sleep consistent with a diagnosis of insomnia (PMID 15165529), the Sleep Heart Health Study home-PSG cohort quantifies the sleep-onset latency and arousal burden against non-RLS comparators with apnea-hypopnea-index adjustment (PMID 19544754), and the REST general population study quantifies the clinically significant subgroup with SF-36 sleep and quality-of-life impact (PMID 15956009); constitutive-proximity screened and cleared (sleep disruption is the dominant morbidity but not a diagnostic criterion of restless legs syndrome); because all three anchors are cross-sectional with questionnaire-defined restless legs syndrome and mimics inflate screening estimates, the conservative standard keeps the edge at association only with those limits on the record and routes individual claims through dated polysomnography or insomnia diagnosis with sleep apnea, leg cramps, and mood causes excluded.",
+      "sourceReferences": [
+        {
+          "citation": "Hening W, Walters AS, Allen RP, et al. Impact, diagnosis and treatment of restless legs syndrome (RLS) in a primary care population: the REST (RLS epidemiology, symptoms, and treatment) primary care study Sleep Med. 2004 May;5(3):237-46. PMID 15165529.",
+          "note": "REST primary care study (Sleep Med 2004): 23,052 patients screened across five countries; 551 treatment-warranting RLS sufferers; 88.4% reported at least one sleep-related symptom and most reported impaired sleep consistent with a diagnosis of insomnia; RLS often severely disrupts sleep; supports the bounded association only (symptom screen, not structured insomnia diagnosis).",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/15165529/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-27",
+          "sourceLocator": "PMID 15165529; results (sleep-related symptom frequency and insomnia-consistent impairment)"
+        },
+        {
+          "citation": "Winkelman JW, Redline S, Baldwin CM, et al. Polysomnographic and health-related quality of life correlates of restless legs syndrome in the Sleep Heart Health Study Sleep. 2009 Jun;32(6):772-8. PMID 19544754.",
+          "note": "Sleep Heart Health Study home-polysomnography cohort (Sleep 2009): 3,433 community participants; RLS with longer adjusted mean sleep latency (39.8 vs 26.4 min, P<0.0001) and higher arousal index (20.1 vs 18.0, P=0.0145) after adjustment for apnea-hypopnea index and demographic/health variables; latency rose with RLS symptom frequency; supports the bounded association only (cross-sectional; latency/arousal measures, not insomnia diagnosis).",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/19544754/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-27",
+          "sourceLocator": "PMID 19544754; results (adjusted sleep latency and arousal index comparisons)"
+        },
+        {
+          "citation": "Allen RP, Walters AS, Montplaisir J, et al. Restless legs syndrome prevalence and impact: REST general population study Arch Intern Med. 2005 Jun 13;165(11):1286-92. PMID 15956009.",
+          "note": "REST general population study (Arch Intern Med 2005): 15,391 respondents; clinically significant RLS in 2.7%; SF-36 scores significantly below population norms matching other chronic conditions; sleep significantly affected; supports the bounded association only (screening questionnaire; impact measures).",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/15956009/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-27",
+          "sourceLocator": "PMID 15956009; results (prevalence and SF-36 impact)"
+        }
+      ]
+    },
+    {
+      "conditionId": "depressive-disorder",
+      "rank": 2,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Restless legs syndrome associates with depressive morbidity at matched-control and prospective-cohort level: the case-control cohort of 549 untreated patients versus 549 age-, sex-, and education-matched controls documents depressive symptoms in 32.5 percent (10-fold higher than controls) with current major depressive episode in 10.5 percent of the interviewed subgroup and moderate-to-severe depressive symptoms associated with insomnia symptoms and with RLS severity and improving with restless legs syndrome treatment (PMID 34985142), the prospective cohort of 2,435 Japanese pregnant women documents time-varying restless legs syndrome associated with incident perinatal depression (hazard ratio 3.04, 95 percent CI 1.22-7.58) and incident depressive symptoms (Edinburgh scale at least 13, hazard ratio 2.12, 95 percent CI 1.28-3.51) robust to confounder adjustment (PMID 42675332), and the systematic review and meta-analysis of 24 studies with 2,039 patients documents pooled depression or depressive-state prevalence of 30.39 percent (PMID 39024776); recorded as documented association only with an explicit null counterweight carried openly - a pregnancy case-control cohort documented no depression-score difference between restless legs syndrome and control pregnant women (P=0.269) despite a positive anxiety signal in the same sample (PMID 32676936, registered on the anxiety-disorder edge within this batch) - and the intermediate-node limit is carried (depressive symptoms track insomnia symptoms in the matched-control anchor and the registered insomnia to depressive-disorder window exists).",
+        "causationStatus": "Neither causation nor aggravation of depressive-disorder is established for any individual: the sleep-disruption route is an intermediate-node candidate (insomnia symptoms tracked the depressive symptoms in the matched-control anchor and the registered insomnia to depressive-disorder edge owns that route), the prospective anchor is perinatal-scoped with pregnancy-specific iron deficiency and hormonal substrate, reverse direction is documented in the wider mood literature (antidepressant treatment can precipitate or worsen restless legs symptoms and depression commonly precedes somatic symptom amplification), shared dopaminergic and iron substrate drives both conditions, and one located case-control cohort found no depression difference (P=0.269); individual claims require dated psychiatric assessment with pre-existing mood disorder, medication effects including antidepressants and dopamine antagonists, iron deficiency, and adjustment disorder excluded."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "PSYCHOPHYSIOLOGICAL",
+        "primaryVector": "Chronic nocturnal discomfort with relentless sleep-onset and maintenance disruption is hypothesized to erode mood regulation over time, while shared dopaminergic and iron-deficiency substrate and the insomnia pathway run alongside the route as competing or mediating paths, the forward route supported by the matched-control symptom quantification and the prospective incident-depression hazard ratios with restless legs syndrome treatment improving depressive symptoms in the treated subgroup, but whether the forward route produced any individual's depressive episode remains hypothesized until psychiatric and neurologic timelines are reviewed side by side.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "Authored at ASSOCIATION_ONLY at matched-control plus prospective-cohort class with the null counterweight and intermediate-node limits carried openly, following the PSYCHOPHYSIOLOGICAL mood-edge convention: the 549-versus-549 matched-control cohort quantifies the depressive-symptom and major-depressive-episode burden with treatment response (PMID 34985142), the prospective perinatal cohort quantifies incident depression after time-varying restless legs syndrome with temporal order (PMID 42675332), and the meta-analysis quantifies pooled prevalence across 24 studies (PMID 39024776); the pregnancy case-control depression null (P=0.269, PMID 32676936) is carried openly as explicit counterweight and its source is registered on the anxiety-disorder edge within this batch; because the sleep-mediation route is documented within the anchor itself and the prospective anchor is perinatal-scoped, the conservative standard keeps the edge at association only with those limits stated and routes individual claims through dated psychiatric, neurologic, and sleep timelines with pre-existing mood disorder and iron deficiency excluded.",
+        "evidenceGaps": "No general-population longitudinal incident-depression cohort among restless legs syndrome patients free of mood disorder at baseline was located (the located prospective anchor is perinatal-scoped); the matched-control anchor is clinic-based with questionnaire depression screens plus a structured-interview subgroup; the meta-analysis pools mostly questionnaire-defined depressive states; the depression signal tracks insomnia symptoms within the matched-control anchor (mediation not resolved); and one pregnancy case-control cohort found no depression-score difference (P=0.269) with the counterweight carried openly.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "pre-existing depressive-disorder antedating the sensorimotor syndrome (individual claims require documented pre-morbid psychiatric history)",
+          "insomnia-mediated mood morbidity (the registered insomnia to depressive-disorder window owns its sources; none recycled per ME-29)",
+          "iron deficiency and dopaminergic dysfunction as shared substrate driving both conditions",
+          "antidepressant and dopamine-antagonist medication effects precipitating or amplifying restlessness (reverse direction); substance use including alcohol and nicotine",
+          "chronic medical comorbidity (chronic kidney disease, peripheral neuropathy, Parkinson disease) producing both restlessness and independent mood morbidity"
+        ]
+      },
+      "evidenceGaps": [
+        "No general-population longitudinal incident-depression cohort among restless legs syndrome patients free of mood disorder at baseline was located (the located prospective anchor is perinatal-scoped); the matched-control anchor is clinic-based with questionnaire depression screens plus a structured-interview subgroup; the meta-analysis pools mostly questionnaire-defined depressive states; the depression signal tracks insomnia symptoms within the matched-control anchor (mediation not resolved); and one pregnancy case-control cohort found no depression-score difference (P=0.269) with the counterweight carried openly."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY at matched-control plus prospective-cohort class with the null-counterweight and intermediate-node limits carried openly, following the PSYCHOPHYSIOLOGICAL mood-edge convention and pairing with the anxiety-disorder edge from disjoint sources (deliberately no within-batch source sharing this batch): the 549-versus-549 matched-control cohort (PMID 34985142) quantifies depressive symptoms in 32.5 percent (10-fold over controls) with major depressive episode in 10.5 percent and treatment-responsive depressive symptoms, the prospective perinatal cohort (PMID 42675332) quantifies incident depression (hazard ratio 3.04) after time-varying restless legs syndrome with temporal order, and the meta-analysis (PMID 39024776) quantifies the 30.39 percent pooled prevalence; the null-anchor discipline is applied explicitly - the anchors carry positive signal (controlled symptom excess plus incident hazard ratios) with the pregnancy case-control depression null (P=0.269, PMID 32676936) carried openly as counterweight; because mediation through insomnia is documented within the anchor and the prospective scope is perinatal, the conservative standard keeps the edge at association only and routes individual claims through dated psychiatric and sleep timelines with pre-existing mood disorder, iron deficiency, and medication effects excluded.",
+      "sourceReferences": [
+        {
+          "citation": "Chenini S, Barateau L, Guiraud L, et al. Depressive Symptoms and Suicidal Thoughts in Restless Legs Syndrome Mov Disord. 2022 Apr;37(4):812-825. PMID 34985142.",
+          "note": "Matched-control cohort (Mov Disord 2022): 549 untreated RLS patients versus 549 age-, sex-, and education-matched controls; depressive symptoms 32.5% (10-fold higher than controls); current major depressive episode 10.5% (structured-interview subgroup); moderate-to-severe depressive symptoms associated with insomnia symptoms and RLS severity; RLS treatment improved depressive symptoms; supports the bounded association only (clinic-based; questionnaire screens).",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34985142/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-27",
+          "sourceLocator": "PMID 34985142; results (depressive symptom frequency, major depressive episode, treatment subgroup)"
+        },
+        {
+          "citation": "Tezuka K, Ito Y, Sasaki N, et al. Time-varying restless legs syndrome and risk of incident perinatal depression J Clin Sleep Med. 2026 Aug 31;22(1).doi: 10.1007/s44470-026-00168-7. PMID 42675332.",
+          "note": "Prospective cohort (J Clin Sleep Med 2026): 2,435 Japanese pregnant women; time-varying RLS associated with incident perinatal depression (HR 3.04, 95% CI 1.22-7.58) and incident depressive symptoms (Edinburgh scale at least 13, HR 2.12, 95% CI 1.28-3.51), robust to confounder adjustment; supports the bounded association only (perinatal scope).",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42675332/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-27",
+          "sourceLocator": "PMID 42675332; results (Cox models with time-varying RLS status)"
+        },
+        {
+          "citation": "Miyaguchi R, Masuda F, Sumi Y, et al. Prevalence of depression or depressive state in patients with restless legs syndrome: A systematic review and meta-analysis Sleep Med Rev. 2024 Oct;77:101975. PMID 39024776.",
+          "note": "Systematic review and meta-analysis (Sleep Med Rev 2024): 24 studies with 2,039 RLS patients; pooled depression or depressive-state prevalence 30.39% (mostly questionnaire-defined); antidepressant use pooled rate 3.41%; no specific factors related to depression prevalence identified; supports the bounded pooled-prevalence association only (review class, heterogeneous definitions).",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39024776/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-27",
+          "sourceLocator": "PMID 39024776; results (pooled prevalence and meta-regression)"
+        }
+      ]
+    },
+    {
+      "conditionId": "anxiety-disorder",
+      "rank": 3,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Restless legs syndrome associates with anxiety symptoms at healthy-control meta-analytic and case-control level: the systematic review and meta-analysis of 21 studies documents significantly more pronounced anxiety in restless legs syndrome than in healthy controls on the Beck Anxiety Inventory (mean difference 9.30, 95 percent CI 7.65-10.94, P<0.01, heterogeneity I-squared 0 percent) with all other anxiety scales also significant (PMID 38562425), the school-adolescent cross-sectional cohort of 2,289 participants documents higher anxiety risk with restless legs syndrome (odds ratio 1.514, P<0.001) alongside higher depression (odds ratio 1.678) and stress scores with mood derangements higher in both younger and older adolescent strata (PMID 42601325), and the pregnancy case-control study of 119 versus 134 pregnant women documents higher Beck Anxiety Inventory scores in the restless legs syndrome group (P<0.001) with anxiety scores correlating with syndrome severity in both groups (P<0.001) (PMID 32676936); recorded as documented association only with the shared-substrate and scale-measure limits carried openly - the pregnancy cohort attributes part of the association to magnesium and zinc deficiency and documents a null depression comparison (P=0.269) in the same sample.",
+        "causationStatus": "Neither causation nor aggravation of anxiety-disorder is established for any individual: the anchors are symptom-scale based (Beck Anxiety Inventory and questionnaire mood scales rather than structured anxiety diagnoses), two of three anchors are special-population scoped (school adolescents, pregnant women) where anxiety physiology overlaps the somatic state (pregnancy discomfort, adolescent circadian and academic stress), the direction is contested (anxious arousal can mimic and amplify nocturnal restlessness and anxiety scores correlate with syndrome severity within the pregnancy cohort), shared substrate (magnesium and zinc deficiency in the pregnancy cohort; dopaminergic and iron substrate generally) drives both directions, and autonomic arousal of anxiety overlaps the sensory symptoms; individual claims require dated psychiatric assessment with pre-existing anxiety disorder, stimulant and caffeine effects, thyroid disease, and adjustment disorder excluded."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "PSYCHOPHYSIOLOGICAL",
+        "primaryVector": "Anticipatory anxiety about nocturnal symptoms and the conditioned hypervigilance of sleep-onset restlessness are hypothesized to generalize into sustained anxiety symptoms over time while shared mineral and dopaminergic substrate and anxious arousal amplifying restlessness run the coupling in reverse as well, the forward route supported by the zero-heterogeneity meta-analytic anxiety-score excess and the adolescent odds ratio with cross-stratum consistency, but whether the forward route produced any individual's anxiety disorder remains hypothesized until psychiatric and neurologic timelines are reviewed side by side.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "Authored at ASSOCIATION_ONLY at healthy-control meta-analytic plus case-control class with the shared-substrate, scale-measure, and special-population limits carried openly, following the PSYCHOPHYSIOLOGICAL mood-edge convention: the 21-study meta-analysis quantifies the anxiety-score excess against healthy controls with zero heterogeneity on the Beck Anxiety Inventory (PMID 38562425), the 2,289-adolescent cohort quantifies the anxiety odds ratio with age-stratum consistency (PMID 42601325), and the pregnancy case-control cohort quantifies the anxiety-score excess with severity correlation (PMID 32676936); the same pregnancy cohort's null depression comparison (P=0.269) is carried openly as counterweight (registered within this batch on this edge); because the anchors use symptom scales in special populations with contested direction and shared mineral substrate, the conservative standard keeps the edge at association only with those limits stated and routes individual claims through dated psychiatric timelines with pre-existing anxiety disorder and substance effects excluded.",
+        "evidenceGaps": "No general-population longitudinal incident-anxiety cohort among restless legs syndrome patients free of anxiety at baseline was located; the meta-analysis pools symptom-scale scores (Beck Anxiety Inventory primary; Hamilton-scale results heterogeneous) rather than structured anxiety diagnoses and frames the evidence base as controversial at protocol entry; the adolescent and pregnancy anchors are special-population scoped; the pregnancy anchor attributes part of the association to magnesium and zinc deficiency (shared substrate unresolved); and the anxiety-severity correlation leaves direction contested.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "pre-existing anxiety disorder antedating the sensorimotor syndrome (individual claims require documented pre-morbid psychiatric history)",
+          "anxious arousal and hypervigilance mimicking or amplifying nocturnal restlessness (direction contested)",
+          "magnesium and zinc deficiency and iron deficiency as shared substrate (documented in the pregnancy cohort)",
+          "stimulant, caffeine, and thyroid-related hyperarousal states; adolescent and pregnancy-specific physiologic and psychosocial stressors",
+          "sleep-loss-mediated anxiety symptoms (the registered insomnia windows own their sources; none recycled per ME-29)"
+        ]
+      },
+      "evidenceGaps": [
+        "No general-population longitudinal incident-anxiety cohort among restless legs syndrome patients free of anxiety at baseline was located; the meta-analysis pools symptom-scale scores (Beck Anxiety Inventory primary; Hamilton-scale results heterogeneous) rather than structured anxiety diagnoses and frames the evidence base as controversial at protocol entry; the adolescent and pregnancy anchors are special-population scoped; the pregnancy anchor attributes part of the association to magnesium and zinc deficiency (shared substrate unresolved); and the anxiety-severity correlation leaves direction contested."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY at healthy-control meta-analytic plus case-control class with the shared-substrate and scale-measure limits carried openly, following the PSYCHOPHYSIOLOGICAL mood-edge convention and pairing with the depressive-disorder edge from disjoint sources (deliberately no within-batch source sharing this batch): the 21-study meta-analysis (PMID 38562425) quantifies anxiety-score excess versus healthy controls (Beck Anxiety Inventory mean difference 9.30, zero heterogeneity), the adolescent cohort (PMID 42601325) quantifies anxiety odds of 1.514 with mood derangements across age strata, and the pregnancy case-control study (PMID 32676936) quantifies the anxiety-score excess with syndrome-severity correlation; the null-anchor discipline is applied - positive anxiety signal across anchors with the same pregnancy cohort's depression null (P=0.269) carried openly as counterweight; because two anchors are special-population scoped with symptom scales and direction is contested (arousal amplifying restlessness, severity correlation), the conservative standard keeps the edge at association only and routes individual claims through dated psychiatric and neurologic timelines with pre-existing anxiety disorder, mineral deficiency, and stimulant effects excluded.",
+      "sourceReferences": [
+        {
+          "citation": "An T, Sun H, Yuan L, et al. Associations of anxiety and depression with restless leg syndrome: a systematic review and meta-analysis Front Neurol. 2024;15:1366839. PMID 38562425.",
+          "note": "Systematic review and meta-analysis (Front Neurol 2024): 21 studies comparing RLS with healthy controls; Beck Anxiety Inventory mean difference 9.30 (95% CI 7.65-10.94, P<0.01, I-squared 0%); all other anxiety scales significant; Beck Depression Inventory mean difference 6.58 (5.54-7.62); supports the bounded association only (symptom scales; the review frames the evidence as controversial).",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38562425/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-27",
+          "sourceLocator": "PMID 38562425; results (anxiety and depression mean differences versus controls)"
+        },
+        {
+          "citation": "Roy MM, Singh R, Alvi AB, et al. Restless-Leg Syndrome Among Adolescents: Impact on Sleep Quality, Mood, and Academic Performance Behav Sleep Med. 2026 Aug 14:1-12. PMID 42601325.",
+          "note": "School-adolescent cross-sectional cohort (Behav Sleep Med 2026): 2,289 adolescents; RLS associated with higher anxiety risk (OR 1.514, P<0.001), depression (OR 1.678, P<0.001), and stress (OR 1.706, P<0.001); mood derangements higher in both age strata; supports the bounded association only (adolescent scope; questionnaire instruments).",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42601325/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-27",
+          "sourceLocator": "PMID 42601325; results (mood odds ratios and age-stratum comparisons)"
+        },
+        {
+          "citation": "Yıldırım E, Apaydın H. Zinc and Magnesium Levels of Pregnant Women with Restless Leg Syndrome and Their Relationship with Anxiety: A Case-Control Study Biol Trace Elem Res. 2021 May;199(5):1674-1685. PMID 32676936.",
+          "note": "Pregnancy case-control study (Biol Trace Elem Res 2021): 119 RLS versus 134 healthy pregnant women; Beck Anxiety Inventory higher in RLS (P<0.001) with anxiety correlated to RLS severity in both groups (P<0.001); magnesium and zinc lower (P<0.001) - shared substrate carried openly; depression comparison null (P=0.269) - counterweight carried openly; supports the bounded association only (pregnancy scope, small sample).",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/32676936/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-27",
+          "sourceLocator": "PMID 32676936; results (anxiety, depression, sleep-quality and element comparisons)"
+        }
+      ]
+    }
+  ]
 }

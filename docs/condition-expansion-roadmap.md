@@ -4228,3 +4228,117 @@ seventeenth consecutive batch with no manual fixture bump. Residue clean outside
 coincidences (apply-all-94's historical `explicitPublicationGuards: 273`; wave-5's
 `toBeGreaterThanOrEqual(276)` catalog floor; legal-copy's `38 U.S.C. § 1117` statute text). Standing
 recommendation: batch 77 lands through branch, PR, CI, and merge.
+
+Mapping Expansion D1 batch 78 (2026-09-27) authored six draft-quarantined relationships across three of
+the five queue identities and deferred two identities without edges. restless-leg-syndrome -> insomnia
+(rank 1, PSYCHOPHYSIOLOGICAL) rests on the REST primary care study (23,052 screened; 551 treatment-
+warranting sufferers with 88.4 percent reporting at least one sleep-related symptom and most reporting
+impaired sleep consistent with a diagnosis of insomnia, PMID 15165529), the Sleep Heart Health home-
+polysomnography cohort of 3,433 community participants (adjusted mean sleep latency 39.8 versus 26.4
+minutes, P<0.0001; arousal index 20.1 versus 18.0, P=0.0145; adjusted for apnea-hypopnea index, PMID
+19544754), and the REST general population study of 15,391 respondents (clinically significant syndrome
+in 2.7 percent with SF-36 scores significantly below population norms, PMID 15956009), with the
+constitutive-proximity screen cleared on the record (sleep disruption is the dominant morbidity but is not
+a diagnostic criterion of the syndrome) and the cross-sectional and sleep-measure limits carried openly.
+restless-leg-syndrome -> depressive-disorder (rank 2) and -> anxiety-disorder (rank 3), both
+PSYCHOPHYSIOLOGICAL, rest on disjoint sources this batch: the depressive-disorder edge on the 549 versus
+549 matched-control cohort (depressive symptoms 32.5 percent, 10-fold over controls; major depressive
+episode 10.5 percent; treatment-responsive depressive symptoms, PMID 34985142), the prospective cohort of
+2,435 Japanese pregnant women (time-varying syndrome to incident perinatal depression hazard ratio 3.04,
+95 percent CI 1.22-7.58; Edinburgh at least 13 hazard ratio 2.12, 95 percent CI 1.28-3.51, PMID
+42675332), and the 24-study meta-analysis (pooled depression prevalence 30.39 percent, PMID 39024776);
+the anxiety-disorder edge on the 21-study healthy-control meta-analysis (Beck Anxiety Inventory mean
+difference 9.30, 95 percent CI 7.65-10.94, I-squared 0 percent, PMID 38562425), the 2,289-adolescent
+cohort (anxiety odds ratio 1.514, PMID 42601325), and the pregnancy case-control cohort (anxiety-score
+excess with severity correlation, PMID 32676936). The null-anchor discipline is carried openly on both
+mood edges (the same pregnancy cohort's depression null, P=0.269, is registered within batch as an
+explicit counterweight) along with the intermediate-node limit (depressive symptoms track insomnia
+symptoms in the matched-control anchor and the registered insomnia to depressive-disorder window exists)
+and the direction limits (antidepressants can precipitate restlessness; anxious arousal amplifies
+symptoms). retinitis -> retinal-detachment (rank 1, MULTIFACTORIAL) rests on the global federated-database
+cohort of 1,785 acute retinal necrosis patients (detachment incidence 12.49 percent; 60.5 percent within
+3 months; treatment exposures readable only as severity proxies, PMID 42338517), the consecutive swept-
+source-OCT cohort of 32 eyes (detachment 66 percent; posterior vitreous detachment preceding 18 of 20
+subsequent detachments at a mean 45.8 days, PMID 42423915), and the Canadian 5-year cohort of 16 eyes
+(44 percent at a mean 105 days, PMID 42274937), following the choroiditis to retinal-detachment precedent
+for inflammatory posterior-segment conditions. retinitis -> visual-impairment (rank 2, MULTIFACTORIAL)
+rests on the 14-year cohort of 156 patients (poor final vision worse than 20/200 in 79 percent of eyes;
+baseline acuity adjusted odds ratio 5.58, PMID 42307763), the mixed herpesvirus-retinitis cohort of 144
+eyes (severe-impairment odds model; surgical intervention and concurrent detachment associated with lower
+odds of severe impairment, PMID 42252088), and the aqueous viral-load cohort of 53 eyes (acuity gradient
+with viral load and interleukin-8 with the overall baseline-to-final acuity null P=0.43 carried openly,
+PMID 42605772), with the constitutive-proximity screen cleared (the diagnosis rests on retinal
+inflammatory findings; the impairment outcome is separately thresholded at cohort level) and blindness
+endpoint-shadowed rather than separately registered. renal-toxicity -> chronic-kidney-disease (rank 1,
+PHARMACOLOGICAL_IATROGENIC) rests on the Swedish new-user active-comparator cohort of 10,946 initiators
+(its own therapeutic-dose comparison null at hazard ratio 1.11, 95 percent CI 0.86-1.45, carried openly
+as the anchor's counterweight, while toxic-range levels above 1.0 mmol per liter associate with chronic
+kidney disease progression hazard ratio 2.86 and acute kidney injury hazard ratio 3.51, PMID 37418264),
+the cisplatin longitudinal cohort of 2,191 patients (injury in 4.2 percent of 8,482 cycles predicting
+long-term renal dysfunction, PMID 36941500), and the tenofovir retrospective cohort of 182 adults (early
+nephrotoxicity to chronic kidney disease in 34.6 percent over 5 years, PMID 40811628) - the toxic-injury
+subgroup is the identity's exposure population and the exposure-specific limits are carried openly.
+
+Deferred without edges: reinke-s-edema - CONSTITUTIVE-PROXIMITY on the voice presentation (dysphonia and
+hoarseness are the defining presentation, not a downstream secondary condition; aphonia is a distinct
+loss-of-voice identity whose registered windows own their routes) plus BELOW-THRESHOLD outcome
+quantification (the 52-patient severity cohort documents a null voice-handicap gradient across severity
+subgroups, VHI-10 P=0.958, PMID 42692864; the 11-patient pre-post spirometry surgical pilot is
+hypothesis-generating glottic-obstruction signal only, PMID 42557170; the voice-handicap treatment study
+is treatment-outcome class, PMID 24141520); the malignancy question is recorded as shared-exposure and
+direction-guarded (the leukoplakia-selected dysplasia case series documents 50 percent dysplasia among 14
+specimens from 12 of 74 office-based-therapy patients selected for leukoplakia with smoking throughout,
+PMID 42640203 - smoking produces both the edema and the mucosal dysplasia). reproductive-cancers -
+DUPLICATE-SCOPE CLASS/UMBRELLA screen, the third umbrella disposition after gastrointestinal-cancers
+(batch 37) and head-and-neck-cancers (batch 42): the member identities (endometrial-cancer, ovarian-
+cancer, testicular-cancer, prostate-cancer) own the site-specific windows (the registered endometrial-
+cancer to lymphedema and ovarian-cancer to lymphedema edges demonstrate member-level ownership of the
+dominant treatment-mediated route and the pleura-cancer to deep-vein-thrombosis precedent registers
+cancer-associated thrombosis at member level), and the structural disposition required no PubMed anchor
+set. Reopening conditions recorded on both files.
+
+Notable dispositions: restless-leg-syndrome -> suicidal-ideation and -> self-harm recorded as the NINTH
+evidence-preserving refusal with no catalog target identity (after nightmare-disorder, nocturnal-enuresis,
+overactive-bladder, phantom-limb-pain, giant-cell-arteritis, premature-atrial-contraction to atrial-
+fibrillation, pseudophakic cystoid macular edema, and raynaud digital-ulcer disease): the suicidality
+literature is authoring-quality (the MarketScan claims cohort of 24,179 versus 145,194 matched
+participants documents incident suicide or self-harm adjusted hazard ratio 2.66, 95 percent CI 1.70-4.15,
+adjusted for depression and insomnia among other comorbidities, PMID 31441941; the community case-control
+study documents lifetime suicidal ideation or behavior in 27.1 versus 7.0 percent with odds 2.80 after
+accounting for depression, PMID 30529070; the matched-control cohort documents suicidal thoughts in 28
+percent of untreated patients with treatment improving depressive symptoms but NOT suicidal thoughts, PMID
+34985142 registered on the depressive-disorder edge) and is preserved pending identity creation.
+renal-toxicity -> urinary-tract-cancer withheld on DIRECTION-GUARD/SHARED-EXPOSURE: the aristolochic-acid
+literature documents urothelial carcinoma in 46 percent of prophylactic specimens (18 of 39, PMID
+10841870) with ALL analyzed tissue carrying aristolochic-acid DNA adducts that the companion toxicology
+review describes as directly involved in tumorigenesis (PMID 12505369) - the exposure produces both the
+nephropathy and the carcinoma through direct urothelial genotoxicity - and the uremic-malignancy route
+(the Taiwan end-stage-renal-disease cohort of 90,477 patients, PMID 25025033, itself exposure-confounded)
+is chain-owned by the chronic-kidney-disease window as an intermediate-node; all anchors preserved.
+retinitis -> glaucoma and -> cataracts withheld on window-ownership (the registered uveitis windows own
+the anterior-segment inflammation and corticosteroid-treatment routes); the cystoid-macular-edema catalog
+gap continues as a gap continuation rather than a numbered refusal (uveitic macular-edema literature,
+PMID 42581430, window-owned by uveitis).
+
+Structural-debt note: batch-78 edges produced zero new CRG findings - review-class 13 against baseline 13
+and redundancy 28 against baseline 28 unchanged, violations 0, and the bidirectional-pair count stays at
+4. This batch deliberately adds NO new redundancy-semantics example: all 18 references are disjoint
+across the six edges (no within-batch shared-source provenance) while the question stands at eleven
+accumulated examples - a first step toward not accumulating more until the semantics are settled.
+
+Citation packet regenerated at 415 worksheets / 1,041 reference rows = live citation debt; the verification
+dashboard regenerated at 1,041 rows in 44 reviewer batches (913 distinct sources). Backlog after batch 78:
+**100** undispositioned zero-edge drafts (105 before the batch; three identities left by gaining edges and
+two by recorded deferral). Next-five: `retrograde-ejaculation`, `rhinitis-vasomotor`, `rickets`,
+`riedel-s-thyroiditis`, `rosacea`.
+
+Test-pin note: the sweep touched 54 files and replaced 316 counter tokens in one pass with the per-token
+context predicates carried over unchanged (relationships 772 -> 778, references/uses 1406 -> 1424,
+unverified 1023 -> 1041, pending source entities 896 -> 914, total source entities 1251 -> 1269, explicit
+guards 698 -> 704, clinical references 1401 -> 1419, clinical provenance 1405 -> 1423, and the draft-
+singles counter 301 -> 302 for this batch's single-suggestion identity renal-toxicity). The explicit
+fixture token continued to carry the citation-decay-gate debt fixture automatically (1023 -> 1041) -
+eighteenth consecutive batch with no manual fixture bump. Residue clean outside the standing benign
+coincidences (apply-all-94's historical `explicitPublicationGuards: 273`; wave-5's
+`toBeGreaterThanOrEqual(276)` catalog floor; legal-copy's `38 U.S.C. § 1117` statute text). Standing
+recommendation: batch 78 lands through branch, PR, CI, and merge.

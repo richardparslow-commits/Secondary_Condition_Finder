@@ -14701,6 +14701,246 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 **Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
 
+### `renal-toxicity` → `chronic-kidney-disease` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Renal toxicity associates with chronic kidney disease at population-register and exposure-cohort level with the toxic-exposure gradient as the quantified signal: the Swedish new-user active-comparator cohort of 10,946 mood-disorder patients documents NO excess chronic kidney disease risk at therapeutic lithium exposure versus valproate (hazard ratio 1.11, 95 percent CI 0.86-1.45; 10-year chronic kidney disease risk 8.4 versus 8.2 percent) as an explicit counterweight, while lithium levels in the toxic range (above 1.0 mmol per liter) associate with chronic kidney disease progression (hazard ratio 2.86, 95 percent CI 0.97-8.45) and acute kidney injury (hazard ratio 3.51, 95 percent CI 1.41-8.76) (PMID 37418264), the cisplatin longitudinal cohort of 2,191 solid-tumor patients across 8,482 treatment cycles documents cisplatin-induced kidney injury in 4.2 percent of cycles and identifies it as a significant independent predictor of long-term renal dysfunction (annualized eGFR decline, P<0.01) (PMID 36941500), and the tenofovir retrospective cohort of 182 antiretroviral-treated adults documents early nephrotoxicity significantly associated with chronic kidney disease within 5 years (63 of 182 patients, 34.6 percent; incidence 69.2 per 1,000 person-years) (PMID 40811628); recorded as documented association only with the exposure-specific limits carried openly and the null-anchor discipline applied - the anchors carry positive toxic-injury signal with the therapeutic-dose null stated on the record, and the identity's exposure population is the toxic-injury cohort.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation of chronic-kidney-disease is established for any individual: the located evidence is exposure-specific (lithium, cisplatin, and tenofovir carry distinct tubular and interstitial mechanisms and generalization to all nephrotoxins is untested), therapeutic-dose lithium showed NO excess risk in the active-comparator register cohort (the counterweight is the anchor's own result), progression attribution is confounded by diabetes, hypertension, and baseline renal reserve (risk factors in the located cohorts include hypertension, thoracic and liver malignancies, and baseline creatinine), and the acute-injury to chronic-disease transition is not separable from underlying renal comorbidity in retrospective designs; individual claims require dated renal-function and exposure-dose records with diabetic nephropathy, hypertensive nephrosclerosis, glomerular disease, obstructive uropathy, and pre-existing chronic kidney disease excluded.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 410.1 — Bosi A, Clase CM, Ceriani L, et al. Absolute and Relative Risks of Kidney Outcomes Associated With Lithium vs Valproate Use in Sweden JAMA Netw Open. 2023 Jul 3;6(7):e2322056. PMID 37418264.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/37418264/
+- Source checked on: 2026-09-27
+- Locator: PMID 37418264; results (CKD progression and AKI by attained lithium level)
+- Note under review: Swedish new-user active-comparator register cohort (JAMA Netw Open 2023): 10,946 lithium or valproate initiators; chronic kidney disease risk NOT increased at therapeutic lithium exposure (HR 1.11, 95% CI 0.86-1.45; 10-year risk 8.4% vs 8.2%) - counterweight carried openly; toxic-range lithium (above 1.0 mmol/L) associated with CKD progression (HR 2.86, 95% CI 0.97-8.45) and acute kidney injury (HR 3.51, 95% CI 1.41-8.76); supports the bounded toxic-injury association only (small toxic-range subgroup).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 410.2 — Hino A, Muto S, Shimada Y, et al. Impact of cisplatin-induced acute kidney injury on long-term renal function in patients with solid tumors Clin Exp Nephrol. 2023 Jun;27(6):506-518. PMID 36941500.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/36941500/
+- Source checked on: 2026-09-27
+- Locator: PMID 36941500; results (injury incidence and long-term eGFR regression)
+- Note under review: Cisplatin longitudinal cohort (Clin Exp Nephrol 2023): 2,191 solid-tumor patients across 8,482 cycles; cisplatin-induced AKI in 4.2% of cycles; the injury was a significant independent predictor of long-term renal dysfunction (annualized eGFR decline, P<0.01); supports the bounded association only (retrospective single-center, KDIGO-defined injury).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 410.3 — Muchinta E, Chabala FW. Chronic kidney disease among HIV-positive Zambian adults with tenofovir-associated nephrotoxicity at University Teaching Hospital (UTH) in Lusaka PLoS One. 2025;20(8):e0330356. PMID 40811628.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/40811628/
+- Source checked on: 2026-09-27
+- Locator: PMID 40811628; results (CKD incidence, mixed-effects and Cox models)
+- Note under review: Tenofovir retrospective cohort (PLoS One 2025): 182 antiretroviral-treated adults; early TDF-associated nephrotoxicity significantly associated with CKD within 5 years (63 of 182, 34.6%; incidence 69.2 per 1,000 person-years); male sex and baseline creatinine were risk factors; supports the bounded association only (single-country retrospective cohort).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `restless-leg-syndrome` → `insomnia` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Restless legs syndrome associates with disrupted sleep at multinational primary-care and population-polysomnographic level: the REST primary care study of 23,052 screened patients documents that 88.4 percent of the 551 treatment-warranting sufferers reported at least one sleep-related symptom with most reporting impaired sleep consistent with a diagnosis of insomnia and the authors concluding that restless legs syndrome often severely disrupts sleep (PMID 15165529), the Sleep Heart Health Study home-polysomnography cohort of 3,433 community participants documents longer adjusted mean sleep latency (39.8 versus 26.4 minutes, P<0.0001) and higher arousal index (20.1 versus 18.0, P=0.0145) with latency rising as symptom frequency increased, adjusted for apnea-hypopnea index and demographic and health variables (PMID 19544754), and the REST general population study of 15,391 respondents documents clinically significant restless legs syndrome in 2.7 percent with SF-36 scores significantly below population norms and sleep significantly affected (PMID 15956009); recorded as documented association only with the cross-sectional and sleep-measure limits carried openly - the polysomnographic anchor measures latency and arousal rather than a structured insomnia diagnosis and the primary-care anchor screens symptoms rather than diagnosing insomnia.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation of insomnia is established for any individual: the located anchors are cross-sectional and measure co-occurrence at one point, restless legs syndrome mimics (nocturnal leg cramps, positional discomfort, neuropathic dysesthesias) produce similar sleep disruption and inflate screening-based estimates, reverse amplification is plausible since sleep loss heightens sensory symptom perception, and the evening predominance and rest-provocation of symptoms are the defining criteria while sleep disruption itself is the dominant morbidity rather than a diagnostic criterion; individual claims require dated sleep studies or a documented insomnia diagnosis with sleep apnea (adjusted for at cohort level only), nocturnal leg cramps, medication and caffeine effects, and mood-disorder causes excluded.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 411.1 — Hening W, Walters AS, Allen RP, et al. Impact, diagnosis and treatment of restless legs syndrome (RLS) in a primary care population: the REST (RLS epidemiology, symptoms, and treatment) primary care study Sleep Med. 2004 May;5(3):237-46. PMID 15165529.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/15165529/
+- Source checked on: 2026-09-27
+- Locator: PMID 15165529; results (sleep-related symptom frequency and insomnia-consistent impairment)
+- Note under review: REST primary care study (Sleep Med 2004): 23,052 patients screened across five countries; 551 treatment-warranting RLS sufferers; 88.4% reported at least one sleep-related symptom and most reported impaired sleep consistent with a diagnosis of insomnia; RLS often severely disrupts sleep; supports the bounded association only (symptom screen, not structured insomnia diagnosis).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 411.2 — Winkelman JW, Redline S, Baldwin CM, et al. Polysomnographic and health-related quality of life correlates of restless legs syndrome in the Sleep Heart Health Study Sleep. 2009 Jun;32(6):772-8. PMID 19544754.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/19544754/
+- Source checked on: 2026-09-27
+- Locator: PMID 19544754; results (adjusted sleep latency and arousal index comparisons)
+- Note under review: Sleep Heart Health Study home-polysomnography cohort (Sleep 2009): 3,433 community participants; RLS with longer adjusted mean sleep latency (39.8 vs 26.4 min, P<0.0001) and higher arousal index (20.1 vs 18.0, P=0.0145) after adjustment for apnea-hypopnea index and demographic/health variables; latency rose with RLS symptom frequency; supports the bounded association only (cross-sectional; latency/arousal measures, not insomnia diagnosis).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 411.3 — Allen RP, Walters AS, Montplaisir J, et al. Restless legs syndrome prevalence and impact: REST general population study Arch Intern Med. 2005 Jun 13;165(11):1286-92. PMID 15956009.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/15956009/
+- Source checked on: 2026-09-27
+- Locator: PMID 15956009; results (prevalence and SF-36 impact)
+- Note under review: REST general population study (Arch Intern Med 2005): 15,391 respondents; clinically significant RLS in 2.7%; SF-36 scores significantly below population norms matching other chronic conditions; sleep significantly affected; supports the bounded association only (screening questionnaire; impact measures).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `restless-leg-syndrome` → `depressive-disorder` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Restless legs syndrome associates with depressive morbidity at matched-control and prospective-cohort level: the case-control cohort of 549 untreated patients versus 549 age-, sex-, and education-matched controls documents depressive symptoms in 32.5 percent (10-fold higher than controls) with current major depressive episode in 10.5 percent of the interviewed subgroup and moderate-to-severe depressive symptoms associated with insomnia symptoms and with RLS severity and improving with restless legs syndrome treatment (PMID 34985142), the prospective cohort of 2,435 Japanese pregnant women documents time-varying restless legs syndrome associated with incident perinatal depression (hazard ratio 3.04, 95 percent CI 1.22-7.58) and incident depressive symptoms (Edinburgh scale at least 13, hazard ratio 2.12, 95 percent CI 1.28-3.51) robust to confounder adjustment (PMID 42675332), and the systematic review and meta-analysis of 24 studies with 2,039 patients documents pooled depression or depressive-state prevalence of 30.39 percent (PMID 39024776); recorded as documented association only with an explicit null counterweight carried openly - a pregnancy case-control cohort documented no depression-score difference between restless legs syndrome and control pregnant women (P=0.269) despite a positive anxiety signal in the same sample (PMID 32676936, registered on the anxiety-disorder edge within this batch) - and the intermediate-node limit is carried (depressive symptoms track insomnia symptoms in the matched-control anchor and the registered insomnia to depressive-disorder window exists).
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation of depressive-disorder is established for any individual: the sleep-disruption route is an intermediate-node candidate (insomnia symptoms tracked the depressive symptoms in the matched-control anchor and the registered insomnia to depressive-disorder edge owns that route), the prospective anchor is perinatal-scoped with pregnancy-specific iron deficiency and hormonal substrate, reverse direction is documented in the wider mood literature (antidepressant treatment can precipitate or worsen restless legs symptoms and depression commonly precedes somatic symptom amplification), shared dopaminergic and iron substrate drives both conditions, and one located case-control cohort found no depression difference (P=0.269); individual claims require dated psychiatric assessment with pre-existing mood disorder, medication effects including antidepressants and dopamine antagonists, iron deficiency, and adjustment disorder excluded.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 412.1 — Chenini S, Barateau L, Guiraud L, et al. Depressive Symptoms and Suicidal Thoughts in Restless Legs Syndrome Mov Disord. 2022 Apr;37(4):812-825. PMID 34985142.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/34985142/
+- Source checked on: 2026-09-27
+- Locator: PMID 34985142; results (depressive symptom frequency, major depressive episode, treatment subgroup)
+- Note under review: Matched-control cohort (Mov Disord 2022): 549 untreated RLS patients versus 549 age-, sex-, and education-matched controls; depressive symptoms 32.5% (10-fold higher than controls); current major depressive episode 10.5% (structured-interview subgroup); moderate-to-severe depressive symptoms associated with insomnia symptoms and RLS severity; RLS treatment improved depressive symptoms; supports the bounded association only (clinic-based; questionnaire screens).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 412.2 — Tezuka K, Ito Y, Sasaki N, et al. Time-varying restless legs syndrome and risk of incident perinatal depression J Clin Sleep Med. 2026 Aug 31;22(1).doi: 10.1007/s44470-026-00168-7. PMID 42675332.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42675332/
+- Source checked on: 2026-09-27
+- Locator: PMID 42675332; results (Cox models with time-varying RLS status)
+- Note under review: Prospective cohort (J Clin Sleep Med 2026): 2,435 Japanese pregnant women; time-varying RLS associated with incident perinatal depression (HR 3.04, 95% CI 1.22-7.58) and incident depressive symptoms (Edinburgh scale at least 13, HR 2.12, 95% CI 1.28-3.51), robust to confounder adjustment; supports the bounded association only (perinatal scope).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 412.3 — Miyaguchi R, Masuda F, Sumi Y, et al. Prevalence of depression or depressive state in patients with restless legs syndrome: A systematic review and meta-analysis Sleep Med Rev. 2024 Oct;77:101975. PMID 39024776.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/39024776/
+- Source checked on: 2026-09-27
+- Locator: PMID 39024776; results (pooled prevalence and meta-regression)
+- Note under review: Systematic review and meta-analysis (Sleep Med Rev 2024): 24 studies with 2,039 RLS patients; pooled depression or depressive-state prevalence 30.39% (mostly questionnaire-defined); antidepressant use pooled rate 3.41%; no specific factors related to depression prevalence identified; supports the bounded pooled-prevalence association only (review class, heterogeneous definitions).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `restless-leg-syndrome` → `anxiety-disorder` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Restless legs syndrome associates with anxiety symptoms at healthy-control meta-analytic and case-control level: the systematic review and meta-analysis of 21 studies documents significantly more pronounced anxiety in restless legs syndrome than in healthy controls on the Beck Anxiety Inventory (mean difference 9.30, 95 percent CI 7.65-10.94, P<0.01, heterogeneity I-squared 0 percent) with all other anxiety scales also significant (PMID 38562425), the school-adolescent cross-sectional cohort of 2,289 participants documents higher anxiety risk with restless legs syndrome (odds ratio 1.514, P<0.001) alongside higher depression (odds ratio 1.678) and stress scores with mood derangements higher in both younger and older adolescent strata (PMID 42601325), and the pregnancy case-control study of 119 versus 134 pregnant women documents higher Beck Anxiety Inventory scores in the restless legs syndrome group (P<0.001) with anxiety scores correlating with syndrome severity in both groups (P<0.001) (PMID 32676936); recorded as documented association only with the shared-substrate and scale-measure limits carried openly - the pregnancy cohort attributes part of the association to magnesium and zinc deficiency and documents a null depression comparison (P=0.269) in the same sample.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation of anxiety-disorder is established for any individual: the anchors are symptom-scale based (Beck Anxiety Inventory and questionnaire mood scales rather than structured anxiety diagnoses), two of three anchors are special-population scoped (school adolescents, pregnant women) where anxiety physiology overlaps the somatic state (pregnancy discomfort, adolescent circadian and academic stress), the direction is contested (anxious arousal can mimic and amplify nocturnal restlessness and anxiety scores correlate with syndrome severity within the pregnancy cohort), shared substrate (magnesium and zinc deficiency in the pregnancy cohort; dopaminergic and iron substrate generally) drives both directions, and autonomic arousal of anxiety overlaps the sensory symptoms; individual claims require dated psychiatric assessment with pre-existing anxiety disorder, stimulant and caffeine effects, thyroid disease, and adjustment disorder excluded.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 413.1 — An T, Sun H, Yuan L, et al. Associations of anxiety and depression with restless leg syndrome: a systematic review and meta-analysis Front Neurol. 2024;15:1366839. PMID 38562425.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/38562425/
+- Source checked on: 2026-09-27
+- Locator: PMID 38562425; results (anxiety and depression mean differences versus controls)
+- Note under review: Systematic review and meta-analysis (Front Neurol 2024): 21 studies comparing RLS with healthy controls; Beck Anxiety Inventory mean difference 9.30 (95% CI 7.65-10.94, P<0.01, I-squared 0%); all other anxiety scales significant; Beck Depression Inventory mean difference 6.58 (5.54-7.62); supports the bounded association only (symptom scales; the review frames the evidence as controversial).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 413.2 — Roy MM, Singh R, Alvi AB, et al. Restless-Leg Syndrome Among Adolescents: Impact on Sleep Quality, Mood, and Academic Performance Behav Sleep Med. 2026 Aug 14:1-12. PMID 42601325.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42601325/
+- Source checked on: 2026-09-27
+- Locator: PMID 42601325; results (mood odds ratios and age-stratum comparisons)
+- Note under review: School-adolescent cross-sectional cohort (Behav Sleep Med 2026): 2,289 adolescents; RLS associated with higher anxiety risk (OR 1.514, P<0.001), depression (OR 1.678, P<0.001), and stress (OR 1.706, P<0.001); mood derangements higher in both age strata; supports the bounded association only (adolescent scope; questionnaire instruments).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 413.3 — Yıldırım E, Apaydın H. Zinc and Magnesium Levels of Pregnant Women with Restless Leg Syndrome and Their Relationship with Anxiety: A Case-Control Study Biol Trace Elem Res. 2021 May;199(5):1674-1685. PMID 32676936.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/32676936/
+- Source checked on: 2026-09-27
+- Locator: PMID 32676936; results (anxiety, depression, sleep-quality and element comparisons)
+- Note under review: Pregnancy case-control study (Biol Trace Elem Res 2021): 119 RLS versus 134 healthy pregnant women; Beck Anxiety Inventory higher in RLS (P<0.001) with anxiety correlated to RLS severity in both groups (P<0.001); magnesium and zinc lower (P<0.001) - shared substrate carried openly; depression comparison null (P=0.269) - counterweight carried openly; supports the bounded association only (pregnancy scope, small sample).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `retinitis` → `retinal-detachment` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Retinitis associates with retinal detachment at quantified cohort level across three independent retinal-necrosis cohorts: the global federated-database cohort of 1,785 acute retinal necrosis patients documents retinal detachment incidence of 12.49 percent (223 cases) with 60.5 percent of detachments occurring within the first 3 months of diagnosis and the authors noting that treatment exposures must be read as disease-severity proxies (PMID 42338517), the consecutive swept-source-OCT cohort of 32 eyes documents detachment in 66 percent of cases with proliferative vitreoretinopathy in 90 percent and posterior vitreous detachment preceding detachment in 18 of the 20 eyes that detached after initial vitreous attachment (mean 45.8 plus or minus 32.1 days) (PMID 42423915), and the Canadian 5-year retrospective cohort of 16 eyes documents retinal detachment as the primary outcome in 44 percent of eyes at a mean 105 days from symptom onset (PMID 42274937); recorded as documented association only with the etiology-scope and coding limits carried openly - the quantified evidence is anchored on herpesvirus necrotizing retinitis (acute retinal necrosis; varicella-zoster virus in 67 percent of the OCT cohort) and the incidence anchor uses administrative ICD and CPT coding.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation of retinal-detachment is established for any individual: the quantified anchors are acute-retinal-necrosis scoped (cytomegalovirus and toxoplasmic retinitis detachment risk is documented mainly in mixed or case literature), two of three anchors are small single-center cohorts (32 eyes and 16 eyes) and the large anchor is administratively coded with severity-proxy treatment confounding, necrotic retinitis of autoimmune origin is not covered by the located quantification, and the detachments are the structural sequela of full-thickness necrosis so the route is inseparable from disease severity (extensive retinitis predicts detachment); individual claims require dated retinal imaging and operative records with diabetic tractional, high-myopia, post-surgical, and traumatic detachment causes excluded.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 414.1 — Thompson D, Zafar S, Berkenstock M. Incidence and clinical characterization of retinal detachment in acute retinal necrosis: a global federated database analysis Front Ophthalmol (Lausanne). 2026;6:1829400. PMID 42338517.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42338517/
+- Source checked on: 2026-09-27
+- Locator: PMID 42338517; results (incidence and timing of retinal detachment)
+- Note under review: Global federated-database retrospective cohort (Front Ophthalmol 2026, TriNetX): 1,785 acute retinal necrosis patients 2014-2024; retinal detachment incidence 12.49% (223 cases) with 60.5% within 3 months of diagnosis; no significant incidence differences by age, sex, diabetes, or immunosuppression; treatment exposures are severity proxies; supports the bounded association only (ICD/CPT-coded EHR cohort).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 414.2 — Arai Y, Akiyama H, Tokui S, et al. Acute retinal necrosis: an assessment of vitreous and retinal detachment Jpn J Ophthalmol. 2026 Jul 9.doi: 10.1007/s10384-026-01396-3. PMID 42423915.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42423915/
+- Source checked on: 2026-09-27
+- Locator: PMID 42423915; results (vitreous status and detachment coupling)
+- Note under review: Consecutive swept-source-OCT vitreous cohort (Jpn J Ophthalmol 2026): 32 eyes of 29 acute retinal necrosis patients; retinal detachment in 66% of cases with proliferative vitreoretinopathy in 90%; posterior vitreous detachment preceded detachment in 18 of 20 eyes detaching after initial vitreous attachment (mean 45.8 plus or minus 32.1 days); varicella-zoster virus 67%; supports the bounded mechanism association only (small single-center cohort).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 414.3 — Lo C, Mah JM, Tadrous C, et al. Outcomes of Patients with Acute Retinal Necrosis (ARN) presenting to a Canadian tertiary care centre: a 5-year retrospective cohort study J Ophthalmic Inflamm Infect. 2026 Jun 11;16(1).doi: 10.1186/s12348-026-00608-8. PMID 42274937.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42274937/
+- Source checked on: 2026-09-27
+- Locator: PMID 42274937; results (primary outcome retinal detachment and time to detachment)
+- Note under review: Canadian tertiary 5-year retrospective cohort (J Ophthalmic Inflamm Infect 2026): 16 eyes of 14 acute retinal necrosis patients; retinal detachment (primary outcome) in 44% of eyes at mean 105 days from symptom onset (range 14-180); aqueous serology positive in 96% of eyes (56% VZV, 40% HSV); supports the bounded association only (small cohort).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `retinitis` → `visual-impairment` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Retinitis associates with severe visual impairment at quantified cohort level: the 14-year retrospective acute retinal necrosis cohort of 156 patients documents poor final visual outcome (worse than 20/200) in 79 percent of eyes with worse baseline visual acuity the strongest predictor (adjusted odds ratio 5.58, P=0.003) and extensive retinitis (four versus one quadrant involvement) independently predicting the destructive course (adjusted odds ratio 3.45, P=0.042) (PMID 42307763), the longitudinal herpesvirus-retinitis cohort of 120 patients and 144 eyes (acute retinal necrosis and cytomegalovirus retinitis, mean follow-up 5.5 years) models severe visual impairment (worse than 20/200) with surgical intervention (B -2.50, P=0.033) and concurrent retinal detachment at presentation (B -1.28, P=0.047) independently associated with lower odds of severe impairment (PMID 42252088), and the aqueous viral-load cohort of 43 patients documents significantly worse baseline and final best-corrected acuity in eyes with high initial varicella-zoster viral load (at least 5.0 times 10 to the power of 6 copies per milliliter, P<0.01) with worse final acuity correlating with baseline viral load and interleukin-8 level (PMID 42605772); recorded as documented association only with the constitutive-proximity screen, the acute-retinal-necrosis-dominant scope, and one explicit null carried openly - best-corrected acuity did not significantly change from baseline to final follow-up across the viral-load cohort overall (P=0.43).
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation of visual-impairment is established for any individual: constitutive-proximity was screened and cleared on the record (the diagnosis of retinitis rests on retinal inflammatory findings - infiltrates, vasculitis, necrosis - while the visual-impairment outcome is separately measured at cohort level against defined acuity thresholds), yet the impairment is the functional sequela of retinal damage and is inseparable from disease extent in the located cohorts (extensive retinitis and baseline acuity drive both detachment and vision loss), the quantification is acute-retinal-necrosis dominant with cytomegalovirus coverage only in the mixed herpesvirus cohort, one cohort found no significant acuity change overall (P=0.43) so treatment era and cohort composition materially move the outcome, and adjunctive treatments did not independently improve outcomes in the largest cohort; individual claims require dated acuity and retinal imaging records with pre-existing visual impairment, cataract, glaucoma, and refractive causes excluded.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 415.1 — Tabatabaei SA, Soleimani M, Ghochani G, et al. Predictors of retinal detachment and visual outcome in acute retinal necrosis: a 14-year retrospective cohort Graefes Arch Clin Exp Ophthalmol. 2026 Jun 17.doi: 10.1007/s00417-026-07322-0. PMID 42307763.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42307763/
+- Source checked on: 2026-09-27
+- Locator: PMID 42307763; results (final visual outcome and predictors)
+- Note under review: 14-year retrospective acute retinal necrosis cohort (Graefes Arch Clin Exp Ophthalmol 2026): 156 patients; poor final visual outcome (worse than 20/200) in 79% of eyes; worse baseline visual acuity strongest predictor (adjusted OR 5.58, P=0.003); extensive retinitis independently predicted retinal detachment (adjusted OR 3.45, P=0.042); adjunctive treatments did not independently improve outcomes; supports the bounded association only (retrospective, single tertiary center).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 415.2 — Zou Y, Yang M, Zhang J, et al. Herpesvirus Retinitis by Immune Status: Clinical Phenotypes and Predictors of Retinal Detachment and Severe Visual Impairment Ophthalmol Retina. 2026 Jun 6.pii: S2468-6530(26)00272-1. doi: 10.1016/j.oret.2026.06.002. PMID 42252088.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42252088/
+- Source checked on: 2026-09-27
+- Locator: PMID 42252088; results (severe visual impairment model)
+- Note under review: Longitudinal herpesvirus-retinitis cohort (Ophthalmol Retina 2026): 120 patients and 144 eyes with acute retinal necrosis or cytomegalovirus retinitis, mean follow-up 5.5 years; severe visual impairment (worse than 20/200) modeled with surgical intervention (B -2.50, P=0.033) and concurrent retinal detachment (B -1.28, P=0.047) associated with lower odds of severe impairment; supports the bounded association only (retrospective, mixed phenotypes).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 415.3 — Yu T, Wu HR, Zhu D, et al. Correlation of Clinical Prognosis with the Changes of Aqueous Viral Load and Interleukin-8 Levels in Patients with Acute Retinal Necrosis Ocul Immunol Inflamm. 2026 Aug 17:1-8. PMID 42605772.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42605772/
+- Source checked on: 2026-09-27
+- Locator: PMID 42605772; results (viral load, interleukin-8 and acuity correlations)
+- Note under review: Aqueous viral-load and interleukin-8 cohort (Ocul Immunol Inflamm 2026): 43 acute retinal necrosis patients and 53 eyes; high initial VZV viral load with significantly worse baseline and final best-corrected acuity (P<0.01); worse final acuity correlated with baseline VZV DNA load and interleukin-8 (P<0.01); overall baseline-to-final acuity change null (P=0.43, counterweight carried openly); supports the bounded association only (single-center prognostic correlation).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
 ## Implementation mechanics after decisions
 
 - Mapping edits and registry edits must land in lockstep (the registry audit's canonical-JSON hashes and live-use sets will fail otherwise).

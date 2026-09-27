@@ -36,21 +36,21 @@ describe("all-94 citation verification current state", () => {
     expect(relationships.currentState).toBe("D1-DRAFT-AUTHORED");
     expect(sources.currentState).toBe("D1-DRAFT-AUTHORED");
     expect(relationships.counts).toEqual({
-      relationships: 772,
-      explicitPublicationGuards: 698,
+      relationships: 778,
+      explicitPublicationGuards: 704,
       legacyRationaleBoundaries: 74,
     });
     expect(sources.counts).toMatchObject({
-      liveSourceReferenceUses: 1406,
+      liveSourceReferenceUses: 1424,
       activeSourceEntities: 346,
-      pendingVerificationSourceEntities: 896,
+      pendingVerificationSourceEntities: 914,
       activeClinicalSourceEntities: 345,
-      pendingClinicalSourceEntities: 896,
-      totalSourceEntitiesIncludingLineage: 1251,
+      pendingClinicalSourceEntities: 914,
+      totalSourceEntitiesIncludingLineage: 1269,
     });
-    expect(references).toHaveLength(1406);
+    expect(references).toHaveLength(1424);
     expect(references.filter((reference) => reference.verified === true)).toHaveLength(383);
-    expect(references.filter((reference) => reference.verified !== true)).toHaveLength(1023);
+    expect(references.filter((reference) => reference.verified !== true)).toHaveLength(1041);
     expect(mappings).toHaveLength(813);
     expect(mappings.filter((mapping) => mapping.draft === false)).toHaveLength(140);
     expect(mappings.filter((mapping) => mapping.draft === true)).toHaveLength(673);
