@@ -14085,6 +14085,158 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 **Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
 
+### `postpartum-thyroiditis` → `hypothyroidism` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Postpartum thyroiditis associates with subsequent permanent hypothyroidism at prospective-cohort and long-term-follow-up level: the 412-woman prospective cohort followed from gestation to twelve months postpartum documents postpartum thyroiditis in 63 women (15.3 percent) and permanent hypothyroidism in 34 of those 63 (54 percent) (PMID 32362873), and the long-term follow-up of 45 postpartum-thyroiditis patients drawn from an unselected population of 641 pregnant women (episode incidence 7.8 percent) followed 8.1 plus or minus 2.2 years documents persistent hypothyroidism in 14 of 45 with a computed 56 percent probability after an episode featuring a hypothyroid phase and zero progression after hyperthyroidism-only episodes (PMID 16279852); recorded as documented association only with the shared-substrate and definitional limits carried openly - the episode and the later thyroid failure share the same underlying autoimmunity so the episode may mark rather than cause gland failure.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation of hypothyroidism is established for any individual: the postpartum-thyroiditis episode and the subsequent permanent hypothyroidism rest on the same underlying thyroid autoimmunity so the episode can mark rather than cause gland failure, permanence is defined biochemically (persistence at one year) rather than by tissue diagnosis, levothyroxine initiation during or after the episode is not separable from natural history, and individual claims require dated thyroid-function and antithyroid-antibody records with gestational thyroid dysfunction, iodine imbalance, and medication causes excluded.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 394.1 — Benvenga S. Targeted Antenatal Screening for Predicting Postpartum Thyroiditis and Its Evolution Into Permanent Hypothyroidism Front Endocrinol (Lausanne). 2020;11:220. PMID 32362873.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/32362873/
+- Source checked on: 2026-09-26
+- Locator: PMID 32362873; results (PPT incidence and permanent hypothyroidism fraction)
+- Note under review: Prospective cohort followed gestation to 12 months postpartum (2020): 412 women enrolled; postpartum thyroiditis in 63 (15.3%); permanent hypothyroidism in 34 of the 63 (54%); supports the bounded biochemical transition association only (one-year persistence definition).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 394.2 — Lucas A, Pizarro E, Granada ML, et al. Postpartum thyroiditis: long-term follow-up Thyroid. 2005 Oct;15(10):1177-81. PMID 16279852.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/16279852/
+- Source checked on: 2026-09-26
+- Locator: PMID 16279852; results (persistent hypothyroidism incidence and predictors)
+- Note under review: Long-term follow-up series (Thyroid 2005): 45 PPT patients from an unselected population of 641 pregnant women (episode incidence 7.8%) followed 8.1 +/- 2.2 years; persistent hypothyroidism in 14 of 45; probability 56% after an episode featuring hypothyroidism; zero progression after hyperthyroidism-only episodes; risk higher with newborn female sex (RR 3.88), higher TSH during the episode, and maternal age; supports the bounded natural-history association only (small series, no untreated arm).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `postpartum-thyroiditis` → `depressive-disorder` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Postpartum thyroid dysfunction associates with postpartum psychiatric morbidity at nationwide-cohort level with conflicting marker-level meta-analytic support carried openly: the Danish nationwide cohort of 312,779 first-time mothers documents first-onset autoimmune thyroid disorders diagnosed within the postpartum year associating with first-onset psychiatric disorders (incidence rate ratio 1.88, 95% CI 1.25-2.81) (PMID 28929982), the gestational-cohort meta-analysis documents thyroid-peroxidase-antibody positivity associating with postpartum depression at pooled relative risk 1.49 (95% CI 1.11-2.00) (PMID 31552596), and the explicit null counterweight is carried openly: the 2023 population-based prospective cohort and updated meta-analysis found no association of thyroid function or antibody positivity with postpartum depression (own-cohort OR 0.79, 95% CI 0.47-1.33; pooled OR 1.93, 95% CI 0.91-4.10, P=0.08, I-squared 79 percent) (PMID 37486224); recorded as documented association only with the composite-endpoint, window-scope, and direction-inversion limits carried openly.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation of depressive-disorder is established for any individual: the strongest anchor measures a composite psychiatric-disorders endpoint rather than depression isolated, its window is postpartum autoimmune thyroid disorder broadly (dominated by but wider than postpartum thyroiditis), the marker-level literature conflicts with the newest meta-analysis null, the same nationwide cohort documents the reverse direction at incidence rate ratio 2.16 (psychiatric disorders preceding thyroid autoimmunity) so psychological state commonly precedes rather than follows the thyroid dysfunction, and individual claims require dated psychiatric assessment and thyroid-function records with pre-existing mood disorder, adjustment disorder, and medication effects excluded.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 395.1 — Bergink V, Pop VJM, Nielsen PR, et al. Comorbidity of autoimmune thyroid disorders and psychiatric disorders during the postpartum period: a Danish nationwide register-based cohort study Psychol Med. 2018 Jun;48(8):1291-1298. PMID 28929982.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/28929982/
+- Source checked on: 2026-09-26
+- Locator: PMID 28929982; results (incidence rate ratios both directions)
+- Note under review: Danish nationwide cohort study of 312,779 women with a first-time pregnancy (2018): first-onset autoimmune thyroid disorders diagnosed in the postpartum period associated with first-onset psychiatric disorders (IRR 1.88, 95% CI 1.25-2.81); reverse direction documented in the same cohort (psychiatric disorders preceding autoimmune thyroid disease, IRR 2.16); supports the bounded composite-endpoint association only with direction-inversion carried openly.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 395.2 — Minaldi E, D'Andrea S, Castellini C, et al. Thyroid autoimmunity and risk of post-partum depression: a systematic review and meta-analysis of longitudinal studies J Endocrinol Invest. 2020 Mar;43(3):271-277. PMID 31552596.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/31552596/
+- Source checked on: 2026-09-26
+- Locator: PMID 31552596; results (pooled relative risk)
+- Note under review: Meta-analysis of thyroid peroxidase antibody positivity and postpartum depression (2020): pooled relative risk 1.49 (95% CI 1.11-2.00) across included studies; supports the bounded marker-level association only (TPOAb positivity is a risk marker, not postpartum thyroiditis itself).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 395.3 — Sileo F, Osinga JAJ, Visser WE, et al. Association of gestational thyroid function and thyroid peroxidase antibody positivity with postpartum depression: a prospective cohort study and systematic literature review with meta-analysis Eur J Endocrinol. 2023 Aug 2;189(2):S26-S36. PMID 37486224.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/37486224/
+- Source checked on: 2026-09-26
+- Locator: PMID 37486224; results and conclusions (null association, heterogeneous meta-analysis)
+- Note under review: Population-based prospective cohort and systematic review with meta-analysis (Eur J Endocrinol 2023): no association of gestational thyroid function or TPOAb positivity with postpartum depression (own-cohort TPOAb OR 0.79, 95% CI 0.47-1.33; pooled OR 1.93, 95% CI 0.91-4.10, P=0.08, I-squared 79%); registered as the explicit null counterweight on this edge.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `postural-orthostatic-tachycardia-syndrome` → `cognitive-disorder` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Postural orthostatic tachycardia syndrome associates with objectively measured cognitive impairment at controlled physiologic-study level: the sustained-cognitive-stress study of 22 POTS patients and 18 matched controls documents greater cerebral blood-flow velocity reduction under prolonged cognitive stress (-7.8 versus -1.8 percent, interaction P=0.038), greater psychomotor slowing (6.1 versus 1.4 percent, interaction P=0.027), and increased concentration difficulty (interaction P<0.001) even without orthostatic stress (PMID 33280488), the active-standing study of 87 POTS participants and 39 controls documents lower executive function during standing (t-score 48 plus or minus 11 versus 55 plus or minus 10, P=0.009) and worse attention (reaction speed 2.78 versus 2.69, P<0.001) (PMID 32526639), and the neuropathic-POTS brain-fog study documents the symptom tracking autonomic hyperarousal with improvement after water drinking (PMID 35992935); recorded as documented association only with the sibling-overlap and small-sample limits carried openly.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation of cognitive-disorder is established for any individual: the quantified deficits are task-state cognitive-test differences rather than diagnosed neurocognitive disorder, the controlled studies are small (22 and 87 participants), cerebral blood-flow velocity is a surrogate for perfusion, orthostatic stress and cognitive load are intertwined so the independent contribution of each is unseparated, and individual claims require dated neuropsychological testing with sleep disorder, medication effect, mood disorder, and thyroid or anemia causes excluded.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 396.1 — Wells R, Malik V, Brooks AG, et al. Cerebral Blood Flow and Cognitive Performance in Postural Tachycardia Syndrome: Insights from Sustained Cognitive Stress Test J Am Heart Assoc. 2020 Dec 15;9(24):e017861. PMID 33280488.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/33280488/
+- Source checked on: 2026-09-26
+- Locator: PMID 33280488; results (CBFv and cognitive responses to prolonged cognitive stress)
+- Note under review: Sustained cognitive stress test study (J Am Heart Assoc 2020): 22 POTS patients and 18 matched controls; greater cerebral blood-flow velocity reduction under prolonged cognitive stress (-7.8% vs -1.8%, interaction P=0.038), greater psychomotor slowing (6.1% vs 1.4%, interaction P=0.027), increased concentration difficulty (interaction P<0.001) even without orthostatic stress; supports the bounded physiologic association only (small sample, surrogate perfusion measure).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 396.2 — Miller AJ, Sheehan T, Bourne KM, et al. Attention and executive function are impaired during active standing in postural tachycardia syndrome Auton Neurosci. 2020 Sep;227:102692. PMID 32526639.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/32526639/
+- Source checked on: 2026-09-26
+- Locator: PMID 32526639; results (executive function and attention during active standing)
+- Note under review: Active-standing cognitive study (Auton Neurosci 2020): 87 POTS participants and 39 healthy controls; lower executive function during standing (Stroop t-score 48 +/- 11 vs 55 +/- 10, P=0.009) and worse attention (CogState reaction speed 2.78 vs 2.69, P<0.001); supports the bounded task-state association only (cross-sectional, no diagnostic threshold).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 396.3 — Rodriguez B, Hochstrasser A, Eugster PJ, et al. Brain fog in neuropathic postural tachycardia syndrome may be associated with autonomic hyperarousal and improves after water drinking Front Neurosci. 2022;16:968725. PMID 35992935.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/35992935/
+- Source checked on: 2026-09-26
+- Locator: PMID 35992935; results (autonomic hyperarousal and water-drinking response)
+- Note under review: Neuropathic POTS brain-fog study (Front Neurosci 2022): brain fog common and highly disturbing in neuropathic POTS, associated with autonomic hyperarousal and improving after water drinking; record carries a linked erratum (Front Neurosci 2023;17:1178850) noted openly; supports the bounded functional-substrate association only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `premature-atrial-ventricular-contractions` → `cardiomyopathy` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Frequent premature ventricular contractions associate with left-ventricular dysfunction and reversible cardiomyopathy at consecutive-cohort and pediatric-series level: the consecutive 214-patient ablation cohort documents reduced ejection fraction in 24 percent with higher ectopy burden in the reduced-function group (19 versus 15 percent) and QRS-dispersion and body-mass-index as independent predictors (PMID 24612052), the 264-patient consecutive PVC cohort documents left-ventricular dysfunction in 87 (33 percent) with ejection-fraction normalization in 68 percent within four months of ablation (PMID 23099051), and the pediatric frequent-ventricular-ectopy series (burden at or above 5 percent) documents cardiomyopathy in 4 of 28 with cardiac function normalizing in all four after ectopy resolution or antiarrhythmic therapy (PMID 20512569); recorded as documented association only with the ectopy-window and reversibility limits carried openly - the evidence is ventricular-ectopy specific and atrial-ectopy cardiomyopathy risk is unquantified in the located literature.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation of cardiomyopathy is established for any individual: the cardiomyopathy designation rests on ejection-fraction thresholds rather than tissue diagnosis, retrospective single-centre cohorts cannot separate ectopy-driven dysfunction from pre-existing cardiomyopathy producing ectopy, ectopy-burden thresholds vary across studies (15-19 percent in adults, 5 percent in children), treatment with ablation or antiarrhythmic therapy confounds natural history though normalization after ectopy suppression supports the direction, and individual claims require dated Holter burden, echocardiographic, and cardiac-MRI records with ischemic, hypertensive, valvular, familial, and toxic cardiomyopathy excluded.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 397.1 — Kawamura M, Badhwar N, Vedantham V, et al. Coupling interval dispersion and body mass index are independent predictors of idiopathic premature ventricular complex-induced cardiomyopathy J Cardiovasc Electrophysiol. 2014 Jul;25(7):756-62. PMID 24612052.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/24612052/
+- Source checked on: 2026-09-26
+- Locator: PMID 24612052; results (ejection fraction, burden, and predictors)
+- Note under review: Consecutive ablation-cohort study (2014): 214 patients referred for PVC ablation; reduced ejection fraction in 24%; PVC burden higher in the reduced-function group (19% vs 15%); QRS dispersion and BMI independent predictors; supports the bounded burden-dysfunction association only (referral population, retrospective).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 397.2 — Yokokawa M, Good E, Crawford T, et al. Recovery from left ventricular dysfunction after ablation of frequent premature ventricular complexes Heart Rhythm. 2013 Feb;10(2):172-5. PMID 23099051.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/23099051/
+- Source checked on: 2026-09-26
+- Locator: PMID 23099051; results (dysfunction prevalence and post-ablation recovery)
+- Note under review: Consecutive PVC cohort (2012): 264 patients; left-ventricular dysfunction in 87 (33%); ejection-fraction normalization in 68% within 4 months of catheter ablation; supports the bounded reversible-cardiomyopathy association only (treatment-confounded natural history).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 397.3 — Kakavand B, Ballard HO, Disessa TG. Frequent ventricular premature beats in children with a structurally normal heart: a cause for reversible left ventricular dysfunction? Pediatr Cardiol. 2010 Oct;31(7):986-90. PMID 20512569.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/20512569/
+- Source checked on: 2026-09-26
+- Locator: PMID 20512569; results (cardiomyopathy incidence and normalization)
+- Note under review: Pediatric chart-review series (Pediatr Cardiol 2010): 28 patients under 18 with frequent ventricular premature beats (burden >=5%/24h); cardiomyopathy in 4 (14%); cardiac function normalized in all four with spontaneous ectopy resolution or antiarrhythmic therapy; supports the bounded reversible association only (very small series).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
 ## Implementation mechanics after decisions
 
 - Mapping edits and registry edits must land in lockstep (the registry audit's canonical-JSON hashes and live-use sets will fail otherwise).

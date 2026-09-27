@@ -3939,3 +3939,82 @@ fixture automatically (960 -> 978) - thirteenth consecutive batch with no manual
 clean outside the standing benign coincidences (apply-all-94's historical `explicitPublicationGuards:
 273`; wave-5's `toBeGreaterThanOrEqual(276)` catalog floor; legal-copy's `38 U.S.C. § 1117` statute text).
 Standing recommendation: batch 73 lands through branch, PR, CI, and merge.
+
+## Mapping Expansion D1 batch 74 (2026-09-26)
+
+Mapping Expansion D1 batch 74 (2026-09-26) authored four draft-quarantined relationships across three of
+the five queue identities and deferred two identities without edges. postpartum-thyroiditis ->
+hypothyroidism (METABOLIC_OR_NUTRITIONAL, following the thyroiditis convention) rests on the 412-woman
+prospective gestation-to-12-months cohort (postpartum thyroiditis in 63, 15.3 percent; permanent
+hypothyroidism in 34 of those 63, 54 percent, PMID 32362873) and the 8.1-year follow-up of 45 patients from
+an unselected 641-pregnancy population (persistent hypothyroidism in 14 of 45; 56 percent probability after
+hypothyroid-phase episodes; zero after hyperthyroid-only episodes; newborn female sex RR 3.88, PMID
+16279852), with the shared-substrate limit carried openly (the episode and the later gland failure share one
+autoimmune process so the episode may mark rather than cause the failure) and the biochemical-permanence
+definition limit. postpartum-thyroiditis -> depressive-disorder (PSYCHOPHYSIOLOGICAL) rests on the Danish
+nationwide cohort of 312,779 first-time mothers (first-onset postpartum autoimmune thyroid disease to
+first-onset psychiatric disorders IRR 1.88, 95% CI 1.25-2.81, PMID 28929982) and the TPOAb marker
+meta-analysis (postpartum depression RR 1.49, 95% CI 1.11-2.00, PMID 31552596), with the explicit null
+meta-analytic counterweight registered on the edge itself (PMID 37486224: own-cohort OR 0.79; pooled OR
+1.93, P=0.08, I-squared 79 percent) and the within-cohort direction-inversion carried openly (psychiatric
+disorders preceding autoimmune thyroid disease at IRR 2.16); the composite-endpoint limit (psychiatric
+disorders composite) and window-scope limit (postpartum autoimmune thyroid disorder, wider than postpartum
+thyroiditis) are stated on the record. postural-orthostatic-tachycardia-syndrome -> cognitive-disorder
+(MICROVASCULAR_METABOLIC, following the orthostatic-hypotension convention) rests on the sustained-
+cognitive-stress study (22 POTS patients versus 18 controls: cerebral blood-flow velocity reduction -7.8
+versus -1.8 percent, psychomotor slowing 6.1 versus 1.4 percent, concentration difficulty P<0.001, PMID
+33280488), the active-standing study (87 versus 39: executive-function t-score 48 versus 55, attention
+reaction speed 2.78 versus 2.69, PMID 32526639), and the neuropathic-POTS brain-fog study (autonomic
+hyperarousal tracking, improvement after water drinking, PMID 35992935; linked erratum Front Neurosci
+2023;17:1178850 carried openly), with the small-sample and surrogate-endpoint limits carried openly and
+the sibling orthostatic-hypotension -> cognitive-disorder edge left untouched (ME-29). premature-atrial-
+ventricular-contractions -> cardiomyopathy (NOT_ESTABLISHED, following the cardiac-arrhythmia convention)
+rests on the consecutive 214-patient ablation cohort (reduced ejection fraction in 24 percent; ectopy
+burden 19 versus 15 percent, PMID 24612052), the 264-patient consecutive PVC cohort (dysfunction in 87,
+33 percent; ejection-fraction normalization in 68 percent within four months of ablation, PMID 23099051),
+and the pediatric frequent-ventricular-ectopy series (cardiomyopathy in 4 of 28 at burden at or above 5
+percent; normalization in all four after ectopy resolution or therapy, PMID 20512569), with the
+ectopy-suppression reversibility signal carrying directional weight while reverse causation remains
+unexcluded in the retrospective designs and the ventricular-ectopy scope carried openly (the combined
+atrial/ventricular catalog identity leaves the atrial side unquantified).
+
+Deferred without edges: preiser-s-disease - IDENTITY-OVERLAP (Preiser disease IS idiopathic avascular
+necrosis of the scaphoid) plus ME-29 window discipline (the draft avascular-necrosis -> osteoarthritis edge
+owns the collapse-to-arthritis route) plus case-series-only outcome quantification (PMID 30685137 surgical
+series, PMID 30235715 injection case report), reopening conditions recorded; premature-ejaculation -
+CONSTITUTIVE-PROXIMITY (personal distress is a defining criterion of the consensus definitions and the
+controlled cohort found psychological burden only in self-assessed cases while strictly defined presumed
+cases showed no excess burden, PMID 21235722, null carried openly as counterweight) plus selection-on-
+definition (PMID 31024115 distressing-early-ejaculation clinic sample) plus direction-inversion (performance
+anxiety precedes acquired cases) plus bidirectional-cycle semantics on the erectile-dysfunction comorbidity
+(PMID 40234544 cross-sectional only). Sixth evidence-preserving refusal recorded: the premature-atrial-
+contraction to atrial-fibrillation risk signal has no catalog target identity (after nightmare-disorder,
+nocturnal-enuresis, overactive-bladder, phantom-limb-pain, and giant-cell-arteritis). Transcription
+discipline: a candidate Preiser anchor (PMID 28464063) was discarded at preflight when esummary resolved it
+to an unrelated plant-genomics record - the batch-63 mis-transcription class caught before authoring.
+
+Structural-debt note: batch-74 edges produced zero new CRG findings - review-class 13 against baseline 13
+and redundancy 28 against baseline 28 unchanged, and the bidirectional-pair count stays at 4. The batch
+adds an eighth accumulated example to the standing CRG redundancy-semantics question: parallel targeting
+(the batch-74 premature-contractions -> cardiomyopathy edge runs a parallel window into the published
+cardiac-arrhythmia -> cardiomyopathy target, the batch-70/72 class) disclosed openly with the published
+edge untouched. The question now stands on eight examples and should be settled before more parallel
+pathway provenance accumulates - these draft edges would join the published redundancy set the moment the
+citation-verification backlog clears.
+
+Citation packet regenerated at 397 worksheets / 989 reference rows = live citation debt; the verification
+dashboard regenerated at 989 rows in 41 reviewer batches (873 distinct sources). Backlog after batch 74:
+**120** undispositioned zero-edge drafts (125 before the batch; three identities left by gaining edges and
+two by recorded deferral). Next-five: `proctalgia-fugax`, `pronator-teres-syndrome`, `prurigo-nodularis`,
+`pruritus-ani`, `pseudobulbar-affect`.
+
+Test-pin note: the sweep touched 54 files and replaced 316 counter tokens in one pass with the per-token
+context predicates carried over unchanged (relationships 756 -> 760, references/uses 1361 -> 1372,
+unverified 978 -> 989, pending source entities 863 -> 874, total source entities 1218 -> 1229, explicit
+guards 682 -> 686, clinical references 1356 -> 1367, clinical provenance 1360 -> 1371, and the draft-
+singles counter 296 -> 298 for this batch's single-suggestion identities postural-orthostatic-tachycardia-
+syndrome and premature-atrial-ventricular-contractions). The explicit fixture token continued to carry the
+citation-decay-gate debt fixture automatically (978 -> 989) - fourteenth consecutive batch with no manual
+fixture bump. Residue clean outside the standing benign coincidences (apply-all-94's historical
+`explicitPublicationGuards: 273`; wave-5's `toBeGreaterThanOrEqual(276)` catalog floor; legal-copy's `38
+U.S.C. § 1117` statute text). Standing recommendation: batch 74 lands through branch, PR, CI, and merge.

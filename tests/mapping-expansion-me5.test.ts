@@ -148,16 +148,16 @@ describe("Mapping Expansion Batch ME-5", () => {
     expect(files).toHaveLength(813);
     expect(mappings.filter((mapping) => mapping.draft === false)).toHaveLength(140);
     expect(mappings.filter((mapping) => mapping.draft === true)).toHaveLength(673);
-    expect(mappings.reduce((sum, mapping) => sum + mapping.suggestions.length, 0)).toBe(756);
+    expect(mappings.reduce((sum, mapping) => sum + mapping.suggestions.length, 0)).toBe(760);
     expect(mappings.filter((mapping) => mapping.draft === false && mapping.suggestions.length === 1)).toHaveLength(67);
     expect(mappings.filter((mapping) => mapping.draft === false && mapping.suggestions.length >= 2)).toHaveLength(73);
 
     const refs = mappings.flatMap((mapping) =>
       mapping.suggestions.flatMap((suggestion) => suggestion.sourceReferences ?? []),
     );
-expect(refs).toHaveLength(1361);
+expect(refs).toHaveLength(1372);
     expect(refs.filter((ref) => ref.verified === true)).toHaveLength(383);
-expect(refs.filter((r) => r.verified === false)).toHaveLength(978);
+expect(refs.filter((r) => r.verified === false)).toHaveLength(989);
   });
 
   it("passes citation and master-registry gates after ME-7 verification", { timeout: 30_000 }, () => {
@@ -175,11 +175,11 @@ expect(refs.filter((r) => r.verified === false)).toHaveLength(978);
       hardFindingCount: number;
     };
     expect(citation).toMatchObject({
-      references: 1361,
+      references: 1372,
       verified: 383,
       retiredVerified: 6,
       verifiedProvenance: 389,
-      unverified: 978,
+      unverified: 989,
       reviewFindingCount: 0,
       hardFindingCount: 0,
     });
@@ -198,11 +198,11 @@ expect(refs.filter((r) => r.verified === false)).toHaveLength(978);
     };
     expect(master).toMatchObject({
       status: "PASS",
-      relationships: 756,
+      relationships: 760,
       verifiedLiveSourceUses: 383,
-      pendingVerificationLiveSourceUses: 978,
+      pendingVerificationLiveSourceUses: 989,
       activeSourceEntities: 346,
-      pendingVerificationSourceEntities: 863,
+      pendingVerificationSourceEntities: 874,
     });
   });
 });
