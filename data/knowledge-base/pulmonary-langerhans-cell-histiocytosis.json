@@ -2,8 +2,129 @@
   "id": "pulmonary-langerhans-cell-histiocytosis",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review airway, aspiration, inflammatory, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 76 (2026-09-26): two ASSOCIATION_ONLY draft mappings pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: the edges assert association only (etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true) - pneumothorax at MECHANICAL_OR_COMPRESSIVE following the lymphangioleiomyomatosis convention, diabetes-insipidus at NOT_ESTABLISHED with the clonal-infiltration vector carried as hypothesis. The pneumothorax edge carries the small-cohort limit (5 of 15 referral patients) and the phenotype limit (endpoint clusters in the cystic-destructive phenotype) openly. The diabetes-insipidus edge carries the multisystem-window and shared-substrate limits openly - the diabetes insipidus arises from the systemic clonal disease of which the pulmonary involvement is one manifestation, and the 139-patient risk-factor cohort spans Langerhans cell histiocytosis generally rather than pulmonary-limited disease; within-batch source sharing (PMID 35545326 across both edges) is recorded openly. Individual claims require dated imaging, smoking history, endocrine testing with water-deprivation documentation, and pituitary MRI with cystic-lung and polyuria causes excluded and review by a qualified medical professional.",
+    "Pathway and duplicate-scope screens and withheld propositions: no -> pulmonary-fibrosis edge (BELOW THRESHOLD - interstitial fibrosis is characterized histologically within the extrapulmonary-recidivism subtype (PMID 33708984) without cohort-quantified incident fibrosis; reopening condition recorded); no -> pulmonary-hypertension edge (BELOW THRESHOLD - cor pulmonale described in end-stage disease without PLCH-specific quantification in the located cohorts); no -> respiratory-failure and -> lung-cancer propositions (MISSING IDENTITIES plus ZERO RECORD - the smoking substrate is shared but no quantified PLCH-specific malignancy signal was located); no -> interstitial-lung-disease edge (IDENTITY-DUPLICATION - PLCH is itself classified among interstitial lung diseases; the generic identity's window is separate); no -> diabetes-mellitus edge (SEMANTIC-MISMATCH - central diabetes insipidus is a distinct posterior-pituitary outcome and is never registered against the diabetes-mellitus identity); no -> thyroid-disorder edge (BELOW THRESHOLD - thyroid involvement noted within multisystem LCH cohorts without pulmonary-specific quantification). ME-29 discipline: the lymphangioleiomyomatosis to pneumothorax and to pulmonary-hypertension windows own their sources and none is recycled here."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 76 (2026-09-26): two bounded association edges authored - pulmonary-langerhans-cell-histiocytosis to pneumothorax (rank 1) and to diabetes-insipidus (rank 2) - classified ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, and hypothesizedOnly:true. The pneumothorax edge rests on the 15-patient pathology-confirmed cohort (spontaneous pneumothorax in 5 of 15 during the disease course, PMID 35545326) and the adult subtype study (recurrent spontaneous pneumothorax as a defining feature of the extrapulmonary-recidivism group, PMID 33708984). The diabetes-insipidus edge rests on the same 15-patient cohort (pituitary involvement in 7 of 12 multisystem patients presenting as polyuria-polydipsia, PMID 35545326, shared within batch and recorded openly), the 139-patient LCH risk-factor cohort (central diabetes insipidus 14.4 percent; multisystem OR 6.87, PMID 42618506), and the 30-year pediatric endocrine review (PMID 38031464, pediatric-scope limit carried openly). The shared-clonal-substrate limit is stated on the diabetes-insipidus edge (the pituitary outcome arises from the systemic disease, not the lung involvement)."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "pneumothorax",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Pulmonary Langerhans cell histiocytosis associates with spontaneous pneumothorax at condition-specific cohort level: the 15-patient pathology-confirmed PLCH cohort with follow-up documents spontaneous pneumothorax during the disease course in 5 of 15 patients (33 percent), all within the cystic-nodule CT phenotype, with 12 of the 15 carrying multisystem involvement (PMID 35545326), and the adult PLCH cohort subdivision study documents recurrent spontaneous pneumothorax as a defining clinical feature of the extrapulmonary-recidivism subtype alongside greater nodular change and interstitial fibrosis (PMID 33708984); recorded as documented association only with the small-cohort and phenotype limits carried openly - the quantified fraction rests on a 15-patient referral cohort and pneumothorax tracks the cystic-destructive phenotype rather than the diagnosis uniformly.",
+        "causationStatus": "Neither causation nor aggravation of pneumothorax is established for any individual: the quantified 33 percent rests on a 15-patient single-centre referral cohort subject to selection, pneumothorax arises from pleural-cyst rupture so the mediator is the cystic-destructive phenotype rather than the histiocytic diagnosis itself, the subtype study characterizes recurrent pneumothorax qualitatively rather than quantifying incidence, smoking exposure is near-universal in adult PLCH populations and independently associates with cystic lung change, and individual claims require dated CT imaging, smoking history, and thoracic surgical records with lymphangioleiomyomatosis, emphysematous bullae, and other cystic-lung causes excluded."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MECHANICAL_OR_COMPRESSIVE",
+        "primaryVector": "Cystic and nodular destruction of lung parenchyma with subpleural cyst formation is hypothesized to produce pleural-cyst rupture on normal pressure excursions, the mechanical route supported by the clustering of pneumothorax in the cystic CT phenotype and by recurrence patterns in the extrapulmonary-recidivism subtype, but whether this route produced any individual's pneumothorax remains hypothesized until imaging and thoracic records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association rests on one 15-patient single-centre cohort (5 events) plus one subtype-characterization cohort: absolute numbers are very small, the endpoint clusters in the cystic-destructive phenotype so the diagnosis alone does not carry uniform risk, the subtype study reports recurrence qualitatively, adult PLCH populations are smoking-selected so the shared tobacco substrate with cystic change is unseparated, and the lymphangioleiomyomatosis differential is not uniformly excluded in older series.",
+        "evidenceGaps": "No large PLCH cohort quantifying pneumothorax incidence against cystic-burden staging was located; the quantified fraction is 5 of 15 in a referral cohort with 12 of 15 multisystem; the second anchor characterizes recurrence qualitatively; smoking selection is unseparated; and cystic-lung differential exclusion (lymphangioleiomyomatosis, bullous emphysema) is inconsistently documented across the located series.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "lymphangioleiomyomatosis and other cystic lung diseases in the differential (the published lymphangioleiomyomatosis to pneumothorax window owns its own sources; none recycled per ME-29)",
+          "smoking-related emphysematous bullae and paraseptal emphysema as independent pneumothorax sources (tobacco substrate shared with PLCH)",
+          "ventilator-associated barotrauma in acute presentations (treatment-mediated route carried separately)",
+          "cystic fibrosis and Birt-Hogg-Dube and other inherited cystic lung disorders"
+        ]
+      },
+      "evidenceGaps": [
+        "No large PLCH cohort quantifying pneumothorax incidence against cystic-burden staging was located; the quantified fraction is 5 of 15 in a referral cohort with 12 of 15 multisystem; the second anchor characterizes recurrence qualitatively; smoking selection is unseparated; and cystic-lung differential exclusion (lymphangioleiomyomatosis, bullous emphysema) is inconsistently documented across the located series."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY at condition-specific-cohort class with the small-cohort and phenotype limits carried openly, following the lymphangioleiomyomatosis to pneumothorax convention (MECHANICAL_OR_COMPRESSIVE): the 15-patient pathology-confirmed cohort quantifies spontaneous pneumothorax in 5 of 15 (PMID 35545326) and the adult subtype study documents recurrent spontaneous pneumothorax as a defining feature of the extrapulmonary-recidivism group (PMID 33708984); ME-29 discipline: the published lymphangioleiomyomatosis to pneumothorax window and its sources are left untouched and none is recycled here; because absolute numbers are small and the endpoint clusters in the cystic-destructive phenotype with a near-universal smoking substrate, the conservative standard keeps the edge at association only, states the phenotype and selection limits on the record, and routes individual claims through dated imaging, smoking, and thoracic records with cystic-lung differentials excluded.",
+      "sourceReferences": [
+        {
+          "citation": "Zhang L, Ouyang R. Clinical analysis for 15 patients with pulmonary Langerhans cell histiocytosis and literature review Zhong Nan Da Xue Xue Bao Yi Xue Ban. 2022 Mar 28;47(3):334-343. PMID 35545326.",
+          "note": "Single-centre retrospective PLCH cohort with literature review (2022): 15 pathology-confirmed patients (median age 33; 9 men); 5 of 15 (33%) suffered spontaneous pneumothorax during the disease course; 12 of 15 multisystem with 7 pituitary involvements (polyuria-polydipsia); CT dominated by nodules and cysts; supports the bounded small-cohort association only (referral selection).",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35545326/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 35545326; results (pneumothorax and multisystem involvement)"
+        },
+        {
+          "citation": "Wang J, Xie L, Miao Y, et al. Adult pulmonary Langerhans cell histiocytosis might consist of two distinct groups: isolated form and extrapulmonary recidivism type Ann Transl Med. 2021 Feb;9(4):357. PMID 33708984.",
+          "note": "Adult PLCH cohort subdivision study (Ann Transl Med 2021): isolated form versus extrapulmonary-recidivism type; recurrent spontaneous pneumothorax a defining feature of the recidivism subtype alongside greater nodular change and interstitial fibrosis; BRAF V600E in 33.3% of that subtype; supports the bounded phenotype association only (qualitative recurrence characterization).",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33708984/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 33708984; results (subtype features including recurrent pneumothorax)"
+        }
+      ]
+    },
+    {
+      "conditionId": "diabetes-insipidus",
+      "rank": 2,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Pulmonary Langerhans cell histiocytosis associates with diabetes insipidus through pituitary involvement at condition-specific-cohort and systemic-LCH-cohort level: the 15-patient pathology-confirmed PLCH cohort documents pituitary involvement in 7 patients within the multisystem group (12 of 15 multisystem) presenting as polyuria-polydipsia (PMID 35545326), the 139-patient Langerhans cell histiocytosis cohort documents central diabetes insipidus in 20 (14.4 percent) with CNS involvement in 17.3 percent and multisystem involvement without high-risk organ involvement carrying odds ratio 6.87 (95% CI 2.31-20.29) for central diabetes insipidus (PMID 42618506), and the 30-year pediatric endocrine review documents diabetes insipidus among the characteristic endocrine manifestations of Langerhans cell histiocytosis (PMID 38031464); recorded as documented association only with the multisystem-window and shared-substrate limits carried openly - the diabetes insipidus arises from the systemic clonal disease of which the pulmonary involvement is one manifestation rather than from the lung disease itself, and the risk-factor cohort is Langerhans cell histiocytosis generally rather than pulmonary-limited disease.",
+        "causationStatus": "Neither causation nor aggravation of diabetes-insipidus is established for any individual: the pulmonary label and the pituitary stalk infiltration share one clonal substrate so the edge records the multisystem window rather than a lung-to-pituitary route, the risk-factor cohort spans all Langerhans cell histiocytosis (two thirds single-system osseous) rather than pulmonary-limited disease, the pulmonary cohort's pituitary fraction (7 of 12 multisystem) rests on 15 referral patients, and individual claims require dated endocrine testing with water-deprivation documentation, pituitary MRI, and polyuria causes (nephrogenic, psychogenic, medication) excluded."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "NOT_ESTABLISHED",
+        "primaryVector": "Clonal Langerhans-cell proliferation infiltrating the pituitary stalk and posterior pituitary is hypothesized to destroy or impair antidiuretic hormone production and release, the infiltration route supported by the pituitary-involvement fractions in the PLCH cohort and by the CNS-involvement odds gradient in the systemic cohort, but the precise cellular mechanism is not established and whether it produced any individual's diabetes insipidus remains hypothesized until endocrine and imaging records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association rests on one 15-patient PLCH cohort (7 pituitary events in the multisystem group) plus one 139-patient systemic-LCH risk-factor cohort plus one review-class anchor: the substrate is shared (the clonal disease causes both the lung and pituitary findings), the risk-factor cohort is not pulmonary-scoped (two thirds single-system osseous disease), the pediatric review carries age-scope limits, pituitary-involvement ascertainment varies (polyuria-polydipsia symptoms versus formal testing), and no cohort isolates pulmonary-limited PLCH diabetes-insipidus incidence.",
+        "evidenceGaps": "No cohort isolating diabetes-insipidus incidence among pulmonary-limited (single-system) PLCH was located; the quantified pituitary fraction (7 of 12 multisystem) rests on a 15-patient referral cohort; the risk-factor cohort spans Langerhans cell histiocytosis generally (CDI 14.4 percent of 139); the endocrine review is pediatric-scoped; and polyuria-polydipsia symptom ascertainment is not uniformly confirmed by water-deprivation testing in the located series.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "nephrogenic diabetes insipidus, psychogenic polydipsia, and medication effects (thioridazine, lithium) as polyuria causes",
+          "other pituitary stalk lesions (craniopharyngioma, germinoma, sarcoidosis, lymphocytic hypophysitis) on pituitary MRI",
+          "multisystem Langerhans cell histiocytosis of which the pulmonary disease is one manifestation (shared-substrate limit carried openly)",
+          "thyroid and anterior pituitary hormone deficiencies as parallel endocrine involvements rather than causes"
+        ]
+      },
+      "evidenceGaps": [
+        "No cohort isolating diabetes-insipidus incidence among pulmonary-limited (single-system) PLCH was located; the quantified pituitary fraction (7 of 12 multisystem) rests on a 15-patient referral cohort; the risk-factor cohort spans Langerhans cell histiocytosis generally (CDI 14.4 percent of 139); the endocrine review is pediatric-scoped; and polyuria-polydipsia symptom ascertainment is not uniformly confirmed by water-deprivation testing in the located series."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY at condition-specific-cohort-plus-systemic-cohort class with the multisystem-window and shared-substrate limits carried openly: the PLCH cohort documents pituitary involvement in 7 patients presenting as polyuria-polydipsia (PMID 35545326), the 139-patient LCH cohort quantifies central diabetes insipidus at 14.4 percent with a multisystem odds gradient (PMID 42618506), and the endocrine review anchors the characteristic-manifestation framing (PMID 38031464, pediatric-scoped limit carried openly); the edge records the multisystem-clonal window rather than a lung-to-pituitary route and the systemic-cohort scope limit is stated on the record; individual claims route through dated endocrine testing, water-deprivation documentation, and pituitary MRI with nephrogenic, psychogenic, and medication causes excluded.",
+      "sourceReferences": [
+        {
+          "citation": "Zhang L, Ouyang R. Clinical analysis for 15 patients with pulmonary Langerhans cell histiocytosis and literature review Zhong Nan Da Xue Xue Bao Yi Xue Ban. 2022 Mar 28;47(3):334-343. PMID 35545326.",
+          "note": "Single-centre retrospective PLCH cohort (2022): 15 pathology-confirmed patients; 12 multisystem with 7 pituitary involvements presenting as polyuria-polydipsia (the diabetes-insipidus clinical picture); supports the bounded multisystem-window association only (small referral cohort).",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35545326/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 35545326; results (pituitary involvement with polyuria-polydipsia)"
+        },
+        {
+          "citation": "Xie LR, Bai HJ, Liu YH, et al. [Analysis of risk factors for central diabetes insipidus in Langerhans cell histiocytosis] Zhonghua Yi Xue Za Zhi. 2026 Aug 25;106(31):3291-3295. PMID 42618506.",
+          "note": "Single-centre Langerhans cell histiocytosis risk-factor cohort 2009-2025 (Zhonghua Yi Xue Za Zhi 2026): 139 patients; central diabetes insipidus in 20 (14.4%); CNS involvement 17.3%; multisystem involvement without high-risk organ involvement OR 6.868 (95% CI 2.305-20.289) for CDI; supports the bounded systemic-window association only (LCH generally, not pulmonary-limited).",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42618506/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 42618506; results (CDI incidence and risk factors)"
+        },
+        {
+          "citation": "Alexander A, Zacharin M. Endocrine features of Langerhans cell histiocytosis in paediatric patients: A 30-year review J Paediatr Child Health. 2024 Jan;60(1):24-27. PMID 38031464.",
+          "note": "Endocrine features of Langerhans cell histiocytosis in paediatric patients: a 30-year review (J Paediatr Child Health 2024): documents diabetes insipidus among the characteristic endocrine manifestations; supports the bounded manifestation framing only (review class, pediatric-scoped).",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38031464/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 38031464; review (endocrine manifestations including diabetes insipidus)"
+        }
+      ]
+    }
+  ]
 }

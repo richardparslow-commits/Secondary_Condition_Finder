@@ -83,9 +83,9 @@ describe("Mapping Expansion Batch ME-35", () => {
   it("ratchets the authoritative counts without changing publication totals", () => {
     expect(relationships.currentState).toBe("D1-DRAFT-AUTHORED");
     expect(sources.currentState).toBe("D1-DRAFT-AUTHORED");
-    expect(relationships.counts).toEqual({ relationships: 766, explicitPublicationGuards: 692, legacyRationaleBoundaries: 74 });
-    expect(relationships.relationships).toHaveLength(766);
-    expect(sources.counts).toMatchObject({ liveSourceReferenceUses: 1389, activeSourceEntities: 346, pendingVerificationSourceEntities: 883, activeClinicalSourceEntities: 345, pendingClinicalSourceEntities: 883, totalSourceEntitiesIncludingLineage: 1238, });
-    expect(sources.sources).toHaveLength(1238);
+    expect(relationships.counts).toEqual({ relationships: 769, explicitPublicationGuards: 695, legacyRationaleBoundaries: 74 });
+    expect(relationships.relationships).toHaveLength(769);
+    expect(sources.counts).toMatchObject({ liveSourceReferenceUses: 1397, activeSourceEntities: 346, pendingVerificationSourceEntities: 890, activeClinicalSourceEntities: 345, pendingClinicalSourceEntities: 890, totalSourceEntitiesIncludingLineage: 1245, });
+    expect(sources.sources).toHaveLength(1245);
   });
 });

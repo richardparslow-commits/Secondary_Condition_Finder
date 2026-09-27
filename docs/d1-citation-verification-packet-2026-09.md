@@ -14469,6 +14469,118 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 **Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
 
+### `pseudophakia` → `retinal-detachment` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Pseudophakia associates with rhegmatogenous retinal detachment at national-register and institutional-cohort level using internal controls: the Danish register-based cohort of 202,226 patients after uncomplicated first-eye phacoemulsification, using each patient's fellow nonoperated eye as reference, identified 465 pseudophakic retinal detachments versus 110 in the fellow eyes for a relative risk of 4.23, highly increased during the first 6 months and leveling off but remaining significantly elevated up to 10 years, with the authors framing the risk ratio as a true etiologic effect of cataract surgery because the fellow eye was the reference (PMID 24021894); the Singapore National Eye Centre cohort of 24,846 cataract operations documents 39 rhegmatogenous detachments (cumulative incidence 0.16 percent, 95% CI 0.11-0.21) rising to 1.77 percent after posterior capsular rupture with younger age carrying hazard ratio 19.7 versus over-70s (PMID 21668790), and the Taiwanese adult cohort identifies male sex as a risk factor for pseudophakic retinal detachment after cataract extraction (PMID 17658608); recorded as documented association only with the post-surgical-state and complication-limits carried openly.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation of retinal-detachment is established for any individual: the pseudophakic state is inseparable from the cataract surgery and the lens-removal-induced vitreous changes that accompany it, posterior capsular rupture at surgery carries its own 1.77 percent detachment incidence so surgical complication is a distinct route from the uncomplicated-surgery route, the operated eyes differ from fellow eyes in baseline lens status and axial geometry, and individual claims require dated operative reports, refraction and axial-length records, and retinal examination with high myopia, trauma, and vitreoretinal-degeneration causes excluded.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 404.1 — Bjerrum SS, Mikkelsen KL, La Cour M. Risk of pseudophakic retinal detachment in 202,226 patients using the fellow nonoperated eye as reference Ophthalmology. 2013 Dec;120(12):2573-2579. PMID 24021894.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/24021894/
+- Source checked on: 2026-09-26
+- Locator: PMID 24021894; results (RD counts and PRD risk ratio)
+- Note under review: Danish register-based cohort with fellow nonoperated eye as reference (Ophthalmology 2013): 202,226 patients after uncomplicated first-eye phacoemulsification 2000-2010; 465 pseudophakic retinal detachments versus 110 in fellow eyes; relative risk 4.23; highly increased in first 6 months, significantly elevated up to 10 years; supports the bounded post-surgical association only (fellow-eye-controlled, procedural and state effects blended).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 404.2 — Quek DT, Lee SY, Htoon HM, et al. Pseudophakic rhegmatogenous retinal detachment in a large Asian tertiary eye centre: a cohort study Clin Exp Ophthalmol. 2012 Jan-Feb;40(1):e1-7. PMID 21668790.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/21668790/
+- Source checked on: 2026-09-26
+- Locator: PMID 21668790; results (incidence and capsular-rupture subgroup)
+- Note under review: Singapore National Eye Centre retrospective cohort (2011): 24,846 cataract operations 2001-2003; 39 rhegmatogenous detachments (cumulative incidence 0.16%, 95% CI 0.11-0.21%); posterior capsular rupture subgroup 1.77% (9 of 508 eyes); younger age HR 19.7 versus over-70s; supports the bounded association only with the complication subgroup carried separately.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 404.3 — Sheu SJ, Ger LP, Chen JF. Male sex as a risk factor for pseudophakic retinal detachment after cataract extraction in Taiwanese adults Ophthalmology. 2007 Oct;114(10):1898-903. PMID 17658608.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/17658608/
+- Source checked on: 2026-09-26
+- Locator: PMID 17658608; results (sex risk gradient)
+- Note under review: Taiwanese adult cohort (Ophthalmic Epidemiol 2007): male sex as a risk factor for pseudophakic retinal detachment after cataract extraction; supports the bounded risk-gradient association only (risk-factor cohort).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `pulmonary-langerhans-cell-histiocytosis` → `pneumothorax` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Pulmonary Langerhans cell histiocytosis associates with spontaneous pneumothorax at condition-specific cohort level: the 15-patient pathology-confirmed PLCH cohort with follow-up documents spontaneous pneumothorax during the disease course in 5 of 15 patients (33 percent), all within the cystic-nodule CT phenotype, with 12 of the 15 carrying multisystem involvement (PMID 35545326), and the adult PLCH cohort subdivision study documents recurrent spontaneous pneumothorax as a defining clinical feature of the extrapulmonary-recidivism subtype alongside greater nodular change and interstitial fibrosis (PMID 33708984); recorded as documented association only with the small-cohort and phenotype limits carried openly - the quantified fraction rests on a 15-patient referral cohort and pneumothorax tracks the cystic-destructive phenotype rather than the diagnosis uniformly.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation of pneumothorax is established for any individual: the quantified 33 percent rests on a 15-patient single-centre referral cohort subject to selection, pneumothorax arises from pleural-cyst rupture so the mediator is the cystic-destructive phenotype rather than the histiocytic diagnosis itself, the subtype study characterizes recurrent pneumothorax qualitatively rather than quantifying incidence, smoking exposure is near-universal in adult PLCH populations and independently associates with cystic lung change, and individual claims require dated CT imaging, smoking history, and thoracic surgical records with lymphangioleiomyomatosis, emphysematous bullae, and other cystic-lung causes excluded.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 405.1 — Zhang L, Ouyang R. Clinical analysis for 15 patients with pulmonary Langerhans cell histiocytosis and literature review Zhong Nan Da Xue Xue Bao Yi Xue Ban. 2022 Mar 28;47(3):334-343. PMID 35545326.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/35545326/
+- Source checked on: 2026-09-26
+- Locator: PMID 35545326; results (pneumothorax and multisystem involvement)
+- Note under review: Single-centre retrospective PLCH cohort with literature review (2022): 15 pathology-confirmed patients (median age 33; 9 men); 5 of 15 (33%) suffered spontaneous pneumothorax during the disease course; 12 of 15 multisystem with 7 pituitary involvements (polyuria-polydipsia); CT dominated by nodules and cysts; supports the bounded small-cohort association only (referral selection).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 405.2 — Wang J, Xie L, Miao Y, et al. Adult pulmonary Langerhans cell histiocytosis might consist of two distinct groups: isolated form and extrapulmonary recidivism type Ann Transl Med. 2021 Feb;9(4):357. PMID 33708984.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/33708984/
+- Source checked on: 2026-09-26
+- Locator: PMID 33708984; results (subtype features including recurrent pneumothorax)
+- Note under review: Adult PLCH cohort subdivision study (Ann Transl Med 2021): isolated form versus extrapulmonary-recidivism type; recurrent spontaneous pneumothorax a defining feature of the recidivism subtype alongside greater nodular change and interstitial fibrosis; BRAF V600E in 33.3% of that subtype; supports the bounded phenotype association only (qualitative recurrence characterization).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `pulmonary-langerhans-cell-histiocytosis` → `diabetes-insipidus` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Pulmonary Langerhans cell histiocytosis associates with diabetes insipidus through pituitary involvement at condition-specific-cohort and systemic-LCH-cohort level: the 15-patient pathology-confirmed PLCH cohort documents pituitary involvement in 7 patients within the multisystem group (12 of 15 multisystem) presenting as polyuria-polydipsia (PMID 35545326), the 139-patient Langerhans cell histiocytosis cohort documents central diabetes insipidus in 20 (14.4 percent) with CNS involvement in 17.3 percent and multisystem involvement without high-risk organ involvement carrying odds ratio 6.87 (95% CI 2.31-20.29) for central diabetes insipidus (PMID 42618506), and the 30-year pediatric endocrine review documents diabetes insipidus among the characteristic endocrine manifestations of Langerhans cell histiocytosis (PMID 38031464); recorded as documented association only with the multisystem-window and shared-substrate limits carried openly - the diabetes insipidus arises from the systemic clonal disease of which the pulmonary involvement is one manifestation rather than from the lung disease itself, and the risk-factor cohort is Langerhans cell histiocytosis generally rather than pulmonary-limited disease.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation of diabetes-insipidus is established for any individual: the pulmonary label and the pituitary stalk infiltration share one clonal substrate so the edge records the multisystem window rather than a lung-to-pituitary route, the risk-factor cohort spans all Langerhans cell histiocytosis (two thirds single-system osseous) rather than pulmonary-limited disease, the pulmonary cohort's pituitary fraction (7 of 12 multisystem) rests on 15 referral patients, and individual claims require dated endocrine testing with water-deprivation documentation, pituitary MRI, and polyuria causes (nephrogenic, psychogenic, medication) excluded.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 406.1 — Zhang L, Ouyang R. Clinical analysis for 15 patients with pulmonary Langerhans cell histiocytosis and literature review Zhong Nan Da Xue Xue Bao Yi Xue Ban. 2022 Mar 28;47(3):334-343. PMID 35545326.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/35545326/
+- Source checked on: 2026-09-26
+- Locator: PMID 35545326; results (pituitary involvement with polyuria-polydipsia)
+- Note under review: Single-centre retrospective PLCH cohort (2022): 15 pathology-confirmed patients; 12 multisystem with 7 pituitary involvements presenting as polyuria-polydipsia (the diabetes-insipidus clinical picture); supports the bounded multisystem-window association only (small referral cohort).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 406.2 — Xie LR, Bai HJ, Liu YH, et al. [Analysis of risk factors for central diabetes insipidus in Langerhans cell histiocytosis] Zhonghua Yi Xue Za Zhi. 2026 Aug 25;106(31):3291-3295. PMID 42618506.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42618506/
+- Source checked on: 2026-09-26
+- Locator: PMID 42618506; results (CDI incidence and risk factors)
+- Note under review: Single-centre Langerhans cell histiocytosis risk-factor cohort 2009-2025 (Zhonghua Yi Xue Za Zhi 2026): 139 patients; central diabetes insipidus in 20 (14.4%); CNS involvement 17.3%; multisystem involvement without high-risk organ involvement OR 6.868 (95% CI 2.305-20.289) for CDI; supports the bounded systemic-window association only (LCH generally, not pulmonary-limited).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 406.3 — Alexander A, Zacharin M. Endocrine features of Langerhans cell histiocytosis in paediatric patients: A 30-year review J Paediatr Child Health. 2024 Jan;60(1):24-27. PMID 38031464.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/38031464/
+- Source checked on: 2026-09-26
+- Locator: PMID 38031464; review (endocrine manifestations including diabetes insipidus)
+- Note under review: Endocrine features of Langerhans cell histiocytosis in paediatric patients: a 30-year review (J Paediatr Child Health 2024): documents diabetes insipidus among the characteristic endocrine manifestations; supports the bounded manifestation framing only (review class, pediatric-scoped).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
 ## Implementation mechanics after decisions
 
 - Mapping edits and registry edits must land in lockstep (the registry audit's canonical-JSON hashes and live-use sets will fail otherwise).

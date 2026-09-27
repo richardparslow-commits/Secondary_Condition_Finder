@@ -2,8 +2,76 @@
   "id": "pseudophakia",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review otologic, vestibular, audiologic, visual, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 76 (2026-09-26): one ASSOCIATION_ONLY draft mapping pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: the edge asserts association only (etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true, POST_SURGICAL_OR_TREATMENT following the hyperthyroidism to hypothyroidism convention). The edge is scoped to the post-cataract-surgery pseudophakic state with the procedural and state effects blended in the lead cohort's ten-year window; the capsular-rupture complication subgroup (1.77 percent incidence) is carried separately as a distinct procedural route. Individual claims require dated operative reports, refraction and axial-length records, and retinal examination with high myopia, trauma, and vitreoretinal degeneration excluded and review by a qualified medical professional.",
+    "Pathway and duplicate-scope screens and withheld propositions: no -> glaucoma edge (DIRECTION-INVERSION plus WINDOW-MISMATCH plus BELOW THRESHOLD - cataract extraction lowers intraocular pressure in adults so the adult direction runs against glaucoma, and the quantified pediatric glaucoma-after-lensectomy window (PEDIG 5-year incidence after pediatric lensectomy, IoLunder2 first-2-years cohort) attaches to infant congenital-cataract surgery where lensectomy frequently produces aphakia rather than the pseudophakic state; reopening condition recorded); no -> cystoid-macular-edema proposition (MISSING IDENTITY - pseudophakic cystoid macular edema (Irvine-Gass syndrome) is a quantified post-surgical outcome with cohort literature (including prostaglandin-analog risk cohorts) and is recorded here as the seventh evidence-preserving refusal after nightmare-disorder, nocturnal-enuresis, overactive-bladder, phantom-limb-pain, giant-cell-arteritis, and premature-atrial-contraction to atrial-fibrillation); no -> visual-impairment edge (CONSTITUTIVE/INVERTED - the pseudophakic state is the treatment of cataract-related visual impairment); no -> posterior-capsule-opacification proposition (CONSTITUTIVE plus MISSING IDENTITY - capsular opacification is the defining late sequela of the surgical state and no identity exists); no -> endophthalmitis proposition (MISSING IDENTITY plus acute-procedural class); no -> uveitis edge (BELOW THRESHOLD - uveitis-glaucoma-hyphema syndrome is case-level). ME-29 discipline: the myopia to retinal-detachment, choroiditis to retinal-detachment, and diabetic-retinopathy to retinal-detachment windows own their sources and none is recycled here."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 76 (2026-09-26): one bounded association edge authored - pseudophakia to retinal-detachment (rank 1) - classified ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true, mechanismCategory POST_SURGICAL_OR_TREATMENT. The edge rests on the Danish register-based cohort of 202,226 patients using the fellow nonoperated eye as reference (465 pseudophakic versus 110 fellow-eye detachments; relative risk 4.23; elevated up to 10 years; the authors frame the risk ratio as a true etiologic effect of cataract surgery, framing recorded but the edge kept at association only, PMID 24021894), the Singapore institutional cohort of 24,846 operations (39 detachments, cumulative incidence 0.16 percent; capsular-rupture subgroup 1.77 percent; younger age HR 19.7, PMID 21668790), and the Taiwanese risk-factor cohort (male sex, PMID 17658608). The capsular-rupture subgroup is carried separately as a distinct procedural route and the myopia/axial-length limit is stated on the record. Seventh evidence-preserving refusal recorded on the file: pseudophakic cystoid macular edema has no catalog target identity."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "retinal-detachment",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Pseudophakia associates with rhegmatogenous retinal detachment at national-register and institutional-cohort level using internal controls: the Danish register-based cohort of 202,226 patients after uncomplicated first-eye phacoemulsification, using each patient's fellow nonoperated eye as reference, identified 465 pseudophakic retinal detachments versus 110 in the fellow eyes for a relative risk of 4.23, highly increased during the first 6 months and leveling off but remaining significantly elevated up to 10 years, with the authors framing the risk ratio as a true etiologic effect of cataract surgery because the fellow eye was the reference (PMID 24021894); the Singapore National Eye Centre cohort of 24,846 cataract operations documents 39 rhegmatogenous detachments (cumulative incidence 0.16 percent, 95% CI 0.11-0.21) rising to 1.77 percent after posterior capsular rupture with younger age carrying hazard ratio 19.7 versus over-70s (PMID 21668790), and the Taiwanese adult cohort identifies male sex as a risk factor for pseudophakic retinal detachment after cataract extraction (PMID 17658608); recorded as documented association only with the post-surgical-state and complication-limits carried openly.",
+        "causationStatus": "Neither causation nor aggravation of retinal-detachment is established for any individual: the pseudophakic state is inseparable from the cataract surgery and the lens-removal-induced vitreous changes that accompany it, posterior capsular rupture at surgery carries its own 1.77 percent detachment incidence so surgical complication is a distinct route from the uncomplicated-surgery route, the operated eyes differ from fellow eyes in baseline lens status and axial geometry, and individual claims require dated operative reports, refraction and axial-length records, and retinal examination with high myopia, trauma, and vitreoretinal-degeneration causes excluded."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "POST_SURGICAL_OR_TREATMENT",
+        "primaryVector": "Cataract extraction with intraocular lens implantation alters vitreous body dynamics and posterior segment anatomy - accelerated posterior vitreous detachment and altered traction after lens removal are the hypothesized mechanical route to rhegmatogenous breaks - the route supported by the fellow-eye-controlled 4.23 relative risk that persists up to 10 years and by the complication gradient after capsular rupture, but whether this route produced any individual's detachment remains hypothesized until operative, refractive, and retinal records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association rests on one 202,226-patient national register cohort with fellow-eye controls, one 24,846-operation institutional cohort, and one risk-factor cohort: the endpoint is rhegmatogenous detachment after surgery rather than a disease complication of the lens state alone, the relative risk falls steeply after the first 6 months but remains elevated for a decade so the window spans procedural and state effects, capsular rupture (1.77 percent incidence in that subgroup) is a procedural complication carried separately, younger age and male sex dominate the risk distribution in the institutional cohorts, and high myopia and axial length are incompletely controlled.",
+        "evidenceGaps": "No cohort separates the pseudophakic lens state from the lens-removal procedure itself; the complication subgroup (posterior capsular rupture, 1.77 percent) is a distinct procedural route; axial length and high myopia are incompletely adjusted in the institutional cohorts; and the ten-year window blends early procedural risk with long-latency state-associated risk.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "high myopia and long axial length as independent retinal-detachment risks (incompletely adjusted in the institutional cohorts)",
+          "posterior capsular rupture and vitreous loss at surgery as a distinct procedural complication route (1.77 percent incidence in the ruptured subgroup)",
+          "pre-existing lattice degeneration, posterior vitreous detachment, and vitreoretinal degeneration",
+          "ocular trauma and family history of retinal detachment"
+        ]
+      },
+      "evidenceGaps": [
+        "No cohort separates the pseudophakic lens state from the lens-removal procedure itself; the complication subgroup (posterior capsular rupture, 1.77 percent) is a distinct procedural route; axial length and high myopia are incompletely adjusted in the institutional cohorts; and the ten-year window blends early procedural risk with long-latency state-associated risk."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY at national-register-with-internal-control class following the post-surgical-state convention (POST_SURGICAL_OR_TREATMENT, hyperthyroidism to hypothyroidism precedent): the Danish fellow-eye-controlled register cohort quantifies relative risk 4.23 with the effect persisting up to 10 years (PMID 24021894), the Singapore institutional cohort quantifies cumulative incidence 0.16 percent overall and 1.77 percent after capsular rupture (PMID 21668790), and the Taiwanese cohort adds the male-sex risk gradient (PMID 17658608); the lead cohort's own framing of a true etiologic effect of surgery is recorded but the conservative standard keeps the edge at association only with the post-surgical-state scope stated on the record, and individual claims route through dated operative, refractive, and retinal records with myopia, trauma, and vitreoretinal degeneration excluded.",
+      "sourceReferences": [
+        {
+          "citation": "Bjerrum SS, Mikkelsen KL, La Cour M. Risk of pseudophakic retinal detachment in 202,226 patients using the fellow nonoperated eye as reference Ophthalmology. 2013 Dec;120(12):2573-2579. PMID 24021894.",
+          "note": "Danish register-based cohort with fellow nonoperated eye as reference (Ophthalmology 2013): 202,226 patients after uncomplicated first-eye phacoemulsification 2000-2010; 465 pseudophakic retinal detachments versus 110 in fellow eyes; relative risk 4.23; highly increased in first 6 months, significantly elevated up to 10 years; supports the bounded post-surgical association only (fellow-eye-controlled, procedural and state effects blended).",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/24021894/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 24021894; results (RD counts and PRD risk ratio)"
+        },
+        {
+          "citation": "Quek DT, Lee SY, Htoon HM, et al. Pseudophakic rhegmatogenous retinal detachment in a large Asian tertiary eye centre: a cohort study Clin Exp Ophthalmol. 2012 Jan-Feb;40(1):e1-7. PMID 21668790.",
+          "note": "Singapore National Eye Centre retrospective cohort (2011): 24,846 cataract operations 2001-2003; 39 rhegmatogenous detachments (cumulative incidence 0.16%, 95% CI 0.11-0.21%); posterior capsular rupture subgroup 1.77% (9 of 508 eyes); younger age HR 19.7 versus over-70s; supports the bounded association only with the complication subgroup carried separately.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/21668790/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 21668790; results (incidence and capsular-rupture subgroup)"
+        },
+        {
+          "citation": "Sheu SJ, Ger LP, Chen JF. Male sex as a risk factor for pseudophakic retinal detachment after cataract extraction in Taiwanese adults Ophthalmology. 2007 Oct;114(10):1898-903. PMID 17658608.",
+          "note": "Taiwanese adult cohort (Ophthalmic Epidemiol 2007): male sex as a risk factor for pseudophakic retinal detachment after cataract extraction; supports the bounded risk-gradient association only (risk-factor cohort).",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/17658608/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 17658608; results (sex risk gradient)"
+        }
+      ]
+    }
+  ]
 }

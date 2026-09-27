@@ -4089,3 +4089,76 @@ consecutive batch with no manual fixture bump. Residue clean outside the standin
 (apply-all-94's historical `explicitPublicationGuards: 273`; wave-5's `toBeGreaterThanOrEqual(276)`
 catalog floor; legal-copy's `38 U.S.C. § 1117` statute text). Standing recommendation: batch 75 lands
 through branch, PR, CI, and merge.
+
+## Mapping Expansion D1 batch 76 (2026-09-26)
+
+Mapping Expansion D1 batch 76 (2026-09-26) authored three draft-quarantined relationships across two of
+the five queue identities and deferred three identities without edges. pseudophakia -> retinal-detachment
+(rank 1, POST_SURGICAL_OR_TREATMENT) rests on the Danish register-based cohort of 202,226 patients using
+the fellow nonoperated eye as reference (465 pseudophakic versus 110 fellow-eye detachments; relative risk
+4.23; highly increased in the first 6 months and significantly elevated up to 10 years; the authors frame
+the risk ratio as a true etiologic effect of cataract surgery - framing recorded but the edge kept at
+association only, PMID 24021894), the Singapore institutional cohort of 24,846 operations (39 detachments,
+cumulative incidence 0.16 percent; posterior-capsular-rupture subgroup 1.77 percent carried separately as a
+distinct procedural route; younger age HR 19.7, PMID 21668790), and the Taiwanese risk-factor cohort (male
+sex, PMID 17658608), with the myopia/axial-length limit stated on the record. pulmonary-langerhans-cell-
+histiocytosis -> pneumothorax (rank 1, MECHANICAL_OR_COMPRESSIVE, LAM convention) rests on the 15-patient
+pathology-confirmed cohort (spontaneous pneumothorax in 5 of 15 during the disease course, PMID 35545326)
+and the adult subtype study (recurrent spontaneous pneumothorax as a defining feature of the extrapulmonary-
+recidivism group, PMID 33708984), with the small-cohort, phenotype (endpoint clusters in the cystic-
+destructive phenotype), and near-universal smoking-substrate limits carried openly. pulmonary-langerhans-
+cell-histiocytosis -> diabetes-insipidus (rank 2, NOT_ESTABLISHED with the clonal pituitary-stalk
+infiltration vector carried as hypothesis) rests on the same 15-patient cohort (pituitary involvement in 7
+of 12 multisystem patients presenting as polyuria-polydipsia, PMID 35545326, shared within batch and
+recorded openly), the 139-patient LCH risk-factor cohort (central diabetes insipidus 14.4 percent;
+multisystem OR 6.87, 95% CI 2.31-20.29, PMID 42618506), and the 30-year pediatric endocrine review (PMID
+38031464, pediatric-scope limit carried openly), with the shared-clonal-substrate limit stated on the edge
+(the pituitary outcome arises from the systemic disease of which the pulmonary involvement is one
+manifestation) and the systemic-cohort-scope limit (the risk-factor cohort spans LCH generally, two thirds
+single-system osseous) carried openly.
+
+Deferred without edges: pudendal-neuralgia - ZERO RECORD and below-threshold quantification with
+constitutive-proximity (Nantes-criteria pain and dyspareunia are presenting features, PMID 17828787),
+semantic-mismatch (entrapment neuropathy pain is explained), and the batch-53 levator-ani mood-withholding
+precedent (review-class association only, PMID 42447777); the surgical-decompression quality-of-life study
+(PMID 42239624) is treatment-outcome class and does not open a secondary-condition window.
+pulmonary-alveolar-microlithiasis - CASE-REPORT CLASS: the classic microlith-to-cor-pulmonale pathway is
+documented repeatedly at case level (PMIDs 41561266, 23256064, 19523797 autopsy with pulmonary vascular
+bed loss) and never cohort-quantified, so the pulmonary-hypertension window is preserved with a reopening
+condition. pulmonary-edema - INTERMEDIATE-MANIFESTATION semantics: the located outcome literature
+attributes prognosis to the underlying cardiac or pulmonary disease (PMID 28884567), the ARDS-fibrosis
+window has no identity (screen only), the barotrauma route is treatment-mediated, and the cardiac windows
+own the downstream routes (direction-inversion plus chain-discipline). Reopening conditions recorded on all
+three files.
+
+Notable dispositions: pseudophakia -> glaucoma withheld on DIRECTION-INVERSION (adult cataract extraction
+lowers intraocular pressure) plus window-mismatch (the quantified pediatric glaucoma-after-lensectomy
+window attaches to infant congenital-cataract surgery where lensectomy frequently produces aphakia rather
+than the pseudophakic state); pseudophakic cystoid macular edema recorded as the SEVENTH evidence-
+preserving refusal with no catalog target identity (after nightmare-disorder, nocturnal-enuresis,
+overactive-bladder, phantom-limb-pain, giant-cell-arteritis, and premature-atrial-contraction to atrial-
+fibrillation).
+
+Structural-debt note: batch-76 edges produced zero new CRG findings - review-class 13 against baseline 13
+and redundancy 28 against baseline 28 unchanged, and the bidirectional-pair count stays at 4. The batch adds
+a tenth accumulated example to the standing CRG redundancy-semantics question: within-batch shared-source
+provenance (PMID 35545326 shared across both pulmonary-langerhans-cell-histiocytosis edges, the batch-75
+class) disclosed openly with no published edges involved. The question now stands on ten examples and
+should be settled before more parallel pathway provenance accumulates.
+
+Citation packet regenerated at 406 worksheets / 1,014 reference rows = live citation debt; the verification
+dashboard regenerated at 1,014 rows in 42 reviewer batches (889 distinct sources). Backlog after batch 76:
+**110** undispositioned zero-edge drafts (115 before the batch; two identities left by gaining edges and
+three by recorded deferral). Next-five: `pyoderma`, `pyoderma-gangrenosum`, `quadrilateral-space-syndrome`,
+`ranula`, `raynaud-s-phenomenon`.
+
+Test-pin note: the sweep touched 54 files and replaced 316 counter tokens in one pass with the per-token
+context predicates carried over unchanged (relationships 766 -> 769, references/uses 1389 -> 1397,
+unverified 1006 -> 1014, pending source entities 883 -> 890, total source entities 1238 -> 1245, explicit
+guards 692 -> 695, clinical references 1384 -> 1392, clinical provenance 1388 -> 1396, and the draft-
+singles counter 299 -> 300 for this batch's single-suggestion identity pseudophakia). The explicit fixture
+token continued to carry the citation-decay-gate debt fixture automatically (1006 -> 1014) - sixteenth
+consecutive batch with no manual fixture bump. Residue clean outside the standing benign coincidences
+(apply-all-94's historical `explicitPublicationGuards: 273`; wave-5's `toBeGreaterThanOrEqual(276)`
+catalog floor; legal-copy's `38 U.S.C. § 1117` statute text). Standing recommendation: batch 76 lands
+through branch, PR, CI, and merge.

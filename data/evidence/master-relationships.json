@@ -6,8 +6,8 @@
  "installedFrom": "Master Registry Discrepancy Resolution 2026",
  "authorityBoundary": "Authoritative for current relationship direction, proposition text, guard state, source linkage, and KB parity; does not establish an individual VA medical nexus.",
  "counts": {
-  "relationships": 766,
-  "explicitPublicationGuards": 692,
+  "relationships": 769,
+  "explicitPublicationGuards": 695,
   "legacyRationaleBoundaries": 74
  },
  "relationships": [
@@ -24530,6 +24530,98 @@
    "sourceReferenceCount": 3,
    "pathwayIntelligencePresent": false,
    "suggestionObjectHash": "d6aeda5779256b8ff671bec6a064d4d992ec665385bb1dbadc6bc65577918c18"
+  },
+  {
+   "relationshipId": "rel-pseudophakia-to-retinal-detachment",
+   "primaryId": "pseudophakia",
+   "targetId": "retinal-detachment",
+   "direction": "pseudophakia -> retinal-detachment",
+   "primaryPublicationState": "draft",
+   "rank": 1,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY at national-register-with-internal-control class following the post-surgical-state convention (POST_SURGICAL_OR_TREATMENT, hyperthyroidism to hypothyroidism precedent): the Danish fellow-eye-controlled register cohort quantifies relative risk 4.23 with the effect persisting up to 10 years (PMID 24021894), the Singapore institutional cohort quantifies cumulative incidence 0.16 percent overall and 1.77 percent after capsular rupture (PMID 21668790), and the Taiwanese cohort adds the male-sex risk gradient (PMID 17658608); the lead cohort's own framing of a true etiologic effect of surgery is recorded but the conservative standard keeps the edge at association only with the post-surgical-state scope stated on the record, and individual claims route through dated operative, refractive, and retinal records with myopia, trauma, and vitreoretinal degeneration excluded."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY at national-register-with-internal-control class following the post-surgical-state convention (POST_SURGICAL_OR_TREATMENT, hyperthyroidism to hypothyroidism precedent): the Danish fellow-eye-controlled register cohort quantifies relative risk 4.23 with the effect persisting up to 10 years (PMID 24021894), the Singapore institutional cohort quantifies cumulative incidence 0.16 percent overall and 1.77 percent after capsular rupture (PMID 21668790), and the Taiwanese cohort adds the male-sex risk gradient (PMID 17658608); the lead cohort's own framing of a true etiologic effect of surgery is recorded but the conservative standard keeps the edge at association only with the post-surgical-state scope stated on the record, and individual claims route through dated operative, refractive, and retinal records with myopia, trauma, and vitreoretinal degeneration excluded.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), at POST_SURGICAL_OR_TREATMENT following the hyperthyroidism-to-hypothyroidism convention, with the post-surgical-state, procedural-complication, and myopia limits carried openly: the Danish register-based cohort of 202,226 patients after uncomplicated first-eye phacoemulsification, using each patient's fellow nonoperated eye as reference, identified 465 pseudophakic retinal detachments versus 110 in fellow eyes (relative risk 4.23), highly increased during the first 6 months and leveling off but remaining significantly elevated up to 10 years (PMID 24021894); the Singapore National Eye Centre cohort of 24,846 cataract operations documents 39 rhegmatogenous detachments (cumulative incidence 0.16 percent, 95% CI 0.11-0.21) rising to 1.77 percent after posterior capsular rupture with younger age HR 19.7 versus over-70s (PMID 21668790); the Taiwanese adult cohort identifies male sex as a risk factor (PMID 17658608). The pseudophakic state is inseparable from the cataract surgery and lens-removal-induced vitreous changes, the capsular-rupture subgroup is a distinct procedural route carried separately, the lead authors' framing of a true etiologic effect of surgery is recorded but the edge is kept at association only, and high myopia/axial length are incompletely controlled; individual claims route through dated operative reports, refraction and axial-length records, and retinal examination with high myopia, trauma, and vitreoretinal degeneration excluded.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No cohort separates the pseudophakic lens state from the lens-removal procedure itself; the complication subgroup (posterior capsular rupture, 1.77 percent) is a distinct procedural route; axial length and high myopia are incompletely adjusted in the institutional cohorts; and the ten-year window blends early procedural risk with long-latency state-associated risk."
+   ],
+   "sourceIds": [
+    "pmid-24021894",
+    "pmid-21668790",
+    "pmid-17658608"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "0f5faa03cbfb363a6d5106f5fc1cd7d74ca9218ddb03068ca628aba0d070a584"
+  },
+  {
+   "relationshipId": "rel-pulmonary-langerhans-cell-histiocytosis-to-pneumothorax",
+   "primaryId": "pulmonary-langerhans-cell-histiocytosis",
+   "targetId": "pneumothorax",
+   "direction": "pulmonary-langerhans-cell-histiocytosis -> pneumothorax",
+   "primaryPublicationState": "draft",
+   "rank": 1,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY at condition-specific-cohort class with the small-cohort and phenotype limits carried openly, following the lymphangioleiomyomatosis to pneumothorax convention (MECHANICAL_OR_COMPRESSIVE): the 15-patient pathology-confirmed cohort quantifies spontaneous pneumothorax in 5 of 15 (PMID 35545326) and the adult subtype study documents recurrent spontaneous pneumothorax as a defining feature of the extrapulmonary-recidivism group (PMID 33708984); ME-29 discipline: the published lymphangioleiomyomatosis to pneumothorax window and its sources are left untouched and none is recycled here; because absolute numbers are small and the endpoint clusters in the cystic-destructive phenotype with a near-universal smoking substrate, the conservative standard keeps the edge at association only, states the phenotype and selection limits on the record, and routes individual claims through dated imaging, smoking, and thoracic records with cystic-lung differentials excluded."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY at condition-specific-cohort class with the small-cohort and phenotype limits carried openly, following the lymphangioleiomyomatosis to pneumothorax convention (MECHANICAL_OR_COMPRESSIVE): the 15-patient pathology-confirmed cohort quantifies spontaneous pneumothorax in 5 of 15 (PMID 35545326) and the adult subtype study documents recurrent spontaneous pneumothorax as a defining feature of the extrapulmonary-recidivism group (PMID 33708984); ME-29 discipline: the published lymphangioleiomyomatosis to pneumothorax window and its sources are left untouched and none is recycled here; because absolute numbers are small and the endpoint clusters in the cystic-destructive phenotype with a near-universal smoking substrate, the conservative standard keeps the edge at association only, states the phenotype and selection limits on the record, and routes individual claims through dated imaging, smoking, and thoracic records with cystic-lung differentials excluded.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), at MECHANICAL_OR_COMPRESSIVE following the lymphangioleiomyomatosis-to-pneumothorax convention (that window and its sources left untouched, none recycled per ME-29), with the small-cohort, phenotype, and smoking-substrate limits carried openly: the 15-patient pathology-confirmed PLCH cohort documents spontaneous pneumothorax during the disease course in 5 of 15 patients (33 percent) within the cystic-nodule CT phenotype, 12 of 15 multisystem (PMID 35545326), and the adult PLCH cohort subdivision study documents recurrent spontaneous pneumothorax as a defining clinical feature of the extrapulmonary-recidivism subtype alongside greater nodular change and interstitial fibrosis (PMID 33708984); absolute numbers are very small (referral selection), pneumothorax arises from pleural-cyst rupture so the mediator is the cystic-destructive phenotype rather than the diagnosis uniformly, the subtype study characterizes recurrence qualitatively, tobacco exposure is near-universal in adult PLCH and independently associates with cystic lung change, and the lymphangioleiomyomatosis and bullous-emphysema differentials are inconsistently documented in older series; individual claims route through dated CT imaging, smoking history, and thoracic records with cystic-lung causes excluded.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No large PLCH cohort quantifying pneumothorax incidence against cystic-burden staging was located; the quantified fraction is 5 of 15 in a referral cohort with 12 of 15 multisystem; the second anchor characterizes recurrence qualitatively; smoking selection is unseparated; and cystic-lung differential exclusion (lymphangioleiomyomatosis, bullous emphysema) is inconsistently documented across the located series."
+   ],
+   "sourceIds": [
+    "pmid-35545326",
+    "pmid-33708984"
+   ],
+   "sourceReferenceCount": 2,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "182b2580cdac256901149ca75e994fba34d13ab5417acbf1fc5dbe4697725237"
+  },
+  {
+   "relationshipId": "rel-pulmonary-langerhans-cell-histiocytosis-to-diabetes-insipidus",
+   "primaryId": "pulmonary-langerhans-cell-histiocytosis",
+   "targetId": "diabetes-insipidus",
+   "direction": "pulmonary-langerhans-cell-histiocytosis -> diabetes-insipidus",
+   "primaryPublicationState": "draft",
+   "rank": 2,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY at condition-specific-cohort-plus-systemic-cohort class with the multisystem-window and shared-substrate limits carried openly: the PLCH cohort documents pituitary involvement in 7 patients presenting as polyuria-polydipsia (PMID 35545326), the 139-patient LCH cohort quantifies central diabetes insipidus at 14.4 percent with a multisystem odds gradient (PMID 42618506), and the endocrine review anchors the characteristic-manifestation framing (PMID 38031464, pediatric-scoped limit carried openly); the edge records the multisystem-clonal window rather than a lung-to-pituitary route and the systemic-cohort scope limit is stated on the record; individual claims route through dated endocrine testing, water-deprivation documentation, and pituitary MRI with nephrogenic, psychogenic, and medication causes excluded."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY at condition-specific-cohort-plus-systemic-cohort class with the multisystem-window and shared-substrate limits carried openly: the PLCH cohort documents pituitary involvement in 7 patients presenting as polyuria-polydipsia (PMID 35545326), the 139-patient LCH cohort quantifies central diabetes insipidus at 14.4 percent with a multisystem odds gradient (PMID 42618506), and the endocrine review anchors the characteristic-manifestation framing (PMID 38031464, pediatric-scoped limit carried openly); the edge records the multisystem-clonal window rather than a lung-to-pituitary route and the systemic-cohort scope limit is stated on the record; individual claims route through dated endocrine testing, water-deprivation documentation, and pituitary MRI with nephrogenic, psychogenic, and medication causes excluded.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), mechanism NOT_ESTABLISHED with the clonal pituitary-stalk infiltration vector carried as hypothesis, with the multisystem-window and shared-clonal-substrate limits carried openly and within-batch source sharing (PMID 35545326 across both PLCH edges) recorded: the 15-patient pathology-confirmed PLCH cohort documents pituitary involvement in 7 patients of the 12-patient multisystem group presenting as polyuria-polydipsia (PMID 35545326), the 139-patient Langerhans cell histiocytosis risk-factor cohort documents central diabetes insipidus in 20 (14.4 percent) with CNS involvement 17.3 percent and multisystem involvement without high-risk organ involvement carrying odds ratio 6.868 (95% CI 2.305-20.289) for central diabetes insipidus (PMID 42618506), and the 30-year pediatric endocrine review documents diabetes insipidus among the characteristic endocrine manifestations (PMID 38031464, pediatric-scope limit carried openly); the diabetes insipidus arises from the systemic clonal disease of which the pulmonary involvement is one manifestation rather than from the lung disease itself (shared-substrate limit stated on the record), the risk-factor cohort spans Langerhans cell histiocytosis generally (two thirds single-system osseous) rather than pulmonary-limited disease, polyuria-polydipsia symptom ascertainment is not uniformly confirmed by water-deprivation testing, and no cohort isolates pulmonary-limited PLCH diabetes-insipidus incidence; individual claims route through dated endocrine testing with water-deprivation documentation, pituitary MRI, and nephrogenic, psychogenic, and medication causes excluded.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No cohort isolating diabetes-insipidus incidence among pulmonary-limited (single-system) PLCH was located; the quantified pituitary fraction (7 of 12 multisystem) rests on a 15-patient referral cohort; the risk-factor cohort spans Langerhans cell histiocytosis generally (CDI 14.4 percent of 139); the endocrine review is pediatric-scoped; and polyuria-polydipsia symptom ascertainment is not uniformly confirmed by water-deprivation testing in the located series."
+   ],
+   "sourceIds": [
+    "pmid-35545326",
+    "pmid-42618506",
+    "pmid-38031464"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "c4f37deaaf809ec995d49b3b4296cb62563b504de1b78d35faabde7396702945"
   }
  ],
  "lastUpdatedBy": "batch-D1-draft-authoring",
