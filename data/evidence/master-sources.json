@@ -16,16 +16,16 @@
   "citationPromotionMustAtomicallyUpdateKbAndMasterSourceState": true
  },
  "counts": {
-  "liveSourceReferenceUses": 1389,
+  "liveSourceReferenceUses": 1397,
   "activeSourceEntities": 346,
-  "pendingVerificationSourceEntities": 883,
+  "pendingVerificationSourceEntities": 890,
   "activeClinicalSourceEntities": 345,
-  "pendingClinicalSourceEntities": 883,
+  "pendingClinicalSourceEntities": 890,
   "activeLegalAuthorityEntities": 1,
   "retiredOnlySourceEntities": 1,
   "supersededUnverifiedSourceEntities": 7,
   "bibliographicCorrectionOnlyEntities": 1,
-  "totalSourceEntitiesIncludingLineage": 1238,
+  "totalSourceEntitiesIncludingLineage": 1245,
   "retiredVerifiedRelationshipSourceUses": 6
  },
  "retirementLedger": {
@@ -45737,6 +45737,258 @@
    "rawReferenceHashes": [
     "6b48a1799fb5ac80833faef80d6809353da4bcf5e29615806852177d520b4b8d",
     "457293ff95a012431e92decd7d482946e8a11106b70a2ff9a318d5511e37b567"
+   ]
+  },
+  {
+   "sourceId": "pmid-24021894",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "24021894",
+   "doi": null,
+   "canonicalCitation": "Bjerrum SS, Mikkelsen KL, La Cour M. Risk of pseudophakic retinal detachment in 202,226 patients using the fellow nonoperated eye as reference Ophthalmology. 2013 Dec;120(12):2573-2579. PMID 24021894.",
+   "citationVariants": [
+    "Bjerrum SS, Mikkelsen KL, La Cour M. Risk of pseudophakic retinal detachment in 202,226 patients using the fellow nonoperated eye as reference Ophthalmology. 2013 Dec;120(12):2573-2579. PMID 24021894."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/24021894/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/24021894/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-pseudophakia-to-retinal-detachment",
+     "primaryId": "pseudophakia",
+     "targetId": "retinal-detachment",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "ba01253acaa36fe295662cd0c89f702452177ae79fe9cd96e812af69a9a5e4c7"
+   ]
+  },
+  {
+   "sourceId": "pmid-21668790",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "21668790",
+   "doi": null,
+   "canonicalCitation": "Quek DT, Lee SY, Htoon HM, et al. Pseudophakic rhegmatogenous retinal detachment in a large Asian tertiary eye centre: a cohort study Clin Exp Ophthalmol. 2012 Jan-Feb;40(1):e1-7. PMID 21668790.",
+   "citationVariants": [
+    "Quek DT, Lee SY, Htoon HM, et al. Pseudophakic rhegmatogenous retinal detachment in a large Asian tertiary eye centre: a cohort study Clin Exp Ophthalmol. 2012 Jan-Feb;40(1):e1-7. PMID 21668790."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/21668790/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/21668790/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-pseudophakia-to-retinal-detachment",
+     "primaryId": "pseudophakia",
+     "targetId": "retinal-detachment",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "75860d5b9deb96264b8a8e7e23bf8ea5f114a0b21d0a0447e63a5d1116fc1355"
+   ]
+  },
+  {
+   "sourceId": "pmid-17658608",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "17658608",
+   "doi": null,
+   "canonicalCitation": "Sheu SJ, Ger LP, Chen JF. Male sex as a risk factor for pseudophakic retinal detachment after cataract extraction in Taiwanese adults Ophthalmology. 2007 Oct;114(10):1898-903. PMID 17658608.",
+   "citationVariants": [
+    "Sheu SJ, Ger LP, Chen JF. Male sex as a risk factor for pseudophakic retinal detachment after cataract extraction in Taiwanese adults Ophthalmology. 2007 Oct;114(10):1898-903. PMID 17658608."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/17658608/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/17658608/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-pseudophakia-to-retinal-detachment",
+     "primaryId": "pseudophakia",
+     "targetId": "retinal-detachment",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "a849393d38eb62275299d213f8a93d670594ecdc14fc7cab752840e7f15b0c83"
+   ]
+  },
+  {
+   "sourceId": "pmid-35545326",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "35545326",
+   "doi": null,
+   "canonicalCitation": "Zhang L, Ouyang R. Clinical analysis for 15 patients with pulmonary Langerhans cell histiocytosis and literature review Zhong Nan Da Xue Xue Bao Yi Xue Ban. 2022 Mar 28;47(3):334-343. PMID 35545326.",
+   "citationVariants": [
+    "Zhang L, Ouyang R. Clinical analysis for 15 patients with pulmonary Langerhans cell histiocytosis and literature review Zhong Nan Da Xue Xue Bao Yi Xue Ban. 2022 Mar 28;47(3):334-343. PMID 35545326."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35545326/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/35545326/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 2,
+   "liveUses": [
+    {
+     "relationshipId": "rel-pulmonary-langerhans-cell-histiocytosis-to-pneumothorax",
+     "primaryId": "pulmonary-langerhans-cell-histiocytosis",
+     "targetId": "pneumothorax",
+     "sourceIndex": 0
+    },
+    {
+     "relationshipId": "rel-pulmonary-langerhans-cell-histiocytosis-to-diabetes-insipidus",
+     "primaryId": "pulmonary-langerhans-cell-histiocytosis",
+     "targetId": "diabetes-insipidus",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "b1321892c3948134fab2e61fb40c3bb4c8256dbc41411491b371febc29b08fac",
+    "93392ffddc679cf68250ad913615269141db337ad99ebacdba3fcc855637514f"
+   ]
+  },
+  {
+   "sourceId": "pmid-33708984",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "33708984",
+   "doi": null,
+   "canonicalCitation": "Wang J, Xie L, Miao Y, et al. Adult pulmonary Langerhans cell histiocytosis might consist of two distinct groups: isolated form and extrapulmonary recidivism type Ann Transl Med. 2021 Feb;9(4):357. PMID 33708984.",
+   "citationVariants": [
+    "Wang J, Xie L, Miao Y, et al. Adult pulmonary Langerhans cell histiocytosis might consist of two distinct groups: isolated form and extrapulmonary recidivism type Ann Transl Med. 2021 Feb;9(4):357. PMID 33708984."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33708984/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/33708984/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-pulmonary-langerhans-cell-histiocytosis-to-pneumothorax",
+     "primaryId": "pulmonary-langerhans-cell-histiocytosis",
+     "targetId": "pneumothorax",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "f6a246b69342e98ebb4b6cc6baf888d0c02feff6f9ce715ebba96b3a41359c6b"
+   ]
+  },
+  {
+   "sourceId": "pmid-42618506",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "42618506",
+   "doi": null,
+   "canonicalCitation": "Xie LR, Bai HJ, Liu YH, et al. [Analysis of risk factors for central diabetes insipidus in Langerhans cell histiocytosis] Zhonghua Yi Xue Za Zhi. 2026 Aug 25;106(31):3291-3295. PMID 42618506.",
+   "citationVariants": [
+    "Xie LR, Bai HJ, Liu YH, et al. [Analysis of risk factors for central diabetes insipidus in Langerhans cell histiocytosis] Zhonghua Yi Xue Za Zhi. 2026 Aug 25;106(31):3291-3295. PMID 42618506."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42618506/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/42618506/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-pulmonary-langerhans-cell-histiocytosis-to-diabetes-insipidus",
+     "primaryId": "pulmonary-langerhans-cell-histiocytosis",
+     "targetId": "diabetes-insipidus",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "15393ca9c5f32f151c4982c2ddeff2fe7dcb8080f2efa8f181f94c88783f2722"
+   ]
+  },
+  {
+   "sourceId": "pmid-38031464",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "38031464",
+   "doi": null,
+   "canonicalCitation": "Alexander A, Zacharin M. Endocrine features of Langerhans cell histiocytosis in paediatric patients: A 30-year review J Paediatr Child Health. 2024 Jan;60(1):24-27. PMID 38031464.",
+   "citationVariants": [
+    "Alexander A, Zacharin M. Endocrine features of Langerhans cell histiocytosis in paediatric patients: A 30-year review J Paediatr Child Health. 2024 Jan;60(1):24-27. PMID 38031464."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38031464/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/38031464/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-26"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-pulmonary-langerhans-cell-histiocytosis-to-diabetes-insipidus",
+     "primaryId": "pulmonary-langerhans-cell-histiocytosis",
+     "targetId": "diabetes-insipidus",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "ab9216b5dc1b5e4f0fa8d7a50e4bede2b3c425dc8ac7b4163de22b0299012951"
    ]
   }
  ],

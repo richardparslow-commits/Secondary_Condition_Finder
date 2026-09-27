@@ -2,8 +2,11 @@
   "id": "pulmonary-alveolar-microlithiasis",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review airway, aspiration, inflammatory, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "DEFERRED (2026-09-26): zero draft mappings authored - the located literature is case-report and small-case-series class documenting the classic complication pathway (cor pulmonale from microlith-induced pulmonary vascular loss) without cohort-level quantification. Withheld propositions recorded here (not as deferred identities): no -> pulmonary-hypertension edge (BELOW THRESHOLD - the located anchors are a case report with rheumatic heart disease and severe pulmonary hypertension (PMID 41561266), a cor-pulmonale case report (PMID 23256064), and an autopsy case demonstrating marked decrease in pulmonary vascular beds (PMID 19523797), plus a 1982 small-series pulmonary-circulation study and a gas-exchange case (PMID 1586068); cor pulmonale is the described end-stage pathway but no cohort quantifies incidence); no -> respiratory-failure proposition (MISSING IDENTITY plus case-class); no -> pneumothorax edge (ZERO RECORD in this window); no -> respiratory-cancer edge (ZERO RECORD plus no identity); no -> chronic-kidney-disease or urolithiasis propositions (ZERO RECORD - microlith composition and renal links unquantified).",
+    "Reopening conditions: a registry or multi-case cohort quantifying pulmonary-hypertension or cor-pulmonale incidence among pulmonary alveolar microlithiasis patients with hemodynamic or echocardiographic documentation."
+  ],
+  "governanceNotes": [
+    "D1 batch 76 (2026-09-26): pulmonary-alveolar-microlithiasis DEFERRED without edges - CASE-REPORT CLASS (below-threshold quantification). Searched anchors: the case report of microlithiasis coexisting with rheumatic heart disease and severe pulmonary hypertension (PMID 41561266); the cor-pulmonale case report (PMID 23256064); the autopsy case demonstrating a marked decrease in pulmonary vascular beds with cor pulmonale (PMID 19523797); the 1982 small-series pulmonary-circulation study (PMID 7082100, class: small series); the gas-exchange case report under nasal CPAP (PMID 1586068). The classic microlithiasis-to-cor-pulmonale pathway is documented repeatedly at case level but never cohort-quantified, so the pulmonary-hypertension window is recorded as preserved evidence with a reopening condition rather than authored. Reopening: a registry or multi-case cohort with hemodynamic documentation."
   ],
   "suggestions": []
 }
