@@ -6,8 +6,8 @@
  "installedFrom": "Master Registry Discrepancy Resolution 2026",
  "authorityBoundary": "Authoritative for current relationship direction, proposition text, guard state, source linkage, and KB parity; does not establish an individual VA medical nexus.",
  "counts": {
-  "relationships": 772,
-  "explicitPublicationGuards": 698,
+  "relationships": 778,
+  "explicitPublicationGuards": 704,
   "legacyRationaleBoundaries": 74
  },
  "relationships": [
@@ -24715,6 +24715,192 @@
    "sourceReferenceCount": 3,
    "pathwayIntelligencePresent": false,
    "suggestionObjectHash": "147097b6fe38fc5bf8c0742f5aff499eade829e2fde5a4e1712e4f3f990a9eb5"
+  },
+  {
+   "relationshipId": "rel-restless-leg-syndrome-to-insomnia",
+   "primaryId": "restless-leg-syndrome",
+   "targetId": "insomnia",
+   "direction": "restless-leg-syndrome -> insomnia",
+   "primaryPublicationState": "draft",
+   "rank": 1,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY at multinational primary-care and population-PSG class with the cross-sectional and sleep-measure limits carried openly, following the symptom-disrupted-sleep edge convention: the REST primary care study quantifies sleep-related symptoms in 88.4 percent of treatment-warranting sufferers with most reporting impaired sleep consistent with a diagnosis of insomnia (PMID 15165529), the Sleep Heart Health Study home-PSG cohort quantifies the sleep-onset latency and arousal burden against non-RLS comparators with apnea-hypopnea-index adjustment (PMID 19544754), and the REST general population study quantifies the clinically significant subgroup with SF-36 sleep and quality-of-life impact (PMID 15956009); constitutive-proximity screened and cleared (sleep disruption is the dominant morbidity but not a diagnostic criterion of restless legs syndrome); because all three anchors are cross-sectional with questionnaire-defined restless legs syndrome and mimics inflate screening estimates, the conservative standard keeps the edge at association only with those limits on the record and routes individual claims through dated polysomnography or insomnia diagnosis with sleep apnea, leg cramps, and mood causes excluded."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY at multinational primary-care and population-PSG class with the cross-sectional and sleep-measure limits carried openly, following the symptom-disrupted-sleep edge convention: the REST primary care study quantifies sleep-related symptoms in 88.4 percent of treatment-warranting sufferers with most reporting impaired sleep consistent with a diagnosis of insomnia (PMID 15165529), the Sleep Heart Health Study home-PSG cohort quantifies the sleep-onset latency and arousal burden against non-RLS comparators with apnea-hypopnea-index adjustment (PMID 19544754), and the REST general population study quantifies the clinically significant subgroup with SF-36 sleep and quality-of-life impact (PMID 15956009); constitutive-proximity screened and cleared (sleep disruption is the dominant morbidity but not a diagnostic criterion of restless legs syndrome); because all three anchors are cross-sectional with questionnaire-defined restless legs syndrome and mimics inflate screening estimates, the conservative standard keeps the edge at association only with those limits on the record and routes individual claims through dated polysomnography or insomnia diagnosis with sleep apnea, leg cramps, and mood causes excluded.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), mechanism PSYCHOPHYSIOLOGICAL, following the symptom-disrupted-sleep convention (prurigo-nodularis to insomnia family), with the cross-sectional and sleep-measure limits carried openly: the REST primary care study of 23,052 screened patients documents sleep-related symptoms in 88.4 percent of 551 treatment-warranting sufferers with most reporting impaired sleep consistent with a diagnosis of insomnia (PMID 15165529), the Sleep Heart Health home-polysomnography cohort of 3,433 participants documents adjusted sleep latency 39.8 versus 26.4 minutes (P<0.0001) and arousal index 20.1 versus 18.0 (P=0.0145) with apnea-hypopnea-index adjustment (PMID 19544754), and the REST general population study of 15,391 respondents quantifies the 2.7 percent clinically significant subgroup with SF-36 impact (PMID 15956009); constitutive-proximity screened and cleared (sleep disruption is the dominant morbidity but not a diagnostic criterion); the polysomnographic anchor measures latency and arousal rather than insomnia diagnosis, screening-defined restless legs syndrome mimics inflate estimates, and reverse amplification is plausible; individual claims route through dated polysomnography or insomnia diagnosis with sleep apnea, leg cramps, medication/caffeine effects, and mood causes excluded.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No longitudinal incident-insomnia cohort among restless legs syndrome patients free of sleep disorder at baseline was located; the polysomnographic anchor (PMID 19544754) quantifies sleep latency and arousal index rather than an insomnia diagnosis and its restless legs syndrome definition is questionnaire-based (NIH criteria, symptoms at least five times per month); the primary-care anchor (PMID 15165529) reports symptom screens consistent with an insomnia diagnosis rather than structured insomnia diagnoses; the general-population anchor (PMID 15956009) measures SF-36 impact rather than sleep diagnoses; cross-sectional designs leave direction contested at individual level."
+   ],
+   "sourceIds": [
+    "pmid-15165529",
+    "pmid-19544754",
+    "pmid-15956009"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "b7c330b24f1320dbdc95b7537a15b1ee31cbd9c3b5d616b9b31ee765f48c3f86"
+  },
+  {
+   "relationshipId": "rel-restless-leg-syndrome-to-depressive-disorder",
+   "primaryId": "restless-leg-syndrome",
+   "targetId": "depressive-disorder",
+   "direction": "restless-leg-syndrome -> depressive-disorder",
+   "primaryPublicationState": "draft",
+   "rank": 2,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY at matched-control plus prospective-cohort class with the null-counterweight and intermediate-node limits carried openly, following the PSYCHOPHYSIOLOGICAL mood-edge convention and pairing with the anxiety-disorder edge from disjoint sources (deliberately no within-batch source sharing this batch): the 549-versus-549 matched-control cohort (PMID 34985142) quantifies depressive symptoms in 32.5 percent (10-fold over controls) with major depressive episode in 10.5 percent and treatment-responsive depressive symptoms, the prospective perinatal cohort (PMID 42675332) quantifies incident depression (hazard ratio 3.04) after time-varying restless legs syndrome with temporal order, and the meta-analysis (PMID 39024776) quantifies the 30.39 percent pooled prevalence; the null-anchor discipline is applied explicitly - the anchors carry positive signal (controlled symptom excess plus incident hazard ratios) with the pregnancy case-control depression null (P=0.269, PMID 32676936) carried openly as counterweight; because mediation through insomnia is documented within the anchor and the prospective scope is perinatal, the conservative standard keeps the edge at association only and routes individual claims through dated psychiatric and sleep timelines with pre-existing mood disorder, iron deficiency, and medication effects excluded."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY at matched-control plus prospective-cohort class with the null-counterweight and intermediate-node limits carried openly, following the PSYCHOPHYSIOLOGICAL mood-edge convention and pairing with the anxiety-disorder edge from disjoint sources (deliberately no within-batch source sharing this batch): the 549-versus-549 matched-control cohort (PMID 34985142) quantifies depressive symptoms in 32.5 percent (10-fold over controls) with major depressive episode in 10.5 percent and treatment-responsive depressive symptoms, the prospective perinatal cohort (PMID 42675332) quantifies incident depression (hazard ratio 3.04) after time-varying restless legs syndrome with temporal order, and the meta-analysis (PMID 39024776) quantifies the 30.39 percent pooled prevalence; the null-anchor discipline is applied explicitly - the anchors carry positive signal (controlled symptom excess plus incident hazard ratios) with the pregnancy case-control depression null (P=0.269, PMID 32676936) carried openly as counterweight; because mediation through insomnia is documented within the anchor and the prospective scope is perinatal, the conservative standard keeps the edge at association only and routes individual claims through dated psychiatric and sleep timelines with pre-existing mood disorder, iron deficiency, and medication effects excluded.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), mechanism PSYCHOPHYSIOLOGICAL, with the null-counterweight and intermediate-node limits carried openly: the 549-versus-549 matched-control cohort documents depressive symptoms in 32.5 percent (10-fold over controls) with major depressive episode in 10.5 percent and treatment-responsive depressive symptoms (PMID 34985142), the prospective perinatal cohort of 2,435 women documents incident depression after time-varying restless legs syndrome (hazard ratio 3.04, 95 percent CI 1.22-7.58; Edinburgh at least 13 hazard ratio 2.12, 95 percent CI 1.28-3.51, PMID 42675332), and the 24-study meta-analysis documents pooled depression prevalence of 30.39 percent (PMID 39024776); explicit counterweight carried openly - the pregnancy case-control cohort found no depression-score difference (P=0.269, PMID 32676936, registered on the anxiety-disorder edge within this batch); intermediate-node limit (depressive symptoms track insomnia symptoms in the anchor; the registered insomnia to depressive-disorder window exists) and direction-inversion (antidepressants can precipitate restlessness) stated; sources are disjoint from the anxiety edge this batch (no within-batch sharing); individual claims route through dated psychiatric, neurologic, and sleep timelines with pre-existing mood disorder, iron deficiency, and medication effects excluded.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No general-population longitudinal incident-depression cohort among restless legs syndrome patients free of mood disorder at baseline was located (the located prospective anchor is perinatal-scoped); the matched-control anchor is clinic-based with questionnaire depression screens plus a structured-interview subgroup; the meta-analysis pools mostly questionnaire-defined depressive states; the depression signal tracks insomnia symptoms within the matched-control anchor (mediation not resolved); and one pregnancy case-control cohort found no depression-score difference (P=0.269) with the counterweight carried openly."
+   ],
+   "sourceIds": [
+    "pmid-34985142",
+    "pmid-42675332",
+    "pmid-39024776"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "6a113fd08af504a40e46507442ac1b76950cfef0021f2ebba105904f95075f67"
+  },
+  {
+   "relationshipId": "rel-restless-leg-syndrome-to-anxiety-disorder",
+   "primaryId": "restless-leg-syndrome",
+   "targetId": "anxiety-disorder",
+   "direction": "restless-leg-syndrome -> anxiety-disorder",
+   "primaryPublicationState": "draft",
+   "rank": 3,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY at healthy-control meta-analytic plus case-control class with the shared-substrate and scale-measure limits carried openly, following the PSYCHOPHYSIOLOGICAL mood-edge convention and pairing with the depressive-disorder edge from disjoint sources (deliberately no within-batch source sharing this batch): the 21-study meta-analysis (PMID 38562425) quantifies anxiety-score excess versus healthy controls (Beck Anxiety Inventory mean difference 9.30, zero heterogeneity), the adolescent cohort (PMID 42601325) quantifies anxiety odds of 1.514 with mood derangements across age strata, and the pregnancy case-control study (PMID 32676936) quantifies the anxiety-score excess with syndrome-severity correlation; the null-anchor discipline is applied - positive anxiety signal across anchors with the same pregnancy cohort's depression null (P=0.269) carried openly as counterweight; because two anchors are special-population scoped with symptom scales and direction is contested (arousal amplifying restlessness, severity correlation), the conservative standard keeps the edge at association only and routes individual claims through dated psychiatric and neurologic timelines with pre-existing anxiety disorder, mineral deficiency, and stimulant effects excluded."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY at healthy-control meta-analytic plus case-control class with the shared-substrate and scale-measure limits carried openly, following the PSYCHOPHYSIOLOGICAL mood-edge convention and pairing with the depressive-disorder edge from disjoint sources (deliberately no within-batch source sharing this batch): the 21-study meta-analysis (PMID 38562425) quantifies anxiety-score excess versus healthy controls (Beck Anxiety Inventory mean difference 9.30, zero heterogeneity), the adolescent cohort (PMID 42601325) quantifies anxiety odds of 1.514 with mood derangements across age strata, and the pregnancy case-control study (PMID 32676936) quantifies the anxiety-score excess with syndrome-severity correlation; the null-anchor discipline is applied - positive anxiety signal across anchors with the same pregnancy cohort's depression null (P=0.269) carried openly as counterweight; because two anchors are special-population scoped with symptom scales and direction is contested (arousal amplifying restlessness, severity correlation), the conservative standard keeps the edge at association only and routes individual claims through dated psychiatric and neurologic timelines with pre-existing anxiety disorder, mineral deficiency, and stimulant effects excluded.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), mechanism PSYCHOPHYSIOLOGICAL, with the shared-substrate, scale-measure, and special-population limits carried openly: the 21-study meta-analysis documents Beck Anxiety Inventory mean difference 9.30 (95 percent CI 7.65-10.94, P<0.01, I-squared 0 percent) versus healthy controls (PMID 38562425), the 2,289-adolescent cohort documents anxiety odds ratio 1.514 (P<0.001) with mood derangements across age strata (PMID 42601325), and the pregnancy case-control study documents higher anxiety scores with severity correlation (P<0.001, PMID 32676936); counterweight carried openly - the same pregnancy cohort found a null depression comparison (P=0.269) and attributes part of the association to magnesium and zinc deficiency (shared substrate); direction contested (anxious arousal amplifies restlessness; anxiety correlates with severity); symptom scales rather than structured diagnoses; sources are disjoint from the depressive-disorder edge this batch (no within-batch sharing); individual claims route through dated psychiatric and neurologic timelines with pre-existing anxiety disorder, mineral deficiency, thyroid disease, and stimulant effects excluded.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No general-population longitudinal incident-anxiety cohort among restless legs syndrome patients free of anxiety at baseline was located; the meta-analysis pools symptom-scale scores (Beck Anxiety Inventory primary; Hamilton-scale results heterogeneous) rather than structured anxiety diagnoses and frames the evidence base as controversial at protocol entry; the adolescent and pregnancy anchors are special-population scoped; the pregnancy anchor attributes part of the association to magnesium and zinc deficiency (shared substrate unresolved); and the anxiety-severity correlation leaves direction contested."
+   ],
+   "sourceIds": [
+    "pmid-38562425",
+    "pmid-42601325",
+    "pmid-32676936"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "088747d3c8222997fb49dcbc9970dbbdc06faf55c775e0eabb4eec738b6d8267"
+  },
+  {
+   "relationshipId": "rel-retinitis-to-retinal-detachment",
+   "primaryId": "retinitis",
+   "targetId": "retinal-detachment",
+   "direction": "retinitis -> retinal-detachment",
+   "primaryPublicationState": "draft",
+   "rank": 1,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY at quantified multi-cohort level with the etiology-scope, small-cohort, and coding limits carried openly, following the choroiditis to retinal-detachment precedent for inflammatory posterior-segment conditions to detachment: the global federated-database cohort quantifies detachment incidence of 12.49 percent with early-risk concentration (PMID 42338517), the swept-source-OCT cohort quantifies the vitreous-coupling mechanism with detachment in 66 percent of eyes (PMID 42423915), and the Canadian cohort quantifies 44 percent detachment at a mean 105 days as its primary outcome (PMID 42274937); ME-29 discipline: the registered retinal-detachment windows own their sources and none is recycled here; because the evidence is herpesvirus-necrosis anchored with two small cohorts and one administratively coded cohort and detachment tracks disease extent, the conservative standard keeps the edge at association only with those limits on the record and routes individual claims through dated retinal imaging and operative records with diabetic, myopic, post-surgical, and traumatic causes excluded."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY at quantified multi-cohort level with the etiology-scope, small-cohort, and coding limits carried openly, following the choroiditis to retinal-detachment precedent for inflammatory posterior-segment conditions to detachment: the global federated-database cohort quantifies detachment incidence of 12.49 percent with early-risk concentration (PMID 42338517), the swept-source-OCT cohort quantifies the vitreous-coupling mechanism with detachment in 66 percent of eyes (PMID 42423915), and the Canadian cohort quantifies 44 percent detachment at a mean 105 days as its primary outcome (PMID 42274937); ME-29 discipline: the registered retinal-detachment windows own their sources and none is recycled here; because the evidence is herpesvirus-necrosis anchored with two small cohorts and one administratively coded cohort and detachment tracks disease extent, the conservative standard keeps the edge at association only with those limits on the record and routes individual claims through dated retinal imaging and operative records with diabetic, myopic, post-surgical, and traumatic causes excluded.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), mechanism MULTIFACTORIAL (necrotic rhegmatogenous breaks with vitreous traction plus exudative route), following the choroiditis to retinal-detachment precedent for inflammatory posterior-segment conditions, with the etiology-scope, small-cohort, and coding limits carried openly: the global federated-database cohort of 1,785 acute retinal necrosis patients documents detachment incidence of 12.49 percent with 60.5 percent within 3 months and treatment exposures readable only as severity proxies (PMID 42338517), the consecutive swept-source-OCT cohort of 32 eyes documents detachment in 66 percent with posterior vitreous detachment preceding 18 of 20 subsequent detachments (PMID 42423915), and the Canadian 5-year cohort of 16 eyes documents 44 percent detachment at a mean 105 days (PMID 42274937); ME-29 discipline: the registered retinal-detachment windows (diabetic-retinopathy, choroiditis, myopia, pseudophakia) own their sources and none is recycled; the evidence is herpesvirus-necrosis anchored (varicella-zoster 67 percent in the mechanism cohort) with cytomegalovirus/toxoplasmic risk mainly in mixed or case literature and autoimmune retinitis unquantified; individual claims route through dated retinal imaging and operative records with diabetic, myopic, post-surgical, and traumatic causes excluded.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "The quantified evidence is anchored on herpesvirus necrotizing retinitis (the mechanism cohort is 67 percent varicella-zoster virus) with cytomegalovirus and toxoplasmic retinitis detachment risk documented mainly in mixed-phenotype or case literature; two anchors are small single-center cohorts (32 eyes of 29 patients; 16 eyes of 14 patients); the incidence anchor (1,785 patients) uses ICD and CPT coding with treatment exposures readable only as severity proxies; autoimmune retinitis detachment risk is not quantified in the located literature; and no interventional cohort isolating detachment-risk reduction from antiviral strategy met the threshold."
+   ],
+   "sourceIds": [
+    "pmid-42338517",
+    "pmid-42423915",
+    "pmid-42274937"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "f4edeab9cdfda3baa8cddeeacb6739bb06a864342995573ab5afae75fe1a1466"
+  },
+  {
+   "relationshipId": "rel-retinitis-to-visual-impairment",
+   "primaryId": "retinitis",
+   "targetId": "visual-impairment",
+   "direction": "retinitis -> visual-impairment",
+   "primaryPublicationState": "draft",
+   "rank": 2,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY at quantified multi-cohort level with the constitutive-proximity screen, acute-retinal-necrosis-dominant scope, and explicit null carried openly and paired with the retinal-detachment edge from disjoint sources (deliberately no within-batch source sharing this batch): the 14-year cohort quantifies poor final vision (worse than 20/200) in 79 percent of eyes with baseline acuity adjusted odds ratio 5.58 (PMID 42307763), the mixed herpesvirus cohort models severe-impairment odds with protective factors (PMID 42252088), and the viral-load cohort quantifies the acuity gradient with viral load and interleukin-8 while documenting the null overall acuity change (P=0.43, PMID 42605772); ME-29 discipline: the registered visual-impairment windows own their sources and none is recycled here; because the impairment tracks disease extent and the evidence is acute-retinal-necrosis dominant with small cohorts, the conservative standard keeps the edge at association only and routes individual claims through dated acuity and imaging records with cataract, glaucoma, and refractive causes excluded."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY at quantified multi-cohort level with the constitutive-proximity screen, acute-retinal-necrosis-dominant scope, and explicit null carried openly and paired with the retinal-detachment edge from disjoint sources (deliberately no within-batch source sharing this batch): the 14-year cohort quantifies poor final vision (worse than 20/200) in 79 percent of eyes with baseline acuity adjusted odds ratio 5.58 (PMID 42307763), the mixed herpesvirus cohort models severe-impairment odds with protective factors (PMID 42252088), and the viral-load cohort quantifies the acuity gradient with viral load and interleukin-8 while documenting the null overall acuity change (P=0.43, PMID 42605772); ME-29 discipline: the registered visual-impairment windows own their sources and none is recycled here; because the impairment tracks disease extent and the evidence is acute-retinal-necrosis dominant with small cohorts, the conservative standard keeps the edge at association only and routes individual claims through dated acuity and imaging records with cataract, glaucoma, and refractive causes excluded.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), mechanism MULTIFACTORIAL (photoreceptor/RPE necrosis with macular involvement plus secondary detachment and macular edema), with the constitutive-proximity screen, acute-retinal-necrosis-dominant scope, and one explicit null carried openly: the 14-year cohort of 156 patients documents poor final vision worse than 20/200 in 79 percent of eyes with baseline acuity adjusted odds ratio 5.58 (PMID 42307763), the mixed herpesvirus-retinitis cohort of 144 eyes models severe-impairment odds with surgical intervention (B -2.50, P=0.033) and concurrent detachment (B -1.28, P=0.047) associated with lower odds (PMID 42252088), and the aqueous viral-load cohort of 53 eyes documents the acuity gradient with viral load and interleukin-8 while documenting a null overall baseline-to-final acuity change (P=0.43, PMID 42605772); constitutive-proximity screened and cleared (diagnosis rests on retinal inflammatory findings; the impairment outcome is separately thresholded at cohort level) - blindness is endpoint-shadowed and not separately registered; ME-29 discipline: the registered visual-impairment windows own their sources and none is recycled; sources are disjoint from the retinal-detachment edge this batch (no within-batch sharing); individual claims route through dated acuity and imaging records with cataract, glaucoma, diabetic, and refractive causes excluded.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "The quantification is acute-retinal-necrosis dominant with cytomegalovirus retinitis covered only in the 144-eye mixed herpesvirus cohort and toxoplasmic and autoimmune retinitis visual outcomes unquantified in the located literature; two anchors are small single-center cohorts (53 eyes and 144 eyes); one cohort documents no significant baseline-to-final acuity change overall (P=0.43) despite the viral-load gradient, so the outcome varies with treatment era and cohort composition; adjunctive treatment effects were not independently favorable in the largest cohort (treatment-mediated considerations); and no patient-reported visual-function cohort was located."
+   ],
+   "sourceIds": [
+    "pmid-42307763",
+    "pmid-42252088",
+    "pmid-42605772"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "c57935c7deff7a9306743cc2f2f0b6e220ae70241ee340395ecf31bd4bb5324c"
+  },
+  {
+   "relationshipId": "rel-renal-toxicity-to-chronic-kidney-disease",
+   "primaryId": "renal-toxicity",
+   "targetId": "chronic-kidney-disease",
+   "direction": "renal-toxicity -> chronic-kidney-disease",
+   "primaryPublicationState": "draft",
+   "rank": 1,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY at population-register plus exposure-cohort class with the null-counterweight and exposure-specific limits carried openly, following the nephritis to chronic-kidney-disease progression convention: the Swedish active-comparator cohort (PMID 37418264) quantifies the toxic-range progression gradient (hazard ratio 2.86) while its therapeutic-dose comparison is null (hazard ratio 1.11, 0.86-1.45 - carried openly as the anchor's own counterweight), the cisplatin cohort (PMID 36941500) documents kidney injury predicting long-term renal dysfunction in 2,191 patients, and the tenofovir cohort (PMID 40811628) documents early nephrotoxicity preceding chronic kidney disease in 34.6 percent over 5 years; the null-anchor discipline is applied - the toxic-injury subgroup is the identity's exposure population and the therapeutic-dose null is stated on the record; because the evidence is exposure-specific and progression attribution is comorbidity-confounded, the conservative standard keeps the edge at association only and routes individual claims through dated exposure-dose and renal-function records with competing nephropathies excluded."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY at population-register plus exposure-cohort class with the null-counterweight and exposure-specific limits carried openly, following the nephritis to chronic-kidney-disease progression convention: the Swedish active-comparator cohort (PMID 37418264) quantifies the toxic-range progression gradient (hazard ratio 2.86) while its therapeutic-dose comparison is null (hazard ratio 1.11, 0.86-1.45 - carried openly as the anchor's own counterweight), the cisplatin cohort (PMID 36941500) documents kidney injury predicting long-term renal dysfunction in 2,191 patients, and the tenofovir cohort (PMID 40811628) documents early nephrotoxicity preceding chronic kidney disease in 34.6 percent over 5 years; the null-anchor discipline is applied - the toxic-injury subgroup is the identity's exposure population and the therapeutic-dose null is stated on the record; because the evidence is exposure-specific and progression attribution is comorbidity-confounded, the conservative standard keeps the edge at association only and routes individual claims through dated exposure-dose and renal-function records with competing nephropathies excluded.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), mechanism PHARMACOLOGICAL_IATROGENIC (tubular/interstitial toxic injury with fibrosis progression), following the nephritis to chronic-kidney-disease progression convention, with the null-counterweight and exposure-specific limits carried openly: the Swedish new-user active-comparator cohort of 10,946 initiators documents NO excess chronic kidney disease risk at therapeutic lithium exposure (hazard ratio 1.11, 95 percent CI 0.86-1.45 - the anchor's own counterweight) while toxic-range levels above 1.0 mmol per liter associate with chronic kidney disease progression (hazard ratio 2.86, 95 percent CI 0.97-8.45) and acute kidney injury (hazard ratio 3.51, 95 percent CI 1.41-8.76) (PMID 37418264), the cisplatin cohort of 2,191 patients documents injury in 4.2 percent of 8,482 cycles predicting long-term renal dysfunction (P<0.01, PMID 36941500), and the tenofovir cohort of 182 adults documents early nephrotoxicity preceding chronic kidney disease in 34.6 percent over 5 years (PMID 40811628); null-anchor discipline applied - positive toxic-injury signal with the therapeutic-dose null stated on the record and the identity's exposure population is the toxic-injury cohort; the evidence is exposure-specific (lithium, cisplatin, tenofovir) with comorbidity-confounded progression attribution; the aristolochic-acid urothelial-carcinoma route is withheld (direct genotoxicity defeats the condition-to-cancer arrow; the uremic route is chain-owned by the chronic-kidney-disease window); individual claims route through dated exposure-dose and renal-function records with diabetic, hypertensive, glomerular, obstructive, and pre-existing chronic kidney disease causes excluded.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "The located quantification covers three named exposures (lithium, cisplatin, tenofovir) with distinct mechanisms and no located cohort spans nephrotoxic exposures generally; the register cohort's own primary comparison is null at therapeutic exposure and its toxic-range subgroup is small (3 percent of routine lithium tests were in the toxic range) with a progression confidence interval crossing 1 (0.97-8.45); the cisplatin cohort is retrospective single-center with injury defined per KDIGO criteria in a cancer population carrying independent renal risk; the tenofovir cohort is small (182 patients) and single-country; and the acute-injury to chronic-disease transition is not isolable from underlying renal comorbidity in any located design."
+   ],
+   "sourceIds": [
+    "pmid-37418264",
+    "pmid-36941500",
+    "pmid-40811628"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "13162fd0de5a04a2d1be54974ef01ccfb1003f4b0f4c9fcdeb127f371c70100c"
   }
  ],
  "lastUpdatedBy": "batch-D1-draft-authoring",

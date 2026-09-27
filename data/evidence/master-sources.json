@@ -16,16 +16,16 @@
   "citationPromotionMustAtomicallyUpdateKbAndMasterSourceState": true
  },
  "counts": {
-  "liveSourceReferenceUses": 1406,
+  "liveSourceReferenceUses": 1424,
   "activeSourceEntities": 346,
-  "pendingVerificationSourceEntities": 896,
+  "pendingVerificationSourceEntities": 914,
   "activeClinicalSourceEntities": 345,
-  "pendingClinicalSourceEntities": 896,
+  "pendingClinicalSourceEntities": 914,
   "activeLegalAuthorityEntities": 1,
   "retiredOnlySourceEntities": 1,
   "supersededUnverifiedSourceEntities": 7,
   "bibliographicCorrectionOnlyEntities": 1,
-  "totalSourceEntitiesIncludingLineage": 1251,
+  "totalSourceEntitiesIncludingLineage": 1269,
   "retiredVerifiedRelationshipSourceUses": 6
  },
  "retirementLedger": {
@@ -46220,6 +46220,636 @@
    "rawReferenceHashes": [
     "af3d12035b8a276c2b45c65a99475be9b4230aefcc6f16da9b07138ad151bf2e",
     "8b147be178a9d298ac056591666007de7461c217828ce2b34044be37422d02f4"
+   ]
+  },
+  {
+   "sourceId": "pmid-15165529",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "15165529",
+   "doi": null,
+   "canonicalCitation": "Hening W, Walters AS, Allen RP, et al. Impact, diagnosis and treatment of restless legs syndrome (RLS) in a primary care population: the REST (RLS epidemiology, symptoms, and treatment) primary care study Sleep Med. 2004 May;5(3):237-46. PMID 15165529.",
+   "citationVariants": [
+    "Hening W, Walters AS, Allen RP, et al. Impact, diagnosis and treatment of restless legs syndrome (RLS) in a primary care population: the REST (RLS epidemiology, symptoms, and treatment) primary care study Sleep Med. 2004 May;5(3):237-46. PMID 15165529."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/15165529/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/15165529/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-27"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-restless-leg-syndrome-to-insomnia",
+     "primaryId": "restless-leg-syndrome",
+     "targetId": "insomnia",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "9e42e8770804f2dd0fbbade77b9d00ba1fb506e6408e414509129f2dd587b8e2"
+   ]
+  },
+  {
+   "sourceId": "pmid-19544754",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "19544754",
+   "doi": null,
+   "canonicalCitation": "Winkelman JW, Redline S, Baldwin CM, et al. Polysomnographic and health-related quality of life correlates of restless legs syndrome in the Sleep Heart Health Study Sleep. 2009 Jun;32(6):772-8. PMID 19544754.",
+   "citationVariants": [
+    "Winkelman JW, Redline S, Baldwin CM, et al. Polysomnographic and health-related quality of life correlates of restless legs syndrome in the Sleep Heart Health Study Sleep. 2009 Jun;32(6):772-8. PMID 19544754."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/19544754/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/19544754/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-27"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-restless-leg-syndrome-to-insomnia",
+     "primaryId": "restless-leg-syndrome",
+     "targetId": "insomnia",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "f4c319ba2414c4d54c1b17839ee54fb018f4ce2ce21be1961a872dc2456a899c"
+   ]
+  },
+  {
+   "sourceId": "pmid-15956009",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "15956009",
+   "doi": null,
+   "canonicalCitation": "Allen RP, Walters AS, Montplaisir J, et al. Restless legs syndrome prevalence and impact: REST general population study Arch Intern Med. 2005 Jun 13;165(11):1286-92. PMID 15956009.",
+   "citationVariants": [
+    "Allen RP, Walters AS, Montplaisir J, et al. Restless legs syndrome prevalence and impact: REST general population study Arch Intern Med. 2005 Jun 13;165(11):1286-92. PMID 15956009."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/15956009/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/15956009/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-27"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-restless-leg-syndrome-to-insomnia",
+     "primaryId": "restless-leg-syndrome",
+     "targetId": "insomnia",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "39102bc7a282af1baa96cc2e2369c28491ce3f10ee1765e16b7cee4cf2532255"
+   ]
+  },
+  {
+   "sourceId": "pmid-34985142",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "34985142",
+   "doi": null,
+   "canonicalCitation": "Chenini S, Barateau L, Guiraud L, et al. Depressive Symptoms and Suicidal Thoughts in Restless Legs Syndrome Mov Disord. 2022 Apr;37(4):812-825. PMID 34985142.",
+   "citationVariants": [
+    "Chenini S, Barateau L, Guiraud L, et al. Depressive Symptoms and Suicidal Thoughts in Restless Legs Syndrome Mov Disord. 2022 Apr;37(4):812-825. PMID 34985142."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34985142/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/34985142/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-27"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-restless-leg-syndrome-to-depressive-disorder",
+     "primaryId": "restless-leg-syndrome",
+     "targetId": "depressive-disorder",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "0935b7dbf57bb642c70b1279f2b3eb99bfef120cbcc5fe1fc32df4ad3ce61856"
+   ]
+  },
+  {
+   "sourceId": "pmid-42675332",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "42675332",
+   "doi": "10.1007/s44470-026-00168-7",
+   "canonicalCitation": "Tezuka K, Ito Y, Sasaki N, et al. Time-varying restless legs syndrome and risk of incident perinatal depression J Clin Sleep Med. 2026 Aug 31;22(1).doi: 10.1007/s44470-026-00168-7. PMID 42675332.",
+   "citationVariants": [
+    "Tezuka K, Ito Y, Sasaki N, et al. Time-varying restless legs syndrome and risk of incident perinatal depression J Clin Sleep Med. 2026 Aug 31;22(1).doi: 10.1007/s44470-026-00168-7. PMID 42675332."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42675332/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/42675332/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-27"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-restless-leg-syndrome-to-depressive-disorder",
+     "primaryId": "restless-leg-syndrome",
+     "targetId": "depressive-disorder",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "45112f931346f08a178203a8c32996bd7b45277e41377a019ff219cf1f409a79"
+   ]
+  },
+  {
+   "sourceId": "pmid-39024776",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "39024776",
+   "doi": null,
+   "canonicalCitation": "Miyaguchi R, Masuda F, Sumi Y, et al. Prevalence of depression or depressive state in patients with restless legs syndrome: A systematic review and meta-analysis Sleep Med Rev. 2024 Oct;77:101975. PMID 39024776.",
+   "citationVariants": [
+    "Miyaguchi R, Masuda F, Sumi Y, et al. Prevalence of depression or depressive state in patients with restless legs syndrome: A systematic review and meta-analysis Sleep Med Rev. 2024 Oct;77:101975. PMID 39024776."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39024776/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/39024776/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-27"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-restless-leg-syndrome-to-depressive-disorder",
+     "primaryId": "restless-leg-syndrome",
+     "targetId": "depressive-disorder",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "5edd20dc40c2c7d80675a48e1ca97c0ce65dade477117a2f591e9caf2d7f9da8"
+   ]
+  },
+  {
+   "sourceId": "pmid-38562425",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "38562425",
+   "doi": null,
+   "canonicalCitation": "An T, Sun H, Yuan L, et al. Associations of anxiety and depression with restless leg syndrome: a systematic review and meta-analysis Front Neurol. 2024;15:1366839. PMID 38562425.",
+   "citationVariants": [
+    "An T, Sun H, Yuan L, et al. Associations of anxiety and depression with restless leg syndrome: a systematic review and meta-analysis Front Neurol. 2024;15:1366839. PMID 38562425."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38562425/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/38562425/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-27"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-restless-leg-syndrome-to-anxiety-disorder",
+     "primaryId": "restless-leg-syndrome",
+     "targetId": "anxiety-disorder",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "1bcf3b8b76da7d603be7afb75e9a31da7e953f91dce985e67b270536925124ff"
+   ]
+  },
+  {
+   "sourceId": "pmid-42601325",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "42601325",
+   "doi": null,
+   "canonicalCitation": "Roy MM, Singh R, Alvi AB, et al. Restless-Leg Syndrome Among Adolescents: Impact on Sleep Quality, Mood, and Academic Performance Behav Sleep Med. 2026 Aug 14:1-12. PMID 42601325.",
+   "citationVariants": [
+    "Roy MM, Singh R, Alvi AB, et al. Restless-Leg Syndrome Among Adolescents: Impact on Sleep Quality, Mood, and Academic Performance Behav Sleep Med. 2026 Aug 14:1-12. PMID 42601325."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42601325/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/42601325/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-27"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-restless-leg-syndrome-to-anxiety-disorder",
+     "primaryId": "restless-leg-syndrome",
+     "targetId": "anxiety-disorder",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "856fed632e9fbbcb2ae0665a22a0fa7607d9800ed9a52768010f5e4e82876398"
+   ]
+  },
+  {
+   "sourceId": "pmid-32676936",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "32676936",
+   "doi": null,
+   "canonicalCitation": "Yıldırım E, Apaydın H. Zinc and Magnesium Levels of Pregnant Women with Restless Leg Syndrome and Their Relationship with Anxiety: A Case-Control Study Biol Trace Elem Res. 2021 May;199(5):1674-1685. PMID 32676936.",
+   "citationVariants": [
+    "Yıldırım E, Apaydın H. Zinc and Magnesium Levels of Pregnant Women with Restless Leg Syndrome and Their Relationship with Anxiety: A Case-Control Study Biol Trace Elem Res. 2021 May;199(5):1674-1685. PMID 32676936."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/32676936/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/32676936/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-27"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-restless-leg-syndrome-to-anxiety-disorder",
+     "primaryId": "restless-leg-syndrome",
+     "targetId": "anxiety-disorder",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "2753014cf496d58488c43e8405e7980a8977c73ed4e9527b6217b20e8d2ce34e"
+   ]
+  },
+  {
+   "sourceId": "pmid-42338517",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "42338517",
+   "doi": null,
+   "canonicalCitation": "Thompson D, Zafar S, Berkenstock M. Incidence and clinical characterization of retinal detachment in acute retinal necrosis: a global federated database analysis Front Ophthalmol (Lausanne). 2026;6:1829400. PMID 42338517.",
+   "citationVariants": [
+    "Thompson D, Zafar S, Berkenstock M. Incidence and clinical characterization of retinal detachment in acute retinal necrosis: a global federated database analysis Front Ophthalmol (Lausanne). 2026;6:1829400. PMID 42338517."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42338517/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/42338517/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-27"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-retinitis-to-retinal-detachment",
+     "primaryId": "retinitis",
+     "targetId": "retinal-detachment",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "c0a53ec0df8afc8b408aefe0bc129e12364ef5b4040be213261e7ff6c7e46e5b"
+   ]
+  },
+  {
+   "sourceId": "pmid-42423915",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "42423915",
+   "doi": "10.1007/s10384-026-01396-3",
+   "canonicalCitation": "Arai Y, Akiyama H, Tokui S, et al. Acute retinal necrosis: an assessment of vitreous and retinal detachment Jpn J Ophthalmol. 2026 Jul 9.doi: 10.1007/s10384-026-01396-3. PMID 42423915.",
+   "citationVariants": [
+    "Arai Y, Akiyama H, Tokui S, et al. Acute retinal necrosis: an assessment of vitreous and retinal detachment Jpn J Ophthalmol. 2026 Jul 9.doi: 10.1007/s10384-026-01396-3. PMID 42423915."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42423915/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/42423915/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-27"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-retinitis-to-retinal-detachment",
+     "primaryId": "retinitis",
+     "targetId": "retinal-detachment",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "b8c3b6dad16826915ba870930edf45077bbc27ccf8e51b64c09bfca9348224e7"
+   ]
+  },
+  {
+   "sourceId": "pmid-42274937",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "42274937",
+   "doi": "10.1186/s12348-026-00608-8",
+   "canonicalCitation": "Lo C, Mah JM, Tadrous C, et al. Outcomes of Patients with Acute Retinal Necrosis (ARN) presenting to a Canadian tertiary care centre: a 5-year retrospective cohort study J Ophthalmic Inflamm Infect. 2026 Jun 11;16(1).doi: 10.1186/s12348-026-00608-8. PMID 42274937.",
+   "citationVariants": [
+    "Lo C, Mah JM, Tadrous C, et al. Outcomes of Patients with Acute Retinal Necrosis (ARN) presenting to a Canadian tertiary care centre: a 5-year retrospective cohort study J Ophthalmic Inflamm Infect. 2026 Jun 11;16(1).doi: 10.1186/s12348-026-00608-8. PMID 42274937."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42274937/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/42274937/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-27"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-retinitis-to-retinal-detachment",
+     "primaryId": "retinitis",
+     "targetId": "retinal-detachment",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "962f41727bce92f8b799101d12b86e765d5d0fe12fcfca92d4aa00f719a0c28f"
+   ]
+  },
+  {
+   "sourceId": "pmid-42307763",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "42307763",
+   "doi": "10.1007/s00417-026-07322-0",
+   "canonicalCitation": "Tabatabaei SA, Soleimani M, Ghochani G, et al. Predictors of retinal detachment and visual outcome in acute retinal necrosis: a 14-year retrospective cohort Graefes Arch Clin Exp Ophthalmol. 2026 Jun 17.doi: 10.1007/s00417-026-07322-0. PMID 42307763.",
+   "citationVariants": [
+    "Tabatabaei SA, Soleimani M, Ghochani G, et al. Predictors of retinal detachment and visual outcome in acute retinal necrosis: a 14-year retrospective cohort Graefes Arch Clin Exp Ophthalmol. 2026 Jun 17.doi: 10.1007/s00417-026-07322-0. PMID 42307763."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42307763/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/42307763/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-27"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-retinitis-to-visual-impairment",
+     "primaryId": "retinitis",
+     "targetId": "visual-impairment",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "8d2998761c1ada76d30c51458bc748548ffb6dd639e34f18cf37fc41ad89edc3"
+   ]
+  },
+  {
+   "sourceId": "pmid-42252088",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "42252088",
+   "doi": "10.1016/j.oret.2026.06.002",
+   "canonicalCitation": "Zou Y, Yang M, Zhang J, et al. Herpesvirus Retinitis by Immune Status: Clinical Phenotypes and Predictors of Retinal Detachment and Severe Visual Impairment Ophthalmol Retina. 2026 Jun 6.pii: S2468-6530(26)00272-1. doi: 10.1016/j.oret.2026.06.002. PMID 42252088.",
+   "citationVariants": [
+    "Zou Y, Yang M, Zhang J, et al. Herpesvirus Retinitis by Immune Status: Clinical Phenotypes and Predictors of Retinal Detachment and Severe Visual Impairment Ophthalmol Retina. 2026 Jun 6.pii: S2468-6530(26)00272-1. doi: 10.1016/j.oret.2026.06.002. PMID 42252088."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42252088/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/42252088/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-27"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-retinitis-to-visual-impairment",
+     "primaryId": "retinitis",
+     "targetId": "visual-impairment",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "06c964b7a925156d77457a3c5c86c4842e7d2f0d6f1290b52705156649c7c706"
+   ]
+  },
+  {
+   "sourceId": "pmid-42605772",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "42605772",
+   "doi": null,
+   "canonicalCitation": "Yu T, Wu HR, Zhu D, et al. Correlation of Clinical Prognosis with the Changes of Aqueous Viral Load and Interleukin-8 Levels in Patients with Acute Retinal Necrosis Ocul Immunol Inflamm. 2026 Aug 17:1-8. PMID 42605772.",
+   "citationVariants": [
+    "Yu T, Wu HR, Zhu D, et al. Correlation of Clinical Prognosis with the Changes of Aqueous Viral Load and Interleukin-8 Levels in Patients with Acute Retinal Necrosis Ocul Immunol Inflamm. 2026 Aug 17:1-8. PMID 42605772."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42605772/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/42605772/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-27"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-retinitis-to-visual-impairment",
+     "primaryId": "retinitis",
+     "targetId": "visual-impairment",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "c77d454b55628fb285f51b16147f075913a8a91312df0c84bb2c3eef08443c86"
+   ]
+  },
+  {
+   "sourceId": "pmid-37418264",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "37418264",
+   "doi": null,
+   "canonicalCitation": "Bosi A, Clase CM, Ceriani L, et al. Absolute and Relative Risks of Kidney Outcomes Associated With Lithium vs Valproate Use in Sweden JAMA Netw Open. 2023 Jul 3;6(7):e2322056. PMID 37418264.",
+   "citationVariants": [
+    "Bosi A, Clase CM, Ceriani L, et al. Absolute and Relative Risks of Kidney Outcomes Associated With Lithium vs Valproate Use in Sweden JAMA Netw Open. 2023 Jul 3;6(7):e2322056. PMID 37418264."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/37418264/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/37418264/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-27"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-renal-toxicity-to-chronic-kidney-disease",
+     "primaryId": "renal-toxicity",
+     "targetId": "chronic-kidney-disease",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "5ace95570ccdf2e39228749cc8baa6e76076c2280c879e3f2c8adf992af9a590"
+   ]
+  },
+  {
+   "sourceId": "pmid-36941500",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "36941500",
+   "doi": null,
+   "canonicalCitation": "Hino A, Muto S, Shimada Y, et al. Impact of cisplatin-induced acute kidney injury on long-term renal function in patients with solid tumors Clin Exp Nephrol. 2023 Jun;27(6):506-518. PMID 36941500.",
+   "citationVariants": [
+    "Hino A, Muto S, Shimada Y, et al. Impact of cisplatin-induced acute kidney injury on long-term renal function in patients with solid tumors Clin Exp Nephrol. 2023 Jun;27(6):506-518. PMID 36941500."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36941500/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/36941500/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-27"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-renal-toxicity-to-chronic-kidney-disease",
+     "primaryId": "renal-toxicity",
+     "targetId": "chronic-kidney-disease",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "e4d4ff45c9412dd895de3aab1eaa4d59cd99175f6f7dca32b8e8e20292da555d"
+   ]
+  },
+  {
+   "sourceId": "pmid-40811628",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "40811628",
+   "doi": null,
+   "canonicalCitation": "Muchinta E, Chabala FW. Chronic kidney disease among HIV-positive Zambian adults with tenofovir-associated nephrotoxicity at University Teaching Hospital (UTH) in Lusaka PLoS One. 2025;20(8):e0330356. PMID 40811628.",
+   "citationVariants": [
+    "Muchinta E, Chabala FW. Chronic kidney disease among HIV-positive Zambian adults with tenofovir-associated nephrotoxicity at University Teaching Hospital (UTH) in Lusaka PLoS One. 2025;20(8):e0330356. PMID 40811628."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40811628/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/40811628/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-27"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-renal-toxicity-to-chronic-kidney-disease",
+     "primaryId": "renal-toxicity",
+     "targetId": "chronic-kidney-disease",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "786e83f06f56e5c59945f805eef4d5775f64bc915464fa2a4e859bb07276a245"
    ]
   }
  ],

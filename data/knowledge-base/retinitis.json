@@ -2,8 +2,141 @@
   "id": "retinitis",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review otologic, vestibular, audiologic, visual, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 78 (2026-09-27): two ASSOCIATION_ONLY draft mappings pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: the edges assert association only (etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true), both MULTIFACTORIAL (necrotic, exudative, and tractional routes across mixed infectious and autoimmune etiologies). Both edges carry the etiology-scope limit openly (the quantified evidence is herpesvirus-necrosis dominant - acute retinal necrosis with varicella-zoster and herpes simplex virus - with cytomegalovirus coverage only in the mixed herpesvirus cohort and toxoplasmic and autoimmune retinitis unquantified), the small-cohort and coding limits (two single-center cohorts of 32 and 16 eyes; the incidence cohort is ICD and CPT coded with treatment exposures readable only as severity proxies), and the visual-impairment edge carries one explicit null openly (no significant baseline-to-final acuity change overall, P=0.43, PMID 42605772). Constitutive-proximity was screened and cleared on the record for the visual-impairment edge (diagnosis rests on retinal inflammatory findings; the impairment outcome is separately thresholded at cohort level). Deliberately NO within-batch source sharing this batch: all six references across the two edges are disjoint. Individual claims require dated retinal imaging, acuity, and operative records with competing detachment mechanisms and competing visual-cause pathways excluded and review by a qualified medical professional.",
+    "Pathway and duplicate-scope screens and withheld propositions: no -> glaucoma and no -> cataracts edges (WINDOW-OWNERSHIP plus TREATMENT-MEDIATED - the registered uveitis to glaucoma and uveitis to cataracts windows own the anterior-segment inflammation and corticosteroid-treatment routes and their sources are left untouched per ME-29; retinitis is posterior-segment inflammation and the intraocular-pressure and lens-opacification routes run through uveitis territory or corticosteroid treatment); no -> uveitis edge (SPECTRUM-OVERLAP/IDENTITY-DUPLICATION - acute retinal necrosis is classified within the panuveitis nomenclature and the herpesvirus-retinitis cohort diagnoses on Standardization of Uveitis Nomenclature criteria, so the pair names overlapping constructs); no -> macular-degeneration edge (SEMANTIC-MISMATCH - post-inflammatory macular scarring is not the age-related macular-degeneration identity); no -> cystoid-macular-edema proposition (MISSING IDENTITY - continuing the catalog gap recorded as the seventh evidence-preserving refusal (pseudophakic cystoid macular edema): inflammatory macular edema is a documented retinitis and uveitis complication and the catalog carries no cystoid-macular-edema identity, so the uveitic macular-edema literature including the dexamethasone-implant regression cohort (PMID 42581430) stays window-owned by uveitis and reserved; recorded as a catalog-gap continuation, not a numbered refusal); no -> blindness edge (ENDPOINT-SHADOWING - blindness is the severe endpoint of the same visual-impairment route registered at rank 2 and registering both would double-count one pathway); no -> optic-neuritis edge (ZERO RECORD plus SEMANTIC-MISMATCH)."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 78 (2026-09-27): two bounded association edges authored - retinitis to retinal-detachment (rank 1) and retinitis to visual-impairment (rank 2) - both classified ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, and hypothesizedOnly:true, mechanismCategory MULTIFACTORIAL on both. The edges rest on disjoint sources this batch: the retinal-detachment edge on the global federated-database cohort of 1,785 acute retinal necrosis patients (incidence 12.49 percent; 60.5 percent within 3 months, PMID 42338517), the swept-source-OCT vitreous-coupling cohort of 32 eyes (detachment 66 percent; posterior vitreous detachment preceding 18 of 20 subsequent detachments, PMID 42423915), and the Canadian 5-year cohort of 16 eyes (44 percent at a mean 105 days, PMID 42274937); the visual-impairment edge on the 14-year cohort of 156 patients (poor final vision worse than 20/200 in 79 percent of eyes; baseline acuity adjusted odds ratio 5.58, PMID 42307763), the mixed herpesvirus-retinitis cohort of 144 eyes modeling severe-impairment odds (PMID 42252088), and the aqueous viral-load cohort of 53 eyes (acuity gradient with viral load and interleukin-8; overall acuity change null at P=0.43 carried openly, PMID 42605772). The choroiditis to retinal-detachment precedent supplies the family convention and its sources are left untouched per ME-29. The cystoid-macular-edema catalog gap continues (uveitic macular-edema literature window-owned by uveitis, PMID 42581430 reserved)."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "retinal-detachment",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Retinitis associates with retinal detachment at quantified cohort level across three independent retinal-necrosis cohorts: the global federated-database cohort of 1,785 acute retinal necrosis patients documents retinal detachment incidence of 12.49 percent (223 cases) with 60.5 percent of detachments occurring within the first 3 months of diagnosis and the authors noting that treatment exposures must be read as disease-severity proxies (PMID 42338517), the consecutive swept-source-OCT cohort of 32 eyes documents detachment in 66 percent of cases with proliferative vitreoretinopathy in 90 percent and posterior vitreous detachment preceding detachment in 18 of the 20 eyes that detached after initial vitreous attachment (mean 45.8 plus or minus 32.1 days) (PMID 42423915), and the Canadian 5-year retrospective cohort of 16 eyes documents retinal detachment as the primary outcome in 44 percent of eyes at a mean 105 days from symptom onset (PMID 42274937); recorded as documented association only with the etiology-scope and coding limits carried openly - the quantified evidence is anchored on herpesvirus necrotizing retinitis (acute retinal necrosis; varicella-zoster virus in 67 percent of the OCT cohort) and the incidence anchor uses administrative ICD and CPT coding.",
+        "causationStatus": "Neither causation nor aggravation of retinal-detachment is established for any individual: the quantified anchors are acute-retinal-necrosis scoped (cytomegalovirus and toxoplasmic retinitis detachment risk is documented mainly in mixed or case literature), two of three anchors are small single-center cohorts (32 eyes and 16 eyes) and the large anchor is administratively coded with severity-proxy treatment confounding, necrotic retinitis of autoimmune origin is not covered by the located quantification, and the detachments are the structural sequela of full-thickness necrosis so the route is inseparable from disease severity (extensive retinitis predicts detachment); individual claims require dated retinal imaging and operative records with diabetic tractional, high-myopia, post-surgical, and traumatic detachment causes excluded."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MULTIFACTORIAL",
+        "primaryVector": "Full-thickness retinal necrosis with posterior vitreous detachment evolving over necrotic tissue is hypothesized to open rhegmatogenous breaks with proliferative vitreoretinopathy traction completing the detachment, with inflammatory exudative detachment as a secondary route, the route supported by the vitreous-coupling data (posterior vitreous detachment preceding 18 of 20 subsequent detachments) and the early-risk concentration in the first 3 months, but whether the route produced any individual's detachment remains hypothesized until imaging and operative records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "Authored at ASSOCIATION_ONLY at quantified multi-cohort level following the choroiditis to retinal-detachment precedent for inflammatory posterior-segment conditions: the global federated cohort quantifies detachment incidence and timing in 1,785 patients (PMID 42338517), the OCT cohort quantifies the vitreous-coupling mechanism (PMID 42423915), and the Canadian cohort quantifies the primary-outcome detachment rate and time-to-detachment (PMID 42274937); ME-29 discipline: the registered retinal-detachment windows (diabetic-retinopathy, choroiditis, myopia, pseudophakia) own their sources and none is recycled here; because the evidence is herpesvirus-necrosis anchored with two small cohorts and one administratively coded cohort and detachment tracks disease extent, the conservative standard keeps the edge at association only with the etiology-scope, small-cohort, and coding limits stated and routes individual claims through dated retinal imaging and operative records with competing detachment mechanisms excluded.",
+        "evidenceGaps": "The quantified evidence is anchored on herpesvirus necrotizing retinitis (the mechanism cohort is 67 percent varicella-zoster virus) with cytomegalovirus and toxoplasmic retinitis detachment risk documented mainly in mixed-phenotype or case literature; two anchors are small single-center cohorts (32 eyes of 29 patients; 16 eyes of 14 patients); the incidence anchor (1,785 patients) uses ICD and CPT coding with treatment exposures readable only as severity proxies; autoimmune retinitis detachment risk is not quantified in the located literature; and no interventional cohort isolating detachment-risk reduction from antiviral strategy met the threshold.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "diabetic tractional and rhegmatogenous detachment (the registered diabetic-retinopathy window owns its sources; none recycled per ME-29)",
+          "high-myopia detachment (the registered myopia window owns its sources)",
+          "aphakic and post-surgical detachment including pseudophakic routes (the registered aphakia and pseudophakia windows own their sources; the batch-76 pseudophakia edge carries its own procedural route)",
+          "posterior vitreous detachment with operculated breaks in otherwise uninvolved retina; ocular trauma",
+          "exudative detachment from non-retinitis uveitis (the registered choroiditis window owns the inflammatory barrier-failure route)"
+        ]
+      },
+      "evidenceGaps": [
+        "The quantified evidence is anchored on herpesvirus necrotizing retinitis (the mechanism cohort is 67 percent varicella-zoster virus) with cytomegalovirus and toxoplasmic retinitis detachment risk documented mainly in mixed-phenotype or case literature; two anchors are small single-center cohorts (32 eyes of 29 patients; 16 eyes of 14 patients); the incidence anchor (1,785 patients) uses ICD and CPT coding with treatment exposures readable only as severity proxies; autoimmune retinitis detachment risk is not quantified in the located literature; and no interventional cohort isolating detachment-risk reduction from antiviral strategy met the threshold."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY at quantified multi-cohort level with the etiology-scope, small-cohort, and coding limits carried openly, following the choroiditis to retinal-detachment precedent for inflammatory posterior-segment conditions to detachment: the global federated-database cohort quantifies detachment incidence of 12.49 percent with early-risk concentration (PMID 42338517), the swept-source-OCT cohort quantifies the vitreous-coupling mechanism with detachment in 66 percent of eyes (PMID 42423915), and the Canadian cohort quantifies 44 percent detachment at a mean 105 days as its primary outcome (PMID 42274937); ME-29 discipline: the registered retinal-detachment windows own their sources and none is recycled here; because the evidence is herpesvirus-necrosis anchored with two small cohorts and one administratively coded cohort and detachment tracks disease extent, the conservative standard keeps the edge at association only with those limits on the record and routes individual claims through dated retinal imaging and operative records with diabetic, myopic, post-surgical, and traumatic causes excluded.",
+      "sourceReferences": [
+        {
+          "citation": "Thompson D, Zafar S, Berkenstock M. Incidence and clinical characterization of retinal detachment in acute retinal necrosis: a global federated database analysis Front Ophthalmol (Lausanne). 2026;6:1829400. PMID 42338517.",
+          "note": "Global federated-database retrospective cohort (Front Ophthalmol 2026, TriNetX): 1,785 acute retinal necrosis patients 2014-2024; retinal detachment incidence 12.49% (223 cases) with 60.5% within 3 months of diagnosis; no significant incidence differences by age, sex, diabetes, or immunosuppression; treatment exposures are severity proxies; supports the bounded association only (ICD/CPT-coded EHR cohort).",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42338517/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-27",
+          "sourceLocator": "PMID 42338517; results (incidence and timing of retinal detachment)"
+        },
+        {
+          "citation": "Arai Y, Akiyama H, Tokui S, et al. Acute retinal necrosis: an assessment of vitreous and retinal detachment Jpn J Ophthalmol. 2026 Jul 9.doi: 10.1007/s10384-026-01396-3. PMID 42423915.",
+          "note": "Consecutive swept-source-OCT vitreous cohort (Jpn J Ophthalmol 2026): 32 eyes of 29 acute retinal necrosis patients; retinal detachment in 66% of cases with proliferative vitreoretinopathy in 90%; posterior vitreous detachment preceded detachment in 18 of 20 eyes detaching after initial vitreous attachment (mean 45.8 plus or minus 32.1 days); varicella-zoster virus 67%; supports the bounded mechanism association only (small single-center cohort).",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42423915/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-27",
+          "sourceLocator": "PMID 42423915; results (vitreous status and detachment coupling)"
+        },
+        {
+          "citation": "Lo C, Mah JM, Tadrous C, et al. Outcomes of Patients with Acute Retinal Necrosis (ARN) presenting to a Canadian tertiary care centre: a 5-year retrospective cohort study J Ophthalmic Inflamm Infect. 2026 Jun 11;16(1).doi: 10.1186/s12348-026-00608-8. PMID 42274937.",
+          "note": "Canadian tertiary 5-year retrospective cohort (J Ophthalmic Inflamm Infect 2026): 16 eyes of 14 acute retinal necrosis patients; retinal detachment (primary outcome) in 44% of eyes at mean 105 days from symptom onset (range 14-180); aqueous serology positive in 96% of eyes (56% VZV, 40% HSV); supports the bounded association only (small cohort).",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42274937/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-27",
+          "sourceLocator": "PMID 42274937; results (primary outcome retinal detachment and time to detachment)"
+        }
+      ]
+    },
+    {
+      "conditionId": "visual-impairment",
+      "rank": 2,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Retinitis associates with severe visual impairment at quantified cohort level: the 14-year retrospective acute retinal necrosis cohort of 156 patients documents poor final visual outcome (worse than 20/200) in 79 percent of eyes with worse baseline visual acuity the strongest predictor (adjusted odds ratio 5.58, P=0.003) and extensive retinitis (four versus one quadrant involvement) independently predicting the destructive course (adjusted odds ratio 3.45, P=0.042) (PMID 42307763), the longitudinal herpesvirus-retinitis cohort of 120 patients and 144 eyes (acute retinal necrosis and cytomegalovirus retinitis, mean follow-up 5.5 years) models severe visual impairment (worse than 20/200) with surgical intervention (B -2.50, P=0.033) and concurrent retinal detachment at presentation (B -1.28, P=0.047) independently associated with lower odds of severe impairment (PMID 42252088), and the aqueous viral-load cohort of 43 patients documents significantly worse baseline and final best-corrected acuity in eyes with high initial varicella-zoster viral load (at least 5.0 times 10 to the power of 6 copies per milliliter, P<0.01) with worse final acuity correlating with baseline viral load and interleukin-8 level (PMID 42605772); recorded as documented association only with the constitutive-proximity screen, the acute-retinal-necrosis-dominant scope, and one explicit null carried openly - best-corrected acuity did not significantly change from baseline to final follow-up across the viral-load cohort overall (P=0.43).",
+        "causationStatus": "Neither causation nor aggravation of visual-impairment is established for any individual: constitutive-proximity was screened and cleared on the record (the diagnosis of retinitis rests on retinal inflammatory findings - infiltrates, vasculitis, necrosis - while the visual-impairment outcome is separately measured at cohort level against defined acuity thresholds), yet the impairment is the functional sequela of retinal damage and is inseparable from disease extent in the located cohorts (extensive retinitis and baseline acuity drive both detachment and vision loss), the quantification is acute-retinal-necrosis dominant with cytomegalovirus coverage only in the mixed herpesvirus cohort, one cohort found no significant acuity change overall (P=0.43) so treatment era and cohort composition materially move the outcome, and adjunctive treatments did not independently improve outcomes in the largest cohort; individual claims require dated acuity and retinal imaging records with pre-existing visual impairment, cataract, glaucoma, and refractive causes excluded."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MULTIFACTORIAL",
+        "primaryVector": "Necrotic destruction of photoreceptors and retinal pigment epithelium with macular involvement, compounded by secondary retinal detachment, macular edema, and inflammatory cytokine burden (interleukin-8 correlated with final acuity), is hypothesized to degrade final visual acuity in proportion to viral load and disease extent, the route supported by the viral-load acuity gradient and the extent and baseline-acuity predictors, but whether the route produced any individual's impairment remains hypothesized until imaging and acuity records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "Authored at ASSOCIATION_ONLY at quantified multi-cohort level with the constitutive-proximity screen, acute-retinal-necrosis-dominant scope, and explicit null carried openly: the 14-year cohort quantifies the severe-impairment fraction and its predictors (PMID 42307763), the mixed herpesvirus cohort models severe-impairment odds across acute retinal necrosis and cytomegalovirus retinitis phenotypes (PMID 42252088), and the viral-load cohort quantifies the acuity-viral-load gradient (PMID 42605772) while also documenting a null overall acuity change (P=0.43, carried openly); ME-29 discipline: the registered visual-impairment windows (corneal-scarring, optic-atrophy, papilledema, cataracts, glaucoma and others) own their sources and none is recycled here; because the impairment is the functional sequela of disease extent and the evidence is acute-retinal-necrosis dominant, the conservative standard keeps the edge at association only with those limits stated and routes individual claims through dated acuity and imaging records with competing ocular causes excluded.",
+        "evidenceGaps": "The quantification is acute-retinal-necrosis dominant with cytomegalovirus retinitis covered only in the 144-eye mixed herpesvirus cohort and toxoplasmic and autoimmune retinitis visual outcomes unquantified in the located literature; two anchors are small single-center cohorts (53 eyes and 144 eyes); one cohort documents no significant baseline-to-final acuity change overall (P=0.43) despite the viral-load gradient, so the outcome varies with treatment era and cohort composition; adjunctive treatment effects were not independently favorable in the largest cohort (treatment-mediated considerations); and no patient-reported visual-function cohort was located.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "pre-existing visual impairment and baseline ocular comorbidity (baseline acuity is the strongest predictor in the located cohorts; chronology review required in individual claims)",
+          "cataract and glaucoma progression (the registered cataracts and glaucoma windows own their sources; corticosteroid-treatment routes are treatment-mediated)",
+          "diabetic retinopathy and macular degeneration affecting final acuity (the registered windows own their sources)",
+          "refractive and amblyopic causes of decreased acuity",
+          "cystoid macular edema as a competing final-common-pathway (no catalog identity exists for cystoid macular edema - the catalog gap recorded as the seventh evidence-preserving refusal continues here; the uveitic macular-edema literature stays window-owned by the uveitis identity)"
+        ]
+      },
+      "evidenceGaps": [
+        "The quantification is acute-retinal-necrosis dominant with cytomegalovirus retinitis covered only in the 144-eye mixed herpesvirus cohort and toxoplasmic and autoimmune retinitis visual outcomes unquantified in the located literature; two anchors are small single-center cohorts (53 eyes and 144 eyes); one cohort documents no significant baseline-to-final acuity change overall (P=0.43) despite the viral-load gradient, so the outcome varies with treatment era and cohort composition; adjunctive treatment effects were not independently favorable in the largest cohort (treatment-mediated considerations); and no patient-reported visual-function cohort was located."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY at quantified multi-cohort level with the constitutive-proximity screen, acute-retinal-necrosis-dominant scope, and explicit null carried openly and paired with the retinal-detachment edge from disjoint sources (deliberately no within-batch source sharing this batch): the 14-year cohort quantifies poor final vision (worse than 20/200) in 79 percent of eyes with baseline acuity adjusted odds ratio 5.58 (PMID 42307763), the mixed herpesvirus cohort models severe-impairment odds with protective factors (PMID 42252088), and the viral-load cohort quantifies the acuity gradient with viral load and interleukin-8 while documenting the null overall acuity change (P=0.43, PMID 42605772); ME-29 discipline: the registered visual-impairment windows own their sources and none is recycled here; because the impairment tracks disease extent and the evidence is acute-retinal-necrosis dominant with small cohorts, the conservative standard keeps the edge at association only and routes individual claims through dated acuity and imaging records with cataract, glaucoma, and refractive causes excluded.",
+      "sourceReferences": [
+        {
+          "citation": "Tabatabaei SA, Soleimani M, Ghochani G, et al. Predictors of retinal detachment and visual outcome in acute retinal necrosis: a 14-year retrospective cohort Graefes Arch Clin Exp Ophthalmol. 2026 Jun 17.doi: 10.1007/s00417-026-07322-0. PMID 42307763.",
+          "note": "14-year retrospective acute retinal necrosis cohort (Graefes Arch Clin Exp Ophthalmol 2026): 156 patients; poor final visual outcome (worse than 20/200) in 79% of eyes; worse baseline visual acuity strongest predictor (adjusted OR 5.58, P=0.003); extensive retinitis independently predicted retinal detachment (adjusted OR 3.45, P=0.042); adjunctive treatments did not independently improve outcomes; supports the bounded association only (retrospective, single tertiary center).",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42307763/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-27",
+          "sourceLocator": "PMID 42307763; results (final visual outcome and predictors)"
+        },
+        {
+          "citation": "Zou Y, Yang M, Zhang J, et al. Herpesvirus Retinitis by Immune Status: Clinical Phenotypes and Predictors of Retinal Detachment and Severe Visual Impairment Ophthalmol Retina. 2026 Jun 6.pii: S2468-6530(26)00272-1. doi: 10.1016/j.oret.2026.06.002. PMID 42252088.",
+          "note": "Longitudinal herpesvirus-retinitis cohort (Ophthalmol Retina 2026): 120 patients and 144 eyes with acute retinal necrosis or cytomegalovirus retinitis, mean follow-up 5.5 years; severe visual impairment (worse than 20/200) modeled with surgical intervention (B -2.50, P=0.033) and concurrent retinal detachment (B -1.28, P=0.047) associated with lower odds of severe impairment; supports the bounded association only (retrospective, mixed phenotypes).",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42252088/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-27",
+          "sourceLocator": "PMID 42252088; results (severe visual impairment model)"
+        },
+        {
+          "citation": "Yu T, Wu HR, Zhu D, et al. Correlation of Clinical Prognosis with the Changes of Aqueous Viral Load and Interleukin-8 Levels in Patients with Acute Retinal Necrosis Ocul Immunol Inflamm. 2026 Aug 17:1-8. PMID 42605772.",
+          "note": "Aqueous viral-load and interleukin-8 cohort (Ocul Immunol Inflamm 2026): 43 acute retinal necrosis patients and 53 eyes; high initial VZV viral load with significantly worse baseline and final best-corrected acuity (P<0.01); worse final acuity correlated with baseline VZV DNA load and interleukin-8 (P<0.01); overall baseline-to-final acuity change null (P=0.43, counterweight carried openly); supports the bounded association only (single-center prognostic correlation).",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42605772/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-27",
+          "sourceLocator": "PMID 42605772; results (viral load, interleukin-8 and acuity correlations)"
+        }
+      ]
+    }
+  ]
 }
