@@ -2,8 +2,195 @@
   "id": "postherpetic-neuralgia",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review neurologic, neuropathic, post-traumatic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 73 (2026-09-26): three ASSOCIATION_ONLY draft mappings pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: the edges assert association only (etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true), all PSYCHOPHYSIOLOGICAL, following the batch-71 phantom-limb-pain mood-edge precedent. All three edges carry the direction-inversion counterweight openly (acute-phase anxiety predicts subsequent postherpetic neuralgia at 4.52-fold risk for clinically significant anxiety and adjusted OR 1.31 per HADS-A unit, PMID 42343723, so psychological state commonly precedes rather than follows the neuralgia), the within-cohort mood-direction limit on the insomnia edge (anxiety OR 4.45 and depression OR 6.98 predict clinical insomnia alongside pain intensity OR 12.42 within the cohort, PMID 27073226), and the questionnaire-cutoff limits (HADS and ISI cutoffs rather than structured diagnoses); individual claims require dated psychiatric and sleep assessment with pre-existing mood disorder, medication effect, and adjustment-disorder exclusion and review by a qualified medical professional.",
+    "Pathway and duplicate-scope screens and withheld propositions: no -> unexplained-chronic-pain edge (SEMANTIC-MISMATCH - postherpetic neuralgia pain is explained neuropathic pain and is never registered against the unexplained-pain identity); no -> allodynia, hyperalgesia, or burning-pain propositions (CONSTITUTIVE-PROXIMITY - these are the defining sensory features of the neuralgia and have no catalog identities); no -> insomnia edge cross-registration in the reverse direction (DIRECTION-INVERSION - mood and pain predict insomnia within the cohort, recorded openly on the insomnia edge); suicidal ideation and self-harm not asserted (no quantified PHN-specific signal located in this batch window; the fifth refusal pattern after nightmare-disorder, nocturnal-enuresis, overactive-bladder, and phantom-limb-pain does not arise here because no signal was located); no -> opioid-use-disorder or substance-use-disorder edges (BELOW THRESHOLD - no PHN-specific quantification located); no -> migraine-headaches or -> seizure-disorder edges (ZERO RECORD). ME-29 discipline: the herpes-zoster-level windows are not recycled - the nationwide prospective zoster to depression cohort (PMID 24804885, HR 1.49 for major depression) belongs to the unregistered herpes-zoster window and is recorded here as reserved evidence. Fan-triangle disclosure (CRG redundancy-semantics follow-up, seventh accumulated example): the published insomnia to depressive-disorder and anxiety-disorder to depressive-disorder edges form chain paths with these member-level sleep and mood edges; the overlap is recorded openly rather than silently duplicated and the published edges are left untouched."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 73 (2026-09-26): three bounded association edges authored - postherpetic-neuralgia to depressive-disorder (rank 1), anxiety-disorder (rank 2), and insomnia (rank 3) - all classified ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, and hypothesizedOnly:true. The mood edges rest on the 661-patient retrospective clinic cohort (depression 65.8 percent, anxiety 69.0 percent by HADS, with female sex, pain magnitude, and rash extent independent associations, PMID 33326962) and the 61-patient neuropathic-pain cohort (postherpetic pain the most common etiology; depression 65.6 percent, anxiety 73.7 percent, depression-pain correlation r=0.41, PMID 32617124), within-batch shared across both mood edges; the insomnia edge rests on the 111-patient retrospective cohort (clinical insomnia 30.6 percent, pain intensity OR 12.42, PMID 27073226) and the 3,339-patient neuropathic-pain cohort including 1,480 with postherpetic neuralgia (PMID 37772033). All three edges carry the acute-phase anxiety cohort openly as explicit direction-inversion counterweight (PMID 42343723). Fan-triangle disclosure (CRG redundancy-semantics follow-up): these member-level edges form chain paths with the published insomnia to depressive-disorder and anxiety-disorder to depressive-disorder edges; the overlap is recorded openly with the published edges left untouched."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "depressive-disorder",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Postherpetic neuralgia associates with depression at clinic-cohort level: the retrospective cohort of 661 patients with postherpetic neuralgia documents depression in 65.8 percent by the Hospital Anxiety and Depression Scale, with female sex, pain magnitude, and extent of rash spread independently associated (PMID 33326962), and the cross-sectional neuropathic pain cohort of 61 patients in which postherpetic pain was the most common etiology documents depression in 65.6 percent with a positive depression-pain-intensity association (r=0.41, PMID 32617124); recorded as documented association only with the direction-inversion counterweight carried openly - acute-phase anxiety predicts subsequent postherpetic neuralgia development in the 99-patient longitudinal cohort (adjusted OR 1.31 per HADS-A unit), so the psychological state can precede rather than follow the neuralgia (PMID 42343723).",
+        "causationStatus": "Neither causation nor aggravation of a depressive disorder is established for any individual: the depression signal is measured by questionnaire cutoff rather than structured psychiatric diagnosis, both anchors are cross-sectional so ordering between pain and mood is not established, the acute-phase anxiety cohort documents the reverse ordering as a predictor, and individual claims require dated psychiatric and dermatologic assessment with pre-existing mood disorder, medication effect, and adjustment-disorder exclusion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "PSYCHOPHYSIOLOGICAL",
+        "primaryVector": "Sustained neuropathic pain signaling with sleep disruption and threat arousal is hypothesized to keep hypothalamic-pituitary-adrenal and monoaminergic stress systems loaded so depressive vulnerability rises, the coupling supported by the pain-intensity correlation and by depression tracking pain magnitude and rash extent, but whether this route produced any individual depressive disorder remains hypothesized until psychiatric, pain, and zoster records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at one 661-patient retrospective clinic cohort and one 61-patient cross-sectional neuropathic pain cohort with one longitudinal counterweight: the prevalence figures rest on HADS cutoffs rather than diagnostic interviews, both positive anchors are cross-sectional or retrospective with no dated pain-before-mood ordering, the neuropathic pain cohort mixes etiologies beyond postherpetic neuralgia, and the only prospective signal runs from acute-phase anxiety to later neuralgia rather than the reverse.",
+        "evidenceGaps": "No cohort measuring incident major depressive disorder after postherpetic neuralgia with dated neuralgia-first ordering was located; both anchors (PMIDs 33326962, 32617124) measure HADS depression at cross-section; the 61-patient cohort mixes neuropathic pain etiologies with postherpetic pain the most common; the acute-phase cohort (PMID 42343723) documents anxiety predicting later postherpetic neuralgia (adjusted OR 1.31 per HADS-A unit) so mood vulnerability can precede the neuralgia; and the herpes-zoster-level depression window (nationwide prospective cohort, PMID 24804885, hazard ratio 1.49 for major depression) is deliberately not recycled - it belongs to the unregistered herpes-zoster window per ME-29.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "pre-existing depressive disorder and psychological vulnerability predating the zoster episode (direction-inversion guard carried on edge)",
+          "acute herpes zoster pain and rash burden as parallel drivers of both mood and neuralgia severity",
+          "medication effects including gabapentinoids, opioids, tricyclics, and corticosteroids",
+          "adjustment disorder, grief, and sleep disruption as parallel correlates rather than depression causes",
+          "age-related and comorbid medical depression in the elderly zoster population"
+        ]
+      },
+      "evidenceGaps": [
+        "No cohort measuring incident major depressive disorder after postherpetic neuralgia with dated neuralgia-first ordering was located; both anchors (PMIDs 33326962, 32617124) measure HADS depression at cross-section; the 61-patient cohort mixes neuropathic pain etiologies with postherpetic pain the most common; the acute-phase cohort (PMID 42343723) documents anxiety predicting later postherpetic neuralgia (adjusted OR 1.31 per HADS-A unit) so mood vulnerability can precede the neuralgia; and the herpes-zoster-level depression window (nationwide prospective cohort, PMID 24804885, hazard ratio 1.49 for major depression) is deliberately not recycled - it belongs to the unregistered herpes-zoster window per ME-29."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY at retrospective-clinic-cohort-plus-cross-sectional class with the direction-inversion counterweight carried openly, following the phantom-limb-pain mood-edge precedent (batch 71): the 661-patient cohort documents depression in 65.8 percent with pain-magnitude association (PMID 33326962) and the neuropathic-pain cohort documents depression in 65.6 percent with depression-pain correlation (PMID 32617124), with the acute-phase anxiety cohort carried openly as explicit direction-inversion counterweight (PMID 42343723); because the anchors are questionnaire-class and cross-sectional and the only prospective ordering runs psychological-state-to-neuralgia, the conservative standard keeps the edge at association only and routes individual claims through dated psychiatric assessment with pre-existing-disorder and medication exclusion; fan-triangle disclosure (CRG redundancy-semantics follow-up): the published insomnia to depressive-disorder and anxiety-disorder to depressive-disorder edges form chain paths with these member-level edges and the overlap is recorded openly with those edges left untouched.",
+      "sourceReferences": [
+        {
+          "citation": "Du J, Sun G, Ma H, et al. Prevalence and Risk Factors of Anxiety and Depression in Patients with Postherpetic Neuralgia: A Retrospective Study Dermatology. 2021;237(6):891-895. PMID 33326962.",
+          "note": "Retrospective cohort of 661 clinic patients with postherpetic neuralgia (Dermatology 2021): anxiety in 69.0% (456/661) and depression in 65.8% (435/661) by Chinese HADS; female sex, pain intensity magnitude, and extent of rash spread independently associated with anxiety and depression on multivariate analysis; supports the bounded questionnaire-class comorbidity association only (cross-sectional, cutoff-based).",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33326962/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 33326962; results (anxiety and depression prevalence and independent associations)"
+        },
+        {
+          "citation": "Cherif F, Zouari HG, Cherif W, et al. Depression Prevalence in Neuropathic Pain and Its Impact on the Quality of Life Pain Res Manag. 2020;2020:7408508. PMID 32617124.",
+          "note": "Cross-sectional study of 61 neuropathic pain clinic patients (Pain Res Manag 2020): postherpetic pain the most common etiology alongside carpal tunnel and diabetic neuropathy; depression 65.6% and anxiety 73.7% by HADS; depression score positively associated with pain intensity (r=0.41); supports the bounded mixed-etiology association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/32617124/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 32617124; results (depression prevalence and pain correlation)"
+        },
+        {
+          "citation": "Ling Z, Ren M. Predictive Value of Anxiety State During Acute Herpes Zoster for the Development of Postherpetic Neuralgia Actas Esp Psiquiatr. 2026 Jun 15;54(3):808-820. PMID 42343723.",
+          "note": "Longitudinal cohort of 99 acute herpes zoster patients (Actas Esp Psiquiatr 2026): clinically significant acute-phase anxiety (HADS-A >=8) associated with 4.52-fold risk of postherpetic neuralgia at 3 months; baseline HADS-A adjusted OR 1.31 per unit; COUNTERWEIGHT carried openly as explicit direction-inversion evidence (psychological state predicts subsequent neuralgia).",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42343723/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 42343723; results (acute-phase anxiety as independent predictor of PHN)"
+        }
+      ]
+    },
+    {
+      "conditionId": "anxiety-disorder",
+      "rank": 2,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Postherpetic neuralgia associates with anxiety at clinic-cohort level: the retrospective cohort of 661 patients with postherpetic neuralgia documents anxiety in 69.0 percent by the Hospital Anxiety and Depression Scale with female sex, pain magnitude, and rash extent independently associated (PMID 33326962), and the cross-sectional neuropathic pain cohort documents anxiety in 73.7 percent (postherpetic pain the most common etiology, PMID 32617124); recorded as documented association only with the direction-inversion counterweight carried openly - acute-phase anxiety predicts subsequent postherpetic neuralgia (clinically significant anxiety at 4.52-fold risk, adjusted OR 1.31 per HADS-A unit), so anxiety commonly precedes rather than follows the neuralgia (PMID 42343723).",
+        "causationStatus": "Neither causation nor aggravation of an anxiety disorder is established for any individual: anxiety is measured by questionnaire cutoff rather than structured diagnosis, both positive anchors are cross-sectional so ordering is not established, the strongest prospective signal runs from pre-existing acute-phase anxiety to later neuralgia rather than the reverse, and individual claims require dated psychiatric assessment with pre-existing anxiety, substance, stimulant, caffeine, hyperthyroid, and cardiopulmonary exclusion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "PSYCHOPHYSIOLOGICAL",
+        "primaryVector": "Sustained neuropathic pain with allodynia and threat signaling is hypothesized to keep central fear and worry circuits sensitized so generalized anxiety vulnerability rises, the coupling supported by anxiety prevalence tracking pain magnitude and rash extent, but whether this route produced any individual anxiety disorder remains hypothesized until psychiatric, pain, and zoster records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at one 661-patient retrospective clinic cohort and one 61-patient cross-sectional cohort with one longitudinal counterweight: the prevalence figures rest on HADS cutoffs rather than diagnostic interviews, both anchors are cross-sectional or retrospective, the mixed-etiology cohort cannot isolate the postherpetic subgroup, and the acute-phase cohort documents anxiety predicting later neuralgia (OR 4.52 for clinically significant anxiety) making the forward direction the less supported one.",
+        "evidenceGaps": "No cohort measuring incident anxiety disorder after postherpetic neuralgia with dated neuralgia-first ordering was located; both anchors (PMIDs 33326962, 32617124) measure HADS anxiety at cross-section; the acute-phase cohort (PMID 42343723) documents clinically significant anxiety at 4.52-fold risk of later postherpetic neuralgia (95% CI 1.72-8.58) so anxiety vulnerability commonly precedes the neuralgia; and the herpes-zoster-level psychiatric window is deliberately not recycled per ME-29.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "pre-existing anxiety disorder and trait anxiety predating the zoster episode (direction-inversion guard carried on edge; acute-phase anxiety predicts later neuralgia per PMID 42343723)",
+          "caffeine, stimulant, and substance effects; hyperthyroidism and cardiopulmonary causes of anxiety symptoms",
+          "sleep disruption and pain interference as parallel correlates rather than anxiety causes",
+          "post-traumatic stress and health anxiety around the zoster illness",
+          "medication effects including corticosteroids and gabapentinoids"
+        ]
+      },
+      "evidenceGaps": [
+        "No cohort measuring incident anxiety disorder after postherpetic neuralgia with dated neuralgia-first ordering was located; both anchors (PMIDs 33326962, 32617124) measure HADS anxiety at cross-section; the acute-phase cohort (PMID 42343723) documents clinically significant anxiety at 4.52-fold risk of later postherpetic neuralgia (95% CI 1.72-8.58) so anxiety vulnerability commonly precedes the neuralgia; and the herpes-zoster-level psychiatric window is deliberately not recycled per ME-29."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY at retrospective-clinic-cohort class with the direction-inversion counterweight carried openly, following the phantom-limb-pain mood-edge precedent (batch 71): the 661-patient cohort documents anxiety in 69.0 percent (PMID 33326962) and the neuropathic-pain cohort documents anxiety in 73.7 percent (PMID 32617124), with the acute-phase cohort carried openly as explicit direction-inversion counterweight (anxiety predicts later neuralgia, PMID 42343723); because the anchors are questionnaire-class and the only prospective ordering runs anxiety-to-neuralgia, the conservative standard keeps the edge at association only and routes individual claims through dated psychiatric assessment with pre-existing-anxiety, substance, and thyroid exclusion; fan-triangle disclosure (CRG redundancy-semantics follow-up) carried on the file alongside the depression edge.",
+      "sourceReferences": [
+        {
+          "citation": "Du J, Sun G, Ma H, et al. Prevalence and Risk Factors of Anxiety and Depression in Patients with Postherpetic Neuralgia: A Retrospective Study Dermatology. 2021;237(6):891-895. PMID 33326962.",
+          "note": "Retrospective cohort of 661 clinic patients with postherpetic neuralgia (Dermatology 2021): anxiety in 69.0% (456/661) and depression in 65.8% by Chinese HADS; female sex, pain intensity magnitude, and extent of rash spread independently associated; supports the bounded questionnaire-class comorbidity association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33326962/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 33326962; results (anxiety and depression prevalence and independent associations)"
+        },
+        {
+          "citation": "Cherif F, Zouari HG, Cherif W, et al. Depression Prevalence in Neuropathic Pain and Its Impact on the Quality of Life Pain Res Manag. 2020;2020:7408508. PMID 32617124.",
+          "note": "Cross-sectional study of 61 neuropathic pain clinic patients (Pain Res Manag 2020): postherpetic pain the most common etiology; anxiety 73.7% and depression 65.6% by HADS; supports the bounded mixed-etiology association only.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/32617124/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 32617124; results (anxiety prevalence in neuropathic pain)"
+        },
+        {
+          "citation": "Ling Z, Ren M. Predictive Value of Anxiety State During Acute Herpes Zoster for the Development of Postherpetic Neuralgia Actas Esp Psiquiatr. 2026 Jun 15;54(3):808-820. PMID 42343723.",
+          "note": "Longitudinal cohort of 99 acute herpes zoster patients (Actas Esp Psiquiatr 2026): clinically significant acute-phase anxiety (HADS-A >=8) associated with 4.52-fold risk (95% CI 1.72-8.58) of postherpetic neuralgia at 3 months; COUNTERWEIGHT carried openly as explicit direction-inversion evidence.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42343723/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 42343723; results (acute-phase anxiety as independent predictor of PHN)"
+        }
+      ]
+    },
+    {
+      "conditionId": "insomnia",
+      "rank": 3,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Postherpetic neuralgia associates with clinical insomnia at retrospective-cohort and large-cohort level: the retrospective cross-sectional study of 111 patients with postherpetic neuralgia documents clinical insomnia (Insomnia Severity Index >=15) in 30.6 percent and any insomnia symptoms in 50.5 percent, with high pain intensity the strongest predictor (OR 12.42) and mechanical allodynia (OR 4.26), anxiety (OR 4.45), and depression (OR 6.98) also independently associated (PMID 27073226), and the 3,339-patient chronic neuropathic pain cohort including 1,480 patients with postherpetic neuralgia documents sleep impairment across etiologies with allodynia and depression significantly related to all four sleep elements (PMID 37772033); recorded as documented association only with the within-cohort mood-direction limit carried openly - within the insomnia cohort anxiety and depression predict the insomnia alongside pain, and the same fan overlaps the published insomnia to depressive-disorder chain path.",
+        "causationStatus": "Neither causation nor aggravation of insomnia is established for any individual: both anchors are cross-sectional with insomnia measured by self-report cutoffs rather than polysomnography, pain intensity and mood are inseparable simultaneous predictors within the cohort so ordering between pain, mood, and sleep is not established, and individual claims require dated sleep assessment with sleep-apnea, restless-legs, mood-disorder, medication-effect, and circadian exclusion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "PSYCHOPHYSIOLOGICAL",
+        "primaryVector": "Ongoing neuropathic pain with allodynia and nocturnal sensory bombardment is hypothesized to fragment sleep architecture and condition arousal so clinical insomnia emerges, the route supported by pain intensity carrying the strongest insomnia odds and by allodynia relating to every sleep element, but whether this route produced any individual insomnia remains hypothesized until sleep, pain, and treatment records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at one 111-patient retrospective cross-sectional cohort and one 3,339-patient mixed-etiology cohort: insomnia rests on self-report cutoffs without polysomnographic confirmation, the smaller cohort's multivariable model includes mood as simultaneous predictors so the pain-specific effect is adjusted but not ordered, the larger cohort pools neuropathic pain etiologies with postherpetic neuralgia a large subgroup (1,480) but reports etiology-level rather than PHN-specific sleep estimates, and no incident-insomnia cohort with dated neuralgia-first ordering was located.",
+        "evidenceGaps": "No cohort measuring incident clinical insomnia after postherpetic neuralgia with dated neuralgia-first ordering was located; both anchors measure sleep by self-report (ISI and MOS Sleep Scale) at cross-section; within the 111-patient cohort anxiety and depression carry independent odds for insomnia (OR 4.45 and 6.98) alongside pain intensity (OR 12.42) so mood-to-sleep ordering cannot be excluded; and the 3,339-patient cohort (PMID 37772033) reports sleep impairment across diabetic polyneuropathy, postherpetic neuralgia, and CRPS with etiology-mixed estimates.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "obstructive sleep apnea and restless legs syndrome in the elderly zoster population",
+          "depression and anxiety as parallel or upstream drivers of insomnia (within-cohort direction limit carried openly)",
+          "medication effects including corticosteroids, gabapentinoids, and sedative dependence",
+          "acute zoster pain and hospitalization disrupting sleep before the neuralgia is established",
+          "age-related sleep fragmentation and comorbid medical illness"
+        ]
+      },
+      "evidenceGaps": [
+        "No cohort measuring incident clinical insomnia after postherpetic neuralgia with dated neuralgia-first ordering was located; both anchors measure sleep by self-report (ISI and MOS Sleep Scale) at cross-section; within the 111-patient cohort anxiety and depression carry independent odds for insomnia (OR 4.45 and 6.98) alongside pain intensity (OR 12.42) so mood-to-sleep ordering cannot be excluded; and the 3,339-patient cohort (PMID 37772033) reports sleep impairment across diabetic polyneuropathy, postherpetic neuralgia, and CRPS with etiology-mixed estimates."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY at retrospective-cohort-plus-large-mixed-cohort class with the within-cohort mood-direction limit carried openly: the 111-patient cohort documents clinical insomnia in 30.6 percent with pain intensity the strongest predictor (OR 12.42, PMID 27073226) and the 3,339-patient neuropathic pain cohort including 1,480 with postherpetic neuralgia documents sleep impairment linked to allodynia and depression (PMID 37772033); because both anchors are self-report cross-sectional measures with mood as simultaneous predictors, the conservative standard keeps the edge at association only and routes individual claims through dated sleep assessment with apnea, mood, and medication exclusion; fan-triangle disclosure (CRG redundancy-semantics follow-up): these member-level sleep and mood edges form chain paths with the published insomnia to depressive-disorder and anxiety-disorder to depressive-disorder edges and the overlap is recorded openly with those edges left untouched.",
+      "sourceReferences": [
+        {
+          "citation": "Lee DH, Park JE, Yoon DM, et al. Factors Associated with Increased Risk for Clinical Insomnia in Patients with Postherpetic Neuralgia: A Retrospective Cross-Sectional Study Pain Med. 2016 Oct;17(10):1917-1922. PMID 27073226.",
+          "note": "Retrospective cross-sectional study of 111 clinic patients with postherpetic neuralgia (Pain Med 2016): clinical insomnia (ISI >=15) in 30.6% and mild-to-severe symptoms (ISI >=8) in 50.5%; high pain intensity strongest predictor (OR 12.42, 95% CI 2.99-51.56); mechanical allodynia OR 4.26; anxiety OR 4.45 and depression OR 6.98 after adjusting for pain; supports the bounded sleep-dysfunction association only (cross-sectional, self-report).",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/27073226/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 27073226; results (insomnia prevalence and multivariable odds ratios)"
+        },
+        {
+          "citation": "Sachau J, Kersebaum D, Hüllemann P, et al. The association of self-reported symptoms of central sensitization and sleep disturbances in neuropathic pain Pain Rep. 2023 Sep;8(5):e1098. PMID 37772033.",
+          "note": "Cross-sectional study of 3,339 chronic neuropathic pain patients including 1,480 with postherpetic neuralgia (Pain Rep 2023): sleep impairment observed across all pain etiologies (diabetic polyneuropathy 543, postherpetic neuralgia 1,480, CRPS 1,316); depression and self-reported allodynia significantly related to all four MOS sleep elements; supports the bounded PHN-subgroup sleep association only (mixed-etiology estimates).",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/37772033/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 37772033; results (sleep impairment by etiology and multivariable associations)"
+        }
+      ]
+    }
+  ]
 }

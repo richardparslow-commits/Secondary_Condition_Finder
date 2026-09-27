@@ -13829,6 +13829,262 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 **Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
 
+### `polymyalgia-rheumatica` → `osteoporosis` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Polymyalgia rheumatica associates with osteoporotic fracture at population-cohort level: the UK CPRD population-based cohort of 12,136 incident PMR patients documents fracture incidence of 148.05 per 10,000 person-years and an adjusted hazard ratio of 1.63 (95% CI 1.54-1.73) versus matched controls, with fewer than 13 percent of glucocorticoid-treated cases co-prescribed bisphosphonates (PMID 29316928), and the 652-person PMR Cohort Study documents self-reported fragility fracture in 17.2 percent at baseline with additional fractures at 12 and 24 months and fewer than half of respondents receiving any osteoporosis treatment (PMID 34988356); recorded as documented association only with the treatment-mediated and fracture-endpoint limits carried openly - the quantified outcome is incident fracture and the mediating condition is glucocorticoid-induced bone loss rather than PMR-specific osteoporosis measured directly.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation of osteoporosis is established for any individual: the fracture signal is quantified against matched population controls rather than among PMR patients with bone-mineral-density-documented osteoporosis, the cohorts cannot separate cumulative glucocorticoid exposure from age and post-menopausal status, no PMR-specific bone-mineral-density decline cohort was located, and individual claims require dated DEXA and fracture records with glucocorticoid dose and duration documentation and exclusion of age-related, post-menopausal, disuse, and other secondary osteoporosis.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 387.1 — Paskins Z, Whittle R, Sultan AA, et al. Risk of fracture among patients with polymyalgia rheumatica and giant cell arteritis: a population-based study BMC Med. 2018 Jan 10;16(1):4. PMID 29316928.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/29316928/
+- Source checked on: 2026-09-26
+- Locator: PMID 29316928; results (fracture incidence rates and adjusted hazard ratios)
+- Note under review: UK CPRD retrospective population-based cohort (BMC Med 2018): 12,136 incident PMR and 2,673 GCA cases 1990-2004 followed to 2015 with four matched controls each; fracture incidence 148.05 per 10,000 person-years in PMR; adjusted hazard ratio 1.63 (95% CI 1.54-1.73) versus controls; fewer than 13% of glucocorticoid-treated cases co-prescribed bisphosphonates; supports the bounded fracture-endpoint association only (mediating osteoporosis not measured directly).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 387.2 — Sokhal BS, Hider SL, Paskins Z, et al. Fragility fractures and prescriptions of medications for osteoporosis in patients with polymyalgia rheumatica: results from the PMR Cohort Study Rheumatol Adv Pract. 2021;5(3):rkab094. PMID 34988356.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/34988356/
+- Source checked on: 2026-09-26
+- Locator: PMID 34988356; results (fragility fracture prevalence and falls association)
+- Note under review: PMR Cohort Study cross-sectional survey with 12/24-month follow-up (Rheumatol Adv Pract 2021): 652 incident PMR respondents; 112 (17.2%) reported fragility fracture at baseline, 72 reported fracture at 12 months, 62 at 24 months; falls history most strongly associated with fracture (OR 2.35 at 12 months); fewer than 50% received osteoporosis treatments including supplements; supports the bounded fragility-fracture association only (self-reported data).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 387.3 — Low C, Conway R. Metabolic bone health considerations in giant cell arteritis and polymyalgia rheumatica Womens Health (Lond). 2023 Jan-Dec;19:17455057221147385. PMID 36627860.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/36627860/
+- Source checked on: 2026-09-26
+- Locator: PMID 36627860; review (glucocorticoid-induced osteoporosis in PMR)
+- Note under review: Metabolic bone health review in GCA and PMR (Womens Health 2023): documents prolonged glucocorticoid courses with cumulative burden including glucocorticoid-induced osteoporosis and subsequent fragility fractures, in a predominantly post-menopausal female population already at baseline osteoporosis risk; supports the bounded pharmacological mechanism only (review class).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `polymyositis` → `interstitial-lung-disease` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Polymyositis associates with interstitial lung disease at antibody-cohort and multicentre-registry level: the 103-subject anti-Jo-1 positive antisynthetase syndrome cohort documents ILD with polymyositis the predominant myopathy in 64 percent, an NSIP pattern in 52 percent, ILD and myopathy diagnosed within six months of each other in approximately half, and 10-year survival of 68 percent (PMID 27578469), the 130-patient PM/DM cohort documents ILD in exactly half with anti-Jo-1 positivity, dry cough, arthritis, and exertional dyspnea as independent risk factors (PMID 37005523), and the 478-patient Spanish IIM registry documents ILD in 112 (23.4 percent) spanning the myositis spectrum (PMID 30392161); recorded as documented association only with the sibling-overlap disclosure carried openly - the existing dermatomyositis to interstitial-lung-disease edge and its dermatomyositis-specific sources are left untouched and none is recycled here per ME-29.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation of interstitial lung disease is established for any individual: the largest anchors combine polymyositis with antisynthetase syndrome or dermatomyositis so polymyositis-specific prevalence is not isolated, ILD and myopathy are diagnosed concurrently in approximately half the antibody cohort so temporal ordering is mixed, the Chinese cohort conditions on combined PM/DM selection, and individual claims require dated pulmonary function, high-resolution CT, and myositis-antibody records with infection, drug-induced, connective-tissue-overlap, and occupational lung disease exclusion.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 388.1 — Zamora AC, Hoskote SS, Abascal-Bolado B, et al. Clinical features and outcomes of interstitial lung disease in anti-Jo-1 positive antisynthetase syndrome Respir Med. 2016 Sep;118:39-45. PMID 27578469.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/27578469/
+- Source checked on: 2026-09-26
+- Locator: PMID 27578469; results (myopathy distribution, HRCT patterns, and survival)
+- Note under review: Retrospective cohort of 103 anti-Jo-1 positive antisynthetase syndrome subjects with ILD over 15 years (Respir Med 2016): predominant myopathy polymyositis (64%) followed by dermatomyositis (24%); NSIP most common HRCT pattern (52%), NSIP overlapping organizing pneumonia 22%; restriction in 98%; ILD and syndrome diagnosed within 6 months in about half; 10-year survival 68%; supports the bounded antibody-associated ILD association only (selected anti-Jo-1 cohort, concurrent diagnosis common).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 388.2 — Li T, Tang ZY, Zhang QB, et al. Clinical Characteristics and Risk Factors of Polymyositis and Dermatomyositis Combined with Interstitial Lung Disease in Patients Residing in the Northeast Sichuan Province of China Curr Rheumatol Rev. 2023;19(4):455-462. PMID 37005523.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/37005523/
+- Source checked on: 2026-09-26
+- Locator: PMID 37005523; results (ILD prevalence and multivariable risk factors)
+- Note under review: Retrospective cohort of 130 PM/DM patients (Curr Rheumatol Rev 2023): 65 with ILD and 65 without; anti-Jo-1 positivity, dry cough, arthritis, exertional dyspnea, older age, and elevated globulin were independent ILD risk factors; Raynaud phenomenon and respiratory symptoms more frequent with ILD; supports the bounded PM/DM-ILD association only (combined subgroup).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 388.3 — Cobo-Ibáñez T, López-Longo FJ, Joven B, et al. Long-term pulmonary outcomes and mortality in idiopathic inflammatory myopathies associated with interstitial lung disease Clin Rheumatol. 2019 Mar;38(3):803-815. PMID 30392161.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/30392161/
+- Source checked on: 2026-09-26
+- Locator: PMID 30392161; results (ILD prevalence across myositis subtypes and prognostic factors)
+- Note under review: Multicentre retrospective Spanish registry of 478 idiopathic inflammatory myopathy patients (Clin Rheumatol 2019): 112 (23.4%) had ILD - distributed 17% polymyositis, 16% dermatomyositis, 45% antisynthetase syndrome, 22% overlap myositis; early ILD progression, severe infections, and diagnostic delay predicted mortality; supports the bounded spectrum-level ILD association only (subtype-mixed).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `polymyositis` → `dysphagia` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Polymyositis associates with swallowing impairment at instrumental-cohort level: the 51-patient idiopathic inflammatory myopathy cohort assessed by oro-pharyngeal-esophageal scintigraphy documents at least one transit or retention alteration in every patient, with oral and pharyngeal levels more frequently involved than the esophageal tract, severity correlating very well with patient-reported dysphagia, and shorter disease duration associated with more prevalent oral and pharyngeal alterations (PMID 31012534); recorded as documented association only with the sibling-overlap and subtype-composition limits carried openly - the existing dermatomyositis to dysphagia edge and its dermatomyositis-specific sources (including the dermatomyositis dysphagia meta-analysis) are left untouched and none is recycled here per ME-29, and the cohort spans the myositis spectrum without reporting its polymyositis composition.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation of dysphagia is established for any individual: the anchor is a single 51-patient cross-sectional cohort mixing myositis subtypes without polymyositis-specific prevalence, the scintigraphic alterations are subclinical transit findings rather than clinically diagnosed dysphagia in all cases, and individual claims require dated swallowing assessment with videofluoroscopy or scintigraphy and exclusion of stroke, neurodegenerative disease, esophageal stricture or dysmotility, candidiasis, and treatment-related mucositis.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 389.1 — Barsotti S, Puccini G, Tripoli A, et al. Assessment of swallowing function with oro-pharyngeal-esophageal scintigraphy in patients with idiopathic inflammatory myopathies Neurogastroenterol Motil. 2019 Jul;31(7):e13599. PMID 31012534.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/31012534/
+- Source checked on: 2026-09-26
+- Locator: PMID 31012534; results (scintigraphic transit alterations and clinical correlations)
+- Note under review: Cross-sectional cohort of 51 idiopathic inflammatory myopathy patients assessed with oro-pharyngeal-esophageal scintigraphy (Neurogastroenterol Motil 2019): at least one alteration in all patients, most marked with semisolids at oral and pharyngeal levels (more frequent than esophageal involvement, p<0.05); good correlation between scintigraphic measures and patient-reported dysphagia severity; shorter disease duration associated with more oral/pharyngeal alterations; supports the bounded swallowing-dysfunction association only (mixed subtypes, cross-sectional).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `porphyria-cutanea-tarda` → `liver-cancer` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Porphyria cutanea tarda associates with hepatocellular carcinoma at nationwide-cohort and pooled-analysis level: the Norwegian nationwide cohort of 612 persons with PCT documents hepatocellular carcinoma at adjusted hazard ratio 19.7 (95% CI 8.8-44.0) versus the reference population and 3.1 (95% CI 1.2-7.7) versus persons with chronic alcohol abuse, alongside gallbladder and biliary tract cancer and liver-disease mortality at HR 5.5 (PMID 30944007), and the systematic review of 19 studies covering 7,381 porphyria patients documents primary liver cancer in 4.8 percent including hepatocellular carcinoma in 3.3 percent, with cirrhosis not a prerequisite in a small group (PMID 35740611); recorded as documented association only with the shared-substrate and magnitude limits carried openly - the single-centre 17-case series documents only one hepatocellular carcinoma over a median 24-year follow-up and characterizes the risk as low (PMID 18720935, counterweight carried on the edge) and the Danish nationwide mortality cohort corroborates liver and gallbladder cancer mortality at HR 11.24 (PMID 31374307).
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation of liver cancer is established for any individual: hepatitis C, alcohol misuse, hereditary hemochromatosis, and iron overload drive both the PCT and the hepatocellular carcinoma risk so shared-substrate confounding is central, the alcohol-comparison residual (aHR 3.1) rests on a small exposed cohort with wide confidence intervals, the pooled analysis combines porphyria subtypes beyond PCT, and individual claims require dated hepatic imaging and alpha-fetoprotein records with viral hepatitis, alcohol, metabolic liver disease, hemochromatosis, and cirrhosis exclusion.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 390.1 — Baravelli CM, Sandberg S, Aarsand AK, et al. Porphyria cutanea tarda increases risk of hepatocellular carcinoma and premature death: a nationwide cohort study Orphanet J Rare Dis. 2019 Apr 3;14(1):77. PMID 30944007.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/30944007/
+- Source checked on: 2026-09-26
+- Locator: PMID 30944007; results (cancer and cause-specific mortality hazard ratios)
+- Note under review: Norwegian nationwide cohort study 2000-2016 (Orphanet J Rare Dis 2019): 612 persons with PCT versus 5.4 million reference population; hepatocellular carcinoma aHR 19.7 (95% CI 8.8-44.0) and gallbladder/biliary tract cancer aHR 6.8 versus reference; residual risk versus chronic alcohol abuse comparison: HCC aHR 3.1 (95% CI 1.2-7.7); liver-disease death HR 5.5, overdose death HR 9.9; authors note most findings likely reflect shared lifestyle risk factors though something inherent in PCT may contribute; supports the bounded malignancy association only (shared-substrate confounding carried openly).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 390.2 — Ramai D, Deliwala SS, Chandan S, et al. Risk of Hepatocellular Carcinoma in Patients with Porphyria: A Systematic Review Cancers (Basel). 2022 Jun 15;14(12).doi: 10.3390/cancers14122947. PMID 35740611.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/35740611/
+- Source checked on: 2026-09-26
+- Locator: PMID 35740611; results (pooled primary liver cancer and HCC proportions)
+- Note under review: Systematic review and pooled analysis of 19 studies covering 7,381 porphyria patients (Cancers 2022): primary liver cancer in 351 patients (4.8%), hepatocellular carcinoma in 243 (3.3%), cholangiocarcinoma 18 (0.3%); advanced liver disease or cirrhosis not a prerequisite for HCC in a small group; supports the bounded malignancy association only (all porphyria subtypes pooled).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 390.3 — Cassiman D, Vannoote J, Roelandts R, et al. Porphyria cutanea tarda and liver disease. A retrospective analysis of 17 cases from a single centre and review of the literature Acta Gastroenterol Belg. 2008 Apr-Jun;71(2):237-42. PMID 18720935.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/18720935/
+- Source checked on: 2026-09-26
+- Locator: PMID 18720935; results and conclusions (concomitant liver disease distribution and HCC outcome)
+- Note under review: Single-centre retrospective series of 17 sporadic PCT patients plus literature review (Acta Gastroenterol Belg 2008): iron overload in 14 of 17; chronic hepatitis C in 5, alcohol abuse in 7, hereditary hemochromatosis in 4; one hepatocellular carcinoma over median 24-year follow-up; the authors characterize HCC risk in sporadic PCT as low and conclude PCT patients should be screened for concomitant liver disease; COUNTERWEIGHT carried openly as explicit magnitude and shared-substrate evidence.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `postherpetic-neuralgia` → `depressive-disorder` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Postherpetic neuralgia associates with depression at clinic-cohort level: the retrospective cohort of 661 patients with postherpetic neuralgia documents depression in 65.8 percent by the Hospital Anxiety and Depression Scale, with female sex, pain magnitude, and extent of rash spread independently associated (PMID 33326962), and the cross-sectional neuropathic pain cohort of 61 patients in which postherpetic pain was the most common etiology documents depression in 65.6 percent with a positive depression-pain-intensity association (r=0.41, PMID 32617124); recorded as documented association only with the direction-inversion counterweight carried openly - acute-phase anxiety predicts subsequent postherpetic neuralgia development in the 99-patient longitudinal cohort (adjusted OR 1.31 per HADS-A unit), so the psychological state can precede rather than follow the neuralgia (PMID 42343723).
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation of a depressive disorder is established for any individual: the depression signal is measured by questionnaire cutoff rather than structured psychiatric diagnosis, both anchors are cross-sectional so ordering between pain and mood is not established, the acute-phase anxiety cohort documents the reverse ordering as a predictor, and individual claims require dated psychiatric and dermatologic assessment with pre-existing mood disorder, medication effect, and adjustment-disorder exclusion.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 391.1 — Du J, Sun G, Ma H, et al. Prevalence and Risk Factors of Anxiety and Depression in Patients with Postherpetic Neuralgia: A Retrospective Study Dermatology. 2021;237(6):891-895. PMID 33326962.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/33326962/
+- Source checked on: 2026-09-26
+- Locator: PMID 33326962; results (anxiety and depression prevalence and independent associations)
+- Note under review: Retrospective cohort of 661 clinic patients with postherpetic neuralgia (Dermatology 2021): anxiety in 69.0% (456/661) and depression in 65.8% (435/661) by Chinese HADS; female sex, pain intensity magnitude, and extent of rash spread independently associated with anxiety and depression on multivariate analysis; supports the bounded questionnaire-class comorbidity association only (cross-sectional, cutoff-based).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 391.2 — Cherif F, Zouari HG, Cherif W, et al. Depression Prevalence in Neuropathic Pain and Its Impact on the Quality of Life Pain Res Manag. 2020;2020:7408508. PMID 32617124.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/32617124/
+- Source checked on: 2026-09-26
+- Locator: PMID 32617124; results (depression prevalence and pain correlation)
+- Note under review: Cross-sectional study of 61 neuropathic pain clinic patients (Pain Res Manag 2020): postherpetic pain the most common etiology alongside carpal tunnel and diabetic neuropathy; depression 65.6% and anxiety 73.7% by HADS; depression score positively associated with pain intensity (r=0.41); supports the bounded mixed-etiology association only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 391.3 — Ling Z, Ren M. Predictive Value of Anxiety State During Acute Herpes Zoster for the Development of Postherpetic Neuralgia Actas Esp Psiquiatr. 2026 Jun 15;54(3):808-820. PMID 42343723.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42343723/
+- Source checked on: 2026-09-26
+- Locator: PMID 42343723; results (acute-phase anxiety as independent predictor of PHN)
+- Note under review: Longitudinal cohort of 99 acute herpes zoster patients (Actas Esp Psiquiatr 2026): clinically significant acute-phase anxiety (HADS-A >=8) associated with 4.52-fold risk of postherpetic neuralgia at 3 months; baseline HADS-A adjusted OR 1.31 per unit; COUNTERWEIGHT carried openly as explicit direction-inversion evidence (psychological state predicts subsequent neuralgia).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `postherpetic-neuralgia` → `anxiety-disorder` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Postherpetic neuralgia associates with anxiety at clinic-cohort level: the retrospective cohort of 661 patients with postherpetic neuralgia documents anxiety in 69.0 percent by the Hospital Anxiety and Depression Scale with female sex, pain magnitude, and rash extent independently associated (PMID 33326962), and the cross-sectional neuropathic pain cohort documents anxiety in 73.7 percent (postherpetic pain the most common etiology, PMID 32617124); recorded as documented association only with the direction-inversion counterweight carried openly - acute-phase anxiety predicts subsequent postherpetic neuralgia (clinically significant anxiety at 4.52-fold risk, adjusted OR 1.31 per HADS-A unit), so anxiety commonly precedes rather than follows the neuralgia (PMID 42343723).
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation of an anxiety disorder is established for any individual: anxiety is measured by questionnaire cutoff rather than structured diagnosis, both positive anchors are cross-sectional so ordering is not established, the strongest prospective signal runs from pre-existing acute-phase anxiety to later neuralgia rather than the reverse, and individual claims require dated psychiatric assessment with pre-existing anxiety, substance, stimulant, caffeine, hyperthyroid, and cardiopulmonary exclusion.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 392.1 — Du J, Sun G, Ma H, et al. Prevalence and Risk Factors of Anxiety and Depression in Patients with Postherpetic Neuralgia: A Retrospective Study Dermatology. 2021;237(6):891-895. PMID 33326962.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/33326962/
+- Source checked on: 2026-09-26
+- Locator: PMID 33326962; results (anxiety and depression prevalence and independent associations)
+- Note under review: Retrospective cohort of 661 clinic patients with postherpetic neuralgia (Dermatology 2021): anxiety in 69.0% (456/661) and depression in 65.8% by Chinese HADS; female sex, pain intensity magnitude, and extent of rash spread independently associated; supports the bounded questionnaire-class comorbidity association only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 392.2 — Cherif F, Zouari HG, Cherif W, et al. Depression Prevalence in Neuropathic Pain and Its Impact on the Quality of Life Pain Res Manag. 2020;2020:7408508. PMID 32617124.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/32617124/
+- Source checked on: 2026-09-26
+- Locator: PMID 32617124; results (anxiety prevalence in neuropathic pain)
+- Note under review: Cross-sectional study of 61 neuropathic pain clinic patients (Pain Res Manag 2020): postherpetic pain the most common etiology; anxiety 73.7% and depression 65.6% by HADS; supports the bounded mixed-etiology association only.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 392.3 — Ling Z, Ren M. Predictive Value of Anxiety State During Acute Herpes Zoster for the Development of Postherpetic Neuralgia Actas Esp Psiquiatr. 2026 Jun 15;54(3):808-820. PMID 42343723.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42343723/
+- Source checked on: 2026-09-26
+- Locator: PMID 42343723; results (acute-phase anxiety as independent predictor of PHN)
+- Note under review: Longitudinal cohort of 99 acute herpes zoster patients (Actas Esp Psiquiatr 2026): clinically significant acute-phase anxiety (HADS-A >=8) associated with 4.52-fold risk (95% CI 1.72-8.58) of postherpetic neuralgia at 3 months; COUNTERWEIGHT carried openly as explicit direction-inversion evidence.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `postherpetic-neuralgia` → `insomnia` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Postherpetic neuralgia associates with clinical insomnia at retrospective-cohort and large-cohort level: the retrospective cross-sectional study of 111 patients with postherpetic neuralgia documents clinical insomnia (Insomnia Severity Index >=15) in 30.6 percent and any insomnia symptoms in 50.5 percent, with high pain intensity the strongest predictor (OR 12.42) and mechanical allodynia (OR 4.26), anxiety (OR 4.45), and depression (OR 6.98) also independently associated (PMID 27073226), and the 3,339-patient chronic neuropathic pain cohort including 1,480 patients with postherpetic neuralgia documents sleep impairment across etiologies with allodynia and depression significantly related to all four sleep elements (PMID 37772033); recorded as documented association only with the within-cohort mood-direction limit carried openly - within the insomnia cohort anxiety and depression predict the insomnia alongside pain, and the same fan overlaps the published insomnia to depressive-disorder chain path.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation of insomnia is established for any individual: both anchors are cross-sectional with insomnia measured by self-report cutoffs rather than polysomnography, pain intensity and mood are inseparable simultaneous predictors within the cohort so ordering between pain, mood, and sleep is not established, and individual claims require dated sleep assessment with sleep-apnea, restless-legs, mood-disorder, medication-effect, and circadian exclusion.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 393.1 — Lee DH, Park JE, Yoon DM, et al. Factors Associated with Increased Risk for Clinical Insomnia in Patients with Postherpetic Neuralgia: A Retrospective Cross-Sectional Study Pain Med. 2016 Oct;17(10):1917-1922. PMID 27073226.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/27073226/
+- Source checked on: 2026-09-26
+- Locator: PMID 27073226; results (insomnia prevalence and multivariable odds ratios)
+- Note under review: Retrospective cross-sectional study of 111 clinic patients with postherpetic neuralgia (Pain Med 2016): clinical insomnia (ISI >=15) in 30.6% and mild-to-severe symptoms (ISI >=8) in 50.5%; high pain intensity strongest predictor (OR 12.42, 95% CI 2.99-51.56); mechanical allodynia OR 4.26; anxiety OR 4.45 and depression OR 6.98 after adjusting for pain; supports the bounded sleep-dysfunction association only (cross-sectional, self-report).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 393.2 — Sachau J, Kersebaum D, Hüllemann P, et al. The association of self-reported symptoms of central sensitization and sleep disturbances in neuropathic pain Pain Rep. 2023 Sep;8(5):e1098. PMID 37772033.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/37772033/
+- Source checked on: 2026-09-26
+- Locator: PMID 37772033; results (sleep impairment by etiology and multivariable associations)
+- Note under review: Cross-sectional study of 3,339 chronic neuropathic pain patients including 1,480 with postherpetic neuralgia (Pain Rep 2023): sleep impairment observed across all pain etiologies (diabetic polyneuropathy 543, postherpetic neuralgia 1,480, CRPS 1,316); depression and self-reported allodynia significantly related to all four MOS sleep elements; supports the bounded PHN-subgroup sleep association only (mixed-etiology estimates).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
 ## Implementation mechanics after decisions
 
 - Mapping edits and registry edits must land in lockstep (the registry audit's canonical-JSON hashes and live-use sets will fail otherwise).

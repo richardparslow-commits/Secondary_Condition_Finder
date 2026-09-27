@@ -6,8 +6,8 @@
  "installedFrom": "Master Registry Discrepancy Resolution 2026",
  "authorityBoundary": "Authoritative for current relationship direction, proposition text, guard state, source linkage, and KB parity; does not establish an individual VA medical nexus.",
  "counts": {
-  "relationships": 749,
-  "explicitPublicationGuards": 675,
+  "relationships": 756,
+  "explicitPublicationGuards": 682,
   "legacyRationaleBoundaries": 74
  },
  "relationships": [
@@ -24008,6 +24008,220 @@
    "sourceReferenceCount": 3,
    "pathwayIntelligencePresent": false,
    "suggestionObjectHash": "e89499385674184e6c599bd137dfa765690ac07183b8d22a07f1b5c575c81c36"
+  },
+  {
+   "relationshipId": "rel-polymyalgia-rheumatica-to-osteoporosis",
+   "primaryId": "polymyalgia-rheumatica",
+   "targetId": "osteoporosis",
+   "direction": "polymyalgia-rheumatica -> osteoporosis",
+   "primaryPublicationState": "draft",
+   "rank": 1,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY at population-cohort-plus-survey-cohort class with the treatment-mediated and fracture-endpoint limits carried openly, following the treatment-mediated convention (insomnia to depressive-disorder precedent; the edge is PHARMACOLOGICAL_IATROGENIC): the CPRD cohort documents fracture aHR 1.63 in 12,136 PMR patients (PMID 29316928) and the PMR Cohort Study documents fragility fractures in 17.2 percent (PMID 34988356), with the metabolic bone review anchoring the glucocorticoid-induced-osteoporosis route (PMID 36627860); because the measured endpoint is fracture rather than BMD-defined osteoporosis and the population carries independent age-related risk, the conservative standard keeps the edge at association only, scopes it to the glucocorticoid-burden route, and routes individual claims through dated DEXA and fracture records with dose documentation and secondary-cause exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY at population-cohort-plus-survey-cohort class with the treatment-mediated and fracture-endpoint limits carried openly, following the treatment-mediated convention (insomnia to depressive-disorder precedent; the edge is PHARMACOLOGICAL_IATROGENIC): the CPRD cohort documents fracture aHR 1.63 in 12,136 PMR patients (PMID 29316928) and the PMR Cohort Study documents fragility fractures in 17.2 percent (PMID 34988356), with the metabolic bone review anchoring the glucocorticoid-induced-osteoporosis route (PMID 36627860); because the measured endpoint is fracture rather than BMD-defined osteoporosis and the population carries independent age-related risk, the conservative standard keeps the edge at association only, scopes it to the glucocorticoid-burden route, and routes individual claims through dated DEXA and fracture records with dose documentation and secondary-cause exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to the glucocorticoid-burden route (PHARMACOLOGICAL_IATROGENIC) with the treatment-mediated and fracture-endpoint limits carried openly: the UK CPRD population cohort of 12,136 incident PMR patients documents fracture incidence 148.05 per 10,000 person-years and adjusted hazard ratio 1.63 (95% CI 1.54-1.73) versus matched controls with fewer than 13 percent bisphosphonate co-prescription (PMID 29316928) and the 652-person PMR Cohort Study documents self-reported fragility fracture in 17.2 percent at baseline (PMID 34988356), with the metabolic bone review anchoring the glucocorticoid-induced-osteoporosis route (PMID 36627860); the quantified endpoint is incident fracture and the mediating condition is glucocorticoid-induced bone loss rather than PMR-specific osteoporosis measured directly, and the predominantly post-menopausal female population carries independent age-related baseline risk; individual claims route through dated DEXA and fracture records with glucocorticoid dose documentation and age-related, post-menopausal, disuse, and endocrine secondary-cause exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No PMR cohort measuring bone-mineral-density decline or incident BMD-defined osteoporosis was located; the quantified endpoint in the population cohort is incident fracture (aHR 1.63) which is downstream of the mediating osteoporosis; the 652-person cohort uses self-reported fracture data; glucocorticoid dose-response is unquantified; and PMR flares and re-treatment courses are not separable from cumulative exposure."
+   ],
+   "sourceIds": [
+    "pmid-29316928",
+    "pmid-34988356",
+    "pmid-36627860"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "64e0c961612e5a7e097055b37a6003dfa5f5670bcb136a5ca167a7de66ae6055"
+  },
+  {
+   "relationshipId": "rel-polymyositis-to-interstitial-lung-disease",
+   "primaryId": "polymyositis",
+   "targetId": "interstitial-lung-disease",
+   "direction": "polymyositis -> interstitial-lung-disease",
+   "primaryPublicationState": "draft",
+   "rank": 1,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY at antibody-cohort-plus-registry class with the sibling-overlap disclosure carried openly (the batch-65 sibling-double-targeting pattern, existing edge untouched): the anti-Jo-1 cohort documents ILD with polymyositis predominant in 64 percent (PMID 27578469), the PM/DM cohort documents ILD in half with antibody and symptom risk factors (PMID 37005523), and the Spanish registry documents ILD across the myositis spectrum (PMID 30392161); because the anchors combine subtypes and concurrent diagnosis is common, the conservative standard keeps the edge at association only and routes individual claims through dated pulmonary function, high-resolution CT, and myositis-antibody records with infection, drug-induced, and overlap-disease exclusion; the existing dermatomyositis to interstitial-lung-disease edge is left untouched and its sources are not recycled."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY at antibody-cohort-plus-registry class with the sibling-overlap disclosure carried openly (the batch-65 sibling-double-targeting pattern, existing edge untouched): the anti-Jo-1 cohort documents ILD with polymyositis predominant in 64 percent (PMID 27578469), the PM/DM cohort documents ILD in half with antibody and symptom risk factors (PMID 37005523), and the Spanish registry documents ILD across the myositis spectrum (PMID 30392161); because the anchors combine subtypes and concurrent diagnosis is common, the conservative standard keeps the edge at association only and routes individual claims through dated pulmonary function, high-resolution CT, and myositis-antibody records with infection, drug-induced, and overlap-disease exclusion; the existing dermatomyositis to interstitial-lung-disease edge is left untouched and its sources are not recycled.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to the autoimmune pulmonary-interstitium route with the sibling-overlap and subtype-composition limits carried openly (batch-65 sibling-double-targeting pattern): the 103-subject anti-Jo-1 antisynthetase cohort documents ILD with polymyositis the predominant myopathy in 64 percent, NSIP in 52 percent, and 10-year survival 68 percent (PMID 27578469), the 130-patient PM/DM cohort documents ILD in half with anti-Jo-1, dry cough, arthritis, and exertional dyspnea as independent risk factors (PMID 37005523), and the 478-patient Spanish IIM registry documents ILD in 23.4 percent spanning the myositis spectrum (PMID 30392161); the anchors combine polymyositis with antisynthetase and dermatomyositis cases so polymyositis-specific prevalence is not isolated, and the existing dermatomyositis to interstitial-lung-disease edge and its dermatomyositis-specific sources are left untouched with none recycled per ME-29; individual claims route through dated pulmonary function, high-resolution CT, and myositis-antibody records with infection, drug-induced, overlap-disease, occupational, and smoking-related exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No prospective polymyositis-only cohort measuring incident interstitial lung disease with dated myopathy-first ordering was located; the 103-subject cohort (PMID 27578469) is selected on anti-Jo-1 positivity with polymyositis predominant in 64%; the 130-patient cohort (PMID 37005523) combines PM and DM without subgroup ILD rates; the 478-patient registry (PMID 30392161) reports ILD in 23.4% overall with 17% of ILD cases polymyositis; and the dermatomyositis window's separate evidence base is not recycled (ME-29)."
+   ],
+   "sourceIds": [
+    "pmid-27578469",
+    "pmid-37005523",
+    "pmid-30392161"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "b3667cadf9210770b71cec142a1ba10d62b3f029434c5d5584f5e3518cb344d7"
+  },
+  {
+   "relationshipId": "rel-polymyositis-to-dysphagia",
+   "primaryId": "polymyositis",
+   "targetId": "dysphagia",
+   "direction": "polymyositis -> dysphagia",
+   "primaryPublicationState": "draft",
+   "rank": 2,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY at instrumental-cohort class with the sibling-overlap and subtype-composition limits carried openly: the 51-patient scintigraphy cohort documents transit alterations in all patients with predominantly oral and pharyngeal involvement correlating with disease activity and prognosis (PMID 31012534); because the cohort mixes myositis subtypes without polymyositis-specific prevalence and the measure captures subclinical dysfunction, the conservative standard keeps the edge at association only and routes individual claims through dated videofluoroscopic or scintigraphic swallowing assessment with stroke, neurodegenerative, structural-esophageal, and treatment-related exclusion; the existing dermatomyositis to dysphagia edge is left untouched and its sources are not recycled."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY at instrumental-cohort class with the sibling-overlap and subtype-composition limits carried openly: the 51-patient scintigraphy cohort documents transit alterations in all patients with predominantly oral and pharyngeal involvement correlating with disease activity and prognosis (PMID 31012534); because the cohort mixes myositis subtypes without polymyositis-specific prevalence and the measure captures subclinical dysfunction, the conservative standard keeps the edge at association only and routes individual claims through dated videofluoroscopic or scintigraphic swallowing assessment with stroke, neurodegenerative, structural-esophageal, and treatment-related exclusion; the existing dermatomyositis to dysphagia edge is left untouched and its sources are not recycled.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to the oropharyngeal myogenic route with the sibling-overlap, subtype-composition, and single-anchor limits carried openly: the 51-patient mixed-IIM oro-pharyngeal-esophageal scintigraphy cohort documents at least one transit or retention alteration in every patient with oral and pharyngeal levels more frequently involved than the esophageal tract and severity correlating with patient-reported dysphagia (PMID 31012534); the cohort spans the myositis spectrum without reporting its polymyositis composition and the measure captures subclinical dysfunction, and the existing dermatomyositis to dysphagia edge and its dermatomyositis-specific sources (including the 39-study DM dysphagia meta-analysis) are left untouched with none recycled per ME-29; individual claims route through dated videofluoroscopic or scintigraphic swallowing assessment with stroke, neurodegenerative, inclusion-body-myositis, structural-esophageal, candidiasis, and treatment-related exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No polymyositis-stratified dysphagia prevalence cohort was located; the anchor (PMID 31012534) is a 51-patient mixed-IIM cohort with unreported subtype composition and scintigraphic rather than clinical endpoints; aspiration incidence is unquantified; and the dermatomyositis dysphagia literature (including the 39-study DM meta-analysis, PMID 37010885, and the dermatomyositis-window sources) is not recycled per ME-29 and is recorded here as the sibling window's evidence base."
+   ],
+   "sourceIds": [
+    "pmid-31012534"
+   ],
+   "sourceReferenceCount": 1,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "aeb378b8bdfd181a95aa6f812e9203d793362afca1b7c951a3f6d1259c70aebe"
+  },
+  {
+   "relationshipId": "rel-porphyria-cutanea-tarda-to-liver-cancer",
+   "primaryId": "porphyria-cutanea-tarda",
+   "targetId": "liver-cancer",
+   "direction": "porphyria-cutanea-tarda -> liver-cancer",
+   "primaryPublicationState": "draft",
+   "rank": 1,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY at nationwide-cohort-plus-pooled-analysis class with the shared-substrate and magnitude limits carried openly: the Norwegian nationwide cohort documents hepatocellular carcinoma aHR 19.7 falling to 3.1 against an alcohol-abuse comparison (PMID 30944007), the 19-study pooled analysis documents primary liver cancer in 4.8 percent of porphyria patients (PMID 35740611), and the 17-case series is carried openly as explicit magnitude counterweight (one hepatocellular carcinoma over median 24-year follow-up, risk characterized as low, PMID 18720935); because hepatitis C, alcohol, and iron overload drive both conditions and the residual risk rests on small numbers, the conservative standard keeps the edge at association only and routes individual claims through dated hepatic imaging and viral-serology records with alcohol, iron, and cirrhosis exclusion."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY at nationwide-cohort-plus-pooled-analysis class with the shared-substrate and magnitude limits carried openly: the Norwegian nationwide cohort documents hepatocellular carcinoma aHR 19.7 falling to 3.1 against an alcohol-abuse comparison (PMID 30944007), the 19-study pooled analysis documents primary liver cancer in 4.8 percent of porphyria patients (PMID 35740611), and the 17-case series is carried openly as explicit magnitude counterweight (one hepatocellular carcinoma over median 24-year follow-up, risk characterized as low, PMID 18720935); because hepatitis C, alcohol, and iron overload drive both conditions and the residual risk rests on small numbers, the conservative standard keeps the edge at association only and routes individual claims through dated hepatic imaging and viral-serology records with alcohol, iron, and cirrhosis exclusion.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to the hepatic uroporphyrin/iron-injury malignant-transformation route with the shared-substrate and magnitude limits carried openly: the Norwegian nationwide cohort of 612 persons with PCT documents hepatocellular carcinoma aHR 19.7 (95% CI 8.8-44.0) versus reference and 3.1 (95% CI 1.2-7.7) versus the chronic-alcohol-abuse comparison group (PMID 30944007), the 19-study pooled analysis of 7,381 porphyria patients documents primary liver cancer in 4.8 percent including HCC in 3.3 percent (PMID 35740611), and the 17-case series is carried openly as explicit magnitude counterweight (one HCC over median 24-year follow-up, risk characterized as low, PMID 18720935); hepatitis C, alcohol misuse, hemochromatosis, and iron overload drive both the PCT and the hepatocellular carcinoma risk so shared-substrate confounding is central and the residual risk rests on small numbers with wide intervals, with the Danish mortality cohort (PMID 31374307) cited openly; individual claims route through dated hepatic imaging and viral-serology records with alcohol, iron, metabolic liver disease, and cirrhosis exclusion.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No PCT-specific cohort isolating hepatocellular carcinoma risk after adjustment for hepatitis C, alcohol, hemochromatosis, and cirrhosis simultaneously was located; the Norwegian cohort's residual risk versus the alcohol-abuse comparison is aHR 3.1 (95% CI 1.2-7.7) with wide intervals; the systematic review (PMID 35740611) pools all porphyrias rather than PCT alone; the 17-case series (PMID 18720935) characterizes the risk as low (one HCC in median 24 years); and the Danish mortality cohort (PMID 31374307, cited openly) reports liver and gallbladder cancer death HR 11.24 without lifestyle data."
+   ],
+   "sourceIds": [
+    "pmid-30944007",
+    "pmid-35740611",
+    "pmid-18720935"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "9bde9fefc315175e9036da43a4193e17f17f5a2aade09929a00e3bf6187b99b8"
+  },
+  {
+   "relationshipId": "rel-postherpetic-neuralgia-to-depressive-disorder",
+   "primaryId": "postherpetic-neuralgia",
+   "targetId": "depressive-disorder",
+   "direction": "postherpetic-neuralgia -> depressive-disorder",
+   "primaryPublicationState": "draft",
+   "rank": 1,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY at retrospective-clinic-cohort-plus-cross-sectional class with the direction-inversion counterweight carried openly, following the phantom-limb-pain mood-edge precedent (batch 71): the 661-patient cohort documents depression in 65.8 percent with pain-magnitude association (PMID 33326962) and the neuropathic-pain cohort documents depression in 65.6 percent with depression-pain correlation (PMID 32617124), with the acute-phase anxiety cohort carried openly as explicit direction-inversion counterweight (PMID 42343723); because the anchors are questionnaire-class and cross-sectional and the only prospective ordering runs psychological-state-to-neuralgia, the conservative standard keeps the edge at association only and routes individual claims through dated psychiatric assessment with pre-existing-disorder and medication exclusion; fan-triangle disclosure (CRG redundancy-semantics follow-up): the published insomnia to depressive-disorder and anxiety-disorder to depressive-disorder edges form chain paths with these member-level edges and the overlap is recorded openly with those edges left untouched."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY at retrospective-clinic-cohort-plus-cross-sectional class with the direction-inversion counterweight carried openly, following the phantom-limb-pain mood-edge precedent (batch 71): the 661-patient cohort documents depression in 65.8 percent with pain-magnitude association (PMID 33326962) and the neuropathic-pain cohort documents depression in 65.6 percent with depression-pain correlation (PMID 32617124), with the acute-phase anxiety cohort carried openly as explicit direction-inversion counterweight (PMID 42343723); because the anchors are questionnaire-class and cross-sectional and the only prospective ordering runs psychological-state-to-neuralgia, the conservative standard keeps the edge at association only and routes individual claims through dated psychiatric assessment with pre-existing-disorder and medication exclusion; fan-triangle disclosure (CRG redundancy-semantics follow-up): the published insomnia to depressive-disorder and anxiety-disorder to depressive-disorder edges form chain paths with these member-level edges and the overlap is recorded openly with those edges left untouched.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to the psychophysiological neuropathic-pain-to-mood route with the direction-inversion counterweight and questionnaire-cutoff limits carried openly (batch-71 phantom-limb-pain mood-edge precedent): the 661-patient retrospective clinic cohort documents depression in 65.8 percent by HADS with female sex, pain magnitude, and rash extent independent associations (PMID 33326962) and the 61-patient neuropathic-pain cohort (postherpetic pain most common etiology) documents depression in 65.6 percent with depression-pain correlation r=0.41 (PMID 32617124), while the 99-patient longitudinal acute-zoster cohort documents acute-phase anxiety predicting subsequent postherpetic neuralgia (PMID 42343723, counterweight carried on the edge) so psychological state commonly precedes the neuralgia; depression rests on HADS cutoffs rather than structured diagnosis and both positive anchors are cross-sectional; the herpes-zoster-level depression window (PMID 24804885) is reserved for the unregistered herpes-zoster window and not recycled per ME-29; individual claims route through dated psychiatric and dermatologic assessment with pre-existing mood disorder, medication effect, and adjustment-disorder exclusion. Fan-triangle disclosure (CRG redundancy-semantics follow-up): the published insomnia to depressive-disorder and anxiety-disorder to depressive-disorder edges form chain paths with this member-level edge; the overlap is recorded openly with the published edges untouched.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No cohort measuring incident major depressive disorder after postherpetic neuralgia with dated neuralgia-first ordering was located; both anchors (PMIDs 33326962, 32617124) measure HADS depression at cross-section; the 61-patient cohort mixes neuropathic pain etiologies with postherpetic pain the most common; the acute-phase cohort (PMID 42343723) documents anxiety predicting later postherpetic neuralgia (adjusted OR 1.31 per HADS-A unit) so mood vulnerability can precede the neuralgia; and the herpes-zoster-level depression window (nationwide prospective cohort, PMID 24804885, hazard ratio 1.49 for major depression) is deliberately not recycled - it belongs to the unregistered herpes-zoster window per ME-29."
+   ],
+   "sourceIds": [
+    "pmid-33326962",
+    "pmid-32617124",
+    "pmid-42343723"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "4830525b8a24cd9d5e33bc80e871fda5a09996247dde389426d02e06ebead925"
+  },
+  {
+   "relationshipId": "rel-postherpetic-neuralgia-to-anxiety-disorder",
+   "primaryId": "postherpetic-neuralgia",
+   "targetId": "anxiety-disorder",
+   "direction": "postherpetic-neuralgia -> anxiety-disorder",
+   "primaryPublicationState": "draft",
+   "rank": 2,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY at retrospective-clinic-cohort class with the direction-inversion counterweight carried openly, following the phantom-limb-pain mood-edge precedent (batch 71): the 661-patient cohort documents anxiety in 69.0 percent (PMID 33326962) and the neuropathic-pain cohort documents anxiety in 73.7 percent (PMID 32617124), with the acute-phase cohort carried openly as explicit direction-inversion counterweight (anxiety predicts later neuralgia, PMID 42343723); because the anchors are questionnaire-class and the only prospective ordering runs anxiety-to-neuralgia, the conservative standard keeps the edge at association only and routes individual claims through dated psychiatric assessment with pre-existing-anxiety, substance, and thyroid exclusion; fan-triangle disclosure (CRG redundancy-semantics follow-up) carried on the file alongside the depression edge."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY at retrospective-clinic-cohort class with the direction-inversion counterweight carried openly, following the phantom-limb-pain mood-edge precedent (batch 71): the 661-patient cohort documents anxiety in 69.0 percent (PMID 33326962) and the neuropathic-pain cohort documents anxiety in 73.7 percent (PMID 32617124), with the acute-phase cohort carried openly as explicit direction-inversion counterweight (anxiety predicts later neuralgia, PMID 42343723); because the anchors are questionnaire-class and the only prospective ordering runs anxiety-to-neuralgia, the conservative standard keeps the edge at association only and routes individual claims through dated psychiatric assessment with pre-existing-anxiety, substance, and thyroid exclusion; fan-triangle disclosure (CRG redundancy-semantics follow-up) carried on the file alongside the depression edge.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to the psychophysiological neuropathic-pain-to-anxiety route with the direction-inversion counterweight carried openly: the 661-patient clinic cohort documents anxiety in 69.0 percent by HADS (PMID 33326962) and the 61-patient neuropathic-pain cohort documents anxiety in 73.7 percent (PMID 32617124), while the acute-zoster cohort documents clinically significant acute-phase anxiety at 4.52-fold risk (95% CI 1.72-8.58) of later postherpetic neuralgia with adjusted OR 1.31 per HADS-A unit (PMID 42343723, counterweight carried on the edge) so anxiety commonly precedes rather than follows the neuralgia; anxiety rests on HADS cutoffs rather than structured diagnosis and both positive anchors are cross-sectional; individual claims route through dated psychiatric assessment with pre-existing-anxiety, substance, stimulant, hyperthyroid, and cardiopulmonary exclusion. Fan-triangle disclosure (CRG redundancy-semantics follow-up) carried on the file alongside the depression edge.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No cohort measuring incident anxiety disorder after postherpetic neuralgia with dated neuralgia-first ordering was located; both anchors (PMIDs 33326962, 32617124) measure HADS anxiety at cross-section; the acute-phase cohort (PMID 42343723) documents clinically significant anxiety at 4.52-fold risk of later postherpetic neuralgia (95% CI 1.72-8.58) so anxiety vulnerability commonly precedes the neuralgia; and the herpes-zoster-level psychiatric window is deliberately not recycled per ME-29."
+   ],
+   "sourceIds": [
+    "pmid-33326962",
+    "pmid-32617124",
+    "pmid-42343723"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "d1bab1eadb66fe75ce034e348e10c55a8746cbc6349911f81df93397108cae32"
+  },
+  {
+   "relationshipId": "rel-postherpetic-neuralgia-to-insomnia",
+   "primaryId": "postherpetic-neuralgia",
+   "targetId": "insomnia",
+   "direction": "postherpetic-neuralgia -> insomnia",
+   "primaryPublicationState": "draft",
+   "rank": 3,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authored at ASSOCIATION_ONLY at retrospective-cohort-plus-large-mixed-cohort class with the within-cohort mood-direction limit carried openly: the 111-patient cohort documents clinical insomnia in 30.6 percent with pain intensity the strongest predictor (OR 12.42, PMID 27073226) and the 3,339-patient neuropathic pain cohort including 1,480 with postherpetic neuralgia documents sleep impairment linked to allodynia and depression (PMID 37772033); because both anchors are self-report cross-sectional measures with mood as simultaneous predictors, the conservative standard keeps the edge at association only and routes individual claims through dated sleep assessment with apnea, mood, and medication exclusion; fan-triangle disclosure (CRG redundancy-semantics follow-up): these member-level sleep and mood edges form chain paths with the published insomnia to depressive-disorder and anxiety-disorder to depressive-disorder edges and the overlap is recorded openly with those edges left untouched."
+   },
+   "rationale": "Authored at ASSOCIATION_ONLY at retrospective-cohort-plus-large-mixed-cohort class with the within-cohort mood-direction limit carried openly: the 111-patient cohort documents clinical insomnia in 30.6 percent with pain intensity the strongest predictor (OR 12.42, PMID 27073226) and the 3,339-patient neuropathic pain cohort including 1,480 with postherpetic neuralgia documents sleep impairment linked to allodynia and depression (PMID 37772033); because both anchors are self-report cross-sectional measures with mood as simultaneous predictors, the conservative standard keeps the edge at association only and routes individual claims through dated sleep assessment with apnea, mood, and medication exclusion; fan-triangle disclosure (CRG redundancy-semantics follow-up): these member-level sleep and mood edges form chain paths with the published insomnia to depressive-disorder and anxiety-disorder to depressive-disorder edges and the overlap is recorded openly with those edges left untouched.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), scoped to the psychophysiological neuropathic-pain-to-sleep-disruption route with the within-cohort mood-direction limit carried openly: the 111-patient retrospective cohort documents clinical insomnia (ISI >=15) in 30.6 percent with pain intensity the strongest predictor (OR 12.42) and allodynia OR 4.26, anxiety OR 4.45, and depression OR 6.98 as simultaneous predictors (PMID 27073226), and the 3,339-patient chronic neuropathic pain cohort including 1,480 patients with postherpetic neuralgia documents sleep impairment across etiologies with allodynia and depression related to all four sleep elements (PMID 37772033); both anchors are self-report cross-sectional measures and within the insomnia cohort mood predicts insomnia alongside pain so mood-to-sleep ordering cannot be excluded; individual claims route through dated sleep assessment with sleep-apnea, restless-legs, mood-disorder, medication-effect, and circadian exclusion. Fan-triangle disclosure (CRG redundancy-semantics follow-up): these member-level sleep and mood edges form chain paths with the published insomnia to depressive-disorder and anxiety-disorder to depressive-disorder edges; the overlap is recorded openly with the published edges untouched.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No cohort measuring incident clinical insomnia after postherpetic neuralgia with dated neuralgia-first ordering was located; both anchors measure sleep by self-report (ISI and MOS Sleep Scale) at cross-section; within the 111-patient cohort anxiety and depression carry independent odds for insomnia (OR 4.45 and 6.98) alongside pain intensity (OR 12.42) so mood-to-sleep ordering cannot be excluded; and the 3,339-patient cohort (PMID 37772033) reports sleep impairment across diabetic polyneuropathy, postherpetic neuralgia, and CRPS with etiology-mixed estimates."
+   ],
+   "sourceIds": [
+    "pmid-27073226",
+    "pmid-37772033"
+   ],
+   "sourceReferenceCount": 2,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "dffb364a6bfd6a1df108af6d1699c5bee3b16cc0dfc17b31a227a4d716b5fd5a"
   }
  ],
  "lastUpdatedBy": "batch-D1-draft-authoring",

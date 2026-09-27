@@ -2,8 +2,121 @@
   "id": "polymyositis",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review immunologic, hematologic, infectious, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 73 (2026-09-26): two ASSOCIATION_ONLY draft mappings pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: the edges assert association only (etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true), both SYSTEMIC_INFLAMMATORY. The interstitial-lung-disease edge carries the sibling-overlap disclosure openly (the existing dermatomyositis to interstitial-lung-disease edge and its dermatomyositis-specific sources are left untouched and none is recycled per ME-29) and the subtype-composition limit (the anchors combine polymyositis with antisynthetase and dermatomyositis cases); the dysphagia edge carries the same sibling-overlap disclosure (the dermatomyositis to dysphagia edge and the 39-study DM dysphagia meta-analysis are not recycled) and the single-anchor limit (one 51-patient mixed-IIM scintigraphy cohort with unreported subtype composition); individual claims require dated pulmonary, swallowing, and myositis-antibody assessment with infection, drug-induced, overlap-disease, stroke, and structural-esophageal exclusion and review by a qualified medical professional.",
+    "Pathway and duplicate-scope screens and withheld propositions: no -> muscle-atrophy edge (CONSTITUTIVE-PROXIMITY - progressive proximal muscle weakness and atrophy are the defining features of the myopathy and cannot register as a secondary condition; the muscle-weakness identity does not exist); no -> malignancy edge (UMBRELLA/TARGET-SCARCITY - cancer-associated myositis is documented (PMID 33369084 risk-factor cohort) but concentrated in dermatomyositis and no single catalog cancer identity fits the composite risk); no -> diabetes-mellitus and -> osteoporosis edges (BELOW THRESHOLD - glucocorticoid and immunosuppressant treatment-mediated windows with no polymyositis-specific quantification; the polymyalgia-rheumatica osteoporosis window owns the glucocorticoid-bone field for its cohort); no -> skin-rash, photosensitivity, or heliotrope-rash propositions (MANIFESTATION-IDENTITY - cutaneous features belong to dermatomyositis); no -> aspiration-pneumonia and -> respiratory-failure edges (ABSENT IDENTITIES - the severe-outcome landscape has no catalog targets); no -> falls edge (ABSENT IDENTITY). Sibling-double-targeting disclosure (CRG redundancy-semantics follow-up, batch-65 class): polymyositis and dermatomyositis now both target interstitial-lung-disease and dysphagia; each edge carries its own evidence base and the overlap is recorded openly rather than silently duplicated (existing edges untouched)."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 73 (2026-09-26): two bounded association edges authored - polymyositis to interstitial-lung-disease (rank 1) and dysphagia (rank 2) - both classified ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, and hypothesizedOnly:true. The ILD edge rests on the 103-subject anti-Jo-1 antisynthetase cohort (polymyositis predominant in 64 percent, NSIP 52 percent, 10-year survival 68 percent, PMID 27578469), the 130-patient PM/DM risk-factor cohort (ILD in half; anti-Jo-1, dry cough, arthritis, dyspnea independent risk factors, PMID 37005523), and the 478-patient Spanish IIM registry (ILD in 23.4 percent spanning the spectrum, PMID 30392161). The dysphagia edge rests on the 51-patient mixed-IIM oro-pharyngeal-esophageal scintigraphy cohort (alterations in all patients, predominantly oral and pharyngeal, PMID 31012534) and is explicitly single-anchor. Sibling-overlap disclosure (batch-65 sibling-double-targeting class, existing edges untouched): the dermatomyositis to interstitial-lung-disease and dermatomyositis to dysphagia edges own their dermatomyositis-specific sources and none is recycled here per ME-29; this file registers polymyositis-anchored and spectrum-mixed evidence only with the subtype-composition limits carried openly."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "interstitial-lung-disease",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Polymyositis associates with interstitial lung disease at antibody-cohort and multicentre-registry level: the 103-subject anti-Jo-1 positive antisynthetase syndrome cohort documents ILD with polymyositis the predominant myopathy in 64 percent, an NSIP pattern in 52 percent, ILD and myopathy diagnosed within six months of each other in approximately half, and 10-year survival of 68 percent (PMID 27578469), the 130-patient PM/DM cohort documents ILD in exactly half with anti-Jo-1 positivity, dry cough, arthritis, and exertional dyspnea as independent risk factors (PMID 37005523), and the 478-patient Spanish IIM registry documents ILD in 112 (23.4 percent) spanning the myositis spectrum (PMID 30392161); recorded as documented association only with the sibling-overlap disclosure carried openly - the existing dermatomyositis to interstitial-lung-disease edge and its dermatomyositis-specific sources are left untouched and none is recycled here per ME-29.",
+        "causationStatus": "Neither causation nor aggravation of interstitial lung disease is established for any individual: the largest anchors combine polymyositis with antisynthetase syndrome or dermatomyositis so polymyositis-specific prevalence is not isolated, ILD and myopathy are diagnosed concurrently in approximately half the antibody cohort so temporal ordering is mixed, the Chinese cohort conditions on combined PM/DM selection, and individual claims require dated pulmonary function, high-resolution CT, and myositis-antibody records with infection, drug-induced, connective-tissue-overlap, and occupational lung disease exclusion."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "SYSTEMIC_INFLAMMATORY",
+        "primaryVector": "Autoimmune muscle inflammation with antisynthetase autoantibody-driven immune activation extends to the pulmonary interstitium so lymphocytic alveolitis and interstitial fibrotic remodeling rise and restrictive lung physiology emerges, the immune route supported by the anti-Jo-1 predominance of ILD and by the antibody and inflammatory markers that track ILD risk, but whether this route produced any individual interstitial lung disease remains hypothesized until pulmonary, immunologic, and myositis records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at one 103-subject antibody cohort, one 130-patient PM/DM risk-factor cohort, and one 478-patient multicentre registry: the antibody cohort selects anti-Jo-1 positive cases already enriched for ILD, the registry's subtype split distributes the 112 ILD cases across PM, DM, antisynthetase, and overlap myositis so polymyositis-specific incidence is 17 percent of ILD cases rather than a prevalence figure, concurrent diagnosis in half the antibody cohort limits temporal inference, and no polymyositis-only prospective ILD-incidence cohort was located.",
+        "evidenceGaps": "No prospective polymyositis-only cohort measuring incident interstitial lung disease with dated myopathy-first ordering was located; the 103-subject cohort (PMID 27578469) is selected on anti-Jo-1 positivity with polymyositis predominant in 64%; the 130-patient cohort (PMID 37005523) combines PM and DM without subgroup ILD rates; the 478-patient registry (PMID 30392161) reports ILD in 23.4% overall with 17% of ILD cases polymyositis; and the dermatomyositis window's separate evidence base is not recycled (ME-29).",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "infection including opportunistic and treatment-related pneumonitis (immunosuppression-mediated)",
+          "drug-induced interstitial lung disease from methotrexate, azathioprine, or other immunosuppressants (treatment-mediated)",
+          "connective-tissue overlap myositis and scleroderma-spectrum lung disease (the scleroderma and dermatomyositis windows own their route evidence per ME-29)",
+          "occupational and environmental lung disease; heart failure presenting as dyspnea",
+          "smoking-related interstitial lung abnormalities"
+        ]
+      },
+      "evidenceGaps": [
+        "No prospective polymyositis-only cohort measuring incident interstitial lung disease with dated myopathy-first ordering was located; the 103-subject cohort (PMID 27578469) is selected on anti-Jo-1 positivity with polymyositis predominant in 64%; the 130-patient cohort (PMID 37005523) combines PM and DM without subgroup ILD rates; the 478-patient registry (PMID 30392161) reports ILD in 23.4% overall with 17% of ILD cases polymyositis; and the dermatomyositis window's separate evidence base is not recycled (ME-29)."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY at antibody-cohort-plus-registry class with the sibling-overlap disclosure carried openly (the batch-65 sibling-double-targeting pattern, existing edge untouched): the anti-Jo-1 cohort documents ILD with polymyositis predominant in 64 percent (PMID 27578469), the PM/DM cohort documents ILD in half with antibody and symptom risk factors (PMID 37005523), and the Spanish registry documents ILD across the myositis spectrum (PMID 30392161); because the anchors combine subtypes and concurrent diagnosis is common, the conservative standard keeps the edge at association only and routes individual claims through dated pulmonary function, high-resolution CT, and myositis-antibody records with infection, drug-induced, and overlap-disease exclusion; the existing dermatomyositis to interstitial-lung-disease edge is left untouched and its sources are not recycled.",
+      "sourceReferences": [
+        {
+          "citation": "Zamora AC, Hoskote SS, Abascal-Bolado B, et al. Clinical features and outcomes of interstitial lung disease in anti-Jo-1 positive antisynthetase syndrome Respir Med. 2016 Sep;118:39-45. PMID 27578469.",
+          "note": "Retrospective cohort of 103 anti-Jo-1 positive antisynthetase syndrome subjects with ILD over 15 years (Respir Med 2016): predominant myopathy polymyositis (64%) followed by dermatomyositis (24%); NSIP most common HRCT pattern (52%), NSIP overlapping organizing pneumonia 22%; restriction in 98%; ILD and syndrome diagnosed within 6 months in about half; 10-year survival 68%; supports the bounded antibody-associated ILD association only (selected anti-Jo-1 cohort, concurrent diagnosis common).",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/27578469/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 27578469; results (myopathy distribution, HRCT patterns, and survival)"
+        },
+        {
+          "citation": "Li T, Tang ZY, Zhang QB, et al. Clinical Characteristics and Risk Factors of Polymyositis and Dermatomyositis Combined with Interstitial Lung Disease in Patients Residing in the Northeast Sichuan Province of China Curr Rheumatol Rev. 2023;19(4):455-462. PMID 37005523.",
+          "note": "Retrospective cohort of 130 PM/DM patients (Curr Rheumatol Rev 2023): 65 with ILD and 65 without; anti-Jo-1 positivity, dry cough, arthritis, exertional dyspnea, older age, and elevated globulin were independent ILD risk factors; Raynaud phenomenon and respiratory symptoms more frequent with ILD; supports the bounded PM/DM-ILD association only (combined subgroup).",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/37005523/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 37005523; results (ILD prevalence and multivariable risk factors)"
+        },
+        {
+          "citation": "Cobo-Ibáñez T, López-Longo FJ, Joven B, et al. Long-term pulmonary outcomes and mortality in idiopathic inflammatory myopathies associated with interstitial lung disease Clin Rheumatol. 2019 Mar;38(3):803-815. PMID 30392161.",
+          "note": "Multicentre retrospective Spanish registry of 478 idiopathic inflammatory myopathy patients (Clin Rheumatol 2019): 112 (23.4%) had ILD - distributed 17% polymyositis, 16% dermatomyositis, 45% antisynthetase syndrome, 22% overlap myositis; early ILD progression, severe infections, and diagnostic delay predicted mortality; supports the bounded spectrum-level ILD association only (subtype-mixed).",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/30392161/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 30392161; results (ILD prevalence across myositis subtypes and prognostic factors)"
+        }
+      ]
+    },
+    {
+      "conditionId": "dysphagia",
+      "rank": 2,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Polymyositis associates with swallowing impairment at instrumental-cohort level: the 51-patient idiopathic inflammatory myopathy cohort assessed by oro-pharyngeal-esophageal scintigraphy documents at least one transit or retention alteration in every patient, with oral and pharyngeal levels more frequently involved than the esophageal tract, severity correlating very well with patient-reported dysphagia, and shorter disease duration associated with more prevalent oral and pharyngeal alterations (PMID 31012534); recorded as documented association only with the sibling-overlap and subtype-composition limits carried openly - the existing dermatomyositis to dysphagia edge and its dermatomyositis-specific sources (including the dermatomyositis dysphagia meta-analysis) are left untouched and none is recycled here per ME-29, and the cohort spans the myositis spectrum without reporting its polymyositis composition.",
+        "causationStatus": "Neither causation nor aggravation of dysphagia is established for any individual: the anchor is a single 51-patient cross-sectional cohort mixing myositis subtypes without polymyositis-specific prevalence, the scintigraphic alterations are subclinical transit findings rather than clinically diagnosed dysphagia in all cases, and individual claims require dated swallowing assessment with videofluoroscopy or scintigraphy and exclusion of stroke, neurodegenerative disease, esophageal stricture or dysmotility, candidiasis, and treatment-related mucositis."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "SYSTEMIC_INFLAMMATORY",
+        "primaryVector": "Autoimmune inflammation of the pharyngeal and cricopharyngeal striated musculature and upper esophageal sphincter weakens swallowing propulsion so oral and pharyngeal transit slows and retention rises, culminating in clinically evident dysphagia and aspiration risk in severe cases, the myogenic route supported by the scintigraphic pattern of predominantly oral and pharyngeal involvement correlating with disease activity, but whether this route produced any individual dysphagia remains hypothesized until swallowing, myositis, and treatment records are reviewed.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The association is supported at one 51-patient instrumental cohort with one review-class construct and no polymyositis-stratified prevalence study: the cohort mixes polymyositis, dermatomyositis, and antisynthetase cases without reporting subtype composition, alterations were detectable in all patients under sensitive scintigraphy so the measure captures subclinical dysfunction, the association with worse prognosis rests on cross-sectional correlation, and the dermatomyositis-specific meta-analysis is deliberately not recycled (ME-29).",
+        "evidenceGaps": "No polymyositis-stratified dysphagia prevalence cohort was located; the anchor (PMID 31012534) is a 51-patient mixed-IIM cohort with unreported subtype composition and scintigraphic rather than clinical endpoints; aspiration incidence is unquantified; and the dermatomyositis dysphagia literature (including the 39-study DM meta-analysis, PMID 37010885, and the dermatomyositis-window sources) is not recycled per ME-29 and is recorded here as the sibling window's evidence base.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "stroke and neurodegenerative dysphagia including inclusion body myositis (a distinct myopathy with its own dysphagia literature)",
+          "esophageal stricture, dysmotility, and gastroesophageal reflux disease (the gerd and esophageal-stricture windows own their routes)",
+          "oropharyngeal candidiasis and treatment-related mucositis from immunosuppression",
+          "dermatomyositis as the sibling myopathy (the dermatomyositis to dysphagia edge owns its DM-specific evidence per ME-29)",
+          "cachexia and deconditioning from severe proximal weakness"
+        ]
+      },
+      "evidenceGaps": [
+        "No polymyositis-stratified dysphagia prevalence cohort was located; the anchor (PMID 31012534) is a 51-patient mixed-IIM cohort with unreported subtype composition and scintigraphic rather than clinical endpoints; aspiration incidence is unquantified; and the dermatomyositis dysphagia literature (including the 39-study DM meta-analysis, PMID 37010885, and the dermatomyositis-window sources) is not recycled per ME-29 and is recorded here as the sibling window's evidence base."
+      ],
+      "rationale": "Authored at ASSOCIATION_ONLY at instrumental-cohort class with the sibling-overlap and subtype-composition limits carried openly: the 51-patient scintigraphy cohort documents transit alterations in all patients with predominantly oral and pharyngeal involvement correlating with disease activity and prognosis (PMID 31012534); because the cohort mixes myositis subtypes without polymyositis-specific prevalence and the measure captures subclinical dysfunction, the conservative standard keeps the edge at association only and routes individual claims through dated videofluoroscopic or scintigraphic swallowing assessment with stroke, neurodegenerative, structural-esophageal, and treatment-related exclusion; the existing dermatomyositis to dysphagia edge is left untouched and its sources are not recycled.",
+      "sourceReferences": [
+        {
+          "citation": "Barsotti S, Puccini G, Tripoli A, et al. Assessment of swallowing function with oro-pharyngeal-esophageal scintigraphy in patients with idiopathic inflammatory myopathies Neurogastroenterol Motil. 2019 Jul;31(7):e13599. PMID 31012534.",
+          "note": "Cross-sectional cohort of 51 idiopathic inflammatory myopathy patients assessed with oro-pharyngeal-esophageal scintigraphy (Neurogastroenterol Motil 2019): at least one alteration in all patients, most marked with semisolids at oral and pharyngeal levels (more frequent than esophageal involvement, p<0.05); good correlation between scintigraphic measures and patient-reported dysphagia severity; shorter disease duration associated with more oral/pharyngeal alterations; supports the bounded swallowing-dysfunction association only (mixed subtypes, cross-sectional).",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/31012534/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-26",
+          "sourceLocator": "PMID 31012534; results (scintigraphic transit alterations and clinical correlations)"
+        }
+      ]
+    }
+  ]
 }
