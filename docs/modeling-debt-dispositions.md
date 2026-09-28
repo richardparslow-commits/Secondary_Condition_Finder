@@ -169,6 +169,66 @@ variant name while the pointers exist (the catalog invariant keeps variant names
 a future catalog-v3 migration may retire the pointer IDs and fold the variant names into the canonical
 entries as aliases.
 
+## Dermatitis composite-scope adjudication 2026-09-28 — `dermatitis` audited against the eczema scope split (three atopic-evidence edges superseded, two infection edges retained)
+
+**Disposition: the composite identity `dermatitis` ("Dermatitis (Atopic / Contact)") may hold subtype-agnostic
+dermatitis windows only. Its three atopic-evidence edges (`insomnia`, `depressive-disorder`, `anxiety-disorder`)
+are superseded as claim windows and preserved as registered records; its two infection edges (`cellulitis`,
+`impetigo`) are retained as its live generic windows.** This applies the 2026-09-28 `eczema` /
+`atopic-dermatitis-eczema` scope split to the third identity in the skin family:
+
+- **The composite and its two named halves.** `dermatitis` is named for two halves ("Atopic / Contact"), and
+  after the scope split each half is carried by a more specific sibling: the atopic half by
+  `atopic-dermatitis-eczema`, the owner of the atopic-disease route; the contact half by `contact-dermatitis`.
+  A composite whose named halves are each carried by a sibling keeps only what neither sibling carries: the
+  subtype-agnostic dermatitis windows.
+- **The five edges divide by evidence class, not by name.**
+  - `dermatitis → insomnia` (rank 1), `→ depressive-disorder` (rank 4), `→ anxiety-disorder` (rank 5) are
+    **ATOPIC-EVIDENCE EDGES**: every quantified anchor is an adult atopic-dermatitis population — Bawany 2021
+    AD sleep review (PMID 33321263), Silverberg 2022 US AD sleep survey n=2,893 (PMID 33675326), Fasseeh 2022
+    AD burden systematic review (PMID 36197589), Mann 2020 urticaria-and-AD ISI flare pilot (PMID 32016441).
+  - `dermatitis → cellulitis` (rank 2) and `→ impetigo` (rank 3) are **NOT atopic-evidence**: their anchors
+    (Cranendonk 2017 cellulitis pathophysiology review, Moses 2003 pruritus review, Hartman-Adams 2014
+    impetigo review) are subtype-agnostic barrier, pruritus and superinfection reviews, so both edges remain
+    this identity's live generic windows.
+- **Why the three edges are superseded rather than re-scoped (claim unreachability).** The batch-20
+  generic-identity guard ("individual-level attribution must anchor to the patient's specific subtype"), read
+  against the split, exhausts their claim contexts: if the documented diagnosis is atopic dermatitis, the
+  claim resolves to `atopic-dermatitis-eczema`, which owns the atopic route; if it is contact, stasis,
+  nummular or unspecified dermatitis, the adult-AD anchors do not reach it. Keeping the three edges live
+  under the composite would either double-route the atopic sleep/mood window across two identities or
+  end-run the split's ownership rule through the composite's name.
+- **Preservation guarantee.** Zero registry rows moved. The five `rel-dermatitis-to-*` relationships keep
+  their exact relationship objects, hash forms and registered sources — `rel-dermatitis-to-insomnia` (three
+  source uses), `rel-dermatitis-to-cellulitis` (two), `rel-dermatitis-to-impetigo` (three),
+  `rel-dermatitis-to-depressive-disorder` (three), `rel-dermatitis-to-anxiety-disorder` (two) — and the
+  registered suggestion text is deliberately untouched (batch-36 discipline). Supersession is
+  annotation-level: the disposition is recorded in `data/knowledge-base/dermatitis.json` and the batch-20
+  todos and governance notes are annotated, not rewritten.
+- **The duplicate-scope tension on the cellulitis target is recorded, not resolved by deletion.**
+  `rel-dermatitis-to-cellulitis` and `rel-contact-dermatitis-to-cellulitis` are parallel windows onto one
+  target from a composite identity and its contact member; both stand, one-window-per-claim applies, and a
+  claim routes through exactly one of them chosen by the documented diagnosis. The cellulitis and impetigo
+  edges of the composite also share their Moses 2003 and Cranendonk 2017 anchors and are one evidence set,
+  not independent confirmation of two separate pathways.
+- **Superseded as to atopic-evidence scope only.** The batch-27 duplicate-scope record and the 2026-09-28
+  route re-screen statement that `dermatitis` "already owns the correctly-directed window" (`dermatitis →
+  anxiety-disorder`, `→ depressive-disorder`, `→ insomnia`) are superseded as to **window ownership only**:
+  the correctly-directed atopic psychiatric-morbidity and sleep window belongs to `atopic-dermatitis-eczema`.
+  The withholdings those statements support (`ptsd → eczema`, `anxiety-disorder → eczema`) stand unchanged on
+  their own evidence grounds and are **not** reopened. Correspondingly, the `atopic-dermatitis-eczema`
+  governance note refusing duplicate-scope restatements of "the dermatitis → insomnia ... or mood routes" is
+  superseded as to the insomnia and mood targets only: exactly one future authoring pass under that identity
+  may register the atopic sleep/mood window after explicit ME-29 adjudication of the preserved composite-side
+  records and their PMIDs; its cellulitis/impetigo duplicate-scope refusal stands.
+- **Alias hazard fixed (bare-`tear`-alias precedent).** The composite carried the bare aliases `atopic` and
+  `contact`, which resolved sibling-owned disease words into the composite — the same hazard class as the
+  bare `tear` alias removed in the umbrella/member adjudication. Both are removed; the bare generic alias
+  `dermatitis` is self-scoped and remains. `tests/dermatitis-composite-scope.test.ts` pins the alias set, the
+  per-edge evidence-class dispositions, the supersession annotations at the siblings, and the preserved
+  five relationships with their registered source uses.
+- Nothing here moves the frozen identity contract: no identity was added, retired, merged or renamed.
+
 ## Other physical-placement and grouped-identity debt
 
 The endocrine and pulmonary-hypertension maintenance sequence has already corrected the major known cross-system physical placements without changing stable IDs. Any newly discovered cross-system placement, grouped identity, obsolete code, or over-broad alias must be handled as a separate bounded change with:
@@ -181,7 +241,7 @@ The endocrine and pulmonary-hypertension maintenance sequence has already correc
 
 ## v2 closure rule
 
-The five named items above are **not open blockers to the current clinical evidence program** after these dispositions are recorded. They are controlled modeling states:
+The six named items above are **not open blockers to the current clinical evidence program** after these dispositions are recorded. They are controlled modeling states:
 
 - laterality placeholder quarantined;
 - historical micro-TBI label quarantined as draft;
@@ -192,6 +252,11 @@ The five named items above are **not open blockers to the current clinical evide
   `rotator-cuff-injury` corrected to umbrella/member with the member's duplication closure vacated, and
   `skier-s-thumb` / `gamekeeper-s-thumb` kept as the one genuine duplication — both pairs since reconciled
   to canonical identities (`rotator-cuff-injury`, `gamekeeper-s-thumb`) with the non-canonical identities
-  retained as quarantined pointer records.
+  retained as quarantined pointer records;
+- `dermatitis` audited against the eczema scope split and dispositioned as a composite identity: its three
+  atopic-evidence edges superseded as claim windows and preserved as registered records (the correctly-
+  directed atopic psychiatric-morbidity and sleep window is owned by `atopic-dermatitis-eczema`), its two
+  infection edges retained as subtype-agnostic windows, and the bare `atopic`/`contact` alias hazard
+  removed.
 
 A future catalog-v3 identity migration may retire or consolidate these IDs, but v2 should not violate 300/300 or silently rewrite stable identity history to make the debt list appear empty.

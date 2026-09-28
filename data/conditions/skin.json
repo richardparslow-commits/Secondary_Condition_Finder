@@ -70,8 +70,6 @@
       "id": "dermatitis",
       "name": "Dermatitis (Atopic / Contact)",
       "aliases": [
-        "atopic",
-        "contact",
         "dermatitis"
       ],
       "bodySystem": "Skin Conditions",
@@ -82,7 +80,9 @@
           "verified": false
         }
       ],
-      "reviewNotes": []
+      "reviewNotes": [
+        "COMPOSITE-SCOPE ADJUDICATION 2026-09-28 (docs/modeling-debt-dispositions.md): this identity is a COMPOSITE named for two halves ('Atopic / Contact'), and after the 2026-09-28 eczema scope split each half is carried by a more specific sibling - the atopic half by atopic-dermatitis-eczema (skin-expansion-wave-6.json), which owns the atopic-disease route, and the contact half by contact-dermatitis. This identity's exclusive claim window is SUBTYPE-AGNOSTIC dermatitis only (the generic barrier and skin-infection routes); an atopic-evidence claim resolves to atopic-dermatitis-eczema and documented contact dermatitis resolves to contact-dermatitis. Alias hazard fixed on the bare 'tear'-alias precedent: the bare scope-capture aliases 'atopic' and 'contact' were removed so atopic-disease words resolve to atopic-dermatitis-eczema and contact-disease words resolve to contact-dermatitis, while the bare generic alias 'dermatitis' remains self-scoped to this identity. The three atopic-evidence knowledge-base edges (insomnia rank 1, depressive-disorder rank 4, anxiety-disorder rank 5) are SUPERSEDED AS CLAIM WINDOWS and preserved as registered records only (see data/knowledge-base/dermatitis.json and docs/modeling-debt-dispositions.md); the two infection edges (cellulitis, impetigo) remain this identity's live generic windows. The shared 38 CFR 4.118 rating framework establishes neither shared etiology nor secondary causation."
+      ]
     },
     {
       "id": "eczema",
