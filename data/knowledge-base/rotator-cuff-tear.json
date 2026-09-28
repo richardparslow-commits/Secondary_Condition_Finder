@@ -3,7 +3,12 @@
   "draft": true,
   "todo": [
     "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review biomechanical, post-injury, orthopedic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "Review biomechanical, post-injury, orthopedic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority.",
+    "WITHHELD pending catalog reconciliation (batch 82, 2026-09-27): this identity duplicates rotator-cuff-injury, which is the identity already carrying a registered edge. Obtain a qualified-human decision on which rotator-cuff identity is canonical, then either retire this file permanently with a pointer to the canonical entry or reopen it for authoring if it is elected canonical. Do not author secondary-condition suggestions under this identity before that decision is recorded."
   ],
-  "suggestions": []
+  "suggestions": [],
+  "governanceNotes": [
+    "D1 batch 82 (2026-09-27): NOT AUTHORED - IDENTITY-DUPLICATION closure. The condition catalog carries BOTH rotator-cuff-tear (this file, musculoskeletal-expansion-wave-2.json) and rotator-cuff-injury (musculoskeletal.json, named Rotator Cuff Tendonitis / Tear) as OPEN identities for the same disease, and rotator-cuff-injury is the identity already carrying a registered edge, namely bicipital-tendinitis to rotator-cuff-injury authored in batch 4 with Braun PMID 21335355 and Sethi PMID 10633904. Authoring edges under this identity would fork one disease across two catalog records and split any future evidentiary work between them, so this file is closed as a duplicate rather than authored. This is the SECOND identity-duplication finding after eczema and atopic-dermatitis-eczema recorded in batch 80, and the two together indicate a recurring catalog hygiene problem rather than two isolated coincidences.",
+    "Standing recommendation for the reviewer: the two rotator-cuff identities should be reconciled into a single canonical entry with a pointer, preserving the existing bicipital-tendinitis to rotator-cuff-injury edge and its two registered sources. This closure is deliberately reversible: if the catalog is later reconciled with this identity elected canonical rather than rotator-cuff-injury, this file can be reopened and authored, and nothing in this note prevents that. The reconciliation itself was NOT performed in batch 82 because deduplication changes the meaning of existing mappings and the catalog identity that other files reference, which is a reviewed decision rather than a side effect of a citation batch. See also the batch 82 roadmap ledger entry, which records this as the eleventh evidence-preserving refusal and notes the unresolved eczema and atopic-dermatitis-eczema duplication alongside it."
+  ]
 }

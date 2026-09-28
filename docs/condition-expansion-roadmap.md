@@ -4697,3 +4697,126 @@ sources. Backlog after batch 81: **91** undispositioned zero-edge drafts. Next-f
 **Catalog gaps surfaced, not resolved here:** facial nerve palsy, NSAID-exacerbated respiratory disease / aspirin
 hypersensitivity (the criterion that distinguishes Samter's triad from ordinary asthma with chronic rhinosinusitis),
 obesity, metabolic syndrome, and the `rotator-cuff-tear` / `rotator-cuff-injury` identity duplication.
+
+## Mapping Expansion D1 batch 82 (2026-09-27)
+
+Five candidates screened, four authored, one closed. The batch authored **10 ASSOCIATION_ONLY edges over 30
+reference uses across 25 PMIDs, all 25 confirmed new** before authoring. The backlog fell **91 → 86** and
+`rotator-cuff-tear` left the queue entirely via a closure recorded in the knowledge base itself.
+
+**Authored edges**
+
+| Primary | Target | Rank | Mechanism |
+|---|---|---|---|
+| `scleritis` | `uveitis` | 1 | SYSTEMIC_INFLAMMATORY |
+| `scleritis` | `rheumatoid-arthritis` | 2 | SYSTEMIC_INFLAMMATORY |
+| `scleritis` | `systemic-lupus-erythematosus` | 3 | SYSTEMIC_INFLAMMATORY |
+| `scotoma` | `cerebrovascular-accident-stroke-residuals` | 1 | THROMBOTIC_OR_VASCULAR |
+| `scotoma` | `migraine-headaches` | 2 | NEUROENDOCRINE_CASCADE |
+| `scotoma` | `seizure-disorder` | 3 | NEUROLOGICAL_DEGENERATION |
+| `scotoma` | `multiple-sclerosis` | 4 | IMMUNE_MEDIATED |
+| `seborrheic-dermatitis` | `parkinsons-disease` | 1 | NEUROLOGICAL_DEGENERATION |
+| `seborrheic-dermatitis` | `hiv-aids` | 2 | INFECTIOUS_SPREAD |
+| `seborrheic-keratosis` | `colorectal-cancer` | 1 | MALIGNANT_TRANSFORMATION |
+
+**`rotator-cuff-tear` closed on identity-duplication — the eleventh evidence-preserving refusal.** The catalog carries
+both `rotator-cuff-tear` (`musculoskeletal-expansion-wave-2.json`) and `rotator-cuff-injury`
+(`musculoskeletal.json`, named "Rotator Cuff Tendonitis / Tear") as open identities for the same disease, and
+`rotator-cuff-injury` is the one already carrying a registered edge, `bicipital-tendinitis->rotator-cuff-injury` from
+batch 4 (Braun PMID 21335355, Sethi PMID 10633904). Authoring under the tear identity would fork one disease across two
+catalog records. The closure is recorded as a governance note plus a non-template todo **in the knowledge-base file
+itself**, per the standing rule in `scripts/report-authoring-backlog.js` that closures live in the knowledge base and
+not in a batch's working notes, and the backlog filter now counts it among marked deferral records. The closure is
+deliberately reversible: if a later reconciliation elects `rotator-cuff-tear` canonical, the file can be reopened.
+
+This is the **second** identity-duplication finding after `eczema` / `atopic-dermatitis-eczema` in batch 80. Two
+independent hits in consecutive batches indicate a recurring catalog-hygiene problem rather than coincidence, and both
+remain **unreconciled** — deduplication changes the meaning of existing mappings and is a reviewed decision, not a side
+effect of a citation batch.
+
+**The four scotoma edges are ETIOLOGIC, not consequential.** The catalog `scotoma` is a *visual field finding*, not a
+disease with its own pathology. Every one of its causation statuses states in terms that the **target** produces the
+defect, and that the edge may not be read in its own name direction. The four targets are registered as a **competing
+aetiological differential** of a single presentation rather than as four independent routes, on the located evidence
+that the adult occipital-epilepsy cohort reports **75 percent co-morbid interictal migraine** (PMID 33900448) and the
+visual-aura systematic review states that aura is often difficult to distinguish from transient ischaemic attack and
+from epilepsy (PMID 31146673). The same cohort reports visual field defects in 38 percent of patients and simple visual
+hallucinations **misdiagnosed in 40 percent of cases**, which is the located justification for keeping an epileptic
+aetiology visible on a visual-field file at all.
+
+**A registry-defining reservation adopted rather than disputed.** The international scleritis registry (154 patients,
+218 eyes) states explicitly that uveitis and peripheral ulcerative keratitis were considered *extensions of the
+inflammatory process* and **not** true structural complications. The `scleritis->uveitis` edge adopts that framing in
+its causation status, which is precisely why that edge cannot be causal. The same registry reports 102 ocular
+complications in 58 of 154 patients, with cataract, scleral and corneal thinning, and glaucoma most frequent.
+
+**Referral bias named as a live threat to the scleritis associations.** A health-system-wide electronic-record review
+(PMID 33407267) states that prior series assessed systemic autoimmune disease in scleritis **only in patients referred
+for rheumatology or ocular inflammation**, which introduces referral bias, and corrects for it across all charts. This
+is why PMID 33728815 — a population-based analysis of **10,939,823 patients** with 2,946 incident scleritis cases against
+12,020 matched controls — is registered as the association anchor rather than the ophthalmology-clinic literature. Both
+systemic-disease edges also state the **reverse arrow**: the systemic disease is the antecedent, so the clinically
+operative arrow runs *to* scleritis and these edges are the reciprocal view. The rank 3 lupus edge is registered at
+**explicitly lower evidential density** than the rank 2 rheumatoid edge, because no located anchor reports a
+pair-specific effect estimate for that pairing.
+
+**A mechanism-vocabulary mismatch disclosed on the face of an edge.** `seborrheic-keratosis->colorectal-cancer` is
+registered at `MALIGNANT_TRANSFORMATION`, the closest available category, but the located evidence describes the
+**Leser-Trélat sign, a paraneoplastic screening signal for internal malignancy** — not transformation of a keratosis.
+The edge states that a reviewer must treat the mechanism field as naming the clinical context of malignancy
+association and must **not** read it as asserting that any individual keratosis becomes malignant. The clinical arrow
+runs from the internal malignancy to the skin eruption, and the edge records the skin presentation as a screening
+signal only. The synchronous prostate-and-bladder-cancer case (PMID 41158917) is registered **deliberately as evidence
+of non-specificity** so the edge cannot be read as claiming a colon-specific route.
+
+**Nulls carried openly as counterweights.** The seborrhoeic scoping review's findings for hypertension, diabetes, and
+obesity were **not statistically significant** (PMID 39669846) — these are the comorbidities a reviewer is most likely
+to assume. The HIV clinicopathological study found **no significant correlation** between seborrhoeic-like dermatitis
+severity and CD4 count, viral load, or therapy (PMID 32379092), a direct null on the assumption that the skin disease
+tracks HIV disease activity. The same scoping review notes the prevalence of comorbid seborrhoeic dermatitis **may be
+decreasing** as antiretroviral therapy use increases, so the association may be attenuating contemporarily. The
+meta-analysis (145 articles, 41,285 people with HIV) reports an overall dermatological prevalence of 76 percent
+(95% CI 72–81) with **I² = 97%** heterogeneity, which is disclosed so the pooled figure is not over-read.
+
+**Withheld routes, with reasons**
+
+- `scleritis -> glaucoma` and `-> cataracts` — **DUPLICATE-SCOPE.** The registry already carries direct
+  `uveitis->glaucoma` and `uveitis->cataracts` edges and this file's uveitis edge is authored in the same batch, so
+  either would register the same route twice at different indirection and add a direct-versus-chain redundancy
+  conflict — **even though the same registry names these the commonest complications of scleritis.** Withholding held
+  the redundancy baseline at 28/28 with zero new conflicts, the third consecutive batch to do so.
+- `seborrheic-dermatitis -> psoriasis` — **SCOPE and IDENTITY-RISK.** This batch deliberately adds **no** edge to
+  either eczema identity while that duplication is open.
+- `seborrheic-dermatitis -> fungal-skin-infection` — **MECHANISM-CLASS MISMATCH.** Seborrhoeic dermatitis is
+  associated with *Malassezia*, a lipophilic yeast commensal; the catalog identity is dermatophyte *Tinea*. The
+  meta-analysis lists dermatophytosis as a condition **separate** from seborrhoeic dermatitis.
+- `seborrheic-dermatitis -> depressive-disorder` — **DIRECTION REVERSAL.** The located scoping review conditions on
+  psychiatric illness (≈16 percent of individuals with psychiatric disorders had seborrhoeic dermatitis), so the arrow
+  runs psychiatric-to-skin, not the reverse.
+- `seborrheic-dermatitis -> osteoporosis` — **THIN SUPPORT**, recorded as a named candidate for a future batch: a
+  single cited finding inside a narrative scoping review with no companion anchor.
+- `seborrheic-keratosis -> skin-cancer` — **CATEGORY ERROR.** That identity denotes cutaneous malignancy whereas
+  Leser-Trélat signals **internal** malignancy. `-> basal-cell-carcinoma` and `-> squamous-cell-carcinoma` withheld as
+  **EVIDENCE-INSUFFICIENT**; genuine transformation of an individual keratosis is rare and no anchor was located.
+- `scotoma -> glaucoma` and `-> cataracts` — **SCOPE-MISMATCHED**: the located evidence concerns homonymous
+  post-geniculate and optic-nerve defects, not arcuate or glaucomatous field loss.
+- `scotoma -> transient-ischaemic-attack-residuals` — recorded as an **UNRESOLVED GAP** rather than authored: it is
+  the more common presentation of a transient scotomatous defect, yet no located anchor addresses it.
+- `scotoma -> optic-neuritis` — **DUPLICATE-SCOPE and MISSING IDENTITY**; the registry already carries
+  `multiple-sclerosis->optic-neuritis`, so a scotoma route would insert an indirection between a finding and a cause it
+  already reaches through the rank 4 edge.
+
+**Source-strength disclosures.** PMID 32496733 is a StatPearls tertiary chapter, disclosed as the weakest source class
+among that edge's three references. PMID 29244652 was located and reviewed but **not registered** — the three-reference
+cap applies and that record is indexed without abstract text.
+
+**Sibling check, no duplication found.** `seborrheic-dermatitis` and `seborrheic-keratosis` share
+`skin-expansion-wave-6.json` but are genuinely distinct diseases, an inflammatory Malassezia-associated eruption and a
+benign epithelial tumour, so no identity-duplication finding is recorded for them.
+
+**Registry after lockstep:** 811 relationships (737 explicit / 74 legacy), 1,523 reference uses (383 verified /
+1,140 pending-verification), 1,351 source entities (346 active / 996 pending-verification). Citation packet regenerated
+at 448 edges / 1,140 reference rows; dashboard at 1,140 pending rows across 48 batches and 996 distinct sources.
+Draft-singles moved **301 → 302** because `seborrheic-keratosis` was authored with a single edge.
+Backlog after batch 82: **86**. Next-five: `selective-mutism`, `separation-anxiety-disorder`, `sever-s-disease`,
+`short-qt-syndrome`, `shoulder-disarticulation`.

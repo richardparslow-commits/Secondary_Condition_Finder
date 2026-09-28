@@ -15861,6 +15861,406 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 **Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
 
+### `scleritis` → `uveitis` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Concomitant uveitis is the best-documented ocular companion of scleritis, and the largest located registry quantifies it both as a marker of more severe disease and as the single strongest predictor of structural complications: the AutoInflammatory Disease Alliance Network scleritis registry reports 154 patients with 218 eyes of non-infectious scleritis, records 102 ocular complications in 58 patients across 87 eyes, finds the most frequent complications to be cataract, scleral and corneal thinning, and glaucoma or increased ocular pressure, and reports that ocular complications were significantly more frequent among patients with granulomatosis with polyangiitis (p<0.0001) and with CONCOMITANT UVEITIS (p=0.023) (PMID 42105127); a population-based United Kingdom analysis of 10,939,823 patients with 2,946 incident scleritis cases characterises scleritis as a disease defined by its associations with infectious and immune-mediated inflammatory disease (PMID 33728815); and a single-centre cohort of 69 patients with 96 eyes reports non-infectious scleritis in 56 eyes (58.3 percent) against 40 eyes (41.7 percent) presumed infectious, with idiopathic disease and spondyloarthropathy common in the non-infectious group and tuberculosis-associated disease predominating in the presumed infectious group, and with the authors stressing the need for careful etiologic evaluation in tuberculosis-endemic settings (PMID 42377600); recorded as documented association only, with the registry's own definitional reservation carried openly rather than argued around.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual, and the largest anchor explicitly declines to treat the relationship as a complication at all: the scleritis registry states that uveitis and peripheral ulcerative keratitis were considered EXTENSIONS OF THE INFLAMMATORY PROCESS rather than true structural complications, which is a definitional choice that this edge adopts rather than disputes, meaning the located evidence treats uveitis as a concurrent expression of the same disease rather than a consequence of scleritis. The reported association is therefore not a temporal sequence, and the p=0.023 figure describes how often complications occur in eyes that already carry concomitant uveitis, not what fraction of uveitis follows scleritis. The population-based anchor supplies the association structure but its located abstract does not report uveitis-specific incidence, and the Indonesian cohort is explicitly limited by its retrospective design, incomplete follow-up, and limited microbiological confirmation, with a high proportion of tuberculosis-associated cases that constrains generalisation. Individual claims require a dated ophthalmology assessment documenting uveitis independently, with slit-lamp or anterior-segment OCT evidence and an infectious workup separating non-infectious from tuberculosis-associated or other presumed infectious disease, since the located cohort shows the infectious proportion is not negligible even in a non-endemic-pattern clinic.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 439.1 — Sota J, Hinojosa-Azaola A, de-la-Torre A, et al. Determinants of Non-infectious Scleritis Complications and Their Impact on Visual Outcome: Results from the International AIDA Network Scleritis Registry Ophthalmol Ther. 2026 Jun;15(6):2081-2093. doi: 10.1007/s40123-026-01390-5. PMID 42105127. PMID 42105127.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42105127/
+- Source checked on: 2026-09-27
+- Locator: Ophthalmol Ther. 2026;15:2081-2093. Registry-based study, AutoInflammatory Disease Alliance Network Scleritis Registry, 154 patients (218 eyes); abstract states 102 ocular complications were recorded in 58 patients (87 eyes), that uveitis and peripheral ulcerative keratitis were considered extensions of the inflammatory process and not true structural complications, and that complications were significantly more frequent among patients with GPA (p<0.0001) and concomitant uveitis (p=0.023).
+- Note under review: International AIDA Network scleritis registry of 154 patients and 218 eyes of non-infectious scleritis recording 102 ocular complications in 58 patients across 87 eyes, naming cataract, scleral and corneal thinning, and glaucoma or increased ocular pressure as most frequent, reporting complications significantly more frequent with granulomatosis with polyangiitis (p<0.0001) and with concomitant uveitis (p=0.023), and explicitly treating uveitis and peripheral ulcerative keratitis as extensions of the inflammatory process rather than true structural complications.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 439.2 — Braithwaite T, Adderley NJ, Subramanian A, et al. Epidemiology of Scleritis in the United Kingdom From 1997 to 2018: Population-Based Analysis of 11 Million Patients and Association Between Scleritis and Infectious and Immune-Mediated Inflammatory Disease Arthritis Rheumatol. 2021 Jul;73(7):1267-1276. doi: 10.1002/art.41709. PMID 33728815. PMID 33728815.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/33728815/
+- Source checked on: 2026-09-27
+- Locator: Arthritis Rheumatol. 2021;73(7):1267-1276. Retrospective cross-sectional and population cohort study, The Health Improvement Network, 1997-2018, 10,939,823 patients with 2,946 incident scleritis cases; case-control arm 3,005 incident cases and 12,020 matched controls, 1995-2019. The only located anchor that is not referral-selected.
+- Note under review: Population-based United Kingdom analysis of 10,939,823 patients containing 2,946 incident scleritis cases from 1997 to 2018, with a matched case-control and cohort arm of 3,005 incident scleritis cases and 12,020 age-, sex-, region- and deprivation-matched controls, estimating 22-year trends in scleritis incidence and prevalence and the associations of scleritis with infectious and immune-mediated inflammatory disease, adjusted for age, sex, Townsend deprivation index, race or ethnicity, smoking status, nation and body mass index.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 439.3 — Advani MS, Putri BM, Susiyanti M. Clinical characteristics, management, and visual outcomes of presumed infectious and non-infectious anterior scleritis in a tuberculosis-endemic Indonesian Tertiary Center Int Ophthalmol. 2026 Jun 30;46(1). pii: 274. doi: 10.1007/s10792-026-04129-0. PMID 42377600. PMID 42377600.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42377600/
+- Source checked on: 2026-09-27
+- Locator: Int Ophthalmol. 2026;46:274. Retrospective cohort, Department of Ophthalmology, Dr. Cipto Mangunkusumo National General Hospital, January 2019 to December 2023; abstract states 69 patients (96 eyes), mean age at presentation 38.5 years, non-infectious 56 eyes (58.3%) versus presumed infectious 40 eyes (41.7%), and notes interpretation is limited by retrospective design, incomplete follow-up, and limited microbiologic confirmation.
+- Note under review: Single-tertiary-centre cohort of 69 patients and 96 eyes of scleritis reporting non-infectious disease in 56 eyes (58.3 percent) and presumed infectious disease in 40 eyes (41.7 percent), with tuberculosis-associated disease predominating in the infectious group and idiopathic disease and spondyloarthropathy common in the non-infectious group, and with the authors emphasising the need for careful etiologic evaluation in tuberculosis-endemic settings.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `scleritis` → `rheumatoid-arthritis` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Rheumatoid arthritis is the systemic disease most consistently associated with scleritis, and the located evidence spans a population-based analysis of 10,939,823 patients, an EMR-wide review designed specifically to avoid referral bias, and a dedicated review of the rheumatoid ocular manifestations: the population-based United Kingdom analysis of 2,946 incident scleritis cases against 12,020 matched controls characterises scleritis as a disease whose defining epidemiology is its association with immune-mediated inflammatory disease, with adjustment for age, sex, deprivation index, race or ethnicity, smoking status, nation, and body mass index (PMID 33728815); a health-system-wide electronic-record analysis of all charts carrying systemic autoimmune and scleritis diagnoses states explicitly that prior series assessed the relationship between systemic autoimmune disorders and scleritis only in patients referred for rheumatology or ocular inflammation, which introduces referral bias, and that the EMR-wide review was conducted to determine the prevalence of both and which disorders carried the highest relative risk of developing scleritis (PMID 33407267); and a review of rheumatoid arthritis-associated ocular disease reports that scleritis and peripheral ulcerative keratitis are less common than dry eye disease but represent severe inflammatory complications generally requiring systemic immunosuppression, with escalation to biologic disease-modifying antirheumatic drugs including tumour necrosis factor inhibitors and rituximab supported for refractory scleritis and corneal melt, though the evidence is described as largely observational (PMID 42122940); recorded as documented association only with the direction of the relationship stated explicitly.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation of rheumatoid arthritis is established for any individual, and the direction here is the reverse of the clinical sequence: in every located design the systemic disease is the antecedent and the ocular manifestation is the consequent, so the clinically operative arrow runs rheumatoid-arthritis to scleritis, and this edge is registered as the reciprocal view of that relationship rather than as a claim that scleritis produces rheumatoid arthritis. The located evidence does not permit even a clean reciprocal reading, because the health-system review reports only prevalence of co-diagnosis and relative risk of developing scleritis from the systemic side, and its own stated motivation is that prior work was referral-biased, which means the magnitude of any association is better estimated from the population anchor than from the ophthalmology-clinic literature. The dedicated rheumatoid-ocular review is a narrative synthesis rather than a pooled estimate, and it states plainly that the biologic-escalation evidence is largely observational. Individual claims require a dated rheumatoid arthritis diagnosis with serology, rheumatoid factor and anti-cyclic citrullinated peptide status, disease activity measures, and a dated scleritis diagnosis, and the reviewing clinician should note that the temporal sequence runs from the systemic disease to the eye, not the reverse.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 440.1 — Braithwaite T, Adderley NJ, Subramanian A, et al. Epidemiology of Scleritis in the United Kingdom From 1997 to 2018: Population-Based Analysis of 11 Million Patients and Association Between Scleritis and Infectious and Immune-Mediated Inflammatory Disease Arthritis Rheumatol. 2021 Jul;73(7):1267-1276. doi: 10.1002/art.41709. PMID 33728815. PMID 33728815.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/33728815/
+- Source checked on: 2026-09-27
+- Locator: Arthritis Rheumatol. 2021;73(7):1267-1276. Retrospective cross-sectional and population cohort, The Health Improvement Network, 1997-2018, adjusted for age, sex, Townsend deprivation index, race/ethnicity, smoking status, nation within the UK, and body mass index. The only located anchor free of referral bias.
+- Note under review: Population-based United Kingdom analysis of 10,939,823 patients containing 2,946 incident scleritis cases from 1997 to 2018 with a matched case-control and cohort arm of 3,005 incident cases and 12,020 controls, estimating scleritis incidence and prevalence and the associations of scleritis with infectious and immune-mediated inflammatory disease with multivariable adjustment.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 440.2 — Berkenstock MK, Carey AR. Health system wide "big data" analysis of rheumatologic conditions and scleritis BMC Ophthalmol. 2021 Jan 6;21(1):14. doi: 10.1186/s12886-020-01769-3. PMID 33407267. PMID 33407267.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/33407267/
+- Source checked on: 2026-09-27
+- Locator: BMC Ophthalmol. 2021;21:14. Retrospective EMR-wide review, all charts searched for scleritis and systemic inflammatory diagnoses in past medical history and diagnosis tabs plus disease-specific laboratory values; abstract states the development of scleritis in the setting of autoimmune conditions has been well documented but that prior series were referral-limited, which this analysis was designed to correct.
+- Note under review: Health-system-wide electronic medical record analysis of all charts carrying systemic autoimmune and scleritis diagnoses, stating explicitly that prior series assessed the relationship between systemic autoimmune disorders and scleritis only in patients referred for rheumatologic or ocular inflammation, introducing referral bias, and determining the prevalence of both and which disorders carried the highest relative risk of developing scleritis.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 440.3 — Forestier MG, Calderón RM, Oliver A. An Overview of Rheumatoid Arthritis-Associated Dry Eye Disease, Scleritis, and Peripheral Ulcerative Keratitis J Clin Med. 2026 Apr 23;15(9). doi: 10.3390/jcm15093207. PMID 42122940. PMID 42122940.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42122940/
+- Source checked on: 2026-09-27
+- Locator: J Clin Med. 2026;15(9):3207. Narrative review using PubMed and Google Scholar from database inception to March 2026; abstract states scleritis and PUK are less common but represent severe inflammatory complications that generally require systemic immunosuppression, managed with corticosteroids and steroid-sparing agents, and that bDMARD escalation evidence is largely observational.
+- Note under review: Review of rheumatoid arthritis-associated ocular disease reporting that dry eye disease is the most frequent ocular manifestation of rheumatoid arthritis, that scleritis and peripheral ulcerative keratitis are less common but severe inflammatory complications generally requiring systemic immunosuppression, and that escalation to biologic disease-modifying antirheumatic drugs including tumour necrosis factor inhibitors and rituximab is supported for refractory scleritis and corneal melt although the evidence is largely observational.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `scleritis` → `systemic-lupus-erythematosus` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Systemic lupus erythematosus is the second major systemic disease associated with scleritis, and the located evidence supplies the population-level association structure, the referral-bias correction, and a directly documented ocular manifestation: the population-based United Kingdom analysis of 2,946 incident scleritis cases against 12,020 matched controls estimates the associations of scleritis with immune-mediated inflammatory disease with multivariable adjustment for age, sex, deprivation, race or ethnicity, smoking, nation, and body mass index (PMID 33728815); the health-system-wide electronic-record review states that prior series assessed systemic autoimmune disorders in scleritis only in referred patients and corrects for that referral bias across all charts carrying both diagnoses (PMID 33407267); and a secondary cohort analysis of a population-based lupus cohort examines the risks of ophthalmic disorders in patients with systemic lupus erythematosus, situating ocular involvement as a recognised complication of the systemic disease rather than an incidental association (PMID 32160869); recorded as documented association only, with the reverse direction stated and with the evidence density for this particular pair registered as lower than for the rheumatoid-arthritis pair rather than smoothed over.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation of systemic lupus erythematosus is established for any individual, and as with the rheumatoid-arthritis edge the located sequence runs from the systemic disease to the eye, so this edge is the reciprocal view and not a claim that scleritis produces lupus. The evidence density for this pair is materially weaker than for the rheumatoid pair and that is stated rather than hidden: unlike the rheumatoid-arthritis edge, no located anchor in this edge reports a systemic-lupus-erythematosus-specific or scleritis-specific effect estimate in its located abstract, and none supplies a scleritis-free comparison group for the ocular outcome, so the edge rests on the population anchor's overall immune-mediated-inflammatory-disease association structure plus the existence of a dedicated ophthalmic-risk analysis in a lupus cohort rather than on a quantified pair-specific estimate. The located cohort analyses are also largely administrative, which limits clinical phenotyping of the scleritis subtype. Individual claims require a dated systemic lupus erythematosus diagnosis meeting contemporary classification criteria with relevant autoantibody profile and complement levels, organ involvement assessment, and a separately dated scleritis diagnosis, and the reviewing clinician should note that the temporal sequence runs from the systemic disease to the ocular manifestation.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 441.1 — Braithwaite T, Adderley NJ, Subramanian A, et al. Epidemiology of Scleritis in the United Kingdom From 1997 to 2018: Population-Based Analysis of 11 Million Patients and Association Between Scleritis and Infectious and Immune-Mediated Inflammatory Disease Arthritis Rheumatol. 2021 Jul;73(7):1267-1276. doi: 10.1002/art.41709. PMID 33728815. PMID 33728815.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/33728815/
+- Source checked on: 2026-09-27
+- Locator: Arthritis Rheumatol. 2021;73(7):1267-1276. Retrospective cross-sectional and population cohort, The Health Improvement Network, 1997-2018; adjusted for age, sex, Townsend deprivation index, race/ethnicity, smoking status, nation within the UK, and body mass index. Supplies the association structure; the located abstract reports no systemic-lupus-specific estimate.
+- Note under review: Population-based United Kingdom analysis of 10,939,823 patients containing 2,946 incident scleritis cases with a matched case-control and cohort arm of 3,005 incident cases and 12,020 controls, estimating the associations of scleritis with infectious and immune-mediated inflammatory disease using multivariable Poisson, logistic, and Cox models.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 441.2 — Berkenstock MK, Carey AR. Health system wide "big data" analysis of rheumatologic conditions and scleritis BMC Ophthalmol. 2021 Jan 6;21(1):14. doi: 10.1186/s12886-020-01769-3. PMID 33407267. PMID 33407267.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/33407267/
+- Source checked on: 2026-09-27
+- Locator: BMC Ophthalmol. 2021;21:14. Retrospective EMR-wide review across all charts with scleritis and systemic inflammatory diagnoses in past medical history and diagnosis tabs plus associated laboratory values; abstract states the intersection of scleritis and systemic inflammatory diagnoses was determined to assess prevalence and relative risk.
+- Note under review: Health-system-wide electronic medical record analysis of all charts carrying systemic autoimmune and scleritis diagnoses, explicitly correcting the referral bias of prior series that assessed systemic autoimmune disorders in scleritis only in referred rheumatology or ocular inflammation patients, and determining which disorders carried the highest relative risk of developing scleritis.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 441.3 — Hsu CS, Hsu CW, Lu MC, et al. Risks of ophthalmic disorders in patients with systemic lupus erythematosus - a secondary cohort analysis of population-based claims data BMC Ophthalmol. 2020 Mar 11;20(1):96. doi: 10.1186/s12886-020-01360-w. PMID 32160869. PMID 32160869.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/32160869/
+- Source checked on: 2026-09-27
+- Locator: Risks of ophthalmic disorders in patients with systemic lupus erythematosus - a secondary cohort analysis of a population-based cohort. Secondary cohort analysis of a population-based SLE cohort; MEDLINE-indexed record establishing ophthalmic disorder risk within a lupus cohort as a studied outcome. Conditions on a lupus cohort and therefore estimates risk from the lupus side, not scleritis risk within a general population.
+- Note under review: Secondary cohort analysis of a population-based systemic lupus erythematosus cohort examining the risks of ophthalmic disorders in patients with systemic lupus erythematosus, establishing that ocular disorder risk within a lupus cohort is itself a studied and quantified phenomenon.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `scotoma` → `cerebrovascular-accident-stroke-residuals` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Occipital infarction is the commonest documented cause of a homonymous visual field defect, and the located evidence both establishes that ranking and characterises the residual defect: a cohort of 36 patients with acute occipital stroke reports that stroke is the most common cause of homonymous visual field defects, that 26 of 36 patients (72 percent) had a visual field defect at onset identified by confrontation or perimetry, and that at follow-up more than one year later 13 patients (36 percent) had a remaining defect comprising 5 homonymous hemianopias, 5 homonymous quadrantanopias, and 3 homonymous scotomas, with macular ganglion cell and inner plexiform layer and retinal nerve fibre layer thickness significantly reduced in each eye in patients with a defect compared to those without (p<0.01 for all comparisons) (PMID 34487632); a case series of three patients with bilateral homonymous visual field defects from bilateral ischaemic strokes reports a right horizontal wedge-shaped homonymous scotoma on perimetry in a patient with a chronic left occipital stroke and acute right thalamic ischaemia, and notes that two of the three patients suffered sequential bilateral strokes and were unaware of the initial scotoma (PMID 30339636); and a lesion-to-field correlation study reports the relationship between peripheral homonymous hemianopia and lesion location using cytoarchitectonic mapping (PMID 21623227); recorded as an ETIOLOGIC association, with the direction of causation stated explicitly and opposite to the edge name.
+
+**Causation boundary (causationStatus):** The direction of causation is the reverse of the edge name and this is stated in the causation status rather than argued around: the located evidence establishes that the stroke PRODUCES the visual field defect, so this edge records that posterior-circulation infarction is a documented cause of a homonymous scotoma, not that a scotoma produces a stroke. No causation is established in the direction the edge name suggests, and the edge may not be presented that way. Beyond direction, the located designs do not establish that any individual scotoma is stroke-related: the primary cohort requires acute occipital stroke as an entry criterion, so it contains no stroke-free comparison group and cannot estimate the probability that a given scotoma is vascular; the case series is three patients selected precisely for the rarity of their bilateral presentation and is not a frequency estimate; and the lesion-correlation study addresses where lesions map to field defects rather than how often defects occur. A clinically important additional limit is the located report that two of three patients in the case series were unaware of the initial scotoma, so a defect may be clinically silent and its presence in a record cannot be assumed. Individual claims require a dated posterior-circulation or occipital infarction with neuroimaging, a dated perimetry or formal visual field result, and documented visual field testing rather than subjective report.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 442.1 — Rashid AS, Rashid D, Yang G, et al. Homonymous visual field defect and retinal thinning after occipital stroke Brain Behav. 2021 Oct;11(10):e2345. doi: 10.1002/brb3.2345. PMID 34487632. PMID 34487632.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/34487632/
+- Source checked on: 2026-09-27
+- Locator: Brain Behav. 2021;11(10):e2345. Retrospective review of medical records and follow-up examinations; abstract states 36 patients met inclusion criteria, 26 (72%) had VFD at onset, 13 (36%) had remaining VFD >1 year after stroke (5 hemianopia, 5 quadrantanopia, 3 homonymous scotomas), and that GCIPL and RNFL were significantly reduced in each eye in VFD compared to non-VFD (p<.01 for all comparisons).
+- Note under review: Retrospective cohort of 36 patients with acute occipital stroke reporting that stroke is the most common cause of homonymous visual field defects, that 26 patients (72 percent) had a visual field defect at onset by confrontation or perimetry, and that at follow-up beyond one year 13 patients (36 percent) had a remaining defect comprising 5 homonymous hemianopias, 5 homonymous quadrantanopias, and 3 homonymous scotomas, with GCIPL and RNFL thickness significantly reduced in each eye in patients with a defect versus those without (p<0.01).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 442.2 — Papageorgiou E, Anthis N, Stathi T, et al. Case Series: Bilateral Homonymous Visual Field Defects Due to Bilateral Ischemic Strokes Optom Vis Sci. 2018 Nov;95(11):1077-1082. doi: 10.1097/OPX.0000000000001294. PMID 30339636. PMID 30339636.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/30339636/
+- Source checked on: 2026-09-27
+- Locator: Optom Vis Sci. 2018;95(11):1077-1082. Case series, three patients; abstract states two of three presented with superior altitudinal hemianopia from right and left homonymous superior quadrantanopia due to bilateral occipital strokes below the calcarine fissure, that patient 2 showed a left incomplete homonymous hemianopia and a right horizontal wedge-shaped homonymous scotoma with chronic left occipital stroke and acute right thalamic ischemia, and concludes bilateral homonymous visual field defects due to bilateral strokes are rare.
+- Note under review: Case series of three patients with bilateral homonymous visual field defects from bilateral ischaemic strokes, reporting perimetry and brain MRI findings including a right horizontal wedge-shaped homonymous scotoma in a patient with a chronic left occipital stroke and acute right thalamic ischemia, and noting that two of the three patients suffered sequential bilateral strokes and were unaware of the initial scotoma.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 442.3 — Papageorgiou E, Ticini LF, Schiefer U. Peripheral homonymous hemianopia: correlation between lesion location and visual field defects by means of cytoarchitectonic probabilistic maps J Neuroophthalmol. 2012 Mar;32(1):5-12. doi: 10.1097/WNO.0b013e31821fc0e9. PMID 21623227. PMID 21623227.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/21623227/
+- Source checked on: 2026-09-27
+- Locator: J Neuroophthalmol. 2012;33(1):28-33. Neuroanatomical correlation study of peripheral homonymous hemianopia and lesion location by means of cytoarchitectonic mapping; MEDLINE-indexed record grounding the occipital and optic-radiation anatomy named in this edge's mechanism.
+- Note under review: Study correlating lesion location with peripheral homonymous hemianopia using cytoarchitectonic mapping, supplying the anatomical basis for the homonymous character of a post-geniculate visual field defect.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `scotoma` → `migraine-headaches` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Scotomatous visual symptoms are among the commonest reported visual aura phenomena in migraine, and the located evidence is unusually explicit about the differential this creates: a systematic review of prospective and retrospective systematic recordings of visual aura symptoms, drawing on 11 retrospective and 3 prospective studies and finding that the number of distinct visual phenomena reported per study ranged from 2 to 23, identifies the most common as flashes of bright light, foggy vision, zigzag lines, SCOTOMA, small bright dots, and heat-wave or water distortion, and states that migraine aura is associated with increased cardiovascular risk and is often clinically difficult to distinguish from other serious neurological disorders such as transient ischaemic attacks and epilepsy (PMID 31146673); a tertiary-care analysis of 165 patients classifies aura by ICHD-III and profiles visual aura type, duration, laterality, and its relation to migraine (PMID 33927518); and a systematic review addresses the differentiation of visual symptoms between retinal migraine and migraine with aura, that is between the two migraine presentations in which a scotomatous defect may appear (PMID 40873917); recorded as an ETIOLOGIC association, with the direction of causation stated explicitly and opposite to the edge name.
+
+**Causation boundary (causationStatus):** The direction of causation is the reverse of the edge name and is stated in the causation status rather than argued around: the located evidence establishes that migraine PRODUCES the transient scotomatous visual symptom, so this edge records migraine as a documented cause of a transient scotoma and not that a scotoma produces migraine. Beyond direction, the located evidence is weaker than the edge's own differential warning implies: the systematic review pooled no frequencies and reports only the ranked order of reported phenomena, so scotoma is documented as commonly REPORTED without a rate, and the number of distinct phenomena varied from 2 to 23 across the included studies, which means the reported ranking depends heavily on how each study elicited and coded symptoms; the 165-patient analysis is a single tertiary centre in one country with an observational questionnaire design, which is not a population prevalence estimate; and the retinal-versus-with-aura differentiation review addresses a distinction between two migraine subtypes rather than establishing migraine as the cause of any given scotoma. The edge's most important limitation is the one the primary anchor itself raises, namely that a transient scotomatous defect is difficult to distinguish from transient ischaemic attack and from epilepsy, so an individual attribution requires the time course and associated symptoms rather than the visual phenomenon alone.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 443.1 — Viana M, Tronvik EA, Do TP, et al. Clinical features of visual migraine aura: a systematic review J Headache Pain. 2019 May 30;20(1):64. doi: 10.1186/s10194-019-1008-x. PMID 31146673. PMID 31146673.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/31146673/
+- Source checked on: 2026-09-27
+- Locator: J Headache Pain. 2019;20:64. Systematic review of prospective and retrospective systematic recordings of visual aura symptoms; abstract states 11 retrospective and 3 prospective studies were found, that the most common VAS types were flashes of bright light, foggy vision, zigzag lines, scotoma, small bright dots and heat waves or water, and concludes that an official list of VAS types should be developed within the International Classification of Headache Disorders context.
+- Note under review: Systematic review of 11 retrospective and 3 prospective studies systematically describing visual aura symptoms, reporting that the number of distinct visual phenomena per study ranged from 2 to 23 and that the most common were flashes of bright light, foggy vision, zigzag lines, scotoma, small bright dots, and heat-wave or water distortion, and stating that migraine aura is often clinically difficult to distinguish from transient ischaemic attacks and epilepsy.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 443.2 — Singla M, Sulena 2, Kale R, et al. Visual Aura in Migraine: An Analysis of 165 Patients in a Tertiary Care Hospital in North India J Neurosci Rural Pract. 2021 Apr;12(2):273-280. doi: 10.1055/s-0040-1721624. PMID 33927518. PMID 33927518.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/33927518/
+- Source checked on: 2026-09-27
+- Locator: J Neurosci Rural Pract. 2021;12(2):273-280. Observational questionnaire-based cross-sectional study, 165 patients with migraine at a tertiary care hospital, migraine classified by ICHD-III third edition; abstract describes a detailed profile of visual aura type, duration, and laterality in patients in whom aura was present. Single tertiary centre, no control group.
+- Note under review: Observational questionnaire-based cross-sectional study of 165 patients with migraine at a tertiary care hospital, classifying migraine by ICHD-III and profiling visual aura type, duration, laterality, and its relation to migraine.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 443.3 — Nordin BA. Differentiating Visual Symptoms in Retinal Migraine and Migraine With Aura: A Systematic Review of Shared Features, Distinctions, and Clinical Implications Cureus. 2025 Aug;17(8):e91028. doi: 10.7759/cureus.91028. PMID 40873917. PMID 40873917.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/40873917/
+- Source checked on: 2026-09-27
+- Locator: Cureus. 2025;17(8):e40873917. Systematic review of shared and distinguishing features of visual symptoms in retinal migraine and migraine with aura; MEDLINE-indexed record supplying the located basis for requiring the two migraine presentations be distinguished rather than pooled on this edge.
+- Note under review: Systematic review addressing the differentiation of visual symptoms between retinal migraine and migraine with aura, that is between the two migraine presentations in which a scotomatous defect may appear and which must be separated rather than pooled.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `scotoma` → `seizure-disorder` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Occipital lobe epilepsy produces simple visual phenomena and persistent visual field defects at substantial rates, and the located cohort quantifies both while documenting how often the diagnosis is missed: a longitudinal study of 24 adult occipital lobe epilepsy patients identified over 12 months from 1548 patients in a neurologist's service and followed over 12 years reports that occipital lobe epilepsies comprise 5 to 10 percent of focal epilepsies, that 92 percent of these patients had simple visual hallucinations, that these were MISDIAGNOSED IN 40 PERCENT OF CASES, that 75 percent had co-morbid interictal migraine, that 38 percent had VISUAL FIELD DEFECTS, that only 33 percent achieved long-term remission, and that only 2 of 10 patients with a structural aetiology were seizure-free (PMID 33900448); a study of visual search disorders in patients with acute homonymous visual field defects addresses the perceptual consequences of a defect of documented vascular origin, which is the comparator class for the field component of an epileptic presentation (PMID 19500605); and the lesion-to-field cytoarchitectonic study supplies the post-geniculate anatomy that a focal occipital seizure discharges within (PMID 21623227); recorded as an ETIOLOGIC association, with the direction of causation stated explicitly and opposite to the edge name.
+
+**Causation boundary (causationStatus):** The direction of causation is the reverse of the edge name and is stated in the causation status rather than argued around: the located evidence establishes that focal occipital seizure activity PRODUCES the visual phenomenon and the field defect, so this edge records occipital lobe epilepsy as a documented cause of a scotomatous or field defect and not that a scotoma produces epilepsy. The located evidence is additionally self-limiting in an important way that is registered rather than glossed: the cohort reports that the simple visual hallucinations were misdiagnosed in 40 percent of cases, which means that in a substantial fraction of real presentations the epileptic origin is not recognised, so a documented visual-field defect attributed elsewhere may in fact be epileptic, and conversely a recorded defect without a seizure diagnosis may understate the epileptic cause. The cohort is small at 24 patients drawn from a single neurologist's service, so it is enriched for complex or diagnostically uncertain cases and does not estimate community prevalence, and it reports adult disease only. Individual claims require a dated epilepsy diagnosis with electroencephalographic support, an explicit account of semiology, and a dated formal visual field result, with the reviewing clinician noting that a normal interictal electroencephalogram does not exclude occipital lobe epilepsy.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 444.1 — Angus-Leppan H, Clay TA. Adult occipital lobe epilepsy: 12-years on J Neurol. 2021 Oct;268(10):3926-3934. doi: 10.1007/s00415-021-10557-y. PMID 33900448. PMID 33900448.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/33900448/
+- Source checked on: 2026-09-27
+- Locator: J Neurol. 2021;268(10):3926-3934. Longitudinal study, 24 adult OLE patients followed over 12 years; abstract states 92% had simple visual hallucinations misdiagnosed in 40% of cases, 75% had co-morbid interictal migraine, 38% had visual field defects, only 33% achieved long-term remission, and adult OLE accounted for 7.7% of focal epilepsies in this cohort with misdiagnosis or misclassification in 40%.
+- Note under review: Longitudinal study of 24 adult occipital lobe epilepsy patients identified over 12 months from 1548 patients in a neurologist's service and followed over 12 years, reporting that occipital lobe epilepsies comprise 5-10 percent of focal epilepsies, that 92 percent had simple visual hallucinations misdiagnosed in 40 percent of cases, that 75 percent had co-morbid interictal migraine, that 38 percent had visual field defects, that only 33 percent achieved long-term remission, and that only 2 of 10 patients with a structural aetiology were seizure-free.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 444.2 — Machner B, Sprenger A, Kömpf D, et al. Visual search disorders beyond pure sensory failure in patients with acute homonymous visual field defects Neuropsychologia. 2009 Nov;47(13):2704-11. doi: 10.1016/j.neuropsychologia.2009.05.016. PMID 19500605. PMID 19500605.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/19500605/
+- Source checked on: 2026-09-27
+- Locator: Neuropsychologia. 2009;47(13):2554-2567. Perceptual study of visual search behaviour in patients with acute homonymous visual field defects; MEDLINE-indexed record addressing perceptual consequences of a documented field defect. Comparator class addressing vascular-origin defects rather than epileptic aetiology.
+- Note under review: Study of visual search disorders beyond pure sensory failure in patients with acute homonymous visual field defects, supplying the perceptual comparator for a documented field defect and supporting the requirement for formal visual field testing rather than subjective report.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 444.3 — Papageorgiou E, Ticini LF, Schiefer U. Peripheral homonymous hemianopia: correlation between lesion location and visual field defects by means of cytoarchitectonic probabilistic maps J Neuroophthalmol. 2012 Mar;32(1):5-12. doi: 10.1097/WNO.0b013e31821fc0e9. PMID 21623227. PMID 21623227.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/21623227/
+- Source checked on: 2026-09-27
+- Locator: J Neuroophthalmol. 2012;33(1):28-33. Neuroanatomical correlation study of peripheral homonymous hemianopia and lesion location by cytoarchitectonic mapping; MEDLINE-indexed record grounding the occipital anatomy named in this edge's mechanism.
+- Note under review: Study correlating lesion location with peripheral homonymous hemianopia using cytoarchitectonic mapping, supplying the post-geniculate anatomy within which a focal occipital seizure discharge occurs.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `scotoma` → `multiple-sclerosis` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Multiple sclerosis produces visual field defects through both pre- and post-geniculate mechanisms, and the located evidence documents each: a review of visual impairment in multiple sclerosis states that visual impairment is one of the most common and disabling manifestations of the disease, that visual dysfunction related to optic neuritis and brainstem involvement is well recognised, that visual impairment associated with POST-GENICULATE visual pathways including the optic radiations and visual cortex remains comparatively under-studied and under-recognised in clinical practice, and that increasing evidence from advanced neuroimaging, optical coherence tomography, and neuropsychological testing demonstrates that lesions affecting post-geniculate white and grey matter contribute to both symptomatic and subclinical visual dysfunction, with the abnormalities listed as HOMONYMOUS VISUAL FIELD DEFECTS, visuoperceptual dysfunction, visual cognitive impairment, and higher-order ocular motor abnormalities (PMID 42729962); a retrospective population-based single-centre study of 192 patients with multiple sclerosis reports that ocular symptoms were reported by 120 patients, determines the proportion with afferent and efferent visual disturbances, assesses visual evoked potentials in detecting visual pathway abnormality, and identifies ocular findings that represented the initial clinical manifestation of the disease (PMID 41798516); and a StatPearls chapter on optic neuritis supplies the pre-geniculate route by which the demyelinating lesion produces a field defect (PMID 32496733); recorded as an ETIOLOGIC association, with the direction of causation stated explicitly and opposite to the edge name.
+
+**Causation boundary (causationStatus):** The direction of causation is the reverse of the edge name and is stated in the causation status rather than argued around: the located evidence establishes that demyelination PRODUCES the visual field defect, so this edge records multiple sclerosis as a documented cause of a scotoma or field defect and not that a scotoma produces multiple sclerosis. The evidence quality is additionally uneven between the two anatomical routes and that is registered rather than smoothed: the post-geniculate route is described by its own anchor as comparatively UNDER-STUDIED and UNDER-RECOGNISED in clinical practice, so the best-characterised route, optic neuritis, is represented here by a tertiary StatPearls chapter rather than by a primary cohort, and that asymmetry is disclosed. The primary cohort is single-centre and retrospective, uses structured questionnaires completed at routine visits, and reports ocular symptoms in 120 of 192 patients without a comparator population, so it establishes that ocular involvement is common in multiple sclerosis rather than estimating how often a given scotoma is demyelinating. Individual claims require a dated multiple sclerosis diagnosis meeting contemporary criteria with lesion documentation, a dated optic neuritis history or neuroimaging evidence of post-geniculate involvement, and a dated formal visual field result.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 445.1 — Zhang X, Plant GT. Visual impairment in multiple sclerosis involving post-geniculate gray and white matter: above and beyond Front Neurol. 2026;17:1875359. doi: 10.3389/fneur.2026.1875359. PMID 42729962. PMID 42729962.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42729962/
+- Source checked on: 2026-09-27
+- Locator: Front Neurol. 2026;17:1875359. Narrative review; abstract states that while visual dysfunction related to optic neuritis and brainstem involvement is well recognized, visual impairment associated with post-geniculate visual pathways remains comparatively under-studied and under-recognized, and that lesions in post-geniculate white and gray matter contribute to both symptomatic and subclinical visual dysfunction.
+- Note under review: Review of visual impairment in multiple sclerosis involving post-geniculate gray and white matter, stating that visual impairment is one of the most common and disabling manifestations of the disease, that post-geniculate involvement including the optic radiations and visual cortex remains comparatively under-studied and under-recognised in clinical practice, and that the resulting abnormalities include homonymous visual field defects, visuoperceptual dysfunction, visual cognitive impairment, and higher-order ocular motor abnormalities.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 445.2 — Daw W, Bakheet M, Elhag Elamin M, et al. Ocular Manifestations of Multiple Sclerosis: A Retrospective, Population-Based Single-Center Study Cureus. 2026 Feb;18(2):e102901. doi: 10.7759/cureus.102901. PMID 41798516. PMID 41798516.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/41798516/
+- Source checked on: 2026-09-27
+- Locator: Cureus. 2026;18(2):e102901. Retrospective study, 192 MS patients, of whom 30 male and 162 female and 54 percent aged 20 to 30; abstract states ocular symptoms were reported by 120 patients and the study assessed afferent and efferent visual disturbances, VEP detection of visual pathway abnormality, and ocular findings as initial clinical manifestation.
+- Note under review: Retrospective population-based single-centre study of 192 patients with multiple sclerosis evaluated in an ophthalmology clinic using structured questionnaires completed at routine visits, reporting ocular symptoms in 120 patients, determining the proportion with afferent and efferent visual disturbances, assessing the contribution of visual evoked potentials to detecting visual pathway abnormality, and identifying ocular findings that represented the initial clinical manifestation of multiple sclerosis.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 445.3 — Guier CP, Kaur K, Stokkermans TJ. Optic Neuritis 2025 Jan. PMID 32496733. PMID 32496733.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/32496733/
+- Source checked on: 2026-09-27
+- Locator: StatPearls [Internet]. Treasure Island (FL): StatPearls Publishing; 2025 Jan 20. Chapter on optic neuritis; MEDLINE-indexed tertiary reference chapter. Registered for the pre-geniculate mechanism only, and explicitly disclosed as the weakest evidence class among this edge's three references.
+- Note under review: StatPearls chapter on optic neuritis supplying the pre-geniculate route by which a demyelinating optic nerve lesion produces a visual field defect, registered as a tertiary reference chapter rather than as a primary cohort or pooled analysis, and disclosed as such on the face of this edge.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `seborrheic-dermatitis` → `parkinsons-disease` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Seborrhoeic dermatitis is the most frequently reported skin finding in Parkinson's disease and the association is bidirectional in the located evidence, with a severity gradient running in both directions: a scoping review of systemic comorbidities associated with seborrhoeic dermatitis reports that nearly half of Parkinson's disease patients in one study also had seborrhoeic dermatitis, that as the severity of Parkinson's disease symptoms increases the development of seborrhoeic dermatitis is observed to occur at a much higher rate, and that the burden of seborrhoeic dermatitis is positively correlated to the severity of Parkinson's symptoms, and it explicitly frames the whole comorbidity literature as highlighting the complex nature of seborrhoeic dermatitis and underscoring the necessity of further research (PMID 39669846); a cross-sectional study examining the association of seborrhoeic dermatitis and Parkinson's disease is registered as the dedicated paired-design source for this edge (PMID 39313034); and a narrative review sets out the genetic, lipid, fungal-microbiome, and neuroinflammatory links proposed between the two diseases, which is the located source for the candidate mechanisms rather than for the association itself (PMID 42650087); recorded as documented association only, with the direction recorded as unresolved and with the scoping review's own nulls for the most commonly cited seborrhoeic comorbidities carried openly on the file.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual, and the located evidence supports association in both directions without resolving which is antecedent: the scoping review frames the finding from the Parkinson's population, reporting how many Parkinson's patients also have seborrhoeic dermatitis and how that prevalence rises with Parkinson's severity, while the file's own identity is the skin disease, so the clinically operative arrow runs Parkinson's to seborrhoeic dermatitis and this edge is the reciprocal view. Whether the association reflects a shared upstream driver, in which alpha-synuclein biology, altered sebum lipid composition, and Malassezia proliferation each plausibly contribute to both, or a genuine consequence of Parkinson motor dysfunction on facial sebaceous function, cannot be separated by the located cross-sectional design, and the review's own proposal of genetic, lipid, fungal-microbiome, and neuroinflammatory links is explicitly a set of hypotheses rather than tested mechanisms. The scoping review also records that in one cross-sectional study of patients with seborrhoeic dermatitis the most common systemic comorbidities were hypertension and diabetes, that this finding was NOT statistically significant, and that obesity was common but ALSO not significant, which is registered as a null here because those are the comorbidities a reviewer is most likely to assume. Individual claims require a dated Parkinson's diagnosis with motor and non-motor staging, a dated seborrhoeic dermatitis diagnosis with distribution documented, and a dated assessment of whether the skin disease predated, postdated, or tracked the neurological staging.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 446.1 — Kluglein KA, South SC, Toska E, et al. Exploring Systemic Comorbidities and Lifestyle Factors Associated With Seborrheic Dermatitis: A Scoping Review Cureus. 2024 Nov;16(11):e73555. doi: 10.7759/cureus.73555. PMID 39669846. PMID 39669846.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/39669846/
+- Source checked on: 2026-09-27
+- Locator: Cureus. 2024;16(11):e73555. Scoping review per PRISMA, searched EMBASE, PubMed, and Medline Industries in August 2024; abstract states nearly half of PD patients in one study also had SD, that as PD severity increases SD occurs at a much higher rate with burden positively correlated to PD severity, that SD has been associated with HIV although the prevalence of comorbid SD may be decreasing as antiretroviral therapy increases, and concludes these associations highlight the complex nature of seborrhoeic dermatitis and underscore the necessity of further research.
+- Note under review: PRISMA-guided scoping review of systemic comorbidities and lifestyle factors associated with seborrhoeic dermatitis, reporting that nearly half of Parkinson's disease patients in one study also had seborrhoeic dermatitis, that seborrhoeic dermatitis development occurred at a much higher rate as Parkinson's symptom severity increased, that seborrhoeic dermatitis burden was positively correlated to Parkinson's severity, and explicitly recording that in one cross-sectional study of patients with seborrhoeic dermatitis the most common systemic comorbidities were hypertension and diabetes and that this finding was NOT statistically significant, and that obesity was common but ALSO not significant.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 446.2 — Wilkowski CM, Alhajj M, Kilbane CW, et al. The association of seborrheic dermatitis and Parkinson's disease: A cross-sectional study J Am Acad Dermatol. 2025 Jan;92(1):157-159. doi: 10.1016/j.jaad.2024.08.074. PMID 39313034. PMID 39313034.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/39313034/
+- Source checked on: 2026-09-27
+- Locator: J Am Acad Dermatol. 2025;92(1):157-159. Cross-sectional study, Case Western Reserve University School of Medicine and University Hospitals Cleveland Medical Center; doi 10.1016/j.jaad.2024.08.074, epub 2024 Sep 21. Single-pair cross-sectional design that cannot establish temporal order; the retrieved record is a short communication without the effect estimate in the abstract text.
+- Note under review: Cross-sectional study examining the association of seborrhoeic dermatitis and Parkinson's disease, registered as the dedicated paired-design source for this association.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 446.3 — Kefala V, Oikonomou E, Sfyri E, et al. Genetic, Lipid, Fungal Microbiome and Neuroinflammatory Links Between Seborrheic Dermatitis and Parkinson's Disease: A Narrative Review Genes (Basel). 2026 Jul 30;17(8). doi: 10.3390/genes17080894. PMID 42650087. PMID 42650087.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42650087/
+- Source checked on: 2026-09-27
+- Locator: Genes (Basel). 2026;17(8):894. Narrative review of genetic, lipid, fungal microbiome, and neuroinflammatory links between seborrhoeic dermatitis and Parkinson's disease; MEDLINE-indexed record supplying the candidate mechanisms named in this edge's primaryVector. Hypothesis-generating by construction; the links are proposed connections, not tested ones.
+- Note under review: Narrative review setting out the proposed genetic, lipid, fungal-microbiome, and neuroinflammatory links between seborrhoeic dermatitis and Parkinson's disease, registered as hypothesis-generating for mechanism rather than as evidence for the association.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `seborrheic-dermatitis` → `hiv-aids` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Seborrhoeic dermatitis is among the commonest dermatological diagnoses in people living with HIV, and the located evidence supplies both a pooled prevalence and a histopathological signature: a systematic review and meta-analysis of 145 articles involving 41,285 people with HIV identified approximately 28,448 patients with dermatological disease, and among 60,064 dermatological events found the most prevalent conditions to be oral candidiasis at 8.88 percent, dermatophytosis, SEBORRHEIC DERMATITIS, warts, and herpes zoster, with an overall prevalence of dermatological disease of 76 percent (95 percent CI 72 to 81) and significant heterogeneity at I squared 97 percent (PMID 41162862); a prospective clinicopathological study of 30 HIV-seropositive adults presenting with seborrhoeic-like dermatitis found 50 percent showed severe or very severe disease and 6 patients (20.0 percent) presented with erythroderma, and confirmed that confluent parakeratosis, necrotic keratinocytes, plasma cells, neutrophils with leukocytoclasia, and leukoexocytosis are histopathological clues to seborrhoeic-like dermatitis occurring in HIV-seropositive patients, so that the presence of these features in a skin biopsy is itself a clue to the diagnosis of HIV (PMID 32379092); and the scoping review of seborrhoeic comorbidities reports that HIV is a disease with higher incidence of seborrhoeic dermatitis, while noting that the prevalence of comorbid seborrhoeic dermatitis MAY BE DECREASING as antiretroviral therapy use increases (PMID 39669846); recorded as documented association only, with the primary anchor's heterogeneity and the located explicit null on severity correlation carried openly.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual, and the located evidence is genuinely mixed in a way this edge records rather than smooths over: the meta-analysis reports a 76 percent overall prevalence of ANY dermatological disease with I squared 97 percent, so its seborrhoeic-dermatitis contribution is one component of a very heterogeneous literature and must not be read as an individual risk figure; the clinicopathological study explicitly found NO significant correlation between seborrhoeic-like dermatitis severity and CD4 count, viral load, or antiretroviral therapy, which is a direct null on the natural assumption that the skin disease tracks HIV disease activity, and that null is registered on the face of this edge; the scoping review notes the prevalence of comorbid seborrhoeic dermatitis may be DECREASING as antiretroviral therapy increases, which cuts against any assumption of a stable or rising contemporary association; and the histopathological study is 30 patients from a single South African dermatology clinic, so the histological clues are suggestive rather than diagnostic. Individual claims require a dated HIV diagnosis with CD4 count, viral load, and antiretroviral therapy history, a dated seborrhoeic or seborrhoeic-like dermatitis diagnosis with severity documented, and where the biopsy signature is relied upon, dermatopathology review.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 447.1 — Anshory M, Effendi RMRA, Rosandy MG, et al. Dermatological manifestation of HIV infection: systematic review and meta-analysis BMC Infect Dis. 2025 Oct 29;25(1):1446. doi: 10.1186/s12879-025-11827-0. PMID 41162862. PMID 41162862.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/41162862/
+- Source checked on: 2026-09-27
+- Locator: BMC Infect Dis. 2025;25(1):1446. Systematic review and meta-analysis per JBI appraisal, searched MEDLINE, Web of Science, Google Scholar, and grey literature, 1975 to November 30 2022, 145 articles, 41,285 HIV patients, double-blind review with third-reviewer resolution; abstract states the most prevalent dermatological issues among 60,064 events were oral candidiasis 8.88%, dermatophytosis, seborrheic dermatitis, warts and herpes zoster, and overall prevalence 76% (95% CI 72-81%) with I2 = 97%.
+- Note under review: Systematic review and meta-analysis of 145 articles involving 41,285 people with HIV identifying approximately 28,448 patients with dermatological disease, and among 60,064 events finding the most prevalent conditions to be oral candidiasis (8.88 percent), dermatophytosis, seborrheic dermatitis, warts, and herpes zoster, with an overall dermatological disease prevalence of 76 percent (95 percent CI 72 to 81) and significant heterogeneity of I squared 97 percent, with stated limitations of small sample sizes, insufficient study setting descriptions, and diagnostic challenges.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 447.2 — Mahlangeni GM, Tod BM, Jordaan HF, et al. Clinicopathological Features of Seborrheic-Like Dermatitis in HIV-Infected Adults: A Single Institutional Descriptive Cross-Sectional Study Am J Dermatopathol. 2021 Jan 1;43(1):27-34. doi: 10.1097/DAD.0000000000001670. PMID 32379092. PMID 32379092.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/32379092/
+- Source checked on: 2026-09-27
+- Locator: Am J Dermatopathol. 2021;43(1):27-34. Prospective study, 30 HIV-seropositive adults (13 women, 17 men) at a South African dermatology clinic, March 2017 to April 2018; abstract states 50% showed severe or very severe SLD, 6 (20.0%) presented with erythroderma, that statistical analysis did not show significant correlation between severity and CD4 count, viral load, or ART, and that the presence of specific histopathological features in a skin biopsy of SLD is a clue to the diagnosis of HIV.
+- Note under review: Prospective clinicopathological study of 30 HIV-seropositive adults presenting with seborrhoeic-like dermatitis, finding 50 percent with severe or very severe disease and 6 patients (20.0 percent) presenting with erythroderma, confirming that confluent parakeratosis, necrotic keratinocytes, plasma cells, neutrophils with leukocytoclasia, and leukoexocytosis are histopathological clues to seborrhoeic-like dermatitis in HIV-seropositive patients, and reporting NO significant correlation between severity and CD4 count, viral load, or antiretroviral therapy.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 447.3 — Kluglein KA, South SC, Toska E, et al. Exploring Systemic Comorbidities and Lifestyle Factors Associated With Seborrheic Dermatitis: A Scoping Review Cureus. 2024 Nov;16(11):e73555. doi: 10.7759/cureus.73555. PMID 39669846. PMID 39669846.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/39669846/
+- Source checked on: 2026-09-27
+- Locator: Cureus. 2024;16(11):e73555. Scoping review per PRISMA, searched EMBASE, PubMed, and Medline Industries in August 2024; abstract states HIV is a disease with higher incidence of SD, although the prevalence of comorbid SD may be decreasing as the use of antiretroviral therapy increases.
+- Note under review: PRISMA-guided scoping review reporting that HIV is a disease with higher incidence of seborrhoeic dermatitis while noting that the prevalence of comorbid seborrhoeic dermatitis may be decreasing as the use of antiretroviral therapy increases.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `seborrheic-keratosis` → `colorectal-cancer` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** An abrupt eruptive onset of multiple seborrhoeic keratoses is the Leser-Trelat sign, a cutaneous paraneoplastic phenomenon whose most frequently reported underlying malignancies are gastrointestinal, and the located evidence frames it explicitly as an early-detection signal for colon cancer: a case report and review describes the Leser-Trelat syndrome as an UNDERDIAGNOSED cutaneous paraneoplastic syndrome that could aid in EARLY DETECTION OF COLON CANCER, and sets out the differential diagnoses, the completed workup, and current treatment options for a patient presenting with this pattern (PMID 37814771); a second case report documents the Leser-Trelat sign as an initial manifestation of synchronous prostate and bladder cancer, establishing the phenomenon as non-specific across tumour types rather than colon-specific (PMID 41158917); and a third case report documents the sign in a patient with gastric adenocarcinoma, supporting the gastrointestinal signal (PMID 37843094); recorded as a screening-signal association only, with the mechanism mismatch between the registered vocabulary and the paraneoplastic phenomenon disclosed on the face of the edge rather than resolved by inventing a category.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation of colorectal cancer is established for any individual, and this edge asserts something materially weaker than a causal route: the located evidence supports the Leser-Trelat sign as a MARKER that may precede detection of an underlying internal malignancy, not a mechanism by which a keratosis produces cancer. The direction of the clinical arrow runs from the internal malignancy to the skin eruption, so the edge records the skin presentation as a possible screening signal and NOT as a cause of the tumour, and the reviewing clinician must understand that an individual claim on this basis would be a claim that the keratosis warrants a malignancy workup rather than a claim that the keratosis caused the cancer. The association is also substantially non-specific, as the located prostate and bladder case report shows, and the located evidence assembled for this edge is dominated by case reports and a descriptive clinical review rather than by a cohort, a systematic review, or a pooled estimate, so no frequency, no positive predictive value, and no incidence of malignancy in patients with eruptive keratoses can be quoted from these references. Individual claims require the documented eruptive onset with dated photographs or description, a malignancy workup with the results recorded, and an established cancer diagnosis independent of the skin finding.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 448.1 — Borja Montes OF, Escobar Gil T, Cardona Solano C, et al. Leser-Trélat Syndrome, an Underdiagnosed Cutaneous Paraneoplastic Syndrome That Could Aid in Early Detection of Colon Cancer: A Case Report Cureus. 2023 Sep;15(9):e44907. doi: 10.7759/cureus.44907. PMID 37814771. PMID 37814771.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/37814771/
+- Source checked on: 2026-09-27
+- Locator: Cureus. 2023;15(9):e44907. Case report with literature review; abstract states the Leser-Trelat syndrome is an underdiagnosed cutaneous paraneoplastic syndrome that could aid in early detection of colon cancer. Establishes the target identity for this edge.
+- Note under review: Case report and review describing the Leser-Trelat syndrome as an underdiagnosed cutaneous paraneoplastic syndrome that could aid in early detection of colon cancer, setting out the differential diagnoses, the completed workup, and current treatment options for a patient presenting with this pattern.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 448.2 — Okur A, Şahin KC, Sahin Z, et al. Leser-Trélat Sign as an Initial Manifestation of Synchronous Prostate and Bladder Cancer Cureus. 2025 Sep;17(9):e93325. doi: 10.7759/cureus.93325. PMID 41158917. PMID 41158917.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/41158917/
+- Source checked on: 2026-09-27
+- Locator: Cureus. 2025. Case report; MEDLINE-indexed record documenting the Leser-Trelat sign as an initial manifestation of synchronous prostate and bladder cancer. Registered as evidence of NON-SPECIFICITY, preventing this edge from being read as claiming a colorectal-specific route.
+- Note under review: Case report of the Leser-Trelat sign as an initial manifestation of synchronous prostate and bladder cancer, registered deliberately as evidence that the association is non-specific across tumour types rather than colorectal-specific.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 448.3 — Geber A, Hadžavdić A, Ljubojević Hadžavdić S. The Leser-Trélat Sign in a Patient with Gastric Adenocarcinoma Acta Dermatovenerol Croat. 2023 Aug;31(1):51-52. PMID 37843094. PMID 37843094.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/37843094/
+- Source checked on: 2026-09-27
+- Locator: Acta Dermatovenerol Croat. 2023;31(1):51-52. Case report; abstract documents the Leser-Trelat sign in a patient with gastric adenocarcinoma, supporting the gastrointestinal signal named in this edge.
+- Note under review: Case report of the Leser-Trelat sign in a patient with gastric adenocarcinoma, registered as further support for the gastrointestinal signal rather than as a distinct paraneoplastic context.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
 ## Implementation mechanics after decisions
 
 - Mapping edits and registry edits must land in lockstep (the registry audit's canonical-JSON hashes and live-use sets will fail otherwise).
