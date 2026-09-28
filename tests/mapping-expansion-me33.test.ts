@@ -123,22 +123,22 @@ describe("Mapping Expansion Batch ME-33", () => {
   it("ratchets the authoritative ME-33 counts", () => {
     expect(relationships.currentState).toBe("D1-DRAFT-AUTHORED");
     expect(sources.currentState).toBe("D1-DRAFT-AUTHORED");
-    expect(relationships.counts).toEqual({ relationships: 811, explicitPublicationGuards: 737, legacyRationaleBoundaries: 74 });
-    expect(relationships.relationships).toHaveLength(811);
+    expect(relationships.counts).toEqual({ relationships: 820, explicitPublicationGuards: 746, legacyRationaleBoundaries: 74 });
+    expect(relationships.relationships).toHaveLength(820);
     expect(sources.counts).toMatchObject({
-      liveSourceReferenceUses: 1523,
-      pendingVerificationSourceEntities: 996,
-      pendingClinicalSourceEntities: 996,
-      totalSourceEntitiesIncludingLineage: 1351,
+      liveSourceReferenceUses: 1548,
+      pendingVerificationSourceEntities: 1012,
+      pendingClinicalSourceEntities: 1012,
+      totalSourceEntitiesIncludingLineage: 1367,
     });
-    expect(sources.sources).toHaveLength(1351);
+    expect(sources.sources).toHaveLength(1367);
 
     const mappings = fs.readdirSync(`${root}/data/knowledge-base`).filter((file) => file.endsWith(".json")).map((file) => load<Mapping>(`data/knowledge-base/${file}`));
     const references = mappings.flatMap((mapping) => mapping.suggestions.flatMap((suggestion) => suggestion.sourceReferences));
-    expect(mappings.reduce((total, mapping) => total + mapping.suggestions.length, 0)).toBe(811);
-    expect(references).toHaveLength(1523);
-    expect(references.filter((reference) => reference.verified === true)).toHaveLength(383);
-    expect(references.filter((r) => r.verified === false)).toHaveLength(1140);
+    expect(mappings.reduce((total, mapping) => total + mapping.suggestions.length, 0)).toBe(820);
+    expect(references).toHaveLength(1548);
+    expect(references.filter((reference) => reference.verified === true)).toHaveLength(384);
+    expect(references.filter((r) => r.verified === false)).toHaveLength(1164);
   });
 
   it("keeps deferred identities outside the batch", () => {
