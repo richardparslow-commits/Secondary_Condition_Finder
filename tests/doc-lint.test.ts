@@ -195,6 +195,14 @@ const DOC_POLICIES: DocLintPolicy[] = [
       "versioned product-coverage milestone",
     ],
   },
+  {
+    file: "docs/missing-identity-addition-roadmap.md",
+    volatilePolicy: "ban",
+    anchors: [
+      "generated, not transcribed",
+      "node scripts/audit-master-registry.js",
+    ],
+  },
 ];
 
 describe("living-doc policy coverage", () => {
