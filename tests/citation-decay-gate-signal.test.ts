@@ -20,7 +20,7 @@ import { buildReport, CITATION_CEILING } from "../scripts/audit-citation-decay";
  *
  * FAIL-007 - the ceiling also counted unverified references, debt that
  * audit-citation-verification.js already ratchets at
- * CITATION_DEBT_BASELINE.unverified and hard-fails if it grows. With 1212
+ * CITATION_DEBT_BASELINE.unverified and hard-fails if it grows. With 1247
  * unverified references against a budget of 10 the ceiling was permanently
  * saturated: the gate failed on every run irrespective of link rot or drift, so
  * it could signal neither - and it masked FAIL-002's digest-coverage ratchet.
@@ -132,17 +132,17 @@ describe("FAIL-007: verification debt no longer saturates the gate", () => {
   });
 
   it("would not saturate at the real corpus debt level", () => {
-    // The live corpus carries 1212 unverified references against a ceiling of
+    // The live corpus carries 1247 unverified references against a ceiling of
     // 10. That debt is ratcheted by citations:audit, not gated here, so this
     // gate stays able to report on rot, staleness and drift.
-    const refs = Array.from({ length: 1212 }, (_, i) => ({
+    const refs = Array.from({ length: 1247 }, (_, i) => ({
       citation: `Pending verification ${i + 1}`,
       note: "debt fixture",
       verified: false,
     }));
     const report = buildReport(oneMapping(refs), new Map(), TODAY);
 
-    expect(report.unverifiedCount).toBe(1212);
+    expect(report.unverifiedCount).toBe(1247);
     expect(report.citationCeilingUsage).toBe(0);
     expect(report.citationCeiling).toBe(CITATION_CEILING);
     expect(report.status).toBe("PASS");
