@@ -16,16 +16,16 @@
   "citationPromotionMustAtomicallyUpdateKbAndMasterSourceState": true
  },
  "counts": {
-  "liveSourceReferenceUses": 1493,
+  "liveSourceReferenceUses": 1523,
   "activeSourceEntities": 346,
-  "pendingVerificationSourceEntities": 971,
+  "pendingVerificationSourceEntities": 996,
   "activeClinicalSourceEntities": 345,
-  "pendingClinicalSourceEntities": 971,
+  "pendingClinicalSourceEntities": 996,
   "activeLegalAuthorityEntities": 1,
   "retiredOnlySourceEntities": 1,
   "supersededUnverifiedSourceEntities": 7,
   "bibliographicCorrectionOnlyEntities": 1,
-  "totalSourceEntitiesIncludingLineage": 1326,
+  "totalSourceEntitiesIncludingLineage": 1351,
   "retiredVerifiedRelationshipSourceUses": 6
  },
  "retirementLedger": {
@@ -48929,6 +48929,916 @@
    "retiredUses": [],
    "rawReferenceHashes": [
     "eef9e339697271598c5e86a14ae4913ef32daa00fba6815738f1b66139254668"
+   ]
+  },
+  {
+   "sourceId": "pmid-42105127",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "42105127",
+   "doi": "10.1007/s40123-026-01390-5",
+   "canonicalCitation": "Sota J, Hinojosa-Azaola A, de-la-Torre A, et al. Determinants of Non-infectious Scleritis Complications and Their Impact on Visual Outcome: Results from the International AIDA Network Scleritis Registry Ophthalmol Ther. 2026 Jun;15(6):2081-2093. doi: 10.1007/s40123-026-01390-5. PMID 42105127. PMID 42105127.",
+   "citationVariants": [
+    "Sota J, Hinojosa-Azaola A, de-la-Torre A, et al. Determinants of Non-infectious Scleritis Complications and Their Impact on Visual Outcome: Results from the International AIDA Network Scleritis Registry Ophthalmol Ther. 2026 Jun;15(6):2081-2093. doi: 10.1007/s40123-026-01390-5. PMID 42105127. PMID 42105127."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42105127/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/42105127/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-27"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-scleritis-to-uveitis",
+     "primaryId": "scleritis",
+     "targetId": "uveitis",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "19069f5c5203e0df258a008b18762a2e188b35444e4c0ce3a0b42c60b4e879d1"
+   ]
+  },
+  {
+   "sourceId": "pmid-33728815",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "33728815",
+   "doi": "10.1002/art.41709",
+   "canonicalCitation": "Braithwaite T, Adderley NJ, Subramanian A, et al. Epidemiology of Scleritis in the United Kingdom From 1997 to 2018: Population-Based Analysis of 11 Million Patients and Association Between Scleritis and Infectious and Immune-Mediated Inflammatory Disease Arthritis Rheumatol. 2021 Jul;73(7):1267-1276. doi: 10.1002/art.41709. PMID 33728815. PMID 33728815.",
+   "citationVariants": [
+    "Braithwaite T, Adderley NJ, Subramanian A, et al. Epidemiology of Scleritis in the United Kingdom From 1997 to 2018: Population-Based Analysis of 11 Million Patients and Association Between Scleritis and Infectious and Immune-Mediated Inflammatory Disease Arthritis Rheumatol. 2021 Jul;73(7):1267-1276. doi: 10.1002/art.41709. PMID 33728815. PMID 33728815."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33728815/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/33728815/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-27"
+   ],
+   "liveUsageCount": 3,
+   "liveUses": [
+    {
+     "relationshipId": "rel-scleritis-to-uveitis",
+     "primaryId": "scleritis",
+     "targetId": "uveitis",
+     "sourceIndex": 1
+    },
+    {
+     "relationshipId": "rel-scleritis-to-rheumatoid-arthritis",
+     "primaryId": "scleritis",
+     "targetId": "rheumatoid-arthritis",
+     "sourceIndex": 0
+    },
+    {
+     "relationshipId": "rel-scleritis-to-systemic-lupus-erythematosus",
+     "primaryId": "scleritis",
+     "targetId": "systemic-lupus-erythematosus",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "6211acd5604bc25e2e6018fc3497be32c60122a85dc9f55e0237101f04cfb98b",
+    "9868ff5b37579ce24728fcbf51dfd02bfd066ecad0c86868fde6020081115c1a",
+    "ee8093248593d48a21a77bb07464036ca41ec93f4c6d84074e885afb002affce"
+   ]
+  },
+  {
+   "sourceId": "pmid-42377600",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "42377600",
+   "doi": "10.1007/s10792-026-04129-0",
+   "canonicalCitation": "Advani MS, Putri BM, Susiyanti M. Clinical characteristics, management, and visual outcomes of presumed infectious and non-infectious anterior scleritis in a tuberculosis-endemic Indonesian Tertiary Center Int Ophthalmol. 2026 Jun 30;46(1). pii: 274. doi: 10.1007/s10792-026-04129-0. PMID 42377600. PMID 42377600.",
+   "citationVariants": [
+    "Advani MS, Putri BM, Susiyanti M. Clinical characteristics, management, and visual outcomes of presumed infectious and non-infectious anterior scleritis in a tuberculosis-endemic Indonesian Tertiary Center Int Ophthalmol. 2026 Jun 30;46(1). pii: 274. doi: 10.1007/s10792-026-04129-0. PMID 42377600. PMID 42377600."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42377600/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/42377600/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-27"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-scleritis-to-uveitis",
+     "primaryId": "scleritis",
+     "targetId": "uveitis",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "fb72780eda5ef456c987f71f931c29c8c2d39d3f40a04aba365600202d0cc696"
+   ]
+  },
+  {
+   "sourceId": "pmid-33407267",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "33407267",
+   "doi": "10.1186/s12886-020-01769-3",
+   "canonicalCitation": "Berkenstock MK, Carey AR. Health system wide \"big data\" analysis of rheumatologic conditions and scleritis BMC Ophthalmol. 2021 Jan 6;21(1):14. doi: 10.1186/s12886-020-01769-3. PMID 33407267. PMID 33407267.",
+   "citationVariants": [
+    "Berkenstock MK, Carey AR. Health system wide \"big data\" analysis of rheumatologic conditions and scleritis BMC Ophthalmol. 2021 Jan 6;21(1):14. doi: 10.1186/s12886-020-01769-3. PMID 33407267. PMID 33407267."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33407267/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/33407267/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-27"
+   ],
+   "liveUsageCount": 2,
+   "liveUses": [
+    {
+     "relationshipId": "rel-scleritis-to-rheumatoid-arthritis",
+     "primaryId": "scleritis",
+     "targetId": "rheumatoid-arthritis",
+     "sourceIndex": 1
+    },
+    {
+     "relationshipId": "rel-scleritis-to-systemic-lupus-erythematosus",
+     "primaryId": "scleritis",
+     "targetId": "systemic-lupus-erythematosus",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "60b0c29274e4b703151012b3fe6978779cb614fa6392640fd92cc5ba20d15e10",
+    "7afffc1bd9b01af1a672ca209b35d457d5451b283ef902b647f57c0f991f4014"
+   ]
+  },
+  {
+   "sourceId": "pmid-42122940",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "42122940",
+   "doi": "10.3390/jcm15093207",
+   "canonicalCitation": "Forestier MG, Calderón RM, Oliver A. An Overview of Rheumatoid Arthritis-Associated Dry Eye Disease, Scleritis, and Peripheral Ulcerative Keratitis J Clin Med. 2026 Apr 23;15(9). doi: 10.3390/jcm15093207. PMID 42122940. PMID 42122940.",
+   "citationVariants": [
+    "Forestier MG, Calderón RM, Oliver A. An Overview of Rheumatoid Arthritis-Associated Dry Eye Disease, Scleritis, and Peripheral Ulcerative Keratitis J Clin Med. 2026 Apr 23;15(9). doi: 10.3390/jcm15093207. PMID 42122940. PMID 42122940."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42122940/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/42122940/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-27"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-scleritis-to-rheumatoid-arthritis",
+     "primaryId": "scleritis",
+     "targetId": "rheumatoid-arthritis",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "ffa82ae8b511f5551b10c0665d42637bdf2d8fd2b4928c87798536a5826fc84f"
+   ]
+  },
+  {
+   "sourceId": "pmid-32160869",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "32160869",
+   "doi": "10.1186/s12886-020-01360-w",
+   "canonicalCitation": "Hsu CS, Hsu CW, Lu MC, et al. Risks of ophthalmic disorders in patients with systemic lupus erythematosus - a secondary cohort analysis of population-based claims data BMC Ophthalmol. 2020 Mar 11;20(1):96. doi: 10.1186/s12886-020-01360-w. PMID 32160869. PMID 32160869.",
+   "citationVariants": [
+    "Hsu CS, Hsu CW, Lu MC, et al. Risks of ophthalmic disorders in patients with systemic lupus erythematosus - a secondary cohort analysis of population-based claims data BMC Ophthalmol. 2020 Mar 11;20(1):96. doi: 10.1186/s12886-020-01360-w. PMID 32160869. PMID 32160869."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/32160869/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/32160869/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-27"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-scleritis-to-systemic-lupus-erythematosus",
+     "primaryId": "scleritis",
+     "targetId": "systemic-lupus-erythematosus",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "ec762438603ca2ccf1a6fcf64ab6e7469ebefda5e2bf7d5562f9712d8c83a6ef"
+   ]
+  },
+  {
+   "sourceId": "pmid-34487632",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "34487632",
+   "doi": "10.1002/brb3.2345",
+   "canonicalCitation": "Rashid AS, Rashid D, Yang G, et al. Homonymous visual field defect and retinal thinning after occipital stroke Brain Behav. 2021 Oct;11(10):e2345. doi: 10.1002/brb3.2345. PMID 34487632. PMID 34487632.",
+   "citationVariants": [
+    "Rashid AS, Rashid D, Yang G, et al. Homonymous visual field defect and retinal thinning after occipital stroke Brain Behav. 2021 Oct;11(10):e2345. doi: 10.1002/brb3.2345. PMID 34487632. PMID 34487632."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34487632/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/34487632/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-27"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-scotoma-to-cerebrovascular-accident-stroke-residuals",
+     "primaryId": "scotoma",
+     "targetId": "cerebrovascular-accident-stroke-residuals",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "f0e4757a733f10fbb1ca8457342ff402b6de867ba619d710bdda8cb84ccf98b8"
+   ]
+  },
+  {
+   "sourceId": "pmid-30339636",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "30339636",
+   "doi": "10.1097/OPX.0000000000001294",
+   "canonicalCitation": "Papageorgiou E, Anthis N, Stathi T, et al. Case Series: Bilateral Homonymous Visual Field Defects Due to Bilateral Ischemic Strokes Optom Vis Sci. 2018 Nov;95(11):1077-1082. doi: 10.1097/OPX.0000000000001294. PMID 30339636. PMID 30339636.",
+   "citationVariants": [
+    "Papageorgiou E, Anthis N, Stathi T, et al. Case Series: Bilateral Homonymous Visual Field Defects Due to Bilateral Ischemic Strokes Optom Vis Sci. 2018 Nov;95(11):1077-1082. doi: 10.1097/OPX.0000000000001294. PMID 30339636. PMID 30339636."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/30339636/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/30339636/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-27"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-scotoma-to-cerebrovascular-accident-stroke-residuals",
+     "primaryId": "scotoma",
+     "targetId": "cerebrovascular-accident-stroke-residuals",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "d16358a14d40fa33c54010c0cf138448bd44e5a4b7ccad1f8f3406fa887f9358"
+   ]
+  },
+  {
+   "sourceId": "pmid-21623227",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "21623227",
+   "doi": "10.1097/WNO.0b013e31821fc0e9",
+   "canonicalCitation": "Papageorgiou E, Ticini LF, Schiefer U. Peripheral homonymous hemianopia: correlation between lesion location and visual field defects by means of cytoarchitectonic probabilistic maps J Neuroophthalmol. 2012 Mar;32(1):5-12. doi: 10.1097/WNO.0b013e31821fc0e9. PMID 21623227. PMID 21623227.",
+   "citationVariants": [
+    "Papageorgiou E, Ticini LF, Schiefer U. Peripheral homonymous hemianopia: correlation between lesion location and visual field defects by means of cytoarchitectonic probabilistic maps J Neuroophthalmol. 2012 Mar;32(1):5-12. doi: 10.1097/WNO.0b013e31821fc0e9. PMID 21623227. PMID 21623227."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/21623227/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/21623227/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-27"
+   ],
+   "liveUsageCount": 2,
+   "liveUses": [
+    {
+     "relationshipId": "rel-scotoma-to-cerebrovascular-accident-stroke-residuals",
+     "primaryId": "scotoma",
+     "targetId": "cerebrovascular-accident-stroke-residuals",
+     "sourceIndex": 2
+    },
+    {
+     "relationshipId": "rel-scotoma-to-seizure-disorder",
+     "primaryId": "scotoma",
+     "targetId": "seizure-disorder",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "3ae6c976133d66ab26f6fa918be20f8e014fee308ec85b91ecec5316f3bb0d7f",
+    "49f1fd3642c783efc7a3195af8e7f4f05e63baf4de9c67441a6db0633e66b76e"
+   ]
+  },
+  {
+   "sourceId": "pmid-31146673",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "31146673",
+   "doi": "10.1186/s10194-019-1008-x",
+   "canonicalCitation": "Viana M, Tronvik EA, Do TP, et al. Clinical features of visual migraine aura: a systematic review J Headache Pain. 2019 May 30;20(1):64. doi: 10.1186/s10194-019-1008-x. PMID 31146673. PMID 31146673.",
+   "citationVariants": [
+    "Viana M, Tronvik EA, Do TP, et al. Clinical features of visual migraine aura: a systematic review J Headache Pain. 2019 May 30;20(1):64. doi: 10.1186/s10194-019-1008-x. PMID 31146673. PMID 31146673."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/31146673/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/31146673/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-27"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-scotoma-to-migraine-headaches",
+     "primaryId": "scotoma",
+     "targetId": "migraine-headaches",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "83b7a7e7721cde5af167464a3fd5dcedf13c87be26bc7769f61393b7eb0d9f5c"
+   ]
+  },
+  {
+   "sourceId": "pmid-33927518",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "33927518",
+   "doi": "10.1055/s-0040-1721624",
+   "canonicalCitation": "Singla M, Sulena 2, Kale R, et al. Visual Aura in Migraine: An Analysis of 165 Patients in a Tertiary Care Hospital in North India J Neurosci Rural Pract. 2021 Apr;12(2):273-280. doi: 10.1055/s-0040-1721624. PMID 33927518. PMID 33927518.",
+   "citationVariants": [
+    "Singla M, Sulena 2, Kale R, et al. Visual Aura in Migraine: An Analysis of 165 Patients in a Tertiary Care Hospital in North India J Neurosci Rural Pract. 2021 Apr;12(2):273-280. doi: 10.1055/s-0040-1721624. PMID 33927518. PMID 33927518."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33927518/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/33927518/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-27"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-scotoma-to-migraine-headaches",
+     "primaryId": "scotoma",
+     "targetId": "migraine-headaches",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "dd4395eeab93699debde84dade5ed02e44dbd4a6233460c1c39ff38189b677b4"
+   ]
+  },
+  {
+   "sourceId": "pmid-40873917",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "40873917",
+   "doi": "10.7759/cureus.91028",
+   "canonicalCitation": "Nordin BA. Differentiating Visual Symptoms in Retinal Migraine and Migraine With Aura: A Systematic Review of Shared Features, Distinctions, and Clinical Implications Cureus. 2025 Aug;17(8):e91028. doi: 10.7759/cureus.91028. PMID 40873917. PMID 40873917.",
+   "citationVariants": [
+    "Nordin BA. Differentiating Visual Symptoms in Retinal Migraine and Migraine With Aura: A Systematic Review of Shared Features, Distinctions, and Clinical Implications Cureus. 2025 Aug;17(8):e91028. doi: 10.7759/cureus.91028. PMID 40873917. PMID 40873917."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40873917/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/40873917/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-27"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-scotoma-to-migraine-headaches",
+     "primaryId": "scotoma",
+     "targetId": "migraine-headaches",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "39c647199e1c385532e764deba859f3f9e7e517ad11a6d5ca576e4f15102abf9"
+   ]
+  },
+  {
+   "sourceId": "pmid-33900448",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "33900448",
+   "doi": "10.1007/s00415-021-10557-y",
+   "canonicalCitation": "Angus-Leppan H, Clay TA. Adult occipital lobe epilepsy: 12-years on J Neurol. 2021 Oct;268(10):3926-3934. doi: 10.1007/s00415-021-10557-y. PMID 33900448. PMID 33900448.",
+   "citationVariants": [
+    "Angus-Leppan H, Clay TA. Adult occipital lobe epilepsy: 12-years on J Neurol. 2021 Oct;268(10):3926-3934. doi: 10.1007/s00415-021-10557-y. PMID 33900448. PMID 33900448."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33900448/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/33900448/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-27"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-scotoma-to-seizure-disorder",
+     "primaryId": "scotoma",
+     "targetId": "seizure-disorder",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "9eb17b654d434f1e788eba4ba9b996e7800b6098bffe1c70a980988bc9bcf2dc"
+   ]
+  },
+  {
+   "sourceId": "pmid-19500605",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "19500605",
+   "doi": "10.1016/j.neuropsychologia.2009.05.016",
+   "canonicalCitation": "Machner B, Sprenger A, Kömpf D, et al. Visual search disorders beyond pure sensory failure in patients with acute homonymous visual field defects Neuropsychologia. 2009 Nov;47(13):2704-11. doi: 10.1016/j.neuropsychologia.2009.05.016. PMID 19500605. PMID 19500605.",
+   "citationVariants": [
+    "Machner B, Sprenger A, Kömpf D, et al. Visual search disorders beyond pure sensory failure in patients with acute homonymous visual field defects Neuropsychologia. 2009 Nov;47(13):2704-11. doi: 10.1016/j.neuropsychologia.2009.05.016. PMID 19500605. PMID 19500605."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/19500605/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/19500605/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-27"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-scotoma-to-seizure-disorder",
+     "primaryId": "scotoma",
+     "targetId": "seizure-disorder",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "6db9955650dfebdd9bcfde1bfe6fd6deee92f7804075430f092de8c7f081d466"
+   ]
+  },
+  {
+   "sourceId": "pmid-42729962",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "42729962",
+   "doi": "10.3389/fneur.2026.1875359",
+   "canonicalCitation": "Zhang X, Plant GT. Visual impairment in multiple sclerosis involving post-geniculate gray and white matter: above and beyond Front Neurol. 2026;17:1875359. doi: 10.3389/fneur.2026.1875359. PMID 42729962. PMID 42729962.",
+   "citationVariants": [
+    "Zhang X, Plant GT. Visual impairment in multiple sclerosis involving post-geniculate gray and white matter: above and beyond Front Neurol. 2026;17:1875359. doi: 10.3389/fneur.2026.1875359. PMID 42729962. PMID 42729962."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42729962/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/42729962/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-27"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-scotoma-to-multiple-sclerosis",
+     "primaryId": "scotoma",
+     "targetId": "multiple-sclerosis",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "01320bb0679984afac263ec2f26ac0189d650e3faf804c0a4b37a371d3243d99"
+   ]
+  },
+  {
+   "sourceId": "pmid-41798516",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "41798516",
+   "doi": "10.7759/cureus.102901",
+   "canonicalCitation": "Daw W, Bakheet M, Elhag Elamin M, et al. Ocular Manifestations of Multiple Sclerosis: A Retrospective, Population-Based Single-Center Study Cureus. 2026 Feb;18(2):e102901. doi: 10.7759/cureus.102901. PMID 41798516. PMID 41798516.",
+   "citationVariants": [
+    "Daw W, Bakheet M, Elhag Elamin M, et al. Ocular Manifestations of Multiple Sclerosis: A Retrospective, Population-Based Single-Center Study Cureus. 2026 Feb;18(2):e102901. doi: 10.7759/cureus.102901. PMID 41798516. PMID 41798516."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41798516/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/41798516/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-27"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-scotoma-to-multiple-sclerosis",
+     "primaryId": "scotoma",
+     "targetId": "multiple-sclerosis",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "e0e3bb385573747f72bf8609930dea898eb25e61db28736c5553b56a40ec6310"
+   ]
+  },
+  {
+   "sourceId": "pmid-32496733",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "32496733",
+   "doi": null,
+   "canonicalCitation": "Guier CP, Kaur K, Stokkermans TJ. Optic Neuritis 2025 Jan. PMID 32496733. PMID 32496733.",
+   "citationVariants": [
+    "Guier CP, Kaur K, Stokkermans TJ. Optic Neuritis 2025 Jan. PMID 32496733. PMID 32496733."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/32496733/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/32496733/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-27"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-scotoma-to-multiple-sclerosis",
+     "primaryId": "scotoma",
+     "targetId": "multiple-sclerosis",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "1350b7c7998e381b28348b9830fc0a4d24c4b81ef1bdc45988ff95229af21c65"
+   ]
+  },
+  {
+   "sourceId": "pmid-39669846",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "39669846",
+   "doi": "10.7759/cureus.73555",
+   "canonicalCitation": "Kluglein KA, South SC, Toska E, et al. Exploring Systemic Comorbidities and Lifestyle Factors Associated With Seborrheic Dermatitis: A Scoping Review Cureus. 2024 Nov;16(11):e73555. doi: 10.7759/cureus.73555. PMID 39669846. PMID 39669846.",
+   "citationVariants": [
+    "Kluglein KA, South SC, Toska E, et al. Exploring Systemic Comorbidities and Lifestyle Factors Associated With Seborrheic Dermatitis: A Scoping Review Cureus. 2024 Nov;16(11):e73555. doi: 10.7759/cureus.73555. PMID 39669846. PMID 39669846."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39669846/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/39669846/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-27"
+   ],
+   "liveUsageCount": 2,
+   "liveUses": [
+    {
+     "relationshipId": "rel-seborrheic-dermatitis-to-parkinsons-disease",
+     "primaryId": "seborrheic-dermatitis",
+     "targetId": "parkinsons-disease",
+     "sourceIndex": 0
+    },
+    {
+     "relationshipId": "rel-seborrheic-dermatitis-to-hiv-aids",
+     "primaryId": "seborrheic-dermatitis",
+     "targetId": "hiv-aids",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "e1839e7cd18c63cff495c4f3f003e55e65c1043c35cd8d9722c8054a64b25e0f",
+    "f8b0b7635d166107dfc25f3e8dd8d3c163d958a7550427266b242a68649592f0"
+   ]
+  },
+  {
+   "sourceId": "pmid-39313034",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "39313034",
+   "doi": "10.1016/j.jaad.2024.08.074",
+   "canonicalCitation": "Wilkowski CM, Alhajj M, Kilbane CW, et al. The association of seborrheic dermatitis and Parkinson's disease: A cross-sectional study J Am Acad Dermatol. 2025 Jan;92(1):157-159. doi: 10.1016/j.jaad.2024.08.074. PMID 39313034. PMID 39313034.",
+   "citationVariants": [
+    "Wilkowski CM, Alhajj M, Kilbane CW, et al. The association of seborrheic dermatitis and Parkinson's disease: A cross-sectional study J Am Acad Dermatol. 2025 Jan;92(1):157-159. doi: 10.1016/j.jaad.2024.08.074. PMID 39313034. PMID 39313034."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39313034/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/39313034/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-27"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-seborrheic-dermatitis-to-parkinsons-disease",
+     "primaryId": "seborrheic-dermatitis",
+     "targetId": "parkinsons-disease",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "d33cb0df7c65710272e71767cd85a15374b09663f0a6035bf05262c5704ae2ea"
+   ]
+  },
+  {
+   "sourceId": "pmid-42650087",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "42650087",
+   "doi": "10.3390/genes17080894",
+   "canonicalCitation": "Kefala V, Oikonomou E, Sfyri E, et al. Genetic, Lipid, Fungal Microbiome and Neuroinflammatory Links Between Seborrheic Dermatitis and Parkinson's Disease: A Narrative Review Genes (Basel). 2026 Jul 30;17(8). doi: 10.3390/genes17080894. PMID 42650087. PMID 42650087.",
+   "citationVariants": [
+    "Kefala V, Oikonomou E, Sfyri E, et al. Genetic, Lipid, Fungal Microbiome and Neuroinflammatory Links Between Seborrheic Dermatitis and Parkinson's Disease: A Narrative Review Genes (Basel). 2026 Jul 30;17(8). doi: 10.3390/genes17080894. PMID 42650087. PMID 42650087."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42650087/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/42650087/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-27"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-seborrheic-dermatitis-to-parkinsons-disease",
+     "primaryId": "seborrheic-dermatitis",
+     "targetId": "parkinsons-disease",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "0d7ec139c39c5ffd7b3db8c7dbc26895cf12edaf3fa9169f9c82deb84498e5a6"
+   ]
+  },
+  {
+   "sourceId": "pmid-41162862",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "41162862",
+   "doi": "10.1186/s12879-025-11827-0",
+   "canonicalCitation": "Anshory M, Effendi RMRA, Rosandy MG, et al. Dermatological manifestation of HIV infection: systematic review and meta-analysis BMC Infect Dis. 2025 Oct 29;25(1):1446. doi: 10.1186/s12879-025-11827-0. PMID 41162862. PMID 41162862.",
+   "citationVariants": [
+    "Anshory M, Effendi RMRA, Rosandy MG, et al. Dermatological manifestation of HIV infection: systematic review and meta-analysis BMC Infect Dis. 2025 Oct 29;25(1):1446. doi: 10.1186/s12879-025-11827-0. PMID 41162862. PMID 41162862."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41162862/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/41162862/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-27"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-seborrheic-dermatitis-to-hiv-aids",
+     "primaryId": "seborrheic-dermatitis",
+     "targetId": "hiv-aids",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "54ca152c25993c35ef93106895ba4739a8c2b4a905e6cf7a0285dad6ba639675"
+   ]
+  },
+  {
+   "sourceId": "pmid-32379092",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "32379092",
+   "doi": "10.1097/DAD.0000000000001670",
+   "canonicalCitation": "Mahlangeni GM, Tod BM, Jordaan HF, et al. Clinicopathological Features of Seborrheic-Like Dermatitis in HIV-Infected Adults: A Single Institutional Descriptive Cross-Sectional Study Am J Dermatopathol. 2021 Jan 1;43(1):27-34. doi: 10.1097/DAD.0000000000001670. PMID 32379092. PMID 32379092.",
+   "citationVariants": [
+    "Mahlangeni GM, Tod BM, Jordaan HF, et al. Clinicopathological Features of Seborrheic-Like Dermatitis in HIV-Infected Adults: A Single Institutional Descriptive Cross-Sectional Study Am J Dermatopathol. 2021 Jan 1;43(1):27-34. doi: 10.1097/DAD.0000000000001670. PMID 32379092. PMID 32379092."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/32379092/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/32379092/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-27"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-seborrheic-dermatitis-to-hiv-aids",
+     "primaryId": "seborrheic-dermatitis",
+     "targetId": "hiv-aids",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "3196d7a1390e0cccc410aaf8b431eb79cecbba6d0d2ecbc188bebe31397c3d47"
+   ]
+  },
+  {
+   "sourceId": "pmid-37814771",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "37814771",
+   "doi": "10.7759/cureus.44907",
+   "canonicalCitation": "Borja Montes OF, Escobar Gil T, Cardona Solano C, et al. Leser-Trélat Syndrome, an Underdiagnosed Cutaneous Paraneoplastic Syndrome That Could Aid in Early Detection of Colon Cancer: A Case Report Cureus. 2023 Sep;15(9):e44907. doi: 10.7759/cureus.44907. PMID 37814771. PMID 37814771.",
+   "citationVariants": [
+    "Borja Montes OF, Escobar Gil T, Cardona Solano C, et al. Leser-Trélat Syndrome, an Underdiagnosed Cutaneous Paraneoplastic Syndrome That Could Aid in Early Detection of Colon Cancer: A Case Report Cureus. 2023 Sep;15(9):e44907. doi: 10.7759/cureus.44907. PMID 37814771. PMID 37814771."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/37814771/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/37814771/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-27"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-seborrheic-keratosis-to-colorectal-cancer",
+     "primaryId": "seborrheic-keratosis",
+     "targetId": "colorectal-cancer",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "5cbab83667213cb131d78829c1a77ab657c391be2d9328e86028dabcf3c4de17"
+   ]
+  },
+  {
+   "sourceId": "pmid-41158917",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "41158917",
+   "doi": "10.7759/cureus.93325",
+   "canonicalCitation": "Okur A, Şahin KC, Sahin Z, et al. Leser-Trélat Sign as an Initial Manifestation of Synchronous Prostate and Bladder Cancer Cureus. 2025 Sep;17(9):e93325. doi: 10.7759/cureus.93325. PMID 41158917. PMID 41158917.",
+   "citationVariants": [
+    "Okur A, Şahin KC, Sahin Z, et al. Leser-Trélat Sign as an Initial Manifestation of Synchronous Prostate and Bladder Cancer Cureus. 2025 Sep;17(9):e93325. doi: 10.7759/cureus.93325. PMID 41158917. PMID 41158917."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41158917/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/41158917/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-27"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-seborrheic-keratosis-to-colorectal-cancer",
+     "primaryId": "seborrheic-keratosis",
+     "targetId": "colorectal-cancer",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "d6b8f26c70c460189feb3c061356f4a4986e0ac1547b9c2952f8a2b3bf96c58b"
+   ]
+  },
+  {
+   "sourceId": "pmid-37843094",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "37843094",
+   "doi": null,
+   "canonicalCitation": "Geber A, Hadžavdić A, Ljubojević Hadžavdić S. The Leser-Trélat Sign in a Patient with Gastric Adenocarcinoma Acta Dermatovenerol Croat. 2023 Aug;31(1):51-52. PMID 37843094. PMID 37843094.",
+   "citationVariants": [
+    "Geber A, Hadžavdić A, Ljubojević Hadžavdić S. The Leser-Trélat Sign in a Patient with Gastric Adenocarcinoma Acta Dermatovenerol Croat. 2023 Aug;31(1):51-52. PMID 37843094. PMID 37843094."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/37843094/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/37843094/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-27"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-seborrheic-keratosis-to-colorectal-cancer",
+     "primaryId": "seborrheic-keratosis",
+     "targetId": "colorectal-cancer",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "0960cf728cec6012c2d1fe8c56998c936a113598650be719b4a0049f4d182340"
    ]
   }
  ],
