@@ -6,8 +6,8 @@
  "installedFrom": "Master Registry Discrepancy Resolution 2026",
  "authorityBoundary": "Authoritative for current relationship direction, proposition text, guard state, source linkage, and KB parity; does not establish an individual VA medical nexus.",
  "counts": {
-  "relationships": 778,
-  "explicitPublicationGuards": 704,
+  "relationships": 790,
+  "explicitPublicationGuards": 716,
   "legacyRationaleBoundaries": 74
  },
  "relationships": [
@@ -24901,6 +24901,378 @@
    "sourceReferenceCount": 3,
    "pathwayIntelligencePresent": false,
    "suggestionObjectHash": "13162fd0de5a04a2d1be54974ef01ccfb1003f4b0f4c9fcdeb127f371c70100c"
+  },
+  {
+   "relationshipId": "rel-retrograde-ejaculation-to-female-infertility",
+   "primaryId": "retrograde-ejaculation",
+   "targetId": "female-infertility",
+   "direction": "retrograde-ejaculation -> female-infertility",
+   "primaryPublicationState": "draft",
+   "rank": 1,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authoring keeps this edge at documented association because the two review anchors reliably establish that retrograde ejaculation removes antegrade ejaculate from intercourse and that natural conception consequently fails, and the case anchor shows an attributable conception after sperm recovery, but the class of evidence is review plus case report with a confounded female partner and no cohort denominator; the edge is registered so the couple-level route is visible, while the target identity is the female partner's and the intermediate step of the male condition must be independently confirmed before any individual attribution."
+   },
+   "rationale": "Authoring keeps this edge at documented association because the two review anchors reliably establish that retrograde ejaculation removes antegrade ejaculate from intercourse and that natural conception consequently fails, and the case anchor shows an attributable conception after sperm recovery, but the class of evidence is review plus case report with a confounded female partner and no cohort denominator; the edge is registered so the couple-level route is visible, while the target identity is the female partner's and the intermediate step of the male condition must be independently confirmed before any individual attribution.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), mechanism MECHANICAL_OR_COMPRESSIVE (emission-phase failure of bladder-neck closure diverting the ejaculate retrograde into the bladder so antegrade semen is unavailable at intercourse), following the male-condition-to-infertility convention (the registered appendicitis, fitz-hugh-curtis-syndrome, and miscarriage to female-infertility edges), with the anchor-class and gender-scope limits carried openly: the narrative review establishes that the condition emphasises its impact on male fertility, produces partial or complete absence of the ejaculate, and that assisted reproductive technologies using sperm retrieved from post-ejaculatory urine offer a viable alternative for conception because natural conception fails (PMID 40150068), the laboratory-medicine review defines emission-phase reflux into the bladder with total or partial absence of sperm emission, notes that evaluating the ejaculate may not be sufficient to identify the condition, and states that infertility management may otherwise require epididymal fluid retrieval or testicular biopsy (PMID 39776640), and the case report documents a couple with four years of infertility in which the male spouse was found to have retrograde ejaculation with primary infertility attributable to it, treated with testicular sperm aspiration and intracytoplasmic sperm injection (PMID 38576657); the evidence class is two reviews plus one case report with no cohort denominator for partner-level conception failure, the single conception anchor is confounded by concurrent bilateral tubal obstruction in the female partner, and the route runs through the couple while the catalog target is the female partner's identity; no delayed-ejaculation, anorgasmia, or female-sexual-arousal-disorder edge is registered (semantic mismatch, manifestation identity, and gender scope respectively); individual claims route through dated post-ejaculatory urine sperm analysis with low or normal seminal volume and the female partner's own tubal, ovulatory, uterine, and partner-sperm causes excluded.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "No cohort quantifies partner-level conception failure attributable to retrograde ejaculation, and the located evidence base is reviews plus isolated case reports; the single located conception anchor is confounded by concurrent bilateral tubal obstruction in the female partner; no anchor reports the population detection rate of the condition, which the laboratory review notes is not routine; the anchors do not separate complete from partial retrograde ejaculation in conception outcomes."
+   ],
+   "sourceIds": [
+    "pmid-40150068",
+    "pmid-39776640",
+    "pmid-38576657"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "2cd0da8d78acc20e5a543f6c2cf8afc2eb80ebd0fb460bc458f6496c4adae859"
+  },
+  {
+   "relationshipId": "rel-retrograde-ejaculation-to-erectile-dysfunction",
+   "primaryId": "retrograde-ejaculation",
+   "targetId": "erectile-dysfunction",
+   "direction": "retrograde-ejaculation -> erectile-dysfunction",
+   "primaryPublicationState": "draft",
+   "rank": 2,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authoring registers this edge because co-occurrence is quantified within single populations at three independent classes - a prospective controlled design, a 115-patient diabetic series with adjusted predictors, and a 54-patient surgical series - but the conservative framing names diabetes and prostatic surgery as the shared antecedent in the mechanism, the evidence gaps, and the alternatives list, so a reader cannot mistake documented co-occurrence for an established direction; the surgical anchor's null subgroup trends are carried openly rather than omitted."
+   },
+   "rationale": "Authoring registers this edge because co-occurrence is quantified within single populations at three independent classes - a prospective controlled design, a 115-patient diabetic series with adjusted predictors, and a 54-patient surgical series - but the conservative framing names diabetes and prostatic surgery as the shared antecedent in the mechanism, the evidence gaps, and the alternatives list, so a reader cannot mistake documented co-occurrence for an established direction; the surgical anchor's null subgroup trends are carried openly rather than omitted.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), mechanism NEUROENDOCRINE_CASCADE (autonomic neuropathy affecting pelvic and cavernosal innervation in diabetes, and cavernosal-ejaculatory nerve injury during prostatic surgery), following the male-sexual-function comorbidity convention (the registered prostate-cancer, testicular-cancer, hypogonadism, hypertension, psoriasis, cauda-equina-syndrome, ptsd, and depressive-disorder to erectile-dysfunction edges), with the shared-exposure limit and one explicit null carried openly: the prospective controlled diabetes study documents retrograde ejaculation in 9 of 26 men with diabetes versus none of 16 controls who delivered an ejaculate (P<0.01) with a graded erectile-dysfunction frequency across non-diabetics, diabetics without retrograde ejaculation, and diabetics with it (PMID 23606485), the retrospective series of 115 diabetic men documents 80.0 percent complete retrograde ejaculation with 54.8 percent moderate-to-severe erectile dysfunction and 39.1 percent anorgasmia, with diabetes duration (adjusted OR 1.70, P<0.001), age (adjusted OR 1.23, P<0.001), and glycated hemoglobin (adjusted OR 1.70, P=0.004) as independent predictors of the erectile outcome (PMID 41731353), and the surgical series of 113 consecutive patients undergoing thulium laser prostate vaporesection documents worsening erectile function in 11 of 54 evaluable patients (20 percent) and some degree of retrograde ejaculation in 30 of 54 (56 percent) at mean 12-month follow-up (PMID 22237486); counterweight carried openly - the surgical anchor's erectile-dysfunction subgroup trends by age, hypertension, and hypercholesterolaemia were NOT significant; shared-exposure discipline: every anchor is a population selected by diabetes or prostatic surgery, so direction from the ejaculatory condition to the erectile condition is explicitly not asserted; the 39.1 percent anorgasmia construct in the 2026 series is withheld as a double-count of the same triple-dysfunction construct and the catalog's anorgasmia window owns that route; sources are disjoint from the female-infertility edge this batch (no within-batch sharing); individual claims route through dated erectile-function and ejaculatory assessments with diabetes control, prior prostate or pelvic surgery, medications, and vascular risk factors excluded.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "All three anchors select populations by shared antecedent (diabetes in two, prostatic surgery in one), so no anchor can separate the ejaculatory condition's contribution to erectile dysfunction from the common substrate; the prospective anchor reports only 26 exposed participants and 16 controls; the surgical anchor reports postoperative outcomes with an erectile-dysfunction subgroup trend that was not statistically significant; none of the anchors reports a temporal ordering of the two diagnoses within individuals."
+   ],
+   "sourceIds": [
+    "pmid-23606485",
+    "pmid-41731353",
+    "pmid-22237486"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "e655a425b418418a9a378c5cdd8536a3108cbbf44aa151bf64f7eca404fdf7d4"
+  },
+  {
+   "relationshipId": "rel-rhinitis-vasomotor-to-asthma",
+   "primaryId": "rhinitis-vasomotor",
+   "targetId": "asthma",
+   "direction": "rhinitis-vasomotor -> asthma",
+   "primaryPublicationState": "draft",
+   "rank": 1,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authoring registers this edge because the population-level co-occurrence is quantified with unexposed denominators in a prospective birth cohort, matching the allergic-rhinitis magnitude, and because two current reviews maintain the upper-airway framework; the conservative framing carries the cohort's own null proximal finding openly, so the association is visible while the mechanistic route and any direction remain explicitly unasserted."
+   },
+   "rationale": "Authoring registers this edge because the population-level co-occurrence is quantified with unexposed denominators in a prospective birth cohort, matching the allergic-rhinitis magnitude, and because two current reviews maintain the upper-airway framework; the conservative framing carries the cohort's own null proximal finding openly, so the association is visible while the mechanistic route and any direction remain explicitly unasserted.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), mechanism PSYCHOPHYSIOLOGICAL (nasal mucosal sensory and autonomic dysfunction with neuropeptide release influencing lower-airway tone and bronchial responsiveness), following the upper-airway comorbidity convention (the registered allergic-rhinitis, nasal-polyps, atopic-dermatitis-eczema, bronchiolitis, gerd, churg-strauss-syndrome, and eosinophilic-bronchitis to asthma edges), with two explicit counterweights and the cross-sectional limit carried openly: the Copenhagen birth-cohort comparison documents asthma prevalence of 20 percent in 67 children with non-allergic rhinitis against 5 percent in 185 controls (P=0.001), matching the 21 percent in 38 children with allergic rhinitis (P=0.002), while finding NO association of non-allergic rhinitis with filaggrin null mutations, eczema, food sensitisation, total IgE, blood eosinophil count, fractional exhaled nitric oxide, or bronchial hyperresponsiveness (PMID 20816191) - so the proximal lower-airway mechanism is not demonstrated in the non-allergic subgroup - and a separate 2013 pediatric methacholine-challenge study found bronchial hyperresponsiveness in only 25.5 percent of children with non-allergic rhinitis against 55.7 percent with allergic rhinitis and reported that persistent rhinitis symptoms did not increase hyperresponsiveness risk in the non-allergic group (PMID 23710946, carried on the record as a second counterweight though not among this edge's three registered references); the upper-airway-comorbidity review supplies the current one-airway one-disease framework (PMID 39426424) and the non-allergic-rhinopathy review supplies the subtype-specific comorbidity list and diagnostic-accuracy caution (PMID 38467330); no sinusitis, chronic-sinusitis, allergic-rhinitis, sleep-apnea, or insomnia edge is registered (constitutive proximity, identity duplication, window ownership, and below-threshold respectively); individual claims route through dated asthma diagnosis with objective obstruction or variability testing and negative aeroallergen and IgE workup excluding allergic rhinitis, aspirin-exacerbated respiratory disease, chronic rhinosinusitis, and drug effects.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "The only located cohort is cross-sectional with 67 exposed children and cannot establish temporal direction between the two conditions; that cohort reports bronchial hyperresponsiveness and elevated exhaled nitric oxide as present only in the allergic group, so the proximal lower-airway mechanism is not demonstrated in the non-allergic subgroup; no located anchor separates non-allergic rhinitis from the mixed and unclassified subtypes quantitatively in an asthma outcome; no located cohort reports incident asthma after a confirmed non-allergic rhinitis diagnosis in adults; a separate 2013 pediatric methacholine-challenge study found bronchial hyperresponsiveness in only 25.5 percent of children with non-allergic rhinitis against 55.7 percent with allergic rhinitis and reported that persistent rhinitis symptoms did not increase hyperresponsiveness risk in the non-allergic group (PMID 23710946), which is carried here as a second counterweight to the airway-hyperresponsiveness mechanism though it is not among this edge's three registered references"
+   ],
+   "sourceIds": [
+    "pmid-20816191",
+    "pmid-39426424",
+    "pmid-38467330"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "6d8cbc29fa896eeb6d5e847c708479dc588e7b4d383a7859f5f25fe4de64d1be"
+  },
+  {
+   "relationshipId": "rel-rhinitis-vasomotor-to-migraine-headaches",
+   "primaryId": "rhinitis-vasomotor",
+   "targetId": "migraine-headaches",
+   "direction": "rhinitis-vasomotor -> migraine-headaches",
+   "primaryPublicationState": "draft",
+   "rank": 2,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authoring registers this edge because two independent designs quantify the co-occurrence with the non-allergic subtype specifically represented, and a dedicated report addresses the exact pair; the conservative framing carries the population anchor's null disability outcome, the mixed-rhinitis attribution, the absence of an abstract on the dedicated anchor, and the untested analgesic-over-use confounder, so the association is visible while direction and mechanism remain explicitly unasserted."
+   },
+   "rationale": "Authoring registers this edge because two independent designs quantify the co-occurrence with the non-allergic subtype specifically represented, and a dedicated report addresses the exact pair; the conservative framing carries the population anchor's null disability outcome, the mixed-rhinitis attribution, the absence of an abstract on the dedicated anchor, and the untested analgesic-over-use confounder, so the association is visible while direction and mechanism remain explicitly unasserted.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), mechanism NEUROENDOCRINE_CASCADE (neurogenic nasal-mucosal inflammation with neuropeptide release including calcitonin gene-related-peptide pathways sensitising trigeminal nociceptive signalling), following the comorbidity-magnitude convention (the registered ocd, ptsd, abdominal-migraine, alice-in-wonderland-syndrome, cyclic-vomiting-syndrome, and occipital-neuralgia to migraine-headaches edges), with the cross-sectional limit, the mixed-rhinitis attribution, one explicit null, and the no-abstract anchor class carried openly: the prospective cross-sectional study of 497 participants with neurologist ICHD-3 assessment documents migraine prevalence of 22.9 percent in 109 patients with non-allergic rhinitis against 16.0 percent in 188 controls, with the combined rhinitis group at 24.9 percent (OR 1.75, P=0.018) and the allergic group highest at 26.0 percent (PMID 41605462), the American Migraine Prevalence and Prevention study of 5,849 people with migraine documents rhinitis in 66.8 percent and an adjusted association of any rhinitis with headache frequency (OR 1.25, 95 percent CI 1.05-1.49) and of mixed rhinitis (OR 1.28, 95 percent CI 1.05-1.57) (PMID 24275145), and a dedicated 2021 report addresses the migraine and vasomotor-rhinitis pair directly (PMID 33713559) - whose PubMed record carries no abstract, so it is registered for the existence and setting of the association only, not for any effect magnitude; explicit null carried openly - the same population anchor's MIDAS disability association lost significance in the fully adjusted model (OR 1.10, 95 percent CI 0.96-1.26); the population anchor conditions on the migraine sample so direction is not testable within it, the significant adjusted result is carried by the mixed-rhinitis stratum rather than the non-allergic stratum, and no anchor adjusts for analgesic or NSAID over-use; sources are disjoint from the rosacea to migraine-headaches edge authored in the same batch (no within-batch sharing); individual claims route through dated ICHD-3 migraine diagnosis and a negative aeroallergen workup with analgesic over-use, mixed or allergic rhinitis, chronic rhinosinusitis, and nasal-polyposis excluded.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "The only subtype-specific quantitative anchor is cross-sectional with 109 exposed participants and cannot establish temporal direction; the population anchor conditions on the migraine sample so direction between the conditions is not testable within it, and the significant adjusted result is carried by the mixed-rhinitis stratum rather than the non-allergic stratum; the same anchor's MIDAS disability association went null after full adjustment (OR 1.10, 95 percent CI 0.96-1.26), an explicit counterweight carried here; the dedicated vasomotor-rhinitis and migraine report carries no abstract in the PubMed record and supports only the existence of the association, not its magnitude; no located anchor adjusts for analgesic or NSAID over-use, a plausible confounder operating in the opposite direction."
+   ],
+   "sourceIds": [
+    "pmid-41605462",
+    "pmid-24275145",
+    "pmid-33713559"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "a23632bebb85635cd0c8eb99e247d33008fd241bd366fa155b234334e345b1a5"
+  },
+  {
+   "relationshipId": "rel-rickets-to-seizure-disorder",
+   "primaryId": "rickets",
+   "targetId": "seizure-disorder",
+   "direction": "rickets -> seizure-disorder",
+   "primaryPublicationState": "draft",
+   "rank": 1,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authoring registers this edge because the two case anchors document the full mechanistic chain and its reversibility with correction, and the population anchor supplies a denominator showing the complication is uncommon; the conservative framing names the rarity, the febrile and alkalosis cofactors, and the resolvable-metabolic rather than structural character, so a reader sees the recognised presentation without inferring an epilepsy link."
+   },
+   "rationale": "Authoring registers this edge because the two case anchors document the full mechanistic chain and its reversibility with correction, and the population anchor supplies a denominator showing the complication is uncommon; the conservative framing names the rarity, the febrile and alkalosis cofactors, and the resolvable-metabolic rather than structural character, so a reader sees the recognised presentation without inferring an epilepsy link.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), mechanism METABOLIC_OR_NUTRITIONAL (vitamin D deficiency with dietary calcium deprivation lowering ionised serum calcium, the hypocalcaemic tier of the calcium-deprivation spectrum comprising seizures, tetany, and dilated cardiomyopathy, so neuronal membrane excitability rises), with the rarity, cofactor, and anchor-class limits carried openly: the case report documents an eight-month-old exclusively breastfed boy with three episodes of generalised tonic seizures, total calcium 6.8 mg/dL, ionised calcium 0.91 mmol/L, 25-hydroxyvitamin D 3.5 ng/mL, low phosphate, elevated alkaline phosphatase, and high parathyroid hormone, with mild respiratory alkalosis identified as a further contributor to the ionised-calcium decline and no further seizures after hypocalcaemia correction (PMID 41552144), the emergency-department series of three children documents presentations including a fracture concerning for child abuse, tetany, and hypocalcaemic seizures, all with laboratory and radiographic confirmation of nutritional rickets and resolution with treatment (PMID 14758313), and the population-based study of 23 children with radiographic rickets (17 nutritional) documents presentation features including poor growth in 12, leg deformity in 8, motor delay in 5, leg pain in 3, weakness in 3, and hypocalcaemia or tetany in 2, with incidence rising to 24.1 per 100,000 in children under three in the most recent decade (P=0.003 for trend) (PMID 23374621); the reversible-metabolic rather than structural character is stated - seizure cessation after calcium correction is the hallmark of a metabolic mechanism rather than epilepsy - and the cofactors named are intercurrent febrile illness and respiratory alkalosis; the located evidence is one case report, one three-case series, and a 2-of-17 presentation frequency, so no incidence of seizure as a complication can be estimated, and the population anchor's diagnostic code set included tetany and hypocalcaemic seizure by design; no osteomalacia, osteoporosis, osteopenia, or stress-fractures edge is registered (manifestation identity, shared substrate, and duplicate scope respectively); individual claims route through dated semiology and dated calcium, ionised calcium, phosphate, alkaline phosphatase, 25-hydroxyvitamin D, and parathyroid hormone values with febrile seizure, structural epilepsy, and alternative hypocalcaemic causes excluded.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "The strongest located anchor is a single infant case report, the emergency-department anchor is a three-case series, and the population anchor records hypocalcaemia or tetany in only 2 of 17 nutritional rickets cases, so no incidence of seizure as a rickets complication can be estimated; the case-report anchor's seizures were febrile with a concurrent respiratory alkalosis the authors identify as an additional contributor to the ionised-calcium decline, so the trigger is not attributable to rickets alone; no located anchor separates rickets-related hypocalcaemic seizures from structural or febrile epilepsy in a cohort; the population anchor's diagnostic code set included tetany and hypocalcaemic seizure by design, which inflates the identified presentation count relative to incidental detection."
+   ],
+   "sourceIds": [
+    "pmid-41552144",
+    "pmid-14758313",
+    "pmid-23374621"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "e4d990c53c309cf03b2c4c485a7315587bf72deb9d3c241c333a0cacfa65f7c3"
+  },
+  {
+   "relationshipId": "rel-rickets-to-loss-of-teeth",
+   "primaryId": "rickets",
+   "targetId": "loss-of-teeth",
+   "direction": "rickets -> loss-of-teeth",
+   "primaryPublicationState": "draft",
+   "rank": 2,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authoring registers this edge because the dentition is a documented downstream tissue of the same mineralisation deficit, the strongest anchor contains a built-in temporal control in the unaffected primary dentition, and the comparative anchor quantifies the defect against a control group; the conservative framing states the small anchor sizes, the inherited-subtype mismatch in the comparative anchor, and the unquantified tooth-loss magnitude, so the dentitional consequence is visible without inferring a population rate."
+   },
+   "rationale": "Authoring registers this edge because the dentition is a documented downstream tissue of the same mineralisation deficit, the strongest anchor contains a built-in temporal control in the unaffected primary dentition, and the comparative anchor quantifies the defect against a control group; the conservative framing states the small anchor sizes, the inherited-subtype mismatch in the comparative anchor, and the unquantified tooth-loss magnitude, so the dentitional consequence is visible without inferring a population rate.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), mechanism METABOLIC_OR_NUTRITIONAL (systemic calcium and phosphate deprivation during the mineralisation window of permanent-tooth formation leaving enamel hypoplastic and hypomineralised, producing rough discoloured surfaces that wear and permit early destructive caries), following the systemic-to-oral manifestation convention, with the built-in temporal control and the anchor-class limits carried openly: the case report documents a boy diagnosed with vitamin D deficiency rickets at 2 years 5 months who at 6 years 9 months had generalised developmental enamel hypoplasia of the permanent incisors and first molars with yellow-brown discoloration, rough enamel surfaces, morphological irregularities, and attrition, an unaffected primary dentition, and generalised crown malformation of both erupted and unerupted permanent teeth on panoramic radiography (PMID 42505708) - the spared primary dentition functions as a temporal control bounding the route to the permanent-tooth window, the two-patient report documents that two young girls with rickets in early childhood suffered subsequent serious tooth decay (PMID 24616355), and the comparative cohort documents enamel hypoplasia of incisors or canines in 5 of 6 adults with vitamin-D-dependent rickets type 1A against 1 of 25 with X-linked hypophosphatemia (P<0.001), first-molar hypoplasia in 3 of 4 against 0 of 16 (P=0.004), and endodontically affected teeth in 5 of 7 against 24 of 30, concluding that low availability of both calcium and phosphate to be critical in periods of enamel formation (PMID 28608052); the comparative anchor describes a rare inherited subtype rather than nutritional rickets and the located evidence reports no rate of extraction, edentulism, or prosthesis use, so the population magnitude of tooth loss is unquantified; sources are disjoint from the seizure-disorder edge this batch (no within-batch sharing); individual claims route through dated rickets biochemistry with calcium, phosphate, 25-hydroxyvitamin D, and parathyroid hormone values and exclusion of trauma, infection, fluoride excess, feeding-practice caries, and X-linked hypophosphatemia.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "The strongest clinical anchor is a single 6-year-9-month-old patient and the decay anchor is a two-patient report, so no rate of tooth loss or extraction attributable to rickets can be estimated; the comparative anchor describes vitamin-D-dependent rickets type 1A, a rare inherited subtype, and explicitly contrasts it with X-linked hypophosphatemia rather than sampling nutritional rickets; no located anchor reports edentulism, prosthesis use, or a longitudinal dental-outcome measure; the primary dentition is unaffected in the strongest anchor, so the route is bounded to the permanent-tooth mineralisation window and cannot be generalised to earlier tooth loss."
+   ],
+   "sourceIds": [
+    "pmid-42505708",
+    "pmid-24616355",
+    "pmid-28608052"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "85303b71ce937653982f6db275efaa7e9f46a1c6ab9b914c427db08bb2d0e5f7"
+  },
+  {
+   "relationshipId": "rel-riedel-s-thyroiditis-to-hypothyroidism",
+   "primaryId": "riedel-s-thyroiditis",
+   "targetId": "hypothyroidism",
+   "direction": "riedel-s-thyroiditis -> hypothyroidism",
+   "primaryPublicationState": "draft",
+   "rank": 1,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authoring registers this edge because the gland destruction and the biochemical failure are documented together in a patient-level series and in two reviews, and because the mechanism names the fibrosing inflammation rather than a generic thyroid failure; the conservative framing states the six-patient anchor, the lack of a euthyroid comparator, the exogenous levothyroxine in the located cases, and the coexisting-autoimmune-immune alternative, so the edge remains distinct from the registered autoimmune thyroiditis window."
+   },
+   "rationale": "Authoring registers this edge because the gland destruction and the biochemical failure are documented together in a patient-level series and in two reviews, and because the mechanism names the fibrosing inflammation rather than a generic thyroid failure; the conservative framing states the six-patient anchor, the lack of a euthyroid comparator, the exogenous levothyroxine in the located cases, and the coexisting-autoimmune-immune alternative, so the edge remains distinct from the registered autoimmune thyroiditis window.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), mechanism SYSTEMIC_INFLAMMATORY (IgG4-mediated lymphoplasmacytic infiltration with storiform fibrosis progressively replacing and destroying thyroid parenchyma so hormone synthesis falls), following the thyroiditis-to-hypothyroidism convention while staying deliberately distinct from the registered rel-thyroiditis-to-hypothyroidism edge, which scopes itself to chronic autoimmune or Hashimoto-type thyroiditis and explicitly not every transient or destructive thyroiditis syndrome, with the anchor-class and competing-explanation limits carried openly: the clinical series of six patients documents hypothyroidism at diagnosis in five, extrathyroidal manifestations in four, a clear IgG4/IgG ratio over 40 percent in one, and treatment with glucocorticoids in four, tamoxifen in four, and both in two (PMID 29380231), the clinical review documents presentation as a thyroid mass with local symptoms plus characteristic biochemical abnormalities such as hypocalcaemia and hypothyroidism, and notes that restrictive or infiltrative symptoms out of proportion to a demonstrable mass or simultaneous biochemical abnormalities should prompt recognition (PMID 21832114), and the IgG4-related thyroid-disorder review documents levothyroxine supplementation for resulting hypothyroidism alongside glucocorticoids and surgical excision for compressive symptoms as primary treatment options (PMID 27828690); the only located series is six patients with no euthyroid comparator, no denominator, and no confidence interval, the third anchor addresses the wider IgG4-related thyroid disease group in which this condition is one member, and several located patients received exogenous levothyroxine so their thyroid-function values reflect treatment rather than untreated natural history; coexisting chronic autoimmune or Hashimoto's thyroiditis is named as the principal competing explanation in the causation status, evidence gaps, and alternatives, and no anchor separates the two by antibody profile; no dysphagia, nontoxic-thyroid-enlargement, or thyroid-cancer edge is registered (constitutive proximity, identity duplication, and diagnostic mimic respectively); individual claims route through dated thyroid-function studies and dated Riedel's diagnosis with histological or IgG4 confirmation excluding autoimmune thyroiditis, prior thyroid surgery or radioiodine, iodine and drug exposure, and pituitary disease.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "The only located clinical series is six patients with five hypothyroid at diagnosis, with no euthyroid comparator, no denominator, and no reported confidence interval, so the frequency of hypothyroidism in the condition cannot be estimated; both review anchors describe the association at framework level and the third anchor addresses the wider IgG4-related thyroid disease group in which Riedel's thyroiditis is one member, so its figures are not specific to this condition; several located patients were treated with levothyroxine, so their thyroid-function values reflect treatment rather than untreated natural history; no located anchor separates Riedel's thyroiditis from a coexisting autoimmune thyroiditis by antibody profile, which is the principal competing explanation for the thyroid failure."
+   ],
+   "sourceIds": [
+    "pmid-29380231",
+    "pmid-21832114",
+    "pmid-27828690"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "fefd57506261161defa7d4d8593af25a5e2a1f273b4ee0a6f228de8b9fadd634"
+  },
+  {
+   "relationshipId": "rel-riedel-s-thyroiditis-to-hypoparathyroidism",
+   "primaryId": "riedel-s-thyroiditis",
+   "targetId": "hypoparathyroidism",
+   "direction": "riedel-s-thyroiditis -> hypoparathyroidism",
+   "primaryPublicationState": "draft",
+   "rank": 2,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authoring registers this edge because two independent case anchors document the deficit, its silent presentation, and its reversal when the fibrotic process is treated - which is strong mechanistic detail despite small samples - and a surgical series supplies the second route with a complication profile; the conservative framing keeps the intrinsic and surgical routes separate, attributes the frequency figure to its single-case-report origin, and requires parathyroid biochemistry capable of separating the two, so a reader cannot infer that thyroidectomy or fibrotic infiltration caused a given individual's deficit without distinguishing them."
+   },
+   "rationale": "Authoring registers this edge because two independent case anchors document the deficit, its silent presentation, and its reversal when the fibrotic process is treated - which is strong mechanistic detail despite small samples - and a surgical series supplies the second route with a complication profile; the conservative framing keeps the intrinsic and surgical routes separate, attributes the frequency figure to its single-case-report origin, and requires parathyroid biochemistry capable of separating the two, so a reader cannot infer that thyroidectomy or fibrotic infiltration caused a given individual's deficit without distinguishing them.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), mechanism SYSTEMIC_INFLAMMATORY (fibrosing infiltration of the parathyroid glands by the same IgG4-related process that replaces thyroid parenchyma, with a second treatment-mediated route of inadvertent parathyroid devascularisation or removal during difficult fibrotic dissection), following the post-thyroid-surgery convention (the registered rel-nontoxic-thyroid-enlargement-to-hypoparathyroidism and rel-thyroid-cancer-to-hypoparathyroidism edges, whose own surgical sources are left untouched per ME-29), with both routes carried separately rather than blended and the silent-presentation and provenance limits stated openly: the case report documents a 40-year-old woman with progressive thyroid enlargement, worsening dysphagia, and positional dyspnoea with a hard non-mobile goiter whose marked asymptomatic hypocalcaemia with inappropriately normal parathyroid hormone returned to the reference range within three months of isthmectomy plus serial corticosteroids and tamoxifen, and reports from its literature summary that about one-seventh of cases are associated with hypoparathyroidism requiring long-term therapy while in most cases the deficit persists (PMID 26200816), the second case report documents a patient in whom total thyroidectomy was avoided because of hard adhesion to neighbouring structures and in whom glucocorticoid treatment produced resolution of compressive symptoms, decrease in thyroid volume, and normalisation of calcium and parathyroid hormone after discontinuation of supplementation (PMID 36937637), and the surgical series of six cases of which five underwent surgery documents postoperative complications of temporary hypoparathyroidism, unilateral vocal cord palsy, and temporary bilateral vocal cord palsy (PMID 36452560); the one-seventh frequency figure originates in a single case report's literature summary rather than in a cohort denominator, the two case anchors describe intrinsic parathyroid involvement while the surgical anchor describes postoperative deficiency, and the strongest anchor's deficit was clinically silent and detected on bioassay; no vocal-cord-paralysis, tracheal-stenosis, or extrathyroidal-involvement edge is registered (composite endpoint and window ownership; the latter two as catalog-gap continuations); individual claims route through dated parathyroid hormone, calcium, and phosphate values showing an inappropriately normal or low hormone in the presence of hypocalcaemia with postoperative deficiency, hungry-bone syndrome, and coexisting polyglandular or magnesium-related causes excluded.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "All three anchors are small (two case reports and a six-patient series) and the one-seventh frequency statement originates in a single case report's literature summary rather than in a cohort denominator; the two case anchors describe intrinsic parathyroid involvement by the fibrotic process while the surgical anchor describes postoperative deficiency, so no anchor combines both routes in one population; the strongest anchor's hypoparathyroidism was clinically silent and detected on bioassay, so its presence depends on routine parathyroid testing that is not universally performed; the surgical anchor reports only temporary hypoparathyroidism in a series where five of six patients underwent surgery, so it cannot establish how often the deficit follows conservative management."
+   ],
+   "sourceIds": [
+    "pmid-26200816",
+    "pmid-36937637",
+    "pmid-36452560"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "795ec2d80091da15d0b3d26d599b93948cfe166570609266e9d560d8355d748d"
+  },
+  {
+   "relationshipId": "rel-rosacea-to-depressive-disorder",
+   "primaryId": "rosacea",
+   "targetId": "depressive-disorder",
+   "direction": "rosacea -> depressive-disorder",
+   "primaryPublicationState": "draft",
+   "rank": 1,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authoring registers this edge as the strongest of the four rosacea edges because two very large national cohorts and one independent national replication quantify the association with a severity gradient and time course; the conservative framing names the coded-diagnosis limitation, the ascertainment bias inherent in claims conditioning, the composite endpoint in the third anchor, the authors' own causal disclaimer, and the antidepressant-flushing counter-route, so the association is visible while direction remains unasserted."
+   },
+   "rationale": "Authoring registers this edge as the strongest of the four rosacea edges because two very large national cohorts and one independent national replication quantify the association with a severity gradient and time course; the conservative framing names the coded-diagnosis limitation, the ascertainment bias inherent in claims conditioning, the composite endpoint in the third anchor, the authors' own causal disclaimer, and the antidepressant-flushing counter-route, so the association is visible while direction remains unasserted.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), mechanism PSYCHOPHYSIOLOGICAL (facial erythema, telangiectasia, papules, and burning producing social avoidance, stigmatisation, and reduced self-image whose downstream effect is depressive illness, the route the survey anchor models as indirect mediation through quality of life and stigmatisation), following the mood-edge convention established by the 88 registered depressive-disorder edges, with the coded-diagnosis, ascertainment, and direction limits carried openly: the Danish nationwide register study of 4,632,341 adults including 30,725 with mild and 24,712 with moderate-to-severe rosacea documents a disease severity-dependent depression risk with adjusted incidence rate ratios of 1.89 (95 percent CI 1.82-1.96) and 2.04 (95 percent CI 1.96-2.12) (PMID 26954304), the large-scale retrospective matched cohort of more than 116 million patients including 335,314 with rosacea documents depression HR 1.488 (95 percent CI 1.451-1.527) and anxiety HR 1.664 at five years post-diagnosis with risks increasing over time, and its authors note miscoding, absent causal inference, and absent severity ratings as limitations (PMID 41232679), and the Taiwanese nationwide database study of 7,881 patients against 31,524 age- and sex-matched controls documents an adjusted psychiatric hazard ratio of 2.761 (95 percent CI 2.650-2.877, P<0.001) with phobic disorder at 7.841 and obsessive-compulsive disorder at 6.389, and no subtype, severity, or laboratory data (PMID 30466187); all three anchors use register or claims-coded diagnoses rather than validated instruments, the two largest condition on a diagnosed rosacea population selected by healthcare-seeking and coding behaviour so ascertainment bias cannot be excluded, the third reports a composite psychiatric endpoint without a separately reported depression component, and no anchor establishes temporal ordering since antidepressants used to treat depression can themselves produce flushing; adjustment disorder, bipolar disorder, thyroid disease, and antidepressant-induced flushing are named as alternatives; sources are disjoint from the rosacea anxiety, dry-eye, and migraine edges this batch except the single cross-cited null anchor; individual claims route through dated structured depression assessment with adjustment disorder, bipolar disorder, and thyroid disease excluded.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "All three anchors use register or claims-coded diagnoses rather than validated depression instruments, and none reports a structured depression-specific endpoint except through composite psychiatric coding; the two largest anchors condition on a diagnosed rosacea population selected by healthcare-seeking and coding behaviour, so ascertainment bias cannot be excluded; the largest anchor explicitly disclaims causal inference and notes possible miscoding and absent severity ratings; the third anchor reports a composite psychiatric hazard ratio of 2.761 without a separately reported depression component; no located anchor establishes temporal ordering, since rosacea patients treated with antidepressants can develop flushing from the medication itself."
+   ],
+   "sourceIds": [
+    "pmid-26954304",
+    "pmid-41232679",
+    "pmid-30466187"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "a1d4bcdba6fc699ade0465ef6644885f08be6fb9a86c829400a2b414e6639274"
+  },
+  {
+   "relationshipId": "rel-rosacea-to-anxiety-disorder",
+   "primaryId": "rosacea",
+   "targetId": "anxiety-disorder",
+   "direction": "rosacea -> anxiety-disorder",
+   "primaryPublicationState": "draft",
+   "rank": 2,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authoring registers this edge because the population anchor applies dermatologist-performed examination with confounder adjustment, the survey anchor supplies validated anxiety and quality-of-life instruments with an explicit mediation model, and a third independent design adds a different population; the conservative framing names the screening-instrument limitation, the missing comparator group, the absence of an anxiety measure in the third anchor, and that anchor's own null findings, so the association is visible while a structured anxiety diagnosis remains the requirement for any individual claim."
+   },
+   "rationale": "Authoring registers this edge because the population anchor applies dermatologist-performed examination with confounder adjustment, the survey anchor supplies validated anxiety and quality-of-life instruments with an explicit mediation model, and a third independent design adds a different population; the conservative framing names the screening-instrument limitation, the missing comparator group, the absence of an anxiety measure in the third anchor, and that anchor's own null findings, so the association is visible while a structured anxiety diagnosis remains the requirement for any individual claim.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), mechanism PSYCHOPHYSIOLOGICAL (visible and burning facial inflammation combined with the survey-anchored rejection-scale experience of being visibly stared at producing anticipatory social threat and avoidance presenting as generalised anxiety, the route the survey anchor models as indirect mediation through quality of life and stigmatisation rather than direct), following the mood-edge convention, with the instrument, missing-comparator, and same-publication null limits carried openly: the Northern Finland Birth Cohort 1966 clinical whole-body examination of 1,932 subjects at 46-year follow-up documents rosacea in 15.1 percent (292 subjects) by dermatologist-performed examination and, after confounder adjustment, an OR of 1.55 (95 percent CI 1.02-2.32) for Hopkins Symptom Checklist-25 psychiatric symptoms with the depression subscale at OR 1.56 (95 percent CI 1.10-2.18) (PMID 38008081), the survey of 168 people with rosacea documents a HADS anxiety score of 7.2 (SD 4.60), HADS depression 5.1 (SD 4.09), Dermatology Life Quality Index 4.05 (SD 4.67), and a rejection scale score of 2.61 (SD 3.37), with path analysis indicating that anxiety and depressive symptoms link to somatic symptoms indirectly, mediated through quality of life and stigmatisation, and that men are more negatively affected (PMID 24088195), and the case-control analysis of 200 Chinese patients against 200 healthy participants documents higher PHQ-9 depression scores and markedly higher Dermatology Life Quality Index scores with 40.5 percent large and 45.5 percent extremely large effect, while finding NO significant association with dry eye syndrome, migraine, hypertension, hyperlipidaemia, Helicobacter pylori, cancer, Crohn's or ulcerative colitis, or chronic kidney disease (PMID 40741710, cross-cited on the dry-eye and migraine edges of this batch for those explicit nulls); the only anchor with a population denominator uses a 25-item screening checklist whose confidence interval is wide at a single-point examination, the survey anchor has no control group so its HADS anxiety mean has no in-study comparator, the third anchor reports depression and quality-of-life instruments rather than any anxiety measure, and no located anchor uses a structured anxiety-disorder diagnostic interview; pre-existing generalised anxiety, social anxiety arising from the facial condition, and the catalog's distinct illness-anxiety-disorder identity are named as alternatives; individual claims route through dated structured anxiety assessment with a dated rosacea diagnosis including severity.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "The only anchor with a population denominator uses the Hopkins Symptom Checklist-25, a screening instrument whose 95 percent CI of 1.02-2.32 is wide, and applies a single-point 46-year examination rather than incident ascertainment; the survey anchor has no control group, so its HADS anxiety mean of 7.2 has no comparator in the same study; the third anchor reports depression and quality-of-life instruments rather than any anxiety measure and is therefore registered for the quality-of-life and depression context rather than as an anxiety anchor; that same third anchor reports no significant association with several candidate comorbidities, an explicit counterweight carried here; no located anchor uses a structured anxiety-disorder diagnostic interview."
+   ],
+   "sourceIds": [
+    "pmid-38008081",
+    "pmid-24088195",
+    "pmid-40741710"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "0ced358479c3c11efdf6527c452941ceda21158e47dadc2854721c22a24a1f03"
+  },
+  {
+   "relationshipId": "rel-rosacea-to-dry-eye-syndrome",
+   "primaryId": "rosacea",
+   "targetId": "dry-eye-syndrome",
+   "direction": "rosacea -> dry-eye-syndrome",
+   "primaryPublicationState": "draft",
+   "rank": 3,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authoring registers this edge because ocular involvement is the condition's most frequently documented extra-cutaneous feature, a large case-control quantifies it, and a review supplies the mechanism; the conservative framing states the dermatology-record ascertainment limit, the referral-behaviour explanation for the comparison anchor's positive findings, the same-publication null, and the ocular-first presentation problem, so the association is visible while neither direction is asserted."
+   },
+   "rationale": "Authoring registers this edge because ocular involvement is the condition's most frequently documented extra-cutaneous feature, a large case-control quantifies it, and a review supplies the mechanism; the conservative framing states the dermatology-record ascertainment limit, the referral-behaviour explanation for the comparison anchor's positive findings, the same-publication null, and the ocular-first presentation problem, so the association is visible while neither direction is asserted.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), mechanism SYSTEMIC_INFLAMMATORY (inflammatory and vascular dysregulation shared between facial skin and ocular surface, with lid-margin inflammation and meibomian gland dysfunction producing a deficient and unstable tear film), following the ocular-manifestation convention (the registered sjogren-s-syndrome and ichthyosis to dry-eye-syndrome edges, and the registered uveitis, hyperopia, and myopia to glaucoma windows owning the anterior-segment and intraocular-pressure routes with sources left untouched per ME-29), with the ascertainment, referral-behaviour, and same-publication null limits carried openly: the multi-institutional case-control study of 12,936 rosacea patients against an equal number of sex- and age-matched controls over 12 years documents adjusted odds ratios of 3.44 (95 percent CI 2.71-4.36) for blepharitis, 1.65 (1.50-1.82) for conjunctivitis, 1.93 (1.70-2.20) for glaucoma, 1.89 (1.70-2.09) for dry eye syndrome, and 3.26 (1.41-7.57) for chalazion (PMID 34209731), the clinical review documents chronic blepharoconjunctivitis with eyelid-margin inflammation and meibomian gland dysfunction as the most common ocular features with corneal complications including vascularisation, ulceration, scarring, and rarely perforation, and notes that diagnosis is often delayed when cutaneous changes are absent, particularly in children (PMID 33403718), and the referral-cohort comparison of 176 patients diagnosed by ophthalmology against 176 diagnosed by dermatology documents meibomian gland dysfunction (P<0.001), telangiectasia (P=0.004), and anterior blepharitis (P=0.008) as significantly higher in the ophthalmology-diagnosed group, concluding lid disease-related manifestations are the major and most observable ocular problems, while corneal, episcleral, scleral, and lens findings did not differ significantly (PMID 12658088); the case-control anchor derives ocular diagnoses from dermatology service records so ocular ascertainment is incomplete for patients not referred, the referral anchor measures which service made the diagnosis rather than prevalence or severity so its positive findings are consistent with referral behaviour alone, a separate 2025 Chinese case-control found no significant association between rosacea and dry eye syndrome (PMID 40741710), and the direction is genuinely bidirectional because ocular rosacea is frequently the presenting sign when cutaneous changes are absent; no glaucoma, conjunctivitis, corneal-scarring, chalazion, or blepharitis edge is registered (window ownership, constitutive proximity, composite endpoint, shared mechanism, and catalog-gap respectively); individual claims route through dated dry-eye diagnosis with objective tear-film or meibomian-gland assessment excluding Sjogren-type dryness, contact-lens use, ocular medications, uveitic dryness, and prior ocular surgery.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "The case-control anchor derives its ocular diagnoses from dermatology service records, so ocular ascertainment is incomplete for patients not referred to ophthalmology; the referral-comparison anchor measures the difference between which service made the diagnosis, not the prevalence or severity of ocular disease, and its positive findings are consistent with referral behaviour alone; a separate 2025 Chinese case-control analysis of 200 rosacea patients found no significant association with dry eye syndrome, an explicit counterweight carried here; the clinical-review anchor notes that ocular diagnosis is often delayed when cutaneous changes are absent, particularly in children, so ocular-first presentations are systematically under-represented in cutaneous cohorts; the case-control anchor's glaucoma association overlaps a route the registered uveitis and myopia windows already own."
+   ],
+   "sourceIds": [
+    "pmid-34209731",
+    "pmid-33403718",
+    "pmid-12658088"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "26fd32e24ec14d63de0733580b7b4671b61f5b22ffc9be3086676e6f3e0f9283"
+  },
+  {
+   "relationshipId": "rel-rosacea-to-migraine-headaches",
+   "primaryId": "rosacea",
+   "targetId": "migraine-headaches",
+   "direction": "rosacea -> migraine-headaches",
+   "primaryPublicationState": "draft",
+   "rank": 4,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authoring registers this edge because the only located synthesis quantifies nearly doubled odds across more than half a million participants, the only clinical-phenotyping anchor identifies which cutaneous features carry the association and which do not, and an independent anchor replicates the direction; the conservative framing carries the meta-analysis' null-spanning prediction interval, the bidirectional prevalence, the inverse papule-pustule finding, the same-publication null, and the shared-trigeminal-substrate alternative, so the overlap is visible while direction remains unasserted."
+   },
+   "rationale": "Authoring registers this edge because the only located synthesis quantifies nearly doubled odds across more than half a million participants, the only clinical-phenotyping anchor identifies which cutaneous features carry the association and which do not, and an independent anchor replicates the direction; the conservative framing carries the meta-analysis' null-spanning prediction interval, the bidirectional prevalence, the inverse papule-pustule finding, the same-publication null, and the shared-trigeminal-substrate alternative, so the overlap is visible while direction remains unasserted.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), mechanism NEUROENDOCRINE_CASCADE (facial neuropeptide release and vasomotor reactivity plausibly lowering the trigeminovascular headache threshold, the route the located literature ties to elevated plasma calcitonin gene-related peptide and to anti-CGRP-associated development of acne and rosacea), following the comorbidity-magnitude convention (the registered ocd, ptsd, abdominal-migraine, alice-in-wonderland-syndrome, cyclic-vomiting-syndrome, and occipital-neuralgia to migraine-headaches edges), with the heterogeneity, bidirectional-prevalence, phenotype-specificity, and same-publication null limits all carried openly: the systematic review and meta-analysis of 11 observational studies including 112,994 rosacea patients and 4,402,330 non-rosacea participants documents migraine prevalence of 25 percent in rosacea patients (95 percent CI 0.15-0.35, I-squared 99 percent) and odds of migraine against controls of 1.93 (95 percent CI 1.42-2.64, I-squared 98 percent, 95 percent prediction interval 0.67-5.53) - a prediction interval that includes the null, so the pooled effect does not hold in every population - while identifying erythematotelangiectatic subtype, female gender, age, and severity as contributing factors (PMID 40899443), the cross-sectional study of 604 patients phenotyped by face-to-face interview with clinical examination documents migraine prevalence of 54 percent in patients with rosacea and rosacea prevalence of 65 percent in patients with migraine, with concomitant migraine associated with flushing (OR 2.6), ocular symptoms (OR 2.4), and burning (OR 2.1) but INVERSELY related to papules and pustules (OR 0.5) (PMID 36341245), and the case-control of 150 rosacea patients against matched controls documents headaches and migraine more prevalent in rosacea patients (P<0.0001 and P=0.0006) with ocular symptoms present in 51.3 percent and more frequent in those with migraine (P=0.03) (PMID 42390920); the cross-sectional anchor conditions on one or the other diagnosis so it establishes overlap rather than temporal sequence, its inverse papule-pustule finding indicates the relationship is phenotype-specific, a separate 2025 Chinese case-control found no significant association with migraine (PMID 40741710), and a shared trigeminal neuropeptide substrate is named as the alternative in which neither condition is causal for the other; sources are disjoint from this batch's rhinitis-vasomotor to migraine-headaches edge (no within-batch sharing); individual claims route through dated ICHD-3 migraine diagnosis with a headache diary and a dated rosacea diagnosis with subtype, excluding medication-over-use headache, migraine predating the skin diagnosis, and concurrent systemic inflammatory disease.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "The meta-analysis reports I-squared of 99 percent for prevalence and 98 percent for the pooled odds ratio, and its 95 percent prediction interval of 0.67 to 5.53 includes the null, so the pooled effect does not reliably hold in every population studied; the cross-sectional anchor reports prevalence of each condition within the other, so it establishes overlap rather than temporal sequence; that anchor's inverse association for papules and pustules (OR 0.5) indicates the relationship is phenotype-specific and that subtypes differ, which the authors note requires further stratification; the third anchor is a single-centre 150-patient comparison without subtype or ICHD-3 detail in the abstract; a 2025 Chinese case-control analysis of 200 rosacea patients found no significant association with migraine, an explicit counterweight carried here."
+   ],
+   "sourceIds": [
+    "pmid-40899443",
+    "pmid-36341245",
+    "pmid-42390920"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "76178e4a15e568eaa7e0cd513c06a1d01318a0ea7dd9f54e0666c4c7fe2f27fa"
   }
  ],
  "lastUpdatedBy": "batch-D1-draft-authoring",

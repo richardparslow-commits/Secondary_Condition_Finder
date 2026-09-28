@@ -16,16 +16,16 @@
   "citationPromotionMustAtomicallyUpdateKbAndMasterSourceState": true
  },
  "counts": {
-  "liveSourceReferenceUses": 1424,
+  "liveSourceReferenceUses": 1460,
   "activeSourceEntities": 346,
-  "pendingVerificationSourceEntities": 914,
+  "pendingVerificationSourceEntities": 950,
   "activeClinicalSourceEntities": 345,
-  "pendingClinicalSourceEntities": 914,
+  "pendingClinicalSourceEntities": 950,
   "activeLegalAuthorityEntities": 1,
   "retiredOnlySourceEntities": 1,
   "supersededUnverifiedSourceEntities": 7,
   "bibliographicCorrectionOnlyEntities": 1,
-  "totalSourceEntitiesIncludingLineage": 1269,
+  "totalSourceEntitiesIncludingLineage": 1305,
   "retiredVerifiedRelationshipSourceUses": 6
  },
  "retirementLedger": {
@@ -46850,6 +46850,1266 @@
    "retiredUses": [],
    "rawReferenceHashes": [
     "786e83f06f56e5c59945f805eef4d5775f64bc915464fa2a4e859bb07276a245"
+   ]
+  },
+  {
+   "sourceId": "pmid-40150068",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "40150068",
+   "doi": "10.3390/diagnostics15060726",
+   "canonicalCitation": "Konstantinidis C, Zachariou A, Evgeni E, et al. Recent Advances in the Diagnosis and Management of Retrograde Ejaculation: A Narrative Review Diagnostics (Basel). 2025 Mar 14;15(6).doi: 10.3390/diagnostics15060726. PMID 40150068.",
+   "citationVariants": [
+    "Konstantinidis C, Zachariou A, Evgeni E, et al. Recent Advances in the Diagnosis and Management of Retrograde Ejaculation: A Narrative Review Diagnostics (Basel). 2025 Mar 14;15(6).doi: 10.3390/diagnostics15060726. PMID 40150068."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40150068/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/40150068/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-27"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-retrograde-ejaculation-to-female-infertility",
+     "primaryId": "retrograde-ejaculation",
+     "targetId": "female-infertility",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "dc287c086de6b29505bf48bf2dc512d2c242b4569bd81afa7c57bb173f15d6a1"
+   ]
+  },
+  {
+   "sourceId": "pmid-39776640",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "39776640",
+   "doi": null,
+   "canonicalCitation": "Veiga Álvarez E, Zopeque García N, Gutiérrez Romero JM, et al. Sperm recovery from urine in men with retrograde ejaculation Adv Lab Med. 2024 Dec;5(4):356-365. PMID 39776640.",
+   "citationVariants": [
+    "Veiga Álvarez E, Zopeque García N, Gutiérrez Romero JM, et al. Sperm recovery from urine in men with retrograde ejaculation Adv Lab Med. 2024 Dec;5(4):356-365. PMID 39776640."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39776640/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/39776640/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-27"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-retrograde-ejaculation-to-female-infertility",
+     "primaryId": "retrograde-ejaculation",
+     "targetId": "female-infertility",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "cb0fc9e39fe5929e70acf0e3bf8aa3d3d16df0d8e4ec35e6166cd74ac8f6aebd"
+   ]
+  },
+  {
+   "sourceId": "pmid-38576657",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "38576657",
+   "doi": null,
+   "canonicalCitation": "Kasbe MN, More A, Gajabe G, et al. Fertility Challenges: The Complexities of Retrograde Ejaculation and Cornual Block in Reproductive Health Cureus. 2024 Mar;16(3):e55523. PMID 38576657.",
+   "citationVariants": [
+    "Kasbe MN, More A, Gajabe G, et al. Fertility Challenges: The Complexities of Retrograde Ejaculation and Cornual Block in Reproductive Health Cureus. 2024 Mar;16(3):e55523. PMID 38576657."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38576657/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/38576657/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-27"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-retrograde-ejaculation-to-female-infertility",
+     "primaryId": "retrograde-ejaculation",
+     "targetId": "female-infertility",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "422301498dddd8ce25596797bc9996dfce46fd40c71249013ce769e25410f5f4"
+   ]
+  },
+  {
+   "sourceId": "pmid-23606485",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "23606485",
+   "doi": null,
+   "canonicalCitation": "Fedder J, Kaspersen MD, Brandslund I, et al. Retrograde ejaculation and sexual dysfunction in men with diabetes mellitus: a prospective, controlled study Andrology. 2013 Jul;1(4):602-6. PMID 23606485.",
+   "citationVariants": [
+    "Fedder J, Kaspersen MD, Brandslund I, et al. Retrograde ejaculation and sexual dysfunction in men with diabetes mellitus: a prospective, controlled study Andrology. 2013 Jul;1(4):602-6. PMID 23606485."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/23606485/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/23606485/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-27"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-retrograde-ejaculation-to-erectile-dysfunction",
+     "primaryId": "retrograde-ejaculation",
+     "targetId": "erectile-dysfunction",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "8b065091a035d1e9bcc8caba08bcc873e71a72babee639a417059954eaadbbc0"
+   ]
+  },
+  {
+   "sourceId": "pmid-41731353",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "41731353",
+   "doi": "10.1186/s12610-026-00303-7",
+   "canonicalCitation": "Li C, Wang H, Li S, et al. Retrospective study of 115 patients with diabetes mellitus complicated by retrograde ejaculation Basic Clin Androl. 2026 Feb 23;36(1).doi: 10.1186/s12610-026-00303-7. PMID 41731353.",
+   "citationVariants": [
+    "Li C, Wang H, Li S, et al. Retrospective study of 115 patients with diabetes mellitus complicated by retrograde ejaculation Basic Clin Androl. 2026 Feb 23;36(1).doi: 10.1186/s12610-026-00303-7. PMID 41731353."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41731353/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/41731353/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-27"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-retrograde-ejaculation-to-erectile-dysfunction",
+     "primaryId": "retrograde-ejaculation",
+     "targetId": "erectile-dysfunction",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "3590ede7389ed0c4007023d210e4f66dabf114770b8c3cefc16c1f042fbe3eae"
+   ]
+  },
+  {
+   "sourceId": "pmid-22237486",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "22237486",
+   "doi": null,
+   "canonicalCitation": "Yee CL, Pal RP, Batchelder A, et al. Risk of erectile dysfunction and retrograde ejaculation associated with thulium laser vaporesection of the prostate for bladder outflow obstruction: a retrospective study Urol Int. 2012;88(2):165-9. PMID 22237486.",
+   "citationVariants": [
+    "Yee CL, Pal RP, Batchelder A, et al. Risk of erectile dysfunction and retrograde ejaculation associated with thulium laser vaporesection of the prostate for bladder outflow obstruction: a retrospective study Urol Int. 2012;88(2):165-9. PMID 22237486."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/22237486/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/22237486/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-27"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-retrograde-ejaculation-to-erectile-dysfunction",
+     "primaryId": "retrograde-ejaculation",
+     "targetId": "erectile-dysfunction",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "786a67a993916cffc9b762953dcc04e83de4badab9f4a87fd762c7db41e2f7bd"
+   ]
+  },
+  {
+   "sourceId": "pmid-20816191",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "20816191",
+   "doi": null,
+   "canonicalCitation": "Chawes BL, Bønnelykke K, Kreiner-Møller E, et al. Children with allergic and nonallergic rhinitis have a similar risk of asthma J Allergy Clin Immunol. 2010 Sep;126(3):567-73.e1-8. PMID 20816191.",
+   "citationVariants": [
+    "Chawes BL, Bønnelykke K, Kreiner-Møller E, et al. Children with allergic and nonallergic rhinitis have a similar risk of asthma J Allergy Clin Immunol. 2010 Sep;126(3):567-73.e1-8. PMID 20816191."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/20816191/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/20816191/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-27"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-rhinitis-vasomotor-to-asthma",
+     "primaryId": "rhinitis-vasomotor",
+     "targetId": "asthma",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "6bf0cf209846d79599564d86332ea86dff782106f97d580601cccfaa583cd93e"
+   ]
+  },
+  {
+   "sourceId": "pmid-39426424",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "39426424",
+   "doi": null,
+   "canonicalCitation": "Jung CG, Buchheit KM, Bochenek G, et al. Upper airway comorbidities of asthma J Allergy Clin Immunol. 2024 Dec;154(6):1343-1354. PMID 39426424.",
+   "citationVariants": [
+    "Jung CG, Buchheit KM, Bochenek G, et al. Upper airway comorbidities of asthma J Allergy Clin Immunol. 2024 Dec;154(6):1343-1354. PMID 39426424."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39426424/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/39426424/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-27"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-rhinitis-vasomotor-to-asthma",
+     "primaryId": "rhinitis-vasomotor",
+     "targetId": "asthma",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "395082f99c37c86252f3812af8b0cdb8b5ac50a017ca8c324240d913b8d68039"
+   ]
+  },
+  {
+   "sourceId": "pmid-38467330",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "38467330",
+   "doi": null,
+   "canonicalCitation": "Baroody FM, Gevaert P, Smith PK, et al. Nonallergic Rhinopathy: A Comprehensive Review of Classification, Diagnosis, and Treatment J Allergy Clin Immunol Pract. 2024 Jun;12(6):1436-1447. PMID 38467330.",
+   "citationVariants": [
+    "Baroody FM, Gevaert P, Smith PK, et al. Nonallergic Rhinopathy: A Comprehensive Review of Classification, Diagnosis, and Treatment J Allergy Clin Immunol Pract. 2024 Jun;12(6):1436-1447. PMID 38467330."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38467330/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/38467330/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-27"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-rhinitis-vasomotor-to-asthma",
+     "primaryId": "rhinitis-vasomotor",
+     "targetId": "asthma",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "9a73909e8786c1e67f8f8472b5837b367a102be4bc4ed41329997fe66c64104e"
+   ]
+  },
+  {
+   "sourceId": "pmid-41605462",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "41605462",
+   "doi": null,
+   "canonicalCitation": "Yaka EC, Aghayarov ÖY, Değirmenci PB. The Association Between Rhinitis Subtypes and Migraine: A Comparative Clinical Study Clin Otolaryngol. 2026 May;51(3):449-457. PMID 41605462.",
+   "citationVariants": [
+    "Yaka EC, Aghayarov ÖY, Değirmenci PB. The Association Between Rhinitis Subtypes and Migraine: A Comparative Clinical Study Clin Otolaryngol. 2026 May;51(3):449-457. PMID 41605462."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41605462/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/41605462/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-27"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-rhinitis-vasomotor-to-migraine-headaches",
+     "primaryId": "rhinitis-vasomotor",
+     "targetId": "migraine-headaches",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "a7cf18a1fd0df89b891bca7ecb148792476bb0fa45f9c73ce1db5ccb38aeaf45"
+   ]
+  },
+  {
+   "sourceId": "pmid-24275145",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "24275145",
+   "doi": null,
+   "canonicalCitation": "Martin VT, Fanning KM, Serrano D, et al. Chronic rhinitis and its association with headache frequency and disability in persons with migraine: results of the American Migraine Prevalence and Prevention (AMPP) Study Cephalalgia. 2014 Apr;34(5):336-48. PMID 24275145.",
+   "citationVariants": [
+    "Martin VT, Fanning KM, Serrano D, et al. Chronic rhinitis and its association with headache frequency and disability in persons with migraine: results of the American Migraine Prevalence and Prevention (AMPP) Study Cephalalgia. 2014 Apr;34(5):336-48. PMID 24275145."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/24275145/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/24275145/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-27"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-rhinitis-vasomotor-to-migraine-headaches",
+     "primaryId": "rhinitis-vasomotor",
+     "targetId": "migraine-headaches",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "793c820442586c5bef0bc401ed13cbc20f7747f41be672d678d906af636ee837"
+   ]
+  },
+  {
+   "sourceId": "pmid-33713559",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "33713559",
+   "doi": null,
+   "canonicalCitation": "Liu Y, Xing Z, Ma X, et al. Association between migraine and vasomotor rhinitis Int Forum Allergy Rhinol. 2021 Sep;11(9):1378-1380. PMID 33713559.",
+   "citationVariants": [
+    "Liu Y, Xing Z, Ma X, et al. Association between migraine and vasomotor rhinitis Int Forum Allergy Rhinol. 2021 Sep;11(9):1378-1380. PMID 33713559."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33713559/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/33713559/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-27"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-rhinitis-vasomotor-to-migraine-headaches",
+     "primaryId": "rhinitis-vasomotor",
+     "targetId": "migraine-headaches",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "223d86011389c95ff423df485accf630fb0e2f1fdc19f49a3069237b9ef4a2ad"
+   ]
+  },
+  {
+   "sourceId": "pmid-41552144",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "41552144",
+   "doi": null,
+   "canonicalCitation": "Abdulsalam TA, Almanasir M, Erumbala G. Complex Febrile Seizures As the Initial Presentation of Nutritional Rickets Due to Severe Vitamin D Deficiency Cureus. 2025 Dec;17(12):e99346. PMID 41552144.",
+   "citationVariants": [
+    "Abdulsalam TA, Almanasir M, Erumbala G. Complex Febrile Seizures As the Initial Presentation of Nutritional Rickets Due to Severe Vitamin D Deficiency Cureus. 2025 Dec;17(12):e99346. PMID 41552144."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41552144/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/41552144/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-27"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-rickets-to-seizure-disorder",
+     "primaryId": "rickets",
+     "targetId": "seizure-disorder",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "f8e5cfd18df6287eb3f39c8325250c291ebc2326ef79a3e404f30fd5a887c941"
+   ]
+  },
+  {
+   "sourceId": "pmid-14758313",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "14758313",
+   "doi": null,
+   "canonicalCitation": "Bloom E, Klein EJ, Shushan D, et al. Variable presentations of rickets in children in the emergency department Pediatr Emerg Care. 2004 Feb;20(2):126-130. PMID 14758313.",
+   "citationVariants": [
+    "Bloom E, Klein EJ, Shushan D, et al. Variable presentations of rickets in children in the emergency department Pediatr Emerg Care. 2004 Feb;20(2):126-130. PMID 14758313."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/14758313/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/14758313/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-27"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-rickets-to-seizure-disorder",
+     "primaryId": "rickets",
+     "targetId": "seizure-disorder",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "45231ff6e114a1e8d6cf2ab1dcd395ef78c3cfc1280d88ff264fcbc913a0b864"
+   ]
+  },
+  {
+   "sourceId": "pmid-23374621",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "23374621",
+   "doi": null,
+   "canonicalCitation": "Thacher TD, Fischer PR, Tebben PJ, et al. Increasing incidence of nutritional rickets: a population-based study in Olmsted County, Minnesota Mayo Clin Proc. 2013 Feb;88(2):176-83. PMID 23374621.",
+   "citationVariants": [
+    "Thacher TD, Fischer PR, Tebben PJ, et al. Increasing incidence of nutritional rickets: a population-based study in Olmsted County, Minnesota Mayo Clin Proc. 2013 Feb;88(2):176-83. PMID 23374621."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/23374621/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/23374621/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-27"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-rickets-to-seizure-disorder",
+     "primaryId": "rickets",
+     "targetId": "seizure-disorder",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "f2942f0d24e2bb34250b046fb64372e501db77aa9d501ee176583577eb25ff65"
+   ]
+  },
+  {
+   "sourceId": "pmid-42505708",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "42505708",
+   "doi": "10.3390/dj14070399",
+   "canonicalCitation": "Okawa R, Takagi M, Suehiro Y, et al. Generalized Developmental Enamel Hypoplasia of the Permanent Dentition Associated with Early Childhood Vitamin D Deficiency Rickets: A Case Report Dent J (Basel). 2026 Jul 2;14(7).doi: 10.3390/dj14070399. PMID 42505708.",
+   "citationVariants": [
+    "Okawa R, Takagi M, Suehiro Y, et al. Generalized Developmental Enamel Hypoplasia of the Permanent Dentition Associated with Early Childhood Vitamin D Deficiency Rickets: A Case Report Dent J (Basel). 2026 Jul 2;14(7).doi: 10.3390/dj14070399. PMID 42505708."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42505708/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/42505708/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-27"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-rickets-to-loss-of-teeth",
+     "primaryId": "rickets",
+     "targetId": "loss-of-teeth",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "762b8a6a8116de0e5e13da983bae5f4403e946d8abc2cbaa36e8946ed03c26ed"
+   ]
+  },
+  {
+   "sourceId": "pmid-24616355",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "24616355",
+   "doi": null,
+   "canonicalCitation": "Davit-Béal T, Gabay J, Antoniolli P, et al. Dental complications of rickets in early childhood: case report on 2 young girls Pediatrics. 2014 Apr;133(4):e1077-81. PMID 24616355.",
+   "citationVariants": [
+    "Davit-Béal T, Gabay J, Antoniolli P, et al. Dental complications of rickets in early childhood: case report on 2 young girls Pediatrics. 2014 Apr;133(4):e1077-81. PMID 24616355."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/24616355/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/24616355/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-27"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-rickets-to-loss-of-teeth",
+     "primaryId": "rickets",
+     "targetId": "loss-of-teeth",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "b74e5ae7b2c82e0f006cbc319c1696e0e1c383d61c9c2fec92ceb71149381548"
+   ]
+  },
+  {
+   "sourceId": "pmid-28608052",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "28608052",
+   "doi": null,
+   "canonicalCitation": "Gjørup H, Beck-Nielsen SS, Haubek D. Craniofacial and dental characteristics of patients with vitamin-D-dependent rickets type 1A compared to controls and patients with X-linked hypophosphatemia Clin Oral Investig. 2018 Mar;22(2):745-755. PMID 28608052.",
+   "citationVariants": [
+    "Gjørup H, Beck-Nielsen SS, Haubek D. Craniofacial and dental characteristics of patients with vitamin-D-dependent rickets type 1A compared to controls and patients with X-linked hypophosphatemia Clin Oral Investig. 2018 Mar;22(2):745-755. PMID 28608052."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/28608052/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/28608052/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-27"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-rickets-to-loss-of-teeth",
+     "primaryId": "rickets",
+     "targetId": "loss-of-teeth",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "17f9c66f1c49363fb9dd63243d5c0cebe0a6ab3eb1b20201a667221ef91d461c"
+   ]
+  },
+  {
+   "sourceId": "pmid-29380231",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "29380231",
+   "doi": null,
+   "canonicalCitation": "Falhammar H, Juhlin CC, Barner C, et al. Riedel's thyroiditis: clinical presentation, treatment and outcomes Endocrine. 2018 Apr;60(1):185-192. PMID 29380231.",
+   "citationVariants": [
+    "Falhammar H, Juhlin CC, Barner C, et al. Riedel's thyroiditis: clinical presentation, treatment and outcomes Endocrine. 2018 Apr;60(1):185-192. PMID 29380231."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/29380231/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/29380231/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-27"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-riedel-s-thyroiditis-to-hypothyroidism",
+     "primaryId": "riedel-s-thyroiditis",
+     "targetId": "hypothyroidism",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "9020dddd261e6513beb45b96c4c6068dcba535cefa3d727518b785c0f9ae346d"
+   ]
+  },
+  {
+   "sourceId": "pmid-21832114",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "21832114",
+   "doi": null,
+   "canonicalCitation": "Hennessey JV. Clinical review: Riedel's thyroiditis: a clinical review J Clin Endocrinol Metab. 2011 Oct;96(10):3031-41. PMID 21832114.",
+   "citationVariants": [
+    "Hennessey JV. Clinical review: Riedel's thyroiditis: a clinical review J Clin Endocrinol Metab. 2011 Oct;96(10):3031-41. PMID 21832114."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/21832114/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/21832114/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-27"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-riedel-s-thyroiditis-to-hypothyroidism",
+     "primaryId": "riedel-s-thyroiditis",
+     "targetId": "hypothyroidism",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "737f72f1ad8579d2fc57867cd2cfacc122eeab92b1241f45acf3c52fc2627f91"
+   ]
+  },
+  {
+   "sourceId": "pmid-27828690",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "27828690",
+   "doi": null,
+   "canonicalCitation": "Dutta D, Ahuja A, Selvan C. Immunoglobulin G4 related thyroid disorders: Diagnostic challenges and clinical outcomes Endokrynol Pol. 2016;67(5):520-524. PMID 27828690.",
+   "citationVariants": [
+    "Dutta D, Ahuja A, Selvan C. Immunoglobulin G4 related thyroid disorders: Diagnostic challenges and clinical outcomes Endokrynol Pol. 2016;67(5):520-524. PMID 27828690."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/27828690/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/27828690/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-27"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-riedel-s-thyroiditis-to-hypothyroidism",
+     "primaryId": "riedel-s-thyroiditis",
+     "targetId": "hypothyroidism",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "81a021a37ab75fb431cdeb76d5aeec595495c4ee916b146684d2b601faf9b115"
+   ]
+  },
+  {
+   "sourceId": "pmid-26200816",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "26200816",
+   "doi": null,
+   "canonicalCitation": "Stan MN, Haglind EG, Drake MT. Early Hypoparathyroidism Reversibility with Treatment of Riedel's Thyroiditis Thyroid. 2015 Sep;25(9):1055-9. PMID 26200816.",
+   "citationVariants": [
+    "Stan MN, Haglind EG, Drake MT. Early Hypoparathyroidism Reversibility with Treatment of Riedel's Thyroiditis Thyroid. 2015 Sep;25(9):1055-9. PMID 26200816."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/26200816/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/26200816/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-27"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-riedel-s-thyroiditis-to-hypoparathyroidism",
+     "primaryId": "riedel-s-thyroiditis",
+     "targetId": "hypoparathyroidism",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "2aae93a6f8f97d2d75cd5f3e9b0546a910b2a4e4bbd6e9da69e8169b7230c2f1"
+   ]
+  },
+  {
+   "sourceId": "pmid-36937637",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "36937637",
+   "doi": null,
+   "canonicalCitation": "Salhi S, Oueslati I, Ayari S, et al. A case of reversible hypoparathyroidism in a patient with Riedel's thyroiditis treated with glucocorticoids Clin Case Rep. 2023 Mar;11(3):e7085. PMID 36937637.",
+   "citationVariants": [
+    "Salhi S, Oueslati I, Ayari S, et al. A case of reversible hypoparathyroidism in a patient with Riedel's thyroiditis treated with glucocorticoids Clin Case Rep. 2023 Mar;11(3):e7085. PMID 36937637."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36937637/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/36937637/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-27"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-riedel-s-thyroiditis-to-hypoparathyroidism",
+     "primaryId": "riedel-s-thyroiditis",
+     "targetId": "hypoparathyroidism",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "9c765da9ec3b71f59fbc6aabe91f6f327a871915c7e696e4fa4b45288c54dce6"
+   ]
+  },
+  {
+   "sourceId": "pmid-36452560",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "36452560",
+   "doi": null,
+   "canonicalCitation": "Sadacharan D, Ahmed A, Smitha S, et al. Our Uncommon Experience with 6 Cases of Riedel's Thyroiditis (Woody Thyroiditis) Indian J Otolaryngol Head Neck Surg. 2022 Oct;74(Suppl 2):1757-1762. PMID 36452560.",
+   "citationVariants": [
+    "Sadacharan D, Ahmed A, Smitha S, et al. Our Uncommon Experience with 6 Cases of Riedel's Thyroiditis (Woody Thyroiditis) Indian J Otolaryngol Head Neck Surg. 2022 Oct;74(Suppl 2):1757-1762. PMID 36452560."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36452560/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/36452560/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-27"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-riedel-s-thyroiditis-to-hypoparathyroidism",
+     "primaryId": "riedel-s-thyroiditis",
+     "targetId": "hypoparathyroidism",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "d74b6f274273aacf63067fe5f2077a5844039ebed47743fb6da606469d9e3320"
+   ]
+  },
+  {
+   "sourceId": "pmid-26954304",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "26954304",
+   "doi": null,
+   "canonicalCitation": "Egeberg A, Hansen PR, Gislason GH, et al. Patients with Rosacea Have Increased Risk of Depression and Anxiety Disorders: A Danish Nationwide Cohort Study Dermatology. 2016;232(2):208-13. PMID 26954304.",
+   "citationVariants": [
+    "Egeberg A, Hansen PR, Gislason GH, et al. Patients with Rosacea Have Increased Risk of Depression and Anxiety Disorders: A Danish Nationwide Cohort Study Dermatology. 2016;232(2):208-13. PMID 26954304."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/26954304/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/26954304/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-27"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-rosacea-to-depressive-disorder",
+     "primaryId": "rosacea",
+     "targetId": "depressive-disorder",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "560e70fa9cd06ffe8f62b8cbb43941f76122f2c421bda2b4d0ad8d7f7ba18b30"
+   ]
+  },
+  {
+   "sourceId": "pmid-41232679",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "41232679",
+   "doi": null,
+   "canonicalCitation": "Andrén J, Najeeb M, Ludwig RJ, et al. Increased long-term risks of depression, anxiety, stress, and suicidality in rosacea and perioral dermatitis J Affect Disord. 2026 Feb 1;394(Pt B):120683. PMID 41232679.",
+   "citationVariants": [
+    "Andrén J, Najeeb M, Ludwig RJ, et al. Increased long-term risks of depression, anxiety, stress, and suicidality in rosacea and perioral dermatitis J Affect Disord. 2026 Feb 1;394(Pt B):120683. PMID 41232679."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41232679/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/41232679/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-27"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-rosacea-to-depressive-disorder",
+     "primaryId": "rosacea",
+     "targetId": "depressive-disorder",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "ccddb4b222d89a5d9b4e25dcc7d1e2f7226b81836d66b86bf358ec4ee20f748e"
+   ]
+  },
+  {
+   "sourceId": "pmid-30466187",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "30466187",
+   "doi": null,
+   "canonicalCitation": "Hung CT, Chiang CP, Chung CH, et al. Risk of psychiatric disorders in rosacea: A nationwide, population-based, cohort study in Taiwan J Dermatol. 2019 Feb;46(2):110-116. PMID 30466187.",
+   "citationVariants": [
+    "Hung CT, Chiang CP, Chung CH, et al. Risk of psychiatric disorders in rosacea: A nationwide, population-based, cohort study in Taiwan J Dermatol. 2019 Feb;46(2):110-116. PMID 30466187."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/30466187/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/30466187/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-27"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-rosacea-to-depressive-disorder",
+     "primaryId": "rosacea",
+     "targetId": "depressive-disorder",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "47cace416f21b125cdfa35600761dcde9ebbc525fcacd181fb8e58db1fd63679"
+   ]
+  },
+  {
+   "sourceId": "pmid-38008081",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "38008081",
+   "doi": null,
+   "canonicalCitation": "Sinikumpu SP, Jokelainen J, Tasanen K, et al. Association of Rosacea with Depressive and Anxiety Symptoms: A General Population Study Dermatology. 2024;240(2):189-194. PMID 38008081.",
+   "citationVariants": [
+    "Sinikumpu SP, Jokelainen J, Tasanen K, et al. Association of Rosacea with Depressive and Anxiety Symptoms: A General Population Study Dermatology. 2024;240(2):189-194. PMID 38008081."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38008081/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/38008081/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-27"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-rosacea-to-anxiety-disorder",
+     "primaryId": "rosacea",
+     "targetId": "anxiety-disorder",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "592add39c1ab1c383a80800f370133fcdc76699972fd96d6ffbe78656cec6b34"
+   ]
+  },
+  {
+   "sourceId": "pmid-24088195",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "24088195",
+   "doi": null,
+   "canonicalCitation": "Böhm D, Schwanitz P, Stock Gissendanner S, et al. Symptom severity and psychological sequelae in rosacea: results of a survey Psychol Health Med. 2014;19(5):586-91. PMID 24088195.",
+   "citationVariants": [
+    "Böhm D, Schwanitz P, Stock Gissendanner S, et al. Symptom severity and psychological sequelae in rosacea: results of a survey Psychol Health Med. 2014;19(5):586-91. PMID 24088195."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/24088195/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/24088195/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-27"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-rosacea-to-anxiety-disorder",
+     "primaryId": "rosacea",
+     "targetId": "anxiety-disorder",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "ef17718e6515e7c1e5aa41d93c28217a8eed510266d127fb440965205f2a2b5c"
+   ]
+  },
+  {
+   "sourceId": "pmid-40741710",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "40741710",
+   "doi": null,
+   "canonicalCitation": "Kunwar N, Jian D, Hui HY, et al. Exploring Factors, Comorbidities, Quality of Life (DLQI), and Depression (PHQ-9) in Rosacea Patients: A Comprehensive Analysis J Cosmet Dermatol. 2025 Aug;24(8):e70337. PMID 40741710.",
+   "citationVariants": [
+    "Kunwar N, Jian D, Hui HY, et al. Exploring Factors, Comorbidities, Quality of Life (DLQI), and Depression (PHQ-9) in Rosacea Patients: A Comprehensive Analysis J Cosmet Dermatol. 2025 Aug;24(8):e70337. PMID 40741710."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40741710/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/40741710/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-27"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-rosacea-to-anxiety-disorder",
+     "primaryId": "rosacea",
+     "targetId": "anxiety-disorder",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "e6c481fef5935d4a7523f46f3ca0a092319ac86376cb098321802ba782ba0631"
+   ]
+  },
+  {
+   "sourceId": "pmid-34209731",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "34209731",
+   "doi": "10.3390/jcm10132897",
+   "canonicalCitation": "Woo YR, Cho M, Ju HJ, et al. Ocular Comorbidities in Rosacea: A Case-Control Study Based on Seven Institutions J Clin Med. 2021 Jun 29;10(13).doi: 10.3390/jcm10132897. PMID 34209731.",
+   "citationVariants": [
+    "Woo YR, Cho M, Ju HJ, et al. Ocular Comorbidities in Rosacea: A Case-Control Study Based on Seven Institutions J Clin Med. 2021 Jun 29;10(13).doi: 10.3390/jcm10132897. PMID 34209731."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34209731/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/34209731/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-27"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-rosacea-to-dry-eye-syndrome",
+     "primaryId": "rosacea",
+     "targetId": "dry-eye-syndrome",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "55e9d400e0ba9ae161c4d26f4dbd5316852c7cc83a599e9b544663292f8402fc"
+   ]
+  },
+  {
+   "sourceId": "pmid-33403718",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "33403718",
+   "doi": null,
+   "canonicalCitation": "Tavassoli S, Wong N, Chan E. Ocular manifestations of rosacea: A clinical review Clin Exp Ophthalmol. 2021 Mar;49(2):104-117. PMID 33403718.",
+   "citationVariants": [
+    "Tavassoli S, Wong N, Chan E. Ocular manifestations of rosacea: A clinical review Clin Exp Ophthalmol. 2021 Mar;49(2):104-117. PMID 33403718."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33403718/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/33403718/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-27"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-rosacea-to-dry-eye-syndrome",
+     "primaryId": "rosacea",
+     "targetId": "dry-eye-syndrome",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "9d51ca38de097a24b713412cef69e29554f8ac59bd0b892a8e915dd5f2ed5510"
+   ]
+  },
+  {
+   "sourceId": "pmid-12658088",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "12658088",
+   "doi": null,
+   "canonicalCitation": "Ghanem VC, Mehra N, Wong S, et al. The prevalence of ocular signs in acne rosacea: comparing patients from ophthalmology and dermatology clinics Cornea. 2003 Apr;22(3):230-3. PMID 12658088.",
+   "citationVariants": [
+    "Ghanem VC, Mehra N, Wong S, et al. The prevalence of ocular signs in acne rosacea: comparing patients from ophthalmology and dermatology clinics Cornea. 2003 Apr;22(3):230-3. PMID 12658088."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/12658088/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/12658088/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-27"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-rosacea-to-dry-eye-syndrome",
+     "primaryId": "rosacea",
+     "targetId": "dry-eye-syndrome",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "8ed48167ded37ad8b100f8fcaf287542c2f4b3db13637f203bb9782881a77089"
+   ]
+  },
+  {
+   "sourceId": "pmid-40899443",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "40899443",
+   "doi": null,
+   "canonicalCitation": "Mordehachvili Burlá M, Ximenes Mendes B, Mendes Barbosa L, et al. Rosacea and Migraine: A Systematic Review and Meta-Analysis Update Int J Dermatol. 2026 Mar;65(3):516-525. PMID 40899443.",
+   "citationVariants": [
+    "Mordehachvili Burlá M, Ximenes Mendes B, Mendes Barbosa L, et al. Rosacea and Migraine: A Systematic Review and Meta-Analysis Update Int J Dermatol. 2026 Mar;65(3):516-525. PMID 40899443."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40899443/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/40899443/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-27"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-rosacea-to-migraine-headaches",
+     "primaryId": "rosacea",
+     "targetId": "migraine-headaches",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "15e4266e8276e7607ff13b01fe7c5f874df842db7edbae2b9be39f4baaac8089"
+   ]
+  },
+  {
+   "sourceId": "pmid-36341245",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "36341245",
+   "doi": null,
+   "canonicalCitation": "Wienholtz NKF, Christensen CE, Zhang DG, et al. Clinical characteristics of combined rosacea and migraine Front Med (Lausanne). 2022;9:1026447. PMID 36341245.",
+   "citationVariants": [
+    "Wienholtz NKF, Christensen CE, Zhang DG, et al. Clinical characteristics of combined rosacea and migraine Front Med (Lausanne). 2022;9:1026447. PMID 36341245."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36341245/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/36341245/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-27"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-rosacea-to-migraine-headaches",
+     "primaryId": "rosacea",
+     "targetId": "migraine-headaches",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "ac5918f4d2b72bc2e0356093d69cee472571cbcfc32e6c8e2928f112ca0801e8"
+   ]
+  },
+  {
+   "sourceId": "pmid-42390920",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "42390920",
+   "doi": null,
+   "canonicalCitation": "Etgü F, Gürpınar AB, Erol D, et al. Evaluation of the interrelationship between inflammatory markers, rosacea, ocular symptoms, and migraine comorbidity Cutan Ocul Toxicol. 2026 Jul 2:1-9. PMID 42390920.",
+   "citationVariants": [
+    "Etgü F, Gürpınar AB, Erol D, et al. Evaluation of the interrelationship between inflammatory markers, rosacea, ocular symptoms, and migraine comorbidity Cutan Ocul Toxicol. 2026 Jul 2:1-9. PMID 42390920."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42390920/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/42390920/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-27"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-rosacea-to-migraine-headaches",
+     "primaryId": "rosacea",
+     "targetId": "migraine-headaches",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "ff6a0405127cda6ccc38c1f7e13e1850bcdfdf097c34ed46cb7ee2aec8eced99"
    ]
   }
  ],
