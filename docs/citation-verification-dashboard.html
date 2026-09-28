@@ -60,7 +60,7 @@
 <body>
 <header class="page">
   <h1>Qualified-Human Citation Verification Dashboard</h1>
-  <p>Reviewer-ready batches, oldest source-check first. 1288 pending reference rows across 1114 distinct sources in 54 batches.</p>
+  <p>Reviewer-ready batches, oldest source-check first. 1290 pending reference rows across 1116 distinct sources in 54 batches.</p>
   <p>data/knowledge-base published and draft-quarantined mappings — generated, not transcribed. Regenerate with <code>npm run citations:dashboard</code>.</p>
 </header>
 <main>
@@ -100,7 +100,7 @@
   Cohort order is the recorded <code>sourceCheckedOn</code> date of each row (oldest first), which tracks
   the authoring wave that entered the row. Batch 25-row cap is soft: an edge's
   rows are never split across batches. Shared sources (152 of
-  1114 carry more than one pending use) need one open of the source per use —
+  1116 carry more than one pending use) need one open of the source per use —
   the proposition differs per row even when the source repeats.
 </footer>
 
@@ -111,8 +111,8 @@
   "extractionRule": "every sourceReference whose verified is not true — identical to scripts/report-citation-verification-queue.js --include-drafts",
   "qualificationRule": "Only a qualified human reviewer may change repository source records to verified:true.",
   "batchSizeCap": 25,
-  "pendingRows": 1288,
-  "distinctSources": 1114,
+  "pendingRows": 1290,
+  "distinctSources": 1116,
   "sharedSources": 152,
   "batches": 54,
   "cohorts": [
@@ -121,11 +121,12 @@
    "2026-09-24",
    "2026-09-25",
    "2026-09-26",
-   "2026-09-27"
+   "2026-09-27",
+   "2026-09-28"
   ],
-  "draftQuarantinedRows": 1288,
+  "draftQuarantinedRows": 1290,
   "publishedRows": 0,
-  "clinicalEvidenceRows": 1288,
+  "clinicalEvidenceRows": 1290,
   "legalFrameworkRows": 0
  },
  "batches": [
@@ -22503,13 +22504,47 @@
      "sourceLocator": "J AAPOS. 2019;23(4):313.e1-313.e5. Prospective study of 79 adults with no diplopia in any gaze and childhood-onset strabismus undergoing strabismus surgery: postoperative diplopia assessed with a standardised questionnaire in 7 gaze positions at 6 weeks and 1 year, and health-related quality of life with the Adult Strabismus-20.",
      "note": "PROSPECTIVE STUDY OF 79 ADULTS WITH NO DIPLOPIA IN ANY GAZE who had CHILDHOOD-ONSET STRABISMUS and were scheduled for strabismus surgery, designed to DESCRIBE THE FREQUENCY OF POSTOPERATIVE DIPLOPIA and to report health-related quality-of-life outcomes. Diplopia was assessed preoperatively and at 6 weeks and 1 year postoperatively using A STANDARDISED DIPLOPIA QUESTIONNAIRE WITH 5 RESPONSE OPTIONS IN 7 GAZE POSITIONS, and health-related quality of life was assessed with the Adult Strabismus-20, which has self-perception, interactions, reading function and general function domains. Registered for the specific and important reason that it measures this target ARISING FROM THE TREATMENT of this identity in a population that had none beforehand, so a claim attributing such diplopia to the underlying deviation would MISATTRIBUTE AN IATROGENIC OUTCOME. DISCLOSED: an uncontrolled single-arm study in a deliberately diplopia-free population, so it reports postoperative frequency and not a complication rate for untreated disease.",
      "totalUses": 1
+    },
+    {
+     "rowId": "bipolar-disorder::tardive-dyskinesia::28146614",
+     "mappingId": "bipolar-disorder",
+     "conditionId": "tardive-dyskinesia",
+     "publicationState": "draft-quarantined",
+     "nexusClassification": "ASSOCIATION_ONLY",
+     "claim": "Antipsychotic medication prescribed during treatment of an affective disorder is associated with tardive dyskinesia at quantified rates in the located antipsychotic-exposure literature, and NO LOCATED ANCHOR IS A BIPOLAR COHORT, so the edge is registered at association only with that population limit stated on its face: the 2017 systematic review and meta-analysis of 41 studies and 11,493 patients in the period of second-generation antipsychotic use (mean age 42.8 years, 66.4 percent male, 77.1 percent schizophrenia-spectrum disorders) reports a global mean tardive dyskinesia prevalence of 25.3 percent (95 percent CI 22.7-28.1), lower in current second-generation antipsychotic arms (20.7 percent, 95 percent CI 16.6-25.4, N = 5,103) than in current first-generation arms (30.0 percent, 95 percent CI 26.4-33.8, N = 5,062; Q = 9.17, p = 0.002), and particularly low in first-generation-naive treatment arms (7.2 percent, four studies) against cohorts with likely prior first-generation exposure (23.4 percent, 28 studies, p < 0.001), so the located gradient runs with antipsychotic generation and prior exposure rather than with any psychiatric diagnosis (PMID 28146614); and the 2026 secondary analysis of the IRL-GRey late-life depression trial cohort reports incident tardive dyskinesia in 16 of 255 participants without baseline dyskinesia (6.3 percent) by the end of the venlafaxine lead-in phase, all of them non-remitters, rising to 21 of 117 randomized non-remitters (17.9 percent) by the end of the randomised aripiprazole-or-placebo augmentation phase, with tardive dyskinesia defined as an Abnormal Involuntary Movement Scale item 8 score of at least 1 (PMID 42030922). The registered claim is the narrowest the two anchors jointly permit: that antipsychotic exposure during treatment of an affective disorder is associated with incident tardive dyskinesia at the rates the anchors report, with the exposure being the prescribed medication rather than the psychiatric condition, with the meta-analytic gradient attributable to agent generation and exposure history rather than to diagnosis, and with NO bipolar-specific incidence available anywhere in the located evidence.",
+     "boundary": "Neither causation nor aggravation of tardive dyskinesia is established for any individual: the exposure in both anchors is prescribed antipsychotic medication rather than the bipolar disorder itself, and NO ANCHOR IS A BIPOLAR COHORT, the closest mood-population anchor being a late-life DEPRESSION cohort while the meta-analysis population is 77.1 percent schizophrenia-spectrum, so every rate on this edge is a treatment-class rate carried across diagnoses rather than a bipolar rate; the incident anchor's case definition is an Abnormal Involuntary Movement Scale item 8 score of at least 1, which its own authors describe as highly sensitive but non-specific, its incident case counts are small (16 of 255 and 21 of 117), its sex-stratified cognitive findings are exploratory without correction for multiple comparisons, and the two incident figures are measured at different phase endpoints in different denominators (the full cohort against the non-remitters entering randomisation) with NO arm-specific aripiprazole-versus-placebo incidence reported, so no agent-specific attributable risk may be derived from it; the meta-analysis measures prevalence rather than incidence and reports that tardive dyskinesia severity was too poorly reported across its studies for meta-analysis, so the clinical burden of its identified cases is unquantified; and no anchor includes an antipsychotic-free bipolar control arm, so bipolar disorder's own contribution to abnormal movement is not separable from the medication within these designs. Individual claims require a dated antipsychotic start, stop, dose, formulation and route timeline with dated Abnormal Involuntary Movement Scale examinations before and after initiation, a documented antipsychotic-free interval where one exists, and exclusion of spontaneous orofacial dyskinesia, of other dopamine-blocking agents including metoclopramide and prochlorperazine, of withdrawal-emergent dyskinesia after dose reduction or cessation, and of Huntington disease, Wilson disease, stroke and other structural or degenerative movement disorders.",
+     "citation": "Carbon M, Hsieh CH, Kane JM, Correll CU. Tardive Dyskinesia Prevalence in the Period of Second-Generation Antipsychotic Use: A Meta-Analysis. J Clin Psychiatry. 2017 Mar;78(3):e264-e278. doi: 10.4088/JCP.16r10832. PMID 28146614.",
+     "pmid": "28146614",
+     "verificationScope": "clinical-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/28146614/",
+     "sourceCheckedOn": "2026-09-28",
+     "sourceLocator": "J Clin Psychiatry. 2017;78(3):e264-e278. Systematic review and meta-analysis, 41 studies (random effects), N = 11,493, mean age 42.8 years, 66.4 percent male, 77.1 percent schizophrenia-spectrum; abstract states global TD prevalence 25.3% (95% CI 22.7-28.1), current SGA 20.7% (16.6-25.4, N = 5,103) versus current FGA 30.0% (26.4-33.8, N = 5,062; Q = 9.17, P = .002), FGA-naive arms 7.2% versus likely prior FGA exposure 23.4% (P < .001), risk ratio 0.80 for SGA versus FGA in multi-class studies, and TD severity too insufficiently reported for meta-analysis.",
+     "note": "Systematic review and meta-analysis of 41 studies and 11,493 patients, registered as this edge's PRIMARY anchor: global mean tardive dyskinesia prevalence 25.3 percent (95 percent CI 22.7-28.1), 20.7 percent in current second-generation against 30.0 percent in current first-generation antipsychotic arms (Q = 9.17, p = 0.002), 7.2 percent in first-generation-naive against 23.4 percent in likely prior first-generation exposure arms (p < 0.001). The exposure gradient runs with antipsychotic generation and exposure history rather than with diagnosis, and the pooled population is 77.1 percent schizophrenia-spectrum, which bounds its use on a bipolar primary. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
+     "totalUses": 1
+    },
+    {
+     "rowId": "bipolar-disorder::tardive-dyskinesia::42030922",
+     "mappingId": "bipolar-disorder",
+     "conditionId": "tardive-dyskinesia",
+     "publicationState": "draft-quarantined",
+     "nexusClassification": "ASSOCIATION_ONLY",
+     "claim": "Antipsychotic medication prescribed during treatment of an affective disorder is associated with tardive dyskinesia at quantified rates in the located antipsychotic-exposure literature, and NO LOCATED ANCHOR IS A BIPOLAR COHORT, so the edge is registered at association only with that population limit stated on its face: the 2017 systematic review and meta-analysis of 41 studies and 11,493 patients in the period of second-generation antipsychotic use (mean age 42.8 years, 66.4 percent male, 77.1 percent schizophrenia-spectrum disorders) reports a global mean tardive dyskinesia prevalence of 25.3 percent (95 percent CI 22.7-28.1), lower in current second-generation antipsychotic arms (20.7 percent, 95 percent CI 16.6-25.4, N = 5,103) than in current first-generation arms (30.0 percent, 95 percent CI 26.4-33.8, N = 5,062; Q = 9.17, p = 0.002), and particularly low in first-generation-naive treatment arms (7.2 percent, four studies) against cohorts with likely prior first-generation exposure (23.4 percent, 28 studies, p < 0.001), so the located gradient runs with antipsychotic generation and prior exposure rather than with any psychiatric diagnosis (PMID 28146614); and the 2026 secondary analysis of the IRL-GRey late-life depression trial cohort reports incident tardive dyskinesia in 16 of 255 participants without baseline dyskinesia (6.3 percent) by the end of the venlafaxine lead-in phase, all of them non-remitters, rising to 21 of 117 randomized non-remitters (17.9 percent) by the end of the randomised aripiprazole-or-placebo augmentation phase, with tardive dyskinesia defined as an Abnormal Involuntary Movement Scale item 8 score of at least 1 (PMID 42030922). The registered claim is the narrowest the two anchors jointly permit: that antipsychotic exposure during treatment of an affective disorder is associated with incident tardive dyskinesia at the rates the anchors report, with the exposure being the prescribed medication rather than the psychiatric condition, with the meta-analytic gradient attributable to agent generation and exposure history rather than to diagnosis, and with NO bipolar-specific incidence available anywhere in the located evidence.",
+     "boundary": "Neither causation nor aggravation of tardive dyskinesia is established for any individual: the exposure in both anchors is prescribed antipsychotic medication rather than the bipolar disorder itself, and NO ANCHOR IS A BIPOLAR COHORT, the closest mood-population anchor being a late-life DEPRESSION cohort while the meta-analysis population is 77.1 percent schizophrenia-spectrum, so every rate on this edge is a treatment-class rate carried across diagnoses rather than a bipolar rate; the incident anchor's case definition is an Abnormal Involuntary Movement Scale item 8 score of at least 1, which its own authors describe as highly sensitive but non-specific, its incident case counts are small (16 of 255 and 21 of 117), its sex-stratified cognitive findings are exploratory without correction for multiple comparisons, and the two incident figures are measured at different phase endpoints in different denominators (the full cohort against the non-remitters entering randomisation) with NO arm-specific aripiprazole-versus-placebo incidence reported, so no agent-specific attributable risk may be derived from it; the meta-analysis measures prevalence rather than incidence and reports that tardive dyskinesia severity was too poorly reported across its studies for meta-analysis, so the clinical burden of its identified cases is unquantified; and no anchor includes an antipsychotic-free bipolar control arm, so bipolar disorder's own contribution to abnormal movement is not separable from the medication within these designs. Individual claims require a dated antipsychotic start, stop, dose, formulation and route timeline with dated Abnormal Involuntary Movement Scale examinations before and after initiation, a documented antipsychotic-free interval where one exists, and exclusion of spontaneous orofacial dyskinesia, of other dopamine-blocking agents including metoclopramide and prochlorperazine, of withdrawal-emergent dyskinesia after dose reduction or cessation, and of Huntington disease, Wilson disease, stroke and other structural or degenerative movement disorders.",
+     "citation": "Luca A, Luca M, Drago F, Serretti A. Tardive dyskinesia and cognitive performances in late-life depression: a sex-stratified analysis. Psychiatry Res. 2026 Jul;361:117185. doi: 10.1016/j.psychres.2026.117185. PMID 42030922.",
+     "pmid": "42030922",
+     "verificationScope": "clinical-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42030922/",
+     "sourceCheckedOn": "2026-09-28",
+     "sourceLocator": "Psychiatry Res. 2026;361:117185. Secondary analysis of the IRL-GRey trial, 255 late-life depression participants treated with venlafaxine plus aripiprazole or placebo, without baseline dyskinesia and with at least one post-baseline AIMS; abstract states 16 of 255 (6.3%) incident TD by end of Phase 1 lead-in (all non-remitters), 21 of 117 randomized non-remitters (17.9%) TD+ by end of randomized augmentation, TD defined as AIMS item 8 >= 1 (a highly sensitive but non-specific definition), no differences in depression severity or neuropsychological performance between TD+ and TD-, and small incident case numbers without correction for multiple comparisons.",
+     "note": "Secondary analysis of the IRL-GRey randomised augmentation trial cohort, 255 late-life depression participants on venlafaxine plus aripiprazole or placebo without baseline dyskinesia: incident tardive dyskinesia in 16 of 255 (6.3 percent) by the end of the venlafaxine lead-in phase, all non-remitters, and 21 of 117 randomized non-remitters (17.9 percent) by the end of the randomised augmentation phase, defined as an Abnormal Involuntary Movement Scale item 8 score of at least 1. Registered as the ONLY located affective-population anchor and the closest population to bipolar disorder. LIMITATIONS CARRIED: the case definition is self-described as highly sensitive but non-specific, incident case counts are small, the sex-stratified cognitive findings are exploratory without multiple-comparison correction, the two incident figures rest on different phase denominators, and the abstract reports no arm-specific aripiprazole-versus-placebo incidence. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
+     "totalUses": 1
     }
    ],
    "id": "batch-54",
    "number": 54,
    "cohortFrom": "2026-09-27",
-   "cohortTo": "2026-09-27",
-   "sourceCount": 11
+   "cohortTo": "2026-09-28",
+   "sourceCount": 13
   }
  ]
 }

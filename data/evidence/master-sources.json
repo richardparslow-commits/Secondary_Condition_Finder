@@ -16,16 +16,16 @@
     "citationPromotionMustAtomicallyUpdateKbAndMasterSourceState": true
   },
   "counts": {
-    "liveSourceReferenceUses": 1672,
+    "liveSourceReferenceUses": 1674,
     "activeSourceEntities": 346,
-    "pendingVerificationSourceEntities": 1110,
+    "pendingVerificationSourceEntities": 1112,
     "activeClinicalSourceEntities": 345,
-    "pendingClinicalSourceEntities": 1110,
+    "pendingClinicalSourceEntities": 1112,
     "activeLegalAuthorityEntities": 1,
     "retiredOnlySourceEntities": 1,
     "supersededUnverifiedSourceEntities": 7,
     "bibliographicCorrectionOnlyEntities": 1,
-    "totalSourceEntitiesIncludingLineage": 1465,
+    "totalSourceEntitiesIncludingLineage": 1467,
     "retiredVerifiedRelationshipSourceUses": 6
   },
   "retirementLedger": {
@@ -54059,6 +54059,76 @@
       "retiredUses": [],
       "rawReferenceHashes": [
         "c20c337dc9afe6a8839c7abd8e7803fc0c2643f028ff432d9cd353f128685732"
+      ]
+    },
+    {
+      "sourceId": "pmid-28146614",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "28146614",
+      "doi": "10.4088/JCP.16r10832",
+      "canonicalCitation": "Carbon M, Hsieh CH, Kane JM, Correll CU. Tardive Dyskinesia Prevalence in the Period of Second-Generation Antipsychotic Use: A Meta-Analysis. J Clin Psychiatry. 2017 Mar;78(3):e264-e278. doi: 10.4088/JCP.16r10832. PMID 28146614.",
+      "citationVariants": [
+        "Carbon M, Hsieh CH, Kane JM, Correll CU. Tardive Dyskinesia Prevalence in the Period of Second-Generation Antipsychotic Use: A Meta-Analysis. J Clin Psychiatry. 2017 Mar;78(3):e264-e278. doi: 10.4088/JCP.16r10832. PMID 28146614."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/28146614/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/28146614/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-28"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-bipolar-disorder-to-tardive-dyskinesia",
+          "primaryId": "bipolar-disorder",
+          "targetId": "tardive-dyskinesia",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "5eb588105f00c2f99c10df9024f298bc105a4359214014026f90e6a150009287"
+      ]
+    },
+    {
+      "sourceId": "pmid-42030922",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "42030922",
+      "doi": "10.1016/j.psychres.2026.117185",
+      "canonicalCitation": "Luca A, Luca M, Drago F, Serretti A. Tardive dyskinesia and cognitive performances in late-life depression: a sex-stratified analysis. Psychiatry Res. 2026 Jul;361:117185. doi: 10.1016/j.psychres.2026.117185. PMID 42030922.",
+      "citationVariants": [
+        "Luca A, Luca M, Drago F, Serretti A. Tardive dyskinesia and cognitive performances in late-life depression: a sex-stratified analysis. Psychiatry Res. 2026 Jul;361:117185. doi: 10.1016/j.psychres.2026.117185. PMID 42030922."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42030922/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/42030922/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-28"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-bipolar-disorder-to-tardive-dyskinesia",
+          "primaryId": "bipolar-disorder",
+          "targetId": "tardive-dyskinesia",
+          "sourceIndex": 1
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "4fb4d8091a0c4602b5ec9b6ccb657778947a30ffa01f81f6610780d5f95416d8"
       ]
     }
   ],
