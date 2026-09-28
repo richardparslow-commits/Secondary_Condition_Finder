@@ -101,6 +101,13 @@ edges and the catalog names before closing an identity) separates the trio into 
   suggestions; authoring still requires condition-specific evidence inside tear scope), and the correction
   is annotated on the file per the superseded-annotation discipline. Nothing here moves the frozen identity
   contract: no identity was added, retired, merged or renamed.
+  **Alias hazard fixed and scope recorded on both entries (2026-09-28):** the umbrella's bare alias `tear`,
+  which resolved every tear in the catalog to one entry, was removed (the scoped alias
+  `rotator cuff tendonitis` is retained), and both catalog entries now carry the umbrella/member scope note —
+  the member owns tear-specific windows, the umbrella owns the general window, no edge may run between
+  umbrella and member, and the shared 38 CFR 4.71a rating framework establishes neither shared etiology nor
+  secondary causation. Regression coverage for the exact identity change lives in
+  `tests/rotator-cuff-umbrella-scope.test.ts`.
 - **`skier-s-thumb` / `gamekeeper-s-thumb` — GENUINE duplication; the closure stands.** This is the one true
   duplication of the trio: the located literature reviews thumb metacarpophalangeal collateral-ligament
   injuries as a single injury category and distinguishes the two names only by **mechanism of injury**

@@ -306,8 +306,7 @@
       "id": "rotator-cuff-injury",
       "name": "Rotator Cuff Tendonitis / Tear",
       "aliases": [
-        "rotator cuff tendonitis",
-        "tear"
+        "rotator cuff tendonitis"
       ],
       "bodySystem": "Musculoskeletal System",
       "ratingSchedule": [
@@ -317,7 +316,9 @@
           "verified": false
         }
       ],
-      "reviewNotes": []
+      "reviewNotes": [
+        "Umbrella/member scope (recorded 2026-09-28 by the three-closure adjudication in docs/modeling-debt-dispositions.md): this identity is the UMBRELLA over the rotator-cuff tendinopathy/tear spectrum (catalog name Rotator Cuff Tendonitis / Tear), and the tear member is the SEPARATE identity rotator-cuff-tear in musculoskeletal-expansion-wave-2.json. The umbrella owns the general rotator-cuff window and keeps the registered bicipital-tendinitis to rotator-cuff-injury edge; claims about rotator cuff tears specifically belong to the member identity. NO edge may be registered between this umbrella and its own member (batch-86 soft-tissue-sarcomas umbrella guard). Alias hazard fixed 2026-09-28: the bare alias 'tear' was REMOVED because a bare lesion word resolves every tear in the catalog to this entry; the scoped alias 'rotator cuff tendonitis' is retained. The shared 38 CFR 4.71a rating framework with the member establishes neither shared etiology nor secondary causation."
+      ]
     },
     {
       "id": "scars",

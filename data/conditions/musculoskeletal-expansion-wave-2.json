@@ -972,7 +972,8 @@
         }
       ],
       "reviewNotes": [
-        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending.",
+        "Umbrella/member scope (recorded 2026-09-28 by the three-closure adjudication in docs/modeling-debt-dispositions.md): this identity is the tear MEMBER of the rotator-cuff-injury umbrella in musculoskeletal.json (catalog name Rotator Cuff Tendonitis / Tear) and is NOT a duplicate of it; the batch-82 identity-duplication closure was vacated by that adjudication. The member owns tear-specific windows only; the umbrella owns the general rotator-cuff window and keeps the registered bicipital-tendinitis to rotator-cuff-injury edge. NO edge may be registered between this member and its umbrella (batch-86 soft-tissue-sarcomas umbrella guard). The shared 38 CFR 4.71a rating framework with the umbrella establishes neither shared etiology nor secondary causation."
       ]
     },
     {
