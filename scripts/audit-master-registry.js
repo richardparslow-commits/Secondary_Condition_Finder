@@ -251,7 +251,7 @@ let legalUses = 0;
 const observedUses = new Map();
 
 const files = fs.readdirSync(kbDir).filter((n) => n.endsWith(".json")).sort();
-if (files.length !== 814) fail(`Expected 814 KB files, found ${files.length}.`);
+if (files.length !== 817) fail(`Expected 817 KB files, found ${files.length}.`);
 
 for (const file of files) {
   const mapping = readJson(path.join(kbDir, file));
@@ -321,7 +321,7 @@ for (const file of files) {
   }
 }
 
-if (published !== 140 || draft !== 674) fail(`Publication-state drift: published=${published}, draft=${draft}`);
+if (published !== 140 || draft !== 677) fail(`Publication-state drift: published=${published}, draft=${draft}`);
 // D1 batch 43 (2026-09-24): +8 relationships (hearing-loss->cognitive-disorder,
 // hearing-loss->depressive-disorder, heart-block->cardiomyopathy,
 // heart-valve-disorders->congestive-heart-failure as the batch's DIRECT_CAUSATION edge,

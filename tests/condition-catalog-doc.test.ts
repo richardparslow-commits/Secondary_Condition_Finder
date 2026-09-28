@@ -28,7 +28,7 @@ describe("condition catalog documentation", () => {
 
   it("keeps the frozen catalog and knowledge-base identity invariant explicit", () => {
     expect(catalogGuide).toContain(
-      "814 catalog identities with 814 corresponding knowledge-base mappings",
+      "817 catalog identities with 817 corresponding knowledge-base mappings",
     );
   });
 });

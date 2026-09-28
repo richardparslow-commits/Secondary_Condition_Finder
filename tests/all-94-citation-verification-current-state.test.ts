@@ -51,8 +51,8 @@ describe("all-94 citation verification current state", () => {
     expect(references).toHaveLength(1674);
     expect(references.filter((reference) => reference.verified === true)).toHaveLength(384);
     expect(references.filter((reference) => reference.verified !== true)).toHaveLength(1290);
-    expect(mappings).toHaveLength(814);
+    expect(mappings).toHaveLength(817);
     expect(mappings.filter((mapping) => mapping.draft === false)).toHaveLength(140);
-    expect(mappings.filter((mapping) => mapping.draft === true)).toHaveLength(674);
+    expect(mappings.filter((mapping) => mapping.draft === true)).toHaveLength(677);
   });
 });

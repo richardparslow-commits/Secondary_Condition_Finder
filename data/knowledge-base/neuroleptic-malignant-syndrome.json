@@ -1,0 +1,9 @@
+{
+  "id": "neuroleptic-malignant-syndrome",
+  "draft": true,
+  "todo": [
+    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication. THE EVIDENCE-TIER GATE STANDS: batch 88 withheld this route and recorded that the located literature is dominated by case reports and post-marketing signal analyses and needs a non-case-report anchor tier even once the identity exists, so no edge may be authored from case-report-class evidence alone; locate and verify a cohort, trial or systematic-review anchor under docs/citation-verification-sop.md before authoring, and confirm each PMID is still absent from master-sources.json before registration.",
+    "Review pharmacological, treatment-related and movement-disorder pathways only where applicable; do not infer medical causation from rating-schedule authority. SCOPE GUARDS: this identity is the dopamine-antagonist (neuroleptic/antipsychotic) toxidrome, distinct from the serotonergic toxidrome of serotonin-syndrome and from catatonia; the two toxidromes must not be conflated or routed through each other. Tardive dyskinesia, drug-induced parkinsonism and serotonin syndrome are separate identities, and dystonia and akathisia remain MISSING IDENTITIES: none may be routed through this identity."
+  ],
+  "suggestions": []
+}

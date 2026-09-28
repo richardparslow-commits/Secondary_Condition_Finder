@@ -23,7 +23,7 @@ describe("Mapping Expansion Batch ME-2",()=>{
   });
   it("preserves the closed ME-2 five-edge / five-verified-source result under later approved expansions",()=>{
     const files=fs.readdirSync(kb).filter(n=>n.endsWith(".json")); const maps=files.map(n=>JSON.parse(fs.readFileSync(path.join(kb,n),"utf8")) as Map);
-    expect(files).toHaveLength(814); expect(maps.filter(m=>m.draft===false)).toHaveLength(140); expect(maps.filter(m=>m.draft===true)).toHaveLength(674);
+    expect(files).toHaveLength(817); expect(maps.filter(m=>m.draft===false)).toHaveLength(140); expect(maps.filter(m=>m.draft===true)).toHaveLength(677);
     expect(maps.reduce((n,m)=>n+(m.suggestions??[]).length,0)).toBeGreaterThanOrEqual(183);
     const refs=maps.flatMap(m=>(m.suggestions??[]).flatMap(s=>s.sourceReferences??[])); expect(refs.filter(r=>r.verified===true).length).toBeGreaterThanOrEqual(191);
     for(const row of ver().rows){ const s=(load(row.primaryId).suggestions??[]).find(x=>x.conditionId===row.targetId); expect(s).toBeTruthy(); const r=s?.sourceReferences?.[0]; expect(r?.verified).toBe(true); expect(r?.citation).toBe(row.finalApproved.citation); expect(r?.sourceUrl).toBe(row.finalApproved.sourceUrl); expect(contains(s,row.finalApproved.publicationGuard)).toBe(true); }
