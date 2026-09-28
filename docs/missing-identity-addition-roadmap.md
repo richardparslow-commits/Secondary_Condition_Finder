@@ -36,7 +36,7 @@ document is the cross-cutting index, not a replacement for any of them.
 | 8 | `raynaud-s-phenomenon` → `digital-ulcers` | 77 | MISSING IDENTITY | `digital-ulcers` (companions `gangrene`, `digital-ischemia` also missing) | PMID 29804150 (vascular-complications cohorts) | STILL BLOCKED |
 | 9 | `restless-leg-syndrome` → `suicidal-ideation` and → `self-harm` | 78 | MISSING IDENTITY | `suicidal-ideation` **and** `self-harm` | PMID 31441941 (claims cohort, adjusted HR 2.66); PMID 30529070 (lifetime ideation or behavior 27.1 versus 7.0 percent, odds 2.80); PMID 34985142 (registered on the depressive-disorder edge) | STILL BLOCKED |
 | 10 | `schizophrenia` → `tardive-dyskinesia` | 80 | MISSING IDENTITY | `tardive-dyskinesia` | PMID 37424417, PMID 39240484, PMID 42030922 | **RESOLVED 2026-09-28** — identity added as the versioned 814th entry (`data/conditions/neurological.json`, commit `2c9acb50`); route **held, not refused**, in `docs/batch-90-schizophrenia-tardive-dyskinesia-held-edge.json` pending qualified-human verification |
-| 11 | `rotator-cuff-tear` closure | 82 | IDENTITY-DUPLICATION — **corrected 2026-09-28 to UMBRELLA/MEMBER** | none — the pair is umbrella (`rotator-cuff-injury`, "Rotator Cuff Tendonitis / Tear") and tear member, not two names for one disease | none required | **RESOLVED 2026-09-28** — closure vacated by the three-closure adjudication (`docs/modeling-debt-dispositions.md`); tear-scope authoring restored under umbrella/member discipline |
+| 11 | `rotator-cuff-tear` closure | 82 | IDENTITY-DUPLICATION — **corrected 2026-09-28 to UMBRELLA/MEMBER** | none — the pair is umbrella (`rotator-cuff-injury`, "Rotator Cuff Tendonitis / Tear") and tear member, not two names for one disease | none required | **RESOLVED 2026-09-28** — closure vacated by the three-closure adjudication (`docs/modeling-debt-dispositions.md`), then reconciled the same day to canonical `rotator-cuff-injury` as a quarantined pointer record (all registered edges and sources preserved) |
 | 12 | `short-qt-syndrome` → `long-qt-syndrome` | 83 | EVIDENCE-CONTRADICTED | none | inverse QTc-arrhythmia relationship preserved as the refusal rationale (median 315.0 versus 330.0 ms, P=0.0023) | **PERMANENT REFUSAL** absent new evidence — this is not an identity gap |
 
 The series order is pinned by the batch-78 entry ("the NINTH evidence-preserving refusal with no catalog
@@ -67,8 +67,9 @@ these are still blocked (1–9); one is resolved (10). They cluster into three s
 the pair as two open identities for one disease and closed `rotator-cuff-tear` reversibly. The 2026-09-28
 three-closure adjudication (`docs/modeling-debt-dispositions.md`) **corrected that framing to
 umbrella/member**: `rotator-cuff-injury` ("Rotator Cuff Tendonitis / Tear") is the umbrella over the
-tendinopathy/tear spectrum and `rotator-cuff-tear` is the tear member, so the closure is vacated and
-tear-scope authoring is restored. Of the three batch-80/82/84 identity closures, only `skier-s-thumb` /
+tendinopathy/tear spectrum and `rotator-cuff-tear` is the tear member, so the closure is vacated; the
+pair was then reconciled the same day to canonical `rotator-cuff-injury` with the member retained as a
+quarantined pointer record, so tear claims are authored under the canonical umbrella entry. Of the three batch-80/82/84 identity closures, only `skier-s-thumb` /
 `gamekeeper-s-thumb` was a genuine synonymy and only that closure stands (canonical-name election is a
 versioned migration); the batch-80 `eczema` / `atopic-dermatitis-eczema` pair was retracted as a scope split
 by the 2026-09-28 identity review, which is the standing prejudice for future duplication findings: check

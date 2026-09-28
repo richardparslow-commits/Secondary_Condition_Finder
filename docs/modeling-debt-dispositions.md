@@ -123,6 +123,52 @@ shared naming (`rotator-cuff-tear` / `rotator-cuff-injury`), and one genuine syn
 an identity on name-level evidence: read the catalog names, the aliases, and the registered edges first,
 and record umbrella/member and scope-split outcomes as scope discipline rather than as closures.
 
+## Canonical-identity reconciliation 2026-09-28 — the rotator-cuff and thumb pairs (pointer reconciliation, frozen contract unmoved)
+
+**Disposition: one canonical identity per pair, the non-canonical identity reconciled to it as a quarantined
+pointer record, and every registered edge and its sources preserved exactly.** This executes the
+canonical-choice decision the batch-82 and batch-84 closures deferred ("obtain a qualified-human decision on
+which rotator-cuff identity is canonical"):
+
+- **`rotator-cuff-injury` is canonical for the rotator-cuff pair.** It holds both registered incoming edges
+  (`rel-bicipital-tendinitis-to-rotator-cuff-injury`, batch 4, Braun PMID 21335355 and Sethi PMID 10633904;
+  `rel-slap-tear-to-rotator-cuff-injury`, batch 85), and re-homing either to a tear-specific identity would
+  change its clinical meaning — bicipital tendinitis and slap tears associate with cuff injury generally,
+  not with one lesion subtype. Its catalog name ("Rotator Cuff Tendonitis / Tear") already covers the member
+  concept, so routing tear claims into it loses nothing. `rotator-cuff-tear` becomes a **quarantined pointer
+  record**; the umbrella/member framing recorded above stands as the pair's relationship and is superseded
+  only as to authorship location (tear claims are authored under the canonical entry). The variant name
+  `rotator cuff tear` stays on the pointer entry's own catalog name — the catalog invariant pinned by
+  `tests/catalog.test.ts` forbids an alias colliding with another condition's name or id — so folding it
+  into the canonical entry becomes available only if a future catalog-v3 migration retires the pointer ID.
+- **`gamekeeper-s-thumb` is canonical for the thumb pair.** It holds the registered
+  `rel-gamekeeper-s-thumb-to-osteoarthritis` edge (batch 36) with its three registered sources, whose
+  chronic-instability meaning would change if re-homed; and the located review chapter that merges the pair
+  is titled for Gamekeeper's Thumb. `skier-s-thumb` becomes a **quarantined pointer record** carrying its
+  preserved unregistered evidence intact (the StatPearls chapter, the collateral-ligament review, and the
+  repair and outcomes studies), which may support exactly one future authoring pass under the canonical
+  entry. The two names denote one lesion, distinguished in the located literature only by mechanism of
+  injury (ski-pole-grip valgus versus forced abduction); the mechanism is a documented feature of the
+  canonical identity, not a second identity. The variant name `skier's thumb` stays on the pointer entry's
+  own catalog name under the same catalog invariant, and folds into the canonical entry only with a future
+  catalog-v3 retirement.
+
+**Preservation guarantee.** Zero registry rows moved. `rel-bicipital-tendinitis-to-rotator-cuff-injury`
+(two source uses), `rel-slap-tear-to-rotator-cuff-injury` (three source uses),
+`rel-slap-tear-to-shoulder-condition` and `rel-gamekeeper-s-thumb-to-osteoarthritis` (three source uses)
+keep their exact relationship objects, hash forms and registered sources. The batch-36 guard wording about a
+separate acute skier-s-thumb pathway is annotated superseded at file level while the registered suggestion
+text is deliberately untouched. `tests/canonical-identity-reconciliation.test.ts` pins the canonical
+elections, the pointer states and the preserved relationships.
+
+**Why pointers rather than deletion.** Deleting or merging either pointer identity would move the frozen
+one-to-one identity contract and require a versioned identity migration; per the governing principle of this
+document, the stable IDs are preserved as quarantined pointer records instead — the same end state as the
+`contralateral-knee-condition` quarantine. Each pointer entry is the name-level resolution record for its
+variant name while the pointers exist (the catalog invariant keeps variant names on their own entries), and
+a future catalog-v3 migration may retire the pointer IDs and fold the variant names into the canonical
+entries as aliases.
+
 ## Other physical-placement and grouped-identity debt
 
 The endocrine and pulmonary-hypertension maintenance sequence has already corrected the major known cross-system physical placements without changing stable IDs. Any newly discovered cross-system placement, grouped identity, obsolete code, or over-broad alias must be handled as a separate bounded change with:
@@ -142,9 +188,10 @@ The five named items above are **not open blockers to the current clinical evide
 - cerebral-palsy recognition identity retained without service-connection inference;
 - eczema / atopic-dermatitis-eczema retained as two distinct identities under an explicit scope split, with the
   identity-duplication finding retracted;
-- the three identity closures adjudicated: `eczema` resolved as above, `rotator-cuff-tear` /
+- the three identity closures adjudicated and reconciled: `eczema` resolved as above, `rotator-cuff-tear` /
   `rotator-cuff-injury` corrected to umbrella/member with the member's duplication closure vacated, and
-  `skier-s-thumb` / `gamekeeper-s-thumb` kept closed as the one genuine duplication pending a versioned
-  canonical-name migration.
+  `skier-s-thumb` / `gamekeeper-s-thumb` kept as the one genuine duplication — both pairs since reconciled
+  to canonical identities (`rotator-cuff-injury`, `gamekeeper-s-thumb`) with the non-canonical identities
+  retained as quarantined pointer records.
 
 A future catalog-v3 identity migration may retire or consolidate these IDs, but v2 should not violate 300/300 or silently rewrite stable identity history to make the debt list appear empty.
