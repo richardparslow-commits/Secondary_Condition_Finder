@@ -60,7 +60,7 @@
 <body>
 <header class="page">
   <h1>Qualified-Human Citation Verification Dashboard</h1>
-  <p>Reviewer-ready batches, oldest source-check first. 1282 pending reference rows across 1109 distinct sources in 54 batches.</p>
+  <p>Reviewer-ready batches, oldest source-check first. 1288 pending reference rows across 1114 distinct sources in 54 batches.</p>
   <p>data/knowledge-base published and draft-quarantined mappings — generated, not transcribed. Regenerate with <code>npm run citations:dashboard</code>.</p>
 </header>
 <main>
@@ -99,8 +99,8 @@
   Extraction rule: every sourceReference whose verified is not true — identical to scripts/report-citation-verification-queue.js --include-drafts.
   Cohort order is the recorded <code>sourceCheckedOn</code> date of each row (oldest first), which tracks
   the authoring wave that entered the row. Batch 25-row cap is soft: an edge's
-  rows are never split across batches. Shared sources (151 of
-  1109 carry more than one pending use) need one open of the source per use —
+  rows are never split across batches. Shared sources (152 of
+  1114 carry more than one pending use) need one open of the source per use —
   the proposition differs per row even when the source repeats.
 </footer>
 
@@ -111,9 +111,9 @@
   "extractionRule": "every sourceReference whose verified is not true — identical to scripts/report-citation-verification-queue.js --include-drafts",
   "qualificationRule": "Only a qualified human reviewer may change repository source records to verified:true.",
   "batchSizeCap": 25,
-  "pendingRows": 1282,
-  "distinctSources": 1109,
-  "sharedSources": 151,
+  "pendingRows": 1288,
+  "distinctSources": 1114,
+  "sharedSources": 152,
   "batches": 54,
   "cohorts": [
    "2026-09-22",
@@ -123,9 +123,9 @@
    "2026-09-26",
    "2026-09-27"
   ],
-  "draftQuarantinedRows": 1282,
+  "draftQuarantinedRows": 1288,
   "publishedRows": 0,
-  "clinicalEvidenceRows": 1282,
+  "clinicalEvidenceRows": 1288,
   "legalFrameworkRows": 0
  },
  "batches": [
@@ -17901,6 +17901,57 @@
      "totalUses": 2
     },
     {
+     "rowId": "bipolar-disorder::hyperparathyroidism::36709463",
+     "mappingId": "bipolar-disorder",
+     "conditionId": "hyperparathyroidism",
+     "publicationState": "draft-quarantined",
+     "nexusClassification": "ASSOCIATION_ONLY",
+     "claim": "Lithium therapy in bipolar disorder is associated with parathyroid and calcium-axis abnormality, but the located evidence is materially weaker for the parathyroid diagnosis itself than for the calcium abnormality it is detected through, and the edge is registered on that basis: the 2023 single-centre cohort of 248 adult lithium-treated patients reports that duration of lithium treatment correlated with the development of hyperparathyroidism (p < 0.01) and of hypercalcaemia (p < 0.01) as separate outcomes, and states that long-term lithium therapy was associated with hyperparathyroidism and hypercalcemia (PMID 36709463); the 2013 cross-sectional study of 314 lithium-treated outpatients with bipolar disorder against 15 comparable psychiatric patients never treated with lithium reports a point prevalence of hypercalcaemia above 2.60 mmol per litre of 15.6 percent against NONE in the non-lithium group (p = 0.001), a mean calcium of 2.49 against 2.37 mmol per litre, and duration of lithium treatment as the only significant predictor (p = 0.002), in a study whose stated subject IS lithium-induced hyperparathyroidism and which identifies hypercalcaemia as its first and often overlooked sign (PMID 25505684); and the 2017 Irish tertiary-centre cohort of 580 patients with at least one serum lithium measurement reports 4 percent with a corrected calcium above 2.55 mmol per litre and FOUR patients with biochemical confirmation of primary hyperparathyroidism, while documenting that parathyroid hormone was measured in only 2.8 percent of the study population, n = 16 (PMID 29590494); registered as documented association only with a SCOPE MAPPING carried openly, because the catalog carries no hypercalcaemia identity and two of the three anchors measure serum calcium rather than a parathyroid diagnosis, so the measured abnormality is mapped onto the narrower parathyroid identity and the mapping is not reversible by a reviewer without reading this basis, and with an ASCERTAINMENT FAILURE carried on the face of the edge, because the largest anchor's hyperparathyroidism numerator is four patients drawn from a population in which 97.2 percent never had a parathyroid hormone measured.",
+     "boundary": "Neither causation nor aggravation of hyperparathyroidism is established for any individual, and for this edge the ascertainment problem is decisive: the largest anchor confirmed hyperparathyroidism in only FOUR patients while measuring parathyroid hormone in only 2.8 percent of the population, so its case count cannot support a rate and a four-case numerator in a 580-patient cohort is compatible with a wide range of true prevalence; two of the three anchors measure serum calcium rather than parathyroid hormone, and the catalog carries no hypercalcaemia identity, so the parathyroid diagnosis is inferred from a calcium proxy; the control group in the one anchor with a comparator comprises only 15 patients, which cannot support a precise between-group estimate even though the direction is clear; and no anchor separates lithium-induced parathyroid hyperplasia from an incidental or pre-existing adenoma, which the same anchor cannot exclude because it did not image the glands; individual claims require a dated lithium start, stop, dose and serum-level timeline with serial corrected calcium and parathyroid hormone measured before and after initiation, neck imaging where a gland lesion is suspected, and exclusion of primary hyperparathyroidism predating lithium therapy, malignancy-associated and familial hyperparathyroidism, thiazide diuretics, and vitamin D deficiency.",
+     "citation": "Boivin E, Le Daré B, Bellay R, et al. Long-term lithium therapy and risk of chronic kidney disease, hyperparathyroidism and hypercalcemia: a cohort study. Int J Bipolar Disord. 2023 Jan 29;11(1):4. doi: 10.1186/s40345-023-00286-8. PMID 36709463.",
+     "pmid": "36709463",
+     "verificationScope": "clinical-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36709463/",
+     "sourceCheckedOn": "2026-09-27",
+     "sourceLocator": "Int J Bipolar Disord. 2023;11(1):4. Single-centre cohort, 248 adults treated with lithium, Rennes University Hospital; abstract states duration of lithium treatment correlated with deterioration of renal function (p<0.0001) and with the development of hyperparathyroidism (p<0.01) and hypercalcemia (p<0.01), and concludes that particular vigilance is required to limit lithium endocrinological and renal adverse effects.",
+     "note": "Single-centre cohort of 248 adult lithium-treated patients reporting that treatment duration correlated with the development of hyperparathyroidism (p < 0.01) and of hypercalcaemia (p < 0.01) as separately measured outcomes; the only anchor in this batch reporting hyperparathyroidism itself rather than a calcium proxy.",
+     "totalUses": 2
+    },
+    {
+     "rowId": "bipolar-disorder::hyperparathyroidism::29590494",
+     "mappingId": "bipolar-disorder",
+     "conditionId": "hyperparathyroidism",
+     "publicationState": "draft-quarantined",
+     "nexusClassification": "ASSOCIATION_ONLY",
+     "claim": "Lithium therapy in bipolar disorder is associated with parathyroid and calcium-axis abnormality, but the located evidence is materially weaker for the parathyroid diagnosis itself than for the calcium abnormality it is detected through, and the edge is registered on that basis: the 2023 single-centre cohort of 248 adult lithium-treated patients reports that duration of lithium treatment correlated with the development of hyperparathyroidism (p < 0.01) and of hypercalcaemia (p < 0.01) as separate outcomes, and states that long-term lithium therapy was associated with hyperparathyroidism and hypercalcemia (PMID 36709463); the 2013 cross-sectional study of 314 lithium-treated outpatients with bipolar disorder against 15 comparable psychiatric patients never treated with lithium reports a point prevalence of hypercalcaemia above 2.60 mmol per litre of 15.6 percent against NONE in the non-lithium group (p = 0.001), a mean calcium of 2.49 against 2.37 mmol per litre, and duration of lithium treatment as the only significant predictor (p = 0.002), in a study whose stated subject IS lithium-induced hyperparathyroidism and which identifies hypercalcaemia as its first and often overlooked sign (PMID 25505684); and the 2017 Irish tertiary-centre cohort of 580 patients with at least one serum lithium measurement reports 4 percent with a corrected calcium above 2.55 mmol per litre and FOUR patients with biochemical confirmation of primary hyperparathyroidism, while documenting that parathyroid hormone was measured in only 2.8 percent of the study population, n = 16 (PMID 29590494); registered as documented association only with a SCOPE MAPPING carried openly, because the catalog carries no hypercalcaemia identity and two of the three anchors measure serum calcium rather than a parathyroid diagnosis, so the measured abnormality is mapped onto the narrower parathyroid identity and the mapping is not reversible by a reviewer without reading this basis, and with an ASCERTAINMENT FAILURE carried on the face of the edge, because the largest anchor's hyperparathyroidism numerator is four patients drawn from a population in which 97.2 percent never had a parathyroid hormone measured.",
+     "boundary": "Neither causation nor aggravation of hyperparathyroidism is established for any individual, and for this edge the ascertainment problem is decisive: the largest anchor confirmed hyperparathyroidism in only FOUR patients while measuring parathyroid hormone in only 2.8 percent of the population, so its case count cannot support a rate and a four-case numerator in a 580-patient cohort is compatible with a wide range of true prevalence; two of the three anchors measure serum calcium rather than parathyroid hormone, and the catalog carries no hypercalcaemia identity, so the parathyroid diagnosis is inferred from a calcium proxy; the control group in the one anchor with a comparator comprises only 15 patients, which cannot support a precise between-group estimate even though the direction is clear; and no anchor separates lithium-induced parathyroid hyperplasia from an incidental or pre-existing adenoma, which the same anchor cannot exclude because it did not image the glands; individual claims require a dated lithium start, stop, dose and serum-level timeline with serial corrected calcium and parathyroid hormone measured before and after initiation, neck imaging where a gland lesion is suspected, and exclusion of primary hyperparathyroidism predating lithium therapy, malignancy-associated and familial hyperparathyroidism, thiazide diuretics, and vitamin D deficiency.",
+     "citation": "Dineen R, Bogdanet D, Thompson D, et al. Endocrinopathies and renal outcomes in lithium therapy: impact of lithium toxicity. QJM. 2017 Dec 1;110(12):821-827. doi: 10.1093/qjmed/hcx171. PMID 29590494.",
+     "pmid": "29590494",
+     "verificationScope": "clinical-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/29590494/",
+     "sourceCheckedOn": "2026-09-27",
+     "sourceLocator": "QJM. 2017;110(12):821-827. Retrospective laboratory analysis, 580 patients with at least one serum lithium measurement, Adelaide and Meath Hospital, Dublin, 2000-2014; abstract states 12.1 percent had at least one toxic lithium level, 27.8 percent developed stage 3 CKD or higher (p<0.0001 in those with toxic levels), 4 percent had corrected calcium above 2.55 mmol/l, 4 patients had biochemical confirmation of primary hyperparathyroidism, and PTH levels were performed in only 2.8 percent (n=16) of the study population.",
+     "note": "Retrospective tertiary-centre cohort of 580 patients with at least one serum lithium measurement, registered as this edge's COUNTERWEIGHT: it reports 4 percent with corrected calcium above 2.55 mmol per litre and only FOUR patients with biochemically confirmed primary hyperparathyroidism, while documenting that parathyroid hormone was measured in only 2.8 percent of the population, n = 16.",
+     "totalUses": 1
+    },
+    {
+     "rowId": "bipolar-disorder::hyperparathyroidism::25505684",
+     "mappingId": "bipolar-disorder",
+     "conditionId": "hyperparathyroidism",
+     "publicationState": "draft-quarantined",
+     "nexusClassification": "ASSOCIATION_ONLY",
+     "claim": "Lithium therapy in bipolar disorder is associated with parathyroid and calcium-axis abnormality, but the located evidence is materially weaker for the parathyroid diagnosis itself than for the calcium abnormality it is detected through, and the edge is registered on that basis: the 2023 single-centre cohort of 248 adult lithium-treated patients reports that duration of lithium treatment correlated with the development of hyperparathyroidism (p < 0.01) and of hypercalcaemia (p < 0.01) as separate outcomes, and states that long-term lithium therapy was associated with hyperparathyroidism and hypercalcemia (PMID 36709463); the 2013 cross-sectional study of 314 lithium-treated outpatients with bipolar disorder against 15 comparable psychiatric patients never treated with lithium reports a point prevalence of hypercalcaemia above 2.60 mmol per litre of 15.6 percent against NONE in the non-lithium group (p = 0.001), a mean calcium of 2.49 against 2.37 mmol per litre, and duration of lithium treatment as the only significant predictor (p = 0.002), in a study whose stated subject IS lithium-induced hyperparathyroidism and which identifies hypercalcaemia as its first and often overlooked sign (PMID 25505684); and the 2017 Irish tertiary-centre cohort of 580 patients with at least one serum lithium measurement reports 4 percent with a corrected calcium above 2.55 mmol per litre and FOUR patients with biochemical confirmation of primary hyperparathyroidism, while documenting that parathyroid hormone was measured in only 2.8 percent of the study population, n = 16 (PMID 29590494); registered as documented association only with a SCOPE MAPPING carried openly, because the catalog carries no hypercalcaemia identity and two of the three anchors measure serum calcium rather than a parathyroid diagnosis, so the measured abnormality is mapped onto the narrower parathyroid identity and the mapping is not reversible by a reviewer without reading this basis, and with an ASCERTAINMENT FAILURE carried on the face of the edge, because the largest anchor's hyperparathyroidism numerator is four patients drawn from a population in which 97.2 percent never had a parathyroid hormone measured.",
+     "boundary": "Neither causation nor aggravation of hyperparathyroidism is established for any individual, and for this edge the ascertainment problem is decisive: the largest anchor confirmed hyperparathyroidism in only FOUR patients while measuring parathyroid hormone in only 2.8 percent of the population, so its case count cannot support a rate and a four-case numerator in a 580-patient cohort is compatible with a wide range of true prevalence; two of the three anchors measure serum calcium rather than parathyroid hormone, and the catalog carries no hypercalcaemia identity, so the parathyroid diagnosis is inferred from a calcium proxy; the control group in the one anchor with a comparator comprises only 15 patients, which cannot support a precise between-group estimate even though the direction is clear; and no anchor separates lithium-induced parathyroid hyperplasia from an incidental or pre-existing adenoma, which the same anchor cannot exclude because it did not image the glands; individual claims require a dated lithium start, stop, dose and serum-level timeline with serial corrected calcium and parathyroid hormone measured before and after initiation, neck imaging where a gland lesion is suspected, and exclusion of primary hyperparathyroidism predating lithium therapy, malignancy-associated and familial hyperparathyroidism, thiazide diuretics, and vitamin D deficiency.",
+     "citation": "Twigt BA, Houweling BM, Vriens MR, et al. Hypercalcemia in patients with bipolar disorder treated with lithium: a cross-sectional study. Int J Bipolar Disord. 2013;1:18. doi: 10.1186/2194-7511-1-18. PMID 25505684.",
+     "pmid": "25505684",
+     "verificationScope": "clinical-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/25505684/",
+     "sourceCheckedOn": "2026-09-27",
+     "sourceLocator": "Int J Bipolar Disord. 2013;1:18. Cross-sectional study, 314 lithium-treated bipolar outpatients and 15 non-lithium-treated psychiatric controls, June 2010 to June 2011; abstract states point prevalence of hypercalcaemia above 2.60 mmol/l of 15.6 percent versus none in controls (p=0.001), mean calcium 2.49 versus 2.37 mmol/l, and duration of lithium treatment the only significant predictor (p=0.002).",
+     "note": "Cross-sectional study of 314 lithium-treated bipolar outpatients against 15 comparable non-lithium-treated psychiatric patients, reporting hypercalcaemia point prevalence of 15.6 percent against none in the comparator (p = 0.001), mean calcium 2.49 versus 2.37 mmol per litre, and lithium duration as the only significant predictor (p = 0.002), in a study whose stated subject is lithium-induced hyperparathyroidism.",
+     "totalUses": 1
+    },
+    {
      "rowId": "bipolar-disorder::hypothyroidism::39932712",
      "mappingId": "bipolar-disorder",
      "conditionId": "hypothyroidism",
@@ -17949,6 +18000,57 @@
      "sourceCheckedOn": "2026-09-27",
      "sourceLocator": "Lancet. 2015;386(9992):461-8. Retrospective laboratory-data analysis, Oxford University Hospitals NHS Trust, Oct 1982 to Mar 2014; abstract states adjusted hypothyroidism HR 2.31 (2.05-2.60; p<0.0001), hyperthyroidism 1.22 (0.96-1.55; p=0.1010), and that women younger than 60 and people with above-median lithium concentrations are at greatest risk.",
      "note": "Retrospective analysis of over three decades of laboratory data reporting lithium in serum associated with hypothyroidism (hazard ratio 2.31, 95 percent CI 2.05-2.60), stage 3 chronic kidney disease (1.93, 1.76-2.12), and raised total calcium (1.43, 1.21-1.69), but not hyperthyroidism (1.22, 0.96-1.55) or raised adjusted calcium (1.08, 0.88-1.34), with women under 60 at greatest risk.",
+     "totalUses": 1
+    },
+    {
+     "rowId": "bipolar-disorder::renal-toxicity::36709463",
+     "mappingId": "bipolar-disorder",
+     "conditionId": "renal-toxicity",
+     "publicationState": "draft-quarantined",
+     "nexusClassification": "ASSOCIATION_ONLY",
+     "claim": "Lithium-prescribed maintenance treatment in bipolar disorder is associated with a quantified, duration-related decline in measured renal function across three independent bipolar-specific cohorts, and the decline is expressed as a measured glomerular filtration slope rather than as a diagnosis: the 2023 single-centre cohort of 248 adult lithium-treated patients at Rennes University Hospital reports that duration of lithium treatment correlated with deterioration of renal function at -2.9 mL per minute per year (p < 0.0001), that patients with a lithium blood level above 0.8 mEq per mL had significantly lower GFR than those below it (61.8 versus 77.6 mL per minute, p = 0.0134), and identifies overdose as a risk factor for chronic kidney disease (PMID 36709463); the 2021 cohort of 1,012 lithium-treated patients at a Dutch bipolar outpatient centre over 2000 to 2015 reports a chronic kidney disease incidence of 0.012 cases per exposed patient-year, an average eGFR decline of 1.8 mL per minute per year in those who reached stage 3, odds of reaching stage 3 increased with longer duration of lithium exposure, and stage 4 incidence of only 0.0004 per patient year with NO cases of end-stage renal disease in the cohort (PMID 33392830); and the 2022 cross-sectional cohort of 217 consecutive lithium-treated bipolar patients with measured GFR and renal MRI reports that 52 percent had stage 2 chronic kidney disease, that renal microcysts were present in 51 percent and detectable as early as one year after initiation, that each year of treatment cost -0.8 mL per minute per 1.73 m2 (95 percent CI -1.0 to -0.6), and that the microcyst count discriminated a measured GFR below 45 mL per minute at an area under the curve of 0.893 (PMID 35069203); registered as documented association only, with the exposure being the prescribed medication rather than the psychiatric condition, with a CONFLICT between anchors carried openly, since the Rennes cohort finds a toxic-range serum level significantly associated with lower GFR while the MRI cohort finds serum lithium concentration NOT associated with measured GFR, so the dose-response is NOT established across the located evidence, and with the chain limit carried openly, since the MRI cohort finds hypothyroidism an independent determinant of lower measured GFR (beta -7.1, p = 0.003) and a lithium-to-hypothyroidism edge is ALREADY registered in this same file at rank 2, so part of the renal signal may be mediated through the registered endocrine route rather than through direct tubular injury.",
+     "boundary": "Neither causation nor aggravation of renal toxicity is established for any individual: all three anchors are observational cohorts in which the exposure is prescribed lithium rather than the bipolar disorder itself, no anchor includes a lithium-free bipolar control arm, the anchors DISAGREE on whether serum lithium concentration predicts the decline, the largest-duration anchor documents no end-stage renal disease and only 0.0004 stage 4 cases per patient-year so the endpoint reached is stage 2 to 3 decline rather than renal failure, and the MRI cohort attributes part of the decline to hypothyroidism, which is itself a registered lithium-mediated route in this file, so direct and mediated pathways cannot be separated in these designs; individual claims require a dated lithium start, stop, dose and serum-level timeline with dated eGFR or measured GFR before and after initiation, documented renal imaging if relied upon, and exclusion of pre-existing chronic kidney disease, diabetic nephropathy, hypertensive nephrosclerosis, glomerular disease, obstructive uropathy, dehydration episodes during intercurrent illness, and non-prescribed lithium sources.",
+     "citation": "Boivin E, Le Daré B, Bellay R, et al. Long-term lithium therapy and risk of chronic kidney disease, hyperparathyroidism and hypercalcemia: a cohort study. Int J Bipolar Disord. 2023 Jan 29;11(1):4. doi: 10.1186/s40345-023-00286-8. PMID 36709463.",
+     "pmid": "36709463",
+     "verificationScope": "clinical-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36709463/",
+     "sourceCheckedOn": "2026-09-27",
+     "sourceLocator": "Int J Bipolar Disord. 2023;11(1):4. Single-centre cohort, 248 adults treated with lithium, Rennes University Hospital, January 2018 to June 2020, mean age 60.2 years; abstract states deterioration of renal function of -2.9 mL/min/year (p<0.0001), GFR 61.8 versus 77.6 mL/min for lithium above 0.8 mEq/mL (p=0.0134), and that overdoses were identified as a risk factor for CKD.",
+     "note": "Single-centre cohort of 248 adult lithium-treated patients reporting renal function deterioration of -2.9 mL per minute per year correlated with treatment duration (p < 0.0001), significantly lower GFR at lithium levels above 0.8 mEq per mL (61.8 versus 77.6 mL per minute, p = 0.0134), and overdose identified as a risk factor for chronic kidney disease.",
+     "totalUses": 2
+    },
+    {
+     "rowId": "bipolar-disorder::renal-toxicity::35069203",
+     "mappingId": "bipolar-disorder",
+     "conditionId": "renal-toxicity",
+     "publicationState": "draft-quarantined",
+     "nexusClassification": "ASSOCIATION_ONLY",
+     "claim": "Lithium-prescribed maintenance treatment in bipolar disorder is associated with a quantified, duration-related decline in measured renal function across three independent bipolar-specific cohorts, and the decline is expressed as a measured glomerular filtration slope rather than as a diagnosis: the 2023 single-centre cohort of 248 adult lithium-treated patients at Rennes University Hospital reports that duration of lithium treatment correlated with deterioration of renal function at -2.9 mL per minute per year (p < 0.0001), that patients with a lithium blood level above 0.8 mEq per mL had significantly lower GFR than those below it (61.8 versus 77.6 mL per minute, p = 0.0134), and identifies overdose as a risk factor for chronic kidney disease (PMID 36709463); the 2021 cohort of 1,012 lithium-treated patients at a Dutch bipolar outpatient centre over 2000 to 2015 reports a chronic kidney disease incidence of 0.012 cases per exposed patient-year, an average eGFR decline of 1.8 mL per minute per year in those who reached stage 3, odds of reaching stage 3 increased with longer duration of lithium exposure, and stage 4 incidence of only 0.0004 per patient year with NO cases of end-stage renal disease in the cohort (PMID 33392830); and the 2022 cross-sectional cohort of 217 consecutive lithium-treated bipolar patients with measured GFR and renal MRI reports that 52 percent had stage 2 chronic kidney disease, that renal microcysts were present in 51 percent and detectable as early as one year after initiation, that each year of treatment cost -0.8 mL per minute per 1.73 m2 (95 percent CI -1.0 to -0.6), and that the microcyst count discriminated a measured GFR below 45 mL per minute at an area under the curve of 0.893 (PMID 35069203); registered as documented association only, with the exposure being the prescribed medication rather than the psychiatric condition, with a CONFLICT between anchors carried openly, since the Rennes cohort finds a toxic-range serum level significantly associated with lower GFR while the MRI cohort finds serum lithium concentration NOT associated with measured GFR, so the dose-response is NOT established across the located evidence, and with the chain limit carried openly, since the MRI cohort finds hypothyroidism an independent determinant of lower measured GFR (beta -7.1, p = 0.003) and a lithium-to-hypothyroidism edge is ALREADY registered in this same file at rank 2, so part of the renal signal may be mediated through the registered endocrine route rather than through direct tubular injury.",
+     "boundary": "Neither causation nor aggravation of renal toxicity is established for any individual: all three anchors are observational cohorts in which the exposure is prescribed lithium rather than the bipolar disorder itself, no anchor includes a lithium-free bipolar control arm, the anchors DISAGREE on whether serum lithium concentration predicts the decline, the largest-duration anchor documents no end-stage renal disease and only 0.0004 stage 4 cases per patient-year so the endpoint reached is stage 2 to 3 decline rather than renal failure, and the MRI cohort attributes part of the decline to hypothyroidism, which is itself a registered lithium-mediated route in this file, so direct and mediated pathways cannot be separated in these designs; individual claims require a dated lithium start, stop, dose and serum-level timeline with dated eGFR or measured GFR before and after initiation, documented renal imaging if relied upon, and exclusion of pre-existing chronic kidney disease, diabetic nephropathy, hypertensive nephrosclerosis, glomerular disease, obstructive uropathy, dehydration episodes during intercurrent illness, and non-prescribed lithium sources.",
+     "citation": "Tabibzadeh N, Faucon AL, Vidal-Petiot E, et al. Determinants of Kidney Function and Accuracy of Kidney Microcysts Detection in Patients Treated With Lithium Salts for Bipolar Disorder. Front Pharmacol. 2021;12:784298. doi: 10.3389/fphar.2021.784298. PMID 35069203.",
+     "pmid": "35069203",
+     "verificationScope": "clinical-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35069203/",
+     "sourceCheckedOn": "2026-09-27",
+     "sourceLocator": "Front Pharmacol. 2021;12:784298. Cross-sectional cohort, 217 consecutive lithium-treated patients, median age 51 years, median lithium duration 5 years; abstract states 52 percent had stage 2 CKD, microcyst detected in 51 percent as early as 1 year after initiation, beta -0.8 (-1.0 to -0.6) per year of treatment, hypothyroidism beta -7.1 (-11.7 to -2.5, p=0.003), microcyst count AUC 0.893 for mGFR below 45, and that serum lithium concentration was not associated with mGFR.",
+     "note": "Cross-sectional cohort of 217 consecutive lithium-treated bipolar patients with measured GFR and renal MRI, reporting 52 percent with stage 2 chronic kidney disease, renal microcyst in 51 percent detectable as early as one year, -0.8 mL per minute per 1.73 m2 per year of treatment, hypothyroidism as an independent determinant of lower measured GFR, and serum lithium concentration NOT associated with measured GFR.",
+     "totalUses": 1
+    },
+    {
+     "rowId": "bipolar-disorder::renal-toxicity::33392830",
+     "mappingId": "bipolar-disorder",
+     "conditionId": "renal-toxicity",
+     "publicationState": "draft-quarantined",
+     "nexusClassification": "ASSOCIATION_ONLY",
+     "claim": "Lithium-prescribed maintenance treatment in bipolar disorder is associated with a quantified, duration-related decline in measured renal function across three independent bipolar-specific cohorts, and the decline is expressed as a measured glomerular filtration slope rather than as a diagnosis: the 2023 single-centre cohort of 248 adult lithium-treated patients at Rennes University Hospital reports that duration of lithium treatment correlated with deterioration of renal function at -2.9 mL per minute per year (p < 0.0001), that patients with a lithium blood level above 0.8 mEq per mL had significantly lower GFR than those below it (61.8 versus 77.6 mL per minute, p = 0.0134), and identifies overdose as a risk factor for chronic kidney disease (PMID 36709463); the 2021 cohort of 1,012 lithium-treated patients at a Dutch bipolar outpatient centre over 2000 to 2015 reports a chronic kidney disease incidence of 0.012 cases per exposed patient-year, an average eGFR decline of 1.8 mL per minute per year in those who reached stage 3, odds of reaching stage 3 increased with longer duration of lithium exposure, and stage 4 incidence of only 0.0004 per patient year with NO cases of end-stage renal disease in the cohort (PMID 33392830); and the 2022 cross-sectional cohort of 217 consecutive lithium-treated bipolar patients with measured GFR and renal MRI reports that 52 percent had stage 2 chronic kidney disease, that renal microcysts were present in 51 percent and detectable as early as one year after initiation, that each year of treatment cost -0.8 mL per minute per 1.73 m2 (95 percent CI -1.0 to -0.6), and that the microcyst count discriminated a measured GFR below 45 mL per minute at an area under the curve of 0.893 (PMID 35069203); registered as documented association only, with the exposure being the prescribed medication rather than the psychiatric condition, with a CONFLICT between anchors carried openly, since the Rennes cohort finds a toxic-range serum level significantly associated with lower GFR while the MRI cohort finds serum lithium concentration NOT associated with measured GFR, so the dose-response is NOT established across the located evidence, and with the chain limit carried openly, since the MRI cohort finds hypothyroidism an independent determinant of lower measured GFR (beta -7.1, p = 0.003) and a lithium-to-hypothyroidism edge is ALREADY registered in this same file at rank 2, so part of the renal signal may be mediated through the registered endocrine route rather than through direct tubular injury.",
+     "boundary": "Neither causation nor aggravation of renal toxicity is established for any individual: all three anchors are observational cohorts in which the exposure is prescribed lithium rather than the bipolar disorder itself, no anchor includes a lithium-free bipolar control arm, the anchors DISAGREE on whether serum lithium concentration predicts the decline, the largest-duration anchor documents no end-stage renal disease and only 0.0004 stage 4 cases per patient-year so the endpoint reached is stage 2 to 3 decline rather than renal failure, and the MRI cohort attributes part of the decline to hypothyroidism, which is itself a registered lithium-mediated route in this file, so direct and mediated pathways cannot be separated in these designs; individual claims require a dated lithium start, stop, dose and serum-level timeline with dated eGFR or measured GFR before and after initiation, documented renal imaging if relied upon, and exclusion of pre-existing chronic kidney disease, diabetic nephropathy, hypertensive nephrosclerosis, glomerular disease, obstructive uropathy, dehydration episodes during intercurrent illness, and non-prescribed lithium sources.",
+     "citation": "Van Alphen AM, Bosch TM, Kupka RW, et al. Chronic kidney disease in lithium-treated patients, incidence and rate of decline. Int J Bipolar Disord. 2021 Jan 4;9(1):1. doi: 10.1186/s40345-020-00204-2. PMID 33392830.",
+     "pmid": "33392830",
+     "verificationScope": "clinical-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33392830/",
+     "sourceCheckedOn": "2026-09-27",
+     "sourceLocator": "Int J Bipolar Disord. 2021;9(1):1. Retrospective cohort, 1,012 lithium-treated patients, Antes Centre for Mental Health Care, 2000-2015, eGFR by 4-variable CKD-EPI; abstract states CKD incidence 0.012 per exposed patient-year, average eGFR decline 1.8 mL/min/year in those developing stage 3, stage 4 incidence 0.0004 per patient-year, no cases of end-stage renal disease, and that odds of reaching stage 3 increased with longer lithium exposure.",
+     "note": "Cohort of 1,012 lithium-treated bipolar outpatients over 2000 to 2015 reporting chronic kidney disease incidence of 0.012 per exposed patient-year, eGFR decline of 1.8 mL per minute per year in those reaching stage 3, stage 4 incidence of only 0.0004 per patient-year, and NO cases of end-stage renal disease.",
      "totalUses": 1
     },
     {
@@ -18052,7 +18154,16 @@
      "sourceLocator": "PMID 32676936; results (anxiety, depression, sleep-quality and element comparisons)",
      "note": "Pregnancy case-control study (Biol Trace Elem Res 2021): 119 RLS versus 134 healthy pregnant women; Beck Anxiety Inventory higher in RLS (P<0.001) with anxiety correlated to RLS severity in both groups (P<0.001); magnesium and zinc lower (P<0.001) - shared substrate carried openly; depression comparison null (P=0.269) - counterweight carried openly; supports the bounded association only (pregnancy scope, small sample).",
      "totalUses": 1
-    },
+    }
+   ],
+   "id": "batch-43",
+   "number": 43,
+   "cohortFrom": "2026-09-26",
+   "cohortTo": "2026-09-27",
+   "sourceCount": 20
+  },
+  {
+   "rows": [
     {
      "rowId": "restless-leg-syndrome::depressive-disorder::34985142",
      "mappingId": "restless-leg-syndrome",
@@ -18154,16 +18265,7 @@
      "sourceLocator": "PMID 19544754; results (adjusted sleep latency and arousal index comparisons)",
      "note": "Sleep Heart Health Study home-polysomnography cohort (Sleep 2009): 3,433 community participants; RLS with longer adjusted mean sleep latency (39.8 vs 26.4 min, P<0.0001) and higher arousal index (20.1 vs 18.0, P=0.0145) after adjustment for apnea-hypopnea index and demographic/health variables; latency rose with RLS symptom frequency; supports the bounded association only (cross-sectional; latency/arousal measures, not insomnia diagnosis).",
      "totalUses": 1
-    }
-   ],
-   "id": "batch-43",
-   "number": 43,
-   "cohortFrom": "2026-09-26",
-   "cohortTo": "2026-09-27",
-   "sourceCount": 21
-  },
-  {
-   "rows": [
+    },
     {
      "rowId": "retinitis::retinal-detachment::42423915",
      "mappingId": "retinitis",
@@ -18469,7 +18571,16 @@
      "sourceLocator": "Clin Otolaryngol. 2026;51(3):449-457. Prospective cross-sectional; abstract states combined rhinitis migraine prevalence 24.9% vs controls 16.0% (OR 1.75, p=0.018), allergic 26.0% and non-allergic 22.9%, with both groups scoring worse than controls on TRS and NOSE (p<0.001).",
      "note": "Prospective cross-sectional study of 200 allergic rhinitis, 109 non-allergic rhinitis, and 188 control participants with neurologist ICHD-3 migraine diagnosis, finding migraine prevalence of 26.0, 22.9, and 16.0 percent respectively.",
      "totalUses": 1
-    },
+    }
+   ],
+   "id": "batch-44",
+   "number": 44,
+   "cohortFrom": "2026-09-27",
+   "cohortTo": "2026-09-27",
+   "sourceCount": 24
+  },
+  {
+   "rows": [
     {
      "rowId": "rickets::loss-of-teeth::24616355",
      "mappingId": "rickets",
@@ -18571,16 +18682,7 @@
      "sourceLocator": "Mayo Clin Proc. 2013;88(2):176-83. Population-based epidemiology; abstract states clinical presentation included poor growth (n=12), leg deformity (n=8), motor delay (n=5), leg pain (n=3), weakness (n=3), and hypocalcemia or tetany (n=2), with incidence 24.1 per 100,000 in the 2000s decade (P=.003 for trend).",
      "note": "Population-based study of 23 children with radiographic rickets, 17 nutritional, reporting presentation features including poor growth, leg deformity, motor delay, weakness, and hypocalcemia or tetany in 2, with incidence rising to 24.1 per 100,000 in children under three in the most recent decade.",
      "totalUses": 1
-    }
-   ],
-   "id": "batch-44",
-   "number": 44,
-   "cohortFrom": "2026-09-27",
-   "cohortTo": "2026-09-27",
-   "sourceCount": 24
-  },
-  {
-   "rows": [
+    },
     {
      "rowId": "riedel-s-thyroiditis::hypoparathyroidism::36452560",
      "mappingId": "riedel-s-thyroiditis",
@@ -18886,7 +18988,16 @@
      "sourceLocator": "Front Med (Lausanne). 2022;9:1026447. Cross-sectional phenotyping study; abstract states prevalence of migraine of 54% in rosacea and of rosacea of 65% in migraine, with flushing OR 2.6 (1.4-4.7), ocular symptoms OR 2.4 (1.5-3.9), burning OR 2.1 (1.3-3.4), and papules/pustules inversely related OR 0.5 (0.3-0.8).",
      "note": "Cross-sectional study of 604 patients phenotyped by interview and clinical examination finding migraine prevalence of 54 percent in rosacea patients and rosacea prevalence of 65 percent in migraine patients, with concomitant migraine associated with flushing (OR 2.6), ocular symptoms (OR 2.4), and burning (OR 2.1), and inversely related to papules and pustules (OR 0.5).",
      "totalUses": 1
-    },
+    }
+   ],
+   "id": "batch-45",
+   "number": 45,
+   "cohortFrom": "2026-09-27",
+   "cohortTo": "2026-09-27",
+   "sourceCount": 24
+  },
+  {
+   "rows": [
     {
      "rowId": "rumination-syndrome::anxiety-disorder::33988353",
      "mappingId": "rumination-syndrome",
@@ -18988,16 +19099,7 @@
      "sourceLocator": "J Pediatr Gastroenterol Nutr. 2024;78(3):565-572. Bidirectional cohort, early-onset defined as symptom onset at or before 5 years and diagnosis by 12; abstract states EO RS was less likely to have depression (0% vs 23%) or anxiety (14% vs 40%) than AO RS, and that the pathogenesis and natural history of EO RS may be distinct from that of AO RS.",
      "note": "Bidirectional cohort of 101 children with rumination syndrome comparing 49 early-childhood-onset with 52 adolescent-onset, reporting depression in 0 percent versus 23 percent (p<0.001) and anxiety in 14 percent versus 40 percent (p=0.004) and concluding that the two onset strata may have distinct pathogenesis and natural history.",
      "totalUses": 2
-    }
-   ],
-   "id": "batch-45",
-   "number": 45,
-   "cohortFrom": "2026-09-27",
-   "cohortTo": "2026-09-27",
-   "sourceCount": 21
-  },
-  {
-   "rows": [
+    },
     {
      "rowId": "salivary-gland-cancer::depressive-disorder::42499790",
      "mappingId": "salivary-gland-cancer",
@@ -19303,7 +19405,16 @@
      "sourceLocator": "J Eur Acad Dermatol Venereol. 2015;29(12):2399-404. Retrospective multicentre study, 44 patients (26 men), mean age at diagnosis 53.8 years; abstract states the most common associated disorders were endocrine/metabolic diseases including 30 patients suffering from diabetes mostly type 2, that monoclonal gammopathies were confirmed in five cases, that a preceding respiratory tract infection was not a feature, and that two patients died of cardiovascular complications due to myeloma and severe diabetes.",
      "note": "Multicentre retrospective study of 44 patients with scleredema reporting endocrine and metabolic disease as the most common association with 30 patients suffering from diabetes, mostly type 2, monoclonal gammopathies confirmed in 5 cases, and expressly that a preceding respiratory tract infection was NOT a feature; concludes scleredema is associated with diabetes and metabolic syndrome and recommends strict glycaemic control plus physical therapy.",
      "totalUses": 3
-    },
+    }
+   ],
+   "id": "batch-46",
+   "number": 46,
+   "cohortFrom": "2026-09-27",
+   "cohortTo": "2026-09-27",
+   "sourceCount": 16
+  },
+  {
+   "rows": [
     {
      "rowId": "scleredema::interstitial-lung-disease::33865279",
      "mappingId": "scleredema",
@@ -19405,16 +19516,7 @@
      "sourceLocator": "J Eur Acad Dermatol Venereol. 2015;29(12):2399-404. Retrospective multicentre study, 44 patients (26 men), mean age at diagnosis 53.8 years, mean follow-up 32.2 months; abstract states monoclonal gammopathies were confirmed in five cases, that systemic corticosteroids and immunosuppressive drugs were reserved for patients with severe disease in whom phototherapy had failed or for patients with multiple myeloma, and that two patients died of cardiovascular complications due to myeloma and severe diabetes.",
      "note": "Multicentre retrospective study of 44 patients with scleredema reporting monoclonal gammopathies confirmed in 5 cases, that systemic corticosteroids and immunosuppressive drugs were reserved for severe patients in whom phototherapy had failed or for patients with multiple myeloma, that 2 patients died of cardiovascular complications due to myeloma and severe diabetes, and that of 41 followed patients 39 were alive, 30 with and 9 without skin disease.",
      "totalUses": 3
-    }
-   ],
-   "id": "batch-46",
-   "number": 46,
-   "cohortFrom": "2026-09-27",
-   "cohortTo": "2026-09-27",
-   "sourceCount": 16
-  },
-  {
-   "rows": [
+    },
     {
      "rowId": "scleritis::rheumatoid-arthritis::33407267",
      "mappingId": "scleritis",
@@ -19720,7 +19822,16 @@
      "sourceLocator": "Front Neurol. 2026;17:1875359. Narrative review; abstract states that while visual dysfunction related to optic neuritis and brainstem involvement is well recognized, visual impairment associated with post-geniculate visual pathways remains comparatively under-studied and under-recognized, and that lesions in post-geniculate white and gray matter contribute to both symptomatic and subclinical visual dysfunction.",
      "note": "Review of visual impairment in multiple sclerosis involving post-geniculate gray and white matter, stating that visual impairment is one of the most common and disabling manifestations of the disease, that post-geniculate involvement including the optic radiations and visual cortex remains comparatively under-studied and under-recognised in clinical practice, and that the resulting abnormalities include homonymous visual field defects, visuoperceptual dysfunction, visual cognitive impairment, and higher-order ocular motor abnormalities.",
      "totalUses": 1
-    },
+    }
+   ],
+   "id": "batch-47",
+   "number": 47,
+   "cohortFrom": "2026-09-27",
+   "cohortTo": "2026-09-27",
+   "sourceCount": 20
+  },
+  {
+   "rows": [
     {
      "rowId": "scotoma::seizure-disorder::33900448",
      "mappingId": "scotoma",
@@ -19822,16 +19933,7 @@
      "sourceLocator": "Am J Dermatopathol. 2021;43(1):27-34. Prospective study, 30 HIV-seropositive adults (13 women, 17 men) at a South African dermatology clinic, March 2017 to April 2018; abstract states 50% showed severe or very severe SLD, 6 (20.0%) presented with erythroderma, that statistical analysis did not show significant correlation between severity and CD4 count, viral load, or ART, and that the presence of specific histopathological features in a skin biopsy of SLD is a clue to the diagnosis of HIV.",
      "note": "Prospective clinicopathological study of 30 HIV-seropositive adults presenting with seborrhoeic-like dermatitis, finding 50 percent with severe or very severe disease and 6 patients (20.0 percent) presenting with erythroderma, confirming that confluent parakeratosis, necrotic keratinocytes, plasma cells, neutrophils with leukocytoclasia, and leukoexocytosis are histopathological clues to seborrhoeic-like dermatitis in HIV-seropositive patients, and reporting NO significant correlation between severity and CD4 count, viral load, or antiretroviral therapy.",
      "totalUses": 1
-    }
-   ],
-   "id": "batch-47",
-   "number": 47,
-   "cohortFrom": "2026-09-27",
-   "cohortTo": "2026-09-27",
-   "sourceCount": 20
-  },
-  {
-   "rows": [
+    },
     {
      "rowId": "seborrheic-dermatitis::parkinsons-disease::42650087",
      "mappingId": "seborrheic-dermatitis",
@@ -20137,7 +20239,16 @@
      "sourceLocator": "J Pediatr Orthop. 2018;38(6). Case-control study of centre-of-pressure velocity and heel pressure in Sever's disease; MEDLINE-indexed record supplying the direct plantar-loading link. Reports LOAD as a risk factor for the apophysitis, not a stress-fracture outcome.",
      "note": "Case-control study reporting that slow velocity of the centre of pressure and high heel pressures may increase the risk of Sever's disease, directly linking plantar loading to the condition.",
      "totalUses": 1
-    },
+    }
+   ],
+   "id": "batch-48",
+   "number": 48,
+   "cohortFrom": "2026-09-27",
+   "cohortTo": "2026-09-27",
+   "sourceCount": 21
+  },
+  {
+   "rows": [
     {
      "rowId": "short-qt-syndrome::cardiac-arrhythmia::40137421",
      "mappingId": "short-qt-syndrome",
@@ -20239,16 +20350,7 @@
      "sourceLocator": "J Am Heart Assoc. 2018;7(23):e010073. Long-term follow-up of patients with short QT syndrome; the retrieved record's abstract text is a single-patient narrative fragment, so design details are not fully established from the record used here, a limitation disclosed on the face of this edge.",
      "note": "Long-term follow-up study of patients with short QT syndrome describing the clinical profile and outcome of the condition, supplying the located anchor for how the syndrome presents and evolves clinically over time.",
      "totalUses": 2
-    }
-   ],
-   "id": "batch-48",
-   "number": 48,
-   "cohortFrom": "2026-09-27",
-   "cohortTo": "2026-09-27",
-   "sourceCount": 21
-  },
-  {
-   "rows": [
+    },
     {
      "rowId": "short-qt-syndrome::ventricular-tachycardia-fibrillation::30571592",
      "mappingId": "short-qt-syndrome",
@@ -20554,7 +20656,16 @@
      "sourceLocator": "J Oral Maxillofac Surg. 2026;84(3):389-400. Prospective single-arm cohort, 41 patients with sialolithiasis obstructive sialadenitis, sialometry and MSGS questionnaire at 3, 6 and 12 months postoperatively, covariates age, sex, stone size/number/location, gland affected and surgical approach; abstract states mean overall sialometry improved from 2.21 +/- 1.02 g to 3.42 +/- 1.23 g for submandibular and 1.87 +/- 1.48 g to 2.92 +/- 1.28 g for parotid at 12 months (P < .001) and that secondary outcome showed significant subjective improvement in total MSGS score.",
      "note": "Prospective cohort of 41 patients (56.1% male, mean age 37.88 +/- 12.79 years) with sialolithiasis obstructive sialadenitis, excluding patients with acute sialadenitis, prior gland excision or radiographic gland atrophy, showing mean whole-saliva sialometry improving from 2.21 +/- 1.02 g preoperatively to 3.42 +/- 1.23 g for the submandibular gland and from 1.87 +/- 1.48 g to 2.92 +/- 1.28 g for the parotid at 12 months after gland-sparing sialolithotomy (P < .001), with the Multidisciplinary Salivary Gland Society score improving from 65.92 +/- 28.63 to 3.84 +/- 9.59 for the submandibular and 72.42 +/- 38.27 to 7.11 +/- 12.13 for the parotid (P < .001).",
      "totalUses": 2
-    },
+    }
+   ],
+   "id": "batch-49",
+   "number": 49,
+   "cohortFrom": "2026-09-27",
+   "cohortTo": "2026-09-27",
+   "sourceCount": 16
+  },
+  {
+   "rows": [
     {
      "rowId": "sick-sinus-syndrome::cardiac-arrhythmia::40607080",
      "mappingId": "sick-sinus-syndrome",
@@ -20656,16 +20767,7 @@
      "sourceLocator": "Heart Rhythm. 2025;22(9):e668-e675. UK Biobank prospective population-based cohort, 451,493 participants, median follow-up 13.2 years, competing-risk regression accounting for death, excluding prosthetic heart valves, rheumatic mitral valve disease, mitral stenosis and prior ischaemic stroke; abstract states yearly IS incidence of 0.37%, 0.60%, 0.59% and 0.10% in isolated SND, SND+AF, isolated AF and controls, that isolated SND conferred a significantly increased risk of IS compared to controls (sHR 2.28, 95% CI 1.57-3.31, P < .001), and that SND+AF had a similar risk of IS compared to isolated AF (sHR 1.07, 95% CI 0.84-1.37, P = .58).",
      "note": "UK Biobank prospective population-based cohort analysis of 451,493 participants aged 40-69 followed for a median 13.2 years, in which 593 had isolated sinus node dysfunction, 955 had combined sinus node dysfunction and atrial fibrillation, 37,065 had isolated atrial fibrillation and 412,880 were controls, finding yearly ischaemic stroke incidence of 0.37%, 0.60%, 0.59% and 0.10% respectively, with isolated sinus node dysfunction conferring a significantly increased risk compared with controls (subdistribution hazard ratio 2.28, 95% CI 1.57-3.31, P < .001) and combined sinus node dysfunction and atrial fibrillation carrying a risk similar to isolated atrial fibrillation (subdistribution hazard ratio 1.07, 95% CI 0.84-1.37, P = .58), interpreted as evidence for the presence of a left atrial myopathy in patients with isolated sinus node dysfunction.",
      "totalUses": 1
-    }
-   ],
-   "id": "batch-49",
-   "number": 49,
-   "cohortFrom": "2026-09-27",
-   "cohortTo": "2026-09-27",
-   "sourceCount": 20
-  },
-  {
-   "rows": [
+    },
     {
      "rowId": "sick-sinus-syndrome::dizziness::27702858",
      "mappingId": "sick-sinus-syndrome",
@@ -20971,7 +21073,16 @@
      "sourceLocator": "Sleep Med Rev. 2025;80:102043. Systematic review per PRISMA-P of case-control studies in NREM sleep parasomnias across children and adults, databases searched from inception until March 2024; abstract states psychopathological issues are common in NREM sleep parasomnias with higher prevalence in affected patients, that NREM sleep parasomnias are more common among patients with various psychopathological conditions, and that medications did not significantly bias these results.",
      "note": "PRISMA-P systematic review of case-control studies reporting psychopathological or neurodevelopmental data in NREM sleep parasomnias, or NREM parasomnia data across different mental disorders, in children and adults, searching PubMed, Scopus, Embase and Web of Science from inception to March 2024, finding that psychopathological and neurodevelopmental issues are common in NREM sleep parasomnias with a higher prevalence in affected patients compared to non-affected individuals, and that NREM parasomnias are more common among patients with various psychopathological conditions than in the general population, that medications did not significantly bias these results, and that psychopathological aspects should become a core focus of research and treatment strategies for NREM sleep parasomnias.",
      "totalUses": 2
-    },
+    }
+   ],
+   "id": "batch-50",
+   "number": 50,
+   "cohortFrom": "2026-09-27",
+   "cohortTo": "2026-09-27",
+   "sourceCount": 20
+  },
+  {
+   "rows": [
     {
      "rowId": "sleepwalking-disorder::anxiety-disorder::10544999",
      "mappingId": "sleepwalking-disorder",
@@ -21073,16 +21184,7 @@
      "sourceLocator": "Sleep Med Rev. 2025;80:102043. Systematic review conducted according to PRISMA-P guidelines of case-control studies in NREM sleep parasomnias across children and adults, databases searched from inception until March 2024; abstract states psychopathological and neurodevelopmental issues are common in NREM sleep parasomnias with higher prevalence in affected patients, that NREM sleep parasomnias are more common among patients with various psychopathological conditions than in the general population, that medications did not significantly bias these results, and that these findings suggest psychopathological aspects should become a core focus of research and treatment strategies.",
      "note": "PRISMA-P systematic review of case-control studies reporting psychopathological or neurodevelopmental data in NREM sleep parasomnias, or NREM parasomnia data across different mental disorders, in children and adults, searching PubMed, Scopus, Embase and Web of Science from inception to March 2024, finding that PSYCHOPATHOLOGICAL AND NEURODEVELOPMENTAL ISSUES ARE COMMON IN NREM SLEEP PARASOMNIAS WITH A HIGHER PREVALENCE IN AFFECTED PATIENTS COMPARED TO NON-AFFECTED INDIVIDUALS, and additionally that NREM PARASOMNIAS ARE MORE COMMON AMONG PATIENTS WITH VARIOUS PSYCHOPATHOLOGICAL CONDITIONS THAN IN THE GENERAL POPULATION, that medications did not significantly bias these results, and that psychopathological aspects should become a core focus of research and treatment strategies for NREM sleep parasomnias.",
      "totalUses": 2
-    }
-   ],
-   "id": "batch-50",
-   "number": 50,
-   "cohortFrom": "2026-09-27",
-   "cohortTo": "2026-09-27",
-   "sourceCount": 17
-  },
-  {
-   "rows": [
+    },
     {
      "rowId": "small-intestine-cancer::anemia::42281724",
      "mappingId": "small-intestine-cancer",
@@ -21371,7 +21473,16 @@
      "sourceLocator": "Ann Afr Med. 2026;25(4):1013-1016. Solitary rectal ulcer syndrome presenting with fibrotic rectal stricture in a 60-year-old patient, treated with fibre, laxatives, biofeedback, argon plasma coagulation and stricture dilatation; pathogenesis given as compression, ischemia, chronic inflammation and repeated digital trauma, with fibrosis and stricture formation in some cases.",
      "note": "Single case report of SOLITARY RECTAL ULCER SYNDROME WITH FIBROTIC RECTAL STRICTURE in a 60-year-old patient, diagnosed with colonoscopy, anorectal manometry, magnetic resonance defecography and histopathology and managed with a high-fibre diet, laxatives, biofeedback therapy, argon plasma coagulation and DILATATION OF THE STRICTURE. The authors set out the pathogenesis as RECTAL WALL COMPRESSION, ischemia due to poor blood supply, chronic inflammation and MECHANICAL TRAUMA DUE TO REPEATED DIGITAL EVACUATION, leading to mucosal ulceration and, in some cases, FIBROSIS AND STRICTURE FORMATION; they state that STRICTURE IN THIS SYNDROME IS RARE, that it may MIMIC MALIGNANCY leading to delays in diagnosis, that the differential includes inflammatory bowel disease and neoplasms, and that HISTOPATHOLOGICAL CONFIRMATION REMAINS THE GOLD STANDARD. Registered as the sole anchor for this edge, for both the documented presentation and its mechanistic account. DISCLOSED: a SINGLE CASE, the anchor describes a RECTAL rather than anorectal stricture, and its mechanism is explicitly composite with no contributor isolated.",
      "totalUses": 1
-    },
+    }
+   ],
+   "id": "batch-51",
+   "number": 51,
+   "cohortFrom": "2026-09-27",
+   "cohortTo": "2026-09-27",
+   "sourceCount": 22
+  },
+  {
+   "rows": [
     {
      "rowId": "solitary-rectal-ulcer-syndrome::rectal-prolapse::38756112",
      "mappingId": "solitary-rectal-ulcer-syndrome",
@@ -21473,16 +21584,7 @@
      "sourceLocator": "Autops Case Rep. 2013;3(1):29-37. Autopsy case of a 61-year-old woman with a 6-month history of watery diarrhoea, weight loss and depression, a 4 cm head-of-pancreas mass with calculous cholecystopathy, and a definitive post-mortem diagnosis of pancreatic somatostatinoma on synaptophysin, chromogranin and somatostatin immunostaining.",
      "note": "Autopsy case report of the SOMATOSTATINOMA SYNDROME AS A CHALLENGING DIFFERENTIAL DIAGNOSIS AMONG PANCREATIC TUMOURS. A 61-year-old woman presented with a 6-month history of WATERY DIARRHOEA, WEIGHT LOSS AND DEPRESSION and had been diagnosed with DIABETES MELLITUS 3 YEARS EARLIER; imaging revealed a 4 cm tumour in the head of the pancreas TOGETHER WITH CALCULOUS CHOLECYSTOPATHY; her clinical status precluded surgery and the definitive diagnosis of PANCREATIC SOMATOSTATINOMA was reached only at autopsy, with immunohistochemical positivity for synaptophysin, chromogranin and somatostatin. Registered for a concrete imaging finding of calculous cholecystopathy alongside a pancreatic head mass. DISCLOSED: an AUTOPSY CASE in which the patient presented with diarrhoea, weight loss and depression rather than with biliary symptoms, so it cannot establish that the tumour produced the stone disease, and the authors note these symptoms are shared with more common syndromes, which delays diagnosis.",
      "totalUses": 1
-    }
-   ],
-   "id": "batch-51",
-   "number": 51,
-   "cohortFrom": "2026-09-27",
-   "cohortTo": "2026-09-27",
-   "sourceCount": 23
-  },
-  {
-   "rows": [
+    },
     {
      "rowId": "somatostatinoma::diabetes-mellitus::31869077",
      "mappingId": "somatostatinoma",
@@ -21788,7 +21890,16 @@
      "sourceLocator": "Urologe A. 2014;53(5):671-675. Management review of hydrocele, spermatocele and vasectomy complications: treatment indications based on high-resolution ultrasonography, asymptomatic findings need no correction, and in younger men fertility wishes must be weighed because spermatocele resection may cause epididymal obstruction; pre-operative semen cryopreservation discussed. German-language article.",
      "note": "German narrative management review of HYDROCele, SPERMATOCELE AND VASECTOMY AND THEIR COMPLICATIONS. The authors state that treatment indications are based on diagnosis with high-resolution ultrasonography and that IT MUST BE CLEAR WHETHER HYDROCele OR SPERMATOCELE LEADS TO IMPAIRMENT, since ASYMPTOMATIC FINDINGS DO NOT NEED CORRECTION; that in younger men the wish for children must be taken into account as BOTH SURGICAL PROCEDURES MAY LEAD TO INFERTILITY, ESPECIALLY SPERMATOCELE RESECTION, WHICH MAY LEAD TO EPIDIDYMAL OBSTRUCTION; and that advantages and disadvantages must be discussed in detail with the patient, that all three treatment options may be accompanied by fertility preservation procedures such as pre-operative semen cryopreservation, and that postoperative follow-up with documented semen analysis is required, with the follow-up appointment best scheduled at the time of surgery. Registered for the treatment-indication principle and the fertility and epididymal-obstruction caution. DISCLOSED: a NARRATIVE REVIEW available only in German in the source database, contributing principles rather than data.",
      "totalUses": 1
-    },
+    }
+   ],
+   "id": "batch-52",
+   "number": 52,
+   "cohortFrom": "2026-09-27",
+   "cohortTo": "2026-09-27",
+   "sourceCount": 19
+  },
+  {
+   "rows": [
     {
      "rowId": "spina-bifida::chronic-kidney-disease::36999336",
      "mappingId": "spina-bifida",
@@ -21890,16 +22001,7 @@
      "sourceLocator": "Urology. 2021;149(3):255-262. Volunteer survey of approximately 195 adults with spina bifida: depression 48 percent, anxiety 47 percent, social isolation 43 percent and comorbid depression with anxiety 39 percent, with lower urinary tract dysfunction independently associated with depression, anxiety, the composite score and social isolation on adjusted regression.",
      "note": "ANONYMOUS SURVEY of around 195 adults with congenital urologic conditions recruited via FACEBOOK ADVERTISING, with adults with spina bifida included, assessing lower urinary tract dysfunction with the NEUROGENIC BLADDER SYMPTOM SCORE and depression, anxiety and social isolation with PATIENT-REPORTED OUTCOME MEASURES INFORMATION SYSTEM instruments, and constructing a composite depression-anxiety score. RATES OF DEPRESSION, ANXIETY AND SOCIAL ISOLATION WERE 48 PERCENT, 47 PERCENT AND 43 PERCENT RESPECTIVELY, with COMORBID DEPRESSION AND ANXIETY IN 39 PERCENT of subjects. On ADJUSTED REGRESSION, LOWER URINARY TRACT DYSFUNCTION WAS ASSOCIATED WITH DEPRESSION (p LESS THAN .001), ANXIETY (p LESS THAN .001), the composite depression-anxiety score (p LESS THAN .001) and SOCIAL ISOLATION (p EQUALS .010). The authors conclude that depression, anxiety and social isolation are common in individuals with spina bifida relative to the general population and associated with lower urinary tract dysfunction, and recommend interventions targeting lower urinary tract symptoms and function, group psychotherapy, and comorbid depression and anxiety. Registered as the anchor that identifies a lower urinary tract symptom score as the INDEPENDENT CORRELATE, which is what makes the mechanism claim clinical rather than generic. DISCLOSED: a SELF-SELECTED VOLUNTEER SAMPLE, so the percentages are respondent rates, and the authors' own wording is that characteristics are ASSOCIATED WITH the outcomes.",
      "totalUses": 1
-    }
-   ],
-   "id": "batch-52",
-   "number": 52,
-   "cohortFrom": "2026-09-27",
-   "cohortTo": "2026-09-27",
-   "sourceCount": 21
-  },
-  {
-   "rows": [
+    },
     {
      "rowId": "spina-bifida::scoliosis::35717001",
      "mappingId": "spina-bifida",
@@ -22188,7 +22290,16 @@
      "sourceLocator": "Indian J Ophthalmol. 2023;71(4):1626-1629. Pilot study of 5-fluorouracil as a targeted lacrimal gland therapy for chronic Stevens-Johnson syndrome, locative of the lacrimal unit as the failing structure in the chronic ocular sequelae of this identity.",
      "note": "PILOT STUDY OF 5-FLUOROURACIL AS A TARGETED LACRIMAL GLAND THERAPY FOR CHRONIC STEVENS-JOHNSON SYNDROME. Registered for a STRUCTURAL REASON RATHER THAN A NUMERICAL ONE: a targeted lacrimal gland therapy exists for this identity at all, which locates the failing structure as the lacrimal unit rather than the corneal epithelium alone, and that structural point is what makes the ocular surface rehabilitation framing in the mechanism claim necessary rather than convenient. DISCLOSED: A PILOT STUDY, so it supplies no rate, no controlled comparison and no long-term outcome, and it is the lowest-tier of the three anchors on this edge.",
      "totalUses": 1
-    },
+    }
+   ],
+   "id": "batch-53",
+   "number": 53,
+   "cohortFrom": "2026-09-27",
+   "cohortTo": "2026-09-27",
+   "sourceCount": 18
+  },
+  {
+   "rows": [
     {
      "rowId": "stomatitis::depressive-disorder::38154442",
      "mappingId": "stomatitis",
@@ -22290,16 +22401,7 @@
      "sourceLocator": "Med Sci (Basel). 2026;14(1):142. Propensity-score-matched real-world cohort comparing long-term clinical consequences of severe oral mucositis in survivors of lip, oral cavity and pharynx cancer versus survivors of leukemia.",
      "note": "PROPENSITY-SCORE-MATCHED COMPARATIVE COHORT STUDY USING REAL-WORLD DATA, comparing the LONG-TERM CLINICAL CONSEQUENCES OF SEVERE ORAL MUCOSITIS in survivors of lip, oral cavity and pharynx cancer against survivors of leukemia. Registered because it is the located source that follows survivors LONG TERM rather than confining the outcome to the treatment period, which is the specific gap the other two anchors leave. DISCLOSED: it is a SEVERE-mucositis survivor comparison rather than a general mucositis population, it reports real-world data rather than a prospective assessment, and it supplies no adjusted dysphagia odds ratio, so the anchor it adds is the LONGITUDINAL frame and not a magnitude.",
      "totalUses": 1
-    }
-   ],
-   "id": "batch-53",
-   "number": 53,
-   "cohortFrom": "2026-09-27",
-   "cohortTo": "2026-09-27",
-   "sourceCount": 18
-  },
-  {
-   "rows": [
+    },
     {
      "rowId": "strabismus::anxiety-disorder::27651232",
      "mappingId": "strabismus",
@@ -22407,7 +22509,7 @@
    "number": 54,
    "cohortFrom": "2026-09-27",
    "cohortTo": "2026-09-27",
-   "sourceCount": 5
+   "sourceCount": 11
   }
  ]
 }

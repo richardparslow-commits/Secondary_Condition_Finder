@@ -16,16 +16,16 @@
     "citationPromotionMustAtomicallyUpdateKbAndMasterSourceState": true
   },
   "counts": {
-    "liveSourceReferenceUses": 1666,
+    "liveSourceReferenceUses": 1672,
     "activeSourceEntities": 346,
-    "pendingVerificationSourceEntities": 1105,
+    "pendingVerificationSourceEntities": 1110,
     "activeClinicalSourceEntities": 345,
-    "pendingClinicalSourceEntities": 1105,
+    "pendingClinicalSourceEntities": 1110,
     "activeLegalAuthorityEntities": 1,
     "retiredOnlySourceEntities": 1,
     "supersededUnverifiedSourceEntities": 7,
     "bibliographicCorrectionOnlyEntities": 1,
-    "totalSourceEntitiesIncludingLineage": 1460,
+    "totalSourceEntitiesIncludingLineage": 1465,
     "retiredVerifiedRelationshipSourceUses": 6
   },
   "retirementLedger": {
@@ -53877,6 +53877,188 @@
       "retiredUses": [],
       "rawReferenceHashes": [
         "4c2ce43fb48c0ba71723ed93b44782e1aa9e8ce53fc032fc2738e55c7258bdab"
+      ]
+    },
+    {
+      "sourceId": "pmid-35069203",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "35069203",
+      "doi": "10.3389/fphar.2021.784298",
+      "canonicalCitation": "Tabibzadeh N, Faucon AL, Vidal-Petiot E, et al. Determinants of Kidney Function and Accuracy of Kidney Microcysts Detection in Patients Treated With Lithium Salts for Bipolar Disorder. Front Pharmacol. 2021;12:784298. doi: 10.3389/fphar.2021.784298. PMID 35069203.",
+      "citationVariants": [
+        "Tabibzadeh N, Faucon AL, Vidal-Petiot E, et al. Determinants of Kidney Function and Accuracy of Kidney Microcysts Detection in Patients Treated With Lithium Salts for Bipolar Disorder. Front Pharmacol. 2021;12:784298. doi: 10.3389/fphar.2021.784298. PMID 35069203."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35069203/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/35069203/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-27"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-bipolar-disorder-to-renal-toxicity",
+          "primaryId": "bipolar-disorder",
+          "targetId": "renal-toxicity",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "5e41194582e1d0e0c57fd7b4c961fde10c2b9d642279e81b5ffd20a29f17063f"
+      ]
+    },
+    {
+      "sourceId": "pmid-33392830",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "33392830",
+      "doi": "10.1186/s40345-020-00204-2",
+      "canonicalCitation": "Van Alphen AM, Bosch TM, Kupka RW, et al. Chronic kidney disease in lithium-treated patients, incidence and rate of decline. Int J Bipolar Disord. 2021 Jan 4;9(1):1. doi: 10.1186/s40345-020-00204-2. PMID 33392830.",
+      "citationVariants": [
+        "Van Alphen AM, Bosch TM, Kupka RW, et al. Chronic kidney disease in lithium-treated patients, incidence and rate of decline. Int J Bipolar Disord. 2021 Jan 4;9(1):1. doi: 10.1186/s40345-020-00204-2. PMID 33392830."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33392830/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/33392830/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-27"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-bipolar-disorder-to-renal-toxicity",
+          "primaryId": "bipolar-disorder",
+          "targetId": "renal-toxicity",
+          "sourceIndex": 1
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "14ba4ed8fa8a3c42cacd5cccfef08a451f7f00954c2aa933c30644607a9ac6b1"
+      ]
+    },
+    {
+      "sourceId": "pmid-36709463",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "36709463",
+      "doi": "10.1186/s40345-023-00286-8",
+      "canonicalCitation": "Boivin E, Le Daré B, Bellay R, et al. Long-term lithium therapy and risk of chronic kidney disease, hyperparathyroidism and hypercalcemia: a cohort study. Int J Bipolar Disord. 2023 Jan 29;11(1):4. doi: 10.1186/s40345-023-00286-8. PMID 36709463.",
+      "citationVariants": [
+        "Boivin E, Le Daré B, Bellay R, et al. Long-term lithium therapy and risk of chronic kidney disease, hyperparathyroidism and hypercalcemia: a cohort study. Int J Bipolar Disord. 2023 Jan 29;11(1):4. doi: 10.1186/s40345-023-00286-8. PMID 36709463."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36709463/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/36709463/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-27"
+      ],
+      "liveUsageCount": 2,
+      "liveUses": [
+        {
+          "relationshipId": "rel-bipolar-disorder-to-renal-toxicity",
+          "primaryId": "bipolar-disorder",
+          "targetId": "renal-toxicity",
+          "sourceIndex": 2
+        },
+        {
+          "relationshipId": "rel-bipolar-disorder-to-hyperparathyroidism",
+          "primaryId": "bipolar-disorder",
+          "targetId": "hyperparathyroidism",
+          "sourceIndex": 1
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "8744a60998fe4569299042d09065127e92460f4fbe96e58c4a270fc8df594168",
+        "8286ba07fc8f804a5383ad8d4db207b5183f14c0d757d6e4d373156cb57fce85"
+      ]
+    },
+    {
+      "sourceId": "pmid-25505684",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "25505684",
+      "doi": "10.1186/2194-7511-1-18",
+      "canonicalCitation": "Twigt BA, Houweling BM, Vriens MR, et al. Hypercalcemia in patients with bipolar disorder treated with lithium: a cross-sectional study. Int J Bipolar Disord. 2013;1:18. doi: 10.1186/2194-7511-1-18. PMID 25505684.",
+      "citationVariants": [
+        "Twigt BA, Houweling BM, Vriens MR, et al. Hypercalcemia in patients with bipolar disorder treated with lithium: a cross-sectional study. Int J Bipolar Disord. 2013;1:18. doi: 10.1186/2194-7511-1-18. PMID 25505684."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/25505684/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/25505684/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-27"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-bipolar-disorder-to-hyperparathyroidism",
+          "primaryId": "bipolar-disorder",
+          "targetId": "hyperparathyroidism",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "80874bd0804f97ec24057f6aebbfc3065e936a99fad73dc5d039f0a072c80c16"
+      ]
+    },
+    {
+      "sourceId": "pmid-29590494",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "29590494",
+      "doi": "10.1093/qjmed/hcx171",
+      "canonicalCitation": "Dineen R, Bogdanet D, Thompson D, et al. Endocrinopathies and renal outcomes in lithium therapy: impact of lithium toxicity. QJM. 2017 Dec 1;110(12):821-827. doi: 10.1093/qjmed/hcx171. PMID 29590494.",
+      "citationVariants": [
+        "Dineen R, Bogdanet D, Thompson D, et al. Endocrinopathies and renal outcomes in lithium therapy: impact of lithium toxicity. QJM. 2017 Dec 1;110(12):821-827. doi: 10.1093/qjmed/hcx171. PMID 29590494."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/29590494/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/29590494/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-27"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-bipolar-disorder-to-hyperparathyroidism",
+          "primaryId": "bipolar-disorder",
+          "targetId": "hyperparathyroidism",
+          "sourceIndex": 2
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "c20c337dc9afe6a8839c7abd8e7803fc0c2643f028ff432d9cd353f128685732"
       ]
     }
   ],
