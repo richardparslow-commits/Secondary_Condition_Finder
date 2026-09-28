@@ -5284,3 +5284,99 @@ form, only the 12 new edges recomputed.
 **498 edges / 1,282 reference rows**; dashboard at **1,282** pending rows across **54 batches** and **1,109** distinct
 sources. Draft-singles **stays at 305**. CRG at review 13/13 and redundancy 28/28, zero violations, 4 bidirectional
 pairs (unchanged). Backlog after batch 87: **61**.
+
+---
+
+## D1 batch 88 (2026-09-27) — psychotropic medication damage, renal and parathyroid routes only
+
+**This batch was request-driven, not backlog-driven.** It was asked for as psychotropic-medication-damage work
+covering "the neurological and renal consequences". The screen established that the **neurological half has no
+compliant home in the frozen catalog**, so the batch delivers the renal and parathyroid routes only. Two edges were
+authored into `bipolar-disorder` (which was not backlog-resident, since it already carried two registered
+treatment-mediated edges from batch 80), at `PHARMACOLOGICAL_IATROGENIC` with lithium named as the proximate agent:
+
+| Edge | Rank | Anchors |
+|---|---|---|
+| `bipolar-disorder` → `renal-toxicity` | 3 | PMID 35069203, 33392830, 36709463 |
+| `bipolar-disorder` → `hyperparathyroidism` | 4 | PMID 25505684, 36709463, 29590494 |
+
+Six reference uses over five PMIDs, **all five confirmed absent from `master-sources.json` before authoring**, with
+PMID 36709463 shared across both edges as the one cohort reporting renal and parathyroid outcomes in the same
+population.
+
+**The renal edge gives `renal-toxicity` its first incoming edge** — all seven of that identity's existing routes were
+outgoing. It lands there rather than on `chronic-kidney-disease` **precisely so that** the registered
+`renal-toxicity` → `chronic-kidney-disease` edge keeps sole ownership of the progression route. Its primary anchor
+supplies a per-year slope of **−0.8 mL/min/1.73 m²**, a **52% stage 2 CKD prevalence**, and renal microcysts in
+**51%** detectable as early as **one year** after initiation, with microcyst count discriminating measured GFR below
+45 mL/min at an AUC of **0.893**.
+
+**Four limitations carried on the face of the renal edge rather than omitted.** A **dose-response conflict** between
+anchors: one cohort finds a toxic-range level significant (61.8 vs 77.6 mL/min, p = 0.0134) while the primary MRI
+cohort finds serum lithium concentration **not** associated with measured GFR, so the dose-response is *not*
+established. An **end-stage null**: a 1,012-patient registry found **no** end-stage renal disease and a stage 4
+incidence of 0.0004 per patient-year, so the documented endpoint is stage 2–3 decline, not renal failure. A
+**mediation conflict with this file's own rank 2 edge**: the primary cohort finds hypothyroidism an independent
+determinant of lower measured GFR (β −7.1, p = 0.003), and `bipolar-disorder` → `hypothyroidism` is *already
+registered*, so direct tubular and mediated endocrine routes cannot be separated. And the age, albuminuria and
+hypertension determinants the same cohort reports.
+
+**The parathyroid edge is the weakest in the batch and is ranked fourth on that understanding.** Its primary anchor
+reports a **15.6% hypercalcaemia point prevalence against none in 15** non-lithium-treated psychiatric controls
+(p = 0.001) in a study whose stated subject *is* lithium-induced hyperparathyroidism. Its third anchor is registered
+as the edge's **counterweight**, not its support: it confirms hyperparathyroidism in only **four** patients while
+measuring parathyroid hormone in only **2.8% (n = 16)** of its 580-patient population, so it bounds the claim rather
+than establishing it. A **scope mapping** is carried openly because the catalog has **no hypercalcaemia identity** and
+two of three anchors measure serum calcium rather than parathyroid hormone — a calcium finding is mapped onto the
+narrower parathyroid identity, and the mapping is not reversible without returning to the edge's association basis.
+
+**A batch 80 disposition is touched and deliberately not reversed.** Batch 80 refused
+`bipolar-disorder` → `chronic-kidney-disease` as duplicate-scope and reserved the lithium-to-kidney route as
+single-owned at `renal-toxicity`. That refusal **stands**. The new edge *does* register a lithium-to-kidney route from
+a second primary, which batch 80 declined to do, and that departure is recorded rather than applied silently — the
+justification being that the new anchors are bipolar-population cohorts reporting measured per-year filtration slopes
+and a microcyst correlate which the organ-registry anchors at `renal-toxicity` do not supply, so the new material is
+additive rather than duplicative. PMIDs 37418264, 39932712 and 26003379 were reviewed and deliberately **not** reused,
+to avoid double-counting. Separately, the parathyroid edge **partially supersedes a batch 80 direction guard**, which
+is recorded on the edge and in the todo list.
+
+**The principal finding is a catalog-gap refusal — the fourth consecutive batch in which evidence-led refusals land
+on missing identities.** The catalog carries **no identity** for tardive dyskinesia, drug-induced parkinsonism,
+neuroleptic malignant syndrome or serotonin syndrome, and no compliant edge can be authored to any of them. The
+reserved literature is strong and quantified and is preserved **without registration per ME-29**: a 41-study,
+11,493-patient meta-analysis reports global mean tardive dyskinesia prevalence of **25.3%** (95% CI 22.7–28.1),
+20.7% on current second-generation vs 30.0% on current first-generation antipsychotics (Q = 9.17, p = 0.002), and
+7.2% in first-generation-naive arms vs 23.4% in cohorts with likely prior exposure (p < 0.001) (PMID 28146614); and
+the French national FACE-SZ cohort of 674 community-dwelling patients with schizophrenia reports **13.2%
+drug-induced parkinsonism** by the Simpson-Angus scale and **8.3% tardive dyskinesia** by the Abnormal Involuntary
+Movement scale, with first-generation prescription an adjusted OR of **2.038** (p = 0.047) for drug-induced
+parkinsonism (PMID 30695288). **Neither PMID is registered as a source entity or a reference use**, because
+registering verified bibliographic data against no registered relationship is what ME-29 forbids.
+
+**A category-error guard against the one neurological target the catalog does carry.** `parkinsons-disease` is the
+neurodegenerative disease; antipsychotic-induced parkinsonism is a distinct entity with a distinct natural history.
+The Piedmont regional cohort of 2,526,319 residents (63,356 neuroleptic-exposed, 316,779 unexposed) is reserved
+*precisely because* it studies **degenerative** parkinsonism and reports HR **3.27** (95% CI 3.00–3.57) for that
+separate outcome, still elevated after cessation at 2.38 (1.76–3.21) (PMID 34652577). Treating that hazard ratio as
+evidence about drug-induced parkinsonism would misattribute a neurodegenerative finding to a reversible drug effect.
+
+**The structural constraint behind every refusal.** `docs/condition-catalog.md` freezes the 2026-09 universe at
+**813 catalog identities with 813 corresponding knowledge-base mappings** and states that any change to that frozen
+contract "requires a versioned migration design rather than an unreviewed cleanup". Adding the four missing
+syndromes is therefore a **catalog-v2 migration task, not a mapping task**, and it would move the identity count
+pinned in 15 test files, in `scripts/apply-all-94-citation-verification.js` and in the doc string asserted by
+`tests/condition-catalog-doc.test.ts`. Additional gaps carried without numbering: nephrogenic diabetes insipidus
+(continuation of the batch 80 gap), hypercalcaemia (the direct cause of this batch's scope mapping), the
+drug-induced movement-disorder **family** (dystonia, akathisia, parkinsonism, tardive dyskinesia) as a family-level
+omission rather than four coincidences, and serotonin syndrome and NMS as identities whose located literature is
+dominated by case reports and post-marketing signal analyses and would need a non-case-report anchor tier even once
+the identity exists.
+
+**Hash form preserved for the fourth consecutive batch:** 861 relationships and 1,666 source uses restored to git HEAD
+form, only the 2 new edges and their 6 new citations recomputed.
+
+**Registry after lockstep:** 863 relationships (789 explicit / 74 legacy), 1,672 reference uses (384 verified /
+1,288 pending-verification), 1,465 source entities (346 active / 1,110 pending-verification). Packet regenerated at
+**500 edges / 1,288 reference rows**; dashboard at **1,288** pending rows across **54 batches** and **1,114** distinct
+sources. Draft-singles **stays at 305**. CRG at review 13/13 and redundancy 28/28, zero violations, 4 bidirectional
+pairs (unchanged). Backlog after batch 88: **61** (unchanged — this batch was not backlog-driven).
