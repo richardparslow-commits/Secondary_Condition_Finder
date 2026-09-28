@@ -16,16 +16,16 @@
     "citationPromotionMustAtomicallyUpdateKbAndMasterSourceState": true
   },
   "counts": {
-    "liveSourceReferenceUses": 1631,
+    "liveSourceReferenceUses": 1666,
     "activeSourceEntities": 346,
-    "pendingVerificationSourceEntities": 1077,
+    "pendingVerificationSourceEntities": 1105,
     "activeClinicalSourceEntities": 345,
-    "pendingClinicalSourceEntities": 1077,
+    "pendingClinicalSourceEntities": 1105,
     "activeLegalAuthorityEntities": 1,
     "retiredOnlySourceEntities": 1,
     "supersededUnverifiedSourceEntities": 7,
     "bibliographicCorrectionOnlyEntities": 1,
-    "totalSourceEntitiesIncludingLineage": 1432,
+    "totalSourceEntitiesIncludingLineage": 1460,
     "retiredVerifiedRelationshipSourceUses": 6
   },
   "retirementLedger": {
@@ -41587,7 +41587,7 @@
       "sourceCheckedOnValues": [
         "2026-09-26"
       ],
-      "liveUsageCount": 2,
+      "liveUsageCount": 3,
       "liveUses": [
         {
           "relationshipId": "rel-oral-cancer-to-ageusia",
@@ -41600,12 +41600,19 @@
           "primaryId": "oral-cancer",
           "targetId": "oral-candidiasis",
           "sourceIndex": 0
+        },
+        {
+          "relationshipId": "rel-stomatitis-to-dysphagia",
+          "primaryId": "stomatitis",
+          "targetId": "dysphagia",
+          "sourceIndex": 1
         }
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
         "1491a74c8e38bc2287c326e02526567cb1a8e64e6dc18903c5ec0ebb3589f352",
-        "d39d198db8258c2ed68709211aa9b1a2a0cc8e99ed0d6b953f83f7bae8759780"
+        "d39d198db8258c2ed68709211aa9b1a2a0cc8e99ed0d6b953f83f7bae8759780",
+        "271ff5d95eec87a45eb99656e261fd0729b21e9a3d8011809f649e8beb288ba3"
       ]
     },
     {
@@ -52848,6 +52855,1028 @@
       "retiredUses": [],
       "rawReferenceHashes": [
         "ef5cdfd736017f59d222b1db56a5dc8882219146e501a0f2e7cb6ad79da58a84"
+      ]
+    },
+    {
+      "sourceId": "pmid-35717001",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "35717001",
+      "doi": "10.1016/j.rehab.2022.101685",
+      "canonicalCitation": "Cacioppo M, Menard H, Olivari Philiponnet C, et al. Prevalence and risk factors for scoliosis in adults with closed and open spina bifida: A large, cross-sectional study. Ann Phys Rehabil Med. 2023 Mar;66(2):101685. doi: 10.1016/j.rehab.2022.101685. PMID 35717001.",
+      "citationVariants": [
+        "Cacioppo M, Menard H, Olivari Philiponnet C, et al. Prevalence and risk factors for scoliosis in adults with closed and open spina bifida: A large, cross-sectional study. Ann Phys Rehabil Med. 2023 Mar;66(2):101685. doi: 10.1016/j.rehab.2022.101685. PMID 35717001."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35717001/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/35717001/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-27"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-spina-bifida-to-scoliosis",
+          "primaryId": "spina-bifida",
+          "targetId": "scoliosis",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "21e74cdef249eb34853ac944d3ea71b9457a4847911990d2f82ffda215d7e28b"
+      ]
+    },
+    {
+      "sourceId": "pmid-38581468",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "38581468",
+      "doi": "10.1007/s00264-024-06156-x",
+      "canonicalCitation": "Johari AN, Nemade A, Dhawale A, et al. Spinal dysraphism in congenital scoliosis and kyphosis: a retrospective analysis in an Indian population. Int Orthop. 2024 Jun;48(6):1589-1598. doi: 10.1007/s00264-024-06156-x. PMID 38581468.",
+      "citationVariants": [
+        "Johari AN, Nemade A, Dhawale A, et al. Spinal dysraphism in congenital scoliosis and kyphosis: a retrospective analysis in an Indian population. Int Orthop. 2024 Jun;48(6):1589-1598. doi: 10.1007/s00264-024-06156-x. PMID 38581468."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38581468/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/38581468/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-27"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-spina-bifida-to-scoliosis",
+          "primaryId": "spina-bifida",
+          "targetId": "scoliosis",
+          "sourceIndex": 1
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "8110a835728bffa89bc14e423079c2ee829e100980826e272033756877fd4740"
+      ]
+    },
+    {
+      "sourceId": "pmid-31956092",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "31956092",
+      "doi": "10.1016/j.jpurol.2019.12.009",
+      "canonicalCitation": "Szymanski KM, Szymanski AJ, Salama AK, et al. Estimating and tracking renal function in children and adults with spina bifida. J Pediatr Urol. 2020 Apr;16(2):169-177. doi: 10.1016/j.jpurol.2019.12.009. PMID 31956092.",
+      "citationVariants": [
+        "Szymanski KM, Szymanski AJ, Salama AK, et al. Estimating and tracking renal function in children and adults with spina bifida. J Pediatr Urol. 2020 Apr;16(2):169-177. doi: 10.1016/j.jpurol.2019.12.009. PMID 31956092."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/31956092/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/31956092/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-27"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-spina-bifida-to-chronic-kidney-disease",
+          "primaryId": "spina-bifida",
+          "targetId": "chronic-kidney-disease",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "82c10d41579f030a03651de50b13e51c528ff9779bac8e19e439d5c30bcdc73f"
+      ]
+    },
+    {
+      "sourceId": "pmid-36999336",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "36999336",
+      "doi": "10.1111/jpc.16402",
+      "canonicalCitation": "Ekberlİ G, Taner S. Risk determination for upper urinary tract damage in children with neuropathic bladder. J Paediatr Child Health. 2023 Jul;59(7):863-870. doi: 10.1111/jpc.16402. PMID 36999336.",
+      "citationVariants": [
+        "Ekberlİ G, Taner S. Risk determination for upper urinary tract damage in children with neuropathic bladder. J Paediatr Child Health. 2023 Jul;59(7):863-870. doi: 10.1111/jpc.16402. PMID 36999336."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36999336/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/36999336/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-27"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-spina-bifida-to-chronic-kidney-disease",
+          "primaryId": "spina-bifida",
+          "targetId": "chronic-kidney-disease",
+          "sourceIndex": 1
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "8cbcd5d8ee7dbbe34ae777811166212f595bd74ed70a9ca23d3b17ec9b4b3671"
+      ]
+    },
+    {
+      "sourceId": "pmid-34430383",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "34430383",
+      "doi": "10.5527/wjn.v10.i4.37",
+      "canonicalCitation": "Wishahi M. Lower urinary tract dysfunction in pediatrics progress to kidney disease in adolescents: Toward precision medicine in treatment. World J Nephrol. 2021 Jul 25;10(4):37-46. doi: 10.5527/wjn.v10.i4.37. PMID 34430383.",
+      "citationVariants": [
+        "Wishahi M. Lower urinary tract dysfunction in pediatrics progress to kidney disease in adolescents: Toward precision medicine in treatment. World J Nephrol. 2021 Jul 25;10(4):37-46. doi: 10.5527/wjn.v10.i4.37. PMID 34430383."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34430383/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/34430383/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-27"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-spina-bifida-to-chronic-kidney-disease",
+          "primaryId": "spina-bifida",
+          "targetId": "chronic-kidney-disease",
+          "sourceIndex": 2
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "347d268cfbfdf068a9a4c94dbbaaa4739f323467a3c628320ae3fb24c26b8de0"
+      ]
+    },
+    {
+      "sourceId": "pmid-33221413",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "33221413",
+      "doi": "10.1016/j.urology.2020.11.016",
+      "canonicalCitation": "Showen A, Copp HL, Allen IE, et al. Characteristics Associated With Depression, Anxiety, and Social Isolation in Adults With Spina Bifida. Urology. 2021 Mar;149:255-262. doi: 10.1016/j.urology.2020.11.016. PMID 33221413.",
+      "citationVariants": [
+        "Showen A, Copp HL, Allen IE, et al. Characteristics Associated With Depression, Anxiety, and Social Isolation in Adults With Spina Bifida. Urology. 2021 Mar;149:255-262. doi: 10.1016/j.urology.2020.11.016. PMID 33221413."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33221413/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/33221413/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-27"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-spina-bifida-to-depressive-disorder",
+          "primaryId": "spina-bifida",
+          "targetId": "depressive-disorder",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "171623006d4d226f4d72d53adc02649f228eb595fc4a6e97c17549e175f4abfb"
+      ]
+    },
+    {
+      "sourceId": "pmid-36933266",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "36933266",
+      "doi": "10.3171/2023.2.PEDS22504",
+      "canonicalCitation": "Sciscent BY, Hallan DR, Rizk EB. Mental health and substance use disorders in young adults with spina bifida. J Neurosurg Pediatr. 2023 Mar 17:1-7. doi: 10.3171/2023.2.PEDS22504. PMID 36933266.",
+      "citationVariants": [
+        "Sciscent BY, Hallan DR, Rizk EB. Mental health and substance use disorders in young adults with spina bifida. J Neurosurg Pediatr. 2023 Mar 17:1-7. doi: 10.3171/2023.2.PEDS22504. PMID 36933266."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36933266/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/36933266/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-27"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-spina-bifida-to-depressive-disorder",
+          "primaryId": "spina-bifida",
+          "targetId": "depressive-disorder",
+          "sourceIndex": 1
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "b7273542b38bcd9291ea69959707ffe6438bdbf45c640f687d4bab4d4c41fb37"
+      ]
+    },
+    {
+      "sourceId": "pmid-34826231",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "34826231",
+      "doi": "10.1080/09638288.2021.2003453",
+      "canonicalCitation": "Lidal IB, Lundberg Larsen K. Anxiety, depression, and fatigue in middle-aged and older persons with spina bifida: a cross-sectional study. Disabil Rehabil. 2022 Dec;44(25):7936-7946. doi: 10.1080/09638288.2021.2003453. PMID 34826231.",
+      "citationVariants": [
+        "Lidal IB, Lundberg Larsen K. Anxiety, depression, and fatigue in middle-aged and older persons with spina bifida: a cross-sectional study. Disabil Rehabil. 2022 Dec;44(25):7936-7946. doi: 10.1080/09638288.2021.2003453. PMID 34826231."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34826231/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/34826231/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-27"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-spina-bifida-to-depressive-disorder",
+          "primaryId": "spina-bifida",
+          "targetId": "depressive-disorder",
+          "sourceIndex": 2
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "28a45c6f701d9d11b5235ea284dd92917874d28954be6842750393bac4161d26"
+      ]
+    },
+    {
+      "sourceId": "pmid-24368239",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "24368239",
+      "doi": "10.1188/14.ONF.57-65",
+      "canonicalCitation": "Radiotis G, Roberts N, Czajkowska Z, et al. Nonmelanoma skin cancer: disease-specific quality-of-life concerns and distress. Oncol Nurs Forum. 2014 Jan 1;41(1):57-65. doi: 10.1188/14.ONF.57-65. PMID 24368239.",
+      "citationVariants": [
+        "Radiotis G, Roberts N, Czajkowska Z, et al. Nonmelanoma skin cancer: disease-specific quality-of-life concerns and distress. Oncol Nurs Forum. 2014 Jan 1;41(1):57-65. doi: 10.1188/14.ONF.57-65. PMID 24368239."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/24368239/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/24368239/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-27"
+      ],
+      "liveUsageCount": 2,
+      "liveUses": [
+        {
+          "relationshipId": "rel-squamous-cell-carcinoma-to-depressive-disorder",
+          "primaryId": "squamous-cell-carcinoma",
+          "targetId": "depressive-disorder",
+          "sourceIndex": 0
+        },
+        {
+          "relationshipId": "rel-squamous-cell-carcinoma-to-anxiety-disorder",
+          "primaryId": "squamous-cell-carcinoma",
+          "targetId": "anxiety-disorder",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "232cfcf13ea65413a4e454f8feaa64a912dca79f359441e27d6b0b2c5b6a51fa",
+        "aa967c0810bbf3cdcd71a80a0dd105d0e04ef5c4c939c63a1956d84659d22c2f"
+      ]
+    },
+    {
+      "sourceId": "pmid-26236032",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "26236032",
+      "doi": "10.1016/j.ejon.2015.07.006",
+      "canonicalCitation": "Körner A, Garland R, Czajkowska Z, et al. Supportive care needs and distress in patients with non-melanoma skin cancer: Nothing to worry about?. Eur J Oncol Nurs. 2016 Feb;20:150-5. doi: 10.1016/j.ejon.2015.07.006. PMID 26236032.",
+      "citationVariants": [
+        "Körner A, Garland R, Czajkowska Z, et al. Supportive care needs and distress in patients with non-melanoma skin cancer: Nothing to worry about?. Eur J Oncol Nurs. 2016 Feb;20:150-5. doi: 10.1016/j.ejon.2015.07.006. PMID 26236032."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/26236032/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/26236032/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-27"
+      ],
+      "liveUsageCount": 2,
+      "liveUses": [
+        {
+          "relationshipId": "rel-squamous-cell-carcinoma-to-depressive-disorder",
+          "primaryId": "squamous-cell-carcinoma",
+          "targetId": "depressive-disorder",
+          "sourceIndex": 1
+        },
+        {
+          "relationshipId": "rel-squamous-cell-carcinoma-to-anxiety-disorder",
+          "primaryId": "squamous-cell-carcinoma",
+          "targetId": "anxiety-disorder",
+          "sourceIndex": 1
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "b32fd7ee88d21276e7d4b8f8437eaea2560357acc9c3b27cff6e95a585ae00a4",
+        "16fe99e1d03134d30ad6b0fd147a27daa7cf5ce86bd83c72b58bb4991570aff0"
+      ]
+    },
+    {
+      "sourceId": "pmid-38959518",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "38959518",
+      "doi": "10.1080/07347332.2024.2371344",
+      "canonicalCitation": "Sauer C, Ullerich C, Livingstone E, et al. Psychosocial distress and psychosocial resources in couples facing non-melanoma skin cancers and malignant melanoma. J Psychosoc Oncol. 2025;43(2):173-188. doi: 10.1080/07347332.2024.2371344. PMID 38959518.",
+      "citationVariants": [
+        "Sauer C, Ullerich C, Livingstone E, et al. Psychosocial distress and psychosocial resources in couples facing non-melanoma skin cancers and malignant melanoma. J Psychosoc Oncol. 2025;43(2):173-188. doi: 10.1080/07347332.2024.2371344. PMID 38959518."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38959518/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/38959518/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-27"
+      ],
+      "liveUsageCount": 2,
+      "liveUses": [
+        {
+          "relationshipId": "rel-squamous-cell-carcinoma-to-depressive-disorder",
+          "primaryId": "squamous-cell-carcinoma",
+          "targetId": "depressive-disorder",
+          "sourceIndex": 2
+        },
+        {
+          "relationshipId": "rel-squamous-cell-carcinoma-to-anxiety-disorder",
+          "primaryId": "squamous-cell-carcinoma",
+          "targetId": "anxiety-disorder",
+          "sourceIndex": 2
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "cb58d02a53da9cf73059946d2588d3125d1e98204db190fc22a513e8661a4d3d",
+        "ddb475c07c386e8505dbfee529ea9367a39104331d1849799b749ec500391819"
+      ]
+    },
+    {
+      "sourceId": "pmid-41174859",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "41174859",
+      "doi": "10.1111/ajd.14613",
+      "canonicalCitation": "Stewart TJ, Farrell JA, Frew JW. Psychological Complications of Stevens-Johnson Syndrome and Toxic Epidermal Necrolysis: A Systematic Review and Meta-Analysis. Australas J Dermatol. 2025 Dec;66(8):e490-e500. doi: 10.1111/ajd.14613. PMID 41174859.",
+      "citationVariants": [
+        "Stewart TJ, Farrell JA, Frew JW. Psychological Complications of Stevens-Johnson Syndrome and Toxic Epidermal Necrolysis: A Systematic Review and Meta-Analysis. Australas J Dermatol. 2025 Dec;66(8):e490-e500. doi: 10.1111/ajd.14613. PMID 41174859."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41174859/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/41174859/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-27"
+      ],
+      "liveUsageCount": 2,
+      "liveUses": [
+        {
+          "relationshipId": "rel-stevens-johnson-syndrome-to-depressive-disorder",
+          "primaryId": "stevens-johnson-syndrome",
+          "targetId": "depressive-disorder",
+          "sourceIndex": 0
+        },
+        {
+          "relationshipId": "rel-stevens-johnson-syndrome-to-anxiety-disorder",
+          "primaryId": "stevens-johnson-syndrome",
+          "targetId": "anxiety-disorder",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "89d95a011869a65565d46782cb28bbacf96bfb45eb5e2ad6b868f3d73d44b936",
+        "28c6dc349c5c8ebf52f6621b936db0a6f552420304d1c44d0eb14aaccbd1ba07"
+      ]
+    },
+    {
+      "sourceId": "pmid-33950191",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "33950191",
+      "doi": "10.1001/jamadermatol.2021.1136",
+      "canonicalCitation": "Hoffman M, Chansky PB, Bashyam AR, et al. Long-term Physical and Psychological Outcomes of Stevens-Johnson Syndrome/Toxic Epidermal Necrolysis. JAMA Dermatol. 2021 Jun 1;157(6):712-715. doi: 10.1001/jamadermatol.2021.1136. PMID 33950191.",
+      "citationVariants": [
+        "Hoffman M, Chansky PB, Bashyam AR, et al. Long-term Physical and Psychological Outcomes of Stevens-Johnson Syndrome/Toxic Epidermal Necrolysis. JAMA Dermatol. 2021 Jun 1;157(6):712-715. doi: 10.1001/jamadermatol.2021.1136. PMID 33950191."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33950191/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/33950191/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-27"
+      ],
+      "liveUsageCount": 2,
+      "liveUses": [
+        {
+          "relationshipId": "rel-stevens-johnson-syndrome-to-depressive-disorder",
+          "primaryId": "stevens-johnson-syndrome",
+          "targetId": "depressive-disorder",
+          "sourceIndex": 1
+        },
+        {
+          "relationshipId": "rel-stevens-johnson-syndrome-to-anxiety-disorder",
+          "primaryId": "stevens-johnson-syndrome",
+          "targetId": "anxiety-disorder",
+          "sourceIndex": 1
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "a6bb2a64d47b9f4e52cdbdbd5aeb2bfa2f2f1b5a5df0a289c6130ff4867b77e5",
+        "5baf79571b1760c8d248e93638cbb5289c387a24c621632ca2a8439a2bd58044"
+      ]
+    },
+    {
+      "sourceId": "pmid-37494888",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "37494888",
+      "doi": "10.1159/000531366",
+      "canonicalCitation": "Cekic S, Canitez Y, Yuksel H, et al. A Comprehensive Assessment of Long-Term Complications in Patients with Stevens-Johnson Syndrome and Toxic Epidermal Necrolysis. Int Arch Allergy Immunol. 2023;184(10):994-1002. doi: 10.1159/000531366. PMID 37494888.",
+      "citationVariants": [
+        "Cekic S, Canitez Y, Yuksel H, et al. A Comprehensive Assessment of Long-Term Complications in Patients with Stevens-Johnson Syndrome and Toxic Epidermal Necrolysis. Int Arch Allergy Immunol. 2023;184(10):994-1002. doi: 10.1159/000531366. PMID 37494888."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/37494888/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/37494888/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-27"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-stevens-johnson-syndrome-to-depressive-disorder",
+          "primaryId": "stevens-johnson-syndrome",
+          "targetId": "depressive-disorder",
+          "sourceIndex": 2
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "3e1e04633b7fe9619b18785b2fb3c75f797322b56783ffdf4296c87cf542f7bd"
+      ]
+    },
+    {
+      "sourceId": "pmid-40354513",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "40354513",
+      "doi": "10.1093/ced/llaf202",
+      "canonicalCitation": "Hong S, Quon J, Nelson CA. Mental health and psychosocial outcomes in survivors of severe cutaneous adverse reactions: a scoping review. Clin Exp Dermatol. 2025 Aug 22;50(9):1755-1765. doi: 10.1093/ced/llaf202. PMID 40354513.",
+      "citationVariants": [
+        "Hong S, Quon J, Nelson CA. Mental health and psychosocial outcomes in survivors of severe cutaneous adverse reactions: a scoping review. Clin Exp Dermatol. 2025 Aug 22;50(9):1755-1765. doi: 10.1093/ced/llaf202. PMID 40354513."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40354513/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/40354513/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-27"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-stevens-johnson-syndrome-to-anxiety-disorder",
+          "primaryId": "stevens-johnson-syndrome",
+          "targetId": "anxiety-disorder",
+          "sourceIndex": 2
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "56ed5ba94f039c1524ba6b7778b6b980b238335c023c51cd164e4195aadcf3ef"
+      ]
+    },
+    {
+      "sourceId": "pmid-41288622",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "41288622",
+      "doi": "10.4103/IJO.IJO_1119_25",
+      "canonicalCitation": "Akgun Z, Can GD, Selver OB. Ocular involvement in Stevens-Johnson syndrome and toxic epidermal necrolysis: A review of current management and changing trends. Indian J Ophthalmol. 2025 Dec 1;73(12):1711-1722. doi: 10.4103/IJO.IJO_1119_25. PMID 41288622.",
+      "citationVariants": [
+        "Akgun Z, Can GD, Selver OB. Ocular involvement in Stevens-Johnson syndrome and toxic epidermal necrolysis: A review of current management and changing trends. Indian J Ophthalmol. 2025 Dec 1;73(12):1711-1722. doi: 10.4103/IJO.IJO_1119_25. PMID 41288622."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41288622/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/41288622/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-27"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-stevens-johnson-syndrome-to-dry-eye-syndrome",
+          "primaryId": "stevens-johnson-syndrome",
+          "targetId": "dry-eye-syndrome",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "e7b7ac3b0da03d416723f9b6a15804b1b6053440d670947516d452c079be3dba"
+      ]
+    },
+    {
+      "sourceId": "pmid-42663738",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "42663738",
+      "doi": "10.1007/s10792-026-04242-0",
+      "canonicalCitation": "Pickens ML, Pickens JL, Duffy S, et al. Ocular outcomes of amniotic membrane transplantation in acute and chronic Stevens-Johnson syndrome and toxic epidermal necrolysis: a systematic review. Int Ophthalmol. 2026 Aug 28;46(1). pii: 353. doi: 10.1007/s10792-026-04242-0. PMID 42663738.",
+      "citationVariants": [
+        "Pickens ML, Pickens JL, Duffy S, et al. Ocular outcomes of amniotic membrane transplantation in acute and chronic Stevens-Johnson syndrome and toxic epidermal necrolysis: a systematic review. Int Ophthalmol. 2026 Aug 28;46(1). pii: 353. doi: 10.1007/s10792-026-04242-0. PMID 42663738."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42663738/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/42663738/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-27"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-stevens-johnson-syndrome-to-dry-eye-syndrome",
+          "primaryId": "stevens-johnson-syndrome",
+          "targetId": "dry-eye-syndrome",
+          "sourceIndex": 1
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "183986f87851b817160c96e1398085dfbb75fcc993240f7a9e7fd003db40c808"
+      ]
+    },
+    {
+      "sourceId": "pmid-37026313",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "37026313",
+      "doi": "10.4103/IJO.IJO_2647_22",
+      "canonicalCitation": "Singh S, Basu S. 5-Fluorouracil as a targeted lacrimal gland therapy for chronic Stevens-Johnson syndrome: A pilot study. Indian J Ophthalmol. 2023 Apr;71(4):1626-1629. doi: 10.4103/IJO.IJO_2647_22. PMID 37026313.",
+      "citationVariants": [
+        "Singh S, Basu S. 5-Fluorouracil as a targeted lacrimal gland therapy for chronic Stevens-Johnson syndrome: A pilot study. Indian J Ophthalmol. 2023 Apr;71(4):1626-1629. doi: 10.4103/IJO.IJO_2647_22. PMID 37026313."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/37026313/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/37026313/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-27"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-stevens-johnson-syndrome-to-dry-eye-syndrome",
+          "primaryId": "stevens-johnson-syndrome",
+          "targetId": "dry-eye-syndrome",
+          "sourceIndex": 2
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "bb68955709d9b643588be8afd581011f6d41b1bb08e2cef7ebe24d12216714e3"
+      ]
+    },
+    {
+      "sourceId": "pmid-39666090",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "39666090",
+      "doi": "10.1007/s00520-024-09071-4",
+      "canonicalCitation": "Mohan MP, Pili R, Epstein JB, et al. Cancer treatment-induced ulcerative mucositis serves as a significant predictor of burden of illness including dysphagia, and associated disparities among hospitalized cancer patients. Support Care Cancer. 2024 Dec 12;33(1):22. doi: 10.1007/s00520-024-09071-4. PMID 39666090.",
+      "citationVariants": [
+        "Mohan MP, Pili R, Epstein JB, et al. Cancer treatment-induced ulcerative mucositis serves as a significant predictor of burden of illness including dysphagia, and associated disparities among hospitalized cancer patients. Support Care Cancer. 2024 Dec 12;33(1):22. doi: 10.1007/s00520-024-09071-4. PMID 39666090."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39666090/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/39666090/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-27"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-stomatitis-to-dysphagia",
+          "primaryId": "stomatitis",
+          "targetId": "dysphagia",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "b9d57af50e61abeac7b5cd63db07a63bf7d8cb0546eee8e7b4ce84b02ccf047b"
+      ]
+    },
+    {
+      "sourceId": "pmid-41892857",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "41892857",
+      "doi": "10.3390/medsci14010142",
+      "canonicalCitation": "Satheeshkumar PS, Gopalakrishnan V, Epstein JB, et al. Long-Term Clinical Consequences of Severe Oral Mucositis in Survivors of Lip, Oral Cavity, and Pharynx Cancer Versus Leukemia: A Propensity-Score-Matched Comparative Cohort Study Using Real-World Data. Med Sci (Basel). 2026 Mar 18;14(1). doi: 10.3390/medsci14010142. PMID 41892857.",
+      "citationVariants": [
+        "Satheeshkumar PS, Gopalakrishnan V, Epstein JB, et al. Long-Term Clinical Consequences of Severe Oral Mucositis in Survivors of Lip, Oral Cavity, and Pharynx Cancer Versus Leukemia: A Propensity-Score-Matched Comparative Cohort Study Using Real-World Data. Med Sci (Basel). 2026 Mar 18;14(1). doi: 10.3390/medsci14010142. PMID 41892857."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41892857/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/41892857/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-27"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-stomatitis-to-dysphagia",
+          "primaryId": "stomatitis",
+          "targetId": "dysphagia",
+          "sourceIndex": 2
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "06a0835804385f971b3d33c9c27d9b0b1776b45e7f77a477cd6ea5e8e5695781"
+      ]
+    },
+    {
+      "sourceId": "pmid-38154442",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "38154442",
+      "doi": "10.1016/j.jpsychores.2023.111577",
+      "canonicalCitation": "de Arruda JAA, Heimlich FV, Oliveira SR, et al. Influence of anxiety/depression on chemotherapy-induced oral mucositis and related quality of life: A prospective cohort study. J Psychosom Res. 2024 Feb;177:111577. doi: 10.1016/j.jpsychores.2023.111577. PMID 38154442.",
+      "citationVariants": [
+        "de Arruda JAA, Heimlich FV, Oliveira SR, et al. Influence of anxiety/depression on chemotherapy-induced oral mucositis and related quality of life: A prospective cohort study. J Psychosom Res. 2024 Feb;177:111577. doi: 10.1016/j.jpsychores.2023.111577. PMID 38154442."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38154442/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/38154442/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-27"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-stomatitis-to-depressive-disorder",
+          "primaryId": "stomatitis",
+          "targetId": "depressive-disorder",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "a7f5a04c4bc7f4ac3ade6e8e57c553d981d22cf47b29905515b7f89177ccd39e"
+      ]
+    },
+    {
+      "sourceId": "pmid-41234733",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "41234733",
+      "doi": "10.3389/froh.2025.1652658",
+      "canonicalCitation": "Weng S, Li S, Hou S. Factors influencing mental health and oral health-related quality of life in population with recurrent aphthous stomatitis: a cross-sectional study. Front Oral Health. 2025;6:1652658. doi: 10.3389/froh.2025.1652658. PMID 41234733.",
+      "citationVariants": [
+        "Weng S, Li S, Hou S. Factors influencing mental health and oral health-related quality of life in population with recurrent aphthous stomatitis: a cross-sectional study. Front Oral Health. 2025;6:1652658. doi: 10.3389/froh.2025.1652658. PMID 41234733."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41234733/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/41234733/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-27"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-stomatitis-to-depressive-disorder",
+          "primaryId": "stomatitis",
+          "targetId": "depressive-disorder",
+          "sourceIndex": 1
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "7723bde92c9ec333e26a8eb3d4dbb12dbd55e8ae4b1b3735455a6414f024c836"
+      ]
+    },
+    {
+      "sourceId": "pmid-39036205",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "39036205",
+      "doi": "10.7759/cureus.62694",
+      "canonicalCitation": "Shinkre R, Mukherji I, Bharadwaj A, et al. Depression, Anxiety, Stress, and Pain Severity in Patients With Recurrent Aphthous Stomatitis: A Cross-Sectional Study. Cureus. 2024 Jun;16(6):e62694. doi: 10.7759/cureus.62694. PMID 39036205.",
+      "citationVariants": [
+        "Shinkre R, Mukherji I, Bharadwaj A, et al. Depression, Anxiety, Stress, and Pain Severity in Patients With Recurrent Aphthous Stomatitis: A Cross-Sectional Study. Cureus. 2024 Jun;16(6):e62694. doi: 10.7759/cureus.62694. PMID 39036205."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39036205/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/39036205/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-27"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-stomatitis-to-depressive-disorder",
+          "primaryId": "stomatitis",
+          "targetId": "depressive-disorder",
+          "sourceIndex": 2
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "0401a0da08dfc45800c3baadf6229240f330141a5042e19de1eb449bd11d69f7"
+      ]
+    },
+    {
+      "sourceId": "pmid-27651232",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "27651232",
+      "doi": "10.1016/j.jaapos.2016.07.221",
+      "canonicalCitation": "Adams GG, McBain H, MacKenzie K, et al. Is strabismus the only problem? Psychological issues surrounding strabismus surgery. J AAPOS. 2016 Oct;20(5):383-386. doi: 10.1016/j.jaapos.2016.07.221. PMID 27651232.",
+      "citationVariants": [
+        "Adams GG, McBain H, MacKenzie K, et al. Is strabismus the only problem? Psychological issues surrounding strabismus surgery. J AAPOS. 2016 Oct;20(5):383-386. doi: 10.1016/j.jaapos.2016.07.221. PMID 27651232."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/27651232/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/27651232/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-27"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-strabismus-to-anxiety-disorder",
+          "primaryId": "strabismus",
+          "targetId": "anxiety-disorder",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "631334aa1b0658311a0f77da2e85e83df6ae76b449ca3ea22663135510563c41"
+      ]
+    },
+    {
+      "sourceId": "pmid-24390164",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "24390164",
+      "doi": "10.1136/bjophthalmol-2013-304220",
+      "canonicalCitation": "McBain HB, MacKenzie KA, Au C, et al. Factors associated with quality of life and mood in adults with strabismus. Br J Ophthalmol. 2014 Apr;98(4):550-5. doi: 10.1136/bjophthalmol-2013-304220. PMID 24390164.",
+      "citationVariants": [
+        "McBain HB, MacKenzie KA, Au C, et al. Factors associated with quality of life and mood in adults with strabismus. Br J Ophthalmol. 2014 Apr;98(4):550-5. doi: 10.1136/bjophthalmol-2013-304220. PMID 24390164."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/24390164/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/24390164/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-27"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-strabismus-to-anxiety-disorder",
+          "primaryId": "strabismus",
+          "targetId": "anxiety-disorder",
+          "sourceIndex": 1
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "0ef516be7cceddab6641247e9e83c53c4f7ca08d8976ed3bcb8df503cca3d833"
+      ]
+    },
+    {
+      "sourceId": "pmid-37558407",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "37558407",
+      "doi": "10.1136/bmjophth-2023-001334",
+      "canonicalCitation": "Ehlers M, Mauschitz MM, Wabbels B. Implementing strabismus-specific psychosocial questionnaires in everyday clinical practice: mental health and quality of life in the context of strabismus surgery. BMJ Open Ophthalmol. 2023 Aug;8(1). doi: 10.1136/bmjophth-2023-001334. PMID 37558407.",
+      "citationVariants": [
+        "Ehlers M, Mauschitz MM, Wabbels B. Implementing strabismus-specific psychosocial questionnaires in everyday clinical practice: mental health and quality of life in the context of strabismus surgery. BMJ Open Ophthalmol. 2023 Aug;8(1). doi: 10.1136/bmjophth-2023-001334. PMID 37558407."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/37558407/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/37558407/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-27"
+      ],
+      "liveUsageCount": 2,
+      "liveUses": [
+        {
+          "relationshipId": "rel-strabismus-to-anxiety-disorder",
+          "primaryId": "strabismus",
+          "targetId": "anxiety-disorder",
+          "sourceIndex": 2
+        },
+        {
+          "relationshipId": "rel-strabismus-to-diplopia",
+          "primaryId": "strabismus",
+          "targetId": "diplopia",
+          "sourceIndex": 2
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "c170a9e98f6d01ea67316353da899d8ce6fbb59a6fdb53281575b6ef4cf1525d",
+        "39ca44b2a448ad709d671949169b454d805f3fda4b7af52a2cad21f5a8cac7c5"
+      ]
+    },
+    {
+      "sourceId": "pmid-24359806",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "24359806",
+      "doi": "10.1016/j.survophthal.2013.04.001",
+      "canonicalCitation": "McBain HB, Au CK, Hancox J, et al. The impact of strabismus on quality of life in adults with and without diplopia: a systematic review. Surv Ophthalmol. 2014 Mar-Apr;59(2):185-91. doi: 10.1016/j.survophthal.2013.04.001. PMID 24359806.",
+      "citationVariants": [
+        "McBain HB, Au CK, Hancox J, et al. The impact of strabismus on quality of life in adults with and without diplopia: a systematic review. Surv Ophthalmol. 2014 Mar-Apr;59(2):185-91. doi: 10.1016/j.survophthal.2013.04.001. PMID 24359806."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/24359806/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/24359806/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-27"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-strabismus-to-diplopia",
+          "primaryId": "strabismus",
+          "targetId": "diplopia",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "6bc1c6fccd8cebfb6bd8b14c157d601fed52eb3f5fc8f4f20bb76f831d66694a"
+      ]
+    },
+    {
+      "sourceId": "pmid-31586582",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "31586582",
+      "doi": "10.1016/j.jaapos.2019.07.005",
+      "canonicalCitation": "Wang JY, Leske DA, Hatt SR, et al. Diplopia after strabismus surgery for adults with nondiplopic childhood-onset strabismus. J AAPOS. 2019 Dec;23(6):313.e1-313.e5. doi: 10.1016/j.jaapos.2019.07.005. PMID 31586582.",
+      "citationVariants": [
+        "Wang JY, Leske DA, Hatt SR, et al. Diplopia after strabismus surgery for adults with nondiplopic childhood-onset strabismus. J AAPOS. 2019 Dec;23(6):313.e1-313.e5. doi: 10.1016/j.jaapos.2019.07.005. PMID 31586582."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/31586582/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/31586582/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-27"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-strabismus-to-diplopia",
+          "primaryId": "strabismus",
+          "targetId": "diplopia",
+          "sourceIndex": 1
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "4c2ce43fb48c0ba71723ed93b44782e1aa9e8ce53fc032fc2738e55c7258bdab"
       ]
     }
   ],
