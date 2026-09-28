@@ -146,7 +146,7 @@ describe("Mapping Expansion Batch ME-4", () => {
     expect(files).toHaveLength(813);
     expect(mappings.filter((mapping) => mapping.draft === false)).toHaveLength(140);
     expect(mappings.filter((mapping) => mapping.draft === true)).toHaveLength(673);
-    expect(mappings.reduce((sum, mapping) => sum + (mapping.suggestions ?? []).length, 0)).toBe(811);
+    expect(mappings.reduce((sum, mapping) => sum + (mapping.suggestions ?? []).length, 0)).toBe(820);
     expect(
       mappings.filter((mapping) => mapping.draft === false && (mapping.suggestions ?? []).length === 1),
     ).toHaveLength(67);
@@ -156,9 +156,9 @@ describe("Mapping Expansion Batch ME-4", () => {
     const refs = mappings.flatMap((mapping) =>
       (mapping.suggestions ?? []).flatMap((suggestion) => suggestion.sourceReferences ?? []),
     );
-expect(refs).toHaveLength(1523);
-    expect(refs.filter((ref) => ref.verified === true)).toHaveLength(383);
-expect(refs.filter((r) => r.verified === false)).toHaveLength(1140);
+expect(refs).toHaveLength(1548);
+    expect(refs.filter((ref) => ref.verified === true)).toHaveLength(384);
+expect(refs.filter((r) => r.verified === false)).toHaveLength(1164);
   });
 
   it("passes citation and master-registry gates after ME-7 verification", { timeout: 30_000 }, () => {
@@ -175,10 +175,10 @@ expect(refs.filter((r) => r.verified === false)).toHaveLength(1140);
       hardFindingCount: number;
     };
     expect(citation).toMatchObject({
-      references: 1523,
-      verified: 383,
-      verifiedProvenance: 389,
-      unverified: 1140,
+      references: 1548,
+      verified: 384,
+      verifiedProvenance: 390,
+      unverified: 1164,
       reviewFindingCount: 0,
       hardFindingCount: 0,
     });
@@ -194,8 +194,8 @@ expect(refs.filter((r) => r.verified === false)).toHaveLength(1140);
     };
     expect(master).toMatchObject({
       status: "PASS",
-      relationships: 811,
-      pendingVerificationSourceEntities: 996,
+      relationships: 820,
+      pendingVerificationSourceEntities: 1012,
     });
   });
 });

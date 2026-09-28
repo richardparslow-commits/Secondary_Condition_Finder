@@ -4820,3 +4820,83 @@ at 448 edges / 1,140 reference rows; dashboard at 1,140 pending rows across 48 b
 Draft-singles moved **301 → 302** because `seborrheic-keratosis` was authored with a single edge.
 Backlog after batch 82: **86**. Next-five: `selective-mutism`, `separation-anxiety-disorder`, `sever-s-disease`,
 `short-qt-syndrome`, `shoulder-disarticulation`.
+
+## Mapping Expansion D1 batch 83 (2026-09-27)
+
+Five candidates screened, all five authored. The batch authored **9 ASSOCIATION_ONLY edges over 25 reference
+uses across 18 PMIDs, 16 of which are new source entities**; PMID 32896094 and PMID 34583023 were already
+registered and are reused as additional reference uses. The backlog fell **86 → 81** and the next-five is now
+`sialadenitis`, `sialolithiasis`, `sick-sinus-syndrome`, `sinusitis`, `skier-s-thumb`.
+
+**Authored edges**
+
+| Primary | Target | Rank | Mechanism |
+|---|---|---|---|
+| `selective-mutism` | `social-anxiety-disorder` | 1 | PSYCHOPHYSIOLOGICAL |
+| `selective-mutism` | `separation-anxiety-disorder` | 2 | PSYCHOPHYSIOLOGICAL |
+| `separation-anxiety-disorder` | `anxiety-disorder` | 1 | PSYCHOPHYSIOLOGICAL |
+| `sever-s-disease` | `stress-fractures` | 1 | BIOMECHANICAL_ALTERATION |
+| `short-qt-syndrome` | `cardiac-arrhythmia` | 1 | THROMBOTIC_OR_VASCULAR |
+| `short-qt-syndrome` | `ventricular-tachycardia-fibrillation` | 2 | THROMBOTIC_OR_VASCULAR |
+| `short-qt-syndrome` | `vasovagal-syncope` | 3 | THROMBOTIC_OR_VASCULAR |
+| `shoulder-disarticulation` | `phantom-limb-pain` | 1 | NEUROLOGICAL_DEGENERATION |
+| `shoulder-disarticulation` | `amputation-or-loss-of-use` | 2 | POST_SURGICAL_OR_TREATMENT |
+
+**`short-qt-syndrome -> long-qt-syndrome` withheld — the twelfth evidence-preserving refusal.** The two are
+clinically distinct channelopathies with **opposite repolarization phenotypes and opposite risk directions**. The
+pooled analysis reports an *inverse* QTc–arrhythmia relationship, with median QTc **315.0 ms in symptomatic**
+versus **330.0 ms in asymptomatic** patients (P=0.0023, a 320 ms threshold), which is the reverse of the
+long-QT relationship. An edge would therefore have asserted a shared disease mechanism that the located evidence
+actively contradicts, and it would also have registered a direct-versus-chain conflict against the arrhythmia
+edges authored in the same file. This is the strongest refusal in the batch: the evidence is not thin, it is
+*pointing the other way*.
+
+**`selective-mutism -> anxiety-disorder` withheld as EVIDENCE-CONTRADICTED-ON-ITS-OWN-ANCHOR.** The same
+source that supports the two authored sibling edges reports that selective-mutism children carry **less**
+generalized anxiety disorder than the social-phobia comparison group (**6 percent versus 20 percent**,
+PMID 27089281). The umbrella target is contradicted by the very anchor used to justify the narrower edges, which
+is a stronger objection than a thin-evidence objection.
+
+**`shoulder-disarticulation -> complex-regional-pain-syndrome` withheld as DIRECTION REVERSAL.** The located
+literature addresses amputation as a *treatment* for complex regional pain syndrome, not as a cause of it.
+
+**The strongest single anchor in the batch, and its stated limit.** The rank-1 shoulder edge rests on a national
+survey of **776 veterans**: phantom limb pain in **73 percent** at mean intensity **4.2**, with **42 percent**
+reporting it daily or always, and amputation **at the shoulder** carrying an adjusted odds ratio of **3.78
+(1.93–7.39)** for phantom limb pain with roughly **1.5 points higher intensity** than transradial amputation.
+The same survey's mean time since amputation is **31 years**, disclosed on the face of the edge so the magnitude
+is not read as applying to early-postoperative claimants. The rank-2 edge
+(`-> amputation-or-loss-of-use`) carries a single reference and is quarantined accordingly.
+
+**A template todo corrected on the record rather than propagated.** The `short-qt-syndrome` file arrived with a
+pre-existing todo naming hemodynamic, vascular, and thrombotic pathways. That is a poor fit for an ion-channel
+disorder, and the todo was corrected rather than left to seed a category error. All three `short-qt-syndrome`
+edges additionally disclose on their face that **THROMBOTIC_OR_VASCULAR is a vocabulary-imperfect fit** for their
+mechanism category, so the reviewing clinician does not read the label as a claim about a thrombotic pathway.
+
+**A verified-source reuse, disclosed as such rather than counted as new evidence.** PMID 34583023 was already an
+**active** source entity. The `shoulder-disarticulation -> phantom-limb-pain` reference citing it therefore carries
+`verified: true`, matching the existing `elbow-disarticulation -> phantom-limb-pain` reference for the same
+PMID. This is why the batch moves **verified 383 → 384** while **unverified moves 1165 → 1164** and the total
+reference count moves only 1523 → 1548. It is a correction of the verified flag to the true master-source state,
+not a verification of any new evidence, and it is recorded on the face of the ratchet comment.
+
+**Two defects found and fixed before landing.** Every one of the batch's 25 reference strings had been emitted
+with a repeated trailing `PMID <n>.` suffix, a citation-builder artifact; all 25 were de-duplicated, the 18
+affected source entities' `rawReferenceHashes` were recomputed from their live uses, and the 9 relationships'
+`suggestionObjectHash` values were refreshed to match. The `shoulder-disarticulation` reference also carried
+`verified: false` against an already-**active** source, which the registry audit correctly rejected. Both were
+found by running the audits rather than by inspection, and neither is visible in the authored prose.
+
+**Catalog gaps surfaced this batch (recorded, not authored):** `oppositional-defiant-disorder`, `avulsion-fracture`,
+`plantar-fasciitis`, `conduct-disorder`, `residual-limb-pain`, `neuroma`, and ADHD have no catalog identity.
+Still outstanding from earlier batches and still **unreconciled**: the `eczema` / `atopic-dermatitis-eczema`
+identity duplication (batch 80), and the missing identities for tardive dyskinesia, facial nerve palsy,
+NSAID-ERD, dry eye, TIA, obesity, and metabolic syndrome.
+
+**Registry after lockstep:** 820 relationships (746 explicit / 74 legacy), 1,548 reference uses (384 verified /
+1,164 pending-verification), 1,367 source entities (346 active / 1,012 pending-verification). Citation packet
+regenerated at 457 edges / 1,164 reference rows; dashboard at 1,164 pending rows across 49 batches and 1,013
+distinct sources. Draft-singles moved **302 → 304** because `separation-anxiety-disorder` and `sever-s-disease`
+were each authored with a single edge. CRG at review 13/13 and redundancy 28/28, zero violations.
+Backlog after batch 83: **81**.

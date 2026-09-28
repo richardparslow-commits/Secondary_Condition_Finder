@@ -72,22 +72,25 @@ describe("Mapping Expansion Batch ME-31", () => {
   });
 
   it("ratchets authoritative registry totals to the current ME-33 state", () => {
-    expect(relationships.counts).toEqual({ relationships: 811, explicitPublicationGuards: 737, legacyRationaleBoundaries: 74 });
-    expect(relationships.relationships).toHaveLength(811);
+    expect(relationships.counts).toEqual({ relationships: 820, explicitPublicationGuards: 746, legacyRationaleBoundaries: 74 });
+    expect(relationships.relationships).toHaveLength(820);
     expect(sources.counts).toMatchObject({
-      liveSourceReferenceUses: 1523,
-      pendingVerificationSourceEntities: 996,
-      pendingClinicalSourceEntities: 996,
-      totalSourceEntitiesIncludingLineage: 1351,
+      liveSourceReferenceUses: 1548,
+      pendingVerificationSourceEntities: 1012,
+      pendingClinicalSourceEntities: 1012,
+      totalSourceEntitiesIncludingLineage: 1367,
     });
-    expect(sources.sources).toHaveLength(1351);
+    expect(sources.sources).toHaveLength(1367);
   });
 
-  it("merges the reused phantom-limb-pain survey into one pending source entity", () => {
+  it("merges the reused phantom-limb-pain survey into one shared source entity", () => {
     const source = sourceById.get("pmid-34583023");
     expect(source).toBeDefined();
-    expect(source?.liveUses).toHaveLength(6);
-    expect(source?.liveUsageCount).toBe(6);
+    // batch 83 added the seventh use, shoulder-disarticulation->phantom-limb-pain,
+    // whose reference correctly inherits verified:true because this source entity
+    // has been active since batch 31.
+    expect(source?.liveUses).toHaveLength(7);
+    expect(source?.liveUsageCount).toBe(7);
   });
 
   it("keeps deferred and ledger-protected alphabetical-head identities at zero suggestions", () => {

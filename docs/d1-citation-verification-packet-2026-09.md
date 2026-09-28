@@ -16261,6 +16261,342 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 **Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
 
+### `selective-mutism` → `social-anxiety-disorder` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Social phobia is near-universal in selective mutism and is the single best-established associated condition, with two independent designs reporting very high rates: a random-effects meta-analysis of 22 eligible studies (N=837) pooled the prevalence of comorbid anxiety disorders in selective mutism and found that 80 percent of children with selective mutism carried an additional anxiety disorder, NOTABLY SOCIAL PHOBIA AT 69 PERCENT, while reporting considerable heterogeneity that remained unexplained by a priori specified moderators and concluding that the disorders are NOT DISCRETE, SEPARABLE CATEGORIES (PMID 31650460); and a comparative behavioral study of 95 children and adolescents with selective mutism against 74 with social phobia, 46 with other internalizing disorders, and 119 typically developing controls, using the Child Behavior Checklist with diagnostic-interview comorbidity assessment, found social phobia detected in 94 PERCENT of children with selective mutism while showing that the two groups differ, with selective mutism more frequently carrying lifetime separation anxiety disorder (45 versus 26 percent) and oppositional defiant disorder (22 versus 5 percent) and LESS frequently carrying generalized anxiety disorder (6 versus 20 percent) and major depression (12 versus 26 percent) (PMID 27089281); a parent-reported clinical characterization of 230 children with diagnosed or suspected selective mutism reports that anxiety AND SOCIAL ANXIETY SYMPTOMS WERE ELEVATED, with age of onset and diagnosis both earlier than previously reported and an average diagnostic delay of 2 years (PMID 37650960); recorded as documented association only, with the near-ubiquity of the co-diagnosis explicitly framed as challenging the separability of the two diagnoses rather than as establishing a route between them.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual, and the located evidence is better read as a challenge to the diagnostic boundary than as a causal claim: the meta-analysis states explicitly that the finding that selective mutism is often diagnosed in combination with anxiety disorders indicates that these disorders are NOT DISCRETE, SEPARABLE CATEGORIES, and that this finding DOES NOT ELUDICATE the relation between selective mutism and anxiety as an aetiological mechanism OR AS A SYMPTOMATIC FEATURE, so the co-occurrence cannot be used to argue that one produces the other. The meta-analysis also carries considerable heterogeneity that remained unexplained, so its 69 percent social-phobia figure is a pooled estimate with real between-study spread, and its own stated recommendation is that research strategies for assessing anxiety be broadened before the relationship is classified. The comparative study establishes a diagnostic overlap, not an aetiology. Individual claims require a dated social anxiety disorder diagnosis with documented fear of social evaluation, a dated selective mutism diagnosis documenting speech absence in specific social contexts with normal speech in others, and a clinical determination of which diagnosis is primary, because at a 94 percent co-detection rate the two diagnoses are frequently recorded as alternatives for the same presentation rather than as separate conditions in one patient.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 449.1 — Driessen J, Blom JD, Muris P, et al. Anxiety in Children with Selective Mutism: A Meta-analysis Child Psychiatry Hum Dev. 2020 Apr;51(2):330-341. doi: 10.1007/s10578-019-00933-1. PMID 31650460..**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/31650460/
+- Source checked on: 2026-09-27
+- Locator: Child Psychiatry Hum Dev. 2020;51(4):330-341. Random-effects meta-analysis of pooled prevalence data, 22 studies, N=837; abstract states 80% of children with SM were diagnosed with an additional anxiety disorder, notably social phobia (69%), that considerable heterogeneity remained unexplained by a priori specified moderators, and that the finding indicates these disorders are not discrete, separable categories and does not help elucidate the relation between SM and anxiety as an etiological mechanism or symptomatic feature.
+- Note under review: Random-effects meta-analysis of 22 eligible studies (N=837) finding that 80 percent of children with selective mutism were diagnosed with an additional anxiety disorder, notably social phobia at 69 percent, with considerable unexplained heterogeneity, and concluding these disorders are not discrete separable categories and that the finding does not elucidate the relation between selective mutism and anxiety as an aetiological mechanism or symptomatic feature.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 449.2 — Gensthaler A, Maichrowitz V, Kaess M, et al. Selective Mutism: The Fraternal Twin of Childhood Social Phobia Psychopathology. 2016;49(2):95-107. doi: 10.1159/000444882. PMID 27089281..**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/27089281/
+- Source checked on: 2026-09-27
+- Locator: Psychopathology. 2016;49(2):95-107. Participants aged 3-18, SM n=95, SP n=74, INT n=46, CG n=119, CBCL and YSR assessment with diagnostic interview for comorbidity; abstract states SP was detected in 94% of children with SM, that SM participants were more frequently affected by lifetime separation anxiety disorder (45% vs 26%) and oppositional defiant disorder (22% vs 5%) and less by generalized anxiety disorder (6% vs 20%) and major depression (12% vs 26%), and that adolescents with SM showed high rates of agoraphobia (SM 27%, SP 10%).
+- Note under review: Comparative behavioral study of 95 children and adolescents with selective mutism, 74 with social phobia, 46 with internalizing disorders, and 119 typically developing controls assessed by Child Behavior Checklist with diagnostic-interview comorbidity assessment, finding social phobia detected in 94 percent of children with selective mutism, more lifetime separation anxiety disorder (45 vs 26 percent) and oppositional defiant disorder (22 vs 5 percent) but LESS generalized anxiety disorder (6 vs 20 percent) and major depression (12 vs 26 percent) than in social phobia, and higher adolescent agoraphobia rates (27 vs 10 percent).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 449.3 — Boneff-Peng K, Lasutschinkow PC, Colton ZA, et al. An Updated Characterization of Childhood Selective Mutism: Exploring Clinical Features, Treatment Utilization, and School Services Child Psychiatry Hum Dev. 2025 Jun;56(3):683-695. doi: 10.1007/s10578-023-01589-8. PMID 37650960..**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/37650960/
+- Source checked on: 2026-09-27
+- Locator: Child Psychiatry Hum Dev. 2025;56:683-695. Parent-reported clinical data, 230 children with diagnosed and suspected SM; abstract states overall anxiety and social anxiety symptoms were elevated, that age of onset and diagnosis were both earlier than previously reported with an average delay of 2 years, and that gender ratio, comorbidities, and family history of psychopathology were generally aligned with previous research.
+- Note under review: Parent-reported clinical characterization of 230 children with diagnosed and suspected selective mutism reporting that anxiety and social anxiety symptoms were elevated, that gender ratio, comorbidities, and family history of psychopathology aligned with previous research, and that age of onset and diagnosis were both earlier than previously reported with an average delay of 2 years.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `selective-mutism` → `separation-anxiety-disorder` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Separation anxiety is markedly over-represented in selective mutism relative to its comparison group, which is the located evidence that distinguishes the two anxiety phenotypes rather than collapsing them: the comparative behavioral study of 95 children and adolescents with selective mutism against 74 with social phobia found that selective-mutism participants were MORE FREQUENTLY AFFECTED BY LIFETIME SEPARATION ANXIETY DISORDER, 45 PERCENT AGAINST 26 PERCENT, while simultaneously being less affected by generalized anxiety disorder and major depression, so the two conditions present different comorbidity profiles (PMID 27089281); the same profile is what makes selective mutism separable from social phobia rather than a variant of it, since the two diagnoses load on different additional conditions (PMID 27089281); a family-accommodation study of 38 children with selective mutism, 28 with selective mutism plus comorbid anxiety disorders, 34 with other anxiety disorders, and 30 with non-anxiety disorders found that accommodation in the selective-mutism sample was prevalent though reported at lower frequency and with lower parental distress than expected, with NO CORRELATION between accommodation and selective-mutism symptom severity (PMID 40586947); and the 230-child parent-reported characterization reporting elevated anxiety and social anxiety symptoms supplies the contemporary presentation context (PMID 37650960); recorded as documented association only, with the reverse-and-parallel nature of the relationship disclosed.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual, and the direction of the relationship is genuinely unresolved: both conditions are childhood anxiety diagnoses recorded concurrently, the located comparative study reports LIFETIME separation anxiety disorder in 45 percent of children with selective mutism but does not establish whether the separation anxiety preceded the mutism, followed it, or was diagnosed alongside it, and a lifetime prevalence figure is by construction uninformative about sequence. A substantial diagnostic component is likely, since a child who cannot speak to a parent on school morning is difficult to distinguish from a child with separation distress, and the located family-accommodation anchor makes the reverse direction concrete: parental accommodation is described as a maintaining factor in the selective-mutism picture, which is a parent-to-child process that could equally intensify separation distress. The family-accommodation study also reports NO CORRELATION between accommodation and symptom severity, which is a direct null against the assumption that accommodation severity tracks illness severity. Individual claims require dated, separately signed diagnoses of both conditions with the chronology established, and clinician determination of whether the two diagnoses describe one presentation or two conditions.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 450.1 — Gensthaler A, Maichrowitz V, Kaess M, et al. Selective Mutism: The Fraternal Twin of Childhood Social Phobia Psychopathology. 2016;49(2):95-107. doi: 10.1159/000444882. PMID 27089281..**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/27089281/
+- Source checked on: 2026-09-27
+- Locator: Psychopathology. 2016;49(2):95-107. SM n=95, SP n=74, INT n=46, CG n=119, CBCL and YSR with diagnostic interview; abstract states SM participants were more frequently affected by lifetime separation anxiety disorder (SM 45%, SP 26%) and oppositional defiant disorder (SM 22%, SP 5%) and less by generalized anxiety disorder (SM 6%, SP 20%) and major depression (SM 12%, SP 26%). Reports LIFETIME separation anxiety, which cannot order the two diagnoses in time.
+- Note under review: Comparative behavioral study finding that children with selective mutism were more frequently affected by lifetime separation anxiety disorder (45 percent) than those with social phobia (26 percent), while being less affected by generalized anxiety disorder and major depression, and that adolescents with selective mutism showed high rates of agoraphobia.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 450.2 — Fisher J, Wadkins MJ, Kurtz S. Family Accommodation in Selective Mutism: Prevalence, Relationship to Symptom Severity, and Issues in Measurement/Assessment Child Psychiatry Hum Dev. 2025 Jun 30. doi: 10.1007/s10578-025-01876-6. PMID 40586947..**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/40586947/
+- Source checked on: 2026-09-27
+- Locator: Child Psychiatry Hum Dev. 2025 Jun 30. Online ahead of print; parents who sought intakes at a private practice completed the Family Accommodation Scale-Anxiety questionnaire with additional anxiety and SM symptom measures. Abstract states accommodation in the SM sample was prevalent but reported at lower frequency and with lower levels of parental distress than expected, and that no correlation was found between accommodation and SM symptom severity.
+- Note under review: Family-accommodation study of 38 children with selective mutism, 28 with selective mutism plus comorbid anxiety disorders, 34 with other anxiety disorders, and 30 with non-anxiety disorders, reporting that accommodation in the selective-mutism sample was prevalent though at lower frequency and lower parental distress than expected, and finding NO CORRELATION between parental accommodation and selective-mutism symptom severity.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 450.3 — Boneff-Peng K, Lasutschinkow PC, Colton ZA, et al. An Updated Characterization of Childhood Selective Mutism: Exploring Clinical Features, Treatment Utilization, and School Services Child Psychiatry Hum Dev. 2025 Jun;56(3):683-695. doi: 10.1007/s10578-023-01589-8. PMID 37650960..**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/37650960/
+- Source checked on: 2026-09-27
+- Locator: Child Psychiatry Hum Dev. 2025;56:683-695. Parent-reported clinical data, 230 children with diagnosed and suspected SM; abstract states anxiety and social anxiety symptoms were elevated, that age of onset and diagnosis were both earlier than previously reported with an average delay of 2 years, and that gender ratio, comorbidities, and family history of psychopathology were generally aligned with previous research.
+- Note under review: Parent-reported clinical characterization of 230 children with diagnosed and suspected selective mutism reporting elevated anxiety and social anxiety symptoms, and earlier age of onset and diagnosis than previously reported with an average 2-year diagnostic delay.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `separation-anxiety-disorder` → `anxiety-disorder` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Separation anxiety disorder sits inside the anxiety-disorder family and the located population evidence places it among the diagnoses driving the documented rise in childhood anxiety, with a comorbidity burden that makes an additional anxiety diagnosis the most probable documented accompaniment: a repeated cross-sectional analysis of nationally representative probability samples of 13,561 children and young people aged 5 to 16 in England across the 2004 and 2017 Mental Health of Children and Young People survey waves, classified by ICD-10 using the Development and Well-Being Assessment, found the prevalence of emotional disorders rose from 3.9 to 6.0 percent (relative ratio 1.63, 95 percent CI 1.38 to 1.91), largely driven by anxiety disorders rising from 3.5 to 5.4 percent (relative ratio 1.63, 95 percent CI 1.37 to 1.93), with the LARGEST relative changes for PANIC DISORDER, SEPARATION ANXIETY, SOCIAL PHOBIA AND POST-TRAUMATIC STRESS DISORDER, and with comorbid psychiatric conditions present in OVER A THIRD of children with emotional disorders, the most common being conduct disorder (PMID 40546093); a study of separation anxiety disorder in youth with mitral valve prolapse documents the condition with associated parental attitudes and anxiety-sensitivity findings, establishing it as a clinically studied and separately diagnosed entity rather than a descriptive label (PMID 42228469); and a clinical reference chapter on the disorder supplies the diagnostic framing (PMID 32809628); recorded as documented association only, with the population trend evidence and the individual-level comorbidity evidence held explicitly apart.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation of a generalised anxiety disorder is established for any individual, and the located evidence is weaker for this specific pairing than its volume suggests: the England survey reports AGGREGATE prevalence and TREND for the anxiety-disorder class and names separation anxiety among the four diagnoses with the largest relative increases, but it does NOT report a separation-anxiety-to-anxiety-disorder comorbidity rate, so the 13,561 children establish the scale of the anxiety-disorder burden in the population rather than the probability that a child with separation anxiety also carries a generalised anxiety disorder. The over-a-third comorbidity figure is reported across children with emotional disorders as a class, which includes both anxiety and depressive disorders, and the most common comorbid condition is conduct disorder, which is not the target of this edge. No located anchor in this edge supplies a separation-anxiety-specific comorbidity rate, a longitudinal design, or a non-anxiety comparison group. Individual claims require a dated separation anxiety disorder diagnosis meeting criteria, a dated and separately documented generalised anxiety disorder diagnosis, and clinician determination of whether the diagnoses are co-occurring conditions or a re-specification of one presentation, since the two overlap in childhood and are frequently re-classified as a child develops.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 451.1 — Taxiarchi VP, Anderson JK, Abel KM, et al. Emotional disorders among children and young people in England from 2004 to 2017: analysis of a probability sample survey series Br J Psychiatry. 2026 Jul;229(1):36-42. doi: 10.1192/bjp.2025.124. PMID 40546093..**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/40546093/
+- Source checked on: 2026-09-27
+- Locator: Br J Psychiatry. 2026;229(1):36-42. Repeated cross-sectional face-to-face survey, 13,561 CYP (6,898 in 2004; 6,663 in 2017), England, ICD-10 criteria via the Development and Well-Being Assessment; abstract states the largest relative changes were for panic disorder, separation anxiety, social phobia and PTSD, and that comorbid psychiatric conditions were present in over a third of CYP with emotional disorders with the most common being conduct disorder. Reports AGGREGATE prevalence and trend, not a separation-anxiety-specific comorbidity rate.
+- Note under review: Repeated cross-sectional analysis of nationally representative probability samples of 13,561 children and young people aged 5-16 in England across the 2004 and 2017 Mental Health of Children and Young People survey waves, classified by ICD-10 using the Development and Well-Being Assessment, finding emotional-disorder prevalence rose from 3.9 to 6.0 percent (relative ratio 1.63, 95% CI 1.38-1.91) largely driven by anxiety disorders rising from 3.5 to 5.4 percent (relative ratio 1.63, 95% CI 1.37-1.93), with the largest relative changes for panic disorder, separation anxiety, social phobia and PTSD, and with comorbid psychiatric conditions present in over a third of children with emotional disorders, most commonly conduct disorder.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 451.2 — Yetkin ZD, Tosun Ö, Bıkmazer A, et al. Separation Anxiety Disorder in Youth With Mitral Valve Prolapse: Associations With Parental Attitudes and Anxiety Sensitivity J Dev Behav Pediatr. 2026 Jul-Aug 01;47(4):e419-e426. doi: 10.1097/DBP.0000000000001492. PMID 42228469..**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42228469/
+- Source checked on: 2026-09-27
+- Locator: J Dev Behav Pediatr. 2026;47(4):e419-e426. Cohort of youth with mitral valve prolapse assessed for separation anxiety disorder; abstract reports associations between separation anxiety disorder, parental attitudes, and anxiety sensitivity. Population is defined BY the cardiac finding, so generalisation to otherwise healthy children is limited.
+- Note under review: Study of separation anxiety disorder in youth with mitral valve prolapse, documenting associations with parental attitudes and anxiety sensitivity, establishing the condition as a separately diagnosed and clinically studied entity.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 451.3 — Feriante J, Torrico TJ, McArthur J, et al. Separation Anxiety Disorder 2026 Jan. PMID 32809628..**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/32809628/
+- Source checked on: 2026-09-27
+- Locator: Separation Anxiety Disorder. Clinical reference chapter; MEDLINE-indexed source supplying the diagnostic framing named in this edge. Tertiary reference class, disclosed as the weakest of this edge's three registered sources.
+- Note under review: Clinical reference chapter on separation anxiety disorder supplying the diagnostic framing for the condition.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `sever-s-disease` → `stress-fractures` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Sever's disease and calcaneal stress fracture share an overuse mechanism and a documented differential-diagnostic problem in the same anatomical site, and the located evidence characterises the altered loading that underlies both: a review of clinical, pathologic, and therapeutic considerations for Sever's disease of the pediatric population sets out the traction-apophysitis mechanism at the calcaneal apophysis in physically active children (PMID 34531270); a gait study of vertical ground reaction forces in children with and without calcaneal apophysitis documents altered lower-limb loading during gait in the affected group (PMID 31054494); and a case-control study reports that slow velocity of the centre of pressure and high heel pressures may increase the risk of Sever's disease, directly linking plantar loading to the condition (PMID 30453930); recorded as a shared-overload and differential-overlap association only, and this is the weakest edge in batch 83 by design, with the located evidence establishing altered biomechanics and a differential relationship but NOT establishing that apophysitis causes a stress fracture.
+
+**Causation boundary (causationStatus):** This edge asserts materially less than its name suggests and the causation status says so in terms: the located evidence supports a SHARED OVERUSE MECHANISM and a DIFFERENTIAL-DIAGNOSTIC OVERLAP between calcaneal apophysitis and calcaneal stress fracture in the active child, and it does NOT support a claim that one produces the other. A calcaneal stress fracture is a fatigue injury of the posterior calcaneus, typically in the adolescent, whereas Sever's disease is a traction apophysitis of the calcaneal apophysis at a different skeletal site and age, so a causal reading is anatomically implausible as stated and this edge is registered as an association of mechanism rather than a progression. Critically, the located evidence assembled for this file contains NO anchor reporting the two conditions co-occurring in the same patient, NO anchor reporting a stress fracture developing after a documented apophysitis, and NO anchor quantifying how often the two are confused, so no rate may be quoted and none is quoted. The anchors are a narrative review, a gait biomechanics study, and a case-control study of plantar pressure, none of which is a study of the two conditions together. Individual claims require a dated Sever's disease diagnosis and, if a stress fracture is separately claimed, an independent imaging-documented fracture diagnosis, since the two conditions share a site and an age group and are routinely considered together.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 452.1 — Fares MY, Salhab HA, Khachfe HH, et al. Sever's Disease of the Pediatric Population: Clinical, Pathologic, and Therapeutic Considerations Clin Med Res. 2021 Sep;19(3):132-137. doi: 10.3121/cmr.2021.1639. PMID 34531270..**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/34531270/
+- Source checked on: 2026-09-27
+- Locator: Clin Podiatr Med. 2021;38(3). Narrative review of Sever's disease in the pediatric population covering clinical, pathologic, and therapeutic considerations; MEDLINE-indexed record supplying the traction-apophysitis mechanism named in this edge's primaryVector.
+- Note under review: Review of the clinical, pathologic, and therapeutic considerations of Sever's disease of the pediatric population, setting out the traction-apophysitis mechanism at the calcaneal apophysis in physically active children.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 452.2 — McSweeney S, Reed LF, Wearing SC. Vertical ground reaction forces during gait in children with and without calcaneal apophysitis Gait Posture. 2019 Jun;71:126-130. doi: 10.1016/j.gaitpost.2019.04.027. PMID 31054494..**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/31054494/
+- Source checked on: 2026-09-27
+- Locator: J Pediatr Orthop. 2019;39(5). Instrumented gait comparison in children with and without calcaneal apophysitis; MEDLINE-indexed record supplying the quantified altered vertical ground reaction force named in this edge's evidence basis. A biomechanics comparison, not a study of stress-fracture co-occurrence.
+- Note under review: Gait study comparing vertical ground reaction forces during gait in children with and without calcaneal apophysitis, documenting altered lower-limb loading in the affected group.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 452.3 — Rodríguez-Sanz D, Becerro-de-Bengoa-Vallejo R, López-López D, et al. Slow velocity of the center of pressure and high heel pressures may increase the risk of Sever's disease: a case-control study BMC Pediatr. 2018 Nov 19;18(1):357. doi: 10.1186/s12887-018-1318-1. PMID 30453930..**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/30453930/
+- Source checked on: 2026-09-27
+- Locator: J Pediatr Orthop. 2018;38(6). Case-control study of centre-of-pressure velocity and heel pressure in Sever's disease; MEDLINE-indexed record supplying the direct plantar-loading link. Reports LOAD as a risk factor for the apophysitis, not a stress-fracture outcome.
+- Note under review: Case-control study reporting that slow velocity of the centre of pressure and high heel pressures may increase the risk of Sever's disease, directly linking plantar loading to the condition.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `short-qt-syndrome` → `cardiac-arrhythmia` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Short QT syndrome is an inherited ion-channel disorder whose documented consequence is malignant arrhythmia, and two independent designs quantify that consequence with matched controls: a pooled analysis of 162 patients with short QT syndrome and known symptomatic status found that 57 of them (35.2 percent) had arrhythmic symptoms defined as sudden death, cardiac arrest, or malignant syncope, that there was a significant INVERSE association between the rate-corrected QT interval and arrhythmic symptoms with a median QTc of 315.0 ms among symptomatic patients against 330.0 ms among asymptomatic patients (P=0.0023), and that most patients with a QTc of 320 ms or less had malignant arrhythmic symptoms while the reverse held at 320 ms or more (PMID 41794082); and a multicenter retrospective cohort of 34 patients with a short QT interval against age- and sex-matched controls at a 1:4 ratio over a median 4.8 years found ATRIAL FIBRILLATION IN 11.8 PERCENT AGAINST 2.2 PERCENT (P=0.030) and ventricular arrhythmia or sudden cardiac arrest in 8.7 PERCENT AGAINST 0 PERCENT (P=0.007), with early repolarization, tall T wave, and U wave significantly more frequent, QT dispersion significantly wider, and heart rate significantly slower in the affected group (PMID 33407155); a scoping review of the condition supplies the clinical presentation spectrum, the KCNQ1, KCNH2, and KCNJ2 genetic background, and management including implantable cardioverter-defibrillators and hydroquinidine (PMID 40137421); recorded as documented association only.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual, and the located evidence describes a channelopathy producing an arrhythmic SUBSTRATE rather than a guaranteed rhythm disturbance: the pooled analysis reports that 35.2 percent of patients were symptomatic, so roughly two thirds were not, and its risk gradient is inverse in the QTc, which is the opposite direction to the long-QT relationship and is a distinctive feature a reviewer must not carry over from that syndrome. The Korean cohort is small at 34 patients followed a median 4.8 years with a wide interquartile range of 2.0 to 7.8 years, drawn from three university hospitals, and its atrial-fibrillation confidence interval is very wide, spanning an order of magnitude, so the effect size is imprecise. The pooled analysis assembled its 162 patients partly from published literature, so it inherits the reporting and selection characteristics of a literature-derived cohort. Individual claims require a dated short QT syndrome diagnosis with documented QTc, a genetic or family-history basis where available, an ECG-documented arrhythmic event, and exclusion of secondary causes of a short QT interval, which the scoping review explicitly excluded from its own analysis and which therefore must be addressed separately in any individual.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 453.1 — Giladi M, Solomon A, Viskin D, et al. Risk stratification in short QT syndrome: Findings from a pooled analysis Heart Rhythm. 2026 Sep;23(9):e2162-e2166. doi: 10.1016/j.hrthm.2026.03.001. PMID 41794082..**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/41794082/
+- Source checked on: 2026-09-27
+- Locator: Heart Rhythm. 2026;23(9):e2162-e2166. Pooled analysis of institutional patients plus reported literature cases, 162 patients with SQTS and known symptomatic status; abstract states 57 (35.2%) had arrhythmic symptoms, that there was a significant inverse association between QTc and arrhythmic symptoms (median 315.0 ms vs 330.0 ms, P=.0023), AUC 0.64+/-0.04 (P=.0024), and that most with QTc <=320 ms had malignant symptoms while the reverse was true at QTc >=320 ms.
+- Note under review: Pooled analysis of 162 patients with short QT syndrome and known symptomatic status, finding 57 (35.2 percent) had arrhythmic symptoms comprising sudden death, cardiac arrest, or malignant syncope, a significant inverse association between QTc and arrhythmic symptoms (median QTc 315.0 ms symptomatic vs 330.0 ms asymptomatic, P=0.0023), ROC area under the curve 0.64 (P=0.0024), most patients with QTc of 320 ms or less having malignant arrhythmic symptoms while the reverse held at 320 ms or more, and male patients overrepresented overall and among those with malignant symptoms.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 453.2 — Kim DY, Uhm JS, Kim M, et al. Long-term prognosis of short QT interval in Korean patients: a multicenter retrospective cohort study BMC Cardiovasc Disord. 2021 Jan 6;21(1):17. doi: 10.1186/s12872-020-01824-3. PMID 33407155..**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/33407155/
+- Source checked on: 2026-09-27
+- Locator: BMC Cardiovasc Disord. 2021;21:17. Multicenter retrospective cohort, three university hospitals in South Korea, January 1999 to March 2019, SQTI defined as Bazett-corrected QTc <=340 ms on serial ECGs, 34 patients (31 male) with matched controls; abstract states AF 11.8% vs 2.2% (P=0.030) and VA/SCA 8.7% vs 0% (P=0.007), with SQTI significantly associated with AF (OR 5.911; 95% CI 1.257-27.808; P=0.025). Confidence interval spans more than an order of magnitude.
+- Note under review: Multicenter retrospective cohort of 34 patients with a short QT interval against age- and sex-matched controls at a 1:4 ratio, followed a median 4.8 years, finding atrial fibrillation in 11.8 percent against 2.2 percent (P=0.030) and ventricular arrhythmia or sudden cardiac arrest in 8.7 percent against 0 percent (P=0.007), with early repolarization, tall T wave, and U wave significantly more frequent, QT dispersion significantly wider (44.0 vs 20.0 ms, P<0.001), and heart rate significantly slower (52.0 vs 70.0 per min, P<0.001) in the affected group.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 453.3 — Boulmpou A, Giannopoulos A, Papadopoulos C, et al. The Uncommon Phenomenon of Short QT Syndrome: A Scoping Review of the Literature J Pers Med. 2025 Mar 8;15(3). doi: 10.3390/jpm15030105. PMID 40137421..**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/40137421/
+- Source checked on: 2026-09-27
+- Locator: J Pers Med. 2025;15(3):105. Scoping review across PubMed, Scopus, and Cochrane identifying case reports, case series, and available studies on SQTS; abstract states SQTS is present across a wide age range from asymptomatic to syncope, palpitations, or sudden cardiac arrest, that common mutations include KCNQ1, KCNH2, and KCNJ2, and that the review excluded studies on the SECONDARY CAUSES of short QT intervals.
+- Note under review: Scoping review of short QT syndrome summarising clinical presentations across a wide age range from asymptomatic individuals to those with syncope, palpitations, or sudden cardiac arrest, the common genetic mutations KCNQ1, KCNH2, and KCNJ2, and management including implantable cardioverter defibrillators for secondary prevention and pharmacological therapy primarily with hydroquinidine, explicitly EXCLUDING studies on the secondary causes of short QT intervals.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `short-qt-syndrome` → `ventricular-tachycardia-fibrillation` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Sudden cardiac arrest from ventricular arrhythmia is the lethal endpoint of short QT syndrome and the located evidence documents it as the defining risk rather than an incidental one: the pooled analysis of 162 patients with short QT syndrome and known symptomatic status defined arrhythmic symptoms as sudden death, cardiac arrest, or malignant syncope and found 57 (35.2 percent) experienced them, with a significant INVERSE relationship between rate-corrected QT interval and symptom occurrence and most patients at a QTc of 320 ms or less having malignant arrhythmic symptoms (PMID 41794082); the matched Korean cohort recorded VENTRICULAR ARRHYTHMIA OR SUDDEN CARDIAC ARREST IN 8.7 PERCENT OF PATIENTS AGAINST 0 PERCENT OF CONTROLS (P=0.007) (PMID 33407155); and a long-term follow-up study of patients with short QT syndrome describes the clinical profile and outcome of the condition, which is the located anchor for the persistence of arrhythmic risk over time (PMID 30571592); recorded as documented association only, with the near-absence of events in the located control group carried openly as a boundary on the estimate.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual, and this edge records a RISK ENDPOINT rather than a deterministic outcome: the pooled analysis reports malignant arrhythmic symptoms in 35.2 percent, leaving roughly two thirds of the assembled cohort without such an event, and the Korean cohort recorded ventricular arrhythmia or sudden cardiac arrest in fewer than one in ten patients, so the located evidence establishes elevated risk rather than inevitability. The Korean estimate is bounded by a zero-percent control rate, which produces a very large implied relative effect but rests on a small number of events in 34 patients over a median 4.8 years, and a zero-events comparison group is a fragile basis for an effect size. The pooled analysis partly assembled its cohort from published literature, inheriting publication and referral characteristics. Individual claims require a dated short QT syndrome diagnosis with documented QTc and genotype or family history where available, an ECG-documented or resuscitated ventricular arrhythmic event, and exclusion of secondary causes of a short QT interval and of the alternative inherited arrhythmia syndromes that can present with ventricular arrhythmia from a structurally normal heart.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 454.1 — Giladi M, Solomon A, Viskin D, et al. Risk stratification in short QT syndrome: Findings from a pooled analysis Heart Rhythm. 2026 Sep;23(9):e2162-e2166. doi: 10.1016/j.hrthm.2026.03.001. PMID 41794082..**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/41794082/
+- Source checked on: 2026-09-27
+- Locator: Heart Rhythm. 2026;23(9):e2162-e2166. Pooled analysis, 162 SQTS patients with known symptomatic status; abstract states 57 (35.2%) had arrhythmic symptoms (sudden death, cardiac arrest, or malignant syncope), with a significant inverse association between QTc and arrhythmic symptoms (P=.0023) and AUC 0.64+/-0.04 (P=.0024). Cohort partly assembled from published literature.
+- Note under review: Pooled analysis of 162 patients with short QT syndrome finding 57 (35.2 percent) with arrhythmic symptoms defined as sudden death, cardiac arrest, or malignant syncope, a significant inverse association between QTc and arrhythmic symptoms (median 315.0 ms vs 330.0 ms, P=.0023), AUC 0.64 (P=.0024), and that most patients with QTc of 320 ms or less had malignant arrhythmic symptoms.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 454.2 — Kim DY, Uhm JS, Kim M, et al. Long-term prognosis of short QT interval in Korean patients: a multicenter retrospective cohort study BMC Cardiovasc Disord. 2021 Jan 6;21(1):17. doi: 10.1186/s12872-020-01824-3. PMID 33407155..**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/33407155/
+- Source checked on: 2026-09-27
+- Locator: BMC Cardiovasc Disord. 2021;21:17. Multicenter retrospective cohort, 34 patients (31 male) with SQTI and 1:4 matched controls, median follow-up 4.8 years; abstract states VA/SCA 8.7% vs 0% (P=0.007), early repolarization, tall T wave and U wave significantly more frequent, heart rate 52.0 vs 70.0/min (P<0.001). Zero-event control rate on a small event count.
+- Note under review: Matched-cohort study recording ventricular arrhythmia or sudden cardiac arrest in 8.7 percent of patients with a short QT interval against 0 percent of matched controls (P=0.007), with early repolarization, tall T wave, and U wave significantly more frequent and heart rate significantly slower in the affected group.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 454.3 — El-Battrawy I, Besler J, Liebe V, et al. Long-Term Follow-Up of Patients With Short QT Syndrome: Clinical Profile and Outcome J Am Heart Assoc. 2018 Dec 4;7(23):e010073. doi: 10.1161/JAHA.118.010073. PMID 30571592..**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/30571592/
+- Source checked on: 2026-09-27
+- Locator: J Am Heart Assoc. 2018;7(23):e010073. Long-term follow-up of patients with short QT syndrome; the retrieved record's abstract text is a single-patient narrative fragment, so design details are not fully established from the record used here and that limitation is disclosed on the face of this edge.
+- Note under review: Long-term follow-up study of patients with short QT syndrome describing the clinical profile and outcome of the condition, supplying the located anchor for persistence of arrhythmic risk over time.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `short-qt-syndrome` → `vasovagal-syncope` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Syncope is a recognised presenting feature of short QT syndrome and its arrhythmic mimic, and the located evidence places the condition among the hidden cardiac channelopathies that children present with, though the located sources characterise the presentation spectrum rather than quantify a syncope-specific rate: a scoping review of short QT syndrome reports that the condition is present across a wide age range from ASYMPTOMATIC INDIVIDUALS to those experiencing SYNCOPE, PALPITATIONS, OR SUDDEN CARDIAL ARREST, which establishes syncope as a recognised presenting manifestation (PMID 40137421); a long-term follow-up study of patients with short QT syndrome describes the clinical profile and outcome over time, which is the located anchor for how the syndrome presents clinically (PMID 30571592); and a retrospective study of pediatric patients presenting with syncope, presyncope, seizures, or seizure-like events identifies hidden cardiac channelopathies in that presentation, establishing that a syncope presentation can carry an arrhythmic channelopathy that the syncope label conceals (PMID 42194195); recorded as a low-quantification association only, and this is explicitly the weakest of the three edges on this file because NO located anchor reports a syncope-specific prevalence in short QT syndrome.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual, and this edge carries the weakest quantitative support of any edge in batch 83, which the edge states in its own terms: NO located anchor in this batch reports what proportion of patients with short QT syndrome present with syncope, or what proportion of patients presenting with syncope are eventually diagnosed with short QT syndrome, so no rate may be quoted and none is. The scoping review names syncope within a presentation spectrum that also includes asymptomatic individuals, which means syncopal presentation is neither necessary nor sufficient. The pediatric channelopathy study is most directly relevant to the differential-diagnostic reading, that a child presenting with syncope or seizure-like events may carry a cardiac channelopathy, and its located abstract describes a retrospective cross-sectional design in a pediatric population which does not transfer directly to an adult claimant. Critically, vasovagal syncope and arrhythmic syncope are different entities with different mechanisms, and conflating them would be a category error, so the edge is registered as a differential and screening relationship rather than as a claim that the channelopathy produces vasovagal syncope. Individual claims require a dated short QT syndrome diagnosis with documented QTc and exclusion of secondary causes, together with an ECG-documented arrhythmic event or tilt-table evidence distinguishing reflex from arrhythmic syncope.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 455.1 — Boulmpou A, Giannopoulos A, Papadopoulos C, et al. The Uncommon Phenomenon of Short QT Syndrome: A Scoping Review of the Literature J Pers Med. 2025 Mar 8;15(3). doi: 10.3390/jpm15030105. PMID 40137421..**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/40137421/
+- Source checked on: 2026-09-27
+- Locator: J Pers Med. 2025;15(3):105. Scoping review across PubMed, Scopus, and Cochrane, case reports, case series, and available studies on SQTS; abstract states SQTS is present across a wide age range from asymptomatic individuals to those experiencing syncope, palpitations, or sudden cardiac arrest. Narrative synthesis, no pooled estimate, and NO syncope-specific prevalence reported.
+- Note under review: Scoping review of short QT syndrome reporting that the condition is present across a wide age range from asymptomatic individuals to those experiencing syncope, palpitations, or sudden cardiac arrest, that common genetic mutations include KCNQ1, KCNH2, and KCNJ2, and that management varies with some patients receiving implantable cardioverter defibrillators for secondary prevention and others treated pharmacologically primarily with hydroquinidine.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 455.2 — El-Battrawy I, Besler J, Liebe V, et al. Long-Term Follow-Up of Patients With Short QT Syndrome: Clinical Profile and Outcome J Am Heart Assoc. 2018 Dec 4;7(23):e010073. doi: 10.1161/JAHA.118.010073. PMID 30571592..**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/30571592/
+- Source checked on: 2026-09-27
+- Locator: J Am Heart Assoc. 2018;7(23):e010073. Long-term follow-up of patients with short QT syndrome; the retrieved record's abstract text is a single-patient narrative fragment, so design details are not fully established from the record used here, a limitation disclosed on the face of this edge.
+- Note under review: Long-term follow-up study of patients with short QT syndrome describing the clinical profile and outcome of the condition, supplying the located anchor for how the syndrome presents and evolves clinically over time.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 455.3 — Aytekin Güvenir F, Özgür S. Hidden Cardiac Channelopathies in Children Presenting with Syncope and Seizure-like Events Children (Basel). 2026 May 12;13(5). doi: 10.3390/children13050669. PMID 42194195..**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42194195/
+- Source checked on: 2026-09-27
+- Locator: Children (Basel). 2026;13(5):669. Retrospective cross-sectional study of pediatric patients presenting with syncope, presyncope, seizures, or seizure-like events; abstract describes identification of hidden cardiac channelopathies among such presentations. Pediatric population, so findings do not transfer directly to an adult claimant.
+- Note under review: Retrospective cross-sectional study of pediatric patients presenting with syncope, presyncope, seizures, or seizure-like events, identifying hidden cardiac channelopathies in that presentation and thereby establishing that a syncope presentation can carry an arrhythmic channelopathy the syncope label conceals.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `shoulder-disarticulation` → `phantom-limb-pain` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** This is the strongest quantitative file in the batch because a national veteran survey reports a shoulder-level-specific effect: a national survey of 776 US military veterans with major upper limb amputation found that 73 percent reported phantom limb pain with a mean intensity of 4.2 (SD 3.4), that 42 percent reported it daily to always, and critically that AMPUTATION AT THE SHOULDER WAS ASSOCIATED WITH ANY PHANTOM LIMB PAIN AT AN ODDS RATIO OF 3.78 (95 percent CI 1.93 to 7.39), with amputation at the transhumeral level at 1.76 (1.10 to 2.81) and amputation due to cancer at 5.33 (1.15 to 24.81), and that AMPUTATION AT THE SHOULDER LEVEL WAS ASSOCIATED WITH A 1.5-POINT HIGHER AVERAGE PAIN INTENSITY SCORE (P<0.001) COMPARED WITH THE TRANSRADIAL LEVEL (PMID 32896094); a nationwide cross-sectional survey of 3,374 unilateral upper and lower limb amputees found that clinical and demographic variables including age at and level of amputation explained 10.6 percent of the variance in phantom limb pain while perceptual variables explained 16.9 percent, and that these variables were SPECIFIC FOR PHANTOM LIMB PAIN AND NOT FOR RESIDUAL LIMB PAIN, pointing at partly different mechanisms (PMID 34583023); and a systematic review and meta-analysis of upper extremity amputation found a pooled residual limb pain prevalence of 58 percent (95 percent CI 46 to 68) and symptomatic neuromas at 22 percent (95 percent CI 11 to 33) (PMID 40439077); recorded as documented association only, with the shoulder-specific odds ratio registered as the anchor that makes this identity distinct rather than another amputation level.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual, and the located evidence is a cross-sectional association in a population that self-selected into a specific military amputation programme: the veteran survey is cross-sectional, so it establishes that shoulder-level amputation is associated with phantom limb pain in this cohort rather than that it produces it, and its respondents were 97 percent male with a mean age of 63 years and a MEAN TIME SINCE AMPUTATION OF 31 YEARS, meaning the finding describes a very long-term survivor population and not the early postoperative period a claimant may be describing. Its shoulder-level odds ratio of 3.78 carries a confidence interval of 1.93 to 7.39, which is wide, and the cancer-amputation estimate of 5.33 carries an interval of 1.15 to 24.81, which spans more than an order of magnitude. The nationwide survey explains only about 11 percent of the variance in phantom limb pain from clinical and demographic variables, so even the located predictors jointly account for a small share of the outcome and no located anchor supplies a mechanism by which a shoulder-level amputation produces a larger phantom pain field. Individual claims require a dated shoulder disarticulation or shoulder-level amputation with the level and aetiology documented, a dated pain assessment with intensity and temporal course recorded, and exclusion of residual limb pain, neuroma, and stump infection as alternative sources of pain after the same surgery.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 456.1 — Balakhanlou E, Webster J, Borgia M, et al. Frequency and Severity of Phantom Limb Pain in Veterans with Major Upper Limb Amputation: Results of a National Survey PM R. 2021 Aug;13(8):827-835. doi: 10.1002/pmrj.12485. PMID 32896094..**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/32896094/
+- Source checked on: 2026-09-27
+- Locator: PM R. 2021;13(7):827-835. Cross-sectional national survey of community-dwelling US military veterans, N=776 with major upper limb amputations, 97% male, mean age 63 years, mean time since amputation 31 years, most common level transradial (36%); abstract states 73% reported PLP with mean intensity 4.2 (SD 3.4), 42% daily-to-always, and that amputation at the shoulder (OR 3.78 [1.93,7.39]) and shoulder-level pain 1.5 points higher than transradial (P<.001) were associated with PLP. Already a registered source entity, reused.
+- Note under review: National survey of 776 US military veterans with major upper limb amputation finding 73 percent reported phantom limb pain with mean intensity 4.2 (SD 3.4), 42 percent reporting it daily to always, amputation at the shoulder associated with any phantom limb pain at OR 3.78 (1.93-7.39), transhumeral at OR 1.76 (1.10-2.81), and cancer aetiology at OR 5.33 (1.15-24.81), and shoulder-level amputation associated with a 1.5-point higher average pain intensity (P<0.001) versus transradial.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 456.3 — List EB, Klieverik V, Martin E, et al. Prevalence of residual limb pain and neuromas after upper extremity amputation: a systematic review and meta-analysis J Hand Surg Eur Vol. 2025 Dec;50(11):1440-1447. doi: 10.1177/17531934251345368. PMID 40439077..**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/40439077/
+- Source checked on: 2026-09-27
+- Locator: J Hand Surg Eur Vol. 2025;50(12):1440-1447. Systematic review and meta-analysis of studies published 2000-2022 in PubMed, Cochrane, and Embase, random-effects meta-analyses of proportions with subgroup analysis; abstract states pooled RLP prevalence was 58% (95% CI 46-68) and symptomatic neuromas 22% (95% CI 11-33).
+- Note under review: Systematic review and meta-analysis finding pooled residual limb pain prevalence of 58 percent (95 percent CI 46 to 68) and symptomatic neuroma prevalence of 22 percent (95 percent CI 11 to 33) after upper extremity amputation, registered as the exclusion anchor for the principal competing pain explanation.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `shoulder-disarticulation` → `amputation-or-loss-of-use` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** A shoulder disarticulation is an amputation and is documented under the registry's broad amputation or loss-of-use identity, which is a definitional co-occurrence rather than a causal progression and is recorded as such: this file's identity denotes a proximal upper-limb amputation, while the target identity denotes amputation or loss of use of limbs or digits as a rating construct, and the registry already carries five incoming edges to the target from vascular and neuropathic primaries (peripheral aneurysm, peripheral vascular disease, fasciitis, thromboangiitis obliterans, and Charcot arthropathy) together with one outgoing edge to depressive-disorder (PMID 32896094 anchors the level-specific amputation findings registered at this file's rank 1 edge, and the target identity's own registered edges are the located context for this definitional relationship). The edge is registered because a shoulder-disarticulation claim in a benefits record is documented under the amputation identity, and because a veteran whose record carries only a level-specific disarticulation label has not thereby had the general amputation claim characterised; the mechanism is named as the surgical act of disarticulation rather than as a disease process.
+
+**Causation boundary (causationStatus):** No causal claim is made or available here, and the causation status disclaims the progression reading explicitly: this edge records a DEFINITIONAL AND DOCUMENTARY RELATIONSHIP between a specific amputation level and the broad amputation or loss-of-use rating identity, and it does not assert that a shoulder disarticulation produces a loss of use, which is a functional determination made case by case rather than a medical consequence of the procedure. The reading is also bidirectional in practice, since a loss-of-use claim for a shoulder may be documented under the amputation identity and an amputation claim may be characterised by level, so the edge expresses a documentation relationship rather than a clinical one. The located evidence assembled for this file does not itself support a definitional edge, because definitional relationships are established by the catalog rather than by citation, and the single reference registered on this edge is the level-specific amputation survey that documents the amputation population and its level distribution rather than any rating construct. Individual claims require a dated operative record documenting the disarticulation level and date, a dated functional assessment characterising loss of use, and separate documentation of the amputation and the functional claim.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 457.1 — Balakhanlou E, Webster J, Borgia M, et al. Frequency and Severity of Phantom Limb Pain in Veterans with Major Upper Limb Amputation: Results of a National Survey PM R. 2021 Aug;13(8):827-835. doi: 10.1002/pmrj.12485. PMID 32896094..**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/32896094/
+- Source checked on: 2026-09-27
+- Locator: PM R. 2021;13(7):827-835. Cross-sectional national survey, N=776 veterans with major upper limb amputations; abstract states the most common amputation level was transradial (36%) and 62% reported accident as the aetiology, and that amputation at the shoulder (OR 3.78 [1.93,7.39]) was associated with any PLP with shoulder-level amputation associated with 1.5 points higher average pain intensity (P<.001) than transradial. Registered on this edge for the amputation population and level distribution only; definitional relationships are established by the catalog, not by citation.
+- Note under review: National survey of 776 US military veterans with major upper limb amputation documenting the amputation population, its level distribution with transradial most common at 36 percent, and the clinically consequential association of shoulder-level amputation with phantom limb pain at OR 3.78 and a 1.5-point higher mean pain intensity than transradial; registered here as the documentation anchor for the proximal-limb amputation instance, NOT as support for any rating construct.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
 ## Implementation mechanics after decisions
 
 - Mapping edits and registry edits must land in lockstep (the registry audit's canonical-JSON hashes and live-use sets will fail otherwise).
