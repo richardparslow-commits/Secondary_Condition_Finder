@@ -16,16 +16,16 @@
   "citationPromotionMustAtomicallyUpdateKbAndMasterSourceState": true
  },
  "counts": {
-  "liveSourceReferenceUses": 1460,
+  "liveSourceReferenceUses": 1463,
   "activeSourceEntities": 346,
-  "pendingVerificationSourceEntities": 950,
+  "pendingVerificationSourceEntities": 953,
   "activeClinicalSourceEntities": 345,
-  "pendingClinicalSourceEntities": 950,
+  "pendingClinicalSourceEntities": 953,
   "activeLegalAuthorityEntities": 1,
   "retiredOnlySourceEntities": 1,
   "supersededUnverifiedSourceEntities": 7,
   "bibliographicCorrectionOnlyEntities": 1,
-  "totalSourceEntitiesIncludingLineage": 1305,
+  "totalSourceEntitiesIncludingLineage": 1308,
   "retiredVerifiedRelationshipSourceUses": 6
  },
  "retirementLedger": {
@@ -48110,6 +48110,111 @@
    "retiredUses": [],
    "rawReferenceHashes": [
     "ff6a0405127cda6ccc38c1f7e13e1850bcdfdf097c34ed46cb7ee2aec8eced99"
+   ]
+  },
+  {
+   "sourceId": "pmid-39932712",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "39932712",
+   "doi": null,
+   "canonicalCitation": "Chan JKN, Solmi M, Correll CU, et al. Lithium for Bipolar Disorder and Risk of Thyroid Dysfunction and Chronic Kidney Disease JAMA Netw Open. 2025 Feb 3;8(2):e2458608. PMID 39932712.",
+   "citationVariants": [
+    "Chan JKN, Solmi M, Correll CU, et al. Lithium for Bipolar Disorder and Risk of Thyroid Dysfunction and Chronic Kidney Disease JAMA Netw Open. 2025 Feb 3;8(2):e2458608. PMID 39932712."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39932712/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/39932712/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-27"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-bipolar-disorder-to-hypothyroidism",
+     "primaryId": "bipolar-disorder",
+     "targetId": "hypothyroidism",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "2d202816a426c8ed10b01e877efce86a57f0832cc93454930e3bb9c01b1556b9"
+   ]
+  },
+  {
+   "sourceId": "pmid-26003379",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "26003379",
+   "doi": null,
+   "canonicalCitation": "Shine B, McKnight RF, Leaver L, et al. Long-term effects of lithium on renal, thyroid, and parathyroid function: a retrospective analysis of laboratory data Lancet. 2015 Aug 1;386(9992):461-8. PMID 26003379.",
+   "citationVariants": [
+    "Shine B, McKnight RF, Leaver L, et al. Long-term effects of lithium on renal, thyroid, and parathyroid function: a retrospective analysis of laboratory data Lancet. 2015 Aug 1;386(9992):461-8. PMID 26003379."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/26003379/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/26003379/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-27"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-bipolar-disorder-to-hypothyroidism",
+     "primaryId": "bipolar-disorder",
+     "targetId": "hypothyroidism",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "2b43b01a228c587d082dca174a0fbbf88b29ec38ab835710877f1defeff34db9"
+   ]
+  },
+  {
+   "sourceId": "pmid-27226264",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "27226264",
+   "doi": null,
+   "canonicalCitation": "Lambert CG, Mazurie AJ, Lauve NR, et al. Hypothyroidism risk compared among nine common bipolar disorder therapies in a large US cohort Bipolar Disord. 2016 May;18(3):247-60. PMID 27226264.",
+   "citationVariants": [
+    "Lambert CG, Mazurie AJ, Lauve NR, et al. Hypothyroidism risk compared among nine common bipolar disorder therapies in a large US cohort Bipolar Disord. 2016 May;18(3):247-60. PMID 27226264."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/27226264/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/27226264/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-27"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-bipolar-disorder-to-hypothyroidism",
+     "primaryId": "bipolar-disorder",
+     "targetId": "hypothyroidism",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "1dedcb5fd1191ba1c5ba8f47ae2e02dcdd14a01983b6a67ae55846162db5f422"
    ]
   }
  ],

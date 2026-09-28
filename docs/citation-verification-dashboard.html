@@ -60,7 +60,7 @@
 <body>
 <header class="page">
   <h1>Qualified-Human Citation Verification Dashboard</h1>
-  <p>Reviewer-ready batches, oldest source-check first. 1077 pending reference rows across 949 distinct sources in 45 batches.</p>
+  <p>Reviewer-ready batches, oldest source-check first. 1080 pending reference rows across 952 distinct sources in 45 batches.</p>
   <p>data/knowledge-base published and draft-quarantined mappings — generated, not transcribed. Regenerate with <code>npm run citations:dashboard</code>.</p>
 </header>
 <main>
@@ -100,7 +100,7 @@
   Cohort order is the recorded <code>sourceCheckedOn</code> date of each row (oldest first), which tracks
   the authoring wave that entered the row. Batch 25-row cap is soft: an edge's
   rows are never split across batches. Shared sources (110 of
-  949 carry more than one pending use) need one open of the source per use —
+  952 carry more than one pending use) need one open of the source per use —
   the proposition differs per row even when the source repeats.
 </footer>
 
@@ -111,8 +111,8 @@
   "extractionRule": "every sourceReference whose verified is not true — identical to scripts/report-citation-verification-queue.js --include-drafts",
   "qualificationRule": "Only a qualified human reviewer may change repository source records to verified:true.",
   "batchSizeCap": 25,
-  "pendingRows": 1077,
-  "distinctSources": 949,
+  "pendingRows": 1080,
+  "distinctSources": 952,
   "sharedSources": 110,
   "batches": 45,
   "cohorts": [
@@ -123,9 +123,9 @@
    "2026-09-26",
    "2026-09-27"
   ],
-  "draftQuarantinedRows": 1077,
+  "draftQuarantinedRows": 1080,
   "publishedRows": 0,
-  "clinicalEvidenceRows": 1077,
+  "clinicalEvidenceRows": 1080,
   "legalFrameworkRows": 0
  },
  "batches": [
@@ -17901,6 +17901,57 @@
      "totalUses": 2
     },
     {
+     "rowId": "bipolar-disorder::hypothyroidism::39932712",
+     "mappingId": "bipolar-disorder",
+     "conditionId": "hypothyroidism",
+     "publicationState": "draft-quarantined",
+     "nexusClassification": "ASSOCIATION_ONLY",
+     "claim": "Lithium treatment in bipolar disorder carries a quantified, dose-related risk of hypothyroidism across three independent designs, while the risk is specific to lithium among the mood stabilisers and antipsychotics used for the same indication: the 2025 population-based retrospective cohort of incident bipolar disorder in Hong Kong (4,752 individuals with analysable hypothyroidism data, mean follow-up 8.4 years) reports lithium associated with increased hypothyroidism risk against non-lithium treatment (adjusted hazard ratio 2.00, 95 percent CI 1.72-2.33), with higher lithium serum levels associated with still greater risk (adjusted hazard ratio 2.08, 95 percent CI 1.67-2.59) and with valproate, olanzapine, quetiapine, and risperidone generally showing reduced likelihood of thyroid dysfunction compared with lithium, the same analysis deriving serum-level thresholds of approximately 0.50 mEq per litre for hypothyroidism, 0.50 for hyperthyroidism, and 0.59 for stage 3 or higher chronic kidney disease (PMID 39932712); the 2015 Oxford retrospective analysis of laboratory data over more than three decades reports that adjusting for age, sex, and diabetes, the presence of lithium in serum was associated with hypothyroidism (hazard ratio 2.31, 95 percent CI 2.05-2.60; p<0.0001) and with hypercalcaemia (1.43, 1.21-1.69) and stage 3 chronic kidney disease (1.93, 1.76-2.12) but NOT with hyperthyroidism (1.22, 95 percent CI 0.96-1.55; p=0.1010) or raised adjusted calcium (1.08, 0.88-1.34; p=0.4602), with women under 60 at greatest risk and higher-than-median lithium concentrations associated with increased risk of all adverse outcomes (PMID 26003379); and the 2016 competing-risk analysis of 24,574 US patients with bipolar disorder reports a four-year cumulative hypothyroidism risk of 8.8 percent on lithium against 6.3 percent on oxcarbazepine, the lowest-risk therapy, a 1.39-fold difference, while documenting that lithium was NOT statistically different from quetiapine, that hypothyroid risk error bars overlapped for all nine therapies, and that patients on lithium were tested for hypothyroidism 2.26 to 3.05 times more frequently than those on other treatments (PMID 27226264); recorded as documented association only with the treatment-mediated, detection-bias, and direction limits carried openly - this is an iatrogenic route in which the medication rather than the psychiatric condition is the proximate agent, and the single largest located cohort reports overlapping error bars across all nine therapies alongside differential surveillance intensity.",
+     "boundary": "Neither causation nor aggravation of hypothyroidism is established for any individual: the located anchors are cohort designs in which the exposure is prescribed lithium rather than the psychiatric condition itself, the US competing-risk anchor reports that lithium was not statistically significantly different from quetiapine and that error bars overlapped for all nine therapies, that same anchor documents 2.26 to 3.05-fold greater hypothyroidism testing on lithium which inflates measured incidence, the Oxford anchor shows the effect is specific to hypothyroidism with hyperthyroidism and adjusted-calcium outcomes null, and bipolar disorder carries its own independent thyroid autoimmunity signal so disease and treatment cannot be separated within these designs; individual claims require dated lithium start, stop, dose, and serum-level history with dated thyroid studies before and after initiation, a documented lithium-free or alternative-mood-stabiliser interval where one exists, and exclusion of autoimmune thyroiditis, iodine exposure, prior thyroid radioiodine or surgery, pituitary disease, and non-prescribed lithium sources.",
+     "citation": "Chan JKN, Solmi M, Correll CU, et al. Lithium for Bipolar Disorder and Risk of Thyroid Dysfunction and Chronic Kidney Disease JAMA Netw Open. 2025 Feb 3;8(2):e2458608. PMID 39932712.",
+     "pmid": "39932712",
+     "verificationScope": "clinical-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39932712/",
+     "sourceCheckedOn": "2026-09-27",
+     "sourceLocator": "JAMA Netw Open. 2025;8(2):e2458608. Population-based retrospective cohort, 4,752 individuals with analyzable hypothyroidism data, mean follow-up 8.4 years; abstract states lithium was associated with increased risk of hypothyroidism (aHR 2.00; 95% CI 1.72-2.33) and CKD3+ (1.35; 1.15-1.60), but not CKD4+ or ESKD, and that valproate, olanzapine, quetiapine, and risperidone generally exhibited reduced likelihood of thyroid dysfunction compared with lithium.",
+     "note": "Population-based retrospective cohort of incident bipolar disorder in Hong Kong reporting lithium associated with hypothyroidism (adjusted hazard ratio 2.00, 95 percent CI 1.72-2.33) versus non-lithium treatment, a higher-risk gradient with higher serum levels (2.08, 1.67-2.59), reduced thyroid risk with valproate, olanzapine, quetiapine, and risperidone, and derived serum-level thresholds.",
+     "totalUses": 1
+    },
+    {
+     "rowId": "bipolar-disorder::hypothyroidism::27226264",
+     "mappingId": "bipolar-disorder",
+     "conditionId": "hypothyroidism",
+     "publicationState": "draft-quarantined",
+     "nexusClassification": "ASSOCIATION_ONLY",
+     "claim": "Lithium treatment in bipolar disorder carries a quantified, dose-related risk of hypothyroidism across three independent designs, while the risk is specific to lithium among the mood stabilisers and antipsychotics used for the same indication: the 2025 population-based retrospective cohort of incident bipolar disorder in Hong Kong (4,752 individuals with analysable hypothyroidism data, mean follow-up 8.4 years) reports lithium associated with increased hypothyroidism risk against non-lithium treatment (adjusted hazard ratio 2.00, 95 percent CI 1.72-2.33), with higher lithium serum levels associated with still greater risk (adjusted hazard ratio 2.08, 95 percent CI 1.67-2.59) and with valproate, olanzapine, quetiapine, and risperidone generally showing reduced likelihood of thyroid dysfunction compared with lithium, the same analysis deriving serum-level thresholds of approximately 0.50 mEq per litre for hypothyroidism, 0.50 for hyperthyroidism, and 0.59 for stage 3 or higher chronic kidney disease (PMID 39932712); the 2015 Oxford retrospective analysis of laboratory data over more than three decades reports that adjusting for age, sex, and diabetes, the presence of lithium in serum was associated with hypothyroidism (hazard ratio 2.31, 95 percent CI 2.05-2.60; p<0.0001) and with hypercalcaemia (1.43, 1.21-1.69) and stage 3 chronic kidney disease (1.93, 1.76-2.12) but NOT with hyperthyroidism (1.22, 95 percent CI 0.96-1.55; p=0.1010) or raised adjusted calcium (1.08, 0.88-1.34; p=0.4602), with women under 60 at greatest risk and higher-than-median lithium concentrations associated with increased risk of all adverse outcomes (PMID 26003379); and the 2016 competing-risk analysis of 24,574 US patients with bipolar disorder reports a four-year cumulative hypothyroidism risk of 8.8 percent on lithium against 6.3 percent on oxcarbazepine, the lowest-risk therapy, a 1.39-fold difference, while documenting that lithium was NOT statistically different from quetiapine, that hypothyroid risk error bars overlapped for all nine therapies, and that patients on lithium were tested for hypothyroidism 2.26 to 3.05 times more frequently than those on other treatments (PMID 27226264); recorded as documented association only with the treatment-mediated, detection-bias, and direction limits carried openly - this is an iatrogenic route in which the medication rather than the psychiatric condition is the proximate agent, and the single largest located cohort reports overlapping error bars across all nine therapies alongside differential surveillance intensity.",
+     "boundary": "Neither causation nor aggravation of hypothyroidism is established for any individual: the located anchors are cohort designs in which the exposure is prescribed lithium rather than the psychiatric condition itself, the US competing-risk anchor reports that lithium was not statistically significantly different from quetiapine and that error bars overlapped for all nine therapies, that same anchor documents 2.26 to 3.05-fold greater hypothyroidism testing on lithium which inflates measured incidence, the Oxford anchor shows the effect is specific to hypothyroidism with hyperthyroidism and adjusted-calcium outcomes null, and bipolar disorder carries its own independent thyroid autoimmunity signal so disease and treatment cannot be separated within these designs; individual claims require dated lithium start, stop, dose, and serum-level history with dated thyroid studies before and after initiation, a documented lithium-free or alternative-mood-stabiliser interval where one exists, and exclusion of autoimmune thyroiditis, iodine exposure, prior thyroid radioiodine or surgery, pituitary disease, and non-prescribed lithium sources.",
+     "citation": "Lambert CG, Mazurie AJ, Lauve NR, et al. Hypothyroidism risk compared among nine common bipolar disorder therapies in a large US cohort Bipolar Disord. 2016 May;18(3):247-60. PMID 27226264.",
+     "pmid": "27226264",
+     "verificationScope": "clinical-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/27226264/",
+     "sourceCheckedOn": "2026-09-27",
+     "sourceLocator": "Bipolar Disord. 2016;18(3):247-60. National claims competing-risk survival analysis; abstract states lithium's four-year cumulative risk of hypothyroidism (8.8%) was 1.39-fold that of oxcarbazepine (6.3%), that lithium was non-statistically significantly different from quetiapine, that error bars overlapped for all drugs, and that patients taking lithium were tested for hypothyroidism 2.26-3.05 times more frequently than those on other treatments.",
+     "note": "Competing-risk analysis of 24,574 US patients with bipolar disorder comparing hypothyroidism risk across nine therapies, reporting a four-year cumulative risk of 8.8 percent on lithium against 6.3 percent on oxcarbazepine, no statistical difference from quetiapine, overlapping error bars across all drugs, and 2.26- to 3.05-fold greater hypothyroidism testing on lithium.",
+     "totalUses": 1
+    },
+    {
+     "rowId": "bipolar-disorder::hypothyroidism::26003379",
+     "mappingId": "bipolar-disorder",
+     "conditionId": "hypothyroidism",
+     "publicationState": "draft-quarantined",
+     "nexusClassification": "ASSOCIATION_ONLY",
+     "claim": "Lithium treatment in bipolar disorder carries a quantified, dose-related risk of hypothyroidism across three independent designs, while the risk is specific to lithium among the mood stabilisers and antipsychotics used for the same indication: the 2025 population-based retrospective cohort of incident bipolar disorder in Hong Kong (4,752 individuals with analysable hypothyroidism data, mean follow-up 8.4 years) reports lithium associated with increased hypothyroidism risk against non-lithium treatment (adjusted hazard ratio 2.00, 95 percent CI 1.72-2.33), with higher lithium serum levels associated with still greater risk (adjusted hazard ratio 2.08, 95 percent CI 1.67-2.59) and with valproate, olanzapine, quetiapine, and risperidone generally showing reduced likelihood of thyroid dysfunction compared with lithium, the same analysis deriving serum-level thresholds of approximately 0.50 mEq per litre for hypothyroidism, 0.50 for hyperthyroidism, and 0.59 for stage 3 or higher chronic kidney disease (PMID 39932712); the 2015 Oxford retrospective analysis of laboratory data over more than three decades reports that adjusting for age, sex, and diabetes, the presence of lithium in serum was associated with hypothyroidism (hazard ratio 2.31, 95 percent CI 2.05-2.60; p<0.0001) and with hypercalcaemia (1.43, 1.21-1.69) and stage 3 chronic kidney disease (1.93, 1.76-2.12) but NOT with hyperthyroidism (1.22, 95 percent CI 0.96-1.55; p=0.1010) or raised adjusted calcium (1.08, 0.88-1.34; p=0.4602), with women under 60 at greatest risk and higher-than-median lithium concentrations associated with increased risk of all adverse outcomes (PMID 26003379); and the 2016 competing-risk analysis of 24,574 US patients with bipolar disorder reports a four-year cumulative hypothyroidism risk of 8.8 percent on lithium against 6.3 percent on oxcarbazepine, the lowest-risk therapy, a 1.39-fold difference, while documenting that lithium was NOT statistically different from quetiapine, that hypothyroid risk error bars overlapped for all nine therapies, and that patients on lithium were tested for hypothyroidism 2.26 to 3.05 times more frequently than those on other treatments (PMID 27226264); recorded as documented association only with the treatment-mediated, detection-bias, and direction limits carried openly - this is an iatrogenic route in which the medication rather than the psychiatric condition is the proximate agent, and the single largest located cohort reports overlapping error bars across all nine therapies alongside differential surveillance intensity.",
+     "boundary": "Neither causation nor aggravation of hypothyroidism is established for any individual: the located anchors are cohort designs in which the exposure is prescribed lithium rather than the psychiatric condition itself, the US competing-risk anchor reports that lithium was not statistically significantly different from quetiapine and that error bars overlapped for all nine therapies, that same anchor documents 2.26 to 3.05-fold greater hypothyroidism testing on lithium which inflates measured incidence, the Oxford anchor shows the effect is specific to hypothyroidism with hyperthyroidism and adjusted-calcium outcomes null, and bipolar disorder carries its own independent thyroid autoimmunity signal so disease and treatment cannot be separated within these designs; individual claims require dated lithium start, stop, dose, and serum-level history with dated thyroid studies before and after initiation, a documented lithium-free or alternative-mood-stabiliser interval where one exists, and exclusion of autoimmune thyroiditis, iodine exposure, prior thyroid radioiodine or surgery, pituitary disease, and non-prescribed lithium sources.",
+     "citation": "Shine B, McKnight RF, Leaver L, et al. Long-term effects of lithium on renal, thyroid, and parathyroid function: a retrospective analysis of laboratory data Lancet. 2015 Aug 1;386(9992):461-8. PMID 26003379.",
+     "pmid": "26003379",
+     "verificationScope": "clinical-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/26003379/",
+     "sourceCheckedOn": "2026-09-27",
+     "sourceLocator": "Lancet. 2015;386(9992):461-8. Retrospective laboratory-data analysis, Oxford University Hospitals NHS Trust, Oct 1982 to Mar 2014; abstract states adjusted hypothyroidism HR 2.31 (2.05-2.60; p<0.0001), hyperthyroidism 1.22 (0.96-1.55; p=0.1010), and that women younger than 60 and people with above-median lithium concentrations are at greatest risk.",
+     "note": "Retrospective analysis of over three decades of laboratory data reporting lithium in serum associated with hypothyroidism (hazard ratio 2.31, 95 percent CI 2.05-2.60), stage 3 chronic kidney disease (1.93, 1.76-2.12), and raised total calcium (1.43, 1.21-1.69), but not hyperthyroidism (1.22, 0.96-1.55) or raised adjusted calcium (1.08, 0.88-1.34), with women under 60 at greatest risk.",
+     "totalUses": 1
+    },
+    {
      "rowId": "renal-toxicity::chronic-kidney-disease::37418264",
      "mappingId": "renal-toxicity",
      "conditionId": "chronic-kidney-disease",
@@ -18103,7 +18154,16 @@
      "sourceLocator": "PMID 19544754; results (adjusted sleep latency and arousal index comparisons)",
      "note": "Sleep Heart Health Study home-polysomnography cohort (Sleep 2009): 3,433 community participants; RLS with longer adjusted mean sleep latency (39.8 vs 26.4 min, P<0.0001) and higher arousal index (20.1 vs 18.0, P=0.0145) after adjustment for apnea-hypopnea index and demographic/health variables; latency rose with RLS symptom frequency; supports the bounded association only (cross-sectional; latency/arousal measures, not insomnia diagnosis).",
      "totalUses": 1
-    },
+    }
+   ],
+   "id": "batch-43",
+   "number": 43,
+   "cohortFrom": "2026-09-26",
+   "cohortTo": "2026-09-27",
+   "sourceCount": 21
+  },
+  {
+   "rows": [
     {
      "rowId": "retinitis::retinal-detachment::42423915",
      "mappingId": "retinitis",
@@ -18154,16 +18214,7 @@
      "sourceLocator": "PMID 42338517; results (incidence and timing of retinal detachment)",
      "note": "Global federated-database retrospective cohort (Front Ophthalmol 2026, TriNetX): 1,785 acute retinal necrosis patients 2014-2024; retinal detachment incidence 12.49% (223 cases) with 60.5% within 3 months of diagnosis; no significant incidence differences by age, sex, diabetes, or immunosuppression; treatment exposures are severity proxies; supports the bounded association only (ICD/CPT-coded EHR cohort).",
      "totalUses": 1
-    }
-   ],
-   "id": "batch-43",
-   "number": 43,
-   "cohortFrom": "2026-09-26",
-   "cohortTo": "2026-09-27",
-   "sourceCount": 21
-  },
-  {
-   "rows": [
+    },
     {
      "rowId": "retinitis::visual-impairment::42307763",
      "mappingId": "retinitis",
@@ -18520,7 +18571,16 @@
      "sourceLocator": "Mayo Clin Proc. 2013;88(2):176-83. Population-based epidemiology; abstract states clinical presentation included poor growth (n=12), leg deformity (n=8), motor delay (n=5), leg pain (n=3), weakness (n=3), and hypocalcemia or tetany (n=2), with incidence 24.1 per 100,000 in the 2000s decade (P=.003 for trend).",
      "note": "Population-based study of 23 children with radiographic rickets, 17 nutritional, reporting presentation features including poor growth, leg deformity, motor delay, weakness, and hypocalcemia or tetany in 2, with incidence rising to 24.1 per 100,000 in children under three in the most recent decade.",
      "totalUses": 1
-    },
+    }
+   ],
+   "id": "batch-44",
+   "number": 44,
+   "cohortFrom": "2026-09-27",
+   "cohortTo": "2026-09-27",
+   "sourceCount": 24
+  },
+  {
+   "rows": [
     {
      "rowId": "riedel-s-thyroiditis::hypoparathyroidism::36452560",
      "mappingId": "riedel-s-thyroiditis",
@@ -18571,16 +18631,7 @@
      "sourceLocator": "Thyroid. 2015;25(9):1055-9. Case report with literature summary; abstract states about one-seventh of RT cases are associated with hypoparathyroidism requiring long-term therapy, that RT-associated hypoparathyroidism can be clinically silent at presentation, and that mechanical decompression plus immunomodulation can reverse parathyroid function.",
      "note": "Case report of a 40-year-old woman with Riedel's thyroiditis and progressive dysphagia and positional dyspnoea, marked asymptomatic hypocalcemia with inappropriately normal parathyroid hormone, treated with isthmectomy plus serial corticosteroids and tamoxifen, with calcium and parathyroid hormone returning to the reference range within three months.",
      "totalUses": 1
-    }
-   ],
-   "id": "batch-44",
-   "number": 44,
-   "cohortFrom": "2026-09-27",
-   "cohortTo": "2026-09-27",
-   "sourceCount": 24
-  },
-  {
-   "rows": [
+    },
     {
      "rowId": "riedel-s-thyroiditis::hypothyroidism::27828690",
      "mappingId": "riedel-s-thyroiditis",
@@ -18841,7 +18892,7 @@
    "number": 45,
    "cohortFrom": "2026-09-27",
    "cohortTo": "2026-09-27",
-   "sourceCount": 15
+   "sourceCount": 18
   }
  ]
 }
