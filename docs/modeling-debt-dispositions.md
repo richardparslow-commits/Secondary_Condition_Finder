@@ -70,6 +70,52 @@ identity-duplication finding is retracted as erroneous at the evidence level.**
   `anxiety-disorder` → `eczema` rested partly on this same identity-duplication premise. Those routes should be
   re-screened on their own evidence, but re-screening them is a new mapping task and not part of this disposition.
 
+## Identity-closure adjudication 2026-09-28 — the three closures (`eczema`, `rotator-cuff-tear`, `skier-s-thumb`)
+
+**Disposition: the three identity closures are adjudicated together, and only one of the three was a true
+duplication.** Batches 80, 82 and 84 each closed a knowledge-base identity on `IDENTITY-DUPLICATION` — the
+catalog "coarser than the evidence" pattern — and the batch-84 record grouped them as "three duplications in
+five batches". Applying the durable lesson recorded in the `eczema` disposition above (read the registered
+edges and the catalog names before closing an identity) separates the trio into three different outcomes:
+
+- **`eczema` / `atopic-dermatitis-eczema` — NOT duplication; scope split.** Already adjudicated in the
+  `eczema` section above and in the 2026-09-28 identity review: the two identities carry
+  qualified-human-verified routes about different diseases, the duplication premise is retracted, and both
+  identities are retained. No further action.
+- **`rotator-cuff-tear` / `rotator-cuff-injury` — NOT duplication; the corrected framing is UMBRELLA /
+  MEMBER.** The batch-82 closure called them "open identities for the same disease", but the catalog itself
+  says otherwise: `rotator-cuff-injury` is named **"Rotator Cuff Tendonitis / Tear"** and carries the alias
+  `rotator cuff tendonitis` — it is the umbrella over the tendinopathy/tear spectrum — while
+  `rotator-cuff-tear` is the **tear member** of that umbrella. An umbrella and its member are not two names
+  for one disease; they are two granularities, the same shape as the `sinusitis` umbrella disposition and
+  the batch-78 class-umbrella screens. The umbrella/member discipline therefore applies unchanged:
+  - the umbrella keeps the general rotator-cuff window, and its registered
+    `bicipital-tendinitis` → `rotator-cuff-injury` edge (batch 4) is left untouched;
+  - the member owns tear-specific windows only; and
+  - **no edge may be registered between an umbrella and its own member** (the batch-86
+    `soft-tissue-sarcomas` umbrella guard).
+  **Consequently the batch-82 closure is vacated, not merely re-described.** The reconciliation question it
+  posed — obtain a qualified-human decision on which rotator-cuff identity is canonical — is malformed under
+  the corrected framing: there is no canonical-singleton choice to make, because both identities are
+  legitimate at their own granularity. `rotator-cuff-tear` returns to ordinary safe-draft status (still zero
+  suggestions; authoring still requires condition-specific evidence inside tear scope), and the correction
+  is annotated on the file per the superseded-annotation discipline. Nothing here moves the frozen identity
+  contract: no identity was added, retired, merged or renamed.
+- **`skier-s-thumb` / `gamekeeper-s-thumb` — GENUINE duplication; the closure stands.** This is the one true
+  duplication of the trio: the located literature reviews thumb metacarpophalangeal collateral-ligament
+  injuries as a single injury category and distinguishes the two names only by **mechanism of injury**
+  (ski-pole-grip valgus versus forced abduction), not by lesion, and both names sit in the same catalog file
+  under the same 38 CFR 4.71a framework. The closure remains deliberately reversible: electing a canonical
+  name retires a stable ID and is therefore a **versioned identity migration**, not a bounded maintenance
+  edit (see the v2 closure rule below).
+
+**The corrected rule of the trio.** What batches 80/82/84 read as "three duplications" was actually three
+different phenomena: a scope split hiding behind synonymy (`eczema`), an umbrella/member pair hiding behind
+shared naming (`rotator-cuff-tear` / `rotator-cuff-injury`), and one genuine synonymy (`skier-s-thumb` /
+`gamekeeper-s-thumb`). Name-level similarity is a poor predictor of entity-level duplication. Do not close
+an identity on name-level evidence: read the catalog names, the aliases, and the registered edges first,
+and record umbrella/member and scope-split outcomes as scope discipline rather than as closures.
+
 ## Other physical-placement and grouped-identity debt
 
 The endocrine and pulmonary-hypertension maintenance sequence has already corrected the major known cross-system physical placements without changing stable IDs. Any newly discovered cross-system placement, grouped identity, obsolete code, or over-broad alias must be handled as a separate bounded change with:
@@ -82,12 +128,16 @@ The endocrine and pulmonary-hypertension maintenance sequence has already correc
 
 ## v2 closure rule
 
-The four named items above are **not open blockers to the current clinical evidence program** after these dispositions are recorded. They are controlled modeling states:
+The five named items above are **not open blockers to the current clinical evidence program** after these dispositions are recorded. They are controlled modeling states:
 
 - laterality placeholder quarantined;
 - historical micro-TBI label quarantined as draft;
 - cerebral-palsy recognition identity retained without service-connection inference;
 - eczema / atopic-dermatitis-eczema retained as two distinct identities under an explicit scope split, with the
-  identity-duplication finding retracted.
+  identity-duplication finding retracted;
+- the three identity closures adjudicated: `eczema` resolved as above, `rotator-cuff-tear` /
+  `rotator-cuff-injury` corrected to umbrella/member with the member's duplication closure vacated, and
+  `skier-s-thumb` / `gamekeeper-s-thumb` kept closed as the one genuine duplication pending a versioned
+  canonical-name migration.
 
 A future catalog-v3 identity migration may retire or consolidate these IDs, but v2 should not violate 300/300 or silently rewrite stable identity history to make the debt list appear empty.
