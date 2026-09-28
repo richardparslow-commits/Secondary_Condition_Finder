@@ -169,6 +169,23 @@ variant name while the pointers exist (the catalog invariant keeps variant names
 a future catalog-v3 migration may retire the pointer IDs and fold the variant names into the canonical
 entries as aliases.
 
+**The pointer's preserved-evidence record is complete (2026-09-28).** The `skier-s-thumb` pointer's
+preserved-unregistered inventory has been resolved to PubMed-verified PMIDs so that a future reopening needs
+no re-search: the chapter titled for Gamekeeper's Thumb (PMID 29494005, which on its own face states the
+condition "has also been referred to as skier's thumb since it is more commonly observed in individuals who
+fall while holding ski poles, which mechanistically causes the same type of hyperextension thumb injury"),
+the single-injury-category reviews (PMIDs 20215892, 8623701, 24590986), the prospective surgical-repair
+series (PMIDs 24126337, 24185690, 37294237), the long-term primary-repair outcomes (PMIDs 27117126,
+23615487, 38488512), and the avulsion-fragment morphologic studies behind the recorded avulsion-fracture
+catalog gap (PMIDs 9922540, 10194010). Because the batch-84 item descriptions are prose rather than verbatim
+titles, each item is resolved to a **verified candidate set** with the matching quotation or design feature
+stated on the record, so the future author chooses on each source's own content instead of on the paraphrase.
+**All twelve PMIDs remain unregistered**, confirmed absent from `data/evidence/master-sources.json` on
+2026-09-28, per the ME-29 reserved-evidence rule: zero source entities, reference uses and registry rows were
+created, every count pin is unchanged, and the inventory may be drawn on only inside the one future
+authoring pass under the canonical entry, which must adjudicate those PMIDs explicitly.
+`tests/canonical-identity-reconciliation.test.ts` pins the completed inventory and its unregistered state.
+
 ## Dermatitis composite-scope adjudication 2026-09-28 — `dermatitis` audited against the eczema scope split (three atopic-evidence edges superseded, two infection edges retained)
 
 **Disposition: the composite identity `dermatitis` ("Dermatitis (Atopic / Contact)") may hold subtype-agnostic

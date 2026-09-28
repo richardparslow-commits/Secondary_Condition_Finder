@@ -111,4 +111,62 @@ describe("canonical-identity reconciliation (2026-09-28 pointer reconciliation)"
     );
     expect(gamekeeperEdge?.sourceReferences).toHaveLength(3);
   });
+
+  it("completes the pointer's preserved-evidence record with verified PMIDs that stay unregistered", () => {
+    const record = kb("skier-s-thumb");
+    const notes = [...(record.todo ?? []), ...(record.governanceNotes ?? [])].join(
+      " ",
+    );
+    // Every item of the batch-84 preserved inventory is resolved to a
+    // PubMed-verified PMID, so a future reopening needs no re-search:
+    //   29494005 the chapter titled for Gamekeeper's Thumb; 20215892, 8623701,
+    //   24590986 the single-injury-category reviews; 24126337, 24185690,
+    //   37294237 the prospective surgical-repair series; 27117126, 23615487,
+    //   38488512 the long-term primary-repair outcomes; 9922540, 10194010 the
+    //   avulsion-fragment morphologic studies behind the catalog gap.
+    const inventory = [
+      "29494005",
+      "20215892",
+      "8623701",
+      "24590986",
+      "24126337",
+      "24185690",
+      "37294237",
+      "27117126",
+      "23615487",
+      "38488512",
+      "9922540",
+      "10194010",
+    ];
+    for (const pmid of inventory) {
+      expect(notes, `preserved PMID ${pmid} missing from the record`).toContain(
+        `PMID ${pmid}`,
+      );
+    }
+    // The completion is a record, not a licence to register: the ME-29
+    // reserved-evidence rule keeps all of it unregistered until the one
+    // future authoring pass under the canonical entry adjudicates it.
+    expect(notes).toMatch(/REMAINS UNREGISTERED/i);
+    expect(notes).toMatch(/ME-29 reserved-evidence rule/i);
+    expect(notes).toMatch(/one future authoring pass/i);
+    expect(notes).toMatch(/superseded as to SOURCE IDENTITY/i);
+    expect(record.suggestions).toEqual([]);
+
+    const pointerNotes = entry("skier-s-thumb")?.reviewNotes.join(" ") ?? "";
+    expect(pointerNotes).toMatch(/PRESERVED-EVIDENCE RECORD COMPLETED/i);
+    expect(pointerNotes).toContain("29494005");
+
+    const sourcesText = fs.readFileSync(
+      path.join(process.cwd(), "data", "evidence", "master-sources.json"),
+      "utf8",
+    );
+    for (const pmid of inventory) {
+      expect(sourcesText, `preserved PMID ${pmid} leaked into the registry`).not.toContain(
+        `pmid-${pmid}`,
+      );
+      expect(sourcesText, `preserved PMID ${pmid} leaked into the registry`).not.toContain(
+        `PMID ${pmid}`,
+      );
+    }
+  });
 });
