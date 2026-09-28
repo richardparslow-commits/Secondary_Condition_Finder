@@ -5380,3 +5380,55 @@ form, only the 2 new edges and their 6 new citations recomputed.
 **500 edges / 1,288 reference rows**; dashboard at **1,288** pending rows across **54 batches** and **1,114** distinct
 sources. Draft-singles **stays at 305**. CRG at review 13/13 and redundancy 28/28, zero violations, 4 bidirectional
 pairs (unchanged). Backlog after batch 88: **61** (unchanged — this batch was not backlog-driven).
+
+---
+
+## Identity review 2026-09-28 — `eczema` / `atopic-dermatitis-eczema` consolidation requested, resolved as a scope split
+
+A consolidation of the two supposedly duplicate identities was requested. **The merge was investigated and
+rejected on the registered evidence, and the identity-duplication finding is retracted as erroneous.** No identity
+was added, retired, merged or renamed; the frozen identity contract is unmoved and no count pin changed.
+
+**Why the merge was rejected.** Batches 80 and 82 recorded these two as `IDENTITY-DUPLICATION` — "open identities
+for the same disease" — and the `eczema` knowledge-base file called the identity "a common clinical synonym for
+atopic dermatitis rather than a distinct disease process". **Neither batch read the edge that disproves it.** Both
+identities carry a qualified-human-verified route, and the routes are about different diseases:
+
+| Identity | Verified route | What it claims | Verified |
+|---|---|---|---|
+| `eczema` | `psoriasis` → `eczema` | **Paradoxical eczema from biologic therapy for psoriasis** (JAMA Dermatol. 2024;160(1):71-79, PMID 38055239), `POST_SURGICAL_OR_TREATMENT` | 2026-08-19 |
+| `atopic-dermatitis-eczema` | `atopic-dermatitis-eczema` → `asthma` | **Atopic dermatitis phenotypes → subsequent asthma**, the atopic march (J Am Acad Dermatol. 2022;86(2):365-372, PMID 34384834), `IMMUNE_MEDIATED` | 2026-09-02 |
+
+Paradoxical eczema is a **drug-induced eczematous eruption** and is **not** atopic dermatitis. Each merge direction
+therefore damages one of two human-approved mappings: into `atopic-dermatitis-eczema` would assert that *biologic
+therapy causes atopic dermatitis*; into `eczema` would assert that *eczema in general causes asthma*, widening past
+the atopic-dermatitis-phenotype evidence. Preserving existing mappings was the governing constraint, so the request
+was resolved as a **scope split**.
+
+**Scope boundary recorded.** `eczema` owns the generic and iatrogenic eczematous eruptions including paradoxical
+eczema; `atopic-dermatitis-eczema` owns the atopic-disease route. No claim routed to either may be extended to the
+other's scope. The cross-reference is recorded on both catalog entries and both knowledge-base files, and aliases
+were tightened so the names resolve *distinctly* rather than to one another's scope: `eczema` gained `paradoxical
+eczema` and `drug-induced eczema`, `atopic-dermatitis-eczema` gained `atopic dermatitis`.
+
+**A reopening condition this repository had already set is now met.** The `eczema` file's own note defined its
+reopening condition as "a condition-specific pathway with its own published evidence base distinct from the
+atopic-dermatitis literature (for example, an eczema-specific cohort outcome not explained by the AD evidence)".
+The verified paradoxical-eczema biologic-registry route is exactly that, so the batch-27 duplicate-scope deferral
+is **closed** rather than left pending — the same identity, governed by its own stated rule.
+
+**Why this did not need the versioned migration.** `docs/condition-catalog.md` requires a versioned migration
+design for any identity retirement, merge or replacement that would move the frozen 813/813 contract. Because the
+outcome here is *two distinct identities retained* rather than a consolidation, no stable ID changed and one-to-one
+catalog/KB integrity is preserved, so this is a bounded maintenance edit. It is worth recording explicitly that
+this is the *third* time the intended move was a merge and the evidence refused it: `spermatocele` vs
+`epididymal-cyst` in batch 86 and `stevens-johnson-syndrome` vs `toxic-epidermal-necrolysis` in batch 87 were both
+recorded as finer-than-evidence tensions rather than resolved. The pattern now runs both ways — the catalog has
+been coarser than the evidence (`eczema`, `rotator-cuff-tear`, `skier-s-thumb`) and finer
+(`spermatocele`, `stevens-johnson-syndrome`) — so **name-level duplication is a poor predictor of entity-level
+duplication and should not be dispositioned without reading the registered edges first.** That is the durable
+lesson and the reason this disposition is written where the next curator will find it.
+
+**Open follow-up, deliberately not resolved here.** The batch-80 withholding of `ptsd` → `eczema` and
+`anxiety-disorder` → `eczema` rested partly on this same identity-duplication premise. Those routes should be
+re-screened on their own evidence; that is a mapping task, not part of this disposition.

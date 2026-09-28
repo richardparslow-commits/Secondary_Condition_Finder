@@ -87,7 +87,10 @@
     {
       "id": "eczema",
       "name": "Eczema",
-      "aliases": [],
+      "aliases": [
+        "paradoxical eczema",
+        "drug-induced eczema"
+      ],
       "bodySystem": "Skin Conditions",
       "ratingSchedule": [
         {
@@ -96,7 +99,9 @@
           "verified": false
         }
       ],
-      "reviewNotes": []
+      "reviewNotes": [
+        "SCOPE SPLIT 2026-09-28, and the former IDENTITY-DUPLICATION finding against atopic-dermatitis-eczema is RETRACTED as erroneous at the evidence level. This identity is NOT a synonym for atopic dermatitis and the two are deliberately NOT consolidated. This identity owns the generic and iatrogenic eczematous eruptions; its registered route is psoriasis -> eczema at POST_SURGICAL_OR_TREATMENT, which is PARADOXICAL ECZEMA INDUCED BY BIOLOGIC THERAPY FOR PSORIASIS (JAMA Dermatol. 2024;160(1):71-79, PMID 38055239, qualified-human verified 2026-08-19), whose own guard states that eczema must not be inferred from psoriasis itself and that exposure to the implicated biologic is required. Paradoxical eczema is a drug-induced eczematous eruption and is not atopic dermatitis. CROSS-REFERENCE: the atopic-disease route is owned by the sibling identity atopic-dermatitis-eczema in skin-expansion-wave-6.json, which carries the atopic-march edge to asthma; a reviewer must not merge the two, and a claim routed here must not be extended to atopic dermatitis or vice versa."
+      ]
     },
     {
       "id": "fungal-skin-infection",
