@@ -16,16 +16,16 @@
     "citationPromotionMustAtomicallyUpdateKbAndMasterSourceState": true
   },
   "counts": {
-    "liveSourceReferenceUses": 1569,
+    "liveSourceReferenceUses": 1596,
     "activeSourceEntities": 346,
-    "pendingVerificationSourceEntities": 1028,
+    "pendingVerificationSourceEntities": 1048,
     "activeClinicalSourceEntities": 345,
-    "pendingClinicalSourceEntities": 1028,
+    "pendingClinicalSourceEntities": 1048,
     "activeLegalAuthorityEntities": 1,
     "retiredOnlySourceEntities": 1,
     "supersededUnverifiedSourceEntities": 7,
     "bibliographicCorrectionOnlyEntities": 1,
-    "totalSourceEntitiesIncludingLineage": 1383,
+    "totalSourceEntitiesIncludingLineage": 1403,
     "retiredVerifiedRelationshipSourceUses": 6
   },
   "retirementLedger": {
@@ -51042,6 +51042,755 @@
       "retiredUses": [],
       "rawReferenceHashes": [
         "e0117a086b55f0b4b38ddb1f71ae467766d38246398707be2ea1a01081f00f3f"
+      ]
+    },
+    {
+      "sourceId": "pmid-9848599",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "9848599",
+      "doi": null,
+      "canonicalCitation": "Handelberg F, Willems S, Shahabpour M, et al. SLAP lesions: a retrospective multicenter study. Arthroscopy. 1998 Nov-Dec;14(8):856-62. PMID 9848599.",
+      "citationVariants": [
+        "Handelberg F, Willems S, Shahabpour M, et al. SLAP lesions: a retrospective multicenter study. Arthroscopy. 1998 Nov-Dec;14(8):856-62. PMID 9848599."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/9848599/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/9848599/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-27"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-slap-tear-to-shoulder-condition",
+          "primaryId": "slap-tear",
+          "targetId": "shoulder-condition",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "e9bbb9d9fe0fceae832361b2fefc8c78c52a8e21a6e82f0ffcbf0c082c3c1afc"
+      ]
+    },
+    {
+      "sourceId": "pmid-35063641",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "35063641",
+      "doi": "10.1016/j.jse.2021.12.022",
+      "canonicalCitation": "Steinmetz RG, Guth JJ, Matava MJ, et al. Return to play following nonsurgical management of superior labrum anterior-posterior tears: a systematic review. J Shoulder Elbow Surg. 2022 Jun;31(6):1323-1333. doi: 10.1016/j.jse.2021.12.022. PMID 35063641.",
+      "citationVariants": [
+        "Steinmetz RG, Guth JJ, Matava MJ, et al. Return to play following nonsurgical management of superior labrum anterior-posterior tears: a systematic review. J Shoulder Elbow Surg. 2022 Jun;31(6):1323-1333. doi: 10.1016/j.jse.2021.12.022. PMID 35063641."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35063641/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/35063641/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-27"
+      ],
+      "liveUsageCount": 2,
+      "liveUses": [
+        {
+          "relationshipId": "rel-slap-tear-to-shoulder-condition",
+          "primaryId": "slap-tear",
+          "targetId": "shoulder-condition",
+          "sourceIndex": 1
+        },
+        {
+          "relationshipId": "rel-slap-tear-to-rotator-cuff-injury",
+          "primaryId": "slap-tear",
+          "targetId": "rotator-cuff-injury",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "2ba31c7f076608cfb90e309a7d007a52ee28a08bca93498f4f06f17e6c5fbe47",
+        "964d1a7ad5653448a45476be37d8040a46c3b2546dbfaac349934ee918377e7f"
+      ]
+    },
+    {
+      "sourceId": "pmid-32579853",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "32579853",
+      "doi": "10.1177/0363546520921177",
+      "canonicalCitation": "Frantz TL, Shacklett AG, Martin AS, et al. Biceps Tenodesis for Superior Labrum Anterior-Posterior Tear in the Overhead Athlete: A Systematic Review. Am J Sports Med. 2021 Feb;49(2):522-528. doi: 10.1177/0363546520921177. PMID 32579853.",
+      "citationVariants": [
+        "Frantz TL, Shacklett AG, Martin AS, et al. Biceps Tenodesis for Superior Labrum Anterior-Posterior Tear in the Overhead Athlete: A Systematic Review. Am J Sports Med. 2021 Feb;49(2):522-528. doi: 10.1177/0363546520921177. PMID 32579853."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/32579853/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/32579853/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-27"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-slap-tear-to-shoulder-condition",
+          "primaryId": "slap-tear",
+          "targetId": "shoulder-condition",
+          "sourceIndex": 2
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "21c82172d72fe0afd94e70d03fbef3bd565cc1e493218ddced2f2296d53210ba"
+      ]
+    },
+    {
+      "sourceId": "pmid-24961444",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "24961444",
+      "doi": "10.1177/0363546514536874",
+      "canonicalCitation": "Erickson J, Lavery K, Monica J, et al. Surgical treatment of symptomatic superior labrum anterior-posterior tears in patients older than 40 years: a systematic review. Am J Sports Med. 2015 May;43(5):1274-82. doi: 10.1177/0363546514536874. PMID 24961444.",
+      "citationVariants": [
+        "Erickson J, Lavery K, Monica J, et al. Surgical treatment of symptomatic superior labrum anterior-posterior tears in patients older than 40 years: a systematic review. Am J Sports Med. 2015 May;43(5):1274-82. doi: 10.1177/0363546514536874. PMID 24961444."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/24961444/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/24961444/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-27"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-slap-tear-to-rotator-cuff-injury",
+          "primaryId": "slap-tear",
+          "targetId": "rotator-cuff-injury",
+          "sourceIndex": 1
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "793421e33f1f5c89ac48477f26da423a10b44f686e3b212943070368cba178fe"
+      ]
+    },
+    {
+      "sourceId": "pmid-35412499",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "35412499",
+      "doi": "10.5435/JAAOSGlobal-D-22-00049",
+      "canonicalCitation": "Zhou L, Gee SM, Posner MA, et al. Concomitant Glenohumeral Instability and Rotator Cuff Injury: An Epidemiologic and Case-Control Analysis in Military Cadets. J Am Acad Orthop Surg Glob Res Rev. 2022 Apr 12;6(4). doi: 10.5435/JAAOSGlobal-D-22-00049. PMID 35412499.",
+      "citationVariants": [
+        "Zhou L, Gee SM, Posner MA, et al. Concomitant Glenohumeral Instability and Rotator Cuff Injury: An Epidemiologic and Case-Control Analysis in Military Cadets. J Am Acad Orthop Surg Glob Res Rev. 2022 Apr 12;6(4). doi: 10.5435/JAAOSGlobal-D-22-00049. PMID 35412499."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35412499/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/35412499/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-27"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-slap-tear-to-rotator-cuff-injury",
+          "primaryId": "slap-tear",
+          "targetId": "rotator-cuff-injury",
+          "sourceIndex": 2
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "922a784fc55025106a9cc7da2dc563ee16f1056d3d864179a042dc7fad013886"
+      ]
+    },
+    {
+      "sourceId": "pmid-23450499",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "23450499",
+      "doi": "10.5665/sleep.2446",
+      "canonicalCitation": "Lopez R, Jaussent I, Scholz S, et al. Functional impairment in adult sleepwalkers: a case-control study. Sleep. 2013 Mar 1;36(3):345-51. doi: 10.5665/sleep.2446. PMID 23450499.",
+      "citationVariants": [
+        "Lopez R, Jaussent I, Scholz S, et al. Functional impairment in adult sleepwalkers: a case-control study. Sleep. 2013 Mar 1;36(3):345-51. doi: 10.5665/sleep.2446. PMID 23450499."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/23450499/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/23450499/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-27"
+      ],
+      "liveUsageCount": 2,
+      "liveUses": [
+        {
+          "relationshipId": "rel-sleepwalking-disorder-to-depressive-disorder",
+          "primaryId": "sleepwalking-disorder",
+          "targetId": "depressive-disorder",
+          "sourceIndex": 0
+        },
+        {
+          "relationshipId": "rel-sleepwalking-disorder-to-anxiety-disorder",
+          "primaryId": "sleepwalking-disorder",
+          "targetId": "anxiety-disorder",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "f22571b7e550d76159d156cf5a9f3f4799440f590a0fccfe6523d9b2bc670745",
+        "b3c8de208dce17c0fcb5b442eb84cf2a171ecfd385cf03428946448a01989ac4"
+      ]
+    },
+    {
+      "sourceId": "pmid-29073634",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "29073634",
+      "doi": "10.1159/000481685",
+      "canonicalCitation": "Bargiotas P, Arnet I, Frei M, et al. Demographic, Clinical and Polysomnographic Characteristics of Childhood- and Adult-Onset Sleepwalking in Adults. Eur Neurol. 2017;78(5-6):307-311. doi: 10.1159/000481685. PMID 29073634.",
+      "citationVariants": [
+        "Bargiotas P, Arnet I, Frei M, et al. Demographic, Clinical and Polysomnographic Characteristics of Childhood- and Adult-Onset Sleepwalking in Adults. Eur Neurol. 2017;78(5-6):307-311. doi: 10.1159/000481685. PMID 29073634."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/29073634/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/29073634/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-27"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-sleepwalking-disorder-to-depressive-disorder",
+          "primaryId": "sleepwalking-disorder",
+          "targetId": "depressive-disorder",
+          "sourceIndex": 1
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "f21880ea3f63876faa95f45ab0365f47490db88543ee63717d9cc0a43b7a9910"
+      ]
+    },
+    {
+      "sourceId": "pmid-39721218",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "39721218",
+      "doi": "10.1016/j.smrv.2024.102043",
+      "canonicalCitation": "Tomic T, Mombelli S, Oana S, et al. Psychopathology and NREM sleep parasomnias: A systematic review. Sleep Med Rev. 2025 Apr;80:102043. doi: 10.1016/j.smrv.2024.102043. PMID 39721218.",
+      "citationVariants": [
+        "Tomic T, Mombelli S, Oana S, et al. Psychopathology and NREM sleep parasomnias: A systematic review. Sleep Med Rev. 2025 Apr;80:102043. doi: 10.1016/j.smrv.2024.102043. PMID 39721218."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39721218/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/39721218/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-27"
+      ],
+      "liveUsageCount": 2,
+      "liveUses": [
+        {
+          "relationshipId": "rel-sleepwalking-disorder-to-depressive-disorder",
+          "primaryId": "sleepwalking-disorder",
+          "targetId": "depressive-disorder",
+          "sourceIndex": 2
+        },
+        {
+          "relationshipId": "rel-sleep-terror-disorder-to-depressive-disorder",
+          "primaryId": "sleep-terror-disorder",
+          "targetId": "depressive-disorder",
+          "sourceIndex": 2
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "69c6a45f6e5110580a9ee9d2337d45ac53dd5dbfd5b9ec9ab72a4293aa9fed5f",
+        "7e05579dafcd3ab1713fad5ee3439e4c0f0c37e70ca979dd25b6f30f3ac02f1d"
+      ]
+    },
+    {
+      "sourceId": "pmid-10221293",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "10221293",
+      "doi": null,
+      "canonicalCitation": "Ohayon MM, Guilleminault C, Priest RG. Night terrors, sleepwalking, and confusional arousals in the general population: their frequency and relationship to other sleep and mental disorders. J Clin Psychiatry. 1999 Apr;60(4):268-76; quiz 277. PMID 10221293.",
+      "citationVariants": [
+        "Ohayon MM, Guilleminault C, Priest RG. Night terrors, sleepwalking, and confusional arousals in the general population: their frequency and relationship to other sleep and mental disorders. J Clin Psychiatry. 1999 Apr;60(4):268-76; quiz 277. PMID 10221293."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/10221293/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/10221293/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-27"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-sleepwalking-disorder-to-anxiety-disorder",
+          "primaryId": "sleepwalking-disorder",
+          "targetId": "anxiety-disorder",
+          "sourceIndex": 1
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "eabf668612ddf5f58b4607eb4893befd03af17ca1cd86f696bf680e080a35446"
+      ]
+    },
+    {
+      "sourceId": "pmid-10544999",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "10544999",
+      "doi": null,
+      "canonicalCitation": "Gau SF, Soong WT. Psychiatric comorbidity of adolescents with sleep terrors or sleepwalking: a case-control study. Aust N Z J Psychiatry. 1999 Oct;33(5):734-9. PMID 10544999.",
+      "citationVariants": [
+        "Gau SF, Soong WT. Psychiatric comorbidity of adolescents with sleep terrors or sleepwalking: a case-control study. Aust N Z J Psychiatry. 1999 Oct;33(5):734-9. PMID 10544999."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/10544999/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/10544999/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-27"
+      ],
+      "liveUsageCount": 3,
+      "liveUses": [
+        {
+          "relationshipId": "rel-sleepwalking-disorder-to-anxiety-disorder",
+          "primaryId": "sleepwalking-disorder",
+          "targetId": "anxiety-disorder",
+          "sourceIndex": 2
+        },
+        {
+          "relationshipId": "rel-sleep-terror-disorder-to-depressive-disorder",
+          "primaryId": "sleep-terror-disorder",
+          "targetId": "depressive-disorder",
+          "sourceIndex": 1
+        },
+        {
+          "relationshipId": "rel-sleep-related-eating-disorder-to-anxiety-disorder",
+          "primaryId": "sleep-related-eating-disorder",
+          "targetId": "anxiety-disorder",
+          "sourceIndex": 2
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "76c4a1aa13be0cdb7602fa768c011ee561722d7e66e082e1bb36a545ec5620c0",
+        "5cd2089780ae286b267a3464f156d32321799b00220bec574e1f644ea4960e92",
+        "db094095f1371c79c9bf4138c1a1594a5c995cada290ad40e5ab7fa075c11f30"
+      ]
+    },
+    {
+      "sourceId": "pmid-41045207",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "41045207",
+      "doi": "10.1111/jsr.70207",
+      "canonicalCitation": "Laganière C, Gaudreau H, Kenny S, et al. Disorders of Arousal in Children and Associated Emotional-Behavioural Problems: Results From a Non-Clinical Longitudinal Cohort. J Sleep Res. 2026 Jun;35(3):e70207. doi: 10.1111/jsr.70207. PMID 41045207.",
+      "citationVariants": [
+        "Laganière C, Gaudreau H, Kenny S, et al. Disorders of Arousal in Children and Associated Emotional-Behavioural Problems: Results From a Non-Clinical Longitudinal Cohort. J Sleep Res. 2026 Jun;35(3):e70207. doi: 10.1111/jsr.70207. PMID 41045207."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41045207/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/41045207/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-27"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-sleep-terror-disorder-to-depressive-disorder",
+          "primaryId": "sleep-terror-disorder",
+          "targetId": "depressive-disorder",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "8cd7644c8f3a66beb17cadb51b1a6b7b1c9c796a92b6151dcf4ec64ea0f8a8d2"
+      ]
+    },
+    {
+      "sourceId": "pmid-10616953",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "10616953",
+      "doi": null,
+      "canonicalCitation": "Winkelman JW, Herzog DB, Fava M. The prevalence of sleep-related eating disorder in psychiatric and non-psychiatric populations. Psychol Med. 1999 Nov;29(6):1461-6. PMID 10616953.",
+      "citationVariants": [
+        "Winkelman JW, Herzog DB, Fava M. The prevalence of sleep-related eating disorder in psychiatric and non-psychiatric populations. Psychol Med. 1999 Nov;29(6):1461-6. PMID 10616953."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/10616953/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/10616953/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-27"
+      ],
+      "liveUsageCount": 2,
+      "liveUses": [
+        {
+          "relationshipId": "rel-sleep-related-eating-disorder-to-depressive-disorder",
+          "primaryId": "sleep-related-eating-disorder",
+          "targetId": "depressive-disorder",
+          "sourceIndex": 0
+        },
+        {
+          "relationshipId": "rel-sleep-related-eating-disorder-to-anxiety-disorder",
+          "primaryId": "sleep-related-eating-disorder",
+          "targetId": "anxiety-disorder",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "83afa434b03774a259171d144421ba727d8163d4c2af75d1b4d9e6a7b82d8531",
+        "c74dcebf33f069d4b4a40bcfe8f12903d8ac7967c7a32685c64426ac5d24fa13"
+      ]
+    },
+    {
+      "sourceId": "pmid-24424097",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "24424097",
+      "doi": "10.1016/j.sleep.2013.10.010",
+      "canonicalCitation": "Santin J, Mery V, Elso MJ, et al. Sleep-related eating disorder: a descriptive study in Chilean patients. Sleep Med. 2014 Feb;15(2):163-7. doi: 10.1016/j.sleep.2013.10.010. PMID 24424097.",
+      "citationVariants": [
+        "Santin J, Mery V, Elso MJ, et al. Sleep-related eating disorder: a descriptive study in Chilean patients. Sleep Med. 2014 Feb;15(2):163-7. doi: 10.1016/j.sleep.2013.10.010. PMID 24424097."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/24424097/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/24424097/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-27"
+      ],
+      "liveUsageCount": 2,
+      "liveUses": [
+        {
+          "relationshipId": "rel-sleep-related-eating-disorder-to-depressive-disorder",
+          "primaryId": "sleep-related-eating-disorder",
+          "targetId": "depressive-disorder",
+          "sourceIndex": 1
+        },
+        {
+          "relationshipId": "rel-sleep-related-eating-disorder-to-anxiety-disorder",
+          "primaryId": "sleep-related-eating-disorder",
+          "targetId": "anxiety-disorder",
+          "sourceIndex": 1
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "2acc5e274effcb19f29caf8dce5eaefe18672e6ac3dede2bbfb7f987a7fb28c9",
+        "555162150d653b12ff19f1aba24a924f7b6f89b1360dc1c0fb88737cecc45cd0"
+      ]
+    },
+    {
+      "sourceId": "pmid-38873533",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "38873533",
+      "doi": "10.3389/fpsyt.2024.1393337",
+      "canonicalCitation": "Vasiliu O. Current evidence and future perspectives in the exploration of sleep-related eating disorder-a systematic literature review. Front Psychiatry. 2024;15:1393337. doi: 10.3389/fpsyt.2024.1393337. PMID 38873533.",
+      "citationVariants": [
+        "Vasiliu O. Current evidence and future perspectives in the exploration of sleep-related eating disorder-a systematic literature review. Front Psychiatry. 2024;15:1393337. doi: 10.3389/fpsyt.2024.1393337. PMID 38873533."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38873533/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/38873533/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-27"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-sleep-related-eating-disorder-to-depressive-disorder",
+          "primaryId": "sleep-related-eating-disorder",
+          "targetId": "depressive-disorder",
+          "sourceIndex": 2
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "61304f0b37e3b02e2499e76ae9d7dfb97aeb33aec85e6be4ce1d602cc98e9cb0"
+      ]
+    },
+    {
+      "sourceId": "pmid-42434252",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "42434252",
+      "doi": "10.21037/jgo-2025-1-999",
+      "canonicalCitation": "Atodaria KP, Patel A, Kottapalli N, et al. Rising prevalence of venous thromboembolism in gastrointestinal cancers: a nationwide analysis of 205 million hospitalizations, 2016-2022. J Gastrointest Oncol. 2026 Jun 30;17(3):145. doi: 10.21037/jgo-2025-1-999. PMID 42434252.",
+      "citationVariants": [
+        "Atodaria KP, Patel A, Kottapalli N, et al. Rising prevalence of venous thromboembolism in gastrointestinal cancers: a nationwide analysis of 205 million hospitalizations, 2016-2022. J Gastrointest Oncol. 2026 Jun 30;17(3):145. doi: 10.21037/jgo-2025-1-999. PMID 42434252."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42434252/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/42434252/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-27"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-small-intestine-cancer-to-deep-vein-thrombosis",
+          "primaryId": "small-intestine-cancer",
+          "targetId": "deep-vein-thrombosis",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "631c8addfb061de8d30b23b5ded7e231b747546331517658c4b77036d3d0c0b2"
+      ]
+    },
+    {
+      "sourceId": "pmid-39780085",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "39780085",
+      "doi": "10.1186/s12889-025-21279-5",
+      "canonicalCitation": "Zhang Y, Zeng S, Wang Z, et al. Cardiovascular mortality risk among small bowel adenocarcinoma patients: a population-based study. BMC Public Health. 2025 Jan 8;25(1):97. doi: 10.1186/s12889-025-21279-5. PMID 39780085.",
+      "citationVariants": [
+        "Zhang Y, Zeng S, Wang Z, et al. Cardiovascular mortality risk among small bowel adenocarcinoma patients: a population-based study. BMC Public Health. 2025 Jan 8;25(1):97. doi: 10.1186/s12889-025-21279-5. PMID 39780085."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39780085/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/39780085/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-27"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-small-intestine-cancer-to-deep-vein-thrombosis",
+          "primaryId": "small-intestine-cancer",
+          "targetId": "deep-vein-thrombosis",
+          "sourceIndex": 1
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "69de01cd0e68c462056e7bd9ac13f777eeff5fb8c897a4848b4a01b85990fe9a"
+      ]
+    },
+    {
+      "sourceId": "pmid-40191948",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "40191948",
+      "doi": "10.1002/ijc.35379",
+      "canonicalCitation": "Wu H, Yang X, Guo W. Survival outcomes in small intestine tumors: The role of duodenum, jejunum, and ileum. Int J Cancer. 2025 Aug 1;157(3):445-454. doi: 10.1002/ijc.35379. PMID 40191948.",
+      "citationVariants": [
+        "Wu H, Yang X, Guo W. Survival outcomes in small intestine tumors: The role of duodenum, jejunum, and ileum. Int J Cancer. 2025 Aug 1;157(3):445-454. doi: 10.1002/ijc.35379. PMID 40191948."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40191948/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/40191948/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-27"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-small-intestine-cancer-to-deep-vein-thrombosis",
+          "primaryId": "small-intestine-cancer",
+          "targetId": "deep-vein-thrombosis",
+          "sourceIndex": 2
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "f5099400c048e2e55cfdaf93e8f8f4f1e3251ebd230f582036fefae8398e5c6a"
+      ]
+    },
+    {
+      "sourceId": "pmid-34531134",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "34531134",
+      "doi": "10.1016/j.ajg.2021.07.003",
+      "canonicalCitation": "Manley J, Ibrahim Y, Ansell J, et al. Small bowel adenocarcinoma: Case reports and review of the literature. Arab J Gastroenterol. 2021 Sep;22(3):240-245. doi: 10.1016/j.ajg.2021.07.003. PMID 34531134.",
+      "citationVariants": [
+        "Manley J, Ibrahim Y, Ansell J, et al. Small bowel adenocarcinoma: Case reports and review of the literature. Arab J Gastroenterol. 2021 Sep;22(3):240-245. doi: 10.1016/j.ajg.2021.07.003. PMID 34531134."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34531134/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/34531134/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-27"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-small-intestine-cancer-to-anemia",
+          "primaryId": "small-intestine-cancer",
+          "targetId": "anemia",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "05153068b5698a08d8711ccde2c39080c0e57c55cee11aeccc9a99c2ca14f9e0"
+      ]
+    },
+    {
+      "sourceId": "pmid-42367528",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "42367528",
+      "doi": "10.7759/cureus.109740",
+      "canonicalCitation": "Iqbal H. Diagnostic Yield After Negative Bidirectional Endoscopy for Iron Deficiency Anaemia: A Single-Centre Audit of Downstream Investigations in the UK Two-Week-Wait Pathway. Cureus. 2026 May;18(5):e109740. doi: 10.7759/cureus.109740. PMID 42367528.",
+      "citationVariants": [
+        "Iqbal H. Diagnostic Yield After Negative Bidirectional Endoscopy for Iron Deficiency Anaemia: A Single-Centre Audit of Downstream Investigations in the UK Two-Week-Wait Pathway. Cureus. 2026 May;18(5):e109740. doi: 10.7759/cureus.109740. PMID 42367528."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42367528/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/42367528/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-27"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-small-intestine-cancer-to-anemia",
+          "primaryId": "small-intestine-cancer",
+          "targetId": "anemia",
+          "sourceIndex": 1
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "3512a44c4f1cedc1d47ba4ed00b89b52f4f6403ad3b92522dccdabde7aedbabd"
+      ]
+    },
+    {
+      "sourceId": "pmid-42281724",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "42281724",
+      "doi": "10.7759/cureus.108649",
+      "canonicalCitation": "Ahmadi F, Touza G, Afram R, et al. Duodenal Neuroendocrine Tumor Presenting as Iron Deficiency Anemia in an Older Adult. Cureus. 2026 May;18(5):e108649. doi: 10.7759/cureus.108649. PMID 42281724.",
+      "citationVariants": [
+        "Ahmadi F, Touza G, Afram R, et al. Duodenal Neuroendocrine Tumor Presenting as Iron Deficiency Anemia in an Older Adult. Cureus. 2026 May;18(5):e108649. doi: 10.7759/cureus.108649. PMID 42281724."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42281724/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/42281724/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-27"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-small-intestine-cancer-to-anemia",
+          "primaryId": "small-intestine-cancer",
+          "targetId": "anemia",
+          "sourceIndex": 2
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "1461511cf655b535b6edd494e7d2b0439a588563381a5dd7893c12ac6f47d6bc"
       ]
     }
   ],
