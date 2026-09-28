@@ -69,8 +69,8 @@ describe("Mapping Expansion ME-13 local implementation",()=>{
   it("pins the ME-13 citation-verified aggregate state",()=>{
     const maps=fs.readdirSync(path.join(ROOT,"data","knowledge-base")).filter((f)=>f.endsWith(".json")).map((f)=>load<Mapping>(path.join(ROOT,"data","knowledge-base",f)));
     const refs=maps.flatMap((m:Mapping)=>m.suggestions.flatMap((s:Suggestion)=>s.sourceReferences||[])); const clinical=refs.filter((r:SourceReference)=>r.verificationScope==="clinical-evidence");
-    expect(maps.reduce((n:number,m:Mapping)=>n+m.suggestions.length,0)).toBe(790);
-    expect(maps.filter((m:Mapping)=>m.draft===false&&m.suggestions.length===1)).toHaveLength(67); expect(maps.filter((m:Mapping)=>m.draft===false&&m.suggestions.length>=2)).toHaveLength(73); expect(maps.filter((m:Mapping)=>m.draft === true && m.suggestions.length === 1)).toHaveLength(302);
-    expect(refs).toHaveLength(1460); expect(refs.filter((r:SourceReference)=>r.verified===true)).toHaveLength(383); expect(refs.filter((r:SourceReference)=>r.verified===false)).toHaveLength(1077); expect(clinical).toHaveLength(1455);
+    expect(maps.reduce((n:number,m:Mapping)=>n+m.suggestions.length,0)).toBe(791);
+    expect(maps.filter((m:Mapping)=>m.draft===false&&m.suggestions.length===1)).toHaveLength(67); expect(maps.filter((m:Mapping)=>m.draft===false&&m.suggestions.length>=2)).toHaveLength(73); expect(maps.filter((m:Mapping)=>m.draft === true && m.suggestions.length === 1)).toHaveLength(301);
+    expect(refs).toHaveLength(1463); expect(refs.filter((r:SourceReference)=>r.verified===true)).toHaveLength(383); expect(refs.filter((r:SourceReference)=>r.verified===false)).toHaveLength(1080); expect(clinical).toHaveLength(1458);
   });
 });

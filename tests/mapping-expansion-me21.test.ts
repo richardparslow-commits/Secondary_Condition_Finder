@@ -69,9 +69,9 @@ describe("Mapping Expansion ME-21 local implementation", () => {
     const sources = load<SourceRegistry>(path.join(ROOT, "data/evidence/master-sources.json"));
     expect(relationships.baselineCommit).toBe("ea005e50ccbc30800dd46f3872f764f98e977c1f");
     expect(relationships.currentState).toBe("D1-DRAFT-AUTHORED");
-    expect(relationships.counts).toEqual({ relationships: 790, explicitPublicationGuards: 716, legacyRationaleBoundaries: 74 });
+    expect(relationships.counts).toEqual({ relationships: 791, explicitPublicationGuards: 717, legacyRationaleBoundaries: 74 });
     expect(sources.currentState).toBe("D1-DRAFT-AUTHORED");
-    expect(sources.counts).toMatchObject({ liveSourceReferenceUses: 1460, pendingVerificationSourceEntities: 950, totalSourceEntitiesIncludingLineage: 1305, });
+    expect(sources.counts).toMatchObject({ liveSourceReferenceUses: 1463, pendingVerificationSourceEntities: 953, totalSourceEntitiesIncludingLineage: 1308, });
     for (const row of rows) {
       const relationship = relationships.relationships.find((item) => item.relationshipId === `rel-${row.primaryId}-to-${row.targetId}`);
       expect(relationship?.primaryPublicationState).toBe("draft");
@@ -87,11 +87,11 @@ describe("Mapping Expansion ME-21 local implementation", () => {
     const mappings = files.map((file) => load<Mapping>(path.join(ROOT, "data/knowledge-base", file)));
     const references = mappings.flatMap((mapping) => mapping.suggestions.flatMap((suggestion) => suggestion.sourceReferences));
     expect(files).toHaveLength(813);
-    expect(mappings.reduce((total, mapping) => total + mapping.suggestions.length, 0)).toBe(790);
+    expect(mappings.reduce((total, mapping) => total + mapping.suggestions.length, 0)).toBe(791);
     expect(mappings.filter((mapping) => mapping.draft === false)).toHaveLength(140);
-    expect(mappings.filter((mapping) => mapping.draft === true && mapping.suggestions.length === 1)).toHaveLength(302);
-expect(references).toHaveLength(1460);
+    expect(mappings.filter((mapping) => mapping.draft === true && mapping.suggestions.length === 1)).toHaveLength(301);
+expect(references).toHaveLength(1463);
     expect(references.filter((reference) => reference.verified === true)).toHaveLength(383);
-expect(references.filter((r) => r.verified === false)).toHaveLength(1077);
+expect(references.filter((r) => r.verified === false)).toHaveLength(1080);
   });
 });

@@ -4468,3 +4468,124 @@ was authored with exactly one suggestion). Residue clean outside the standing be
 coincidences (apply-all-94's historical `explicitPublicationGuards: 273`; wave-5's
 `toBeGreaterThanOrEqual(276)` catalog floor; legal-copy's `38 U.S.C. § 1117` statute text).
 Standing recommendation: batch 79 lands through branch, PR, CI, and merge.
+
+## Mapping Expansion D1 batch 80 (2026-09-27) — research-sourced
+
+The first batch not drawn from the zero-suggestion authoring backlog. Its input was an
+external set of 23 adjudication-search research files (1.0 MB) proposing 129 secondary
+mappings, screened under the standing rule that a Board grant is authority for what may
+be awarded rather than evidence of what the medicine shows.
+
+**Provenance finding.** All 129 source references across the 23 files are BVA decision
+letters (`va.gov/vetapp*`), with no PubMed citation anywhere in the set. Run through the
+repository's own `classifySourceReference`, those URLs return `confidence: "unknown"` —
+"no reliable source-type signal was detected." The `va-adjudication-guidance` category
+that does exist is scoped narrowly to M21-1 and the Adjudication Procedures Manual, not
+to individual decisions. Several of the mappings rest expressly on benefit-of-the-doubt
+and symptom overlap rather than demonstrated causation. None of the 129 was registered.
+
+**Yield.** Of 87 distinct proposed mappings, 37 resolved to catalog identity pairs, 5
+remained open after alias resolution, and the remainder were decision-specific diagnostic
+labels ("depression secondary to bilateral knee DJD"), rating-code artifacts such as
+`chronic-fatigue-syndrome-dc6354-100pct-1718160`, or pairs already registered
+(`ptsd→sleep-apnea`, `tinnitus→depressive-disorder`, `depressive-disorder→sleep-apnea`,
+`erectile-dysfunction→depressive-disorder`).
+
+### Authored (1 edge, 3 references, 3 new PMIDs)
+
+- `bipolar-disorder -> hypothyroidism` (rank 2, PHARMACOLOGICAL_IATROGENIC, lithium):
+  the Hong Kong incident-bipolar population cohort of 4,752 individuals with mean 8.4-year
+  follow-up reports hypothyroidism adjusted hazard ratio 2.00 (95 percent CI 1.72-2.33)
+  against non-lithium treatment, a dose-response gradient at higher serum levels (2.08,
+  1.67-2.59), reduced thyroid risk with valproate, olanzapine, quetiapine, and risperidone,
+  and derived serum-level thresholds near 0.50 mEq per litre (PMID 39932712); the Oxford
+  three-decade laboratory analysis reports hypothyroidism hazard ratio 2.31 (95 percent CI
+  2.05-2.60) with women under 60 at greatest risk (PMID 26003379); and the US nine-therapy
+  competing-risk analysis of 24,574 patients is registered as an explicit **counterweight**
+  rather than as support, reporting overlapping error bars across all nine therapies, no
+  statistical difference from quetiapine, and 2.26- to 3.05-fold greater hypothyroidism
+  surveillance on lithium (PMID 27226264). Lithium is named as the proximate agent in the
+  mechanism, the causation status, the evidence gaps, and the alternatives, because the
+  exposure in all three anchors is the prescribed medication rather than the psychiatric
+  condition. The edge extends the file's own existing rank 1 PHARMACOLOGICAL_IATROGENIC
+  convention; the target identity had seven registered incoming edges, all disease-mediated,
+  with none medication-mediated. Nulls carried openly: no association with CKD4+ or ESKD
+  despite the stage 3 signal, and nulls for hyperthyroidism and raised adjusted calcium,
+  which establish specificity for hypothyroidism.
+
+### Withheld, with the evidence recorded
+
+- `bipolar-disorder -> chronic-kidney-disease` — **duplicate-scope, disclosed**. The
+  lithium-to-kidney route is already owned by the registered `renal-toxicity ->
+  chronic-kidney-disease` edge, which registered the Swedish lithium new-user
+  active-comparator cohort (PMID 37418264). The located lithium-to-kidney anchors here are
+  the same drug-to-organ pair from a psychiatric indication. Left untouched per ME-29.
+- `ptsd -> hypothyroidism` — **shared-route**. Identical lithium-to-thyroid drug-outcome
+  pair, differing only in prescribing indication.
+- `ptsd -> psoriasis` — withheld on the anchor's **own null**. The 2018 systematic review
+  and meta-analysis of 39 studies and 32,537 patients concludes there is "no convincing
+  evidence" that preceding stress is strongly associated with exacerbation or onset of
+  psoriasis; the only study evaluating a *documented stress disorder* reported OR 1.2
+  (95 percent CI 0.8-1.8) between patients and controls, four of six exacerbation studies
+  found comparable rates, and the single prospective cohort found a modest correlation
+  (r = 0.28) (PMID 29124739). A 2026 systematic review reporting associations for psoriasis,
+  atopic dermatitis, alopecia areata, and chronic urticaria is carried openly as the
+  counter-current, including its own statement that longitudinal studies are needed to
+  clarify temporal relationships (PMID 42179055).
+- `ptsd -> alopecia-areata` — withheld on the anchor's own null: across 61 patients and 60
+  matched controls there was **no difference** in physical or sexual stressful lifetime
+  events, with positivity confined to emotional stressing events and small subgroup
+  differences on two questionnaire items (PMID 23317485).
+- `ptsd -> eczema` and `anxiety-disorder -> eczema` — withheld on **identity-duplication**
+  plus evidence class. The catalog carries both `eczema` and `atopic-dermatitis-eczema` as
+  open identities for the same disease, both with zero incoming edges, so registering a
+  stress-to-eczema edge would immediately raise which identity owns it. The best located
+  anchor is an acute experimental stress-and-scratch study, not an onset or severity
+  outcome.
+- `depressive-disorder -> restless-leg-syndrome` (antidepressant route) — withheld on
+  **directly conflicting anchors**. The systematic review of 18 prospective studies finds
+  onset or exacerbation of restless legs syndrome and rise in periodic limb movements
+  *uncommon* after antidepressant initiation, with mirtazapine possibly an exception
+  (PMID 28822709); the French pharmacovigilance case/noncase study reports a reporting
+  odds ratio of 15.9 (6.4-39.7) for antidepressants (PMID 23131889), but spontaneous-
+  reporting bias and confounding by indication are unaddressed. Restless legs syndrome has
+  zero registered incoming edges, so the pair remains open pending a design that separates
+  these.
+- `fibromyalgia -> chronic-fatigue-syndrome` — withheld as **zero record**. The source file
+  itself documents the Board expressly *avoiding* pyramiding by separating the two
+  conditions on symptom groups, which is a rating-separation exercise rather than a
+  claimed secondary relationship.
+
+### Tenth evidence-preserving refusal
+
+- `schizophrenia -> tardive-dyskinesia` — **missing identity**. Tardive dyskinesia is the
+  canonical iatrogenic movement disorder of dopamine-receptor-blocking agents and has
+  strong cohort evidence, but the catalog carries no tardive-dyskinesia identity. Evidence
+  preserved: 42.4 percent of 92 antipsychotic-treated patients completing 10-year follow-up
+  had at least one tardive-syndrome episode, with tardive dyskinesia the most prevalent
+  subtype at 51.3 percent and a 74.3 percent remission rate (PMID 37424417); 13.6 percent
+  of Medicaid patients with schizophrenia had extrapyramidal-symptom evidence within 12
+  months of second-generation antipsychotic initiation (PMID 39240484); 6.3 percent
+  incident tardive dyskinesia in a late-life depression cohort (PMID 42030922). Count
+  rises from nine to ten.
+
+### Catalog gaps recorded without numbering
+
+Lithium-associated nephrogenic diabetes insipidus; the `eczema` / `atopic-dermatitis-eczema`
+identity duplication; and the rating-code artifacts in the source set, which are rating
+outputs rather than conditions and are not catalog candidates.
+
+### Counters
+
+791 relationships (717 explicit, 74 legacy) · 1,308 sources (953 pending-verification) ·
+1,463 references · 1,080 unverified · backlog unchanged at 95 (this batch was not
+backlog-sourced) · packet 428 worksheets / 1,080 rows · dashboard 1,080 rows / 952
+sources / 45 batches. Test-token sweep covered 54 files and 316 tokens with 0 suspicious;
+the `Array.from({ length: 1080 })` debt fixture carried automatically for the twentieth
+consecutive batch. **Draft-singles moves 302 → 301** for the first time in the program,
+because extending bipolar-disorder from one suggestion to two removes it from the
+single-suggestion set; the sweep map reverses that token accordingly. CRG unchanged at
+reviewDebt 13/13 and redundancy 28/28, violations 0, bidirectional pairs 4 — the new edge
+introduced no redundancy class.
+
+Standing recommendation: batch 80 lands through branch, PR, CI, and merge.

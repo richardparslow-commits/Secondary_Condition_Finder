@@ -15421,6 +15421,46 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 **Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
 
+### `bipolar-disorder` → `hypothyroidism` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Lithium treatment in bipolar disorder carries a quantified, dose-related risk of hypothyroidism across three independent designs, while the risk is specific to lithium among the mood stabilisers and antipsychotics used for the same indication: the 2025 population-based retrospective cohort of incident bipolar disorder in Hong Kong (4,752 individuals with analysable hypothyroidism data, mean follow-up 8.4 years) reports lithium associated with increased hypothyroidism risk against non-lithium treatment (adjusted hazard ratio 2.00, 95 percent CI 1.72-2.33), with higher lithium serum levels associated with still greater risk (adjusted hazard ratio 2.08, 95 percent CI 1.67-2.59) and with valproate, olanzapine, quetiapine, and risperidone generally showing reduced likelihood of thyroid dysfunction compared with lithium, the same analysis deriving serum-level thresholds of approximately 0.50 mEq per litre for hypothyroidism, 0.50 for hyperthyroidism, and 0.59 for stage 3 or higher chronic kidney disease (PMID 39932712); the 2015 Oxford retrospective analysis of laboratory data over more than three decades reports that adjusting for age, sex, and diabetes, the presence of lithium in serum was associated with hypothyroidism (hazard ratio 2.31, 95 percent CI 2.05-2.60; p<0.0001) and with hypercalcaemia (1.43, 1.21-1.69) and stage 3 chronic kidney disease (1.93, 1.76-2.12) but NOT with hyperthyroidism (1.22, 95 percent CI 0.96-1.55; p=0.1010) or raised adjusted calcium (1.08, 0.88-1.34; p=0.4602), with women under 60 at greatest risk and higher-than-median lithium concentrations associated with increased risk of all adverse outcomes (PMID 26003379); and the 2016 competing-risk analysis of 24,574 US patients with bipolar disorder reports a four-year cumulative hypothyroidism risk of 8.8 percent on lithium against 6.3 percent on oxcarbazepine, the lowest-risk therapy, a 1.39-fold difference, while documenting that lithium was NOT statistically different from quetiapine, that hypothyroid risk error bars overlapped for all nine therapies, and that patients on lithium were tested for hypothyroidism 2.26 to 3.05 times more frequently than those on other treatments (PMID 27226264); recorded as documented association only with the treatment-mediated, detection-bias, and direction limits carried openly - this is an iatrogenic route in which the medication rather than the psychiatric condition is the proximate agent, and the single largest located cohort reports overlapping error bars across all nine therapies alongside differential surveillance intensity.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation of hypothyroidism is established for any individual: the located anchors are cohort designs in which the exposure is prescribed lithium rather than the psychiatric condition itself, the US competing-risk anchor reports that lithium was not statistically significantly different from quetiapine and that error bars overlapped for all nine therapies, that same anchor documents 2.26 to 3.05-fold greater hypothyroidism testing on lithium which inflates measured incidence, the Oxford anchor shows the effect is specific to hypothyroidism with hyperthyroidism and adjusted-calcium outcomes null, and bipolar disorder carries its own independent thyroid autoimmunity signal so disease and treatment cannot be separated within these designs; individual claims require dated lithium start, stop, dose, and serum-level history with dated thyroid studies before and after initiation, a documented lithium-free or alternative-mood-stabiliser interval where one exists, and exclusion of autoimmune thyroiditis, iodine exposure, prior thyroid radioiodine or surgery, pituitary disease, and non-prescribed lithium sources.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 428.1 — Chan JKN, Solmi M, Correll CU, et al. Lithium for Bipolar Disorder and Risk of Thyroid Dysfunction and Chronic Kidney Disease JAMA Netw Open. 2025 Feb 3;8(2):e2458608. PMID 39932712.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/39932712/
+- Source checked on: 2026-09-27
+- Locator: JAMA Netw Open. 2025;8(2):e2458608. Population-based retrospective cohort, 4,752 individuals with analyzable hypothyroidism data, mean follow-up 8.4 years; abstract states lithium was associated with increased risk of hypothyroidism (aHR 2.00; 95% CI 1.72-2.33) and CKD3+ (1.35; 1.15-1.60), but not CKD4+ or ESKD, and that valproate, olanzapine, quetiapine, and risperidone generally exhibited reduced likelihood of thyroid dysfunction compared with lithium.
+- Note under review: Population-based retrospective cohort of incident bipolar disorder in Hong Kong reporting lithium associated with hypothyroidism (adjusted hazard ratio 2.00, 95 percent CI 1.72-2.33) versus non-lithium treatment, a higher-risk gradient with higher serum levels (2.08, 1.67-2.59), reduced thyroid risk with valproate, olanzapine, quetiapine, and risperidone, and derived serum-level thresholds.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 428.2 — Shine B, McKnight RF, Leaver L, et al. Long-term effects of lithium on renal, thyroid, and parathyroid function: a retrospective analysis of laboratory data Lancet. 2015 Aug 1;386(9992):461-8. PMID 26003379.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/26003379/
+- Source checked on: 2026-09-27
+- Locator: Lancet. 2015;386(9992):461-8. Retrospective laboratory-data analysis, Oxford University Hospitals NHS Trust, Oct 1982 to Mar 2014; abstract states adjusted hypothyroidism HR 2.31 (2.05-2.60; p<0.0001), hyperthyroidism 1.22 (0.96-1.55; p=0.1010), and that women younger than 60 and people with above-median lithium concentrations are at greatest risk.
+- Note under review: Retrospective analysis of over three decades of laboratory data reporting lithium in serum associated with hypothyroidism (hazard ratio 2.31, 95 percent CI 2.05-2.60), stage 3 chronic kidney disease (1.93, 1.76-2.12), and raised total calcium (1.43, 1.21-1.69), but not hyperthyroidism (1.22, 0.96-1.55) or raised adjusted calcium (1.08, 0.88-1.34), with women under 60 at greatest risk.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 428.3 — Lambert CG, Mazurie AJ, Lauve NR, et al. Hypothyroidism risk compared among nine common bipolar disorder therapies in a large US cohort Bipolar Disord. 2016 May;18(3):247-60. PMID 27226264.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/27226264/
+- Source checked on: 2026-09-27
+- Locator: Bipolar Disord. 2016;18(3):247-60. National claims competing-risk survival analysis; abstract states lithium's four-year cumulative risk of hypothyroidism (8.8%) was 1.39-fold that of oxcarbazepine (6.3%), that lithium was non-statistically significantly different from quetiapine, that error bars overlapped for all drugs, and that patients taking lithium were tested for hypothyroidism 2.26-3.05 times more frequently than those on other treatments.
+- Note under review: Competing-risk analysis of 24,574 US patients with bipolar disorder comparing hypothyroidism risk across nine therapies, reporting a four-year cumulative risk of 8.8 percent on lithium against 6.3 percent on oxcarbazepine, no statistical difference from quetiapine, overlapping error bars across all drugs, and 2.26- to 3.05-fold greater hypothyroidism testing on lithium.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
 ## Implementation mechanics after decisions
 
 - Mapping edits and registry edits must land in lockstep (the registry audit's canonical-JSON hashes and live-use sets will fail otherwise).

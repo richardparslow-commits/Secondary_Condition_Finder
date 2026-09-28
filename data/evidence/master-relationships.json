@@ -6,8 +6,8 @@
  "installedFrom": "Master Registry Discrepancy Resolution 2026",
  "authorityBoundary": "Authoritative for current relationship direction, proposition text, guard state, source linkage, and KB parity; does not establish an individual VA medical nexus.",
  "counts": {
-  "relationships": 790,
-  "explicitPublicationGuards": 716,
+  "relationships": 791,
+  "explicitPublicationGuards": 717,
   "legacyRationaleBoundaries": 74
  },
  "relationships": [
@@ -25273,6 +25273,37 @@
    "sourceReferenceCount": 3,
    "pathwayIntelligencePresent": false,
    "suggestionObjectHash": "76178e4a15e568eaa7e0cd513c06a1d01318a0ea7dd9f54e0666c4c7fe2f27fa"
+  },
+  {
+   "relationshipId": "rel-bipolar-disorder-to-hypothyroidism",
+   "primaryId": "bipolar-disorder",
+   "targetId": "hypothyroidism",
+   "direction": "bipolar-disorder -> hypothyroidism",
+   "primaryPublicationState": "draft",
+   "rank": 2,
+   "clinicalProposition": {
+    "status": "authored-d1-bounded-proposition",
+    "text": "Authoring registers this edge because it is the one candidate in the supplied research set whose supporting literature is quantified, dose-responsive, and independently replicated, and because the target identity has no medication-mediated incoming edge among its seven registered ones, which are all disease-mediated; the conservative framing names lithium as the proximate agent rather than the psychiatric condition, registers the anchor that reports overlapping error bars and differential surveillance as an explicit counterweight rather than omitting it, carries the same anchor's stage 4 and end-stage null, and requires a medication timeline plus exclusion of thyroid autoimmunity before any individual attribution."
+   },
+   "rationale": "Authoring registers this edge because it is the one candidate in the supplied research set whose supporting literature is quantified, dose-responsive, and independently replicated, and because the target identity has no medication-mediated incoming edge among its seven registered ones, which are all disease-mediated; the conservative framing names lithium as the proximate agent rather than the psychiatric condition, registers the anchor that reports overlapping error bars and differential surveillance as an explicit counterweight rather than omitting it, carries the same anchor's stage 4 and end-stage null, and requires a medication timeline plus exclusion of thyroid autoimmunity before any individual attribution.",
+   "publicationGuard": {
+    "status": "explicit",
+    "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), mechanism PHARMACOLOGICAL_IATROGENIC (lithium concentrates in the thyroid, impairs hormone release and synthesis, and inhibits thyroid hormone signalling at the hypothalamic-pituitary-thyroid axis, producing a dose-dependent fall in free thyroxine with compensatory thyroid-stimulating-hormone rise), following the file's own existing rank 1 treatment-mediated convention and the treatment-mediated precedent class (polymyalgia-rheumatica->osteoporosis at glucocorticoid burden, renal-toxicity->chronic-kidney-disease at toxic exposure), with lithium named as the proximate agent and the iatrogenic, detection-bias, and specificity limits carried openly: the Hong Kong incident-bipolar population cohort of 4,752 individuals with mean 8.4-year follow-up reports lithium associated with hypothyroidism (adjusted hazard ratio 2.00, 95 percent CI 1.72-2.33) against non-lithium treatment, a higher-risk gradient at higher serum levels (2.08, 1.67-2.59), reduced thyroid risk with valproate, olanzapine, quetiapine, and risperidone, and derived serum-level thresholds near 0.50 mEq per litre for hypothyroidism (PMID 39932712); the Oxford three-decade laboratory analysis reports adjusted hypothyroidism hazard ratio 2.31 (95 percent CI 2.05-2.60) with women under 60 at greatest risk (PMID 26003379); the US nine-therapy competing-risk analysis of 24,574 patients is registered as an explicit COUNTERWEIGHT rather than as support, reporting a four-year cumulative risk of 8.8 percent on lithium against 6.3 percent on oxcarbazepine with NO statistical difference from quetiapine, overlapping error bars across all nine therapies, and 2.26- to 3.05-fold greater hypothyroidism testing on lithium (PMID 27226264). Null carried openly - the same Hong Kong anchor reports no association with stage 4 or higher chronic kidney disease or end-stage kidney disease despite the stage 3 signal, and the Oxford anchor reports nulls for hyperthyroidism (1.22, 0.96-1.55) and raised adjusted calcium (1.08, 0.88-1.34), establishing the effect's specificity for hypothyroidism. Shared-cause limit: bipolar disorder carries its own independent thyroid autoimmunity signal and no located anchor compares lithium-treated against untreated bipolar patients, so disease and treatment cannot be separated within these designs. Treatment-mediated guard: the exposure throughout is the prescribed medication rather than the psychiatric condition, and the catalog's hypothyroidism identity has seven registered incoming edges, all disease-mediated, with none medication-mediated. DISCLOSED DUPLICATE-SCOPE: the lithium-to-chronic-kidney-disease route is NOT registered here because it is already owned by rel-renal-toxicity-to-chronic-kidney-disease (registered with the Swedish lithium new-user active-comparator cohort, PMID 37418264); the located lithium-to-kidney anchors for this file are the same drug-to-organ pair from a psychiatric indication and are left untouched per ME-29 while the CRG redundancy-semantics question stands at eleven accumulated examples. The parallel research-set pair ptsd->hypothyroidism is withheld as SHARED-ROUTE with this edge, both resting on the same lithium-to-thyroid drug-outcome pair and differing only in prescribing indication. Individual claims require a dated lithium start, stop, dose, and serum-level timeline, dated thyroid studies before and after initiation, a documented lithium-free or alternative-mood-stabiliser interval where one exists, and exclusion of autoimmune thyroiditis, iodine and drug exposure, prior thyroid radioiodine or surgery, pituitary disease, and non-prescribed lithium sources.",
+    "boundarySource": "authored-d1-implementation-scope",
+    "structuredGuardReviewPending": false,
+    "semanticRewriteAuthorized": false
+   },
+   "evidenceGaps": [
+    "All three anchors are observational and cannot exclude bipolar disorder's own thyroid autoimmunity as a contributor, because no anchor compares lithium-treated against untreated bipolar patients; the largest anchor reports a null for stage 4 or higher chronic kidney disease and end-stage kidney disease despite a stage 3 signal, so the renal consequence is bounded and the hypothyroidism consequence is not; the US competing-risk anchor reports overlapping confidence intervals across all nine therapies, no statistical difference between lithium and quetiapine, and 2.26- to 3.05-fold greater hypothyroidism testing on lithium, so its hypothyroidism incidence estimate is detection-inflated even though the comparative ranking is informative; no located anchor reports a lithium-free control arm drawn from the same bipolar population; the older prevalence estimate of 10.4 percent overall with 14 percent in women against 4.5 percent in men (PMID 10789300) and the graded thyroid-stimulating-hormone rise by lithium band (PMID 37704933) were located and reviewed but are not among this edge's three registered references because the larger contemporary designs supersede them."
+   ],
+   "sourceIds": [
+    "pmid-39932712",
+    "pmid-26003379",
+    "pmid-27226264"
+   ],
+   "sourceReferenceCount": 3,
+   "pathwayIntelligencePresent": false,
+   "suggestionObjectHash": "972802aed4c075e5f07309019ce7c0fa13adb383a404da1e550dfc7c4ae12431"
   }
  ],
  "lastUpdatedBy": "batch-D1-draft-authoring",
