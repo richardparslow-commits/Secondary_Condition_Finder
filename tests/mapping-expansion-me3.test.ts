@@ -137,9 +137,9 @@ describe("Mapping Expansion Batch ME-3", () => {
     const mappings = files.map((name) =>
       JSON.parse(fs.readFileSync(path.join(kbDir, name), "utf8")) as Mapping,
     );
-    expect(files).toHaveLength(813);
+    expect(files).toHaveLength(814);
     expect(mappings.filter((m) => m.draft === false)).toHaveLength(140);
-    expect(mappings.filter((m) => m.draft === true)).toHaveLength(673);
+    expect(mappings.filter((m) => m.draft === true)).toHaveLength(674);
     expect(mappings.reduce((sum, m) => sum + (m.suggestions ?? []).length, 0)).toBe(863);
     expect(mappings.filter((m) => m.draft === false && (m.suggestions ?? []).length === 1)).toHaveLength(67);
     expect(mappings.filter((m) => m.draft === false && (m.suggestions ?? []).length >= 2)).toHaveLength(73);

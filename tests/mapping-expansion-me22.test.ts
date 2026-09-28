@@ -110,7 +110,7 @@ describe("Mapping Expansion ME-22 local implementation", () => {
     const files = fs.readdirSync(path.join(ROOT, "data/knowledge-base")).filter((file) => file.endsWith(".json"));
     const mappings = files.map((file) => load<Mapping>(path.join(ROOT, "data/knowledge-base", file)));
     const references = mappings.flatMap((mapping) => mapping.suggestions.flatMap((suggestion) => suggestion.sourceReferences));
-    expect(files).toHaveLength(813);
+    expect(files).toHaveLength(814);
     expect(mappings.reduce((total, mapping) => total + mapping.suggestions.length, 0)).toBe(863);
     expect(mappings.filter((mapping) => mapping.draft === false)).toHaveLength(140);
     expect(mappings.filter((mapping) => mapping.draft === true && mapping.suggestions.length === 1)).toHaveLength(305);

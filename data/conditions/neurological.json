@@ -242,6 +242,24 @@
       ]
     },
     {
+      "id": "tardive-dyskinesia",
+      "name": "Tardive Dyskinesia",
+      "aliases": [
+        "tardive dyskinesia",
+        "drug-induced tardive dyskinesia",
+        "antipsychotic-induced tardive dyskinesia",
+        "neuroleptic-induced tardive dyskinesia",
+        "tardive dyskinesia syndrome"
+      ],
+      "bodySystem": "Neurological",
+      "ratingSchedule": [],
+      "reviewNotes": [
+        "Pending manual review of 38 CFR rating codes. Added 2026-09-28 as a versioned catalog addition closing the missing-identity gap behind the batch-80 evidence-preserving refusal of schizophrenia to tardive-dyskinesia (TENTH refusal; authoring-quality evidence preserved at PMID 37424417, PMID 39240484, PMID 42030922) and behind the batch-88 psychotropic-medication-damage neurological withholding (PMID 28146614 and PMID 30695288 reserved).",
+        "Rating authority is deliberately left empty per docs/condition-catalog.md step 4 (never invent a code): a qualified human must confirm the applicable diagnostic code and framework before any ratingSchedule citation is recorded, and any citation added by automated work stays verified: false. A movement disorder is most likely evaluated under the neurological ratings schedule (38 CFR 4.124a), including any analogous rating, but no code and no schedule assignment is asserted here.",
+        "Scope guards: this identity is the chronic DRUG-INDUCED movement disorder (tardive dyskinesia, most commonly antipsychotic or neuroleptic induced), NOT the neurodegenerative parkinsonism of the sibling parkinsons-disease identity, and the Piedmont degenerative-parkinsonism hazard-ratio literature (PMID 34652577) stays reserved and category-guarded in the batch-88 disposition. Drug-induced parkinsonism, neuroleptic malignant syndrome and serotonin syndrome remain separate missing identities and must not be routed through this one. Bare 'dyskinesia' and the abbreviation 'TD' are deliberately NOT aliases: 'dyskinesia' is ambiguous against primary ciliary dyskinesia and acute extrapyramidal syndromes, and 'TD' against traveler's diarrhea."
+      ]
+    },
+    {
       "id": "traumatic-subarachnoid-hemorrhage",
       "name": "Traumatic Subarachnoid Hemorrhage",
       "aliases": [

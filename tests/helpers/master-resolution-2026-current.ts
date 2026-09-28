@@ -95,10 +95,10 @@ export const assertMasterResolution2026CurrentState = () => {
   expect(v.approvalState.finalUniquePmids).toBe(36);
 
   const files = fs.readdirSync(kbDir).filter((name) => name.endsWith(".json"));
-  expect(files).toHaveLength(813);
+  expect(files).toHaveLength(814);
   const mappings: Mapping[] = files.map((name) => JSON.parse(fs.readFileSync(path.join(kbDir, name), "utf8")) as Mapping);
   expect(mappings.filter((m) => m.draft === false)).toHaveLength(140);
-  expect(mappings.filter((m) => m.draft === true)).toHaveLength(673);
+  expect(mappings.filter((m) => m.draft === true)).toHaveLength(674);
 
   for (const row of v.rows) {
     const mapping = load(row.primaryId);
