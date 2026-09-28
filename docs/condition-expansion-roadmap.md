@@ -5004,3 +5004,102 @@ appear in the located literature as distinct entities with no catalog identity.
 regenerated at 464 edges / 1,185 reference rows; dashboard at 1,185 pending rows across 50 batches and 1,030
 distinct sources. Draft-singles **unchanged at 304**, since no file in this batch was authored with exactly one
 edge. CRG at review 13/13 and redundancy 28/28, zero violations. Backlog after batch 84: **76**.
+
+## Mapping Expansion D1 batch 85 (2026-09-27)
+
+Five candidates screened, all five authored. The batch authored **9 ASSOCIATION_ONLY edges over 27 reference
+uses across 20 PMIDs, all 20 confirmed new** before authoring. The backlog fell **76 → 71**.
+
+**Authored edges**
+
+| Primary | Target | Rank | Mechanism |
+|---|---|---|---|
+| `slap-tear` | `shoulder-condition` | 1 | BIOMECHANICAL_ALTERATION |
+| `slap-tear` | `rotator-cuff-injury` | 2 | BIOMECHANICAL_ALTERATION |
+| `sleepwalking-disorder` | `depressive-disorder` | 1 | PSYCHOPHYSIOLOGICAL |
+| `sleepwalking-disorder` | `anxiety-disorder` | 2 | PSYCHOPHYSIOLOGICAL |
+| `sleep-terror-disorder` | `depressive-disorder` | 1 | PSYCHOPHYSIOLOGICAL |
+| `sleep-related-eating-disorder` | `depressive-disorder` | 1 | PSYCHOPHYSIOLOGICAL |
+| `sleep-related-eating-disorder` | `anxiety-disorder` | 2 | PSYCHOPHYSIOLOGICAL |
+| `small-intestine-cancer` | `deep-vein-thrombosis` | 1 | THROMBOTIC_OR_VASCULAR |
+| `small-intestine-cancer` | `anemia` | 2 | METABOLIC_OR_NUTRITIONAL |
+
+**The hash form is now preserved, and that is the operational lesson of batch 84.** The registry accepts *either*
+the as-is or the pre-verification hash for a promoted citation, and which one is stored is a **per-relationship
+historical choice** that some batch test suites pin as literals. The lockstep is therefore followed by a
+form-preserving pass that **restored 827 relationships to their pre-batch form and recomputed only the 9 genuinely
+new edges**. Critically, **the registry audit could not have caught the batch-84 error**: `suggestionMatchesRelationshipSnapshot`
+compares `shaObject(suggestion)` first, so an overwritten hash matches trivially. Only the test suite detects it.
+That asymmetry is worth remembering — the audit is a consistency check, not a correctness check, for this class of
+error.
+
+**An edge built on an anchor that does not study its identity, disclosed in three places.**
+`sleep-related-eating-disorder->anxiety-disorder` registers PMID 10544999, which studies **sleepwalking and sleep
+terror, not this disorder**. It is the located source naming overanxious disorder, panic disorder and simple phobia
+in this disorder family, and the located literature contains no anxiety anchor measured in a population with this
+disorder. The substitution is stated in the reference's own note, in the edge's evidence gaps, and in the governance
+notes. It is ranked **second** precisely because it is the weaker edge, not first because anxiety is the more
+clinically salient complaint.
+
+**An edge registered for its null.** `sleep-terror-disorder->depressive-disorder` rests on a **345-child**
+longitudinal cohort that found the association between frequent disorders-of-arousal episodes and internalising
+problems significant at age 4 (**B = 2.659, p = 0.001**) and **not significant at age 5 (p > 0.05)**, with only
+externalising problems persisting to 5 (B = 2.462, p = 0.039). That attenuation is part of the claim. The cohort also
+analyses sleepwalking and sleep terror **jointly**, so attributing its findings to sleep terror specifically
+requires an inference the anchor does not make — and **no located anchor reports sleep terror separately from
+sleepwalking**, which is why this file carries one edge where its sibling carries two.
+
+**A contested edge, authored at association only with the disagreement on the face of the edge.** Two systematic
+reviews treat concomitant rotator cuff injury as clinically consequential alongside a superior labral tear — naming
+it a factor associated with failure of non-surgical management, and stating that with concomitant tears the
+evidence favours debridement or biceps tenotomy over labral repair. A **324-cadet** cohort found the co-occurrence
+in only **5.56%** with **no association with inferior outcomes**. A fourth anchor reporting a **10%** rotator cuff
+incidence was reviewed and **not registered** under the three-reference cap. This is the second file this batch to
+record a reviewed-and-rejected anchor whose direction cuts against the edge.
+
+**Two edges with no stated magnitude, because no anchor reports a rate.** `small-intestine-cancer->anemia` rests on
+a narrative review, a single-centre **diagnostic-yield audit** whose denominator is patients with a *negative*
+bidirectional endoscopy, and a **single case report** — the weakest evidence in the batch, written as a claim about
+a *presentation route*, not a complication rate. `small-intestine-cancer->deep-vein-thrombosis` rests on a
+**205-million-hospitalisation** analysis of gastrointestinal cancers **as a class**, not this identity, with a
+second anchor measuring *cardiovascular mortality* under competing risks rather than thrombotic events, and a
+third anchor that **does not address thromboembolism at all** and is registered solely to establish the identity's
+segment and histology composition.
+
+**A segment and histology guard, because this catalog identity is not one disease.** The located SEER analysis of
+6,047 patients reports **adenocarcinoma predominant in the duodenum (51.4%)** and **neuroendocrine tumour most
+common in the ileum (84.21%)**, with duodenal tumours carrying the worst prognosis and ileal the best. An ileal
+finding cannot be transferred to a duodenal adenocarcinoma, and the neuroendocrine route carries its own
+thrombotic and hormonal risks.
+
+**An oncological member authored under the batch-78 umbrella rule.** `gastrointestinal-cancers` was deferred as an
+umbrella in batch 78 with member windows owning the routes; `small-intestine-cancer` is such a member, following
+the batch-78 precedent of `endometrial-cancer` and `ovarian-cancer` owning their lymphedema routes at member level.
+
+**A catalog tension recorded rather than resolved — the mirror image of the identity-duplication findings.** The
+four identities in `mental-disorders-expansion-wave-6.json` are genuinely distinct, but the clinical literature
+*partially merges* sleepwalking and sleep terror: the UK population survey of **4,972** reports their prevalences
+together as arousal parasomnias (**night terrors 2.2%, sleepwalking 2.0%**), the longitudinal cohort analyses them
+jointly as disorders of arousal, and the adolescent case-control study selected on having **both**. Here the
+catalog is **finer-grained than the evidence** — the opposite of batches 80, 82 and 84. That is not a reason to
+merge the identities, but it is a reason to author cautiously and to say so.
+
+**Sibling checks performed and reported, with no duplication found:** `hip-labral-tear` is an *acetabular* rather
+than a *glenoid* lesion and is genuinely distinct from `slap-tear`; and small intestine, colon and rectum are
+distinct organs, so the alias "small bowel cancer" alongside `colorectal-cancer` is correct rather than duplicative.
+
+**Withheld routes:** `obesity` as **MISSING IDENTITY** — the single most clinically significant association in the
+located sleep-related-eating-disorder literature, where the primary anchor *enrolled obese subjects specifically* —
+continuing the catalog gap carried since batch 80. Also withheld: small-bowel obstruction, perforation and
+vitamin-B12 deficiency as missing identities; `alcohol-use-disorder` as a missing identity and confounding
+exposure; `seizure-disorder` as a differential for the parasomnias; `binge-eating-disorder` and `rumination-syndrome`
+as separate identities with the **reverse** direction; `restless-legs-syndrome` and `sleep-apnea` as
+**shared-and-reversed**; `bicipital-tendinitis` as shared-substrate; `crohns-disease` as direction reversal and
+exposure; and self-injury/injury to bed partners as a missing identity despite being the most concrete finding in
+the sleepwalking anchor (**injuries requiring medical care in 17%**).
+
+**Registry after lockstep:** 836 relationships (762 explicit / 74 legacy), 1,596 reference uses (384 verified /
+1,212 pending-verification), 1,403 source entities (346 active / 1,048 pending-verification). Citation packet
+regenerated at 473 edges / 1,212 reference rows; dashboard at 1,212 pending rows across 51 batches and 1,050
+distinct sources. Draft-singles **304 → 305** because `sleep-terror-disorder` was authored with a single edge.
+CRG at review 13/13 and redundancy 28/28, zero violations. Backlog after batch 85: **71**.
