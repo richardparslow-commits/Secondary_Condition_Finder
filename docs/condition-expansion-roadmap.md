@@ -4589,3 +4589,111 @@ reviewDebt 13/13 and redundancy 28/28, violations 0, bidirectional pairs 4 — t
 introduced no redundancy class.
 
 Standing recommendation: batch 80 lands through branch, PR, CI, and merge.
+
+## Mapping Expansion D1 batch 81 (2026-09-27)
+
+Backlog-driven batch returning from the batch-80 research-sourced excursion to the standing zero-suggestion
+authoring queue. Five candidates were screened; four were authored, one was refused on identity-duplication
+grounds. The batch authored **10 ASSOCIATION_ONLY edges over 30 reference uses across 21 PMIDs, yielding 18 new
+source entities** (PMID 38905553 was already registered as `pmid-38905553` before this batch and is reused as an
+additional reference use on the xerostomia edge rather than duplicated).
+
+**Authored edges**
+
+| Primary | Target | Rank | Mechanism |
+|---|---|---|---|
+| `rumination-syndrome` | `bulimia-nervosa` | 1 | PSYCHOPHYSIOLOGICAL |
+| `rumination-syndrome` | `anxiety-disorder` | 2 | PSYCHOPHYSIOLOGICAL |
+| `salivary-gland-cancer` | `dysphagia` | 1 | MECHANICAL_OR_COMPRESSIVE |
+| `salivary-gland-cancer` | `depressive-disorder` | 2 | PSYCHOPHYSIOLOGICAL |
+| `salivary-gland-cancer` | `xerostomia` | 3 | POST_SURGICAL_OR_TREATMENT |
+| `samter-s-triad` | `chronic-sinusitis` | 1 | SYSTEMIC_INFLAMMATORY |
+| `samter-s-triad` | `asthma` | 2 | SYSTEMIC_INFLAMMATORY |
+| `scleredema` | `diabetes-mellitus` | 1 | MULTIFACTORIAL |
+| `scleredema` | `multiple-myeloma` | 2 | MULTIFACTORIAL |
+| `scleredema` | `interstitial-lung-disease` | 3 | MECHANICAL_OR_COMPRESSIVE |
+
+**Identity screening that shaped the batch.** The catalog `rumination-syndrome` is the *gastrointestinal* rumination
+disorder (`digestive-expansion-wave-5.json`), not cognitive rumination in depression, and its pre-existing todo
+already scopes review to gastrointestinal, nutritional, motility, and treatment-related pathways. This batch
+confirms that scope and records in the file todo that no edge may be justified by the psychological construct.
+Separately, the catalog carries **both `rotator-cuff-tear` and `rotator-cuff-injury`** as open identities for the same
+disease, and batch 4 already authored `bicipital-tendinitis->rotator-cuff-injury`; `rotator-cuff-tear` was therefore
+**refused on identity-duplication grounds** and left undispositioned pending a dedicated reconciliation. This is the
+second identity-duplication finding after `eczema` / `atopic-dermatitis-eczema` in batch 80.
+
+**Withheld routes, with reasons**
+
+- `rumination-syndrome -> depressive-disorder` — **DUPLICATE-SCOPE.** The registry already carries
+  `bulimia-nervosa->depressive-disorder` and `anxiety-disorder->depressive-disorder`, so a third direct route would
+  duplicate a relationship the graph already resolves through two registered chains, and would have added a
+  direct-versus-chain redundancy conflict to the standing CRG review set. Withholding it kept the redundancy baseline
+  at 28/28 with zero new conflicts.
+- `rumination-syndrome -> dental-abrasion-erosion-abfraction` — **MECHANISM-UNSUPPORTED.** Rumination syndrome
+  regurgitates *undigested* food without the acid exposure that drives erosive tooth wear in bulimia nervosa, and all
+  located dental-erosion evidence in this space is drawn from eating-disorder populations rather than rumination
+  cohorts. The classic inference is unsound, so it was refused rather than authored weakly.
+- `samter-s-triad -> nasal-polyps` — **DUPLICATE-SCOPE.** A direct `nasal-polyps->asthma` edge is already registered
+  and this file's asthma edge is authored in the same batch, so a polyp edge would register the same
+  asthma-polyposity relationship a second time at a different level of indirection. `nasal-polyps` therefore remains
+  at zero registered incoming edges, recorded as a deliberate and reversible choice.
+- `scleredema -> scleroderma` — **DIFFERENTIAL, the most consequential withholding in the batch.** Scleredema and
+  scleroderma are typically *mutually exclusive* diagnoses that are confused with one another rather than
+  co-occurring. The located mimic case (PMID 30088450) explicitly reports a patient who did **not** meet ACR/EULAR
+  systemic sclerosis criteria, with no Raynaud phenomenon, negative autoantibodies, and normal nailfold
+  capillaroscopy. The located evidence argues *against* co-occurrence, so authoring an association edge would assert
+  the opposite of what the source says.
+- `salivary-gland-cancer -> facial-nerve-palsy` — **MISSING IDENTITY.** The most frequent neurological accompaniment
+  of parotid malignancy has no catalog identity.
+- `salivary-gland-cancer -> hearing-loss` — **EVIDENCE-INSUFFICIENT.** The located parotid literature reports facial
+  nerve schwannoma and lateral skull base invasion rather than a quantified hearing-loss association; the nine
+  registered hearing-loss sources are all otologic or neurologic, none oncologic.
+- `salivary-gland-cancer -> anxiety-disorder` and `-> insomnia` — **TARGET-EXHAUSTION.** The same cohort reports
+  GAD-7 elevation at 7.1 percent and insomnia at 7.2 percent, below the threshold at which a separate edge adds
+  information the depression edge does not carry.
+- `scleredema -> infection / post-streptococcal` — **NULL.** The 44-patient multicentre series expressly reports that a
+  preceding respiratory tract infection was *not* a feature, contradicting the classical teaching. The null is
+  registered openly on the diabetes edge rather than omitted, because it changes what a reviewer should look for.
+- `scleredema -> thyroid / hypothyroidism` — the endocrine associations in the largest series are reported jointly as
+  endocrine and metabolic disease without thyroid-specific figures, so no thyroid-specific edge is supportable.
+- `scleredema -> cachexia / obesity / metabolic-syndrome` — **MISSING IDENTITY.**
+
+**Definitional rather than causal edges.** Both `samter-s-triad` edges are co-occurrences of conditions that *define*
+the syndrome: chronic rhinosinusitis with nasal polyposis and asthma are two of its three criteria, so asserting the
+syndrome causes either component is circular. Both causation statuses disclaim the circular reading explicitly and
+require independent otolaryngology and pulmonology documentation with objective testing, on the operational ground
+that a veteran whose record carries only the composite label has not thereby had either component characterised. The
+only located quantified asthma outcome (PMID 41045292, 70 patients undergoing revision sinus surgery) is registered as
+evidence of *coupled treatment response* between the two airway compartments rather than as causal evidence.
+
+**Target-identity mismatch disclosed on the face of an edge.** The `scleredema -> interstitial-lung-disease` edge
+rests on a chest-wall *mechanical* restrictive pattern produced by cutaneous induration over the trunk and shoulder
+girdle, while the catalog identity denotes a *parenchymal* process. The mismatch is disclosed in the edge's evidence
+gaps and the guard requires the reviewing clinician to distinguish chest-wall restriction from intrinsic parenchymal
+disease before the target is treated as met. The supporting parenchymal-fibrosis case is registered as **countervailing
+evidence**, not support, because that patient had myeloma and an excluded systemic-sclerosis differential.
+
+**Within-batch source sharing, disclosed.** Deliberate and recorded: PMID 38837232 (the 62-patient malignant parotid
+survivorship cohort) across all three salivary edges, since it is the only located source measuring patient-reported
+outcomes in that population; PMID 33988353 and PMID 42217214 across both rumination edges; PMID 39665076 and
+PMID 36283868 across both samter edges; and PMID 26304054 (the 44-patient multicentre scleredema series) across all
+three scleredema edges, since it is the only located source reporting more than one of that disease's classical
+associates in a single cohort. The three scleredema edges are registered as **parallel rather than as a chain** — no
+edge in that file is presented as producing another.
+
+**Nulls and conflicts carried as explicit counterweights.** PMID 33988353 models eating-disorder and psychiatric
+history as risk factors *for* rumination syndrome rather than the reverse (adjusted odds ratios 16.4 and 4.47), so
+both rumination edges record the direction as unresolved rather than fixing it. The parotid cohort's PHQ-8 figure of
+15.5 percent is a screening prevalence, not a diagnosed-disorder rate, and this is stated on the face of the mood edge.
+The oropharyngeal adenoid cystic carcinoma systematic review (PMID 42371638) contains no mood data and is registered
+as disease-trajectory context only so it cannot be over-read as mood evidence.
+
+**Registry after lockstep:** 801 relationships (727 explicit / 74 legacy), 1,493 reference uses (383 verified /
+1,110 pending-verification), 1,326 source entities (346 active / 971 pending-verification). Citation packet
+regenerated at 438 edges / 1,110 reference rows; dashboard at 1,110 pending rows across 46 batches and 971 distinct
+sources. Backlog after batch 81: **91** undispositioned zero-edge drafts. Next-five: `rotator-cuff-tear`,
+`scleritis`, `scotoma`, `seborrheic-dermatitis`, `seborrheic-keratosis`.
+
+**Catalog gaps surfaced, not resolved here:** facial nerve palsy, NSAID-exacerbated respiratory disease / aspirin
+hypersensitivity (the criterion that distinguishes Samter's triad from ordinary asthma with chronic rhinosinusitis),
+obesity, metabolic syndrome, and the `rotator-cuff-tear` / `rotator-cuff-injury` identity duplication.

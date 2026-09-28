@@ -16,16 +16,16 @@
   "citationPromotionMustAtomicallyUpdateKbAndMasterSourceState": true
  },
  "counts": {
-  "liveSourceReferenceUses": 1463,
+  "liveSourceReferenceUses": 1493,
   "activeSourceEntities": 346,
-  "pendingVerificationSourceEntities": 953,
+  "pendingVerificationSourceEntities": 971,
   "activeClinicalSourceEntities": 345,
-  "pendingClinicalSourceEntities": 953,
+  "pendingClinicalSourceEntities": 971,
   "activeLegalAuthorityEntities": 1,
   "retiredOnlySourceEntities": 1,
   "supersededUnverifiedSourceEntities": 7,
   "bibliographicCorrectionOnlyEntities": 1,
-  "totalSourceEntitiesIncludingLineage": 1308,
+  "totalSourceEntitiesIncludingLineage": 1326,
   "retiredVerifiedRelationshipSourceUses": 6
  },
  "retirementLedger": {
@@ -38557,18 +38557,25 @@
    "sourceCheckedOnValues": [
     "2026-09-26"
    ],
-   "liveUsageCount": 1,
+   "liveUsageCount": 2,
    "liveUses": [
     {
      "relationshipId": "rel-mucocele-to-sialadenitis",
      "primaryId": "mucocele",
      "targetId": "sialadenitis",
      "sourceIndex": 0
+    },
+    {
+     "relationshipId": "rel-salivary-gland-cancer-to-xerostomia",
+     "primaryId": "salivary-gland-cancer",
+     "targetId": "xerostomia",
+     "sourceIndex": 1
     }
    ],
    "retiredUses": [],
    "rawReferenceHashes": [
-    "3b1b1938a88c2dbfed2ff3f5f6446eb44a30f558a1a910fbad7a4d1ce1630147"
+    "3b1b1938a88c2dbfed2ff3f5f6446eb44a30f558a1a910fbad7a4d1ce1630147",
+    "29443874f7ee709f8926150c773b692d622b2616c2e64b1bf68069c4937beb37"
    ]
   },
   {
@@ -48215,6 +48222,713 @@
    "retiredUses": [],
    "rawReferenceHashes": [
     "1dedcb5fd1191ba1c5ba8f47ae2e02dcdd14a01983b6a67ae55846162db5f422"
+   ]
+  },
+  {
+   "sourceId": "pmid-33988353",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "33988353",
+   "doi": "10.1097/MCG.0000000000001510",
+   "canonicalCitation": "Cai JX, Wong D, Lee DJH, et al. Eating and Psychiatric Disorders Are Independent Risk Factors for Rumination Syndrome J Clin Gastroenterol. 2022 Mar 1;56(3):228-233. doi: 10.1097/MCG.0000000000001510. PMID 33988353. PMID 33988353.",
+   "citationVariants": [
+    "Cai JX, Wong D, Lee DJH, et al. Eating and Psychiatric Disorders Are Independent Risk Factors for Rumination Syndrome J Clin Gastroenterol. 2022 Mar 1;56(3):228-233. doi: 10.1097/MCG.0000000000001510. PMID 33988353. PMID 33988353."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33988353/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/33988353/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-27"
+   ],
+   "liveUsageCount": 2,
+   "liveUses": [
+    {
+     "relationshipId": "rel-rumination-syndrome-to-bulimia-nervosa",
+     "primaryId": "rumination-syndrome",
+     "targetId": "bulimia-nervosa",
+     "sourceIndex": 0
+    },
+    {
+     "relationshipId": "rel-rumination-syndrome-to-anxiety-disorder",
+     "primaryId": "rumination-syndrome",
+     "targetId": "anxiety-disorder",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "e7e94581bf56625a1994cacc379153d5ce31fed064a09805a99a45c8bd5204e2",
+    "bb19d23824038bfd1a641ddbbcf1e8c105f6440143678e28d0269d55a76bfb56"
+   ]
+  },
+  {
+   "sourceId": "pmid-42217214",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "42217214",
+   "doi": "10.1177/13591045261456470",
+   "canonicalCitation": "da Silva BC, Araújo M, Tavares M. Rumination Syndrome in Adolescents: Clinical and Psychiatric Correlates From a Case Series Clin Child Psychol Psychiatry. 2026 May 30:13591045261456470. doi: 10.1177/13591045261456470. PMID 42217214. PMID 42217214.",
+   "citationVariants": [
+    "da Silva BC, Araújo M, Tavares M. Rumination Syndrome in Adolescents: Clinical and Psychiatric Correlates From a Case Series Clin Child Psychol Psychiatry. 2026 May 30:13591045261456470. doi: 10.1177/13591045261456470. PMID 42217214. PMID 42217214."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42217214/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/42217214/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-27"
+   ],
+   "liveUsageCount": 2,
+   "liveUses": [
+    {
+     "relationshipId": "rel-rumination-syndrome-to-bulimia-nervosa",
+     "primaryId": "rumination-syndrome",
+     "targetId": "bulimia-nervosa",
+     "sourceIndex": 1
+    },
+    {
+     "relationshipId": "rel-rumination-syndrome-to-anxiety-disorder",
+     "primaryId": "rumination-syndrome",
+     "targetId": "anxiety-disorder",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "f080bfb364b47250cd4b16520f8a57df708ac746b22663674e0a1a7897b42ae6",
+    "3ff89c5d328bf5c7fbc1de5ad6c2dc133c68747ebc958b39599387396a889f76"
+   ]
+  },
+  {
+   "sourceId": "pmid-38504395",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "38504395",
+   "doi": "10.1002/jpn3.12116",
+   "canonicalCitation": "Yang DM, Sabella J, Kroon Van Diest A, et al. Early childhood-onset rumination syndrome is clinically distinct from adolescent-onset rumination syndrome J Pediatr Gastroenterol Nutr. 2024 Mar;78(3):565-572. doi: 10.1002/jpn3.12116. PMID 38504395. PMID 38504395.",
+   "citationVariants": [
+    "Yang DM, Sabella J, Kroon Van Diest A, et al. Early childhood-onset rumination syndrome is clinically distinct from adolescent-onset rumination syndrome J Pediatr Gastroenterol Nutr. 2024 Mar;78(3):565-572. doi: 10.1002/jpn3.12116. PMID 38504395. PMID 38504395."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38504395/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/38504395/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-27"
+   ],
+   "liveUsageCount": 2,
+   "liveUses": [
+    {
+     "relationshipId": "rel-rumination-syndrome-to-bulimia-nervosa",
+     "primaryId": "rumination-syndrome",
+     "targetId": "bulimia-nervosa",
+     "sourceIndex": 2
+    },
+    {
+     "relationshipId": "rel-rumination-syndrome-to-anxiety-disorder",
+     "primaryId": "rumination-syndrome",
+     "targetId": "anxiety-disorder",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "e5d5d4e00b7f5c685ed55440d815c10ce529caa3ff69f51ff6bfa87ab21c5c1f",
+    "25e11cff2a7e9811f7dfa8f22092105019fec93458b17bc20e8652bbe69721e3"
+   ]
+  },
+  {
+   "sourceId": "pmid-38837232",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "38837232",
+   "doi": "10.1002/lary.31554",
+   "canonicalCitation": "Tang A, Li J, Scheff N, et al. Quality of Life Outcomes for Parotid Malignancies Laryngoscope. 2024 Nov;134(11):4549-4556. doi: 10.1002/lary.31554. PMID 38837232. PMID 38837232.",
+   "citationVariants": [
+    "Tang A, Li J, Scheff N, et al. Quality of Life Outcomes for Parotid Malignancies Laryngoscope. 2024 Nov;134(11):4549-4556. doi: 10.1002/lary.31554. PMID 38837232. PMID 38837232."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38837232/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/38837232/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-27"
+   ],
+   "liveUsageCount": 3,
+   "liveUses": [
+    {
+     "relationshipId": "rel-salivary-gland-cancer-to-dysphagia",
+     "primaryId": "salivary-gland-cancer",
+     "targetId": "dysphagia",
+     "sourceIndex": 0
+    },
+    {
+     "relationshipId": "rel-salivary-gland-cancer-to-depressive-disorder",
+     "primaryId": "salivary-gland-cancer",
+     "targetId": "depressive-disorder",
+     "sourceIndex": 0
+    },
+    {
+     "relationshipId": "rel-salivary-gland-cancer-to-xerostomia",
+     "primaryId": "salivary-gland-cancer",
+     "targetId": "xerostomia",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "0b1514f83dbc395c7ef20ee2b6f0619154d05a2e5ae52dce577e86262c478b7e",
+    "7bc6124a5d7eeaf2321d78d608e0af75a73013aca4f111a69f71d893dfed2ee6",
+    "eda3b833455c42813c8fb1373e75d233f03337057af5598ebfe708a5bdf3ca2c"
+   ]
+  },
+  {
+   "sourceId": "pmid-42371638",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "42371638",
+   "doi": "10.1002/ohn.70319",
+   "canonicalCitation": "Hernandez-Herrera GA, Rourk KS, Peraza LR, et al. Clinical Features, Treatment, and Outcomes for Oropharyngeal Adenoid Cystic Carcinoma: A Systematic Review Otolaryngol Head Neck Surg. 2026 Sep;175(3):547-555. doi: 10.1002/ohn.70319. PMID 42371638. PMID 42371638.",
+   "citationVariants": [
+    "Hernandez-Herrera GA, Rourk KS, Peraza LR, et al. Clinical Features, Treatment, and Outcomes for Oropharyngeal Adenoid Cystic Carcinoma: A Systematic Review Otolaryngol Head Neck Surg. 2026 Sep;175(3):547-555. doi: 10.1002/ohn.70319. PMID 42371638. PMID 42371638."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42371638/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/42371638/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-27"
+   ],
+   "liveUsageCount": 2,
+   "liveUses": [
+    {
+     "relationshipId": "rel-salivary-gland-cancer-to-dysphagia",
+     "primaryId": "salivary-gland-cancer",
+     "targetId": "dysphagia",
+     "sourceIndex": 1
+    },
+    {
+     "relationshipId": "rel-salivary-gland-cancer-to-depressive-disorder",
+     "primaryId": "salivary-gland-cancer",
+     "targetId": "depressive-disorder",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "8e70c2a2138adaf5b2504c97b672ff993fa06879264429ac7c9124918c696c61",
+    "05369b0e1e828ea2c5fb158d65bb16286c274e0e666d65befc82fe5c5f09e8b0"
+   ]
+  },
+  {
+   "sourceId": "pmid-41793734",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "41793734",
+   "doi": "10.4317/medoral.27887",
+   "canonicalCitation": "Luna-Ortiz K, Yescas-Castellanos SS, Luna-Peteuil Z, et al. Malignant salivary gland tumors of the tongue: Analysis of 29 cases Med Oral Patol Oral Cir Bucal. 2026 Mar 7;31(4):e531-6. doi: 10.4317/medoral.27887. PMID 41793734. PMID 41793734.",
+   "citationVariants": [
+    "Luna-Ortiz K, Yescas-Castellanos SS, Luna-Peteuil Z, et al. Malignant salivary gland tumors of the tongue: Analysis of 29 cases Med Oral Patol Oral Cir Bucal. 2026 Mar 7;31(4):e531-6. doi: 10.4317/medoral.27887. PMID 41793734. PMID 41793734."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41793734/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/41793734/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-27"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-salivary-gland-cancer-to-dysphagia",
+     "primaryId": "salivary-gland-cancer",
+     "targetId": "dysphagia",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "ffbb971c8afc03a386f4c40112c0ebde90a0eff09745867b2d69e5d3c1d73c00"
+   ]
+  },
+  {
+   "sourceId": "pmid-42499790",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "42499790",
+   "doi": "10.1177/17588359261451739",
+   "canonicalCitation": "Chae YK, Sun R, Patel SP, et al. A phase II basket trial of DART SWOG S1609: the salivary gland tumor cohort Ther Adv Med Oncol. 2026;18:17588359261451739. doi: 10.1177/17588359261451739. PMID 42499790. PMID 42499790.",
+   "citationVariants": [
+    "Chae YK, Sun R, Patel SP, et al. A phase II basket trial of DART SWOG S1609: the salivary gland tumor cohort Ther Adv Med Oncol. 2026;18:17588359261451739. doi: 10.1177/17588359261451739. PMID 42499790. PMID 42499790."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42499790/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/42499790/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-27"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-salivary-gland-cancer-to-depressive-disorder",
+     "primaryId": "salivary-gland-cancer",
+     "targetId": "depressive-disorder",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "a22ffe84cf9a1266a1f6ebf845b81bc755682dfdb907f4c6f99b379e7f88eda5"
+   ]
+  },
+  {
+   "sourceId": "pmid-38808518",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "38808518",
+   "doi": "10.1177/00220345241252396",
+   "canonicalCitation": "Gunning JA, Limesand KH. Chronic Phenotypes Underlying Radiation-Induced Salivary Gland Dysfunction J Dent Res. 2024 Jul;103(8):778-786. doi: 10.1177/00220345241252396. PMID 38808518. PMID 38808518.",
+   "citationVariants": [
+    "Gunning JA, Limesand KH. Chronic Phenotypes Underlying Radiation-Induced Salivary Gland Dysfunction J Dent Res. 2024 Jul;103(8):778-786. doi: 10.1177/00220345241252396. PMID 38808518. PMID 38808518."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38808518/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/38808518/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-27"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-salivary-gland-cancer-to-xerostomia",
+     "primaryId": "salivary-gland-cancer",
+     "targetId": "xerostomia",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "dea352b8d150f39d5046fb6be3b594025247e87c70630c927fec19bbb3356d83"
+   ]
+  },
+  {
+   "sourceId": "pmid-39665076",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "39665076",
+   "doi": "10.3389/falgy.2024.1462985",
+   "canonicalCitation": "Ley-Tomas JJ, Xicotencatl-Tellez AM, García-Cruz ML, et al. Nonsteroidal antiinflammatory drug-exacerbated respiratory disease: molecular mechanism, management and treatment Front Allergy. 2024;5:1462985. doi: 10.3389/falgy.2024.1462985. PMID 39665076. PMID 39665076.",
+   "citationVariants": [
+    "Ley-Tomas JJ, Xicotencatl-Tellez AM, García-Cruz ML, et al. Nonsteroidal antiinflammatory drug-exacerbated respiratory disease: molecular mechanism, management and treatment Front Allergy. 2024;5:1462985. doi: 10.3389/falgy.2024.1462985. PMID 39665076. PMID 39665076."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39665076/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/39665076/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-27"
+   ],
+   "liveUsageCount": 2,
+   "liveUses": [
+    {
+     "relationshipId": "rel-samter-s-triad-to-chronic-sinusitis",
+     "primaryId": "samter-s-triad",
+     "targetId": "chronic-sinusitis",
+     "sourceIndex": 0
+    },
+    {
+     "relationshipId": "rel-samter-s-triad-to-asthma",
+     "primaryId": "samter-s-triad",
+     "targetId": "asthma",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "be11730158e9dde48634fcf1c6d65faae1369d6142476afea3bf89caacb681a4",
+    "3348cef744b306e99c1710fae34fbb1d2d879acddf2b4680f7b03e98cd87ee14"
+   ]
+  },
+  {
+   "sourceId": "pmid-36283868",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "36283868",
+   "doi": "10.1016/j.otc.2022.09.008",
+   "canonicalCitation": "Walters BK, Hagan JB, Divekar RD, et al. Aspirin-Exacerbated Respiratory Disease and the Unified Airway: A Contemporary Review Otolaryngol Clin North Am. 2023 Feb;56(1):107-124. doi: 10.1016/j.otc.2022.09.008. PMID 36283868. PMID 36283868.",
+   "citationVariants": [
+    "Walters BK, Hagan JB, Divekar RD, et al. Aspirin-Exacerbated Respiratory Disease and the Unified Airway: A Contemporary Review Otolaryngol Clin North Am. 2023 Feb;56(1):107-124. doi: 10.1016/j.otc.2022.09.008. PMID 36283868. PMID 36283868."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36283868/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/36283868/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-27"
+   ],
+   "liveUsageCount": 2,
+   "liveUses": [
+    {
+     "relationshipId": "rel-samter-s-triad-to-chronic-sinusitis",
+     "primaryId": "samter-s-triad",
+     "targetId": "chronic-sinusitis",
+     "sourceIndex": 1
+    },
+    {
+     "relationshipId": "rel-samter-s-triad-to-asthma",
+     "primaryId": "samter-s-triad",
+     "targetId": "asthma",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "1794572d3907f3b3f8a4ea938757f8cbae5576eb0d1735e5e314f3edce951423",
+    "24269e3da4766308bea45e12d0bc92a53a6b8bb46693d9cd309483b3e4e3cd72"
+   ]
+  },
+  {
+   "sourceId": "pmid-40741969",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "40741969",
+   "doi": "10.1002/ohn.1342",
+   "canonicalCitation": "Payne SC, McKenna M, Buckley J, et al. Executive Summary of the Clinical Practice Guideline on Adult Sinusitis Update Otolaryngol Head Neck Surg. 2025 Aug;173(2):299-316. doi: 10.1002/ohn.1342. PMID 40741969. PMID 40741969.",
+   "citationVariants": [
+    "Payne SC, McKenna M, Buckley J, et al. Executive Summary of the Clinical Practice Guideline on Adult Sinusitis Update Otolaryngol Head Neck Surg. 2025 Aug;173(2):299-316. doi: 10.1002/ohn.1342. PMID 40741969. PMID 40741969."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40741969/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/40741969/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-27"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-samter-s-triad-to-chronic-sinusitis",
+     "primaryId": "samter-s-triad",
+     "targetId": "chronic-sinusitis",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "f058bff0555f6422cfa1b3a8a76b5d64b0143ac7eb6cd3496cc9e7df0fbce714"
+   ]
+  },
+  {
+   "sourceId": "pmid-41045292",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "41045292",
+   "doi": "10.1002/alr.70043",
+   "canonicalCitation": "Yu AJ, Phung C, Kuppusamy K, et al. The Completeness of Surgery Index Predicts Success in CRSwNP With Asthma by SNOT-22 and Asthma Control Test Int Forum Allergy Rhinol. 2026 Feb;16(2):132-137. doi: 10.1002/alr.70043. PMID 41045292. PMID 41045292.",
+   "citationVariants": [
+    "Yu AJ, Phung C, Kuppusamy K, et al. The Completeness of Surgery Index Predicts Success in CRSwNP With Asthma by SNOT-22 and Asthma Control Test Int Forum Allergy Rhinol. 2026 Feb;16(2):132-137. doi: 10.1002/alr.70043. PMID 41045292. PMID 41045292."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41045292/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/41045292/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-27"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-samter-s-triad-to-asthma",
+     "primaryId": "samter-s-triad",
+     "targetId": "asthma",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "e392fcbd64d4018b95423187e30ad900c728e3a5ae7f94e88506655034d23c72"
+   ]
+  },
+  {
+   "sourceId": "pmid-26304054",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "26304054",
+   "doi": "10.1111/jdv.13272",
+   "canonicalCitation": "Rongioletti F, Kaiser F, Cinotti E, et al. Scleredema. A multicentre study of characteristics, comorbidities, course and therapy in 44 patients J Eur Acad Dermatol Venereol. 2015 Dec;29(12):2399-404. doi: 10.1111/jdv.13272. PMID 26304054. PMID 26304054.",
+   "citationVariants": [
+    "Rongioletti F, Kaiser F, Cinotti E, et al. Scleredema. A multicentre study of characteristics, comorbidities, course and therapy in 44 patients J Eur Acad Dermatol Venereol. 2015 Dec;29(12):2399-404. doi: 10.1111/jdv.13272. PMID 26304054. PMID 26304054."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/26304054/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/26304054/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-27"
+   ],
+   "liveUsageCount": 3,
+   "liveUses": [
+    {
+     "relationshipId": "rel-scleredema-to-diabetes-mellitus",
+     "primaryId": "scleredema",
+     "targetId": "diabetes-mellitus",
+     "sourceIndex": 0
+    },
+    {
+     "relationshipId": "rel-scleredema-to-multiple-myeloma",
+     "primaryId": "scleredema",
+     "targetId": "multiple-myeloma",
+     "sourceIndex": 0
+    },
+    {
+     "relationshipId": "rel-scleredema-to-interstitial-lung-disease",
+     "primaryId": "scleredema",
+     "targetId": "interstitial-lung-disease",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "6be9ea6ba92e6e4f14822e1648dfe94726ce3130904f1b258effb881a4d7b24e",
+    "dc7e564f3f50dd1c042363dde923cad2cc43692493c4daa2cb7745bc623da959",
+    "6882577a72ab5da8868d7719b57adaddb5e0b2fdb956037035c705cd967dbd96"
+   ]
+  },
+  {
+   "sourceId": "pmid-33952255",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "33952255",
+   "doi": "10.1186/s12944-021-01473-1",
+   "canonicalCitation": "Csonka V, Bódis B, Kovács D, et al. Screening for the presence of scleroedema adultorum of Buschke in patients with diabetes mellitus: newly diagnosed patients had a high prevalence of dyslipidaemia Lipids Health Dis. 2021 May 5;20(1):47. doi: 10.1186/s12944-021-01473-1. PMID 33952255. PMID 33952255.",
+   "citationVariants": [
+    "Csonka V, Bódis B, Kovács D, et al. Screening for the presence of scleroedema adultorum of Buschke in patients with diabetes mellitus: newly diagnosed patients had a high prevalence of dyslipidaemia Lipids Health Dis. 2021 May 5;20(1):47. doi: 10.1186/s12944-021-01473-1. PMID 33952255. PMID 33952255."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33952255/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/33952255/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-27"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-scleredema-to-diabetes-mellitus",
+     "primaryId": "scleredema",
+     "targetId": "diabetes-mellitus",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "72aedc6f944790a1a7e0a15b0773438a667234acab9902c22d1de0d1c781882e"
+   ]
+  },
+  {
+   "sourceId": "pmid-33865279",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "33865279",
+   "doi": null,
+   "canonicalCitation": "García-Arpal M, Bujalance-Cabrera C, Banegas-Illescas ME, et al. Scleredema diabeticorum in a patient: un uncommon etiology of restrictive lung pattern Escleredema diabeticorum en un paciente: una etiología infrecuente de patrón restrictivo pulmonar Dermatol Online J. 2021 Mar 15;27(3). pii: 13030/qt71g4k3qf. PMID 33865279. PMID 33865279.",
+   "citationVariants": [
+    "García-Arpal M, Bujalance-Cabrera C, Banegas-Illescas ME, et al. Scleredema diabeticorum in a patient: un uncommon etiology of restrictive lung pattern Escleredema diabeticorum en un paciente: una etiología infrecuente de patrón restrictivo pulmonar Dermatol Online J. 2021 Mar 15;27(3). pii: 13030/qt71g4k3qf. PMID 33865279. PMID 33865279."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33865279/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/33865279/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-27"
+   ],
+   "liveUsageCount": 2,
+   "liveUses": [
+    {
+     "relationshipId": "rel-scleredema-to-diabetes-mellitus",
+     "primaryId": "scleredema",
+     "targetId": "diabetes-mellitus",
+     "sourceIndex": 2
+    },
+    {
+     "relationshipId": "rel-scleredema-to-interstitial-lung-disease",
+     "primaryId": "scleredema",
+     "targetId": "interstitial-lung-disease",
+     "sourceIndex": 0
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "91949f901544b0c71439ae0045c9fb81e9dbd23381ac4121d13faf30547d7276",
+    "69a247cd7ac691bb6984b6fb21c2ce9ab8a360212b0ea67cba12f65330b84f7a"
+   ]
+  },
+  {
+   "sourceId": "pmid-34858014",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "34858014",
+   "doi": "10.5021/ad.2021.33.6.586",
+   "canonicalCitation": "Hong KR, Hong JY, Chung EH, et al. Monoclonal Gammopathy-Associated Scleredema Adultorum of Buschke in a Patient with Diabetes Mellitus Successfully Treated with Intravenous Immunoglobulin and Narrow-Band Ultraviolet B Phototherapy: A Case Report Ann Dermatol. 2021 Dec;33(6):586-588. doi: 10.5021/ad.2021.33.6.586. PMID 34858014. PMID 34858014.",
+   "citationVariants": [
+    "Hong KR, Hong JY, Chung EH, et al. Monoclonal Gammopathy-Associated Scleredema Adultorum of Buschke in a Patient with Diabetes Mellitus Successfully Treated with Intravenous Immunoglobulin and Narrow-Band Ultraviolet B Phototherapy: A Case Report Ann Dermatol. 2021 Dec;33(6):586-588. doi: 10.5021/ad.2021.33.6.586. PMID 34858014. PMID 34858014."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34858014/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/34858014/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-27"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-scleredema-to-multiple-myeloma",
+     "primaryId": "scleredema",
+     "targetId": "multiple-myeloma",
+     "sourceIndex": 1
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "887e7875aa2a1d783758e180c316fc41eeb0c1bb58b1b3fcf691added819b1da"
+   ]
+  },
+  {
+   "sourceId": "pmid-37701163",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "37701163",
+   "doi": "10.7759/cureus.44968",
+   "canonicalCitation": "Nickell AL, Corn M, Mannuru D, et al. Scleredema in the Setting of Monoclonal Gammopathy of Unknown Significance With Progression to Multiple Myeloma: A Case Report Cureus. 2023 Sep;15(9):e44968. doi: 10.7759/cureus.44968. PMID 37701163. PMID 37701163.",
+   "citationVariants": [
+    "Nickell AL, Corn M, Mannuru D, et al. Scleredema in the Setting of Monoclonal Gammopathy of Unknown Significance With Progression to Multiple Myeloma: A Case Report Cureus. 2023 Sep;15(9):e44968. doi: 10.7759/cureus.44968. PMID 37701163. PMID 37701163."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/37701163/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/37701163/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-27"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-scleredema-to-multiple-myeloma",
+     "primaryId": "scleredema",
+     "targetId": "multiple-myeloma",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "11d9feb1fdcd15629f826b95be2e6f416cb6e84a7532f184dfba925537e6eb2f"
+   ]
+  },
+  {
+   "sourceId": "pmid-30088450",
+   "status": "pending-verification",
+   "kind": "clinical-evidence",
+   "pmid": "30088450",
+   "doi": "10.2174/1573397114666180808091621",
+   "canonicalCitation": "Ibrahim RA, Abdalla NEH, Shabaan EAH, et al. An Unusual Presentation of a Rare Scleroderma Mimic: What is Behind the Scenes? Curr Rheumatol Rev. 2019;15(2):172-175. doi: 10.2174/1573397114666180808091621. PMID 30088450. PMID 30088450.",
+   "citationVariants": [
+    "Ibrahim RA, Abdalla NEH, Shabaan EAH, et al. An Unusual Presentation of a Rare Scleroderma Mimic: What is Behind the Scenes? Curr Rheumatol Rev. 2019;15(2):172-175. doi: 10.2174/1573397114666180808091621. PMID 30088450. PMID 30088450."
+   ],
+   "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/30088450/",
+   "sourceUrlVariants": [
+    "https://pubmed.ncbi.nlm.nih.gov/30088450/"
+   ],
+   "verificationScopes": [
+    "clinical-evidence"
+   ],
+   "verified": false,
+   "sourceCheckedOnValues": [
+    "2026-09-27"
+   ],
+   "liveUsageCount": 1,
+   "liveUses": [
+    {
+     "relationshipId": "rel-scleredema-to-interstitial-lung-disease",
+     "primaryId": "scleredema",
+     "targetId": "interstitial-lung-disease",
+     "sourceIndex": 2
+    }
+   ],
+   "retiredUses": [],
+   "rawReferenceHashes": [
+    "eef9e339697271598c5e86a14ae4913ef32daa00fba6815738f1b66139254668"
    ]
   }
  ],
