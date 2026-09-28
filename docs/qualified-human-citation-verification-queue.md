@@ -253,3 +253,7 @@ All **39 source rows** have qualified-human dispositions and have been promoted 
 - 0 remaining Master Resolution unverified/review rows
 - Replacement provenance is preserved in each replacement sourceLocator
 <!-- CLINICAL-MAPPING-MASTER-RESOLUTION-2026:END -->
+
+## Held batch-89 stress-dermatology citations — screening notes, not live rows
+
+Four PTSD stress-flare edges (`ptsd` to psoriasis, atopic-dermatitis-eczema, alopecia-areata and urticaria) were fully authored on 2026-09-28 and are **held out of the knowledge base** pending qualified-human verification of their six PMIDs: **33587564, 29124739, 42179055, 41362509, 23317485, 41766900**. The target mapping is published and the citation-purity gate applies per suggestion, so these rows cannot enter the knowledge base as `verified: false` at all; they are screening notes awaiting review under `docs/citation-verification-sop.md`, not live citation rows. The complete held edges and the hold disposition are in `docs/batch-89-ptsd-stress-flare-held-edges.json` and `docs/condition-expansion-roadmap.md`. Reserved reverse-direction literature (PMID 37900780 and PMID 42403316) remains unregistered. Run `npm run citations:queue` for the authoritative live row set.
