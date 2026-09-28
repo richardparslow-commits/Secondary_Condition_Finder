@@ -41,7 +41,7 @@
       "rationale": "Authoring registers this edge as a deliberately weak, mechanistically-framed candidate rather than a strong claim, because the catalog carries no better-identified target for this condition and because the located evidence does document a shared overuse loading pathway in the same anatomic site with a genuine differential-diagnostic problem. The conservative framing states outright that no located anchor reports the two conditions co-occurring or occurring in sequence, classifies the edge as BIOMECHANICAL_ALTERATION to name the shared loading rather than a lesion progression, and requires an independent imaging-documented fracture diagnosis for any stress-fracture claim.",
       "sourceReferences": [
         {
-          "citation": "Fares MY, Salhab HA, Khachfe HH, et al. Sever's Disease of the Pediatric Population: Clinical, Pathologic, and Therapeutic Considerations Clin Med Res. 2021 Sep;19(3):132-137. doi: 10.3121/cmr.2021.1639. PMID 34531270..",
+          "citation": "Fares MY, Salhab HA, Khachfe HH, et al. Sever's Disease of the Pediatric Population: Clinical, Pathologic, and Therapeutic Considerations Clin Med Res. 2021 Sep;19(3):132-137. doi: 10.3121/cmr.2021.1639. PMID 34531270.",
           "note": "Review of the clinical, pathologic, and therapeutic considerations of Sever's disease of the pediatric population, setting out the traction-apophysitis mechanism at the calcaneal apophysis in physically active children.",
           "verificationScope": "clinical-evidence",
           "authorityCategory": "medical-scientific-evidence",
@@ -51,7 +51,7 @@
           "sourceLocator": "Clin Podiatr Med. 2021;38(3). Narrative review of Sever's disease in the pediatric population covering clinical, pathologic, and therapeutic considerations; MEDLINE-indexed record supplying the traction-apophysitis mechanism named in this edge's primaryVector."
         },
         {
-          "citation": "McSweeney S, Reed LF, Wearing SC. Vertical ground reaction forces during gait in children with and without calcaneal apophysitis Gait Posture. 2019 Jun;71:126-130. doi: 10.1016/j.gaitpost.2019.04.027. PMID 31054494..",
+          "citation": "McSweeney S, Reed LF, Wearing SC. Vertical ground reaction forces during gait in children with and without calcaneal apophysitis Gait Posture. 2019 Jun;71:126-130. doi: 10.1016/j.gaitpost.2019.04.027. PMID 31054494.",
           "note": "Gait study comparing vertical ground reaction forces during gait in children with and without calcaneal apophysitis, documenting altered lower-limb loading in the affected group.",
           "verificationScope": "clinical-evidence",
           "authorityCategory": "medical-scientific-evidence",
@@ -61,7 +61,7 @@
           "sourceLocator": "J Pediatr Orthop. 2019;39(5). Instrumented gait comparison in children with and without calcaneal apophysitis; MEDLINE-indexed record supplying the quantified altered vertical ground reaction force named in this edge's evidence basis. A biomechanics comparison, not a study of stress-fracture co-occurrence."
         },
         {
-          "citation": "Rodríguez-Sanz D, Becerro-de-Bengoa-Vallejo R, López-López D, et al. Slow velocity of the center of pressure and high heel pressures may increase the risk of Sever's disease: a case-control study BMC Pediatr. 2018 Nov 19;18(1):357. doi: 10.1186/s12887-018-1318-1. PMID 30453930..",
+          "citation": "Rodríguez-Sanz D, Becerro-de-Bengoa-Vallejo R, López-López D, et al. Slow velocity of the center of pressure and high heel pressures may increase the risk of Sever's disease: a case-control study BMC Pediatr. 2018 Nov 19;18(1):357. doi: 10.1186/s12887-018-1318-1. PMID 30453930.",
           "note": "Case-control study reporting that slow velocity of the centre of pressure and high heel pressures may increase the risk of Sever's disease, directly linking plantar loading to the condition.",
           "verificationScope": "clinical-evidence",
           "authorityCategory": "medical-scientific-evidence",

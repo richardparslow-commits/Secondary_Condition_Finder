@@ -42,7 +42,7 @@
       "rationale": "Authoring registers this edge because the located evidence quantifies the arrhythmic consequence in two independent designs with a 35.2 percent symptomatic proportion, an inverse QTc-risk relationship, and a 320 ms threshold against a 1:4 matched control cohort, and because the atrial-fibrillation figure had no prior registered source at this target. The conservative framing records that the risk gradient is INVERSE in the QTc so it is not carried over from the long-QT relationship, reports the very wide atrial-fibrillation confidence interval, states that roughly two thirds of pooled patients were asymptomatic, and requires secondary-cause exclusion which the located scoping review itself performed.",
       "sourceReferences": [
         {
-          "citation": "Giladi M, Solomon A, Viskin D, et al. Risk stratification in short QT syndrome: Findings from a pooled analysis Heart Rhythm. 2026 Sep;23(9):e2162-e2166. doi: 10.1016/j.hrthm.2026.03.001. PMID 41794082..",
+          "citation": "Giladi M, Solomon A, Viskin D, et al. Risk stratification in short QT syndrome: Findings from a pooled analysis Heart Rhythm. 2026 Sep;23(9):e2162-e2166. doi: 10.1016/j.hrthm.2026.03.001. PMID 41794082.",
           "note": "Pooled analysis of 162 patients with short QT syndrome and known symptomatic status, finding 57 (35.2 percent) had arrhythmic symptoms comprising sudden death, cardiac arrest, or malignant syncope, a significant inverse association between QTc and arrhythmic symptoms (median QTc 315.0 ms symptomatic vs 330.0 ms asymptomatic, P=0.0023), ROC area under the curve 0.64 (P=0.0024), most patients with QTc of 320 ms or less having malignant arrhythmic symptoms while the reverse held at 320 ms or more, and male patients overrepresented overall and among those with malignant symptoms.",
           "verificationScope": "clinical-evidence",
           "authorityCategory": "medical-scientific-evidence",
@@ -52,7 +52,7 @@
           "sourceLocator": "Heart Rhythm. 2026;23(9):e2162-e2166. Pooled analysis of institutional patients plus reported literature cases, 162 patients with SQTS and known symptomatic status; abstract states 57 (35.2%) had arrhythmic symptoms, that there was a significant inverse association between QTc and arrhythmic symptoms (median 315.0 ms vs 330.0 ms, P=.0023), AUC 0.64+/-0.04 (P=.0024), and that most with QTc <=320 ms had malignant symptoms while the reverse was true at QTc >=320 ms."
         },
         {
-          "citation": "Kim DY, Uhm JS, Kim M, et al. Long-term prognosis of short QT interval in Korean patients: a multicenter retrospective cohort study BMC Cardiovasc Disord. 2021 Jan 6;21(1):17. doi: 10.1186/s12872-020-01824-3. PMID 33407155..",
+          "citation": "Kim DY, Uhm JS, Kim M, et al. Long-term prognosis of short QT interval in Korean patients: a multicenter retrospective cohort study BMC Cardiovasc Disord. 2021 Jan 6;21(1):17. doi: 10.1186/s12872-020-01824-3. PMID 33407155.",
           "note": "Multicenter retrospective cohort of 34 patients with a short QT interval against age- and sex-matched controls at a 1:4 ratio, followed a median 4.8 years, finding atrial fibrillation in 11.8 percent against 2.2 percent (P=0.030) and ventricular arrhythmia or sudden cardiac arrest in 8.7 percent against 0 percent (P=0.007), with early repolarization, tall T wave, and U wave significantly more frequent, QT dispersion significantly wider (44.0 vs 20.0 ms, P<0.001), and heart rate significantly slower (52.0 vs 70.0 per min, P<0.001) in the affected group.",
           "verificationScope": "clinical-evidence",
           "authorityCategory": "medical-scientific-evidence",
@@ -62,7 +62,7 @@
           "sourceLocator": "BMC Cardiovasc Disord. 2021;21:17. Multicenter retrospective cohort, three university hospitals in South Korea, January 1999 to March 2019, SQTI defined as Bazett-corrected QTc <=340 ms on serial ECGs, 34 patients (31 male) with matched controls; abstract states AF 11.8% vs 2.2% (P=0.030) and VA/SCA 8.7% vs 0% (P=0.007), with SQTI significantly associated with AF (OR 5.911; 95% CI 1.257-27.808; P=0.025). Confidence interval spans more than an order of magnitude."
         },
         {
-          "citation": "Boulmpou A, Giannopoulos A, Papadopoulos C, et al. The Uncommon Phenomenon of Short QT Syndrome: A Scoping Review of the Literature J Pers Med. 2025 Mar 8;15(3). doi: 10.3390/jpm15030105. PMID 40137421..",
+          "citation": "Boulmpou A, Giannopoulos A, Papadopoulos C, et al. The Uncommon Phenomenon of Short QT Syndrome: A Scoping Review of the Literature J Pers Med. 2025 Mar 8;15(3). doi: 10.3390/jpm15030105. PMID 40137421.",
           "note": "Scoping review of short QT syndrome summarising clinical presentations across a wide age range from asymptomatic individuals to those with syncope, palpitations, or sudden cardiac arrest, the common genetic mutations KCNQ1, KCNH2, and KCNJ2, and management including implantable cardioverter defibrillators for secondary prevention and pharmacological therapy primarily with hydroquinidine, explicitly EXCLUDING studies on the secondary causes of short QT intervals.",
           "verificationScope": "clinical-evidence",
           "authorityCategory": "medical-scientific-evidence",
@@ -105,7 +105,7 @@
       "rationale": "Authoring registers this edge because ventricular tachycardia and fibrillation are the lethal endpoint of the condition and the target identity had zero registered incoming edges before this batch. The conservative framing reports the zero-percent control rate and the small absolute event count on which that comparison rests, discloses that the long-term follow-up anchor's retrieved record is a single-patient narrative fragment, and requires a documented resuscitated or ECG-confirmed event plus secondary-cause exclusion for any individual.",
       "sourceReferences": [
         {
-          "citation": "Giladi M, Solomon A, Viskin D, et al. Risk stratification in short QT syndrome: Findings from a pooled analysis Heart Rhythm. 2026 Sep;23(9):e2162-e2166. doi: 10.1016/j.hrthm.2026.03.001. PMID 41794082..",
+          "citation": "Giladi M, Solomon A, Viskin D, et al. Risk stratification in short QT syndrome: Findings from a pooled analysis Heart Rhythm. 2026 Sep;23(9):e2162-e2166. doi: 10.1016/j.hrthm.2026.03.001. PMID 41794082.",
           "note": "Pooled analysis of 162 patients with short QT syndrome finding 57 (35.2 percent) with arrhythmic symptoms defined as sudden death, cardiac arrest, or malignant syncope, a significant inverse association between QTc and arrhythmic symptoms (median 315.0 ms vs 330.0 ms, P=.0023), AUC 0.64 (P=.0024), and that most patients with QTc of 320 ms or less had malignant arrhythmic symptoms.",
           "verificationScope": "clinical-evidence",
           "authorityCategory": "medical-scientific-evidence",
@@ -115,7 +115,7 @@
           "sourceLocator": "Heart Rhythm. 2026;23(9):e2162-e2166. Pooled analysis, 162 SQTS patients with known symptomatic status; abstract states 57 (35.2%) had arrhythmic symptoms (sudden death, cardiac arrest, or malignant syncope), with a significant inverse association between QTc and arrhythmic symptoms (P=.0023) and AUC 0.64+/-0.04 (P=.0024). Cohort partly assembled from published literature."
         },
         {
-          "citation": "Kim DY, Uhm JS, Kim M, et al. Long-term prognosis of short QT interval in Korean patients: a multicenter retrospective cohort study BMC Cardiovasc Disord. 2021 Jan 6;21(1):17. doi: 10.1186/s12872-020-01824-3. PMID 33407155..",
+          "citation": "Kim DY, Uhm JS, Kim M, et al. Long-term prognosis of short QT interval in Korean patients: a multicenter retrospective cohort study BMC Cardiovasc Disord. 2021 Jan 6;21(1):17. doi: 10.1186/s12872-020-01824-3. PMID 33407155.",
           "note": "Matched-cohort study recording ventricular arrhythmia or sudden cardiac arrest in 8.7 percent of patients with a short QT interval against 0 percent of matched controls (P=0.007), with early repolarization, tall T wave, and U wave significantly more frequent and heart rate significantly slower in the affected group.",
           "verificationScope": "clinical-evidence",
           "authorityCategory": "medical-scientific-evidence",
@@ -125,7 +125,7 @@
           "sourceLocator": "BMC Cardiovasc Disord. 2021;21:17. Multicenter retrospective cohort, 34 patients (31 male) with SQTI and 1:4 matched controls, median follow-up 4.8 years; abstract states VA/SCA 8.7% vs 0% (P=0.007), early repolarization, tall T wave and U wave significantly more frequent, heart rate 52.0 vs 70.0/min (P<0.001). Zero-event control rate on a small event count."
         },
         {
-          "citation": "El-Battrawy I, Besler J, Liebe V, et al. Long-Term Follow-Up of Patients With Short QT Syndrome: Clinical Profile and Outcome J Am Heart Assoc. 2018 Dec 4;7(23):e010073. doi: 10.1161/JAHA.118.010073. PMID 30571592..",
+          "citation": "El-Battrawy I, Besler J, Liebe V, et al. Long-Term Follow-Up of Patients With Short QT Syndrome: Clinical Profile and Outcome J Am Heart Assoc. 2018 Dec 4;7(23):e010073. doi: 10.1161/JAHA.118.010073. PMID 30571592.",
           "note": "Long-term follow-up study of patients with short QT syndrome describing the clinical profile and outcome of the condition, supplying the located anchor for persistence of arrhythmic risk over time.",
           "verificationScope": "clinical-evidence",
           "authorityCategory": "medical-scientific-evidence",
@@ -168,7 +168,7 @@
       "rationale": "Authoring registers this edge because the located sources establish that short QT syndrome can present with syncope and that syncope presentations can conceal a cardiac channelopathy, which is a screening implication worth recording even without a quantified rate. The conservative framing states outright that no located anchor reports a syncope-specific prevalence, names the vasovagal-versus-arrhythmic distinction as the pivotal exclusion, discloses the pediatric study's non-transferability to an adult claimant, and requires tilt-table or ECG evidence before any attribution.",
       "sourceReferences": [
         {
-          "citation": "Boulmpou A, Giannopoulos A, Papadopoulos C, et al. The Uncommon Phenomenon of Short QT Syndrome: A Scoping Review of the Literature J Pers Med. 2025 Mar 8;15(3). doi: 10.3390/jpm15030105. PMID 40137421..",
+          "citation": "Boulmpou A, Giannopoulos A, Papadopoulos C, et al. The Uncommon Phenomenon of Short QT Syndrome: A Scoping Review of the Literature J Pers Med. 2025 Mar 8;15(3). doi: 10.3390/jpm15030105. PMID 40137421.",
           "note": "Scoping review of short QT syndrome reporting that the condition is present across a wide age range from asymptomatic individuals to those experiencing syncope, palpitations, or sudden cardiac arrest, that common genetic mutations include KCNQ1, KCNH2, and KCNJ2, and that management varies with some patients receiving implantable cardioverter defibrillators for secondary prevention and others treated pharmacologically primarily with hydroquinidine.",
           "verificationScope": "clinical-evidence",
           "authorityCategory": "medical-scientific-evidence",
@@ -178,7 +178,7 @@
           "sourceLocator": "J Pers Med. 2025;15(3):105. Scoping review across PubMed, Scopus, and Cochrane, case reports, case series, and available studies on SQTS; abstract states SQTS is present across a wide age range from asymptomatic individuals to those experiencing syncope, palpitations, or sudden cardiac arrest. Narrative synthesis, no pooled estimate, and NO syncope-specific prevalence reported."
         },
         {
-          "citation": "El-Battrawy I, Besler J, Liebe V, et al. Long-Term Follow-Up of Patients With Short QT Syndrome: Clinical Profile and Outcome J Am Heart Assoc. 2018 Dec 4;7(23):e010073. doi: 10.1161/JAHA.118.010073. PMID 30571592..",
+          "citation": "El-Battrawy I, Besler J, Liebe V, et al. Long-Term Follow-Up of Patients With Short QT Syndrome: Clinical Profile and Outcome J Am Heart Assoc. 2018 Dec 4;7(23):e010073. doi: 10.1161/JAHA.118.010073. PMID 30571592.",
           "note": "Long-term follow-up study of patients with short QT syndrome describing the clinical profile and outcome of the condition, supplying the located anchor for how the syndrome presents and evolves clinically over time.",
           "verificationScope": "clinical-evidence",
           "authorityCategory": "medical-scientific-evidence",
@@ -188,7 +188,7 @@
           "sourceLocator": "J Am Heart Assoc. 2018;7(23):e010073. Long-term follow-up of patients with short QT syndrome; the retrieved record's abstract text is a single-patient narrative fragment, so design details are not fully established from the record used here, a limitation disclosed on the face of this edge."
         },
         {
-          "citation": "Aytekin Güvenir F, Özgür S. Hidden Cardiac Channelopathies in Children Presenting with Syncope and Seizure-like Events Children (Basel). 2026 May 12;13(5). doi: 10.3390/children13050669. PMID 42194195..",
+          "citation": "Aytekin Güvenir F, Özgür S. Hidden Cardiac Channelopathies in Children Presenting with Syncope and Seizure-like Events Children (Basel). 2026 May 12;13(5). doi: 10.3390/children13050669. PMID 42194195.",
           "note": "Retrospective cross-sectional study of pediatric patients presenting with syncope, presyncope, seizures, or seizure-like events, identifying hidden cardiac channelopathies in that presentation and thereby establishing that a syncope presentation can carry an arrhythmic channelopathy the syncope label conceals.",
           "verificationScope": "clinical-evidence",
           "authorityCategory": "medical-scientific-evidence",

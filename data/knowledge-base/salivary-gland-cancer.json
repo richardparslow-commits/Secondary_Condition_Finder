@@ -41,7 +41,7 @@
       "rationale": "Authoring registers this edge because dysphagia is the single most frequently measured symptomatic burden in the located malignant parotid cohort at 32.3 percent, because it is the complication a benefits examiner is most likely to encounter in a salivary gland carcinoma survivor, and because the target identity is heavily used with sixteen registered incoming edges yet has no salivary-gland primary. The conservative framing registers the treatment gradient as the finding that discloses the iatrogenic component rather than burying it, names mechanical obstruction and treatment fibrosis as two separable vectors whose relative weight depends on subsite, and requires a dated pre-treatment versus post-treatment swallowing comparison before any individual attribution.",
       "sourceReferences": [
         {
-          "citation": "Tang A, Li J, Scheff N, et al. Quality of Life Outcomes for Parotid Malignancies Laryngoscope. 2024 Nov;134(11):4549-4556. doi: 10.1002/lary.31554. PMID 38837232. PMID 38837232.",
+          "citation": "Tang A, Li J, Scheff N, et al. Quality of Life Outcomes for Parotid Malignancies Laryngoscope. 2024 Nov;134(11):4549-4556. doi: 10.1002/lary.31554. PMID 38837232.",
           "note": "Retrospective survivorship-clinic study of 62 surgically treated malignant parotid tumour patients reporting clinically relevant dysphagia on EAT-10 in 32.3 percent at last follow-up, elevated PHQ-8 in 15.5 percent, GAD-7 in 7.1 percent, neck pain in 17.7 percent, and insomnia in 7.2 percent, with significantly worse swallowing for surgery plus chemoradiation versus surgery alone (p=0.03) and significantly worse physical and social-emotional quality of life for adjuvant radiotherapy (p<0.01 and p=0.01).",
           "verificationScope": "clinical-evidence",
           "authorityCategory": "medical-scientific-evidence",
@@ -51,7 +51,7 @@
           "sourceLocator": "Laryngoscope. 2024;134(11):4549-4556. Retrospective study, malignant parotid tumour patients 2017-2023, level 4 evidence; abstract states prevalence of dysphagia (EAT-10) 32.3% and that surgery plus adjuvant CRT had worse swallowing than surgery alone (p=0.03), while adjuvant RT had worse physical (p<0.01) and social-emotional (p=0.01) QOL."
         },
         {
-          "citation": "Hernandez-Herrera GA, Rourk KS, Peraza LR, et al. Clinical Features, Treatment, and Outcomes for Oropharyngeal Adenoid Cystic Carcinoma: A Systematic Review Otolaryngol Head Neck Surg. 2026 Sep;175(3):547-555. doi: 10.1002/ohn.70319. PMID 42371638. PMID 42371638.",
+          "citation": "Hernandez-Herrera GA, Rourk KS, Peraza LR, et al. Clinical Features, Treatment, and Outcomes for Oropharyngeal Adenoid Cystic Carcinoma: A Systematic Review Otolaryngol Head Neck Surg. 2026 Sep;175(3):547-555. doi: 10.1002/ohn.70319. PMID 42371638.",
           "note": "PRISMA systematic review of 44 articles covering 195 patients with oropharyngeal adenoid cystic carcinoma reporting base of tongue as the most common subsite (73 percent), presenting symptoms as pain or discomfort (n=31), palpable mass (n=19), and dysphagia (n=12), cervical nodes positive in 22.3 percent, and distant metastases in 36 percent of those who progressed, primarily pulmonary (n=26).",
           "verificationScope": "clinical-evidence",
           "authorityCategory": "medical-scientific-evidence",
@@ -61,7 +61,7 @@
           "sourceLocator": "Otolaryngol Head Neck Surg. 2026;175(3):547-555. Systematic review per PRISMA, 233 unique citations screened, 44 articles included, 195 patients; abstract states female-to-male ratio 1.7:1, base of tongue most common subsite 73%, and that of 86 patients with progression 31 (36%) developed distant metastases primarily to the lungs (n=26)."
         },
         {
-          "citation": "Luna-Ortiz K, Yescas-Castellanos SS, Luna-Peteuil Z, et al. Malignant salivary gland tumors of the tongue: Analysis of 29 cases Med Oral Patol Oral Cir Bucal. 2026 Mar 7;31(4):e531-6. doi: 10.4317/medoral.27887. PMID 41793734. PMID 41793734.",
+          "citation": "Luna-Ortiz K, Yescas-Castellanos SS, Luna-Peteuil Z, et al. Malignant salivary gland tumors of the tongue: Analysis of 29 cases Med Oral Patol Oral Cir Bucal. 2026 Mar 7;31(4):e531-6. doi: 10.4317/medoral.27887. PMID 41793734.",
           "note": "Analysis of 29 cases of malignant salivary gland tumours of the tongue confirming tongue subsite as a separately reported presentation category within salivary gland carcinoma.",
           "verificationScope": "clinical-evidence",
           "authorityCategory": "medical-scientific-evidence",
@@ -104,7 +104,7 @@
       "rationale": "Authoring registers this edge because the located cohort measured mood directly with a named instrument in a salivary gland malignancy population, which is a rarer thing to find than the cancer-depression literature generally, and because the treatment gradient in the same cohort is the operationally decisive detail: a veteran whose depression emerged after adjuvant radiotherapy has a materially different claim than one whose depression predates the tumour. The conservative framing states plainly that the anchor reports a screening prevalence rather than a diagnosis rate, registers the systematic review as containing no mood data so it cannot be over-read, and requires a structured diagnostic interview with dated onset before any individual attribution.",
       "sourceReferences": [
         {
-          "citation": "Tang A, Li J, Scheff N, et al. Quality of Life Outcomes for Parotid Malignancies Laryngoscope. 2024 Nov;134(11):4549-4556. doi: 10.1002/lary.31554. PMID 38837232. PMID 38837232.",
+          "citation": "Tang A, Li J, Scheff N, et al. Quality of Life Outcomes for Parotid Malignancies Laryngoscope. 2024 Nov;134(11):4549-4556. doi: 10.1002/lary.31554. PMID 38837232.",
           "note": "Retrospective survivorship-clinic study of 62 surgically treated malignant parotid tumour patients reporting elevated depressive symptoms on PHQ-8 in 15.5 percent and GAD-7 in 7.1 percent at last follow-up, with significantly worse social-emotional quality of life for adjuvant chemorotherapy (p=0.02) and adjuvant radiotherapy (p=0.01) versus surgery alone.",
           "verificationScope": "clinical-evidence",
           "authorityCategory": "medical-scientific-evidence",
@@ -114,7 +114,7 @@
           "sourceLocator": "Laryngoscope. 2024;134(11):4549-4556. Retrospective study, malignant parotid tumour patients 2017-2023, level 4 evidence; abstract states prevalence of elevated depression (PHQ-8) 15.5% and moderate/severe anxiety (GAD-7) 7.1%, and that surgery plus adjuvant CRT had worse social-emotional QOL (p=0.02) and surgery plus adjuvant RT worse physical and social-emotional QOL (p<0.01, p=0.01) than surgery alone."
         },
         {
-          "citation": "Hernandez-Herrera GA, Rourk KS, Peraza LR, et al. Clinical Features, Treatment, and Outcomes for Oropharyngeal Adenoid Cystic Carcinoma: A Systematic Review Otolaryngol Head Neck Surg. 2026 Sep;175(3):547-555. doi: 10.1002/ohn.70319. PMID 42371638. PMID 42371638.",
+          "citation": "Hernandez-Herrera GA, Rourk KS, Peraza LR, et al. Clinical Features, Treatment, and Outcomes for Oropharyngeal Adenoid Cystic Carcinoma: A Systematic Review Otolaryngol Head Neck Surg. 2026 Sep;175(3):547-555. doi: 10.1002/ohn.70319. PMID 42371638.",
           "note": "PRISMA systematic review of 44 articles covering 195 patients with oropharyngeal adenoid cystic carcinoma reporting disease progression in 86 patients with distant metastases in 36 percent of those who progressed, primarily pulmonary; registered as disease-trajectory and severity context only, as it reports no mood or quality-of-life outcomes.",
           "verificationScope": "clinical-evidence",
           "authorityCategory": "medical-scientific-evidence",
@@ -124,7 +124,7 @@
           "sourceLocator": "Otolaryngol Head Neck Surg. 2026;175(3):547-555. Systematic review per PRISMA, 44 articles, 195 patients; abstract states treatment was primarily surgical (n=102) with definitive radiation in 58 cases, and that disease progression was noted in 86 patients, 36% (n=31) of whom developed distant metastases primarily to the lungs (n=26). Contains no psychiatric or mood outcome data."
         },
         {
-          "citation": "Chae YK, Sun R, Patel SP, et al. A phase II basket trial of DART SWOG S1609: the salivary gland tumor cohort Ther Adv Med Oncol. 2026;18:17588359261451739. doi: 10.1177/17588359261451739. PMID 42499790. PMID 42499790.",
+          "citation": "Chae YK, Sun R, Patel SP, et al. A phase II basket trial of DART SWOG S1609: the salivary gland tumor cohort Ther Adv Med Oncol. 2026;18:17588359261451739. doi: 10.1177/17588359261451739. PMID 42499790.",
           "note": "Phase II basket trial DART SWOG S1609 salivary gland tumour cohort, registered as the contemporary interventional-design reference point bounding the observational mood signal.",
           "verificationScope": "clinical-evidence",
           "authorityCategory": "medical-scientific-evidence",
@@ -167,7 +167,7 @@
       "rationale": "Authoring registers this edge because the target identity had no registered incoming edge at all before this batch, because dry mouth is one of the most frequently claimed and least rigorously documented complaints in salivary gland malignancy survivorship, and because splitting the mechanism into a documented radiation vector and a hypothesized tumour-and-resection vector is what keeps the edge from overstating what the located evidence actually shows. The conservative framing reuses an already-registered source rather than duplicating it, registers the survivorship cohort as carrying no xerostomia measure, and requires a dated salivary flow or validated instrument result with a radiotherapy timeline before any individual attribution.",
       "sourceReferences": [
         {
-          "citation": "Gunning JA, Limesand KH. Chronic Phenotypes Underlying Radiation-Induced Salivary Gland Dysfunction J Dent Res. 2024 Jul;103(8):778-786. doi: 10.1177/00220345241252396. PMID 38808518. PMID 38808518.",
+          "citation": "Gunning JA, Limesand KH. Chronic Phenotypes Underlying Radiation-Induced Salivary Gland Dysfunction J Dent Res. 2024 Jul;103(8):778-786. doi: 10.1177/00220345241252396. PMID 38808518.",
           "note": "Mechanistic review establishing that ionizing radiation damages salivary glands because of their proximity to common head and neck tumour sites, that damage causes loss of secretory function with severe and chronic reductions in salivary flow, and that this leads to the patient-reported sensation of dry mouth termed xerostomia, with chronic mechanisms including decreased acinar differentiation markers, increased acinar cell proliferation, immune and inflammatory dysregulation, metabolic change, fibrosis, and dysregulated neuronal responses.",
           "verificationScope": "clinical-evidence",
           "authorityCategory": "medical-scientific-evidence",
@@ -177,7 +177,7 @@
           "sourceLocator": "J Dent Res. 2024;103(7):778-786. Narrative mechanistic review of radiation-induced salivary gland dysfunction; abstract states radiation damage results in loss of secretory function causing severe and chronic reductions in salivary flow leading to xerostomia, that the mechanisms remain elusive with no standard of care for permanent restoration, and that promising treatments include adenoviral gene transfers and stem cell therapy."
         },
         {
-          "citation": "Kim MJ, Milliren A, Gerold DJ Jr. Salivary Gland Disorders: Rapid Evidence Review Am Fam Physician. 2024 Jun;109(6):550-559. PMID 38905553. PMID 38905553.",
+          "citation": "Kim MJ, Milliren A, Gerold DJ Jr. Salivary Gland Disorders: Rapid Evidence Review Am Fam Physician. 2024 Jun;109(6):550-559. PMID 38905553.",
           "note": "Rapid evidence review of salivary gland disorders supplying the general clinical framing for salivary gland disease and its functional consequences; reused from the existing registered source entity rather than added as a new one.",
           "verificationScope": "clinical-evidence",
           "authorityCategory": "medical-scientific-evidence",
@@ -187,7 +187,7 @@
           "sourceLocator": "Am Fam Physician. 2024;109(6):550-559. Rapid evidence review of salivary gland disorders; source entity pmid-38905553 was already registered in the master source registry before this batch, so this reference reuses it as an additional reference use."
         },
         {
-          "citation": "Tang A, Li J, Scheff N, et al. Quality of Life Outcomes for Parotid Malignancies Laryngoscope. 2024 Nov;134(11):4549-4556. doi: 10.1002/lary.31554. PMID 38837232. PMID 38837232.",
+          "citation": "Tang A, Li J, Scheff N, et al. Quality of Life Outcomes for Parotid Malignancies Laryngoscope. 2024 Nov;134(11):4549-4556. doi: 10.1002/lary.31554. PMID 38837232.",
           "note": "Retrospective survivorship-clinic study of 62 surgically treated malignant parotid tumour patients establishing that survivorship-relevant functional burden is measured in this population; registered for population relevance only, as the located abstract reports no xerostomia instrument or prevalence.",
           "verificationScope": "clinical-evidence",
           "authorityCategory": "medical-scientific-evidence",

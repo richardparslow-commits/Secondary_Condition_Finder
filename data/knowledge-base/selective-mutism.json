@@ -41,7 +41,7 @@
       "rationale": "Authoring registers this edge because social phobia is the near-universal associated condition, detected in 94 percent of children with selective mutism in the located comparative study and pooled at 69 percent across 22 studies, and because the target identity had ZERO registered incoming edges before this batch. The conservative framing quotes the meta-analysis's own non-separability statement rather than arguing past it, records the differential profile that keeps the two diagnoses distinguishable rather than interchangeable, notes the referred-sample enrichment of the primary anchor, and withholds the broad anxiety-disorder route because this file's own anchor reports LESS generalized anxiety disorder rather than more.",
       "sourceReferences": [
         {
-          "citation": "Driessen J, Blom JD, Muris P, et al. Anxiety in Children with Selective Mutism: A Meta-analysis Child Psychiatry Hum Dev. 2020 Apr;51(2):330-341. doi: 10.1007/s10578-019-00933-1. PMID 31650460..",
+          "citation": "Driessen J, Blom JD, Muris P, et al. Anxiety in Children with Selective Mutism: A Meta-analysis Child Psychiatry Hum Dev. 2020 Apr;51(2):330-341. doi: 10.1007/s10578-019-00933-1. PMID 31650460.",
           "note": "Random-effects meta-analysis of 22 eligible studies (N=837) finding that 80 percent of children with selective mutism were diagnosed with an additional anxiety disorder, notably social phobia at 69 percent, with considerable unexplained heterogeneity, and concluding these disorders are not discrete separable categories and that the finding does not elucidate the relation between selective mutism and anxiety as an aetiological mechanism or symptomatic feature.",
           "verificationScope": "clinical-evidence",
           "authorityCategory": "medical-scientific-evidence",
@@ -51,7 +51,7 @@
           "sourceLocator": "Child Psychiatry Hum Dev. 2020;51(4):330-341. Random-effects meta-analysis of pooled prevalence data, 22 studies, N=837; abstract states 80% of children with SM were diagnosed with an additional anxiety disorder, notably social phobia (69%), that considerable heterogeneity remained unexplained by a priori specified moderators, and that the finding indicates these disorders are not discrete, separable categories and does not help elucidate the relation between SM and anxiety as an etiological mechanism or symptomatic feature."
         },
         {
-          "citation": "Gensthaler A, Maichrowitz V, Kaess M, et al. Selective Mutism: The Fraternal Twin of Childhood Social Phobia Psychopathology. 2016;49(2):95-107. doi: 10.1159/000444882. PMID 27089281..",
+          "citation": "Gensthaler A, Maichrowitz V, Kaess M, et al. Selective Mutism: The Fraternal Twin of Childhood Social Phobia Psychopathology. 2016;49(2):95-107. doi: 10.1159/000444882. PMID 27089281.",
           "note": "Comparative behavioral study of 95 children and adolescents with selective mutism, 74 with social phobia, 46 with internalizing disorders, and 119 typically developing controls assessed by Child Behavior Checklist with diagnostic-interview comorbidity assessment, finding social phobia detected in 94 percent of children with selective mutism, more lifetime separation anxiety disorder (45 vs 26 percent) and oppositional defiant disorder (22 vs 5 percent) but LESS generalized anxiety disorder (6 vs 20 percent) and major depression (12 vs 26 percent) than in social phobia, and higher adolescent agoraphobia rates (27 vs 10 percent).",
           "verificationScope": "clinical-evidence",
           "authorityCategory": "medical-scientific-evidence",
@@ -61,7 +61,7 @@
           "sourceLocator": "Psychopathology. 2016;49(2):95-107. Participants aged 3-18, SM n=95, SP n=74, INT n=46, CG n=119, CBCL and YSR assessment with diagnostic interview for comorbidity; abstract states SP was detected in 94% of children with SM, that SM participants were more frequently affected by lifetime separation anxiety disorder (45% vs 26%) and oppositional defiant disorder (22% vs 5%) and less by generalized anxiety disorder (6% vs 20%) and major depression (12% vs 26%), and that adolescents with SM showed high rates of agoraphobia (SM 27%, SP 10%)."
         },
         {
-          "citation": "Boneff-Peng K, Lasutschinkow PC, Colton ZA, et al. An Updated Characterization of Childhood Selective Mutism: Exploring Clinical Features, Treatment Utilization, and School Services Child Psychiatry Hum Dev. 2025 Jun;56(3):683-695. doi: 10.1007/s10578-023-01589-8. PMID 37650960..",
+          "citation": "Boneff-Peng K, Lasutschinkow PC, Colton ZA, et al. An Updated Characterization of Childhood Selective Mutism: Exploring Clinical Features, Treatment Utilization, and School Services Child Psychiatry Hum Dev. 2025 Jun;56(3):683-695. doi: 10.1007/s10578-023-01589-8. PMID 37650960.",
           "note": "Parent-reported clinical characterization of 230 children with diagnosed and suspected selective mutism reporting that anxiety and social anxiety symptoms were elevated, that gender ratio, comorbidities, and family history of psychopathology aligned with previous research, and that age of onset and diagnosis were both earlier than previously reported with an average delay of 2 years.",
           "verificationScope": "clinical-evidence",
           "authorityCategory": "medical-scientific-evidence",
@@ -104,7 +104,7 @@
       "rationale": "Authoring registers this edge because the located comparative study reports lifetime separation anxiety disorder in 45 percent of children with selective mutism against 26 percent in social phobia, which is the evidence that the two anxiety phenotypes load differently and which keeps selective mutism from being collapsed into a social-phobia variant. The conservative framing states that a lifetime figure cannot order the diagnoses, registers the family-accommodation anchor as documenting a maintaining factor running in the reverse direction, quotes its null on accommodation-to-severity correlation openly, and withholds both the generalized-anxiety and depressive-disorder routes for reasons recorded on the file.",
       "sourceReferences": [
         {
-          "citation": "Gensthaler A, Maichrowitz V, Kaess M, et al. Selective Mutism: The Fraternal Twin of Childhood Social Phobia Psychopathology. 2016;49(2):95-107. doi: 10.1159/000444882. PMID 27089281..",
+          "citation": "Gensthaler A, Maichrowitz V, Kaess M, et al. Selective Mutism: The Fraternal Twin of Childhood Social Phobia Psychopathology. 2016;49(2):95-107. doi: 10.1159/000444882. PMID 27089281.",
           "note": "Comparative behavioral study finding that children with selective mutism were more frequently affected by lifetime separation anxiety disorder (45 percent) than those with social phobia (26 percent), while being less affected by generalized anxiety disorder and major depression, and that adolescents with selective mutism showed high rates of agoraphobia.",
           "verificationScope": "clinical-evidence",
           "authorityCategory": "medical-scientific-evidence",
@@ -114,7 +114,7 @@
           "sourceLocator": "Psychopathology. 2016;49(2):95-107. SM n=95, SP n=74, INT n=46, CG n=119, CBCL and YSR with diagnostic interview; abstract states SM participants were more frequently affected by lifetime separation anxiety disorder (SM 45%, SP 26%) and oppositional defiant disorder (SM 22%, SP 5%) and less by generalized anxiety disorder (SM 6%, SP 20%) and major depression (SM 12%, SP 26%). Reports LIFETIME separation anxiety, which cannot order the two diagnoses in time."
         },
         {
-          "citation": "Fisher J, Wadkins MJ, Kurtz S. Family Accommodation in Selective Mutism: Prevalence, Relationship to Symptom Severity, and Issues in Measurement/Assessment Child Psychiatry Hum Dev. 2025 Jun 30. doi: 10.1007/s10578-025-01876-6. PMID 40586947..",
+          "citation": "Fisher J, Wadkins MJ, Kurtz S. Family Accommodation in Selective Mutism: Prevalence, Relationship to Symptom Severity, and Issues in Measurement/Assessment Child Psychiatry Hum Dev. 2025 Jun 30. doi: 10.1007/s10578-025-01876-6. PMID 40586947.",
           "note": "Family-accommodation study of 38 children with selective mutism, 28 with selective mutism plus comorbid anxiety disorders, 34 with other anxiety disorders, and 30 with non-anxiety disorders, reporting that accommodation in the selective-mutism sample was prevalent though at lower frequency and lower parental distress than expected, and finding NO CORRELATION between parental accommodation and selective-mutism symptom severity.",
           "verificationScope": "clinical-evidence",
           "authorityCategory": "medical-scientific-evidence",
@@ -124,7 +124,7 @@
           "sourceLocator": "Child Psychiatry Hum Dev. 2025 Jun 30. Online ahead of print; parents who sought intakes at a private practice completed the Family Accommodation Scale-Anxiety questionnaire with additional anxiety and SM symptom measures. Abstract states accommodation in the SM sample was prevalent but reported at lower frequency and with lower levels of parental distress than expected, and that no correlation was found between accommodation and SM symptom severity."
         },
         {
-          "citation": "Boneff-Peng K, Lasutschinkow PC, Colton ZA, et al. An Updated Characterization of Childhood Selective Mutism: Exploring Clinical Features, Treatment Utilization, and School Services Child Psychiatry Hum Dev. 2025 Jun;56(3):683-695. doi: 10.1007/s10578-023-01589-8. PMID 37650960..",
+          "citation": "Boneff-Peng K, Lasutschinkow PC, Colton ZA, et al. An Updated Characterization of Childhood Selective Mutism: Exploring Clinical Features, Treatment Utilization, and School Services Child Psychiatry Hum Dev. 2025 Jun;56(3):683-695. doi: 10.1007/s10578-023-01589-8. PMID 37650960.",
           "note": "Parent-reported clinical characterization of 230 children with diagnosed and suspected selective mutism reporting elevated anxiety and social anxiety symptoms, and earlier age of onset and diagnosis than previously reported with an average 2-year diagnostic delay.",
           "verificationScope": "clinical-evidence",
           "authorityCategory": "medical-scientific-evidence",

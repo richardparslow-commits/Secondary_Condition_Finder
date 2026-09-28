@@ -41,7 +41,7 @@
       "rationale": "Authoring registers this edge because it is the strongest quantified co-occurrence in the located evidence for this file, because the target identity has zero registered incoming edges, and because the edge is operationally useful in a benefits context where a veteran whose regurgitation is documented as rumination syndrome may also carry a separately diagnosed eating disorder that the regurgitation label conceals. The conservative framing records the direction of the relationship as unresolved and notes openly that the largest anchor models the association in the reverse direction, names the shared gut-brain feedback loop as a hypothesized rather than demonstrated mechanism, bounds the claim with the onset-stratum finding showing the comorbidity is not uniform across rumination syndrome, and requires dated separate diagnoses plus exclusion of learned behaviour before any individual attribution.",
       "sourceReferences": [
         {
-          "citation": "Cai JX, Wong D, Lee DJH, et al. Eating and Psychiatric Disorders Are Independent Risk Factors for Rumination Syndrome J Clin Gastroenterol. 2022 Mar 1;56(3):228-233. doi: 10.1097/MCG.0000000000001510. PMID 33988353. PMID 33988353.",
+          "citation": "Cai JX, Wong D, Lee DJH, et al. Eating and Psychiatric Disorders Are Independent Risk Factors for Rumination Syndrome J Clin Gastroenterol. 2022 Mar 1;56(3):228-233. doi: 10.1097/MCG.0000000000001510. PMID 33988353.",
           "note": "Tertiary-centre case-control study of 24 adults with rumination syndrome and 48 age- and gender-matched controls reporting eating-disorder history in 37.5 percent versus 4.2 percent (p=0.0002), anorexia nervosa 16.7 percent versus 0 percent (p=0.005), bulimia nervosa 21.1 percent versus 0 percent (p=0.001), and eating-disorder history as an independent adjusted predictor of rumination syndrome (adjusted odds ratio 16.4, p=0.0033).",
           "verificationScope": "clinical-evidence",
           "authorityCategory": "medical-scientific-evidence",
@@ -51,7 +51,7 @@
           "sourceLocator": "J Clin Gastroenterol. 2022;56(3):228-233. Case-control study, adults with rumination syndrome January 2013 to January 2018; abstract states prevalence of ED 37.5% vs 4.2% (P=0.0002) and PD 83.3% vs 50.0% (P=0.0062), with ED (adjusted OR=16.4, P=0.0033) and PD (adjusted OR=4.47, P=0.029) independent predictors FOR RS."
         },
         {
-          "citation": "da Silva BC, Araújo M, Tavares M. Rumination Syndrome in Adolescents: Clinical and Psychiatric Correlates From a Case Series Clin Child Psychol Psychiatry. 2026 May 30:13591045261456470. doi: 10.1177/13591045261456470. PMID 42217214. PMID 42217214.",
+          "citation": "da Silva BC, Araújo M, Tavares M. Rumination Syndrome in Adolescents: Clinical and Psychiatric Correlates From a Case Series Clin Child Psychol Psychiatry. 2026 May 30:13591045261456470. doi: 10.1177/13591045261456470. PMID 42217214.",
           "note": "Case series of eight adolescent girls referred for repeated postprandial regurgitation, six diagnosed with rumination syndrome, most of whom carried co-occurring anxiety, depressive, or eating-disorder diagnoses including anorexia and bulimia, with one case found to have an underlying organic medical illness.",
           "verificationScope": "clinical-evidence",
           "authorityCategory": "medical-scientific-evidence",
@@ -61,7 +61,7 @@
           "sourceLocator": "Clin Child Psychol Psychiatry. 2026 May 30:13591045261456470. Online ahead of print; abstract reports that most diagnosed patients had emotional or psychiatric difficulties such as anxiety, depression, or eating disorders like anorexia and bulimia, and that diagnosis is often delayed because symptoms resemble reflux or vomiting."
         },
         {
-          "citation": "Yang DM, Sabella J, Kroon Van Diest A, et al. Early childhood-onset rumination syndrome is clinically distinct from adolescent-onset rumination syndrome J Pediatr Gastroenterol Nutr. 2024 Mar;78(3):565-572. doi: 10.1002/jpn3.12116. PMID 38504395. PMID 38504395.",
+          "citation": "Yang DM, Sabella J, Kroon Van Diest A, et al. Early childhood-onset rumination syndrome is clinically distinct from adolescent-onset rumination syndrome J Pediatr Gastroenterol Nutr. 2024 Mar;78(3):565-572. doi: 10.1002/jpn3.12116. PMID 38504395.",
           "note": "Bidirectional cohort of 101 children with rumination syndrome comparing 49 early-childhood-onset with 52 adolescent-onset, reporting depression in 0 percent versus 23 percent (p<0.001) and anxiety in 14 percent versus 40 percent (p=0.004) and concluding that the two onset strata may have distinct pathogenesis and natural history.",
           "verificationScope": "clinical-evidence",
           "authorityCategory": "medical-scientific-evidence",
@@ -104,7 +104,7 @@
       "rationale": "Authoring registers this edge because anxiety is the most consistently reported psychiatric correlate of rumination syndrome across all three located designs, because the target identity is a clinically load-bearing one whose presence materially changes management of a regurgitation presentation, and because the located onset-stratum finding shows the association is concentrated in adolescent and adult disease rather than being uniform. The conservative framing records the reversed modelling direction of the largest anchor, distinguishes reactive from pre-existing anxiety as the pivotal unresolved question, names the shared transdiagnostic circuit as hypothesized, and withholds the parallel depressive-disorder route as duplicate-scope against two already-registered chains.",
       "sourceReferences": [
         {
-          "citation": "Cai JX, Wong D, Lee DJH, et al. Eating and Psychiatric Disorders Are Independent Risk Factors for Rumination Syndrome J Clin Gastroenterol. 2022 Mar 1;56(3):228-233. doi: 10.1097/MCG.0000000000001510. PMID 33988353. PMID 33988353.",
+          "citation": "Cai JX, Wong D, Lee DJH, et al. Eating and Psychiatric Disorders Are Independent Risk Factors for Rumination Syndrome J Clin Gastroenterol. 2022 Mar 1;56(3):228-233. doi: 10.1097/MCG.0000000000001510. PMID 33988353.",
           "note": "Case-control study of 24 adults with rumination syndrome and 48 matched controls reporting psychiatric-disorder prevalence of 83.3 percent versus 50.0 percent (p=0.0062), anxiety in 37.5 percent and depression in 29.2 percent of cases, and psychiatric-disorder history as an independent adjusted predictor of rumination syndrome (adjusted odds ratio 4.47, p=0.029).",
           "verificationScope": "clinical-evidence",
           "authorityCategory": "medical-scientific-evidence",
@@ -114,7 +114,7 @@
           "sourceLocator": "J Clin Gastroenterol. 2022;56(3):228-233. Case-control study, adults with rumination syndrome January 2013 to January 2018; abstract states 20 of 24 (83.3%) RS patients had a PD including 9 (37.5%) anxiety and 7 (29.2%) depression, that PD prevalence was 83.3% vs 50.0% (P=0.0062), and that PD (adjusted OR=4.47, P=0.029) remained an independent predictor FOR RS."
         },
         {
-          "citation": "da Silva BC, Araújo M, Tavares M. Rumination Syndrome in Adolescents: Clinical and Psychiatric Correlates From a Case Series Clin Child Psychol Psychiatry. 2026 May 30:13591045261456470. doi: 10.1177/13591045261456470. PMID 42217214. PMID 42217214.",
+          "citation": "da Silva BC, Araújo M, Tavares M. Rumination Syndrome in Adolescents: Clinical and Psychiatric Correlates From a Case Series Clin Child Psychol Psychiatry. 2026 May 30:13591045261456470. doi: 10.1177/13591045261456470. PMID 42217214.",
           "note": "Case series of eight adolescent girls referred for repeated postprandial regurgitation, six diagnosed with rumination syndrome, most carrying co-occurring emotional or psychiatric difficulty including anxiety, with diagnosis often delayed because the presentation resembles reflux or vomiting.",
           "verificationScope": "clinical-evidence",
           "authorityCategory": "medical-scientific-evidence",
@@ -124,7 +124,7 @@
           "sourceLocator": "Clin Child Psychol Psychiatry. 2026 May 30:13591045261456470. Online ahead of print; abstract reports most diagnosed patients had anxiety, depression, or eating disorders, that rumination syndrome can have both physical and emotional components, and that diagnosis is often delayed because symptoms resemble other disorders."
         },
         {
-          "citation": "Yang DM, Sabella J, Kroon Van Diest A, et al. Early childhood-onset rumination syndrome is clinically distinct from adolescent-onset rumination syndrome J Pediatr Gastroenterol Nutr. 2024 Mar;78(3):565-572. doi: 10.1002/jpn3.12116. PMID 38504395. PMID 38504395.",
+          "citation": "Yang DM, Sabella J, Kroon Van Diest A, et al. Early childhood-onset rumination syndrome is clinically distinct from adolescent-onset rumination syndrome J Pediatr Gastroenterol Nutr. 2024 Mar;78(3):565-572. doi: 10.1002/jpn3.12116. PMID 38504395.",
           "note": "Bidirectional cohort of 101 children with rumination syndrome reporting anxiety in 40 percent of adolescent-onset disease against 14 percent of early-childhood-onset disease (p=0.004) and depression in 23 percent against 0 percent (p<0.001), with the adolescent-onset group predominantly female (p=0.016).",
           "verificationScope": "clinical-evidence",
           "authorityCategory": "medical-scientific-evidence",

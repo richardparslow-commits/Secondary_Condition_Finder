@@ -4900,3 +4900,107 @@ regenerated at 457 edges / 1,164 reference rows; dashboard at 1,164 pending rows
 distinct sources. Draft-singles moved **302 → 304** because `separation-anxiety-disorder` and `sever-s-disease`
 were each authored with a single edge. CRG at review 13/13 and redundancy 28/28, zero violations.
 Backlog after batch 83: **81**.
+
+## Mapping Expansion D1 batch 84 (2026-09-27)
+
+Five candidates screened, three authored, two closed. The batch authored **7 ASSOCIATION_ONLY edges over 21
+reference uses across 18 PMIDs, 16 of which are new source entities**; PMID 38905553 and PMID 24862601 were
+already registered and are reused. The backlog fell **86 → 81 → 76** and the next-five is now `slap-tear`,
+`sleep-related-eating-disorder`, `sleep-terror-disorder`, `sleepwalking-disorder`, `small-intestine-cancer`.
+
+**Authored edges**
+
+| Primary | Target | Rank | Mechanism |
+|---|---|---|---|
+| `sick-sinus-syndrome` | `cardiac-arrhythmia` | 1 | NEUROLOGICAL_DEGENERATION |
+| `sick-sinus-syndrome` | `cerebrovascular-accident-stroke-residuals` | 2 | THROMBOTIC_OR_VASCULAR |
+| `sick-sinus-syndrome` | `dizziness` | 3 | NEUROLOGICAL_DEGENERATION |
+| `sialolithiasis` | `sialadenitis` | 1 | MECHANICAL_OR_COMPRESSIVE |
+| `sialolithiasis` | `xerostomia` | 2 | MECHANICAL_OR_COMPRESSIVE |
+| `sialadenitis` | `xerostomia` | 1 | MULTIFACTORIAL |
+| `sialadenitis` | `non-hodgkins-lymphoma` | 2 | MALIGNANT_TRANSFORMATION |
+
+**A citation defect this batch inherited from the last one, and corrected.** The batch-83 repair collapsed a
+duplicated trailing `PMID <n>.` suffix but used a predicate that also matched a *single, well-formed* trailing
+PMID, which left a trailing **double period on all 25 of its citations** — a regression that landed on main. The
+same defect class had been present since batch 81, where the builder emitted `... PMID <n>. PMID <n>.` on **60
+citations across 8 files**. All **85 defective citations across 13 files** were normalized in this batch, with
+**249 source entities' `rawReferenceHashes`** and **146 relationships' `suggestionObjectHash` values**
+recomputed from live uses. Only **1 of the 85** carried `verified: true`, and that one was set to `verified: true`
+during batch 83 alongside the same defect, so **no completed human verification decision was invalidated**. The
+repaired batch-84 builder also adds the missing period between title and journal that earlier builders omitted.
+The lesson recorded for future batches: the dedup predicate must require the *same* PMID number to appear twice
+anchored at the end of the string, never merely that a trailing PMID parses as digits.
+
+**`skier-s-thumb` closed on identity-duplication — the third such finding, and the strongest evidence yet.**
+The catalog carries `skier-s-thumb` and `gamekeeper-s-thumb` **in the same file**, same body system, same applicable
+**38 CFR 4.71a** framework. The located literature does the merging itself: a dedicated review chapter is titled for
+gamekeeper's thumb, thumb MCP ulnar and radial collateral ligament injuries are reviewed as a *single* injury
+category, and the two names are distinguished only by **mechanism of injury** (ski-pole grip valgus versus forced
+abduction), not by lesion. The sibling already carries the registered `-> osteoarthritis` edge from batch 36. With
+`eczema` / `atopic-dermatitis-eczema` (batch 80) and `rotator-cuff-tear` / `rotator-cuff-injury` (batch 82), that is
+**three duplications in five batches**, which is a catalog-hygiene pattern rather than coincidence. None of the
+three is reconciled here: electing a canonical name changes the meaning of existing mappings and is a reviewed
+decision. Sibling check performed and reported: `trigger-thumb` and `amputation-of-thumb-fingers-toes` are
+genuinely distinct and carry no finding.
+
+**`sinusitis` closed as an umbrella.** Its catalog alias is the literal string **"sinusitis, all types"** — an
+explicit umbrella claim — while `chronic-sinusitis` is a *separate* identity already owning the sleep-apnea route
+and, from batch 81, the `samter-s-triad` route. This follows the `gastrointestinal-cancers` and
+`reproductive-cancers` umbrella dispositions of batch 78. **A tension is recorded rather than overlooked:** the
+registry already carries `bacterial-rhinitis->sinusitis` and `deviated-nasal-septum->sinusitis`, which is evidence
+that two *earlier* edges were authored under the umbrella without addressing it. Those existing edges were
+deliberately **not** altered, on the same principle that keeps the eczema and rotator-cuff duplications unreconciled.
+
+**Rank order contrary to clinical prominence, deliberately.** `sick-sinus-syndrome->dizziness` is ranked **last**
+in its file even though dizziness is the presenting complaint, because its evidence is the weakest there: the
+primary anchor is a single-arm before-and-after study of 87 patients in which *every* patient received a pacemaker
+and whose authors state **"no causal relationship could be established due to the study design"** (dizziness 45%
+before vs 12% after), the second anchor is a review authored in part by **employees of the device manufacturer**
+whose product is under discussion, and the third is a **single-patient case report**. Ranking it first would have
+presented the file's weakest evidence as its headline claim.
+
+**The stroke edge is the clinically actionable one.** UK Biobank, **451,493 participants**, median 13.2 years:
+isolated sinus node dysfunction conferred subdistribution HR **2.28 (1.57–3.31)** for ischaemic stroke against
+controls, while combined SND+AF was no worse than isolated AF (1.07, 0.84–1.37) — interpreted as evidence of a
+**left atrial myopathy**. A 24,960-patient AF cohort found SSS independently predicted stroke (HR **1.23**), and
+crucially that the effect was **strongest where CHA2DS2-VASC ≤ 2 (HR 2.13)** and **null above 2 (HR 1.02)** — the
+association is concentrated in exactly the patients standard risk stratification would not flag.
+
+**A rejected anchor recorded because the rejection changes what the edge may claim.** The chronic sialadenitis
+cohort comparing sialolithiasis against duct stenosis was located, read and **not** registered: it compares two
+causes of obstruction *within* patients already diagnosed with sialadenitis and reports **lower** symptom burden
+for stones (SPIT 33.3 vs 45.4, P < .013). Registering it would have supported the opposite emphasis — that stones
+are the *mildest* obstructive cause. Ductal stenosis is therefore named first among the alternatives to rule out.
+
+**Two withheld mood routes, both on located nulls rather than thin evidence.** The chronic obstructive sialadenitis
+QoL cohort found **lithiasis had the least impact on quality of life** among the obstructive causes examined; and
+the 244-patient study found the objective salivary separation from sicca controls was **attributed mainly to the
+lymphoma subgroups** (p < 0.0001). The mood and burden in this disease group attach to the non-stone causes. This
+is the second consecutive batch in which a withheld mood route was driven by a located null.
+
+**A scope guard applied to both `sialadenitis` edges.** Every anchor describes autoimmune / Sjögren's-type
+inflammation, while the catalog identity is the generic inflammatory label also covering obstructive, bacterial,
+viral and radiation-induced disease. The aetiology must therefore be stated on any individual claim, and
+`sjogren-s-syndrome` — carried as its own identity — is withheld as **DIRECTION REVERSAL**, because the systemic
+autoimmune condition is the cause of the gland inflammation, not its consequence. `MULTIFACTORIAL` was chosen over
+a single inflammatory label for exactly this reason. On the lymphoma edge, **7 of 12 (58%)** of detected
+non-Hodgkin's lymphomas were **diffuse large B-cell** rather than the indolent MALT lesion the case reports
+illustrate, and the total-malignance SIR of 1.42 (0.98–2.00) **includes 1**; the SIR of **15.57 (7.77–27.85)** is
+deliberately never converted into an individual risk.
+
+**Honest weakness statement for this batch.** Four of the batch's six distinct reference uses are narrative
+synthesis or methodological-review class, and only two are primary prospective cohorts, both single-arm. This is the
+weakest anchor profile of any recent batch, and it is disclosed on the face of the edges rather than masked by the
+mechanistic clarity of the underlying relationships. The `sialolithiasis->sialadenitis` edge additionally rests on a
+cohort that **expressly excluded patients with acute sialadenitis**, so it describes the chronic presentation only.
+
+**Catalog gaps recorded without numbering:** eosinophilic sialodochitis, radioiodine-induced sialadenitis,
+IgG4-related sialadenitis, chronic sialadenitis, orbital cellulitis, atrial flutter, and thumb avulsion fracture all
+appear in the located literature as distinct entities with no catalog identity.
+
+**Registry after lockstep:** 827 relationships (753 explicit / 74 legacy), 1,569 reference uses (384 verified /
+1,185 pending-verification), 1,383 source entities (346 active / 1,028 pending-verification). Citation packet
+regenerated at 464 edges / 1,185 reference rows; dashboard at 1,185 pending rows across 50 batches and 1,030
+distinct sources. Draft-singles **unchanged at 304**, since no file in this batch was authored with exactly one
+edge. CRG at review 13/13 and redundancy 28/28, zero violations. Backlog after batch 84: **76**.

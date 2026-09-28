@@ -41,7 +41,7 @@
       "rationale": "Authoring registers this edge because seborrhoeic dermatitis is the most frequently reported skin finding in Parkinson's disease, because the located scoping review supplies a severity gradient running in both directions rather than a bare co-occurrence, and because the operational reading is a screening proposition: a patient newly diagnosed with Parkinson's should be examined for the skin disease, and a patient with unexplained seborrhoeic dermatitis warrants neurological review. The conservative framing records the association in both directions as unresolved, labels the located mechanism review as hypothesis-generating, reports the scoping review's own non-significant findings for hypertension, diabetes, and obesity as nulls so they are not assumed, and requires dated diagnoses on both sides with a staging relationship.",
       "sourceReferences": [
         {
-          "citation": "Kluglein KA, South SC, Toska E, et al. Exploring Systemic Comorbidities and Lifestyle Factors Associated With Seborrheic Dermatitis: A Scoping Review Cureus. 2024 Nov;16(11):e73555. doi: 10.7759/cureus.73555. PMID 39669846. PMID 39669846.",
+          "citation": "Kluglein KA, South SC, Toska E, et al. Exploring Systemic Comorbidities and Lifestyle Factors Associated With Seborrheic Dermatitis: A Scoping Review Cureus. 2024 Nov;16(11):e73555. doi: 10.7759/cureus.73555. PMID 39669846.",
           "note": "PRISMA-guided scoping review of systemic comorbidities and lifestyle factors associated with seborrhoeic dermatitis, reporting that nearly half of Parkinson's disease patients in one study also had seborrhoeic dermatitis, that seborrhoeic dermatitis development occurred at a much higher rate as Parkinson's symptom severity increased, that seborrhoeic dermatitis burden was positively correlated to Parkinson's severity, and explicitly recording that in one cross-sectional study of patients with seborrhoeic dermatitis the most common systemic comorbidities were hypertension and diabetes and that this finding was NOT statistically significant, and that obesity was common but ALSO not significant.",
           "verificationScope": "clinical-evidence",
           "authorityCategory": "medical-scientific-evidence",
@@ -51,7 +51,7 @@
           "sourceLocator": "Cureus. 2024;16(11):e73555. Scoping review per PRISMA, searched EMBASE, PubMed, and Medline Industries in August 2024; abstract states nearly half of PD patients in one study also had SD, that as PD severity increases SD occurs at a much higher rate with burden positively correlated to PD severity, that SD has been associated with HIV although the prevalence of comorbid SD may be decreasing as antiretroviral therapy increases, and concludes these associations highlight the complex nature of seborrhoeic dermatitis and underscore the necessity of further research."
         },
         {
-          "citation": "Wilkowski CM, Alhajj M, Kilbane CW, et al. The association of seborrheic dermatitis and Parkinson's disease: A cross-sectional study J Am Acad Dermatol. 2025 Jan;92(1):157-159. doi: 10.1016/j.jaad.2024.08.074. PMID 39313034. PMID 39313034.",
+          "citation": "Wilkowski CM, Alhajj M, Kilbane CW, et al. The association of seborrheic dermatitis and Parkinson's disease: A cross-sectional study J Am Acad Dermatol. 2025 Jan;92(1):157-159. doi: 10.1016/j.jaad.2024.08.074. PMID 39313034.",
           "note": "Cross-sectional study examining the association of seborrhoeic dermatitis and Parkinson's disease, registered as the dedicated paired-design source for this association.",
           "verificationScope": "clinical-evidence",
           "authorityCategory": "medical-scientific-evidence",
@@ -61,7 +61,7 @@
           "sourceLocator": "J Am Acad Dermatol. 2025;92(1):157-159. Cross-sectional study, Case Western Reserve University School of Medicine and University Hospitals Cleveland Medical Center; doi 10.1016/j.jaad.2024.08.074, epub 2024 Sep 21. Single-pair cross-sectional design that cannot establish temporal order; the retrieved record is a short communication without the effect estimate in the abstract text."
         },
         {
-          "citation": "Kefala V, Oikonomou E, Sfyri E, et al. Genetic, Lipid, Fungal Microbiome and Neuroinflammatory Links Between Seborrheic Dermatitis and Parkinson's Disease: A Narrative Review Genes (Basel). 2026 Jul 30;17(8). doi: 10.3390/genes17080894. PMID 42650087. PMID 42650087.",
+          "citation": "Kefala V, Oikonomou E, Sfyri E, et al. Genetic, Lipid, Fungal Microbiome and Neuroinflammatory Links Between Seborrheic Dermatitis and Parkinson's Disease: A Narrative Review Genes (Basel). 2026 Jul 30;17(8). doi: 10.3390/genes17080894. PMID 42650087.",
           "note": "Narrative review setting out the proposed genetic, lipid, fungal-microbiome, and neuroinflammatory links between seborrhoeic dermatitis and Parkinson's disease, registered as hypothesis-generating for mechanism rather than as evidence for the association.",
           "verificationScope": "clinical-evidence",
           "authorityCategory": "medical-scientific-evidence",
@@ -104,7 +104,7 @@
       "rationale": "Authoring registers this edge because seborrhoeic dermatitis is among the commonest dermatological diagnoses in people living with HIV, because the located clinicopathological study supplies a histopathological signature that a dermatopathologist can act on, and because the operational reading is screening: a seborrhoeic-like eruption with the described histological features warrants HIV testing. The conservative framing records the meta-analysis's I-squared 97 percent heterogeneity so the pooled figure is not over-read, carries the study's explicit null on CD4 count, viral load, and therapy, notes the reported contemporary decrease in prevalence with therapy, and requires dated HIV status with immunological parameters rather than the skin finding alone.",
       "sourceReferences": [
         {
-          "citation": "Anshory M, Effendi RMRA, Rosandy MG, et al. Dermatological manifestation of HIV infection: systematic review and meta-analysis BMC Infect Dis. 2025 Oct 29;25(1):1446. doi: 10.1186/s12879-025-11827-0. PMID 41162862. PMID 41162862.",
+          "citation": "Anshory M, Effendi RMRA, Rosandy MG, et al. Dermatological manifestation of HIV infection: systematic review and meta-analysis BMC Infect Dis. 2025 Oct 29;25(1):1446. doi: 10.1186/s12879-025-11827-0. PMID 41162862.",
           "note": "Systematic review and meta-analysis of 145 articles involving 41,285 people with HIV identifying approximately 28,448 patients with dermatological disease, and among 60,064 events finding the most prevalent conditions to be oral candidiasis (8.88 percent), dermatophytosis, seborrheic dermatitis, warts, and herpes zoster, with an overall dermatological disease prevalence of 76 percent (95 percent CI 72 to 81) and significant heterogeneity of I squared 97 percent, with stated limitations of small sample sizes, insufficient study setting descriptions, and diagnostic challenges.",
           "verificationScope": "clinical-evidence",
           "authorityCategory": "medical-scientific-evidence",
@@ -114,7 +114,7 @@
           "sourceLocator": "BMC Infect Dis. 2025;25(1):1446. Systematic review and meta-analysis per JBI appraisal, searched MEDLINE, Web of Science, Google Scholar, and grey literature, 1975 to November 30 2022, 145 articles, 41,285 HIV patients, double-blind review with third-reviewer resolution; abstract states the most prevalent dermatological issues among 60,064 events were oral candidiasis 8.88%, dermatophytosis, seborrheic dermatitis, warts and herpes zoster, and overall prevalence 76% (95% CI 72-81%) with I2 = 97%."
         },
         {
-          "citation": "Mahlangeni GM, Tod BM, Jordaan HF, et al. Clinicopathological Features of Seborrheic-Like Dermatitis in HIV-Infected Adults: A Single Institutional Descriptive Cross-Sectional Study Am J Dermatopathol. 2021 Jan 1;43(1):27-34. doi: 10.1097/DAD.0000000000001670. PMID 32379092. PMID 32379092.",
+          "citation": "Mahlangeni GM, Tod BM, Jordaan HF, et al. Clinicopathological Features of Seborrheic-Like Dermatitis in HIV-Infected Adults: A Single Institutional Descriptive Cross-Sectional Study Am J Dermatopathol. 2021 Jan 1;43(1):27-34. doi: 10.1097/DAD.0000000000001670. PMID 32379092.",
           "note": "Prospective clinicopathological study of 30 HIV-seropositive adults presenting with seborrhoeic-like dermatitis, finding 50 percent with severe or very severe disease and 6 patients (20.0 percent) presenting with erythroderma, confirming that confluent parakeratosis, necrotic keratinocytes, plasma cells, neutrophils with leukocytoclasia, and leukoexocytosis are histopathological clues to seborrhoeic-like dermatitis in HIV-seropositive patients, and reporting NO significant correlation between severity and CD4 count, viral load, or antiretroviral therapy.",
           "verificationScope": "clinical-evidence",
           "authorityCategory": "medical-scientific-evidence",
@@ -124,7 +124,7 @@
           "sourceLocator": "Am J Dermatopathol. 2021;43(1):27-34. Prospective study, 30 HIV-seropositive adults (13 women, 17 men) at a South African dermatology clinic, March 2017 to April 2018; abstract states 50% showed severe or very severe SLD, 6 (20.0%) presented with erythroderma, that statistical analysis did not show significant correlation between severity and CD4 count, viral load, or ART, and that the presence of specific histopathological features in a skin biopsy of SLD is a clue to the diagnosis of HIV."
         },
         {
-          "citation": "Kluglein KA, South SC, Toska E, et al. Exploring Systemic Comorbidities and Lifestyle Factors Associated With Seborrheic Dermatitis: A Scoping Review Cureus. 2024 Nov;16(11):e73555. doi: 10.7759/cureus.73555. PMID 39669846. PMID 39669846.",
+          "citation": "Kluglein KA, South SC, Toska E, et al. Exploring Systemic Comorbidities and Lifestyle Factors Associated With Seborrheic Dermatitis: A Scoping Review Cureus. 2024 Nov;16(11):e73555. doi: 10.7759/cureus.73555. PMID 39669846.",
           "note": "PRISMA-guided scoping review reporting that HIV is a disease with higher incidence of seborrhoeic dermatitis while noting that the prevalence of comorbid seborrhoeic dermatitis may be decreasing as the use of antiretroviral therapy increases.",
           "verificationScope": "clinical-evidence",
           "authorityCategory": "medical-scientific-evidence",
