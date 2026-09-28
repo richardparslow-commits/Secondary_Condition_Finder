@@ -5202,3 +5202,85 @@ regenerated at **486 edges / 1,247 reference rows**; dashboard at **1,247** pend
 **1,080** distinct sources. Draft-singles **stays at 305** — no identity in this batch was authored with a single
 edge. CRG at review 13/13 and redundancy 28/28, zero violations, 4 bidirectional pairs (unchanged).
 Backlog after batch 86: **66**.
+
+---
+
+## Batch 87 — 2026-09-27 — 12 edges across 5 draft identities
+
+Twelve new **association-only** relationships over **35 reference uses / 28 PMIDs / 28 new source entities**, every
+PMID confirmed absent from `master-sources.json` before authoring. Draft-only; mapping approval is not citation
+verification.
+
+| Primary | Target | Mechanism | Notes |
+|---|---|---|---|
+| `spina-bifida` | `scoliosis` | BIOMECHANICAL_ALTERATION | 53% prevalence; back-pain null carried |
+| `spina-bifida` | `chronic-kidney-disease` | METABOLIC_OR_NUTRITIONAL | eGFR **formula-dependent**: 9.2–30.5% by formula |
+| `spina-bifida` | `depressive-disorder` | PSYCHOPHYSIOLOGICAL | 48% (volunteer) / OR 1.949 (matched) |
+| `squamous-cell-carcinoma` | `depressive-disorder` | PSYCHOPHYSIOLOGICAL | **shared evidence set** |
+| `squamous-cell-carcinoma` | `anxiety-disorder` | PSYCHOPHYSIOLOGICAL | **shared evidence set** |
+| `stevens-johnson-syndrome` | `depressive-disorder` | PSYCHOPHYSIOLOGICAL | pooled **24.9%**, I² 96% |
+| `stevens-johnson-syndrome` | `anxiety-disorder` | PSYCHOPHYSIOLOGICAL | shares 2 anchors; 3rd is class-level |
+| `stevens-johnson-syndrome` | `dry-eye-syndrome` | SYSTEMIC_INFLAMMATORY | no magnitude; all 3 anchors therapeutic |
+| `stomatitis` | `dysphagia` | MECHANICAL_OR_COMPRESSIVE | aOR 2.11 chemo / **1.21 null** for RT |
+| `stomatitis` | `depressive-disorder` | PSYCHOPHYSIOLOGICAL | **direction reversed** on its own anchor |
+| `strabismus` | `anxiety-disorder` | PSYCHOPHYSIOLOGICAL | 24%; two 220-patient cohorts are one evidence set |
+| `strabismus` | `diplopia` | BIOMECHANICAL_ALTERATION | **bidirectional**; may be iatrogenic |
+
+**Two scope findings, one resolved and one recorded.** `squamous-cell-carcinoma` carries the **bare name** with no
+site qualifier and no alias, which on its face is an umbrella; it is **resolved** to the cutaneous and
+mucocutaneous form on three recorded pieces of evidence — its Skin Conditions body system, its 38 CFR 4.118 skin
+rating framework, and **seven already-registered dermatologic incoming edges** (lichen sclerosus, actinic
+keratosis, Bowen disease, erythroplasia of Queyrat, lichen planus, median rhomboid glossitis, necrobiosis
+lipoidica). It was the only candidate in the batch with a non-zero incoming count, and lung, cervical and
+oesophageal SCC are therefore **out of scope**. `stevens-johnson-syndrome` presents the **second consecutive**
+finer-than-evidence catalog tension after `spermatocele` in batch 86: the catalog separates
+`toxic-epidermal-necrolysis` but **every** located anchor merges the two, including in the titles of the systematic
+review, the multicentre survey and the paediatric cohort, so the pooled **24.9%** psychiatric prevalence cannot be
+split.
+
+**Two files rest on a single evidence set for two targets.** The two `squamous-cell-carcinoma` edges use the same
+three studies because the non-melanoma psychosocial literature located is three studies and all three measure
+anxiety and depression together in the same participants. The two strabismus 220-patient surveys report the
+**identical 24% anxiety and 11% depression** figures, share an institution and investigators and use the same
+instruments, so they too are one evidence set, not two confirmations. Both files say so on their faces.
+
+**Two internal nulls carried on edges.** The stomatitis dysphagia association is significant for chemotherapy-induced
+mucositis (aOR 2.11, 95% CI 1.52–2.95) and **not** for radiotherapy-induced (1.21, 95% CI 0.84–1.77) on the same
+adjusted model, so the inducing agent class is a mandatory field. The spina-bifida scoliosis cohort reports **69%
+chronic back pain with no difference** by scoliosis status, so the deformity may not be used to explain pain.
+
+**Two direction findings, one ambiguous and one reversed.** `strabismus → diplopia` is **bidirectional**: a paralytic
+deviation presents with diplopia, an alternating or congenital deviation suppresses it, and the located systematic
+review *stratifies* by diplopia status rather than measuring it as an outcome — while a separate anchor measures
+**postoperative** diplopia in 79 adults who had none in any gaze beforehand, so the target may be produced **by the
+treatment**. `stomatitis → depressive-disorder` is direction-unresolved: the only prospective anchor found **higher
+anxiety and depression scores at baseline** in the individuals who went on to develop mucositis, before the lesion
+existed.
+
+**A measurement caveat worth carrying forward.** No validated spina bifida-specific eGFR formula exists; the
+proportion of adults at CKD stage 2 or higher ranged from **9.2 to 30.5% by formula alone**, and up to **26.8%** of
+adults were reclassified by a change of formula alone, while the four paediatric formulas disagreed in *direction* as
+well as magnitude — so the finding is registered for adults only.
+
+**Three withheld routes, each on located evidence.** Burn-scar carcinoma as **direction reversal** (mean latency
+21.7 years from burn to cancer, 67.19% SCC, so the arrow runs burn → carcinoma). Perineural invasion as
+**mechanism-vocabulary mismatch** — strong evidence at 19.1% vs 5.6% recurrence, p = 0.005, but perineural invasion
+is tumour spread *along* a nerve, not a neuropathy of that nerve, and no catalog identity represents it.
+**Amblyopia as a missing identity**, and this is the batch's most consequential refusal: amblyopia is the single most
+important consequence of strabismus, being the visual-deficiency outcome a unilateral or alternating deviation
+produces through suppression in the critical period, and **the catalog has no identity for it at all**, so the gap is
+recorded in the file's todo list for whoever next curates the condition catalog.
+
+**A reversal of sibling priority.** Hydrocephalus is the condition most often named alongside spina bifida and
+already carries a registered edge from `dandy-walker-syndrome`, but **no edge is registered here** — the located
+evidence addresses deformity, renal decline and mood and does not quantify hydrocephalus in this population, so the
+most clinically obvious neighbour is left unmapped rather than mapped on inference.
+
+**Hash form preserved for the third consecutive batch:** 849 relationships and 1,631 source uses restored to git HEAD
+form, only the 12 new edges recomputed.
+
+**Registry after lockstep:** 861 relationships (787 explicit / 74 legacy), 1,666 reference uses (384 verified /
+1,282 pending-verification), 1,460 source entities (346 active / 1,105 pending-verification). Packet regenerated at
+**498 edges / 1,282 reference rows**; dashboard at **1,282** pending rows across **54 batches** and **1,109** distinct
+sources. Draft-singles **stays at 305**. CRG at review 13/13 and redundancy 28/28, zero violations, 4 bidirectional
+pairs (unchanged). Backlog after batch 87: **61**.
