@@ -41,7 +41,7 @@
       "rationale": "Authoring registers this edge because separation anxiety disorder is one of the four childhood diagnoses the located national survey identifies as driving the documented 63 percent rise in childhood anxiety, and because over a third of children with emotional disorders carry a comorbid psychiatric condition, which makes an additional documented diagnosis the likely practical situation a benefits examiner encounters. The conservative framing states plainly that the survey reports aggregate trend rather than a separation-anxiety-specific comorbidity rate, holds the mitral-valve-prolapse cohort's population caveat, discloses the tertiary reference class, and declines to pad the file with weaker edges.",
       "sourceReferences": [
         {
-          "citation": "Taxiarchi VP, Anderson JK, Abel KM, et al. Emotional disorders among children and young people in England from 2004 to 2017: analysis of a probability sample survey series Br J Psychiatry. 2026 Jul;229(1):36-42. doi: 10.1192/bjp.2025.124. PMID 40546093..",
+          "citation": "Taxiarchi VP, Anderson JK, Abel KM, et al. Emotional disorders among children and young people in England from 2004 to 2017: analysis of a probability sample survey series Br J Psychiatry. 2026 Jul;229(1):36-42. doi: 10.1192/bjp.2025.124. PMID 40546093.",
           "note": "Repeated cross-sectional analysis of nationally representative probability samples of 13,561 children and young people aged 5-16 in England across the 2004 and 2017 Mental Health of Children and Young People survey waves, classified by ICD-10 using the Development and Well-Being Assessment, finding emotional-disorder prevalence rose from 3.9 to 6.0 percent (relative ratio 1.63, 95% CI 1.38-1.91) largely driven by anxiety disorders rising from 3.5 to 5.4 percent (relative ratio 1.63, 95% CI 1.37-1.93), with the largest relative changes for panic disorder, separation anxiety, social phobia and PTSD, and with comorbid psychiatric conditions present in over a third of children with emotional disorders, most commonly conduct disorder.",
           "verificationScope": "clinical-evidence",
           "authorityCategory": "medical-scientific-evidence",
@@ -51,7 +51,7 @@
           "sourceLocator": "Br J Psychiatry. 2026;229(1):36-42. Repeated cross-sectional face-to-face survey, 13,561 CYP (6,898 in 2004; 6,663 in 2017), England, ICD-10 criteria via the Development and Well-Being Assessment; abstract states the largest relative changes were for panic disorder, separation anxiety, social phobia and PTSD, and that comorbid psychiatric conditions were present in over a third of CYP with emotional disorders with the most common being conduct disorder. Reports AGGREGATE prevalence and trend, not a separation-anxiety-specific comorbidity rate."
         },
         {
-          "citation": "Yetkin ZD, Tosun Ö, Bıkmazer A, et al. Separation Anxiety Disorder in Youth With Mitral Valve Prolapse: Associations With Parental Attitudes and Anxiety Sensitivity J Dev Behav Pediatr. 2026 Jul-Aug 01;47(4):e419-e426. doi: 10.1097/DBP.0000000000001492. PMID 42228469..",
+          "citation": "Yetkin ZD, Tosun Ö, Bıkmazer A, et al. Separation Anxiety Disorder in Youth With Mitral Valve Prolapse: Associations With Parental Attitudes and Anxiety Sensitivity J Dev Behav Pediatr. 2026 Jul-Aug 01;47(4):e419-e426. doi: 10.1097/DBP.0000000000001492. PMID 42228469.",
           "note": "Study of separation anxiety disorder in youth with mitral valve prolapse, documenting associations with parental attitudes and anxiety sensitivity, establishing the condition as a separately diagnosed and clinically studied entity.",
           "verificationScope": "clinical-evidence",
           "authorityCategory": "medical-scientific-evidence",
@@ -61,7 +61,7 @@
           "sourceLocator": "J Dev Behav Pediatr. 2026;47(4):e419-e426. Cohort of youth with mitral valve prolapse assessed for separation anxiety disorder; abstract reports associations between separation anxiety disorder, parental attitudes, and anxiety sensitivity. Population is defined BY the cardiac finding, so generalisation to otherwise healthy children is limited."
         },
         {
-          "citation": "Feriante J, Torrico TJ, McArthur J, et al. Separation Anxiety Disorder 2026 Jan. PMID 32809628..",
+          "citation": "Feriante J, Torrico TJ, McArthur J, et al. Separation Anxiety Disorder 2026 Jan. PMID 32809628.",
           "note": "Clinical reference chapter on separation anxiety disorder supplying the diagnostic framing for the condition.",
           "verificationScope": "clinical-evidence",
           "authorityCategory": "medical-scientific-evidence",

@@ -41,7 +41,7 @@
       "rationale": "Authoring registers this edge because chronic rhinosinusitis is a definitional component of the syndrome and a veteran carrying only the composite label has not had that component independently documented, which is an operationally real gap in a benefits record, and because the located evidence characterises the sinus disease as aggressive, recurrent, and frequently requiring repeat surgery, which establishes that the omission has clinical rather than merely administrative consequences. The conservative framing states the circularity of any causal reading explicitly in the causation status rather than arguing around it, and requires independent otolaryngology documentation with endoscopy or imaging before the condition can be treated as established.",
       "sourceReferences": [
         {
-          "citation": "Ley-Tomas JJ, Xicotencatl-Tellez AM, García-Cruz ML, et al. Nonsteroidal antiinflammatory drug-exacerbated respiratory disease: molecular mechanism, management and treatment Front Allergy. 2024;5:1462985. doi: 10.3389/falgy.2024.1462985. PMID 39665076. PMID 39665076.",
+          "citation": "Ley-Tomas JJ, Xicotencatl-Tellez AM, García-Cruz ML, et al. Nonsteroidal antiinflammatory drug-exacerbated respiratory disease: molecular mechanism, management and treatment Front Allergy. 2024;5:1462985. doi: 10.3389/falgy.2024.1462985. PMID 39665076.",
           "note": "Review of nonsteroidal anti-inflammatory drug-exacerbated respiratory disease characterising the syndrome as the simultaneous presence of asthma, chronic rhinosinusitis with nasal polyposis, and NSAID and aspirin intolerance, and stating that despite maximal and comprehensive medical treatment the disease tends to be severe with difficult-to-treat asthma and highly aggressive and recurrent ethmoidal polyposis.",
           "verificationScope": "clinical-evidence",
           "authorityCategory": "medical-scientific-evidence",
@@ -51,7 +51,7 @@
           "sourceLocator": "Front Allergy. 2024;5:1462985. Narrative review of N-ERD pathophysiology, diagnostic protocols, and therapeutic strategies; abstract states the syndrome is characterized by the presence of asthma, chronic rhinosinusitis with nasal polyposis (CRSwNP) and NSAID and aspirin intolerance, and that the disease tends to be severe with difficult to treat asthma and highly aggressive and recurrent ethmoidal polyposis."
         },
         {
-          "citation": "Walters BK, Hagan JB, Divekar RD, et al. Aspirin-Exacerbated Respiratory Disease and the Unified Airway: A Contemporary Review Otolaryngol Clin North Am. 2023 Feb;56(1):107-124. doi: 10.1016/j.otc.2022.09.008. PMID 36283868. PMID 36283868.",
+          "citation": "Walters BK, Hagan JB, Divekar RD, et al. Aspirin-Exacerbated Respiratory Disease and the Unified Airway: A Contemporary Review Otolaryngol Clin North Am. 2023 Feb;56(1):107-124. doi: 10.1016/j.otc.2022.09.008. PMID 36283868.",
           "note": "Unified-airway review of aspirin-exacerbated respiratory disease characterising the condition by abnormal arachidonic acid metabolism leading to chronic rhinosinusitis with nasal polyposis, asthma, and respiratory symptoms after cyclooxygenase-1-inhibiting NSAID ingestion, and reporting that conventional medical management for asthma and chronic rhinosinusitis with nasal polyposis is often inadequate, with endoscopic sinus surgery plus continued medical management and optional aspirin desensitization frequently improving symptoms and objective measures.",
           "verificationScope": "clinical-evidence",
           "authorityCategory": "medical-scientific-evidence",
@@ -61,7 +61,7 @@
           "sourceLocator": "Otolaryngol Clin North Am. 2023;56(1):107-124. Contemporary review of AERD; abstract states AERD is characterized by abnormal arachidonic acid metabolism leading to CRSwNP, asthma, and upper and/or lower respiratory symptoms after ingestion of COX-1 inhibiting NSAIDs, that diagnosis is clinical and may involve an aspirin challenge, and that conventional medical management for asthma and CRSwNP is often inadequate."
         },
         {
-          "citation": "Payne SC, McKenna M, Buckley J, et al. Executive Summary of the Clinical Practice Guideline on Adult Sinusitis Update Otolaryngol Head Neck Surg. 2025 Aug;173(2):299-316. doi: 10.1002/ohn.1342. PMID 40741969. PMID 40741969.",
+          "citation": "Payne SC, McKenna M, Buckley J, et al. Executive Summary of the Clinical Practice Guideline on Adult Sinusitis Update Otolaryngol Head Neck Surg. 2025 Aug;173(2):299-316. doi: 10.1002/ohn.1342. PMID 40741969.",
           "note": "Executive Summary of the Clinical Practice Guideline on Adult Sinusitis supplying the current diagnostic and management standard against which this syndrome's sinus component is evaluated.",
           "verificationScope": "clinical-evidence",
           "authorityCategory": "medical-scientific-evidence",
@@ -104,7 +104,7 @@
       "rationale": "Authoring registers this edge because asthma is a definitional component of the syndrome, because the located evidence names difficult-to-treat asthma as a characteristic feature, and because the surgical cohort supplies the only located demonstration that the sinus and asthma components respond as one coupled treatment unit, which is directly relevant to how a benefits examiner should treat a single composite diagnosis. The conservative framing disclaims the circular causal reading in the causation status, registers the surgery cohort as coupled-treatment-response evidence rather than causal evidence, notes the unstated asthma-subgroup denominator, and requires independent pulmonology documentation with aspirin-challenge status.",
       "sourceReferences": [
         {
-          "citation": "Ley-Tomas JJ, Xicotencatl-Tellez AM, García-Cruz ML, et al. Nonsteroidal antiinflammatory drug-exacerbated respiratory disease: molecular mechanism, management and treatment Front Allergy. 2024;5:1462985. doi: 10.3389/falgy.2024.1462985. PMID 39665076. PMID 39665076.",
+          "citation": "Ley-Tomas JJ, Xicotencatl-Tellez AM, García-Cruz ML, et al. Nonsteroidal antiinflammatory drug-exacerbated respiratory disease: molecular mechanism, management and treatment Front Allergy. 2024;5:1462985. doi: 10.3389/falgy.2024.1462985. PMID 39665076.",
           "note": "Review of nonsteroidal anti-inflammatory drug-exacerbated respiratory disease characterising the syndrome as the simultaneous presence of asthma, chronic rhinosinusitis with nasal polyposis, and NSAID and aspirin intolerance, stating that the disease tends to be severe with difficult to treat asthma and highly aggressive and recurrent ethmoidal polyposis.",
           "verificationScope": "clinical-evidence",
           "authorityCategory": "medical-scientific-evidence",
@@ -114,7 +114,7 @@
           "sourceLocator": "Front Allergy. 2024;5:1462985. Narrative review of N-ERD pathophysiology, diagnostics, and therapeutics; abstract states the syndrome is characterized by the presence of asthma, chronic rhinosinusitis with nasal polyposis (CRSwNP) and NSAID and aspirin intolerance, and that the disease tends to be severe with difficult to treat asthma."
         },
         {
-          "citation": "Walters BK, Hagan JB, Divekar RD, et al. Aspirin-Exacerbated Respiratory Disease and the Unified Airway: A Contemporary Review Otolaryngol Clin North Am. 2023 Feb;56(1):107-124. doi: 10.1016/j.otc.2022.09.008. PMID 36283868. PMID 36283868.",
+          "citation": "Walters BK, Hagan JB, Divekar RD, et al. Aspirin-Exacerbated Respiratory Disease and the Unified Airway: A Contemporary Review Otolaryngol Clin North Am. 2023 Feb;56(1):107-124. doi: 10.1016/j.otc.2022.09.008. PMID 36283868.",
           "note": "Unified-airway review of aspirin-exacerbated respiratory disease describing abnormal arachidonic acid metabolism, clinical diagnosis with possible aspirin challenge, the utility of inflammatory biomarkers, and the inadequacy of conventional medical management for both the asthma and the chronic rhinosinusitis with nasal polyposis components.",
           "verificationScope": "clinical-evidence",
           "authorityCategory": "medical-scientific-evidence",
@@ -124,7 +124,7 @@
           "sourceLocator": "Otolaryngol Clin North Am. 2023;56(1):107-124. Contemporary review of AERD; abstract states diagnosis is clinical and may involve an aspirin challenge, that inflammatory biomarkers may be useful for diagnosis and treatment monitoring, and that endoscopic sinus surgery followed by continued medical management with or without aspirin desensitization frequently improves symptoms and objective disease measures."
         },
         {
-          "citation": "Yu AJ, Phung C, Kuppusamy K, et al. The Completeness of Surgery Index Predicts Success in CRSwNP With Asthma by SNOT-22 and Asthma Control Test Int Forum Allergy Rhinol. 2026 Feb;16(2):132-137. doi: 10.1002/alr.70043. PMID 41045292. PMID 41045292.",
+          "citation": "Yu AJ, Phung C, Kuppusamy K, et al. The Completeness of Surgery Index Predicts Success in CRSwNP With Asthma by SNOT-22 and Asthma Control Test Int Forum Allergy Rhinol. 2026 Feb;16(2):132-137. doi: 10.1002/alr.70043. PMID 41045292.",
           "note": "Surgical-outcome cohort of 70 chronic rhinosinusitis with nasal polyp patients with comorbid asthma undergoing revision endoscopic sinus surgery, reporting significantly greater long-term improvement on both SNOT-22 and the Asthma Control Test where the preoperative Completeness of Surgery Index was below 70, with Asthma Control Test improvement of 3.9 versus 0.88 in uncontrolled asthma (p=0.029).",
           "verificationScope": "clinical-evidence",
           "authorityCategory": "medical-scientific-evidence",

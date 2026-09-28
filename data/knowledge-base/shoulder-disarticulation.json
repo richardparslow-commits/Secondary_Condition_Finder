@@ -41,7 +41,7 @@
       "rationale": "Authoring registers this edge because the located national veteran survey reports a shoulder-SPECIFIC odds ratio of 3.78 for phantom limb pain and a 1.5-point higher mean intensity than transradial amputation, which is the strongest level-specific evidence in this batch and is directly relevant to a shoulder-disarticulation claim. The conservative framing records the 31-year mean time since amputation so the finding is not applied to an early postoperative claimant, reports the wide confidence intervals, names the pooled residual-limb-pain prevalence as the competing explanation, and states that cortical reorganisation is a candidate rather than a demonstrated mechanism.",
       "sourceReferences": [
         {
-          "citation": "Balakhanlou E, Webster J, Borgia M, et al. Frequency and Severity of Phantom Limb Pain in Veterans with Major Upper Limb Amputation: Results of a National Survey PM R. 2021 Aug;13(8):827-835. doi: 10.1002/pmrj.12485. PMID 32896094..",
+          "citation": "Balakhanlou E, Webster J, Borgia M, et al. Frequency and Severity of Phantom Limb Pain in Veterans with Major Upper Limb Amputation: Results of a National Survey PM R. 2021 Aug;13(8):827-835. doi: 10.1002/pmrj.12485. PMID 32896094.",
           "note": "National survey of 776 US military veterans with major upper limb amputation finding 73 percent reported phantom limb pain with mean intensity 4.2 (SD 3.4), 42 percent reporting it daily to always, amputation at the shoulder associated with any phantom limb pain at OR 3.78 (1.93-7.39), transhumeral at OR 1.76 (1.10-2.81), and cancer aetiology at OR 5.33 (1.15-24.81), and shoulder-level amputation associated with a 1.5-point higher average pain intensity (P<0.001) versus transradial.",
           "verificationScope": "clinical-evidence",
           "authorityCategory": "medical-scientific-evidence",
@@ -51,7 +51,7 @@
           "sourceLocator": "PM R. 2021;13(7):827-835. Cross-sectional national survey of community-dwelling US military veterans, N=776 with major upper limb amputations, 97% male, mean age 63 years, mean time since amputation 31 years, most common level transradial (36%); abstract states 73% reported PLP with mean intensity 4.2 (SD 3.4), 42% daily-to-always, and that amputation at the shoulder (OR 3.78 [1.93,7.39]) and shoulder-level pain 1.5 points higher than transradial (P<.001) were associated with PLP. Already a registered source entity, reused."
         },
         {
-          "citation": "Diers M, Krumm B, Fuchs X, et al. The Prevalence and Characteristics of Phantom Limb Pain and Non-Painful Phantom Phenomena in a Nationwide Survey of 3,374 Unilateral Limb Amputees J Pain. 2022 Mar;23(3):411-423. doi: 10.1016/j.jpain.2021.09.003. PMID 34583023..",
+          "citation": "Diers M, Krumm B, Fuchs X, et al. The Prevalence and Characteristics of Phantom Limb Pain and Non-Painful Phantom Phenomena in a Nationwide Survey of 3,374 Unilateral Limb Amputees J Pain. 2022 Mar;23(3):411-423. doi: 10.1016/j.jpain.2021.09.003. PMID 34583023.",
           "note": "Nationwide cross-sectional survey of 3,374 unilateral upper and lower limb amputees finding that clinical and demographic variables including age at and level of amputation explained 10.6 percent of the variance in phantom limb pain while perceptual variables including phantom limb sensation intensity, referred sensations, telescoping, and residual limb pain intensity explained 16.9 percent, and that these variables were SPECIFIC FOR PHANTOM LIMB PAIN AND NOT FOR RESIDUAL LIMB PAIN, indicating partly different mechanisms.",
           "verificationScope": "clinical-evidence",
           "authorityCategory": "medical-scientific-evidence",
@@ -61,7 +61,7 @@
           "sourceLocator": "J Pain. 2022;23(3):411-423. Cross-sectional survey, 3,374 unilateral upper and lower limb amputees; abstract states clinical/demographic variables explained 10.6% of the variance in PLP and perceptual variables 16.9%, that these were specific for PLP and not RLP, and suggests distinct variables and partly different mechanisms for PLP and RLP. Already a registered source entity, reused."
         },
         {
-          "citation": "List EB, Klieverik V, Martin E, et al. Prevalence of residual limb pain and neuromas after upper extremity amputation: a systematic review and meta-analysis J Hand Surg Eur Vol. 2025 Dec;50(11):1440-1447. doi: 10.1177/17531934251345368. PMID 40439077..",
+          "citation": "List EB, Klieverik V, Martin E, et al. Prevalence of residual limb pain and neuromas after upper extremity amputation: a systematic review and meta-analysis J Hand Surg Eur Vol. 2025 Dec;50(11):1440-1447. doi: 10.1177/17531934251345368. PMID 40439077.",
           "note": "Systematic review and meta-analysis finding pooled residual limb pain prevalence of 58 percent (95 percent CI 46 to 68) and symptomatic neuroma prevalence of 22 percent (95 percent CI 11 to 33) after upper extremity amputation, registered as the exclusion anchor for the principal competing pain explanation.",
           "verificationScope": "clinical-evidence",
           "authorityCategory": "medical-scientific-evidence",
@@ -104,7 +104,7 @@
       "rationale": "Authoring registers this edge because a shoulder-disarticulation claim in a benefits record is documented under the registry's broad amputation or loss-of-use identity, and because a record carrying only a level-specific disarticulation label has not thereby had the general amputation claim characterised. The conservative framing discloses that this edge rests on catalog structure rather than on evidence, states that loss of use is a functional determination made case by case, and withholds the complex-regional-pain route on direction reversal.",
       "sourceReferences": [
         {
-          "citation": "Balakhanlou E, Webster J, Borgia M, et al. Frequency and Severity of Phantom Limb Pain in Veterans with Major Upper Limb Amputation: Results of a National Survey PM R. 2021 Aug;13(8):827-835. doi: 10.1002/pmrj.12485. PMID 32896094..",
+          "citation": "Balakhanlou E, Webster J, Borgia M, et al. Frequency and Severity of Phantom Limb Pain in Veterans with Major Upper Limb Amputation: Results of a National Survey PM R. 2021 Aug;13(8):827-835. doi: 10.1002/pmrj.12485. PMID 32896094.",
           "note": "National survey of 776 US military veterans with major upper limb amputation documenting the amputation population, its level distribution with transradial most common at 36 percent, and the clinically consequential association of shoulder-level amputation with phantom limb pain at OR 3.78 and a 1.5-point higher mean pain intensity than transradial; registered here as the documentation anchor for the proximal-limb amputation instance, NOT as support for any rating construct.",
           "verificationScope": "clinical-evidence",
           "authorityCategory": "medical-scientific-evidence",

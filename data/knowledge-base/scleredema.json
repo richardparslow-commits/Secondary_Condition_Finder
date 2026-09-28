@@ -41,7 +41,7 @@
       "rationale": "Authoring registers this edge because it is the largest and most replicated of the three classical scleredema associates, because the target identity had only two registered incoming edges before this batch and neither was dermatological, and because the located screening study samples from the diabetes population and therefore makes the association bidirectional in the actual data, which is the honest reason the edge is held at association only with an unresolvable direction. The conservative framing registers the multicentre null for preceding respiratory infection openly so that reviewers do not default to the classical post-streptococcal history, and classifies the mechanism MULTIFACTORIAL to avoid implying an established single metabolic route.",
       "sourceReferences": [
         {
-          "citation": "Rongioletti F, Kaiser F, Cinotti E, et al. Scleredema. A multicentre study of characteristics, comorbidities, course and therapy in 44 patients J Eur Acad Dermatol Venereol. 2015 Dec;29(12):2399-404. doi: 10.1111/jdv.13272. PMID 26304054. PMID 26304054.",
+          "citation": "Rongioletti F, Kaiser F, Cinotti E, et al. Scleredema. A multicentre study of characteristics, comorbidities, course and therapy in 44 patients J Eur Acad Dermatol Venereol. 2015 Dec;29(12):2399-404. doi: 10.1111/jdv.13272. PMID 26304054.",
           "note": "Multicentre retrospective study of 44 patients with scleredema reporting endocrine and metabolic disease as the most common association with 30 patients suffering from diabetes, mostly type 2, monoclonal gammopathies confirmed in 5 cases, and expressly that a preceding respiratory tract infection was NOT a feature; concludes scleredema is associated with diabetes and metabolic syndrome and recommends strict glycaemic control plus physical therapy.",
           "verificationScope": "clinical-evidence",
           "authorityCategory": "medical-scientific-evidence",
@@ -51,7 +51,7 @@
           "sourceLocator": "J Eur Acad Dermatol Venereol. 2015;29(12):2399-404. Retrospective multicentre study, 44 patients (26 men), mean age at diagnosis 53.8 years; abstract states the most common associated disorders were endocrine/metabolic diseases including 30 patients suffering from diabetes mostly type 2, that monoclonal gammopathies were confirmed in five cases, that a preceding respiratory tract infection was not a feature, and that two patients died of cardiovascular complications due to myeloma and severe diabetes."
         },
         {
-          "citation": "Csonka V, Bódis B, Kovács D, et al. Screening for the presence of scleroedema adultorum of Buschke in patients with diabetes mellitus: newly diagnosed patients had a high prevalence of dyslipidaemia Lipids Health Dis. 2021 May 5;20(1):47. doi: 10.1186/s12944-021-01473-1. PMID 33952255. PMID 33952255.",
+          "citation": "Csonka V, Bódis B, Kovács D, et al. Screening for the presence of scleroedema adultorum of Buschke in patients with diabetes mellitus: newly diagnosed patients had a high prevalence of dyslipidaemia Lipids Health Dis. 2021 May 5;20(1):47. doi: 10.1186/s12944-021-01473-1. PMID 33952255.",
           "note": "Prospective screening of 113 consecutive patients with diabetes identifying 11 new scleroedema adultorum of Buschke cases, a 9.7 percent prevalence, all with type 2 diabetes, characterised with a focus on lipid metabolism abnormalities and vascular complications; the only located design sampling from the diabetes population rather than the scleredema population.",
           "verificationScope": "clinical-evidence",
           "authorityCategory": "medical-scientific-evidence",
@@ -61,7 +61,7 @@
           "sourceLocator": "Lipids Health Dis. 2021;20:47. Prospective screening study, 113 consecutive diabetes patients; abstract states 11 (9.7%) new scleroedema patients were found, all with type 2 diabetes, and that the study characterised the clinical and laboratory findings of newly identified cases with a focus on lipid metabolism abnormalities and vascular complications."
         },
         {
-          "citation": "García-Arpal M, Bujalance-Cabrera C, Banegas-Illescas ME, et al. Scleredema diabeticorum in a patient: un uncommon etiology of restrictive lung pattern Escleredema diabeticorum en un paciente: una etiología infrecuente de patrón restrictivo pulmonar Dermatol Online J. 2021 Mar 15;27(3). pii: 13030/qt71g4k3qf. PMID 33865279. PMID 33865279.",
+          "citation": "García-Arpal M, Bujalance-Cabrera C, Banegas-Illescas ME, et al. Scleredema diabeticorum in a patient: un uncommon etiology of restrictive lung pattern Escleredema diabeticorum en un paciente: una etiología infrecuente de patrón restrictivo pulmonar Dermatol Online J. 2021 Mar 15;27(3). pii: 13030/qt71g4k3qf. PMID 33865279.",
           "note": "Case report of scleredema diabeticorum in a patient with poorly controlled diabetes presenting extensive trunk involvement in a cuirasse pattern with associated restrictive lung disease, cutaneous ultrasonographic dermal thickening with echogenic spots, and the observation that cutaneous hardness may cause limited mobility with respiratory manifestations mainly in extensive disease involving trunk and shoulders.",
           "verificationScope": "clinical-evidence",
           "authorityCategory": "medical-scientific-evidence",
@@ -104,7 +104,7 @@
       "rationale": "Authoring registers this edge because it is the one classical scleredema associate with immediate lethal potential, because the located progression case documents the dyscrasia moving from monoclonal gammopathy of unknown significance to myeloma with the skin disease present throughout, and because the operational reading is a screening proposition rather than a causal one, which is exactly what a benefits record needs: a veteran with scleredema has a documented reason to be worked up for a plasma-cell disorder. The conservative framing records both the paraprotein-as-agent and paraprotein-as-marker readings, reports the 2 myeloma deaths and the 30-with-9-without skin-disease survival split so the edge is not over-read, and makes electrophoresis, immunofixation, free light chains, and marrow assessment the required workup rather than any causal inference.",
       "sourceReferences": [
         {
-          "citation": "Rongioletti F, Kaiser F, Cinotti E, et al. Scleredema. A multicentre study of characteristics, comorbidities, course and therapy in 44 patients J Eur Acad Dermatol Venereol. 2015 Dec;29(12):2399-404. doi: 10.1111/jdv.13272. PMID 26304054. PMID 26304054.",
+          "citation": "Rongioletti F, Kaiser F, Cinotti E, et al. Scleredema. A multicentre study of characteristics, comorbidities, course and therapy in 44 patients J Eur Acad Dermatol Venereol. 2015 Dec;29(12):2399-404. doi: 10.1111/jdv.13272. PMID 26304054.",
           "note": "Multicentre retrospective study of 44 patients with scleredema reporting monoclonal gammopathies confirmed in 5 cases, that systemic corticosteroids and immunosuppressive drugs were reserved for severe patients in whom phototherapy had failed or for patients with multiple myeloma, that 2 patients died of cardiovascular complications due to myeloma and severe diabetes, and that of 41 followed patients 39 were alive, 30 with and 9 without skin disease.",
           "verificationScope": "clinical-evidence",
           "authorityCategory": "medical-scientific-evidence",
@@ -114,7 +114,7 @@
           "sourceLocator": "J Eur Acad Dermatol Venereol. 2015;29(12):2399-404. Retrospective multicentre study, 44 patients (26 men), mean age at diagnosis 53.8 years, mean follow-up 32.2 months; abstract states monoclonal gammopathies were confirmed in five cases, that systemic corticosteroids and immunosuppressive drugs were reserved for patients with severe disease in whom phototherapy had failed or for patients with multiple myeloma, and that two patients died of cardiovascular complications due to myeloma and severe diabetes."
         },
         {
-          "citation": "Hong KR, Hong JY, Chung EH, et al. Monoclonal Gammopathy-Associated Scleredema Adultorum of Buschke in a Patient with Diabetes Mellitus Successfully Treated with Intravenous Immunoglobulin and Narrow-Band Ultraviolet B Phototherapy: A Case Report Ann Dermatol. 2021 Dec;33(6):586-588. doi: 10.5021/ad.2021.33.6.586. PMID 34858014. PMID 34858014.",
+          "citation": "Hong KR, Hong JY, Chung EH, et al. Monoclonal Gammopathy-Associated Scleredema Adultorum of Buschke in a Patient with Diabetes Mellitus Successfully Treated with Intravenous Immunoglobulin and Narrow-Band Ultraviolet B Phototherapy: A Case Report Ann Dermatol. 2021 Dec;33(6):586-588. doi: 10.5021/ad.2021.33.6.586. PMID 34858014.",
           "note": "Case report of monoclonal gammopathy-associated scleredema adultorum of Buschke in a patient with diabetes mellitus, successfully treated with intravenous immunoglobulin and narrow-band ultraviolet B phototherapy, documenting the dyscrasia-skin pairing as a distinct treatable entity.",
           "verificationScope": "clinical-evidence",
           "authorityCategory": "medical-scientific-evidence",
@@ -124,7 +124,7 @@
           "sourceLocator": "Ann Dermatol. 2021;33(6):586-588. Case report; MEDLINE-indexed record documenting monoclonal gammopathy-associated scleredema adultorum of Buschke with comorbid diabetes treated with IVIG and NB-UVB, authors reporting no disclosures."
         },
         {
-          "citation": "Nickell AL, Corn M, Mannuru D, et al. Scleredema in the Setting of Monoclonal Gammopathy of Unknown Significance With Progression to Multiple Myeloma: A Case Report Cureus. 2023 Sep;15(9):e44968. doi: 10.7759/cureus.44968. PMID 37701163. PMID 37701163.",
+          "citation": "Nickell AL, Corn M, Mannuru D, et al. Scleredema in the Setting of Monoclonal Gammopathy of Unknown Significance With Progression to Multiple Myeloma: A Case Report Cureus. 2023 Sep;15(9):e44968. doi: 10.7759/cureus.44968. PMID 37701163.",
           "note": "Case report of scleredema in the setting of monoclonal gammopathy of unknown significance with progression to multiple myeloma, further complicated by new-onset Raynaud phenomenon, splenomegaly, lymphadenopathy, development of a plasmacytoma, and eventual progression to multiple myeloma, highlighting the differential diagnoses and completed workup.",
           "verificationScope": "clinical-evidence",
           "authorityCategory": "medical-scientific-evidence",
@@ -167,7 +167,7 @@
       "rationale": "Authoring registers this edge because extensive scleredema involving the trunk and shoulder girdle is documented to carry a restrictive pulmonary consequence and because the target identity had seven registered incoming edges, none of them dermatological, so the cutaneous-to-pulmonary route was unrepresented. The conservative framing names the mechanical chest-wall vector as hypothesized, registers the parenchymal-fibrosis case as countervailing evidence with its myeloma and systemic-sclerosis confounding disclosed, states plainly that the multicentre series reports no pulmonary outcomes, and discloses the parenchymal-versus-mechanical target-identity mismatch on the face of the edge rather than resolving it silently.",
       "sourceReferences": [
         {
-          "citation": "García-Arpal M, Bujalance-Cabrera C, Banegas-Illescas ME, et al. Scleredema diabeticorum in a patient: un uncommon etiology of restrictive lung pattern Escleredema diabeticorum en un paciente: una etiología infrecuente de patrón restrictivo pulmonar Dermatol Online J. 2021 Mar 15;27(3). pii: 13030/qt71g4k3qf. PMID 33865279. PMID 33865279.",
+          "citation": "García-Arpal M, Bujalance-Cabrera C, Banegas-Illescas ME, et al. Scleredema diabeticorum in a patient: un uncommon etiology of restrictive lung pattern Escleredema diabeticorum en un paciente: una etiología infrecuente de patrón restrictivo pulmonar Dermatol Online J. 2021 Mar 15;27(3). pii: 13030/qt71g4k3qf. PMID 33865279.",
           "note": "Case report of scleredema diabeticorum in a patient with poorly controlled diabetes presenting extensive trunk involvement in a cuirasse pattern with associated restrictive lung disease, cutaneous ultrasonography showing marked dermal thickening and echogenic spots, and the explicit statement that cutaneous hardness secondary to scleredema may cause limited mobility so that respiratory manifestations may be associated and assessed mainly in extensive disease involving trunk and shoulders.",
           "verificationScope": "clinical-evidence",
           "authorityCategory": "medical-scientific-evidence",
@@ -177,7 +177,7 @@
           "sourceLocator": "Dermatol Online J. 2021;27(3):13030/qt71g4k3qf. Case report; abstract describes increased mucin deposition in the reticular dermis, three recognized variants with scleredema diabeticorum associated with diabetes mellitus, and states that cutaneous hardness secondary to scleredema may cause limited mobility and that respiratory manifestations may be associated and assessed mainly in cases of extensive scleredema involving trunk and shoulders."
         },
         {
-          "citation": "Rongioletti F, Kaiser F, Cinotti E, et al. Scleredema. A multicentre study of characteristics, comorbidities, course and therapy in 44 patients J Eur Acad Dermatol Venereol. 2015 Dec;29(12):2399-404. doi: 10.1111/jdv.13272. PMID 26304054. PMID 26304054.",
+          "citation": "Rongioletti F, Kaiser F, Cinotti E, et al. Scleredema. A multicentre study of characteristics, comorbidities, course and therapy in 44 patients J Eur Acad Dermatol Venereol. 2015 Dec;29(12):2399-404. doi: 10.1111/jdv.13272. PMID 26304054.",
           "note": "Multicentre retrospective study of 44 patients with scleredema describing the disease as chronic and debilitating, reporting that treatments with different combination or sequential modalities were used with variable results, that phototherapy was associated with higher although partial response, and that 2 patients died of cardiovascular complications due to myeloma and severe diabetes; registered for disease-severity and treatment-resistance context only, as it reports no pulmonary outcomes.",
           "verificationScope": "clinical-evidence",
           "authorityCategory": "medical-scientific-evidence",
@@ -187,7 +187,7 @@
           "sourceLocator": "J Eur Acad Dermatol Venereol. 2015;29(12):2399-404. Retrospective multicentre study, 44 patients (26 men), mean follow-up 32.2 months; abstract states treatments with different combination or sequential modalities were used with variable results, that phototherapy (UVA1 or PUVA) was the treatment associated with higher although partial response, and concludes scleredema is a chronic debilitating disease unresponsive to various treatments but not necessarily a life-threatening condition. Contains no pulmonary function or imaging data."
         },
         {
-          "citation": "Ibrahim RA, Abdalla NEH, Shabaan EAH, et al. An Unusual Presentation of a Rare Scleroderma Mimic: What is Behind the Scenes? Curr Rheumatol Rev. 2019;15(2):172-175. doi: 10.2174/1573397114666180808091621. PMID 30088450. PMID 30088450.",
+          "citation": "Ibrahim RA, Abdalla NEH, Shabaan EAH, et al. An Unusual Presentation of a Rare Scleroderma Mimic: What is Behind the Scenes? Curr Rheumatol Rev. 2019;15(2):172-175. doi: 10.2174/1573397114666180808091621. PMID 30088450.",
           "note": "Case of scleredema presenting as a rare scleroderma mimic with diffuse skin thickening sparing the hands and feet, associated arthralgia, dysphagia, and dyspnoea on exertion, a restrictive pattern on pulmonary function testing, and interstitial lung fibrosis on high-resolution computed tomography, diagnosed on biopsy as scleredema in a patient subsequently found to have immunoglobulin A kappa multiple myeloma; registered as countervailing evidence with its myeloma and systemic-sclerosis confounding disclosed.",
           "verificationScope": "clinical-evidence",
           "authorityCategory": "medical-scientific-evidence",

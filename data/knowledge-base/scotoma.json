@@ -41,7 +41,7 @@
       "rationale": "Authoring registers this edge because the located evidence names stroke as the commonest cause of homonymous visual field defects and because 36 percent of the located cohort retained a defect beyond one year, which is the persistence figure that matters for a benefits record rather than the acute presentation. The conservative framing states the reverse arrow in the causation status so the edge can never be read as claiming a scotoma causes stroke, registers the case series' observation that a defect may be clinically silent and the patient unaware of it, requires neuroimaging plus formal perimetry rather than subjective report, and records the transient ischaemic attack question as an unresolved gap.",
       "sourceReferences": [
         {
-          "citation": "Rashid AS, Rashid D, Yang G, et al. Homonymous visual field defect and retinal thinning after occipital stroke Brain Behav. 2021 Oct;11(10):e2345. doi: 10.1002/brb3.2345. PMID 34487632. PMID 34487632.",
+          "citation": "Rashid AS, Rashid D, Yang G, et al. Homonymous visual field defect and retinal thinning after occipital stroke Brain Behav. 2021 Oct;11(10):e2345. doi: 10.1002/brb3.2345. PMID 34487632.",
           "note": "Retrospective cohort of 36 patients with acute occipital stroke reporting that stroke is the most common cause of homonymous visual field defects, that 26 patients (72 percent) had a visual field defect at onset by confrontation or perimetry, and that at follow-up beyond one year 13 patients (36 percent) had a remaining defect comprising 5 homonymous hemianopias, 5 homonymous quadrantanopias, and 3 homonymous scotomas, with GCIPL and RNFL thickness significantly reduced in each eye in patients with a defect versus those without (p<0.01).",
           "verificationScope": "clinical-evidence",
           "authorityCategory": "medical-scientific-evidence",
@@ -51,7 +51,7 @@
           "sourceLocator": "Brain Behav. 2021;11(10):e2345. Retrospective review of medical records and follow-up examinations; abstract states 36 patients met inclusion criteria, 26 (72%) had VFD at onset, 13 (36%) had remaining VFD >1 year after stroke (5 hemianopia, 5 quadrantanopia, 3 homonymous scotomas), and that GCIPL and RNFL were significantly reduced in each eye in VFD compared to non-VFD (p<.01 for all comparisons)."
         },
         {
-          "citation": "Papageorgiou E, Anthis N, Stathi T, et al. Case Series: Bilateral Homonymous Visual Field Defects Due to Bilateral Ischemic Strokes Optom Vis Sci. 2018 Nov;95(11):1077-1082. doi: 10.1097/OPX.0000000000001294. PMID 30339636. PMID 30339636.",
+          "citation": "Papageorgiou E, Anthis N, Stathi T, et al. Case Series: Bilateral Homonymous Visual Field Defects Due to Bilateral Ischemic Strokes Optom Vis Sci. 2018 Nov;95(11):1077-1082. doi: 10.1097/OPX.0000000000001294. PMID 30339636.",
           "note": "Case series of three patients with bilateral homonymous visual field defects from bilateral ischaemic strokes, reporting perimetry and brain MRI findings including a right horizontal wedge-shaped homonymous scotoma in a patient with a chronic left occipital stroke and acute right thalamic ischemia, and noting that two of the three patients suffered sequential bilateral strokes and were unaware of the initial scotoma.",
           "verificationScope": "clinical-evidence",
           "authorityCategory": "medical-scientific-evidence",
@@ -61,7 +61,7 @@
           "sourceLocator": "Optom Vis Sci. 2018;95(11):1077-1082. Case series, three patients; abstract states two of three presented with superior altitudinal hemianopia from right and left homonymous superior quadrantanopia due to bilateral occipital strokes below the calcarine fissure, that patient 2 showed a left incomplete homonymous hemianopia and a right horizontal wedge-shaped homonymous scotoma with chronic left occipital stroke and acute right thalamic ischemia, and concludes bilateral homonymous visual field defects due to bilateral strokes are rare."
         },
         {
-          "citation": "Papageorgiou E, Ticini LF, Schiefer U. Peripheral homonymous hemianopia: correlation between lesion location and visual field defects by means of cytoarchitectonic probabilistic maps J Neuroophthalmol. 2012 Mar;32(1):5-12. doi: 10.1097/WNO.0b013e31821fc0e9. PMID 21623227. PMID 21623227.",
+          "citation": "Papageorgiou E, Ticini LF, Schiefer U. Peripheral homonymous hemianopia: correlation between lesion location and visual field defects by means of cytoarchitectonic probabilistic maps J Neuroophthalmol. 2012 Mar;32(1):5-12. doi: 10.1097/WNO.0b013e31821fc0e9. PMID 21623227.",
           "note": "Study correlating lesion location with peripheral homonymous hemianopia using cytoarchitectonic mapping, supplying the anatomical basis for the homonymous character of a post-geniculate visual field defect.",
           "verificationScope": "clinical-evidence",
           "authorityCategory": "medical-scientific-evidence",
@@ -104,7 +104,7 @@
       "rationale": "Authoring registers this edge because scotomatous visual symptoms are among the commonest reported aura phenomena and because a transient scotoma is one of the most frequent reasons a visual-field complaint reaches primary care with an ambiguous attribution. The conservative framing states the reverse arrow in the causation status, reports that the primary anchor establishes a REPORTING RANK without any rate, records that the included studies varied from 2 to 23 distinct phenomena so the ranking is elicitation-dependent, and requires time course and associated neurological symptoms rather than visual phenomenon shape, given the differential the anchor itself documents.",
       "sourceReferences": [
         {
-          "citation": "Viana M, Tronvik EA, Do TP, et al. Clinical features of visual migraine aura: a systematic review J Headache Pain. 2019 May 30;20(1):64. doi: 10.1186/s10194-019-1008-x. PMID 31146673. PMID 31146673.",
+          "citation": "Viana M, Tronvik EA, Do TP, et al. Clinical features of visual migraine aura: a systematic review J Headache Pain. 2019 May 30;20(1):64. doi: 10.1186/s10194-019-1008-x. PMID 31146673.",
           "note": "Systematic review of 11 retrospective and 3 prospective studies systematically describing visual aura symptoms, reporting that the number of distinct visual phenomena per study ranged from 2 to 23 and that the most common were flashes of bright light, foggy vision, zigzag lines, scotoma, small bright dots, and heat-wave or water distortion, and stating that migraine aura is often clinically difficult to distinguish from transient ischaemic attacks and epilepsy.",
           "verificationScope": "clinical-evidence",
           "authorityCategory": "medical-scientific-evidence",
@@ -114,7 +114,7 @@
           "sourceLocator": "J Headache Pain. 2019;20:64. Systematic review of prospective and retrospective systematic recordings of visual aura symptoms; abstract states 11 retrospective and 3 prospective studies were found, that the most common VAS types were flashes of bright light, foggy vision, zigzag lines, scotoma, small bright dots and heat waves or water, and concludes that an official list of VAS types should be developed within the International Classification of Headache Disorders context."
         },
         {
-          "citation": "Singla M, Sulena 2, Kale R, et al. Visual Aura in Migraine: An Analysis of 165 Patients in a Tertiary Care Hospital in North India J Neurosci Rural Pract. 2021 Apr;12(2):273-280. doi: 10.1055/s-0040-1721624. PMID 33927518. PMID 33927518.",
+          "citation": "Singla M, Sulena 2, Kale R, et al. Visual Aura in Migraine: An Analysis of 165 Patients in a Tertiary Care Hospital in North India J Neurosci Rural Pract. 2021 Apr;12(2):273-280. doi: 10.1055/s-0040-1721624. PMID 33927518.",
           "note": "Observational questionnaire-based cross-sectional study of 165 patients with migraine at a tertiary care hospital, classifying migraine by ICHD-III and profiling visual aura type, duration, laterality, and its relation to migraine.",
           "verificationScope": "clinical-evidence",
           "authorityCategory": "medical-scientific-evidence",
@@ -124,7 +124,7 @@
           "sourceLocator": "J Neurosci Rural Pract. 2021;12(2):273-280. Observational questionnaire-based cross-sectional study, 165 patients with migraine at a tertiary care hospital, migraine classified by ICHD-III third edition; abstract describes a detailed profile of visual aura type, duration, and laterality in patients in whom aura was present. Single tertiary centre, no control group."
         },
         {
-          "citation": "Nordin BA. Differentiating Visual Symptoms in Retinal Migraine and Migraine With Aura: A Systematic Review of Shared Features, Distinctions, and Clinical Implications Cureus. 2025 Aug;17(8):e91028. doi: 10.7759/cureus.91028. PMID 40873917. PMID 40873917.",
+          "citation": "Nordin BA. Differentiating Visual Symptoms in Retinal Migraine and Migraine With Aura: A Systematic Review of Shared Features, Distinctions, and Clinical Implications Cureus. 2025 Aug;17(8):e91028. doi: 10.7759/cureus.91028. PMID 40873917.",
           "note": "Systematic review addressing the differentiation of visual symptoms between retinal migraine and migraine with aura, that is between the two migraine presentations in which a scotomatous defect may appear and which must be separated rather than pooled.",
           "verificationScope": "clinical-evidence",
           "authorityCategory": "medical-scientific-evidence",
@@ -167,7 +167,7 @@
       "rationale": "Authoring registers this edge because the located cohort reports visual field defects in 38 percent of adult occipital lobe epilepsy and simple visual hallucinations misdiagnosed in 40 percent, which together mean a meaningful share of scotomas reaching an eye clinic may have an unrecognised epileptic cause. The conservative framing states the reverse arrow, records that the 40 percent misdiagnosis figure concerns hallucinations rather than field defects specifically so it is not over-read, notes the 75 percent migraine co-morbidity that makes this file's migraine edge non-separable from this one, discloses the mechanism-category mismatch to registry precedent rather than inventing a category, and requires electroencephalographic support and semiology with the explicit caution that a normal interictal electroencephalogram does not exclude the diagnosis.",
       "sourceReferences": [
         {
-          "citation": "Angus-Leppan H, Clay TA. Adult occipital lobe epilepsy: 12-years on J Neurol. 2021 Oct;268(10):3926-3934. doi: 10.1007/s00415-021-10557-y. PMID 33900448. PMID 33900448.",
+          "citation": "Angus-Leppan H, Clay TA. Adult occipital lobe epilepsy: 12-years on J Neurol. 2021 Oct;268(10):3926-3934. doi: 10.1007/s00415-021-10557-y. PMID 33900448.",
           "note": "Longitudinal study of 24 adult occipital lobe epilepsy patients identified over 12 months from 1548 patients in a neurologist's service and followed over 12 years, reporting that occipital lobe epilepsies comprise 5-10 percent of focal epilepsies, that 92 percent had simple visual hallucinations misdiagnosed in 40 percent of cases, that 75 percent had co-morbid interictal migraine, that 38 percent had visual field defects, that only 33 percent achieved long-term remission, and that only 2 of 10 patients with a structural aetiology were seizure-free.",
           "verificationScope": "clinical-evidence",
           "authorityCategory": "medical-scientific-evidence",
@@ -177,7 +177,7 @@
           "sourceLocator": "J Neurol. 2021;268(10):3926-3934. Longitudinal study, 24 adult OLE patients followed over 12 years; abstract states 92% had simple visual hallucinations misdiagnosed in 40% of cases, 75% had co-morbid interictal migraine, 38% had visual field defects, only 33% achieved long-term remission, and adult OLE accounted for 7.7% of focal epilepsies in this cohort with misdiagnosis or misclassification in 40%."
         },
         {
-          "citation": "Machner B, Sprenger A, Kömpf D, et al. Visual search disorders beyond pure sensory failure in patients with acute homonymous visual field defects Neuropsychologia. 2009 Nov;47(13):2704-11. doi: 10.1016/j.neuropsychologia.2009.05.016. PMID 19500605. PMID 19500605.",
+          "citation": "Machner B, Sprenger A, Kömpf D, et al. Visual search disorders beyond pure sensory failure in patients with acute homonymous visual field defects Neuropsychologia. 2009 Nov;47(13):2704-11. doi: 10.1016/j.neuropsychologia.2009.05.016. PMID 19500605.",
           "note": "Study of visual search disorders beyond pure sensory failure in patients with acute homonymous visual field defects, supplying the perceptual comparator for a documented field defect and supporting the requirement for formal visual field testing rather than subjective report.",
           "verificationScope": "clinical-evidence",
           "authorityCategory": "medical-scientific-evidence",
@@ -187,7 +187,7 @@
           "sourceLocator": "Neuropsychologia. 2009;47(13):2554-2567. Perceptual study of visual search behaviour in patients with acute homonymous visual field defects; MEDLINE-indexed record addressing perceptual consequences of a documented field defect. Comparator class addressing vascular-origin defects rather than epileptic aetiology."
         },
         {
-          "citation": "Papageorgiou E, Ticini LF, Schiefer U. Peripheral homonymous hemianopia: correlation between lesion location and visual field defects by means of cytoarchitectonic probabilistic maps J Neuroophthalmol. 2012 Mar;32(1):5-12. doi: 10.1097/WNO.0b013e31821fc0e9. PMID 21623227. PMID 21623227.",
+          "citation": "Papageorgiou E, Ticini LF, Schiefer U. Peripheral homonymous hemianopia: correlation between lesion location and visual field defects by means of cytoarchitectonic probabilistic maps J Neuroophthalmol. 2012 Mar;32(1):5-12. doi: 10.1097/WNO.0b013e31821fc0e9. PMID 21623227.",
           "note": "Study correlating lesion location with peripheral homonymous hemianopia using cytoarchitectonic mapping, supplying the post-geniculate anatomy within which a focal occipital seizure discharge occurs.",
           "verificationScope": "clinical-evidence",
           "authorityCategory": "medical-scientific-evidence",
@@ -230,7 +230,7 @@
       "rationale": "Authoring registers this edge because visual impairment is among the most common and disabling manifestations of multiple sclerosis and because the located anchor specifically identifies homonymous field defects from post-geniculate involvement as under-recognised in clinical practice, which is a documentation gap a benefits record is likely to share. The conservative framing states the reverse arrow, discloses that the best-characterised route is represented by a tertiary reference rather than a primary cohort, reports the 192-patient cohort's demographic concentration and self-reported symptom counting, and requires the defect's laterality to be characterised because monocular and homonymous defects localise to different sides of the chiasm and imply different disease.",
       "sourceReferences": [
         {
-          "citation": "Zhang X, Plant GT. Visual impairment in multiple sclerosis involving post-geniculate gray and white matter: above and beyond Front Neurol. 2026;17:1875359. doi: 10.3389/fneur.2026.1875359. PMID 42729962. PMID 42729962.",
+          "citation": "Zhang X, Plant GT. Visual impairment in multiple sclerosis involving post-geniculate gray and white matter: above and beyond Front Neurol. 2026;17:1875359. doi: 10.3389/fneur.2026.1875359. PMID 42729962.",
           "note": "Review of visual impairment in multiple sclerosis involving post-geniculate gray and white matter, stating that visual impairment is one of the most common and disabling manifestations of the disease, that post-geniculate involvement including the optic radiations and visual cortex remains comparatively under-studied and under-recognised in clinical practice, and that the resulting abnormalities include homonymous visual field defects, visuoperceptual dysfunction, visual cognitive impairment, and higher-order ocular motor abnormalities.",
           "verificationScope": "clinical-evidence",
           "authorityCategory": "medical-scientific-evidence",
@@ -240,7 +240,7 @@
           "sourceLocator": "Front Neurol. 2026;17:1875359. Narrative review; abstract states that while visual dysfunction related to optic neuritis and brainstem involvement is well recognized, visual impairment associated with post-geniculate visual pathways remains comparatively under-studied and under-recognized, and that lesions in post-geniculate white and gray matter contribute to both symptomatic and subclinical visual dysfunction."
         },
         {
-          "citation": "Daw W, Bakheet M, Elhag Elamin M, et al. Ocular Manifestations of Multiple Sclerosis: A Retrospective, Population-Based Single-Center Study Cureus. 2026 Feb;18(2):e102901. doi: 10.7759/cureus.102901. PMID 41798516. PMID 41798516.",
+          "citation": "Daw W, Bakheet M, Elhag Elamin M, et al. Ocular Manifestations of Multiple Sclerosis: A Retrospective, Population-Based Single-Center Study Cureus. 2026 Feb;18(2):e102901. doi: 10.7759/cureus.102901. PMID 41798516.",
           "note": "Retrospective population-based single-centre study of 192 patients with multiple sclerosis evaluated in an ophthalmology clinic using structured questionnaires completed at routine visits, reporting ocular symptoms in 120 patients, determining the proportion with afferent and efferent visual disturbances, assessing the contribution of visual evoked potentials to detecting visual pathway abnormality, and identifying ocular findings that represented the initial clinical manifestation of multiple sclerosis.",
           "verificationScope": "clinical-evidence",
           "authorityCategory": "medical-scientific-evidence",
@@ -250,7 +250,7 @@
           "sourceLocator": "Cureus. 2026;18(2):e102901. Retrospective study, 192 MS patients, of whom 30 male and 162 female and 54 percent aged 20 to 30; abstract states ocular symptoms were reported by 120 patients and the study assessed afferent and efferent visual disturbances, VEP detection of visual pathway abnormality, and ocular findings as initial clinical manifestation."
         },
         {
-          "citation": "Guier CP, Kaur K, Stokkermans TJ. Optic Neuritis 2025 Jan. PMID 32496733. PMID 32496733.",
+          "citation": "Guier CP, Kaur K, Stokkermans TJ. Optic Neuritis 2025 Jan. PMID 32496733.",
           "note": "StatPearls chapter on optic neuritis supplying the pre-geniculate route by which a demyelinating optic nerve lesion produces a visual field defect, registered as a tertiary reference chapter rather than as a primary cohort or pooled analysis, and disclosed as such on the face of this edge.",
           "verificationScope": "clinical-evidence",
           "authorityCategory": "medical-scientific-evidence",

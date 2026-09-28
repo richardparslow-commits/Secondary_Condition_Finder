@@ -41,7 +41,7 @@
       "rationale": "Authoring registers this edge because an abrupt eruptive onset of multiple seborrhoeic keratoses is a recognised paraneoplastic sign whose most frequently reported underlying malignancies are gastrointestinal, and because the located evidence frames it explicitly as an underdiagnosed opportunity for early detection. The conservative framing states plainly that the edge records a screening signal rather than a causal route, registers the synchronous prostate and bladder case as positive evidence that the association is non-specific, discloses the mismatch between the registered mechanism category and the paraneoplastic phenomenon rather than inventing a vocabulary term, and withholds the cutaneous skin-cancer identity as a category error that would misstate the finding.",
       "sourceReferences": [
         {
-          "citation": "Borja Montes OF, Escobar Gil T, Cardona Solano C, et al. Leser-Trélat Syndrome, an Underdiagnosed Cutaneous Paraneoplastic Syndrome That Could Aid in Early Detection of Colon Cancer: A Case Report Cureus. 2023 Sep;15(9):e44907. doi: 10.7759/cureus.44907. PMID 37814771. PMID 37814771.",
+          "citation": "Borja Montes OF, Escobar Gil T, Cardona Solano C, et al. Leser-Trélat Syndrome, an Underdiagnosed Cutaneous Paraneoplastic Syndrome That Could Aid in Early Detection of Colon Cancer: A Case Report Cureus. 2023 Sep;15(9):e44907. doi: 10.7759/cureus.44907. PMID 37814771.",
           "note": "Case report and review describing the Leser-Trelat syndrome as an underdiagnosed cutaneous paraneoplastic syndrome that could aid in early detection of colon cancer, setting out the differential diagnoses, the completed workup, and current treatment options for a patient presenting with this pattern.",
           "verificationScope": "clinical-evidence",
           "authorityCategory": "medical-scientific-evidence",
@@ -51,7 +51,7 @@
           "sourceLocator": "Cureus. 2023;15(9):e44907. Case report with literature review; abstract states the Leser-Trelat syndrome is an underdiagnosed cutaneous paraneoplastic syndrome that could aid in early detection of colon cancer. Establishes the target identity for this edge."
         },
         {
-          "citation": "Okur A, Şahin KC, Sahin Z, et al. Leser-Trélat Sign as an Initial Manifestation of Synchronous Prostate and Bladder Cancer Cureus. 2025 Sep;17(9):e93325. doi: 10.7759/cureus.93325. PMID 41158917. PMID 41158917.",
+          "citation": "Okur A, Şahin KC, Sahin Z, et al. Leser-Trélat Sign as an Initial Manifestation of Synchronous Prostate and Bladder Cancer Cureus. 2025 Sep;17(9):e93325. doi: 10.7759/cureus.93325. PMID 41158917.",
           "note": "Case report of the Leser-Trelat sign as an initial manifestation of synchronous prostate and bladder cancer, registered deliberately as evidence that the association is non-specific across tumour types rather than colorectal-specific.",
           "verificationScope": "clinical-evidence",
           "authorityCategory": "medical-scientific-evidence",
@@ -61,7 +61,7 @@
           "sourceLocator": "Cureus. 2025. Case report; MEDLINE-indexed record documenting the Leser-Trelat sign as an initial manifestation of synchronous prostate and bladder cancer. Registered as evidence of NON-SPECIFICITY, preventing this edge from being read as claiming a colorectal-specific route."
         },
         {
-          "citation": "Geber A, Hadžavdić A, Ljubojević Hadžavdić S. The Leser-Trélat Sign in a Patient with Gastric Adenocarcinoma Acta Dermatovenerol Croat. 2023 Aug;31(1):51-52. PMID 37843094. PMID 37843094.",
+          "citation": "Geber A, Hadžavdić A, Ljubojević Hadžavdić S. The Leser-Trélat Sign in a Patient with Gastric Adenocarcinoma Acta Dermatovenerol Croat. 2023 Aug;31(1):51-52. PMID 37843094.",
           "note": "Case report of the Leser-Trelat sign in a patient with gastric adenocarcinoma, registered as further support for the gastrointestinal signal rather than as a distinct paraneoplastic context.",
           "verificationScope": "clinical-evidence",
           "authorityCategory": "medical-scientific-evidence",

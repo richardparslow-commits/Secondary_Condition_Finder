@@ -6,8 +6,8 @@
   "installedFrom": "Master Registry Discrepancy Resolution 2026",
   "authorityBoundary": "Authoritative for current relationship direction, proposition text, guard state, source linkage, and KB parity; does not establish an individual VA medical nexus.",
   "counts": {
-    "relationships": 820,
-    "explicitPublicationGuards": 746,
+    "relationships": 827,
+    "explicitPublicationGuards": 753,
     "legacyRationaleBoundaries": 74
   },
   "relationships": [
@@ -25334,7 +25334,7 @@
       ],
       "sourceReferenceCount": 3,
       "pathwayIntelligencePresent": false,
-      "suggestionObjectHash": "26a7627fe4665f1ae470b016034d788b4049186e2d93a051ed115335b81fc433"
+      "suggestionObjectHash": "97b558417a64cccb6fa7ed4b8dde75c813ea5c50ce1f9504a5ead746560edf7e"
     },
     {
       "relationshipId": "rel-rumination-syndrome-to-anxiety-disorder",
@@ -25365,7 +25365,7 @@
       ],
       "sourceReferenceCount": 3,
       "pathwayIntelligencePresent": false,
-      "suggestionObjectHash": "df4cda50764ad47473d8c387f36a56da7f9fac559a029424c162d57d2a16b137"
+      "suggestionObjectHash": "6c63d6a33c8ea758eccf7d9341bf513f890e9a14e6af5cab3b53750a449692f0"
     },
     {
       "relationshipId": "rel-salivary-gland-cancer-to-dysphagia",
@@ -25396,7 +25396,7 @@
       ],
       "sourceReferenceCount": 3,
       "pathwayIntelligencePresent": false,
-      "suggestionObjectHash": "c2cc0f2d19d500ef7a2f54a1897e6c924b3baf867585a7bd30041d419626eb42"
+      "suggestionObjectHash": "ca4f62f4a193fbe0f3debecee1756217786754586b71e7e6caefb8f98c4a364d"
     },
     {
       "relationshipId": "rel-salivary-gland-cancer-to-depressive-disorder",
@@ -25427,7 +25427,7 @@
       ],
       "sourceReferenceCount": 3,
       "pathwayIntelligencePresent": false,
-      "suggestionObjectHash": "bf152b12f71d7918297ea6ffa08782e2b591fde6dbd38d94304a39d561412458"
+      "suggestionObjectHash": "04e8292284412f3a426c66664ad1ccd38101c9fcb8947735f382eab53f115b37"
     },
     {
       "relationshipId": "rel-salivary-gland-cancer-to-xerostomia",
@@ -25458,7 +25458,7 @@
       ],
       "sourceReferenceCount": 3,
       "pathwayIntelligencePresent": false,
-      "suggestionObjectHash": "f84f9f1963f685b32b8e5dcb1a8aff8b6aa03b0c73ad924a38c651840a1b0bb2"
+      "suggestionObjectHash": "f2529d3a169fc15b0b838a282f5ce38aab1ce84ddf69bb37ce231a86de5369aa"
     },
     {
       "relationshipId": "rel-samter-s-triad-to-chronic-sinusitis",
@@ -25489,7 +25489,7 @@
       ],
       "sourceReferenceCount": 3,
       "pathwayIntelligencePresent": false,
-      "suggestionObjectHash": "3dada581a60037a741a205e7ff666f8144c3451afe2572b3a6e86a1fb2a97a30"
+      "suggestionObjectHash": "45401efffb5e404f5f354410dc1789c4fd26e45a20e38a2a8766f7d3f75e1f17"
     },
     {
       "relationshipId": "rel-samter-s-triad-to-asthma",
@@ -25520,7 +25520,7 @@
       ],
       "sourceReferenceCount": 3,
       "pathwayIntelligencePresent": false,
-      "suggestionObjectHash": "3d1818302da7e64457903576c4d4e675fa77a91774b589deb4d5ab0f601ab35b"
+      "suggestionObjectHash": "3b6cd2d46b7fe4ad04551299c14613a80c08390711c526393988d9af758cfda8"
     },
     {
       "relationshipId": "rel-scleredema-to-diabetes-mellitus",
@@ -25551,7 +25551,7 @@
       ],
       "sourceReferenceCount": 3,
       "pathwayIntelligencePresent": false,
-      "suggestionObjectHash": "502aefa7bd0475a51e98251de700e41b13f7c16165dbba3777ab1623f1c13624"
+      "suggestionObjectHash": "3d8cbad5f20723cdf23d76582b86a4a34b7e457b96e2a8f7d23490b42869418a"
     },
     {
       "relationshipId": "rel-scleredema-to-multiple-myeloma",
@@ -25582,7 +25582,7 @@
       ],
       "sourceReferenceCount": 3,
       "pathwayIntelligencePresent": false,
-      "suggestionObjectHash": "682bf4891b5e5b769f40e36dba4ed5dbae78181d4bdeafd4e25135967dd96691"
+      "suggestionObjectHash": "ceea625b4602e123b90c01b84d2a7dff94c6991158a247e533db7b9845ecdebf"
     },
     {
       "relationshipId": "rel-scleredema-to-interstitial-lung-disease",
@@ -25613,7 +25613,7 @@
       ],
       "sourceReferenceCount": 3,
       "pathwayIntelligencePresent": false,
-      "suggestionObjectHash": "5ad5a5d348b26e66698f4576f1a0839f0d7313c329bbd63327ef9237f46e9328"
+      "suggestionObjectHash": "5b2a689330daf80ae7341c4ac3b0ecb056de773fd138c6cdb7191db4e5c973e9"
     },
     {
       "relationshipId": "rel-scleritis-to-uveitis",
@@ -25644,7 +25644,7 @@
       ],
       "sourceReferenceCount": 3,
       "pathwayIntelligencePresent": false,
-      "suggestionObjectHash": "9c7935a973611579252534da28f81ee56d91273c8e85fb0d4b57480e4c51adfe"
+      "suggestionObjectHash": "6dc7c18d3fa684efc1181658a9c50e224c41f0c46010565dc7f3610b90a6cdcf"
     },
     {
       "relationshipId": "rel-scleritis-to-rheumatoid-arthritis",
@@ -25675,7 +25675,7 @@
       ],
       "sourceReferenceCount": 3,
       "pathwayIntelligencePresent": false,
-      "suggestionObjectHash": "21b2b3fff4c796a962a48c1d91d25bd8ac34719a92e5d487ba1993829657250c"
+      "suggestionObjectHash": "3d96a6cf3819637a1c606590c2bea660a879c61501dda350344f606107a1d9e7"
     },
     {
       "relationshipId": "rel-scleritis-to-systemic-lupus-erythematosus",
@@ -25706,7 +25706,7 @@
       ],
       "sourceReferenceCount": 3,
       "pathwayIntelligencePresent": false,
-      "suggestionObjectHash": "1dbe7467284f81fd16adf9204b13175d0d32cd96e56cf706812f7f8ed69e9c81"
+      "suggestionObjectHash": "dc7443e7a7c74d9941798138ec2dbe691ef013a4cc03bb42add3fffa1a2922cf"
     },
     {
       "relationshipId": "rel-scotoma-to-cerebrovascular-accident-stroke-residuals",
@@ -25737,7 +25737,7 @@
       ],
       "sourceReferenceCount": 3,
       "pathwayIntelligencePresent": false,
-      "suggestionObjectHash": "629b1e4879baba5c77ec06f82ba654ff55d077cb0dbe77147354f85e5e4bc63b"
+      "suggestionObjectHash": "bb69e469942330cc408e33618c4102ba8fe9427ad4d956a54008fccf7ba67097"
     },
     {
       "relationshipId": "rel-scotoma-to-migraine-headaches",
@@ -25768,7 +25768,7 @@
       ],
       "sourceReferenceCount": 3,
       "pathwayIntelligencePresent": false,
-      "suggestionObjectHash": "21061f80da453a49446ee42082332c7c5035c60f734b108b2cd2d60591b9baed"
+      "suggestionObjectHash": "cc4f0d6d05b79e34e8dc74978fce3f7000242100c2b0b7b76ac0b31c4554aa61"
     },
     {
       "relationshipId": "rel-scotoma-to-seizure-disorder",
@@ -25799,7 +25799,7 @@
       ],
       "sourceReferenceCount": 3,
       "pathwayIntelligencePresent": false,
-      "suggestionObjectHash": "7363315d2055a60c22eb7b08966f9c06aef17def0a7e7f3a12c957eaac6fdbd8"
+      "suggestionObjectHash": "0821e9a5042c07af37fc55ca479a57e40d9d58a542e746d371415f408c94de3d"
     },
     {
       "relationshipId": "rel-scotoma-to-multiple-sclerosis",
@@ -25830,7 +25830,7 @@
       ],
       "sourceReferenceCount": 3,
       "pathwayIntelligencePresent": false,
-      "suggestionObjectHash": "b6f4c8d9e86295a043c6fed48ec125fa85a06ddba411a26260343e363bde90d2"
+      "suggestionObjectHash": "a5d839bf8fba7928a5961b0e6866886a79fadd1526c91605c64d5eb212400594"
     },
     {
       "relationshipId": "rel-seborrheic-dermatitis-to-parkinsons-disease",
@@ -25861,7 +25861,7 @@
       ],
       "sourceReferenceCount": 3,
       "pathwayIntelligencePresent": false,
-      "suggestionObjectHash": "f2dd4be2f50bcb313fc38379cdd9860476403e86c9bdc96b989ccd7ae724cf5f"
+      "suggestionObjectHash": "36f19820ec9a7c382a57c509a8cd094205b37e961d8860356828ef3eb704c7f5"
     },
     {
       "relationshipId": "rel-seborrheic-dermatitis-to-hiv-aids",
@@ -25892,7 +25892,7 @@
       ],
       "sourceReferenceCount": 3,
       "pathwayIntelligencePresent": false,
-      "suggestionObjectHash": "08ee1abc2701920e72b69a4b6e516f97b7f16a785a452f631d8a2cc343e23aa3"
+      "suggestionObjectHash": "bd0db0efac45f8e5737e4d91b06d8a53b6fc973f113a14995ee8030c2dba0623"
     },
     {
       "relationshipId": "rel-seborrheic-keratosis-to-colorectal-cancer",
@@ -25923,7 +25923,7 @@
       ],
       "sourceReferenceCount": 3,
       "pathwayIntelligencePresent": false,
-      "suggestionObjectHash": "7fee31b235e635eb009da7b20c85b08f6c4b67abb6e5a04085d939e473243b54"
+      "suggestionObjectHash": "b40d9264ef2a1028eea102bac57b109a1368e1c935cd9963974808b8cbc98e19"
     },
     {
       "relationshipId": "rel-selective-mutism-to-social-anxiety-disorder",
@@ -25954,7 +25954,7 @@
       ],
       "sourceReferenceCount": 3,
       "pathwayIntelligencePresent": false,
-      "suggestionObjectHash": "2567ab53e277f415a7c169720b43aca1ef3ac0f52ed43b29dec8e522a8cedee6"
+      "suggestionObjectHash": "72c185acb6a77cbdc99b134fa7bf4ace77b5c833575fbb2ee281cd8c44d5492e"
     },
     {
       "relationshipId": "rel-selective-mutism-to-separation-anxiety-disorder",
@@ -25985,7 +25985,7 @@
       ],
       "sourceReferenceCount": 3,
       "pathwayIntelligencePresent": false,
-      "suggestionObjectHash": "81d358cf9557e8050f801ca1646d503b34cb08e9a7c61b729e8820600a3f38f0"
+      "suggestionObjectHash": "5e2ad785df923d0ed9aaae8ad0015436b727886897efaaf797578edede52d14b"
     },
     {
       "relationshipId": "rel-separation-anxiety-disorder-to-anxiety-disorder",
@@ -26016,7 +26016,7 @@
       ],
       "sourceReferenceCount": 3,
       "pathwayIntelligencePresent": false,
-      "suggestionObjectHash": "91293ce6e64f40092c50b0db37e150e9eba214ba3aa815b86d434125748ecffc"
+      "suggestionObjectHash": "59de18f7e5e3277804e5d26dbaae17c24fc04b1861333ab7f4c45c3a820e4ec6"
     },
     {
       "relationshipId": "rel-sever-s-disease-to-stress-fractures",
@@ -26047,7 +26047,7 @@
       ],
       "sourceReferenceCount": 3,
       "pathwayIntelligencePresent": false,
-      "suggestionObjectHash": "62d8c0a8e53832e3c2b06a7583bc0a42a75270d50101576da785f0c6d7ff0592"
+      "suggestionObjectHash": "9c085564debaf5c808af3a608fa29b49ac81264f0a6b83fe734b9cc7c670d827"
     },
     {
       "relationshipId": "rel-short-qt-syndrome-to-cardiac-arrhythmia",
@@ -26078,7 +26078,7 @@
       ],
       "sourceReferenceCount": 3,
       "pathwayIntelligencePresent": false,
-      "suggestionObjectHash": "f45aa074c9b09fdfffdda7780f2924b0bf57918909b9addecab352d18d2bd070"
+      "suggestionObjectHash": "14e4962fc568749b31443bf10a16aa756c30d49a716ae80c97d58c284a974e9a"
     },
     {
       "relationshipId": "rel-short-qt-syndrome-to-ventricular-tachycardia-fibrillation",
@@ -26109,7 +26109,7 @@
       ],
       "sourceReferenceCount": 3,
       "pathwayIntelligencePresent": false,
-      "suggestionObjectHash": "198c8c4caaa06a4a8ef4745d8f904544a45b3de00de825330afb164926d3e3f4"
+      "suggestionObjectHash": "fddefbd6acaa7e76764009bec8e3685f87dd125c3070283267c164af0139d866"
     },
     {
       "relationshipId": "rel-short-qt-syndrome-to-vasovagal-syncope",
@@ -26140,7 +26140,7 @@
       ],
       "sourceReferenceCount": 3,
       "pathwayIntelligencePresent": false,
-      "suggestionObjectHash": "2204c997befdbc828e1f6f2b2a05f3469bb85b31db59807ce6f9e0611a612f4c"
+      "suggestionObjectHash": "32f7d7d1f0200d8d8e321a5c9a929393621651c2e1f060cf98beedd8745d66b4"
     },
     {
       "relationshipId": "rel-shoulder-disarticulation-to-phantom-limb-pain",
@@ -26171,7 +26171,7 @@
       ],
       "sourceReferenceCount": 3,
       "pathwayIntelligencePresent": false,
-      "suggestionObjectHash": "6f79be53e06c690832d482a451bbf3f833f17db1696a4630ab6687f3fab83062"
+      "suggestionObjectHash": "e34687d3e61a75c03d57d38a3b7e46bf95e75050f587a56468e2a67c850ba2e8"
     },
     {
       "relationshipId": "rel-shoulder-disarticulation-to-amputation-or-loss-of-use",
@@ -26200,7 +26200,224 @@
       ],
       "sourceReferenceCount": 1,
       "pathwayIntelligencePresent": false,
-      "suggestionObjectHash": "056a9da1280b4d015fbec1e16476dfb4a7c2edc3abb31e98c864a2fb227c90fb"
+      "suggestionObjectHash": "32c08d2d246e4f7668b446a405ec5edf04340d074a2f26a2d118c8550dce90a7"
+    },
+    {
+      "relationshipId": "rel-sick-sinus-syndrome-to-cardiac-arrhythmia",
+      "primaryId": "sick-sinus-syndrome",
+      "targetId": "cardiac-arrhythmia",
+      "direction": "sick-sinus-syndrome -> cardiac-arrhythmia",
+      "primaryPublicationState": "draft",
+      "rank": 1,
+      "clinicalProposition": {
+        "status": "authored-d1-bounded-proposition",
+        "text": "Authoring registers this edge because the atrial fibrillation association is the defining clinical feature of the tachy-brady presentation, is quantified in a 540-patient randomised cohort at 46 percent, and is documented in a 37,550-patient meta-analysis as bidirectional. The target identity had fourteen registered incoming edges before this batch, and none from a sinus node disorder. The conservative framing records the randomised trial as a negative result, distinguishes disease effect from the treatment effect the same evidence shows is real, and withholds both the syncope and the pacemaker routes rather than padding the file with treatment-outcome or unquantified edges."
+      },
+      "rationale": "Authoring registers this edge because the atrial fibrillation association is the defining clinical feature of the tachy-brady presentation, is quantified in a 540-patient randomised cohort at 46 percent, and is documented in a 37,550-patient meta-analysis as bidirectional. The target identity had fourteen registered incoming edges before this batch, and none from a sinus node disorder. The conservative framing records the randomised trial as a negative result, distinguishes disease effect from the treatment effect the same evidence shows is real, and withholds both the syncope and the pacemaker routes rather than padding the file with treatment-outcome or unquantified edges.",
+      "publicationGuard": {
+        "status": "explicit",
+        "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), mechanism NEUROLOGICAL_DEGENERATION, with the mechanistic vector named as hypothesized: The hypothesised vector is age-related fibroelastic replacement of the sinus node and atrioventricular conduction tissue, which slows impulse formation and conduction and produces the bradycardic pole, with the same degenerative process extending to the atrial myocardium as electrical and structural remodelling that lowers the threshold for reentrant atrial fibrillation and produces the tachycardic pole. The mechanism is named as a shared degenerative substrate rather than a causal sequence because the located evidence reports a bidirectional relationship and a remodelling association, and does not establish that sinus node degeneration produces atrial remodelling rather than both reflecting a common ageing substrate, which is also why the located review describes the overlap in terms of age-related degeneration of the cardiac conduction system. Conservative basis: Authored at ASSOCIATION_ONLY at meta-analytic, randomised-controlled-trial, and literature-review class, following the file's existing cardiovascular pathway scope. The meta-analysis is the anchor that supplies the pooled direction of travel and the explicit bidirectionality statement together with the pacing-strategy gradient, which is the located evidence that atrial fibrillation burden in this population is at least partly treatment-dependent (PMID 37023861). The randomised trial is the anchor that supplies the 46 percent atrial fibrillation prevalence in a defined cohort and, more importantly, serves as an EXPLICIT COUNTERWEIGHT, because it is a negative trial showing that reducing atrial pacing did not reduce atrial fibrillation, so the mechanism cannot be stated as simple pacing-induced (PMID 37638973). The literature review supplies the remodelling mechanism and the named co-contributors that must be excluded (PMID 40607080). Because the evidence is bidirectional and partly confounded by the very treatment these patients receive, the conservative standard holds the edge at association only, records the negative trial on the face of the edge, and requires a temporal determination before any individual attribution. Causation and direction limits: Neither causation nor aggravation is established for any individual, and the located evidence describes a shared substrate rather than a one-directional cause. The meta-analysis describes the sick sinus syndrome and atrial fibrillation relationship as bidirectional and does not establish which precedes which (PMID 37023861). The randomised trial enrolled patients who ALREADY had an indication for first pacemaker implantation, so its 46 percent atrial fibrillation endpoint describes an advanced-disease population, and it is a NEGATIVE trial for the pacing intervention, finding that atrial pacing minimisation did NOT reduce atrial fibrillation incidence, which argues against the simple hypothesis that excess atrial pacing is the driver. The literature review supplies a plausible unifying mechanism, atrial electrical and structural remodelling, but states it as the pathophysiology of the overlap rather than as a demonstrated causal sequence from sinus node disease to atrial fibrillation (PMID 40607080). Individual claims require a dated diagnosis of sick sinus syndrome, objective evidence of the atrial arrhythmia on a dated tracing or monitoring record, and a clinical determination of which condition is temporally antecedent, because the two are frequently recorded together as tachy-bradyarrhythmia rather than as one producing the other, and because pacing strategy, which the located evidence shows materially affects atrial fibrillation risk, is itself a treatment variable rather than a fixed feature of the disease. Evidence gaps carried openly: The primary anchor is a meta-analysis of observational studies and reports heterogeneity across included therapy comparisons without a pooled effect size for the core new-onset atrial fibrillation claim (PMID 37023861). The randomised trial is a NEGATIVE trial, its null result argues against the pacing-exposure mechanism, and its population is restricted to patients with a first pacemaker indication, so it cannot be read as a community prevalence of atrial fibrillation in sick sinus syndrome (PMID 37638973). The third anchor is a literature review rather than primary data (PMID 40607080). NO located anchor establishes temporal order between the two diagnoses in an unselected individual, and the located evidence shows pacing mode itself changes atrial fibrillation risk, so any individual claim must separate disease effect from treatment effect. The syncope route was withheld as EVIDENCE-INSUFFICIENT because the located anchors address syncope as a safety endpoint of pacing programming or as a symptom of a different physiology, and no anchor quantifies syncope as a complication of sinus node disease itself. The implantable-cardiac-pacemaker route was withheld as TREATMENT-CONSEQUENCE rather than a medical secondary condition, the located evidence being entirely about implantation decisions and outcomes. Alternatives requiring exclusion before any individual attribution: Atrial fibrillation as the coexisting or antecedent condition in a tachy-bradyarrhythmia presentation, since the located evidence describes the relationship as bidirectional rather than one-directional; Medication effect, named by the located review as a significant contributor alongside the conduction disease, including rate-limiting and AV-nodal blocking drugs; Atrioventricular nodal block, named as a co-contributor and as a distinct catalog identity, which must be separated from sinus node disease before the bradycardic pole is attributed; Pacing strategy and percentage of atrial pacing, which the located randomised trial shows materially affects atrial fibrillation risk independently of the underlying disease. Anchors: PMID 37023861, PMID 37638973, PMID 40607080. Authoring rationale: Authoring registers this edge because the atrial fibrillation association is the defining clinical feature of the tachy-brady presentation, is quantified in a 540-patient randomised cohort at 46 percent, and is documented in a 37,550-patient meta-analysis as bidirectional. The target identity had fourteen registered incoming edges before this batch, and none from a sinus node disorder. The conservative framing records the randomised trial as a negative result, distinguishes disease effect from the treatment effect the same evidence shows is real, and withholds both the syncope and the pacemaker routes rather than padding the file with treatment-outcome or unquantified edges.",
+        "boundarySource": "authored-d1-implementation-scope",
+        "structuredGuardReviewPending": false,
+        "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+        "The primary anchor is a meta-analysis of observational studies and reports heterogeneity across included therapy comparisons without a pooled effect size for the core new-onset atrial fibrillation claim (PMID 37023861). The randomised trial is a NEGATIVE trial, its null result argues against the pacing-exposure mechanism, and its population is restricted to patients with a first pacemaker indication, so it cannot be read as a community prevalence of atrial fibrillation in sick sinus syndrome (PMID 37638973). The third anchor is a literature review rather than primary data (PMID 40607080). NO located anchor establishes temporal order between the two diagnoses in an unselected individual, and the located evidence shows pacing mode itself changes atrial fibrillation risk, so any individual claim must separate disease effect from treatment effect. The syncope route was withheld as EVIDENCE-INSUFFICIENT because the located anchors address syncope as a safety endpoint of pacing programming or as a symptom of a different physiology, and no anchor quantifies syncope as a complication of sinus node disease itself. The implantable-cardiac-pacemaker route was withheld as TREATMENT-CONSEQUENCE rather than a medical secondary condition, the located evidence being entirely about implantation decisions and outcomes."
+      ],
+      "sourceIds": [
+        "pmid-37023861",
+        "pmid-37638973",
+        "pmid-40607080"
+      ],
+      "sourceReferenceCount": 3,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "af7517553df1addbe609d3a84dc7b295a191264f8f226fb68ad273002b52e759"
+    },
+    {
+      "relationshipId": "rel-sick-sinus-syndrome-to-cerebrovascular-accident-stroke-residuals",
+      "primaryId": "sick-sinus-syndrome",
+      "targetId": "cerebrovascular-accident-stroke-residuals",
+      "direction": "sick-sinus-syndrome -> cerebrovascular-accident-stroke-residuals",
+      "primaryPublicationState": "draft",
+      "rank": 2,
+      "clinicalProposition": {
+        "status": "authored-d1-bounded-proposition",
+        "text": "Authoring registers this edge because the stroke association is quantified in three large designs, is present in patients with sinus node dysfunction WITHOUT atrial fibrillation, and is concentrated exactly in the low-score patients that standard risk stratification would not flag, which is the clinically actionable feature. The target identity had ten registered incoming edges before this batch and none from a conduction-system disorder. The conservative framing carries the wide confidence interval, the small exposed group, and the confounding by indication openly on the face of the edge, and refuses to assert an embolic mechanism that no anchor demonstrates."
+      },
+      "rationale": "Authoring registers this edge because the stroke association is quantified in three large designs, is present in patients with sinus node dysfunction WITHOUT atrial fibrillation, and is concentrated exactly in the low-score patients that standard risk stratification would not flag, which is the clinically actionable feature. The target identity had ten registered incoming edges before this batch and none from a conduction-system disorder. The conservative framing carries the wide confidence interval, the small exposed group, and the confounding by indication openly on the face of the edge, and refuses to assert an embolic mechanism that no anchor demonstrates.",
+      "publicationGuard": {
+        "status": "explicit",
+        "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), mechanism THROMBOTIC_OR_VASCULAR, with the mechanistic vector named as hypothesized: The hypothesised vector is thromboembolic stroke arising from an atrial substrate shared with the sinus node disorder, in which the same age-related fibrotic and remodelling process that slows sinus node impulse formation also alters atrial architecture, creating stasis, appendicular flow reduction and an arrhythmogenic substrate that permits thrombus formation and embolisation to the cerebral circulation. The vector is named as a shared atrial substrate rather than a direct sinus-to-brain pathway because the located evidence reports the association in patients with ISOLATED sinus node dysfunction without atrial fibrillation, which is what the UK Biobank analysis interprets as evidence for a left atrial myopathy, and because a thromboembolic mechanism cannot be assumed in the absence of demonstrated atrial thrombus or appendicular stasis in any given individual. Conservative basis: Authored at ASSOCIATION_ONLY at meta-analytic, prospective-population-cohort, and hospital-based-cohort class, following the file's existing cardiovascular pathway scope. The meta-analysis is the anchor that supplies the pooled annual stroke incidence of 1.542 percent and, critically, the finding that ISOLATED sinus node dysfunction and sinus node dysfunction with atrial fibrillation carry a similar risk, which is what prevents this edge from collapsing into the already-registered atrial fibrillation route (PMID 37977871). The UK Biobank analysis is the anchor that supplies the large-population effect estimate (subdistribution hazard ratio 2.28) and the explicit left atrial myopathy interpretation that motivates the mechanism category, and its deliberate exclusion of prior stroke and valvular disease is what makes the estimate a clean signal rather than a restatement of baseline risk (PMID 40315941). The Taiwanese cohort is registered as the EXPLICIT COUNTERWEIGHT and as the source of the most clinically actionable nuance: it shows the association is concentrated in patients whose CHA2DS2-VASC score is low, which is precisely the population standard risk stratification would not flag, and it does so in a hospital-based sample with a strict pacemaker-requiring definition of sick sinus syndrome (PMID 41317944). Because the design is confounding-by-indication throughout, the conservative standard holds the edge at association only, requires documented AF status and a documented CHA2DS2-VASC score, and states the unresolved anticoagulation question in the causation status rather than implying an established preventive. Causation and direction limits: Neither causation nor aggravation is established for any individual, and the located evidence is a risk-marker relationship rather than a demonstrated embolic mechanism. The meta-analysis reports a similar stroke incidence in isolated sinus node dysfunction and in sinus node dysfunction with atrial fibrillation, and its own conclusion is that patients with sinus node dysfunction carry a SIMILAR RISK of stroke to those with combined sinus node dysfunction and atrial fibrillation, with future studies needed to investigate whether stroke-prevention interventions such as anticoagulation can help (PMID 37977871), which is an explicit statement that the mechanism and the intervention are unresolved. The UK Biobank analysis is observational and interprets its finding through a proposed left atrial myopathy rather than a demonstrated one, and it deliberately excludes prosthetic heart valves, rheumatic mitral valve disease, mitral stenosis and prior ischaemic stroke, so its estimate applies to a comparatively lower-risk population (PMID 40315941). The Taiwanese cohort is HOSPITAL-BASED and defines sick sinus syndrome STRICTLY as symptomatic sinus node dysfunction requiring pacemaker implantation, so it is confounded by indication: the patients with sick sinus syndrome were older, more often female, and had higher CHADS2 and CHA2DS2-VASc scores, and after CHA2DS2-VASc adjustment the association was strongest precisely where the score was lowest, which is the signature of a risk marker adding information beyond standard stroke-risk stratification rather than of an independent embolic cause (PMID 41317944). Individual claims require a dated diagnosis of sinus node dysfunction, a dated ischaemic stroke event with imaging or equivalent objective confirmation, a documented atrial fibrillation status, and a documented CHA2DS2-VASc score, because the located evidence shows the strength of this association depends on both the AF status and the baseline stroke score, and because no located anchor establishes that anticoagulation prevents stroke in sinus node dysfunction without atrial fibrillation. Evidence gaps carried openly: The primary anchor pools only 6 studies and its atrial fibrillation subgroup confidence interval is wide and includes values from 0.705 to 2.615 percent, so the isolated-versus-combined similarity finding rests on imprecise data (PMID 37977871). The UK Biobank analysis had only 593 participants with ISOLATED sinus node dysfunction, so the headline subdistribution hazard ratio of 2.28 rests on a small exposed group within a very large cohort and is derived from ICD-coded registry linkage rather than adjudicated clinical diagnosis (PMID 40315941). The third anchor is hospital-based, defines sick sinus syndrome as requiring pacemaker implantation, and the exposed group is confounded by age, sex and baseline stroke score, with the association attenuating to non-significance in patients with CHA2DS2-VASC scores above 2 (PMID 41317944). NO located anchor demonstrates atrial thrombus, appendicular flow stasis, or a mechanism of embolisation in any individual, and NO located anchor tests whether anticoagulation reduces stroke in sinus node dysfunction without atrial fibrillation, which the meta-analysis itself names as future work. The cardiac-arrhythmia route is a chain rather than a duplicate and is authored separately, and the fact that the two atrial fibrillation cohorts report higher absolute stroke incidence than the isolated-dysfunction cohort is a population-composition difference rather than a contradiction. Alternatives requiring exclusion before any individual attribution: Atrial fibrillation or atrial flutter as the coexisting tachycardic pole, since the located evidence separates isolated from combined disease and the combined group carries a similar or higher absolute risk; Left atrial appendicular thrombus and appendicular flow stasis, the intermediate steps a thromboembolic mechanism would require and which no located anchor demonstrates; Hypertension, heart failure, and prior stroke or transient ischaemic attack, each independently associated with stroke in the located meta-analysis at hazard ratios between 1.41 and 2.54; Anticoagulation status, since the located meta-analysis identifies whether stroke-prevention interventions help in this population as an open question rather than an answered one. Anchors: PMID 37977871, PMID 40315941, PMID 41317944. Authoring rationale: Authoring registers this edge because the stroke association is quantified in three large designs, is present in patients with sinus node dysfunction WITHOUT atrial fibrillation, and is concentrated exactly in the low-score patients that standard risk stratification would not flag, which is the clinically actionable feature. The target identity had ten registered incoming edges before this batch and none from a conduction-system disorder. The conservative framing carries the wide confidence interval, the small exposed group, and the confounding by indication openly on the face of the edge, and refuses to assert an embolic mechanism that no anchor demonstrates.",
+        "boundarySource": "authored-d1-implementation-scope",
+        "structuredGuardReviewPending": false,
+        "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+        "The primary anchor pools only 6 studies and its atrial fibrillation subgroup confidence interval is wide and includes values from 0.705 to 2.615 percent, so the isolated-versus-combined similarity finding rests on imprecise data (PMID 37977871). The UK Biobank analysis had only 593 participants with ISOLATED sinus node dysfunction, so the headline subdistribution hazard ratio of 2.28 rests on a small exposed group within a very large cohort and is derived from ICD-coded registry linkage rather than adjudicated clinical diagnosis (PMID 40315941). The third anchor is hospital-based, defines sick sinus syndrome as requiring pacemaker implantation, and the exposed group is confounded by age, sex and baseline stroke score, with the association attenuating to non-significance in patients with CHA2DS2-VASC scores above 2 (PMID 41317944). NO located anchor demonstrates atrial thrombus, appendicular flow stasis, or a mechanism of embolisation in any individual, and NO located anchor tests whether anticoagulation reduces stroke in sinus node dysfunction without atrial fibrillation, which the meta-analysis itself names as future work. The cardiac-arrhythmia route is a chain rather than a duplicate and is authored separately, and the fact that the two atrial fibrillation cohorts report higher absolute stroke incidence than the isolated-dysfunction cohort is a population-composition difference rather than a contradiction."
+      ],
+      "sourceIds": [
+        "pmid-37977871",
+        "pmid-40315941",
+        "pmid-41317944"
+      ],
+      "sourceReferenceCount": 3,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "4c615694839071c1ebd46dcd56eb5bb9f7e0d4e9f4e7b526e3971f8e9e4c5a06"
+    },
+    {
+      "relationshipId": "rel-sick-sinus-syndrome-to-dizziness",
+      "primaryId": "sick-sinus-syndrome",
+      "targetId": "dizziness",
+      "direction": "sick-sinus-syndrome -> dizziness",
+      "primaryPublicationState": "draft",
+      "rank": 3,
+      "clinicalProposition": {
+        "status": "authored-d1-bounded-proposition",
+        "text": "Authoring registers this edge because dizziness is the presenting symptom that most often brings sinus node disease to clinical attention, because it is quantified at 45 percent in a paced cohort, and because the target identity had only two registered incoming edges, neither from a conduction-system disorder. The conservative framing is unusually explicit about its own weakness: the primary anchor is a treatment-response study whose authors disclaim causation, the second carries manufacturer affiliations, the third is a single case report, and the edge is ranked below two better-anchored edges in the same file for that reason rather than being presented as the headline claim."
+      },
+      "rationale": "Authoring registers this edge because dizziness is the presenting symptom that most often brings sinus node disease to clinical attention, because it is quantified at 45 percent in a paced cohort, and because the target identity had only two registered incoming edges, neither from a conduction-system disorder. The conservative framing is unusually explicit about its own weakness: the primary anchor is a treatment-response study whose authors disclaim causation, the second carries manufacturer affiliations, the third is a single case report, and the edge is ranked below two better-anchored edges in the same file for that reason rather than being presented as the headline claim.",
+      "publicationGuard": {
+        "status": "explicit",
+        "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), mechanism NEUROLOGICAL_DEGENERATION, with the mechanistic vector named as hypothesized: The hypothesised vector is episodic cerebral hypoperfusion during pauses in sinus node impulse formation or sinoatrial conduction block, so that a period of bradycardia or asystole produces a transient drop in cardiac output and therefore in cerebral perfusion, which the patient experiences as lightheadedness, disorientation or near-syncope, and which, when prolonged or recurrent, produces falls with injury or fracture. The vector is named as a haemodynamic consequence of the same degenerative process that produces the bradycardia rather than as a separate neurological lesion, because the located evidence attributes the symptom to the pacing-sensitive bradycardia rather than to any structural brain change, and the same anchors require that sleep apnoea and medication effect be excluded first, since both can produce identical symptoms without any cerebral hypoperfusion. Conservative basis: Authored at ASSOCIATION_ONLY at cohort, narrative-review, and case-report class, following the file's existing cardiovascular pathway scope. The cohort study is the anchor that supplies the quantitative symptom burden, dizziness in 45 percent of patients before implantation and 12 percent after, together with the falls and fracture figures and the authors' own statement that no causal relationship could be established (PMID 27702858). The closed-loop stimulation review is the anchor that supplies the plain statement of the symptom triad and the chronotropic-incompetence framing, and its manufacturer-affiliations are disclosed as a source-quality caveat rather than suppressed (PMID 40388576). The case report is registered as the EXPLICIT COUNTERWEIGHT and as the source of the differential requirement, because it is the located evidence that a competing diagnosis, sleep apnoea-hypopnoea syndrome, can account for the same symptoms and can change the management, which is why the target identity also carries a registered edge from a sleep-related condition elsewhere in the graph and why sleep apnoea screening is named as a prerequisite rather than an afterthought (PMID 19156381). Because the primary anchor measures response to treatment rather than disease incidence, the conservative standard holds the edge at association only, quotes the authors' causal disclaimer in the causation status, and requires an excluded-differential workup before any individual attribution. Causation and direction limits: Neither causation nor aggravation is established for any individual, and the strongest anchor is fundamentally a treatment-response study, not an incidence study. The cohort study is a single-arm before-and-after design in patients who all received a pacemaker, and its authors state explicitly that NO CAUSAL RELATIONSHIP COULD BE ESTABLISHED DUE TO THE STUDY DESIGN (PMID 27702858); the 45 percent to 12 percent dizziness change therefore cannot be read as a disease-attributable symptom rate, and the reduction is equally consistent with the elimination of symptomatic bradycardia, with the placebo and regression-to-the-mean effects of an invasive procedure, and with the natural fluctuation of a subjective symptom. The closed-loop stimulation review is authored in part by pacemaker-manufacturer employees and describes a device intervention in a mixed population that also includes vasovagal syncope, which is a different autonomic physiology rather than sinus node disease (PMID 40388576). The case report is single-patient class and its own lesson cuts against a simple attribution, because the same patient's dizziness and near syncope were substantially explained by a concurrent sleep apnoea-hypopnoea syndrome and the pacing decision was changed accordingly (PMID 19156381). Individual claims require a dated diagnosis of sinus node dysfunction, a contemporaneous dated report of dizziness with documented temporal relationship to documented bradyarrhythmia or sinoatrial block, a documented sleep apnoea assessment, and a review of rate-limiting and AV-nodal blocking medications, because the located case report shows an alternative diagnosis changing the management entirely, and because the target identity already carries registered edges from two other cardiovascular causes including one sinus-node sibling. Evidence gaps carried openly: The primary anchor is a single-arm before-and-after study of 87 patients with no control group, in which every patient received a pacemaker, so the 45 percent to 12 percent dizziness change cannot be separated into disease effect, treatment effect, and natural history, and the authors state this limitation themselves (PMID 27702858). The second anchor is a narrative review authored in part by employees of the device manufacturer whose product is under discussion, and its population mixes sinus node dysfunction with vasovagal syncope, a different autonomic physiology (PMID 40388576). The third anchor is a SINGLE-PATIENT case report from 2008 and is the weakest source class in this edge (PMID 19156381). NO located anchor reports the incidence of dizziness or presyncope attributable to sinus node dysfunction in an unselected, untreated population, because the located evidence is drawn almost entirely from patients referred for pacing, and no located anchor establishes a dose-response between the depth or duration of bradycardic pauses and symptom severity. This edge is also ranked BELOW the cardiac-arrhythmia and stroke edges despite being more immediately symptomatic, because the located evidence for it is the weakest class in the file: the disorder's symptom profile is well described, but the quantitative attribution of those symptoms to the disease rather than to its treatment, to sleep apnoea, or to medication is precisely what the anchors decline to establish. Alternatives requiring exclusion before any individual attribution: Sleep apnoea-hypopnoea syndrome, which the located case report shows can account for the same dizziness and near-syncope in a patient with documented sinus bradycardia and second-degree sinoatrial block, and which changed the management away from pacemaker implantation; Medication effect from rate-limiting and AV-nodal blocking drugs, a reversible bradycardia cause that the located review names and that must be excluded before attributing symptoms to the conduction disease; Orthostatic hypotension and other cardiovascular causes of dizziness, which the target identity already carries from two other registered causes and which must be separated by documented positional relationship; Reflex or vasovagal syncope, a different autonomic physiology that the located device review explicitly separates from sinus node dysfunction and that must not be folded into this edge. Anchors: PMID 27702858, PMID 40388576, PMID 19156381. Authoring rationale: Authoring registers this edge because dizziness is the presenting symptom that most often brings sinus node disease to clinical attention, because it is quantified at 45 percent in a paced cohort, and because the target identity had only two registered incoming edges, neither from a conduction-system disorder. The conservative framing is unusually explicit about its own weakness: the primary anchor is a treatment-response study whose authors disclaim causation, the second carries manufacturer affiliations, the third is a single case report, and the edge is ranked below two better-anchored edges in the same file for that reason rather than being presented as the headline claim.",
+        "boundarySource": "authored-d1-implementation-scope",
+        "structuredGuardReviewPending": false,
+        "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+        "The primary anchor is a single-arm before-and-after study of 87 patients with no control group, in which every patient received a pacemaker, so the 45 percent to 12 percent dizziness change cannot be separated into disease effect, treatment effect, and natural history, and the authors state this limitation themselves (PMID 27702858). The second anchor is a narrative review authored in part by employees of the device manufacturer whose product is under discussion, and its population mixes sinus node dysfunction with vasovagal syncope, a different autonomic physiology (PMID 40388576). The third anchor is a SINGLE-PATIENT case report from 2008 and is the weakest source class in this edge (PMID 19156381). NO located anchor reports the incidence of dizziness or presyncope attributable to sinus node dysfunction in an unselected, untreated population, because the located evidence is drawn almost entirely from patients referred for pacing, and no located anchor establishes a dose-response between the depth or duration of bradycardic pauses and symptom severity. This edge is also ranked BELOW the cardiac-arrhythmia and stroke edges despite being more immediately symptomatic, because the located evidence for it is the weakest class in the file: the disorder's symptom profile is well described, but the quantitative attribution of those symptoms to the disease rather than to its treatment, to sleep apnoea, or to medication is precisely what the anchors decline to establish."
+      ],
+      "sourceIds": [
+        "pmid-27702858",
+        "pmid-40388576",
+        "pmid-19156381"
+      ],
+      "sourceReferenceCount": 3,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "7b1fdf9884a5884a6e6b6b06beda03997dcc7ed332d4d15090ca4eba5642af87"
+    },
+    {
+      "relationshipId": "rel-sialolithiasis-to-sialadenitis",
+      "primaryId": "sialolithiasis",
+      "targetId": "sialadenitis",
+      "direction": "sialolithiasis -> sialadenitis",
+      "primaryPublicationState": "draft",
+      "rank": 1,
+      "clinicalProposition": {
+        "status": "authored-d1-bounded-proposition",
+        "text": "Authoring registers this edge because it is the core clinical relationship of the identity, it is named by both narrative anchors as the mechanism rather than inferred, and the target identity had exactly one registered incoming edge, from mucocele, which the located review places on the same obstruction substrate rather than on a causal route from stone. The conservative framing is explicit that the two narrative anchors carry the mechanism and only one primary anchor exists, records the rejected comparison study and the direction of its finding, and notes that the primary cohort's exclusion of acute sialadenitis means this edge describes the chronic presentation only."
+      },
+      "rationale": "Authoring registers this edge because it is the core clinical relationship of the identity, it is named by both narrative anchors as the mechanism rather than inferred, and the target identity had exactly one registered incoming edge, from mucocele, which the located review places on the same obstruction substrate rather than on a causal route from stone. The conservative framing is explicit that the two narrative anchors carry the mechanism and only one primary anchor exists, records the rejected comparison study and the direction of its finding, and notes that the primary cohort's exclusion of acute sialadenitis means this edge describes the chronic presentation only.",
+      "publicationGuard": {
+        "status": "explicit",
+        "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), mechanism MECHANICAL_OR_COMPRESSIVE, with the mechanistic vector named as hypothesized: The hypothesised vector is mechanical obstruction of a salivary excretory duct by a calculus, which arrests the normal anterograde flow of saliva and produces upstream stasis, and in which the stagnant, pooled secretion behind an obstructed duct becomes the substrate for ascending bacterial infection, so that a retained stone converts a self-limiting obstruction into recurrent or chronic gland inflammation. The vector is named as obstruction-then-stasis-then-infection rather than as a direct stone-to-tissue effect because the located evidence describes calculi as attributed to retention of saliva rather than as irritants in their own right, and because the located rapid evidence review locates the inflammation in the stasis and its causes rather than in the calculus itself, which is why the alternative aetiologies are named rather than treated as incidental. Conservative basis: Authored at ASSOCIATION_ONLY at rapid-evidence-review, monograph-chapter, and prospective-cohort class. The rapid evidence review is the anchor that supplies the epidemiologic framing, sialolithiasis accounting for up to 50 percent of salivary gland disorders, the submandibular predominance above 80 percent with the mechanistic explanation of calcium and phosphate-rich mucinous secretion through a long duct that flows against gravity, and the explicit statement of the association with stasis and inflammation (PMID 38905553). The monograph chapter is the anchor that supplies the retention mechanism and the meal-related symptom pattern that is the clinical signature of obstructive disease (PMID 24862601). The prospective cohort is the anchor that supplies the QUANTITATIVE FUNCTIONAL EVIDENCE, whole-saliva recovery from 2.21 to 3.42 g after stone removal, which converts a plausible mechanism into a measured reversal and is the only primary data in this edge (PMID 41213527). Because the design evidence is narrative and the primary anchor is a single-arm intervention study, the conservative standard holds the edge at association only, names the competing obstructive and systemic aetiologies the anchors themselves list, and requires imaging confirmation plus a differential workup before any individual attribution. Causation and direction limits: Neither causation nor aggravation is established for any individual, and the honest position is that this is the most mechanistically obvious route in the batch while resting on the weakest anchor class in it. Two of the three anchors are narrative syntheses rather than primary data: the rapid evidence review asserts the association with stasis and inflammation without reporting an incidence, and the monograph chapter attributes calculi to saliva retention and describes the meal-related swelling and pain without a cohort (PMID 38905553, PMID 24862601). The one primary anchor is a single-arm treatment-outcome cohort of 41 patients whose salivary function RECOVERED AFTER STONE REMOVAL, which is strong functional evidence that the stone drives the dysfunction but is a before-and-after design in all of whom the intervention was performed, and the authors did not randomise or include a comparator, so regression to the mean, natural resolution of intermittent obstruction, and the sialendoscopy procedure itself are not separable from the stone (PMID 41213527). Individual claims require a dated sialolithiasis diagnosis with imaging confirmation of a calculus, a dated sialadenitis diagnosis with documented gland swelling and its relationship to meals, and a documented exclusion of the competing causes the located review names, namely dehydration, malnutrition, medication effect, chronic systemic illness, ductal stenosis, trauma and mucoceles, because the located evidence explicitly attributes stasis and inflammation to those alternatives as well. Evidence gaps carried openly: TWO OF THE THREE ANCHORS ARE NARRATIVE SYNTHESES, not primary data, and neither reports an incidence, a risk estimate, or a comparison group, so the strength of this edge is mechanistic and clinical rather than epidemiological (PMID 38905553, PMID 24862601). The one primary anchor is a single-arm prospective cohort of 41 patients with mean age 37.88 years and 56.1 percent male, in which every patient underwent gland-sparing sialolithotomy, and its exclusions are themselves informative: patients with ACUTE SIALADENITIS WERE EXCLUDED, which means the cohort is by construction the chronic rather than the acute presentation, so the anchor cannot be used to support an acute-inflammation claim (PMID 41213527). The located chronic sialadenitis cohort that compared sialolithiasis against duct stenosis was reviewed and REJECTED as an anchor for this edge because it compares two causes of obstruction WITHIN patients who already carry a diagnosis of chronic sialadenitis, and it reports LOWER symptom burden in the sialolithiasis group than the stenosis group (SPIT 33.3 versus 45.4, P < .013), so it would have supported a claim that stones are the mildest obstructive cause rather than a claim that stones cause sialadenitis. NO located anchor reports the proportion of sialolithiasis patients who develop sialadenitis, or the proportion of sialadenitis patients whose disease is stone-driven. The xerostomia route was authored separately but is a sibling rather than a duplicate, sharing the same obstruction vector. The mucocele route was withheld as SHARED-SUBSTRATE because the located review names mucoceles among the same causes of duct obstruction, so the arrow runs toward the same obstruction from a different cause rather than from the stone. Alternatives requiring exclusion before any individual attribution: Ductal stenosis, which the located review names as a competing cause of obstruction and which the reviewed-but-rejected chronic sialadenitis cohort found to carry a HEAVIER symptom burden than sialolithiasis (SPIT 45.4 versus 33.3, P < .013), so it is the more likely explanation for severe obstructive sialadenitis; Dehydration, malnutrition, medication effect and chronic systemic illness, each named by the located rapid evidence review as a cause of the same salivary stasis and inflammation; Mucocele, named by the located review as a further cause of obstruction of the same excretory system; Acute suppurative sialadenitis without a stone, which the primary anchor expressly excluded from its cohort and which would present differently and more acutely. Anchors: PMID 38905553, PMID 24862601, PMID 41213527. Authoring rationale: Authoring registers this edge because it is the core clinical relationship of the identity, it is named by both narrative anchors as the mechanism rather than inferred, and the target identity had exactly one registered incoming edge, from mucocele, which the located review places on the same obstruction substrate rather than on a causal route from stone. The conservative framing is explicit that the two narrative anchors carry the mechanism and only one primary anchor exists, records the rejected comparison study and the direction of its finding, and notes that the primary cohort's exclusion of acute sialadenitis means this edge describes the chronic presentation only.",
+        "boundarySource": "authored-d1-implementation-scope",
+        "structuredGuardReviewPending": false,
+        "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+        "TWO OF THE THREE ANCHORS ARE NARRATIVE SYNTHESES, not primary data, and neither reports an incidence, a risk estimate, or a comparison group, so the strength of this edge is mechanistic and clinical rather than epidemiological (PMID 38905553, PMID 24862601). The one primary anchor is a single-arm prospective cohort of 41 patients with mean age 37.88 years and 56.1 percent male, in which every patient underwent gland-sparing sialolithotomy, and its exclusions are themselves informative: patients with ACUTE SIALADENITIS WERE EXCLUDED, which means the cohort is by construction the chronic rather than the acute presentation, so the anchor cannot be used to support an acute-inflammation claim (PMID 41213527). The located chronic sialadenitis cohort that compared sialolithiasis against duct stenosis was reviewed and REJECTED as an anchor for this edge because it compares two causes of obstruction WITHIN patients who already carry a diagnosis of chronic sialadenitis, and it reports LOWER symptom burden in the sialolithiasis group than the stenosis group (SPIT 33.3 versus 45.4, P < .013), so it would have supported a claim that stones are the mildest obstructive cause rather than a claim that stones cause sialadenitis. NO located anchor reports the proportion of sialolithiasis patients who develop sialadenitis, or the proportion of sialadenitis patients whose disease is stone-driven. The xerostomia route was authored separately but is a sibling rather than a duplicate, sharing the same obstruction vector. The mucocele route was withheld as SHARED-SUBSTRATE because the located review names mucoceles among the same causes of duct obstruction, so the arrow runs toward the same obstruction from a different cause rather than from the stone."
+      ],
+      "sourceIds": [
+        "pmid-38905553",
+        "pmid-24862601",
+        "pmid-41213527"
+      ],
+      "sourceReferenceCount": 3,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "9dc31f60abb1dbeb21b5eb423910babd830f43caf65bb3fecd5fdb97f92a580d"
+    },
+    {
+      "relationshipId": "rel-sialolithiasis-to-xerostomia",
+      "primaryId": "sialolithiasis",
+      "targetId": "xerostomia",
+      "direction": "sialolithiasis -> xerostomia",
+      "primaryPublicationState": "draft",
+      "rank": 2,
+      "clinicalProposition": {
+        "status": "authored-d1-bounded-proposition",
+        "text": "Authoring registers this edge because the target identity had only one registered incoming edge before this batch, from salivary-gland-cancer, and the located evidence establishes a materially different mechanism, a reversible delivery deficit rather than the gland destruction of malignancy, so the two routes should not be conflated. The conservative framing registers the negative sialendoscopy-xerostomia correlation as a counterweight on the face of the edge, distinguishes objective flow recovery from subjective satisfaction, and requires a documented objective measure rather than accepting a complaint alone."
+      },
+      "rationale": "Authoring registers this edge because the target identity had only one registered incoming edge before this batch, from salivary-gland-cancer, and the located evidence establishes a materially different mechanism, a reversible delivery deficit rather than the gland destruction of malignancy, so the two routes should not be conflated. The conservative framing registers the negative sialendoscopy-xerostomia correlation as a counterweight on the face of the edge, distinguishes objective flow recovery from subjective satisfaction, and requires a documented objective measure rather than accepting a complaint alone.",
+      "publicationGuard": {
+        "status": "explicit",
+        "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), mechanism MECHANICAL_OR_COMPRESSIVE, with the mechanistic vector named as hypothesized: The hypothesised vector is that a calculus occluding a salivary excretory duct interrupts the delivery of saliva to the oral cavity, so that the gland continues producing secretion which has nowhere to drain, and the resulting reduction in delivered salivary volume produces the subjective sensation of oral dryness and the objective finding of reduced unstimulated and stimulated whole-saliva flow. The vector is named as obstructed delivery rather than as gland destruction, and that distinction is load-bearing: the located cohort evidence shows salivary function RECOVERING substantially after the stone is removed, so the dryness in this route is a delivery deficit that is at least partly reversible rather than the permanent acinar loss that characterises an autoimmune sicca state, which is why the autoimmune differential is named as something to exclude rather than folded in. Conservative basis: Authored at ASSOCIATION_ONLY at systematic-review, prospective-cohort, and prospective-non-randomised-study class. The instrument review is the anchor that establishes that xerostomia is a separable, measurable construct with validated instruments available, and it is the reason the edge can require a documented instrument score rather than a subjective complaint (PMID 36606658). The prospective cohort is the anchor that supplies the QUANTITATIVE FUNCTIONAL DATA, whole-saliva recovery from 2.21 to 3.42 g submandibular and 1.87 to 2.92 g parotid, and the parallel quality-of-life score collapse from 65.92 to 3.84, which is what makes the route reversible and therefore clinically meaningful (PMID 41213527). The sialendoscopy study is registered as the EXPLICIT COUNTERWEIGHT, because it reports the negative correlation between sialendoscopy satisfaction and xerostomia alongside the positive stone-clinic result, and quoting only the latter would misrepresent the evidence (PMID 34998366). Because the located evidence is split between an objective reversible deficit and a subjective complaint that the intervention often does not fix, the conservative standard holds the edge at association only, carries the null on the face of the edge, and requires both an objective and a documented subjective measure before any individual attribution. Causation and direction limits: Neither causation nor aggravation is established for any individual, and the located evidence is genuinely split in a way that must not be smoothed over. The objective anchor is a treatment-response cohort rather than an incidence study, and its recovery figures describe gland function after relief of obstruction rather than the burden of dryness during obstruction, so it establishes that the stone drives the hypofunction without establishing how much dryness an individual stone produces (PMID 41213527). The subjective anchor is more troubling for a causal reading: although 80.6 percent of its sialolithiasis patients reported improved symptoms after sialendoscopy, the study found a NEGATIVE correlation between sialendoscopy satisfaction and xerostomia, meaning the patients whose complaint was dryness were the ones least helped, and the authors' own conclusion distinguishes a positive impact on quality of life in obstructive stone disease from a relative time-dependent indication for other causes of xerostomia that little improved satisfaction (PMID 34998366). The instrument review is a methodological systematic review of outcome measures rather than a clinical study, and it supplies the vocabulary and validated instruments rather than an effect estimate, while reporting that content validity was a notable limitation for all included tools (PMID 36606658). Individual claims therefore require a dated sialolithiasis diagnosis, a documented salivary flow measurement or a validated xerostomia instrument score with its date, a documented response to sialagogue therapy or hydration trial, and an assessment for the competing causes of dry mouth, because the located evidence shows dryness in a stone patient is frequently not what the stone explains. Evidence gaps carried openly: The instrument review is a methodological systematic review of patient-reported outcome measures, not a clinical study, and it reports that content validity was a notable limitation for ALL of the 16 instruments it identified, none of which was rated adequate, so it supplies instruments rather than effect estimates and cannot itself support a claim about how much dryness stones cause (PMID 36606658). The primary functional anchor is a single-arm cohort of 41 patients in whom every patient underwent sialolithotomy, so the improvement cannot be separated into removal of the stone, the sialendoscopy procedure itself, regression to the mean, or the natural resolution of intermittent obstruction (PMID 41213527). The third anchor is explicitly NON-RANDOMISED and reports a NEGATIVE correlation between sialendoscopy satisfaction and xerostomia, meaning the xerostomia-specific benefit of relieving a stone is weak in exactly the patients whose principal complaint is dryness (PMID 34998366). NO located anchor reports the prevalence or measured severity of xerostomia in an untreated population of sialolithiasis patients, so the direction and magnitude of the association in the absence of intervention are unknown. This edge is ranked BELOW the sialadenitis edge because the sialadenitis relationship is the defining clinical event of the identity whereas xerostomia is one of its manifestations, and because the located evidence for the dryness route contains an explicit negative result that the inflammation route does not. Alternatives requiring exclusion before any individual attribution: Sjogren's syndrome and other autoimmune sialadenitis, in which acinar loss produces a permanent rather than reversible dryness, and which the located instrument review treats as a separate instrument category from both xerostomia and sialadenitis; Medication-induced xerostomia, a reversible cause requiring a medication review before the obstruction is credited with the symptom; Radiation or radioiodine-induced sialadenitis, which the located sialendoscopy study includes as a distinct 35.4 percent subgroup with a different time course and a different reversibility profile; Ductal stenosis without a calculus, which the reviewed chronic sialadenitis cohort found to carry a heavier quality-of-life burden than sialolithiasis and which is a plausible alternative explanation for the same dryness. Anchors: PMID 36606658, PMID 41213527, PMID 34998366. Authoring rationale: Authoring registers this edge because the target identity had only one registered incoming edge before this batch, from salivary-gland-cancer, and the located evidence establishes a materially different mechanism, a reversible delivery deficit rather than the gland destruction of malignancy, so the two routes should not be conflated. The conservative framing registers the negative sialendoscopy-xerostomia correlation as a counterweight on the face of the edge, distinguishes objective flow recovery from subjective satisfaction, and requires a documented objective measure rather than accepting a complaint alone.",
+        "boundarySource": "authored-d1-implementation-scope",
+        "structuredGuardReviewPending": false,
+        "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+        "The instrument review is a methodological systematic review of patient-reported outcome measures, not a clinical study, and it reports that content validity was a notable limitation for ALL of the 16 instruments it identified, none of which was rated adequate, so it supplies instruments rather than effect estimates and cannot itself support a claim about how much dryness stones cause (PMID 36606658). The primary functional anchor is a single-arm cohort of 41 patients in whom every patient underwent sialolithotomy, so the improvement cannot be separated into removal of the stone, the sialendoscopy procedure itself, regression to the mean, or the natural resolution of intermittent obstruction (PMID 41213527). The third anchor is explicitly NON-RANDOMISED and reports a NEGATIVE correlation between sialendoscopy satisfaction and xerostomia, meaning the xerostomia-specific benefit of relieving a stone is weak in exactly the patients whose principal complaint is dryness (PMID 34998366). NO located anchor reports the prevalence or measured severity of xerostomia in an untreated population of sialolithiasis patients, so the direction and magnitude of the association in the absence of intervention are unknown. This edge is ranked BELOW the sialadenitis edge because the sialadenitis relationship is the defining clinical event of the identity whereas xerostomia is one of its manifestations, and because the located evidence for the dryness route contains an explicit negative result that the inflammation route does not."
+      ],
+      "sourceIds": [
+        "pmid-36606658",
+        "pmid-41213527",
+        "pmid-34998366"
+      ],
+      "sourceReferenceCount": 3,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "955a7537f44b6460b3604852848709620f6eabcd1f3125ea8ade4e91b523b1d9"
+    },
+    {
+      "relationshipId": "rel-sialadenitis-to-xerostomia",
+      "primaryId": "sialadenitis",
+      "targetId": "xerostomia",
+      "direction": "sialadenitis -> xerostomia",
+      "primaryPublicationState": "draft",
+      "rank": 1,
+      "clinicalProposition": {
+        "status": "authored-d1-bounded-proposition",
+        "text": "Authoring registers this edge because reduced salivary flow is the functional consequence that makes salivary gland inflammation clinically significant, because the located evidence supplies an objective gland-level measurement rather than a complaint, and because the target identity had only one registered incoming edge, from salivary-gland-cancer, which reaches dryness by gland destruction rather than by inflammation. The conservative framing is explicit that every anchor describes the autoimmune subtype, records the null that uncomplicated disease is where the objective separation is weakest, and uses MULTIFACTORIAL rather than a single inflammatory label so the identity is not narrowed to one mechanism."
+      },
+      "rationale": "Authoring registers this edge because reduced salivary flow is the functional consequence that makes salivary gland inflammation clinically significant, because the located evidence supplies an objective gland-level measurement rather than a complaint, and because the target identity had only one registered incoming edge, from salivary-gland-cancer, which reaches dryness by gland destruction rather than by inflammation. The conservative framing is explicit that every anchor describes the autoimmune subtype, records the null that uncomplicated disease is where the objective separation is weakest, and uses MULTIFACTORIAL rather than a single inflammatory label so the identity is not narrowed to one mechanism.",
+      "publicationGuard": {
+        "status": "explicit",
+        "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), mechanism MULTIFACTORIAL, with the mechanistic vector named as hypothesized: The hypothesised vector is that inflammatory infiltration of salivary gland tissue, with the associated periductal fibrosis documented in the located anchor, replaces or compresses the functional acinar and ductal units, so that the gland is present and may even be enlarged while producing less saliva, which reduces delivered salivary volume and produces the subjective sensation of oral dryness alongside the objective finding of reduced unstimulated flow. The category MULTIFACTORIAL is used rather than a single inflammatory or fibrotic label because the catalog identity spans autoimmune, obstructive, bacterial, viral and radiation-induced disease, each of which reaches the same functional endpoint by a different route, and the located evidence supplies only the autoimmune and fibrotic route, so naming a single mechanism would overstate what the anchors establish for the identity as a whole. Conservative basis: Authored at ASSOCIATION_ONLY at mechanistic cross-sectional, cross-sectional diagnostic cohort, and systematic-review class, following the file's existing oral, salivary, and dental pathway scope. The fibrosis study is the anchor that supplies the GLAND-LEVEL OBJECTIVE MECHANISM, the significant correlation between relative interstitial fibrosis area and unstimulated whole saliva flow rate, and the fibroblast gene-expression finding, which is what distinguishes this route from a purely symptomatic association (PMID 34400910). The 244-patient study is the anchor that supplies the SCALE of the objective finding across disease stages and, importantly, supplies the NULL that uncomplicated disease is where the difference is NOT, with the between-group separation attributed mainly to the lymphoma subgroups (PMID 30120806). The instrument review is the anchor that makes a documented instrument score a reasonable requirement rather than accepting a complaint (PMID 36606658). Because the anchors describe a subtype rather than the identity, the conservative standard holds the edge at association only, names MULTIFACTORIAL to avoid overstating a single mechanism, requires the aetiology to be stated on any individual claim, and carries the lymphoma-subgroup null openly. Causation and direction limits: Neither causation nor aggravation is established for any individual, and the located evidence carries a SCOPE LIMITATION that must be stated rather than generalised away: all three anchors describe autoimmune or Sjogren's-type salivary gland inflammation, whereas the catalog identity sialadenitis is the generic inflammatory label that also covers obstructive, bacterial, viral and radiation-induced disease, so the located evidence supports the route in a subtype rather than in the identity as a whole. The fibrosis study is a small cross-sectional analysis of 20 female patients with a correlation coefficient, and a correlation between fibrosis and flow does not establish that fibrosis causes the flow reduction, nor that either is the presenting problem (PMID 34400910). The 244-patient study is likewise cross-sectional, reports that the difference between the Sjogren's group and controls was attributed MAINLY TO THE LYMPHOMA SUBGROUPS rather than distributed across the disease, which is a striking null for the uncomplicated disease, and its own design compares disease groups rather than tracking gland inflammation to a later dryness outcome (PMID 30120806). The instrument review supplies measurement vocabulary and validated tools rather than an effect estimate, and reports that content validity was a limitation for every tool it identified (PMID 36606658). Individual claims require a dated sialadenitis diagnosis with the aetiology stated, since the located anchors are specific to the autoimmune subtype, plus a documented objective salivary flow measurement or a validated instrument score, an assessment for the competing obstructive and medication-related causes, and a documented ocular assessment if a systemic autoimmune cause is suspected, because dry eye is the paired feature of the subtype supplying the evidence and its presence changes the interpretation entirely. Evidence gaps carried openly: The primary mechanistic anchor is a cross-sectional analysis of 20 FEMALE patients with Sjogren's syndrome and reports a correlation, not a direction of effect, so it cannot establish that fibrosis reduces flow rather than both reflecting a common process (PMID 34400910). The second anchor is cross-sectional and its between-group differences were attributed MAINLY TO THE LYMPHOMA SUBGROUPS (p < 0.0001 for all parameters), meaning the uncomplicated Sjogren's group showed much less separation from sicca controls than the headline sample size suggests, and the sicca control group is itself a group of symptomatic patients, so the study does not establish dryness in gland inflammation against healthy controls at all (PMID 30120806). The third anchor is a methodological review that supplies instruments rather than effect estimates and reports content-validity limitations for all 16 tools (PMID 36606658). ALL THREE ANCHORS DESCRIBE SJOGREN'S SYNDROME OR AUTOIMMUNE SIALADENITIS, whereas the catalog identity is the generic inflammatory label covering obstructive, bacterial, viral and radiation-induced disease, so the edge is registered for the subtype-supported route and the reviewer must establish the aetiology before the target is treated as met. NO located anchor reports the prevalence of xerostomia in sialadenitis of non-autoimmune cause. The sialolithiasis file authors a xerostomia edge in the same batch on a reversible obstructed-delivery mechanism, so the two edges are siblings rather than duplicates and are deliberately held to different standards: this one is a permanent acinar-loss route, that one a reversible delivery-deficit route. Alternatives requiring exclusion before any individual attribution: Sjogren's syndrome as the systemic autoimmune cause of the specific subtype supplying every anchor in this edge, which must be documented or excluded before the target is treated as met; Ductal obstruction from a calculus or stenosis, which reaches the same functional endpoint by a reversible delivery deficit rather than by acinar loss, and which the catalog carries as a separate identity; Medication-induced and dehydration-related xerostomia, both reversible and both requiring exclusion before attribution; Radiation or radioiodine-induced sialadenitis, a distinct iatrogenic route that the located instrument review treats as a separate measurement problem. Anchors: PMID 34400910, PMID 30120806, PMID 36606658. Authoring rationale: Authoring registers this edge because reduced salivary flow is the functional consequence that makes salivary gland inflammation clinically significant, because the located evidence supplies an objective gland-level measurement rather than a complaint, and because the target identity had only one registered incoming edge, from salivary-gland-cancer, which reaches dryness by gland destruction rather than by inflammation. The conservative framing is explicit that every anchor describes the autoimmune subtype, records the null that uncomplicated disease is where the objective separation is weakest, and uses MULTIFACTORIAL rather than a single inflammatory label so the identity is not narrowed to one mechanism.",
+        "boundarySource": "authored-d1-implementation-scope",
+        "structuredGuardReviewPending": false,
+        "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+        "The primary mechanistic anchor is a cross-sectional analysis of 20 FEMALE patients with Sjogren's syndrome and reports a correlation, not a direction of effect, so it cannot establish that fibrosis reduces flow rather than both reflecting a common process (PMID 34400910). The second anchor is cross-sectional and its between-group differences were attributed MAINLY TO THE LYMPHOMA SUBGROUPS (p < 0.0001 for all parameters), meaning the uncomplicated Sjogren's group showed much less separation from sicca controls than the headline sample size suggests, and the sicca control group is itself a group of symptomatic patients, so the study does not establish dryness in gland inflammation against healthy controls at all (PMID 30120806). The third anchor is a methodological review that supplies instruments rather than effect estimates and reports content-validity limitations for all 16 tools (PMID 36606658). ALL THREE ANCHORS DESCRIBE SJOGREN'S SYNDROME OR AUTOIMMUNE SIALADENITIS, whereas the catalog identity is the generic inflammatory label covering obstructive, bacterial, viral and radiation-induced disease, so the edge is registered for the subtype-supported route and the reviewer must establish the aetiology before the target is treated as met. NO located anchor reports the prevalence of xerostomia in sialadenitis of non-autoimmune cause. The sialolithiasis file authors a xerostomia edge in the same batch on a reversible obstructed-delivery mechanism, so the two edges are siblings rather than duplicates and are deliberately held to different standards: this one is a permanent acinar-loss route, that one a reversible delivery-deficit route."
+      ],
+      "sourceIds": [
+        "pmid-34400910",
+        "pmid-30120806",
+        "pmid-36606658"
+      ],
+      "sourceReferenceCount": 3,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "377bf5a9fc0cb3ef631a28dd960484585d0776669368e723f75402bcc1df8050"
+    },
+    {
+      "relationshipId": "rel-sialadenitis-to-non-hodgkins-lymphoma",
+      "primaryId": "sialadenitis",
+      "targetId": "non-hodgkins-lymphoma",
+      "direction": "sialadenitis -> non-hodgkins-lymphoma",
+      "primaryPublicationState": "draft",
+      "rank": 2,
+      "clinicalProposition": {
+        "status": "authored-d1-bounded-proposition",
+        "text": "Authoring registers this edge because it is the highest-consequence association of salivary gland inflammation, because the located register study quantifies it and supplies five actionable predictors, and because the target identity had a single unrelated incoming edge. The conservative framing declines to convert a standardised incidence ratio into an individual risk, states the Sjogren's scope on the face of the edge, records that the majority of detected lymphomas were high-grade rather than indolent, and requires the aetiology and the immune laboratory markers to be documented before the target is treated as met."
+      },
+      "rationale": "Authoring registers this edge because it is the highest-consequence association of salivary gland inflammation, because the located register study quantifies it and supplies five actionable predictors, and because the target identity had a single unrelated incoming edge. The conservative framing declines to convert a standardised incidence ratio into an individual risk, states the Sjogren's scope on the face of the edge, records that the majority of detected lymphomas were high-grade rather than indolent, and requires the aetiology and the immune laboratory markers to be documented before the target is treated as met.",
+      "publicationGuard": {
+        "status": "explicit",
+        "structuredGuardText": "Publishes as association only (NOT_ESTABLISHED, hypothesizedOnly), mechanism MALIGNANT_TRANSFORMATION, with the mechanistic vector named as hypothesized: The hypothesised vector is chronic antigen-driven lymphocytic proliferation within salivary gland tissue, in which the sustained immune infiltrate of lymphoepithelial sialadenitis establishes a lymphoid population in which an indolent clone of B cells, characteristically of mucosa-associated lymphoid tissue type, arises and subsequently undergoes transformation to a high-grade diffuse large B-cell lymphoma. The category MALIGNANT_TRANSFORMATION is used because the located evidence describes a documented progression from a benign reactive lymphoepithelial lesion through a low-grade MALT lymphoma to a high-grade B-cell lymphoma, and because the located register study identifies low CD4+ counts, low complement and a low CD4 to CD8 ratio as predictors, which places the mechanism in the immune and clonal-evolution domain rather than in a local mechanical or infective one. Conservative basis: Authored at ASSOCIATION_ONLY at register-cohort, cross-sectional cohort, and histopathology case-report class, following the file's existing haematological and immune pathway scope. The register study is the anchor that supplies the QUANTITATIVE AND PROGNOSTIC CONTENT, the standardised incidence ratio of 15.57 for non-Hodgkin's lymphoma, the finding of NO lymphoproliferative neoplasms whatsoever in the non-consensus sicca comparison group, and the five clinical and laboratory predictors with hazard ratios from 4.64 to 10.92, which are what make the route actionable as a surveillance proposition rather than merely observed (PMID 16284097). The 244-patient study is the anchor that shows the objective salivary findings are SEVEREST in the lymphoma-affected subgroups, which is the located reason a change in gland status in this population warrants attention (PMID 30120806). The histopathology report is the anchor that documents the morphological spectrum from lymphoepithelial sialadenitis through low-grade MALT lymphoma to high-grade transformation, which is the only located source that states the progression directly (PMID 20551561). Because the relationship is a relative-risk statement in one systemic-disease cohort, the conservative standard holds the edge at association only, declines to state an absolute individual risk, requires the aetiology to be documented, and records the diffuse-large-B-cell majority so the indolent MALT illustration is not mistaken for the typical outcome. Causation and direction limits: Neither causation nor aggravation is established for any individual, and the located evidence supports a risk-stratification claim rather than a causal one. The register study is observational and reports STANDARDISED INCIDENCE RATIOS, which are relative to a background population and are explicitly NOT absolute risks, and the total-malignancy confidence interval of 0.98 to 2.00 includes 1, so the fifteen-fold figure applies to non-Hodgkin's lymphoma specifically and not to cancer generally; the authors further state that it is unclear from their own comorbidity data whether specific conditions are a consequence of the disease or represent shared aetiology or pathogenetic susceptibility, which is the same interpretive caution that applies here (PMID 16284097). The register enrolled patients meeting consensus criteria for a systemic autoimmune disease, so the exposed group is a Sjogren's cohort and not a cohort of sialadenitis, and the control group of non-AECC sicca patients is a group of symptomatic patients with a DIFFERENT disease rather than a healthy comparison, which means the contrast that produces the fifteen-fold figure is between two sick populations (PMID 16284097). The histopathology report is a SINGLE-CASE report whose evidential weight is the spectrum description rather than any estimate, and the 58 percent diffuse large B-cell fraction in the register means the majority of the excess risk is not the indolent MALT lesion that the case illustrates (PMID 20551561). Individual claims require a dated sialadenitis diagnosis with the aetiology stated as autoimmune lymphocytic or lymphoepithelial type, documented lymphadenopathy or gland enlargement progression if present, and a documented determination by the reviewing clinician that a lymphoma arose in the affected gland, because a standardised incidence ratio of 15.57 is a population statistic and no located anchor supports applying it to an individual gland. Evidence gaps carried openly: The primary anchor reports STANDARDISED INCIDENCE RATIOS rather than absolute incidence, its confidence interval for total malignancy of 1.42 (0.98 to 2.00) INCLUDES 1, and it enrolled patients meeting consensus criteria for a systemic autoimmune disease rather than patients with salivary gland inflammation as such, so the fifteen-fold figure is a property of that Sjogren's cohort (PMID 16284097). The comparison group in that study is a group of symptomatic patients with a different disease, so the contrast is between two sick populations rather than between sick and well, and 7 of 12 detected lymphomas were diffuse large B-cell lymphomas rather than the indolent MALT lesion the case report illustrates (PMID 16284097, PMID 20551561). The second anchor is cross-sectional and its findings are attributed mainly to the lymphoma subgroups, so it cannot establish that inflammation preceded the lymphoma, and 7 of its 244 patients already had lymphoma at enrolment (PMID 30120806). The third anchor is a SINGLE-CASE report and supplies no estimate (PMID 20551561). NO located anchor reports the lymphoma risk in sialadenitis of NON-autoimmune cause, and none establishes temporal order in an individual gland. The target identity had only one registered incoming edge before this batch, from microscopic-colitis, and no other immune-mediated salivary route exists in the registry, so this edge is not a duplicate and is the only lymphoid-progression route in the salivary group. Alternatives requiring exclusion before any individual attribution: Sjogren's syndrome as the systemic autoimmune condition underlying the lymphoepithelial subtype that supplies all three anchors, which must be documented or excluded before the target is treated as met; Purpura or cutaneous vasculitis, reported by the located register study as a significant predictor of lymphoproliferative disease at HR 4.64 and therefore a marker of higher rather than background risk; Low CD4+ T-cell count, low CD4 to CD8 ratio, and low complement C3 and C4, each reported as significant predictors with hazard ratios between 6.18 and 10.92 and therefore the specific laboratory findings a reviewing clinician should look for; Hepatitis C, HIV and other conditions associated with lymphoid proliferation, none of which is addressed by the located anchors and each of which requires separate assessment. Anchors: PMID 16284097, PMID 30120806, PMID 20551561. Authoring rationale: Authoring registers this edge because it is the highest-consequence association of salivary gland inflammation, because the located register study quantifies it and supplies five actionable predictors, and because the target identity had a single unrelated incoming edge. The conservative framing declines to convert a standardised incidence ratio into an individual risk, states the Sjogren's scope on the face of the edge, records that the majority of detected lymphomas were high-grade rather than indolent, and requires the aetiology and the immune laboratory markers to be documented before the target is treated as met.",
+        "boundarySource": "authored-d1-implementation-scope",
+        "structuredGuardReviewPending": false,
+        "semanticRewriteAuthorized": false
+      },
+      "evidenceGaps": [
+        "The primary anchor reports STANDARDISED INCIDENCE RATIOS rather than absolute incidence, its confidence interval for total malignancy of 1.42 (0.98 to 2.00) INCLUDES 1, and it enrolled patients meeting consensus criteria for a systemic autoimmune disease rather than patients with salivary gland inflammation as such, so the fifteen-fold figure is a property of that Sjogren's cohort (PMID 16284097). The comparison group in that study is a group of symptomatic patients with a different disease, so the contrast is between two sick populations rather than between sick and well, and 7 of 12 detected lymphomas were diffuse large B-cell lymphomas rather than the indolent MALT lesion the case report illustrates (PMID 16284097, PMID 20551561). The second anchor is cross-sectional and its findings are attributed mainly to the lymphoma subgroups, so it cannot establish that inflammation preceded the lymphoma, and 7 of its 244 patients already had lymphoma at enrolment (PMID 30120806). The third anchor is a SINGLE-CASE report and supplies no estimate (PMID 20551561). NO located anchor reports the lymphoma risk in sialadenitis of NON-autoimmune cause, and none establishes temporal order in an individual gland. The target identity had only one registered incoming edge before this batch, from microscopic-colitis, and no other immune-mediated salivary route exists in the registry, so this edge is not a duplicate and is the only lymphoid-progression route in the salivary group."
+      ],
+      "sourceIds": [
+        "pmid-16284097",
+        "pmid-30120806",
+        "pmid-20551561"
+      ],
+      "sourceReferenceCount": 3,
+      "pathwayIntelligencePresent": false,
+      "suggestionObjectHash": "1d148d8c9819c7560d630ac33262d6a0709bc0c6776d0576851606e8a0fe75e6"
     }
   ],
   "lastUpdatedBy": "batch-D1-draft-authoring",

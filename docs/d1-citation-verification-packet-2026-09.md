@@ -15475,7 +15475,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 - Is the citation metadata exact against the PubMed record?
 
-**Row 429.1 — Cai JX, Wong D, Lee DJH, et al. Eating and Psychiatric Disorders Are Independent Risk Factors for Rumination Syndrome J Clin Gastroenterol. 2022 Mar 1;56(3):228-233. doi: 10.1097/MCG.0000000000001510. PMID 33988353. PMID 33988353.**
+**Row 429.1 — Cai JX, Wong D, Lee DJH, et al. Eating and Psychiatric Disorders Are Independent Risk Factors for Rumination Syndrome J Clin Gastroenterol. 2022 Mar 1;56(3):228-233. doi: 10.1097/MCG.0000000000001510. PMID 33988353.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/33988353/
 - Source checked on: 2026-09-27
@@ -15483,7 +15483,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Tertiary-centre case-control study of 24 adults with rumination syndrome and 48 age- and gender-matched controls reporting eating-disorder history in 37.5 percent versus 4.2 percent (p=0.0002), anorexia nervosa 16.7 percent versus 0 percent (p=0.005), bulimia nervosa 21.1 percent versus 0 percent (p=0.001), and eating-disorder history as an independent adjusted predictor of rumination syndrome (adjusted odds ratio 16.4, p=0.0033).
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 429.2 — da Silva BC, Araújo M, Tavares M. Rumination Syndrome in Adolescents: Clinical and Psychiatric Correlates From a Case Series Clin Child Psychol Psychiatry. 2026 May 30:13591045261456470. doi: 10.1177/13591045261456470. PMID 42217214. PMID 42217214.**
+**Row 429.2 — da Silva BC, Araújo M, Tavares M. Rumination Syndrome in Adolescents: Clinical and Psychiatric Correlates From a Case Series Clin Child Psychol Psychiatry. 2026 May 30:13591045261456470. doi: 10.1177/13591045261456470. PMID 42217214.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/42217214/
 - Source checked on: 2026-09-27
@@ -15491,7 +15491,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Case series of eight adolescent girls referred for repeated postprandial regurgitation, six diagnosed with rumination syndrome, most of whom carried co-occurring anxiety, depressive, or eating-disorder diagnoses including anorexia and bulimia, with one case found to have an underlying organic medical illness.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 429.3 — Yang DM, Sabella J, Kroon Van Diest A, et al. Early childhood-onset rumination syndrome is clinically distinct from adolescent-onset rumination syndrome J Pediatr Gastroenterol Nutr. 2024 Mar;78(3):565-572. doi: 10.1002/jpn3.12116. PMID 38504395. PMID 38504395.**
+**Row 429.3 — Yang DM, Sabella J, Kroon Van Diest A, et al. Early childhood-onset rumination syndrome is clinically distinct from adolescent-onset rumination syndrome J Pediatr Gastroenterol Nutr. 2024 Mar;78(3):565-572. doi: 10.1002/jpn3.12116. PMID 38504395.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/38504395/
 - Source checked on: 2026-09-27
@@ -15515,7 +15515,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 - Is the citation metadata exact against the PubMed record?
 
-**Row 430.1 — Cai JX, Wong D, Lee DJH, et al. Eating and Psychiatric Disorders Are Independent Risk Factors for Rumination Syndrome J Clin Gastroenterol. 2022 Mar 1;56(3):228-233. doi: 10.1097/MCG.0000000000001510. PMID 33988353. PMID 33988353.**
+**Row 430.1 — Cai JX, Wong D, Lee DJH, et al. Eating and Psychiatric Disorders Are Independent Risk Factors for Rumination Syndrome J Clin Gastroenterol. 2022 Mar 1;56(3):228-233. doi: 10.1097/MCG.0000000000001510. PMID 33988353.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/33988353/
 - Source checked on: 2026-09-27
@@ -15523,7 +15523,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Case-control study of 24 adults with rumination syndrome and 48 matched controls reporting psychiatric-disorder prevalence of 83.3 percent versus 50.0 percent (p=0.0062), anxiety in 37.5 percent and depression in 29.2 percent of cases, and psychiatric-disorder history as an independent adjusted predictor of rumination syndrome (adjusted odds ratio 4.47, p=0.029).
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 430.2 — da Silva BC, Araújo M, Tavares M. Rumination Syndrome in Adolescents: Clinical and Psychiatric Correlates From a Case Series Clin Child Psychol Psychiatry. 2026 May 30:13591045261456470. doi: 10.1177/13591045261456470. PMID 42217214. PMID 42217214.**
+**Row 430.2 — da Silva BC, Araújo M, Tavares M. Rumination Syndrome in Adolescents: Clinical and Psychiatric Correlates From a Case Series Clin Child Psychol Psychiatry. 2026 May 30:13591045261456470. doi: 10.1177/13591045261456470. PMID 42217214.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/42217214/
 - Source checked on: 2026-09-27
@@ -15531,7 +15531,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Case series of eight adolescent girls referred for repeated postprandial regurgitation, six diagnosed with rumination syndrome, most carrying co-occurring emotional or psychiatric difficulty including anxiety, with diagnosis often delayed because the presentation resembles reflux or vomiting.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 430.3 — Yang DM, Sabella J, Kroon Van Diest A, et al. Early childhood-onset rumination syndrome is clinically distinct from adolescent-onset rumination syndrome J Pediatr Gastroenterol Nutr. 2024 Mar;78(3):565-572. doi: 10.1002/jpn3.12116. PMID 38504395. PMID 38504395.**
+**Row 430.3 — Yang DM, Sabella J, Kroon Van Diest A, et al. Early childhood-onset rumination syndrome is clinically distinct from adolescent-onset rumination syndrome J Pediatr Gastroenterol Nutr. 2024 Mar;78(3):565-572. doi: 10.1002/jpn3.12116. PMID 38504395.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/38504395/
 - Source checked on: 2026-09-27
@@ -15555,7 +15555,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 - Is the citation metadata exact against the PubMed record?
 
-**Row 431.1 — Tang A, Li J, Scheff N, et al. Quality of Life Outcomes for Parotid Malignancies Laryngoscope. 2024 Nov;134(11):4549-4556. doi: 10.1002/lary.31554. PMID 38837232. PMID 38837232.**
+**Row 431.1 — Tang A, Li J, Scheff N, et al. Quality of Life Outcomes for Parotid Malignancies Laryngoscope. 2024 Nov;134(11):4549-4556. doi: 10.1002/lary.31554. PMID 38837232.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/38837232/
 - Source checked on: 2026-09-27
@@ -15563,7 +15563,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Retrospective survivorship-clinic study of 62 surgically treated malignant parotid tumour patients reporting clinically relevant dysphagia on EAT-10 in 32.3 percent at last follow-up, elevated PHQ-8 in 15.5 percent, GAD-7 in 7.1 percent, neck pain in 17.7 percent, and insomnia in 7.2 percent, with significantly worse swallowing for surgery plus chemoradiation versus surgery alone (p=0.03) and significantly worse physical and social-emotional quality of life for adjuvant radiotherapy (p<0.01 and p=0.01).
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 431.2 — Hernandez-Herrera GA, Rourk KS, Peraza LR, et al. Clinical Features, Treatment, and Outcomes for Oropharyngeal Adenoid Cystic Carcinoma: A Systematic Review Otolaryngol Head Neck Surg. 2026 Sep;175(3):547-555. doi: 10.1002/ohn.70319. PMID 42371638. PMID 42371638.**
+**Row 431.2 — Hernandez-Herrera GA, Rourk KS, Peraza LR, et al. Clinical Features, Treatment, and Outcomes for Oropharyngeal Adenoid Cystic Carcinoma: A Systematic Review Otolaryngol Head Neck Surg. 2026 Sep;175(3):547-555. doi: 10.1002/ohn.70319. PMID 42371638.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/42371638/
 - Source checked on: 2026-09-27
@@ -15571,7 +15571,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: PRISMA systematic review of 44 articles covering 195 patients with oropharyngeal adenoid cystic carcinoma reporting base of tongue as the most common subsite (73 percent), presenting symptoms as pain or discomfort (n=31), palpable mass (n=19), and dysphagia (n=12), cervical nodes positive in 22.3 percent, and distant metastases in 36 percent of those who progressed, primarily pulmonary (n=26).
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 431.3 — Luna-Ortiz K, Yescas-Castellanos SS, Luna-Peteuil Z, et al. Malignant salivary gland tumors of the tongue: Analysis of 29 cases Med Oral Patol Oral Cir Bucal. 2026 Mar 7;31(4):e531-6. doi: 10.4317/medoral.27887. PMID 41793734. PMID 41793734.**
+**Row 431.3 — Luna-Ortiz K, Yescas-Castellanos SS, Luna-Peteuil Z, et al. Malignant salivary gland tumors of the tongue: Analysis of 29 cases Med Oral Patol Oral Cir Bucal. 2026 Mar 7;31(4):e531-6. doi: 10.4317/medoral.27887. PMID 41793734.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/41793734/
 - Source checked on: 2026-09-27
@@ -15595,7 +15595,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 - Is the citation metadata exact against the PubMed record?
 
-**Row 432.1 — Tang A, Li J, Scheff N, et al. Quality of Life Outcomes for Parotid Malignancies Laryngoscope. 2024 Nov;134(11):4549-4556. doi: 10.1002/lary.31554. PMID 38837232. PMID 38837232.**
+**Row 432.1 — Tang A, Li J, Scheff N, et al. Quality of Life Outcomes for Parotid Malignancies Laryngoscope. 2024 Nov;134(11):4549-4556. doi: 10.1002/lary.31554. PMID 38837232.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/38837232/
 - Source checked on: 2026-09-27
@@ -15603,7 +15603,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Retrospective survivorship-clinic study of 62 surgically treated malignant parotid tumour patients reporting elevated depressive symptoms on PHQ-8 in 15.5 percent and GAD-7 in 7.1 percent at last follow-up, with significantly worse social-emotional quality of life for adjuvant chemorotherapy (p=0.02) and adjuvant radiotherapy (p=0.01) versus surgery alone.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 432.2 — Hernandez-Herrera GA, Rourk KS, Peraza LR, et al. Clinical Features, Treatment, and Outcomes for Oropharyngeal Adenoid Cystic Carcinoma: A Systematic Review Otolaryngol Head Neck Surg. 2026 Sep;175(3):547-555. doi: 10.1002/ohn.70319. PMID 42371638. PMID 42371638.**
+**Row 432.2 — Hernandez-Herrera GA, Rourk KS, Peraza LR, et al. Clinical Features, Treatment, and Outcomes for Oropharyngeal Adenoid Cystic Carcinoma: A Systematic Review Otolaryngol Head Neck Surg. 2026 Sep;175(3):547-555. doi: 10.1002/ohn.70319. PMID 42371638.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/42371638/
 - Source checked on: 2026-09-27
@@ -15611,7 +15611,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: PRISMA systematic review of 44 articles covering 195 patients with oropharyngeal adenoid cystic carcinoma reporting disease progression in 86 patients with distant metastases in 36 percent of those who progressed, primarily pulmonary; registered as disease-trajectory and severity context only, as it reports no mood or quality-of-life outcomes.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 432.3 — Chae YK, Sun R, Patel SP, et al. A phase II basket trial of DART SWOG S1609: the salivary gland tumor cohort Ther Adv Med Oncol. 2026;18:17588359261451739. doi: 10.1177/17588359261451739. PMID 42499790. PMID 42499790.**
+**Row 432.3 — Chae YK, Sun R, Patel SP, et al. A phase II basket trial of DART SWOG S1609: the salivary gland tumor cohort Ther Adv Med Oncol. 2026;18:17588359261451739. doi: 10.1177/17588359261451739. PMID 42499790.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/42499790/
 - Source checked on: 2026-09-27
@@ -15635,7 +15635,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 - Is the citation metadata exact against the PubMed record?
 
-**Row 433.1 — Gunning JA, Limesand KH. Chronic Phenotypes Underlying Radiation-Induced Salivary Gland Dysfunction J Dent Res. 2024 Jul;103(8):778-786. doi: 10.1177/00220345241252396. PMID 38808518. PMID 38808518.**
+**Row 433.1 — Gunning JA, Limesand KH. Chronic Phenotypes Underlying Radiation-Induced Salivary Gland Dysfunction J Dent Res. 2024 Jul;103(8):778-786. doi: 10.1177/00220345241252396. PMID 38808518.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/38808518/
 - Source checked on: 2026-09-27
@@ -15643,7 +15643,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Mechanistic review establishing that ionizing radiation damages salivary glands because of their proximity to common head and neck tumour sites, that damage causes loss of secretory function with severe and chronic reductions in salivary flow, and that this leads to the patient-reported sensation of dry mouth termed xerostomia, with chronic mechanisms including decreased acinar differentiation markers, increased acinar cell proliferation, immune and inflammatory dysregulation, metabolic change, fibrosis, and dysregulated neuronal responses.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 433.2 — Kim MJ, Milliren A, Gerold DJ Jr. Salivary Gland Disorders: Rapid Evidence Review Am Fam Physician. 2024 Jun;109(6):550-559. PMID 38905553. PMID 38905553.**
+**Row 433.2 — Kim MJ, Milliren A, Gerold DJ Jr. Salivary Gland Disorders: Rapid Evidence Review Am Fam Physician. 2024 Jun;109(6):550-559. PMID 38905553.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/38905553/
 - Source checked on: 2026-09-27
@@ -15651,7 +15651,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Rapid evidence review of salivary gland disorders supplying the general clinical framing for salivary gland disease and its functional consequences; reused from the existing registered source entity rather than added as a new one.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 433.3 — Tang A, Li J, Scheff N, et al. Quality of Life Outcomes for Parotid Malignancies Laryngoscope. 2024 Nov;134(11):4549-4556. doi: 10.1002/lary.31554. PMID 38837232. PMID 38837232.**
+**Row 433.3 — Tang A, Li J, Scheff N, et al. Quality of Life Outcomes for Parotid Malignancies Laryngoscope. 2024 Nov;134(11):4549-4556. doi: 10.1002/lary.31554. PMID 38837232.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/38837232/
 - Source checked on: 2026-09-27
@@ -15675,7 +15675,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 - Is the citation metadata exact against the PubMed record?
 
-**Row 434.1 — Ley-Tomas JJ, Xicotencatl-Tellez AM, García-Cruz ML, et al. Nonsteroidal antiinflammatory drug-exacerbated respiratory disease: molecular mechanism, management and treatment Front Allergy. 2024;5:1462985. doi: 10.3389/falgy.2024.1462985. PMID 39665076. PMID 39665076.**
+**Row 434.1 — Ley-Tomas JJ, Xicotencatl-Tellez AM, García-Cruz ML, et al. Nonsteroidal antiinflammatory drug-exacerbated respiratory disease: molecular mechanism, management and treatment Front Allergy. 2024;5:1462985. doi: 10.3389/falgy.2024.1462985. PMID 39665076.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/39665076/
 - Source checked on: 2026-09-27
@@ -15683,7 +15683,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Review of nonsteroidal anti-inflammatory drug-exacerbated respiratory disease characterising the syndrome as the simultaneous presence of asthma, chronic rhinosinusitis with nasal polyposis, and NSAID and aspirin intolerance, and stating that despite maximal and comprehensive medical treatment the disease tends to be severe with difficult-to-treat asthma and highly aggressive and recurrent ethmoidal polyposis.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 434.2 — Walters BK, Hagan JB, Divekar RD, et al. Aspirin-Exacerbated Respiratory Disease and the Unified Airway: A Contemporary Review Otolaryngol Clin North Am. 2023 Feb;56(1):107-124. doi: 10.1016/j.otc.2022.09.008. PMID 36283868. PMID 36283868.**
+**Row 434.2 — Walters BK, Hagan JB, Divekar RD, et al. Aspirin-Exacerbated Respiratory Disease and the Unified Airway: A Contemporary Review Otolaryngol Clin North Am. 2023 Feb;56(1):107-124. doi: 10.1016/j.otc.2022.09.008. PMID 36283868.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/36283868/
 - Source checked on: 2026-09-27
@@ -15691,7 +15691,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Unified-airway review of aspirin-exacerbated respiratory disease characterising the condition by abnormal arachidonic acid metabolism leading to chronic rhinosinusitis with nasal polyposis, asthma, and respiratory symptoms after cyclooxygenase-1-inhibiting NSAID ingestion, and reporting that conventional medical management for asthma and chronic rhinosinusitis with nasal polyposis is often inadequate, with endoscopic sinus surgery plus continued medical management and optional aspirin desensitization frequently improving symptoms and objective measures.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 434.3 — Payne SC, McKenna M, Buckley J, et al. Executive Summary of the Clinical Practice Guideline on Adult Sinusitis Update Otolaryngol Head Neck Surg. 2025 Aug;173(2):299-316. doi: 10.1002/ohn.1342. PMID 40741969. PMID 40741969.**
+**Row 434.3 — Payne SC, McKenna M, Buckley J, et al. Executive Summary of the Clinical Practice Guideline on Adult Sinusitis Update Otolaryngol Head Neck Surg. 2025 Aug;173(2):299-316. doi: 10.1002/ohn.1342. PMID 40741969.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/40741969/
 - Source checked on: 2026-09-27
@@ -15715,7 +15715,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 - Is the citation metadata exact against the PubMed record?
 
-**Row 435.1 — Ley-Tomas JJ, Xicotencatl-Tellez AM, García-Cruz ML, et al. Nonsteroidal antiinflammatory drug-exacerbated respiratory disease: molecular mechanism, management and treatment Front Allergy. 2024;5:1462985. doi: 10.3389/falgy.2024.1462985. PMID 39665076. PMID 39665076.**
+**Row 435.1 — Ley-Tomas JJ, Xicotencatl-Tellez AM, García-Cruz ML, et al. Nonsteroidal antiinflammatory drug-exacerbated respiratory disease: molecular mechanism, management and treatment Front Allergy. 2024;5:1462985. doi: 10.3389/falgy.2024.1462985. PMID 39665076.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/39665076/
 - Source checked on: 2026-09-27
@@ -15723,7 +15723,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Review of nonsteroidal anti-inflammatory drug-exacerbated respiratory disease characterising the syndrome as the simultaneous presence of asthma, chronic rhinosinusitis with nasal polyposis, and NSAID and aspirin intolerance, stating that the disease tends to be severe with difficult to treat asthma and highly aggressive and recurrent ethmoidal polyposis.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 435.2 — Walters BK, Hagan JB, Divekar RD, et al. Aspirin-Exacerbated Respiratory Disease and the Unified Airway: A Contemporary Review Otolaryngol Clin North Am. 2023 Feb;56(1):107-124. doi: 10.1016/j.otc.2022.09.008. PMID 36283868. PMID 36283868.**
+**Row 435.2 — Walters BK, Hagan JB, Divekar RD, et al. Aspirin-Exacerbated Respiratory Disease and the Unified Airway: A Contemporary Review Otolaryngol Clin North Am. 2023 Feb;56(1):107-124. doi: 10.1016/j.otc.2022.09.008. PMID 36283868.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/36283868/
 - Source checked on: 2026-09-27
@@ -15731,7 +15731,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Unified-airway review of aspirin-exacerbated respiratory disease describing abnormal arachidonic acid metabolism, clinical diagnosis with possible aspirin challenge, the utility of inflammatory biomarkers, and the inadequacy of conventional medical management for both the asthma and the chronic rhinosinusitis with nasal polyposis components.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 435.3 — Yu AJ, Phung C, Kuppusamy K, et al. The Completeness of Surgery Index Predicts Success in CRSwNP With Asthma by SNOT-22 and Asthma Control Test Int Forum Allergy Rhinol. 2026 Feb;16(2):132-137. doi: 10.1002/alr.70043. PMID 41045292. PMID 41045292.**
+**Row 435.3 — Yu AJ, Phung C, Kuppusamy K, et al. The Completeness of Surgery Index Predicts Success in CRSwNP With Asthma by SNOT-22 and Asthma Control Test Int Forum Allergy Rhinol. 2026 Feb;16(2):132-137. doi: 10.1002/alr.70043. PMID 41045292.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/41045292/
 - Source checked on: 2026-09-27
@@ -15755,7 +15755,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 - Is the citation metadata exact against the PubMed record?
 
-**Row 436.1 — Rongioletti F, Kaiser F, Cinotti E, et al. Scleredema. A multicentre study of characteristics, comorbidities, course and therapy in 44 patients J Eur Acad Dermatol Venereol. 2015 Dec;29(12):2399-404. doi: 10.1111/jdv.13272. PMID 26304054. PMID 26304054.**
+**Row 436.1 — Rongioletti F, Kaiser F, Cinotti E, et al. Scleredema. A multicentre study of characteristics, comorbidities, course and therapy in 44 patients J Eur Acad Dermatol Venereol. 2015 Dec;29(12):2399-404. doi: 10.1111/jdv.13272. PMID 26304054.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/26304054/
 - Source checked on: 2026-09-27
@@ -15763,7 +15763,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Multicentre retrospective study of 44 patients with scleredema reporting endocrine and metabolic disease as the most common association with 30 patients suffering from diabetes, mostly type 2, monoclonal gammopathies confirmed in 5 cases, and expressly that a preceding respiratory tract infection was NOT a feature; concludes scleredema is associated with diabetes and metabolic syndrome and recommends strict glycaemic control plus physical therapy.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 436.2 — Csonka V, Bódis B, Kovács D, et al. Screening for the presence of scleroedema adultorum of Buschke in patients with diabetes mellitus: newly diagnosed patients had a high prevalence of dyslipidaemia Lipids Health Dis. 2021 May 5;20(1):47. doi: 10.1186/s12944-021-01473-1. PMID 33952255. PMID 33952255.**
+**Row 436.2 — Csonka V, Bódis B, Kovács D, et al. Screening for the presence of scleroedema adultorum of Buschke in patients with diabetes mellitus: newly diagnosed patients had a high prevalence of dyslipidaemia Lipids Health Dis. 2021 May 5;20(1):47. doi: 10.1186/s12944-021-01473-1. PMID 33952255.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/33952255/
 - Source checked on: 2026-09-27
@@ -15771,7 +15771,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Prospective screening of 113 consecutive patients with diabetes identifying 11 new scleroedema adultorum of Buschke cases, a 9.7 percent prevalence, all with type 2 diabetes, characterised with a focus on lipid metabolism abnormalities and vascular complications; the only located design sampling from the diabetes population rather than the scleredema population.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 436.3 — García-Arpal M, Bujalance-Cabrera C, Banegas-Illescas ME, et al. Scleredema diabeticorum in a patient: un uncommon etiology of restrictive lung pattern Escleredema diabeticorum en un paciente: una etiología infrecuente de patrón restrictivo pulmonar Dermatol Online J. 2021 Mar 15;27(3). pii: 13030/qt71g4k3qf. PMID 33865279. PMID 33865279.**
+**Row 436.3 — García-Arpal M, Bujalance-Cabrera C, Banegas-Illescas ME, et al. Scleredema diabeticorum in a patient: un uncommon etiology of restrictive lung pattern Escleredema diabeticorum en un paciente: una etiología infrecuente de patrón restrictivo pulmonar Dermatol Online J. 2021 Mar 15;27(3). pii: 13030/qt71g4k3qf. PMID 33865279.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/33865279/
 - Source checked on: 2026-09-27
@@ -15795,7 +15795,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 - Is the citation metadata exact against the PubMed record?
 
-**Row 437.1 — Rongioletti F, Kaiser F, Cinotti E, et al. Scleredema. A multicentre study of characteristics, comorbidities, course and therapy in 44 patients J Eur Acad Dermatol Venereol. 2015 Dec;29(12):2399-404. doi: 10.1111/jdv.13272. PMID 26304054. PMID 26304054.**
+**Row 437.1 — Rongioletti F, Kaiser F, Cinotti E, et al. Scleredema. A multicentre study of characteristics, comorbidities, course and therapy in 44 patients J Eur Acad Dermatol Venereol. 2015 Dec;29(12):2399-404. doi: 10.1111/jdv.13272. PMID 26304054.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/26304054/
 - Source checked on: 2026-09-27
@@ -15803,7 +15803,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Multicentre retrospective study of 44 patients with scleredema reporting monoclonal gammopathies confirmed in 5 cases, that systemic corticosteroids and immunosuppressive drugs were reserved for severe patients in whom phototherapy had failed or for patients with multiple myeloma, that 2 patients died of cardiovascular complications due to myeloma and severe diabetes, and that of 41 followed patients 39 were alive, 30 with and 9 without skin disease.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 437.2 — Hong KR, Hong JY, Chung EH, et al. Monoclonal Gammopathy-Associated Scleredema Adultorum of Buschke in a Patient with Diabetes Mellitus Successfully Treated with Intravenous Immunoglobulin and Narrow-Band Ultraviolet B Phototherapy: A Case Report Ann Dermatol. 2021 Dec;33(6):586-588. doi: 10.5021/ad.2021.33.6.586. PMID 34858014. PMID 34858014.**
+**Row 437.2 — Hong KR, Hong JY, Chung EH, et al. Monoclonal Gammopathy-Associated Scleredema Adultorum of Buschke in a Patient with Diabetes Mellitus Successfully Treated with Intravenous Immunoglobulin and Narrow-Band Ultraviolet B Phototherapy: A Case Report Ann Dermatol. 2021 Dec;33(6):586-588. doi: 10.5021/ad.2021.33.6.586. PMID 34858014.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/34858014/
 - Source checked on: 2026-09-27
@@ -15811,7 +15811,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Case report of monoclonal gammopathy-associated scleredema adultorum of Buschke in a patient with diabetes mellitus, successfully treated with intravenous immunoglobulin and narrow-band ultraviolet B phototherapy, documenting the dyscrasia-skin pairing as a distinct treatable entity.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 437.3 — Nickell AL, Corn M, Mannuru D, et al. Scleredema in the Setting of Monoclonal Gammopathy of Unknown Significance With Progression to Multiple Myeloma: A Case Report Cureus. 2023 Sep;15(9):e44968. doi: 10.7759/cureus.44968. PMID 37701163. PMID 37701163.**
+**Row 437.3 — Nickell AL, Corn M, Mannuru D, et al. Scleredema in the Setting of Monoclonal Gammopathy of Unknown Significance With Progression to Multiple Myeloma: A Case Report Cureus. 2023 Sep;15(9):e44968. doi: 10.7759/cureus.44968. PMID 37701163.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/37701163/
 - Source checked on: 2026-09-27
@@ -15835,7 +15835,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 - Is the citation metadata exact against the PubMed record?
 
-**Row 438.1 — García-Arpal M, Bujalance-Cabrera C, Banegas-Illescas ME, et al. Scleredema diabeticorum in a patient: un uncommon etiology of restrictive lung pattern Escleredema diabeticorum en un paciente: una etiología infrecuente de patrón restrictivo pulmonar Dermatol Online J. 2021 Mar 15;27(3). pii: 13030/qt71g4k3qf. PMID 33865279. PMID 33865279.**
+**Row 438.1 — García-Arpal M, Bujalance-Cabrera C, Banegas-Illescas ME, et al. Scleredema diabeticorum in a patient: un uncommon etiology of restrictive lung pattern Escleredema diabeticorum en un paciente: una etiología infrecuente de patrón restrictivo pulmonar Dermatol Online J. 2021 Mar 15;27(3). pii: 13030/qt71g4k3qf. PMID 33865279.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/33865279/
 - Source checked on: 2026-09-27
@@ -15843,7 +15843,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Case report of scleredema diabeticorum in a patient with poorly controlled diabetes presenting extensive trunk involvement in a cuirasse pattern with associated restrictive lung disease, cutaneous ultrasonography showing marked dermal thickening and echogenic spots, and the explicit statement that cutaneous hardness secondary to scleredema may cause limited mobility so that respiratory manifestations may be associated and assessed mainly in extensive disease involving trunk and shoulders.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 438.2 — Rongioletti F, Kaiser F, Cinotti E, et al. Scleredema. A multicentre study of characteristics, comorbidities, course and therapy in 44 patients J Eur Acad Dermatol Venereol. 2015 Dec;29(12):2399-404. doi: 10.1111/jdv.13272. PMID 26304054. PMID 26304054.**
+**Row 438.2 — Rongioletti F, Kaiser F, Cinotti E, et al. Scleredema. A multicentre study of characteristics, comorbidities, course and therapy in 44 patients J Eur Acad Dermatol Venereol. 2015 Dec;29(12):2399-404. doi: 10.1111/jdv.13272. PMID 26304054.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/26304054/
 - Source checked on: 2026-09-27
@@ -15851,7 +15851,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Multicentre retrospective study of 44 patients with scleredema describing the disease as chronic and debilitating, reporting that treatments with different combination or sequential modalities were used with variable results, that phototherapy was associated with higher although partial response, and that 2 patients died of cardiovascular complications due to myeloma and severe diabetes; registered for disease-severity and treatment-resistance context only, as it reports no pulmonary outcomes.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 438.3 — Ibrahim RA, Abdalla NEH, Shabaan EAH, et al. An Unusual Presentation of a Rare Scleroderma Mimic: What is Behind the Scenes? Curr Rheumatol Rev. 2019;15(2):172-175. doi: 10.2174/1573397114666180808091621. PMID 30088450. PMID 30088450.**
+**Row 438.3 — Ibrahim RA, Abdalla NEH, Shabaan EAH, et al. An Unusual Presentation of a Rare Scleroderma Mimic: What is Behind the Scenes? Curr Rheumatol Rev. 2019;15(2):172-175. doi: 10.2174/1573397114666180808091621. PMID 30088450.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/30088450/
 - Source checked on: 2026-09-27
@@ -15875,7 +15875,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 - Is the citation metadata exact against the PubMed record?
 
-**Row 439.1 — Sota J, Hinojosa-Azaola A, de-la-Torre A, et al. Determinants of Non-infectious Scleritis Complications and Their Impact on Visual Outcome: Results from the International AIDA Network Scleritis Registry Ophthalmol Ther. 2026 Jun;15(6):2081-2093. doi: 10.1007/s40123-026-01390-5. PMID 42105127. PMID 42105127.**
+**Row 439.1 — Sota J, Hinojosa-Azaola A, de-la-Torre A, et al. Determinants of Non-infectious Scleritis Complications and Their Impact on Visual Outcome: Results from the International AIDA Network Scleritis Registry Ophthalmol Ther. 2026 Jun;15(6):2081-2093. doi: 10.1007/s40123-026-01390-5. PMID 42105127.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/42105127/
 - Source checked on: 2026-09-27
@@ -15883,7 +15883,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: International AIDA Network scleritis registry of 154 patients and 218 eyes of non-infectious scleritis recording 102 ocular complications in 58 patients across 87 eyes, naming cataract, scleral and corneal thinning, and glaucoma or increased ocular pressure as most frequent, reporting complications significantly more frequent with granulomatosis with polyangiitis (p<0.0001) and with concomitant uveitis (p=0.023), and explicitly treating uveitis and peripheral ulcerative keratitis as extensions of the inflammatory process rather than true structural complications.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 439.2 — Braithwaite T, Adderley NJ, Subramanian A, et al. Epidemiology of Scleritis in the United Kingdom From 1997 to 2018: Population-Based Analysis of 11 Million Patients and Association Between Scleritis and Infectious and Immune-Mediated Inflammatory Disease Arthritis Rheumatol. 2021 Jul;73(7):1267-1276. doi: 10.1002/art.41709. PMID 33728815. PMID 33728815.**
+**Row 439.2 — Braithwaite T, Adderley NJ, Subramanian A, et al. Epidemiology of Scleritis in the United Kingdom From 1997 to 2018: Population-Based Analysis of 11 Million Patients and Association Between Scleritis and Infectious and Immune-Mediated Inflammatory Disease Arthritis Rheumatol. 2021 Jul;73(7):1267-1276. doi: 10.1002/art.41709. PMID 33728815.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/33728815/
 - Source checked on: 2026-09-27
@@ -15891,7 +15891,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Population-based United Kingdom analysis of 10,939,823 patients containing 2,946 incident scleritis cases from 1997 to 2018, with a matched case-control and cohort arm of 3,005 incident scleritis cases and 12,020 age-, sex-, region- and deprivation-matched controls, estimating 22-year trends in scleritis incidence and prevalence and the associations of scleritis with infectious and immune-mediated inflammatory disease, adjusted for age, sex, Townsend deprivation index, race or ethnicity, smoking status, nation and body mass index.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 439.3 — Advani MS, Putri BM, Susiyanti M. Clinical characteristics, management, and visual outcomes of presumed infectious and non-infectious anterior scleritis in a tuberculosis-endemic Indonesian Tertiary Center Int Ophthalmol. 2026 Jun 30;46(1). pii: 274. doi: 10.1007/s10792-026-04129-0. PMID 42377600. PMID 42377600.**
+**Row 439.3 — Advani MS, Putri BM, Susiyanti M. Clinical characteristics, management, and visual outcomes of presumed infectious and non-infectious anterior scleritis in a tuberculosis-endemic Indonesian Tertiary Center Int Ophthalmol. 2026 Jun 30;46(1). pii: 274. doi: 10.1007/s10792-026-04129-0. PMID 42377600.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/42377600/
 - Source checked on: 2026-09-27
@@ -15915,7 +15915,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 - Is the citation metadata exact against the PubMed record?
 
-**Row 440.1 — Braithwaite T, Adderley NJ, Subramanian A, et al. Epidemiology of Scleritis in the United Kingdom From 1997 to 2018: Population-Based Analysis of 11 Million Patients and Association Between Scleritis and Infectious and Immune-Mediated Inflammatory Disease Arthritis Rheumatol. 2021 Jul;73(7):1267-1276. doi: 10.1002/art.41709. PMID 33728815. PMID 33728815.**
+**Row 440.1 — Braithwaite T, Adderley NJ, Subramanian A, et al. Epidemiology of Scleritis in the United Kingdom From 1997 to 2018: Population-Based Analysis of 11 Million Patients and Association Between Scleritis and Infectious and Immune-Mediated Inflammatory Disease Arthritis Rheumatol. 2021 Jul;73(7):1267-1276. doi: 10.1002/art.41709. PMID 33728815.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/33728815/
 - Source checked on: 2026-09-27
@@ -15923,7 +15923,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Population-based United Kingdom analysis of 10,939,823 patients containing 2,946 incident scleritis cases from 1997 to 2018 with a matched case-control and cohort arm of 3,005 incident cases and 12,020 controls, estimating scleritis incidence and prevalence and the associations of scleritis with infectious and immune-mediated inflammatory disease with multivariable adjustment.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 440.2 — Berkenstock MK, Carey AR. Health system wide "big data" analysis of rheumatologic conditions and scleritis BMC Ophthalmol. 2021 Jan 6;21(1):14. doi: 10.1186/s12886-020-01769-3. PMID 33407267. PMID 33407267.**
+**Row 440.2 — Berkenstock MK, Carey AR. Health system wide "big data" analysis of rheumatologic conditions and scleritis BMC Ophthalmol. 2021 Jan 6;21(1):14. doi: 10.1186/s12886-020-01769-3. PMID 33407267.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/33407267/
 - Source checked on: 2026-09-27
@@ -15931,7 +15931,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Health-system-wide electronic medical record analysis of all charts carrying systemic autoimmune and scleritis diagnoses, stating explicitly that prior series assessed the relationship between systemic autoimmune disorders and scleritis only in patients referred for rheumatologic or ocular inflammation, introducing referral bias, and determining the prevalence of both and which disorders carried the highest relative risk of developing scleritis.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 440.3 — Forestier MG, Calderón RM, Oliver A. An Overview of Rheumatoid Arthritis-Associated Dry Eye Disease, Scleritis, and Peripheral Ulcerative Keratitis J Clin Med. 2026 Apr 23;15(9). doi: 10.3390/jcm15093207. PMID 42122940. PMID 42122940.**
+**Row 440.3 — Forestier MG, Calderón RM, Oliver A. An Overview of Rheumatoid Arthritis-Associated Dry Eye Disease, Scleritis, and Peripheral Ulcerative Keratitis J Clin Med. 2026 Apr 23;15(9). doi: 10.3390/jcm15093207. PMID 42122940.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/42122940/
 - Source checked on: 2026-09-27
@@ -15955,7 +15955,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 - Is the citation metadata exact against the PubMed record?
 
-**Row 441.1 — Braithwaite T, Adderley NJ, Subramanian A, et al. Epidemiology of Scleritis in the United Kingdom From 1997 to 2018: Population-Based Analysis of 11 Million Patients and Association Between Scleritis and Infectious and Immune-Mediated Inflammatory Disease Arthritis Rheumatol. 2021 Jul;73(7):1267-1276. doi: 10.1002/art.41709. PMID 33728815. PMID 33728815.**
+**Row 441.1 — Braithwaite T, Adderley NJ, Subramanian A, et al. Epidemiology of Scleritis in the United Kingdom From 1997 to 2018: Population-Based Analysis of 11 Million Patients and Association Between Scleritis and Infectious and Immune-Mediated Inflammatory Disease Arthritis Rheumatol. 2021 Jul;73(7):1267-1276. doi: 10.1002/art.41709. PMID 33728815.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/33728815/
 - Source checked on: 2026-09-27
@@ -15963,7 +15963,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Population-based United Kingdom analysis of 10,939,823 patients containing 2,946 incident scleritis cases with a matched case-control and cohort arm of 3,005 incident cases and 12,020 controls, estimating the associations of scleritis with infectious and immune-mediated inflammatory disease using multivariable Poisson, logistic, and Cox models.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 441.2 — Berkenstock MK, Carey AR. Health system wide "big data" analysis of rheumatologic conditions and scleritis BMC Ophthalmol. 2021 Jan 6;21(1):14. doi: 10.1186/s12886-020-01769-3. PMID 33407267. PMID 33407267.**
+**Row 441.2 — Berkenstock MK, Carey AR. Health system wide "big data" analysis of rheumatologic conditions and scleritis BMC Ophthalmol. 2021 Jan 6;21(1):14. doi: 10.1186/s12886-020-01769-3. PMID 33407267.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/33407267/
 - Source checked on: 2026-09-27
@@ -15971,7 +15971,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Health-system-wide electronic medical record analysis of all charts carrying systemic autoimmune and scleritis diagnoses, explicitly correcting the referral bias of prior series that assessed systemic autoimmune disorders in scleritis only in referred rheumatology or ocular inflammation patients, and determining which disorders carried the highest relative risk of developing scleritis.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 441.3 — Hsu CS, Hsu CW, Lu MC, et al. Risks of ophthalmic disorders in patients with systemic lupus erythematosus - a secondary cohort analysis of population-based claims data BMC Ophthalmol. 2020 Mar 11;20(1):96. doi: 10.1186/s12886-020-01360-w. PMID 32160869. PMID 32160869.**
+**Row 441.3 — Hsu CS, Hsu CW, Lu MC, et al. Risks of ophthalmic disorders in patients with systemic lupus erythematosus - a secondary cohort analysis of population-based claims data BMC Ophthalmol. 2020 Mar 11;20(1):96. doi: 10.1186/s12886-020-01360-w. PMID 32160869.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/32160869/
 - Source checked on: 2026-09-27
@@ -15995,7 +15995,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 - Is the citation metadata exact against the PubMed record?
 
-**Row 442.1 — Rashid AS, Rashid D, Yang G, et al. Homonymous visual field defect and retinal thinning after occipital stroke Brain Behav. 2021 Oct;11(10):e2345. doi: 10.1002/brb3.2345. PMID 34487632. PMID 34487632.**
+**Row 442.1 — Rashid AS, Rashid D, Yang G, et al. Homonymous visual field defect and retinal thinning after occipital stroke Brain Behav. 2021 Oct;11(10):e2345. doi: 10.1002/brb3.2345. PMID 34487632.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/34487632/
 - Source checked on: 2026-09-27
@@ -16003,7 +16003,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Retrospective cohort of 36 patients with acute occipital stroke reporting that stroke is the most common cause of homonymous visual field defects, that 26 patients (72 percent) had a visual field defect at onset by confrontation or perimetry, and that at follow-up beyond one year 13 patients (36 percent) had a remaining defect comprising 5 homonymous hemianopias, 5 homonymous quadrantanopias, and 3 homonymous scotomas, with GCIPL and RNFL thickness significantly reduced in each eye in patients with a defect versus those without (p<0.01).
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 442.2 — Papageorgiou E, Anthis N, Stathi T, et al. Case Series: Bilateral Homonymous Visual Field Defects Due to Bilateral Ischemic Strokes Optom Vis Sci. 2018 Nov;95(11):1077-1082. doi: 10.1097/OPX.0000000000001294. PMID 30339636. PMID 30339636.**
+**Row 442.2 — Papageorgiou E, Anthis N, Stathi T, et al. Case Series: Bilateral Homonymous Visual Field Defects Due to Bilateral Ischemic Strokes Optom Vis Sci. 2018 Nov;95(11):1077-1082. doi: 10.1097/OPX.0000000000001294. PMID 30339636.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/30339636/
 - Source checked on: 2026-09-27
@@ -16011,7 +16011,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Case series of three patients with bilateral homonymous visual field defects from bilateral ischaemic strokes, reporting perimetry and brain MRI findings including a right horizontal wedge-shaped homonymous scotoma in a patient with a chronic left occipital stroke and acute right thalamic ischemia, and noting that two of the three patients suffered sequential bilateral strokes and were unaware of the initial scotoma.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 442.3 — Papageorgiou E, Ticini LF, Schiefer U. Peripheral homonymous hemianopia: correlation between lesion location and visual field defects by means of cytoarchitectonic probabilistic maps J Neuroophthalmol. 2012 Mar;32(1):5-12. doi: 10.1097/WNO.0b013e31821fc0e9. PMID 21623227. PMID 21623227.**
+**Row 442.3 — Papageorgiou E, Ticini LF, Schiefer U. Peripheral homonymous hemianopia: correlation between lesion location and visual field defects by means of cytoarchitectonic probabilistic maps J Neuroophthalmol. 2012 Mar;32(1):5-12. doi: 10.1097/WNO.0b013e31821fc0e9. PMID 21623227.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/21623227/
 - Source checked on: 2026-09-27
@@ -16035,7 +16035,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 - Is the citation metadata exact against the PubMed record?
 
-**Row 443.1 — Viana M, Tronvik EA, Do TP, et al. Clinical features of visual migraine aura: a systematic review J Headache Pain. 2019 May 30;20(1):64. doi: 10.1186/s10194-019-1008-x. PMID 31146673. PMID 31146673.**
+**Row 443.1 — Viana M, Tronvik EA, Do TP, et al. Clinical features of visual migraine aura: a systematic review J Headache Pain. 2019 May 30;20(1):64. doi: 10.1186/s10194-019-1008-x. PMID 31146673.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/31146673/
 - Source checked on: 2026-09-27
@@ -16043,7 +16043,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Systematic review of 11 retrospective and 3 prospective studies systematically describing visual aura symptoms, reporting that the number of distinct visual phenomena per study ranged from 2 to 23 and that the most common were flashes of bright light, foggy vision, zigzag lines, scotoma, small bright dots, and heat-wave or water distortion, and stating that migraine aura is often clinically difficult to distinguish from transient ischaemic attacks and epilepsy.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 443.2 — Singla M, Sulena 2, Kale R, et al. Visual Aura in Migraine: An Analysis of 165 Patients in a Tertiary Care Hospital in North India J Neurosci Rural Pract. 2021 Apr;12(2):273-280. doi: 10.1055/s-0040-1721624. PMID 33927518. PMID 33927518.**
+**Row 443.2 — Singla M, Sulena 2, Kale R, et al. Visual Aura in Migraine: An Analysis of 165 Patients in a Tertiary Care Hospital in North India J Neurosci Rural Pract. 2021 Apr;12(2):273-280. doi: 10.1055/s-0040-1721624. PMID 33927518.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/33927518/
 - Source checked on: 2026-09-27
@@ -16051,7 +16051,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Observational questionnaire-based cross-sectional study of 165 patients with migraine at a tertiary care hospital, classifying migraine by ICHD-III and profiling visual aura type, duration, laterality, and its relation to migraine.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 443.3 — Nordin BA. Differentiating Visual Symptoms in Retinal Migraine and Migraine With Aura: A Systematic Review of Shared Features, Distinctions, and Clinical Implications Cureus. 2025 Aug;17(8):e91028. doi: 10.7759/cureus.91028. PMID 40873917. PMID 40873917.**
+**Row 443.3 — Nordin BA. Differentiating Visual Symptoms in Retinal Migraine and Migraine With Aura: A Systematic Review of Shared Features, Distinctions, and Clinical Implications Cureus. 2025 Aug;17(8):e91028. doi: 10.7759/cureus.91028. PMID 40873917.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/40873917/
 - Source checked on: 2026-09-27
@@ -16075,7 +16075,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 - Is the citation metadata exact against the PubMed record?
 
-**Row 444.1 — Angus-Leppan H, Clay TA. Adult occipital lobe epilepsy: 12-years on J Neurol. 2021 Oct;268(10):3926-3934. doi: 10.1007/s00415-021-10557-y. PMID 33900448. PMID 33900448.**
+**Row 444.1 — Angus-Leppan H, Clay TA. Adult occipital lobe epilepsy: 12-years on J Neurol. 2021 Oct;268(10):3926-3934. doi: 10.1007/s00415-021-10557-y. PMID 33900448.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/33900448/
 - Source checked on: 2026-09-27
@@ -16083,7 +16083,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Longitudinal study of 24 adult occipital lobe epilepsy patients identified over 12 months from 1548 patients in a neurologist's service and followed over 12 years, reporting that occipital lobe epilepsies comprise 5-10 percent of focal epilepsies, that 92 percent had simple visual hallucinations misdiagnosed in 40 percent of cases, that 75 percent had co-morbid interictal migraine, that 38 percent had visual field defects, that only 33 percent achieved long-term remission, and that only 2 of 10 patients with a structural aetiology were seizure-free.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 444.2 — Machner B, Sprenger A, Kömpf D, et al. Visual search disorders beyond pure sensory failure in patients with acute homonymous visual field defects Neuropsychologia. 2009 Nov;47(13):2704-11. doi: 10.1016/j.neuropsychologia.2009.05.016. PMID 19500605. PMID 19500605.**
+**Row 444.2 — Machner B, Sprenger A, Kömpf D, et al. Visual search disorders beyond pure sensory failure in patients with acute homonymous visual field defects Neuropsychologia. 2009 Nov;47(13):2704-11. doi: 10.1016/j.neuropsychologia.2009.05.016. PMID 19500605.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/19500605/
 - Source checked on: 2026-09-27
@@ -16091,7 +16091,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Study of visual search disorders beyond pure sensory failure in patients with acute homonymous visual field defects, supplying the perceptual comparator for a documented field defect and supporting the requirement for formal visual field testing rather than subjective report.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 444.3 — Papageorgiou E, Ticini LF, Schiefer U. Peripheral homonymous hemianopia: correlation between lesion location and visual field defects by means of cytoarchitectonic probabilistic maps J Neuroophthalmol. 2012 Mar;32(1):5-12. doi: 10.1097/WNO.0b013e31821fc0e9. PMID 21623227. PMID 21623227.**
+**Row 444.3 — Papageorgiou E, Ticini LF, Schiefer U. Peripheral homonymous hemianopia: correlation between lesion location and visual field defects by means of cytoarchitectonic probabilistic maps J Neuroophthalmol. 2012 Mar;32(1):5-12. doi: 10.1097/WNO.0b013e31821fc0e9. PMID 21623227.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/21623227/
 - Source checked on: 2026-09-27
@@ -16115,7 +16115,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 - Is the citation metadata exact against the PubMed record?
 
-**Row 445.1 — Zhang X, Plant GT. Visual impairment in multiple sclerosis involving post-geniculate gray and white matter: above and beyond Front Neurol. 2026;17:1875359. doi: 10.3389/fneur.2026.1875359. PMID 42729962. PMID 42729962.**
+**Row 445.1 — Zhang X, Plant GT. Visual impairment in multiple sclerosis involving post-geniculate gray and white matter: above and beyond Front Neurol. 2026;17:1875359. doi: 10.3389/fneur.2026.1875359. PMID 42729962.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/42729962/
 - Source checked on: 2026-09-27
@@ -16123,7 +16123,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Review of visual impairment in multiple sclerosis involving post-geniculate gray and white matter, stating that visual impairment is one of the most common and disabling manifestations of the disease, that post-geniculate involvement including the optic radiations and visual cortex remains comparatively under-studied and under-recognised in clinical practice, and that the resulting abnormalities include homonymous visual field defects, visuoperceptual dysfunction, visual cognitive impairment, and higher-order ocular motor abnormalities.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 445.2 — Daw W, Bakheet M, Elhag Elamin M, et al. Ocular Manifestations of Multiple Sclerosis: A Retrospective, Population-Based Single-Center Study Cureus. 2026 Feb;18(2):e102901. doi: 10.7759/cureus.102901. PMID 41798516. PMID 41798516.**
+**Row 445.2 — Daw W, Bakheet M, Elhag Elamin M, et al. Ocular Manifestations of Multiple Sclerosis: A Retrospective, Population-Based Single-Center Study Cureus. 2026 Feb;18(2):e102901. doi: 10.7759/cureus.102901. PMID 41798516.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/41798516/
 - Source checked on: 2026-09-27
@@ -16131,7 +16131,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Retrospective population-based single-centre study of 192 patients with multiple sclerosis evaluated in an ophthalmology clinic using structured questionnaires completed at routine visits, reporting ocular symptoms in 120 patients, determining the proportion with afferent and efferent visual disturbances, assessing the contribution of visual evoked potentials to detecting visual pathway abnormality, and identifying ocular findings that represented the initial clinical manifestation of multiple sclerosis.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 445.3 — Guier CP, Kaur K, Stokkermans TJ. Optic Neuritis 2025 Jan. PMID 32496733. PMID 32496733.**
+**Row 445.3 — Guier CP, Kaur K, Stokkermans TJ. Optic Neuritis 2025 Jan. PMID 32496733.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/32496733/
 - Source checked on: 2026-09-27
@@ -16155,7 +16155,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 - Is the citation metadata exact against the PubMed record?
 
-**Row 446.1 — Kluglein KA, South SC, Toska E, et al. Exploring Systemic Comorbidities and Lifestyle Factors Associated With Seborrheic Dermatitis: A Scoping Review Cureus. 2024 Nov;16(11):e73555. doi: 10.7759/cureus.73555. PMID 39669846. PMID 39669846.**
+**Row 446.1 — Kluglein KA, South SC, Toska E, et al. Exploring Systemic Comorbidities and Lifestyle Factors Associated With Seborrheic Dermatitis: A Scoping Review Cureus. 2024 Nov;16(11):e73555. doi: 10.7759/cureus.73555. PMID 39669846.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/39669846/
 - Source checked on: 2026-09-27
@@ -16163,7 +16163,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: PRISMA-guided scoping review of systemic comorbidities and lifestyle factors associated with seborrhoeic dermatitis, reporting that nearly half of Parkinson's disease patients in one study also had seborrhoeic dermatitis, that seborrhoeic dermatitis development occurred at a much higher rate as Parkinson's symptom severity increased, that seborrhoeic dermatitis burden was positively correlated to Parkinson's severity, and explicitly recording that in one cross-sectional study of patients with seborrhoeic dermatitis the most common systemic comorbidities were hypertension and diabetes and that this finding was NOT statistically significant, and that obesity was common but ALSO not significant.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 446.2 — Wilkowski CM, Alhajj M, Kilbane CW, et al. The association of seborrheic dermatitis and Parkinson's disease: A cross-sectional study J Am Acad Dermatol. 2025 Jan;92(1):157-159. doi: 10.1016/j.jaad.2024.08.074. PMID 39313034. PMID 39313034.**
+**Row 446.2 — Wilkowski CM, Alhajj M, Kilbane CW, et al. The association of seborrheic dermatitis and Parkinson's disease: A cross-sectional study J Am Acad Dermatol. 2025 Jan;92(1):157-159. doi: 10.1016/j.jaad.2024.08.074. PMID 39313034.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/39313034/
 - Source checked on: 2026-09-27
@@ -16171,7 +16171,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Cross-sectional study examining the association of seborrhoeic dermatitis and Parkinson's disease, registered as the dedicated paired-design source for this association.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 446.3 — Kefala V, Oikonomou E, Sfyri E, et al. Genetic, Lipid, Fungal Microbiome and Neuroinflammatory Links Between Seborrheic Dermatitis and Parkinson's Disease: A Narrative Review Genes (Basel). 2026 Jul 30;17(8). doi: 10.3390/genes17080894. PMID 42650087. PMID 42650087.**
+**Row 446.3 — Kefala V, Oikonomou E, Sfyri E, et al. Genetic, Lipid, Fungal Microbiome and Neuroinflammatory Links Between Seborrheic Dermatitis and Parkinson's Disease: A Narrative Review Genes (Basel). 2026 Jul 30;17(8). doi: 10.3390/genes17080894. PMID 42650087.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/42650087/
 - Source checked on: 2026-09-27
@@ -16195,7 +16195,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 - Is the citation metadata exact against the PubMed record?
 
-**Row 447.1 — Anshory M, Effendi RMRA, Rosandy MG, et al. Dermatological manifestation of HIV infection: systematic review and meta-analysis BMC Infect Dis. 2025 Oct 29;25(1):1446. doi: 10.1186/s12879-025-11827-0. PMID 41162862. PMID 41162862.**
+**Row 447.1 — Anshory M, Effendi RMRA, Rosandy MG, et al. Dermatological manifestation of HIV infection: systematic review and meta-analysis BMC Infect Dis. 2025 Oct 29;25(1):1446. doi: 10.1186/s12879-025-11827-0. PMID 41162862.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/41162862/
 - Source checked on: 2026-09-27
@@ -16203,7 +16203,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Systematic review and meta-analysis of 145 articles involving 41,285 people with HIV identifying approximately 28,448 patients with dermatological disease, and among 60,064 events finding the most prevalent conditions to be oral candidiasis (8.88 percent), dermatophytosis, seborrheic dermatitis, warts, and herpes zoster, with an overall dermatological disease prevalence of 76 percent (95 percent CI 72 to 81) and significant heterogeneity of I squared 97 percent, with stated limitations of small sample sizes, insufficient study setting descriptions, and diagnostic challenges.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 447.2 — Mahlangeni GM, Tod BM, Jordaan HF, et al. Clinicopathological Features of Seborrheic-Like Dermatitis in HIV-Infected Adults: A Single Institutional Descriptive Cross-Sectional Study Am J Dermatopathol. 2021 Jan 1;43(1):27-34. doi: 10.1097/DAD.0000000000001670. PMID 32379092. PMID 32379092.**
+**Row 447.2 — Mahlangeni GM, Tod BM, Jordaan HF, et al. Clinicopathological Features of Seborrheic-Like Dermatitis in HIV-Infected Adults: A Single Institutional Descriptive Cross-Sectional Study Am J Dermatopathol. 2021 Jan 1;43(1):27-34. doi: 10.1097/DAD.0000000000001670. PMID 32379092.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/32379092/
 - Source checked on: 2026-09-27
@@ -16211,7 +16211,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Prospective clinicopathological study of 30 HIV-seropositive adults presenting with seborrhoeic-like dermatitis, finding 50 percent with severe or very severe disease and 6 patients (20.0 percent) presenting with erythroderma, confirming that confluent parakeratosis, necrotic keratinocytes, plasma cells, neutrophils with leukocytoclasia, and leukoexocytosis are histopathological clues to seborrhoeic-like dermatitis in HIV-seropositive patients, and reporting NO significant correlation between severity and CD4 count, viral load, or antiretroviral therapy.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 447.3 — Kluglein KA, South SC, Toska E, et al. Exploring Systemic Comorbidities and Lifestyle Factors Associated With Seborrheic Dermatitis: A Scoping Review Cureus. 2024 Nov;16(11):e73555. doi: 10.7759/cureus.73555. PMID 39669846. PMID 39669846.**
+**Row 447.3 — Kluglein KA, South SC, Toska E, et al. Exploring Systemic Comorbidities and Lifestyle Factors Associated With Seborrheic Dermatitis: A Scoping Review Cureus. 2024 Nov;16(11):e73555. doi: 10.7759/cureus.73555. PMID 39669846.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/39669846/
 - Source checked on: 2026-09-27
@@ -16235,7 +16235,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 - Is the citation metadata exact against the PubMed record?
 
-**Row 448.1 — Borja Montes OF, Escobar Gil T, Cardona Solano C, et al. Leser-Trélat Syndrome, an Underdiagnosed Cutaneous Paraneoplastic Syndrome That Could Aid in Early Detection of Colon Cancer: A Case Report Cureus. 2023 Sep;15(9):e44907. doi: 10.7759/cureus.44907. PMID 37814771. PMID 37814771.**
+**Row 448.1 — Borja Montes OF, Escobar Gil T, Cardona Solano C, et al. Leser-Trélat Syndrome, an Underdiagnosed Cutaneous Paraneoplastic Syndrome That Could Aid in Early Detection of Colon Cancer: A Case Report Cureus. 2023 Sep;15(9):e44907. doi: 10.7759/cureus.44907. PMID 37814771.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/37814771/
 - Source checked on: 2026-09-27
@@ -16243,7 +16243,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Case report and review describing the Leser-Trelat syndrome as an underdiagnosed cutaneous paraneoplastic syndrome that could aid in early detection of colon cancer, setting out the differential diagnoses, the completed workup, and current treatment options for a patient presenting with this pattern.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 448.2 — Okur A, Şahin KC, Sahin Z, et al. Leser-Trélat Sign as an Initial Manifestation of Synchronous Prostate and Bladder Cancer Cureus. 2025 Sep;17(9):e93325. doi: 10.7759/cureus.93325. PMID 41158917. PMID 41158917.**
+**Row 448.2 — Okur A, Şahin KC, Sahin Z, et al. Leser-Trélat Sign as an Initial Manifestation of Synchronous Prostate and Bladder Cancer Cureus. 2025 Sep;17(9):e93325. doi: 10.7759/cureus.93325. PMID 41158917.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/41158917/
 - Source checked on: 2026-09-27
@@ -16251,7 +16251,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Case report of the Leser-Trelat sign as an initial manifestation of synchronous prostate and bladder cancer, registered deliberately as evidence that the association is non-specific across tumour types rather than colorectal-specific.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 448.3 — Geber A, Hadžavdić A, Ljubojević Hadžavdić S. The Leser-Trélat Sign in a Patient with Gastric Adenocarcinoma Acta Dermatovenerol Croat. 2023 Aug;31(1):51-52. PMID 37843094. PMID 37843094.**
+**Row 448.3 — Geber A, Hadžavdić A, Ljubojević Hadžavdić S. The Leser-Trélat Sign in a Patient with Gastric Adenocarcinoma Acta Dermatovenerol Croat. 2023 Aug;31(1):51-52. PMID 37843094.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/37843094/
 - Source checked on: 2026-09-27
@@ -16275,7 +16275,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 - Is the citation metadata exact against the PubMed record?
 
-**Row 449.1 — Driessen J, Blom JD, Muris P, et al. Anxiety in Children with Selective Mutism: A Meta-analysis Child Psychiatry Hum Dev. 2020 Apr;51(2):330-341. doi: 10.1007/s10578-019-00933-1. PMID 31650460..**
+**Row 449.1 — Driessen J, Blom JD, Muris P, et al. Anxiety in Children with Selective Mutism: A Meta-analysis Child Psychiatry Hum Dev. 2020 Apr;51(2):330-341. doi: 10.1007/s10578-019-00933-1. PMID 31650460.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/31650460/
 - Source checked on: 2026-09-27
@@ -16283,7 +16283,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Random-effects meta-analysis of 22 eligible studies (N=837) finding that 80 percent of children with selective mutism were diagnosed with an additional anxiety disorder, notably social phobia at 69 percent, with considerable unexplained heterogeneity, and concluding these disorders are not discrete separable categories and that the finding does not elucidate the relation between selective mutism and anxiety as an aetiological mechanism or symptomatic feature.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 449.2 — Gensthaler A, Maichrowitz V, Kaess M, et al. Selective Mutism: The Fraternal Twin of Childhood Social Phobia Psychopathology. 2016;49(2):95-107. doi: 10.1159/000444882. PMID 27089281..**
+**Row 449.2 — Gensthaler A, Maichrowitz V, Kaess M, et al. Selective Mutism: The Fraternal Twin of Childhood Social Phobia Psychopathology. 2016;49(2):95-107. doi: 10.1159/000444882. PMID 27089281.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/27089281/
 - Source checked on: 2026-09-27
@@ -16291,7 +16291,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Comparative behavioral study of 95 children and adolescents with selective mutism, 74 with social phobia, 46 with internalizing disorders, and 119 typically developing controls assessed by Child Behavior Checklist with diagnostic-interview comorbidity assessment, finding social phobia detected in 94 percent of children with selective mutism, more lifetime separation anxiety disorder (45 vs 26 percent) and oppositional defiant disorder (22 vs 5 percent) but LESS generalized anxiety disorder (6 vs 20 percent) and major depression (12 vs 26 percent) than in social phobia, and higher adolescent agoraphobia rates (27 vs 10 percent).
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 449.3 — Boneff-Peng K, Lasutschinkow PC, Colton ZA, et al. An Updated Characterization of Childhood Selective Mutism: Exploring Clinical Features, Treatment Utilization, and School Services Child Psychiatry Hum Dev. 2025 Jun;56(3):683-695. doi: 10.1007/s10578-023-01589-8. PMID 37650960..**
+**Row 449.3 — Boneff-Peng K, Lasutschinkow PC, Colton ZA, et al. An Updated Characterization of Childhood Selective Mutism: Exploring Clinical Features, Treatment Utilization, and School Services Child Psychiatry Hum Dev. 2025 Jun;56(3):683-695. doi: 10.1007/s10578-023-01589-8. PMID 37650960.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/37650960/
 - Source checked on: 2026-09-27
@@ -16315,7 +16315,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 - Is the citation metadata exact against the PubMed record?
 
-**Row 450.1 — Gensthaler A, Maichrowitz V, Kaess M, et al. Selective Mutism: The Fraternal Twin of Childhood Social Phobia Psychopathology. 2016;49(2):95-107. doi: 10.1159/000444882. PMID 27089281..**
+**Row 450.1 — Gensthaler A, Maichrowitz V, Kaess M, et al. Selective Mutism: The Fraternal Twin of Childhood Social Phobia Psychopathology. 2016;49(2):95-107. doi: 10.1159/000444882. PMID 27089281.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/27089281/
 - Source checked on: 2026-09-27
@@ -16323,7 +16323,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Comparative behavioral study finding that children with selective mutism were more frequently affected by lifetime separation anxiety disorder (45 percent) than those with social phobia (26 percent), while being less affected by generalized anxiety disorder and major depression, and that adolescents with selective mutism showed high rates of agoraphobia.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 450.2 — Fisher J, Wadkins MJ, Kurtz S. Family Accommodation in Selective Mutism: Prevalence, Relationship to Symptom Severity, and Issues in Measurement/Assessment Child Psychiatry Hum Dev. 2025 Jun 30. doi: 10.1007/s10578-025-01876-6. PMID 40586947..**
+**Row 450.2 — Fisher J, Wadkins MJ, Kurtz S. Family Accommodation in Selective Mutism: Prevalence, Relationship to Symptom Severity, and Issues in Measurement/Assessment Child Psychiatry Hum Dev. 2025 Jun 30. doi: 10.1007/s10578-025-01876-6. PMID 40586947.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/40586947/
 - Source checked on: 2026-09-27
@@ -16331,7 +16331,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Family-accommodation study of 38 children with selective mutism, 28 with selective mutism plus comorbid anxiety disorders, 34 with other anxiety disorders, and 30 with non-anxiety disorders, reporting that accommodation in the selective-mutism sample was prevalent though at lower frequency and lower parental distress than expected, and finding NO CORRELATION between parental accommodation and selective-mutism symptom severity.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 450.3 — Boneff-Peng K, Lasutschinkow PC, Colton ZA, et al. An Updated Characterization of Childhood Selective Mutism: Exploring Clinical Features, Treatment Utilization, and School Services Child Psychiatry Hum Dev. 2025 Jun;56(3):683-695. doi: 10.1007/s10578-023-01589-8. PMID 37650960..**
+**Row 450.3 — Boneff-Peng K, Lasutschinkow PC, Colton ZA, et al. An Updated Characterization of Childhood Selective Mutism: Exploring Clinical Features, Treatment Utilization, and School Services Child Psychiatry Hum Dev. 2025 Jun;56(3):683-695. doi: 10.1007/s10578-023-01589-8. PMID 37650960.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/37650960/
 - Source checked on: 2026-09-27
@@ -16355,7 +16355,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 - Is the citation metadata exact against the PubMed record?
 
-**Row 451.1 — Taxiarchi VP, Anderson JK, Abel KM, et al. Emotional disorders among children and young people in England from 2004 to 2017: analysis of a probability sample survey series Br J Psychiatry. 2026 Jul;229(1):36-42. doi: 10.1192/bjp.2025.124. PMID 40546093..**
+**Row 451.1 — Taxiarchi VP, Anderson JK, Abel KM, et al. Emotional disorders among children and young people in England from 2004 to 2017: analysis of a probability sample survey series Br J Psychiatry. 2026 Jul;229(1):36-42. doi: 10.1192/bjp.2025.124. PMID 40546093.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/40546093/
 - Source checked on: 2026-09-27
@@ -16363,7 +16363,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Repeated cross-sectional analysis of nationally representative probability samples of 13,561 children and young people aged 5-16 in England across the 2004 and 2017 Mental Health of Children and Young People survey waves, classified by ICD-10 using the Development and Well-Being Assessment, finding emotional-disorder prevalence rose from 3.9 to 6.0 percent (relative ratio 1.63, 95% CI 1.38-1.91) largely driven by anxiety disorders rising from 3.5 to 5.4 percent (relative ratio 1.63, 95% CI 1.37-1.93), with the largest relative changes for panic disorder, separation anxiety, social phobia and PTSD, and with comorbid psychiatric conditions present in over a third of children with emotional disorders, most commonly conduct disorder.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 451.2 — Yetkin ZD, Tosun Ö, Bıkmazer A, et al. Separation Anxiety Disorder in Youth With Mitral Valve Prolapse: Associations With Parental Attitudes and Anxiety Sensitivity J Dev Behav Pediatr. 2026 Jul-Aug 01;47(4):e419-e426. doi: 10.1097/DBP.0000000000001492. PMID 42228469..**
+**Row 451.2 — Yetkin ZD, Tosun Ö, Bıkmazer A, et al. Separation Anxiety Disorder in Youth With Mitral Valve Prolapse: Associations With Parental Attitudes and Anxiety Sensitivity J Dev Behav Pediatr. 2026 Jul-Aug 01;47(4):e419-e426. doi: 10.1097/DBP.0000000000001492. PMID 42228469.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/42228469/
 - Source checked on: 2026-09-27
@@ -16371,7 +16371,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Study of separation anxiety disorder in youth with mitral valve prolapse, documenting associations with parental attitudes and anxiety sensitivity, establishing the condition as a separately diagnosed and clinically studied entity.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 451.3 — Feriante J, Torrico TJ, McArthur J, et al. Separation Anxiety Disorder 2026 Jan. PMID 32809628..**
+**Row 451.3 — Feriante J, Torrico TJ, McArthur J, et al. Separation Anxiety Disorder 2026 Jan. PMID 32809628.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/32809628/
 - Source checked on: 2026-09-27
@@ -16395,7 +16395,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 - Is the citation metadata exact against the PubMed record?
 
-**Row 452.1 — Fares MY, Salhab HA, Khachfe HH, et al. Sever's Disease of the Pediatric Population: Clinical, Pathologic, and Therapeutic Considerations Clin Med Res. 2021 Sep;19(3):132-137. doi: 10.3121/cmr.2021.1639. PMID 34531270..**
+**Row 452.1 — Fares MY, Salhab HA, Khachfe HH, et al. Sever's Disease of the Pediatric Population: Clinical, Pathologic, and Therapeutic Considerations Clin Med Res. 2021 Sep;19(3):132-137. doi: 10.3121/cmr.2021.1639. PMID 34531270.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/34531270/
 - Source checked on: 2026-09-27
@@ -16403,7 +16403,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Review of the clinical, pathologic, and therapeutic considerations of Sever's disease of the pediatric population, setting out the traction-apophysitis mechanism at the calcaneal apophysis in physically active children.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 452.2 — McSweeney S, Reed LF, Wearing SC. Vertical ground reaction forces during gait in children with and without calcaneal apophysitis Gait Posture. 2019 Jun;71:126-130. doi: 10.1016/j.gaitpost.2019.04.027. PMID 31054494..**
+**Row 452.2 — McSweeney S, Reed LF, Wearing SC. Vertical ground reaction forces during gait in children with and without calcaneal apophysitis Gait Posture. 2019 Jun;71:126-130. doi: 10.1016/j.gaitpost.2019.04.027. PMID 31054494.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/31054494/
 - Source checked on: 2026-09-27
@@ -16411,7 +16411,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Gait study comparing vertical ground reaction forces during gait in children with and without calcaneal apophysitis, documenting altered lower-limb loading in the affected group.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 452.3 — Rodríguez-Sanz D, Becerro-de-Bengoa-Vallejo R, López-López D, et al. Slow velocity of the center of pressure and high heel pressures may increase the risk of Sever's disease: a case-control study BMC Pediatr. 2018 Nov 19;18(1):357. doi: 10.1186/s12887-018-1318-1. PMID 30453930..**
+**Row 452.3 — Rodríguez-Sanz D, Becerro-de-Bengoa-Vallejo R, López-López D, et al. Slow velocity of the center of pressure and high heel pressures may increase the risk of Sever's disease: a case-control study BMC Pediatr. 2018 Nov 19;18(1):357. doi: 10.1186/s12887-018-1318-1. PMID 30453930.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/30453930/
 - Source checked on: 2026-09-27
@@ -16435,7 +16435,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 - Is the citation metadata exact against the PubMed record?
 
-**Row 453.1 — Giladi M, Solomon A, Viskin D, et al. Risk stratification in short QT syndrome: Findings from a pooled analysis Heart Rhythm. 2026 Sep;23(9):e2162-e2166. doi: 10.1016/j.hrthm.2026.03.001. PMID 41794082..**
+**Row 453.1 — Giladi M, Solomon A, Viskin D, et al. Risk stratification in short QT syndrome: Findings from a pooled analysis Heart Rhythm. 2026 Sep;23(9):e2162-e2166. doi: 10.1016/j.hrthm.2026.03.001. PMID 41794082.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/41794082/
 - Source checked on: 2026-09-27
@@ -16443,7 +16443,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Pooled analysis of 162 patients with short QT syndrome and known symptomatic status, finding 57 (35.2 percent) had arrhythmic symptoms comprising sudden death, cardiac arrest, or malignant syncope, a significant inverse association between QTc and arrhythmic symptoms (median QTc 315.0 ms symptomatic vs 330.0 ms asymptomatic, P=0.0023), ROC area under the curve 0.64 (P=0.0024), most patients with QTc of 320 ms or less having malignant arrhythmic symptoms while the reverse held at 320 ms or more, and male patients overrepresented overall and among those with malignant symptoms.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 453.2 — Kim DY, Uhm JS, Kim M, et al. Long-term prognosis of short QT interval in Korean patients: a multicenter retrospective cohort study BMC Cardiovasc Disord. 2021 Jan 6;21(1):17. doi: 10.1186/s12872-020-01824-3. PMID 33407155..**
+**Row 453.2 — Kim DY, Uhm JS, Kim M, et al. Long-term prognosis of short QT interval in Korean patients: a multicenter retrospective cohort study BMC Cardiovasc Disord. 2021 Jan 6;21(1):17. doi: 10.1186/s12872-020-01824-3. PMID 33407155.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/33407155/
 - Source checked on: 2026-09-27
@@ -16451,7 +16451,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Multicenter retrospective cohort of 34 patients with a short QT interval against age- and sex-matched controls at a 1:4 ratio, followed a median 4.8 years, finding atrial fibrillation in 11.8 percent against 2.2 percent (P=0.030) and ventricular arrhythmia or sudden cardiac arrest in 8.7 percent against 0 percent (P=0.007), with early repolarization, tall T wave, and U wave significantly more frequent, QT dispersion significantly wider (44.0 vs 20.0 ms, P<0.001), and heart rate significantly slower (52.0 vs 70.0 per min, P<0.001) in the affected group.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 453.3 — Boulmpou A, Giannopoulos A, Papadopoulos C, et al. The Uncommon Phenomenon of Short QT Syndrome: A Scoping Review of the Literature J Pers Med. 2025 Mar 8;15(3). doi: 10.3390/jpm15030105. PMID 40137421..**
+**Row 453.3 — Boulmpou A, Giannopoulos A, Papadopoulos C, et al. The Uncommon Phenomenon of Short QT Syndrome: A Scoping Review of the Literature J Pers Med. 2025 Mar 8;15(3). doi: 10.3390/jpm15030105. PMID 40137421.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/40137421/
 - Source checked on: 2026-09-27
@@ -16475,7 +16475,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 - Is the citation metadata exact against the PubMed record?
 
-**Row 454.1 — Giladi M, Solomon A, Viskin D, et al. Risk stratification in short QT syndrome: Findings from a pooled analysis Heart Rhythm. 2026 Sep;23(9):e2162-e2166. doi: 10.1016/j.hrthm.2026.03.001. PMID 41794082..**
+**Row 454.1 — Giladi M, Solomon A, Viskin D, et al. Risk stratification in short QT syndrome: Findings from a pooled analysis Heart Rhythm. 2026 Sep;23(9):e2162-e2166. doi: 10.1016/j.hrthm.2026.03.001. PMID 41794082.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/41794082/
 - Source checked on: 2026-09-27
@@ -16483,7 +16483,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Pooled analysis of 162 patients with short QT syndrome finding 57 (35.2 percent) with arrhythmic symptoms defined as sudden death, cardiac arrest, or malignant syncope, a significant inverse association between QTc and arrhythmic symptoms (median 315.0 ms vs 330.0 ms, P=.0023), AUC 0.64 (P=.0024), and that most patients with QTc of 320 ms or less had malignant arrhythmic symptoms.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 454.2 — Kim DY, Uhm JS, Kim M, et al. Long-term prognosis of short QT interval in Korean patients: a multicenter retrospective cohort study BMC Cardiovasc Disord. 2021 Jan 6;21(1):17. doi: 10.1186/s12872-020-01824-3. PMID 33407155..**
+**Row 454.2 — Kim DY, Uhm JS, Kim M, et al. Long-term prognosis of short QT interval in Korean patients: a multicenter retrospective cohort study BMC Cardiovasc Disord. 2021 Jan 6;21(1):17. doi: 10.1186/s12872-020-01824-3. PMID 33407155.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/33407155/
 - Source checked on: 2026-09-27
@@ -16491,7 +16491,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Matched-cohort study recording ventricular arrhythmia or sudden cardiac arrest in 8.7 percent of patients with a short QT interval against 0 percent of matched controls (P=0.007), with early repolarization, tall T wave, and U wave significantly more frequent and heart rate significantly slower in the affected group.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 454.3 — El-Battrawy I, Besler J, Liebe V, et al. Long-Term Follow-Up of Patients With Short QT Syndrome: Clinical Profile and Outcome J Am Heart Assoc. 2018 Dec 4;7(23):e010073. doi: 10.1161/JAHA.118.010073. PMID 30571592..**
+**Row 454.3 — El-Battrawy I, Besler J, Liebe V, et al. Long-Term Follow-Up of Patients With Short QT Syndrome: Clinical Profile and Outcome J Am Heart Assoc. 2018 Dec 4;7(23):e010073. doi: 10.1161/JAHA.118.010073. PMID 30571592.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/30571592/
 - Source checked on: 2026-09-27
@@ -16515,7 +16515,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 - Is the citation metadata exact against the PubMed record?
 
-**Row 455.1 — Boulmpou A, Giannopoulos A, Papadopoulos C, et al. The Uncommon Phenomenon of Short QT Syndrome: A Scoping Review of the Literature J Pers Med. 2025 Mar 8;15(3). doi: 10.3390/jpm15030105. PMID 40137421..**
+**Row 455.1 — Boulmpou A, Giannopoulos A, Papadopoulos C, et al. The Uncommon Phenomenon of Short QT Syndrome: A Scoping Review of the Literature J Pers Med. 2025 Mar 8;15(3). doi: 10.3390/jpm15030105. PMID 40137421.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/40137421/
 - Source checked on: 2026-09-27
@@ -16523,7 +16523,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Scoping review of short QT syndrome reporting that the condition is present across a wide age range from asymptomatic individuals to those experiencing syncope, palpitations, or sudden cardiac arrest, that common genetic mutations include KCNQ1, KCNH2, and KCNJ2, and that management varies with some patients receiving implantable cardioverter defibrillators for secondary prevention and others treated pharmacologically primarily with hydroquinidine.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 455.2 — El-Battrawy I, Besler J, Liebe V, et al. Long-Term Follow-Up of Patients With Short QT Syndrome: Clinical Profile and Outcome J Am Heart Assoc. 2018 Dec 4;7(23):e010073. doi: 10.1161/JAHA.118.010073. PMID 30571592..**
+**Row 455.2 — El-Battrawy I, Besler J, Liebe V, et al. Long-Term Follow-Up of Patients With Short QT Syndrome: Clinical Profile and Outcome J Am Heart Assoc. 2018 Dec 4;7(23):e010073. doi: 10.1161/JAHA.118.010073. PMID 30571592.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/30571592/
 - Source checked on: 2026-09-27
@@ -16531,7 +16531,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Long-term follow-up study of patients with short QT syndrome describing the clinical profile and outcome of the condition, supplying the located anchor for how the syndrome presents and evolves clinically over time.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 455.3 — Aytekin Güvenir F, Özgür S. Hidden Cardiac Channelopathies in Children Presenting with Syncope and Seizure-like Events Children (Basel). 2026 May 12;13(5). doi: 10.3390/children13050669. PMID 42194195..**
+**Row 455.3 — Aytekin Güvenir F, Özgür S. Hidden Cardiac Channelopathies in Children Presenting with Syncope and Seizure-like Events Children (Basel). 2026 May 12;13(5). doi: 10.3390/children13050669. PMID 42194195.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/42194195/
 - Source checked on: 2026-09-27
@@ -16555,7 +16555,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 - Is the citation metadata exact against the PubMed record?
 
-**Row 456.1 — Balakhanlou E, Webster J, Borgia M, et al. Frequency and Severity of Phantom Limb Pain in Veterans with Major Upper Limb Amputation: Results of a National Survey PM R. 2021 Aug;13(8):827-835. doi: 10.1002/pmrj.12485. PMID 32896094..**
+**Row 456.1 — Balakhanlou E, Webster J, Borgia M, et al. Frequency and Severity of Phantom Limb Pain in Veterans with Major Upper Limb Amputation: Results of a National Survey PM R. 2021 Aug;13(8):827-835. doi: 10.1002/pmrj.12485. PMID 32896094.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/32896094/
 - Source checked on: 2026-09-27
@@ -16563,7 +16563,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: National survey of 776 US military veterans with major upper limb amputation finding 73 percent reported phantom limb pain with mean intensity 4.2 (SD 3.4), 42 percent reporting it daily to always, amputation at the shoulder associated with any phantom limb pain at OR 3.78 (1.93-7.39), transhumeral at OR 1.76 (1.10-2.81), and cancer aetiology at OR 5.33 (1.15-24.81), and shoulder-level amputation associated with a 1.5-point higher average pain intensity (P<0.001) versus transradial.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 456.3 — List EB, Klieverik V, Martin E, et al. Prevalence of residual limb pain and neuromas after upper extremity amputation: a systematic review and meta-analysis J Hand Surg Eur Vol. 2025 Dec;50(11):1440-1447. doi: 10.1177/17531934251345368. PMID 40439077..**
+**Row 456.3 — List EB, Klieverik V, Martin E, et al. Prevalence of residual limb pain and neuromas after upper extremity amputation: a systematic review and meta-analysis J Hand Surg Eur Vol. 2025 Dec;50(11):1440-1447. doi: 10.1177/17531934251345368. PMID 40439077.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/40439077/
 - Source checked on: 2026-09-27
@@ -16587,12 +16587,292 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 - Is the citation metadata exact against the PubMed record?
 
-**Row 457.1 — Balakhanlou E, Webster J, Borgia M, et al. Frequency and Severity of Phantom Limb Pain in Veterans with Major Upper Limb Amputation: Results of a National Survey PM R. 2021 Aug;13(8):827-835. doi: 10.1002/pmrj.12485. PMID 32896094..**
+**Row 457.1 — Balakhanlou E, Webster J, Borgia M, et al. Frequency and Severity of Phantom Limb Pain in Veterans with Major Upper Limb Amputation: Results of a National Survey PM R. 2021 Aug;13(8):827-835. doi: 10.1002/pmrj.12485. PMID 32896094.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/32896094/
 - Source checked on: 2026-09-27
 - Locator: PM R. 2021;13(7):827-835. Cross-sectional national survey, N=776 veterans with major upper limb amputations; abstract states the most common amputation level was transradial (36%) and 62% reported accident as the aetiology, and that amputation at the shoulder (OR 3.78 [1.93,7.39]) was associated with any PLP with shoulder-level amputation associated with 1.5 points higher average pain intensity (P<.001) than transradial. Registered on this edge for the amputation population and level distribution only; definitional relationships are established by the catalog, not by citation.
 - Note under review: National survey of 776 US military veterans with major upper limb amputation documenting the amputation population, its level distribution with transradial most common at 36 percent, and the clinically consequential association of shoulder-level amputation with phantom limb pain at OR 3.78 and a 1.5-point higher mean pain intensity than transradial; registered here as the documentation anchor for the proximal-limb amputation instance, NOT as support for any rating construct.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `sick-sinus-syndrome` → `cardiac-arrhythmia` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Sick sinus syndrome and atrial fibrillation are the two poles of a documented tachy-bradyarrhythmia, and three independent designs report the association from different directions. A systematic review and meta-analysis of 35 articles covering 37,550 patients found patients with sick sinus syndrome were associated with NEW-ONSET ATRIAL FIBRILLATION compared with those without, and reports the relationship as BIDIRECTIONAL, with atrial fibrillation risk varying by pacing strategy (VVI/VVIR carrying higher new-onset atrial fibrillation risk than DDD/DDDR, while AAI/AAIR versus DDD/DDDR showed no significant difference) (PMID 37023861). A nationwide randomised controlled trial of 540 patients with sinus node dysfunction and an indication for first pacemaker implantation found the primary endpoint of atrial fibrillation longer than 6 minutes occurred in 46 PERCENT of patients, with no difference between pacing strategies (hazard ratio 0.97, 95% CI 0.76-1.25, P = .83), and no difference in atrial fibrillation exceeding 6 or 24 hours, persistent atrial fibrillation, or cardioversions (PMID 37638973). A literature review of atrial fibrillation with slow ventricular response names sick sinus syndrome among the significant contributors to its development, alongside atrioventricular nodal block and medication effects, and describes the pathophysiology as complex electrical and structural REMODELLING OF THE ATRIA that produces bradycardia and symptomatic conduction delays (PMID 40607080). Recorded as documented association only, with the near-half-prevalence atrial fibrillation figure in a pacemaker-indication cohort explicitly framed as reflecting a population already selected for advanced sinus node disease rather than a community rate.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual, and the located evidence describes a shared substrate rather than a one-directional cause. The meta-analysis describes the sick sinus syndrome and atrial fibrillation relationship as bidirectional and does not establish which precedes which (PMID 37023861). The randomised trial enrolled patients who ALREADY had an indication for first pacemaker implantation, so its 46 percent atrial fibrillation endpoint describes an advanced-disease population, and it is a NEGATIVE trial for the pacing intervention, finding that atrial pacing minimisation did NOT reduce atrial fibrillation incidence, which argues against the simple hypothesis that excess atrial pacing is the driver. The literature review supplies a plausible unifying mechanism, atrial electrical and structural remodelling, but states it as the pathophysiology of the overlap rather than as a demonstrated causal sequence from sinus node disease to atrial fibrillation (PMID 40607080). Individual claims require a dated diagnosis of sick sinus syndrome, objective evidence of the atrial arrhythmia on a dated tracing or monitoring record, and a clinical determination of which condition is temporally antecedent, because the two are frequently recorded together as tachy-bradyarrhythmia rather than as one producing the other, and because pacing strategy, which the located evidence shows materially affects atrial fibrillation risk, is itself a treatment variable rather than a fixed feature of the disease.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 458.1 — Liu Y, Zheng Y, Tse G, et al. Association between sick sinus syndrome and atrial fibrillation: A systematic review and meta-analysis. Int J Cardiol. 2023 Jun 15;381:20-36. doi: 10.1016/j.ijcard.2023.03.066. PMID 37023861.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/37023861/
+- Source checked on: 2026-09-27
+- Locator: Int J Cardiol. 2023;381:20-36. Systematic review and meta-analysis, 35 articles, 37,550 patients; abstract states patients with SSS were associated with new-onset AF compared to those without SSS, that SSS and AF frequently coexist and show a bidirectional relationship, that VVI/VVIR has higher risk of new-onset AF than DDD/DDDR, and that no significant difference was found between AAI/AAIR and DDD/DDDR or between DDD/DDDR and minimal ventricular pacing for AF recurrence.
+- Note under review: Systematic review and meta-analysis of 35 articles with 37,550 patients reporting that patients with sick sinus syndrome were associated with new-onset atrial fibrillation compared with those without sick sinus syndrome, describing the relationship between the two conditions as bidirectional, and finding that VVI/VVIR pacing carried a higher risk of new-onset atrial fibrillation than DDD/DDDR while AAI/AAIR versus DDD/DDDR and DDD/DDDR versus minimal ventricular pacing showed no significant difference for atrial fibrillation recurrence.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 458.2 — Kronborg MB, Frausing MHJP, Malczynski J, et al. Atrial pacing minimization in sinus node dysfunction and risk of incident atrial fibrillation: a randomized trial. Eur Heart J. 2023 Oct 21;44(40):4246-4255. doi: 10.1093/eurheartj/ehad564. PMID 37638973.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/37638973/
+- Source checked on: 2026-09-27
+- Locator: Eur Heart J. 2023;44(40):4246-4255. Nationwide randomised controlled trial, 540 patients with sinus node dysfunction and a first-pacemaker indication, median atrial pacing 1% versus 49%; abstract states the primary endpoint occurred in 46% in each group (HR 0.97, 95% CI 0.76-1.25, P = .83), that atrial pacing minimization does not reduce the incidence of atrial fibrillation, and that programming a base rate of 40 bpm without rate-adaptive pacing is associated with an increased risk of syncope or presyncope.
+- Note under review: Nationwide randomised controlled trial of 540 patients with sinus node dysfunction and an indication for first pacemaker implantation, in which the primary endpoint of a first episode of atrial fibrillation longer than 6 minutes occurred in 124 patients (46%) in each treatment group with hazard ratio 0.97 (95% CI 0.76-1.25, P = .83), with no between-group differences in atrial fibrillation exceeding 6 or 24 hours, persistent atrial fibrillation, or cardioversions, and with syncope or presyncope incidence higher in the DDD-40 group (HR 1.71, 95% CI 1.13-2.59, P = .01). This is registered as an EXPLICIT COUNTERWEIGHT: the trial is negative for atrial pacing minimisation reducing atrial fibrillation.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 458.3 — Choi J, Kong D, Katic L, et al. Atrial fibrillation with slow-ventricular response (AF-SVR): A literature review. J Med Access. 2025 Jan-Dec;9:27550834251342890. doi: 10.1177/27550834251342890. PMID 40607080.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/40607080/
+- Source checked on: 2026-09-27
+- Locator: J Med Access. 2025;9:27550834251342890. Narrative literature review of AF with slow ventricular response; abstract states AF-SVR is more prevalent in older adults and often attributed to age-related degeneration of the cardiac conduction system, that conditions such as AV nodal block, sick sinus syndrome and medication effects are significant contributors, and that the pathophysiology involves complex electrical and structural remodeling of the atria which can lead to bradycardia and symptomatic conduction delays.
+- Note under review: Literature review consolidating knowledge on atrial fibrillation with slow ventricular response, naming sick sinus syndrome, atrioventricular nodal block and medication effects as significant contributors to its development, attributing it in part to age-related degeneration of the cardiac conduction system, and describing the pathophysiology as complex electrical and structural remodelling of the atria that can lead to bradycardia and symptomatic conduction delays, with fatigue, dizziness and syncope among the presenting symptoms.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `sick-sinus-syndrome` → `cerebrovascular-accident-stroke-residuals` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Sinus node dysfunction carries an elevated ischaemic stroke risk that three large designs quantify, and they do so in complementary populations that together cover both the AF-free and the AF-positive patient. A systematic review and meta-analysis of 6 studies with 106,163 patients found an average yearly stroke incidence of 1.542 PERCENT (95% CI 1.334 to 1.749) in sinus node dysfunction, and found the incidence SIMILAR between isolated sinus node dysfunction (1.587 percent, 95% CI 1.510 to 1.664) and non-isolated sinus node dysfunction with atrial fibrillation (1.660 percent, 95% CI 0.705 to 2.615), with atrial fibrillation (HR 1.53, 95% CI 1.01 to 2.33), prior stroke or transient ischaemic attack or other thrombotic events (HR 2.54, 95% CI 1.14 to 5.69), hypertension (HR 1.51, 95% CI 1.11 to 2.07) and heart failure (HR 1.41, 95% CI 1.01 to 1.97) associated with stroke in that population (PMID 37977871). A UK Biobank analysis of 451,493 participants followed for a median 13.2 years found yearly ischaemic stroke incidence of 0.37 percent in isolated sinus node dysfunction, 0.60 percent in combined sinus node dysfunction and atrial fibrillation, 0.59 percent in isolated atrial fibrillation and 0.10 percent in controls, with ISOLATED SINUS NODE DYSFUNCTION CONFERRING A SIGNIFICANTLY INCREASED RISK compared with controls (subdistribution hazard ratio 2.28, 95% CI 1.57-3.31, P < .001) while combined sinus node dysfunction and atrial fibrillation carried a risk similar to isolated atrial fibrillation (subdistribution hazard ratio 1.07, 95% CI 0.84-1.37, P = .58), which the authors interpret as evidence for a left atrial myopathy in patients with isolated sinus node dysfunction (PMID 40315941). A hospital-based cohort of 24,960 patients with atrial fibrillation, of whom 1,624 had sick sinus syndrome and a pacemaker, found stroke incidence of 4.02 percent per patient-year in the sick sinus syndrome group versus 3.03 percent in the non-sick-sinus-syndrome group (P < .001), with sick sinus syndrome independently associated with a 23 PERCENT higher stroke risk (HR 1.23, 95% CI 1.10-1.37) that was STRONGEST IN PATIENTS WITH LOW CHA2DS2-VASC SCORES (HR 2.13, 95% CI 1.76-2.58) and not significant in those with scores above 2 (HR 1.02, 95% CI 0.89-1.17, P = .722) (PMID 41317944). Recorded as documented association only, with the residual, the subdistribution, and the confounding-by-indication structure of each design carried on the face of the edge.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual, and the located evidence is a risk-marker relationship rather than a demonstrated embolic mechanism. The meta-analysis reports a similar stroke incidence in isolated sinus node dysfunction and in sinus node dysfunction with atrial fibrillation, and its own conclusion is that patients with sinus node dysfunction carry a SIMILAR RISK of stroke to those with combined sinus node dysfunction and atrial fibrillation, with future studies needed to investigate whether stroke-prevention interventions such as anticoagulation can help (PMID 37977871), which is an explicit statement that the mechanism and the intervention are unresolved. The UK Biobank analysis is observational and interprets its finding through a proposed left atrial myopathy rather than a demonstrated one, and it deliberately excludes prosthetic heart valves, rheumatic mitral valve disease, mitral stenosis and prior ischaemic stroke, so its estimate applies to a comparatively lower-risk population (PMID 40315941). The Taiwanese cohort is HOSPITAL-BASED and defines sick sinus syndrome STRICTLY as symptomatic sinus node dysfunction requiring pacemaker implantation, so it is confounded by indication: the patients with sick sinus syndrome were older, more often female, and had higher CHADS2 and CHA2DS2-VASc scores, and after CHA2DS2-VASc adjustment the association was strongest precisely where the score was lowest, which is the signature of a risk marker adding information beyond standard stroke-risk stratification rather than of an independent embolic cause (PMID 41317944). Individual claims require a dated diagnosis of sinus node dysfunction, a dated ischaemic stroke event with imaging or equivalent objective confirmation, a documented atrial fibrillation status, and a documented CHA2DS2-VASc score, because the located evidence shows the strength of this association depends on both the AF status and the baseline stroke score, and because no located anchor establishes that anticoagulation prevents stroke in sinus node dysfunction without atrial fibrillation.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 459.1 — Dong H, Chen H, Hidru TH, et al. Sinus node dysfunction and stroke risk: a systematic review and meta-analysis. BMJ Open. 2023 Nov 17;13(11):e076499. doi: 10.1136/bmjopen-2023-076499. PMID 37977871.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/37977871/
+- Source checked on: 2026-09-27
+- Locator: BMJ Open. 2023;13(11):e076499. Systematic review and meta-analysis, 6 studies, 106,163 patients, Grading of Recommendations, Assessment, Development and Evaluation approach, PROSPERO CRD42023408436; abstract states average yearly stroke incidence of 1.542% (95% CI 1.334% to 1.749%), that incidence was similar between isolated SND and SND+AF, that AF, prior stroke/TIA or other thrombotic events, hypertension and heart failure were associated with stroke in the SND population, and that future studies are needed to investigate whether interventions targeting stroke prevention such as anticoagulation can help prevent stroke in patients with SND.
+- Note under review: Systematic review and meta-analysis of 6 papers with 106,163 patients finding an average yearly stroke incidence of 1.542% (95% CI 1.334 to 1.749) in sinus node dysfunction, with similar incidence between isolated sinus node dysfunction (1.587%, 95% CI 1.510 to 1.664) and non-isolated sinus node dysfunction with atrial fibrillation (1.660%, 95% CI 0.705 to 2.615), and reporting atrial fibrillation (HR 1.53, 95% CI 1.01 to 2.33), prior stroke or transient ischaemia attack or other thrombotic events (HR 2.54, 95% CI 1.14 to 5.69), hypertension (HR 1.51, 95% CI 1.11 to 2.07) and heart failure (HR 1.41, 95% CI 1.01 to 1.97) as factors associated with stroke in the sinus node dysfunction population.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 459.2 — Virk SA, Ho WWH, Takeuchi F, et al. Risk of ischemic stroke in sinus node dysfunction with and without atrial fibrillation: Evidence for the presence of a left atrial myopathy in patients with isolated sinus node dysfunction-an analysis of the UK Biobank. Heart Rhythm. 2025 Sep;22(9):e668-e675. doi: 10.1016/j.hrthm.2025.04.055. PMID 40315941.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/40315941/
+- Source checked on: 2026-09-27
+- Locator: Heart Rhythm. 2025;22(9):e668-e675. UK Biobank prospective population-based cohort, 451,493 participants, median follow-up 13.2 years, competing-risk regression accounting for death, excluding prosthetic heart valves, rheumatic mitral valve disease, mitral stenosis and prior ischaemic stroke; abstract states yearly IS incidence of 0.37%, 0.60%, 0.59% and 0.10% in isolated SND, SND+AF, isolated AF and controls, that isolated SND conferred a significantly increased risk of IS compared to controls (sHR 2.28, 95% CI 1.57-3.31, P < .001), and that SND+AF had a similar risk of IS compared to isolated AF (sHR 1.07, 95% CI 0.84-1.37, P = .58).
+- Note under review: UK Biobank prospective population-based cohort analysis of 451,493 participants aged 40-69 followed for a median 13.2 years, in which 593 had isolated sinus node dysfunction, 955 had combined sinus node dysfunction and atrial fibrillation, 37,065 had isolated atrial fibrillation and 412,880 were controls, finding yearly ischaemic stroke incidence of 0.37%, 0.60%, 0.59% and 0.10% respectively, with isolated sinus node dysfunction conferring a significantly increased risk compared with controls (subdistribution hazard ratio 2.28, 95% CI 1.57-3.31, P < .001) and combined sinus node dysfunction and atrial fibrillation carrying a risk similar to isolated atrial fibrillation (subdistribution hazard ratio 1.07, 95% CI 0.84-1.37, P = .58), interpreted as evidence for the presence of a left atrial myopathy in patients with isolated sinus node dysfunction.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 459.3 — Chang SN, Huang PS, Chen JJ, et al. Sick sinus syndrome elevates stroke risk in patients with atrial fibrillation with low CHA2DS2-VASC score. Heart Rhythm. 2026 Apr;23(4):e659-e665. doi: 10.1016/j.hrthm.2025.11.044. PMID 41317944.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/41317944/
+- Source checked on: 2026-09-27
+- Locator: Heart Rhythm. 2026;23(4):e659-e665. Hospital-based cohort of 24,960 patients with atrial fibrillation, 1,624 with pacemaker-implanted sick sinus syndrome, mean follow-up 4.07 +/- 3.55 years, Cox models adjusted for CHA2DS2-VASc score; abstract states stroke incidence was 4.02% per patient-year in the SSS group vs 3.03% in the non-SSS group (P < .001), that after adjustment SSS was associated with a 23% higher stroke risk (HR 1.23, 95% CI 1.10-1.37, P < .001), strongest in those with CHA2DS2-VASc scores <=2 (HR 2.13, 95% CI 1.76-2.58, P < .001) but not significant in those with scores >2 (HR 1.02, 95% CI 0.89-1.17, P = .722).
+- Note under review: Hospital-based cohort of 24,960 patients with atrial fibrillation from 2010 to 2021, of whom 1,624 had sick sinus syndrome defined strictly as symptomatic sinus node dysfunction requiring pacemaker implantation, finding stroke incidence of 4.02% per patient-year in the sick sinus syndrome group versus 3.03% in the non-sick-sinus-syndrome group (P < .001), with sick sinus syndrome independently associated with a 23% higher stroke risk (HR 1.23, 95% CI 1.10-1.37, P < .001) that was strongest in patients with CHA2DS2-VASc scores of 2 or less (HR 2.13, 95% CI 1.76-2.58, P < .001) and not significant in those with scores above 2 (HR 1.02, 95% CI 0.89-1.17, P = .722), with patients with sick sinus syndrome being older, more often female, and having higher CHADS2 and CHA2DS2-VASc scores.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `sick-sinus-syndrome` → `dizziness` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Dizziness and near-syncope are the characteristic symptoms of symptomatic sinus node disease, and the located evidence quantifies them in a cohort where symptom burden falls sharply with treatment. A prospective study of 87 elderly patients (mean age 75.4 years, 51 percent women) with sinus node dysfunction and an indication for cardiac pacing found that FEWER PATIENTS HAD SYNCOPE (4 versus 45 percent) AND DIZZINESS AFTER PERMANENT PACEMAKER IMPLANTATION (12 versus 45 percent) compared with the 12 months before, with falls reduced from 53 to 15 percent of patients and falls leading to fracture from 8 to 0 percent, while noting that no causal relationship could be established due to the study design (PMID 27702858). A review of closed-loop stimulation pacemakers describes sinus node dysfunction as a condition that can cause symptoms INCLUDING FATIGUE, DIZZINESS, OR FAINTING, and notes that closed-loop stimulation has shown promise in preventing fainting episodes caused by vasovagal syncope, a distinct physiology it attributes to the device rather than to the disease (PMID 40388576). A case report of a patient with symptomatic sinus bradycardia and second-degree sinoatrial block with Wenckebach periodicity presented with dizziness and near syncope, and is notable for a DIFFERENTIAL FINDING: the pacemaker decision was altered in favour of nasal continuous positive airway pressure because a severe mixed sleep apnoea-hypopnoea syndrome was diagnosed (PMID 19156381). Recorded as documented association only, with the before-and-after symptom figures expressly attributed to treatment rather than to disease course.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual, and the strongest anchor is fundamentally a treatment-response study, not an incidence study. The cohort study is a single-arm before-and-after design in patients who all received a pacemaker, and its authors state explicitly that NO CAUSAL RELATIONSHIP COULD BE ESTABLISHED DUE TO THE STUDY DESIGN (PMID 27702858); the 45 percent to 12 percent dizziness change therefore cannot be read as a disease-attributable symptom rate, and the reduction is equally consistent with the elimination of symptomatic bradycardia, with the placebo and regression-to-the-mean effects of an invasive procedure, and with the natural fluctuation of a subjective symptom. The closed-loop stimulation review is authored in part by pacemaker-manufacturer employees and describes a device intervention in a mixed population that also includes vasovagal syncope, which is a different autonomic physiology rather than sinus node disease (PMID 40388576). The case report is single-patient class and its own lesson cuts against a simple attribution, because the same patient's dizziness and near syncope were substantially explained by a concurrent sleep apnoea-hypopnoea syndrome and the pacing decision was changed accordingly (PMID 19156381). Individual claims require a dated diagnosis of sinus node dysfunction, a contemporaneous dated report of dizziness with documented temporal relationship to documented bradyarrhythmia or sinoatrial block, a documented sleep apnoea assessment, and a review of rate-limiting and AV-nodal blocking medications, because the located case report shows an alternative diagnosis changing the management entirely, and because the target identity already carries registered edges from two other cardiovascular causes including one sinus-node sibling.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 460.1 — Brenner R, Ammann P, Yoon SI, et al. Reduction of falls and fractures after permanent pacemaker implantation in elderly patients with sinus node dysfunction. Europace. 2017 Jul 1;19(7):1220-1226. doi: 10.1093/europace/euw156. PMID 27702858.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/27702858/
+- Source checked on: 2026-09-27
+- Locator: Europace. 2017;19(7):1220-1226. Prospective single-arm before-and-after study, 87 patients with sinus node dysfunction and pacing indication, mean age 75.4 (SD 8.3) years, 51% women; abstract states PPM implantation was associated with a reduced proportion of patients experiencing at least one fall by 71% (from 53 to 15%, P < 0.001), fewer patients had syncope (4 vs 45%, P < 0.001) and dizziness (12 vs 45%, P < 0.001), and that no causal relationship could be established due to the study design.
+- Note under review: Prospective study of 87 elderly patients (mean age 75.4 years, 51% women) with sinus node dysfunction and an indication for cardiac pacing, examined by standardized interview for fall history over 12 months before and after permanent pacemaker implantation, finding the proportion of patients experiencing at least one fall reduced by 71% (from 53 to 15%, P < 0.001), falls with injury reduced (28 versus 10%, P = 0.005), falls requiring medical attention reduced (31 versus 8%, P < 0.001), falls leading to fracture reduced (8 versus 0%, P = 0.013), and fewer patients having syncope (4 versus 45%, P < 0.001) and dizziness (12 versus 45%, P < 0.001) after implantation, while stating that although permanent pacemaker implantation is associated with a significantly reduced risk of these adverse events, no causal relationship could be established due to the study design.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 460.2 — Gargaro A, Biancalana G, Botto GL, et al. The clinical role of closed loop stimulation pacemakers in the treatment of patients with sinus node dysfunction: a review. Future Cardiol. 2025 Jun;21(8):567-578. doi: 10.1080/14796678.2025.2507464. PMID 40388576.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/40388576/
+- Source checked on: 2026-09-27
+- Locator: Future Cardiol. 2025;21(8):567-578. Narrative review of closed-loop stimulation pacemakers in sinus node dysfunction; abstract states SND can cause symptoms like fatigue, dizziness, or fainting and is often treated with pacemakers, that CLS addresses chronotropic incompetence, and that CLS has shown promise in preventing fainting episodes caused by vasovagal syncope and in preventing device-detected atrial fibrillation. Conflict of interest statement declares two authors are employees of the closed-loop stimulation pacemaker manufacturer.
+- Note under review: Review of the clinical role of closed-loop stimulation pacemakers in sinus node dysfunction, stating that sinus node dysfunction disrupts the heart's natural rhythm, CAN CAUSE SYMPTOMS LIKE FATIGUE, DIZZINESS, OR FAINTING and is often treated with pacemakers, describing the device's use for chronotropic incompetence in which patients have difficulty increasing heart rate during activity, and reporting that closed-loop stimulation has shown promise in preventing fainting episodes caused by vasovagal syncope and in preventing atrial fibrillation detected by implanted devices. DISCLOSED CONFLICT OF INTEREST: two authors are employees of the device manufacturer whose product is under discussion, and one further author reports speaker fees from three other device manufacturers.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 460.3 — Lotze U, Rothhagen B, Neubauer K, et al. Dizziness and near syncope due to sinus bradycardia and sinoatrial block associated with obesity and daytime tiredness. A clear indication for pacemaker implantation?. Herz. 2008 Sep;33(6):455-9. doi: 10.1007/s00059-008-3096-2. PMID 19156381.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/19156381/
+- Source checked on: 2026-09-27
+- Locator: Herz. 2008;33(6):455-459. Single-patient case report; abstract states the case describes a patient with symptomatic sinus bradycardia and second-degree SA block with Wenckebach periodicity in whom the primary decision to implant a pacemaker was altered in favour of treatment with nCPAP because a severe mixed SAHS was diagnosed, and concludes that on diagnosing SAHS with an obstructive component there is no primary need for a pacemaker.
+- Note under review: Case report of a patient with symptomatic sinus bradycardia and second-degree sinoatrial block with Wenckebach periodicity presenting with dizziness and near syncope, in whom the primary decision to implant a pacemaker was altered in favour of treatment with nasal continuous positive airway pressure because a severe mixed sleep apnoea-hypopnoea syndrome was diagnosed on careful evaluation of history and symptoms, concluding that on diagnosing sleep apnoea-hypopnoea syndrome with an obstructive component in patients with symptomatic bradycardia and sinoatrial block there is no primary need for a pacemaker.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `sialolithiasis` → `sialadenitis` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** A salivary calculus obstructs its duct, and the obstructed gland is the recognised site of the secondary inflammation that defines the obstructive sialadenitis presentation. A rapid evidence review of salivary gland disorders states that sialolithiasis causes up to 50 percent of salivary gland disorders, that the submandibular glands, whose mucinous secretions are high in calcium and phosphate salts and which drain through a long duct that flows against gravity, are responsible for MORE THAN 80 PERCENT OF SALIVARY STONES, and that sialolithiasis IS ASSOCIATED WITH SALIVARY STASIS AND INFLAMMATION caused by dehydration, malnutrition, medications or chronic illness, with obstruction also caused by trauma, stenosis and mucoceles (PMID 38905553). A monograph chapter reviewing the three most frequently diagnosed salivary gland diseases states that sialolithiasis is characterized by calcified structures developing in the salivary glands, especially the submandibular gland, that SIALOLITHS ARE GENERALLY ATTRIBUTED TO RETENTION OF SALIVA, and that they are usually accompanied by swelling and pain when a salivary stimulus is applied (PMID 24862601). A prospective cohort of 41 patients with sialolithiasis obstructive sialadenitis, who were expressly EXCLUDED if they had acute sialadenitis, showed whole-saliva sialometry improving from 2.21 to 3.42 g for the submandibular gland and from 1.87 to 2.92 g for the parotid at 12 months after gland-sparing sialolithotomy, and a parallel improvement in the Multidisciplinary Salivary Gland Society quality-of-life score from 65.92 to 3.84 for the submandibular gland, which is the functional signature of a stone-driven process that reverses when the stone is removed (PMID 41213527). Recorded as documented association only, with the third anchor's treatment-outcome design carried openly.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual, and the honest position is that this is the most mechanistically obvious route in the batch while resting on the weakest anchor class in it. Two of the three anchors are narrative syntheses rather than primary data: the rapid evidence review asserts the association with stasis and inflammation without reporting an incidence, and the monograph chapter attributes calculi to saliva retention and describes the meal-related swelling and pain without a cohort (PMID 38905553, PMID 24862601). The one primary anchor is a single-arm treatment-outcome cohort of 41 patients whose salivary function RECOVERED AFTER STONE REMOVAL, which is strong functional evidence that the stone drives the dysfunction but is a before-and-after design in all of whom the intervention was performed, and the authors did not randomise or include a comparator, so regression to the mean, natural resolution of intermittent obstruction, and the sialendoscopy procedure itself are not separable from the stone (PMID 41213527). Individual claims require a dated sialolithiasis diagnosis with imaging confirmation of a calculus, a dated sialadenitis diagnosis with documented gland swelling and its relationship to meals, and a documented exclusion of the competing causes the located review names, namely dehydration, malnutrition, medication effect, chronic systemic illness, ductal stenosis, trauma and mucoceles, because the located evidence explicitly attributes stasis and inflammation to those alternatives as well.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 461.1 — Kim MJ, Milliren A, Gerold DJ Jr. Salivary Gland Disorders: Rapid Evidence Review. Am Fam Physician. 2024 Jun;109(6):550-559. PMID 38905553.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/38905553/
+- Source checked on: 2026-09-27
+- Locator: Am Fam Physician. 2024;109(6):550-559. Rapid evidence review of salivary gland disorders; abstract states the submandibular glands are responsible for more than 80% of salivary stones, sialolithiasis causes up to 50% of salivary gland disorders, it is associated with salivary stasis and inflammation caused by dehydration, malnutrition, medications or chronic illness, and obstruction is also caused by trauma, stenosis and mucoceles.
+- Note under review: Rapid evidence review of salivary gland disorders stating that the submandibular glands produce mucinous secretions high in calcium and phosphate salts through a long submandibular duct that flows against gravity, that the submandibular glands are responsible for more than 80% of salivary stones, that sialadenitis can be acute or chronic and caused by bacterial, viral and obstructive etiologies with Staphylococcus aureus the most common bacterium, that sialolithiasis causes up to 50% of salivary gland disorders and IS ASSOCIATED WITH SALIVARY STASIS AND INFLAMMATION caused by dehydration, malnutrition, medications or chronic illness, and that obstruction is also caused by trauma, stenosis and mucoceles. Already a registered source entity, reused.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 461.2 — Delli K, Spijkervet FK, Vissink A. Salivary gland diseases: infections, sialolithiasis and mucoceles. Monogr Oral Sci. 2014;24:135-48. doi: 10.1159/000358794. PMID 24862601.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/24862601/
+- Source checked on: 2026-09-27
+- Locator: Monogr Oral Sci. 2014;24:135-148. Narrative monograph chapter on salivary gland infections, sialolithiasis and mucoceles; abstract states sialolithiasis is characterized by calcified structures developing in the salivary glands especially in the submandibular gland, that sialoliths are generally attributed to retention of saliva, and that they are usually accompanied by swelling and pain when a salivary stimulus is applied.
+- Note under review: Monograph chapter reviewing the three most frequently diagnosed salivary gland diseases, stating that salivary gland infections can be acute or chronic, that they can result from obstruction of the salivary duct, an autoimmune disease or cancer therapy, that sialolithiasis is characterized by the development of calcified structures in the salivary glands especially in the submandibular gland, that SIALOLITHS ARE GENERALLY ATTRIBUTED TO RETENTION OF SALIVA, and that they are usually accompanied by swelling and pain when a salivary stimulus is applied.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 461.3 — Sakr AA, Magdy EA, Mohamed SS, et al. Evaluation of Salivary Function Recovery Following Gland-Sparing Sialolithotomy: A Prospective Cohort Study. J Oral Maxillofac Surg. 2026 Mar;84(3):389-400. doi: 10.1016/j.joms.2025.10.010. PMID 41213527.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/41213527/
+- Source checked on: 2026-09-27
+- Locator: J Oral Maxillofac Surg. 2026;84(3):389-400. Prospective single-arm cohort, 41 patients with sialolithiasis obstructive sialadenitis, January 2021 to February 2023, sialometry and MSGS questionnaire at 3, 6 and 12 months; abstract states patients with acute sialadenitis were excluded and that mean overall sialometry improved from 2.21 +/- 1.02 g to 3.42 +/- 1.23 g for submandibular and 1.87 +/- 1.48 g to 2.92 +/- 1.28 g for parotid at 12 months (P < .001).
+- Note under review: Prospective cohort of 41 patients (56.1% male, mean age 37.88 +/- 12.79 years) with sialolithiasis obstructive sialadenitis at a tertiary referral centre, EXCLUDING patients with acute sialadenitis, prior salivary gland excision or radiographic gland atrophy, showing mean whole-saliva sialometry improving from 2.21 +/- 1.02 g preoperatively to 3.42 +/- 1.23 g for the submandibular gland and from 1.87 +/- 1.48 g to 2.92 +/- 1.28 g for the parotid at 12 months after gland-sparing sialolithotomy (P < .001), with parallel improvement in the Multidisciplinary Salivary Gland Society score from 65.92 +/- 28.63 to 3.84 +/- 9.59 for the submandibular gland (P < .001).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `sialolithiasis` → `xerostomia` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Objective salivary gland hypofunction is a documented, measured feature of obstructive salivary disease, and it reverses when the obstruction is relieved, which is what distinguishes a stone-driven route from a permanent sicca state. A systematic review of patient-reported outcome measures for salivary function identified 16 validated instruments across 2,059 abstracts screened and 133 full texts reviewed, of which SEVEN specifically assess xerostomia, four assess sialadenitis and two assess Sjogren's syndrome, and found the Xerostomia Inventory to be the most rigorously developed instrument, rated adequate in 6 of 7 COSMIN domains, while reporting notable limitations in content validity for all included tools (PMID 36606658). A prospective cohort of 41 patients with sialolithiasis obstructive sialadenitis showed measured whole-saliva output recovering after gland-sparing stone removal, from 2.21 to 3.42 g for the submandibular gland and from 1.87 to 2.92 g for the parotid at 12 months, alongside a parallel collapse of the Multidisciplinary Salivary Gland Society quality-of-life score from 65.92 to 3.84 for the submandibular gland (PMID 41213527). A prospective non-randomised study of 37 patients undergoing sialendoscopy for benign salivary obstruction, 64.5 percent of whom had sialolithiasis, found painful swelling symptoms occurring 4.5 times per week with a symptom duration of 23.5 months on average, and 80.6 percent of the sialolithiasis clinic reporting improved symptoms after sialendoscopy (p < 0.001), together with a NEGATIVE correlation between sialendoscopy satisfaction and xerostomia (p = 0.009) (PMID 34998366). Recorded as documented association only, with the xerostomia null from the third anchor carried openly on the face of the edge.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual, and the located evidence is genuinely split in a way that must not be smoothed over. The objective anchor is a treatment-response cohort rather than an incidence study, and its recovery figures describe gland function after relief of obstruction rather than the burden of dryness during obstruction, so it establishes that the stone drives the hypofunction without establishing how much dryness an individual stone produces (PMID 41213527). The subjective anchor is more troubling for a causal reading: although 80.6 percent of its sialolithiasis patients reported improved symptoms after sialendoscopy, the study found a NEGATIVE correlation between sialendoscopy satisfaction and xerostomia, meaning the patients whose complaint was dryness were the ones least helped, and the authors' own conclusion distinguishes a positive impact on quality of life in obstructive stone disease from a relative time-dependent indication for other causes of xerostomia that little improved satisfaction (PMID 34998366). The instrument review is a methodological systematic review of outcome measures rather than a clinical study, and it supplies the vocabulary and validated instruments rather than an effect estimate, while reporting that content validity was a notable limitation for all included tools (PMID 36606658). Individual claims therefore require a dated sialolithiasis diagnosis, a documented salivary flow measurement or a validated xerostomia instrument score with its date, a documented response to sialagogue therapy or hydration trial, and an assessment for the competing causes of dry mouth, because the located evidence shows dryness in a stone patient is frequently not what the stone explains.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 462.1 — Gulati A, Kidane J, Chang JL. Patient Reported Outcome Measures for Salivary Function: A Systematic Review. Laryngoscope. 2023 Aug;133(8):1796-1805. doi: 10.1002/lary.30550. PMID 36606658.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/36606658/
+- Source checked on: 2026-09-27
+- Locator: Laryngoscope. 2023;133(8):1796-1805. Systematic review per PRISMA of patient-reported outcome measures for salivary gland dysfunction, 2,059 abstracts screened and 133 full texts reviewed, COSMIN criteria; abstract states sixteen PROMs assessing xerostomia (n=7), sialadenitis (n=4), Sjogren's syndrome (n=2), Parkinson's-associated sialorrhea (n=2) and oral systemic sclerosis (n=1) were identified, the most rigorously developed PROM the Xerostomia Inventory was rated adequate in 6 out of 7 domains, and there were notable limitations in content validity for all tools.
+- Note under review: Systematic review of patient-reported outcome measures for salivary function, screening 2,059 abstracts and reviewing 133 full-text articles, identifying 16 validated instruments with more than one item: seven assessing xerostomia, four assessing sialadenitis, two assessing Sjogren's syndrome, two assessing Parkinson's-associated sialorrhea and one assessing oral systemic sclerosis, finding 11 instruments demonstrated very good internal consistency and 10 included test-retest data, rating the Xerostomia Inventory adequate in 6 of 7 COSMIN domains and the most rigorously developed, and concluding that the included tools showed variable ability to meet design and validation standards with notable limitations in content validity for all tools.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 462.2 — Sakr AA, Magdy EA, Mohamed SS, et al. Evaluation of Salivary Function Recovery Following Gland-Sparing Sialolithotomy: A Prospective Cohort Study. J Oral Maxillofac Surg. 2026 Mar;84(3):389-400. doi: 10.1016/j.joms.2025.10.010. PMID 41213527.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/41213527/
+- Source checked on: 2026-09-27
+- Locator: J Oral Maxillofac Surg. 2026;84(3):389-400. Prospective single-arm cohort, 41 patients with sialolithiasis obstructive sialadenitis, sialometry and MSGS questionnaire at 3, 6 and 12 months postoperatively, covariates age, sex, stone size/number/location, gland affected and surgical approach; abstract states mean overall sialometry improved from 2.21 +/- 1.02 g to 3.42 +/- 1.23 g for submandibular and 1.87 +/- 1.48 g to 2.92 +/- 1.28 g for parotid at 12 months (P < .001) and that secondary outcome showed significant subjective improvement in total MSGS score.
+- Note under review: Prospective cohort of 41 patients (56.1% male, mean age 37.88 +/- 12.79 years) with sialolithiasis obstructive sialadenitis, excluding patients with acute sialadenitis, prior gland excision or radiographic gland atrophy, showing mean whole-saliva sialometry improving from 2.21 +/- 1.02 g preoperatively to 3.42 +/- 1.23 g for the submandibular gland and from 1.87 +/- 1.48 g to 2.92 +/- 1.28 g for the parotid at 12 months after gland-sparing sialolithotomy (P < .001), with the Multidisciplinary Salivary Gland Society score improving from 65.92 +/- 28.63 to 3.84 +/- 9.59 for the submandibular and 72.42 +/- 38.27 to 7.11 +/- 12.13 for the parotid (P < .001).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 462.3 — Melo GM, Neves MC, Rosano M, et al. Quality of life after sialendoscopy: prospective non-randomized study. BMC Surg. 2022 Jan 8;22(1):11. doi: 10.1186/s12893-021-01462-2. PMID 34998366.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/34998366/
+- Source checked on: 2026-09-27
+- Locator: BMC Surg. 2022;22(1):11. Prospective non-randomized study, level of evidence 2b, 37 sialendoscopies, Brazilian Clinical Trials Registry ReB: RBR-6p8zfs; abstract states 64.5% were sialolithiasis and 35.4% post-radioiodine with 4.5 times/week painful swelling symptoms and 23.5 months symptom duration, 80.6% reported improved symptoms after sialendoscopy in the sialolithiasis clinic (p < 0.001), and that there was NO CORRELATION in sialendoscopy satisfaction in xerostomia patients (p = 0.009), concluding sialendoscopy is indicated for obstructive sialolithiasis with positive impact on quality of life but only a relative time-dependent indication for other xerostomia causes that little improved satisfaction.
+- Note under review: Prospective non-randomized study of 37 sialendoscopies for benign salivary obstructive disease, most patients young and female, with 64.5% sialolithiasis and 35.4% post-radioiodine, reporting painful swelling symptoms 4.5 times per week and a symptom duration of 23.5 months, a visual analogue scale falling from 7.42 to 1.29 (p < 0.001), 80.6% of the sialolithiasis clinic reporting improved symptoms after sialendoscopy (p < 0.001), the physical pain and psychological discomfort domains improving (p < 0.001), a positive correlation between sialendoscopy and obstructive stone disease (p < 0.001), and a NEGATIVE correlation between sialendoscopy satisfaction and xerostomia (p = 0.009).
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `sialadenitis` → `xerostomia` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Reduced salivary flow is the measurable functional consequence of salivary gland inflammation, and the located evidence supplies an objective gland-level measurement rather than a subjective report. A study quantifying fibrosis in labial salivary glands of 20 female patients with Sjogren's syndrome using Masson's trichrome staining found that RELATIVE INTERSTITIAL FIBROSIS AREA WAS SIGNIFICANTLY CORRELATED WITH UNSTIMULATED WHOLE SALIVA FLOW RATE, and concluded that LOSS OF GLAND FUNCTION MAY BE ASSOCIATED WITH SALIVARY GLAND FIBROSIS, likely driven by a unique set of genes mainly expressed by fibroblasts, with single-cell RNA sequencing suggesting the correlated genes are expressed by gland fibroblasts in a permissive chromatin state (PMID 34400910). A study of 244 patients comprising 118 with Sjogren's syndrome, 30 with Sjogren's syndrome at higher risk of lymphoma, 26 with Sjogren's syndrome with lymphoma, and 70 with non-Sjogren's sicca disease controls, measured unstimulated whole salivary flow rate, parotid flow rate, a clinical oral dryness score and an ultrasound score, and found ALL assessments showed a significant difference between the overall Sjogren's group and the disease control group, attributed mainly to the LYMPHOMA SUBGROUPS (p < 0.0001 for all parameters), with a significant correlation (Spearman r = 0.7, p < 0.0001) and 87.3 percent agreement between the ultrasound score and the histology focus scores of 119 patients (PMID 30120806). A systematic review of patient-reported outcome measures identified 16 validated instruments of which SEVEN specifically assess xerostomia, four assess sialadenitis and two assess Sjogren's syndrome, with the Xerostomia Inventory the most rigorously developed and rated adequate in 6 of 7 COSMIN domains, while reporting notable limitations in content validity for all included tools (PMID 36606658). Recorded as documented association only, with the autoimmune subtype that supplies all three anchors disclosed on the face of the edge.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual, and the located evidence carries a SCOPE LIMITATION that must be stated rather than generalised away: all three anchors describe autoimmune or Sjogren's-type salivary gland inflammation, whereas the catalog identity sialadenitis is the generic inflammatory label that also covers obstructive, bacterial, viral and radiation-induced disease, so the located evidence supports the route in a subtype rather than in the identity as a whole. The fibrosis study is a small cross-sectional analysis of 20 female patients with a correlation coefficient, and a correlation between fibrosis and flow does not establish that fibrosis causes the flow reduction, nor that either is the presenting problem (PMID 34400910). The 244-patient study is likewise cross-sectional, reports that the difference between the Sjogren's group and controls was attributed MAINLY TO THE LYMPHOMA SUBGROUPS rather than distributed across the disease, which is a striking null for the uncomplicated disease, and its own design compares disease groups rather than tracking gland inflammation to a later dryness outcome (PMID 30120806). The instrument review supplies measurement vocabulary and validated tools rather than an effect estimate, and reports that content validity was a limitation for every tool it identified (PMID 36606658). Individual claims require a dated sialadenitis diagnosis with the aetiology stated, since the located anchors are specific to the autoimmune subtype, plus a documented objective salivary flow measurement or a validated instrument score, an assessment for the competing obstructive and medication-related causes, and a documented ocular assessment if a systemic autoimmune cause is suspected, because dry eye is the paired feature of the subtype supplying the evidence and its presence changes the interpretation entirely.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 463.1 — Yin H, Pranzatelli TJF, French BN, et al. Sclerosing Sialadenitis Is Associated With Salivary Gland Hypofunction and a Unique Gene Expression Profile in Sjögren's Syndrome. Front Immunol. 2021;12:699722. doi: 10.3389/fimmu.2021.699722. PMID 34400910.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/34400910/
+- Source checked on: 2026-09-27
+- Locator: Front Immunol. 2021;12:699722. Cross-sectional analysis of paraffin-embedded labial salivary gland slides from 20 female Sjogren's syndrome patients, RIFA quantified by digital scanning of Masson's trichrome sections, microarray gene expression and DNase I hypersensitive sites sequencing; abstract states RIFA was significantly correlated with unstimulated whole saliva flow rate in SS patients, sixteen genes were significantly and positively correlated with RIFA, and that loss of gland function may be associated with salivary gland fibrosis.
+- Note under review: Study quantifying relative interstitial fibrosis area in Masson's trichrome-stained labial salivary gland sections from 20 female Sjogren's syndrome patients drawn from the Sjogren's International Collaborative Clinical Alliance, finding that RIFA WAS SIGNIFICANTLY CORRELATED WITH UNSTIMULATED WHOLE SALIVA FLOW RATE, that sixteen genes were significantly and positively correlated with RIFA and were distinct from differentially expressed genes in lung epithelium from idiopathic pulmonary fibrosis patients, and concluding that loss of gland function may be associated with salivary gland fibrosis likely driven by a unique set of genes mainly expressed by fibroblasts.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 463.2 — Jazzar A, Manoharan A, Brown JE, et al. Predictive value of ultrasound scoring in relation to clinical and histological parameters in xerostomia patients. Oral Dis. 2019 Jan;25(1):150-157. doi: 10.1111/odi.12959. PMID 30120806.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/30120806/
+- Source checked on: 2026-09-27
+- Locator: Oral Dis. 2019;25(1):150-157. Cross-sectional diagnostic-accuracy study, 244 patients (118 SS, 30 SS at higher lymphoma risk, 26 SS with lymphoma, 70 non-SS sicca controls), UWSFR, PFR, CODS and USS; abstract states all assessments showed a significant difference between the overall SS group and the disease control group attributed mainly to the lymphoma subgroups of SS (p < 0.0001 for all parameters) and that there was a significant correlation (Spearman r = 0.7, p < 0.0001) and 87.3% agreement between USS and the histology focus scores of 119 patients.
+- Note under review: Study of 244 patients comprising 118 with Sjogren's syndrome, 30 with Sjogren's syndrome at higher risk of lymphoma, 26 with Sjogren's syndrome with lymphoma, and 70 non-Sjogren's sicca disease controls, measuring unstimulated whole salivary flow rate, parotid flow rate, a clinical oral dryness score and an ultrasound score, finding that ALL assessments showed a significant difference between the overall Sjogren's group and the disease control group attributed MAINLY TO THE LYMPHOMA SUBGROUPS (p < 0.0001 for all parameters), and reporting a significant correlation (Spearman r = 0.7, p < 0.0001) and 87.3% agreement between the ultrasound score and the histology focus scores of 119 patients.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 463.3 — Gulati A, Kidane J, Chang JL. Patient Reported Outcome Measures for Salivary Function: A Systematic Review. Laryngoscope. 2023 Aug;133(8):1796-1805. doi: 10.1002/lary.30550. PMID 36606658.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/36606658/
+- Source checked on: 2026-09-27
+- Locator: Laryngoscope. 2023;133(8):1796-1805. Systematic review per PRISMA, COSMIN criteria; abstract states sixteen PROMs assessing xerostomia (n=7), sialadenitis (n=4), Sjogren's syndrome (n=2), Parkinson's-associated sialotra (n=2) and oral systemic sclerosis (n=1) were identified, the Xerostomia Inventory was rated adequate in 6 out of 7 domains, and there were notable limitations in content validity for all tools.
+- Note under review: Systematic review of patient-reported outcome measures for salivary function, screening 2,059 abstracts and reviewing 133 full-text articles, identifying 16 validated instruments of which seven assess xerostomia, four assess sialadenitis, two assess Sjogren's syndrome, two assess Parkinson's-associated sialorrhea and one assesses oral systemic sclerosis, finding 11 instruments with very good internal consistency and 10 with test-retest data, rating the Xerostomia Inventory adequate in 6 of 7 COSMIN domains as the most rigorously developed, and concluding the included tools showed variable ability to meet design and validation standards with notable limitations in content validity for all tools.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `sialadenitis` → `non-hodgkins-lymphoma` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Lymphoepithelial sialadenitis is the recognised precursor lesion of salivary-gland MALT lymphoma, and the located register study quantifies a sixteen-fold excess of non-Hodgkin's lymphoma in the classification group that this sialadenitis subtype defines. A linked register study using the Malmo Primary Sjogren's Syndrome Register, the Swedish Cancer Register and the Cause-of-Death Register, in 507 patients with a median follow-up of 8 years (range 1 month to 19 years), found standardised incidence ratios of 1.42 (95% CI 0.98 to 2.00) for malignancies in total and 15.57 (95% CI 7.77 to 27.85) for NON-HODGKIN'S LYMPHOMAS in those fulfilling the American-European Consensus Criteria (n = 286), whereas in 221 patients with non-AECC sicca no lymphoproliferative neoplasms were detected at all and the standardised incidence ratio for malignancy of any kind was 0.77 (95% CI 0.41 to 1.32), with significant predictors of lymphoproliferative disease being purpura or skin vasculitis (HR 4.64, 95% CI 1.13 to 16.45), low complement C3 (HR 6.18, 95% CI 1.57 to 24.22), low C4 (HR 9.49, 95% CI 1.94 to 46.54), CD4+ T lymphocytopenia (HR 8.14, 95% CI 2.10 to 31.53) and a CD4+/CD8+ ratio of 0.8 or less (HR 10.92, 95% CI 2.80 to 41.83), and 7 of 12 (58 percent) of the non-Hodgkin's lymphomas being diffuse large B-cell lymphomas (PMID 16284097). A 244-patient study included 30 patients with Sjogren's syndrome AT HIGHER RISK OF LYMPHOMA and 26 with Sjogren's syndrome WITH LYMPHOMA, and found that all objective assessments separated the overall disease group from sicca controls ATTRIBUTED MAINLY TO THE LYMPHOMA SUBGROUPS (p < 0.0001 for all parameters) (PMID 30120806). A histopathology report describes the spectrum directly: the reactive lesion LYMPHOEPITHELIAL SIALADENITIS may be associated with Sjogren's syndrome or occur as an isolated salivary gland enlargement, patients with LESA or Sjogren's syndrome have a PARTICULARLY HIGH RISK of subsequently developing lymphoma which is a low-grade mucosa-associated lymphoid tissue lymphoma of the salivary gland, and the report documents parotid primary non-Hodgkin's lymphoma arising in the background of LESA with transformation from low-grade to high-grade B-cell lymphoma of MALT type (PMID 20551561). Recorded as documented association only, with the absolute risk deliberately not stated alongside the relative risk.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation is established for any individual, and the located evidence supports a risk-stratification claim rather than a causal one. The register study is observational and reports STANDARDISED INCIDENCE RATIOS, which are relative to a background population and are explicitly NOT absolute risks, and the total-malignancy confidence interval of 0.98 to 2.00 includes 1, so the fifteen-fold figure applies to non-Hodgkin's lymphoma specifically and not to cancer generally; the authors further state that it is unclear from their own comorbidity data whether specific conditions are a consequence of the disease or represent shared aetiology or pathogenetic susceptibility, which is the same interpretive caution that applies here (PMID 16284097). The register enrolled patients meeting consensus criteria for a systemic autoimmune disease, so the exposed group is a Sjogren's cohort and not a cohort of sialadenitis, and the control group of non-AECC sicca patients is a group of symptomatic patients with a DIFFERENT disease rather than a healthy comparison, which means the contrast that produces the fifteen-fold figure is between two sick populations (PMID 16284097). The histopathology report is a SINGLE-CASE report whose evidential weight is the spectrum description rather than any estimate, and the 58 percent diffuse large B-cell fraction in the register means the majority of the excess risk is not the indolent MALT lesion that the case illustrates (PMID 20551561). Individual claims require a dated sialadenitis diagnosis with the aetiology stated as autoimmune lymphocytic or lymphoepithelial type, documented lymphadenopathy or gland enlargement progression if present, and a documented determination by the reviewing clinician that a lymphoma arose in the affected gland, because a standardised incidence ratio of 15.57 is a population statistic and no located anchor supports applying it to an individual gland.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 464.1 — Theander E, Henriksson G, Ljungberg O, et al. Lymphoma and other malignancies in primary Sjögren's syndrome: a cohort study on cancer incidence and lymphoma predictors. Ann Rheum Dis. 2006 Jun;65(6):796-803. PMID 16284097.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/16284097/
+- Source checked on: 2026-09-27
+- Locator: Ann Rheum Dis. 2006;65(6):796-803. Linked register study, 507 patients, median follow-up 8 years, standardised incidence ratios versus the background population, detected lymphomas reclassified per WHO; abstract states SIRs for malignancies in total and for NHL were 1.42 (0.98 to 2.00) and 15.57 (7.77 to 27.85) in AECC patients, that no lymphoproliferative neoplasms were detected in non-AECC sicca patients, and concludes a 16-fold increased risk for development of NHL was found with CD4+ T lymphocytopenia an additional strong risk factor.
+- Note under review: Linked register study using the Malmo Primary Sjogren's Syndrome Register, the Swedish Cancer Register and the Cause-of-Death Register, including 507 patients with a median follow-up of 8 years (range 1 month to 19 years), finding standardised incidence ratios of 1.42 (95% CI 0.98 to 2.00) for malignancies in total and 15.57 (95% CI 7.77 to 27.85) for non-Hodgkin's lymphomas in the 286 patients fulfilling the American-European Consensus Criteria, compared with 221 non-AECC sicca patients in whom the standardised incidence ratio for malignancy of any kind was 0.77 (95% CI 0.41 to 1.32) and NO lymphoproliferative neoplasms were detected, with Cox regression identifying purpura/skin vasculitis (HR 4.64, 95% CI 1.13-16.45), low C3 (HR 6.18, 95% CI 1.57-24.22), low C4 (HR 9.49, 95% CI 1.94-46.54), CD4+ T lymphocytopenia (HR 8.14, 95% CI 2.10-31.53) and CD4+/CD8+ ratio <=0.8 (HR 10.92, 95% CI 2.80-41.83) as significant predictors, and 7/12 (58%) of the non-Hodgkin's lymphomas being diffuse large B cell lymphomas.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 464.2 — Jazzar A, Manoharan A, Brown JE, et al. Predictive value of ultrasound scoring in relation to clinical and histological parameters in xerostomia patients. Oral Dis. 2019 Jan;25(1):150-157. doi: 10.1111/odi.12959. PMID 30120806.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/30120806/
+- Source checked on: 2026-09-27
+- Locator: Oral Dis. 2019;25(1):150-157. Cross-sectional diagnostic-accuracy study, 244 patients including 30 SS patients at higher risk of lymphoma and 26 with lymphoma, 70 non-SS sicca disease controls; abstract states all assessments showed a significant difference between the overall SS group and the disease control group attributed mainly to the lymphoma subgroups of SS (p < 0.0001 for all parameters) and that there was a significant correlation (Spearman r = 0.7, p < 0.0001) and 87.3% agreement between USS and the histology focus scores of 119 patients.
+- Note under review: Study of 244 patients comprising 118 with Sjogren's syndrome, 30 with Sjogren's syndrome at higher risk of lymphoma, 26 with Sjogren's syndrome with lymphoma, and 70 non-Sjogren's sicca controls, in which all assessments of unstimulated whole salivary flow rate, parotid flow rate, clinical oral dryness score and ultrasound score showed a significant difference between the overall Sjogren's group and the disease control group ATTRIBUTED MAINLY TO THE LYMPHOMA SUBGROUPS (p < 0.0001 for all parameters), with a significant correlation (Spearman r = 0.7, p < 0.0001) and 87.3% agreement between the ultrasound score and the histology focus scores of 119 patients.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 464.3 — Agale SV, D'Costa GF, Hastak MS, et al. Primary non-Hodgkin's lymphoma of the salivary gland: a spectrum of lymphoepithelial sialadenitis, low-grade B-cell lymphoma of mucosa-associated lymphoid tissue with transformation to high-grade lymphoma. Indian J Pathol Microbiol. 2010 Apr-Jun;53(2):364-7. doi: 10.4103/0377-4929.64351. PMID 20551561.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/20551561/
+- Source checked on: 2026-09-27
+- Locator: Indian J Pathol Microbiol. 2010;53(2):364-367. Single-case histopathology report; abstract states the reactive lesion lymphoepithelial sialadenitis may be associated with Sjogren's syndrome or may occur as an isolated salivary gland enlargement, that patients with LESA/SS have a particularly high risk of subsequently developing lymphoma which is a low-grade MALT type lymphoma of the salivary gland, and documents transformation from low grade to high grade B cell lymphoma of MALT type.
+- Note under review: Single-case histopathology report describing the spectrum of primary non-Hodgkin's lymphoma of the salivary gland, stating that the reactive lesion LYMPHOEPITHELIAL SIALADENITIS may be associated with Sjogren's syndrome or may occur as an isolated salivary gland enlargement, that patients with lymphoepithelial sialadenitis or Sjogren's syndrome have a PARTICULARLY HIGH RISK of subsequently developing lymphoma which is a low-grade mucosa-associated lymphoid tissue lymphoma of the salivary gland, and documenting a rare case of primary non-Hodgkin's lymphoma of the parotid gland arising in the background of lymphoepithelial sialadenitis with transformation from low grade to high grade B cell lymphoma of MALT type.
 - Current state: `verified: false` — pending qualified-human decision
 
 **Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.

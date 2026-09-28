@@ -16,16 +16,16 @@
     "citationPromotionMustAtomicallyUpdateKbAndMasterSourceState": true
   },
   "counts": {
-    "liveSourceReferenceUses": 1548,
+    "liveSourceReferenceUses": 1569,
     "activeSourceEntities": 346,
-    "pendingVerificationSourceEntities": 1012,
+    "pendingVerificationSourceEntities": 1028,
     "activeClinicalSourceEntities": 345,
-    "pendingClinicalSourceEntities": 1012,
+    "pendingClinicalSourceEntities": 1028,
     "activeLegalAuthorityEntities": 1,
     "retiredOnlySourceEntities": 1,
     "supersededUnverifiedSourceEntities": 7,
     "bibliographicCorrectionOnlyEntities": 1,
-    "totalSourceEntitiesIncludingLineage": 1367,
+    "totalSourceEntitiesIncludingLineage": 1383,
     "retiredVerifiedRelationshipSourceUses": 6
   },
   "retirementLedger": {
@@ -178,8 +178,8 @@
         }
       ],
       "rawReferenceHashes": [
-        "819c1bab702766dd1611b6359fd7e104987d8afb81f27f9750d4ed9abd18ea97",
-        "e0145088141f9c38f44e2d5aa7d1daae9ec0833a1a4cf71318a083163181f18f"
+        "e0145088141f9c38f44e2d5aa7d1daae9ec0833a1a4cf71318a083163181f18f",
+        "819c1bab702766dd1611b6359fd7e104987d8afb81f27f9750d4ed9abd18ea97"
       ]
     },
     {
@@ -620,7 +620,6 @@
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "5a2752b8ca4098436413a15b106f1952ee2d3cf2079434a8a7da7b739c48d912",
         "698945e125dab4d95dd12df2bb4818bf6da24f203fcc89aead2b1a59df556537"
       ],
       "verificationState": {
@@ -3257,8 +3256,8 @@
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "beeb4aae4ce8900047fa981668f0072d31cc7cc8f8ab4170db3b94596e1549e4",
-        "ac670e861bb21238ed5324de1af3b7fd492b00a48b16867ac64a786caba47327"
+        "ac670e861bb21238ed5324de1af3b7fd492b00a48b16867ac64a786caba47327",
+        "beeb4aae4ce8900047fa981668f0072d31cc7cc8f8ab4170db3b94596e1549e4"
       ]
     },
     {
@@ -5372,8 +5371,8 @@
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "42c50d62151aec47aa824d1e73721b5bc90d8b4631d08928ae293b702ef4ed7b",
-        "b95e9a00700a4ac8843c1e1f0a2c5eae65b4e60ea3f6fd1606442d26605b557f"
+        "b95e9a00700a4ac8843c1e1f0a2c5eae65b4e60ea3f6fd1606442d26605b557f",
+        "42c50d62151aec47aa824d1e73721b5bc90d8b4631d08928ae293b702ef4ed7b"
       ]
     },
     {
@@ -5794,8 +5793,8 @@
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "013675ef96b61905f201833302ad81e5e0c04e85e89015511117e276a3913667",
-        "1ef6c820913bc24a6ffe370e7c70740dd0061c6a79c8d154ea135962a40b933c"
+        "1ef6c820913bc24a6ffe370e7c70740dd0061c6a79c8d154ea135962a40b933c",
+        "013675ef96b61905f201833302ad81e5e0c04e85e89015511117e276a3913667"
       ]
     },
     {
@@ -6458,8 +6457,8 @@
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "2b5dede4b1650284786b82a6aa51456d714b0dbdce667cd633df7caf792a0616",
-        "93a5c7f1c2049264b7a825f215d5576d255caf12e1618a31b424710cd3bbf984"
+        "93a5c7f1c2049264b7a825f215d5576d255caf12e1618a31b424710cd3bbf984",
+        "2b5dede4b1650284786b82a6aa51456d714b0dbdce667cd633df7caf792a0616"
       ]
     },
     {
@@ -7356,12 +7355,12 @@
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "3579a40f19d398ebbf0ec16fc6b0bc440f7ee8668092623ec5e260c07a71711c",
         "7743c8af74785e39100b25a35252227895f29cd7d035f2777b49897c70ef09fd",
-        "2dd0e12a2b65d04fef810acd259487f4e513878e98d4808f5fcd991c6a023c47",
-        "9f3349137b1ea1387993a0312299940703044023aa88640b843f19a014babf1a",
-        "05a57a99b5d9c17b1a392a3f8c5e9d4cdd50ba737672898c610164f4ac1df3d8",
         "090f7da239a8f3374f7073cd872e8528cf0ff836620abf09271a26f2c761dc0a",
+        "9f3349137b1ea1387993a0312299940703044023aa88640b843f19a014babf1a",
+        "3579a40f19d398ebbf0ec16fc6b0bc440f7ee8668092623ec5e260c07a71711c",
+        "2dd0e12a2b65d04fef810acd259487f4e513878e98d4808f5fcd991c6a023c47",
+        "05a57a99b5d9c17b1a392a3f8c5e9d4cdd50ba737672898c610164f4ac1df3d8",
         "7a6cd4a7e58592a3fd2088ee9d37aec5770405a912ef6731d9ee75e3ce5e6197"
       ]
     },
@@ -7459,8 +7458,8 @@
       "retiredUses": [],
       "rawReferenceHashes": [
         "c1d6b22477b8e66b6eeda5b685a4d230aee8b323b91dff4afd7cbb4444910c42",
-        "3ab26b12d5c2c7d7f7194cedaf45206cfc9d4559acc67391810d8e3fcff276d9",
         "29c0842d3633e04347bf2ed78936679b967c233fee6bf683478901458e966b0c",
+        "3ab26b12d5c2c7d7f7194cedaf45206cfc9d4559acc67391810d8e3fcff276d9",
         "d1424fe1e873c99723145feb7c818092e378a37dd59689ce384c657314316e97"
       ]
     },
@@ -7770,8 +7769,8 @@
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "07671b04f8bfcf581043c2d970c9e221768d3258b5978fdf0ef4276ca388832d",
-        "ddacdd4fa3c8e905e7764aa1dc2306923969a0d0dd180e3828ad6f2c4ec1db1c"
+        "ddacdd4fa3c8e905e7764aa1dc2306923969a0d0dd180e3828ad6f2c4ec1db1c",
+        "07671b04f8bfcf581043c2d970c9e221768d3258b5978fdf0ef4276ca388832d"
       ]
     },
     {
@@ -12312,14 +12311,10 @@
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "2415eb0015237e4ad5d97360508aa155c19ce351f0363556e596544fffc2fde3",
-        "e891b9e68f4b304f6b39e5fbc5a70b03d347a45ef1420d381b296b7aa83bb6b2",
-        "e891b9e68f4b304f6b39e5fbc5a70b03d347a45ef1420d381b296b7aa83bb6b2",
-        "e891b9e68f4b304f6b39e5fbc5a70b03d347a45ef1420d381b296b7aa83bb6b2",
         "e891b9e68f4b304f6b39e5fbc5a70b03d347a45ef1420d381b296b7aa83bb6b2",
         "0d38d4ad8af67f7eca6927bf726e9b2dad556f4e543765328cfd2a576c4040db",
         "1d305c84a2760aafa2c3e7aca9c08e30550eea370ad58f9cf21da82d7f13af30",
-        "84be0845cc26daa1be02e0f5770dff39d67fd1eac0419ed4d6b1a8f3dac333c7"
+        "7a71fa06398c22f39d8f982718ff890bdc770d2489b40424c70803ecf6608e67"
       ],
       "verificationState": {
         "qualifiedHumanCitationReviewRequired": false,
@@ -14019,7 +14014,6 @@
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "7b4c9281310a8f4973564986b50bb9b85e44be691038fc5726c8e8361fbe9658",
         "5f879c5f3b491441c3846906dca275bd4d41abcd45137f9a4252797963876068"
       ]
     },
@@ -14055,7 +14049,6 @@
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "ba2f224a23f8d69539be4ecced9369f591123e3a7140bd113204871a5168d576",
         "8126deab16ef9d07d09cf22c77f40ea546164495ee3bdfa6ead718a90ccb5d7f"
       ]
     },
@@ -14091,8 +14084,6 @@
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "4fcbffff661df6979938fc2dce1b765549b4822bab4e8ecec491ddee168e0d95",
-        "f92424c46873fcc613f2ef4067f958be524e921b64989ebb3fbd951ebfa65f53",
         "28b8480dddd041f949088a219b4b9bf4dc6690befc53edcbe10dbf354a81ae8b"
       ]
     },
@@ -14128,8 +14119,6 @@
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "db55882d02e5c138dacbabbd4cb34f39a4d8193480a90cd897e807e926c2e3a1",
-        "efabbf17e319ac1030ea6a1bcf5dd69bae651cbf3829d9fb7949e9354a1b014d",
         "361db12a70a7c38c7db6cb11e87ad84a1ee7263e7a798d17d3d972efb8c0f20f"
       ]
     },
@@ -14165,7 +14154,6 @@
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "74e57164ae47a1897a303512b34d9e034559d49a55105ed2bcfae06130eba2a6",
         "c7b57e3ec5862b9353f70845ab821cb2ca4495af7578ba0d352e08446800b34b"
       ]
     },
@@ -14201,7 +14189,6 @@
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "44c78bbaac0e46e910b8bcf5e282dd24f7ccf8b4b2bb129a2060d5376064386a",
         "c9440a2d7b85e7b2da2108ddb3b4f8276c35cc70cd45a420934595ab0dfda625"
       ]
     },
@@ -14237,7 +14224,6 @@
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "283bffb4921e657a1b67eee15d1b06921f07fced2b5df21a2ac8e346d1b26640",
         "88289e5474d288e6ec7c52ce5fee17789cda90b00b385ff20311e88149eee380"
       ]
     },
@@ -14273,7 +14259,6 @@
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "6c704c6c9814589af0b4a86ec4364c59648ac843e74f4acce2bc16a90ad4f10c",
         "bcd611efcc38a1648e56070706c2f0641d4393110d913ee91eed8738bcfeb7af"
       ]
     },
@@ -17970,7 +17955,6 @@
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "f87dfca4119bf146baa3859ee63cd4a700e1d61ff38cbdf6e1b355168ada17d5",
         "0a55b21f5ca1cec680aea23e8af25fe42524b1b7a8564569a83dcb605138cde7"
       ]
     },
@@ -23081,11 +23065,9 @@
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "4e23d540f0fc2b973bcf5106b41053d51fbc5840d57844a180a82f265b543ef4",
-        "ebc4c349dc6ef36f040f97c8c40c28e2774a910eadc83e3c35de48039f106a56",
         "75fbdab44e4e7d7f8a63c3c27709e0722934a78de928cd919ae26050c31b90a1",
-        "239556351a229b99867652fa2b9f57eae5e216519e334938d313334fb34f8678",
-        "4e2198a3c26fbe6d35e9c413000ebf8671639714fd895ef09a032b65bbba612a"
+        "c8598a84ee4519412bb2afd1aca7323a6bd5c6d39d49c14a058ddc94561de17d",
+        "35aedce539b7a3797ef750de5e35ff4c9da53c1565f817eb11e953690195006d"
       ]
     },
     {
@@ -38581,7 +38563,7 @@
       "sourceCheckedOnValues": [
         "2026-09-26"
       ],
-      "liveUsageCount": 2,
+      "liveUsageCount": 3,
       "liveUses": [
         {
           "relationshipId": "rel-mucocele-to-sialadenitis",
@@ -38594,12 +38576,19 @@
           "primaryId": "salivary-gland-cancer",
           "targetId": "xerostomia",
           "sourceIndex": 1
+        },
+        {
+          "relationshipId": "rel-sialolithiasis-to-sialadenitis",
+          "primaryId": "sialolithiasis",
+          "targetId": "sialadenitis",
+          "sourceIndex": 0
         }
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
         "3b1b1938a88c2dbfed2ff3f5f6446eb44a30f558a1a910fbad7a4d1ce1630147",
-        "29443874f7ee709f8926150c773b692d622b2616c2e64b1bf68069c4937beb37"
+        "6978838fda2a7782121ae6fe9b2a1221060da0f85f2716ed382a7eb834d47be9",
+        "0ed5e73cb77bc18924b6acc845abe0aa8bac994c03b56103d7681ab60ff71603"
       ]
     },
     {
@@ -38623,18 +38612,25 @@
       "sourceCheckedOnValues": [
         "2026-09-26"
       ],
-      "liveUsageCount": 1,
+      "liveUsageCount": 2,
       "liveUses": [
         {
           "relationshipId": "rel-mucocele-to-sialadenitis",
           "primaryId": "mucocele",
           "targetId": "sialadenitis",
           "sourceIndex": 1
+        },
+        {
+          "relationshipId": "rel-sialolithiasis-to-sialadenitis",
+          "primaryId": "sialolithiasis",
+          "targetId": "sialadenitis",
+          "sourceIndex": 1
         }
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "6d62227c4b5e5722e96f5538d97024fa18b2c0c8d88a9aed47ebedcc77dd9bc9"
+        "6d62227c4b5e5722e96f5538d97024fa18b2c0c8d88a9aed47ebedcc77dd9bc9",
+        "09f31dd46024894445d57763905b5d219666eb8ecffb73592cc39f99b3229baf"
       ]
     },
     {
@@ -48286,8 +48282,8 @@
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "e7e94581bf56625a1994cacc379153d5ce31fed064a09805a99a45c8bd5204e2",
-        "bb19d23824038bfd1a641ddbbcf1e8c105f6440143678e28d0269d55a76bfb56"
+        "d2393608289ee36bdf2a8d1d851cd8f4a00722f3faed8f6ad05bb5948caa2991",
+        "f53a25b7e1ef1e0eb5e54a1cf36adbe2cb39cd6d86daa5823de81dfc666ceffd"
       ]
     },
     {
@@ -48328,8 +48324,8 @@
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "f080bfb364b47250cd4b16520f8a57df708ac746b22663674e0a1a7897b42ae6",
-        "3ff89c5d328bf5c7fbc1de5ad6c2dc133c68747ebc958b39599387396a889f76"
+        "ff9b58c97612aa6222a7d4aac55624279472b47e08d3d7f66857f3a04dc5e851",
+        "577259d1cb064351ec73a8039e77b3badaade11300f74672263e839cc012cad7"
       ]
     },
     {
@@ -48370,8 +48366,8 @@
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "e5d5d4e00b7f5c685ed55440d815c10ce529caa3ff69f51ff6bfa87ab21c5c1f",
-        "25e11cff2a7e9811f7dfa8f22092105019fec93458b17bc20e8652bbe69721e3"
+        "dce13325f11be689b584a03361a797ddb8230d13e6d56f03c07284d1d2996d4f",
+        "f2ca89e4fd33b1cc65f29a9f60cf7765d2223e9c073eb4b9a9bee38118a6d58e"
       ]
     },
     {
@@ -48418,9 +48414,9 @@
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "0b1514f83dbc395c7ef20ee2b6f0619154d05a2e5ae52dce577e86262c478b7e",
-        "7bc6124a5d7eeaf2321d78d608e0af75a73013aca4f111a69f71d893dfed2ee6",
-        "eda3b833455c42813c8fb1373e75d233f03337057af5598ebfe708a5bdf3ca2c"
+        "e3ab1ef107d39f091b5c702feb2d4907cffa8914e22ae2e69d97c864f1983641",
+        "74aa648a704f8cee35fee647a5a8f6a8bf7a6c1c9f57f8d825ab76bcb395e3de",
+        "5f002cbc4e94715a85e3572e04e610b085b384358a364bd70ec5199034645da7"
       ]
     },
     {
@@ -48461,8 +48457,8 @@
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "8e70c2a2138adaf5b2504c97b672ff993fa06879264429ac7c9124918c696c61",
-        "05369b0e1e828ea2c5fb158d65bb16286c274e0e666d65befc82fe5c5f09e8b0"
+        "53e38b11431070860ae8a3b7be5574930c4ff55f17f4019b1debd3e933923493",
+        "d346a3c75a353a2d45b7e120ff0c807939dc8d66c4954faa9cd0d012faef9779"
       ]
     },
     {
@@ -48497,7 +48493,7 @@
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "ffbb971c8afc03a386f4c40112c0ebde90a0eff09745867b2d69e5d3c1d73c00"
+        "2c8624515aa947bee608d57511512cff490f2b39045ddf1507ab85324b022d81"
       ]
     },
     {
@@ -48532,7 +48528,7 @@
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "a22ffe84cf9a1266a1f6ebf845b81bc755682dfdb907f4c6f99b379e7f88eda5"
+        "45804a49782b4b6bb1abf016c346b85401d81d6fdce749da114f2c6bd84b947c"
       ]
     },
     {
@@ -48567,7 +48563,7 @@
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "dea352b8d150f39d5046fb6be3b594025247e87c70630c927fec19bbb3356d83"
+        "97ef7711ed4a925746daa2bcd1adefb1fa4a003881d97dc560d3cd4ae606afa9"
       ]
     },
     {
@@ -48608,8 +48604,8 @@
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "be11730158e9dde48634fcf1c6d65faae1369d6142476afea3bf89caacb681a4",
-        "3348cef744b306e99c1710fae34fbb1d2d879acddf2b4680f7b03e98cd87ee14"
+        "7d291b4d28ca45f267b577abfdf2b07a1575d9a362908d4b6b65dd9c74c8639d",
+        "4512ff73f966d756a9a962d069f8c13e127d6e470131a82c8fa9fdd020b74564"
       ]
     },
     {
@@ -48650,8 +48646,8 @@
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "1794572d3907f3b3f8a4ea938757f8cbae5576eb0d1735e5e314f3edce951423",
-        "24269e3da4766308bea45e12d0bc92a53a6b8bb46693d9cd309483b3e4e3cd72"
+        "fe04c950eb31ad4f99710177b9528c791814907b3fb69f469edfa37071c547f0",
+        "21062feeea82d511d4d1013d435134288e4e8dd8dc8371c79b34e651e1529259"
       ]
     },
     {
@@ -48686,7 +48682,7 @@
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "f058bff0555f6422cfa1b3a8a76b5d64b0143ac7eb6cd3496cc9e7df0fbce714"
+        "2357aa3603848f786310c27c829b49cd0875ae3dd24548981d2733f80c8b5e09"
       ]
     },
     {
@@ -48721,7 +48717,7 @@
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "e392fcbd64d4018b95423187e30ad900c728e3a5ae7f94e88506655034d23c72"
+        "68741b5423f06b9b8f927b709dd4dcfc36d061fdf46dac4b2f002ae97d811424"
       ]
     },
     {
@@ -48768,9 +48764,9 @@
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "6be9ea6ba92e6e4f14822e1648dfe94726ce3130904f1b258effb881a4d7b24e",
-        "dc7e564f3f50dd1c042363dde923cad2cc43692493c4daa2cb7745bc623da959",
-        "6882577a72ab5da8868d7719b57adaddb5e0b2fdb956037035c705cd967dbd96"
+        "1af07c5229e4331ad11788911c67c3a1ffa98d4e5485c9317a9bfe7ff028afd1",
+        "75177b1a25dbda21ddd9b74ce3d602216e429be44528d8dc9368a38db3b6521f",
+        "cc1f168af35052e64db8ed2325586f906adac692567aa396ca8016ee4d7a2eb4"
       ]
     },
     {
@@ -48805,7 +48801,7 @@
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "72aedc6f944790a1a7e0a15b0773438a667234acab9902c22d1de0d1c781882e"
+        "2ab56eb1ca0d44fe7f053eaf5e039e2ceb9df7b2854667414d3db9b162eff18a"
       ]
     },
     {
@@ -48846,8 +48842,8 @@
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "91949f901544b0c71439ae0045c9fb81e9dbd23381ac4121d13faf30547d7276",
-        "69a247cd7ac691bb6984b6fb21c2ce9ab8a360212b0ea67cba12f65330b84f7a"
+        "3b9bac776f60c85c2eb76febbec39166ddee509610bf849d9d74cb10480c9008",
+        "03f68c6a44d5701feb1f20eed37c0300874130c6324e037407130e7b6f30134c"
       ]
     },
     {
@@ -48882,7 +48878,7 @@
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "887e7875aa2a1d783758e180c316fc41eeb0c1bb58b1b3fcf691added819b1da"
+        "253dee2d5c9172004dcc8027fbf84e8cc1feaaeaa1a21d549972dc7537e2ffc1"
       ]
     },
     {
@@ -48917,7 +48913,7 @@
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "11d9feb1fdcd15629f826b95be2e6f416cb6e84a7532f184dfba925537e6eb2f"
+        "de0757da7bd922e8aec2b078e6f0c6f0b92a2d22d95a2168ded85eced50ae285"
       ]
     },
     {
@@ -48952,7 +48948,7 @@
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "eef9e339697271598c5e86a14ae4913ef32daa00fba6815738f1b66139254668"
+        "24686d1e40f23c8b80cea7b34be8ef372e3523333bc9eac3172c5b2cacd5ab5a"
       ]
     },
     {
@@ -48987,7 +48983,7 @@
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "19069f5c5203e0df258a008b18762a2e188b35444e4c0ce3a0b42c60b4e879d1"
+        "449bb246363982ad11e33bf4a0499698e353568e42050bcc4edf9e3470f49bbd"
       ]
     },
     {
@@ -49034,9 +49030,9 @@
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "6211acd5604bc25e2e6018fc3497be32c60122a85dc9f55e0237101f04cfb98b",
-        "9868ff5b37579ce24728fcbf51dfd02bfd066ecad0c86868fde6020081115c1a",
-        "ee8093248593d48a21a77bb07464036ca41ec93f4c6d84074e885afb002affce"
+        "ceb0392957e74bca64af113afa92d814b28d7aac3265b8ccb625d04a9d272620",
+        "31d6fc0b22f045ffa05145f3f5b9fe468ded05c3c71ac65de3b61f0e5901d870",
+        "422bc31dee41e13be78e4659ba14b3fe07a85433998698dab7e0e1abaabab3fe"
       ]
     },
     {
@@ -49071,7 +49067,7 @@
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "fb72780eda5ef456c987f71f931c29c8c2d39d3f40a04aba365600202d0cc696"
+        "9520a70131ba80a7c1801f3c33476111629a49866346c7bbb7f5ac22dee945eb"
       ]
     },
     {
@@ -49112,8 +49108,8 @@
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "60b0c29274e4b703151012b3fe6978779cb614fa6392640fd92cc5ba20d15e10",
-        "7afffc1bd9b01af1a672ca209b35d457d5451b283ef902b647f57c0f991f4014"
+        "d61dea1485672bb453595ebe93243d7ceef926bc2add3aa14d287d0b85fc30b6",
+        "05df903537cd073f4090ad6fe62474c88210866e63aeaed8a6de0be5537fecfa"
       ]
     },
     {
@@ -49148,7 +49144,7 @@
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "ffa82ae8b511f5551b10c0665d42637bdf2d8fd2b4928c87798536a5826fc84f"
+        "0dbdfc8375491c8abaf4bc3f506b693524e3ab9707387e488ed4e27cbf69549c"
       ]
     },
     {
@@ -49183,7 +49179,7 @@
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "ec762438603ca2ccf1a6fcf64ab6e7469ebefda5e2bf7d5562f9712d8c83a6ef"
+        "0ba92576052a75736643f34ff2226862c24fd522e7dc0019b8d2c310a30b52a8"
       ]
     },
     {
@@ -49218,7 +49214,7 @@
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "f0e4757a733f10fbb1ca8457342ff402b6de867ba619d710bdda8cb84ccf98b8"
+        "23af878e24f0a49e0ce13606cf59bed7f2717efe91e8d9f71c6a48a119aae336"
       ]
     },
     {
@@ -49253,7 +49249,7 @@
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "d16358a14d40fa33c54010c0cf138448bd44e5a4b7ccad1f8f3406fa887f9358"
+        "5d51d8d3037d4bb61d52f18b3a437283d7e0801a1a4d2f2544b3283961c21d7a"
       ]
     },
     {
@@ -49294,8 +49290,8 @@
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "3ae6c976133d66ab26f6fa918be20f8e014fee308ec85b91ecec5316f3bb0d7f",
-        "49f1fd3642c783efc7a3195af8e7f4f05e63baf4de9c67441a6db0633e66b76e"
+        "5d0ea7b608a5c5942808cbb286d0440a46e7ae928de7ee7f5cd3b92c5a71da91",
+        "bfa7f6f3a20241b7b1565c143b912f7edd0c2c69d3152bc1454102969977a5cc"
       ]
     },
     {
@@ -49330,7 +49326,7 @@
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "83b7a7e7721cde5af167464a3fd5dcedf13c87be26bc7769f61393b7eb0d9f5c"
+        "e258d03abcf3ca61a90f368bf8e5fa6c626cabd03638bcafbdc3d59c20f0e2d0"
       ]
     },
     {
@@ -49365,7 +49361,7 @@
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "dd4395eeab93699debde84dade5ed02e44dbd4a6233460c1c39ff38189b677b4"
+        "e0e3d9d6531bd303fe108f5ac9167b46c95b70ce0daec85f3baef46c8547ce3f"
       ]
     },
     {
@@ -49400,7 +49396,7 @@
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "39c647199e1c385532e764deba859f3f9e7e517ad11a6d5ca576e4f15102abf9"
+        "a349a26cdcdc80afb71af75613ea01561662ab6e797c80211b681c4128ce3aed"
       ]
     },
     {
@@ -49435,7 +49431,7 @@
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "9eb17b654d434f1e788eba4ba9b996e7800b6098bffe1c70a980988bc9bcf2dc"
+        "bc21a75a7f95786fea8314d89f81f9aa884e25140881195f84f9447ad83b2db7"
       ]
     },
     {
@@ -49470,7 +49466,7 @@
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "6db9955650dfebdd9bcfde1bfe6fd6deee92f7804075430f092de8c7f081d466"
+        "6551dd6b1dc6d99b452f5ea9ad3f1a0ee22a028ee68cf17d6c26b50fb28c69a2"
       ]
     },
     {
@@ -49505,7 +49501,7 @@
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "01320bb0679984afac263ec2f26ac0189d650e3faf804c0a4b37a371d3243d99"
+        "83a6f53ab02ef2f58832b873300ade67c129ac27dc917253636eb34f2fdaad30"
       ]
     },
     {
@@ -49540,7 +49536,7 @@
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "e0e3bb385573747f72bf8609930dea898eb25e61db28736c5553b56a40ec6310"
+        "aaf04c858de3700b4cffd98921d41a12ece6da609f16f5b400ba2ae265d3fdc9"
       ]
     },
     {
@@ -49575,7 +49571,7 @@
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "1350b7c7998e381b28348b9830fc0a4d24c4b81ef1bdc45988ff95229af21c65"
+        "45c4a92df667f460e9a930e03eb7bba84aaf2ba6de44432bd248f3a41d382463"
       ]
     },
     {
@@ -49616,8 +49612,8 @@
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "e1839e7cd18c63cff495c4f3f003e55e65c1043c35cd8d9722c8054a64b25e0f",
-        "f8b0b7635d166107dfc25f3e8dd8d3c163d958a7550427266b242a68649592f0"
+        "dd8c4eadb921983727abfa2cf777bff52319e54c5df7a82182cc2d25541ee73a",
+        "14f6c481f7bef2f1b4ef29afc4d80caff65269f58920ab5a3c5c148f2d6401d0"
       ]
     },
     {
@@ -49652,7 +49648,7 @@
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "d33cb0df7c65710272e71767cd85a15374b09663f0a6035bf05262c5704ae2ea"
+        "86df0ff7766dde74ae0364d6e677127abb4d5fef3efc6690bf21ea33e452c48b"
       ]
     },
     {
@@ -49687,7 +49683,7 @@
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "0d7ec139c39c5ffd7b3db8c7dbc26895cf12edaf3fa9169f9c82deb84498e5a6"
+        "6b326aa6510e781f2247c7dfe7bf3d9677916309905fa2788372ea39ecabc809"
       ]
     },
     {
@@ -49722,7 +49718,7 @@
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "54ca152c25993c35ef93106895ba4739a8c2b4a905e6cf7a0285dad6ba639675"
+        "9e19acdf31362aac06af2837ff71eaa37ab52e973afb5d30545927f29c95f4ce"
       ]
     },
     {
@@ -49757,7 +49753,7 @@
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "3196d7a1390e0cccc410aaf8b431eb79cecbba6d0d2ecbc188bebe31397c3d47"
+        "b5d016e5cd00c102cf825b18ddd0551b5c4d24bf8920e74cd44248879a20d33b"
       ]
     },
     {
@@ -49792,7 +49788,7 @@
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "5cbab83667213cb131d78829c1a77ab657c391be2d9328e86028dabcf3c4de17"
+        "18363375782d1a02798f7edbea531d51ffef394534b1b6dbb8ce295273993136"
       ]
     },
     {
@@ -49827,7 +49823,7 @@
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "d6b8f26c70c460189feb3c061356f4a4986e0ac1547b9c2952f8a2b3bf96c58b"
+        "53518a12695838ab2b012fb68dc134ef02fc93ebc36799da300d30fdb42b5c26"
       ]
     },
     {
@@ -49862,7 +49858,7 @@
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "0960cf728cec6012c2d1fe8c56998c936a113598650be719b4a0049f4d182340"
+        "6687ffadb23146b2d6e28c91bf191f959336b9b13656798cdd69b5e24ab65ca1"
       ]
     },
     {
@@ -49897,8 +49893,7 @@
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "844d47e860008bb07195393a4026579c3e17ef688e808a2615dc547592464e64",
-        "99347a636541cb01e4aa3c116d0e801821762a894b9e692fc656a370bffb6454"
+        "ec2f07d385097115707b356d911a0fd76a761ee1563e620205021f3dc33789ab"
       ]
     },
     {
@@ -49939,10 +49934,8 @@
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "b8b13964c3fe9574ad0cfa4645383ce0e038381f3c9ff31dd13f6f810d563968",
-        "03ccb124e284e953e93b83de9c112cb9582908960d8246421333527b100573f4",
-        "db7f6c50b5a05d476acf77a4f49104889ae67c1d574996b8c581e968cdfa9ef1",
-        "34f919c7dfc5ce841089cdd2255c22906d5a175660ef8ef2bdfc2687ca3bdeff"
+        "753b5b2795e5b1adf45a5d8441521b8fa49d9273c291d5c37ec906e59cf5a234",
+        "6f3d8c40d374de8164ee99a8734c640d4a06359cdbe803c4293d7edffeb65603"
       ]
     },
     {
@@ -49983,10 +49976,8 @@
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "667a05148da02f436252e8732081b4d22a1f8fd99741ef2caa02bb5731a0a9d9",
-        "39d0fedaf22a95a8fc9916c9768d385fe136d67308a1846fc311b5166f314891",
-        "86a76a03694ac6db67f33d4dc6a3be748e4c1fe9c214168cb8a176caa3f9778b",
-        "52dbfb07d94208f50e3f887caf17ee5a474acc21cd7f338fa5dc362446c1381b"
+        "088259c1fdfc95c2f8be115d0c04e64e7e318b2e16579f5adb13e05f66e6893e",
+        "dae2d0e8cecbe4d7b5699b596df841ccf3b92c08fd059fed6c0bb810de08f4c3"
       ]
     },
     {
@@ -50021,8 +50012,7 @@
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "de856a627998cc2b35f1a9ac374ba331dd16a1f6e0c4d32974df360d631ad49d",
-        "aa58c223ff6c9c94204a0f7aa692cfa4a72b54cfd5e599fdf4400b7140542e9c"
+        "cf24e56107d5f3a3f5104922b385bb3d8d186d3b54271c2c38af2864847e3767"
       ]
     },
     {
@@ -50057,8 +50047,7 @@
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "ba90037c02b22d823b947adfd2ad651344fdb6eb0f5be99ef7e925e3440c0492",
-        "0d4347b93e05f0c1eb5dd46ac9120e0c9f4d0040c9c43c7a936320e466bc391b"
+        "15d81de22bc7741bd42a623294cedae87643d1878b47a3c665aa39a500c8ca1b"
       ]
     },
     {
@@ -50093,8 +50082,7 @@
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "7781049fe83525b7b6cc8578b06071d2962bba2de822c6455273afadbe3b3297",
-        "5edc01417cf4fc94bfe10039fd29124873d5e71fd2e97fdfdd15516ae5e705fb"
+        "244b9fd9f094d169e47a2240d2b040d4781ad377c696f5be201de613e654d87a"
       ]
     },
     {
@@ -50129,8 +50117,7 @@
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "b055768a8126f9d132ab220c4dcee1ec98576782d134f864d6daa3fd9b4891d7",
-        "3a0b2b1adb8b349aad460170f76be950b13ad93e81d3793833e85719abc4a8d3"
+        "6988a219c80384e3804063587ed9515f1359f2d6e052a4c64607ef45806bbf15"
       ]
     },
     {
@@ -50165,8 +50152,7 @@
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "25100029dc6c4b51a09c09c23c72bf04338fc47f328f9111e88b58d1462e66f3",
-        "a714d0428592e46910b4d80661a9d0ed4383e95096e2dbfc831f9fed140a1bca"
+        "c135c784347c96d4e7d16de940e3fcf31fe84e06910e16543ff248f4133e32a1"
       ]
     },
     {
@@ -50201,8 +50187,7 @@
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "c3a9f54e83b734842a7ad30e44bf17364dec096def652344c47e268ef2f7f529",
-        "b56d1e1d1280bade090f054359ccc24195544a2a2ded80fc38aa36ed7292b920"
+        "1f722b92038a25a5212b7f728b7d6210c3383af39a999d8ecfc997bd1ee8e122"
       ]
     },
     {
@@ -50237,8 +50222,7 @@
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "c8309b6f57d4bbd0b9957b696333e4ee7b1cc4311652f862cd778577bad1c263",
-        "e73912d0947f80f2e3064855fa96c2fa7f4eb8f3600b11509f2408ff1101c151"
+        "ee99f79e32545869072073f6945029f87d71f23295924f437b68eacbcfdde567"
       ]
     },
     {
@@ -50279,10 +50263,8 @@
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "e5383fe3ad323309d1a6a94536e75a6dc322a14f065342703510cba08a58baa4",
-        "82765b877759cdec847cc618ca0b3a8917a6ed510e80853fe94917cb9d6d4c2c",
-        "f004ebad476f3f74891ca4dcd99198dfadbf696a711cfdb8ab57710d3225a688",
-        "58195d73c9c6a01d9fb45cc47d6ae381bd2b2f35a0534260ccf7564cd8a88119"
+        "6a1b022d0c656e866183096ba94966f9e701c40861e0014d6b32e4dd28526a08",
+        "531a3d7aa54fea0b0a1ea050c1f261c4b53556b0ab21623aec2f384efa55d2ae"
       ]
     },
     {
@@ -50323,10 +50305,8 @@
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "889fbb63174d535222b57c7f4b96478136eac6451a2ec862453edd04987aa3d7",
-        "0a62bc88d2cbfe7962c3f912f72a4bfc5c91232f76ac0e4567b7e67452f781de",
-        "929cbe380805cba94ecc0d75350b0eb506aed7d2bbe9b9448d503bb998f75678",
-        "c46e75688e301feb5e6e21350562657d06028550b083e0a0e5e13ed61edfd089"
+        "ded797da258f248041bb0d320367929857c03497dc71a17479652dc251fa9600",
+        "20d6802b929e4ead3c3af829f156a364545a6766cd64128df946a67f32b653c4"
       ]
     },
     {
@@ -50367,10 +50347,8 @@
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "5644600c7d0b4ac33222ad9e3ac4324ccfefb7915db0b92a9ef08a868420b6da",
-        "fa6dc829b19df1119ba77d20f6bd10777d647f1aa751d7f098680a0e991a771b",
-        "e14c8626c3de615e8a9bd4289ffb122a77988d436b1108bda84438bc14adb395",
-        "cbeae9022f7b1ac7506589ae96593d6e20f956b2aab5ab67279c92982918670b"
+        "f0d7ae0877081577fca8c80c050124d56655717ff7a93556ddc1185ac2d171d5",
+        "553290d7fc7ed62b1c37c7e80cbbd5cabdef7d0676d7f6d507c42fb47f1f6d33"
       ]
     },
     {
@@ -50411,10 +50389,8 @@
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "f4623b1db63099a6dd52b6c1e44d7f4704add9b490fe17a3a57f26155403eaf6",
-        "bfec548b1ec69a8fcb4281019c597d12612604d41c696a06091c0762e30c6b12",
-        "2598da6354b03dc0c6c2ccb8b8846aed38b43a1e9debe8154d0af760c8069012",
-        "95bc9ac5eb6833feef78e96c32ef9d3b5ba31d37cbbf6d954f337f5d206a24b3"
+        "3a06bc59e97426c8e48a4aaaca393eef4742a99177247429ab5258bb18b9ee64",
+        "9c2448376c8a8e17e7c9b393f653bf9516131c42d4b4d076331bc4858498a05c"
       ]
     },
     {
@@ -50449,8 +50425,7 @@
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "f709fbdddb7744e10d0b2825cca63824048fce41e7e2758549717ca5aa66ed76",
-        "c3b3ff560a9cc548e1c18a14cfdfd2232d240d2637c62f5930e4f371224e3589"
+        "b8c0eb07e3e2dba729b9476851dce365a2d4a27f90523341f8372f8ffb960448"
       ]
     },
     {
@@ -50485,8 +50460,588 @@
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
-        "46e960c5911a2d4ea76306765f9fba49030bcf8c0a4d8912e42c13165c184e40",
-        "552b55058c4ceb48c16a99dd5acc703bb1b0133b6563b711cf885ccb767093a2"
+        "dfcbe4b322915a23b7035e369858e52e9f05f030ccabf41a9caf50916d22ac1c"
+      ]
+    },
+    {
+      "sourceId": "pmid-37023861",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "37023861",
+      "doi": "10.1016/j.ijcard.2023.03.066",
+      "canonicalCitation": "Liu Y, Zheng Y, Tse G, et al. Association between sick sinus syndrome and atrial fibrillation: A systematic review and meta-analysis. Int J Cardiol. 2023 Jun 15;381:20-36. doi: 10.1016/j.ijcard.2023.03.066. PMID 37023861.",
+      "citationVariants": [
+        "Liu Y, Zheng Y, Tse G, et al. Association between sick sinus syndrome and atrial fibrillation: A systematic review and meta-analysis. Int J Cardiol. 2023 Jun 15;381:20-36. doi: 10.1016/j.ijcard.2023.03.066. PMID 37023861."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/37023861/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/37023861/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-27"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-sick-sinus-syndrome-to-cardiac-arrhythmia",
+          "primaryId": "sick-sinus-syndrome",
+          "targetId": "cardiac-arrhythmia",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "5220df38bc6d5db2f1d6e9522c159c8d25ebd1d0f0d98a8886649d67f6754d04"
+      ]
+    },
+    {
+      "sourceId": "pmid-37638973",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "37638973",
+      "doi": "10.1093/eurheartj/ehad564",
+      "canonicalCitation": "Kronborg MB, Frausing MHJP, Malczynski J, et al. Atrial pacing minimization in sinus node dysfunction and risk of incident atrial fibrillation: a randomized trial. Eur Heart J. 2023 Oct 21;44(40):4246-4255. doi: 10.1093/eurheartj/ehad564. PMID 37638973.",
+      "citationVariants": [
+        "Kronborg MB, Frausing MHJP, Malczynski J, et al. Atrial pacing minimization in sinus node dysfunction and risk of incident atrial fibrillation: a randomized trial. Eur Heart J. 2023 Oct 21;44(40):4246-4255. doi: 10.1093/eurheartj/ehad564. PMID 37638973."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/37638973/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/37638973/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-27"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-sick-sinus-syndrome-to-cardiac-arrhythmia",
+          "primaryId": "sick-sinus-syndrome",
+          "targetId": "cardiac-arrhythmia",
+          "sourceIndex": 1
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "4e667afd02c0fb934df53f3c868eb6f52c9219d1aa08da68ecfd68431cf60252"
+      ]
+    },
+    {
+      "sourceId": "pmid-40607080",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "40607080",
+      "doi": "10.1177/27550834251342890",
+      "canonicalCitation": "Choi J, Kong D, Katic L, et al. Atrial fibrillation with slow-ventricular response (AF-SVR): A literature review. J Med Access. 2025 Jan-Dec;9:27550834251342890. doi: 10.1177/27550834251342890. PMID 40607080.",
+      "citationVariants": [
+        "Choi J, Kong D, Katic L, et al. Atrial fibrillation with slow-ventricular response (AF-SVR): A literature review. J Med Access. 2025 Jan-Dec;9:27550834251342890. doi: 10.1177/27550834251342890. PMID 40607080."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40607080/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/40607080/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-27"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-sick-sinus-syndrome-to-cardiac-arrhythmia",
+          "primaryId": "sick-sinus-syndrome",
+          "targetId": "cardiac-arrhythmia",
+          "sourceIndex": 2
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "e1b7415bbaa910e5d0791f3017d9c15e9e34c3c564f21425370660ffd197ff62"
+      ]
+    },
+    {
+      "sourceId": "pmid-37977871",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "37977871",
+      "doi": "10.1136/bmjopen-2023-076499",
+      "canonicalCitation": "Dong H, Chen H, Hidru TH, et al. Sinus node dysfunction and stroke risk: a systematic review and meta-analysis. BMJ Open. 2023 Nov 17;13(11):e076499. doi: 10.1136/bmjopen-2023-076499. PMID 37977871.",
+      "citationVariants": [
+        "Dong H, Chen H, Hidru TH, et al. Sinus node dysfunction and stroke risk: a systematic review and meta-analysis. BMJ Open. 2023 Nov 17;13(11):e076499. doi: 10.1136/bmjopen-2023-076499. PMID 37977871."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/37977871/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/37977871/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-27"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-sick-sinus-syndrome-to-cerebrovascular-accident-stroke-residuals",
+          "primaryId": "sick-sinus-syndrome",
+          "targetId": "cerebrovascular-accident-stroke-residuals",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "59ada07646fdc7c5092be5b60506036dbe3356b5038466d232fc0fc7af28ad01"
+      ]
+    },
+    {
+      "sourceId": "pmid-40315941",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "40315941",
+      "doi": "10.1016/j.hrthm.2025.04.055",
+      "canonicalCitation": "Virk SA, Ho WWH, Takeuchi F, et al. Risk of ischemic stroke in sinus node dysfunction with and without atrial fibrillation: Evidence for the presence of a left atrial myopathy in patients with isolated sinus node dysfunction-an analysis of the UK Biobank. Heart Rhythm. 2025 Sep;22(9):e668-e675. doi: 10.1016/j.hrthm.2025.04.055. PMID 40315941.",
+      "citationVariants": [
+        "Virk SA, Ho WWH, Takeuchi F, et al. Risk of ischemic stroke in sinus node dysfunction with and without atrial fibrillation: Evidence for the presence of a left atrial myopathy in patients with isolated sinus node dysfunction-an analysis of the UK Biobank. Heart Rhythm. 2025 Sep;22(9):e668-e675. doi: 10.1016/j.hrthm.2025.04.055. PMID 40315941."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40315941/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/40315941/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-27"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-sick-sinus-syndrome-to-cerebrovascular-accident-stroke-residuals",
+          "primaryId": "sick-sinus-syndrome",
+          "targetId": "cerebrovascular-accident-stroke-residuals",
+          "sourceIndex": 1
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "6fc121abb55370b5132ec100ec5078d7105173059980dba555344cdf91a2412d"
+      ]
+    },
+    {
+      "sourceId": "pmid-41317944",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "41317944",
+      "doi": "10.1016/j.hrthm.2025.11.044",
+      "canonicalCitation": "Chang SN, Huang PS, Chen JJ, et al. Sick sinus syndrome elevates stroke risk in patients with atrial fibrillation with low CHA2DS2-VASC score. Heart Rhythm. 2026 Apr;23(4):e659-e665. doi: 10.1016/j.hrthm.2025.11.044. PMID 41317944.",
+      "citationVariants": [
+        "Chang SN, Huang PS, Chen JJ, et al. Sick sinus syndrome elevates stroke risk in patients with atrial fibrillation with low CHA2DS2-VASC score. Heart Rhythm. 2026 Apr;23(4):e659-e665. doi: 10.1016/j.hrthm.2025.11.044. PMID 41317944."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41317944/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/41317944/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-27"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-sick-sinus-syndrome-to-cerebrovascular-accident-stroke-residuals",
+          "primaryId": "sick-sinus-syndrome",
+          "targetId": "cerebrovascular-accident-stroke-residuals",
+          "sourceIndex": 2
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "8d6a568701e47576be19b21cbb5ee1266d82edc6c0c19bb889ae4b6be743c3be"
+      ]
+    },
+    {
+      "sourceId": "pmid-27702858",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "27702858",
+      "doi": "10.1093/europace/euw156",
+      "canonicalCitation": "Brenner R, Ammann P, Yoon SI, et al. Reduction of falls and fractures after permanent pacemaker implantation in elderly patients with sinus node dysfunction. Europace. 2017 Jul 1;19(7):1220-1226. doi: 10.1093/europace/euw156. PMID 27702858.",
+      "citationVariants": [
+        "Brenner R, Ammann P, Yoon SI, et al. Reduction of falls and fractures after permanent pacemaker implantation in elderly patients with sinus node dysfunction. Europace. 2017 Jul 1;19(7):1220-1226. doi: 10.1093/europace/euw156. PMID 27702858."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/27702858/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/27702858/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-27"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-sick-sinus-syndrome-to-dizziness",
+          "primaryId": "sick-sinus-syndrome",
+          "targetId": "dizziness",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "9878e9514aec1de954018b13454eb48bddb8c921a4feeb7ffc5e9fa465845001"
+      ]
+    },
+    {
+      "sourceId": "pmid-40388576",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "40388576",
+      "doi": "10.1080/14796678.2025.2507464",
+      "canonicalCitation": "Gargaro A, Biancalana G, Botto GL, et al. The clinical role of closed loop stimulation pacemakers in the treatment of patients with sinus node dysfunction: a review. Future Cardiol. 2025 Jun;21(8):567-578. doi: 10.1080/14796678.2025.2507464. PMID 40388576.",
+      "citationVariants": [
+        "Gargaro A, Biancalana G, Botto GL, et al. The clinical role of closed loop stimulation pacemakers in the treatment of patients with sinus node dysfunction: a review. Future Cardiol. 2025 Jun;21(8):567-578. doi: 10.1080/14796678.2025.2507464. PMID 40388576."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40388576/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/40388576/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-27"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-sick-sinus-syndrome-to-dizziness",
+          "primaryId": "sick-sinus-syndrome",
+          "targetId": "dizziness",
+          "sourceIndex": 1
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "cfc543e5af5d5fc0b799f1e517703983e24d82f94aaec2fea24438ba15165622"
+      ]
+    },
+    {
+      "sourceId": "pmid-19156381",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "19156381",
+      "doi": "10.1007/s00059-008-3096-2",
+      "canonicalCitation": "Lotze U, Rothhagen B, Neubauer K, et al. Dizziness and near syncope due to sinus bradycardia and sinoatrial block associated with obesity and daytime tiredness. A clear indication for pacemaker implantation?. Herz. 2008 Sep;33(6):455-9. doi: 10.1007/s00059-008-3096-2. PMID 19156381.",
+      "citationVariants": [
+        "Lotze U, Rothhagen B, Neubauer K, et al. Dizziness and near syncope due to sinus bradycardia and sinoatrial block associated with obesity and daytime tiredness. A clear indication for pacemaker implantation?. Herz. 2008 Sep;33(6):455-9. doi: 10.1007/s00059-008-3096-2. PMID 19156381."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/19156381/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/19156381/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-27"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-sick-sinus-syndrome-to-dizziness",
+          "primaryId": "sick-sinus-syndrome",
+          "targetId": "dizziness",
+          "sourceIndex": 2
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "9005b1afb2c1f5022d4470fff8c8ee71bd674ee09a2f95451b5e4fe6577d5bc9"
+      ]
+    },
+    {
+      "sourceId": "pmid-41213527",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "41213527",
+      "doi": "10.1016/j.joms.2025.10.010",
+      "canonicalCitation": "Sakr AA, Magdy EA, Mohamed SS, et al. Evaluation of Salivary Function Recovery Following Gland-Sparing Sialolithotomy: A Prospective Cohort Study. J Oral Maxillofac Surg. 2026 Mar;84(3):389-400. doi: 10.1016/j.joms.2025.10.010. PMID 41213527.",
+      "citationVariants": [
+        "Sakr AA, Magdy EA, Mohamed SS, et al. Evaluation of Salivary Function Recovery Following Gland-Sparing Sialolithotomy: A Prospective Cohort Study. J Oral Maxillofac Surg. 2026 Mar;84(3):389-400. doi: 10.1016/j.joms.2025.10.010. PMID 41213527."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41213527/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/41213527/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-27"
+      ],
+      "liveUsageCount": 2,
+      "liveUses": [
+        {
+          "relationshipId": "rel-sialolithiasis-to-sialadenitis",
+          "primaryId": "sialolithiasis",
+          "targetId": "sialadenitis",
+          "sourceIndex": 2
+        },
+        {
+          "relationshipId": "rel-sialolithiasis-to-xerostomia",
+          "primaryId": "sialolithiasis",
+          "targetId": "xerostomia",
+          "sourceIndex": 1
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "121c7157de816dcc2d05152b281683ebf8cca51062067725244efd54c4839c82",
+        "fda0eb15ebcad97906fe594e50ba34490026dd013513003c7d5bc816fa52fa89"
+      ]
+    },
+    {
+      "sourceId": "pmid-36606658",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "36606658",
+      "doi": "10.1002/lary.30550",
+      "canonicalCitation": "Gulati A, Kidane J, Chang JL. Patient Reported Outcome Measures for Salivary Function: A Systematic Review. Laryngoscope. 2023 Aug;133(8):1796-1805. doi: 10.1002/lary.30550. PMID 36606658.",
+      "citationVariants": [
+        "Gulati A, Kidane J, Chang JL. Patient Reported Outcome Measures for Salivary Function: A Systematic Review. Laryngoscope. 2023 Aug;133(8):1796-1805. doi: 10.1002/lary.30550. PMID 36606658."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36606658/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/36606658/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-27"
+      ],
+      "liveUsageCount": 2,
+      "liveUses": [
+        {
+          "relationshipId": "rel-sialolithiasis-to-xerostomia",
+          "primaryId": "sialolithiasis",
+          "targetId": "xerostomia",
+          "sourceIndex": 0
+        },
+        {
+          "relationshipId": "rel-sialadenitis-to-xerostomia",
+          "primaryId": "sialadenitis",
+          "targetId": "xerostomia",
+          "sourceIndex": 2
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "2e442a72e7f72f61e77a8655f648d09a60a6bf79492adcb46d420919332c5a50",
+        "62003ccf3bdeead0b9a9186fd1fb723fcab117fc67680868356819fdde019c1f"
+      ]
+    },
+    {
+      "sourceId": "pmid-34998366",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "34998366",
+      "doi": "10.1186/s12893-021-01462-2",
+      "canonicalCitation": "Melo GM, Neves MC, Rosano M, et al. Quality of life after sialendoscopy: prospective non-randomized study. BMC Surg. 2022 Jan 8;22(1):11. doi: 10.1186/s12893-021-01462-2. PMID 34998366.",
+      "citationVariants": [
+        "Melo GM, Neves MC, Rosano M, et al. Quality of life after sialendoscopy: prospective non-randomized study. BMC Surg. 2022 Jan 8;22(1):11. doi: 10.1186/s12893-021-01462-2. PMID 34998366."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34998366/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/34998366/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-27"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-sialolithiasis-to-xerostomia",
+          "primaryId": "sialolithiasis",
+          "targetId": "xerostomia",
+          "sourceIndex": 2
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "168d327f71a48fde3d691b722957bd57c75935f5a25e50a669b2b5b96c2622cd"
+      ]
+    },
+    {
+      "sourceId": "pmid-34400910",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "34400910",
+      "doi": "10.3389/fimmu.2021.699722",
+      "canonicalCitation": "Yin H, Pranzatelli TJF, French BN, et al. Sclerosing Sialadenitis Is Associated With Salivary Gland Hypofunction and a Unique Gene Expression Profile in Sjögren's Syndrome. Front Immunol. 2021;12:699722. doi: 10.3389/fimmu.2021.699722. PMID 34400910.",
+      "citationVariants": [
+        "Yin H, Pranzatelli TJF, French BN, et al. Sclerosing Sialadenitis Is Associated With Salivary Gland Hypofunction and a Unique Gene Expression Profile in Sjögren's Syndrome. Front Immunol. 2021;12:699722. doi: 10.3389/fimmu.2021.699722. PMID 34400910."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34400910/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/34400910/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-27"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-sialadenitis-to-xerostomia",
+          "primaryId": "sialadenitis",
+          "targetId": "xerostomia",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "a5954d4114c5be4681c9dcd4d093c8f7e535d75a6c9d9833665bd136b6969c4b"
+      ]
+    },
+    {
+      "sourceId": "pmid-30120806",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "30120806",
+      "doi": "10.1111/odi.12959",
+      "canonicalCitation": "Jazzar A, Manoharan A, Brown JE, et al. Predictive value of ultrasound scoring in relation to clinical and histological parameters in xerostomia patients. Oral Dis. 2019 Jan;25(1):150-157. doi: 10.1111/odi.12959. PMID 30120806.",
+      "citationVariants": [
+        "Jazzar A, Manoharan A, Brown JE, et al. Predictive value of ultrasound scoring in relation to clinical and histological parameters in xerostomia patients. Oral Dis. 2019 Jan;25(1):150-157. doi: 10.1111/odi.12959. PMID 30120806."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/30120806/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/30120806/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-27"
+      ],
+      "liveUsageCount": 2,
+      "liveUses": [
+        {
+          "relationshipId": "rel-sialadenitis-to-xerostomia",
+          "primaryId": "sialadenitis",
+          "targetId": "xerostomia",
+          "sourceIndex": 1
+        },
+        {
+          "relationshipId": "rel-sialadenitis-to-non-hodgkins-lymphoma",
+          "primaryId": "sialadenitis",
+          "targetId": "non-hodgkins-lymphoma",
+          "sourceIndex": 1
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "da7b2ae3e45886cd7839e3030db1697451864a6627dd4439e1e440dfc0e97ba8",
+        "5ab6ae4ac1c53fd0dc57729fbd28f1dfab9f5e43440f67a87e32efcda60f9568"
+      ]
+    },
+    {
+      "sourceId": "pmid-16284097",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "16284097",
+      "doi": null,
+      "canonicalCitation": "Theander E, Henriksson G, Ljungberg O, et al. Lymphoma and other malignancies in primary Sjögren's syndrome: a cohort study on cancer incidence and lymphoma predictors. Ann Rheum Dis. 2006 Jun;65(6):796-803. PMID 16284097.",
+      "citationVariants": [
+        "Theander E, Henriksson G, Ljungberg O, et al. Lymphoma and other malignancies in primary Sjögren's syndrome: a cohort study on cancer incidence and lymphoma predictors. Ann Rheum Dis. 2006 Jun;65(6):796-803. PMID 16284097."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/16284097/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/16284097/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-27"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-sialadenitis-to-non-hodgkins-lymphoma",
+          "primaryId": "sialadenitis",
+          "targetId": "non-hodgkins-lymphoma",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "4dbb2dfab068081e62f70c1a36c18db16fe8e7b5485199cb4b9e06b85b9f8ac0"
+      ]
+    },
+    {
+      "sourceId": "pmid-20551561",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "20551561",
+      "doi": "10.4103/0377-4929.64351",
+      "canonicalCitation": "Agale SV, D'Costa GF, Hastak MS, et al. Primary non-Hodgkin's lymphoma of the salivary gland: a spectrum of lymphoepithelial sialadenitis, low-grade B-cell lymphoma of mucosa-associated lymphoid tissue with transformation to high-grade lymphoma. Indian J Pathol Microbiol. 2010 Apr-Jun;53(2):364-7. doi: 10.4103/0377-4929.64351. PMID 20551561.",
+      "citationVariants": [
+        "Agale SV, D'Costa GF, Hastak MS, et al. Primary non-Hodgkin's lymphoma of the salivary gland: a spectrum of lymphoepithelial sialadenitis, low-grade B-cell lymphoma of mucosa-associated lymphoid tissue with transformation to high-grade lymphoma. Indian J Pathol Microbiol. 2010 Apr-Jun;53(2):364-7. doi: 10.4103/0377-4929.64351. PMID 20551561."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/20551561/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/20551561/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-27"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-sialadenitis-to-non-hodgkins-lymphoma",
+          "primaryId": "sialadenitis",
+          "targetId": "non-hodgkins-lymphoma",
+          "sourceIndex": 2
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "e0117a086b55f0b4b38ddb1f71ae467766d38246398707be2ea1a01081f00f3f"
       ]
     }
   ],

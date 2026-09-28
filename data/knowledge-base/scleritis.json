@@ -41,7 +41,7 @@
       "rationale": "Authoring registers this edge because concomitant uveitis is the commonest documented ocular companion of scleritis and because the largest located registry shows it marks the eyes most likely to develop structural complications, which is operationally decisive in a benefits record where the ocular consequence is what is being claimed. The conservative framing adopts rather than disputes the registry's own reservation that uveitis is an extension of the inflammatory process rather than a complication, registers the referral-bias-free population anchor as the association anchor, carries the infectious proportion openly so that a clinician does not default to a non-infectious assumption, and withholds the glaucoma and cataract routes as duplicate-scope against the registered uveitis edges despite the registry naming them as the commonest complications.",
       "sourceReferences": [
         {
-          "citation": "Sota J, Hinojosa-Azaola A, de-la-Torre A, et al. Determinants of Non-infectious Scleritis Complications and Their Impact on Visual Outcome: Results from the International AIDA Network Scleritis Registry Ophthalmol Ther. 2026 Jun;15(6):2081-2093. doi: 10.1007/s40123-026-01390-5. PMID 42105127. PMID 42105127.",
+          "citation": "Sota J, Hinojosa-Azaola A, de-la-Torre A, et al. Determinants of Non-infectious Scleritis Complications and Their Impact on Visual Outcome: Results from the International AIDA Network Scleritis Registry Ophthalmol Ther. 2026 Jun;15(6):2081-2093. doi: 10.1007/s40123-026-01390-5. PMID 42105127.",
           "note": "International AIDA Network scleritis registry of 154 patients and 218 eyes of non-infectious scleritis recording 102 ocular complications in 58 patients across 87 eyes, naming cataract, scleral and corneal thinning, and glaucoma or increased ocular pressure as most frequent, reporting complications significantly more frequent with granulomatosis with polyangiitis (p<0.0001) and with concomitant uveitis (p=0.023), and explicitly treating uveitis and peripheral ulcerative keratitis as extensions of the inflammatory process rather than true structural complications.",
           "verificationScope": "clinical-evidence",
           "authorityCategory": "medical-scientific-evidence",
@@ -51,7 +51,7 @@
           "sourceLocator": "Ophthalmol Ther. 2026;15:2081-2093. Registry-based study, AutoInflammatory Disease Alliance Network Scleritis Registry, 154 patients (218 eyes); abstract states 102 ocular complications were recorded in 58 patients (87 eyes), that uveitis and peripheral ulcerative keratitis were considered extensions of the inflammatory process and not true structural complications, and that complications were significantly more frequent among patients with GPA (p<0.0001) and concomitant uveitis (p=0.023)."
         },
         {
-          "citation": "Braithwaite T, Adderley NJ, Subramanian A, et al. Epidemiology of Scleritis in the United Kingdom From 1997 to 2018: Population-Based Analysis of 11 Million Patients and Association Between Scleritis and Infectious and Immune-Mediated Inflammatory Disease Arthritis Rheumatol. 2021 Jul;73(7):1267-1276. doi: 10.1002/art.41709. PMID 33728815. PMID 33728815.",
+          "citation": "Braithwaite T, Adderley NJ, Subramanian A, et al. Epidemiology of Scleritis in the United Kingdom From 1997 to 2018: Population-Based Analysis of 11 Million Patients and Association Between Scleritis and Infectious and Immune-Mediated Inflammatory Disease Arthritis Rheumatol. 2021 Jul;73(7):1267-1276. doi: 10.1002/art.41709. PMID 33728815.",
           "note": "Population-based United Kingdom analysis of 10,939,823 patients containing 2,946 incident scleritis cases from 1997 to 2018, with a matched case-control and cohort arm of 3,005 incident scleritis cases and 12,020 age-, sex-, region- and deprivation-matched controls, estimating 22-year trends in scleritis incidence and prevalence and the associations of scleritis with infectious and immune-mediated inflammatory disease, adjusted for age, sex, Townsend deprivation index, race or ethnicity, smoking status, nation and body mass index.",
           "verificationScope": "clinical-evidence",
           "authorityCategory": "medical-scientific-evidence",
@@ -61,7 +61,7 @@
           "sourceLocator": "Arthritis Rheumatol. 2021;73(7):1267-1276. Retrospective cross-sectional and population cohort study, The Health Improvement Network, 1997-2018, 10,939,823 patients with 2,946 incident scleritis cases; case-control arm 3,005 incident cases and 12,020 matched controls, 1995-2019. The only located anchor that is not referral-selected."
         },
         {
-          "citation": "Advani MS, Putri BM, Susiyanti M. Clinical characteristics, management, and visual outcomes of presumed infectious and non-infectious anterior scleritis in a tuberculosis-endemic Indonesian Tertiary Center Int Ophthalmol. 2026 Jun 30;46(1). pii: 274. doi: 10.1007/s10792-026-04129-0. PMID 42377600. PMID 42377600.",
+          "citation": "Advani MS, Putri BM, Susiyanti M. Clinical characteristics, management, and visual outcomes of presumed infectious and non-infectious anterior scleritis in a tuberculosis-endemic Indonesian Tertiary Center Int Ophthalmol. 2026 Jun 30;46(1). pii: 274. doi: 10.1007/s10792-026-04129-0. PMID 42377600.",
           "note": "Single-tertiary-centre cohort of 69 patients and 96 eyes of scleritis reporting non-infectious disease in 56 eyes (58.3 percent) and presumed infectious disease in 40 eyes (41.7 percent), with tuberculosis-associated disease predominating in the infectious group and idiopathic disease and spondyloarthropathy common in the non-infectious group, and with the authors emphasising the need for careful etiologic evaluation in tuberculosis-endemic settings.",
           "verificationScope": "clinical-evidence",
           "authorityCategory": "medical-scientific-evidence",
@@ -104,7 +104,7 @@
       "rationale": "Authoring registers this edge because rheumatoid arthritis is the systemic disease most consistently associated with scleritis in the located evidence, because the health-system anchor identifies referral bias as a real threat to how this relationship is usually estimated, and because the practical consequence is treatment-relevant: the located review reports that scleritis in rheumatoid disease generally requires systemic immunosuppression. The conservative framing states the reverse arrow openly, registers the referral-bias finding as the reason the population anchor is preferred, carries the narrative review's own admission that the biologic-escalation evidence is largely observational, and requires paired dated diagnoses with serology and activity measures rather than any claim of ocular-to-systemic causation.",
       "sourceReferences": [
         {
-          "citation": "Braithwaite T, Adderley NJ, Subramanian A, et al. Epidemiology of Scleritis in the United Kingdom From 1997 to 2018: Population-Based Analysis of 11 Million Patients and Association Between Scleritis and Infectious and Immune-Mediated Inflammatory Disease Arthritis Rheumatol. 2021 Jul;73(7):1267-1276. doi: 10.1002/art.41709. PMID 33728815. PMID 33728815.",
+          "citation": "Braithwaite T, Adderley NJ, Subramanian A, et al. Epidemiology of Scleritis in the United Kingdom From 1997 to 2018: Population-Based Analysis of 11 Million Patients and Association Between Scleritis and Infectious and Immune-Mediated Inflammatory Disease Arthritis Rheumatol. 2021 Jul;73(7):1267-1276. doi: 10.1002/art.41709. PMID 33728815.",
           "note": "Population-based United Kingdom analysis of 10,939,823 patients containing 2,946 incident scleritis cases from 1997 to 2018 with a matched case-control and cohort arm of 3,005 incident cases and 12,020 controls, estimating scleritis incidence and prevalence and the associations of scleritis with infectious and immune-mediated inflammatory disease with multivariable adjustment.",
           "verificationScope": "clinical-evidence",
           "authorityCategory": "medical-scientific-evidence",
@@ -114,7 +114,7 @@
           "sourceLocator": "Arthritis Rheumatol. 2021;73(7):1267-1276. Retrospective cross-sectional and population cohort, The Health Improvement Network, 1997-2018, adjusted for age, sex, Townsend deprivation index, race/ethnicity, smoking status, nation within the UK, and body mass index. The only located anchor free of referral bias."
         },
         {
-          "citation": "Berkenstock MK, Carey AR. Health system wide \"big data\" analysis of rheumatologic conditions and scleritis BMC Ophthalmol. 2021 Jan 6;21(1):14. doi: 10.1186/s12886-020-01769-3. PMID 33407267. PMID 33407267.",
+          "citation": "Berkenstock MK, Carey AR. Health system wide \"big data\" analysis of rheumatologic conditions and scleritis BMC Ophthalmol. 2021 Jan 6;21(1):14. doi: 10.1186/s12886-020-01769-3. PMID 33407267.",
           "note": "Health-system-wide electronic medical record analysis of all charts carrying systemic autoimmune and scleritis diagnoses, stating explicitly that prior series assessed the relationship between systemic autoimmune disorders and scleritis only in patients referred for rheumatologic or ocular inflammation, introducing referral bias, and determining the prevalence of both and which disorders carried the highest relative risk of developing scleritis.",
           "verificationScope": "clinical-evidence",
           "authorityCategory": "medical-scientific-evidence",
@@ -124,7 +124,7 @@
           "sourceLocator": "BMC Ophthalmol. 2021;21:14. Retrospective EMR-wide review, all charts searched for scleritis and systemic inflammatory diagnoses in past medical history and diagnosis tabs plus disease-specific laboratory values; abstract states the development of scleritis in the setting of autoimmune conditions has been well documented but that prior series were referral-limited, which this analysis was designed to correct."
         },
         {
-          "citation": "Forestier MG, Calderón RM, Oliver A. An Overview of Rheumatoid Arthritis-Associated Dry Eye Disease, Scleritis, and Peripheral Ulcerative Keratitis J Clin Med. 2026 Apr 23;15(9). doi: 10.3390/jcm15093207. PMID 42122940. PMID 42122940.",
+          "citation": "Forestier MG, Calderón RM, Oliver A. An Overview of Rheumatoid Arthritis-Associated Dry Eye Disease, Scleritis, and Peripheral Ulcerative Keratitis J Clin Med. 2026 Apr 23;15(9). doi: 10.3390/jcm15093207. PMID 42122940.",
           "note": "Review of rheumatoid arthritis-associated ocular disease reporting that dry eye disease is the most frequent ocular manifestation of rheumatoid arthritis, that scleritis and peripheral ulcerative keratitis are less common but severe inflammatory complications generally requiring systemic immunosuppression, and that escalation to biologic disease-modifying antirheumatic drugs including tumour necrosis factor inhibitors and rituximab is supported for refractory scleritis and corneal melt although the evidence is largely observational.",
           "verificationScope": "clinical-evidence",
           "authorityCategory": "medical-scientific-evidence",
@@ -167,7 +167,7 @@
       "rationale": "Authoring registers this edge because systemic lupus is one of the two systemic diseases a clinician reaching a scleritis diagnosis is actively looking for, and because the existence of a dedicated population-based ophthalmic-risk analysis in a lupus cohort establishes that this pairing is a studied phenomenon rather than a coincidental one. The conservative framing states plainly that this edge is registered at lower evidential density than the rheumatoid-arthritis edge because no located anchor reports a pair-specific estimate, names the reverse arrow, records that the lupus cohort conditions the opposite way from the edge direction implies, and requires exclusion of treatment toxicity and opportunistic infection before the shared-driver route is accepted.",
       "sourceReferences": [
         {
-          "citation": "Braithwaite T, Adderley NJ, Subramanian A, et al. Epidemiology of Scleritis in the United Kingdom From 1997 to 2018: Population-Based Analysis of 11 Million Patients and Association Between Scleritis and Infectious and Immune-Mediated Inflammatory Disease Arthritis Rheumatol. 2021 Jul;73(7):1267-1276. doi: 10.1002/art.41709. PMID 33728815. PMID 33728815.",
+          "citation": "Braithwaite T, Adderley NJ, Subramanian A, et al. Epidemiology of Scleritis in the United Kingdom From 1997 to 2018: Population-Based Analysis of 11 Million Patients and Association Between Scleritis and Infectious and Immune-Mediated Inflammatory Disease Arthritis Rheumatol. 2021 Jul;73(7):1267-1276. doi: 10.1002/art.41709. PMID 33728815.",
           "note": "Population-based United Kingdom analysis of 10,939,823 patients containing 2,946 incident scleritis cases with a matched case-control and cohort arm of 3,005 incident cases and 12,020 controls, estimating the associations of scleritis with infectious and immune-mediated inflammatory disease using multivariable Poisson, logistic, and Cox models.",
           "verificationScope": "clinical-evidence",
           "authorityCategory": "medical-scientific-evidence",
@@ -177,7 +177,7 @@
           "sourceLocator": "Arthritis Rheumatol. 2021;73(7):1267-1276. Retrospective cross-sectional and population cohort, The Health Improvement Network, 1997-2018; adjusted for age, sex, Townsend deprivation index, race/ethnicity, smoking status, nation within the UK, and body mass index. Supplies the association structure; the located abstract reports no systemic-lupus-specific estimate."
         },
         {
-          "citation": "Berkenstock MK, Carey AR. Health system wide \"big data\" analysis of rheumatologic conditions and scleritis BMC Ophthalmol. 2021 Jan 6;21(1):14. doi: 10.1186/s12886-020-01769-3. PMID 33407267. PMID 33407267.",
+          "citation": "Berkenstock MK, Carey AR. Health system wide \"big data\" analysis of rheumatologic conditions and scleritis BMC Ophthalmol. 2021 Jan 6;21(1):14. doi: 10.1186/s12886-020-01769-3. PMID 33407267.",
           "note": "Health-system-wide electronic medical record analysis of all charts carrying systemic autoimmune and scleritis diagnoses, explicitly correcting the referral bias of prior series that assessed systemic autoimmune disorders in scleritis only in referred rheumatology or ocular inflammation patients, and determining which disorders carried the highest relative risk of developing scleritis.",
           "verificationScope": "clinical-evidence",
           "authorityCategory": "medical-scientific-evidence",
@@ -187,7 +187,7 @@
           "sourceLocator": "BMC Ophthalmol. 2021;21:14. Retrospective EMR-wide review across all charts with scleritis and systemic inflammatory diagnoses in past medical history and diagnosis tabs plus associated laboratory values; abstract states the intersection of scleritis and systemic inflammatory diagnoses was determined to assess prevalence and relative risk."
         },
         {
-          "citation": "Hsu CS, Hsu CW, Lu MC, et al. Risks of ophthalmic disorders in patients with systemic lupus erythematosus - a secondary cohort analysis of population-based claims data BMC Ophthalmol. 2020 Mar 11;20(1):96. doi: 10.1186/s12886-020-01360-w. PMID 32160869. PMID 32160869.",
+          "citation": "Hsu CS, Hsu CW, Lu MC, et al. Risks of ophthalmic disorders in patients with systemic lupus erythematosus - a secondary cohort analysis of population-based claims data BMC Ophthalmol. 2020 Mar 11;20(1):96. doi: 10.1186/s12886-020-01360-w. PMID 32160869.",
           "note": "Secondary cohort analysis of a population-based systemic lupus erythematosus cohort examining the risks of ophthalmic disorders in patients with systemic lupus erythematosus, establishing that ocular disorder risk within a lupus cohort is itself a studied and quantified phenomenon.",
           "verificationScope": "clinical-evidence",
           "authorityCategory": "medical-scientific-evidence",
