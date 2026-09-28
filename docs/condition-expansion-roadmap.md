@@ -5103,3 +5103,102 @@ the sleepwalking anchor (**injuries requiring medical care in 17%**).
 regenerated at 473 edges / 1,212 reference rows; dashboard at 1,212 pending rows across 51 batches and 1,050
 distinct sources. Draft-singles **304 → 305** because `sleep-terror-disorder` was authored with a single edge.
 CRG at review 13/13 and redundancy 28/28, zero violations. Backlog after batch 85: **71**.
+
+---
+
+## Batch 86 — 2026-09-27 — 13 edges across 5 draft identities
+
+Thirteen new **association-only** relationships over **35 reference uses / 29 PMIDs / 29 new source entities**,
+every PMID confirmed absent from `master-sources.json` before authoring. Draft-only; no live-verified claim is
+made and mapping approval is not citation verification.
+
+| Primary | Target | Mechanism | Notes |
+|---|---|---|---|
+| `soft-tissue-sarcomas` | `lymphedema` | POST_SURGICAL_OR_TREATMENT | no magnitude; both anchors are treatment series |
+| `soft-tissue-sarcomas` | `deep-vein-thrombosis` | THROMBOTIC_OR_VASCULAR | pooled 3.4% STS vs 4.3% bone, **p = 0.57** |
+| `soft-tissue-sarcomas` | `anemia` | METABOLIC_OR_NUTRITIONAL | up to 40% preop, single-centre retroperitoneal subset |
+| `solitary-rectal-ulcer-syndrome` | `rectal-prolapse` | MECHANICAL_OR_COMPRESSIVE | **direction guard** — evidence runs the other way |
+| `solitary-rectal-ulcer-syndrome` | `anemia` | METABOLIC_OR_NUTRITIONAL | **conflicting anchors**, incl. a paediatric null |
+| `solitary-rectal-ulcer-syndrome` | `anorectal-stricture` | MECHANICAL_OR_COMPRESSIVE | **single-anchor edge**, anchor calls it rare |
+| `somatostatinoma` | `diabetes-mellitus` | METABOLIC_OR_NUTRITIONAL | the only edge with any located mechanism |
+| `somatostatinoma` | `cholelithiasis` | METABOLIC_OR_NUTRITIONAL | named by all three anchors, measured by none |
+| `somatostatinoma` | `malabsorption-syndrome` | METABOLIC_OR_NUTRITIONAL | **scope mapping** from steatorrhoea to a broader identity |
+| `spasmodic-dysphonia` | `anxiety-disorder` | PSYCHOPHYSIOLOGICAL | 13.4%; lower than the 7.1–62% literature range |
+| `spasmodic-dysphonia` | `depressive-disorder` | PSYCHOPHYSIOLOGICAL | **named exception** in a systematic review; ranked 2nd |
+| `spermatocele` | `varicocele-hydrocele` | MECHANICAL_OR_COMPRESSIVE | shared management; **no co-occurrence rate** |
+| `spermatocele` | `hypogonadism` | NOT_ESTABLISHED | **null** over 861 men, qualified by age and size |
+
+**Strongest quantitative result.** The PRISMA meta-analysis behind the sarcoma thromboembolism edge pools
+**34 studies, 85,425 patients and 2,283 VTE events** at **4.5% (95% CI 3.2–6.3)**, with soft tissue sarcoma at
+**3.4% (95% CI 1.5–7.9)** against bone sarcoma at 4.3% and **no significant difference (p = 0.57)** under
+**I² 94.5%** heterogeneity, and its network meta-analysis found **no prophylaxis strategy with a significant
+effect**. A paediatric database anchor at **0.79%** is registered as a contrasting bound.
+
+**The most consequential governance finding is a historical-misclassification guard.** The only disorder-specific
+spasmodic-dysphonia anchor opens by recording that the disorder **was once believed psychogenic** and is now
+established as neurological. Its two psychological targets are therefore registered as comorbidity associations
+that may **never** be used to support a psychogenic interpretation. The same anchor reports comorbid rates spanning
+**7.1%–62%** in the literature against its own **13.4% anxiety** and **2.8% depression** (a numerator of four
+cases), and the depression edge is registered for a **named exception**: a systematic review found a positive
+anxiety–depression–hoarseness correlation across its included studies **except for spasmodic dysphonia in one
+study**.
+
+**A second null, in a different domain.** The spermatocele → hypogonadism edge records a cohort of **861 men**
+with epididymal cyst lesions including spermatoceles showing **no** association with any semen parameter or with
+serum testosterone or FSH, whose conclusion counsels conservative observation. The null is qualified on the edge:
+men with lesions were **significantly older**, and the **median lesion size was 4 mm**, so it is a null for *small*
+lesions — with a partial counterfinding in the same batch that sperm count and neutral α-glucosidase **increased**
+after surgery in lesions **larger than 2.5 cm**.
+
+**A catalog tension recorded rather than resolved — and it is the mirror of the identity-duplication findings.**
+Earlier batches closed `eczema`, `rotator-cuff-tear` and `skier-s-thumb` because the catalog was **coarser** than
+the evidence. Here it is **finer**: a spermatocele *is* an epididymal cyst containing sperm, and the 861-man cohort
+studies the two as one category ("epididymal cyst lesions include both spermatoceles and epididymal cysts"), while
+the catalog carries `epididymal-cyst` and `spermatocele` as two identities. **No edge was registered between
+them**, because the relationship is **taxonomic containment**, not a secondary condition, and the refusal is
+declared in the file's todo list so it is durable.
+
+**Umbrella guard.** `soft-tissue-sarcomas` is a family concept whose catalog members `dermatofibrosarcoma-protuberans`,
+`gastrointestinal-stromal-tumors` and `kaposi-s-sarcoma` all had **zero** incoming edges before this batch, so all
+three targets are deliberately chosen outside that family — no edge is registered between an identity and its own
+sub-identities.
+
+**Direction guard.** For `solitary-rectal-ulcer-syndrome → rectal-prolapse` the located evidence reads mucosal
+prolapse as a **contributing factor to** the ulcer and never studies prolapse as an outcome, so the edge registers
+a co-occurrence and a mechanistic coupling and says so in its own association basis.
+
+**Conflicting anchors carried rather than resolved.** The SRUS → anemia edge holds an adult bleeding cohort that
+lists anemia among common findings but reports **no anemia rate** in its 17 cases, a **single case** reaching a
+hemoglobin of **6.2 g/dl** requiring transfusion, and a **12-patient paediatric series in which none had significant
+anemia**. All three are on the face of the edge.
+
+**Anchor-identity and tier disclosures, stated on the edges rather than in notes.** Four anchors do not study their
+own identity: the All of Us analysis defines its exposure as **ICD-10 R49.0 dysphonia**, a broad symptom code that
+does not separate spasmodic dysphonia; a prospective cohort enrolled patients with *hoarseness* rather than with
+this diagnosis; a retroperitoneal-tumour cohort carries soft tissue sarcoma only as a between-group characteristic;
+and the nutrition review addresses the **family** of functioning gastroenteropancreatic neuroendocrine neoplasms.
+**PMID 42561503** is **erratum-linked** (notice in *J Plast Reconstr Aesthet Surg* 2026;121:152) and the notice's
+content was **not checked** here. **PMID 31869077** is a StatPearls study guide, registered on two of three
+somatostatinoma edges as the classic-symptom source. **PMID 42295361** and **PMID 24806800** are German-language,
+verified against the English abstract and German summary only. **PMID 18188027** was added after the initial
+preflight and separately re-verified with zero flags.
+
+**Targets that had zero incoming edges before this batch:** `rectal-prolapse`, `anorectal-stricture`,
+`malabsorption-syndrome`, `varicocele-hydrocele` — plus `epididymal-cyst` in the refused sense.
+
+**Sibling checks performed and reported, with no duplication found:** `gastrinoma`, `insulinoma`, `glucagonoma` and
+`carcinoid-syndrome` share the functional neuroendocrine tumour family but carry no alias overlap with
+`somatostatinoma`, and the located anchors explicitly differentiate them; `paradoxical-vocal-fold-motion` and
+`vocal-cord-dysfunction` both describe inducible laryngeal obstruction, a different mechanism from this
+identity's task-specific neurological spasm, and the documented overlap is diagnostic confusion rather than a
+secondary condition.
+
+**Hash form preserved** for the second consecutive batch: **836 relationships** and 1,596 source uses restored to
+git HEAD form, only the **13** genuinely new edges recomputed.
+
+**Registry after lockstep:** 849 relationships (775 explicit / 74 legacy), 1,631 reference uses (384 verified /
+1,247 pending-verification), 1,432 source entities (346 active / 1,077 pending-verification). Citation packet
+regenerated at **486 edges / 1,247 reference rows**; dashboard at **1,247** pending rows across **52 batches** and
+**1,080** distinct sources. Draft-singles **stays at 305** — no identity in this batch was authored with a single
+edge. CRG at review 13/13 and redundancy 28/28, zero violations, 4 bidirectional pairs (unchanged).
+Backlog after batch 86: **66**.

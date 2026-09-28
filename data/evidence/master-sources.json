@@ -16,16 +16,16 @@
     "citationPromotionMustAtomicallyUpdateKbAndMasterSourceState": true
   },
   "counts": {
-    "liveSourceReferenceUses": 1596,
+    "liveSourceReferenceUses": 1631,
     "activeSourceEntities": 346,
-    "pendingVerificationSourceEntities": 1048,
+    "pendingVerificationSourceEntities": 1077,
     "activeClinicalSourceEntities": 345,
-    "pendingClinicalSourceEntities": 1048,
+    "pendingClinicalSourceEntities": 1077,
     "activeLegalAuthorityEntities": 1,
     "retiredOnlySourceEntities": 1,
     "supersededUnverifiedSourceEntities": 7,
     "bibliographicCorrectionOnlyEntities": 1,
-    "totalSourceEntitiesIncludingLineage": 1403,
+    "totalSourceEntitiesIncludingLineage": 1432,
     "retiredVerifiedRelationshipSourceUses": 6
   },
   "retirementLedger": {
@@ -18861,7 +18861,7 @@
       "sourceCheckedOnValues": [
         "2026-09-22"
       ],
-      "liveUsageCount": 2,
+      "liveUsageCount": 4,
       "liveUses": [
         {
           "relationshipId": "rel-aphonia-to-depressive-disorder",
@@ -18874,12 +18874,26 @@
           "primaryId": "aphonia",
           "targetId": "anxiety-disorder",
           "sourceIndex": 0
+        },
+        {
+          "relationshipId": "rel-spasmodic-dysphonia-to-anxiety-disorder",
+          "primaryId": "spasmodic-dysphonia",
+          "targetId": "anxiety-disorder",
+          "sourceIndex": 1
+        },
+        {
+          "relationshipId": "rel-spasmodic-dysphonia-to-depressive-disorder",
+          "primaryId": "spasmodic-dysphonia",
+          "targetId": "depressive-disorder",
+          "sourceIndex": 2
         }
       ],
       "retiredUses": [],
       "rawReferenceHashes": [
         "ff051fcd38513bbe5a6e57622c51931feb594fd7d4bc9ba7ce41fb26dcb2395e",
-        "10e5d4e00edd38e1d47565e8c794065a94741cbf8bee60a47a7ee75c2f184909"
+        "10e5d4e00edd38e1d47565e8c794065a94741cbf8bee60a47a7ee75c2f184909",
+        "f671c9f6650a2a4c4b2287a9d0c312ba8a55b9bdc830e69f7ae9a61f7026b596",
+        "b48f16959732961d36f583af605a5a2f5af3758355cddbef0b77c4241d9e01ab"
       ]
     },
     {
@@ -51791,6 +51805,1049 @@
       "retiredUses": [],
       "rawReferenceHashes": [
         "1461511cf655b535b6edd494e7d2b0439a588563381a5dd7893c12ac6f47d6bc"
+      ]
+    },
+    {
+      "sourceId": "pmid-42561503",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "42561503",
+      "doi": "10.1016/j.bjps.2026.07.037",
+      "canonicalCitation": "Karakawa R, Yoshimatsu H, Fuse Y, et al. Outcome of secondary LVA for lymphedema and lymphorrhea following sarcoma resection. J Plast Reconstr Aesthet Surg. 2026 Oct;121:12-22. doi: 10.1016/j.bjps.2026.07.037. PMID 42561503.",
+      "citationVariants": [
+        "Karakawa R, Yoshimatsu H, Fuse Y, et al. Outcome of secondary LVA for lymphedema and lymphorrhea following sarcoma resection. J Plast Reconstr Aesthet Surg. 2026 Oct;121:12-22. doi: 10.1016/j.bjps.2026.07.037. PMID 42561503."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42561503/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/42561503/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-27"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-soft-tissue-sarcomas-to-lymphedema",
+          "primaryId": "soft-tissue-sarcomas",
+          "targetId": "lymphedema",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "3db884a15eff75390bcee16d9882d134d2508a2b6a214c6f0697431babea4c22"
+      ]
+    },
+    {
+      "sourceId": "pmid-42656561",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "42656561",
+      "doi": "10.1016/j.jpra.2026.07.034",
+      "canonicalCitation": "Togashi Y, Sakuma H, Fujii T, et al. Deep lymphaticovenular anastomosis for refractory lymphorrhea following thigh sarcoma resection: A case report. JPRAS Open. 2026 Sep;51:703-709. doi: 10.1016/j.jpra.2026.07.034. PMID 42656561.",
+      "citationVariants": [
+        "Togashi Y, Sakuma H, Fujii T, et al. Deep lymphaticovenular anastomosis for refractory lymphorrhea following thigh sarcoma resection: A case report. JPRAS Open. 2026 Sep;51:703-709. doi: 10.1016/j.jpra.2026.07.034. PMID 42656561."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42656561/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/42656561/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-27"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-soft-tissue-sarcomas-to-lymphedema",
+          "primaryId": "soft-tissue-sarcomas",
+          "targetId": "lymphedema",
+          "sourceIndex": 1
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "9176ed0e862a57680ee0177bd2eb24e31fb40be750b22c69403a619c44ddf70c"
+      ]
+    },
+    {
+      "sourceId": "pmid-42471349",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "42471349",
+      "doi": "10.1038/s41598-026-60288-1",
+      "canonicalCitation": "Moran K, Wilson D. Venous thromboembolism in surgically treated sarcoma a systematic review and meta-analysis of orthopaedic oncology literature. Sci Rep. 2026 Jul 19. doi: 10.1038/s41598-026-60288-1. PMID 42471349.",
+      "citationVariants": [
+        "Moran K, Wilson D. Venous thromboembolism in surgically treated sarcoma a systematic review and meta-analysis of orthopaedic oncology literature. Sci Rep. 2026 Jul 19. doi: 10.1038/s41598-026-60288-1. PMID 42471349."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42471349/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/42471349/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-27"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-soft-tissue-sarcomas-to-deep-vein-thrombosis",
+          "primaryId": "soft-tissue-sarcomas",
+          "targetId": "deep-vein-thrombosis",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "00c500508bebeb0e5e2e97c1cd3e28fb3d1a12b5393320ef0abb88de182a88d8"
+      ]
+    },
+    {
+      "sourceId": "pmid-36693390",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "36693390",
+      "doi": "10.1097/BPO.0000000000002357",
+      "canonicalCitation": "Wright J, Qamar F, McLaughlin M, et al. The Incidence of Thromboembolic Events During Hospitalizations Following Surgical Resection of Lower Extremity Sarcomas in Children: Utilizing the Pediatric Health Information System Database. J Pediatr Orthop. 2023 Apr 1;43(4):268-272. doi: 10.1097/BPO.0000000000002357. PMID 36693390.",
+      "citationVariants": [
+        "Wright J, Qamar F, McLaughlin M, et al. The Incidence of Thromboembolic Events During Hospitalizations Following Surgical Resection of Lower Extremity Sarcomas in Children: Utilizing the Pediatric Health Information System Database. J Pediatr Orthop. 2023 Apr 1;43(4):268-272. doi: 10.1097/BPO.0000000000002357. PMID 36693390."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36693390/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/36693390/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-27"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-soft-tissue-sarcomas-to-deep-vein-thrombosis",
+          "primaryId": "soft-tissue-sarcomas",
+          "targetId": "deep-vein-thrombosis",
+          "sourceIndex": 1
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "af9be9b12f0112567dc813c7b31f8db044995589235ea4d250902fdce7d81a8a"
+      ]
+    },
+    {
+      "sourceId": "pmid-37578462",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "37578462",
+      "doi": "10.1097/JS9.0000000000000429",
+      "canonicalCitation": "Guo Q, Zhao J, Du X, et al. Incidence, risk factors, and outcomes of venous thromboembolism in patients undergoing surgery for retroperitoneal tumors: a propensity-matched retrospective cohort study. Int J Surg. 2023 Sep 1;109(9):2689-2695. doi: 10.1097/JS9.0000000000000429. PMID 37578462.",
+      "citationVariants": [
+        "Guo Q, Zhao J, Du X, et al. Incidence, risk factors, and outcomes of venous thromboembolism in patients undergoing surgery for retroperitoneal tumors: a propensity-matched retrospective cohort study. Int J Surg. 2023 Sep 1;109(9):2689-2695. doi: 10.1097/JS9.0000000000000429. PMID 37578462."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/37578462/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/37578462/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-27"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-soft-tissue-sarcomas-to-deep-vein-thrombosis",
+          "primaryId": "soft-tissue-sarcomas",
+          "targetId": "deep-vein-thrombosis",
+          "sourceIndex": 2
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "4885cc51603454032110e25c04d33c1f9f8fb41bb69cb17f4b5c814027cab7ff"
+      ]
+    },
+    {
+      "sourceId": "pmid-39841283",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "39841283",
+      "doi": "10.1007/s00423-024-03585-5",
+      "canonicalCitation": "Willis F, Trunk AM, Musa J, et al. Temporal variation in nutritional status and preoperative anemia among patients with retroperitoneal soft tissue sarcoma: a retrospective longitudinal cohort study. Langenbecks Arch Surg. 2025 Jan 22;410(1):48. doi: 10.1007/s00423-024-03585-5. PMID 39841283.",
+      "citationVariants": [
+        "Willis F, Trunk AM, Musa J, et al. Temporal variation in nutritional status and preoperative anemia among patients with retroperitoneal soft tissue sarcoma: a retrospective longitudinal cohort study. Langenbecks Arch Surg. 2025 Jan 22;410(1):48. doi: 10.1007/s00423-024-03585-5. PMID 39841283."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39841283/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/39841283/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-27"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-soft-tissue-sarcomas-to-anemia",
+          "primaryId": "soft-tissue-sarcomas",
+          "targetId": "anemia",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "751d7a8670a6ba3628179ef4f4516c33703e24ec205ebfea06bb1e2f872b7a11"
+      ]
+    },
+    {
+      "sourceId": "pmid-41973294",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "41973294",
+      "doi": "10.1245/s10434-026-19520-5",
+      "canonicalCitation": "Lominchar PL, Díaz-Cambronero Ó, Muñoz-Muñoz P, et al. Consensus Guidelines on Perioperative Care in Primary Retroperitoneal Sarcoma Surgery. Ann Surg Oncol. 2026 Jul;33(7):6881-6909. doi: 10.1245/s10434-026-19520-5. PMID 41973294.",
+      "citationVariants": [
+        "Lominchar PL, Díaz-Cambronero Ó, Muñoz-Muñoz P, et al. Consensus Guidelines on Perioperative Care in Primary Retroperitoneal Sarcoma Surgery. Ann Surg Oncol. 2026 Jul;33(7):6881-6909. doi: 10.1245/s10434-026-19520-5. PMID 41973294."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41973294/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/41973294/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-27"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-soft-tissue-sarcomas-to-anemia",
+          "primaryId": "soft-tissue-sarcomas",
+          "targetId": "anemia",
+          "sourceIndex": 1
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "c838e8b19d94b7be81795183075d916231ac2403b01983551e70014d07a1b1d9"
+      ]
+    },
+    {
+      "sourceId": "pmid-42149300",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "42149300",
+      "doi": "10.1007/s11894-026-01045-2",
+      "canonicalCitation": "Prabagar K, Chandrasinghe PC, Hewavisenthi SJS, et al. Solitary Rectal Ulcer Syndrome Revisited: A Comprehensive Narrative Review. Curr Gastroenterol Rep. 2026 May 18;28(1). pii: 20. doi: 10.1007/s11894-026-01045-2. PMID 42149300.",
+      "citationVariants": [
+        "Prabagar K, Chandrasinghe PC, Hewavisenthi SJS, et al. Solitary Rectal Ulcer Syndrome Revisited: A Comprehensive Narrative Review. Curr Gastroenterol Rep. 2026 May 18;28(1). pii: 20. doi: 10.1007/s11894-026-01045-2. PMID 42149300."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42149300/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/42149300/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-27"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-solitary-rectal-ulcer-syndrome-to-rectal-prolapse",
+          "primaryId": "solitary-rectal-ulcer-syndrome",
+          "targetId": "rectal-prolapse",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "a0a0f9eae999e27bb38ffeb800c092926701e3cf8ef79dfbbfa7001210048d1e"
+      ]
+    },
+    {
+      "sourceId": "pmid-42713425",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "42713425",
+      "doi": "10.1155/crgm/4644258",
+      "canonicalCitation": "Ganju N, Adidam SR, Turaga NSS, et al. Kissing Rectal Ulcers With Associated Occult Rectal Mucosal Prolapse: A Distinct Endoscopic Presentation of Solitary Rectal Ulcer Syndrome in an HIV Positive Patient With Comprehensive Infectious Exclusion. Case Rep Gastrointest Med. 2026;2026:4644258. doi: 10.1155/crgm/4644258. PMID 42713425.",
+      "citationVariants": [
+        "Ganju N, Adidam SR, Turaga NSS, et al. Kissing Rectal Ulcers With Associated Occult Rectal Mucosal Prolapse: A Distinct Endoscopic Presentation of Solitary Rectal Ulcer Syndrome in an HIV Positive Patient With Comprehensive Infectious Exclusion. Case Rep Gastrointest Med. 2026;2026:4644258. doi: 10.1155/crgm/4644258. PMID 42713425."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42713425/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/42713425/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-27"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-solitary-rectal-ulcer-syndrome-to-rectal-prolapse",
+          "primaryId": "solitary-rectal-ulcer-syndrome",
+          "targetId": "rectal-prolapse",
+          "sourceIndex": 1
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "a7fc9c962f79b4db16c2eb753a89fabc5ddb42d03bd6e22eb4da499e4852a894"
+      ]
+    },
+    {
+      "sourceId": "pmid-38756112",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "38756112",
+      "doi": "10.1002/jpr3.12022",
+      "canonicalCitation": "Do P, Phen C, Alkalay M, et al. Mucosal prolapse syndrome mimicking Peutz-Jeghers syndrome in a pediatric patient. JPGN Rep. 2024 May;5(2):170-174. doi: 10.1002/jpr3.12022. PMID 38756112.",
+      "citationVariants": [
+        "Do P, Phen C, Alkalay M, et al. Mucosal prolapse syndrome mimicking Peutz-Jeghers syndrome in a pediatric patient. JPGN Rep. 2024 May;5(2):170-174. doi: 10.1002/jpr3.12022. PMID 38756112."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38756112/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/38756112/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-27"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-solitary-rectal-ulcer-syndrome-to-rectal-prolapse",
+          "primaryId": "solitary-rectal-ulcer-syndrome",
+          "targetId": "rectal-prolapse",
+          "sourceIndex": 2
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "3b3f621b08d741b3d34c501455f684662ce157cb07925054fa2939b014a5116c"
+      ]
+    },
+    {
+      "sourceId": "pmid-36968942",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "36968942",
+      "doi": "10.7759/cureus.35247",
+      "canonicalCitation": "Ejaz Z, Khan SU, Rehman RU, et al. Solitary Rectal Ulcer Syndrome in Patients Presenting With Lower Gastrointestinal Bleeding: A Tertiary-Care Hospital Experience. Cureus. 2023 Feb;15(2):e35247. doi: 10.7759/cureus.35247. PMID 36968942.",
+      "citationVariants": [
+        "Ejaz Z, Khan SU, Rehman RU, et al. Solitary Rectal Ulcer Syndrome in Patients Presenting With Lower Gastrointestinal Bleeding: A Tertiary-Care Hospital Experience. Cureus. 2023 Feb;15(2):e35247. doi: 10.7759/cureus.35247. PMID 36968942."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36968942/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/36968942/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-27"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-solitary-rectal-ulcer-syndrome-to-anemia",
+          "primaryId": "solitary-rectal-ulcer-syndrome",
+          "targetId": "anemia",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "41fd50a01dd08e0847b442e1115371f7734f3b61bf17df7d954d0f678869eb34"
+      ]
+    },
+    {
+      "sourceId": "pmid-40270668",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "40270668",
+      "doi": "10.12890/2025_005314",
+      "canonicalCitation": "Sakamoto T, Hirosawa T, Shimizu T. Recurrent Anemia Due To Mucosal Prolapse Syndrome. Eur J Case Rep Intern Med. 2025;12(4):005314. doi: 10.12890/2025_005314. PMID 40270668.",
+      "citationVariants": [
+        "Sakamoto T, Hirosawa T, Shimizu T. Recurrent Anemia Due To Mucosal Prolapse Syndrome. Eur J Case Rep Intern Med. 2025;12(4):005314. doi: 10.12890/2025_005314. PMID 40270668."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40270668/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/40270668/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-27"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-solitary-rectal-ulcer-syndrome-to-anemia",
+          "primaryId": "solitary-rectal-ulcer-syndrome",
+          "targetId": "anemia",
+          "sourceIndex": 1
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "070fd2ab46a90bb0138a4cd9219ec1672fb48c473782a9c8e5334e3393406c74"
+      ]
+    },
+    {
+      "sourceId": "pmid-18188027",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "18188027",
+      "doi": "10.1097/MEG.0b013e3282f1cbb6",
+      "canonicalCitation": "Dehghani SM, Haghighat M, Imanieh MH, et al. Solitary rectal ulcer syndrome in children: a prospective study of cases from southern Iran. Eur J Gastroenterol Hepatol. 2008 Feb;20(2):93-5. doi: 10.1097/MEG.0b013e3282f1cbb6. PMID 18188027.",
+      "citationVariants": [
+        "Dehghani SM, Haghighat M, Imanieh MH, et al. Solitary rectal ulcer syndrome in children: a prospective study of cases from southern Iran. Eur J Gastroenterol Hepatol. 2008 Feb;20(2):93-5. doi: 10.1097/MEG.0b013e3282f1cbb6. PMID 18188027."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/18188027/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/18188027/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-27"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-solitary-rectal-ulcer-syndrome-to-anemia",
+          "primaryId": "solitary-rectal-ulcer-syndrome",
+          "targetId": "anemia",
+          "sourceIndex": 2
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "2a99ec1267e1e9169de839c0479ec1afc91eab3a5734378f98d0780bea023532"
+      ]
+    },
+    {
+      "sourceId": "pmid-40923374",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "40923374",
+      "doi": "10.4103/aam.aam_322_25",
+      "canonicalCitation": "Pranami A, Verma A, Dahale A, et al. Solitary Rectal Ulcer Syndrome with Fibrotic Rectal Stricture: A Diagnostic Dilemma. Ann Afr Med. 2026 Jul 1;25(4):1013-1016. doi: 10.4103/aam.aam_322_25. PMID 40923374.",
+      "citationVariants": [
+        "Pranami A, Verma A, Dahale A, et al. Solitary Rectal Ulcer Syndrome with Fibrotic Rectal Stricture: A Diagnostic Dilemma. Ann Afr Med. 2026 Jul 1;25(4):1013-1016. doi: 10.4103/aam.aam_322_25. PMID 40923374."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40923374/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/40923374/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-27"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-solitary-rectal-ulcer-syndrome-to-anorectal-stricture",
+          "primaryId": "solitary-rectal-ulcer-syndrome",
+          "targetId": "anorectal-stricture",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "6d937f3603c75af98387ca06df8f51ec86504afa5ca0ade24bdd2e32c27f38ec"
+      ]
+    },
+    {
+      "sourceId": "pmid-20497932",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "20497932",
+      "doi": "10.4158/EP10109.CR",
+      "canonicalCitation": "Theodoraki A, Khoo B, Hamda A, et al. Malignant somatostatinoma presenting with diabetic ketoacidosis and inhibitory syndrome: pathophysiologic considerations. Endocr Pract. 2010 Sep-Oct;16(5):835-7. doi: 10.4158/EP10109.CR. PMID 20497932.",
+      "citationVariants": [
+        "Theodoraki A, Khoo B, Hamda A, et al. Malignant somatostatinoma presenting with diabetic ketoacidosis and inhibitory syndrome: pathophysiologic considerations. Endocr Pract. 2010 Sep-Oct;16(5):835-7. doi: 10.4158/EP10109.CR. PMID 20497932."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/20497932/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/20497932/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-27"
+      ],
+      "liveUsageCount": 2,
+      "liveUses": [
+        {
+          "relationshipId": "rel-somatostatinoma-to-diabetes-mellitus",
+          "primaryId": "somatostatinoma",
+          "targetId": "diabetes-mellitus",
+          "sourceIndex": 0
+        },
+        {
+          "relationshipId": "rel-somatostatinoma-to-cholelithiasis",
+          "primaryId": "somatostatinoma",
+          "targetId": "cholelithiasis",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "f10dbc8e5f3337f1c73cfa39555bfb605bbf444f5fe46e7c524e92048f41ee0f",
+        "5968ab3a950726ff389b7199d823d232bcab4d6c9258ca852afc9b026bdbd74e"
+      ]
+    },
+    {
+      "sourceId": "pmid-37628857",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "37628857",
+      "doi": "10.3390/ijms241612676",
+      "canonicalCitation": "Popoviciu MS, Paduraru L, Nutas RM, et al. Diabetes Mellitus Secondary to Endocrine Diseases: An Update of Diagnostic and Treatment Particularities. Int J Mol Sci. 2023 Aug 11;24(16). doi: 10.3390/ijms241612676. PMID 37628857.",
+      "citationVariants": [
+        "Popoviciu MS, Paduraru L, Nutas RM, et al. Diabetes Mellitus Secondary to Endocrine Diseases: An Update of Diagnostic and Treatment Particularities. Int J Mol Sci. 2023 Aug 11;24(16). doi: 10.3390/ijms241612676. PMID 37628857."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/37628857/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/37628857/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-27"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-somatostatinoma-to-diabetes-mellitus",
+          "primaryId": "somatostatinoma",
+          "targetId": "diabetes-mellitus",
+          "sourceIndex": 1
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "0f7b4361f050a55d3505f3fef7f929e68b240187b529765625cea16837e45993"
+      ]
+    },
+    {
+      "sourceId": "pmid-31869077",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "31869077",
+      "doi": null,
+      "canonicalCitation": "Jayaprakash V, Menon G. Somatostatinoma 2025 Jan. PMID 31869077.",
+      "citationVariants": [
+        "Jayaprakash V, Menon G. Somatostatinoma 2025 Jan. PMID 31869077."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/31869077/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/31869077/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-27"
+      ],
+      "liveUsageCount": 2,
+      "liveUses": [
+        {
+          "relationshipId": "rel-somatostatinoma-to-diabetes-mellitus",
+          "primaryId": "somatostatinoma",
+          "targetId": "diabetes-mellitus",
+          "sourceIndex": 2
+        },
+        {
+          "relationshipId": "rel-somatostatinoma-to-malabsorption-syndrome",
+          "primaryId": "somatostatinoma",
+          "targetId": "malabsorption-syndrome",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "d177be3fb22b38a0d591fce663c1d9cee71c1589a5032facda6cef3a7ae0a417",
+        "1730d42f25f2ece06a4239e1145e1676032d4825247530ce7711d55e746d6d2c"
+      ]
+    },
+    {
+      "sourceId": "pmid-32905002",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "32905002",
+      "doi": "10.3892/etm.2020.8965",
+      "canonicalCitation": "Sandru F, Carsote M, Valea A, et al. Somatostatinoma: Beyond neurofibromatosis type 1 (Review). Exp Ther Med. 2020 Oct;20(4):3383-3388. doi: 10.3892/etm.2020.8965. PMID 32905002.",
+      "citationVariants": [
+        "Sandru F, Carsote M, Valea A, et al. Somatostatinoma: Beyond neurofibromatosis type 1 (Review). Exp Ther Med. 2020 Oct;20(4):3383-3388. doi: 10.3892/etm.2020.8965. PMID 32905002."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/32905002/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/32905002/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-27"
+      ],
+      "liveUsageCount": 2,
+      "liveUses": [
+        {
+          "relationshipId": "rel-somatostatinoma-to-cholelithiasis",
+          "primaryId": "somatostatinoma",
+          "targetId": "cholelithiasis",
+          "sourceIndex": 1
+        },
+        {
+          "relationshipId": "rel-somatostatinoma-to-malabsorption-syndrome",
+          "primaryId": "somatostatinoma",
+          "targetId": "malabsorption-syndrome",
+          "sourceIndex": 1
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "bc9525df3b909089363e6c3513bd5ec37c17a37a62ff7f2e060519ba9a7ae93e",
+        "fc2baa9da36b29ade11db2649f86851f71ff1a50fac459d33204f1ac92fa7dd5"
+      ]
+    },
+    {
+      "sourceId": "pmid-31528595",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "31528595",
+      "doi": "10.4322/acr.2013.005",
+      "canonicalCitation": "Vianna PM, Ferreira CR, de Campos FPF. Somatostatinoma syndrome: a challenging differential diagnosis among pancreatic tumors. Autops Case Rep. 2013 Jan-Mar;3(1):29-37. doi: 10.4322/acr.2013.005. PMID 31528595.",
+      "citationVariants": [
+        "Vianna PM, Ferreira CR, de Campos FPF. Somatostatinoma syndrome: a challenging differential diagnosis among pancreatic tumors. Autops Case Rep. 2013 Jan-Mar;3(1):29-37. doi: 10.4322/acr.2013.005. PMID 31528595."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/31528595/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/31528595/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-27"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-somatostatinoma-to-cholelithiasis",
+          "primaryId": "somatostatinoma",
+          "targetId": "cholelithiasis",
+          "sourceIndex": 2
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "52ece2faf19a6d35601534fa8417e7fd707daa857c9276f0fd28dc4239c6ca13"
+      ]
+    },
+    {
+      "sourceId": "pmid-40647278",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "40647278",
+      "doi": "10.3390/nu17132175",
+      "canonicalCitation": "Del Olmo-García M, Hernandez-Rienda L, Argente Pla M, et al. Nutritional Management of Functioning GEP-NENs. Nutrients. 2025 Jun 30;17(13). doi: 10.3390/nu17132175. PMID 40647278.",
+      "citationVariants": [
+        "Del Olmo-García M, Hernandez-Rienda L, Argente Pla M, et al. Nutritional Management of Functioning GEP-NENs. Nutrients. 2025 Jun 30;17(13). doi: 10.3390/nu17132175. PMID 40647278."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40647278/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/40647278/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-27"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-somatostatinoma-to-malabsorption-syndrome",
+          "primaryId": "somatostatinoma",
+          "targetId": "malabsorption-syndrome",
+          "sourceIndex": 2
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "1ccc57827c2ff954de5301cae98d3168f1319e41370a535363c13803e9733030"
+      ]
+    },
+    {
+      "sourceId": "pmid-30101219",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "30101219",
+      "doi": "10.1016/j.wjorl.2018.04.004",
+      "canonicalCitation": "Hu A, Hillel A, Zhao W, et al. Anxiety and depression in spasmodic dysphonia patients. World J Otorhinolaryngol Head Neck Surg. 2018 Jun;4(2):110-116. doi: 10.1016/j.wjorl.2018.04.004. PMID 30101219.",
+      "citationVariants": [
+        "Hu A, Hillel A, Zhao W, et al. Anxiety and depression in spasmodic dysphonia patients. World J Otorhinolaryngol Head Neck Surg. 2018 Jun;4(2):110-116. doi: 10.1016/j.wjorl.2018.04.004. PMID 30101219."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/30101219/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/30101219/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-27"
+      ],
+      "liveUsageCount": 2,
+      "liveUses": [
+        {
+          "relationshipId": "rel-spasmodic-dysphonia-to-anxiety-disorder",
+          "primaryId": "spasmodic-dysphonia",
+          "targetId": "anxiety-disorder",
+          "sourceIndex": 0
+        },
+        {
+          "relationshipId": "rel-spasmodic-dysphonia-to-depressive-disorder",
+          "primaryId": "spasmodic-dysphonia",
+          "targetId": "depressive-disorder",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "4a101b6f1bb5dd860ec9dc092aca7510244ec19c3350a03f3fb7f37262cb7e52",
+        "e0df3ddbcd48b28207e67f733c2401a081b66030a9ca992986b9f15010d6a99d"
+      ]
+    },
+    {
+      "sourceId": "pmid-39500695",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "39500695",
+      "doi": "10.1016/j.jvoice.2024.10.006",
+      "canonicalCitation": "Hamdan AL, Ghzayel L, Yammine Y, et al. Correlation Between Anxiety, Depression, and Self-Perceived Hoarseness: A Case Series of 100 Lebanese Patients. J Voice. 2024 Nov 4. pii: S0892-1997(24)00349-7. doi: 10.1016/j.jvoice.2024.10.006. PMID 39500695.",
+      "citationVariants": [
+        "Hamdan AL, Ghzayel L, Yammine Y, et al. Correlation Between Anxiety, Depression, and Self-Perceived Hoarseness: A Case Series of 100 Lebanese Patients. J Voice. 2024 Nov 4. pii: S0892-1997(24)00349-7. doi: 10.1016/j.jvoice.2024.10.006. PMID 39500695."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39500695/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/39500695/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-27"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-spasmodic-dysphonia-to-anxiety-disorder",
+          "primaryId": "spasmodic-dysphonia",
+          "targetId": "anxiety-disorder",
+          "sourceIndex": 2
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "0211836cf94b5a6c4ba2f9d3852222468e547932d09b2cc9853716dc8c0a3d37"
+      ]
+    },
+    {
+      "sourceId": "pmid-40701891",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "40701891",
+      "doi": "10.1016/j.jvoice.2025.06.007",
+      "canonicalCitation": "Hamdan AL, Daou CAZ, Semaan ZM, et al. Correlation Between Anxiety, Depression, and Self-Perceived Hoarseness: A Systematic Review of the Literature. J Voice. 2025 Jul 22. pii: S0892-1997(25)00223-1. doi: 10.1016/j.jvoice.2025.06.007. PMID 40701891.",
+      "citationVariants": [
+        "Hamdan AL, Daou CAZ, Semaan ZM, et al. Correlation Between Anxiety, Depression, and Self-Perceived Hoarseness: A Systematic Review of the Literature. J Voice. 2025 Jul 22. pii: S0892-1997(25)00223-1. doi: 10.1016/j.jvoice.2025.06.007. PMID 40701891."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40701891/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/40701891/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-27"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-spasmodic-dysphonia-to-depressive-disorder",
+          "primaryId": "spasmodic-dysphonia",
+          "targetId": "depressive-disorder",
+          "sourceIndex": 1
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "adae6596e6b0fdf52e0630fa148e958ae541c1095ebb2296240e7dbdbf460b82"
+      ]
+    },
+    {
+      "sourceId": "pmid-42295361",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "42295361",
+      "doi": "10.1007/s00120-026-02858-9",
+      "canonicalCitation": "Filmar S, Hook S, Neuner B, et al. [Safety and feasibility of outpatient hydrocele and spermatocele surgery: a prospective comparative analysis]. Urologie. 2026 Jun 15. doi: 10.1007/s00120-026-02858-9. PMID 42295361.",
+      "citationVariants": [
+        "Filmar S, Hook S, Neuner B, et al. [Safety and feasibility of outpatient hydrocele and spermatocele surgery: a prospective comparative analysis]. Urologie. 2026 Jun 15. doi: 10.1007/s00120-026-02858-9. PMID 42295361."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42295361/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/42295361/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-27"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-spermatocele-to-varicocele-hydrocele",
+          "primaryId": "spermatocele",
+          "targetId": "varicocele-hydrocele",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "4de7fb5d27a9368a8f0d44fc9a606f57bdcdeb1af68e8a6e00b7af8f1b1dd563"
+      ]
+    },
+    {
+      "sourceId": "pmid-33569989",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "33569989",
+      "doi": "10.1080/21681805.2021.1884131",
+      "canonicalCitation": "Keller AK, Howard MM, Jensen JB. Complications after scrotal surgery - still a major issue?. Scand J Urol. 2021 Oct;55(5):404-407. doi: 10.1080/21681805.2021.1884131. PMID 33569989.",
+      "citationVariants": [
+        "Keller AK, Howard MM, Jensen JB. Complications after scrotal surgery - still a major issue?. Scand J Urol. 2021 Oct;55(5):404-407. doi: 10.1080/21681805.2021.1884131. PMID 33569989."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33569989/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/33569989/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-27"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-spermatocele-to-varicocele-hydrocele",
+          "primaryId": "spermatocele",
+          "targetId": "varicocele-hydrocele",
+          "sourceIndex": 1
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "3f44dce7c7358be4d170d3609474091a796eedfa7aa9112b519b9e7572f63c2e"
+      ]
+    },
+    {
+      "sourceId": "pmid-24806800",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "24806800",
+      "doi": "10.1007/s00120-014-3486-4",
+      "canonicalCitation": "Kliesch S. [Hydrocele, spermatocele, and vasectomy: management of complications]. Urologe A. 2014 May;53(5):671-5. doi: 10.1007/s00120-014-3486-4. PMID 24806800.",
+      "citationVariants": [
+        "Kliesch S. [Hydrocele, spermatocele, and vasectomy: management of complications]. Urologe A. 2014 May;53(5):671-5. doi: 10.1007/s00120-014-3486-4. PMID 24806800."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/24806800/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/24806800/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-27"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-spermatocele-to-varicocele-hydrocele",
+          "primaryId": "spermatocele",
+          "targetId": "varicocele-hydrocele",
+          "sourceIndex": 2
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "7f5f704d1cf5ddf9014391d40caadd866ed761c109b7b1f4f5cd39d459f8330b"
+      ]
+    },
+    {
+      "sourceId": "pmid-39186830",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "39186830",
+      "doi": "10.1097/JU.0000000000004224",
+      "canonicalCitation": "Greenberg DR, Gago LC, Kumar SKSR, et al. Epididymal Cyst Lesions Are Not Associated With Impaired Semen Parameters Among Men Presenting for Fertility Evaluation. J Urol. 2024 Dec;212(6):891-898. doi: 10.1097/JU.0000000000004224. PMID 39186830.",
+      "citationVariants": [
+        "Greenberg DR, Gago LC, Kumar SKSR, et al. Epididymal Cyst Lesions Are Not Associated With Impaired Semen Parameters Among Men Presenting for Fertility Evaluation. J Urol. 2024 Dec;212(6):891-898. doi: 10.1097/JU.0000000000004224. PMID 39186830."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39186830/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/39186830/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-27"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-spermatocele-to-hypogonadism",
+          "primaryId": "spermatocele",
+          "targetId": "hypogonadism",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "5dd7b81820ad717fceb07bbd6ee2a9b74916562c48e449991c3f587597e67121"
+      ]
+    },
+    {
+      "sourceId": "pmid-30142407",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "30142407",
+      "doi": "10.1016/j.urology.2018.08.007",
+      "canonicalCitation": "Hou Y, Zhang Y, Li G, et al. Microsurgical Epididymal Cystectomy does not Impact Upon Sperm Count, Motility or Morphology and is a Safe and Effective Treatment for Epididymal Cystic Lesions (ECLs) in Young Men With Fertility Requirements. Urology. 2018 Dec;122:97-103. doi: 10.1016/j.urology.2018.08.007. PMID 30142407.",
+      "citationVariants": [
+        "Hou Y, Zhang Y, Li G, et al. Microsurgical Epididymal Cystectomy does not Impact Upon Sperm Count, Motility or Morphology and is a Safe and Effective Treatment for Epididymal Cystic Lesions (ECLs) in Young Men With Fertility Requirements. Urology. 2018 Dec;122:97-103. doi: 10.1016/j.urology.2018.08.007. PMID 30142407."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/30142407/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/30142407/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-27"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-spermatocele-to-hypogonadism",
+          "primaryId": "spermatocele",
+          "targetId": "hypogonadism",
+          "sourceIndex": 1
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "a0d42ccf57569f7c56b8660b139824f30b249eb4962d03d66b7739ed50e2b5f8"
+      ]
+    },
+    {
+      "sourceId": "pmid-21756377",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "21756377",
+      "doi": null,
+      "canonicalCitation": "Shan CJ, Lucon AM, Pagani R, et al. Sclerotherapy of hydroceles and spermatoceles with alcohol: results and effects on the semen analysis. Int Braz J Urol. 2011 May-Jun;37(3):307-12; discussion 312-33. PMID 21756377.",
+      "citationVariants": [
+        "Shan CJ, Lucon AM, Pagani R, et al. Sclerotherapy of hydroceles and spermatoceles with alcohol: results and effects on the semen analysis. Int Braz J Urol. 2011 May-Jun;37(3):307-12; discussion 312-33. PMID 21756377."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/21756377/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/21756377/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-27"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-spermatocele-to-hypogonadism",
+          "primaryId": "spermatocele",
+          "targetId": "hypogonadism",
+          "sourceIndex": 2
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "ef5cdfd736017f59d222b1db56a5dc8882219146e501a0f2e7cb6ad79da58a84"
       ]
     }
   ],
