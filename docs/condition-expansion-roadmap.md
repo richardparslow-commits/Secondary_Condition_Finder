@@ -4342,3 +4342,129 @@ eighteenth consecutive batch with no manual fixture bump. Residue clean outside 
 coincidences (apply-all-94's historical `explicitPublicationGuards: 273`; wave-5's
 `toBeGreaterThanOrEqual(276)` catalog floor; legal-copy's `38 U.S.C. § 1117` statute text). Standing
 recommendation: batch 78 lands through branch, PR, CI, and merge.
+
+## Mapping Expansion D1 batch 79 (2026-09-27)
+
+Five identities fully mapped with 12 draft-quarantined ASSOCIATION_ONLY edges over 36
+reference uses across 36 new PMIDs; no deferrals this batch.
+
+- `retrograde-ejaculation -> female-infertility` (MECHANICAL_OR_COMPRESSIVE): narrative
+  review establishing the conception consequence and the urine-sperm-recovery workaround
+  (PMID 40150068), laboratory-medicine review establishing the post-ejaculatory-urine
+  diagnostic route (PMID 39776640), and a couple case report conceived after testicular
+  sperm aspiration with intracytoplasmic sperm injection (PMID 38576657). Anchor class is
+  review-plus-case-report with the female partner's concurrent bilateral tubal obstruction
+  confounding attribution; the route runs through the couple while the catalog target is the
+  female partner's identity.
+- `retrograde-ejaculation -> erectile-dysfunction` (NEUROENDOCRONE_CASCADE): prospective
+  controlled diabetes study (retrograde ejaculation in 9 of 26 men with diabetes versus 0 of
+  16 controls, P<0.01, with a graded erectile-dysfunction frequency across the three groups,
+  PMID 23606485), a 115-patient diabetic series (moderate-to-severe erectile dysfunction
+  54.8 percent; diabetes duration adjusted OR 1.70, PMID 41731353), and a thulium laser
+  prostate vaporesection series (erectile worsening 20 percent, retrograde ejaculation 56
+  percent of 54 evaluable patients, PMID 22237486). Shared-exposure discipline: every anchor
+  is a population selected by diabetes or prostatic surgery, so direction is not asserted; the
+  surgical anchor's non-significant erectile subgroup trends are carried openly as
+  counterweight. The 39.1 percent anorgasmia construct in the 2026 series is withheld as a
+  double-count of the same triple-dysfunction construct.
+- `rhinitis-vasomotor -> asthma` (PSYCHOPHYSIOLOGICAL): Copenhagen birth-cohort comparison
+  (non-allergic rhinitis asthma prevalence 20 percent versus 5 percent in controls, matching
+  the allergic group at 21 percent, PMID 20816191), the upper-airway-comorbidity review
+  (PMID 39426424), and the non-allergic-rhinopathy review (PMID 38467330). Two counterweights
+  carried openly: the same cohort's finding that bronchial hyperresponsiveness and exhaled
+  nitric oxide elevation were confined to the allergic subgroup, and a separate pediatric
+  methacholine study's 25.5 versus 55.7 percent hyperresponsiveness split (PMID 23710946,
+  recorded on the edge without being a registered reference).
+- `rhinitis-vasomotor -> migraine-headaches` (NEUROENDOCRINE_CASCADE): prospective clinical
+  study (migraine in 22.9 percent of the non-allergic subgroup versus 16.0 percent of
+  controls under ICHD-3, PMID 41605462), American Migraine Prevalence and Prevention
+  (adjusted OR 1.25 for any rhinitis on headache frequency, PMID 24275145), and the dedicated
+  vasomotor-rhinitis report (PMID 33713559, registered for title-level association only
+  because the PubMed record carries no abstract). Null carried openly: the population
+  anchor's MIDAS disability association went null after full adjustment (OR 1.10, 95 percent
+  CI 0.96-1.26), and the significant adjusted result is carried by the mixed-rhinitis
+  stratum rather than the non-allergic stratum.
+- `rickets -> seizure-disorder` (METABOLIC_OR_NUTRITIONAL): case report of an eight-month-old
+  breastfed boy with three generalised tonic seizures, total calcium 6.8 mg/dL, ionised
+  calcium 0.91 mmol/L, 25-hydroxyvitamin D 3.5 ng/mL, and no further seizures after
+  correction (PMID 41552144), an emergency-department three-case series (PMID 14758313), and
+  the Olmsted County population study (hypocalcaemia or tetany in 2 of 17 nutritional cases;
+  incidence 24.1 per 100,000 in children under three, PMID 23374621). The reversible-metabolic
+  rather than structural character is stated, with respiratory alkalosis and intercurrent
+  febrile illness named as cofactors.
+- `rickets -> loss-of-teeth` (METABOLIC_OR_NUTRITIONAL): case report of generalized
+  permanent-dentition enamel hypoplasia with the primary dentition spared as a built-in
+  temporal control (PMID 42505708), a two-patient report of serious subsequent tooth decay
+  (PMID 24616355), and a comparative cohort (enamel hypoplasia in 5 of 6 adults with
+  vitamin-D-dependent rickets type 1A versus 1 of 25 with X-linked hypophosphatemia,
+  P<0.001, PMID 28608052). The inherited-subtype mismatch in the comparative anchor is
+  carried openly; no anchor quantifies tooth loss.
+- `riedel-s-thyroiditis -> hypothyroidism` (SYSTEMIC_INFLAMMATORY): Karolinska series of six
+  patients (hypothyroidism at diagnosis in five, extrathyroidal manifestations in four,
+  IgG4/IgG ratio over 40 percent in one, PMID 29380231), the 2011 clinical review (PMID
+  21832114), and the IgG4-related thyroid-disorder review (PMID 27828690). Deliberately kept
+  distinct from the registered `rel-thyroiditis-to-hypothyroidism` edge, which scopes itself
+  to chronic autoimmune or Hashimoto-type disease, by naming coexisting autoimmune
+  thyroiditis as the principal competing explanation throughout.
+- `riedel-s-thyroiditis -> hypoparathyroidism` (SYSTEMIC_INFLAMMATORY): case report
+  documenting silently present hypocalcaemia with inappropriately normal parathyroid hormone
+  and return to the reference range within three months of isthmectomy plus corticosteroids
+  and tamoxifen, together with the one-seventh frequency statement (PMID 26200816), a second
+  case report independently reproducing that reversibility (PMID 36937637), and a six-patient
+  surgical series reporting temporary postoperative hypoparathyroidism alongside vocal-cord
+  palsy (PMID 36452560). The intrinsic fibrotic-infiltration and postoperative routes are
+  carried separately rather than blended, and the frequency figure is attributed to its
+  single-case-report origin.
+- `rosacea -> depressive-disorder` (PSYCHOPHYSIOLOGICAL): Danish register cohort
+  (severity-dependent incidence rate ratios 1.89 mild and 2.04 moderate-to-severe, PMID
+  26954304), a 116-million-patient matched cohort (depression HR 1.488 at five years, PMID
+  41232679), and the Taiwanese claims cohort (psychiatric hazard ratio 2.761, PMID 30466187).
+- `rosacea -> anxiety-disorder` (PSYCHOPHYSIOLOGICAL): Northern Finland Birth Cohort clinical
+  examination (adjusted Hopkins Symptom Checklist-25 OR 1.55, PMID 38008081), a 168-person
+  survey with an indirect mediation model (PMID 24088195), and a Chinese case-control
+  (PMID 40741710, cross-cited for its explicit nulls).
+- `rosacea -> dry-eye-syndrome` (SYSTEMIC_INFLAMMATORY): multi-institutional case-control of
+  12,936 patients (dry eye aOR 1.89, blepharitis aOR 3.44, PMID 34209731), the ocular
+  clinical review (PMID 33403718), and a 176-patient referral comparison (PMID 12658088).
+  The dermatology-record ascertainment limit and the referral-behaviour reading of the
+  comparison anchor are carried openly.
+- `rosacea -> migraine-headaches` (NEUROENDOCRINE_CASCADE): meta-analysis of 11 studies
+  (OR 1.93 with a null-spanning prediction interval of 0.67-5.53 and I-squared 98 percent,
+  PMID 40899443), a 604-patient cross-sectional phenotyping study (54 percent and 65 percent
+  reciprocal prevalence; flushing OR 2.6, ocular OR 2.4, burning OR 2.1, papules and pustules
+  inversely related OR 0.5, PMID 36341245), and a 150-patient case-control (PMID 42390920).
+
+Null-counterweights carried openly across the batch: the non-allergic-rhinitis subgroup's
+absent bronchial hyperresponsiveness and exhaled-nitric-oxide elevation; the 25.5 versus 55.7
+percent hyperresponsiveness split; the MIDAS disability null after full adjustment; the
+surgical anchor's non-significant erectile subgroup trends; the rosacea-migraine
+meta-analysis prediction interval spanning the null; and the inverse papule-pustule finding.
+PMID 40741710 is the sole within-batch cross-cited anchor, registered on three rosacea edges
+for its explicit null findings (no significant association with dry eye syndrome, migraine,
+hypertension, H. pylori, cancer, Crohn's or ulcerative colitis, or chronic kidney disease)
+rather than its positive results.
+
+Withheld propositions recorded on the files rather than registered: retrograde-ejaculation to
+delayed-ejaculation, anorgasmia, female-sexual-arousal-disorder, urinary-retention, and
+bladder-neck-stenosis; rhinitis-vasomotor to sinusitis, chronic-sinusitis, allergic-rhinitis,
+sleep-apnea, insomnia, and anosmia; rickets to osteomalacia, osteoporosis, osteopenia,
+stress-fractures, failure-to-thrive, short-stature, developmental-delay, and
+dilated-cardiomyopathy; riedel-s-thyroiditis to dysphagia (constitutive-proximity - the
+presenting symptom in essentially every anchor), nontoxic-thyroid-enlargement, thyroid-cancer
+(diagnostic-mimic), vocal-cord paralysis, tracheal-stenosis, and the extrathyroidal
+involvements; rosacea to glaucoma, conjunctivitis, corneal-scarring, chalazion, blepharitis,
+the cardiovascular identities, the comorbidity set with explicit nulls, and rhinophyma. The
+anosmia, growth-failure, developmental-delay, dilated-cardiomyopathy, tracheal-stenosis,
+extrathyroidal-involvement, and blepharitis items are catalog-gap continuations rather than
+numbered evidence-preserving refusals, so the count remains at nine.
+
+Counters: 790 relationships (716 explicit, 74 legacy), 1,305 sources (950
+pending-verification), 1,460 references, 1,077 unverified, backlog 100 -> 95, packet 427
+worksheets / 1,077 rows, dashboard 1,077 rows / 949 sources / 45 batches. Test-token sweep
+covered 54 files and 304 tokens with 0 suspicious; the `Array.from({ length: 1077 })`
+citation-decay-gate debt fixture continued to carry automatically - nineteenth consecutive
+batch with no manual fixture bump. Draft-singles stays 302 (none of the five batch identities
+was authored with exactly one suggestion). Residue clean outside the standing benign
+coincidences (apply-all-94's historical `explicitPublicationGuards: 273`; wave-5's
+`toBeGreaterThanOrEqual(276)` catalog floor; legal-copy's `38 U.S.C. § 1117` statute text).
+Standing recommendation: batch 79 lands through branch, PR, CI, and merge.

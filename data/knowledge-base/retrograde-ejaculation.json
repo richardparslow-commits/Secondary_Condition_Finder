@@ -2,8 +2,139 @@
   "id": "retrograde-ejaculation",
   "draft": true,
   "todo": [
-    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review urologic, gynecologic, hormonal, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "D1 draft-authoring batch 79 (2026-09-27): two ASSOCIATION_ONLY draft mappings pending qualified-human citation verification under docs/citation-verification-sop.md; mapping approval is not citation verification.",
+    "Classification guard: the edges assert association only (etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, hypothesizedOnly:true) - the female-infertility edge at MECHANICAL_OR_COMPRESSIVE following the male-condition-to-infertility convention, the erectile-dysfunction edge at NEUROENDOCRINE_CASCADE. Both edges carry the shared-exposure or anchor-class limit openly (all three erectile-dysfunction anchors select populations by the shared antecedent of diabetes or prostatic surgery; the infertility anchors are two reviews plus one case report with a confounded female partner), the evidence-class limit is stated (no located cohort quantifies partner-level conception failure, and the largest prospective anchor reports 26 exposed participants), and the surgical anchor's non-significant erectile subgroup trends are carried openly as counterweight. Constitutive-proximity was screened and cleared on the record (ejaculation and erectile function are separate physiologic processes and neither condition is a diagnostic criterion of the other). Deliberately NO within-batch source sharing this batch: all six references across the two edges are disjoint. Individual claims require dated post-ejaculatory urine sperm analysis, seminal volume, partner-level conception history, erectile-function assessment, and records excluding diabetes, prior prostate or pelvic surgery, and medication effects, with review by a qualified medical professional.",
+    "Pathway and duplicate-scope screens and withheld propositions: no -> delayed-ejaculation edge (SEMANTIC-MISMATCH plus SHARED-EXPOSURE - retarded ejaculation is a distinct ejaculatory phenotype defined by latency rather than by emission failure, and the two share the same diabetes, surgery, and medication antecedents; the registered delayed-ejaculation to depressive-disorder window owns its route and its sources are left untouched per ME-29); no -> anorgasmia edge (MANIFESTATION-IDENTITY plus SHARED-SUBSTRATE - the 39.1 percent anorgasmia figure in the 2026 series is reported within the same triple-dysfunction construct as the registered erectile-dysfunction edge and the catalog carries an anorgasmia identity whose own window owns that route; registering both from one source would double-count one construct); no -> female-sexual-arousal-disorder edge (GENDER-SCOPE plus INTERMEDIATE-NODE - the couple-level conception route terminates in female infertility, and the located literature reports male anorgasmia and erectile function rather than the female arousal identity, which is a catalog target of other male-condition edges already registered); no -> urinary-retention and no -> bladder-neck-stenosis edges (TREATMENT-MEDIATED and UPSTREAM - the indwelling-catheter and bladder-outflow-obstruction findings in the surgical anchor describe the population selected for surgery rather than a downstream consequence of the ejaculatory condition)."
   ],
-  "suggestions": []
+  "governanceNotes": [
+    "D1 batch 79 (2026-09-27): two bounded association edges authored - retrograde-ejaculation to female-infertility (rank 1) and retrograde-ejaculation to erectile-dysfunction (rank 2) - both classified ASSOCIATION_ONLY with etiologicalConsensus NOT_ESTABLISHED, vaNexusProbabilityAlignment NOT_ASSERTED, and hypothesizedOnly:true. The edges rest on disjoint sources this batch (deliberately no within-batch shared-source provenance while the CRG redundancy-semantics question stands at eleven accumulated examples): the female-infertility edge on the 2025 narrative review establishing the conception consequence and the urine-sperm-recovery workaround (PMID 40150068), the 2024 laboratory-medicine review establishing the post-ejaculatory-urine diagnostic route and the otherwise-invasive alternatives (PMID 39776640), and the 2024 case report of a couple with four years of infertility attributed to the ejaculatory finding, conceived after testicular sperm aspiration with intracytoplasmic sperm injection (PMID 38576657); the erectile-dysfunction edge on the prospective controlled diabetes study (retrograde ejaculation in 9 of 26 men with diabetes versus 0 of 16 controls, P<0.01, with a graded erectile-dysfunction frequency across the three groups, PMID 23606485), the 2026 retrospective series of 115 diabetic men (moderate-to-severe erectile dysfunction 54.8 percent; diabetes duration adjusted OR 1.70, PMID 41731353), and the 2012 thulium laser prostate vaporesection series (erectile worsening 20 percent, retrograde ejaculation 56 percent of 54 evaluable patients, PMID 22237486). Shared-exposure discipline: every erectile-dysfunction anchor is a population selected by the shared antecedent of diabetes or prostatic surgery, so the direction from the ejaculatory condition to the erectile condition is explicitly not asserted and the mechanism, evidence gaps, and alternatives all name that shared substrate. The surgical anchor's non-significant erectile subgroup trends are carried openly as counterweight. The anorgasmia construct reported in the 2026 series is withheld as a double-count of the registered erectile-dysfunction route rather than authored as a third edge."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "female-infertility",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Retrograde ejaculation is repeatedly characterised in the fertility literature as a cause of failure to conceive through intercourse, with the ejaculate diverted into the bladder and the antegrade seminal volume correspondingly absent or reduced: the 2025 narrative review states that retrograde ejaculation emphasises its impact on male fertility, that the condition results in partial or complete absence of the ejaculate, and that assisted reproductive technologies using sperm retrieved from post-ejaculatory urine offer a viable alternative for conception precisely because natural conception fails (PMID 40150068); the 2024 laboratory-medicine review defines retrograde ejaculation as reflux of the ejaculate towards the bladder during the emission phase causing a total or partial absence of sperm emission, notes that evaluating the ejaculate may not be sufficient to identify the condition, and states that management of infertility may otherwise involve invasive methods such as epididymal fluid retrieval or testicular biopsy (PMID 39776640); and the 2024 case report documents a couple presenting after four years of infertility in which the 34-year-old male spouse was found to have retrograde ejaculation with primary infertility attributable to it, treated with testicular sperm aspiration and intracytoplasmic sperm injection (PMID 38576657); recorded as documented association only with the anchor-class limits carried openly - the narrative and laboratory reviews describe mechanism and management rather than quantify an incidence of partner-level conception failure, and the conception anchor is a single couple case report whose female partner additionally had bilateral tubal obstruction confounding attribution of the infertility to the ejaculatory finding alone.",
+        "causationStatus": "Neither causation nor aggravation of female infertility is established for any individual: the located anchors are reviews plus one case report and do not establish a population conception-failure rate, the condition is frequently undetected because evaluating the ejaculate alone may miss it and post-ejaculatory urine testing is not routine, and the anchors describe the male partner's ejaculatory diversion while the catalog target is the female partner's identity, so the route runs through the couple rather than through the female reproductive tract; individual claims require dated partner-level conception history, post-ejaculatory urine sperm analysis with low or normal seminal volume confirming the diagnosis, and female tubal, ovulatory, uterine, and partner-sperm causes excluded or independently documented."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MECHANICAL_OR_COMPRESSIVE",
+        "primaryVector": "Anatomic and neurogenic failure of bladder-neck closure during the emission phase diverts the ejaculate retrograde into the bladder so that antegrade semen required for cervical-vaginal deposition is unavailable at intercourse - the route the review anchors describe directly - but whether that diversion produced any couple's failure to conceive remains hypothesized until post-ejaculatory urine sperm analysis, seminal volume, and the female partner's independent fertility evaluation are reviewed side by side.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "Authored at ASSOCIATION_ONLY at narrative-review, laboratory-methodology, and case-report class following the male-reproductive-to-infertility convention (the registered appendicitis, fitz-hugh-curtis-syndrome, and miscarriage to female-infertility edges and the prostate/radiation-therapy disposition precedent in which female-infertility is a catalog target of male-condition edges): the review anchor establishes the conception failure consequence and the assisted-retechnology workaround (PMID 40150068), the laboratory anchor establishes the diagnostic route through post-ejaculatory urine with invasive alternatives otherwise required (PMID 39776640), and the case anchor shows a live conception outcome after assisted technology in an attributed case (PMID 38576657); because the anchors are reviews and a single case report rather than a cohort with partner-level conception denominators, and because the diagnosis is systematically under-detected, the conservative standard keeps the edge at association only with those limits stated and routes individual claims through confirmed post-ejaculatory urine sperm analysis with the female partner's own causes excluded.",
+        "evidenceGaps": "No cohort quantifies partner-level conception failure attributable to retrograde ejaculation, and the located evidence base is reviews plus isolated case reports; the single located conception anchor is confounded by concurrent bilateral tubal obstruction in the female partner; no anchor reports the population detection rate of the condition, which the laboratory review notes is not routine; the anchors do not separate complete from partial retrograde ejaculation in conception outcomes.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Post-ejaculatory urine sperm analysis absent or uninterpretable, so the ejaculatory diversion was never confirmed",
+          "Female tubal, ovulatory, uterine, or endometrial-factor infertility independently present",
+          "Male partner factor infertility (oligospermia, azoospermia, testicular failure) coexisting with the ejaculatory finding",
+          "Assisted-retechnology-dependent conception misattributed to the ejaculatory condition"
+        ]
+      },
+      "evidenceGaps": [
+        "No cohort quantifies partner-level conception failure attributable to retrograde ejaculation, and the located evidence base is reviews plus isolated case reports; the single located conception anchor is confounded by concurrent bilateral tubal obstruction in the female partner; no anchor reports the population detection rate of the condition, which the laboratory review notes is not routine; the anchors do not separate complete from partial retrograde ejaculation in conception outcomes."
+      ],
+      "rationale": "Authoring keeps this edge at documented association because the two review anchors reliably establish that retrograde ejaculation removes antegrade ejaculate from intercourse and that natural conception consequently fails, and the case anchor shows an attributable conception after sperm recovery, but the class of evidence is review plus case report with a confounded female partner and no cohort denominator; the edge is registered so the couple-level route is visible, while the target identity is the female partner's and the intermediate step of the male condition must be independently confirmed before any individual attribution.",
+      "sourceReferences": [
+        {
+          "citation": "Konstantinidis C, Zachariou A, Evgeni E, et al. Recent Advances in the Diagnosis and Management of Retrograde Ejaculation: A Narrative Review Diagnostics (Basel). 2025 Mar 14;15(6).doi: 10.3390/diagnostics15060726. PMID 40150068.",
+          "note": "Narrative review of retrograde ejaculation emphasizing its impact on male fertility, complete or partial absence of the ejaculate, and assisted reproductive technologies with sperm retrieved from post-ejaculatory urine as a viable route to conception.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/40150068/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-27",
+          "sourceLocator": "Diagnostics (Basel). 2025;15(6):726. Review; abstract states RE may result in partial or complete absence of the ejaculate and that ARTs using urine-retrieved sperm offer a viable alternative for conception."
+        },
+        {
+          "citation": "Veiga Álvarez E, Zopeque García N, Gutiérrez Romero JM, et al. Sperm recovery from urine in men with retrograde ejaculation Adv Lab Med. 2024 Dec;5(4):356-365. PMID 39776640.",
+          "note": "Laboratory-medicine review defining retrograde ejaculation as emission-phase reflux into the bladder with total or partial absence of sperm emission, and stating that infertility management may otherwise require epididymal fluid retrieval or testicular biopsy.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39776640/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-27",
+          "sourceLocator": "Adv Lab Med. 2024;5(4):356-365. Methods and diagnostic review; abstract states evaluating the ejaculate may not be sufficient to identify RE and that diagnosis rests on spermatozoa in post-ejaculatory urine with low or normal seminal volume."
+        },
+        {
+          "citation": "Kasbe MN, More A, Gajabe G, et al. Fertility Challenges: The Complexities of Retrograde Ejaculation and Cornual Block in Reproductive Health Cureus. 2024 Mar;16(3):e55523. PMID 38576657.",
+          "note": "Case report of a couple with four years of infertility in which the male spouse was found to have retrograde ejaculation with dead sperm and urine in the ejaculate, treated with testicular sperm aspiration and intracytoplasmic sperm injection.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38576657/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-27",
+          "sourceLocator": "Cureus. 2024;16(3):e55523. Case report; abstract states primary infertility due to RE over the same four-year period, with a positive beta-hCG on day 14 after ICSI. Female partner had bilateral tubal blockage, which confounds attribution."
+        }
+      ]
+    },
+    {
+      "conditionId": "erectile-dysfunction",
+      "rank": 2,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Retrograde ejaculation co-occurs with erectile dysfunction at documented rates in the diabetes and post-prostate-surgery literature: the prospective controlled diabetes study of 26 men with diabetes and 18 matched controls found retrograde ejaculation in 9 of 26 men with diabetes versus none of 16 controls who delivered an ejaculate (P<0.01), and reports that diabetics suffering from retrograde ejaculation more frequently exhibited erectile dysfunction compared with non-diabetics and with diabetics without retrograde ejaculation, who in turn exceeded the controls (PMID 23606485); the 2026 retrospective series of 115 diabetic men with retrograde ejaculation reports a high prevalence of triple dysfunction with 80.0 percent having complete retrograde ejaculation, 54.8 percent suffering moderate-to-severe erectile dysfunction, and 39.1 percent reporting anorgasmia, with multivariate logistic regression identifying diabetes duration (OR 1.70, P<0.001), age (OR 1.23, P<0.001), and glycated hemoglobin (OR 1.70, P=0.004) as independent predictors of moderate-to-severe erectile dysfunction (PMID 41731353); and the 2012 series of 113 consecutive patients undergoing thulium laser prostate vaporesection found 11 of 54 (20 percent) with worsening erectile function and 30 of 54 (56 percent) with some degree of retrograde ejaculation at a mean 12-month follow-up, more common with an indwelling catheter (43 versus 17 percent, P=0.04) and in diabetic patients (27 versus 4 percent, P=0.03) (PMID 22237486); recorded as documented association only with the shared-exposure limit carried openly - all three anchors are populations in which diabetes or prostatic surgery drives both conditions independently, so co-occurrence is documented while direction from the ejaculatory condition to the erectile condition is not.",
+        "causationStatus": "Neither causation nor aggravation of erectile dysfunction is established for any individual: the located anchors are cross-sectional or retrospective and both conditions share diabetes, prostatic surgery, and age as common antecedents, the diabetes anchor explicitly reports that the excess erectile dysfunction could not be explained by antihypertensive drug use but does not adjust for the shared metabolic substrate, and the surgical anchor's erectile-dysfunction increase was not significant in the age, hypertension, and hypercholesterolaemia subgroups so its own subgroup analyses provide a counterweight; individual claims require dated erectile-function assessment, dated ejaculatory history, and adjustment for or independent documentation of diabetes control, prostate or pelvic surgery, medications, and vascular risk factors."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "NEUROENDOCRINE_CASCADE",
+        "primaryVector": "Autonomic neuropathy affecting pelvic and cavernosal innervation in diabetes, and injury to cavernosal and ejaculatory innervation during prostatic surgery, are hypothesized to produce both ejaculatory emission failure and erectile dysfunction in the same individual - the shared-substrate route the diabetes and surgical anchors support by their co-occurrence within single populations - but whether the ejaculatory condition contributed to any individual's erectile dysfunction independently of that shared substrate remains hypothesized until the two diagnoses are separately dated and the common antecedent is characterised.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "Authored at ASSOCIATION_ONLY at prospective-controlled-cohort, retrospective-series, and surgical-series class following the male-sexual-function comorbidity convention (the registered prostate-cancer, testicular-cancer, hypogonadism, hypertension, psoriasis, cauda-equina-syndrome, ptsd, and depressive-disorder to erectile-dysfunction edges): the prospective controlled anchor is the strongest design located and reports a graded erectile-dysfunction frequency across non-diabetics, diabetics without retrograde ejaculation, and diabetics with it (PMID 23606485), the 2026 series quantifies moderate-to-severe erectile dysfunction at 54.8 percent with independent predictors identified (PMID 41731353), and the surgical series quantifies both outcomes after one index procedure (PMID 22237486); because all three anchors are populations selected for the shared antecedent of diabetes or prostatic surgery, the conservative standard keeps the edge at association only with the shared-exposure limit stated and the surgical anchor's non-significant subgroup trends carried openly as counterweight.",
+        "evidenceGaps": "All three anchors select populations by shared antecedent (diabetes in two, prostatic surgery in one), so no anchor can separate the ejaculatory condition's contribution to erectile dysfunction from the common substrate; the prospective anchor reports only 26 exposed participants and 16 controls; the surgical anchor reports postoperative outcomes with an erectile-dysfunction subgroup trend that was not statistically significant; none of the anchors reports a temporal ordering of the two diagnoses within individuals.",
+        "requiresSpecificDbqEvidence": false,
+        "alternativeEtiologiesToRuleOut": [
+          "Diabetes mellitus with its duration and glycaemic control, the shared antecedent in two anchors",
+          "Prior prostate, pelvic, or retroperitoneal surgery with cavernosal or ejaculatory nerve injury",
+          "Vascular risk factors, antihypertensive medications, and age acting on erectile function independently",
+          "Hyperprolactinaemia, hypogonadism, and mood disorder as alternate contributors to both sexual symptoms"
+        ]
+      },
+      "evidenceGaps": [
+        "All three anchors select populations by shared antecedent (diabetes in two, prostatic surgery in one), so no anchor can separate the ejaculatory condition's contribution to erectile dysfunction from the common substrate; the prospective anchor reports only 26 exposed participants and 16 controls; the surgical anchor reports postoperative outcomes with an erectile-dysfunction subgroup trend that was not statistically significant; none of the anchors reports a temporal ordering of the two diagnoses within individuals."
+      ],
+      "rationale": "Authoring registers this edge because co-occurrence is quantified within single populations at three independent classes - a prospective controlled design, a 115-patient diabetic series with adjusted predictors, and a 54-patient surgical series - but the conservative framing names diabetes and prostatic surgery as the shared antecedent in the mechanism, the evidence gaps, and the alternatives list, so a reader cannot mistake documented co-occurrence for an established direction; the surgical anchor's null subgroup trends are carried openly rather than omitted.",
+      "sourceReferences": [
+        {
+          "citation": "Fedder J, Kaspersen MD, Brandslund I, et al. Retrograde ejaculation and sexual dysfunction in men with diabetes mellitus: a prospective, controlled study Andrology. 2013 Jul;1(4):602-6. PMID 23606485.",
+          "note": "Prospective controlled study reporting retrograde ejaculation in 9 of 26 men with diabetes versus none of 16 controls (P<0.01) and more frequent erectile dysfunction among diabetics with retrograde ejaculation than among non-diabetics and diabetics without it.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/23606485/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-27",
+          "sourceLocator": "Andrology. 2013;1(4):602-6. Prospective controlled; abstract states RE found in 9 of 26 diabetics who delivered an ejaculate versus 0 of 16 controls, and that diabetics with RE more frequently exhibited ED than non-diabetics and diabetics without RE."
+        },
+        {
+          "citation": "Li C, Wang H, Li S, et al. Retrospective study of 115 patients with diabetes mellitus complicated by retrograde ejaculation Basic Clin Androl. 2026 Feb 23;36(1).doi: 10.1186/s12610-026-00303-7. PMID 41731353.",
+          "note": "Retrospective series of 115 diabetic men with retrograde ejaculation reporting moderate-to-severe erectile dysfunction in 54.8 percent with diabetes duration, age, and glycated hemoglobin as independent predictors.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41731353/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-27",
+          "sourceLocator": "Basic Clin Androl. 2026;36(1). Abstract states 80.0 percent complete RE, 54.8 percent moderate-to-severe ED, 39.1 percent anorgasmia; adjusted OR 1.70 (P<0.001) for diabetes duration, 1.23 (P<0.001) for age, 1.70 (P=0.004) for HbA1c."
+        },
+        {
+          "citation": "Yee CL, Pal RP, Batchelder A, et al. Risk of erectile dysfunction and retrograde ejaculation associated with thulium laser vaporesection of the prostate for bladder outflow obstruction: a retrospective study Urol Int. 2012;88(2):165-9. PMID 22237486.",
+          "note": "Series of 113 consecutive patients undergoing thulium laser prostate vaporesection reporting worsening erectile function in 11 of 54 (20 percent) and some degree of retrograde ejaculation in 30 of 54 (56 percent) at mean 12-month follow-up.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/22237486/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-27",
+          "sourceLocator": "Urol Int. 2012;88(2):165-9. Retrospective surgical series; abstract states ED and RE risks of 20 and 56 percent, with RE more common with indwelling catheter (43 vs 17 percent, P=0.04) and in diabetics (27 vs 4 percent, P=0.03); ED subgroup trends by age, hypertension, and hypercholesterolaemia were not significant."
+        }
+      ]
+    }
+  ]
 }
