@@ -28,12 +28,12 @@ const dummyMetadata: EvidenceSourceMetadata = {
 };
 
 describe("ME-40 Spicer regulatory scenario", () => {
-  it("PTSD has 19 published suggestions including REM Sleep Disorder", () => {
+  it("PTSD has 20 published suggestions including REM Sleep Disorder", () => {
     const kb = getKb();
     const ptsd = kb.find((m) => m.id === PTSD_ID)!;
     expect(ptsd).toBeDefined();
     expect(ptsd.draft).toBe(false);
-    expect(ptsd.suggestions.length).toBe(19);
+    expect(ptsd.suggestions.length).toBe(20);
     const rem = ptsd.suggestions.find((s) => s.conditionId === REM_ID)!;
     expect(rem).toBeDefined();
     expect(rem.nexusClaim.nexusClassification).toBe("ASSOCIATION_ONLY");

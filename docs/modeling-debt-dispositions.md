@@ -278,6 +278,17 @@ The six named items above are **not open blockers to the current clinical eviden
 
 ## Batch 91 corpus-review dispositions (2026-09-29) — held-edge pointers for published mappings
 
+**Superseded as to landing only (batch 92, 2026-09-29).** The four held edges below were verified by a
+qualified human on 2026-09-29 and LANDED as `verified: true` into their published mappings (see the
+batch-92 entry in `docs/condition-expansion-roadmap.md`). Two reviewer decisions govern the landing:
+`discoid-lupus` **elects the `depressive-disorder` target** (no anchor diagnoses persistent depressive
+disorder; the `persistent-depressive-disorder` window remains UNAUTHORED, election preserved in the
+artifact), and `diabetes-mellitus-type-2` **lands with a standing open disclosure** (the published
+critique, PMID 19407066, identified but unread; adjudication open on the edge's face). The ptsd-bruxism
+erratum was read (PMID 38379424: sex-miscoding correction; corrected cohort 519 women 77.1% / 154 men
+22.9%; outcomes and significance unchanged). The dispositions below stand unchanged as the pre-landing
+record of what is carried on the faces of the edges; nothing is rewritten retroactively.
+
 The schema forbids todos on published mappings ("Resolve every todo before publishing, or keep the
 mapping draft: true"), so the batch-91 dispositions that would otherwise sit in the affected files are
 recorded here and in the held artifacts instead:

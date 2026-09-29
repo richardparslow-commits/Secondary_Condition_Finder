@@ -123,21 +123,21 @@ describe("Mapping Expansion Batch ME-33", () => {
   it("ratchets the authoritative ME-33 counts", () => {
     expect(relationships.currentState).toBe("D1-DRAFT-AUTHORED");
     expect(sources.currentState).toBe("D1-DRAFT-AUTHORED");
-    expect(relationships.counts).toEqual({ relationships: 866, explicitPublicationGuards: 792, legacyRationaleBoundaries: 74 });
-    expect(relationships.relationships).toHaveLength(866);
+    expect(relationships.counts).toEqual({ relationships: 870, explicitPublicationGuards: 796, legacyRationaleBoundaries: 74 });
+    expect(relationships.relationships).toHaveLength(870);
     expect(sources.counts).toMatchObject({
-      liveSourceReferenceUses: 1679,
+      liveSourceReferenceUses: 1690,
       pendingVerificationSourceEntities: 1117,
       pendingClinicalSourceEntities: 1117,
-      totalSourceEntitiesIncludingLineage: 1472,
+      totalSourceEntitiesIncludingLineage: 1483,
     });
-    expect(sources.sources).toHaveLength(1472);
+    expect(sources.sources).toHaveLength(1483);
 
     const mappings = fs.readdirSync(`${root}/data/knowledge-base`).filter((file) => file.endsWith(".json")).map((file) => load<Mapping>(`data/knowledge-base/${file}`));
     const references = mappings.flatMap((mapping) => mapping.suggestions.flatMap((suggestion) => suggestion.sourceReferences));
-    expect(mappings.reduce((total, mapping) => total + mapping.suggestions.length, 0)).toBe(866);
-    expect(references).toHaveLength(1679);
-    expect(references.filter((reference) => reference.verified === true)).toHaveLength(384);
+    expect(mappings.reduce((total, mapping) => total + mapping.suggestions.length, 0)).toBe(870);
+    expect(references).toHaveLength(1690);
+    expect(references.filter((reference) => reference.verified === true)).toHaveLength(395);
     expect(references.filter((r) => r.verified === false)).toHaveLength(1295);
   });
 

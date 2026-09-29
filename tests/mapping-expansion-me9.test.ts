@@ -13,7 +13,9 @@ describe("mapping expansion ME-9", () => {
       const mapping = byId.get(row.primaryId);
       expect(mapping).toBeDefined();
       expect(mapping?.draft).toBe(false);
-      expect(mapping?.suggestions).toHaveLength(2);
+// discoid-lupus gained its batch-92 depressive-disorder edge at rank 3;
+      // the other four ME-9 mappings still hold exactly their two edges.
+      expect(mapping?.suggestions).toHaveLength(row.primaryId === "discoid-lupus" ? 3 : 2);
       expect(mapping?.suggestions[0]?.conditionId).toBe(row.currentTargetId);
       expect(mapping?.suggestions[0]?.rank).toBe(1);
       const added = mapping?.suggestions.find((entry) => entry.conditionId === row.targetId);
@@ -40,14 +42,14 @@ describe("mapping expansion ME-9", () => {
   it("moves the published matrix to P1 76 / P2+ 63", () => {
     const published = kb.filter((mapping) => mapping.draft === false);
     expect(published).toHaveLength(140);
-    expect(published.filter((mapping) => mapping.suggestions.length === 1)).toHaveLength(67);
-    expect(published.filter((mapping) => mapping.suggestions.length >= 2)).toHaveLength(73);
+    expect(published.filter((mapping) => mapping.suggestions.length === 1)).toHaveLength(66);
+    expect(published.filter((mapping) => mapping.suggestions.length >= 2)).toHaveLength(74);
   });
 
   it("pins the exact final ME-9 citation totals", () => {
     const refs = kb.flatMap((mapping) => mapping.suggestions.flatMap((suggestion) => suggestion.sourceReferences ?? []));
-expect(refs).toHaveLength(1679);
-    expect(refs.filter((source) => source.verified === true)).toHaveLength(384);
+expect(refs).toHaveLength(1690);
+    expect(refs.filter((source) => source.verified === true)).toHaveLength(395);
 expect(refs.filter((r) => r.verified === false)).toHaveLength(1295);
   });
 });

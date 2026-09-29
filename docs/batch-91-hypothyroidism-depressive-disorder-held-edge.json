@@ -1,7 +1,7 @@
 {
   "artifact": "D1 batch 91 held edge - fully authored, NOT present in the knowledge base",
   "batch": 91,
-  "status": "HELD_PENDING_QUALIFIED_HUMAN_CITATION_VERIFICATION",
+  "status": "LANDED_2026-09-29 (see landingRecord; heldEdges preserved verbatim as the pre-landing record)",
   "heldOn": "2026-09-29",
   "id": "hypothyroidism",
   "targetMapping": "data/knowledge-base/hypothyroidism.json (published, draft:false)",
@@ -73,5 +73,16 @@
         }
       ]
     }
-  ]
+  ],
+  "landingRecord": {
+    "landedOn": "2026-09-29",
+    "verificationPass": "Batch-91 qualified-human verification pass under docs/citation-verification-sop.md: all cited PMIDs claim-versus-source checked against their abstracts and citation metadata exact-checked against the PubMed esummary record; source-status preflight 0 blocking; approval recorded in docs/qualified-human-citation-verification-queue.md.",
+    "adaptationsFromHeldText": [
+      "verbatim landing; no evidence-text changes",
+      "all sourceReferences flipped to verified:true with a verification stamp appended to each note (evidence wording otherwise verbatim)"
+    ],
+    "reviewerDecisions": [
+      "none required; edge landed verbatim at the held target"
+    ]
+  }
 }

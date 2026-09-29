@@ -265,11 +265,33 @@ One schizophrenia tardive-dyskinesia edge (`schizophrenia` to `tardive-dyskinesi
 
 ## Held batch-91 corpus-review citations — screening notes, not live rows
 
+**RESOLVED 2026-09-29 (batch 92).** The qualified-human verification pass is complete: all eleven PMIDs
+are verified and the four held edges were re-landed as `verified: true` into their published mappings
+(`hypothyroidism` to `depressive-disorder` rank 2; `diabetes-mellitus-type-2` to `depressive-disorder`
+rank 4; `ptsd` to `bruxism-awake-sleep` rank 20; `discoid-lupus` to `depressive-disorder` rank 3). Both
+reading obligations are discharged on the record: the erratum linked to PMID 36056716 was **read** (PMID
+38379424, J Oral Rehabil. 2024;51(5):911-914 — sex-miscoding correction, 154 women coded as male;
+corrected cohort 519 women 77.1% / 154 men 22.9%; authors state outcomes and significance unchanged),
+and the published critique of PMID 19033418 was **identified but remains unread** (Nouwen, Lloyd, Pouwer.
+Depression and type 2 diabetes over the lifespan: a meta-analysis. Response to Mezuk et al. Diabetes Care.
+2009;32(5):e56, author reply e57; PMID 19407066, paywalled letter), so the reviewer decision is to LAND
+the diabetes edge with that adjudication **standing open on the edge's face**. The discoid-lupus reviewer
+decision **elects the `depressive-disorder` target**: no anchor diagnoses persistent depressive disorder, the `persistent-depressive-disorder` window remains UNAUTHORED, and the
+election is preserved in the held artifact. No `contentDigest` is recorded on any of the eleven — PubMed
+record pages are dynamic per fetch and the SOP requires omission over false-positive digests — so
+undigested-verified is 395 against `MAX_UNDIGESTED_VERIFIED_REFS` 383, deliberately NOT raised; the
+qualified-human decision of 2026-09-29 accepts the flagged state pending a future policy session. Each
+artifact now carries a `landingRecord` with its adaptations and reviewer decisions; the `heldEdges` bodies
+are preserved verbatim as the pre-landing record. The batch-89 (PTSD stress-flare) and batch-90
+(schizophrenia tardive-dyskinesia) held sets remain held pending their own verification passes. The
+section below stands unchanged as the pre-landing screening record.
+
 Four corpus-review edges (`hypothyroidism` to `depressive-disorder`; `diabetes-mellitus-type-2` to
 `depressive-disorder`; `ptsd` to `bruxism-awake-sleep`; `discoid-lupus` to `persistent-depressive-disorder`)
 were fully authored on 2026-09-29 and are **held out of the knowledge base** pending qualified-human
 verification of their eleven PMIDs: **34524390, 31214119, 30375372, 19033418, 11375373, 38363350,
-36056716, 32577706, 30877492, 35953237, 41849118**. Every primary mapping is published and the
+36056716, 32577706, 30877492, 35953237, 41849118**. *(All eleven verified and landed 2026-09-29 — see
+the resolution note above.)* Every primary mapping is published and the
 citation-purity gate applies per suggestion, so these rows cannot enter the knowledge base as
 `verified: false` at all; they are screening notes awaiting review under `docs/citation-verification-sop.md`,
 not live citation rows. Two reading obligations ride with the set: the **erratum linked to PMID 36056716**

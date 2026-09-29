@@ -1,7 +1,7 @@
 {
   "artifact": "D1 batch 91 held edge - fully authored, NOT present in the knowledge base",
   "batch": 91,
-  "status": "HELD_PENDING_QUALIFIED_HUMAN_CITATION_VERIFICATION",
+  "status": "LANDED_2026-09-29 (see landingRecord; heldEdges preserved verbatim as the pre-landing record)",
   "heldOn": "2026-09-29",
   "id": "discoid-lupus",
   "targetMapping": "data/knowledge-base/discoid-lupus.json (published, draft:false)",
@@ -74,5 +74,17 @@
         }
       ]
     }
-  ]
+  ],
+  "landingRecord": {
+    "landedOn": "2026-09-29",
+    "verificationPass": "Batch-91 qualified-human verification pass under docs/citation-verification-sop.md: all cited PMIDs claim-versus-source checked against their abstracts and citation metadata exact-checked against the PubMed esummary record; source-status preflight 0 blocking; approval recorded in docs/qualified-human-citation-verification-queue.md.",
+    "adaptationsFromHeldText": [
+      "TARGET ELECTED to depressive-disorder at the reviewer's direction (2026-09-29): conditionId and all phenotype-boundary phrasing reframed around the election; persistent-depressive-disorder window left UNAUTHORED",
+      "diacritics restored in the Sanz-Cabanillas author list per PubMed esummary exactness",
+      "all sourceReferences flipped to verified:true with a verification stamp appended to each note (evidence wording otherwise verbatim)"
+    ],
+    "reviewerDecisions": [
+      "the reviewer ELECTED the depressive-disorder target on 2026-09-29 because no anchor diagnoses persistent depressive disorder; the persistent-depressive-disorder window remains UNAUTHORED and this artifact preserves the corpus pair and the election"
+    ]
+  }
 }

@@ -39,14 +39,14 @@ describe("mapping expansion ME-8", () => {
   it("keeps the published matrix at P1 81 / P2+ 58", () => {
     const published = kb.filter((mapping) => mapping.draft === false);
     expect(published).toHaveLength(140);
-    expect(published.filter((mapping) => mapping.suggestions.length === 1)).toHaveLength(67);
-    expect(published.filter((mapping) => mapping.suggestions.length >= 2)).toHaveLength(73);
+    expect(published.filter((mapping) => mapping.suggestions.length === 1)).toHaveLength(66);
+    expect(published.filter((mapping) => mapping.suggestions.length >= 2)).toHaveLength(74);
   });
 
   it("pins the exact final ME-8 citation totals", () => {
     const refs = kb.flatMap((mapping) => mapping.suggestions.flatMap((suggestion) => suggestion.sourceReferences ?? []));
-expect(refs).toHaveLength(1679);
-    expect(refs.filter((source) => source.verified === true)).toHaveLength(384);
+expect(refs).toHaveLength(1690);
+    expect(refs.filter((source) => source.verified === true)).toHaveLength(395);
 expect(refs.filter((r) => r.verified === false)).toHaveLength(1295);
   });
 });

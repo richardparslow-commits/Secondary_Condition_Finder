@@ -1,7 +1,7 @@
 {
   "artifact": "D1 batch 91 held edge - fully authored, NOT present in the knowledge base",
   "batch": 91,
-  "status": "HELD_PENDING_QUALIFIED_HUMAN_CITATION_VERIFICATION",
+  "status": "LANDED_2026-09-29 (see landingRecord; heldEdges preserved verbatim as the pre-landing record)",
   "heldOn": "2026-09-29",
   "id": "ptsd",
   "targetMapping": "data/knowledge-base/ptsd.json (published, draft:false)",
@@ -73,5 +73,17 @@
         }
       ]
     }
-  ]
+  ],
+  "landingRecord": {
+    "landedOn": "2026-09-29",
+    "verificationPass": "Batch-91 qualified-human verification pass under docs/citation-verification-sop.md: all cited PMIDs claim-versus-source checked against their abstracts and citation metadata exact-checked against the PubMed esummary record; source-status preflight 0 blocking; approval recorded in docs/qualified-human-citation-verification-queue.md.",
+    "adaptationsFromHeldText": [
+      "erratum-status phrases updated from 'content unchecked' to READ at verification with the correction's substance recorded (PMID 38379424)",
+      "diacritics restored in the Solis author list (Duran ÉP, Arau00fajo ÁC) per PubMed esummary exactness",
+      "all sourceReferences flipped to verified:true with a verification stamp appended to each note (evidence wording otherwise verbatim)"
+    ],
+    "reviewerDecisions": [
+      "the erratum (PMID 38379424) was READ in the verification pass: sex-miscoding correction, corrected cohort 77.1 percent female, outcomes and significance unchanged per its authors; the edge's population bound updated accordingly"
+    ]
+  }
 }

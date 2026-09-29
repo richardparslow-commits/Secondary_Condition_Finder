@@ -16,16 +16,16 @@
     "citationPromotionMustAtomicallyUpdateKbAndMasterSourceState": true
   },
   "counts": {
-    "liveSourceReferenceUses": 1679,
-    "activeSourceEntities": 346,
+    "liveSourceReferenceUses": 1690,
+    "activeSourceEntities": 357,
     "pendingVerificationSourceEntities": 1117,
-    "activeClinicalSourceEntities": 345,
+    "activeClinicalSourceEntities": 356,
     "pendingClinicalSourceEntities": 1117,
     "activeLegalAuthorityEntities": 1,
     "retiredOnlySourceEntities": 1,
     "supersededUnverifiedSourceEntities": 7,
     "bibliographicCorrectionOnlyEntities": 1,
-    "totalSourceEntitiesIncludingLineage": 1472,
+    "totalSourceEntitiesIncludingLineage": 1483,
     "retiredVerifiedRelationshipSourceUses": 6
   },
   "retirementLedger": {
@@ -54305,6 +54305,468 @@
       "rawReferenceHashes": [
         "da3ed84f1d123a7e23cd397f891264270d48ed5c779b20b15bfababd44ccc929"
       ]
+    },
+    {
+      "sourceId": "pmid-34524390",
+      "status": "active",
+      "kind": "clinical-evidence",
+      "pmid": "34524390",
+      "doi": "10.1001/jamapsychiatry.2021.2506",
+      "canonicalCitation": "Bode H, Ivens B, Bschor T, Schwarzer G, Henssler J, Baethge C. Association of Hypothyroidism and Clinical Depression: A Systematic Review and Meta-analysis. JAMA Psychiatry. 2021 Dec 1;78(12):1375-1383. doi:10.1001/jamapsychiatry.2021.2506. PMID 34524390.",
+      "citationVariants": [
+        "Bode H, Ivens B, Bschor T, Schwarzer G, Henssler J, Baethge C. Association of Hypothyroidism and Clinical Depression: A Systematic Review and Meta-analysis. JAMA Psychiatry. 2021 Dec 1;78(12):1375-1383. doi:10.1001/jamapsychiatry.2021.2506. PMID 34524390."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34524390/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/34524390/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": true,
+      "sourceCheckedOnValues": [
+        "2026-09-29"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-hypothyroidism-to-depressive-disorder",
+          "primaryId": "hypothyroidism",
+          "targetId": "depressive-disorder",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "f568d2fe39e43cea7c9ae3af5b0d8d8f9a5de9e259fdc6e9745318b5a6e54d47"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": false,
+        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
+        "qualifiedHumanCitationReviewDate": "2026-09-29",
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-31214119",
+      "status": "active",
+      "kind": "clinical-evidence",
+      "pmid": "31214119",
+      "doi": "10.3389/fendo.2019.00340",
+      "canonicalCitation": "Tang R, Wang J, Yang L, Ding X, Zhong Y, Pan J, Yang H, Mu L, Chen X, Chen Z. Subclinical Hypothyroidism and Depression: A Systematic Review and Meta-Analysis. Front Endocrinol (Lausanne). 2019 Jun 4;10:340. doi:10.3389/fendo.2019.00340. PMID 31214119.",
+      "citationVariants": [
+        "Tang R, Wang J, Yang L, Ding X, Zhong Y, Pan J, Yang H, Mu L, Chen X, Chen Z. Subclinical Hypothyroidism and Depression: A Systematic Review and Meta-Analysis. Front Endocrinol (Lausanne). 2019 Jun 4;10:340. doi:10.3389/fendo.2019.00340. PMID 31214119."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/31214119/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/31214119/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": true,
+      "sourceCheckedOnValues": [
+        "2026-09-29"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-hypothyroidism-to-depressive-disorder",
+          "primaryId": "hypothyroidism",
+          "targetId": "depressive-disorder",
+          "sourceIndex": 1
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "018edae7718c4c3c1bfa9ec6490d991b957aadb6c3e27f9138697dbe6699af62"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": false,
+        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
+        "qualifiedHumanCitationReviewDate": "2026-09-29",
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-30375372",
+      "status": "active",
+      "kind": "clinical-evidence",
+      "pmid": "30375372",
+      "doi": "10.1038/s41398-018-0283-7",
+      "canonicalCitation": "Zhao T, Chen BM, Zhao XM, Shan ZY. Subclinical hypothyroidism and depression: a meta-analysis. Transl Psychiatry. 2018 Oct 30;8(1):239. doi:10.1038/s41398-018-0283-7. PMID 30375372.",
+      "citationVariants": [
+        "Zhao T, Chen BM, Zhao XM, Shan ZY. Subclinical hypothyroidism and depression: a meta-analysis. Transl Psychiatry. 2018 Oct 30;8(1):239. doi:10.1038/s41398-018-0283-7. PMID 30375372."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/30375372/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/30375372/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": true,
+      "sourceCheckedOnValues": [
+        "2026-09-29"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-hypothyroidism-to-depressive-disorder",
+          "primaryId": "hypothyroidism",
+          "targetId": "depressive-disorder",
+          "sourceIndex": 2
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "4d63b47d1c4d92fbeb210b97afb62e59e20bb3a426fa32d290e40ae86a607f31"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": false,
+        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
+        "qualifiedHumanCitationReviewDate": "2026-09-29",
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-19033418",
+      "status": "active",
+      "kind": "clinical-evidence",
+      "pmid": "19033418",
+      "doi": "10.2337/dc08-0985",
+      "canonicalCitation": "Mezuk B, Eaton WW, Albrecht S, Golden SH. Depression and type 2 diabetes over the lifespan: a meta-analysis. Diabetes Care. 2008 Dec;31(12):2383-2390. doi:10.2337/dc08-0985. PMID 19033418.",
+      "citationVariants": [
+        "Mezuk B, Eaton WW, Albrecht S, Golden SH. Depression and type 2 diabetes over the lifespan: a meta-analysis. Diabetes Care. 2008 Dec;31(12):2383-2390. doi:10.2337/dc08-0985. PMID 19033418."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/19033418/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/19033418/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": true,
+      "sourceCheckedOnValues": [
+        "2026-09-29"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-diabetes-mellitus-type-2-to-depressive-disorder",
+          "primaryId": "diabetes-mellitus-type-2",
+          "targetId": "depressive-disorder",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "5372c3b97c3d79da69587afadade7739faeea9596cf98db9bd4d73ced082909a"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": false,
+        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
+        "qualifiedHumanCitationReviewDate": "2026-09-29",
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-11375373",
+      "status": "active",
+      "kind": "clinical-evidence",
+      "pmid": "11375373",
+      "doi": "10.2337/diacare.24.6.1069",
+      "canonicalCitation": "Anderson RJ, Freedland KE, Clouse RE, Lustman PJ. The prevalence of comorbid depression in adults with diabetes: a meta-analysis. Diabetes Care. 2001 Jun;24(6):1069-1078. doi:10.2337/diacare.24.6.1069. PMID 11375373.",
+      "citationVariants": [
+        "Anderson RJ, Freedland KE, Clouse RE, Lustman PJ. The prevalence of comorbid depression in adults with diabetes: a meta-analysis. Diabetes Care. 2001 Jun;24(6):1069-1078. doi:10.2337/diacare.24.6.1069. PMID 11375373."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/11375373/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/11375373/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": true,
+      "sourceCheckedOnValues": [
+        "2026-09-29"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-diabetes-mellitus-type-2-to-depressive-disorder",
+          "primaryId": "diabetes-mellitus-type-2",
+          "targetId": "depressive-disorder",
+          "sourceIndex": 1
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "f1d8b92d57f4a99f7fde1dbca441c7a6a58f25521ead0361f070b2b89c33e4b9"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": false,
+        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
+        "qualifiedHumanCitationReviewDate": "2026-09-29",
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-38363350",
+      "status": "active",
+      "kind": "clinical-evidence",
+      "pmid": "38363350",
+      "doi": "10.1007/s00784-024-05534-4",
+      "canonicalCitation": "Solis ACO, Corchs F, Duran ÉP, Silva C, Del Real N, Araújo ÁC, Wang YP, Lotufo-Neto F. Self-reported bruxism in patients with post-traumatic stress disorder. Clin Oral Investig. 2024 Feb 16;28(2):152. doi:10.1007/s00784-024-05534-4. PMID 38363350.",
+      "citationVariants": [
+        "Solis ACO, Corchs F, Duran ÉP, Silva C, Del Real N, Araújo ÁC, Wang YP, Lotufo-Neto F. Self-reported bruxism in patients with post-traumatic stress disorder. Clin Oral Investig. 2024 Feb 16;28(2):152. doi:10.1007/s00784-024-05534-4. PMID 38363350."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38363350/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/38363350/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": true,
+      "sourceCheckedOnValues": [
+        "2026-09-29"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-ptsd-to-bruxism-awake-sleep",
+          "primaryId": "ptsd",
+          "targetId": "bruxism-awake-sleep",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "eeea2ce3a33f991fb77ff6cb9dfdf59a0064d632124d5f4f4c8420ea11365a17"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": false,
+        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
+        "qualifiedHumanCitationReviewDate": "2026-09-29",
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-36056716",
+      "status": "active",
+      "kind": "clinical-evidence",
+      "pmid": "36056716",
+      "doi": "10.1111/joor.13367",
+      "canonicalCitation": "Knibbe W, Lobbezoo F, Voorendonk EM, Visscher CM, de Jongh A. Prevalence of painful temporomandibular disorders, awake bruxism and sleep bruxism among patients with severe post-traumatic stress disorder. J Oral Rehabil. 2022 Nov;49(11):1031-1040. doi:10.1111/joor.13367. PMID 36056716. Erratum in: J Oral Rehabil. 2024 May;51(5):911-914. doi:10.1111/joor.13668.",
+      "citationVariants": [
+        "Knibbe W, Lobbezoo F, Voorendonk EM, Visscher CM, de Jongh A. Prevalence of painful temporomandibular disorders, awake bruxism and sleep bruxism among patients with severe post-traumatic stress disorder. J Oral Rehabil. 2022 Nov;49(11):1031-1040. doi:10.1111/joor.13367. PMID 36056716. Erratum in: J Oral Rehabil. 2024 May;51(5):911-914. doi:10.1111/joor.13668."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36056716/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/36056716/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": true,
+      "sourceCheckedOnValues": [
+        "2026-09-29"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-ptsd-to-bruxism-awake-sleep",
+          "primaryId": "ptsd",
+          "targetId": "bruxism-awake-sleep",
+          "sourceIndex": 1
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "902ab4b93f015f401bc8f4faa392699fce4cc177bc6cdfc0911ac7111ff3b539"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": false,
+        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
+        "qualifiedHumanCitationReviewDate": "2026-09-29",
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-32577706",
+      "status": "active",
+      "kind": "clinical-evidence",
+      "pmid": "32577706",
+      "doi": "10.3290/j.qi.a44809",
+      "canonicalCitation": "Tagger-Green N, Nemcovsky C, Gadoth N, Cohen O, Kolerman R. Oral and dental considerations of combat-induced PTSD: a descriptive study. Quintessence Int. 2020;51(8):678-685. doi:10.3290/j.qi.a44809. PMID 32577706.",
+      "citationVariants": [
+        "Tagger-Green N, Nemcovsky C, Gadoth N, Cohen O, Kolerman R. Oral and dental considerations of combat-induced PTSD: a descriptive study. Quintessence Int. 2020;51(8):678-685. doi:10.3290/j.qi.a44809. PMID 32577706."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/32577706/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/32577706/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": true,
+      "sourceCheckedOnValues": [
+        "2026-09-29"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-ptsd-to-bruxism-awake-sleep",
+          "primaryId": "ptsd",
+          "targetId": "bruxism-awake-sleep",
+          "sourceIndex": 2
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "10c1b8c9d05463a8397bb7f52482698584fed19a569332cfdf0c7035e47985fc"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": false,
+        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
+        "qualifiedHumanCitationReviewDate": "2026-09-29",
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-41849118",
+      "status": "active",
+      "kind": "clinical-evidence",
+      "pmid": "41849118",
+      "doi": "10.1007/s13555-026-01720-2",
+      "canonicalCitation": "Sanz-Cabanillas JL, Gómez-García FJ, Sanz-Cabanillas EB, Gay-Mimbrera J, Isla-Tejera B, García-Nieto AJV, Ruano J. Comorbidities in Discoid Lupus: A Systematic Review and Meta-analysis of Prevalence and Association. Dermatol Ther (Heidelb). 2026 Apr;16(4):1969-1982. doi:10.1007/s13555-026-01720-2. PMID 41849118.",
+      "citationVariants": [
+        "Sanz-Cabanillas JL, Gómez-García FJ, Sanz-Cabanillas EB, Gay-Mimbrera J, Isla-Tejera B, García-Nieto AJV, Ruano J. Comorbidities in Discoid Lupus: A Systematic Review and Meta-analysis of Prevalence and Association. Dermatol Ther (Heidelb). 2026 Apr;16(4):1969-1982. doi:10.1007/s13555-026-01720-2. PMID 41849118."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41849118/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/41849118/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": true,
+      "sourceCheckedOnValues": [
+        "2026-09-29"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-discoid-lupus-to-depressive-disorder",
+          "primaryId": "discoid-lupus",
+          "targetId": "depressive-disorder",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "1998026983c16ca8ad85392e4882a3d5673506d3655a96c18e32be298cac351e"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": false,
+        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
+        "qualifiedHumanCitationReviewDate": "2026-09-29",
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-30877492",
+      "status": "active",
+      "kind": "clinical-evidence",
+      "pmid": "30877492",
+      "doi": "10.1007/s40257-019-00429-7",
+      "canonicalCitation": "Hong J, Aspey L, Bao G, Haynes T, Lim SS, Drenkard C. Chronic Cutaneous Lupus Erythematosus: Depression Burden and Associated Factors. Am J Clin Dermatol. 2019 Jun;20(3):465-475. doi:10.1007/s40257-019-00429-7. PMID 30877492.",
+      "citationVariants": [
+        "Hong J, Aspey L, Bao G, Haynes T, Lim SS, Drenkard C. Chronic Cutaneous Lupus Erythematosus: Depression Burden and Associated Factors. Am J Clin Dermatol. 2019 Jun;20(3):465-475. doi:10.1007/s40257-019-00429-7. PMID 30877492."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/30877492/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/30877492/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": true,
+      "sourceCheckedOnValues": [
+        "2026-09-29"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-discoid-lupus-to-depressive-disorder",
+          "primaryId": "discoid-lupus",
+          "targetId": "depressive-disorder",
+          "sourceIndex": 1
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "29ceb9b006843fa71fa75bdc64c37a8eb619d56150f023c5a704cbae9f68081e"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": false,
+        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
+        "qualifiedHumanCitationReviewDate": "2026-09-29",
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-35953237",
+      "status": "active",
+      "kind": "clinical-evidence",
+      "pmid": "35953237",
+      "doi": "10.1136/lupus-2022-000697",
+      "canonicalCitation": "Drenkard C, Theis KA, Daugherty TT, Helmick CG, Dunlop-Thomas C, Bao G, Aspey L, Lewis TT, Lim SS. Depression, stigma and social isolation: the psychosocial trifecta of primary chronic cutaneous lupus erythematosus, a cross-sectional and path analysis. Lupus Sci Med. 2022 Aug;9(1):e000697. doi:10.1136/lupus-2022-000697. PMID 35953237.",
+      "citationVariants": [
+        "Drenkard C, Theis KA, Daugherty TT, Helmick CG, Dunlop-Thomas C, Bao G, Aspey L, Lewis TT, Lim SS. Depression, stigma and social isolation: the psychosocial trifecta of primary chronic cutaneous lupus erythematosus, a cross-sectional and path analysis. Lupus Sci Med. 2022 Aug;9(1):e000697. doi:10.1136/lupus-2022-000697. PMID 35953237."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35953237/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/35953237/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": true,
+      "sourceCheckedOnValues": [
+        "2026-09-29"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-discoid-lupus-to-depressive-disorder",
+          "primaryId": "discoid-lupus",
+          "targetId": "depressive-disorder",
+          "sourceIndex": 2
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "a794ce74367bd9e7d880edd7b451b96fad5ef74fdcc815a86b1c316df3fcdd0f"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": false,
+        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
+        "qualifiedHumanCitationReviewDate": "2026-09-29",
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
     }
   ],
   "lastUpdatedBy": "batch-D1-draft-authoring",

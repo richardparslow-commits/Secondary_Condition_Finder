@@ -148,15 +148,15 @@ describe("Mapping Expansion Batch ME-5", () => {
     expect(files).toHaveLength(817);
     expect(mappings.filter((mapping) => mapping.draft === false)).toHaveLength(140);
     expect(mappings.filter((mapping) => mapping.draft === true)).toHaveLength(677);
-    expect(mappings.reduce((sum, mapping) => sum + mapping.suggestions.length, 0)).toBe(866);
-    expect(mappings.filter((mapping) => mapping.draft === false && mapping.suggestions.length === 1)).toHaveLength(67);
-    expect(mappings.filter((mapping) => mapping.draft === false && mapping.suggestions.length >= 2)).toHaveLength(73);
+    expect(mappings.reduce((sum, mapping) => sum + mapping.suggestions.length, 0)).toBe(870);
+    expect(mappings.filter((mapping) => mapping.draft === false && mapping.suggestions.length === 1)).toHaveLength(66);
+    expect(mappings.filter((mapping) => mapping.draft === false && mapping.suggestions.length >= 2)).toHaveLength(74);
 
     const refs = mappings.flatMap((mapping) =>
       mapping.suggestions.flatMap((suggestion) => suggestion.sourceReferences ?? []),
     );
-expect(refs).toHaveLength(1679);
-    expect(refs.filter((ref) => ref.verified === true)).toHaveLength(384);
+expect(refs).toHaveLength(1690);
+    expect(refs.filter((ref) => ref.verified === true)).toHaveLength(395);
 expect(refs.filter((r) => r.verified === false)).toHaveLength(1295);
   });
 
@@ -175,10 +175,10 @@ expect(refs.filter((r) => r.verified === false)).toHaveLength(1295);
       hardFindingCount: number;
     };
     expect(citation).toMatchObject({
-      references: 1679,
-      verified: 384,
+      references: 1690,
+      verified: 395,
       retiredVerified: 6,
-      verifiedProvenance: 390,
+      verifiedProvenance: 401,
       unverified: 1295,
       reviewFindingCount: 0,
       hardFindingCount: 0,
@@ -198,10 +198,10 @@ expect(refs.filter((r) => r.verified === false)).toHaveLength(1295);
     };
     expect(master).toMatchObject({
       status: "PASS",
-      relationships: 866,
-      verifiedLiveSourceUses: 384,
+      relationships: 870,
+      verifiedLiveSourceUses: 395,
       pendingVerificationLiveSourceUses: 1295,
-      activeSourceEntities: 346,
+      activeSourceEntities: 357,
       pendingVerificationSourceEntities: 1117,
     });
   });

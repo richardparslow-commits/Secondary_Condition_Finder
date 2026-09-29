@@ -120,16 +120,16 @@ describe("Mapping Expansion Batch ME-38", () => {
   it("ratchets the authoritative counts on the published PTSD mapping", () => {
     expect(relationships.currentState).toBe("D1-DRAFT-AUTHORED");
     expect(sources.currentState).toBe("D1-DRAFT-AUTHORED");
-    expect(relationships.counts).toEqual({ relationships: 866, explicitPublicationGuards: 792, legacyRationaleBoundaries: 74 });
-    expect(relationships.relationships).toHaveLength(866);
+    expect(relationships.counts).toEqual({ relationships: 870, explicitPublicationGuards: 796, legacyRationaleBoundaries: 74 });
+    expect(relationships.relationships).toHaveLength(870);
     expect(sources.counts).toMatchObject({
-      liveSourceReferenceUses: 1679,
-      activeSourceEntities: 346,
+      liveSourceReferenceUses: 1690,
+      activeSourceEntities: 357,
       pendingVerificationSourceEntities: 1117,
-      activeClinicalSourceEntities: 345,
+      activeClinicalSourceEntities: 356,
       pendingClinicalSourceEntities: 1117,
-      totalSourceEntitiesIncludingLineage: 1472,
+      totalSourceEntitiesIncludingLineage: 1483,
     });
-    expect(sources.sources).toHaveLength(1472);
+    expect(sources.sources).toHaveLength(1483);
   });
 });
