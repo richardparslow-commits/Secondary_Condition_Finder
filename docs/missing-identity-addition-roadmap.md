@@ -134,6 +134,25 @@ Recorded without ordinals, by theme and provenance batch:
   self-medication-chain withholding (PMID 30080255 preserved under ME-29).
 
 
+**Catalog cross-check of 2026-09-29 (the migration design corrects a third claim).** The batch-91
+companions bullet above states that `temporomandibular-disorder` (TMJ) "remains missing" — that claim is
+**wrong**, in the same way the batch-84 `atrial-flutter` claim was wrong. The catalog already carries TWO
+TMJ identities (`tmj-disorder`, "Temporomandibular Joint (TMJ) Disorders", and `tmj-dysfunction`, "TMJ
+dysfunction", which already holds the literal alias "temporomandibular disorder"), both zero-suggestion
+drafts with no registered edges, and the records use three notations for one target (ME-34's
+`tmj-dysfunction`, the withdrawn batch-6 draft's `tmj-disorder`, and the never-minted
+`temporomandibular-disorder`). The real gap is **identity coordination, not absence**: minting a third
+identity would collide with the existing alias. The versioned migration design of 2026-09-29
+(`docs/catalog-identity-migration-design-2026-09-29.md`) elects `tmj-disorder` canonical (the
+rotator-cuff pointer precedent), quarantines `tmj-dysfunction` as a pointer record, resolves the
+`temporomandibular-disorder` notation into the canonical name, and carries a signed ME-34 reopening
+disposition (age-scope reconciliation of the juvenile null PMID 9758394 against the adult meta-analytic
+association PMIDs 37474733 and 27796166) that unblocks the preserved bruxism-to-TMJ route alone. The
+same design covers the genuinely missing pair: `sarcopenia` (flat addition, closing the liver-cancer
+sarcopenia gap) and `alcohol-use-disorder` (a scope split from the `substance-use-disorder` discovery
+grouping, whose "alcohol use disorder" and "alcoholism" aliases migrate to the new identity), moving the
+frozen contract 817/817 to 819/819 at execution.
+
 **Catalog cross-check of 2026-09-28 (correcting two ledger claims).** `atrial-flutter` **does** carry a
 catalog identity (`data/conditions/cardiovascular-expansion-wave-3.json`) despite the batch-84 gap note —
 it is not a real gap. `atrial-fibrillation`, by contrast, is real: the specific identity is absent and AF
@@ -186,6 +205,10 @@ this tier:** `dystonia` and `akathisia`, the two movement-family members still m
   family addition if the Raynaud literature supports all three.
 
 ### Tier 5 — remaining singletons, subtypes, and long tail
+
+*(2026-09-29: `alcohol-use-disorder` and `sarcopenia` are no longer waiting in this tier — both are
+delivered by the signed migration design at `docs/catalog-identity-migration-design-2026-09-29.md`, and
+the TMJ coordination gap is dispositioned there.)*
 
 `vitamin-b12-deficiency`, `small-bowel-obstruction`, `alcohol-use-disorder`, `hypercalcaemia`,
 nephrogenic diabetes insipidus, `facial-nerve-palsy`, cachexia / `metabolic-syndrome`, the self-injury /

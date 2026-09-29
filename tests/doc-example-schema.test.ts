@@ -305,6 +305,11 @@ describe("doc-example policy visibility", () => {
     expect(filesWithJson.sort()).toEqual(
       [
         "api-specification.md",
+        // The 2026-09-29 migration design ships catalog-entry and KB-stub
+        // examples for identities that do not exist yet, so they stay on the
+        // structural tier only (deep validation would compare them to live
+        // rows that Stage 2 of the design has not created).
+        "catalog-identity-migration-design-2026-09-29.md",
         "condition-catalog.md",
         "evidence-architecture-v2.md",
         "operations.md",
