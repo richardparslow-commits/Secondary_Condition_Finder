@@ -126,6 +126,13 @@ Recorded without ordinals, by theme and provenance batch:
   blepharitis).
 - **Mechanism vocabulary (batch 86).** Perineural invasion is tumour spread *along* a nerve, not a
   neuropathy of that nerve, and no catalog identity represents the mechanism.
+- **Corpus-review companions (batch 91).** `sarcopenia` — the corpus's liver-cancer sarcopenia-route
+  lead cannot be authored at all while the identity is absent (the route is otherwise unblocked);
+  `temporomandibular-disorder` (TMJ) remains missing AND any bruxism-to-TMJ route stays separately
+  barred by the ME-34 evidence rejection (PMID 9758394), so the gap is doubled; `alcohol-use-disorder`
+  is re-confirmed as the blocking identity for the batch-91 `ptsd` to `chronic-liver-disease`
+  self-medication-chain withholding (PMID 30080255 preserved under ME-29).
+
 
 **Catalog cross-check of 2026-09-28 (correcting two ledger claims).** `atrial-flutter` **does** carry a
 catalog identity (`data/conditions/cardiovascular-expansion-wave-3.json`) despite the batch-84 gap note —

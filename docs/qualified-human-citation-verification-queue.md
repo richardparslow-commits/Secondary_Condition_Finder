@@ -261,3 +261,26 @@ Four PTSD stress-flare edges (`ptsd` to psoriasis, atopic-dermatitis-eczema, alo
 ## Held batch-90 schizophrenia tardive-dyskinesia citation — screening notes, not live rows
 
 One schizophrenia tardive-dyskinesia edge (`schizophrenia` to `tardive-dyskinesia`, rank 2) was fully authored on 2026-09-28 and is **held out of the knowledge base** pending qualified-human verification of its three PMIDs: **37424417, 39240484, 30695288**. The target mapping is published and the citation-purity gate applies per suggestion, so these rows cannot enter the knowledge base as `verified: false` at all; they are screening notes awaiting review under `docs/citation-verification-sop.md`, not live citation rows. The complete held edge and the hold disposition are in `docs/batch-90-schizophrenia-tardive-dyskinesia-held-edge.json` and `docs/condition-expansion-roadmap.md`. The companion bipolar route registered in the same batch (PMIDs 28146614 and 42030922) carries ordinary draft-queue rows and appears in `npm run citations:queue --include-drafts`. Run `npm run citations:queue` for the authoritative live row set.
+
+
+## Held batch-91 corpus-review citations — screening notes, not live rows
+
+Four corpus-review edges (`hypothyroidism` to `depressive-disorder`; `diabetes-mellitus-type-2` to
+`depressive-disorder`; `ptsd` to `bruxism-awake-sleep`; `discoid-lupus` to `persistent-depressive-disorder`)
+were fully authored on 2026-09-29 and are **held out of the knowledge base** pending qualified-human
+verification of their eleven PMIDs: **34524390, 31214119, 30375372, 19033418, 11375373, 38363350,
+36056716, 32577706, 30877492, 35953237, 41849118**. Every primary mapping is published and the
+citation-purity gate applies per suggestion, so these rows cannot enter the knowledge base as
+`verified: false` at all; they are screening notes awaiting review under `docs/citation-verification-sop.md`,
+not live citation rows. Two reading obligations ride with the set: the **erratum linked to PMID 36056716**
+(J Oral Rehabil. 2024 May;51(5):911-914. doi:10.1111/joor.13668) must be read before that edge lands, and
+the **published critique of PMID 19033418** (comment in Diabetes Care. 2009;32(5):e56, author reply e57)
+must be adjudicated on the record. The complete held edges and hold dispositions are in
+`docs/batch-91-hypothyroidism-depressive-disorder-held-edge.json`,
+`docs/batch-91-diabetes-mellitus-type-2-depressive-disorder-held-edge.json`,
+`docs/batch-91-ptsd-bruxism-awake-sleep-held-edge.json` and
+`docs/batch-91-discoid-lupus-persistent-depressive-disorder-held-edge.json`, and in
+`docs/condition-expansion-roadmap.md`. The two edges registered the same day (`bulimia-nervosa` to
+`dental-abrasion-erosion-abfraction`, PMIDs 37834805, 26429686, 38915100; `tinnitus` to `insomnia`,
+PMIDs 34708282, 38389785) carry ordinary draft-queue rows and appear in
+`npm run citations:queue --include-drafts`. Run `npm run citations:queue` for the authoritative live row set.

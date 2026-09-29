@@ -60,7 +60,7 @@
 <body>
 <header class="page">
   <h1>Qualified-Human Citation Verification Dashboard</h1>
-  <p>Reviewer-ready batches, oldest source-check first. 1290 pending reference rows across 1116 distinct sources in 54 batches.</p>
+  <p>Reviewer-ready batches, oldest source-check first. 1295 pending reference rows across 1121 distinct sources in 54 batches.</p>
   <p>data/knowledge-base published and draft-quarantined mappings — generated, not transcribed. Regenerate with <code>npm run citations:dashboard</code>.</p>
 </header>
 <main>
@@ -100,7 +100,7 @@
   Cohort order is the recorded <code>sourceCheckedOn</code> date of each row (oldest first), which tracks
   the authoring wave that entered the row. Batch 25-row cap is soft: an edge's
   rows are never split across batches. Shared sources (152 of
-  1116 carry more than one pending use) need one open of the source per use —
+  1121 carry more than one pending use) need one open of the source per use —
   the proposition differs per row even when the source repeats.
 </footer>
 
@@ -111,8 +111,8 @@
   "extractionRule": "every sourceReference whose verified is not true — identical to scripts/report-citation-verification-queue.js --include-drafts",
   "qualificationRule": "Only a qualified human reviewer may change repository source records to verified:true.",
   "batchSizeCap": 25,
-  "pendingRows": 1290,
-  "distinctSources": 1116,
+  "pendingRows": 1295,
+  "distinctSources": 1121,
   "sharedSources": 152,
   "batches": 54,
   "cohorts": [
@@ -122,11 +122,12 @@
    "2026-09-25",
    "2026-09-26",
    "2026-09-27",
-   "2026-09-28"
+   "2026-09-28",
+   "2026-09-29"
   ],
-  "draftQuarantinedRows": 1290,
+  "draftQuarantinedRows": 1295,
   "publishedRows": 0,
-  "clinicalEvidenceRows": 1290,
+  "clinicalEvidenceRows": 1295,
   "legalFrameworkRows": 0
  },
  "batches": [
@@ -22538,13 +22539,98 @@
      "sourceLocator": "Psychiatry Res. 2026;361:117185. Secondary analysis of the IRL-GRey trial, 255 late-life depression participants treated with venlafaxine plus aripiprazole or placebo, without baseline dyskinesia and with at least one post-baseline AIMS; abstract states 16 of 255 (6.3%) incident TD by end of Phase 1 lead-in (all non-remitters), 21 of 117 randomized non-remitters (17.9%) TD+ by end of randomized augmentation, TD defined as AIMS item 8 >= 1 (a highly sensitive but non-specific definition), no differences in depression severity or neuropsychological performance between TD+ and TD-, and small incident case numbers without correction for multiple comparisons.",
      "note": "Secondary analysis of the IRL-GRey randomised augmentation trial cohort, 255 late-life depression participants on venlafaxine plus aripiprazole or placebo without baseline dyskinesia: incident tardive dyskinesia in 16 of 255 (6.3 percent) by the end of the venlafaxine lead-in phase, all non-remitters, and 21 of 117 randomized non-remitters (17.9 percent) by the end of the randomised augmentation phase, defined as an Abnormal Involuntary Movement Scale item 8 score of at least 1. Registered as the ONLY located affective-population anchor and the closest population to bipolar disorder. LIMITATIONS CARRIED: the case definition is self-described as highly sensitive but non-specific, incident case counts are small, the sex-stratified cognitive findings are exploratory without multiple-comparison correction, the two incident figures rest on different phase denominators, and the abstract reports no arm-specific aripiprazole-versus-placebo incidence. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
      "totalUses": 1
+    },
+    {
+     "rowId": "bulimia-nervosa::dental-abrasion-erosion-abfraction::26429686",
+     "mappingId": "bulimia-nervosa",
+     "conditionId": "dental-abrasion-erosion-abfraction",
+     "publicationState": "draft-quarantined",
+     "nexusClassification": "ASSOCIATION_ONLY",
+     "claim": "Authoring registers this relationship only as the bounded association the located eating-disorder dental literature supports: a 2023 PRISMA systematic review and meta-analysis of 31 studies reports erosive tooth wear in 54.4 percent of patients with bulimia nervosa against 26.7 percent with anorexia nervosa and 42.1 percent of all 1,699 eating-disorder patients, with bulimia nervosa carrying more than ten times the odds of dental erosion of healthy individuals (OR 10.383, 95 percent CI 4.882-22.086) and self-induced vomiting carrying more than sixteen times the odds (OR 16.176, 95 percent CI 1.438-181.918) (PMID 37834805); the 2015 systematic review and meta-analysis of ten controlled studies (556 eating-disorder patients and 556 controls) reports approximately five times the odds of dental erosion in eating-disorder patients (95 percent CI 3.31-7.58), rising to OR 7.32 in those practicing self-induced vomiting, with higher DMFS scores (mean difference 3.07, 95 percent CI 0.66-5.48) and reduced salivary flow (OR 2.24, 95 percent CI 1.44-3.51) (PMID 26429686); and a 2024 systematic review of 32 studies confirms the association with erosion while reporting gingival recession, dentinal hypersensitivity and salivary-flow thresholds as receiving increasing rather than settled support (PMID 38915100). The registered claim is the narrowest these anchors jointly permit: that bulimia nervosa in its self-induced-vomiting presentation is associated with prevalent erosive tooth wear consistent with chronic gastric-acid exposure, with the vomiting-stratified odds ratios supplying the exposure gradient, and with NO anchor measuring incidence, onset order or reversibility.",
+     "boundary": "Neither causation nor aggravation of erosive tooth wear is established for any individual by these anchors: all three are cross-sectional prevalence designs, so their odds ratios are PREVALENCE odds and establish neither that the erosion postdates the eating disorder nor that it would not have occurred without it; the vomiting-stratified OR 16.176 rests on an extremely wide confidence interval (1.438-181.918) indicating sparse exposed data, and the pooled bulimia-versus-healthy OR of 10.383 spans 4.882-22.086 across a small study base; eating-disorder samples are selected toward treatment-seeking and disclosure-ready patients, so under-ascertainment of both the vomiting behavior and its duration is expected and none of the denominators is a population denominator; erosive tooth wear is multifactorial in etiology, and no anchor can separate gastric-acid exposure from dietary acid, xerostomia or abrasive hygiene within an individual. Individual claims require independently established bulimia nervosa with a dated record of self-induced vomiting frequency and duration, a dental examination documenting an erosion pattern consistent with perimolysis (palatal and lingual enamel surfaces of the maxillary teeth), and exclusion of extrinsic dietary acid (citrus, soft drinks, acidic sports drinks, wine), gastroesophageal reflux and rumination, occupational acid exposure, medication-induced xerostomia and mechanical abrasion from abrasive dentifrices or hard brushing before any attribution.",
+     "citation": "Kisely S, Baghaie H, Lalloo R, Johnson NW. Association between poor oral health and eating disorders: systematic review and meta-analysis. Br J Psychiatry. 2015 Oct;207(4):299-305. doi:10.1192/bjp.bp.114.156323. PMID 26429686.",
+     "pmid": "26429686",
+     "verificationScope": "clinical-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/26429686/",
+     "sourceCheckedOn": "2026-09-29",
+     "sourceLocator": "Br J Psychiatry. 2015;207(4):299-305. Systematic review and meta-analysis, 10 studies, 556 versus 556; abstract states eating disorder five times odds of dental erosion (95% CI 3.31-7.58), self-induced vomiting OR 7.32, DMFS mean difference 3.07 [0.66-5.48], reduced salivary flow OR 2.24 [1.44-3.51].",
+     "note": "Systematic review and random-effects meta-analysis of ten controlled studies (556 psychiatric patients with eating disorders and 556 controls), registered as the CONTROLLED-COMPARATIVE anchor: approximately five times the odds of dental erosion in eating-disorder patients (95 percent CI 3.31-7.58), highest in self-induced vomiting (OR 7.32), higher DMFS scores (mean difference 3.07, 95 percent CI 0.66-5.48) and reduced salivary flow (OR 2.24, 95 percent CI 1.44-3.51). The anchor's own background documents erosion in eating disorders even WITHOUT self-induced vomiting, naming psychotropic-induced dry mouth, nutritional deficiency and acidic diet as co-factors, which is why the edge's mechanism is filed as MULTIFACTORIAL with acid named as the dominant vector. LIMITATIONS CARRIED: prevalence odds from controlled studies of mixed eating-disorder diagnoses, not bulimia-specific incidence. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
+     "totalUses": 1
+    },
+    {
+     "rowId": "bulimia-nervosa::dental-abrasion-erosion-abfraction::37834805",
+     "mappingId": "bulimia-nervosa",
+     "conditionId": "dental-abrasion-erosion-abfraction",
+     "publicationState": "draft-quarantined",
+     "nexusClassification": "ASSOCIATION_ONLY",
+     "claim": "Authoring registers this relationship only as the bounded association the located eating-disorder dental literature supports: a 2023 PRISMA systematic review and meta-analysis of 31 studies reports erosive tooth wear in 54.4 percent of patients with bulimia nervosa against 26.7 percent with anorexia nervosa and 42.1 percent of all 1,699 eating-disorder patients, with bulimia nervosa carrying more than ten times the odds of dental erosion of healthy individuals (OR 10.383, 95 percent CI 4.882-22.086) and self-induced vomiting carrying more than sixteen times the odds (OR 16.176, 95 percent CI 1.438-181.918) (PMID 37834805); the 2015 systematic review and meta-analysis of ten controlled studies (556 eating-disorder patients and 556 controls) reports approximately five times the odds of dental erosion in eating-disorder patients (95 percent CI 3.31-7.58), rising to OR 7.32 in those practicing self-induced vomiting, with higher DMFS scores (mean difference 3.07, 95 percent CI 0.66-5.48) and reduced salivary flow (OR 2.24, 95 percent CI 1.44-3.51) (PMID 26429686); and a 2024 systematic review of 32 studies confirms the association with erosion while reporting gingival recession, dentinal hypersensitivity and salivary-flow thresholds as receiving increasing rather than settled support (PMID 38915100). The registered claim is the narrowest these anchors jointly permit: that bulimia nervosa in its self-induced-vomiting presentation is associated with prevalent erosive tooth wear consistent with chronic gastric-acid exposure, with the vomiting-stratified odds ratios supplying the exposure gradient, and with NO anchor measuring incidence, onset order or reversibility.",
+     "boundary": "Neither causation nor aggravation of erosive tooth wear is established for any individual by these anchors: all three are cross-sectional prevalence designs, so their odds ratios are PREVALENCE odds and establish neither that the erosion postdates the eating disorder nor that it would not have occurred without it; the vomiting-stratified OR 16.176 rests on an extremely wide confidence interval (1.438-181.918) indicating sparse exposed data, and the pooled bulimia-versus-healthy OR of 10.383 spans 4.882-22.086 across a small study base; eating-disorder samples are selected toward treatment-seeking and disclosure-ready patients, so under-ascertainment of both the vomiting behavior and its duration is expected and none of the denominators is a population denominator; erosive tooth wear is multifactorial in etiology, and no anchor can separate gastric-acid exposure from dietary acid, xerostomia or abrasive hygiene within an individual. Individual claims require independently established bulimia nervosa with a dated record of self-induced vomiting frequency and duration, a dental examination documenting an erosion pattern consistent with perimolysis (palatal and lingual enamel surfaces of the maxillary teeth), and exclusion of extrinsic dietary acid (citrus, soft drinks, acidic sports drinks, wine), gastroesophageal reflux and rumination, occupational acid exposure, medication-induced xerostomia and mechanical abrasion from abrasive dentifrices or hard brushing before any attribution.",
+     "citation": "Nijakowski K, Jankowski J, Gruszczynski D, Surdacka A. Eating Disorders and Dental Erosion: A Systematic Review. J Clin Med. 2023 Sep 24;12(19):6161. doi:10.3390/jcm12196161. PMID 37834805.",
+     "pmid": "37834805",
+     "verificationScope": "clinical-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/37834805/",
+     "sourceCheckedOn": "2026-09-29",
+     "sourceLocator": "J Clin Med. 2023;12(19):6161. Systematic review and meta-analysis (PRISMA), 31 studies, 1,699 eating-disorder patients; abstract states erosion in 54.4% bulimia nervosa, 26.7% anorexia nervosa, 42.1% overall; bulimics versus healthy OR 10.383 [4.882-22.086]; self-induced vomiting OR 16.176 [1.438-181.918].",
+     "note": "PRISMA systematic review and meta-analysis of 31 studies, registered as this edge's PRIMARY anchor: erosive tooth wear in 54.4 percent of patients with bulimia nervosa and 26.7 percent with anorexia nervosa, 42.1 percent across all 1,699 eating-disorder patients; bulimia nervosa versus healthy individuals OR 10.383 (95 percent CI 4.882-22.086); self-induced vomiting OR 16.176 (95 percent CI 1.438-181.918), the extremely wide interval indicating sparse exposed data. The vomiting stratum is the acid-exposure evidence that distinguishes this edge from the batch-81 rumination refusal. LIMITATIONS CARRIED: cross-sectional prevalence odds only, no incidence or onset order. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
+     "totalUses": 1
+    },
+    {
+     "rowId": "bulimia-nervosa::dental-abrasion-erosion-abfraction::38915100",
+     "mappingId": "bulimia-nervosa",
+     "conditionId": "dental-abrasion-erosion-abfraction",
+     "publicationState": "draft-quarantined",
+     "nexusClassification": "ASSOCIATION_ONLY",
+     "claim": "Authoring registers this relationship only as the bounded association the located eating-disorder dental literature supports: a 2023 PRISMA systematic review and meta-analysis of 31 studies reports erosive tooth wear in 54.4 percent of patients with bulimia nervosa against 26.7 percent with anorexia nervosa and 42.1 percent of all 1,699 eating-disorder patients, with bulimia nervosa carrying more than ten times the odds of dental erosion of healthy individuals (OR 10.383, 95 percent CI 4.882-22.086) and self-induced vomiting carrying more than sixteen times the odds (OR 16.176, 95 percent CI 1.438-181.918) (PMID 37834805); the 2015 systematic review and meta-analysis of ten controlled studies (556 eating-disorder patients and 556 controls) reports approximately five times the odds of dental erosion in eating-disorder patients (95 percent CI 3.31-7.58), rising to OR 7.32 in those practicing self-induced vomiting, with higher DMFS scores (mean difference 3.07, 95 percent CI 0.66-5.48) and reduced salivary flow (OR 2.24, 95 percent CI 1.44-3.51) (PMID 26429686); and a 2024 systematic review of 32 studies confirms the association with erosion while reporting gingival recession, dentinal hypersensitivity and salivary-flow thresholds as receiving increasing rather than settled support (PMID 38915100). The registered claim is the narrowest these anchors jointly permit: that bulimia nervosa in its self-induced-vomiting presentation is associated with prevalent erosive tooth wear consistent with chronic gastric-acid exposure, with the vomiting-stratified odds ratios supplying the exposure gradient, and with NO anchor measuring incidence, onset order or reversibility.",
+     "boundary": "Neither causation nor aggravation of erosive tooth wear is established for any individual by these anchors: all three are cross-sectional prevalence designs, so their odds ratios are PREVALENCE odds and establish neither that the erosion postdates the eating disorder nor that it would not have occurred without it; the vomiting-stratified OR 16.176 rests on an extremely wide confidence interval (1.438-181.918) indicating sparse exposed data, and the pooled bulimia-versus-healthy OR of 10.383 spans 4.882-22.086 across a small study base; eating-disorder samples are selected toward treatment-seeking and disclosure-ready patients, so under-ascertainment of both the vomiting behavior and its duration is expected and none of the denominators is a population denominator; erosive tooth wear is multifactorial in etiology, and no anchor can separate gastric-acid exposure from dietary acid, xerostomia or abrasive hygiene within an individual. Individual claims require independently established bulimia nervosa with a dated record of self-induced vomiting frequency and duration, a dental examination documenting an erosion pattern consistent with perimolysis (palatal and lingual enamel surfaces of the maxillary teeth), and exclusion of extrinsic dietary acid (citrus, soft drinks, acidic sports drinks, wine), gastroesophageal reflux and rumination, occupational acid exposure, medication-induced xerostomia and mechanical abrasion from abrasive dentifrices or hard brushing before any attribution.",
+     "citation": "Valeriani L, Frigerio F, Piciocchi C, Piana G, Montevecchi M, Donini LM, Mocini E. Oro-dental manifestations of eating disorders: a systematic review. J Eat Disord. 2024 Jun 24;12(1):87. doi:10.1186/s40337-024-01050-8. PMID 38915100.",
+     "pmid": "38915100",
+     "verificationScope": "clinical-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38915100/",
+     "sourceCheckedOn": "2026-09-29",
+     "sourceLocator": "J Eat Disord. 2024;12(1):87. Systematic review, 32 studies included of 3,990 screened, AXIS appraisal; abstract states erosion association confirmed, other oro-dental outcomes receiving increasing support; predominantly female European samples.",
+     "note": "Systematic review of 32 studies (of 3,990 screened) with AXIS appraisal, registered as the CONTEMPORARY CORROBORATION anchor: the association with dental erosion is CONFIRMED while gingival recession, dentinal hypersensitivity, salivary-flow thresholds and mucosal findings are described as receiving increasing rather than settled support, so the edge is registered on the erosion member only. LIMITATIONS CARRIED: predominantly female European samples, largely cross-sectional comparative designs, and the authors themselves note that identification of oral signs still depends on clinician experience, limiting early-diagnosis claims. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
+     "totalUses": 1
+    },
+    {
+     "rowId": "tinnitus::insomnia::34708282",
+     "mappingId": "tinnitus",
+     "conditionId": "insomnia",
+     "publicationState": "draft-quarantined",
+     "nexusClassification": "ASSOCIATION_ONLY",
+     "claim": "Authoring registers this relationship only as the bounded association the located sleep literature supports: a 2022 systematic review and single-arm meta-analysis of seven studies covering 3,041 tinnitus participants reports a pooled prevalence of sleep impairment of 53.5 percent (95 percent CI 40.2-66.8) with extreme between-study heterogeneity (I-squared 97.8 percent, Q 7.90, p = 0.000), significantly higher in women than men (44.6 versus 39.1 percent, P 0.034) and varying by PSQI cut-off and sample size (PMID 34708282); a 2024 meta-analysis of seventeen adult case-control and cohort studies reports tinnitus associated with poor sleep quality alongside dementia, compromised learning, attention, anxiety and depression (all P < 0.05), with stronger associations above age 60 (PMID 38389785). The registered claim is the narrowest these anchors jointly permit: that chronic tinnitus is associated with sleep impairment at the pooled prevalence the anchors report, with the target phenotype being the SLEEP IMPAIRMENT the anchors measure and NOT a diagnosed chronic insomnia disorder, and with NO anchor establishing onset order between the tinnitus and the sleep complaint.",
+     "boundary": "Neither causation nor aggravation of chronic insomnia is established for any individual by these anchors: the primary anchor is a SINGLE-ARM prevalence meta-analysis with no tinnitus-free comparator arm, and the second pools case-control and cohort designs, so no anchor establishes that sleep disturbance follows tinnitus in time and the sleep complaint may predate, follow or share causes with the tinnitus; the anchors measure poor sleep quality by Pittsburgh Sleep Quality Index and similar instruments rather than a DSM-5 or ICSD-3 insomnia diagnosis, so a pooled 53.5 percent sleep-impairment prevalence is NOT a rate of chronic insomnia and the phenotype boundary is carried on every face of the edge; the primary anchor's own regional subgroup statement is INTERNALLY INCONSISTENT, reporting non-Asia prevalence 56.6 percent (95 percent CI 42.6-70.5) as lower than Asia 34.5 percent (95 percent CI 25.7-43.3), so the labels appear transposed in the abstract and no regional inference may be drawn from it; heterogeneity is extreme (I-squared 97.8 percent). Individual claims require independently established chronic tinnitus and separately diagnosed chronic insomnia with dated onset records, exclusion of obstructive sleep apnea, restless legs syndrome and periodic limb movements, of major depressive and anxiety disorders, of hearing-loss progression and of caffeine, stimulant and medication effects before any attribution.",
+     "citation": "Gu H, Kong W, Yin H, Zheng Y. Prevalence of sleep impairment in patients with tinnitus: a systematic review and single-arm meta-analysis. Eur Arch Otorhinolaryngol. 2022 May;279(5):2211-2221. doi:10.1007/s00405-021-07092-x. PMID 34708282.",
+     "pmid": "34708282",
+     "verificationScope": "clinical-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34708282/",
+     "sourceCheckedOn": "2026-09-29",
+     "sourceLocator": "Eur Arch Otorhinolaryngol. 2022;279(5):2211-2221. Systematic review and single-arm meta-analysis, 7 studies, n = 3,041; abstract states pooled sleep impairment 53.5% (95% CI 40.2-66.8), I2 97.8% (Q 7.90, p = 0.000), female 44.6% versus male 39.1% (P 0.034), PSQI cut-off and sample-size subgroup differences, and non-Asia 56.6% (42.6-70.5) stated as lower than Asia 34.5% (25.7-43.3), an internally inconsistent statement read as transposed labels.",
+     "note": "Systematic review and single-arm random-effects meta-analysis, registered as this edge's PRIMARY anchor: seven studies, 3,041 tinnitus participants, pooled prevalence of sleep impairment 53.5 percent (95 percent CI 40.2-66.8) with I-squared 97.8 percent (Q 7.90, p = 0.000); female 44.6 versus male 39.1 percent (P 0.034); PSQI cut-off and sample-size subgroup differences reported significant. AN ERRATUM-CLASS INTERNAL INCONSISTENCY IS CARRIED: the abstract reports non-Asia prevalence 56.6 percent (95 percent CI 42.6-70.5) as LOWER than Asia 34.5 percent (95 percent CI 25.7-43.3), so the regional labels appear transposed and no regional inference is drawn anywhere on this edge. LIMITATIONS CARRIED: single-arm design without tinnitus-free comparator, seven studies only, extreme heterogeneity, PSQI-class sleep impairment rather than diagnosed insomnia. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
+     "totalUses": 1
+    },
+    {
+     "rowId": "tinnitus::insomnia::38389785",
+     "mappingId": "tinnitus",
+     "conditionId": "insomnia",
+     "publicationState": "draft-quarantined",
+     "nexusClassification": "ASSOCIATION_ONLY",
+     "claim": "Authoring registers this relationship only as the bounded association the located sleep literature supports: a 2022 systematic review and single-arm meta-analysis of seven studies covering 3,041 tinnitus participants reports a pooled prevalence of sleep impairment of 53.5 percent (95 percent CI 40.2-66.8) with extreme between-study heterogeneity (I-squared 97.8 percent, Q 7.90, p = 0.000), significantly higher in women than men (44.6 versus 39.1 percent, P 0.034) and varying by PSQI cut-off and sample size (PMID 34708282); a 2024 meta-analysis of seventeen adult case-control and cohort studies reports tinnitus associated with poor sleep quality alongside dementia, compromised learning, attention, anxiety and depression (all P < 0.05), with stronger associations above age 60 (PMID 38389785). The registered claim is the narrowest these anchors jointly permit: that chronic tinnitus is associated with sleep impairment at the pooled prevalence the anchors report, with the target phenotype being the SLEEP IMPAIRMENT the anchors measure and NOT a diagnosed chronic insomnia disorder, and with NO anchor establishing onset order between the tinnitus and the sleep complaint.",
+     "boundary": "Neither causation nor aggravation of chronic insomnia is established for any individual by these anchors: the primary anchor is a SINGLE-ARM prevalence meta-analysis with no tinnitus-free comparator arm, and the second pools case-control and cohort designs, so no anchor establishes that sleep disturbance follows tinnitus in time and the sleep complaint may predate, follow or share causes with the tinnitus; the anchors measure poor sleep quality by Pittsburgh Sleep Quality Index and similar instruments rather than a DSM-5 or ICSD-3 insomnia diagnosis, so a pooled 53.5 percent sleep-impairment prevalence is NOT a rate of chronic insomnia and the phenotype boundary is carried on every face of the edge; the primary anchor's own regional subgroup statement is INTERNALLY INCONSISTENT, reporting non-Asia prevalence 56.6 percent (95 percent CI 42.6-70.5) as lower than Asia 34.5 percent (95 percent CI 25.7-43.3), so the labels appear transposed in the abstract and no regional inference may be drawn from it; heterogeneity is extreme (I-squared 97.8 percent). Individual claims require independently established chronic tinnitus and separately diagnosed chronic insomnia with dated onset records, exclusion of obstructive sleep apnea, restless legs syndrome and periodic limb movements, of major depressive and anxiety disorders, of hearing-loss progression and of caffeine, stimulant and medication effects before any attribution.",
+     "citation": "Yang D, Zhang D, Zhang X, Li X. Tinnitus-associated cognitive and psychological impairments: a comprehensive review meta-analysis. Front Neurosci. 2024 Feb 8;18:1275560. doi:10.3389/fnins.2024.1275560. PMID 38389785.",
+     "pmid": "38389785",
+     "verificationScope": "clinical-evidence",
+     "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38389785/",
+     "sourceCheckedOn": "2026-09-29",
+     "sourceLocator": "Front Neurosci. 2024;18:1275560. Meta-analysis, 17 adult case-control and cohort studies, random-effects pooled ORs; abstract states association between tinnitus and dementia-compromised learning, auditory attention, anxiety, depression and poor sleep quality (P<0.05), stronger outcomes above age 60; no insomnia-specific OR in the abstract.",
+     "note": "Meta-analysis of seventeen adult case-control and cohort studies with random-effects pooled odds ratios, registered as the CORROBORATION anchor: tinnitus associated with elevated risk of dementia, compromised learning, auditory attention, anxiety, depression and poor sleep quality (all P < 0.05), with age-stratified analyses showing stronger associations above 60 years. LIMITATIONS CARRIED: the poor-sleep signal is reported in a multi-outcome pooled analysis rather than as an insomnia-specific estimate, case-control and cohort designs are merged, the abstract reports no insomnia-specific odds ratio, and the stronger over-60 signal bounds extrapolation to younger claimants. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
+     "totalUses": 1
     }
    ],
    "id": "batch-54",
    "number": 54,
    "cohortFrom": "2026-09-27",
-   "cohortTo": "2026-09-28",
-   "sourceCount": 13
+   "cohortTo": "2026-09-29",
+   "sourceCount": 18
   }
  ]
 }

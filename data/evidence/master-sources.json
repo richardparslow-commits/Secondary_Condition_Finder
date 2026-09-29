@@ -16,16 +16,16 @@
     "citationPromotionMustAtomicallyUpdateKbAndMasterSourceState": true
   },
   "counts": {
-    "liveSourceReferenceUses": 1674,
+    "liveSourceReferenceUses": 1679,
     "activeSourceEntities": 346,
-    "pendingVerificationSourceEntities": 1112,
+    "pendingVerificationSourceEntities": 1117,
     "activeClinicalSourceEntities": 345,
-    "pendingClinicalSourceEntities": 1112,
+    "pendingClinicalSourceEntities": 1117,
     "activeLegalAuthorityEntities": 1,
     "retiredOnlySourceEntities": 1,
     "supersededUnverifiedSourceEntities": 7,
     "bibliographicCorrectionOnlyEntities": 1,
-    "totalSourceEntitiesIncludingLineage": 1467,
+    "totalSourceEntitiesIncludingLineage": 1472,
     "retiredVerifiedRelationshipSourceUses": 6
   },
   "retirementLedger": {
@@ -54129,6 +54129,181 @@
       "retiredUses": [],
       "rawReferenceHashes": [
         "4fb4d8091a0c4602b5ec9b6ccb657778947a30ffa01f81f6610780d5f95416d8"
+      ]
+    },
+    {
+      "sourceId": "pmid-37834805",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "37834805",
+      "doi": "10.3390/jcm12196161",
+      "canonicalCitation": "Nijakowski K, Jankowski J, Gruszczynski D, Surdacka A. Eating Disorders and Dental Erosion: A Systematic Review. J Clin Med. 2023 Sep 24;12(19):6161. doi:10.3390/jcm12196161. PMID 37834805.",
+      "citationVariants": [
+        "Nijakowski K, Jankowski J, Gruszczynski D, Surdacka A. Eating Disorders and Dental Erosion: A Systematic Review. J Clin Med. 2023 Sep 24;12(19):6161. doi:10.3390/jcm12196161. PMID 37834805."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/37834805/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/37834805/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-29"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-bulimia-nervosa-to-dental-abrasion-erosion-abfraction",
+          "primaryId": "bulimia-nervosa",
+          "targetId": "dental-abrasion-erosion-abfraction",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "ff0faf22723b02033ba88d5afac8ba06ec89df41cac0d77416862f900afff0f7"
+      ]
+    },
+    {
+      "sourceId": "pmid-26429686",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "26429686",
+      "doi": "10.1192/bjp.bp.114.156323",
+      "canonicalCitation": "Kisely S, Baghaie H, Lalloo R, Johnson NW. Association between poor oral health and eating disorders: systematic review and meta-analysis. Br J Psychiatry. 2015 Oct;207(4):299-305. doi:10.1192/bjp.bp.114.156323. PMID 26429686.",
+      "citationVariants": [
+        "Kisely S, Baghaie H, Lalloo R, Johnson NW. Association between poor oral health and eating disorders: systematic review and meta-analysis. Br J Psychiatry. 2015 Oct;207(4):299-305. doi:10.1192/bjp.bp.114.156323. PMID 26429686."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/26429686/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/26429686/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-29"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-bulimia-nervosa-to-dental-abrasion-erosion-abfraction",
+          "primaryId": "bulimia-nervosa",
+          "targetId": "dental-abrasion-erosion-abfraction",
+          "sourceIndex": 1
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "f3777d619458a796b59cdbdb875176641205fa70d61e4579f3aa07a0ba412d8a"
+      ]
+    },
+    {
+      "sourceId": "pmid-38915100",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "38915100",
+      "doi": "10.1186/s40337-024-01050-8",
+      "canonicalCitation": "Valeriani L, Frigerio F, Piciocchi C, Piana G, Montevecchi M, Donini LM, Mocini E. Oro-dental manifestations of eating disorders: a systematic review. J Eat Disord. 2024 Jun 24;12(1):87. doi:10.1186/s40337-024-01050-8. PMID 38915100.",
+      "citationVariants": [
+        "Valeriani L, Frigerio F, Piciocchi C, Piana G, Montevecchi M, Donini LM, Mocini E. Oro-dental manifestations of eating disorders: a systematic review. J Eat Disord. 2024 Jun 24;12(1):87. doi:10.1186/s40337-024-01050-8. PMID 38915100."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38915100/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/38915100/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-29"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-bulimia-nervosa-to-dental-abrasion-erosion-abfraction",
+          "primaryId": "bulimia-nervosa",
+          "targetId": "dental-abrasion-erosion-abfraction",
+          "sourceIndex": 2
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "c515a66d42b65fd4515d1cd32c0efc12d82cff81c55795c257b3a2f4fd4d13dc"
+      ]
+    },
+    {
+      "sourceId": "pmid-34708282",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "34708282",
+      "doi": "10.1007/s00405-021-07092-x",
+      "canonicalCitation": "Gu H, Kong W, Yin H, Zheng Y. Prevalence of sleep impairment in patients with tinnitus: a systematic review and single-arm meta-analysis. Eur Arch Otorhinolaryngol. 2022 May;279(5):2211-2221. doi:10.1007/s00405-021-07092-x. PMID 34708282.",
+      "citationVariants": [
+        "Gu H, Kong W, Yin H, Zheng Y. Prevalence of sleep impairment in patients with tinnitus: a systematic review and single-arm meta-analysis. Eur Arch Otorhinolaryngol. 2022 May;279(5):2211-2221. doi:10.1007/s00405-021-07092-x. PMID 34708282."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34708282/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/34708282/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-29"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-tinnitus-to-insomnia",
+          "primaryId": "tinnitus",
+          "targetId": "insomnia",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "63586ca10d4a0b579992c2f89c75fc7bdf2c47a2156ac868bc86b51a41be55dc"
+      ]
+    },
+    {
+      "sourceId": "pmid-38389785",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "38389785",
+      "doi": "10.3389/fnins.2024.1275560",
+      "canonicalCitation": "Yang D, Zhang D, Zhang X, Li X. Tinnitus-associated cognitive and psychological impairments: a comprehensive review meta-analysis. Front Neurosci. 2024 Feb 8;18:1275560. doi:10.3389/fnins.2024.1275560. PMID 38389785.",
+      "citationVariants": [
+        "Yang D, Zhang D, Zhang X, Li X. Tinnitus-associated cognitive and psychological impairments: a comprehensive review meta-analysis. Front Neurosci. 2024 Feb 8;18:1275560. doi:10.3389/fnins.2024.1275560. PMID 38389785."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38389785/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/38389785/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-29"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-tinnitus-to-insomnia",
+          "primaryId": "tinnitus",
+          "targetId": "insomnia",
+          "sourceIndex": 1
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "da3ed84f1d123a7e23cd397f891264270d48ed5c779b20b15bfababd44ccc929"
       ]
     }
   ],

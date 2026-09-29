@@ -276,4 +276,37 @@ The six named items above are **not open blockers to the current clinical eviden
   infection edges retained as subtype-agnostic windows, and the bare `atopic`/`contact` alias hazard
   removed.
 
+## Batch 91 corpus-review dispositions (2026-09-29) — held-edge pointers for published mappings
+
+The schema forbids todos on published mappings ("Resolve every todo before publishing, or keep the
+mapping draft: true"), so the batch-91 dispositions that would otherwise sit in the affected files are
+recorded here and in the held artifacts instead:
+
+- `hypothyroidism` to `depressive-disorder` — FULLY AUTHORED AND HELD
+  (`docs/batch-91-hypothyroidism-depressive-disorder-held-edge.json`, PMIDs 34524390, 31214119,
+  30375372): overt-stronger-than-subclinical gradient, female-only post hoc signal with male null,
+  the two subclinical meta-analyses in direct conflict, and the levothyroxine-treatment null.
+- `diabetes-mellitus-type-2` to `depressive-disorder` — FULLY AUTHORED AND HELD
+  (`docs/batch-91-diabetes-mellitus-type-2-depressive-disorder-held-edge.json`, PMIDs 19033418,
+  11375373): the claimed direction is the weaker half of a bidirectional association (RR 1.15 versus
+  reverse RR 1.60), and a published critique of the primary anchor is a landing precondition.
+- `ptsd` to `bruxism-awake-sleep` — FULLY AUTHORED AND HELD
+  (`docs/batch-91-ptsd-bruxism-awake-sleep-held-edge.json`, PMIDs 38363350, 36056716, 32577706):
+  awake-bruxism-only adjusted evidence (OR 3.38) with a sleep-bruxism null in the same model, an
+  erratum-linked industry-conflicted prevalence anchor, and the ME-34 TMJ boundary honored. The
+  `ptsd` to `chronic-liver-disease` corpus route is separately WITHHELD as an intermediate-step
+  self-medication chain (PMID 30080255 preserved under ME-29; `alcohol-use-disorder` identity
+  missing; the registered `ptsd` to `substance-use-disorder` edge already opens the chain).
+- `discoid-lupus` to `persistent-depressive-disorder` — FULLY AUTHORED AND HELD
+  (`docs/batch-91-discoid-lupus-persistent-depressive-disorder-held-edge.json`, PMIDs 41849118,
+  30877492, 35953237): NO anchor diagnoses persistent depressive disorder (phenotype boundary),
+  psychosocial determinants dominate the cohort models, and re-targeting at `depressive-disorder`
+  is an open reviewer decision.
+- `anxiety-disorder` to `migraine-headaches` — UNRESOLVED-DIRECTION GAP: the located prospective
+  literature runs migraine-to-anxiety; nothing registered in either direction (recorded on the
+  draft file's todo as well).
+- The `liver-cancer` sarcopenia lead is MISSING-IDENTITY blocked (`sarcopenia` absent); see
+  `docs/missing-identity-addition-roadmap.md`.
+
+
 A future catalog-v3 identity migration may retire or consolidate these IDs, but v2 should not violate 300/300 or silently rewrite stable identity history to make the debt list appear empty.

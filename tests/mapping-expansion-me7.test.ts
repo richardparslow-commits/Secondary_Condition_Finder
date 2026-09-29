@@ -92,8 +92,8 @@ describe("mapping expansion ME-7", () => {
 
   it("pins the exact ME-7 final citation totals", () => {
     const refs = kb.flatMap((mapping) => mapping.suggestions.flatMap((suggestion) => suggestion.sourceReferences ?? []));
-expect(refs).toHaveLength(1674);
+expect(refs).toHaveLength(1679);
     expect(refs.filter((source) => source.verified === true)).toHaveLength(384);
-expect(refs.filter((r) => r.verified === false)).toHaveLength(1290);
+expect(refs.filter((r) => r.verified === false)).toHaveLength(1295);
   });
 });
