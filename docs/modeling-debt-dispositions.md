@@ -320,4 +320,18 @@ recorded here and in the held artifacts instead:
   `docs/missing-identity-addition-roadmap.md`.
 
 
+## Direction-discipline sweep 2026-09-29 (batch 94) — withheld/candidate routes against reverse registrations across sibling identities
+
+The bounded direction-discipline sweep is dispositioned in
+`docs/direction-discipline-dispositions-2026-09-29.md`: every withheld, refused, deferred, held, or
+candidate route on record was tested against the registry (870 relationships) for reverse-orientation
+registrations — exact reverse or across documented sibling identities — and each carries a signed
+direction-discipline disposition there. One Class A case (`pneumothorax`/`pleural-effusion`, the
+registered procedure-window edge owns the pair), nine Class B cases where the reverse direction is
+registered across sibling identities (the canonical `anxiety-disorder` -> `eczema` case, the
+muscle-atrophy manifestation pair, the voice family's opposite-orientation mood windows, the renal,
+sialitis, migraine, alopecia, eczema-family held-set and burn-scar-carcinoma cases, plus the
+movement-family shared-anchor hazard), and the screened-clean remainder with one-line dispositions.
+Records only: nothing registered, republished, or re-pinned.
+
 A future catalog-v3 identity migration may retire or consolidate these IDs, but v2 should not violate 300/300 or silently rewrite stable identity history to make the debt list appear empty.
