@@ -5591,3 +5591,13 @@ The reallocation is recorded on `data/knowledge-base/bipolar-disorder.json` (tod
 **Named future candidates preserved (none authorable without fresh evidence):** `migraine-headaches` to `anxiety-disorder`, `sjogren-s-syndrome` to `sialadenitis`, `scars`/`burns` to `squamous-cell-carcinoma`, `pulmonary-embolism` to `pleural-effusion`, and `schizophrenia` to `drug-induced-parkinsonism` after ME-29 adjudication. CRG warnings for future landings are recorded in the sweep so transitive-redundancy and bidirectional findings are adjudicated, not surprised.
 
 **Operational note.** The upstream freeze stands: nothing ships before 2026-10-11. This sweep record is local work queued for that date.
+
+## Landing preparation (2026-09-29) — stacked-branch diff-isolation verified; merge order and checklist written for 2026-10-11
+
+**The request and its shape.** Prepare the 2026-10-11 landing: verify that each stacked local branch's diff is exactly its own commit(s), and write the merge order and checklist. Verification and planning only — no push, PR, merge, or deploy before 2026-10-11. The record is `docs/landing-checklist-2026-10-11.md`.
+
+**Verification results.** Six branches stack linearly on `main` (= `origin/main` = `1e92080b`, the PR #515 merge), 16 commits, 0 merge commits, clean working tree. The five single-commit branches each pass stable patch-id equality — `git diff <prev>..<branch>` is byte-equivalent to `git show <branch>` — so every branch's diff against its predecessor is exactly its own commit. The top branch `catalog-v2-movement-identities` carries 11 batch-scoped commits (catalog 814-817 identities through batch 94) whose combined diff equals the union of their per-commit file sets (109 files). Patch-ids are recorded in the checklist and survive unchanged rebases.
+
+**Merge order and procedure.** Strict ancestry order (identity-review-eczema-scope-split → batch-89-ptsd-stress-flare-held → catalog-add-tardive-dyskinesia → re-screen-batch-80-eczema-routes → batch-90-tardive-dyskinesia-routes → catalog-v2-movement-identities); any out-of-order merge forces rebases and invalidates the proofs. Recommended shape: one PR per branch into `main` (repo precedent PR #469/#515), each PR's diff narrowing to its own commits as predecessors merge; the single-PR shape is documented as equivalent. The checklist carries the pre-flight battery, the per-branch loop, post-landing probes, and the escalation rule — never raise a pin to make CI green — including the known, deliberately-accepted decay flag (undigested-verified 395 > 383, batch-92 decision).
+
+**Operational note.** The upstream freeze stands: this preparation ships nothing. The landing itself happens on or after 2026-10-11 and follows the checklist.
