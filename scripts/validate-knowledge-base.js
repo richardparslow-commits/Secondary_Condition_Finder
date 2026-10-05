@@ -2,6 +2,7 @@
 const fs = require("fs");
 const path = require("path");
 const { auditSource, validateExplicitMetadata, validateSuggestionMetadata } = require("./lib/evidence-architecture");
+const { computeMappingCoverage } = require("./lib/kb-coverage");
 
 const repoRoot = process.cwd();
 const kbDir = path.join(repoRoot, "data/knowledge-base");
@@ -381,12 +382,25 @@ for (const [id, { file }] of catalogById) {
   }
 }
 
+// Structural presence is not coverage. `mappedConditions`/`unmappedCatalogConditions`
+// below count knowledge-base *files*, which every catalog identity has — so they read
+// 813/0 while 555 conditions still had no suggestions, and that is the number a reader
+// of this summary would have taken for "mapping is done". The authored counts come from
+// the same module the coverage ledger and its ratchet test use, so the three cannot
+// describe different states of the repository.
+const coverage = computeMappingCoverage(process.cwd());
+
 const report = {
   knowledgeBaseFiles: kbFiles.length,
   catalogFiles: catalogFiles.length,
   catalogConditions: catalogById.size,
   mappedConditions: kbIds.size,
   unmappedCatalogConditions: unmappedCatalogConditions.length,
+  conditionsWithAuthoredSuggestions: coverage.withAuthoredSuggestions,
+  conditionsWithoutAuthoredSuggestions: coverage.withoutSuggestions,
+  publishedMappings: coverage.published,
+  draftMappingsWithAuthoredSuggestions: coverage.draft,
+  relationshipEdges: coverage.suggestionEdges,
   errors,
   warnings,
 };

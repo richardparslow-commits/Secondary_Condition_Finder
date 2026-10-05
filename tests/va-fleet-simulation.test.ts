@@ -180,7 +180,7 @@ const SHARED_PREFIX = "va:ref:";
 
 /** The unprefixed cache key the loaders and the shared-cache module use. */
 function formsKey(query: string): string {
-  return `forms:sandbox:q:${hashedCacheKeySegment(query.toLowerCase())}`;
+  return `forms-finder:sandbox:q:${hashedCacheKeySegment(query.toLowerCase())}`;
 }
 
 /** The same key as it is stored (with the operator prefix) for direct reads. */
@@ -328,7 +328,7 @@ describe("VA fleet simulation — unique-query storm", () => {
       // namespace cap, and no raw query ever becomes key material.
       const valueWrites = fleet
         .kvCommandsNamed("SET")
-        .filter((command) => /^va:ref:forms:/.test(String(command[1])));
+        .filter((command) => /^va:ref:forms-finder:/.test(String(command[1])));
       expect(valueWrites).toHaveLength(live.length);
       expect(valueWrites.length).toBeLessThanOrEqual(VA_SHARED_KEY_WRITE_MAX_PER_WINDOW);
       for (const command of fleet.events) {
@@ -342,13 +342,13 @@ describe("VA fleet simulation — unique-query storm", () => {
       // it — no stranded in-flight key after the storm.
       const leaseClaims = fleet
         .kvCommandsNamed("SET")
-        .filter((command) => String(command[1]).startsWith("va:ref:inflight:forms:"));
+        .filter((command) => String(command[1]).startsWith("va:ref:inflight:forms-finder:"));
       const leaseReleases = fleet
         .kvCommandsNamed("EVAL")
         .filter(
           (command) =>
             command[1] === SHARED_CIRCUIT_COMPARE_DELETE_SCRIPT &&
-            String(command[3]).startsWith("va:ref:inflight:forms:"),
+            String(command[3]).startsWith("va:ref:inflight:forms-finder:"),
         );
       expect(leaseClaims).toHaveLength(totalRequests);
       expect(leaseReleases).toHaveLength(leaseClaims.length);
@@ -501,7 +501,7 @@ describe("VA fleet simulation — single-flight storm on one cold key", () => {
       expect(results.every((result) => result.items[0]?.formName === "21-526EZ")).toBe(true);
 
       // The lease was claimed, serialized through `SET … NX`, and released.
-      const leaseKey = `va:ref:inflight:forms:sandbox:q:${hashedCacheKeySegment("21-526ez")}`;
+      const leaseKey = `va:ref:inflight:forms-finder:sandbox:q:${hashedCacheKeySegment("21-526ez")}`;
       const claims = fleet.kvCommandsNamed("SET").filter((command) => command[1] === leaseKey);
       expect(claims.length).toBe(30);
       expect(claims.every((command) => command[3] === "NX" && command[4] === "PX")).toBe(true);
@@ -681,7 +681,7 @@ describe("VA fleet simulation — shared-store outage mid-storm", () => {
           (event) =>
             event.kind === "kv" &&
             event.command[0] === "SET" &&
-            String(event.command[1]).startsWith("va:ref:forms:"),
+            String(event.command[1]).startsWith("va:ref:forms-finder:"),
         ),
       ).toHaveLength(0);
       expect(Number(fleet.kv.get(budgetKey))).toBe(instanceCount);
@@ -802,7 +802,7 @@ describe("VA fleet simulation — split-brain network partition", () => {
       expect(
         fleet
           .kvCommandsNamed("DEL")
-          .filter((command) => /^va:ref:forms:/.test(String(command[1]))),
+          .filter((command) => /^va:ref:forms-finder:/.test(String(command[1]))),
       ).toHaveLength(0);
       const darkStoreAfter = JSON.parse(String(fleet.kv.get(storedFormsKey(darkQueries[0]!)))) as { epoch: string };
       expect(darkStoreAfter.epoch).toBe("1");
@@ -868,7 +868,7 @@ describe("VA fleet simulation — epoch invalidation propagation", () => {
       expect(
         fleet
           .kvCommandsNamed("DEL")
-          .filter((command) => /^va:ref:forms:/.test(String(command[1]))),
+          .filter((command) => /^va:ref:forms-finder:/.test(String(command[1]))),
       ).toHaveLength(0);
 
       // Every instance must discard its stale value and refetch; all 40

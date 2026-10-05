@@ -35,6 +35,17 @@ All actionable Vercel Agent findings must be resolved before merge. If resolving
 
 The post-push provenance check remains useful even after branch protection is enabled because it independently records that the production commit came through the reviewed-PR path.
 
+## Local checkout placement
+
+The working copy **must not** live inside a folder-sync root — iCloud Drive's `Desktop` and `Documents`, Dropbox, OneDrive, or Google Drive. Those clients upload the whole tree, and a client that materializes a second copy of a file it sees mid-write leaves `<name> 2.<ext>` beside the original.
+
+Those copies are not cosmetic. They are real files: TypeScript typechecks them, ESLint lints them, and any test that derives its expectations from the tree treats a copy as a new module. Inside `.git` the same fork is corruption rather than duplication — a forked `.git/index` is invisible to every verification step, because git never reads it, so `git fsck` and `git status` both report a clean checkout that nonetheless carries index snapshots from earlier states.
+
+Two rules follow:
+
+1. **Keep the checkout outside every sync root.** Relocating a synced checkout may require copying out and then deleting the original: a same-volume rename *out* of an iCloud-managed folder can fail outright (`Operation timed out`, then `Stale NFS file handle`) while unlink succeeds. Verify the destination before retiring the source — every tracked file byte-for-byte, plus the untracked and git-ignored payload a clone would not carry, such as `.env.local` and `public/`.
+2. **Treat a forked path name as a defect to remove, not noise to route around.** `tests/checkout-fork-hygiene.test.ts` fails on any path carrying a forking suffix, naming each one, and scans `.git` as well as source.
+
 ## Verification
 
 After any repository-governance change, verify all of the following before considering the gate closed:

@@ -1,32 +1,65 @@
 import "server-only";
 
-type RuntimeEnvironment = Record<string, string | undefined>;
-
-const DISTRIBUTED_RUNTIME_MARKERS = [
-  "VERCEL",
-  "AWS_LAMBDA_FUNCTION_NAME",
-  "FUNCTIONS_WORKER_RUNTIME",
-  "K_SERVICE",
-] as const;
+import { isDistributedRuntime, type RuntimeEnvironment } from "../runtime-deployment";
 
 /**
- * The current VA request budget and reference cache are intentionally process-local.
- * They are safe only where one process owns the runtime state. Production and known
- * serverless/distributed runtimes must fail closed until a shared coordinator exists.
+ * The VA request budget and reference cache are intentionally process-local, and
+ * they are gated on the runtime classification owned by `runtime-deployment.ts`.
+ *
+ * **Policy here is fail closed.** Both of these carry correctness guarantees: a
+ * per-instance reference cache can serve a stale snapshot, or one retrieved for
+ * a different environment, and a per-instance outbound budget permits up to N×
+ * the intended traffic against VA. Serving a wrong answer, or exceeding a stated
+ * budget, is not an acceptable degradation — so in production or any known
+ * distributed runtime this refuses to use process-local state at all until a
+ * shared coordinator exists.
+ *
+ * `src/lib/rate-limiter.ts` reads the *same* classification from the same module
+ * and reaches the opposite conclusion — degrade and disclose, rather than refuse
+ * — because a limiter that permits more than intended is still restricting
+ * traffic, whereas a cache that serves the wrong data is simply wrong. That
+ * divergence is deliberate, and `tests/process-local-state-contract.test.ts`
+ * pins both the shared fact and the different policies.
  */
 export function vaProcessLocalStateAllowed(
   env: RuntimeEnvironment = process.env,
 ): boolean {
-  if (env.NODE_ENV?.trim().toLowerCase() === "production") return false;
-
-  return !DISTRIBUTED_RUNTIME_MARKERS.some((key) => {
-    const value = env[key]?.trim();
-    return value !== undefined && value !== "" && value !== "0" && value.toLowerCase() !== "false";
-  });
+  return !isDistributedRuntime(env);
 }
 
 export const VA_SHARED_STATE_REQUIRED_ERROR =
   "VA live integration is unavailable in production or distributed runtimes until a shared rate-limit/cache coordinator is configured.";
+
+/** Regime label for the VA live-access capability: allowed here, or refused here. */
+export type VaLiveIntegrationRegime = "enabled" | "disabled";
+
+export interface VaLiveIntegrationScope {
+  scope: VaLiveIntegrationRegime;
+  detail: string;
+}
+
+/**
+ * Report whether outbound VA access can run in this runtime, and why not when it
+ * cannot.
+ *
+ * This is the capability behind the gate in `sandbox.ts` (`requestVaJson` refuses
+ * to fetch when process-local state is not allowed): live access has no meaning
+ * without a coordinated outbound budget and cache, so it is refused rather than
+ * served weaker. Reported through `runtime-capabilities.ts`.
+ */
+export function vaLiveIntegrationScope(
+  env: RuntimeEnvironment = process.env,
+): VaLiveIntegrationScope {
+  if (!vaProcessLocalStateAllowed(env)) {
+    return { scope: "disabled", detail: VA_SHARED_STATE_REQUIRED_ERROR };
+  }
+
+  return {
+    scope: "enabled",
+    detail:
+      "one process serves traffic, so the outbound budget and reference cache are enforced across all of it",
+  };
+}
 
 /**
  * The three deliberate VA public-reference runtime modes required by issue #287.

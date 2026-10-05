@@ -15,12 +15,37 @@
  * grow the tracking map without limit. Expired buckets are swept as the map
  * grows, and a hard cap evicts the oldest buckets as a final backstop.
  *
+ * What this module promises is per-client request **fairness**, as a secondary
+ * layer behind the edge WAF. That is deliberately a weaker promise than the one
+ * `src/lib/va/runtime-state.ts` makes about process-local state, and the
+ * difference is the point:
+ *
+ *   - Buckets here are per instance, so running N instances means the effective
+ *     limit is roughly the configured limit × N — the guard **degrades** as the
+ *     deployment scales. `rateLimitScope()` reports which regime a process is in.
+ *   - That degradation can only make this limiter *weaker* than intended. It
+ *     cannot make it *wrong*. A per-instance VA reference cache can serve data
+ *     belonging to a different environment, and a per-instance outbound budget
+ *     can permit N× the intended traffic against VA. A limiter that permits more
+ *     than intended is still restricting traffic; a cache that returns the wrong
+ *     snapshot is a correctness failure.
+ *
+ * So this module does **not** fail closed in production the way the VA cache
+ * does, and that is policy rather than oversight: disabling a limiter in
+ * production would remove defense-in-depth entirely, while its worst failure
+ * mode is a weaker guard. Both modules read the same runtime fact from
+ * `runtime-deployment.ts`, so they can no longer disagree about the runtime —
+ * only about what to do with it, which is written down here and pinned by
+ * `tests/process-local-state-contract.test.ts`.
+ *
  * Usage:
  *   import { createRateLimiter } from "@/lib/rate-limiter";
  *   const limiter = createRateLimiter({ windowMs: 60_000, max: 10 });
  *   const result = limiter.check(key);
  *   if (result.limited) return 429;
  */
+
+import { isDistributedRuntime, type RuntimeEnvironment } from "./runtime-deployment";
 
 export interface RateLimiterOptions {
   /** Fixed window duration in milliseconds. Default: 60 000 (1 minute). */
@@ -182,27 +207,89 @@ export const referenceReadLimiter = createRateLimiter({
 });
 
 // ---------------------------------------------------------------------------
-// Key extraction helpers.
+// Runtime scope
 // ---------------------------------------------------------------------------
 
 /**
- * Extract a rate-limit key from a request. Uses `X-Forwarded-For` (first
- * IP), trusting that the deployment edge overwrites or strips
- * client-supplied values. That trust is a deployment property this helper
- * cannot verify: without evidence that the proxy/WAF discards inbound
- * `X-Forwarded-For`, a client could rotate spoofed keys to evade per-client
- * limits. The setting is recorded as operator input in the 2026-10-03 audit
- * (§9.3), not assumed here. Falls back to a generic key when the header is
- * absent (local dev, tests).
+ * The environment a runtime's rate limiting actually has.
+ *
+ * Reported rather than inferred by operators, so that "this limiter is
+ * per-instance" is a fact anyone can read off `/api/health` instead of a
+ * paragraph in a comment that has to be found first.
  */
-export function extractClientKey(requestHeaders: Headers): string {
-  const forwarded = requestHeaders.get("x-forwarded-for");
-  if (forwarded) {
-    // X-Forwarded-For can contain multiple IPs: "client, proxy1, proxy2"
-    const firstIp = forwarded.split(",")[0]?.trim();
-    if (firstIp) return firstIp;
+export interface RateLimitScope {
+  /** `single-process` when one process owns the buckets; `per-instance` when several do. */
+  scope: "single-process" | "per-instance";
+  /** Operator-facing explanation of what the configured limits mean here. */
+  detail: string;
+}
+
+/**
+ * Describe what the configured limits mean in this runtime. Classification comes
+ * from `runtime-deployment.ts`, the same source the VA cache uses for its own,
+ * stricter verdict.
+ */
+export function rateLimitScope(
+  env: RuntimeEnvironment = process.env,
+): RateLimitScope {
+  if (isDistributedRuntime(env)) {
+    return {
+      scope: "per-instance",
+      detail:
+        "per-IP limits apply per instance, so the aggregate is roughly the configured limit x instance count; the edge WAF remains the capacity layer",
+    };
   }
-  // Fallback: use a generic key. In production behind Vercel, this path
-  // should never be reached because X-Forwarded-For is always set.
-  return "unknown";
+
+  return {
+    scope: "single-process",
+    detail: "per-IP limits apply to the whole deployment",
+  };
+}
+
+// ---------------------------------------------------------------------------
+// Client identity helpers.
+// ---------------------------------------------------------------------------
+
+/** Header a client key was taken from. */
+export type ClientKeySource = "x-forwarded-for" | "x-real-ip" | "none";
+
+export interface ClientKeyResolution {
+  /** Per-client bucket key, or `null` when the request carries no trustworthy identity. */
+  key: string | null;
+  source: ClientKeySource;
+}
+
+/** First hop of a comma-separated forwarding header: `"client, proxy1"` → `"client"`. */
+function firstHop(headerValue: string | null): string | null {
+  if (!headerValue) return null;
+  const first = headerValue.split(",")[0]?.trim();
+  return first ? first : null;
+}
+
+/**
+ * Resolve the per-client bucket key for a request.
+ *
+ * `key` is `null` when no trustworthy client identity is present. That case used
+ * to collapse into one shared `"unknown"` bucket, which is not a per-client limit
+ * at all: every unattributed client drew from a single bucket, so the configured
+ * per-IP allowance silently became a **global** cap that one client could exhaust
+ * on everyone else's behalf — and nothing in a response, log, or metric revealed
+ * that the control had changed meaning.
+ *
+ * Callers must therefore handle `null` explicitly. `proxy.ts` proceeds without
+ * limiting, because capacity is the edge WAF's job and an absent limiter is a
+ * more honest instrument for it than a mislabelled global cap.
+ *
+ * `X-Forwarded-For` is preferred; `X-Real-IP` is accepted next because it is what
+ * nginx-style reverse proxies set. Both are only as trustworthy as the proxy in
+ * front of the app, which is another reason the WAF stays the capacity layer.
+ */
+export function resolveClientKey(requestHeaders: Headers): ClientKeyResolution {
+  const forwarded = firstHop(requestHeaders.get("x-forwarded-for"));
+  if (forwarded) return { key: forwarded, source: "x-forwarded-for" };
+
+  const realIp = firstHop(requestHeaders.get("x-real-ip"));
+  if (realIp) return { key: realIp, source: "x-real-ip" };
+
+  return { key: null, source: "none" };
 }

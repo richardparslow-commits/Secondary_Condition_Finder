@@ -8,12 +8,29 @@ const mockGetCircuitSnapshot = vi.fn().mockReturnValue({
 
 const mockPeekCacheCounters = vi.fn().mockReturnValue({ hits: 0, misses: 0 });
 
+const mockVaReferenceCacheScope = vi.fn().mockReturnValue({
+  scope: "process-local",
+  detail: "test fixture",
+});
+
+const mockCircuitBreakerScope = vi.fn().mockReturnValue({
+  scope: "single-process",
+  detail: "test fixture",
+});
+
 vi.mock("@/lib/va/circuit-breaker", () => ({
   getCircuitSnapshot: (...args: unknown[]) => mockGetCircuitSnapshot(...args),
+  circuitBreakerScope: (...args: unknown[]) => mockCircuitBreakerScope(...args),
 }));
 
+// These are full module mocks, so every export the health route reaches for has to
+// be listed here — including the ones it reaches only transitively, through
+// `runtime-capabilities.ts`. A missing entry throws at call time and turns every
+// health assertion into a 503, which looks like a health regression rather than a
+// stale mock.
 vi.mock("@/lib/va/reference-cache", () => ({
   peekCacheCounters: (...args: unknown[]) => mockPeekCacheCounters(...args),
+  vaReferenceCacheScope: (...args: unknown[]) => mockVaReferenceCacheScope(...args),
 }));
 
 afterEach(() => {
@@ -25,6 +42,16 @@ afterEach(() => {
   });
   mockPeekCacheCounters.mockReset();
   mockPeekCacheCounters.mockReturnValue({ hits: 0, misses: 0 });
+  mockVaReferenceCacheScope.mockReset();
+  mockVaReferenceCacheScope.mockReturnValue({
+    scope: "process-local",
+    detail: "test fixture",
+  });
+  mockCircuitBreakerScope.mockReset();
+  mockCircuitBreakerScope.mockReturnValue({
+    scope: "single-process",
+    detail: "test fixture",
+  });
 });
 
 describe("health endpoint crash resilience", () => {

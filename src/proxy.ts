@@ -1,11 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 
+import { findApiRouteLimitPolicy } from "@/lib/api-route-policies";
 import {
-  adminCacheClearLimiter,
-  extractClientKey,
-  healthLimiter,
   referenceReadLimiter,
-  regulatoryPreflightLimiter,
+  resolveClientKey,
   workflowSessionLimiter,
 } from "@/lib/rate-limiter";
 
@@ -228,7 +226,15 @@ export function proxy(request: NextRequest) {
   const pathname = normalizePathname(url.pathname);
 
   // --- Application-level rate limiting (defense-in-depth behind edge WAF) ---
-  const clientKey = extractClientKey(requestHeaders);
+  //
+  // A request carrying no trustworthy client identity is not charged to a bucket
+  // at all. Every unattributed request used to share one `"unknown"` bucket,
+  // which silently turned the configured per-IP allowance into a *global* cap
+  // that a single client could exhaust on everyone else's behalf. Those requests
+  // now proceed unthrottled: capacity is the edge WAF's job, and an absent
+  // limiter is a better instrument for it than a mislabelled global cap. See
+  // `resolveClientKey` in `rate-limiter.ts` for the resolution rules.
+  const client = resolveClientKey(requestHeaders);
   const method = request.method;
 
   /** 429 response carrying the full security-header set, not just CSP. */
@@ -246,66 +252,57 @@ export function proxy(request: NextRequest) {
       },
     });
 
-  // Public dynamic reference GETs (forms search, accredited-representative
-  // lookup) reach upstream VA quota and must be bounded even though the
-  // workflow limiter below only covers POSTs.
-  if (
-    method === "GET" &&
-    (pathname === "/va-forms" ||
-      pathname === "/va-reference" ||
-      pathname === "/presumptive/results" ||
-      pathname === "/secondary/suggestions" ||
-      pathname === "/va-account" ||
-      pathname.startsWith("/va-account/oauth/"))
-  ) {
-    const result = referenceReadLimiter.check(clientKey);
-    if (result.limited) {
-      return tooManyRequests(
-        { error: "Too many requests. Please try again later." },
-        result.retryAfterSeconds,
-      );
+  if (client.key) {
+    // Method-scoped rule, not a route rule: this covers every POST that is not a
+    // Next.js asset request, including Server Action form submissions to pages
+    // with server-only directives *and* API POSTs. An API POST therefore consumes
+    // this bucket as well as its own route policy below.
+    if (method === "POST" && !pathname.startsWith("/_next")) {
+      const result = workflowSessionLimiter.check(client.key);
+      if (result.limited) {
+        return tooManyRequests(
+          { error: "Too many requests. Please try again later." },
+          result.retryAfterSeconds,
+        );
+      }
     }
-  }
 
-  // Server Action POSTs (Next.js form submissions to pages with server-only
-  // directives) are rate-limited as workflow session writes.
-  if (method === "POST" && !pathname.startsWith("/_next")) {
-    const result = workflowSessionLimiter.check(clientKey);
-    if (result.limited) {
-      return tooManyRequests(
-        { error: "Too many requests. Please try again later." },
-        result.retryAfterSeconds,
-      );
+    // Public dynamic reference GETs (forms search, accredited-representative
+    // lookup) reach upstream VA quota and must be bounded even though the
+    // workflow limiter above only covers POSTs and the registry below only
+    // matches `/api/*` routes.
+    if (
+      method === "GET" &&
+      (pathname === "/va-forms" ||
+        pathname === "/va-reference" ||
+        pathname === "/presumptive/results" ||
+        pathname === "/secondary/suggestions" ||
+        pathname === "/va-account" ||
+        pathname.startsWith("/va-account/oauth/"))
+    ) {
+      const result = referenceReadLimiter.check(client.key);
+      if (result.limited) {
+        return tooManyRequests(
+          { error: "Too many requests. Please try again later." },
+          result.retryAfterSeconds,
+        );
+      }
     }
-  }
 
-  // Regulatory preflight sync (authenticated, expensive upstream refresh)
-  if (pathname === "/api/regulatory/preflight") {
-    const result = regulatoryPreflightLimiter.check(clientKey);
-    if (result.limited) {
-      return tooManyRequests(
-        { ok: false, error: "Rate limit exceeded. Please try again later." },
-        result.retryAfterSeconds,
-      );
-    }
-  }
-
-  // Admin cache-clear endpoint (authenticated, destructive)
-  if (pathname === "/api/admin/cache-clear") {
-    const result = adminCacheClearLimiter.check(clientKey);
-    if (result.limited) {
-      return tooManyRequests(
-        { ok: false, error: "Rate limit exceeded. Please try again later." },
-        result.retryAfterSeconds,
-      );
-    }
-  }
-
-  // Health endpoint (public, lightweight but should not be hammered)
-  if (pathname === "/api/health") {
-    const result = healthLimiter.check(clientKey);
-    if (result.limited) {
-      return tooManyRequests({ status: "rate_limited" }, result.retryAfterSeconds);
+    // Route-scoped policies. The registry in `api-route-policies.ts` is the only
+    // place that knows which routes are limited and what each one answers on
+    // rejection, so this loop is all the wiring a new policed route needs.
+    //
+    // Matched against the *normalized* pathname, never the raw `url.pathname`:
+    // the compiled patterns are anchored (`^/api/health$`), so a trailing or
+    // doubled slash would slip past the registry while still reaching the route,
+    // which is the bypass `normalizePathname` exists to close.
+    const routePolicy = findApiRouteLimitPolicy(pathname);
+    if (routePolicy) {
+      const result = routePolicy.limiter.check(client.key);
+      if (result.limited) {
+        return tooManyRequests(routePolicy.limitedBody, result.retryAfterSeconds);
+      }
     }
   }
 

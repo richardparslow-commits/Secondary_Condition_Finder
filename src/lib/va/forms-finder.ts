@@ -2,22 +2,20 @@ import "server-only";
 
 import { isTrustedCachedLiveView } from "./cached-view-guard";
 import {
-  acquireVaSharedFetchLease,
-  awaitVaSharedFetchOutcome,
-  releaseVaSharedFetchLease,
-} from "./shared-single-flight";
+  resolveVaResultEnvironment,
+  vaFallbackStatus,
+  vaLiveStatus,
+} from "./provenance";
 import {
-  clearVaReferenceCache,
   hashedCacheKeySegment,
-  readVaReferenceCache,
-  VA_REFERENCE_CACHE_TTL_MS,
   type VaReferenceSourceStatus,
-  writeVaReferenceCache,
 } from "./reference-cache";
 import {
-  readVaSharedReferenceCache,
-  writeVaSharedReferenceCache,
-} from "./reference-shared-cache";
+  clearVaReferenceNamespace,
+  VA_REFERENCE_NAMESPACES,
+  vaReferenceCacheKey,
+  withVaReferenceCache,
+} from "./reference-cache-access";
 import { fetchVaForms, loadVaApiConfig } from "./sandbox";
 
 export interface VaFormSearchItem {
@@ -56,97 +54,77 @@ export async function loadVaFormsFinder(
 ): Promise<VaFormsFinderView> {
   const normalizedQuery = query.trim().slice(0, 120) || "21-526EZ";
   const config = loadVaApiConfig();
-  const environment = config.environment ?? "sandbox";
-  // The user-supplied query is hashed, never persisted as raw key material.
-  const cacheKey = `forms:${environment}:q:${hashedCacheKeySegment(normalizedQuery.toLowerCase())}`;
-  // Activation first: a disabled integration must never serve a previously
-  // cached live view (see form-reference.ts for the full rationale).
-  if (config.enabled) {
-    const cached = readVaReferenceCache<VaFormsFinderView>(cacheKey);
-    if (cached) return { ...cached, cacheStatus: "hit" };
-    const sharedCached = await readVaSharedReferenceCache<VaFormsFinderView>(cacheKey);
-    // Read-side guard: a shared value may only be served if it still carries
-    // this deployment's provenance and only credential-free HTTPS links.
-    if (sharedCached && isTrustedCachedLiveView(sharedCached, environment)) {
-      writeVaReferenceCache(cacheKey, sharedCached);
-      return { ...sharedCached, cacheStatus: "hit" };
-    }
-  }
+  const configuredEnvironment = config.environment ?? "sandbox";
+  // The user-supplied query is hashed, never persisted as raw key material
+  // (see `hashedCacheKeySegment`); the `q` segment marks the user-supplied
+  // part so it can never read as another module's namespace payload.
+  const cacheKey = vaReferenceCacheKey(
+    VA_REFERENCE_NAMESPACES.formsFinder,
+    configuredEnvironment,
+    "q",
+    hashedCacheKeySegment(normalizedQuery.toLowerCase()),
+  );
 
-  // Single-flight: one instance fetches a cold/expired key; others wait a
-  // bounded window for it to publish instead of duplicating the request. An
-  // unavailable coordinator just means the normal fetch path (the distributed
-  // consumer budget still gates every attempt).
-  const lease = config.enabled ? await acquireVaSharedFetchLease(cacheKey) : null;
-  if (lease?.status === "contended") {
-    const published = await awaitVaSharedFetchOutcome<VaFormsFinderView>(cacheKey);
-    if (published && isTrustedCachedLiveView(published, environment)) {
-      writeVaReferenceCache(cacheKey, published);
-      return { ...published, cacheStatus: "hit" };
-    }
-  }
+  return withVaReferenceCache<VaFormsFinderView>(
+    cacheKey,
+    async () => {
+      const result = await fetchVaForms(normalizedQuery, { config });
 
-  try {
-    const result = await fetchVaForms(normalizedQuery, { config });
+      if (!result.success || !result.data) {
+        return {
+          cacheable: false,
+          view: {
+            query: normalizedQuery,
+            items: localResults(normalizedQuery),
+            ...vaFallbackStatus("forms-finder"),
+          },
+        };
+      }
 
-    if (!result.success || !result.data) {
+      const environment = resolveVaResultEnvironment(
+        result,
+        configuredEnvironment,
+      );
       return {
-        query: normalizedQuery,
-        items: localResults(normalizedQuery),
-        source: "local-fallback",
-        sourceLabel: "Local reference fallback",
-        notice:
-          "VA Forms search is unavailable or disabled. Only matching local references can be shown; confirm current forms on VA.gov.",
-        live: false,
-        environment: null,
-        retrievedAt: null,
-        cacheStatus: "miss",
+        cacheable: true,
+        view: {
+          query: normalizedQuery,
+          items: result.data.data
+            .filter((item) => !item.attributes.deleted_at)
+            .slice(0, 25)
+            .map((item) => ({
+              formName: item.attributes.form_name,
+              title: item.attributes.title,
+              url: item.attributes.url,
+              lastRevisionOn: item.attributes.last_revision_on ?? null,
+              pages: item.attributes.pages ?? null,
+              validPdf: item.attributes.valid_pdf ?? null,
+            })),
+          ...vaLiveStatus("forms-finder", environment, result.source),
+        },
       };
-    }
-
-    const retrievedAt = new Date().toISOString();
-    const view: VaFormsFinderView = {
-      query: normalizedQuery,
-      items: result.data.data
-        .filter((item) => !item.attributes.deleted_at)
-        .slice(0, 25)
-        .map((item) => ({
-          formName: item.attributes.form_name,
-          title: item.attributes.title,
-          url: item.attributes.url,
-          lastRevisionOn: item.attributes.last_revision_on ?? null,
-          pages: item.attributes.pages ?? null,
-          validPdf: item.attributes.valid_pdf ?? null,
-        })),
-      source: result.source,
-      sourceLabel:
-        environment === "production" ? "VA Forms production" : "VA Forms sandbox",
-      notice:
-        environment === "production"
-          ? "Results came from the VA Forms production API. Confirm the form on VA.gov before filing because forms and revisions can change."
-          : "Results came from the VA Forms sandbox. Sandbox data is for testing and may not be current; confirm forms on VA.gov before filing.",
-      live: true,
-      environment,
-      retrievedAt,
-      cacheStatus: "miss",
-    };
-    if (config.enabled) {
-      writeVaReferenceCache(cacheKey, view);
-      // Awaited (not fire-and-forget): a floating promise can be torn down with
-      // the request before the write lands, silently leaving the shared cache
-      // stale. The 750ms deadline bounds the added latency.
-      await writeVaSharedReferenceCache(cacheKey, view, VA_REFERENCE_CACHE_TTL_MS);
-    }
-    return view;
-  } finally {
-    // Release only after the write so contenders can observe the published
-    // value; a failed fetch also releases so the key is not blocked.
-    if (lease?.status === "acquired") {
-      await releaseVaSharedFetchLease(cacheKey, lease.token);
-    }
-  }
+    },
+    {
+      // Activation first: a disabled integration must never serve a previously
+      // cached live view, so the tiers are bypassed entirely when it is off.
+      enabled: config.enabled,
+      singleFlight: config.enabled,
+      decorateHit: (view) => ({ ...view, cacheStatus: "hit" }),
+      // Read-side guard: a shared value may only be served if it still carries
+      // this deployment's provenance and only credential-free HTTPS links.
+      acceptSharedCached: (view) =>
+        isTrustedCachedLiveView(view, configuredEnvironment),
+    },
+  );
 }
 
-export function clearVaFormsFinderCache(): void {
-  clearVaReferenceCache("forms:");
+/**
+ * Clears only this module's `forms-finder:` entries.
+ *
+ * This previously cleared the `"forms:"` prefix, which also matched the
+ * `form-reference` module's `forms:reference:` keys — one module silently
+ * invalidating another's cache. Namespaces are now disjoint by construction.
+ */
+export function clearVaFormsFinderCache(): number {
+  return clearVaReferenceNamespace(VA_REFERENCE_NAMESPACES.formsFinder);
 }

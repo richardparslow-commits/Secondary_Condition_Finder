@@ -2,6 +2,7 @@ import "server-only";
 
 import { createHash } from "node:crypto";
 
+import { isDistributedRuntime } from "@/lib/runtime-deployment";
 import { openSessionPayload, sealSessionPayload } from "@/lib/workflow-session-crypto";
 
 import { type AccountEnv, type VaAccountConfig } from "./config";
@@ -142,9 +143,11 @@ export function loadAccountStore(config: VaAccountConfig, env: AccountEnv = proc
       return new SharedAccountStore(parsed.toString(), token, config.encryptionSecret);
     } catch { return null; }
   }
-  // No implicit in-memory fallback on a hosted or production-mode runtime.
-  if (env.VA_ACCOUNT_LOCAL_ONLY !== "true" || env.NODE_ENV === "production" ||
-    ["VERCEL", "AWS_LAMBDA_FUNCTION_NAME", "FUNCTIONS_WORKER_RUNTIME", "K_SERVICE"].some((key) => !!env[key]) ||
+  // No implicit in-memory fallback on a hosted or production-mode runtime. The
+  // classification comes from the shared fact (`runtime-deployment.ts`) rather
+  // than a private marker list, so this store cannot disagree with the VA
+  // cache and rate limiter about what "distributed" means.
+  if (env.VA_ACCOUNT_LOCAL_ONLY !== "true" || isDistributedRuntime(env) ||
     !["localhost", "127.0.0.1", "[::1]"].includes(new URL(config.appOrigin).hostname)) return null;
   const key = createHash("sha256").update(config.encryptionSecret).digest("hex");
   let store = localStores.get(key);

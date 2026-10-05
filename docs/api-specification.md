@@ -14,7 +14,12 @@ The `kbGraph` component reports validated adjacency-graph migration state: `node
 
 **Response** (`200 OK` when healthy, `503 Service Unavailable` when degraded):
 
-```json
+<!-- jsonc: the example is executable JSON once the trailing comments are
+     stripped. Those comments record the TypeScript union each field may take
+     (see src/lib/runtime-capabilities.ts), so the block stays copy-pasteable
+     while still documenting every legal value. -->
+
+```jsonc
 {
   "status": "healthy",
   "components": {
@@ -54,9 +59,30 @@ The `kbGraph` component reports validated adjacency-graph migration state: `node
       }
     },
     "vaReferenceCache": {
+      "scope": "process-local", // "process-local" | "disabled"
+      "detail": "process-local LRU on this instance only; entries reset on cold start and are not shared with other instances",
       "hits": 42,
       "misses": 8,
       "hitRate": 84
+    },
+    "rateLimit": {
+      "status": "ok",
+      "latencyMs": 0,
+      "scope": "per-instance", // "per-instance" | "single-process"
+      "detail": "per-IP limits apply per instance, so the aggregate is roughly the configured limit x instance count; the edge WAF remains the capacity layer"
+    },
+    "runtime": {
+      "status": "ok",
+      "latencyMs": 0,
+      "distributed": false,
+      "reduced": [],
+      "capabilities": {
+        "vaLiveIntegration": "enabled", // "enabled" | "disabled"
+        "vaReferenceCache": "process-local", // "process-local" | "disabled"
+        "rateLimit": "single-process", // "single-process" | "per-instance"
+        "circuitBreaker": "single-process" // "single-process" | "per-instance"
+      },
+      "detail": "all process-local capabilities run at full strength in this runtime"
     }
   },
   "latencyMs": 18,
@@ -66,6 +92,14 @@ The `kbGraph` component reports validated adjacency-graph migration state: `node
 
 **Healthy** (`200`): `catalog.status === "ok"` AND `sessionCrypto.status === "ok"` AND `kbGraph.status === "ok"`.
 **Degraded** (`503`): Any of `catalog`, `sessionCrypto`, or `kbGraph` is `"error"`. Invalid adjacency-graph data deliberately degrades health: it is a deployed-integrity failure, not an expected degraded state.
+
+`components.runtime` aggregates every control that depends on process-local state, so
+"what does this deployment give up?" has one answer: `reduced` lists capability ids below
+full strength, `capabilities` maps every id to its regime (including live VA access and
+the circuit breaker, which have no component of their own), and `detail` states it in one
+sentence. A distributed runtime reports all four as reduced; that is expected, not
+degraded. The `scope`/`detail` shown inside `components.vaReferenceCache` and
+`components.rateLimit` are generated from the same report, so they cannot disagree with it.
 
 **Runtime**: `force-dynamic`, `nodejs`.
 
@@ -290,7 +324,7 @@ Clears the process-local VA reference cache and, when a shared KV is configured,
 **Query parameters**:
 | Param | Type | Required | Description |
 |---|---|---|---|
-| `prefix` | `string` | No | Only clear process-local entries whose key starts with this prefix (e.g., `forms:`). If omitted, clears all entries. The shared-tier epoch bump is always store-wide. |
+| `prefix` | `string` | No | Only clear process-local entries whose key starts with this prefix (e.g., `forms-finder:`). If omitted, clears all entries. The shared-tier epoch bump is always store-wide. |
 
 **Response** (`200 OK`):
 ```json
@@ -298,6 +332,8 @@ Clears the process-local VA reference cache and, when a shared KV is configured,
   "ok": true,
   "cleared": 5,
   "prefix": null,
+  "scope": "process-local",
+  "detail": "process-local LRU on this instance only; entries reset on cold start and are not shared with other instances",
   "sharedInvalidation": "applied",
   "sharedEpoch": "1",
   "message": "Cleared all 5 cache entries. Advanced shared-cache invalidation epoch to 1."
@@ -311,12 +347,33 @@ Clears the process-local VA reference cache and, when a shared KV is configured,
 {
   "ok": true,
   "cleared": 2,
-  "prefix": "forms:",
+  "prefix": "forms-finder:",
+  "scope": "process-local",
+  "detail": "process-local LRU on this instance only; entries reset on cold start and are not shared with other instances",
   "sharedInvalidation": "not-configured",
   "sharedEpoch": null,
-  "message": "Cleared 2 cache entries with prefix \"forms:\"."
+  "message": "Cleared 2 cache entries with prefix \"forms-finder:\"."
 }
 ```
+
+**Response** (`200 OK`, cache disabled in this runtime):
+```json
+{
+  "ok": true,
+  "cleared": 0,
+  "prefix": null,
+  "scope": "disabled",
+  "detail": "process-local cache is disabled in production and distributed runtimes until a shared cache coordinator is configured; reads always miss, writes are discarded, so the hit/miss counters cannot move and cache-clear operations clear nothing",
+  "message": "VA reference cache is disabled in this runtime, so nothing was cleared. ..."
+}
+```
+
+`scope: "disabled"` means the process-local cache is structurally unable to hold
+anything here, so the call cleared nothing by design rather than because the cache
+happened to be empty. Callers that expect a real flush should key off `scope`, since
+`{ "ok": true, "cleared": 0 }` is also exactly what a working but cold cache returns.
+The status stays `200` because the request itself was authorized and handled; the
+disclosure is in the body rather than in the status code.
 
 **Response** (`401 Unauthorized`):
 ```json
@@ -340,12 +397,23 @@ Application-level rate limiting is enforced in `src/proxy.ts` (defense-in-depth 
 
 | Route | Window | Max | Key |
 |---|---|---|---|
-| Server Action POSTs | 60s | 30 | IP (`X-Forwarded-For`) |
+| Server Action POSTs (and every other POST) | 60s | 30 | IP (`X-Forwarded-For`, then `X-Real-IP`) |
 | `/api/regulatory/preflight` | 60s | 5 | IP |
 | `/api/admin/cache-clear` | 60s | 5 | IP |
 | `/api/health` | 60s | 30 | IP |
 
 Exceeded limits return `429 Too Many Requests` with a `Retry-After` header.
+The `429` body is route-specific: `{ "ok": false, "error": "Rate limit exceeded. Please try again later." }`
+for `/api/regulatory/preflight` and `/api/admin/cache-clear`, `{ "status": "rate_limited" }`
+for `/api/health`, and `{ "error": "Too many requests. Please try again later." }` for the
+method-scoped `POST` rule.
+
+A request carrying neither `X-Forwarded-For` nor `X-Real-IP` is **not rate limited**:
+with no client identity there is no per-client bucket to charge, and a single shared
+fallback bucket would turn the per-IP allowance into a global cap. Capacity in that
+case rests entirely with the edge WAF. Limits are also per instance, so the effective
+ceiling is roughly the configured value × instance count; `/api/health` reports this
+as `components.rateLimit.scope`.
 
 ---
 

@@ -39,6 +39,7 @@
     "probe:va-gov-walkthrough": "node scripts/probe-va-gov-links.js",
     "audit:me-compliance": "node scripts/audit-me-compliance.js",
     "kb:validate": "node scripts/validate-knowledge-base.js",
+    "coverage:ledger": "node scripts/report-mapping-coverage.js",
     "authoring:tracker": "node scripts/generate-authoring-tracker.js",
     "authoring:backlog": "node scripts/report-authoring-backlog.js",
     "audit:high": "npm audit --audit-level=high --omit=dev",

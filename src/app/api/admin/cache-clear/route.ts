@@ -2,7 +2,10 @@ import { NextResponse } from "next/server";
 
 import { auditLog } from "@/lib/observability/audit";
 import { authorizeBearerRequest } from "@/lib/security/bearer-auth";
-import { clearVaReferenceCache } from "@/lib/va/reference-cache";
+import {
+  clearVaReferenceCache,
+  vaReferenceCacheScope,
+} from "@/lib/va/reference-cache";
 import {
   bumpVaSharedCacheEpoch,
   isVaSharedCacheConfigured,
@@ -39,8 +42,15 @@ const authorized = (request: Request): boolean =>
  * Query params:
  * - prefix (optional): only clear process-local keys starting with this prefix
  *
- * Response: { ok, cleared, prefix?, sharedInvalidation, sharedEpoch }
+ * Response: { ok, cleared, prefix?, scope, detail, sharedInvalidation, sharedEpoch, message }
  * HTTP 200 on success, 401 on unauthorized.
+ *
+ * `scope: "disabled"` means the process-local cache is structurally unable to
+ * hold anything in this runtime, so the call cleared nothing by design rather
+ * than because the cache happened to be empty. That distinction is reported
+ * explicitly: a bare `{ ok: true, cleared: 0 }` is exactly what a working but
+ * cold cache returns, so an operator reading only those fields would conclude
+ * the flush succeeded.
  */
 export async function POST(request: Request) {
   if (!authorized(request)) {
@@ -55,6 +65,7 @@ export async function POST(request: Request) {
   const prefix = url.searchParams.get("prefix") || undefined;
 
   const { cleared } = clearVaReferenceCache(prefix);
+  const cacheScope = vaReferenceCacheScope();
 
   const sharedConfigured = isVaSharedCacheConfigured();
   const sharedEpoch = sharedConfigured ? await bumpVaSharedCacheEpoch() : null;
@@ -71,22 +82,32 @@ export async function POST(request: Request) {
     prefix: prefix ?? "(all)",
     // 0 records "no shared epoch was advanced" (bump returns ≥1 on success).
     sharedEpoch: sharedEpoch !== null ? Number(sharedEpoch) : 0,
+    // Recorded so the audit trail distinguishes "nothing to clear" from "cache
+    // cannot hold anything here" — the counters alone cannot tell them apart.
+    cacheScope: cacheScope.scope,
   });
+
+  const clearedMessage = prefix
+    ? `Cleared ${cleared} cache entries with prefix "${prefix}".`
+    : `Cleared all ${cleared} cache entries.`;
+  const sharedSuffix =
+    sharedInvalidation === "applied"
+      ? ` Advanced shared-cache invalidation epoch to ${sharedEpoch}.`
+      : sharedInvalidation === "failed"
+        ? " Shared-cache invalidation could not be confirmed; the shared tier may still serve stale entries until their TTL expires."
+        : "";
 
   return NextResponse.json({
     ok: true,
     cleared,
     prefix: prefix ?? null,
+    scope: cacheScope.scope,
+    detail: cacheScope.detail,
     sharedInvalidation,
     sharedEpoch,
     message:
-      (prefix
-        ? `Cleared ${cleared} cache entries with prefix "${prefix}".`
-        : `Cleared all ${cleared} cache entries.`) +
-      (sharedInvalidation === "applied"
-        ? ` Advanced shared-cache invalidation epoch to ${sharedEpoch}.`
-        : sharedInvalidation === "failed"
-          ? " Shared-cache invalidation could not be confirmed; the shared tier may still serve stale entries until their TTL expires."
-          : ""),
+      cacheScope.scope === "disabled"
+        ? `VA reference cache is disabled in this runtime, so nothing was cleared. ${cacheScope.detail}`
+        : `${clearedMessage}${sharedSuffix}`,
   });
 }

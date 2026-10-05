@@ -1,3 +1,8 @@
+import {
+  DEFAULT_MAX_RESPONSE_BYTES,
+  readBoundedResponseText,
+} from "@/lib/bounded-response";
+
 import type { RegulatorySourceValidator } from "./types";
 
 export type FetchLike = typeof fetch;
@@ -31,48 +36,6 @@ const responseValidator = (response: Response): RegulatorySourceValidator => ({
   lastModified: response.headers.get("last-modified") ?? undefined,
 });
 
-const boundedResponseText = async (response: Response, maxBytes: number, url: string): Promise<string> => {
-  const declaredLength = Number(response.headers.get("content-length") ?? "0");
-  if (Number.isFinite(declaredLength) && declaredLength > maxBytes) {
-    throw new Error(`Response from ${url} declared ${declaredLength} bytes, exceeding the ${maxBytes}-byte safety limit.`);
-  }
-
-  if (!response.body) {
-    const text = await response.text();
-    if (Buffer.byteLength(text, "utf8") > maxBytes) {
-      throw new Error(`Response from ${url} exceeded the ${maxBytes}-byte safety limit.`);
-    }
-    return text;
-  }
-
-  const reader = response.body.getReader();
-  const chunks: Uint8Array[] = [];
-  let total = 0;
-  try {
-    while (true) {
-      const { done, value } = await reader.read();
-      if (done) break;
-      if (!value) continue;
-      total += value.byteLength;
-      if (total > maxBytes) {
-        await reader.cancel("response-size-limit");
-        throw new Error(`Response from ${url} exceeded the ${maxBytes}-byte safety limit.`);
-      }
-      chunks.push(value);
-    }
-  } finally {
-    reader.releaseLock();
-  }
-
-  const combined = new Uint8Array(total);
-  let offset = 0;
-  for (const chunk of chunks) {
-    combined.set(chunk, offset);
-    offset += chunk.byteLength;
-  }
-  return new TextDecoder("utf-8", { fatal: false }).decode(combined);
-};
-
 export async function fetchTextWithTimeout(
   fetchImpl: FetchLike,
   url: string,
@@ -99,8 +62,12 @@ export async function fetchTextWithTimeout(
       return { status: "not-modified", responseStatus: 304, ...responseValidator(response) };
     }
     if (!response.ok) throw new Error(`HTTP ${response.status} from ${url}`);
-    const maxBytes = options.maxBytes ?? 25_000_000;
-    const text = await boundedResponseText(response, maxBytes, url);
+    // Shared size bound — see `src/lib/bounded-response.ts`. Throws
+    // `ResponseTooLargeError` rather than buffering an oversized body.
+    const text = await readBoundedResponseText(response, {
+      url,
+      maxBytes: options.maxBytes ?? DEFAULT_MAX_RESPONSE_BYTES,
+    });
     return { status: "success", text, responseStatus: response.status, ...responseValidator(response) };
   } finally {
     clearTimeout(timeout);

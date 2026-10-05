@@ -293,4 +293,41 @@ describe("public-reference VA API adapters", () => {
     expect(insecureConfig.success).toBe(false);
     expect(insecureConfig.error).toContain("valid HTTPS URL");
   });
+
+  // Matching bound to the regulatory HTTP stack: an upstream that returns an
+  // unbounded body must be refused rather than buffered. Previously this path
+  // called a bare `response.json()`, so the VA adapter was the one outbound
+  // family with no body-size limit at all.
+  it("refuses an oversized response body instead of buffering it, and does not retry", async () => {
+    const observations: Array<{ outcome?: string; path?: string }> = [];
+    const fetchSpy = vi.fn().mockResolvedValue(
+      new Response(JSON.stringify({ data: [] }), {
+        status: 200,
+        headers: {
+          "Content-Type": "application/json",
+          "content-length": String(VA_API_MAX_RESPONSE_BYTES + 1),
+        },
+      }),
+    );
+    vi.stubGlobal("fetch", fetchSpy);
+
+    const result = await fetchVaForms("21-526EZ", {
+      config,
+      observe: (observation) => observations.push(observation),
+    });
+
+    expect(result.success).toBe(false);
+    expect(result.source).toBe("local-fallback");
+    expect(result.error).toContain("safety limit");
+    expect(observations.at(-1)?.outcome).toBe("response-too-large");
+
+    // A hostile upstream must not be retried with exponential backoff.
+    expect(fetchSpy).toHaveBeenCalledTimes(1);
+
+    // Neither the error nor the observation may carry the query string, which
+    // can hold user-supplied search values.
+    expect(JSON.stringify(result)).not.toContain("21-526EZ");
+    expect(JSON.stringify(observations)).not.toContain("21-526EZ");
+    expect(JSON.stringify(observations)).not.toContain("forms-sandbox-test-key");
+  });
 });

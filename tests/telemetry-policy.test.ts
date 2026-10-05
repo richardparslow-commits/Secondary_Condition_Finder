@@ -153,11 +153,19 @@ describe("VA reference cache keys — no raw query/ZIP key material", () => {
     const view = await loadVaFormsFinder("hemochromatosis 90210");
     expect(view.live).toBe(true);
 
-    const setKeys = commands
-      .filter((command) => command[0] === "SET")
-      .map((command) => String(command[1] ?? ""));
-    expect(setKeys.some((key) => key.startsWith("va:ref:forms:"))).toBe(true);
-    for (const key of setKeys) {
+    // The shared write is best-effort (`void`ed by the cache access layer) and
+    // reads the invalidation epoch before writing, so wait for the SET to land
+    // rather than assuming it completed with the loader.
+    const setKeys = () =>
+      commands
+        .filter((command) => command[0] === "SET")
+        .map((command) => String(command[1] ?? ""));
+    await vi.waitFor(() =>
+      expect(
+        setKeys().some((key) => key.startsWith("va:ref:forms-finder:")),
+      ).toBe(true),
+    );
+    for (const key of setKeys()) {
       expect(key).not.toContain("hemochromatosis");
       expect(key).not.toContain("90210");
     }
@@ -181,13 +189,16 @@ describe("VA reference cache keys — no raw query/ZIP key material", () => {
 
     await loadAccreditedRepresentatives({ zip: "90210" });
 
-    const setKeys = commands
-      .filter((command) => command[0] === "SET")
-      .map((command) => String(command[1] ?? ""));
-    expect(setKeys.some((key) => key.startsWith("va:ref:accredited-rep:"))).toBe(
-      true,
+    const setKeys = () =>
+      commands
+        .filter((command) => command[0] === "SET")
+        .map((command) => String(command[1] ?? ""));
+    await vi.waitFor(() =>
+      expect(
+        setKeys().some((key) => key.startsWith("va:ref:accredited-rep:")),
+      ).toBe(true),
     );
-    for (const key of setKeys) {
+    for (const key of setKeys()) {
       expect(key).not.toContain("90210");
     }
   });

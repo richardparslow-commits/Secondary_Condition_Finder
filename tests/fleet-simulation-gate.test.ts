@@ -78,7 +78,12 @@ function writeTempState(state: unknown): string {
 function runFleetGate(env: Record<string, string> = {}, args: string[] = []) {
   const result = spawnSync(process.execPath, [SCRIPT, ...args], {
     encoding: "utf8",
-    env: { ...process.env, ...env },
+    // Pin the ratified `local` window. These assertions read the committed
+    // local budget, but the child process inherits the ambient environment —
+    // on CI, `CI=true` would resolve an unratified "ci" window and the gate
+    // would refuse to run before the suite could start. Explicit per-test
+    // environment names below still override this default.
+    env: { ...process.env, FLEET_GATE_ENV: "local", ...env },
   });
   return {
     status: result.status ?? -1,

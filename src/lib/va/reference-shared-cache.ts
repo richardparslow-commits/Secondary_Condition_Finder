@@ -29,6 +29,11 @@ const SHARED_CACHE_MAX_KEY_LENGTH = 256;
  */
 export const VA_SHARED_CACHE_KEY_NAMESPACES: readonly string[] = [
   "forms:",
+  // `forms-finder:` and `forms-reference:` are the disjoint namespaced roots
+  // (`VA_REFERENCE_NAMESPACES`); `forms:` remains for legacy in-flight values
+  // and direct module tests, so both key generations stay allowlisted.
+  "forms-finder:",
+  "forms-reference:",
   "accredited-rep:",
   "disabilities:",
   "service-branches:",

@@ -2,6 +2,8 @@ import "server-only";
 
 import { createHash } from "node:crypto";
 
+import type { RuntimeEnvironment } from "../runtime-deployment";
+
 import type { VaApiEnvironment, VaApiSource } from "./sandbox";
 import { vaProcessLocalStateAllowed } from "./runtime-state";
 
@@ -41,6 +43,50 @@ export function consumeCacheCounters(): { hits: number; misses: number } {
 /** Return the current cache counters without resetting. */
 export function peekCacheCounters(): { hits: number; misses: number } {
   return { hits: cacheHits, misses: cacheMisses };
+}
+
+/**
+ * What this cache is actually able to do in the current runtime.
+ *
+ * Same shape as `rateLimitScope()` in `rate-limiter.ts`, so `/api/health` can
+ * report both regimes the same way.
+ */
+export interface VaReferenceCacheScope {
+  /** `process-local` when this process owns the cache; `disabled` when it refuses to run. */
+  scope: "process-local" | "disabled";
+  /** Operator-facing explanation. */
+  detail: string;
+}
+
+/**
+ * Report whether the cache is live, and why not when it is not.
+ *
+ * The verdict is taken from `vaProcessLocalStateAllowed()`, the *same* predicate
+ * that gates `readVaReferenceCache` and `writeVaReferenceCache`, rather than
+ * re-derived here. That matters: a status endpoint which computes its own answer
+ * can disagree with the code it reports on, which is exactly how the cache came
+ * to look healthy while being structurally unable to store anything.
+ *
+ * Callers must not read the hit/miss counters without this: in a distributed
+ * runtime both counters stay at zero forever, and a zero-transition `hitRate` is
+ * indistinguishable from a cache that simply has not been used yet.
+ */
+export function vaReferenceCacheScope(
+  env: RuntimeEnvironment = process.env,
+): VaReferenceCacheScope {
+  if (!vaProcessLocalStateAllowed(env)) {
+    return {
+      scope: "disabled",
+      detail:
+        "process-local cache is disabled in production and distributed runtimes until a shared cache coordinator is configured; reads always miss, writes are discarded, so the hit/miss counters cannot move and cache-clear operations clear nothing",
+    };
+  }
+
+  return {
+    scope: "process-local",
+    detail:
+      "process-local LRU on this instance only; entries reset on cold start and are not shared with other instances",
+  };
 }
 
 export interface VaReferenceSourceStatus {
