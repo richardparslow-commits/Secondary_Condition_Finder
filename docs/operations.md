@@ -90,6 +90,14 @@ Response:
 
 **Important**: This only clears the **process-local** cache on the specific instance that handles the request. In a serverless environment with multiple concurrent instances, other instances retain their cache until their own TTL expires. For a full flush, you would need to call the endpoint multiple times (one per instance) or rely on the natural TTL expiry.
 
+**In production this endpoint has nothing to clear.** Because process-local state is
+refused in production and distributed runtimes, the cache never stores anything there,
+so the response reports `"scope": "disabled"` alongside `"cleared": 0` — that means
+"cleared nothing because the cache cannot hold anything here", which is different from
+the `"cleared": 0` a working-but-cold cache returns. It still answers `200` and still
+writes an audit entry, now tagged `cacheScope`, so a flush job can tell the two apart
+without guessing from the outcome.
+
 #### Via Shared Cache (if configured)
 
 When the shared KV cache is configured, clearing the process-local cache on one instance also triggers a shared-cache rehydration on the next request. To fully clear the shared cache, you would need to flush the KV store directly (e.g., via the Upstash console or Vercel KV dashboard).
@@ -126,7 +134,34 @@ Returns component-level status for:
 | `sessionCrypto` | Workflow session seal/open round-trip succeeds |
 | `vaConfig` | VA API configuration is valid (enabled/disabled, environment) |
 | `circuitBreaker` | VA API circuit breaker state (closed/open/half-open per source) |
-| `vaReferenceCache` | Process-local cache hit/miss counters |
+| `vaReferenceCache` | Cache `scope` (`process-local` or `disabled`) plus hit/miss counters |
+| `rateLimit` | Whether application-level rate limiting is per-instance or deployment-wide |
+| `runtime` | Aggregate: which process-local capabilities are below full strength, and every capability's regime |
+
+### What this deployment gives up
+
+Several controls depend on process-local state, and each behaves differently once more
+than one instance serves traffic. Two **refuse** to run (live VA access, the VA reference
+cache) and two keep running **weaker** than written (rate limiting, the VA circuit
+breaker — the latter was never surfaced anywhere before).
+
+`components.runtime` is the single answer to that question:
+
+| Field | Meaning |
+|-------|---------|
+| `distributed` | Whether this process is one of several |
+| `reduced` | Ids below full strength here: `vaLiveIntegration`, `vaReferenceCache`, `rateLimit`, `circuitBreaker` |
+| `capabilities` | Every id → its regime, including controls with no component of their own |
+| `detail` | One sentence naming each reduced capability and its consequence |
+
+In production **all four are reduced**, which is expected rather than a fault — so an
+empty `runtime.reduced` on a production instance would itself be the surprising reading.
+The per-control components (`vaReferenceCache`, `rateLimit`) carry the same scopes plus
+their own data, and both are generated from the same capabilities report, so they cannot
+disagree with it. `vaReferenceCache.scope: "disabled"` is why `hits`/`misses` stay frozen
+at zero and `hitRate` is `null` there — the counters should never be read without the
+scope. Adding a control that depends on process-local state requires registering it;
+the suite fails if a module consults the runtime classification without a scope.
 
 **HTTP 200** = healthy (catalog + session crypto OK)
 **HTTP 503** = degraded (one or more critical components failing)
@@ -150,7 +185,32 @@ Returns component-level status for:
         "accredited-representatives": { "state": "closed", "failures": 0, "lastFailureAt": null }
       }
     },
-    "vaReferenceCache": { "hits": 42, "misses": 8, "hitRate": 84 }
+    "vaReferenceCache": {
+      "scope": "process-local",
+      "detail": "process-local LRU on this instance only; entries reset on cold start and are not shared with other instances",
+      "hits": 42,
+      "misses": 8,
+      "hitRate": 84
+    },
+    "rateLimit": {
+      "status": "ok",
+      "latencyMs": 0,
+      "scope": "per-instance",
+      "detail": "per-IP limits apply per instance, so the aggregate is roughly the configured limit x instance count; the edge WAF remains the capacity layer"
+    },
+    "runtime": {
+      "status": "ok",
+      "latencyMs": 0,
+      "distributed": true,
+      "reduced": ["vaLiveIntegration", "vaReferenceCache", "rateLimit", "circuitBreaker"],
+      "capabilities": {
+        "vaLiveIntegration": "disabled",
+        "vaReferenceCache": "disabled",
+        "rateLimit": "per-instance",
+        "circuitBreaker": "per-instance"
+      },
+      "detail": "4 of 4 process-local capabilities are below full strength here: Live VA API access (refuses, disabled); VA reference cache (refuses, disabled); Application rate limiting (degrades, per-instance); VA API circuit breaker (degrades, per-instance)"
+    }
   },
   "latencyMs": 5,
   "timestamp": "2026-09-14T00:00:00.000Z"
@@ -163,12 +223,27 @@ Application-level rate limiting is enforced in the proxy middleware (`src/proxy.
 
 | Route | Window | Max Requests | Key |
 |-------|--------|-------------|-----|
-| Server Action POSTs | 60s | 30 | IP (X-Forwarded-For) |
+| Server Action POSTs (and every other POST) | 60s | 30 | IP (`X-Forwarded-For`, then `X-Real-IP`) |
 | `/api/regulatory/preflight` | 60s | 5 | IP |
 | `/api/admin/cache-clear` | 60s | 5 | IP |
 | `/api/health` | 60s | 30 | IP |
 
-Rate-limit state is process-local and resets on cold start (intentional for serverless).
+**Client identity.** The key is the first hop of `X-Forwarded-For`, falling back to
+`X-Real-IP`. A request carrying neither is **not charged to any bucket** and passes
+through unthrottled. That is deliberate: a single fallback bucket shared by every
+such request is not a per-client limit but a *global* cap, so one client's traffic
+would reject everyone else's — and no response, log line, or metric would say so.
+Capacity remains the edge WAF's job, which is why an absent limiter is preferred
+over a mislabelled one. If a deployment's proxy does set these headers (Vercel and
+Azure Front Door both do), the limits above apply per client as written.
+
+**Scope.** Buckets are process-local and reset on cold start, so the effective
+limit is roughly the configured limit × instance count. That is an intentional
+trade: it makes the guard weaker than written, never wrong. This differs from the VA
+reference cache, which refuses to use process-local state in production at all —
+because a per-instance cache can serve a wrong answer, whereas a per-instance
+limiter can only permit more traffic than intended. `/api/health` reports the
+current regime as `components.rateLimit.scope` (`per-instance` or `single-process`).
 
 ## Circuit Breaker
 

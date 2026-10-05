@@ -22,8 +22,25 @@ import proxy, { proxy as namedProxy } from "../src/proxy";
 
 const PROXY_URL = "https://example.test";
 
+/**
+ * A fixed test-client IP, sent on every request this file makes.
+ *
+ * The limiter charges a bucket only for an attributed client: without a
+ * forwarding header `resolveClientKey` returns `key: null` and the request is
+ * passed through rather than collapsed into a shared "unknown" bucket. These
+ * tests are about path normalization and the shape of 429 responses, so they
+ * attribute one constant client to keep every route-spelling variant charging
+ * the same budget. Identity resolution itself — including the unattributed
+ * pass-through — is covered by `rate-limiter.test.ts` and
+ * `api-route-rate-limit-coverage.test.ts`.
+ */
+const TEST_CLIENT_IP = "203.0.113.7";
+
 function request(path: string, method = "GET"): NextRequest {
-  return new NextRequest(`${PROXY_URL}${path}`, { method });
+  return new NextRequest(`${PROXY_URL}${path}`, {
+    method,
+    headers: { "x-forwarded-for": TEST_CLIENT_IP },
+  });
 }
 
 /** Limiter state is process-global; isolate every test's budget. */

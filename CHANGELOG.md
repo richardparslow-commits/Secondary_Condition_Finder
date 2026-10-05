@@ -3,6 +3,205 @@
 All notable changes to Secondary Condition Finder. Format loosely follows
 [Keep a Changelog](https://keepachangelog.com/); merges are grouped by date, newest first.
 
+## 2026-09-18
+
+- **A forked copy can no longer hide in the checkout** (`test`): a folder-sync client watching this
+  working copy materializes a second copy of any file it sees mid-write, named `<name> 2.<ext>`, and
+  four such copies appeared in `src/` and `tests/` within a single session. They are real files —
+  TypeScript typechecks them, ESLint lints them, and any suite that derives its expectations from the
+  tree treats a copy as a new module. Deleting them was not enough, because the inspection that found
+  them could not see the worst instance: `.git/index` had been forked five times over three weeks
+  (Aug 21, Sep 3, Sep 9, Sep 17, Sep 18), and `git fsck` and `git status` both report those clean,
+  because git never reads them. The cause was placement — the checkout lived inside iCloud Drive's
+  `~/Desktop` domain — and since a same-volume rename out of that domain fails (`Operation timed
+  out`, then `ESTALE`) while unlink succeeds, it was retired by deleting the source, and only after
+  the destination matched all 1599 of its tracked files byte-for-byte.
+  `tests/checkout-fork-hygiene.test.ts` now makes a return of the debris a failure rather than
+  something the other suites route around: it walks the whole checkout including `.git`, names every
+  forked path, and pins the naming pattern and the walk against vacuity. The capability guard still
+  skips byte-identical duplicates, so that its own failures keep answering the capability question —
+  and its comment now says so, pointing at the suite that reports the copy instead.
+  Mutation-verified in three directions: a byte-identical fork of a runtime-fact module fails only the
+  hygiene suite, with both paths named and the capability suite still green; a forked non-source file
+  fails it; a forked `.git/index` fails it. The placement rule is recorded in
+  `docs/repository-governance.md`. Suite: 238 files / 1457 tests.
+
+- **One place answers what this deployment gives up** (`refactor`): four controls depend on
+  process-local state, and each behaves differently once more than one process serves traffic —
+  live VA access and the VA reference cache **refuse** to run, rate limiting and the VA circuit
+  breaker keep running **weaker** than written. Each used to answer that question only inside its
+  own file, so `/api/health` could show a hit/miss counter frozen at zero, or a circuit reported
+  closed, with nothing saying either reading was structurally uninformative. The circuit breaker
+  in particular was never surfaced anywhere: it is deliberately **not** gated on the runtime
+  classification, because an absent breaker is worse than a per-instance one, which makes it the
+  control most likely to be misread — `getCircuitSnapshot()` reports only the instance that
+  answered, so a closed circuit there does not mean upstream is healthy.
+  `src/lib/runtime-capabilities.ts` now owns the aggregate — `runtimeCapabilities(env)` returns
+  `{distributed, capabilities, summary}`, each capability declaring
+  `{id, label, behavior, full, scope, detail, sources}` with a `detail` that states the
+  consequence rather than the label. `/api/health` exposes it as `components.runtime`, and takes
+  the `scope`/`detail` for `components.vaReferenceCache` and `components.rateLimit` from that
+  report instead of re-deriving them, so a health field cannot disagree with the control it
+  describes.
+
+  The "a future control cannot hide" property is enforced rather than intended: each capability
+  declares `sources` — the modules that consult the runtime fact on its behalf — and
+  `tests/runtime-capabilities.test.ts` walks `src/` for those call sites and fails in both
+  directions, where an unregistered consumer reports nothing and a claimed source that no longer
+  consults the fact is a stale claim. Mutation-verified: adding a module that consults the fact
+  without registering fails with that file named, and repointing a claim at a real module that
+  does not consult it fails as stale (which also surfaces the now-unaccounted control). `full` is
+  `!isDistributedRuntime(env)` for all four today, asserted on purpose so a future capability that
+  stays full while distributed has to change the claim deliberately. Suite: 237 files / 1454
+  tests.
+
+- **The VA cache control plane stops reporting success it never had** (`fix`): the process-local VA
+  reference cache refuses to operate in production and distributed runtimes, which is the intended
+  fail-closed behaviour — but nothing said so. `/api/health` reported `hits`/`misses` that are
+  structurally frozen at zero, and `POST /api/admin/cache-clear` answered `{ ok: true, cleared: 0 }`,
+  which is byte-identical to what a working but cold cache returns. Both now report a `scope`.
+  `vaReferenceCacheScope(env)` returns `{scope, detail}` and takes its verdict from the *same*
+  `vaProcessLocalStateAllowed()` predicate that gates reads and writes rather than re-deriving it,
+  because a status endpoint that computes its own answer can be right while the thing it describes
+  is wrong — which is precisely how the cache came to look healthy while unable to store anything.
+  `/api/health` exposes it as `components.vaReferenceCache.scope`, and the cache-clear endpoint
+  returns it beside a message stating that a disabled cache cleared nothing, with the audit entry
+  tagged `cacheScope` so the trail separates "nothing to clear" from "cannot hold anything here".
+  The HTTP status stays `200` deliberately: the request was authorized and handled, and the
+  disclosure belongs in the body rather than in a status code that existing cron automation would
+  read as a failure. The shape matches the rate-limit report added above, so `/api/health` answers
+  "what regime is this process in?" the same way for both. Mutation-verified: forcing
+  `vaReferenceCacheScope` to report `process-local` unconditionally fails five tests across the
+  module, the health endpoint, and the admin endpoint; reverting cache-clear to its bare response
+  fails two more. `tests/va-cache-scope-reporting.test.ts`. Suite: 236 files / 1443 tests.
+
+- **One owner for the runtime fact, two policies stated instead of implied** (`refactor`/`fix`): the VA
+  reference cache failed closed on process-local state in production while the rate limiter kept
+  per-instance buckets and called that intentional. Both verdicts are defensible — but each module
+  held its **own private copy of the runtime detection**, so the two could disagree about the
+  underlying *fact* while each looked locally reasonable, and editing one copy broke nothing. The
+  fact now has a single owner in `src/lib/runtime-deployment.ts` (`isDistributedRuntime`,
+  `DISTRIBUTED_RUNTIME_MARKERS`, `RuntimeEnvironment`); `vaProcessLocalStateAllowed(env)` is
+  `!isDistributedRuntime(env)`, keeping the fail-closed policy (a per-instance cache can serve the
+  wrong environment's data, and a per-instance outbound budget can permit N× the intended traffic
+  against VA), while `rate-limiter.ts` now states its opposite policy explicitly and publishes what
+  it means for operators — `rateLimitScope()` reports `per-instance` vs `single-process` and is
+  surfaced as `components.rateLimit` on `/api/health`, so the instance-count multiplier is readable
+  instead of buried in a comment. That module deliberately carries no `server-only` marker, because
+  `proxy.ts` runs in the middleware runtime and needs the classification there.
+
+  Separately, the shared `"unknown"` bucket is gone. `resolveClientKey` returns `{key, source}` with
+  `key: null` when a request carries neither `X-Forwarded-For` nor `X-Real-IP` (the latter added for
+  nginx-style proxies), and the proxy then applies **no** per-client limit. The old fallback was not
+  a per-client limit at all: every unattributed client drew from one bucket, so the configured
+  per-IP allowance silently became a *global* cap that a single client could exhaust on everyone
+  else's behalf — and nothing in a response, a log line, or a metric revealed that the control had
+  changed meaning. Capacity is the edge WAF's job, which is why an absent limiter is preferred over
+  a mislabelled one. Both halves were mutation-checked rather than assumed: restoring the
+  `?? "unknown"` fallback fails the new proxy test with `unattributed POST 31: expected 429 not to be
+  429`, and reintroducing a private `NODE_ENV` check in `va/runtime-state.ts` fails both the new
+  cross-module parity assertion and the pre-existing distributed-state boundary tests. Suite: 235
+  files / 1434 tests.
+
+- **Route → rate-limit mapping is now data, checked against the real route files** (`refactor`):
+  `src/proxy.ts` chose its limiter with three `url.pathname === "…"` comparisons and recorded the
+  route list nowhere a machine could check, so a fourth sensitive route would have shipped
+  unlimited behind a passing build. The mapping moves into `src/lib/api-route-policies.ts`
+  (`API_ROUTE_LIMIT_POLICIES`, `API_ROUTES_WITHOUT_LIMITER`, `compileApiRoutePattern`,
+  `findApiRouteLimitPolicy`) and the proxy consults it in a single lookup. Each policy carries its
+  own 429 body plus a recorded rationale, and matching is anchored exact-match with `[param]` for
+  exactly one path segment — one exported implementation shared by the proxy and the test, so the
+  two cannot drift apart. `tests/api-route-rate-limit-coverage.test.ts` (16 tests) derives the real
+  routes from `src/app/api/**/route.ts`, reading both the directory pattern and each route's
+  exported handler methods off disk, then fails when a route is neither policed nor explicitly
+  exempt, when a policy names a route that no longer exists, when two policies could both match one
+  request, or when the proxy stops consulting the registry. Both directions were confirmed
+  non-vacuous by deliberate mutation: adding an unclassified `route.ts` failed the coverage
+  assertion (naming the offending route), and making the proxy skip the lookup failed four wiring
+  tests. Three things are deliberately unchanged. Every 429 status, body, and header is what it was
+  — the routes answer 429 with two different shapes, and clients may parse them. The `POST` rule
+  stays an inline method-scoped branch because it is not route-scoped: it covers **all** non-`_next`
+  POSTs, API POSTs included, so such a request still consumes the workflow-session bucket as well as
+  its own route policy. And one honest limit: the registry cannot be *derived* at request time,
+  because `proxy.ts` runs in the middleware runtime with no filesystem access — the derivation
+  lives in the test, which makes the registry a checked declaration rather than a generated one.
+  Suite: 234 files / 1421 tests.
+
+## 2026-09-17
+
+- **Single shared VA reference provenance vocabulary** (`refactor`/`fix`): the label/notice pair each
+  public-reference loader shows beside its data now lives once, in
+  `src/lib/va/provenance.ts`. Between them the five loaders carried 25 distinct label/notice
+  strings, each selected by a hand-written ternary per module, so wording and trust semantics
+  were enforced by discipline across five files. `SURFACE_COPY` owns all of it keyed by surface
+  (`service-branches`, `forms-finder`, `form-reference`, `disability-reference`,
+  `accredited-representatives`); `vaProvenanceCopy`/`vaFallbackCopy` return the pair for views that
+  carry no status fields (`ClaimFormReference`), and `vaLiveStatus`/`vaFallbackStatus` return the
+  full `VaReferenceSourceStatus` block for the other four. Centralizing exposed a second, subtler
+  duplication: environment resolution had **three** implementations — `result.environment ??
+  (source === "va-production-api" ? "production" : configured)` in three modules, the raw source
+  check in `form-reference`, and the *configured* environment only in `forms-finder`. Worth being
+  precise about the impact: those three rules were extensionally **equivalent**, because the adapter
+  derives both `environment` and `source` from a single `resolveEnvironment(config)` call, so all
+  three expressions agree for every result it can return today. No live mislabelling was fixed.
+  What changed is the basis of the agreement — from coincidence to construction. A result reporting
+  an environment other than the one requested (a production request downgraded to sandbox, a retry
+  routed elsewhere) would have made three modules disagree with each other and the other two
+  disagree with all of them, with nothing to catch it.
+  `resolveVaResultEnvironment` is now the one rule, preferring the result over configuration and
+  never inventing production, so an under-claiming result is honoured — the fail-safe direction.
+  `tests/va-provenance-copy.test.ts`
+  (9 tests) reads the table through the module's own API — rather than restating the copy — and
+  asserts every surface has distinct production/sandbox wording, that sandbox notices warn the data
+  may not be current and fallback notices say the upstream was unavailable or disabled, that
+  resolution never promotes a sandbox result to production, and that each loader delegates to the
+  shared owner for its own surface. The last check matches a *call site*, not a bare identifier:
+  an earlier version of it passed on the import line alone when the resolver was swapped out, which
+  a deliberate mutation caught. Suite: 233 files / 1405 tests.
+
+- **Single shared VA reference cache protocol** (`refactor`/`fix`): extracts
+  `withVaReferenceCache` into `src/lib/va/reference-cache-access.ts` and migrates all five
+  public-reference loaders (`service-branches`, `forms-finder`, `form-reference`,
+  `disability-reference`, `accredited-representatives`) onto it, collapsing five hand-rolled
+  copies of the process-local → shared → promote → write-both sequence into one. `cacheable` is
+  now a required field on the loader result, so the previously unstated "never cache a local
+  fallback" rule is enforced by the type system instead of by each copy remembering to return
+  early before the write. Key namespaces move from string literals in each loader to one registry
+  (`VA_REFERENCE_NAMESPACES`) with `clearVaReferenceNamespace(ns)`. This fixes a real collision:
+  `clearVaFormsFinderCache()` cleared the `"forms:"` prefix, which also matched
+  `form-reference`'s `forms:reference:` keys, so one module silently evicted another's cache — and
+  `form-reference` had grown no clear function of its own because it appeared to work by accident.
+  Keys are now `forms-finder:{env}:{query}` and `forms-reference:{env}`, and `form-reference.ts`
+  gains `clearClaimFormReferenceCache()` for parity with its four siblings.
+  `tests/va-reference-cache-namespace.test.ts` (10 tests) pins namespace disjointness, per-owner
+  clearing in both directions, clear-function parity across all five modules, and the
+  `withVaReferenceCache` contract (hit decoration, miss caching, fallback never cached, shared-hit
+  promotion into the process-local tier, `enabled: false` bypass). The source-text pin in
+  `tests/va-reference-product-surface.test.ts` that asserted each loader called
+  `readVaReferenceCache<…View>` is replaced by an architecture pin asserting every loader goes
+  through the shared entry point and none reaches into the cache tiers directly. Suite: 231 files /
+  1385 tests.
+
+- **Bounded VA response bodies** (`fix`/`harden`): the VA adapter now reads every upstream body
+  through a size bound, matching the limit the regulatory HTTP stack already enforced.
+  `requestVaJson` previously called `await response.json()`, so `src/lib/va/sandbox.ts` — the
+  outbound family behind the public `force-dynamic` pages — had no body-size limit at all, while
+  `regulatory/preflight/http.ts` bounded its bodies at 25 MB (12 MB for Federal Register). The
+  bound now lives once, in the new `src/lib/bounded-response.ts`, and both stacks consume it: a
+  declared over-cap `content-length` is rejected before the body is read, and the stream is
+  accumulated with a running total so an under-declaring upstream is still stopped mid-read via
+  `reader.cancel("response-size-limit")`. A breach maps to the new terminal `response-too-large`
+  outcome — recorded in latency/error metrics, logged, counted as a circuit failure, and returned
+  as a `local-fallback` result with **no retry**, so a hostile upstream cannot be amplified with
+  exponential backoff. Request query params (which can carry a user-supplied search value, such as
+  a zip) are kept out of both the error message and the observation, matching the adapter's
+  existing `pathname`-only logging. `tests/bounded-response.test.ts` (10 tests) covers both
+  rejection branches, the at-the-cap boundary, multi-chunk reassembly, the no-stream `text()`
+  fallback, and that malformed JSON still surfaces as `SyntaxError`;
+  `tests/va-sandbox-public-reference.test.ts` gains an end-to-end case asserting the fallback, the
+  `response-too-large` observation, exactly one fetch attempt, and no query-string or API-key
+  leakage. Suite: 232 files / 1396 tests.
+
 ## 2026-09-14 (later)
 
 - **Standalone `/get-records` page + README screenshot** (`feat`/`docs`) Adds

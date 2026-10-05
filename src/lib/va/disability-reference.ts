@@ -1,17 +1,19 @@
 import "server-only";
 
 import { loadConditionCatalog } from "@/lib/catalog/load";
+
 import {
-  clearVaReferenceCache,
-  readVaReferenceCache,
-  VA_REFERENCE_CACHE_TTL_MS,
-  type VaReferenceSourceStatus,
-  writeVaReferenceCache,
-} from "./reference-cache";
+  resolveVaResultEnvironment,
+  vaFallbackStatus,
+  vaLiveStatus,
+} from "./provenance";
+import { type VaReferenceSourceStatus } from "./reference-cache";
 import {
-  readVaSharedReferenceCache,
-  writeVaSharedReferenceCache,
-} from "./reference-shared-cache";
+  clearVaReferenceNamespace,
+  VA_REFERENCE_NAMESPACES,
+  vaReferenceCacheKey,
+  withVaReferenceCache,
+} from "./reference-cache-access";
 import {
   fetchVaDisabilityReference,
   loadVaApiConfig,
@@ -44,14 +46,7 @@ function localFallback(): DisabilityReferenceView {
 
   return {
     items,
-    source: "local-fallback",
-    sourceLabel: "Local catalog fallback",
-    notice:
-      "VA reference data is unavailable or disabled. These names come from this app's local condition catalog, not from VA Benefits Reference Data. Do not treat this fallback as an official VA list.",
-    live: false,
-    environment: null,
-    retrievedAt: null,
-    cacheStatus: "miss",
+    ...vaFallbackStatus("disability-reference"),
   };
 }
 
@@ -61,53 +56,47 @@ export async function loadDisabilityReference(
   const config = loadVaApiConfig();
   const configuredEnvironment = config.environment ?? "sandbox";
   const useSharedCache = fetcher === fetchVaDisabilityReference;
-  const cacheKey = `disabilities:${configuredEnvironment}`;
+  const cacheKey = vaReferenceCacheKey(
+    VA_REFERENCE_NAMESPACES.disabilityReference,
+    configuredEnvironment,
+  );
 
-  if (useSharedCache) {
-    const cached = readVaReferenceCache<DisabilityReferenceView>(cacheKey);
-    if (cached) return { ...cached, cacheStatus: "hit" };
-    const sharedCached = await readVaSharedReferenceCache<DisabilityReferenceView>(cacheKey);
-    if (sharedCached) {
-      writeVaReferenceCache(cacheKey, sharedCached);
-      return { ...sharedCached, cacheStatus: "hit" };
-    }
-  }
+  return withVaReferenceCache<DisabilityReferenceView>(
+    cacheKey,
+    async () => {
+      const result = await fetcher();
+      if (!result.success || !result.data) {
+        return { view: localFallback(), cacheable: false };
+      }
 
-  const result = await fetcher();
-  if (!result.success || !result.data) return localFallback();
+      const currentItems = result.data.items
+        .filter((item) => !item.endDateTime)
+        .map((item) => ({ id: String(item.id), name: item.name }))
+        .sort((a, b) => a.name.localeCompare(b.name));
 
-  const currentItems = result.data.items
-    .filter((item) => !item.endDateTime)
-    .map((item) => ({ id: String(item.id), name: item.name }))
-    .sort((a, b) => a.name.localeCompare(b.name));
+      if (currentItems.length === 0) {
+        return { view: localFallback(), cacheable: false };
+      }
 
-  if (currentItems.length === 0) return localFallback();
-
-  const environment =
-    result.environment ??
-    (result.source === "va-production-api" ? "production" : configuredEnvironment);
-  const view: DisabilityReferenceView = {
-    items: currentItems,
-    source: result.source,
-    sourceLabel:
-      environment === "production" ? "VA production reference" : "VA sandbox reference",
-    notice:
-      environment === "production"
-        ? "These public reference values came from VA Benefits Reference Data. A matching name is not a diagnosis, eligibility decision, rating, or proof of service connection."
-        : "These public reference values came from the VA Benefits Reference Data sandbox. Sandbox data is test data and may not be current. A matching name is not a diagnosis, eligibility decision, rating, or proof of service connection.",
-    live: true,
-    environment,
-    retrievedAt: new Date().toISOString(),
-    cacheStatus: "miss",
-  };
-
-  if (useSharedCache) {
-    writeVaReferenceCache(cacheKey, view);
-    void writeVaSharedReferenceCache(cacheKey, view, VA_REFERENCE_CACHE_TTL_MS);
-  }
-  return view;
+      const environment = resolveVaResultEnvironment(
+        result,
+        configuredEnvironment,
+      );
+      return {
+        cacheable: true,
+        view: {
+          items: currentItems,
+          ...vaLiveStatus("disability-reference", environment, result.source),
+        },
+      };
+    },
+    {
+      enabled: useSharedCache,
+      decorateHit: (view) => ({ ...view, cacheStatus: "hit" }),
+    },
+  );
 }
 
-export function clearDisabilityReferenceCache(): void {
-  clearVaReferenceCache("disabilities:");
+export function clearDisabilityReferenceCache(): number {
+  return clearVaReferenceNamespace(VA_REFERENCE_NAMESPACES.disabilityReference);
 }
