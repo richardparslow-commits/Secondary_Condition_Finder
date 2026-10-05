@@ -34,5 +34,9 @@ describe("Priority 1B direct browser-local document ingestion", () => {
     expect(workerScript).toContain("node_modules");
     expect(workerScript).toContain("pdf.worker.min.mjs");
     expect(workerScript).not.toContain("require(");
+    // The legacy worker build ships the Uint8Array.prototype.toHex polyfill the
+    // modern worker requires (Chrome 140+ only); serving the modern worker
+    // breaks every PDF load on older browsers with "n.toHex is not a function".
+    expect(workerScript).toContain("\"legacy\"");
   });
 });

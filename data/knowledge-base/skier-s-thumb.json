@@ -1,6 +1,12 @@
 {
   "id": "skier-s-thumb",
   "draft": true,
+  "quarantine": {
+    "status": "pointer",
+    "canonicalId": "gamekeeper-s-thumb",
+    "recordedOn": "2026-09-28",
+    "record": "docs/modeling-debt-dispositions.md"
+  },
   "todo": [
     "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
     "Review musculoskeletal, hand, and joint-related pathways only where applicable; do not infer medical causation from rating-schedule authority.",

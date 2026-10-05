@@ -42,6 +42,7 @@ The application guides users through a structured, multi-step workflow to resear
 - `/secondary/condition-caused-by` — 38 CFR § 3.310(a) “but for” causation explainer
 - `/secondary/condition-aggravation` — 38 CFR § 3.310(b) aggravation / treatment-interference (Spicer May 2026) explainer
 - `/secondary/legal` — canonical legal & policy reference list (`CANONICAL_REFERENCES`, `DISCLAIMERS`)
+- `/pathways` — claim pathway explorer: read-only view of every authored adjacency-graph (CRG) route, rendered from the validated traversal with per-hop classification badges and each hop's authored citation anchors shown with their verification status for reviewer triage; association-only hops break the legal chain explicitly and are never presented as an established nexus, and the route feeds nothing into `recommend()`
 
 **Legacy 8-step narrative → implemented 6-step mapping:**
 
@@ -109,7 +110,7 @@ The application processes user-uploaded documents entirely within the browser (v
 - **VA Forms Finder** (`/va-forms`): Users can search public VA form metadata by form number, keyword, or title through a configured VA reference adapter (`src/lib/va/sandbox.ts`) or a clearly labeled local fallback. Bounded public-form search with validated metadata, five-minute successful-response cache, status/provenance reporting
 - **Benefits Reference Data** (`/va-reference`): Users can explore public VA disability reference terms; filtering stays local to the browser. Conservative per-result VA administrative terminology blocks on Step 5 are display-only and never fed into `recommend()`
 - **VA Public Reference Cache** (`src/lib/va/reference-cache.ts` + `src/lib/va/runtime-state.ts`): Process-local, best-effort five-minute TTL cache with LRU-32 bounds; `loadDisabilityReference()` fails closed to local fallback when VA config is disabled. Separate `VA_FORMS_*` / `VA_BENEFITS_REFERENCE_*` sandbox and production keys; disabled by default (`VA_API_ENABLED=false`, `VA_SANDBOX_ENABLED` legacy)
-- **Circuit breaking & observability:** `src/lib/va/circuit-breaker.ts` (per-service 5-failures/60s-open), structured `vaApiLogger` + `recordVaApiLatency`/`recordVaApiError` (see readiness hardening `6967979`)
+- **Circuit breaking & observability:** `src/lib/va/circuit-breaker.ts` (per-service 5-failures/60s-open, one half-open probe at a time, `429` opens for the clamped `Retry-After` window), with `src/lib/va/shared-circuit.ts` sharing cooldowns and the single probe lease across instances when `VA_SHARED_CONSUMER_BUDGET=true` (fail-closed when the coordinator is unreachable); structured `vaApiLogger` + `recordVaApiLatency`/`recordVaApiError` (see readiness hardening `6967979`)
 
 ### 7. Regulatory Intelligence & Monitoring
 
@@ -164,7 +165,7 @@ Informational projections of authored KB/catalog data via `recommend()` — no n
 - No client-side analytics or third-party telemetry SDKs initialized; `connect-src` constrained to first-party only (`'self'`)
 - Workflow session cookies are encrypted with AES-256-GCM and authenticated; server verifies both expiry and token integrity
 - Edge WAF, DDoS protection, and rate limiting on Server Action routes and dynamic data routes
-- Server-side OpenTelemetry instrumentation through `@vercel/otel` / `src/instrumentation.ts` and structured JSON logging (`src/lib/observability/logger.ts`) for production observability without client-side tracking
+- Structured JSON logging (`src/lib/observability/logger.ts`) for production observability without client-side tracking; automatic OpenTelemetry trace export is deliberately disabled pending span/URL/exception sanitization (`src/lib/observability/telemetry-policy.ts`)
 
 ### Privacy
 
@@ -250,7 +251,7 @@ Informational projections of authored KB/catalog data via `recommend()` — no n
 - **VA Benefits Reference API** (optional, sandbox and production): Public disability reference terms
 - **Federal Register API** (regulatory preflight): Docket and comment data
 - **Regulations.gov API** (optional, regulatory preflight): Comment retrieval and docket enrichment
-- **Vercel OpenTelemetry** (`@vercel/otel`): Production observability
+- **OpenTelemetry (disabled by policy)**: the `@vercel/otel` exporter dependency is removed and no SDK provider is registered; re-enabling requires the sanitization and collector review recorded in `src/lib/observability/telemetry-policy.ts`
 
 ### Third-Party Libraries
 
@@ -270,7 +271,7 @@ Informational projections of authored KB/catalog data via `recommend()` — no n
 - Evidence-document processing must complete in-browser without server transmission (enforced by `src/lib/evidence/storage.ts`, `audit:evidence-architecture`, and `ingestion-privacy` tests)
 - VA API integration is disabled by default; sandbox/production access is a separately governed future gate (issue #189, `docs/va-api-runtime-configuration.md`)
 - Session tokens must include server-authenticated expiry; browser `Max-Age` alone is not sufficient
-- All deployments to production must pass the full CI gate including `npm run kb:validate`, `npm run citations:audit`, `npm run audit:me-compliance`, `npm run test:composition`, `typecheck`, `lint`, `test`, and `npm audit --audit-level=high`
+- All deployments to production must pass the full CI gate including `npm run kb:validate`, `npm run citations:audit`, `npm run audit:me-compliance`, `npm run test:composition`, `typecheck`, `lint`, `test`, and `npm audit --audit-level=high --omit=dev` (`npm run audit:high`; dev-tooling advisories are inventoried non-blockingly via `npm run audit:high:all`)
 - Rating context is condition identity/rating information only and must not be presented as clinical nexus evidence
 
 ### Assumptions

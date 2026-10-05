@@ -1,5 +1,11 @@
 import "server-only";
 
+import { isTrustedCachedLiveView } from "./cached-view-guard";
+import {
+  acquireVaSharedFetchLease,
+  awaitVaSharedFetchOutcome,
+  releaseVaSharedFetchLease,
+} from "./shared-single-flight";
 import { loadConditionCatalog } from "@/lib/catalog/load";
 import {
   clearVaReferenceCache,
@@ -63,49 +69,75 @@ export async function loadDisabilityReference(
   const useSharedCache = fetcher === fetchVaDisabilityReference;
   const cacheKey = `disabilities:${configuredEnvironment}`;
 
-  if (useSharedCache) {
+  // Activation first: a disabled integration must never serve a previously
+  // cached live view (see form-reference.ts for the full rationale).
+  if (useSharedCache && config.enabled) {
     const cached = readVaReferenceCache<DisabilityReferenceView>(cacheKey);
     if (cached) return { ...cached, cacheStatus: "hit" };
     const sharedCached = await readVaSharedReferenceCache<DisabilityReferenceView>(cacheKey);
-    if (sharedCached) {
+    // Read-side guard: only serve a shared value that still carries this
+    // deployment's provenance and credential-free HTTPS links.
+    if (sharedCached && isTrustedCachedLiveView(sharedCached, configuredEnvironment)) {
       writeVaReferenceCache(cacheKey, sharedCached);
       return { ...sharedCached, cacheStatus: "hit" };
     }
   }
 
-  const result = await fetcher();
-  if (!result.success || !result.data) return localFallback();
-
-  const currentItems = result.data.items
-    .filter((item) => !item.endDateTime)
-    .map((item) => ({ id: String(item.id), name: item.name }))
-    .sort((a, b) => a.name.localeCompare(b.name));
-
-  if (currentItems.length === 0) return localFallback();
-
-  const environment =
-    result.environment ??
-    (result.source === "va-production-api" ? "production" : configuredEnvironment);
-  const view: DisabilityReferenceView = {
-    items: currentItems,
-    source: result.source,
-    sourceLabel:
-      environment === "production" ? "VA production reference" : "VA sandbox reference",
-    notice:
-      environment === "production"
-        ? "These public reference values came from VA Benefits Reference Data. A matching name is not a diagnosis, eligibility decision, rating, or proof of service connection."
-        : "These public reference values came from the VA Benefits Reference Data sandbox. Sandbox data is test data and may not be current. A matching name is not a diagnosis, eligibility decision, rating, or proof of service connection.",
-    live: true,
-    environment,
-    retrievedAt: new Date().toISOString(),
-    cacheStatus: "miss",
-  };
-
-  if (useSharedCache) {
-    writeVaReferenceCache(cacheKey, view);
-    void writeVaSharedReferenceCache(cacheKey, view, VA_REFERENCE_CACHE_TTL_MS);
+  // Single-flight: one instance fetches a cold/expired key; others wait a
+  // bounded window for it to publish instead of duplicating the request. An
+  // unavailable coordinator just means the normal fetch path (the distributed
+  // consumer budget still gates every attempt).
+  const lease =
+    useSharedCache && config.enabled ? await acquireVaSharedFetchLease(cacheKey) : null;
+  if (lease?.status === "contended") {
+    const published = await awaitVaSharedFetchOutcome<DisabilityReferenceView>(cacheKey);
+    if (published && isTrustedCachedLiveView(published, configuredEnvironment)) {
+      writeVaReferenceCache(cacheKey, published);
+      return { ...published, cacheStatus: "hit" };
+    }
   }
-  return view;
+
+  try {
+    const result = await fetcher();
+    if (!result.success || !result.data) return localFallback();
+
+    const currentItems = result.data.items
+      .filter((item) => !item.endDateTime)
+      .map((item) => ({ id: String(item.id), name: item.name }))
+      .sort((a, b) => a.name.localeCompare(b.name));
+
+    if (currentItems.length === 0) return localFallback();
+
+    const environment =
+      result.environment ??
+      (result.source === "va-production-api" ? "production" : configuredEnvironment);
+    const view: DisabilityReferenceView = {
+      items: currentItems,
+      source: result.source,
+      sourceLabel:
+        environment === "production" ? "VA production reference" : "VA sandbox reference",
+      notice:
+        environment === "production"
+          ? "These public reference values came from VA Benefits Reference Data. A matching name is not a diagnosis, eligibility decision, rating, or proof of service connection."
+          : "These public reference values came from the VA Benefits Reference Data sandbox. Sandbox data is test data and may not be current. A matching name is not a diagnosis, eligibility decision, rating, or proof of service connection.",
+      live: true,
+      environment,
+      retrievedAt: new Date().toISOString(),
+      cacheStatus: "miss",
+    };
+
+    if (useSharedCache && config.enabled) {
+      writeVaReferenceCache(cacheKey, view);
+      // Awaited so the write cannot be torn down with the request (see
+      // forms-finder.ts); the shared-cache deadline bounds the added latency.
+      await writeVaSharedReferenceCache(cacheKey, view, VA_REFERENCE_CACHE_TTL_MS);
+    }
+    return view;
+  } finally {
+    if (lease?.status === "acquired") {
+      await releaseVaSharedFetchLease(cacheKey, lease.token);
+    }
+  }
 }
 
 export function clearDisabilityReferenceCache(): void {

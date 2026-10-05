@@ -15,12 +15,14 @@ import { recordCspViolation } from "@/lib/observability/csp-metrics";
  * is active. Reports are redacted to bounded, content-free events before
  * anything is logged or counted; the raw body is never persisted.
  *
- * Privacy posture: the response is a bare 204 for every well-formed request,
- * so violation reporting cannot become an oracle; a small in-memory rate
- * limiter exists only to shed abuse, keyed by client, with no content
- * retained. The endpoint is excluded from CSP response headers (reports are
- * JSON posts, not browsing contexts) and from the security matcher so report
- * delivery never itself triggers violations.
+ * Privacy posture: accepted reports are answered with a content-free 204
+ * (malformed, oversized, wrong-content-type, and unreadable bodies included),
+ * and abusive request rates are shed by a small in-memory limiter with a
+ * content-free 429; neither response reveals whether a report was parsed, so
+ * violation reporting cannot become an oracle. The endpoint is excluded from
+ * CSP response headers (reports are JSON posts, not browsing contexts) and
+ * from the security matcher so report delivery never itself triggers
+ * violations.
  */
 
 export const dynamic = "force-dynamic";
@@ -37,7 +39,19 @@ const BUCKET_MAX = 1_000;
 
 function rateLimited(key: string): boolean {
   const now = Date.now();
-  if (buckets.size > BUCKET_MAX) buckets.clear();
+  if (buckets.size > BUCKET_MAX) {
+    // Evict expired buckets rather than clearing the whole map: `clear()`
+    // reset every counter, so an attacker could erase their own limit by
+    // flooding the map with fresh keys. Eviction keeps live limits intact.
+    for (const [existingKey, existing] of buckets) {
+      if (now - existing.windowStart >= WINDOW_MS) buckets.delete(existingKey);
+    }
+    while (buckets.size > BUCKET_MAX) {
+      const oldest = buckets.keys().next().value as string | undefined;
+      if (oldest === undefined) break;
+      buckets.delete(oldest);
+    }
+  }
   const bucket = buckets.get(key);
   if (!bucket || now - bucket.windowStart >= WINDOW_MS) {
     buckets.set(key, { count: 1, windowStart: now });
@@ -51,6 +65,46 @@ function clientKey(request: NextRequest): string {
   const forwarded = request.headers.get("x-forwarded-for");
   if (forwarded) return forwarded.split(",")[0].trim();
   return request.headers.get("user-agent")?.slice(0, 64) ?? "unknown";
+}
+
+/**
+ * Read at most `maxBytes` bytes from the request body, aborting as soon as the
+ * cap is exceeded. `request.text()` would buffer an arbitrarily large hostile
+ * body before any size check; streaming bounds the allocation itself.
+ */
+async function readBoundedBody(
+  request: NextRequest,
+  maxBytes: number,
+): Promise<{ text: string; oversized: boolean }> {
+  const body = request.body;
+  if (!body) return { text: "", oversized: false };
+
+  const reader = body.getReader();
+  const chunks: Uint8Array[] = [];
+  let total = 0;
+  try {
+    for (;;) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      if (!value) continue;
+      total += value.byteLength;
+      if (total > maxBytes) {
+        await reader.cancel();
+        return { text: "", oversized: true };
+      }
+      chunks.push(value);
+    }
+  } finally {
+    reader.releaseLock();
+  }
+
+  const merged = new Uint8Array(total);
+  let offset = 0;
+  for (const chunk of chunks) {
+    merged.set(chunk, offset);
+    offset += chunk.byteLength;
+  }
+  return { text: new TextDecoder().decode(merged), oversized: false };
 }
 
 export async function POST(request: NextRequest): Promise<NextResponse> {
@@ -67,8 +121,36 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
     return new NextResponse(null, { status: 204 });
   }
 
-  const rawBody = await request.text();
-  if (rawBody.length > CSP_REPORT_MAX_BODY_BYTES) {
+  // Byte-accurate cap checked on the declared length first (cheap rejection),
+  // then enforced while streaming so the allocation itself stays bounded.
+  const declaredLength = Number(request.headers.get("content-length") ?? "0");
+  if (Number.isFinite(declaredLength) && declaredLength > CSP_REPORT_MAX_BODY_BYTES) {
+    recordCspViolation({
+      effectiveDirective: "unknown",
+      disposition: "enforce",
+      documentOrigin: "unknown",
+      blockedOrigin: null,
+      sourceFileOrigin: null,
+      sampleFingerprint: null,
+      oversized: true,
+    });
+    return new NextResponse(null, { status: 204 });
+  }
+
+  let rawBody = "";
+  let oversized = false;
+  try {
+    ({ text: rawBody, oversized } = await readBoundedBody(
+      request,
+      CSP_REPORT_MAX_BODY_BYTES,
+    ));
+  } catch {
+    // A client abort or malformed stream must not surface as an error oracle:
+    // nothing was learned, nothing is logged, and the response stays
+    // content-free.
+    return new NextResponse(null, { status: 204 });
+  }
+  if (oversized) {
     recordCspViolation({
       effectiveDirective: "unknown",
       disposition: "enforce",

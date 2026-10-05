@@ -11,7 +11,7 @@ The application uses a two-tier cache for VA public reference data (forms, disab
 | Tier | Scope | TTL | Max Entries | State on Cold Start |
 |------|-------|-----|-------------|---------------------|
 | Process-local (LRU) | Single serverless instance | 5 minutes | 32 | Reset |
-| Shared (KV/Redis) | Cross-instance | 5 minutes | Unlimited (KV) | Persistent |
+| Shared (KV/Redis, optional) | Cross-instance | 5 minutes | ≤480 resident keys per namespace (finite write budget: 240 writes/namespace/5-min window; see below) | Persistent until TTL |
 
 **Process-local cache** (`src/lib/va/reference-cache.ts`):
 - In-memory `Map` with LRU eviction (32 entries max)
@@ -24,6 +24,11 @@ The application uses a two-tier cache for VA public reference data (forms, disab
 - Enabled when `VA_REFERENCE_SHARED_CACHE_URL` + `TOKEN` (or Upstash aliases) are set
 - 750ms best-effort timeout — never blocks a page render
 - On shared hit, rehydrates the process-local entry so subsequent same-process hits are instant
+- Key policy: only the allowlisted namespaces `forms:`, `accredited-rep:`, `disabilities:`, and `service-branches:` are read or written (lowercase `[a-z0-9:_-]`, ≤256 chars)
+- Entries are versioned envelopes stamped with the store-wide invalidation epoch; a value written under a previous epoch is a miss, not a hit
+- Finite cardinality: at most `VA_SHARED_KEY_WRITE_MAX_PER_WINDOW=240` admitted writes per namespace per `VA_SHARED_KEY_WRITE_WINDOW_SECONDS=300` window, so ≤480 resident keys per namespace (≤1,920 across the allowlist). A refused or failed budget check skips the write — the cache is colder, never wrong
+- Single-flight per key: one instance claims a 45 s `SET … NX PX` lease for a cold/expired key, and other instances wait up to 600 ms for that value to be published instead of issuing their own upstream request. The lease fails open (an unreachable coordinator just means the normal path) and expires on its own if the holder dies
+- Degraded store: every KV exchange is capped by the 750 ms deadline, so a store that is slow (rather than unreachable) costs a fail-closed render at most three deadlines (~2.25 s: cache read, lease claim, circuit gate) and never waits for the store's real latency; nothing is cached, no quota is reserved, and no upstream request is made while the coordinator is unusable
 
 ### Monitoring Cache Effectiveness
 
@@ -51,7 +56,7 @@ Response includes:
 - **misses**: cache lookups that returned `null` (expired, not found, or process-local disabled)
 - **hitRate**: percentage (0–100), `null` if no requests yet
 
-Counters are **process-local** and reset on cold start. For longitudinal monitoring, export these via OTEL metrics to your observability platform.
+Counters are **process-local** and reset on cold start. Longitudinal metric/trace export is not currently available: automatic OpenTelemetry export is disabled by policy and no SDK provider is registered (`src/lib/observability/telemetry-policy.ts`), so the in-process counters above are the monitoring source today.
 
 ### When to Clear the Cache
 
@@ -71,7 +76,7 @@ curl -X POST https://secondary-condition-finder.vercel.app/api/admin/cache-clear
   -H "Authorization: Bearer $CRON_SECRET"
 
 # Clear only entries with a specific prefix
-curl -X POST "https://secondary-condition-finder.vercel.app/api/admin/cache-clear?prefix=va:forms:" \
+curl -X POST "https://secondary-condition-finder.vercel.app/api/admin/cache-clear?prefix=forms:" \
   -H "Authorization: Bearer $CRON_SECRET"
 ```
 
@@ -82,33 +87,36 @@ Response:
   "ok": true,
   "cleared": 5,
   "prefix": null,
-  "message": "Cleared all 5 cache entries."
+  "sharedInvalidation": "applied",
+  "sharedEpoch": "1",
+  "message": "Cleared all 5 cache entries. Advanced shared-cache invalidation epoch to 1."
 }
 ```
 
+`sharedInvalidation` is `applied` (epoch advanced), `not-configured` (no shared KV), or `failed` (the coordinator was unreachable — the shared tier may serve stale entries until their 5-minute TTL expires).
+
 **Authentication**: Bearer token using `CRON_SECRET` or `REGULATORY_SYNC_SECRET` (same credentials as the regulatory preflight endpoint).
 
-**Important**: This only clears the **process-local** cache on the specific instance that handles the request. In a serverless environment with multiple concurrent instances, other instances retain their cache until their own TTL expires. For a full flush, you would need to call the endpoint multiple times (one per instance) or rely on the natural TTL expiry.
-
-#### Via Shared Cache (if configured)
-
-When the shared KV cache is configured, clearing the process-local cache on one instance also triggers a shared-cache rehydration on the next request. To fully clear the shared cache, you would need to flush the KV store directly (e.g., via the Upstash console or Vercel KV dashboard).
+**Important**: The process-local clear applies only to the instance that handles the request. Other instances retain their own in-memory entries until their TTL expires, but they will **not** serve shared entries written before the request: when a shared KV is configured the endpoint atomically advances the store-wide invalidation epoch (`INCR va:ref:cache-epoch`), which invalidates every cached entry fleet-wide immediately. The bump is store-wide even for a `prefix`-scoped request — over-invalidation is deliberate, because under-invalidation is the failure mode that matters. If no shared KV is configured, clearing other instances' memory still requires per-instance calls or TTL expiry.
 
 ### Cache Key Conventions
 
-Cache keys follow the pattern `{source}:{query-hash}`:
+Keys are prefixed in the shared store (`va:ref:` by default). User-supplied segments (Forms query, locator ZIP/radius/type) are SHA-256-hashed — the raw text is never key material:
 
-| Source | Example Keys |
-|--------|-------------|
-| `va-forms` | `va-forms:disability-compensation` |
-| `benefits-reference-data` | `benefits-reference-data:compensation` |
-| `service-branches` | `service-branches:all` |
-| `accredited-representatives` | `accredited-representatives:zip-90210-radius-50` |
+| Source | Key pattern | Example key (shared-store name) |
+|--------|-------------|--------------------------------|
+| VA Forms Finder | `forms:{env}:q:{hash}` | `va:ref:forms:sandbox:q:9f2c…` |
+| VA Form reference | `forms:reference:{env}` | `va:ref:forms:reference:sandbox` |
+| Disability reference | `disabilities:{env}` | `va:ref:disabilities:sandbox` |
+| Service branches | `service-branches:{env}` | `va:ref:service-branches:sandbox` |
+| Accredited representatives | `accredited-rep:{env}:{hash}` | `va:ref:accredited-rep:sandbox:41ab…` |
 
-Use the `prefix` query parameter to clear all entries for a specific source:
+Coordination keys live under the same prefix but never carry lookup values: `cache-epoch` (invalidation marker), `cardinality:{namespace}:{window}` (write budget), `budget:{window}` (consumer quota), and `circuit:{service}` / `circuit-probe:{service}` (fleet cooldown and probe lease).
+
+The `prefix` query parameter filters **process-local** keys only (e.g. `?prefix=forms:`); the shared-tier invalidation epoch is always advanced store-wide:
 
 ```bash
-curl -X POST "https://secondary-condition-finder.vercel.app/api/admin/cache-clear?prefix=va-forms:" \
+curl -X POST "https://secondary-condition-finder.vercel.app/api/admin/cache-clear?prefix=forms:" \
   -H "Authorization: Bearer $CRON_SECRET"
 ```
 
@@ -176,7 +184,11 @@ VA API calls are protected by a per-source circuit breaker (`src/lib/va/circuit-
 
 - **Closed** (normal): requests pass through
 - **Open** (failure threshold exceeded): requests fail fast for 60 seconds
-- **Half-open**: one probe request allowed to test recovery
+- **Half-open**: exactly one probe request allowed to test recovery
+
+An upstream `429` is never retried and opens the breaker immediately for the clamped `Retry-After` window (1–60 s; 30 s when the header is unusable).
+
+In distributed runtimes the breaker still tracks this instance, but fleet admission additionally requires the explicit shared consumer-budget opt-in (`VA_SHARED_CONSUMER_BUDGET=true`) and a configured shared KV. An instance that opens its breaker publishes a shared cooldown marker, and recovery admits a single fleet-wide probe via an atomic lease (`SET … NX PX`); an unreachable coordinator fails closed instead of granting a per-process budget.
 
 The health endpoint exposes the current state of each circuit breaker. If you see `open` in production, check the VA API status page and wait for the half-open window.
 

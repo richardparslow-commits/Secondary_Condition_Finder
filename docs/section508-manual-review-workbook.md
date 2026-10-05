@@ -79,6 +79,12 @@ Record each route/workflow as it is exercised. A route being reachable is not it
 | Priority 1/1B local evidence upload/review with synthetic DOCX | [ ] | |
 | Priority 1/1B local evidence upload/review with synthetic text | [ ] | |
 | `/presumptive` | [ ] | |
+| `/presumptive` — DD-214 upload + browser-local OCR (image) | [ ] | |
+| `/presumptive` — DD-214 upload + browser-local OCR (scanned/mixed PDF) | [ ] | |
+| `/presumptive` — DD-214 extracted-field verification and confirm controls | [ ] | |
+| `/pathways` | [ ] | |
+| `/va-account` — sandbox read-only account (disabled state and consent copy) | [ ] | |
+| Workflow completion controls (confirm, clear, download, finish/restart) | [ ] | |
 | `/va-forms` | [ ] | |
 | `/va-forms/finder` | [ ] | |
 | `/va-reference` | [ ] | |

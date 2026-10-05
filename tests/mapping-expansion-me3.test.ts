@@ -137,16 +137,16 @@ describe("Mapping Expansion Batch ME-3", () => {
     const mappings = files.map((name) =>
       JSON.parse(fs.readFileSync(path.join(kbDir, name), "utf8")) as Mapping,
     );
-    expect(files).toHaveLength(817);
+    expect(files).toHaveLength(819);
     expect(mappings.filter((m) => m.draft === false)).toHaveLength(140);
-    expect(mappings.filter((m) => m.draft === true)).toHaveLength(677);
-    expect(mappings.reduce((sum, m) => sum + (m.suggestions ?? []).length, 0)).toBe(870);
+    expect(mappings.filter((m) => m.draft === true)).toHaveLength(679);
+    expect(mappings.reduce((sum, m) => sum + (m.suggestions ?? []).length, 0)).toBe(875);
     expect(mappings.filter((m) => m.draft === false && (m.suggestions ?? []).length === 1)).toHaveLength(66);
     expect(mappings.filter((m) => m.draft === false && (m.suggestions ?? []).length >= 2)).toHaveLength(74);
     const refs = mappings.flatMap((m) => (m.suggestions ?? []).flatMap((s) => s.sourceReferences ?? []));
-expect(refs).toHaveLength(1690);
-    expect(refs.filter((r) => r.verified === true)).toHaveLength(395);
-    expect(refs.filter((r) => r.verified === false)).toHaveLength(1295);
+expect(refs).toHaveLength(1704);
+    expect(refs.filter((r) => r.verified === true)).toHaveLength(398);
+    expect(refs.filter((r) => r.verified === false)).toHaveLength(1306);
   });
 
   it("passes the fail-closed master-registry parity audit after approved citation promotion", () => {
@@ -156,6 +156,6 @@ expect(refs).toHaveLength(1690);
     });
     const result = JSON.parse(output) as { status: string; pendingVerificationSourceEntities: number };
     expect(result.status).toBe("PASS");
-    expect(result.pendingVerificationSourceEntities).toBe(1117);
+    expect(result.pendingVerificationSourceEntities).toBe(1128);
   });
 });

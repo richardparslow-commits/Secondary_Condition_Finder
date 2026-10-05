@@ -1,6 +1,12 @@
 {
   "id": "rotator-cuff-tear",
   "draft": true,
+  "quarantine": {
+    "status": "pointer",
+    "canonicalId": "rotator-cuff-injury",
+    "recordedOn": "2026-09-28",
+    "record": "docs/modeling-debt-dispositions.md"
+  },
   "todo": [
     "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
     "Review biomechanical, post-injury, orthopedic, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority.",

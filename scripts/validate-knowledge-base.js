@@ -61,6 +61,13 @@ for (const { file, data } of catalogFiles) {
 
 const kbIds = new Set();
 const kbSuggestionTargets = new Map();
+// Quarantined pointer identities (canonical-identity reconciliation): the
+// machine-readable `quarantine` marker declares that claims are authored under
+// `canonicalId`, never under the pointer. The guards below refuse authored
+// suggestions, adjacency nodes, and edges that would file a claim under a
+// pointer.
+const pointerById = new Map();
+const SELF_DECLARED_POINTER = /This file is (RETIRED|retained) as a quarantined pointer record/i;
 
 for (const { file, data } of kbFiles) {
   const expectedId = file.replace(/\.json$/, "");
@@ -90,6 +97,42 @@ for (const { file, data } of kbFiles) {
 
   if (!catalogById.has(data.id)) {
     errors.push(`${file}: primary condition '${data.id}' is not present in data/conditions`);
+  }
+
+  // Fail-closed quarantine declaration: the marker and the self-declared
+  // pointer wording must agree, so a new pointer cannot be smuggled in (or
+  // silently un-declared) by editing only one of them.
+  const mappingText = [
+    ...(Array.isArray(data.todo) ? data.todo : []),
+    ...(Array.isArray(data.governanceNotes) ? data.governanceNotes : []),
+  ].join(" ");
+  const selfDeclaredPointer = SELF_DECLARED_POINTER.test(mappingText);
+  let declaredPointer = false;
+  if (data.quarantine !== undefined) {
+    const quarantine = data.quarantine;
+    if (!quarantine || typeof quarantine !== "object" || Array.isArray(quarantine)) {
+      errors.push(`${file}: quarantine must be an object`);
+    } else if (quarantine.status !== "pointer") {
+      errors.push(`${file}: quarantine.status must be 'pointer'`);
+    } else if (typeof quarantine.canonicalId !== "string" || !/^[a-z0-9-]+$/.test(quarantine.canonicalId)) {
+      errors.push(`${file}: quarantine.canonicalId must be a kebab-case condition id`);
+    } else if (typeof quarantine.recordedOn !== "string" || !/^\d{4}-\d{2}-\d{2}$/.test(quarantine.recordedOn)) {
+      errors.push(`${file}: quarantine.recordedOn must be an ISO date`);
+    } else if (typeof quarantine.record !== "string" || !quarantine.record.trim()) {
+      errors.push(`${file}: quarantine.record must be a non-empty disposition reference`);
+    } else {
+      declaredPointer = true;
+      pointerById.set(data.id, quarantine.canonicalId);
+    }
+  }
+  if (selfDeclaredPointer && !declaredPointer) {
+    errors.push(`${file}: self-declared quarantined pointer record without the machine-readable quarantine marker`);
+  }
+  if (declaredPointer && !selfDeclaredPointer) {
+    errors.push(`${file}: quarantine marker without the pointer-record wording in todo/governanceNotes`);
+  }
+  if (declaredPointer && data.suggestions.length > 0) {
+    errors.push(`${file}: quarantined pointer identity must not author suggestions — claims are filed under '${data.quarantine.canonicalId}'`);
   }
 
   const ranks = new Set();
@@ -272,6 +315,62 @@ for (const { file, data } of kbFiles) {
   }
 
   kbSuggestionTargets.set(data.id, targets);
+}
+
+// Fail-closed cross-file quarantine checks: a pointer's canonical target must
+// exist and must not be another pointer, and no mapping may file a suggestion
+// under a pointer ID.
+for (const [pointerId, canonicalId] of pointerById) {
+  if (canonicalId === pointerId) {
+    errors.push(`knowledge-base/${pointerId}.json: quarantine.canonicalId must differ from the pointer id`);
+  }
+  if (!catalogById.has(canonicalId)) {
+    errors.push(`knowledge-base/${pointerId}.json: quarantine.canonicalId '${canonicalId}' is not present in data/conditions`);
+  }
+  if (pointerById.has(canonicalId)) {
+    errors.push(`knowledge-base/${pointerId}.json: quarantine.canonicalId '${canonicalId}' is itself a quarantined pointer — pointer chains are refused`);
+  }
+}
+for (const { file, data } of kbFiles) {
+  if (!data || typeof data !== "object" || !Array.isArray(data.suggestions)) continue;
+  for (let index = 0; index < data.suggestions.length; index += 1) {
+    const target = data.suggestions[index] && data.suggestions[index].conditionId;
+    if (typeof target === "string" && pointerById.has(target)) {
+      errors.push(`${file}: suggestions[${index}] files a claim under quarantined pointer '${target}' — author it under '${pointerById.get(target)}'`);
+    }
+  }
+}
+
+// Fail-closed adjacency-graph guard: a quarantined pointer may neither own a
+// node file nor appear as an edge source or target.
+const graphDir = path.join(kbDir, "graph");
+if (fs.existsSync(graphDir)) {
+  const graphFiles = fs.readdirSync(graphDir).filter(name => name.endsWith(".json")).sort();
+  for (const file of graphFiles) {
+    let node;
+    try {
+      node = JSON.parse(fs.readFileSync(path.join(graphDir, file), "utf8"));
+    } catch (error) {
+      errors.push(`graph/${file}: invalid JSON (${error.message})`);
+      continue;
+    }
+    if (!node || typeof node !== "object" || Array.isArray(node)) {
+      errors.push(`graph/${file}: root must be an object`);
+      continue;
+    }
+    if (typeof node.nodeId === "string" && pointerById.has(node.nodeId)) {
+      errors.push(`graph/${file}: node '${node.nodeId}' is a quarantined pointer — author adjacency under '${pointerById.get(node.nodeId)}'`);
+    }
+    const edges = Array.isArray(node.outgoingEdges) ? node.outgoingEdges : [];
+    for (const edge of edges) {
+      if (!edge || typeof edge !== "object") continue;
+      for (const [side, id] of [["sourceConditionId", edge.sourceConditionId], ["targetConditionId", edge.targetConditionId]]) {
+        if (typeof id === "string" && pointerById.has(id)) {
+          errors.push(`graph/${file}: edge ${side} '${id}' is a quarantined pointer — author it under '${pointerById.get(id)}'`);
+        }
+      }
+    }
+  }
 }
 
 for (const [id, { file }] of catalogById) {

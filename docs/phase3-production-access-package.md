@@ -4,18 +4,20 @@
 
 **Draft for VA production-access review. Do not submit yet.**
 
+This package requests public Forms and Benefits Reference Data only. The separately gated `/va-account` experiment is sandbox-only, veteran-self-service, and read-only (ratings summary and existing claim status); it is not part of this production request. See [sandbox account setup and P0 gates](va-account-sandbox.md). No account production endpoints, Claims submission, Intake upload, or representative authorization are enabled.
+
 Repository implementation is current for the selected public/reference API scope, but submission remains blocked by external/final gates:
 
-1. Credentialed live sandbox proof in issue #189.
+1. Freshness review of the sanitized credentialed sandbox evidence recorded for closed issue #189; do not relabel this completed gate as missing.
 2. Manual deployed-app Section 508/accessibility evidence in issue #195.
 3. Truthful applicant/organization/business information.
 4. Final absolute public URL verification.
 5. Final 30–60 minute deployed-app rehearsal.
 6. Fresh exact-commit CI, Vercel production deployment, alias convergence, and Production Runtime Readiness immediately before submission.
 
-### Current verified production checkpoint
+### Historical production checkpoint — not current submission proof
 
-At this package refresh:
+The following repository-recorded checkpoint predates the October 4 audit and is not independently reverified by that audit:
 
 - `main`: `193f26030b9b90b81c832c6a645f179717abf307`
 - CI #797: success on that exact commit, including real-browser E2E
@@ -24,7 +26,7 @@ At this package refresh:
 - Production Runtime Readiness #156: success on the same exact lineage
 - production `/va-reference`: HTTP 200 with clearly labeled local fallback because VA access is disabled
 
-This is objective current evidence, not a permanent submission-time guarantee.
+Resolve the exact deployed build identity and fresh CI/runtime evidence before submission. This historical fallback checkpoint is not a VA production grant or live VA production connectivity proof.
 
 ## Product description
 
@@ -141,7 +143,7 @@ Current resource ceilings include 20 MB/file, 10 files/batch, 50 MB accepted byt
 
 ### Application logging and VA observations
 
-The current application does not persist workflow/recommendation event history through an application event logger.
+The application emits allowlisted operational workflow/recommendation events (action, route, status, counts and duration) to server logs. Host retention and exception sanitation require review; do not claim that event logging is absent.
 
 VA adapter observations are limited to request ID, service, endpoint path, attempt, outcome/status, and duration. They exclude credentials, query values, response bodies, and workflow selections.
 
@@ -154,8 +156,8 @@ Forms search, disability terminology, and service branches share a bounded five-
 The adapter uses bounded behavior:
 
 - default per-attempt timeout: 4 seconds;
-- maximum two attempts per request;
-- one retry only for HTTP 429, 503, 504 or transient timeout/network failure;
+- at most three public-reference attempts for HTTP 503/504 or transient timeout/network failure, with bounded backoff/jitter;
+- immediate fallback without retry for HTTP 429/500; audited shared circuit/coordination defects remain to be repaired before faithful fleet backoff can be claimed;
 - invalid payloads fail closed;
 - HTTPS-only configurable endpoints;
 - upstream failure falls back locally and does not break core intake/recommendation/presumptive flows;

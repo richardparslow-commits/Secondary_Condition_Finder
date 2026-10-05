@@ -4,6 +4,7 @@ import {
   adminCacheClearLimiter,
   extractClientKey,
   healthLimiter,
+  referenceReadLimiter,
   regulatoryPreflightLimiter,
   workflowSessionLimiter,
 } from "@/lib/rate-limiter";
@@ -121,14 +122,15 @@ function buildContentSecurityPolicy(nonce: string): string {
     : "connect-src 'self'";
 
   // Trusted Types: sink XSS is closed for first-party code (the repo has no
-  // first-party innerHTML/document.write sinks) while the tesseract worker
-  // keeps its required escape hatch. tesseract.js resolves its worker, WASM
-  // core, and traineddata through Blob/blob-URL paths on some
-  // configuration/code paths, and its worker script uses string-to-DOM
-  // patterns that TT blocks — without a policy, the OCR pipeline dies in
-  // browsers with TT enabled. Scope the allowance narrowly: same-origin
-  // window URLs for assets served from /tesseract/* + a data-policy for the
-  // engine's internal data: documents, and deny others.
+  // first-party innerHTML/document.write sinks). The one library that reaches
+  // a TT sink is tesseract.js v6 (pinned): it has no createPolicy calls of its
+  // own and constructs its OCR worker from a plain string, so the gated
+  // `default` policy below is its escape hatch. That policy is deliberately
+  // narrow: same-origin http(s) script URLs only (framework chunks and the
+  // direct `/tesseract/worker.min.js` spawn ride the same gate; blob/data/
+  // javascript/cross-origin refused). The worker itself loads its WASM core
+  // via importScripts and traineddata via fetch inside its own realm, so no
+  // further CSP allowance is needed.
   //
   // Enforced in production only: React's development-mode eval and the
   // Turbopack dev chunk loader both violate require-trusted-types-for
@@ -143,10 +145,24 @@ function buildContentSecurityPolicy(nonce: string): string {
         // TrustedTypesGate component open a strictly gated, same-origin
         // fallback for libraries that are not TT-aware (tesseract.js v6 has
         // no createPolicy calls and builds its worker from a plain string —
-        // verified in the pinned bundle). Framework (`nextjs`) and DOMPurify
-        // names remain allowlisted for forward compatibility.
-        "trusted-types 'nextjs' 'dompurify' default",
-        "'allow-duplicates'",
+        // verified in the pinned bundle).
+        //
+        // Framework policy names are deliberately NOT allowlisted. They were
+        // emitted quoted (`'nextjs' 'dompurify'`) and Chrome rejected the
+        // quoted tokens as invalid policy names on every production page load
+        // — so they were pure console noise, and `createPolicy('nextjs')`
+        // threw "Policy disallowed" regardless (verified in the production
+        // build). Next.js's lazy route loader tolerates that failure and its
+        // plain chunk URLs then ride the strict `default` policy (same-origin
+        // only) — client-side navigation was verified violation-free under
+        // exactly that configuration. If a future Next.js version requires
+        // its own policy, add `nextjs` UNQUOTED (and re-verify navigation).
+        //
+        // 'allow-duplicates' is a keyword *within* the trusted-types
+        // directive's value list, not a directive of its own: emitting it as
+        // a separate directive makes it unknown-and-ignored, so a duplicate
+        // policy creation still throws where the keyword was meant to allow it.
+        "trusted-types default 'allow-duplicates'",
       ];
 
   return [
@@ -159,7 +175,12 @@ function buildContentSecurityPolicy(nonce: string): string {
     "img-src 'self' data: blob:",
     "font-src 'self' data:",
     connectSource,
-    "worker-src 'self' blob:",
+    // Workers load from same-origin script URLs only: Tesseract is spawned
+    // with `workerBlobURL: false` (direct /tesseract/worker.min.js) because
+    // production Trusted Types refuses the library's default blob wrapper.
+    // `blob:` is deliberately absent so a regression to blob spawning fails
+    // in every browser, not only Trusted-Types-enforcing ones.
+    "worker-src 'self'",
     "manifest-src 'self'",
     "media-src 'self' blob:",
     "frame-src 'none'",
@@ -225,6 +246,27 @@ export function proxy(request: NextRequest) {
       },
     });
 
+  // Public dynamic reference GETs (forms search, accredited-representative
+  // lookup) reach upstream VA quota and must be bounded even though the
+  // workflow limiter below only covers POSTs.
+  if (
+    method === "GET" &&
+    (pathname === "/va-forms" ||
+      pathname === "/va-reference" ||
+      pathname === "/presumptive/results" ||
+      pathname === "/secondary/suggestions" ||
+      pathname === "/va-account" ||
+      pathname.startsWith("/va-account/oauth/"))
+  ) {
+    const result = referenceReadLimiter.check(clientKey);
+    if (result.limited) {
+      return tooManyRequests(
+        { error: "Too many requests. Please try again later." },
+        result.retryAfterSeconds,
+      );
+    }
+  }
+
   // Server Action POSTs (Next.js form submissions to pages with server-only
   // directives) are rate-limited as workflow session writes.
   if (method === "POST" && !pathname.startsWith("/_next")) {
@@ -288,11 +330,12 @@ export default proxy;
 export const config = {
   matcher: [
     {
+      // No `missing` conditions: skipping any request by header (prefetch or
+      // otherwise) let an ordinary GET with `next-router-prefetch: 1` reach
+      // the app with no CSP and no security headers. Prefetch requests are
+      // cheap to serve and must still carry the mandatory policy; optional
+      // per-route limits below remain independent of this matcher.
       source: "/((?!_next/static|_next/image|favicon.ico|api/csp-report).*)",
-      missing: [
-        { type: "header", key: "next-router-prefetch" },
-        { type: "header", key: "purpose", value: "prefetch" },
-      ],
     },
   ],
 };

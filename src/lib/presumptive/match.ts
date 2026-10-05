@@ -15,12 +15,31 @@ function isValidServiceDate(value: string): boolean {
 
 export const serviceHistorySchema = z
   .object({
-    /** Optional administrative context; deliberately ignored by matchPresumptives. */
-    serviceBranchCodes: z.array(z.string().trim().min(1).max(64)).max(8).optional(),
-    /** Location labels the user selected, matched exactly against the data. */
-    locations: z.array(z.string().min(1)).min(1, {
-      message: "Select at least one location where you served.",
-    }),
+    /**
+     * Optional administrative context; deliberately ignored by
+     * matchPresumptives. Branch codes are display context only, so they are
+     * shape-bound (uppercase token, 8 max) rather than enum-bound — the set of
+     * valid branch codes is a VA reference that may change independently, and a
+     * stored value that is not in the current display list simply renders as
+     * no branch chip.
+     */
+    serviceBranchCodes: z
+      .array(z.string().trim().regex(/^[A-Z][A-Z0-9_]{0,31}$/, {
+        message: "Branch codes must be short uppercase tokens.",
+      }))
+      .max(8)
+      .optional(),
+    /**
+     * Location labels the user selected, matched exactly against the data.
+     * Count and per-item length are capped so a hostile form post cannot write
+     * an oversized encrypted cookie or force unbounded matching work.
+     * Membership against the exposure catalog is enforced by the Server Action
+     * (the schema module has no catalog dependency).
+     */
+    locations: z
+      .array(z.string().trim().min(1).max(120))
+      .min(1, { message: "Select at least one location where you served." })
+      .max(50, { message: "Select at most 50 locations." }),
     serviceStart: serviceDateSchema.nullable().default(null),
     serviceEnd: serviceDateSchema.nullable().default(null),
   })

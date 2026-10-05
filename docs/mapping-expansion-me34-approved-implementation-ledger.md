@@ -22,7 +22,7 @@ ME-34 adds four conservative, draft-only, association-only mappings over existin
 ## Deferred and rejected candidates
 
 - `benign-prostatic-hyperplasia -> urinary-incontinence` was deferred because `benign-prostatic-hyperplasia.json` already contains two published, citation-verified suggestions; adding a pending reference would violate the fail-closed publication gate. The pre-existing BPH mappings were restored unchanged.
-- `bruxism-awake-sleep -> tmj-dysfunction` was rejected because PMID 9758394 concluded juvenile bruxism appeared unrelated to TMJ symptoms.
+- `bruxism-awake-sleep -> tmj-dysfunction` was rejected because PMID 9758394 concluded juvenile bruxism appeared unrelated to TMJ symptoms. **SUPERSEDED AS TO OUTCOME ONLY (2026-10-04):** the signed ME-34 reopening disposition (docs/catalog-identity-migration-design-2026-09-29.md, qualified-human decision 2026-09-29; executed as Stage 3c on 2026-10-04) reconciled the juvenile null with the adult meta-analytic association as an age-scope matter and authorized the `bruxism-awake-sleep` → `tmj-disorder` route only (adult anchors PMID 37474733 and PMID 27796166; the juvenile null PMID 9758394 carried as an explicit counterweight, direction unresolved). This historical rejection text is not rewritten, and no other ME-34 conclusion is reopened.
 
 ## Aggregate ratchet
 

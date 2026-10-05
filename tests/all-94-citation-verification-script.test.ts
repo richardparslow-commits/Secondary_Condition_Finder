@@ -30,7 +30,7 @@ function createFixture(): string {
     return { primaryId, targetId, pmid };
   });
 
-  for (let index = 0; index < 817; index += 1) {
+  for (let index = 0; index < 819; index += 1) {
     const primaryId = index < 94
       ? promotedRelationshipUses[index].primaryId
       : `placeholder-${String(index - 93).padStart(3, "0")}`;

@@ -130,4 +130,30 @@ describe("Phase 2 VA Adapter Failure-Mode & Resilience Suite", () => {
     expect(result.success).toBe(false);
     expect(result.error).toContain("invalid disability rating payload");
   });
+
+  it("refuses to follow an upstream redirect with the credential header", async () => {
+    const fetchSpy = vi.fn().mockResolvedValue(
+      new Response(null, {
+        status: 302,
+        headers: { Location: "https://attacker.example/collect" },
+      }),
+    );
+    vi.stubGlobal("fetch", fetchSpy);
+
+    const result = await fetchSandboxVABits("user-123", {
+      enabled: true,
+      timeoutMs: 1000,
+      baseUrl: "https://sandbox.va.gov/disability-rating",
+      apiKey: "sandbox-key",
+    });
+
+    expect(result.success).toBe(false);
+    expect(result.error).toContain("status 302");
+    // One request to the configured origin; the redirect is not followed.
+    expect(fetchSpy).toHaveBeenCalledTimes(1);
+    expect(fetchSpy).toHaveBeenCalledWith(
+      new URL("https://sandbox.va.gov/disability-rating"),
+      expect.objectContaining({ redirect: "error" }),
+    );
+  });
 });

@@ -26,11 +26,26 @@ import {
   type SecondaryValidationPath,
 } from "@/lib/secondary-workflow/validation";
 
-function appendFormData(params: QueryParams, formData: FormData): QueryParams {
+/**
+ * Merge only the fields the current step owns.
+ *
+ * The previous implementation copied every submitted key over session-derived
+ * params, so a late-step request could overpost earlier-step fields (diagnosed,
+ * serviceConnected, ratings) and then satisfy a self-consistent but wrong-stage
+ * validation. Each action now passes an explicit allowlist; prior-step values
+ * remain session-authoritative because they are never read from the form.
+ */
+function appendFormData(
+  params: QueryParams,
+  formData: FormData,
+  allowKey: (key: string) => boolean,
+): QueryParams {
   const next: QueryParams = { ...params };
   const keys = new Set<string>();
 
-  for (const [key] of formData.entries()) keys.add(key);
+  for (const [key] of formData.entries()) {
+    if (allowKey(key)) keys.add(key);
+  }
 
   for (const key of keys) {
     const values = formData
@@ -41,6 +56,23 @@ function appendFormData(params: QueryParams, formData: FormData): QueryParams {
   }
 
   return next;
+}
+
+/**
+ * Validation failures must hold the user on their step. An uncaught parse
+ * throw (unknown-only IDs, an out-of-range timeline year, a malformed symptom
+ * id) previously escaped the persistence catch and surfaced as a generic 500.
+ */
+function parseOrRedirect<T>(
+  path: SecondaryValidationPath,
+  code: SecondaryValidationCode,
+  parse: () => T,
+): T {
+  try {
+    return parse();
+  } catch {
+    redirectValidation(path, code);
+  }
 }
 
 function redirectValidation(
@@ -100,7 +132,12 @@ export async function saveDiagnosedSelection(formData: FormData): Promise<void> 
   }
 
   const catalog = loadConditionCatalog();
-  const parsed = parseDiagnosedSelection(appendFormData({}, formData), catalog);
+  const parsed = parseOrRedirect("/secondary/diagnosed", "select-diagnosed", () =>
+    parseDiagnosedSelection(
+      appendFormData({}, formData, (key) => key === "diagnosed"),
+      catalog,
+    ),
+  );
 
   try {
     await writeSecondaryWorkflowSession({
@@ -199,9 +236,22 @@ export async function saveServiceConnectedSelection(formData: FormData): Promise
     diagnosedConditionIds,
   });
   delete currentParams.serviceConnected;
-  const parsed = parseServiceConnectedSelection(
-    appendFormData(currentParams, formData),
-    catalog,
+  const diagnosedIdSet = new Set(diagnosedConditionIds);
+  const parsed = parseOrRedirect(
+    "/secondary/service-connected",
+    "answer-service-connected",
+    () =>
+      parseServiceConnectedSelection(
+        appendFormData(
+          currentParams,
+          formData,
+          (key) =>
+            key === "serviceConnected" ||
+            (key.startsWith("serviceConnected-") &&
+              diagnosedIdSet.has(key.slice("serviceConnected-".length))),
+        ),
+        catalog,
+      ),
   );
 
   try {
@@ -254,9 +304,18 @@ export async function saveRatingsSelection(formData: FormData): Promise<void> {
     }
   }
 
-  const parsed = parseRatingsSelection(
-    appendFormData(workflowSessionToQueryParams(current), formData),
-    catalog,
+  const serviceConnectedIdSet = new Set(serviceConnectedConditionIds);
+  const parsed = parseOrRedirect("/secondary/ratings", "invalid-rating", () =>
+    parseRatingsSelection(
+      appendFormData(
+        workflowSessionToQueryParams(current),
+        formData,
+        (key) =>
+          key.startsWith("rating-") &&
+          serviceConnectedIdSet.has(key.slice("rating-".length)),
+      ),
+      catalog,
+    ),
   );
 
   try {
@@ -297,9 +356,26 @@ export async function saveDocumentsSelection(formData: FormData): Promise<void> 
 
   const catalog = loadConditionCatalog();
   const current = await readSecondaryWorkflowSession();
-  const parsed = parseDocumentsSelection(
-    appendFormData(workflowSessionToQueryParams(current), formData),
-    catalog,
+  const diagnosedIdSet = new Set(current.diagnosedConditionIds ?? []);
+  if (diagnosedIdSet.size === 0) {
+    redirectValidation("/secondary/diagnosed", "select-diagnosed");
+  }
+  const CONTEXT_KEYS = new Set([
+    "documentsShared",
+    "medications",
+    "treatments",
+    "history",
+    "symptomIds",
+  ]);
+  const parsed = parseOrRedirect("/secondary/upload", "invalid-context", () =>
+    parseDocumentsSelection(
+      appendFormData(workflowSessionToQueryParams(current), formData, (key) => {
+        if (CONTEXT_KEYS.has(key)) return true;
+        const timelineMatch = /^(?:onsetYear|diagnosisYear)-(.+)$/.exec(key);
+        return timelineMatch !== null && diagnosedIdSet.has(timelineMatch[1]);
+      }),
+      catalog,
+    ),
   );
 
   try {

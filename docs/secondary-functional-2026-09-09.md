@@ -1,5 +1,7 @@
 # Functional Specification: Secondary Condition Finder
 
+> **Historical snapshot (2026-09-09).** This document records the system as it stood on that date and is superseded by `docs/functional-specification.md`. Some statements are intentionally stale: in particular, the automatic OpenTelemetry trace export described here is disabled by policy today (`src/lib/observability/telemetry-policy.ts`).
+
 ## Executive Summary
 
 Secondary Condition Finder is a web-based claim-preparation research aid for U.S. Veterans preparing disability claims with the Department of Veterans Affairs (VA). The application helps Veterans and their representatives organize research into potential secondary service-connected disabilities and presumptive conditions by providing a curated knowledge base, guided workflows, and evidence-evaluation tools. The application is not a diagnostic or eligibility determination system—it is an informational research accelerator that surfaces possible claim pathways for qualified medical and legal professionals to evaluate.

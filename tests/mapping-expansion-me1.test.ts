@@ -52,9 +52,9 @@ describe("Mapping Expansion Batch ME-1", () => {
   it("preserves the ME-1 closed baseline while allowing later approved expansion batches", () => {
     const files = fs.readdirSync(kb).filter((n) => n.endsWith(".json"));
     const maps = files.map((n) => JSON.parse(fs.readFileSync(path.join(kb, n), "utf8")) as Map);
-    expect(files).toHaveLength(817);
+    expect(files).toHaveLength(819);
     expect(maps.filter((m) => m.draft === false)).toHaveLength(140);
-    expect(maps.filter((m) => m.draft === true)).toHaveLength(677);
+    expect(maps.filter((m) => m.draft === true)).toHaveLength(679);
     expect(maps.reduce((n, m) => n + (m.suggestions ?? []).length, 0)).toBeGreaterThanOrEqual(178);
     const refs = maps.flatMap((m) => (m.suggestions ?? []).flatMap((s) => s.sourceReferences ?? []));
     expect(refs.length).toBeGreaterThanOrEqual(186);

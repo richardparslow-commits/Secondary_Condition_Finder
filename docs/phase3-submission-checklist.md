@@ -15,9 +15,9 @@ Use this immediately before completing the VA API Platform production-access for
 - [ ] Production Runtime Readiness succeeded from that same successful `main` CI lineage.
 - [ ] `SECURITY.md`, `docs/security-operations.md`, `docs/deployment-readiness.md`, and `docs/va-api-runtime-configuration.md` match the final production architecture.
 
-## Current verified production checkpoint
+## Historical production checkpoint — not current submission proof
 
-The repository has a current objective checkpoint, but these checks must be repeated for the final submission commit:
+The following repository-recorded checkpoint is historical; resolve and verify the exact final submission build instead of copying these values into current evidence:
 
 - [x] `main` `193f26030b9b90b81c832c6a645f179717abf307` verified.
 - [x] CI #797 succeeded on that exact commit, including real-browser E2E.
@@ -26,7 +26,7 @@ The repository has a current objective checkpoint, but these checks must be repe
 - [x] Production Runtime Readiness #156 succeeded on that exact lineage.
 - [x] Production `/va-reference` returned HTTP 200 and clearly labeled local fallback while VA access remained disabled.
 
-This checkpoint does not satisfy #189, #195, or future submission-time freshness by itself.
+This checkpoint does not replace the separately recorded #189 sandbox evidence, does not satisfy #195, and is not a production grant or live VA production connectivity check.
 
 ## Applicant and organization information
 
@@ -61,7 +61,7 @@ Request only:
 - [ ] VA Forms API — Open Data.
 - [ ] Benefits Reference Data API — Open Data.
 
-Do not request Benefits Intake, Benefits Claims, Benefits Documents, Veteran health APIs, or other authenticated Veteran-specific APIs in this package unless a separately reviewed scope change occurs.
+Do not request Benefits Intake, Benefits Claims, Benefits Documents, Veteran health APIs, or other authenticated Veteran-specific APIs in this package unless a separately reviewed scope change occurs. The read-only `/va-account` sandbox experiment is a separate phase and remains excluded from this production request; see [sandbox account gates](va-account-sandbox.md).
 
 ## VA Forms justification
 
@@ -116,16 +116,17 @@ State only implemented behavior:
 - health/disability/service-history workflow state is kept out of URLs;
 - workflow state uses short-lived encrypted/authenticated cookies;
 - optional evidence ingestion is browser-local and raw selected document bytes/text are not intentionally sent to application server state;
-- the current application does not persist workflow/recommendation event history through an application event logger;
+- operational workflow/recommendation events include allowlisted action/status/route/count/duration fields and are emitted to platform logs; verify host retention and exception sanitation instead of claiming no event logging;
 - VA adapter observations omit credentials, query values, response bodies, and workflow selections;
-- VA public-reference response bodies are not intentionally persisted;
+- successful public-reference response views are cached for five minutes, including lookup parameters echoed inside cache values; hashing keys does not anonymize those values;
 - shared reference status exposes only source/environment/retrieval/cache state.
 
 ## Reliability and rate-limit answer
 
 - [ ] State default 4-second per-attempt timeout.
-- [ ] State maximum two attempts.
-- [ ] State one retry only for HTTP 429/503/504 or transient timeout/network failure.
+- [ ] State at most three attempts for public-reference network/timeout and HTTP 503/504 failures, with bounded backoff/jitter.
+- [ ] State that HTTP 429/500 returns fallback without an immediate retry. Do not claim faithful fleet Retry-After handling until the audited circuit/coordination defects are repaired.
+- [ ] Identify the separate read-only sandbox account transport: one bounded attempt, no background polling, no account-data fallback.
 - [ ] State invalid payloads fail closed.
 - [ ] State no background polling/bulk synchronization is implemented.
 - [ ] Explain shared five-minute successful-response caching.

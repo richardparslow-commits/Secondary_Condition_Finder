@@ -322,6 +322,22 @@
       ]
     },
     {
+      "id": "sarcopenia",
+      "name": "Sarcopenia",
+      "aliases": [
+        "muscle wasting",
+        "muscle loss",
+        "age-related muscle loss"
+      ],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [],
+      "reviewNotes": [
+        "Added 2026-10-03 as staged Leg A execution of the signed catalog identity migration design dated 2026-09-29 (docs/catalog-identity-migration-design-2026-09-29.md), closing the corpus-review catalog gap behind the withheld liver-cancer to sarcopenia route (D1 batch 91), recorded in docs/missing-identity-addition-roadmap.md. This addition moves the frozen identity contract 817/817 to 818/818; Leg B (alcohol-use-disorder) of the same design remains to land. The route is unblocked and its evidence was located on 2026-10-03: PMID 37274463, PMID 36590214 and PMID 26266324 are absent from the registry, cleared by source-status preflight with zero blocking flags, and authored as the first real adjacency edge in data/knowledge-base/graph/liver-cancer.json; the authored-corpus registration (suggestion and registry lockstep) landed the same day under Stage 3b, moving the citation ratchets to 1,693 live reference uses / 1,298 pending and 1,486 source entities.",
+        "Rating authority is deliberately left empty per docs/condition-catalog.md step 4 (never invent a code): a qualified human must confirm whether sarcopenia is evaluated under the muscle-injury framework of 38 CFR 4.73 or rated as a residual of its underlying etiology before any ratingSchedule citation is recorded, and any citation added by automated work stays verified: false.",
+        "Scope guards: this identity is the clinical syndrome of progressive loss of skeletal muscle mass and strength, NOT the separate muscle-atrophy / interosseous-muscle-atrophy identities (denervation and disuse forms) and NOT cancer cachexia, which is a distinct systemic wasting syndrome with its own inflammation-dominant literature; the cachexia gap remains open and separate. Liver-cancer sarcopenia claims must state the myopenic/cachectic boundary on the face of the edge."
+      ]
+    },
+    {
       "id": "scars",
       "name": "Scars (Painful or Unstable)",
       "aliases": [

@@ -1,7 +1,16 @@
-import { registerOTel } from "@vercel/otel";
+import { AUTOMATIC_TRACE_EXPORT } from "@/lib/observability/telemetry-policy";
 
 export function register() {
-  registerOTel({ serviceName: "secondary-condition-finder" });
+  // Automatic trace export is policy-gated: see telemetry-policy.ts for the
+  // decision and the requirements to re-enable it, and
+  // tests/telemetry-policy.test.ts for the canaries that enforce it. Do not
+  // call `registerOTel` while the policy is disabled — framework spans would
+  // carry query strings and exception text past the application log redaction.
+  if (AUTOMATIC_TRACE_EXPORT.enabled) {
+    // Deliberately empty while the policy is disabled: enabling this branch
+    // requires the sanitizing processor plus the collector review first.
+  }
+  if (process.env.NEXT_RUNTIME === "edge") return;
   // Custom OTEL metrics (recommendation latency, VA API latency/errors,
   // evidence parser) are registered lazily via src/lib/observability/logger.ts
   // so they inherit the same OTel exporter without extra configuration.

@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "suitePath": "tests/va-fleet-simulation.test.ts",
+  "ceilingMs": 60000,
+  "floorMs": 5000,
+  "tightenFactor": 4,
+  "windowSize": 5,
+  "environments": {
+    "local": {
+      "maxBudgetMs": 5000,
+      "observations": [
+        {
+          "ms": 1440,
+          "at": "2026-10-03"
+        },
+        {
+          "ms": 970,
+          "at": "2026-10-03"
+        },
+        {
+          "ms": 1020,
+          "at": "2026-10-03"
+        },
+        {
+          "ms": 960,
+          "at": "2026-10-03"
+        },
+        {
+          "ms": 1189,
+          "at": "2026-10-04"
+        }
+      ]
+    }
+  }
+}

@@ -90,16 +90,22 @@ describe("Mapping Expansion Batch ME-34", () => {
   it("ratchets the authoritative counts without changing publication totals", () => {
     expect(relationships.currentState).toBe("D1-DRAFT-AUTHORED");
     expect(sources.currentState).toBe("D1-DRAFT-AUTHORED");
-    expect(relationships.counts).toEqual({ relationships: 870, explicitPublicationGuards: 796, legacyRationaleBoundaries: 74 });
-    expect(relationships.relationships).toHaveLength(870);
-    expect(sources.counts).toMatchObject({ liveSourceReferenceUses: 1690, pendingVerificationSourceEntities: 1117, pendingClinicalSourceEntities: 1117, totalSourceEntitiesIncludingLineage: 1483, });
-    expect(sources.sources).toHaveLength(1483);
+    expect(relationships.counts).toEqual({ relationships: 875, explicitPublicationGuards: 801, legacyRationaleBoundaries: 74 });
+    expect(relationships.relationships).toHaveLength(875);
+    expect(sources.counts).toMatchObject({ liveSourceReferenceUses: 1704, pendingVerificationSourceEntities: 1128, pendingClinicalSourceEntities: 1128, totalSourceEntitiesIncludingLineage: 1497, });
+    expect(sources.sources).toHaveLength(1497);
   });
 
   it("keeps the deferred and rejected candidates out of ME-34", () => {
     const bph = load<Mapping>("data/knowledge-base/benign-prostatic-hyperplasia.json");
     expect(bph.draft).toBe(false);
     expect(bph.suggestions.map((suggestion) => suggestion.conditionId)).toEqual(["chronic-kidney-disease", "urethral-stricture"]);
-    expect(load<Mapping>("data/knowledge-base/bruxism-awake-sleep.json").suggestions).toHaveLength(0);
+    // Stage 3c (2026-10-04): the signed ME-34 reopening authored the
+    // bruxism-awake-sleep -> tmj-disorder edge (docs/catalog-identity-migration-design-2026-09-29.md,
+    // qualified-human disposition 2026-09-29; age-scope reconciliation with the juvenile null
+    // PMID 9758394 carried as an explicit counterweight). The zero-suggestions pin moves 0 -> 1
+    // here; the ME-34 ledger record itself is annotated as superseded as to outcome only and is
+    // not rewritten, and no other ME-34 conclusion is reopened.
+    expect(load<Mapping>("data/knowledge-base/bruxism-awake-sleep.json").suggestions).toHaveLength(1);
   });
 });

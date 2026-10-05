@@ -1,7 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 import type {
   TimelineConditionInput,
@@ -32,13 +32,54 @@ interface SecondarySuggestionsTabsProps {
   children: React.ReactNode;
 }
 
+const TAB_ORDER = ["list", "timeline"] as const;
+type TabId = (typeof TAB_ORDER)[number];
+
 export function SecondarySuggestionsTabs({
   conditions,
   connections,
   datedCount,
   children,
 }: SecondarySuggestionsTabsProps) {
-  const [active, setActive] = useState<"list" | "timeline">("list");
+  const [active, setActive] = useState<TabId>("list");
+  const tabRefs = useRef<Partial<Record<TabId, HTMLButtonElement | null>>>({});
+
+  /**
+   * WAI-ARIA Tabs keyboard contract: ArrowLeft/ArrowRight move between tabs
+   * (wrapping), Home/End jump to the first/last. Activation follows focus
+   * (standard for two tabs with no async panel load). Roving tabIndex keeps
+   * only the selected tab in the tab sequence.
+   */
+  function onKeyDown(event: React.KeyboardEvent<HTMLButtonElement>, current: TabId) {
+    const index = TAB_ORDER.indexOf(current);
+    let next: TabId | null = null;
+    switch (event.key) {
+      case "ArrowRight":
+        next = TAB_ORDER[(index + 1) % TAB_ORDER.length];
+        break;
+      case "ArrowLeft":
+        next = TAB_ORDER[(index - 1 + TAB_ORDER.length) % TAB_ORDER.length];
+        break;
+      case "Home":
+        next = TAB_ORDER[0];
+        break;
+      case "End":
+        next = TAB_ORDER[TAB_ORDER.length - 1];
+        break;
+      default:
+        return;
+    }
+    event.preventDefault();
+    setActive(next);
+    tabRefs.current[next]?.focus();
+  }
+
+  const tabClassName = (tab: TabId) =>
+    `rounded-t-lg border border-b-0 px-4 py-2 text-sm font-semibold ${
+      active === tab
+        ? "border-slate-200 bg-white text-slate-900"
+        : "border-transparent bg-slate-100 text-slate-600 hover:bg-slate-200"
+    }`;
 
   return (
     <div>
@@ -53,12 +94,13 @@ export function SecondarySuggestionsTabs({
           aria-selected={active === "list"}
           aria-controls="panel-list"
           id="tab-list"
+          tabIndex={active === "list" ? 0 : -1}
+          ref={(node) => {
+            tabRefs.current.list = node;
+          }}
           onClick={() => setActive("list")}
-          className={`rounded-t-lg border border-b-0 px-4 py-2 text-sm font-semibold ${
-            active === "list"
-              ? "border-slate-200 bg-white text-slate-900"
-              : "border-transparent bg-slate-100 text-slate-600 hover:bg-slate-200"
-          }`}
+          onKeyDown={(event) => onKeyDown(event, "list")}
+          className={tabClassName("list")}
         >
           List view
         </button>
@@ -68,12 +110,13 @@ export function SecondarySuggestionsTabs({
           aria-selected={active === "timeline"}
           aria-controls="panel-timeline"
           id="tab-timeline"
+          tabIndex={active === "timeline" ? 0 : -1}
+          ref={(node) => {
+            tabRefs.current.timeline = node;
+          }}
           onClick={() => setActive("timeline")}
-          className={`rounded-t-lg border border-b-0 px-4 py-2 text-sm font-semibold ${
-            active === "timeline"
-              ? "border-slate-200 bg-white text-slate-900"
-              : "border-transparent bg-slate-100 text-slate-600 hover:bg-slate-200"
-          }`}
+          onKeyDown={(event) => onKeyDown(event, "timeline")}
+          className={tabClassName("timeline")}
         >
           Timeline
           {datedCount === 0 ? (

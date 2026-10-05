@@ -37,6 +37,10 @@ describe("health endpoint crash resilience", () => {
     expect(body.status).toBe("healthy");
     expect(body.components.catalog.status).toBe("ok");
     expect(body.components.sessionCrypto.status).toBe("ok");
+    // The real (unmocked) adjacency loader must surface validated counts.
+    expect(body.components.kbGraph.status).toBe("ok");
+    expect(typeof body.components.kbGraph.nodes).toBe("number");
+    expect(typeof body.components.kbGraph.edges).toBe("number");
     expect(body.latencyMs).toBeGreaterThanOrEqual(0);
     expect(body.timestamp).toBeDefined();
   });

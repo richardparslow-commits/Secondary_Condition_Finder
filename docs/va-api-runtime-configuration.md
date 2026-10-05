@@ -131,6 +131,14 @@ When the shared KV is **configured**, the `requestVaJson` distributed-runtime ga
 
 The shared KV is wired into every reference loader (`forms-finder`, `form-reference`, `disability-reference`, `service-branches`, `accredited-representatives`) as `process-local hit` → `shared hit (rehydrate process-local, return)` → `live fetch` → `write both`. Shared reads/writes are best-effort with a `750ms` timeout, `256 KiB` value guard, and never throw — a KV hiccup just degrades to the next tier or to the local fallback.
 
+The shared tier is bounded and revocable by policy, not just by TTL:
+
+- **Key policy** — only the allowlisted namespaces `forms:`, `accredited-rep:`, `disabilities:`, and `service-branches:` are read or written (lowercase `[a-z0-9:_-]`, ≤256 chars); user-supplied segments are SHA-256-hashed, never raw.
+- **Finite cardinality** — writes are admitted against a per-namespace window budget (`VA_SHARED_KEY_WRITE_WINDOW_SECONDS=300`, `VA_SHARED_KEY_WRITE_MAX_PER_WINDOW=240`), bounding residency at ≤480 keys per namespace and ≤1,920 across the allowlist. An exhausted budget or an unreachable counter skips the write (colder cache, never incorrect).
+- **Global invalidation** — entries are stored as `{envelopeVersion:2, epoch, value}` and a read is a single atomic `MGET [cache-epoch, value]` that accepts the value only under the epoch it observes. `POST /api/admin/cache-clear` (Bearer `CRON_SECRET` / `REGULATORY_SYNC_SECRET`) advances the epoch, so every instance drops previously cached shared entries immediately without a delete sweep; an unreadable epoch marker fails closed (reads miss, writes are skipped).
+- **Single-flight per key** — on a cold or expired key one instance claims a `SET … NX PX` lease (120 s, covering the longest legal logical fetch) and contenders wait a bounded 600 ms for the published value before falling back to their own fetch, so a fleet-wide TTL expiry or invalidation does not multiply upstream requests; the lease fails open (an unreachable coordinator simply means the normal fetch path, gated by the consumer budget).
+- **Read-side trust guard** — a shared hit is served only if it still matches this deployment's provenance (`source`/`environment` for the configured mode), carries bounded label metadata, and holds only credential-free HTTPS links; otherwise it counts as a miss and the loader refetches. VA-provided `url`/`website` values are additionally approved at the payload boundary (`trusted-link.ts`), so `javascript:`/`data:`/`http:`/credential-bearing links never reach a rendered `<a href>`.
+
 Configuration — configure **one** URL+token pair (all aliases are equivalent; use whichever your provider sets):
 
 ```text

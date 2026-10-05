@@ -1,0 +1,186 @@
+[
+  {
+    "secondaryCondition": "Migraine headaches",
+    "secondaryDiagnosticCode": "8100 (38 CFR § 4.124a)",
+    "primaryCondition": "Tinnitus, recurrent (service-connected)",
+    "primaryDiagnosticCode": "6260 (38 CFR § 4.87)",
+    "nexusTheory": "Aggravation",
+    "etiologicalMechanism": "Chronic subjective tinnitus is sustained by maladaptive central auditory plasticity — reduced inhibition and increased spontaneous firing in the dorsal cochlear nucleus and auditory cortex — amplified by limbic/attentional networks and by comorbid sleep disruption. Migraine is a trigeminovascular disorder with cortical hyperexcitability and impaired sensory habituation; trigeminal activation releases CGRP and can modulate auditory-cortex gain, and clinical observation shows that migraine attacks can change tinnitus loudness in some patients, while up to 45% of tinnitus patients report comorbid migraine. Population evidence is strongest in the direction migraine→tinnitus (a systematic review of 26,166 participants found high odds/hazard ratios for migraine as a tinnitus-associated condition), so the defensible secondary theory is aggravation of an already-documented migraine baseline by service-connected tinnitus: continuous aversive auditory input, tinnitus-related distress, and sleep fragmentation act as nonspecific triggers that lower the trigeminovascular activation threshold and increase attack frequency and severity. A prospective study of 286 clinically examined tinnitus patients found 49.3% met ICHD-3 criteria for a headache disorder (mostly tension-type or migraine), with 58.16% reporting identical localization of tinnitus and head pain — supporting shared central pathophysiology rather than coincidence. Under 38 CFR § 3.310(b), aggravation requires a documented baseline migraine disorder worsened beyond its expected course; de novo causation of migraine by tinnitus is not established by longitudinal evidence. Because the association is bidirectional and confounded by insomnia, medication-overuse headache, cervicalgia, and stress, a nexus opinion must address chronology, headache diaries before and after tinnitus onset/severity change, and alternative etiologies.",
+    "medicalEvidence": [
+      {
+        "title": "Migraine associated with tinnitus and hearing loss in adults: a systematic review",
+        "authors": "Campello CP, Lemos C, Andrade W, et al.",
+        "summary": "PROSPERO-registered systematic review of 6 observational studies (26,166 participants). Most studies showed an association between migraine and tinnitus, with high odds and hazard ratios for tinnitus among migraineurs; migraine was present in 10.1% and 22.5% of tinnitus patients in two investigations.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/36459425/"
+      },
+      {
+        "title": "The Prevalence of Different Types of Headache in Patients with Subjective Tinnitus and Its Influence on Tinnitus Parameters: A Prospective Clinical Study",
+        "authors": "Nowaczewska M, Wiciński M, Straburzyński M, Kaźmierczak W",
+        "summary": "Prospective study of 286 patients with subjective non-pulsating tinnitus; 141 (49.3%) were diagnosed with headache (mostly tension-type or migraine), and 58.16% reported the same localization of tinnitus and headache. Higher tinnitus burden (THI), younger age, female sex, and hearing loss were independently associated with headache.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/33114375/"
+      },
+      {
+        "title": "A proposed association between subjective nonpulsatile tinnitus and migraine",
+        "authors": "Lee A, Abouzari M, Akbarpour M, et al.",
+        "summary": "Narrative review proposing shared central mechanisms: up to 45% of tinnitus patients have comorbid migraine; trigeminal nerve activation of the auditory cortex during attacks and increased vascular permeability are hypothesized to exacerbate tinnitus. Notes promising responses of tinnitus to migraine therapies.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/37383326/"
+      },
+      {
+        "title": "Low Evidence for Tinnitus Risk Factors: A Systematic Review and Meta-analysis",
+        "authors": "Biswas R, Genitsaridi E, Trpchevska N, et al.",
+        "summary": "Systematic review restricted to cohort/case-control designs (49 studies screened, 25 with usable estimates). Found little robust evidence for causal risk factors beyond hearing-related exposures — an important ceiling on causation claims for tinnitus pathways.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/36380120/"
+      }
+    ],
+    "cfrCitations": [
+      "38 CFR § 3.310(a)-(b) (secondary service connection; aggravation)",
+      "38 CFR § 4.87, DC 6260 (tinnitus, recurrent)",
+      "38 CFR § 4.124a, DC 8100 (migraine)"
+    ]
+  },
+  {
+    "secondaryCondition": "Gastroesophageal reflux disease (GERD)",
+    "secondaryDiagnosticCode": "7206 (38 CFR § 4.114)",
+    "primaryCondition": "Service-connected knee osteoarthritis on chronic NSAID therapy",
+    "primaryDiagnosticCode": "5003 (degenerative arthritis; evaluated under § 4.71a knee criteria)",
+    "nexusTheory": "Medication Side Effect",
+    "etiologicalMechanism": "NSAIDs injure the upper gastrointestinal tract through two complementary mechanisms. Systemically, COX-1 (and COX-2) inhibition depletes prostaglandins (PGE2, PGI2) that maintain mucosal blood flow, mucus/bicarbonate secretion, epithelial repair, and immunoregulation, leaving the esophageal and gastroduodenal mucosa vulnerable to acid and pepsin; topically, prolonged tablet contact with esophageal mucosa — especially at anatomic narrowings and with recumbent dosing or inadequate fluid — causes chemical ('pill') esophagitis. A review of more than 650 published drug-induced esophagitis cases classified 21.8% as NSAID-associated injury aggravated by coexisting reflux, and meta-analytic data from 460,984 subjects found NSAID/aspirin use associated with reflux symptoms (OR 1.44; 95% CI 1.10-1.88). A representative national survey of 6,823 French adults found GERD symptoms significantly more common among NSAID users (27% vs 19%, P ≤ 0.001), with NSAID use remaining an independent predictor after logistic regression. Under 38 CFR § 3.310(a), a disability proximately resulting from treatment of a service-connected condition is itself service-connected, so documented chronic NSAID therapy for service-connected osteoarthritis can support GERD as a secondary medication-effect claim — the theory the corpus already applies to the analogous rheumatoid-arthritis→GERD edge. Critical limits: NSAIDs are more strongly associated with dyspepsia and peptic ulcer disease than with GERD per se; dyspepsia is not GERD, and ulcer/gastritis must be rated under its own diagnostic codes. A nexus opinion must document drug, dose, and duration; GERD diagnosis (not symptom overlap); and exclusion of hiatal hernia, obesity, smoking, alcohol, H. pylori, and other reflux causes.",
+    "medicalEvidence": [
+      {
+        "title": "Global prevalence of, and risk factors for, gastro-oesophageal reflux symptoms: a meta-analysis",
+        "authors": "Eusebi LH, Ratnakumaran R, Yuan Y, et al.",
+        "summary": "Meta-analysis of 108 populations (460,984 subjects): pooled weekly GORD symptom prevalence 13.3% (95% CI 12.0-14.6). NSAID/aspirin use was associated with reflux symptoms (OR 1.44; 95% CI 1.10-1.88), alongside age ≥50, smoking, and obesity.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/28232473/"
+      },
+      {
+        "title": "Nonsteroidal anti-inflammatory drug use as a risk factor for gastro-oesophageal reflux disease: an observational study",
+        "authors": "Ruszniewski P, Soufflet C, Barthélémy P",
+        "summary": "National survey of 6,823 evaluable French adults: 33% reported NSAID use in the prior 3 months; GERD symptoms were significantly more common in NSAID users (27% vs 19%, P ≤ 0.001), and NSAID use was an independent predictor of reflux symptoms on logistic regression.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/18671778/"
+      },
+      {
+        "title": "Drug-induced esophagitis",
+        "authors": "Zografos GN, Georgiadou D, Thomas D, Kaltsas G, Digalakis M",
+        "summary": "Review of >650 reported drug-induced esophagitis cases from 30+ medications. NSAID-associated injury accounted for 21.8% of the persistent-esophagitis group, with injury aggravated by coexisting gastroesophageal reflux; lesions predominate at anatomic narrowings (75.6% middle third).",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/19392845/"
+      },
+      {
+        "title": "Prostaglandins, NSAIDs, and gastric mucosal protection: why doesn't the stomach digest itself?",
+        "authors": "Wallace JL",
+        "summary": "Mechanistic review establishing that prostaglandin synthesis blockade by NSAIDs impairs essentially every component of mucosal defense and repair, explaining increased susceptibility to injury and impaired ulcer healing with chronic NSAID ingestion.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/18923189/"
+      },
+      {
+        "title": "Non-Steroidal Anti-Inflammatory Drugs (NSAIDs) Induced Dyspepsia",
+        "authors": "Yap PR, Goh KL",
+        "summary": "Review clarifying that NSAIDs significantly increase dyspepsia risk, that dyspepsia correlates poorly with underlying ulceration, and that erosive esophagitis may contribute — an important caution against equating NSAID dyspepsia with a GERD diagnosis.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/26369685/"
+      }
+    ],
+    "cfrCitations": [
+      "38 CFR § 3.310(a) (disability proximately due to treatment of a service-connected condition)",
+      "38 CFR § 4.114, DC 7206 (GERD; evaluated under DC 7203 criteria)",
+      "38 CFR § 4.114, DC 7203 (esophagitis/stricture) and DC 7346 (hiatal hernia) where applicable",
+      "38 CFR § 4.71a, DC 5003 (primary degenerative arthritis)"
+    ]
+  },
+  {
+    "secondaryCondition": "Tinnitus, recurrent",
+    "secondaryDiagnosticCode": "6260 (38 CFR § 4.87)",
+    "primaryCondition": "Traumatic brain injury (TBI) with residuals",
+    "primaryDiagnosticCode": "8045 (38 CFR § 4.124a)",
+    "nexusTheory": "Causation",
+    "etiologicalMechanism": "Mild TBI can injure the auditory system even when the bony labyrinth is intact ('labyrinthine' or 'cochlear concussion'): shearing forces damage cochlear hair cells, the cochlear nerve, brainstem and central auditory pathways, and trigger neuroinflammatory and excitotoxic cascades. Deafferentation and reduced peripheral input then drive compensatory central gain and spontaneous hyperactivity in the auditory pathway — the prevailing model of tinnitus generation; trauma-associated tinnitus is frequently sudden, may be unilateral or bilateral, and often accompanies dizziness, headache, and insomnia. A systematic review of non-blast TBI found tinnitus consistently reported in adults both with and without audiometric hearing loss, demonstrating that post-traumatic tinnitus is not merely a byproduct of hearing loss — though the evidence base is predominantly lower-tier (highest level 2b) and prospective longitudinal studies are lacking. In a national population-based survey of VA healthcare users diagnosed with tinnitus, TBI prevalence was 5.6% (95% CI 4.8-6.4); veterans with TBI were 3.6 times more likely (95% CI 2.1-6.3) to rate their tinnitus-related impairment as very severe and 1.5 times more likely (95% CI 1.0-2.4) to rate it moderate/severe versus none/mild. Under 38 CFR § 3.310(a), this supports direct causation where tinnitus onset follows a documented TBI within a plausible temporal window. The principal competing etiology is noise-induced hearing loss (highly prevalent in military cohorts), plus ototoxic medication exposure; a nexus opinion should include audiometric data, blast/noise exposure history, onset chronology relative to injury, and an examiner statement distinguishing traumatic from noise-related tinnitus — or, alternatively, aggravation of pre-existing tinnitus.",
+    "medicalEvidence": [
+      {
+        "title": "Prevalence of tinnitus following non-blast related traumatic brain injury: a systematic review of literature",
+        "authors": "Le M, Šarkić B, Anderson R",
+        "summary": "PROSPERO-registered systematic review (MEDLINE/EMBASE/PsycINFO/CINAHL, 1990-2023) of tinnitus after non-blast TBI. Tinnitus occurred in adults with and without hearing loss; highest-quality evidence was Level 2b, with most studies in lower tiers. Authors call for prospective longitudinal research.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38775672/"
+      },
+      {
+        "title": "Associations Between Traumatic Brain Injury and Severity of Tinnitus-Related Functional Impairment Among US Military Veterans: A National, Population-Based Study",
+        "authors": "Coco L, Hooker ER, Gilbert TA, et al.",
+        "summary": "National stratified survey of VA healthcare users with diagnosed tinnitus: TBI prevalence 5.6% (95% CI 4.8-6.4). TBI history conferred 3.6x greater likelihood of very severe tinnitus-related functional impairment (95% CI 2.1-6.3) and 1.5x for moderate/severe impairment (95% CI 1.0-2.4).",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38709830/"
+      },
+      {
+        "title": "Mild Traumatic Brain Injury and the Auditory System: An Overview of the Mechanisms, Clinical Presentations, and Current Diagnostic Modalities",
+        "authors": "Harris M, Nguyen A, Brown N, et al.",
+        "summary": "Mechanistic review of 'labyrinthine/cochlear concussion': hearing loss, vertigo, and tinnitus developing after mTBI with an intact bony labyrinthine capsule, including damage to peripheral auditory structures and central pathways.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/37742111/"
+      }
+    ],
+    "cfrCitations": [
+      "38 CFR § 3.310(a) (secondary service connection)",
+      "38 CFR § 4.124a, DC 8045 (residuals of traumatic brain injury)",
+      "38 CFR § 4.87, DC 6260 (tinnitus, recurrent)"
+    ]
+  },
+  {
+    "secondaryCondition": "Fibromyalgia",
+    "secondaryDiagnosticCode": "5025 (38 CFR § 4.71a)",
+    "primaryCondition": "Post-traumatic stress disorder (PTSD)",
+    "primaryDiagnosticCode": "9411 (38 CFR § 4.130)",
+    "nexusTheory": "Causation",
+    "etiologicalMechanism": "PTSD can promote fibromyalgia through sustained stress-system dysregulation: chronic threat hypervigilance is associated with HPA-axis dysregulation, sympathetic overactivity, and fragmented sleep, which impair descending pain inhibition and promote central sensitization — amplified temporal summation and altered sensory processing. Proposed shared substrates include salience-network hyperactivity, neuroimmune/glial activation, and common vulnerability factors for maladaptive stress responses; the clinical overlap (fatigue, cognitive complaints, non-restorative sleep, widespread pain) is substantial. A PRISMA systematic review of 20 studies (1993-2023) found a consistent fibromyalgia-PTSD association, some evidence that PTSD is associated with greater fibromyalgia symptom severity, and limited evidence that PTSD increases the likelihood of developing fibromyalgia. A genetically informative twin study of 4,680 Vietnam-era male twins found PTSD co-occurring with multiple chronic pain conditions including fibromyalgia, with both genetic and environmental contributions — evidence that the comorbidity is not merely diagnostic artifact. Because the relationship is bidirectional and confounded (sleep apnea, hypothyroidism, inflammatory disease, medication effects, trauma-related physical injury), the § 3.310(a) direct-causation theory requires a documented PTSD diagnosis, fibromyalgia diagnosed by recognized criteria, onset/worsening chronology tied to the PTSD course, and exclusion of alternative causes; population evidence supports a defensible association and plausible mechanism, not automatic individual causation.",
+    "medicalEvidence": [
+      {
+        "title": "Fibromyalgia and post-traumatic stress disorder: A systematic review",
+        "authors": "Vidal AAC, Alcón M, Sotorrío E",
+        "summary": "PRISMA review of 20 studies (1993-2023): consistent association between fibromyalgia and PTSD; some evidence linking PTSD to greater fibromyalgia symptom severity; limited evidence for PTSD increasing the likelihood of fibromyalgia development.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/40684669/"
+      },
+      {
+        "title": "Posttraumatic Stress Disorder and Chronic Pain Conditions in Men: A Twin Study",
+        "authors": "Gasperi M, Panizzon MS, Goldberg J, Buchwald D, Afari N",
+        "summary": "Biometric modeling in 4,680 male Vietnam-era twins: PTSD co-occurred with multiple chronic pain conditions including fibromyalgia, with genetic and environmental contributions to the comorbidity — a design that partially controls for shared familial confounding.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/33337593/"
+      },
+      {
+        "title": "Fibromyalgia and post-traumatic stress disorder: different parts of an elephant?",
+        "authors": "Luís M, Pinto A, Häuser W, et al.",
+        "summary": "Conceptual review proposing shared vulnerability factors: salience-network hyperactivity and a broader construct of central pain sensitization link PTSD and fibromyalgia, with persistent heightened threat perception and impaired threat-soothing (FITSS model). Hypothesis-generating, not confirmatory.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/40576704/"
+      }
+    ],
+    "cfrCitations": [
+      "38 CFR § 3.310(a) (secondary service connection)",
+      "38 CFR § 4.130, DC 9411 (post-traumatic stress disorder)",
+      "38 CFR § 4.71a, DC 5025 (fibromyalgia)"
+    ]
+  },
+  {
+    "secondaryCondition": "Obstructive sleep apnea (OSA)",
+    "secondaryDiagnosticCode": "6847 (38 CFR § 4.97)",
+    "primaryCondition": "Traumatic brain injury (TBI) with residuals",
+    "primaryDiagnosticCode": "8045 (38 CFR § 4.124a)",
+    "nexusTheory": "Causation",
+    "etiologicalMechanism": "TBI can disrupt sleep and breathing through several pathways: injury to hypothalamic and brainstem centers regulating sleep-wake cycling and upper-airway motor tone during sleep; altered orexin/hypocretin signaling and circadian rhythmicity; weight gain and reduced activity from hypothalamic-pituitary dysfunction or injury-related disability; and sedating medications. The resulting sleep-disordered breathing is predominantly obstructive, though central components can coexist. A retrospective cohort of 17,570 deployed service members followed a median of 8.4 years found TBI independently associated with development of OSA (adjusted HR 1.39; 95% CI 1.20-1.60), alongside PTSD (HR 1.24), depression (HR 1.52), anxiety (HR 1.40), insomnia (HR 1.71), and obesity (HR 2.40). A 2025 scoping review of sleep studies in TBI cohorts found OSA prevalence ranging from 20% to 77%, and a separate review reports sleep disorders in 30-84% of TBI patients, with veterans exposed to multiple TBIs especially susceptible. However, the same scoping review found that the three studies with non-TBI comparison groups showed no significant difference in OSA prevalence or AHI — a material counterweight indicating that much of the observed prevalence may reflect shared risk factors (obesity, age, sex, smoking, insomnia) rather than a TBI-specific effect. Under 38 CFR § 3.310(a), direct causation is therefore supportable only with case-specific evidence: documented TBI, polysomnography-confirmed OSA (AHI/RDI), temporal onset, and an examiner opinion excluding conventional risk factors and explaining the claimed mechanism.",
+    "medicalEvidence": [
+      {
+        "title": "Obstructive sleep apnea among survivors of combat-related traumatic injury: a retrospective cohort study",
+        "authors": "Haynes ZA, Stewart IJ, Poltavskiy E, et al.",
+        "summary": "Retrospective cohort of 17,570 service members (median 8.4-year follow-up). Adjusted hazards for incident OSA: TBI 1.39 (1.20-1.60), PTSD 1.24, depression 1.52, anxiety 1.40, insomnia 1.71, obesity 2.40 (2.09-2.74).",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34270410/"
+      },
+      {
+        "title": "Obstructive Sleep Apnea in Traumatic Brain Injury: A Scoping Review",
+        "authors": "Johnson K, Correia N, Chang J, Durr M",
+        "summary": "PRISMA scoping review of sleep studies in TBI cohorts (12 included studies; 1,006 TBI patients): OSA prevalence 20-77%. Critically, the three studies with non-TBI comparison groups found no significant differences in OSA prevalence or AHI — key counter-evidence on a TBI-specific effect.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/40637502/"
+      },
+      {
+        "title": "Sleep disorders in traumatic brain injury",
+        "authors": "Paredes I, Navarro B, Lagares A",
+        "summary": "Review: sleep disorders are extremely prevalent after TBI (30-84%); insomnia and circadian disorders dominate after mild TBI, hypersomnolence after moderate/severe TBI; OSA and restless legs are frequent, and multiple-TBI war veterans are especially susceptible.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34218878/"
+      }
+    ],
+    "cfrCitations": [
+      "38 CFR § 3.310(a) (secondary service connection)",
+      "38 CFR § 4.124a, DC 8045 (residuals of traumatic brain injury)",
+      "38 CFR § 4.97, DC 6847 (sleep apnea syndromes — obstructive, central, mixed)"
+    ]
+  }
+]

@@ -30,14 +30,16 @@ type Relationship = {
 };
 
 /**
- * Regression coverage for the exact identity change of 2026-09-28: the
- * rotator-cuff and thumb pairs are reconciled to canonical identities
- * (`rotator-cuff-injury`, `gamekeeper-s-thumb`) with the non-canonical
- * identities retained as quarantined pointer records, and every registered
- * edge and its sources preserved exactly — per the disposition in
- * docs/modeling-debt-dispositions.md and its bounded-change rule.
+ * Regression coverage for the identity reconciliations recorded in
+ * docs/modeling-debt-dispositions.md: the 2026-09-28 change (the rotator-cuff
+ * and thumb pairs reconciled to canonical identities `rotator-cuff-injury`
+ * and `gamekeeper-s-thumb` with the non-canonical identities retained as
+ * quarantined pointer records, every registered edge and its sources
+ * preserved exactly) and the 2026-10-03 TMJ election (`tmj-disorder`
+ * canonical, `tmj-dysfunction` quarantined as a pointer, aliases migrated,
+ * zero catalog counts and registry rows moved).
  */
-describe("canonical-identity reconciliation (2026-09-28 pointer reconciliation)", () => {
+describe("canonical-identity reconciliation (2026-09-28 and 2026-10-03 pointer reconciliations)", () => {
   const musculoskeletal = readJson<{ conditions: CatalogEntry[] }>(
     "data",
     "conditions",
@@ -48,8 +50,20 @@ describe("canonical-identity reconciliation (2026-09-28 pointer reconciliation)"
     "conditions",
     "musculoskeletal-expansion-wave-2.json",
   ).conditions;
+  const dental = readJson<{ conditions: CatalogEntry[] }>(
+    "data",
+    "conditions",
+    "dental-and-oral.json",
+  ).conditions;
+  const dentalWave7 = readJson<{ conditions: CatalogEntry[] }>(
+    "data",
+    "conditions",
+    "dental-oral-expansion-wave-7.json",
+  ).conditions;
   const entry = (id: string): CatalogEntry | undefined =>
-    [...musculoskeletal, ...wave2].find((candidate) => candidate.id === id);
+    [...musculoskeletal, ...wave2, ...dental, ...dentalWave7].find(
+      (candidate) => candidate.id === id,
+    );
   const kb = (id: string): Mapping =>
     readJson<Mapping>("data", "knowledge-base", `${id}.json`);
 
@@ -79,6 +93,36 @@ describe("canonical-identity reconciliation (2026-09-28 pointer reconciliation)"
       expect(notes).toContain(canonical);
       expect(notes).toMatch(/quarantined pointer/i);
     }
+  });
+
+  it("elects tmj-disorder canonical for the TMJ pair and keeps tmj-dysfunction a pointer record", () => {
+    const canonicalEntry = entry("tmj-disorder");
+    expect(canonicalEntry?.reviewNotes.join(" ")).toContain("tmj-dysfunction");
+    expect(canonicalEntry?.reviewNotes.join(" ")).toMatch(/canonical/i);
+    for (const alias of [
+      "temporomandibular disorders",
+      "temporomandibular disorder",
+      "temporomandibular joint",
+      "temporomandibular joint dysfunction",
+      "tmj",
+    ]) {
+      expect(canonicalEntry?.aliases).toContain(alias);
+    }
+    // The catalog invariant (tests/catalog.test.ts) forbids an alias
+    // colliding with another condition's name, so the pointer's variant name
+    // stays on the pointer entry until a catalog-v3 retirement folds it.
+    expect(canonicalEntry?.aliases).not.toContain("tmj dysfunction");
+
+    const pointer = entry("tmj-dysfunction");
+    expect(pointer?.aliases).toEqual([]);
+    expect(pointer?.reviewNotes.join(" ")).toContain("tmj-disorder");
+    expect(pointer?.reviewNotes.join(" ")).toMatch(/quarantined pointer/i);
+
+    const record = kb("tmj-dysfunction");
+    expect(record.suggestions).toEqual([]);
+    const notes = [...(record.todo ?? []), ...(record.governanceNotes ?? [])].join(" ");
+    expect(notes).toContain("tmj-disorder");
+    expect(notes).toMatch(/quarantined pointer/i);
   });
 
   it("preserves every registered edge and its registered sources", () => {

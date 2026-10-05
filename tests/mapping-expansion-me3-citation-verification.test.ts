@@ -117,10 +117,10 @@ describe("Mapping Expansion Batch ME-3 Citation Verification", () => {
 
   it("promotes the same five normalized master sources from pending-verification to active", () => {
     expect(sources.counts).toMatchObject({
-      activeSourceEntities: 357,
-      pendingVerificationSourceEntities: 1117,
-      activeClinicalSourceEntities: 356,
-      pendingClinicalSourceEntities: 1117,
+      activeSourceEntities: 360,
+      pendingVerificationSourceEntities: 1128,
+      activeClinicalSourceEntities: 359,
+      pendingClinicalSourceEntities: 1128,
     });
     for (const row of implementationLedger.rows) {
       const source = sources.sources.find(
@@ -149,11 +149,11 @@ describe("Mapping Expansion Batch ME-3 Citation Verification", () => {
       hardFindingCount: number;
     };
     expect(result).toMatchObject({
-      references: 1690,
-      verified: 395,
+      references: 1704,
+      verified: 398,
       retiredVerified: 6,
-      verifiedProvenance: 401,
-      unverified: 1295,
+      verifiedProvenance: 404,
+      unverified: 1306,
       reviewFindingCount: 0,
       hardFindingCount: 0,
     });
@@ -172,9 +172,9 @@ describe("Mapping Expansion Batch ME-3 Citation Verification", () => {
     };
     expect(result).toMatchObject({
       status: "PASS",
-      verifiedLiveSourceUses: 395,
-      pendingVerificationLiveSourceUses: 1295,
-      activeSourceEntities: 357,
+      verifiedLiveSourceUses: 398,
+      pendingVerificationLiveSourceUses: 1306,
+      activeSourceEntities: 360,
     });
   }, 120000);
 });

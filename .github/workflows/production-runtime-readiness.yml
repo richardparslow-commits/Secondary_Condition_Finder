@@ -280,6 +280,54 @@ jobs:
             exit 1
           fi
 
+      - name: Probe production health for adjacency-graph state
+        id: graph
+        shell: bash
+        run: |
+          set -euo pipefail
+          umask 077
+          tmp_dir="$(mktemp -d)"
+          trap 'rm -rf "$tmp_dir"' EXIT
+          body_file="$tmp_dir/health.json"
+
+          set +e
+          http_status="$(curl --silent --show-error --location \
+            --connect-timeout 10 \
+            --max-time 20 \
+            --header 'Accept: application/json' \
+            --output "$body_file" \
+            --write-out '%{http_code}' \
+            "$PRODUCTION_BASE_URL/api/health")"
+          curl_status=$?
+          set -e
+
+          graph_status="unresolved"
+          nodes="unresolved"
+          edges="unresolved"
+          if [ "$curl_status" -eq 0 ] && [ "$http_status" = "200" ]; then
+            graph_status="$(jq -r '.components.kbGraph.status // "unresolved"' "$body_file")"
+            nodes="$(jq -r '.components.kbGraph.nodes // "unresolved"' "$body_file")"
+            edges="$(jq -r '.components.kbGraph.edges // "unresolved"' "$body_file")"
+          fi
+
+          echo "http_status=$http_status" >> "$GITHUB_OUTPUT"
+          echo "graph_status=$graph_status" >> "$GITHUB_OUTPUT"
+          echo "nodes=$nodes" >> "$GITHUB_OUTPUT"
+          echo "edges=$edges" >> "$GITHUB_OUTPUT"
+
+          {
+            echo "## Adjacency-graph migration state"
+            echo "- health HTTP status: $http_status"
+            echo "- graph validation: $graph_status"
+            echo "- migrated nodes: $nodes"
+            echo "- authored edges: $edges"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+          if [ "$curl_status" -ne 0 ] || [ "$http_status" != "200" ] || [ "$graph_status" != "ok" ]; then
+            echo "Production health did not report a validated adjacency graph (HTTP $http_status, graph status $graph_status)." >&2
+            exit 1
+          fi
+
       - name: Record failed runtime evidence
         if: failure()
         env:
@@ -291,6 +339,9 @@ jobs:
           ROUTE_FAILURES: ${{ steps.routes.outputs.failure_count }}
           READINESS_OUTCOME: ${{ steps.readiness.outputs.outcome }}
           READINESS_HTTP_STATUS: ${{ steps.readiness.outputs.http_status }}
+          GRAPH_STATUS: ${{ steps.graph.outputs.graph_status }}
+          GRAPH_NODES: ${{ steps.graph.outputs.nodes }}
+          GRAPH_EDGES: ${{ steps.graph.outputs.edges }}
         shell: bash
         run: |
           set -euo pipefail
@@ -307,6 +358,9 @@ jobs:
           - Route matrix: \`${ROUTE_MATRIX:-unresolved}\`
           - Readiness request outcome: \`${READINESS_OUTCOME:-unresolved}\`
           - Readiness HTTP status: \`${READINESS_HTTP_STATUS:-unresolved}\`
+          - Adjacency graph validation: \`${GRAPH_STATUS:-unresolved}\`
+          - Adjacency graph nodes: \`${GRAPH_NODES:-unresolved}\`
+          - Adjacency graph edges: \`${GRAPH_EDGES:-unresolved}\`
 
           Route probes record status codes only. Temporary response bodies are deleted and are not printed or attached. No secret value, secret length, hash, derived key material, cookie payload, or environment-variable value was recorded. The gate remains open.
           EOF
@@ -334,6 +388,7 @@ jobs:
           - Runtime readiness HTTP status: ${{ steps.readiness.outputs.http_status }}
           - Readiness status: \`ready\`
           - Workflow-session crypto round trip: \`true\`
+          - Adjacency graph: \`${{ steps.graph.outputs.graph_status }} (nodes: ${{ steps.graph.outputs.nodes }}, edges: ${{ steps.graph.outputs.edges }})\`
 
           The production alias was confirmed to serve the Vercel deployment associated with the exact commit status before the readiness probe ran. Route probes record status codes only. Temporary response bodies are deleted and are not printed or attached. No secret value, secret length, hash, derived key material, cookie payload, or environment-variable value was recorded.
           EOF

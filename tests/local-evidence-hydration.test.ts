@@ -58,7 +58,11 @@ describe("local evidence hydration contract", () => {
     expect(storage).toContain("const raw = storage.getItem(evidenceAnalysisStorageKey);");
     expect(storage).toContain("} catch {\n    return [];\n  }");
     // The warning variant is fail-closed too: parse failures return an empty
-    // store plus the error for observability instead of throwing.
-    expect(storage).toContain("return { analyses: [], parseError: message };");
+    // store plus a fixed, content-free code for observability instead of
+    // throwing or echoing the parser message / stored record text.
+    expect(storage).toContain('return { analyses: [], parseError: "Saved evidence could not be read." };');
+    expect(storage).not.toContain("parseError: message");
+    expect(storage).not.toContain("rawPreview");
+    expect(storage).not.toContain("first500");
   });
 });

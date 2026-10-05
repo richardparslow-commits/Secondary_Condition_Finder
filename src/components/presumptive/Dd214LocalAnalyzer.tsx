@@ -4,6 +4,7 @@ import { useRef, useState } from "react";
 
 import { parseDd214Text } from "@/lib/evidence/dd214-extract";
 import { EVIDENCE_DEPTH_LIMITS } from "@/lib/evidence/limits";
+import { createLocalOcrWorker } from "@/lib/evidence/ocr-session";
 import { dd214ToServiceHistoryFields } from "@/lib/presumptive/dd214-adapter";
 
 type Props = {
@@ -45,7 +46,9 @@ export function Dd214LocalAnalyzer({ locations }: Props) {
 
       let rawText = "";
       if (isPdf) {
-        const pdfjs = await import("pdfjs-dist");
+        // Legacy main build + legacy worker: see scripts/copy-pdf-worker.mjs
+        // for why the modern build is unusable on older browsers.
+        const pdfjs = await import("pdfjs-dist/legacy/build/pdf.mjs");
         if (!pdfjs.GlobalWorkerOptions.workerSrc) pdfjs.GlobalWorkerOptions.workerSrc = "/pdf.worker.min.mjs";
         const bytes = new Uint8Array(await file.arrayBuffer());
         const task = pdfjs.getDocument({ data: bytes });
@@ -73,12 +76,7 @@ export function Dd214LocalAnalyzer({ locations }: Props) {
           if (!usedTextLayer || !rawText.trim()) {
             // OCR path — same Tesseract contract as LocalEvidenceAnalyzer
             setProgress("Running browser-local OCR…");
-            const { createWorker } = await import("tesseract.js");
-            const worker = await createWorker("eng", 1, {
-              workerPath: "/tesseract/worker.min.js",
-              corePath: "/tesseract/tesseract-core-simd.wasm.js",
-              langPath: "/tesseract",
-            });
+            const worker = await createLocalOcrWorker();
             try {
               const ocrSegments: string[] = [];
               for (let p = 1; p <= limit; p += 1) {
@@ -91,7 +89,9 @@ export function Dd214LocalAnalyzer({ locations }: Props) {
                   canvas.width = viewport.width;
                   canvas.height = viewport.height;
                   const ctx = canvas.getContext("2d");
-                  if (ctx) { ctx.fillStyle = "#fff"; ctx.fillRect(0, 0, viewport.width, viewport.height); }
+                  if (!ctx) throw new Error("Canvas 2D context unavailable for PDF rendering.");
+                  ctx.fillStyle = "#fff";
+                  ctx.fillRect(0, 0, viewport.width, viewport.height);
                   await page.render({ canvas, viewport }).promise;
                   const result = await worker.recognize(canvas);
                   const text = (result?.data?.text ?? "").trim();
@@ -110,12 +110,7 @@ export function Dd214LocalAnalyzer({ locations }: Props) {
         }
       } else {
         // Image file: direct OCR
-        const { createWorker } = await import("tesseract.js");
-        const worker = await createWorker("eng", 1, {
-          workerPath: "/tesseract/worker.min.js",
-          corePath: "/tesseract/tesseract-core-simd.wasm.js",
-          langPath: "/tesseract",
-        });
+        const worker = await createLocalOcrWorker();
         try {
           setProgress("Running browser-local OCR…");
           const result = await worker.recognize(file);
@@ -164,14 +159,19 @@ export function Dd214LocalAnalyzer({ locations }: Props) {
   return (
     <section className="rounded-xl border border-slate-200 bg-white p-5" aria-labelledby="dd214-heading">
       <h2 id="dd214-heading" className="text-lg font-semibold">Upload DD-214 (optional)</h2>
-      <p className="mt-1 text-sm text-slate-600">
+      <p id="dd214-file-help" className="mt-1 text-sm text-slate-600">
         PDF or image. Extracted in this browser tab only. Verify dates and locations for accuracy before proceeding. SSN is masked and never sent to a server.
       </p>
 
       <div className="mt-4">
+        <label htmlFor="dd214-file" className="block text-sm font-medium text-slate-700">
+          DD-214 file
+        </label>
         <input
+          id="dd214-file"
           type="file"
           accept="application/pdf,image/*,.pdf,.png,.jpg,.jpeg,.tiff,.bmp,.webp"
+          aria-describedby="dd214-file-help"
           disabled={busy}
           onChange={(e) => {
             const f = e.target.files?.[0] ?? null;
@@ -249,10 +249,14 @@ export function Dd214LocalAnalyzer({ locations }: Props) {
                 </label>
               ))}
             </div>
+            <label htmlFor="dd214-location-add" className="mt-3 block text-sm font-medium text-slate-700">
+              Add a location (free text)
+            </label>
             <input
+              id="dd214-location-add"
               type="text"
-              placeholder="Add a location (free text)"
-              className="mt-3 w-full rounded-md border border-slate-300 px-3 py-2 text-sm"
+              placeholder="e.g. Fort Liberty, NC"
+              className="mt-1 w-full rounded-md border border-slate-300 px-3 py-2 text-sm"
               onKeyDown={(e) => {
                 if (e.key === "Enter") {
                   e.preventDefault();

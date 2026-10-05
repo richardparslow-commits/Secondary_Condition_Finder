@@ -1,6 +1,6 @@
 import fs from "node:fs";
 
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 
 import { normalizeFederalRegisterApiDocument } from "@/lib/regulatory/adapters";
 import { diffRegulatoryPreflight } from "@/lib/regulatory/preflight/diff";
@@ -131,6 +131,28 @@ describe("preflight HTTP safety", () => {
   it("rejects responses whose declared size exceeds the configured bound before reading the body", async () => {
     const mockFetch = async () => new Response("small", { status: 200, headers: { "content-length": "9999" } });
     await expect(fetchTextWithTimeout(mockFetch as typeof fetch, "https://example.test/data", { maxBytes: 100 })).rejects.toThrow(/declared 9999 bytes/);
+  });
+
+  it("refuses to follow a source redirect so an API key cannot be replayed to another origin", async () => {
+    const fetchImpl = vi.fn().mockResolvedValue(
+      new Response(null, {
+        status: 302,
+        headers: { Location: "https://attacker.example/collect" },
+      }),
+    );
+
+    await expect(
+      fetchTextWithTimeout(fetchImpl as unknown as typeof fetch, "https://api.regulations.gov/v4/dockets", {
+        headers: { "X-Api-Key": "test-key" },
+      }),
+    ).rejects.toThrow("HTTP 302 from https://api.regulations.gov/v4/dockets");
+
+    // One request to the configured source; the redirect is not followed.
+    expect(fetchImpl).toHaveBeenCalledTimes(1);
+    expect(fetchImpl).toHaveBeenCalledWith(
+      "https://api.regulations.gov/v4/dockets",
+      expect.objectContaining({ redirect: "error" }),
+    );
   });
 });
 

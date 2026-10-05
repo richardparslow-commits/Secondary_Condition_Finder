@@ -6,6 +6,8 @@ import {
   fetchVaServiceBranches,
   loadVaApiConfig,
   loadVaSandboxConfig,
+  VA_API_MAX_RESPONSE_BYTES,
+  VA_API_MAX_TIMEOUT_MS,
   type VaSandboxConfig,
 } from "@/lib/va/sandbox";
 
@@ -236,6 +238,38 @@ describe("public-reference VA API adapters", () => {
     expect(JSON.stringify(observations)).not.toContain("claim form");
     expect(JSON.stringify(observations)).not.toContain("forms-sandbox-test-key");
     expect(JSON.stringify(observations)).not.toContain("reference-sandbox-test-key");
+  });
+
+  it("clamps a misconfigured per-attempt timeout to the hard maximum", () => {
+    const loaded = loadVaApiConfig({
+      VA_API_ENABLED: "true",
+      VA_FORMS_SANDBOX_API_KEY: "forms-key",
+      VA_BENEFITS_REFERENCE_SANDBOX_API_KEY: "reference-key",
+      VA_API_TIMEOUT_MS: "999999999",
+    });
+    expect(loaded.timeoutMs).toBe(VA_API_MAX_TIMEOUT_MS);
+  });
+
+  it("rejects an oversized response body instead of buffering it whole", async () => {
+    // A single-megabyte-plus JSON string body exceeds the 2 MiB cap once the
+    // JSON envelope is accounted for; the adapter must fail closed rather than
+    // call response.json() on an unbounded stream.
+    const oversized = `{"data":[{"id":"x","type":"va_form","attributes":{"form_name":"x","title":"${'a'.repeat(
+      VA_API_MAX_RESPONSE_BYTES + 1024,
+    )}","url":"https://example.test/x.pdf"}}]}`;
+    vi.stubGlobal(
+      "fetch",
+      vi.fn().mockResolvedValue(
+        new Response(oversized, {
+          status: 200,
+          headers: { "Content-Type": "application/json" },
+        }),
+      ),
+    );
+
+    const result = await fetchVaForms(undefined, { config });
+    expect(result.success).toBe(false);
+    expect(result.source).toBe("local-fallback");
   });
 
   it("fails closed on invalid payloads and invalid non-HTTPS endpoint configuration", async () => {

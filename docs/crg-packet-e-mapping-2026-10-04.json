@@ -1,0 +1,167 @@
+[
+  {
+    "secondaryCondition": "Erectile dysfunction",
+    "secondaryDiagnosticCode": "7522 (38 CFR § 4.115b; 0% absent deformity, SMC-K eligible)",
+    "primaryCondition": "Diabetes mellitus, type II (service-connected)",
+    "primaryDiagnosticCode": "7913 (38 CFR § 4.119)",
+    "nexusTheory": "Causation",
+    "etiologicalMechanism": "Type 2 diabetes produces erectile dysfunction through converging vascular, neuropathic, and hormonal injury. Chronic hyperglycemia and insulin resistance impair endothelium-dependent vasodilation in the penile vasculature — reduced nitric oxide bioavailability (eNOS uncoupling, NOS3 variants), increased endothelin-1 and Rho-kinase activity, and advanced glycation end-product deposition — while accelerated atherosclerosis narrows the pudendal and cavernosal arteries and limits the inflow needed for rigid tumescence. Diabetic autonomic neuropathy disrupts the parasympathetic drive that initiates cavernosal smooth-muscle relaxation, somatic neuropathy impairs pudendal sensory input, and hyperglycemia causes structural cavernosal change (fibrosis, smooth-muscle loss, veno-occlusive dysfunction); central hypogonadism, depression, and antihypertensive/diuretic treatment add further risk. Meta-analytic data quantify the outcome and its dose-dependence: erectile dysfunction prevalence in diabetes is 52.5 percent overall (66.3 percent in type 2 diabetes) and men with diabetes have approximately 3.6 times the odds of erectile dysfunction versus controls; within diabetes, HbA1c (OR 1.44), diabetes duration (OR 1.39), diabetic neuropathy (OR 3.47), retinopathy (OR 3.01), nephropathy (OR 2.67), vascular disease (OR 2.75) and diuretic treatment (OR 2.42) independently raise risk. Under 38 CFR § 3.310(a), erectile dysfunction developing in a veteran with service-connected type 2 diabetes is a direct-causation secondary claim. For an 'at least as likely as not' opinion, document diabetes diagnosis, duration and control, the onset and pattern of erectile dysfunction, and address competing causes — smoking, hypertension and antihypertensive medications, hyperlipidemia, pelvic surgery or trauma, hypogonadism, alcohol, depression and antidepressants, and PDE5-inhibitor response history. Where pre-existing erectile dysfunction is documented, § 3.310(b) aggravation applies only to the attributable worsening.",
+    "medicalEvidence": [
+      {
+        "title": "High prevalence of erectile dysfunction in diabetes: a systematic review and meta-analysis of 145 studies.",
+        "authors": "Kouidrat Y, Pizzol D, Cosco T, et al.",
+        "summary": "Systematic review and meta-analysis of 145 studies (88,577 men): erectile dysfunction prevalence in diabetes 52.5% (95% CI 48.8-56.2) overall and 66.3% in type 2 diabetes versus 37.5% in type 1; men with diabetes had increased odds versus healthy controls (OR 3.62).",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/28722225/"
+      },
+      {
+        "title": "Risk factors for erectile dysfunction in diabetes mellitus: a systematic review and meta-analysis.",
+        "authors": "Dilixiati D, Waili A, Tuerxunmaimaiti A, et al.",
+        "summary": "Meta-analysis of 58 studies (66,925 men with diabetes): erectile dysfunction risk increased with HbA1c (OR 1.44), diabetes duration (OR 1.39), diabetic neuropathy (OR 3.47), retinopathy (OR 3.01), diabetic foot (OR 3.96), nephropathy (OR 2.67), vascular disease (OR 2.75), hypertension (OR 1.74), metabolic syndrome (OR 2.22) and diuretic treatment (OR 2.42) — direct evidence for the glycemic and microvascular dose-response.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38638136/"
+      },
+      {
+        "title": "Erectile Dysfunction in Diabetes Mellitus: A Comprehensive Narrative Review of Pathophysiology, Genetic Association Studies and Therapeutic Approaches.",
+        "authors": "Hostnik B, Tonin G, Janez A, et al.",
+        "summary": "Mechanistic review: prevalence of erectile dysfunction in diabetes estimated at more than 3.5 times higher than in men without diabetes; pathophysiology involves endothelial dysfunction, accelerated atherosclerosis, autonomic and peripheral neuropathy, structural penile changes, hormonal imbalance and psychological factors.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/40960125/"
+      }
+    ],
+    "cfrCitations": [
+      "38 CFR § 3.310(a) (secondary service connection)",
+      "38 CFR § 4.115b, DC 7522 (erectile dysfunction)",
+      "38 CFR § 4.119, DC 7913 (diabetes mellitus, type II)"
+    ]
+  },
+  {
+    "secondaryCondition": "Diabetic gastroparesis",
+    "secondaryDiagnosticCode": "No dedicated DC — rated by analogy under 38 CFR § 4.114 (§ 4.20): typically DC 7304 (peptic ulcer criteria) or DC 7346 (hiatal hernia, evaluated under DC 7203 criteria)",
+    "primaryCondition": "Diabetes mellitus, type II (service-connected)",
+    "primaryDiagnosticCode": "7913 (38 CFR § 4.119)",
+    "nexusTheory": "Causation",
+    "etiologicalMechanism": "Diabetic gastroparesis is a symptomatic delay in gastric emptying without mechanical obstruction, arising from chronic hyperglycemic and metabolic injury to the enteric neuromuscular apparatus: vagal autonomic neuropathy, loss and dysfunction of interstitial cells of Cajal and enteric neurons with inflammation and oxidative injury, impaired fundal accommodation, antral hypomotility, and pyloric dysfunction; acute hyperglycemia itself further slows emptying. Clinically it produces early satiety, postprandial fullness, nausea, vomiting and bloating, and it erratically alters glycemic control because nutrient delivery becomes unpredictable. Quantitatively, up to 50 percent of patients with type 1 or type 2 diabetes and suboptimal glycemic control have documented delayed gastric emptying, and pooled prevalence of diabetic gastroparesis is 9.3 percent, higher in type 2 diabetes (12.5 percent) than type 1 (8.3 percent) and in patients younger than 60. However, the sensitivity of these estimates is high and heterogeneity is substantial, and asymptomatic delayed emptying is common — a confirmed diagnosis requires objective gastric-emptying testing (scintigraphy, 13C breath test, or wireless motility capsule) plus compatible symptoms. Under 38 CFR § 3.310(a), gastroparesis developing in a veteran with service-connected type 2 diabetes is a direct-causation claim. For an 'at least as likely as not' opinion, document diabetes duration and control, microvascular complications, objective delayed-emptying testing, and exclusion of competing causes — prior gastric or foregut surgery, GLP-1 receptor agonist or other motility-altering medication, thyroid disease, connective-tissue disease, neurologic or paraneoplastic disease, gastric outlet obstruction, functional dyspepsia, and idiopathic disease. Because gastroparesis is unlisted, the rating is assigned by analogy under § 4.20 to the disability picture most closely matched, commonly DC 7304/7307 (ulcer/gastritis criteria) or DC 7346/7203 (reflux/stricture criteria).",
+    "medicalEvidence": [
+      {
+        "title": "Diabetic Gastroparesis.",
+        "authors": "Bharucha AE, Kudva YC, Prichard DO",
+        "summary": "Endocrine Reviews review: up to 50% of patients with type 1 or type 2 diabetes and suboptimal glycemic control have delayed gastric emptying; hyperglycemia, autonomic neuropathy, and enteric neuromuscular inflammation and injury are implicated in pathogenesis; up to 50% of gastroparesis patients have significant anxiety and/or depression.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/31081877/"
+      },
+      {
+        "title": "Prevalence of gastroparesis in diabetic patients: a systematic review and meta-analysis.",
+        "authors": "Li L, Wang L, Long R, et al.",
+        "summary": "Systematic review and meta-analysis: pooled prevalence of gastroparesis in diabetic patients 9.3%; subgroup prevalence higher in type 2 diabetes (12.5%; 95% CI 7.7-17.3) than type 1 (8.3%), and in patients under 60 years; authors caution the robustness of estimates is low with significant bias factors.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/37640738/"
+      },
+      {
+        "title": "Gastroparesis.",
+        "authors": "Camilleri M, Chedid V, Ford AC, et al.",
+        "summary": "Nat Rev Dis Primers review: gastroparesis is delayed gastric emptying without mechanical obstruction causing early satiety, postprandial fullness, nausea, vomiting, belching and bloating; aetiologies include diabetic, idiopathic, iatrogenic, post-surgical and post-viral; confirmed diagnosis requires measurement of delayed gastric emptying.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/30385743/"
+      }
+    ],
+    "cfrCitations": [
+      "38 CFR § 3.310(a) (secondary service connection)",
+      "38 CFR § 4.119, DC 7913 (diabetes mellitus, type II)",
+      "38 CFR § 4.114 and § 4.20 (analogous rating of unlisted gastroparesis — DC 7304/7307 and DC 7346/7203 criteria)"
+    ]
+  },
+  {
+    "secondaryCondition": "Insomnia disorder (chronic)",
+    "secondaryDiagnosticCode": "No dedicated DC — evaluated under 38 CFR § 4.130 General Rating Formula",
+    "primaryCondition": "Alcohol use disorder (intermediate step from a service-connected condition; not independently compensable)",
+    "primaryDiagnosticCode": "No dedicated DC — not separately service-connectable for claims filed after October 31, 1990 (38 CFR § 3.301(a), (d)); rated under § 4.130 General Rating Formula through the underlying service-connected disorder (e.g., DC 9411)",
+    "nexusTheory": "Causation",
+    "etiologicalMechanism": "Alcohol use disorder and insomnia are linked bidirectionally through a feed-forward allostatic cycle. Acute intoxication initially shortens sleep-onset latency through GABAergic sedation but degrades sleep quality: slow-wave sleep is suppressed, REM is delayed then rebounds, and sympathetic activation and nocturnal withdrawal fragment the second half of the night with increased wakefulness. With repeated heavy drinking, tolerance and dependence develop; during abstinence and withdrawal, slow-wave sleep decreases durably and insomnia commonly persists for weeks to months, and residual insomnia is itself a strong predictor of relapse — the mechanism that makes the relationship self-reinforcing. Neurobiologically, chronic alcohol dysregulates GABAergic, adenosine, dopamine and orexin/hypocretin signaling and the extended-amygdala stress circuitry governing sleep-wake regulation. Quantitatively, insomnia prevalence in alcohol-dependent patients ranges from 36 to 91 percent depending on definition and setting; in an individual-patient-data meta-analysis of 12 randomized trials (3,508 patients), about 60 percent had clinically significant insomnia at baseline, and acamprosate (an anti-craving medication) reduced insomnia significantly more than placebo (-45 percent vs -26 percent over 6 months), supporting the alcohol-sleep causal link. Legally, alcohol abuse cannot itself be service-connected for claims filed after October 31, 1990 (§ 3.301(a), (d)); § 3.301(c)(2) provides that organic diseases and disabilities that are a secondary result of chronic alcohol use are not willful-misconduct origin, and VA's intermediate-step rule permits service connection for a disability that is a secondary result of alcohol abuse where the abuse itself was caused or aggravated by a service-connected condition (for example PTSD, DC 9411). The claim chain is therefore: service-connected condition -> alcohol use disorder (intermediate step) -> chronic insomnia, with causation theory under § 3.310(a). An 'at least as likely as not' opinion should document a quantified drinking history (dose, duration, pattern), the chronology linking the service-connected condition to the alcohol disorder, sleep history with diary or polysomnography where indicated (excluding sleep apnea, restless legs/periodic limb movements and circadian disorders), and should address whether insomnia is separately rated or is a symptom of an underlying service-connected mental disorder — avoiding duplicate evaluation under § 4.14.",
+    "medicalEvidence": [
+      {
+        "title": "Alcohol use disorder and sleep disturbances: a feed-forward allostatic framework.",
+        "authors": "Koob GF, Colrain IM",
+        "summary": "Neuropsychopharmacology review: sleep disturbances and insomnia are ubiquitous in alcohol use disorder and map onto the binge/intoxication, withdrawal/negative affect, and preoccupation/anticipation stages; acute alcohol speeds sleep onset but sleep quality is poor, with increased late-night wakefulness and reduced slow-wave sleep during withdrawal — a feed-forward allostatic loop.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/31234199/"
+      },
+      {
+        "title": "Alcohol Dependence and Its Relationship With Insomnia and Other Sleep Disorders.",
+        "authors": "Chakravorty S, Chaudhary NS, Brower KJ",
+        "summary": "Review: sleep complaints are widely prevalent in alcohol dependence; the association with insomnia is bidirectional; cognitive behavioral therapy for insomnia shows promise as an optimal intervention; associations also extend to circadian abnormalities, short sleep duration and sleep-related movement disorders.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/27706838/"
+      },
+      {
+        "title": "Insomnia in Alcohol-Dependent Patients: Prevalence, Risk Factors and Acamprosate Effect: An Individual Patient Data Meta-Analysis.",
+        "authors": "Perney P, Lehert P",
+        "summary": "Individual patient data meta-analysis of 12 randomized trials (3,508 patients): insomnia prevalence in alcohol-dependent patients ranges 36-91%, with 59.8% affected at baseline; mean insomnia decrease after 6 months was -26% with placebo versus -45% with acamprosate (P < 0.001) — a treatment-responsive alcohol-sleep link.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/29617889/"
+      }
+    ],
+    "cfrCitations": [
+      "38 CFR § 3.310(a) (secondary service connection)",
+      "38 CFR § 3.301(a), (c)(2), (d) (alcohol abuse; organic diseases secondary to chronic alcohol use; line of duty)",
+      "38 CFR § 4.130 General Rating Formula (no dedicated DC for insomnia or alcohol use disorder)"
+    ]
+  },
+  {
+    "secondaryCondition": "Peptic ulcer disease",
+    "secondaryDiagnosticCode": "7304 (38 CFR § 4.114)",
+    "primaryCondition": "Osteoarthritis on chronic NSAID therapy (service-connected)",
+    "primaryDiagnosticCode": "5003 (38 CFR § 4.71a; degenerative arthritis)",
+    "nexusTheory": "Medication Side Effect",
+    "etiologicalMechanism": "NSAID-induced peptic ulcer disease results from blockade of cyclooxygenase-1-mediated prostaglandin synthesis in the gastroduodenal mucosa: prostaglandins (PGE2, PGI2) maintain mucus-bicarbonate secretion, mucosal blood flow, epithelial restitution and immunoregulation, and their depletion leaves the mucosa vulnerable to acid-pepsin injury, compounded by topical injury and enterohepatic recirculation of drug. Risk is drug-, dose- and duration-dependent and is amplified by Helicobacter pylori co-infection, anticoagulants and antiplatelet agents, corticosteroids, smoking, alcohol, and prior ulcer history. Randomized evidence is direct: an individual-participant-data meta-analysis of 280 NSAID-versus-placebo trials (124,513 participants, 68,342 person-years) found that all NSAID regimens increased upper gastrointestinal complications (perforation, obstruction, or bleed) — coxibs rate ratio 1.81 (95% CI 1.17-2.81), diclofenac 1.89 (1.16-3.09), ibuprofen 3.97 (2.22-7.10), and naproxen 4.22 (2.71-6.56); a separate meta-analysis of 28 observational studies found pooled upper-GI-complication relative risks ranging from 1.43 to 18.45 by individual agent, with high daily doses carrying 2-3 times the risk of low doses; and a classic meta-analysis found ulcer disease in 35.8 percent of NSAID takers versus 8.3 percent of controls, with H. pylori infection increasing the risk of peptic ulcer disease in NSAID takers by an additional 3.53-fold beyond the NSAID-associated risk (and risk 61.1-fold higher in H. pylori-positive NSAID takers than in H. pylori-negative non-users; 95% CI 9.98-373). Under 38 CFR § 3.310(a), a disability proximately resulting from treatment of a service-connected condition is itself service-connected, so endoscopically documented peptic ulcer disease arising on documented chronic NSAID therapy for service-connected osteoarthritis (DC 5003) is service-connected as a treatment complication; worsening of a pre-existing ulcer is evaluated under § 3.310(b) only to the degree of aggravation. An 'at least as likely as not' opinion should document the specific NSAID, dose, duration and adherence; endoscopy or imaging confirmation of the ulcer; H. pylori status; and exclusion of other causes — Zollinger-Ellison syndrome, malignancy, Crohn's disease, and non-NSAID drug injury. The evaluation uses DC 7304 criteria (pain/vomiting frequency and management), and DC 7307 (chronic gastritis) is rated under the same criteria if that is the documented lesion.",
+    "medicalEvidence": [
+      {
+        "title": "Vascular and upper gastrointestinal effects of non-steroidal anti-inflammatory drugs: meta-analyses of individual participant data from randomised trials.",
+        "authors": "Coxib and traditional NSAID Trialists' (CNT) Collaboration; Bhala N, Emberson J, et al.",
+        "summary": "Individual-participant-data meta-analysis of 280 placebo-controlled NSAID trials (124,513 participants): all NSAID regimens increased upper gastrointestinal complications (perforation, obstruction, or bleed) — coxibs RR 1.81, diclofenac 1.89, ibuprofen 3.97, naproxen 4.22 — the strongest evidence class linking chronic NSAID exposure to ulcer complications.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/23726390/"
+      },
+      {
+        "title": "Individual NSAIDs and upper gastrointestinal complications: a systematic review and meta-analysis of observational studies (the SOS project).",
+        "authors": "Castellsague J, Riera-Guardia N, Calingaert B, et al.",
+        "summary": "Systematic review and meta-analysis of 28 observational studies: pooled relative risks of upper gastrointestinal complications ranged from 1.43 (aceclofenac) to 18.45 (azapropazone) by individual NSAID — e.g., celecoxib 1.45, ibuprofen 1.84, diclofenac 3.34, naproxen 4.10, piroxicam 7.43 — with 2-3 times higher risk at high daily doses.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/23137151/"
+      },
+      {
+        "title": "Role of Helicobacter pylori infection and non-steroidal anti-inflammatory drugs in peptic-ulcer disease: a meta-analysis.",
+        "authors": "Huang JQ, Sridhar S, Hunt RH",
+        "summary": "Meta-analysis of 25 studies: peptic ulcer disease was significantly more common in NSAID takers than controls (35.8% vs 8.3%), irrespective of H. pylori status; H. pylori infection increased the risk of peptic ulcer disease in NSAID takers 3.53-fold in addition to the risk associated with NSAID use, with risk 61.1-fold higher in H. pylori-positive NSAID takers than in H. pylori-negative non-users (95% CI 9.98-373) — establishing NSAIDs as an independent ulcer cause and H. pylori as an amplifier.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/11809181/"
+      }
+    ],
+    "cfrCitations": [
+      "38 CFR § 3.310(a) (disability proximately due to treatment of a service-connected condition)",
+      "38 CFR § 4.71a, DC 5003 (osteoarthritis — degenerative arthritis)",
+      "38 CFR § 4.114, DC 7304 (peptic ulcer disease; DC 7307 rated under the same criteria)"
+    ]
+  },
+  {
+    "secondaryCondition": "Cerebrovascular accident residuals (stroke)",
+    "secondaryDiagnosticCode": "8007-8009 (38 CFR § 4.124a; brain vascular disease — 100% for 6 months, then residuals)",
+    "primaryCondition": "Obstructive sleep apnea (service-connected)",
+    "primaryDiagnosticCode": "6847 (38 CFR § 4.97)",
+    "nexusTheory": "Causation",
+    "etiologicalMechanism": "Obstructive sleep apnea promotes cerebrovascular injury through repetitive intermittent hypoxemia and reoxygenation, hypercapnia, large negative intrathoracic pressure swings, and sleep fragmentation, generating sympathetic overactivity, oxidative stress, systemic inflammation, endothelial dysfunction, and a prothrombotic state; sustained exposure promotes large-artery atherosclerosis and small-vessel disease, and intrathoracic pressure swings plus atrial remodeling provide a cardioembolic route through atrial fibrillation. Hypertension and metabolic dysfunction, themselves OSA-associated, independently raise stroke risk, so the pathway is additive rather than isolated. Prospective meta-analytic evidence: OSA was associated with incident stroke in a meta-analysis of 5 prospective studies (8,435 participants) with an odds ratio of 2.24 (95% CI 1.57-3.19; stronger in predominantly male cohorts, OR 2.87), and risk increased with rising apnea-hypopnea index; a 2022 meta-analysis of 24 cohort studies found stroke risk OR 1.86 (95% CI 1.28-2.69); and the American Heart Association 2021 scientific statement documents OSA prevalence of 40-80 percent among stroke patients and recommends targeted screening in selected cardiovascular populations. Under 38 CFR § 3.310(a), a stroke occurring in a veteran with service-connected OSA is a direct-causation claim, with residuals rated under DC 8007-8009 by mechanism (embolism, thrombosis, or hemorrhage). For an 'at least as likely as not' opinion the examiner must confront the major confounders — hypertension, atrial fibrillation, diabetes, obesity, smoking, age, and other cardiac sources of embolism — and must establish more than coexistence: polysomnography-confirmed OSA with documented severity (AHI/oxygen desaturation index), chronological plausibility (diagnosed OSA preceding the stroke), treatment status (CPAP adherence), and an opinion that OSA was at least as likely as not a contributing cause. Where the stroke preceded any OSA diagnosis, causation is not supportable on this pathway and the claim must be re-framed or denied.",
+    "medicalEvidence": [
+      {
+        "title": "Association of obstructive sleep apnea with risk of serious cardiovascular events: a systematic review and meta-analysis.",
+        "authors": "Loke YK, Brown JW, Kwok CS, et al.",
+        "summary": "Meta-analysis of prospective studies: OSA associated with incident stroke (5 studies, 8,435 participants; OR 2.24, 95% CI 1.57-3.19), with a stronger association in predominantly male cohorts (OR 2.87) and greater risk with increasing apnea-hypopnea index; also associated with cardiovascular death (OR 2.09).",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/22828826/"
+      },
+      {
+        "title": "The effect of obstructive sleep apnea on the increased risk of cardiovascular disease: a systematic review and meta-analysis.",
+        "authors": "Salari N, Khazaie H, Abolfathi M, et al.",
+        "summary": "Meta-analysis of 24 cohort studies: OSA significantly increased stroke risk (OR 1.86; 95% CI 1.28-2.69), alongside cardiovascular disease (OR 1.71) and mortality (OR 1.77).",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34797460/"
+      },
+      {
+        "title": "Obstructive Sleep Apnea and Cardiovascular Disease: A Scientific Statement From the American Heart Association.",
+        "authors": "Yeghiazarians Y, Jneid H, Tietjens JR, et al.",
+        "summary": "Clinical-standard statement: OSA involves recurrent obstructive events causing intermittent hypoxemia, autonomic fluctuation and sleep fragmentation; prevalence is as high as 40-80% in patients with stroke and other cardiovascular conditions; screening is recommended in defined high-risk cardiovascular phenotypes — the clinical framework for evaluating OSA as a stroke contributor.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34148375/"
+      }
+    ],
+    "cfrCitations": [
+      "38 CFR § 3.310(a) (secondary service connection)",
+      "38 CFR § 4.97, DC 6847 (sleep apnea syndromes — obstructive)",
+      "38 CFR § 4.124a, DC 8007-8009 (brain vascular disease — 100% for 6 months, residuals thereafter)"
+    ]
+  }
+]

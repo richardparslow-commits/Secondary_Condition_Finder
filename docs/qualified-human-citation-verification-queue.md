@@ -18,6 +18,12 @@ The authoritative current citation state is **generated, not transcribed**: run 
 
 The all-94 approval was applied on 2026-09-04 as a citation-state transition only. It did not publish draft mappings or establish an individual medical nexus. The batch snapshots below are retained for audit history and are not the current queue.
 
+## Held edges awaiting qualified-human verification
+
+A held edge is fully authored but unregistered because its primary mapping is published and the per-suggestion citation-purity gate admits no unverified reference. Held edges do not appear in the generated queue because no reference use is registered for them; each is preserved as a held artifact with its own verification packet, and the decision belongs to the qualified human.
+
+- The batch-93 `ptsd` → `alcohol-use-disorder` window is held as `docs/batch-93-ptsd-alcohol-use-disorder-held-edge.json`, with the prepared review packet at `docs/batch-93-ptsd-alcohol-use-disorder-verification-packet.md` (one decision per pending anchor, all-or-nothing landing rule). No decision has been recorded.
+
 ## Historical citation-verification baseline
 
 The published surface remains fully verified: for published mappings, `npm run citations:queue` reports an empty row set. The citation-verification batches left the repository fully verified at the time they ran, and every transiently unverified published row since (including Batch 31's two bounded `verified: false` source rows) has been qualified-human verified.
@@ -76,6 +82,24 @@ node scripts/report-citation-verification-queue.js --markdown --include-drafts
 Rows are generated directly from the mapping files — never transcribed here — and each row carries its publication state so a reviewer can see it is a draft-quarantined mapping citation, not a published one. The reviewer-facing worksheets (proposition, causation boundary, per-source note under review, and decision-record template) are in `docs/d1-citation-verification-packet-2026-09.md`, generated from the same mapping records.
 
 Approving a D1 row verifies only that the source supports the bounded association-only proposition as authored; it does not publish the mapping, convert association into causation, or constitute an individual VA nexus determination. The debt ratchet in `scripts/audit-citation-verification.js` closes only through these qualified-human decisions, applied in lockstep with the master registries.
+
+## Graph-pathway anchor review (Stages 3a–3c, 2026-10)
+
+The 2026-10 graph-adjacency stages (3a, 3b and 3c) registered three routes on the ordinary draft path, each carrying three authored citation anchors. All three mappings remain `draft: true`, so none of the anchors appears in the default published queue above; the machine row set is the draft queue the D1 section describes, and the reviewer-facing worksheets are the corresponding per-edge sections of `docs/d1-citation-verification-packet-2026-09.md`. The nine anchors are indexed below: six remain pending qualified-human review, and three carry recorded decisions from the Stage 3b review.
+
+| Stage | Route | Worksheet row | PMID | Decision state |
+|---|---|---|---|---|
+| 3a | `alcohol-use-disorder` → `chronic-liver-disease` | 505.1 | 30080255 | PENDING (draft-quarantined) |
+| 3a | `alcohol-use-disorder` → `chronic-liver-disease` | 505.2 | 36926309 | PENDING (draft-quarantined) |
+| 3a | `alcohol-use-disorder` → `chronic-liver-disease` | 505.3 | 20636661 | PENDING (draft-quarantined) |
+| 3b | `liver-cancer` → `sarcopenia` | 504.1 | 37274463 | VERIFIED 2026-10-04 (with narrowing) |
+| 3b | `liver-cancer` → `sarcopenia` | 504.2 | 36590214 | VERIFIED 2026-10-04 (with narrowing) |
+| 3b | `liver-cancer` → `sarcopenia` | 504.3 | 26266324 | VERIFIED 2026-10-04 (as written) |
+| 3c | `bruxism-awake-sleep` → `tmj-disorder` | 506.1 | 37474733 | PENDING (draft-quarantined) |
+| 3c | `bruxism-awake-sleep` → `tmj-disorder` | 506.2 | 27796166 | PENDING (draft-quarantined) |
+| 3c | `bruxism-awake-sleep` → `tmj-disorder` | 506.3 | 9758394 | PENDING (draft-quarantined) |
+
+The Stage 3b decisions are recorded in `docs/liver-cancer-sarcopenia-citation-verification-2026-disposition.md`; the packet rows are retained as the pre-decision worksheet and are superseded by that record. For every pending row, approving the source verifies only the bounded `ASSOCIATION_ONLY` proposition as authored — it publishes nothing, converts no association into causation, and constitutes no individual VA medical nexus determination.
 
 ## Human review procedure
 

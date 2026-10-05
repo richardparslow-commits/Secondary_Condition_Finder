@@ -1,3 +1,4 @@
+import { isWithinPathwayDepth, MAX_PATHWAY_HOPS } from "./pathway-depth";
 import type { CompositeNexus, NexusClassification, PathwayHop } from "./schema";
 
 /**
@@ -31,19 +32,25 @@ import type { CompositeNexus, NexusClassification, PathwayHop } from "./schema";
 /**
  * Reduce a hop chain to its composite legal nexus.
  *
- * @param hops - The pathway's hops in traversal order (1–2 hops; the graph
- *   traversal depth cap). Each hop's `stepIndex` must equal its array
- *   position, and each hop's `edge.sourceConditionId` must equal the previous
- *   hop's `edge.targetConditionId`.
+ * @param hops - The pathway's hops in traversal order (1–`MAX_PATHWAY_HOPS`
+ *   hops; the shared cap in `./pathway-depth`). Each hop's `stepIndex` must
+ *   equal its array position, and each hop's `edge.sourceConditionId` must
+ *   equal the previous hop's `edge.targetConditionId`.
  * @returns The composite nexus: `"ASSOCIATION_ONLY_CHAIN_BROKEN"` if any hop
  *   is association-only, `"AGGRAVATION"` if any recognized hop is an
  *   aggravation, otherwise `"DIRECT_CAUSATION"`.
- * @throws TypeError when the hop array is empty or not a contiguous chain —
- *   inputs must come from a validated `ClaimPathwaySchema` traversal.
+ * @throws TypeError when the hop array is empty, exceeds `MAX_PATHWAY_HOPS`,
+ *   or is not a contiguous chain — inputs must come from a validated
+ *   `ClaimPathwaySchema` traversal.
  */
 export function deriveCompositeNexus(hops: readonly PathwayHop[]): CompositeNexus {
   if (hops.length < 1) {
     throw new TypeError("deriveCompositeNexus requires at least one pathway hop.");
+  }
+  if (!isWithinPathwayDepth(hops.length)) {
+    throw new TypeError(
+      `deriveCompositeNexus received ${hops.length} hops, exceeding the shared pathway-depth cap of ${MAX_PATHWAY_HOPS}.`,
+    );
   }
   for (const [index, hop] of hops.entries()) {
     if (hop.stepIndex !== index) {
@@ -75,17 +82,25 @@ export function deriveCompositeNexus(hops: readonly PathwayHop[]): CompositeNexu
  * pathway summary can never disagree with the schema's parse-time mirror of
  * the same rules.
  *
- * @param classifications - Hop classifications in traversal order (1–2 hops;
- *   the graph traversal depth cap). Empty chains are treated as
- *   `"DIRECT_CAUSATION"` by contract: a chain with no asserted hops asserts
- *   no aggravation and no association break.
+ * @param classifications - Hop classifications in traversal order (1–
+ *   `MAX_PATHWAY_HOPS` hops; the shared cap in `./pathway-depth`). Empty
+ *   chains are treated as `"DIRECT_CAUSATION"` by contract: a chain with no
+ *   asserted hops asserts no aggravation and no association break.
  * @returns The composite nexus: `"ASSOCIATION_ONLY_CHAIN_BROKEN"` if any hop
  *   is association-only, `"AGGRAVATION"` if any recognized hop is an
  *   aggravation, otherwise `"DIRECT_CAUSATION"`.
+ * @throws TypeError when the classification sequence exceeds
+ *   `MAX_PATHWAY_HOPS` — an over-depth chain must fail fast, never be
+ *   silently mislabeled as a weaker or stronger nexus.
  */
 export function deriveCompositeNexusFromClassifications(
   classifications: readonly NexusClassification[],
 ): CompositeNexus {
+  if (!isWithinPathwayDepth(classifications.length)) {
+    throw new TypeError(
+      `deriveCompositeNexusFromClassifications received ${classifications.length} classifications, exceeding the shared pathway-depth cap of ${MAX_PATHWAY_HOPS}.`,
+    );
+  }
   return classifications.reduce<CompositeNexus>((composite, classification) => {
     if (composite === "ASSOCIATION_ONLY_CHAIN_BROKEN") return composite;
     switch (classification) {

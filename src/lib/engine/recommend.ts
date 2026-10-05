@@ -52,6 +52,46 @@ interface Accumulated {
   intermediatePathways: IntermediatePathway[];
 }
 
+/**
+ * Sum of rank weights contributed by direct (single-hop) mappings.
+ *
+ * Scores are derived from collected contributions after the loop rather than
+ * incremented in place, so the result cannot depend on whether a target was
+ * first reached by a direct mapping or by an intermediate pathway.
+ */
+function directScoreOf(contributions: ContributingPrimary[]): number {
+  return contributions.reduce(
+    (total, contribution) => total + rankWeight(contribution.rank),
+    0,
+  );
+}
+
+/**
+ * Score for a target reached only through an intermediate pathway.
+ *
+ * The pathway score is unchanged from the previous behavior (the inverse
+ * product of the two edge ranks). Unique pathway scores are summed only for
+ * path-only targets; any direct mapping takes precedence, so its rank weight
+ * replaces — never adds to — the pathway estimate.
+ */
+function pathwayScoreOf(pathway: IntermediatePathway): number {
+  return 1 / (pathway.edges[0].rank * pathway.edges[1].rank);
+}
+
+/**
+ * Contribution attached for a pathway-only target. A pathway that reaches a
+ * target which also has direct mappings is *recorded* as a research path but
+ * must not invent a contributing primary or alter the direct score.
+ */
+function pathwayContribution(pathway: IntermediatePathway): ContributingPrimary {
+  return {
+    id: pathway.primaryId,
+    name: pathway.primaryName,
+    rank: pathway.edges[0].rank,
+    rationale: `Bounded intermediate-chain research path: ${pathway.causalChain}. Each edge requires separate individual medical support; the path is not a direct nexus finding.`,
+  };
+}
+
 function recommendImpl(
   catalog: ConditionCatalog,
   kb: KnowledgeBase,
@@ -93,9 +133,14 @@ function recommendImpl(
     }
   }
 
+  /** Only direct mappings may create entries while primaries are processed. */
   const accumulator = new Map<string, Accumulated>();
+  const pathwaysByTarget = new Map<string, IntermediatePathway[]>();
+  const diagnosedSet = new Set(intake.diagnosedConditionIds ?? []);
 
-  for (const primaryId of recognizedIds) {
+  // Canonical processing order also stabilizes metadata arrays and floating
+  // point summation. Recognition summaries above retain the caller's order.
+  for (const primaryId of [...recognizedIds].sort()) {
     const mapping = mappings.get(primaryId);
     if (!mapping) continue;
     const primary = byId.get(primaryId)!;
@@ -127,7 +172,6 @@ function recommendImpl(
       signalsDurationMs += Date.now() - signalsStart;
 
       if (existing) {
-        existing.score += rankWeight(suggestion.rank);
         existing.contributingPrimaries.push(contribution);
         existing.evidenceGaps = dedupe([
           ...existing.evidenceGaps,
@@ -145,9 +189,6 @@ function recommendImpl(
           ...existing.chronologyWarnings,
           ...chronologyWarnings,
         ]);
-        existing.intermediatePathways = dedupePathways([
-          ...existing.intermediatePathways,
-        ]);
         // F-02: per-target consensus keeps the strongest (lowest-rank) tier across primaries.
         existing.consensusRank = Math.min(
           existing.consensusRank,
@@ -156,7 +197,9 @@ function recommendImpl(
       } else {
         accumulator.set(suggestion.conditionId, {
           conditionId: suggestion.conditionId,
-          score: rankWeight(suggestion.rank),
+          // Placeholder: the final score is derived after every primary has
+          // been processed (see the score-derivation pass below).
+          score: 0,
           consensusRank: CONSENSUS_ORDER[suggestion.evidentiaryProfile.etiologicalConsensus],
           contributingPrimaries: [contribution],
           evidenceGaps: [...suggestion.evidenceGaps],
@@ -173,39 +216,49 @@ function recommendImpl(
       primary,
       mappings,
       byId,
-      new Set(intake.diagnosedConditionIds ?? []),
+      diagnosedSet,
       recognizedIds,
     );
     pathwaysDurationMs += Date.now() - pathwaysStart;
     for (const pathway of paths) {
-      const existing = accumulator.get(pathway.targetId);
-      if (existing) {
-        existing.intermediatePathways = dedupePathways([
-          ...existing.intermediatePathways,
-          pathway,
-        ]);
-        continue;
-      }
-
-      accumulator.set(pathway.targetId, {
-        conditionId: pathway.targetId,
-        score: 1 / (pathway.edges[0].rank * pathway.edges[1].rank),
-        consensusRank: pathConsensusRank(pathway),
-        contributingPrimaries: [{
-          id: pathway.primaryId,
-          name: pathway.primaryName,
-          rank: pathway.edges[0].rank,
-          rationale: `Bounded intermediate-chain research path: ${pathway.causalChain}. Each edge requires separate individual medical support; the path is not a direct nexus finding.`,
-        }],
-        evidenceGaps: [
-          "Independently establish the intermediate condition and both links in the proposed chain with compatible chronology and individual medical evidence",
-        ],
-        sourceReferences: [...pathway.sourceReferences],
-        clinicalFrictionWarnings: [],
-        chronologyWarnings: [],
-        intermediatePathways: [pathway],
-      });
+      const collected = pathwaysByTarget.get(pathway.targetId);
+      if (collected) collected.push(pathway);
+      else pathwaysByTarget.set(pathway.targetId, [pathway]);
     }
+  }
+
+  // Direct entries contain no synthetic path contributions. Only after all
+  // primaries are processed may paths attach as context or create a path-only
+  // target, so a later direct edge can never inherit path score or consensus.
+  for (const entry of accumulator.values()) {
+    entry.score = directScoreOf(entry.contributingPrimaries);
+  }
+  for (const [targetId, collected] of pathwaysByTarget) {
+    const paths = dedupePathways(collected);
+    const direct = accumulator.get(targetId);
+    if (direct) {
+      direct.intermediatePathways = paths;
+      continue;
+    }
+
+    accumulator.set(targetId, {
+      conditionId: targetId,
+      score: paths.reduce((total, pathway) => total + pathwayScoreOf(pathway), 0),
+      // Each path is limited by its weakest edge; across supporting paths the
+      // strongest of those bounded consensus tiers is authoritative.
+      consensusRank: paths.reduce<number>(
+        (strongest, pathway) => Math.min(strongest, pathConsensusRank(pathway)),
+        CONSENSUS_ORDER.NOT_ESTABLISHED,
+      ),
+      contributingPrimaries: paths.map(pathwayContribution),
+      evidenceGaps: [
+        "Independently establish the intermediate condition and both links in the proposed chain with compatible chronology and individual medical evidence",
+      ],
+      sourceReferences: dedupeReferences(paths.flatMap((pathway) => pathway.sourceReferences)),
+      clinicalFrictionWarnings: [],
+      chronologyWarnings: [],
+      intermediatePathways: paths,
+    });
   }
 
   const resultStartedAt = Date.now();

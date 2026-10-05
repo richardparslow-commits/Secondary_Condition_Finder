@@ -1,9 +1,19 @@
 {
   "id": "tmj-dysfunction",
   "draft": true,
+  "quarantine": {
+    "status": "pointer",
+    "canonicalId": "tmj-disorder",
+    "recordedOn": "2026-10-03",
+    "record": "docs/modeling-debt-dispositions.md"
+  },
   "todo": [
     "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication.",
-    "Review oral, dental, maxillofacial, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority."
+    "Review oral, dental, maxillofacial, and treatment-related pathways only where applicable; do not infer medical causation from rating-schedule authority.",
+    "RECONCILED 2026-10-03 (docs/modeling-debt-dispositions.md; Leg C of docs/catalog-identity-migration-design-2026-09-29.md): the CANONICAL identity of the TMJ pair is tmj-disorder. This file is RETIRED as a quarantined pointer record: do not author here, all temporomandibular-joint claims are authored under the canonical entry. The stable ID is retained so the frozen one-to-one identity contract and saved workflow state are unmoved; a future catalog-v3 versioned migration may retire this pointer identity entirely."
   ],
-  "suggestions": []
+  "suggestions": [],
+  "governanceNotes": [
+    "CANONICAL-IDENTITY RECONCILIATION (2026-10-03, docs/modeling-debt-dispositions.md): tmj-disorder is elected canonical for the TMJ pair because it already carries the spectrum name 'Temporomandibular Joint (TMJ) Disorders' and the 38 CFR 4.150 dental-and-oral framework, and because neither identity holds a registered edge, so no edge-preservation question arises. This file is retained as a quarantined pointer record; the three-notation reconciliation and the alias migration are recorded in the canonical entry and in the disposition document. Zero registered edges or sources moved — both identities are zero-suggestion drafts."
+  ]
 }

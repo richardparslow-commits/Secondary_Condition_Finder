@@ -98,7 +98,7 @@ Open `/privacy` and summarize:
 - encrypted/authenticated workflow cookies;
 - no health/disability or presumptive service-history state in URLs;
 - browser-local evidence analysis with no raw selected document upload to application server state;
-- no persistent workflow/recommendation event-history logger in the current application;
+- allowlisted operational workflow/recommendation count/status events enter server logs; host retention and exception channels require review;
 - VA adapter observations limited to request ID, service, path, attempt, status/outcome, and duration;
 - observations exclude credentials, query values, response bodies, and workflow selections;
 - shared public-reference cache/status exposes only source/environment/retrieval/cache state.
@@ -117,8 +117,8 @@ Explain runtime configuration:
 Explain:
 
 - 4-second default per-attempt timeout;
-- maximum two attempts;
-- one retry only for HTTP 429, 503, 504, timeout, or transient network failure;
+- at most three public-reference attempts for HTTP 503/504, timeout, or transient network failure with bounded backoff/jitter;
+- HTTP 429/500 returns fallback without immediate retry; do not claim verified fleet backoff until the audited coordination defects are repaired;
 - HTTPS-only endpoint configuration;
 - invalid payloads fail closed;
 - successful reference data may be cached for five minutes;
@@ -164,7 +164,7 @@ The adapter performs at most one supported retry, then returns local fallback be
 
 ### Do you store diagnoses or Veteran selections in logs?
 
-The current application does not persist workflow/recommendation event history through an application event logger. VA adapter observations exclude credentials, query values, response bodies, and workflow selections.
+The application emits operational workflow/recommendation events with allowlisted counts, statuses, routes and duration. VA adapter observations exclude credentials, query values, response bodies, and workflow selections; host retention and exception sanitation still require review.
 
 ### Why not request Benefits Intake now?
 

@@ -136,4 +136,6 @@ document). Fastest; loses per-batch review.
   workflow surfacing this is expected; record and escalate, never edit the pin to go green.
 - `CRG_REDUNDANCY_BASELINE` 29 and the citation-verification ratchet counts are deliberate,
   ledger-commented pins. Escalation rule for all gates: **stop, record, escalate to a
-  qualified human — never raise a pin to make CI green.**
+  qualified human — never raise a pin to make CI green.** The 29 redundancy conflicts are
+  itemized with candidate dispositions in `docs/crg-redundancy-triage-2026-10-04.md` (read-only;
+  changes no pin, pinned to the live audit by `tests/crg-redundancy-triage.test.ts`).

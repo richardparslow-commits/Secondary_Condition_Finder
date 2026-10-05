@@ -7,6 +7,7 @@ import {
   OCR_BASE_RENDER_SCALE,
   OCR_CHECKPOINT_MAX_JSON_CHARS,
   OCR_CHECKPOINT_STORAGE_KEY,
+  OCR_CHECKPOINT_TTL_MS,
   OCR_MAX_CANVAS_AREA_PX,
   OCR_MIN_RENDER_SCALE,
   saveOcrCheckpoint,
@@ -60,8 +61,8 @@ function validCheckpoint(
       { page: 1, text: "PTSD secondary to tinnitus" },
       { page: 8, text: "2/2 OSA" },
     ],
-    recognizedChars: 64,
-    updatedAt: 1_700_000_000_000,
+    recognizedChars: "PTSD secondary to tinnitus".length + "2/2 OSA".length,
+    updatedAt: Date.now(),
     ...overrides,
   } as OcrCheckpoint;
 }
@@ -187,6 +188,24 @@ describe("OCR checkpoint persistence", () => {
       JSON.stringify(validCheckpoint({ sourceFingerprint: "" })),
     );
     expect(loadOcrCheckpoint(storage, "")).toBeNull();
+  });
+
+  it("deletes expired, future-dated, oversized, and inconsistent checkpoints", () => {
+    for (const overrides of [
+      { updatedAt: Date.now() - OCR_CHECKPOINT_TTL_MS },
+      { updatedAt: Date.now() + 60_000 },
+      { recognizedChars: 999 },
+      { segments: [{ page: 9, text: "out of range" }] },
+    ]) {
+      const storage = fakeStorage();
+      storage.setItem(OCR_CHECKPOINT_STORAGE_KEY, JSON.stringify(validCheckpoint(overrides)));
+      expect(loadOcrCheckpoint(storage, "c-file.pdf:123:456")).toBeNull();
+      expect(storage.data.size).toBe(0);
+    }
+    const storage = fakeStorage();
+    storage.setItem(OCR_CHECKPOINT_STORAGE_KEY, "x".repeat(OCR_CHECKPOINT_MAX_JSON_CHARS + 1));
+    expect(loadOcrCheckpoint(storage, "x")).toBeNull();
+    expect(storage.data.size).toBe(0);
   });
 
   it("returns null for absent/empty storage without throwing", () => {

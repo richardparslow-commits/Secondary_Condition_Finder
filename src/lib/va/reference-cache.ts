@@ -1,7 +1,24 @@
 import "server-only";
 
+import { createHash } from "node:crypto";
+
 import type { VaApiEnvironment, VaApiSource } from "./sandbox";
 import { vaProcessLocalStateAllowed } from "./runtime-state";
+
+/**
+ * Hash the user-supplied segment of a cache key.
+ *
+ * A Forms search query is free text and a locator ZIP is a quasi-identifier;
+ * writing either into process-local or shared KV keys persists them as key
+ * material (visible in provider dashboards, error messages, and key listings)
+ * and lets query length drive key length. The lookup semantics only need equal
+ * inputs to compare equal, so the key segment is a truncated SHA-256 instead of
+ * the raw value. The cached *value* may still echo the query/ZIP for display
+ * under the documented five-minute TTL.
+ */
+export function hashedCacheKeySegment(raw: string): string {
+  return createHash("sha256").update(raw, "utf8").digest("hex").slice(0, 32);
+}
 
 export type VaReferenceCacheStatus = "hit" | "miss";
 

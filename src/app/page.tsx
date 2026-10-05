@@ -53,6 +53,7 @@ export default function HomePage() {
               <Link href="/privacy">Privacy</Link>
               <Link href="/terms">Terms</Link>
               <Link href="/about">About</Link>
+              <Link href="/va-account">Sandbox account (read only)</Link>
             </nav>
           </article>
         </div>
@@ -89,6 +90,11 @@ export default function HomePage() {
           <h2 className="text-lg font-bold">VA Disability Reference Terms</h2>
           <p className="mt-2 text-sm">Explore public Benefits Reference Data terms; filtering stays local to your browser.</p>
           <Link href="/va-reference" className="mt-3 inline-block">Open VA Reference Terms →</Link>
+        </div>
+        <div>
+          <h2 className="text-lg font-bold">Claim Pathway Explorer</h2>
+          <p className="mt-2 text-sm">Read the authored adjacency-graph routes between conditions. Association-only links are shown with their legal chain broken — a research lead, never an established nexus.</p>
+          <Link href="/pathways" className="mt-3 inline-block">Open the Pathway Explorer →</Link>
         </div>
       </section>
 

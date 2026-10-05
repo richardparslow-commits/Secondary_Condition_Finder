@@ -1,5 +1,7 @@
 # Technical Specification: Secondary Condition Finder
 
+> **Historical snapshot (2026-09-09).** This document records the system as it stood on that date and is superseded by `docs/technical-specification.md` / `docs/technical-specification-v2.md`. Some statements are intentionally stale: in particular, the automatic OpenTelemetry trace export described here is disabled by policy today (`src/lib/observability/telemetry-policy.ts`).
+
 ## Architecture Overview
 
 Secondary Condition Finder is a Next.js 16 full-stack application deployed on Vercel with an optional Azure static web apps fallback. The architecture separates concerns into three layers:

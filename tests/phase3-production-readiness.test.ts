@@ -53,13 +53,15 @@ describe("Phase 3 production-access package contracts", () => {
     expect(demo).toContain("the reference block does not affect rank, evidence strength, nexus reasoning");
   });
 
-  it("keeps credentialed sandbox validation pending until objective evidence exists", () => {
+  it("keeps completed public sandbox evidence distinct from pending account and human gates", () => {
     const request = readRepoFile("docs/phase3-production-access-package.md");
     const checklist = readRepoFile("docs/phase3-submission-checklist.md");
     const audit = readRepoFile("docs/phase2-completion-audit.md");
     const gates = readRepoFile("docs/external-manual-gates-status.md");
 
-    expect(request).toContain("Credentialed live sandbox proof in issue #189");
+    expect(request).toContain("evidence recorded for closed issue #189");
+    expect(request).toContain("not part of this production request");
+    expect(gates).toContain("Synthetic provider tests establish code behavior only");
     expect(checklist).toContain("- [x] Issue #189 is closed with sanitized credentialed sandbox success evidence for VA Forms and Benefits Reference Data.");
     expect(gates).toMatch(/Issue #189[\s\S]*COMPLETE \/ CLOSED/i);
     expect(gates).toMatch(/Issue #195[\s\S]*OPEN \/ HUMAN-ONLY/i);
@@ -67,7 +69,7 @@ describe("Phase 3 production-access package contracts", () => {
     expect(audit).toContain("it now has one successful credentialed run on `main`");
   });
 
-  it("records the current Vercel checkpoint while requiring fresh submission-time verification", () => {
+  it("labels historical Vercel checkpoints honestly and requires exact-build submission verification", () => {
     const request = readRepoFile("docs/phase3-production-access-package.md");
     const checklist = readRepoFile("docs/phase3-submission-checklist.md");
     const phasePlan = readRepoFile("docs/phase-plan.md");
@@ -79,8 +81,10 @@ describe("Phase 3 production-access package contracts", () => {
       expect(text).toContain("Production Runtime Readiness #156");
     }
 
-    expect(checklist).toContain("these checks must be repeated for the final submission commit");
-    expect(request).toContain("not a permanent submission-time guarantee");
+    expect(checklist).toContain("Historical production checkpoint — not current submission proof");
+    expect(checklist).toContain("resolve and verify the exact final submission build");
+    expect(request).toContain("not independently reverified");
+    expect(request).toContain("not a VA production grant or live VA production connectivity proof");
   });
 
   it("documents service-specific sandbox and production credentials", () => {
@@ -122,7 +126,8 @@ describe("Phase 3 production-access package contracts", () => {
 
     expect(demo).toContain("30–60 minute walkthrough");
     expect(demo).toContain("Do not use real Veteran PII, PHI");
-    expect(demo).toContain("no persistent workflow/recommendation event-history logger");
+    expect(demo).toContain("allowlisted operational workflow/recommendation count/status events enter server logs");
+    expect(demo).not.toContain("no persistent workflow/recommendation event-history logger");
     expect(demo).toContain("no real Veteran PII/PHI or credential appears on screen");
     expect(demo).not.toContain("aggregate-only recommendation-event metrics");
   });

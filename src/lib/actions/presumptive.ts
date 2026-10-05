@@ -3,8 +3,14 @@
 import { redirect } from "next/navigation";
 
 import { auditLog } from "@/lib/observability/audit";
-import { serviceHistorySchema } from "@/lib/presumptive/match";
-import { writePresumptiveSession } from "@/lib/presumptive/session";
+import { loadExposureCatalog } from "@/lib/presumptive/load";
+import { listLocations, serviceHistorySchema } from "@/lib/presumptive/match";
+import { clearPresumptiveSession, writePresumptiveSession } from "@/lib/presumptive/session";
+
+export async function clearServiceHistory(): Promise<void> {
+  await clearPresumptiveSession();
+  redirect("/presumptive");
+}
 
 function textValue(formData: FormData, key: string): string | null {
   const value = formData.get(key);
@@ -50,6 +56,19 @@ export async function saveServiceHistory(formData: FormData): Promise<void> {
       redirect(validationPath("date-order"));
     }
     redirect(validationPath("invalid-date"));
+  }
+
+  // Server-side membership allowlist: only authored catalog locations may be
+  // stored. The schema alone accepts any 1-120 character string, so without
+  // this check a client could persist arbitrary text into the encrypted
+  // workflow cookie and drive matching against non-catalog values.
+  const knownLocations = new Set(listLocations(loadExposureCatalog()));
+  if (parsed.data.locations.some((location) => !knownLocations.has(location))) {
+    auditLog("presumptive-service-history-saved", {
+      status: "failure",
+      route: "/presumptive",
+    });
+    redirect(validationPath("select-location"));
   }
 
   await writePresumptiveSession(parsed.data);

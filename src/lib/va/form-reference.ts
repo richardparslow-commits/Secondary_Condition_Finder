@@ -1,5 +1,11 @@
 import "server-only";
 
+import { isTrustedCachedClaimFormReference } from "./cached-view-guard";
+import {
+  acquireVaSharedFetchLease,
+  awaitVaSharedFetchOutcome,
+  releaseVaSharedFetchLease,
+} from "./shared-single-flight";
 import {
   readVaReferenceCache,
   VA_REFERENCE_CACHE_TTL_MS,
@@ -54,45 +60,74 @@ type FormsFetcher = (
 export async function loadClaimFormReference(
   fetcher: FormsFetcher = fetchVaForms,
 ): Promise<ClaimFormReference> {
-  const configuredEnvironment = loadVaApiConfig().environment ?? "sandbox";
+  const config = loadVaApiConfig();
+  const configuredEnvironment = config.environment ?? "sandbox";
   const useSharedCache = fetcher === fetchVaForms;
   const cacheKey = `forms:reference:${configuredEnvironment}`;
-  if (useSharedCache) {
+  // Activation first: a disabled integration must never serve a previously
+  // cached live/production-labelled view. The cache read previously ran before
+  // the enabled check, so a disabled production deployment could still label
+  // data as live production from the shared KV.
+  if (useSharedCache && config.enabled) {
     const cached = readVaReferenceCache<ClaimFormReference>(cacheKey);
     if (cached) return cached;
     const sharedCached = await readVaSharedReferenceCache<ClaimFormReference>(cacheKey);
-    if (sharedCached) {
+    // Read-side guard (see cached-view-guard.ts): reject a shared value whose
+    // provenance, shape, or links do not match this deployment.
+    if (sharedCached && isTrustedCachedClaimFormReference(sharedCached, configuredEnvironment)) {
       writeVaReferenceCache(cacheKey, sharedCached);
       return sharedCached;
     }
   }
 
-  const result = await fetcher("21-526EZ");
-  if (!result.success || !result.data) return LOCAL_FORM_REFERENCE;
-
-  const current = result.data.data.find(
-    (item) =>
-      item.attributes.form_name.toUpperCase() === "21-526EZ" &&
-      !item.attributes.deleted_at,
-  );
-
-  if (!current) return LOCAL_FORM_REFERENCE;
-
-  const production = result.source === "va-production-api";
-  const view: ClaimFormReference = {
-    formName: current.attributes.form_name,
-    title: current.attributes.title,
-    url: current.attributes.url,
-    lastRevisionOn: current.attributes.last_revision_on ?? null,
-    source: result.source,
-    sourceLabel: production ? "VA production reference" : "VA sandbox reference",
-    notice: production
-      ? "This metadata came from the VA Forms production API. Confirm the form on VA.gov before filing because forms and revisions can change."
-      : "This metadata came from the VA sandbox environment. Sandbox data is for testing and may not be current; confirm the form on VA.gov before filing.",
-  };
-  if (useSharedCache) {
-    writeVaReferenceCache(cacheKey, view);
-    void writeVaSharedReferenceCache(cacheKey, view, VA_REFERENCE_CACHE_TTL_MS);
+  // Single-flight: one instance fetches a cold/expired key; others wait a
+  // bounded window for it to publish instead of duplicating the request. An
+  // unavailable coordinator just means the normal fetch path (the distributed
+  // consumer budget still gates every attempt).
+  const lease =
+    useSharedCache && config.enabled ? await acquireVaSharedFetchLease(cacheKey) : null;
+  if (lease?.status === "contended") {
+    const published = await awaitVaSharedFetchOutcome<ClaimFormReference>(cacheKey);
+    if (published && isTrustedCachedClaimFormReference(published, configuredEnvironment)) {
+      writeVaReferenceCache(cacheKey, published);
+      return published;
+    }
   }
-  return view;
+
+  try {
+    const result = await fetcher("21-526EZ");
+    if (!result.success || !result.data) return LOCAL_FORM_REFERENCE;
+
+    const current = result.data.data.find(
+      (item) =>
+        item.attributes.form_name.toUpperCase() === "21-526EZ" &&
+        !item.attributes.deleted_at,
+    );
+
+    if (!current) return LOCAL_FORM_REFERENCE;
+
+    const production = result.source === "va-production-api";
+    const view: ClaimFormReference = {
+      formName: current.attributes.form_name,
+      title: current.attributes.title,
+      url: current.attributes.url,
+      lastRevisionOn: current.attributes.last_revision_on ?? null,
+      source: result.source,
+      sourceLabel: production ? "VA production reference" : "VA sandbox reference",
+      notice: production
+        ? "This metadata came from the VA Forms production API. Confirm the form on VA.gov before filing because forms and revisions can change."
+        : "This metadata came from the VA sandbox environment. Sandbox data is for testing and may not be current; confirm the form on VA.gov before filing.",
+    };
+    if (useSharedCache) {
+      writeVaReferenceCache(cacheKey, view);
+      // Awaited so waiters can observe the published value before the lease is
+      // released, and so the write cannot be torn down with the request.
+      await writeVaSharedReferenceCache(cacheKey, view, VA_REFERENCE_CACHE_TTL_MS);
+    }
+    return view;
+  } finally {
+    if (lease?.status === "acquired") {
+      await releaseVaSharedFetchLease(cacheKey, lease.token);
+    }
+  }
 }

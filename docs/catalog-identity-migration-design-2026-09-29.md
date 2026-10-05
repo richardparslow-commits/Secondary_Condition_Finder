@@ -115,6 +115,14 @@ held artifact needed). Requirements at authoring:
    `liver-cancer` → `sarcopenia` edge; author one window per claim and read the redundancy semantics
    before authoring both.
 
+   > **Correction note 2026-10-04:** the premise of this item was checked against the live corpus and
+   > is inaccurate — no `liver-cancer` → `cirrhosis-of-the-liver` registration exists, and none ever
+   > did; the registered inbound-cirrhosis edges are `chronic-liver-disease` →
+   > `cirrhosis-of-the-liver` and `hepatic-steatosis` → `cirrhosis-of-the-liver`. The described
+   > direct-versus-chain conflict therefore cannot compose from the corpus as it stands. See
+   > `docs/cirrhosis-of-the-liver-sarcopenia-redundancy-adjudication-2026-disposition.md`; the
+   > window-discipline intent (one window per claim; re-run `npm run audit:crg` at authoring) stands.
+
 ---
 
 ## 3. Leg B — `alcohol-use-disorder` (scope split from `substance-use-disorder`; identity 819)

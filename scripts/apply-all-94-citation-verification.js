@@ -5,7 +5,7 @@ import path from "node:path";
 const reviewDate = "2026-09-04";
 const approvedDecision = "approve-as-implemented";
 const expectedCounts = {
-  knowledgeBaseFiles: 817,
+  knowledgeBaseFiles: 819,
   published: 139,
   draft: 674,
   relationships: 347,

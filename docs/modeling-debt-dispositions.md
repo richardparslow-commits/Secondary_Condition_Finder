@@ -186,6 +186,59 @@ created, every count pin is unchanged, and the inventory may be drawn on only in
 authoring pass under the canonical entry, which must adjudicate those PMIDs explicitly.
 `tests/canonical-identity-reconciliation.test.ts` pins the completed inventory and its unregistered state.
 
+## TMJ canonical election 2026-10-03 — `tmj-disorder` canonical, `tmj-dysfunction` quarantined pointer (frozen contract unmoved)
+
+**Disposition: `tmj-disorder` is canonical for the TMJ pair; `tmj-dysfunction` is reconciled to it as a
+quarantined pointer record; zero catalog counts move and zero registry rows move.** This executes the
+election designed in `docs/catalog-identity-migration-design-2026-09-29.md` (Leg C) on the 2026-09-28
+pointer precedent recorded above.
+
+- **Why `tmj-disorder`.** It already carries the spectrum name "Temporomandibular Joint (TMJ) Disorders",
+  the Dental & Oral body system and the 38 CFR 4.150 dental-and-oral framework; neither identity holds a
+  registered edge, so the election is a naming-ownership decision rather than an edge-preservation one,
+  and routing every TMJ claim into the spectrum name loses nothing.
+- **Three-notation reconciliation.** The records carried three notations for one target: ME-34's rejection
+  named `tmj-dysfunction`, the withdrawn batch-6 draft named `tmj-disorder`, and the missing-identity
+  roadmap and the corpus leads named `temporomandibular-disorder`. The last was never minted and is now
+  resolved into `tmj-disorder`'s name and aliases; minting it would have created a third identity for one
+  spectrum and collided with the alias `temporomandibular disorder`.
+- **Alias migration.** The pointer's aliases `Temporomandibular joint`,
+  `temporomandibular joint dysfunction`, `tmj` and `temporomandibular disorder` moved to the canonical
+  entry, `temporomandibular disorders` was minted there, and the pointer now carries no aliases. The
+  variant name `tmj dysfunction` stays on the pointer entry's own catalog name — the catalog invariant
+  (`tests/catalog.test.ts`) forbids an alias colliding with another condition's name or id — so folding it
+  into the canonical entry becomes available only if a future catalog-v3 migration retires the pointer ID,
+  exactly as with the rotator-cuff and thumb pointers above.
+- **Preservation guarantee.** Zero registry rows moved: both identities are zero-suggestion drafts with no
+  registered edges and no registered sources (grep-confirmed against `data/evidence/master-relationships.json`
+  and `data/evidence/master-sources.json` on 2026-10-03), so there was no edge to re-home and no source to
+  preserve. The pointer keeps its stable ID and its KB file, annotated in place; one-to-one catalog/KB
+  integrity is unmoved.
+- **ME-34.** The signed reopening disposition for `bruxism-awake-sleep` → `tmj-disorder` is **not** executed
+  here: it is the design's Stage 3c, the ME-34 contract pin (zero suggestions on `bruxism-awake-sleep`) is
+  unchanged, and the ME-34 rejection stands until that edge lands. **Executed 2026-10-04 (Stage 3c of the
+  signed design):** the `bruxism-awake-sleep` → `tmj-disorder` edge landed under the signed age-scope
+  reconciliation (juvenile null PMID 9758394 carried as an explicit counterweight, direction unresolved),
+  and the ME-34 contract pin moved 0 → 1 with the ME-34 ledger annotated as superseded as to outcome only.
+  The historical statement above is preserved, not rewritten.
+  `tests/canonical-identity-reconciliation.test.ts` pins this election, the pointer state and the alias
+  move.
+
+**Machine-readable pointer state and the fail-closed guard (2026-10-04).** A pointer record now declares
+itself in its knowledge-base mapping with a strict `quarantine` marker
+(`{status: "pointer", canonicalId, recordedOn, record}`; `quarantinePointerSchema` in
+`src/lib/kb/schema.ts`), so the pointer state is no longer prose-only. Four layers refuse any attempt to
+file a claim under a pointer: the mapping schema rejects a pointer that authors suggestions or names
+itself canonical; `validateKnowledgeBaseAgainstCatalog` (runtime knowledge-base load) additionally
+refuses any suggestion that targets a pointer, an unknown canonical target, and pointer chains; the
+adjacency-graph loader (`src/lib/kb/graph.ts`) refuses a node file owned by a pointer and any edge
+targeting one; and `scripts/validate-knowledge-base.js` enforces the same over the corpus in CI
+(`npm run kb:validate`), including a drift check that a self-declared pointer record must carry the
+marker and a marker must carry the pointer-record wording. `tests/quarantined-pointer-guard.test.ts` pins
+all four layers. The three reconciled pointers (`rotator-cuff-tear`,
+`skier-s-thumb`, `tmj-dysfunction`) carry the marker; the guard moves no catalog count and no registry
+row.
+
 ## Dermatitis composite-scope adjudication 2026-09-28 — `dermatitis` audited against the eczema scope split (three atopic-evidence edges superseded, two infection edges retained)
 
 **Disposition: the composite identity `dermatitis` ("Dermatitis (Atopic / Contact)") may hold subtype-agnostic

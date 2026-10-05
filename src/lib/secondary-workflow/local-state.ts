@@ -1,4 +1,7 @@
 import { evidenceAnalysisStorageKey } from "@/lib/evidence/extract";
+import { OCR_CHECKPOINT_STORAGE_KEY } from "@/lib/evidence/ocr-session";
+
+export const evidenceDepthStorageKey = "secondary-condition-finder:evidence-depth:v1";
 
 export const evidenceGapReviewStorageKey =
   "secondary-condition-finder:evidence-gap-review:v1";
@@ -14,6 +17,8 @@ export const secondaryWorkflowLocalStorageKeys = [
   evidenceGapReviewStorageKey,
   pathwayRecordChecklistStorageKey,
   vaGovRecordWalkthroughStorageKey,
+  OCR_CHECKPOINT_STORAGE_KEY,
+  evidenceDepthStorageKey,
 ] as const;
 
 export type RemovableStorage = Pick<Storage, "removeItem">;
@@ -21,11 +26,14 @@ export type RemovableStorage = Pick<Storage, "removeItem">;
 /**
  * Clears only browser-local state owned by the secondary workflow
  * (evidence excerpts, evidence-gap review checkmarks, pathway-record-checklist
- * selections, and VA.gov walkthrough progress checkmarks). Raw evidence/checklist
+ * selections, VA.gov walkthrough progress, OCR transcripts, and depth preference).
+ * Raw evidence/checklist
  * content is never copied or sent anywhere while clearing.
  */
 export function clearSecondaryWorkflowLocalState(storage: RemovableStorage): void {
+  let failed = false;
   for (const key of secondaryWorkflowLocalStorageKeys) {
-    storage.removeItem(key);
+    try { storage.removeItem(key); } catch { failed = true; }
   }
+  if (failed) throw new Error("Browser-local cleanup could not be confirmed.");
 }

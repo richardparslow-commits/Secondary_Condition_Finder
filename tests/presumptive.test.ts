@@ -1,3 +1,6 @@
+import fs from "node:fs";
+import path from "node:path";
+
 import { describe, expect, it } from "vitest";
 
 import { loadExposureCatalog } from "@/lib/presumptive/load";
@@ -183,6 +186,59 @@ describe("presumptive matching integration", () => {
     });
 
     expect(result.matches.some((match) => match.category.id === "agent-orange")).toBe(false);
+  });
+});
+
+describe("presumptive service-history input bounds", () => {
+  const base = {
+    locations: ["Iraq"],
+    serviceStart: "2026-01-01",
+    serviceEnd: "2026-12-31",
+  };
+
+  it("caps the location count so a hostile post cannot grow the cookie without bound", () => {
+    const result = serviceHistorySchema.safeParse({
+      ...base,
+      locations: Array.from({ length: 51 }, (_, index) => `Location ${index}`),
+    });
+    expect(result.success).toBe(false);
+    if (result.success) return;
+    expect(
+      result.error.issues.some((issue) => issue.path[0] === "locations"),
+    ).toBe(true);
+  });
+
+  it("caps each location label length", () => {
+    expect(
+      serviceHistorySchema.safeParse({ ...base, locations: ["x".repeat(121)] }).success,
+    ).toBe(false);
+    expect(
+      serviceHistorySchema.safeParse({ ...base, locations: ["x".repeat(120)] }).success,
+    ).toBe(true);
+  });
+
+  it("rejects branch-code text that is not a short uppercase token", () => {
+    expect(
+      serviceHistorySchema.safeParse({ ...base, serviceBranchCodes: ["army"] }).success,
+    ).toBe(false);
+    expect(
+      serviceHistorySchema.safeParse({ ...base, serviceBranchCodes: ["<script>"] }).success,
+    ).toBe(false);
+    expect(
+      serviceHistorySchema.safeParse({ ...base, serviceBranchCodes: ["ARMY"] }).success,
+    ).toBe(true);
+  });
+
+  it("enforces catalog membership for locations in the Server Action", () => {
+    // The schema module has no catalog dependency, so the action must do the
+    // allowlist check; pin the wiring so it cannot be dropped silently.
+    const source = fs.readFileSync(
+      path.join(process.cwd(), "src/lib/actions/presumptive.ts"),
+      "utf8",
+    );
+    expect(source).toContain("loadExposureCatalog");
+    expect(source).toContain("listLocations");
+    expect(source).toContain("knownLocations.has(location)");
   });
 });
 

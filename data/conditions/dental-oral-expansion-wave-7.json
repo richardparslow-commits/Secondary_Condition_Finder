@@ -582,12 +582,7 @@
     {
       "id": "tmj-dysfunction",
       "name": "TMJ dysfunction",
-      "aliases": [
-        "Temporomandibular joint",
-        "temporomandibular joint dysfunction",
-        "tmj",
-        "temporomandibular disorder"
-      ],
+      "aliases": [],
       "bodySystem": "Dental & Oral Conditions",
       "ratingSchedule": [
         {
@@ -597,7 +592,8 @@
         }
       ],
       "reviewNotes": [
-        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending.",
+        "CANONICAL POINTER (2026-10-03, docs/modeling-debt-dispositions.md, executing Leg C of docs/catalog-identity-migration-design-2026-09-29.md): this identity is reconciled to the CANONICAL tmj-disorder entry in dental-and-oral.json and is retained as a QUARANTINED POINTER RECORD so the frozen one-to-one identity contract and stable IDs are unmoved. Do not author here: all temporomandibular-joint claims are authored under the canonical entry. The matching aliases ('Temporomandibular joint', 'temporomandibular joint dysfunction', 'tmj', 'temporomandibular disorder') moved to the canonical entry, and 'temporomandibular disorders' was minted there; this pointer now carries no aliases. The variant name 'TMJ dysfunction' remains this entry's own catalog name: the catalog invariant (tests/catalog.test.ts) forbids an alias colliding with another condition's name or id, so the canonical entry cannot carry it while this pointer exists; this pointer note is the name-resolution record, and name folding becomes available only if a future catalog-v3 migration retires this pointer ID. Both identities are zero-suggestion drafts with no registered edges or sources, so zero registry rows moved."
       ]
     },
     {

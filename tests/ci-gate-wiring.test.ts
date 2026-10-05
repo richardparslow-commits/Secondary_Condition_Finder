@@ -61,6 +61,31 @@ describe("CI gate wiring", () => {
     expect(aggregator).toContain("steps.crg_graph.outcome");
   });
 
+  it("wires the fleet coordination simulation as an enforced, ratcheted gate", () => {
+    // The fleet simulation pins the distributed VA coordination invariants.
+    // Running it as its own named gate makes a coordination regression
+    // attributable, and the budget wrapper (scripts/run-fleet-simulation.mjs)
+    // makes an unbounded — merely slow — regression a gate failure instead of
+    // a longer test run. The budget is a ratchet derived from committed
+    // measurements, so it tightens as timing stabilizes instead of drifting
+    // looser; --record is how a run feeds its real measurement back in.
+    expect(ci).toContain("npm run test:fleet -- --record 2>&1 | tee ci-fleet.log");
+    expect(aggregator).toContain("steps.fleet.outcome");
+    expect(diagnostics).toContain("ci-fleet.log");
+    expect(diagnostics).toContain("steps.fleet.outcome");
+  });
+
+  it("publishes the fleet ratchet state so a CI measurement can be ratified", () => {
+    // A CI workspace is discarded at the end of the run, so without this the
+    // recorded CI measurement would be lost and the CI budget could never
+    // tighten. The state file rides the diagnostics artifact; the wiring test
+    // for the gate itself lives in tests/fleet-simulation-gate.test.ts.
+    const upload = stepBlocks.find((block) => block.includes("Upload diagnostic logs"));
+    expect(upload, "ci.yml lost its diagnostic artifact step").toBeDefined();
+    expect(upload).toContain(".github/fleet-budget-ratchet.json");
+    expect(ci).toContain("Ratchet the fleet budget: commit .github/fleet-budget-ratchet.json");
+  });
+
   it("collects the CRG gate logs and outcomes for diagnosis", () => {
     expect(diagnostics, "ci.yml lost its diagnostic summary step").toBeDefined();
     expect(diagnostics).toContain("ci-crg.log");

@@ -127,6 +127,6 @@ describe("Clinical Mapping Master Resolution 2026", () => {
     for (const id of newIds) {
       expect(ids.filter((x) => x === id)).toHaveLength(1);
     }
-    expect(ids).toHaveLength(817);
+    expect(ids).toHaveLength(819);
   });
 });

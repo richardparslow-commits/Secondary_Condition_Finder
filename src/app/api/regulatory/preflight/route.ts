@@ -1,21 +1,23 @@
-import { timingSafeEqual } from "node:crypto";
-
 import { NextResponse } from "next/server";
 
 import { auditLog } from "@/lib/observability/audit";
 import { refreshRegulatoryPreflightCache } from "@/lib/regulatory/preflight";
+import { authorizeBearerRequest } from "@/lib/security/bearer-auth";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
 
-const authorized = (request: Request): boolean => {
-  const configured = process.env.REGULATORY_SYNC_SECRET ?? process.env.CRON_SECRET;
-  if (!configured) return false;
-  const supplied = request.headers.get("authorization")?.replace(/^Bearer\s+/i, "") ?? "";
-  const left = Buffer.from(configured, "utf8");
-  const right = Buffer.from(supplied, "utf8");
-  return left.length === right.length && timingSafeEqual(left, right);
-};
+/**
+ * Operator authorization: fail-closed shared-secret bearer check. Requires the
+ * `Bearer ` scheme, a configured secret of at least 32 characters, and a
+ * constant-time comparison (see `@/lib/security/bearer-auth`). A missing or
+ * short secret never authorizes.
+ */
+const authorized = (request: Request): boolean =>
+  authorizeBearerRequest(
+    request,
+    process.env.REGULATORY_SYNC_SECRET ?? process.env.CRON_SECRET,
+  );
 
 export async function GET(request: Request) {
   if (!authorized(request)) {

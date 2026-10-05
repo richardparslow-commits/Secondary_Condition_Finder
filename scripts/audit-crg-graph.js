@@ -51,7 +51,16 @@ const path = require("path");
 
 const MAX_REPORTED_CYCLES = 100;
 const MAX_REPORTED_REDUNDANCY = 50;
-const MAX_CYCLE_LENGTH = 12;
+/**
+ * Analysis bounds. Enumeration and redundancy counting are **complete** within
+ * these budgets; exhausting a budget is a hard failure (`*_TRUNCATED`), never
+ * a silent downgrade of the verdict. The previous implementation stopped
+ * enumeration at MAX_REPORTED_CYCLES / MAX_CYCLE_LENGTH, so a cycle longer
+ * than 12 nodes or a 101st cycle was never analyzed and `truncated` could
+ * never become true.
+ */
+const MAX_ENUMERATION_STEPS = 2_000_000;
+const MAX_ENUMERATED_CYCLES = 5_000;
 
 /**
  * Human-decision backlog ratchets, pinned to the corpus as of 2026-09-25.
@@ -68,35 +77,49 @@ const CRG_REDUNDANCY_BASELINE = 29;  /* batch 92 (2026-09-29): +1 transitive red
 /**
  * Enumerates every simple directed cycle exactly once, rooted at the
  * lowest-ordered node on the cycle (Tiernan-style canonical enumeration).
- * Bounded by MAX_REPORTED_CYCLES / MAX_CYCLE_LENGTH so a pathological future
- * graph degrades to truncation, not a hang.
+ *
+ * There is deliberately **no cycle-length cap**: a 13-node pure-causation
+ * cycle is exactly as invalid as a 3-node one, and the old
+ * `MAX_CYCLE_LENGTH = 12` silently skipped it. The search is instead bounded
+ * by a step budget and a cycle-count budget; exhausting either returns
+ * `truncated: true`, which callers must surface as a hard failure rather than
+ * treating the partial result as a clean verdict.
  */
-function enumerateSimpleCycles(sortedNodes, nodeOrder, adjacency) {
+function enumerateSimpleCycles(sortedNodes, nodeOrder, adjacency, options = {}) {
+  const maxSteps = Number.isFinite(options.maxSteps) ? options.maxSteps : MAX_ENUMERATION_STEPS;
+  const maxCycles = Number.isFinite(options.maxCycles) ? options.maxCycles : MAX_ENUMERATED_CYCLES;
   const cycles = [];
-  for (const start of sortedNodes) {
-    if (cycles.length >= MAX_REPORTED_CYCLES) break;
+  let steps = 0;
+  let truncated = false;
+
+  outer: for (const start of sortedNodes) {
     const path = [start];
     const onPath = new Set([start]);
     const dfs = (current) => {
       for (const next of adjacency.get(current) || []) {
-        if (cycles.length >= MAX_REPORTED_CYCLES) return;
+        steps += 1;
+        if (steps > maxSteps || cycles.length >= maxCycles) {
+          truncated = true;
+          return;
+        }
         if (next === start) {
           cycles.push([...path, start]);
           continue;
         }
         if (onPath.has(next)) continue;
         if ((nodeOrder.get(next) ?? 0) < (nodeOrder.get(start) ?? 0)) continue;
-        if (path.length >= MAX_CYCLE_LENGTH) continue;
         onPath.add(next);
         path.push(next);
         dfs(next);
         path.pop();
         onPath.delete(next);
+        if (truncated) return;
       }
     };
     dfs(start);
+    if (truncated) break outer;
   }
-  return cycles;
+  return { cycles, truncated };
 }
 
 /**
@@ -168,7 +191,21 @@ function analyzeGraph(mappings, options = {}) {
   // --- Directed cycles ---
   const sortedNodes = [...nodeIds].sort();
   const nodeOrder = new Map(sortedNodes.map((id, index) => [id, index]));
-  const rawCycles = enumerateSimpleCycles(sortedNodes, nodeOrder, adjacency);
+  const enumeration = enumerateSimpleCycles(sortedNodes, nodeOrder, adjacency, {
+    maxSteps: Number.isFinite(options.enumerationBudget)
+      ? options.enumerationBudget
+      : undefined,
+  });
+  const rawCycles = enumeration.cycles;
+  if (enumeration.truncated) {
+    // The cycle verdict would be incomplete; fail closed instead of reporting
+    // a partial enumeration as if it were the whole graph.
+    violations.push({
+      code: "CRG-CYCLE-ENUMERATION-TRUNCATED",
+      subject: "cycle enumeration budget exhausted",
+      message: `cycle enumeration exceeded its analysis budget after ${rawCycles.length} cycle(s); the structural verdict would be incomplete. Split the graph, resolve existing cycles, or deliberately raise MAX_ENUMERATION_STEPS in scripts/audit-crg-graph.js.`,
+    });
+  }
 
   const cycles = rawCycles
     .map((cycle) => {
@@ -254,11 +291,16 @@ function analyzeGraph(mappings, options = {}) {
     edges.filter((edge) => !edge.draft).map((edge) => `${edge.from}->${edge.to}`),
   );
   const publishedEdges = edges.filter((edge) => !edge.draft);
+  // Count every conflict; cap only the display list. Counting used to stop at
+  // MAX_REPORTED_REDUNDANCY, so the ratchet compared a capped 50 against the
+  // baseline and `truncated.redundancy` could never fire.
+  let redundancyCount = 0;
   for (const first of publishedEdges) {
     for (const second of publishedEdges) {
       if (second.from !== first.to) continue;
       const direct = `${first.from}->${second.to}`;
       if (first.to === first.from || !publishedDirect.has(direct)) continue;
+      redundancyCount += 1;
       if (redundancy.length >= MAX_REPORTED_REDUNDANCY) continue;
       redundancy.push({
         direct,
@@ -275,7 +317,7 @@ function analyzeGraph(mappings, options = {}) {
   // needs a qualified-human decision. Nothing else bounds their growth, so
   // exceeding a pin is a hard violation: the backlog can only shrink.
   const reviewDebtExceeded = reviewClassCount > reviewBaseline;
-  const redundancyDebtExceeded = redundancy.length > redundancyBaseline;
+  const redundancyDebtExceeded = redundancyCount > redundancyBaseline;
   if (reviewDebtExceeded) {
     violations.push({
       code: "CRG-STRUCTURAL-DEBT-RATCHET",
@@ -286,8 +328,8 @@ function analyzeGraph(mappings, options = {}) {
   if (redundancyDebtExceeded) {
     violations.push({
       code: "CRG-STRUCTURAL-DEBT-RATCHET",
-      subject: `redundancy conflicts ${redundancy.length} > baseline ${redundancyBaseline}`,
-      message: `transitive redundancy grew from the pinned baseline of ${redundancyBaseline} to ${redundancy.length}. Each conflict means a direct edge overstates the evidence or an authored chain is redundant, and only a qualified human can decide which; resolve them or deliberately re-pin CRG_REDUNDANCY_BASELINE in scripts/audit-crg-graph.js.`,
+      subject: `redundancy conflicts ${redundancyCount} > baseline ${redundancyBaseline}`,
+      message: `transitive redundancy grew from the pinned baseline of ${redundancyBaseline} to ${redundancyCount}. Each conflict means a direct edge overstates the evidence or an authored chain is redundant, and only a qualified human can decide which; resolve them or deliberately re-pin CRG_REDUNDANCY_BASELINE in scripts/audit-crg-graph.js.`,
     });
   }
 
@@ -303,12 +345,12 @@ function analyzeGraph(mappings, options = {}) {
       associationEdges: associationEdgeCount,
       cycles: cycles.length,
       bidirectionalPairs: bidirectionalPairs.length,
-      redundancyConflicts: redundancy.length,
+      redundancyConflicts: redundancyCount,
     },
     reviewDebt: {
       reviewClassCount,
       reviewBaseline,
-      redundancyConflicts: redundancy.length,
+      redundancyConflicts: redundancyCount,
       redundancyBaseline,
       exceeded: reviewDebtExceeded || redundancyDebtExceeded,
     },
@@ -318,8 +360,11 @@ function analyzeGraph(mappings, options = {}) {
     bidirectionalPairs,
     redundancy: redundancy.slice(0, MAX_REPORTED_REDUNDANCY),
     truncated: {
-      cycles: cycles.length > MAX_REPORTED_CYCLES,
-      redundancy: redundancy.length > MAX_REPORTED_REDUNDANCY,
+      // True when analysis or the derived report was cut short. Display-slice
+      // truncation matters for the human queue; budget truncation is already a
+      // hard violation above.
+      cycles: enumeration.truncated || cycles.length > MAX_REPORTED_CYCLES,
+      redundancy: redundancyCount > MAX_REPORTED_REDUNDANCY,
     },
   };
 }
@@ -332,11 +377,21 @@ function readKnowledgeBaseMappings(kbDir) {
     .map((file) => JSON.parse(fs.readFileSync(path.join(kbDir, file), "utf8")));
 }
 
-async function main() {
-  const strict = process.argv.includes("--strict");
+/**
+ * Read the live authored corpus and run the shipped analysis. This is the
+ * single code path behind `npm run audit:crg` and every report generator built
+ * on it (for example `scripts/report-crg-triage.js`), so a generator cannot
+ * drift from the audit's own verdict by re-implementing the traversal.
+ */
+function buildReport(options = {}) {
   const kbDir = path.join(process.cwd(), "data", "knowledge-base");
   const mappings = readKnowledgeBaseMappings(kbDir);
-  const report = analyzeGraph(mappings, { strict });
+  return analyzeGraph(mappings, options);
+}
+
+async function main() {
+  const strict = process.argv.includes("--strict");
+  const report = buildReport({ strict });
 
   console.log(JSON.stringify(report, null, 2));
   if (report.status === "FAIL") process.exitCode = 1;
@@ -352,6 +407,7 @@ if (require.main === module) {
 
 module.exports = {
   analyzeGraph,
+  buildReport,
   enumerateSimpleCycles,
   CRG_REVIEW_BASELINE,
   CRG_REDUNDANCY_BASELINE,

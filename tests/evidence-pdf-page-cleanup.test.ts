@@ -26,7 +26,11 @@ const pdfjsMocks = vi.hoisted(() => ({
   destroy: vi.fn(),
 }));
 
-vi.mock("pdfjs-dist", () => ({
+// Pins the legacy build: the mock specifier must match the extraction module's
+// dynamic import (src/lib/evidence/document-extract.ts). Switching back to the
+// modern build without a compatibility review fails here and in the browser
+// ("n.toHex is not a function" on browsers without the new helpers).
+vi.mock("pdfjs-dist/legacy/build/pdf.mjs", () => ({
   GlobalWorkerOptions: { workerSrc: "about:blank" },
   getDocument: pdfjsMocks.getDocument,
 }));

@@ -37,6 +37,7 @@ describe("app layout design contract", () => {
       "src/app/secondary/upload/page.tsx",
       "src/app/secondary/suggestions/page.tsx",
       "src/app/secondary/evidence/page.tsx",
+      "src/app/pathways/page.tsx",
     ];
 
     for (const page of pages) {

@@ -7,6 +7,7 @@ import { RegulatoryPreflightStatus } from "@/components/RegulatoryPreflightStatu
 import { ActionPlan } from "@/components/secondary/ActionPlan";
 import { CombinationInsightsPanel } from "@/components/secondary/CombinationInsightsPanel";
 import { ConditionComparisonTool } from "@/components/secondary/ConditionComparisonTool";
+import { GraphPathwayReview } from "@/components/secondary/GraphPathwayReview";
 import { PathwayRecordChecklist } from "@/components/secondary/PathwayRecordChecklist";
 import { PrintReportButton } from "@/components/secondary/PrintReportButton";
 import { RatingGuide } from "@/components/secondary/RatingGuide";
@@ -17,6 +18,7 @@ import type {
 } from "@/components/secondary/ConditionTimelineVisualization";
 import { indexById } from "@/lib/catalog/lookup";
 import { loadConditionCatalog } from "@/lib/catalog/load";
+import { buildGraphPathwayMatchSectionView } from "@/lib/engine/graph-pathway-matches";
 import { recommendWithTracing } from "@/lib/engine/recommend";
 import { loadKnowledgeBase } from "@/lib/kb/load";
 import {
@@ -110,6 +112,15 @@ export default async function SuggestionsStepPage({ workflowState, searchParams 
     state.diagnosedConditionIds,
     state.serviceConnectedConditionIds,
     recommendationsResult.recommendations,
+  );
+  // Authored adjacency-graph routes connecting the selections in this review.
+  // These come from the graph layer (which additionally carries the signed
+  // design's draft-authored edges), are separate from the published-mapping
+  // recommendations above, and render with their association-only chain-break
+  // semantics so no route reads as an established nexus.
+  const graphPathwayMatches = buildGraphPathwayMatchSectionView(
+    state.serviceConnectedConditionIds,
+    nonServiceConnectedResults.map((result) => result.conditionId),
   );
   const nonServiceConnectedNames = nonServiceConnectedResults.map((result) => result.conditionName);
   // matchedIntakeContext is stripped for every export path so reported
@@ -214,6 +225,7 @@ export default async function SuggestionsStepPage({ workflowState, searchParams 
                 ))}
               </div>
             )}
+            <GraphPathwayReview view={graphPathwayMatches} />
           </SecondarySuggestionsTabs>
         </section>
 
