@@ -56,10 +56,23 @@ describe("CSRF Origin/Referer validation", () => {
       expect(result.reason).toContain("invalid-origin-header");
     });
 
-    it("accepts requests with no Origin or Referer (e.g., server-to-server)", () => {
+    it("fails closed when both Origin and Referer are absent in production", () => {
+      // Browser-initiated state changes always carry one of these headers; a
+      // stripped or forged request must not be treated as trusted just because
+      // the framework's action IDs are the only remaining signal.
       const headers = new Headers();
       const result = validateRequestOrigin(headers);
-      expect(result.ok).toBe(true);
+      expect(result.ok).toBe(false);
+      expect(result.reason).toBe("missing-origin-and-referer");
+    });
+
+    it("fails closed when the production origin cannot be resolved", () => {
+      vi.stubEnv("APP_URL", "");
+      vi.stubEnv("VERCEL_URL", "");
+      const headers = new Headers({ origin: "https://whatever.example" });
+      const result = validateRequestOrigin(headers);
+      expect(result.ok).toBe(false);
+      expect(result.reason).toBe("origin-unresolved");
     });
   });
 

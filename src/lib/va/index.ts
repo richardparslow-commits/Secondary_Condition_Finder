@@ -114,6 +114,8 @@ export async function fetchSandboxVABits(
         "X-User-Id": normalizedUserId,
       },
       signal: controller.signal,
+      // Never replay the bearer credential to a redirected origin.
+      redirect: "error",
     });
 
     if (!response.ok) {

@@ -1,3 +1,4 @@
+import { MAX_PATHWAY_HOPS } from "@/lib/kb/pathway-depth";
 import {
   ClaimPathwaySchema,
   type ClaimPathway,
@@ -33,11 +34,11 @@ import { deriveCompositeNexus } from "@/lib/kb/utils";
  * ## Recursion-depth limits
  *
  * Recursion is bounded structurally, not by a counter alone: `visit` refuses
- * to expand a node once `hops.length >= MAX_PATHWAY_HOPS` (2), so the call
- * stack depth is at most MAX_PATHWAY_HOPS + 1 frames. Combined with the
- * branch set, the traversal visits at most (out-degree of origin) ×
- * (out-degree of each mid-node) edges — linear in the depth-2 frontier, never
- * the whole graph.
+ * to expand a node once `hops.length >= MAX_PATHWAY_HOPS` (the shared cap in
+ * `@/lib/kb/pathway-depth`), so the call stack depth is at most
+ * MAX_PATHWAY_HOPS + 1 frames. Combined with the branch set, the traversal
+ * visits at most (out-degree of origin) × (out-degree of each mid-node)
+ * edges — linear in the depth-2 frontier, never the whole graph.
  *
  * ## Chain breaking
  *
@@ -56,10 +57,20 @@ import { deriveCompositeNexus } from "@/lib/kb/utils";
  * their node file) rather than silently emitting a legally misrepresenting
  * pathway. Callers should pass a graph already parsed through
  * `KbNodeMappingSchema`; the per-pathway parse is then a cheap final gate.
+ *
+ * ## Wiring status
+ *
+ * Consumed through `src/lib/engine/graph-pathways.ts`, which loads the
+ * validated adjacency graph (`src/lib/kb/graph.ts`, files under
+ * `data/knowledge-base/graph/`) and runs this traversal. The graph now carries
+ * its first real authored edge (`liver-cancer` → `sarcopenia`, 2026-10-03) and
+ * its first user-facing surface is the read-only `/pathways` explorer
+ * (`src/lib/engine/pathway-explorer.ts`, 2026-10-04), which carries the
+ * association-only chain-break semantics; health reports the validated graph
+ * counts, and the CI gate (`scripts/audit-crg.ts`) runs hard over live graph
+ * data. See `docs/crg-adjacency-migration-checklist.md` for the per-node
+ * acceptance bar and the open edge-migration decisions.
  */
-
-/** Hard cap on pathway depth (Primary → Secondary → Tertiary). */
-export const MAX_PATHWAY_HOPS = 2;
 
 /**
  * Generate every depth-1 and depth-2 claim pathway departing from

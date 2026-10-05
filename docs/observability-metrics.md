@@ -2,7 +2,7 @@
 
 ## Overview
 
-The application uses [OpenTelemetry](https://opentelemetry.io/) (via `@vercel/otel`) for instrumentation. Custom metrics are registered lazily through `src/lib/observability/logger.ts` and `src/lib/engine/metrics.ts` — they inherit the same OTel exporter configured in `src/instrumentation.ts`.
+The application instruments custom metrics through the [OpenTelemetry API](https://opentelemetry.io/) (`@opentelemetry/api`) in `src/lib/observability/logger.ts` and `src/lib/engine/metrics.ts`. **No SDK provider or exporter is registered**: automatic trace export is deliberately disabled by policy (`src/lib/observability/telemetry-policy.ts`) because framework spans can carry query-string URLs, span names, and exception text past the application log redaction, and the `@vercel/otel` dependency has been removed. Every recording call described below is therefore a no-op until an exporter is added after the review requirements in that policy module are met.
 
 All metric recording is **best-effort**: if OTEL is not configured (tests, local dev without a collector), the recording functions silently become no-ops. Failures never throw.
 
@@ -57,22 +57,9 @@ When `NODE_ENV` is not `"production"` or `"test"`, `debugLogPhaseTimings()` emit
 
 ## Configuration
 
-Metrics are automatically exported when `@vercel/otel` is registered in `src/instrumentation.ts`. No additional configuration is needed — the custom metrics use the same OTel meter (`secondary-condition-finder` / `secondary-condition-finder-engine`) and exporter as the framework-instrumented HTTP metrics.
+Metrics are **not exported** in the current baseline. `src/instrumentation.ts` does not call `registerOTel`, no SDK provider is registered, and the `@vercel/otel` dependency was removed, so the histograms/counters above are no-ops. This is a deliberate decision (audit A-04) recorded in `src/lib/observability/telemetry-policy.ts` and enforced by `tests/telemetry-policy.test.ts`.
 
-### Local Development
-
-Without a collector, metrics silently no-op. To observe them locally:
-
-```bash
-# Start a Jaeger instance for local tracing/metrics
-docker run -d --name jaeger \
-  -e COLLECTOR_OTLP_ENABLED=true \
-  -p 16686:16686 \
-  -p 4317:4317 \
-  jaegertracing/all-in-one:latest
-```
-
-Then configure the OTel exporter endpoint via `OTEL_EXPORTER_OTLP_ENDPOINT=http://localhost:4317`.
+Re-enabling requires a sanitizing span processor/exporter first — no query strings, URL credentials, sensitive span names, or exception text — plus the collector retention/access review described in the policy module and the audit's Section 9 inputs. Setting `OTEL_EXPORTER_OTLP_ENDPOINT` alone has no effect today.
 
 ---
 

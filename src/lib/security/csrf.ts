@@ -6,6 +6,11 @@
  * explicit Origin/Referer header check as defense-in-depth — a secondary
  * layer that catches misconfigurations or framework bypasses.
  *
+ * Status: this helper currently has no production callers. Next.js Server
+ * Actions are the protected mutation boundary; this module is retained as
+ * reviewed defense-in-depth and must be tested behind the deployed host/proxy
+ * configuration before being wired into any request path.
+ *
  * Usage (in Server Actions or middleware):
  *   import { validateRequestOrigin } from "@/lib/security/csrf";
  *   const result = validateRequestOrigin(headers);
@@ -65,7 +70,13 @@ export function validateRequestOrigin(
 
     if (isProduction) {
       const prodOrigin = expectedOrigin ?? productionOrigin();
-      if (prodOrigin && parsed.origin !== prodOrigin) {
+      if (!prodOrigin) {
+        // Unresolved production origin: fail closed instead of accepting any
+        // Origin because the deployment URL variables are missing.
+        logger.warn("CSRF origin unresolved");
+        return reject(`origin-unresolved`);
+      }
+      if (parsed.origin !== prodOrigin) {
         logger.warn("CSRF origin mismatch", {
           origin: parsed.origin,
           expected: prodOrigin,
@@ -94,7 +105,11 @@ export function validateRequestOrigin(
 
     if (isProduction) {
       const prodOrigin = expectedOrigin ?? productionOrigin();
-      if (prodOrigin && parsed.origin !== prodOrigin) {
+      if (!prodOrigin) {
+        logger.warn("CSRF referer unresolved");
+        return reject(`referer-unresolved`);
+      }
+      if (parsed.origin !== prodOrigin) {
         logger.warn("CSRF referer mismatch", {
           referer: parsed.origin,
           expected: prodOrigin,
@@ -111,11 +126,15 @@ export function validateRequestOrigin(
   }
 
   // --- No Origin or Referer header ---
-  // Some legitimate scenarios (e.g., curl, server-to-server) don't send Origin.
-  // Server Actions from Next.js always include Origin, so missing Origin on a
-  // Server Action POST is suspicious but not conclusive. Log and allow.
+  // Browser-initiated state changes always carry one of these. A missing
+  // header in production cannot be distinguished from a stripped or forged
+  // request, so it fails closed rather than relying on Next.js action IDs
+  // alone; development keeps the permissive behavior for curl/server-to-server
+  // tooling. This function is currently a defense-in-depth helper with no
+  // production call sites, and its contract must not be "allow by default".
   if (isProduction) {
     logger.warn("CSRF: no Origin or Referer header on request");
+    return reject("missing-origin-and-referer");
   }
 
   return { ok: true };
@@ -140,9 +159,12 @@ function safeParseOrigin(value: string): { origin: string } | null {
 }
 
 function productionOrigin(): string | null {
-  const vercelUrl = process.env.VERCEL_URL;
-  if (vercelUrl) return `https://${vercelUrl}`;
+  // APP_URL (the canonical deployment origin, e.g. a custom domain) wins over
+  // the deployment-specific VERCEL_URL, so validation compares against the
+  // origin users actually visit rather than a per-deployment hostname.
   const appUrl = process.env.APP_URL;
   if (appUrl) return appUrl;
+  const vercelUrl = process.env.VERCEL_URL;
+  if (vercelUrl) return `https://${vercelUrl}`;
   return null;
 }

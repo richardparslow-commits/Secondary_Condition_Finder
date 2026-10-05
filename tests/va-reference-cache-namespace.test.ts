@@ -209,8 +209,21 @@ describe("withVaReferenceCache", () => {
       items: [{ id: "1", name: "Migraine" }],
       cacheStatus: "miss",
     };
+    // The shared tier reads one atomic `MGET [epoch, value]` and only accepts
+    // an epoch-stamped envelope (`reference-shared-cache.ts`), so the fake KV
+    // returns the merged protocol's pair: an absent epoch marker (= epoch "0")
+    // plus an envelope stamped with it.
     const fetchSpy = vi.fn(async () =>
-      okJson({ result: JSON.stringify(sharedView) }),
+      okJson({
+        result: [
+          null,
+          JSON.stringify({
+            envelopeVersion: 2,
+            epoch: "0",
+            value: sharedView,
+          }),
+        ],
+      }),
     );
     vi.stubGlobal("fetch", fetchSpy);
 

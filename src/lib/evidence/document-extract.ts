@@ -191,7 +191,10 @@ export async function extractPdfEvidence(
 ): Promise<LocalDocumentExtraction> {
   assertFileSize(file, limits);
   const sourceName = normalizeName(file.name);
-  const pdfjs = await import("pdfjs-dist");
+  // Legacy main build: the modern build relies on very recent standardized
+  // helpers (Uint8Array.toHex, Map.getOrInsertComputed) that older browsers
+  // lack — see scripts/copy-pdf-worker.mjs for the matching legacy worker.
+  const pdfjs = await import("pdfjs-dist/legacy/build/pdf.mjs");
   if (!pdfjs.GlobalWorkerOptions.workerSrc) {
     pdfjs.GlobalWorkerOptions.workerSrc = "/pdf.worker.min.mjs";
   }

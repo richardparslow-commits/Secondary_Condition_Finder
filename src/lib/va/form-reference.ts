@@ -1,16 +1,17 @@
 import "server-only";
 
+import { isTrustedCachedClaimFormReference } from "./cached-view-guard";
+import {
+  resolveVaResultEnvironment,
+  vaFallbackCopy,
+  vaProvenanceCopy,
+} from "./provenance";
 import {
   clearVaReferenceNamespace,
   VA_REFERENCE_NAMESPACES,
   vaReferenceCacheKey,
   withVaReferenceCache,
 } from "./reference-cache-access";
-import {
-  resolveVaResultEnvironment,
-  vaFallbackCopy,
-  vaProvenanceCopy,
-} from "./provenance";
 import {
   fetchVaForms,
   loadVaApiConfig,
@@ -54,8 +55,10 @@ type FormsFetcher = (
 export async function loadClaimFormReference(
   fetcher: FormsFetcher = fetchVaForms,
 ): Promise<ClaimFormReference> {
-  const configuredEnvironment = loadVaApiConfig().environment ?? "sandbox";
+  const config = loadVaApiConfig();
+  const configuredEnvironment = config.environment ?? "sandbox";
   const useSharedCache = fetcher === fetchVaForms;
+  const cacheActive = useSharedCache && config.enabled;
   const cacheKey = vaReferenceCacheKey(
     VA_REFERENCE_NAMESPACES.formReference,
     configuredEnvironment,
@@ -96,7 +99,17 @@ export async function loadClaimFormReference(
       };
     },
     // No `decorateHit`: `ClaimFormReference` carries no `cacheStatus` field.
-    { enabled: useSharedCache },
+    {
+      // Activation first: a disabled integration must never serve a previously
+      // cached live/production-labelled view, so the tiers are bypassed
+      // entirely when it is off.
+      enabled: cacheActive,
+      singleFlight: cacheActive,
+      // Read-side guard (see cached-view-guard.ts): reject a shared value whose
+      // provenance, shape, or links do not match this deployment.
+      acceptSharedCached: (view) =>
+        isTrustedCachedClaimFormReference(view, configuredEnvironment),
+    },
   );
 }
 

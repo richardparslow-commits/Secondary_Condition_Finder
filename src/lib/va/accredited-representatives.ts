@@ -1,11 +1,15 @@
 import "server-only";
 
+import { isTrustedCachedLiveView } from "./cached-view-guard";
 import {
   resolveVaResultEnvironment,
   vaFallbackStatus,
   vaLiveStatus,
 } from "./provenance";
-import { type VaReferenceSourceStatus } from "./reference-cache";
+import {
+  hashedCacheKeySegment,
+  type VaReferenceSourceStatus,
+} from "./reference-cache";
 import {
   clearVaReferenceNamespace,
   VA_REFERENCE_NAMESPACES,
@@ -38,11 +42,13 @@ function cacheKeyFor(
   params: AccreditedRepresentativeSearchParams,
   environment: VaApiEnvironment,
 ): string {
+  // The ZIP (quasi-identifier) and radius/type are hashed rather than written
+  // as raw key material; only the hashed prefix stays human-readable.
   const normalized = `${params.zip}:${params.radiusMiles ?? 50}:${params.type ?? "any"}`;
   return vaReferenceCacheKey(
     VA_REFERENCE_NAMESPACES.accreditedRepresentatives,
     environment,
-    normalized,
+    hashedCacheKeySegment(normalized),
   );
 }
 
@@ -63,6 +69,7 @@ export async function loadAccreditedRepresentatives(
   const config = loadVaApiConfig();
   const configuredEnvironment = config.environment ?? "sandbox";
   const useSharedCache = fetcher === fetchVaAccreditedRepresentatives;
+  const cacheActive = useSharedCache && config.enabled;
   const cacheKey = cacheKeyFor(params, configuredEnvironment);
 
   return withVaReferenceCache<AccreditedRepresentativeView>(
@@ -98,8 +105,15 @@ export async function loadAccreditedRepresentatives(
       };
     },
     {
-      enabled: useSharedCache,
+      // Activation first: a disabled integration must never serve a previously
+      // cached live view, so the tiers are bypassed entirely when it is off.
+      enabled: cacheActive,
+      singleFlight: cacheActive,
       decorateHit: (view) => ({ ...view, cacheStatus: "hit" }),
+      // Read-side guard: a shared value may only be served if it still carries
+      // this deployment's provenance and only credential-free HTTPS links.
+      acceptSharedCached: (view) =>
+        isTrustedCachedLiveView(view, configuredEnvironment),
     },
   );
 }

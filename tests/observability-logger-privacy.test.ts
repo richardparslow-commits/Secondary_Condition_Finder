@@ -37,6 +37,50 @@ describe("observability logger privacy redaction", () => {
     expect(JSON.stringify(out)).not.toContain("tinnitus");
   });
 
+  it("drops arbitrary free-form strings even under a non-prohibited key", () => {
+    const out = redactLogFields({
+      service: "va-api",
+      error: "upstream said: veteran records attached at https://va.test/x?ssn=999-88-7777",
+      message: "raw upstream body",
+      route: "/secondary/suggestions?diagnosed=ptsd&rating-ptsd=70",
+      zip: "90210",
+    }) as Record<string, unknown>;
+
+    const serialized = JSON.stringify(out);
+    expect(out.service).toBe("va-api");
+    expect(out.error).toBe("[redacted]");
+    expect(out.message).toBe("[redacted]");
+    expect(out.route).toBe("[redacted]");
+    expect(serialized).not.toContain("999-88-7777");
+    expect(serialized).not.toContain("diagnosed=ptsd");
+    expect(serialized).not.toContain("upstream said");
+  });
+
+  it("keeps shape-validated operational values so observability is not a blanket wipe", () => {
+    const out = redactLogFields({
+      path: "/services/veteran/v1/status",
+      requestId: "3f2c9a5e-6b1d-4c8f-9a0e-2d7b4c1f8e6a",
+      outcome: "http-error",
+      status: 503,
+    }) as Record<string, unknown>;
+
+    expect(out.path).toBe("/services/veteran/v1/status");
+    expect(out.outcome).toBe("http-error");
+    expect(out.status).toBe(503);
+  });
+
+  it("drops a non-allowlisted message and sanitizes the component label", () => {
+    const spy = vi.spyOn(console, "log").mockImplementation(() => {});
+    const logger = createLogger("privacy-probe");
+
+    logger.info("veteran reported tinnitus at 90210", { service: "va-api" });
+
+    const written = spy.mock.calls.map((call) => String(call[0])).join("\n");
+    expect(written).toContain("OPERATIONAL_EVENT");
+    expect(written).not.toContain("tinnitus");
+    expect(written).not.toContain("90210");
+  });
+
   it("suppresses prohibited fields nested in objects and arrays", () => {
     const out = redactLogFields({
       meta: { attempt: 2, inner: { ssn: "123-45-6789", patientName: "Jane Doe" } },

@@ -93,6 +93,37 @@ describe("production runtime readiness workflow", () => {
     expect(workflow).not.toContain('gh issue comment "$RUNTIME_READINESS_ISSUE" --body-file');
   });
 
+  it("surfaces adjacency-graph migration state from production health", () => {
+    const workflow = read(workflowPath);
+
+    expect(workflow).toContain("Probe production health for adjacency-graph state");
+    expect(workflow).toContain("$PRODUCTION_BASE_URL/api/health");
+    expect(workflow).toContain("'Accept: application/json'");
+    expect(workflow).toContain(".components.kbGraph.status");
+    expect(workflow).toContain(".components.kbGraph.nodes");
+    expect(workflow).toContain(".components.kbGraph.edges");
+    expect(workflow).toContain("## Adjacency-graph migration state");
+    expect(workflow).toContain("Production health did not report a validated adjacency graph");
+
+    // Recorded in both evidence paths for the issue ledger.
+    expect(workflow).toContain("Adjacency graph validation:");
+    expect(workflow).toContain("GRAPH_STATUS:");
+    expect(workflow).toContain(
+      "- Adjacency graph: \\`${{ steps.graph.outputs.graph_status }} (nodes:",
+    );
+
+    // Gated after runtime readiness so a failed graph probe blocks closure.
+    expect(workflow.indexOf("Probe production health for adjacency-graph state")).toBeGreaterThan(
+      workflow.indexOf("Verify production runtime readiness"),
+    );
+    expect(workflow.indexOf("Record failed runtime evidence")).toBeGreaterThan(
+      workflow.indexOf("Probe production health for adjacency-graph state"),
+    );
+
+    // The health body stays in its temporary file; only jq-derived values are used.
+    expect(workflow).not.toContain('cat "$body_file"');
+  });
+
   it("transitions issue 213 to completed only after routes and readiness succeed", () => {
     const workflow = read(workflowPath);
 

@@ -17,6 +17,7 @@ const EXPECTED_PAGE_TITLES = [
   ["src/app/presumptive/page.tsx", "Presumptive Research | Secondary Condition Finder"],
   ["src/app/va-forms/page.tsx", "VA Form Reference | Secondary Condition Finder"],
   ["src/app/va-reference/page.tsx", "Disability Reference | Secondary Condition Finder"],
+  ["src/app/pathways/page.tsx", "Claim Pathways | Secondary Condition Finder"],
 ] as const;
 
 const EXPECTED_LAYOUT_TITLES = [
@@ -61,6 +62,7 @@ describe("manual accessibility route document titles", () => {
       ["/presumptive/results", "src/app/presumptive/layout.tsx"],
       ["/va-forms", "src/app/va-forms/page.tsx"],
       ["/va-reference", "src/app/va-reference/page.tsx"],
+      ["/pathways", "src/app/pathways/page.tsx"],
     ]);
 
     expect([...titleOwnerByRoute.keys()]).toEqual([
@@ -79,6 +81,7 @@ describe("manual accessibility route document titles", () => {
       "/presumptive/results",
       "/va-forms",
       "/va-reference",
+      "/pathways",
     ]);
 
     for (const sourcePath of titleOwnerByRoute.values()) {

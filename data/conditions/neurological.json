@@ -32,6 +32,23 @@
       ]
     },
     {
+      "id": "drug-induced-parkinsonism",
+      "name": "Drug-Induced Parkinsonism",
+      "aliases": [
+        "drug-induced parkinsonism",
+        "antipsychotic-induced parkinsonism",
+        "medication-induced parkinsonism",
+        "neuroleptic-induced parkinsonism"
+      ],
+      "bodySystem": "Neurological",
+      "ratingSchedule": [],
+      "reviewNotes": [
+        "Pending manual review of 38 CFR rating codes. Added 2026-09-28 as a versioned catalog addition (814/814 to 817/817) closing the missing-identity gap behind the batch-88 psychotropic-medication-damage neurological withholding, which withheld the neurological half of that request in full because the catalog carried no identity for tardive dyskinesia, drug-induced parkinsonism, neuroleptic malignant syndrome or serotonin syndrome. Reserved evidence pointer: PMID 30695288 (French FACE-SZ cohort of 674 community-dwelling patients with schizophrenia; 13.2 percent drug-induced parkinsonism by Simpson-Angus scale; first-generation antipsychotic prescription adjusted odds ratio 2.038, p = 0.047) is reserved with the held batch-90 schizophrenia route, and any reuse must be adjudicated together with docs/batch-90-schizophrenia-tardive-dyskinesia-held-edge.json under the ME-29 reserved-evidence discipline.",
+        "Rating authority is deliberately left empty per docs/condition-catalog.md step 4 (never invent a code): a qualified human must confirm the applicable diagnostic code and framework before any ratingSchedule citation is recorded, and any citation added by automated work stays verified: false. A drug-induced movement disorder is most likely evaluated under the neurological ratings schedule (38 CFR 4.124a), including any analogous rating, but no code and no schedule assignment is asserted here.",
+        "Scope guards: this identity is the ACUTE REVERSIBLE drug-induced parkinsonism (a dopamine-blocking drug effect with a distinct natural history), NOT the neurodegenerative disease of the sibling parkinsons-disease identity; per the batch-88 category-error guard, the Piedmont degenerative-parkinsonism hazard-ratio literature (PMID 34652577, HR 3.27 on 2,526,319 residents) studies a different outcome and must not be registered in either direction. Tardive dyskinesia, neuroleptic malignant syndrome and serotonin syndrome are separate identities and must not be routed through this one; dystonia and akathisia remain missing identities and must not be routed through this one either. Bare 'parkinsonism' and the abbreviation 'DIP' are deliberately NOT aliases: 'parkinsonism' is ambiguous against idiopathic and atypical parkinsonian syndromes, and 'DIP' against distal interphalangeal and other expansions."
+      ]
+    },
+    {
       "id": "epidural-hematoma",
       "name": "Epidural Hematoma",
       "aliases": [
@@ -100,6 +117,23 @@
       "ratingSchedule": [],
       "reviewNotes": [
         "Pending human review"
+      ]
+    },
+    {
+      "id": "neuroleptic-malignant-syndrome",
+      "name": "Neuroleptic Malignant Syndrome",
+      "aliases": [
+        "neuroleptic malignant syndrome",
+        "malignant neuroleptic syndrome",
+        "neuroleptic-induced malignant syndrome",
+        "antipsychotic malignant syndrome"
+      ],
+      "bodySystem": "Neurological",
+      "ratingSchedule": [],
+      "reviewNotes": [
+        "Pending manual review of 38 CFR rating codes. Added 2026-09-28 as a versioned catalog addition (814/814 to 817/817) closing the missing-identity gap behind the batch-88 psychotropic-medication-damage neurological withholding. EVIDENCE-TIER GATE STANDS: the located literature for this syndrome is dominated by case reports and post-marketing signal analyses, and batch 88 recorded that a non-case-report anchor tier is required even once the identity exists, so no route may be authored to this identity until a cohort, trial or systematic-review anchor is located and verified under docs/citation-verification-sop.md.",
+        "Rating authority is deliberately left empty per docs/condition-catalog.md step 4 (never invent a code): a qualified human must confirm the applicable diagnostic code and framework before any ratingSchedule citation is recorded, and any citation added by automated work stays verified: false. A drug-induced movement-disorder emergency is most likely evaluated under the neurological ratings schedule (38 CFR 4.124a), including any analogous rating, but no code and no schedule assignment is asserted here.",
+        "Scope guards: this identity is the dopamine-antagonist (neuroleptic/antipsychotic) toxidrome, distinct from the serotonergic toxidrome of the sibling serotonin-syndrome identity and from catatonia; the two toxidromes must not be conflated or routed through each other. Tardive dyskinesia, drug-induced parkinsonism and serotonin syndrome are separate identities; dystonia and akathisia remain missing identities and must not be routed through this one. The abbreviation 'NMS' is deliberately NOT an alias, matching the abbreviation discipline of the tardive-dyskinesia entry."
       ]
     },
     {
@@ -206,6 +240,23 @@
       ]
     },
     {
+      "id": "serotonin-syndrome",
+      "name": "Serotonin Syndrome",
+      "aliases": [
+        "serotonin syndrome",
+        "serotonin toxicity",
+        "serotonergic syndrome",
+        "serotonin toxidrome"
+      ],
+      "bodySystem": "Neurological",
+      "ratingSchedule": [],
+      "reviewNotes": [
+        "Pending manual review of 38 CFR rating codes. Added 2026-09-28 as a versioned catalog addition (814/814 to 817/817) closing the missing-identity gap behind the batch-88 psychotropic-medication-damage neurological withholding. EVIDENCE-TIER GATE STANDS: the located literature for this syndrome is dominated by case reports and post-marketing signal analyses, and batch 88 recorded that a non-case-report anchor tier is required even once the identity exists, so no route may be authored to this identity until a cohort, trial or systematic-review anchor is located and verified under docs/citation-verification-sop.md.",
+        "Rating authority is deliberately left empty per docs/condition-catalog.md step 4 (never invent a code): a qualified human must confirm the applicable diagnostic code and framework before any ratingSchedule citation is recorded, and any citation added by automated work stays verified: false. A serotonergic toxidrome is most likely evaluated under the neurological ratings schedule (38 CFR 4.124a), including any analogous rating, but no code and no schedule assignment is asserted here.",
+        "Scope guards: this identity is the serotonergic toxidrome (serotonin toxicity, most commonly from serotonergic drug combinations or overdose), distinct from the dopamine-antagonist toxidrome of the sibling neuroleptic-malignant-syndrome identity; the two toxidromes must not be conflated or routed through each other. Tardive dyskinesia, drug-induced parkinsonism and neuroleptic malignant syndrome are separate identities; dystonia and akathisia remain missing identities and must not be routed through this one. The abbreviation 'SS' is deliberately NOT an alias."
+      ]
+    },
+    {
       "id": "skull-fracture-non-basilar-and-basal",
       "name": "Skull Fracture (Non-basilar and Basal)",
       "aliases": [
@@ -239,6 +290,25 @@
       "ratingSchedule": [],
       "reviewNotes": [
         "Pending manual review of 38 CFR rating codes."
+      ]
+    },
+    {
+      "id": "tardive-dyskinesia",
+      "name": "Tardive Dyskinesia",
+      "aliases": [
+        "tardive dyskinesia",
+        "drug-induced tardive dyskinesia",
+        "antipsychotic-induced tardive dyskinesia",
+        "neuroleptic-induced tardive dyskinesia",
+        "tardive dyskinesia syndrome"
+      ],
+      "bodySystem": "Neurological",
+      "ratingSchedule": [],
+      "reviewNotes": [
+        "Pending manual review of 38 CFR rating codes. Added 2026-09-28 as a versioned catalog addition closing the missing-identity gap behind the batch-80 evidence-preserving refusal of schizophrenia to tardive-dyskinesia (TENTH refusal; authoring-quality evidence preserved at PMID 37424417, PMID 39240484, PMID 42030922) and behind the batch-88 psychotropic-medication-damage neurological withholding (PMID 28146614 and PMID 30695288 reserved).",
+        "Rating authority is deliberately left empty per docs/condition-catalog.md step 4 (never invent a code): a qualified human must confirm the applicable diagnostic code and framework before any ratingSchedule citation is recorded, and any citation added by automated work stays verified: false. A movement disorder is most likely evaluated under the neurological ratings schedule (38 CFR 4.124a), including any analogous rating, but no code and no schedule assignment is asserted here.",
+        "Scope guards: this identity is the chronic DRUG-INDUCED movement disorder (tardive dyskinesia, most commonly antipsychotic or neuroleptic induced), NOT the neurodegenerative parkinsonism of the sibling parkinsons-disease identity, and the Piedmont degenerative-parkinsonism hazard-ratio literature (PMID 34652577) stays reserved and category-guarded in the batch-88 disposition. Drug-induced parkinsonism, neuroleptic malignant syndrome and serotonin syndrome remain separate missing identities and must not be routed through this one. Bare 'dyskinesia' and the abbreviation 'TD' are deliberately NOT aliases: 'dyskinesia' is ambiguous against primary ciliary dyskinesia and acute extrapyramidal syndromes, and 'TD' against traveler's diarrhea.",
+        "Update 2026-09-28 (same-day movement-disorder migration): drug-induced parkinsonism, neuroleptic malignant syndrome and serotonin syndrome were added as separate catalog identities in the versioned 814/814 to 817/817 migration, so the statement above that they 'remain separate missing identities' is superseded as to IDENTITY EXISTENCE only; the prohibition on routing those syndromes through this identity stands unchanged, and dystonia and akathisia remain missing identities."
       ]
     },
     {

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { clearServiceHistory } from "@/lib/actions/presumptive";
 
 import { AccreditedRepresentativeFinder } from "@/components/va/AccreditedRepresentativeFinder";
 import { DisclaimerFooter } from "@/components/Disclaimer";
@@ -124,6 +125,10 @@ export default async function PresumptiveResultsPage({
       <Link href="/presumptive" className="text-sm underline hover:text-slate-900">
         Back to service history
       </Link>
+
+      <form action={clearServiceHistory} className="mt-3">
+        <button type="submit" className="ui-button-secondary">Clear saved service history</button>
+      </form>
 
       <h1 className="mt-3 text-2xl font-semibold tracking-tight">
         Presumptions that may apply

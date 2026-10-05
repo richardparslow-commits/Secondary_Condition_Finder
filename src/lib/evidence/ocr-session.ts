@@ -17,6 +17,10 @@
  * - Worker-health probing: after a recognition failure, a probe decides
  *   whether the failure was page-specific or the WASM worker died (OOM) —
  *   in which case the loop must stop instead of retrying every page.
+ * - Trusted-Types-compatible worker spawning: the canonical factory loads the
+ *   worker script as a direct same-origin URL (`workerBlobURL: false`)
+ *   because production's `require-trusted-types-for 'script'` default policy
+ *   refuses the blob wrapper Tesseract uses by default.
  *
  * The checkpoint contains extracted document text and lives in
  * sessionStorage only — the same tab-local privacy envelope as the retained
@@ -51,6 +55,9 @@ export const OCR_CHECKPOINT_STORAGE_KEY =
  * the job continues in memory with a warning.
  */
 export const OCR_CHECKPOINT_MAX_JSON_CHARS = 2_000_000;
+/** Resume expires after 15 minutes; checked before any transcript is restored. */
+export const OCR_CHECKPOINT_TTL_MS = 15 * 60 * 1000;
+const OCR_CHECKPOINT_MAX_PAGES = 2_000;
 
 export interface OcrRenderMetrics {
   /** Final render scale (relative to the page's 1× viewport). */
@@ -138,6 +145,45 @@ export function releaseCanvas(canvas: HTMLCanvasElement): void {
   }
 }
 
+/**
+ * Canonical options for spawning the browser-local Tesseract worker.
+ *
+ * `workerBlobURL: false` is load-bearing, not a preference. Tesseract's
+ * default (`true`) wraps `workerPath` in a Blob and spawns
+ * `new Worker(URL.createObjectURL(blob))`. Production enforces Trusted Types
+ * with a strict `default` policy that permits only same-origin http(s) script
+ * URLs, so the blob wrapper is refused and browser-local OCR fails with
+ * "Trusted Types: refused non-same-origin script URL". Direct same-origin
+ * loading keeps the strict policy (and `worker-src 'self'`, which no longer
+ * allowlists `blob:`) intact and works in every browser, including those that
+ * do not enforce Trusted Types.
+ *
+ * All OCR entry points must spawn workers through `createLocalOcrWorker()` so
+ * this contract cannot silently regress in one call site.
+ */
+export const LOCAL_OCR_WORKER_OPTIONS = {
+  // The guard worker (provisioned by scripts/copy-pdf-worker.mjs) installs the
+  // realm-local Trusted Types default policy that lets this worker and the
+  // pinned tesseract script import their /tesseract/ assets, then forwards to
+  // worker.min.js. Pointing workerPath at worker.min.js directly fails inside
+  // the worker realm, whose own CSP enforces Trusted Types without any policy.
+  workerPath: "/tesseract/worker-guard.js",
+  corePath: "/tesseract/tesseract-core-simd.wasm.js",
+  langPath: "/tesseract",
+  workerBlobURL: false,
+} as const;
+
+/**
+ * Spawns the shared browser-local OCR worker (eng, LSTM-only) with the
+ * Trusted-Types-compatible options above. The `tesseract.js` import stays
+ * dynamic so the WASM OCR bundle is only fetched on an explicit user action;
+ * callers are responsible for `worker.terminate()`.
+ */
+export async function createLocalOcrWorker() {
+  const { createWorker } = await import("tesseract.js");
+  return createWorker("eng", 1, LOCAL_OCR_WORKER_OPTIONS);
+}
+
 export interface OcrWorkerHealthProbe {
   /** The worker's recognize function (already bound to the worker). */
   recognize: (input: unknown) => Promise<unknown>;
@@ -204,20 +250,27 @@ function isOcrCheckpoint(value: unknown): value is OcrCheckpoint {
     cp.version === 1 &&
     typeof cp.sourceFingerprint === "string" &&
     cp.sourceFingerprint.length > 0 &&
+    cp.sourceFingerprint.length <= 1_024 &&
     Number.isInteger(cp.lastCompletedPage) &&
     (cp.lastCompletedPage as number) >= 0 &&
+    (cp.lastCompletedPage as number) <= OCR_CHECKPOINT_MAX_PAGES &&
     Array.isArray(cp.segments) &&
+    cp.segments.length <= OCR_CHECKPOINT_MAX_PAGES &&
     cp.segments.every(
-      (segment) =>
+      (segment, index, segments) =>
         !!segment &&
         typeof segment === "object" &&
         Number.isInteger((segment as { page?: unknown }).page) &&
         ((segment as { page: number }).page) >= 1 &&
+        ((segment as { page: number }).page) <= (cp.lastCompletedPage as number) &&
+        (index === 0 || segments[index - 1].page < segment.page) &&
         typeof (segment as { text?: unknown }).text === "string",
     ) &&
     Number.isInteger(cp.recognizedChars) &&
     (cp.recognizedChars as number) >= 0 &&
-    typeof cp.updatedAt === "number"
+    cp.recognizedChars === cp.segments.reduce((total, segment) => total + segment.text.length, 0) &&
+    typeof cp.updatedAt === "number" &&
+    Number.isFinite(cp.updatedAt)
   );
 }
 
@@ -232,6 +285,7 @@ export function saveOcrCheckpoint(
 ): boolean {
   if (!storage) return false;
   try {
+    if (!isOcrCheckpoint(checkpoint)) return false;
     const serialized = JSON.stringify(checkpoint);
     if (serialized.length > OCR_CHECKPOINT_MAX_JSON_CHARS) return false;
     storage.setItem(OCR_CHECKPOINT_STORAGE_KEY, serialized);
@@ -247,18 +301,23 @@ export function saveOcrCheckpoint(
  * version-mismatched, or belonging to a different document.
  */
 export function loadOcrCheckpoint(
-  storage: Pick<StorageReaderWriter, "getItem"> | null,
+  storage: Pick<StorageReaderWriter, "getItem"> & Partial<Pick<StorageReaderWriter, "removeItem">> | null,
   sourceFingerprint: string,
+  now = Date.now(),
 ): OcrCheckpoint | null {
   if (!storage) return null;
   try {
     const raw = storage.getItem(OCR_CHECKPOINT_STORAGE_KEY);
     if (!raw) return null;
+    if (raw.length > OCR_CHECKPOINT_MAX_JSON_CHARS) throw new Error("Checkpoint too large");
     const parsed: unknown = JSON.parse(raw);
-    if (!isOcrCheckpoint(parsed)) return null;
+    if (!isOcrCheckpoint(parsed) || parsed.updatedAt > now || now - parsed.updatedAt >= OCR_CHECKPOINT_TTL_MS) {
+      throw new Error("Invalid or expired checkpoint");
+    }
     if (parsed.sourceFingerprint !== sourceFingerprint) return null;
     return parsed;
   } catch {
+    try { storage.removeItem?.(OCR_CHECKPOINT_STORAGE_KEY); } catch { /* best effort */ }
     return null;
   }
 }

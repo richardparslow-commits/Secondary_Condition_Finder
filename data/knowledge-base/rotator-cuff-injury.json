@@ -4,5 +4,8 @@
   "todo": [
     "Rebuild secondary-condition suggestions using condition-specific clinical evidence before publication."
   ],
-  "suggestions": []
+  "suggestions": [],
+  "governanceNotes": [
+    "CANONICAL-IDENTITY RECONCILIATION (2026-09-28, docs/modeling-debt-dispositions.md): CANONICAL identity of the rotator-cuff pair. The rotator-cuff-tear file is retired as a quarantined pointer record pointing here; tear-specific claims are authored under this umbrella identity, whose catalog name covers tendonitis and tear, with the evidence requirements stated per edge. All registered edges targeting this identity (rel-bicipital-tendinitis-to-rotator-cuff-injury from batch 4 and rel-slap-tear-to-rotator-cuff-injury from batch 85) and their registered sources are preserved unchanged; this reconciliation moves zero registry rows."
+  ]
 }

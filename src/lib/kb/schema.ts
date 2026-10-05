@@ -1,5 +1,10 @@
 import { z } from "zod";
 
+// Explicit `.ts` extension: this module is also loaded by Node's type
+// stripping (scripts/audit-crg.ts imports it directly), where an
+// extensionless relative specifier fails ESM resolution.
+import { MAX_PATHWAY_HOPS } from "./pathway-depth.ts";
+
 /**
  * CRG (Causal Relational Graph) schema — multi-hop directed graph.
  *
@@ -17,9 +22,11 @@ import { z } from "zod";
  *     are self-describing: they no longer derive "source" from the file they
  *     happen to live in.
  *   - `KbNodeMappingSchema` — the on-disk adjacency list. One JSON file per
- *     root condition (`nodeId`), listing its outgoing edges. The graph is the
- *     union of all node files; the recommendation engine traverses it to a
- *     depth of 2 (`ClaimPathwaySchema` bounds `hops` to `.min(1).max(2)`).
+ *     root condition (`nodeId`) under `data/knowledge-base/graph/` (kept out
+ *     of the authored corpus root; see `src/lib/kb/graph-layout.ts`), listing
+ *     its outgoing edges. The graph is the union of all node files; the
+ *     recommendation engine traverses it to the shared `MAX_PATHWAY_HOPS` cap
+ *     (`ClaimPathwaySchema` bounds `hops` to `.min(1).max(MAX_PATHWAY_HOPS)`).
  *   - `PathwayHopSchema` / `ClaimPathwaySchema` — a traversed pathway with a
  *     composite legal nexus derived from the hop chain (see
  *     `deriveCompositeNexus` in `./utils`).
@@ -507,9 +514,45 @@ export const suggestionSchema = z.object({
   }
 });
 
+/**
+ * Catalog condition identifier (kebab-case), shared by nodes and edges.
+ */
+export const catalogConditionIdSchema = z.string().regex(/^[a-z0-9-]+$/);
+
+/**
+ * Machine-readable quarantine record for a pointer identity.
+ *
+ * Canonical-identity reconciliation (the 2026-09-28 rotator-cuff/thumb pairs
+ * and the 2026-10-03 TMJ election; see docs/modeling-debt-dispositions.md)
+ * keeps the non-canonical identity as a stable pointer record so the frozen
+ * one-to-one catalog/KB contract and saved workflow state stay unmoved. A
+ * pointer exists only to preserve its variant name and any preserved
+ * unregistered evidence: every claim for the pair is authored under
+ * `canonicalId`, never under the pointer.
+ *
+ * This marker is the authoritative machine-readable state the fail-closed
+ * guards read: the schema below refuses a pointer that authors suggestions,
+ * `validate.ts` refuses any mapping that files a suggestion under a pointer,
+ * `graph.ts` refuses adjacency nodes and edges for a pointer, and
+ * scripts/validate-knowledge-base.js refuses the same drift in CI.
+ */
+export const quarantinePointerSchema = z.object({
+  status: z.literal("pointer"),
+  /** The canonical identity that owns every claim for this pair. */
+  canonicalId: catalogConditionIdSchema,
+  recordedOn: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
+  /** Disposition record naming the decision (repository-relative). */
+  record: z.string().trim().min(1),
+}).strict();
+
 export const conditionMappingSchema = z.object({
   id: z.string().regex(/^[a-z0-9-]+$/),
   draft: z.boolean().default(false),
+  /**
+   * Present only on quarantined pointer records; absence means the identity
+   * is an ordinary authoring home for its own claims.
+   */
+  quarantine: quarantinePointerSchema.optional(),
   todo: z.array(z.string().min(1)).default([]),
   governanceNotes: z.array(z.string().min(1)).default([]).optional(),
   suggestions: z.array(suggestionSchema).default([]),
@@ -517,6 +560,18 @@ export const conditionMappingSchema = z.object({
   if (!mapping.draft && mapping.suggestions.length === 0) ctx.addIssue({ code: "custom", path: ["suggestions"], message: "A published mapping needs at least one suggestion. Mark it draft: true while it is incomplete." });
   if (!mapping.draft && mapping.todo.length > 0) ctx.addIssue({ code: "custom", path: ["todo"], message: "Resolve every todo before publishing, or keep the mapping draft: true." });
   if (mapping.draft && mapping.todo.length === 0) ctx.addIssue({ code: "custom", path: ["todo"], message: "A draft must state what is still needed." });
+  if (mapping.quarantine) {
+    if (mapping.suggestions.length > 0) {
+      ctx.addIssue({
+        code: "custom",
+        path: ["suggestions"],
+        message: `A quarantined pointer identity cannot author suggestions; claims belong to its canonical identity "${mapping.quarantine.canonicalId}".`,
+      });
+    }
+    if (mapping.quarantine.canonicalId === mapping.id) {
+      ctx.addIssue({ code: "custom", path: ["quarantine", "canonicalId"], message: "A quarantined pointer must name a different canonical identity." });
+    }
+  }
   const ranks = mapping.suggestions.map((s) => s.rank).sort((a, b) => a - b);
   if (ranks.some((rank, index) => rank !== index + 1)) ctx.addIssue({ code: "custom", path: ["suggestions"], message: "Ranks must be unique and gapless, starting at 1." });
   if (mapping.suggestions.some((s) => s.conditionId === mapping.id)) ctx.addIssue({ code: "custom", path: ["suggestions"], message: "A condition cannot be a secondary of itself." });
@@ -551,9 +606,6 @@ export const knowledgeBaseSchema = z.array(conditionMappingSchema);
  * stitches node files into pathways of at most 2 hops (Primary → Secondary →
  * Tertiary) and reports each traversal's composite legal nexus.
  * ────────────────────────────────────────────────────────────────────────── */
-
-/** Catalog condition identifier (kebab-case), shared by nodes and edges. */
-export const catalogConditionIdSchema = z.string().regex(/^[a-z0-9-]+$/);
 
 /**
  * A single directed CRG edge. `sourceConditionId`/`targetConditionId` are
@@ -670,12 +722,12 @@ export const PathwayHopSchema = z.object({
 }).strict();
 
 /**
- * A fully traversed pathway of 1–2 hops. One-hop pathways are the classic
- * service-connected-primary → secondary claim; two-hop pathways are tertiary
- * claims (Primary → Secondary → Tertiary) or an aggravation link somewhere in
- * the chain. `originConditionId` and `terminalConditionId` pin the traversal
- * endpoints, and `compositeNexus` must be derived from the hops via
- * `deriveCompositeNexus` (mirrored inline below to avoid a schema → utils
+ * A fully traversed pathway of 1–`MAX_PATHWAY_HOPS` hops. One-hop pathways are
+ * the classic service-connected-primary → secondary claim; two-hop pathways
+ * are tertiary claims (Primary → Secondary → Tertiary) or an aggravation link
+ * somewhere in the chain. `originConditionId` and `terminalConditionId` pin
+ * the traversal endpoints, and `compositeNexus` must be derived from the hops
+ * via `deriveCompositeNexus` (mirrored inline below to avoid a schema → utils
  * import cycle; pinned equivalent by tests).
  */
 export const ClaimPathwaySchema = z.object({
@@ -683,8 +735,8 @@ export const ClaimPathwaySchema = z.object({
   originConditionId: catalogConditionIdSchema,
   /** Catalog ID where the traversal ends (the condition being claimed). */
   terminalConditionId: catalogConditionIdSchema,
-  /** Contiguous hop chain; depth is capped at 2 (tertiary claims). */
-  hops: z.array(PathwayHopSchema).min(1).max(2),
+  /** Contiguous hop chain; depth is capped at `MAX_PATHWAY_HOPS`. */
+  hops: z.array(PathwayHopSchema).min(1).max(MAX_PATHWAY_HOPS),
   /** Derived legal nexus of the whole chain — never authored by hand. */
   compositeNexus: compositeNexusSchema,
 }).strict().superRefine((pathway, ctx) => {
@@ -765,3 +817,4 @@ export type SourceReference = z.infer<typeof sourceReferenceSchema>;
 export type Suggestion = z.infer<typeof suggestionSchema>;
 export type ConditionMapping = z.infer<typeof conditionMappingSchema>;
 export type KnowledgeBase = z.infer<typeof knowledgeBaseSchema>;
+export type QuarantinePointer = z.infer<typeof quarantinePointerSchema>;

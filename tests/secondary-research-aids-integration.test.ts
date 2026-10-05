@@ -244,12 +244,14 @@ describe("secondary research aids — shared-fixture integration", () => {
     expect(actionPlan).toContain("print-action-plan-scope");
   });
 
-  it("browser-local store registry stays a four-store tab-scoped sessionStorage boundary", () => {
+  it("browser-local store registry includes OCR and preferences in the tab-scoped boundary", () => {
     expect(secondaryWorkflowLocalStorageKeys).toEqual([
       expect.stringContaining("evidence-analysis"),
       expect.stringContaining("evidence-gap-review"),
       pathwayRecordChecklistStorageKey,
       expect.stringContaining("va-gov-record-walkthrough"),
+      expect.stringContaining("ocr-checkpoint"),
+      expect.stringContaining("evidence-depth"),
     ]);
     const page = readRepoFile("src/app/secondary/evidence/page.tsx");
     expect(page).toContain("PathwayEvidenceMapper");

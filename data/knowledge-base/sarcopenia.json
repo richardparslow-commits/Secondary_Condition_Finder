@@ -1,0 +1,12 @@
+{
+  "id": "sarcopenia",
+  "draft": true,
+  "todo": [
+    "Rebuild secondary-condition suggestions with condition-specific clinical evidence before publication."
+  ],
+  "governanceNotes": [
+    "Created 2026-10-03 in staged Leg A execution of the versioned identity migration (docs/catalog-identity-migration-design-2026-09-29.md; identity contract 817/817 to 818/818). Zero suggestions by design in the authored corpus: no relationship is registered until condition-specific PubMed evidence is located, claim-versus-source verified, and cleared by source-status preflight. The batch-91 corpus references supporting the liver-cancer sarcopenia lead are BVA decision letters and are barred from registration by the batch-80 rule.",
+    "Update 2026-10-03: the liver-cancer to sarcopenia route's PubMed anchors were located and cleared (PMID 37274463, PMID 36590214, PMID 26266324; absent-check clean, source-status preflight zero blocking flags), and the route lands as the first real adjacency edge at data/knowledge-base/graph/liver-cancer.json. Stage 3b update 2026-10-03 (same day): the authored-corpus registration landed — data/knowledge-base/liver-cancer.json carries the rank-1 ASSOCIATION_ONLY suggestion with the three verified:false references, the registry lockstep added rel-liver-cancer-to-sarcopenia plus three pending-verification source entities to the master registries, and the citation ratchets moved to 1,693 live reference uses (1,298 pending; 1,486 source entities including lineage). The graph edge's rationale and this repository's suggestion carry the evidence together, and both remain unverified pending qualified-human citation verification."
+  ],
+  "suggestions": []
+}

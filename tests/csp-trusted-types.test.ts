@@ -3,6 +3,7 @@ import { NextRequest } from "next/server";
 import { describe, expect, it } from "vitest";
 
 import { extractCspViolationEvent, CSP_REPORT_MAX_BODY_BYTES } from "../src/lib/observability/csp-report";
+import { buildTrustedTypesPolicyOptions } from "../src/lib/security/trusted-types-policy";
 import { proxy } from "@/proxy";
 
 /**
@@ -26,20 +27,31 @@ describe("production CSP carries Trusted Types + reporting directives", () => {
     expect(csp).toContain("require-trusted-types-for 'script'");
   });
 
-  it("allowlists the gated default policy plus framework escape hatches, unquoted token names", () => {
+  it("allowlists only the gated default policy, with unquoted policy-name tokens", () => {
     const directive = csp
       .split(";")
       .find((part) => part.trim().startsWith("trusted-types "));
     expect(directive).toBeDefined();
-    // `default` must be an unquoted token; quoted strings would be invalid
-    // tokens and silently disallowed (verified in Chrome). Framework names
-    // keep the quoted form Next.js itself uses.
+    // `default` must be an unquoted token; quoted strings are invalid policy
+    // names that Chrome warns about and ignores (verified in the production
+    // build: createPolicy('nextjs') threw "Policy disallowed" while the
+    // quoted `'nextjs' 'dompurify'` entries were present, and every page load
+    // logged two invalid-policy errors). Framework policies are intentionally
+    // not allowlisted: Next's plain chunk URLs ride the strict `default`
+    // policy, and client navigation was verified violation-free that way.
     expect(directive).toMatch(/(^| )default( |$)/);
-    expect(directive).toContain("'nextjs'");
-    expect(directive).toContain("'dompurify'");
+    expect(directive).not.toMatch(/'nextjs'/);
+    expect(directive).not.toMatch(/'dompurify'/);
     expect(directive).not.toMatch(/'tesseract/);
-    // 'allow-duplicates' is its own directive per spec, not part of trusted-types.
-    expect(csp).toContain("'allow-duplicates'");
+    // Only keyword-form entries may be quoted in the value list.
+    const quotedNames = (directive ?? "").match(/'([^']*)'/g) ?? [];
+    for (const quoted of quotedNames) {
+      expect(["'allow-duplicates'", "'report-sample'"]).toContain(quoted);
+    }
+    // 'allow-duplicates' belongs to the trusted-types directive's value list;
+    // a standalone directive is unknown and silently ignored by browsers.
+    expect(directive).toContain("'allow-duplicates'");
+    expect(csp).not.toMatch(/;\s*'allow-duplicates'(;|$)/);
   });
 
   it("keeps the pre-existing script policy pins intact", () => {
@@ -49,6 +61,15 @@ describe("production CSP carries Trusted Types + reporting directives", () => {
     expect(csp).not.toMatch(/script-src[^;]*'unsafe-inline'/);
     expect(csp).toContain("script-src-attr 'none'");
     expect(csp).toContain("connect-src 'self'");
+  });
+
+  it("allows workers only from same-origin script URLs (no blob workers)", () => {
+    // Tesseract spawns directly from /tesseract/worker.min.js
+    // (workerBlobURL: false) because the default policy refuses blob script
+    // URLs; omitting `blob:` makes any regression to blob spawning fail in
+    // every browser, not only Trusted-Types-enforcing ones.
+    expect(csp).toContain("worker-src 'self'");
+    expect(csp).not.toMatch(/worker-src[^;]*blob:/);
   });
 
   it("wires violation reporting through both mechanisms", () => {
@@ -159,7 +180,7 @@ describe("CSP violation redaction", () => {
 });
 
 describe("report endpoint behavior", () => {
-  it("answers every well-formed report with a bare 204, never an error oracle", async () => {
+  it("answers an accepted report with a bare 204, never an error oracle", async () => {
     const { POST } = await import("../src/app/api/csp-report/route");
     const request = new NextRequest("https://example.test/api/csp-report", {
       method: "POST",
@@ -195,26 +216,99 @@ describe("report endpoint behavior", () => {
     );
     expect(wrongType.status).toBe(204);
   });
+
+  it("sheds abusive request rates with a content-free 429", async () => {
+    const { POST } = await import("../src/app/api/csp-report/route");
+    const client = "203.0.113.77";
+    const report = () =>
+      new NextRequest("https://example.test/api/csp-report", {
+        method: "POST",
+        headers: { "content-type": "application/csp-report", "x-forwarded-for": client },
+        body: JSON.stringify({ "csp-report": { "document-uri": "https://app.example/" } }),
+      });
+
+    for (let i = 0; i < 30; i += 1) {
+      expect((await POST(report())).status).toBe(204);
+    }
+    const limited = await POST(report());
+    expect(limited.status).toBe(429);
+    expect(await limited.text()).toBe("");
+  });
+
+  it("treats an unreadable request body as a content-free 204, not an error", async () => {
+    const { POST } = await import("../src/app/api/csp-report/route");
+    const stream = new ReadableStream<Uint8Array>({
+      pull(controller) {
+        controller.error(new Error("client aborted mid-body"));
+      },
+    });
+    const request = new NextRequest(
+      new Request("https://example.test/api/csp-report", {
+        method: "POST",
+        headers: { "content-type": "application/csp-report" },
+        body: stream,
+        duplex: "half",
+      } as unknown as RequestInit),
+    );
+
+    const response = await POST(request);
+    expect(response.status).toBe(204);
+  });
 });
 
 describe("TrustedTypesGate component (structural)", () => {
   const component = read("src/components/security/TrustedTypesGate.tsx");
 
-  it("creates only the default policy, from a client component, before hydration", () => {
+  it("installs only the default policy, at mount (after hydration), from a client component", () => {
     expect(component).toContain('"use client"');
     expect(component).toMatch(/createPolicy\(\s*"default"/);
+    expect(component).toContain("useEffect");
+    expect(component).toContain("buildTrustedTypesPolicyOptions");
     expect(component).not.toMatch(/createPolicy\(\s*"tesseract/);
+    // The bootstrap contract is after hydration — deliberate, documented, and
+    // no longer mis-described as happening before hydration.
+    expect(component).toContain("AFTER hydration");
+    expect(component).toContain("claimed to exist before hydration");
   });
 
-  it("gates script URLs to same-origin http(s) only — no blob, no data, no cross-origin", () => {
-    expect(component).toContain('url.protocol !== "https:"');
-    expect(component).toContain('url.protocol !== "http:"');
-    expect(component).toContain("allowedOrigins.has(url.origin)");
+  it("executes the policy: OCR worker and framework chunk URLs pass, everything else is refused", () => {
+    const options = buildTrustedTypesPolicyOptions({
+      origin: "https://app.example",
+      href: "https://app.example/secondary/upload",
+    });
+    const createScriptURL = options.createScriptURL!;
+
+    // Real first-party sinks: the pinned tesseract worker (absolute and
+    // root-relative) and framework chunk loading during client navigation.
+    expect(createScriptURL("https://app.example/tesseract/worker.min.js")).toBe(
+      "https://app.example/tesseract/worker.min.js",
+    );
+    expect(createScriptURL("/tesseract/worker.min.js")).toBe("/tesseract/worker.min.js");
+    expect(createScriptURL("https://app.example/_next/static/chunks/app-page.js")).toBe(
+      "https://app.example/_next/static/chunks/app-page.js",
+    );
+
+    for (const refused of [
+      "blob:https://app.example/0e1b0f9a",
+      "data:text/javascript,alert(1)",
+      "javascript:alert(1)",
+      "https://evil.example/payload.js",
+      "http://app.example/insecure.js",
+      "http://[",
+    ]) {
+      expect(() => createScriptURL(refused), refused).toThrow(/refused non-same-origin script URL/);
+    }
   });
 
   it("refuses createScript and createHTML outright", () => {
-    expect(component).toContain("createScript is not permitted");
-    expect(component).toContain("createHTML is not permitted");
+    const options = buildTrustedTypesPolicyOptions({
+      origin: "https://app.example",
+      href: "https://app.example/",
+    });
+    expect(() => options.createScript!("alert(1)")).toThrow("createScript is not permitted");
+    expect(() => options.createHTML!("<img src=x onerror=alert(1)>")).toThrow(
+      "createHTML is not permitted",
+    );
   });
 
   it("mirrors the CSP dev exemption and marks completion for ops verification", () => {

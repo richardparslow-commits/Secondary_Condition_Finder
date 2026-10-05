@@ -278,8 +278,6 @@
       "id": "substance-use-disorder",
       "name": "Substance use disorder",
       "aliases": [
-        "alcohol use disorder",
-        "alcoholism",
         "substance abuse"
       ],
       "bodySystem": "Mental Disorders",
@@ -293,7 +291,31 @@
       "reviewNotes": [
         "Catalog presence and a rating framework do not establish service connection or compensability. Alcohol- and drug-related legal eligibility rules are separate from rating identity and must be evaluated independently.",
         "Clinical relationship authoring must evaluate the specific substance-use diagnosis and pathway rather than treating this discovery grouping as one etiology.",
-        "Clinical Evidence Promotion Batch 5 physically relocates this stable identity from the historical carried-over file into the mental-disorders catalog without changing its ID, aliases, framework, or verification state."
+        "Clinical Evidence Promotion Batch 5 physically relocates this stable identity from the historical carried-over file into the mental-disorders catalog without changing its ID, aliases, framework, or verification state.",
+        "Scope split 2026-10-03 (staged Leg B execution of the signed docs/catalog-identity-migration-design-2026-09-29.md): the aliases 'alcohol use disorder' and 'alcoholism' migrated to the new alcohol-use-disorder identity, which now owns the alcohol-specific diagnosis, pathway and confound vocabulary; this umbrella deliberately remains the broad discovery grouping spanning substance-specific diagnoses and keeps its non-alcohol substance scope. A shared 38 CFR 4.130 rating framework does not establish shared etiology between the two identities, and clinical authoring under this umbrella must name the specific substance."
+      ]
+    },
+    {
+      "id": "alcohol-use-disorder",
+      "name": "Alcohol use disorder",
+      "aliases": [
+        "alcoholism",
+        "alcohol dependence",
+        "alcohol addiction",
+        "aud"
+      ],
+      "bodySystem": "Mental Disorders",
+      "ratingSchedule": [
+        {
+          "citation": "38 CFR 4.130",
+          "note": "Mental-disorders rating framework. No single alcohol-use-disorder-specific diagnostic code is asserted here; rating depends on documented findings and the General Rating Formula for Mental Disorders.",
+          "verified": false
+        }
+      ],
+      "reviewNotes": [
+        "Added 2026-10-03 as staged Leg B execution of the signed catalog identity migration design dated 2026-09-29 (docs/catalog-identity-migration-design-2026-09-29.md), a versioned scope split from the substance-use-disorder discovery grouping (the eczema precedent). The addition moves the frozen identity contract 818/818 to 819/819 and preserves one-to-one catalog/KB integrity without changing any stable ID; the aliases 'alcohol use disorder' and 'alcoholism' migrate off substance-use-disorder so the substance-specific diagnosis owns its name. Closes the missing-identity blocker behind the withheld ptsd to chronic-liver-disease self-medication chain (D1 batch 91; PMID 30080255 preserved under ME-29).",
+        "Scope guards: this identity is the alcohol-specific diagnosis; substance-use-disorder remains the broad discovery grouping and keeps non-alcohol substance scope. A shared 38 CFR 4.130 framework does not establish shared etiology between them. Alcohol- and drug-related legal eligibility rules are separate from rating identity and must be evaluated independently.",
+        "This identity is ALSO the standing confounding-exposure vocabulary for hepatic, psychiatric, trauma and pancreatic routes: every liver and mood claim must consider alcohol exposure as a rival etiology before attribution."
       ]
     }
   ]

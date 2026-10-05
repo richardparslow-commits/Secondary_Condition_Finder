@@ -3,10 +3,14 @@
  *
  * Responsibility: build `IntermediatePathEdge` / `IntermediatePathway` objects
  * from authored KB mappings and assemble bounded two-edge research paths
- * through published mappings only. Paths are never promoted to direct nexus
- * findings — both edges and their provenance stay visible.
+ * through published mappings only. The two-edge shape defers to the shared
+ * `MAX_PATHWAY_HOPS` cap (`@/lib/kb/pathway-depth`): if the cap ever drops
+ * below two edges, this composer emits nothing rather than an over-depth
+ * path. Paths are never promoted to direct nexus findings — both edges and
+ * their provenance stay visible.
  */
 
+import { isWithinPathwayDepth } from "@/lib/kb/pathway-depth";
 import type { KnowledgeBase, SourceReference } from "@/lib/kb/schema";
 
 import { CONSENSUS_ORDER } from "./ranking";
@@ -71,7 +75,10 @@ function intermediatePathway(
 /**
  * Returns only explicit two-edge paths through published mappings. This is a
  * research-path feature, not transitive causal inference: both source edges
- * remain visible and the path is never promoted to a direct nexus claim.
+ * remain visible and the path is never promoted to a direct nexus claim. When
+ * the shared pathway-depth cap is below two edges the composer returns an
+ * empty list: there is no lawful intermediate chain to compose at a depth the
+ * cap would reject.
  *
  * F-03: every composed edge must itself assert a nexus theory. An
  * ASSOCIATION_ONLY edge is hypothesized-only by schema contract, so composing
@@ -85,6 +92,10 @@ export function findIntermediatePathways(
   diagnosedSet: Set<string>,
   recognizedIds: Set<string>,
 ): IntermediatePathway[] {
+  // Depth guard: the composer builds exactly two-edge chains, so it must
+  // defer to the shared cap rather than encode its own copy of "2".
+  if (!isWithinPathwayDepth(2)) return [];
+
   const firstMapping = mappings.get(primary.id);
   if (!firstMapping) return [];
 

@@ -52,8 +52,9 @@ describe("enumerateSimpleCycles", () => {
       ["a", ["b"]],
       ["b", ["a"]],
     ]);
-    const cycles = enumerateSimpleCycles(nodes, order, adjacency);
+    const { cycles, truncated } = enumerateSimpleCycles(nodes, order, adjacency);
     expect(cycles).toEqual([["a", "b", "a"]]);
+    expect(truncated).toBe(false);
   });
 
   it("enumerates a three-node cycle once, not per rotation", () => {
@@ -64,7 +65,7 @@ describe("enumerateSimpleCycles", () => {
       ["b", ["c"]],
       ["c", ["a"]],
     ]);
-    const cycles = enumerateSimpleCycles(nodes, order, adjacency);
+    const { cycles } = enumerateSimpleCycles(nodes, order, adjacency);
     expect(cycles).toHaveLength(1);
     expect(cycles[0]).toEqual(["a", "b", "c", "a"]);
   });
@@ -76,7 +77,37 @@ describe("enumerateSimpleCycles", () => {
       ["a", ["b", "c"]],
       ["b", ["c"]],
     ]);
-    expect(enumerateSimpleCycles(nodes, order, adjacency)).toEqual([]);
+    expect(enumerateSimpleCycles(nodes, order, adjacency).cycles).toEqual([]);
+  });
+
+  it("detects a cycle longer than the old 12-node analysis cap instead of skipping it", () => {
+    // A 13-node DIRECT cycle was previously invisible: MAX_CYCLE_LENGTH = 12
+    // stopped the search without reporting truncation.
+    const nodes = Array.from({ length: 13 }, (_, index) => `n${index}`);
+    const order = new Map(nodes.map((id, index) => [id, index]));
+    const adjacency = new Map(
+      nodes.map((id, index) => [id, [nodes[(index + 1) % nodes.length]]]),
+    );
+    const { cycles, truncated } = enumerateSimpleCycles(nodes, order, adjacency);
+    expect(truncated).toBe(false);
+    expect(cycles).toHaveLength(1);
+    expect(cycles[0]).toHaveLength(14);
+  });
+
+  it("reports truncation when the analysis budget is exhausted", () => {
+    const nodes = Array.from({ length: 4 }, (_, index) => `n${index}`);
+    const order = new Map(nodes.map((id, index) => [id, index]));
+    const adjacency = new Map([
+      ["n0", ["n1"]],
+      ["n1", ["n0"]],
+      ["n2", ["n3"]],
+      ["n3", ["n2"]],
+    ]);
+    const { cycles, truncated } = enumerateSimpleCycles(nodes, order, adjacency, {
+      maxSteps: 2,
+    });
+    expect(truncated).toBe(true);
+    expect(cycles.length).toBeLessThanOrEqual(2);
   });
 });
 
@@ -202,6 +233,48 @@ describe("analyzeGraph", () => {
     expect(report.counts.redundancyConflicts).toBe(1);
     expect(report.redundancy[0]?.direct).toBe("a->c");
     expect(report.redundancy[0]?.chain).toBe("a->b->c");
+  });
+});
+
+describe("analysis completeness (no silent truncation)", () => {
+  it("hard-fails a 13-node DIRECT_CAUSATION cycle even though it exceeds the old length cap", () => {
+    const ids = Array.from({ length: 13 }, (_, index) => `n${index}`);
+    const mappings = ids.map((id, index) =>
+      mapping(id, [edge(ids[(index + 1) % ids.length], DIRECT)]),
+    );
+    const report = analyzeGraph(mappings);
+    expect(report.status).toBe("FAIL");
+    expect(report.violations.some((finding) => finding.code === "CRG-PURE-CAUSATION-CYCLE")).toBe(true);
+    expect(report.truncated.cycles).toBe(false);
+  });
+
+  it("fails closed when the cycle-enumeration budget is exhausted rather than reporting a partial verdict", () => {
+    const ids = Array.from({ length: 13 }, (_, index) => `n${index}`);
+    const mappings = ids.map((id, index) =>
+      mapping(id, [edge(ids[(index + 1) % ids.length], ASSOCIATION)]),
+    );
+    const report = analyzeGraph(mappings, { enumerationBudget: 3 });
+    expect(report.truncated.cycles).toBe(true);
+    expect(report.status).toBe("FAIL");
+    expect(report.violations.some((finding) => finding.code === "CRG-CYCLE-ENUMERATION-TRUNCATED")).toBe(true);
+  });
+
+  it("counts every redundancy conflict even past the display cap", () => {
+    // Build a graph with more than MAX_REPORTED_REDUNDANCY conflicts: hub -> x
+    // and hub -> y -> x for many x/y pairs.
+    const spokes = Array.from({ length: 60 }, (_, index) => `s${index}`);
+    const mappings = [
+      // hub -> target directly AND hub -> spoke -> target for every spoke.
+      mapping("hub", [edge("target", DIRECT), ...spokes.map((id) => edge(id, DIRECT))]),
+      ...spokes.map((id) => mapping(id, [edge("target", AGGRAVATION)])),
+      mapping("target", []),
+    ];
+    const report = analyzeGraph(mappings, { redundancyBaseline: 50 });
+    expect(report.counts.redundancyConflicts).toBeGreaterThan(50);
+    expect(report.truncated.redundancy).toBe(true);
+    expect(report.redundancy.length).toBe(50);
+    // The full count still feeds the ratchet, so a hidden backlog cannot hide.
+    expect(report.violations.some((finding) => finding.code === "CRG-STRUCTURAL-DEBT-RATCHET")).toBe(true);
   });
 });
 

@@ -1,6 +1,6 @@
 # D1 Draft-Authoring Citation Verification Packet (2026-09)
 
-This packet prepares — and only prepares — the qualified-human citation-verification review of the draft-quarantined references authored by the D1 condition-expansion batches of 2026-09-22. Per `docs/citation-verification-sop.md`, repository automation can record source-check metadata and assemble review rows; it **cannot** make the verification decision. Every row here remains `verified: false` until a qualified human records a decision.
+This packet prepares — and only prepares — the qualified-human citation-verification review of the draft-quarantined references authored by the D1 condition-expansion batches of 2026-09-22. It also carries worksheet sections for the graph-adjacency routes authored in Stages 3a–3c (2026-10) and for the batch-95 draft windows (stress-fractures → malunion-nonunion-of-fractures; stress-urinary-incontinence → depressive-disorder), which share this draft-quarantine worksheet surface under the same decision discipline. Per `docs/citation-verification-sop.md`, repository automation can record source-check metadata and assemble review rows; it **cannot** make the verification decision. A row remains `verified: false` until a qualified human records a decision; where a decision has been recorded, the row's state line carries the record.
 
 The row set is **generated, not transcribed**. The authoritative machine queue is:
 
@@ -15541,6 +15541,38 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 **Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
 
+### `bipolar-disorder` → `tardive-dyskinesia` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Antipsychotic medication prescribed during treatment of an affective disorder is associated with tardive dyskinesia at quantified rates in the located antipsychotic-exposure literature, and NO LOCATED ANCHOR IS A BIPOLAR COHORT, so the edge is registered at association only with that population limit stated on its face: the 2017 systematic review and meta-analysis of 41 studies and 11,493 patients in the period of second-generation antipsychotic use (mean age 42.8 years, 66.4 percent male, 77.1 percent schizophrenia-spectrum disorders) reports a global mean tardive dyskinesia prevalence of 25.3 percent (95 percent CI 22.7-28.1), lower in current second-generation antipsychotic arms (20.7 percent, 95 percent CI 16.6-25.4, N = 5,103) than in current first-generation arms (30.0 percent, 95 percent CI 26.4-33.8, N = 5,062; Q = 9.17, p = 0.002), and particularly low in first-generation-naive treatment arms (7.2 percent, four studies) against cohorts with likely prior first-generation exposure (23.4 percent, 28 studies, p < 0.001), so the located gradient runs with antipsychotic generation and prior exposure rather than with any psychiatric diagnosis (PMID 28146614); and the 2026 secondary analysis of the IRL-GRey late-life depression trial cohort reports incident tardive dyskinesia in 16 of 255 participants without baseline dyskinesia (6.3 percent) by the end of the venlafaxine lead-in phase, all of them non-remitters, rising to 21 of 117 randomized non-remitters (17.9 percent) by the end of the randomised aripiprazole-or-placebo augmentation phase, with tardive dyskinesia defined as an Abnormal Involuntary Movement Scale item 8 score of at least 1 (PMID 42030922). The registered claim is the narrowest the two anchors jointly permit: that antipsychotic exposure during treatment of an affective disorder is associated with incident tardive dyskinesia at the rates the anchors report, with the exposure being the prescribed medication rather than the psychiatric condition, with the meta-analytic gradient attributable to agent generation and exposure history rather than to diagnosis, and with NO bipolar-specific incidence available anywhere in the located evidence.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation of tardive dyskinesia is established for any individual: the exposure in both anchors is prescribed antipsychotic medication rather than the bipolar disorder itself, and NO ANCHOR IS A BIPOLAR COHORT, the closest mood-population anchor being a late-life DEPRESSION cohort while the meta-analysis population is 77.1 percent schizophrenia-spectrum, so every rate on this edge is a treatment-class rate carried across diagnoses rather than a bipolar rate; the incident anchor's case definition is an Abnormal Involuntary Movement Scale item 8 score of at least 1, which its own authors describe as highly sensitive but non-specific, its incident case counts are small (16 of 255 and 21 of 117), its sex-stratified cognitive findings are exploratory without correction for multiple comparisons, and the two incident figures are measured at different phase endpoints in different denominators (the full cohort against the non-remitters entering randomisation) with NO arm-specific aripiprazole-versus-placebo incidence reported, so no agent-specific attributable risk may be derived from it; the meta-analysis measures prevalence rather than incidence and reports that tardive dyskinesia severity was too poorly reported across its studies for meta-analysis, so the clinical burden of its identified cases is unquantified; and no anchor includes an antipsychotic-free bipolar control arm, so bipolar disorder's own contribution to abnormal movement is not separable from the medication within these designs. Individual claims require a dated antipsychotic start, stop, dose, formulation and route timeline with dated Abnormal Involuntary Movement Scale examinations before and after initiation, a documented antipsychotic-free interval where one exists, and exclusion of spontaneous orofacial dyskinesia, of other dopamine-blocking agents including metoclopramide and prochlorperazine, of withdrawal-emergent dyskinesia after dose reduction or cessation, and of Huntington disease, Wilson disease, stroke and other structural or degenerative movement disorders.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 431.1 — Carbon M, Hsieh CH, Kane JM, Correll CU. Tardive Dyskinesia Prevalence in the Period of Second-Generation Antipsychotic Use: A Meta-Analysis. J Clin Psychiatry. 2017 Mar;78(3):e264-e278. doi: 10.4088/JCP.16r10832. PMID 28146614.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/28146614/
+- Source checked on: 2026-09-28
+- Locator: J Clin Psychiatry. 2017;78(3):e264-e278. Systematic review and meta-analysis, 41 studies (random effects), N = 11,493, mean age 42.8 years, 66.4 percent male, 77.1 percent schizophrenia-spectrum; abstract states global TD prevalence 25.3% (95% CI 22.7-28.1), current SGA 20.7% (16.6-25.4, N = 5,103) versus current FGA 30.0% (26.4-33.8, N = 5,062; Q = 9.17, P = .002), FGA-naive arms 7.2% versus likely prior FGA exposure 23.4% (P < .001), risk ratio 0.80 for SGA versus FGA in multi-class studies, and TD severity too insufficiently reported for meta-analysis.
+- Note under review: Systematic review and meta-analysis of 41 studies and 11,493 patients, registered as this edge's PRIMARY anchor: global mean tardive dyskinesia prevalence 25.3 percent (95 percent CI 22.7-28.1), 20.7 percent in current second-generation against 30.0 percent in current first-generation antipsychotic arms (Q = 9.17, p = 0.002), 7.2 percent in first-generation-naive against 23.4 percent in likely prior first-generation exposure arms (p < 0.001). The exposure gradient runs with antipsychotic generation and exposure history rather than with diagnosis, and the pooled population is 77.1 percent schizophrenia-spectrum, which bounds its use on a bipolar primary. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 431.2 — Luca A, Luca M, Drago F, Serretti A. Tardive dyskinesia and cognitive performances in late-life depression: a sex-stratified analysis. Psychiatry Res. 2026 Jul;361:117185. doi: 10.1016/j.psychres.2026.117185. PMID 42030922.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/42030922/
+- Source checked on: 2026-09-28
+- Locator: Psychiatry Res. 2026;361:117185. Secondary analysis of the IRL-GRey trial, 255 late-life depression participants treated with venlafaxine plus aripiprazole or placebo, without baseline dyskinesia and with at least one post-baseline AIMS; abstract states 16 of 255 (6.3%) incident TD by end of Phase 1 lead-in (all non-remitters), 21 of 117 randomized non-remitters (17.9%) TD+ by end of randomized augmentation, TD defined as AIMS item 8 >= 1 (a highly sensitive but non-specific definition), no differences in depression severity or neuropsychological performance between TD+ and TD-, and small incident case numbers without correction for multiple comparisons.
+- Note under review: Secondary analysis of the IRL-GRey randomised augmentation trial cohort, 255 late-life depression participants on venlafaxine plus aripiprazole or placebo without baseline dyskinesia: incident tardive dyskinesia in 16 of 255 (6.3 percent) by the end of the venlafaxine lead-in phase, all non-remitters, and 21 of 117 randomized non-remitters (17.9 percent) by the end of the randomised augmentation phase, defined as an Abnormal Involuntary Movement Scale item 8 score of at least 1. Registered as the ONLY located affective-population anchor and the closest population to bipolar disorder. LIMITATIONS CARRIED: the case definition is self-described as highly sensitive but non-specific, incident case counts are small, the sex-stratified cognitive findings are exploratory without multiple-comparison correction, the two incident figures rest on different phase denominators, and the abstract reports no arm-specific aripiprazole-versus-placebo incidence. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
 ### `rumination-syndrome` → `bulimia-nervosa` — ASSOCIATION_ONLY
 
 **Proposition (associationBasis):** Rumination syndrome and bulimia nervosa co-occur at a rate far above matched controls, and the single largest comparative study designs the finding as a case-control contrast rather than a coincidence of presentation: a tertiary-centre case-control study of 24 adults with rumination syndrome against 48 age- and gender-matched controls reports a history of eating disorder in 37.5 percent of rumination syndrome patients against 4.2 percent of controls (Fisher exact p=0.0002), with anorexia nervosa at 16.7 percent against 0 percent (p=0.005) and bulimia nervosa at 21.1 percent against 0 percent (p=0.001), and with eating-disorder history surviving multivariable adjustment as an independent predictor of rumination syndrome at an adjusted odds ratio of 16.4 (p=0.0033) (PMID 33988353); an adolescent case series of eight referred girls reports six diagnosed with rumination syndrome, most of whom carried a co-occurring anxiety, depressive, or eating-disorder diagnosis including anorexia and bulimia (PMID 42217214); and a bidirectional 101-patient paediatric cohort separating early-childhood-onset from adolescent-onset rumination syndrome reports the adolescent-onset phenotype as the one carrying the eating-disorder and mood comorbidity, with 23 percent depression and 40 percent anxiety confined to the adolescent-onset group against 0 percent and 14 percent in the early-onset group, and with the authors concluding explicitly that the pathogenesis and natural history of the two onset strata may be distinct (PMID 38504395); recorded as documented association only, and with the direction of the relationship carried as unresolved because the largest anchor's own model treats eating-disorder history as a RISK FACTOR FOR rumination syndrome rather than the reverse, so the edge is registered as a bidirectional co-occurrence requiring separate documentation of each diagnosis rather than as a claim that either produces the other.
@@ -15555,7 +15587,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 - Is the citation metadata exact against the PubMed record?
 
-**Row 431.1 — Cai JX, Wong D, Lee DJH, et al. Eating and Psychiatric Disorders Are Independent Risk Factors for Rumination Syndrome J Clin Gastroenterol. 2022 Mar 1;56(3):228-233. doi: 10.1097/MCG.0000000000001510. PMID 33988353.**
+**Row 432.1 — Cai JX, Wong D, Lee DJH, et al. Eating and Psychiatric Disorders Are Independent Risk Factors for Rumination Syndrome J Clin Gastroenterol. 2022 Mar 1;56(3):228-233. doi: 10.1097/MCG.0000000000001510. PMID 33988353.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/33988353/
 - Source checked on: 2026-09-27
@@ -15563,7 +15595,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Tertiary-centre case-control study of 24 adults with rumination syndrome and 48 age- and gender-matched controls reporting eating-disorder history in 37.5 percent versus 4.2 percent (p=0.0002), anorexia nervosa 16.7 percent versus 0 percent (p=0.005), bulimia nervosa 21.1 percent versus 0 percent (p=0.001), and eating-disorder history as an independent adjusted predictor of rumination syndrome (adjusted odds ratio 16.4, p=0.0033).
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 431.2 — da Silva BC, Araújo M, Tavares M. Rumination Syndrome in Adolescents: Clinical and Psychiatric Correlates From a Case Series Clin Child Psychol Psychiatry. 2026 May 30:13591045261456470. doi: 10.1177/13591045261456470. PMID 42217214.**
+**Row 432.2 — da Silva BC, Araújo M, Tavares M. Rumination Syndrome in Adolescents: Clinical and Psychiatric Correlates From a Case Series Clin Child Psychol Psychiatry. 2026 May 30:13591045261456470. doi: 10.1177/13591045261456470. PMID 42217214.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/42217214/
 - Source checked on: 2026-09-27
@@ -15571,7 +15603,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Case series of eight adolescent girls referred for repeated postprandial regurgitation, six diagnosed with rumination syndrome, most of whom carried co-occurring anxiety, depressive, or eating-disorder diagnoses including anorexia and bulimia, with one case found to have an underlying organic medical illness.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 431.3 — Yang DM, Sabella J, Kroon Van Diest A, et al. Early childhood-onset rumination syndrome is clinically distinct from adolescent-onset rumination syndrome J Pediatr Gastroenterol Nutr. 2024 Mar;78(3):565-572. doi: 10.1002/jpn3.12116. PMID 38504395.**
+**Row 432.3 — Yang DM, Sabella J, Kroon Van Diest A, et al. Early childhood-onset rumination syndrome is clinically distinct from adolescent-onset rumination syndrome J Pediatr Gastroenterol Nutr. 2024 Mar;78(3):565-572. doi: 10.1002/jpn3.12116. PMID 38504395.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/38504395/
 - Source checked on: 2026-09-27
@@ -15595,7 +15627,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 - Is the citation metadata exact against the PubMed record?
 
-**Row 432.1 — Cai JX, Wong D, Lee DJH, et al. Eating and Psychiatric Disorders Are Independent Risk Factors for Rumination Syndrome J Clin Gastroenterol. 2022 Mar 1;56(3):228-233. doi: 10.1097/MCG.0000000000001510. PMID 33988353.**
+**Row 433.1 — Cai JX, Wong D, Lee DJH, et al. Eating and Psychiatric Disorders Are Independent Risk Factors for Rumination Syndrome J Clin Gastroenterol. 2022 Mar 1;56(3):228-233. doi: 10.1097/MCG.0000000000001510. PMID 33988353.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/33988353/
 - Source checked on: 2026-09-27
@@ -15603,7 +15635,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Case-control study of 24 adults with rumination syndrome and 48 matched controls reporting psychiatric-disorder prevalence of 83.3 percent versus 50.0 percent (p=0.0062), anxiety in 37.5 percent and depression in 29.2 percent of cases, and psychiatric-disorder history as an independent adjusted predictor of rumination syndrome (adjusted odds ratio 4.47, p=0.029).
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 432.2 — da Silva BC, Araújo M, Tavares M. Rumination Syndrome in Adolescents: Clinical and Psychiatric Correlates From a Case Series Clin Child Psychol Psychiatry. 2026 May 30:13591045261456470. doi: 10.1177/13591045261456470. PMID 42217214.**
+**Row 433.2 — da Silva BC, Araújo M, Tavares M. Rumination Syndrome in Adolescents: Clinical and Psychiatric Correlates From a Case Series Clin Child Psychol Psychiatry. 2026 May 30:13591045261456470. doi: 10.1177/13591045261456470. PMID 42217214.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/42217214/
 - Source checked on: 2026-09-27
@@ -15611,7 +15643,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Case series of eight adolescent girls referred for repeated postprandial regurgitation, six diagnosed with rumination syndrome, most carrying co-occurring emotional or psychiatric difficulty including anxiety, with diagnosis often delayed because the presentation resembles reflux or vomiting.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 432.3 — Yang DM, Sabella J, Kroon Van Diest A, et al. Early childhood-onset rumination syndrome is clinically distinct from adolescent-onset rumination syndrome J Pediatr Gastroenterol Nutr. 2024 Mar;78(3):565-572. doi: 10.1002/jpn3.12116. PMID 38504395.**
+**Row 433.3 — Yang DM, Sabella J, Kroon Van Diest A, et al. Early childhood-onset rumination syndrome is clinically distinct from adolescent-onset rumination syndrome J Pediatr Gastroenterol Nutr. 2024 Mar;78(3):565-572. doi: 10.1002/jpn3.12116. PMID 38504395.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/38504395/
 - Source checked on: 2026-09-27
@@ -15635,7 +15667,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 - Is the citation metadata exact against the PubMed record?
 
-**Row 433.1 — Tang A, Li J, Scheff N, et al. Quality of Life Outcomes for Parotid Malignancies Laryngoscope. 2024 Nov;134(11):4549-4556. doi: 10.1002/lary.31554. PMID 38837232.**
+**Row 434.1 — Tang A, Li J, Scheff N, et al. Quality of Life Outcomes for Parotid Malignancies Laryngoscope. 2024 Nov;134(11):4549-4556. doi: 10.1002/lary.31554. PMID 38837232.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/38837232/
 - Source checked on: 2026-09-27
@@ -15643,7 +15675,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Retrospective survivorship-clinic study of 62 surgically treated malignant parotid tumour patients reporting clinically relevant dysphagia on EAT-10 in 32.3 percent at last follow-up, elevated PHQ-8 in 15.5 percent, GAD-7 in 7.1 percent, neck pain in 17.7 percent, and insomnia in 7.2 percent, with significantly worse swallowing for surgery plus chemoradiation versus surgery alone (p=0.03) and significantly worse physical and social-emotional quality of life for adjuvant radiotherapy (p<0.01 and p=0.01).
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 433.2 — Hernandez-Herrera GA, Rourk KS, Peraza LR, et al. Clinical Features, Treatment, and Outcomes for Oropharyngeal Adenoid Cystic Carcinoma: A Systematic Review Otolaryngol Head Neck Surg. 2026 Sep;175(3):547-555. doi: 10.1002/ohn.70319. PMID 42371638.**
+**Row 434.2 — Hernandez-Herrera GA, Rourk KS, Peraza LR, et al. Clinical Features, Treatment, and Outcomes for Oropharyngeal Adenoid Cystic Carcinoma: A Systematic Review Otolaryngol Head Neck Surg. 2026 Sep;175(3):547-555. doi: 10.1002/ohn.70319. PMID 42371638.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/42371638/
 - Source checked on: 2026-09-27
@@ -15651,7 +15683,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: PRISMA systematic review of 44 articles covering 195 patients with oropharyngeal adenoid cystic carcinoma reporting base of tongue as the most common subsite (73 percent), presenting symptoms as pain or discomfort (n=31), palpable mass (n=19), and dysphagia (n=12), cervical nodes positive in 22.3 percent, and distant metastases in 36 percent of those who progressed, primarily pulmonary (n=26).
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 433.3 — Luna-Ortiz K, Yescas-Castellanos SS, Luna-Peteuil Z, et al. Malignant salivary gland tumors of the tongue: Analysis of 29 cases Med Oral Patol Oral Cir Bucal. 2026 Mar 7;31(4):e531-6. doi: 10.4317/medoral.27887. PMID 41793734.**
+**Row 434.3 — Luna-Ortiz K, Yescas-Castellanos SS, Luna-Peteuil Z, et al. Malignant salivary gland tumors of the tongue: Analysis of 29 cases Med Oral Patol Oral Cir Bucal. 2026 Mar 7;31(4):e531-6. doi: 10.4317/medoral.27887. PMID 41793734.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/41793734/
 - Source checked on: 2026-09-27
@@ -15675,7 +15707,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 - Is the citation metadata exact against the PubMed record?
 
-**Row 434.1 — Tang A, Li J, Scheff N, et al. Quality of Life Outcomes for Parotid Malignancies Laryngoscope. 2024 Nov;134(11):4549-4556. doi: 10.1002/lary.31554. PMID 38837232.**
+**Row 435.1 — Tang A, Li J, Scheff N, et al. Quality of Life Outcomes for Parotid Malignancies Laryngoscope. 2024 Nov;134(11):4549-4556. doi: 10.1002/lary.31554. PMID 38837232.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/38837232/
 - Source checked on: 2026-09-27
@@ -15683,7 +15715,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Retrospective survivorship-clinic study of 62 surgically treated malignant parotid tumour patients reporting elevated depressive symptoms on PHQ-8 in 15.5 percent and GAD-7 in 7.1 percent at last follow-up, with significantly worse social-emotional quality of life for adjuvant chemorotherapy (p=0.02) and adjuvant radiotherapy (p=0.01) versus surgery alone.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 434.2 — Hernandez-Herrera GA, Rourk KS, Peraza LR, et al. Clinical Features, Treatment, and Outcomes for Oropharyngeal Adenoid Cystic Carcinoma: A Systematic Review Otolaryngol Head Neck Surg. 2026 Sep;175(3):547-555. doi: 10.1002/ohn.70319. PMID 42371638.**
+**Row 435.2 — Hernandez-Herrera GA, Rourk KS, Peraza LR, et al. Clinical Features, Treatment, and Outcomes for Oropharyngeal Adenoid Cystic Carcinoma: A Systematic Review Otolaryngol Head Neck Surg. 2026 Sep;175(3):547-555. doi: 10.1002/ohn.70319. PMID 42371638.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/42371638/
 - Source checked on: 2026-09-27
@@ -15691,7 +15723,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: PRISMA systematic review of 44 articles covering 195 patients with oropharyngeal adenoid cystic carcinoma reporting disease progression in 86 patients with distant metastases in 36 percent of those who progressed, primarily pulmonary; registered as disease-trajectory and severity context only, as it reports no mood or quality-of-life outcomes.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 434.3 — Chae YK, Sun R, Patel SP, et al. A phase II basket trial of DART SWOG S1609: the salivary gland tumor cohort Ther Adv Med Oncol. 2026;18:17588359261451739. doi: 10.1177/17588359261451739. PMID 42499790.**
+**Row 435.3 — Chae YK, Sun R, Patel SP, et al. A phase II basket trial of DART SWOG S1609: the salivary gland tumor cohort Ther Adv Med Oncol. 2026;18:17588359261451739. doi: 10.1177/17588359261451739. PMID 42499790.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/42499790/
 - Source checked on: 2026-09-27
@@ -15715,7 +15747,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 - Is the citation metadata exact against the PubMed record?
 
-**Row 435.1 — Gunning JA, Limesand KH. Chronic Phenotypes Underlying Radiation-Induced Salivary Gland Dysfunction J Dent Res. 2024 Jul;103(8):778-786. doi: 10.1177/00220345241252396. PMID 38808518.**
+**Row 436.1 — Gunning JA, Limesand KH. Chronic Phenotypes Underlying Radiation-Induced Salivary Gland Dysfunction J Dent Res. 2024 Jul;103(8):778-786. doi: 10.1177/00220345241252396. PMID 38808518.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/38808518/
 - Source checked on: 2026-09-27
@@ -15723,7 +15755,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Mechanistic review establishing that ionizing radiation damages salivary glands because of their proximity to common head and neck tumour sites, that damage causes loss of secretory function with severe and chronic reductions in salivary flow, and that this leads to the patient-reported sensation of dry mouth termed xerostomia, with chronic mechanisms including decreased acinar differentiation markers, increased acinar cell proliferation, immune and inflammatory dysregulation, metabolic change, fibrosis, and dysregulated neuronal responses.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 435.2 — Kim MJ, Milliren A, Gerold DJ Jr. Salivary Gland Disorders: Rapid Evidence Review Am Fam Physician. 2024 Jun;109(6):550-559. PMID 38905553.**
+**Row 436.2 — Kim MJ, Milliren A, Gerold DJ Jr. Salivary Gland Disorders: Rapid Evidence Review Am Fam Physician. 2024 Jun;109(6):550-559. PMID 38905553.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/38905553/
 - Source checked on: 2026-09-27
@@ -15731,7 +15763,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Rapid evidence review of salivary gland disorders supplying the general clinical framing for salivary gland disease and its functional consequences; reused from the existing registered source entity rather than added as a new one.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 435.3 — Tang A, Li J, Scheff N, et al. Quality of Life Outcomes for Parotid Malignancies Laryngoscope. 2024 Nov;134(11):4549-4556. doi: 10.1002/lary.31554. PMID 38837232.**
+**Row 436.3 — Tang A, Li J, Scheff N, et al. Quality of Life Outcomes for Parotid Malignancies Laryngoscope. 2024 Nov;134(11):4549-4556. doi: 10.1002/lary.31554. PMID 38837232.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/38837232/
 - Source checked on: 2026-09-27
@@ -15755,7 +15787,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 - Is the citation metadata exact against the PubMed record?
 
-**Row 436.1 — Ley-Tomas JJ, Xicotencatl-Tellez AM, García-Cruz ML, et al. Nonsteroidal antiinflammatory drug-exacerbated respiratory disease: molecular mechanism, management and treatment Front Allergy. 2024;5:1462985. doi: 10.3389/falgy.2024.1462985. PMID 39665076.**
+**Row 437.1 — Ley-Tomas JJ, Xicotencatl-Tellez AM, García-Cruz ML, et al. Nonsteroidal antiinflammatory drug-exacerbated respiratory disease: molecular mechanism, management and treatment Front Allergy. 2024;5:1462985. doi: 10.3389/falgy.2024.1462985. PMID 39665076.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/39665076/
 - Source checked on: 2026-09-27
@@ -15763,7 +15795,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Review of nonsteroidal anti-inflammatory drug-exacerbated respiratory disease characterising the syndrome as the simultaneous presence of asthma, chronic rhinosinusitis with nasal polyposis, and NSAID and aspirin intolerance, and stating that despite maximal and comprehensive medical treatment the disease tends to be severe with difficult-to-treat asthma and highly aggressive and recurrent ethmoidal polyposis.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 436.2 — Walters BK, Hagan JB, Divekar RD, et al. Aspirin-Exacerbated Respiratory Disease and the Unified Airway: A Contemporary Review Otolaryngol Clin North Am. 2023 Feb;56(1):107-124. doi: 10.1016/j.otc.2022.09.008. PMID 36283868.**
+**Row 437.2 — Walters BK, Hagan JB, Divekar RD, et al. Aspirin-Exacerbated Respiratory Disease and the Unified Airway: A Contemporary Review Otolaryngol Clin North Am. 2023 Feb;56(1):107-124. doi: 10.1016/j.otc.2022.09.008. PMID 36283868.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/36283868/
 - Source checked on: 2026-09-27
@@ -15771,7 +15803,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Unified-airway review of aspirin-exacerbated respiratory disease characterising the condition by abnormal arachidonic acid metabolism leading to chronic rhinosinusitis with nasal polyposis, asthma, and respiratory symptoms after cyclooxygenase-1-inhibiting NSAID ingestion, and reporting that conventional medical management for asthma and chronic rhinosinusitis with nasal polyposis is often inadequate, with endoscopic sinus surgery plus continued medical management and optional aspirin desensitization frequently improving symptoms and objective measures.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 436.3 — Payne SC, McKenna M, Buckley J, et al. Executive Summary of the Clinical Practice Guideline on Adult Sinusitis Update Otolaryngol Head Neck Surg. 2025 Aug;173(2):299-316. doi: 10.1002/ohn.1342. PMID 40741969.**
+**Row 437.3 — Payne SC, McKenna M, Buckley J, et al. Executive Summary of the Clinical Practice Guideline on Adult Sinusitis Update Otolaryngol Head Neck Surg. 2025 Aug;173(2):299-316. doi: 10.1002/ohn.1342. PMID 40741969.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/40741969/
 - Source checked on: 2026-09-27
@@ -15795,7 +15827,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 - Is the citation metadata exact against the PubMed record?
 
-**Row 437.1 — Ley-Tomas JJ, Xicotencatl-Tellez AM, García-Cruz ML, et al. Nonsteroidal antiinflammatory drug-exacerbated respiratory disease: molecular mechanism, management and treatment Front Allergy. 2024;5:1462985. doi: 10.3389/falgy.2024.1462985. PMID 39665076.**
+**Row 438.1 — Ley-Tomas JJ, Xicotencatl-Tellez AM, García-Cruz ML, et al. Nonsteroidal antiinflammatory drug-exacerbated respiratory disease: molecular mechanism, management and treatment Front Allergy. 2024;5:1462985. doi: 10.3389/falgy.2024.1462985. PMID 39665076.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/39665076/
 - Source checked on: 2026-09-27
@@ -15803,7 +15835,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Review of nonsteroidal anti-inflammatory drug-exacerbated respiratory disease characterising the syndrome as the simultaneous presence of asthma, chronic rhinosinusitis with nasal polyposis, and NSAID and aspirin intolerance, stating that the disease tends to be severe with difficult to treat asthma and highly aggressive and recurrent ethmoidal polyposis.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 437.2 — Walters BK, Hagan JB, Divekar RD, et al. Aspirin-Exacerbated Respiratory Disease and the Unified Airway: A Contemporary Review Otolaryngol Clin North Am. 2023 Feb;56(1):107-124. doi: 10.1016/j.otc.2022.09.008. PMID 36283868.**
+**Row 438.2 — Walters BK, Hagan JB, Divekar RD, et al. Aspirin-Exacerbated Respiratory Disease and the Unified Airway: A Contemporary Review Otolaryngol Clin North Am. 2023 Feb;56(1):107-124. doi: 10.1016/j.otc.2022.09.008. PMID 36283868.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/36283868/
 - Source checked on: 2026-09-27
@@ -15811,7 +15843,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Unified-airway review of aspirin-exacerbated respiratory disease describing abnormal arachidonic acid metabolism, clinical diagnosis with possible aspirin challenge, the utility of inflammatory biomarkers, and the inadequacy of conventional medical management for both the asthma and the chronic rhinosinusitis with nasal polyposis components.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 437.3 — Yu AJ, Phung C, Kuppusamy K, et al. The Completeness of Surgery Index Predicts Success in CRSwNP With Asthma by SNOT-22 and Asthma Control Test Int Forum Allergy Rhinol. 2026 Feb;16(2):132-137. doi: 10.1002/alr.70043. PMID 41045292.**
+**Row 438.3 — Yu AJ, Phung C, Kuppusamy K, et al. The Completeness of Surgery Index Predicts Success in CRSwNP With Asthma by SNOT-22 and Asthma Control Test Int Forum Allergy Rhinol. 2026 Feb;16(2):132-137. doi: 10.1002/alr.70043. PMID 41045292.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/41045292/
 - Source checked on: 2026-09-27
@@ -15835,7 +15867,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 - Is the citation metadata exact against the PubMed record?
 
-**Row 438.1 — Rongioletti F, Kaiser F, Cinotti E, et al. Scleredema. A multicentre study of characteristics, comorbidities, course and therapy in 44 patients J Eur Acad Dermatol Venereol. 2015 Dec;29(12):2399-404. doi: 10.1111/jdv.13272. PMID 26304054.**
+**Row 439.1 — Rongioletti F, Kaiser F, Cinotti E, et al. Scleredema. A multicentre study of characteristics, comorbidities, course and therapy in 44 patients J Eur Acad Dermatol Venereol. 2015 Dec;29(12):2399-404. doi: 10.1111/jdv.13272. PMID 26304054.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/26304054/
 - Source checked on: 2026-09-27
@@ -15843,7 +15875,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Multicentre retrospective study of 44 patients with scleredema reporting endocrine and metabolic disease as the most common association with 30 patients suffering from diabetes, mostly type 2, monoclonal gammopathies confirmed in 5 cases, and expressly that a preceding respiratory tract infection was NOT a feature; concludes scleredema is associated with diabetes and metabolic syndrome and recommends strict glycaemic control plus physical therapy.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 438.2 — Csonka V, Bódis B, Kovács D, et al. Screening for the presence of scleroedema adultorum of Buschke in patients with diabetes mellitus: newly diagnosed patients had a high prevalence of dyslipidaemia Lipids Health Dis. 2021 May 5;20(1):47. doi: 10.1186/s12944-021-01473-1. PMID 33952255.**
+**Row 439.2 — Csonka V, Bódis B, Kovács D, et al. Screening for the presence of scleroedema adultorum of Buschke in patients with diabetes mellitus: newly diagnosed patients had a high prevalence of dyslipidaemia Lipids Health Dis. 2021 May 5;20(1):47. doi: 10.1186/s12944-021-01473-1. PMID 33952255.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/33952255/
 - Source checked on: 2026-09-27
@@ -15851,7 +15883,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Prospective screening of 113 consecutive patients with diabetes identifying 11 new scleroedema adultorum of Buschke cases, a 9.7 percent prevalence, all with type 2 diabetes, characterised with a focus on lipid metabolism abnormalities and vascular complications; the only located design sampling from the diabetes population rather than the scleredema population.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 438.3 — García-Arpal M, Bujalance-Cabrera C, Banegas-Illescas ME, et al. Scleredema diabeticorum in a patient: un uncommon etiology of restrictive lung pattern Escleredema diabeticorum en un paciente: una etiología infrecuente de patrón restrictivo pulmonar Dermatol Online J. 2021 Mar 15;27(3). pii: 13030/qt71g4k3qf. PMID 33865279.**
+**Row 439.3 — García-Arpal M, Bujalance-Cabrera C, Banegas-Illescas ME, et al. Scleredema diabeticorum in a patient: un uncommon etiology of restrictive lung pattern Escleredema diabeticorum en un paciente: una etiología infrecuente de patrón restrictivo pulmonar Dermatol Online J. 2021 Mar 15;27(3). pii: 13030/qt71g4k3qf. PMID 33865279.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/33865279/
 - Source checked on: 2026-09-27
@@ -15875,7 +15907,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 - Is the citation metadata exact against the PubMed record?
 
-**Row 439.1 — Rongioletti F, Kaiser F, Cinotti E, et al. Scleredema. A multicentre study of characteristics, comorbidities, course and therapy in 44 patients J Eur Acad Dermatol Venereol. 2015 Dec;29(12):2399-404. doi: 10.1111/jdv.13272. PMID 26304054.**
+**Row 440.1 — Rongioletti F, Kaiser F, Cinotti E, et al. Scleredema. A multicentre study of characteristics, comorbidities, course and therapy in 44 patients J Eur Acad Dermatol Venereol. 2015 Dec;29(12):2399-404. doi: 10.1111/jdv.13272. PMID 26304054.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/26304054/
 - Source checked on: 2026-09-27
@@ -15883,7 +15915,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Multicentre retrospective study of 44 patients with scleredema reporting monoclonal gammopathies confirmed in 5 cases, that systemic corticosteroids and immunosuppressive drugs were reserved for severe patients in whom phototherapy had failed or for patients with multiple myeloma, that 2 patients died of cardiovascular complications due to myeloma and severe diabetes, and that of 41 followed patients 39 were alive, 30 with and 9 without skin disease.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 439.2 — Hong KR, Hong JY, Chung EH, et al. Monoclonal Gammopathy-Associated Scleredema Adultorum of Buschke in a Patient with Diabetes Mellitus Successfully Treated with Intravenous Immunoglobulin and Narrow-Band Ultraviolet B Phototherapy: A Case Report Ann Dermatol. 2021 Dec;33(6):586-588. doi: 10.5021/ad.2021.33.6.586. PMID 34858014.**
+**Row 440.2 — Hong KR, Hong JY, Chung EH, et al. Monoclonal Gammopathy-Associated Scleredema Adultorum of Buschke in a Patient with Diabetes Mellitus Successfully Treated with Intravenous Immunoglobulin and Narrow-Band Ultraviolet B Phototherapy: A Case Report Ann Dermatol. 2021 Dec;33(6):586-588. doi: 10.5021/ad.2021.33.6.586. PMID 34858014.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/34858014/
 - Source checked on: 2026-09-27
@@ -15891,7 +15923,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Case report of monoclonal gammopathy-associated scleredema adultorum of Buschke in a patient with diabetes mellitus, successfully treated with intravenous immunoglobulin and narrow-band ultraviolet B phototherapy, documenting the dyscrasia-skin pairing as a distinct treatable entity.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 439.3 — Nickell AL, Corn M, Mannuru D, et al. Scleredema in the Setting of Monoclonal Gammopathy of Unknown Significance With Progression to Multiple Myeloma: A Case Report Cureus. 2023 Sep;15(9):e44968. doi: 10.7759/cureus.44968. PMID 37701163.**
+**Row 440.3 — Nickell AL, Corn M, Mannuru D, et al. Scleredema in the Setting of Monoclonal Gammopathy of Unknown Significance With Progression to Multiple Myeloma: A Case Report Cureus. 2023 Sep;15(9):e44968. doi: 10.7759/cureus.44968. PMID 37701163.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/37701163/
 - Source checked on: 2026-09-27
@@ -15915,7 +15947,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 - Is the citation metadata exact against the PubMed record?
 
-**Row 440.1 — García-Arpal M, Bujalance-Cabrera C, Banegas-Illescas ME, et al. Scleredema diabeticorum in a patient: un uncommon etiology of restrictive lung pattern Escleredema diabeticorum en un paciente: una etiología infrecuente de patrón restrictivo pulmonar Dermatol Online J. 2021 Mar 15;27(3). pii: 13030/qt71g4k3qf. PMID 33865279.**
+**Row 441.1 — García-Arpal M, Bujalance-Cabrera C, Banegas-Illescas ME, et al. Scleredema diabeticorum in a patient: un uncommon etiology of restrictive lung pattern Escleredema diabeticorum en un paciente: una etiología infrecuente de patrón restrictivo pulmonar Dermatol Online J. 2021 Mar 15;27(3). pii: 13030/qt71g4k3qf. PMID 33865279.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/33865279/
 - Source checked on: 2026-09-27
@@ -15923,7 +15955,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Case report of scleredema diabeticorum in a patient with poorly controlled diabetes presenting extensive trunk involvement in a cuirasse pattern with associated restrictive lung disease, cutaneous ultrasonography showing marked dermal thickening and echogenic spots, and the explicit statement that cutaneous hardness secondary to scleredema may cause limited mobility so that respiratory manifestations may be associated and assessed mainly in extensive disease involving trunk and shoulders.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 440.2 — Rongioletti F, Kaiser F, Cinotti E, et al. Scleredema. A multicentre study of characteristics, comorbidities, course and therapy in 44 patients J Eur Acad Dermatol Venereol. 2015 Dec;29(12):2399-404. doi: 10.1111/jdv.13272. PMID 26304054.**
+**Row 441.2 — Rongioletti F, Kaiser F, Cinotti E, et al. Scleredema. A multicentre study of characteristics, comorbidities, course and therapy in 44 patients J Eur Acad Dermatol Venereol. 2015 Dec;29(12):2399-404. doi: 10.1111/jdv.13272. PMID 26304054.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/26304054/
 - Source checked on: 2026-09-27
@@ -15931,7 +15963,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Multicentre retrospective study of 44 patients with scleredema describing the disease as chronic and debilitating, reporting that treatments with different combination or sequential modalities were used with variable results, that phototherapy was associated with higher although partial response, and that 2 patients died of cardiovascular complications due to myeloma and severe diabetes; registered for disease-severity and treatment-resistance context only, as it reports no pulmonary outcomes.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 440.3 — Ibrahim RA, Abdalla NEH, Shabaan EAH, et al. An Unusual Presentation of a Rare Scleroderma Mimic: What is Behind the Scenes? Curr Rheumatol Rev. 2019;15(2):172-175. doi: 10.2174/1573397114666180808091621. PMID 30088450.**
+**Row 441.3 — Ibrahim RA, Abdalla NEH, Shabaan EAH, et al. An Unusual Presentation of a Rare Scleroderma Mimic: What is Behind the Scenes? Curr Rheumatol Rev. 2019;15(2):172-175. doi: 10.2174/1573397114666180808091621. PMID 30088450.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/30088450/
 - Source checked on: 2026-09-27
@@ -15955,7 +15987,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 - Is the citation metadata exact against the PubMed record?
 
-**Row 441.1 — Sota J, Hinojosa-Azaola A, de-la-Torre A, et al. Determinants of Non-infectious Scleritis Complications and Their Impact on Visual Outcome: Results from the International AIDA Network Scleritis Registry Ophthalmol Ther. 2026 Jun;15(6):2081-2093. doi: 10.1007/s40123-026-01390-5. PMID 42105127.**
+**Row 442.1 — Sota J, Hinojosa-Azaola A, de-la-Torre A, et al. Determinants of Non-infectious Scleritis Complications and Their Impact on Visual Outcome: Results from the International AIDA Network Scleritis Registry Ophthalmol Ther. 2026 Jun;15(6):2081-2093. doi: 10.1007/s40123-026-01390-5. PMID 42105127.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/42105127/
 - Source checked on: 2026-09-27
@@ -15963,7 +15995,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: International AIDA Network scleritis registry of 154 patients and 218 eyes of non-infectious scleritis recording 102 ocular complications in 58 patients across 87 eyes, naming cataract, scleral and corneal thinning, and glaucoma or increased ocular pressure as most frequent, reporting complications significantly more frequent with granulomatosis with polyangiitis (p<0.0001) and with concomitant uveitis (p=0.023), and explicitly treating uveitis and peripheral ulcerative keratitis as extensions of the inflammatory process rather than true structural complications.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 441.2 — Braithwaite T, Adderley NJ, Subramanian A, et al. Epidemiology of Scleritis in the United Kingdom From 1997 to 2018: Population-Based Analysis of 11 Million Patients and Association Between Scleritis and Infectious and Immune-Mediated Inflammatory Disease Arthritis Rheumatol. 2021 Jul;73(7):1267-1276. doi: 10.1002/art.41709. PMID 33728815.**
+**Row 442.2 — Braithwaite T, Adderley NJ, Subramanian A, et al. Epidemiology of Scleritis in the United Kingdom From 1997 to 2018: Population-Based Analysis of 11 Million Patients and Association Between Scleritis and Infectious and Immune-Mediated Inflammatory Disease Arthritis Rheumatol. 2021 Jul;73(7):1267-1276. doi: 10.1002/art.41709. PMID 33728815.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/33728815/
 - Source checked on: 2026-09-27
@@ -15971,7 +16003,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Population-based United Kingdom analysis of 10,939,823 patients containing 2,946 incident scleritis cases from 1997 to 2018, with a matched case-control and cohort arm of 3,005 incident scleritis cases and 12,020 age-, sex-, region- and deprivation-matched controls, estimating 22-year trends in scleritis incidence and prevalence and the associations of scleritis with infectious and immune-mediated inflammatory disease, adjusted for age, sex, Townsend deprivation index, race or ethnicity, smoking status, nation and body mass index.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 441.3 — Advani MS, Putri BM, Susiyanti M. Clinical characteristics, management, and visual outcomes of presumed infectious and non-infectious anterior scleritis in a tuberculosis-endemic Indonesian Tertiary Center Int Ophthalmol. 2026 Jun 30;46(1). pii: 274. doi: 10.1007/s10792-026-04129-0. PMID 42377600.**
+**Row 442.3 — Advani MS, Putri BM, Susiyanti M. Clinical characteristics, management, and visual outcomes of presumed infectious and non-infectious anterior scleritis in a tuberculosis-endemic Indonesian Tertiary Center Int Ophthalmol. 2026 Jun 30;46(1). pii: 274. doi: 10.1007/s10792-026-04129-0. PMID 42377600.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/42377600/
 - Source checked on: 2026-09-27
@@ -15995,7 +16027,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 - Is the citation metadata exact against the PubMed record?
 
-**Row 442.1 — Braithwaite T, Adderley NJ, Subramanian A, et al. Epidemiology of Scleritis in the United Kingdom From 1997 to 2018: Population-Based Analysis of 11 Million Patients and Association Between Scleritis and Infectious and Immune-Mediated Inflammatory Disease Arthritis Rheumatol. 2021 Jul;73(7):1267-1276. doi: 10.1002/art.41709. PMID 33728815.**
+**Row 443.1 — Braithwaite T, Adderley NJ, Subramanian A, et al. Epidemiology of Scleritis in the United Kingdom From 1997 to 2018: Population-Based Analysis of 11 Million Patients and Association Between Scleritis and Infectious and Immune-Mediated Inflammatory Disease Arthritis Rheumatol. 2021 Jul;73(7):1267-1276. doi: 10.1002/art.41709. PMID 33728815.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/33728815/
 - Source checked on: 2026-09-27
@@ -16003,7 +16035,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Population-based United Kingdom analysis of 10,939,823 patients containing 2,946 incident scleritis cases from 1997 to 2018 with a matched case-control and cohort arm of 3,005 incident cases and 12,020 controls, estimating scleritis incidence and prevalence and the associations of scleritis with infectious and immune-mediated inflammatory disease with multivariable adjustment.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 442.2 — Berkenstock MK, Carey AR. Health system wide "big data" analysis of rheumatologic conditions and scleritis BMC Ophthalmol. 2021 Jan 6;21(1):14. doi: 10.1186/s12886-020-01769-3. PMID 33407267.**
+**Row 443.2 — Berkenstock MK, Carey AR. Health system wide "big data" analysis of rheumatologic conditions and scleritis BMC Ophthalmol. 2021 Jan 6;21(1):14. doi: 10.1186/s12886-020-01769-3. PMID 33407267.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/33407267/
 - Source checked on: 2026-09-27
@@ -16011,7 +16043,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Health-system-wide electronic medical record analysis of all charts carrying systemic autoimmune and scleritis diagnoses, stating explicitly that prior series assessed the relationship between systemic autoimmune disorders and scleritis only in patients referred for rheumatologic or ocular inflammation, introducing referral bias, and determining the prevalence of both and which disorders carried the highest relative risk of developing scleritis.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 442.3 — Forestier MG, Calderón RM, Oliver A. An Overview of Rheumatoid Arthritis-Associated Dry Eye Disease, Scleritis, and Peripheral Ulcerative Keratitis J Clin Med. 2026 Apr 23;15(9). doi: 10.3390/jcm15093207. PMID 42122940.**
+**Row 443.3 — Forestier MG, Calderón RM, Oliver A. An Overview of Rheumatoid Arthritis-Associated Dry Eye Disease, Scleritis, and Peripheral Ulcerative Keratitis J Clin Med. 2026 Apr 23;15(9). doi: 10.3390/jcm15093207. PMID 42122940.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/42122940/
 - Source checked on: 2026-09-27
@@ -16035,7 +16067,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 - Is the citation metadata exact against the PubMed record?
 
-**Row 443.1 — Braithwaite T, Adderley NJ, Subramanian A, et al. Epidemiology of Scleritis in the United Kingdom From 1997 to 2018: Population-Based Analysis of 11 Million Patients and Association Between Scleritis and Infectious and Immune-Mediated Inflammatory Disease Arthritis Rheumatol. 2021 Jul;73(7):1267-1276. doi: 10.1002/art.41709. PMID 33728815.**
+**Row 444.1 — Braithwaite T, Adderley NJ, Subramanian A, et al. Epidemiology of Scleritis in the United Kingdom From 1997 to 2018: Population-Based Analysis of 11 Million Patients and Association Between Scleritis and Infectious and Immune-Mediated Inflammatory Disease Arthritis Rheumatol. 2021 Jul;73(7):1267-1276. doi: 10.1002/art.41709. PMID 33728815.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/33728815/
 - Source checked on: 2026-09-27
@@ -16043,7 +16075,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Population-based United Kingdom analysis of 10,939,823 patients containing 2,946 incident scleritis cases with a matched case-control and cohort arm of 3,005 incident cases and 12,020 controls, estimating the associations of scleritis with infectious and immune-mediated inflammatory disease using multivariable Poisson, logistic, and Cox models.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 443.2 — Berkenstock MK, Carey AR. Health system wide "big data" analysis of rheumatologic conditions and scleritis BMC Ophthalmol. 2021 Jan 6;21(1):14. doi: 10.1186/s12886-020-01769-3. PMID 33407267.**
+**Row 444.2 — Berkenstock MK, Carey AR. Health system wide "big data" analysis of rheumatologic conditions and scleritis BMC Ophthalmol. 2021 Jan 6;21(1):14. doi: 10.1186/s12886-020-01769-3. PMID 33407267.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/33407267/
 - Source checked on: 2026-09-27
@@ -16051,7 +16083,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Health-system-wide electronic medical record analysis of all charts carrying systemic autoimmune and scleritis diagnoses, explicitly correcting the referral bias of prior series that assessed systemic autoimmune disorders in scleritis only in referred rheumatology or ocular inflammation patients, and determining which disorders carried the highest relative risk of developing scleritis.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 443.3 — Hsu CS, Hsu CW, Lu MC, et al. Risks of ophthalmic disorders in patients with systemic lupus erythematosus - a secondary cohort analysis of population-based claims data BMC Ophthalmol. 2020 Mar 11;20(1):96. doi: 10.1186/s12886-020-01360-w. PMID 32160869.**
+**Row 444.3 — Hsu CS, Hsu CW, Lu MC, et al. Risks of ophthalmic disorders in patients with systemic lupus erythematosus - a secondary cohort analysis of population-based claims data BMC Ophthalmol. 2020 Mar 11;20(1):96. doi: 10.1186/s12886-020-01360-w. PMID 32160869.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/32160869/
 - Source checked on: 2026-09-27
@@ -16075,7 +16107,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 - Is the citation metadata exact against the PubMed record?
 
-**Row 444.1 — Rashid AS, Rashid D, Yang G, et al. Homonymous visual field defect and retinal thinning after occipital stroke Brain Behav. 2021 Oct;11(10):e2345. doi: 10.1002/brb3.2345. PMID 34487632.**
+**Row 445.1 — Rashid AS, Rashid D, Yang G, et al. Homonymous visual field defect and retinal thinning after occipital stroke Brain Behav. 2021 Oct;11(10):e2345. doi: 10.1002/brb3.2345. PMID 34487632.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/34487632/
 - Source checked on: 2026-09-27
@@ -16083,7 +16115,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Retrospective cohort of 36 patients with acute occipital stroke reporting that stroke is the most common cause of homonymous visual field defects, that 26 patients (72 percent) had a visual field defect at onset by confrontation or perimetry, and that at follow-up beyond one year 13 patients (36 percent) had a remaining defect comprising 5 homonymous hemianopias, 5 homonymous quadrantanopias, and 3 homonymous scotomas, with GCIPL and RNFL thickness significantly reduced in each eye in patients with a defect versus those without (p<0.01).
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 444.2 — Papageorgiou E, Anthis N, Stathi T, et al. Case Series: Bilateral Homonymous Visual Field Defects Due to Bilateral Ischemic Strokes Optom Vis Sci. 2018 Nov;95(11):1077-1082. doi: 10.1097/OPX.0000000000001294. PMID 30339636.**
+**Row 445.2 — Papageorgiou E, Anthis N, Stathi T, et al. Case Series: Bilateral Homonymous Visual Field Defects Due to Bilateral Ischemic Strokes Optom Vis Sci. 2018 Nov;95(11):1077-1082. doi: 10.1097/OPX.0000000000001294. PMID 30339636.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/30339636/
 - Source checked on: 2026-09-27
@@ -16091,7 +16123,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Case series of three patients with bilateral homonymous visual field defects from bilateral ischaemic strokes, reporting perimetry and brain MRI findings including a right horizontal wedge-shaped homonymous scotoma in a patient with a chronic left occipital stroke and acute right thalamic ischemia, and noting that two of the three patients suffered sequential bilateral strokes and were unaware of the initial scotoma.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 444.3 — Papageorgiou E, Ticini LF, Schiefer U. Peripheral homonymous hemianopia: correlation between lesion location and visual field defects by means of cytoarchitectonic probabilistic maps J Neuroophthalmol. 2012 Mar;32(1):5-12. doi: 10.1097/WNO.0b013e31821fc0e9. PMID 21623227.**
+**Row 445.3 — Papageorgiou E, Ticini LF, Schiefer U. Peripheral homonymous hemianopia: correlation between lesion location and visual field defects by means of cytoarchitectonic probabilistic maps J Neuroophthalmol. 2012 Mar;32(1):5-12. doi: 10.1097/WNO.0b013e31821fc0e9. PMID 21623227.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/21623227/
 - Source checked on: 2026-09-27
@@ -16115,7 +16147,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 - Is the citation metadata exact against the PubMed record?
 
-**Row 445.1 — Viana M, Tronvik EA, Do TP, et al. Clinical features of visual migraine aura: a systematic review J Headache Pain. 2019 May 30;20(1):64. doi: 10.1186/s10194-019-1008-x. PMID 31146673.**
+**Row 446.1 — Viana M, Tronvik EA, Do TP, et al. Clinical features of visual migraine aura: a systematic review J Headache Pain. 2019 May 30;20(1):64. doi: 10.1186/s10194-019-1008-x. PMID 31146673.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/31146673/
 - Source checked on: 2026-09-27
@@ -16123,7 +16155,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Systematic review of 11 retrospective and 3 prospective studies systematically describing visual aura symptoms, reporting that the number of distinct visual phenomena per study ranged from 2 to 23 and that the most common were flashes of bright light, foggy vision, zigzag lines, scotoma, small bright dots, and heat-wave or water distortion, and stating that migraine aura is often clinically difficult to distinguish from transient ischaemic attacks and epilepsy.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 445.2 — Singla M, Sulena 2, Kale R, et al. Visual Aura in Migraine: An Analysis of 165 Patients in a Tertiary Care Hospital in North India J Neurosci Rural Pract. 2021 Apr;12(2):273-280. doi: 10.1055/s-0040-1721624. PMID 33927518.**
+**Row 446.2 — Singla M, Sulena 2, Kale R, et al. Visual Aura in Migraine: An Analysis of 165 Patients in a Tertiary Care Hospital in North India J Neurosci Rural Pract. 2021 Apr;12(2):273-280. doi: 10.1055/s-0040-1721624. PMID 33927518.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/33927518/
 - Source checked on: 2026-09-27
@@ -16131,7 +16163,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Observational questionnaire-based cross-sectional study of 165 patients with migraine at a tertiary care hospital, classifying migraine by ICHD-III and profiling visual aura type, duration, laterality, and its relation to migraine.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 445.3 — Nordin BA. Differentiating Visual Symptoms in Retinal Migraine and Migraine With Aura: A Systematic Review of Shared Features, Distinctions, and Clinical Implications Cureus. 2025 Aug;17(8):e91028. doi: 10.7759/cureus.91028. PMID 40873917.**
+**Row 446.3 — Nordin BA. Differentiating Visual Symptoms in Retinal Migraine and Migraine With Aura: A Systematic Review of Shared Features, Distinctions, and Clinical Implications Cureus. 2025 Aug;17(8):e91028. doi: 10.7759/cureus.91028. PMID 40873917.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/40873917/
 - Source checked on: 2026-09-27
@@ -16155,7 +16187,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 - Is the citation metadata exact against the PubMed record?
 
-**Row 446.1 — Angus-Leppan H, Clay TA. Adult occipital lobe epilepsy: 12-years on J Neurol. 2021 Oct;268(10):3926-3934. doi: 10.1007/s00415-021-10557-y. PMID 33900448.**
+**Row 447.1 — Angus-Leppan H, Clay TA. Adult occipital lobe epilepsy: 12-years on J Neurol. 2021 Oct;268(10):3926-3934. doi: 10.1007/s00415-021-10557-y. PMID 33900448.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/33900448/
 - Source checked on: 2026-09-27
@@ -16163,7 +16195,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Longitudinal study of 24 adult occipital lobe epilepsy patients identified over 12 months from 1548 patients in a neurologist's service and followed over 12 years, reporting that occipital lobe epilepsies comprise 5-10 percent of focal epilepsies, that 92 percent had simple visual hallucinations misdiagnosed in 40 percent of cases, that 75 percent had co-morbid interictal migraine, that 38 percent had visual field defects, that only 33 percent achieved long-term remission, and that only 2 of 10 patients with a structural aetiology were seizure-free.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 446.2 — Machner B, Sprenger A, Kömpf D, et al. Visual search disorders beyond pure sensory failure in patients with acute homonymous visual field defects Neuropsychologia. 2009 Nov;47(13):2704-11. doi: 10.1016/j.neuropsychologia.2009.05.016. PMID 19500605.**
+**Row 447.2 — Machner B, Sprenger A, Kömpf D, et al. Visual search disorders beyond pure sensory failure in patients with acute homonymous visual field defects Neuropsychologia. 2009 Nov;47(13):2704-11. doi: 10.1016/j.neuropsychologia.2009.05.016. PMID 19500605.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/19500605/
 - Source checked on: 2026-09-27
@@ -16171,7 +16203,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Study of visual search disorders beyond pure sensory failure in patients with acute homonymous visual field defects, supplying the perceptual comparator for a documented field defect and supporting the requirement for formal visual field testing rather than subjective report.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 446.3 — Papageorgiou E, Ticini LF, Schiefer U. Peripheral homonymous hemianopia: correlation between lesion location and visual field defects by means of cytoarchitectonic probabilistic maps J Neuroophthalmol. 2012 Mar;32(1):5-12. doi: 10.1097/WNO.0b013e31821fc0e9. PMID 21623227.**
+**Row 447.3 — Papageorgiou E, Ticini LF, Schiefer U. Peripheral homonymous hemianopia: correlation between lesion location and visual field defects by means of cytoarchitectonic probabilistic maps J Neuroophthalmol. 2012 Mar;32(1):5-12. doi: 10.1097/WNO.0b013e31821fc0e9. PMID 21623227.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/21623227/
 - Source checked on: 2026-09-27
@@ -16195,7 +16227,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 - Is the citation metadata exact against the PubMed record?
 
-**Row 447.1 — Zhang X, Plant GT. Visual impairment in multiple sclerosis involving post-geniculate gray and white matter: above and beyond Front Neurol. 2026;17:1875359. doi: 10.3389/fneur.2026.1875359. PMID 42729962.**
+**Row 448.1 — Zhang X, Plant GT. Visual impairment in multiple sclerosis involving post-geniculate gray and white matter: above and beyond Front Neurol. 2026;17:1875359. doi: 10.3389/fneur.2026.1875359. PMID 42729962.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/42729962/
 - Source checked on: 2026-09-27
@@ -16203,7 +16235,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Review of visual impairment in multiple sclerosis involving post-geniculate gray and white matter, stating that visual impairment is one of the most common and disabling manifestations of the disease, that post-geniculate involvement including the optic radiations and visual cortex remains comparatively under-studied and under-recognised in clinical practice, and that the resulting abnormalities include homonymous visual field defects, visuoperceptual dysfunction, visual cognitive impairment, and higher-order ocular motor abnormalities.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 447.2 — Daw W, Bakheet M, Elhag Elamin M, et al. Ocular Manifestations of Multiple Sclerosis: A Retrospective, Population-Based Single-Center Study Cureus. 2026 Feb;18(2):e102901. doi: 10.7759/cureus.102901. PMID 41798516.**
+**Row 448.2 — Daw W, Bakheet M, Elhag Elamin M, et al. Ocular Manifestations of Multiple Sclerosis: A Retrospective, Population-Based Single-Center Study Cureus. 2026 Feb;18(2):e102901. doi: 10.7759/cureus.102901. PMID 41798516.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/41798516/
 - Source checked on: 2026-09-27
@@ -16211,7 +16243,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Retrospective population-based single-centre study of 192 patients with multiple sclerosis evaluated in an ophthalmology clinic using structured questionnaires completed at routine visits, reporting ocular symptoms in 120 patients, determining the proportion with afferent and efferent visual disturbances, assessing the contribution of visual evoked potentials to detecting visual pathway abnormality, and identifying ocular findings that represented the initial clinical manifestation of multiple sclerosis.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 447.3 — Guier CP, Kaur K, Stokkermans TJ. Optic Neuritis 2025 Jan. PMID 32496733.**
+**Row 448.3 — Guier CP, Kaur K, Stokkermans TJ. Optic Neuritis 2025 Jan. PMID 32496733.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/32496733/
 - Source checked on: 2026-09-27
@@ -16235,7 +16267,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 - Is the citation metadata exact against the PubMed record?
 
-**Row 448.1 — Kluglein KA, South SC, Toska E, et al. Exploring Systemic Comorbidities and Lifestyle Factors Associated With Seborrheic Dermatitis: A Scoping Review Cureus. 2024 Nov;16(11):e73555. doi: 10.7759/cureus.73555. PMID 39669846.**
+**Row 449.1 — Kluglein KA, South SC, Toska E, et al. Exploring Systemic Comorbidities and Lifestyle Factors Associated With Seborrheic Dermatitis: A Scoping Review Cureus. 2024 Nov;16(11):e73555. doi: 10.7759/cureus.73555. PMID 39669846.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/39669846/
 - Source checked on: 2026-09-27
@@ -16243,7 +16275,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: PRISMA-guided scoping review of systemic comorbidities and lifestyle factors associated with seborrhoeic dermatitis, reporting that nearly half of Parkinson's disease patients in one study also had seborrhoeic dermatitis, that seborrhoeic dermatitis development occurred at a much higher rate as Parkinson's symptom severity increased, that seborrhoeic dermatitis burden was positively correlated to Parkinson's severity, and explicitly recording that in one cross-sectional study of patients with seborrhoeic dermatitis the most common systemic comorbidities were hypertension and diabetes and that this finding was NOT statistically significant, and that obesity was common but ALSO not significant.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 448.2 — Wilkowski CM, Alhajj M, Kilbane CW, et al. The association of seborrheic dermatitis and Parkinson's disease: A cross-sectional study J Am Acad Dermatol. 2025 Jan;92(1):157-159. doi: 10.1016/j.jaad.2024.08.074. PMID 39313034.**
+**Row 449.2 — Wilkowski CM, Alhajj M, Kilbane CW, et al. The association of seborrheic dermatitis and Parkinson's disease: A cross-sectional study J Am Acad Dermatol. 2025 Jan;92(1):157-159. doi: 10.1016/j.jaad.2024.08.074. PMID 39313034.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/39313034/
 - Source checked on: 2026-09-27
@@ -16251,7 +16283,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Cross-sectional study examining the association of seborrhoeic dermatitis and Parkinson's disease, registered as the dedicated paired-design source for this association.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 448.3 — Kefala V, Oikonomou E, Sfyri E, et al. Genetic, Lipid, Fungal Microbiome and Neuroinflammatory Links Between Seborrheic Dermatitis and Parkinson's Disease: A Narrative Review Genes (Basel). 2026 Jul 30;17(8). doi: 10.3390/genes17080894. PMID 42650087.**
+**Row 449.3 — Kefala V, Oikonomou E, Sfyri E, et al. Genetic, Lipid, Fungal Microbiome and Neuroinflammatory Links Between Seborrheic Dermatitis and Parkinson's Disease: A Narrative Review Genes (Basel). 2026 Jul 30;17(8). doi: 10.3390/genes17080894. PMID 42650087.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/42650087/
 - Source checked on: 2026-09-27
@@ -16275,7 +16307,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 - Is the citation metadata exact against the PubMed record?
 
-**Row 449.1 — Anshory M, Effendi RMRA, Rosandy MG, et al. Dermatological manifestation of HIV infection: systematic review and meta-analysis BMC Infect Dis. 2025 Oct 29;25(1):1446. doi: 10.1186/s12879-025-11827-0. PMID 41162862.**
+**Row 450.1 — Anshory M, Effendi RMRA, Rosandy MG, et al. Dermatological manifestation of HIV infection: systematic review and meta-analysis BMC Infect Dis. 2025 Oct 29;25(1):1446. doi: 10.1186/s12879-025-11827-0. PMID 41162862.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/41162862/
 - Source checked on: 2026-09-27
@@ -16283,7 +16315,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Systematic review and meta-analysis of 145 articles involving 41,285 people with HIV identifying approximately 28,448 patients with dermatological disease, and among 60,064 events finding the most prevalent conditions to be oral candidiasis (8.88 percent), dermatophytosis, seborrheic dermatitis, warts, and herpes zoster, with an overall dermatological disease prevalence of 76 percent (95 percent CI 72 to 81) and significant heterogeneity of I squared 97 percent, with stated limitations of small sample sizes, insufficient study setting descriptions, and diagnostic challenges.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 449.2 — Mahlangeni GM, Tod BM, Jordaan HF, et al. Clinicopathological Features of Seborrheic-Like Dermatitis in HIV-Infected Adults: A Single Institutional Descriptive Cross-Sectional Study Am J Dermatopathol. 2021 Jan 1;43(1):27-34. doi: 10.1097/DAD.0000000000001670. PMID 32379092.**
+**Row 450.2 — Mahlangeni GM, Tod BM, Jordaan HF, et al. Clinicopathological Features of Seborrheic-Like Dermatitis in HIV-Infected Adults: A Single Institutional Descriptive Cross-Sectional Study Am J Dermatopathol. 2021 Jan 1;43(1):27-34. doi: 10.1097/DAD.0000000000001670. PMID 32379092.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/32379092/
 - Source checked on: 2026-09-27
@@ -16291,7 +16323,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Prospective clinicopathological study of 30 HIV-seropositive adults presenting with seborrhoeic-like dermatitis, finding 50 percent with severe or very severe disease and 6 patients (20.0 percent) presenting with erythroderma, confirming that confluent parakeratosis, necrotic keratinocytes, plasma cells, neutrophils with leukocytoclasia, and leukoexocytosis are histopathological clues to seborrhoeic-like dermatitis in HIV-seropositive patients, and reporting NO significant correlation between severity and CD4 count, viral load, or antiretroviral therapy.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 449.3 — Kluglein KA, South SC, Toska E, et al. Exploring Systemic Comorbidities and Lifestyle Factors Associated With Seborrheic Dermatitis: A Scoping Review Cureus. 2024 Nov;16(11):e73555. doi: 10.7759/cureus.73555. PMID 39669846.**
+**Row 450.3 — Kluglein KA, South SC, Toska E, et al. Exploring Systemic Comorbidities and Lifestyle Factors Associated With Seborrheic Dermatitis: A Scoping Review Cureus. 2024 Nov;16(11):e73555. doi: 10.7759/cureus.73555. PMID 39669846.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/39669846/
 - Source checked on: 2026-09-27
@@ -16315,7 +16347,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 - Is the citation metadata exact against the PubMed record?
 
-**Row 450.1 — Borja Montes OF, Escobar Gil T, Cardona Solano C, et al. Leser-Trélat Syndrome, an Underdiagnosed Cutaneous Paraneoplastic Syndrome That Could Aid in Early Detection of Colon Cancer: A Case Report Cureus. 2023 Sep;15(9):e44907. doi: 10.7759/cureus.44907. PMID 37814771.**
+**Row 451.1 — Borja Montes OF, Escobar Gil T, Cardona Solano C, et al. Leser-Trélat Syndrome, an Underdiagnosed Cutaneous Paraneoplastic Syndrome That Could Aid in Early Detection of Colon Cancer: A Case Report Cureus. 2023 Sep;15(9):e44907. doi: 10.7759/cureus.44907. PMID 37814771.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/37814771/
 - Source checked on: 2026-09-27
@@ -16323,7 +16355,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Case report and review describing the Leser-Trelat syndrome as an underdiagnosed cutaneous paraneoplastic syndrome that could aid in early detection of colon cancer, setting out the differential diagnoses, the completed workup, and current treatment options for a patient presenting with this pattern.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 450.2 — Okur A, Şahin KC, Sahin Z, et al. Leser-Trélat Sign as an Initial Manifestation of Synchronous Prostate and Bladder Cancer Cureus. 2025 Sep;17(9):e93325. doi: 10.7759/cureus.93325. PMID 41158917.**
+**Row 451.2 — Okur A, Şahin KC, Sahin Z, et al. Leser-Trélat Sign as an Initial Manifestation of Synchronous Prostate and Bladder Cancer Cureus. 2025 Sep;17(9):e93325. doi: 10.7759/cureus.93325. PMID 41158917.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/41158917/
 - Source checked on: 2026-09-27
@@ -16331,7 +16363,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Case report of the Leser-Trelat sign as an initial manifestation of synchronous prostate and bladder cancer, registered deliberately as evidence that the association is non-specific across tumour types rather than colorectal-specific.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 450.3 — Geber A, Hadžavdić A, Ljubojević Hadžavdić S. The Leser-Trélat Sign in a Patient with Gastric Adenocarcinoma Acta Dermatovenerol Croat. 2023 Aug;31(1):51-52. PMID 37843094.**
+**Row 451.3 — Geber A, Hadžavdić A, Ljubojević Hadžavdić S. The Leser-Trélat Sign in a Patient with Gastric Adenocarcinoma Acta Dermatovenerol Croat. 2023 Aug;31(1):51-52. PMID 37843094.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/37843094/
 - Source checked on: 2026-09-27
@@ -16355,7 +16387,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 - Is the citation metadata exact against the PubMed record?
 
-**Row 451.1 — Driessen J, Blom JD, Muris P, et al. Anxiety in Children with Selective Mutism: A Meta-analysis Child Psychiatry Hum Dev. 2020 Apr;51(2):330-341. doi: 10.1007/s10578-019-00933-1. PMID 31650460.**
+**Row 452.1 — Driessen J, Blom JD, Muris P, et al. Anxiety in Children with Selective Mutism: A Meta-analysis Child Psychiatry Hum Dev. 2020 Apr;51(2):330-341. doi: 10.1007/s10578-019-00933-1. PMID 31650460.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/31650460/
 - Source checked on: 2026-09-27
@@ -16363,7 +16395,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Random-effects meta-analysis of 22 eligible studies (N=837) finding that 80 percent of children with selective mutism were diagnosed with an additional anxiety disorder, notably social phobia at 69 percent, with considerable unexplained heterogeneity, and concluding these disorders are not discrete separable categories and that the finding does not elucidate the relation between selective mutism and anxiety as an aetiological mechanism or symptomatic feature.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 451.2 — Gensthaler A, Maichrowitz V, Kaess M, et al. Selective Mutism: The Fraternal Twin of Childhood Social Phobia Psychopathology. 2016;49(2):95-107. doi: 10.1159/000444882. PMID 27089281.**
+**Row 452.2 — Gensthaler A, Maichrowitz V, Kaess M, et al. Selective Mutism: The Fraternal Twin of Childhood Social Phobia Psychopathology. 2016;49(2):95-107. doi: 10.1159/000444882. PMID 27089281.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/27089281/
 - Source checked on: 2026-09-27
@@ -16371,7 +16403,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Comparative behavioral study of 95 children and adolescents with selective mutism, 74 with social phobia, 46 with internalizing disorders, and 119 typically developing controls assessed by Child Behavior Checklist with diagnostic-interview comorbidity assessment, finding social phobia detected in 94 percent of children with selective mutism, more lifetime separation anxiety disorder (45 vs 26 percent) and oppositional defiant disorder (22 vs 5 percent) but LESS generalized anxiety disorder (6 vs 20 percent) and major depression (12 vs 26 percent) than in social phobia, and higher adolescent agoraphobia rates (27 vs 10 percent).
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 451.3 — Boneff-Peng K, Lasutschinkow PC, Colton ZA, et al. An Updated Characterization of Childhood Selective Mutism: Exploring Clinical Features, Treatment Utilization, and School Services Child Psychiatry Hum Dev. 2025 Jun;56(3):683-695. doi: 10.1007/s10578-023-01589-8. PMID 37650960.**
+**Row 452.3 — Boneff-Peng K, Lasutschinkow PC, Colton ZA, et al. An Updated Characterization of Childhood Selective Mutism: Exploring Clinical Features, Treatment Utilization, and School Services Child Psychiatry Hum Dev. 2025 Jun;56(3):683-695. doi: 10.1007/s10578-023-01589-8. PMID 37650960.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/37650960/
 - Source checked on: 2026-09-27
@@ -16395,7 +16427,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 - Is the citation metadata exact against the PubMed record?
 
-**Row 452.1 — Gensthaler A, Maichrowitz V, Kaess M, et al. Selective Mutism: The Fraternal Twin of Childhood Social Phobia Psychopathology. 2016;49(2):95-107. doi: 10.1159/000444882. PMID 27089281.**
+**Row 453.1 — Gensthaler A, Maichrowitz V, Kaess M, et al. Selective Mutism: The Fraternal Twin of Childhood Social Phobia Psychopathology. 2016;49(2):95-107. doi: 10.1159/000444882. PMID 27089281.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/27089281/
 - Source checked on: 2026-09-27
@@ -16403,7 +16435,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Comparative behavioral study finding that children with selective mutism were more frequently affected by lifetime separation anxiety disorder (45 percent) than those with social phobia (26 percent), while being less affected by generalized anxiety disorder and major depression, and that adolescents with selective mutism showed high rates of agoraphobia.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 452.2 — Fisher J, Wadkins MJ, Kurtz S. Family Accommodation in Selective Mutism: Prevalence, Relationship to Symptom Severity, and Issues in Measurement/Assessment Child Psychiatry Hum Dev. 2025 Jun 30. doi: 10.1007/s10578-025-01876-6. PMID 40586947.**
+**Row 453.2 — Fisher J, Wadkins MJ, Kurtz S. Family Accommodation in Selective Mutism: Prevalence, Relationship to Symptom Severity, and Issues in Measurement/Assessment Child Psychiatry Hum Dev. 2025 Jun 30. doi: 10.1007/s10578-025-01876-6. PMID 40586947.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/40586947/
 - Source checked on: 2026-09-27
@@ -16411,7 +16443,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Family-accommodation study of 38 children with selective mutism, 28 with selective mutism plus comorbid anxiety disorders, 34 with other anxiety disorders, and 30 with non-anxiety disorders, reporting that accommodation in the selective-mutism sample was prevalent though at lower frequency and lower parental distress than expected, and finding NO CORRELATION between parental accommodation and selective-mutism symptom severity.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 452.3 — Boneff-Peng K, Lasutschinkow PC, Colton ZA, et al. An Updated Characterization of Childhood Selective Mutism: Exploring Clinical Features, Treatment Utilization, and School Services Child Psychiatry Hum Dev. 2025 Jun;56(3):683-695. doi: 10.1007/s10578-023-01589-8. PMID 37650960.**
+**Row 453.3 — Boneff-Peng K, Lasutschinkow PC, Colton ZA, et al. An Updated Characterization of Childhood Selective Mutism: Exploring Clinical Features, Treatment Utilization, and School Services Child Psychiatry Hum Dev. 2025 Jun;56(3):683-695. doi: 10.1007/s10578-023-01589-8. PMID 37650960.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/37650960/
 - Source checked on: 2026-09-27
@@ -16435,7 +16467,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 - Is the citation metadata exact against the PubMed record?
 
-**Row 453.1 — Taxiarchi VP, Anderson JK, Abel KM, et al. Emotional disorders among children and young people in England from 2004 to 2017: analysis of a probability sample survey series Br J Psychiatry. 2026 Jul;229(1):36-42. doi: 10.1192/bjp.2025.124. PMID 40546093.**
+**Row 454.1 — Taxiarchi VP, Anderson JK, Abel KM, et al. Emotional disorders among children and young people in England from 2004 to 2017: analysis of a probability sample survey series Br J Psychiatry. 2026 Jul;229(1):36-42. doi: 10.1192/bjp.2025.124. PMID 40546093.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/40546093/
 - Source checked on: 2026-09-27
@@ -16443,7 +16475,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Repeated cross-sectional analysis of nationally representative probability samples of 13,561 children and young people aged 5-16 in England across the 2004 and 2017 Mental Health of Children and Young People survey waves, classified by ICD-10 using the Development and Well-Being Assessment, finding emotional-disorder prevalence rose from 3.9 to 6.0 percent (relative ratio 1.63, 95% CI 1.38-1.91) largely driven by anxiety disorders rising from 3.5 to 5.4 percent (relative ratio 1.63, 95% CI 1.37-1.93), with the largest relative changes for panic disorder, separation anxiety, social phobia and PTSD, and with comorbid psychiatric conditions present in over a third of children with emotional disorders, most commonly conduct disorder.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 453.2 — Yetkin ZD, Tosun Ö, Bıkmazer A, et al. Separation Anxiety Disorder in Youth With Mitral Valve Prolapse: Associations With Parental Attitudes and Anxiety Sensitivity J Dev Behav Pediatr. 2026 Jul-Aug 01;47(4):e419-e426. doi: 10.1097/DBP.0000000000001492. PMID 42228469.**
+**Row 454.2 — Yetkin ZD, Tosun Ö, Bıkmazer A, et al. Separation Anxiety Disorder in Youth With Mitral Valve Prolapse: Associations With Parental Attitudes and Anxiety Sensitivity J Dev Behav Pediatr. 2026 Jul-Aug 01;47(4):e419-e426. doi: 10.1097/DBP.0000000000001492. PMID 42228469.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/42228469/
 - Source checked on: 2026-09-27
@@ -16451,7 +16483,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Study of separation anxiety disorder in youth with mitral valve prolapse, documenting associations with parental attitudes and anxiety sensitivity, establishing the condition as a separately diagnosed and clinically studied entity.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 453.3 — Feriante J, Torrico TJ, McArthur J, et al. Separation Anxiety Disorder 2026 Jan. PMID 32809628.**
+**Row 454.3 — Feriante J, Torrico TJ, McArthur J, et al. Separation Anxiety Disorder 2026 Jan. PMID 32809628.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/32809628/
 - Source checked on: 2026-09-27
@@ -16475,7 +16507,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 - Is the citation metadata exact against the PubMed record?
 
-**Row 454.1 — Fares MY, Salhab HA, Khachfe HH, et al. Sever's Disease of the Pediatric Population: Clinical, Pathologic, and Therapeutic Considerations Clin Med Res. 2021 Sep;19(3):132-137. doi: 10.3121/cmr.2021.1639. PMID 34531270.**
+**Row 455.1 — Fares MY, Salhab HA, Khachfe HH, et al. Sever's Disease of the Pediatric Population: Clinical, Pathologic, and Therapeutic Considerations Clin Med Res. 2021 Sep;19(3):132-137. doi: 10.3121/cmr.2021.1639. PMID 34531270.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/34531270/
 - Source checked on: 2026-09-27
@@ -16483,7 +16515,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Review of the clinical, pathologic, and therapeutic considerations of Sever's disease of the pediatric population, setting out the traction-apophysitis mechanism at the calcaneal apophysis in physically active children.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 454.2 — McSweeney S, Reed LF, Wearing SC. Vertical ground reaction forces during gait in children with and without calcaneal apophysitis Gait Posture. 2019 Jun;71:126-130. doi: 10.1016/j.gaitpost.2019.04.027. PMID 31054494.**
+**Row 455.2 — McSweeney S, Reed LF, Wearing SC. Vertical ground reaction forces during gait in children with and without calcaneal apophysitis Gait Posture. 2019 Jun;71:126-130. doi: 10.1016/j.gaitpost.2019.04.027. PMID 31054494.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/31054494/
 - Source checked on: 2026-09-27
@@ -16491,7 +16523,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Gait study comparing vertical ground reaction forces during gait in children with and without calcaneal apophysitis, documenting altered lower-limb loading in the affected group.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 454.3 — Rodríguez-Sanz D, Becerro-de-Bengoa-Vallejo R, López-López D, et al. Slow velocity of the center of pressure and high heel pressures may increase the risk of Sever's disease: a case-control study BMC Pediatr. 2018 Nov 19;18(1):357. doi: 10.1186/s12887-018-1318-1. PMID 30453930.**
+**Row 455.3 — Rodríguez-Sanz D, Becerro-de-Bengoa-Vallejo R, López-López D, et al. Slow velocity of the center of pressure and high heel pressures may increase the risk of Sever's disease: a case-control study BMC Pediatr. 2018 Nov 19;18(1):357. doi: 10.1186/s12887-018-1318-1. PMID 30453930.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/30453930/
 - Source checked on: 2026-09-27
@@ -16515,7 +16547,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 - Is the citation metadata exact against the PubMed record?
 
-**Row 455.1 — Giladi M, Solomon A, Viskin D, et al. Risk stratification in short QT syndrome: Findings from a pooled analysis Heart Rhythm. 2026 Sep;23(9):e2162-e2166. doi: 10.1016/j.hrthm.2026.03.001. PMID 41794082.**
+**Row 456.1 — Giladi M, Solomon A, Viskin D, et al. Risk stratification in short QT syndrome: Findings from a pooled analysis Heart Rhythm. 2026 Sep;23(9):e2162-e2166. doi: 10.1016/j.hrthm.2026.03.001. PMID 41794082.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/41794082/
 - Source checked on: 2026-09-27
@@ -16523,7 +16555,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Pooled analysis of 162 patients with short QT syndrome and known symptomatic status, finding 57 (35.2 percent) had arrhythmic symptoms comprising sudden death, cardiac arrest, or malignant syncope, a significant inverse association between QTc and arrhythmic symptoms (median QTc 315.0 ms symptomatic vs 330.0 ms asymptomatic, P=0.0023), ROC area under the curve 0.64 (P=0.0024), most patients with QTc of 320 ms or less having malignant arrhythmic symptoms while the reverse held at 320 ms or more, and male patients overrepresented overall and among those with malignant symptoms.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 455.2 — Kim DY, Uhm JS, Kim M, et al. Long-term prognosis of short QT interval in Korean patients: a multicenter retrospective cohort study BMC Cardiovasc Disord. 2021 Jan 6;21(1):17. doi: 10.1186/s12872-020-01824-3. PMID 33407155.**
+**Row 456.2 — Kim DY, Uhm JS, Kim M, et al. Long-term prognosis of short QT interval in Korean patients: a multicenter retrospective cohort study BMC Cardiovasc Disord. 2021 Jan 6;21(1):17. doi: 10.1186/s12872-020-01824-3. PMID 33407155.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/33407155/
 - Source checked on: 2026-09-27
@@ -16531,7 +16563,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Multicenter retrospective cohort of 34 patients with a short QT interval against age- and sex-matched controls at a 1:4 ratio, followed a median 4.8 years, finding atrial fibrillation in 11.8 percent against 2.2 percent (P=0.030) and ventricular arrhythmia or sudden cardiac arrest in 8.7 percent against 0 percent (P=0.007), with early repolarization, tall T wave, and U wave significantly more frequent, QT dispersion significantly wider (44.0 vs 20.0 ms, P<0.001), and heart rate significantly slower (52.0 vs 70.0 per min, P<0.001) in the affected group.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 455.3 — Boulmpou A, Giannopoulos A, Papadopoulos C, et al. The Uncommon Phenomenon of Short QT Syndrome: A Scoping Review of the Literature J Pers Med. 2025 Mar 8;15(3). doi: 10.3390/jpm15030105. PMID 40137421.**
+**Row 456.3 — Boulmpou A, Giannopoulos A, Papadopoulos C, et al. The Uncommon Phenomenon of Short QT Syndrome: A Scoping Review of the Literature J Pers Med. 2025 Mar 8;15(3). doi: 10.3390/jpm15030105. PMID 40137421.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/40137421/
 - Source checked on: 2026-09-27
@@ -16555,7 +16587,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 - Is the citation metadata exact against the PubMed record?
 
-**Row 456.1 — Giladi M, Solomon A, Viskin D, et al. Risk stratification in short QT syndrome: Findings from a pooled analysis Heart Rhythm. 2026 Sep;23(9):e2162-e2166. doi: 10.1016/j.hrthm.2026.03.001. PMID 41794082.**
+**Row 457.1 — Giladi M, Solomon A, Viskin D, et al. Risk stratification in short QT syndrome: Findings from a pooled analysis Heart Rhythm. 2026 Sep;23(9):e2162-e2166. doi: 10.1016/j.hrthm.2026.03.001. PMID 41794082.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/41794082/
 - Source checked on: 2026-09-27
@@ -16563,7 +16595,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Pooled analysis of 162 patients with short QT syndrome finding 57 (35.2 percent) with arrhythmic symptoms defined as sudden death, cardiac arrest, or malignant syncope, a significant inverse association between QTc and arrhythmic symptoms (median 315.0 ms vs 330.0 ms, P=.0023), AUC 0.64 (P=.0024), and that most patients with QTc of 320 ms or less had malignant arrhythmic symptoms.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 456.2 — Kim DY, Uhm JS, Kim M, et al. Long-term prognosis of short QT interval in Korean patients: a multicenter retrospective cohort study BMC Cardiovasc Disord. 2021 Jan 6;21(1):17. doi: 10.1186/s12872-020-01824-3. PMID 33407155.**
+**Row 457.2 — Kim DY, Uhm JS, Kim M, et al. Long-term prognosis of short QT interval in Korean patients: a multicenter retrospective cohort study BMC Cardiovasc Disord. 2021 Jan 6;21(1):17. doi: 10.1186/s12872-020-01824-3. PMID 33407155.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/33407155/
 - Source checked on: 2026-09-27
@@ -16571,7 +16603,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Matched-cohort study recording ventricular arrhythmia or sudden cardiac arrest in 8.7 percent of patients with a short QT interval against 0 percent of matched controls (P=0.007), with early repolarization, tall T wave, and U wave significantly more frequent and heart rate significantly slower in the affected group.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 456.3 — El-Battrawy I, Besler J, Liebe V, et al. Long-Term Follow-Up of Patients With Short QT Syndrome: Clinical Profile and Outcome J Am Heart Assoc. 2018 Dec 4;7(23):e010073. doi: 10.1161/JAHA.118.010073. PMID 30571592.**
+**Row 457.3 — El-Battrawy I, Besler J, Liebe V, et al. Long-Term Follow-Up of Patients With Short QT Syndrome: Clinical Profile and Outcome J Am Heart Assoc. 2018 Dec 4;7(23):e010073. doi: 10.1161/JAHA.118.010073. PMID 30571592.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/30571592/
 - Source checked on: 2026-09-27
@@ -16595,7 +16627,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 - Is the citation metadata exact against the PubMed record?
 
-**Row 457.1 — Boulmpou A, Giannopoulos A, Papadopoulos C, et al. The Uncommon Phenomenon of Short QT Syndrome: A Scoping Review of the Literature J Pers Med. 2025 Mar 8;15(3). doi: 10.3390/jpm15030105. PMID 40137421.**
+**Row 458.1 — Boulmpou A, Giannopoulos A, Papadopoulos C, et al. The Uncommon Phenomenon of Short QT Syndrome: A Scoping Review of the Literature J Pers Med. 2025 Mar 8;15(3). doi: 10.3390/jpm15030105. PMID 40137421.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/40137421/
 - Source checked on: 2026-09-27
@@ -16603,7 +16635,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Scoping review of short QT syndrome reporting that the condition is present across a wide age range from asymptomatic individuals to those experiencing syncope, palpitations, or sudden cardiac arrest, that common genetic mutations include KCNQ1, KCNH2, and KCNJ2, and that management varies with some patients receiving implantable cardioverter defibrillators for secondary prevention and others treated pharmacologically primarily with hydroquinidine.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 457.2 — El-Battrawy I, Besler J, Liebe V, et al. Long-Term Follow-Up of Patients With Short QT Syndrome: Clinical Profile and Outcome J Am Heart Assoc. 2018 Dec 4;7(23):e010073. doi: 10.1161/JAHA.118.010073. PMID 30571592.**
+**Row 458.2 — El-Battrawy I, Besler J, Liebe V, et al. Long-Term Follow-Up of Patients With Short QT Syndrome: Clinical Profile and Outcome J Am Heart Assoc. 2018 Dec 4;7(23):e010073. doi: 10.1161/JAHA.118.010073. PMID 30571592.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/30571592/
 - Source checked on: 2026-09-27
@@ -16611,7 +16643,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Long-term follow-up study of patients with short QT syndrome describing the clinical profile and outcome of the condition, supplying the located anchor for how the syndrome presents and evolves clinically over time.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 457.3 — Aytekin Güvenir F, Özgür S. Hidden Cardiac Channelopathies in Children Presenting with Syncope and Seizure-like Events Children (Basel). 2026 May 12;13(5). doi: 10.3390/children13050669. PMID 42194195.**
+**Row 458.3 — Aytekin Güvenir F, Özgür S. Hidden Cardiac Channelopathies in Children Presenting with Syncope and Seizure-like Events Children (Basel). 2026 May 12;13(5). doi: 10.3390/children13050669. PMID 42194195.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/42194195/
 - Source checked on: 2026-09-27
@@ -16635,7 +16667,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 - Is the citation metadata exact against the PubMed record?
 
-**Row 458.1 — Balakhanlou E, Webster J, Borgia M, et al. Frequency and Severity of Phantom Limb Pain in Veterans with Major Upper Limb Amputation: Results of a National Survey PM R. 2021 Aug;13(8):827-835. doi: 10.1002/pmrj.12485. PMID 32896094.**
+**Row 459.1 — Balakhanlou E, Webster J, Borgia M, et al. Frequency and Severity of Phantom Limb Pain in Veterans with Major Upper Limb Amputation: Results of a National Survey PM R. 2021 Aug;13(8):827-835. doi: 10.1002/pmrj.12485. PMID 32896094.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/32896094/
 - Source checked on: 2026-09-27
@@ -16643,7 +16675,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: National survey of 776 US military veterans with major upper limb amputation finding 73 percent reported phantom limb pain with mean intensity 4.2 (SD 3.4), 42 percent reporting it daily to always, amputation at the shoulder associated with any phantom limb pain at OR 3.78 (1.93-7.39), transhumeral at OR 1.76 (1.10-2.81), and cancer aetiology at OR 5.33 (1.15-24.81), and shoulder-level amputation associated with a 1.5-point higher average pain intensity (P<0.001) versus transradial.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 458.3 — List EB, Klieverik V, Martin E, et al. Prevalence of residual limb pain and neuromas after upper extremity amputation: a systematic review and meta-analysis J Hand Surg Eur Vol. 2025 Dec;50(11):1440-1447. doi: 10.1177/17531934251345368. PMID 40439077.**
+**Row 459.3 — List EB, Klieverik V, Martin E, et al. Prevalence of residual limb pain and neuromas after upper extremity amputation: a systematic review and meta-analysis J Hand Surg Eur Vol. 2025 Dec;50(11):1440-1447. doi: 10.1177/17531934251345368. PMID 40439077.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/40439077/
 - Source checked on: 2026-09-27
@@ -16667,7 +16699,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 - Is the citation metadata exact against the PubMed record?
 
-**Row 459.1 — Balakhanlou E, Webster J, Borgia M, et al. Frequency and Severity of Phantom Limb Pain in Veterans with Major Upper Limb Amputation: Results of a National Survey PM R. 2021 Aug;13(8):827-835. doi: 10.1002/pmrj.12485. PMID 32896094.**
+**Row 460.1 — Balakhanlou E, Webster J, Borgia M, et al. Frequency and Severity of Phantom Limb Pain in Veterans with Major Upper Limb Amputation: Results of a National Survey PM R. 2021 Aug;13(8):827-835. doi: 10.1002/pmrj.12485. PMID 32896094.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/32896094/
 - Source checked on: 2026-09-27
@@ -16691,7 +16723,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 - Is the citation metadata exact against the PubMed record?
 
-**Row 460.1 — Liu Y, Zheng Y, Tse G, et al. Association between sick sinus syndrome and atrial fibrillation: A systematic review and meta-analysis. Int J Cardiol. 2023 Jun 15;381:20-36. doi: 10.1016/j.ijcard.2023.03.066. PMID 37023861.**
+**Row 461.1 — Liu Y, Zheng Y, Tse G, et al. Association between sick sinus syndrome and atrial fibrillation: A systematic review and meta-analysis. Int J Cardiol. 2023 Jun 15;381:20-36. doi: 10.1016/j.ijcard.2023.03.066. PMID 37023861.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/37023861/
 - Source checked on: 2026-09-27
@@ -16699,7 +16731,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Systematic review and meta-analysis of 35 articles with 37,550 patients reporting that patients with sick sinus syndrome were associated with new-onset atrial fibrillation compared with those without sick sinus syndrome, describing the relationship between the two conditions as bidirectional, and finding that VVI/VVIR pacing carried a higher risk of new-onset atrial fibrillation than DDD/DDDR while AAI/AAIR versus DDD/DDDR and DDD/DDDR versus minimal ventricular pacing showed no significant difference for atrial fibrillation recurrence.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 460.2 — Kronborg MB, Frausing MHJP, Malczynski J, et al. Atrial pacing minimization in sinus node dysfunction and risk of incident atrial fibrillation: a randomized trial. Eur Heart J. 2023 Oct 21;44(40):4246-4255. doi: 10.1093/eurheartj/ehad564. PMID 37638973.**
+**Row 461.2 — Kronborg MB, Frausing MHJP, Malczynski J, et al. Atrial pacing minimization in sinus node dysfunction and risk of incident atrial fibrillation: a randomized trial. Eur Heart J. 2023 Oct 21;44(40):4246-4255. doi: 10.1093/eurheartj/ehad564. PMID 37638973.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/37638973/
 - Source checked on: 2026-09-27
@@ -16707,7 +16739,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Nationwide randomised controlled trial of 540 patients with sinus node dysfunction and an indication for first pacemaker implantation, in which the primary endpoint of a first episode of atrial fibrillation longer than 6 minutes occurred in 124 patients (46%) in each treatment group with hazard ratio 0.97 (95% CI 0.76-1.25, P = .83), with no between-group differences in atrial fibrillation exceeding 6 or 24 hours, persistent atrial fibrillation, or cardioversions, and with syncope or presyncope incidence higher in the DDD-40 group (HR 1.71, 95% CI 1.13-2.59, P = .01). This is registered as an EXPLICIT COUNTERWEIGHT: the trial is negative for atrial pacing minimisation reducing atrial fibrillation.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 460.3 — Choi J, Kong D, Katic L, et al. Atrial fibrillation with slow-ventricular response (AF-SVR): A literature review. J Med Access. 2025 Jan-Dec;9:27550834251342890. doi: 10.1177/27550834251342890. PMID 40607080.**
+**Row 461.3 — Choi J, Kong D, Katic L, et al. Atrial fibrillation with slow-ventricular response (AF-SVR): A literature review. J Med Access. 2025 Jan-Dec;9:27550834251342890. doi: 10.1177/27550834251342890. PMID 40607080.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/40607080/
 - Source checked on: 2026-09-27
@@ -16731,7 +16763,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 - Is the citation metadata exact against the PubMed record?
 
-**Row 461.1 — Dong H, Chen H, Hidru TH, et al. Sinus node dysfunction and stroke risk: a systematic review and meta-analysis. BMJ Open. 2023 Nov 17;13(11):e076499. doi: 10.1136/bmjopen-2023-076499. PMID 37977871.**
+**Row 462.1 — Dong H, Chen H, Hidru TH, et al. Sinus node dysfunction and stroke risk: a systematic review and meta-analysis. BMJ Open. 2023 Nov 17;13(11):e076499. doi: 10.1136/bmjopen-2023-076499. PMID 37977871.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/37977871/
 - Source checked on: 2026-09-27
@@ -16739,7 +16771,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Systematic review and meta-analysis of 6 papers with 106,163 patients finding an average yearly stroke incidence of 1.542% (95% CI 1.334 to 1.749) in sinus node dysfunction, with similar incidence between isolated sinus node dysfunction (1.587%, 95% CI 1.510 to 1.664) and non-isolated sinus node dysfunction with atrial fibrillation (1.660%, 95% CI 0.705 to 2.615), and reporting atrial fibrillation (HR 1.53, 95% CI 1.01 to 2.33), prior stroke or transient ischaemia attack or other thrombotic events (HR 2.54, 95% CI 1.14 to 5.69), hypertension (HR 1.51, 95% CI 1.11 to 2.07) and heart failure (HR 1.41, 95% CI 1.01 to 1.97) as factors associated with stroke in the sinus node dysfunction population.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 461.2 — Virk SA, Ho WWH, Takeuchi F, et al. Risk of ischemic stroke in sinus node dysfunction with and without atrial fibrillation: Evidence for the presence of a left atrial myopathy in patients with isolated sinus node dysfunction-an analysis of the UK Biobank. Heart Rhythm. 2025 Sep;22(9):e668-e675. doi: 10.1016/j.hrthm.2025.04.055. PMID 40315941.**
+**Row 462.2 — Virk SA, Ho WWH, Takeuchi F, et al. Risk of ischemic stroke in sinus node dysfunction with and without atrial fibrillation: Evidence for the presence of a left atrial myopathy in patients with isolated sinus node dysfunction-an analysis of the UK Biobank. Heart Rhythm. 2025 Sep;22(9):e668-e675. doi: 10.1016/j.hrthm.2025.04.055. PMID 40315941.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/40315941/
 - Source checked on: 2026-09-27
@@ -16747,7 +16779,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: UK Biobank prospective population-based cohort analysis of 451,493 participants aged 40-69 followed for a median 13.2 years, in which 593 had isolated sinus node dysfunction, 955 had combined sinus node dysfunction and atrial fibrillation, 37,065 had isolated atrial fibrillation and 412,880 were controls, finding yearly ischaemic stroke incidence of 0.37%, 0.60%, 0.59% and 0.10% respectively, with isolated sinus node dysfunction conferring a significantly increased risk compared with controls (subdistribution hazard ratio 2.28, 95% CI 1.57-3.31, P < .001) and combined sinus node dysfunction and atrial fibrillation carrying a risk similar to isolated atrial fibrillation (subdistribution hazard ratio 1.07, 95% CI 0.84-1.37, P = .58), interpreted as evidence for the presence of a left atrial myopathy in patients with isolated sinus node dysfunction.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 461.3 — Chang SN, Huang PS, Chen JJ, et al. Sick sinus syndrome elevates stroke risk in patients with atrial fibrillation with low CHA2DS2-VASC score. Heart Rhythm. 2026 Apr;23(4):e659-e665. doi: 10.1016/j.hrthm.2025.11.044. PMID 41317944.**
+**Row 462.3 — Chang SN, Huang PS, Chen JJ, et al. Sick sinus syndrome elevates stroke risk in patients with atrial fibrillation with low CHA2DS2-VASC score. Heart Rhythm. 2026 Apr;23(4):e659-e665. doi: 10.1016/j.hrthm.2025.11.044. PMID 41317944.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/41317944/
 - Source checked on: 2026-09-27
@@ -16771,7 +16803,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 - Is the citation metadata exact against the PubMed record?
 
-**Row 462.1 — Brenner R, Ammann P, Yoon SI, et al. Reduction of falls and fractures after permanent pacemaker implantation in elderly patients with sinus node dysfunction. Europace. 2017 Jul 1;19(7):1220-1226. doi: 10.1093/europace/euw156. PMID 27702858.**
+**Row 463.1 — Brenner R, Ammann P, Yoon SI, et al. Reduction of falls and fractures after permanent pacemaker implantation in elderly patients with sinus node dysfunction. Europace. 2017 Jul 1;19(7):1220-1226. doi: 10.1093/europace/euw156. PMID 27702858.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/27702858/
 - Source checked on: 2026-09-27
@@ -16779,7 +16811,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Prospective study of 87 elderly patients (mean age 75.4 years, 51% women) with sinus node dysfunction and an indication for cardiac pacing, examined by standardized interview for fall history over 12 months before and after permanent pacemaker implantation, finding the proportion of patients experiencing at least one fall reduced by 71% (from 53 to 15%, P < 0.001), falls with injury reduced (28 versus 10%, P = 0.005), falls requiring medical attention reduced (31 versus 8%, P < 0.001), falls leading to fracture reduced (8 versus 0%, P = 0.013), and fewer patients having syncope (4 versus 45%, P < 0.001) and dizziness (12 versus 45%, P < 0.001) after implantation, while stating that although permanent pacemaker implantation is associated with a significantly reduced risk of these adverse events, no causal relationship could be established due to the study design.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 462.2 — Gargaro A, Biancalana G, Botto GL, et al. The clinical role of closed loop stimulation pacemakers in the treatment of patients with sinus node dysfunction: a review. Future Cardiol. 2025 Jun;21(8):567-578. doi: 10.1080/14796678.2025.2507464. PMID 40388576.**
+**Row 463.2 — Gargaro A, Biancalana G, Botto GL, et al. The clinical role of closed loop stimulation pacemakers in the treatment of patients with sinus node dysfunction: a review. Future Cardiol. 2025 Jun;21(8):567-578. doi: 10.1080/14796678.2025.2507464. PMID 40388576.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/40388576/
 - Source checked on: 2026-09-27
@@ -16787,7 +16819,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Review of the clinical role of closed-loop stimulation pacemakers in sinus node dysfunction, stating that sinus node dysfunction disrupts the heart's natural rhythm, CAN CAUSE SYMPTOMS LIKE FATIGUE, DIZZINESS, OR FAINTING and is often treated with pacemakers, describing the device's use for chronotropic incompetence in which patients have difficulty increasing heart rate during activity, and reporting that closed-loop stimulation has shown promise in preventing fainting episodes caused by vasovagal syncope and in preventing atrial fibrillation detected by implanted devices. DISCLOSED CONFLICT OF INTEREST: two authors are employees of the device manufacturer whose product is under discussion, and one further author reports speaker fees from three other device manufacturers.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 462.3 — Lotze U, Rothhagen B, Neubauer K, et al. Dizziness and near syncope due to sinus bradycardia and sinoatrial block associated with obesity and daytime tiredness. A clear indication for pacemaker implantation?. Herz. 2008 Sep;33(6):455-9. doi: 10.1007/s00059-008-3096-2. PMID 19156381.**
+**Row 463.3 — Lotze U, Rothhagen B, Neubauer K, et al. Dizziness and near syncope due to sinus bradycardia and sinoatrial block associated with obesity and daytime tiredness. A clear indication for pacemaker implantation?. Herz. 2008 Sep;33(6):455-9. doi: 10.1007/s00059-008-3096-2. PMID 19156381.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/19156381/
 - Source checked on: 2026-09-27
@@ -16811,7 +16843,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 - Is the citation metadata exact against the PubMed record?
 
-**Row 463.1 — Kim MJ, Milliren A, Gerold DJ Jr. Salivary Gland Disorders: Rapid Evidence Review. Am Fam Physician. 2024 Jun;109(6):550-559. PMID 38905553.**
+**Row 464.1 — Kim MJ, Milliren A, Gerold DJ Jr. Salivary Gland Disorders: Rapid Evidence Review. Am Fam Physician. 2024 Jun;109(6):550-559. PMID 38905553.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/38905553/
 - Source checked on: 2026-09-27
@@ -16819,7 +16851,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Rapid evidence review of salivary gland disorders stating that the submandibular glands produce mucinous secretions high in calcium and phosphate salts through a long submandibular duct that flows against gravity, that the submandibular glands are responsible for more than 80% of salivary stones, that sialadenitis can be acute or chronic and caused by bacterial, viral and obstructive etiologies with Staphylococcus aureus the most common bacterium, that sialolithiasis causes up to 50% of salivary gland disorders and IS ASSOCIATED WITH SALIVARY STASIS AND INFLAMMATION caused by dehydration, malnutrition, medications or chronic illness, and that obstruction is also caused by trauma, stenosis and mucoceles. Already a registered source entity, reused.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 463.2 — Delli K, Spijkervet FK, Vissink A. Salivary gland diseases: infections, sialolithiasis and mucoceles. Monogr Oral Sci. 2014;24:135-48. doi: 10.1159/000358794. PMID 24862601.**
+**Row 464.2 — Delli K, Spijkervet FK, Vissink A. Salivary gland diseases: infections, sialolithiasis and mucoceles. Monogr Oral Sci. 2014;24:135-48. doi: 10.1159/000358794. PMID 24862601.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/24862601/
 - Source checked on: 2026-09-27
@@ -16827,7 +16859,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Monograph chapter reviewing the three most frequently diagnosed salivary gland diseases, stating that salivary gland infections can be acute or chronic, that they can result from obstruction of the salivary duct, an autoimmune disease or cancer therapy, that sialolithiasis is characterized by the development of calcified structures in the salivary glands especially in the submandibular gland, that SIALOLITHS ARE GENERALLY ATTRIBUTED TO RETENTION OF SALIVA, and that they are usually accompanied by swelling and pain when a salivary stimulus is applied.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 463.3 — Sakr AA, Magdy EA, Mohamed SS, et al. Evaluation of Salivary Function Recovery Following Gland-Sparing Sialolithotomy: A Prospective Cohort Study. J Oral Maxillofac Surg. 2026 Mar;84(3):389-400. doi: 10.1016/j.joms.2025.10.010. PMID 41213527.**
+**Row 464.3 — Sakr AA, Magdy EA, Mohamed SS, et al. Evaluation of Salivary Function Recovery Following Gland-Sparing Sialolithotomy: A Prospective Cohort Study. J Oral Maxillofac Surg. 2026 Mar;84(3):389-400. doi: 10.1016/j.joms.2025.10.010. PMID 41213527.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/41213527/
 - Source checked on: 2026-09-27
@@ -16851,7 +16883,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 - Is the citation metadata exact against the PubMed record?
 
-**Row 464.1 — Gulati A, Kidane J, Chang JL. Patient Reported Outcome Measures for Salivary Function: A Systematic Review. Laryngoscope. 2023 Aug;133(8):1796-1805. doi: 10.1002/lary.30550. PMID 36606658.**
+**Row 465.1 — Gulati A, Kidane J, Chang JL. Patient Reported Outcome Measures for Salivary Function: A Systematic Review. Laryngoscope. 2023 Aug;133(8):1796-1805. doi: 10.1002/lary.30550. PMID 36606658.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/36606658/
 - Source checked on: 2026-09-27
@@ -16859,7 +16891,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Systematic review of patient-reported outcome measures for salivary function, screening 2,059 abstracts and reviewing 133 full-text articles, identifying 16 validated instruments with more than one item: seven assessing xerostomia, four assessing sialadenitis, two assessing Sjogren's syndrome, two assessing Parkinson's-associated sialorrhea and one assessing oral systemic sclerosis, finding 11 instruments demonstrated very good internal consistency and 10 included test-retest data, rating the Xerostomia Inventory adequate in 6 of 7 COSMIN domains and the most rigorously developed, and concluding that the included tools showed variable ability to meet design and validation standards with notable limitations in content validity for all tools.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 464.2 — Sakr AA, Magdy EA, Mohamed SS, et al. Evaluation of Salivary Function Recovery Following Gland-Sparing Sialolithotomy: A Prospective Cohort Study. J Oral Maxillofac Surg. 2026 Mar;84(3):389-400. doi: 10.1016/j.joms.2025.10.010. PMID 41213527.**
+**Row 465.2 — Sakr AA, Magdy EA, Mohamed SS, et al. Evaluation of Salivary Function Recovery Following Gland-Sparing Sialolithotomy: A Prospective Cohort Study. J Oral Maxillofac Surg. 2026 Mar;84(3):389-400. doi: 10.1016/j.joms.2025.10.010. PMID 41213527.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/41213527/
 - Source checked on: 2026-09-27
@@ -16867,7 +16899,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Prospective cohort of 41 patients (56.1% male, mean age 37.88 +/- 12.79 years) with sialolithiasis obstructive sialadenitis, excluding patients with acute sialadenitis, prior gland excision or radiographic gland atrophy, showing mean whole-saliva sialometry improving from 2.21 +/- 1.02 g preoperatively to 3.42 +/- 1.23 g for the submandibular gland and from 1.87 +/- 1.48 g to 2.92 +/- 1.28 g for the parotid at 12 months after gland-sparing sialolithotomy (P < .001), with the Multidisciplinary Salivary Gland Society score improving from 65.92 +/- 28.63 to 3.84 +/- 9.59 for the submandibular and 72.42 +/- 38.27 to 7.11 +/- 12.13 for the parotid (P < .001).
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 464.3 — Melo GM, Neves MC, Rosano M, et al. Quality of life after sialendoscopy: prospective non-randomized study. BMC Surg. 2022 Jan 8;22(1):11. doi: 10.1186/s12893-021-01462-2. PMID 34998366.**
+**Row 465.3 — Melo GM, Neves MC, Rosano M, et al. Quality of life after sialendoscopy: prospective non-randomized study. BMC Surg. 2022 Jan 8;22(1):11. doi: 10.1186/s12893-021-01462-2. PMID 34998366.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/34998366/
 - Source checked on: 2026-09-27
@@ -16891,7 +16923,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 - Is the citation metadata exact against the PubMed record?
 
-**Row 465.1 — Yin H, Pranzatelli TJF, French BN, et al. Sclerosing Sialadenitis Is Associated With Salivary Gland Hypofunction and a Unique Gene Expression Profile in Sjögren's Syndrome. Front Immunol. 2021;12:699722. doi: 10.3389/fimmu.2021.699722. PMID 34400910.**
+**Row 466.1 — Yin H, Pranzatelli TJF, French BN, et al. Sclerosing Sialadenitis Is Associated With Salivary Gland Hypofunction and a Unique Gene Expression Profile in Sjögren's Syndrome. Front Immunol. 2021;12:699722. doi: 10.3389/fimmu.2021.699722. PMID 34400910.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/34400910/
 - Source checked on: 2026-09-27
@@ -16899,7 +16931,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Study quantifying relative interstitial fibrosis area in Masson's trichrome-stained labial salivary gland sections from 20 female Sjogren's syndrome patients drawn from the Sjogren's International Collaborative Clinical Alliance, finding that RIFA WAS SIGNIFICANTLY CORRELATED WITH UNSTIMULATED WHOLE SALIVA FLOW RATE, that sixteen genes were significantly and positively correlated with RIFA and were distinct from differentially expressed genes in lung epithelium from idiopathic pulmonary fibrosis patients, and concluding that loss of gland function may be associated with salivary gland fibrosis likely driven by a unique set of genes mainly expressed by fibroblasts.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 465.2 — Jazzar A, Manoharan A, Brown JE, et al. Predictive value of ultrasound scoring in relation to clinical and histological parameters in xerostomia patients. Oral Dis. 2019 Jan;25(1):150-157. doi: 10.1111/odi.12959. PMID 30120806.**
+**Row 466.2 — Jazzar A, Manoharan A, Brown JE, et al. Predictive value of ultrasound scoring in relation to clinical and histological parameters in xerostomia patients. Oral Dis. 2019 Jan;25(1):150-157. doi: 10.1111/odi.12959. PMID 30120806.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/30120806/
 - Source checked on: 2026-09-27
@@ -16907,7 +16939,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Study of 244 patients comprising 118 with Sjogren's syndrome, 30 with Sjogren's syndrome at higher risk of lymphoma, 26 with Sjogren's syndrome with lymphoma, and 70 non-Sjogren's sicca disease controls, measuring unstimulated whole salivary flow rate, parotid flow rate, a clinical oral dryness score and an ultrasound score, finding that ALL assessments showed a significant difference between the overall Sjogren's group and the disease control group attributed MAINLY TO THE LYMPHOMA SUBGROUPS (p < 0.0001 for all parameters), and reporting a significant correlation (Spearman r = 0.7, p < 0.0001) and 87.3% agreement between the ultrasound score and the histology focus scores of 119 patients.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 465.3 — Gulati A, Kidane J, Chang JL. Patient Reported Outcome Measures for Salivary Function: A Systematic Review. Laryngoscope. 2023 Aug;133(8):1796-1805. doi: 10.1002/lary.30550. PMID 36606658.**
+**Row 466.3 — Gulati A, Kidane J, Chang JL. Patient Reported Outcome Measures for Salivary Function: A Systematic Review. Laryngoscope. 2023 Aug;133(8):1796-1805. doi: 10.1002/lary.30550. PMID 36606658.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/36606658/
 - Source checked on: 2026-09-27
@@ -16931,7 +16963,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 - Is the citation metadata exact against the PubMed record?
 
-**Row 466.1 — Theander E, Henriksson G, Ljungberg O, et al. Lymphoma and other malignancies in primary Sjögren's syndrome: a cohort study on cancer incidence and lymphoma predictors. Ann Rheum Dis. 2006 Jun;65(6):796-803. PMID 16284097.**
+**Row 467.1 — Theander E, Henriksson G, Ljungberg O, et al. Lymphoma and other malignancies in primary Sjögren's syndrome: a cohort study on cancer incidence and lymphoma predictors. Ann Rheum Dis. 2006 Jun;65(6):796-803. PMID 16284097.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/16284097/
 - Source checked on: 2026-09-27
@@ -16939,7 +16971,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Linked register study using the Malmo Primary Sjogren's Syndrome Register, the Swedish Cancer Register and the Cause-of-Death Register, including 507 patients with a median follow-up of 8 years (range 1 month to 19 years), finding standardised incidence ratios of 1.42 (95% CI 0.98 to 2.00) for malignancies in total and 15.57 (95% CI 7.77 to 27.85) for non-Hodgkin's lymphomas in the 286 patients fulfilling the American-European Consensus Criteria, compared with 221 non-AECC sicca patients in whom the standardised incidence ratio for malignancy of any kind was 0.77 (95% CI 0.41 to 1.32) and NO lymphoproliferative neoplasms were detected, with Cox regression identifying purpura/skin vasculitis (HR 4.64, 95% CI 1.13-16.45), low C3 (HR 6.18, 95% CI 1.57-24.22), low C4 (HR 9.49, 95% CI 1.94-46.54), CD4+ T lymphocytopenia (HR 8.14, 95% CI 2.10-31.53) and CD4+/CD8+ ratio <=0.8 (HR 10.92, 95% CI 2.80-41.83) as significant predictors, and 7/12 (58%) of the non-Hodgkin's lymphomas being diffuse large B cell lymphomas.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 466.2 — Jazzar A, Manoharan A, Brown JE, et al. Predictive value of ultrasound scoring in relation to clinical and histological parameters in xerostomia patients. Oral Dis. 2019 Jan;25(1):150-157. doi: 10.1111/odi.12959. PMID 30120806.**
+**Row 467.2 — Jazzar A, Manoharan A, Brown JE, et al. Predictive value of ultrasound scoring in relation to clinical and histological parameters in xerostomia patients. Oral Dis. 2019 Jan;25(1):150-157. doi: 10.1111/odi.12959. PMID 30120806.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/30120806/
 - Source checked on: 2026-09-27
@@ -16947,7 +16979,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Study of 244 patients comprising 118 with Sjogren's syndrome, 30 with Sjogren's syndrome at higher risk of lymphoma, 26 with Sjogren's syndrome with lymphoma, and 70 non-Sjogren's sicca controls, in which all assessments of unstimulated whole salivary flow rate, parotid flow rate, clinical oral dryness score and ultrasound score showed a significant difference between the overall Sjogren's group and the disease control group ATTRIBUTED MAINLY TO THE LYMPHOMA SUBGROUPS (p < 0.0001 for all parameters), with a significant correlation (Spearman r = 0.7, p < 0.0001) and 87.3% agreement between the ultrasound score and the histology focus scores of 119 patients.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 466.3 — Agale SV, D'Costa GF, Hastak MS, et al. Primary non-Hodgkin's lymphoma of the salivary gland: a spectrum of lymphoepithelial sialadenitis, low-grade B-cell lymphoma of mucosa-associated lymphoid tissue with transformation to high-grade lymphoma. Indian J Pathol Microbiol. 2010 Apr-Jun;53(2):364-7. doi: 10.4103/0377-4929.64351. PMID 20551561.**
+**Row 467.3 — Agale SV, D'Costa GF, Hastak MS, et al. Primary non-Hodgkin's lymphoma of the salivary gland: a spectrum of lymphoepithelial sialadenitis, low-grade B-cell lymphoma of mucosa-associated lymphoid tissue with transformation to high-grade lymphoma. Indian J Pathol Microbiol. 2010 Apr-Jun;53(2):364-7. doi: 10.4103/0377-4929.64351. PMID 20551561.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/20551561/
 - Source checked on: 2026-09-27
@@ -16971,7 +17003,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 - Is the citation metadata exact against the PubMed record?
 
-**Row 467.1 — Handelberg F, Willems S, Shahabpour M, et al. SLAP lesions: a retrospective multicenter study. Arthroscopy. 1998 Nov-Dec;14(8):856-62. PMID 9848599.**
+**Row 468.1 — Handelberg F, Willems S, Shahabpour M, et al. SLAP lesions: a retrospective multicenter study. Arthroscopy. 1998 Nov-Dec;14(8):856-62. PMID 9848599.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/9848599/
 - Source checked on: 2026-09-27
@@ -16979,7 +17011,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Retrospective multicentre study classifying 23 superior labral lesions using Snyder's classification, with 7 requiring the additional Maffet classification and 2 lesions considered to be anatomic variations, finding 53% of lesions were of type II, comparable percentages of traction (22%) and compression (28%) injury mechanisms plus a high number (25%) of overhead sports activities, associated lesions in close accordance with Snyder's data but a RELATIVELY LOW INCIDENCE OF ROTATOR CUFF INJURIES (10%), concluding that only SLAP II, IV and V lesions must be considered unstable and in need of fixation, and that patients' complaints and clinical symptoms are vague and inconsistent with imaging performed in a minority of cases.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 467.2 — Steinmetz RG, Guth JJ, Matava MJ, et al. Return to play following nonsurgical management of superior labrum anterior-posterior tears: a systematic review. J Shoulder Elbow Surg. 2022 Jun;31(6):1323-1333. doi: 10.1016/j.jse.2021.12.022. PMID 35063641.**
+**Row 468.2 — Steinmetz RG, Guth JJ, Matava MJ, et al. Return to play following nonsurgical management of superior labrum anterior-posterior tears: a systematic review. J Shoulder Elbow Surg. 2022 Jun;31(6):1323-1333. doi: 10.1016/j.jse.2021.12.022. PMID 35063641.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/35063641/
 - Source checked on: 2026-09-27
@@ -16987,7 +17019,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Systematic review of non-surgical management of superior labral anteroposterior tears in athletes, including 244 total athletes of whom 162 were elite or higher-level with mean ages ranging from 20.3 to 38.0 years, finding type II tears most common and baseball, softball and weightlifting the most common sports, an overall return-to-play rate of 53.7% in all athletes and 52.5% in elite athletes rising to 78% and 76.6% respectively in athletes able to complete rehabilitation, a return-to-prior-performance rate of 42.6% rising to 72%, significant improvement in American Shoulder and Elbow Surgeons score and visual analog scale, and identifying factors associated with failure of non-surgical management as older age, participation in overhead sports especially baseball pitchers, traumatic injury, positive compression rotation test, CONCOMITANT ROTATOR CUFF INJURY, longer baseball career, longer symptomatic period and the presence of a Bennett spur.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 467.3 — Frantz TL, Shacklett AG, Martin AS, et al. Biceps Tenodesis for Superior Labrum Anterior-Posterior Tear in the Overhead Athlete: A Systematic Review. Am J Sports Med. 2021 Feb;49(2):522-528. doi: 10.1177/0363546520921177. PMID 32579853.**
+**Row 468.3 — Frantz TL, Shacklett AG, Martin AS, et al. Biceps Tenodesis for Superior Labrum Anterior-Posterior Tear in the Overhead Athlete: A Systematic Review. Am J Sports Med. 2021 Feb;49(2):522-528. doi: 10.1177/0363546520921177. PMID 32579853.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/32579853/
 - Source checked on: 2026-09-27
@@ -17011,7 +17043,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 - Is the citation metadata exact against the PubMed record?
 
-**Row 468.1 — Steinmetz RG, Guth JJ, Matava MJ, et al. Return to play following nonsurgical management of superior labrum anterior-posterior tears: a systematic review. J Shoulder Elbow Surg. 2022 Jun;31(6):1323-1333. doi: 10.1016/j.jse.2021.12.022. PMID 35063641.**
+**Row 469.1 — Steinmetz RG, Guth JJ, Matava MJ, et al. Return to play following nonsurgical management of superior labrum anterior-posterior tears: a systematic review. J Shoulder Elbow Surg. 2022 Jun;31(6):1323-1333. doi: 10.1016/j.jse.2021.12.022. PMID 35063641.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/35063641/
 - Source checked on: 2026-09-27
@@ -17019,7 +17051,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Systematic review of non-surgical management of superior labral anteroposterior tears in 244 athletes identifying the factors associated with failure of non-surgical management as older age, participation in overhead sports especially baseball pitchers, traumatic injury, positive compression rotation test, CONCOMITANT ROTATOR CUFF INJURY, longer baseball career, longer symptomatic period and the presence of a Bennett spur, and reporting that patients who discontinued rehabilitation in favour of surgery had an average of 8 physical therapy sessions compared with 20 sessions for patients with successful non-operative treatment.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 468.2 — Erickson J, Lavery K, Monica J, et al. Surgical treatment of symptomatic superior labrum anterior-posterior tears in patients older than 40 years: a systematic review. Am J Sports Med. 2015 May;43(5):1274-82. doi: 10.1177/0363546514536874. PMID 24961444.**
+**Row 469.2 — Erickson J, Lavery K, Monica J, et al. Surgical treatment of symptomatic superior labrum anterior-posterior tears in patients older than 40 years: a systematic review. Am J Sports Med. 2015 May;43(5):1274-82. doi: 10.1177/0363546514536874. PMID 24961444.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/24961444/
 - Source checked on: 2026-09-27
@@ -17027,7 +17059,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Systematic review of surgical treatment of symptomatic superior labral tears in patients aged 40 years and older including those with concomitant rotator cuff injuries, finding that while several authors reported equivalent outcomes in patients both older and younger than 40 years, others demonstrated significantly higher failure rates in the older cohort, that decreased patient satisfaction and increasing complications including postoperative stiffness and reoperations occur at higher rates as patient age increases, and that WITH CONCOMITANT ROTATOR CUFF TEARS THE EVIDENCE FAVOURS DEBRIDEMENT OR BICEPS TENOTOMY OVER SLAP REPAIR, concluding that age over 40 years and workers' compensation status are independent risk factors for increased surgical complications.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 468.3 — Zhou L, Gee SM, Posner MA, et al. Concomitant Glenohumeral Instability and Rotator Cuff Injury: An Epidemiologic and Case-Control Analysis in Military Cadets. J Am Acad Orthop Surg Glob Res Rev. 2022 Apr 12;6(4). doi: 10.5435/JAAOSGlobal-D-22-00049. PMID 35412499.**
+**Row 469.3 — Zhou L, Gee SM, Posner MA, et al. Concomitant Glenohumeral Instability and Rotator Cuff Injury: An Epidemiologic and Case-Control Analysis in Military Cadets. J Am Acad Orthop Surg Glob Res Rev. 2022 Apr 12;6(4). doi: 10.5435/JAAOSGlobal-D-22-00049. PMID 35412499.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/35412499/
 - Source checked on: 2026-09-27
@@ -17051,7 +17083,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 - Is the citation metadata exact against the PubMed record?
 
-**Row 469.1 — Winkelman JW, Herzog DB, Fava M. The prevalence of sleep-related eating disorder in psychiatric and non-psychiatric populations. Psychol Med. 1999 Nov;29(6):1461-6. PMID 10616953.**
+**Row 470.1 — Winkelman JW, Herzog DB, Fava M. The prevalence of sleep-related eating disorder in psychiatric and non-psychiatric populations. Psychol Med. 1999 Nov;29(6):1461-6. PMID 10616953.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/10616953/
 - Source checked on: 2026-09-27
@@ -17059,7 +17091,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Study administering the Inventory of Nocturnal Eating, a self-report questionnaire addressing nocturnal eating and sleep disturbance, to out-patients (N = 126) and in-patients (N = 24) with eating disorders, obese subjects in a trial of an anorexic agent (N = 126), depressed subjects in an antidepressant trial (N = 207) and an unselected group of college students (N = 217), operationally defining sleep-related eating disorder as nocturnal eating with a self-reported reduced level of awareness occurring at least once per week, finding ALMOST 5.0% (33/700) of the sample described symptoms consistent with the syndrome, that the in-patient eating disorders group had nearly twice the prevalence (16.7%) of the out-patient sample (8.7%) which had nearly twice the prevalence of the next highest group, the student sample (4.6%), and that SUBJECTS WITH SLEEP-RELATED EATING DISORDER ENDORSED MORE SYMPTOMS CONSISTENT WITH SLEEP DISORDERS AND HAD HIGHER LEVELS OF DEPRESSION AND DISSOCIATION than those without nocturnal eating, concluding that evaluation of individuals with eating disorders should include assessment for sleep-related eating.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 469.2 — Santin J, Mery V, Elso MJ, et al. Sleep-related eating disorder: a descriptive study in Chilean patients. Sleep Med. 2014 Feb;15(2):163-7. doi: 10.1016/j.sleep.2013.10.010. PMID 24424097.**
+**Row 470.2 — Santin J, Mery V, Elso MJ, et al. Sleep-related eating disorder: a descriptive study in Chilean patients. Sleep Med. 2014 Feb;15(2):163-7. doi: 10.1016/j.sleep.2013.10.010. PMID 24424097.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/24424097/
 - Source checked on: 2026-09-27
@@ -17067,7 +17099,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Descriptive study of 34 consecutive adults meeting International Classification of Sleep Disorders criteria for sleep-related eating disorder evaluated over a 3-year period who did NOT have an eating disorder by DSM-IV criteria, all completing a structured clinical interview with a sleep specialist and the Beck Depression Inventory, with polysomnography in 18 patients (52.9%), finding most patients were women (67.6%), mean age at diagnosis 39 +/- 13.8 years, mean latency from symptom onset 8.3 +/- 8.8 years, 2.6 +/- 1.6 episodes per night with all except one patient having PARTIAL OR TOTAL AMNESIS (n = 33, 97%), and FREQUENT COMORBIDITIES INCLUDING INSOMNIA (n = 20, 58.8%), RESTLESS LEGS SYNDROME (n = 16, 47%), SLEEP-DISORDERED BREATHING (n = 9, 26%) AND PSYCHIATRIC DISORDERS (n = 13, 38.2%).
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 469.3 — Vasiliu O. Current evidence and future perspectives in the exploration of sleep-related eating disorder-a systematic literature review. Front Psychiatry. 2024;15:1393337. doi: 10.3389/fpsyt.2024.1393337. PMID 38873533.**
+**Row 470.3 — Vasiliu O. Current evidence and future perspectives in the exploration of sleep-related eating disorder-a systematic literature review. Front Psychiatry. 2024;15:1393337. doi: 10.3389/fpsyt.2024.1393337. PMID 38873533.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/38873533/
 - Source checked on: 2026-09-27
@@ -17091,7 +17123,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 - Is the citation metadata exact against the PubMed record?
 
-**Row 470.1 — Winkelman JW, Herzog DB, Fava M. The prevalence of sleep-related eating disorder in psychiatric and non-psychiatric populations. Psychol Med. 1999 Nov;29(6):1461-6. PMID 10616953.**
+**Row 471.1 — Winkelman JW, Herzog DB, Fava M. The prevalence of sleep-related eating disorder in psychiatric and non-psychiatric populations. Psychol Med. 1999 Nov;29(6):1461-6. PMID 10616953.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/10616953/
 - Source checked on: 2026-09-27
@@ -17099,7 +17131,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Study administering the Inventory of Nocturnal Eating self-report questionnaire to 700 subjects across five groups, operationally defining sleep-related eating disorder as nocturnal eating with a self-reported reduced level of awareness occurring at least once per week, finding almost 5.0% (33/700) described symptoms consistent with the syndrome, that the in-patient eating disorders group had nearly twice the prevalence (16.7%) of the out-patient sample (8.7%) which had nearly twice the prevalence of the student sample (4.6%), and that SUBJECTS WITH SLEEP-RELATED EATING DISORDER ENDORSED MORE SYMPTOMS CONSISTENT WITH SLEEP DISORDERS AND HAD HIGHER LEVELS OF DEPRESSION AND DISSOCIATION than those without nocturnal eating, concluding that evaluation of individuals with eating disorders should include assessment for sleep-related eating.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 470.2 — Santin J, Mery V, Elso MJ, et al. Sleep-related eating disorder: a descriptive study in Chilean patients. Sleep Med. 2014 Feb;15(2):163-7. doi: 10.1016/j.sleep.2013.10.010. PMID 24424097.**
+**Row 471.2 — Santin J, Mery V, Elso MJ, et al. Sleep-related eating disorder: a descriptive study in Chilean patients. Sleep Med. 2014 Feb;15(2):163-7. doi: 10.1016/j.sleep.2013.10.010. PMID 24424097.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/24424097/
 - Source checked on: 2026-09-27
@@ -17107,7 +17139,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Descriptive study of 34 consecutive adults meeting ICSD criteria for sleep-related eating disorder who did NOT meet DSM-IV eating disorder criteria, in which comorbidities were frequent and included insomnia (n = 20, 58.8%), restless legs syndrome (n = 16, 47%), sleep-disordered breathing (n = 9, 26%) and PSYCHIATRIC DISORDERS (n = 13, 38.2%), with all except one patient having partial or total amnesia of the events (n = 33, 97%), mean age at diagnosis 39 +/- 13.8 years and a mean latency from symptom onset to diagnosis of 8.3 +/- 8.8 years.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 470.3 — Gau SF, Soong WT. Psychiatric comorbidity of adolescents with sleep terrors or sleepwalking: a case-control study. Aust N Z J Psychiatry. 1999 Oct;33(5):734-9. PMID 10544999.**
+**Row 471.3 — Gau SF, Soong WT. Psychiatric comorbidity of adolescents with sleep terrors or sleepwalking: a case-control study. Aust N Z J Psychiatry. 1999 Oct;33(5):734-9. PMID 10544999.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/10544999/
 - Source checked on: 2026-09-27
@@ -17131,7 +17163,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 - Is the citation metadata exact against the PubMed record?
 
-**Row 471.1 — Laganière C, Gaudreau H, Kenny S, et al. Disorders of Arousal in Children and Associated Emotional-Behavioural Problems: Results From a Non-Clinical Longitudinal Cohort. J Sleep Res. 2026 Jun;35(3):e70207. doi: 10.1111/jsr.70207. PMID 41045207.**
+**Row 472.1 — Laganière C, Gaudreau H, Kenny S, et al. Disorders of Arousal in Children and Associated Emotional-Behavioural Problems: Results From a Non-Clinical Longitudinal Cohort. J Sleep Res. 2026 Jun;35(3):e70207. doi: 10.1111/jsr.70207. PMID 41045207.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/41045207/
 - Source checked on: 2026-09-27
@@ -17139,7 +17171,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Longitudinal cohort study of 345 mother-child dyads recruited during pregnancy, with validated questionnaires completed when children were 4 and 5 years old, assessing the concurrent and prospective association between the frequency of sleepwalking and sleep terror episodes and emotional-behavioural problems, with linear regressions adjusting for child sex, nighttime sleep duration, socioeconomic status and maternal depressive symptoms, finding that more frequent episodes at age 4 were significantly associated with more concurrent internalising problems (B = 2.659, p = 0.001) and externalising problems (B = 2.740, p = 0.006), that AT AGE 5 THE FREQUENCY OF EPISODES WAS NOT ASSOCIATED with concurrent internalising or externalising problems (p > 0.05), that more frequent episodes at age 4 were associated with more externalising problems at 5 (B = 2.462, p = 0.039), and concluding that although sleep terrors and sleepwalking are often benign these sleep phenomena can be associated with emotional-behavioural problems in children as young as 4 and that screening for emotional-behavioural problems seems appropriate for children with frequent episodes.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 471.2 — Gau SF, Soong WT. Psychiatric comorbidity of adolescents with sleep terrors or sleepwalking: a case-control study. Aust N Z J Psychiatry. 1999 Oct;33(5):734-9. PMID 10544999.**
+**Row 472.2 — Gau SF, Soong WT. Psychiatric comorbidity of adolescents with sleep terrors or sleepwalking: a case-control study. Aust N Z J Psychiatry. 1999 Oct;33(5):734-9. PMID 10544999.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/10544999/
 - Source checked on: 2026-09-27
@@ -17147,7 +17179,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Case-control study of 30 students with sleep terrors and/or sleepwalking and 30 classroom controls selected on a sleep habit questionnaire, with 21 case and 30 control subjects in the final data analysis, interviewed with the Chinese-version Kiddie-SADS-E and assessed with the Junior Eysenck Personality Inventory, finding the case group had more psychiatric diagnoses and problems with statistically significant differences in overanxious disorder, panic disorder, simple phobia and suicidal thoughts, more sleep talking and nightmares in the previous year and more enuresis in earlier years, parents reporting the case group as more nervous and pessimistic, a high neuroticism score, and an increased familial occurrence of these two sleep disorders, concluding that whereas these disorders in childhood are related primarily to genetic and developmental factors their persistence and especially their onset in adolescence may be related to psychological factors.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 471.3 — Tomic T, Mombelli S, Oana S, et al. Psychopathology and NREM sleep parasomnias: A systematic review. Sleep Med Rev. 2025 Apr;80:102043. doi: 10.1016/j.smrv.2024.102043. PMID 39721218.**
+**Row 472.3 — Tomic T, Mombelli S, Oana S, et al. Psychopathology and NREM sleep parasomnias: A systematic review. Sleep Med Rev. 2025 Apr;80:102043. doi: 10.1016/j.smrv.2024.102043. PMID 39721218.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/39721218/
 - Source checked on: 2026-09-27
@@ -17171,7 +17203,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 - Is the citation metadata exact against the PubMed record?
 
-**Row 472.1 — Lopez R, Jaussent I, Scholz S, et al. Functional impairment in adult sleepwalkers: a case-control study. Sleep. 2013 Mar 1;36(3):345-51. doi: 10.5665/sleep.2446. PMID 23450499.**
+**Row 473.1 — Lopez R, Jaussent I, Scholz S, et al. Functional impairment in adult sleepwalkers: a case-control study. Sleep. 2013 Mar 1;36(3):345-51. doi: 10.5665/sleep.2446. PMID 23450499.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/23450499/
 - Source checked on: 2026-09-27
@@ -17179,7 +17211,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Prospective case-control study of 140 adult sleepwalkers (100 with primary sleepwalking diagnosed, median age 30 years, 55% male) who underwent one night of video polysomnography and were compared with 100 sex- and age-matched normal controls, finding 22.3% with daily episodes and 43.5% with weekly episodes, median age at onset 9 years, a familial history of sleepwalking in 56.6% and VIOLENT SLEEP RELATED BEHAVIORS IN 57.9% INCLUDING INJURIES REQUIRING MEDICAL CARE FOR AT LEAST ONE EPISODE IN 17%, and significant associations between sleepwalking and daytime sleepiness, fatigue, insomnia, DEPRESSIVE AND ANXIETY SYMPTOMS, and altered quality of life, with early-onset sleepwalkers having higher frequency of violent behaviors and injuries.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 472.2 — Bargiotas P, Arnet I, Frei M, et al. Demographic, Clinical and Polysomnographic Characteristics of Childhood- and Adult-Onset Sleepwalking in Adults. Eur Neurol. 2017;78(5-6):307-311. doi: 10.1159/000481685. PMID 29073634.**
+**Row 473.2 — Bargiotas P, Arnet I, Frei M, et al. Demographic, Clinical and Polysomnographic Characteristics of Childhood- and Adult-Onset Sleepwalking in Adults. Eur Neurol. 2017;78(5-6):307-311. doi: 10.1159/000481685. PMID 29073634.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/29073634/
 - Source checked on: 2026-09-27
@@ -17187,7 +17219,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Study of 63 adult sleepwalkers assessed by structured clinical interview, questionnaires, video-polysomnography and standard electroencephalography, finding 45% with at least one episode monthly, 54% with partial recall and 36% reporting trigger factors, that ALMOST ALL SUBJECTS REPORTED CO-OCCURRING PARASOMNIAS, 17% with confusional arousals and 21% with an increased apnea-hypopnea index on video-polysomnography, a cohort composition of 73% childhood-onset and 27% adult-onset sleepwalking, PSYCHIATRIC COMORBIDITIES IN 33% of childhood-onset versus 25% of adult-onset, NEUROLOGICAL COMORBIDITIES IN 44% of adult-onset versus 14% of childhood-onset, and EEG abnormalities in 50% of adult-onset versus 29% of childhood-onset, with violence during sleepwalking episodes more frequent in males and in childhood-onset subjects.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 472.3 — Tomic T, Mombelli S, Oana S, et al. Psychopathology and NREM sleep parasomnias: A systematic review. Sleep Med Rev. 2025 Apr;80:102043. doi: 10.1016/j.smrv.2024.102043. PMID 39721218.**
+**Row 473.3 — Tomic T, Mombelli S, Oana S, et al. Psychopathology and NREM sleep parasomnias: A systematic review. Sleep Med Rev. 2025 Apr;80:102043. doi: 10.1016/j.smrv.2024.102043. PMID 39721218.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/39721218/
 - Source checked on: 2026-09-27
@@ -17211,7 +17243,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 - Is the citation metadata exact against the PubMed record?
 
-**Row 473.1 — Lopez R, Jaussent I, Scholz S, et al. Functional impairment in adult sleepwalkers: a case-control study. Sleep. 2013 Mar 1;36(3):345-51. doi: 10.5665/sleep.2446. PMID 23450499.**
+**Row 474.1 — Lopez R, Jaussent I, Scholz S, et al. Functional impairment in adult sleepwalkers: a case-control study. Sleep. 2013 Mar 1;36(3):345-51. doi: 10.5665/sleep.2446. PMID 23450499.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/23450499/
 - Source checked on: 2026-09-27
@@ -17219,7 +17251,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Prospective case-control study of 140 adult sleepwalkers including 100 with primary sleepwalking (median age 30 years, 55% male) versus 100 sex- and age-matched normal controls, finding 22.3% with daily and 43.5% with weekly episodes, median age at onset 9 years, familial history of sleepwalking in 56.6%, violent sleep related behaviors in 57.9% including injuries requiring medical care in 17%, and significant associations between sleepwalking and daytime sleepiness, fatigue, insomnia, DEPRESSIVE AND ANXIETY SYMPTOMS, and altered quality of life, and that sleepwalkers with violent behaviors had higher frequency of sleep terrors and triggering factors with greater alteration in health-related quality of life.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 473.2 — Ohayon MM, Guilleminault C, Priest RG. Night terrors, sleepwalking, and confusional arousals in the general population: their frequency and relationship to other sleep and mental disorders. J Clin Psychiatry. 1999 Apr;60(4):268-76; quiz 277. PMID 10221293.**
+**Row 474.2 — Ohayon MM, Guilleminault C, Priest RG. Night terrors, sleepwalking, and confusional arousals in the general population: their frequency and relationship to other sleep and mental disorders. J Clin Psychiatry. 1999 Apr;60(4):268-76; quiz 277. PMID 10221293.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/10221293/
 - Source checked on: 2026-09-27
@@ -17227,7 +17259,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Telephone interview of a representative sample of the United Kingdom population of 4,972 using the Sleep-EVAL system, finding night terrors reported by 2.2% (95% CI 1.8% to 2.6%), sleepwalking by 2.0% (1.6% to 2.4%) and confusional arousals by 4.2% (3.6% to 4.8%), that the rate of these three parasomnias decreased significantly with age with no gender difference, that factors associated with sleepwalking were age 15-24 years (OR 5.2), subjective sense of choking or blocked breathing at night (OR 5.1), sleep talking (OR 5.0) and a road accident in the past year (OR 3.9) after controlling for possible effects of sleep deprivation, life stress, and mental and sleep disorders, and concluding that AROUSAL PARASOMNIAS, ESPECIALLY NIGHT TERRORS AND CONFUSIONAL AROUSALS, ARE OFTEN THE EXPRESSION OF A MENTAL DISORDER, with prevalence rates based on self-reported data and consequently likely underestimated.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 473.3 — Gau SF, Soong WT. Psychiatric comorbidity of adolescents with sleep terrors or sleepwalking: a case-control study. Aust N Z J Psychiatry. 1999 Oct;33(5):734-9. PMID 10544999.**
+**Row 474.3 — Gau SF, Soong WT. Psychiatric comorbidity of adolescents with sleep terrors or sleepwalking: a case-control study. Aust N Z J Psychiatry. 1999 Oct;33(5):734-9. PMID 10544999.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/10544999/
 - Source checked on: 2026-09-27
@@ -17251,7 +17283,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 - Is the citation metadata exact against the PubMed record?
 
-**Row 474.1 — Atodaria KP, Patel A, Kottapalli N, et al. Rising prevalence of venous thromboembolism in gastrointestinal cancers: a nationwide analysis of 205 million hospitalizations, 2016-2022. J Gastrointest Oncol. 2026 Jun 30;17(3):145. doi: 10.21037/jgo-2025-1-999. PMID 42434252.**
+**Row 475.1 — Atodaria KP, Patel A, Kottapalli N, et al. Rising prevalence of venous thromboembolism in gastrointestinal cancers: a nationwide analysis of 205 million hospitalizations, 2016-2022. J Gastrointest Oncol. 2026 Jun 30;17(3):145. doi: 10.21037/jgo-2025-1-999. PMID 42434252.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/42434252/
 - Source checked on: 2026-09-27
@@ -17259,7 +17291,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Nationwide analysis of 205 MILLION HOSPITALIZATIONS from 2016 to 2022 examining the rising prevalence of venous thromboembolism, encompassing deep vein thrombosis and pulmonary embolism, in gastrointestinal cancers, finding a substantial and INCREASING thromboembolic burden across this disease group. Registered as a DISEASE-CLASS analysis: the denominator is gastrointestinal cancers as a class and not small intestinal cancer specifically, so it establishes direction and scale rather than a small-bowel-specific rate.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 474.2 — Zhang Y, Zeng S, Wang Z, et al. Cardiovascular mortality risk among small bowel adenocarcinoma patients: a population-based study. BMC Public Health. 2025 Jan 8;25(1):97. doi: 10.1186/s12889-025-21279-5. PMID 39780085.**
+**Row 475.2 — Zhang Y, Zeng S, Wang Z, et al. Cardiovascular mortality risk among small bowel adenocarcinoma patients: a population-based study. BMC Public Health. 2025 Jan 8;25(1):97. doi: 10.1186/s12889-025-21279-5. PMID 39780085.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/39780085/
 - Source checked on: 2026-09-27
@@ -17267,7 +17299,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Population-based study using the Surveillance, Epidemiology, and End Results database of 5,175 SMALL BOWEL ADENOCARCINOMA patients observed for 15,068.24 person-years, with 205 deaths attributed to cardiovascular disease, finding an overall standardised mortality ratio for cardiovascular mortality of 1.41 (95% CI 1.23-1.62, P < 0.05) that REACHED 2.99 DURING THE EARLY STAGE OF LATENCY, and identifying age, marital status, calendar year of diagnosis, disease differentiation degree, SEER stage and chemotherapy status as independent risk factors. Registered with a MEASUREMENT CAVEAT: the endpoint is cardiovascular MORTALITY analysed by competing-risk models, not thrombotic events, so it does not supply a thrombosis rate.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 474.3 — Wu H, Yang X, Guo W. Survival outcomes in small intestine tumors: The role of duodenum, jejunum, and ileum. Int J Cancer. 2025 Aug 1;157(3):445-454. doi: 10.1002/ijc.35379. PMID 40191948.**
+**Row 475.3 — Wu H, Yang X, Guo W. Survival outcomes in small intestine tumors: The role of duodenum, jejunum, and ileum. Int J Cancer. 2025 Aug 1;157(3):445-454. doi: 10.1002/ijc.35379. PMID 40191948.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/40191948/
 - Source checked on: 2026-09-27
@@ -17291,7 +17323,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 - Is the citation metadata exact against the PubMed record?
 
-**Row 475.1 — Manley J, Ibrahim Y, Ansell J, et al. Small bowel adenocarcinoma: Case reports and review of the literature. Arab J Gastroenterol. 2021 Sep;22(3):240-245. doi: 10.1016/j.ajg.2021.07.003. PMID 34531134.**
+**Row 476.1 — Manley J, Ibrahim Y, Ansell J, et al. Small bowel adenocarcinoma: Case reports and review of the literature. Arab J Gastroenterol. 2021 Sep;22(3):240-245. doi: 10.1016/j.ajg.2021.07.003. PMID 34531134.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/34531134/
 - Source checked on: 2026-09-27
@@ -17299,7 +17331,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Literature review of small bowel adenocarcinoma incorporating case reports and a synthesis of the published literature, describing the presentation of the tumour through ulceration and bleeding within a bowel segment that is difficult to reach by standard endoscopic examination, such that the clinical route to diagnosis is commonly an iron deficiency anaemia investigation rather than direct visualisation of the lesion. Registered as NARRATIVE CLASS: the review supplies the presentation route but reports no rate of anaemia among patients with the tumour.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 475.2 — Iqbal H. Diagnostic Yield After Negative Bidirectional Endoscopy for Iron Deficiency Anaemia: A Single-Centre Audit of Downstream Investigations in the UK Two-Week-Wait Pathway. Cureus. 2026 May;18(5):e109740. doi: 10.7759/cureus.109740. PMID 42367528.**
+**Row 476.2 — Iqbal H. Diagnostic Yield After Negative Bidirectional Endoscopy for Iron Deficiency Anaemia: A Single-Centre Audit of Downstream Investigations in the UK Two-Week-Wait Pathway. Cureus. 2026 May;18(5):e109740. doi: 10.7759/cureus.109740. PMID 42367528.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/42367528/
 - Source checked on: 2026-09-27
@@ -17307,7 +17339,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Single-centre audit of the downstream diagnostic yield obtained after NEGATIVE BIDIRECTIONAL ENDOSCOPY in patients presenting with IRON DEFICIENCY ANAEMIA, quantifying how often the small bowel is the site subsequently identified and therefore how often a small bowel lesion is the terminal finding of an anaemia investigation that began with upper and lower endoscopy. Registered as a DIAGNOSTIC-YIELD AUDIT: it describes the yield of the investigation that follows the anaemia rather than the association between the anaemia and a small bowel tumour.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 475.3 — Ahmadi F, Touza G, Afram R, et al. Duodenal Neuroendocrine Tumor Presenting as Iron Deficiency Anemia in an Older Adult. Cureus. 2026 May;18(5):e108649. doi: 10.7759/cureus.108649. PMID 42281724.**
+**Row 476.3 — Ahmadi F, Touza G, Afram R, et al. Duodenal Neuroendocrine Tumor Presenting as Iron Deficiency Anemia in an Older Adult. Cureus. 2026 May;18(5):e108649. doi: 10.7759/cureus.108649. PMID 42281724.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/42281724/
 - Source checked on: 2026-09-27
@@ -17331,7 +17363,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 - Is the citation metadata exact against the PubMed record?
 
-**Row 476.1 — Karakawa R, Yoshimatsu H, Fuse Y, et al. Outcome of secondary LVA for lymphedema and lymphorrhea following sarcoma resection. J Plast Reconstr Aesthet Surg. 2026 Oct;121:12-22. doi: 10.1016/j.bjps.2026.07.037. PMID 42561503.**
+**Row 477.1 — Karakawa R, Yoshimatsu H, Fuse Y, et al. Outcome of secondary LVA for lymphedema and lymphorrhea following sarcoma resection. J Plast Reconstr Aesthet Surg. 2026 Oct;121:12-22. doi: 10.1016/j.bjps.2026.07.037. PMID 42561503.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/42561503/
 - Source checked on: 2026-09-27
@@ -17339,7 +17371,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Retrospective series of 24 patients who underwent secondary lymphaticovenular anastomosis after lower-extremity SOFT TISSUE SARCOMA resection between 2019 and 2024; 16 treated for lymphorrhea and 8 for lymphedema. The authors' own background states that extensive resection of lower-extremity soft tissue sarcoma, particularly in lymphatically high-risk regions such as the medial thigh and groin, is frequently associated with postoperative lymphorrhea and secondary lymphedema. Median per-patient five-day mean daily drainage volume fell from 250.0 mL/day before anastomosis to 82.0 mL/day after it (p LESS THAN 0.01); in the 6 lymphedema patients with complete paired lower-extremity lymphedema Index data all 6 decreased, median 258.0 to 241.1 mL/day (exact two-sided p EQUALS 0.031); 54 anastomoses were performed with a mean lymphatic vessel diameter of 0.65 mm and 83 percent of those vessels ectatic. Registered as a TREATMENT series, so it establishes the association and the response magnitude in already-affected patients and NOT an incidence. PREFLIGHT NOTE: this record is erratum-linked, with a notice in J Plast Reconstr Aesthet Surg. 2026 Oct;121:152, doi 10.1016/j.bjps.2026.08.011; the notice is not a retraction, expression of concern or withdrawal, and its content has not been checked by this authoring pass.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 476.2 — Togashi Y, Sakuma H, Fujii T, et al. Deep lymphaticovenular anastomosis for refractory lymphorrhea following thigh sarcoma resection: A case report. JPRAS Open. 2026 Sep;51:703-709. doi: 10.1016/j.jpra.2026.07.034. PMID 42656561.**
+**Row 477.2 — Togashi Y, Sakuma H, Fujii T, et al. Deep lymphaticovenular anastomosis for refractory lymphorrhea following thigh sarcoma resection: A case report. JPRAS Open. 2026 Sep;51:703-709. doi: 10.1016/j.jpra.2026.07.034. PMID 42656561.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/42656561/
 - Source checked on: 2026-09-27
@@ -17363,7 +17395,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 - Is the citation metadata exact against the PubMed record?
 
-**Row 477.1 — Moran K, Wilson D. Venous thromboembolism in surgically treated sarcoma a systematic review and meta-analysis of orthopaedic oncology literature. Sci Rep. 2026 Jul 19. doi: 10.1038/s41598-026-60288-1. PMID 42471349.**
+**Row 478.1 — Moran K, Wilson D. Venous thromboembolism in surgically treated sarcoma a systematic review and meta-analysis of orthopaedic oncology literature. Sci Rep. 2026 Jul 19. doi: 10.1038/s41598-026-60288-1. PMID 42471349.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/42471349/
 - Source checked on: 2026-09-27
@@ -17371,7 +17403,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: PRISMA systematic review and random-effects meta-analysis of 34 studies, 85,425 patients and 2,283 venous thromboembolism events, in surgically treated sarcoma. POOLED VENOUS THROMBOEMBOLISM PROPORTION 4.5 PERCENT (95% CI 3.2 TO 6.3); bone sarcoma 4.3 percent (95% CI 2.9 to 6.4) and SOFT TISSUE SARCOMA 3.4 PERCENT (95% CI 1.5 TO 7.9), NO STATISTICALLY SIGNIFICANT DIFFERENCE (p EQUALS 0.57). Substantial heterogeneity, tau-squared 1.24 and I-squared 94.5 percent, unchanged by outlier-excluded sensitivity analyses. Network meta-analysis of 2,556 observations across 8 prophylaxis strategies and 45 treatment-arm comparisons found NO strategy with a statistically significant reduction relative to no prophylaxis. The authors state the pooled 4.5 percent is lower than some previously cited estimates and must be read in the context of heterogeneity and variable study quality. Registered as the anchor that supplies the soft-tissue-specific magnitude and the null bone-versus-soft-tissue comparison; the very high heterogeneity and the null prophylaxis result are carried openly on the edge.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 477.2 — Wright J, Qamar F, McLaughlin M, et al. The Incidence of Thromboembolic Events During Hospitalizations Following Surgical Resection of Lower Extremity Sarcomas in Children: Utilizing the Pediatric Health Information System Database. J Pediatr Orthop. 2023 Apr 1;43(4):268-272. doi: 10.1097/BPO.0000000000002357. PMID 36693390.**
+**Row 478.2 — Wright J, Qamar F, McLaughlin M, et al. The Incidence of Thromboembolic Events During Hospitalizations Following Surgical Resection of Lower Extremity Sarcomas in Children: Utilizing the Pediatric Health Information System Database. J Pediatr Orthop. 2023 Apr 1;43(4):268-272. doi: 10.1097/BPO.0000000000002357. PMID 36693390.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/36693390/
 - Source checked on: 2026-09-27
@@ -17379,7 +17411,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Pediatric Health Information System database analysis of 2,400 patients aged 18 years and under discharged 2004 to 2015 with a diagnosis of lower-extremity malignant neoplasm who underwent tumour resection or amputation. 19 experienced venous thromboembolism during the surgical hospitalisation, 0.79 percent overall; 1.4 percent (95% CI 0.5 to 3.2) for pelvic tumours and 0.6 percent (95% CI 0.3 to 1.0) for lower-limb tumours; by age 1.2 percent at 0 to 5 years, 0.3 percent at 6 to 13 and 1.2 percent at 14 to 18. The authors state the extremely low event rate PRECLUDED FURTHER ANALYSIS OF RISK FACTORS and call for a more robust data set. Registered as a CONTRASTING NULL that bounds the edge and shows the pooled adult surgical estimate is not universal, and is disclosed as a PEDIATRIC study of a diagnostic category that COMBINES BONE AND SOFT TISSUE lower-extremity malignant neoplasm and therefore does not describe an adult soft tissue sarcoma population.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 477.3 — Guo Q, Zhao J, Du X, et al. Incidence, risk factors, and outcomes of venous thromboembolism in patients undergoing surgery for retroperitoneal tumors: a propensity-matched retrospective cohort study. Int J Surg. 2023 Sep 1;109(9):2689-2695. doi: 10.1097/JS9.0000000000000429. PMID 37578462.**
+**Row 478.3 — Guo Q, Zhao J, Du X, et al. Incidence, risk factors, and outcomes of venous thromboembolism in patients undergoing surgery for retroperitoneal tumors: a propensity-matched retrospective cohort study. Int J Surg. 2023 Sep 1;109(9):2689-2695. doi: 10.1097/JS9.0000000000000429. PMID 37578462.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/37578462/
 - Source checked on: 2026-09-27
@@ -17403,7 +17435,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 - Is the citation metadata exact against the PubMed record?
 
-**Row 478.1 — Willis F, Trunk AM, Musa J, et al. Temporal variation in nutritional status and preoperative anemia among patients with retroperitoneal soft tissue sarcoma: a retrospective longitudinal cohort study. Langenbecks Arch Surg. 2025 Jan 22;410(1):48. doi: 10.1007/s00423-024-03585-5. PMID 39841283.**
+**Row 479.1 — Willis F, Trunk AM, Musa J, et al. Temporal variation in nutritional status and preoperative anemia among patients with retroperitoneal soft tissue sarcoma: a retrospective longitudinal cohort study. Langenbecks Arch Surg. 2025 Jan 22;410(1):48. doi: 10.1007/s00423-024-03585-5. PMID 39841283.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/39841283/
 - Source checked on: 2026-09-27
@@ -17411,7 +17443,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Retrospective longitudinal cohort of 370 patients undergoing resection of primary or recurrent retroperitoneal SOFT TISSUE SARCOMA at a single university hospital, analysed with hierarchical linear regression for haemoglobin and nutritional trajectories and multivariable Cox regression for survival. PREOPERATIVE ANAEMIA AFFECTED UP TO 40 PERCENT of patients; haemoglobin DECREASED SIGNIFICANTLY ACROSS THE DISEASE COURSE (p EQUALS 0.022) and the decrease correlated with the NUMBER OF TUMOUR RESECTIONS (p EQUALS 0.010); low preoperative haemoglobin was associated with increased 30-day mortality and was an INDEPENDENT PROGNOSTIC FACTOR for shorter overall survival in primary disease and in second and third recurrences. CONTRADICTORY NULL RECORDED ON THE EDGE: the authors observed NEITHER A SIGNIFICANT PREVALENCE OF PREOPERATIVE MALNUTRITION NOR NOTABLE CHANGES in body mass index or serum albumin across the disease course, and recommend preoperative and follow-up anaemia screening. Registered as the sole quantitative anchor for this edge; its single-centre retroperitoneal scope and its retrospective design are disclosed on the face of the edge.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 478.2 — Lominchar PL, Díaz-Cambronero Ó, Muñoz-Muñoz P, et al. Consensus Guidelines on Perioperative Care in Primary Retroperitoneal Sarcoma Surgery. Ann Surg Oncol. 2026 Jul;33(7):6881-6909. doi: 10.1245/s10434-026-19520-5. PMID 41973294.**
+**Row 479.2 — Lominchar PL, Díaz-Cambronero Ó, Muñoz-Muñoz P, et al. Consensus Guidelines on Perioperative Care in Primary Retroperitoneal Sarcoma Surgery. Ann Surg Oncol. 2026 Jul;33(7):6881-6909. doi: 10.1245/s10434-026-19520-5. PMID 41973294.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/41973294/
 - Source checked on: 2026-09-27
@@ -17435,7 +17467,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 - Is the citation metadata exact against the PubMed record?
 
-**Row 479.1 — Prabagar K, Chandrasinghe PC, Hewavisenthi SJS, et al. Solitary Rectal Ulcer Syndrome Revisited: A Comprehensive Narrative Review. Curr Gastroenterol Rep. 2026 May 18;28(1). pii: 20. doi: 10.1007/s11894-026-01045-2. PMID 42149300.**
+**Row 480.1 — Prabagar K, Chandrasinghe PC, Hewavisenthi SJS, et al. Solitary Rectal Ulcer Syndrome Revisited: A Comprehensive Narrative Review. Curr Gastroenterol Rep. 2026 May 18;28(1). pii: 20. doi: 10.1007/s11894-026-01045-2. PMID 42149300.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/42149300/
 - Source checked on: 2026-09-27
@@ -17443,7 +17475,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Comprehensive narrative review of solitary rectal ulcer syndrome covering clinical, endoscopic and histological features. The authors state that THE AETIOLOGY REMAINS UNCLEAR, with contributing factors such as MUCOSAL PROLAPSE, ischemia, paradoxical puborectalis contraction and digital trauma; diagnosis requires history, digital rectal examination, endoscopy, histopathology and physiological studies; treatment comprises lifestyle modification, biofeedback, topical agents, sclerotherapy and surgical intervention for refractory cases, with ongoing surveillance especially in patients at high risk of recurrence and individualised multidisciplinary management particularly in patients with psychiatric comorbidities or during pregnancy. Registered as the located basis for the whole edge AND as the anchor that establishes the direction limitation, since it names prolapse as a contributing factor to the ulcer and does not study prolapse as a consequence.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 479.2 — Ganju N, Adidam SR, Turaga NSS, et al. Kissing Rectal Ulcers With Associated Occult Rectal Mucosal Prolapse: A Distinct Endoscopic Presentation of Solitary Rectal Ulcer Syndrome in an HIV Positive Patient With Comprehensive Infectious Exclusion. Case Rep Gastrointest Med. 2026;2026:4644258. doi: 10.1155/crgm/4644258. PMID 42713425.**
+**Row 480.2 — Ganju N, Adidam SR, Turaga NSS, et al. Kissing Rectal Ulcers With Associated Occult Rectal Mucosal Prolapse: A Distinct Endoscopic Presentation of Solitary Rectal Ulcer Syndrome in an HIV Positive Patient With Comprehensive Infectious Exclusion. Case Rep Gastrointest Med. 2026;2026:4644258. doi: 10.1155/crgm/4644258. PMID 42713425.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/42713425/
 - Source checked on: 2026-09-27
@@ -17451,7 +17483,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Single case of solitary rectal ulcer syndrome presenting as simultaneous contralateral kissing rectal ulcers in an HIV-positive patient, with comprehensive infectious exclusion including cytomegalovirus, herpes simplex virus, Neisseria gonorrhoeae and Chlamydia trachomatis including lymphogranuloma venereum serovars, entirely negative. HISTOPATHOLOGY DEMONSTRATED THE CHARACTERISTIC TRIAD of fibromuscular obliteration of the lamina propria, smooth muscle extension between distorted crypts and muscularis mucosae hypertrophy, ESTABLISHING OCCULT INTERNAL MUCOSAL PROLAPSE AS THE UNDERLYING MECHANISM in the absence of visible mucosal prolapse. The patient achieved complete symptomatic resolution on psyllium fibre at 2 months. Registered because it is the located source establishing that the prolapse can be OCCULT and histologically inferred, which is the specific finding the mechanism claim depends on and which a claim built only on visible descent would miss. DISCLOSED AS A SINGLE CASE: it establishes a mechanism and a diagnostic principle and supports no frequency statement.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 479.3 — Do P, Phen C, Alkalay M, et al. Mucosal prolapse syndrome mimicking Peutz-Jeghers syndrome in a pediatric patient. JPGN Rep. 2024 May;5(2):170-174. doi: 10.1002/jpr3.12022. PMID 38756112.**
+**Row 480.3 — Do P, Phen C, Alkalay M, et al. Mucosal prolapse syndrome mimicking Peutz-Jeghers syndrome in a pediatric patient. JPGN Rep. 2024 May;5(2):170-174. doi: 10.1002/jpr3.12022. PMID 38756112.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/38756112/
 - Source checked on: 2026-09-27
@@ -17475,7 +17507,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 - Is the citation metadata exact against the PubMed record?
 
-**Row 480.1 — Ejaz Z, Khan SU, Rehman RU, et al. Solitary Rectal Ulcer Syndrome in Patients Presenting With Lower Gastrointestinal Bleeding: A Tertiary-Care Hospital Experience. Cureus. 2023 Feb;15(2):e35247. doi: 10.7759/cureus.35247. PMID 36968942.**
+**Row 481.1 — Ejaz Z, Khan SU, Rehman RU, et al. Solitary Rectal Ulcer Syndrome in Patients Presenting With Lower Gastrointestinal Bleeding: A Tertiary-Care Hospital Experience. Cureus. 2023 Feb;15(2):e35247. doi: 10.7759/cureus.35247. PMID 36968942.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/36968942/
 - Source checked on: 2026-09-27
@@ -17483,7 +17515,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Tertiary-care hospital experience of 257 patients aged 15 to 70 presenting with lower gastrointestinal bleeding, recruited by non-probability convenience sampling, all undergoing colonoscopy with indigo carmine chromoendoscopy and biopsy of ulcer centre and edges. SOLITARY RECTAL ULCER SYNDROME WAS FOUND IN 17 PATIENTS, 6.6 PERCENT, with 57 PERCENT male. Perirectal bleeding, constipation, mucous discharge, abdominal pain AND ANAEMIA were the common clinical findings; solitary lesions, ulceration and anterior rectum location the common endoscopic findings; obliterated lamina propria with collagen, ulceration, crypt distortion and inflammatory infiltrates the common histological findings. Registered as the adult cohort anchor. DISCLOSED: the 6.6 percent is a proportion of patients who PRESENTED WITH BLEEDING and not of all patients with the syndrome, and NO ANAEMIA RATE IS REPORTED WITHIN THE 17 CASES despite anaemia being listed among the common findings.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 480.2 — Sakamoto T, Hirosawa T, Shimizu T. Recurrent Anemia Due To Mucosal Prolapse Syndrome. Eur J Case Rep Intern Med. 2025;12(4):005314. doi: 10.12890/2025_005314. PMID 40270668.**
+**Row 481.2 — Sakamoto T, Hirosawa T, Shimizu T. Recurrent Anemia Due To Mucosal Prolapse Syndrome. Eur J Case Rep Intern Med. 2025;12(4):005314. doi: 10.12890/2025_005314. PMID 40270668.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/40270668/
 - Source checked on: 2026-09-27
@@ -17491,7 +17523,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Single case of SEVERE ANAEMIA DUE TO MUCOSAL PROLAPSE SYNDROME REQUIRING BLOOD TRANSFUSION. A 36-year-old man was referred for recurrent iron deficiency anaemia; initial oesophagogastroduodenoscopy, colonoscopy and capsule endoscopy revealed no significant abnormality other than rectal mucosal prolapse syndrome WITHOUT NOTABLE BLEEDING; nine months later, despite oral iron therapy, he developed bloody stools and severe anaemia at a haemoglobin of 6.2 g/dl requiring transfusion; repeat colonoscopy showed an enlarged mucosal prolapse, transanal lumpectomy was performed, and he remained symptom-free thereafter. The authors conclude clinicians should remain vigilant about the potential for severe anaemia requiring transfusion. Registered because it establishes the extreme end of the range. DISCLOSED: a SINGLE CASE, and its diagnosis is MUCOSAL PROLAPSE SYNDROME, a broader category than this catalog identity, with the bleeding-to-anaemia interval unobserved because the initial endoscopy showed no bleeding.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 480.3 — Dehghani SM, Haghighat M, Imanieh MH, et al. Solitary rectal ulcer syndrome in children: a prospective study of cases from southern Iran. Eur J Gastroenterol Hepatol. 2008 Feb;20(2):93-5. doi: 10.1097/MEG.0b013e3282f1cbb6. PMID 18188027.**
+**Row 481.3 — Dehghani SM, Haghighat M, Imanieh MH, et al. Solitary rectal ulcer syndrome in children: a prospective study of cases from southern Iran. Eur J Gastroenterol Hepatol. 2008 Feb;20(2):93-5. doi: 10.1097/MEG.0b013e3282f1cbb6. PMID 18188027.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/18188027/
 - Source checked on: 2026-09-27
@@ -17515,7 +17547,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 - Is the citation metadata exact against the PubMed record?
 
-**Row 481.1 — Pranami A, Verma A, Dahale A, et al. Solitary Rectal Ulcer Syndrome with Fibrotic Rectal Stricture: A Diagnostic Dilemma. Ann Afr Med. 2026 Jul 1;25(4):1013-1016. doi: 10.4103/aam.aam_322_25. PMID 40923374.**
+**Row 482.1 — Pranami A, Verma A, Dahale A, et al. Solitary Rectal Ulcer Syndrome with Fibrotic Rectal Stricture: A Diagnostic Dilemma. Ann Afr Med. 2026 Jul 1;25(4):1013-1016. doi: 10.4103/aam.aam_322_25. PMID 40923374.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/40923374/
 - Source checked on: 2026-09-27
@@ -17539,7 +17571,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 - Is the citation metadata exact against the PubMed record?
 
-**Row 482.1 — Theodoraki A, Khoo B, Hamda A, et al. Malignant somatostatinoma presenting with diabetic ketoacidosis and inhibitory syndrome: pathophysiologic considerations. Endocr Pract. 2010 Sep-Oct;16(5):835-7. doi: 10.4158/EP10109.CR. PMID 20497932.**
+**Row 483.1 — Theodoraki A, Khoo B, Hamda A, et al. Malignant somatostatinoma presenting with diabetic ketoacidosis and inhibitory syndrome: pathophysiologic considerations. Endocr Pract. 2010 Sep-Oct;16(5):835-7. doi: 10.4158/EP10109.CR. PMID 20497932.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/20497932/
 - Source checked on: 2026-09-27
@@ -17547,7 +17579,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Single case report and pathophysiological review of a MALIGNANT SOMATOSTATINOMA PRESENTING WITH DIABETIC KETOACIDOSIS: a 30-year-old woman with hepatic, bone and lymph-node metastasis whose primary tumour could not be located. She exhibited the somatostatinoma INHIBITORY SYNDROME characterised by MILD NONKETOTIC HYPERGLYCAEMIA, hypochlorhydria, cholelithiasis, steatorrhea, anaemia and weight loss. The authors review somatostatin's effects on glucose homeostasis and attribute the usual ABSENCE OF KETOACIDOSIS to somatostatin-induced SIMULTANEOUS SUPPRESSION OF INSULIN AND GLUCAGON, concluding that ketoacidosis MAY OCCUR in somatostatinomas and that secretion of LARGER MOLECULAR WEIGHT FORMS of somatostatin from the tumour may contribute to the ketogenesis. Registered as the located source for both the severe presentation and the ONLY mechanistic account found in this identity's evidence. DISCLOSED: a SINGLE CASE with an unlocated primary and disseminated disease, and the mechanism is a hypothesis advanced by the reporting authors, not an established finding.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 482.2 — Popoviciu MS, Paduraru L, Nutas RM, et al. Diabetes Mellitus Secondary to Endocrine Diseases: An Update of Diagnostic and Treatment Particularities. Int J Mol Sci. 2023 Aug 11;24(16). doi: 10.3390/ijms241612676. PMID 37628857.**
+**Row 483.2 — Popoviciu MS, Paduraru L, Nutas RM, et al. Diabetes Mellitus Secondary to Endocrine Diseases: An Update of Diagnostic and Treatment Particularities. Int J Mol Sci. 2023 Aug 11;24(16). doi: 10.3390/ijms241612676. PMID 37628857.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/37628857/
 - Source checked on: 2026-09-27
@@ -17555,7 +17587,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Molecular narrative review of DIABETES MELLITUS SECONDARY TO ENDOCRINE DISEASES, describing the main endocrinopathies, namely acromegaly, Cushing's syndrome, Basedow-Graves' disease, pheochromocytoma, SOMATOSTATINOMA and glucagonoma, together with the impact of the associated hormone changes on blood sugar, body mass index and other diabetes-associated parameters, and covering epidemiological, physiopathological, clinical and therapeutic approaches. The authors emphasise THE IMPORTANCE OF SCREENING FOR DIABETIS IN ENDOCRINE DISEASES and the need to prevent the development of the disease and its complications and to reduce cardiovascular risk in these patients. Registered because it places this identity within the recognised differential of secondary diabetes and articulates the screening implication. DISCLOSED: a REVIEW covering six endocrinopathies together, reporting NO somatostatinoma-specific diabetes rate, so the entry is the only located source that names this identity in a secondary-diabetes context.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 482.3 — Jayaprakash V, Menon G. Somatostatinoma 2025 Jan. PMID 31869077.**
+**Row 483.3 — Jayaprakash V, Menon G. Somatostatinoma 2025 Jan. PMID 31869077.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/31869077/
 - Source checked on: 2026-09-27
@@ -17579,7 +17611,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 - Is the citation metadata exact against the PubMed record?
 
-**Row 483.1 — Theodoraki A, Khoo B, Hamda A, et al. Malignant somatostatinoma presenting with diabetic ketoacidosis and inhibitory syndrome: pathophysiologic considerations. Endocr Pract. 2010 Sep-Oct;16(5):835-7. doi: 10.4158/EP10109.CR. PMID 20497932.**
+**Row 484.1 — Theodoraki A, Khoo B, Hamda A, et al. Malignant somatostatinoma presenting with diabetic ketoacidosis and inhibitory syndrome: pathophysiologic considerations. Endocr Pract. 2010 Sep-Oct;16(5):835-7. doi: 10.4158/EP10109.CR. PMID 20497932.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/20497932/
 - Source checked on: 2026-09-27
@@ -17587,7 +17619,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Single case of malignant somatostatinoma presenting with diabetic ketoacidosis, in which the authors list CHOLELITHIASIS among the defining features of the somatostatinoma INHIBITORY SYNDROME together with mild nonketotic hyperglycaemia, hypochlorhydria, steatorrhea, anaemia and weight loss. Registered because it places cholelithiasis inside an explicitly defined syndrome rather than listing it in isolation, which is what makes the inhibitory mechanism claim coherent. DISCLOSED: the report's stated purpose was the ketoacidotic presentation, so the cholecystopathy entry is one element of a feature list and not a measured finding; the case is a single patient with disseminated disease and an unlocated primary.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 483.2 — Sandru F, Carsote M, Valea A, et al. Somatostatinoma: Beyond neurofibromatosis type 1 (Review). Exp Ther Med. 2020 Oct;20(4):3383-3388. doi: 10.3892/etm.2020.8965. PMID 32905002.**
+**Row 484.2 — Sandru F, Carsote M, Valea A, et al. Somatostatinoma: Beyond neurofibromatosis type 1 (Review). Exp Ther Med. 2020 Oct;20(4):3383-3388. doi: 10.3892/etm.2020.8965. PMID 32905002.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/32905002/
 - Source checked on: 2026-09-27
@@ -17595,7 +17627,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Narrative review of somatostatinoma including its relationship with neurofibromatosis type 1. CLINICAL PRESENTATION INCLUDES DIABETES MELLITUS, CHOLELITHIASIS, STEATORRHEA, ABDOMINAL PAIN AND OBSTRUCTIVE JAUNDICE, while a papillary tumour may cause acute pancreatitis; the neoplasia may be entirely asymptomatic or found incidentally at imaging or surgery; surgery is central where feasible but prognosis depends on location and WHO 2017 grading. The review states that DUODENAL SOMATOSTATINOMA IS ASSOCIATED WITH NEUROFIBROMATOSIS TYPE 1, whose syndrome actually involves MORE OFTEN A DUODENAL GASTROINTESTINAL STROMAL TUMOUR THAN A SOMATOSTATIN-SECRETING NEOPLASIA, and that one quarter of affected subjects have gastrointestinal tumours of different types. Registered for the feature list AND for its own population caveat. DISCLOSED: a NARRATIVE REVIEW listing a presentation, reporting NO stone-formation rate; the neurofibromatosis-type-1 duodenal content must not be imported into a general pancreatic population.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 483.3 — Vianna PM, Ferreira CR, de Campos FPF. Somatostatinoma syndrome: a challenging differential diagnosis among pancreatic tumors. Autops Case Rep. 2013 Jan-Mar;3(1):29-37. doi: 10.4322/acr.2013.005. PMID 31528595.**
+**Row 484.3 — Vianna PM, Ferreira CR, de Campos FPF. Somatostatinoma syndrome: a challenging differential diagnosis among pancreatic tumors. Autops Case Rep. 2013 Jan-Mar;3(1):29-37. doi: 10.4322/acr.2013.005. PMID 31528595.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/31528595/
 - Source checked on: 2026-09-27
@@ -17619,7 +17651,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 - Is the citation metadata exact against the PubMed record?
 
-**Row 484.1 — Jayaprakash V, Menon G. Somatostatinoma 2025 Jan. PMID 31869077.**
+**Row 485.1 — Jayaprakash V, Menon G. Somatostatinoma 2025 Jan. PMID 31869077.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/31869077/
 - Source checked on: 2026-09-27
@@ -17627,7 +17659,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Clinical reference summarising somatostatinoma, stating that the CLASSIC SYMPTOMS INCLUDE DIABETES MELLITUS, CHOLELITHIASIS AND STEATORRHEA; that pancreatic neuroendocrine tumours account for 1 to 3 percent of pancreatic cancers and approximately 15 percent are functional, with somatostatinomas less than 5 percent of functional pancreatic neuroendocrine tumours; that the first somatostatinoma was identified in the pancreas in 1977; that these tumours are most commonly in the head of the pancreas but may also be found in the periampullary region, ampulla and duodenum; and that evaluation requires clinical suspicion, biochemical testing, imaging and histopathologic confirmation. Registered for the consistent naming of steatorrhoea as a classic feature and for the anatomic-location range. DISCLOSED: this is a CLINICAL REFERENCE AND STUDY GUIDE, NOT PRIMARY EVIDENCE, and it establishes nothing about mechanism, frequency or nutritional consequence.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 484.2 — Sandru F, Carsote M, Valea A, et al. Somatostatinoma: Beyond neurofibromatosis type 1 (Review). Exp Ther Med. 2020 Oct;20(4):3383-3388. doi: 10.3892/etm.2020.8965. PMID 32905002.**
+**Row 485.2 — Sandru F, Carsote M, Valea A, et al. Somatostatinoma: Beyond neurofibromatosis type 1 (Review). Exp Ther Med. 2020 Oct;20(4):3383-3388. doi: 10.3892/etm.2020.8965. PMID 32905002.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/32905002/
 - Source checked on: 2026-09-27
@@ -17635,7 +17667,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Narrative review of somatostatinoma including its relationship with neurofibromatosis type 1. CLINICAL PRESENTATION INCLUDES DIABETES MELLITUS, CHOLELITHIASIS, STEATORRHEA, ABDOMINAL PAIN AND OBSTRUCTIVE JAUNDICE, with acute pancreatitis possible from a papillary tumour; the neoplasia may develop completely asymptomatic or be detected as an incidental finding during imaging or a surgical procedure; surgery is the central approach where feasible but prognosis depends on location and WHO 2017 neuroendocrine tumour grading. Registered as the second independent source naming steatorrhoea in this identity. DISCLOSED: a NARRATIVE REVIEW presenting a feature list, reporting NO rate, NO fat measurement and NO nutritional outcome, and noting that duodenal somatostatinoma in neurofibromatosis type 1 more often represents a gastrointestinal stromal tumour.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 484.3 — Del Olmo-García M, Hernandez-Rienda L, Argente Pla M, et al. Nutritional Management of Functioning GEP-NENs. Nutrients. 2025 Jun 30;17(13). doi: 10.3390/nu17132175. PMID 40647278.**
+**Row 485.3 — Del Olmo-García M, Hernandez-Rienda L, Argente Pla M, et al. Nutritional Management of Functioning GEP-NENs. Nutrients. 2025 Jun 30;17(13). doi: 10.3390/nu17132175. PMID 40647278.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/40647278/
 - Source checked on: 2026-09-27
@@ -17659,7 +17691,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 - Is the citation metadata exact against the PubMed record?
 
-**Row 485.1 — Hu A, Hillel A, Zhao W, et al. Anxiety and depression in spasmodic dysphonia patients. World J Otorhinolaryngol Head Neck Surg. 2018 Jun;4(2):110-116. doi: 10.1016/j.wjorl.2018.04.004. PMID 30101219.**
+**Row 486.1 — Hu A, Hillel A, Zhao W, et al. Anxiety and depression in spasmodic dysphonia patients. World J Otorhinolaryngol Head Neck Surg. 2018 Jun;4(2):110-116. doi: 10.1016/j.wjorl.2018.04.004. PMID 30101219.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/30101219/
 - Source checked on: 2026-09-27
@@ -17667,7 +17699,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: DISORDER-SPECIFIC RETROSPECTIVE COHORT of 142 spasmodic dysphonia patients presenting for botulinum toxin injections, mean age 59.2 years with 25.4 PERCENT MALE, mean Voice Handicap Index-10 26.3, General Self-Efficacy 33.2, CAPE-V 43.9, HADS ANXIETY 6.7 PLUS OR MINUS 3.7 and HADS DEPRESSION 3.6 PLUS OR MINUS 2.8. 19 PATIENTS, 13.4 PERCENT, HAD SYMPTOMS OF ANXIETY and 4, 2.8 PERCENT, SYMPTOMS OF DEPRESSION. Final linear regression for HADS anxiety explained 32.90 percent of variance, with patients LESS likely to have anxiety symptoms being older age (p LESS THAN 0.001), male (p EQUALS 0.002), of higher General Self-Efficacy (p LESS THAN 0.001) and of lower Voice Handicap Index-10 (p EQUALS 0.004). The authors open by recording that spasmodic dysphonia WAS ONCE BELIEVED PSYCHOGENIC, is now established as a neurological disorder, and that reported comorbid anxiety and depression rates in this population range from 7.1 TO 62 PERCENT, and conclude that their 13.4 percent and 2.8 percent prevalences are LOWER THAN PREVIOUSLY REPORTED. Registered as the only disorder-specific anchor and as the located source for the historical misclassification that this edge's conservative framing exists to prevent.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 485.2 — Weinstein HNW, Denham MW, Tucker LH, et al. Dysphonia Is Associated With Anxiety and Depression in the All of Us Research Program. Laryngoscope. 2026 Jun;136(6):2648-2654. doi: 10.1002/lary.70372. PMID 41555208.**
+**Row 486.2 — Weinstein HNW, Denham MW, Tucker LH, et al. Dysphonia Is Associated With Anxiety and Depression in the All of Us Research Program. Laryngoscope. 2026 Jun;136(6):2648-2654. doi: 10.1002/lary.70372. PMID 41555208.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/41555208/
 - Source checked on: 2026-09-27
@@ -17675,7 +17707,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: NATIONAL CROSS-SECTIONAL ANALYSIS of 283,137 adults aged 18 or older in the All of Us Research Program, mean age 56 years, 61 percent female, with multivariable logistic regression controlling for age, gender, race, ethnicity, insurance, education, smoking history, alcohol use and medical comorbidities. THOSE WITH DYSPHONIA HAD 1.44 TIMES THE ODDS OF ANXIETY (95% CI 1.37 TO 1.52) AND 1.34 TIMES THE ODDS OF DEPRESSION (95% CI 1.27 TO 1.41). Age-stratified anxiety odds were 1.62 (95% CI 1.14 to 2.30) at 18 to 30 years, 1.75 (1.49 to 2.07) above 30 to 45, 1.46 (1.33 to 1.67) above 45 to 60, 1.46 (1.35 to 1.58) above 60 to 75 and 1.36 (1.22 to 1.51) above 75; depression odds ranged from 2.36 in the youngest stratum to 1.22 in the oldest. The authors conclude that odds for both were highest in the youngest age group. Registered for scale, population size and covariate adjustment. DISCLOSED ON THE FACE OF THE EDGE: the exposure is ICD-10 R49.0 DYSPHONIA, A BROAD SYMPTOM CODE THAT DOES NOT SEPARATE SPASMODIC DYSPHONIA FROM ANY OTHER VOICE DISORDER, so these odds ratios apply to dysphonia as a coded symptom and CANNOT BE ATTRIBUTED TO THIS IDENTITY.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 485.3 — Hamdan AL, Ghzayel L, Yammine Y, et al. Correlation Between Anxiety, Depression, and Self-Perceived Hoarseness: A Case Series of 100 Lebanese Patients. J Voice. 2024 Nov 4. pii: S0892-1997(24)00349-7. doi: 10.1016/j.jvoice.2024.10.006. PMID 39500695.**
+**Row 486.3 — Hamdan AL, Ghzayel L, Yammine Y, et al. Correlation Between Anxiety, Depression, and Self-Perceived Hoarseness: A Case Series of 100 Lebanese Patients. J Voice. 2024 Nov 4. pii: S0892-1997(24)00349-7. doi: 10.1016/j.jvoice.2024.10.006. PMID 39500695.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/39500695/
 - Source checked on: 2026-09-27
@@ -17699,7 +17731,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 - Is the citation metadata exact against the PubMed record?
 
-**Row 486.1 — Hu A, Hillel A, Zhao W, et al. Anxiety and depression in spasmodic dysphonia patients. World J Otorhinolaryngol Head Neck Surg. 2018 Jun;4(2):110-116. doi: 10.1016/j.wjorl.2018.04.004. PMID 30101219.**
+**Row 487.1 — Hu A, Hillel A, Zhao W, et al. Anxiety and depression in spasmodic dysphonia patients. World J Otorhinolaryngol Head Neck Surg. 2018 Jun;4(2):110-116. doi: 10.1016/j.wjorl.2018.04.004. PMID 30101219.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/30101219/
 - Source checked on: 2026-09-27
@@ -17707,7 +17739,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: DISORDER-SPECIFIC RETROSPECTIVE COHORT of 142 spasmodic dysphonia patients presenting for botulinum toxin injections. HADS DEPRESSION 3.6 PLUS OR MINUS 2.8, and 4 PATIENTS, 2.8 PERCENT, HAD SYMPTOMS OF DEPRESSION, against 19, 13.4 percent, for anxiety. The final linear regression model for the HADS depression score explained 34.42 percent of variance, and the ONLY PREDICTOR WAS HIGH DISEASE-SPECIFIC SELF-EFFICACY, patients with higher disease-specific self-efficacy being LESS likely to have depressive symptoms (p LESS THAN 0.001). The authors record that reported comorbid anxiety and depression rates in this population span 7.1 TO 62 PERCENT and that their own prevalences are LOWER THAN PREVIOUSLY REPORTED. Registered as the only disorder-specific anchor and as the located source for the self-efficacy predictor that the mechanism claim depends on. DISCLOSED: selected treatment-seeking population, and a numerator of FOUR CASES cannot support a stable rate.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 486.2 — Hamdan AL, Daou CAZ, Semaan ZM, et al. Correlation Between Anxiety, Depression, and Self-Perceived Hoarseness: A Systematic Review of the Literature. J Voice. 2025 Jul 22. pii: S0892-1997(25)00223-1. doi: 10.1016/j.jvoice.2025.06.007. PMID 40701891.**
+**Row 487.2 — Hamdan AL, Daou CAZ, Semaan ZM, et al. Correlation Between Anxiety, Depression, and Self-Perceived Hoarseness: A Systematic Review of the Literature. J Voice. 2025 Jul 22. pii: S0892-1997(25)00223-1. doi: 10.1016/j.jvoice.2025.06.007. PMID 40701891.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/40701891/
 - Source checked on: 2026-09-27
@@ -17715,7 +17747,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: SYSTEMATIC REVIEW of the correlation between anxiety, depression and self-perceived hoarseness, following PRISMA, with 416 articles identified, 24 reviewed and 11 meeting inclusion criteria; most used the Voice Handicap Index or VHI-10 and the Hospital Anxiety and Depression Scale. The authors report that the included studies DEMONSTRATED A POSITIVE CORRELATION OF VARYING DEGREES BETWEEN ANXIETY, DEPRESSION AND SELF-PERCEIVED HOARSENESS, EXCEPT FOR PATIENTS WITH SPASMODIC DYSPHONIA IN ONE STUDY. Registered as the anchor that makes this edge CONTESTED rather than ordinary, and the reason it is ranked second. DISCLOSED: the exception is reported as ONE STUDY, and the review does not establish why the relationship failed to hold in this identity, whether through genuinely low prevalence, instrument behaviour in this population, or underpowering.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 486.3 — Weinstein HNW, Denham MW, Tucker LH, et al. Dysphonia Is Associated With Anxiety and Depression in the All of Us Research Program. Laryngoscope. 2026 Jun;136(6):2648-2654. doi: 10.1002/lary.70372. PMID 41555208.**
+**Row 487.3 — Weinstein HNW, Denham MW, Tucker LH, et al. Dysphonia Is Associated With Anxiety and Depression in the All of Us Research Program. Laryngoscope. 2026 Jun;136(6):2648-2654. doi: 10.1002/lary.70372. PMID 41555208.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/41555208/
 - Source checked on: 2026-09-27
@@ -17739,7 +17771,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 - Is the citation metadata exact against the PubMed record?
 
-**Row 487.1 — Filmar S, Hook S, Neuner B, et al. [Safety and feasibility of outpatient hydrocele and spermatocele surgery: a prospective comparative analysis]. Urologie. 2026 Jun 15. doi: 10.1007/s00120-026-02858-9. PMID 42295361.**
+**Row 488.1 — Filmar S, Hook S, Neuner B, et al. [Safety and feasibility of outpatient hydrocele and spermatocele surgery: a prospective comparative analysis]. Urologie. 2026 Jun 15. doi: 10.1007/s00120-026-02858-9. PMID 42295361.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/42295361/
 - Source checked on: 2026-09-27
@@ -17747,7 +17779,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: PROSPECTIVE COMPARATIVE ANALYSIS of 82 patients prospectively assigned to outpatient and inpatient HYDROCele AND SPERMATOCELE SURGERY, with postoperative complications recorded by Clavien-Dindo classification at 30 days. The authors define both as FLUID COLLECTIONS WITHIN THE SCROTUM and note that because of a LACK OF THERAPEUTIC GUIDELINES treatment is largely based on clinical experience, with surgery the gold standard in German-speaking countries. The OUTPATIENT COHORT SHOWED A SIGNIFICANTLY HIGHER RATE OF CLAVIEN-DINDO III DEGREE COMPLICATIONS (p LESS THAN 0.05) and outpatient patients significantly more often required antibiotic therapy, Clavien-Dindo II degree, (p EQUALS 0.002); no other risk factors for postoperative complications were identified, and the authors conclude that outpatient surgery should be questioned. Registered as the located source that establishes the shared-management framing. DISCLOSED: this article is in German with a German abstract, the two procedures are POOLED so the complication rates are combined-procedure rates, and the condition is therefore a shared pathway rather than a causal relationship.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 487.2 — Keller AK, Howard MM, Jensen JB. Complications after scrotal surgery - still a major issue?. Scand J Urol. 2021 Oct;55(5):404-407. doi: 10.1080/21681805.2021.1884131. PMID 33569989.**
+**Row 488.2 — Keller AK, Howard MM, Jensen JB. Complications after scrotal surgery - still a major issue?. Scand J Urol. 2021 Oct;55(5):404-407. doi: 10.1080/21681805.2021.1884131. PMID 33569989.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/33569989/
 - Source checked on: 2026-09-27
@@ -17755,7 +17787,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Scandinavian AUDIT OF COMPLICATIONS AFTER SCROTAL SURGERY, opening from the position that GOLD STANDARD TREATMENT OF SYMPTOMATIC HYDROCELE OR SPERMATOCELE IS SURGERY and that complications such as bleeding and infection leading to re-operations may be devastating. In the first 12-month period, 65 men were operated on: 22 contacted the department postoperatively for swelling or pain, 19 were examined and SIX WERE RE-OPERATED ONE TO NINE TIMES each; in the following year 69 were operated on, of whom 16 made contact, 13 were examined and five were re-operated. Complication rates did not differ between specialist urologists and supervised junior doctors, but patients examined and informed preoperatively by a SPECIALISED UROLOGIST had SIGNIFICANTLY FEWER COMPLICATIONS than those informed by residents and interns (p EQUALS 0.012). Registered as the located source with the most concrete complication data. DISCLOSED: the audit was prompted by an accumulation of complications and its focus was perioperative haemostasis and postoperative activity restriction, so the re-operations followed bleeding and infection and the specialist finding is a SERVICE result rather than a biological one.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 487.3 — Kliesch S. [Hydrocele, spermatocele, and vasectomy: management of complications]. Urologe A. 2014 May;53(5):671-5. doi: 10.1007/s00120-014-3486-4. PMID 24806800.**
+**Row 488.3 — Kliesch S. [Hydrocele, spermatocele, and vasectomy: management of complications]. Urologe A. 2014 May;53(5):671-5. doi: 10.1007/s00120-014-3486-4. PMID 24806800.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/24806800/
 - Source checked on: 2026-09-27
@@ -17779,7 +17811,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 - Is the citation metadata exact against the PubMed record?
 
-**Row 488.1 — Greenberg DR, Gago LC, Kumar SKSR, et al. Epididymal Cyst Lesions Are Not Associated With Impaired Semen Parameters Among Men Presenting for Fertility Evaluation. J Urol. 2024 Dec;212(6):891-898. doi: 10.1097/JU.0000000000004224. PMID 39186830.**
+**Row 489.1 — Greenberg DR, Gago LC, Kumar SKSR, et al. Epididymal Cyst Lesions Are Not Associated With Impaired Semen Parameters Among Men Presenting for Fertility Evaluation. J Urol. 2024 Dec;212(6):891-898. doi: 10.1097/JU.0000000000004224. PMID 39186830.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/39186830/
 - Source checked on: 2026-09-27
@@ -17787,7 +17819,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Retrospective cohort of 861 men presenting for fertility evaluation between 2002 and 2022 with at least one semen analysis and scrotal ultrasonography. EPIDIDYMAL CYST LESIONS INCLUDE BOTH SPERMATOCELES AND EPIDIDYMAL CYSTS; 164 men, 19 PERCENT, had a unilateral right lesion of median size 4 mm with interquartile range 3 to 8, 189, 22 PERCENT, a unilateral left lesion of median 4 mm with interquartile range 3 to 9, and 113, 13 PERCENT, bilateral lesions. Men with lesions were SIGNIFICANTLY OLDER than men without, but showed NO STATISTICALLY SIGNIFICANT DIFFERENCE in semen volume, sperm concentration, sperm motility, sperm morphology, total motile sperm count OR SERUM HORMONAL VALUES including testosterone and follicle-stimulating hormone; lesion SIZE AND LATERALITY did not significantly correlate with any semen parameter. The authors conclude that patients should be counselled toward conservative management with observation for asymptomatic lesions in the setting of fertility evaluation. Registered as the NULL anchor that carries this edge. DISCLOSED: the comparison is age-confounded because men with lesions were significantly older, and the median lesion size was 4 mm, so the null is a null for SMALL lesions.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 488.2 — Hou Y, Zhang Y, Li G, et al. Microsurgical Epididymal Cystectomy does not Impact Upon Sperm Count, Motility or Morphology and is a Safe and Effective Treatment for Epididymal Cystic Lesions (ECLs) in Young Men With Fertility Requirements. Urology. 2018 Dec;122:97-103. doi: 10.1016/j.urology.2018.08.007. PMID 30142407.**
+**Row 489.2 — Hou Y, Zhang Y, Li G, et al. Microsurgical Epididymal Cystectomy does not Impact Upon Sperm Count, Motility or Morphology and is a Safe and Effective Treatment for Epididymal Cystic Lesions (ECLs) in Young Men With Fertility Requirements. Urology. 2018 Dec;122:97-103. doi: 10.1016/j.urology.2018.08.007. PMID 30142407.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/30142407/
 - Source checked on: 2026-09-27
@@ -17795,7 +17827,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: Prospective evaluation of microsurgical epididymal cystectomy in 51 men with fertility requirements, followed at 3, 6 and 12 months. PALPATED CYST PAIN WAS PRESENT IN 32 OF 51, and PATHOLOGISTS IDENTIFIED 29 SPERMATOCELES AND 22 EPIDIDYMAL CYSTS. Mean operative time 39.27 minutes, mean postoperative stay 2.02 days, complication rate 7.3 PERCENT and no cyst recurrence during follow-up; scrotal pain disappeared in 80.4 PERCENT of patients and at a significantly higher rate in those with palpated pain. THERE WAS AN INSIGNIFICANT DIFFERENCE in sperm count, motility, morphology or NEUTRAL ALPHA-GLUCOSIDASE between pre-operation and post-operation at 1-year follow-up; sperm count and neutral alpha-glucosidase in patients with lesions GREATER THAN 2.5 CM were significantly INCREASED after surgery. Registered because it independently reproduces the reproductive null, and because it distinguishes spermatoceles from epididymal cysts by histopathology so the null is not an artefact of mixing lesion types. DISCLOSED: the primary claim is surgical efficacy, the reproductive finding is a secondary non-inferiority observation, and the improvement in lesions over 2.5 cm is a partial counterfinding to the null anchor.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 488.3 — Shan CJ, Lucon AM, Pagani R, et al. Sclerotherapy of hydroceles and spermatoceles with alcohol: results and effects on the semen analysis. Int Braz J Urol. 2011 May-Jun;37(3):307-12; discussion 312-33. PMID 21756377.**
+**Row 489.3 — Shan CJ, Lucon AM, Pagani R, et al. Sclerotherapy of hydroceles and spermatoceles with alcohol: results and effects on the semen analysis. Int Braz J Urol. 2011 May-Jun;37(3):307-12; discussion 312-33. PMID 21756377.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/21756377/
 - Source checked on: 2026-09-27
@@ -17819,7 +17851,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 - Is the citation metadata exact against the PubMed record?
 
-**Row 489.1 — Cacioppo M, Menard H, Olivari Philiponnet C, et al. Prevalence and risk factors for scoliosis in adults with closed and open spina bifida: A large, cross-sectional study. Ann Phys Rehabil Med. 2023 Mar;66(2):101685. doi: 10.1016/j.rehab.2022.101685. PMID 35717001.**
+**Row 490.1 — Cacioppo M, Menard H, Olivari Philiponnet C, et al. Prevalence and risk factors for scoliosis in adults with closed and open spina bifida: A large, cross-sectional study. Ann Phys Rehabil Med. 2023 Mar;66(2):101685. doi: 10.1016/j.rehab.2022.101685. PMID 35717001.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/35717001/
 - Source checked on: 2026-09-27
@@ -17827,7 +17859,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: LARGE CROSS-SECTIONAL STUDY of 580 adults attending a FIRST CONSULTATION at a French multidisciplinary spina bifida referral centre, of whom 331 met the inclusion criteria: 221 open and 110 closed spina bifida. 176 OF 331, 53 PERCENT, HAD SCOLIOSIS, 57 percent in the open and 45 percent in the closed form. Compared with adults without scoliosis, those with scoliosis more frequently had open spina bifida (p EQUALS 0.03), a more cranially located lesion (p LESS THAN 0.0001), more severe neurological deficits (p LESS THAN OR EQUAL TO 0.02) and poorer walking ability, mean new Functional Ambulation Classification score 3.5 against 6.1 (p LESS THAN 0.0001); the odds of scoliosis were associated with an asymmetrical motor level and a Functional Ambulation Classification score below 4. CONTRADICTORY NULL CARRIED ON THE EDGE: 69 PERCENT had chronic back pain with NO DIFFERENCE in frequency between those with and without scoliosis. Registered as the anchor that supplies the prevalence and the severity gradient, which is what makes the anatomical-level guard necessary.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 489.2 — Johari AN, Nemade A, Dhawale A, et al. Spinal dysraphism in congenital scoliosis and kyphosis: a retrospective analysis in an Indian population. Int Orthop. 2024 Jun;48(6):1589-1598. doi: 10.1007/s00264-024-06156-x. PMID 38581468.**
+**Row 490.2 — Johari AN, Nemade A, Dhawale A, et al. Spinal dysraphism in congenital scoliosis and kyphosis: a retrospective analysis in an Indian population. Int Orthop. 2024 Jun;48(6):1589-1598. doi: 10.1007/s00264-024-06156-x. PMID 38581468.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/38581468/
 - Source checked on: 2026-09-27
@@ -17851,7 +17883,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 - Is the citation metadata exact against the PubMed record?
 
-**Row 490.1 — Szymanski KM, Szymanski AJ, Salama AK, et al. Estimating and tracking renal function in children and adults with spina bifida. J Pediatr Urol. 2020 Apr;16(2):169-177. doi: 10.1016/j.jpurol.2019.12.009. PMID 31956092.**
+**Row 491.1 — Szymanski KM, Szymanski AJ, Salama AK, et al. Estimating and tracking renal function in children and adults with spina bifida. J Pediatr Urol. 2020 Apr;16(2):169-177. doi: 10.1016/j.jpurol.2019.12.009. PMID 31956092.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/31956092/
 - Source checked on: 2026-09-27
@@ -17859,7 +17891,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: CROSS-SECTIONAL STUDY of 209 CHILDREN with a median age of 10.3 years and 164 ADULTS with a median age of 26.3 years, estimating eGFR with FOUR PAEDIATRIC FORMULAS in those aged 2 to 17 and FOUR ADULT FORMULAS in those 18 and older, and categorising chronic kidney disease as stage 2 for an eGFR of 60 to 89 and stage 3 or higher for below 60. AMONG ADULTS, eGFR DECREASED FOR EVERY FORMULA EVALUATED, in the range -1.3 to -2.2 ml/min/1.73 m2 per year (p LESS THAN OR EQUAL TO 0.01), which the authors describe as GREATER THAN TWICE THE GENERAL POPULATION RATE, in which eGFR is stable after age 2 and falls by 0.3 to 0.8 per year in the first three decades after 18. THE PROPORTION OF ADULTS WITH CKD STAGE 2 OR HIGHER VARIED FROM 9.2 TO 30.5 PERCENT BY FORMULA, and comparing any two formulas assigned 8.5 TO 26.8 PERCENT a different CKD stage; among children the proportion varied from 11.5 to 58.9 percent. THE AUTHORS STATE THEY CANNOT RELIABLY DETERMINE WHETHER eGFR CHANGED DURING CHILDHOOD because the paediatric formulas disagreed in direction as well as magnitude, one showing a rise of +2.7 per year. They also note that little data exists for this population given VARIABILITY IN MUSCLE MASS and that no validated spina bifida-specific eGFR formula exists. Registered as the anchor for the rate of decline AND for the measurement instability, which is stated on the face of the edge.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 490.2 — Ekberlİ G, Taner S. Risk determination for upper urinary tract damage in children with neuropathic bladder. J Paediatr Child Health. 2023 Jul;59(7):863-870. doi: 10.1111/jpc.16402. PMID 36999336.**
+**Row 491.2 — Ekberlİ G, Taner S. Risk determination for upper urinary tract damage in children with neuropathic bladder. J Paediatr Child Health. 2023 Jul;59(7):863-870. doi: 10.1111/jpc.16402. PMID 36999336.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/36999336/
 - Source checked on: 2026-09-27
@@ -17867,7 +17899,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: RETROSPECTIVE REVIEW OF 117 CHILDREN WITH NEUROPATHIC BLADDER followed for at least one year in combined paediatric urology and nephrology units, 73 female and 44 male, mean age 6.7 years, patients under one year excluded. THE LEADING CAUSE OF NEUROPATHIC BLADDER WAS NEUROSPINAL DYSRAPHISM WITH 103 OF 117 PATIENTS, 88.1 PERCENT. Urinary tract ultrasound revealed HYDRONEPHROSIS IN 44 PATIENTS, 35.9 PERCENT, PARENCHYMAL THINNING IN 20, 17.1 PERCENT, increased parenchymal echo in 20, 17.1 PERCENT, and BLADDER TRABECULATION OR INCREASED WALL THICKNESS IN 51, 43.6 PERCENT. The authors state that neurogenic detrusor overactivity contributes to detrusor-sphincter dysfunction producing lower urinary tract symptoms such as incontinence, that UPPER URINARY TRACT DETERIORATION is among the most progressive and at the same time preventable results of neuropathic bladder, that the aim is reduction in bladder pressures and minimisation of urine stasis in order to prevent or at least attenuate renal disease, and that despite worldwide neural tube defect prevention strategies patients will continue to be born with a neuropathic bladder at risk of long-term renal damage. Registered for the anatomical substrate of the decline and for the pathway framing.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 490.3 — Wishahi M. Lower urinary tract dysfunction in pediatrics progress to kidney disease in adolescents: Toward precision medicine in treatment. World J Nephrol. 2021 Jul 25;10(4):37-46. doi: 10.5527/wjn.v10.i4.37. PMID 34430383.**
+**Row 491.3 — Wishahi M. Lower urinary tract dysfunction in pediatrics progress to kidney disease in adolescents: Toward precision medicine in treatment. World J Nephrol. 2021 Jul 25;10(4):37-46. doi: 10.5527/wjn.v10.i4.37. PMID 34430383.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/34430383/
 - Source checked on: 2026-09-27
@@ -17891,7 +17923,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 - Is the citation metadata exact against the PubMed record?
 
-**Row 491.1 — Showen A, Copp HL, Allen IE, et al. Characteristics Associated With Depression, Anxiety, and Social Isolation in Adults With Spina Bifida. Urology. 2021 Mar;149:255-262. doi: 10.1016/j.urology.2020.11.016. PMID 33221413.**
+**Row 492.1 — Showen A, Copp HL, Allen IE, et al. Characteristics Associated With Depression, Anxiety, and Social Isolation in Adults With Spina Bifida. Urology. 2021 Mar;149:255-262. doi: 10.1016/j.urology.2020.11.016. PMID 33221413.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/33221413/
 - Source checked on: 2026-09-27
@@ -17899,7 +17931,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: ANONYMOUS SURVEY of around 195 adults with congenital urologic conditions recruited via FACEBOOK ADVERTISING, with adults with spina bifida included, assessing lower urinary tract dysfunction with the NEUROGENIC BLADDER SYMPTOM SCORE and depression, anxiety and social isolation with PATIENT-REPORTED OUTCOME MEASURES INFORMATION SYSTEM instruments, and constructing a composite depression-anxiety score. RATES OF DEPRESSION, ANXIETY AND SOCIAL ISOLATION WERE 48 PERCENT, 47 PERCENT AND 43 PERCENT RESPECTIVELY, with COMORBID DEPRESSION AND ANXIETY IN 39 PERCENT of subjects. On ADJUSTED REGRESSION, LOWER URINARY TRACT DYSFUNCTION WAS ASSOCIATED WITH DEPRESSION (p LESS THAN .001), ANXIETY (p LESS THAN .001), the composite depression-anxiety score (p LESS THAN .001) and SOCIAL ISOLATION (p EQUALS .010). The authors conclude that depression, anxiety and social isolation are common in individuals with spina bifida relative to the general population and associated with lower urinary tract dysfunction, and recommend interventions targeting lower urinary tract symptoms and function, group psychotherapy, and comorbid depression and anxiety. Registered as the anchor that identifies a lower urinary tract symptom score as the INDEPENDENT CORRELATE, which is what makes the mechanism claim clinical rather than generic. DISCLOSED: a SELF-SELECTED VOLUNTEER SAMPLE, so the percentages are respondent rates, and the authors' own wording is that characteristics are ASSOCIATED WITH the outcomes.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 491.2 — Sciscent BY, Hallan DR, Rizk EB. Mental health and substance use disorders in young adults with spina bifida. J Neurosurg Pediatr. 2023 Mar 17:1-7. doi: 10.3171/2023.2.PEDS22504. PMID 36933266.**
+**Row 492.2 — Sciscent BY, Hallan DR, Rizk EB. Mental health and substance use disorders in young adults with spina bifida. J Neurosurg Pediatr. 2023 Mar 17:1-7. doi: 10.3171/2023.2.PEDS22504. PMID 36933266.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/36933266/
 - Source checked on: 2026-09-27
@@ -17907,7 +17939,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: RETROSPECTIVE TRINETX QUERY IDENTIFYING 18- TO 25-YEAR-OLD PATIENTS WITH SPINA BIFIDA, COMPARED AFTER PROPENSITY SCORE MATCHING WITH 1,494 PATIENTS IN EACH COHORT, and additionally compared with patients with a spinal cord injury, with subgroup analysis for hydrocephalus and neurogenic bladder. AFTER MATCHING, SPINA BIFIDA PATIENTS WERE MORE LIKELY THAN MATCHED PEERS TO HAVE DEPRESSION (odds ratio 1.949, 95% CI 1.64 TO 2.317), ANXIETY (1.603, 95% CI 1.359 TO 1.891), SOMATOFORM DISORDERS (2.102, 95% CI 1.052 TO 4.199) and SUICIDAL IDEATIONS OR ATTEMPTS AND SELF-HARM (1.424, 95% CI 1.014 TO 1.999); the prevalence of attention-deficit/hyperactivity disorder and eating disorders was comparable between cohorts. Patients also had increased rates of nicotine dependence (1.546, 95% CI 1.22 to 1.959) but not of alcohol or opioid disorders, and the presence of hydrocephalus and neurogenic bladder WAS NOT ASSOCIATED with significantly increased rates of any measured disorder, a null recorded on this edge. Compared with spinal cord injury, spina bifida patients were more likely to have anxiety (1.377, 95% CI 1.028 to 1.845) and attention-deficit/hyperactivity disorder (1.875, 95% CI 1.084 to 3.242) but had LOWER nicotine dependence (0.682, 95% CI 0.482 to 0.963) and opioid-related disorders (0.434, 95% CI 0.223 to 0.845). Registered as the anchor that carries the edge, being the only design that addresses confounding. DISCLOSED: ICD-10-CODED DIAGNOSES rather than instrument scores, so TREATED OR RECORDED DEPRESSION rather than current symptoms, and a matched odds ratio rather than a prevalence.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 491.3 — Lidal IB, Lundberg Larsen K. Anxiety, depression, and fatigue in middle-aged and older persons with spina bifida: a cross-sectional study. Disabil Rehabil. 2022 Dec;44(25):7936-7946. doi: 10.1080/09638288.2021.2003453. PMID 34826231.**
+**Row 492.3 — Lidal IB, Lundberg Larsen K. Anxiety, depression, and fatigue in middle-aged and older persons with spina bifida: a cross-sectional study. Disabil Rehabil. 2022 Dec;44(25):7936-7946. doi: 10.1080/09638288.2021.2003453. PMID 34826231.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/34826231/
 - Source checked on: 2026-09-27
@@ -17931,7 +17963,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 - Is the citation metadata exact against the PubMed record?
 
-**Row 492.1 — Radiotis G, Roberts N, Czajkowska Z, et al. Nonmelanoma skin cancer: disease-specific quality-of-life concerns and distress. Oncol Nurs Forum. 2014 Jan 1;41(1):57-65. doi: 10.1188/14.ONF.57-65. PMID 24368239.**
+**Row 493.1 — Radiotis G, Roberts N, Czajkowska Z, et al. Nonmelanoma skin cancer: disease-specific quality-of-life concerns and distress. Oncol Nurs Forum. 2014 Jan 1;41(1):57-65. doi: 10.1188/14.ONF.57-65. PMID 24368239.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/24368239/
 - Source checked on: 2026-09-27
@@ -17939,7 +17971,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: CROSS-SECTIONAL STUDY OF 56 PATIENTS WITH BASAL CELL CARCINOMA AND/OR SQUAMOUS CELL CARCINOMA at a skin cancer clinic, measuring the importance of appearance, psychological distress and quality of life with quantitative self-report data. THE MOST PREVALENT CONCERNS WERE WORRIES ABOUT TUMOUR RECURRENCE AND THE POTENTIAL SIZE AND CONSPICUOUSNESS OF THE SCAR. SKIN CANCER-SPECIFIC QUALITY-OF-LIFE CONCERNS SIGNIFICANTLY PREDICTED DISTRESS MANIFESTING THROUGH ANXIOUS AND DEPRESSIVE SYMPTOMOLOGY, and the social concerns related to the disease were the MOST SIGNIFICANT PREDICTOR of distress. The authors conclude that the findings give healthcare professionals a broad picture of the most prevalent non-melanoma skin cancer-specific concerns and emphasise the often-overlooked psychosocial effects of the disease. Registered as the anchor that supplies the CONTENT of the distress, which is what makes the mechanism claim concrete. DISCLOSED: the sample is MIXED BASAL AND SQUAMOUS CELL CARCINOMA and is not separated by histology, and it is a single-clinic cross-sectional sample of 56.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 492.2 — Körner A, Garland R, Czajkowska Z, et al. Supportive care needs and distress in patients with non-melanoma skin cancer: Nothing to worry about?. Eur J Oncol Nurs. 2016 Feb;20:150-5. doi: 10.1016/j.ejon.2015.07.006. PMID 26236032.**
+**Row 493.2 — Körner A, Garland R, Czajkowska Z, et al. Supportive care needs and distress in patients with non-melanoma skin cancer: Nothing to worry about?. Eur J Oncol Nurs. 2016 Feb;20:150-5. doi: 10.1016/j.ejon.2015.07.006. PMID 26236032.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/26236032/
 - Source checked on: 2026-09-27
@@ -17947,7 +17979,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: CROSS-SECTIONAL STUDY OF 60 CONSECUTIVE PATIENTS WITH SQUAMOUS AND/OR BASAL CELL CARCINOMA, assessed with the Skin Cancer Index, the HOSPITAL ANXIETY AND DEPRESSION SCALE, the Supportive Care Needs survey, an inquiry on informational needs regarding skin cancer prevention and a socio-demographic questionnaire. MORE THAN HALF OF THE PATIENTS INDICATED UNMET NEEDS, most frequently endorsing moderate and high needs for help with THE PREVENTION OF FUTURE SKIN CANCERS and with the health system and informational matters. PSYCHOLOGICAL NEEDS WERE STRONGLY ASSOCIATED with skin cancer-specific and general distress, and HIGHER LEVELS OF ANXIOUS AND DEPRESSIVE SYMPTOMS WERE RELATED TO GREATER PATIENT NEEDS ACROSS ALL DOMAINS. The authors open by noting the paucity of psychosocial research on non-melanoma skin cancer, state that these malignancies mainly develop on the head and neck, frequently recur and are associated with an increased risk for other cancers, and conclude that despite non-melanoma skin cancer NOT BEING LIFE THREATENING IN MOST CASES there is a significant proportion of patients with unmet supportive care needs and heightened distress. Registered for the needs analysis and for the authors' explicit framing that the disease is not usually life-threatening, which is the located reason the distress is not dismissed. DISCLOSED: MIXED squamous and basal population, single-centre, cross-sectional, no control group.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 492.3 — Sauer C, Ullerich C, Livingstone E, et al. Psychosocial distress and psychosocial resources in couples facing non-melanoma skin cancers and malignant melanoma. J Psychosoc Oncol. 2025;43(2):173-188. doi: 10.1080/07347332.2024.2371344. PMID 38959518.**
+**Row 493.3 — Sauer C, Ullerich C, Livingstone E, et al. Psychosocial distress and psychosocial resources in couples facing non-melanoma skin cancers and malignant melanoma. J Psychosoc Oncol. 2025;43(2):173-188. doi: 10.1080/07347332.2024.2371344. PMID 38959518.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/38959518/
 - Source checked on: 2026-09-27
@@ -17971,7 +18003,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 - Is the citation metadata exact against the PubMed record?
 
-**Row 493.1 — Radiotis G, Roberts N, Czajkowska Z, et al. Nonmelanoma skin cancer: disease-specific quality-of-life concerns and distress. Oncol Nurs Forum. 2014 Jan 1;41(1):57-65. doi: 10.1188/14.ONF.57-65. PMID 24368239.**
+**Row 494.1 — Radiotis G, Roberts N, Czajkowska Z, et al. Nonmelanoma skin cancer: disease-specific quality-of-life concerns and distress. Oncol Nurs Forum. 2014 Jan 1;41(1):57-65. doi: 10.1188/14.ONF.57-65. PMID 24368239.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/24368239/
 - Source checked on: 2026-09-27
@@ -17979,7 +18011,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: CROSS-SECTIONAL STUDY OF 56 PATIENTS WITH BASAL CELL CARCINOMA AND/OR SQUAMOUS CELL CARCINOMA measuring appearance importance, psychological distress and quality of life. THE MOST PREVALENT CONCERNS WERE WORRIES ABOUT TUMOUR RECURRENCE AND THE POTENTIAL SIZE AND CONSPICUOUSNESS OF THE SCAR, and skin cancer-specific quality-of-life concerns significantly predicted distress manifesting through ANXIOUS AND DEPRESSIVE SYMPTOMOLOGY, with social concerns the most significant predictor. Registered as the anchor that supplies the anticipatory and social content, and as the located source that identifies recurrence fear as the most prevalent concern while using an instrument that does not measure recurrence fear specifically. DISCLOSED: MIXED BASAL AND SQUAMOUS population, single clinic, cross-sectional, n = 56, and the anxiety finding is a stratum of a combined distress measure.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 493.2 — Körner A, Garland R, Czajkowska Z, et al. Supportive care needs and distress in patients with non-melanoma skin cancer: Nothing to worry about?. Eur J Oncol Nurs. 2016 Feb;20:150-5. doi: 10.1016/j.ejon.2015.07.006. PMID 26236032.**
+**Row 494.2 — Körner A, Garland R, Czajkowska Z, et al. Supportive care needs and distress in patients with non-melanoma skin cancer: Nothing to worry about?. Eur J Oncol Nurs. 2016 Feb;20:150-5. doi: 10.1016/j.ejon.2015.07.006. PMID 26236032.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/26236032/
 - Source checked on: 2026-09-27
@@ -17987,7 +18019,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: CROSS-SECTIONAL STUDY OF 60 CONSECUTIVE PATIENTS WITH SQUAMOUS AND/OR BASAL CELL CARCINOMA assessed with the Skin Cancer Index, HOSPITAL ANXIETY AND DEPRESSION SCALE and Supportive Care Needs survey. More than half reported unmet needs, most frequently for help with prevention of future skin cancers and with the health system and informational matters. Psychological needs were strongly associated with skin cancer-specific and general distress, and HIGHER LEVELS OF ANXIOUS AND DEPRESSIVE SYMPTOMS WERE RELATED TO GREATER PATIENT NEEDS ACROSS ALL DOMAINS. The authors note that these malignancies mainly develop on the head and neck, frequently recur and are associated with an increased risk for other cancers, and conclude that despite the disease NOT BEING LIFE THREATENING IN MOST CASES a significant proportion of patients have unmet needs and heightened distress. Registered for the symptom-to-need relationship. DISCLOSED: MIXED histology, single centre, cross-sectional, no control group, and anxiety is again a stratum of a combined instrument.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 493.3 — Sauer C, Ullerich C, Livingstone E, et al. Psychosocial distress and psychosocial resources in couples facing non-melanoma skin cancers and malignant melanoma. J Psychosoc Oncol. 2025;43(2):173-188. doi: 10.1080/07347332.2024.2371344. PMID 38959518.**
+**Row 494.3 — Sauer C, Ullerich C, Livingstone E, et al. Psychosocial distress and psychosocial resources in couples facing non-melanoma skin cancers and malignant melanoma. J Psychosoc Oncol. 2025;43(2):173-188. doi: 10.1080/07347332.2024.2371344. PMID 38959518.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/38959518/
 - Source checked on: 2026-09-27
@@ -18011,7 +18043,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 - Is the citation metadata exact against the PubMed record?
 
-**Row 494.1 — Stewart TJ, Farrell JA, Frew JW. Psychological Complications of Stevens-Johnson Syndrome and Toxic Epidermal Necrolysis: A Systematic Review and Meta-Analysis. Australas J Dermatol. 2025 Dec;66(8):e490-e500. doi: 10.1111/ajd.14613. PMID 41174859.**
+**Row 495.1 — Stewart TJ, Farrell JA, Frew JW. Psychological Complications of Stevens-Johnson Syndrome and Toxic Epidermal Necrolysis: A Systematic Review and Meta-Analysis. Australas J Dermatol. 2025 Dec;66(8):e490-e500. doi: 10.1111/ajd.14613. PMID 41174859.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/41174859/
 - Source checked on: 2026-09-27
@@ -18019,7 +18051,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: PRISMA SYSTEMATIC REVIEW AND META-ANALYSIS, REGISTERED WITH INPLASY, of observational studies of psychiatric complications and quality of life in ADULTS WITH SJS AND TEN, with potential bias assessed using the NIH criteria. TEN ARTICLES DESCRIBING 1,123 CASES AND 2,687 CONTROLS were included. THE AUTHORS STATE THE OVERALL QUALITY OF THE STUDIES WAS SUBOPTIMAL AND THE LEVEL OF HETEROGENEITY VERY HIGH AT I-SQUARED 96 PERCENT. Meta-analysis of eight studies with fifteen study groups, n EQUALS 2,120, showed A POOLED PREVALENCE OF PSYCHIATRIC COMPLICATIONS OF 24.9 PERCENT IN SJS AND TEN PATIENTS. The authors report that survivors suffer a high burden of psychological complications including POST-TRAUMATIC STRESS DISORDER, DEPRESSION, ANXIETY and quality of life impairment, that the population would likely benefit from early multidisciplinary input and long-term follow-up, and that additional larger controlled studies are needed. Registered as the only located pooled prevalence, with the authors' own quality and heterogeneity statements carried on the face of the edge. DISCLOSED: the population is SJS AND TEN MERGED, and the pooled figure cannot be split to this identity.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 494.2 — Hoffman M, Chansky PB, Bashyam AR, et al. Long-term Physical and Psychological Outcomes of Stevens-Johnson Syndrome/Toxic Epidermal Necrolysis. JAMA Dermatol. 2021 Jun 1;157(6):712-715. doi: 10.1001/jamadermatol.2021.1136. PMID 33950191.**
+**Row 495.2 — Hoffman M, Chansky PB, Bashyam AR, et al. Long-term Physical and Psychological Outcomes of Stevens-Johnson Syndrome/Toxic Epidermal Necrolysis. JAMA Dermatol. 2021 Jun 1;157(6):712-715. doi: 10.1001/jamadermatol.2021.1136. PMID 33950191.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/33950191/
 - Source checked on: 2026-09-27
@@ -18027,7 +18059,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: SURVEY AT 11 US ACADEMIC HEALTH CENTRES OF 121 ADULTS DIAGNOSED WITH SJS OR TEN by inpatient consultative dermatologists between 2009 and 2019, conducted to examine the CHRONIC physical and psychological sequelae, of which the authors note LESS IS KNOWN than for the acute phase. Patients completed the PATIENT HEALTH QUESTIONNAIRE-9, the GENERALIZED ANXIETY DISORDER-7, a Primary Care Post-Traumatic Stress Disorder screen and the 12-item Short Form Health Survey, together with study-team questions on fear, patient education and long-term sequelae. Registered as the widest sampling frame located for this identity and as the source whose explicit purpose is the chronic rather than the acute phase. DISCLOSED: CROSS-SECTIONAL, the instruments are SCREENING RATHER THAN DIAGNOSTIC, and the population is SJS OR TEN MERGED with no split reported.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 494.3 — Cekic S, Canitez Y, Yuksel H, et al. A Comprehensive Assessment of Long-Term Complications in Patients with Stevens-Johnson Syndrome and Toxic Epidermal Necrolysis. Int Arch Allergy Immunol. 2023;184(10):994-1002. doi: 10.1159/000531366. PMID 37494888.**
+**Row 495.3 — Cekic S, Canitez Y, Yuksel H, et al. A Comprehensive Assessment of Long-Term Complications in Patients with Stevens-Johnson Syndrome and Toxic Epidermal Necrolysis. Int Arch Allergy Immunol. 2023;184(10):994-1002. doi: 10.1159/000531366. PMID 37494888.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/37494888/
 - Source checked on: 2026-09-27
@@ -18051,7 +18083,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 - Is the citation metadata exact against the PubMed record?
 
-**Row 495.1 — Stewart TJ, Farrell JA, Frew JW. Psychological Complications of Stevens-Johnson Syndrome and Toxic Epidermal Necrolysis: A Systematic Review and Meta-Analysis. Australas J Dermatol. 2025 Dec;66(8):e490-e500. doi: 10.1111/ajd.14613. PMID 41174859.**
+**Row 496.1 — Stewart TJ, Farrell JA, Frew JW. Psychological Complications of Stevens-Johnson Syndrome and Toxic Epidermal Necrolysis: A Systematic Review and Meta-Analysis. Australas J Dermatol. 2025 Dec;66(8):e490-e500. doi: 10.1111/ajd.14613. PMID 41174859.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/41174859/
 - Source checked on: 2026-09-27
@@ -18059,7 +18091,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: PRISMA SYSTEMATIC REVIEW AND META-ANALYSIS, registered with INPLASY, of observational studies of psychiatric complications and quality of life in ADULTS WITH SJS AND TEN, bias assessed with NIH criteria. TEN ARTICLES DESCRIBING 1,123 CASES AND 2,687 CONTROLS were included; eight studies with fifteen study groups, n EQUALS 2,120, contributed to the meta-analysis, which found A POOLED PREVALENCE OF PSYCHIATRIC COMPLICATIONS OF 24.9 PERCENT. The authors report a high burden including POST-TRAUMATIC STRESS DISORDER, DEPRESSION AND ANXIETY together with quality of life impairment, state that the overall quality of the studies was SUBOPTIMAL and the heterogeneity VERY HIGH at I-squared 96 PERCENT, and conclude that this population would likely benefit from early multidisciplinary input and long-term follow-up. Registered as the only located pooled prevalence, with the trauma, depression and anxiety components named separately as the located evidence does. DISCLOSED: the 24.9 percent is for PSYCHIATRIC COMPLICATIONS AS A WHOLE rather than for anxiety, and the population is SJS AND TEN MERGED.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 495.2 — Hoffman M, Chansky PB, Bashyam AR, et al. Long-term Physical and Psychological Outcomes of Stevens-Johnson Syndrome/Toxic Epidermal Necrolysis. JAMA Dermatol. 2021 Jun 1;157(6):712-715. doi: 10.1001/jamadermatol.2021.1136. PMID 33950191.**
+**Row 496.2 — Hoffman M, Chansky PB, Bashyam AR, et al. Long-term Physical and Psychological Outcomes of Stevens-Johnson Syndrome/Toxic Epidermal Necrolysis. JAMA Dermatol. 2021 Jun 1;157(6):712-715. doi: 10.1001/jamadermatol.2021.1136. PMID 33950191.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/33950191/
 - Source checked on: 2026-09-27
@@ -18067,7 +18099,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: SURVEY AT 11 US ACADEMIC HEALTH CENTRES OF 121 ADULTS DIAGNOSED WITH SJS OR TEN by inpatient consultative dermatologists between 2009 and 2019, examining the CHRONIC physical and psychological sequelae of which LESS IS KNOWN than for the acute phase. Patients completed the PATIENT HEALTH QUESTIONNAIRE-9, the GENERALIZED ANXIETY DISORDER-7, a Primary Care Post-Traumatic Stress Disorder screen and the 12-item Short Form Health Survey, plus study-team questions on fear, patient education and long-term sequelae. Registered as the widest adult sampling frame located for this identity and as the source separating an anxiety instrument from a trauma instrument. DISCLOSED: CROSS-SECTIONAL, SCREENING rather than diagnostic instruments, and the population is SJS OR TEN MERGED with no split reported.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 495.3 — Hong S, Quon J, Nelson CA. Mental health and psychosocial outcomes in survivors of severe cutaneous adverse reactions: a scoping review. Clin Exp Dermatol. 2025 Aug 22;50(9):1755-1765. doi: 10.1093/ced/llaf202. PMID 40354513.**
+**Row 496.3 — Hong S, Quon J, Nelson CA. Mental health and psychosocial outcomes in survivors of severe cutaneous adverse reactions: a scoping review. Clin Exp Dermatol. 2025 Aug 22;50(9):1755-1765. doi: 10.1093/ced/llaf202. PMID 40354513.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/40354513/
 - Source checked on: 2026-09-27
@@ -18091,7 +18123,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 - Is the citation metadata exact against the PubMed record?
 
-**Row 496.1 — Akgun Z, Can GD, Selver OB. Ocular involvement in Stevens-Johnson syndrome and toxic epidermal necrolysis: A review of current management and changing trends. Indian J Ophthalmol. 2025 Dec 1;73(12):1711-1722. doi: 10.4103/IJO.IJO_1119_25. PMID 41288622.**
+**Row 497.1 — Akgun Z, Can GD, Selver OB. Ocular involvement in Stevens-Johnson syndrome and toxic epidermal necrolysis: A review of current management and changing trends. Indian J Ophthalmol. 2025 Dec 1;73(12):1711-1722. doi: 10.4103/IJO.IJO_1119_25. PMID 41288622.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/41288622/
 - Source checked on: 2026-09-27
@@ -18099,7 +18131,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: REVIEW OF OCULAR INVOLVEMENT IN STEVENS-JOHNSON SYNDROME AND TOXIC EPIDERMAL NECROLYSIS covering the evolution of acute and chronic stage classification and the corresponding changes in management. AMNIOTIC MEMBRANE TRANSPLANTATION is described as efficacious for controlling acute inflammation particularly in severe or extreme presentations, with practical methods such as sutureless placement introduced. The authors state that TO MANAGE THE CHRONIC STAGE IT IS OF THE UTMOST IMPORTANCE TO CORRECTLY IDENTIFY THE UNDERLYING PROBLEM, and that beyond minor salivary gland transplantation and PUNCTAL OCCLUSION the REHABILITATIVE MANAGEMENT OF THE OCULAR SURFACE encompasses specially designed scleral lenses, specifically Prosthetic Replacement of the Ocular Surface Ecosystem; autologous mucosal membrane grafting has recently seen a resurgence, and cultured and simple limbal epithelial transplantation represent significant advances. CRITICALLY, THE SUCCESS RATE OF KERATOPLASTY AND KERATOPLASTESIS REMAINS LOW, although establishing good ocular surface homeostasis beforehand significantly improves the outcome. Registered as the anchor that establishes the chronic ocular problem as one of correct identification and ocular surface rehabilitation, and as the located source for the low-success-rate caveat. DISCLOSED: a MANAGEMENT REVIEW reporting no prevalence, with the population titled as SJS AND TOXIC EPIDERMAL NECROLYSIS together.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 496.2 — Pickens ML, Pickens JL, Duffy S, et al. Ocular outcomes of amniotic membrane transplantation in acute and chronic Stevens-Johnson syndrome and toxic epidermal necrolysis: a systematic review. Int Ophthalmol. 2026 Aug 28;46(1). pii: 353. doi: 10.1007/s10792-026-04242-0. PMID 42663738.**
+**Row 497.2 — Pickens ML, Pickens JL, Duffy S, et al. Ocular outcomes of amniotic membrane transplantation in acute and chronic Stevens-Johnson syndrome and toxic epidermal necrolysis: a systematic review. Int Ophthalmol. 2026 Aug 28;46(1). pii: 353. doi: 10.1007/s10792-026-04242-0. PMID 42663738.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/42663738/
 - Source checked on: 2026-09-27
@@ -18107,7 +18139,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: SYSTEMATIC REVIEW OF AMNIOTIC MEMBRANE TRANSPLANTATION IN ACUTE AND CHRONIC STEVENS-JOHNSON SYNDROME AND TOXIC EPIDERMAL NECROLYSIS, examining visual and therapeutic outcomes across both phases of the disease. Registered because it addresses the ACUTE AND CHRONIC phases together, which is what makes it usable for a chronic-phase claim in an identity whose ocular disease is frequently assessed in the acute phase only, a problem the paediatric follow-up cohort in the sibling depressive-disorder edge independently documented by finding new ocular involvement in patients whose acute-phase eye examination had been normal. DISCLOSED: a THERAPEUTIC SYSTEMATIC REVIEW of an intervention, not a natural-history study, so it supplies no prevalence or severity distribution, and its population is SJS AND TOXIC EPIDERMAL NECROLYSIS MERGED.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 496.3 — Singh S, Basu S. 5-Fluorouracil as a targeted lacrimal gland therapy for chronic Stevens-Johnson syndrome: A pilot study. Indian J Ophthalmol. 2023 Apr;71(4):1626-1629. doi: 10.4103/IJO.IJO_2647_22. PMID 37026313.**
+**Row 497.3 — Singh S, Basu S. 5-Fluorouracil as a targeted lacrimal gland therapy for chronic Stevens-Johnson syndrome: A pilot study. Indian J Ophthalmol. 2023 Apr;71(4):1626-1629. doi: 10.4103/IJO.IJO_2647_22. PMID 37026313.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/37026313/
 - Source checked on: 2026-09-27
@@ -18131,7 +18163,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 - Is the citation metadata exact against the PubMed record?
 
-**Row 497.1 — Mohan MP, Pili R, Epstein JB, et al. Cancer treatment-induced ulcerative mucositis serves as a significant predictor of burden of illness including dysphagia, and associated disparities among hospitalized cancer patients. Support Care Cancer. 2024 Dec 12;33(1):22. doi: 10.1007/s00520-024-09071-4. PMID 39666090.**
+**Row 498.1 — Mohan MP, Pili R, Epstein JB, et al. Cancer treatment-induced ulcerative mucositis serves as a significant predictor of burden of illness including dysphagia, and associated disparities among hospitalized cancer patients. Support Care Cancer. 2024 Dec 12;33(1):22. doi: 10.1007/s00520-024-09071-4. PMID 39666090.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/39666090/
 - Source checked on: 2026-09-27
@@ -18139,7 +18171,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: NATIONAL-DATA STUDY USING GENERALIZED LINEAR MODELS to examine the association of CHEMOTHERAPY-INDUCED ORAL ULCERATIVE MUCOSITIS and RADIOTHERAPY-INDUCED ORAL ULCERATIVE MUCOSITIS with burden of illness measured as length of stay and dysphagia, among 820 patients with chemotherapy-induced and 1,010 with radiotherapy-induced mucositis drawn from 59,710 HOSPITALISED PATIENTS WITH CANCERS OF THE ORAL CAVITY, LIP AND PHARYNX, and 1,380 patients with chemotherapy-induced mucositis from 10,885 hospitalised hematopoietic stem cell transplant patients. CHEMOTHERAPY-INDUCED MUCOSITIS WAS ASSOCIATED WITH INCREASED LENGTH OF STAY, coefficient 1.54 (95% CI 1.36 to 1.74), AND WITH A GREATER LIKELIHOOD OF DYSPHAGIA, adjusted odds ratio 2.11 (95% CI 1.52 TO 2.95); among transplant patients, coefficient 1.09 (95% CI 1.02 to 1.16) and adjusted odds ratio 2.08 (95% CI 1.11 to 3.9). A NULL CARRIED ON THE EDGE: RADIOTHERAPY-INDUCED MUCOSITIS WAS ALSO ASSOCIATED WITH INCREASED LENGTH OF STAY, coefficient 1.33 (95% CI 1.14 to 1.55), BUT SHOWED NO ASSOCIATION WITH DYSPHAGIA, adjusted odds ratio 1.21 (95% CI 0.84 TO 1.77). The authors further report that mucositis outcomes DISPROPORTIONATELY AFFECT FEMALES, BLACKS, HISPANICS, MEDICAID RECIPIENTS AND THOSE WITH LOWER INCOMES, and conclude that more effective screening and prevention of mucositis is needed alongside mucositis prediction modelling. Registered as the only located adjusted odds ratio for this association, and for its internal null. DISCLOSED: RETROSPECTIVE ADMINISTRATIVE DATA IN AN INPATIENT POPULATION, so it captures coded dysphagia among hospitalised cancer patients rather than an ambulatory complication rate.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 497.2 — Filho VFDS, Motta LRDD, Abreu LG, et al. Prevalence of Oral Manifestations in Individuals Undergoing Chemotherapy: Systematic Review and Meta-Analysis. Spec Care Dentist. 2026 Mar-Apr;46(2):e70168. doi: 10.1111/scd.70168. PMID 41914550.**
+**Row 498.2 — Filho VFDS, Motta LRDD, Abreu LG, et al. Prevalence of Oral Manifestations in Individuals Undergoing Chemotherapy: Systematic Review and Meta-Analysis. Spec Care Dentist. 2026 Mar-Apr;46(2):e70168. doi: 10.1111/scd.70168. PMID 41914550.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/41914550/
 - Source checked on: 2026-09-27
@@ -18147,7 +18179,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: PRISMA SYSTEMATIC REVIEW AND META-ANALYSIS, registered in PROSPERO as CRD42024564007, of 24 CROSS-SECTIONAL STUDIES evaluating oral manifestations associated with chemotherapy, with risk of bias assessed using the JBI Critical Appraisal tool. POOLED PREVALENCES WERE: ORAL MUCOSITIS 42.15 PERCENT, DYSGEUSIA 49.62 PERCENT, GINGIVITIS 56.15 PERCENT, XEROSTOMIA 39.92 PERCENT, ORAL ULCER 31.40 PERCENT, DYSPHAGIA 28.28 PERCENT, CANDIDIASIS 24.11 PERCENT, ORAL PAIN 22.78 PERCENT, HALITOSIS 19.55 PERCENT and ORAL HERPES 7.98 PERCENT. The authors conclude that the prevalence of oral manifestations is high in patients undergoing chemotherapy, but that THE RESULTS SHOULD BE INTERPRETED WITH CAUTION DUE TO THE CONSIDERABLE HETEROGENEITY AMONG THE STUDIES. Registered for breadth, pooling ten oral manifestations in one population, and specifically for the dysphagia figure. DISCLOSED: the 28.28 PERCENT IS A PREVALENCE OF A MANIFESTATION IN A CHEMOTHERAPY POPULATION rather than a complication rate for this identity, the review is of cross-sectional studies only, and the authors' own heterogeneity caveat is carried on the face of the edge.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 497.3 — Satheeshkumar PS, Gopalakrishnan V, Epstein JB, et al. Long-Term Clinical Consequences of Severe Oral Mucositis in Survivors of Lip, Oral Cavity, and Pharynx Cancer Versus Leukemia: A Propensity-Score-Matched Comparative Cohort Study Using Real-World Data. Med Sci (Basel). 2026 Mar 18;14(1). doi: 10.3390/medsci14010142. PMID 41892857.**
+**Row 498.3 — Satheeshkumar PS, Gopalakrishnan V, Epstein JB, et al. Long-Term Clinical Consequences of Severe Oral Mucositis in Survivors of Lip, Oral Cavity, and Pharynx Cancer Versus Leukemia: A Propensity-Score-Matched Comparative Cohort Study Using Real-World Data. Med Sci (Basel). 2026 Mar 18;14(1). doi: 10.3390/medsci14010142. PMID 41892857.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/41892857/
 - Source checked on: 2026-09-27
@@ -18171,7 +18203,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 - Is the citation metadata exact against the PubMed record?
 
-**Row 498.1 — de Arruda JAA, Heimlich FV, Oliveira SR, et al. Influence of anxiety/depression on chemotherapy-induced oral mucositis and related quality of life: A prospective cohort study. J Psychosom Res. 2024 Feb;177:111577. doi: 10.1016/j.jpsychores.2023.111577. PMID 38154442.**
+**Row 499.1 — de Arruda JAA, Heimlich FV, Oliveira SR, et al. Influence of anxiety/depression on chemotherapy-induced oral mucositis and related quality of life: A prospective cohort study. J Psychosom Res. 2024 Feb;177:111577. doi: 10.1016/j.jpsychores.2023.111577. PMID 38154442.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/38154442/
 - Source checked on: 2026-09-27
@@ -18179,7 +18211,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: PROSPECTIVE LONGITUDINAL STUDY of 37 INDIVIDUALS with a median age of 49 years receiving chemotherapy at a Brazilian referral service, assessed with the HOSPITAL ANXIETY AND DEPRESSION SCALE, the WHOQOL-BREF and the Oral Health Impact Profile questionnaire at baseline and at day 15 of chemotherapy, alongside clinicodemographic data and oral mucositis severity scores. NEARLY 38 PERCENT OF PATIENTS DEVELOPED CHEMOTHERAPY-INDUCED ORAL MUCOSITIS AND HAD HIGHER ANXIETY AND DEPRESSION SCORES AT BASELINE, that is BEFORE the mucositis developed. Oral mucositis had a NEGATIVE IMPACT ON ORAL HEALTH-RELATED QUALITY OF LIFE regarding functional limitation, physical pain, physical disability and handicap. The authors conclude that anxiety and depressive symptoms are associated with oral mucositis and affect overall health and oral health-related quality of life. Registered as the anchor that carries the edge AND constrains it, being the ONLY located source with a baseline mood measurement taken before the oral lesion existed. DISCLOSED: SINGLE CENTRE, 37 INDIVIDUALS, and a baseline finding resting on a subgroup of roughly fourteen who developed mucositis.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 498.2 — Weng S, Li S, Hou S. Factors influencing mental health and oral health-related quality of life in population with recurrent aphthous stomatitis: a cross-sectional study. Front Oral Health. 2025;6:1652658. doi: 10.3389/froh.2025.1652658. PMID 41234733.**
+**Row 499.2 — Weng S, Li S, Hou S. Factors influencing mental health and oral health-related quality of life in population with recurrent aphthous stomatitis: a cross-sectional study. Front Oral Health. 2025;6:1652658. doi: 10.3389/froh.2025.1652658. PMID 41234733.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/41234733/
 - Source checked on: 2026-09-27
@@ -18187,7 +18219,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: CROSS-SECTIONAL STUDY of patients with RECURRENT APHTHOUS STOMATITS recruited by online and paper questionnaire, collecting demographic data, clinical information, and the level of anxiety, depression and oral health-related quality of life. PROLONGED ULCER DURATION and a preference for traditional Chinese medicine interventions were significant risk factors for ANXIOUS AND DEPRESSIVE SYMPTOMS. LARGER ULCER DIAMETER (B EQUALS 2.09, p EQUALS 0.017) and HIGHER ULCER RECURRENCE FREQUENCY (B EQUALS 4.74, p LESS THAN 0.001) EXACERBATED DEPRESSIVE SYMPTOMS, and worsening of pain, frequent fried-food consumption and preference for traditional Chinese medicine interventions were associated with poorer oral health-related quality of life. Registered for the only located evidence tying LESION BURDEN to mood, with reported regression coefficients. DISCLOSED: a DIFFERENT AETIOLOGY from the treatment-induced form this identity's alias also reaches, and the identity is recurrent aphthous stomatitis rather than stomatitis generally.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 498.3 — Shinkre R, Mukherji I, Bharadwaj A, et al. Depression, Anxiety, Stress, and Pain Severity in Patients With Recurrent Aphthous Stomatitis: A Cross-Sectional Study. Cureus. 2024 Jun;16(6):e62694. doi: 10.7759/cureus.62694. PMID 39036205.**
+**Row 499.3 — Shinkre R, Mukherji I, Bharadwaj A, et al. Depression, Anxiety, Stress, and Pain Severity in Patients With Recurrent Aphthous Stomatitis: A Cross-Sectional Study. Cureus. 2024 Jun;16(6):e62694. doi: 10.7759/cureus.62694. PMID 39036205.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/39036205/
 - Source checked on: 2026-09-27
@@ -18211,7 +18243,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 - Is the citation metadata exact against the PubMed record?
 
-**Row 499.1 — Adams GG, McBain H, MacKenzie K, et al. Is strabismus the only problem? Psychological issues surrounding strabismus surgery. J AAPOS. 2016 Oct;20(5):383-386. doi: 10.1016/j.jaapos.2016.07.221. PMID 27651232.**
+**Row 500.1 — Adams GG, McBain H, MacKenzie K, et al. Is strabismus the only problem? Psychological issues surrounding strabismus surgery. J AAPOS. 2016 Oct;20(5):383-386. doi: 10.1016/j.jaapos.2016.07.221. PMID 27651232.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/27651232/
 - Source checked on: 2026-09-27
@@ -18219,7 +18251,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: PROSPECTIVE CROSS-SECTIONAL STUDY OF 220 ADULT PATIENTS UNDERGOING STRABISMUS SURGERY at Moorfields Eye Hospital NHS Foundation Trust, mean age 45 years, 54 percent female, 81 percent white and 58.6 PERCENT WITH A CONCOMITANT DEVIATION, with clinical assessments before surgery and at 2 weeks and 3 months after, and standardised psychological questionnaires completed preoperatively and at 3 and 6 months postoperatively. PRIOR TO SURGERY, 24 PERCENT were experiencing CLINICAL LEVELS OF ANXIETY and 11 PERCENT CLINICAL LEVELS OF DEPRESSION, which the authors state is in line with other forms of facial disfigurement but HIGHER THAN OTHER CHRONIC DISEASES, and note that strabismus is estimated to occur in 4 PERCENT of the adult population. QUALITY OF LIFE IMPROVED AND ANXIETY AND DEPRESSION WERE REDUCED after surgery, and APPROXIMATELY 6 PERCENT of the sample REGRETTED HAVING UNDERGONE SURGERY at either 3 or 6 months. The authors conclude that even where correction is clinically successful psychosocial benefit is not always achieved, and that presurgical psychosocial support should be considered. Registered as the anchor supplying the prevalence, the comparator framing, the treatment direction and the regret rate, ALL FOUR together.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 499.2 — McBain HB, MacKenzie KA, Au C, et al. Factors associated with quality of life and mood in adults with strabismus. Br J Ophthalmol. 2014 Apr;98(4):550-5. doi: 10.1136/bjophthalmol-2013-304220. PMID 24390164.**
+**Row 500.2 — McBain HB, MacKenzie KA, Au C, et al. Factors associated with quality of life and mood in adults with strabismus. Br J Ophthalmol. 2014 Apr;98(4):550-5. doi: 10.1136/bjophthalmol-2013-304220. PMID 24390164.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/24390164/
 - Source checked on: 2026-09-27
@@ -18227,7 +18259,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: CROSS-SECTIONAL STUDY OF 220 ADULT PATIENTS WITH STRABISMUS due to undergo realignment surgery, administered the HOSPITAL ANXIETY AND DEPRESSION SCALE and the AS-20 quality-of-life measure alongside demographic, clinical and psychosocial process variables, with regression models identifying factors associated with quality of life and mood. 11 PERCENT were experiencing CLINICAL LEVELS OF DEPRESSION and 24 PERCENT CLINICAL ANXIETY. The authors state this is in line with other forms of facial disfigurement but higher than other chronic diseases, and that although mood and quality of life were associated with age and diplopia, IT WAS BELIEFS AND COGNITIONS WHICH WERE MORE CONSISTENTLY ASSOCIATED WITH WELL-BEING, specifically feelings of social anxiety and avoidance, a belief that strabismus has negative consequences, poor understanding of strabismus, social support, fear of negative evaluation and the perceived visibility of the condition. They conclude that psychosocial rather than clinical characteristics were the determinants of well-being, that clinicians planning surgery should be aware of these factors, and that LONGITUDINAL STUDIES ARE NEEDED TO EXPLORE THE DIRECTION OF CAUSALITY. Registered as the anchor that makes the mechanism claim evaluative rather than somatic. DISCLOSED: reports the IDENTICAL 24 and 11 PERCENT FIGURES as the sibling anchor and is therefore NOT an independent confirmation of it.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 499.3 — Ehlers M, Mauschitz MM, Wabbels B. Implementing strabismus-specific psychosocial questionnaires in everyday clinical practice: mental health and quality of life in the context of strabismus surgery. BMJ Open Ophthalmol. 2023 Aug;8(1). doi: 10.1136/bmjophth-2023-001334. PMID 37558407.**
+**Row 500.3 — Ehlers M, Mauschitz MM, Wabbels B. Implementing strabismus-specific psychosocial questionnaires in everyday clinical practice: mental health and quality of life in the context of strabismus surgery. BMJ Open Ophthalmol. 2023 Aug;8(1). doi: 10.1136/bmjophth-2023-001334. PMID 37558407.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/37558407/
 - Source checked on: 2026-09-27
@@ -18251,7 +18283,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 
 - Is the citation metadata exact against the PubMed record?
 
-**Row 500.1 — McBain HB, Au CK, Hancox J, et al. The impact of strabismus on quality of life in adults with and without diplopia: a systematic review. Surv Ophthalmol. 2014 Mar-Apr;59(2):185-91. doi: 10.1016/j.survophthal.2013.04.001. PMID 24359806.**
+**Row 501.1 — McBain HB, Au CK, Hancox J, et al. The impact of strabismus on quality of life in adults with and without diplopia: a systematic review. Surv Ophthalmol. 2014 Mar-Apr;59(2):185-91. doi: 10.1016/j.survophthal.2013.04.001. PMID 24359806.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/24359806/
 - Source checked on: 2026-09-27
@@ -18259,7 +18291,7 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: SYSTEMATIC REVIEW examining the impact of strabismus on quality of life in ADULTS BOTH WITH AND WITHOUT DIPLOPIA, focusing primarily on quality of life, and highlighting the value of measuring it, the ways in which it can be measured, and the impact of the disease, of diplopia and of surgery on the patient. THE KEY FINDING IS THAT QUALITY OF LIFE DIFFERS FOR STRABISMUS PATIENTS BASED ON THEIR DIPLOPIA STATUS: PATIENTS WITH DIPLOPIA TEND TO HAVE MORE CONCERNS RELATING TO FUNCTIONAL quality of life, whereas PATIENTS WITHOUT DIPLOPIA HAVE PRIMARILY PSYCHOSOCIAL CONCERNS. The authors note that two diplopia-specific questionnaires have been designed to assess quality of life and the perceived severity of symptoms, and that further research is needed to identify the variables which influence quality of life so that appropriate support can be given to all patients. The review also records that strabismus has been estimated to occur in 4 PERCENT of the adult population. Registered as the anchor that STRATIFIES this population by diplopia status rather than treating diplopia as an outcome, which is the located reason the edge is registered as a coupling rather than a consequence. DISCLOSED: a NARRATIVE SYSTEMATIC REVIEW of quality-of-life measurement rather than a pooled quantitative synthesis, so it supplies a stratification and a construct inventory and NO RATE.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 500.2 — Wang JY, Leske DA, Hatt SR, et al. Diplopia after strabismus surgery for adults with nondiplopic childhood-onset strabismus. J AAPOS. 2019 Dec;23(6):313.e1-313.e5. doi: 10.1016/j.jaapos.2019.07.005. PMID 31586582.**
+**Row 501.2 — Wang JY, Leske DA, Hatt SR, et al. Diplopia after strabismus surgery for adults with nondiplopic childhood-onset strabismus. J AAPOS. 2019 Dec;23(6):313.e1-313.e5. doi: 10.1016/j.jaapos.2019.07.005. PMID 31586582.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/31586582/
 - Source checked on: 2026-09-27
@@ -18267,12 +18299,282 @@ Registry parity and debt state at any time: `node scripts/audit-master-registry.
 - Note under review: PROSPECTIVE STUDY OF 79 ADULTS WITH NO DIPLOPIA IN ANY GAZE who had CHILDHOOD-ONSET STRABISMUS and were scheduled for strabismus surgery, designed to DESCRIBE THE FREQUENCY OF POSTOPERATIVE DIPLOPIA and to report health-related quality-of-life outcomes. Diplopia was assessed preoperatively and at 6 weeks and 1 year postoperatively using A STANDARDISED DIPLOPIA QUESTIONNAIRE WITH 5 RESPONSE OPTIONS IN 7 GAZE POSITIONS, and health-related quality of life was assessed with the Adult Strabismus-20, which has self-perception, interactions, reading function and general function domains. Registered for the specific and important reason that it measures this target ARISING FROM THE TREATMENT of this identity in a population that had none beforehand, so a claim attributing such diplopia to the underlying deviation would MISATTRIBUTE AN IATROGENIC OUTCOME. DISCLOSED: an uncontrolled single-arm study in a deliberately diplopia-free population, so it reports postoperative frequency and not a complication rate for untreated disease.
 - Current state: `verified: false` — pending qualified-human decision
 
-**Row 500.3 — Ehlers M, Mauschitz MM, Wabbels B. Implementing strabismus-specific psychosocial questionnaires in everyday clinical practice: mental health and quality of life in the context of strabismus surgery. BMJ Open Ophthalmol. 2023 Aug;8(1). doi: 10.1136/bmjophth-2023-001334. PMID 37558407.**
+**Row 501.3 — Ehlers M, Mauschitz MM, Wabbels B. Implementing strabismus-specific psychosocial questionnaires in everyday clinical practice: mental health and quality of life in the context of strabismus surgery. BMJ Open Ophthalmol. 2023 Aug;8(1). doi: 10.1136/bmjophth-2023-001334. PMID 37558407.**
 
 - URL: https://pubmed.ncbi.nlm.nih.gov/37558407/
 - Source checked on: 2026-09-27
 - Locator: BMJ Open Ophthalmol. 2023;8(3):e001334. Study of 59 patients before and approximately 3 months after strabismus surgery: satisfaction lower with a higher postoperative angle and with diplopia, and diplopia a determinant of lower postoperative quality of life.
 - Note under review: STUDY OF 59 PATIENTS assessed preoperatively and approximately 3 months after strabismus surgery using strabismus-specific psychosocial instruments and the Hospital Anxiety and Depression Scale. SATISFACTION WITH SURGERY WAS LOWER WITH A HIGHER POSTOPERATIVE ANGLE AND WITH DIPLOPIA, and DIPLOPIA WAS ALSO A DETERMINANT OF LOWER POSTOPERATIVE QUALITY OF LIFE. Postoperative quality of life was higher after surgery and anxiety and depression levels were lower. Registered for the independent finding that this target determines postoperative satisfaction and quality of life. DISCLOSED: it corroborates CLINICAL SIGNIFICANCE WITHOUT ADDRESSING DIRECTION, since it measures diplopia after the intervention and does not compare against an untreated deviation, and it has 59 patients with a 3-month postoperative assessment and no control group.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `bulimia-nervosa` → `dental-abrasion-erosion-abfraction` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Authoring registers this relationship only as the bounded association the located eating-disorder dental literature supports: a 2023 PRISMA systematic review and meta-analysis of 31 studies reports erosive tooth wear in 54.4 percent of patients with bulimia nervosa against 26.7 percent with anorexia nervosa and 42.1 percent of all 1,699 eating-disorder patients, with bulimia nervosa carrying more than ten times the odds of dental erosion of healthy individuals (OR 10.383, 95 percent CI 4.882-22.086) and self-induced vomiting carrying more than sixteen times the odds (OR 16.176, 95 percent CI 1.438-181.918) (PMID 37834805); the 2015 systematic review and meta-analysis of ten controlled studies (556 eating-disorder patients and 556 controls) reports approximately five times the odds of dental erosion in eating-disorder patients (95 percent CI 3.31-7.58), rising to OR 7.32 in those practicing self-induced vomiting, with higher DMFS scores (mean difference 3.07, 95 percent CI 0.66-5.48) and reduced salivary flow (OR 2.24, 95 percent CI 1.44-3.51) (PMID 26429686); and a 2024 systematic review of 32 studies confirms the association with erosion while reporting gingival recession, dentinal hypersensitivity and salivary-flow thresholds as receiving increasing rather than settled support (PMID 38915100). The registered claim is the narrowest these anchors jointly permit: that bulimia nervosa in its self-induced-vomiting presentation is associated with prevalent erosive tooth wear consistent with chronic gastric-acid exposure, with the vomiting-stratified odds ratios supplying the exposure gradient, and with NO anchor measuring incidence, onset order or reversibility.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation of erosive tooth wear is established for any individual by these anchors: all three are cross-sectional prevalence designs, so their odds ratios are PREVALENCE odds and establish neither that the erosion postdates the eating disorder nor that it would not have occurred without it; the vomiting-stratified OR 16.176 rests on an extremely wide confidence interval (1.438-181.918) indicating sparse exposed data, and the pooled bulimia-versus-healthy OR of 10.383 spans 4.882-22.086 across a small study base; eating-disorder samples are selected toward treatment-seeking and disclosure-ready patients, so under-ascertainment of both the vomiting behavior and its duration is expected and none of the denominators is a population denominator; erosive tooth wear is multifactorial in etiology, and no anchor can separate gastric-acid exposure from dietary acid, xerostomia or abrasive hygiene within an individual. Individual claims require independently established bulimia nervosa with a dated record of self-induced vomiting frequency and duration, a dental examination documenting an erosion pattern consistent with perimolysis (palatal and lingual enamel surfaces of the maxillary teeth), and exclusion of extrinsic dietary acid (citrus, soft drinks, acidic sports drinks, wine), gastroesophageal reflux and rumination, occupational acid exposure, medication-induced xerostomia and mechanical abrasion from abrasive dentifrices or hard brushing before any attribution.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 502.1 — Nijakowski K, Jankowski J, Gruszczynski D, Surdacka A. Eating Disorders and Dental Erosion: A Systematic Review. J Clin Med. 2023 Sep 24;12(19):6161. doi:10.3390/jcm12196161. PMID 37834805.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/37834805/
+- Source checked on: 2026-09-29
+- Locator: J Clin Med. 2023;12(19):6161. Systematic review and meta-analysis (PRISMA), 31 studies, 1,699 eating-disorder patients; abstract states erosion in 54.4% bulimia nervosa, 26.7% anorexia nervosa, 42.1% overall; bulimics versus healthy OR 10.383 [4.882-22.086]; self-induced vomiting OR 16.176 [1.438-181.918].
+- Note under review: PRISMA systematic review and meta-analysis of 31 studies, registered as this edge's PRIMARY anchor: erosive tooth wear in 54.4 percent of patients with bulimia nervosa and 26.7 percent with anorexia nervosa, 42.1 percent across all 1,699 eating-disorder patients; bulimia nervosa versus healthy individuals OR 10.383 (95 percent CI 4.882-22.086); self-induced vomiting OR 16.176 (95 percent CI 1.438-181.918), the extremely wide interval indicating sparse exposed data. The vomiting stratum is the acid-exposure evidence that distinguishes this edge from the batch-81 rumination refusal. LIMITATIONS CARRIED: cross-sectional prevalence odds only, no incidence or onset order. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 502.2 — Kisely S, Baghaie H, Lalloo R, Johnson NW. Association between poor oral health and eating disorders: systematic review and meta-analysis. Br J Psychiatry. 2015 Oct;207(4):299-305. doi:10.1192/bjp.bp.114.156323. PMID 26429686.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/26429686/
+- Source checked on: 2026-09-29
+- Locator: Br J Psychiatry. 2015;207(4):299-305. Systematic review and meta-analysis, 10 studies, 556 versus 556; abstract states eating disorder five times odds of dental erosion (95% CI 3.31-7.58), self-induced vomiting OR 7.32, DMFS mean difference 3.07 [0.66-5.48], reduced salivary flow OR 2.24 [1.44-3.51].
+- Note under review: Systematic review and random-effects meta-analysis of ten controlled studies (556 psychiatric patients with eating disorders and 556 controls), registered as the CONTROLLED-COMPARATIVE anchor: approximately five times the odds of dental erosion in eating-disorder patients (95 percent CI 3.31-7.58), highest in self-induced vomiting (OR 7.32), higher DMFS scores (mean difference 3.07, 95 percent CI 0.66-5.48) and reduced salivary flow (OR 2.24, 95 percent CI 1.44-3.51). The anchor's own background documents erosion in eating disorders even WITHOUT self-induced vomiting, naming psychotropic-induced dry mouth, nutritional deficiency and acidic diet as co-factors, which is why the edge's mechanism is filed as MULTIFACTORIAL with acid named as the dominant vector. LIMITATIONS CARRIED: prevalence odds from controlled studies of mixed eating-disorder diagnoses, not bulimia-specific incidence. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 502.3 — Valeriani L, Frigerio F, Piciocchi C, Piana G, Montevecchi M, Donini LM, Mocini E. Oro-dental manifestations of eating disorders: a systematic review. J Eat Disord. 2024 Jun 24;12(1):87. doi:10.1186/s40337-024-01050-8. PMID 38915100.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/38915100/
+- Source checked on: 2026-09-29
+- Locator: J Eat Disord. 2024;12(1):87. Systematic review, 32 studies included of 3,990 screened, AXIS appraisal; abstract states erosion association confirmed, other oro-dental outcomes receiving increasing support; predominantly female European samples.
+- Note under review: Systematic review of 32 studies (of 3,990 screened) with AXIS appraisal, registered as the CONTEMPORARY CORROBORATION anchor: the association with dental erosion is CONFIRMED while gingival recession, dentinal hypersensitivity, salivary-flow thresholds and mucosal findings are described as receiving increasing rather than settled support, so the edge is registered on the erosion member only. LIMITATIONS CARRIED: predominantly female European samples, largely cross-sectional comparative designs, and the authors themselves note that identification of oral signs still depends on clinician experience, limiting early-diagnosis claims. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `tinnitus` → `insomnia` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Authoring registers this relationship only as the bounded association the located sleep literature supports: a 2022 systematic review and single-arm meta-analysis of seven studies covering 3,041 tinnitus participants reports a pooled prevalence of sleep impairment of 53.5 percent (95 percent CI 40.2-66.8) with extreme between-study heterogeneity (I-squared 97.8 percent, Q 7.90, p = 0.000), significantly higher in women than men (44.6 versus 39.1 percent, P 0.034) and varying by PSQI cut-off and sample size (PMID 34708282); a 2024 meta-analysis of seventeen adult case-control and cohort studies reports tinnitus associated with poor sleep quality alongside dementia, compromised learning, attention, anxiety and depression (all P < 0.05), with stronger associations above age 60 (PMID 38389785). The registered claim is the narrowest these anchors jointly permit: that chronic tinnitus is associated with sleep impairment at the pooled prevalence the anchors report, with the target phenotype being the SLEEP IMPAIRMENT the anchors measure and NOT a diagnosed chronic insomnia disorder, and with NO anchor establishing onset order between the tinnitus and the sleep complaint.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation of chronic insomnia is established for any individual by these anchors: the primary anchor is a SINGLE-ARM prevalence meta-analysis with no tinnitus-free comparator arm, and the second pools case-control and cohort designs, so no anchor establishes that sleep disturbance follows tinnitus in time and the sleep complaint may predate, follow or share causes with the tinnitus; the anchors measure poor sleep quality by Pittsburgh Sleep Quality Index and similar instruments rather than a DSM-5 or ICSD-3 insomnia diagnosis, so a pooled 53.5 percent sleep-impairment prevalence is NOT a rate of chronic insomnia and the phenotype boundary is carried on every face of the edge; the primary anchor's own regional subgroup statement is INTERNALLY INCONSISTENT, reporting non-Asia prevalence 56.6 percent (95 percent CI 42.6-70.5) as lower than Asia 34.5 percent (95 percent CI 25.7-43.3), so the labels appear transposed in the abstract and no regional inference may be drawn from it; heterogeneity is extreme (I-squared 97.8 percent). Individual claims require independently established chronic tinnitus and separately diagnosed chronic insomnia with dated onset records, exclusion of obstructive sleep apnea, restless legs syndrome and periodic limb movements, of major depressive and anxiety disorders, of hearing-loss progression and of caffeine, stimulant and medication effects before any attribution.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 503.1 — Gu H, Kong W, Yin H, Zheng Y. Prevalence of sleep impairment in patients with tinnitus: a systematic review and single-arm meta-analysis. Eur Arch Otorhinolaryngol. 2022 May;279(5):2211-2221. doi:10.1007/s00405-021-07092-x. PMID 34708282.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/34708282/
+- Source checked on: 2026-09-29
+- Locator: Eur Arch Otorhinolaryngol. 2022;279(5):2211-2221. Systematic review and single-arm meta-analysis, 7 studies, n = 3,041; abstract states pooled sleep impairment 53.5% (95% CI 40.2-66.8), I2 97.8% (Q 7.90, p = 0.000), female 44.6% versus male 39.1% (P 0.034), PSQI cut-off and sample-size subgroup differences, and non-Asia 56.6% (42.6-70.5) stated as lower than Asia 34.5% (25.7-43.3), an internally inconsistent statement read as transposed labels.
+- Note under review: Systematic review and single-arm random-effects meta-analysis, registered as this edge's PRIMARY anchor: seven studies, 3,041 tinnitus participants, pooled prevalence of sleep impairment 53.5 percent (95 percent CI 40.2-66.8) with I-squared 97.8 percent (Q 7.90, p = 0.000); female 44.6 versus male 39.1 percent (P 0.034); PSQI cut-off and sample-size subgroup differences reported significant. AN ERRATUM-CLASS INTERNAL INCONSISTENCY IS CARRIED: the abstract reports non-Asia prevalence 56.6 percent (95 percent CI 42.6-70.5) as LOWER than Asia 34.5 percent (95 percent CI 25.7-43.3), so the regional labels appear transposed and no regional inference is drawn anywhere on this edge. LIMITATIONS CARRIED: single-arm design without tinnitus-free comparator, seven studies only, extreme heterogeneity, PSQI-class sleep impairment rather than diagnosed insomnia. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 503.2 — Yang D, Zhang D, Zhang X, Li X. Tinnitus-associated cognitive and psychological impairments: a comprehensive review meta-analysis. Front Neurosci. 2024 Feb 8;18:1275560. doi:10.3389/fnins.2024.1275560. PMID 38389785.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/38389785/
+- Source checked on: 2026-09-29
+- Locator: Front Neurosci. 2024;18:1275560. Meta-analysis, 17 adult case-control and cohort studies, random-effects pooled ORs; abstract states association between tinnitus and dementia-compromised learning, auditory attention, anxiety, depression and poor sleep quality (P<0.05), stronger outcomes above age 60; no insomnia-specific OR in the abstract.
+- Note under review: Meta-analysis of seventeen adult case-control and cohort studies with random-effects pooled odds ratios, registered as the CORROBORATION anchor: tinnitus associated with elevated risk of dementia, compromised learning, auditory attention, anxiety, depression and poor sleep quality (all P < 0.05), with age-stratified analyses showing stronger associations above 60 years. LIMITATIONS CARRIED: the poor-sleep signal is reported in a multi-outcome pooled analysis rather than as an insomnia-specific estimate, case-control and cohort designs are merged, the abstract reports no insomnia-specific odds ratio, and the stronger over-60 signal bounds extrapolation to younger claimants. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `liver-cancer` → `sarcopenia` — ASSOCIATION_ONLY
+
+**Review complete 2026-10-04.** All three anchors below were qualified-human verified — two with narrowing, one as written — with the decision record at `docs/liver-cancer-sarcopenia-citation-verification-2026-disposition.md`; the worksheet rows are retained as the pre-decision record and are superseded by it.
+
+**Proposition (associationBasis):** Authoring registers this relationship only as the population-level association the located hepatocellular-carcinoma literature supports: CT-defined sarcopenia is common in HCC (pooled prevalence 42 percent, 95 percent CI 0.36-0.48, across 48 studies and 8,959 patients, PMID 37274463; pooled prevalence 39 percent, 95 percent CI 33-45 percent, across 42 studies and 8,445 patients, PMID 36590214) and is independently associated with shorter overall survival (pooled adjusted HR 1.84, 95 percent CI 1.62-2.09) and shorter progression-free survival (pooled HR 1.33, 95 percent CI 1.12-1.56) irrespective of treatment modality (PMID 36590214); the 90-patient curative-intent cohort found sarcopenia in 57.8 percent with median overall survival 33 versus 105 months (P=0.002) and adjusted HR 3.756 (P=0.001), but NO disease-free-survival difference, and attributed the survival gap mainly to treatment-related mortality (17.3 versus 2.6 percent) and major complications (32.7 versus 13.2 percent) (PMID 26266324). The registered claim is co-occurrence and prognostic association at population level only, in established HCC populations, and intentionally not beyond them.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation under 38 CFR 3.310 is established for any individual by these anchors: all three measured muscle mass or its prognostic correlates rather than etiology, are predominantly retrospective or aggregate predominantly retrospective cohorts, and do not separate tumor-driven muscle loss from cirrhosis, alcohol exposure, aging, nutrition or treatment effects; the cohort anchor's survival signal ran mainly through major complications and treatment-related mortality rather than through disease-free survival. Individual claims require a documented HCC diagnosis and treatment timeline, a reproducible CT muscle-mass measurement with its stated threshold, assessment of cirrhosis severity and alcohol exposure, exclusion of cachexia-dominant wasting and independent nutritional disease, and qualified clinical opinion.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (association/co-occurrence, not causation)?
+
+- Does the note overstate what the source reports?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 504.1 — Liu J, Luo H, Huang L, Wang J. Prevalence of sarcopenia among patients with hepatocellular carcinoma: A systematic review and meta-analysis. Oncol Lett. 2023 Jul;26(1):283. doi:10.3892/ol.2023.13869. PMID 37274463.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/37274463/
+- Source checked on: 2026-10-04
+- Locator: Oncol Lett. 2023;26(1):283. Systematic review and meta-analysis, 48 studies, 8,959 patients; abstract states pooled sarcopenia prevalence 42% (95% CI 0.36-0.48), higher in male-predominant (45 versus 37 percent) and younger (46 versus 39 percent) studies; body weight cannot rule the phenotype out.
+- Note under review: Systematic review and meta-analysis of 48 studies and 8,959 patients, registered as this edge's PRIMARY burden anchor: pooled CT-defined sarcopenia prevalence 42 percent (95 percent CI 0.36-0.48) in hepatocellular-carcinoma populations, with the abstract reporting prevalence higher in studies with a high proportion of male patients (45 versus 37 percent) and in younger patients (46 versus 39 percent), and noting body weight cannot rule the phenotype out because muscle mass is measured. LIMITATIONS CARRIED: definition and threshold heterogeneity across the pooled studies, predominantly retrospective cohorts, and no separation of sarcopenia from cancer cachexia. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.
+- Current state: `verified: true` (2026-10-04) — decision recorded in `docs/liver-cancer-sarcopenia-citation-verification-2026-disposition.md`; worksheet row superseded by that record
+
+**Row 504.2 — Jiang C, Wang Y, Fu W, Zhang G, Feng X, Wang X, Wang F, Zhang L, Deng Y. Association between sarcopenia and prognosis of hepatocellular carcinoma: A systematic review and meta-analysis. Front Nutr. 2022;9:978110. doi:10.3389/fnut.2022.978110. PMID 36590214.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/36590214/
+- Source checked on: 2026-10-04
+- Locator: Front Nutr. 2022;9:978110. Systematic review and meta-analysis, 42 studies, 8,445 patients; abstract states sarcopenia prevalence 39% (95% CI 33-45 percent), adjusted overall-survival HR 1.84 (1.62-2.09), progression-free-survival HR 1.33 (1.12-1.56) irrespective of treatment modality.
+- Note under review: Systematic review and meta-analysis of 42 studies and 8,445 patients, registered as this edge's PROGNOSTIC anchor: pooled CT-defined sarcopenia prevalence 39 percent (95 percent CI 33-45 percent) with pooled adjusted overall-survival HR 1.84 (95 percent CI 1.62-2.09) and progression-free-survival HR 1.33 (95 percent CI 1.12-1.56) irrespective of treatment modality. LIMITATIONS CARRIED: aggregated mostly retrospective cohorts, no individual etiology or onset chronology, and no separation of sarcopenia from cancer cachexia. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.
+- Current state: `verified: true` (2026-10-04) — decision recorded in `docs/liver-cancer-sarcopenia-citation-verification-2026-disposition.md`; worksheet row superseded by that record
+
+**Row 504.3 — Levolger S, van Vledder MG, Muslem R, Koek M, Niessen WJ, de Man RA, de Bruin RW, Ijzermans JN. Sarcopenia impairs survival in patients with potentially curable hepatocellular carcinoma. J Surg Oncol. 2015 Aug;112(2):208-13. doi:10.1002/jso.23976. PMID 26266324.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/26266324/
+- Source checked on: 2026-10-04
+- Locator: J Surg Oncol. 2015;112(2):208-13. Retrospective curative-intent cohort, 90 patients; abstract states sarcopenia 57.8%, median overall survival 33 versus 105 months (P=0.002), adjusted HR 3.756 (P=0.001), no disease-free-survival difference, treatment-related mortality 17.3 versus 2.6 percent and major complications 32.7 versus 13.2 percent.
+- Note under review: Curative-intent cohort of 90 hepatocellular-carcinoma patients, registered as this edge's CURATIVE-INTENT anchor because it supplies the natural-history and treatment-consequence detail the meta-analyses pool over: sarcopenia in 57.8 percent, median overall survival 33 versus 105 months (P=0.002), adjusted HR 3.756 (P=0.001), but NO disease-free-survival difference, with the survival gap attributed mainly to treatment-related mortality (17.3 versus 2.6 percent) and major complications (32.7 versus 13.2 percent). Those complications are treatment consequences rather than registered secondary conditions, so the anchor supports association and not an individual nexus. LIMITATIONS CARRIED: single-centre retrospective cohort, CT muscle-mass measurement with its own threshold, and no separation of tumor-driven loss from cirrhosis or alcohol exposure. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.
+- Current state: `verified: true` (2026-10-04) — decision recorded in `docs/liver-cancer-sarcopenia-citation-verification-2026-disposition.md`; worksheet row superseded by that record
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `alcohol-use-disorder` → `chronic-liver-disease` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Authoring registers this relationship only as the population-level association the located alcohol-exposure literature supports. Alcohol consumption is a dose- and duration-dependent contributor to liver cirrhosis: a 2022 sex-specific systematic review and meta-analysis of 24 studies (2,112,476 women and 924,853 men; 4,301 and 4,231 cirrhosis cases) found a non-linear dose-response with substantially higher risk in women at every dose — 40 g/day pooled relative risk 9.35 (95 percent CI 7.64-11.45) in women and 2.82 (95 percent CI 2.53-3.14) in men, and 80 g/day 23.32 (95 percent CI 18.24-29.82) in women and 7.93 (95 percent CI 7.12-8.83) in men — with the female excess present for both morbidity and mortality (PMID 36926309); and a 2010 systematic review and meta-analysis of 17 cohort and case-control studies found indications of threshold effects, a significantly larger alcohol effect on cirrhosis mortality than on morbidity, and higher risk in women at the same average consumption (PMID 20636661). The preserved batch-91 anchor attaches to this registered relationship under ME-29: in a multicentre observational study of 115 heavy drinkers with alcoholic hepatitis versus 64 without, PTSD prevalence was 34 percent in both groups and PTSD was associated with higher average consumption (p=0.047) but NOT with heavy-drinking relapse or mortality (PMID 30080255), so the anchor is registered as exposure-population context — heavy-drinking populations in which alcoholic hepatitis arises — and not as a PTSD-to-liver claim. The registered claim is the narrowest these anchors jointly permit: the sustained heavy alcohol exposure that the alcohol-use-disorder diagnosis ordinarily marks is associated with a steeply dose- and duration-dependent elevation of population cirrhosis risk, higher in women at any given dose; no anchor establishes that alcohol use disorder caused any individual's cirrhosis.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation under 38 CFR 3.310 is established for any individual by these anchors: they quantify population dose-response between alcohol consumption and cirrhosis rather than individual etiology, and none separates alcohol's contribution from concurrent chronic viral hepatitis B or C, metabolic dysfunction-associated steatotic liver disease, hereditary hemochromatosis, autoimmune or cholestatic liver disease, or other hepatotoxic exposures — all of which the located literature treats as competing or coexisting causes that must be documented and excluded before attribution. The preserved alcoholic-hepatitis anchor measures PTSD in a population selected for heavy drinking and reports no association with heavy-drinking relapse or mortality, so it cannot carry an individual causal inference in either direction. The diagnosis-to-exposure mapping is disclosed on the face of the edge: the anchors quantify grams-per-day consumption and heavy-drinking populations rather than the diagnosis of alcohol use disorder as such, so the registered claim runs from the sustained heavy exposure the diagnosis ordinarily marks. Individual claims require a documented alcohol use disorder diagnosis with a quantified drinking history in grams per day, duration and pattern, objective liver-injury records with fibrosis staging, documented exclusion of viral, metabolic, autoimmune, cholestatic, hereditary and drug-induced competing etiologies, and qualified clinical opinion.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (population dose-response association, not individual causation)?
+
+- Does the note overstate what the source reports, and are the dose figures and sex differences transcribed exactly?
+
+- Is the citation metadata exact against the PubMed record?
+
+**Row 505.1 — Samala N, Lourens SG, Shah VH, Kamath PS, Sanyal AJ, Crabb DW, Tang Q, Radaeva S, Liangpunsakul S, Chalasani N. Posttraumatic Stress Disorder in Patients with Heavy Alcohol Consumption and Alcoholic Hepatitis. Alcohol Clin Exp Res. 2018 Oct;42(10):1933-1938. doi:10.1111/acer.13862. PMID 30080255.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/30080255/
+- Source checked on: 2026-10-04
+- Locator: Alcohol Clin Exp Res. 2018;42(10):1933-1938. Multicentre observational study, heavy drinkers with (n=115) and without (n=64) alcoholic hepatitis followed up to 12 months; abstract states PTSD prevalence 34 percent in both groups, PTSD associated with higher average drinks per last 30 days and grams of alcohol per day (p=0.047 for both tests) but not with heavy-drinking relapse or mortality; PMC6167141.
+- Note under review: Preserved batch-91 anchor, attached at authoring under ME-29 and registered as this edge's EXPOSURE-POPULATION anchor: a multicentre observational study screening heavy drinkers with alcoholic hepatitis (n=115) versus without (n=64) found PTSD prevalence 34 percent in both groups, PTSD associated with higher average alcohol consumption (p=0.047 on both tests) but NOT with heavy-drinking relapse or mortality, and PTSD in the alcoholic-hepatitis group not associated with higher relapse or mortality. The study measures PTSD in a heavy-drinking, alcoholic-hepatitis-selected population rather than the alcohol-use-disorder diagnosis or a dose-response, so it is registered as context for the exposure population in which alcoholic hepatitis arises, under the design's ME-29 discipline (preserved unregistered when the direct ptsd to chronic-liver-disease chain was withheld, attached to a registered relationship only at authoring). LIMITATIONS CARRIED: questionnaire screen rather than diagnostic interview, heavy-drinking selection, and no alcohol-use-disorder diagnosis or dose quantification of its own. Mapping approval is not citation verification; this source enters verified:false pending qualified-human citation review.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 505.2 — Llamosas-Falcón L, Probst C, Buckley C, Jiang H, Lasserre AM, Puka K, Tran A, Rehm J. Sex-specific association between alcohol consumption and liver cirrhosis: An updated systematic review and meta-analysis. Front Gastroenterol (Lausanne). 2022;1:1005729. doi:10.3389/fgstr.2022.1005729. PMID 36926309.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/36926309/
+- Source checked on: 2026-10-04
+- Locator: Front Gastroenterol (Lausanne). 2022;1:1005729. Systematic review and meta-analysis, 24 studies, 2,112,476 females and 924,853 males, 4,301 and 4,231 cirrhosis cases; abstract states non-linear dose-response, 40 g/day RR 9.35 (7.64-11.45) in females and 2.82 (2.53-3.14) in males, 80 g/day RR 23.32 (18.24-29.82) in females and 7.93 (7.12-8.83) in males, higher female risk for morbidity and mortality; PROSPERO CRD42022299680; PMC10016085.
+- Note under review: Sex-specific dose-response anchor: systematic review and meta-analysis of 24 longitudinal and case-control studies (2,112,476 women and 924,853 men; 4,301 and 4,231 cirrhosis cases) modeling a non-linear dose-response by sex, registered as this edge's PRIMARY magnitude anchor because it supplies the sex-specific dose-response the edge's disclosures rest on: 40 g/day pooled relative risk 9.35 (95 percent CI 7.64-11.45) in women versus 2.82 (95 percent CI 2.53-3.14) in men, and 80 g/day 23.32 (95 percent CI 18.24-29.82) in women versus 7.93 (95 percent CI 7.12-8.83) in men, with the female excess present for both morbidity and mortality (PROSPERO CRD42022299680). LIMITATIONS CARRIED: pooled observational designs, self-reported and heterogeneous drinking measurement, reference categories that can include former drinkers, and no individual-level etiology or onset chronology. Mapping approval is not citation verification; this source enters verified:false pending qualified-human citation review.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 505.3 — Rehm J, Taylor B, Mohapatra S, Irving H, Baliunas D, Patra J, Roerecke M. Alcohol as a risk factor for liver cirrhosis: a systematic review and meta-analysis. Drug Alcohol Rev. 2010 Jul;29(4):437-45. doi:10.1111/j.1465-3362.2009.00153.x. PMID 20636661.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/20636661/
+- Source checked on: 2026-10-04
+- Locator: Drug Alcohol Rev. 2010;29(4):437-45. Systematic review and meta-analysis, 17 studies meeting criteria of quantifiable risk at three or more intake levels; abstract states indications of threshold effects, significantly larger alcohol impact on cirrhosis mortality than morbidity, and higher risk in women at the same average consumption; end-point named as an important source of heterogeneity.
+- Note under review: Dose-response structure anchor: systematic review and meta-analysis of 17 cohort and case-control studies (literature to January 2008) using categorical and continuous meta-analytic dose-response modeling, registered as this edge's THRESHOLD-AND-OUTCOME-STRUCTURE anchor: indications of threshold effects, a significantly larger alcohol impact on cirrhosis mortality than on morbidity, higher risk in women at the same average consumption, and end-point as an important source of heterogeneity. LIMITATIONS CARRIED: older evidence base, observational designs that cannot establish individual causation, heterogeneous exposure assessment, and no alcohol-use-disorder-diagnosis-based risk stratification. Mapping approval is not citation verification; this source enters verified:false pending qualified-human citation review.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `bruxism-awake-sleep` → `tmj-disorder` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Authoring registers this relationship only as the population-level association the located adult literature supports and deliberately not beyond it: a 2023 systematic review and meta-analysis of 20 eligible studies (random-effects model) found bruxism associated with temporomandibular disorders at pooled odds ratio 2.25 (95 percent CI 1.94-2.56), with awake bruxism at 2.51 (95 percent CI 2.02-2.99) and sleep bruxism at 2.06 (95 percent CI 1.82-2.30) (PMID 37474733), while a 2017 systematic review of 39 studies found 33 reporting a positive relation and 6 not, graded the evidence low to moderate, and reported that polysomnographically diagnosed studies were LESS conclusive than survey or clinical diagnosis (PMID 27796166). The claim is group-level association: the pooled studies are observational and predominantly cross-sectional, and the meta-analysis's conclusion that bruxism increases the likelihood of developing temporomandibular disorders in the future is an inference beyond those designs. Direction cannot be established from the located evidence because temporomandibular pain and dysfunction themselves alter masticatory behavior, and the juvenile null registered as this edge's counterweight (PMID 9758394) is reconciled only as a matter of age scope, not as support. The association is conditioned on how bruxism and the temporomandibular disorder are measured.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation of temporomandibular joint disorders is established for any individual, and the direction is explicitly unresolved: every located anchor is cross-sectional, case-control or review-level, so nothing in the located evidence can separate bruxism loading the joint from temporomandibular pain and dysfunction driving parafunctional behavior, and the two conditions share plausible third factors (psychological stress and anxiety, sleep fragmentation, medication, occlusal and dental factors) that the located designs do not control. Bruxism is itself the umbrella identity (awake and sleep) while the strongest pooled estimates are type-specific, and the juvenile null shows a population in which the association was NOT observed. Individual claims require independently documented bruxism by clinical dental examination with its awake-versus-sleep phenotype (wear facets, masticatory muscle findings, partner-reported grinding), a separately established temporomandibular disorder diagnosis with examination and imaging where indicated, a dated chronology that can speak to direction, and exclusion of medication-induced bruxism, sleep-disordered breathing, trauma, occlusal and dental treatment effects, and other competing causes before any attribution.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (adult population association only, direction unresolved, juvenile counterweight disclosed)?
+
+- Is the age-scope reconciliation carried correctly — the juvenile null (PMID 9758394) is not evidence against the adult association, and the adult pooled estimates are not evidence about juveniles?
+
+- Are the pooled odds ratios, the diagnostic-method conditioning, the overlapping-literature limitation and the both-types abstract anomaly transcribed exactly, and is the citation metadata exact against the PubMed record?
+
+**Row 506.1 — Mortazavi N, Tabatabaei AH, Mohammadi M, Rajabi A. Is bruxism associated with temporomandibular joint disorders? A systematic review and meta-analysis. Evid Based Dent. 2023 Sep;24(3):144. doi:10.1038/s41432-023-00911-6. PMID 37474733.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/37474733/
+- Source checked on: 2026-10-04
+- Locator: Evid Based Dent. 2023;24(3):144. Systematic review and meta-analysis, 20 studies; abstract states pooled OR 2.25 (95% CI 1.94-2.56), awake bruxism OR 2.51 (2.02-2.99), sleep bruxism OR 2.06 (1.82-2.30); both-types line printed as OR 2.17 with CI 2.30-3.05 (point outside interval; not relied on).
+- Note under review: Systematic review and meta-analysis of 20 eligible studies (searches through March 2022; Newcastle-Ottawa quality assessment; random-effects model), registered as this edge's PRIMARY adult association anchor: bruxism associated with temporomandibular disorders at pooled odds ratio 2.25 (95 percent CI 1.94-2.56), awake bruxism 2.51 (2.02-2.99) and sleep bruxism 2.06 (1.82-2.30). LIMITATIONS CARRIED: the pooled studies are observational and predominantly cross-sectional, so the association is method-conditioned and cannot establish direction; the abstract's both-types pooled estimate is printed as OR 2.17 with a confidence interval of 2.30-3.05 that excludes its own point estimate, an apparent typographical error in the published abstract, and it is not relied on here; the authors' conclusion that bruxism increases the likelihood of developing temporomandibular disorders in the future outruns the cross-sectional designs. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 506.2 — Jiménez-Silva A, Peña-Durán C, Tobar-Reyes J, Frugone-Zambra R. Sleep and awake bruxism in adults and its relationship with temporomandibular disorders: A systematic review from 2003 to 2014. Acta Odontol Scand. 2017 Jan;75(1):36-58. doi:10.1080/00016357.2016.1247465. PMID 27796166.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/27796166/
+- Source checked on: 2026-10-04
+- Locator: Acta Odontol Scand. 2017;75(1):36-58. Systematic review, 39 studies; 33 positive and 6 not; quality low to moderate; polysomnographic evidence less conclusive than survey/clinical diagnosis; no information by bruxism type.
+- Note under review: Systematic review of 39 studies (2003-2014), registered as this edge's CONSISTENCY anchor: 33 studies reported a positive relation between bruxism and temporomandibular disorders and 6 did not; evidence quality graded low to moderate with design shortcomings, bias risk and low sensitivity of bruxism diagnosis; polysomnographically diagnosed studies were NOT as conclusive as survey or clinical-exam studies, and the review states the evidence is inconclusive and provides no information according to bruxism type. LIMITATIONS CARRIED: the review's 39 primary studies overlap substantially with the 2023 meta-analysis's 20 studies, so the two reviews are not independent evidence sets. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 506.3 — Kieser JA, Groeneveld HT. Relationship between juvenile bruxing and craniomandibular dysfunction. J Oral Rehabil. 1998 Sep;25(9):662-5. doi:10.1046/j.1365-2842.1998.00304.x. PMID 9758394.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/9758394/
+- Source checked on: 2026-10-04
+- Locator: J Oral Rehabil. 1998;25(9):662-5. Five-year longitudinal cohort, 150 bruxers aged 6-9, 126 re-examined, 17 retained the habit; concluded juvenile bruxing self-limiting, not progressing to adult bruxism, and appeared unrelated to TMJ symptoms.
+- Note under review: Five-year longitudinal juvenile cohort, registered as this edge's EXPLICIT COUNTERWEIGHT and as the ME-34 rejection's anchor: 150 bruxers aged 6 to 9 examined for oral parafunctions and TMJ symptoms, 126 re-examined after five years, only 17 retaining the bruxing habit; symptoms reduced with age and the authors concluded juvenile bruxing was self-limiting, did not progress to adult bruxism and appeared unrelated to TMJ symptoms. LIMITATIONS AND SCOPE CARRIED: the cohort is juvenile (ages 6 to 9) and its null is not evidence against the adult association, just as the adult association is not evidence about juveniles — the signed ME-34 reopening reconciles the two as an age-scope matter only; the examination predates modern RDC/TMD diagnostic criteria; and attrition left 126 of 150 re-examined with only 17 retained bruxers. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `stress-fractures` → `malunion-nonunion-of-fractures` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Authoring registers this relationship only as the association the located stress-fracture literature supports. A 2016 narrative review of high-risk stress fractures identifies a subset of injuries with a greater risk of fracture progression, delayed healing and nonunion — the femoral neck (tension side), patella, anterior tibia, medial malleolus, talus, tarsal navicular, proximal fifth metatarsal and great-toe sesamoids — sharing a characteristic region of high tensile load and low blood flow, and requiring more aggressive evaluation and often surgical treatment, while stating that stress fractures overall have an excellent prognosis with little risk of complication (PMID 26972260); and a 2021 systematic review of 13 studies and 393 proximal-fifth-metatarsal stress fractures (pooled mean follow-up 52.5 months; methodological quality assessed as low; Level IV) quantifies the adverse-healing outcomes by treatment modality: pooled bone union 87 percent (95 percent CI 83-90) after surgical treatment versus 56 percent (41-70) after non-surgical treatment, radiological union 13.1 versus 20.9 weeks, delayed union 3 percent (1-5) versus 0 percent (0-8), nonunion 4 percent (2-6) versus 33 percent (20-47), and refracture 7 percent (4-10) versus 12 percent (5-24), with the authors stating the non-surgical evidence is limited by underreporting (PMID 33615403). The registered claim is the narrowest these anchors jointly permit: stress fractures — particularly at the named high-risk sites — are associated with impaired bone healing (delayed union, nonunion, refracture), with the quantification located for the proximal fifth metatarsal only and with the treatment-modality contrast carrying the selection effects its design cannot remove.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation of malunion or nonunion is established for any individual by these anchors, and the outcome is measured as progression of the SAME injury rather than a separately caused disease. The narrative review supplies the site-based risk framing without denominators or comparison, its stated overall prognosis for stress fractures is excellent with little risk of complication, and the systematic review's per-modality figures are stratified by the treatment actually received, so the surgical-versus-non-surgical differences (87 versus 56 percent union; 4 versus 33 percent nonunion) reflect which fractures were selected for which management rather than a property of the stress fracture alone; the review's own non-surgical evidence is limited by underreporting (return-to-pre-injury-sport time reported for 6 non-surgically treated fractures against 117 surgical). No located anchor measures malunion specifically, quantifies an individual's healing trajectory, or separates intrinsic site biology from re-injury, return-to-loading timing and treatment choice. Individual claims require a documented stress fracture at a named site with its diagnostic imaging and grade, a dated treatment and loading history, serial imaging or examination establishing delayed or failed union (and, for any malunion reading, union in non-anatomic position), and exclusion of re-injury, infection, metabolic bone disease, medication effects, and alternative pathology (bone cyst, tumor, osteomyelitis) before any attribution.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (stress-fracture progression to impaired healing, association only, with quantified outcomes limited to the proximal fifth metatarsal)?
+
+- Is the anchor-tier gap carried correctly — the multi-site risk framing rests on the narrative review alone, and no malunion-specific outcome exists in the located anchors?
+
+- Are the per-modality union, nonunion, delayed-union and refracture figures transcribed exactly, with the treatment-selection limit stated rather than hidden?
+
+- Is the progression reading preserved — the outcome is the same injury failing to heal rather than a second disease, so no chain or double-counting is claimed?
+
+**Row 507.1 — McInnis KC, Ramey LN. High-Risk Stress Fractures: Diagnosis and Management. PM R. 2016 Mar;8(3 Suppl):S113-24. doi:10.1016/j.pmrj.2015.09.019. PMID 26972260.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/26972260/
+- Source checked on: 2026-10-04
+- Locator: PM R. 2016;8(3 Suppl):S113-24. Narrative review; abstract names high-risk stress-fracture sites (femoral neck tension side, patella, anterior tibia, medial malleolus, talus, tarsal navicular, proximal fifth metatarsal, great-toe sesamoids) sharing a region of high tensile load and low blood flow with greater risk of fracture progression, delayed healing and nonunion; states stress fractures overall have an excellent prognosis with little risk of complication; no outcome rates reported.
+- Note under review: Narrative review of high-risk stress fractures, registered as this edge's SITE-RISK anchor: it names the high-risk subset with a greater risk of fracture progression, delayed healing and nonunion — femoral neck (tension side), patella, anterior tibia, medial malleolus, talus, tarsal navicular, proximal fifth metatarsal and great-toe sesamoids — and identifies the shared characteristic of high tensile load and low blood flow, while stating that stress fractures in athletes overall have an excellent prognosis for return to sport with little risk of complication. Registered FOR THE RISK FRAMING ONLY: the review reports no union, nonunion or refracture rates, no denominators and no comparison group, and its clinical guidance (imaging, immobilization, surgical referral) is management advice rather than outcome evidence. Its overall-prognosis statement is carried on the edge as the calibration counterweight against over-reading the high-risk subset. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 507.2 — Hollander JJ, Rikken QGH, Dahmen J, Stufkens SAS, Kerkhoffs GMMJ. High union rates following surgical treatment of proximal fifth metatarsal stress fractures. Knee Surg Sports Traumatol Arthrosc. 2021 Aug;29(8):2495-2503. doi:10.1007/s00167-021-06490-2. PMID 33615403.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/33615403/
+- Source checked on: 2026-10-04
+- Locator: Knee Surg Sports Traumatol Arthrosc. 2021;29(8):2495-2503. Systematic review, 13 studies, 393 proximal fifth metatarsal stress fractures; abstract states union 87% (95% CI 83-90%) surgical versus 56% (41-70%) non-surgical, union time 13.1 versus 20.9 weeks, delayed union 3% (1-5%) versus 0% (0-8%), nonunion 4% (2-6%) versus 33% (20-47%), refracture 7% (4-10%) versus 12% (5-24%), return to sport 100% both arms; Level IV, quality low, non-surgical evidence limited by underreporting.
+- Note under review: Systematic review of 13 studies and 393 proximal-fifth-metatarsal stress fractures (pooled mean follow-up 52.5 months; MINORS methodological assessment; simplified pooling across mostly small non-randomized series; Level IV), registered as this edge's QUANTIFIED-OUTCOME anchor: union 87 percent (95 percent CI 83-90) after surgical versus 56 percent (41-70) after non-surgical treatment; radiological union 13.1 versus 20.9 weeks; delayed union 3 percent (1-5) versus 0 percent (0-8); nonunion 4 percent (2-6) versus 33 percent (20-47); refracture 7 percent (4-10) versus 12 percent (5-24); return to sport at any level 100 percent in both arms. LIMITATIONS CARRIED: outcomes are stratified by treatment received, so modality differences reflect selection rather than treatment effects; methodological quality assessed as low; non-surgical evidence limited by underreporting (return-to-pre-injury-sport time for 6 non-surgically treated fractures against 117 surgical); and outcomes cover ONE of the named high-risk sites, not the multi-site claim. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.
+
+### `stress-urinary-incontinence` → `depressive-disorder` — ASSOCIATION_ONLY
+
+**Proposition (associationBasis):** Authoring registers this relationship only as the population-level association the located urinary-incontinence literature supports. A 2020 meta-analysis of 12 articles and 31,462 participants found the urinary-incontinence group's depression and anxiety levels significantly higher than the non-incontinent group (pooled odds ratio 1.73, 95 percent CI 1.64-1.82, I-squared 75.5 percent), with the depression subgroup at 1.95 (95 percent CI 1.82-2.10, I-squared 64.3 percent) and the anxiety subgroup at 1.54 (95 percent CI 1.43-1.65, I-squared 59.2 percent), and its authors state that larger sample sizes and more high-quality studies are needed (PMID 32552169); a 2024 systematic review and meta-analysis of the 8 studies reporting a binary outcome on validated scales pooled depression prevalence in women with urinary incontinence at 18 percent (95 percent CI 11-25 percent), with illiteracy (OR 1.34, 1.01-1.78), caesarean delivery (OR 1.48, 1.30-1.70), obesity (OR 1.37, 1.19-1.58), more than three children (OR 1.26, 0.98-1.62), comorbidity (OR 1.32, 1.16-1.49, I-squared 85.3 percent), smoking (OR 1.58, 0.99-1.92) and single, divorced or widowed status (OR 1.67, 1.45-1.92) as associated factors, and its authors expressly recommend future study of the CAUSAL association (PROSPERO CRD42023418779; PMID 39501253); and the single located prospective cohort — 5,820 community-dwelling women followed across 1996-2003 waves of the Health and Retirement Study, mean age 59.3 years, 6-year cumulative incidences of depression 11 percent and incontinence 21 percent — found major depression associated with incident incontinence (adjusted odds ratio 1.46, 95 percent CI 1.08-1.97) while incontinence was NOT associated with incident depression (adjusted odds ratio 1.03, 95 percent CI 0.75-1.42), so in the one design that can speak to temporal order the claimed direction is NULL and the reverse direction is positive (PMID 19716547). The registered claim is the narrowest these anchors jointly permit: urinary-incontinence populations carry a higher prevalence and odds of concurrent depression, with direction unresolved and with the only prospective evidence running against the registered direction.
+
+**Causation boundary (causationStatus):** Neither causation nor aggravation of depressive disorder under 38 CFR 3.310 is established for any individual by these anchors: the pooled evidence is cross-sectional or case-control and cannot establish that depression follows incontinence in time, the one located prospective cohort measured the claimed direction as a null (adjusted odds ratio 1.03, 95 percent CI 0.75-1.42) while finding the reverse direction positive (1.46, 1.08-1.97), and none of the anchors separates the association from shared and bidirectional drivers — obesity, parity and caesarean delivery, age, diabetes and other comorbidity, smoking, and the incontinence-associated sleep disruption, activity restriction, embarrassment and stigma that can depress mood without being measured. The anchors also measure urinary incontinence as a category rather than the stress subtype, so the exposure definition itself is a mapping. Individual claims require independently established stress urinary incontinence with its diagnostic basis (history, examination, urodynamic or leakage documentation), a separately established depressive disorder with a dated course, a chronology that can speak to direction, objective records of pelvic-floor, neurologic, medication and metabolic contributors, and documented exclusion of the reverse pathway and competing depression etiologies before any attribution.
+
+**Reviewer questions specific to this edge:**
+
+- Does each source's reported design and population match the proposition's strength claim (population-level co-occurrence, direction unresolved, stress-subtype exposure mapped from broad urinary-incontinence evidence)?
+
+- Is the direction counterweight carried correctly — the prospective cohort's null in the claimed direction and positive reverse direction must limit the claim rather than being hidden?
+
+- Are the pooled odds ratio, prevalence, heterogeneity and associated-factor figures transcribed exactly, and is the citation metadata exact against the PubMed record?
+
+- Is the subtype-family window disclosure preserved — the three parallel subtype windows share no PMID and may not be pooled or treated as independent corroboration?
+
+**Row 508.1 — Cheng S, Lin D, Hu T, Cao L, Liao H, Mou X, Zhang Q, Liu J, Wu T. Association of urinary incontinence and depression or anxiety: a meta-analysis. J Int Med Res. 2020 Jun;48(6):300060520931348. doi:10.1177/0300060520931348. PMID 32552169.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/32552169/
+- Source checked on: 2026-10-04
+- Locator: J Int Med Res. 2020;48(6):300060520931348. Meta-analysis, 12 articles, 31,462 participants; abstract states UI group OR 1.73 (95% CI 1.64-1.82, I2 75.5%), depression subgroup OR 1.95 (1.82-2.10), anxiety subgroup OR 1.54 (1.43-1.65), age strata OR 1.59 (1.29-1.95) and 1.98 (1.62-2.43); authors call for larger, higher-quality studies.
+- Note under review: Primary association anchor: meta-analysis of 12 articles and 31,462 participants, registered as this edge's POOLED-ODDS anchor because it is the largest located quantification of the incontinence-depression association: pooled odds ratio 1.73 (95 percent CI 1.64-1.82) with I-squared 75.5 percent, depression subgroup 1.95 (1.82-2.10, I-squared 64.3 percent), anxiety subgroup 1.54 (1.43-1.65, I-squared 59.2 percent), and higher depression and anxiety regardless of age (1.59, 1.29-1.95 and 1.98, 1.62-2.43). Only the depression member is relied on here. LIMITATIONS CARRIED: the pooled studies are cross-sectional or case-control, the exposure is urinary incontinence as a category without the stress subtype, the reported odds ratio summarizes group-level prevalence rather than incident risk, and the authors themselves state that larger sample sizes and more high-quality studies are needed. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 508.2 — Abebe SA, Gashaw F, Tsegaye A, Abebaw D, Kindie EA, Dejen AM. Prevalence and determinants of depression among women with urinary incontinence: a systematic review and meta-analysis worldwide. BMC Womens Health. 2024 Nov 6;24(1):591. doi:10.1186/s12905-024-03432-1. PMID 39501253.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/39501253/
+- Source checked on: 2026-10-04
+- Locator: BMC Womens Health. 2024;24(1):591. Systematic review and meta-analysis, 8 binary-outcome validated-scale studies; abstract states pooled depression prevalence 18% (95% CI 11-25%), associated factors illiteracy 1.34 (1.01-1.78), caesarean 1.48 (1.30-1.70), obesity 1.37 (1.19-1.58), parity>3 1.26 (0.98-1.62), comorbidity 1.32 (1.16-1.49, I2 85.3%), smoking 1.58 (0.99-1.92), single/divorced/widowed 1.67 (1.45-1.92); recommends study of the causal association; PROSPERO CRD42023418779.
+- Note under review: Prevalence and determinants anchor: systematic review and meta-analysis of the 8 studies reporting a binary outcome on different validated scales, registered as this edge's PREVALENCE anchor: pooled depression prevalence 18 percent (95 percent CI 11-25 percent) in women with urinary incontinence, with the quantified associated factors this edge's disclosures rely on (illiteracy OR 1.34, 1.01-1.78; caesarean delivery 1.48, 1.30-1.70; obesity 1.37, 1.19-1.58; parity above three 1.26, 0.98-1.62; comorbidity 1.32, 1.16-1.49 with I-squared 85.3 percent; smoking 1.58, 0.99-1.92; single, divorced or widowed 1.67, 1.45-1.92), and its authors' express recommendation of future studies on the causal association — registered as support for the association-only classification rather than against it. LIMITATIONS CARRIED: women-only population, binary-outcome studies only (a selection the review makes for poolability), prevalence rather than incidence, and heterogeneous scale-based ascertainment. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.
+- Current state: `verified: false` — pending qualified-human decision
+
+**Row 508.3 — Melville JL, Fan MY, Rau H, Nygaard IE, Katon WJ. Major depression and urinary incontinence in women: temporal associations in an epidemiologic sample. Am J Obstet Gynecol. 2009 Nov;201(5):490.e1-7. doi:10.1016/j.ajog.2009.05.047. PMID 19716547.**
+
+- URL: https://pubmed.ncbi.nlm.nih.gov/19716547/
+- Source checked on: 2026-10-04
+- Locator: Am J Obstet Gynecol. 2009;201(5):490.e1-7. Longitudinal cohort, 5,820 women, HRS waves 3-6 (1996-2003); abstract states 6-year cumulative incidence depression 11% and incontinence 21%; depression predicted incident incontinence aOR 1.46 (95% CI 1.08-1.97); incontinence did NOT predict incident depression aOR 1.03 (95% CI 0.75-1.42).
+- Note under review: DIRECTION COUNTERWEIGHT and the only prospective anchor: longitudinal cohort of 5,820 female Health and Retirement Study participants (baseline 1996-1997, follow-up 1998-2003; mean age 59.3 years; 6-year cumulative incidences of depression 11 percent and incontinence 21 percent), registered because it answers the temporal question the pooled designs cannot and answers it AGAINST the registered direction: major depression at baseline predicted incident urinary incontinence (adjusted odds ratio 1.46, 95 percent CI 1.08-1.97) while incontinence at baseline did NOT predict incident depression (adjusted odds ratio 1.03, 95 percent CI 0.75-1.42). The edge carries this asymmetry on its face and may not be read as evidence that incontinence produced any individual's depression. LIMITATIONS CARRIED: women only, observational cohort with self-reported measures, baseline exposures rather than quantified leakage severity, and no stress-subtype stratification. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.
 - Current state: `verified: false` — pending qualified-human decision
 
 **Decision record (complete per row):** reviewer/role — date — source section reviewed — decision — limitations.

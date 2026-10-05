@@ -12,8 +12,8 @@ import type { EvidenceAnalysis } from "@/lib/evidence/extract";
  * yet pinned when the 2026-09-12 report was triaged:
  *
  * - Finding #11 (incomplete error message on malformed evidence JSON):
- *   loadStoredEvidenceWithWarning must return the parse error, log it with a
- *   bounded raw preview, and the analyzer must use this variant in BOTH
+ *   loadStoredEvidenceWithWarning must return a generic warning and log only
+ *   a fixed event code, and the analyzer must use this variant in BOTH
  *   restore effects so a corrupted store is never silently reset.
  * - Finding #6 (busyRef/setBusy race): every analyzer entry point must guard
  *   on the synchronous busyRef BEFORE any await, and the OCR path must reset
@@ -89,7 +89,7 @@ describe("loadStoredEvidenceWithWarning (finding #11)", () => {
     expect(result.parseError).toBeNull();
   });
 
-  it("reports the parse error and logs it with a bounded raw preview on malformed JSON", () => {
+  it("reports corruption without exposing document text or parser details", () => {
     const warn = vi.spyOn(console, "warn").mockImplementation(() => {});
     const corrupt = `{not-json ${"x".repeat(900)}`;
 
@@ -99,11 +99,9 @@ describe("loadStoredEvidenceWithWarning (finding #11)", () => {
     expect(typeof result.parseError).toBe("string");
     expect(result.parseError?.length).toBeGreaterThan(0);
     expect(warn).toHaveBeenCalledTimes(1);
-    const [label, message, preview] = warn.mock.calls[0] as string[];
-    expect(label).toContain("[evidence-storage]");
-    expect(typeof message).toBe("string");
-    expect(preview.length).toBeLessThanOrEqual(500);
-    expect(corrupt.startsWith(preview)).toBe(true);
+    expect(warn).toHaveBeenCalledWith("[evidence-storage] STORE_UNREADABLE");
+    expect(result.parseError).toBe("Saved evidence could not be read.");
+    expect(JSON.stringify(warn.mock.calls)).not.toContain("not-json");
   });
 
   it("survives a storage reader that throws without leaking the exception", () => {
@@ -117,10 +115,9 @@ describe("loadStoredEvidenceWithWarning (finding #11)", () => {
     const result = loadStoredEvidenceWithWarning(throwingStorage);
 
     expect(result.analyses).toEqual([]);
-    expect(result.parseError).toBe("storage unavailable");
+    expect(result.parseError).toBe("Saved evidence could not be read.");
     expect(warn).toHaveBeenCalledTimes(1);
-    const [, , preview] = warn.mock.calls[0] as string[];
-    expect(preview).toBe("<unreadable>");
+    expect(warn).toHaveBeenCalledWith("[evidence-storage] STORE_UNREADABLE");
   });
 });
 

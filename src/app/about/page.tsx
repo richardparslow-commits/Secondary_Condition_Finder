@@ -34,12 +34,12 @@ export default function AboutPage() {
           The application supports two public-reference service families: searchable VA Forms metadata and Benefits Reference Data for disability terminology and service-branch reference information. These features are separate from the core research engine and fall back safely to clearly labeled local reference data when configured VA API access is unavailable.
         </p>
         <p>
-          The current integration scope does not access an individual Veteran&apos;s VA account, claims file, health record, or other authenticated Veteran-specific VA data.
+          The public-reference production scope does not access an individual Veteran&apos;s production VA account, claims file or health record. A separately enabled, read-only <Link href="/va-account" className="underline">sandbox test-account experiment</Link> can retrieve a test Veteran&apos;s rating summary and existing claim statuses after explicit authorization; it cannot submit claims, upload documents, or enable production account access.
         </p>
 
         <h2 className="text-xl font-semibold">Privacy boundary</h2>
         <p>
-          Health/disability workflow selections and presumptive service-history state are kept out of page query strings. Short-lived workflow cookies are encrypted and authenticated. The current application does not persist workflow or recommendation event history through an application event logger.
+          Health/disability workflow selections and presumptive service-history state are kept out of page query strings. Short-lived workflow cookies are encrypted and authenticated. Allowlisted operational workflow and recommendation count/status events are emitted to server logs, which hosting platforms may retain. Raw document evidence and OAuth tokens are not included in those events; hosting retention and exception sanitation require separate review.
         </p>
 
         <h2 className="text-xl font-semibold">How to use the research</h2>

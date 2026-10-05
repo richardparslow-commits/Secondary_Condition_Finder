@@ -16,16 +16,16 @@
     "citationPromotionMustAtomicallyUpdateKbAndMasterSourceState": true
   },
   "counts": {
-    "liveSourceReferenceUses": 1672,
-    "activeSourceEntities": 346,
-    "pendingVerificationSourceEntities": 1110,
-    "activeClinicalSourceEntities": 345,
-    "pendingClinicalSourceEntities": 1110,
+    "liveSourceReferenceUses": 1704,
+    "activeSourceEntities": 360,
+    "pendingVerificationSourceEntities": 1128,
+    "activeClinicalSourceEntities": 359,
+    "pendingClinicalSourceEntities": 1128,
     "activeLegalAuthorityEntities": 1,
     "retiredOnlySourceEntities": 1,
     "supersededUnverifiedSourceEntities": 7,
     "bibliographicCorrectionOnlyEntities": 1,
-    "totalSourceEntitiesIncludingLineage": 1465,
+    "totalSourceEntitiesIncludingLineage": 1497,
     "retiredVerifiedRelationshipSourceUses": 6
   },
   "retirementLedger": {
@@ -54059,6 +54059,1224 @@
       "retiredUses": [],
       "rawReferenceHashes": [
         "c20c337dc9afe6a8839c7abd8e7803fc0c2643f028ff432d9cd353f128685732"
+      ]
+    },
+    {
+      "sourceId": "pmid-28146614",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "28146614",
+      "doi": "10.4088/JCP.16r10832",
+      "canonicalCitation": "Carbon M, Hsieh CH, Kane JM, Correll CU. Tardive Dyskinesia Prevalence in the Period of Second-Generation Antipsychotic Use: A Meta-Analysis. J Clin Psychiatry. 2017 Mar;78(3):e264-e278. doi: 10.4088/JCP.16r10832. PMID 28146614.",
+      "citationVariants": [
+        "Carbon M, Hsieh CH, Kane JM, Correll CU. Tardive Dyskinesia Prevalence in the Period of Second-Generation Antipsychotic Use: A Meta-Analysis. J Clin Psychiatry. 2017 Mar;78(3):e264-e278. doi: 10.4088/JCP.16r10832. PMID 28146614."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/28146614/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/28146614/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-28"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-bipolar-disorder-to-tardive-dyskinesia",
+          "primaryId": "bipolar-disorder",
+          "targetId": "tardive-dyskinesia",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "5eb588105f00c2f99c10df9024f298bc105a4359214014026f90e6a150009287"
+      ]
+    },
+    {
+      "sourceId": "pmid-42030922",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "42030922",
+      "doi": "10.1016/j.psychres.2026.117185",
+      "canonicalCitation": "Luca A, Luca M, Drago F, Serretti A. Tardive dyskinesia and cognitive performances in late-life depression: a sex-stratified analysis. Psychiatry Res. 2026 Jul;361:117185. doi: 10.1016/j.psychres.2026.117185. PMID 42030922.",
+      "citationVariants": [
+        "Luca A, Luca M, Drago F, Serretti A. Tardive dyskinesia and cognitive performances in late-life depression: a sex-stratified analysis. Psychiatry Res. 2026 Jul;361:117185. doi: 10.1016/j.psychres.2026.117185. PMID 42030922."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/42030922/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/42030922/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-28"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-bipolar-disorder-to-tardive-dyskinesia",
+          "primaryId": "bipolar-disorder",
+          "targetId": "tardive-dyskinesia",
+          "sourceIndex": 1
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "4fb4d8091a0c4602b5ec9b6ccb657778947a30ffa01f81f6610780d5f95416d8"
+      ]
+    },
+    {
+      "sourceId": "pmid-37834805",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "37834805",
+      "doi": "10.3390/jcm12196161",
+      "canonicalCitation": "Nijakowski K, Jankowski J, Gruszczynski D, Surdacka A. Eating Disorders and Dental Erosion: A Systematic Review. J Clin Med. 2023 Sep 24;12(19):6161. doi:10.3390/jcm12196161. PMID 37834805.",
+      "citationVariants": [
+        "Nijakowski K, Jankowski J, Gruszczynski D, Surdacka A. Eating Disorders and Dental Erosion: A Systematic Review. J Clin Med. 2023 Sep 24;12(19):6161. doi:10.3390/jcm12196161. PMID 37834805."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/37834805/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/37834805/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-29"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-bulimia-nervosa-to-dental-abrasion-erosion-abfraction",
+          "primaryId": "bulimia-nervosa",
+          "targetId": "dental-abrasion-erosion-abfraction",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "ff0faf22723b02033ba88d5afac8ba06ec89df41cac0d77416862f900afff0f7"
+      ]
+    },
+    {
+      "sourceId": "pmid-26429686",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "26429686",
+      "doi": "10.1192/bjp.bp.114.156323",
+      "canonicalCitation": "Kisely S, Baghaie H, Lalloo R, Johnson NW. Association between poor oral health and eating disorders: systematic review and meta-analysis. Br J Psychiatry. 2015 Oct;207(4):299-305. doi:10.1192/bjp.bp.114.156323. PMID 26429686.",
+      "citationVariants": [
+        "Kisely S, Baghaie H, Lalloo R, Johnson NW. Association between poor oral health and eating disorders: systematic review and meta-analysis. Br J Psychiatry. 2015 Oct;207(4):299-305. doi:10.1192/bjp.bp.114.156323. PMID 26429686."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/26429686/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/26429686/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-29"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-bulimia-nervosa-to-dental-abrasion-erosion-abfraction",
+          "primaryId": "bulimia-nervosa",
+          "targetId": "dental-abrasion-erosion-abfraction",
+          "sourceIndex": 1
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "f3777d619458a796b59cdbdb875176641205fa70d61e4579f3aa07a0ba412d8a"
+      ]
+    },
+    {
+      "sourceId": "pmid-38915100",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "38915100",
+      "doi": "10.1186/s40337-024-01050-8",
+      "canonicalCitation": "Valeriani L, Frigerio F, Piciocchi C, Piana G, Montevecchi M, Donini LM, Mocini E. Oro-dental manifestations of eating disorders: a systematic review. J Eat Disord. 2024 Jun 24;12(1):87. doi:10.1186/s40337-024-01050-8. PMID 38915100.",
+      "citationVariants": [
+        "Valeriani L, Frigerio F, Piciocchi C, Piana G, Montevecchi M, Donini LM, Mocini E. Oro-dental manifestations of eating disorders: a systematic review. J Eat Disord. 2024 Jun 24;12(1):87. doi:10.1186/s40337-024-01050-8. PMID 38915100."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38915100/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/38915100/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-29"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-bulimia-nervosa-to-dental-abrasion-erosion-abfraction",
+          "primaryId": "bulimia-nervosa",
+          "targetId": "dental-abrasion-erosion-abfraction",
+          "sourceIndex": 2
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "c515a66d42b65fd4515d1cd32c0efc12d82cff81c55795c257b3a2f4fd4d13dc"
+      ]
+    },
+    {
+      "sourceId": "pmid-34708282",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "34708282",
+      "doi": "10.1007/s00405-021-07092-x",
+      "canonicalCitation": "Gu H, Kong W, Yin H, Zheng Y. Prevalence of sleep impairment in patients with tinnitus: a systematic review and single-arm meta-analysis. Eur Arch Otorhinolaryngol. 2022 May;279(5):2211-2221. doi:10.1007/s00405-021-07092-x. PMID 34708282.",
+      "citationVariants": [
+        "Gu H, Kong W, Yin H, Zheng Y. Prevalence of sleep impairment in patients with tinnitus: a systematic review and single-arm meta-analysis. Eur Arch Otorhinolaryngol. 2022 May;279(5):2211-2221. doi:10.1007/s00405-021-07092-x. PMID 34708282."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34708282/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/34708282/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-29"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-tinnitus-to-insomnia",
+          "primaryId": "tinnitus",
+          "targetId": "insomnia",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "63586ca10d4a0b579992c2f89c75fc7bdf2c47a2156ac868bc86b51a41be55dc"
+      ]
+    },
+    {
+      "sourceId": "pmid-38389785",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "38389785",
+      "doi": "10.3389/fnins.2024.1275560",
+      "canonicalCitation": "Yang D, Zhang D, Zhang X, Li X. Tinnitus-associated cognitive and psychological impairments: a comprehensive review meta-analysis. Front Neurosci. 2024 Feb 8;18:1275560. doi:10.3389/fnins.2024.1275560. PMID 38389785.",
+      "citationVariants": [
+        "Yang D, Zhang D, Zhang X, Li X. Tinnitus-associated cognitive and psychological impairments: a comprehensive review meta-analysis. Front Neurosci. 2024 Feb 8;18:1275560. doi:10.3389/fnins.2024.1275560. PMID 38389785."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38389785/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/38389785/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-09-29"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-tinnitus-to-insomnia",
+          "primaryId": "tinnitus",
+          "targetId": "insomnia",
+          "sourceIndex": 1
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "da3ed84f1d123a7e23cd397f891264270d48ed5c779b20b15bfababd44ccc929"
+      ]
+    },
+    {
+      "sourceId": "pmid-34524390",
+      "status": "active",
+      "kind": "clinical-evidence",
+      "pmid": "34524390",
+      "doi": "10.1001/jamapsychiatry.2021.2506",
+      "canonicalCitation": "Bode H, Ivens B, Bschor T, Schwarzer G, Henssler J, Baethge C. Association of Hypothyroidism and Clinical Depression: A Systematic Review and Meta-analysis. JAMA Psychiatry. 2021 Dec 1;78(12):1375-1383. doi:10.1001/jamapsychiatry.2021.2506. PMID 34524390.",
+      "citationVariants": [
+        "Bode H, Ivens B, Bschor T, Schwarzer G, Henssler J, Baethge C. Association of Hypothyroidism and Clinical Depression: A Systematic Review and Meta-analysis. JAMA Psychiatry. 2021 Dec 1;78(12):1375-1383. doi:10.1001/jamapsychiatry.2021.2506. PMID 34524390."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34524390/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/34524390/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": true,
+      "sourceCheckedOnValues": [
+        "2026-09-29"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-hypothyroidism-to-depressive-disorder",
+          "primaryId": "hypothyroidism",
+          "targetId": "depressive-disorder",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "f568d2fe39e43cea7c9ae3af5b0d8d8f9a5de9e259fdc6e9745318b5a6e54d47"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": false,
+        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
+        "qualifiedHumanCitationReviewDate": "2026-09-29",
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-31214119",
+      "status": "active",
+      "kind": "clinical-evidence",
+      "pmid": "31214119",
+      "doi": "10.3389/fendo.2019.00340",
+      "canonicalCitation": "Tang R, Wang J, Yang L, Ding X, Zhong Y, Pan J, Yang H, Mu L, Chen X, Chen Z. Subclinical Hypothyroidism and Depression: A Systematic Review and Meta-Analysis. Front Endocrinol (Lausanne). 2019 Jun 4;10:340. doi:10.3389/fendo.2019.00340. PMID 31214119.",
+      "citationVariants": [
+        "Tang R, Wang J, Yang L, Ding X, Zhong Y, Pan J, Yang H, Mu L, Chen X, Chen Z. Subclinical Hypothyroidism and Depression: A Systematic Review and Meta-Analysis. Front Endocrinol (Lausanne). 2019 Jun 4;10:340. doi:10.3389/fendo.2019.00340. PMID 31214119."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/31214119/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/31214119/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": true,
+      "sourceCheckedOnValues": [
+        "2026-09-29"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-hypothyroidism-to-depressive-disorder",
+          "primaryId": "hypothyroidism",
+          "targetId": "depressive-disorder",
+          "sourceIndex": 1
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "018edae7718c4c3c1bfa9ec6490d991b957aadb6c3e27f9138697dbe6699af62"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": false,
+        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
+        "qualifiedHumanCitationReviewDate": "2026-09-29",
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-30375372",
+      "status": "active",
+      "kind": "clinical-evidence",
+      "pmid": "30375372",
+      "doi": "10.1038/s41398-018-0283-7",
+      "canonicalCitation": "Zhao T, Chen BM, Zhao XM, Shan ZY. Subclinical hypothyroidism and depression: a meta-analysis. Transl Psychiatry. 2018 Oct 30;8(1):239. doi:10.1038/s41398-018-0283-7. PMID 30375372.",
+      "citationVariants": [
+        "Zhao T, Chen BM, Zhao XM, Shan ZY. Subclinical hypothyroidism and depression: a meta-analysis. Transl Psychiatry. 2018 Oct 30;8(1):239. doi:10.1038/s41398-018-0283-7. PMID 30375372."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/30375372/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/30375372/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": true,
+      "sourceCheckedOnValues": [
+        "2026-09-29"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-hypothyroidism-to-depressive-disorder",
+          "primaryId": "hypothyroidism",
+          "targetId": "depressive-disorder",
+          "sourceIndex": 2
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "4d63b47d1c4d92fbeb210b97afb62e59e20bb3a426fa32d290e40ae86a607f31"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": false,
+        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
+        "qualifiedHumanCitationReviewDate": "2026-09-29",
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-19033418",
+      "status": "active",
+      "kind": "clinical-evidence",
+      "pmid": "19033418",
+      "doi": "10.2337/dc08-0985",
+      "canonicalCitation": "Mezuk B, Eaton WW, Albrecht S, Golden SH. Depression and type 2 diabetes over the lifespan: a meta-analysis. Diabetes Care. 2008 Dec;31(12):2383-2390. doi:10.2337/dc08-0985. PMID 19033418.",
+      "citationVariants": [
+        "Mezuk B, Eaton WW, Albrecht S, Golden SH. Depression and type 2 diabetes over the lifespan: a meta-analysis. Diabetes Care. 2008 Dec;31(12):2383-2390. doi:10.2337/dc08-0985. PMID 19033418."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/19033418/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/19033418/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": true,
+      "sourceCheckedOnValues": [
+        "2026-09-29"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-diabetes-mellitus-type-2-to-depressive-disorder",
+          "primaryId": "diabetes-mellitus-type-2",
+          "targetId": "depressive-disorder",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "5372c3b97c3d79da69587afadade7739faeea9596cf98db9bd4d73ced082909a"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": false,
+        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
+        "qualifiedHumanCitationReviewDate": "2026-09-29",
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-11375373",
+      "status": "active",
+      "kind": "clinical-evidence",
+      "pmid": "11375373",
+      "doi": "10.2337/diacare.24.6.1069",
+      "canonicalCitation": "Anderson RJ, Freedland KE, Clouse RE, Lustman PJ. The prevalence of comorbid depression in adults with diabetes: a meta-analysis. Diabetes Care. 2001 Jun;24(6):1069-1078. doi:10.2337/diacare.24.6.1069. PMID 11375373.",
+      "citationVariants": [
+        "Anderson RJ, Freedland KE, Clouse RE, Lustman PJ. The prevalence of comorbid depression in adults with diabetes: a meta-analysis. Diabetes Care. 2001 Jun;24(6):1069-1078. doi:10.2337/diacare.24.6.1069. PMID 11375373."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/11375373/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/11375373/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": true,
+      "sourceCheckedOnValues": [
+        "2026-09-29"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-diabetes-mellitus-type-2-to-depressive-disorder",
+          "primaryId": "diabetes-mellitus-type-2",
+          "targetId": "depressive-disorder",
+          "sourceIndex": 1
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "f1d8b92d57f4a99f7fde1dbca441c7a6a58f25521ead0361f070b2b89c33e4b9"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": false,
+        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
+        "qualifiedHumanCitationReviewDate": "2026-09-29",
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-38363350",
+      "status": "active",
+      "kind": "clinical-evidence",
+      "pmid": "38363350",
+      "doi": "10.1007/s00784-024-05534-4",
+      "canonicalCitation": "Solis ACO, Corchs F, Duran ÉP, Silva C, Del Real N, Araújo ÁC, Wang YP, Lotufo-Neto F. Self-reported bruxism in patients with post-traumatic stress disorder. Clin Oral Investig. 2024 Feb 16;28(2):152. doi:10.1007/s00784-024-05534-4. PMID 38363350.",
+      "citationVariants": [
+        "Solis ACO, Corchs F, Duran ÉP, Silva C, Del Real N, Araújo ÁC, Wang YP, Lotufo-Neto F. Self-reported bruxism in patients with post-traumatic stress disorder. Clin Oral Investig. 2024 Feb 16;28(2):152. doi:10.1007/s00784-024-05534-4. PMID 38363350."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38363350/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/38363350/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": true,
+      "sourceCheckedOnValues": [
+        "2026-09-29"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-ptsd-to-bruxism-awake-sleep",
+          "primaryId": "ptsd",
+          "targetId": "bruxism-awake-sleep",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "eeea2ce3a33f991fb77ff6cb9dfdf59a0064d632124d5f4f4c8420ea11365a17"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": false,
+        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
+        "qualifiedHumanCitationReviewDate": "2026-09-29",
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-36056716",
+      "status": "active",
+      "kind": "clinical-evidence",
+      "pmid": "36056716",
+      "doi": "10.1111/joor.13367",
+      "canonicalCitation": "Knibbe W, Lobbezoo F, Voorendonk EM, Visscher CM, de Jongh A. Prevalence of painful temporomandibular disorders, awake bruxism and sleep bruxism among patients with severe post-traumatic stress disorder. J Oral Rehabil. 2022 Nov;49(11):1031-1040. doi:10.1111/joor.13367. PMID 36056716. Erratum in: J Oral Rehabil. 2024 May;51(5):911-914. doi:10.1111/joor.13668.",
+      "citationVariants": [
+        "Knibbe W, Lobbezoo F, Voorendonk EM, Visscher CM, de Jongh A. Prevalence of painful temporomandibular disorders, awake bruxism and sleep bruxism among patients with severe post-traumatic stress disorder. J Oral Rehabil. 2022 Nov;49(11):1031-1040. doi:10.1111/joor.13367. PMID 36056716. Erratum in: J Oral Rehabil. 2024 May;51(5):911-914. doi:10.1111/joor.13668."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36056716/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/36056716/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": true,
+      "sourceCheckedOnValues": [
+        "2026-09-29"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-ptsd-to-bruxism-awake-sleep",
+          "primaryId": "ptsd",
+          "targetId": "bruxism-awake-sleep",
+          "sourceIndex": 1
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "902ab4b93f015f401bc8f4faa392699fce4cc177bc6cdfc0911ac7111ff3b539"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": false,
+        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
+        "qualifiedHumanCitationReviewDate": "2026-09-29",
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-32577706",
+      "status": "active",
+      "kind": "clinical-evidence",
+      "pmid": "32577706",
+      "doi": "10.3290/j.qi.a44809",
+      "canonicalCitation": "Tagger-Green N, Nemcovsky C, Gadoth N, Cohen O, Kolerman R. Oral and dental considerations of combat-induced PTSD: a descriptive study. Quintessence Int. 2020;51(8):678-685. doi:10.3290/j.qi.a44809. PMID 32577706.",
+      "citationVariants": [
+        "Tagger-Green N, Nemcovsky C, Gadoth N, Cohen O, Kolerman R. Oral and dental considerations of combat-induced PTSD: a descriptive study. Quintessence Int. 2020;51(8):678-685. doi:10.3290/j.qi.a44809. PMID 32577706."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/32577706/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/32577706/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": true,
+      "sourceCheckedOnValues": [
+        "2026-09-29"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-ptsd-to-bruxism-awake-sleep",
+          "primaryId": "ptsd",
+          "targetId": "bruxism-awake-sleep",
+          "sourceIndex": 2
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "10c1b8c9d05463a8397bb7f52482698584fed19a569332cfdf0c7035e47985fc"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": false,
+        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
+        "qualifiedHumanCitationReviewDate": "2026-09-29",
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-41849118",
+      "status": "active",
+      "kind": "clinical-evidence",
+      "pmid": "41849118",
+      "doi": "10.1007/s13555-026-01720-2",
+      "canonicalCitation": "Sanz-Cabanillas JL, Gómez-García FJ, Sanz-Cabanillas EB, Gay-Mimbrera J, Isla-Tejera B, García-Nieto AJV, Ruano J. Comorbidities in Discoid Lupus: A Systematic Review and Meta-analysis of Prevalence and Association. Dermatol Ther (Heidelb). 2026 Apr;16(4):1969-1982. doi:10.1007/s13555-026-01720-2. PMID 41849118.",
+      "citationVariants": [
+        "Sanz-Cabanillas JL, Gómez-García FJ, Sanz-Cabanillas EB, Gay-Mimbrera J, Isla-Tejera B, García-Nieto AJV, Ruano J. Comorbidities in Discoid Lupus: A Systematic Review and Meta-analysis of Prevalence and Association. Dermatol Ther (Heidelb). 2026 Apr;16(4):1969-1982. doi:10.1007/s13555-026-01720-2. PMID 41849118."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41849118/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/41849118/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": true,
+      "sourceCheckedOnValues": [
+        "2026-09-29"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-discoid-lupus-to-depressive-disorder",
+          "primaryId": "discoid-lupus",
+          "targetId": "depressive-disorder",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "1998026983c16ca8ad85392e4882a3d5673506d3655a96c18e32be298cac351e"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": false,
+        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
+        "qualifiedHumanCitationReviewDate": "2026-09-29",
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-30877492",
+      "status": "active",
+      "kind": "clinical-evidence",
+      "pmid": "30877492",
+      "doi": "10.1007/s40257-019-00429-7",
+      "canonicalCitation": "Hong J, Aspey L, Bao G, Haynes T, Lim SS, Drenkard C. Chronic Cutaneous Lupus Erythematosus: Depression Burden and Associated Factors. Am J Clin Dermatol. 2019 Jun;20(3):465-475. doi:10.1007/s40257-019-00429-7. PMID 30877492.",
+      "citationVariants": [
+        "Hong J, Aspey L, Bao G, Haynes T, Lim SS, Drenkard C. Chronic Cutaneous Lupus Erythematosus: Depression Burden and Associated Factors. Am J Clin Dermatol. 2019 Jun;20(3):465-475. doi:10.1007/s40257-019-00429-7. PMID 30877492."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/30877492/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/30877492/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": true,
+      "sourceCheckedOnValues": [
+        "2026-09-29"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-discoid-lupus-to-depressive-disorder",
+          "primaryId": "discoid-lupus",
+          "targetId": "depressive-disorder",
+          "sourceIndex": 1
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "29ceb9b006843fa71fa75bdc64c37a8eb619d56150f023c5a704cbae9f68081e"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": false,
+        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
+        "qualifiedHumanCitationReviewDate": "2026-09-29",
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-35953237",
+      "status": "active",
+      "kind": "clinical-evidence",
+      "pmid": "35953237",
+      "doi": "10.1136/lupus-2022-000697",
+      "canonicalCitation": "Drenkard C, Theis KA, Daugherty TT, Helmick CG, Dunlop-Thomas C, Bao G, Aspey L, Lewis TT, Lim SS. Depression, stigma and social isolation: the psychosocial trifecta of primary chronic cutaneous lupus erythematosus, a cross-sectional and path analysis. Lupus Sci Med. 2022 Aug;9(1):e000697. doi:10.1136/lupus-2022-000697. PMID 35953237.",
+      "citationVariants": [
+        "Drenkard C, Theis KA, Daugherty TT, Helmick CG, Dunlop-Thomas C, Bao G, Aspey L, Lewis TT, Lim SS. Depression, stigma and social isolation: the psychosocial trifecta of primary chronic cutaneous lupus erythematosus, a cross-sectional and path analysis. Lupus Sci Med. 2022 Aug;9(1):e000697. doi:10.1136/lupus-2022-000697. PMID 35953237."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35953237/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/35953237/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": true,
+      "sourceCheckedOnValues": [
+        "2026-09-29"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-discoid-lupus-to-depressive-disorder",
+          "primaryId": "discoid-lupus",
+          "targetId": "depressive-disorder",
+          "sourceIndex": 2
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "a794ce74367bd9e7d880edd7b451b96fad5ef74fdcc815a86b1c316df3fcdd0f"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": false,
+        "qualifiedHumanCitationReviewDecision": "approve-as-implemented",
+        "qualifiedHumanCitationReviewDate": "2026-09-29",
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-37274463",
+      "status": "active",
+      "kind": "clinical-evidence",
+      "pmid": "37274463",
+      "doi": "10.3892/ol.2023.13869",
+      "canonicalCitation": "Liu J, Luo H, Huang L, Wang J. Prevalence of sarcopenia among patients with hepatocellular carcinoma: A systematic review and meta-analysis. Oncol Lett. 2023 Jul;26(1):283. doi:10.3892/ol.2023.13869. PMID 37274463.",
+      "citationVariants": [
+        "Liu J, Luo H, Huang L, Wang J. Prevalence of sarcopenia among patients with hepatocellular carcinoma: A systematic review and meta-analysis. Oncol Lett. 2023 Jul;26(1):283. doi:10.3892/ol.2023.13869. PMID 37274463."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/37274463/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/37274463/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": true,
+      "sourceCheckedOnValues": [
+        "2026-10-04"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-liver-cancer-to-sarcopenia",
+          "primaryId": "liver-cancer",
+          "targetId": "sarcopenia",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "bb5df235c1d8a57efc6c0679502d7d8f3e736a91f315d303d5df2c53fec5f97d"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": false,
+        "qualifiedHumanCitationReviewDecision": "approve-with-narrowing",
+        "qualifiedHumanCitationReviewDate": "2026-10-04",
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-36590214",
+      "status": "active",
+      "kind": "clinical-evidence",
+      "pmid": "36590214",
+      "doi": "10.3389/fnut.2022.978110",
+      "canonicalCitation": "Jiang C, Wang Y, Fu W, Zhang G, Feng X, Wang X, Wang F, Zhang L, Deng Y. Association between sarcopenia and prognosis of hepatocellular carcinoma: A systematic review and meta-analysis. Front Nutr. 2022;9:978110. doi:10.3389/fnut.2022.978110. PMID 36590214.",
+      "citationVariants": [
+        "Jiang C, Wang Y, Fu W, Zhang G, Feng X, Wang X, Wang F, Zhang L, Deng Y. Association between sarcopenia and prognosis of hepatocellular carcinoma: A systematic review and meta-analysis. Front Nutr. 2022;9:978110. doi:10.3389/fnut.2022.978110. PMID 36590214."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36590214/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/36590214/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": true,
+      "sourceCheckedOnValues": [
+        "2026-10-04"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-liver-cancer-to-sarcopenia",
+          "primaryId": "liver-cancer",
+          "targetId": "sarcopenia",
+          "sourceIndex": 1
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "0d80b20a97bc978ca7e3f9430c2746c8a72e7aa3bacbf3fdb1175427508bc6a0"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": false,
+        "qualifiedHumanCitationReviewDecision": "approve-with-narrowing",
+        "qualifiedHumanCitationReviewDate": "2026-10-04",
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-26266324",
+      "status": "active",
+      "kind": "clinical-evidence",
+      "pmid": "26266324",
+      "doi": "10.1002/jso.23976",
+      "canonicalCitation": "Levolger S, van Vledder MG, Muslem R, Koek M, Niessen WJ, de Man RA, de Bruin RW, Ijzermans JN. Sarcopenia impairs survival in patients with potentially curable hepatocellular carcinoma. J Surg Oncol. 2015 Aug;112(2):208-13. doi:10.1002/jso.23976. PMID 26266324.",
+      "citationVariants": [
+        "Levolger S, van Vledder MG, Muslem R, Koek M, Niessen WJ, de Man RA, de Bruin RW, Ijzermans JN. Sarcopenia impairs survival in patients with potentially curable hepatocellular carcinoma. J Surg Oncol. 2015 Aug;112(2):208-13. doi:10.1002/jso.23976. PMID 26266324."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/26266324/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/26266324/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": true,
+      "sourceCheckedOnValues": [
+        "2026-10-04"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-liver-cancer-to-sarcopenia",
+          "primaryId": "liver-cancer",
+          "targetId": "sarcopenia",
+          "sourceIndex": 2
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "cfc46a987e024d72d3cbb40937ef3ae36e5faa83a39b362fc7f376781cdc7462"
+      ],
+      "verificationState": {
+        "qualifiedHumanCitationReviewRequired": false,
+        "qualifiedHumanCitationReviewDecision": "approve-with-narrowing",
+        "qualifiedHumanCitationReviewDate": "2026-10-04",
+        "automaticPromotionAuthorized": false,
+        "mappingApprovalDoesNotEqualCitationVerification": true
+      }
+    },
+    {
+      "sourceId": "pmid-30080255",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "30080255",
+      "doi": "10.1111/acer.13862",
+      "canonicalCitation": "Samala N, Lourens SG, Shah VH, Kamath PS, Sanyal AJ, Crabb DW, Tang Q, Radaeva S, Liangpunsakul S, Chalasani N. Posttraumatic Stress Disorder in Patients with Heavy Alcohol Consumption and Alcoholic Hepatitis. Alcohol Clin Exp Res. 2018 Oct;42(10):1933-1938. doi:10.1111/acer.13862. PMID 30080255.",
+      "citationVariants": [
+        "Samala N, Lourens SG, Shah VH, Kamath PS, Sanyal AJ, Crabb DW, Tang Q, Radaeva S, Liangpunsakul S, Chalasani N. Posttraumatic Stress Disorder in Patients with Heavy Alcohol Consumption and Alcoholic Hepatitis. Alcohol Clin Exp Res. 2018 Oct;42(10):1933-1938. doi:10.1111/acer.13862. PMID 30080255."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/30080255/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/30080255/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-10-04"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-alcohol-use-disorder-to-chronic-liver-disease",
+          "primaryId": "alcohol-use-disorder",
+          "targetId": "chronic-liver-disease",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "c7cfb812c105279ffb89cc66b2f366d0ad6a1141202e39f0e192c31554a27e9e"
+      ]
+    },
+    {
+      "sourceId": "pmid-36926309",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "36926309",
+      "doi": "10.3389/fgstr.2022.1005729",
+      "canonicalCitation": "Llamosas-Falcón L, Probst C, Buckley C, Jiang H, Lasserre AM, Puka K, Tran A, Rehm J. Sex-specific association between alcohol consumption and liver cirrhosis: An updated systematic review and meta-analysis. Front Gastroenterol (Lausanne). 2022;1:1005729. doi:10.3389/fgstr.2022.1005729. PMID 36926309.",
+      "citationVariants": [
+        "Llamosas-Falcón L, Probst C, Buckley C, Jiang H, Lasserre AM, Puka K, Tran A, Rehm J. Sex-specific association between alcohol consumption and liver cirrhosis: An updated systematic review and meta-analysis. Front Gastroenterol (Lausanne). 2022;1:1005729. doi:10.3389/fgstr.2022.1005729. PMID 36926309."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36926309/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/36926309/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-10-04"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-alcohol-use-disorder-to-chronic-liver-disease",
+          "primaryId": "alcohol-use-disorder",
+          "targetId": "chronic-liver-disease",
+          "sourceIndex": 1
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "7ff2566c6b2a4405a2e8315ed04b6b4c749824e0d0a2fe6adb9f0b6538c2ed43"
+      ]
+    },
+    {
+      "sourceId": "pmid-20636661",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "20636661",
+      "doi": "10.1111/j.1465-3362.2009.00153.x",
+      "canonicalCitation": "Rehm J, Taylor B, Mohapatra S, Irving H, Baliunas D, Patra J, Roerecke M. Alcohol as a risk factor for liver cirrhosis: a systematic review and meta-analysis. Drug Alcohol Rev. 2010 Jul;29(4):437-45. doi:10.1111/j.1465-3362.2009.00153.x. PMID 20636661.",
+      "citationVariants": [
+        "Rehm J, Taylor B, Mohapatra S, Irving H, Baliunas D, Patra J, Roerecke M. Alcohol as a risk factor for liver cirrhosis: a systematic review and meta-analysis. Drug Alcohol Rev. 2010 Jul;29(4):437-45. doi:10.1111/j.1465-3362.2009.00153.x. PMID 20636661."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/20636661/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/20636661/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-10-04"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-alcohol-use-disorder-to-chronic-liver-disease",
+          "primaryId": "alcohol-use-disorder",
+          "targetId": "chronic-liver-disease",
+          "sourceIndex": 2
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "6a1e65fd4f319e6decbe2d5a9197c80d8d8afc4cc5a3fc55a33619f63a2c8f69"
+      ]
+    },
+    {
+      "sourceId": "pmid-37474733",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "37474733",
+      "doi": "10.1038/s41432-023-00911-6",
+      "canonicalCitation": "Mortazavi N, Tabatabaei AH, Mohammadi M, Rajabi A. Is bruxism associated with temporomandibular joint disorders? A systematic review and meta-analysis. Evid Based Dent. 2023 Sep;24(3):144. doi:10.1038/s41432-023-00911-6. PMID 37474733.",
+      "citationVariants": [
+        "Mortazavi N, Tabatabaei AH, Mohammadi M, Rajabi A. Is bruxism associated with temporomandibular joint disorders? A systematic review and meta-analysis. Evid Based Dent. 2023 Sep;24(3):144. doi:10.1038/s41432-023-00911-6. PMID 37474733."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/37474733/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/37474733/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-10-04"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-bruxism-awake-sleep-to-tmj-disorder",
+          "primaryId": "bruxism-awake-sleep",
+          "targetId": "tmj-disorder",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "8fb5e02927af0eaa93ec8a63116d41a61516b086a192b95595731a13f09af1c1"
+      ]
+    },
+    {
+      "sourceId": "pmid-27796166",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "27796166",
+      "doi": "10.1080/00016357.2016.1247465",
+      "canonicalCitation": "Jiménez-Silva A, Peña-Durán C, Tobar-Reyes J, Frugone-Zambra R. Sleep and awake bruxism in adults and its relationship with temporomandibular disorders: A systematic review from 2003 to 2014. Acta Odontol Scand. 2017 Jan;75(1):36-58. doi:10.1080/00016357.2016.1247465. PMID 27796166.",
+      "citationVariants": [
+        "Jiménez-Silva A, Peña-Durán C, Tobar-Reyes J, Frugone-Zambra R. Sleep and awake bruxism in adults and its relationship with temporomandibular disorders: A systematic review from 2003 to 2014. Acta Odontol Scand. 2017 Jan;75(1):36-58. doi:10.1080/00016357.2016.1247465. PMID 27796166."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/27796166/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/27796166/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-10-04"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-bruxism-awake-sleep-to-tmj-disorder",
+          "primaryId": "bruxism-awake-sleep",
+          "targetId": "tmj-disorder",
+          "sourceIndex": 1
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "23b805a51479ee611044664e9191fc9b98cda9e072feae183202733547e4b51c"
+      ]
+    },
+    {
+      "sourceId": "pmid-9758394",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "9758394",
+      "doi": "10.1046/j.1365-2842.1998.00304.x",
+      "canonicalCitation": "Kieser JA, Groeneveld HT. Relationship between juvenile bruxing and craniomandibular dysfunction. J Oral Rehabil. 1998 Sep;25(9):662-5. doi:10.1046/j.1365-2842.1998.00304.x. PMID 9758394.",
+      "citationVariants": [
+        "Kieser JA, Groeneveld HT. Relationship between juvenile bruxing and craniomandibular dysfunction. J Oral Rehabil. 1998 Sep;25(9):662-5. doi:10.1046/j.1365-2842.1998.00304.x. PMID 9758394."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/9758394/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/9758394/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-10-04"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-bruxism-awake-sleep-to-tmj-disorder",
+          "primaryId": "bruxism-awake-sleep",
+          "targetId": "tmj-disorder",
+          "sourceIndex": 2
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "ac5270429c97d1ca7ffb6f11a2177fd32710638493de7656c77f60e9e136f896"
+      ]
+    },
+    {
+      "sourceId": "pmid-32552169",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "32552169",
+      "doi": "10.1177/0300060520931348",
+      "canonicalCitation": "Cheng S, Lin D, Hu T, Cao L, Liao H, Mou X, Zhang Q, Liu J, Wu T. Association of urinary incontinence and depression or anxiety: a meta-analysis. J Int Med Res. 2020 Jun;48(6):300060520931348. doi:10.1177/0300060520931348. PMID 32552169.",
+      "citationVariants": [
+        "Cheng S, Lin D, Hu T, Cao L, Liao H, Mou X, Zhang Q, Liu J, Wu T. Association of urinary incontinence and depression or anxiety: a meta-analysis. J Int Med Res. 2020 Jun;48(6):300060520931348. doi:10.1177/0300060520931348. PMID 32552169."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/32552169/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/32552169/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-10-04"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-stress-urinary-incontinence-to-depressive-disorder",
+          "primaryId": "stress-urinary-incontinence",
+          "targetId": "depressive-disorder",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "aa1e5790c4bd3597066dca5ddde3a87659a0f51ac9fc449440a6f403d1355322"
+      ]
+    },
+    {
+      "sourceId": "pmid-39501253",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "39501253",
+      "doi": "10.1186/s12905-024-03432-1",
+      "canonicalCitation": "Abebe SA, Gashaw F, Tsegaye A, Abebaw D, Kindie EA, Dejen AM. Prevalence and determinants of depression among women with urinary incontinence: a systematic review and meta-analysis worldwide. BMC Womens Health. 2024 Nov 6;24(1):591. doi:10.1186/s12905-024-03432-1. PMID 39501253.",
+      "citationVariants": [
+        "Abebe SA, Gashaw F, Tsegaye A, Abebaw D, Kindie EA, Dejen AM. Prevalence and determinants of depression among women with urinary incontinence: a systematic review and meta-analysis worldwide. BMC Womens Health. 2024 Nov 6;24(1):591. doi:10.1186/s12905-024-03432-1. PMID 39501253."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39501253/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/39501253/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-10-04"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-stress-urinary-incontinence-to-depressive-disorder",
+          "primaryId": "stress-urinary-incontinence",
+          "targetId": "depressive-disorder",
+          "sourceIndex": 1
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "69efbd9dbe17578bd5ee7c054004c2bc829fe0542f45330b78cb24f33116e5d7"
+      ]
+    },
+    {
+      "sourceId": "pmid-19716547",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "19716547",
+      "doi": "10.1016/j.ajog.2009.05.047",
+      "canonicalCitation": "Melville JL, Fan MY, Rau H, Nygaard IE, Katon WJ. Major depression and urinary incontinence in women: temporal associations in an epidemiologic sample. Am J Obstet Gynecol. 2009 Nov;201(5):490.e1-7. doi:10.1016/j.ajog.2009.05.047. PMID 19716547.",
+      "citationVariants": [
+        "Melville JL, Fan MY, Rau H, Nygaard IE, Katon WJ. Major depression and urinary incontinence in women: temporal associations in an epidemiologic sample. Am J Obstet Gynecol. 2009 Nov;201(5):490.e1-7. doi:10.1016/j.ajog.2009.05.047. PMID 19716547."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/19716547/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/19716547/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-10-04"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-stress-urinary-incontinence-to-depressive-disorder",
+          "primaryId": "stress-urinary-incontinence",
+          "targetId": "depressive-disorder",
+          "sourceIndex": 2
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "4fc8bc67ae05c63c885516a234a96f1fd6834ea592530e4c8a0d7cc59b8f6d13"
+      ]
+    },
+    {
+      "sourceId": "pmid-26972260",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "26972260",
+      "doi": "10.1016/j.pmrj.2015.09.019",
+      "canonicalCitation": "McInnis KC, Ramey LN. High-Risk Stress Fractures: Diagnosis and Management. PM R. 2016 Mar;8(3 Suppl):S113-24. doi:10.1016/j.pmrj.2015.09.019. PMID 26972260.",
+      "citationVariants": [
+        "McInnis KC, Ramey LN. High-Risk Stress Fractures: Diagnosis and Management. PM R. 2016 Mar;8(3 Suppl):S113-24. doi:10.1016/j.pmrj.2015.09.019. PMID 26972260."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/26972260/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/26972260/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-10-04"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-stress-fractures-to-malunion-nonunion-of-fractures",
+          "primaryId": "stress-fractures",
+          "targetId": "malunion-nonunion-of-fractures",
+          "sourceIndex": 0
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "469613809a33d8ae00dc901ca017b890f1cafd7c0505f1e872a9beb5512b6c5a"
+      ]
+    },
+    {
+      "sourceId": "pmid-33615403",
+      "status": "pending-verification",
+      "kind": "clinical-evidence",
+      "pmid": "33615403",
+      "doi": "10.1007/s00167-021-06490-2",
+      "canonicalCitation": "Hollander JJ, Rikken QGH, Dahmen J, Stufkens SAS, Kerkhoffs GMMJ. High union rates following surgical treatment of proximal fifth metatarsal stress fractures. Knee Surg Sports Traumatol Arthrosc. 2021 Aug;29(8):2495-2503. doi:10.1007/s00167-021-06490-2. PMID 33615403.",
+      "citationVariants": [
+        "Hollander JJ, Rikken QGH, Dahmen J, Stufkens SAS, Kerkhoffs GMMJ. High union rates following surgical treatment of proximal fifth metatarsal stress fractures. Knee Surg Sports Traumatol Arthrosc. 2021 Aug;29(8):2495-2503. doi:10.1007/s00167-021-06490-2. PMID 33615403."
+      ],
+      "canonicalSourceUrl": "https://pubmed.ncbi.nlm.nih.gov/33615403/",
+      "sourceUrlVariants": [
+        "https://pubmed.ncbi.nlm.nih.gov/33615403/"
+      ],
+      "verificationScopes": [
+        "clinical-evidence"
+      ],
+      "verified": false,
+      "sourceCheckedOnValues": [
+        "2026-10-04"
+      ],
+      "liveUsageCount": 1,
+      "liveUses": [
+        {
+          "relationshipId": "rel-stress-fractures-to-malunion-nonunion-of-fractures",
+          "primaryId": "stress-fractures",
+          "targetId": "malunion-nonunion-of-fractures",
+          "sourceIndex": 1
+        }
+      ],
+      "retiredUses": [],
+      "rawReferenceHashes": [
+        "4621628086cac542b3eb45f20d2bfdf69f2ab1942a3659a41cd0a78d82c01f92"
       ]
     }
   ],

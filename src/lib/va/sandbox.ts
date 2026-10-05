@@ -3,7 +3,6 @@ import { randomUUID } from "node:crypto";
 import { z } from "zod";
 
 import {
-  DEFAULT_MAX_RESPONSE_BYTES,
   readBoundedResponseJson,
   ResponseTooLargeError,
 } from "@/lib/bounded-response";
@@ -18,12 +17,17 @@ import {
   vaProcessLocalStateAllowed,
   type VaReferenceMode,
 } from "./runtime-state";
+import { parseRetryAfterMs } from "./circuit-breaker";
 import {
-  isCircuitOpen,
-  recordCircuitFailure,
-  recordCircuitSuccess,
-} from "./circuit-breaker";
-import { isVaSharedCacheConfigured } from "./reference-shared-cache";
+  abandonVaOutboundCircuitProbe,
+  evaluateVaOutboundCircuit,
+  recordVaOutboundCircuitOutcome,
+} from "./outbound-circuit";
+import {
+  reserveVaSharedConsumerSlot,
+  vaSharedConsumerBudgetEnabled,
+} from "./reference-shared-cache";
+import { isTrustedHttpsUrl, TRUSTED_LINK_REQUIREMENT } from "./trusted-link";
 
 const DEFAULT_FORMS_BASE_URLS = {
   sandbox: "https://sandbox-api.va.gov/services/va_forms/v0",
@@ -42,27 +46,38 @@ const TRUSTED_API_ORIGINS = {
   production: "https://api.va.gov",
 } as const;
 const DEFAULT_TIMEOUT_MS = 4_000;
+/** Upper bound for a configured per-attempt timeout; a typo cannot disable it. */
+export const VA_API_MAX_TIMEOUT_MS = 30_000;
+/**
+ * Cap on a single VA API response body. Deliberately tighter than the shared
+ * 25 MB default: VA reference payloads are small (form metadata, reference
+ * lists), so 2 MiB is a DoS backstop against a misbehaving upstream rather
+ * than a real-data limit. The *reader* is still the one shared
+ * `bounded-response.ts` implementation, so both outbound families enforce
+ * their caps identically.
+ */
+export const VA_API_MAX_RESPONSE_BYTES = 2 * 1024 * 1024;
 const RETRYABLE_STATUS = new Set([503, 504]);
 export const VA_API_OUTBOUND_WINDOW_MS = 60_000;
 export const VA_API_OUTBOUND_MAX_REQUESTS_PER_SERVICE = 60;
 export const VA_API_RETRY_BASE_DELAY_MS = 100;
 export const VA_API_RETRY_MAX_DELAY_MS = 400;
 export const VA_API_MAX_RETRIES = 2;
-/**
- * Cap on a single VA API response body. Deliberately the shared default used by
- * the regulatory HTTP stack too, so both outbound families bound identically.
- * VA reference payloads are small (form metadata, reference lists), so this is
- * a DoS backstop against a misbehaving upstream rather than a real-data limit.
- */
-export const VA_API_MAX_RESPONSE_BYTES = DEFAULT_MAX_RESPONSE_BYTES;
 /** @deprecated Use VA_API_RETRY_BASE_DELAY_MS; retained for test compatibility. */
 export const VA_API_RETRY_DELAY_MS = VA_API_RETRY_BASE_DELAY_MS;
 
-function vaApiRetryDelayMs(attempt: number): number {
-  return Math.min(
+/**
+ * Deterministic backoff with bounded jitter. Jitter spreads retries across
+ * instances so a shared upstream incident does not get a synchronized retry
+ * wave; the bound keeps the base/max contract testable.
+ */
+function vaApiRetryDelayMs(attempt: number, random: () => number = Math.random): number {
+  const base = Math.min(
     VA_API_RETRY_BASE_DELAY_MS * 2 ** (attempt - 1),
     VA_API_RETRY_MAX_DELAY_MS,
   );
+  const jitter = Math.floor(base * 0.2 * random());
+  return base + jitter;
 }
 
 type VaApiEnvironmentVariables = Record<string, string | undefined>;
@@ -161,12 +176,23 @@ function sleep(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
+/**
+ * VA-provided link (audit A-03 "approved HTTPS links"): rendered directly as
+ * `<a href>`, so the schema rejects non-HTTPS schemes (`javascript:`,
+ * `data:`, `http:`), credential-bearing URLs, and unparsable values instead of
+ * passing them through. A payload with such a link fails validation and the
+ * loader degrades to its explicit local fallback (see trusted-link.ts).
+ */
+const trustedHttpsUrlSchema = z
+  .string()
+  .refine(isTrustedHttpsUrl, { message: TRUSTED_LINK_REQUIREMENT });
+
 const formIndexItemSchema = z.object({
   id: z.string().min(1),
   type: z.string().min(1),
   attributes: z.object({
     form_name: z.string().min(1),
-    url: z.string().url(),
+    url: trustedHttpsUrlSchema,
     title: z.string().min(1),
     last_revision_on: z.string().nullable().optional(),
     pages: z.number().int().nonnegative().optional(),
@@ -257,8 +283,12 @@ export function loadVaApiConfig(
         ? env.VA_ACCREDITED_REP_PRODUCTION_BASE_URL
         : env.VA_ACCREDITED_REP_SANDBOX_BASE_URL)?.trim() ||
       DEFAULT_ACCREDITED_REP_BASE_URLS[effectiveEnvironment],
+    // A configured timeout is clamped to VA_API_MAX_TIMEOUT_MS, so a typo
+    // (e.g. VA_API_TIMEOUT_MS=4000000) cannot pin a request open indefinitely.
     timeoutMs:
-      Number.isFinite(timeout) && timeout > 0 ? Math.floor(timeout) : DEFAULT_TIMEOUT_MS,
+      Number.isFinite(timeout) && timeout > 0
+        ? Math.min(Math.floor(timeout), VA_API_MAX_TIMEOUT_MS)
+        : DEFAULT_TIMEOUT_MS,
     accreditedRepEnabled: env.VA_ACCREDITED_REP_ENABLED === "true",
   };
 }
@@ -274,7 +304,8 @@ function configEnvironment(config: VaApiConfig): VaApiEnvironment {
   return config.environment ?? "sandbox";
 }
 
-function liveSource(environment: VaApiEnvironment): VaApiSource {
+/** The live API source a loader in this environment must present. */
+export function liveSource(environment: VaApiEnvironment): VaApiSource {
   return environment === "production" ? "va-production-api" : "va-sandbox-api";
 }
 
@@ -324,38 +355,15 @@ async function requestVaJson<T>(args: {
   if (!args.config.enabled) {
     return fallback(`VA ${environment} integration is disabled by feature flag.`, environment);
   }
-  if (!vaProcessLocalStateAllowed()) {
-    // Finding #3: process-local cache/budget has low hit rate in serverless.
-    // When an optional shared KV cache is configured, reference-data fetches
-    // are allowed in distributed runtimes — the shared cache provides cross-
-    // instance coordination (per-process rate limit + circuit breaker still apply).
-    if (!isVaSharedCacheConfigured()) {
-      return fallback(VA_SHARED_STATE_REQUIRED_ERROR, environment);
-    }
-  }
-  if (isCircuitOpen(args.service)) {
-    const requestId = randomUUID();
-    const observation: VaApiObservation = {
-      requestId,
-      service: args.service,
-      path: args.path,
-      attempt: 1,
-      outcome: "circuit-open",
-      durationMs: 0,
-    };
-    args.observe?.(observation);
-    vaApiLogger.warn("va request blocked by circuit breaker", {
-      requestId,
-      service: args.service,
-      path: args.path,
-      outcome: "circuit-open",
-    });
-    recordVaApiError({ service: args.service, outcome: "circuit-open", environment });
-    return fallback(
-      `VA ${environment} ${args.service} is temporarily unavailable (circuit open). Using local reference fallback.`,
-      environment,
-      requestId,
-    );
+  const distributed = !vaProcessLocalStateAllowed();
+  // Finding #3: a shared KV cache is NOT a rate-limit coordinator, so the
+  // distributed consumer budget is a separate explicit opt-in. Every upstream
+  // attempt in a distributed runtime must first atomically reserve a
+  // consumer-wide slot; a missing opt-in, missing coordinator, or unreachable
+  // coordinator fails closed instead of granting a per-process budget that
+  // can exceed VA's quota.
+  if (distributed && !vaSharedConsumerBudgetEnabled()) {
+    return fallback(VA_SHARED_STATE_REQUIRED_ERROR, environment);
   }
   if (!args.apiKey) {
     return fallback(
@@ -379,8 +387,54 @@ async function requestVaJson<T>(args: {
   if (args.query) endpoint.search = args.query.toString();
   const requestId = randomUUID();
 
+  // Circuit admission happens once per logical request, before any budget slot
+  // is consumed: a request that will not reach the network must not spend VA
+  // quota. Distributed runtimes require the shared coordinator — an unreachable
+  // coordinator is `unavailable` and fails closed rather than assuming the
+  // fleet circuit is closed.
+  const circuit = await evaluateVaOutboundCircuit({
+    service: args.service,
+    distributed,
+  });
+  if (circuit.decision === "unavailable") {
+    return fallback(VA_SHARED_STATE_REQUIRED_ERROR, environment, requestId);
+  }
+  const probeAdmitted = circuit.decision === "probe";
+  if (circuit.decision === "blocked") {
+    const observation: VaApiObservation = {
+      requestId,
+      service: args.service,
+      path: args.path,
+      attempt: 1,
+      outcome: "circuit-open",
+      durationMs: 0,
+    };
+    args.observe?.(observation);
+    vaApiLogger.warn("va request blocked by circuit breaker", {
+      requestId,
+      service: args.service,
+      path: args.path,
+      outcome: "circuit-open",
+    });
+    recordVaApiError({ service: args.service, outcome: "circuit-open", environment });
+    return fallback(
+      `VA ${environment} ${args.service} is temporarily unavailable (circuit open). Using local reference fallback.`,
+      environment,
+      requestId,
+    );
+  }
+
   for (let attempt = 1; attempt <= VA_API_MAX_RETRIES + 1; attempt += 1) {
-    if (!claimOutboundRequestSlot(args.service)) {
+    if (distributed) {
+      // Every attempt, including retries, atomically reserves a consumer-wide
+      // slot; a coordinator failure fails closed for the whole request. A probe
+      // claimed above is released so a dead lease does not block the fleet.
+      if (!(await reserveVaSharedConsumerSlot())) {
+        await abandonVaOutboundCircuitProbe(args.service, { distributed });
+        return fallback(VA_SHARED_STATE_REQUIRED_ERROR, environment, requestId);
+      }
+    } else if (!claimOutboundRequestSlot(args.service)) {
+      await abandonVaOutboundCircuitProbe(args.service, { distributed });
       args.observe?.({
         requestId,
         service: args.service,
@@ -408,6 +462,9 @@ async function requestVaJson<T>(args: {
           apikey: args.apiKey,
           "X-Request-ID": requestId,
         },
+        // Never follow a redirect: a redirected request would replay the VA
+        // apikey header to a cross-origin location chosen by the response.
+        redirect: "error",
         signal: controller.signal,
       });
 
@@ -436,9 +493,12 @@ async function requestVaJson<T>(args: {
         recordVaApiLatency(durationMs, { service: args.service, outcome: "http-error", environment });
         recordVaApiError({ service: args.service, outcome: "http-error", environment, status: response.status });
 
-        // Do not immediately retry a 429; falling back reduces pressure on the
-        // upstream rate limit. Transient 503/504 responses are retried with
-        // exponential backoff (100ms, 200ms) up to VA_API_MAX_RETRIES attempts.
+        // Do not retry a 429: failing over immediately reduces pressure on the
+        // upstream rate limit. The 429 also opens the circuit for the clamped
+        // Retry-After window (see `recordVaOutboundCircuitOutcome`), so the
+        // whole consumer — not just this request — backs off. Transient
+        // 503/504 responses are retried with exponential backoff (100ms, 200ms)
+        // plus bounded jitter up to VA_API_MAX_RETRIES attempts.
         if (
           attempt <= VA_API_MAX_RETRIES &&
           RETRYABLE_STATUS.has(response.status)
@@ -455,13 +515,25 @@ async function requestVaJson<T>(args: {
           await sleep(delayMs);
           continue;
         }
-        recordCircuitFailure(args.service);
+        const rateLimited = response.status === 429;
+        await recordVaOutboundCircuitOutcome({
+          service: args.service,
+          distributed,
+          success: false,
+          rateLimited,
+          retryAfterMs: rateLimited
+            ? parseRetryAfterMs(response.headers.get("retry-after"))
+            : undefined,
+          probeAdmitted,
+          admission: circuit,
+        });
         return fallback(
           `VA ${environment} request failed with status ${response.status}.`,
           environment,
           requestId,
         );
       }
+
 
       // Read the body through the shared size bound. A bare `response.json()`
       // buffers whatever the upstream sends, which lets a misbehaving or
@@ -502,7 +574,13 @@ async function requestVaJson<T>(args: {
         });
         recordVaApiLatency(durationMs, { service: args.service, outcome: "response-too-large", environment });
         recordVaApiError({ service: args.service, outcome: "response-too-large", environment, status: response.status });
-        recordCircuitFailure(args.service);
+        await recordVaOutboundCircuitOutcome({
+          service: args.service,
+          distributed,
+          success: false,
+          probeAdmitted,
+          admission: circuit,
+        });
         return fallback(
           `VA ${environment} response exceeded the ${VA_API_MAX_RESPONSE_BYTES}-byte safety limit.`,
           environment,
@@ -535,7 +613,13 @@ async function requestVaJson<T>(args: {
         });
         recordVaApiLatency(durationMs, { service: args.service, outcome: "invalid-payload", environment });
         recordVaApiError({ service: args.service, outcome: "invalid-payload", environment });
-        recordCircuitFailure(args.service);
+        await recordVaOutboundCircuitOutcome({
+          service: args.service,
+          distributed,
+          success: false,
+          probeAdmitted,
+          admission: circuit,
+        });
         return fallback("VA API returned an invalid response payload.", environment, requestId);
       }
 
@@ -561,7 +645,13 @@ async function requestVaJson<T>(args: {
         environment,
       });
       recordVaApiLatency(durationMs, { service: args.service, outcome: "success", environment });
-      recordCircuitSuccess(args.service);
+      await recordVaOutboundCircuitOutcome({
+        service: args.service,
+        distributed,
+        success: true,
+        probeAdmitted,
+        admission: circuit,
+      });
       return {
         success: true,
         data: parsed.data,
@@ -607,7 +697,13 @@ async function requestVaJson<T>(args: {
         await sleep(delayMs);
         continue;
       }
-      recordCircuitFailure(args.service);
+      await recordVaOutboundCircuitOutcome({
+        service: args.service,
+        distributed,
+        success: false,
+        probeAdmitted,
+        admission: circuit,
+      });
       return fallback(
         timedOut
           ? `VA ${environment} request timed out.`
@@ -691,7 +787,7 @@ const accreditedRepItemSchema = z.object({
   // Rendered only when present — never fabricated locally.
   specializations: z.array(z.string().min(1)).nullable().optional(),
   phone: z.string().min(1).nullable().optional(),
-  website: z.string().url().nullable().optional(),
+  website: trustedHttpsUrlSchema.nullable().optional(),
   address: z.string().min(1).nullable().optional(),
   zip: z.string().regex(/^\d{5}$/),
   distanceMiles: z.number().nonnegative().nullable().optional(),

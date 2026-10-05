@@ -152,18 +152,18 @@ describe("Mapping Expansion Batch ME-6", () => {
     const mappings = files.map((name) =>
       JSON.parse(fs.readFileSync(path.join(kbDir, name), "utf8")) as Mapping,
     );
-    expect(files).toHaveLength(813);
+    expect(files).toHaveLength(819);
     expect(mappings.filter((mapping) => mapping.draft === false)).toHaveLength(140);
-    expect(mappings.filter((mapping) => mapping.draft === true)).toHaveLength(673);
-    expect(mappings.reduce((sum, mapping) => sum + mapping.suggestions.length, 0)).toBe(863);
-    expect(mappings.filter((mapping) => mapping.draft === false && mapping.suggestions.length === 1)).toHaveLength(67);
-    expect(mappings.filter((mapping) => mapping.draft === false && mapping.suggestions.length >= 2)).toHaveLength(73);
+    expect(mappings.filter((mapping) => mapping.draft === true)).toHaveLength(679);
+    expect(mappings.reduce((sum, mapping) => sum + mapping.suggestions.length, 0)).toBe(875);
+    expect(mappings.filter((mapping) => mapping.draft === false && mapping.suggestions.length === 1)).toHaveLength(66);
+    expect(mappings.filter((mapping) => mapping.draft === false && mapping.suggestions.length >= 2)).toHaveLength(74);
     const refs = mappings.flatMap((mapping) =>
       mapping.suggestions.flatMap((suggestion) => suggestion.sourceReferences ?? []),
     );
-expect(refs).toHaveLength(1672);
-    expect(refs.filter((ref) => ref.verified === true)).toHaveLength(384);
-expect(refs.filter((r) => r.verified === false)).toHaveLength(1288);
+expect(refs).toHaveLength(1704);
+    expect(refs.filter((ref) => ref.verified === true)).toHaveLength(398);
+expect(refs.filter((r) => r.verified === false)).toHaveLength(1306);
   });
 
   it("passes citation and master-registry gates in the final ME-7 verified state", { timeout: 30_000 }, () => {
@@ -178,11 +178,11 @@ expect(refs.filter((r) => r.verified === false)).toHaveLength(1288);
       hardFindingCount: number;
     };
     expect(citation).toMatchObject({
-      references: 1672,
-      verified: 384,
+      references: 1704,
+      verified: 398,
       retiredVerified: 6,
-      verifiedProvenance: 390,
-      unverified: 1288,
+      verifiedProvenance: 404,
+      unverified: 1306,
       reviewFindingCount: 0,
       hardFindingCount: 0,
     });
@@ -198,11 +198,11 @@ expect(refs.filter((r) => r.verified === false)).toHaveLength(1288);
     };
     expect(master).toMatchObject({
       status: "PASS",
-relationships: 863,
-      verifiedLiveSourceUses: 384,
-      pendingVerificationLiveSourceUses: 1288,
-      activeSourceEntities: 346,
-      pendingVerificationSourceEntities: 1110,
+relationships: 875,
+      verifiedLiveSourceUses: 398,
+      pendingVerificationLiveSourceUses: 1306,
+      activeSourceEntities: 360,
+      pendingVerificationSourceEntities: 1128,
     });
   });
 });

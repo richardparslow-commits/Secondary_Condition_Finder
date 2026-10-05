@@ -450,7 +450,8 @@
         }
       ],
       "reviewNotes": [
-        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending.",
+        "CANONICAL-IDENTITY RECONCILIATION (2026-09-28, docs/modeling-debt-dispositions.md): this identity is the CANONICAL identity of the thumb-collateral-ligament pair. skier-s-thumb is reconciled to it as a quarantined pointer record carrying preserved but unregistered evidence. The two names denote ONE lesion, distinguished in the located literature only by mechanism of injury (ski-pole-grip valgus versus forced abduction); that mechanism is a documented feature of this identity rather than a second identity. The variant name 'skier's thumb' remains on the pointer entry's own catalog name: the catalog invariant (tests/catalog.test.ts) forbids an alias colliding with another condition's name or id, so name folding into this entry becomes available only if a future catalog-v3 migration retires the pointer ID. The registered gamekeeper-s-thumb to osteoarthritis edge and its three registered sources are preserved unchanged; the file-level annotation about the acute-sibling wording in that edge's batch-36 guard is recorded in the knowledge-base file, whose registered suggestion text is deliberately untouched."
       ]
     },
     {
@@ -972,7 +973,9 @@
         }
       ],
       "reviewNotes": [
-        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending.",
+        "Umbrella/member scope (recorded 2026-09-28 by the three-closure adjudication in docs/modeling-debt-dispositions.md): this identity is the tear MEMBER of the rotator-cuff-injury umbrella in musculoskeletal.json (catalog name Rotator Cuff Tendonitis / Tear) and is NOT a duplicate of it; the batch-82 identity-duplication closure was vacated by that adjudication. The member owns tear-specific windows only; the umbrella owns the general rotator-cuff window and keeps the registered bicipital-tendinitis to rotator-cuff-injury edge. NO edge may be registered between this member and its umbrella (batch-86 soft-tissue-sarcomas umbrella guard). The shared 38 CFR 4.71a rating framework with the umbrella establishes neither shared etiology nor secondary causation.",
+        "CANONICAL POINTER (2026-09-28, docs/modeling-debt-dispositions.md): this identity is reconciled to the canonical rotator-cuff-injury entry in musculoskeletal.json and is retained as a QUARANTINED POINTER RECORD so the frozen one-to-one identity contract and stable IDs are unmoved. Do not author here: rotator-cuff tear claims are authored under the canonical entry's umbrella scope, and the batch-82 duplication closure plus the member-authorship scope recorded above are superseded as to WHERE authoring happens. The variant name 'rotator cuff tear' remains this entry's own catalog name: the catalog invariant (tests/catalog.test.ts) forbids an alias colliding with another condition's name or id, so the canonical entry cannot carry it while this pointer exists; this pointer note is the name-resolution record, and name folding becomes available only if a future catalog-v3 migration retires this pointer ID."
       ]
     },
     {
@@ -1023,7 +1026,9 @@
         }
       ],
       "reviewNotes": [
-        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending.",
+        "CANONICAL POINTER (2026-09-28, docs/modeling-debt-dispositions.md): this identity is reconciled to the canonical gamekeeper-s-thumb entry in the same file and is retained as a QUARANTINED POINTER RECORD so the frozen one-to-one identity contract and stable IDs are unmoved. Do not author here: thumb-collateral-ligament claims are authored under the canonical entry. The preserved unregistered evidence recorded in the knowledge-base file remains preserved there and may support exactly ONE future authoring pass under the canonical entry. The batch-84 closure's canonical-election branch is resolved: gamekeeper-s-thumb is canonical. The variant name 'Skier's thumb' remains this entry's own catalog name: the catalog invariant (tests/catalog.test.ts) forbids an alias colliding with another condition's name or id, so name folding into the canonical entry becomes available only if a future catalog-v3 migration retires this pointer ID.",
+        "PRESERVED-EVIDENCE RECORD COMPLETED (2026-09-28): the preserved unregistered evidence recorded in the knowledge-base file is now complete with PubMed-verified PMIDs - the chapter titled for Gamekeeper's Thumb (PMID 29494005) among them - so a future reopening of this pair needs no re-search. All of it remains UNREGISTERED under the ME-29 reserved-evidence rule and may support exactly ONE future authoring pass under the canonical gamekeeper-s-thumb entry, which must adjudicate those PMIDs explicitly."
       ]
     },
     {

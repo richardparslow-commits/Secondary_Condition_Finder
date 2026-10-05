@@ -10,6 +10,11 @@ import {
   readVaSharedReferenceCache,
   writeVaSharedReferenceCache,
 } from "./reference-shared-cache";
+import {
+  acquireVaSharedFetchLease,
+  awaitVaSharedFetchOutcome,
+  releaseVaSharedFetchLease,
+} from "./shared-single-flight";
 
 /**
  * The single owner of VA reference cache key namespaces.
@@ -90,6 +95,21 @@ export interface WithVaReferenceCacheOptions<T> {
   decorateHit?: (view: T) => T;
   /** Shared-tier TTL. Defaults to `VA_REFERENCE_CACHE_TTL_MS`. */
   ttlMs?: number;
+  /**
+   * Read-side trust guard for shared-tier values (audit item 12): a shared hit
+   * is served as a live VA-labelled view, so an unguarded value could set
+   * trusted links or provenance labels this deployment never wrote. A value
+   * the guard rejects is treated as a miss. Omit to accept any cached value.
+   */
+  acceptSharedCached?: (view: T) => boolean;
+  /**
+   * Per-key single-flight for shared-cache misses (audit A-03): one instance
+   * claims a short lease and fetches while contenders wait a bounded window for
+   * it to publish instead of duplicating the upstream request. Fails open — an
+   * unavailable coordinator means the normal fetch path, where the distributed
+   * consumer budget still gates every attempt.
+   */
+  singleFlight?: boolean;
 }
 
 /**
@@ -111,9 +131,16 @@ export async function withVaReferenceCache<T>(
   load: () => Promise<VaReferenceCacheLoad<T>>,
   options: WithVaReferenceCacheOptions<T> = {},
 ): Promise<T> {
-  const { enabled = true, decorateHit, ttlMs = VA_REFERENCE_CACHE_TTL_MS } =
-    options;
+  const {
+    enabled = true,
+    decorateHit,
+    ttlMs = VA_REFERENCE_CACHE_TTL_MS,
+    acceptSharedCached,
+    singleFlight = false,
+  } = options;
   const asHit = (view: T): T => (decorateHit ? decorateHit(view) : view);
+  const trusted = (view: T): boolean =>
+    acceptSharedCached ? acceptSharedCached(view) : true;
 
   if (!enabled) {
     const { view } = await load();
@@ -124,16 +151,41 @@ export async function withVaReferenceCache<T>(
   if (localCached) return asHit(localCached);
 
   const sharedCached = await readVaSharedReferenceCache<T>(cacheKey);
-  if (sharedCached) {
+  if (sharedCached && trusted(sharedCached)) {
     // Promote so the next request is served without another KV round-trip.
     writeVaReferenceCache(cacheKey, sharedCached);
     return asHit(sharedCached);
   }
 
-  const { view, cacheable } = await load();
-  if (cacheable) {
-    writeVaReferenceCache(cacheKey, view);
-    void writeVaSharedReferenceCache(cacheKey, view, ttlMs);
+  // Single-flight (audit A-03): one instance fetches a cold/expired key while
+  // contenders wait a bounded window for it to publish. A lease that is
+  // unavailable (unconfigured coordinator, non-allowlisted key) fails open
+  // into the normal fetch path below.
+  const lease = singleFlight ? await acquireVaSharedFetchLease(cacheKey) : null;
+  if (lease?.status === "contended") {
+    const published = await awaitVaSharedFetchOutcome<T>(cacheKey);
+    if (published && trusted(published)) {
+      writeVaReferenceCache(cacheKey, published);
+      return asHit(published);
+    }
   }
-  return view;
+
+  try {
+    const { view, cacheable } = await load();
+    if (cacheable) {
+      writeVaReferenceCache(cacheKey, view);
+      // Awaited (not fire-and-forget): a floating promise can be torn down with
+      // the request before the write lands, silently leaving the shared cache
+      // stale — and the single-flight lease must not be released before the
+      // winner's value is observable, or contenders miss within their bounded
+      // wait and duplicate the upstream request. The 750 ms KV deadline bounds
+      // the added latency.
+      await writeVaSharedReferenceCache(cacheKey, view, ttlMs);
+    }
+    return view;
+  } finally {
+    if (lease?.status === "acquired") {
+      await releaseVaSharedFetchLease(cacheKey, lease.token);
+    }
+  }
 }

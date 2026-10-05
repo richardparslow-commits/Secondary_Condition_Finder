@@ -171,7 +171,7 @@ export async function writeSecondaryWorkflowSession(
 
 export async function clearSecondaryWorkflowSession(): Promise<void> {
   const jar = await cookies();
-  jar.delete(WORKFLOW_COOKIE);
+  jar.delete({ name: WORKFLOW_COOKIE, path: "/secondary" });
 }
 
 export function workflowSessionToQueryParams(

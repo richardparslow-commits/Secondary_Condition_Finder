@@ -135,7 +135,11 @@ export function runtimeCapabilities(
       full: !distributed,
       scope: vaLive.scope,
       detail: vaLive.detail,
-      sources: ["src/lib/va/runtime-state.ts", "src/lib/va/sandbox.ts"],
+      sources: [
+        "src/lib/va/runtime-state.ts",
+        "src/lib/va/sandbox.ts",
+        "src/lib/va/account/store.ts",
+      ],
     },
     vaReferenceCache: {
       id: "vaReferenceCache",

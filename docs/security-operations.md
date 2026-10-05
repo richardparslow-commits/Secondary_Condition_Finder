@@ -33,7 +33,13 @@ The current engineering baseline includes:
 - browser-local evidence resource ceilings;
 - read-only active CI permissions;
 - immutable commit pins for active CI marketplace actions;
-- `npm run audit:high` on gated changes;
+- `npm run audit:high` (production/runtime dependencies) on gated changes, plus the non-blocking `npm run audit:high:all` inventory for dev-tooling advisories that have no upstream patch yet;
+- fail-closed VA outbound coordination in distributed runtimes: a shared consumer budget (`VA_SHARED_CONSUMER_BUDGET=true`) reserves every attempt, an unreachable coordinator blocks live requests instead of granting a per-process budget, and a shared absolute cooldown deadline plus a single probe lease (`SET … NX PX`) admits at most one half-open probe across the fleet; cooldown publication is extend-only (a later, longer deadline is never shortened by an older request's failure) and recovery is fenced — only the admitted probe may clear the exact cooldown generation it observed, so a late ordinary success cannot erase a newer backoff;
+- upstream 429 responses are never retried and open the circuit for the clamped `Retry-After` window (1s–15min, default 30s; a long value is honored exactly as the fleet deadline rather than truncated), so consumer pressure is reduced fleet-wide rather than per request;
+- shared VA reference cache is bounded and revocable: only allowlisted key namespaces are read or written, entries are `{envelopeVersion:2, epoch, value}` envelopes accepted only under the currently observed epoch, every write is admitted against a finite per-namespace window budget, and `POST /api/admin/cache-clear` advances the store-wide invalidation epoch so stale shared values are discarded fleet-wide without a delete sweep — an expired or invalidated popular key is fetched once, not once per instance, via a per-key 120 s single-flight lease with a bounded 600 ms contender wait (the lease covers the longest legal logical fetch: three 30 s attempts plus backoff and the shared write) (the lease fails open; the consumer budget remains the safety control); a shared-store outage fails the fleet closed rather than open — cached values stop being served, the decision is reported as a coordination outage, and no upstream request or quota reservation is attempted; a split network is simulated as well: the partitioned half serves only labelled local fallbacks while the reachable half keeps operating, and after healing it refetches under the reachable half's epoch bump instead of resurrecting pre-bump values (`tests/va-fleet-simulation.test.ts`, wired into CI as the named `fleet` gate under a ratcheted wall-clock budget — the enforced limit is the tighter of the committed environment cap and a budget derived from recent measured runs (`.github/fleet-budget-ratchet.json`), so the gate tightens automatically as timing stabilizes and cannot silently drift looser, every coordination path is additionally held to its own committed per-scenario real-time bound, and an unbounded coordination regression fails the build instead of only running longer);
+- cached reference values are re-checked on read (`src/lib/va/cached-view-guard.ts`): a hit must carry this deployment's live source/environment, bounded label metadata, and credential-free HTTPS links, or it is treated as a miss and refetched — a poisoned or stale-shaped cache entry cannot set the UI's source labels or links;
+- VA-provided links are approved at the payload boundary (`src/lib/va/trusted-link.ts`): only credential-free HTTPS URLs pass the Forms/directory schemas; `javascript:`, `data:`, `http:`, and credential-bearing URLs fail validation and the loader degrades to its explicit local fallback;
+- credential-bearing outbound requests refuse redirects (`redirect: "error"`): the VA JSON transport, the shared-store KV transport, the legacy sandbox adapter, and the regulatory preflight source fetch treat any redirect as a failed exchange, so an API key or Bearer token is never replayed to a redirected origin (`tests/va-shared-reference-cache.test.ts`, `tests/va-adapter-resilience.test.ts`, `tests/regulatory-preflight.test.ts`);
 - citation audit and knowledge-base validation;
 - lint, typecheck, tests, and production build;
 - real Chrome/ChromeDriver end-to-end validation;
@@ -90,6 +96,30 @@ Perform a focused security/data-flow review before VA production-access submissi
 Appropriate operational evidence includes commit SHAs, PR numbers, workflow/run IDs, deployment identifiers and high-level status, UTC timestamps, route status codes, advisory/package identifiers, and high-level runtime-readiness results.
 
 Do not record secret values or hashes, API keys/tokens, encrypted-cookie payloads, raw browser-local evidence text, Veteran PII/PHI, environment dumps, or unnecessary sensitive response bodies.
+
+## Adjacency-graph (CRG) migration operations
+
+The graph loader (`src/lib/kb/graph.ts`) validates every adjacency file under `data/knowledge-base/graph/` (schema, filename ↔ nodeId, duplicate nodes, catalog membership). Its state is surfaced in two places:
+
+- `GET /api/health` → `components.kbGraph`: `{ status, latencyMs, nodes, edges, detail? }`. Overall health is `healthy`/`200` only when `kbGraph.status` is `ok` — invalid graph data deliberately degrades health to `503`.
+- The Production Runtime Readiness workflow summary section “Adjacency-graph migration state” (and the issue #213 evidence comment).
+
+Reading the signal:
+
+- `status: "ok"` means every graph file parsed and passed validation; `nodes` counts migrated root conditions and `edges` counts authored outgoing edges. Both grow only as migration proceeds, and `0`/`0` is the valid pre-migration state, not a fault.
+- `status: "error"` carries `detail` naming the offending file and the failed invariant. Detail text contains file names and schema messages only — never Veteran data or secrets.
+
+When `kbGraph` degrades:
+
+1. Read `detail` and identify the named file.
+2. Reproduce locally: `npm run audit:crg:graph` (hard cycle gate) and `npx vitest run tests/kb-graph-loader.test.ts`.
+3. Fix forward in a new deployment: correct or remove the file. Do not hand-edit data to silence validation, and do not add an edge to an identity that is not yet in the catalog — land the identity first.
+4. Re-verify: data files ship with the deployment and the loader caches per process, so redeploy and confirm `/api/health` returns `200` with `kbGraph.status: "ok"` before closing the incident.
+5. If the graph validated at build time and degrades at runtime, treat it as a data-integrity incident and inspect what the deployed commit contains under `data/knowledge-base/graph/`.
+
+A vacuous `audit:crg:graph` warning (no graph files found) is abnormal now that the first node has migrated: it means the graph directory is missing or empty in that checkout and migration state was lost.
+
+This section is the operational contract for `kbGraph` degradation; keep it current whenever the health or readiness surfaces change.
 
 ## External gates
 

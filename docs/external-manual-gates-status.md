@@ -74,6 +74,12 @@ Current objective production state: `https://secondary-condition-finder.vercel.a
 
 Issue #189 remains a separate prerequisite gate for credentialed sandbox connectivity evidence.
 
+## P0 account integration and approval boundary
+
+A separate disabled-by-default sandbox account phase implements veteran-self-service OAuth/PKCE, read-only rating summaries and existing claim statuses. See [sandbox account setup](va-account-sandbox.md). Synthetic provider tests establish code behavior only; real registered-client connectivity is still required before calling it live. No production account endpoints, representative access, claim mutations or Intake upload are included.
+
+The public-reference #287 gate requires two distinct events: first an explicit VA grant for the requested services, then a controlled authorized connectivity check. The acknowledgement flag may be set for that approved check after the grant; it does not itself prove connectivity or close the issue. This avoids requiring live verification before there is an authorized way to perform it. No grant, credentials, or deployment evidence was manufactured by the sandbox implementation.
+
 ## Completion boundary
 
-The clinical evidence/remediation program can be repository-complete while #189, #195, and #287 remain externally pending. Those gates require evidence or an access grant outside the authority of an automated repository agent: #189 and #287 need real credentialed VA connectivity (sandbox and, for #287, a VA production access grant plus live production verification), and #195 needs human keyboard, assistive-technology, zoom/reflow, contrast, and forced-colors testing with reviewer sign-off. Keeping them open is the correct completed automation state until the required external/human actions occur.
+The repository records #189 and #213 as complete; verify their evidence lineage rather than reopening them as missing. #195 remains open for identified-build human accessibility evidence, and #287 remains open for the external grant plus live production verification. Application fixes, source tests, HTTP fallback success and mock account data cannot close either gate. The broader clinical/evidence program is not certified by these process records.

@@ -67,7 +67,12 @@
       "id": "tmj-disorder",
       "name": "Temporomandibular Joint (TMJ) Disorders",
       "aliases": [
-        "temporomandibular joint disorders"
+        "temporomandibular joint disorders",
+        "temporomandibular disorders",
+        "temporomandibular disorder",
+        "temporomandibular joint",
+        "temporomandibular joint dysfunction",
+        "tmj"
       ],
       "bodySystem": "Dental & Oral Conditions",
       "ratingSchedule": [
@@ -77,7 +82,9 @@
           "verified": false
         }
       ],
-      "reviewNotes": []
+      "reviewNotes": [
+        "CANONICAL-IDENTITY ELECTION (2026-10-03, docs/modeling-debt-dispositions.md, executing Leg C of docs/catalog-identity-migration-design-2026-09-29.md): this identity is the CANONICAL identity of the TMJ pair and the single authoring home for all temporomandibular-joint claims. It was elected because it already carries the spectrum name 'Temporomandibular Joint (TMJ) Disorders', the Dental & Oral body system and the 38 CFR 4.150 dental-and-oral framework; neither identity holds a registered edge, so the election is a naming-ownership decision rather than an edge-preservation one. tmj-dysfunction is reconciled to it as a quarantined pointer record (stable ID retained; the frozen one-to-one identity contract is unmoved) and is no longer an authoring home. Three-notation reconciliation: ME-34's rejection named tmj-dysfunction, the withdrawn batch-6 draft named tmj-disorder, and the roadmap's temporomandibular-disorder is resolved into this canonical entry's name and aliases and was never minted as an ID. The variant name 'tmj dysfunction' remains on the pointer entry's own catalog name: the catalog invariant (tests/catalog.test.ts) forbids an alias colliding with another condition's name or id, so it is NOT carried here while the pointer exists; folding becomes available only if a future catalog-v3 migration retires the pointer ID. The signed ME-34 reopening disposition for the bruxism-awake-sleep to tmj-disorder route is NOT executed by this election; the ME-34 rejection stands unchanged until that edge lands under the design's Stage 3c."
+      ]
     }
   ]
 }

@@ -1,11 +1,15 @@
 import "server-only";
 
+import { isTrustedCachedLiveView } from "./cached-view-guard";
 import {
   resolveVaResultEnvironment,
   vaFallbackStatus,
   vaLiveStatus,
 } from "./provenance";
-import { type VaReferenceSourceStatus } from "./reference-cache";
+import {
+  hashedCacheKeySegment,
+  type VaReferenceSourceStatus,
+} from "./reference-cache";
 import {
   clearVaReferenceNamespace,
   VA_REFERENCE_NAMESPACES,
@@ -51,10 +55,14 @@ export async function loadVaFormsFinder(
   const normalizedQuery = query.trim().slice(0, 120) || "21-526EZ";
   const config = loadVaApiConfig();
   const configuredEnvironment = config.environment ?? "sandbox";
+  // The user-supplied query is hashed, never persisted as raw key material
+  // (see `hashedCacheKeySegment`); the `q` segment marks the user-supplied
+  // part so it can never read as another module's namespace payload.
   const cacheKey = vaReferenceCacheKey(
     VA_REFERENCE_NAMESPACES.formsFinder,
     configuredEnvironment,
-    normalizedQuery.toLowerCase(),
+    "q",
+    hashedCacheKeySegment(normalizedQuery.toLowerCase()),
   );
 
   return withVaReferenceCache<VaFormsFinderView>(
@@ -96,7 +104,17 @@ export async function loadVaFormsFinder(
         },
       };
     },
-    { decorateHit: (view) => ({ ...view, cacheStatus: "hit" }) },
+    {
+      // Activation first: a disabled integration must never serve a previously
+      // cached live view, so the tiers are bypassed entirely when it is off.
+      enabled: config.enabled,
+      singleFlight: config.enabled,
+      decorateHit: (view) => ({ ...view, cacheStatus: "hit" }),
+      // Read-side guard: a shared value may only be served if it still carries
+      // this deployment's provenance and only credential-free HTTPS links.
+      acceptSharedCached: (view) =>
+        isTrustedCachedLiveView(view, configuredEnvironment),
+    },
   );
 }
 

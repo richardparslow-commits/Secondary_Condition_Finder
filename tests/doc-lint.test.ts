@@ -3,6 +3,8 @@ import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 
 import {
+  auditDocumentParity,
+  auditFindingDispositionParity,
   auditMarkerPairing,
   collectNpmScripts,
   collectVolatileCounts,
@@ -102,6 +104,19 @@ const DOC_POLICIES: DocLintPolicy[] = [
     anchors: [],
   },
   {
+    file: "docs/security-operations.md",
+    volatilePolicy: "ban",
+    anchors: [
+      // The adjacency-graph runbook must survive: the section heading, the
+      // health surface it documents, its reproduction command, and the
+      // sentence that tells a future editor to keep it current.
+      "Adjacency-graph (CRG) migration operations",
+      "components.kbGraph",
+      "npm run audit:crg:graph",
+      "keep it current whenever the health or readiness surfaces change",
+    ],
+  },
+  {
     file: "docs/api-specification.md",
     volatilePolicy: "ban",
     anchors: [],
@@ -193,6 +208,14 @@ const DOC_POLICIES: DocLintPolicy[] = [
     volatilePolicy: "historical",
     anchors: [
       "versioned product-coverage milestone",
+    ],
+  },
+  {
+    file: "docs/missing-identity-addition-roadmap.md",
+    volatilePolicy: "ban",
+    anchors: [
+      "generated, not transcribed",
+      "node scripts/audit-master-registry.js",
     ],
   },
 ];
@@ -328,6 +351,26 @@ describe("historical-marker pairing symmetry across all docs", () => {
   });
 });
 
+describe("audit finding/disposition parity", () => {
+  it("gives every finding heading a matching disposition row, and every row a finding, across all audit documents", () => {
+    const reports = auditDocumentParity(join(process.cwd(), DOCS_DIR));
+    const problems = reports.flatMap((report) => [
+      ...report.missingDispositions.map((id) => `${report.file}: finding ${id} has no disposition row`),
+      ...report.missingFindings.map((id) => `${report.file}: disposition row ${id} has no finding heading`),
+      ...report.duplicateIds.map((id) => `${report.file}: ID ${id} appears more than once`),
+    ]);
+    expect(problems, problems.join("\n")).toEqual([]);
+  });
+
+  it("discovers audit documents by filename convention, including the current report", () => {
+    const reports = auditDocumentParity(join(process.cwd(), DOCS_DIR));
+    const current = reports.find((report) => report.file === "security-systems-audit-2026-10-03.md");
+    expect(current).toBeDefined();
+    expect(current!.findings.length).toBeGreaterThan(0);
+    expect(current!.findings.length).toBe(current!.dispositions.length);
+  });
+});
+
 describe("doc-lint harness self-tests", () => {
   it("pairs nested START/END zones innermost-first", () => {
     const zones = parseHistoricalZones(
@@ -417,5 +460,21 @@ describe("doc-lint harness self-tests", () => {
       { baseDir: DOCS_DIR },
     );
     expect(missing).toEqual(["no-such-doc.md"]);
+  });
+
+  it("reports missing, orphaned, and duplicate finding/disposition IDs", () => {
+    const text = [
+      "### A-01 — First finding",
+      "### A-02 — Second finding",
+      "### A-02 — Duplicated heading",
+      "| A-01 first | x |",
+      "| A-03 stale row | y |",
+    ].join("\n");
+    const report = auditFindingDispositionParity(text, "fixture.md");
+    expect(report.findings).toEqual(["A-01", "A-02", "A-02"]);
+    expect(report.dispositions).toEqual(["A-01", "A-03"]);
+    expect(report.missingDispositions).toEqual(["A-02"]);
+    expect(report.missingFindings).toEqual(["A-03"]);
+    expect(report.duplicateIds).toEqual(["A-02"]);
   });
 });

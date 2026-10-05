@@ -8,7 +8,9 @@ This document describes the request/response contracts for all API endpoints and
 
 ### `GET /api/health`
 
-Health check endpoint used by Vercel's monitoring and the production readiness workflow. Returns component-level status for catalog, session crypto, VA API config, and circuit breaker state.
+Health check endpoint used by Vercel's monitoring and the production readiness workflow. Returns component-level status for catalog, session crypto, the CRG adjacency graph, VA API config, and circuit breaker state.
+
+The `kbGraph` component reports validated adjacency-graph migration state: `nodes`/`edges` count the migrated graph, and an empty graph is the valid pre-migration state. Invalid graph data never loads — the loader fails loud, so the component reports `error` and health degrades.
 
 **Response** (`200 OK` when healthy, `503 Service Unavailable` when degraded):
 
@@ -30,6 +32,13 @@ Health check endpoint used by Vercel's monitoring and the production readiness w
     "sessionCrypto": {
       "status": "ok",
       "latencyMs": 5,
+      "detail": "optional error message"
+    },
+    "kbGraph": {
+      "status": "ok",
+      "latencyMs": 1,
+      "nodes": 4,
+      "edges": 3,
       "detail": "optional error message"
     },
     "vaConfig": {
@@ -81,8 +90,8 @@ Health check endpoint used by Vercel's monitoring and the production readiness w
 }
 ```
 
-**Healthy** (`200`): `catalog.status === "ok"` AND `sessionCrypto.status === "ok"`.
-**Degraded** (`503`): Either `catalog` or `sessionCrypto` is `"error"`.
+**Healthy** (`200`): `catalog.status === "ok"` AND `sessionCrypto.status === "ok"` AND `kbGraph.status === "ok"`.
+**Degraded** (`503`): Any of `catalog`, `sessionCrypto`, or `kbGraph` is `"error"`. Invalid adjacency-graph data deliberately degrades health: it is a deployed-integrity failure, not an expected degraded state.
 
 `components.runtime` aggregates every control that depends on process-local state, so
 "what does this deployment give up?" has one answer: `reduced` lists capability ids below
@@ -307,7 +316,7 @@ Redirects to the suggestions page with query parameters for the accredited repre
 
 ### `POST /api/admin/cache-clear`
 
-Clears the process-local VA reference cache. Requires Bearer token authentication (`REGULATORY_SYNC_SECRET` or `CRON_SECRET`). Rate-limited to 5 requests/minute per IP.
+Clears the process-local VA reference cache and, when a shared KV is configured, advances the store-wide shared-cache invalidation epoch so every instance discards previously cached shared entries immediately. Requires Bearer token authentication (`REGULATORY_SYNC_SECRET` or `CRON_SECRET`). Rate-limited to 5 requests/minute per IP.
 
 **Headers**:
 - `Authorization: Bearer <CRON_SECRET>`
@@ -315,7 +324,7 @@ Clears the process-local VA reference cache. Requires Bearer token authenticatio
 **Query parameters**:
 | Param | Type | Required | Description |
 |---|---|---|---|
-| `prefix` | `string` | No | Only clear entries whose key starts with this prefix (e.g., `va-forms:`). If omitted, clears all entries. |
+| `prefix` | `string` | No | Only clear process-local entries whose key starts with this prefix (e.g., `forms-finder:`). If omitted, clears all entries. The shared-tier epoch bump is always store-wide. |
 
 **Response** (`200 OK`):
 ```json
@@ -325,19 +334,25 @@ Clears the process-local VA reference cache. Requires Bearer token authenticatio
   "prefix": null,
   "scope": "process-local",
   "detail": "process-local LRU on this instance only; entries reset on cold start and are not shared with other instances",
-  "message": "Cleared all 5 cache entries."
+  "sharedInvalidation": "applied",
+  "sharedEpoch": "1",
+  "message": "Cleared all 5 cache entries. Advanced shared-cache invalidation epoch to 1."
 }
 ```
+
+`sharedInvalidation` is `applied`, `not-configured` (no shared KV), or `failed` (coordinator unreachable; stale shared entries then persist until their 5-minute TTL). `sharedEpoch` is the new epoch string or `null`.
 
 **Response** (`200 OK` with prefix):
 ```json
 {
   "ok": true,
   "cleared": 2,
-  "prefix": "va-forms:",
+  "prefix": "forms-finder:",
   "scope": "process-local",
   "detail": "process-local LRU on this instance only; entries reset on cold start and are not shared with other instances",
-  "message": "Cleared 2 cache entries with prefix \"va-forms:\"."
+  "sharedInvalidation": "not-configured",
+  "sharedEpoch": null,
+  "message": "Cleared 2 cache entries with prefix \"forms-finder:\"."
 }
 ```
 
@@ -370,7 +385,7 @@ disclosure is in the body rather than in the status code.
 { "ok": false, "error": "Rate limit exceeded. Please try again later." }
 ```
 
-**Note**: This only clears the process-local cache on the specific instance that handles the request. In a serverless environment, other instances retain their cache until TTL expiry.
+**Note**: The prefix-scoped clear only applies to the process-local cache on the instance that handles the request; other instances retain their in-memory entries until TTL expiry. Shared-tier entries written before the request are invalidated fleet-wide by the epoch bump, or — when `sharedInvalidation` is `failed` — remain readable until their TTL expires.
 
 **Runtime**: `force-dynamic`, `nodejs`.
 

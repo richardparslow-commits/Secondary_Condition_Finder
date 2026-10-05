@@ -25,6 +25,7 @@ import {
 import {
   clearOcrCheckpoint,
   computeOcrRenderMetrics,
+  createLocalOcrWorker,
   loadOcrCheckpoint,
   OCR_PAGES_PER_CHUNK,
   probeWorkerHealth,
@@ -44,7 +45,7 @@ interface Props {
   conditionTerms: string[];
 }
 
-const evidenceDepthStorageKey = "secondary-condition-finder:evidence-depth:v1";
+import { evidenceDepthStorageKey } from "@/lib/secondary-workflow/local-state";
 const SUPPORTED_TEXT_EXTENSIONS = [".txt", ".md", ".csv", ".json", ".log"];
 
 const CREDENTIAL_OPTIONS: Array<{ value: ClinicianCredential; label: string }> = [
@@ -95,8 +96,7 @@ function getSessionStorage(): Storage | null {
 }
 
 // #11: a corrupted evidence store must never reset the tab silently.
-// loadStoredEvidenceWithWarning logs parse failures (with a bounded raw
-// preview) for observability; callers surface the parseError to the user.
+// Diagnostics contain a fixed code only, never parser messages or record text.
 const STORAGE_CORRUPTED_WARNING =
   "Saved evidence in this browser tab could not be read and was not restored. It may have been corrupted; re-analyze the affected documents.";
 
@@ -274,6 +274,7 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
 
   function clearPending() {
     if (busyRef.current || busy) return;
+    clearOcrCheckpoint(getSessionStorage());
     setPending([]);
     setWarnings([]);
     setMessage("Selected document list cleared.");
@@ -281,6 +282,7 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
 
   function removePending(id: number) {
     if (busyRef.current || busy) return;
+    clearOcrCheckpoint(getSessionStorage());
     const row = pending.find((item) => item.id === id);
     setPending((current) => current.filter((item) => item.id !== id));
     if (row?.analyzed) dropAnalysis(row.sourceName);
@@ -403,6 +405,11 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
       return;
     }
 
+    // Reject before loading a worker or allocating the document buffer.
+    if (row.file.size > limits.fileBytes || pending.reduce((total, item) => total + item.file.size, 0) > limits.batchBytes) {
+      setMessage("This document or selection exceeds the active local-analysis size limit. Remove oversized files before OCR.");
+      return;
+    }
     busyRef.current = true;
     setBusy(true);
     setMessage(null);
@@ -413,18 +420,16 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
     let ocrPages = 0;
 
     try {
-      const [{ createWorker }, pdfjs] = await Promise.all([
-        import("tesseract.js"),
-        import("pdfjs-dist"),
-      ]);
+      // pdf.js first: if its chunk fails to load there is no OCR worker to
+      // tear down yet (a parallel worker spawn would leak on that rejection).
+      // Legacy main build: the modern build calls very recent typed-array/Map
+      // helpers (Chrome 140+) that crash PDF loading on older browsers — see
+      // scripts/copy-pdf-worker.mjs. The worker is the matching legacy build.
+      const pdfjs = await import("pdfjs-dist/legacy/build/pdf.mjs");
       if (!pdfjs.GlobalWorkerOptions.workerSrc) {
         pdfjs.GlobalWorkerOptions.workerSrc = "/pdf.worker.min.mjs";
       }
-      const worker = await createWorker("eng", 1, {
-        workerPath: "/tesseract/worker.min.js",
-        corePath: "/tesseract/tesseract-core-simd.wasm.js",
-        langPath: "/tesseract",
-      });
+      const worker = await createLocalOcrWorker();
       try {
         const bytes = new Uint8Array(await row.file.arrayBuffer());
         const loadingTask = pdfjs.getDocument({ data: bytes });
@@ -439,7 +444,13 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
           const segments: EvidenceTextSegment[] = [];
           const sourceFingerprint = sourceFingerprintForFile(row.file);
           const storage = getSessionStorage();
-          const savedCheckpoint = loadOcrCheckpoint(storage, sourceFingerprint);
+          const loadedCheckpoint = loadOcrCheckpoint(storage, sourceFingerprint);
+          const savedCheckpoint = loadedCheckpoint && loadedCheckpoint.lastCompletedPage <= readLimit && loadedCheckpoint.recognizedChars <= limits.textChars
+            ? loadedCheckpoint : null;
+          if (loadedCheckpoint && !savedCheckpoint) clearOcrCheckpoint(storage);
+          if (totalPages > readLimit) {
+            nextWarnings.push(`${row.sourceName}: partial OCR only — this PDF has ${totalPages} pages; only the first ${readLimit} pages will be reviewed.`);
+          }
           if (savedCheckpoint && savedCheckpoint.lastCompletedPage > 0 && savedCheckpoint.segments.length > 0) {
             for (const checkpointSegment of savedCheckpoint.segments) {
               segments.push({
@@ -516,13 +527,13 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
               }
               releaseCanvas(canvas);
               if (!text) continue;
-              recognizedChars += text.length;
-              if (recognizedChars > limits.textChars) {
+              if (recognizedChars + text.length > limits.textChars) {
                 nextWarnings.push(
-                  `${row.sourceName}: OCR text exceeded ${formatLimitChars(limits.textChars)} characters; pages up to ${pageNumber} were kept.`,
+                  `${row.sourceName}: partial OCR — text exceeded ${formatLimitChars(limits.textChars)} characters; page ${pageNumber} and later pages were not retained.`,
                 );
                 break;
               }
+              recognizedChars += text.length;
               segments.push({ text, locatorPrefix: `page ${pageNumber} (OCR)` });
               ocrPages += 1;
             } catch (pageError) {
@@ -635,13 +646,21 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
   }
 
   function clearEvidence() {
-    const storageCleared = clearStoredEvidence(getSessionStorage());
+    if (busyRef.current || busy) return;
+    const storage = getSessionStorage();
+    const excerptsCleared = clearStoredEvidence(storage);
+    const checkpointCleared = clearOcrCheckpoint(storage);
     setAnalyses([]);
+    setPending([]);
+    setPastedText("");
+    setPastedSourceName("Pasted medical record text");
+    setLocatorPrefix("");
+    setCredential("unknown");
     setWarnings([]);
     setMessage(
-      storageCleared
-        ? "Local evidence excerpts were cleared from this browser tab."
-        : "Local evidence excerpts were cleared from this view. Browser session storage was unavailable, so stored excerpts could not be confirmed removed.",
+      excerptsCleared && checkpointCleared
+        ? "Local evidence excerpts, OCR checkpoints, selected files, and pasted text were cleared from this browser tab."
+        : "Local evidence was cleared from this view. Browser storage removal could not be confirmed.",
     );
   }
 
@@ -653,6 +672,9 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
         <h2 id="local-evidence-heading" className="text-xl font-bold">Local Evidence Review</h2>
         <p className="mt-1 text-sm text-slate-600">
           PDF, DOCX, and supported text records are read in this browser tab. Raw document bytes and raw document text are not submitted to the application server, stored in workflow cookies, or written to application logs. If browser session storage is unavailable or full, the current analysis continues in memory but may not restore after navigation or reload.
+        </p>
+        <p className="mt-1 text-sm text-slate-600">
+          OCR may save a full-text resume checkpoint in this tab’s session storage for up to 15 minutes. It is removed on successful completion, Clear local evidence, source removal, Finish, or Restart. Browser session restoration can preserve storage; tab closure is not a secure-erasure guarantee.
         </p>
       </div>
 
@@ -701,9 +723,10 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
       </p>
 
       <div className="rounded-xl border border-slate-200 p-4">
-        <span className="block font-semibold">Select evidence files</span>
+        <label htmlFor="local-evidence-files" className="block font-semibold">Select evidence files</label>
         <span className="mt-1 block text-sm text-slate-600">Supported directly: PDF, DOCX, TXT, Markdown, CSV, JSON and other text files. Limits: {formatLimitBytes(limits.fileBytes)} per file, {limits.batchSources} selected files and {formatLimitBytes(limits.batchBytes)} per batch, {limits.pdfPages} PDF pages per source, and {formatLimitChars(limits.textChars)} extracted characters per source. Files stay in the browser.</span>
         <input
+          id="local-evidence-files"
           type="file"
           multiple
           accept="application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document,text/*,.pdf,.docx,.txt,.md,.csv,.json,.log"
@@ -837,7 +860,7 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
               {totals.nexus} nexus-relevant excerpt(s); {totals.supporting} supporting excerpt(s) retained for this browser tab.
             </p>
           </div>
-          <button type="button" className="ui-button-secondary" onClick={clearEvidence}>Clear local evidence</button>
+          <button type="button" className="ui-button-secondary" onClick={clearEvidence} disabled={busy}>Clear local evidence</button>
         </div>
         {analyses.length === 0 ? (
           <p className="mt-4 text-sm text-slate-600">No evidence excerpts have been analyzed in this tab.</p>

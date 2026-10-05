@@ -2,6 +2,9 @@
   "id": "schizophrenia",
   "draft": false,
   "todo": [],
+  "governanceNotes": [
+    "D1 BATCH 90 (2026-09-28): the schizophrenia to tardive-dyskinesia route is FULLY AUTHORED AND HELD in docs/batch-90-schizophrenia-tardive-dyskinesia-held-edge.json (rank 2, ASSOCIATION_ONLY at PHARMACOLOGICAL_IATROGENIC with the antipsychotic prescription named as proximate agent, references PMID 37424417, PMID 39240484 and PMID 30695288). It is NOT added to this file's suggestions because this mapping is published (draft:false) and the citation-purity gate in scripts/validate-knowledge-base.js applies PER SUGGESTION: sourceReferences is capped at three, so a single verified:false reference is already 33 percent and fails the 30 percent threshold, meaning no unverified reference can enter a published mapping at all. The hold is the batch-89 precedent applied unchanged; this file's rank 1 diabetes-mellitus-type-2 edge is unmodified and nothing else about the mapping moves. When a qualified human verifies the three PMIDs under docs/citation-verification-sop.md, the held edge lands verbatim as rank 2, tardive-dyskinesia receives its second incoming edge alongside the registered bipolar-disorder route, and the resulting two psychiatric primaries pointing at tardive-dyskinesia from the same antipsychotic exposure class become a parallel-targeting pair for the CRG redundancy-semantics question, which this batch deliberately does not increment since only one of the two edges registers."
+  ],
   "suggestions": [
     {
       "conditionId": "diabetes-mellitus-type-2",

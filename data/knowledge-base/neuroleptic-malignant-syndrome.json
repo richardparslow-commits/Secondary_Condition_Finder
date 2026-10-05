@@ -1,0 +1,12 @@
+{
+  "id": "neuroleptic-malignant-syndrome",
+  "draft": true,
+  "todo": [
+    "Author condition-specific secondary-condition suggestions using condition-specific clinical evidence before publication. THE EVIDENCE-TIER GATE STANDS: batch 88 withheld this route and recorded that the located literature is dominated by case reports and post-marketing signal analyses and needs a non-case-report anchor tier even once the identity exists, so no edge may be authored from case-report-class evidence alone; locate and verify a cohort, trial or systematic-review anchor under docs/citation-verification-sop.md before authoring, and confirm each PMID is still absent from master-sources.json before registration.",
+    "Review pharmacological, treatment-related and movement-disorder pathways only where applicable; do not infer medical causation from rating-schedule authority. SCOPE GUARDS: this identity is the dopamine-antagonist (neuroleptic/antipsychotic) toxidrome, distinct from the serotonergic toxidrome of serotonin-syndrome and from catatonia; the two toxidromes must not be conflated or routed through each other. Tardive dyskinesia, drug-induced parkinsonism and serotonin syndrome are separate identities, and dystonia and akathisia remain MISSING IDENTITIES: none may be routed through this identity."
+  ],
+  "governanceNotes": [
+    "D1 draft-authoring batch 95 (2026-10-04): DEFERRAL RECORDED, no edge authored. The batch-95 screen examined this identity as part of the next five undispositioned zero-edge drafts and confirmed the recorded evidence-tier gate: the located literature for this syndrome remains dominated by case reports and post-marketing signal analyses, and the screen did not locate a cohort, trial or systematic-review anchor meeting the non-case-report tier that authoring requires, so no edge may be authored from case-report-class evidence alone (the batch-88 disposition is honored unchanged). Nothing was registered — no relationship row, no source entity, no reference use. The scope guards stand: this identity is the dopamine-antagonist (neuroleptic/antipsychotic) toxidrome, distinct from the serotonergic toxidrome of serotonin-syndrome and from catatonia, the two toxidromes must not be conflated or routed through each other, and dystonia and akathisia remain missing identities that may not be routed through this identity. Revisit when a qualifying non-case-report anchor is located and cleared under docs/citation-verification-sop.md."
+  ],
+  "suggestions": []
+}

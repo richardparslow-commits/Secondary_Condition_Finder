@@ -54,6 +54,9 @@ export async function fetchTextWithTimeout(
       headers: withConditionalHeaders(options.headers, options.validator),
       cache: "no-store",
       signal: controller.signal,
+      // Source requests can carry an API key (Regulations.gov); a redirect
+      // would replay that credential to an origin outside the source list.
+      redirect: "error",
     });
     if (response.status === 304) {
       return { status: "not-modified", responseStatus: 304, ...responseValidator(response) };

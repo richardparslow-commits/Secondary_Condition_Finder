@@ -72,6 +72,7 @@ describe("recommend", () => {
       "gerd",
       "copd",
       "rem-sleep-disorder",
+      "bruxism-awake-sleep",
     ]);
     expect(recommendations[0].condition).toBe(
       "Sleep Apnea (Obstructive, Central, Mixed)",

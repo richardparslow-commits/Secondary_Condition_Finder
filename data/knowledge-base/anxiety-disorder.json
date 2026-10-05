@@ -3,7 +3,8 @@
   "draft": true,
   "todo": [
     "Review future secondary suggestions only after adding anxiety-disorder-specific clinical evidence with diagnosis-specific directionality.",
-    "Batch 20 removes the prior insomnia and IBS suggestions because their attached sources were rating/legal authorities rather than clinical evidence for those relationships."
+    "Batch 20 removes the prior insomnia and IBS suggestions because their attached sources were rating/legal authorities rather than clinical evidence for those relationships.",
+    "D1 batch 91 corpus disposition: the anxiety-disorder to migraine-headaches route is NOT authored. The corpus pair asserted anxiety as primary, but the located prospective and bidirectional migraine-anxiety literature runs predominantly MIGRAINE-TO-ANXIETY and no direction-correct quantitative anchor for the corpus direction was preserved, so the route is recorded as an UNRESOLVED-DIRECTION GAP (the scotoma-to-TIA precedent) rather than registered or claimed as a refusal on evidence grounds."
   ],
   "suggestions": [
     {

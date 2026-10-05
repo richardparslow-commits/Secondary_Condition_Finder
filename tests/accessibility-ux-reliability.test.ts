@@ -55,7 +55,9 @@ describe("accessibility and UX content contracts", () => {
     expect(privacy).toContain("are not placed in page URLs");
     expect(privacy).toContain("presumptive workflow does not encode selected service locations or service dates in query strings");
     expect(privacy).toContain("does not initialize Application Insights or another client analytics/telemetry SDK");
-    expect(privacy).toContain("does not persist workflow or recommendation event history through an application event logger");
+    expect(privacy).toContain("emits allowlisted operational workflow and recommendation events");
+    expect(privacy).not.toContain("does not persist workflow or recommendation event history through an application event logger");
+    expect(privacy).toContain("Production account access, representatives, submissions and uploads remain disabled");
   });
 
   it("keeps public VA-reference and privacy copy aligned to the current architecture", () => {
@@ -69,7 +71,9 @@ describe("accessibility and UX content contracts", () => {
 
     expect(about).toContain("searchable VA Forms metadata");
     expect(about).toContain("disability terminology and service-branch reference information");
-    expect(about).toContain("does not persist workflow or recommendation event history through an application event logger");
+    expect(about).toContain("operational workflow and recommendation count/status events are emitted to server logs");
+    expect(about).not.toContain("does not persist workflow or recommendation event history through an application event logger");
+    expect(about).toContain('href="/va-account"');
     expect(about).not.toContain("recommendation-event persistence is limited to aggregate operational counts");
 
     expect(privacy).toContain("environment-aware VA public-reference adapter is disabled by default");
@@ -129,6 +133,25 @@ describe("accessibility and UX content contracts", () => {
       /Evidence excerpt summary[\s\S]*role="status"[\s\S]*aria-live="polite"[\s\S]*aria-atomic="true"[\s\S]*\{totals\.nexus\} nexus-relevant excerpt/,
     );
     expect(evidenceAnalyzer).not.toContain("aria-live=\"assertive\"");
+  });
+
+  it("associates the DD-214 upload and free-text location controls with durable labels", () => {
+    // B03: the production browser check found the upload control exposed only
+    // as "Choose File", with no associated label/id/aria-label naming its
+    // DD-214 purpose, and the free-text location input relying on a
+    // placeholder as its only name. Both now carry durable programmatic names.
+    const analyzer = readFileSync(
+      "src/components/presumptive/Dd214LocalAnalyzer.tsx",
+      "utf8",
+    );
+
+    expect(analyzer).toContain('htmlFor="dd214-file"');
+    expect(analyzer).toContain('id="dd214-file"');
+    expect(analyzer).toMatch(/aria-describedby="dd214-file-help"/);
+    expect(analyzer).toContain('id="dd214-file-help"');
+
+    expect(analyzer).toContain('htmlFor="dd214-location-add"');
+    expect(analyzer).toContain('id="dd214-location-add"');
   });
 
   it("does not overstate manual Section 508 verification in the evidence report", () => {

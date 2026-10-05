@@ -2,6 +2,7 @@ import "server-only";
 
 import { loadConditionCatalog } from "@/lib/catalog/load";
 
+import { isTrustedCachedLiveView } from "./cached-view-guard";
 import {
   resolveVaResultEnvironment,
   vaFallbackStatus,
@@ -56,6 +57,7 @@ export async function loadDisabilityReference(
   const config = loadVaApiConfig();
   const configuredEnvironment = config.environment ?? "sandbox";
   const useSharedCache = fetcher === fetchVaDisabilityReference;
+  const cacheActive = useSharedCache && config.enabled;
   const cacheKey = vaReferenceCacheKey(
     VA_REFERENCE_NAMESPACES.disabilityReference,
     configuredEnvironment,
@@ -91,8 +93,15 @@ export async function loadDisabilityReference(
       };
     },
     {
-      enabled: useSharedCache,
+      // Activation first: a disabled integration must never serve a previously
+      // cached live view, so the tiers are bypassed entirely when it is off.
+      enabled: cacheActive,
+      singleFlight: cacheActive,
       decorateHit: (view) => ({ ...view, cacheStatus: "hit" }),
+      // Read-side guard: a shared value may only be served if it still carries
+      // this deployment's provenance and only credential-free HTTPS links.
+      acceptSharedCached: (view) =>
+        isTrustedCachedLiveView(view, configuredEnvironment),
     },
   );
 }

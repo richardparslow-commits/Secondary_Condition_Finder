@@ -103,11 +103,11 @@ describe("POST /api/admin/cache-clear reports cache scope", () => {
   const authorizedRequest = () =>
     new Request("https://example.test/api/admin/cache-clear", {
       method: "POST",
-      headers: { authorization: "Bearer test-cache-clear-secret" },
+      headers: { authorization: "Bearer test-cache-clear-secret-0123456789abcdef" },
     });
 
   it("says a disabled cache cleared nothing instead of reporting a bare success", async () => {
-    vi.stubEnv("CRON_SECRET", "test-cache-clear-secret");
+    vi.stubEnv("CRON_SECRET", "test-cache-clear-secret-0123456789abcdef");
     vi.stubEnv("NODE_ENV", "production");
 
     const { POST } = await import("@/app/api/admin/cache-clear/route");
@@ -123,7 +123,7 @@ describe("POST /api/admin/cache-clear reports cache scope", () => {
   });
 
   it("still reports a genuine clear when the cache is active", async () => {
-    vi.stubEnv("CRON_SECRET", "test-cache-clear-secret");
+    vi.stubEnv("CRON_SECRET", "test-cache-clear-secret-0123456789abcdef");
     vi.stubEnv("NODE_ENV", "test");
     writeVaReferenceCache("clear-me", { value: 1 });
 

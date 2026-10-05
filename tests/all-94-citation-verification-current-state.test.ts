@@ -36,23 +36,23 @@ describe("all-94 citation verification current state", () => {
     expect(relationships.currentState).toBe("D1-DRAFT-AUTHORED");
     expect(sources.currentState).toBe("D1-DRAFT-AUTHORED");
     expect(relationships.counts).toEqual({
-      relationships: 863,
-      explicitPublicationGuards: 789,
+      relationships: 875,
+      explicitPublicationGuards: 801,
       legacyRationaleBoundaries: 74,
     });
     expect(sources.counts).toMatchObject({
-      liveSourceReferenceUses: 1672,
-      activeSourceEntities: 346,
-      pendingVerificationSourceEntities: 1110,
-      activeClinicalSourceEntities: 345,
-      pendingClinicalSourceEntities: 1110,
-      totalSourceEntitiesIncludingLineage: 1465,
+      liveSourceReferenceUses: 1704,
+      activeSourceEntities: 360,
+      pendingVerificationSourceEntities: 1128,
+      activeClinicalSourceEntities: 359,
+      pendingClinicalSourceEntities: 1128,
+      totalSourceEntitiesIncludingLineage: 1497,
     });
-    expect(references).toHaveLength(1672);
-    expect(references.filter((reference) => reference.verified === true)).toHaveLength(384);
-    expect(references.filter((reference) => reference.verified !== true)).toHaveLength(1288);
-    expect(mappings).toHaveLength(813);
+    expect(references).toHaveLength(1704);
+    expect(references.filter((reference) => reference.verified === true)).toHaveLength(398);
+    expect(references.filter((reference) => reference.verified !== true)).toHaveLength(1306);
+    expect(mappings).toHaveLength(819);
     expect(mappings.filter((mapping) => mapping.draft === false)).toHaveLength(140);
-    expect(mappings.filter((mapping) => mapping.draft === true)).toHaveLength(673);
+    expect(mappings.filter((mapping) => mapping.draft === true)).toHaveLength(679);
   });
 });

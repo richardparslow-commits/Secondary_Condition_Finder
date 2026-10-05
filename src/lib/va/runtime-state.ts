@@ -156,7 +156,7 @@ export function resolveVaReferenceMode(
       enabled: false,
       reason:
         "VA production mode was requested but production access has not been acknowledged. " +
-        `Set ${VA_PRODUCTION_ACCESS_ACKNOWLEDGEMENT_VARIABLE}=true only after VA grants production API access and live production connectivity is verified (issue #287 gate rule).`,
+        `Set ${VA_PRODUCTION_ACCESS_ACKNOWLEDGEMENT_VARIABLE}=true only after VA grants the requested API access and authorizes the controlled connectivity check; keep issue #287 open until that check succeeds.`,
     };
   }
 

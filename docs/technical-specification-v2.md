@@ -23,7 +23,8 @@ Core layers:
   version control, loaded synchronously and cached in-process; no database.
 - **Client Layer** — React 19 interactive UI; browser-local evidence processing (pdf.js,
   Tesseract.js WASM OCR, Mammoth). Raw evidence bytes never leave the browser tab.
-- **Observability** — server-side OpenTelemetry only (`@vercel/otel`, `src/instrumentation.ts`);
+- **Observability** — server-side structured logging plus OTel-API metric helpers whose
+  exporter is disabled by policy (`src/lib/observability/telemetry-policy.ts`);
   no client telemetry SDKs, `connect-src 'self'` enforced by CSP.
 
 ## Technology Stack
@@ -38,7 +39,7 @@ Core layers:
 | Testing | Vitest ^4.1 + Chrome/ChromeDriver E2E | Fast ESM-native regression suite; real-browser journey gates in CI. Suite size is whatever `vitest run` reports — not pinned here |
 | Document Processing | pdfjs-dist 6.3, Tesseract.js ^6.0 (WASM OCR), Mammoth 1.12 | Browser-local PDF/DOCX extraction; OCR without server transmission |
 | Cryptography | Node.js crypto (AES-256-GCM) | Encrypted/authenticated workflow cookies; no external crypto libraries |
-| Observability | @vercel/otel 2.1, @opentelemetry/api 1.9 | Server-side instrumentation only |
+| Observability | @opentelemetry/api 1.9 (no SDK/exporter registered; automatic trace export disabled by policy) | Server-side metric helpers only; no client telemetry |
 | Build & Deployment | Vercel (primary), Azure Static Web Apps (`npm run build:azure` standalone packaging; legacy, manual) | Serverless deployment, edge middleware, build caching |
 | HTTP Client | Native fetch (Node 22) | VA reference adapters and regulatory preflight |
 
@@ -226,8 +227,10 @@ never trusted.
   for scripts.
 - `style-src 'self' 'unsafe-inline'` (React/Next styles; the script nonce is the audit
   boundary).
-- `img-src 'self' data: blob:`, `font-src 'self' data:`, `worker-src 'self' blob:`,
-  `media-src 'self' blob:`, `manifest-src 'self'`, `frame-src 'none'`, `object-src 'none'`,
+- `img-src 'self' data: blob:`, `font-src 'self' data:`, `worker-src 'self'` (no `blob:`;
+  the OCR worker spawns with `workerBlobURL: false` because production Trusted Types refuses
+  blob worker URLs), `media-src 'self' blob:`, `manifest-src 'self'`, `frame-src 'none'`,
+  `object-src 'none'`,
   `base-uri 'self'`, `form-action 'self'`, `frame-ancestors 'none'`,
   `upgrade-insecure-requests`.
 - `connect-src 'self'` in production (first-party only; `ws: wss:` added in development).
@@ -252,7 +255,9 @@ reviewed PR + full CI gate; good-faith safe-harbor for researchers.
   (main-commit-provenance + active main rules), `audit:high`, `citations:audit`, `kb:validate`,
   `audit:me-compliance`, `lint`, `typecheck`, `test:composition`,  the Vitest suite
   (fail-on-any, full suite), `next build`, and **real-browser E2E**
-  (`e2e/secondary-workflow.mjs` + `e2e/validation-errors.mjs` under Chrome/ChromeDriver), with
+  (`e2e/secondary-workflow.mjs` + `e2e/validation-errors.mjs` under Chrome/ChromeDriver;
+  `e2e/coi-isolation.mjs` under ChromeDriver and the `e2e/pathways-smoke.mjs` fetch-only smoke
+  check, both against the production build), with
   diagnostic-log collection and an explicit fail-the-job aggregation step.
 - **Post-merge:** automatic Vercel deploy; `/runtime-readiness` confirms deployment identity;
   `/api/health` returns component latencies + circuit-breaker snapshot.

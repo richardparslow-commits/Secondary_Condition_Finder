@@ -1,0 +1,78 @@
+{
+  "artifact": "D1 batch 91 held edge - fully authored, NOT present in the knowledge base",
+  "batch": 91,
+  "status": "LANDED_2026-09-29 (see landingRecord; heldEdges preserved verbatim as the pre-landing record)",
+  "heldOn": "2026-09-29",
+  "id": "diabetes-mellitus-type-2",
+  "targetMapping": "data/knowledge-base/diabetes-mellitus-type-2.json (published, draft:false)",
+  "holdReason": "scripts/validate-knowledge-base.js applies the citation-purity threshold PER SUGGESTION: sourceReferences is capped at three, so a single verified:false reference is already 33 percent and no unverified reference can enter a published mapping at all. The primary mapping is published (draft:false) with qualified-human-verified edges, and flipping it to draft:true would unpublish those edges and break the 140/677 published/draft pin. Mapping approval is not citation verification. This edge is HELD, not refused: it is preserved verbatim here so a qualified-human verification under docs/citation-verification-sop.md is the only step between this artifact and a verbatim re-landing.",
+  "landingCondition": "A qualified human verifies PMIDs 19033418 and 11375373 under docs/citation-verification-sop.md, reads the published critique (comment in Diabetes Care 2009;32(5):e56, author reply e57) and records its bearing on the anchor; the references then land as verified:true and the held edge is authored verbatim as its next rank. Per-edge ratchet deltas from the batch-91 state on that path: relationships 866 to 867 (explicit 792 to 793); reference uses 1,679 to 1,681 with verified 384 to 386 and pending-verification 1,295 unchanged; source entities 1,472 to 1,474 with active 346 to 348 and pending-verification 1,117 unchanged; clinical uses 1,674 to 1,676. If verification is withheld, the edge stays held for as long as diabetes-mellitus-type-2 remains published.",
+  "preservedEvidenceNotes": "The direction asymmetry is the defining disclosure of this preserved edge: the only direction-capable anchor measures the claimed direction as the WEAKER one (incident depression RR 1.15 versus incident diabetes RR 1.60), so the reverse route is stronger and NOT claimed here; the direction-blind comorbidity meta-analysis supplies magnitude context only and its prevalence varies threefold on assessment method. A published critique of the prospective anchor exists and was NOT reviewed here. The corpus's separate hypothyroidism and diabetes mood routes are preserved as sibling held edges in this batch and are distinct evidence families with no shared PMIDs. Both PMIDs are confirmed absent from data/evidence/master-sources.json and cleared source-status preflight on 2026-09-29 with zero blocking flags.",
+  "heldEdges": [
+    {
+      "conditionId": "depressive-disorder",
+      "rank": 4,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Authoring registers this relationship only as the bounded association the located bidirectional literature supports, with the direction limits stated first: a 2008 systematic review of prospective studies that excluded prevalent cases in each direction reports the pooled relative risk for INCIDENT DEPRESSION in baseline type 2 diabetes as 1.15 (95 percent CI 1.02-1.30, seven studies, 6,414 incident cases), while the REVERSE direction is stronger (incident diabetes in baseline depression RR 1.60, 95 percent CI 1.37-1.88, thirteen studies, 6,916 incident cases), so the relationship is explicitly bi-directional with the claimed direction the weaker of the two (PMID 19033418); and a 2001 meta-analysis of 42 studies reports the odds of comorbid depression twice that of nondiabetic comparison groups (OR 2.0, 95 percent CI 1.8-2.2, twenty controlled studies), with prevalence higher in diabetic women (28 percent) than men (18 percent) and strongly assessment-method dependent (31 percent by self-report versus 11 percent by standardized diagnostic interview) (PMID 11375373). The registered claim is the narrowest these anchors jointly permit: that type 2 diabetes is associated with a MODEST elevated risk of incident depression and with doubled comorbid-depression odds, with the reverse direction carrying the larger effect and no anchor establishing that the diabetes caused any individual's depression.",
+        "causationStatus": "Neither causation nor aggravation of depression is established for any individual: the prospective meta-analysis reports only a MODEST relative risk of 1.15 in the claimed direction while the reverse direction is 1.60, and its own authors call for research into mechanisms, so the located evidence supports a bidirectional association rather than a one-way diabetes-to-depression pathway; the comorbidity anchor is a prevalence meta-analysis whose odds ratio cannot set direction at all and whose prevalence estimates swing from 11 to 31 percent purely on assessment method, so instrument choice explains much of the measured burden; depression in diabetes is plausibly mediated by complication burden, diabetes distress, lifestyle constraint and vascular disease, none of which the anchors separate from a direct effect of the diabetes itself. Individual claims require independently established type 2 diabetes and separately diagnosed depressive disorder with dated onset records, exclusion of diabetic complication burden and vascular depression, of diabetes distress and adjustment disorder, of medication effects (corticosteroids, statins, interferons) and of pre-existing psychiatric history before any attribution."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MICROVASCULAR_METABOLIC",
+        "primaryVector": "A hypothesized multifactorial pathway: chronic hyperglycemia and insulin resistance are held to affect central monoaminergic function and neurotrophic signaling while the lifestyle and complication burden of diabetes sustains depressive arousal, a composite route consistent with the modest prospective RR of 1.15 and with the doubled comorbid odds but NOT separable within the located designs; whether diabetes produced any individual's depression rather than the reverse (the stronger direction) or a shared metabolic-vascular-psychosocial substrate remains hypothesized until the two diagnoses' chronology is read together.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "Held at ASSOCIATION_ONLY at prospective-meta-analysis and comorbidity-meta-analysis class with the bidirectional asymmetry carried as the controlling limitation: the claimed direction (RR 1.15) is the WEAKER half of an explicitly bidirectional relationship whose other half (depression to diabetes, RR 1.60) is stronger, so this edge is registered narrow and the reverse route is NOT claimed; the comorbidity anchor is direction-blind and assessment-method sensitive (31 percent self-report versus 11 percent diagnostic interview); a published critique of the prospective anchor exists (comment in Diabetes Care 2009;32(5):e56, with author reply e57) whose content was NOT reviewed here and which a qualified human must read before the edge lands. Target note: the catalog carries diabetes-mellitus-type-2 with three registered suggestions and depressive-disorder with very many registered incoming windows, so this edge adds one more mood window rather than a new mechanism class and no parallel-targeting pair is created.",
+        "evidenceGaps": "The claimed direction is the weaker half of a bidirectional association (RR 1.15 versus 1.60) and no anchor isolates a diabetes-specific causal effect from complication burden, diabetes distress and shared vascular-psychosocial risk; the prospective anchor covers only seven studies and 6,414 incident cases in this direction and is subject to a published critique whose content is unreviewed here; the comorbidity anchor cannot set direction and its prevalence varies threefold by assessment method; and no anchor reports depression incidence stratified by glycemic control or complication status.",
+        "alternativeEtiologiesToRuleOut": [
+          "Depression predating the diabetes diagnosis (the stronger reverse direction, RR 1.60)",
+          "Diabetic complication burden, neuropathic pain and vascular disease as mediators rather than the diabetes itself",
+          "Diabetes distress and adjustment disorder rather than major depressive disorder",
+          "Medication effects including corticosteroids, and chronic medical illness burden",
+          "Shared metabolic-vascular-psychosocial risk substrate producing both conditions without a direct link"
+        ],
+        "requiresSpecificDbqEvidence": false
+      },
+      "evidenceGaps": [
+        "The claimed direction is the weaker half of a bidirectional association (RR 1.15 versus 1.60) and no anchor isolates a diabetes-specific causal effect from complication burden, diabetes distress and shared vascular-psychosocial risk; the prospective anchor covers only seven studies and 6,414 incident cases in this direction and is subject to a published critique whose content is unreviewed here; the comorbidity anchor cannot set direction and its prevalence varies threefold by assessment method; and no anchor reports depression incidence stratified by glycemic control or complication status."
+      ],
+      "rationale": "Held, not authored into the knowledge base: the corpus review identified diabetes-mellitus-type-2 to depressive-disorder as an unmapped route, and this artifact preserves the fully authored edge anchored on the one prospective bidirectional meta-analysis that excludes prevalent cases in each direction, with the direction asymmetry (RR 1.15 claimed versus 1.60 reverse) carried as the controlling limitation and the direction-blind comorbidity meta-analysis registered as magnitude context only. Both anchors were claim-versus-source verified against their PubMed abstracts on 2026-09-29 and cleared source-status preflight with zero blocking flags. References are authored verified:false and MUST be verified by a qualified human under docs/citation-verification-sop.md before the edge lands as verified:true in data/knowledge-base/diabetes-mellitus-type-2.json.",
+      "sourceReferences": [
+        {
+          "citation": "Mezuk B, Eaton WW, Albrecht S, Golden SH. Depression and type 2 diabetes over the lifespan: a meta-analysis. Diabetes Care. 2008 Dec;31(12):2383-2390. doi:10.2337/dc08-0985. PMID 19033418.",
+          "note": "Systematic review of prospective comparative studies excluding prevalent cases in each direction, registered as the PRIMARY anchor and the only direction-capable anchor: diabetes predicting incident depression RR 1.15 (95 percent CI 1.02-1.30, seven studies, 6,414 incident cases); depression predicting incident diabetes RR 1.60 (95 percent CI 1.37-1.88, thirteen studies, 6,916 incident cases). The claimed direction is the weaker half of an explicitly bidirectional relationship and that asymmetry is carried on every face of the held edge. DISCLOSURE CARRIED: a published critique exists (comment in Diabetes Care 2009;32(5):e56, author reply e57) whose content was NOT reviewed here and must be read before landing. Mapping approval is not citation verification; this source enters verified:false pending qualified-human citation review.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/19033418/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-29",
+          "sourceLocator": "Diabetes Care. 2008;31(12):2383-2390. Prospective-study meta-analysis with prevalent cases excluded per direction; abstract states diabetes to incident depression RR 1.15 [1.02-1.30] (7 studies, 6,414 cases) and depression to incident diabetes RR 1.60 [1.37-1.88] (13 studies, 6,916 cases); comment in Diabetes Care. 2009;32(5):e56 with author reply e57."
+        },
+        {
+          "citation": "Anderson RJ, Freedland KE, Clouse RE, Lustman PJ. The prevalence of comorbid depression in adults with diabetes: a meta-analysis. Diabetes Care. 2001 Jun;24(6):1069-1078. doi:10.2337/diacare.24.6.1069. PMID 11375373.",
+          "note": "Meta-analysis of 42 studies (20 with nondiabetic comparison groups), registered as the MAGNITUDE-CONTEXT anchor: odds of depression twice the nondiabetic comparison group (OR 2.0, 95 percent CI 1.8-2.2), stable across sex, diabetes type, subject source and assessment method in the controlled studies; prevalence 28 percent in diabetic women and 18 percent in men, and highly assessment-method dependent (31 percent self-report versus 11 percent standardized diagnostic interview). LIMITATIONS CARRIED: a prevalence meta-analysis cannot set direction, and its prevalence swings threefold on instrument choice. Mapping approval is not citation verification; this source enters verified:false pending qualified-human citation review.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/11375373/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-29",
+          "sourceLocator": "Diabetes Care. 2001;24(6):1069-1078. Meta-analysis, 42 studies (20 controlled); abstract states OR 2.0 [1.8-2.2] for depression in diabetes, prevalence 28% women and 18% men, 30% uncontrolled versus 21% controlled studies, 32% clinical versus 20% community, 31% self-report versus 11% diagnostic interview."
+        }
+      ]
+    }
+  ],
+  "landingRecord": {
+    "landedOn": "2026-09-29",
+    "verificationPass": "Batch-91 qualified-human verification pass under docs/citation-verification-sop.md: all cited PMIDs claim-versus-source checked against their abstracts and citation metadata exact-checked against the PubMed esummary record; source-status preflight 0 blocking; approval recorded in docs/qualified-human-citation-verification-queue.md.",
+    "adaptationsFromHeldText": [
+      "critique disclosure adapted from landing-precondition wording to standing open disclosure (reviewer election 2026-09-29)",
+      "all sourceReferences flipped to verified:true with a verification stamp appended to each note (evidence wording otherwise verbatim)"
+    ],
+    "reviewerDecisions": [
+      "the Diabetes Care critique (PMID 19407066) is identified but its content is a paywalled letter and remains UNREAD; the reviewer elected on 2026-09-29 to land with the adjudication carried as a standing open disclosure"
+    ]
+  }
+}

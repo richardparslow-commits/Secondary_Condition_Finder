@@ -4,8 +4,27 @@ import { redirect } from "next/navigation";
 
 import { auditLog } from "@/lib/observability/audit";
 
-function validationPath(code: string): string {
-  return `/secondary/suggestions?error=${encodeURIComponent(code)}`;
+/**
+ * Only application routes may be used as a post-action destination. `returnTo`
+ * is attacker-controllable form data (a hidden input is not validation), so an
+ * unvalidated value would make this action an open redirect and would write
+ * attacker text into the audit log.
+ */
+const ALLOWED_RETURN_PATHS = [
+  "/secondary/suggestions",
+  "/secondary/evidence",
+  "/presumptive/results",
+] as const;
+const DEFAULT_RETURN_PATH = "/secondary/suggestions";
+
+function safeReturnPath(raw: string | null): string {
+  return raw && (ALLOWED_RETURN_PATHS as readonly string[]).includes(raw)
+    ? raw
+    : DEFAULT_RETURN_PATH;
+}
+
+function validationPath(code: string, returnTo: string): string {
+  return `${returnTo}?error=${encodeURIComponent(code)}`;
 }
 
 function textValue(formData: FormData, key: string): string | null {
@@ -30,19 +49,19 @@ export async function searchAccreditedRepresentatives(
   const zip = textValue(formData, "zip");
   const radiusRaw = textValue(formData, "radiusMiles");
   const typeRaw = textValue(formData, "type");
-  const returnTo = textValue(formData, "returnTo") ?? "/secondary/suggestions";
+  const returnTo = safeReturnPath(textValue(formData, "returnTo"));
 
   if (!zip || !/^\d{5}$/.test(zip)) {
-    redirect(`${returnTo}?error=invalid-zip`);
+    redirect(validationPath("invalid-zip", returnTo));
   }
 
   const allowedRadii = new Set(["25", "50", "100"]);
   if (radiusRaw && !allowedRadii.has(radiusRaw)) {
-    redirect(validationPath("invalid-radius"));
+    redirect(validationPath("invalid-radius", returnTo));
   }
   const allowedTypes = new Set(["VSO", "agent", "attorney"]);
   if (typeRaw && !allowedTypes.has(typeRaw)) {
-    redirect(validationPath("invalid-type"));
+    redirect(validationPath("invalid-type", returnTo));
   }
 
   const params = new URLSearchParams();

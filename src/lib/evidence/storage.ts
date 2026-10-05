@@ -161,22 +161,14 @@ export function loadStoredEvidenceWithWarning(
     const parsed = JSON.parse(raw) as unknown;
     if (!Array.isArray(parsed)) return { analyses: [], parseError: null };
     return { analyses: parsed.filter(isEvidenceAnalysis).slice(-limits.storedSources), parseError: null };
-  } catch (error) {
-    const message = error instanceof Error ? error.message : String(error);
+  } catch {
+    // Parser exceptions can include document text. Never log or return them.
     try {
-      const rawPreview = (() => {
-        try {
-          const raw = storage.getItem(evidenceAnalysisStorageKey);
-          return raw ? raw.slice(0, 500) : "<empty>";
-        } catch {
-          return "<unreadable>";
-        }
-      })();
-      console.warn("[evidence-storage] Failed to parse stored evidence:", message, rawPreview);
+      console.warn("[evidence-storage] STORE_UNREADABLE");
     } catch {
       // observability is best-effort
     }
-    return { analyses: [], parseError: message };
+    return { analyses: [], parseError: "Saved evidence could not be read." };
   }
 }
 

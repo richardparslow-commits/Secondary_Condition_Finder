@@ -108,7 +108,7 @@ describe("workflow privacy", () => {
     ).toBeNull();
   });
 
-  it("keeps browser telemetry disabled while registering server-side OpenTelemetry", () => {
+  it("keeps browser telemetry disabled while server automatic tracing stays off", () => {
     const layout = read("src/app/layout.tsx");
     const proxy = read("src/proxy.ts");
     const privacy = read("src/app/privacy/page.tsx");
@@ -122,17 +122,21 @@ describe("workflow privacy", () => {
     expect(proxy).toContain('connect-src \'self\'');
     expect(proxy).not.toMatch(/applicationinsights|azure\.com|dc\.services\.visualstudio\.com/i);
 
-    expect(instrumentation).toContain('from "@vercel/otel"');
-    expect(instrumentation).toContain("registerOTel");
-    expect(instrumentation).toContain('serviceName: "secondary-condition-finder"');
+    // Server tracing stays off until framework-generated span names/URLs and
+    // exception text are sanitized and collector retention is reviewed.
+    expect(instrumentation).not.toMatch(/^import .*@vercel\/otel/m);
+    expect(instrumentation).not.toContain("registerOTel({");
     expect(instrumentation).not.toContain('"use client"');
 
-    expect(packageJson).toContain('"@vercel/otel": "2.1.3"');
+    // The exporter dependency was removed with the disabled policy; re-adding
+    // it requires the sanitization review (tests/telemetry-policy.test.ts).
+    expect(packageJson).not.toContain("@vercel/otel");
+    expect(packageLock).not.toContain("@vercel/otel");
     expect(packageJson).toContain('"@opentelemetry/api": "1.9.0"');
     expect(packageJson).not.toContain("@microsoft/applicationinsights-web");
     expect(packageLock).not.toContain("@microsoft/applicationinsights-web");
 
     expect(privacy).toContain("does not initialize Application Insights or another client analytics/telemetry SDK");
-    expect(privacy).toContain("server runtime registers OpenTelemetry through Vercel");
+    expect(privacy).toContain("does not currently enable automatic server trace export");
   });
 });

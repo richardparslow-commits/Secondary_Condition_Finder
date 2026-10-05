@@ -33,9 +33,10 @@ import { afterEach, beforeAll, beforeEach, describe, expect, it, vi } from "vite
  *     suite is order-independent and safe under parallel file execution
  *     (each vitest worker gets its own module registry and mock state).
  *
- * The `instrumentation.ts` hook contract is verified at **runtime**: with
- * `@vercel/otel` mocked, `register()` is called for real and must trigger the
- * fire-and-forget warmup (no static source-string sniffing).
+ * The `instrumentation.ts` hook contract is verified at **runtime**: with no
+ * OTel SDK dependency installed (automatic trace export is disabled by policy),
+ * `register()` is called for real and must trigger the fire-and-forget warmup
+ * (no static source-string sniffing).
  *
  * Isolation: `freshState()` restores the VFS, zeroes the read counter, resets
  * every loader cache and the warmup flag; a global `afterEach` repeats the
@@ -135,14 +136,7 @@ vi.mock("node:fs/promises", () => {
   return { default: mock, ...mock };
 });
 
-/**
- * The instrumentation hook imports `@vercel/otel` for its tracing setup; the
- * mock keeps the runtime-contract test focused on the warmup registration
- * behavior instead of starting an OpenTelemetry SDK inside vitest.
- */
-vi.mock("@vercel/otel", () => ({ registerOTel: () => undefined }));
-
-/* ── Module registry (imported lazily AFTER the mock is armed) ─────────────── */
+/* ── Module registry (imported lazily AFTER the fs mocks are armed) ───────── */
 
 type CatalogModule = typeof import("@/lib/catalog/load");
 type KbModule = typeof import("@/lib/kb/load");
@@ -512,8 +506,8 @@ describe("data preload — instrumentation registration hook", () => {
     const instrumentation = await import("@/instrumentation");
     const total = totalJsonFiles();
 
-    // The real register() runs — with @vercel/otel mocked — and must not
-    // throw or block: it returns synchronously while the warmup proceeds.
+    // The real register() runs — with no OTel SDK in the process — and must
+    // not throw or block: it returns synchronously while the warmup proceeds.
     expect(() => instrumentation.register()).not.toThrow();
 
     // The warmup promise is intentionally not returned; join it by waiting

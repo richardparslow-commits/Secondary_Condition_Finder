@@ -44,5 +44,5 @@ export async function writePresumptiveSession(
 
 export async function clearPresumptiveSession(): Promise<void> {
   const jar = await cookies();
-  jar.delete(PRESUMPTIVE_COOKIE);
+  jar.delete({ name: PRESUMPTIVE_COOKIE, path: "/presumptive" });
 }

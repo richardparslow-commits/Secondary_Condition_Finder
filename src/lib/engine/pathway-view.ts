@@ -111,3 +111,114 @@ export function deriveViewCompositeNexus(
     hops.map((hop) => hop.edge.nexusClassification),
   );
 }
+
+/* ─── Graph adjacency explorer projection ─────────────────────────────────
+ *
+ * The pathway explorer (`src/app/pathways/page.tsx`) is the graph's first
+ * user-facing consumer. It renders the SAME validated traversal the engine
+ * uses — resolved to catalog display names — so the projections below carry
+ * the classification and composite nexus verbatim; the surface can therefore
+ * never disagree with the schema's proximate-cause precedence about whether a
+ * chain is broken. Like `ClaimPathwayView`, these are plain data shapes the
+ * client-safe presentation layer can consume without importing the kb layer.
+ */
+
+/**
+ * One citation anchor of a graph hop, projected for reviewer triage.
+ *
+ * Anchors are read-only joins from the authored mapping's suggestion for this
+ * hop's source→target pair (registered in lockstep with the graph edge); the
+ * authored `verified` flag travels verbatim so the surface can show which
+ * evidence a qualified human has confirmed without deriving or recomputing
+ * anything. The surface itself verifies nothing.
+ */
+export interface GraphPathwayAnchorView {
+  /** Short triage label: "PMID <id>" for PubMed records, otherwise the source host. */
+  label: string;
+  /** Canonical source URL when the authored reference records one. */
+  sourceUrl?: string;
+  /** True only when a qualified human has verified the source against the bounded proposition. */
+  verified: boolean;
+}
+
+/** One hop of a graph adjacency pathway, resolved for display. */
+export interface GraphPathwayHopView {
+  /** 0-based position of this hop within the pathway. */
+  stepIndex: number;
+  sourceConditionId: string;
+  sourceConditionName: string;
+  targetConditionId: string;
+  targetConditionName: string;
+  nexusClassification: NexusClassificationView;
+  /**
+   * Citation anchors for this hop, joined from the authored corpus. Empty when
+   * the hop's source mapping records no registered suggestion for this pair.
+   */
+  anchors: GraphPathwayAnchorView[];
+}
+
+/** One traversed graph pathway, resolved for display. */
+export interface GraphPathwayView {
+  terminalConditionId: string;
+  terminalConditionName: string;
+  /** Derived legal nexus of the whole chain — never recomputed in the UI. */
+  compositeNexus: CompositeNexusView;
+  hops: GraphPathwayHopView[];
+}
+
+/**
+ * One origin node of the adjacency graph and its outgoing pathways. Origins
+ * with zero authored edges are included deliberately so their empty state
+ * renders explicitly instead of vanishing.
+ */
+export interface GraphPathwayOriginView {
+  originConditionId: string;
+  originConditionName: string;
+  pathways: GraphPathwayView[];
+}
+
+/** Read-only projection of the whole adjacency graph for the explorer surface. */
+export interface GraphPathwayExplorerView {
+  origins: GraphPathwayOriginView[];
+  totalPathways: number;
+  /** Pathways whose composite nexus is `ASSOCIATION_ONLY_CHAIN_BROKEN`. */
+  chainBrokenPathways: number;
+  /** Citation anchors across every hop on the page. */
+  totalAnchors: number;
+  /** Anchors still awaiting qualified-human citation verification. */
+  unverifiedAnchors: number;
+}
+
+/* ─── Results-UI match projection ─────────────────────────────────────────
+ *
+ * The Step 5 results section (`src/components/secondary/GraphPathwayReview.tsx`)
+ * surfaces the subset of the same validated traversal that connects the
+ * conditions a review actually selected — service-connected origins to the
+ * diagnosed non-service-connected conditions. Matches carry the composite
+ * nexus verbatim from the traversal, so the results surface can mark an
+ * association-only chain legally broken exactly as the explorer does and can
+ * never present a hypothesized route as an established nexus.
+ */
+
+/**
+ * One resolved graph pathway connecting two of a review's selected
+ * conditions: a service-connected origin to a diagnosed terminal condition.
+ * `hops` carry any intermediate steps; the composite nexus is the derived
+ * legal nexus of the whole chain, never recomputed in the UI.
+ */
+export interface GraphPathwayMatchView extends GraphPathwayView {
+  originConditionId: string;
+  originConditionName: string;
+}
+
+/**
+ * A results-UI section's worth of graph-pathway matches, plus the anchor
+ * totals the surface uses to frame the view honestly.
+ */
+export interface GraphPathwayMatchSectionView {
+  matches: GraphPathwayMatchView[];
+  /** Citation anchors across every hop of every match. */
+  totalAnchors: number;
+  /** Anchors still awaiting qualified-human citation verification. */
+  unverifiedAnchors: number;
+}

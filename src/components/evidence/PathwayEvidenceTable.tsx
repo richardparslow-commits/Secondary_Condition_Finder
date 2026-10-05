@@ -29,7 +29,7 @@ import { COMPOSITE_NEXUS_SUMMARY, NEXUS_CLAIM_LABEL } from "@/lib/evidence/pathw
  *
  * The canonical pathway types live in the server-only knowledge-base layer,
  * so this component consumes the client-safe view-model from
- * `@/lib/kb/pathway-view` (the sanctioned bridge module — it imports no kb
+ * `@/lib/engine/pathway-view` (the sanctioned bridge module — it imports no kb
  * runtime and is imported by the server page only to build props). This
  * component strictly renders local browser state — no data fetching of any
  * kind.

@@ -44,7 +44,7 @@ describe("clinical evidence promotion batch 15", () => {
     expect(mapping?.todo.join(" ")).toMatch(/prevalence|comorbidity|direction|caused|aggravat/i);
   });
 
-  it("retires only redundant PTSD legal references while preserving all eighteen clinical relationships", () => {
+  it("retires only redundant PTSD legal references while preserving all nineteen clinical relationships", () => {
     const mapping = byId.get("ptsd");
 
     expect(mapping?.draft).toBe(false);
@@ -68,6 +68,7 @@ describe("clinical evidence promotion batch 15", () => {
       "gerd",
       "copd",
       "rem-sleep-disorder",
+      "bruxism-awake-sleep",
     ]);
 
     for (const suggestion of mapping?.suggestions ?? []) {

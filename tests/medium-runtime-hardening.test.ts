@@ -17,6 +17,7 @@ import {
   VA_REFERENCE_CACHE_MAX_ENTRIES,
   writeVaReferenceCache,
 } from "@/lib/va/reference-cache";
+import { clearCircuitBreakerState } from "@/lib/va/circuit-breaker";
 import {
   clearVaApiOutboundRateLimitState,
   fetchVaForms,
@@ -65,6 +66,9 @@ function oneEntryZipDirectory(uncompressedBytes: number): ArrayBuffer {
 afterEach(() => {
   clearVaReferenceCache();
   clearVaApiOutboundRateLimitState();
+  // A 429 now opens the circuit for its Retry-After window, so the breaker is
+  // per-test state just like the single-process outbound budget.
+  clearCircuitBreakerState();
   clearVaFormsFinderCache();
   vi.restoreAllMocks();
   vi.unstubAllGlobals();

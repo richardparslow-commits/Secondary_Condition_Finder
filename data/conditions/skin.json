@@ -70,8 +70,6 @@
       "id": "dermatitis",
       "name": "Dermatitis (Atopic / Contact)",
       "aliases": [
-        "atopic",
-        "contact",
         "dermatitis"
       ],
       "bodySystem": "Skin Conditions",
@@ -82,12 +80,17 @@
           "verified": false
         }
       ],
-      "reviewNotes": []
+      "reviewNotes": [
+        "COMPOSITE-SCOPE ADJUDICATION 2026-09-28 (docs/modeling-debt-dispositions.md): this identity is a COMPOSITE named for two halves ('Atopic / Contact'), and after the 2026-09-28 eczema scope split each half is carried by a more specific sibling - the atopic half by atopic-dermatitis-eczema (skin-expansion-wave-6.json), which owns the atopic-disease route, and the contact half by contact-dermatitis. This identity's exclusive claim window is SUBTYPE-AGNOSTIC dermatitis only (the generic barrier and skin-infection routes); an atopic-evidence claim resolves to atopic-dermatitis-eczema and documented contact dermatitis resolves to contact-dermatitis. Alias hazard fixed on the bare 'tear'-alias precedent: the bare scope-capture aliases 'atopic' and 'contact' were removed so atopic-disease words resolve to atopic-dermatitis-eczema and contact-disease words resolve to contact-dermatitis, while the bare generic alias 'dermatitis' remains self-scoped to this identity. The three atopic-evidence knowledge-base edges (insomnia rank 1, depressive-disorder rank 4, anxiety-disorder rank 5) are SUPERSEDED AS CLAIM WINDOWS and preserved as registered records only (see data/knowledge-base/dermatitis.json and docs/modeling-debt-dispositions.md); the two infection edges (cellulitis, impetigo) remain this identity's live generic windows. The shared 38 CFR 4.118 rating framework establishes neither shared etiology nor secondary causation."
+      ]
     },
     {
       "id": "eczema",
       "name": "Eczema",
-      "aliases": [],
+      "aliases": [
+        "paradoxical eczema",
+        "drug-induced eczema"
+      ],
       "bodySystem": "Skin Conditions",
       "ratingSchedule": [
         {
@@ -96,7 +99,9 @@
           "verified": false
         }
       ],
-      "reviewNotes": []
+      "reviewNotes": [
+        "SCOPE SPLIT 2026-09-28, and the former IDENTITY-DUPLICATION finding against atopic-dermatitis-eczema is RETRACTED as erroneous at the evidence level. This identity is NOT a synonym for atopic dermatitis and the two are deliberately NOT consolidated. This identity owns the generic and iatrogenic eczematous eruptions; its registered route is psoriasis -> eczema at POST_SURGICAL_OR_TREATMENT, which is PARADOXICAL ECZEMA INDUCED BY BIOLOGIC THERAPY FOR PSORIASIS (JAMA Dermatol. 2024;160(1):71-79, PMID 38055239, qualified-human verified 2026-08-19), whose own guard states that eczema must not be inferred from psoriasis itself and that exposure to the implicated biologic is required. Paradoxical eczema is a drug-induced eczematous eruption and is not atopic dermatitis. CROSS-REFERENCE: the atopic-disease route is owned by the sibling identity atopic-dermatitis-eczema in skin-expansion-wave-6.json, which carries the atopic-march edge to asthma; a reviewer must not merge the two, and a claim routed here must not be extended to atopic dermatitis or vice versa."
+      ]
     },
     {
       "id": "fungal-skin-infection",

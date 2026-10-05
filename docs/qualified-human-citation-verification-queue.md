@@ -18,6 +18,12 @@ The authoritative current citation state is **generated, not transcribed**: run 
 
 The all-94 approval was applied on 2026-09-04 as a citation-state transition only. It did not publish draft mappings or establish an individual medical nexus. The batch snapshots below are retained for audit history and are not the current queue.
 
+## Held edges awaiting qualified-human verification
+
+A held edge is fully authored but unregistered because its primary mapping is published and the per-suggestion citation-purity gate admits no unverified reference. Held edges do not appear in the generated queue because no reference use is registered for them; each is preserved as a held artifact with its own verification packet, and the decision belongs to the qualified human.
+
+- The batch-93 `ptsd` → `alcohol-use-disorder` window is held as `docs/batch-93-ptsd-alcohol-use-disorder-held-edge.json`, with the prepared review packet at `docs/batch-93-ptsd-alcohol-use-disorder-verification-packet.md` (one decision per pending anchor, all-or-nothing landing rule). No decision has been recorded.
+
 ## Historical citation-verification baseline
 
 The published surface remains fully verified: for published mappings, `npm run citations:queue` reports an empty row set. The citation-verification batches left the repository fully verified at the time they ran, and every transiently unverified published row since (including Batch 31's two bounded `verified: false` source rows) has been qualified-human verified.
@@ -76,6 +82,24 @@ node scripts/report-citation-verification-queue.js --markdown --include-drafts
 Rows are generated directly from the mapping files — never transcribed here — and each row carries its publication state so a reviewer can see it is a draft-quarantined mapping citation, not a published one. The reviewer-facing worksheets (proposition, causation boundary, per-source note under review, and decision-record template) are in `docs/d1-citation-verification-packet-2026-09.md`, generated from the same mapping records.
 
 Approving a D1 row verifies only that the source supports the bounded association-only proposition as authored; it does not publish the mapping, convert association into causation, or constitute an individual VA nexus determination. The debt ratchet in `scripts/audit-citation-verification.js` closes only through these qualified-human decisions, applied in lockstep with the master registries.
+
+## Graph-pathway anchor review (Stages 3a–3c, 2026-10)
+
+The 2026-10 graph-adjacency stages (3a, 3b and 3c) registered three routes on the ordinary draft path, each carrying three authored citation anchors. All three mappings remain `draft: true`, so none of the anchors appears in the default published queue above; the machine row set is the draft queue the D1 section describes, and the reviewer-facing worksheets are the corresponding per-edge sections of `docs/d1-citation-verification-packet-2026-09.md`. The nine anchors are indexed below: six remain pending qualified-human review, and three carry recorded decisions from the Stage 3b review.
+
+| Stage | Route | Worksheet row | PMID | Decision state |
+|---|---|---|---|---|
+| 3a | `alcohol-use-disorder` → `chronic-liver-disease` | 505.1 | 30080255 | PENDING (draft-quarantined) |
+| 3a | `alcohol-use-disorder` → `chronic-liver-disease` | 505.2 | 36926309 | PENDING (draft-quarantined) |
+| 3a | `alcohol-use-disorder` → `chronic-liver-disease` | 505.3 | 20636661 | PENDING (draft-quarantined) |
+| 3b | `liver-cancer` → `sarcopenia` | 504.1 | 37274463 | VERIFIED 2026-10-04 (with narrowing) |
+| 3b | `liver-cancer` → `sarcopenia` | 504.2 | 36590214 | VERIFIED 2026-10-04 (with narrowing) |
+| 3b | `liver-cancer` → `sarcopenia` | 504.3 | 26266324 | VERIFIED 2026-10-04 (as written) |
+| 3c | `bruxism-awake-sleep` → `tmj-disorder` | 506.1 | 37474733 | PENDING (draft-quarantined) |
+| 3c | `bruxism-awake-sleep` → `tmj-disorder` | 506.2 | 27796166 | PENDING (draft-quarantined) |
+| 3c | `bruxism-awake-sleep` → `tmj-disorder` | 506.3 | 9758394 | PENDING (draft-quarantined) |
+
+The Stage 3b decisions are recorded in `docs/liver-cancer-sarcopenia-citation-verification-2026-disposition.md`; the packet rows are retained as the pre-decision worksheet and are superseded by that record. For every pending row, approving the source verifies only the bounded `ASSOCIATION_ONLY` proposition as authored — it publishes nothing, converts no association into causation, and constitutes no individual VA medical nexus determination.
 
 ## Human review procedure
 
@@ -253,3 +277,56 @@ All **39 source rows** have qualified-human dispositions and have been promoted 
 - 0 remaining Master Resolution unverified/review rows
 - Replacement provenance is preserved in each replacement sourceLocator
 <!-- CLINICAL-MAPPING-MASTER-RESOLUTION-2026:END -->
+
+## Held batch-89 stress-dermatology citations — screening notes, not live rows
+
+Four PTSD stress-flare edges (`ptsd` to psoriasis, atopic-dermatitis-eczema, alopecia-areata and urticaria) were fully authored on 2026-09-28 and are **held out of the knowledge base** pending qualified-human verification of their six PMIDs: **33587564, 29124739, 42179055, 41362509, 23317485, 41766900**. The target mapping is published and the citation-purity gate applies per suggestion, so these rows cannot enter the knowledge base as `verified: false` at all; they are screening notes awaiting review under `docs/citation-verification-sop.md`, not live citation rows. The complete held edges and the hold disposition are in `docs/batch-89-ptsd-stress-flare-held-edges.json` and `docs/condition-expansion-roadmap.md`. Reserved reverse-direction literature (PMID 37900780 and PMID 42403316) remains unregistered. Run `npm run citations:queue` for the authoritative live row set.
+
+## Held batch-90 schizophrenia tardive-dyskinesia citation — screening notes, not live rows
+
+One schizophrenia tardive-dyskinesia edge (`schizophrenia` to `tardive-dyskinesia`, rank 2) was fully authored on 2026-09-28 and is **held out of the knowledge base** pending qualified-human verification of its three PMIDs: **37424417, 39240484, 30695288**. The target mapping is published and the citation-purity gate applies per suggestion, so these rows cannot enter the knowledge base as `verified: false` at all; they are screening notes awaiting review under `docs/citation-verification-sop.md`, not live citation rows. The complete held edge and the hold disposition are in `docs/batch-90-schizophrenia-tardive-dyskinesia-held-edge.json` and `docs/condition-expansion-roadmap.md`. The companion bipolar route registered in the same batch (PMIDs 28146614 and 42030922) carries ordinary draft-queue rows and appears in `npm run citations:queue --include-drafts`. Run `npm run citations:queue` for the authoritative live row set.
+
+
+## Held batch-91 corpus-review citations — screening notes, not live rows
+
+**RESOLVED 2026-09-29 (batch 92).** The qualified-human verification pass is complete: all eleven PMIDs
+are verified and the four held edges were re-landed as `verified: true` into their published mappings
+(`hypothyroidism` to `depressive-disorder` rank 2; `diabetes-mellitus-type-2` to `depressive-disorder`
+rank 4; `ptsd` to `bruxism-awake-sleep` rank 20; `discoid-lupus` to `depressive-disorder` rank 3). Both
+reading obligations are discharged on the record: the erratum linked to PMID 36056716 was **read** (PMID
+38379424, J Oral Rehabil. 2024;51(5):911-914 — sex-miscoding correction, 154 women coded as male;
+corrected cohort 519 women 77.1% / 154 men 22.9%; authors state outcomes and significance unchanged),
+and the published critique of PMID 19033418 was **identified but remains unread** (Nouwen, Lloyd, Pouwer.
+Depression and type 2 diabetes over the lifespan: a meta-analysis. Response to Mezuk et al. Diabetes Care.
+2009;32(5):e56, author reply e57; PMID 19407066, paywalled letter), so the reviewer decision is to LAND
+the diabetes edge with that adjudication **standing open on the edge's face**. The discoid-lupus reviewer
+decision **elects the `depressive-disorder` target**: no anchor diagnoses persistent depressive disorder, the `persistent-depressive-disorder` window remains UNAUTHORED, and the
+election is preserved in the held artifact. No `contentDigest` is recorded on any of the eleven — PubMed
+record pages are dynamic per fetch and the SOP requires omission over false-positive digests — so
+undigested-verified is 395 against `MAX_UNDIGESTED_VERIFIED_REFS` 383, deliberately NOT raised; the
+qualified-human decision of 2026-09-29 accepts the flagged state pending a future policy session. Each
+artifact now carries a `landingRecord` with its adaptations and reviewer decisions; the `heldEdges` bodies
+are preserved verbatim as the pre-landing record. The batch-89 (PTSD stress-flare) and batch-90
+(schizophrenia tardive-dyskinesia) held sets remain held pending their own verification passes. The
+section below stands unchanged as the pre-landing screening record.
+
+Four corpus-review edges (`hypothyroidism` to `depressive-disorder`; `diabetes-mellitus-type-2` to
+`depressive-disorder`; `ptsd` to `bruxism-awake-sleep`; `discoid-lupus` to `persistent-depressive-disorder`)
+were fully authored on 2026-09-29 and are **held out of the knowledge base** pending qualified-human
+verification of their eleven PMIDs: **34524390, 31214119, 30375372, 19033418, 11375373, 38363350,
+36056716, 32577706, 30877492, 35953237, 41849118**. *(All eleven verified and landed 2026-09-29 — see
+the resolution note above.)* Every primary mapping is published and the
+citation-purity gate applies per suggestion, so these rows cannot enter the knowledge base as
+`verified: false` at all; they are screening notes awaiting review under `docs/citation-verification-sop.md`,
+not live citation rows. Two reading obligations ride with the set: the **erratum linked to PMID 36056716**
+(J Oral Rehabil. 2024 May;51(5):911-914. doi:10.1111/joor.13668) must be read before that edge lands, and
+the **published critique of PMID 19033418** (comment in Diabetes Care. 2009;32(5):e56, author reply e57)
+must be adjudicated on the record. The complete held edges and hold dispositions are in
+`docs/batch-91-hypothyroidism-depressive-disorder-held-edge.json`,
+`docs/batch-91-diabetes-mellitus-type-2-depressive-disorder-held-edge.json`,
+`docs/batch-91-ptsd-bruxism-awake-sleep-held-edge.json` and
+`docs/batch-91-discoid-lupus-persistent-depressive-disorder-held-edge.json`, and in
+`docs/condition-expansion-roadmap.md`. The two edges registered the same day (`bulimia-nervosa` to
+`dental-abrasion-erosion-abfraction`, PMIDs 37834805, 26429686, 38915100; `tinnitus` to `insomnia`,
+PMIDs 34708282, 38389785) carry ordinary draft-queue rows and appear in
+`npm run citations:queue --include-drafts`. Run `npm run citations:queue` for the authoritative live row set.

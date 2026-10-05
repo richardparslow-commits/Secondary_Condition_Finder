@@ -1,12 +1,14 @@
 /**
  * Structured JSON logger for operational observability.
  *
- * Emits timestamped, JSON-formatted lines to stdout/stderr so Vercel / OTel
- * ingestors can collect them without extra infrastructure. No PII, no raw
+ * Emits timestamped, JSON-formatted lines to stdout/stderr so platform log
+ * ingest can collect them without extra infrastructure. No PII, no raw
  * evidence, no workflow payloads. Callers should still pass only sanitized
- * fields; `PROHIBITED_LOG_FIELDS` are additionally suppressed recursively and
- * case-insensitively at emit time as a second line of defence, so a nested or
- * renamed key cannot carry PHI through to the sink.
+ * fields; at emit time `PROHIBITED_LOG_FIELDS` are suppressed recursively and
+ * case-insensitively, and every remaining value must additionally match an
+ * operational shape allowlist — an arbitrary string (an upstream error body,
+ * a query string, a renamed field) is replaced with the redaction marker
+ * instead of being written through.
  *
  * Usage:
  *   import { createLogger } from "@/lib/observability/logger";
@@ -59,6 +61,51 @@ export const PROHIBITED_LOG_FIELDS: readonly string[] = [
 const PROHIBITED_LOG_FIELD_SET = new Set(
   PROHIBITED_LOG_FIELDS.map((field) => field.toLowerCase()),
 );
+/**
+ * Value-shape validation for fields that are safe to log.
+ *
+ * A key blocklist cannot govern a free-form string: `error`, `message`, or a
+ * renamed field can carry document text, an upstream response body, or a
+ * query string through to stdout. Logged values are therefore accepted only
+ * when their key and their shape are both on the operational allowlist;
+ * every other value is replaced with the redaction marker.
+ */
+const SAFE_NUMERIC_FIELDS = new Set([
+  "attempt", "status", "durationMs", "count", "failures", "delayMs", "bytes",
+  "cooldownMs", "epoch", "sharedEpoch", "cleared",
+  "primaryCount", "recommendationCount", "unmappedCount",
+]);
+const SAFE_TEXT_FIELDS: Readonly<Record<string, RegExp>> = {
+  // API pathnames only: no scheme, host, query string, or fragment.
+  path: /^\/[A-Za-z0-9._~\-/]{0,200}$/,
+  route: /^\/[A-Za-z0-9._~\-/]{0,200}$/,
+  requestId: /^[A-Za-z0-9-]{1,64}$/,
+  service: /^[a-z0-9-]{1,64}$/,
+  environment: /^(?:sandbox|production|development|test)$/,
+  outcome: /^[a-z-]{1,32}$/,
+  component: /^[a-z0-9-]{1,64}$/,
+  action: /^[a-z-]{1,64}$/,
+  source: /^[a-z0-9-]{1,64}$/,
+  status: /^(?:success|failure|unauthorized)$/,
+};
+const SAFE_MESSAGES = new Set([
+  "recommendation executed", "request handled",
+  "CSRF origin mismatch", "CSRF origin not in dev allowlist", "CSRF referer mismatch", "CSRF: no Origin or Referer header on request",
+  "circuit half-open; admitting a single probe", "circuit closed after success", "circuit re-opened from half-open", "circuit opened", "circuit opened by upstream rate limit",
+  "va request blocked by circuit breaker", "va request http error", "va request retrying after transient error", "va request invalid payload", "va request success", "va request retrying after network/timeout",
+  "va shared cache read http error", "va shared cache read error", "va shared cache read failed", "va shared cache write skipped — unserializable value", "va shared cache write skipped — value too large", "va shared cache write skipped — key not allowlisted", "va shared cache write skipped — epoch unavailable", "va shared cache write skipped — key budget exceeded", "va shared cache write skipped — key budget unavailable", "va shared cache write http error", "va shared cache write error", "va shared cache write failed",
+  "va shared cache invalidation epoch advanced", "va shared cache invalidation epoch unavailable",
+  "va shared fetch lease granted", "va shared fetch lease contended", "va shared fetch lease released", "va shared fetch lease unavailable",
+  "va shared kv command failed",
+  "shared circuit probe lease granted", "shared circuit probe lease released", "shared circuit cooldown published", "shared circuit cooldown publish incomplete",
+]);
+/** Code-controlled message families (never attacker input). */
+const SAFE_MESSAGE_PATTERNS: readonly RegExp[] = [
+  /^audit:[a-z-]{1,64}$/,
+  /^va request [a-z-]{1,32}$/,
+  /^va shared cache [a-z -]{1,64}$/,
+];
+const SAFE_COMPONENT_PATTERN = /^[a-z0-9-]{1,64}$/;
 
 /** Suppressed values are replaced rather than dropped, so suppression stays auditable. */
 const REDACTION_MARKER = "[redacted]";
@@ -70,18 +117,28 @@ function isProhibitedKey(key: string): boolean {
   return PROHIBITED_LOG_FIELD_SET.has(key.toLowerCase());
 }
 
-function redactValue(value: unknown, depth: number): unknown {
-  if (depth > MAX_REDACTION_DEPTH) return REDACTION_MARKER;
+function redactValue(key: string, value: unknown, depth: number): unknown {
+  if (depth > MAX_REDACTION_DEPTH || isProhibitedKey(key)) return REDACTION_MARKER;
   if (value instanceof Date) return value.toISOString();
-  if (Array.isArray(value)) return value.map((entry) => redactValue(entry, depth + 1));
+  if (typeof value === "number") {
+    return SAFE_NUMERIC_FIELDS.has(key) && Number.isFinite(value) && value >= 0
+      ? value
+      : REDACTION_MARKER;
+  }
+  if (typeof value === "string") {
+    return SAFE_TEXT_FIELDS[key]?.test(value) ? value : REDACTION_MARKER;
+  }
+  if (Array.isArray(value)) {
+    return value.slice(0, 20).map((entry) => redactValue(key, entry, depth + 1));
+  }
   if (value && typeof value === "object") {
     const nested: Record<string, unknown> = {};
-    for (const [key, entry] of Object.entries(value as Record<string, unknown>)) {
-      nested[key] = isProhibitedKey(key) ? REDACTION_MARKER : redactValue(entry, depth + 1);
+    for (const [name, entry] of Object.entries(value as Record<string, unknown>).slice(0, 50)) {
+      nested[name] = redactValue(name, entry, depth + 1);
     }
     return nested;
   }
-  return value;
+  return REDACTION_MARKER;
 }
 
 /**
@@ -94,7 +151,7 @@ function redactValue(value: unknown, depth: number): unknown {
 export function redactLogFields(fields: LogFields): LogFields {
   const sanitized: Record<string, unknown> = {};
   for (const [key, value] of Object.entries(fields)) {
-    sanitized[key] = isProhibitedKey(key) ? REDACTION_MARKER : redactValue(value, 1);
+    sanitized[key] = redactValue(key, value, 1);
   }
   return sanitized as LogFields;
 }
@@ -106,8 +163,11 @@ function emit(level: LogLevel, component: string, message: string, fields: LogFi
   const record = {
     timestamp: new Date().toISOString(),
     level,
-    component,
-    message,
+    component: SAFE_COMPONENT_PATTERN.test(component) ? component : "application",
+    message:
+      SAFE_MESSAGES.has(message) || SAFE_MESSAGE_PATTERNS.some((pattern) => pattern.test(message))
+        ? message
+        : "OPERATIONAL_EVENT",
     ...redactLogFields(fields),
   };
 

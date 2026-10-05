@@ -1,0 +1,242 @@
+{
+  "program": "Liver Cancer to Sarcopenia Citation Verification 2026 (packet row 504)",
+  "status": "APPROVED-AND-IMPLEMENTED-LOCALLY",
+  "parentLocalHead": "76e7868f193f19e5b0114534a2a802f347cfd732",
+  "scope": "citation-verification-only",
+  "taxonomyChangeAuthorized": false,
+  "mappingChangeAuthorized": false,
+  "pathwayIntelligenceAuthorized": false,
+  "packet": {
+    "document": "docs/d1-citation-verification-packet-2026-09.md",
+    "row": 504,
+    "relationshipId": "rel-liver-cancer-to-sarcopenia",
+    "generatedBy": "node scripts/report-citation-verification-queue.js --markdown --include-drafts",
+    "note": "The packet is generated from the mapping files; this disposition supersedes row 504's worksheet. The next queue run regenerates the pending set without it."
+  },
+  "relationship": {
+    "relationshipId": "rel-liver-cancer-to-sarcopenia",
+    "primaryConditionId": "liver-cancer",
+    "targetConditionId": "sarcopenia",
+    "primaryPublicationState": "draft",
+    "nexusClassification": "ASSOCIATION_ONLY",
+    "mappingFile": "data/knowledge-base/liver-cancer.json",
+    "adjacencyNode": "data/knowledge-base/graph/liver-cancer.json"
+  },
+  "reviewer": {
+    "identity": "Richard",
+    "role": "repository owner",
+    "decisionDate": "2026-10-04",
+    "decisionSource": "recorded decision selection: Narrow, then verify"
+  },
+  "decisionPolicy": {
+    "decisionLabels": [
+      "VERIFY-AS-WRITTEN",
+      "VERIFY-WITH-NARROWING",
+      "REPLACE-SOURCE",
+      "HOLD-PROPOSITION",
+      "HOLD-METADATA"
+    ],
+    "verifyWithNarrowing": "Source is usable, but the mapping/citation language must be narrowed before verification."
+  },
+  "summary": {
+    "relationshipsReviewed": 1,
+    "anchorsReviewed": 3,
+    "verifyAsWritten": 1,
+    "verifyWithNarrowing": 2,
+    "replaceSource": 0,
+    "holdProposition": 0,
+    "holdMetadata": 0,
+    "finalUniquePmids": 3,
+    "liveCitationDebtBefore": 1304,
+    "liveCitationDebtAfter": 1301,
+    "currentVerifiedTrueChangesAuthorized": 3
+  },
+  "anchors": [
+    {
+      "anchor": "504.1",
+      "pmid": "37274463",
+      "citation": "Liu J, Luo H, Huang L, Wang J. Prevalence of sarcopenia among patients with hepatocellular carcinoma: A systematic review and meta-analysis. Oncol Lett. 2023 Jul;26(1):283. doi:10.3892/ol.2023.13869. PMID 37274463.",
+      "doi": "10.3892/ol.2023.13869",
+      "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/37274463/",
+      "pmcid": "PMC10236145",
+      "claimType": "population-prevalence-anchor",
+      "currentVerified": false,
+      "proposedVerified": true,
+      "publishedCountsUnchanged": "pooled prevalence 42 percent (95 percent CI 0.36-0.48) across 48 studies and 8,959 patients",
+      "bibliographicIdentityConfirmed": true,
+      "currentAutomatedChecks": {
+        "mappingSourceFound": true,
+        "verifiedFalse": true,
+        "clinicalEvidenceScope": true,
+        "canonicalPubMedUrl": true,
+        "pmidInCitationOrUrl": true,
+        "pubmedRecordRetrieved": true,
+        "pubmedPmidMatches": true,
+        "artifactTitleMatchesPubmed": true,
+        "artifactDoiMatchesPubmed": true
+      },
+      "decision": "VERIFY-WITH-NARROWING",
+      "supportsBoundedPropositionAsCurrentlyWritten": false,
+      "requiresNarrowing": true,
+      "replacementNeeded": false,
+      "requiredNarrowing": "Replace the pooled-prevalence anchor's \"CT-defined\" assessment-method description with the composition the full text reports: in 43 of the 48 pooled studies the skeletal muscle near the third lumbar vertebra was detected by CT (three of the 43 also used grip strength by hand dynamometer); in four studies CT was used to detect the psoas muscle near the L3 level; and one study used MRI to detect the fat-free muscle area (FFMA) near the superior mesenteric artery, with each study's original sarcopenia definition and cut-point retained because no unanimous standard exists. Do not describe the 42 percent pooled prevalence as uniformly CT-defined, and do not use it to imply a single measurement standard.",
+      "revisedPublicationGuard": "Sarcopenia prevalence in hepatocellular-carcinoma populations is pooled from studies using heterogeneous definitions and measurement levels (CT at L3 in 47 of 48, one MRI-derived FFMA; original definitions retained), so the prevalence figure is a population-level burden estimate, not a uniform diagnostic standard.",
+      "revisedLimitations": "Definition and threshold heterogeneity across pooled studies; predominantly retrospective cohorts; no separation of sarcopenia from cancer cachexia; the pooled estimate must not be read as CT-defined without the recorded method composition.",
+      "relevantSourceSection": "Materials and methods (inclusion/exclusion: original definition in each study retained) and Results, basic characteristics: \"In 43 articles, to define sarcopenia, the skeletal muscle near the third lumbar vertebra was detected by computed tomography (CT)... In four studies, CT was used to detect the psoas muscle near the third lumbar spine. In addition, one study used magnetic resonance imaging to detect the fat-free muscle area (FFMA) near the superior mesenteric artery.\"",
+      "implementationInstruction": "Apply the recorded narrowing to the mapping's proposition/note text (and its mirrors) first; only then promote this source row to verified:true. The pooled prevalence figure itself is unchanged.",
+      "finalPmid": "37274463",
+      "verifiedAfterImplementation": true
+    },
+    {
+      "anchor": "504.2",
+      "pmid": "36590214",
+      "citation": "Jiang C, Wang Y, Fu W, Zhang G, Feng X, Wang X, Wang F, Zhang L, Deng Y. Association between sarcopenia and prognosis of hepatocellular carcinoma: A systematic review and meta-analysis. Front Nutr. 2022;9:978110. doi:10.3389/fnut.2022.978110. PMID 36590214.",
+      "doi": "10.3389/fnut.2022.978110",
+      "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36590214/",
+      "pmcid": "PMC9794869",
+      "claimType": "population-prognostic-anchor",
+      "currentVerified": false,
+      "proposedVerified": true,
+      "publishedCountsUnchanged": "pooled prevalence 39 percent (95 percent CI 33-45 percent); adjusted overall-survival HR 1.84 (95 percent CI 1.62-2.09); progression-free-survival HR 1.33 (95 percent CI 1.12-1.56)",
+      "bibliographicIdentityConfirmed": true,
+      "currentAutomatedChecks": {
+        "mappingSourceFound": true,
+        "verifiedFalse": true,
+        "clinicalEvidenceScope": true,
+        "canonicalPubMedUrl": true,
+        "pmidInCitationOrUrl": true,
+        "pubmedRecordRetrieved": true,
+        "pubmedPmidMatches": true,
+        "artifactTitleMatchesPubmed": true,
+        "artifactDoiMatchesPubmed": true
+      },
+      "decision": "VERIFY-WITH-NARROWING",
+      "supportsBoundedPropositionAsCurrentlyWritten": false,
+      "requiresNarrowing": true,
+      "replacementNeeded": false,
+      "requiredNarrowing": "Replace the prognostic anchor's \"CT-defined\" description with the six pooled assessment methods the full text reports: CT-based skeletal muscle index (SMI), psoas muscle index (PMI) and total psoas volume (TPV) at the third lumbar vertebra level; CT-based transverse psoas muscle thickness per body height (TPMT/BH) and intramuscular adipose tissue content (IMAC) at the level of the umbilicus; and MRI-derived fat-free muscle area (FFMA) at the level of the origin of the superior mesenteric artery. The pooled 39 percent prevalence is across these six methods pooled together; method-specific subgroup prevalences are 40 percent SMI (95 percent CI 33-47), 31 percent PMI (23-41) and 52 percent other methods (42-62). Do not describe the pooled prevalence or the pooled hazard ratios as uniformly CT-defined.",
+      "revisedPublicationGuard": "The prognostic synthesis pools six CT- and MRI-based sarcopenia assessment methods across 42 studies, so the pooled prevalence and hazard ratios are population-level estimates over heterogeneous measurement methods and must not be read as CT-defined or method-specific unless the method is named.",
+      "revisedLimitations": "Mixed CT and MRI assessment methods with different cut-points; predominantly retrospective cohorts; no individual etiology or onset chronology; no separation of sarcopenia from cancer cachexia.",
+      "relevantSourceSection": "Results, characteristics of included studies: \"Six methods for sarcopenia assessment were reported, including computed tomography (CT)-based skeletal muscle index (SMI), psoas muscle index (PMI) and total psoas volume (TPV) at the third lumbar vertebra (L3) level, CT based transverse psoas muscle thickness per body height (TPMT/BH) and intramuscular adipose tissue content (IMAC) at the level of umbilicus, and magnetic resonance imaging (MRI) derived fat-free muscle area (FFMA)...\"; prevalence subgroup analysis by method (SMI 40 percent, PMI 31 percent, other methods 52 percent).",
+      "implementationInstruction": "Apply the recorded narrowing to the mapping's proposition/note text (and its mirrors) first; only then promote this source row to verified:true. The pooled prevalence and hazard-ratio figures themselves are unchanged.",
+      "finalPmid": "36590214",
+      "verifiedAfterImplementation": true
+    },
+    {
+      "anchor": "504.3",
+      "pmid": "26266324",
+      "citation": "Levolger S, van Vledder MG, Muslem R, Koek M, Niessen WJ, de Man RA, de Bruin RW, Ijzermans JN. Sarcopenia impairs survival in patients with potentially curable hepatocellular carcinoma. J Surg Oncol. 2015 Aug;112(2):208-13. doi:10.1002/jso.23976. PMID 26266324.",
+      "doi": "10.1002/jso.23976",
+      "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/26266324/",
+      "claimType": "curative-intent-cohort-anchor",
+      "currentVerified": false,
+      "proposedVerified": true,
+      "publishedCountsUnchanged": "sarcopenia 57.8 percent; median overall survival 33 versus 105 months (P=0.002); adjusted HR 3.756 (P=0.001); NO disease-free-survival difference; treatment-related mortality 17.3 versus 2.6 percent; major complications 32.7 versus 13.2 percent",
+      "bibliographicIdentityConfirmed": true,
+      "currentAutomatedChecks": {
+        "mappingSourceFound": true,
+        "verifiedFalse": true,
+        "clinicalEvidenceScope": true,
+        "canonicalPubMedUrl": true,
+        "pmidInCitationOrUrl": true,
+        "pubmedRecordRetrieved": true,
+        "pubmedPmidMatches": true,
+        "artifactTitleMatchesPubmed": true,
+        "artifactDoiMatchesPubmed": true
+      },
+      "decision": "VERIFY-AS-WRITTEN",
+      "supportsBoundedPropositionAsCurrentlyWritten": true,
+      "requiresNarrowing": false,
+      "replacementNeeded": false,
+      "implementationInstruction": "No proposition change was required for this anchor. The source row was promoted to verified:true while preserving the existing bounded guard and limitations; the CT L3-SMI measurement and its own threshold were confirmed against the full text.",
+      "finalPmid": "26266324",
+      "verifiedAfterImplementation": true
+    }
+  ],
+  "reviewEvidencePerSop": {
+    "reviewer": "Richard, repository owner",
+    "reviewDates": [
+      "2026-10-03"
+    ],
+    "verificationDate": "2026-10-04",
+    "sourceAccess": "PubMed record access on 2026-10-03 was bot-walled (\"Cookies must be enabled\") for direct HTML fetches; bibliographic metadata and abstracts were retrieved through NCBI E-utilities efetch, and full texts through Europe PMC REST fullTextXML (PMC10236145, PMC9794869).",
+    "claimReviewed": "the bounded ASSOCIATION_ONLY proposition registered on rel-liver-cancer-to-sarcopenia (population-level co-occurrence and prognostic association in established hepatocellular-carcinoma populations; no individual causation or aggravation)",
+    "relevantSections": "504.1 methods/results (assessment-method composition); 504.2 results (six assessment methods; method-specific prevalences); 504.3 abstract (CT L3-SMI cohort outcomes)",
+    "decision": "narrow the two pooled prevalence anchors' assessment-method description to the full texts' composition, then verify all three anchors; the curative-intent cohort anchor is approved as written",
+    "unresolvedLimitations": "definition and threshold heterogeneity across pooled studies; predominantly retrospective cohorts; no separation of sarcopenia from cancer cachexia; the Levolger cohort's survival signal runs mainly through major complications and treatment-related mortality rather than disease-free survival; none of the anchors separates tumor-driven loss from cirrhosis, alcohol exposure, aging, nutrition or treatment effects"
+  },
+  "digestPolicy": {
+    "contentDigestRecorded": false,
+    "reason": "PubMed record pages are dynamic per fetch (two fetches of the same record page return the same length with different digests), so per docs/citation-verification-sop.md a dynamic page must OMIT a digest rather than record a false-positive value.",
+    "consequence": "undigested-verified references rise by 3; scripts/audit-citation-decay.js MAX_UNDIGESTED_VERIFIED_REFS (383) is already exceeded and is deliberately NOT raised to accommodate debt; the decay audit flags and the condition is recorded rather than resolved.",
+    "precedent": "batch-92 (2026-09-29) omitted `contentDigest` on all 11 promoted sources for the same reason."
+  },
+  "registryLockstep": {
+    "newRelationshipRowsAdded": 0,
+    "relationshipRowsReviewed": 1,
+    "note": "NO new relationship row was added and the graph adjacency is unchanged; this is a verification-only promotion of an already-registered relationship and its three already-registered source entities.",
+    "sourceIds": [
+      "pmid-37274463",
+      "pmid-36590214",
+      "pmid-26266324"
+    ],
+    "sourceEntityTransitions": [
+      "pmid-37274463: pending-verification -> active, verified false -> true, sourceCheckedOnValues 2026-10-03 -> 2026-10-04, rawReferenceHashes recomputed",
+      "pmid-36590214: pending-verification -> active, verified false -> true, sourceCheckedOnValues 2026-10-03 -> 2026-10-04, rawReferenceHashes recomputed",
+      "pmid-26266324: pending-verification -> active, verified false -> true, sourceCheckedOnValues 2026-10-03 -> 2026-10-04, rawReferenceHashes recomputed"
+    ],
+    "mappingReferenceState": "all three sourceReferences set verified:true with sourceCheckedOn 2026-10-04; the mapping file remains draft:true",
+    "hashFormDiscipline": "only the edited relationship row's suggestionObjectHash and the three promoted source entities' rawReferenceHashes were recomputed; all other registry rows keep their git-HEAD hash form"
+  },
+  "expectedPostVerificationState": {
+    "knowledgeBaseFiles": 819,
+    "publishedMappings": 140,
+    "draftMappings": 679,
+    "relationships": 873,
+    "liveSourceReferenceUses": 1699,
+    "liveVerifiedSourceUses": 398,
+    "retiredVerified": 6,
+    "verifiedProvenance": 404,
+    "unverified": 1301,
+    "reviewFindings": 0,
+    "liveClinicalEvidenceWithUrls": 1694,
+    "retiredClinicalEvidenceWithUrls": 4,
+    "clinicalEvidenceProvenanceWithUrls": 1698,
+    "activeSourceEntities": 360,
+    "pendingVerificationSourceEntities": 1123,
+    "activeClinicalSourceEntities": 359,
+    "pendingClinicalSourceEntities": 1123,
+    "activeLegalAuthorityEntities": 1,
+    "totalSourceEntitiesIncludingLineage": 1492,
+    "explicitPublicationGuards": 799,
+    "legacyRationaleBoundaries": 74,
+    "retiredVerifiedRelationshipSourceUses": 6
+  },
+  "crgNote": {
+    "newRows": 0,
+    "finding": "NO new relationship row was added and no graph adjacency changed, so no CRG redundancy or cycle review is created by this pass; npm run audit:crg and npm run audit:crg:graph stay at the reviewed state. The registered window discipline is unchanged: the liver-cancer -> cirrhosis-of-the-liver edge stands, and a future cirrhosis-of-the-liver -> sarcopenia window still requires an audit:crg redundancy adjudication before authoring."
+  },
+  "approvalPhrase": "Narrow, then verify (recorded decision selection)",
+  "approvalDate": "2026-10-04",
+  "qualifiedHumanApproval": "Richard, repository owner",
+  "implementationResult": {
+    "primaryConditionId": "liver-cancer",
+    "targetConditionId": "sarcopenia",
+    "pmids": [
+      "37274463",
+      "36590214",
+      "26266324"
+    ],
+    "verifiedAfterImplementation": true,
+    "mappingPropositionNarrowed": true,
+    "mappingPropositionFiguresUnchanged": true,
+    "taxonomyChanged": false,
+    "mappingTargetsOrRanksChanged": false,
+    "pathwayIntelligenceChanged": false,
+    "newRelationshipRowsAdded": 0,
+    "graphAdjacencyChanged": false,
+    "liveCitationDebtAfterImplementation": 1301,
+    "reviewFindingsAfterImplementation": 0
+  },
+  "nonNegotiableBoundary": "The three anchors are verified only for the existing bounded liver-cancer -> sarcopenia ASSOCIATION_ONLY proposition, with the two pooled prevalence anchors narrowed to the assessment-method composition their full texts report and the curative-intent cohort anchor approved as written. The verification is population-level co-occurrence and prognostic association evidence about established hepatocellular-carcinoma populations; it establishes neither causation nor aggravation under 38 CFR 3.310 for any individual, changes no taxonomy, adds no relationship row, and authorizes no pathwayIntelligence. Individual claims still require a documented HCC diagnosis and treatment timeline, a reproducible muscle-mass measurement with its stated threshold, assessment of cirrhosis severity and alcohol exposure, exclusion of cachexia-dominant wasting and independent nutritional disease, and qualified clinical opinion."
+}

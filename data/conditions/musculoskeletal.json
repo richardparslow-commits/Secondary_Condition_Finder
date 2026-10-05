@@ -306,8 +306,7 @@
       "id": "rotator-cuff-injury",
       "name": "Rotator Cuff Tendonitis / Tear",
       "aliases": [
-        "rotator cuff tendonitis",
-        "tear"
+        "rotator cuff tendonitis"
       ],
       "bodySystem": "Musculoskeletal System",
       "ratingSchedule": [
@@ -317,7 +316,26 @@
           "verified": false
         }
       ],
-      "reviewNotes": []
+      "reviewNotes": [
+        "Umbrella/member scope (recorded 2026-09-28 by the three-closure adjudication in docs/modeling-debt-dispositions.md): this identity is the UMBRELLA over the rotator-cuff tendinopathy/tear spectrum (catalog name Rotator Cuff Tendonitis / Tear), and the tear member is the SEPARATE identity rotator-cuff-tear in musculoskeletal-expansion-wave-2.json. The umbrella owns the general rotator-cuff window and keeps the registered bicipital-tendinitis to rotator-cuff-injury edge; claims about rotator cuff tears specifically belong to the member identity. NO edge may be registered between this umbrella and its own member (batch-86 soft-tissue-sarcomas umbrella guard). Alias hazard fixed 2026-09-28: the bare alias 'tear' was REMOVED because a bare lesion word resolves every tear in the catalog to this entry; the scoped alias 'rotator cuff tendonitis' is retained. The shared 38 CFR 4.71a rating framework with the member establishes neither shared etiology nor secondary causation.",
+        "CANONICAL-IDENTITY RECONCILIATION (2026-09-28, docs/modeling-debt-dispositions.md): this identity is the CANONICAL identity of the rotator-cuff pair. rotator-cuff-tear is reconciled to it as a quarantined pointer record and is no longer an authoring home; rotator-cuff tear claims are authored under this umbrella entry, which covers tears by its own catalog name, with tear-specific evidence requirements stated per edge. The umbrella/member scope note above stands as the pair's relationship and is superseded only as to authorship location. All registered edges targeting this identity (rel-bicipital-tendinitis-to-rotator-cuff-injury and rel-slap-tear-to-rotator-cuff-injury) and their registered sources are preserved unchanged. The variant name 'rotator cuff tear' remains on the pointer entry's own catalog name: the catalog invariant (tests/catalog.test.ts) forbids an alias colliding with another condition's name or id, so name folding into this entry becomes available only if a future catalog-v3 migration retires the pointer ID."
+      ]
+    },
+    {
+      "id": "sarcopenia",
+      "name": "Sarcopenia",
+      "aliases": [
+        "muscle wasting",
+        "muscle loss",
+        "age-related muscle loss"
+      ],
+      "bodySystem": "Musculoskeletal System",
+      "ratingSchedule": [],
+      "reviewNotes": [
+        "Added 2026-10-03 as staged Leg A execution of the signed catalog identity migration design dated 2026-09-29 (docs/catalog-identity-migration-design-2026-09-29.md), closing the corpus-review catalog gap behind the withheld liver-cancer to sarcopenia route (D1 batch 91), recorded in docs/missing-identity-addition-roadmap.md. This addition moves the frozen identity contract 817/817 to 818/818; Leg B (alcohol-use-disorder) of the same design remains to land. The route is unblocked and its evidence was located on 2026-10-03: PMID 37274463, PMID 36590214 and PMID 26266324 are absent from the registry, cleared by source-status preflight with zero blocking flags, and authored as the first real adjacency edge in data/knowledge-base/graph/liver-cancer.json; the authored-corpus registration (suggestion and registry lockstep) landed the same day under Stage 3b, moving the citation ratchets to 1,693 live reference uses / 1,298 pending and 1,486 source entities.",
+        "Rating authority is deliberately left empty per docs/condition-catalog.md step 4 (never invent a code): a qualified human must confirm whether sarcopenia is evaluated under the muscle-injury framework of 38 CFR 4.73 or rated as a residual of its underlying etiology before any ratingSchedule citation is recorded, and any citation added by automated work stays verified: false.",
+        "Scope guards: this identity is the clinical syndrome of progressive loss of skeletal muscle mass and strength, NOT the separate muscle-atrophy / interosseous-muscle-atrophy identities (denervation and disuse forms) and NOT cancer cachexia, which is a distinct systemic wasting syndrome with its own inflammation-dominant literature; the cachexia gap remains open and separate. Liver-cancer sarcopenia claims must state the myopenic/cachectic boundary on the face of the edge."
+      ]
     },
     {
       "id": "scars",

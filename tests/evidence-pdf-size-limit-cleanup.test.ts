@@ -26,7 +26,8 @@ const pdfjsMocks = vi.hoisted(() => ({
   destroy: vi.fn(),
 }));
 
-vi.mock("pdfjs-dist", () => ({
+// Must match the extraction module's dynamic import specifier (legacy build).
+vi.mock("pdfjs-dist/legacy/build/pdf.mjs", () => ({
   GlobalWorkerOptions: { workerSrc: "about:blank" },
   getDocument: pdfjsMocks.getDocument,
 }));

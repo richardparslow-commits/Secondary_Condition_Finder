@@ -1,0 +1,88 @@
+{
+  "artifact": "D1 batch 91 held edge - fully authored, NOT present in the knowledge base",
+  "batch": 91,
+  "status": "LANDED_2026-09-29 (see landingRecord; heldEdges preserved verbatim as the pre-landing record)",
+  "heldOn": "2026-09-29",
+  "id": "hypothyroidism",
+  "targetMapping": "data/knowledge-base/hypothyroidism.json (published, draft:false)",
+  "holdReason": "scripts/validate-knowledge-base.js applies the citation-purity threshold PER SUGGESTION: sourceReferences is capped at three, so a single verified:false reference is already 33 percent and no unverified reference can enter a published mapping at all. The primary mapping is published (draft:false) with qualified-human-verified edges, and flipping it to draft:true would unpublish those edges and break the 140/677 published/draft pin. Mapping approval is not citation verification. This edge is HELD, not refused: it is preserved verbatim here so a qualified-human verification under docs/citation-verification-sop.md is the only step between this artifact and a verbatim re-landing.",
+  "landingCondition": "A qualified human verifies PMIDs 34524390, 31214119 and 30375372 under docs/citation-verification-sop.md; the references then land as verified:true (the only admissible path into a published mapping) and the held edge is authored verbatim as its next rank. Per-edge ratchet deltas from the batch-91 state on that path: relationships 866 to 867 (explicit 792 to 793); reference uses 1,679 to 1,682 with verified 384 to 387 and pending-verification 1,295 unchanged; source entities 1,472 to 1,475 with active 346 to 349 and pending-verification 1,117 unchanged; clinical uses 1,674 to 1,677. If verification is withheld for any of the three, the edge stays held for as long as hypothyroidism remains published.",
+  "preservedEvidenceNotes": "Anchor set reviewed as one evidence family on 2026-09-29: the two subclinical meta-analyses (PMID 31214119 positive at OR 1.78; PMID 30375372 composite-null at SMD 0.23 and OR 1.75 not significant) CONFLICT in magnitude and age direction and are carried together rather than averaged; the primary anchor (PMID 34524390) locates its strength in overt hypothyroidism and in female individuals with a male null, and its sensitivity analyses are more conservative than its headline; the treatment meta-analysis reports NO antidepressant effect of levothyroxine, registered as explicit counterweight to any hormone-deficiency causal reading. Batch-80 adjacencies recorded: the bipolar-disorder to hypothyroidism lithium edge is registered and the ptsd to hypothyroidism shared-lithium route remains refused; NEITHER is reopened or duplicated by this edge, whose exposure is the thyroid disease itself rather than a prescribed drug. The three PMIDs are confirmed absent from data/evidence/master-sources.json and cleared source-status preflight on 2026-09-29 with zero blocking flags.",
+  "heldEdges": [
+    {
+      "conditionId": "depressive-disorder",
+      "rank": 2,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Authoring registers this relationship only as the bounded association the located thyroid literature supports: a 2021 JAMA Psychiatry systematic review and meta-analysis of 25 studies and 348,014 participants reports hypothyroidism associated with clinical depression at OR 1.30 (95 percent CI 1.08-1.57), stronger in overt hypothyroidism (OR 1.77, 95 percent CI 1.13-2.77) than in subclinical hypothyroidism (OR 1.13, 95 percent CI 1.01-1.28), with sensitivity analyses yielding MORE CONSERVATIVE estimates, an inconclusive autoimmunity coprimary (OR 1.24, 95 percent CI 0.89-1.74), and a post hoc signal in female individuals (OR 1.48, 95 percent CI 1.18-1.85) that is NULL in male individuals (OR 0.71, 95 percent CI 0.40-1.25) (PMID 34524390); a 2019 meta-analysis of seven studies and 103,375 subjects reports subclinical hypothyroidism associated with elevated depression risk (OR 1.78, 95 percent CI 1.11-2.86, P 0.02), most marked above age 50 (PMID 31214119); while a 2018 meta-analysis of subclinical hypothyroidism reports the composite endpoint NOT significant (SMD 0.23, 95 percent CI -0.03 to 0.48, P 0.08) and the depressive-diagnosis odds ratio not significant (OR 1.75, 95 percent CI 0.97-3.17, P 0.064), with a younger-than-60 subgroup signal (OR 3.8, 95 percent CI 1.02-14.18) and an older-adult null, and NO antidepressant effect of levothyroxine supplementation (SMD 0.26, 95 percent CI -0.09 to 0.62, P 0.143) (PMID 30375372). The registered claim is the narrowest these anchors jointly permit: that hypothyroidism is associated with clinical depression at a modest pooled odds ratio, with the located effect concentrated in overt hypothyroidism and female populations, and with the two subclinical meta-analyses in DIRECT CONFLICT on whether any association exists at all.",
+        "causationStatus": "Neither causation nor aggravation of depression is established for any individual: every anchor is an epidemiologic meta-analysis of prevalence or odds, so none establishes that the thyroid dysfunction precedes the depression in an individual; the primary anchor's own authors conclude the effect size is CONSIDERABLY LOWER THAN PREVIOUSLY ASSUMED and possibly restricted to overt hypothyroidism and female individuals, its sensitivity analyses are more conservative than its headline, and its autoimmunity coprimary is inconclusive; the two subclinical meta-analyses CONFLICT (OR 1.78 positive versus composite SMD 0.23 and OR 1.75 both not significant) and disagree on which age group carries any signal (above 50 in one, below 60 in the other); the levothyroxine-treatment meta-analysis reports NO improvement of depression with thyroid-hormone supplementation in subclinical hypothyroidism, which is explicit counterweight against a simple hormone-deficiency causal reading; the female-only post hoc signal leaves a male null (OR 0.71 crossing 1). Individual claims require independently established hypothyroidism with dated thyroid function tests (TSH, free T4) predating the depressive diagnosis, exclusion of euthyroid-sick phenomenon, of medication effects (lithium, amiodarone, immune checkpoint inhibitors), of postpartum and autoimmune thyroiditis trajectories, and of primary psychosocial etiologies before any attribution."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "NEUROENDOCRINE_CASCADE",
+        "primaryVector": "A hypothesized neuroendocrine pathway: reduced thyroid hormone action is held to impair central monoaminergic function and neurotrophic signaling (the long-recognized hypothyroid-\"pseudodysthymia\" presentation), the route the overt-stronger-than-subclinical gradient is consistent with; but the levothyroxine-treatment null means the pathway cannot be treated as demonstrated by hormone replacement response, so whether thyroid dysfunction produced any individual's depression remains hypothesized until the endocrine and psychiatric chronology is read together.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "Held at ASSOCIATION_ONLY at meta-analytic epidemiologic class with the anchor conflicts carried openly rather than resolved: the pooled OR of 1.30 is modest and its own authors stress it is lower than previously assumed; the subclinical literature is split, one meta-analysis positive (OR 1.78) and one composite-null (SMD 0.23, OR 1.75 not significant); the treatment evidence (levothyroxine no antidepressant effect, P 0.143) is a direct counterweight to causal reading and is registered as such; the female-only post hoc signal with male null bounds the claim to female populations. Target window note: the registry already carries this file's outgoing hypothyroidism to tinnitus edge and the batch-80 bipolar-disorder to hypothyroidism lithium edge arrives at this identity from a PHARMACOLOGICAL_IATROGENIC route, so a mood window FROM this identity is directionally distinct from the lithium-mediated mood windows and is not a duplicate of them; the batch-80 ptsd to hypothyroidism shared-lithium-route refusal is untouched by this edge.",
+        "evidenceGaps": "NO located anchor establishes onset order between hypothyroidism and depression; the two subclinical meta-analyses conflict in both magnitude and age direction; the primary anchor's sensitivity analyses are more conservative than its headline OR, its autoimmunity coprimary is inconclusive, and its strongest signal is a POST HOC female-only analysis with a male null; the levothyroxine-treatment meta-analysis reports no antidepressant effect; and no anchor reports incident depression in a thyroid-function-confirmed hypothyroid cohort free of baseline psychiatric disease.",
+        "alternativeEtiologiesToRuleOut": [
+          "Primary major depressive disorder with secondary neuroendocrine effects on thyroid indices",
+          "Lithium, amiodarone and immune-checkpoint-inhibitor thyroid injury as exogenous causes of the hypothyroidism",
+          "Euthyroid-sick phenomenon and transient thyroiditis misread as stable hypothyroidism",
+          "Psychosocial stressors, chronic medical illness burden and unemployment/disability as depression drivers in a population with chronic endocrine disease",
+          "Postpartum thyroiditis trajectories in the female-skewed populations the strongest signals come from"
+        ],
+        "requiresSpecificDbqEvidence": false
+      },
+      "evidenceGaps": [
+        "NO located anchor establishes onset order between hypothyroidism and depression; the two subclinical meta-analyses conflict in both magnitude and age direction; the primary anchor's sensitivity analyses are more conservative than its headline OR, its autoimmunity coprimary is inconclusive, and its strongest signal is a POST HOC female-only analysis with a male null; the levothyroxine-treatment meta-analysis reports no antidepressant effect; and no anchor reports incident depression in a thyroid-function-confirmed hypothyroid cohort free of baseline psychiatric disease."
+      ],
+      "rationale": "Held, not authored into the knowledge base: the request-driven corpus review identified hypothyroidism to depressive-disorder as an unmapped route with quantified meta-analytic anchors, and this artifact preserves the fully authored edge with every located conflict on its face (overt-versus-subclinical gradient, female-only post hoc signal with male null, the two subclinical meta-analyses in conflict, and the levothyroxine-treatment null). All three anchors were claim-versus-source verified against their PubMed abstracts on 2026-09-29 and cleared source-status preflight with zero blocking flags. References are authored verified:false and MUST be verified by a qualified human under docs/citation-verification-sop.md before the edge lands as verified:true in data/knowledge-base/hypothyroidism.json.",
+      "sourceReferences": [
+        {
+          "citation": "Bode H, Ivens B, Bschor T, Schwarzer G, Henssler J, Baethge C. Association of Hypothyroidism and Clinical Depression: A Systematic Review and Meta-analysis. JAMA Psychiatry. 2021 Dec 1;78(12):1375-1383. doi:10.1001/jamapsychiatry.2021.2506. PMID 34524390.",
+          "note": "Systematic review and random-effects meta-analysis, 25 studies, 348,014 participants, registered as the PRIMARY anchor: hypothyroidism with clinical depression OR 1.30 (95 percent CI 1.08-1.57); overt OR 1.77 (1.13-2.77) versus subclinical OR 1.13 (1.01-1.28); autoimmunity coprimary inconclusive OR 1.24 (0.89-1.74); sensitivity analyses more conservative; post hoc female OR 1.48 (1.18-1.85) with male NULL OR 0.71 (0.40-1.25). Authors conclude the effect is considerably lower than previously assumed and possibly restricted to overt hypothyroidism and female individuals. DISCLOSURE CARRIED: Dr Schwarzer reports personal fees from Roche Pharma outside the submitted work. Mapping approval is not citation verification; this source enters verified:false pending qualified-human citation review.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34524390/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-29",
+          "sourceLocator": "JAMA Psychiatry. 2021;78(12):1375-1383. Meta-analysis, 25 studies, n = 348,014; abstract states OR 1.30 [1.08-1.57] clinical depression, overt 1.77 [1.13-2.77], subclinical 1.13 [1.01-1.28], autoimmunity 1.24 [0.89-1.74], sensitivity analyses more conservative, post hoc female 1.48 [1.18-1.85], male 0.71 [0.40-1.25]."
+        },
+        {
+          "citation": "Tang R, Wang J, Yang L, Ding X, Zhong Y, Pan J, Yang H, Mu L, Chen X, Chen Z. Subclinical Hypothyroidism and Depression: A Systematic Review and Meta-Analysis. Front Endocrinol (Lausanne). 2019 Jun 4;10:340. doi:10.3389/fendo.2019.00340. PMID 31214119.",
+          "note": "Systematic review and meta-analysis, 21 studies reviewed with 7 pooled (103,375 subjects): subclinical hypothyroidism with elevated depression risk OR 1.78 (95 percent CI 1.11-2.86, P 0.02), no publication bias by Egger or Begg test, especially above age 50. COUNTERWEIGHT DISCLOSURE: the 2018 subclinical meta-analysis (PMID 30375372) reports the opposite conclusion from overlapping literature, so the two are carried together and NOT averaged. Mapping approval is not citation verification; this source enters verified:false pending qualified-human citation review.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/31214119/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-29",
+          "sourceLocator": "Front Endocrinol (Lausanne). 2019;10:340. Meta-analysis, 7 of 21 studies pooled, n = 103,375; abstract states SCH depression OR 1.78 [1.11-2.86] P = 0.02, no publication bias, stronger above age 50."
+        },
+        {
+          "citation": "Zhao T, Chen BM, Zhao XM, Shan ZY. Subclinical hypothyroidism and depression: a meta-analysis. Transl Psychiatry. 2018 Oct 30;8(1):239. doi:10.1038/s41398-018-0283-7. PMID 30375372.",
+          "note": "Systematic review and meta-analysis registered as the EXPLICIT COUNTERWEIGHT: composite endpoint NOT significant (SMD 0.23, 95 percent CI -0.03 to 0.48, P 0.08, I-squared 73.6 percent), depressive-diagnosis odds NOT significant (OR 1.75, 95 percent CI 0.97-3.17, P 0.064), younger-than-60 signal (OR 3.8, 95 percent CI 1.02-14.18) with an older-adult null, and NO antidepressant effect of levothyroxine supplementation (SMD 0.26, 95 percent CI -0.09 to 0.62, P 0.143). The authors conclude subclinical hypothyroidism is NOT connected to depression overall. The age direction also conflicts with PMID 31214119, which locates its signal above age 50. Mapping approval is not citation verification; this source enters verified:false pending qualified-human citation review.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/30375372/",
+          "verified": false,
+          "sourceCheckedOn": "2026-09-29",
+          "sourceLocator": "Transl Psychiatry. 2018;8(1):239. Meta-analysis; abstract states composite SMD 0.23 [-0.03, 0.48] P = 0.08, OR depressive patients 1.75 [0.97, 3.17] P = 0.064, under-60 OR 3.8 [1.02, 14.18], over-60 null, levothyroxine SMD 0.26 [-0.09, 0.62] P = 0.143, conclusion of no overall connection."
+        }
+      ]
+    }
+  ],
+  "landingRecord": {
+    "landedOn": "2026-09-29",
+    "verificationPass": "Batch-91 qualified-human verification pass under docs/citation-verification-sop.md: all cited PMIDs claim-versus-source checked against their abstracts and citation metadata exact-checked against the PubMed esummary record; source-status preflight 0 blocking; approval recorded in docs/qualified-human-citation-verification-queue.md.",
+    "adaptationsFromHeldText": [
+      "verbatim landing; no evidence-text changes",
+      "all sourceReferences flipped to verified:true with a verification stamp appended to each note (evidence wording otherwise verbatim)"
+    ],
+    "reviewerDecisions": [
+      "none required; edge landed verbatim at the held target"
+    ]
+  }
+}

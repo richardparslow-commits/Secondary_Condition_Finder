@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 
 import { loadConditionCatalog } from "@/lib/catalog/load";
+import { loadKbGraph } from "@/lib/kb/graph";
 import { runtimeCapabilities } from "@/lib/runtime-capabilities";
 import { openSessionPayload, sealSessionPayload } from "@/lib/workflow-session-crypto";
 import { loadVaApiConfig } from "@/lib/va/sandbox";
@@ -49,6 +50,34 @@ async function checkSessionCrypto(): Promise<ComponentCheck> {
   }
 }
 
+/**
+ * Adjacency-graph migration state. The loader validates every node file
+ * (schema, filename identity, duplicates, catalog membership) and fails loud
+ * on invalid data, so `status: "ok"` is itself the validation verdict; the
+ * counts let operators watch the migration progress toward a populated graph.
+ * An empty graph is the valid pre-migration state, not a failure.
+ */
+function checkKbGraph(): ComponentCheck & { nodes?: number; edges?: number } {
+  const started = Date.now();
+  try {
+    const graph = loadKbGraph();
+    let edges = 0;
+    for (const node of graph.values()) edges += node.outgoingEdges.length;
+    return {
+      status: "ok",
+      latencyMs: Date.now() - started,
+      nodes: graph.size,
+      edges,
+    };
+  } catch (error) {
+    return {
+      status: "error",
+      latencyMs: Date.now() - started,
+      detail: error instanceof Error ? error.message : String(error),
+    };
+  }
+}
+
 function checkVaConfig(): ComponentCheck & { enabled?: boolean; environment?: string | null } {
   const started = Date.now();
   try {
@@ -76,13 +105,14 @@ function checkVaConfig(): ComponentCheck & { enabled?: boolean; environment?: st
  * GET /api/health
  *
  * Health check endpoint used by Vercel monitoring and the production readiness
- * workflow. Returns component-level status for catalog, session crypto, VA API
- * config, and circuit breaker state.
+ * workflow. Returns component-level status for catalog, session crypto, the
+ * CRG adjacency graph, VA API config, and circuit breaker state.
  *
  * Response schema (see docs/api-specification.md):
  * - status: "healthy" | "degraded"
  * - components.catalog: { status, latencyMs, count?, detail? }
  * - components.sessionCrypto: { status, latencyMs, detail? }
+ * - components.kbGraph: { status, latencyMs, nodes?, edges?, detail? }
  * - components.vaConfig: { status, latencyMs, enabled?, environment?, detail? }
  * - components.circuitBreaker: { status, latencyMs, detail, snapshot }
  * - components.vaReferenceCache: { scope, detail, hits, misses, hitRate } —
@@ -99,13 +129,16 @@ function checkVaConfig(): ComponentCheck & { enabled?: boolean; environment?: st
  * - latencyMs: total endpoint latency
  * - timestamp: ISO 8601
  *
- * HTTP 200 when catalog + sessionCrypto are ok; 503 when either is error.
+ * HTTP 200 when catalog + sessionCrypto + kbGraph are ok; 503 when any is
+ * error — invalid adjacency data is a deployed-integrity failure, not a
+ * degraded-but-expected state.
  */
 export async function GET() {
   const started = Date.now();
 
   try {
     const [catalog, sessionCrypto] = await Promise.all([checkCatalog(), checkSessionCrypto()]);
+    const kbGraph = checkKbGraph();
     const vaConfig = checkVaConfig();
     const circuit = getCircuitSnapshot();
     const cacheCounters = peekCacheCounters();
@@ -118,6 +151,7 @@ export async function GET() {
     const components = {
       catalog,
       sessionCrypto,
+      kbGraph,
       vaConfig,
       circuitBreaker: {
         status: "ok" as const,
@@ -151,7 +185,8 @@ export async function GET() {
       },
     };
 
-    const healthy = catalog.status === "ok" && sessionCrypto.status === "ok";
+    const healthy =
+      catalog.status === "ok" && sessionCrypto.status === "ok" && kbGraph.status === "ok";
     const status = healthy ? 200 : 503;
 
     return NextResponse.json(
@@ -172,6 +207,7 @@ export async function GET() {
         components: {
           catalog: { status: "error", latencyMs: 0, detail: "Health check aborted" },
           sessionCrypto: { status: "error", latencyMs: 0, detail: "Health check aborted" },
+          kbGraph: { status: "error", latencyMs: 0, detail: "Health check aborted" },
         },
         error: error instanceof Error ? error.message : String(error),
         latencyMs: Date.now() - started,

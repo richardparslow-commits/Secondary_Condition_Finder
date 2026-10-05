@@ -48,6 +48,7 @@ commits and merge conflicts. Generate the current numbers instead (the table bel
 | Published/draft authoring coverage by wave and batch | `npm run authoring:tracker` |
 | References below the provenance bar | `npm run citations:weak` |
 | CRG relationship-graph structure (cycles, bidirectional pairs, redundancy) | `npm run audit:crg` |
+| CRG transitive-redundancy triage register and posture tables | `npm run crg:triage` |
 | Qualified-human citation-verification queue | `npm run citations:queue` |
 <!-- generated:snapshot-generators:end -->
 
@@ -131,10 +132,11 @@ starting points, not verified authority.
 
 Next.js App Router, TypeScript, Tailwind, Zod, Vitest, Chrome/ChromeDriver E2E,
 and Vercel. The condition catalog and knowledge base are JSON in version control
-so mapping and citation changes remain reviewable diffs. Server-side
-OpenTelemetry is registered through `@vercel/otel` (`src/instrumentation.ts`);
-there is no client analytics SDK, and production `connect-src` stays
-first-party only.
+so mapping and citation changes remain reviewable diffs. Server-side automatic
+OpenTelemetry trace export is deliberately disabled by policy
+(`src/lib/observability/telemetry-policy.ts`) because framework spans can carry
+query strings and exception text past the application log redaction; there is no
+client analytics SDK, and production `connect-src` stays first-party only.
 
 ## Getting started
 
@@ -182,14 +184,15 @@ Open `http://localhost:3000`. `/scenarios` contains repeatable demo walkthroughs
 | `npm test` | Vitest suite; CI runs it once and fails on any failure |
 | `npm run test:watch` | Vitest in watch mode |
 | `npm run test:composition` | Requires executable-test imports for 100% of the audited critical-module manifest; also enforces server-action placement, client-boundary, track-separation, and evidence-architecture guardrails |
-| `npm run test:doc-lint` | Documentation-drift gate: living-doc lint policy (banned snapshot counts, historical-zone fences, file/script references) and schema-validated JSON examples; CI runs it as the required `verify-doc-lint` check |
+| `npm run test:fleet` | Fleet coordination gate: runs `tests/va-fleet-simulation.test.ts` (shared consumer budget, circuit cooldown and probe lease, single-flight leases, epoch invalidation, coordinated outage, degraded store, split-brain partition) through `scripts/run-fleet-simulation.mjs` under a ratcheted wall-clock budget: the enforced limit is the tighter of the committed environment cap and a budget derived from recent measured runs (`.github/fleet-budget-ratchet.json`), so it tightens automatically as timing stabilizes but can never drift looser, and each coordination path also carries its own committed per-scenario real-time bound; `--record` appends a measurement to ratify a window, and an overrun of either bound is killed and fails the CI `fleet` step |
+| `npm run test:doc-lint` | Documentation-drift gate: living-doc lint policy (banned snapshot counts, historical-zone fences, file/script references), audit finding/disposition-row parity, and schema-validated JSON examples; CI runs it as the required `verify-doc-lint` check |
 | `npm run typecheck` | `tsc --noEmit` |
 | `npm run lint` | ESLint |
 | `npm run kb:validate` | Knowledge-base structural/integrity validation |
 | `npm run citations:audit` | Citation safety, provenance, and verification-debt audit |
 | `npm run audit:me-compliance` | Audits all mappings (incl. every ME-1..ME-33 relationship) against the CRG schema, nexus-arm, consensus, guard-honesty, citation, and quarantine rules |
 | `npm run audit:crg` | CRG structural audit: simple-cycle enumeration, bidirectional-pair governance notes, and a transitive-redundancy report. Self-loops, duplicate edges, and pure-causation cycles hard-fail; the review and redundancy backlogs are ratcheted so they can shrink but not grow (`--strict` upgrades every review finding to a violation). CI gate |
-| `npm run audit:crg:graph` | Adjacency-file graph audit: 3-color DFS cycle detection over `KbNodeMapping` files (self-tightening — vacuous until the first adjacency file migrates, then strict). CI gate |
+| `npm run audit:crg:graph` | Adjacency-graph audit over `data/knowledge-base/graph/`: 3-color DFS cycle detection across `KbNodeMapping` files. A hard gate since the first node migrated 2026-10-03 (`docs/crg-adjacency-migration-checklist.md`). CI gate |
 | `npm run citations:decay` | Live link-rot/staleness probe for citations (deliberate maintainer gate, not per-PR CI) |
 | `npm run citations:weak` | Weak-citation report (references below the repository's provenance bar) |
 | `npm run citations:queue` | Reports the qualified-human citation-verification queue as markdown |
@@ -200,7 +203,10 @@ Open `http://localhost:3000`. `/scenarios` contains repeatable demo walkthroughs
 | `npm run regulatory:audit` | Regulatory-intelligence audit (add `:markdown` for the report form) |
 
 CI also builds the production app and runs real Chrome/ChromeDriver journeys for
-the secondary workflow and validation/error behavior. After successful `main`
+the secondary workflow and validation/error behavior, plus a production-boot
+smoke check (`e2e/pathways-smoke.mjs`) that fetches `/pathways` and asserts the
+chain-break semantics and the absence of raw nexus enum values in the served
+body and its embedded RSC payload. After successful `main`
 CI, Production Runtime Readiness confirms the exact Vercel deployment, canonical
 alias, the full public route matrix, and the runtime-session readiness marker.
 
@@ -229,11 +235,29 @@ See `docs/va-api-runtime-configuration.md` for the complete environment-aware VA
 runtime contract. Production secrets belong only in the deployment secret store;
 do not expose them through `NEXT_PUBLIC_*` variables or commit them.
 
-The VA public-reference cache is process-local and best-effort: five-minute TTL,
-LRU-bounded entry count, and no durable/global semantics. Outbound VA requests
-also have a process-local per-service request budget. Those controls reduce
-single-process pressure but are not represented as distributed/global rate
-limiting.
+The VA public-reference cache is best-effort and non-authoritative. Tier 1 is
+process-local (five-minute TTL, 32-entry LRU). Tier 2 is optional: when an
+operator configures a shared Redis/KV (`VA_REFERENCE_SHARED_CACHE_URL` +
+`TOKEN`, or the provider aliases), entries are key-namespace allowlisted,
+finite-cardinality bounded (≤480 resident keys per namespace), stored as
+`{envelopeVersion:2, epoch, value}` envelopes, re-checked against this
+deployment's provenance before being served, deduplicated per key with a short
+single-flight lease so an expired key is fetched once per fleet, and revocable
+fleet-wide — `POST /api/admin/cache-clear` advances the shared invalidation
+epoch. Outbound
+VA requests use a process-local per-service budget, plus an opt-in distributed
+consumer-wide budget (`VA_SHARED_CONSUMER_BUDGET=true`) that fails closed; this
+is quota coordination, not a claim of global rate limiting. The multi-instance
+fleet simulation (`npm run test:fleet`, CI step `fleet`) exercises these
+invariants under a ratcheted wall-clock budget: the enforced limit is the
+tighter of the committed environment cap and a budget derived from recent
+measured runs, so it tightens automatically as timing stabilizes and cannot
+silently drift looser. Each coordination path additionally carries its own
+committed per-scenario real-time bound, so one path cannot consume the suite
+budget unnoticed, and an unbounded coordination regression fails the build. A
+split network is simulated too: the partitioned half fails closed instead of
+serving stale values as live, and honors the reachable half's invalidation
+once it heals.
 
 ## Layout
 
@@ -281,6 +305,7 @@ Primary public routes include:
 - `/scenarios`
 - `/va-forms` and `/va-forms/finder`
 - `/va-reference` and `/va-reference/service-branches`
+- `/pathways` (read-only claim pathway explorer: authored adjacency-graph routes, with association-only links shown as legally broken chains rather than nexus findings)
 - `/privacy`
 - `/terms`
 - `/runtime-readiness`

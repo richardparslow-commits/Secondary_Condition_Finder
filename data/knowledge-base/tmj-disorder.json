@@ -4,5 +4,8 @@
   "todo": [
     "Rebuild secondary-condition suggestions using condition-specific clinical evidence before publication."
   ],
-  "suggestions": []
+  "suggestions": [],
+  "governanceNotes": [
+    "CANONICAL-IDENTITY ELECTION (2026-10-03, docs/modeling-debt-dispositions.md; Leg C of docs/catalog-identity-migration-design-2026-09-29.md): CANONICAL identity of the TMJ pair and the single authoring home for temporomandibular-joint claims. The tmj-dysfunction file is retired as a quarantined pointer record pointing here, and its matching aliases moved to this identity. Both identities are zero-suggestion drafts with no registered edges or sources, so this reconciliation moves zero registry rows and no catalog counts. The signed ME-34 reopening for the bruxism-awake-sleep to tmj-disorder route is the design's Stage 3c and is not executed by this election."
+  ]
 }

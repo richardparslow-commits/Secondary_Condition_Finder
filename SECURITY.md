@@ -1,10 +1,16 @@
 # Security Policy
 
+## Read-only VA sandbox account boundary
+
+The separate `/va-account` phase is disabled by default and uses only fixed sandbox ACG endpoints for veteran self-service rating summaries and existing claim statuses. It cannot select production, submit claims, upload documents, or act for representatives. See [sandbox setup and evidence gates](docs/va-account-sandbox.md). S256 PKCE, one-use browser-bound state, signed OIDC identity validation, encrypted server-held tokens, opaque HttpOnly handles, absolute expiry, atomic refresh ownership and explicit disconnect outcomes are implemented. Real registered-client connectivity, isolated store operations, hosting callback/query/body log sanitation and manual accessibility remain unverified external gates. No local test substitutes for VA approval.
+
 ## Supported Code
 
 Security fixes are evaluated against the current `main` branch and the current production deployment. Historical commits, preview deployments, and the legacy manual Azure fallback are not independently supported security baselines.
 
 Dependencies are supported based on the locked versions in `package-lock.json`. Supply chain vulnerabilities (e.g., compromised npm packages or transitive dependencies) are treated as critical severity regardless of the application code's direct implementation.
+
+The enforced CI dependency gate, `npm run audit:high`, audits **production (runtime) dependencies** with `npm audit --audit-level=high --omit=dev` and must report zero high/critical advisories. Dev-only tooling is inventoried by the non-blocking `npm run audit:high:all` step: advisories there are not silently waived — a dev-only advisory with an upstream patch must be upgraded, and one without a patched release (e.g. `braces <= 3.0.3`, advisory `GHSA-vfj7-8cjw-p6xm`, "Patched versions: None") stays visible in CI logs until the toolchain can move off it. Never resolve an audit failure by running `npm audit fix --force` into an older major line.
 
 ## Reporting a Vulnerability
 
@@ -49,7 +55,7 @@ The current production scope is strictly limited to a client-side claim-preparat
 1. Connect to an individual Veteran's VA account (no VA API integration, no credentialed VA access).
 2. Submit disability claims or communicate with VA adjudication systems.
 3. Upload, transmit, or persistently store browser-local evidence-review source documents (PDFs/images) to the application server. Documents and extracted text remain in the browser; only sanitized, bounded extracted-text summaries are surfaced in the workflow.
-4. Store full workflow state in client-visible cookies, or persist workflow history server-side. Workflow state is held in short-lived, encrypted/authenticated first-party cookies; no application event-persistence backend records workflow or recommendation history.
+4. Store full workflow state in client-visible cookies, or persist workflow history server-side. Workflow state is held in short-lived, encrypted/authenticated first-party cookies. Operational workflow/recommendation events emit allowlisted action/status/route/count/duration fields to platform logs; host retention and exception sanitation must be reviewed rather than described as absent.
 5. Initialize client-side analytics or third-party telemetry SDKs. Browser connectivity is constrained by the deployed Content Security Policy (`connect-src 'self'`).
 
 VA sandbox integration is disabled by default, and credentialed sandbox verification remains a separately governed future gate.
@@ -77,22 +83,21 @@ Production adds:
 
 ```
 require-trusted-types-for 'script'
-trusted-types 'nextjs' 'dompurify' default
-'allow-duplicates'
+trusted-types default 'allow-duplicates'
 ```
 
-- `require-trusted-types-for 'script'` closes DOM-XSS sink injection (innerHTML/outerHTML/script src/worker construction) for the application. The repo contains no first-party DOM-sink writes (audited); the framework keeps its `nextjs` policy escape hatch.
-- `default` is the one first-party fallback policy, created by `src/components/security/TrustedTypesGate.tsx` before hydration. It is deliberately strict: script **URLs** must resolve to same-origin http(s) (no `blob:`/`data:`, no cross-origin), and `createScript`/`createHTML` refuse unconditionally. This exists because the pinned tesseract.js v6 contains no `createPolicy` calls and constructs its OCR worker from a plain string — verified in the shipped bundle — so without a gated `default` policy the Local OCR action would fail in TT-enforcing browsers.
+- `require-trusted-types-for 'script'` closes DOM-XSS sink injection (innerHTML/outerHTML/script src/worker construction) for the application. The repo contains no first-party DOM-sink writes (audited). Framework policies are intentionally **not** allowlisted: Next.js's lazy route loader tolerates `createPolicy('nextjs')` failing and its plain chunk URLs then ride the strict `default` policy (same-origin only) — verified with client-side navigation in the production build. Earlier revisions emitted `'nextjs' 'dompurify'` as quoted entries; Chrome reported both as invalid policy names on every page load and refused the policies anyway, so the entries were removed rather than left as misleading no-ops.
+- `default` is the one first-party fallback policy, created by `src/components/security/TrustedTypesGate.tsx` at mount — after hydration, deliberately: the only first-party script-URL sink is the OCR worker spawn on an explicit user action long after mount, and the policy is intentionally not claimed to exist before hydration. The policy decision itself lives in `src/lib/security/trusted-types-policy.ts` and is executed by tests, not just pattern-matched. It is deliberately strict: script **URLs** must resolve to same-origin http(s) (no `blob:`/`data:`/`javascript:`, no cross-origin — framework `/_next/` chunks and the `/tesseract/` worker ride the same gate), and `createScript`/`createHTML` refuse unconditionally. This exists because the pinned tesseract.js v6 contains no `createPolicy` calls and constructs its OCR worker from a plain string — verified in the shipped bundle — so without a gated `default` policy the Local OCR action would fail in TT-enforcing browsers. All OCR entry points spawn the worker through `createLocalOcrWorker()` (`src/lib/evidence/ocr-session.ts`) with `workerBlobURL: false`; Tesseract's default wraps `workerPath` in a Blob, which this policy correctly refuses (the P1 browser-local-OCR defect below).
 - Development is exempt: React's dev-mode eval and the Turbopack dev chunk loader violate enforcement (verified in headless Chrome), and dev already runs `'unsafe-eval'`. Violation reporting stays active in dev.
-- Verified live against a production build in headless Chrome: pages hydrate with zero violations, the same-origin tesseract worker path succeeds through the gate, and cross-origin/blob worker payloads are blocked.
-- Policy names in `trusted-types` are token-list entries; quoted strings other than the framework's own keyword-style names are invalid tokens and silently disallowed — pin this when adding names.
+- Verified live against a production build in headless Chrome: pages hydrate with zero violations, the direct same-origin tesseract worker spawn succeeds through the gate, and cross-origin/blob worker payloads are blocked. The worker realm needs its own bootstrap: `/tesseract/*` responses carry this policy too and a dedicated worker does not inherit the document's policy object, so the worker is spawned through the generated `/tesseract/worker-guard.js` (`scripts/copy-pdf-worker.mjs`), which installs the same narrow policy — same-origin `/tesseract/*` script URLs only — before importing the pinned worker. Two benign console messages remain on the OCR path because the pinned libraries catch their own failed probes (webpack's `new Function("return this")` global detection and Emscripten's embedded `data:` wasm fallback refused by `connect-src 'self'`); neither is a successful sink assignment and OCR completes. An earlier version of this line claimed worker success while the library's default blob wrapper was in fact being refused — see the B04 remediation note in `docs/security-va-production-audit-2026-10-04.md`; the blob mode is now excluded by `worker-src 'self'` and by the executed `workerBlobURL: false` contract in tests.
+- Policy names in `trusted-types` are unquoted token-list entries; only keyword-form entries (`'allow-duplicates'`, `'report-sample'`) may carry quotes. Quoted policy names are invalid and are ignored with a console error on every page load — pin this when adding names, and if a future Next.js release requires its own policy, add `nextjs` unquoted and re-verify client navigation.
 
 ### CSP / Trusted-Types violation reporting
 
 Violations POST to `/api/csp-report` (`report-uri` plus `Reporting-Endpoints`/`Report-To`). The endpoint:
 
 - redacts every report to a bounded, content-free event **before** logging or counting (`src/lib/observability/csp-report.ts`): URLs reduced to origin only (no path, no query), directive names charset/length-validated, `sample` dropped in favor of a hex-only correlation fingerprint;
-- never persists raw report bodies, never returns errors to the browser (a bare 204 always — no oracle), and sheds abuse via a small in-memory limiter;
+- never persists raw report bodies; answers accepted reports with a content-free 204 (malformed, oversized, unreadable, and wrong-content-type bodies included) and sheds abusive rates with a content-free 429 — never an error oracle;
 - emits the redacted event to the best-effort OTEL counter `csp.violation` (directive/disposition attributes only);
 - is excluded from the proxy's security matcher so report delivery cannot loop into violations.
 
@@ -121,7 +126,7 @@ Converting every React `style` prop to CSS classes would eliminate `unsafe-inlin
 | `img-src` | `'self' data: blob:` | Inline images, evidence thumbnails |
 | `font-src` | `'self' data:` | Inline font data |
 | `connect-src` | `'self'` (prod) / `'self' ws: wss:` (dev) | No third-party egress; dev HMR websocket |
-| `worker-src` | `'self' blob:` | Web workers (tesseract.js, PDF.js) |
+| `worker-src` | `'self'` | Web workers (tesseract.js direct same-origin spawn, PDF.js) |
 | `media-src` | `'self' blob:` | Media elements |
 | `frame-src` | `'none'` | No iframes |
 | `object-src` | `'none'` | No plugins |
@@ -132,32 +137,21 @@ Converting every React `style` prop to CSS classes would eliminate `unsafe-inlin
 
 ## CSRF Protection
 
-Server Actions (form submissions from `src/lib/actions/`) are protected by **three layers** of CSRF defense:
+Server Actions (form submissions from `src/lib/actions/`) are POST-only entrypoints whose action identifiers appear in public render output — they are identifiers, not secrets. The protections that are actually active:
 
-### Layer 1: Next.js built-in CSRF protection
+### Layer 1: Next.js built-in checks
 
-Next.js Server Actions use encrypted action IDs embedded in the page's render output. Each form submission includes this encrypted token, which Next.js validates server-side before executing the action. Cross-origin requests cannot obtain this token because:
-- The CSP `script-src` nonce prevents injecting script to extract it
-- The `connect-src 'self'` policy prevents fetching it via AJAX from another origin
-- `SameSite=Strict` cookies prevent session transmission from cross-origin contexts
+Next.js validates the request Origin against Host/X-Forwarded-Host and relies on `SameSite=Strict` cookies. The CSP `script-src` nonce and `connect-src 'self'` policy keep injected script from extracting or replaying action identifiers from another origin.
 
-### Layer 2: Origin/Referer validation (`src/lib/security/csrf.ts`)
-
-An explicit `Origin`/`Referer` header check provides defense-in-depth. In production, requests must originate from the application's own origin. In development, localhost origins are accepted. This catches edge cases where Next.js's built-in protection might be bypassed (e.g., misconfigured reverse proxies, cookie stripping).
-
-### Layer 3: CSP `form-action 'self'` + `frame-ancestors 'none'`
+### Layer 2: CSP form controls
 
 - `form-action 'self'` restricts where `<form>` elements can submit
 - `frame-ancestors 'none'` prevents the application from being framed (clickjacking)
 - `script-src-attr 'none'` blocks inline event handlers that could trigger form submissions
 
-### Testing
+### Reviewed helper (not wired)
 
-`tests/csrf-protection.test.ts` validates that:
-- The CSRF module rejects requests with mismatched Origin/Referer headers
-- The module accepts requests with valid same-origin headers
-- Development mode accepts localhost origins
-- Production mode rejects non-application origins
+`src/lib/security/csrf.ts` implements an additional Origin/Referer check with localhost dev allowlisting. It currently has **no production callers** and is retained as reviewed defense-in-depth — it is not an advertised active layer. Wiring it into a mutation boundary requires testing behind the deployed host/proxy configuration first; `tests/csrf-protection.test.ts` exercises the helper itself, not an active integration.
 
 ## Infrastructure and Edge Security
 
@@ -165,7 +159,7 @@ Production deployments (Vercel primary; Azure static web apps as the legacy manu
 
 ### Application-level rate limiting (defense-in-depth)
 
-In addition to edge WAF controls, the application implements server-side rate limiting via `src/lib/rate-limiter.ts` (sliding-window, in-memory, per-process). This provides defense-in-depth when edge controls are bypassed or misconfigured, and enables testing rate-limit behavior in development/staging.
+In addition to edge WAF controls, the application implements server-side rate limiting via `src/lib/rate-limiter.ts` (fixed-window, in-memory, per-process, hard-capped key map). Fixed windows can admit up to 2× the nominal rate across a window boundary; that is accepted for this secondary layer behind the edge. Key extraction trusts `X-Forwarded-For`, so the deployed proxy/WAF must strip client-supplied values — recorded as an operator input in the 2026-10-03 audit (§9.3), not assumed here.
 
 | Route / Operation | Limiter | Window | Max | Key |
 |---|---|---|---|---|

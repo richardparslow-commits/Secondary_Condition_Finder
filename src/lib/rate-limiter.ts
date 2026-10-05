@@ -1,5 +1,19 @@
 /**
- * Application-level sliding-window rate limiter.
+ * Application-level **fixed-window** rate limiter.
+ *
+ * Provides defense-in-depth behind Vercel's edge WAF. Each limiter tracks
+ * per-key (typically IP) request counts within a fixed window and returns 429
+ * when the limit is exceeded. Fixed windows admit up to 2× the nominal rate
+ * across a window boundary (a burst at the end of one window plus a burst at
+ * the start of the next); that is an accepted trade-off for this secondary
+ * layer, and the headers/contracts here must not claim a sliding guarantee.
+ * All state is process-local and resets on cold start — intentional for
+ * serverless (no stale state across instances) and acceptable as a secondary
+ * layer behind the edge.
+ *
+ * Key cardinality is hard-bounded: an attacker rotating source keys cannot
+ * grow the tracking map without limit. Expired buckets are swept as the map
+ * grows, and a hard cap evicts the oldest buckets as a final backstop.
  *
  * What this module promises is per-client request **fairness**, as a secondary
  * layer behind the edge WAF. That is deliberately a weaker promise than the one
@@ -34,13 +48,20 @@
 import { isDistributedRuntime, type RuntimeEnvironment } from "./runtime-deployment";
 
 export interface RateLimiterOptions {
-  /** Sliding window duration in milliseconds. Default: 60 000 (1 minute). */
+  /** Fixed window duration in milliseconds. Default: 60 000 (1 minute). */
   windowMs?: number;
   /** Maximum requests per window per key. Default: 60. */
   max?: number;
   /** Human label for logging / metrics. Default: "default". */
   name?: string;
 }
+
+/**
+ * Hard cap on tracked keys per limiter. A source rotating keys (spoofed
+ * X-Forwarded-For values, many clients behind one NAT) must not grow process
+ * memory without bound; past this many live buckets the oldest are evicted.
+ */
+export const RATE_LIMITER_MAX_TRACKED_KEYS = 10_000;
 
 export interface CheckResult {
   /** Whether the request should be rejected (429). */
@@ -71,13 +92,25 @@ export function createRateLimiter(options: RateLimiterOptions = {}) {
 
   const buckets = new Map<string, Bucket>();
 
-  /** Periodic cleanup: remove expired buckets to prevent unbounded growth. */
-  function sweep(): void {
-    const now = Date.now();
+  /**
+   * Remove expired buckets to bound memory, then enforce the hard cap by
+   * evicting the oldest windows. Sweeping on every check past the threshold
+   * keeps the map at live-window size instead of letting an attacker who
+   * rotates keys grow it without limit.
+   */
+  function sweep(now = Date.now()): void {
     for (const [key, bucket] of buckets) {
       if (now - bucket.windowStart >= windowMs) {
         buckets.delete(key);
       }
+    }
+    if (buckets.size <= RATE_LIMITER_MAX_TRACKED_KEYS) return;
+    const oldestFirst = [...buckets.entries()].sort(
+      (a, b) => a[1].windowStart - b[1].windowStart,
+    );
+    const excess = buckets.size - RATE_LIMITER_MAX_TRACKED_KEYS;
+    for (let i = 0; i < excess; i += 1) {
+      buckets.delete(oldestFirst[i][0]);
     }
   }
 
@@ -87,6 +120,7 @@ export function createRateLimiter(options: RateLimiterOptions = {}) {
    */
   function check(key: string): CheckResult {
     const now = Date.now();
+    if (buckets.size > 1_000) sweep(now);
     const bucket = buckets.get(key);
 
     if (!bucket || now - bucket.windowStart >= windowMs) {
@@ -126,16 +160,7 @@ export function createRateLimiter(options: RateLimiterOptions = {}) {
     buckets.clear();
   }
 
-  // Sweep stale buckets on every check (O(n) but n is bounded by unique IPs
-  // in the window; in production with WAF in front, this is small).
-  // Call sweep lazily only when buckets grow large.
-  const originalCheck = check;
-  const wrappedCheck = (key: string): CheckResult => {
-    if (buckets.size > 10_000) sweep();
-    return originalCheck(key);
-  };
-
-  return { check: wrappedCheck, reset, name, windowMs, max };
+  return { check, reset, name, windowMs, max };
 }
 
 // ---------------------------------------------------------------------------
@@ -168,6 +193,17 @@ export const adminCacheClearLimiter = createRateLimiter({
   windowMs: 60_000,
   max: 5,
   name: "admin-cache-clear",
+});
+
+/**
+ * Public dynamic reference GETs that can reach upstream VA quota or shared
+ * cache writes. Bounds inbound abuse independently of the workflow limiter,
+ * which only covers POST Server Actions.
+ */
+export const referenceReadLimiter = createRateLimiter({
+  windowMs: 60_000,
+  max: 30,
+  name: "reference-read",
 });
 
 // ---------------------------------------------------------------------------

@@ -539,3 +539,72 @@ export function corpusMarkerReports(docsDir: string): DocMarkerReport[] {
       ...auditMarkerPairing(readFileSync(join(docsDir, file), "utf8")),
     }));
 }
+
+// ---------------------------------------------------------------------------
+// Audit finding ↔ disposition-row parity
+// ---------------------------------------------------------------------------
+
+/**
+ * An audit document states each finding as a `### X-nn — Title` section and
+ * records its disposition as a table row beginning `| X-nn … |`. The two
+ * lists are edited independently, so a finding can be closed against the
+ * wrong row label — or silently dropped — while every individual line still
+ * reads plausibly. This extraction makes the pairing checkable: every finding
+ * heading needs a disposition row, every disposition row needs a finding
+ * heading, and neither side may repeat an ID.
+ */
+
+export type AuditFindingDispositionReport = {
+  file: string;
+  /** Finding IDs in heading order (duplicates included). */
+  findings: string[];
+  /** Disposition-row IDs in document order (duplicates included). */
+  dispositions: string[];
+  /** Finding IDs with no disposition row (deduplicated). */
+  missingDispositions: string[];
+  /** Disposition-row IDs with no finding heading (deduplicated). */
+  missingFindings: string[];
+  /** IDs repeated on either side (deduplicated). */
+  duplicateIds: string[];
+};
+
+const FINDING_HEADING_PATTERN = /^#{2,4}\s+([A-Z]-\d{2})\s+—/gm;
+const DISPOSITION_ROW_PATTERN = /^\|\s*([A-Z]-\d{2})\b/gm;
+
+function repeatedIds(ids: string[]): string[] {
+  const counts = new Map<string, number>();
+  for (const id of ids) counts.set(id, (counts.get(id) ?? 0) + 1);
+  return [...counts.entries()].filter(([, count]) => count > 1).map(([id]) => id);
+}
+
+export function auditFindingDispositionParity(
+  text: string,
+  file = "",
+): AuditFindingDispositionReport {
+  const findings = [...text.matchAll(FINDING_HEADING_PATTERN)].map((match) => match[1]!);
+  const dispositions = [...text.matchAll(DISPOSITION_ROW_PATTERN)].map((match) => match[1]!);
+  const findingSet = new Set(findings);
+  const dispositionSet = new Set(dispositions);
+  return {
+    file,
+    findings,
+    dispositions,
+    missingDispositions: [...new Set(findings.filter((id) => !dispositionSet.has(id)))],
+    missingFindings: [...new Set(dispositions.filter((id) => !findingSet.has(id)))],
+    duplicateIds: [...new Set([...repeatedIds(findings), ...repeatedIds(dispositions)])],
+  };
+}
+
+/**
+ * Run the parity check across the repository's audit documents
+ * (`docs/security-systems-audit-*.md`), so a future audit is covered by the
+ * filename convention without editing the guard.
+ */
+export function auditDocumentParity(docsDir: string): AuditFindingDispositionReport[] {
+  return readdirSync(docsDir)
+    .filter((name) => /^security-systems-audit-.*\.md$/.test(name))
+    .sort()
+    .map((file) =>
+      auditFindingDispositionParity(readFileSync(join(docsDir, file), "utf8"), file),
+    );
+}

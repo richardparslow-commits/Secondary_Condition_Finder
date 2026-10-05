@@ -76,7 +76,8 @@
       "id": "atopic-dermatitis-eczema",
       "name": "Atopic Dermatitis (Eczema)",
       "aliases": [
-        "atopic eczema"
+        "atopic eczema",
+        "atopic dermatitis"
       ],
       "bodySystem": "Skin Conditions",
       "ratingSchedule": [
@@ -87,7 +88,8 @@
         }
       ],
       "reviewNotes": [
-        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending."
+        "Added from the 2026-09 master condition list. No single condition-specific VA diagnostic code is asserted by this identity; rating depends on documented findings and the applicable Part 4 framework. Qualified-human rating-schedule citation verification pending.",
+        "SCOPE SPLIT 2026-09-28, and the former IDENTITY-DUPLICATION finding against the eczema identity is RETRACTED as erroneous at the evidence level. This identity is ATOPIC DERMATITIS specifically and is NOT a synonym for generic eczema; the two are deliberately NOT consolidated. This identity owns the atopic-disease route, whose registered edge is atopic-dermatitis-eczema -> asthma at IMMUNE_MEDIATED, the ATOPIC MARCH (J Am Acad Dermatol. 2022;86(2):365-372, PMID 34384834, qualified-human verified 2026-09-02), scoped to atopic dermatitis phenotypes and therefore NOT extendable to eczema in general. CROSS-REFERENCE: the generic and iatrogenic eczematous eruptions, including paradoxical eczema induced by biologic therapy for psoriasis, are owned by the sibling identity eczema in skin.json; a reviewer must not merge the two, and no claim routed here may be widened to generic eczema."
       ]
     },
     {
