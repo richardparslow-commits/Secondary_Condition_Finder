@@ -37,11 +37,18 @@ jobs:
         id: probe
         run: |
           set -o pipefail
-          npm run citations:decay 2>&1 | tee citation-decay-report.json
+          # Silencing npm's script banner keeps the captured report pure JSON.
+          # The 2026-09-28 run uploaded the '> secondary-condition-finder@0.1.0
+          # citations:decay' banner ahead of the report, so track-decay's
+          # JSON.parse died on it and the tracking issue was never opened.
+          npm_config_loglevel=silent npm run citations:decay 2>&1 | tee citation-decay-report.json
           exit_code=$?
           node --input-type=module -e "
             import { readFileSync, writeFileSync } from 'node:fs';
-            const report = JSON.parse(readFileSync('citation-decay-report.json', 'utf8'));
+            // Tolerate a leading banner: this must still parse if npm ever
+            // prints one here again (see the probe step's comment).
+            const raw = readFileSync('citation-decay-report.json', 'utf8');
+            const report = JSON.parse(raw.slice(raw.indexOf('{')));
             const summary = [
               '# Citation decay report',
               '',
@@ -96,7 +103,9 @@ jobs:
           import { execFileSync } from "node:child_process";
           import { readFileSync } from "node:fs";
 
-          const report = JSON.parse(readFileSync("citation-decay-report.json", "utf8"));
+          const raw = readFileSync("citation-decay-report.json", "utf8");
+          // Tolerate a leading banner (see the probe step's comment).
+          const report = JSON.parse(raw.slice(raw.indexOf("{")));
           const title = "Citation decay detected — re-verification required";
           const marker = "<!-- citation-decay-watch -->";
 

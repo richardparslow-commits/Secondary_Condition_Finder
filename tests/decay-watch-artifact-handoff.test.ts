@@ -140,3 +140,29 @@ describe("citation-decay-watch attributes verification debt to its owning gate",
     expect(issueJs).toContain("debt ratcheted by citations:audit, not gated here");
   });
 });
+
+describe("citation-decay-watch keeps its uploaded report machine-readable", () => {
+  const workflow = readWorkflow("citation-decay-watch.yml");
+
+  /**
+   * The first scheduled run (2026-09-28) uploaded npm's script banner ahead of
+   * the JSON report. track-decay ran `JSON.parse` over the whole file, died on
+   * the banner's leading `>`, and the auto-opened tracking issue — the entire
+   * purpose of the watch — never happened. The capture must silence the banner,
+   * and both readers must still tolerate one if it ever returns.
+   */
+  it("silences npm's banner where the report is captured", () => {
+    const capture = workflow
+      .split("\n")
+      .find((line) => line.includes("citations:decay") && line.includes("tee"));
+    expect(capture).toBeDefined();
+    expect(capture).toMatch(/npm_config_loglevel=silent|--silent/);
+  });
+
+  it("parses from the first JSON object in both readers of the report", () => {
+    // Exactly two readers parse this artifact: the step-summary `-e` payload
+    // and the tracking-issue heredoc. Both must slice from the first `{`.
+    const tolerant = workflow.match(/indexOf\(["']\{["']\)/g) ?? [];
+    expect(tolerant.length).toBe(2);
+  });
+});
