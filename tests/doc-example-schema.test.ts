@@ -10,7 +10,11 @@ import {
 } from "@/lib/catalog/schema";
 import {
   conditionMappingSchema,
+  etiologicalConsensusSchema,
+  mechanismCategorySchema,
+  nexusClassificationSchema,
   suggestionSchema,
+  vaNexusProbabilityAlignmentSchema,
   type ConditionMapping,
   type Suggestion,
 } from "@/lib/kb/schema";
@@ -44,6 +48,10 @@ import { loadConditionCatalog, resetConditionCatalogCache } from "@/lib/catalog/
  *    gapless rank sequences). Where a doc example mirrors a real record
  *    (OSA → anxiety-disorder, the sleep-apnea catalog row), the record must
  *    still exist so the example remains grounded.
+ *
+ * CRG mapping-validation records also project enum fields in Markdown tables;
+ * those values (with optional parenthesized annotations) must validate against
+ * the exported KB enums, not a duplicated vocabulary in the test.
  *
  * When a schema evolves, this suite fails the doc update that would have
  * shipped a stale example. When a doc intentionally illustrates a commented
@@ -288,7 +296,167 @@ describe("catalog examples validate against catalogConditionSchema", () => {
   });
 });
 
-/* ─── Tier 4: the fence contract stays discoverable ──────────────────────── */
+/* ─── Tier 4: CRG schema-projection tables use the actual KB enums ───────── */
+
+const projectionColumns = [
+  { header: "nexusClassification", schema: nexusClassificationSchema },
+  { header: "mechanismCategory", schema: mechanismCategorySchema },
+  { header: "etiologicalConsensus", schema: etiologicalConsensusSchema },
+  { header: "vaNexusProbabilityAlignment", schema: vaNexusProbabilityAlignmentSchema },
+] as const;
+const projectionHeaders = ["Mapping", "conditionId (secondary)", ...projectionColumns.map(({ header }) => header)];
+const PROJECTION_HEADING = /^## Schema projection\b/;
+
+/**
+ * Narrow contract for the records' six-column pipe tables, not a general
+ * Markdown parser. Fail closed on missing/empty tables or changed structure;
+ * never accept a valid enum prefix followed by arbitrary text or alternatives.
+ * Parenthesized prose is annotation only (including nested CFR parentheses).
+ */
+function auditSchemaProjection(text: string, file: string): string[] {
+  const lines = text.split(/\r?\n/);
+  const headings = lines.flatMap((line, index) => PROJECTION_HEADING.test(line) ? [index] : []);
+  if (headings.length !== 1) {
+    return [`docs/${file}: expected exactly one Schema projection section, found ${headings.length}`];
+  }
+  const start = headings[0] + 1;
+  const nextSection = lines.findIndex((line, index) => index >= start && /^## /.test(line));
+  const end = nextSection === -1 ? lines.length : nextSection;
+  const table = lines.slice(start, end).flatMap((line, index) => {
+    const trimmed = line.trim();
+    return trimmed.includes("|")
+      ? [{ text: trimmed, line: start + index + 1 }]
+      : [];
+  });
+  if (table.length === 0) return [`docs/${file}: Schema projection table is missing`];
+  if (table.some((row, index) => index > 0 && row.line !== table[index - 1].line + 1)) {
+    return [`docs/${file}: expected one contiguous Schema projection table`];
+  }
+  const cells = table.map(({ text }) => text.slice(1, -1).split("|").map((cell) => cell.trim()));
+  const malformed = table.flatMap((row, index) =>
+    !row.text.startsWith("|") || !row.text.endsWith("|") || cells[index].length !== projectionHeaders.length
+      ? [`docs/${file}:${row.line}: expected ${projectionHeaders.length} pipe-delimited columns`]
+      : [],
+  );
+  if (malformed.length > 0) return malformed;
+  if (cells[0].some((cell, index) => cell !== projectionHeaders[index])) {
+    return [`docs/${file}:${table[0].line}: expected projection headers: ${projectionHeaders.join(" | ")}`];
+  }
+  if (!cells[1] || cells[1].some((cell) => !/^:?-{3,}:?$/.test(cell))) {
+    return [`docs/${file}:${table[0].line + 1}: missing or malformed table separator`];
+  }
+  if (table.length === 2) return [`docs/${file}: Schema projection table has no mapping rows`];
+
+  const failures: string[] = [];
+  for (let index = 2; index < table.length; index++) {
+    const row = cells[index];
+    const location = `docs/${file}:${table[index].line}: mapping "${row[0]}" (conditionId ${row[1]})`;
+    if (!row[0] || !row[1]) failures.push(`${location}: Mapping and conditionId must be nonempty`);
+    for (const [columnIndex, { header, schema }] of projectionColumns.entries()) {
+      const cell = row[columnIndex + 2];
+      const token = cell.match(/^(?:`([^`]+)`|([^\s`()]+))(?:\s+\(\S.*\))?$/);
+      if (!token || !schema.safeParse(token[1] ?? token[2]).success) {
+        failures.push(
+          `${location}, ${header}: ${JSON.stringify(cell)} must be one enum value with an optional parenthesized annotation; allowed: ${schema.options.join(", ")}`,
+        );
+      }
+    }
+  }
+  return failures;
+}
+
+describe("CRG schema-projection records validate against the exported Zod enums", () => {
+  // This named historical record predates projection tables. Do not exempt
+  // records by absence of a heading: deleting a newer table must fail.
+  const legacyRecord = "crg-mapping-validation-2026-10-04.md";
+  const records = readdirSync(docsDir)
+    .filter((file) => /^crg-mapping-validation-.*\.md$/.test(file))
+    .sort();
+  const projectedRecords = records.filter((file) => file !== legacyRecord);
+
+  it("discovers projection records on disk, including untracked documentation", () => {
+    expect(projectedRecords.length, "no CRG projection records discovered").toBeGreaterThan(0);
+  });
+
+  it("limits the historical exception to the record that predates projection tables", () => {
+    expect(records).toContain(legacyRecord);
+    const text = readFileSync(join(docsDir, legacyRecord), "utf8");
+    expect(text.split(/\r?\n/).some((line) => PROJECTION_HEADING.test(line))).toBe(false);
+  });
+
+  for (const file of projectedRecords) {
+    it(`validates every projected enum in docs/${file}`, () => {
+      const failures = auditSchemaProjection(readFileSync(join(docsDir, file), "utf8"), file);
+      expect(failures, failures.join("\n")).toEqual([]);
+    });
+  }
+});
+
+describe("CRG projection validator regression cases", () => {
+  const values: string[] = projectionColumns.map(({ schema }) => schema.options[0]);
+  const header = `| ${projectionHeaders.join(" | ")} |`;
+  const separator = `| ${projectionHeaders.map(() => "---").join(" | ")} |`;
+  const row = (enums: readonly string[]) => `| Fixture mapping | fixture-target | ${enums.join(" | ")} |`;
+  const fixture = (enums: readonly string[]) =>
+    ["## Schema projection (next step, not yet authored)", "", header, separator, row(enums)].join("\n");
+
+  for (const [index, { header: column, schema }] of projectionColumns.entries()) {
+    it(`accepts all live ${column} values, bare or annotated, with optional inline code`, () => {
+      for (const value of schema.options) {
+        for (const cell of [value, `\`${value}\``, `${value} (within § 3.310(d)(1)(v))`, `\`${value}\` (annotation)`]) {
+          const enums = [...values];
+          enums[index] = cell;
+          expect(auditSchemaProjection(fixture(enums), "fixture.md"), cell).toEqual([]);
+        }
+      }
+    });
+
+    it(`rejects an unknown ${column} with file, line, mapping, and column diagnostics`, () => {
+      const enums = [...values];
+      enums[index] = "SCHEMA_DRIFT_SENTINEL (annotation)";
+      const failures = auditSchemaProjection(fixture(enums), "fixture.md");
+      expect(failures).toHaveLength(1);
+      expect(failures[0]).toContain(`docs/fixture.md:5: mapping "Fixture mapping" (conditionId fixture-target), ${column}`);
+      expect(failures[0]).toContain("SCHEMA_DRIFT_SENTINEL");
+      expect(failures[0]).toContain(`allowed: ${schema.options.join(", ")}`);
+    });
+  }
+
+  it.each(["MEDICATION_SIDE_EFFECT", "", `${values[0]}_TYPO`, `${values[0]} / AGGRAVATION`, `${values[0]} trailing text`, `${values[0]} (unclosed`])(
+    "rejects invalid or malformed nexusClassification %j instead of accepting a valid prefix",
+    (cell) => {
+      expect(auditSchemaProjection(fixture([cell, ...values.slice(1)]), "fixture.md")).toHaveLength(1);
+    },
+  );
+
+  it("validates every mapping row, not only the first", () => {
+    const text = `${fixture(values)}\n${row([values[0], "UNKNOWN_MECHANISM", ...values.slice(2)])}`;
+    const failures = auditSchemaProjection(text, "fixture.md");
+    expect(failures).toHaveLength(1);
+    expect(failures[0]).toContain("docs/fixture.md:6:");
+    expect(failures[0]).toContain("mechanismCategory");
+  });
+
+  it.each([
+    ["missing section", "# No projection"],
+    ["missing table", "## Schema projection\n\nNo table"],
+    ["empty table", fixture(values).split("\n").slice(0, -1).join("\n")],
+    ["changed header", fixture(values).replace("mechanismCategory |", "mechanism |")],
+    ["missing separator", fixture(values).replace(`${separator}\n`, "")],
+    ["malformed separator", fixture(values).replace(separator, separator.replace("---", "--"))],
+    ["missing column", fixture(values).replace(row(values), row(values.slice(1)))],
+    ["extra column", fixture(values).replace(row(values), row([...values, "EXTRA"]))],
+    ["missing pipe", fixture(values).replace(row(values), row(values).slice(1))],
+    ["missing boundary pipes", fixture(values).replace(row(values), row(values).slice(1, -1))],
+    ["split table", fixture(values).replace(separator, `${separator}\n`)],
+    ["duplicate section", `${fixture(values)}\n${fixture(values)}`],
+    ["table outside section", `## Schema projection\n\n## Other section\n${header}\n${separator}\n${row(values)}`],
+  ])("fails closed on a %s", (_label, text) => {
+    expect(auditSchemaProjection(text, "fixture.md").length).toBeGreaterThan(0);
+  });
+});
+
+/* ─── Tier 5: the fence contract stays discoverable ──────────────────────── */
 
 describe("doc-example policy visibility", () => {
   it("keeps the jsonc escape hatch documented for future editors", () => {

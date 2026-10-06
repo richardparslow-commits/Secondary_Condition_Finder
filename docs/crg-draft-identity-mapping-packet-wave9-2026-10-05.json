@@ -1,0 +1,195 @@
+[
+  {
+    "secondaryCondition": "Dental erosion (tooth-surface loss: erosion, abrasion and abfraction) with progression to tooth loss",
+    "secondaryDiagnosticCode": "No dedicated diagnostic code for enamel or dentin erosion is listed in 38 CFR § 4.150. Where acid-mediated loss has progressed to loss of teeth, evaluate under § 4.150, DC 9913 (teeth, loss of, due to loss of substance of body of maxilla or mandible), noting that DC 9913's note excludes alveolar loss from periodontal disease but does not address chemical tooth-substance loss; where erosion is documented without qualifying loss, a clinically justified analogous evaluation under §§ 4.20 and 4.27 is required. Qualified-human rating review required",
+    "primaryCondition": "Service-connected gastroesophageal reflux disease (GERD) with documented acid regurgitation reaching the oral cavity",
+    "primaryDiagnosticCode": "38 CFR § 4.114, DC 7206 (gastroesophageal reflux disease)",
+    "nexusTheory": "Causation",
+    "etiologicalMechanism": "Acid-mediated dissolution sequence: in service-connected gastroesophageal reflux disease, gastroduodenal contents — hydrochloric acid at a pH frequently below 2 and the proteolytic enzyme pepsin — are regurgitated to the oropharynx, where they contact the palatal and occlusal surfaces of the teeth. Dental apatite dissolves once the local pH falls below its critical value (approximately 5.5 for hydroxyapatite), so repeated acid exposure produces irreversible, cumulative loss of enamel and then dentin rather than the reversible demineralization seen with dietary acid alone; the absence of normal salivary buffering and clearance during sleep amplifies overnight regurgitation, and reduced salivary flow can further slow re-hardening. Picos et al. (PMID 30564013), a systematic review of dental erosion in GERD, report erosive-lesion prevalence in GERD patients of about 48.81 percent versus 20.48 percent in non-GERD comparators, with a median prevalence near 25.5 percent and a reported range of 10.6 to 42 percent, and describe dental erosion as an extraesophageal complication of GERD. Ortiz et al. (PMID 33571021) systematically reviewed the association and prevalence of erosive wear in GERD and conclude that GERD can be considered a risk factor, while Alavi et al. (PMID 24738088) compared patients with and without GERD and found a higher risk of dental erosion in the GERD group in a sample of 140 adults aged 30 to 50. These sources establish reflux acid as a recognized cause of erosive tooth-surface loss at the mechanism and population level; they are observational, they do not quantify any individual veteran's exposure, and the literature cannot identify in advance which reflux patients will lose tooth substance.\n\nRequired individual evidence and competing causes: obtain the reflux diagnosis and its objective confirmation (endoscopy, ambulatory pH or impedance testing, or a documented reflux regimen), the onset date of reflux relative to the dental changes, and a dental examination with intraoral photographs or casts describing lesion location and depth. Erosion attributable to reflux characteristically affects palatal surfaces of the maxillary anterior teeth and, in more advanced disease, occlusal surfaces and posterior teeth; dietary acid (citrus, carbonated drinks, vinegar, acidic sports or vitamin-C products), occupational acid exposure, bruxism/attrition, abrasive toothpaste technique, reduced salivary flow from anticholinergic or other xerogenic medication, and eating disorders with self-induced vomiting are competing causes that must be excluded or apportioned. An intrinsic-acid route from an eating disorder is an already-recognized alternative route into this same dental identity, which the catalog records as an association-only incoming edge from bulimia nervosa; a reflux attribution requires the acid source to be the documented reflux rather than covert vomiting. Chronology (reflux preceding the erosion), an anatomically consistent palatal distribution, absence of a competing dietary or occupational acid source, and objective reflux findings favor the reflux-related route; erosion that predates the reflux or tracks a dietary pattern weakens it.\n\nLegal and rating analysis: this is direct secondary causation under 38 CFR § 3.310(a) when the service-connected GERD and its acid regurgitation produce the tooth-surface loss and any resulting tooth loss; the theory is causation rather than aggravation because a new erosive process is being produced by the service-connected reflux. If a pre-existing erosive or abrasive lesion is asserted to have been worsened by reflux acid, a separate § 3.310(b) aggravation analysis must identify the qualifying baseline (pre-reflux dental status or imaging) and the attributable increment beyond natural progression. An 'at least as likely as not' opinion requires reasoned balancing of the objective reflux findings, the palatal distribution, the exposure chronology and the exclusion of competing causes, because observational prevalence data alone do not establish an individual probability. No individual probability is asserted here. Rating: § 4.150 contains no diagnostic code for enamel or dentin erosion; DC 9913 covers loss of teeth due to loss of substance of the maxilla or mandible and expressly does not extend to alveolar loss from periodontal disease, so an erosion-only presentation requires a justified analogous code under §§ 4.20 and 4.27 and, when tooth loss has occurred, DC 9913 subject to its own note. Apply § 4.14 so that the same lost tooth surface or masticatory impairment is not rated twice, and do not duplicate the GERD evaluation. Landing this incoming route requires host-file review: the GERD host identity is published and currently points only to pulmonary targets (asthma, bronchiectasis, COPD, interstitial lung disease, pulmonary fibrosis, respiratory cancer and tuberculosis), and the dental-erosion identity already carries an association-only intrinsic-acid edge from bulimia nervosa that this reflux route must be reconciled against before any landing.",
+    "medicalEvidence": [
+      {
+        "title": "Dental erosion in gastro-esophageal reflux disease. A systematic review",
+        "authors": "Andrei Picos; Mândra Eugenia Badea; Dan Lucian Dumitrascu",
+        "summary": "Systematic review of dental erosion in GERD. Reports erosive-lesion prevalence of approximately 48.81 percent in GERD patients versus 20.48 percent in non-GERD comparators, with a median near 25.5 percent and a range of 10.6 to 42 percent, and frames dental erosion as an extraesophageal complication of GERD. Establishes population-level association and mechanism; observational designs cannot establish individual causation.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/30564013/"
+      },
+      {
+        "title": "Updates in association of gastroesophageal reflux disease and dental erosion: systematic review",
+        "authors": "Adriana De Cássia Ortiz; Simone Ortiz Moura Fideles; Karina Torres Pomini; Rogério Leone Buchaim",
+        "summary": "Systematic review evaluating the association and prevalence of erosive tooth wear in patients with GERD. Describes dental erosion as dissolution of dental apatite by non-bacterial acid and concludes that GERD can be considered a risk factor. Supports the reflux-acid mechanism; review-level evidence without individual risk quantification.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/33571021/"
+      },
+      {
+        "title": "Dental Erosion in Patients with Gastroesophageal Reflux Disease (GERD) in a Sample of Patients Referred to the Motahari Clinic, Shiraz, Iran",
+        "authors": "G Alavi; S Adib; A Bahrami; F Nikkhah",
+        "summary": "Comparative clinical study of 140 adults aged 30 to 50 evaluating the association of GERD with dental erosion relative to non-GERD comparators; concluded that GERD patients are at higher risk of developing dental erosion. Provides primary clinical support for the association; single-region sample limits generalization.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/24738088/"
+      }
+    ],
+    "cfrCitations": [
+      "38 CFR § 3.310",
+      "38 CFR § 3.310(a)",
+      "38 CFR § 3.310(b)",
+      "38 CFR § 3.102",
+      "38 CFR § 4.114, DC 7206",
+      "38 CFR § 4.150, DC 9913 (tooth-loss end point only)",
+      "38 CFR § 4.20",
+      "38 CFR § 4.27",
+      "38 CFR § 4.14"
+    ]
+  },
+  {
+    "secondaryCondition": "Stress urinary incontinence (cough-induced urine leakage)",
+    "secondaryDiagnosticCode": "No dedicated diagnostic code designates stress urinary incontinence as a diagnosis in 38 CFR § 4.115b. The § 4.115a voiding-dysfunction schedule supplies severity tiers for 'Continual Urine Leakage, Post Surgical Urinary Diversion, Urinary Incontinence, or Stress Incontinence' (20, 40 or 60 percent by absorbent-material requirement), but it must be reached through a listed diagnostic code, so a clinically justified analogous evaluation under §§ 4.20 and 4.27 is required (DC 7542 neurogenic bladder and DC 7517 bladder injury are candidate comparators only and are not asserted automatically). Qualified-human rating review required",
+    "primaryCondition": "Service-connected chronic obstructive pulmonary disease (COPD) with a documented chronic cough",
+    "primaryDiagnosticCode": "38 CFR § 4.97, DC 6604 (chronic obstructive pulmonary disease)",
+    "nexusTheory": "Causation",
+    "etiologicalMechanism": "Mechanical pressure-transmission sequence: in service-connected chronic obstructive pulmonary disease the chronic cough produces repeated, abrupt rises in intra-abdominal pressure. That pressure is transmitted to the bladder and to the pelvic floor, and when the generated force exceeds urethral closure pressure the result is involuntary urine leakage on coughing, sneezing or exertion — stress urinary incontinence. Repetitive loading of the pelvic connective tissue (endopelvic and pubocervical fascia and the urethral support mechanism) promotes urethral hypermobility and intrinsic sphincter deficiency; hyperinflation with diaphragmatic flattening and chronic smoking-related connective-tissue degradation are recognized co-factors. Zhu et al. (PMID 37226650), analyzing 2015 to 2020 National Health and Nutrition Examination Survey data in 9,059 women, found that 42.13 percent reported a stress-incontinence episode in the past year and 6.29 percent had a COPD diagnosis, and identified a logical association between COPD or asthma and stress urinary incontinence through coughing-related increases in intra-abdominal pressure. Dicpinigaitis (PMID 33644221) documented stress urinary incontinence in 63.3 percent of women presenting for evaluation of chronic cough, noting that this frequency greatly exceeds ordinary population estimates. Haukeland-Parker et al. (PMID 34895285) randomized women with COPD and urinary incontinence to pelvic floor muscle training, cough-suppression techniques or written information, demonstrating that the incontinence is treatable through pelvic-floor and cough-directed measures and thereby supporting a cough-driven mechanical mechanism. These sources establish a recognized mechanical pathway at the population level; they are observational or interventional rather than etiologic, and they cannot quantify any individual veteran's risk.\n\nRequired individual evidence and competing causes: document the COPD by spirometry and a longitudinal cough history, obtain a focused urinary history with a cough stress test or urodynamic confirmation, and record leakage onset relative to the cough. Vaginal delivery and parity, obesity, prior pelvic surgery (including hysterectomy and anti-incontinence or prostate surgery), pelvic radiation, chronic constipation, connective-tissue disorders, neurological disease, and medications such as diuretics or alpha-blockers are competing causes that must be assessed and apportioned. Men may develop post-prostatectomy stress incontinence, a competing mechanism that must not be attributed to cough without specific evidence, and mixed urinary incontinence combining urgency with stress leakage is common and requires urodynamic discrimination. A temporal link between the chronic cough and the onset of leakage, a positive cough stress test, and a plausible alternative-cause analysis favor the COPD-related route; leakage preceding the COPD or occurring only after pelvic surgery weakens it.\n\nLegal and rating analysis: this is direct secondary causation under 38 CFR § 3.310(a) when the service-connected COPD and its chronic cough produce the stress urinary incontinence; the theory is causation because a distinct new leakage disability is generated, not merely a pre-existing pattern that is made worse. If a pre-existing continence problem first documented before service-connected COPD is asserted to have been aggravated, a separate § 3.310(b) aggravation analysis must identify the qualifying baseline and the attributable increment beyond natural progression, such as a documented change in pad use. An 'at least as likely as not' opinion requires the veteran-specific cough history, urodynamic or cough-stress findings, chronology and competing-cause apportionment to be balanced, because population prevalence and randomized treatment data do not themselves establish an individual probability. No individual probability is asserted here. Rating: § 4.115a provides the stress-incontinence severity tiers but no free-standing diagnostic code, so the evaluation must pass through a listed genitourinary code analogized under §§ 4.20 and 4.27 (DC 7542 or DC 7517 as candidates only), with the 20/40/60 percent tiers keyed to absorbent-material requirement. Apply § 4.14 so that the same leakage is not also rated as part of the COPD evaluation, and combine § 4.25 consistently. Landing this incoming route requires host-file review: the COPD host identity is published and currently points only to sleep apnea and pulmonary hypertension, and the stress-urinary-incontinence identity is draft with no incoming edges.",
+    "medicalEvidence": [
+      {
+        "title": "Association between respiratory disease and stress urinary incontinence: An analysis of the 2015-2020 National Health and Nutrition Examination Survey",
+        "authors": "Michael Zhu; Jasper Sim; Chihiro Okada; Joseph Kim; Nitya Abraham",
+        "summary": "Analysis of 2015-2020 NHANES data in 9,059 women: 42.13 percent reported a stress-incontinence episode in the prior year and 6.29 percent had a COPD diagnosis. Identifies a logical association between COPD or asthma and stress urinary incontinence driven by coughing-related increases in intra-abdominal pressure. Cross-sectional design cannot establish individual causation.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/37226650/"
+      },
+      {
+        "title": "Prevalence of stress urinary incontinence in women presenting for evaluation of chronic cough",
+        "authors": "Peter V Dicpinigaitis",
+        "summary": "Research letter reporting that 63.3 percent of women presenting for evaluation of chronic cough had stress urinary incontinence, a frequency well above ordinary population estimates, and framing cough as the mechanical driver. Supports the cough-to-incontinence mechanism; single-site series without causal inference.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/33644221/"
+      },
+      {
+        "title": "Treatment of urinary incontinence in women with chronic obstructive pulmonary disease—a randomised controlled study",
+        "authors": "Stacey Haukeland-Parker; Anne Edvardsen; Anja Bye; Sigurd L Steinshamn; Inger L Skaug; Kari Bø; Jorunn Helbostad; Hege H Clemm",
+        "summary": "Three-armed single-blinded randomized controlled trial in women with COPD and urinary incontinence comparing 16 weeks of pelvic floor muscle training, cough-suppression techniques or written information. Demonstrates that the incontinence is modifiable by pelvic-floor and cough-directed interventions, supporting a cough-driven mechanical mechanism; a treatment trial, not an etiologic cohort.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34895285/"
+      }
+    ],
+    "cfrCitations": [
+      "38 CFR § 3.310",
+      "38 CFR § 3.310(a)",
+      "38 CFR § 3.310(b)",
+      "38 CFR § 3.102",
+      "38 CFR § 4.97, DC 6604",
+      "38 CFR § 4.115a, voiding dysfunction — stress-incontinence tiers",
+      "38 CFR § 4.115b, DC 7542 and DC 7517 (candidate analogous comparators only)",
+      "38 CFR § 4.20",
+      "38 CFR § 4.27",
+      "38 CFR § 4.14"
+    ]
+  },
+  {
+    "secondaryCondition": "Urge urinary incontinence (overactive bladder from diabetic neurogenic bladder dysfunction)",
+    "secondaryDiagnosticCode": "38 CFR § 4.115b, DC 7542 (neurogenic bladder) — rated as voiding dysfunction under § 4.115a, using its urgency, frequency and urine-leakage tiers",
+    "primaryCondition": "Service-connected type 2 diabetes mellitus with documented autonomic neuropathy",
+    "primaryDiagnosticCode": "38 CFR § 4.119, DC 7913 (diabetes mellitus), with Note (1) requiring that compensable complications be evaluated separately unless they are part of the 100-percent criteria",
+    "nexusTheory": "Causation",
+    "etiologicalMechanism": "Microvascular and autonomic-neuropathy sequence: chronic hyperglycemia in service-connected type 2 diabetes damages the small vessels and autonomic nerve fibers supplying the lower urinary tract, impairing afferent bladder sensation and the coordinated detrusor-sphincter reflex. Golbidi et al. (PMID 21833175) describe diabetic cystopathy as a well-recognized complication that develops in patients with long-standing, poorly controlled diabetes and present a clinical spectrum that ranges from overactive bladder and urge incontinence to decreased bladder sensation and overflow incontinence, with pathophysiology driven by urologic complications of diabetes. Liu and Daneshgari (PMID 24709194) review diabetic bladder dysfunction as a common and bothersome complication and summarize the altered detrusor contractility, urothelial dysfunction and neural changes that underlie storage and emptying symptoms. Agochukwu-Mmonu et al. (PMID 33197694) document that diabetic autonomic neuropathy affects the genitourinary system and produces diabetic bladder dysfunction alongside sexual and other autonomic complications. Collectively these sources establish diabetes-related autonomic neuropathy as an accepted cause of bladder storage dysfunction, while the phenotype is heterogeneous — detrusor overactivity with urgency and urge leakage in some patients, impaired contractility with incomplete emptying in others — so individual attribution depends on urodynamic characterization rather than the diagnosis of diabetes alone.\n\nRequired individual evidence and competing causes: obtain the diabetes history with duration, glycemic control and documented autonomic neuropathy (gastroparesis, orthostatic hypotension, resting tachycardia or heart-rate-variability testing), and urodynamic study documenting detrusor overactivity, impaired sensation or impaired contractility as appropriate; record urgency, frequency and leakage patterns and pad use. Benign prostatic hyperplasia or other bladder outlet obstruction, urinary tract infection, bladder stones, pelvic surgery or radiation, spinal cord or cauda-equina disease, multiple sclerosis, medication effects (diuretics, antimuscarinics, alpha-blockers, opioids) and idiopathic overactive bladder are competing causes that must be excluded or apportioned. Because diabetes also causes polyuria through osmotic diuresis, frequency alone is not evidence of neurogenic bladder; urge leakage with urodynamic detrusor overactivity in the setting of established diabetic autonomic neuropathy favors the diabetes-related route, whereas symptoms that begin with a competing urologic or neurologic disorder, or that persist unchanged with good glycemic control and no neuropathy findings, weaken it.\n\nLegal and rating analysis: this is direct secondary causation under 38 CFR § 3.310(a) when the service-connected diabetes and its autonomic neuropathy produce the bladder storage dysfunction and urge leakage. If pre-existing urgency or incontinence is asserted to have been worsened, a separate § 3.310(b) aggravation analysis must identify the qualifying baseline urodynamic or symptom record and the attributable increment beyond natural progression. An 'at least as likely as not' opinion requires the individual's diabetes duration, neuropathy findings, urodynamic pattern and competing-cause analysis to be in approximate balance rather than resting on population reports, which do not establish an individual probability. No individual probability is asserted here. Rating: § 4.115b DC 7542 (neurogenic bladder) directs rating as voiding dysfunction or urinary tract infection, whichever predominates, and § 4.115a supplies the urgency, frequency and urine-leakage tiers. DC 7913 Note (1) requires compensable complications to be evaluated separately unless they support the 100-percent diabetes criteria; apply § 4.14 so the same frequency, urgency or leakage is not also used to support a duplicate genitourinary rating. Landing this incoming route requires host-file review: the type-2-diabetes host identity is published and currently points to GERD, chronic kidney disease, diabetic retinopathy and depressive disorder, and the urge-urinary-incontinence identity is draft with no incoming edges.",
+    "medicalEvidence": [
+      {
+        "title": "Bladder Dysfunction in Diabetes Mellitus",
+        "authors": "Saeid Golbidi; Ismail Laher",
+        "summary": "Review of diabetic cystopathy as a well-recognized complication of long-standing, poorly controlled diabetes, describing a clinical spectrum from overactive bladder and urge incontinence to decreased bladder sensation and overflow incontinence, with discussion of the underlying pathophysiologic mechanisms. Establishes the mechanism; review-level evidence without individual risk estimates.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/21833175/"
+      },
+      {
+        "title": "Diabetic Bladder Dysfunction",
+        "authors": "Guiming Liu; Firouz Daneshgari",
+        "summary": "Review of diabetic bladder dysfunction as a common and bothersome complication of diabetes, summarizing altered detrusor contractility, urothelial and neural changes and reporting the authors' own experimental data. Supports a diabetes-driven storage and emptying disorder; narrative review without an individual causation estimate.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/24709194/"
+      },
+      {
+        "title": "Autonomic Neuropathy and Urologic Complications in Diabetes",
+        "authors": "Nnenaya Agochukwu-Mmonu; Priyanka Merali; H Henry Lai; Claire S Yang; Aruna V Sarma; Hunter Wessells",
+        "summary": "Review of diabetic autonomic neuropathy and its genitourinary complications, including diabetic bladder dysfunction, sexual dysfunction and recurrent urinary tract infection, drawing on urologic epidemiologic data. Documents the autonomic-neuropathy route to bladder dysfunction; review-level evidence.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/33197694/"
+      }
+    ],
+    "cfrCitations": [
+      "38 CFR § 3.310",
+      "38 CFR § 3.310(a)",
+      "38 CFR § 3.310(b)",
+      "38 CFR § 3.102",
+      "38 CFR § 4.119, DC 7913 and Note (1)",
+      "38 CFR § 4.115b, DC 7542",
+      "38 CFR § 4.115a, voiding dysfunction tiers",
+      "38 CFR § 4.14"
+    ]
+  },
+  {
+    "secondaryCondition": "Pleural effusion (transudative, heart-failure-associated)",
+    "secondaryDiagnosticCode": "38 CFR § 4.97, DC 6845 (chronic pleural effusion or fibrosis) under the Restrictive Lung Disease general rating formula, or rate the primary disorder; when the effusion is a manifestation of the service-connected cardiac disease it is generally evaluated with that condition rather than separately, subject to § 4.14",
+    "primaryCondition": "Service-connected congestive heart failure (left or biventricular), rated under the heart-disease general rating formula",
+    "primaryDiagnosticCode": "38 CFR § 4.104, General Rating Formula for Diseases of the Heart, reached through the etiologic code such as DC 7005 (arteriosclerotic heart disease) or DC 7007 (hypertensive heart disease) as the documented cause requires",
+    "nexusTheory": "Causation",
+    "etiologicalMechanism": "Hydrostatic pressure sequence: in service-connected congestive heart failure, elevated left-heart filling pressures raise pulmonary capillary pressure and drive fluid across the pleural membrane faster than pleural lymphatics can resorb it, while systemic venous hypertension from right-heart failure further impairs lymphatic drainage; the result is a transudative pleural effusion, characteristically bilateral or right-sided and a marker of decompensation. Elgwairi et al. (PMID 36576376) describe pleural effusions as common in cardiac disease (approximately 500,000 cases per year in the United States), explain their pathogenesis and diagnostic evaluation, and note that although most heart-failure effusions are transudates, some 20 to 25 percent show increased protein and lactate dehydrogenase suggesting an exudative picture. Natanzon and Kronzon (PMID 19574887) analyze the anatomical and pathophysiologic basis of pleural and pericardial effusions in heart failure and emphasize that right-sided filling-pressure elevation is required. Korczynski et al. (PMID 30406935), reviewing 2,835 consecutive admissions with radiographic pleural effusion in 195 of 1,936 evaluated patients, found congestive heart failure responsible for 37.4 percent of all pleural effusions and identified it as the leading cause. Together these sources establish heart failure as a recognized and frequently dominant cause of pleural effusion at the mechanism and population level; they do not quantify any individual veteran's risk, and the effusion may coexist with other causes.\n\nRequired individual evidence and competing causes: obtain the heart-failure diagnosis with echocardiographic ejection fraction and filling-pressure assessment, natriuretic-peptide levels, chest imaging documenting the effusion and any change with diuresis, and, when tapped, pleural-fluid analysis with Light's criteria. Pneumonia or parapneumonic effusion, pulmonary embolism, malignancy (including mesothelioma and metastatic disease), tuberculosis, rheumatoid and other autoimmune pleuritis, pancreatitis, hepatic hydrothorax, nephrotic syndrome, and post-cardiac-surgery effusions are competing causes that must be excluded or apportioned; the fact that up to a quarter of heart-failure effusions meet exudative criteria means exudative chemistry does not by itself exclude heart failure. A temporal relationship between worsening cardiac function and the effusion, bilateral or right-predominant distribution, transudative chemistry where available, and resolution with heart-failure treatment favor the cardiac route; an effusion that predates the cardiac diagnosis, is left-sided or loculated, or persists despite adequate decongestion suggests another cause.\n\nLegal and rating analysis: this is direct secondary causation under 38 CFR § 3.310(a) when the service-connected heart failure produces the pleural effusion. If a pre-existing pleural process is asserted to have been worsened, a separate § 3.310(b) aggravation analysis must identify the qualifying baseline imaging and the attributable increment beyond natural progression. An 'at least as likely as not' opinion requires reasoned balancing of the cardiac findings, the fluid characteristics, the response to heart-failure treatment and the exclusion of competing causes; population frequency data do not establish an individual probability. No individual probability is asserted here. Rating: § 4.97 DC 6845 (chronic pleural effusion or fibrosis) sits within the Restrictive Lung Disease general rating formula and expressly allows rating the primary disorder instead; § 4.104 states that cor pulmonale is evaluated as part of the pulmonary condition that causes it, and the general instructions for secondary heart disease reflect the same non-duplication principle. Apply § 4.14 so that the same breathlessness or exercise limitation is not rated under both the cardiac general formula and a separate pleural-effusion evaluation. Landing this incoming route requires host-file review: the congestive-heart-failure identity is published and currently points only to depressive disorder, and the pleural-effusion identity is draft with incoming association-only edges from abscess, malignant and pleuritic sources but none cardiac.",
+    "medicalEvidence": [
+      {
+        "title": "Pleural Effusions in Patients With Congestive Heart Failure: Frequency, Pathogenesis, Diagnosis, and Implications",
+        "authors": "Emadeldeen Elgwairi; Amira Abdalla; Ahmed Elkheshen; Zeyad Elharabi; Kenneth Nugent",
+        "summary": "Review of pleural effusion in congestive heart failure, reporting approximately 500,000 cardiac-related cases per year in the United States, describing transudative pathogenesis and noting that 20 to 25 percent of heart-failure effusions show exudative protein and lactate dehydrogenase levels. Establishes mechanism and scale; review-level evidence.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/36576376/"
+      },
+      {
+        "title": "Pericardial and pleural effusions in congestive heart failure-anatomical, pathophysiologic, and clinical considerations",
+        "authors": "Alex Natanzon; Itzhak Kronzon",
+        "summary": "Review of the anatomical and pathophysiologic basis of pleural and pericardial effusions in congestive heart failure, emphasizing that elevation of right-sided filling pressure is required for effusion formation. Provides the hemodynamic mechanism linking heart failure to transudative effusion; not a cohort risk estimate.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/19574887/"
+      },
+      {
+        "title": "Significance of congestive heart failure as a cause of pleural effusion: Pilot data from a large multidisciplinary teaching hospital",
+        "authors": "Piotr Korczyński; Katarzyna Górska; Adam Bialas; Renata Langfort; Elzbieta Wiatr; Jan Zielinski; Rafal Krenke",
+        "summary": "Retrospective analysis of radiographs and records for 2,835 consecutive admissions: pleural effusion was found in 195 of 1,936 evaluated patients (10.1 percent), and congestive heart failure was responsible for 37.4 percent of all cases, making it the leading cause. Quantifies the population contribution of heart failure; retrospective single-center pilot design.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/30406935/"
+      }
+    ],
+    "cfrCitations": [
+      "38 CFR § 3.310",
+      "38 CFR § 3.310(a)",
+      "38 CFR § 3.310(b)",
+      "38 CFR § 3.102",
+      "38 CFR § 4.104, General Rating Formula for Diseases of the Heart (DC 7005 or DC 7007 as applicable)",
+      "38 CFR § 4.97, DC 6845",
+      "38 CFR § 4.14"
+    ]
+  },
+  {
+    "secondaryCondition": "Rotator cuff tear with residual shoulder impairment (degenerative, diabetes-associated)",
+    "secondaryDiagnosticCode": "38 CFR § 4.71a, DC 5201 (arm, limitation of motion) for limitation produced by the tear, and/or § 4.73, DC 5304 (Muscle Group IV — supraspinatus, infraspinatus and teres minor, subscapularis, coracobrachialis), rated by the § 4.56 severity criteria when motion is relatively preserved; § 4.59 governs evaluation of painful motion. Qualified-human rating review required",
+    "primaryCondition": "Service-connected type 2 diabetes mellitus",
+    "primaryDiagnosticCode": "38 CFR § 4.119, DC 7913 (diabetes mellitus), with Note (1) on separately evaluating compensable complications",
+    "nexusTheory": "Causation",
+    "etiologicalMechanism": "Metabolic-tendinopathy sequence: chronic hyperglycemia in service-connected type 2 diabetes promotes formation of advanced glycation end-products that cross-link tendon collagen, increases oxidative stress and produces microangiopathic impairment of the tendon-bone insertion, a region already relatively hypovascular; the resulting degenerative tendinopathy weakens the rotator cuff so that a full- or partial-thickness tear may develop with ordinary loading or minor trauma. Giri et al. (PMID 35257948), a systematic review and meta-analysis, found diabetes, hypertension and hyperlipidemia associated with rotator cuff disease and attributed the association at least in part to mechanisms related to vascular insufficiency. Xu et al. (PMID 36299460) established a type 2 diabetic rat model and documented glycation and oxidative changes in the rotator cuff tendon over 12 weeks, providing direct experimental support for diabetes-induced tendinopathy. Smith et al. (PMID 34223408) found that diabetic patients were at higher risk of undergoing rotator cuff repair surgery in a large retrospective cohort. These sources establish diabetes as a recognized contributor to rotator cuff pathology at the epidemiologic and experimental level while the tear itself remains multifactorial; the literature cannot identify which individual diabetic patient's tear is diabetes-attributable, and age-related degeneration is a competing process.\n\nRequired individual evidence and competing causes: obtain imaging that characterizes the tear (ultrasound or magnetic resonance imaging documenting full- or partial-thickness involvement, retraction and fatty infiltration), the diabetes history with duration and glycemic control, and an examination of active and passive range of motion, strength and painful arc. Acute traumatic tears after a fall or lifting event, age-related degenerative tearing, shoulder instability or prior dislocation, subacromial impingement, inflammatory and crystal arthropathy, infection, and cervical radiculopathy referred to the shoulder are competing causes or contributors that must be assessed; smoking, overhead occupational loading and contralateral cuff disease are additional risk modifiers. A degenerative-tear pattern in a long-standing diabetic with impaired glycemic control, bilateral or attritional findings, and absence of a discrete traumatic event favors the diabetes-related route; a single high-energy injury, or a tear in a well-controlled diabetic with no other diabetic complications, weakens the metabolic attribution and points to trauma or age as the cause.\n\nLegal and rating analysis: this is direct secondary causation under 38 CFR § 3.310(a) when the service-connected diabetes and its metabolic effects produce or materially accelerate the degenerative rotator cuff tear. If a pre-existing cuff tear or shoulder degeneration is asserted to have been worsened, a § 3.310(b) aggravation analysis must identify the qualifying baseline imaging or examination and the attributable increment beyond natural progression. An 'at least as likely as not' opinion requires the individual's glycemic history, tear morphology, absence of a discrete traumatic cause and competing-cause assessment to be balanced, because population association and animal-model data do not establish an individual probability. No individual probability is asserted here. Rating: § 4.71a DC 5201 supplies the arm/shoulder limitation evaluation and § 4.73 DC 5304 covers the rotator cuff muscle group using § 4.56 severity criteria, with § 4.59 requiring that painful motion be considered; DC 7913 Note (1) governs separate evaluation of the diabetic complication. Apply § 4.14 so that the same limitation of motion or weakness is not rated under both the shoulder codes and any other orthopedic evaluation, and apply § 4.25 for combination. Landing this incoming route requires host-file review: the type-2-diabetes host identity is published and currently points to GERD, chronic kidney disease, diabetic retinopathy and depressive disorder, and the rotator-cuff-tear identity is draft with no incoming edges, while the separate rotator-cuff-injury identity already receives associations from bicipital tendinitis and SLAP tear.",
+    "medicalEvidence": [
+      {
+        "title": "Risk factors for rotator cuff disease: A systematic review and meta-analysis of diabetes, hypertension, and hyperlipidemia",
+        "authors": "Ayush Giri; Deirdre O'Hanlon; Nitin B Jain",
+        "summary": "Systematic review and meta-analysis finding diabetes, hypertension and hyperlipidemia associated with rotator cuff disease, with suggested mechanisms related to vascular insufficiency. Establishes a population-level metabolic association; heterogeneity and observational data limit individual inference.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/35257948/"
+      },
+      {
+        "title": "Evaluating the role of type 2 diabetes mellitus in rotator cuff tendinopathy: Development and analysis of a novel rat model",
+        "authors": "Kuishuai Xu; Chen Chen; Peng Zhang; Zhaoxu Wang; Hongxing Zhang; Xiaoyu Wang; Liang Zhang; Junfei Wang",
+        "summary": "Experimental study establishing an intact rotator cuff rat model of type 2 diabetes and analyzing tendon changes over 12 weeks, demonstrating glycation and oxidative stress in diabetic rotator cuff tissue. Provides direct mechanistic support for diabetes-induced tendinopathy; animal model does not establish human individual causation.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/36299460/"
+      },
+      {
+        "title": "Does diabetes mellitus predispose to both rotator cuff surgery and subsequent failure?",
+        "authors": "Karch M Smith; Angela P Presson; Chong Zhang; Joshua J Horns; James M Hotaling; Robert Z Tashjian; Peter N Chalmers",
+        "summary": "Large retrospective cohort analyzing whether diabetes mellitus predisposes to rotator cuff repair surgery and to subsequent revision surgery, finding diabetic patients at higher risk of undergoing rotator cuff repair. Supports a diabetes-to-cuff-pathology pathway at population level; retrospective design and confounding by indication limit causal inference.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34223408/"
+      }
+    ],
+    "cfrCitations": [
+      "38 CFR § 3.310",
+      "38 CFR § 3.310(a)",
+      "38 CFR § 3.310(b)",
+      "38 CFR § 3.102",
+      "38 CFR § 4.119, DC 7913 and Note (1)",
+      "38 CFR § 4.71a, DC 5201",
+      "38 CFR § 4.73, DC 5304 (Muscle Group IV) and § 4.56",
+      "38 CFR § 4.59",
+      "38 CFR § 4.14"
+    ]
+  }
+]

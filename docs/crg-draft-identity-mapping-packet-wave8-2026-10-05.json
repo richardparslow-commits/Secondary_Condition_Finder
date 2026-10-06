@@ -1,0 +1,191 @@
+[
+  {
+    "secondaryCondition": "Complex regional pain syndrome (post-stroke shoulder-hand syndrome phenotype)",
+    "secondaryDiagnosticCode": "No dedicated complex-regional-pain-syndrome DC is listed in 38 CFR Part 4. Select a clinically justified analogous code under §§ 4.20 and 4.27 based on documented distribution, pain, vasomotor/sudomotor/trophic findings and functional loss; the word 'causalgia' appears in § 4.124a only as descriptive language inside DC 8525 (posterior tibial nerve) and is not asserted as an automatic comparator. Qualified-human rating review required",
+    "primaryCondition": "Service-connected residual neurologic deficit after ischemic or hemorrhagic stroke (status post cerebrovascular accident)",
+    "primaryDiagnosticCode": "38 CFR § 4.124a, DC 8007 (embolism), DC 8008 (thrombosis) or DC 8009 (hemorrhage); the vascular conditions are rated 100 percent for six months and residuals thereafter with a minimum of 10 percent",
+    "nexusTheory": "Causation",
+    "etiologicalMechanism": "Mechanical and neurovascular sequence: a service-connected stroke can be followed within weeks to months by complex regional pain syndrome (CRPS) of the paretic upper limb — the phenotype historically called shoulder-hand syndrome. Pertoldi and Di Benedetto (PMID 16474282) review that CRPS can arise as the consequence of a distant process such as a stroke, spinal lesion or myocardial infarction, and describe onset and severity as related to stroke etiology, the severity and recovery of the motor deficit, spasticity, sensory disturbances and glenohumeral subluxation. The proposed cascade combines lesion-driven central disinhibition and autonomic dysfunction with a localized exaggerated inflammatory response (neurogenic inflammation) and peripheral sensitization around affected joints and tendon sheaths; the authors state expressly that the pathophysiology is still not known, so this is an evidence-supported mechanistic proposal rather than a proven molecular pathway. Kim et al. (PMID 27495051) found ultrasonographic extensor-digitoris-communis tendon abnormalities with response to local steroid injection in 23 clinically diagnosed post-stroke CRPS patients, supporting a peripheral soft-tissue/tendon component. Katsura et al. (PMID 36281309) documented severely reduced affected-upper-limb activity (Fugl-Meyer Assessment, Action Research Arm Test, Motor Activity Log) in post-stroke CRPS among 102 first-ever stroke patients. Immobilization and disuse are themselves recognized contributors to pain, edema and regional bone change, so the stroke-specific contribution cannot be fully separated from disuse in these designs; the CRPS catalog identity's own governance already records this immobilization-confounder guard.\n\nRequired individual evidence and competing causes: document the stroke and its residual deficit, pain onset in a compatible distribution (shoulder and wrist with relative elbow sparing), vasomotor/sudomotor/trophic findings, and response to guideline-directed therapy. Exclude fracture, glenohumeral subluxation or rotator-cuff pathology, adhesive capsulitis, spasticity-related pain, infection and gout, which are competing causes; clinical guidance requires considering post-stroke CRPS only after typical shoulder/hand pain causes such as acute trauma or bony fracture are ruled out. A CRPS diagnosis recorded long after onset without serial findings weakens attribution; an ipsilateral presentation beginning during early rehabilitation with typical features and no alternative structural explanation favors the stroke-related route.\n\nLegal and rating analysis: this is direct secondary causation under 38 CFR § 3.310(a) when the service-connected stroke and its residual deficit produce the CRPS. If CRPS is asserted to have worsened a pre-existing pain syndrome, an independent § 3.310(b) aggravation analysis must identify the qualifying baseline and the attributable increase beyond natural progression. An 'at least as likely as not' opinion requires reasoned balancing of the positive and negative evidence — lesion-to-symptom concordance, onset timing, and exclusion of competing causes — because population reports alone do not establish an individual probability. No individual probability is asserted here. CRPS has no dedicated diagnostic code; §§ 4.20 and 4.27 require a clinically justified analogous evaluation selected from the documented distribution and functional loss. The stroke primary is rated under § 4.124a DC 8007-8009. Do not duplicate the same pain, weakness or limitation under both the CRPS evaluation and the stroke residual codes; apply § 4.14. Landing this incoming route requires host-file review: the stroke residuals identity carries an association-only depression edge and a lesion-location note, and the CRPS identity already holds immobilization-confounder guardrails for its outgoing edges.",
+    "medicalEvidence": [
+      {
+        "title": "Shoulder-hand syndrome after stroke. A complex regional pain syndrome",
+        "authors": "S Pertoldi; P Di Benedetto",
+        "summary": "Review of CRPS/shoulder-hand syndrome after stroke. States CRPS may develop as the consequence of a distant process such as a stroke, and relates onset and severity to stroke etiology, motor deficit severity and recovery, spasticity, sensory disturbances and glenohumeral subluxation. Expressly notes pathophysiology is still not known and hypothesizes an exaggerated neurogenic inflammatory response. Review-level support only; does not establish individual causation.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/16474282/"
+      },
+      {
+        "title": "Is poststroke complex regional pain syndrome the combination of shoulder pain and soft tissue injury of the wrist?: A prospective observational study: STROBE of ultrasonographic findings in complex regional pain syndrome",
+        "authors": "Yong Wook Kim; Yoon Kim; Jong Moon Kim; Ji Seong Hong; Hyun Sun Lim; Hyoung Seop Kim",
+        "summary": "Prospective observational STROBE study of 23 patients with clinically diagnosed poststroke CRPS; three-phase bone scans and ultrasonographic extensor-digitoris-communis tendon measurements before and after local steroid injection. Findings support a peripheral soft-tissue/tendon contribution in poststroke CRPS. Small selected cohort; provides no incidence or causal estimate.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/27495051/"
+      },
+      {
+        "title": "Post-Stroke Complex Regional Pain Syndrome and Upper Limb Inactivity in Hemiplegic Patients: A Cross-Sectional Study",
+        "authors": "Yuichi Katsura; Satoshi Ohga; Kazuhiro Shimo; Takafumi Hattori; Tsukasa Yamada; Takako Matsubara",
+        "summary": "Cross-sectional study of 102 first-ever stroke patients examining prevalence of post-stroke CRPS and affected-upper-limb inactivity using Fugl-Meyer Assessment, Action Research Arm Test and Motor Activity Log. Documented severely decreased upper-limb activity in post-stroke CRPS patients. Cross-sectional design cannot separate disuse from lesion-specific mechanisms; no individual nexus estimate.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/36281309/"
+      }
+    ],
+    "cfrCitations": [
+      "38 CFR § 3.310",
+      "38 CFR § 3.310(a)",
+      "38 CFR § 3.310(b)",
+      "38 CFR § 3.102",
+      "38 CFR § 4.124a, DC 8007, DC 8008 and DC 8009 (stroke primary framework; 100 percent for six months, then residuals with minimum 10 percent)",
+      "38 CFR § 4.20",
+      "38 CFR § 4.27",
+      "38 CFR § 4.14"
+    ]
+  },
+  {
+    "secondaryCondition": "Adrenal insufficiency (secondary/tertiary, glucocorticoid-induced)",
+    "secondaryDiagnosticCode": "38 CFR § 4.119, DC 7911 (Addison's disease — adrenocortical insufficiency), using its crisis-count, episode-count and corticosteroid-therapy-required-for-control tiers; primary adrenal disease must be excluded because the code title does not limit the etiology",
+    "primaryCondition": "Service-connected rheumatoid arthritis requiring chronic systemic corticosteroid therapy",
+    "primaryDiagnosticCode": "38 CFR § 4.71a, DC 5002 (multi-joint arthritis as an active process, with rheumatoid arthritis expressly named among its examples) and DC 5003 for chronic residuals",
+    "nexusTheory": "Medication Side Effect",
+    "etiologicalMechanism": "Pharmacological sequence: chronic systemic glucocorticoid therapy prescribed for service-connected rheumatoid arthritis suppresses the hypothalamic-pituitary-adrenal (HPA) axis through negative feedback, reducing corticotropin (ACTH) secretion and adrenal cortisol output; secondary (tertiary) adrenal insufficiency may become clinically apparent during tapering or after withdrawal and may persist long after the drug stops. Younes and Younes (PMID 29184808) describe this mechanism directly and note that HPA-axis recovery after cessation is variable and can take 6-12 months. Broersen et al. (PMID 25844620) pooled 74 articles and 3,753 adult corticosteroid users tested for adrenal insufficiency: pooled percentages varied by route from 4.2 percent (nasal) to 52.2 percent (intra-articular) and by disease from 6.8 percent (inhaled-only asthma) to 60.0 percent (hematologic malignancy), with a dose gradient; oral therapy falls within this range. Bowley et al. (PMID 41521083) systematically reviewed only studies using protocolised systemic glucocorticoid regimens and ACTH-stimulation testing, reporting that adrenal insufficiency is a common complication of systemic glucocorticoid therapy with considerable variability; the retrieved abstract excerpt did not expose a pooled estimate, so none is claimed here. These sources establish treatment-mediated causation at the mechanism level while showing that individual risk depends on route, dose, duration, potency, tapering and host factors; no single percentage can be applied to a veteran.\n\nRequired individual evidence and competing causes: obtain the exact corticosteroid agent(s), route, dose, cumulative duration, taper schedule and stop dates; concurrent topical, inhaled or intra-articular exposure; morning cortisol or ACTH-stimulation results; symptoms such as fatigue, orthostasis, nausea, hyponatremia; and any adrenal-crisis or continued-steroid-dependence events. Document whether insufficiency predated steroid therapy — primary adrenal disease, pituitary pathology, prior pituitary surgery or radiation, opioid effects, checkpoint-inhibitor effects — as competing causes; a pre-existing or independently caused insufficiency changes the theory from § 3.310(a) causation to § 3.310(b) aggravation of a baseline. Recovery testing after withdrawal informs severity and permanence but is not a prerequisite to attributing the insufficiency to treatment.\n\nLegal and rating analysis: 'Medication Side Effect' is treatment-mediated secondary causation under 38 CFR § 3.310(a): service-connected rheumatoid arthritis leads through documented corticosteroid exposure to HPA suppression and adrenal insufficiency. If pre-existing adrenal insufficiency was worsened by necessary steroid therapy, analyze aggravation under § 3.310(b) with a documented baseline and attributable decrement beyond the natural course. An 'at least as likely as not' opinion needs the individual's exposure and endocrine chronology plus competing-cause exclusion placing the evidence at least in approximate balance; pooled prevalence does not itself meet that standard. No individual probability is asserted here. Rating: § 4.119 DC 7911 supplies tiers including corticosteroid therapy required for control (20 percent), one or two crises, or two to four episodes per year; use the actual event counts and treatment requirements. Do not duplicate the same endocrine manifestations under another code (§ 4.14). The rheumatoid arthritis host file is published and currently points only to depressive disorder and GERD; this new incoming route requires host-side review before any landing.",
+    "medicalEvidence": [
+      {
+        "title": "Adrenal Insufficiency in Corticosteroids Use: Systematic Review and Meta-Analysis",
+        "authors": "Leonie H A Broersen; Alberto M Pereira; Jens Otto L Jørgensen; Olaf M Dekkers",
+        "summary": "Systematic review/meta-analysis of 74 articles and 3,753 adult corticosteroid users tested for adrenal insufficiency. Pooled percentages varied by route (4.2 percent nasal to 52.2 percent intra-articular) and by disease (6.8 percent inhaled-only asthma to 60.0 percent hematologic malignancy), with a dose gradient. Establishes iatrogenic HPA-suppression risk across routes; heterogeneity and predominantly observational data limit individual prediction.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/25844620/"
+      },
+      {
+        "title": "Adrenal insufficiency following systemic glucocorticoid therapy: a systematic review and meta-analysis",
+        "authors": "Jonathan Bowley; Sophie Shallish; Natasha Smyth; Stephanie Lax; Fiona Pearce",
+        "summary": "Systematic review/meta-analysis restricted to adults receiving protocolised systemic glucocorticoid regimens and assessed with ACTH-stimulation testing, addressing imprecise dose/duration reporting in earlier reviews. Reports adrenal insufficiency as a common complication of systemic glucocorticoid therapy with considerable variability. The retrieved PubMed abstract excerpt did not expose a pooled estimate; none is claimed here.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/41521083/"
+      },
+      {
+        "title": "Recovery of steroid induced adrenal insufficiency",
+        "authors": "Areej K Younes; Noor K Younes",
+        "summary": "Review of steroid-induced secondary adrenal insufficiency: chronic glucocorticoid use suppresses the hypothalamic-pituitary-adrenal axis through negative feedback; recovery after cessation typically occurs but timing is variable and can take 6-12 months. Mechanism and time-course support at review level, not a cohort effect estimate.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/29184808/"
+      }
+    ],
+    "cfrCitations": [
+      "38 CFR § 3.310",
+      "38 CFR § 3.310(a)",
+      "38 CFR § 3.310(b)",
+      "38 CFR § 3.102",
+      "38 CFR § 4.119, DC 7911",
+      "38 CFR § 4.71a, DC 5002 and DC 5003",
+      "38 CFR § 4.14"
+    ]
+  },
+  {
+    "secondaryCondition": "Tardive dyskinesia associated with metoclopramide (medication-induced movement disorder)",
+    "secondaryDiagnosticCode": "No dedicated tardive-dyskinesia DC is listed in 38 CFR § 4.124a. A clinically justified analogous code under §§ 4.20 and 4.27 is required based on affected muscle groups and severity; DC 8103 (convulsive tic) and DC 8004 (paralysis agitans) are candidate comparators only and are not automatically applicable. Qualified-human rating review required",
+    "primaryCondition": "Service-connected gastroesophageal reflux disease treated with metoclopramide (prokinetic/antiemetic therapy; verify the actual documented indication, because long-term use is restricted)",
+    "primaryDiagnosticCode": "38 CFR § 4.114, DC 7206 (gastroesophageal reflux disease)",
+    "nexusTheory": "Medication Side Effect",
+    "etiologicalMechanism": "Pharmacological sequence: metoclopramide is a dopamine-receptor antagonist (with 5-HT3 antagonism and 5-HT4 agonism) used as an antiemetic and gastroprokinetic; prolonged blockade of nigrostriatal and mesolimbic dopamine pathways can produce persistent involuntary choreoathetoid movements of the tongue, face, jaw and extremities — tardive dyskinesia — after prolonged exposure. Al-Saffar et al. (PMID 31050085) review this pharmacology, the regulatory restrictions introduced for long-term or high-dose oral use, and estimate the risk of tardive dyskinesia from metoclopramide at roughly 0.1 percent per 1,000 patient-years. Rao and Camilleri (PMID 19886950), reviewing the literature after the FDA's 2009 black-box warning, concluded the risk is likely below 1 percent — materially lower than the 1-10 percent previously suggested in national guidelines — and note that risk may be modified by age, dose, duration and pharmacokinetic/pharmacogenetic factors such as DRD3 and cytochrome P450 variation. Kenney et al. (PMID 18223146) identify metoclopramide as an increasingly recognized cause of tardive dyskinesia. These sources establish a recognized iatrogenic cause with a low absolute incidence; they do not quantify any particular veteran's risk, and the literature cannot identify in advance which exposed patients will develop persistent movements.\n\nRequired individual evidence and competing causes: document the service-connected upper-gastrointestinal indication and the actual metoclopramide prescription (dose, duration, refills, any history of exceeding 12 weeks of therapy), and obtain the movement-disorder examination with onset timing relative to exposure, persistence after discontinuation where safely observed, and functional impact. Distinguish tardive dyskinesia from acute dystonia or akathisia, drug-induced parkinsonism (the repository already carries a separate schizophrenia/antipsychotic parkinsonism proposal), essential tremor, and primary psychiatric or dental/oral causes. Competing causes include other dopamine-blocking agents (antipsychotics, promethazine, prochlorperazine), prior neuroleptic exposure, and underlying neurodegenerative disease. Because the same movement may be codable through several neurologic analogs, findings must be attributed once.\n\nLegal and rating analysis: 'Medication Side Effect' is treatment-mediated secondary causation under § 3.310(a): service-connected GERD, through documented metoclopramide exposure, causes tardive dyskinesia. The GERD host file is published and does not currently propose this, and the tardive-dyskinesia identity already receives one association-only edge from bipolar disorder in which an antipsychotic is named as the proximate agent; this proposal is a distinct non-antipsychotic agent route and must be reconciled for duplicate scope rather than assumed additive. If a pre-existing movement disorder was worsened by therapy, analyze § 3.310(b) aggravation separately with a baseline and natural-course description. An 'at least as likely as not' opinion must weigh exposure chronology, persistence after withdrawal where safely documented, and competing causes against the low population incidence; a low base rate does not preclude an individual causal opinion, but it raises the evidentiary bar. No individual probability is asserted here. Rating: there is no dedicated tardive-dyskinesia DC; §§ 4.20 and 4.27 require a justified analogous code selected from affected muscle groups and severity, with DC 8103 and DC 8004 as candidates only. Apply § 4.14 to avoid duplication with any mental-disorder or neurologic evaluation of the same movements.",
+    "medicalEvidence": [
+      {
+        "title": "Review article: metoclopramide and tardive dyskinesia",
+        "authors": "A S Rao; M Camilleri",
+        "summary": "Review published after the FDA's 2009 black-box warning. Available data suggest the risk of tardive dyskinesia from metoclopramide is likely below 1 percent, much lower than the previously suggested 1-10 percent national-guideline estimate; discusses mechanism, pharmacokinetics, risk modifiers and appropriate use. Counterweight against overstating the magnitude of risk.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/19886950/"
+      },
+      {
+        "title": "Gastroparesis, metoclopramide, and tardive dyskinesia: Risk revisited",
+        "authors": "Ahmad Al-Saffar; Hans Lennernäs; Per M Hellström",
+        "summary": "Review of metoclopramide pharmacology, regulatory restrictions on long-term/high-dose oral use, and risk of tardive dyskinesia, estimated at approximately 0.1 percent per 1,000 patient-years. Frames the clinical context for appropriate prescribing and exposure-modifying factors.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/31050085/"
+      },
+      {
+        "title": "Metoclopramide, an increasingly recognized cause of tardive dyskinesia",
+        "authors": "Christopher Kenney; Christine Hunter; Anthony Davidson; Joseph Jankovic",
+        "summary": "Clinical review identifying metoclopramide as an increasingly recognized cause of tardive dyskinesia. The PubMed record carried no indexed abstract at verification time; cited only for the recognition claim, not for numeric risk.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/18223146/"
+      }
+    ],
+    "cfrCitations": [
+      "38 CFR § 3.310",
+      "38 CFR § 3.310(a)",
+      "38 CFR § 3.310(b)",
+      "38 CFR § 3.102",
+      "38 CFR § 4.114, DC 7206",
+      "38 CFR § 4.124a, DC 8103 and DC 8004 (candidate analogous comparators only)",
+      "38 CFR § 4.20",
+      "38 CFR § 4.27",
+      "38 CFR § 4.14"
+    ]
+  },
+  {
+    "secondaryCondition": "Osteoradionecrosis of the jaw (maxilla or mandible)",
+    "secondaryDiagnosticCode": "38 CFR § 4.150, DC 9900 (maxilla or mandible, chronic osteomyelitis, osteonecrosis or osteoradionecrosis) — rated as chronic osteomyelitis under DC 5000 (§ 4.71a), subject to DC 5000's activity, recurrence and post-resection notes",
+    "primaryCondition": "Service-connected oral cavity or oropharyngeal malignancy treated with therapeutic radiation",
+    "primaryDiagnosticCode": "38 CFR § 4.150, DC 9918 (neoplasm, hard and soft tissue, malignant), including its continuation of the 100 percent rating beyond treatment and its mandatory post-treatment residual evaluation",
+    "nexusTheory": "Medication Side Effect",
+    "etiologicalMechanism": "Treatment-effect sequence: therapeutic ionizing radiation for a service-connected oral cavity or oropharyngeal malignancy injures bone, vascular and soft tissue within the radiation field; the resulting hypocellular, hypovascular, hypoxic tissue fails to repair, and exposed necrotic maxillary or mandibular bone — osteoradionecrosis (ORN) — may emerge months to years later, often after dental extraction or mucosal trauma. Singh et al. (PMID 35967463) describe ORN as one of the most dreaded complications of head and neck radiation therapy, characterize it as exposed necrotic bone within the radiation field, note that etiopathogenesis remains unclear, and review definitions, staging, incidence and management. Owosho et al. (PMID 28024723) reviewed 1,023 patients treated with intensity-modulated radiation therapy for oral cavity or oropharyngeal cancer and found 44 (4.3 percent) developed ORN, with case-control analysis of radiation dose, periodontal status, alcohol and smoking. Pereira et al. (PMID 30341256) examined 413 head-and-neck radiotherapy records over ten years and assessed prevalence and associated factors, consistent with multifactorial risk beyond dose alone. The 4.3 percent figure is from one high-volume center and is not a universal incidence. The proximate agent is radiation therapy, not the malignancy itself; the packet's 'Medication Side Effect' label functions here as the user-provided medication/treatment side-effect arm and should be read as treatment-mediated iatrogenic causation.\n\nRequired individual evidence and competing causes: obtain the cancer diagnosis, radiation fields, total dose and fractionation to the affected jaw, dates, dental extraction or trauma history, clinical examination (exposed bone persisting beyond expected healing), and serial imaging; obtain tissue sampling when infection or malignancy is suspected. Distinguish ORN from chronic osteomyelitis of another origin, bisphosphonate or antiresorptive-related osteonecrosis of the jaw (a competing cause already represented by the catalog's osteoporosis-to-osteonecrosis association), tumor recurrence, and dental abscess; periodontal disease, smoking, alcohol use and poor dental status are contributing factors that must not be misread as the sole cause. Pain with exposed bone is typical; fever or purulence suggests superimposed infection rather than excluding ORN.\n\nLegal and rating analysis: this is a treatment complication of service-connected cancer care analyzed as secondary causation under § 3.310(a) (treatment-mediated), not as a new disease contracted from the tumor. If pre-existing osteonecrosis or dental disease was worsened by radiation, analyze § 3.310(b) aggravation with qualifying baseline records and an attributable increase beyond natural progression. An 'at least as likely as not' opinion needs the veteran's dose-field-to-defect concordance, latency, examination findings and competing-cause analysis placing the evidence at least in approximate balance; a population incidence does not itself establish the individual nexus. No individual probability is asserted here. Rating: § 4.150 DC 9900 expressly covers osteoradionecrosis and directs rating as chronic osteomyelitis under DC 5000 with its notes; the malignant primary is recognized under DC 9918. Do not rate the same exposed-bone defect, pain or loss of jaw substance under both codes (§ 4.14). The oral-cancer host identity is draft and governed with six association-only outgoing edges; this new incoming treatment route requires host-side scope and governance review before any landing.",
+    "medicalEvidence": [
+      {
+        "title": "The Prevalence and Risk factors associated with Osteoradionecrosis of the Jaw in Oral and Oropharyngeal Cancer Patients treated with Intensity-Modulated Radiation Therapy (IMRT): The Memorial Sloan Kettering Cancer Center Experience",
+        "authors": "Adepitan A Owosho; C Jillian Tsai; Ryan S Lee; Haley Freymiller; Arvin Kadempour; Spyridon Varthis; Adi Z Sax; Evan B Rosen",
+        "summary": "Retrospective single-institution review of 1,023 patients treated with intensity-modulated radiation therapy for oral cavity or oropharyngeal cancer (2004-2013); 44 (4.3 percent) developed osteoradionecrosis, with case-control analysis of radiation dose, periodontal status, alcohol and smoking. Quantifies occurrence in a modern technique era; single-center retrospective design limits generalization.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/28024723/"
+      },
+      {
+        "title": "Osteoradionecrosis of the jaw: A mini review",
+        "authors": "Annu Singh; Joseph M Huryn; Kenneth L Kronstadt; SaeHee K Yom; Joseph R Randazzo; Cherry L Estilo",
+        "summary": "Mini-review describing ORN as a most-dreaded complication of head and neck radiation therapy, clinically characterized by exposed necrotic bone within the radiation field, with etiopathogenesis still unclear. Summarizes definitions, staging, incidence, etiology and institutional management/risk-mitigation strategies.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/35967463/"
+      },
+      {
+        "title": "Osteoradionecrosis prevalence and associated factors: A ten years retrospective study",
+        "authors": "Igor-Figueiredo Pereira; Ramon-Targino Firmino; Henrique-Côrtes Meira; Belmiro-Cavalcanti-Do Egito Vasconcelos; Vladimir-Reimar-Augusto-de Souza Noronha; Vagner-Rodrigues Santos",
+        "summary": "Cross-sectional retrospective study of 413 medical records over ten years of head and neck radiotherapy; determined ORN prevalence and associated factors using multivariate Poisson regression. Supports population-level occurrence and multifactorial risk assessment; retrospective single-region design.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/30341256/"
+      }
+    ],
+    "cfrCitations": [
+      "38 CFR § 3.310",
+      "38 CFR § 3.310(a)",
+      "38 CFR § 3.310(b)",
+      "38 CFR § 3.102",
+      "38 CFR § 4.150, DC 9900",
+      "38 CFR § 4.71a, DC 5000",
+      "38 CFR § 4.150, DC 9918",
+      "38 CFR § 4.14"
+    ]
+  },
+  {
+    "secondaryCondition": "Heterotopic ossification (neurogenic) complicating traumatic brain injury",
+    "secondaryDiagnosticCode": "38 CFR § 4.71a, DC 5023 (heterotopic ossification); the Note to DCs 5013-5024 directs evaluation as degenerative arthritis based on limitation of motion of affected parts",
+    "primaryCondition": "Service-connected residual deficits of traumatic brain injury (TBI)",
+    "primaryDiagnosticCode": "38 CFR § 4.124a, DC 8045 (residuals of traumatic brain injury), with its cognitive, emotional/behavioral and physical facets and its note on overlapping manifestations",
+    "nexusTheory": "Causation",
+    "etiologicalMechanism": "Neurogenic sequence: severe traumatic brain injury is associated with neurogenic heterotopic ossification (NHO), aberrant lamellar bone forming in periarticular soft tissues — characteristically around the hips, elbows and shoulders — causing pain and loss of joint motion. Sullivan et al. (PMID 23610702) review that NHO affects approximately one in five patients sustaining spinal cord injury or traumatic brain injury, and describe pathophysiology coupling basic bone-formation mechanisms with systemic circulating humoral factors and likely neurological influences; clinical sequelae include pressure injuries, urinary tract infection and pneumonia, making early recognition important. Simonsen et al. (PMID 17572418) studied 114 consecutive adults with very severe TBI (post-traumatic amnesia at least 28 days) and found clinically significant HO in 7.9 percent, noting literature incidence from 11 to 73.3 percent depending on ascertainment. Aubut et al. (PMID 21447915) systematically reviewed 26 treatment studies (12 TBI, 14 SCI) and found the TBI evidence base dominated by surgical case series with limited randomized evidence. Collectively these sources establish TBI as a recognized cause of heterotopic ossification while showing that incidence estimates are highly method-dependent and the causal mechanism is incompletely understood. HO frequently coexists with long-bone fractures and spasticity; the TBI-related contribution must be separated from fracture callus and immobilization effects.\n\nRequired individual evidence and competing causes: obtain the TBI history and severity, timing relative to HO onset, joint examination with range-of-motion loss, serial radiographs/CT or bone scan, alkaline phosphatase and laboratory context, and operative pathology when resected. The differential includes fracture callus or nonunion, post-traumatic arthritis, infection, deep venous thrombosis and tumor; competing causes also include heterotopic bone arising from associated long-bone trauma or burns rather than the brain injury. HO is not caused by TBI in isolation: immobilization, spasticity and associated fractures modify risk, and a veteran with ossification at a fracture site may have the fracture as a co-cause. Early diagnosis before joint ankylosis is clinically important.\n\nLegal and rating analysis: direct secondary causation under § 3.310(a) applies when the service-connected TBI and its clinical course produce the heterotopic ossification. If a pre-existing ossification or joint condition was worsened, analyze § 3.310(b) aggravation with qualifying baseline imaging/function and an attributable increase beyond natural progression. An 'at least as likely as not' opinion needs the veteran-specific TBI-to-HO chronology, location concordance with typical periarticular distributions, and competing-cause assessment; population incidence ranges cannot substitute for that balancing. No individual probability is asserted here. Rating: § 4.71a DC 5023 is a dedicated code for heterotopic ossification, evaluated on limitation of motion under the Note to DCs 5013-5024. The TBI primary is rated under § 4.124a DC 8045; do not use the same limitation of motion to support both the DC 8045 physical-residual evaluation and the DC 5023 rating (§ 4.14). The heterotopic-ossification identity's existing governance authors only an association-only outgoing edge to peripheral neuropathy; this new incoming route from TBI residuals should be reviewed against that conservative posture.",
+    "medicalEvidence": [
+      {
+        "title": "Symptomatic heterotopic ossification after very severe traumatic brain injury in 114 patients: incidence and risk factors",
+        "authors": "Louise Lau Simonsen; Stig Sonne-Holm; Michael Krasheninnikoff; Aase W Engberg",
+        "summary": "Retrospective database and X-ray study of 114 consecutive adults with very severe TBI (post-traumatic amnesia at least 28 days): clinically significant heterotopic ossification in 7.9 percent, with the literature range noted as 11-73.3 percent; logistic regression identified independent risk-predicting features. Quantifies occurrence in a defined severe-TBI cohort.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/17572418/"
+      },
+      {
+        "title": "Heterotopic ossification after central nervous system trauma: A current review",
+        "authors": "M P Sullivan; S J Torres; S Mehta; J Ahn",
+        "summary": "Review of neurogenic heterotopic ossification after central nervous system trauma: affects approximately one in five patients with spinal cord injury or traumatic brain injury; ectopic bone forms around joints such as the hip and elbow causing pain and movement limitation; pathophysiology links bone-formation mechanisms with systemic humoral and neurological influences; sequelae include pressure injuries and infection. Mechanism and clinical anchor.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/23610702/"
+      },
+      {
+        "title": "A comparison of heterotopic ossification treatment within the traumatic brain and spinal cord injured population: An evidence based systematic review",
+        "authors": "Jo-Anne L Aubut; Swati Mehta; Nora Cullen; Robert W Teasell; ERABI Group; Scire Research Team",
+        "summary": "Evidence-based systematic review comparing heterotopic-ossification treatment in TBI versus spinal cord injury populations: 26 studies met inclusion criteria (12 TBI, 14 SCI); the majority of TBI studies were surgical, and formal quality/level-of-evidence assessment was applied. Demonstrates an evidence base dominated by non-randomized surgical series.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/21447915/"
+      }
+    ],
+    "cfrCitations": [
+      "38 CFR § 3.310",
+      "38 CFR § 3.310(a)",
+      "38 CFR § 3.310(b)",
+      "38 CFR § 3.102",
+      "38 CFR § 4.124a, DC 8045",
+      "38 CFR § 4.71a, DC 5023 and Note to DCs 5013-5024",
+      "38 CFR § 4.14"
+    ]
+  }
+]

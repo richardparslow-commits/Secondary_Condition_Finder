@@ -1,0 +1,172 @@
+[
+  {
+    "secondaryCondition": "Osteonecrosis (avascular necrosis of bone, glucocorticoid-associated)",
+    "secondaryDiagnosticCode": "No dedicated DC — evaluated by analogy under 38 CFR § 4.20; where the affected joint's function is impaired, residuals are evaluated under the applicable § 4.71a joint-schedule code and § 4.40 (functional loss), with post-surgical residuals rated under the appropriate codes",
+    "primaryCondition": "Asthma, bronchial (service-connected), on chronic or recurrent systemic corticosteroid therapy",
+    "primaryDiagnosticCode": "6602 (38 CFR § 4.97 — asthma, bronchial; the schedule expressly contemplates daily systemic corticosteroids and intermittent courses of at least three per year)",
+    "nexusTheory": "Medication Side Effect",
+    "etiologicalMechanism": "Systemic glucocorticoids cause osteonecrosis of bone — most often the femoral head, but also the humeral head, knee, and talus — through a sequence of direct cell toxicity and vascular compromise. Glucocorticoids induce apoptosis of osteocytes and osteoblasts, suppress osteogenesis, and shift marrow stromal differentiation toward adipocytes, which expands the fatty marrow and raises intraosseous pressure; fat microemboli and thrombi further occlude the subchondral microvasculature, producing ischemia of the femoral head, subchondral fracture, and collapse of the articular surface with secondary joint degeneration. The risk is corticosteroid-dose-dependent and appears early in treatment rather than requiring years of exposure; the affected joint is often painful and disabling even before radiographic collapse, and magnetic resonance imaging detects the lesion before plain films. The quantitative evidence is strong: a systematic review and meta-analysis of 35 studies and 11,356 patients with systemic lupus erythematosus found that pulse steroid therapy (OR 2.02, P < 0.00001), an initial dose greater than 60 mg/day (OR 4.19, P < 0.0001), and a maximum daily dose greater than 50 mg significantly increased the risk of osteonecrosis of the femoral head, while cumulative glucocorticoid dose showed no significant association — identifying short-term high-dose exposure, not cumulative burden, as the core medication-related risk; a nationally representative survey of 30,030 Chinese adults found a non-traumatic femoral-head osteonecrosis prevalence of 0.725% (218 cases; an estimated 8.12 million affected nationally) with glucocorticoid intake among the significant independent risk factors; and the ARCO international consensus classification recognizes glucocorticoid-associated osteonecrosis as a distinct etiologic category with its own diagnostic criteria. Under 38 CFR § 3.310(a), a disability proximately due to or resulting from the treatment of a service-connected condition is itself service-connected, so glucocorticoid-associated osteonecrosis developing after systemic corticosteroid therapy for service-connected asthma is a treatment-complication secondary claim — the analysis does not require that the veteran have been on steroids continuously, because the evidence identifies high-dose pulse and initial-dose exposure as sufficient; where pre-existing osteonecrosis or an established alternative cause is documented, § 3.310(b) limits service connection to the attributable aggravation. For an 'at least as likely as not' opinion, document the corticosteroid regimen (drug, route, prednisone-equivalent dose including initial and pulse doses, dates), the imaging (MRI, which is the most sensitive, or radiographs with staging), the chronology of steroid exposure relative to symptom onset, and the functional loss; and exclude competing causes — alcohol abuse, prior trauma, sickle cell disease and other hemoglobinopathies, decompression sickness, Gaucher disease, coagulation disorders, radiation, and idiopathic osteonecrosis. Because no diagnostic code specifically addresses osteonecrosis, the rating proceeds by analogy under § 4.20 to the § 4.71a joint-schedule entries for the affected joint's residual functional loss.",
+    "medicalEvidence": [
+      {
+        "title": "Population characteristics, glucocorticoid dosage, and risk factors for osteonecrosis of the femoral head in systemic lupus erythematosus: a Systematic Review and meta-analysis.",
+        "authors": "Zhang J, Zhang J, Dong Y, et al.",
+        "summary": "Systematic review and meta-analysis of 35 studies and 11,356 patients: pulse steroid therapy (OR 2.02, P < 0.00001), an initial glucocorticoid dose greater than 60 mg/day (OR 4.19, P < 0.0001), a maximum daily dose greater than 50 mg (SMD 0.42, P = 0.0002), and higher average daily intake (SMD 0.32, P = 0.004) significantly increased osteonecrosis risk, while cumulative dose did not (P = 0.14) — short-term high-dose exposure, not cumulative burden, is the core medication-related risk.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/41756283/"
+      },
+      {
+        "title": "Prevalence of Nontraumatic Osteonecrosis of the Femoral Head and its Associated Risk Factors in the Chinese Population: Results from a Nationally Representative Survey.",
+        "authors": "Zhao DW, Yu M, Hu K, et al.",
+        "summary": "Nationally representative survey of 30,030 adults: non-traumatic femoral-head osteonecrosis was diagnosed in 218 subjects (0.725%; an estimated 8.12 million cases), and multivariate regression showed glucocorticoid intake — along with a family history of osteonecrosis, heavy smoking, alcohol abuse, and metabolic factors — was significantly associated with increased risk.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/26521779/"
+      },
+      {
+        "title": "Etiologic Classification Criteria of ARCO on Femoral Head Osteonecrosis Part 1: Glucocorticoid-Associated Osteonecrosis.",
+        "authors": "Yoon BH, Jones LC, Chen CH, et al.",
+        "summary": "International consensus (ARCO) etiologic classification criteria establishing glucocorticoid-associated osteonecrosis of the femoral head as a distinct diagnostic category with defined criteria — the clinical standard under which a steroid-exposed patient is classified.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/30348552/"
+      }
+    ],
+    "cfrCitations": [
+      "38 CFR § 3.310(a) (disability proximately due to or the result of a service-connected disease or injury, including its treatment)",
+      "38 CFR § 3.310(b) (aggravation of a nonservice-connected disability, with baseline rule)",
+      "38 CFR § 4.97, DC 6602 (asthma, bronchial)",
+      "38 CFR § 4.20 (analogous rating of osteonecrosis) and § 4.71a (joint-schedule codes for the affected joint's residual functional loss); § 4.40 (functional loss)"
+    ]
+  },
+  {
+    "secondaryCondition": "Diabetic gastroparesis (delayed gastric emptying due to diabetic autonomic neuropathy)",
+    "secondaryDiagnosticCode": "7356 (38 CFR § 4.114 — gastrointestinal dysmotility syndrome; the schedule entry whose criteria address poor gastric emptying, with DC 7319 reserved for irritable bowel syndrome)",
+    "primaryCondition": "Diabetes mellitus, type II (service-connected)",
+    "primaryDiagnosticCode": "7913 (38 CFR § 4.119 — diabetes mellitus)",
+    "nexusTheory": "Causation",
+    "etiologicalMechanism": "Type 2 diabetes causes gastroparesis through chronic hyperglycemic injury to the autonomic and enteric nervous systems that regulate the stomach. Sustained hyperglycemia drives oxidative stress, advanced glycation end-product accumulation, and microvascular disease in the vagus nerve and gastric myenteric plexus; the resulting vagal neuropathy, loss of interstitial cells of Cajal (the gastric pacemaker cells), and depletion of neuronal nitric oxide synthase impair fundal accommodation and antral contractility and cause pyloric spasm, so gastric contents empty too slowly. The clinical picture is early satiety, prolonged postprandial fullness, bloating, nausea, vomiting, and abdominal pain, and the condition is a complication of long-standing diabetes; it is associated with increased mortality and complicates glycemic control because of unpredictable absorption of food and medication. The epidemiologic evidence is direct: a systematic review and meta-analysis found the pooled prevalence of gastroparesis among patients with diabetes to be 9.3%, with the highest subgroup prevalence in type 2 diabetes at 12.5% (95% CI 7.7-17.3), and a large US epidemiological study of 82.6 million patients identified type 2 diabetes as the single most common cause of gastroparesis (51.7% of cases) — ahead of postsurgical effects, medication effects, and idiopathic cases. Under 38 CFR § 3.310(a), gastroparesis developing in a veteran with service-connected type 2 diabetes is a direct-causation secondary claim: the diabetes is the proximate cause through diabetic autonomic neuropathy, and no new injury is required. For an 'at least as likely as not' opinion, document the diabetes (duration, control, complications), the gastric-emptying study (scintigraphy or a validated breath test) or the clinical diagnosis with exclusion of obstruction by endoscopy, the symptom chronology relative to diabetes duration, and treatment response; and exclude competing causes — medication effects (opioids, GLP-1 receptor agonists, anticholinergics), prior gastric or esophageal surgery, hypothyroidism, Parkinson disease and other neurological disease, connective tissue disease, amyloidosis, and viral injury. Where pre-existing gastroparesis is documented, § 3.310(b) limits service connection to the attributable aggravation. Because gastric dysmotility in diabetes is evaluated under DC 7356, the requirement for a diagnostic code is met directly rather than by analogy.",
+    "medicalEvidence": [
+      {
+        "title": "Prevalence of gastroparesis in diabetic patients: a systematic review and meta-analysis.",
+        "authors": "Li L, Wang L, Long R, et al.",
+        "summary": "Systematic review and meta-analysis: the pooled prevalence of gastroparesis in patients with diabetes was 9.3%, with a significantly higher prevalence in type 2 diabetes (12.5%, 95% CI 7.7-17.3) than type 1 diabetes (8.3%); women and patients under 60 had higher estimates, and the authors report high heterogeneity and limited robustness (an erratum was subsequently published).",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/37640738/"
+      },
+      {
+        "title": "Gastroparesis: A Review.",
+        "authors": "Camilleri M",
+        "summary": "JAMA review of gastroparesis: the condition is caused by reduced contractions of the distal stomach or abnormal pyloric relaxation; in a large US epidemiological study of 82.6 million patients, the most common cause was type 2 diabetes (51.7%), followed by postsurgical effects (15%), medication-induced cases (11.8%), and idiopathic cases (11.3%); prevalence of definite gastroparesis was 21.5 per 100,000 persons.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/42485161/"
+      },
+      {
+        "title": "Diabetic gastroparesis.",
+        "authors": "Koch KL, Calles-Escandón J",
+        "summary": "Review of diabetic gastroparesis as a complication of long-standing type 1 and type 2 diabetes, with symptoms of early satiety, prolonged postprandial fullness, bloating, nausea, vomiting, and abdominal pain; a subset of patients has pylorospasm producing obstructive gastroparesis, and mortality is increased in patients with diabetic gastroparesis.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/25667022/"
+      }
+    ],
+    "cfrCitations": [
+      "38 CFR § 3.310(a) (secondary service connection)",
+      "38 CFR § 3.310(b) (aggravation of a nonservice-connected disability, with baseline rule)",
+      "38 CFR § 4.119, DC 7913 (diabetes mellitus)",
+      "38 CFR § 4.114, DC 7356 (gastrointestinal dysmotility syndrome); § 4.14 (avoidance of duplicate evaluation)"
+    ]
+  },
+  {
+    "secondaryCondition": "Obstructive sleep apnea (sleep apnea syndromes)",
+    "secondaryDiagnosticCode": "6847 (38 CFR § 4.97 — sleep apnea syndromes, obstructive, central, mixed; rated from 0 to 100 percent, with the 50-percent level assigned for use of a breathing assistance device such as CPAP)",
+    "primaryCondition": "Hypothyroidism (service-connected)",
+    "primaryDiagnosticCode": "7903 (38 CFR § 4.119 — hypothyroidism; residual effects rated under the appropriate body-system codes)",
+    "nexusTheory": "Causation",
+    "etiologicalMechanism": "Hypothyroidism causes or aggravates obstructive sleep apnea through deposition of mucopolysaccharide-rich ground substance (myxedema) in the soft tissues of the upper airway — the tongue (macroglossia), pharyngeal walls, soft palate, and larynx — which narrows the pharyngeal lumen and increases collapsibility during sleep; hypothyroid myopathy of the pharyngeal dilator muscles and blunted ventilatory drive further promote obstruction and hypoventilation. Because hypothyroidism is treatable, the mechanism has a therapeutic prediction: restoration of euthyroidism reduces apnea severity in many patients, which supports the causal direction. The clinical evidence is consistent: a meta-analysis of 12 studies and 5 case reports (192 hypothyroid OSA patients vs 1,423 euthyroid OSA patients) found the prevalence of clinical hypothyroidism among OSA patients was 8.12 ± 7.13% and subclinical hypothyroidism 11.07 ± 8.49%, with higher apnea-hypopnea index, more time with oxygen desaturation below 90%, and higher Epworth sleepiness scores in the hypothyroid group at diagnosis; a US population study (NHANES 2007-2008, 5,515 adults) found hypothyroidism associated with sleep apnea after adjustment for demographics, body-mass index, and comorbidities (OR 1.88, 95% CI 1.24-2.84, P < 0.01); and a cross-sectional study of 100 hypothyroid patients found obstructive sleep apnea (AHI at least 5) in 74% — with 85.3% prevalence among treatment-naive patients versus 66.1% among those on thyroid replacement (P = 0.030), and 40.5% of cases severe. Under 38 CFR § 3.310(a), obstructive sleep apnea developing in a veteran with service-connected hypothyroidism is a direct-causation secondary claim. For an 'at least as likely as not' opinion, document the thyroid disease and its treatment status (TSH and free T4 with dates), the sleep study with the apnea-hypopnea index and severity, the chronology of thyroid disease relative to sleep symptoms, and any change in apnea severity with thyroid replacement; and address competing causes — obesity (the dominant confounder, which must be documented and weighed rather than assumed), acromegaly, nasal obstruction and deviated septum, tonsillar hypertrophy and craniofacial anomalies, sedative, alcohol, and opioid effects, and age. Where pre-existing sleep apnea or an established alternative cause is documented, § 3.310(b) limits service connection to the attributable aggravation.",
+    "medicalEvidence": [
+      {
+        "title": "Role of hypothyroidism in obstructive sleep apnea: a meta-analysis.",
+        "authors": "Zhang M, Zhang W, Tan J, et al.",
+        "summary": "Meta-analysis of 12 studies and 5 case reports comparing 192 hypothyroid OSA patients with 1,423 euthyroid OSA patients: prevalence of clinical hypothyroidism among OSA patients was 8.12 ± 7.13% (subclinical 11.07 ± 8.49%), and the hypothyroid group had significantly higher apnea-hypopnea index, more desaturation time below 90%, and higher Epworth sleepiness scores at diagnosis.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/26907534/"
+      },
+      {
+        "title": "Hypothyroidism and Its Association With Sleep Apnea Among Adults in the United States: NHANES 2007-2008.",
+        "authors": "Thavaraputta S, Dennis JA, Laoveeravat P, et al.",
+        "summary": "Cross-sectional analysis of 5,515 US adults (NHANES 2007-2008): hypothyroidism prevalence was 9.47%, and multivariate logistic regression adjusted for demographics, health care access, body-mass index, socioeconomic factors, alcohol, smoking, and comorbidities showed a significant association between hypothyroidism and sleep apnea (OR 1.88, 95% CI 1.24-2.84, P < 0.01).",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/31305928/"
+      },
+      {
+        "title": "Obstructive sleep apnea in hypothyroidism.",
+        "authors": "Pancholi C, Chaudhary SC, Gupta KK, et al.",
+        "summary": "Cross-sectional study of 100 hypothyroidism patients: 74% had obstructive sleep apnea on polysomnography (AHI at least 5), with 40.5% of those severe; treatment-naive patients had significantly higher OSA prevalence (85.3%) than patients on thyroid replacement (66.1%, P = 0.030), supporting both the association and an effect of treating the hypothyroidism.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/36412342/"
+      }
+    ],
+    "cfrCitations": [
+      "38 CFR § 3.310(a) (secondary service connection)",
+      "38 CFR § 3.310(b) (aggravation of a nonservice-connected disability, with baseline rule)",
+      "38 CFR § 4.119, DC 7903 (hypothyroidism)",
+      "38 CFR § 4.97, DC 6847 (sleep apnea syndromes, obstructive, central, mixed)"
+    ]
+  },
+  {
+    "secondaryCondition": "Peptic ulcer disease (nonsteroidal anti-inflammatory drug-associated gastroduodenal ulcer)",
+    "secondaryDiagnosticCode": "7304 (38 CFR § 4.114 — peptic ulcer disease, including the post-operative, recurrent pain with anemia, and medication-managed episode criteria, with a 0-percent level for an endoscopic or imaging-documented history)",
+    "primaryCondition": "Osteoarthritis (service-connected), on chronic nonsteroidal anti-inflammatory drug therapy",
+    "primaryDiagnosticCode": "5003 (38 CFR § 4.71a — degenerative arthritis)",
+    "nexusTheory": "Medication Side Effect",
+    "etiologicalMechanism": "Nonsteroidal anti-inflammatory drugs cause peptic ulcers by inhibiting cyclooxygenase-1 and thereby depleting the prostaglandins that protect the gastroduodenal mucosa: prostaglandin E2 and prostacyclin normally stimulate mucus and bicarbonate secretion, increase mucosal blood flow, and drive epithelial repair, so their loss leaves the mucosa vulnerable to acid and pepsin; NSAIDs are also weak acids that trap in parietal cells and cause direct topical injury, and both mechanisms together produce erosions and ulcers, most often in the stomach and duodenum. Importantly for claims, the injury occurs at therapeutic analgesic doses used for musculoskeletal pain, can occur without warning symptoms, and is the leading medication-related cause of ulcer bleeding. The quantitative evidence is strong: a meta-analysis of 25 studies found uncomplicated peptic-ulcer disease significantly more common in NSAID takers than in controls (35.8% vs 8.3%), with NSAID use increasing the risk of peptic ulcer approximately 3.55-fold and of ulcer bleeding 4.85-fold, and a synergistic interaction when Helicobacter pylori infection coexists; a separate meta-analysis of peptic-ulcer risk factors attributed 24% of peptic-ulcer disease in the general population to NSAIDs; and current Cochrane evidence frames the entire class of NSAID-induced ulcers as a recognized, preventable entity for which proton-pump inhibitors are the standard protective therapy. Under 38 CFR § 3.310(a), a disability proximately due to or resulting from the treatment of a service-connected condition is itself service-connected, so peptic ulcer disease developing on documented chronic NSAID therapy for service-connected osteoarthritis is a treatment-complication secondary claim; where pre-existing ulcer disease is documented, § 3.310(b) limits service connection to the attributable aggravation. For an 'at least as likely as not' opinion, document the NSAID regimen (agent, dose, duration, dates, over-the-counter use), the endoscopic or imaging diagnosis (DC 7304 requires endoscopic or imaging documentation where rated at 0 percent, and the evaluation above that level follows symptom burden), the chronology of NSAID exposure relative to ulcer diagnosis, and treatment; and exclude competing causes — Helicobacter pylori infection (test and treat), alcohol and smoking, physiologic stress and critical illness, corticosteroid co-therapy, Zollinger-Ellison syndrome, and gastric malignancy (with ulcer symptoms requiring biopsy at endoscopy where indicated). Where the veteran also has service-connected GERD evaluated under DC 7206, § 4.14 bars using the same signs and symptoms under both codes.",
+    "medicalEvidence": [
+      {
+        "title": "Role of Helicobacter pylori infection and non-steroidal anti-inflammatory drugs in peptic-ulcer disease: a meta-analysis.",
+        "authors": "Huang JQ, Sridhar S, Hunt RH",
+        "summary": "Lancet meta-analysis of 25 studies: peptic-ulcer disease was significantly more common in NSAID takers than controls (138/385, 35.8% vs 23/276, 8.3%) irrespective of H. pylori infection; NSAID use increased ulcer risk approximately 3.55-fold and ulcer-bleeding risk 4.85-fold, with synergy when H. pylori infection coexisted.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/11809181/"
+      },
+      {
+        "title": "Meta-analysis of risk factors for peptic ulcer. Nonsteroidal antiinflammatory drugs, Helicobacter pylori, and smoking.",
+        "authors": "Kurata JH, Nogawa AN",
+        "summary": "Meta-analysis of attributable risk models for peptic ulcer and serious upper-GI events: the population attributable risk percent for NSAIDs was 24% (H. pylori 48%, smoking 23%), and in the no-interaction model these three factors accounted for the overwhelming majority of peptic-ulcer-related risk.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/9013343/"
+      },
+      {
+        "title": "Proton pump inhibitors for the prevention of non-steroidal anti-inflammatory drug-induced ulcers and dyspepsia.",
+        "authors": "Garegnani L, Oltra G, Burgos MA, et al.",
+        "summary": "Cochrane review stating that chronic NSAID consumption increases the risk of gastrointestinal toxicity ranging from mild dyspepsia to serious ulcer complications such as bleeding, obstruction, and perforation, and assessing proton-pump inhibitors for prevention of NSAID-induced ulcers and dyspepsia — the clinical standard confirming NSAID-induced ulceration as a recognized, preventable entity.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/40337979/"
+      }
+    ],
+    "cfrCitations": [
+      "38 CFR § 3.310(a) (disability proximately due to or the result of a service-connected disease or injury, including its treatment)",
+      "38 CFR § 3.310(b) (aggravation of a nonservice-connected disability, with baseline rule)",
+      "38 CFR § 4.71a, DC 5003 (degenerative arthritis)",
+      "38 CFR § 4.114, DC 7304 (peptic ulcer disease); § 4.14 (avoidance of duplicate evaluation)"
+    ]
+  },
+  {
+    "secondaryCondition": "Glaucoma (corticosteroid-induced ocular hypertension progressing to secondary open-angle glaucoma)",
+    "secondaryDiagnosticCode": "6013 (38 CFR § 4.79 — open-angle glaucoma; evaluated under the General Rating Formula for Diseases of the Eye with a minimum 10-percent evaluation if continuous medication is required; DC 6012 for angle-closure glaucoma if the mechanism is documented as angle closure)",
+    "primaryCondition": "Rheumatoid arthritis (service-connected), on chronic corticosteroid therapy (systemic, topical ocular, periocular, or inhaled)",
+    "primaryDiagnosticCode": "5002 (38 CFR § 4.71a — multi-joint arthritis, active process)",
+    "nexusTheory": "Medication Side Effect",
+    "etiologicalMechanism": "Corticosteroids raise intraocular pressure and produce secondary open-angle glaucoma by increasing resistance to aqueous humor outflow through the conventional pathway — the trabecular meshwork, the juxtacanalicular connective tissue, and the inner wall of the Schlemm canal. Glucocorticoids induce extracellular matrix deposition (including myocilin and fibronectin) and cytoskeletal changes in trabecular meshwork cells that reduce outflow facility, so intraocular pressure rises; in susceptible individuals the steroid response progresses from asymptomatic ocular hypertension to sustained pressure elevation, glaucomatous optic neuropathy, and irreversible visual-field loss if the elevation is unrecognized or continues. The effect is a class property of corticosteroids rather than of any one drug or route: it has been recognized since the 1950s after systemic ACTH and both topical and systemic corticosteroids, risk increases with prolonged use, higher frequency, higher anti-inflammatory potency, and greater ocular penetrance (and is greater in children and in known steroid responders), and reducing the molecule's intrinsic steroid activity (as with loteprednol etabonate) demonstrably reduces the intraocular pressure effect. Under 38 CFR § 3.310(a), a disability proximately due to or resulting from the treatment of a service-connected condition is itself service-connected, so corticosteroid-induced ocular hypertension and glaucomatous damage developing on documented corticosteroid therapy for service-connected rheumatoid arthritis is a treatment-complication secondary claim; where pre-existing open-angle glaucoma or ocular hypertension is documented before steroid exposure, § 3.310(b) limits service connection to the attributable aggravation. For an 'at least as likely as not' opinion, document the corticosteroid regimen (drug, route, potency, frequency, duration, dates — including topical ocular and periocular injections, which carry the highest ocular risk), serial intraocular pressure measurements and optic-nerve and visual-field examinations with dates, the chronology of pressure rise relative to steroid exposure, and the response to steroid withdrawal or pressure-lowering therapy; and address competing causes — primary open-angle glaucoma (family history, age, myopia, African ancestry, diabetes), angle-closure mechanisms, uveitis and other intraocular inflammation, pseudoexfoliation, and pigment dispersion. Because the diagnosis is open-angle glaucoma unless the mechanism is angle closure, the claim is evaluated under DC 6013 (or DC 6012 for angle closure) — the requirement for a diagnostic code is met directly rather than by analogy.",
+    "medicalEvidence": [
+      {
+        "title": "Steroid-Induced Glaucoma.",
+        "authors": "Zeppieri M, Capobianco M, Khazaeni L",
+        "summary": "StatPearls clinical review: corticosteroid-induced ocular hypertension and glaucoma are among the most clinically relevant ocular adverse effects of a very widely prescribed drug class; steroid-induced glaucoma is a form of secondary open-angle glaucoma in which intraocular pressure rises because of increased resistance to aqueous humor outflow at the trabecular meshwork, juxtacanalicular tissue, and Schlemm canal, and it progresses from the steroid response and ocular hypertension to glaucomatous optic neuropathy and visual-field loss when the elevation is sustained or unrecognized.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/28613653/"
+      },
+      {
+        "title": "Risk of intraocular pressure elevation after topical steroids in children and adults: A systematic review.",
+        "authors": "Musleh MG, Bokre D, Dahlmann-Noor AH",
+        "summary": "Systematic review of randomized trials of topical corticosteroids: topical steroids induce rises in intraocular pressure, and the risk increases with prolonged use, high frequency of administration, young age, higher ocular penetrance, and higher anti-inflammatory potency.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/31668084/"
+      },
+      {
+        "title": "Impact of the Topical Ophthalmic Corticosteroid Loteprednol Etabonate on Intraocular Pressure.",
+        "authors": "Sheppard JD, Comstock TL, Cavet ME",
+        "summary": "Review establishing that topical ophthalmic corticosteroids carry an inherent class risk of elevated intraocular pressure — a risk factor for glaucoma — and that loteprednol etabonate's ester structure minimizes this effect, demonstrating that the pressure response is attributable to the corticosteroid moiety itself.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/26984315/"
+      }
+    ],
+    "cfrCitations": [
+      "38 CFR § 3.310(a) (disability proximately due to or the result of a service-connected disease or injury, including its treatment)",
+      "38 CFR § 3.310(b) (aggravation of a nonservice-connected disability, with baseline rule)",
+      "38 CFR § 4.71a, DC 5002 (multi-joint arthritis, active process)",
+      "38 CFR § 4.79, DC 6013 (open-angle glaucoma) and DC 6012 (angle-closure glaucoma)"
+    ]
+  }
+]

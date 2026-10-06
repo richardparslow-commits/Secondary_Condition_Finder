@@ -1,0 +1,172 @@
+[
+  {
+    "secondaryCondition": "Barrett's esophagus (intestinal metaplasia of the distal esophagus)",
+    "secondaryDiagnosticCode": "7207 (38 CFR § 4.114 — Barrett's esophagus; with esophageal stricture rated as DC 7203, without stricture 30 percent with high-grade dysplasia and 10 percent with low-grade dysplasia)",
+    "primaryCondition": "Gastroesophageal reflux disease (service-connected)",
+    "primaryDiagnosticCode": "7206 (38 CFR § 4.114 — gastroesophageal reflux disease)",
+    "nexusTheory": "Causation",
+    "etiologicalMechanism": "Chronic gastroesophageal reflux causes Barrett's esophagus by driving reparative metaplasia of the distal esophageal epithelium: repeated exposure of the squamous mucosa to gastric acid and pepsin (and, where present, bile) produces chronic epithelial injury, and in genetically susceptible individuals the healing response replaces the damaged squamous epithelium with intestinalized columnar mucosa — the metaplastic change that defines Barrett's esophagus and that carries the risk of progression through low-grade and high-grade dysplasia to esophageal adenocarcinoma. The risk is not binary: longer duration and greater frequency of reflux symptoms, male sex, older age, central obesity, smoking, and family history all raise the probability of the metaplastic transformation, and screening guidelines treat GERD as the cardinal clinical criterion. The quantitative evidence is direct: a systematic review and meta-analysis of 43 studies (12,883 patients with GERD and 51,350 without) found Barrett's esophagus prevalence of 7% (95% CI 5.8-8.5%) in patients with GERD versus 2.2% (95% CI 1.6-3%) in those without, with an odds ratio for Barrett's esophagus of 2.91 (95% CI 2.06-4.11) and 4.17 (95% CI 1.78-9.77) for long-segment disease; a systematic review and meta-analysis of 49 studies and 307,273 individuals found Barrett's prevalence rising from 0.8% in the low-risk general population to 3% with GERD and 12.2% with GERD plus any additional risk factor, with a positive linear relationship between the number of risk factors and prevalence; and the JAMA scientific review of the reflux-Barrett's-adenocarcinoma sequence documents that Barrett's esophagus — metaplasia from squamous to intestinalized columnar mucosa — is associated with chronic reflux and is the pathway through which adenocarcinoma develops. Under 38 CFR § 3.310(a), Barrett's esophagus developing in a veteran with service-connected GERD is a direct-causation secondary claim. For an 'at least as likely as not' opinion, document the GERD diagnosis (duration, symptom frequency and severity, endoscopic and, where performed, ambulatory pH findings), the upper endoscopy with biopsy demonstrating intestinal metaplasia and any dysplasia grade, and the chronology of chronic reflux relative to the metaplastic change; and address competing contributors — obesity and central adiposity, smoking, age and male sex as susceptibility factors rather than alternative diagnoses, and the known inverse association with Helicobacter pylori. Where Barrett's esophagus or dysplasia is documented before the service-connected reflux disease, § 3.310(b) limits service connection to the attributable aggravation. Where the veteran's GERD itself is evaluated under DC 7206, § 4.14 prohibits using the same stricture or dysphagia findings to evaluate both the GERD and the Barrett's esophagus.",
+    "medicalEvidence": [
+      {
+        "title": "Prevalence of Barrett's Esophagus and Esophageal Adenocarcinoma With and Without Gastroesophageal Reflux: A Systematic Review and Meta-analysis.",
+        "authors": "Saha B, Vantanasiri K, Mohan BP, et al.",
+        "summary": "Systematic review and meta-analysis of 43 studies (12,883 patients with GERD; 51,350 without): Barrett's esophagus prevalence was 7% (95% CI 5.8-8.5%) with GERD versus 2.2% (95% CI 1.6-3%) without, with odds ratios of 2.91 (95% CI 2.06-4.11) for Barrett's esophagus and 4.17 (95% CI 1.78-9.77) for long-segment disease in patients with GERD.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/37879525/"
+      },
+      {
+        "title": "Systematic review and meta-analysis of prevalence and risk factors for Barrett's esophagus.",
+        "authors": "Qumseya BJ, Bukannan A, Gendy S, et al.",
+        "summary": "Systematic review and meta-analysis of 49 studies and 307,273 individuals: Barrett's esophagus prevalence was 0.8% (95% CI 0.6-1.1%) in the low-risk general population, 3% (95% CI 2.3-4%) with GERD, and 12.2% (95% CI 10.2-14.6%) with GERD plus any additional risk factor, with a positive linear relationship between the number of risk factors and prevalence.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/31152737/"
+      },
+      {
+        "title": "Gastroesophageal reflux, barrett esophagus, and esophageal cancer: scientific review.",
+        "authors": "Shaheen N, Ransohoff DF",
+        "summary": "JAMA scientific review: GERD is a risk factor for esophageal adenocarcinoma, which may develop from Barrett's esophagus — a metaplastic change of the esophageal epithelium from squamous to intestinalized columnar mucosa associated with chronic reflux — establishing the clinical-standard etiologic sequence from chronic reflux to metaplasia.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/11960540/"
+      }
+    ],
+    "cfrCitations": [
+      "38 CFR § 3.310(a) (secondary service connection)",
+      "38 CFR § 3.310(b) (aggravation of a nonservice-connected disability, with baseline rule)",
+      "38 CFR § 4.114, DC 7206 (gastroesophageal reflux disease)",
+      "38 CFR § 4.114, DC 7207 (Barrett's esophagus); DC 7203 (esophagus, stricture of); § 4.14 (avoidance of duplicate evaluation)"
+    ]
+  },
+  {
+    "secondaryCondition": "Peripheral neuropathy (chronic alcohol-related axonal polyneuropathy)",
+    "secondaryDiagnosticCode": "8520 (38 CFR § 4.124a — sciatic nerve) as the usual schedule entry for a symmetric lower-extremity axonal neuropathy, with evaluation keyed to the degree of incomplete paralysis; other § 4.124a peripheral-nerve codes apply according to the documented distribution and severity",
+    "primaryCondition": "Alcohol use disorder (service-connected)",
+    "primaryDiagnosticCode": "No dedicated DC — alcohol use disorder is evaluated under the 38 CFR § 4.130 General Rating Formula for Mental Disorders (the schedule's code list at 9201-9440 contains no substance-specific entry), with § 4.14 prohibiting duplicate evaluation where a substance-induced disorder is already evaluated",
+    "nexusTheory": "Causation",
+    "etiologicalMechanism": "Chronic heavy alcohol use produces a length-dependent axonal polyneuropathy through two converging mechanisms: direct neurotoxicity from ethanol and its metabolite acetaldehyde, which generate oxidative stress and activate protein kinase C epsilon signaling in peripheral nerve, and the nutritional deficiencies that commonly accompany sustained heavy drinking — most importantly thiamine, but also folate, B12, and other vitamins — which impair axonal energy metabolism and repair. The result is axonal degeneration with reduced density of both small and large fibers, a stockings-and-gloves sensory loss with hyperalgesia and weakness, reduced sensory nerve action potential amplitudes with mild conduction slowing on electrodiagnostic testing, and greater vulnerability in women at a given lifetime dose. The quantitative evidence is consistent: a systematic review and meta-analysis (87 articles) found the prevalence of peripheral neuropathy among chronic alcohol abusers to be 46.3% (95% CI 35.7-57.3%), with the review detailing the toxic and nutritional pathogenetic mechanisms; a clinical-electroneurographic study of 62 chronic alcoholics found clinical and/or subclinical neuropathy — mostly axonal — in 67.7% (65.9% of men and 72.2% of women), with women showing significantly greater lifetime alcohol exposure effects at lower cumulative doses; and a mechanistic review documents axonal degeneration, reduced small and large fiber density, direct ethanol and acetaldehyde neurotoxicity, oxidative stress, and the contribution of dietary vitamin deficiency in the pathogenesis. Under 38 CFR § 3.310(a), peripheral neuropathy developing in a veteran with service-connected alcohol use disorder is a direct-causation secondary claim. For an 'at least as likely as not' opinion, document the alcohol use disorder with a quantified drinking history (dose, duration, pattern), the neurologic examination and electrodiagnostic findings (nerve conduction studies and electromyography demonstrating an axonal, length-dependent pattern), and the exclusion of competing causes — diabetes mellitus (the most common competing cause and one with its own documented route to neuropathy), hypothyroidism, vitamin B12 and folate deficiency and other nutritional states, uremia and chronic kidney disease, HIV and chemotherapy agents, monoclonal gammopathy and paraproteinemia, inherited neuropathies such as Charcot-Marie-Tooth disease, and idiopathic neuropathy. The claim runs from the diagnosis of alcohol use disorder as marking sustained heavy exposure; where a specific documented drinking history is inconsistent with the diagnosis or with the neuropathy's chronology, the individual opinion must reconcile them rather than rely on the label alone. Where pre-existing neuropathy is documented, § 3.310(b) limits service connection to the attributable aggravation.",
+    "medicalEvidence": [
+      {
+        "title": "Alcohol-related peripheral neuropathy: a systematic review and meta-analysis.",
+        "authors": "Julian T, Glascow N, Syeed R, Zis P",
+        "summary": "Systematic review of 87 articles (29 case-control, 52 cohort, 2 randomized trials, and population-based studies): the prevalence of peripheral neuropathy among chronic alcohol abusers was 46.3% (95% CI 35.7-57.3%), with toxic and nutritional mechanisms discussed and management strategies identified.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/30467601/"
+      },
+      {
+        "title": "Gender and peripheral neuropathy in chronic alcoholism: a clinical-electroneurographic study.",
+        "authors": "Ammendola A, Gemini D, Iannaccone S, et al.",
+        "summary": "Consecutive sample of 62 chronic alcoholics (18 women, 44 men): clinical and/or subclinical neuropathy — mostly axonal — was present in 67.7% (65.9% of men, 72.2% of women), and women showed significantly greater effects of total lifetime ethanol dose and disease duration on nerve findings than men.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/10906002/"
+      },
+      {
+        "title": "Peripheral systems: neuropathy.",
+        "authors": "Maiya RP, Messing RO",
+        "summary": "Mechanistic review: long-term excessive alcohol consumption produces a peripheral neuropathy characterized by axonal degeneration with reduced small and large fiber density; ethanol exerts direct neurotoxic effects via acetaldehyde and oxidative stress and activates protein kinase C epsilon signaling, while dietary vitamin deficiency associated with chronic alcoholism contributes to pathogenesis.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/25307593/"
+      }
+    ],
+    "cfrCitations": [
+      "38 CFR § 3.310(a) (secondary service connection)",
+      "38 CFR § 3.310(b) (aggravation of a nonservice-connected disability, with baseline rule)",
+      "38 CFR § 4.130, General Rating Formula for Mental Disorders (alcohol use disorder; no dedicated diagnostic code in the 9201-9440 list); § 4.14 (avoidance of duplicate evaluation)",
+      "38 CFR § 4.124a, DC 8520 (sciatic nerve) and the other peripheral-nerve codes"
+    ]
+  },
+  {
+    "secondaryCondition": "Diabetic nephropathy (renal involvement in diabetes mellitus, diabetic kidney disease)",
+    "secondaryDiagnosticCode": "7541 (38 CFR § 4.115b — renal involvement in diabetes mellitus type I or II), rated as renal dysfunction under the § 4.115a criteria (100/80/60/30/0 levels keyed to glomerular filtration rate and albumin-creatinine ratio measured over at least 3 consecutive months)",
+    "primaryCondition": "Diabetes mellitus, type II (service-connected)",
+    "primaryDiagnosticCode": "7913 (38 CFR § 4.119 — diabetes mellitus)",
+    "nexusTheory": "Causation",
+    "etiologicalMechanism": "Type 2 diabetes causes diabetic nephropathy through chronic hyperglycemic injury to the glomerulus. Hyperglycemia drives glomerular hyperfiltration and intraglomerular hypertension, non-enzymatic glycation of proteins, and activation of the renin-angiotensin-aldosterone system and of pro-fibrotic growth factors; the resulting mesangial matrix expansion, glomerular basement membrane thickening, and podocyte injury progressively impair the filtration barrier, which appears clinically first as microalbuminuria and then as macroalbuminuria with declining glomerular filtration rate. Hypertension and smoking accelerate the same process, and glycemic control slows it — the therapeutic prediction that anchors the causal direction. The evidence is direct and interventional: a systematic review and meta-analysis of 20 studies across 13 countries found a pooled prevalence of chronic kidney disease among type 2 diabetes patients of 27% (95% CI 21-33%), identifying diabetes as the leading cause of chronic kidney disease; the UK Prospective Diabetes Study randomized trial (3,867 newly diagnosed type 2 diabetes patients followed for 10 years) found that intensive blood-glucose control produced a 25% risk reduction (95% CI 7-40, p = 0.0099) in microvascular endpoints, including the renal manifestations of diabetes; and a longitudinal cohort of 694 type 2 diabetes patients followed 4.5 years documented the natural history — 36.6% with microalbuminuria and 2.4% with macroalbuminuria at baseline, 9.9% progressing albuminuria stage, and 32.5% deteriorating in renal function. Under 38 CFR § 3.310(a), diabetic nephropathy developing in a veteran with service-connected type 2 diabetes is a direct-causation secondary claim. For an 'at least as likely as not' opinion, document the diabetes (onset, duration, control with glycated hemoglobin history), the renal findings (serial urine albumin-creatinine ratios and estimated glomerular filtration rates with dates, and renal imaging where performed), and the chronology of albuminuria relative to diabetes duration; and address competing causes — hypertensive nephrosclerosis (which commonly coexists and is rated under § 4.115 principles regarding the close interrelationships of cardiovascular and renal disability), glomerulonephritis, toxic nephropathy from nonsteroidal anti-inflammatory drugs or other agents (DC 7535), interstitial and gouty nephropathy (DC 7537), multiple myeloma and amyloidosis, and viral nephropathies (DC 7544). Where pre-existing renal disease is documented, § 3.310(b) limits service connection to the attributable aggravation. Because the schedule has a dedicated code for renal involvement in diabetes, the requirement for a diagnostic code is met directly rather than by analogy.",
+    "medicalEvidence": [
+      {
+        "title": "Prevalence and predictors of chronic kidney disease among type 2 diabetic patients worldwide, systematic review and meta-analysis.",
+        "authors": "Fenta ET, Eshetu HB, Kebede N, et al.",
+        "summary": "Systematic review and meta-analysis of 20 studies across 13 countries: the pooled prevalence of chronic kidney disease among type 2 diabetes patients was 27% (95% CI 21-33%), and diabetes is identified as the leading cause of chronic kidney disease.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38012781/"
+      },
+      {
+        "title": "Intensive blood-glucose control with sulphonylureas or insulin compared with conventional treatment and risk of complications in patients with type 2 diabetes (UKPDS 33). UK Prospective Diabetes Study (UKPDS) Group.",
+        "authors": "UK Prospective Diabetes Study (UKPDS) Group",
+        "summary": "Randomized controlled trial of 3,867 newly diagnosed type 2 diabetes patients followed 10 years: intensive blood-glucose control (achieved HbA1c 7.0% vs 7.9%) produced a 25% risk reduction (95% CI 7-40, p = 0.0099) in microvascular endpoints, establishing that glycemic control causally modifies microvascular complication risk including the renal pathway.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/9742976/"
+      },
+      {
+        "title": "Longitudinal Trajectories of Albuminuria and eGFR in Type 2 Diabetes Mellitus: Natural Progression of Diabetic Kidney Disease.",
+        "authors": "Qiao X, Cai Q, Luo Y, et al.",
+        "summary": "Longitudinal cohort of 694 type 2 diabetes patients followed 4.5 years: baseline albuminuria was normoalbuminuric in 61.3%, microalbuminuric in 36.6%, and macroalbuminuric in 2.4%; 9.9% progressed albuminuria stage and 32.5% deteriorated in renal function, documenting the natural progression of diabetic kidney disease.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/40860624/"
+      }
+    ],
+    "cfrCitations": [
+      "38 CFR § 3.310(a) (secondary service connection)",
+      "38 CFR § 3.310(b) (aggravation of a nonservice-connected disability, with baseline rule)",
+      "38 CFR § 4.119, DC 7913 (diabetes mellitus)",
+      "38 CFR § 4.115b, DC 7541 (renal involvement in diabetes mellitus type I or II); § 4.115a (renal dysfunction rating criteria); § 4.115 (nephritis principles)"
+    ]
+  },
+  {
+    "secondaryCondition": "Hypertensive retinopathy (retinal arteriolar and microvascular changes of chronic hypertension)",
+    "secondaryDiagnosticCode": "No dedicated DC — evaluated under the 38 CFR § 4.79 General Rating Formula for Diseases of the Eye, with DC 6006 (retinopathy or maculopathy not otherwise specified) available for the retinopathy findings and visual impairment evaluated under §§ 4.75-4.78 and the 6061-6091 visual-acuity and field codes where present",
+    "primaryCondition": "Hypertension (service-connected)",
+    "primaryDiagnosticCode": "7101 (38 CFR § 4.104 — hypertensive vascular disease; hypertension and isolated systolic hypertension, with a minimum 10-percent evaluation for a history of diastolic pressure predominantly 100 or more who requires continuous medication for control)",
+    "nexusTheory": "Causation",
+    "etiologicalMechanism": "Chronic elevated blood pressure damages the retinal microvasculature in a stereotyped sequence. The retinal arterioles first respond to pressure elevation with autoregulatory vasoconstriction, producing generalized and focal arteriolar narrowing; sustained hypertension then drives arteriolosclerosis — intimal thickening, medial hyperplasia, and hyaline degeneration — visible as arteriovenous nicking and altered vessel light reflexes; with further pressure elevation and endothelial dysfunction the blood-retinal barrier fails, producing flame and dot-blot hemorrhages, microaneurysms, cotton-wool spots, and hard exudates; and in accelerated or malignant hypertension, optic disc and macular edema develop. Because the retinal circulation is a directly visible microvascular bed, these changes track the severity and duration of blood pressure elevation, correlate with other end-organ damage such as left ventricular hypertrophy and renal impairment, and predict stroke and cardiovascular events — and blood pressure control prevents their progression. The clinical evidence is substantial: the Bhaktapur Retina population-based study of 643 elderly subjects with hypertension found hypertensive retinopathy in 12.6% (more frequent in diabetics at 16.49% and in those with body-mass index at or above 25); the classic review of how hypertension affects the eye documents the full spectrum of signs (generalized and focal arteriolar narrowing, arteriovenous nicking, hemorrhages, microaneurysms, and optic disc and macular edema in severe cases) and notes that mild hypertensive retinopathy signs appear in nearly 10% of the general adult non-diabetic population and associate with left ventricular hypertrophy and renal impairment; and the Nature Reviews Disease Primers review of hypertensive eye disease establishes the current clinical-standard framework for the spectrum and its systemic significance. Under 38 CFR § 3.310(a), hypertensive retinopathy developing in a veteran with service-connected hypertension is a direct-causation secondary claim. For an 'at least as likely as not' opinion, document serial blood pressure readings (the schedule requires values confirmed by readings taken two or more times on at least three different days), the fundoscopic findings with their severity or grading, and any visual impairment with acuity and field testing; and exclude competing causes — diabetic retinopathy (which has its own dedicated code and commonly coexists, so the presence of diabetes must be documented and its contribution weighed), retinal vein occlusion, hematologic disorders and coagulopathies, and other retinopathies. Where pre-existing retinopathy or a separate established retinal disease is documented before the hypertension, § 3.310(b) limits service connection to the attributable aggravation.",
+    "medicalEvidence": [
+      {
+        "title": "Prevalence, Associated Factors and Awareness of Hypertensive Retinopathy among an Elderly Population with Hypertension in Nepal: The Bhaktapur Retina Study.",
+        "authors": "Thapa R, Khanal S, Tan HS, et al.",
+        "summary": "Population-based cross-sectional study of 1,860 elderly subjects (643 with hypertension): hypertensive retinopathy was found in 81 hypertensive subjects (12.6%), more frequently in diabetics (16.49%), males (13.25%), and those with body-mass index at or above 25 kg/m2.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/35996903/"
+      },
+      {
+        "title": "How does hypertension affect your eyes?",
+        "authors": "Bhargava M, Ikram MK, Wong TY",
+        "summary": "Review documenting that elevated blood pressure produces hypertensive retinopathy through generalized and focal retinal arteriolar narrowing, arteriovenous nicking, retinal hemorrhages, microaneurysms, and — in severe cases — optic disc and macular edema; mild signs appear in nearly 10% of the general adult non-diabetic population and associate with other end-organ damage such as left ventricular hypertrophy and renal impairment.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/21509040/"
+      },
+      {
+        "title": "Hypertensive eye disease.",
+        "authors": "Cheung CY, Biousse V, Keane PA, et al.",
+        "summary": "Nature Reviews Disease Primers review of hypertensive eye disease characterizing the spectrum of pathological changes in which hypertensive retinopathy is the best-known manifestation, providing the current clinical-standard framework for diagnosis and systemic risk implications.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/35273180/"
+      }
+    ],
+    "cfrCitations": [
+      "38 CFR § 3.310(a) (secondary service connection)",
+      "38 CFR § 3.310(b) (aggravation of a nonservice-connected disability, with baseline rule)",
+      "38 CFR § 4.104, DC 7101 (hypertensive vascular disease)",
+      "38 CFR § 4.79, General Rating Formula for Diseases of the Eye, with DC 6006 (retinopathy or maculopathy not otherwise specified); §§ 4.75-4.78 (visual impairment); §§ 4.14 and 4.25 (avoidance of duplicate evaluation and combination)"
+    ]
+  },
+  {
+    "secondaryCondition": "Gout (diuretic-associated hyperuricemic crystal arthropathy)",
+    "secondaryDiagnosticCode": "No dedicated gout DC — evaluated by analogy under 38 CFR § 4.20 to the § 4.71a joint-schedule entries, such as DC 5002 (arthritis, multi-joint, active process) for active gouty arthritis and DC 5003 for chronic residual arthritic change, with acute attacks and tophaceous disease evaluated under the entry that best reflects the predominant disability picture",
+    "primaryCondition": "Hypertension (service-connected), on chronic thiazide or loop diuretic therapy",
+    "primaryDiagnosticCode": "7101 (38 CFR § 4.104 — hypertensive vascular disease; hypertension and isolated systolic hypertension, with a minimum 10-percent evaluation for a history of diastolic pressure predominantly 100 or more who requires continuous medication for control)",
+    "nexusTheory": "Medication Side Effect",
+    "etiologicalMechanism": "Thiazide and loop diuretics raise serum uric acid and precipitate gout through a renal transport mechanism: volume depletion and reduced tubular flow increase proximal tubular urate reabsorption (net urate retention), and the resulting hyperuricemia is the direct precursor of gout — when serum urate exceeds its solubility, monosodium urate crystals deposit in joints and periarticular tissues and trigger the intense interleukin-1-driven inflammatory response of an acute gout flare, with recurrent attacks producing chronic gouty arthropathy and tophi. The effect is drug-class-specific (potassium-sparing diuretics do not show it), dose- and duration-related, persists during therapy, and is mediated by the change in serum urate — a mechanism confirmed by the observation that adjusting for urate level eliminates the association. The quantitative evidence is strong: a population-based case-control study of 91,530 incident gout cases and matched controls found adjusted odds ratios for current diuretic use of 2.64 (95% CI 2.47-2.83) for loop diuretics, 1.70 (95% CI 1.62-1.79) for thiazide diuretics, and 2.30 (95% CI 1.95-2.70) for thiazide-like diuretics, with combined loop and thiazide use carrying the highest risk (OR 4.65, 95% CI 3.51-6.16) and potassium-sparing agents showing no association (OR 1.06, 95% CI 0.91-1.23); the Atherosclerosis Risk in Communities cohort (5,789 adults with hypertension, 37% on diuretics) found any diuretic associated with incident gout (HR 1.48, 95% CI 1.11-1.98), with thiazide HR 1.44 (1.00-2.10) and loop HR 2.31 (1.36-3.91), a longitudinal serum urate increase of 0.72 mg/dL in those starting diuretics (P < 0.001), and the association becoming null after adjustment for urate — establishing mediation; and a population-based cohort of gout-naive hypertensive adults matched 4,045 to 4,045 found that thiazide initiation carried sustained higher risks of subsequently being prescribed antigout medication (adjusted hazard ratios 2.23, 2.07, and 2.41 for under 30 days, 31-180 days, and over 180 days). Under 38 CFR § 3.310(a), a disability proximately due to or resulting from the treatment of a service-connected condition is itself service-connected, so gout developing on documented chronic thiazide or loop diuretic therapy for service-connected hypertension is a treatment-complication secondary claim; where pre-existing gout or hyperuricemia is documented before diuretic exposure, § 3.310(b) limits service connection to the attributable aggravation. For an 'at least as likely as not' opinion, document the diuretic regimen (agent, dose, duration, dates, and any dose changes), serial serum urate values before and during therapy, the gout diagnosis (monosodium urate crystals on joint aspiration, or validated clinical/imaging criteria such as ultrasound double-contour sign or dual-energy CT), the joint distribution and attack frequency, and the chronology of attacks relative to diuretic initiation; and address competing causes — alcohol use (which has its own route to gout and must be documented), chronic kidney disease with impaired urate excretion, obesity and metabolic syndrome, purine-rich diet and fructose intake, family history, myeloproliferative and lymphoproliferative disorders, psoriasis, and other drugs such as low-dose aspirin and calcineurin inhibitors. Because no diagnostic code specifically addresses gout, the rating proceeds by analogy under § 4.20 to the § 4.71a joint-schedule entries.",
+    "medicalEvidence": [
+      {
+        "title": "Use of diuretics and risk of incident gout: a population-based case-control study.",
+        "authors": "Bruderer S, Bodmer M, Jick SS, Meier CR",
+        "summary": "Population-based case-control study of 91,530 incident gout cases and matched controls: adjusted odds ratios for current use were 2.64 (95% CI 2.47-2.83) for loop diuretics, 1.70 (95% CI 1.62-1.79) for thiazide diuretics, 2.30 (95% CI 1.95-2.70) for thiazide-like diuretics, and 1.06 (95% CI 0.91-1.23) for potassium-sparing agents, with combined loop and thiazide use at OR 4.65 (95% CI 3.51-6.16).",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/24449584/"
+      },
+      {
+        "title": "Diuretic use, increased serum urate levels, and risk of incident gout in a population-based study of adults with hypertension: the Atherosclerosis Risk in Communities cohort study.",
+        "authors": "McAdams DeMarco MA, Maynard JW, Baer AN, et al.",
+        "summary": "Prospective cohort of 5,789 adults with hypertension: any diuretic use was associated with incident gout (HR 1.48, 95% CI 1.11-1.98; thiazide HR 1.44, 1.00-2.10; loop HR 2.31, 1.36-3.91); serum urate rose 0.72 mg/dL in those starting a diuretic (P < 0.001), and the association became null after adjusting for urate level — establishing mediation by serum urate.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/22031222/"
+      },
+      {
+        "title": "Prescribing cascades of antigout medications from thiazide diuretics in gout-naïve hypertensive adults receiving first-line pharmacological management.",
+        "authors": "Lu SY, Hsu HY, Hsieh YW, et al.",
+        "summary": "Population-based retrospective cohort (thiazide group n = 4,192 vs non-thiazide 81,083; 4,045 matched per group after propensity scoring): in gout-naive hypertensive adults, thiazide initiation was associated with sustained higher risk of subsequently being prescribed antigout medications (adjusted hazard ratios 2.23, 2.07, and 2.41 for under 30 days, 31-180 days, and over 180 days).",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38548957/"
+      }
+    ],
+    "cfrCitations": [
+      "38 CFR § 3.310(a) (disability proximately due to or the result of a service-connected disease or injury, including its treatment)",
+      "38 CFR § 3.310(b) (aggravation of a nonservice-connected disability, with baseline rule)",
+      "38 CFR § 4.104, DC 7101 (hypertensive vascular disease)",
+      "38 CFR § 4.20 (analogous rating of gout) and § 4.71a (DC 5002 and DC 5003 joint entries)"
+    ]
+  }
+]
