@@ -50,6 +50,10 @@ The staged graph excludes it and passes the actual graph loader's catalog and qu
 
 The primary owns the mapping `id`; the downstream secondary owns `suggestions[].conditionId`.
 This preserves the application's causal direction, not a reverse "secondary owns its causes" model.
+The converter independently pins each `[host, target, primaryCondition, secondaryCondition]`
+tuple with a committed SHA-256 identity binding. Reordered rows, changed clinical labels and
+reassigned hosts are rejected rather than attaching a mechanism or source to the wrong identity.
+Changing a binding requires explicit review; it is never inferred from current packet order at runtime.
 
 The manifest stores each original JSON row verbatim as data, preserving all eight mapping keys,
 all four evidence keys, ordered CFR citations and the complete annotated projection. The nested
@@ -78,6 +82,8 @@ pathway is `treatment-complication`. No missing enum is invented.
 The converter preserves the proposed nexus classifications and consensus tiers as **research
 proposals**, not findings. All rationales begin with a staging/patient-probability disclaimer.
 Conditional aggravation narratives do not fabricate a baseline or attributable increment.
+Both separately authored aggravation narratives are preserved verbatim in each canonical graph
+edge's `rationale`, since canonical nexus claims intentionally exclude those authored-only fields.
 Alternative etiologies are explicitly curated from the packet differentials; they are not
 inferred from a diagnostic code. All original differential discussion and counter-evidence remain
 available in the rationale and manifest, even where the structured alternatives are summarized.
@@ -171,7 +177,21 @@ tests, TypeScript typecheck, targeted ESLint and whitespace checks. The real cyc
 final staged graph. Saved output hashes and equality against a fresh conversion were rechecked;
 all captured original packets, records and live-data inputs remain unchanged.
 
+The original verification counts above describe the initial conversion checkpoint. During PR
+#519 review, two additional regressions reproduced row-to-identity misattribution and missing
+separate aggravation narratives in graph edges. The converter now rejects identity mismatches
+and preserves both narratives in canonical graph rationales. The affected three graph files and
+manifest were regenerated through the converter; all input/output hashes and unchanged authored
+mappings were rechecked. The converter suite now contains 16 tests.
+
+The PR's required CI production-dependency audit also found the high-severity
+`source-map-js` indexed-source-map denial-of-service advisory (GHSA-68fv-2mgg-jv7q).
+The lockfile was updated from 1.2.1 to patched 1.2.2 without changing the audit gate or direct
+dependencies. Moderate runtime advisories and unpatched development-tool advisories remain
+reported by the existing audit policy; passing the high-severity production gate is not a claim
+that the complete dependency tree is advisory-free.
+
 This is a usable schema-compatible authoring checkpoint. It does not reduce the live unmapped
 count, register any relationship, publish any host, establish a patient-specific medical nexus,
-or clear the remaining qualified-human publication gates. No Git staging, commit or push was
-performed; the pre-existing documentation-test edit remains untouched.
+or clear the remaining qualified-human publication gates. Git commit/push/merge is a separate
+user-authorized repository operation and does not constitute medical publication approval.

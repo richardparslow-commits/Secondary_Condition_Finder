@@ -147,6 +147,28 @@ describe("CRG packet staging converter", () => {
     expect(() => convertRow(aggravation.originalRow, aggravation.projection, { ...CRG_PACKET_PLAN[1][0], baselineProgression: undefined }, 1)).toThrow(/separately authored/);
   });
 
+  it("rejects reordered rows, edited clinical identities and reassigned hosts", () => {
+    const sameHostRow = result.manifest.proposals.find((proposal) => proposal.wave === 1 && proposal.row === 4)!;
+    expect(() => convertRow(sameHostRow.originalRow, first.projection, CRG_PACKET_PLAN[0][0], 1)).toThrow(/Packet identity binding mismatch/);
+    for (const field of ["primaryCondition", "secondaryCondition"] as const) {
+      expect(() => convertRow({ ...first.originalRow, [field]: "Different clinical identity" }, first.projection, CRG_PACKET_PLAN[0][0], 1)).toThrow(/Packet identity binding mismatch/);
+    }
+    expect(() => convertRow(first.originalRow, first.projection, { ...CRG_PACKET_PLAN[0][0], host: "rheumatoid-arthritis" }, 1)).toThrow(/Packet identity binding mismatch/);
+  });
+
+  it("preserves both separately authored aggravation narratives in canonical graph rationales", () => {
+    const aggravations = result.authored.flatMap((mapping) => mapping.suggestions.map((suggestion) => ({ host: mapping.id, suggestion }))).filter(({ suggestion }) => suggestion.nexusClaim.nexusClassification === "AGGRAVATION");
+    expect(aggravations).toHaveLength(3);
+    for (const { host, suggestion } of aggravations) {
+      const edge = result.graph.find((node) => node.nodeId === host)!.outgoingEdges.find((entry) => entry.targetConditionId === suggestion.conditionId)!;
+      expect(edge.rationale).toContain(suggestion.nexusClaim.baselineProgression);
+      expect(edge.rationale).toContain(suggestion.nexusClaim.aggravatingFactor);
+      expect(edge.nexusClaim).not.toHaveProperty("baselineProgression");
+      expect(edge.nexusClaim).not.toHaveProperty("aggravatingFactor");
+      expect(KbNodeMappingSchema.safeParse(result.graph.find((node) => node.nodeId === host)).success).toBe(true);
+    }
+  });
+
   it("accepts annotated enums but refuses malformed, missing or extra projection rows", () => {
     const text = readFileSync(path.join(root, first.validationRecord), "utf8");
     expect(parseProjection(text)).toHaveLength(5);

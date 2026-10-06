@@ -1,0 +1,137 @@
+[
+  {
+    "secondaryCondition": "Obstructive Sleep Apnea",
+    "secondaryDiagnosticCode": "6847 (38 CFR 4.97, sleep apnea syndromes)",
+    "primaryCondition": "Post-Traumatic Stress Disorder (PTSD)",
+    "primaryDiagnosticCode": "9411 (38 CFR 4.130, mental disorders)",
+    "nexusTheory": "Causation",
+    "etiologicalMechanism": "SECTION 3.310 DETERMINATION: association only, not established. Direct causation under 38 CFR 3.310 is the theory advanced here, but the located evidence does not establish it, and the repository records this pair as ASSOCIATION_ONLY. MECHANISM AS PROPOSED: chronic post-traumatic hyperarousal produces repeated nocturnal arousals and fragmented rapid-eye-movement sleep; sustained sympathetic activation raises catecholamine tone and blunts the normal nocturnal blood-pressure dip, while hypothalamic-pituitary-adrenal axis dysregulation elevates cortisol and further destabilises sleep architecture. The proposed downstream consequences are reduced upper-airway muscle tone during unstable sleep states, increased loop gain of the ventilatory control system, and a lower arousal threshold to airway narrowing, each of which can convert a marginal airway into a measurable apnoea-hypopnoea burden. Two secondary contributors are proposed: first, central and mixed apnoea may accompany hyperventilatory instability; second, sedating medications used for post-traumatic symptoms (benzodiazepines, sedative-hypnotics, and weight-promoting psychotropics) independently increase obstructive events, but that is a medication effect and is not part of the psychiatric causal pathway. WHY IT FAILS THE STANDARD: the anchors are a prevalence meta-analysis and a narrative review, not incidence studies with temporal ordering. Post-traumatic stress disorder and obstructive sleep apnea share obesity, autonomic arousal, and sleep-fragmentation physiology, so the direction of effect is not separable, and several studies describe the relationship as bidirectional. For an at-least-as-likely-as-not opinion, the examiner must document a polysomnogram, an established psychiatric baseline, chronology, and must exclude obesity, upper-airway anatomy, alcohol and sedative exposure, and central sleep-disordered breathing.",
+    "medicalEvidence": [
+      {
+        "title": "Prevalence of obstructive sleep apnea in patients with posttraumatic stress disorder and its impact on adherence to continuous positive airway pressure therapy: a meta-analysis",
+        "authors": "Zhang Y, Weed JG, Ren R, Tang X, Zhang W",
+        "summary": "Meta-analysis reporting a high pooled prevalence of obstructive sleep apnea among patients with post-traumatic stress disorder and reduced continuous-positive-airway-pressure adherence. It quantifies co-occurrence and treatment burden but is a prevalence estimate, so it does not establish that the psychiatric condition caused the sleep-disordered breathing.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/28735910/"
+      },
+      {
+        "title": "A Narrative Review of the Association between Post-Traumatic Stress Disorder and Obstructive Sleep Apnea",
+        "authors": "McCall CA, Watson NF",
+        "summary": "Reviews the post-traumatic stress disorder and obstructive sleep apnea association and discusses shared arousal, autonomic, and rapid-eye-movement mechanisms. It explicitly frames the relationship as probably bidirectional, which is why this mapping is limited to association rather than causation.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/35054110/"
+      }
+    ],
+    "cfrCitations": [
+      "38 CFR § 3.310 (service-connected disability caused by or aggravated by a service-connected disability)",
+      "38 CFR 4.97, Schedule of ratings, respiratory system (DC 6847)",
+      "38 CFR 4.130, Schedule of ratings, mental disorders (DC 9411)"
+    ]
+  },
+  {
+    "secondaryCondition": "Gastroesophageal Reflux Disease (GERD)",
+    "secondaryDiagnosticCode": "7346 (38 CFR 4.114, digestive system; hiatal hernia and reflux evaluation)",
+    "primaryCondition": "Osteoarthritis / Degenerative Arthritis",
+    "primaryDiagnosticCode": "5003 (38 CFR 4.71a, musculoskeletal system)",
+    "nexusTheory": "Medication Side Effect",
+    "etiologicalMechanism": "SECTION 3.310 DETERMINATION: supported as a medication-related secondary connection. The joint disease does not cause reflux structurally; the proximate agent is prescribed therapy for the service-connected joint condition, which is the paradigm 38 CFR 3.310 recognises where treatment for a service-connected disability produces a new disability. PHARMACOLOGICAL MECHANISM: systemic non-steroidal anti-inflammatory drugs inhibit cyclo-oxygenase-1 and cyclo-oxygenase-2, reducing prostaglandin synthesis throughout the gastroduodenal mucosa. Prostaglandins normally stimulate mucus and bicarbonate secretion, maintain mucosal blood flow, and promote epithelial repair; suppressing them weakens the mucosal barrier and permits acid-mediated injury. Separately, reduced prostaglandin tone lowers lower-oesophageal-sphincter pressure and delays gastric emptying, so both the volume and the dwell time of acid in the oesophagus increase. The result is the reflux symptom complex, and in a subset, erosive oesophagitis and gastroduodenal ulceration, which amplify symptom reporting and complicate attribution. Individual nexus reasoning: an at-least-as-likely-as-not opinion here rests on fourth-element evidence that is unusually objective for a secondary claim. The examiner should establish the drug exposure from pharmacy records (agent, dose, duration), demonstrate chronology between initiation and symptom onset, and where available show dechallenge (improvement on withdrawal) and rechallenge (recurrence on resumption), which together move the opinion well past equipoise. Cofounders to exclude: hiatal hernia, obesity, alcohol and tobacco exposure, obstructive sleep apnea, and Helicobacter pylori infection. Over-the-counter agents count as exposure and must be documented, not assumed away.",
+    "medicalEvidence": [
+      {
+        "title": "Nonsteroidal anti-inflammatory drug use as a risk factor for gastro-oesophageal reflux disease: an observational study",
+        "authors": "Ruszniewski P, Soufflet C, Barthélemy P",
+        "summary": "Large observational study finding non-steroidal anti-inflammatory drug or aspirin use to be a significant risk factor for reflux symptoms, which were significantly more common among users than non-users. It supports the medication-to-symptom relationship while carrying the usual observational limits of confounding and detection bias.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/18671778/"
+      },
+      {
+        "title": "Assessing NSAID prescription use as a predisposing factor for gastroesophageal reflux disease in a Medicaid population",
+        "authors": "Kotzan J, Wade W, Yu HH",
+        "summary": "Population study reporting that non-steroidal anti-inflammatory drug prescriptions are associated with gastro-oesophageal reflux disease, with higher risk in women, alcohol and tobacco users, and patients with hiatal hernia or obesity. It confirms the predisposing association and identifies the specific confounders this nexus must address.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/11683254/"
+      }
+    ],
+    "cfrCitations": [
+      "38 CFR § 3.310 (secondary service connection, including disability caused by treatment for a service-connected disability)",
+      "38 CFR 4.114, Schedule of ratings, digestive system (DC 7346)",
+      "38 CFR 4.71a, Schedule of ratings, musculoskeletal system (DC 5003)"
+    ]
+  },
+  {
+    "secondaryCondition": "Migraine Headaches",
+    "secondaryDiagnosticCode": "8100 (38 CFR 4.124a, neurological conditions; not present in the repository catalog entry, pending manual review)",
+    "primaryCondition": "Tinnitus",
+    "primaryDiagnosticCode": "6260 (38 CFR 4.87, schedule of ratings, ear)",
+    "nexusTheory": "Causation",
+    "etiologicalMechanism": "SECTION 3.310 DETERMINATION: association only, not established, and the requested direction is not the direction the literature runs. Direct causation is the theory advanced here, but it cannot be supported as written. MECHANISM AS PROPOSED: chronic tinnitus reflects persistent aberrant activity in central auditory pathways following cochlear or auditory-nerve insult. The hypothesised downstream cascade is cross-modal central sensitisation, in which sustained auditory-limbic and auditory-somatosensory activation lowers the threshold of an already hyperexcitable trigeminovascular system; cortical excitability changes, sleep fragmentation from nocturnal tinnitus, and autonomic arousal are then offered as amplifiers that could trigger or worsen migraine attacks. DIRECTION PROBLEM: the located studies are cross-sectional and largely examine migraine and headache as the exposure with tinnitus as the outcome. A United States population analysis found tinnitus more common in migraine, and a young-adult cohort found the headache-tinnitus association strongest for migraine with aura. Reading either as proof that tinnitus produced a migraine disorder inverts the arrow the authors studied. An at-least-as-likely-as-not opinion is therefore not supportable on this evidence in this direction; the honest posture is to develop the case on an individual basis with headache diaries showing a temporal relationship to tinnitus onset, a qualified primary-headache diagnosis, negative medication-overuse headache, and exclusion of temporomandibular dysfunction, cervicogenic pain, and obstructive sleep apnea. If a nexus is ultimately asserted, it should be framed as aggravation of a documented pre-existing headache baseline rather than new onset, and it requires a specific medical opinion addressing direction.",
+    "medicalEvidence": [
+      {
+        "title": "Association Between Headaches and Tinnitus in Young Adults: Cross-Sectional Study",
+        "authors": "Guichard E, Montagni I, Tzourio C, Kurth T",
+        "summary": "Cross-sectional cohort study reporting an association between headache and tinnitus that was strongest for migraine with aura. It supports an association but is cross-sectional and treats headache as the exposure, so it cannot establish that tinnitus caused migraine.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/27197786/"
+      },
+      {
+        "title": "Tinnitus and Subjective Hearing Loss are More Common in Migraine: A Cross-Sectional NHANES Analysis",
+        "authors": "Goshtasbi K, Abouzari M, Risbud A, Mostaghni N, Muhonen EG, Martin E, Djalilian HR",
+        "summary": "United States population analysis reporting an independent association between migraine and both subjective hearing loss and tinnitus. The exposure is migraine, so the study again runs opposite the direction claimed here.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34238896/"
+      }
+    ],
+    "cfrCitations": [
+      "38 CFR § 3.310 (service-connected disability caused by or aggravated by a service-connected disability)",
+      "38 CFR 4.124a, Schedule of ratings, neurological conditions and convulsive disorders (DC 8100)",
+      "38 CFR 4.87, Schedule of ratings, ear (DC 6260)"
+    ]
+  },
+  {
+    "secondaryCondition": "Radiculopathy",
+    "secondaryDiagnosticCode": "8510 (sciatic nerve) / 8520 (upper extremity) under 38 CFR 4.124a; the repository catalog entry carries no rating citation and is pending manual review",
+    "primaryCondition": "Degenerative Disc Disease",
+    "primaryDiagnosticCode": "5243 (38 CFR 4.71a, intervertebral disc syndrome)",
+    "nexusTheory": "Causation",
+    "etiologicalMechanism": "SECTION 3.310 DETERMINATION: supported as direct causation. This is the clearest mechanical secondary connection among the five, because the mechanism is established rather than hypothesised; the contested question in an individual case is not whether the mechanism exists but whether the findings are anatomically concordant. BIOMECHANICAL MECHANISM: disc degeneration begins with proteoglycan loss and desiccation of the nucleus pulposus, reducing intradiscal pressure and disc height. As the annulus fibrosus loses competence, annular tears propagate and disc material protrudes or herniates, most often posterolaterally where the posterior longitudinal ligament is thinnest. The herniated fragment contacts the exiting nerve root and dorsal root ganglion, producing mechanical deformation and, independently, a neuroinflammatory insult: nucleus pulposus material is immunologically privileged, and its exposure to the epidural space recruits macrophages and releases tumour necrosis factor-alpha, interleukin-1, and prostaglandin E2, which sensitise nociceptors and generate ectopic discharges in the compressed root. Loss of disc height also increases facet-joint loading posteriorly, narrowing the neural foramen and lateral recess, so foraminal stenosis contributes to the same compromise. The clinical result is segmental radicular pain with dermatomal sensory change, myotomal weakness, and reflex alteration. HARD ANATOMICAL REQUIREMENT: imaging must demonstrate degenerative disc pathology capable of compromising a nerve root at a recorded level and side, and clinical plus electrodiagnostic findings must correspond to that level. Do not infer radiculopathy from degenerative imaging alone, from axial pain, or from nonspecific paraesthesias. Exclude peripheral entrapment neuropathy, plexopathy, myelopathy, canal stenosis, and non-degenerative structural lesions including tumour, infection, and fracture.",
+    "medicalEvidence": [
+      {
+        "title": "Outcome of Anterior and Posterior Endoscopic Procedures for Cervical Radiculopathy Due to Degenerative Disk Disease: A Systematic Review and Meta-Analysis",
+        "authors": "Alomar SA, Maghrabi Y, Baeesa SS, Alves OL",
+        "summary": "Systematic review and meta-analysis addressing cervical radiculopathy due to degenerative disc disease, restricted to anatomically concordant cervical nerve-root disease. The clinical entity itself is defined by the causal relationship, supporting causation at the condition level.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34402323/"
+      },
+      {
+        "title": "Lumbar disc herniation with contralateral radiculopathy: a systematic review on pathophysiology and surgical strategies",
+        "authors": "Ruschel LG, Agnoletto GJ, Aragao A, Duarte JS, de Oliveira MF, Teles AR",
+        "summary": "Systematic review of the pathophysiology of radiculopathy from disc herniation. It supports the mechanical and inflammatory mechanism by which herniated disc material compromises a nerve root, and its finding of anatomically indirect presentations is why concordance testing is mandatory rather than optional.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/32281018/"
+      }
+    ],
+    "cfrCitations": [
+      "38 CFR § 3.310 (service-connected disability caused by a service-connected disability)",
+      "38 CFR 4.71a, Schedule of ratings, musculoskeletal system (DC 5243)",
+      "38 CFR 4.124a, Schedule of ratings, neurological conditions (peripheral nerve ratings applied to radiculopathy)"
+    ]
+  },
+  {
+    "secondaryCondition": "Erectile Dysfunction",
+    "secondaryDiagnosticCode": "7522 (38 CFR 4.115b, ratings of the genitourinary system, diagnoses)",
+    "primaryCondition": "Major Depressive Disorder",
+    "primaryDiagnosticCode": "9434 (38 CFR 4.130, mental disorders)",
+    "nexusTheory": "Medication Side Effect",
+    "etiologicalMechanism": "SECTION 3.310 DETERMINATION: supported as a medication-related secondary connection, and this is the strongest of the five. The exposure is externally imposed by treatment for a service-connected condition, the mechanism is pharmacological rather than speculative, and the repository already records this pair as direct causation on an iatrogenic basis. PHARMACOLOGICAL MECHANISM: selective serotonin reuptake inhibitors increase synaptic serotonin. Centrally, heightened serotonergic tone at postsynaptic 5-HT2 receptors reduces dopaminergic and noradrenergic outflow to the spinal sexual reflex centres, suppressing libido and arousal; a secondary spinal effect disinhibits the ejaculatory reflex, producing delayed ejaculation and anorgasmia that co-travel with erectile dysfunction. Peripherally, serotonin attenuates nitric-oxide synthase signalling in cavernosal endothelium and smooth muscle, so the cyclic-GMP cascade that relaxes cavernosal smooth muscle and sustains engorgement is blunted. The result is impaired attainment and maintenance of erection attributable to the drug. Individual nexus reasoning: the examiner should identify the specific agent, dose, and dates of initiation and change from the treatment record; establish that symptoms began with initiation or dose escalation; and record any dechallenge improvement on dose reduction, switch, or cessation. Competitors to exclude: vascular disease, diabetes, hypertension, smoking, alcohol, testosterone deficiency, thyroid disease, opioids, antihypertensives, 5-alpha-reductase inhibitors, pelvic surgery, and peripheral neuropathy. Two boundaries are essential: sexual dysfunction in a depressed population is partly attributable to the mood disorder itself, so the drug-specific component must be isolated rather than assumed; and erectile dysfunction and ejaculatory or orgasmic dysfunction are related but distinct outcomes under the rating schedule that must be claimed and documented separately.",
+    "medicalEvidence": [
+      {
+        "title": "Sexual dysfunction associated with selective serotonin reuptake inhibitors in adults with depression: a systematic review and meta-analysis",
+        "authors": "Dagostin Ferraz S, Kuyunga L, Rech P, Rodrigues Uggioni ML, Rodrigues Candido AC, Dagostin VS, Silva FR, Colonetti T, Grande AJ, da Rosa MI",
+        "summary": "Systematic review and meta-analysis reporting that selective serotonin reuptake inhibitor treatment is consistently associated with sexual dysfunction in adults with depression, particularly orgasmic dysfunction and reduced sexual satisfaction. This is the strongest available anchor for the iatrogenic classification.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/41721013/"
+      },
+      {
+        "title": "Treatment-emergent sexual dysfunction related to antidepressants: a meta-analysis",
+        "authors": "Serretti A, Chiesa A",
+        "summary": "Meta-analysis of treatment-emergent sexual dysfunction related to antidepressants, establishing the effect size across agents and distinguishing drug-attributable dysfunction from baseline depression-related dysfunction. It supplies the drug-specific component this nexus requires.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/19440080/"
+      }
+    ],
+    "cfrCitations": [
+      "38 CFR § 3.310 (secondary service connection, including disability caused by treatment for a service-connected disability)",
+      "38 CFR 4.115b, Ratings of the genitourinary system, diagnoses (DC 7522)",
+      "38 CFR 4.130, Schedule of ratings, mental disorders (DC 9434)"
+    ]
+  }
+]
