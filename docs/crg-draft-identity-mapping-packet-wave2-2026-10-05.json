@@ -1,0 +1,174 @@
+[
+  {
+    "secondaryCondition": "Migraine headache (aggravated by persistent tinnitus)",
+    "secondaryDiagnosticCode": "8100 (38 CFR § 4.124a — migraine; rated by the frequency and prostration of attacks)",
+    "primaryCondition": "Tinnitus, recurrent (service-connected)",
+    "primaryDiagnosticCode": "6260 (38 CFR § 4.87 — tinnitus, recurrent; 10% maximum, combinable where it does not support another ear rating)",
+    "nexusTheory": "Aggravation",
+    "etiologicalMechanism": "Persistent tinnitus can aggravate an existing migraine diathesis through converging neurophysiological and behavioral mechanisms. Tinnitus is not a passive percept: chronic cochlear injury and deafferentation trigger maladaptive central plasticity, increased central auditory gain, and thalamocortical dysrhythmia, with limbic and salience-network modulation that attaches threat and distress to the sound; stress and sleep disruption further entrench the maladaptive state. In a brain already predisposed to migraine — a disorder of multisensory sensitization — this persistent auditory load lowers attack threshold through central sensitization, cortical hyperexcitability, and overlapping neurochemical pathways (glutamatergic excitotoxicity, neuropeptide signaling, and innate immune activation), while the distress, hypervigilance, and sleep fragmentation that accompany bothersome tinnitus amplify trigeminovascular activation and reduce habituation. The clinical literature documents the intersection: a systematic review of six studies (26,166 participants) found most studies demonstrating an association between migraine and tinnitus, with high odds and hazard ratios for tinnitus in migraine populations and migraine present in 10.1% and 22.5% of tinnitus patients in two studies; a 2026 review reports that 15-49% of migraine patients have comorbid auditory symptoms including tinnitus and that nearly two-thirds show auditory electrophysiological abnormalities; and the current authoritative tinnitus review identifies migraine, anxiety, depression, and insomnia as frequent comorbidities and describes the central-gain and thalamocortical-dysrhythmia mechanisms that plausibly drive bidirectional symptom amplification. Because most of the located evidence is cross-sectional or directionally weighted toward migraine as the exposure (migraine-to-tinnitus), this mapping is framed as aggravation under 38 CFR § 3.310(b), not as de novo causation: service connection is warranted only for the increase in migraine frequency, severity, or prostration proximately attributable to service-connected tinnitus, measured against a baseline established by medical evidence created before the aggravation or the earliest evidence between onset and current severity. For an 'at least as likely as not' opinion, document the pre-tinnitus migraine baseline (attack frequency, duration, and disability before tinnitus onset), the timing and severity of the tinnitus and its associated distress and sleep disruption, the subsequent change in migraine pattern, and effective audiologic and neurologic evaluation; exclude medication-overuse headache, new-onset primary headache, structural or vascular causes, and independent progression of the underlying migraine disorder. Where no pre-existing migraine is documented, a causation theory under § 3.310(a) may be advanced, but it requires temporal precedence of the tinnitus and an individualized opinion because the located population evidence does not establish the tinnitus-to-migraine direction.",
+    "medicalEvidence": [
+      {
+        "title": "Migraine associated with tinnitus and hearing loss in adults: a systematic review.",
+        "authors": "Campello CP, Lemos CAA, et al.",
+        "summary": "Systematic review (PROSPERO-registered, PRISMA) of six eligible observational studies with 26,166 participants: most studies showed an association between migraine and tinnitus, with high odds and hazard ratios for tinnitus in migraine; two investigations found migraine in 10.1% and 22.5% of tinnitus patients.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/36459425/"
+      },
+      {
+        "title": "Migraine and auditory dysfunction: beyond comorbidity.",
+        "authors": "Xu W, Zhai N, et al.",
+        "summary": "Review of epidemiological, audiological, and pathophysiological data: 15-49% of migraine patients present comorbid auditory symptoms (sensorineural hearing loss, tinnitus, hyperacusis) and nearly two-thirds show auditory electrophysiological abnormalities; proposed mechanisms span localized microvascular ischemia, glutamate excitotoxicity, neuropeptide signaling, and innate immune activation across a peripheral-to-central sensitization continuum.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/42371148/"
+      },
+      {
+        "title": "Tinnitus.",
+        "authors": "Vanneste S, De Ridder D, et al.",
+        "summary": "Nature Reviews Disease Primers review: tinnitus affects approximately 14% of adults (2% severe); cochlear injury and deafferentation trigger maladaptive plasticity, increased central gain, and thalamocortical dysrhythmia modulated by limbic and salience networks; migraine, anxiety, depression, and insomnia are frequent comorbidities influencing assessment and care.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/42168216/"
+      }
+    ],
+    "cfrCitations": [
+      "38 CFR § 3.310(b) (aggravation of a nonservice-connected disability, with the baseline-evidence rule)",
+      "38 CFR § 3.310(a) (secondary service connection, where causation rather than aggravation is asserted)",
+      "38 CFR § 4.87, DC 6260 (tinnitus, recurrent)",
+      "38 CFR § 4.124a, DC 8100 (migraine)"
+    ]
+  },
+  {
+    "secondaryCondition": "Gastroesophageal reflux disease (NSAID-associated)",
+    "secondaryDiagnosticCode": "7206 (38 CFR § 4.114 — gastroesophageal reflux disease; rated by stricture history, dysphagia, and treatment requirements)",
+    "primaryCondition": "Osteoarthritis (service-connected), on chronic NSAID therapy",
+    "primaryDiagnosticCode": "5003 (38 CFR § 4.71a — degenerative arthritis, other than post-traumatic)",
+    "nexusTheory": "Medication Side Effect",
+    "etiologicalMechanism": "Chronic nonsteroidal anti-inflammatory drug (NSAID) therapy injures the esophageal mucosa and promotes reflux disease through inhibition of cyclooxygenase-1-mediated prostaglandin synthesis and direct topical injury. Prostaglandins maintain mucosal blood flow, bicarbonate and mucus secretion, epithelial restitution, and mucosal immunoregulation throughout the upper gastrointestinal tract; their depletion leaves the esophageal epithelium vulnerable to acid-pepsin injury, while the weakly acidic NSAID molecule itself can cause topical injury during reflux episodes (the mechanism of action proposed in the case-control literature for NSAID-associated esophageal ulceration). Because many patients with service-connected osteoarthritis take NSAIDs continuously for years, the exposure is typically prolonged and often combined with other reflux risk factors (hiatus hernia, obesity, smoking, age), producing an additive risk profile. The population evidence is direct: a prospective case-control study of 195 patients receiving continuous NSAIDs for osteoarthritis found endoscopically diagnosed esophagitis in 41 patients (21%), with hiatus hernia (OR 3.72, 95% CI 1.63-8.49) and younger age (OR 1.79 per decade, 95% CI 1.11-2.86) increasing risk, and heartburn was reported by all esophagitis patients (OR 4.78, 95% CI 2.04-11); a meta-analysis of 102 population-based studies (460,984 subjects) found NSAID/aspirin users had modestly but significantly higher odds of gastro-oesophageal reflux symptoms (OR 1.44, 95% CI 1.10-1.88); and a mechanism review documents esophagitis among the upper gastrointestinal adverse effects of COX-1 inhibition by NSAIDs and aspirin. Under 38 CFR § 3.310(a), a disability proximately due to or resulting from the treatment of a service-connected condition is itself service-connected, so endoscopically documented GERD or reflux esophagitis arising on documented chronic NSAID therapy for service-connected osteoarthritis is a treatment-complication secondary claim; where reflux disease predates the NSAID exposure, § 3.310(b) limits service connection to the attributable aggravation measured against the baseline. For an 'at least as likely as not' opinion, document the specific NSAID, dose, duration, and adherence; endoscopic or clinically documented reflux disease with symptom chronology relative to NSAID initiation; and address competing causes — hiatus hernia and other anatomic factors, obesity, smoking, alcohol, pregnancy, scleroderma or other motility disorders, and proton-pump inhibitor or other acid-suppression history. Rating under DC 7206 requires the documented stricture/dysphagia and treatment picture specified by the schedule; uncomplicated reflux disease is evaluated under the applicable criteria in § 4.114 or by analogy under § 4.20.",
+    "medicalEvidence": [
+      {
+        "title": "Risk factors of oesophagitis in arthritic patients.",
+        "authors": "Avidan B, Sonnenberg A, et al.",
+        "summary": "Prospective case-control study of 195 patients on continuous NSAIDs for osteoarthritis: endoscopically diagnosed esophagitis in 41 patients (21%); hiatus hernia (OR 3.72, 95% CI 1.63-8.49) and younger age (OR 1.79 per decade, 95% CI 1.11-2.86) increased risk, and heartburn was present in all esophagitis patients (OR 4.78, 95% CI 2.04-11).",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/11564962/"
+      },
+      {
+        "title": "Global prevalence of, and risk factors for, gastro-oesophageal reflux symptoms: a meta-analysis.",
+        "authors": "Eusebi LH, Ratnakumaran R, et al.",
+        "summary": "Meta-analysis of 102 population-based studies (460,984 subjects): weekly heartburn/regurgitation prevalence 13.3% (95% CI 12.0-14.6); NSAID/aspirin users had significantly higher odds of reflux symptoms (OR 1.44, 95% CI 1.10-1.88), alongside age 50+ (OR 1.32), smoking (OR 1.26), and obesity (OR 1.73).",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/28232473/"
+      },
+      {
+        "title": "Nonsteroidal antiinflammatory drugs and cyclooxygenase inhibition in the gastrointestinal tract: a trip from peptic ulcer to colon cancer.",
+        "authors": "Lanas A",
+        "summary": "Mechanistic review: COX-1 inhibition by NSAIDs and aspirin is linked to upper gastrointestinal adverse effects including esophagitis, peptic ulcer, and ulcer complications; the review describes the prostaglandin-dependent mucosal defense pathways whose blockade produces the injury.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/19680014/"
+      }
+    ],
+    "cfrCitations": [
+      "38 CFR § 3.310(a) (disability proximately due to or the result of a service-connected disease or injury, including its treatment)",
+      "38 CFR § 3.310(b) (aggravation of a nonservice-connected disability, with baseline rule)",
+      "38 CFR § 4.71a, DC 5003 (degenerative arthritis, other than post-traumatic)",
+      "38 CFR § 4.114, DC 7206 (gastroesophageal reflux disease) and § 4.20 (analogous rating for unlisted reflux pictures)"
+    ]
+  },
+  {
+    "secondaryCondition": "Seizure disorder (post-traumatic epilepsy, unprovoked seizures)",
+    "secondaryDiagnosticCode": "8910-8914 (38 CFR § 4.124a — epilepsy: grand mal 8910, petit mal 8911, Jacksonian/focal 8912, diencephalic 8913, psychomotor 8914; rated under the major- and minor-seizure formulas)",
+    "primaryCondition": "Traumatic brain injury (moderate or severe, service-connected), with residuals",
+    "primaryDiagnosticCode": "8045 (38 CFR § 4.124a — residuals of traumatic brain injury)",
+    "nexusTheory": "Causation",
+    "etiologicalMechanism": "Traumatic brain injury produces epilepsy through a well-characterized epileptogenic cascade. Focal cortical contusion, subdural and subarachnoid hemorrhage, and shearing of white-matter tracts create a structural lesion with hemosiderin deposition, blood-brain-barrier disruption, and reactive gliosis; injured neurons and glia release glutamate and inflammatory mediators that produce excitotoxic injury, while loss of inhibitory interneurons and aberrant axonal sprouting (mossy fiber reorganization) establish a hyperexcitable network capable of spontaneous seizure generation. The latent period between injury and the first unprovoked seizure reflects this progressive epileptogenesis, and lesional features visible on imaging (cortical contusion, subdural hematoma) are among the most consistently reported risk factors. The epidemiological evidence is strong and severity-dependent: a population-based cohort of 4,541 patients with TBI (Olmsted County, 1935-1984) found an overall standardized incidence ratio of 3.1 (95% CI 2.5-3.8), with SIR 1.5 after mild injury (no increase beyond five years), 2.9 after moderate injury, and 17.0 after severe injury; a Danish population-based cohort of 1,605,216 people found relative risks of 2.22 (95% CI 2.07-2.38) after mild injury, 7.40 (6.16-8.89) after severe injury, and 2.17 (1.73-2.71) after skull fracture, with risk still elevated more than 10 years later (severe injury RR 4.29, 95% CI 2.04-9.00) and especially high in those injured after age 15 (severe injury RR 12.24, 95% CI 8.52-17.57); and a 2026 systematic review and meta-analysis of 11 studies (242,803 patients) found a pooled post-traumatic seizure incidence of 7.2% (95% CI 5.4-9.3), with severe TBI, subdural hematoma, cortical contusions, and older age the most consistently reported risk factors in individual studies. Legally, 38 CFR § 3.310(d)(1)(ii) provides that unprovoked seizures following moderate or severe TBI are held to be the proximate result of the service-connected TBI absent clear evidence to the contrary; where the injury was mild or the claim falls outside the presumption, § 3.310(d)(2) routes the claim to generally applicable principles and a § 3.310(a) opinion. For an 'at least as likely as not' opinion, document the TBI and its severity using the § 3.310(d)(3) criteria, the imaging findings (contusion, hemorrhage, encephalomalacia), the seizure semiology with a witness account and the date of first unprovoked seizure relative to the injury, and the electroencephalographic and neurologic workup; exclude competing causes — pre-existing epilepsy, alcohol withdrawal, metabolic derangements, medication or drug effects, central nervous system infection, tumor, and syncope or non-epileptic events misclassified as seizures. Where seizures predate the injury, only attributable worsening is service-connected under § 3.310(b).",
+    "medicalEvidence": [
+      {
+        "title": "A population-based study of seizures after traumatic brain injuries.",
+        "authors": "Annegers JF, Hauser WA, Coan SP, et al.",
+        "summary": "Population-based cohort of 4,541 patients with TBI: overall standardized incidence ratio for unprovoked seizures 3.1 (95% CI 2.5-3.8), rising with injury severity (mild 1.5 with no increase beyond five years, moderate 2.9, severe 17.0); significant risk factors included brain contusion with subdural hematoma, skull fracture, loss of consciousness or amnesia for more than one day, and age 65 or older.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/9414327/"
+      },
+      {
+        "title": "Long-term risk of epilepsy after traumatic brain injury in children and young adults: a population-based cohort study.",
+        "authors": "Christensen J, Pedersen MG, et al.",
+        "summary": "Nationwide Danish cohort of 1,605,216 people: relative risk of epilepsy was 2.22 (95% CI 2.07-2.38) after mild TBI, 7.40 (6.16-8.89) after severe TBI, and 2.17 (1.73-2.71) after skull fracture, with risk still elevated more than 10 years later (severe TBI RR 4.29) and highest in those injured after age 15 (mild RR 3.51; severe RR 12.24).",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/19233461/"
+      },
+      {
+        "title": "Clinical risk factors for post-traumatic seizures: a systematic review and meta-analysis.",
+        "authors": "Viaroli E, Gillespie C, et al.",
+        "summary": "Systematic review and meta-analysis of 11 studies and 242,803 adults with TBI: pooled incidence of post-traumatic seizures 7.2% (95% CI 5.4-9.3); the most consistently reported risk factors on multivariable analysis were severe TBI or lower Glasgow Coma Scale score, subdural hematoma, cortical contusions, and age, although pooled estimates were limited by heterogeneity.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/41686304/"
+      }
+    ],
+    "cfrCitations": [
+      "38 CFR § 3.310(d)(1)(ii) (unprovoked seizures following moderate or severe TBI are held to be the proximate result of the service-connected TBI)",
+      "38 CFR § 3.310(d)(2) (claims outside the presumption decided under generally applicable principles) and § 3.310(a) (secondary service connection)",
+      "38 CFR § 3.310(d)(3) (TBI severity criteria)",
+      "38 CFR § 4.124a, DC 8045 (residuals of traumatic brain injury)",
+      "38 CFR § 4.124a, DC 8910-8914 (epilepsy; major- and minor-seizure formulas)"
+    ]
+  },
+  {
+    "secondaryCondition": "Dementia / major neurocognitive disorder (TBI-associated)",
+    "secondaryDiagnosticCode": "9304 (38 CFR § 4.130 — major or mild neurocognitive disorder due to traumatic brain injury); phenotype-specific codes include 9312 (due to Alzheimer's disease) and 9310 (unspecified); 9305 (vascular) is not on the § 3.310(d)(1)(iii) presumption list",
+    "primaryCondition": "Traumatic brain injury (moderate or severe, service-connected), with residuals",
+    "primaryDiagnosticCode": "8045 (38 CFR § 4.124a — residuals of traumatic brain injury)",
+    "nexusTheory": "Causation",
+    "etiologicalMechanism": "Traumatic brain injury increases the long-term risk of dementia through injury-driven neurodegenerative and vascular mechanisms. Focal contusions, diffuse axonal injury, and microhemorrhages initiate persistent neuroinflammation (microglial and astrocytic activation), blood-brain-barrier disruption, mitochondrial dysfunction, and impaired protein clearance, promoting accumulation of amyloid-beta and hyperphosphorylated tau; these proteinopathies, together with synaptic loss and reduced cognitive reserve, are the leading hypotheses linking TBI to Alzheimer-type and related dementias. Injury to small vessels and repeated episodes of impaired perfusion contribute an additional vascular burden. Several features support a causal rather than coincidental relationship: risk is dose-dependent (increasing with the number and severity of injuries), persists over decades, and is present when TBI is compared both with uninjured people and with people who sustained non-head trauma. Quantitatively, a Danish nationwide cohort of 2,794,852 people (27.6 million person-years; 132,093 with at least one TBI) found a fully adjusted hazard ratio for all-cause dementia of 1.24 (95% CI 1.21-1.27) and for Alzheimer's disease 1.16 (1.12-1.22), with the highest risk in the first six months after injury (HR 4.06, 3.79-4.34) and a graded increase with the number of TBIs (HR 1.22 after one, rising to 2.83 after five or more); a meta-analysis of 32 studies found a pooled risk ratio of 1.66 (95% CI 1.42-1.93) for dementia after TBI, with the population attributable risk among U.S. veterans twice that of the general population; and a veteran-specific meta-analysis of 13 cohorts (more than 7.1 million observations) found all-cause dementia HR 1.95 (95% CI 1.55-2.45) and vascular dementia HR 2.02 (1.46-2.80), with higher risk after severe or penetrating injury (HR 3.35) than after moderate (2.82) or mild (1.91) injury, while the association with Alzheimer's disease alone was not statistically significant (HR 1.30, 0.88-1.91). Legally, 38 CFR § 3.310(d)(1)(iii) provides that presenile dementia of the Alzheimer type, frontotemporal dementia, and dementia with Lewy bodies are held to be the proximate result of a service-connected TBI if they manifest within 15 years following moderate or severe TBI; the presumption is diagnosis- and timing-specific, and dementias outside that list (including vascular dementia) are decided under § 3.310(d)(2) on generally applicable principles with a § 3.310(a) opinion. For an 'at least as likely as not' opinion, document the TBI and its severity under § 3.310(d)(3), the dementia phenotype with formal neurocognitive testing and the date of manifestation relative to the injury, and the neurologic, psychiatric, and laboratory workup; exclude competing causes — Alzheimer's disease occurring independently of trauma, vascular dementia from hypertension or stroke, Parkinson's disease and Lewy body disease occurring independently, alcohol-related cognitive impairment, medication effects, depression with cognitive symptoms, thyroid disease, vitamin B12 deficiency, and normal-pressure hydrocephalus. Where cognitive decline predates the injury or arises from another established cause, only attributable aggravation can be service-connected under § 3.310(b).",
+    "medicalEvidence": [
+      {
+        "title": "Long-term risk of dementia among people with traumatic brain injury in Denmark: a population-based observational cohort study.",
+        "authors": "Fann JR, Ribe AR, et al.",
+        "summary": "Nationwide Danish cohort of 2,794,852 people (27,632,020 person-years): fully adjusted hazard ratio for all-cause dementia after TBI 1.24 (95% CI 1.21-1.27) and for Alzheimer's disease 1.16 (1.12-1.22); risk was highest in the first six months (HR 4.06) and increased with the number of TBIs (1.22 after one to 2.83 after five or more).",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/29653873/"
+      },
+      {
+        "title": "Systematic Review, Meta-Analysis, and Population Attributable Risk of Dementia Associated with Traumatic Brain Injury in Civilians and Veterans.",
+        "authors": "Gardner RC, Bahorik A, et al.",
+        "summary": "Meta-analysis of 32 studies: pooled risk ratio for dementia after TBI 1.66 (95% CI 1.42-1.93), with higher risk at younger age and in men; the population attributable risk of dementia due to TBI among U.S. veterans was twice that of the general U.S. population because of the high prevalence of TBI in the veteran population.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/36305374/"
+      },
+      {
+        "title": "Traumatic brain injuries among veterans and the risk of incident dementia: A systematic review & meta-analysis.",
+        "authors": "Leung KK, Carr FM, et al.",
+        "summary": "Meta-analysis of 13 veteran cohorts (over 7.1 million observations): TBI associated with all-cause dementia (HR 1.95, 95% CI 1.55-2.45) and vascular dementia (HR 2.02, 95% CI 1.46-2.80), with severe or penetrating injuries carrying higher risk (HR 3.35) than moderate (2.82) or mild (1.91); the association with Alzheimer's disease alone was not statistically significant (HR 1.30, 95% CI 0.88-1.91).",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34651165/"
+      }
+    ],
+    "cfrCitations": [
+      "38 CFR § 3.310(d)(1)(iii) (presenile dementia of the Alzheimer type, frontotemporal dementia, and dementia with Lewy bodies manifesting within 15 years of moderate or severe TBI are held to be the proximate result of the service-connected TBI)",
+      "38 CFR § 3.310(d)(2) (claims outside the presumption decided under generally applicable principles) and § 3.310(a) (secondary service connection)",
+      "38 CFR § 3.310(d)(3) (TBI severity criteria)",
+      "38 CFR § 4.124a, DC 8045 (residuals of traumatic brain injury)",
+      "38 CFR § 4.130, DC 9304 (major or mild neurocognitive disorder due to TBI), DC 9312 (due to Alzheimer's disease), and DC 9305 (vascular neurocognitive disorder)"
+    ]
+  },
+  {
+    "secondaryCondition": "Anorgasmia (orgasmic dysfunction)",
+    "secondaryDiagnosticCode": "No dedicated DC — evaluated by analogy under 38 CFR § 4.20 to the disability picture, within the § 4.115b genitourinary framework (erectile dysfunction, DC 7522, is the closest content-matched schedule entry for the male analog); § 4.116 applies where the presentation is gynecological in character",
+    "primaryCondition": "Major depressive disorder (service-connected), on SSRI therapy",
+    "primaryDiagnosticCode": "9434 (38 CFR § 4.130 — major depressive disorder; PTSD under DC 9411 and the other SSRI-treated anxiety and trauma disorders follow the same treatment pathway)",
+    "nexusTheory": "Medication Side Effect",
+    "etiologicalMechanism": "Selective serotonin reuptake inhibitors (SSRIs) cause orgasmic dysfunction primarily through serotonergic modulation of the neural circuits governing sexual response. Increased synaptic serotonin at 5-HT2 and related receptors inhibits the mesolimbic dopaminergic reward pathway and the medial preoptic area that mediate sexual desire, arousal, and the orgasmic reflex; serotonergic effects on the spinal ejaculation generator and on genital sensory processing increase the latency to orgasm and can abolish it entirely, while prolactin elevation and altered nitric-oxide-mediated genital vasocongestion contribute to impaired arousal. Orgasmic dysfunction is the most serotonergic-specific of the sexual side effects and typically appears shortly after drug initiation or dose escalation, persists for the duration of treatment, and resolves after discontinuation (the emerging literature on post-SSRI sexual dysfunction describes a subset with persisting symptoms after drug cessation). The evidence is quantitative and of high certainty: a 2026 systematic review and meta-analysis of randomized controlled trials in adults with depression found SSRI use significantly increased the risk of orgasmic dysfunction (RR 3.28, 95% CI 2.33-4.60, I2 = 8%, high certainty) and reduced sexual satisfaction (RR 1.21, 95% CI 1.11-1.32); a prospective multicenter study of 1,022 outpatients with previously normal sexual function found an overall sexual-dysfunction incidence of 59.1%, ranging from 57.7% (fluoxetine) to 72.7% (citalopram) among SSRIs, with orgasm among the assessed domains; and a management review documents that SSRIs can cause all types of sexual side effects (libido, arousal, orgasm, and ejaculation) and that up to 80% of patients may report sexual side effects, in a class prescribed for major depressive disorder, PTSD, panic disorder, generalized anxiety disorder, and obsessive-compulsive disorder. Under 38 CFR § 3.310(a), a disability proximately due to or resulting from the treatment of a service-connected condition is itself service-connected, so anorgasmia developing on documented SSRI therapy for service-connected major depressive disorder (or PTSD) is a treatment-complication secondary claim; where orgasmic dysfunction predated the medication, § 3.310(b) limits service connection to the attributable aggravation. For an 'at least as likely as not' opinion, document the SSRI agent, dose, start date, and any dose changes with the chronology of orgasmic symptoms relative to initiation; the pre-treatment sexual history and baseline function (ideally documented contemporaneously); the effect on the relationship and distress; and address competing causes — depression itself (which independently reduces sexual function), relationship and psychosocial factors, age and menopause or hypogonadism, diabetes and other neuropathy, pelvic surgery or radiation, alcohol and other drugs, and concomitant medications (other serotonergic agents, antipsychotics, beta blockers, opioids). A trial of dose reduction, switching, or augmentation is helpful evidence where medically appropriate, and the rating proceeds by analogy under § 4.20 because no diagnostic code specifically addresses orgasmic disorder.",
+    "medicalEvidence": [
+      {
+        "title": "Sexual dysfunction associated with selective serotonin reuptake inhibitors in adults with depression: a systematic review and meta-analysis.",
+        "authors": "Dagostin Ferraz S, Kuyunga L, et al.",
+        "summary": "Systematic review and meta-analysis of 13 randomized controlled trials in adults with depression: SSRIs significantly increased the risk of orgasmic dysfunction (RR 3.28, 95% CI 2.33-4.60, I2 = 8%) and reduced sexual satisfaction (RR 1.21, 95% CI 1.11-1.32); GRADE assessment indicated high certainty for orgasmic dysfunction and moderate certainty for sexual satisfaction.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/41721013/"
+      },
+      {
+        "title": "Incidence of sexual dysfunction associated with antidepressant agents: a prospective multicenter study of 1022 outpatients. Spanish Working Group for the Study of Psychotropic-Related Sexual Dysfunction.",
+        "authors": "Montejo AL, Llorca G, et al.",
+        "summary": "Prospective multicenter study of 1,022 outpatients with previously normal sexual function: overall incidence of sexual dysfunction 59.1% across antidepressants, with SSRI/venlafaxine rates of 57.7% (fluoxetine) to 72.7% (citalopram); sexual dysfunction was assessed by questionnaire across libido, orgasm, ejaculation, erectile function, and satisfaction domains.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/11229449/"
+      },
+      {
+        "title": "Selective Serotonin Reuptake Inhibitor-Induced Sexual Dysfunction: Current Management Perspectives.",
+        "authors": "Atmaca M",
+        "summary": "Review of SSRI-induced sexual dysfunction: SSRIs can cause all types of sexual side effects, including arousal, libido, orgasm, and ejaculation problems, and up to 80% of patients may report sexual side effects; the class is prescribed for major depressive disorder, PTSD, panic disorder, generalized anxiety disorder, and obsessive-compulsive disorder.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/32368066/"
+      }
+    ],
+    "cfrCitations": [
+      "38 CFR § 3.310(a) (disability proximately due to or the result of a service-connected disease or injury, including its treatment)",
+      "38 CFR § 3.310(b) (aggravation of a nonservice-connected disability, with baseline rule)",
+      "38 CFR § 4.130, DC 9434 (major depressive disorder) and DC 9411 (posttraumatic stress disorder)",
+      "38 CFR § 4.20 (analogous rating of unlisted orgasmic disorder within the § 4.115b framework; DC 7522 for the male analog) and § 4.116 where gynecological in character"
+    ]
+  }
+]

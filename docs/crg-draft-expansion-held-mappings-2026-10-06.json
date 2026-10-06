@@ -1,0 +1,562 @@
+[
+  {
+    "id": "ptsd",
+    "draft": true,
+    "governanceNotes": [
+      "HELD proposal set (2026-10-06). data/knowledge-base/ is a frozen one-file-per-identity corpus (819/819), and ptsd.json is a PUBLISHED mapping, so this row is not registered there. The per-suggestion citation-purity gate admits no verified:false reference into a published mapping, and registering it would also require a same-change update of the pinned citation-verification ratchets in scripts/audit-citation-verification.js. Both are qualified-human governance actions, so the row is held here instead.",
+      "An ASSOCIATION_ONLY ptsd -> sleep-apnea row already exists in data/knowledge-base/ptsd.json. This proposal is an evidence-enriched alternative offered for review, not a replacement, and it does not alter the registered row.",
+      "Every source reference below enters verified:false because mapping approval is not citation verification; each PMID was resolved against the NCBI esummary endpoint on 2026-10-06, but qualified-human citation review remains outstanding."
+    ],
+    "todo": [
+      "Obtain qualified-human citation verification for PMIDs 28735910 and 35054110 before any registration decision.",
+      "Confirm the individual's traumatic-exposure history, separately established PTSD diagnosis, and polysomnographic obstructive sleep apnea diagnosis with chronology, before any secondary theory is advanced.",
+      "If registration into the published ptsd.json is elected, satisfy the per-suggestion citation-purity gate and update the pinned citation-verification ratchets in the same change."
+    ],
+    "suggestions": [
+      {
+        "conditionId": "sleep-apnea",
+        "rank": 1,
+        "nexusClaim": {
+          "nexusClassification": "ASSOCIATION_ONLY",
+          "associationBasis": "A 2017 meta-analysis reports obstructive sleep apnea as highly prevalent among patients with post-traumatic stress disorder, and a 2022 narrative review describes a shared and probably bidirectional relationship in which hyperarousal, sleep fragmentation, rapid-eye-movement dysregulation, and autonomic and hypothalamic-pituitary-adrenal activation are proposed contributors to both conditions. The located evidence supports a clinically important association between the two identities; it does not establish the temporal or mechanistic direction of that relationship in any individual.",
+          "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence. The literature is prevalence- and mechanism-oriented, is largely cross-sectional, and does not demonstrate that post-traumatic stress disorder caused or aggravated obstructive sleep apnea in a given person; the guard therefore limits this row to association."
+        },
+        "causalMechanism": {
+          "mechanismCategory": "PSYCHOPHYSIOLOGICAL",
+          "primaryVector": "The proposed cascade runs from post-traumatic stress disorder through chronic hyperarousal and fragmented rapid-eye-movement sleep to destabilised upper-airway and ventilatory control during sleep, with autonomic and hypothalamic-pituitary-adrenal activation, reduced slow-wave sleep, and the nocturnal arousal burden of post-traumatic nightmares each offered as plausible contributors to a higher measured apnoea-hypopnoea burden.",
+          "secondaryVector": "A treatment-shared pathway is also described, in which the sedative and weight-related effects of medications used for post-traumatic stress disorder can themselves increase obstructive events; this element is a medication effect rather than an effect of the psychiatric condition and must be separated in any individual review.",
+          "hypothesizedOnly": true
+        },
+        "evidentiaryProfile": {
+          "etiologicalConsensus": "CONTESTED_REQUIRES_SPECIFIC_EVIDENCE",
+          "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+          "conservativeRationale": "The conservative posture is that obstructive sleep apnea strongly co-occurs with post-traumatic stress disorder but that the two identities are entangled by shared risk factors and by the bidirectional character of sleep-disruption physiology, so no automatic causal or aggravating direction may be read off the association. Because obstructive sleep apnea has several common competing causes and because the located evidence is largely cross-sectional, this row requires specific case evidence, including a documented apnoea-hypopnoea burden, an established psychiatric baseline, compatible chronology, and an individual medical opinion that separates the psychiatric contribution from obesity, upper-airway anatomy, alcohol or sedative exposure, and other sleep-disordered breathing.",
+          "evidenceGaps": "Polysomnography confirming obstructive sleep apnea and recording severity, oxygen-desaturation burden, supine dependence, and treatment history; independently established post-traumatic stress disorder diagnosis with documented traumatic exposure and a psychiatric baseline; chronology and symptom trajectory relative to apnoea onset, severity, and treatment; assessment of competing contributors including obesity and body-mass change, upper-airway anatomy, alcohol and sedative exposure, central and other sleep-disordered breathing, and medication effects; sleep-medicine and psychiatric opinion addressing whether the documented psychiatric condition materially caused or aggravated the sleep-disordered breathing in this individual.",
+          "alternativeEtiologiesToRuleOut": [
+            "Obesity, weight gain, and body-mass-index change",
+            "Upper-airway anatomy, nasal obstruction, and craniofacial structure",
+            "Central or complex sleep-disordered breathing and other primary sleep disorders",
+            "Alcohol, opioid, and sedative-hypnotic exposure, including medication used for the psychiatric condition"
+          ],
+          "alternativeEtiologyTags": [
+            "obesity",
+            "upper-airway-anatomy",
+            "central-sleep-apnea",
+            "sedative-exposure"
+          ],
+          "requiresSpecificDbqEvidence": true
+        },
+        "rationale": "Post-traumatic stress disorder (38 CFR 4.130; DC 9411) and obstructive sleep apnea (38 CFR 4.97; DC 6847) are among the most frequently paired secondary-connection questions in veterans' claims, and the located literature supplies a real and well-replicated association. This row is deliberately authored as a bounded association and not as a causation or aggravation arm. The strongest anchor is a meta-analysis reporting a high pooled prevalence of obstructive sleep apnea in patients with post-traumatic stress disorder, which quantifies co-occurrence but is a prevalence estimate rather than directional evidence. The second anchor is a narrative review of the association that explicitly discusses bidirectionality and shared mechanisms, so it too cannot be read as proof that the psychiatric condition produced the sleep-disordered breathing. Two boundaries are carried on the face of the row: first, the psychiatric condition and the sleep disorder share obesity, arousal, and autonomic physiology, so direction is not separable from these data; second, sedating medication contributes to obstructive events while not being part of the claimed causal pathway, so it must be separated in the individual case. Sleep apnea is also among the more frequently claimed conditions with multiple competing causes, so requiring an individual medical opinion and specific evidence is the honest posture.",
+        "claimTheories": [
+          "secondary-causation"
+        ],
+        "nexusRequirement": "individual-medical-opinion",
+        "pathwayIntelligence": {
+          "pathways": [
+            "direct-secondary",
+            "intermediate-chain"
+          ],
+          "causalChain": "Post-traumatic stress disorder -> chronic hyperarousal, fragmented rapid-eye-movement sleep, and autonomic or hypothalamic-pituitary-adrenal activation -> destabilised upper-airway and ventilatory control during sleep -> measured apnoea-hypopnoea burden.",
+          "developmentQuestions": [
+            "Is there polysomnography confirming obstructive sleep apnea, with severity, oxygen-desaturation burden, and treatment recorded?",
+            "Does an independently documented post-traumatic stress disorder diagnosis with a traumatic exposure and a recorded psychiatric baseline exist?",
+            "What is the chronology between psychiatric symptom onset and apnoea onset, severity, and treatment, and does it favour the claimed direction?",
+            "Which competing contributors - obesity, upper-airway anatomy, alcohol or sedative exposure, central sleep-disordered breathing - have been measured and excluded?",
+            "Has the treating clinician separated medication-related contributions from a proposed effect of the psychiatric condition itself?"
+          ],
+          "issuesToResolve": [
+            "The located evidence is prevalence-based and largely cross-sectional, so direction is not established.",
+            "Sedating medication contributes to obstructive events and must not be presented as part of the psychiatric mechanism.",
+            "Shared risk factors such as obesity and autonomic arousal confound the association."
+          ]
+        },
+        "evidenceGaps": [
+          "Polysomnography confirming obstructive sleep apnea with severity, desaturation burden, and treatment history",
+          "Independently established post-traumatic stress disorder diagnosis with documented traumatic exposure and psychiatric baseline",
+          "Chronology and symptom trajectory relative to apnoea onset, severity, and treatment",
+          "Assessment of competing contributors including obesity, upper-airway anatomy, alcohol and sedative exposure, and other sleep-disordered breathing",
+          "Sleep-medicine and psychiatric opinion addressing whether the documented psychiatric condition materially caused or aggravated the sleep-disordered breathing"
+        ],
+        "sourceReferences": [
+          {
+            "citation": "Zhang Y, Weed JG, Ren R, Tang X, Zhang W. Prevalence of obstructive sleep apnea in patients with posttraumatic stress disorder and its impact on adherence to continuous positive airway pressure therapy: a meta-analysis. Sleep Med. 2017;36:125-132. PMID 28735910. doi:10.1016/j.sleep.2017.04.020.",
+            "note": "Meta-analysis reporting a high pooled prevalence of obstructive sleep apnea in patients with post-traumatic stress disorder and reduced continuous-positive-airway-pressure adherence; supports a clinically important association, not an individual nexus or a direction of effect.",
+            "verificationScope": "clinical-evidence",
+            "authorityCategory": "medical-scientific-evidence",
+            "propositionRole": "clinical-evidence",
+            "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/28735910/",
+            "verified": false,
+            "sourceLocator": "PMID 28735910"
+          },
+          {
+            "citation": "McCall CA, Watson NF. A Narrative Review of the Association between Post-Traumatic Stress Disorder and Obstructive Sleep Apnea. J Clin Med. 2022;11(2):415. PMID 35054110. doi:10.3390/jcm11020415.",
+            "note": "Narrative review of the post-traumatic stress disorder and obstructive sleep apnea association that discusses bidirectionality and shared arousal, autonomic, and rapid-eye-movement mechanisms; supports a bounded association and explicitly does not fix causal direction.",
+            "verificationScope": "clinical-evidence",
+            "authorityCategory": "medical-scientific-evidence",
+            "propositionRole": "clinical-evidence",
+            "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/35054110/",
+            "verified": false,
+            "sourceLocator": "PMID 35054110"
+          },
+          {
+            "citation": "38 CFR § 3.310 — Service-connected disability or death from a disease or injury caused by or aggravated by a service-connected disability (secondary service connection); 38 CFR 4.97 Schedule of ratings, respiratory system (DC 6847, sleep apnea syndromes).",
+            "note": "Legal framework for secondary service connection and the rating schedule governing the secondary identity. Rating-schedule citations describe how severity is evaluated and are not evidence of service connection.",
+            "verificationScope": "legal-framework",
+            "authorityCategory": "current-regulatory-authority",
+            "propositionRole": "legal-framework",
+            "verified": false,
+            "sourceLocator": "38 CFR § 3.310; 38 CFR 4.97"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "osteoarthritis",
+    "draft": true,
+    "governanceNotes": [
+      "HELD proposal set (2026-10-06). A PHARMACOLOGICAL_IATROGENIC rheumatoid-arthritis -> gerd row already exists in data/knowledge-base/rheumatoid-arthritis.json as ASSOCIATION_ONLY; this osteoarthritis-based row is the medication-to-GERD pathway anchored on the more common non-steroidal anti-inflammatory drug exposure in degenerative joint disease.",
+      "Registration into the published osteoarthritis.json would require the per-suggestion citation-purity gate and a same-change update of the pinned citation-verification ratchets; the row is therefore held here for qualified-human review.",
+      "Every source reference below enters verified:false; the PMIDs were resolved against the NCBI esummary endpoint on 2026-10-06 but qualified-human citation review remains outstanding."
+    ],
+    "todo": [
+      "Obtain qualified-human citation verification for PMIDs 18671778 and 11683254 before any registration decision.",
+      "Confirm that the non-steroidal anti-inflammatory drug was prescribed for the service-connected joint condition, with names, doses, and dates of use drawn from pharmacy records.",
+      "Document chronology and, where available, dechallenge (symptom improvement on withdrawal) and rechallenge evidence, since a medication nexus is strongest when these are recorded."
+    ],
+    "suggestions": [
+      {
+        "conditionId": "gerd",
+        "rank": 1,
+        "nexusClaim": {
+          "nexusClassification": "DIRECT_CAUSATION",
+          "etiologicalTrigger": "Prescribed systemic non-steroidal anti-inflammatory drug therapy for the service-connected degenerative joint condition reduces prostaglandin-mediated gastric mucosal protection and can promote gastro-oesophageal reflux symptoms; the exposure is the prescribed medication rather than the joint disease itself, and the proposed causal route is pharmacological rather than structural."
+        },
+        "causalMechanism": {
+          "mechanismCategory": "PHARMACOLOGICAL_IATROGENIC",
+          "primaryVector": "Systemic non-steroidal anti-inflammatory drugs inhibit cyclo-oxygenase, reducing prostaglandin synthesis in the gastroduodenal mucosa; prostaglandins normally stimulate mucus and bicarbonate secretion and mucosal blood flow, so their suppression weakens the mucosal barrier and permits acid-mediated injury. Simultaneously, reduced prostaglandin tone lowers lower-oesophageal-sphincter pressure and slows gastric emptying, so acid exposure in the oesophagus increases.",
+          "secondaryVector": "The same drug exposure can produce dyspepsia, erosive oesophagitis, and gastroduodenal ulceration, all of which are reflux-adjacent outcomes that can amplify symptom reporting and complicate attribution.",
+          "iatrogenicFactor": "Prescribed systemic non-steroidal anti-inflammatory drugs taken for the service-connected degenerative joint condition, including over-the-counter agents counted as self-directed therapy.",
+          "hypothesizedOnly": false
+        },
+        "evidentiaryProfile": {
+          "etiologicalConsensus": "IATROGENIC_TREATMENT_EFFECT",
+          "vaNexusProbabilityAlignment": "AT_LEAST_AS_LIKELY_AS_NOT",
+          "conservativeRationale": "The conservative posture is that a medication nexus is properly arguable when the drug exposure is documented as prescribed for the service-connected joint condition and when chronology, dose burden, and - where available - dechallenge and rechallenge align with the claimed relationship. The located observational evidence reports a moderate increase in the likelihood of reflux symptoms among non-steroidal anti-inflammatory drug users, which supports the medication-to-symptom relationship without proving it in any single person, because non-steroidal anti-inflammatory drug users carry greater comorbidity and are more likely to be investigated in the first place. Alternative contributors such as hiatal hernia, obesity, alcohol, tobacco, obstructive sleep apnea, and Helicobacter pylori must be assessed independently.",
+          "evidenceGaps": "Pharmacy or prescription records establishing which non-steroidal anti-inflammatory drugs were taken for the service-connected joint condition, with dose and duration; reflux symptom chronology relative to the start, continuation, and cessation of that exposure; dechallenge and, where it exists, rechallenge documentation; endoscopic or clinical assessment of the oesophagus and stomach including erosive change; and assessment of alternative contributors such as hiatal hernia, obesity, alcohol and tobacco exposure, obstructive sleep apnea, and Helicobacter pylori status.",
+          "alternativeEtiologiesToRuleOut": [
+            "Hiatal hernia or intrinsic lower-oesophageal-sphincter dysfunction",
+            "Obesity, dietary factors, alcohol, and tobacco exposure",
+            "Obstructive sleep apnea and other causes of nocturnal reflux",
+            "Helicobacter pylori infection or other primary gastroduodenal disease"
+          ],
+          "alternativeEtiologyTags": [
+            "hiatal-hernia",
+            "obesity",
+            "sleep-apnea",
+            "h-pylori"
+          ],
+          "requiresSpecificDbqEvidence": true
+        },
+        "rationale": "Degenerative joint disease (38 CFR 4.71a; DC 5003) is commonly treated with long-term non-steroidal anti-inflammatory drugs, and gastro-oesophageal reflux disease (38 CFR 4.114; DC 7346 hiatal hernia and reflux evaluation) is a frequent secondary claim on that basis. This row is authored as a direct medication-causation arm because the mechanism is pharmacological and the exposure is externally imposed by treatment for the service-connected condition, which is the paradigm that 38 CFR § 3.310 recognises for treatment-related secondary service connection. The principal anchor is a large observational study that found non-steroidal anti-inflammatory drug or aspirin use to be a significant risk factor for reflux symptoms, with symptoms significantly more common among users than non-users; a Medicaid-population study reports a comparable predisposing association. Both are observational and therefore carry confounding and detection-bias limits, so the row requires documented prescription for the service-connected joint condition, compatible chronology, and - where available - dechallenge. This is also the pathway most often written up loosely in claims practice, so the boundaries are recorded explicitly: the joint disease does not cause reflux structurally, and the medication is the proximate agent.",
+        "claimTheories": [
+          "secondary-causation"
+        ],
+        "nexusRequirement": "individual-medical-opinion",
+        "pathwayIntelligence": {
+          "pathways": [
+            "medication-related",
+            "direct-secondary"
+          ],
+          "causalChain": "Service-connected degenerative joint disease -> prescribed systemic non-steroidal anti-inflammatory drug therapy -> cyclo-oxygenase inhibition and reduced prostaglandin synthesis -> weakened gastroduodenal mucosal defence with reduced lower-oesophageal-sphincter pressure and delayed gastric emptying -> reflux symptoms and possible erosive oesophagitis.",
+          "developmentQuestions": [
+            "Which non-steroidal anti-inflammatory drugs were prescribed for the service-connected joint condition, at what doses and for how long?",
+            "Does the reflux symptom chronology follow the start and dose burden of that exposure?",
+            "Is there dechallenge evidence of improvement on withdrawal, or rechallenge evidence of recurrence on resumption?",
+            "Has endoscopy or clinical assessment documented the oesophageal and gastric findings?",
+            "Which alternative contributors - hiatal hernia, obesity, alcohol, tobacco, sleep apnea, Helicobacter pylori - have been assessed?"
+          ],
+          "issuesToResolve": [
+            "The observational anchors cannot separate drug effect from the greater comorbidity of drug users or from detection bias.",
+            "The joint disease is not itself the causal agent; the medication is, and the nexus must be written that way.",
+            "Over-the-counter use must be counted as exposure and documented, not assumed away."
+          ]
+        },
+        "evidenceGaps": [
+          "Pharmacy or prescription records establishing the non-steroidal anti-inflammatory drugs taken for the service-connected joint condition, with dose and duration",
+          "Reflux symptom chronology relative to the start, continuation, and cessation of that exposure",
+          "Dechallenge and, where available, rechallenge documentation",
+          "Endoscopic or clinical assessment of the oesophagus and stomach, including erosive change",
+          "Assessment of alternative contributors including hiatal hernia, obesity, alcohol and tobacco exposure, obstructive sleep apnea, and Helicobacter pylori"
+        ],
+        "sourceReferences": [
+          {
+            "citation": "Ruszniewski P, Soufflet C, Barthélémy P. Nonsteroidal anti-inflammatory drug use as a risk factor for gastro-oesophageal reflux disease: an observational study. Aliment Pharmacol Ther. 2008;28(9):1134-1139. PMID 18671778. doi:10.1111/j.1365-2036.2008.03821.x.",
+            "note": "Observational study reporting non-steroidal anti-inflammatory drug or aspirin use as a significant risk factor for reflux symptoms, significantly more common among users than non-users; supports the medication-to-symptom relationship without establishing it in an individual.",
+            "verificationScope": "clinical-evidence",
+            "authorityCategory": "medical-scientific-evidence",
+            "propositionRole": "clinical-evidence",
+            "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/18671778/",
+            "verified": false,
+            "sourceLocator": "PMID 18671778"
+          },
+          {
+            "citation": "Kotzan J, Wade W, Yu HH. Assessing NSAID prescription use as a predisposing factor for gastroesophageal reflux disease in a Medicaid population. Pharm Res. 2001;18(9):1367-1372. PMID 11683254. doi:10.1023/a:1013010616496.",
+            "note": "Population study reporting that non-steroidal anti-inflammatory drug prescriptions are associated with gastro-oesophageal reflux disease, with higher risk in subgroups such as women, alcohol and tobacco users, and patients with hiatal hernia or obesity; supports a predisposing association and identifies the confounders the row must address.",
+            "verificationScope": "clinical-evidence",
+            "authorityCategory": "medical-scientific-evidence",
+            "propositionRole": "clinical-evidence",
+            "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/11683254/",
+            "verified": false,
+            "sourceLocator": "PMID 11683254"
+          },
+          {
+            "citation": "38 CFR § 3.310 — Secondary service connection, including disability caused by or aggravated by treatment for a service-connected disability; 38 CFR 4.114 Schedule of ratings, digestive system.",
+            "note": "Legal framework for secondary service connection and the rating schedule governing the secondary identity. Rating-schedule citations describe how severity is evaluated and are not evidence of service connection.",
+            "verificationScope": "legal-framework",
+            "authorityCategory": "current-regulatory-authority",
+            "propositionRole": "legal-framework",
+            "verified": false,
+            "sourceLocator": "38 CFR § 3.310; 38 CFR 4.114"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tinnitus",
+    "draft": true,
+    "governanceNotes": [
+      "HELD proposal set (2026-10-06). tinnitus.json is a DRAFT identity (draft:true) with two registered ASSOCIATION_ONLY rows (depressive-disorder, insomnia). No tinnitus -> migraine-headaches row is currently registered, and this proposal does not alter the two existing rows.",
+      "Even though the primary identity is a draft file, registration would still require a same-change update of the pinned citation-verification ratchets in scripts/audit-citation-verification.js, so the row is held here for qualified-human review.",
+      "Direction caveat carried on the face of the row: most located evidence examines migraine and headache as the exposure and tinnitus as the outcome, so a tinnitus-to-migraine reading is not supported by the current literature direction.",
+      "Every source reference below enters verified:false; the PMIDs were resolved against the NCBI esummary endpoint on 2026-10-06 but qualified-human citation review remains outstanding."
+    ],
+    "todo": [
+      "Obtain qualified-human citation verification for PMIDs 27197786 and 34238896 before any registration decision.",
+      "Resolve the direction problem: the located evidence is largely migraine-to-tinnitus, so a qualified-human decision is required before any tinnitus-to-migraine row is registered in either direction.",
+      "If registration is elected, update the pinned citation-verification ratchets in the same change."
+    ],
+    "suggestions": [
+      {
+        "conditionId": "migraine-headaches",
+        "rank": 1,
+        "nexusClaim": {
+          "nexusClassification": "ASSOCIATION_ONLY",
+          "associationBasis": "Cross-sectional studies report that headache, and migraine in particular, is associated with tinnitus, and a United States population analysis found tinnitus and subjective hearing loss more common in migraine. The located evidence establishes a reproducible association between the two identities but does not establish its direction, and a substantial part of it is anchored to the opposite arrow, in which the headache disorder is the exposure and tinnitus the outcome.",
+          "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established for the tinnitus-to-migraine direction. The literature is cross-sectional, is dominated by the reverse exposure-outcome pairing, and does not demonstrate that tinnitus caused or aggravated a migraine disorder in any individual; the guard therefore limits this row to association."
+        },
+        "causalMechanism": {
+          "mechanismCategory": "NOT_ESTABLISHED",
+          "primaryVector": "The proposed link is a shared central-auditory and trigeminocervical sensitisation model in which chronic auditory deafferentation or persistent tinnitus-related neural activity is hypothesised to lower the threshold of a trigeminovascular system that already generates migraine, with cortical excitability, sleep fragmentation, and autonomic arousal offered as plausible amplifiers rather than proven mediators.",
+          "hypothesizedOnly": true
+        },
+        "evidentiaryProfile": {
+          "etiologicalConsensus": "CONTESTED_REQUIRES_SPECIFIC_EVIDENCE",
+          "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+          "conservativeRationale": "The conservative posture is that an association between tinnitus and migraine is well reported but its direction is unresolved, so a claim that tinnitus caused or aggravated a migraine disorder requires specific case evidence rather than the association alone. The located evidence is cross-sectional and cannot establish temporal order; the same literature mostly runs from headache to tinnitus, which means the association is at least partly explained by the reverse pathway and possibly by shared susceptibility. Because migraine has common competing triggers and competing primary headache disorders, this row requires a documented primary-headache diagnosis, a chronological relationship between tinnitus onset and headache onset or worsening, and assessment of alternative contributors.",
+          "evidenceGaps": "A qualified primary-headache diagnosis separating migraine from tension-type and other headache disorders; documented tinnitus with onset and severity history; chronological evidence that tinnitus preceded or materially worsened the headache disorder rather than the reverse; headache and medication diaries excluding medication-overuse headache; and assessment of competing contributors including temporomandibular and cervicogenic pain, obstructive sleep apnea, and sleep and mood disturbance.",
+          "alternativeEtiologiesToRuleOut": [
+            "Tension-type or other primary headache disorder misclassified as migraine",
+            "Medication-overuse headache",
+            "Temporomandibular joint dysfunction and cervicogenic headache",
+            "Obstructive sleep apnea, sleep deprivation, and mood disturbance as shared triggers"
+          ],
+          "alternativeEtiologyTags": [
+            "tension-type-headache",
+            "medication-overuse",
+            "tmj-dysfunction",
+            "sleep-apnea"
+          ],
+          "requiresSpecificDbqEvidence": true
+        },
+        "rationale": "Tinnitus (38 CFR 4.87; DC 6260) and migraine headaches (38 CFR 4.124a; DC 8100) are both common in veterans, and the located literature does report a genuine association between headache and tinnitus. This row is authored as a bounded association with an explicit direction caveat because the evidence does not support the requested arrow, tinnitus causing migraine. The anchors are cross-sectional: a young-adult cohort study found an association between headache and tinnitus that was strongest for migraine with aura, and a United States population analysis found tinnitus and subjective hearing loss more common in migraine. Both describe a migraine-as-exposure relationship, so reading them as proof that tinnitus produced a migraine disorder would invert them. Two boundaries are recorded rather than buried: cross-sectional designs cannot establish temporal order, and shared susceptibility - cortical excitability, sleep fragmentation, autonomic arousal - could generate the association without either condition causing the other. Migraine also has common competing triggers and competing primary headache diagnoses, so requiring an individual medical opinion and specific evidence is the honest posture.",
+        "claimTheories": [
+          "secondary-causation"
+        ],
+        "nexusRequirement": "individual-medical-opinion",
+        "pathwayIntelligence": {
+          "pathways": [
+            "direct-secondary",
+            "somatopsychic"
+          ],
+          "causalChain": "Chronic tinnitus-associated auditory deafferentation and persistent central auditory activity -> hypothesised lowered threshold of trigeminovascular activation with cortical excitability, sleep fragmentation, and autonomic arousal -> migraine attacks; the chain is unverified and the located evidence runs largely in the opposite direction.",
+          "developmentQuestions": [
+            "Is there a qualified primary-headache diagnosis that separates migraine from tension-type and other headache disorders?",
+            "Does the documented tinnitus onset precede the migraine onset, or materially worsen an established headache baseline?",
+            "What do headache and medication diaries show, and is medication-overuse headache excluded?",
+            "Have temporomandibular dysfunction, cervicogenic pain, obstructive sleep apnea, and sleep or mood disturbance been assessed?",
+            "Has the reviewing clinician addressed the direction problem in the located evidence?"
+          ],
+          "issuesToResolve": [
+            "The located evidence runs largely from migraine and headache to tinnitus, the reverse of the claimed arrow.",
+            "Cross-sectional designs cannot establish temporal order between the two identities.",
+            "Shared susceptibility may generate the association without either condition causing the other."
+          ]
+        },
+        "evidenceGaps": [
+          "A qualified primary-headache diagnosis separating migraine from tension-type and other headache disorders",
+          "Documented tinnitus history with onset and severity",
+          "Chronological evidence that tinnitus preceded or materially worsened the headache disorder rather than the reverse",
+          "Headache and medication diaries excluding medication-overuse headache",
+          "Assessment of temporomandibular dysfunction, cervicogenic pain, obstructive sleep apnea, and sleep or mood disturbance"
+        ],
+        "sourceReferences": [
+          {
+            "citation": "Guichard E, Montagni I, Tzourio C, Kurth T. Association Between Headaches and Tinnitus in Young Adults: Cross-Sectional Study. Headache. 2016;56(6):987-994. PMID 27197786. doi:10.1111/head.12845.",
+            "note": "Cross-sectional cohort study reporting an association between headache and tinnitus that was strongest for migraine with aura; supports an association and carries the reverse direction problem on its face.",
+            "verificationScope": "clinical-evidence",
+            "authorityCategory": "medical-scientific-evidence",
+            "propositionRole": "clinical-evidence",
+            "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/27197786/",
+            "verified": false,
+            "sourceLocator": "PMID 27197786"
+          },
+          {
+            "citation": "Goshtasbi K, Abouzari M, Risbud A, Mostaghni N, Muhonen EG, Martin E, Djalilian HR. Tinnitus and Subjective Hearing Loss are More Common in Migraine: A Cross-Sectional NHANES Analysis. Otol Neurotol. 2021;42(9):1329-1333. PMID 34238896. doi:10.1097/MAO.0000000000003247.",
+            "note": "United States population cross-sectional analysis reporting an independent association between migraine and both subjective hearing loss and tinnitus; anchored to migraine as the exposure, so it supports association and exposes the direction problem.",
+            "verificationScope": "clinical-evidence",
+            "authorityCategory": "medical-scientific-evidence",
+            "propositionRole": "clinical-evidence",
+            "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34238896/",
+            "verified": false,
+            "sourceLocator": "PMID 34238896"
+          },
+          {
+            "citation": "38 CFR § 3.310 — Secondary service connection; 38 CFR 4.124a Schedule of ratings, neurological conditions and convulsive disorders (DC 8100, migraine). The catalog entry for this identity currently carries no ratingSchedule citation and is marked pending manual review, so the diagnostic code requires qualified-human confirmation.",
+            "note": "Legal framework for secondary service connection and the rating schedule governing the secondary identity. Rating-schedule citations describe how severity is evaluated and are not evidence of service connection.",
+            "verificationScope": "legal-framework",
+            "authorityCategory": "current-regulatory-authority",
+            "propositionRole": "legal-framework",
+            "verified": false,
+            "sourceLocator": "38 CFR § 3.310; 38 CFR 4.124a"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "degenerative-disc-disease",
+    "draft": true,
+    "governanceNotes": [
+      "HELD proposal set (2026-10-06). degenerative-disc-disease.json is a DRAFT identity and already carries one ASSOCIATION_ONLY -> radiculopathy row (Mapping Expansion Batch ME-13, source PMID 34402323) whose guard restricts the proposition to anatomically concordant cervical nerve-root disease. This proposal preserves that guard and offers an upgraded nexus classification with an added pathophysiology anchor; it does not alter the registered row.",
+      "The proposed upgrade from ASSOCIATION_ONLY to DIRECT_CAUSATION is a material change to a registered row and requires qualified-human sign-off before it replaces the existing classification.",
+      "Registration would require a same-change update of the pinned citation-verification ratchets in scripts/audit-citation-verification.js.",
+      "Every source reference below enters verified:false; the PMIDs were resolved against the NCBI esummary endpoint on 2026-10-06 but qualified-human citation review remains outstanding."
+    ],
+    "todo": [
+      "Obtain qualified-human citation verification for PMIDs 34402323 and 32281018 before any registration decision.",
+      "Decide whether the registered ME-13 ASSOCIATION_ONLY row should be upgraded to DIRECT_CAUSATION, and if so record the supersession rather than applying it silently.",
+      "Confirm anatomically concordant nerve-root compromise on imaging and electrodiagnostics before any individual nexus decision."
+    ],
+    "suggestions": [
+      {
+        "conditionId": "radiculopathy",
+        "rank": 1,
+        "nexusClaim": {
+          "nexusClassification": "DIRECT_CAUSATION",
+          "etiologicalTrigger": "Degenerative disc disease produces disc desiccation, loss of disc height, annular disruption, and disc protrusion or herniation; the displaced disc material and the resulting inflammatory and compressive load on the exiting nerve root generate the radicular pain, dermatomal sensory change, and myotomal weakness that constitute radiculopathy at the anatomically corresponding level."
+        },
+        "causalMechanism": {
+          "mechanismCategory": "MECHANICAL_OR_COMPRESSIVE",
+          "primaryVector": "Disc degeneration reduces disc height and competence, permitting annular tears, disc protrusion, and frank herniation; mechanical compression of the exiting nerve root and dorsal root ganglion, compounded by local inflammatory mediators released from the degenerate disc, produces ectopic nerve-root firing and the segmental pain, paraesthesia, and weakness that define radiculopathy.",
+          "secondaryVector": "Loss of disc height and subsequent facet loading can narrow the neural foramen and the lateral recess, so foraminal and canal stenosis can contribute to the same nerve-root compromise as the disc protrusion itself.",
+          "hypothesizedOnly": false
+        },
+        "evidentiaryProfile": {
+          "etiologicalConsensus": "WELL_ESTABLISHED",
+          "vaNexusProbabilityAlignment": "AT_LEAST_AS_LIKELY_AS_NOT",
+          "conservativeRationale": "The conservative posture is that mechanical nerve-root compromise by degenerate and herniated disc material is an established mechanism, so the dispute in an individual case is almost never whether the mechanism exists but whether this person's radicular findings are anatomically concordant with the documented degenerative level and are not better explained by another lesion. The proposition is therefore accepted with a hard anatomical-concordance requirement: imaging must demonstrate degenerative disc pathology capable of nerve-root compromise, and the clinical and electrodiagnostic findings must correspond to that level and side.",
+          "evidenceGaps": "Imaging demonstrating degenerative disc disease at a level capable of compromising a nerve root, with side and level recorded; clinical and electrodiagnostic findings concordant with that level, including dermatomal sensory loss, myotomal weakness, and reflex change; and exclusion of peripheral entrapment neuropathy, plexopathy, myelopathy, spinal stenosis, and non-degenerative structural lesions including tumour, infection, and fracture.",
+          "alternativeEtiologiesToRuleOut": [
+            "Peripheral entrapment neuropathy such as carpal or cubital tunnel syndrome",
+            "Brachial or lumbar plexopathy",
+            "Spinal stenosis or myelopathy rather than isolated nerve-root compromise",
+            "Non-degenerative structural lesion including tumour, infection, or fracture"
+          ],
+          "alternativeEtiologyTags": [
+            "entrapment-neuropathy",
+            "plexopathy",
+            "spinal-stenosis",
+            "structural-lesion"
+          ],
+          "requiresSpecificDbqEvidence": true
+        },
+        "rationale": "Degenerative disc disease (38 CFR 4.71a; DC 5243 intervertebral disc syndrome) and radiculopathy (38 CFR 4.124a; peripheral nerve ratings, for example DC 8510 sciatic nerve) form one of the clearest mechanical secondary-connection relationships in the rating schedule, and the request names it explicitly. The registered row in degenerative-disc-disease.json is classified ASSOCIATION_ONLY and rests on a single surgical-outcomes meta-analysis for cervical radiculopathy due to degenerative disc disease; that source presupposes the causal relationship it treats, which is why the classification was set conservatively. This proposal keeps the ME-13 anatomical-concordance guard intact and offers an upgraded DIRECT_CAUSATION classification with a pathophysiology anchor, because the compressive and inflammatory mechanism linking herniated disc material to nerve-root dysfunction is established rather than hypothesised. Two boundaries are carried: the anatomic level and side must match between imaging and clinical findings, and alternative lesions - entrapment, plexopathy, stenosis, tumour, infection - must be excluded, since radicular symptoms are not specific to disc disease. Because this changes a registered classification, the supersession is recorded for qualified-human sign-off rather than applied silently.",
+        "claimTheories": [
+          "secondary-causation"
+        ],
+        "nexusRequirement": "individual-medical-opinion",
+        "pathwayIntelligence": {
+          "pathways": [
+            "biomechanical",
+            "direct-secondary"
+          ],
+          "causalChain": "Degenerative disc disease -> disc desiccation, loss of height, annular disruption, and disc protrusion or herniation -> mechanical and inflammatory compromise of the exiting nerve root and dorsal root ganglion -> segmental radicular pain, dermatomal sensory change, and myotomal weakness.",
+          "developmentQuestions": [
+            "Does imaging demonstrate degenerative disc disease at a level capable of compromising a nerve root, with the side recorded?",
+            "Are the clinical findings - dermatomal sensory loss, myotomal weakness, reflex change - concordant with that level and side?",
+            "Do electrodiagnostic studies support a nerve-root lesion rather than a peripheral entrapment?",
+            "Have myelopathy, canal stenosis, plexopathy, and non-degenerative structural lesions been excluded?",
+            "Should the registered ME-13 ASSOCIATION_ONLY classification be upgraded, and is the supersession recorded?"
+          ],
+          "issuesToResolve": [
+            "The registered row is classified ASSOCIATION_ONLY, so an upgrade is a material change requiring qualified-human sign-off.",
+            "Radicular symptoms are not specific to disc disease; anatomical concordance and exclusion of other lesions are required.",
+            "Degenerative imaging findings are common in asymptomatic people and must not substitute for a clinical diagnosis."
+          ]
+        },
+        "evidenceGaps": [
+          "Imaging demonstrating degenerative disc disease at a level capable of compromising a nerve root, with side and level recorded",
+          "Clinical and electrodiagnostic findings concordant with that level, including dermatomal sensory loss, myotomal weakness, and reflex change",
+          "Exclusion of peripheral entrapment neuropathy and plexopathy",
+          "Exclusion of myelopathy, canal stenosis, and non-degenerative structural lesions including tumour, infection, and fracture"
+        ],
+        "sourceReferences": [
+          {
+            "citation": "Alomar SA, Maghrabi Y, Baeesa SS, Alves ÓL. Outcome of Anterior and Posterior Endoscopic Procedures for Cervical Radiculopathy Due to Degenerative Disk Disease: A Systematic Review and Meta-Analysis. Global Spine J. 2022;12(7):1546-1560. PMID 34402323. doi:10.1177/21925682211037270.",
+            "note": "Systematic review and meta-analysis addressing cervical radiculopathy due to degenerative disc disease and restricted to anatomically concordant cervical nerve-root disease; registered in the existing ME-13 row and retained here as the clinical-entity anchor.",
+            "verificationScope": "clinical-evidence",
+            "authorityCategory": "medical-scientific-evidence",
+            "propositionRole": "clinical-evidence",
+            "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34402323/",
+            "verified": false,
+            "sourceLocator": "PMID 34402323"
+          },
+          {
+            "citation": "Ruschel LG, Agnoletto GJ, Aragão A, Duarte JS, de Oliveira MF, Teles AR. Lumbar disc herniation with contralateral radiculopathy: a systematic review on pathophysiology and surgical strategies. Neurosurg Rev. 2021;44(2):1071-1081. PMID 32281018. doi:10.1007/s10143-020-01294-3.",
+            "note": "Systematic review of the pathophysiology of disc-herniation radiculopathy; supports the mechanical and inflammatory mechanism by which herniated disc material compromises a nerve root, including the anatomically indirect presentations that make concordance testing necessary.",
+            "verificationScope": "clinical-evidence",
+            "authorityCategory": "medical-scientific-evidence",
+            "propositionRole": "clinical-evidence",
+            "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/32281018/",
+            "verified": false,
+            "sourceLocator": "PMID 32281018"
+          },
+          {
+            "citation": "38 CFR § 3.310 — Secondary service connection; 38 CFR 4.71a Schedule of ratings, musculoskeletal system (DC 5243, intervertebral disc syndrome); 38 CFR 4.124a Schedule of ratings, neurological conditions (peripheral nerve ratings applied to radiculopathy). The catalog entry for radiculopathy currently carries no ratingSchedule citation and is marked pending manual review, so the diagnostic code requires qualified-human confirmation.",
+            "note": "Legal framework for secondary service connection and the rating schedules governing both identities. Rating-schedule citations describe how severity is evaluated and are not evidence of service connection.",
+            "verificationScope": "legal-framework",
+            "authorityCategory": "current-regulatory-authority",
+            "propositionRole": "legal-framework",
+            "verified": false,
+            "sourceLocator": "38 CFR § 3.310; 38 CFR 4.71a; 38 CFR 4.124a"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "depressive-disorder",
+    "draft": true,
+    "governanceNotes": [
+      "HELD proposal set (2026-10-06). depressive-disorder.json is a PUBLISHED mapping and already carries a DIRECT_CAUSATION -> erectile-dysfunction row classified IATROGENIC_TREATMENT_EFFECT with vaNexusProbabilityAlignment AT_LEAST_AS_LIKELY_AS_NOT and a single source reference.",
+      "This proposal is an evidence-strengthening row for qualified-human review; it confirms rather than changes the existing classification and does not alter the registered row.",
+      "Registration into the published depressive-disorder.json would require the per-suggestion citation-purity gate and a same-change update of the pinned citation-verification ratchets, so the row is held here.",
+      "Every source reference below enters verified:false; the PMIDs were resolved against the NCBI esummary endpoint on 2026-10-06 but qualified-human citation review remains outstanding."
+    ],
+    "todo": [
+      "Obtain qualified-human citation verification for PMIDs 41721013 and 19440080 before any registration decision.",
+      "Decide whether the two meta-analytic anchors should be added to the existing registered row or registered as a separate strengthened row, and record the decision.",
+      "Confirm the specific agent, dose, and temporal relationship between antidepressant initiation and erectile-dysfunction onset from the treatment record."
+    ],
+    "suggestions": [
+      {
+        "conditionId": "erectile-dysfunction",
+        "rank": 1,
+        "nexusClaim": {
+          "nexusClassification": "DIRECT_CAUSATION",
+          "etiologicalTrigger": "Selective serotonin reuptake inhibitor therapy prescribed for major depressive disorder increases serotonergic tone, which suppresses central sexual arousal pathways and impairs nitric-oxide-mediated relaxation of cavernosal smooth muscle; the resulting reduction in penile vascular engorgement and delayed or absent orgasmic response produces erectile dysfunction that is attributable to the treatment exposure rather than to the mood disorder alone."
+        },
+        "causalMechanism": {
+          "mechanismCategory": "PHARMACOLOGICAL_IATROGENIC",
+          "primaryVector": "Increased synaptic serotonin from selective serotonin reuptake inhibition stimulates postsynaptic 5-HT2 receptors, reducing dopaminergic and noradrenergic drive to the spinal sexual reflex centres; peripheral serotonin activity also attenuates nitric-oxide synthase signalling in cavernosal endothelium and smooth muscle, so the vasodilatory cascade that produces and sustains an erection is blunted.",
+          "secondaryVector": "Additional serotonergic effects on ejaculatory circuitry produce delayed ejaculation and anorgasmia, which frequently co-travel with erectile dysfunction and are reported separately in the rating schedule.",
+          "iatrogenicFactor": "Prescribed selective serotonin reuptake inhibitor therapy for the service-connected depressive disorder; the drug is the proximate agent and the timing of dose changes is material.",
+          "hypothesizedOnly": false
+        },
+        "evidentiaryProfile": {
+          "etiologicalConsensus": "IATROGENIC_TREATMENT_EFFECT",
+          "vaNexusProbabilityAlignment": "AT_LEAST_AS_LIKELY_AS_NOT",
+          "conservativeRationale": "The conservative posture is that an antidepressant medication effect is one of the better-supported iatrogenic secondary connections available, because the mechanism is pharmacological, the exposure is externally imposed by treatment for a service-connected condition, and meta-analytic evidence reports consistently higher rates of sexual dysfunction on selective serotonin reuptake inhibitors than on placebo. The individual case still requires a documented exposure, a temporal relationship between initiation or dose change and symptom onset, separation from the depression-specific and age-related contributions to sexual dysfunction, and assessment of competing vascular, endocrine, neurological, and medication contributors.",
+          "evidenceGaps": "Treatment records identifying the selective serotonin reuptake inhibitor, dose, and dates of initiation and change; a temporal relationship between initiation or dose escalation and erectile-dysfunction onset, with any improvement on dose reduction, switching, or cessation recorded; and assessment of competing contributors including vascular disease, diabetes, hypertension, smoking, alcohol, testosterone deficiency, opioid or antihypertensive exposure, pelvic surgery, and peripheral neuropathy.",
+          "alternativeEtiologiesToRuleOut": [
+            "Vascular disease, diabetes, hypertension, smoking, and alcohol exposure",
+            "Endocrine causes such as testosterone deficiency or thyroid disease",
+            "Other medications including opioids, antihypertensives, and 5-alpha-reductase inhibitors",
+            "Pelvic surgery, neurological disease, or peripheral neuropathy"
+          ],
+          "alternativeEtiologyTags": [
+            "vascular-disease",
+            "hypogonadism",
+            "polypharmacy",
+            "pelvic-surgery"
+          ],
+          "requiresSpecificDbqEvidence": true
+        },
+        "rationale": "Major depressive disorder (38 CFR 4.130; DC 9434) is treated with selective serotonin reuptake inhibitors, and erectile dysfunction (38 CFR 4.115b; DC 7522) is the recognised sexual side effect most often claimed as secondary on that basis. The registered row in depressive-disorder.json already carries a DIRECT_CAUSATION classification with IATROGENIC_TREATMENT_EFFECT consensus, so this proposal strengthens rather than disputes it, adding the two strongest available meta-analytic anchors. The newer anchor is a systematic review and meta-analysis reporting that selective serotonin reuptake inhibitor treatment is consistently associated with sexual dysfunction, particularly orgasmic dysfunction and reduced sexual satisfaction; the older anchor is a meta-analysis of treatment-emergent sexual dysfunction related to antidepressants that established the effect size across agents. Both are meta-analytic, which is why the iatrogenic classification is defensible, but neither can attribute a symptom to a drug in a specific person, so the row requires documented exposure, a temporal relationship with initiation or dose change, and exclusion of vascular, endocrine, neurological, polypharmacy, and surgical contributors. Two boundaries are recorded: erectile dysfunction in a depressed population is partly attributable to the mood disorder itself, so the medication-specific component must be isolated, and the rating schedule treats erectile dysfunction and ejaculatory or orgasmic dysfunction as related but distinct outcomes that should be claimed and documented separately.",
+        "claimTheories": [
+          "secondary-causation"
+        ],
+        "nexusRequirement": "individual-medical-opinion",
+        "pathwayIntelligence": {
+          "pathways": [
+            "medication-related",
+            "direct-secondary"
+          ],
+          "causalChain": "Service-connected major depressive disorder -> prescribed selective serotonin reuptake inhibitor therapy -> increased synaptic serotonin at 5-HT2 receptors with reduced dopaminergic and noradrenergic drive and attenuated cavernosal nitric-oxide signalling -> impaired cavernosal smooth-muscle relaxation and erectile dysfunction, with co-travelling delayed ejaculation or anorgasmia.",
+          "developmentQuestions": [
+            "Which selective serotonin reuptake inhibitor was prescribed, at what dose, and on what dates, including any changes?",
+            "Does erectile-dysfunction onset follow initiation or dose escalation, and did it improve on dose reduction, switching, or cessation?",
+            "Have vascular, endocrine, neurological, and surgical contributors been assessed and excluded?",
+            "Which other medications that affect erectile function are in current use?",
+            "Has the clinician separated the depression-specific contribution to sexual dysfunction from the medication-specific contribution?"
+          ],
+          "issuesToResolve": [
+            "Sexual dysfunction in depression is partly attributable to the mood disorder itself, so the drug-specific component must be isolated.",
+            "Erectile dysfunction and ejaculatory or orgasmic dysfunction are related but distinct rating outcomes and must be documented separately.",
+            "The located anchors are meta-analytic and cannot attribute the effect to a named drug in an individual."
+          ]
+        },
+        "evidenceGaps": [
+          "Treatment records identifying the selective serotonin reuptake inhibitor, dose, and dates of initiation and change",
+          "Temporal relationship between initiation or dose escalation and erectile-dysfunction onset, with any dechallenge improvement recorded",
+          "Assessment of competing contributors including vascular disease, diabetes, hypertension, smoking, alcohol, and testosterone deficiency",
+          "Review of other medications affecting erectile function, including opioids, antihypertensives, and 5-alpha-reductase inhibitors",
+          "Exclusion of pelvic surgery, neurological disease, and peripheral neuropathy"
+        ],
+        "sourceReferences": [
+          {
+            "citation": "Dagostin Ferraz S, Kuyunga L, Rech P, et al. Sexual dysfunction associated with selective serotonin reuptake inhibitors in adults with depression: a systematic review and meta-analysis. Eur J Clin Pharmacol. 2026;82(3). PMID 41721013. doi:10.1007/s00228-026-04011-z.",
+            "note": "Systematic review and meta-analysis reporting that selective serotonin reuptake inhibitor treatment is consistently associated with sexual dysfunction, particularly orgasmic dysfunction and reduced sexual satisfaction; supports the iatrogenic classification without attributing the effect in an individual.",
+            "verificationScope": "clinical-evidence",
+            "authorityCategory": "medical-scientific-evidence",
+            "propositionRole": "clinical-evidence",
+            "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41721013/",
+            "verified": false,
+            "sourceLocator": "PMID 41721013"
+          },
+          {
+            "citation": "Serretti A, Chiesa A. Treatment-emergent sexual dysfunction related to antidepressants: a meta-analysis. J Clin Psychopharmacol. 2009;29(3):259-266. PMID 19440080. doi:10.1097/JCP.0b013e3181a5233f.",
+            "note": "Meta-analysis of treatment-emergent sexual dysfunction related to antidepressants; establishes the effect size across agents and supports the drug-specific component that must be separated from the depression-specific component.",
+            "verificationScope": "clinical-evidence",
+            "authorityCategory": "medical-scientific-evidence",
+            "propositionRole": "clinical-evidence",
+            "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/19440080/",
+            "verified": false,
+            "sourceLocator": "PMID 19440080"
+          },
+          {
+            "citation": "38 CFR § 3.310 — Secondary service connection, including disability caused by treatment for a service-connected disability; 38 CFR 4.115b Ratings of the genitourinary system, diagnoses (DC 7522, erectile dysfunction).",
+            "note": "Legal framework for secondary service connection and the rating schedule governing the secondary identity. Rating-schedule citations describe how severity is evaluated and are not evidence of service connection.",
+            "verificationScope": "legal-framework",
+            "authorityCategory": "current-regulatory-authority",
+            "propositionRole": "legal-framework",
+            "verified": false,
+            "sourceLocator": "38 CFR § 3.310; 38 CFR 4.115b"
+          }
+        ]
+      }
+    ]
+  }
+]

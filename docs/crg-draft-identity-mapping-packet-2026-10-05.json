@@ -1,0 +1,173 @@
+[
+  {
+    "secondaryCondition": "Post-traumatic headache (persistent, migraine or tension-type phenotype)",
+    "secondaryDiagnosticCode": "No dedicated DC — rated by analogy under 38 CFR § 4.20 within § 4.124a; the headache syndrome is ordinarily evaluated under DC 8100 (migraine) criteria (or tension-type criteria by analogy)",
+    "primaryCondition": "Traumatic brain injury (service-connected), with residuals",
+    "primaryDiagnosticCode": "8045 (38 CFR § 4.124a — residuals of traumatic brain injury)",
+    "nexusTheory": "Causation",
+    "etiologicalMechanism": "Post-traumatic headache (PTH) is a secondary headache disorder attributable to the direct and downstream effects of traumatic brain injury (TBI) on nociceptive and trigeminovascular systems. The injury cascade begins with mechanical loading of cranial and cervical structures at impact, producing axonal shearing, glial activation, and neuroinflammation in pain-modulating networks (trigeminocervical complex, thalamus, periaqueductal gray, somatosensory cortex), together with diminished descending pain inhibition and central sensitization. These changes lower the threshold for activation of the trigeminovascular system, where calcitonin gene-related peptide release, meningeal nociceptor sensitization, cortical spreading depression susceptibility, and autonomic dysregulation generate migraine-like attacks; a parallel myofascial and cervicogenic contribution arises from injury to cervical muscles and joints, producing tension-type presentations. Comorbid sleep disruption, vestibular dysfunction, and post-traumatic stress are amplifying rather than initiating factors, and medication-overuse headache can secondarily maintain the pattern. The clinical epidemiology is robust: pooled prevalence of headache after TBI is 49.3% (95% CI 44.7-53.9) across observational studies, and persistent post-traumatic headache in adult civilians is 47.1% (95% CI 34.6-59.8) with similar estimates at 3, 6, 12, and 36-plus months; in a prospective multi-center cohort, 71% of patients reported headache during the first year after injury and more than 41% still reported headache at 3, 6, and 12 months, with incidence unrelated to TBI severity (p = 0.67) but significantly related to pre-injury headache history (p < 0.001) and female sex (p < 0.01). Under 38 CFR § 3.310(a), a persistent headache disorder developing after a service-connected TBI is a direct-causation secondary claim, and PTH is not among the conditions listed in § 3.310(d)(1), so the nexus rests on an individual medical opinion rather than a regulatory presumption. For an 'at least as likely as not' opinion, document the TBI (with severity at the time of injury), the headache chronology relative to the injury (onset within days to weeks and persistence beyond three months), semiology consistent with the International Classification of Headache Disorders criteria for headache attributed to traumatic injury to the head, and treatment response; exclude or address primary migraine or tension-type headache predating the injury, medication-overuse headache, cervicogenic headache, and secondary causes (vascular, intracranial pressure, infection). If a pre-existing headache disorder is documented, § 3.310(b) permits service connection only for the attributable aggravation, measured against an established baseline rather than the natural progression of the pre-existing disorder.",
+    "medicalEvidence": [
+      {
+        "title": "Prevalence of Headache Following Traumatic Brain Injury: A Systematic Review and Meta-Analysis.",
+        "authors": "Teng Y, Ge J",
+        "summary": "Systematic review and meta-analysis of observational studies (2000-2024) found a pooled prevalence of post-traumatic headache of 49.3% (95% CI 44.7-53.9) in patients with TBI, stable on sensitivity analysis; the authors note the term refers to headache reported after TBI rather than strict diagnostic-criteria cases.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/41116843/"
+      },
+      {
+        "title": "The prevalence of persistent post-traumatic headache in adult civilian traumatic brain injury: a systematic review and meta-analysis on the past 14 years.",
+        "authors": "Herrero Babiloni A, Bouferguene Y, Exposto FG, et al.",
+        "summary": "Meta-analysis (16 studies qualitatively, 10 pooled) of adult civilian TBI estimated persistent post-traumatic headache prevalence at 47.1% (95% CI 34.6-59.8; prediction interval 10.8-85.4), similar across 3, 6, 12, and 36+ months; heterogeneity was high.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/37390366/"
+      },
+      {
+        "title": "Natural history of headache after traumatic brain injury.",
+        "authors": "Hoffman JM, Lucas S, Dikmen S, et al.",
+        "summary": "Prospective multi-center cohort of 452 patients with TBI: 71% reported headache during the first year after injury and more than 41% still reported headache at 3, 6, and 12 months; pre-injury headache history (p < 0.001) and female sex (p < 0.01) raised risk, while incidence was not related to TBI severity (p = 0.67).",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/21732765/"
+      }
+    ],
+    "cfrCitations": [
+      "38 CFR § 3.310(a) (secondary service connection)",
+      "38 CFR § 3.310(b) (aggravation of a nonservice-connected disability, with baseline rule)",
+      "38 CFR § 4.124a, DC 8045 (residuals of traumatic brain injury)",
+      "38 CFR § 4.20 (analogous rating of the unlisted post-traumatic headache syndrome) and § 4.124a, DC 8100 (migraine criteria)"
+    ]
+  },
+  {
+    "secondaryCondition": "Diabetic distal symmetric polyneuropathy (diabetic peripheral neuropathy)",
+    "secondaryDiagnosticCode": "No dedicated DC — rated under 38 CFR § 4.124a on the demonstrated peripheral nerve deficits (DC 8510-8530); distal lower-extremity polyneuropathy is commonly evaluated under the sciatic (DC 8520) or its branch codes (e.g., common peroneal DC 8521, posterior tibial DC 8525, femoral DC 8526), with § 4.20 analogy where the deficit does not track a single nerve trunk",
+    "primaryCondition": "Diabetes mellitus, type II (service-connected)",
+    "primaryDiagnosticCode": "7913 (38 CFR § 4.119 — diabetes mellitus)",
+    "nexusTheory": "Causation",
+    "etiologicalMechanism": "Type 2 diabetes produces distal symmetric polyneuropathy through chronic hyperglycemic and dyslipidemic injury to peripheral nerves and their supporting microvasculature, with a length-dependent pattern reflecting the greatest metabolic load on the longest axons. Four interdependent cascades converge: (1) increased polyol-pathway flux through aldose reductase raises intracellular sorbitol and fructose, depleting myo-inositol and NADPH and impairing Na+/K+-ATPase-dependent nerve conduction; (2) non-enzymatic glycation of proteins, lipoproteins, and nucleic acids generates advanced glycation end-products whose receptor (RAGE) signaling drives NF-kB-mediated inflammation and oxidative stress in Schwann cells, dorsal root ganglia, and endoneurial vessels; (3) activation of the hexosamine and protein kinase C pathways, mitochondrial dysfunction, and nitrosative stress amplify axonal and Schwann-cell injury; and (4) endoneurial microangiopathy (capillary basement-membrane thickening, endothelial dysfunction, impaired vasodilation, and reduced endoneurial blood flow) produces hypoxic-ischemic nerve damage that parallels diabetic retinopathy and nephropathy. The result is loss of small-fiber and then large-fiber function (pain and temperature, then vibration and proprioception), neuropathic pain, depressed reflexes, and autonomic involvement. The quantitative evidence is strong: pooled prevalence of diabetic peripheral neuropathy is 30% (95% CI 25-34) across 29 studies and 50,112 participants, higher in type 2 (31.5%) than type 1 (17.5%) diabetes; at least 50% of individuals with diabetes develop neuropathy over time; and in a 7.3-year prospective cohort the cumulative incidence was 23.5%, related to glycated hemoglobin and diabetes duration and, after adjustment, independently associated with higher total/LDL cholesterol and triglycerides, higher body-mass index, von Willebrand factor, albumin excretion rate, hypertension, and smoking. Under 38 CFR § 3.310(a), distal symmetric polyneuropathy developing in a veteran with service-connected type 2 diabetes is a direct-causation secondary claim. For an 'at least as likely as not' opinion, document the diabetes diagnosis, duration and glycemic control, the neuropathic examination (monofilament, vibration, pinprick, ankle reflexes, gait), and electrodiagnostic or quantitative sensory findings where needed, and address competing causes of neuropathy — vitamin B12 deficiency (including metformin-associated), alcohol use, hypothyroidism, chronic kidney disease, monoclonal gammopathy, chemotherapy, spinal stenosis or radiculopathy, and hereditary neuropathy. Where pre-existing neuropathy is documented, § 3.310(b) aggravation applies only to the attributable worsening, measured against the established baseline.",
+    "medicalEvidence": [
+      {
+        "title": "Prevalence of peripheral neuropathy in patients with diabetes: A systematic review and meta-analysis.",
+        "authors": "Sun J, Wang Y, Zhang X, et al.",
+        "summary": "Meta-analysis of 29 studies and 50,112 participants: pooled prevalence of diabetic peripheral neuropathy 30% (95% CI 25-34), higher in type 2 diabetes (31.5%, 95% CI 24.4-38.6) than type 1 (17.5%, 95% CI 4.8-30.2).",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/31917119/"
+      },
+      {
+        "title": "Vascular risk factors and diabetic neuropathy.",
+        "authors": "Tesfaye S, Chaturvedi N, Eaton SE, et al.",
+        "summary": "Prospective EURODIAB study of 1,172 patients with type 1 diabetes followed 7.3 years: neuropathy developed in 276 (23.5%), related to glycated hemoglobin and diabetes duration and, after adjustment, significantly associated with total and LDL cholesterol, triglycerides, body-mass index, von Willebrand factor, albumin excretion rate, hypertension, and smoking.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/15673800/"
+      },
+      {
+        "title": "Diabetic neuropathy.",
+        "authors": "Feldman EL, Callaghan BC, Pop-Busui R, et al.",
+        "summary": "Nature Reviews Disease Primers review: diabetic neuropathy is the most prevalent complication of diabetes, with at least 50% of individuals with diabetes developing it; it begins as length-dependent sensory loss in the lower extremities and is characterized by pain and substantial morbidity, with glucose control halting progression in type 1 diabetes and showing more modest effects in type 2 diabetes.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/31197153/"
+      }
+    ],
+    "cfrCitations": [
+      "38 CFR § 3.310(a) (secondary service connection)",
+      "38 CFR § 3.310(b) (aggravation of a nonservice-connected disability, with baseline rule)",
+      "38 CFR § 4.119, DC 7913 (diabetes mellitus)",
+      "38 CFR § 4.124a, DC 8510-8530 (diseases of the peripheral nerves) and § 4.20 (analogous rating)"
+    ]
+  },
+  {
+    "secondaryCondition": "Posterior subcapsular cataract (corticosteroid-induced)",
+    "secondaryDiagnosticCode": "6027 (38 CFR § 4.79 — cataract; preoperative and pseudophakic eyes evaluated under the General Rating Formula for Diseases of the Eye; DC 6029 aphakia applies if no replacement lens is present)",
+    "primaryCondition": "Rheumatoid arthritis (service-connected), on chronic systemic corticosteroid therapy",
+    "primaryDiagnosticCode": "5002 (38 CFR § 4.71a — multi-joint arthritis as an active process)",
+    "nexusTheory": "Medication Side Effect",
+    "etiologicalMechanism": "Systemic glucocorticoid therapy causes a characteristic posterior subcapsular cataract (PSC) through direct, receptor-mediated effects on the lens epithelium. Aqueous glucocorticoid reaches the lens and binds glucocorticoid receptors in epithelial cells at the anterior equator; the resulting changes in epithelial proliferation, migration, and differentiation disturb the orderly formation of lens fibers beneath the posterior capsule, where aberrant cells and disorganized crystallins accumulate. Biochemical correlates include altered crystallin expression and aggregation, disturbed ion and water transport with hydration of lens fibers, oxidative stress, and impaired antioxidant defenses; the opacities begin at the posterior pole, are typically bilateral, and may progress with continued exposure. Risk is related to dose, duration, and individual susceptibility (potency and route matter), and concurrent hyperglycemia may amplify lens damage. Quantitatively, in a 10-year population-based cohort of 3,654 adults with photographic lens grading, current users of oral corticosteroids had a substantially increased risk of incident posterior subcapsular cataract (odds ratio 4.11, 95% CI 1.67-10.08) and nuclear cataract (OR 3.45, 95% CI 1.26-9.43), with no increased cortical cataract risk; users of both inhaled and oral corticosteroids had an adjusted odds ratio of 4.76 (95% CI 2.59-8.74) for PSC cataract. A systematic literature review of 32 studies of long-term systemic corticosteroid exposure lists cataract (1-3% prevalence) among the common toxicities, alongside fracture (21-30%), hypertension (more than 30%), and gastrointestinal and metabolic adverse events, and notes that dose-duration risk relationships remain poorly quantified. The classic literature review documents the well-established association between corticosteroid therapy and posterior subcapsular cataract while cautioning that published series do not establish a simple dose-threshold relationship because of individual lens susceptibility. Under 38 CFR § 3.310(a), a disability proximately due to or resulting from the treatment of a service-connected condition is itself service-connected, so a visually significant PSC cataract developing on documented chronic systemic corticosteroid therapy for service-connected rheumatoid arthritis is a treatment-complication secondary claim; where a pre-existing cataract is documented, § 3.310(b) limits service connection to the attributable aggravation. For an 'at least as likely as not' opinion, document the systemic corticosteroid regimen (drug, prednisone-equivalent daily dose, cumulative duration, dates), the lens findings with slit-lamp or photographic documentation and posterior subcapsular morphology, the chronology of steroid exposure relative to opacity development, and the measured visual effect; exclude or account for age-related nuclear or cortical cataract (the subtype not associated with steroids in the cohort above), diabetes, smoking, ultraviolet exposure, ocular trauma, uveitis or intraocular inflammation, and prior ocular surgery.",
+    "medicalEvidence": [
+      {
+        "title": "Use of inhaled and oral corticosteroids and the long-term risk of cataract.",
+        "authors": "Wang JJ, Rochtchina E, Tan AG, et al.",
+        "summary": "Population-based 10-year cohort (Blue Mountains Eye Study, 3,654 adults; photographic grading): current oral corticosteroid users had increased incident posterior subcapsular cataract (OR 4.11, 95% CI 1.67-10.08) and nuclear cataract (OR 3.45, 95% CI 1.26-9.43) but not cortical cataract; ever users of both inhaled and oral corticosteroids had adjusted OR 4.76 (95% CI 2.59-8.74) for PSC cataract.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/19243828/"
+      },
+      {
+        "title": "Long-term Systemic Corticosteroid Exposure: A Systematic Literature Review.",
+        "authors": "Rice JB, White AG, Scarpati LM, et al.",
+        "summary": "Systematic review of 32 articles (2007-2016) on long-term systemic corticosteroid exposure: commonly cited adverse events include cataract (1-3% prevalence), bone fracture (21-30%), hypertension (more than 30%), gastrointestinal conditions (1-5%), and metabolic effects; dose- and duration-related risk remains inadequately quantified.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/29055500/"
+      },
+      {
+        "title": "Corticosteroid-induced cataracts.",
+        "authors": "Urban RC Jr, Cotlier E",
+        "summary": "Classic review establishing the well-documented association between corticosteroid therapy and posterior subcapsular cataracts, describing the mechanism by which corticosteroids produce these opacities and noting that published series and individual lens susceptibility do not permit a simple dose-duration threshold.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/3541262/"
+      }
+    ],
+    "cfrCitations": [
+      "38 CFR § 3.310(a) (disability proximately due to or the result of a service-connected disease or injury, including its treatment)",
+      "38 CFR § 3.310(b) (aggravation of a nonservice-connected disability, with baseline rule)",
+      "38 CFR § 4.71a, DC 5002 (multi-joint arthritis, active process)",
+      "38 CFR § 4.79, DC 6027 (cataract) and DC 6029 (aphakia or dislocation of crystalline lens)"
+    ]
+  },
+  {
+    "secondaryCondition": "Peripheral vestibular dysfunction (including traumatic benign paroxysmal positional vertigo)",
+    "secondaryDiagnosticCode": "6204 (38 CFR § 4.87 — peripheral vestibular disorders; objective findings supporting vestibular disequilibrium are required before a compensable evaluation; DC 6205 applies where the picture meets Meniere's syndrome criteria)",
+    "primaryCondition": "Traumatic brain injury (service-connected), with residuals",
+    "primaryDiagnosticCode": "8045 (38 CFR § 4.124a — residuals of traumatic brain injury)",
+    "nexusTheory": "Causation",
+    "etiologicalMechanism": "Traumatic brain injury disrupts the peripheral vestibular system through mechanical and vascular injury. Impact forces transmitted to the temporal bone and labyrinth produce labyrinthine concussion with damage to the membranous labyrinth and sensory epithelia; acceleration-deceleration of the head shears the otolithic membrane and dislodges otoconia from the utricle, which migrate into a semicircular canal (most often the posterior canal) and cause positionally triggered endolymph flow — the canalithiasis mechanism of benign paroxysmal positional vertigo (BPPV). Additional contributions include direct injury to the vestibular nerve, hemorrhage or ischemia of the labyrinth and brainstem vestibular nuclei, and central vestibulo-ocular and vestibulospinal dysfunction that may coexist with the peripheral lesion; the clinical result is vertigo and positional dizziness, imbalance, gait instability, oscillopsia, nausea, and visual-vestibular intolerance. Severity and timing track trauma severity: in a prospective series of 117 patients with minimal, mild, or moderate head trauma examined with Dix-Hallpike and supine roll testing, 21% developed traumatic BPPV within three months (12%, 24%, and 40% across minimal, mild, and moderate trauma, respectively; p = 0.018), with nearly all onsets in the first four weeks; in a systematic review of 23 studies of non-blast TBI, BPPV was the most frequently identified peripheral vestibular deficit, diagnosed in 39.7% of 239 participants across six studies, though most data were retrospective and from tertiary centers, and a 2025 systematic review of 59 studies documents the spectrum of vestibular dysfunction after mild TBI, including dizziness, imbalance, vertigo, vestibulo-ocular dysfunction, and nystagmus, and the role of vestibular rehabilitation. Under 38 CFR § 3.310(a), a peripheral vestibular disorder developing after a service-connected TBI is a direct-causation secondary claim; vestibular dysfunction is not among the conditions listed in § 3.310(d)(1), so an individual medical opinion is required. For an 'at least as likely as not' opinion, document the TBI, the onset and pattern of positional vertigo or imbalance relative to the injury, and objective vestibular findings (positive Dix-Hallpike or supine roll maneuver with characteristic nystagmus for BPPV; videonystagmography, video head impulse, caloric, or vestibular-evoked myogenic potential testing for non-positional deficits), and address competing causes — pre-existing or idiopathic BPPV (common in the general population, so temporal proximity to trauma is essential), vestibular migraine, Meniere's disease, medication ototoxicity, and central or cerebellar causes. Where a pre-existing vestibular disorder is documented, § 3.310(b) permits service connection only for the attributable aggravation over the established baseline.",
+    "medicalEvidence": [
+      {
+        "title": "Frequency of peripheral vestibular pathology following traumatic brain injury: a systematic review of literature.",
+        "authors": "Šarkić B, Douglas JM, Simpson A, et al.",
+        "summary": "Systematic review of 23 studies of adults with non-blast TBI: BPPV was the most frequently identified peripheral vestibular deficit, diagnosed in 39.7% of 239 participants across six studies; most studies were retrospective and from tertiary institutions, with the highest evidence level 2b.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/32907431/"
+      },
+      {
+        "title": "The Risk of Benign Paroxysmal Positional Vertigo After Head Trauma.",
+        "authors": "Andersson H, Jablonski GE, Nordahl SHG, et al.",
+        "summary": "Prospective study of 117 patients with minimal, mild, or moderate head trauma examined by Dix-Hallpike and supine roll maneuvers: 21% developed traumatic BPPV within three months (12%, 24%, and 40% by increasing trauma severity; p = 0.018), with onset concentrated in the first four weeks.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34487348/"
+      },
+      {
+        "title": "Vestibular dysfunction after mild traumatic brain injury: A systematic review.",
+        "authors": "Owens MR, Larkin E, Tenhoeve SA, et al.",
+        "summary": "Systematic review of 59 studies: vestibular dysfunction after mild TBI commonly presents with dizziness, imbalance, vertigo, vestibulo-ocular dysfunction, postural and gait disturbance, and nystagmus; the review covers diagnostic testing and treatments including vestibular rehabilitation.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/40709793/"
+      }
+    ],
+    "cfrCitations": [
+      "38 CFR § 3.310(a) (secondary service connection)",
+      "38 CFR § 3.310(b) (aggravation of a nonservice-connected disability, with baseline rule)",
+      "38 CFR § 4.124a, DC 8045 (residuals of traumatic brain injury)",
+      "38 CFR § 4.87, DC 6204 (peripheral vestibular disorders) and DC 6205 (Meniere's syndrome)"
+    ]
+  },
+  {
+    "secondaryCondition": "Hypopituitarism (anterior pituitary hormone deficiency following traumatic brain injury)",
+    "secondaryDiagnosticCode": "No dedicated DC — evaluated by analogy under 38 CFR § 4.20 to the deficient hormonal axis or residual condition within § 4.119 (for example DC 7903 hypothyroidism, DC 7911 adrenocortical insufficiency, DC 7909 diabetes insipidus); § 4.119 contains no hypopituitarism code (DC 7916 addresses hyperpituitarism only)",
+    "primaryCondition": "Traumatic brain injury (moderate or severe, service-connected), with residuals",
+    "primaryDiagnosticCode": "8045 (38 CFR § 4.124a — residuals of traumatic brain injury)",
+    "nexusTheory": "Causation",
+    "etiologicalMechanism": "Traumatic brain injury causes hypothalamic-pituitary dysfunction through several converging mechanisms. Direct mechanical forces can fracture the skull base and sella, shear the pituitary stalk, and injure the median eminence, while rotational acceleration damages the fine hypothalamic-hypophyseal portal vasculature and the pituitary itself. Subsequent edema, hemorrhage, and hypoxic-ischemic injury (from apnea, hypotension, or raised intracranial pressure) further compromise the hypothalamic neurons and pituitary secretory cells that regulate the axes. The result is deficient synthesis or release of one or more anterior pituitary hormones: growth hormone (most commonly), gonadotropins leading to hypogonadism, thyrotropin leading to central hypothyroidism, corticotropin leading to secondary adrenal insufficiency, and less commonly antidiuretic hormone deficiency. Early post-injury abnormalities may be transient, but a substantial proportion of patients develop persistent deficits that are detectable at 12 months or later, and untreated deficiency produces fatigue, impaired quality of life, adverse metabolic profiles, and impaired recovery. The evidence base is quantitative and consistent: a systematic review pooling 19 studies of 1,137 patients found chronic-phase hypopituitarism in 27.5% (95% CI 22.8-28.9) after TBI, with higher prevalence after severe TBI; a meta-analysis of 29 studies and 2,756 participants found at least one anterior pituitary hormone dysfunction in 32% (95% CI 25-38) at 12 months or more (34% in high-quality studies); and a 2024 meta-analysis of 52 studies and 7,367 participants found any pituitary axis dysfunction in 33% (95% CI 28-37), with growth hormone deficiency 18%, gonadal deficiency 16%, ACTH deficiency 10%, and TSH deficiency 6%, and multiple affected axes in 7%. Legally, 38 CFR § 3.310(d)(1)(v) provides that diseases of hormone deficiency that result from hypothalamo-pituitary changes are presumed to be the proximate result of a service-connected TBI when they manifest within 12 months of moderate or severe TBI; where that presumption does not apply (mild TBI, or manifestation outside 12 months), § 3.310(d)(2) directs decision under generally applicable principles, i.e., a § 3.310(a) causation opinion. For an 'at least as likely as not' opinion, document the TBI and its severity using the § 3.310(d)(3) criteria (loss of consciousness, alteration of consciousness, post-traumatic amnesia, Glasgow Coma Scale, imaging), the date of manifestation of the hormone deficiency relative to the injury, and endocrinologic testing of the affected axes (morning cortisol with stimulation testing where indicated, IGF-1, LH/FSH with testosterone or estradiol, TSH with free T4, prolactin, and sodium/osmolality for diabetes insipidus), and exclude competing causes — pituitary adenoma or other sellar mass, cranial radiotherapy, hypophysitis, Sheehan's syndrome, hemochromatosis, infiltrative disease, and drug effects.",
+    "medicalEvidence": [
+      {
+        "title": "Hypothalamopituitary dysfunction following traumatic brain injury and aneurysmal subarachnoid hemorrhage: a systematic review.",
+        "authors": "Schneider HJ, Kreitschmann-Andermahr I, Ghigo E, et al.",
+        "summary": "Systematic review pooling 19 studies and 1,137 patients: chronic-phase hypopituitarism prevalence was 27.5% (95% CI 22.8-28.9) after traumatic brain injury, higher after severe injury; early abnormalities were transient in some patients while hypopituitarism evolved over time in others, and affected patients showed impaired quality of life and adverse metabolic profiles.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/17895459/"
+      },
+      {
+        "title": "Prevalence of Anterior Pituitary Dysfunction Twelve Months or More following Traumatic Brain Injury in Adults: A Systematic Review and Meta-Analysis.",
+        "authors": "Emelifeonwu JA, Flower H, Loan JJ, et al.",
+        "summary": "Meta-analysis of 29 studies and 2,756 participants: overall prevalence of at least one anterior pituitary hormone dysfunction at 12 months or more after TBI was 32% (95% CI 25-38), and 34% (95% CI 27-42) in the 12 high-quality studies; studies with a higher proportion of mild TBI had lower prevalence.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/31111791/"
+      },
+      {
+        "title": "Acute and chronic hypopituitarism following traumatic brain injury: a systematic review and meta-analysis.",
+        "authors": "Aljboor GS, Tulemat A, Al-Saedi AR, et al.",
+        "summary": "Meta-analysis of 52 studies and 7,367 participants: pooled prevalence of any pituitary axis dysfunction after TBI was 33% (95% CI 28-37), remaining 32% (95% CI 26-38) beyond 12 months; deficiency rates were 18% for growth hormone, 16% for the gonadal axis, 10% for ACTH, and 6% for TSH, with multiple axes affected in 7%.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/39527353/"
+      }
+    ],
+    "cfrCitations": [
+      "38 CFR § 3.310(d)(1)(v) (diseases of hormone deficiency from hypothalamo-pituitary changes manifest within 12 months of moderate or severe TBI are held to be proximately due to the service-connected TBI)",
+      "38 CFR § 3.310(d)(2) (claims not meeting the presumption are decided under generally applicable principles)",
+      "38 CFR § 3.310(d)(3) (TBI severity criteria) and § 3.310(a) (secondary service connection)",
+      "38 CFR § 4.124a, DC 8045 (residuals of traumatic brain injury)",
+      "38 CFR § 4.119 (endocrine system; no dedicated hypopituitarism code) and § 4.20 (analogous rating, e.g., DC 7903, DC 7911, DC 7909)"
+    ]
+  }
+]

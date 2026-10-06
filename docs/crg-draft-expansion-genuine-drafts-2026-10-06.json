@@ -1,0 +1,136 @@
+[
+  {
+    "secondaryCondition": "Peripheral Neuropathy",
+    "secondaryDiagnosticCode": "38 CFR 4.124a peripheral nerve ratings (evaluated by the specific nerve involved and its severity). The repository catalog entry for this identity carries an EMPTY ratingSchedule and is annotated \"Verified neurological mapping\", so no single diagnostic code is asserted here and a qualified human must confirm the applicable code.",
+    "primaryCondition": "Diabetes Mellitus, Type 1",
+    "primaryDiagnosticCode": "7913 (38 CFR 4.119, endocrine system; the catalog note states DC 7913 covers diabetes mellitus and directs separate evaluation of compensable diabetic complications when applicable)",
+    "nexusTheory": "Causation",
+    "etiologicalMechanism": "SECTION 3.310 DETERMINATION: supported as direct causation, and this is a genuine coverage gap rather than a re-statement. Peripheral neuropathy carries eleven incoming edges in the repository and NOT ONE of them runs from diabetes, the single commonest cause of peripheral neuropathy in the veteran population. MECHANISM: sustained hyperglycaemia drives nerve injury through at least four convergent pathways. First, flux through the polyol pathway converts glucose to sorbitol via aldose reductase; sorbitol and fructose accumulate in the nerve, raising intracellular osmotic load and depleting myo-inositol, which reduces sodium-potassium ATPase activity and impairs axonal transport. Second, non-enzymatic glycation of structural proteins and myelin forms advanced glycation end-products, cross-linking the extracellular matrix and stiffening the vasa nervorum. Third, hyperglycaemia generates reactive oxygen species and depletes glutathione and nitric oxide, producing oxidative stress that injures endoneurial mitochondria and reduces nerve blood flow. Fourth, activation of protein kinase C and the hexosamine pathway compounds endothelial dysfunction in the endoneurial microvasculature, so the nerve suffers a length-dependent ischaemic insult. The result is a distal, symmetric, length-dependent sensory and motor neuropathy, typically beginning in the toes and ascending, with small-fibre involvement producing burning pain and loss of pinprick and temperature sensation. WHY IT MEETS THE STANDARD: the mechanism is established rather than hypothesised, so the contest in an individual case is attribution and timing, not biology. The examiner should document diabetes duration and glycaemic control (HbA1c history), demonstrate a distal symmetric pattern on examination, confirm with nerve conduction studies or quantitative sensory testing, and exclude competing causes: alcohol use, vitamin B12 deficiency, hypothyroidism, monoclonal gammopathy, HIV and its treatments, chemotherapy exposure, chronic kidney disease, and hereditary neuropathy. Diabetic neuropathy is generally length-dependent and symmetric, whereas a mononeuropathy or an asymmetric presentation should prompt a different explanation.",
+    "medicalEvidence": [
+      {
+        "title": "Diabetic Neuropathy: A Position Statement by the American Diabetes Association",
+        "authors": "Pop-Busui R, Boulton AJ, Feldman EL, Bril V, Freeman R, Malik RA, Sosenko JM, Ziegler D",
+        "summary": "The American Diabetes Association position statement on diabetic neuropathy. It establishes hyperglycaemia as the causal driver, describes the polyol, advanced-glycation, oxidative-stress, and microvascular mechanisms, and defines the typical distal symmetric length-dependent phenotype the examiner should look for.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/27999003/"
+      },
+      {
+        "title": "Diabetic Neuropathies",
+        "authors": "Fridman V",
+        "summary": "Contemporary clinical review of the diabetic neuropathies covering classification, diagnostic evaluation, and the distinction between length-dependent distal symmetric polyneuropathy and the less common asymmetric or mononeuropathic presentations. It supplies the phenotype criteria that separate a diabetic attribution from competing causes.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/42825558/"
+      }
+    ],
+    "cfrCitations": [
+      "38 CFR § 3.310 (service-connected disability caused by a service-connected disability)",
+      "38 CFR 4.119, Schedule of ratings, endocrine system (DC 7913, diabetes mellitus and its compensable complications)",
+      "38 CFR 4.124a, Schedule of ratings, neurological conditions (peripheral nerve ratings applied to the affected nerve)"
+    ]
+  },
+  {
+    "secondaryCondition": "Carpal Tunnel Syndrome",
+    "secondaryDiagnosticCode": "38 CFR 4.124a and 38 CFR 4.71a (both cited by the repository catalog entry for this identity). No single diagnosis-specific diagnostic code is asserted by the catalog, so a qualified human must select the applicable criteria from the documented findings.",
+    "primaryCondition": "Hypothyroidism",
+    "primaryDiagnosticCode": "7903 (38 CFR 4.119, endocrine system; the catalog note states DC 7903 covers hypothyroidism and directs subsequent evaluation of residuals under the appropriate body system when applicable)",
+    "nexusTheory": "Causation",
+    "etiologicalMechanism": "SECTION 3.310 DETERMINATION: supported as direct causation of the compressive mononeuropathy, with a causal-inference anchor that is unusually strong for this repository. The identity has two incoming edges in the repository and neither runs from hypothyroidism. MECHANISM: thyroid hormone regulates the synthesis and turnover of glycosaminoglycans in connective tissue. In hypothyroidism, mucopolysaccharide deposition thickens the synovium, the flexor retinaculum, and the tendon sheaths within the carpal tunnel, and it also expands the median nerve's own connective tissue. Because the carpal tunnel is a fixed-volume fibro-osseous compartment bounded by the carpal bones dorsally and the transverse carpal ligament volarly, any increase in contents raises intracarpal pressure, and that pressure compresses the median nerve against the ligament, producing segmental demyelination and then axonal loss. The result is the classic median-nerve distribution: nocturnal pain and paraesthesia in the thumb, index, middle, and radial half of the ring finger, thenar weakness, and later sensory loss and thenar atrophy. The proposed pathway is therefore mechanical and metabolic rather than inflammatory, and it is anatomically specific. WHY IT MEETS THE STANDARD: a Mendelian randomisation study finds genetic liability to hypothyroidism causally associated with carpal tunnel syndrome, which is a stronger inference class than the observational association most secondary claims rely on, because randomisation at conception is not confounded by the reverse pathway. The examiner should still document the thyroid diagnosis and treatment status, confirm median-nerve involvement with nerve conduction studies or electromyography, and exclude competing contributors: diabetes, pregnancy, obesity, rheumatoid arthritis and other inflammatory arthropathies, prior wrist trauma or fracture, repetitive wrist loading, and acromegaly. Note also that carpal tunnel syndrome is frequently BILATERAL, so a unilateral presentation should prompt a search for a local structural cause.",
+    "medicalEvidence": [
+      {
+        "title": "Causal effects of type 2 diabetes, obesity, gout, and hypothyroidism on carpal tunnel syndrome: a univariable and multivariable Mendelian randomization study",
+        "authors": "Tian H, Hong L, Guo W, Liu Q",
+        "summary": "Mendelian randomisation study testing causal effects on carpal tunnel syndrome. It reports a causal association for hypothyroidism, which is a stronger inference class than observational association because genetic randomisation at conception is not vulnerable to reverse causation or conventional confounding.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/42059059/"
+      },
+      {
+        "title": "Effect of Hypothyroidism on the Risk of Carpal Tunnel Syndrome and Electrodiagnostic Parameters",
+        "authors": "Abuzinadah AR",
+        "summary": "Study of hypothyroidism's effect on carpal tunnel syndrome risk and on electrodiagnostic parameters. It supports both the increased risk and an objective, measurable effect on median-nerve conduction, which is the kind of corroboration an at-least-as-likely-as-not opinion benefits from.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/41002938/"
+      }
+    ],
+    "cfrCitations": [
+      "38 CFR § 3.310 (service-connected disability caused by a service-connected disability)",
+      "38 CFR 4.119, Schedule of ratings, endocrine system (DC 7903, hypothyroidism)",
+      "38 CFR 4.124a and 38 CFR 4.71a, rating frameworks cited by the repository catalog for carpal tunnel syndrome"
+    ]
+  },
+  {
+    "secondaryCondition": "Osteopenia",
+    "secondaryDiagnosticCode": "38 CFR 4.71a, musculoskeletal system. The catalog entry for this identity carries NO diagnosis-specific diagnostic code and records that rating depends on documented findings under the applicable Part 4 framework, so the code requires qualified-human confirmation.",
+    "primaryCondition": "Rheumatoid Arthritis (the service-connected condition for which long-term systemic glucocorticoid therapy is prescribed)",
+    "primaryDiagnosticCode": "38 CFR 4.71a, musculoskeletal system (the framework recorded by the repository catalog for this identity). The catalog asserts no single diagnosis-specific code for rheumatoid arthritis, so a qualified human must confirm it.",
+    "nexusTheory": "Medication Side Effect",
+    "etiologicalMechanism": "SECTION 3.310 DETERMINATION: supported as a medication-related secondary connection. The inflammatory arthropathy does not cause the bone loss by itself in the way a mechanical lesion would; the proximate agent is prescribed systemic glucocorticoid therapy, which is the treatment-for-a-service-connected-disability paradigm that 38 CFR 3.310 recognises. PHARMACOLOGICAL MECHANISM: glucocorticoids suppress bone formation and accelerate bone resorption simultaneously, and they do so preferentially at trabecular-rich sites such as the vertebral bodies and the femoral neck. Formation is suppressed because glucocorticoids inhibit the differentiation and function of osteoblasts and drive osteoblast and osteocyte apoptosis through caspase-dependent and Wnt-signalling pathways. Resorption is increased because glucocorticoids reduce osteoprotegerin and increase receptor-activator-of-nuclear-factor-kappa-B-ligand expression in osteoblasts and stromal cells, which expands osteoclastogenesis; they also reduce intestinal calcium absorption and increase renal calcium excretion, producing secondary hyperparathyroidism that further drives resorption. Sex-steroid suppression compounds the effect in both men and women. The characteristic result is a rapid early decline in bone mineral density concentrated in the first three to six months of therapy and most pronounced at trabecular sites, which is why osteopenia, not overt osteoporosis, is often the first measurable phenotype and why fracture risk rises earlier than bone density alone would predict. Individual nexus reasoning: the examiner should document the corticosteroid agent, cumulative dose, and duration from the treatment record, obtain serial bone mineral density measurements to show decline after initiation, and consider a fracture-risk assessment independently of density. Competitors and amplifiers to separate: postmenopausal oestrogen loss, age-related bone loss, hypogonadism, vitamin D deficiency, malabsorption, hyperthyroidism, hyperparathyroidism, smoking, alcohol, immobility, and reduced weight-bearing activity from the joint disease itself.",
+    "medicalEvidence": [
+      {
+        "title": "Update on Glucocorticoid-Induced Osteoporosis: Emerging Therapeutic Strategies",
+        "authors": "Cho SK, Sung YK",
+        "summary": "Review of glucocorticoid-induced bone loss. It sets out the dual mechanism of suppressed bone formation and accelerated resorption, the rapid early decline in bone mineral density that makes osteopenia the first measurable phenotype, and the trabecular-site preference that guides which measurements matter.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/42298757/"
+      },
+      {
+        "title": "Effectiveness of anti-osteoporotic medications in the management of glucocorticoid-induced osteoporosis: a systematic review and network meta-analysis on behalf of the ECTS clinical action group",
+        "authors": "Yavropoulou MP, Ter Wee MM, Naciu AM, Paccou J, Anastasilakis AD, Gialouri CG, Hauser B, Solling AS, D'Oronzo S, Rolvien T, Lems WF",
+        "summary": "European Calcified Tissue Society network meta-analysis of treatment for glucocorticoid-induced osteoporosis. It confirms the entity as a distinct, guideline-recognised, drug-caused bone disease with its own treatment pathway, which supports the iatrogenic classification this mapping relies on.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/42565501/"
+      }
+    ],
+    "cfrCitations": [
+      "38 CFR § 3.310 (secondary service connection, including disability caused by treatment for a service-connected disability)",
+      "38 CFR 4.71a, Schedule of ratings, musculoskeletal system (framework recorded by the repository catalog for osteopenia and rheumatoid arthritis)"
+    ]
+  },
+  {
+    "secondaryCondition": "Tension-Type Headache",
+    "secondaryDiagnosticCode": "38 CFR 4.124a, neurological conditions and convulsive disorders. The catalog entry for this identity asserts no single diagnosis-specific code and records that rating depends on documented findings, so the code requires qualified-human confirmation.",
+    "primaryCondition": "Post-Traumatic Stress Disorder (PTSD)",
+    "primaryDiagnosticCode": "9411 (38 CFR 4.130, schedule of ratings, mental disorders)",
+    "nexusTheory": "Causation",
+    "etiologicalMechanism": "SECTION 3.310 DETERMINATION: causation is proposed but the located evidence is prevalence-based and is broader than the target identity, so this mapping does NOT meet the standard as written and should be limited to association pending better evidence. MECHANISM AS PROPOSED: post-traumatic hyperarousal produces sustained sympathetic tone and chronically elevated muscle tension in the pericranial and cervical musculature, and it fragments sleep. Two mechanisms are then proposed: peripheral sensitisation of myofascial nociceptors from sustained contraction, and central sensitisation in the trigeminocervical complex from repeated nociceptive input, both of which lower the threshold at which otherwise innocuous stimuli produce a dull, bilateral, band-like headache. Autonomic dysregulation and hypothalamic-pituitary-adrenal axis changes are offered as amplifiers. WHY IT FALLS SHORT OF THE STANDARD: the principal anchor reports a HIGH PREVALENCE OF PRIMARY HEADACHES among patients with post-traumatic stress disorder, which is an observational prevalence finding in a broad headache category rather than a study of tension-type headache as a discrete outcome, and it cannot exclude the reverse pathway in which headache worsens psychiatric symptoms. The second anchor establishes that psychological distress travels with chronic headache in a general population but does not fix direction either. A SCOPE LIMIT that must be carried on the face of any use of this mapping: several post-traumatic headache studies address headache ATTRIBUTED TO mild traumatic brain injury, which is a distinct diagnostic entity with its own criteria and usually its own primary; where a traumatic brain injury is present, that attribution should be evaluated first and this mapping should not be used to route a post-traumatic headache to the psychiatric condition. To reach an at-least-as-likely-as-not opinion the examiner needs a qualified tension-type headache diagnosis under recognised criteria, headache diaries establishing chronology against psychiatric symptom onset and severity, and exclusion of medication-overuse headache, cervical pathology, temporomandibular dysfunction, and traumatic brain injury as the more proximate cause.",
+    "medicalEvidence": [
+      {
+        "title": "High prevalence of primary headaches among patients with post-traumatic stress disorder: an observational study of consecutive patients",
+        "authors": "Magne H, Pereira B, Moisset X",
+        "summary": "Observational study of consecutive patients reporting a high prevalence of primary headaches among people with post-traumatic stress disorder. It supports a real association but measures headaches as a broad primary-headache category, not tension-type headache as a discrete outcome, and is cross-sectional on direction.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/40597602/"
+      },
+      {
+        "title": "Psychological distress, neuroticism and disability associated with secondary chronic headache in the general population - the Akershus study of chronic headache",
+        "authors": "Kristoffersen ES, Aaseth K, Grande RB, Lundqvist C, Russell MB",
+        "summary": "Population-based study linking psychological distress and neuroticism to chronic headache. It supports the psychological-distress and chronic-headache relationship in a general population but does not establish that the psychiatric condition causes tension-type headache rather than accompanying it.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/30116914/"
+      }
+    ],
+    "cfrCitations": [
+      "38 CFR § 3.310 (service-connected disability caused by or aggravated by a service-connected disability)",
+      "38 CFR 4.124a, Schedule of ratings, neurological conditions and convulsive disorders (tension-type headache framework)",
+      "38 CFR 4.130, Schedule of ratings, mental disorders (DC 9411)"
+    ]
+  },
+  {
+    "secondaryCondition": "Drug-Induced Parkinsonism",
+    "secondaryDiagnosticCode": "38 CFR 4.124a, neurological conditions. The repository catalog entry for this identity carries an EMPTY ratingSchedule, and the sibling movement-disorder note records a deliberate policy that no diagnostic code may be invented and a qualified human must confirm the applicable code and framework. No code is asserted here.",
+    "primaryCondition": "Schizophrenia (the service-connected condition for which antipsychotic therapy is prescribed)",
+    "primaryDiagnosticCode": "38 CFR 4.130, schedule of ratings, mental disorders (framework recorded by the repository catalog for this identity)",
+    "nexusTheory": "Medication Side Effect",
+    "etiologicalMechanism": "SECTION 3.310 DETERMINATION: supported as a medication-related secondary connection. This identity is completely uncovered in the repository: it has zero incoming and zero outgoing edges, and the catalog added it precisely to close the missing-identity gap behind earlier evidence-preserving refusals. Critically, the scope guard must be honoured: this is the REVERSIBLE, drug-induced form, a distinct entity from the neurodegenerative Parkinson disease of the sibling parkinsons-disease identity, and the degenerative-cohort hazard-ratio literature must not be routed through it. PHARMACOLOGICAL MECHANISM: antipsychotic drugs block dopamine D2 receptors in the nigrostriatal pathway. Because nigrostriatal dopaminergic tone is already reduced in proportion to age-related neuronal loss, blocking D2 receptors below the threshold required for normal voluntary movement produces the classic triad of bradykinesia, rigidity, and resting tremor, typically symmetric rather than the asymmetric onset of the degenerative disease. The blockade is competitive and dose-dependent, so the effect is proportional to D2 occupancy, which is why higher-potency first-generation agents and higher doses carry the greatest risk. Two features clinically separate this from Parkinson disease: onset is temporally tied to drug initiation or dose escalation and usually within days to weeks, and the syndrome is substantially reversible on dose reduction, a switch to a lower-potency or atypical agent, or, where clinically permissible, discontinuation. Tardive syndromes and akathisia are separate outcomes and must not be conflated with this one, and neuroleptic malignant syndrome and serotonin syndrome remain distinct entities with their own identities. Individual nexus reasoning: the examiner should document the agent, dose, and dates from the treatment record; establish onset relative to initiation or escalation; apply a validated rating scale such as the Simpson-Angus Scale; and record the response to dose reduction or drug switch, which is the single most probative element. Competitors to exclude: degenerative Parkinson disease, essential tremor, drug-induced tremor from lithium or valproate, vascular parkinsonism, and normal-pressure hydrocephalus.",
+    "medicalEvidence": [
+      {
+        "title": "Antipsychotic-induced extrapyramidal side effects: A systematic review and meta-analysis of observational studies",
+        "authors": "Ali T, Sisay M, Tariku M, Mekuria AN, Desalew A",
+        "summary": "Systematic review and meta-analysis of observational studies on antipsychotic-induced extrapyramidal side effects, including parkinsonism. It quantifies the drug-to-syndrome relationship and shows the effect is a general property of D2-blocking antipsychotics rather than an idiosyncratic reaction.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34506552/"
+      },
+      {
+        "title": "Prevalence of and Risk Factors for Extrapyramidal Side Effects of Antipsychotics: Results From the National FACE-SZ Cohort",
+        "authors": "Misdrahi D, Tessier A, Daubigney A, Meissner WG, Schurhoff F, Boyer L, Godin O, Bulzacka E, Aouizerate B, Andrianarisoa M, Berna F, Capdevielle D, Chereau-Boudet I, D'Amato T, Dubertret C, Dubreucq J, Faget-Agius C, Lancon C, Mallet J, Passerieux C, Rey R, Schandrin A, Urbach M, Vidailhet P, Llorca PM, Fond G (FACE-SZ Group)",
+        "summary": "French national FACE-SZ cohort reporting the prevalence of drug-induced parkinsonism in community-dwelling patients with schizophrenia and identifying first-generation antipsychotic prescription as an adjusted risk factor. It provides cohort-level measured prevalence and a dose- and agent-specific risk gradient for the medication nexus.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/30695288/"
+      }
+    ],
+    "cfrCitations": [
+      "38 CFR § 3.310 (secondary service connection, including disability caused by treatment for a service-connected disability)",
+      "38 CFR 4.124a, Schedule of ratings, neurological conditions (movement-disorder framework; no code asserted, per repository policy that no code may be invented)",
+      "38 CFR 4.130, Schedule of ratings, mental disorders (framework recorded for schizophrenia)"
+    ]
+  }
+]

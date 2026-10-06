@@ -1,0 +1,172 @@
+[
+  {
+    "secondaryCondition": "Hepatic steatosis (non-alcoholic fatty liver disease / metabolic dysfunction-associated steatotic liver disease)",
+    "secondaryDiagnosticCode": "No dedicated DC — rated by analogy under 38 CFR § 4.20 within § 4.114; where the documented picture meets them, DC 7345 (chronic liver disease without cirrhosis) criteria apply, and DC 7312 (cirrhosis of the liver) applies if cirrhosis develops",
+    "primaryCondition": "Diabetes mellitus, type II (service-connected)",
+    "primaryDiagnosticCode": "7913 (38 CFR § 4.119 — diabetes mellitus)",
+    "nexusTheory": "Causation",
+    "etiologicalMechanism": "Type 2 diabetes drives hepatic steatosis and its progression through the same insulin-resistance physiology that defines the diabetes. Chronic hyperinsulinemia and insulin resistance in adipose tissue increase free fatty-acid flux to the liver while hepatic de novo lipogenesis is upregulated (SREBP-1c and ChREBP activation), and impaired fatty-acid oxidation plus very-low-density lipoprotein export failure cause triglyceride accumulation in hepatocytes. Glucotoxicity and lipotoxicity then promote lipotoxic injury, mitochondrial dysfunction, endoplasmic-reticulum stress, and inflammasome activation; adipose-tissue and gut-derived inflammatory signals drive the transition from simple steatosis to steatohepatitis, and activation of hepatic stellate cells produces progressive fibrosis, cirrhosis, and hepatocellular carcinoma. Because type 2 diabetes also accelerates fibrosis once steatosis is present, it is one of the strongest risk factors for progression rather than merely a co-traveler. The quantitative evidence is direct and large: an updated systematic review and meta-analysis of 156 studies and 1,832,125 patients found NAFLD prevalence of 65.04% (95% CI 61.79-68.15) and NASH prevalence of 31.55% in people with type 2 diabetes, with clinically significant fibrosis (F2-F4) in 35.54% and advanced fibrosis (F3-F4) in 14.95% of those with NAFLD; and a prospective cohort of 501 adults with type 2 diabetes systematically assessed by MRI-PDFF and elastography found NAFLD in 65%, advanced fibrosis in 14%, and cirrhosis in 6%, with obesity and insulin use associated with advanced fibrosis. Under 38 CFR § 3.310(a), fatty liver disease developing in a veteran with service-connected type 2 diabetes is a direct-causation secondary claim, and the evidence recited above — a majority prevalence of steatosis among people with type 2 diabetes together with a shared causal physiology and a demonstrated progression gradient with diabetes severity — supports the conclusion that steatotic liver disease is at least as likely as not caused by the service-connected diabetes. For an 'at least as likely as not' opinion, document the diabetes (duration, control, treatment), the hepatic findings (imaging or biopsy demonstrating steatosis, and staging of fibrosis where available), and the chronology, and address competing causes — alcohol use (which may co-exist and is excluded only by a reliable history), other causes of chronic liver disease (viral hepatitis, autoimmune and drug-induced hepatitis, hemochromatosis, Wilson disease, alpha-1 antitrypsin deficiency), medications (corticosteroids, methotrexate, tamoxifen, amiodarone), and other metabolic contributors (obesity, dyslipidemia, hypothyroidism). Rating follows the documented severity under DC 7345/7312 criteria or by analogy under § 4.20; where the pre-existing hepatic disease is documented, § 3.310(b) limits service connection to the attributable aggravation.",
+    "medicalEvidence": [
+      {
+        "title": "Global prevalence of non-alcoholic fatty liver disease in type 2 diabetes mellitus: an updated systematic review and meta-analysis.",
+        "authors": "En Li Cho E, Ang CZ, Quek J, et al.",
+        "summary": "Meta-analysis of 156 studies and 1,832,125 patients: NAFLD prevalence in type 2 diabetes 65.04% (95% CI 61.79-68.15) and NASH prevalence 31.55%; among those with NAFLD, clinically significant fibrosis (F2-F4) was present in 35.54% and advanced fibrosis (F3-F4) in 14.95%.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/37491159/"
+      },
+      {
+        "title": "The complex link between NAFLD and type 2 diabetes mellitus - mechanisms and treatments.",
+        "authors": "Targher G, Corey KE, Byrne CD, et al.",
+        "summary": "Nature Reviews Gastroenterology & Hepatology review: NAFLD and type 2 diabetes frequently coexist and act synergistically to increase adverse hepatic and extra-hepatic outcomes; type 2 diabetes is one of the strongest risk factors for faster progression of NAFLD to steatohepatitis, advanced fibrosis, or cirrhosis, and the review describes the shared insulin-resistance, lipotoxicity, and inflammatory mechanisms.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/33972770/"
+      },
+      {
+        "title": "A prospective study on the prevalence of NAFLD, advanced fibrosis, cirrhosis and hepatocellular carcinoma in people with type 2 diabetes.",
+        "authors": "Ajmera V, Cepin S, Tesfai K, et al.",
+        "summary": "Prospective cohort of 501 adults with type 2 diabetes systematically assessed with MRI-proton density fat fraction and elastography: NAFLD prevalence 65%, advanced fibrosis 14%, cirrhosis 6%; obesity and insulin use were associated with increased odds of advanced fibrosis (OR 2.50 and 2.71, respectively).",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/36410554/"
+      }
+    ],
+    "cfrCitations": [
+      "38 CFR § 3.310(a) (secondary service connection)",
+      "38 CFR § 3.310(b) (aggravation of a nonservice-connected disability, with baseline rule)",
+      "38 CFR § 4.119, DC 7913 (diabetes mellitus)",
+      "38 CFR § 4.114, DC 7345 (chronic liver disease without cirrhosis) and DC 7312 (cirrhosis of the liver); § 4.20 (analogous rating where the documented picture does not meet a listed code)"
+    ]
+  },
+  {
+    "secondaryCondition": "Osteopenia (glucocorticoid-induced bone loss)",
+    "secondaryDiagnosticCode": "No dedicated DC — evaluated by analogy under 38 CFR § 4.20 to DC 5013 (osteoporosis, residuals of) within § 4.71a, per the note to DCs 5013-5024",
+    "primaryCondition": "Rheumatoid arthritis (service-connected), on chronic systemic corticosteroid therapy",
+    "primaryDiagnosticCode": "5002 (38 CFR § 4.71a — multi-joint arthritis, active process)",
+    "nexusTheory": "Medication Side Effect",
+    "etiologicalMechanism": "Systemic glucocorticoids produce bone loss through direct effects on bone cells and bone vascularity, and the risk appears early in treatment. Glucocorticoids reduce the lifespan and function of osteoblasts and osteocytes, shift bone remodeling toward resorption, suppress gonadal and growth-hormone axes, and reduce bone vascularity, so that bone strength falls more than bone mineral density alone would predict; trabecular-rich sites such as the vertebrae and femoral neck are affected disproportionately, and bone loss is fastest in the first months of therapy. The fracture risk is dose-dependent and detectable even at low doses and with short courses, which matters for veterans treated with repeated steroid bursts for a service-connected inflammatory condition. Quantitatively, a cohort of 244,235 oral corticosteroid users matched to 244,235 controls found dose-dependent fracture risk: relative rate of hip fracture 0.99 (95% CI 0.82-1.20) at prednisolone doses under 2.5 mg/day, rising to 1.77 (1.55-2.02) at 2.5-7.5 mg/day and 2.27 (1.94-2.66) at 7.5 mg/day or more; vertebral fracture rates rose in parallel from 1.55 to 2.59 to 5.18; and a nationwide cohort of 1,548,945 adults found that 21.1% received short-term oral corticosteroids and that fracture risk was increased within 30 days of initiation (incidence rate ratio 1.87, 95% CI 1.69-2.07), persisting at prednisone-equivalent doses below 20 mg/day. Under 38 CFR § 3.310(a), a disability proximately due to or resulting from the treatment of a service-connected condition is itself service-connected, so glucocorticoid-induced osteopenia (reduced bone mineral density and/or fragility fracture) developing on documented systemic corticosteroid therapy for service-connected rheumatoid arthritis is a treatment-complication secondary claim; where reduced bone density predates the steroid exposure, § 3.310(b) limits service connection to the attributable aggravation. For an 'at least as likely as not' opinion, document the steroid regimen (drug, prednisone-equivalent dose, duration, cumulative exposure, dates), dual-energy X-ray absorptiometry results with T-scores and dates, fracture history with imaging, and the chronology of exposure relative to bone loss; and address competing causes — postmenopausal and age-related bone loss, hypogonadism, hyperparathyroidism, vitamin D and calcium deficiency, malabsorption, chronic kidney disease, smoking, alcohol, other medications (proton-pump inhibitors, anticonvulsants, aromatase inhibitors), and immobilization. The rating proceeds by analogy under § 4.20 to DC 5013 because no code specifically addresses osteopenia.",
+    "medicalEvidence": [
+      {
+        "title": "Use of oral corticosteroids and risk of fractures.",
+        "authors": "Van Staa TP, Leufkens HG, Abenhaim L, et al.",
+        "summary": "Retrospective cohort of 244,235 oral corticosteroid users matched to 244,235 controls: dose-dependent fracture risk — hip fracture relative rate 0.99 (95% CI 0.82-1.20) below 2.5 mg/day prednisolone, 1.77 (1.55-2.02) at 2.5-7.5 mg/day, and 2.27 (1.94-2.66) at 7.5 mg/day or more; vertebral fracture rates 1.55, 2.59, and 5.18 respectively.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/10841167/"
+      },
+      {
+        "title": "Short term use of oral corticosteroids and related harms among adults in the United States: population based cohort study.",
+        "authors": "Waljee AK, Rogers MA, Lin P, et al.",
+        "summary": "Nationwide cohort of 1,548,945 adults: 21.1% received at least one short-term oral corticosteroid prescription; within 30 days of initiation, fracture incidence rate ratio was 1.87 (95% CI 1.69-2.07), with increased risk persisting at prednisone-equivalent doses below 20 mg/day.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/28404617/"
+      },
+      {
+        "title": "Glucocorticoid-Induced Osteoporosis: New Insights into the Pathophysiology and Treatments.",
+        "authors": "Lane NE",
+        "summary": "Mechanistic review: glucocorticoids reduce osteoblast and osteocyte lifespan and activity and reduce bone vascularity, which together explain why bone strength declines more than bone mineral density; the review summarizes the resulting fracture risk and treatment approaches.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/30685820/"
+      }
+    ],
+    "cfrCitations": [
+      "38 CFR § 3.310(a) (disability proximately due to or the result of a service-connected disease or injury, including its treatment)",
+      "38 CFR § 3.310(b) (aggravation of a nonservice-connected disability, with baseline rule)",
+      "38 CFR § 4.71a, DC 5002 (multi-joint arthritis, active process)",
+      "38 CFR § 4.71a, DC 5013 (osteoporosis, residuals of) and the note to DCs 5013-5024; § 4.20 (analogous rating of osteopenia)"
+    ]
+  },
+  {
+    "secondaryCondition": "Carpal tunnel syndrome (median nerve entrapment neuropathy)",
+    "secondaryDiagnosticCode": "8515 (38 CFR § 4.124a — median nerve; rated by the degree of incomplete paralysis and, where applicable, neuritis criteria)",
+    "primaryCondition": "Hypothyroidism (service-connected)",
+    "primaryDiagnosticCode": "7903 (38 CFR § 4.119 — hypothyroidism; residual effects rated under the appropriate body-system codes)",
+    "nexusTheory": "Causation",
+    "etiologicalMechanism": "Hypothyroidism can produce or aggravate median-nerve compression at the wrist through deposition of mucopolysaccharide-rich ground substance (myxedema) in the flexor retinaculum, subsynovial connective tissue, and tendon sheaths, which increases carpal tunnel contents and pressure; reduced nerve tolerance to compression and slowed nerve conduction in hypothyroid nerve also lower the threshold at which entrapment becomes symptomatic. The mechanism predicts the observed clinical pattern: bilateral symptoms, a high prevalence of hypothyroidism among carpal tunnel populations, and improvement of symptoms with restoration of euthyroidism in some patients. The epidemiologic evidence is real but modest and must be presented honestly: a meta-analysis of 18 studies found hypothyroidism associated with carpal tunnel syndrome with an effect size of 2.15 (95% CI 1.64-2.83) in unadjusted analyses, attenuating to 1.44 (95% CI 1.27-1.63) in studies controlling for confounders, with evidence of publication bias; a Mendelian randomization study using genome-wide association data found hypothyroidism increased the risk of carpal tunnel syndrome (inverse-variance-weighted OR 1.04, 95% CI 1.01-1.08, p = 0.017) with no detected pleiotropy; and a hospital series of 422 patients undergoing carpal tunnel release found hypothyroidism in 13.8% and subclinical hypothyroidism in 5%, with more than two-thirds of those cases previously asymptomatic. Under 38 CFR § 3.310(a), carpal tunnel syndrome developing in a veteran with service-connected hypothyroidism is a direct-causation secondary claim, but because the adjusted association is modest, an 'at least as likely as not' opinion requires more than the two diagnoses: document the thyroid disease and its duration and treatment status (thyroid-stimulating hormone and free T4 with dates), the electrodiagnostic confirmation and severity of median neuropathy at the wrist, the chronology of thyroid disease relative to symptom onset, and improvement or persistence with thyroid replacement; and exclude the common competing causes — repetitive occupational or biomechanical exposure, diabetes, obesity, pregnancy, rheumatoid arthritis and other inflammatory arthropathies, amyloidosis, acromegaly, renal failure, ganglion cysts and other space-occupying lesions (the corpus already authors routes from those primaries), and idiopathic carpal tunnel syndrome. Where carpal tunnel syndrome is documented before the thyroid disease, § 3.310(b) limits service connection to the attributable aggravation.",
+    "medicalEvidence": [
+      {
+        "title": "Hypothyroidism and carpal tunnel syndrome: a meta-analysis.",
+        "authors": "Shiri R",
+        "summary": "Meta-analysis of 18 studies: hypothyroidism associated with carpal tunnel syndrome with effect size 2.15 (95% CI 1.64-2.83) in unadjusted analyses, attenuating to 1.44 (95% CI 1.27-1.63) in confounder-controlled analyses, with evidence of publication bias; the author concludes the association is modest.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/25204641/"
+      },
+      {
+        "title": "The causal relationship between thyroid dysfunction and carpal tunnel syndrome: A Mendelian randomization study.",
+        "authors": "Zhang F, Cui R, Yin L, et al.",
+        "summary": "Mendelian randomization using genome-wide association data found both hypothyroidism and hyperthyroidism increase carpal tunnel syndrome risk (hypothyroidism inverse-variance-weighted OR 1.04, 95% CI 1.01-1.08, p = 0.017; hyperthyroidism OR 1.08, 95% CI 1.05-1.12), with no pleiotropy detected in sensitivity analyses.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/40020106/"
+      },
+      {
+        "title": "Prevalence of Hypothyroidism Among Carpal Tunnel Syndrome Patients at a Hospital in Saudi Arabia.",
+        "authors": "Aldaghri F, Algahtani MS, Almutairi TA, et al.",
+        "summary": "Retrospective series of 422 patients who underwent carpal tunnel release: 13.8% had hypothyroidism and 5% subclinical hypothyroidism; more than two-thirds of those with hypothyroidism had been asymptomatic, and body-mass index was significantly associated with hypothyroidism (p = 0.001).",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/33510980/"
+      }
+    ],
+    "cfrCitations": [
+      "38 CFR § 3.310(a) (secondary service connection)",
+      "38 CFR § 3.310(b) (aggravation of a nonservice-connected disability, with baseline rule)",
+      "38 CFR § 4.119, DC 7903 (hypothyroidism)",
+      "38 CFR § 4.124a, DC 8515 (median nerve) — the schedule entry under which carpal tunnel syndrome is evaluated"
+    ]
+  },
+  {
+    "secondaryCondition": "Hypogonadism (opioid-induced androgen deficiency)",
+    "secondaryDiagnosticCode": "No dedicated DC — evaluated by analogy under 38 CFR § 4.20; the closest content-matched schedule entry is DC 7523 (testis, atrophy complete) within the § 4.115b genitourinary framework, with the § 4.119 endocrine framework applying where a specific hormone-deficiency axis is rated",
+    "primaryCondition": "Degenerative disc disease of the spine (service-connected), on long-term opioid therapy",
+    "primaryDiagnosticCode": "5242 (38 CFR § 4.71a — degenerative arthritis, degenerative disc disease other than intervertebral disc syndrome)",
+    "nexusTheory": "Medication Side Effect",
+    "etiologicalMechanism": "Long-term opioid therapy suppresses the hypothalamic-pituitary-gonadal axis and produces androgen deficiency primarily by inhibiting gonadotropin-releasing hormone (GnRH) synthesis and secretion, reducing pituitary luteinizing hormone pulsatility and downstream testicular testosterone production; the suppression is opioid-receptor-mediated and occurs at analgesic doses used for chronic pain, not only in opioid dependence. The clinical picture combines low morning testosterone, low or inappropriately normal LH/FSH (hypogonadotropic pattern), and symptoms including libido and erectile dysfunction, fatigue, depressed mood, loss of muscle mass and strength, increased fat mass, and reduced bone mineral density; the effect is dose- and duration-related, varies with the specific opioid (long-acting and higher-potency agents suppress more), and reverses after opioid discontinuation in many patients. The evidence is quantitative: a systematic review and meta-analysis of 17 studies and 2,769 participants (800 opioid users, 1,969 controls) found mean testosterone in men was 164.78 ng/dL lower with regular opioid use (95% CI -245.47 to -84.08, p < 0.0001), regardless of opioid type, while testosterone levels in women were not significantly affected; a retrospective cohort of 1,159 men on stable single-opioid therapy for chronic non-cancer pain found androgen deficiency more likely with fentanyl (OR 25.7, 95% CI 2.82-234.97), methadone (OR 7.33, 95% CI 3.29-16.33), and oxycodone (OR 3.15, 95% CI 1.87-5.33) than with hydrocodone, with dose effects; and a focused review reports a prevalence of opioid-induced androgen deficiency in men of 20-80% depending on opioid type, duration, age, and the testosterone threshold used, with GnRH suppression as the principal mechanism and testosterone therapy improving libido, body composition, and some quality-of-life domains. Under 38 CFR § 3.310(a), androgen deficiency proximately resulting from the treatment of a service-connected condition is itself service-connected, so hypogonadism developing on documented long-term opioid therapy for service-connected degenerative disc disease is a treatment-complication secondary claim; where hypogonadism or a low baseline testosterone is documented before opioid therapy, § 3.310(b) limits service connection to the attributable aggravation. For an 'at least as likely as not' opinion, document the opioid regimen (agent, morphine-equivalent daily dose, duration, dates), at least two morning serum testosterone measurements with LH/FSH and prolactin, symptoms and their chronology relative to opioid initiation, and any response to dose reduction or discontinuation; and exclude competing causes — primary testicular failure (elevated LH/FSH), pituitary or hypothalamic disease, hemochromatosis, obesity and metabolic syndrome, obstructive sleep apnea, thyroid disease, chronic illness, alcohol, anabolic steroid or other drug use, and age-related decline. Because no diagnostic code specifically addresses hypogonadism, the rating proceeds by analogy under § 4.20.",
+    "medicalEvidence": [
+      {
+        "title": "Testosterone suppression in opioid users: a systematic review and meta-analysis.",
+        "authors": "Bawor M, Bami H, Dennis BB, et al.",
+        "summary": "Systematic review and meta-analysis of 17 studies and 2,769 participants (800 opioid users and 1,969 controls): mean testosterone in men was significantly lower with opioid use (mean difference -164.78 ng/dL, 95% CI -245.47 to -84.08, p < 0.0001) regardless of opioid type, while testosterone in women was not significantly affected.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/25702934/"
+      },
+      {
+        "title": "Association Between Commonly Prescribed Opioids and Androgen Deficiency in Men: A Retrospective Cohort Analysis.",
+        "authors": "Rubinstein AL, Carpenter DM",
+        "summary": "Retrospective cohort of 1,159 men on stable single-opioid therapy for chronic non-cancer pain with morning testosterone measurement: androgen deficiency was more likely with fentanyl (OR 25.7, 95% CI 2.82-234.97), methadone (OR 7.33, 95% CI 3.29-16.33), and oxycodone (OR 3.15, 95% CI 1.87-5.33) than with hydrocodone, and increased with hydrocodone and oxycodone dose.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/27516365/"
+      },
+      {
+        "title": "Opioid-induced androgen deficiency in men: Prevalence, pathophysiology, and efficacy of testosterone therapy.",
+        "authors": "Kafel H, Braga-Basaria M, Basaria S",
+        "summary": "Focused review: opioid-induced androgen deficiency in men has a prevalence of 20-80% depending on opioid type, duration of exposure, age, and testosterone threshold; opioids suppress the gonadal axis mainly by inhibiting GnRH synthesis and secretion, and limited trial data show testosterone therapy improves libido, body composition, and some quality-of-life domains.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/39982737/"
+      }
+    ],
+    "cfrCitations": [
+      "38 CFR § 3.310(a) (disability proximately due to or the result of a service-connected disease or injury, including its treatment)",
+      "38 CFR § 3.310(b) (aggravation of a nonservice-connected disability, with baseline rule)",
+      "38 CFR § 4.71a, DC 5242 (degenerative arthritis, degenerative disc disease other than intervertebral disc syndrome)",
+      "38 CFR § 4.20 (analogous rating of hypogonadism), § 4.115b (genitourinary framework; DC 7523 testis atrophy), and § 4.119 (endocrine framework)"
+    ]
+  },
+  {
+    "secondaryCondition": "Insomnia disorder (chronic, post-traumatic)",
+    "secondaryDiagnosticCode": "No dedicated DC — evaluated under the 38 CFR § 4.130 General Rating Formula for Mental Disorders by analogy to the listed mental disorders, with § 4.14 prohibiting duplicate evaluation where insomnia is a symptom of an already service-connected mental disorder",
+    "primaryCondition": "Traumatic brain injury (service-connected), with residuals",
+    "primaryDiagnosticCode": "8045 (38 CFR § 4.124a — residuals of traumatic brain injury)",
+    "nexusTheory": "Causation",
+    "etiologicalMechanism": "Traumatic brain injury produces chronic insomnia through structural and functional injury to the sleep-wake regulatory system rather than through pain or psychological factors alone. The ascending arousal system (brainstem cholinergic and monoaminergic nuclei), the hypothalamic sleep-wake switch including orexin/hypocretin neurons, the suprachiasmatic nucleus and its light-entrainment input, and the thalamocortical circuits that generate sleep spindles are all vulnerable to shearing, contusion, and hypoxic-ischemic injury; diffuse axonal injury and neuroinflammation (microglial activation with cytokine release, including interleukin-1 and tumor necrosis factor) further disturb sleep homeostasis and circadian timing. Clinically this produces sleep-onset and sleep-maintenance insomnia, fragmentation, and non-restorative sleep, often with excessive daytime sleepiness, and the disturbance can persist for years after the injury and impede rehabilitation. The epidemiologic evidence is substantial: a systematic review and meta-analysis of 20 studies (19 meta-analyzed, n = 95,195) found pooled prevalence of post-mild-TBI insomnia disorder of 27.0% (95% CI 6.49-54.68) and insomnia symptoms of 71.7% (95% CI 60.31-81.85), significantly higher than general-population estimates, though heterogeneity was high; a second, larger synthesis of 69 studies found adults with prior mild TBI reported worse subjective sleep quality (Pittsburgh Sleep Quality Index elevations) at every recovery phase from under a week to one year and beyond, while objective sleep-stage differences were less robust after bias adjustment; and a mechanistic review documents the neural-network, neuroendocrine, sleep-wake-regulator, and immune-inflammatory pathways implicated in post-TBI sleep-wake disturbance. Under 38 CFR § 3.310(a), a chronic insomnia disorder developing after a service-connected TBI is a direct-causation secondary claim; insomnia is not among the conditions listed in § 3.310(d)(1), so an individual medical opinion is required. For an 'at least as likely as not' opinion, document the TBI and its severity using the § 3.310(d)(3) criteria, the sleep history with onset relative to the injury and persistence over time (sleep diary, Pittsburgh Sleep Quality Index or insomnia severity measures, and polysomnography where indicated), and the treatment history; exclude or account for competing causes — obstructive and central sleep apnea, restless legs syndrome and periodic limb movements, circadian rhythm disorders, pain, post-traumatic stress disorder, anxiety and depression, substance and medication effects (including stimulants and sedatives), and primary insomnia predating the injury. Where pre-existing insomnia is documented, § 3.310(b) limits service connection to the attributable aggravation, and where insomnia is a symptom of an already service-connected mental disorder, § 4.14 prohibits duplicate evaluation.",
+    "medicalEvidence": [
+      {
+        "title": "Prevalence of insomnia and insomnia symptoms following mild-traumatic brain injury: A systematic review and meta-analysis.",
+        "authors": "Montgomery MC, Baylan S, Gardani M",
+        "summary": "Systematic review and meta-analysis of 20 studies (19 pooled, n = 95,195): pooled prevalence of post-mild-TBI insomnia disorder was 27.0% (95% CI 6.49-54.68) and of insomnia symptoms 71.7% (95% CI 60.31-81.85), significantly higher than general-population estimates, with high heterogeneity and methodological differences among studies.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/35033968/"
+      },
+      {
+        "title": "A systematic review and meta-analysis of sleep following mild traumatic brain injury: A synthesis of the literature according to age and time-since-injury.",
+        "authors": "Roberts SSH, Owen PJ, Warmington SA, et al.",
+        "summary": "Systematic review and meta-analysis of 69 studies comparing sleep after mild TBI with controls: adults with prior mild TBI reported worse subjective sleep quality (higher Pittsburgh Sleep Quality Index scores) at every recovery phase from under one week to one year and beyond (mean differences 2.26-2.86 points); objective sleep-stage differences were largely not robust after removing studies with selection bias.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/40347689/"
+      },
+      {
+        "title": "Characteristics and Neural Mechanisms of Sleep-Wake Disturbances After Traumatic Brain Injury.",
+        "authors": "Yan G, Wei Y, Wang D, et al.",
+        "summary": "Mechanistic review: sleep-wake disturbances are among the most common complaints after TBI and include insomnia, excessive daytime sleepiness, hypersomnia, obstructive sleep apnea, and circadian rhythm disorders; implicated pathways include abnormal neural network function, neuroendocrine changes, disturbance of sleep-wake regulators, and immune-inflammatory responses related to the structural brain injury.",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38497747/"
+      }
+    ],
+    "cfrCitations": [
+      "38 CFR § 3.310(a) (secondary service connection)",
+      "38 CFR § 3.310(b) (aggravation of a nonservice-connected disability, with baseline rule)",
+      "38 CFR § 4.124a, DC 8045 (residuals of traumatic brain injury)",
+      "38 CFR § 4.130 (General Rating Formula for Mental Disorders; no dedicated insomnia code) and § 4.14 (avoidance of duplicate evaluation)"
+    ]
+  }
+]
