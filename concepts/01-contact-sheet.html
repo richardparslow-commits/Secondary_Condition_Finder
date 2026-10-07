@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Concept 1 — Contact Sheet</title>
+<style>
+  :root{
+    --bg:#0b0806; --panel:#14100c; --line:#2b231a; --ink:#e9e2d6; --dim:#9a8f7d;
+    --crimson:#c8102e; --amber:#e6a549; --brass:#b98a3c; --leather:#6b3a1e;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--bg);color:var(--ink);
+    font:14px/1.55 ui-sans-serif,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+  .wrap{max-width:1280px;margin:0 auto;padding:22px 22px 56px}
+  header{display:flex;justify-content:space-between;align-items:baseline;gap:18px;flex-wrap:wrap}
+  h1{font-size:18px;letter-spacing:.12em;text-transform:uppercase;margin:0 0 4px;font-weight:600}
+  .sub{color:var(--dim);margin:0}
+  .meta{color:var(--dim);font-size:12px}
+  .sheet{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-top:16px}
+  @media (max-width:980px){.sheet{grid-template-columns:1fr}}
+  .panel{background:var(--panel);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+  .frame{position:relative;background:#060504}
+  .frame svg{display:block;width:100%;height:auto}
+  .frame .tag{
+    position:absolute;top:10px;left:10px;
+    background:rgba(11,8,6,0.78);color:var(--dim);font-size:10px;letter-spacing:.16em;
+    text-transform:uppercase;padding:3px 7px;border-radius:4px;border:1px solid var(--line);
+    pointer-events:none;
+  }
+  .caption{padding:11px 13px 13px;border-top:1px solid var(--line)}
+  .caption h2{margin:0 0 3px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);font-weight:600}
+  .caption .role{color:var(--amber);font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+  .caption .job{color:var(--dim);font-size:12.5px;margin:6px 0 8px;line-height:1.5}
+  .caption .posture{font-size:11.5px;color:var(--dim);line-height:1.5;border-top:1px dashed var(--line);padding-top:7px}
+  .caption .posture b{color:var(--ink);font-weight:600}
+  .caption .posture .crimson{color:var(--crimson)}
+  .foot{margin-top:14px;color:var(--dim);font-size:11.5px;line-height:1.6;border-top:1px solid var(--line);padding-top:10px}
+  .foot b{color:var(--ink)}
+  .footnote{display:flex;gap:14px;flex-wrap:wrap;font-size:11px;color:var(--dim);margin-top:8px}
+  .footnote .sw{display:inline-flex;align-items:center;gap:6px}
+  .footnote .d{width:9px;height:9px;border-radius:50%;display:inline-block}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div>
+      <h1>Concept 1 — Contact Sheet</h1>
+      <p class="sub">The Digital Trap &amp; The Prescription Audit · master · 1b · 1c</p>
+    </div>
+    <div class="meta">1600×1000 · identical 16:10 crop · rendered as SVG</div>
+  </header>
+
+  <div class="sheet">
+
+    <!-- ── 1 · MASTER ─────────────────────────────────────────────────────── -->
+    <section class="panel">
+      <div class="frame">
+        <span class="tag">Frame 1 · Master</span>
+        <foreignObject width="100%" height="100%">
+          <body style="margin:0"><object type="image/svg+xml" data="01-digital-trap-prescription-audit.html" style="width:100%;height:auto;display:block"></object></body>
+        </foreignObject>
+      </div>
+      <div class="caption">
+        <h2>Frame 1 — The Verdict Lands</h2>
+        <div class="role">Hero · web masthead · slide opener</div>
+        <p class="job">Machine speaks first: a matte-black tablet on mesquite, tablet dominant, notebook across its edge, flag soft behind. The crimson alert is the only event in frame.</p>
+        <p class="posture"><b>On-screen wording:</b> full regulated copy — <span class="crimson">ACCELERATED UNDERWRITING INELIGIBLE</span>, <span class="crimson">PRESCRIPTION FLAG: CLOPIDOGREL / PLAVIX</span>, rule CU-7712, NDC 63653-1171-6, docket rows, and the footer <b>Automated triage output. Not a final adverse action.</b> Composite the exact copy in post; keep the applicant ID fictional and the footer legible. See <a href="01-compliance-review-memo.md">01-compliance-review-memo.md</a>.</p>
+      </div>
+    </section>
+
+    <!-- ── 1b · AUDIT ─────────────────────────────────────────────────────── -->
+    <section class="panel">
+      <div class="frame">
+        <span class="tag">Frame 1b · The Audit</span>
+        <foreignObject width="100%" height="100%">
+          <body style="margin:0"><object type="image/svg+xml" data="01b-audit-ledger.html" style="width:100%;height:auto;display:block"></object></body>
+        </foreignObject>
+      </div>
+      <div class="caption">
+        <h2>Frame 1b — The Human Answers</h2>
+        <div class="role">The "audit" beat · quiet · premium · human</div>
+        <p class="job">Camera in and down on the hand-tooled ledger; the tablet retreats to a cold glowing slab behind it. Raking light from camera-left makes the Lone Star read in relief.</p>
+        <p class="posture"><b>On-screen wording:</b> screen copy deliberately blurred/unreadable; the only legible text is the leather tooling — <b>UNDERWRITING AUDIT LEDGER</b>, <b>EXHIBIT A · PRESCRIPTION TRACE · 04/2026</b>, NDC 63653-1171-6 · RULE CU-7712 · 90-DAY SUPPLY. Keep the screen verdict unreadable in any published version.</p>
+      </div>
+    </section>
+
+    <!-- ── 1c · REFLECTED ─────────────────────────────────────────────────── -->
+    <section class="panel">
+      <div class="frame">
+        <span class="tag">Frame 1c · Reflected</span>
+        <foreignObject width="100%" height="100%">
+          <body style="margin:0"><object type="image/svg+xml" data="01c-reflected.html" style="width:100%;height:auto;display:block"></object></body>
+        </foreignObject>
+      </div>
+      <div class="caption">
+        <h2>Frame 1c — The Machine Contains the State</h2>
+        <div class="role">The "Texas" beat · wide establishing · closing frame</div>
+        <p class="job">Raked close-up across the glossy panel — the Texas flag and a window shaft are mirrored in the glass, so woven red sits directly against emissive red on one surface.</p>
+        <p class="posture"><b>On-screen wording:</b> same regulated copy as the master, <span class="crimson">under a reflection</span>. Most compliance-sensitive frame — check the final composite at thumbnail size: both the headline and the <b>Not a final adverse action</b> footer must stay readable, or switch to a blank/abstract screen and composite the copy in post. See <a href="01-compliance-review-memo.md">01-compliance-review-memo.md</a>.</p>
+      </div>
+    </section>
+
+  </div>
+
+  <p class="foot">
+    <b>Reading the set.</b> Frame 1 says the machine has spoken. Frame 1b says the human is answering it.
+    Frame 1c closes the three by putting the state <i>on</i> the screen — the Texas flag reflected in the glass —
+    so the woven red and the emissive red touch on one surface. All three share the same 16:10 crop, the same
+    mesquite/leather/pen/flag props, and the same palette anchors: <b>#C8102E</b> alert red,
+    <b>#002868</b> flag navy, <b>#E6A549</b> late-afternoon amber, <b>#B98A3C</b> brass.
+  </p>
+
+  <div class="footnote">
+    <span class="sw"><span class="d" style="background:var(--crimson)"></span> alert red — the single regulated event in frames 1 and 1c</span>
+    <span class="sw"><span class="d" style="background:#002868"></span> flag navy</span>
+    <span class="sw"><span class="d" style="background:var(--amber)"></span> late-afternoon amber</span>
+    <span class="sw"><span class="d" style="background:var(--brass)"></span> brass</span>
+    <span class="sw"><span class="d" style="background:var(--leather)"></span> leather</span>
+  </div>
+</div>
+</body>
+</html>

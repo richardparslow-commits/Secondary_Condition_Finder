@@ -55,6 +55,93 @@
         ],
         "requiresSpecificDbqEvidence": false
       }
+    },
+    {
+      "conditionId": "seizure-disorder",
+      "rank": 2,
+      "nexusClaim": {
+        "nexusClassification": "DIRECT_CAUSATION",
+        "etiologicalTrigger": "A service-connected traumatic brain injury of at least moderate severity can leave cortical contusion, subdural haematoma, blood-brain-barrier breakdown, extravasated blood with haemosiderin and free iron, and reactive gliosis in the injured cortex; the resulting selective loss of GABAergic inhibitory interneurons, upregulation of excitatory glutamatergic signalling, and aberrant recurrent excitatory sprouting produce a population of neurons that fires synchronously and uncontrollably, giving rise to unprovoked post-traumatic seizures."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "NEUROLOGICAL_DEGENERATION",
+        "primaryVector": "Post-traumatic epileptogenesis begins with the primary mechanical event and continues for years: cortical contusion and subdural haematoma cause direct neuronal loss and axonal shearing; blood-brain-barrier breakdown exposes neurons to serum albumin and other proteins that alter astrocytic potassium and glutamate handling; extravasated blood leaves haemosiderin and free iron in the cortex, a potent driver of reactive oxygen species and persistent local inflammation; and reactive gliosis forms a scar that isolates but does not silence the injured cortex. The functional consequence is a failure of excitatory-inhibitory balance — selective loss of GABAergic inhibitory interneurons in the perilesional cortex, upregulation of excitatory glutamatergic signalling and of voltage-gated sodium and calcium channels, and sprouting of aberrant recurrent excitatory collaterals — producing a population of neurons that fires synchronously and uncontrollably.",
+        "hypothesizedOnly": false
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "WELL_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "LEGALLY_PRESUMED",
+        "conservativeRationale": "For moderate or severe traumatic brain injury the regulation itself holds unprovoked seizures to be the proximate result of that injury in the absence of clear evidence to the contrary (38 CFR § 3.310(d)(1)(ii)), so the conservative posture is presumptive rather than probabilistic: the opinion's real work is establishing the severity of the original injury (loss of consciousness, post-traumatic amnesia, Glasgow Coma Scale at the time of injury or shortly thereafter) and excluding provoked seizures, pre-existing epilepsy, and other clear evidence to the contrary. Where the injury was mild the presumption does not attach and the opinion must establish causation under § 3.310(a) using the severity gradient and mechanism evidence below.",
+        "evidenceGaps": [
+          "Contemporaneous emergency department, theatre, or field documentation establishing the severity of the service-connected traumatic brain injury (loss of consciousness, post-traumatic amnesia, Glasgow Coma Scale) because severity is determined at the time of injury or shortly thereafter and a veteran is not required to meet every criterion of a level to be classified there",
+          "A clinical diagnosis of epilepsy by a neurologist, supported where possible by electroencephalography, correctly characterised as focal aware, focal impaired awareness, focal to bilateral tonic-clonic, or generalised",
+          "Chronological and anatomical concordance between the site of injury, the electroencephalographic focus and the seizure semiology",
+          "Exclusion of provoked seizures (alcohol or benzodiazepine withdrawal, metabolic derangement, central nervous system infection, brain tumour, stroke, medication or drug effect, sleep deprivation in a patient with a pre-existing epilepsy syndrome) and of psychogenic non-epileptic spells",
+          "Where the veteran had a seizure disorder before the traumatic brain injury, recognition that the correct posture is aggravation under § 3.310(b) with a baseline severity established by medical evidence predating the worsening"
+        ],
+        "alternativeEtiologiesToRuleOut": [
+          "Pre-existing epilepsy predating the traumatic brain injury",
+          "Alcohol or benzodiazepine withdrawal seizures",
+          "Metabolic derangement",
+          "Central nervous system infection",
+          "Brain tumour",
+          "Stroke",
+          "Medication or drug effect",
+          "Sleep-deprivation-induced seizures in a patient with a pre-existing epilepsy syndrome",
+          "Psychogenic non-epileptic spells"
+        ],
+        "alternativeEtiologyTags": [
+          "pre-existing-epilepsy",
+          "withdrawal",
+          "metabolic",
+          "infection",
+          "tumour",
+          "stroke",
+          "drug-induced",
+          "psychogenic"
+        ],
+        "requiresSpecificDbqEvidence": true
+      },
+      "evidenceGaps": [
+        "Contemporaneous emergency department, theatre, or field documentation establishing the severity of the service-connected traumatic brain injury (loss of consciousness, post-traumatic amnesia, Glasgow Coma Scale) because severity is determined at the time of injury or shortly thereafter and a veteran is not required to meet every criterion of a level to be classified there",
+        "A clinical diagnosis of epilepsy by a neurologist, supported where possible by electroencephalography, correctly characterised as focal aware, focal impaired awareness, focal to bilateral tonic-clonic, or generalised",
+        "Chronological and anatomical concordance between the site of injury, the electroencephalographic focus and the seizure semiology",
+        "Exclusion of provoked seizures (alcohol or benzodiazepine withdrawal, metabolic derangement, central nervous system infection, brain tumour, stroke, medication or drug effect, sleep deprivation in a patient with a pre-existing epilepsy syndrome) and of psychogenic non-epileptic spells",
+        "Where the veteran had a seizure disorder before the traumatic brain injury, recognition that the correct posture is aggravation under § 3.310(b) with a baseline severity established by medical evidence predating the worsening"
+      ],
+      "rationale": "Authoring registers the held CRG draft-expansion proposal for the traumatic-brain-injury-residuals to seizure-disorder window on 2026-10-06. The strongest feature of this pathway is regulatory, not epidemiological: under 38 CFR § 3.310(d)(1)(ii), in a veteran who has a service-connected traumatic brain injury, unprovoked seizures following moderate or severe traumatic brain injury are held to be the proximate result of that injury in the absence of clear evidence to the contrary, and unlike the dementia entries (15-year window) and depression (3 years / 12 months) that subparagraph carries no manifestation time limit, so a veteran with a service-connected moderate or severe TBI who develops unprovoked seizures years later does not need a case-by-case medical nexus opinion to establish service connection — the regulation concedes the proximate-result element and the opinion's real work is to establish the severity of the original injury and to exclude clear evidence to the contrary. Section 3.310(d)(3) supplies the severity table (mild: LOC 0-30 minutes, alteration 1 moment to 24 hours, PTA 0-1 day, GCS 13-15; moderate: LOC >30 minutes to <24 hours, PTA >1 to <7 days, GCS 9-12; severe: LOC >24 hours, PTA >7 days, GCS 3-8), and states that severity is determined by findings at the time of injury or shortly thereafter, that a veteran is not required to meet every criterion under a level, and that where criteria in more than one category are met the injury is ranked at the highest level in which a criterion is met, so the contemporaneous emergency department, theatre or field record is the decisive document. Section 3.310(d)(2) then provides that neither the severity levels nor the time limits preclude a finding of service connection for conditions shown by evidence to be proximately due to the service-connected brain injury, and that where a claim does not meet (d)(1) it is developed and decided under generally applicable principles, so a mild TBI moves the claim onto the ordinary § 3.310(a) causation track. The mechanism evidence describes post-traumatic epileptogenesis — cortical contusion and subdural haematoma causing direct neuronal loss and axonal shearing, blood-brain-barrier breakdown exposing neurons to serum albumin, extravasated blood leaving haemosiderin and free iron as a driver of reactive oxygen species and persistent local inflammation, and reactive gliosis forming a scar that isolates but does not silence the injured cortex, with the functional consequence being selective loss of GABAergic inhibitory interneurons, upregulation of excitatory glutamatergic signalling, and aberrant recurrent excitatory sprouting producing synchronous uncontrolled firing, with the latency between injury and the first unprovoked seizure reflecting the time required for these structural and network changes to mature. The epidemiology supports the direction and severity gradient: the Olmsted County study (PMID 9414327) found an overall standardised incidence ratio of 3.1 (95% CI 2.5-3.8) rising to 17.0 (95% CI 12.3-23.6) after severe injury, and the Danish nationwide cohort (PMID 19233461) confirmed the severity relationship with persistence beyond 10 years. The most recent synthesis (PMID 41686304) supports the gradient and the clinical risk-factor list but found substantial heterogeneity (I-squared 98%) and a pooled severe-injury relative risk that did not reach statistical significance (2.98, 95% CI 0.81-11.01, P = 0.08), so no numeric probability should be asserted in an opinion. The rating schedule corroborates the pathway: DC 8045 directs that physical dysfunction including seizures be evaluated under an appropriate diagnostic code, and the closing paragraph requires each condition be evaluated separately so long as the same signs and symptoms are not used to support more than one evaluation. Two maintainer decisions are recorded on the face of this registration: first, the knowledge-base catalog contains both a published epilepsy identity and a draft seizure-disorder identity with no authored mappings, and this row is written against the draft identity, so a maintainer must decide that the two are not duplicate concepts before either is published; second, because the presumption attaches only to unprovoked seizures after moderate or severe TBI, a veteran with a mild TBI or with provoked seizures, pre-existing epilepsy, or other clear evidence to the contrary does not have the presumption and must establish causation under § 3.310(a) or aggravation under § 3.310(b) as applicable. All references remain subject to qualified-human citation verification under docs/citation-verification-sop.md.",
+      "sourceReferences": [
+        {
+          "citation": "Annegers JF, Hauser WA, Coan SP, Rocca WA. A population-based study of seizures after traumatic brain injuries. N Engl J Med. 1998;338(1):20-24. PMID 9414327.",
+          "note": "Population-based cohort of 4,541 patients with traumatic brain injury in Olmsted County, Minnesota, followed for unprovoked seizures. Overall standardised incidence ratio 3.1 (95% CI 2.5-3.8), rising to 2.9 (95% CI 1.9-4.1) after moderate injury and 17.0 (95% CI 12.3-23.6) after severe injury, with no excess beyond five years after mild injury. PRIMARY anchor for the severity gradient on which the § 3.310(d) structure depends.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/9414327/",
+          "verified": false,
+          "sourceCheckedOn": "2026-10-06",
+          "sourceLocator": "N Engl J Med. 1998;338(1):20-24. Population-based cohort, 4,541 TBI patients; historical single-county cohort with treatment eras predating modern neurocritical care."
+        },
+        {
+          "citation": "Christensen J, Pedersen MG, Pedersen CB, Sidenius P, Olsen J, Vestergaard M. Long-term risk of epilepsy after traumatic brain injury in children and young adults: a population-based cohort study. Lancet. 2009;373(9664):1105-1110. PMID 19233461.",
+          "note": "Nationwide Danish cohort of 1,605,216 people followed for epilepsy after TBI. Relative risk 2.22 (95% CI 2.07-2.38) after mild injury and 7.40 (95% CI 6.16-8.89) after severe injury, with skull fracture conferring a relative risk of 2.17 (95% CI 1.73-2.71); excess risk persisted more than 10 years after injury (1.51 after mild, 4.29 after severe) and was higher in those injured above 15 years. Cited for the long-term persistence of risk.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/19233461/",
+          "verified": false,
+          "sourceCheckedOn": "2026-10-06",
+          "sourceLocator": "Lancet. 2009;373(9664):1105-1110. Nationwide Danish cohort, 1,605,216 people; observational cohort with register-based seizure ascertainment and residual confounding."
+        },
+        {
+          "citation": "Viaroli E, Gillespie C, Mee H, Chedid Y, Corper S, Joannides A, Menon D, Mohan M, Needham E, Newcombe V, Servadei F, Timofeev I, Kolias A, Hutchinson PJA. Clinical risk factors for post-traumatic seizures: a systematic review and meta-analysis. Neurosurgery. 2026. PMID 41686304.",
+          "note": "Systematic review and meta-analysis of 11 studies with 242,803 patients. Pooled incidence of post-traumatic seizures 7.2% (95% CI 5.4-9.3%) with very high heterogeneity (I-squared 98%), and pooled relative risk for severe TBI 2.98 (95% CI 0.81-11.01, P = 0.08), which did NOT reach statistical significance; the authors identify inadequate ascertainment of seizures across studies as a major limitation. Cited as the most recent synthesis and, importantly, cited AGAINST overstatement: it supports the severity gradient and the clinical risk-factor list while showing the pooled quantitative estimate is unstable.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41686304/",
+          "verified": false,
+          "sourceCheckedOn": "2026-10-06",
+          "sourceLocator": "Neurosurgery. 2026 (epub ahead of print). Systematic review and meta-analysis, 11 studies, 242,803 patients; pooled severe-injury effect did not reach significance, so no numeric probability should be asserted from it."
+        }
+      ]
     }
   ]
 }
