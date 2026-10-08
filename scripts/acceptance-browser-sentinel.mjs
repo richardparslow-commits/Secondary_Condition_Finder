@@ -1276,6 +1276,21 @@ async function run() {
     "seeded suggestions step",
     120_000,
   );
+  // The step's `ready` gate can paint its heading before the browser-local
+  // record is read and the engine renders the seeded context — observed on the
+  // gate's sixth CI run, where the medication assertion was read early and then
+  // the same record rendered a moment later. Give the seeded record a bounded
+  // window to take effect; a genuine failure still fails the assertions below
+  // rather than aborting the walk with a harness error.
+  try {
+    await waitForPage(
+      `document.body.innerText.includes(${JSON.stringify(SENTINELS.medication)})`,
+      "seeded suggestions content",
+      60_000,
+    );
+  } catch {
+    // Fall through: the assertion below names what never rendered.
+  }
   const seededSuggestionsText = await pageEval("document.body.innerText");
   walk.passB.suggestionsShowsMedication = seededSuggestionsText.includes(SENTINELS.medication);
   walk.passB.suggestionsShowsTreatment = seededSuggestionsText.includes(SENTINELS.treatment);
