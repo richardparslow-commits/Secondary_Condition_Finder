@@ -1,27 +1,70 @@
 "use client";
 
-import { launchDemoScenario } from "@/lib/actions/scenarios";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+
+import scenarios from "../../data/demo-scenarios.json";
+import { useClientCorpus } from "@/lib/client-corpus";
+import type { BrowserWorkflowContextInput } from "@/lib/secondary-workflow/browser-context";
 import { clearSecondaryWorkflowLocalState } from "@/lib/secondary-workflow/local-state";
+import { parseWorkflowState } from "@/lib/secondary-workflow/state";
+import { workflowSessionToQueryParams } from "@/lib/secondary-workflow/transport";
+import { useBrowserWorkflowContext } from "@/lib/secondary-workflow/use-browser-context";
+import type { TransportableWorkflowState } from "@/lib/secondary-workflow/transport";
 
-function clearPriorBrowserReviewState(): void {
-  try {
-    clearSecondaryWorkflowLocalState(window.sessionStorage);
-  } catch {
-    // Browser storage may be unavailable. The server action still replaces the
-    // encrypted workflow cookie with validated synthetic scenario state.
-  }
-}
-
+/**
+ * Demo scenario launcher (PRIV-01 stage 2).
+ *
+ * Scenario state is synthetic and public (bundled JSON), and the launcher
+ * writes it straight into the browser-local context — no Server Action, no
+ * cookie, no request carrying workflow state. The state is still validated
+ * through the same current-workflow contract before it is persisted.
+ */
 export function ScenarioLaunchForm({ scenarioId }: { scenarioId: string }) {
+  const router = useRouter();
+  const { corpus, loading } = useClientCorpus();
+  const { persist } = useBrowserWorkflowContext();
+  const [error, setError] = useState<string | null>(null);
+
+  function launch() {
+    if (!corpus) return;
+    const scenario = scenarios.find((candidate) => candidate.id === scenarioId);
+    if (!scenario) {
+      setError("Unknown demo scenario.");
+      return;
+    }
+
+    try {
+      const workflow = scenario.workflow as unknown as TransportableWorkflowState;
+      // Parse through the same current-workflow contract used by the wizard
+      // before persisting any synthetic demo state.
+      parseWorkflowState(workflowSessionToQueryParams(workflow), corpus.conditions);
+      // Replace any prior review completely, including local evidence excerpts.
+      clearSecondaryWorkflowLocalState(window.sessionStorage);
+      persist(workflow as BrowserWorkflowContextInput);
+    } catch {
+      setError("This scenario's state failed validation and was not loaded.");
+      return;
+    }
+    setError(null);
+    router.push("/secondary/suggestions");
+  }
+
   return (
-    <form action={launchDemoScenario} onSubmit={clearPriorBrowserReviewState} className="mt-4">
-      <input type="hidden" name="scenarioId" value={scenarioId} />
+    <div className="mt-4 space-y-3">
       <button
-        type="submit"
-        className="rounded-md bg-slate-900 px-3.5 py-2 text-sm font-medium text-white hover:bg-slate-700"
+        type="button"
+        className="rounded-md bg-slate-900 px-3.5 py-2 text-sm font-medium text-white hover:bg-slate-700 disabled:opacity-60"
+        onClick={launch}
+        disabled={loading || !corpus}
       >
         Run scenario
       </button>
-    </form>
+      {error && (
+        <p role="alert" className="text-sm text-rose-700">
+          {error}
+        </p>
+      )}
+    </div>
   );
 }

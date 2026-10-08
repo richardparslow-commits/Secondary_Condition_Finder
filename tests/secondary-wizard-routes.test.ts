@@ -1,15 +1,16 @@
+import fs from "node:fs";
+import path from "node:path";
+
 import React from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it, vi } from "vitest";
 
-import DiagnosedConditionsPage from "@/app/secondary/diagnosed/page";
-import RatingsStepPage from "@/app/secondary/ratings/page";
-import SuggestionsStepPage from "@/app/secondary/suggestions/page";
-import UploadStepPage from "@/app/secondary/upload/page";
-
-vi.mock("next/headers", () => ({
-  cookies: async () => new Map(),
-}));
+import { ConditionBadges } from "@/components/secondary/steps/DiagnosedStep";
+import { DocumentsSharedChoice } from "@/components/secondary/steps/UploadStep";
+import { RatingSelect, getRatingOptions } from "@/components/secondary/steps/RatingsStep";
+import { loadConditionCatalog } from "@/lib/catalog/load";
+import { parseWorkflowState } from "@/lib/secondary-workflow/state";
+import { workflowSessionToQueryParams } from "@/lib/secondary-workflow/transport";
 
 vi.mock("next/link", () => ({
   default: ({
@@ -23,115 +24,83 @@ vi.mock("next/link", () => ({
   }) => React.createElement("a", { href, className }, children),
 }));
 
-describe("secondary wizard route progression", () => {
-  it("flags toxic-exposure-related conditions on the diagnosed step", async () => {
-    const html = renderToStaticMarkup(
-      await DiagnosedConditionsPage({
-        searchParams: Promise.resolve({}),
-      }),
+/**
+ * PRIV-01 stage 2: the wizard routes no longer render workflow state server
+ * side. These tests pin the same user-visible contracts on the extracted
+ * presentation units and on the browser-local state contract the client steps
+ * consume.
+ */
+describe("secondary wizard client-step routes", () => {
+  const catalog = loadConditionCatalog();
+
+  it("flags toxic-exposure-related conditions on the diagnosed step", () => {
+    const asthma = renderToStaticMarkup(
+      ConditionBadges({ conditionId: "asthma", mapped: true }),
     );
+    expect(asthma).toContain("toxic exposure related");
 
-    const labels = html.match(/<label[\s\S]*?<\/label>/g) ?? [];
-    const asthmaLabel = labels.find((label) => label.includes(">Asthma<")) ?? "";
-    expect(asthmaLabel).toContain("toxic exposure related");
-
-    const tinnitusLabel =
-      labels.find((label) => label.includes(">Tinnitus<")) ?? "";
-    expect(tinnitusLabel).not.toContain("toxic exposure related");
+    const tinnitus = renderToStaticMarkup(
+      ConditionBadges({ conditionId: "tinnitus", mapped: true }),
+    );
+    expect(tinnitus).not.toContain("toxic exposure related");
   });
 
-  it("keeps ratings back navigation free of workflow query state", async () => {
-    const html = renderToStaticMarkup(
-      await RatingsStepPage({
-        workflowState: {
-          diagnosedConditionIds: ["ptsd", "tinnitus"],
-          serviceConnectedConditionIds: ["ptsd"],
-          ratingsByConditionId: {},
-        },
-      }),
-    );
-
-    expect(html).toContain('href="/secondary/service-connected"');
-    expect(html).not.toContain("?diagnosed=");
-    expect(html).not.toContain("serviceConnected=");
+  it("renders only known numeric rating options including 100% P&T", () => {
+    const options = getRatingOptions();
+    expect(options).toContainEqual({ label: "100% P&T", value: "100" });
+    expect(options.every((option) => /^\d+$/.test(option.value))).toBe(true);
   });
 
-  it("keeps upload back navigation free of workflow query state", async () => {
-    const html = renderToStaticMarkup(
-      await UploadStepPage({
-        workflowState: {
-          diagnosedConditionIds: ["ptsd", "tinnitus"],
-          serviceConnectedConditionIds: ["ptsd", "tinnitus"],
-          ratingsByConditionId: { ptsd: 70, tinnitus: null },
-        },
+  it("prefills prior rating selections from browser-local state", () => {
+    const ptsd = catalog.find((condition) => condition.id === "ptsd");
+    expect(ptsd).toBeTruthy();
+
+    const stored = renderToStaticMarkup(
+      RatingSelect({
+        conditionId: "ptsd",
+        conditionName: ptsd?.name ?? "ptsd",
+        stored: 70,
+        validationId: undefined,
       }),
     );
-
-    expect(html).toContain('href="/secondary/ratings"');
-    expect(html).not.toContain("?diagnosed=");
-    expect(html).not.toContain("rating-ptsd=70");
-  });
-
-  it("prefills prior rating selections from private workflow state", async () => {
-    const html = renderToStaticMarkup(
-      await RatingsStepPage({
-        workflowState: {
-          diagnosedConditionIds: ["ptsd", "tinnitus"],
-          serviceConnectedConditionIds: ["ptsd", "tinnitus"],
-          ratingsByConditionId: { ptsd: 70, tinnitus: null },
-        },
-      }),
-    );
-
-    expect(html).toMatch(
+    expect(stored).toMatch(
       /name="rating-ptsd"[\s\S]*<option value="70" selected="">70%<\/option>/,
     );
-    expect(html).toMatch(
+
+    const declined = renderToStaticMarkup(
+      RatingSelect({
+        conditionId: "tinnitus",
+        conditionName: "Tinnitus",
+        stored: null,
+        validationId: undefined,
+      }),
+    );
+    expect(declined).toMatch(
       /name="rating-tinnitus"[\s\S]*<option value="decline" selected="">I prefer not to answer<\/option>/,
     );
   });
 
-  it("renders 100% P&T with a numeric submitted value", async () => {
+  it("renders 100% P&T with a numeric submitted value", () => {
     const html = renderToStaticMarkup(
-      await RatingsStepPage({
-        workflowState: {
-          diagnosedConditionIds: ["ptsd"],
-          serviceConnectedConditionIds: ["ptsd"],
-          ratingsByConditionId: { ptsd: 100 },
-        },
+      RatingSelect({
+        conditionId: "ptsd",
+        conditionName: "Post-Traumatic Stress Disorder (PTSD)",
+        stored: 100,
+        validationId: undefined,
       }),
     );
 
     expect(html).toMatch(/<option value="100" selected="">100% P&amp;T<\/option>/);
-    expect(html).not.toContain('>100%</option>');
+    expect(html).not.toContain(">100%</option>");
   });
 
-  it("renders rating inputs only for service-connected conditions", async () => {
+  it("keeps rating inputs free of hidden workflow state", () => {
     const html = renderToStaticMarkup(
-      await RatingsStepPage({
-        workflowState: {
-          diagnosedConditionIds: ["ptsd", "tinnitus"],
-          serviceConnectedConditionIds: ["ptsd"],
-          ratingsByConditionId: {},
-        },
-      }),
-    );
-
-    expect(html).toContain("for each service-connected condition");
-    expect(html).toContain('name="rating-ptsd"');
-    expect(html).not.toContain('name="rating-tinnitus"');
-    expect(html).toContain("Rating for Post-Traumatic Stress Disorder (PTSD)");
-  });
-
-  it("does not emit workflow state as hidden inputs on the ratings step", async () => {
-    const html = renderToStaticMarkup(
-      await RatingsStepPage({
-        workflowState: {
-          diagnosedConditionIds: ["ptsd"],
-          serviceConnectedConditionIds: ["ptsd"],
-          ratingsByConditionId: { ptsd: 40 },
-          documentsShared: true,
-        },
+      RatingSelect({
+        conditionId: "ptsd",
+        conditionName: "Post-Traumatic Stress Disorder (PTSD)",
+        stored: 40,
+        validationId: undefined,
       }),
     );
 
@@ -142,37 +111,54 @@ describe("secondary wizard route progression", () => {
     expect(html).not.toContain('type="hidden" name="serviceConnected"');
   });
 
-  it("prefills prior upload selection from private workflow state", async () => {
-    const html = renderToStaticMarkup(
-      await UploadStepPage({
-        workflowState: {
-          diagnosedConditionIds: ["ptsd"],
-          serviceConnectedConditionIds: ["ptsd"],
-          ratingsByConditionId: { ptsd: 70 },
-          documentsShared: true,
-        },
-      }),
-    );
+  it("prefills the upload documents choice from browser-local state", () => {
+    const shared = renderToStaticMarkup(DocumentsSharedChoice({ documentsShared: true }));
+    expect(shared).toContain('name="documentsShared" checked="" value="yes"');
+    expect(shared).not.toContain('name="documentsShared" checked="" value="no"');
 
-    expect(html).toContain('name="documentsShared" checked="" value="yes"');
-    expect(html).not.toContain('name="documentsShared" checked="" value="no"');
+    const notShared = renderToStaticMarkup(DocumentsSharedChoice({ documentsShared: false }));
+    expect(notShared).toContain('name="documentsShared" checked="" value="no"');
   });
 
-  it("blocks suggestions step when upload selection is missing", async () => {
-    const html = renderToStaticMarkup(
-      await SuggestionsStepPage({
-        workflowState: {
+  it("keeps back navigation free of workflow query state", () => {
+    const diagnosed = fs.readFileSync(
+      path.join(process.cwd(), "src/components/secondary/steps/DiagnosedStep.tsx"),
+      "utf8",
+    );
+    const ratings = fs.readFileSync(
+      path.join(process.cwd(), "src/components/secondary/steps/RatingsStep.tsx"),
+      "utf8",
+    );
+
+    expect(diagnosed).toContain('href="/secondary"');
+    expect(ratings).toContain('href="/secondary/service-connected"');
+    for (const source of [diagnosed, ratings]) {
+      expect(source).not.toContain("?diagnosed=");
+      expect(source).not.toContain("rating-ptsd=70");
+    }
+  });
+
+  it("still requires the full prior context before the suggestions step runs", () => {
+    // Missing documentsShared is exactly the "Complete prior steps first"
+    // guard on Step 5: parseWorkflowState throws, and the client step renders
+    // the guard with a link back to the upload step.
+    expect(() =>
+      parseWorkflowState(
+        workflowSessionToQueryParams({
           diagnosedConditionIds: ["ptsd"],
           serviceConnectedConditionIds: ["ptsd"],
           ratingsByConditionId: { ptsd: 70 },
-        },
-      }),
-    );
+        }),
+        catalog,
+      ),
+    ).toThrow();
 
-    expect(html).toContain("Complete prior steps first");
-    expect(html).toContain("Back to optional document upload");
-    expect(html).toContain('href="/secondary/upload"');
-    expect(html).not.toContain("?diagnosed=");
-    expect(html).not.toContain("rating-ptsd=70");
+    const suggestions = fs.readFileSync(
+      path.join(process.cwd(), "src/components/secondary/steps/SuggestionsStep.tsx"),
+      "utf8",
+    );
+    expect(suggestions).toContain("Complete prior steps first");
+    expect(suggestions).toContain("Back to optional document upload");
+    expect(suggestions).toContain('href="/secondary/upload"');
   });
 });

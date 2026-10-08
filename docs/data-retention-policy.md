@@ -22,8 +22,8 @@ This policy covers: workflow sessions, optional evidence review, service-history
 
 | Store | Content | Where | Lifetime |
 |---|---|---|---|
-| Secondary workflow cookie (`secondary-workflow-v1`) | Selected diagnosed ids, service-connected answers/ratings (bounded), optional medication/treatment/history context (bounded) | `HttpOnly`, `SameSite=Strict`, AES-256-GCM authenticated, `path=/secondary` | **30 minutes** (`WORKFLOW_SESSION_MAX_AGE_SECONDS = 1800`) from issuance; then `openSessionPayload` returns `null`. `clearStoredEvidence` + workflow cookie are cleared by **Finish Review** / **Start a new review** (`src/lib/actions/secondary.ts`). |
-| Presumptive workflow cookie (`presumptive-workflow-v1`) | Selected locations + optional service dates + optional service-branch context (bounded) | Same hardening, `path=/presumptive` | Same 30-minute window; not read by `matchPresumptives()` for eligibility. |
+| Secondary browser-local workflow record (`secondary-condition-finder:secondary-workflow:v1`) | Selected diagnosed ids, service-connected answers/ratings (bounded), optional medication/treatment/history context, symptom ids and chronology (bounded) | Browser `sessionStorage` only (tab-scoped; never sent to the server) | Ends with the tab session; cleared by **Finish Review** / **Start a new review** via `clearSecondaryWorkflowLocalState` (`src/lib/secondary-workflow/local-state.ts`). The retired `secondary-workflow-v2` cookie is deleted and tombstoned by the edge proxy if a stale copy is presented (PRIV-01 stage 3). |
+| Presumptive workflow cookie (`presumptive-workflow-v1`) | Selected locations + optional service dates + optional service-branch context (bounded) | `HttpOnly`, `SameSite=Strict`, AES-256-GCM authenticated, `path=/presumptive` | Same 30-minute window; not read by `matchPresumptives()` for eligibility. |
 
 No workflow payload is serialized into URLs. `tests/secondary-workflow-privacy.test.ts` enforces this.
 

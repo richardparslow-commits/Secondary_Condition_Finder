@@ -86,11 +86,15 @@ describe("VA reference product surfaces", () => {
   });
 
   it("adds VA reference information inside each non-service-connected diagnosis result without changing recommend input", () => {
-    const suggestions = source("src/app/secondary/suggestions/page.tsx");
+    const shell = source("src/app/secondary/suggestions/page.tsx");
+    const suggestions = source("src/components/secondary/steps/SuggestionsStep.tsx");
     const card = source("src/components/NonServiceConnectedConditionResult.tsx");
 
+    // PRIV-01 stage 2: the public VA reference loads in the uniform shell and
+    // travels to the client step as a prop; the reference join runs locally
+    // over the browser-local selections.
+    expect(shell).toContain("loadDisabilityReference");
     expect(suggestions).toContain("buildConditionVaReferenceMap");
-    expect(suggestions).toContain("loadDisabilityReference");
     expect(suggestions).toContain("vaReferenceMap.get(result.conditionId)");
     const recommendCall = suggestions.slice(
       suggestions.indexOf("const recommendationsResult = recommend("),

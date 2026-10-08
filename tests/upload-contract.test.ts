@@ -4,7 +4,7 @@ import path from "path";
 
 describe("P2 Ticket 7: Evidence Review Product Contract", () => {
   it("defines strict non-retentive privacy rules on the upload route", () => {
-    const pagePath = path.join(process.cwd(), "src/app/secondary/upload/page.tsx");
+    const pagePath = path.join(process.cwd(), "src/components/secondary/steps/UploadStep.tsx");
     expect(fs.existsSync(pagePath)).toBe(true);
 
     const content = fs.readFileSync(pagePath, "utf8");
@@ -15,16 +15,24 @@ describe("P2 Ticket 7: Evidence Review Product Contract", () => {
     expect(content).toContain("LocalEvidenceAnalyzer");
   });
 
-  it("keeps local evidence excerpts out of server workflow state", () => {
+  it("keeps local evidence excerpts out of every workflow state carrier", () => {
     const statePath = path.join(process.cwd(), "src/lib/secondary-workflow/state.ts");
-    const actionsPath = path.join(process.cwd(), "src/lib/actions/secondary.ts");
+    const stepPath = path.join(
+      process.cwd(),
+      "src/components/secondary/steps/UploadStep.tsx",
+    );
+    const clientStepsPath = path.join(
+      process.cwd(),
+      "src/lib/secondary-workflow/client-steps.ts",
+    );
     const state = fs.readFileSync(statePath, "utf8");
-    const actions = fs.readFileSync(actionsPath, "utf8");
+    const step = fs.readFileSync(stepPath, "utf8");
+    const clientSteps = fs.readFileSync(clientStepsPath, "utf8");
 
-    expect(state).not.toContain("evidenceExcerpt");
-    expect(state).not.toContain("documentText");
-    expect(actions).not.toContain("evidenceExcerpt");
-    expect(actions).not.toContain("documentText");
+    for (const source of [state, step, clientSteps]) {
+      expect(source).not.toContain("evidenceExcerpt");
+      expect(source).not.toContain("documentText");
+    }
   });
 
   it("surfaces local excerpts only through browser session storage", () => {

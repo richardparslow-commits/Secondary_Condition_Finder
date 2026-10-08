@@ -228,8 +228,8 @@ describe("Pathway-specific medical record checklist", () => {
 
   it("wires PathwayRecordChecklist into Steps 5 and 6 and keeps the lib module present", async () => {
     const fs = await import("node:fs");
-    const suggestionsPage = fs.readFileSync("src/app/secondary/suggestions/page.tsx", "utf8");
-    const evidencePage = fs.readFileSync("src/app/secondary/evidence/page.tsx", "utf8");
+    const suggestionsPage = fs.readFileSync("src/components/secondary/steps/SuggestionsStep.tsx", "utf8");
+    const evidencePage = fs.readFileSync("src/components/secondary/steps/EvidenceStep.tsx", "utf8");
     expect(suggestionsPage).toContain("<PathwayRecordChecklist");
     expect(suggestionsPage).toContain("matchedIntakeContext: []");
     expect(evidencePage).toContain("<PathwayRecordChecklist");

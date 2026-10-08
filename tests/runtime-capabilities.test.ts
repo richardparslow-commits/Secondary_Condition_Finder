@@ -154,7 +154,6 @@ describe("capability registry covers the code that depends on the runtime fact",
     for (const unrelated of [
       "src/lib/security/csrf.ts",
       "src/lib/observability/logger.ts",
-      "src/lib/secondary-workflow/session.ts",
       "src/lib/engine/metrics.ts",
     ]) {
       expect(consumers).not.toContain(unrelated);

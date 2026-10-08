@@ -142,115 +142,49 @@ Triggers a regulatory preflight cache refresh. Requires Bearer token authenticat
 
 ## Server Actions
 
-All Server Actions are defined in `src/lib/actions/` and invoked via Next.js form submissions (`<form action={...}>`). They all:
+All Server Actions are defined in `src/lib/actions/` and invoked via Next.js form submissions (`<form action={...}>`). They accept a `FormData` parameter, validate input, persist, and redirect (or redirect with an error).
 
-1. Accept a `FormData` parameter
-2. Validate input
-3. Write to the encrypted workflow session cookie (or redirect with an error)
-4. Redirect to the next workflow step on success
-5. Emit an audit log entry on success or failure
+**Error handling pattern (remaining actions)**: On validation failure or persistence failure, the action redirects to the originating step with a `?error=<code>` query parameter. The page reads the error code and displays a user-facing message.
 
-**Error handling pattern**: On validation failure or session write failure, the action redirects to the originating step with a `?error=<code>` query parameter. The page reads the error code and displays a user-facing message.
+> **PRIV-01 stage 2 (2026-10-07):** the secondary workflow no longer has Server Actions. All veteran health context (diagnoses, service-connected selections, ratings, medications, treatments, history, symptoms, chronology) lives in a browser-local record and never reaches the server. The browser-local contract that replaced the retired secondary and scenario action modules is documented below.
 
 ### Validation Error Codes
 
-All secondary workflow actions share these validation codes (defined in `src/lib/secondary-workflow/validation.ts`):
+All secondary workflow steps share these validation codes (defined in `src/lib/secondary-workflow/validation.ts`):
 
 | Code | Message | Triggered by |
 |---|---|---|
-| `select-diagnosed` | Select at least one diagnosed condition to continue. | `saveDiagnosedSelection`, `saveServiceConnectedSelection` |
-| `answer-service-connected` | Choose Yes or No for every diagnosed condition before continuing. | `saveServiceConnectedSelection` |
-| `no-service-connected` | This secondary workflow needs at least one condition already recognized as service connected. | `saveServiceConnectedSelection`, `saveRatingsSelection` |
-| `select-rating` | Choose a current rating or I prefer not to answer for every service-connected condition. | `saveRatingsSelection` |
-| `invalid-rating` | Use a whole-number rating from 0 through 100, or choose I prefer not to answer. | `saveRatingsSelection` |
-| `select-documents` | Choose whether document availability should be reflected in the checklist. | `saveDocumentsSelection` |
-| `invalid-context` | Optional medication and treatment context is limited to 20 entries per field and 160 characters per entry. | `saveDocumentsSelection` |
+| `select-diagnosed` | Select at least one diagnosed condition to continue. | `applyDiagnosedStep`, `applyServiceConnectedStep`, `applyDocumentsStep` |
+| `answer-service-connected` | Choose Yes or No for every diagnosed condition before continuing. | `applyServiceConnectedStep` |
+| `no-service-connected` | This secondary workflow needs at least one condition already recognized as service connected. | `applyServiceConnectedStep`, `applyRatingsStep` |
+| `select-rating` | Choose a current rating or I prefer not to answer for every service-connected condition. | `applyRatingsStep` |
+| `invalid-rating` | Use a whole-number rating from 0 through 100, or choose I prefer not to answer. | `applyRatingsStep` |
+| `select-documents` | Choose whether document availability should be reflected in the checklist. | `applyDocumentsStep` |
+| `invalid-context` | Optional medication and treatment context is limited to 20 entries per field and 160 characters per entry. | `applyDocumentsStep` |
+| `context-too-large` | There is not enough room to save this many selections and context entries. | Browser-local persistence failure (`persistStepResult`) |
+
+Codes render inline on the current step (`role="alert"`). Only cross-step guidance (`no-service-connected`, `select-diagnosed`) still travels as a `?error=<code>` URL parameter, with no context in the URL.
 
 ---
 
-### Secondary Workflow Actions (`src/lib/actions/secondary.ts`)
+### Secondary workflow (browser-local — no Server Actions)
 
-#### `saveDiagnosedSelection(formData)`
+**PRIV-01 stage 2**: the six step forms validate and persist entirely in the browser. There is no request carrying any field below; the server only serves uniform public data (the client corpus and public regulatory/VA references).
 
-Saves the user's diagnosed condition selections.
+**Client step logic** — `src/lib/secondary-workflow/client-steps.ts`:
 
-**Form fields**:
-| Field | Type | Required | Description |
+| Function | Fields it reads | Success | Validation errors |
 |---|---|---|---|
-| `diagnosed` | `string \| string[]` | Yes | One or more condition IDs from the catalog. |
+| `applyDiagnosedStep` | `diagnosed` (`string \| string[]`, ≥1 catalog ID) | Replaces the record with the diagnosed list; next `/secondary/service-connected` | `select-diagnosed` |
+| `applyServiceConnectedStep` | `serviceConnected-{id}` (`"yes"`/`"no"` per diagnosed condition) | Writes diagnosed + service-connected + empty ratings; next `/secondary/ratings` | `select-diagnosed`, `answer-service-connected` (partial answers persist as `serviceConnectedAnswerDraft`), `no-service-connected` (persists an empty service-connected list plus the draft) |
+| `applyRatingsStep` | `rating-{id}` (`0`–`100` integer or `"decline"`) | Writes diagnosed + service-connected + ratings; next `/secondary/upload` | `no-service-connected`, `select-rating`, `invalid-rating` |
+| `applyDocumentsStep` | `documentsShared` (`"yes"`/`"no"`), `medications`, `treatments`, `history` (newline-separated, max 20 entries × 160 chars), `symptomIds`, `onsetYear-{id}`, `diagnosisYear-{id}` | Writes the full bounded context; next `/secondary/suggestions` | `select-documents`, `invalid-context`, `select-diagnosed` |
 
-**Success**: Redirects to `/secondary/service-connected`.
-**Validation errors**: `select-diagnosed` → `/secondary/diagnosed?error=select-diagnosed`.
-**Session write failure**: Same as validation error (does not advance).
+**Persistence** — `src/lib/secondary-workflow/browser-context.ts` (Zod-bounded, versioned record) in `sessionStorage` under `secondary-condition-finder:secondary-workflow:v1`. A failed write never navigates: `persistStepResult` maps it to `context-too-large` and the step holds the user in place.
 
----
+**Completion** — the Finish Review / Start a new review controls in `src/components/secondary/SecondaryWorkflowCompletionActions.tsx` clear every registered browser-local key (`clearSecondaryWorkflowLocalState`) and only then navigate to `/secondary` or `/secondary/diagnosed`. A failed cleanup surfaces an error instead of navigating.
 
-#### `saveServiceConnectedSelection(formData)`
-
-Saves which diagnosed conditions are service-connected.
-
-**Form fields**:
-| Field | Type | Required | Description |
-|---|---|---|---|
-| `serviceConnected-{id}` | `"yes" \| "no"` | Yes (per diagnosed condition) | Whether each diagnosed condition is service-connected. |
-
-**Success**: Redirects to `/secondary/ratings`.
-**Validation errors**:
-- Missing diagnoses → `select-diagnosed` → `/secondary/diagnosed`
-- Incomplete answers → `answer-service-connected` → `/secondary/service-connected`
-- All "no" → `no-service-connected` → `/secondary/service-connected`
-
----
-
-#### `saveRatingsSelection(formData)`
-
-Saves disability ratings for service-connected conditions.
-
-**Form fields**:
-| Field | Type | Required | Description |
-|---|---|---|---|
-| `rating-{id}` | `string` | Yes (per service-connected condition) | Rating as integer 0-100, or `"decline"` to skip. |
-
-**Success**: Redirects to `/secondary/upload`.
-**Validation errors**:
-- No service-connected conditions → `no-service-connected`
-- Missing rating → `select-rating`
-- Invalid rating (not 0-100 integer, not "decline") → `invalid-rating`
-
----
-
-#### `saveDocumentsSelection(formData)`
-
-Saves document availability and optional context (medications, treatments, history).
-
-**Form fields**:
-| Field | Type | Required | Description |
-|---|---|---|---|
-| `documentsShared` | `"yes" \| "no"` | Yes | Whether the user has documents to share. |
-| `medications` | `string` | No | Newline-separated list of medications (max 20 entries, 160 chars each). |
-| `treatments` | `string` | No | Newline-separated list of treatments (max 20 entries, 160 chars each). |
-| `history` | `string` | No | Newline-separated list of history items (max 20 entries, 160 chars each). |
-
-**Success**: Redirects to `/secondary/suggestions`.
-**Validation errors**: `select-documents`, `invalid-context`.
-
----
-
-#### `finishSecondaryWorkflow()`
-
-Clears the secondary workflow session and redirects to the landing page.
-
-**Form fields**: None.
-**Success**: Redirects to `/secondary`.
-
----
-
-#### `restartSecondaryWorkflow()`
-
-Clears the secondary workflow session and restarts from the diagnosed step.
-
-**Form fields**: None.
-**Success**: Redirects to `/secondary/diagnosed`.
+**Recommendation engine** — Steps 5 and 6 run `recommend()` in the browser over the public corpus at `/kb/client-corpus.json` (`src/lib/client-corpus/`, generated by `npm run build:client-corpus`). Regulatory relevance filtering also runs locally (`relevantChangesForConditionIds`), so the scope-free server snapshot never sees the selections.
 
 ---
 
@@ -276,19 +210,15 @@ Saves service branch, location, and date information for presumptive eligibility
 
 ---
 
-### Scenario Actions (`src/lib/actions/scenarios.ts`)
+### Scenario launcher (browser-local — no Server Action)
 
-#### `launchDemoScenario(formData)`
+**PRIV-01 stage 2**: `src/components/ScenarioLaunchForm.tsx` loads a pre-built synthetic scenario from `data/demo-scenarios.json` entirely in the browser.
 
-Loads a pre-built demo scenario and populates the secondary workflow session.
+1. Look the scenario up by its bundled `scenarioId`; validate the workflow through `parseWorkflowState(workflowSessionToQueryParams(workflow), catalog)` against the public client corpus.
+2. Clear every prior browser-local key, then write the validated state into the browser-local context record.
+3. Navigate to `/secondary/suggestions`.
 
-**Form fields**:
-| Field | Type | Required | Description |
-|---|---|---|---|
-| `scenarioId` | `string` | Yes | Scenario ID (1-80 chars, lowercase alphanumeric + hyphens). |
-
-**Success**: Redirects to `/secondary/suggestions`.
-**Validation errors**: Invalid or unknown scenario ID → redirect to `/scenarios`. Scenario state that fails parsing or session-write validation → redirect to `/scenarios?error=invalid_state` (never an unhandled server error).
+An unknown id or invalid state surfaces an inline error; nothing is sent to the server and no workflow data is placed in a URL.
 
 ---
 

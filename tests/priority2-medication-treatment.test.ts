@@ -9,13 +9,12 @@ import { intakeSchema } from "@/lib/engine/types";
 import { loadKnowledgeBase } from "@/lib/kb/load";
 import { parseDocumentsSelection } from "@/lib/secondary-workflow/state";
 import {
-  openWorkflowState,
-  sealWorkflowState,
-} from "@/lib/secondary-workflow/session";
+  readBrowserWorkflowContext,
+  writeBrowserWorkflowContext,
+} from "@/lib/secondary-workflow/browser-context";
 
 const catalog = loadConditionCatalog();
 const kb = loadKnowledgeBase();
-const TEST_SECRET = "priority-2-test-secret-is-at-least-32-characters";
 
 function readRepoFile(relativePath: string): string {
   return fs.readFileSync(path.join(process.cwd(), relativePath), "utf8");
@@ -47,25 +46,39 @@ describe("Priority 2 medication and treatment intake", () => {
     expect(source).not.toContain("new URLSearchParams");
   });
 
-  it("round-trips bounded context through encrypted workflow state without plaintext leakage", () => {
-    const sealed = sealWorkflowState(
-      {
-        diagnosedConditionIds: ["ptsd", "erectile-dysfunction"],
-        serviceConnectedConditionIds: ["ptsd"],
-        ratingsByConditionId: { ptsd: 70 },
-        documentsShared: true,
-        medications: ["SSRI"],
-        treatments: ["Medication management"],
+  it("round-trips bounded context through the browser-local record without a request", () => {
+    const data = new Map<string, string>();
+    const storage = {
+      getItem: (key: string) => data.get(key) ?? null,
+      setItem: (key: string, value: string) => {
+        data.set(key, value);
       },
-      TEST_SECRET,
-    );
+      removeItem: (key: string) => {
+        data.delete(key);
+      },
+    };
+    writeBrowserWorkflowContext(storage, {
+      diagnosedConditionIds: ["ptsd", "erectile-dysfunction"],
+      serviceConnectedConditionIds: ["ptsd"],
+      ratingsByConditionId: { ptsd: 70 },
+      documentsShared: true,
+      medications: ["SSRI"],
+      treatments: ["Medication management"],
+    });
 
-    expect(sealed).not.toContain("SSRI");
-    expect(sealed).not.toContain("Medication management");
-    expect(openWorkflowState(sealed, TEST_SECRET)?.medications).toEqual(["SSRI"]);
-    expect(openWorkflowState(sealed, TEST_SECRET)?.treatments).toEqual([
-      "Medication management",
-    ]);
+    const record = readBrowserWorkflowContext(storage);
+    expect(record?.medications).toEqual(["SSRI"]);
+    expect(record?.treatments).toEqual(["Medication management"]);
+
+    // The record lives only in browser storage: the module never transmits it,
+    // and the legacy sealed cookie path is gone (PRIV-01 stage 3).
+    const source = readRepoFile("src/lib/secondary-workflow/browser-context.ts");
+    expect(source).not.toContain("fetch(");
+    expect(source).not.toContain("sendBeacon");
+    expect(source).not.toContain("document.cookie");
+    expect(
+      fs.existsSync(path.join(process.cwd(), "src/lib/secondary-workflow/session.ts")),
+    ).toBe(false);
   });
 
   it("highlights literal authored pathway overlap without changing ranking", () => {
@@ -100,9 +113,9 @@ describe("Priority 2 medication and treatment intake", () => {
   });
 
   it("wires Step 4 intake through the shared Steps 5 and 6 recommendation intake with explicit non-causal copy", () => {
-    const upload = readRepoFile("src/app/secondary/upload/page.tsx");
-    const suggestions = readRepoFile("src/app/secondary/suggestions/page.tsx");
-    const evidence = readRepoFile("src/app/secondary/evidence/page.tsx");
+    const upload = readRepoFile("src/components/secondary/steps/UploadStep.tsx");
+    const suggestions = readRepoFile("src/components/secondary/steps/SuggestionsStep.tsx");
+    const evidence = readRepoFile("src/components/secondary/steps/EvidenceStep.tsx");
     const recommendationIntake = readRepoFile(
       "src/lib/secondary-workflow/recommendation-intake.ts",
     );
