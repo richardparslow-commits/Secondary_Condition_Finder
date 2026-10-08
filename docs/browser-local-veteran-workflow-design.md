@@ -69,6 +69,14 @@ for every visitor and unaffected by selections.
 - No workflow cookie is set. A stale `secondary-workflow-v2` presentation is
   answered with expired, path-scoped tombstones on `/secondary` and `/`
   (`src/proxy.ts`), so old browsers delete their payload on the next request.
+- A request that **carries** private context is refused, not merely ignored:
+  `src/lib/security/private-context-request-guard.ts` answers 400 for a private
+  context parameter on any path, and for a write method anywhere under
+  `/secondary` (those pages are read-only shells now). The refusal names at most
+  one constant parameter name — never a value — and still tombstones a stale
+  retired cookie. The retired hidden-field transport
+  (`src/components/SecondaryWorkflowHiddenFields.tsx`) was deleted with this
+  layer.
 
 ## Layer 2 — browser: the sanctioned home for context
 
@@ -187,7 +195,8 @@ clears first and navigates only on confirmed success — otherwise it shows
 | Evidence boundary audit | evidence parser imported by a server route, bytes in cookie/log | `scripts/audit-evidence-architecture.js` (`npm run evidence:architecture`) |
 | Completion privacy | clear-all coverage and no navigation on failed cleanup | `tests/workflow-completion-privacy.test.ts`, `tests/browser-local-budget-contract.test.ts`, `tests/browser-local-persistence-failure-contract.test.ts` |
 | Retired-cookie tombstone test | a stale `secondary-workflow-v2` surviving instead of being cleared | `tests/retired-secondary-cookie.test.ts` |
-| Sentinel acceptance | any private field reaching a request, HTML/RSC, log, trace or storage | `node scripts/acceptance-browser-sentinel.mjs` (requires the app on `http://127.0.0.1:3107`) |
+| Private-context request refusal | the server *reading* (rather than refusing) a request that carries context; a retired form-post transport reappearing | `tests/private-context-request-guard.test.ts` (`src/lib/security/private-context-request-guard.ts`) |
+| Sentinel acceptance | any private field reaching a request, HTML/RSC, log, trace or storage | `node scripts/acceptance-browser-sentinel.mjs` (requires the app on `http://127.0.0.1:3107`; enforced in CI as **Run PRIV-01 stage-4 browser sentinel** in [ci.yml](../.github/workflows/ci.yml) for pull requests touching the scope in `scripts/priv01-sentinel-scope.mjs`, and for every non-PR event) |
 
 The sentinel gate walks the real UI with sentinels in the free-text/evidence
 fields and re-drives Steps 5–6 from a seeded record carrying sentinels in every

@@ -6,6 +6,11 @@ import {
   resolveClientKey,
   workflowSessionLimiter,
 } from "@/lib/rate-limiter";
+import {
+  guardPrivateContextRequest,
+  privateContextRefusalBody,
+  type PrivateContextRefusal,
+} from "@/lib/security/private-context-request-guard";
 
 /**
  * CSP / Trusted-Types violation reporting target.
@@ -300,6 +305,21 @@ export function proxy(request: NextRequest) {
       }),
     );
 
+  /**
+   * 400 for a request carrying veteran health context (PRIV-01). Carries the
+   * standard security headers and still deletes a stale retired cookie, so a
+   * refused request cannot leave the legacy payload in place.
+   */
+  const refusePrivateContext = (refusal: PrivateContextRefusal) =>
+    clearRetiredWorkflowCookie(
+      NextResponse.json(privateContextRefusalBody(refusal), {
+        status: refusal.status,
+        headers: buildSecurityHeaders(nonce, contentSecurityPolicy, {
+          includeCsp: !isCspReportRequest,
+        }),
+      }),
+    );
+
   if (client.key) {
     // Method-scoped rule, not a route rule: this covers every POST that is not a
     // Next.js asset request, including Server Action form submissions to pages
@@ -315,16 +335,21 @@ export function proxy(request: NextRequest) {
       }
     }
 
-    // Public dynamic reference GETs (forms search, accredited-representative
+    // Public dynamic reference reads (forms search, accredited-representative
     // lookup) reach upstream VA quota and must be bounded even though the
     // workflow limiter above only covers POSTs and the registry below only
-    // matches `/api/*` routes.
+    // matches `/api/*` routes. HEAD can execute the same page loader as GET,
+    // so it consumes the same budget. Query/RSC/prefetch variants are not exempt.
+    // Pinned by the page-loader inventory and behavioral coverage tests in
+    // tests/api-route-rate-limit-coverage.test.ts (SEC-02).
     if (
-      method === "GET" &&
+      (method === "GET" || method === "HEAD") &&
       (pathname === "/va-forms" ||
+        pathname === "/va-forms/finder" ||
         pathname === "/va-reference" ||
         pathname === "/presumptive/results" ||
         pathname === "/secondary/suggestions" ||
+        pathname === "/secondary/evidence" ||
         pathname === "/va-account" ||
         pathname.startsWith("/va-account/oauth/"))
     ) {
@@ -353,6 +378,30 @@ export function proxy(request: NextRequest) {
       }
     }
   }
+
+  // --- PRIV-01: refuse any request that carries veteran health context ---
+  //
+  // The workflow is browser-local
+  // (docs/privacy-acceptance-contract-2026-10-07.md), so no server path needs
+  // these values, and the only shapes that still supply them are retired
+  // transports: a stale bookmark or cached form carrying the pre-PRIV-01 flat
+  // fields, or a write method aimed at a workflow step page that no longer has
+  // a Server Action. Both are refused before any loader runs, and the refusal
+  // names at most one constant parameter name — never a value. The parameter
+  // rule applies on every path (the contract's prohibited flow names no route);
+  // the write rule applies to the workflow area only, because other tracks
+  // still POST their own Server Actions.
+  //
+  // Deliberately evaluated AFTER the limiters: admission control stays in
+  // front, so a refused write is still charged to its bucket (refusal must not
+  // become an unthrottled endpoint) and the ordered POST rule keeps its
+  // existing coverage.
+  const privateContextRefusal = guardPrivateContextRequest(
+    method,
+    pathname,
+    url.searchParams.keys(),
+  );
+  if (privateContextRefusal) return refusePrivateContext(privateContextRefusal);
 
   const response = NextResponse.next({
     request: {

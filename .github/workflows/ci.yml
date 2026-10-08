@@ -16,7 +16,12 @@ permissions:
 jobs:
   verify:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    # The browser gates at the end of this job (the four real-browser journeys
+    # and the PRIV-01 sentinel walk, which starts its own dev server and runs
+    # page-side OCR) are only reachable after the build, so the ceiling has to
+    # cover install + full suite + build + both browser gates rather than the
+    # pre-sentinel budget.
+    timeout-minutes: 40
     steps:
       - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
       - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5
@@ -264,6 +269,125 @@ jobs:
           (node e2e/secondary-workflow.mjs && node e2e/validation-errors.mjs && node e2e/coi-isolation.mjs && node e2e/pathways-smoke.mjs) 2>&1 | tee ci-e2e.log
         continue-on-error: true
         id: e2e
+      # Scope detection for the PRIV-01 sentinel gate below. The walk is the
+      # privacy acceptance contract's strongest leakage evidence, but it is
+      # expensive (a live app plus headless Chrome plus page-side OCR), so it is
+      # restricted to pull requests whose change set can move the browser-local
+      # privacy posture; every non-PR event (push to main, workflow_dispatch)
+      # runs it, because that is where the contract has to hold. The scope list
+      # lives in scripts/priv01-sentinel-scope.mjs so the wiring test can prove
+      # it still covers every load-bearing module, and detection fails closed:
+      # any API problem runs the gate instead of skipping it.
+      - name: Detect PRIV-01 sentinel scope changes
+        if: github.event_name == 'pull_request'
+        id: priv01_scope
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          set -o pipefail
+          node --input-type=module - <<'NODE' 2>&1 | tee ci-priv01-scope.log
+          import { appendFileSync } from "node:fs";
+
+          const { priv01SentinelScopeMatches } = await import(
+            "./scripts/priv01-sentinel-scope.mjs",
+          );
+
+          const apiUrl = process.env.GITHUB_API_URL;
+          const repository = process.env.GITHUB_REPOSITORY;
+          const number = process.env.PR_NUMBER;
+
+          const setOutput = (changed, reason) => {
+            console.log(`priv01-sentinel scope: changed=${changed} (${reason})`);
+            if (process.env.GITHUB_OUTPUT) {
+              appendFileSync(process.env.GITHUB_OUTPUT, `changed=${changed}\n`);
+            }
+          };
+
+          try {
+            const headers = {
+              Accept: "application/vnd.github+json",
+              Authorization: `Bearer ${process.env.GH_TOKEN}`,
+              "X-GitHub-Api-Version": "2022-11-28",
+            };
+            const changedFiles = [];
+            // The PR files endpoint paginates at 100; a pull request larger than
+            // 3000 files is not worth an unbounded loop, so the last page read
+            // decides (fail closed).
+            for (let page = 1; page <= 30; page += 1) {
+              const response = await fetch(
+                `${apiUrl}/repos/${repository}/pulls/${number}/files?per_page=100&page=${page}`,
+                { headers },
+              );
+              if (!response.ok) {
+                throw new Error(`pull files lookup returned HTTP ${response.status}`);
+              }
+              const batch = await response.json();
+              if (!Array.isArray(batch)) {
+                throw new Error("pull files payload was not an array");
+              }
+              changedFiles.push(
+                ...batch
+                  .map((entry) => entry?.filename)
+                  .filter((name) => typeof name === "string"),
+              );
+              if (batch.length < 100) break;
+            }
+
+            const inScope = priv01SentinelScopeMatches(changedFiles);
+            setOutput(
+              inScope.length > 0 ? "true" : "false",
+              inScope.length > 0
+                ? `${inScope.length} in-scope file(s)`
+                : `${changedFiles.length} file(s) changed, none in scope`,
+            );
+          } catch (error) {
+            setOutput(
+              "true",
+              `change-set lookup failed (${error instanceof Error ? error.message : String(error)}); running the gate`,
+            );
+          }
+          NODE
+      # PRIV-01 stage 4 as an enforced, attributable gate. The walk plants
+      # unique sentinels in every private field and fails on a sentinel reaching
+      # any request, response, HTML/RSC payload, log, trace or storage surface —
+      # the one check that cannot be satisfied by reading source. It needs a live
+      # app, so this step starts its own dev server and points the runner at that
+      # server's log, because the walk scans the server log it drove. A missing
+      # browser or an unhealthy server is a gate failure, not a skip: a green run
+      # must mean the walk actually happened.
+      - name: Run PRIV-01 stage-4 browser sentinel
+        if: steps.build.outcome == 'success' && (github.event_name != 'pull_request' || steps.priv01_scope.outputs.changed == 'true')
+        continue-on-error: true
+        id: priv01_sentinel
+        run: |
+          set -o pipefail
+          browser="$(command -v google-chrome || command -v google-chrome-stable || command -v chromium || command -v chromium-browser || true)"
+          if [ -z "$browser" ]; then
+            echo "No Chrome/Chromium binary on this runner; the PRIV-01 sentinel gate cannot drive a browser." | tee ci-priv01-sentinel.log
+            exit 1
+          fi
+          npm run dev -- -H 127.0.0.1 -p 3117 > ci-priv01-sentinel-server.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" 2>/dev/null || true' EXIT
+          ready=false
+          for attempt in $(seq 1 60); do
+            if curl -fsS "http://127.0.0.1:3117/api/health" > /dev/null 2>&1; then
+              ready=true
+              break
+            fi
+            sleep 2
+          done
+          if [ "$ready" != "true" ]; then
+            echo "The dev server never answered /api/health; see ci-priv01-sentinel-server.log." | tee ci-priv01-sentinel.log
+            exit 1
+          fi
+          SENTINEL_APP_BASE="http://127.0.0.1:3117" \
+          SENTINEL_SERVER_LOG="$PWD/ci-priv01-sentinel-server.log" \
+          SENTINEL_REPORT_PATH="$PWD/ci-priv01-sentinel-evidence.json" \
+          CHROME_PATH="$browser" \
+          NEXT_TELEMETRY_DISABLED=1 \
+          node scripts/acceptance-browser-sentinel.mjs 2>&1 | tee ci-priv01-sentinel.log
       - name: Collect diagnostic summary
         if: always()
         id: diagnostics
@@ -293,9 +417,10 @@ jobs:
             echo "- fleet-coordination: ${{ steps.fleet.outcome }}"
             echo "- build: ${{ steps.build.outcome }}"
             echo "- browser-e2e: ${{ steps.e2e.outcome }}"
+            echo "- priv01-sentinel: ${{ steps.priv01_sentinel.outcome }}"
             echo
             echo "## Failure excerpts"
-            for log in ci-governance.log ci-branch-rules.log ci-install.log ci-audit.log ci-audit-all.log ci-citations.log ci-kb-validate.log ci-me-compliance.log ci-crg.log ci-crg-graph.log ci-lint.log ci-typecheck.log ci-test-composition.log ci-test.log ci-fleet.log ci-build.log ci-e2e.log; do
+            for log in ci-governance.log ci-branch-rules.log ci-install.log ci-audit.log ci-audit-all.log ci-citations.log ci-kb-validate.log ci-me-compliance.log ci-crg.log ci-crg-graph.log ci-lint.log ci-typecheck.log ci-test-composition.log ci-test.log ci-fleet.log ci-build.log ci-e2e.log ci-priv01-scope.log ci-priv01-sentinel.log; do
               if [ -f "$log" ]; then
                 echo
                 echo "### $log"
@@ -323,12 +448,13 @@ jobs:
           path: |
             ci-*.log
             ci-diagnostic-summary.md
+            ci-priv01-sentinel-evidence.json
             .github/fleet-budget-ratchet.json
           retention-days: 14
       - name: Fail the job if any gate failed
         if: always()
         run: |
-          if [ "${{ steps.governance.outcome }}" = "failure" ] || [ "${{ steps.branch_rules.outcome }}" = "failure" ] || [ "${{ steps.install.outcome }}" = "failure" ] || [ "${{ steps.audit.outcome }}" = "failure" ] || [ "${{ steps.citations.outcome }}" = "failure" ] || [ "${{ steps.kb_validate.outcome }}" = "failure" ] || [ "${{ steps.me_compliance.outcome }}" = "failure" ] || [ "${{ steps.crg.outcome }}" = "failure" ] || [ "${{ steps.crg_graph.outcome }}" = "failure" ] || [ "${{ steps.lint.outcome }}" = "failure" ] || [ "${{ steps.typecheck.outcome }}" = "failure" ] || [ "${{ steps.test_composition.outcome }}" = "failure" ] || [ "${{ steps.test.outcome }}" = "failure" ] || [ "${{ steps.fleet.outcome }}" = "failure" ] || [ "${{ steps.build.outcome }}" = "failure" ] || [ "${{ steps.e2e.outcome }}" = "failure" ]; then
+          if [ "${{ steps.governance.outcome }}" = "failure" ] || [ "${{ steps.branch_rules.outcome }}" = "failure" ] || [ "${{ steps.install.outcome }}" = "failure" ] || [ "${{ steps.audit.outcome }}" = "failure" ] || [ "${{ steps.citations.outcome }}" = "failure" ] || [ "${{ steps.kb_validate.outcome }}" = "failure" ] || [ "${{ steps.me_compliance.outcome }}" = "failure" ] || [ "${{ steps.crg.outcome }}" = "failure" ] || [ "${{ steps.crg_graph.outcome }}" = "failure" ] || [ "${{ steps.lint.outcome }}" = "failure" ] || [ "${{ steps.typecheck.outcome }}" = "failure" ] || [ "${{ steps.test_composition.outcome }}" = "failure" ] || [ "${{ steps.test.outcome }}" = "failure" ] || [ "${{ steps.fleet.outcome }}" = "failure" ] || [ "${{ steps.build.outcome }}" = "failure" ] || [ "${{ steps.e2e.outcome }}" = "failure" ] || [ "${{ steps.priv01_sentinel.outcome }}" = "failure" ]; then
             echo "One or more CI gates failed. See the diagnostic summary and artifact."
             exit 1
           fi

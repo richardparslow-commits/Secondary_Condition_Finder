@@ -23,7 +23,9 @@ carry no visitor context.
 
 ## Prohibited flows
 
-1. Server Actions, route handlers or API endpoints receiving any field above.
+1. Server Actions, route handlers or API endpoints receiving any field above
+   (implemented 2026-10-08: the edge proxy refuses such a request outright —
+   see [Request-refusal layer](#request-refusal-layer-2026-10-08)).
 2. Cookies (encrypted or otherwise) persisting any field above; the legacy
    `secondary-workflow-v2` cookie must be rejected/cleared, not merely sealed
    (implemented in stage 3: the module is deleted and the edge proxy appends
@@ -153,9 +155,10 @@ Section 508 review remain tracked in
 ## Stage-4 evidence (2026-10-07)
 
 - **Runner:** [acceptance-browser-sentinel.mjs](../scripts/acceptance-browser-sentinel.mjs)
-  (maintainer gate, not CI) drives a real headless Chrome over the DevTools
-  Protocol against the running app (`node scripts/acceptance-browser-sentinel.mjs`,
-  app on `http://127.0.0.1:3107`). It captures every request (URL, method,
+  drives a real headless Chrome over the DevTools Protocol against the running
+  app (`node scripts/acceptance-browser-sentinel.mjs`, app on
+  `http://127.0.0.1:3107`; CI now starts that app itself — see
+  [CI enforcement](#ci-enforcement-2026-10-08) below). It captures every request (URL, method,
   headers, cookies, post data), every response header and body, the browser
   console and log, the dev-server log tail, `.next/trace`, and the cookie jar,
   from the page session **and** every attached worker session.
@@ -191,6 +194,97 @@ Section 508 review remain tracked in
 - **No server log or trace leakage:** the dev-server log tail and `.next/trace`
   contained no sentinel; no third-party host or LangSmith endpoint was
   contacted, and the walk raised no uncaught browser exceptions.
+
+## Request-refusal layer (2026-10-08)
+
+Stages 1–4 removed every server path that *read* veteran context; the server
+now also **refuses** a request that carries it. `src/lib/security/private-context-request-guard.ts`
+is the boundary and [proxy.ts](../src/proxy.ts) is the single choke point:
+
+- A request presenting a private context parameter is refused with **400** on
+  **every** path, because the contract's first prohibited flow names no route.
+  The refusal list covers both the browser-local record's field names and the
+  retired flat transport names, and is pinned by tests to the live record
+  schema, so adding a private field without extending the guard fails the
+  suite.
+- A write method (anything but GET/HEAD/OPTIONS) is refused on the workflow
+  area (`/secondary…`) only, because those pages are read-only shells while
+  other tracks still POST their own Server Actions.
+- The refusal **never echoes a value**: it names at most one constant parameter
+  name from the guard's list, never the request's content. It still appends the
+  expired retired-cookie tombstones, so a refused request cannot leave the
+  legacy payload in place.
+- It runs *after* the existing limiters, so admission control keeps its
+  coverage and a refusal cannot become an unthrottled endpoint.
+
+**Retired transport deleted:** [SecondaryWorkflowHiddenFields.tsx](../src/components/SecondaryWorkflowHiddenFields.tsx)
+was the pre-PRIV-01 transport that rendered `diagnosed`, `serviceConnected`,
+`rating-<id>` and `documentsShared` as hidden form inputs for a Server Action.
+It had no remaining reference anywhere in `src`, `tests`, `e2e` or `scripts`,
+and it is gone — so the form-post shape cannot be reintroduced by importing it.
+
+**Evidence:** [tests/private-context-request-guard.test.ts](../tests/private-context-request-guard.test.ts)
+(8 cases: refusal per parameter family, record-field coverage derived from the
+written record, retired-parser coverage derived from `state.ts`, write-method
+scope, allowed shapes, value-free body) and real HTTP against the running app —
+**11/11** probes, with refusals carrying no value and the six-step walk keeping
+clean URLs. Evidence:
+`tmp/security-audit-2026-10-07/priv01-request-guard/http-evidence.json`.
+A browser walk of Steps 1→4 (diagnosed → service-connected → ratings → upload)
+confirmed live: state appears only in `sessionStorage`, `document.cookie` stays
+empty, navigation URLs carry only `_rsc`, and the server log records **zero**
+refusals during the walk — while the crafted requests above are refused and
+produce no server log entry that would echo their query.
+
+**Not re-verified by this layer:** the full sentinel walk was re-run twice and
+stopped both times at the page-side OCR wait — the recorded runner-error report
+(`tmp/security-audit-2026-10-07/priv01-request-guard/priv01-sentinel-recheck.json`)
+shows the 240-second OCR completion wait expiring while every probe returned
+`CDP Runtime.evaluate timed out`, i.e. the renderer stayed busy on the
+in-browser tesseract run on this host rather than a budget being mis-sized — so
+the 2026-10-07 stage-4 acceptance remains the contract's leakage evidence. A
+refusal path that the correct flow never triggers does not change that record;
+a completed sentinel re-run is still outstanding.
+
+## CI enforcement (2026-10-08)
+
+Stage 4 was a maintainer-run gate; it is now enforced. The `verify` job in
+[ci.yml](../.github/workflows/ci.yml) runs a named gate,
+**Run PRIV-01 stage-4 browser sentinel**, whose failure re-fails the job (it is
+listed in the job's final aggregator, not left advisory). The step starts a dev server on its
+own port, waits for `/api/health`, points `SENTINEL_APP_BASE` and
+`SENTINEL_SERVER_LOG` at that server, and runs
+[acceptance-browser-sentinel.mjs](../scripts/acceptance-browser-sentinel.mjs)
+with the runner's Chrome. A missing browser, an unhealthy server, or a failed
+walk fails the gate — it never degrades to a skip, because a green `verify` has
+to mean the walk actually happened.
+
+Pull requests are selected by their change set through
+[priv01-sentinel-scope.mjs](../scripts/priv01-sentinel-scope.mjs): the
+workflow's routes, step components and browser-local state, the evidence/OCR
+pipeline and its self-hosted tesseract assets, the client corpus, the
+private-context refusal layer, the proxy, the COOP/COEP configuration, the
+runner itself, and the contract suites that encode the same invariant.
+Detection fails closed — an unreadable change set runs the gate rather than
+skipping it — and every non-PR event (push to main, manual dispatch) runs it
+unconditionally. [priv01-sentinel-gate-wiring.test.ts](../tests/priv01-sentinel-gate-wiring.test.ts)
+walks those directories on disk, so a new privacy-bearing module cannot land
+outside the gate's scope, and pins the wiring above.
+
+**Not yet measured, and the one open risk:** the step's first run on a CI
+runner is outstanding as of this layer. The walk was rehearsed locally through
+the step's own extracted script, and the page-side OCR leg failed
+**4 of 4** attempts the same way — the 240-second "Local OCR completed for"
+wait expiring while every probe returned `CDP Runtime.evaluate timed out`
+([rehearsal record](../tmp/security-audit-2026-10-07/priv01-request-guard/ci-rehearsal/README.md);
+tokens `34d6f3e0` and `40387030`, both `runner-error`). The renderer stayed busy
+for the whole wait while the tesseract workers ran, so the suspect is page-side
+saturation during in-browser OCR rather than the walk's own logic; the
+2026-10-07 stage-4 runs completed on this same host (tokens `7e6f1861` at 45/45
+and `0f953e99` at 20/20), so it is not a static defect in the runner. Until a run
+completes on a runner, this gate must be read as *wired and enforced, not yet
+observed green*, and the OCR leg is the leg to fix or budget before it is treated
+as a required check.
 
 ## Non-goals
 

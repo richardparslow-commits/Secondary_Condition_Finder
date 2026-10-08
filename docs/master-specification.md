@@ -149,6 +149,7 @@ Every PR must pass, enforced by `.github/workflows/ci.yml`:
 | Typecheck | `npm run typecheck` | `tsc --noEmit` |
 | Unit/contract tests | `npm test` | Full Vitest suite |
 | Build + e2e | `npm run build`, e2e job | Production build and real-browser journeys |
+| PRIV-01 browser sentinel | `node scripts/acceptance-browser-sentinel.mjs` | Browser-local privacy: no sentinel in any request, response body, HTML/RSC payload, log, trace or browser storage. Pull requests touching the workflow scope in `scripts/priv01-sentinel-scope.mjs`, plus every non-PR event. Fails rather than skipping when the runner cannot host the walk |
 
 `npm run citations:decay` (live link-rot/staleness probes) is a deliberate maintainer gate and is intentionally not wired into per-PR CI.
 

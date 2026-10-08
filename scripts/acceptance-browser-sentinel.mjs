@@ -1,4 +1,4 @@
-// PRIV-01 stage 4 — browser sentinel acceptance (maintainer gate, not CI).
+// PRIV-01 stage 4 — browser sentinel acceptance.
 //
 //   node scripts/acceptance-browser-sentinel.mjs
 //
@@ -10,6 +10,15 @@
 // trace files. Also verifies that file extraction and image-only-PDF OCR run
 // entirely in-browser (worker traffic included) and that Finish Review clears
 // every registered browser storage key.
+//
+// CI runs this as an enforced step — .github/workflows/ci.yml, "Run PRIV-01
+// stage-4 browser sentinel" — for pull requests whose change set can move the
+// browser-local privacy posture (scripts/priv01-sentinel-scope.mjs) and for
+// every non-PR event. That step starts the dev server itself and points
+// SENTINEL_APP_BASE and SENTINEL_SERVER_LOG at it, because the scan below only
+// means something when it reads the log of the server it actually drove; a
+// missing browser or unhealthy server fails the gate rather than skipping it
+// (tests/priv01-sentinel-gate-wiring.test.ts pins that wiring).
 //
 // The sentinel split is deliberate:
 //   Pass A — real UI walk. Real catalog selections (the picker only offers
@@ -43,7 +52,9 @@ const EVIDENCE_DIR = path.join(
 );
 const SERVER_LOG =
   process.env.SENTINEL_SERVER_LOG ?? path.join(EVIDENCE_DIR, "dev-server-stage3.log");
-const REPORT_PATH = path.join(EVIDENCE_DIR, "priv01-stage4-evidence.json");
+const REPORT_PATH =
+  process.env.SENTINEL_REPORT_PATH ??
+  path.join(EVIDENCE_DIR, "priv01-stage4-evidence.json");
 const LOCAL_STATE_SOURCE = path.join(
   process.cwd(),
   "src/lib/secondary-workflow/local-state.ts",
@@ -57,7 +68,11 @@ const CLEAR_KEY_SOURCES = [
   path.join(process.cwd(), "src/lib/evidence/ocr-session.ts"),
 ];
 const TRACE_FILE = path.join(process.cwd(), ".next", "trace");
-
+// Character cap for whole-file scans of the server log and the Next trace file.
+// Next rewrites `.next/trace` (and may restart the dev log) instead of only
+// appending, so a tail-slice from a pre-run offset can scan zero bytes and pass
+// vacuously; both surfaces are scanned in full up to this many characters.
+const TEXT_SURFACE_SCAN_LIMIT = 4_000_000;
 const CONTEXT_KEY = "secondary-condition-finder:secondary-workflow:v1";
 // Mirrors `secondaryWorkflowLocalStorageKeys` in local-state.ts; the script
 // asserts below that every key still appears in that source file.
@@ -90,8 +105,48 @@ const SENTINELS = {
   scannedPdfName: `sentinel-scan-${TOKEN}.pdf`,
   ocrToken: `SENTINELOCR${TOKEN_UPPER}`,
   consoleSeed: `SENTINEL_CONSOLE_SEED_${TOKEN_UPPER}`,
+  bodyControl: `SENTINEL_BODY_CONTROL_${TOKEN_UPPER}`,
 };
 const ALL_SENTINELS = [...new Set(Object.values(SENTINELS))];
+// Harness-planted same-origin POST used as the positive control for the
+// request-body surface: it proves body capture and sentinel detection are live
+// even when no app request in the walk carries a body. Requests to this path are
+// accounted as control traffic, never as app traffic.
+const REQUEST_BODY_CONTROL_PATH = `/__priv01-request-body-control-${TOKEN}`;
+
+// Every browser-local store the secondary workflow owns, described by what it
+// holds. `CLEAR_KEYS` is the clear-all list; these entries let the run prove
+// each store was written by the real flow before the clear-all step.
+const AUXILIARY_STORES = [
+  { key: CONTEXT_KEY, label: "workflow context record" },
+  {
+    key: "secondary-condition-finder:evidence-analysis:v1",
+    label: "evidence analyses and excerpts",
+  },
+  { key: "secondary-condition-finder:evidence-depth:v1", label: "local analysis depth" },
+  {
+    key: "secondary-condition-finder:evidence-gap-review:v1",
+    label: "evidence gap review checkmarks",
+  },
+  {
+    key: "secondary-condition-finder:pathway-record-checklist:v1",
+    label: "pathway record checklist",
+  },
+  {
+    key: "secondary-condition-finder:va-gov-record-walkthrough:v1",
+    label: "VA.gov record walkthrough",
+  },
+  {
+    key: "secondary-condition-finder:ocr-checkpoint:v1",
+    label: "OCR resume checkpoint",
+    selfClearing: true,
+  },
+];
+
+const CONTEXT_SCHEMA_SOURCE = path.join(
+  process.cwd(),
+  "src/lib/secondary-workflow/browser-context.ts",
+);
 
 const assertions = [];
 const violations = [];
@@ -117,6 +172,23 @@ function delay(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
+// Waits until CDP has reported the planted control request (with its body)
+// before the surface scan snapshots the request inventory.
+async function waitForCapturedRequest(urlFragment, timeoutMs = 10_000) {
+  const deadline = Date.now() + timeoutMs;
+  while (Date.now() < deadline) {
+    if (
+      [...requests.values()].some(
+        (entry) => entry.url.includes(urlFragment) && entry.postData,
+      )
+    ) {
+      return true;
+    }
+    await delay(200);
+  }
+  return false;
+}
+
 function assert(name, ok, detail) {
   assertions.push({ name, ok: Boolean(ok), detail: detail ?? null });
   if (!ok) console.error(`FAIL  ${name}${detail ? ` — ${detail}` : ""}`);
@@ -124,12 +196,24 @@ function assert(name, ok, detail) {
   return Boolean(ok);
 }
 
+// Per-surface accounting so the report can show, surface by surface, how much
+// was scanned and that each one produced zero sentinel hits — not just a
+// single global total that a silent surface could hide behind.
+const surfaceStats = new Map();
+
+function surfaceEntry(kind) {
+  if (!surfaceStats.has(kind)) surfaceStats.set(kind, { scanned: 0, hits: 0 });
+  return surfaceStats.get(kind);
+}
+
 function noteViolation(kind, where, sentinel) {
   violations.push({ kind, where, sentinel });
+  surfaceEntry(kind).hits += 1;
 }
 
 function scanText(kind, where, text) {
   if (typeof text !== "string" || text.length === 0) return;
+  surfaceEntry(kind).scanned += 1;
   for (const sentinel of ALL_SENTINELS) {
     if (text.includes(sentinel)) noteViolation(kind, where, sentinel);
   }
@@ -252,6 +336,59 @@ function clickSelector(selector) {
   return true;
 }
 
+function selectByOptionValue(optionValue) {
+  const select = [...document.querySelectorAll("select")].find((element) =>
+    [...element.options].some((option) => option.value === optionValue),
+  );
+  if (!select) return false;
+  const descriptor = Object.getOwnPropertyDescriptor(
+    HTMLSelectElement.prototype,
+    "value",
+  );
+  if (descriptor?.set) descriptor.set.call(select, optionValue);
+  else select.value = optionValue;
+  select.dispatchEvent(new Event("input", { bubbles: true }));
+  select.dispatchEvent(new Event("change", { bubbles: true }));
+  return select.value;
+}
+
+function clickFirstCheckboxIn(sectionSelector) {
+  const root = document.querySelector(sectionSelector);
+  const box = root?.querySelector('input[type="checkbox"]:not(:checked)');
+  if (!box) return false;
+  box.click();
+  return box.checked === true;
+}
+
+function readPrivateSurfaces(contextKey) {
+  const read = (key) => {
+    const raw = sessionStorage.getItem(key);
+    return { present: Boolean(raw), bytes: raw ? raw.length : 0, raw: raw ?? "" };
+  };
+  const context = read(contextKey);
+  let record = null;
+  try {
+    record = context.present ? JSON.parse(context.raw) : null;
+  } catch {
+    record = null;
+  }
+  return {
+    contextBytes: context.bytes,
+    record,
+    stores: Array.from({ length: sessionStorage.length }, (_, index) =>
+      sessionStorage.key(index),
+    )
+      .filter((key) => typeof key === "string")
+      .reduce((accumulator, key) => {
+        const entry = read(key);
+        accumulator[key] = { present: entry.present, bytes: entry.bytes };
+        return accumulator;
+      }, {}),
+    analyses: read("secondary-condition-finder:evidence-analysis:v1").raw,
+    ocrCheckpoint: read("secondary-condition-finder:ocr-checkpoint:v1"),
+  };
+}
+
 function stageFile(base64, name, type, selector) {
   const binary = atob(base64);
   const bytes = new Uint8Array(binary.length);
@@ -344,6 +481,21 @@ function plantClearKeys(clearKeys, sentinel) {
 function plantContextRecord(key, record) {
   sessionStorage.setItem(key, JSON.stringify(record));
   return sessionStorage.getItem(key)?.length ?? 0;
+}
+
+// Positive control for the request-body surface. It is a same-origin POST whose
+// JSON body deliberately carries a sentinel value, so the run can prove that a
+// body travelling over the wire would be captured and flagged.
+function postRequestBodyControl(url, payload) {
+  return fetch(url, {
+    method: "POST",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify(payload),
+    credentials: "same-origin",
+    cache: "no-store",
+  })
+    .then((response) => ({ status: response.status, ok: response.ok }))
+    .catch((error) => ({ status: 0, ok: false, error: String(error?.message ?? error) }));
 }
 
 function clickButtonByText(text) {
@@ -575,6 +727,34 @@ async function run() {
   console.log(`PRIV-01 stage-4 browser sentinel acceptance — token ${TOKEN}`);
   console.log(`App under test: ${APP_BASE}`);
 
+  // 0. Scanner self-test ---------------------------------------------------
+  // Positive control for the shared detection path: a single sentinel and then
+  // the full run set are planted in synthetic text. Without this, a detector
+  // that silently matched nothing would make every "zero hits" surface vacuous.
+  const selfTestBase = violations.length;
+  scanText(
+    "scanner-self-test",
+    "single sentinel probe",
+    `prefix ${SENTINELS.medication} suffix`,
+  );
+  const singleDetections = violations.length - selfTestBase;
+  scanText("scanner-self-test", "all sentinel probe", ALL_SENTINELS.join(" | "));
+  const selfTestDetected = new Set(
+    violations.slice(selfTestBase).map((violation) => violation.sentinel),
+  );
+  violations.length = selfTestBase;
+  surfaceStats.delete("scanner-self-test");
+  assert(
+    "scanner self-test: a planted sentinel in scanned text is detected",
+    singleDetections === 1,
+    `detections=${singleDetections}`,
+  );
+  assert(
+    "scanner self-test: every sentinel in the run set is detectable",
+    selfTestDetected.size === ALL_SENTINELS.length,
+    `${selfTestDetected.size}/${ALL_SENTINELS.length}`,
+  );
+
   // 1. Preconditions -------------------------------------------------------
   const health = await waitForHttp(`${APP_BASE}/api/health`, "app health", 20_000);
   assert("dev server healthy before the walk", health.status === 200, `HTTP ${health.status}`);
@@ -603,6 +783,23 @@ async function run() {
     clearKeysMatch
       ? `${CLEAR_KEYS.length} keys`
       : `script=[${CLEAR_KEYS.join(", ")}] source=[${resolvedClearKeys.join(", ")}] identifiers=${clearKeyIdentifiers.length}`,
+  );
+
+  // The private-field inventory is derived from the schema source, so a new
+  // context field cannot be added without this gate noticing it is uncovered.
+  const schemaSource = fs.readFileSync(CONTEXT_SCHEMA_SOURCE, "utf8");
+  const schemaObjectMatch = schemaSource.match(
+    /browserWorkflowContextSchema\s*=\s*z\.object\(\{([\s\S]*?)\n\}\);/,
+  );
+  const contextFields = schemaObjectMatch
+    ? [...schemaObjectMatch[1].matchAll(/^ {2}([A-Za-z][A-Za-z0-9_]*)\s*:/gm)].map(
+        (match) => match[1],
+      )
+    : [];
+  assert(
+    "context schema field inventory parsed from source",
+    contextFields.length >= 10 && contextFields.includes("version"),
+    JSON.stringify(contextFields),
   );
 
   const serverLogBefore = fs.existsSync(SERVER_LOG) ? fs.readFileSync(SERVER_LOG, "utf8").length : 0;
@@ -767,6 +964,14 @@ async function run() {
     }),
   );
 
+  // Two further private stores are written from this step and must be driven
+  // through the real flow rather than planted: the local-analysis depth
+  // preference and the VA.gov record walkthrough progress.
+  const depthSelected = await pageEval(js(selectByOptionValue, "extended"));
+  const walkthroughChecked = await pageEval(
+    js(clickFirstCheckboxIn, 'section[aria-labelledby="va-gov-record-walkthrough-heading"]'),
+  );
+
   // Evidence upload 1 — plain text file with literal sentinel name + content.
   const textPayload = `Medical opinion addressed to the rating decision.\nThe sleep apnea is caused by service-connected PTSD, per ${SENTINELS.evidenceText}.\n`;
   await pageEval(
@@ -845,6 +1050,10 @@ async function run() {
     120_000,
   );
   await recordStep("step 5 suggestions");
+  // The pathway record checklist is a private store written only from this step.
+  const checklistChecked = await pageEval(
+    js(clickFirstCheckboxIn, 'section[aria-labelledby="pathway-record-checklist-heading"]'),
+  );
   await pageEval(js(clickButtonByText, "Review Evidence for These Connections"));
   await waitForPage(
     "location.pathname === '/secondary/evidence' && document.body.innerText.includes('Evidence')",
@@ -852,6 +1061,179 @@ async function run() {
     120_000,
   );
   await recordStep("step 6 evidence");
+  // The evidence gap review renders on this step and is the last private store
+  // the flow must write before the clear-all step.
+  const gapReviewChecked = await pageEval(
+    js(clickFirstCheckboxIn, 'section[aria-labelledby="evidence-gap-review-heading"]'),
+  );
+
+  // ------------------------------------------------------------------------
+  // Private-field positive controls. Every field of the context schema and
+  // every auxiliary store must be observed holding real walk data — and, for
+  // the free-text fields, a sentinel — inside the browser before the leak scan
+  // below can mean anything.
+  // ------------------------------------------------------------------------
+
+  const privates = await pageEval(js(readPrivateSurfaces, CONTEXT_KEY));
+  observations.privateSurfaces = privates;
+  observations.storeSelections = {
+    depthSelected,
+    walkthroughChecked,
+    checklistChecked,
+    gapReviewChecked,
+  };
+  const record = privates?.record ?? null;
+  const analysesText = typeof privates?.analyses === "string" ? privates.analyses : "";
+
+  const fieldControls = [
+    {
+      field: "diagnosedConditionIds",
+      sentinel: null,
+      ok:
+        Array.isArray(record?.diagnosedConditionIds) &&
+        record.diagnosedConditionIds.length >= 2,
+      detail: JSON.stringify(record?.diagnosedConditionIds ?? null),
+    },
+    {
+      field: "serviceConnectedConditionIds",
+      sentinel: null,
+      ok:
+        Array.isArray(record?.serviceConnectedConditionIds) &&
+        record.serviceConnectedConditionIds.length >= 1,
+      detail: JSON.stringify(record?.serviceConnectedConditionIds ?? null),
+    },
+    {
+      field: "serviceConnectedAnswerDraft",
+      sentinel: null,
+      // A completed step 2 replaces the draft with the accepted selection; the
+      // control accepts either, because both are written by the same field.
+      ok:
+        record?.serviceConnectedAnswerDraft?.ptsd === "yes" ||
+        (Array.isArray(record?.serviceConnectedConditionIds) &&
+          record.serviceConnectedConditionIds.includes("ptsd")),
+      detail: JSON.stringify({
+        draft: record?.serviceConnectedAnswerDraft ?? null,
+        accepted: record?.serviceConnectedConditionIds ?? null,
+      }),
+    },
+    {
+      field: "ratingsByConditionId",
+      sentinel: null,
+      ok: record?.ratingsByConditionId?.ptsd === 70,
+      detail: JSON.stringify(record?.ratingsByConditionId ?? null),
+    },
+    {
+      field: "documentsShared",
+      sentinel: null,
+      ok: record?.documentsShared === true,
+      detail: JSON.stringify(record?.documentsShared ?? null),
+    },
+    {
+      field: "medications",
+      sentinel: "uiMedication",
+      ok:
+        Array.isArray(record?.medications) &&
+        record.medications.includes(SENTINELS.uiMedication),
+      detail: JSON.stringify(record?.medications ?? null),
+    },
+    {
+      field: "treatments",
+      sentinel: "uiTreatment",
+      ok:
+        Array.isArray(record?.treatments) &&
+        record.treatments.includes(SENTINELS.uiTreatment),
+      detail: JSON.stringify(record?.treatments ?? null),
+    },
+    {
+      field: "history",
+      sentinel: "uiHistory",
+      ok: Array.isArray(record?.history) && record.history.includes(SENTINELS.uiHistory),
+      detail: JSON.stringify(record?.history ?? null),
+    },
+    {
+      field: "symptomIds",
+      sentinel: null,
+      ok: Array.isArray(record?.symptomIds) && record.symptomIds.length >= 1,
+      detail: JSON.stringify(record?.symptomIds ?? null),
+    },
+    {
+      field: "conditionTimeline",
+      sentinel: null,
+      ok:
+        record?.conditionTimeline?.ptsd?.onsetYear === 2011 ||
+        record?.conditionTimeline?.ptsd?.diagnosisYear === 2013,
+      detail: JSON.stringify(record?.conditionTimeline ?? null),
+    },
+  ];
+  const uncoveredFields = contextFields.filter(
+    (field) => field !== "version" && !fieldControls.some((entry) => entry.field === field),
+  );
+  assert(
+    "every context schema field has a positive control in the walk",
+    uncoveredFields.length === 0,
+    uncoveredFields.length
+      ? `uncovered: ${uncoveredFields.join(", ")}`
+      : `${fieldControls.length} fields`,
+  );
+  for (const control of fieldControls) {
+    assert(
+      `private field ${control.field} written through the real flow`,
+      control.ok === true,
+      control.detail,
+    );
+  }
+
+  const storeControls = [
+    { label: "local analysis depth", key: "secondary-condition-finder:evidence-depth:v1" },
+    {
+      label: "evidence gap review checkmarks",
+      key: "secondary-condition-finder:evidence-gap-review:v1",
+    },
+    {
+      label: "pathway record checklist",
+      key: "secondary-condition-finder:pathway-record-checklist:v1",
+    },
+    {
+      label: "VA.gov record walkthrough",
+      key: "secondary-condition-finder:va-gov-record-walkthrough:v1",
+    },
+  ];
+  for (const control of storeControls) {
+    assert(
+      `private store written by the real flow: ${control.label}`,
+      privates?.stores?.[control.key]?.present === true,
+      JSON.stringify(privates?.stores?.[control.key] ?? null),
+    );
+  }
+  assert(
+    "evidence analyses store holds the text sentinel and the OCR transcript",
+    analysesText.includes(SENTINELS.evidenceText) && /sentinelocr/i.test(analysesText),
+    JSON.stringify({ bytes: analysesText.length, ocr: /sentinelocr/i.test(analysesText) }),
+  );
+  assert(
+    "OCR resume checkpoint is either present or self-cleared after success",
+    privates?.ocrCheckpoint?.present !== undefined,
+    JSON.stringify(privates?.ocrCheckpoint ?? null),
+  );
+
+  const privateFieldMatrix = fieldControls.map((entry) => ({
+    surface: "secondary-workflow context record",
+    field: entry.field,
+    sentinelCapable: Boolean(entry.sentinel),
+    sentinel: entry.sentinel ? SENTINELS[entry.sentinel] : null,
+    positiveControl: entry.ok === true,
+  }));
+  const privateStoreMatrix = AUXILIARY_STORES.map((store) => ({
+    store: store.label,
+    key: store.key,
+    writtenByTheFlow:
+      store.key === CONTEXT_KEY
+        ? privates?.contextBytes > 0
+        : privates?.stores?.[store.key]?.present === true,
+    sentinelPlantedBeforeClearAll: true,
+    selfClearing: Boolean(store.selfClearing),
+    bytes: privates?.stores?.[store.key]?.bytes ?? null,
+  }));
 
   const passAStorage = await readSessionKeys();
   assert(
@@ -986,6 +1368,24 @@ async function run() {
   // Sentinels, third-party hosts, workers, cookies.
   // ------------------------------------------------------------------------
 
+  // Positive control for the request-body surface. The workflow itself issues
+  // only bodyless requests, which would leave "no sentinel in a request body"
+  // vacuously true, so the harness plants a same-origin POST carrying a
+  // sentinel and requires the capture path to see it. The planted request is
+  // excluded from app-traffic accounting by its control path.
+  const controlResponse = await pageEval(
+    js(postRequestBodyControl, `${APP_BASE}${REQUEST_BODY_CONTROL_PATH}`, {
+      probe: SENTINELS.bodyControl,
+      purpose: "request-body positive control",
+    }),
+  );
+  const controlCaptured = await waitForCapturedRequest(REQUEST_BODY_CONTROL_PATH);
+  await delay(600);
+  const appRequestBodies = [];
+  const controlRequestBodies = [];
+  // Bodies CDP reported but did not inline would otherwise read as "no body".
+  const uncapturedPostData = [];
+
   const requestList = [...requests.values()];
   for (const entry of requestList) {
     scanText("request-url", entry.url, entry.url);
@@ -998,10 +1398,23 @@ async function run() {
     for (const cookie of entry.cookies ?? []) {
       scanText("request-cookie", `${entry.method} ${entry.url}`, JSON.stringify(cookie));
     }
+    if (entry.hasPostData && !entry.postData) {
+      uncapturedPostData.push({ method: entry.method, url: entry.url, type: entry.type });
+    }
     if (entry.postData) {
-      scanText("request-body", `${entry.method} ${entry.url}`, entry.postData);
-      if (entry.postData.includes(jpegBase64Slice)) {
-        noteViolation("request-body", `${entry.method} ${entry.url}`, "OCR image bytes (base64 chunk)");
+      if (entry.url.includes(REQUEST_BODY_CONTROL_PATH)) {
+        controlRequestBodies.push({
+          method: entry.method,
+          url: entry.url,
+          bytes: entry.postData.length,
+          containsControlSentinel: entry.postData.includes(SENTINELS.bodyControl),
+        });
+      } else {
+        appRequestBodies.push({ method: entry.method, url: entry.url, bytes: entry.postData.length });
+        scanText("request-body", `${entry.method} ${entry.url}`, entry.postData);
+        if (entry.postData.includes(jpegBase64Slice)) {
+          noteViolation("request-body", `${entry.method} ${entry.url}`, "OCR image bytes (base64 chunk)");
+        }
       }
     }
   }
@@ -1109,29 +1522,137 @@ async function run() {
   // Server log and trace files.
   // ------------------------------------------------------------------------
 
+  // Both files are scanned in full (capped by TEXT_SURFACE_SCAN_LIMIT) instead
+  // of only from their pre-run offsets: the dev-server log and `.next/trace` are
+  // rewritten rather than strictly appended, so a tail slice can end up empty
+  // and would make the "no sentinel in any log or trace" claim vacuous.
   let serverLogTail = "";
   let serverLogStatus = "missing";
+  let serverLogSize = 0;
   if (fs.existsSync(SERVER_LOG)) {
     const content = fs.readFileSync(SERVER_LOG, "utf8");
-    serverLogTail = content.slice(Math.min(serverLogBefore, content.length));
+    serverLogSize = content.length;
+    serverLogTail = content.slice(Math.max(0, serverLogSize - TEXT_SURFACE_SCAN_LIMIT));
     serverLogStatus = "scanned";
     scanText("server-log", SERVER_LOG, serverLogTail);
   }
   let traceTail = "";
   let traceStatus = "missing";
+  let traceSize = 0;
   if (fs.existsSync(TRACE_FILE)) {
-    const size = fs.statSync(TRACE_FILE).size;
     const content = fs.readFileSync(TRACE_FILE, "utf8");
-    traceTail = content.slice(traceBefore > 0 ? traceBefore : Math.max(0, size - 2_000_000));
+    traceSize = content.length;
+    traceTail = content.slice(Math.max(0, traceSize - TEXT_SURFACE_SCAN_LIMIT));
     traceStatus = "scanned";
     scanText("trace-file", TRACE_FILE, traceTail);
   }
-  observations.serverLog = { path: SERVER_LOG, status: serverLogStatus, bytes: serverLogTail.length };
-  observations.traceFile = { path: TRACE_FILE, status: traceStatus, bytes: traceTail.length };
+  observations.serverLog = {
+    path: SERVER_LOG,
+    status: serverLogStatus,
+    bytes: serverLogTail.length,
+    sizeBytes: serverLogSize,
+    bytesBeforeRun: serverLogBefore,
+  };
+  observations.traceFile = {
+    path: TRACE_FILE,
+    status: traceStatus,
+    bytes: traceTail.length,
+    sizeBytes: traceSize,
+    bytesBeforeRun: traceBefore,
+    rewrittenDuringRun: traceSize < traceBefore,
+  };
+  assert(
+    "server log and trace file were scanned in full rather than from a stale offset",
+    (serverLogStatus === "missing" ||
+      serverLogTail.length === Math.min(serverLogSize, TEXT_SURFACE_SCAN_LIMIT)) &&
+      (traceStatus === "missing" ||
+        (traceTail.length > 0 &&
+          traceTail.length === Math.min(traceSize, TEXT_SURFACE_SCAN_LIMIT))),
+    JSON.stringify({ serverLog: observations.serverLog, traceFile: observations.traceFile }),
+  );
 
   // ------------------------------------------------------------------------
   // Final assertions and report.
   // ------------------------------------------------------------------------
+
+  const leakSurfaces = [
+    "request-url",
+    "request-header",
+    "request-body",
+    "request-cookie",
+    "response-url",
+    "response-header",
+    "server-html-rsc",
+    "response-body",
+    "console-log",
+    "browser-log",
+    "browser-exception",
+    "navigation-url",
+    "browser-cookie",
+    "server-log",
+    "trace-file",
+  ];
+  const surfaceMatrix = leakSurfaces.map((kind) => ({ surface: kind, ...surfaceEntry(kind) }));
+  observations.surfaceMatrix = surfaceMatrix;
+  const surfacesWithHits = surfaceMatrix.filter((entry) => entry.hits > 0);
+  assert(
+    "every scanned surface reported zero sentinel hits",
+    surfacesWithHits.length === 0,
+    JSON.stringify(
+      surfacesWithHits.length
+        ? surfacesWithHits
+        : surfaceMatrix.map((entry) => `${entry.surface}:${entry.scanned} scanned/0 hits`),
+    ),
+  );
+
+  assert(
+    "no app request carried a body that could not be captured and scanned",
+    uncapturedPostData.length === 0,
+    JSON.stringify(uncapturedPostData),
+  );
+
+  assert(
+    "request-body surface control: the planted POST body was captured and holds its sentinel",
+    controlRequestBodies.length === 1 &&
+      controlRequestBodies[0].bytes > 0 &&
+      controlRequestBodies[0].containsControlSentinel === true,
+    JSON.stringify({ response: controlResponse, captured: controlCaptured, controlRequestBodies }),
+  );
+
+  // A surface could report "zero hits" simply because nothing was scanned. Every
+  // unexercised surface therefore has to carry an explicit reason, so a hollow
+  // pass cannot recur silently.
+  const SURFACE_COVERAGE_NOTES = {
+    "request-body":
+      "no app request in this walk carried a body (the workflow issues bodyless requests only); the harness-planted control POST proves request-body capture and sentinel detection are live",
+    "request-cookie":
+      "the app neither set nor sent cookies at any point, so no request could carry one",
+    "browser-cookie": "no cookie was set by the app at any point in the walk",
+    "browser-exception":
+      "no uncaught browser exception was thrown during the walk; the surface only records events that occur",
+  };
+  observations.requestBodies = {
+    appScanned: appRequestBodies.length,
+    appBytes: appRequestBodies.reduce((total, entry) => total + entry.bytes, 0),
+    uncapturedPostData,
+    control: controlRequestBodies,
+  };
+  observations.surfaceCoverage = surfaceMatrix.map((entry) => ({
+    surface: entry.surface,
+    scanned: entry.scanned,
+    exercisedByAppTraffic: entry.scanned > 0,
+    note: entry.scanned > 0 ? null : SURFACE_COVERAGE_NOTES[entry.surface] ?? null,
+  }));
+  const unexercisedSurfaces = observations.surfaceCoverage.filter(
+    (entry) => !entry.exercisedByAppTraffic,
+  );
+  assert(
+    "every leak surface was exercised by app traffic or carries a recorded non-exercise note",
+    unexercisedSurfaces.every(
+      (entry) => typeof entry.note === "string" && entry.note.length > 0,
+    ),
+    JSON.stringify(unexercisedSurfaces),
+  );
 
   assert(
     "zero sentinel occurrences in requests, responses, HTML/RSC, logs, traces and cookies",
@@ -1158,6 +1679,8 @@ async function run() {
   walk.passB.record = seededRecord;
   walk.requestInventory = {
     total: requestList.length,
+    appRequests: requestList.length - controlRequestBodies.length,
+    controlRequests: controlRequestBodies.length,
     byType: requestList.reduce((accumulator, entry) => {
       accumulator[entry.type] = (accumulator[entry.type] ?? 0) + 1;
       return accumulator;
@@ -1173,13 +1696,21 @@ async function run() {
     finding: "PRIV-01",
     stage: 4,
     stageName: "browser sentinel acceptance",
-    date: "2026-10-07",
+    coverageScope:
+      "every field of the workflow context schema and every registered browser-local store",
+    date: new Date().toISOString().slice(0, 10),
     status: failed.length === 0 ? "passed" : "failed",
     runToken: TOKEN,
     appBase: APP_BASE,
     browser: `${version.Browser ?? "Chrome"} (headless via CDP)`,
     sentinels: SENTINELS,
     walk,
+    privateFields: {
+      schemaFields: contextFields,
+      fieldMatrix: privateFieldMatrix,
+      storeMatrix: privateStoreMatrix,
+    },
+    surfaceMatrix,
     assertions,
     violations,
     observations,
