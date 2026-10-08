@@ -194,6 +194,7 @@ clears first and navigates only on confirmed success — otherwise it shows
 |---|---|---|
 | Record bounds + absent-on-corruption | oversized, tampered or stale payloads being trusted | `tests/privacy-browser-context.test.ts` |
 | Step allowlists + draft carry | cross-step overposting, lost drafts, silent resets | `tests/privacy-client-steps.test.ts` |
+| Design-conformance rules | a step page or client module reading context outside the record; a new browser storage key without clear-all registration; a fetcher building a selection-derived request | `tests/browser-local-design-conformance.test.ts` |
 | Client-boundary import rule | `"use client"` files importing `@/lib/kb`, session crypto, store, presumptive session | `scripts/audit-test-composition.js` (`CLIENT-BOUNDARY`, critical-module manifest) |
 | Evidence boundary audit | evidence parser imported by a server route, bytes in cookie/log | `scripts/audit-evidence-architecture.js` (`npm run evidence:architecture`) |
 | Completion privacy | clear-all coverage and no navigation on failed cleanup | `tests/workflow-completion-privacy.test.ts`, `tests/browser-local-budget-contract.test.ts`, `tests/browser-local-persistence-failure-contract.test.ts` |
@@ -217,11 +218,16 @@ key and that nothing remains in sessionStorage/localStorage/cookies.
    The clear-all registry needs no change: one record covers all its fields.
 2. **New server-needed lookup** — it must be scope-free and uniform: no ids, no
    selection-derived parameters, cacheable, identical for every visitor. Prove it
-   with the sentinel gate before adding it to a step.
+   with the sentinel gate before adding it to a step; the design-conformance
+   suite also requires the fetcher itself to stay a plain literal or the public
+   corpus constant, so a selection-derived request fails the static gate first.
 3. **New export/download** — build it as a browser blob; never POST a payload to
    create a document.
 4. **New client module** — keep it free of `@/lib/kb`, session crypto, `store`,
-   and `next/headers`; the composition audit will fail otherwise.
+   and `next/headers`; the composition audit will fail otherwise. If it owns a
+   new browser storage key, register that key in `local-state.ts` in the same
+   change — the design-conformance suite fails any key that is not on the
+   clear-all list.
 
 **Anti-patterns** (each one breaks the contract): Server Actions, route handlers
 or API endpoints receiving any field in the table above; cookies (encrypted or

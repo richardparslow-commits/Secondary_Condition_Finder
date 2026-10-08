@@ -1284,20 +1284,60 @@ async function run() {
     "seeded browser-local record drives step 5 (medication rendered)",
     walk.passB.suggestionsShowsMedication,
   );
-  // The CTA is a Next `<Link>`: on a cold runner that click can be swallowed
-  // with no navigation and no error, which is how the gate's third CI run timed
-  // out here. Re-issue the click inside the wait — it is idempotent, and the
-  // assertion still fails when the page genuinely never arrives, so this adds
-  // resilience without weakening the check.
-  await waitForPage(
-    `(() => {
-       if (location.pathname === '/secondary/evidence' && document.body.innerText.includes('Evidence')) return true;
-       ${clickButtonByText.toString()}("Review Evidence for These Connections");
-       return false;
-     })()`,
-    "seeded evidence step",
-    120_000,
+  // The Step 5 → 6 navigation is a Next `<Link>`. Pin the href it advertises
+  // first: the design requires it to be a uniform, scope-free URL
+  // (`/secondary/evidence?regSnapshot=<public snapshot id>`), never one built
+  // from the record, so the assertion below observes that rule end to end.
+  const evidenceHref = await pageEval(`(() => {
+    const link = [...document.querySelectorAll("a")].find((element) =>
+      element.textContent?.includes("Review Evidence for These Connections"));
+    return link ? link.getAttribute("href") : null;
+  })()`);
+  assert(
+    "step 5 evidence CTA advertises a uniform, scope-free URL",
+    typeof evidenceHref === "string" &&
+      /^\/secondary\/evidence\?regSnapshot=[^&#]+$/.test(evidenceHref) &&
+      !ALL_SENTINELS.some((sentinel) => evidenceHref.includes(sentinel)),
+    JSON.stringify(evidenceHref ?? null),
   );
+  // Click the real link. A cold runner can swallow that single click with no
+  // navigation and no error (observed on the gate's third and fourth CI runs),
+  // so after a grace period the walk follows the href the link advertises.
+  // The route and every assertion below are unchanged; only the navigation
+  // trigger becomes deterministic.
+  await pageEval(js(clickButtonByText, "Review Evidence for These Connections"));
+  try {
+    await waitForPage(
+      "location.pathname === '/secondary/evidence'",
+      "seeded evidence route",
+      20_000,
+    );
+  } catch {
+    if (
+      typeof evidenceHref === "string" &&
+      evidenceHref.startsWith("/secondary/evidence?")
+    ) {
+      await navigate(`${APP_BASE}${evidenceHref}`);
+      await waitForPage(
+        "location.pathname === '/secondary/evidence'",
+        "seeded evidence route",
+        120_000,
+      );
+    }
+  }
+  if (await pageEval("location.pathname === '/secondary/evidence'")) {
+    await waitForPage(
+      "document.readyState === 'complete' && document.body.innerText.includes('Evidence')",
+      "seeded evidence step",
+      120_000,
+    );
+  } else {
+    assert(
+      "seeded walk reached the evidence step",
+      false,
+      `still on ${await pageEval("location.pathname")}`,
+    );
+  }
   const seededEvidenceText = await pageEval("document.body.innerText");
   walk.passB.evidenceShowsMedication = seededEvidenceText.includes(SENTINELS.medication);
   walk.passB.evidenceShowsTreatment = seededEvidenceText.includes(SENTINELS.treatment);
