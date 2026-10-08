@@ -1284,9 +1284,17 @@ async function run() {
     "seeded browser-local record drives step 5 (medication rendered)",
     walk.passB.suggestionsShowsMedication,
   );
-  await pageEval(js(clickButtonByText, "Review Evidence for These Connections"));
+  // The CTA is a Next `<Link>`: on a cold runner that click can be swallowed
+  // with no navigation and no error, which is how the gate's third CI run timed
+  // out here. Re-issue the click inside the wait — it is idempotent, and the
+  // assertion still fails when the page genuinely never arrives, so this adds
+  // resilience without weakening the check.
   await waitForPage(
-    "location.pathname === '/secondary/evidence' && document.body.innerText.includes('Evidence')",
+    `(() => {
+       if (location.pathname === '/secondary/evidence' && document.body.innerText.includes('Evidence')) return true;
+       ${clickButtonByText.toString()}("Review Evidence for These Connections");
+       return false;
+     })()`,
     "seeded evidence step",
     120_000,
   );
@@ -1782,7 +1790,23 @@ try {
     }
   }
   if (profileDirForCleanup) {
-    fs.rmSync(profileDirForCleanup, { recursive: true, force: true });
+    // Chrome keeps flushing its profile after the signal, so a single removal
+    // races it and throws ENOTEMPTY — which, on the PRIV-01 CI gate's fifth run,
+    // turned a walk that had already PASSED 45/45 into a failed step. Retry the
+    // removal, and never let best-effort cleanup decide the gate: the assertions
+    // above are the result, and a leftover temp profile is not a finding.
+    try {
+      fs.rmSync(profileDirForCleanup, {
+        recursive: true,
+        force: true,
+        maxRetries: 10,
+        retryDelay: 200,
+      });
+    } catch (error) {
+      console.warn(
+        `cleanup: could not remove the temporary Chrome profile at ${profileDirForCleanup}: ${error.message}`,
+      );
+    }
   }
   await delay(300);
   process.exit(process.exitCode ?? 0);
