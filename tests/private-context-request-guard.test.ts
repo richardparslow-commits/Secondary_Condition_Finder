@@ -9,6 +9,7 @@ import {
   guardPrivateContextRequest,
   PRIVATE_CONTEXT_PARAMETER_NAMES,
   privateContextRefusalBody,
+  PUBLIC_WORKFLOW_WRITE_PATHS,
 } from "@/lib/security/private-context-request-guard";
 import { writeBrowserWorkflowContext } from "@/lib/secondary-workflow/browser-context";
 import { ratingFieldName, timelineField } from "@/lib/secondary-workflow/state";
@@ -30,6 +31,7 @@ import { proxy } from "@/proxy";
 
 const APP_ORIGIN = "http://127.0.0.1:3107";
 const SENTINEL = "SENTINELPRIV01VALUE";
+const ROOT = process.cwd();
 
 /** `/secondary` is the workflow area; every step page lives beneath it. */
 const WORKFLOW_PATH = "/secondary/upload";
@@ -142,18 +144,72 @@ describe("private context request guard (PRIV-01)", () => {
     }
   });
 
-  it("refuses write methods on workflow paths only", () => {
-    for (const method of ["POST", "PUT", "PATCH", "DELETE"]) {
-      const response = proxy(workflowRequest(WORKFLOW_PATH, { method }));
-      expect(response.status, `workflow ${method}`).toBe(400);
-      // Other tracks still POST their own Server Actions.
-      const otherTrack = proxy(workflowRequest("/presumptive/results", { method }));
-      expect(otherTrack.status, `presumptive ${method}`).toBe(200);
+  it("refuses write methods on the step pages that host no public action", () => {
+    // These pages never legitimately write: the workflow is browser-local now,
+    // so a write here is a stale form or a replayed retired transport.
+    for (const page of [WORKFLOW_PATH, "/secondary/diagnosed", "/secondary/ratings"]) {
+      for (const method of ["POST", "PUT", "PATCH", "DELETE"]) {
+        const response = proxy(workflowRequest(page, { method }));
+        expect(response.status, `${page} ${method}`).toBe(400);
+      }
+      for (const method of ["GET", "HEAD", "OPTIONS"]) {
+        const response = proxy(workflowRequest(page, { method }));
+        expect(response.status, `${page} ${method}`).toBe(200);
+      }
     }
 
-    for (const method of ["GET", "HEAD", "OPTIONS"]) {
-      const response = proxy(workflowRequest(WORKFLOW_PATH, { method }));
-      expect(response.status, `workflow ${method}`).toBe(200);
+    // Other tracks still POST their own Server Actions.
+    const otherTrack = proxy(workflowRequest("/presumptive/results", { method: "POST" }));
+    expect(otherTrack.status).toBe(200);
+  });
+
+  it("allows the accredited-representative action to write on the pages that host it", () => {
+    // Regression pin. Refusing every write in the workflow area answered 400 to
+    // the finder's Server Action on the PRIV-01 sentinel gate's first CI run:
+    // the E2E journey's Step 5 locator search never redirected, the page fell to
+    // `secondary/error.tsx`, and the pre-existing browser gate failed — a false
+    // positive only a journey reaching Step 5 could show, since the earlier walk
+    // stopped at Step 4. The exemption is exactly these pages.
+    for (const page of PUBLIC_WORKFLOW_WRITE_PATHS) {
+      const response = proxy(workflowRequest(page, { method: "POST" }));
+      expect(response.status, `${page} POST`).toBe(200);
+    }
+
+    // The parameter rule does not depend on the method: context in the URL is
+    // still refused on an exempted page.
+    const withContext = proxy(
+      workflowRequest(`${PUBLIC_WORKFLOW_WRITE_PATHS[0]}?diagnosed=${SENTINEL}`, { method: "POST" }),
+    );
+    expect(withContext.status).toBe(400);
+  });
+
+  it("pins the write exemption to the action that justifies it", () => {
+    // An exemption with no action behind it is a hole in the write rule, so each
+    // exempted path must be a page whose step renders the public finder with
+    // `returnTo` set to that path.
+    const stepsDirectory = path.join(ROOT, "src/components/secondary/steps");
+    const stepSources = fs
+      .readdirSync(stepsDirectory)
+      .map((name) => fs.readFileSync(path.join(stepsDirectory, name), "utf8"))
+      .join("\n");
+    expect(stepSources).toContain("AccreditedRepresentativeFinder");
+    for (const page of PUBLIC_WORKFLOW_WRITE_PATHS) {
+      expect(
+        stepSources,
+        `${page} is exempt from the write rule but no step renders the finder for it`,
+      ).toContain(`returnTo="${page}"`);
+    }
+
+    // And the action is a public directory lookup: a Server Action whose fields
+    // the parameter list must keep treating as legitimate.
+    const action = fs.readFileSync(
+      path.join(ROOT, "src/lib/actions/accredited-representatives.ts"),
+      "utf8",
+    );
+    expect(action).toContain('"use server"');
+    for (const field of ["zip", "radiusMiles", "type"]) {
+      expect(action).toContain(field);
+      expect(findPrivateContextParameter([field]), field).toBeNull();
     }
   });
 

@@ -14,9 +14,9 @@
  * "Nothing reads it any more" is not the same as "the server refuses it". This
  * module is the refusal: the edge proxy (`src/proxy.ts`) answers a request that
  * presents a private context parameter — on **any** path, because the contract's
- * prohibited flow names no route — or that uses a write method on the workflow
- * paths, with a 400 before any loader runs. Two properties matter and are pinned
- * by tests:
+ * prohibited flow names no route — or that uses a write method on a workflow
+ * step page that hosts no public action, with a 400 before any loader runs. Two
+ * properties matter and are pinned by tests:
  *
  *   1. **No value is ever echoed.** The refusal names at most the offending
  *      *parameter name*, which is a fixed constant from this list — never its
@@ -125,10 +125,35 @@ export function findPrivateContextParameter(
 
 /**
  * Methods the browser-local workflow legitimately uses. `OPTIONS` is included
- * because a preflight carries no context and must stay answerable; everything
- * else on a workflow path is a retired write transport.
+ * because a preflight carries no context and must stay answerable.
  */
 const READ_ONLY_METHODS: ReadonlySet<string> = new Set(["GET", "HEAD", "OPTIONS"]);
+
+/**
+ * Workflow pages that host a *public* Server Action and therefore legitimately
+ * write. The accredited-representative finder
+ * (`src/lib/actions/accredited-representatives.ts`) is rendered on these two
+ * steps with `returnTo` set to their own path, and its form posts `zip`,
+ * `radiusMiles` and `type` — a public directory lookup, not veteran health
+ * context.
+ *
+ * This exemption is named rather than implied because the rule cannot inspect
+ * request bodies: refusing every write in the workflow area refused this action
+ * on the first CI run of the PRIV-01 sentinel gate. The E2E journey's Step 5
+ * locator search answered 400, the page fell to `secondary/error.tsx`, and
+ * `verify` failed on the pre-existing browser gate — a false positive that only
+ * a journey reaching Step 5 could have shown (the earlier walk stopped at Step
+ * 4). The retired step pages below are the ones a stale form or a replayed
+ * transport still targets, so the rule keeps covering them.
+ */
+export const PUBLIC_WORKFLOW_WRITE_PATHS: readonly string[] = [
+  "/secondary/suggestions",
+  "/secondary/evidence",
+];
+
+function isPublicWorkflowWritePath(pathname: string): boolean {
+  return PUBLIC_WORKFLOW_WRITE_PATHS.includes(pathname);
+}
 
 /**
  * Decide whether to refuse `method pathname` with query parameter names
@@ -142,9 +167,15 @@ const READ_ONLY_METHODS: ReadonlySet<string> = new Set(["GET", "HEAD", "OPTIONS"
  *   contract's first prohibited flow ("Server Actions, route handlers or API
  *   endpoints receiving any field above") names no route — so a future route
  *   cannot silently reopen a server path for these values; and
- * - a **write method** is refused only inside the workflow area, since those
- *   pages are read-only shells now while other tracks (presumptive service
- *   history, accredited representatives) legitimately POST Server Actions.
+ * - a **write method** is refused inside the workflow area except on the pages
+ *   that host the public accredited-representative action
+ *   (`PUBLIC_WORKFLOW_WRITE_PATHS`), since every other step page is a read-only
+ *   shell and other tracks (presumptive service history) legitimately POST
+ *   their own Server Actions.
+ *
+ * Body-carried context is deliberately out of scope: reading bodies in the edge
+ * proxy would be a new failure surface, and the rule above already refuses the
+ * URL-borne shape every retired transport used.
  */
 export function guardPrivateContextRequest(
   method: string,
@@ -158,6 +189,7 @@ export function guardPrivateContextRequest(
 
   if (
     isRetiredWorkflowPath(pathname) &&
+    !isPublicWorkflowWritePath(pathname) &&
     !READ_ONLY_METHODS.has(method.toUpperCase())
   ) {
     return { status: 400, code: "retired-workflow-write" };

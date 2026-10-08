@@ -71,10 +71,13 @@ for every visitor and unaffected by selections.
   (`src/proxy.ts`), so old browsers delete their payload on the next request.
 - A request that **carries** private context is refused, not merely ignored:
   `src/lib/security/private-context-request-guard.ts` answers 400 for a private
-  context parameter on any path, and for a write method anywhere under
-  `/secondary` (those pages are read-only shells now). The refusal names at most
-  one constant parameter name — never a value — and still tombstones a stale
-  retired cookie. The retired hidden-field transport
+  context parameter on any path, and for a write method on a `/secondary` step
+  page that hosts no public action — the accredited-representative finder is
+  exempt by name (`PUBLIC_WORKFLOW_WRITE_PATHS`) because it legitimately posts a
+  public directory lookup from `/secondary/suggestions` and
+  `/secondary/evidence`. The refusal names at most one constant parameter
+  name — never a value — and still tombstones a stale retired cookie. The
+  retired hidden-field transport
   (`src/components/SecondaryWorkflowHiddenFields.tsx`) was deleted with this
   layer.
 

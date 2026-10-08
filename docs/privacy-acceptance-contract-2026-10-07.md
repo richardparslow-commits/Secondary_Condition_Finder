@@ -208,8 +208,17 @@ is the boundary and [proxy.ts](../src/proxy.ts) is the single choke point:
   schema, so adding a private field without extending the guard fails the
   suite.
 - A write method (anything but GET/HEAD/OPTIONS) is refused on the workflow
-  area (`/secondary…`) only, because those pages are read-only shells while
-  other tracks still POST their own Server Actions.
+  step pages that host **no** public action, because those pages are read-only
+  shells while other tracks still POST their own Server Actions. The two pages
+  that do host a public action are exempt and named: the
+  accredited-representative finder posts `zip` / `radiusMiles` / `type` from
+  `/secondary/suggestions` and `/secondary/evidence`. That exemption is a
+  correction, not a design choice: refusing every write in the workflow area
+  answered 400 to that public action on the CI gate's first run — the Step 5
+  locator search never redirected, the page fell to its error boundary, and the
+  pre-existing browser E2E gate failed. The gap is body-carried context, which
+  stays out of scope for the same reason it always was: the edge proxy does not
+  read bodies.
 - The refusal **never echoes a value**: it names at most one constant parameter
   name from the guard's list, never the request's content. It still appends the
   expired retired-cookie tombstones, so a refused request cannot leave the
@@ -271,20 +280,28 @@ unconditionally. [priv01-sentinel-gate-wiring.test.ts](../tests/priv01-sentinel-
 walks those directories on disk, so a new privacy-bearing module cannot land
 outside the gate's scope, and pins the wiring above.
 
-**Not yet measured, and the one open risk:** the step's first run on a CI
-runner is outstanding as of this layer. The walk was rehearsed locally through
-the step's own extracted script, and the page-side OCR leg failed
-**4 of 4** attempts the same way — the 240-second "Local OCR completed for"
-wait expiring while every probe returned `CDP Runtime.evaluate timed out`
-([rehearsal record](../tmp/security-audit-2026-10-07/priv01-request-guard/ci-rehearsal/README.md);
-tokens `34d6f3e0` and `40387030`, both `runner-error`). The renderer stayed busy
-for the whole wait while the tesseract workers ran, so the suspect is page-side
-saturation during in-browser OCR rather than the walk's own logic; the
-2026-10-07 stage-4 runs completed on this same host (tokens `7e6f1861` at 45/45
-and `0f953e99` at 20/20), so it is not a static defect in the runner. Until a run
-completes on a runner, this gate must be read as *wired and enforced, not yet
-observed green*, and the OCR leg is the leg to fix or budget before it is treated
-as a required check.
+**First CI run (PR #522, 2026-10-08): green.** Scope detection answered
+`changed=true (6 in-scope file(s))`, and the walk completed on the runner —
+**PASSED, 45/45 assertions**, run token `6c81355a` — so this gate is now
+observed green in CI, and its log, server log and evidence report ride that
+run's diagnostics artifact. The page-side OCR leg that stops the walk on the
+audit host (four of four local attempts, the 240-second "Local OCR completed
+for" wait expiring on `CDP Runtime.evaluate` timeouts while the tesseract
+workers ran; tokens `34d6f3e0` and `40387030`, both `runner-error`, recorded in
+the [rehearsal record](../tmp/security-audit-2026-10-07/priv01-request-guard/ci-rehearsal/README.md))
+is therefore an environment condition on that host, not a gate defect — the
+2026-10-07 stage-4 runs completed there too (tokens `7e6f1861` at 45/45 and
+`0f953e99` at 20/20), and the refusal layer's earlier recheck carried token
+`6d648b47`.
+
+The same first run failed the job on the *pre-existing* browser E2E step, not
+on this gate — and that failure was real: the guard's write rule refused the
+public accredited-representative action on Step 5, so the locator search never
+redirected and the page fell to its error boundary. The rule is now narrowed to
+workflow step pages that host no public action, with that action's two pages
+exempt by name and the exemption pinned to the finder's own wiring; body-carried
+context stays out of scope as before, because the edge proxy does not read
+bodies.
 
 ## Non-goals
 
