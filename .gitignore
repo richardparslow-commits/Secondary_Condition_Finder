@@ -64,9 +64,11 @@ next-env.d.ts
 
 # Generated client runtime assets (postinstall: copy-pdf-worker.mjs) — the
 # Tesseract.js WASM core/language data and the PDF.js worker are downloaded,
-# never authored.
+# never authored. The client corpus is generated from the authored knowledge
+# base by scripts/build-client-corpus.mjs (npm run build:client-corpus).
 /public/pdf.worker.min.mjs
 /public/tesseract/
+/public/kb/
 
 # ----------------------------------------------------------------------------
 # System / OS metadata

@@ -334,7 +334,7 @@ describe("pathway evidence mapper governance contracts", () => {
   });
 
   it("wires the mapper into Step 6 after the local evidence review", () => {
-    const page = readRepoFile("src/app/secondary/evidence/page.tsx");
+    const page = readRepoFile("src/components/secondary/steps/EvidenceStep.tsx");
 
     expect(page).toContain('import { PathwayEvidenceMapper } from "@/components/evidence/PathwayEvidenceMapper";');
     const mapperIndex = page.indexOf(
@@ -347,7 +347,7 @@ describe("pathway evidence mapper governance contracts", () => {
 
   it("offers the combined mapping + summary export with the same privacy-stripped inputs", () => {
     const component = readRepoFile("src/components/evidence/PathwayEvidenceMapper.tsx");
-    const page = readRepoFile("src/app/secondary/evidence/page.tsx");
+    const page = readRepoFile("src/components/secondary/steps/EvidenceStep.tsx");
 
     expect(component).toContain("Download mapping + consultation summary");
     expect(component).toContain('formatClaimSummary(recommendations, [])');

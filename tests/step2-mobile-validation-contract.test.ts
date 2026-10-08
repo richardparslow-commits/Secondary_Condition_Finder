@@ -11,14 +11,17 @@ function source(relativePath: string): string {
 
 describe("Step 2 mobile validation ownership", () => {
   it("lets the application validator handle incomplete radio groups", () => {
-    const page = source("src/app/secondary/service-connected/page.tsx");
-    const actions = source("src/lib/actions/secondary.ts");
+    const step = source("src/components/secondary/steps/ServiceConnectedStep.tsx");
+    const clientSteps = source("src/lib/secondary-workflow/client-steps.ts");
 
-    expect(page).toContain("serviceConnected-${condition.id}");
-    expect(page).not.toMatch(/value="yes"\s+required/);
-    expect(page).not.toMatch(/value="no"\s+required/);
+    expect(step).toContain("serviceConnected-${condition.id}");
+    expect(step).not.toMatch(/value="yes"\s+required/);
+    expect(step).not.toMatch(/value="no"\s+required/);
 
-    expect(actions).toContain('answer !== "yes" && answer !== "no"');
-    expect(actions).toContain('redirectValidation("/secondary/service-connected", "answer-service-connected")');
+    expect(clientSteps).toContain('answer !== "yes" && answer !== "no"');
+    expect(clientSteps).toContain('code: "answer-service-connected"');
+    // The mobile behavior is now a client-side validation message instead of
+    // a redirect; the message text is the same shared copy.
+    expect(step).toContain("SECONDARY_VALIDATION_MESSAGES[localError]");
   });
 });

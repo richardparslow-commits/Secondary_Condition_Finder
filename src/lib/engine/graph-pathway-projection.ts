@@ -66,19 +66,38 @@ export function anchorsForHop(
 }
 
 /**
+ * Anchor resolver for one hop. Server callers join against the authored
+ * corpus via `mappingAnchorResolver`; the browser supplies the public anchor
+ * index derived from the client corpus (PRIV-01 stage 2) — same view shape,
+ * same fallback (no anchor data means no anchors, never an invented one).
+ */
+export type HopAnchorResolver = (
+  sourceConditionId: string,
+  targetConditionId: string,
+) => GraphPathwayAnchorView[];
+
+export function mappingAnchorResolver(
+  mappingById: ReadonlyMap<string, ConditionMapping>,
+): HopAnchorResolver {
+  return (sourceConditionId, targetConditionId) =>
+    anchorsForHop(mappingById, sourceConditionId, targetConditionId);
+}
+
+/**
  * Project one traversed pathway into the client-safe view shape: terminal
  * display name, the derived composite nexus verbatim, and one labelled hop
- * per edge with its joined anchors.
+ * per edge with its resolved anchors.
  *
  * @param pathway - A validated `ClaimPathway` from the graph traversal.
  * @param conditionName - Catalog ID → display name; missing IDs fall back to
  *   the ID, exactly as the surfaces render them.
- * @param mappingById - Authored-corpus index for the read-only anchor join.
+ * @param resolveAnchors - Hop anchor resolver (authored-corpus join on the
+ *   server, public client-corpus anchor index in the browser).
  */
 export function projectGraphPathway(
   pathway: ClaimPathway,
   conditionName: (conditionId: string) => string,
-  mappingById: ReadonlyMap<string, ConditionMapping>,
+  resolveAnchors: HopAnchorResolver,
 ): GraphPathwayView {
   return {
     terminalConditionId: pathway.terminalConditionId,
@@ -91,8 +110,7 @@ export function projectGraphPathway(
       targetConditionId: hop.edge.targetConditionId,
       targetConditionName: conditionName(hop.edge.targetConditionId),
       nexusClassification: hop.edge.nexusClaim.nexusClassification,
-      anchors: anchorsForHop(
-        mappingById,
+      anchors: resolveAnchors(
         hop.edge.sourceConditionId,
         hop.edge.targetConditionId,
       ),

@@ -1,0 +1,50 @@
+{
+  "issue": "REL-01",
+  "quarantinedOn": "2026-10-07",
+  "reason": "Unapproved or invalid runtime drafts removed from the live corpus so the product loads again. Nothing was deleted or edited: every file is preserved byte-for-byte here with its hash, and the original runtime path is recorded for restoration.",
+  "restore": "For each entry, restore with: cp <quarantinePath> <originalPath> \u2014 after the identity/schema question in \"reason\" is resolved and revalidated with npm run kb:validate.",
+  "files": [
+    {
+      "originalPath": "data/knowledge-base/chronic-pain.json",
+      "quarantinePath": "data/knowledge-base-quarantine/2026-10-07-rel-01/mappings/chronic-pain.json",
+      "sha256": "3997981cacec6926f9dadc17e5fadc5b6cd79e9c350954674061ad0b15df2c4e",
+      "bytes": 7474,
+      "reason": "Primary condition id \"chronic-pain\" is not present in data/conditions. Catalog alternatives (e.g. unexplained-chronic-pain) are not medically interchangeable, so the root cannot be guessed. Needs owner re-rooting or a reviewed catalog addition."
+    },
+    {
+      "originalPath": "data/knowledge-base/major-depressive-disorder.json",
+      "quarantinePath": "data/knowledge-base-quarantine/2026-10-07-rel-01/mappings/major-depressive-disorder.json",
+      "sha256": "72653877a3376f60ae4c5e669baaa52243f729f14b9e1cd9af4c7921abbc68b6",
+      "bytes": 9118,
+      "reason": "Primary condition id \"major-depressive-disorder\" and target \"sexual-dysfunction\" are not present in data/conditions. Catalog alternatives (depressive-disorder; erectile-dysfunction / female-sexual-arousal-disorder) are not medically interchangeable. Needs owner decision."
+    },
+    {
+      "originalPath": "data/knowledge-base/post-traumatic-stress-disorder.json",
+      "quarantinePath": "data/knowledge-base-quarantine/2026-10-07-rel-01/mappings/post-traumatic-stress-disorder.json",
+      "sha256": "e3b87da1d2e3eace44a8038b64e9ee6c322b9e767183599330dd102997de45d6",
+      "bytes": 7597,
+      "reason": "Primary condition id \"post-traumatic-stress-disorder\" is not present in data/conditions (the catalog carries \"ptsd\"); not interchangeable. Needs owner re-rooting."
+    },
+    {
+      "originalPath": "data/knowledge-base/graph/tinnitus.json",
+      "quarantinePath": "data/knowledge-base-quarantine/2026-10-07-rel-01/graph/tinnitus.json",
+      "sha256": "f5bcf6a8202539fda88d2031e5f113fad2c5624ad0ef9724b6a043429083b6e5",
+      "bytes": 17647,
+      "reason": "Schema-invalid draft: three nested evidentiaryProfile.evidenceGaps values are arrays but the schema requires strings. The sibling working copy \"tinnitus 2.json\" already contains the string-form text (single-element arrays joined), confirming the intended repair."
+    },
+    {
+      "originalPath": "data/knowledge-base/graph/tinnitus 2.json",
+      "quarantinePath": "data/knowledge-base-quarantine/2026-10-07-rel-01/graph/tinnitus-2.json",
+      "sha256": "a5bc313b4744fc9d0241c60057083e0bd8710d264c6208f0ddddf6b8d7d339c6",
+      "bytes": 17581,
+      "reason": "Duplicate working copy. Its filename cannot equal its nodeId \"tinnitus\", so the loader can never accept it; after the string-form repair it is byte-equivalent to graph/tinnitus.json."
+    },
+    {
+      "originalPath": "data/knowledge-base/graph/degenerative-disc-disease 2.json",
+      "quarantinePath": "data/knowledge-base-quarantine/2026-10-07-rel-01/graph/degenerative-disc-disease-2.json",
+      "sha256": "6edc2e0b48bdf6351972e9a16cfdd154fbbf1ee628b4ca4c1fec0c51d08e113f",
+      "bytes": 6969,
+      "reason": "Filename/nodeId identity violation (\" 2\" duplicate suffix) on an unapproved draft. Activating it would add an unreviewed DIRECT_CAUSATION route to the shipped five-route graph; unknown which of its content is intended to replace the ME-13 association-only framing."
+    }
+  ]
+}

@@ -28,7 +28,10 @@ describe("Priority 1B direct browser-local document ingestion", () => {
     };
     expect(pkg.dependencies["pdfjs-dist"]).toBe("6.3.289");
     expect(pkg.dependencies.mammoth).toBe("1.12.2");
-    expect(pkg.scripts.postinstall).toBe("node scripts/copy-pdf-worker.mjs");
+    // The install step now also builds the public client corpus that the
+    // browser-local workflow steps fetch; both scripts are required artifacts.
+    expect(pkg.scripts.postinstall).toBe("node scripts/copy-pdf-worker.mjs && node scripts/build-client-corpus.mjs");
+    expect(pkg.scripts["build:client-corpus"]).toBe("node scripts/build-client-corpus.mjs");
 
     const workerScript = fs.readFileSync(path.join(process.cwd(), "scripts/copy-pdf-worker.mjs"), "utf8");
     expect(workerScript).toContain("node_modules");

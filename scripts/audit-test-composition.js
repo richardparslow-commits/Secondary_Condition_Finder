@@ -12,7 +12,7 @@ const REQUIRED_EXECUTABLE_IMPORTS = [
   "@/lib/presumptive/match",
   "@/lib/presumptive/session",
   "@/lib/workflow-session-crypto",
-  "@/lib/secondary-workflow/session",
+  "@/lib/secondary-workflow/browser-context",
   "@/lib/evidence/extract",
   "@/lib/evidence/document-extract",
   "@/lib/evidence/ocr-session",
@@ -95,7 +95,6 @@ const SERVER_ACTION_DIR = path.join(sourceRoot, "lib", "actions");
 const CLIENT_BOUNDARY_FORBIDDEN = [
   "@/lib/kb",
   "@/lib/workflow-session-crypto",
-  "@/lib/secondary-workflow/session",
   "@/lib/presumptive/session",
   "@/lib/store",
 ];

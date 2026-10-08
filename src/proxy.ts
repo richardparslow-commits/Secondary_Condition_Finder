@@ -20,6 +20,35 @@ const CSP_REPORT_GROUP = "csp-endpoint";
 const CSP_REPORT_ENDPOINT = "/api/csp-report";
 
 /**
+ * PRIV-01 stage 3 (2026-10-07): the legacy `secondary-workflow-v2` cookie is
+ * retired. Nothing reads it, but a browser that still presents one may hold
+ * veteran health context (diagnoses, ratings, medications, history), so every
+ * response that sees the cookie carries a path-scoped tombstone that deletes
+ * it. Both the app's historical `/secondary` path and a `/` path (written by
+ * an older maintainer screenshot tool) are cleared.
+ */
+const RETIRED_SECONDARY_WORKFLOW_COOKIE = "secondary-workflow-v2";
+const RETIRED_SECONDARY_WORKFLOW_COOKIE_PATHS = ["/secondary", "/"] as const;
+
+/**
+ * Serialize an expired tombstone for one historical path. Written directly to
+ * the header list instead of `response.cookies.set` because the two tombstones
+ * share a cookie name and the framework helper collapses them onto one
+ * Set-Cookie header, which would leave the other path's cookie alive.
+ */
+function retiredWorkflowCookieTombstone(path: string): string {
+  const secure = process.env.NODE_ENV === "production" ? "; Secure" : "";
+  return [
+    `${RETIRED_SECONDARY_WORKFLOW_COOKIE}=`,
+    `Path=${path}`,
+    "Expires=Thu, 01 Jan 1970 00:00:00 GMT",
+    "Max-Age=0",
+    "HttpOnly",
+    "SameSite=Strict",
+  ].join("; ") + secure;
+}
+
+/**
  * `Reporting-Endpoints` value in the **dictionary syntax required by the
  * Fetch standard** (the same shape Service-Worker and Report-To consumers
  * parse). This header takes endpoint name → URL pairs, NOT the JSON array
@@ -238,19 +267,38 @@ export function proxy(request: NextRequest) {
   const method = request.method;
 
   /** 429 response carrying the full security-header set, not just CSP. */
+  /**
+   * Deletes a still-present retired workflow cookie on the way out. The
+   * tombstone mirrors the attributes the legacy writer used (httpOnly,
+   * SameSite=Strict, secure only in production) so the browser accepts the
+   * deletion from the same origin that stored it. Expired empty values on both
+   * historical paths remove the app-written cookie and the older
+   * maintainer-tool one (path `/`) alike.
+   */
+  const clearRetiredWorkflowCookie = (response: NextResponse): NextResponse => {
+    if (!request.cookies.has(RETIRED_SECONDARY_WORKFLOW_COOKIE)) return response;
+    for (const path of RETIRED_SECONDARY_WORKFLOW_COOKIE_PATHS) {
+      response.headers.append("Set-Cookie", retiredWorkflowCookieTombstone(path));
+    }
+    return response;
+  };
+
+  /** 429 response carrying the full security-header set, not just CSP. */
   const tooManyRequests = (
     body: Record<string, unknown>,
     retryAfterSeconds: number,
   ) =>
-    NextResponse.json(body, {
-      status: 429,
-      headers: {
-        "Retry-After": String(retryAfterSeconds),
-        ...buildSecurityHeaders(nonce, contentSecurityPolicy, {
-          includeCsp: !isCspReportRequest,
-        }),
-      },
-    });
+    clearRetiredWorkflowCookie(
+      NextResponse.json(body, {
+        status: 429,
+        headers: {
+          "Retry-After": String(retryAfterSeconds),
+          ...buildSecurityHeaders(nonce, contentSecurityPolicy, {
+            includeCsp: !isCspReportRequest,
+          }),
+        },
+      }),
+    );
 
   if (client.key) {
     // Method-scoped rule, not a route rule: this covers every POST that is not a
@@ -319,7 +367,7 @@ export function proxy(request: NextRequest) {
   for (const [key, value] of Object.entries(STANDARD_SECURITY_HEADERS)) {
     response.headers.set(key, value);
   }
-  return response;
+  return clearRetiredWorkflowCookie(response);
 }
 
 export default proxy;

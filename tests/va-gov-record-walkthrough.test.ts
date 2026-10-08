@@ -92,7 +92,7 @@ describe("VA.gov medical records download walkthrough", () => {
   it("never collects credentials, MFA codes, or session data — the sign-in happens on VA.gov", () => {
     const dataModule = readRepoFile("src/lib/secondary-workflow/va-gov-record-walkthrough.ts");
     const component = readRepoFile("src/components/secondary/VaGovRecordWalkthrough.tsx");
-    const page = readRepoFile("src/app/secondary/upload/page.tsx");
+    const page = readRepoFile("src/components/secondary/steps/UploadStep.tsx");
 
     for (const source of [dataModule, component, page]) {
       expect(source).not.toMatch(/type=["']password["']/);
@@ -135,7 +135,7 @@ describe("VA.gov medical records download walkthrough", () => {
   });
 
   it("wires the walkthrough onto the Step 4 documents page above the local evidence analyzer", () => {
-    const page = readRepoFile("src/app/secondary/upload/page.tsx");
+    const page = readRepoFile("src/components/secondary/steps/UploadStep.tsx");
     expect(page).toContain('import { VaGovRecordWalkthrough } from "@/components/secondary/VaGovRecordWalkthrough";');
     expect(page.indexOf("<VaGovRecordWalkthrough />")).toBeGreaterThan(-1);
     expect(page.indexOf("<VaGovRecordWalkthrough />")).toBeLessThan(page.indexOf("<LocalEvidenceAnalyzer"));

@@ -309,29 +309,35 @@ describe("regulatory change classification", () => {
 
 
 describe("workflow preflight integration", () => {
-  it("runs Step 5 regulatory preflight before recommendation generation and locks the snapshot into Step 6", () => {
-    const source = fs.readFileSync("src/app/secondary/suggestions/page.tsx", "utf8");
-    const preflight = source.indexOf("prepareRegulatoryReview");
-    // Supports both the sync `recommend(` and the traced `await recommendWithTracing(` path.
-    const recommendCall = Math.max(
-      source.indexOf("const recommendationsResult = recommend("),
-      source.indexOf("const recommendationsResult = await recommend"),
-      source.indexOf("recommendWithTracing"),
-    );
-    expect(preflight).toBeGreaterThanOrEqual(0);
-    expect(recommendCall).toBeGreaterThan(preflight);
-    expect(source).toContain("regSnapshot=${encodeURIComponent(regulatoryReview.snapshot.snapshotId)}");
-    expect(source).toContain("missingLockedRegulatorySnapshot");
+  it("prepares a scope-free Step 5 snapshot in the uniform shell and filters relevance in the browser", () => {
+    // PRIV-01 stage 2: the shell prepares the snapshot with NO review scope
+    // (identical public artifact for every visitor); the client step filters
+    // relevance against the browser-local selections and only then runs the
+    // engine. The snapshot id still locks Step 6 into the same basis.
+    const shell = fs.readFileSync("src/app/secondary/suggestions/page.tsx", "utf8");
+    const step = fs.readFileSync("src/components/secondary/steps/SuggestionsStep.tsx", "utf8");
+
+    expect(shell).toContain("prepareRegulatoryReview()");
+    expect(shell).not.toContain("reviewScope");
+    expect(shell).toContain("loadLockedRegulatorySnapshot");
+    expect(shell).toContain("missingLockedRegulatorySnapshot");
+
+    const relevance = step.indexOf("relevantChangesForConditionIds");
+    const recommendCall = step.indexOf("recommend(");
+    expect(relevance).toBeGreaterThanOrEqual(0);
+    expect(recommendCall).toBeGreaterThan(relevance);
+    expect(step).toContain("regSnapshot=${encodeURIComponent(snapshot.snapshotId)}");
   });
 
   it("keeps Step 6 on the locked snapshot and fails closed if that lock disappears", () => {
-    const source = fs.readFileSync("src/app/secondary/evidence/page.tsx", "utf8");
-    const lockRead = source.indexOf("loadLockedRegulatorySnapshot");
-    const recommendCall = source.indexOf("const recommendationsResult = recommend(");
-    expect(lockRead).toBeGreaterThanOrEqual(0);
-    expect(recommendCall).toBeGreaterThan(lockRead);
-    expect(source).toContain("missingLockedRegulatorySnapshot(lockedSnapshotId)");
-    expect(source).toContain("/secondary/suggestions?regSnapshot=");
+    const shell = fs.readFileSync("src/app/secondary/evidence/page.tsx", "utf8");
+    const step = fs.readFileSync("src/components/secondary/steps/EvidenceStep.tsx", "utf8");
+
+    expect(shell).toContain("loadLockedRegulatorySnapshot");
+    expect(shell).toContain("missingLockedRegulatorySnapshot(lockedSnapshotId)");
+    expect(shell).not.toContain("reviewScope");
+    expect(step).toContain("recommend(");
+    expect(step).toContain("/secondary/suggestions?regSnapshot=");
   });
 });
 

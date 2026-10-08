@@ -99,10 +99,10 @@ describe("Phase 1 — medical record checklist / comparison / combination", () =
 
   it("MedicalRecordChecklist and comparison/combination panels are wired into pages", async () => {
     const fs = await import("node:fs");
-    const suggestionsPage = fs.readFileSync("src/app/secondary/suggestions/page.tsx", "utf8");
+    const suggestionsPage = fs.readFileSync("src/components/secondary/steps/SuggestionsStep.tsx", "utf8");
     expect(suggestionsPage).toContain("ConditionComparisonTool");
     expect(suggestionsPage).toContain("CombinationInsightsPanel");
-    const evidencePage = fs.readFileSync("src/app/secondary/evidence/page.tsx", "utf8");
+    const evidencePage = fs.readFileSync("src/components/secondary/steps/EvidenceStep.tsx", "utf8");
     expect(evidencePage).toContain("MedicalRecordChecklist");
     expect(evidencePage).toContain("buildMedicalRecordChecklist");
     const libFiles = [

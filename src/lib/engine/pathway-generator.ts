@@ -89,7 +89,7 @@ import { deriveCompositeNexus } from "@/lib/kb/utils";
  *   `compositeNexus`. Pathways whose chain is broken by an association-only
  *   hop are included for transparency but are never extended.
  */
-export function generateClaimPathways(originConditionId: string, graph: Map<string, KbNodeMapping>): ClaimPathway[] {
+export function generateClaimPathways(originConditionId: string, graph: ReadonlyMap<string, KbNodeMapping>): ClaimPathway[] {
   const origin = graph.get(originConditionId);
   if (!origin) return [];
 

@@ -48,7 +48,7 @@ This application heavily relies on strict JSON file parsing and cross-file refer
 ### 3. File Placement
 - ALL Server Actions must reside in `src/lib/actions/` and begin with `"use server";` as the first statement. `npm run test:composition` fails on any `"use server"` file outside that directory.
 - `src/lib/evidence/` PDF parsing (`extract.ts`, `document-extract.ts`) MUST be imported only from `"use client"` components or browser-local lib modules — never from `src/app/` pages, actions, or route handlers.
-- `src/lib/kb/`, `src/lib/workflow-session-crypto`, `src/lib/secondary-workflow/session`, `src/lib/presumptive/session`, and `src/lib/store/` MUST NEVER be imported in `"use client"` components.
+- `src/lib/kb/`, `src/lib/workflow-session-crypto`, `src/lib/presumptive/session`, and `src/lib/store/` MUST NEVER be imported in `"use client"` components. (The secondary workflow is browser-local since PRIV-01; its context lives in `src/lib/secondary-workflow/browser-context.ts`, which is intentionally client-safe.)
 
 ### 4. Mandatory CI/CD Gates
 Before any PR is merged it must pass: `npm run kb:validate`, `npm run citations:audit`, `npm run test:composition`, `npm run lint`, `npm run typecheck`, and `npm test`. `npm run citations:decay` (link-rot/staleness scan) is run deliberately by maintainers; it performs live network probes and is not wired into per-PR CI.

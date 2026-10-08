@@ -1,0 +1,77 @@
+{
+  "id": "chronic-pain",
+  "draft": true,
+  "todo": [
+    "Confirm the veteran's antihypertensive burden and baseline blood-pressure trajectory before treating this edge as anything other than a treatment-complication / aggravation question.",
+    "Separate NSAID-mediated blood-pressure effects from pain-stress, deconditioning, weight gain, and renal contributors that may coexist with service-connected chronic pain."
+  ],
+  "governanceNotes": [
+    "This draft edge is authored under chronic pain as the service-connected primary. It is intended to support a medication / treatment-complication claim (chronic NSAID therapy for service-connected pain -> secondary hypertension) rather than a direct disease-progression claim; the nexus classification is AGGRAVATION of blood-pressure control rather than direct causation of essential hypertension.",
+    "Where the veteran is not taking chronic NSAIDs, this edge must not be used to imply a pain->hypertension pathway that is not treatment-mediated."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "hypertension",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "AGGRAVATION",
+        "baselineProgression": "Essential hypertension typically progresses at a rate determined by age, vascular risk, renal function, diet, and genetics, with blood-pressure control modulated by medication adherence and comorbid conditions; a pre-existing hypertensive baseline can be worsened by agents or physiological stressors that raise systemic vascular resistance or promote sodium and water retention.",
+        "aggravatingFactor": "Chronic NSAID therapy for service-connected pain is hypothesized to aggravate blood-pressure control by reducing renal prostaglandin-mediated vasodilation and sodium excretion, which can raise systemic vascular resistance and blunt the effect of antihypertensive agents, thereby worsening an existing hypertensive baseline or unmasking hypertension in a predisposed individual."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "PHARMACOLOGICAL_IATROGENIC",
+        "primaryVector": "Chronic NSAID use for service-connected pain is hypothesized to raise blood pressure through cyclo-oxygenase inhibition that reduces renal vasodilatory prostaglandin synthesis, promoting sodium and water retention and increasing systemic vascular resistance, with greater effect in individuals with pre-existing hypertension, renal vulnerability, or concurrent agents that depend on the renin-angiotensin system.",
+        "iatrogenicFactor": "Chronic NSAID therapy for service-connected pain.",
+        "hypothesizedOnly": false
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "IATROGENIC_TREATMENT_EFFECT",
+        "vaNexusProbabilityAlignment": "AT_LEAST_AS_LIKELY_AS_NOT",
+        "conservativeRationale": "The reviewed literature supports a treatment-related effect of NSAIDs on blood pressure and antihypertensive efficacy, which is sufficient for this edge to be modeled as aggravation of blood-pressure control tied to chronic NSAID therapy for service-connected pain; the claim remains conservative because individual causation requires confirmation of chronic exposure, exclusion of other blood-pressure contributors, and a baseline trajectory.",
+        "evidenceGaps": "Documented chronic NSAID exposure for service-connected pain; baseline blood-pressure and antihypertensive history; exclusion of other hypertensinogens (renal disease, endocrine causes, dietary sodium, weight, deconditioning, other medications); individual medical opinion that the NSAID effect meaningfully worsened control beyond the natural baseline.",
+        "alternativeEtiologiesToRuleOut": [
+          "Progression of essential hypertension independent of NSAID use",
+          "Renal parenchymal disease or renovascular contribution to hypertension",
+          "Endocrine hypertension (e.g., primary aldosteronism, thyroid or parathyroid disorder)",
+          "Dietary sodium excess, weight gain, deconditioning, or reduced physical activity from pain",
+          "Concurrent medications or substances affecting blood pressure",
+          "Pain-stress-related sympathetic activation rather than a direct NSAID effect"
+        ],
+        "alternativeEtiologyTags": ["renal", "endocrine", "dietary", "sedentary", "medication", "pain-stress"],
+        "requiresSpecificDbqEvidence": true
+      },
+      "rationale": "Chronic NSAID therapy for service-connected pain is a recognized pharmacological contributor to worsened blood-pressure control and reduced antihypertensive efficacy; the edge is modeled as aggravation because the relevant effect is on the management and progression of blood-pressure control rather than on the origin of essential hypertension itself.",
+      "claimTheories": ["secondary-aggravation", "secondary-causation"],
+      "nexusRequirement": "individual-medical-opinion",
+      "pathwayIntelligence": {
+        "pathways": ["medication-related", "treatment-complication"],
+        "causalChain": "service-connected chronic pain -> chronic NSAID therapy -> reduced renal prostaglandin-mediated vasodilation / sodium retention -> worsened blood-pressure control (aggravation)",
+        "developmentQuestions": [
+          "Is the veteran on chronic NSAID therapy for service-connected pain, and what is the agent, dose, frequency, and duration?",
+          "What is the documented blood-pressure / antihypertensive baseline before or early in NSAID use?",
+          "Are there competing contributors to hypertension that must be excluded or accounted for?"
+        ],
+        "issuesToResolve": [
+          "Distinguish an NSAID-mediated aggravation claim from a pain-diagnosis-caused hypertension claim; this edge is treatment-complication / aggravation, not direct disease causation."
+        ]
+      },
+      "evidenceGaps": [
+        "Documented chronic NSAID exposure for service-connected pain",
+        "Baseline blood-pressure and antihypertensive history",
+        "Exclusion of renal, endocrine, dietary, weight / deconditioning, and medication-related contributors",
+        "Individual medical opinion that the NSAID effect materially aggravated blood-pressure control"
+      ],
+      "sourceReferences": [
+        {          "citation": "Catella-Lawson F, Reilly MP, Kapoor SC, Cucchiara AJ, de Jesus J, Uribe J, van de Putte L, Merrill JP, Caldwell AB, Andriole VL, Hubbard RC, Catella D, Fries JW, Vaughan J, Radin A, Gimbrone MA Jr, Libby P. Cardiovascular effects and safety of non-aspirin NSAIDs. Nat Rev Cardiol. 2020 Sep;17(9):574-584. PMID 32322101. doi:10.1038/s41569-020-0367-z.",
+          "note": "Mapping OT-875 supporting evidence for cardiovascular / blood-pressure effects of non-aspirin NSAIDs, used here for the NSAID-mediated hypertension aggravation proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "propositionRole": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/32322101/",
+          "verified": false,
+          "sourceCheckedOn": "2026-10-06",
+          "sourceLocator": "PMID 32322101; Cardiovascular effects and safety of non-aspirin NSAIDs (Nat Rev Cardiol 2020); guard: NSAID effect on BP/CV risk, aggravation framing."
+      }]
+    }
+  ]
+}

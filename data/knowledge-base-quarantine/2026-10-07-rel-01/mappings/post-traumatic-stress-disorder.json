@@ -1,0 +1,89 @@
+{
+  "id": "post-traumatic-stress-disorder",
+  "draft": true,
+  "todo": [
+    "Revalidate bidirectional PTSD-OSA directionality and weight against VA population-specific cohorts before publication.",
+    "Resolve whether the OSA edge should carry a comorbid-insomnia intermediate hop when the veteran's primary award is insomnia rather than PTSD."
+  ],
+  "governanceNotes": [
+    "This draft edge is authored under PTSD as the service-connected primary. Where the veteran's primary award is a different condition (e.g., TBI residuals, chronic pain), the OSA claim must be rerooted under that primary and this edge must not be reused."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "sleep-apnea",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Epidemiologic and cohort evidence demonstrates that post-traumatic stress disorder and obstructive sleep apnea co-occur more frequently than expected and may be bidirectionally related, but the located literature does not establish that PTSD proximately causes OSA or aggravates a pre-existing OSA baseline at the individual nexus level; the relationship is carried here as a bounded clinical proposition pending individual-degree medical nexus evidence.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the association is reported, not proven as an individual causal pathway."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "PSYCHOPHYSIOLOGICAL",
+        "primaryVector": "PTSD-related hyperarousal, sympathetic overactivity, HPA-axis dysregulation, and sleep fragmentation are hypothesized to alter upper-airway neuromuscular control and ventilatory arousal responses, while PTSD-associated weight change, comorbid insomnia, and substance use are hypothesized to increase OSA risk through separate indirect routes.",
+        "secondaryVector": "Shared vulnerability factors (e.g., centralized sensitization, altered sleep architecture, deployment-related mechanical loading) may contribute to both conditions without either causing the other.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "CONTESTED_REQUIRES_SPECIFIC_EVIDENCE",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The located evidence supports a reported bidirectional association between PTSD and OSA in military and veteran populations and justifies clinical screening, but it does not, by itself, establish that a service-connected PTSD caused or aggravated an individual veteran's OSA; the edge is intentionally constrained to association pending a qualified medical nexus opinion.",
+        "evidenceGaps": "Individual-degree evidence that PTSD caused or aggravated OSA in this veteran; polysomnographic confirmation of OSA; exclusion of competing or concurrent causes of OSA (e.g., obesity, craniofacial anatomy, hypothyroidism, alcohol/sedative use, TBI-related breathing dysregulation); directionality determination relative to comorbid insomnia and other sleep disorders.",
+        "alternativeEtiologiesToRuleOut": [
+          "Obesity-related upper airway collapse unrelated to PTSD",
+          "Craniofacial/anatomic predisposition to OSA",
+          "Hypothyroidism or other endocrine contribution to OSA",
+          "Alcohol, sedative, or opioid use causing or worsening OSA",
+          "Traumatic brain injury-related central sleep/wake or respiratory dysregulation",
+          "Comorbid insomnia presenting with OSA-like symptoms or complicating the diagnosis"
+        ],
+        "alternativeEtiologyTags": ["metabolic", "anatomic", "endocrine", "substance-use", "tbi", "sleep"],
+        "requiresSpecificDbqEvidence": true
+      },
+      "rationale": "PTSD and OSA show a reported bidirectional relationship in a large U.S. military cohort and in twin data, supporting screening and comorbidity awareness; the edge is constrained to association because the located evidence does not establish an individual causal pathway from service-connected PTSD to OSA.",
+      "claimTheories": ["secondary-causation", "secondary-aggravation"],
+      "nexusRequirement": "individual-medical-opinion",
+      "pathwayIntelligence": {
+        "pathways": ["somatopsychic", "intermediate-chain"],
+        "causalChain": "service-connected PTSD -> (hypothesized) hyperarousal / sleep fragmentation / weight / substance use -> OSA; association only pending individual nexus",
+        "developmentQuestions": [
+          "Is there polysomnography-confirmed OSA, and what is the apnea-hypopnea index and predominant severity?",
+          "Did OSA predate the service-connected PTSD, or is onset timing consistent with a PTSD-adjacent pathway?",
+          "What competing or concurrent OSA contributors are present (obesity, anatomy, endocrine, substance use, TBI)?"
+        ],
+        "issuesToResolve": [
+          "Determine whether the OSA claim is better rooted under TBI residuals or chronic pain if those are the service-connected primaries."
+        ]
+      },
+      "evidenceGaps": [
+        "Individual-degree medical nexus opinion linking service-connected PTSD to OSA",
+        "Polysomnographic confirmation and severity of OSA",
+        "Exclusion of competing/anatomic/endocrine/substance-use causes of OSA",
+        "Onset timing relative to PTSD and any comorbid insomnia or TBI"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Lippmann S, Ahmed I, Bell K, Jovanovic D, Spence J, Kimbro R, O'Brien J, Parks R, Lin K, Shukla A, Poon R, Hall C, Wilson D, Schreiber M. The bi-directional relationship between post-traumatic stress disorder and obstructive sleep apnea and/or insomnia in a large U.S. military cohort. Sleep Health. 2022 Dec;8(6):606-614. PMID 36163136. doi:10.1016/j.sleh.2022.08.005.",
+          "note": "Mapping OT-874 evidence for the bidirectional PTSD<->OSA/insomnia association in a large U.S. military cohort. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "propositionRole": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/36163136/",
+          "verified": false,
+          "sourceCheckedOn": "2026-10-06",
+          "sourceLocator": "PMID 36163136; bidirectional PTSD-OSA/insomnia cohort (Sleep Health 2022); guard: association only, individual nexus not established."
+        },
+        {
+          "citation": "Taylor DJ, Jennifer D. Posttraumatic Stress Disorder and Obstructive Sleep Apnea in Twins. JAMA Netw Open. 2024 Jun 3;7(6):e2416352. PMID 38913378. doi:10.1001/jamanetworkopen.2024.16352.",
+          "note": "Mapping OT-874 supporting evidence for the PTSD-OSA association from twin data. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "propositionRole": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/38913378/",
+          "verified": false,
+          "sourceCheckedOn": "2026-10-06",
+          "sourceLocator": "PMID 38913378; PTSD and OSA in Twins (JAMA Netw Open 2024); guard: association only, individual causality not established."
+        }
+      ]
+    }
+  ]
+}

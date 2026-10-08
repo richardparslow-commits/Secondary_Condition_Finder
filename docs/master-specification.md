@@ -108,7 +108,7 @@ Zero-trust, privacy-first architecture — no PHI leakage, XSS, or CSRF surface.
 ### 3.1 State Management & Transit
 
 - **No URL state:** workflow state, condition selections, and service history never travel in GET/URL query parameters. All mutations use Server Actions (POST).
-- **Encrypted cookies:** cookies carry short-lived, encrypted/authenticated workflow state (`src/lib/secondary-workflow/session.ts`, `src/lib/workflow-session-crypto.ts`). Never store full browser-visible workflow state; `HttpOnly`, `Secure`, `SameSite=Strict` attributes apply.
+- **Encrypted cookies:** the presumptive workflow carries short-lived, encrypted/authenticated state (`src/lib/presumptive/session.ts`, `src/lib/workflow-session-crypto.ts`). Never store full browser-visible workflow state; `HttpOnly`, `Secure`, `SameSite=Strict` attributes apply. The secondary workflow is browser-local since PRIV-01 (accepted 2026-10-07): its context stays in browser storage and the retired `secondary-workflow-v2` cookie is tombstoned by the edge proxy if a browser still presents it.
 - **Browser-local state:** client-side convenience state (e.g., evidence review) lives in `sessionStorage` and is cleared on workflow completion.
 
 ### 3.2 Content Security Policy
