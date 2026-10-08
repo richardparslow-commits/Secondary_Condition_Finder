@@ -287,7 +287,8 @@ observed green in CI, and its log, server log and evidence report ride that
 run's diagnostics artifact. It stayed green on the branch's next run too, which
 re-ran the walk because the write-rule correction below touches the guard: 45/45
 again, token `bf16408a`, with the pre-existing browser journeys also green. The page-side OCR leg that stops the walk on the
-audit host (four of four local attempts, the 240-second "Local OCR completed
+audit host (five of five local attempts, including one on 2026-10-08 that stopped
+at the same wait, the 240-second "Local OCR completed
 for" wait expiring on `CDP Runtime.evaluate` timeouts while the tesseract
 workers ran; tokens `34d6f3e0` and `40387030`, both `runner-error`, recorded in
 the [rehearsal record](../tmp/security-audit-2026-10-07/priv01-request-guard/ci-rehearsal/README.md))
@@ -295,6 +296,31 @@ is therefore an environment condition on that host, not a gate defect — the
 2026-10-07 stage-4 runs completed there too (tokens `7e6f1861` at 45/45 and
 `0f953e99` at 20/20), and the refusal layer's earlier recheck carried token
 `6d648b47`.
+
+**Stage-4 strengthening pass (PR #522, 2026-10-08): green, 46/46.** Two harness
+defects surfaced on the runner after the write-rule correction, neither a
+privacy finding. A re-run walk **passed 45/45** (token `7dead152`) and the step
+still failed: removing the temporary Chrome profile raced Chrome's shutdown
+flush and threw `ENOTEMPTY`, so the cleanup now retries and is best-effort — a
+leftover temp profile is not a result and cannot decide the gate. A later run
+then stopped at the seeded Step 5→6 navigation when a single click on the Next
+`<Link>` was swallowed with no navigation and no error (token `aedc9da4`,
+`runner-error`); the seeded wait now asserts the CTA advertises a uniform,
+scope-free URL — `/secondary/evidence?regSnapshot=<public snapshot id>`, no
+sentinel — clicks the real link, and if the route has not changed after a grace
+period follows that same advertised href. The route and every privacy
+assertion are unchanged; only the navigation trigger is deterministic. The run
+on head `c3891104` completed **PASSED, 46/46 assertions**, run token
+`9288ea04`, zero violations, with the pre-existing browser journeys green.
+
+The same pass adds the source-level half of the contract in
+[browser-local-design-conformance.test.ts](../tests/browser-local-design-conformance.test.ts):
+it fails when a step page or client module starts reading context outside the
+sanctioned record (storage, cookies, or a query value other than the two public
+ones), when a browser storage key appears without clear-all registration, or
+when a client fetcher builds a selection-derived request. Each rule was
+negative-controlled with a deliberate violation before landing, and the design
+record lists it in its enforcement table.
 
 The same first run failed the job on the *pre-existing* browser E2E step, not
 on this gate — and that failure was real: the guard's write rule refused the
