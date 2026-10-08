@@ -284,7 +284,9 @@ outside the gate's scope, and pins the wiring above.
 `changed=true (6 in-scope file(s))`, and the walk completed on the runner —
 **PASSED, 45/45 assertions**, run token `6c81355a` — so this gate is now
 observed green in CI, and its log, server log and evidence report ride that
-run's diagnostics artifact. The page-side OCR leg that stops the walk on the
+run's diagnostics artifact. It stayed green on the branch's next run too, which
+re-ran the walk because the write-rule correction below touches the guard: 45/45
+again, token `bf16408a`, with the pre-existing browser journeys also green. The page-side OCR leg that stops the walk on the
 audit host (four of four local attempts, the 240-second "Local OCR completed
 for" wait expiring on `CDP Runtime.evaluate` timeouts while the tesseract
 workers ran; tokens `34d6f3e0` and `40387030`, both `runner-error`, recorded in
