@@ -68,6 +68,17 @@ export async function loadAccreditedRepresentatives(
 ): Promise<AccreditedRepresentativeView> {
   const config = loadVaApiConfig();
   const configuredEnvironment = config.environment ?? "sandbox";
+  // A05: the effective flag is global AND service-specific. A disabled
+  // directory shows no live data — bypassing the cache tiers alone is not
+  // enough, because a previously cached live view would still be served
+  // while the service flag is off (and an injected fetcher below does not
+  // know the flag). The privacy page promises a clearly labeled local
+  // fallback with no directory results when disabled, and the finder UI
+  // renders whatever view it is given, so the loader returns the fallback
+  // here and every tier, wait path, and transport below only runs enabled.
+  if (!config.enabled || !config.accreditedRepEnabled) {
+    return localFallback(params);
+  }
   const useSharedCache = fetcher === fetchVaAccreditedRepresentatives;
   const cacheActive = useSharedCache && config.enabled;
   const cacheKey = cacheKeyFor(params, configuredEnvironment);

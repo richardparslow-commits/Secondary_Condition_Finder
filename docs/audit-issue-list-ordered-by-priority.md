@@ -109,7 +109,7 @@ Where a finding is marked `FIXED (local)`, it landed in committed code and has a
 ### 14. Health can report healthy without the real production workflow secret (`REL-04`, architecture audit; `FIXED (local)`)
 
 - The health endpoint previously tested crypto with an ephemeral probe secret independent of production config, so a production deployment without a usable workflow session secret could answer healthy.
-- **Repository posture:** fixed so `components.workflowSession` reports the configured secret's round-trip readiness and gates `healthy`; a deployment that cannot seal and reopen a real workflow session answers 503. The VA account store still accepts the legacy `SECONDARY_WORKFLOW_SESSION_SECRET` fallback, so a deployment relying on that fallback is reported ready by this component while the fallback is in use. Retiring that fallback is the recorded follow-up.
+- **Repository posture:** fixed so `components.workflowSession` reports the configured secret's round-trip readiness and gates `healthy`; a deployment that cannot seal and reopen a real workflow session answers 503. The recorded follow-up is retired 2026-10-10: `workflowSessionSecret()` no longer reads the legacy `SECONDARY_WORKFLOW_SESSION_SECRET` fallback, so the seal path and the readiness probe resolve the primary secret identically. Correction to the earlier record: the VA account store never sealed through `workflowSessionSecret()` — it seals explicitly with `VA_ACCOUNT_SESSION_SECRET` (`src/lib/va/account/store.ts` passes `config.encryptionSecret`) — so the fallback never reached account sessions; the mismatch it closed was between the workflow seal path and the readiness probe.
 
 ### 15. VA public search routes and identity policy had coverage/ingress gaps (`SEC-02`, architecture audit; `partially remediated (local)`)
 
@@ -126,7 +126,7 @@ Where a finding is marked `FIXED (local)`, it landed in committed code and has a
 
 - The Forms Finder is a GET form allowing arbitrary 120-character text. The loader trims/bounds it, hashes the cache key, sends it as the configured VA query when live access is allowed, and stores the raw query inside the returned/cached view.
 - A sensitive identifier accidentally typed there can appear in browser history, application/edge request URLs, upstream VA traffic, and shared cache values. Hashing a key is not encryption or removal of its value. ZIP/radius/type likewise appear in directory parameters and cached values; low-entropy ZIP hashes can be enumerated.
-- **Repository posture:** path confirmed, not actual ingestion of a real identifier. Prefer constrained form identifiers, explicit warnings, identifier-like rejection where safe, avoid raw text in URLs/cache values, and verify host/CDN log scrubbing.
+- **Repository posture:** fixed locally 2026-10-10 for the identifier slice: `loadVaFormsFinder` refuses whole-input identifier-like queries (8+ digits ignoring separators) before any upstream send or cache write and never echoes the raw value in the view, with 15 regression cases; short numeric fragments and mixed text still search. Still open: raw legitimate query text still travels in GET URLs and cached view values, and host/CDN log scrubbing is unverified.
 
 ### 17. Inbound reference rate limiting missed live loader routes (`A02`)
 
@@ -148,7 +148,7 @@ Where a finding is marked `FIXED (local)`, it landed in committed code and has a
 ### 20. Disabling the representative feature does not revoke cached live results (`A05`)
 
 - The directory loader gates cache reads on global `config.enabled`, not the service-specific accredited-rep flag, so mocked `VA_API_ENABLED=true` with `VA_ACCREDITED_REP_ENABLED=false` can still return a cached live directory.
-- **Repository posture:** evaluate the effective service flag before every cache tier, wait path, and transport; define whether disable means “no new fetch” or “show no live data”; make UI/policy and tests agree.
+- **Repository posture:** fixed locally 2026-10-10 as “show no live data” per the published privacy contract: `loadAccreditedRepresentatives` returns the local fallback before every cache tier, wait path, and transport unless global AND `VA_ACCREDITED_REP_ENABLED` are both on, with 5 regression cases (the audit's cached-live repro now returns the fallback without fetching); UI/policy/tests agree — the finder renders the fallback's labeled notice.
 
 ### 21. Alternate DD-214 parser does not share the main evidence resource/integrity controls (`A06`)
 

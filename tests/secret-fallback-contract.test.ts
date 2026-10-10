@@ -1,6 +1,9 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
 
-import { workflowSessionSecret } from "@/lib/workflow-session-crypto";
+import {
+  workflowSessionRuntimeReady,
+  workflowSessionSecret,
+} from "@/lib/workflow-session-crypto";
 
 /**
  * Completes the secret-fallback contract (audit finding #9 series; core
@@ -13,6 +16,9 @@ import { workflowSessionSecret } from "@/lib/workflow-session-crypto";
  * 3. It stays silent under test (no warn spam in CI).
  * 4. The throw happens BEFORE any fallback return, so production never sees
  *    the hardcoded secret.
+ * 5. The legacy `SECONDARY_WORKFLOW_SESSION_SECRET` fallback is retired
+ *    (REL-04 follow-up): it is never returned in any environment, so the
+ *    seal/open path and the production readiness probe resolve identically.
  */
 const DEV_SECRET =
   "development-only-workflow-session-secret-not-for-production";
@@ -40,6 +46,35 @@ describe("workflow session secret fallback contract", () => {
 
     expect(() => workflowSessionSecret()).toThrow(
       /must be configured with at least 32 characters in production/,
+    );
+  });
+
+  it("retired the legacy secondary fallback: a long legacy-only value still fails closed in production", () => {
+    vi.stubEnv("NODE_ENV", "production");
+    vi.stubEnv("WORKFLOW_SESSION_SECRET", "");
+    vi.stubEnv(
+      "SECONDARY_WORKFLOW_SESSION_SECRET",
+      "legacy-fallback-secret-that-is-long-enough-for-tests",
+    );
+
+    expect(() => workflowSessionSecret()).toThrow(
+      /WORKFLOW_SESSION_SECRET must be configured with at least 32 characters in production/,
+    );
+    expect(workflowSessionRuntimeReady()).toBe(false);
+  });
+
+  it("never returns the legacy secondary value outside production", () => {
+    vi.stubEnv("NODE_ENV", "development");
+    vi.stubEnv("WORKFLOW_SESSION_SECRET", "");
+    vi.stubEnv(
+      "SECONDARY_WORKFLOW_SESSION_SECRET",
+      "legacy-fallback-secret-that-is-long-enough-for-tests",
+    );
+    const warn = vi.spyOn(console, "warn").mockImplementation(() => {});
+
+    expect(workflowSessionSecret()).toBe(DEV_SECRET);
+    expect(warn).toHaveBeenCalledWith(
+      expect.stringContaining("development-only session secret"),
     );
   });
 

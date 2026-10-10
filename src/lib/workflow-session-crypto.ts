@@ -34,9 +34,12 @@ interface OpenSessionOptions {
 }
 
 export function workflowSessionSecret(): string {
-  const configured =
-    process.env.WORKFLOW_SESSION_SECRET ??
-    process.env.SECONDARY_WORKFLOW_SESSION_SECRET;
+  // REL-04 follow-up, retired: the legacy `SECONDARY_WORKFLOW_SESSION_SECRET`
+  // fallback is no longer read. Only the primary variable is accepted, so the
+  // seal/open path and `workflowSessionRuntimeReady()` resolve the secret
+  // identically — a deployment cannot seal sessions with a key the readiness
+  // probe ignores.
+  const configured = process.env.WORKFLOW_SESSION_SECRET;
 
   if (
     configured &&

@@ -329,7 +329,7 @@ Counts and identities are contract-enforced: `npm run kb:validate` + `tests/…c
 | Variable | Default | Purpose |
 |----------|---------|---------|
 | `WORKFLOW_SESSION_SECRET` | development-only fallback outside prod | Legacy session-crypto readiness marker used by `/api/health` and `/runtime-readiness`; production requires ≥32 characters. It does not protect research-workflow records or VA-account tokens. |
-| `SECONDARY_WORKFLOW_SESSION_SECRET` | unset | Legacy fallback accepted by the shared crypto helper; prefer `WORKFLOW_SESSION_SECRET`. Production readiness specifically requires the primary variable. |
+| `SECONDARY_WORKFLOW_SESSION_SECRET` | retired (unset) | Retired 2026-10-10 (REL-04 follow-up): no longer read by the shared crypto helper; set `WORKFLOW_SESSION_SECRET`. |
 | `VA_ACCOUNT_SESSION_SECRET` | unset | Separate ≥32-character server-only key required when the optional VA account sandbox is enabled; encrypts that feature's server-side session-store values. |
 | `VA_ACCOUNT_STORE_URL` / `VA_ACCOUNT_STORE_TOKEN` | unset | Optional HTTPS shared store endpoint and server-only token for the VA account sandbox; required in hosted/distributed runtime. |
 | `VA_API_ENV` | `sandbox` | VA adapter environment `sandbox`|`production` (via `loadVaApiConfig`). |
