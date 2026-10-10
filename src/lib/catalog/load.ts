@@ -4,6 +4,8 @@ import fs from "node:fs";
 import fsp from "node:fs/promises";
 import path from "node:path";
 
+import { parseDataJson } from "@/lib/data/parse-json";
+
 import {
   catalogFileSchema,
   conditionCatalogSchema,
@@ -26,20 +28,18 @@ async function readCatalog(): Promise<ConditionCatalog> {
 
   for (const file of files) {
     const raw = await fsp.readFile(path.join(CATALOG_DIR, file), "utf8");
-    const parsed = catalogFileSchema.safeParse(JSON.parse(raw));
+    const parsed = catalogFileSchema.safeParse(parseDataJson(raw));
 
     if (!parsed.success) {
-      console.error(`[catalog] Invalid catalog file ${file}:`, parsed.error.message);
-      throw new Error(`Invalid catalog file ${file}: ${parsed.error.message}`);
+      console.error("[catalog] Invalid catalog data");
+      throw new Error(`Invalid catalog file ${file}.`);
     }
 
     for (const condition of parsed.data.conditions) {
       const previous = seen.get(condition.id);
       if (previous) {
-        console.error(`[catalog] Duplicate condition id "${condition.id}" in ${file}; already defined in ${previous}.`);
-        throw new Error(
-          `Duplicate condition id "${condition.id}" in ${file}; already defined in ${previous}.`,
-        );
+        console.error("[catalog] Duplicate condition identity");
+        throw new Error(`Duplicate condition id in ${file}.`);
       }
       seen.set(condition.id, file);
       conditions.push(condition);
@@ -95,20 +95,18 @@ export function loadConditionCatalog(): ConditionCatalog {
 
   for (const file of files) {
     const raw = fs.readFileSync(path.join(CATALOG_DIR, file), "utf8");
-    const parsed = catalogFileSchema.safeParse(JSON.parse(raw));
+    const parsed = catalogFileSchema.safeParse(parseDataJson(raw));
 
     if (!parsed.success) {
-      console.error(`[catalog] Invalid catalog file ${file}:`, parsed.error.message);
-      throw new Error(`Invalid catalog file ${file}: ${parsed.error.message}`);
+      console.error("[catalog] Invalid catalog data");
+      throw new Error(`Invalid catalog file ${file}.`);
     }
 
     for (const condition of parsed.data.conditions) {
       const previous = seen.get(condition.id);
       if (previous) {
-        console.error(`[catalog] Duplicate condition id "${condition.id}" in ${file}; already defined in ${previous}.`);
-        throw new Error(
-          `Duplicate condition id "${condition.id}" in ${file}; already defined in ${previous}.`,
-        );
+        console.error("[catalog] Duplicate condition identity");
+        throw new Error(`Duplicate condition id in ${file}.`);
       }
       seen.set(condition.id, file);
       conditions.push(condition);

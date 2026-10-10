@@ -81,8 +81,8 @@ describe("controlled symptom research bridge", () => {
     expect(intake.diagnosedConditionIds).toEqual(["ptsd"]);
     expect(intake.primaryConditions).toEqual(["ptsd"]);
     expect(intake.symptoms).toEqual([]);
-    expect(read("src/app/secondary/suggestions/page.tsx")).toContain("SymptomDiscussionReview");
-    expect(read("src/app/secondary/evidence/page.tsx")).toContain("SymptomDiscussionReview");
+    expect(read("src/components/secondary/steps/SuggestionsStep.tsx")).toContain("SymptomDiscussionReview");
+    expect(read("src/components/secondary/steps/EvidenceStep.tsx")).toContain("SymptomDiscussionReview");
     expect(read("src/lib/secondary-workflow/recommendation-intake.ts")).toContain("symptoms: [],");
   });
 });

@@ -1,0 +1,90 @@
+{
+  "id": "tinnitus",
+  "draft": true,
+  "todo": [
+    "Clarify whether the veteran's migraine claim is better characterized as comorbid primary migraine versus a tinnitus-accentuated central sensitivity phenotype; the located evidence supports comorbidity and a shared central-sensitivity framework, not a proven tinnitus->migraine causal pathway.",
+    "Separate otologic migraine framing from ordinary migraine comorbidity where the veteran's presentation overlaps both.",
+    "Reviewer: the draft previously carried \"somatopsychic\" and \"intermediate-chain\" in claimTheories, which are pathway labels and not claim-theory values; the optional claimTheories field was omitted pending reviewer selection. Confirm whether any claim theory applies before publication."
+  ],
+  "governanceNotes": [
+    "This draft edge is authored under tinnitus as the service-connected primary. It is intended to support a comorbidity / central-sensitivity framing (tinnitus and migraine co-occur and may share central sensitization mechanisms) rather than a direct causation claim; the nexus classification is ASSOCIATION_ONLY.",
+    "Where the veteran's primary award is a different condition (e.g., TMJ, cervical, acoustic trauma), the migraine claim must be rerooted under that primary and this edge must not be reused."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "migraine-headaches",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Observational and conceptual literature reports an association between tinnitus and severe headache/migraine symptoms and situates both within a broader central sensitivity syndrome framework, but the located evidence does not establish that tinnitus causes migraine or aggravates a pre-existing migraine baseline at the individual nexus level; the relationship is carried here as a bounded clinical proposition pending individual-degree medical nexus evidence.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the association is reported, not proven as an individual causal pathway."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "NEUROLOGICAL_DEGENERATION",
+        "primaryVector": "Tinnitus is hypothesized to relate to migraine and severe headache through shared central sensitization and trigeminovascular / somatosensory processing pathways, such that central gain dysregulation in the auditory and pain networks may co-occur and mutually amplify perception, rather than one condition directly producing the other.",
+        "secondaryVector": "Shared predisposition (e.g., central sensitivity syndrome phenotype, somatosensory comorbidity, hormonal factors in subsets) may contribute to both conditions without either causing the other.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "CONTESTED_REQUIRES_SPECIFIC_EVIDENCE",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "The located evidence supports a reported association between tinnitus and severe headache/migraine and a conceptual central-sensitivity framing, which justifies clinical awareness and comorbidity screening; it does not, by itself, establish that service-connected tinnitus caused or aggravated an individual veteran's migraine, so the edge is constrained to association.",
+        "evidenceGaps": "Individual-degree evidence that service-connected tinnitus caused or aggravated migraine in this veteran; documentation of migraine frequency, severity, and temporal relationship to tinnitus; exclusion of independent primary migraine or other headache etiology; clarification of whether central sensitivity syndrome framing applies to this veteran's presentation.",
+        "alternativeEtiologiesToRuleOut": [
+          "Primary migraine disorder independent of tinnitus",
+          "Cervicogenic headache or cervical spine disorder causing headache",
+          "TMJ / somatosensory source of headache co-occurring with tinnitus",
+          "Medication-overuse headache",
+          "Other secondary headache disorder (vascular, cranial neuralgia, intracranial)"
+        ],
+        "alternativeEtiologyTags": ["migraine-primary", "cervical", "tmj", "medication-overuse", "secondary-headache"],
+        "requiresSpecificDbqEvidence": true
+      },
+      "rationale": "Tinnitus and severe headache/migraine show a reported association and share conceptual placement within a central sensitivity syndrome framework, supporting comorbidity awareness; the edge is constrained to association because the located evidence does not establish an individual causal pathway from service-connected tinnitus to migraine.",
+      "nexusRequirement": "individual-medical-opinion",
+      "pathwayIntelligence": {
+        "pathways": ["somatopsychic"],
+        "causalChain": "service-connected tinnitus -> (hypothesized) shared central sensitization / trigeminovascular-somatosensory processing -> comorbid severe headache/migraine; association only pending individual nexus",
+        "developmentQuestions": [
+          "Is the veteran's headache a documented migraine disorder, and what is its frequency, severity, and disability?",
+          "Did the headache predate the service-connected tinnitus, or is the onset pattern consistent with a tinnitus-adjacent comorbidity?",
+          "Are there competing or concurrent headache sources (cervical, TMJ, medication-overuse, other secondary headache)?"
+        ],
+        "issuesToResolve": [
+          "Determine whether the migraine claim is better framed as a comorbid primary condition rather than a tinnitus-caused secondary condition.",
+          "Assess whether central sensitivity syndrome framing is appropriate for this veteran or whether it overstates the evidence."
+        ]
+      },
+      "evidenceGaps": [
+        "Individual-degree medical nexus opinion linking service-connected tinnitus to migraine",
+        "Documentation of migraine diagnosis, frequency, severity, and relationship to tinnitus",
+        "Exclusion of independent primary migraine or other headache etiology",
+        "Clarification of central sensitivity syndrome vs. ordinary comorbidity framing"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Expanding the Spectrum of Central Sensitivity Syndrome: Integrating Otologic Migraine as Otologic Central Sensitivity Syndrome. Brain Sci. 2026 Feb 25;16(3). PMID 41892601.",
+          "note": "Mapping OT-876 supporting evidence for the tinnitus/migraine comorbidity and central sensitivity syndrome framing. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "propositionRole": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41892601/",
+          "verified": false,
+          "sourceCheckedOn": "2026-10-06",
+          "sourceLocator": "PMID 41892601; Expanding the Spectrum of Central Sensitivity Syndrome: Integrating Otologic Migraine (Brain Sci 2026); guard: association only, individual causality not established."
+        },
+        {
+          "citation": "Tinnitus constancy and self-reported severe headache or migraine symptoms in peri- and postmenopausal women: a statistical modeling and machine learning analysis. Eur J Med Res. 2025 Dec 23;31(1):139. PMID 41437109.",
+          "note": "Mapping OT-876 supporting evidence for the association between tinnitus constancy and severe headache/migraine symptoms. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "propositionRole": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41437109/",
+          "verified": false,
+          "sourceCheckedOn": "2026-10-06",
+          "sourceLocator": "PMID 41437109; Tinnitus constancy and severe headache/migraine in peri- and postmenopausal women (Eur J Med Res 2025); guard: association only, individual causality not established."
+        }
+      ]
+    }
+  ]
+}

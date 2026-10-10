@@ -240,7 +240,12 @@ and authored the third adjacency node and its route in lockstep with the authore
 1. Node file passes `KbNodeMappingSchema`, file name equals `nodeId`, and
    outgoing ranks are unique and gapless from 1.
 2. `nodeId` and every `targetConditionId` exist in the condition catalog.
-3. `npm run audit:crg:graph` exits 0 in hard mode (loaded ≥ 1 node, no cycles).
+3. `npm run audit:crg:graph` exits 0 in hard mode: it loads ≥ 1 node, finds no
+   cycles, **and** confirms the ARCH-01 evidence join — every edge has an
+   authored suggestion for that (source, target) pair, with at least one
+   citation and the same nexus classification. The gate reads the authored
+   corpus from the graph directory's parent (or `--kb-root=`), and fails closed
+   when it cannot locate one.
 4. `tests/kb-graph-loader.test.ts` stays green (add cases for new failure
    modes rather than weakening existing ones).
 5. `npm run kb:validate`, the authoring tracker, and the identity pins are

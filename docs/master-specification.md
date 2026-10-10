@@ -80,7 +80,7 @@ src/
 │   └── [static routes]       # /about, /privacy, /terms, /va-forms, /va-reference, ...
 ├── components/               # React components (only interactive ones are "use client")
 └── lib/
-    ├── actions/              # ALL Server Actions ("use server"); secondary.ts, presumptive.ts, scenarios.ts
+    ├── actions/              # Server Actions ("use server"); currently the bounded public accredited-representative lookup
     ├── catalog/              # Zod schema, loader, lookup; condition identity (nodes)
     ├── kb/                   # Zod schema, loader, mapping helpers; CRG traversal (edges)
     ├── engine/               # Recommendation scoring, export, consensus ordering
@@ -107,8 +107,8 @@ Zero-trust, privacy-first architecture — no PHI leakage, XSS, or CSRF surface.
 
 ### 3.1 State Management & Transit
 
-- **No URL state:** workflow state, condition selections, and service history never travel in GET/URL query parameters. All mutations use Server Actions (POST).
-- **Encrypted cookies:** cookies carry short-lived, encrypted/authenticated workflow state (`src/lib/secondary-workflow/session.ts`, `src/lib/workflow-session-crypto.ts`). Never store full browser-visible workflow state; `HttpOnly`, `Secure`, `SameSite=Strict` attributes apply.
+- **No URL state:** workflow state, condition selections, and service history never travel in GET/URL query parameters, and neither workflow posts them in a request body.
+- **Browser-local workflow state:** both the secondary workflow (PRIV-01, accepted 2026-10-07) and the presumptive/DD-214 track (2026-10-08) keep their context in versioned, schema-bounded browser storage. The retired `secondary-workflow-v2` and `presumptive-workflow-v1` cookies are tombstoned by the edge proxy if a browser still presents one, and no workflow sets a cookie. Session crypto (`src/lib/workflow-session-crypto.ts`) now protects only the VA-account server session store, whose OAuth tokens never live in browser storage.
 - **Browser-local state:** client-side convenience state (e.g., evidence review) lives in `sessionStorage` and is cleared on workflow completion.
 
 ### 3.2 Content Security Policy
@@ -142,13 +142,14 @@ Every PR must pass, enforced by `.github/workflows/ci.yml`:
 | Gate | Command | Enforces |
 | --- | --- | --- |
 | Knowledge-base validation | `npm run kb:validate` | Strict Zod schema, referential integrity, citation purity threshold |
-| ME / CRG compliance | `npm run audit:me-compliance` | CRG trio, nexus-arm discriminated union, consensus/alignment consistency, guard-disclaimer honesty, citation discipline, quarantine (every ME-1..ME-22 relationship attributed) |
+| ME / CRG compliance | `npm run audit:me-compliance` | CRG trio, nexus-arm discriminated union, consensus/alignment consistency, guard-disclaimer honesty, citation discipline, quarantine, and a two-way join of every ME approval ledger (`rows`/`relationships`/`mappings` shapes) against the authored corpus — an unreadable, unrecognized-shape, or declared-but-absent relationship fails closed |
 | Citation audit | `npm run citations:audit` | Unverified citation ceiling vs. baseline |
 | Composition / architecture audit | `npm run test:composition` | Critical-module test coverage + server-action placement + client boundary + track separation + evidence-parser boundary |
 | Lint | `npm run lint` | ESLint |
 | Typecheck | `npm run typecheck` | `tsc --noEmit` |
 | Unit/contract tests | `npm test` | Full Vitest suite |
 | Build + e2e | `npm run build`, e2e job | Production build and real-browser journeys |
+| PRIV-01 browser sentinel | `node scripts/acceptance-browser-sentinel.mjs` | Browser-local privacy: no sentinel in any request, response body, HTML/RSC payload, log, trace or browser storage. Its own job (`priv01_sentinel`) with its own wall-clock ceiling and a smaller budget for the walk inside it, so it cannot spend another gate's time or be truncated by one. Pull requests touching the workflow scope in `scripts/priv01-sentinel-scope.mjs` (answered by the `priv01_scope` job), plus every non-PR event. Fails rather than skipping when the runner cannot host the walk |
 
 `npm run citations:decay` (live link-rot/staleness probes) is a deliberate maintainer gate and is intentionally not wired into per-PR CI.
 

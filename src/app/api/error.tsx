@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { useEffect } from "react";
 
+import { createClientErrorEvent } from "@/lib/observability/client-error-event";
+
 export default function ApiRouteError({
   error,
   reset,
@@ -11,15 +13,7 @@ export default function ApiRouteError({
   reset: () => void;
 }) {
   useEffect(() => {
-    console.error(
-      JSON.stringify({
-        timestamp: new Date().toISOString(),
-        level: "error",
-        component: "api-error-boundary",
-        message: error.message,
-        digest: error.digest ?? null,
-      }),
-    );
+    console.error(JSON.stringify(createClientErrorEvent("api-error-boundary", error)));
   }, [error]);
 
   return (

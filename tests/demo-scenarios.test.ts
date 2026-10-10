@@ -11,9 +11,9 @@ import { draftMappings } from "@/lib/kb/lookup";
 import { buildSecondaryRecommendationIntake } from "@/lib/secondary-workflow/recommendation-intake";
 import { parseWorkflowState } from "@/lib/secondary-workflow/state";
 import {
-  parseStoredSecondaryWorkflowState,
   workflowSessionToQueryParams,
-} from "@/lib/secondary-workflow/session";
+  type TransportableWorkflowState,
+} from "@/lib/secondary-workflow/transport";
 
 const catalog = loadConditionCatalog();
 const kb = loadKnowledgeBase();
@@ -37,7 +37,9 @@ describe("demo scenarios", () => {
   it.each(scenarios.map((scenario) => [scenario.id, scenario] as const))(
     "runs %s through the current workflow contract without manual fixes",
     (_id, scenario) => {
-      const workflow = parseStoredSecondaryWorkflowState(scenario.workflow);
+      // The browser-local launcher validates the bundled workflow through the
+      // same parse contract before persisting it (PRIV-01 stage 2/3).
+      const workflow = scenario.workflow as unknown as TransportableWorkflowState;
       const state = parseWorkflowState(
         workflowSessionToQueryParams(workflow),
         catalog,
@@ -64,36 +66,27 @@ describe("demo scenarios", () => {
     },
   );
 
-  it("launches from /scenarios with only a scenario id and no legacy query URL", () => {
+  it("launches from /scenarios entirely in the browser with no legacy query URL", () => {
     const page = readRepoFile("src/app/scenarios/page.tsx");
     const form = readRepoFile("src/components/ScenarioLaunchForm.tsx");
-    const action = readRepoFile("src/lib/actions/scenarios.ts");
 
     expect(page).toContain("<ScenarioLaunchForm scenarioId={scenario.id} />");
     expect(page).not.toContain("URLSearchParams");
     expect(page).not.toContain("/results?");
     expect(page).not.toContain("toQuery(");
+    expect(page).not.toContain("@/lib/actions");
 
-    expect(form).toContain('name="scenarioId"');
+    // The launcher validates the synthetic state through the same workflow
+    // contract, clears every prior browser-local key, persists the context
+    // locally, and only then navigates. No cookie, no request.
+    expect(form).toContain('"use client"');
+    expect(form).toContain("parseWorkflowState(workflowSessionToQueryParams(workflow), corpus.conditions)");
     expect(form).toContain("clearSecondaryWorkflowLocalState(window.sessionStorage)");
+    expect(form).toContain("persist(workflow");
+    expect(form).toContain('router.push("/secondary/suggestions")');
     expect(form).not.toContain("fetch(");
     expect(form).not.toContain("sendBeacon");
-
-    expect(action).toContain('const scenarioId = typeof scenarioIdRaw === "string" ? scenarioIdRaw : null;');
-    expect(action).toContain("scenarioIdSchema.safeParse(scenarioId)");
-    expect(action).toContain('if (!parsedScenarioId.success) redirect("/scenarios")');
-    expect(action).toContain('if (!scenario) redirect("/scenarios")');
-    // Runtime validation of the build-time-imported scenario JSON.
-    expect(action).toContain("workflow: scenarioWorkflowSchema");
-    // Guarded parse/write region with redirect-safe error handling.
-    expect(action).toContain("if (isRedirectError(error)) throw error;");
-    expect(action).toContain('redirect("/scenarios?error=invalid_state")');
-    expect(action).toContain("parseStoredSecondaryWorkflowState(scenario.workflow)");
-    expect(action).toContain("parseWorkflowState(workflowSessionToQueryParams(workflow), catalog)");
-    expect(action).toContain("await writeSecondaryWorkflowSession(workflow)");
-    // Success redirect sits after and outside the guarded region.
-    expect(action).toContain('redirect("/secondary/suggestions")');
-    expect(action).not.toContain("throw new Error");
-    expect(action).not.toContain("console.");
+    expect(form).not.toContain("writeSecondaryWorkflowSession");
+    expect(form).toContain("setError(");
   });
 });

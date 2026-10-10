@@ -1,16 +1,11 @@
 import "server-only";
 
 import { loadConditionCatalog } from "@/lib/catalog/load";
-import { indexById } from "@/lib/catalog/lookup";
 import { loadKbGraph } from "@/lib/kb/graph";
 import { loadKnowledgeBase } from "@/lib/kb/load";
 
-import { projectGraphPathway } from "./graph-pathway-projection";
-import { generateClaimPathways } from "./pathway-generator";
-import type {
-  GraphPathwayMatchSectionView,
-  GraphPathwayMatchView,
-} from "./pathway-view";
+import { buildGraphPathwayMatchSectionViewFromData } from "./graph-pathway-matches-core";
+import type { GraphPathwayMatchSectionView } from "./pathway-view";
 
 /**
  * Results-UI entry point for the graph adjacency layer: the subset of the
@@ -45,42 +40,11 @@ export function buildGraphPathwayMatchSectionView(
   originConditionIds: readonly string[],
   terminalConditionIds: readonly string[],
 ): GraphPathwayMatchSectionView {
-  const graph = loadKbGraph();
-  const byId = indexById(loadConditionCatalog());
-  const mappingById = new Map(
-    loadKnowledgeBase().map((mapping) => [mapping.id, mapping]),
+  return buildGraphPathwayMatchSectionViewFromData(
+    loadConditionCatalog(),
+    loadKnowledgeBase(),
+    loadKbGraph(),
+    originConditionIds,
+    terminalConditionIds,
   );
-  const conditionName = (conditionId: string): string =>
-    byId.get(conditionId)?.name ?? conditionId;
-
-  const terminalSet = new Set(terminalConditionIds);
-  const matches: GraphPathwayMatchView[] = [];
-
-  for (const originConditionId of [...new Set(originConditionIds)].sort()) {
-    for (const pathway of generateClaimPathways(originConditionId, graph)) {
-      if (!terminalSet.has(pathway.terminalConditionId)) continue;
-      matches.push({
-        originConditionId,
-        originConditionName: conditionName(originConditionId),
-        ...projectGraphPathway(pathway, conditionName, mappingById),
-      });
-    }
-  }
-
-  matches.sort(
-    (left, right) =>
-      left.originConditionId.localeCompare(right.originConditionId) ||
-      left.terminalConditionId.localeCompare(right.terminalConditionId) ||
-      left.hops.length - right.hops.length,
-  );
-
-  const allAnchors = matches
-    .flatMap((match) => match.hops)
-    .flatMap((hop) => hop.anchors);
-
-  return {
-    matches,
-    totalAnchors: allAnchors.length,
-    unverifiedAnchors: allAnchors.filter((anchor) => !anchor.verified).length,
-  };
 }

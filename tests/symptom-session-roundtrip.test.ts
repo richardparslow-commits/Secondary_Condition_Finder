@@ -1,55 +1,76 @@
 import { describe, expect, it } from "vitest";
 
-import { sealSessionPayload, openSessionPayload, WORKFLOW_SESSION_MAX_AGE_SECONDS } from "@/lib/workflow-session-crypto";
+import { loadConditionCatalog } from "@/lib/catalog/load";
 import {
-  parseStoredSecondaryWorkflowState,
-  workflowSessionToQueryParams,
-  type StoredSecondaryWorkflowState,
-} from "@/lib/secondary-workflow/session";
-import type { SecondaryWorkflowState } from "@/lib/secondary-workflow/state";
+  readBrowserWorkflowContext,
+  writeBrowserWorkflowContext,
+} from "@/lib/secondary-workflow/browser-context";
+import {
+  parseDocumentsSelection,
+  parseWorkflowState,
+  type QueryParams,
+} from "@/lib/secondary-workflow/state";
+import { buildSymptomDiscussionPrompts } from "@/lib/secondary-workflow/symptom-bridge";
+import { workflowSessionToQueryParams } from "@/lib/secondary-workflow/transport";
 
 /**
- * Empirical round-trip for the Idea #6 surface: a symptom selected at Step 4
- * must survive the encrypted session write/read and reach the Step 5 page
- * parser intact. This pins the exact server path the E2E exercises:
- * parseDocumentsSelection → writeSecondaryWorkflowSession (seal) →
- * readSecondaryWorkflowSession (open) → workflowSessionToQueryParams →
- * parseWorkflowState → buildSymptomDiscussionPrompts.
+ * Browser-local successor of the legacy encrypted-session round trip
+ * (PRIV-01 stage 3 retired the sealed cookie).
+ *
+ * The chain that must stay intact:
+ * parseDocumentsSelection → writeBrowserWorkflowContext → read (browser
+ * storage) → workflowSessionToQueryParams → parseWorkflowState →
+ * buildSymptomDiscussionPrompts.
  */
-const SECRET = "round-trip-probe-secret-0123456789abcdef"; // 40 chars
+const catalog = loadConditionCatalog();
 
-function makeState(): SecondaryWorkflowState {
+function fakeStorage(initial: Record<string, string> = {}) {
+  const data = new Map(Object.entries(initial));
   return {
-    diagnosedConditionIds: ["ptsd"],
-    serviceConnectedConditionIds: ["ptsd"],
-    ratingsByConditionId: { ptsd: 70 },
-    documentsShared: false,
-    symptomIds: ["daytime-sleepiness-snoring"],
+    getItem: (key: string) => data.get(key) ?? null,
+    setItem: (key: string, value: string) => {
+      data.set(key, value);
+    },
+    removeItem: (key: string) => {
+      data.delete(key);
+    },
+    raw: data,
   };
 }
 
-describe("symptom selection survives the encrypted session round-trip", () => {
-  it("seal → open preserves symptomIds in the stored state", () => {
-    const sealed = sealSessionPayload(makeState(), SECRET, { maxAgeSeconds: WORKFLOW_SESSION_MAX_AGE_SECONDS });
-    const opened = openSessionPayload(sealed, SECRET);
-    const stored = opened ? parseStoredSecondaryWorkflowState(opened) : null;
+function stepFourParams(symptomId = "daytime-sleepiness-snoring"): QueryParams {
+  return {
+    diagnosed: ["ptsd", "sleep-apnea"],
+    serviceConnected: "ptsd",
+    "rating-ptsd": "70",
+    documentsShared: "yes",
+    symptomIds: symptomId,
+  };
+}
 
-    expect(stored).not.toBeNull();
-    expect(stored?.symptomIds).toEqual(["daytime-sleepiness-snoring"]);
+describe("symptom selection survives the browser-local round-trip", () => {
+  it("stores and re-reads symptomIds from the browser-local record", () => {
+    const storage = fakeStorage();
+    const state = parseDocumentsSelection(stepFourParams(), catalog);
+    writeBrowserWorkflowContext(storage, state);
+
+    const record = readBrowserWorkflowContext(storage);
+    expect(record).not.toBeNull();
+    expect(record?.symptomIds).toEqual(["daytime-sleepiness-snoring"]);
   });
 
-  it("maps the opened state's symptomIds into Step 5 query params", () => {
-    // The suggestions page hydrates via
-    // workflowSessionToQueryParams(readSecondaryWorkflowSession()) →
-    // parseWorkflowState; this pins the mapping link of that chain.
-    const sealed = sealSessionPayload(makeState(), SECRET, { maxAgeSeconds: WORKFLOW_SESSION_MAX_AGE_SECONDS });
-    const opened = openSessionPayload(sealed, SECRET);
-    const stored: StoredSecondaryWorkflowState | null = opened
-      ? parseStoredSecondaryWorkflowState(opened)
-      : null;
-    expect(stored).not.toBeNull();
+  it("maps the stored record into Step 5 parser input and prompt output", () => {
+    const storage = fakeStorage();
+    writeBrowserWorkflowContext(storage, parseDocumentsSelection(stepFourParams(), catalog));
 
-    const params = workflowSessionToQueryParams(stored!);
-    expect(params.symptomIds).toEqual(["daytime-sleepiness-snoring"]);
+    const record = readBrowserWorkflowContext(storage)!;
+    const parsed = parseWorkflowState(workflowSessionToQueryParams(record), catalog);
+    expect(parsed.symptomIds).toEqual(["daytime-sleepiness-snoring"]);
+
+    const prompts = buildSymptomDiscussionPrompts(
+      parsed.symptomIds ?? [],
+      new Map(catalog.map((condition) => [condition.id, condition.name])),
+    );
+    expect(prompts.map((entry) => entry.symptomId)).toEqual(["daytime-sleepiness-snoring"]);
   });
 });

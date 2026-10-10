@@ -4,6 +4,8 @@ import fs from "node:fs";
 import fsp from "node:fs/promises";
 import path from "node:path";
 
+import { parseDataJson } from "@/lib/data/parse-json";
+
 import {
   exposureCatalogSchema,
   exposureCategorySchema,
@@ -29,21 +31,17 @@ async function readExposureCatalog(): Promise<ExposureCatalog> {
   const categories: ExposureCategory[] = [];
   for (const file of files) {
     const raw = await fsp.readFile(path.join(PRESUMPTIVES_DIR, file), "utf8");
-    const parsed = exposureCategorySchema.safeParse(JSON.parse(raw));
+    const parsed = exposureCategorySchema.safeParse(parseDataJson(raw));
 
     if (!parsed.success) {
-      console.error(`[presumptive] Invalid exposure category in ${file}:`, parsed.error.message);
-      throw new Error(
-        `Invalid exposure category in ${file}: ${parsed.error.message}`,
-      );
+      console.error("[presumptive] Invalid exposure category data");
+      throw new Error(`Invalid exposure category in ${file}.`);
     }
 
     const expectedId = path.basename(file, ".json");
     if (parsed.data.id !== expectedId) {
-      console.error(`[presumptive] Exposure category id mismatch in ${file}: id is "${parsed.data.id}", expected "${expectedId}".`);
-      throw new Error(
-        `Exposure category id mismatch in ${file}: id is "${parsed.data.id}", expected "${expectedId}".`,
-      );
+      console.error("[presumptive] Exposure category identity mismatch");
+      throw new Error(`Exposure category identity mismatch in ${file}.`);
     }
 
     categories.push(parsed.data);
@@ -79,21 +77,17 @@ export function loadExposureCatalog(): ExposureCatalog {
 
   const categories: ExposureCategory[] = files.map((file) => {
     const raw = fs.readFileSync(path.join(PRESUMPTIVES_DIR, file), "utf8");
-    const parsed = exposureCategorySchema.safeParse(JSON.parse(raw));
+    const parsed = exposureCategorySchema.safeParse(parseDataJson(raw));
 
     if (!parsed.success) {
-      console.error(`[presumptive] Invalid exposure category in ${file}:`, parsed.error.message);
-      throw new Error(
-        `Invalid exposure category in ${file}: ${parsed.error.message}`,
-      );
+      console.error("[presumptive] Invalid exposure category data");
+      throw new Error(`Invalid exposure category in ${file}.`);
     }
 
     const expectedId = path.basename(file, ".json");
     if (parsed.data.id !== expectedId) {
-      console.error(`[presumptive] Exposure category id mismatch in ${file}: id is "${parsed.data.id}", expected "${expectedId}".`);
-      throw new Error(
-        `Exposure category id mismatch in ${file}: id is "${parsed.data.id}", expected "${expectedId}".`,
-      );
+      console.error("[presumptive] Exposure category identity mismatch");
+      throw new Error(`Exposure category identity mismatch in ${file}.`);
     }
 
     return parsed.data;

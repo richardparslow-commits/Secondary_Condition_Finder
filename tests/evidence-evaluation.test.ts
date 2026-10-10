@@ -78,7 +78,7 @@ describe("P2 Ticket 9: Evidence Evaluation Output Model", () => {
   });
 
   it("wires a user-controlled, browser-local evidence-gap review into Step 6", () => {
-    const page = readRepoFile("src/app/secondary/evidence/page.tsx");
+    const page = readRepoFile("src/components/secondary/steps/EvidenceStep.tsx");
     const component = readRepoFile("src/components/evidence/EvidenceGapReview.tsx");
     const localState = readRepoFile("src/lib/secondary-workflow/local-state.ts");
 

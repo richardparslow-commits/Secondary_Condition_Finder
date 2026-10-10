@@ -4,6 +4,8 @@ import fs from "node:fs";
 import fsp from "node:fs/promises";
 import path from "node:path";
 
+import { parseDataJson } from "@/lib/data/parse-json";
+
 import { loadConditionCatalog, loadConditionCatalogAsync } from "@/lib/catalog/load";
 
 import {
@@ -15,6 +17,9 @@ import {
 import { assertNoForbiddenPhrases, validateKnowledgeBaseAgainstCatalog } from "./validate";
 
 const KB_DIR = path.join(process.cwd(), "data", "knowledge-base");
+// Reads below keep an explicit slash before each filename. Turbopack widens
+// dynamic path joins to sibling directories during instrumentation tracing,
+// which would ship retired mappings from knowledge-base-quarantine.
 
 let cached: KnowledgeBase | null = null;
 let publishedMappingIdsCached: Set<string> | null = null;
@@ -34,12 +39,12 @@ async function readKnowledgeBase(): Promise<KnowledgeBase> {
 
   const mappings: ConditionMapping[] = [];
   for (const file of files) {
-    const raw = await fsp.readFile(path.join(KB_DIR, file), "utf8");
-    const parsed = conditionMappingSchema.safeParse(JSON.parse(raw));
+    const raw = await fsp.readFile(`${KB_DIR}/${file}`, "utf8");
+    const parsed = conditionMappingSchema.safeParse(parseDataJson(raw));
 
     if (!parsed.success) {
-      console.error(`[knowledge-base] Invalid mapping in ${file}:`, parsed.error.message);
-      throw new Error(`Invalid mapping in ${file}: ${parsed.error.message}`);
+      console.error("[knowledge-base] Invalid mapping data");
+      throw new Error(`Invalid mapping in ${file}.`);
     }
 
     const expectedId = path.basename(file, ".json");
@@ -85,12 +90,12 @@ export function loadKnowledgeBase(): KnowledgeBase {
     .sort();
 
   const mappings: ConditionMapping[] = files.map((file) => {
-    const raw = fs.readFileSync(path.join(KB_DIR, file), "utf8");
-    const parsed = conditionMappingSchema.safeParse(JSON.parse(raw));
+    const raw = fs.readFileSync(`${KB_DIR}/${file}`, "utf8");
+    const parsed = conditionMappingSchema.safeParse(parseDataJson(raw));
 
     if (!parsed.success) {
-      console.error(`[knowledge-base] Invalid mapping in ${file}:`, parsed.error.message);
-      throw new Error(`Invalid mapping in ${file}: ${parsed.error.message}`);
+      console.error("[knowledge-base] Invalid mapping data");
+      throw new Error(`Invalid mapping in ${file}.`);
     }
 
     const expectedId = path.basename(file, ".json");
@@ -124,7 +129,7 @@ async function readPublishedMappingIds(): Promise<Set<string>> {
 
   const published = new Set<string>();
   for (const file of files) {
-    const raw = await fsp.readFile(path.join(KB_DIR, file), "utf8");
+    const raw = await fsp.readFile(`${KB_DIR}/${file}`, "utf8");
     const parsed = JSON.parse(raw) as unknown;
     if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) continue;
 
@@ -165,7 +170,7 @@ export function loadPublishedMappingIds(): Set<string> {
 
   const published = new Set<string>();
   for (const file of files) {
-    const raw = fs.readFileSync(path.join(KB_DIR, file), "utf8");
+    const raw = fs.readFileSync(`${KB_DIR}/${file}`, "utf8");
     const parsed = JSON.parse(raw) as unknown;
     if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) continue;
 

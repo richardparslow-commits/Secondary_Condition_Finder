@@ -1,12 +1,13 @@
 import { describe, expect, it } from "vitest";
 
-import { buildSecondaryCrossLinks } from "@/app/presumptive/results/secondary-cross-link";
+import { buildSecondaryCrossLinkIndex } from "@/app/presumptive/results/secondary-cross-link";
 import { loadConditionCatalog } from "@/lib/catalog/load";
 import { indexById } from "@/lib/catalog/lookup";
 import type { ConditionCatalog } from "@/lib/catalog/schema";
 import { loadKnowledgeBase } from "@/lib/kb/load";
 import { draftMappings, secondaryTargetIndex } from "@/lib/kb/lookup";
 import { knowledgeBaseSchema, type KnowledgeBase } from "@/lib/kb/schema";
+import { buildPresumptiveCrossLinks } from "@/lib/presumptive/cross-link";
 import { loadExposureCatalog } from "@/lib/presumptive/load";
 import type { PresumptiveCondition } from "@/lib/presumptive/schema";
 import {
@@ -93,16 +94,30 @@ describe("secondaryTargetIndex", () => {
   });
 });
 
-describe("buildSecondaryCrossLinks", () => {
+/**
+ * The server shell builds the public index from the published KB; the
+ * browser-local results view runs the intersection over it. Both halves are
+ * exercised here so the cue cannot drift from the data it claims to show.
+ */
+function linksFor(conditions: PresumptiveCondition[], kb: KnowledgeBase) {
+  return buildPresumptiveCrossLinks(
+    conditions,
+    buildSecondaryCrossLinkIndex(syntheticCatalog(), kb),
+  );
+}
+
+describe("presumptive cross-link cue", () => {
+  it("builds the index from published secondary targets with sorted, deduplicated primaries", () => {
+    const index = buildSecondaryCrossLinkIndex(syntheticCatalog(), syntheticKb());
+    expect(index.byTargetConditionId.asthma).toEqual(["gerd", "ptsd"]);
+    expect(index.byTargetConditionId.gerd).toBeUndefined();
+    expect(index.namesById.asthma).toBe("Asthma");
+  });
+
   it("intersects matched presumptive conditions with published secondary targets", () => {
-    const links = buildSecondaryCrossLinks(
-      [pc("asthma"), pc("unmapped")],
-      syntheticCatalog(),
-      syntheticKb(),
-    );
+    const links = linksFor([pc("asthma"), pc("unmapped")], syntheticKb());
     expect(links).toHaveLength(1);
     expect(links[0].name).toBe("Asthma");
-    expect(links[0].primaryIds).toEqual(["gerd", "ptsd"]);
     expect(links[0].primaryNames).toEqual([
       "Gastroesophageal Reflux Disease (GERD)",
       "Post-Traumatic Stress Disorder (PTSD)",
@@ -110,21 +125,11 @@ describe("buildSecondaryCrossLinks", () => {
   });
 
   it("returns no links when nothing intersects", () => {
-    const links = buildSecondaryCrossLinks(
-      [pc("unmapped")],
-      syntheticCatalog(),
-      syntheticKb(),
-    );
-    expect(links).toEqual([]);
+    expect(linksFor([pc("unmapped")], syntheticKb())).toEqual([]);
   });
 
   it("deduplicates repeated presumptive entries for the same condition", () => {
-    const links = buildSecondaryCrossLinks(
-      [pc("asthma"), pc("asthma")],
-      syntheticCatalog(),
-      syntheticKb(),
-    );
-    expect(links).toHaveLength(1);
+    expect(linksFor([pc("asthma"), pc("asthma")], syntheticKb())).toHaveLength(1);
   });
 
   it("degrades unknown catalog ids to the raw id instead of throwing", () => {
@@ -147,7 +152,7 @@ describe("buildSecondaryCrossLinks", () => {
         ],
       },
     ]);
-    const links = buildSecondaryCrossLinks([pc("not-in-catalog")], syntheticCatalog(), kb);
+    const links = linksFor([pc("not-in-catalog")], kb);
     expect(links).toHaveLength(1);
     expect(links[0].name).toBe("not-in-catalog");
     expect(links[0].primaryNames).toEqual(["Gastroesophageal Reflux Disease (GERD)"]);
@@ -157,14 +162,12 @@ describe("buildSecondaryCrossLinks", () => {
     const byId = indexById(realCatalog);
     const exposure = loadExposureCatalog();
     const allPresumptive = exposure.flatMap((category) => category.conditions);
-    const links = buildSecondaryCrossLinks(allPresumptive, realCatalog, loadKnowledgeBase());
+    const index = buildSecondaryCrossLinkIndex(realCatalog, loadKnowledgeBase());
+    const links = buildPresumptiveCrossLinks(allPresumptive, index);
 
     expect(links.length).toBeGreaterThan(0);
     for (const link of links) {
       expect(byId.get(link.name)?.id ?? link.name).toBeDefined();
-      for (const primaryId of link.primaryIds) {
-        expect(byId.has(primaryId), `primary "${primaryId}" missing from catalog`).toBe(true);
-      }
       for (const primaryName of link.primaryNames) {
         expect(primaryName.length).toBeGreaterThan(0);
       }

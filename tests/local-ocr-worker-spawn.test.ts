@@ -1,6 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
-import { beforeEach, describe, expect, it, vi } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 import {
   createLocalOcrWorker,
@@ -25,11 +25,19 @@ import {
  * bypasses the factory with its own options object.
  */
 
-const { createWorkerMock } = vi.hoisted(() => ({
-  createWorkerMock: vi.fn(),
-}));
-
-vi.mock("tesseract.js", () => ({ createWorker: createWorkerMock }));
+class FakeWorker {
+  static instances: FakeWorker[] = [];
+  onmessage?: (event: { data: object }) => void;
+  onerror?: () => void;
+  onmessageerror?: () => void;
+  terminate = vi.fn();
+  packets: { packet: { jobId: string; action: string; payload: object }; transfer: unknown[] }[] = [];
+  constructor(public url: string) { FakeWorker.instances.push(this); }
+  postMessage(packet: { jobId: string; action: string; payload: object }, transfer: unknown[] = []) {
+    this.packets.push({ packet, transfer });
+    queueMicrotask(() => this.onmessage?.({ data: { jobId: packet.jobId, status: "resolve", data: { text: "recognized locally" } } }));
+  }
+}
 
 function read(relativePath: string): string {
   return fs.readFileSync(path.join(process.cwd(), relativePath), "utf8");
@@ -42,9 +50,11 @@ const OCR_ENTRY_POINTS = [
 
 describe("local OCR worker spawn contract", () => {
   beforeEach(() => {
-    createWorkerMock.mockReset();
-    createWorkerMock.mockResolvedValue({ terminate: vi.fn() });
+    FakeWorker.instances = [];
+    vi.stubGlobal("Worker", FakeWorker);
   });
+
+  afterEach(() => vi.unstubAllGlobals());
 
   it("disables the blob wrapper so the worker loads as a direct same-origin script URL", () => {
     expect(LOCAL_OCR_WORKER_OPTIONS.workerBlobURL).toBe(false);
@@ -58,19 +68,48 @@ describe("local OCR worker spawn contract", () => {
     expect(LOCAL_OCR_WORKER_OPTIONS.langPath.startsWith("/")).toBe(true);
   });
 
-  it("spawns eng/LSTM-only through the factory with the Trusted-Types-safe options", async () => {
-    await createLocalOcrWorker();
+  it("initializes eng/LSTM-only in a direct same-origin worker", async () => {
+    const client = await createLocalOcrWorker();
+    const worker = FakeWorker.instances[0];
+    expect(worker.url).toBe(LOCAL_OCR_WORKER_OPTIONS.workerPath);
+    expect(worker.packets.map(({ packet }) => packet.action)).toEqual(["load", "loadLanguage", "initialize"]);
+    expect(worker.packets[2].packet.payload).toEqual({ langs: "eng", oem: 1, config: {} });
+    await client.terminate();
+    expect(worker.terminate).toHaveBeenCalledOnce();
+  });
 
-    expect(createWorkerMock).toHaveBeenCalledTimes(1);
-    const [langs, oem, options] = createWorkerMock.mock.calls[0] as [
-      unknown,
-      unknown,
-      Record<string, unknown>,
-    ];
-    expect(langs).toBe("eng");
-    expect(oem).toBe(1);
-    expect(options).toMatchObject({ ...LOCAL_OCR_WORKER_OPTIONS });
-    expect(options.workerBlobURL).toBe(false);
+  it("transfers bitmaps without invoking main-thread canvas encoding", async () => {
+    const bitmap = { close: vi.fn() };
+    vi.stubGlobal("createImageBitmap", vi.fn().mockResolvedValue(bitmap));
+    const canvas = { toBlob: vi.fn(), toDataURL: vi.fn() };
+    const client = await createLocalOcrWorker();
+    expect(await client.recognize(canvas as unknown as HTMLCanvasElement)).toEqual({ data: { text: "recognized locally" } });
+    const sent = FakeWorker.instances[0].packets[3];
+    expect(sent.transfer).toEqual([bitmap]);
+    expect(sent.packet.payload).toMatchObject({ image: bitmap });
+    expect(canvas.toBlob).not.toHaveBeenCalled();
+    expect(canvas.toDataURL).not.toHaveBeenCalled();
+    expect(bitmap.close).toHaveBeenCalledOnce();
+    await client.terminate();
+  });
+
+  it("transfers file bytes and rejects use after termination", async () => {
+    const client = await createLocalOcrWorker();
+    await client.recognize(new Blob(["image bytes"]));
+    expect(FakeWorker.instances[0].packets[3].transfer[0]).toBeInstanceOf(ArrayBuffer);
+    await client.terminate();
+    await expect(client.recognize(new Blob(["image bytes"]))).rejects.toThrow(/closed/);
+  });
+
+  it("rejects pending operations on worker error instead of hanging", async () => {
+    const client = await createLocalOcrWorker();
+    const worker = FakeWorker.instances[0];
+    worker.postMessage = () => {};
+    const result = client.recognize(new Blob(["image bytes"]));
+    await new Promise((resolve) => setTimeout(resolve, 0));
+    worker.onerror?.();
+    await expect(result).rejects.toThrow(/worker failed/);
+    expect(worker.terminate).toHaveBeenCalledOnce();
   });
 
   it("provisions a guard worker that installs the narrow same-origin policy before importing tesseract", () => {
@@ -89,6 +128,10 @@ describe("local OCR worker spawn contract", () => {
     const guard = read("public/tesseract/worker-guard.js");
     expect(guard).toContain('createPolicy("default"');
     expect(guard).toContain('importScripts("/tesseract/worker.min.js")');
+    expect(guard).toContain("new OffscreenCanvas");
+    expect(guard).toContain("canvas.convertToBlob");
+    expect(guard).toContain("event.stopImmediatePropagation()");
+    expect(guard).toContain("image.close()");
     // Fallback safety: if policy creation fails, the importScripts sink below
     // surfaces a clear refusal instead of hanging before onmessage registers.
     expect(guard).toContain("catch (err)");

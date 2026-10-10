@@ -20,6 +20,11 @@ import "server-only";
  *   enabled and an API key is present.
  * - Inputs/outputs are redacted by design — callers should pass only counts
  *   and identifiers (never raw evidence, workflow payloads, or secrets).
+ * - LangSmith's traceable wrapper records `String(error)` on thrown errors.
+ *   Recommendation tracing therefore passes through a wrapper that replaces
+ *   thrown values with a fixed, content-free error before the SDK sees them.
+ *   Do not wrap new request-derived functions without the same failure-path
+ *   handling and sentinel tests.
  *
  * Usage:
  *   import { traceable } from "@/lib/observability/langsmith";

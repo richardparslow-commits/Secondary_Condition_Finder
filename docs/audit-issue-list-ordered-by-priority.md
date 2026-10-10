@@ -1,0 +1,209 @@
+# Audit issues — ordered by priority
+
+Compiled from the committed Security / Systems / VA Lighthouse production-readiness audit (`docs/security-va-production-audit-2026-10-04.md`), the security and architecture audit (`docs/security-architecture-audit-2026-10-07.md`), the accessibility evidence report (`docs/accessibility-audit.md`), the CRG redundancy triage (`docs/crg-redundancy-triage-2026-10-04.md`), the external/manual gates register (`docs/external-manual-gates-status.md`), the catalog-identity admission record (`docs/catalog-identity-admission.md`), the ME-17 ledger join fix (`docs/security-architecture-audit-2026-10-07.md §GATE-01`), and the repository knowledge-base validation state.
+
+Priority labels reuse the audit convention:
+- **P0**: ability, scope, or compliance gate the repository itself cannot close from code alone — not automatically a remotely exploitable critical vulnerability.
+- **P1**: high-impact correctness, availability, privacy-assurance, or usability defect.
+- **P2**: lower-impact correctness, coverage, or assurance gap; often disclosed rather than silently fixed.
+
+Where a finding is marked `FIXED (local)`, it landed in committed code and has a regression suite. Where it says `still open`, `external`, `manual`, or `review-pending`, the repository has recorded the gap honestly rather than re-labeling it closed.
+
+---
+
+## P0 — scope, access, and compliance gates the repository cannot close itself
+
+### 1. Veteran-specific integrations were requested but are absent (`B01`, security-va audit)
+
+- The requested combined Disability Rating / Benefits Claims / Benefits Intake scope implies implemented integrations. The current product states that it does not connect to a veteran account or submit claims, and public Benefits Reference Data is administrative reference information, not an authenticated individual's ratings or claims.
+- No OAuth authorization endpoint, callback, PKCE verifier transaction, state validation, token exchange/refresh/revocation lifecycle, or veteran identity-bound session existed at audit time for those capabilities.
+- This is missing capability, not proof that an existing OAuth flow is vulnerable.
+- **Repository posture:** keep the public-reference transition separate; choose and confirm eligible API versions/grants with VA before implementing veteran-specific flows.
+
+### 2. VA production access and build-specific deployment proof remain external (`B02`, security-va audit)
+
+- No VA production grant, sanitized grant letter, approved API/version/scope list, registered redirect configuration, current production connectivity evidence, or reviewed deployed KV/WAF/logging configuration was available at audit time.
+- The repository implements a deliberate tri-state runtime mode (`disabled`/`sandbox`/`production`) and a separate `VA_PRODUCTION_ACCESS_GRANTED` acknowledgement flag so a mis-set variable cannot repoint public reference surfaces at production or relabel data as production-sourced. The flag is intentionally unset in every current environment.
+- A successful build, fallback HTTP 200, or mock account data does not close this gate. Grant approval and a controlled authorized connectivity check are separate evidence events.
+- **Repository posture:** documented, fail-closed, externally blocked. Not closable from code.
+
+### 3. Section 508 conformance cannot be claimed yet (`B03`, security-va audit; `accessibility-audit.md`)
+
+- The manual workbook has no completed human accessibility evidence or sign-off.
+- A live production-mode Chromium check found the `/presumptive` DD-214 file input exposed only as **“Choose File”**, with no associated label/id/aria-label naming its purpose, and a later free-text location input relying on placeholder text rather than a durable associated label.
+- Repository gate rule (`#195`) requires human keyboard, assistive-technology, zoom/reflow, contrast, and forced-colors evidence on an identified build before any conformance claim.
+- **Repository posture:** labels fixed in code; human review still open. Do not represent the application as verified Section 508 compliant until #195 evidence and retests are complete on an identified build.
+
+### 4. Public-reference production transition is externally blocked (`#287`, external-manual-gates-status.md)
+
+- The gate rule is decisive: do not switch the application to VA production endpoints or label data as production-sourced until VA production access is granted and live production connectivity is objectively verified.
+- The final remaining item requires live production reference checks before closure. VA has not granted production access, so no repository change can close it.
+- **Repository posture:** correctly recorded as OPEN / external. Not closable from code.
+
+### 5. Manual Section 508 review is open and blocking (`#195`, external-manual-gates-status.md; `accessibility-audit.md`)
+
+- Required manual items include keyboard-only traversal and focus order, keyboard traps/disclosure/file-input behavior, screen-reader announcements and reading order (NVDA + Chrome/Edge on Windows, VoiceOver + Safari on macOS), error identification and instructions, 200% zoom/reflow, color contrast across rendered states, and Windows high-contrast/forced-colors behavior.
+- None of these are proven by the automated suite. The automated suite covers structural, content, keyboard-entry, focus-style, reflow-safeguard, forced-colors, reduced-motion, validation, mobile-workflow, and selected live-status announcement contracts, but explicitly does not prove complete Section 508 or WCAG conformance.
+- **Repository posture:** open, human-gated. Not closable from code.
+
+### 6. Credentialed sandbox proof is a separate process record, not code (`#189`, external-manual-gates-status.md)
+
+- The repository records this as closed with sanitized credentialed sandbox success evidence for VA Forms and Benefits Reference Data.
+- Treat that as an evidence-lineage check, not a missing engineering item. It does not prove production access.
+
+---
+
+## P1 — high-impact correctness, availability, privacy, or usability defects
+
+### 7. Recommendation aggregation is still order-dependent on valid synthetic inputs (`B05`, security-va audit; `FIXED (local)`)
+
+- Discovery order can change ranking, contributing-primary/provenance/consensus presentation. The contract claims order-invariant aggregation, but the direct accumulator, path accumulator, and final score derivation did not separate direct contributions from paths and aggregate each collection before choosing the documented score/provenance policy.
+- Two valid synthetic fixtures (`diagnosedConditionIds: [target]`) reproduce different outcomes for `[A, B]` versus `[B, A]`.
+- **Test blind spot:** order-invariance tests omit `diagnosedConditionIds`, and the path composer requires a diagnosed target, so those tests do not activate the mixed direct/path cases they claim to protect.
+- **Repository posture:** fixed in code with regression tests; not yet independently full-corpus-quantified here.
+
+### 8. Distributed cooldown recovery is unfenced and Retry-After fidelity was not supported (`B06`, security-va audit; `FIXED (local)`)
+
+- Outcome recording reset local circuit state and published shared recovery on every success, regardless of whether the success was an admitted probe.
+- Shared recovery unconditionally deleted the open marker.
+- A shared marker stored only state/openedAt and was compared against a fixed 60-second gate; a caller-supplied longer cooldown was not preserved.
+- Local Retry-After clamped to 1–60 seconds; a longer upstream cooldown was shortened.
+- **Repository posture:** fixed in code with coordination and fleet regression tests.
+
+### 9. Shared coordination had false-success and ownership races (`B07`, security-va audit; `FIXED (local)`)
+
+- Cooldown publication reported success on transport HTTP 200 even when the command payload carried an error; shared recovery could report transport success for marker deletion.
+- Fetch-release and probe-release compared a token via GET then issued a separate DEL, so a lease replaced between those commands could be deleted by the old owner.
+- A fetch lease was 45 seconds while a logical fetch could make multiple attempts plus backoff and coordination/write time, so the code's own documentation correctly calls it best-effort deduplication rather than a quota safety control.
+- **Repository posture:** fixed in code using atomic compare-and-delete ownership and command-result validation.
+
+### 10. Privacy statements contradict actual events; some error channels bypass redaction (`B08`, security-va audit)
+
+- Privacy §3 and §7 say no workflow/recommendation event history is persisted through an application event logger. The auditLog module emits workflow action/status/route/count events, recommendation execution emits counts/duration, and the structured logger writes timestamped records for platform ingestion. A synthetic probe log contained these recommendation events.
+- The audit found persistence error paths that directly logged parser/upstream exception text, client error boundaries that emitted exception content, and a LangSmith trace wrapper whose rejection callback could stringify arbitrary errors. The legacy secondary persistence-action module from that audit is no longer present following the browser-local migration.
+- **Repository posture:** fixed locally at reviewed application sinks. Health checks return fixed per-component failure details and a content-free 503 fallback; bundled JSON parsing, catalog/KB/exposure/regulatory validation, graph-loader diagnostics, startup warmup failures, and LangSmith recommendation failures no longer serialize parser/error content. Regression tests plant sentinel diagnostics and verify they do not cross those boundaries. Operational action/count/status events remain intentionally logged and are documented as event logging, not a medical-record database.
+- **Still open:** prove this sink inventory complete against the final deployed build and configured sinks; inspect actual collector/host retention, IP/request correlation, access controls, export paths, and any enabled LangSmith configuration. No deployed-host or third-party collector review was performed here, and event logging is not absent.
+
+### 11. Section 508 control defect: DD-214 file input lacked a durable accessible name (`B03` code part; `FIXED (local)`)
+
+- The DD-214 file input had no associated label/id/aria-label naming its purpose.
+- The surrounding section heading did not by itself give the input that contextual accessible name.
+- The later free-text location input relied on placeholder text rather than a durable associated label.
+- **Repository posture:** control labels fixed in code; human review still open (see #3).
+
+### 12. Browser-local OCR was broken by the production Trusted Types policy (`B04`, security-va audit; `FIXED (local, browser-verified)`)
+
+- Both DD-214 worker constructors and the main evidence OCR constructor omitted a `workerBlobURL` override, so pinned Tesseract defaulted to spawning `new Worker(URL.createObjectURL(blob))`.
+- The Trusted Types policy rejects every non-http(s) script URL, including blob URLs, and `worker-src 'self' blob:` does not override Trusted Types sink checks.
+- A synthetic DD-214 PNG on the production-mode local `/presumptive` page ended with a visible “Trusted Types: refused non-same-origin script URL” status and no extraction result.
+- A PDF.js modern-build compatibility defect was also found and fixed separately (`B04b`, local).
+- **Repository posture:** fixed by preferring a same-origin worker path, retaining strict URL/body policy, and browser-testing under the actual production headers. CSP/Trusted Types were not weakened.
+
+### 13. Privacy boundary: all veteran workflow PHI should stay browser-local (`PRIV-01`, architecture audit)
+
+- A server path reading veteran context is a high-priority violation if the contract is “no veteran PII/PHI enters Server Components/Actions/Routes.” TLS, HttpOnly, SameSite, encryption at rest/in transit, and log redaction do not turn server processing into browser-only processing.
+- No demonstrated hosting-provider body log, raw-document transmission, cross-user disclosure, or HIPAA violation determination was established in the audit. The application's privacy page describes the bounded-server-workflow exceptions.
+- The repository resolved the acceptance contract as **browser-local all PHI** and landed stages 1–4: browser-local step pages, PHI-bearing Server Actions retired, legacy cookie path deleted and tombstoned, and the browser-sentinel acceptance passed with zero private-field leakage.
+- **Repository posture:** contract resolved and staged; separate sandbox-account BFF data still processes veteran data server-side and needs an explicit privacy/security exception. Remaining production gates are the other findings (COMP-01 VA/Section 508 acceptance, SEC-02 trusted ingress, SEC-01 deployed-native verification).
+
+### 14. Health can report healthy without the real production workflow secret (`REL-04`, architecture audit; `FIXED (local)`)
+
+- The health endpoint previously tested crypto with an ephemeral probe secret independent of production config, so a production deployment without a usable workflow session secret could answer healthy.
+- **Repository posture:** fixed so `components.workflowSession` reports the configured secret's round-trip readiness and gates `healthy`; a deployment that cannot seal and reopen a real workflow session answers 503. The VA account store still accepts the legacy `SECONDARY_WORKFLOW_SESSION_SECRET` fallback, so a deployment relying on that fallback is reported ready by this component while the fallback is in use. Retiring that fallback is the recorded follow-up.
+
+### 15. VA public search routes and identity policy had coverage/ingress gaps (`SEC-02`, architecture audit; `partially remediated (local)`)
+
+- Inbound rate limiting originally matched only `/va-forms`, `/va-reference`, `/presumptive/results`, and `/secondary/suggestions`, missing `/va-forms/finder`, `/va-reference/service-branches`, `/secondary/evidence`, and `/presumptive`, which also reach reference loaders.
+- Client key extraction trusted the first `X-Forwarded-For` entry, so a hostname, path fragment, or fresh random token could become a bucket key, and an unusable `X-Forwarded-For` could mask a usable `X-Real-IP`.
+- Missing identity previously skipped the limiter entirely, which could turn a per-IP allowance into a global cap under load.
+- **Repository posture:** `/va-forms/finder` and `/secondary/evidence` added to the limiter; `HEAD` now consumes the same reference budget as `GET`; identity is now a validated IP literal or nothing; missing identity is bounded by a named shared ceiling instead of skipped; the trust decision and store regime are now reported, not assumed; `/api/health` exposes `components.rateLimit.identity|ceiling|store`. Bucket regime remains process-local and resets on cold start; no shared counter store is provisioned for inbound admission; trusted ingress verification and hosted/two-instance acceptance remain open.
+
+---
+
+## P2 — lower-impact correctness, coverage, or assurance gaps
+
+### 16. Reference-search text has a URL, upstream, and cache-value exposure path (`A01`)
+
+- The Forms Finder is a GET form allowing arbitrary 120-character text. The loader trims/bounds it, hashes the cache key, sends it as the configured VA query when live access is allowed, and stores the raw query inside the returned/cached view.
+- A sensitive identifier accidentally typed there can appear in browser history, application/edge request URLs, upstream VA traffic, and shared cache values. Hashing a key is not encryption or removal of its value. ZIP/radius/type likewise appear in directory parameters and cached values; low-entropy ZIP hashes can be enumerated.
+- **Repository posture:** path confirmed, not actual ingestion of a real identifier. Prefer constrained form identifiers, explicit warnings, identifier-like rejection where safe, avoid raw text in URLs/cache values, and verify host/CDN log scrubbing.
+
+### 17. Inbound reference rate limiting missed live loader routes (`A02`)
+
+- The GET limiter originally matched only `/va-forms`, `/va-reference`, `/presumptive/results`, and `/secondary/suggestions`, missing `/va-forms/finder`, `/va-reference/service-branches`, `/secondary/evidence`, and `/presumptive`.
+- **Repository posture:** partly addressed by adding live loader routes; completeness against ordinary/RSC/prefetch/HEAD paths still depends on a verified boundary and deployment configuration.
+
+### 18. Fixed-minute shared budget permits a boundary burst; upstream quota semantics unconfirmed (`A03`)
+
+- The shared budget increments `floor(now/60000)`, permits 60, and sets a 120-second expiration, so 60 reservations just before the minute plus 60 just after admit 120 in a millisecond-spanning boundary interval. This is expected fixed-window behavior, not proof of a VA quota violation without the applicable consumer's rolling/fixed/reset semantics.
+- `ratelimit-remaining`/reset guidance is not used to adapt pacing; the consumer policy, environment, and credential-sharing arrangement were not supplied.
+- **Repository posture:** conservative pacing or an appropriate atomic sliding/token mechanism until exact semantics are documented; verify the issued consumer policy with VA.
+
+### 19. Cached live-view guards validate labels/links, not the loader's actual schema (`A04`)
+
+- The common cached-view guard accepts a correctly labeled/environment-matched object with `items: "NOT_AN_ARRAY"`. The generic cache reader casts envelope value to T, so the UI can fail on a malformed cached value.
+- Timestamp checks bound length rather than parse dates; HTTPS links are credential-free but not necessarily official VA hosts; cached query/params are not matched to the requested lookup.
+- **Repository posture:** validate a per-loader Zod cache DTO, exact query/params, item/field bounds, timestamps, and appropriate link origin provenance before serving; align read/write envelope limits.
+
+### 20. Disabling the representative feature does not revoke cached live results (`A05`)
+
+- The directory loader gates cache reads on global `config.enabled`, not the service-specific accredited-rep flag, so mocked `VA_API_ENABLED=true` with `VA_ACCREDITED_REP_ENABLED=false` can still return a cached live directory.
+- **Repository posture:** evaluate the effective service flag before every cache tier, wait path, and transport; define whether disable means “no new fetch” or “show no live data”; make UI/policy and tests agree.
+
+### 21. Alternate DD-214 parser does not share the main evidence resource/integrity controls (`A06`)
+
+- The alternate parser does not share the main document/OCR resource limits, per-page text/OCR decisions, bounded streaming retention, pixel limits, teardown, partial-result warnings, or cancellation.
+- SSN masking recognizes three numeric layouts; “full SSN is never displayed” is stronger than that heuristic can establish for arbitrary OCR spacing/punctuation/errors. A raw-text preview can retain identifiers not matching those patterns.
+- **Repository posture:** reuse the stricter main helpers, add per-page decisions, bounded streaming retention, pixel limits and teardown, partial-result warnings, and cancellation. Avoid a broad local-preview identifier guarantee unless tested and enforceable. All document-derived fields require explicit user review.
+
+### 22. Finish/restart can hide incomplete browser cleanup; in-flight OCR has no cancellation fence (`A07`)
+
+- Local cleanup attempts all six workflow stores and throws if any removal failed, but the completion UI silently catches the error and still submits the cookie-clearing action. Cookie deletion is useful, but it is not proof that excerpts/checkpoints were removed from sessionStorage.
+- Main evidence OCR writes resume checkpoints asynchronously and lacks a cancellation/unmount generation check. Clear controls are disabled during work. Continued writes after workflow exit are a plausible lifecycle race. SessionStorage is tab-local, not encrypted or inaccessible to same-origin code/XSS; TTL checks on read are not background physical deletion at the exact expiry time.
+- **Repository posture:** cancel/fence extraction before finish/restart, attempt all storage removals, show a clear warning when erasure cannot be confirmed, and report cookie removal and local cleanup outcome separately.
+
+### 23. Graph safety and DAG integrity are different, and two graph representations coexist (`A08`)
+
+- The adjacency preview's runtime loader validates schema, identities, and catalog references, but leaves acyclicity to CI; a valid synthetic bidirectional graph loaded successfully.
+- The generator terminates on repeated ancestors and emits only a one-hop branch under its two-hop cap. Depth cap plus ancestor guard prevent infinite recursion here; they do not validate the graph as a DAG or globally bound a future dense frontier's output.
+- **Repository posture:** decide whether acyclicity applies to causal inference edges only or every research relationship; enforce the selected invariant at authoring, CI, and runtime load, with explicit governance for bidirectional associations. Do not remove medically legitimate directions merely to make an all-relationships audit green. Reconcile authored recommendations and adjacency preview before migration.
+
+### 24. Whole-project file tracing over-expands server deployment packaging (`A09`)
+
+- The final production build warns that graph path construction causes tracing of the whole project. Final `.nft.json` manifests contain 2,747 files for the pathways route and 2,731 for health, including 269 docs and 289 tests in each trace.
+- This increases packaging scope, size, and accidental future inclusion risk. It does not prove those files are publicly downloadable, that secrets were included, or that a secret leaked.
+- **Repository posture:** scope the filesystem path statically to the required data directory and assert package contents/size. Prefer fixing tracing scope over suppressing the warning or excluding data required at runtime.
+
+### 25. Legacy adapter and development dependency debt (`A10`)
+
+- The legacy VA adapter accepts any absolute base URL, sends a bearer credential, and uses unbounded `response.json`. It blocks redirects and no production entrypoint was found, so a publicly reachable SSRF or credential-exfiltration exploit was not established. Retire it or clearly isolate it from real integrations; never use its fabricated schema/auth headers as proof of VA compliance.
+- Runtime-only npm audit passed with zero advisories. The full dependency audit failed with five high-severity package entries arising from one braces stack-exhaustion advisory chain (`GHSA-vfj7-8cjw-p6xm`: braces → micromatch → fast-glob → Next ESLint plugin → eslint-config-next). This is not five independent application vulnerabilities; hostile-pattern reachability in the development workflow was not demonstrated.
+- **Repository posture:** track a compatible patched dependency path or an explicit evidence-based tooling risk disposition. Do not apply npm's proposed forced downgrade of eslint-config-next to 14.2.35 unless justified by evidence.
+
+### 26. Knowledge-base coverage is strong, but clinical review debt, citation verification debt, and redundancy conflicts remain (`docs/clinical-program-status.md`; `docs/crg-redundancy-triage-2026-10-04.md`; `kb:validate`)
+
+- Knowledge-base validation passes with 819 catalog conditions, 819 mappings, and zero identity drift.
+- Published academy/deck state reports 140 published mappings and 434 draft mappings with authored suggestions; each quarantined draft still carries a single unverified citation and remains draft-only.
+- The CRG audit reports 873 relationships, 248 published edges, 825 ASSOCIATION_ONLY edges, 13 enumerated cycles, four bidirectional pairs, and 29 redundancy conflicts, with status REVIEW rather than clinical approval.
+- **Repository posture:** passing referential integrity is not qualified-human medical-source verification; review-debt baseline tolerates existing findings without proving acyclicity or clinical validity; never raise a pin to make CI green.
+
+### 27. ME-17 ledger join was one-way and under-audited; now fixed, but the ME-17 edge still has an owner disposition (`GATE-01`, architecture audit §GATE-01; `FIXED (local)`)
+
+- The old “Audit ME / CRG compliance” gate read only one of three ledger shapes, skipped an unparsable ME-20 ledger, and never reported an approved relationship missing from the corpus — so 15 of 39 ledgers and 71 of 191 approvals were unaudited while the gate was green.
+- The ledger join is now two-way with an unreadable/unknown-shape fail-closed path, an exact-pair allowance for the one absent ME-17 relationship, and ME-20's invalid JSON repaired at the encoding level only.
+- **Still open:** ME-17's `tinnitus → depressive-disorder` approval (rank 1, PMID 30909841) is absent from the local working tree's corpus because `data/knowledge-base/tinnitus.json` has an uncommitted rewrite that keeps only a rank-1 `migraine-headaches` edge. That dirty file was left untouched, so the absence is reported as a pinned warning rather than silently accepted. If that rewrite lands as authored, ME-17 needs an owner disposition: the approved relationship is currently in neither the corpus nor a retirement record.
+
+### 28. Staged CRG packet converter failures are owner-data drift, not a gate defect (`REL-03`, architecture audit; converter failures diagnosed)
+
+- The staged packet converter still fails the hold census (`HOST_GOVERNANCE_REVIEW` 4 expected, 8 built) and the delivered-vs-fresh manifest comparison.
+- Both are the same owner-data drift: four hosts gained `governanceNotes` after the 2026-10-06 delivery, so the committed staging manifest records the older census.
+- The staged graph itself still passes the real loader and both gate verdicts. Re-delivering a dated clinical staging packet is the owner's call; the manifest is not regenerated and no recorded hash is rewritten here.
+
+---
+
+## Cross-cutting notes and closing boundary
+
+- **No fabricated passes.** This list leaves the external and manual gates where they are recorded: #189 and #213 as closed process records requiring evidence-lineage verification; #195 and #287 as open, human/external-gated; Section 508 not claimed until identified-build human evidence and retests are complete.
+- **Not a penetration test and not a clinical verification.** The source reviews are risk-focused and executable, but they do not certify every line, prove medical validity, or establish deployed production-readiness on their own.
+- **Freeze posture:** remediation landed under the October 11 freeze without release operations; the repository records that explicitly.
+- **What is still genuinely outstanding, in priority order:** VA production grant and verified production connectivity (#287), identified-build human Section 508 evidence and retests (#195), complete deployed-sink inventory plus actual collector/host retention and access review (B08), host-log and cache-value identifier exposure review (A01/A04), effective accredited-rep disable semantics (A05), local cleanup/OCR cancellation and erasure-confirmation messaging (A07), and a closed ME-17 owner disposition once the dirty tinnitus.json rewrite lands or is retired.

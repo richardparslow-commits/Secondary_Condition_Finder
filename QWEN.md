@@ -32,8 +32,8 @@ src/lib/actions/       ALL Server Actions ("use server")
 src/lib/catalog/       Catalog Zod schema, loader, lookup
 src/lib/kb/            Knowledge-base Zod schema, loader, lookup
 src/lib/engine/        Recommendation/export logic
-src/lib/secondary-workflow/   Secondary workflow state + encrypted session
-src/lib/presumptive/   Service-history matcher + encrypted session
+src/lib/secondary-workflow/   Browser-local secondary workflow state and transport
+src/lib/presumptive/   Service-history matcher + browser-local history store
 src/lib/evidence/      Browser-local evidence extraction (client-side only)
 src/lib/va/            Environment-aware VA API adapters (disabled by default)
 src/app/               App Router pages; only one API route (regulatory preflight)
@@ -82,10 +82,11 @@ docs/                  master-specification.md is the consolidated spec
    test:composition` enforces this.
 2. **Server Actions only:** all Server Actions live in `src/lib/actions/`.
    Workflow state never travels in GET query strings or URLs.
-3. **Session cookies:** workflow state lives in short-lived, encrypted,
-   authenticated HttpOnly cookies (`src/lib/workflow-session-crypto.ts`,
-   AES-256-GCM). Production fails closed without a ≥32-char
-   `WORKFLOW_SESSION_SECRET`.
+3. **Browser-local research workflows:** secondary and presumptive context lives in
+   versioned, schema-bounded browser `sessionStorage`; the application does not
+   persist it in workflow cookies or URLs. The optional VA-account sandbox uses
+   separate server-side encrypted sessions and is disabled by default. The legacy
+   `WORKFLOW_SESSION_SECRET` is a crypto-readiness marker, not a research-workflow key.
 4. **Browser-local evidence:** raw document bytes/text never reach the server;
    `src/lib/evidence/` parsers are imported only from client components.
 5. **CSP:** never weaken the per-request nonce CSP in `src/proxy.ts` (no

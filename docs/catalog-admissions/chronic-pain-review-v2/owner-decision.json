@@ -1,0 +1,8 @@
+{
+  "formatVersion": 1,
+  "proposalId": "chronic-pain-admission-v1",
+  "proposalSha256": "8bc2145429eb73267b6fe6762c6383565ee5e0f2ebad944fbfb0a7c60ad34ae5",
+  "baselineSha256": "644da9d2f2066194a55a20700b45a8c1557d5190461a84100d3429c6b023f4d8",
+  "outcome": "pending",
+  "reason": "Owner has requested process and a pending proposal only; no identity or restoration approval has been granted."
+}

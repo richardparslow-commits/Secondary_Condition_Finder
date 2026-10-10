@@ -1,3 +1,6 @@
+import { readFileSync, readdirSync } from "node:fs";
+import { join } from "node:path";
+
 import { describe, expect, it } from "vitest";
 
 import nextConfig, {
@@ -105,13 +108,60 @@ describe("COI exemption source builder", () => {
 });
 
 describe("file-tracing scope decision", () => {
+  const include = nextConfig.outputFileTracingIncludes?.["/**"] ?? [];
+
   it("keeps the app-wide tracing include that the memoized loaders require", () => {
     // The data directory is a server-wide dependency: every secondary
     // workflow page, presumptive page, /terms, the health API, both action
     // modules, and the instrumentation warmup import the filesystem-backed
     // loaders. A per-route scope would only fail at runtime in production.
-    expect(nextConfig.outputFileTracingIncludes?.["/**"]).toContain(
-      "./data/**/*.json",
-    );
+    expect(nextConfig.outputFileTracingIncludes?.["/**"]).toBeDefined();
+    expect(include.length).toBeGreaterThan(0);
+    for (const glob of include) expect(glob.startsWith("./data/")).toBe(true);
+  });
+
+  it("derives the include from the data directory it is meant to ship", () => {
+    // Pinned against the real directory, not a hardcoded list: adding a
+    // data/ domain must not require remembering to widen the include, which
+    // is the failure mode that makes a per-route or hand-listed scope unsafe.
+    const expected = readdirSync(join(process.cwd(), "data"), { withFileTypes: true })
+      .filter((entry) =>
+        entry.isDirectory()
+          ? entry.name !== "knowledge-base-quarantine"
+          : entry.isFile() && entry.name.endsWith(".json"),
+      )
+      .map((entry) =>
+        entry.isDirectory() ? `./data/${entry.name}/**/*.json` : `./data/${entry.name}`,
+      )
+      .sort();
+
+    expect(expected.length).toBeGreaterThan(0);
+    expect(include).toEqual(expected);
+  });
+
+  it("keeps quarantine exclusions on every route as defense-in-depth", () => {
+    expect(nextConfig.outputFileTracingExcludes?.["/**"]).toEqual([
+      "./data/knowledge-base-quarantine/**",
+    ]);
+  });
+
+  it("preserves the KB read boundary for instrumentation tracing", () => {
+    // Instrumentation is not covered by App Router include/exclude rules.
+    // path.join(KB_DIR, file) widens its trace to the sibling quarantine tree;
+    // keep the slash explicit at every read, including the published-id index.
+    const source = readFileSync(join(process.cwd(), "src/lib/kb/load.ts"), "utf8");
+    expect(source).not.toContain("path.join(KB_DIR, file)");
+    expect(source.match(/(?:fs|fsp)\.readFile(?:Sync)?\(`\$\{KB_DIR\}\/\$\{file\}`, "utf8"\)/g)).toHaveLength(4);
+  });
+
+  it("keeps retired data out of the artifact", () => {
+    // The blanket `data/**` glob shipped data/knowledge-base-quarantine/**
+    // (retired, unapproved mappings kept only as a record) into every server
+    // trace and into the standalone bundle. It must not come back, and no
+    // traced pattern may reach the quarantine directory.
+    expect(include).not.toContain("./data/**/*.json");
+    expect(include.filter((glob) => glob.includes("knowledge-base-quarantine"))).toEqual([]);
+    // The exclusion is only meaningful while the directory actually exists.
+    expect(readdirSync(join(process.cwd(), "data"))).toContain("knowledge-base-quarantine");
   });
 });

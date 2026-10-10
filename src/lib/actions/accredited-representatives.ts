@@ -41,6 +41,12 @@ function textValue(formData: FormData, key: string): string | null {
  * `type` ("VSO"|"agent"|"attorney"), `returnTo` (default: /secondary/suggestions).
  * Success: redirect to {returnTo}?zip={zip}&radiusMiles={radius}&type={type}.
  * Errors: invalid-zip, invalid-radius, invalid-type.
+ * The server action accepts only the public directory query fields, not Veteran
+ * workflow data. Invalid input is represented by fixed error codes; never echo
+ * validation/parser detail or the request payload to a log sink.
+ * The server action accepts only the public directory query fields, not Veteran
+ * workflow data. Invalid input is represented by fixed error codes; never echo
+ * validation/parser detail or the request payload to a log sink.
  * See docs/api-specification.md for full contract.
  */
 export async function searchAccreditedRepresentatives(

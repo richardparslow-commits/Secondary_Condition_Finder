@@ -87,7 +87,7 @@ describe("P2 Ticket 10: Text Export for Representative Meetings", () => {
   });
 
   it("wires Step 6 to a browser-only download with explicit privacy exclusions", () => {
-    const evidencePage = readRepoFile("src/app/secondary/evidence/page.tsx");
+    const evidencePage = readRepoFile("src/components/secondary/steps/EvidenceStep.tsx");
     const downloadComponent = readRepoFile("src/components/ConsultationSummaryDownload.tsx");
     const mapperComponent = readRepoFile("src/components/evidence/PathwayEvidenceMapper.tsx");
 

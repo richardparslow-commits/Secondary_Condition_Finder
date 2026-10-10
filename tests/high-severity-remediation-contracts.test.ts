@@ -10,13 +10,19 @@ function read(relativePath: string): string {
 describe("high-severity remediation contracts", () => {
   it("keeps partial presumptive dates visible and explicitly unconfirmed", () => {
     const resultsPage = read("src/app/presumptive/results/page.tsx");
+    // PRIV-01 follow-on (2026-10-08): the results page no longer reads the
+    // session, so the partial-date copy moved into the browser-local view that
+    // renders the confirmed history. The contract tracks whichever layer
+    // actually renders the strings — the page must still reach that view.
+    const resultsView = read("src/components/presumptive/PresumptiveResults.tsx");
     const matcher = read("src/lib/presumptive/match.ts");
 
-    expect(resultsPage).toContain("start date");
-    expect(resultsPage).toContain("end date not provided");
-    expect(resultsPage).toContain("start date not provided");
-    expect(resultsPage).toContain("Service date range incomplete");
-    expect(resultsPage).toContain("date range unconfirmed");
+    expect(resultsPage).toContain("PresumptiveResults");
+    expect(resultsView).toContain("start date");
+    expect(resultsView).toContain("end date not provided");
+    expect(resultsView).toContain("start date not provided");
+    expect(resultsView).toContain("Service date range incomplete");
+    expect(resultsView).toContain("date range unconfirmed");
     expect(matcher).toContain("partialRangeMayOverlap");
     expect(matcher).toContain("history.serviceStart && history.serviceEnd");
     expect(matcher).not.toContain("history.serviceStart ?? history.serviceEnd!");

@@ -6,6 +6,7 @@ import { z } from "zod";
 
 import { ACCOUNT_HTTP_TIMEOUT_MS, ACCOUNT_SESSION_SECONDS, ACCOUNT_TRANSACTION_SECONDS, type VaAccountConfig } from "./config";
 import { boundedAccountJson, type AccountStore } from "./store";
+import { accountTransport, rememberDemoNonce } from "./transport";
 
 const random = () => randomBytes(32).toString("base64url");
 const digest = (value: string) => createHash("sha256").update(value).digest("base64url");
@@ -55,7 +56,8 @@ async function postTokens(config: VaAccountConfig, body: URLSearchParams) {
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), ACCOUNT_HTTP_TIMEOUT_MS);
   try {
-    const response = await fetch(config.tokenUrl, {
+    // The transport is the demo seam only; with the gate closed it is `fetch`.
+    const response = await accountTransport(config)(config.tokenUrl, {
       method: "POST", headers: tokenHeaders(config, body), body,
       redirect: "error", cache: "no-store", signal: controller.signal,
     });
@@ -73,7 +75,7 @@ async function verifyIdentity(config: VaAccountConfig, token: string, nonce?: st
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), ACCOUNT_HTTP_TIMEOUT_MS);
   try {
-    const response = await fetch(config.keysUrl, { redirect: "error", cache: "no-store", signal: controller.signal });
+    const response = await accountTransport(config)(config.keysUrl, { redirect: "error", cache: "no-store", signal: controller.signal });
     if (!response.ok) throw new AccountUnavailable();
     const json = await boundedAccountJson(response, 64 * 1024);
     const jwks = z.object({ keys: z.array(z.object({ kty: z.literal("RSA"), kid: z.string(), n: z.string(), e: z.string() }).passthrough()).min(1).max(20) }).parse(json);
@@ -100,6 +102,9 @@ export async function startAccountLogin(config: VaAccountConfig, store: AccountS
   };
   if (!await store.put(`login-budget:${config.fingerprint}`, { kind: "budget" }, 2) ||
     !await store.put(transactionKey(config, state), transaction, ACCOUNT_TRANSACTION_SECONDS)) throw new AccountUnavailable();
+  // Only after the transaction is durably stored: a nonce remembered for a login
+  // that never began would let a later token exchange bind to the wrong one.
+  rememberDemoNonce(config, nonce);
   const url = new URL(config.authorizationUrl);
   url.search = new URLSearchParams({
     response_type: "code", response_mode: "query", client_id: config.clientId,
@@ -136,13 +141,22 @@ export async function completeAccountLogin(config: VaAccountConfig, store: Accou
   return handle;
 }
 
-export async function readAccountSession(config: VaAccountConfig, store: AccountStore, handle: string): Promise<AccountSession | null> {
+export async function readAccountSession(
+  config: VaAccountConfig,
+  store: AccountStore,
+  handle: string,
+  options: { force?: boolean } = {},
+): Promise<AccountSession | null> {
   if (!handleSchema.safeParse(handle).success) return null;
   const key = accountSessionKey(config, handle);
   const parsed = sessionSchema.safeParse(await store.read(key));
   if (!parsed.success || parsed.data.service !== config.service || parsed.data.fingerprint !== config.fingerprint || parsed.data.expiresAt <= Date.now()) return null;
   const session = parsed.data;
-  if (session.accessExpiresAt > Date.now() + 30_000) return session;
+  // `force` is how a caller that was just handed a 401 re-uses this path
+  // instead of refreshing on its own: the compare-and-swap below is the only
+  // place a refresh may happen, so a token the API rejected while our clock
+  // still called it fresh is renewed here, atomically, or not at all.
+  if (!options.force && session.accessExpiresAt > Date.now() + 30_000) return session;
   // Atomically move to an unreadable refreshing state. A second reader fails
   // closed, and logout deletion prevents CAS from resurrecting the session.
   const refreshing = { kind: "refreshing", fingerprint: config.fingerprint, id: random() };
@@ -178,7 +192,7 @@ export async function disconnectAccount(config: VaAccountConfig, store: AccountS
     const body = new URLSearchParams({ token, token_type_hint: hint });
     const controller = new AbortController(); const timer = setTimeout(() => controller.abort(), ACCOUNT_HTTP_TIMEOUT_MS);
     try {
-      const response = await fetch(config.revocationUrl, { method: "POST", body, headers: tokenHeaders(config, body), redirect: "error", cache: "no-store", signal: controller.signal });
+      const response = await accountTransport(config)(config.revocationUrl, { method: "POST", body, headers: tokenHeaders(config, body), redirect: "error", cache: "no-store", signal: controller.signal });
       revoked = response.ok && revoked;
     } catch { revoked = false; }
     finally { clearTimeout(timer); }

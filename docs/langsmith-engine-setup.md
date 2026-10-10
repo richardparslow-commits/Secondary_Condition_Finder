@@ -47,9 +47,9 @@ LANGSMITH_TRACING=true LANGSMITH_API_KEY=lsv2_pt_... npm run dev
 # → a `recommend` trace appears in LangSmith → Tracing → project secondary-condition-finder
 ```
 
-The traced surface is deliberately redacted: `processInputs` ships only counts (`primaryConditions`, `diagnosedConditionIds` length, `hasTimeline`, `engineVersion`); `processOutputs` ships only `recommendationCount` / `recognizedPrimaries`. See `src/lib/engine/recommend.ts: recommendTraced` for the exact contract. No raw intake text or document content is sent.
+The traced surface is deliberately redacted: `processInputs` ships only counts (`primaryConditions`, `diagnosedConditionIds` length, `hasTimeline`, `engineVersion`); `processOutputs` ships only bounded counts (`recommendationCount`, `recognizedPrimaries`, `unmappedPrimaries`). Exceptions are also a trace input in the installed SDK: its `traceable` wrapper records `String(error)` on rejection, so `recommendForTraceSafely` replaces thrown recommendation errors with a fixed message before the SDK sees them. Processor failures return fixed fallback DTOs. Synthetic sentinel regressions cover successful and failed paths. No raw intake text or document content is sent. Deployed LangSmith enablement, project settings and collector retention/access still require operator review.
 
-The suggestions page uses `recommendWithTracing` — when `LANGSMITH_TRACING !== "true"` it falls straight through to the synchronous `recommend` with no extra overhead or Promise cost beyond the `async` boundary.
+The suggestions page uses `recommendWithTracing` — when `LANGSMITH_TRACING !== "true"` it falls straight through to the synchronous `recommend` with no extra overhead or Promise cost beyond the `async` boundary. Do not trace additional request-derived functions without equivalent input/output redaction and a fixed-message exception boundary.
 
 ## 4) Connect Engine to GitHub so it can open automated diagnostic PRs
 

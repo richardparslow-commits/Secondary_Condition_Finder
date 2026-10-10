@@ -99,10 +99,10 @@ describe("Phase 2 — rating guide and action plan", () => {
 
   it("RatingGuide and ActionPlan are wired into Steps 5 and 6", async () => {
     const fs = await import("node:fs");
-    const suggestionsPage = fs.readFileSync("src/app/secondary/suggestions/page.tsx", "utf8");
+    const suggestionsPage = fs.readFileSync("src/components/secondary/steps/SuggestionsStep.tsx", "utf8");
     expect(suggestionsPage).toContain("RatingGuide");
     expect(suggestionsPage).toContain("ActionPlan");
-    const evidencePage = fs.readFileSync("src/app/secondary/evidence/page.tsx", "utf8");
+    const evidencePage = fs.readFileSync("src/components/secondary/steps/EvidenceStep.tsx", "utf8");
     expect(evidencePage).toContain("RatingGuide");
     expect(evidencePage).toContain("ActionPlan");
     for (const file of ["src/lib/secondary-workflow/rating-guide.ts", "src/lib/secondary-workflow/action-plan.ts", "src/components/secondary/RatingGuide.tsx", "src/components/secondary/ActionPlan.tsx"]) {

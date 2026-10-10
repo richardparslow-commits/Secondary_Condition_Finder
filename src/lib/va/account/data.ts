@@ -2,10 +2,10 @@ import "server-only";
 
 import { z } from "zod";
 
-import { ACCOUNT_HTTP_TIMEOUT_MS, type VaAccountConfig } from "./config";
-import { parseRetryAfterMs } from "../circuit-breaker";
+import { type VaAccountConfig } from "./config";
 import { accountSessionKey, readAccountSession } from "./oauth";
-import { boundedAccountJson, type AccountStore } from "./store";
+import { type AccountStore } from "./store";
+import { callVaApi, type VaApiOutcome } from "../client";
 
 const date = z.iso.date();
 const rating = z.number().int().min(0).max(100);
@@ -40,7 +40,47 @@ export type ClaimStatuses = z.infer<typeof claimStatusesSchema>;
 export type AccountDataResult =
   | { status: "connected"; service: "ratings"; data: RatingSummary }
   | { status: "connected"; service: "claims"; data: ClaimStatuses }
-  | { status: "disconnected" | "unavailable" | "rate-limited" };
+  | { status: "disconnected" | "unavailable" | "rate-limited" };/**
+ * Maps a failed platform outcome onto this module's result vocabulary.
+ *
+ * The request itself belongs to `../client`, which owns the credential, the
+ * deadline and the single 401 refresh-and-replay. What stays here is the policy
+ * about what a failure *means* for the connection:
+ *   - `unauthorized` is the end of the session: the client already refreshed and
+ *     replayed once, and the refresh path invalidates the generation when it
+ *     cannot complete, so there is nothing left to retry.
+ *   - 403 keeps its original meaning: the platform refused this credential for
+ *     this data, so the connection is invalidated (this generation only) rather
+ *     than left in place to fail again.
+ *   - 429 is a cooldown the platform asked for, honoured with its own
+ *     `Retry-After` when present.
+ */
+async function failure(
+  outcome: Extract<VaApiOutcome<unknown>, { ok: false }>,
+  config: VaAccountConfig,
+  store: AccountStore,
+  handle: string,
+  session: unknown,
+): Promise<AccountDataResult> {
+  if (outcome.status === 403) {
+    // Delete only the generation used for this request; do not erase a newer
+    // refresh or connection. An unreadable tombstone requires a new login.
+    const key = accountSessionKey(config, handle);
+    const current = await store.read(key);
+    if (JSON.stringify(current) === JSON.stringify(session)) {
+      await store.replace(key, session, { kind: "invalidated" }, 1);
+    }
+    return { status: "disconnected" };
+  }
+  if (outcome.status === 429) {
+    const delayMs = outcome.retryAfterMs ?? 60_000;
+    const bounded = Math.min(Math.max(delayMs, 1_000), 24 * 60 * 60 * 1000);
+    await store.put(`cooldown:${config.service}:${config.fingerprint}`, { kind: "cooldown", until: Date.now() + bounded }, Math.ceil(bounded / 1000));
+    return { status: "rate-limited" };
+  }
+  if (outcome.reason === "unauthorized") return { status: "disconnected" };
+  return { status: "unavailable" };
+}
 
 export async function loadAccountData(config: VaAccountConfig, store: AccountStore, handle: string): Promise<AccountDataResult> {
   const session = await readAccountSession(config, store, handle);
@@ -52,37 +92,13 @@ export async function loadAccountData(config: VaAccountConfig, store: AccountSto
   // Conservative one read per two seconds across this configured service.
   // Atomic NX admission, encrypted tombstone, TTL; no retries or PHI caching.
   if (!await store.put(`budget:${config.service}:${config.fingerprint}`, { kind: "budget" }, 2)) return { status: "rate-limited" };
-  const controller = new AbortController(); const timer = setTimeout(() => controller.abort(), ACCOUNT_HTTP_TIMEOUT_MS);
-  try {
-    const response = await fetch(config.apiUrl, {
-      headers: { Accept: "application/json", Authorization: `Bearer ${session.accessToken}` },
-      cache: "no-store", redirect: "error", signal: controller.signal,
-    });
-    if (response.status === 401 || response.status === 403) {
-      // Delete only the generation used for this request; do not erase a newer
-      // refresh or connection. An unreadable tombstone requires a new login.
-      const key = accountSessionKey(config, handle);
-      const current = await store.read(key);
-      if (JSON.stringify(current) === JSON.stringify(session)) {
-        await store.replace(key, session, { kind: "invalidated" }, 1);
-      }
-      return { status: "disconnected" };
-    }
-    if (response.status === 429) {
-      const delayMs = parseRetryAfterMs(response.headers.get("retry-after")) ?? 60_000;
-      const bounded = Math.min(Math.max(delayMs, 1_000), 24 * 60 * 60 * 1000);
-      await store.put(cooldownKey, { kind: "cooldown", until: Date.now() + bounded }, Math.ceil(bounded / 1000));
-      return { status: "rate-limited" };
-    }
-    if (!response.ok) return { status: "unavailable" };
-    const json = await boundedAccountJson(response, 256 * 1024);
-    if (config.service === "ratings") {
-      const parsed = ratingSummarySchema.safeParse(json);
-      return parsed.success ? { status: "connected", service: "ratings", data: parsed.data } : { status: "unavailable" };
-    }
-    const parsed = claimStatusesSchema.safeParse(json);
-    return parsed.success ? { status: "connected", service: "claims", data: parsed.data } : { status: "unavailable" };
-  } catch { return { status: "unavailable" }; }
-  finally { clearTimeout(timer); }
+  if (config.service === "ratings") {
+    const outcome = await callVaApi(config, store, handle, config.apiUrl, ratingSummarySchema);
+    if (outcome.ok) return { status: "connected", service: "ratings", data: outcome.data };
+    return failure(outcome, config, store, handle, session);
+  }
+  const outcome = await callVaApi(config, store, handle, config.apiUrl, claimStatusesSchema);
+  if (outcome.ok) return { status: "connected", service: "claims", data: outcome.data };
+  return failure(outcome, config, store, handle, session);
 }
 

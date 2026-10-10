@@ -31,12 +31,12 @@ describe("app layout design contract", () => {
       "src/app/secondary/condition-caused-by/page.tsx",
       "src/app/secondary/condition-aggravation/page.tsx",
       "src/app/presumptive/page.tsx",
-      "src/app/secondary/diagnosed/page.tsx",
-      "src/app/secondary/service-connected/page.tsx",
-      "src/app/secondary/ratings/page.tsx",
-      "src/app/secondary/upload/page.tsx",
-      "src/app/secondary/suggestions/page.tsx",
-      "src/app/secondary/evidence/page.tsx",
+      "src/components/secondary/steps/DiagnosedStep.tsx",
+      "src/components/secondary/steps/ServiceConnectedStep.tsx",
+      "src/components/secondary/steps/RatingsStep.tsx",
+      "src/components/secondary/steps/UploadStep.tsx",
+      "src/components/secondary/steps/SuggestionsStep.tsx",
+      "src/components/secondary/steps/EvidenceStep.tsx",
       "src/app/pathways/page.tsx",
     ];
 
@@ -48,11 +48,11 @@ describe("app layout design contract", () => {
   });
 
   it("keeps the real six-step secondary workflow visible instead of mockup-only step semantics", () => {
-    expect(read("src/app/secondary/diagnosed/page.tsx")).toContain("Step 1 of 6");
-    expect(read("src/app/secondary/service-connected/page.tsx")).toContain("Step 2 of 6");
-    expect(read("src/app/secondary/ratings/page.tsx")).toContain("Step 3 of 6");
-    expect(read("src/app/secondary/upload/page.tsx")).toContain("Step 4 of 6");
-    expect(read("src/app/secondary/suggestions/page.tsx")).toContain("Step 5 of 6");
-    expect(read("src/app/secondary/evidence/page.tsx")).toContain("Step 6 of 6");
+    expect(read("src/components/secondary/steps/DiagnosedStep.tsx")).toContain("Step 1 of 6");
+    expect(read("src/components/secondary/steps/ServiceConnectedStep.tsx")).toContain("Step 2 of 6");
+    expect(read("src/components/secondary/steps/RatingsStep.tsx")).toContain("Step 3 of 6");
+    expect(read("src/components/secondary/steps/UploadStep.tsx")).toContain("Step 4 of 6");
+    expect(read("src/components/secondary/steps/SuggestionsStep.tsx")).toContain("Step 5 of 6");
+    expect(read("src/components/secondary/steps/EvidenceStep.tsx")).toContain("Step 6 of 6");
   });
 });

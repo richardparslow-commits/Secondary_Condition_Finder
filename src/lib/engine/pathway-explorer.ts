@@ -5,7 +5,7 @@ import { indexById } from "@/lib/catalog/lookup";
 import { loadKbGraph } from "@/lib/kb/graph";
 import { loadKnowledgeBase } from "@/lib/kb/load";
 
-import { projectGraphPathway } from "./graph-pathway-projection";
+import { mappingAnchorResolver, projectGraphPathway } from "./graph-pathway-projection";
 import { generateClaimPathways } from "./pathway-generator";
 import type {
   GraphPathwayExplorerView,
@@ -55,7 +55,7 @@ export function buildPathwayExplorerView(): GraphPathwayExplorerView {
       const pathways: GraphPathwayView[] = generateClaimPathways(
         originConditionId,
         graph,
-      ).map((pathway) => projectGraphPathway(pathway, conditionName, mappingById));
+      ).map((pathway) => projectGraphPathway(pathway, conditionName, mappingAnchorResolver(mappingById)));
 
       return {
         originConditionId,

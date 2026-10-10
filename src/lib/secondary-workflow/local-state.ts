@@ -1,6 +1,8 @@
 import { evidenceAnalysisStorageKey } from "@/lib/evidence/extract";
 import { OCR_CHECKPOINT_STORAGE_KEY } from "@/lib/evidence/ocr-session";
 
+import { browserWorkflowContextStorageKey } from "./browser-context";
+
 export const evidenceDepthStorageKey = "secondary-condition-finder:evidence-depth:v1";
 
 export const evidenceGapReviewStorageKey =
@@ -13,6 +15,7 @@ export const vaGovRecordWalkthroughStorageKey =
   "secondary-condition-finder:va-gov-record-walkthrough:v1";
 
 export const secondaryWorkflowLocalStorageKeys = [
+  browserWorkflowContextStorageKey,
   evidenceAnalysisStorageKey,
   evidenceGapReviewStorageKey,
   pathwayRecordChecklistStorageKey,
@@ -25,8 +28,9 @@ export type RemovableStorage = Pick<Storage, "removeItem">;
 
 /**
  * Clears only browser-local state owned by the secondary workflow
- * (evidence excerpts, evidence-gap review checkmarks, pathway-record-checklist
- * selections, VA.gov walkthrough progress, OCR transcripts, and depth preference).
+ * (browser-local workflow context, evidence excerpts, evidence-gap review
+ * checkmarks, pathway-record-checklist selections, VA.gov walkthrough
+ * progress, OCR transcripts, and depth preference).
  * Raw evidence/checklist
  * content is never copied or sent anywhere while clearing.
  */

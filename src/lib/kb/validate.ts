@@ -1,6 +1,6 @@
-import { indexById } from "@/lib/catalog/lookup";
-import type { ConditionCatalog } from "@/lib/catalog/schema";
-import { FORBIDDEN_PHRASES } from "@/lib/guardrails";
+import { indexById } from "../catalog/lookup.ts";
+import type { ConditionCatalog } from "../catalog/schema.ts";
+import { FORBIDDEN_PHRASES } from "../guardrails.ts";
 
 import type { KbNodeMapping, KnowledgeBase } from "./schema";
 

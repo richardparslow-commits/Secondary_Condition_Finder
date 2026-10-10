@@ -4,6 +4,8 @@ import fs from "node:fs";
 import fsp from "node:fs/promises";
 import path from "node:path";
 
+import { parseDataJson } from "@/lib/data/parse-json";
+
 import { regulatoryActionRegistrySchema, regulatoryActionSchema, type RegulatoryAction, type RegulatoryActionRegistry } from "./schema";
 
 const REGULATORY_DIR = path.join(process.cwd(), "data", "regulatory-actions");
@@ -20,11 +22,11 @@ async function readRegulatoryActionRegistry(): Promise<RegulatoryActionRegistry>
   const files = (await fsp.readdir(REGULATORY_DIR)).filter((file) => file.endsWith(".json") && !file.startsWith("_")).sort();
   const actions: RegulatoryAction[] = [];
   for (const file of files) {
-    const raw = JSON.parse(await fsp.readFile(path.join(REGULATORY_DIR, file), "utf8"));
+    const raw = parseDataJson(await fsp.readFile(path.join(REGULATORY_DIR, file), "utf8"));
     const parsed = regulatoryActionSchema.safeParse(raw);
-    if (!parsed.success) { console.error(`[regulatory] Invalid regulatory action in ${file}:`, parsed.error.message); throw new Error(`Invalid regulatory action in ${file}: ${parsed.error.message}`); }
+    if (!parsed.success) { console.error("[regulatory] Invalid regulatory action data"); throw new Error(`Invalid regulatory action in ${file}.`); }
     const expected = path.basename(file, ".json").toUpperCase();
-    if (parsed.data.rin !== expected) { console.error(`[regulatory] Regulatory action id mismatch in ${file}: RIN is ${parsed.data.rin}, expected ${expected}.`); throw new Error(`Regulatory action id mismatch in ${file}: RIN is ${parsed.data.rin}, expected ${expected}.`); }
+    if (parsed.data.rin !== expected) { console.error("[regulatory] Regulatory action identity mismatch"); throw new Error(`Regulatory action identity mismatch in ${file}.`); }
     actions.push(parsed.data);
   }
 
@@ -54,11 +56,11 @@ export function loadRegulatoryActionRegistry(): RegulatoryActionRegistry {
 
   const files = fs.readdirSync(REGULATORY_DIR).filter((file) => file.endsWith(".json") && !file.startsWith("_")).sort();
   const actions: RegulatoryAction[] = files.map((file) => {
-    const raw = JSON.parse(fs.readFileSync(path.join(REGULATORY_DIR, file), "utf8"));
+    const raw = parseDataJson(fs.readFileSync(path.join(REGULATORY_DIR, file), "utf8"));
     const parsed = regulatoryActionSchema.safeParse(raw);
-    if (!parsed.success) { console.error(`[regulatory] Invalid regulatory action in ${file}:`, parsed.error.message); throw new Error(`Invalid regulatory action in ${file}: ${parsed.error.message}`); }
+    if (!parsed.success) { console.error("[regulatory] Invalid regulatory action data"); throw new Error(`Invalid regulatory action in ${file}.`); }
     const expected = path.basename(file, ".json").toUpperCase();
-    if (parsed.data.rin !== expected) { console.error(`[regulatory] Regulatory action id mismatch in ${file}: RIN is ${parsed.data.rin}, expected ${expected}.`); throw new Error(`Regulatory action id mismatch in ${file}: RIN is ${parsed.data.rin}, expected ${expected}.`); }
+    if (parsed.data.rin !== expected) { console.error("[regulatory] Regulatory action identity mismatch"); throw new Error(`Regulatory action identity mismatch in ${file}.`); }
     return parsed.data;
   });
 

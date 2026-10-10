@@ -130,7 +130,7 @@ describe("Step 5 authored pathway intelligence", () => {
     const engine = read("src/lib/engine/recommend.ts");
     const signals = read("src/lib/engine/signals.ts");
     const component = read("src/components/NonServiceConnectedConditionResult.tsx");
-    const page = read("src/app/secondary/suggestions/page.tsx");
+    const page = read("src/components/secondary/steps/SuggestionsStep.tsx");
 
     expect(engine).toContain("pathwayIntelligence: suggestion.pathwayIntelligence");
     // Post-refactor: the intake-matching guard (and its comment) lives in

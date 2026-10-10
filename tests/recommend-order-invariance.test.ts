@@ -1,6 +1,7 @@
 import { describe, expect, it, vi } from "vitest";
 
-import { recommend, recommendWithTracing } from "@/lib/engine/recommend";
+import { recommend } from "@/lib/engine/recommend";
+import { recommendWithTracing } from "@/lib/engine/recommend-tracing";
 import { loadConditionCatalog } from "@/lib/catalog/load";
 import { conditionCatalogSchema } from "@/lib/catalog/schema";
 import { loadKnowledgeBase } from "@/lib/kb/load";
