@@ -64,6 +64,7 @@ function vaJsonResponse(payload: unknown): Response {
 afterEach(() => {
   vi.restoreAllMocks();
   vi.unstubAllGlobals();
+  vi.unstubAllEnvs();
   clearAccreditedRepresentativeCache();
 });
 
@@ -131,6 +132,12 @@ describe("accredited representative locator (Idea #8)", () => {
   });
 
   it("maps directory results with distance sorting and provenance status", async () => {
+    // A05: the loader's env-derived config is the source of truth, so the
+    // live path requires both flags on — the mapping/sorting contract below
+    // only applies when the directory is enabled.
+    vi.stubEnv("VA_API_ENABLED", "true");
+    vi.stubEnv("VA_API_ENV", "sandbox");
+    vi.stubEnv("VA_ACCREDITED_REP_ENABLED", "true");
     const fetchSpy = vi.fn().mockResolvedValue(vaJsonResponse(directoryPayload));
     vi.stubGlobal("fetch", fetchSpy);
 
@@ -149,6 +156,11 @@ describe("accredited representative locator (Idea #8)", () => {
   });
 
   it("falls back to a local empty view with directory guidance when the API fails", async () => {
+    // Same A05 note: reach the fetch-failure path with both flags on, so this
+    // pins the API-failure fallback rather than passing vacuously while disabled.
+    vi.stubEnv("VA_API_ENABLED", "true");
+    vi.stubEnv("VA_API_ENV", "sandbox");
+    vi.stubEnv("VA_ACCREDITED_REP_ENABLED", "true");
     vi.stubGlobal(
       "fetch",
       vi.fn().mockResolvedValue(new Response("boom", { status: 500 })),

@@ -49,10 +49,38 @@ function localResults(query: string): VaFormSearchItem[] {
     : [];
 }
 
+/**
+ * A01: identifier-like input guard. The finder is a GET form, so the raw
+ * query lands in browser history, request URLs, upstream VA traffic, and the
+ * cached view value. A pasted SSN, phone, or claim number can never match a
+ * form number, keyword, or title, so when the whole trimmed input is digits
+ * (ignoring common separators) at identifier length, the search is refused
+ * before any upstream send or cache write, and the raw value is not echoed
+ * back in the view. Substring matches are deliberately out of scope: mixed
+ * text still flows, and short numeric fragments (form pieces like "123-45")
+ * stay searchable.
+ */
+const IDENTIFIER_DIGIT_FLOOR = 8;
+
+export function looksLikePersonalIdentifier(query: string): boolean {
+  const digits = query.replace(/[\s\-.()]+/g, "");
+  return digits.length >= IDENTIFIER_DIGIT_FLOOR && /^\d+$/.test(digits);
+}
+
 export async function loadVaFormsFinder(
   query = "21-526EZ",
 ): Promise<VaFormsFinderView> {
-  const normalizedQuery = query.trim().slice(0, 120) || "21-526EZ";
+  const trimmed = query.trim();
+  if (trimmed && looksLikePersonalIdentifier(trimmed)) {
+    return {
+      query: "",
+      items: [],
+      ...vaFallbackStatus("forms-finder"),
+      notice:
+        "This search was not run because the query looks like a personal identifier (for example, a Social Security number). Search by form number, keyword, or title — never enter personal identifiers.",
+    };
+  }
+  const normalizedQuery = trimmed.slice(0, 120) || "21-526EZ";
   const config = loadVaApiConfig();
   const configuredEnvironment = config.environment ?? "sandbox";
   // The user-supplied query is hashed, never persisted as raw key material

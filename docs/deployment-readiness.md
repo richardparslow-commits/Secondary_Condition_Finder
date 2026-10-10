@@ -40,7 +40,7 @@ The secondary and presumptive research workflows keep state in browser `sessionS
 | Setting | Required for readiness marker | Behavior |
 |---|---:|---|
 | `WORKFLOW_SESSION_SECRET` | Yes | Server-only value, at least 32 characters. Production `/api/health` and `/runtime-readiness` fail readiness when absent/too short; this marker does not encrypt research workflow context. |
-| `SECONDARY_WORKFLOW_SESSION_SECRET` | Legacy only | Backward-compatible crypto-helper fallback; production readiness still requires primary `WORKFLOW_SESSION_SECRET`. |
+| `SECONDARY_WORKFLOW_SESSION_SECRET` | Retired | Retired 2026-10-10 (REL-04 follow-up): no longer read; the crypto helper and the readiness probe both require primary `WORKFLOW_SESSION_SECRET`. |
 
 Vercel environment-variable changes apply to newly created deployments. After adding or rotating the primary readiness-marker secret, create a new production deployment and require a fresh successful Production Runtime Readiness result.
 
