@@ -17,8 +17,8 @@ import { validateKnowledgeBaseAgainstCatalog } from "@/lib/kb/validate";
  *
  * The quarantine manifest's own restore instruction is `cp <quarantinePath>
  * <originalPath>`. That instruction is now wrong for all six entries: the
- * owner has since rewritten the `tinnitus` and `degenerative-disc-disease`
- * mappings, the `ptsd` and `depressive-disorder` files are published and
+ * owner restored the registered `tinnitus` and `degenerative-disc-disease`
+ * draft baseline on 2026-10-10, the `ptsd` and `depressive-disorder` files are published and
  * already carry the same secondary targets, `chronic-pain` has no catalog
  * identity and no medically equivalent candidate, and `tinnitus 2.json` can
  * never be accepted because its filename cannot equal its nodeId.
@@ -123,10 +123,10 @@ describe("REL-01 quarantine reconcile (restore refusal)", () => {
     // Reproduces what a well-meaning editor would try after fixing the two
     // reported filename/schema defects: the schema-valid `tinnitus 2.json`
     // content under the accepted name, and the DEGENERATIVE-disc-disease copy
-    // under its own nodeId name. Both are still refused, because the owner's
-    // later mapping rewrites are the authority the ARCH-01 join enforces.
+    // under its own nodeId name. Both are still refused against the owner-
+    // restored registered baseline; tinnitus's migraine target is unauthored.
     const accepted: Record<string, RegExp> = {
-      "tinnitus.json": /Missing authored evidence.*tinnitus.*depressive-disorder/,
+      "tinnitus.json": /Missing authored evidence.*tinnitus.*migraine-headaches/,
       "degenerative-disc-disease.json": /Nexus classification mismatch.*degenerative-disc-disease.*radiculopathy/,
     };
     const copies = [
@@ -211,21 +211,48 @@ describe("REL-01 quarantine reconcile (restore refusal)", () => {
       expect(live.suggestions.map((suggestion) => suggestion.conditionId)).toContain("sleep-apnea");
     });
 
-    it("the retired adjacency copies are superseded by the live mappings they copy", () => {
+    it("the retired adjacency copies remain incompatible with the registered draft baseline", () => {
       const tinnitus = mapping("tinnitus");
-      expect(tinnitus.suggestions.map((suggestion) => suggestion.conditionId)).toContain(
-        "migraine-headaches",
-      );
+      expect(tinnitus.draft).toBe(true);
+      expect(tinnitus.suggestions.map((suggestion) => suggestion.conditionId)).toEqual([
+        "depressive-disorder", "insomnia",
+      ]);
       expect(tinnitus.suggestions.map((suggestion) => suggestion.conditionId)).not.toContain(
-        "depressive-disorder",
+        "migraine-headaches",
       );
 
       const discDisease = mapping("degenerative-disc-disease");
       expect(discDisease.suggestions.map((suggestion) => suggestion.conditionId)).toContain(
         "radiculopathy",
       );
+      expect(discDisease.draft).toBe(true);
       // The quarantined adjacency copy still asserts DIRECT_CAUSATION.
       expect(discDisease.suggestions[0].nexusClaim.nexusClassification).toBe("ASSOCIATION_ONLY");
+    });
+
+    it("preserves both replacement drafts for review and restores the registered baseline byte-for-byte", () => {
+      const packetDir = "docs/clinical-baseline-reconciliation-2026-10-10";
+      const packet = JSON.parse(fs.readFileSync(path.join(process.cwd(), packetDir, "manifest.json"), "utf8")) as {
+        status: string;
+        baselineCommit: string;
+        entries: Array<{ id: string; livePath: string; reviewOnlyPath: string; reviewOnlySha256: string; restoredSha256: string }>;
+      };
+      expect(packet.status).toBe("REVIEW-ONLY-NOT-APPROVED");
+      expect(packet.baselineCommit).toBe("fb8a348562738a1043aea1015fb3acdd9525f94b");
+      expect(packet.entries.map((entry) => entry.id)).toEqual(["tinnitus", "degenerative-disc-disease"]);
+      for (const entry of packet.entries) {
+        expect(entry.livePath).toBe(`data/knowledge-base/${entry.id}.json`);
+        expect(entry.reviewOnlyPath).toBe(`${packetDir}/${entry.id}.json`);
+        const preserved = fs.readFileSync(path.join(process.cwd(), entry.reviewOnlyPath));
+        const restored = fs.readFileSync(path.join(process.cwd(), entry.livePath));
+        expect(crypto.createHash("sha256").update(preserved).digest("hex")).toBe(entry.reviewOnlySha256);
+        expect(crypto.createHash("sha256").update(restored).digest("hex")).toBe(entry.restoredSha256);
+        expect(entry.reviewOnlySha256).not.toBe(entry.restoredSha256);
+        const candidate = conditionMappingSchema.parse(JSON.parse(preserved.toString("utf8")));
+        expect(candidate.draft).toBe(true);
+        expect(candidate.suggestions.flatMap((suggestion) => suggestion.sourceReferences).every((ref) => ref.verified === false)).toBe(true);
+        expect(mapping(entry.id).draft).toBe(true);
+      }
     });
   });
 });

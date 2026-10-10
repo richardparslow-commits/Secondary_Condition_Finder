@@ -2,91 +2,57 @@
   "id": "degenerative-disc-disease",
   "draft": true,
   "todo": [
-    "Confirm whether the veteran's radiculopathy is anatomically concordant with the service-connected degenerative disc disease level before treating this edge as anything other than a bounded anatomical-conordance proposition.",
-    "Resolve whether the claimed radiculopathy is a compressive, chemically-mediated, or mixed mechanism and whether imaging plus exam corroborate the level-specific nerve-root involvement.",
-    "Reviewer: the draft previously carried \"biomechanical\" in claimTheories, which is a pathway label and not a claim-theory value; it is retained only under pathwayIntelligence.pathways. Confirm the claim-theory selection before publication."
-  ],
-  "governanceNotes": [
-    "This draft edge is authored under degenerative-disc-disease as the service-connected primary. It is intended to support a bounded anatomical association framing (degenerative disc disease can be associated with anatomically concordant radiculopathy) rather than a direct individual causation claim; the nexus classification is ASSOCIATION_ONLY.",
-    "Where the veteran's radiculopathy is not anatomically concordant with the service-connected DDD level, or where another cause (e.g., peripheral entrapment, plexus lesion, spinal stenosis unrelated to the DDD level, myelopathy, systemic neuropathy) explains the findings, this edge must not be used."
+    "Rebuild secondary-condition suggestions using condition-specific clinical evidence before publication."
   ],
   "suggestions": [
     {
       "conditionId": "radiculopathy",
       "rank": 1,
-      "nexusClaim": {
-        "nexusClassification": "ASSOCIATION_ONLY",
-        "associationBasis": "Degenerative disc disease and radiculopathy are reported to be associated when a degenerated disc at a given level is anatomically concordant with symptoms and findings in the corresponding nerve root distribution; the located evidence supports an anatomical/pathophysiological association rather than a proven individual causation chain, so the relationship is carried here as a bounded clinical proposition pending individual-degree medical nexus evidence.",
-        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence at the level of an automatic individual causal chain; the association is anatomical and level-specific and requires individualized corroboration."
-      },
-      "causalMechanism": {
-        "mechanismCategory": "MECHANICAL_OR_COMPRESSIVE",
-        "primaryVector": "Degenerative disc disease is hypothesized to be associated with radiculopathy through disc height loss, annular disruption, and disc bulging/herniation that may contact or compress the anatomically corresponding nerve root, with possible chemical radiculitis from disc material, so that the level-specific degenerative change can be associated with radicular symptoms in the corresponding dermatomal/myotomal distribution.",
-        "secondaryVector": "Age-related degenerative change, segmental instability, and Modic changes may accompany the compressive component and influence symptom generation without by themselves establishing individual causation.",
-        "hypothesizedOnly": true
-      },
-      "evidentiaryProfile": {
-        "etiologicalConsensus": "CONTESTED_REQUIRES_SPECIFIC_EVIDENCE",
-        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
-        "conservativeRationale": "The located evidence supports an anatomical association between degenerative disc disease and radiculopathy when there is level-specific concordance, but it does not, by itself, establish that a service-connected degenerative disc disease caused or aggravated an individual veteran's radiculopathy; the edge is constrained to association pending objective corroboration of level-specific nerve-root involvement and exclusion of competing causes.",
-        "evidenceGaps": "Level-specific anatomical concordance between the service-connected DDD and the claimed radiculopathy; imaging evidence (MRI/CT) and examination findings consistent with the corresponding nerve-root distribution; exclusion of competing causes (peripheral entrapment, plexus lesion, foraminal stenosis from other etiology, central stenosis/myelopathy, systemic neuropathy, non-degenerate structural lesion); individual medical nexus opinion linking the service-connected DDD to the radiculopathy.",
-        "alternativeEtiologiesToRuleOut": [
-          "Peripheral entrapment neuropathy at a site outside the spine",
-          "Plexopathy or proximal nerve lesion unrelated to the DDD level",
-          "Foraminal or central stenosis from non-degenerate etiology",
-          "Spinal cord disease or myelopathy rather than isolated radiculopathy",
-          "Systemic neuropathy or lumbosacral/radicular mimics",
-          "Nondegenerative structural lesion (e.g., tumor, infection, fracture) causing radiculopathy"
-        ],
-        "alternativeEtiologyTags": ["entrapment", "plexopathy", "stenosis", "myelopathy", "systemic-neuropathy", "structural-lesion"],
-        "requiresSpecificDbqEvidence": true
-      },
-      "rationale": "Degenerative disc disease can be associated with radiculopathy when there is anatomical concordance at the corresponding level, but the evidence supports an anatomical/biomechanical association rather than an automatic individual causal chain; the edge is constrained to association because it requires level-specific imaging and examination corroboration and exclusion of competing causes before any individual nexus can be asserted.",
-      "claimTheories": ["secondary-causation"],
-      "nexusRequirement": "individual-medical-opinion",
-      "pathwayIntelligence": {
-        "pathways": ["biomechanical", "intermediate-chain"],
-        "causalChain": "service-connected degenerative disc disease -> (hypothesized) disc height loss / annular disruption / bulge-herniation with possible nerve-root contact or chemical radiculitis at the anatomically concordant level -> radiculopathy in the corresponding distribution; association only pending individual nexus and level-specific corroboration",
-        "developmentQuestions": [
-          "What is the level of the service-connected degenerative disc disease, and is the claimed radiculopathy in the anatomically concordant nerve-root distribution?",
-          "Is there imaging evidence of nerve-root contact, compression, or herniation at that level, and do examination findings match the dermatomal/myotomal distribution?",
-          "Have competing causes of the radicular symptoms been excluded or accounted for?"
-        ],
-        "issuesToResolve": [
-          "Determine whether the radiculopathy is level-concordant with the service-connected DDD or whether a different etiology better explains the findings.",
-          "Assess whether chemical radiculitis vs. mechanical compression is the more plausible mediator for this veteran's presentation."
-        ]
-      },
+      "rationale": "Mapping Expansion Batch ME-13 adds this draft-primary relationship only as a bounded clinical proposition. The systematic review and meta-analysis explicitly addresses cervical radiculopathy due to degenerative disc disease; the approved mapping is restricted to anatomically concordant cervical nerve-root disease. Require cervical degenerative disc pathology capable of nerve-root compromise and separately established anatomically concordant cervical radiculopathy. Do not infer radiculopathy from degenerative imaging, axial neck pain, nonspecific paresthesias, myelopathy, or peripheral entrapment neuropathy alone. Preserve peripheral neuropathy, plexopathy, entrapment neuropathy, spinal cord disease, nondegenerative structural lesions, and other causes as competing explanations. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus.",
       "evidenceGaps": [
-        "Level-specific anatomical concordance between service-connected DDD and claimed radiculopathy",
-        "Imaging and examination corroboration of the corresponding nerve-root distribution",
-        "Exclusion of peripheral entrapment, plexopathy, non-degenerate stenosis, myelopathy, systemic neuropathy, and other structural lesions",
-        "Individual medical nexus opinion linking the service-connected DDD to the radiculopathy"
+        "Independent documentation of degenerative-disc-disease and radiculopathy",
+        "Chronology compatible with the approved bounded proposition",
+        "Phenotype/treatment boundary: anatomically concordant cervical radiculopathy due to cervical degenerative disc disease with nerve-root compromise",
+        "Assessment of material competing etiologies and treatment/context confounders",
+        "Resolution of publication guard: Require cervical degenerative disc pathology capable of nerve-root compromise and separately established anatomically concordant cervical radiculopathy. Do not infer radiculopathy from degenerative imaging, axial neck pain, nonspecific paresthesias, myelopathy, or peripheral entrapment neuropathy alone. Preserve peripheral neuropathy, plexopathy, entrapment neuropathy, spinal cord disease, nondegenerative structural lesions, and other causes as competing explanations."
       ],
       "sourceReferences": [
         {
-          "citation": "Alomar SA, Maghrabi Y, Baeesa SS, Alves OL. Outcome of Anterior and Posterior Endoscopic Procedures for Cervical Radiculopathy Due to Degenerative Disk Disease: A Systematic Review and Meta-Analysis. Global Spine J. 2022 Sep;12(7):1546-1560. PMID 34402323. doi:10.1177/21925682211037270.",
-          "note": "Mapping OT-878 supporting evidence for cervical radiculopathy in the setting of degenerative disk disease and its procedural/symptom context. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
+          "citation": "Alomar SA, Maghrabi Y, Baeesa SS, Alves OL. Outcome of Anterior and Posterior Endoscopic Procedures for Cervical Radiculopathy Due to Degenerative Disk Disease: A Systematic Review and Meta-Analysis. Global Spine J. 2022;12(7):1546-1560. PMID 34402323. doi:10.1177/21925682211037270.",
+          "note": "Mapping Expansion Batch ME-13 evidence for the bounded degenerative-disc-disease to radiculopathy proposition. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
           "verificationScope": "clinical-evidence",
           "authorityCategory": "medical-scientific-evidence",
-          "propositionRole": "clinical-evidence",
           "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/34402323/",
-          "verified": false,
-          "sourceCheckedOn": "2026-10-06",
-          "sourceLocator": "PMID 34402323; Outcome of Anterior and Posterior Endoscopic Procedures for Cervical Radiculopathy Due to Degenerative Disk Disease (Global Spine J 2022); guard: anatomical association framing, individual causation not established."
-        },
-        {
-          "citation": "Ruschel LG, Agnoletto GJ, Aragão A, Duarte JS, Marinescu A, da Mota MIMIC, do Amaral Lage LM, Araújo TC, Rodrigues MCP, Martins RASK, de Moura JRM, Garcia FB, Rocha RF, de Medeiros AK, da Costa Aroucha JE, dos Santos MT, Souto GPR, de Lima SDC, de Andrade ACS, de Jesus Lins RF, de Melo Abreu Júnior LJ, Cavalcanti FCF, Teixeira A, Simões M, Filho I, Souza PA, da Silva JM, de Carvalho RLS, de Carvalho Solutions Júnior M, de Medeiros AK, de Castro LF, de Souza PBR, de Andrade ACS, de Medeiros AK, de Lima SDC. Lumbar disc herniation with contralateral radiculopathy: a systematic review on pathophysiology and surgical strategies. Neurosurg Rev. 2021 Apr;44(2):1071-1081. PMID 32281018. doi:10.1007/s10143-020-01323-1.",
-          "note": "Mapping OT-878 supporting evidence for disc pathology associated with radiculopathy and for contralateral/atypical radicular presentations where anatomical concordance must be carefully adjudicated. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
-          "verificationScope": "clinical-evidence",
-          "authorityCategory": "medical-scientific-evidence",
-          "propositionRole": "clinical-evidence",
-          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/32281018/",
-          "verified": false,
-          "sourceCheckedOn": "2026-10-06",
-          "sourceLocator": "PMID 32281018; Lumbar disc herniation with contralateral radiculopathy: a systematic review on pathophysiology and surgical strategies (Neurosurg Rev 2021); guard: anatomical association framing; contralateral presentation heightens the need for individualized adjudication."
+          "verified": true,
+          "sourceCheckedOn": "2026-08-22",
+          "sourceLocator": "PMID 34402323; approved ME-13 source; guard: Require cervical degenerative disc pathology capable of nerve-root compromise and separately established anatomically concordant cervical radiculopathy. Do not infer radiculopathy from degenerative imaging, axial neck pain, nonspecific paresthesias, myelopathy, or peripheral entrapment neuropathy alone. Preserve peripheral neuropathy, plexopathy, entrapment neuropathy, spinal cord disease, nondegenerative structural lesions, and other causes as competing explanations."
         }
-      ]
+      ],
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "The published knowledge base includes this relationship as an association: Mapping Expansion Batch ME-13 adds this draft-primary relationship only as a bounded clinical proposition. The systematic review and meta-analysis explicitly addresses cervical radiculopathy due to degenerative disc disease; the approved mapping is restricted to anatomically concordant cervical nerve-root disease. Require cervical degenerative disc pathology capable of nerve-root compromise and separately established anatomically concordant cervical radiculopathy.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence; the guard explicitly limits the claim to association."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MICROVASCULAR_METABOLIC",
+        "primaryVector": "Mapping Expansion Batch ME-13 adds this draft-primary relationship only as a bounded clinical proposition. The systematic review and meta-analysis explicitly addresses cervical radiculopathy due to degenerative disc disease; the approved mapping is restricted to anatomically concordant cervical nerve-root disease. Require cervical degenerative disc pathology capable of nerve-root compromise and separately established anatomically concordant cervical radiculopathy.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Mapping Expansion Batch ME-13 adds this draft-primary relationship only as a bounded clinical proposition. The systematic review and meta-analysis explicitly addresses cervical radiculopathy due to degenerative disc disease; the approved mapping is restricted to anatomically concordant cervical nerve-root disease. Require cervical degenerative disc pathology capable of nerve-root compromise and separately established anatomically concordant cervical radiculopathy. It is not asserted that the primary caused or aggravated the secondary in any individual.",
+        "evidenceGaps": "Independent documentation of degenerative-disc-disease and radiculopathy; Chronology compatible with the approved bounded proposition; Phenotype/treatment boundary: anatomically concordant cervical radiculopathy due to cervical degenerative disc disease with nerve-root compromise; Assessment of material competing etiologies and treatment/context confounders; Resolution of publication guard: Require cervical degenerative disc pathology capable of nerve-root compromise and separately established anatomically concordant cervical radiculopathy. Do not infer radiculopathy from degenerative imaging, axial neck pain, nonspecific paresthesias, myelopathy, or peripheral entrapment neuropathy alone. Preserve peripheral neuropathy, plexopathy, entrapment neuropathy, spinal cord disease, nondegenerati",
+        "alternativeEtiologiesToRuleOut": [
+          "peripheral neuropathy",
+          "plexopathy",
+          "entrapment neuropathy",
+          "spinal cord disease",
+          "nondegenerative structural lesions",
+          "other causes as competing explanations"
+        ],
+        "requiresSpecificDbqEvidence": false
+      }
     }
   ]
 }

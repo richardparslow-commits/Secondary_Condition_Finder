@@ -452,6 +452,31 @@ exempt by name and the exemption pinned to the finder's own wiring; body-carried
 context stays out of scope as before, because the edge proxy does not read
 bodies.
 
+## Dev-trace source repair (2026-10-10)
+
+CI run `38016379181` on PR #522 reached **45/46** assertions: the trace-file
+surface was unexercised because the walk read `.next/trace`, while Next 16's
+dev server writes `.next/dev/trace`. A workstation build trace at the old path
+could also conceal this mistake. The walk now reads only the development trace,
+with no fallback to build output. Missing or empty server logs and traces fail
+the full-scan assertion; neither surface receives a non-exercise exemption.
+The existing 4,000,000-character scan cap and all privacy assertions remain.
+
+[The text-surface helper](../scripts/lib/sentinel-text-surfaces.mjs) and
+[its regression suite](../tests/sentinel-text-surfaces.test.ts) cover dev-only
+checkouts, a stale clean build beside a sentinel-bearing dev trace, missing and
+empty traces, unreadable files, rotation, and the scan cap. Both are included in
+the sentinel's CI trigger scope. The five focused suites passed **82 tests**.
+
+A full local Node 22 / headless Chrome run completed **46/46** assertions,
+run token `5b3a2ce6`, with zero violations: 96 requests, 96 responses, 90 response
+bodies, 2,529 server-log characters and 1,010,984 dev-trace characters scanned.
+Evidence: [report](../tmp/acceptance-sentinel/trace-fix-evidence.json),
+[walk log](../tmp/acceptance-sentinel/trace-fix-walk.log), and
+[driven server log](../tmp/acceptance-sentinel/trace-fix-dev.log).
+This is local verification, not a new GitHub CI pass, and the walk still does
+not cover the presumptive track described above.
+
 ## Non-goals
 
 - No medical content, mapping, or verification-status changes.

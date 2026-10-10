@@ -12,6 +12,7 @@ import { resetKbGraphCache } from "@/lib/kb/graph";
 
 const ROOT = process.cwd();
 const PROPOSAL = "docs/catalog-admissions/chronic-pain-proposal-v1.json";
+const CURRENT_REVIEW = "docs/catalog-admissions/chronic-pain-review-2026-10-10";
 const SCRIPT = path.join(ROOT, "scripts/catalog-identity-admission.ts");
 const temporary: string[] = [];
 let baseline: ReturnType<typeof inspectAdmission>;
@@ -54,11 +55,29 @@ describe("reviewed catalog identity admission", () => {
     expect(loadConditionCatalog().some(condition => condition.id === "chronic-pain")).toBe(false);
     expect(fs.existsSync(path.join(ROOT, baseline.entry.originalPath))).toBe(false);
     expect(crypto.createHash("sha256").update(baseline.mappingBytes).digest("hex")).toBe(baseline.entry.sha256);
-    const decision = ownerDecisionSchema.parse(read(path.join(ROOT, "docs/catalog-admissions/chronic-pain-review-v2/owner-decision.json")));
+    const decision = ownerDecisionSchema.parse(read(path.join(ROOT, CURRENT_REVIEW, "owner-decision.json")));
     expect(decision.outcome).toBe("pending");
     expect(decision.proposalSha256).toBe(baseline.proposalSha256);
     expect(decision.baselineSha256).toBe(baseline.baselineSha256);
     expect("owner" in decision).toBe(false);
+  });
+
+  it("binds the delivered pending review to current inputs without creating a candidate", () => {
+    const report = read(path.join(ROOT, CURRENT_REVIEW, "admission-report.json"));
+    const decision = ownerDecisionSchema.parse(read(path.join(ROOT, CURRENT_REVIEW, "owner-decision.json")));
+    expect(report.status).toBe("PENDING_OWNER_DECISION");
+    expect(report.ownerDecision).toEqual(decision);
+    expect(report.inputs).toEqual(baseline.inputs);
+    expect(report.restoredFrom).toEqual(baseline.entry);
+    expect(report.counts).toEqual(baseline.counts);
+    expect(fs.readFileSync(path.join(ROOT, CURRENT_REVIEW, "proposal.json"))).toEqual(baseline.proposalBytes);
+    expect(report.boundaries).toMatchObject({ liveDataWritten: false, quarantineModified: false, publicationApproved: false, citationVerificationPerformed: false, graphNodesAdded: 0 });
+    expect(fs.existsSync(path.join(ROOT, CURRENT_REVIEW, "data"))).toBe(false);
+  });
+
+  it("refuses to reuse the historical pending review after baseline reconciliation", () => {
+    expect(() => prepareAdmission(ROOT, PROPOSAL, "docs/catalog-admissions/forbidden-stale-review", "docs/catalog-admissions/chronic-pain-review-v2/owner-decision.json")).toThrow(/baselineSha256/);
+    expect(fs.existsSync(path.join(ROOT, "docs/catalog-admissions/forbidden-stale-review"))).toBe(false);
   });
 
   it("records a pending decision through the CLI without producing runtime data", () => {

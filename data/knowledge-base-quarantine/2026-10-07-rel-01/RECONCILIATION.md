@@ -93,9 +93,10 @@ authority.
 `nodeId: tinnitus`, three edges: → `depressive-disorder`, → `insomnia`, →
 `migraine-headaches`. Doubly refused: it is still schema-invalid (three
 nested `evidentiaryProfile.evidenceGaps` values are arrays, not strings), and
-even in string form two of its three edges are unsupported — the live
-`tinnitus` mapping authorises only `→ migraine-headaches`, so the loader
-refuses `tinnitus → depressive-disorder` for missing authored evidence.
+even in string form its migraine edge has no authored support in the registered
+baseline restored by the owner on 2026-10-10. The live `tinnitus` draft carries
+only the registered depression and sleep windows, so the loader refuses
+`tinnitus → migraine-headaches` for missing authored evidence.
 
 ### `graph/tinnitus 2.json`
 
@@ -133,7 +134,21 @@ graph are unchanged; the restore-refusal tests still apply to blind copying.
 | `post-traumatic-stress-disorder` | the evidence for the published `ptsd → sleep-apnea` edge is reopened for citation replacement |
 | the three adjacency copies | not reopened: owner-confirmed 2026-10-08 that the graph keeps its five pinned routes. The superseded copies remain superseded; a future node would be authored fresh from the current live mapping, never copied from here |
 
-## What this record did not do
+## Registered-baseline restoration — 2026-10-10
+
+The owner elected to restore the two live draft mappings from commit
+`fb8a348562738a1043aea1015fb3acdd9525f94b`, because their replacement content
+in `210b162` diverged from the authoritative relationship/source registries.
+The replacement drafts are preserved byte-for-byte in the
+[review-only reconciliation packet](../../../docs/clinical-baseline-reconciliation-2026-10-10/README.md),
+not approved or published. The live tinnitus draft again owns the registered
+`depressive-disorder` and `insomnia` windows; the live disc-disease draft keeps
+the registered cervical association-only radiculopathy proposition. Previously
+recorded citation decisions are restored with those exact records, not newly
+made by automation. All six quarantine hashes remain unchanged, all six blind
+restores are still refused, and no adjacency node is added.
+
+## What the original reconciliation did not do
 
 No medical content was approved, re-rooted, rewritten or deleted. No citation
 verification flag was changed. Draft prefixes and publication states are

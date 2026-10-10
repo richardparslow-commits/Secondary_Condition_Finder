@@ -48,6 +48,7 @@ import path from "node:path";
 
 import { createProgressReporter } from "./lib/sentinel-progress.mjs";
 import { waitForCondition } from "./lib/sentinel-wait.mjs";
+import { readSentinelTextSurface, sentinelDevTracePath } from "./lib/sentinel-text-surfaces.mjs";
 
 // Next already ships ws. Its streaming frame decoder handles large CDP
 // getResponseBody packets (the self-hosted WASM loader is several MB), where
@@ -80,9 +81,9 @@ const CLEAR_KEY_SOURCES = [
   path.join(process.cwd(), "src/lib/evidence/extract.ts"),
   path.join(process.cwd(), "src/lib/evidence/ocr-session.ts"),
 ];
-const TRACE_FILE = path.join(process.cwd(), ".next", "trace");
-// Character cap for whole-file scans of the server log and the Next trace file.
-// Next rewrites `.next/trace` (and may restart the dev log) instead of only
+const TRACE_FILE = sentinelDevTracePath();
+// Character cap for whole-file scans of the server log and the Next dev trace.
+// Next rotates `.next/dev/trace` (and may restart the dev log) instead of only
 // appending, so a tail-slice from a pre-run offset can scan zero bytes and pass
 // vacuously; both surfaces are scanned in full up to this many characters.
 const TEXT_SURFACE_SCAN_LIMIT = 4_000_000;
@@ -854,7 +855,7 @@ async function run() {
   );
 
   const serverLogBefore = fs.existsSync(SERVER_LOG) ? fs.readFileSync(SERVER_LOG, "utf8").length : 0;
-  const traceBefore = fs.existsSync(TRACE_FILE) ? fs.statSync(TRACE_FILE).size : 0;
+  const traceBefore = fs.existsSync(TRACE_FILE) ? fs.readFileSync(TRACE_FILE, "utf8").length : 0;
 
   // 2. Launch Chrome and attach -------------------------------------------
   progress.phase("launching Chrome and attaching CDP");
@@ -1662,52 +1663,25 @@ async function run() {
   // Server log and trace files.
   // ------------------------------------------------------------------------
 
-  // Both files are scanned in full (capped by TEXT_SURFACE_SCAN_LIMIT) instead
-  // of only from their pre-run offsets: the dev-server log and `.next/trace` are
-  // rewritten rather than strictly appended, so a tail slice can end up empty
-  // and would make the "no sentinel in any log or trace" claim vacuous.
-  let serverLogTail = "";
-  let serverLogStatus = "missing";
-  let serverLogSize = 0;
-  if (fs.existsSync(SERVER_LOG)) {
-    const content = fs.readFileSync(SERVER_LOG, "utf8");
-    serverLogSize = content.length;
-    serverLogTail = content.slice(Math.max(0, serverLogSize - TEXT_SURFACE_SCAN_LIMIT));
-    serverLogStatus = "scanned";
-    scanText("server-log", SERVER_LOG, serverLogTail);
+  // Scan the current dev trace, never the build trace at `.next/trace`. Both
+  // files can be rewritten/rotated, so pre-run sizes are diagnostics only.
+  const serverLog = readSentinelTextSurface(SERVER_LOG, TEXT_SURFACE_SCAN_LIMIT, serverLogBefore);
+  const traceFile = readSentinelTextSurface(TRACE_FILE, TEXT_SURFACE_SCAN_LIMIT, traceBefore);
+  observations.serverLog = serverLog.observation;
+  observations.traceFile = traceFile.observation;
+  if (serverLog.observation.status === "scanned" && serverLog.text.length > 0) {
+    scanText("server-log", SERVER_LOG, serverLog.text);
   }
-  let traceTail = "";
-  let traceStatus = "missing";
-  let traceSize = 0;
-  if (fs.existsSync(TRACE_FILE)) {
-    const content = fs.readFileSync(TRACE_FILE, "utf8");
-    traceSize = content.length;
-    traceTail = content.slice(Math.max(0, traceSize - TEXT_SURFACE_SCAN_LIMIT));
-    traceStatus = "scanned";
-    scanText("trace-file", TRACE_FILE, traceTail);
+  if (traceFile.observation.status === "scanned" && traceFile.text.length > 0) {
+    scanText("trace-file", TRACE_FILE, traceFile.text);
   }
-  observations.serverLog = {
-    path: SERVER_LOG,
-    status: serverLogStatus,
-    bytes: serverLogTail.length,
-    sizeBytes: serverLogSize,
-    bytesBeforeRun: serverLogBefore,
-  };
-  observations.traceFile = {
-    path: TRACE_FILE,
-    status: traceStatus,
-    bytes: traceTail.length,
-    sizeBytes: traceSize,
-    bytesBeforeRun: traceBefore,
-    rewrittenDuringRun: traceSize < traceBefore,
-  };
   assert(
     "server log and trace file were scanned in full rather than from a stale offset",
-    (serverLogStatus === "missing" ||
-      serverLogTail.length === Math.min(serverLogSize, TEXT_SURFACE_SCAN_LIMIT)) &&
-      (traceStatus === "missing" ||
-        (traceTail.length > 0 &&
-          traceTail.length === Math.min(traceSize, TEXT_SURFACE_SCAN_LIMIT))),
+    [serverLog, traceFile].every(({ text, observation }) =>
+      observation.status === "scanned" &&
+      text.length > 0 &&
+      text.length === Math.min(observation.sizeBytes, TEXT_SURFACE_SCAN_LIMIT),
+    ),
     JSON.stringify({ serverLog: observations.serverLog, traceFile: observations.traceFile }),
   );
 

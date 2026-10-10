@@ -1,4 +1,4 @@
-import { readdirSync } from "node:fs";
+import { readFileSync, readdirSync } from "node:fs";
 import { join } from "node:path";
 
 import { describe, expect, it } from "vitest";
@@ -137,6 +137,21 @@ describe("file-tracing scope decision", () => {
 
     expect(expected.length).toBeGreaterThan(0);
     expect(include).toEqual(expected);
+  });
+
+  it("keeps quarantine exclusions on every route as defense-in-depth", () => {
+    expect(nextConfig.outputFileTracingExcludes?.["/**"]).toEqual([
+      "./data/knowledge-base-quarantine/**",
+    ]);
+  });
+
+  it("preserves the KB read boundary for instrumentation tracing", () => {
+    // Instrumentation is not covered by App Router include/exclude rules.
+    // path.join(KB_DIR, file) widens its trace to the sibling quarantine tree;
+    // keep the slash explicit at every read, including the published-id index.
+    const source = readFileSync(join(process.cwd(), "src/lib/kb/load.ts"), "utf8");
+    expect(source).not.toContain("path.join(KB_DIR, file)");
+    expect(source.match(/(?:fs|fsp)\.readFile(?:Sync)?\(`\$\{KB_DIR\}\/\$\{file\}`, "utf8"\)/g)).toHaveLength(4);
   });
 
   it("keeps retired data out of the artifact", () => {

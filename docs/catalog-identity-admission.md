@@ -12,10 +12,21 @@ The six REL-01 archived files and their manifest hashes remain unchanged. The
 prior decision not to re-root to `unexplained-chronic-pain` remains in force.
 
 - [Pending proposal](catalog-admissions/chronic-pain-proposal-v1.json)
-- [Recorded pending decision](catalog-admissions/chronic-pain-review-v2/owner-decision.json)
-- [Preflight record](catalog-admissions/chronic-pain-review-v2/admission-report.json)
+- [Current pending decision](catalog-admissions/chronic-pain-review-2026-10-10/owner-decision.json)
+- [Current preflight record](catalog-admissions/chronic-pain-review-2026-10-10/admission-report.json)
+- [Historical pending review](catalog-admissions/chronic-pain-review-v2/admission-report.json) (preserved, not reusable against the current baseline)
 - [CLI and strict schemas](../scripts/catalog-identity-admission.ts)
 - [End-to-end regression tests](../tests/catalog-identity-admission.test.ts)
+
+### Baseline refresh — 2026-10-10
+
+The [registered-baseline reconciliation](clinical-baseline-reconciliation-2026-10-10/README.md)
+changed the full-data hash. The CLI generated a **new pending review**, without
+an approval file, against those reconciled inputs. The proposal is byte-identical,
+the live catalog remains 819, and no candidate `data/` directory was created.
+The historical v2 record is unchanged; its stale baseline binding is correctly
+refused. This refresh does not admit `chronic-pain`, restore an archive, publish
+a mapping or verify a citation.
 
 ## 1. Propose a distinct identity
 

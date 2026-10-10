@@ -172,6 +172,19 @@ describe("deployment artifact trace gate — unrelated project files", () => {
     expect(result.report.traces[0]!.unrelated).toBe(4);
   });
 
+  it("rejects quarantine data in instrumentation even though its data include is exempt", () => {
+    const root = artifactDir({
+      ".next/server/instrumentation.js.nft.json": nft([
+        "../../data/knowledge-base-quarantine/retired.json",
+      ]),
+    });
+
+    const result = run(root);
+    expect(result.status).toBe(1);
+    expect(result.stderr).toContain("server/instrumentation.js.nft.json: 1 unrelated project file(s) traced");
+    expect(result.stderr).toContain("data/knowledge-base-quarantine/retired.json");
+  });
+
   it("does not misread a package's own src directory as project source", () => {
     // `node_modules/<pkg>/src/**` is package content, not this project's source;
     // flagging it would make the gate permanently red and therefore ignored.

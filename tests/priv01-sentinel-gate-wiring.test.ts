@@ -119,6 +119,8 @@ const IN_SCOPE_FILES = [
   "scripts/lib/sentinel-wait.mjs",
   "scripts/lib/sentinel-run-state.mjs",
   "scripts/lib/sentinel-progress.mjs",
+  "scripts/lib/sentinel-text-surfaces.mjs",
+  "tests/sentinel-text-surfaces.test.ts",
   SCOPE_MODULE,
   "scripts/build-client-corpus.mjs",
   ".github/workflows/ci.yml",
