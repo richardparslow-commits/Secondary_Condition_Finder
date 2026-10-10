@@ -6,15 +6,11 @@
     "formatVersion": 1,
     "proposalId": "chronic-pain-admission-v1",
     "proposalSha256": "8bc2145429eb73267b6fe6762c6383565ee5e0f2ebad944fbfb0a7c60ad34ae5",
-    "baselineSha256": "9460d0a32c98d163a61d8f8d345c27a355c43e8a3167fb0287d006788e282d08",
+    "baselineSha256": "4c7442f57c93d42217f12aa86f4e2fdd8c990662ceb1a1c29a372afd8e984f0e",
     "outcome": "pending",
     "reason": "Owner has requested process and a pending proposal only; no identity or restoration approval has been granted."
   },
   "inputs": [
-    {
-      "path": "data/.DS_Store",
-      "sha256": "0dbed9d47adf44a6eee639c314042cf8f13ebfd6d522f63afcc3b9cd2c4a0ecc"
-    },
     {
       "path": "data/citation-retirements.json",
       "sha256": "a70c3715b16e1cedae00f0df409a0490a54f1347af15998041daa9ccd67f5775"

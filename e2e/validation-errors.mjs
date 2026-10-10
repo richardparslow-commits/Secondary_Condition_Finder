@@ -223,6 +223,13 @@ async function expectStaticErrorUrl(pathname, code) {
   }
 }
 
+async function expectNoQueryParams(pathname, label) {
+  const url = await currentUrl();
+  if (url.pathname !== pathname || [...url.searchParams.keys()].length !== 0) {
+    throw new Error(`${label}: expected ${pathname} with no query params; received ${url.pathname}${url.search}`);
+  }
+}
+
 async function assertNoHorizontalOverflow(label) {
   const metrics = await webdriver("POST", `/session/${sessionId}/execute/sync`, {
     script: `
@@ -321,8 +328,14 @@ async function runJourney() {
   await setInputValue("//input[@name='serviceEnd']", "2020-01-01");
   await clickXpath("//button[contains(normalize-space(.), 'Show presumptive conditions')]");
   await waitForAlertContaining("Service start date must be on or before the end date.");
-  await expectStaticErrorUrl("/presumptive", "date-order");
+  // Browser-local validation keeps the failure in this tab: no error state in
+  // the URL. The ?error= surface below stays for stale bookmarked links only.
+  await expectNoQueryParams("/presumptive", "Presumptive date-order validation");
   await assertNoHorizontalOverflow("Presumptive validation state");
+
+  await webdriver("POST", `/session/${sessionId}/url`, { url: `${APP_BASE_URL}/presumptive?error=date-order` });
+  await waitForAlertContaining("Service start date must be on or before the end date.");
+  await expectStaticErrorUrl("/presumptive", "date-order");
 
   console.log("Validation E2E passed at mobile viewport: accessible alerts, preserved partial Step 2 answers, six-step Secondary progression, no horizontal overflow, neutral explicit answers, and static-error privacy URLs.");
 }

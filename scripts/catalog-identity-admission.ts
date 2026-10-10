@@ -68,6 +68,10 @@ export function dataSnapshot(root: string): Array<{ path: string; sha256: string
   function walk(relative: string) {
     const directory = safeFile(root, relative);
     for (const entry of readdirSync(directory, { withFileTypes: true }).sort((a, b) => a.name.localeCompare(b.name))) {
+      // macOS Finder metadata: gitignored, machine-local, never a runtime
+      // input. Pinning it makes the baseline depend on which workstation
+      // prepared the review, so checkouts without the file fail the bind.
+      if (entry.name === ".DS_Store") continue;
       const name = `${relative}/${entry.name}`;
       if (entry.isSymbolicLink()) throw new Error(`Symlink refused: ${name}`);
       if (entry.isDirectory()) walk(name);

@@ -93,6 +93,20 @@ describe("reviewed catalog identity admission", () => {
     expect(dataSnapshot(root)).toEqual(before);
   });
 
+  it("ignores machine-local Finder metadata so the baseline binds across workstations", () => {
+    const root = fixture();
+    const before = dataSnapshot(root);
+    expect(before.some(entry => entry.path.includes(".DS_Store"))).toBe(false);
+    // A macOS checkout drops gitignored .DS_Store files anywhere under data/.
+    // CI checkouts lack them; the baseline must not depend on that.
+    fs.writeFileSync(path.join(root, "data/.DS_Store"), "finder");
+    fs.writeFileSync(path.join(root, "data/knowledge-base/graph/.DS_Store"), "finder");
+    expect(dataSnapshot(root)).toEqual(before);
+    const result = cli(root, `--proposal=${PROPOSAL}`, "--out=docs/pending-ds-store");
+    expect(result.status, result.stderr).toBe(0);
+    expect(read(path.join(root, "docs/pending-ds-store/admission-report.json")).inputs).toEqual(before);
+  });
+
   it("honors an explicit rejection and never treats it as permission", () => {
     const root = fixture();
     const decision = approval(root);
