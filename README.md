@@ -217,7 +217,7 @@ research-workflow state or VA-account store readiness.
 | Variable | Default | Purpose |
 |----------|---------|---------|
 | `WORKFLOW_SESSION_SECRET` | development-only fallback outside production | Legacy server-only crypto-readiness marker checked by `/api/health` and `/runtime-readiness`; production requires at least 32 characters. It does not encrypt research-workflow records or VA-account tokens. |
-| `SECONDARY_WORKFLOW_SESSION_SECRET` | unset | Legacy fallback accepted by the crypto helper; prefer `WORKFLOW_SESSION_SECRET`. Production readiness requires the primary variable. |
+| `SECONDARY_WORKFLOW_SESSION_SECRET` | retired (unset) | Retired 2026-10-10 (REL-04 follow-up): no longer read by the crypto helper; set `WORKFLOW_SESSION_SECRET`. |
 | `VA_API_ENV` | `sandbox` | Selects the VA adapter environment: `sandbox` or `production`. |
 | `VA_API_ENABLED` | disabled | Explicit generic enable flag. Production requests require this to be `true`. |
 | `VA_SANDBOX_ENABLED` | disabled | Legacy sandbox-only enable flag when `VA_API_ENABLED` is unset. |
