@@ -374,7 +374,9 @@ describe("VA fleet simulation — 429 flare, cooldown, and single probe", () => 
         flare.map((instance, i) => instance.sandbox.fetchVaForms(`flare-${i}`)),
       );
       expect(flareResults.every((result) => result.success === false)).toBe(true);
-      // A 429 is never retried: one upstream attempt per request.
+      // A 429 whose Retry-After is a whole-second instruction is never retried
+      // in-request: one upstream attempt per request, then the fleet cooldown.
+      // (`Retry-After: 0` is the one exception — see `va/api.ts`.)
       expect(fleet.upstreamEvents()).toHaveLength(10);
 
       const markerPublishes = fleet

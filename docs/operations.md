@@ -32,7 +32,7 @@ The application uses a two-tier cache for VA public reference data (forms, disab
 
 ### Monitoring Cache Effectiveness
 
-The health endpoint exposes cache-hit/miss counters:
+The health endpoint exposes cache-hit/miss counters and the cache scope:
 
 ```
 GET /api/health
@@ -44,6 +44,8 @@ Response includes:
 {
   "components": {
     "vaReferenceCache": {
+      "scope": "process-local",
+      "detail": "process-local LRU on this instance only; entries reset on cold start and are not shared with other instances",
       "hits": 42,
       "misses": 8,
       "hitRate": 84
@@ -52,9 +54,10 @@ Response includes:
 }
 ```
 
+- **scope**: `process-local` when the cache is available, otherwise `disabled`
 - **hits**: cache lookups that returned a valid entry
-- **misses**: cache lookups that returned `null` (expired, not found, or process-local disabled)
-- **hitRate**: percentage (0–100), `null` if no requests yet
+- **misses**: cache lookups that returned `null`; when `scope` is `disabled`, the counters are structurally frozen
+- **hitRate**: percentage (0–100), `null` when there have been no lookups or the cache is disabled
 
 Counters are **process-local** and reset on cold start. Longitudinal metric/trace export is not currently available: automatic OpenTelemetry export is disabled by policy and no SDK provider is registered (`src/lib/observability/telemetry-policy.ts`), so the in-process counters above are the monitoring source today.
 
@@ -143,12 +146,15 @@ Returns component-level status for:
 | Component | What it checks |
 |-----------|---------------|
 | `catalog` | Condition catalog loads and parses correctly (count of conditions) |
-| `sessionCrypto` | Workflow session seal/open round-trip succeeds |
+| `sessionCrypto` | AES-256-GCM seal/open primitives pass an ephemeral self-test |
+| `workflowSession` | Production configured-secret readiness for the legacy crypto marker; not research-workflow or VA-account store readiness |
 | `vaConfig` | VA API configuration is valid (enabled/disabled, environment) |
 | `circuitBreaker` | VA API circuit breaker state (closed/open/half-open per source) |
 | `vaReferenceCache` | Cache `scope` (`process-local` or `disabled`) plus hit/miss counters |
-| `rateLimit` | Whether application-level rate limiting is per-instance or deployment-wide |
+| `rateLimit` | Identity policy, enforced shared ceiling, and whether counters are per-instance or deployment-wide |
 | `runtime` | Aggregate: which process-local capabilities are below full strength, and every capability's regime |
+
+`sessionCrypto` tests the AES-256-GCM primitives with an ephemeral probe secret. `workflowSession` separately checks the configured primary `WORKFLOW_SESSION_SECRET` in production and makes health degraded if that readiness probe fails. This is a legacy runtime marker: it does not verify browser-local research-workflow state or the separate optional VA-account store, which uses `VA_ACCOUNT_SESSION_SECRET`.
 
 ### What this deployment gives up
 
@@ -175,8 +181,8 @@ at zero and `hitRate` is `null` there — the counters should never be read with
 scope. Adding a control that depends on process-local state requires registering it;
 the suite fails if a module consults the runtime classification without a scope.
 
-**HTTP 200** = healthy (catalog + session crypto OK)
-**HTTP 503** = degraded (one or more critical components failing)
+**HTTP 200** = healthy (catalog, crypto primitives, configured primary-secret readiness, and knowledge-base graph checks pass)
+**HTTP 503** = degraded (one or more of those required checks fails)
 
 ### Example Response
 
@@ -186,6 +192,8 @@ the suite fails if a module consults the runtime classification without a scope.
   "components": {
     "catalog": { "status": "ok", "latencyMs": 2, "count": 186 },
     "sessionCrypto": { "status": "ok", "latencyMs": 1 },
+    "workflowSession": { "status": "ok", "latencyMs": 1, "detail": "Workflow session crypto readiness probe passed" },
+    "kbGraph": { "status": "ok", "latencyMs": 1, "nodes": 4, "edges": 3 },
     "vaConfig": { "status": "ok", "latencyMs": 0, "enabled": true, "environment": "production" },
     "circuitBreaker": {
       "status": "ok",
@@ -208,7 +216,10 @@ the suite fails if a module consults the runtime classification without a scope.
       "status": "ok",
       "latencyMs": 0,
       "scope": "per-instance",
-      "detail": "per-IP limits apply per instance, so the aggregate is roughly the configured limit x instance count; the edge WAF remains the capacity layer"
+      "detail": "per-client limits apply per instance; all requests also charge the shared admission ceiling, and counters are not shared across instances",
+      "identity": { "trustedIngress": false, "identity": "self-declared", "variable": "RATE_LIMIT_TRUSTED_INGRESS", "detail": "forwarding headers are not asserted by this runtime" },
+      "ceiling": { "max": 6000, "windowMs": 60000, "variable": "RATE_LIMIT_UNATTRIBUTED_MAX", "key": "unattributed:shared", "detail": "shared admission budget for unattributed and aggregate traffic" },
+      "store": { "mode": "process-local", "distributed": false, "blockedBy": "no-store-provisioned", "detail": "counters are per instance; no deployment-wide quota is claimed" }
     },
     "runtime": {
       "status": "ok",
@@ -229,6 +240,77 @@ the suite fails if a module consults the runtime classification without a scope.
 }
 ```
 
+## PRIV-01 acceptance on a loaded host
+
+In CI the walk is job `priv01_sentinel` in `.github/workflows/ci.yml`, with its
+own wall-clock ceiling and a smaller budget for the walk inside it. It is required — the `verify` job needs it
+and fails when it fails — and path-filtered for pull requests by the
+`priv01_scope` job, which answers from the change set and fails closed. When it
+fails, the run's job summary carries the walk's phase lines, its heartbeats and
+any `STALLED` verdict, and the walk log, server log and evidence JSON ride that
+job's artifact.
+
+Run `npm run acceptance:sentinel` for a foreground, fail-closed acceptance walk.
+Chrome/Chromium and the installed same-origin OCR assets are required. The
+harness pairs the app with its own server log and checks both the runner exit
+status and the evidence report. A failed assertion or missing result is never a
+pass.
+
+A dev server already running for this project is **reused** rather than treated
+as a failure, because Next's per-project dev lock makes a second `next dev`
+refuse to start: the entrypoint reads `.next/dev/lock`, drives the server named
+there, and scans that server's own log at
+`.next/dev/logs/next-development.log`. A server this process did not start is
+left running. Reuse happens only when that log exists — the walk's log scan is
+part of the evidence, so a missing log is refused rather than made vacuous. Pass
+`--no-reuse` (or `SENTINEL_NO_REUSE=1`) to always start a fresh dev server.
+
+For a client with short command timeouts, start once and resume **waiting**, not
+the walk (the same browser, sentinels and capture inventory stay alive):
+
+```bash
+npm run acceptance:sentinel -- --background
+npm run acceptance:sentinel -- --wait --wait-timeout 30000
+# Repeat the wait command until the run finishes.
+```
+
+`--state <path>` selects an isolated status/log pair; pass the same path to both
+commands. A client wait timeout exits **2 (pending)** and does not stop the
+worker, browser or server. Completion returns the acceptance exit code; a dead
+runner without a result exits 1. Starting a second run against an active state
+file is refused. This is not recovery after a browser/host crash: restart the
+entire walk to rebuild complete privacy evidence in that case.
+
+OCR canvas inputs are transferred as bitmaps to the direct same-origin worker.
+PNG encoding uses `OffscreenCanvas` there; model loading and WASM inference also
+stay off the page's main thread. No blob-script exception or third-party asset
+host is enabled. The sentinel uses bounded page probes and retains a fixed OCR
+deadline (default 240000 ms, configurable with `SENTINEL_OCR_TIMEOUT_MS` for
+slower hosts); a longer client wait does not renew that deadline or weaken
+privacy assertions.
+
+While a wait is outstanding the walk prints a heartbeat line every 15s, so a run
+that has wedged can be told from one that is merely slow without attaching a
+debugger. What distinguishes them is whether the thing being polled is still
+answering:
+
+```
+progress 15s | phase "preconditions (health, schema inventory)" for 15s | waiting 15s on "app health" (50 probes) | last event 15s ago (phase "preconditions (health, schema inventory)") | STALLED:unresponsive: "app health" stopped answering: 50 consecutive probe errors (last: fetch failed)
+progress 15s | phase "Pass B — seeded browser record" for 5s | waiting 1s on "post-Finish Review route" (1 probes) | last event 1s ago (assertion "no sentinel remains in localStorage or cookies after Finish Review" passed) | OK: still answering (last probe returned false)
+```
+
+`OK` means the polled target answered — `false` is still an answer, so the run is
+slow rather than wedged. `STALLED:unresponsive` means consecutive probes threw:
+for a page condition that is the browser wedge, while for `app health` it is
+usually nothing listening on the app port. The verdict names the wait instead of
+assuming a browser, so a missing dev server does not send the reader after
+Chrome. `STALLED:no-progress` means no event of any kind landed for 30s, which
+points at a step outside the polling loop rather than a slow page. A timed-out
+wait repeats the same sentence in its error (`... this is a wedge, not a slow
+run`), and both the passing and the runner-error JSON reports carry it as
+`progress` — phase, wait label, probe count, consecutive errors, heartbeat count
+— so a run that had to be killed still says where it stopped and why.
+
 ## Rate Limiting
 
 Application-level rate limiting is enforced in the proxy middleware (`src/proxy.ts`) as defense-in-depth behind Vercel's edge WAF.
@@ -239,15 +321,38 @@ Application-level rate limiting is enforced in the proxy middleware (`src/proxy.
 | `/api/regulatory/preflight` | 60s | 5 | IP |
 | `/api/admin/cache-clear` | 60s | 5 | IP |
 | `/api/health` | 60s | 30 | IP |
+| Public reference page reads (`/va-forms`, `/va-forms/finder`, `/va-reference`, `/secondary/evidence`, …) | 60s | 30 | IP |
+| **All limited surfaces combined** (shared ceiling, attributed or not) | 60s | `RATE_LIMIT_UNATTRIBUTED_MAX`, default 6000 | one shared budget |
 
-**Client identity.** The key is the first hop of `X-Forwarded-For`, falling back to
-`X-Real-IP`. A request carrying neither is **not charged to any bucket** and passes
-through unthrottled. That is deliberate: a single fallback bucket shared by every
-such request is not a per-client limit but a *global* cap, so one client's traffic
-would reject everyone else's — and no response, log line, or metric would say so.
-Capacity remains the edge WAF's job, which is why an absent limiter is preferred
-over a mislabelled one. If a deployment's proxy does set these headers (Vercel and
-Azure Front Door both do), the limits above apply per client as written.
+**Client identity.** The key is the first usable hop of `X-Forwarded-For`, falling
+back to `X-Real-IP`; *usable* means a syntactically valid IP literal, so a
+hostname, path fragment, or fresh random token cannot mint a private bucket.
+
+**Shared admission ceiling.** Every request on a limited surface is also charged
+to one shared, named ceiling (`RATE_LIMIT_UNATTRIBUTED_MAX`, default 6000 per
+60s), reported as `components.rateLimit.ceiling`. The value is derived rather
+than picked — 30 charges/minute per client × 200 concurrent clients on one
+instance — and its failure directions, its unmeasured upper bound and the
+triggers that force a re-derivation are in
+[the ceiling-default decision](sec-02-admission-ceiling-default-2026-10-09.md).
+Two things depend on it:
+
+- A request with no usable identity is **bounded** rather than skipped. It used to
+  pass through unthrottled, which made the limiter optional on demand, since the
+  headers are client-supplied: send a junk or rotating value and nothing applied.
+- A client that presents a *different valid IP* on every request is bounded too.
+  Each fresh key gets a fresh per-client allowance, so only an aggregate ceiling
+  can price that. The ceiling is therefore also the per-instance throughput floor
+  for limited surfaces, which is why the default sits far above plausible honest
+  traffic for one instance. Fairness stays with the per-client buckets above.
+
+The ceiling is deliberately its own reported number rather than a relabelled
+per-client limit, because a single bucket shared under the *per-IP* name would
+silently become a global cap nobody could see. Set
+`RATE_LIMIT_TRUSTED_INGRESS=true` only after checking that your ingress **sets**
+(rather than passes through) the forwarding headers; `components.rateLimit.identity`
+records whether that assertion has been made, so a deployment can be audited for
+the claim instead of trusting this page.
 
 **Scope.** Buckets are process-local and reset on cold start, so the effective
 limit is roughly the configured limit × instance count. That is an intentional
@@ -255,7 +360,19 @@ trade: it makes the guard weaker than written, never wrong. This differs from th
 reference cache, which refuses to use process-local state in production at all —
 because a per-instance cache can serve a wrong answer, whereas a per-instance
 limiter can only permit more traffic than intended. `/api/health` reports the
-current regime as `components.rateLimit.scope` (`per-instance` or `single-process`).
+current regime as `components.rateLimit.scope` (`per-instance` or `single-process`),
+and the ceiling and identity policy beside it as `components.rateLimit.ceiling` and
+`components.rateLimit.identity`. A deployment-wide quota would need a shared counter
+store; none is provisioned or wired today, and `components.rateLimit.store` says so
+(`mode: "process-local"`, `blockedBy: "no-store-provisioned"`).
+
+**Hosted acceptance.** What this page describes is the code. The evidence a
+deployment still owes before SEC-02's remaining half can be closed — spoofed and
+missing forwarding headers at the real edge, direct-origin refusal, two instances
+and a cold start — is the operator procedure in
+[the SEC-02 hosted acceptance runbook](sec-02-hosted-acceptance-runbook-2026-10-09.md),
+with [an evidence template](sec-02-hosted-acceptance-evidence.template.json) to
+fill in. A green deployment or a green `/api/health` is not that evidence.
 
 ## Circuit Breaker
 
@@ -265,7 +382,18 @@ VA API calls are protected by a per-source circuit breaker (`src/lib/va/circuit-
 - **Open** (failure threshold exceeded): requests fail fast for 60 seconds
 - **Half-open**: exactly one probe request allowed to test recovery
 
-An upstream `429` is never retried and opens the breaker immediately for the clamped `Retry-After` window (1–60 s; 30 s when the header is unusable).
+An upstream `429` opens the breaker immediately for the clamped `Retry-After` window
+(1 s–15 min; 30 s when the header is unusable), and the caller returns its labelled
+local fallback rather than holding the request open for that window — the retry is
+served later, once, as the single admitted probe.
+
+The one exception is an upstream that explicitly authorizes retrying at once
+(`Retry-After: 0`, or an HTTP-date already in the past). That is retried in-request
+once, after the minimum backoff delay, because the breaker's one-second floor would
+otherwise turn an explicit "retry now" into a one-second outage for every caller.
+Every whole-second instruction exceeds the in-request budget by design
+(`VA_API_RATE_LIMIT_RETRY_MAX_WAIT_MS` in `src/lib/va/api.ts`), so a normal rate
+limit takes the deferred path above.
 
 In distributed runtimes the breaker still tracks this instance, but fleet admission additionally requires the explicit shared consumer-budget opt-in (`VA_SHARED_CONSUMER_BUDGET=true`) and a configured shared KV. An instance that opens its breaker publishes a shared cooldown marker, and recovery admits a single fleet-wide probe via an atomic lease (`SET … NX PX`); an unreachable coordinator fails closed instead of granting a per-process budget.
 

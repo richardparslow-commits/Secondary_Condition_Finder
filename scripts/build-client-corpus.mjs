@@ -19,6 +19,29 @@
  */
 import { mkdirSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
+import { assertGraphEvidenceJoins } from "../src/lib/kb/graph-evidence-joins.mts";
+import { conditionMappingSchema, KbNodeMappingSchema } from "../src/lib/kb/schema.ts";
+
+/**
+ * Fail closed on data the shared schemas reject, without rewriting what is
+ * emitted.
+ *
+ * `parse()` would also *normalize* (materialize defaults, drop keys the schema
+ * does not declare), which would change this artifact's bytes — and its pinned
+ * SHA-256 is referenced by other records, so normalization is a deliberate
+ * decision of its own rather than a side effect of input validation. The
+ * browser re-parses the artifact through the same schema, so validating here
+ * and emitting the source object gives the same client-visible value while
+ * keeping the artifact stable. What this adds is the refusal itself: a mapping
+ * or adjacency node the runtime loader would reject can no longer be built into
+ * a corpus that ships.
+ */
+function assertSchemaValid(schema, value, describe) {
+  const validated = schema.safeParse(value);
+  if (!validated.success) {
+    throw new Error(`${describe} — ${validated.error.message}`);
+  }
+}
 
 const ROOT = process.cwd();
 const CATALOG_DIR = join(ROOT, "data", "conditions");
@@ -74,6 +97,7 @@ for (const file of jsonFiles(KB_DIR)) {
   if (parsed?.id !== expectedId) {
     throw new Error(`${file}: mapping id "${parsed?.id}" does not match its filename`);
   }
+  assertSchemaValid(conditionMappingSchema, parsed, `${file}: not a valid authored mapping`);
   mappings.push(parsed);
 }
 // Drafts stay out of the shipped corpus; the anchor join below still reads the
@@ -91,9 +115,18 @@ for (const file of jsonFiles(GRAPH_DIR)) {
   if (seenNodeIds.has(parsed.nodeId)) {
     throw new Error(`${file}: duplicate graph nodeId "${parsed.nodeId}"`);
   }
+  // The shared schema owns the edge invariants (self-reference refused, every
+  // edge's source equal to the file's root nodeId) that make the evidence join
+  // below meaningful; the join then checks the authored references it exists
+  // for. This is the same validation the runtime loader applies.
+  assertSchemaValid(KbNodeMappingSchema, parsed, `${file}: not a valid adjacency node`);
   seenNodeIds.add(parsed.nodeId);
   graph.push(parsed);
 }
+
+// Refuse unsupported or differently classified edges before any output write.
+// Share the runtime check; drafts remain available only as research graph data.
+assertGraphEvidenceJoins(mappings, graph);
 
 const graphAnchors = [];
 const mappingById = new Map(mappings.map((mapping) => [mapping.id, mapping]));
@@ -107,7 +140,6 @@ for (const node of graph) {
       sourceUrl: reference.sourceUrl,
       verified: reference.verified,
     }));
-    if (anchors.length === 0) continue;
     graphAnchors.push({
       sourceConditionId: edge.sourceConditionId,
       targetConditionId: edge.targetConditionId,

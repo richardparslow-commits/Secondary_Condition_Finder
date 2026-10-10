@@ -1,0 +1,23 @@
+{
+  "status": "REVIEW-ONLY-NOT-APPROVED",
+  "recordedOn": "2026-10-10",
+  "ownerDecision": "Restore registered baseline; preserve replacement drafts separately for review.",
+  "baselineCommit": "fb8a348562738a1043aea1015fb3acdd9525f94b",
+  "reason": "Replacement draft mappings diverged from authoritative relationship/source registries and displaced previously reviewed citation metadata. No new citation verification or publication is authorized.",
+  "entries": [
+    {
+      "id": "tinnitus",
+      "livePath": "data/knowledge-base/tinnitus.json",
+      "reviewOnlyPath": "docs/clinical-baseline-reconciliation-2026-10-10/tinnitus.json",
+      "reviewOnlySha256": "d0f35d2ae426b7e164add25e83e23450e0a2469e5812fc8657b61b31e98fe8f3",
+      "restoredSha256": "5e1e494e43813474d3c93e63c5523b8194e05251779ec2808747a8f1d5f7fb30"
+    },
+    {
+      "id": "degenerative-disc-disease",
+      "livePath": "data/knowledge-base/degenerative-disc-disease.json",
+      "reviewOnlyPath": "docs/clinical-baseline-reconciliation-2026-10-10/degenerative-disc-disease.json",
+      "reviewOnlySha256": "6306446e98d2989280657ec3a755270016a41e55214b38b8df8bece923defe41",
+      "restoredSha256": "088da95ec8e2a0c7291ceac671c600ea6f2db47b197a1d047082659564fe65a9"
+    }
+  ]
+}

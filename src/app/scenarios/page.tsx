@@ -19,9 +19,9 @@ export default function ScenariosPage() {
         secondary workflow used by normal intake.
       </p>
       <p className="mt-2 text-xs text-slate-500">
-        Demo content is synthetic. Launching submits only the scenario identifier;
-        scenario workflow state is validated on the server and stored in the
-        encrypted short-lived workflow session rather than in the URL.
+        Demo content is synthetic. Launching validates the bundled scenario in
+        the browser and writes it to the tab-scoped workflow record; no workflow
+        state is submitted to the server or placed in the URL.
       </p>
 
       <div className="mt-6 space-y-4">

@@ -2,7 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 
 import { NextRequest } from "next/server";
-import { beforeEach, describe, expect, it } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 import {
   API_ROUTES_WITHOUT_LIMITER,
@@ -10,7 +10,11 @@ import {
   compileApiRoutePattern,
   findApiRouteLimitPolicy,
 } from "@/lib/api-route-policies";
-import { workflowSessionLimiter } from "@/lib/rate-limiter";
+import {
+  referenceReadLimiter,
+  unattributedAdmissionLimiter,
+  workflowSessionLimiter,
+} from "@/lib/rate-limiter";
 import { proxy } from "@/proxy";
 
 /**
@@ -75,8 +79,13 @@ const policyPaths = API_ROUTE_LIMIT_POLICIES.map((policy) => policy.path);
 const exemptPaths = Object.keys(API_ROUTES_WITHOUT_LIMITER);
 
 function resetLimiters(): void {
+  referenceReadLimiter.reset();
   workflowSessionLimiter.reset();
   for (const policy of API_ROUTE_LIMIT_POLICIES) policy.limiter.reset();
+  // The shared admission ceiling is charged by every limited surface, so it is
+  // part of "clean limiter state" here too. Suites that tune it declare their
+  // own budget (see the SEC-02 ceiling describe below).
+  unattributedAdmissionLimiter().reset();
 }
 
 beforeEach(resetLimiters);
@@ -285,6 +294,124 @@ describe("proxy route-policy wiring", () => {
   });
 });
 
+// Page loaders sit outside src/app/api and therefore are not discovered by
+// the API policy inventory above. Exercise every currently guarded public
+// reference page plus the account/OAuth routes against the real proxy.
+const REFERENCE_READ_PATHS = [
+  "/va-forms",
+  "/va-forms/finder",
+  "/va-reference",
+  "/presumptive/results",
+  "/secondary/suggestions",
+  "/secondary/evidence",
+  "/va-account",
+  "/va-account/oauth/claims/start",
+] as const;
+
+describe("public reference page rate-limit coverage (SEC-02)", () => {
+  it("covers every page importing a public VA or regulatory review loader", () => {
+    const loaderNames = [
+      "loadClaimFormReference",
+      "loadVaFormsFinder",
+      "loadDisabilityReference",
+      "loadAccreditedRepresentatives",
+      "prepareRegulatoryReview",
+    ];
+    const discoverPages = (directory: string): string[] =>
+      fs.readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
+        const absolute = path.join(directory, entry.name);
+        if (entry.isDirectory()) return discoverPages(absolute);
+        if (entry.name !== "page.tsx") return [];
+        const source = fs.readFileSync(absolute, "utf8");
+        if (!loaderNames.some((name) => source.includes(name))) return [];
+        return [`/${path.relative(APP_DIR, directory).split(path.sep).join("/")}`];
+      });
+    const loaderPages = discoverPages(APP_DIR);
+    expect(loaderPages).toEqual(expect.arrayContaining([
+      "/va-forms/finder", "/secondary/evidence",
+    ]));
+    expect(loaderPages.filter((page) =>
+      !REFERENCE_READ_PATHS.some((guarded) => guarded === page),
+    )).toEqual([]);
+  });
+
+  it.each(REFERENCE_READ_PATHS)("limits GETs to %s before its loader runs", async (pathname) => {
+    const send = () => proxy(new NextRequest(`https://example.test${pathname}`, {
+      headers: { "x-forwarded-for": "203.0.113.61" },
+    }));
+    for (let i = 0; i < referenceReadLimiter.max; i += 1) {
+      expect(send().status, `request ${i + 1}`).toBe(200);
+    }
+    const blocked = send();
+    expect(blocked.status).toBe(429);
+    expect(await blocked.json()).toEqual({
+      error: "Too many requests. Please try again later.",
+    });
+    expect(Number(blocked.headers.get("Retry-After"))).toBeGreaterThan(0);
+    expect(blocked.headers.get("Content-Security-Policy")).toBeTruthy();
+    expect(blocked.headers.get("X-Content-Type-Options")).toBe("nosniff");
+  });
+
+  it.each(REFERENCE_READ_PATHS)("charges HEADs to the same budget as GETs on %s", (pathname) => {
+    const send = (method: string) => proxy(new NextRequest(`https://example.test${pathname}`, {
+      method,
+      headers: { "x-forwarded-for": "203.0.113.62" },
+    }));
+    for (let i = 0; i < referenceReadLimiter.max; i += 1) {
+      expect(send(i % 2 === 0 ? "GET" : "HEAD").status).toBe(200);
+    }
+    expect(send("HEAD").status).toBe(429);
+    expect(send("GET").status).toBe(429);
+  });
+
+  it.each(["/va-forms/finder", "/secondary/evidence"])(
+    "does not grant a fresh budget for query, slash, or RSC variants of %s",
+    (pathname) => {
+      const variants = [
+        pathname,
+        `${pathname}/?q=21-526EZ`,
+        `${pathname}//?zip=12345`,
+        `${pathname.replaceAll("/", "//")}?_rsc=probe`,
+      ];
+      for (let i = 0; i < referenceReadLimiter.max; i += 1) {
+        const response = proxy(new NextRequest(
+          `https://example.test${variants[i % variants.length]}`,
+          { headers: { "x-forwarded-for": "203.0.113.63", rsc: "1" } },
+        ));
+        expect(response.status).toBe(200);
+      }
+      expect(proxy(new NextRequest(`https://example.test${pathname}?q=new-query`, {
+        headers: { "x-forwarded-for": "203.0.113.63", "next-router-prefetch": "1" },
+      })).status).toBe(429);
+    },
+  );
+
+  it("shares the reference budget across routes but isolates attributed clients", () => {
+    for (let i = 0; i < referenceReadLimiter.max; i += 1) {
+      expect(proxy(new NextRequest(`https://example.test${REFERENCE_READ_PATHS[i % REFERENCE_READ_PATHS.length]}`, {
+        headers: { "x-forwarded-for": "203.0.113.64" },
+      })).status).toBe(200);
+    }
+    expect(proxy(new NextRequest("https://example.test/va-forms/finder", {
+      headers: { "x-forwarded-for": "203.0.113.64" },
+    })).status).toBe(429);
+    expect(proxy(new NextRequest("https://example.test/va-forms/finder", {
+      headers: { "x-forwarded-for": "203.0.113.65" },
+    })).status).toBe(200);
+  });
+
+  it("does not consume the reference budget for unrelated pages or sibling paths", () => {
+    for (const pathname of ["/", "/secondary/upload", "/va-forms/finder-extra", "/secondary/evidence-extra"]) {
+      for (let i = 0; i < referenceReadLimiter.max + 1; i += 1) {
+        expect(proxy(new NextRequest(`https://example.test${pathname}`, {
+          headers: { "x-forwarded-for": "203.0.113.66" },
+        })).status).toBe(200);
+      }
+    }
+    expect(referenceReadLimiter.check("203.0.113.66").count).toBe(1);
+  });
+});
+
 describe("compileApiRoutePattern", () => {
   it("matches a static pattern exactly, and nothing that extends it", () => {
     const matcher = compileApiRoutePattern("/api/health");
@@ -308,5 +435,87 @@ describe("compileApiRoutePattern", () => {
     expect(findApiRouteLimitPolicy("/api/health")).toBeDefined();
     expect(findApiRouteLimitPolicy("/api/health-extra")).toBeUndefined();
     expect(findApiRouteLimitPolicy("/api/health/")).toBeUndefined();
+  });
+});
+
+/**
+ * SEC-02's admission half, exercised at the boundary a client actually reaches.
+ *
+ * A per-client bucket is keyed on a header the client supplies, so the two
+ * historical ways to opt out of admission were to send nothing usable (no key →
+ * every limiter skipped) and to send a fresh value per request (a private bucket
+ * each time, none of them saturated). Both are driven against the real proxy
+ * here, with the shared ceiling tuned down so the assertions are about behaviour
+ * rather than about how many requests a test can afford to send.
+ */
+describe("shared admission ceiling (SEC-02)", () => {
+  const CEILING = 5;
+  const REFUSAL_BODY = { error: "Too many requests. Please try again later." };
+
+  beforeEach(() => {
+    // Read through `process.env`, which is where the proxy reads it, and reset
+    // the limiter that value selects — the real enforced one, not a stand-in.
+    vi.stubEnv("RATE_LIMIT_UNATTRIBUTED_MAX", String(CEILING));
+    unattributedAdmissionLimiter(process.env).reset();
+  });
+
+  afterEach(() => {
+    vi.unstubAllEnvs();
+    unattributedAdmissionLimiter().reset();
+  });
+
+  const send = (headers: Record<string, string>) =>
+    proxy(new NextRequest("https://example.test/va-forms/finder", { headers }));
+
+  it("bounds a request that presents no identity at all", async () => {
+    for (let i = 0; i < CEILING; i += 1) {
+      expect(send({}).status, `request ${i + 1}`).toBe(200);
+    }
+    const blocked = send({});
+    expect(blocked.status).toBe(429);
+    expect(await blocked.json()).toEqual(REFUSAL_BODY);
+    expect(Number(blocked.headers.get("Retry-After"))).toBeGreaterThan(0);
+    expect(blocked.headers.get("X-Content-Type-Options")).toBe("nosniff");
+    expect(blocked.headers.get("Content-Security-Policy")).toBeTruthy();
+  });
+
+  it("does not let a junk forwarding header buy unlimited admission", () => {
+    for (let i = 0; i < CEILING; i += 1) {
+      expect(send({ "x-forwarded-for": "not-an-ip" }).status).toBe(200);
+    }
+    expect(send({ "x-forwarded-for": "not-an-ip" }).status).toBe(429);
+  });
+
+  it("does not let a rotating valid IP buy unlimited admission", () => {
+    for (let i = 0; i < CEILING; i += 1) {
+      expect(send({ "x-forwarded-for": `203.0.113.${i}` }).status).toBe(200);
+    }
+    // A fresh, never-seen, syntactically valid key: it would have its own
+    // untouched per-client bucket, so only the shared ceiling can refuse it.
+    expect(send({ "x-forwarded-for": "203.0.113.200" }).status).toBe(429);
+  });
+
+  it("shares one ceiling across guarded surfaces rather than granting one each", () => {
+    const paths = ["/va-forms/finder", "/secondary/evidence", "/va-forms", "/va-reference"];
+    for (let i = 0; i < CEILING; i += 1) {
+      const response = proxy(new NextRequest(`https://example.test${paths[i % paths.length]}`, {
+        headers: {},
+      }));
+      expect(response.status, `request ${i + 1}`).toBe(200);
+    }
+    expect(proxy(new NextRequest("https://example.test/va-reference", {
+      headers: { "x-forwarded-for": "198.51.100.7" },
+    })).status).toBe(429);
+  });
+
+  it("does not charge unpoliced pages or take their requests away", () => {
+    for (let i = 0; i < CEILING * 3; i += 1) {
+      expect(proxy(new NextRequest("https://example.test/", { headers: {} })).status).toBe(200);
+    }
+    // Nothing was consumed, so a guarded surface still has its full budget.
+    for (let i = 0; i < CEILING; i += 1) {
+      expect(send({ "x-forwarded-for": "192.0.2.9" }).status).toBe(200);
+    }
+    expect(send({ "x-forwarded-for": "192.0.2.9" }).status).toBe(429);
   });
 });

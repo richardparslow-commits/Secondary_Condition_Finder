@@ -24,6 +24,7 @@ import { z } from "zod";
 
 import { conditionCatalogSchema, type ConditionCatalog } from "@/lib/catalog/schema";
 import { anchorsForHop } from "@/lib/engine/graph-pathway-projection";
+import { assertGraphEvidenceJoins } from "@/lib/kb/graph-evidence-joins.mts";
 import type { GraphPathwayAnchorView } from "@/lib/engine/pathway-view";
 import {
   KbNodeMappingSchema,
@@ -61,8 +62,8 @@ export interface ClientCorpus {
   graph: KbNodeMapping[];
   /**
    * Public citation anchors per graph edge, derived from the same authored
-   * references the `/pathways` explorer renders. An edge with no registered
-   * anchors is simply absent — the surface never invents one.
+   * references the `/pathways` explorer renders. Every edge must have one
+   * nonempty anchor entry; missing or ambiguous entries are refused.
    */
   graphAnchors: ClientCorpusGraphAnchorEntry[];
 }
@@ -81,6 +82,7 @@ export function buildClientCorpus(
   knowledgeBase: KnowledgeBase,
   graph: readonly KbNodeMapping[],
 ): ClientCorpus {
+  assertGraphEvidenceJoins(knowledgeBase, graph);
   const mappingById = new Map(
     knowledgeBase.map((mapping) => [mapping.id, mapping] as const),
   );
@@ -92,7 +94,6 @@ export function buildClientCorpus(
         edge.sourceConditionId,
         edge.targetConditionId,
       );
-      if (anchors.length === 0) continue;
       graphAnchors.push({
         sourceConditionId: edge.sourceConditionId,
         targetConditionId: edge.targetConditionId,
@@ -169,6 +170,23 @@ export function parseClientCorpus(input: unknown): ClientCorpus {
     throw new Error(
       `Client corpus graphAnchors failed validation: ${graphAnchors.error.message}`,
     );
+  }
+  // Draft mappings are intentionally absent from this public artifact, so
+  // their authored/classification join is certified at construction above.
+  // At fetch time still require exactly one nonempty anchor entry per edge.
+  const anchorKeys = new Set<string>();
+  for (const entry of graphAnchors.data) {
+    const key = `${entry.sourceConditionId}->${entry.targetConditionId}`;
+    if (anchorKeys.has(key) || entry.anchors.length === 0) {
+      throw new Error(`Client corpus graph anchor entry is empty or duplicated: ${key}`);
+    }
+    anchorKeys.add(key);
+  }
+  const edgeKeys = new Set(graph.data.flatMap(node => node.outgoingEdges.map(
+    edge => `${edge.sourceConditionId}->${edge.targetConditionId}`,
+  )));
+  if (edgeKeys.size !== anchorKeys.size || [...edgeKeys].some(key => !anchorKeys.has(key))) {
+    throw new Error("Client corpus graph anchors do not match its edges");
   }
   return {
     version: CLIENT_CORPUS_VERSION,

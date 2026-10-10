@@ -2,10 +2,16 @@ import { NextRequest, NextResponse } from "next/server";
 
 import { findApiRouteLimitPolicy } from "@/lib/api-route-policies";
 import {
+  chargeAdmission,
   referenceReadLimiter,
   resolveClientKey,
   workflowSessionLimiter,
 } from "@/lib/rate-limiter";
+import {
+  guardPrivateContextRequest,
+  privateContextRefusalBody,
+  type PrivateContextRefusal,
+} from "@/lib/security/private-context-request-guard";
 
 /**
  * CSP / Trusted-Types violation reporting target.
@@ -28,18 +34,37 @@ const CSP_REPORT_ENDPOINT = "/api/csp-report";
  * an older maintainer screenshot tool) are cleared.
  */
 const RETIRED_SECONDARY_WORKFLOW_COOKIE = "secondary-workflow-v2";
-const RETIRED_SECONDARY_WORKFLOW_COOKIE_PATHS = ["/secondary", "/"] as const;
+
+/**
+ * PRIV-01 follow-on (2026-10-08): the `presumptive-workflow-v1` cookie is
+ * retired with the `saveServiceHistory` Server Action that wrote it. Confirmed
+ * service locations, branches and dates are now browser-local, nothing reads
+ * this cookie, and a browser that still presents one is tombstoned on the path
+ * its writer scoped.
+ */
+const RETIRED_PRESUMPTIVE_WORKFLOW_COOKIE = "presumptive-workflow-v1";
+
+/**
+ * Retired cookie name → every historical path that could still hold one. The
+ * secondary cookie is cleared on both the app path and a `/` path written by
+ * an older maintainer screenshot tool; the presumptive writer only ever scoped
+ * `/presumptive`.
+ */
+const RETIRED_WORKFLOW_COOKIES: readonly (readonly [string, readonly string[]])[] = [
+  [RETIRED_SECONDARY_WORKFLOW_COOKIE, ["/secondary", "/"]],
+  [RETIRED_PRESUMPTIVE_WORKFLOW_COOKIE, ["/presumptive"]],
+];
 
 /**
  * Serialize an expired tombstone for one historical path. Written directly to
- * the header list instead of `response.cookies.set` because the two tombstones
+ * the header list instead of `response.cookies.set` because several tombstones
  * share a cookie name and the framework helper collapses them onto one
  * Set-Cookie header, which would leave the other path's cookie alive.
  */
-function retiredWorkflowCookieTombstone(path: string): string {
+function retiredWorkflowCookieTombstone(cookie: string, path: string): string {
   const secure = process.env.NODE_ENV === "production" ? "; Secure" : "";
   return [
-    `${RETIRED_SECONDARY_WORKFLOW_COOKIE}=`,
+    `${cookie}=`,
     `Path=${path}`,
     "Expires=Thu, 01 Jan 1970 00:00:00 GMT",
     "Max-Age=0",
@@ -256,29 +281,33 @@ export function proxy(request: NextRequest) {
 
   // --- Application-level rate limiting (defense-in-depth behind edge WAF) ---
   //
-  // A request carrying no trustworthy client identity is not charged to a bucket
-  // at all. Every unattributed request used to share one `"unknown"` bucket,
-  // which silently turned the configured per-IP allowance into a *global* cap
-  // that a single client could exhaust on everyone else's behalf. Those requests
-  // now proceed unthrottled: capacity is the edge WAF's job, and an absent
-  // limiter is a better instrument for it than a mislabelled global cap. See
-  // `resolveClientKey` in `rate-limiter.ts` for the resolution rules.
+  // Identity is a *validated* IP literal from a forwarding header, or nothing.
+  // Unattributed requests are no longer skipped: `chargeAdmission` always charges
+  // the shared admission ceiling, and charges a per-client bucket only when an
+  // identity exists. A client therefore cannot avoid admission control by
+  // sending a junk or rotating `X-Forwarded-For`, and the ceiling is reported as
+  // its own budget (`rateLimitScope`), never as a relabelled per-IP allowance.
+  // See `resolveClientKey` and `chargeAdmission` in `rate-limiter.ts`.
   const client = resolveClientKey(requestHeaders);
   const method = request.method;
 
-  /** 429 response carrying the full security-header set, not just CSP. */
   /**
-   * Deletes a still-present retired workflow cookie on the way out. The
-   * tombstone mirrors the attributes the legacy writer used (httpOnly,
-   * SameSite=Strict, secure only in production) so the browser accepts the
-   * deletion from the same origin that stored it. Expired empty values on both
-   * historical paths remove the app-written cookie and the older
-   * maintainer-tool one (path `/`) alike.
+    * Deletes any still-present retired workflow cookie on the way out. Each
+    * tombstone mirrors the attributes the legacy writer used (httpOnly,
+    * SameSite=Strict, secure only in production) so the browser accepts the
+    * deletion from the same origin that stored it. Expired empty values on every
+    * historical path remove the app-written cookies and the older
+    * maintainer-tool one (path `/`) alike.
    */
   const clearRetiredWorkflowCookie = (response: NextResponse): NextResponse => {
-    if (!request.cookies.has(RETIRED_SECONDARY_WORKFLOW_COOKIE)) return response;
-    for (const path of RETIRED_SECONDARY_WORKFLOW_COOKIE_PATHS) {
-      response.headers.append("Set-Cookie", retiredWorkflowCookieTombstone(path));
+    for (const [cookie, paths] of RETIRED_WORKFLOW_COOKIES) {
+      if (!request.cookies.has(cookie)) continue;
+      for (const path of paths) {
+        response.headers.append(
+          "Set-Cookie",
+          retiredWorkflowCookieTombstone(cookie, path),
+        );
+      }
     }
     return response;
   };
@@ -300,59 +329,106 @@ export function proxy(request: NextRequest) {
       }),
     );
 
-  if (client.key) {
-    // Method-scoped rule, not a route rule: this covers every POST that is not a
-    // Next.js asset request, including Server Action form submissions to pages
-    // with server-only directives *and* API POSTs. An API POST therefore consumes
-    // this bucket as well as its own route policy below.
-    if (method === "POST" && !pathname.startsWith("/_next")) {
-      const result = workflowSessionLimiter.check(client.key);
-      if (result.limited) {
-        return tooManyRequests(
-          { error: "Too many requests. Please try again later." },
-          result.retryAfterSeconds,
-        );
-      }
-    }
+  /**
+   * 400 for a request carrying veteran health context (PRIV-01). Carries the
+   * standard security headers and still deletes a stale retired cookie, so a
+   * refused request cannot leave the legacy payload in place.
+   */
+  const refusePrivateContext = (refusal: PrivateContextRefusal) =>
+    clearRetiredWorkflowCookie(
+      NextResponse.json(privateContextRefusalBody(refusal), {
+        status: refusal.status,
+        headers: buildSecurityHeaders(nonce, contentSecurityPolicy, {
+          includeCsp: !isCspReportRequest,
+        }),
+      }),
+    );
 
-    // Public dynamic reference GETs (forms search, accredited-representative
-    // lookup) reach upstream VA quota and must be bounded even though the
-    // workflow limiter above only covers POSTs and the registry below only
-    // matches `/api/*` routes.
-    if (
-      method === "GET" &&
-      (pathname === "/va-forms" ||
-        pathname === "/va-reference" ||
-        pathname === "/presumptive/results" ||
-        pathname === "/secondary/suggestions" ||
-        pathname === "/va-account" ||
-        pathname.startsWith("/va-account/oauth/"))
-    ) {
-      const result = referenceReadLimiter.check(client.key);
-      if (result.limited) {
-        return tooManyRequests(
-          { error: "Too many requests. Please try again later." },
-          result.retryAfterSeconds,
-        );
-      }
-    }
+  // Admission control runs on every limited surface, attributed or not: a
+  // request cannot opt out by omitting identity, because `chargeAdmission`
+  // charges the shared ceiling first and the per-client bucket only when a
+  // validated identity exists. See `rate-limiter.ts` (SEC-02).
 
-    // Route-scoped policies. The registry in `api-route-policies.ts` is the only
-    // place that knows which routes are limited and what each one answers on
-    // rejection, so this loop is all the wiring a new policed route needs.
-    //
-    // Matched against the *normalized* pathname, never the raw `url.pathname`:
-    // the compiled patterns are anchored (`^/api/health$`), so a trailing or
-    // doubled slash would slip past the registry while still reaching the route,
-    // which is the bypass `normalizePathname` exists to close.
-    const routePolicy = findApiRouteLimitPolicy(pathname);
-    if (routePolicy) {
-      const result = routePolicy.limiter.check(client.key);
-      if (result.limited) {
-        return tooManyRequests(routePolicy.limitedBody, result.retryAfterSeconds);
-      }
+  // Method-scoped rule, not a route rule: this covers every POST that is not a
+  // Next.js asset request, including Server Action form submissions to pages
+  // with server-only directives *and* API POSTs. An API POST therefore consumes
+  // this bucket as well as its own route policy below.
+  if (method === "POST" && !pathname.startsWith("/_next")) {
+    const result = chargeAdmission(workflowSessionLimiter, client.key);
+    if (result.limited) {
+      return tooManyRequests(
+        { error: "Too many requests. Please try again later." },
+        result.retryAfterSeconds,
+      );
     }
   }
+
+  // Public dynamic reference reads (forms search, accredited-representative
+  // lookup) reach upstream VA quota and must be bounded even though the
+  // workflow limiter above only covers POSTs and the registry below only
+  // matches `/api/*` routes. HEAD can execute the same page loader as GET,
+  // so it consumes the same budget. Query/RSC/prefetch variants are not exempt.
+  // Pinned by the page-loader inventory and behavioral coverage tests in
+  // tests/api-route-rate-limit-coverage.test.ts (SEC-02).
+  if (
+    (method === "GET" || method === "HEAD") &&
+    (pathname === "/va-forms" ||
+      pathname === "/va-forms/finder" ||
+      pathname === "/va-reference" ||
+      pathname === "/presumptive/results" ||
+      pathname === "/secondary/suggestions" ||
+      pathname === "/secondary/evidence" ||
+      pathname === "/va-account" ||
+      pathname.startsWith("/va-account/oauth/"))
+  ) {
+    const result = chargeAdmission(referenceReadLimiter, client.key);
+    if (result.limited) {
+      return tooManyRequests(
+        { error: "Too many requests. Please try again later." },
+        result.retryAfterSeconds,
+      );
+    }
+  }
+
+  // Route-scoped policies. The registry in `api-route-policies.ts` is the only
+  // place that knows which routes are limited and what each one answers on
+  // rejection, so this loop is all the wiring a new policed route needs.
+  //
+  // Matched against the *normalized* pathname, never the raw `url.pathname`:
+  // the compiled patterns are anchored (`^/api/health$`), so a trailing or
+  // doubled slash would slip past the registry while still reaching the route,
+  // which is the bypass `normalizePathname` exists to close.
+  const routePolicy = findApiRouteLimitPolicy(pathname);
+  if (routePolicy) {
+    const result = chargeAdmission(routePolicy.limiter, client.key);
+    if (result.limited) {
+      return tooManyRequests(routePolicy.limitedBody, result.retryAfterSeconds);
+    }
+  }
+
+  // --- PRIV-01: refuse any request that carries veteran health context ---
+  //
+  // The workflow is browser-local
+  // (docs/privacy-acceptance-contract-2026-10-07.md), so no server path needs
+  // these values, and the only shapes that still supply them are retired
+  // transports: a stale bookmark or cached form carrying the pre-PRIV-01 flat
+  // fields, or a write method aimed at a workflow step page that no longer has
+  // a Server Action. Both are refused before any loader runs, and the refusal
+  // names at most one constant parameter name — never a value. The parameter
+  // rule applies on every path (the contract's prohibited flow names no route);
+  // the write rule applies to the workflow area only, because other tracks
+  // still POST their own Server Actions.
+  //
+  // Deliberately evaluated AFTER the limiters: admission control stays in
+  // front, so a refused write is still charged to its bucket (refusal must not
+  // become an unthrottled endpoint) and the ordered POST rule keeps its
+  // existing coverage.
+  const privateContextRefusal = guardPrivateContextRequest(
+    method,
+    pathname,
+    url.searchParams.keys(),
+  );
+  if (privateContextRefusal) return refusePrivateContext(privateContextRefusal);
 
   const response = NextResponse.next({
     request: {

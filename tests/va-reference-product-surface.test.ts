@@ -107,16 +107,17 @@ describe("VA reference product surfaces", () => {
     expect(card).toContain('href="/va-reference"');
   });
 
-  it("wires standardized service branches into encrypted intake context but not presumptive matching", () => {
+  it("wires standardized service branches into browser-local intake context but not presumptive matching", () => {
     const page = source("src/app/presumptive/page.tsx");
     const form = source("src/components/ServiceHistoryForm.tsx");
-    const action = source("src/lib/actions/presumptive.ts");
+    const history = source("src/lib/presumptive/browser-history.ts");
     const match = source("src/lib/presumptive/match.ts");
 
     expect(page).toContain("loadServiceBranchReference");
     expect(form).toContain('name="serviceBranchCode"');
     expect(form).toContain("do not change the presumptive matching logic");
-    expect(action).toContain("serviceBranchCodes: formData");
+    expect(form).toContain("serviceBranchCodes: selectedBranches");
+    expect(history).toContain("serviceBranchCodes");
     expect(match).toContain("serviceBranchCodes:");
     const matchBody = match.slice(match.indexOf("export function matchPresumptives"));
     expect(matchBody).not.toContain("history.serviceBranchCodes");

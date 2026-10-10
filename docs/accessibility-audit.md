@@ -172,9 +172,11 @@ Accessibility testing does not change the application's data-handling model. Tes
 Current implemented privacy boundaries include:
 
 - health/disability workflow selections and presumptive service-history state are kept out of page URLs;
-- workflow state uses short-lived encrypted/authenticated cookies;
+- workflow state uses versioned, schema-bounded, tab-scoped browser records; retired cookies are tombstoned if a stale copy is presented;
 - optional evidence ingestion is browser-local and raw selected document bytes/text are not intentionally sent to application server state;
-- the current application does not persist workflow/recommendation event history through an application event logger;
+- the current application has no per-user workflow/recommendation event-history database; it does emit allowlisted operational workflow/recommendation events to platform logs, and those are event logging;
+- client error boundaries emit only fixed content-free events; exception text/digests are withheld from those sinks;
+- LangSmith recommendation failures are replaced with a fixed message before SDK trace recording; deployed tracing configuration remains an operator verification item;
 - VA adapter observations omit credentials, query values, response bodies, and workflow selections;
 - VA public-reference response bodies are not intentionally persisted;
 - public disability filtering is browser-local after the reference list is loaded.

@@ -125,6 +125,15 @@ describe("automatic trace export policy (audit A-04)", () => {
     }
   });
 
+  it("keeps the LangSmith recommendation failure boundary sanitized", () => {
+    const tracing = readFileSync(join(process.cwd(), "src/lib/engine/recommend-tracing.ts"), "utf8");
+    const sdk = readFileSync(join(process.cwd(), "node_modules/langsmith/dist/traceable.js"), "utf8");
+    expect(sdk).toContain("currentRunTree?.end(undefined, String(error))");
+    expect(tracing).toContain("throw new Error(\"Recommendation execution failed; diagnostic details withheld.\")");
+    expect(tracing).toContain("processInputs: (inputs) => sanitizeRecommendationTraceInputs(inputs)");
+    expect(tracing).toContain("processOutputs: (outputs) => sanitizeRecommendationTraceOutputs(outputs)");
+  });
+
   it("never imports @vercel/otel or calls registerOTel from application source", () => {
     const offenders = applicationSourceFiles().filter((file) => {
       const source = readFileSync(file, "utf8");

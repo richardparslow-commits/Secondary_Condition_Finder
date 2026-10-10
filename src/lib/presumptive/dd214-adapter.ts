@@ -9,9 +9,10 @@ export interface Dd214AdapterResult {
 
 /**
  * Converts a browser-local DD-214 extraction into a ServiceHistory draft.
- * The draft is NEVER written to the workflow cookie until the Veteran
- * confirms it on the verification form. Locations remain as-entered strings;
- * matchPresumptives handles exact-location matching separately.
+ * The draft is never persisted until the Veteran confirms it on the
+ * verification form. Confirmed values are saved to browser-local session
+ * storage. Locations remain as-entered strings; matchPresumptives handles
+ * exact-location matching separately.
  */
 export function dd214ToServiceHistoryFields(
   extraction: Dd214Extraction,

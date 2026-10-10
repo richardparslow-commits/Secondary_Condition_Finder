@@ -229,16 +229,17 @@ describe("presumptive service-history input bounds", () => {
     ).toBe(true);
   });
 
-  it("enforces catalog membership for locations in the Server Action", () => {
-    // The schema module has no catalog dependency, so the action must do the
-    // allowlist check; pin the wiring so it cannot be dropped silently.
+  it("enforces catalog membership for locations before any browser-local write", () => {
+    // The schema module has no catalog dependency, so the intake module must do
+    // the allowlist check; pin the wiring so it cannot be dropped silently.
     const source = fs.readFileSync(
-      path.join(process.cwd(), "src/lib/actions/presumptive.ts"),
+      path.join(process.cwd(), "src/lib/presumptive/browser-history.ts"),
       "utf8",
     );
-    expect(source).toContain("loadExposureCatalog");
-    expect(source).toContain("listLocations");
-    expect(source).toContain("knownLocations.has(location)");
+    expect(source).toContain("serviceHistorySchema.safeParse");
+    expect(source).toContain("new Set(knownLocations)");
+    expect(source).toContain(".has(location)");
+    expect(source).toContain("persistServiceHistory");
   });
 });
 

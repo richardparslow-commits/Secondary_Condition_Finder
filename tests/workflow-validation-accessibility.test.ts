@@ -78,18 +78,29 @@ describe("accessible workflow validation", () => {
     expect(clientSteps).toContain('code: "invalid-context"');
   });
 
-  it("turns presumptive schema failures into fixed accessible error routes", () => {
-    const actions = read("src/lib/actions/presumptive.ts");
+  it("turns presumptive schema failures into fixed accessible error surfaces", () => {
+    // 2026-10-08: presumptive service history is confirmed browser-locally, so
+    // the fixed validation taxonomy now lives in the intake module and reaches
+    // the user through inline alert regions instead of a redirect route.
+    const history = read("src/lib/presumptive/browser-history.ts");
+    const form = read("src/components/ServiceHistoryForm.tsx");
+    const analyzer = read("src/components/presumptive/Dd214LocalAnalyzer.tsx");
     const page = read("src/app/presumptive/page.tsx");
 
-    expect(actions).toContain("serviceHistorySchema.safeParse");
-    expect(actions).toContain('validationPath("date-order")');
-    expect(actions).toContain('validationPath("invalid-date")');
-    expect(actions).not.toContain("serviceStart=${");
-    expect(actions).not.toContain("serviceEnd=${");
+    expect(history).toContain("serviceHistorySchema.safeParse");
+    expect(history).toContain('return "date-order"');
+    expect(history).toContain('return "invalid-date"');
+    expect(history).toContain('return "select-location"');
+    expect(history).not.toContain("serviceStart=${");
+    expect(history).not.toContain("serviceEnd=${");
+    expect(history).toContain(
+      '"date-order": "Service start date must be on or before the end date."',
+    );
+    expect(form).toContain('role="alert"');
+    expect(analyzer).toContain('role="alert"');
     expect(page).toContain('role="alert"');
     expect(page).toContain('id={validationId}');
     expect(page).toContain('role="group" aria-describedby={validationId}');
-    expect(page).toContain('"date-order": "Service start date must be on or before the end date."');
+    expect(page).toContain("SERVICE_HISTORY_MESSAGES");
   });
 });

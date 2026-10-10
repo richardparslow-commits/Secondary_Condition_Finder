@@ -23,7 +23,8 @@ This policy covers: workflow sessions, optional evidence review, service-history
 | Store | Content | Where | Lifetime |
 |---|---|---|---|
 | Secondary browser-local workflow record (`secondary-condition-finder:secondary-workflow:v1`) | Selected diagnosed ids, service-connected answers/ratings (bounded), optional medication/treatment/history context, symptom ids and chronology (bounded) | Browser `sessionStorage` only (tab-scoped; never sent to the server) | Ends with the tab session; cleared by **Finish Review** / **Start a new review** via `clearSecondaryWorkflowLocalState` (`src/lib/secondary-workflow/local-state.ts`). The retired `secondary-workflow-v2` cookie is deleted and tombstoned by the edge proxy if a stale copy is presented (PRIV-01 stage 3). |
-| Presumptive workflow cookie (`presumptive-workflow-v1`) | Selected locations + optional service dates + optional service-branch context (bounded) | `HttpOnly`, `SameSite=Strict`, AES-256-GCM authenticated, `path=/presumptive` | Same 30-minute window; not read by `matchPresumptives()` for eligibility. |
+| Presumptive browser-local service-history record (`presumptive-condition-finder:service-history:v1`) | Confirmed locations + optional service dates + branch context (schema-bounded) | Browser `sessionStorage` only (tab-scoped; never sent to the server) | Ends with the tab session; cleared by the presumptive workflow's clear control / clear-all registry. The retired `presumptive-workflow-v1` cookie is deleted and tombstoned by the edge proxy if a stale copy is presented. |
+| VA account session store (sandbox-only, optional) | Encrypted token pair and identity subject binding | Isolated server-side session store; browser has an opaque HttpOnly handle | 30-minute absolute session expiry; OAuth transaction bindings expire after five minutes. Production account access is not enabled. |
 
 No workflow payload is serialized into URLs. `tests/secondary-workflow-privacy.test.ts` enforces this.
 
@@ -48,15 +49,15 @@ See `src/lib/va/runtime-state.ts` for the production boundary: live VA traffic i
 
 | System | What is logged | What is **never** logged | Default retention (managed by provider) |
 |---|---|---|---|
-| Vercel build/runtime logs, function logs | Commit SHA, deployment ID, route, status code, timestamps | Secrets, raw evidence/medical free text, workflow payloads, cookie values | Vercel platform default (operator-configured). Treat as **30 days hot** unless extended. |
+| Vercel build/runtime logs, function logs | Commit SHA, deployment ID, route, status code, timestamps; content-free client error-boundary events | Secrets, raw evidence/medical free text, workflow payloads, exception messages/stacks/digests from client error boundaries, cookie values | Vercel platform default (operator-configured). Treat as **30 days hot** unless extended. Verify deployed retention/access settings with the operator. |
 | OpenTelemetry traces/spans | **Disabled by policy** — no SDK provider/exporter is registered, so the application produces no span data (`src/lib/observability/telemetry-policy.ts`); the `@vercel/otel` dependency is removed. Re-enabling requires span/URL/exception sanitization plus collector retention/access review first. | — | — |
 | VA reference cache keys (process-local + shared KV) | SHA-256-hashed user-supplied segments (Forms query, locator ZIP/radius/type); cached values may echo the lookup parameters for display | Raw query/ZIP used as key material | **5 minutes** per entry (`VA_REFERENCE_CACHE_TTL_MS`). Shared entries are additionally stamped with an invalidation epoch, so an operator cache-clear (`POST /api/admin/cache-clear`) discards them fleet-wide before TTL; only allowlisted key namespaces are stored, and a finite write budget bounds residency to ≤480 keys per namespace. Short-lived coordination keys live under the same prefix with no lookup values of their own: invalidation epoch, write-budget counter, per-key fetch lease (`inflight:{cacheKey}`, ≤45 s), consumer-budget window, and circuit cooldown/probe keys. |
-| Structured app logs (`src/lib/observability/logger.ts`) | `recommendation executed` (counts only), `va request success/error` (requestId/service/status/durationMs/environment), health checks | Raw evidence, condition contents beyond counts, secrets | Same pipeline as above; no separate long-term vault in this baseline. |
-| Audit log (`src/lib/observability/audit.ts`) | `workflow-*-selected`, `presumptive-service-history-saved`, `regulatory-preflight-triggered/unauthorized` with `status` + safe counters | Same exclusions | Same pipeline. |
+| Structured app logs (`src/lib/observability/logger.ts`) | `recommendation executed` (counts only), `va request success/error` (requestId/service/status/durationMs/environment), health checks, content-free error-boundary events | Raw evidence, condition contents beyond counts, secrets, exception messages/stacks/digests from client error boundaries | Same pipeline as above; no separate long-term vault in this baseline. |
+| Audit log (`src/lib/observability/audit.ts`) | `workflow-*-selected`, `presumptive-service-history-saved`, `regulatory-preflight-triggered/unauthorized` with `status` + safe counters | Same exclusions; these are operational events, not a per-user workflow history | Same pipeline. |
 
 If an external log aggregator (e.g., Axiom, Datadog) is added, its retention replaces the default above and must be documented here.
 
-There is **no** application event-persistence backend for workflow or recommendation history in the current baseline.
+There is **no** application event-persistence backend for workflow or recommendation history in the current baseline. Allowlisted workflow and recommendation events are nevertheless written to the structured platform-log sink above; these are operational event logs, not a per-user history database.
 
 ---
 
@@ -66,9 +67,9 @@ There is **no** application event-persistence backend for workflow or recommenda
 
 There is no central user table to delete. A user can delete their own transient data immediately by:
 
-1. Using **Finish Review** or **Start a new review** on `/secondary/*` (clears workflow cookie + browser-local evidence/checklist stores).
-2. Clearing site cookies + `sessionStorage` in the browser, or closing the tab (evidence is `sessionStorage`-scoped).
-3. Removing `serviceHistory` via the presumptive clear action.
+1. Using **Finish Review** or **Start a new review** on `/secondary/*` (clears the browser-local workflow record and evidence/checklist stores).
+2. Clearing site cookies + `sessionStorage` in the browser, or closing the tab (evidence and workflow records are `sessionStorage`-scoped).
+3. Clearing the presumptive browser-local service-history record via the presumptive clear action.
 
 For logs/metrics that may contain sanitized operational traces, file a request through the channel in `SECURITY.md` with the time window and route — the operator will confirm provider-side retention handling. Do not include sensitive payloads in the request.
 

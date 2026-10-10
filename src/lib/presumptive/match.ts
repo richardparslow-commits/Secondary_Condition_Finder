@@ -31,9 +31,9 @@ export const serviceHistorySchema = z
       .optional(),
     /**
      * Location labels the user selected, matched exactly against the data.
-     * Count and per-item length are capped so a hostile form post cannot write
-     * an oversized encrypted cookie or force unbounded matching work.
-     * Membership against the exposure catalog is enforced by the Server Action
+     * Count and per-item length are capped so malformed browser-local records
+     * cannot grow without bound or force unbounded matching work. Membership
+     * against the exposure catalog is checked by the browser-history writer
      * (the schema module has no catalog dependency).
      */
     locations: z

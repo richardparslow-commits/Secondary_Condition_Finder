@@ -1,0 +1,2910 @@
+{
+  "version": 1,
+  "generatedBy": "npm run coverage:gaps",
+  "description": "The identities with no authored secondary-condition mappings at all, ranked by recorded demand as a secondary condition against the inbound coverage they already have. 'requestedAsSecondary' counts authored CRG request rows under docs/ that name the identity as the secondary; 'inboundEdges' counts authored relationships in data/knowledge-base that already name it as a secondary. gapScore = (1 + requestedAsSecondary) / (1 + inboundEdges).",
+  "universe": "scripts/lib/kb-coverage.js computeMappingCoverage().withoutSuggestionsIds, the same definition docs/mapping-coverage-ledger.json and the validator report",
+  "summary": {
+    "blankIdentities": 245,
+    "withRecordedDemand": 28,
+    "noDemandAndNoInbound": 172,
+    "noDemandAndNoInboundBlock": {
+      "firstRank": 22,
+      "lastRank": 193
+    },
+    "noDemandAndNoInboundContiguous": true,
+    "withInboundCoverage": 59,
+    "withNoInboundCoverage": 186,
+    "withGraphInboundCoverage": 3,
+    "maxInboundEdges": 18,
+    "requestRowsScanned": 95,
+    "requestFilesScanned": 20,
+    "unresolvedRequestNames": 5,
+    "distinctRequestedSecondaries": 69,
+    "publishedIdentitiesWithMappings": 140,
+    "draftIdentitiesWithMappings": 434,
+    "suggestionEdges": 876,
+    "catalogIdentities": 819
+  },
+  "bodySystems": [
+    {
+      "bodySystem": "Musculoskeletal System",
+      "blankIdentities": 61,
+      "requestedAsSecondary": 10,
+      "inboundEdges": 39,
+      "zeroInbound": 43
+    },
+    {
+      "bodySystem": "Neurological",
+      "blankIdentities": 31,
+      "requestedAsSecondary": 14,
+      "inboundEdges": 32,
+      "zeroInbound": 22
+    },
+    {
+      "bodySystem": "Skin Conditions",
+      "blankIdentities": 25,
+      "requestedAsSecondary": 3,
+      "inboundEdges": 5,
+      "zeroInbound": 22
+    },
+    {
+      "bodySystem": "Genitourinary & Gynecological Systems",
+      "blankIdentities": 19,
+      "requestedAsSecondary": 2,
+      "inboundEdges": 19,
+      "zeroInbound": 14
+    },
+    {
+      "bodySystem": "Respiratory System",
+      "blankIdentities": 19,
+      "requestedAsSecondary": 2,
+      "inboundEdges": 3,
+      "zeroInbound": 17
+    },
+    {
+      "bodySystem": "Auditory & Special Senses",
+      "blankIdentities": 16,
+      "requestedAsSecondary": 1,
+      "inboundEdges": 25,
+      "zeroInbound": 11
+    },
+    {
+      "bodySystem": "Cardiovascular System",
+      "blankIdentities": 14,
+      "requestedAsSecondary": 2,
+      "inboundEdges": 8,
+      "zeroInbound": 10
+    },
+    {
+      "bodySystem": "Dental & Oral Conditions",
+      "blankIdentities": 13,
+      "requestedAsSecondary": 1,
+      "inboundEdges": 10,
+      "zeroInbound": 7
+    },
+    {
+      "bodySystem": "Endocrine",
+      "blankIdentities": 11,
+      "requestedAsSecondary": 0,
+      "inboundEdges": 4,
+      "zeroInbound": 10
+    },
+    {
+      "bodySystem": "Mental Disorders",
+      "blankIdentities": 10,
+      "requestedAsSecondary": 0,
+      "inboundEdges": 0,
+      "zeroInbound": 10
+    },
+    {
+      "bodySystem": "Infectious & Tropical Diseases",
+      "blankIdentities": 8,
+      "requestedAsSecondary": 0,
+      "inboundEdges": 0,
+      "zeroInbound": 8
+    },
+    {
+      "bodySystem": "Oncological Conditions",
+      "blankIdentities": 8,
+      "requestedAsSecondary": 0,
+      "inboundEdges": 13,
+      "zeroInbound": 4
+    },
+    {
+      "bodySystem": "Hemic, Lymphatic & Immune Systems",
+      "blankIdentities": 6,
+      "requestedAsSecondary": 0,
+      "inboundEdges": 16,
+      "zeroInbound": 4
+    },
+    {
+      "bodySystem": "Digestive System",
+      "blankIdentities": 4,
+      "requestedAsSecondary": 1,
+      "inboundEdges": 0,
+      "zeroInbound": 4
+    }
+  ],
+  "rows": [
+    {
+      "id": "drug-induced-parkinsonism",
+      "name": "Drug-Induced Parkinsonism",
+      "bodySystem": "Neurological",
+      "requestedAsSecondary": 2,
+      "requestFiles": [
+        "docs/crg-draft-expansion-genuine-drafts-2026-10-06.json",
+        "docs/crg-draft-identity-mapping-packet-wave6-2026-10-05.json"
+      ],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 3,
+      "rank": 1
+    },
+    {
+      "id": "radiculopathy",
+      "name": "radiculopathy",
+      "bodySystem": "Neurological",
+      "requestedAsSecondary": 4,
+      "requestFiles": [
+        "docs/crg-draft-expansion-requested-format-2026-10-06.json",
+        "docs/crg-draft-identity-mapping-packet-wave6-2026-10-05.json",
+        "docs/crg-exemplar-mapping-packet-2026-10-04.json"
+      ],
+      "inboundEdges": 1,
+      "graphInboundEdges": 1,
+      "gapScore": 2.5,
+      "rank": 2
+    },
+    {
+      "id": "menieres-disease",
+      "name": "Meniere's Disease",
+      "bodySystem": "Auditory & Special Senses",
+      "requestedAsSecondary": 1,
+      "requestFiles": [
+        "docs/crg-draft-identity-mapping-packet-wave11-2026-10-05.json"
+      ],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 2,
+      "rank": 3
+    },
+    {
+      "id": "meralgia-paresthetica",
+      "name": "Meralgia Paresthetica",
+      "bodySystem": "Neurological",
+      "requestedAsSecondary": 1,
+      "requestFiles": [
+        "docs/crg-draft-identity-mapping-packet-wave11-2026-10-05.json"
+      ],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 2,
+      "rank": 4
+    },
+    {
+      "id": "osteomalacia",
+      "name": "Osteomalacia, Residuals of",
+      "bodySystem": "Musculoskeletal System",
+      "requestedAsSecondary": 1,
+      "requestFiles": [
+        "docs/crg-draft-identity-mapping-packet-wave12-2026-10-05.json"
+      ],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 2,
+      "rank": 5
+    },
+    {
+      "id": "peritoneal-adhesions",
+      "name": "Peritoneal Adhesions",
+      "bodySystem": "Digestive System",
+      "requestedAsSecondary": 1,
+      "requestFiles": [
+        "docs/crg-draft-identity-mapping-packet-wave13-2026-10-05.json"
+      ],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 2,
+      "rank": 6
+    },
+    {
+      "id": "raynauds-syndrome",
+      "name": "Raynaud's Syndrome",
+      "bodySystem": "Cardiovascular System",
+      "requestedAsSecondary": 1,
+      "requestFiles": [
+        "docs/crg-draft-identity-mapping-packet-wave12-2026-10-05.json"
+      ],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 2,
+      "rank": 7
+    },
+    {
+      "id": "rotator-cuff-tear",
+      "name": "Rotator cuff tear",
+      "bodySystem": "Musculoskeletal System",
+      "requestedAsSecondary": 1,
+      "requestFiles": [
+        "docs/crg-draft-identity-mapping-packet-wave9-2026-10-05.json"
+      ],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 2,
+      "rank": 8
+    },
+    {
+      "id": "subacute-cutaneous-lupus",
+      "name": "Subacute cutaneous lupus",
+      "bodySystem": "Skin Conditions",
+      "requestedAsSecondary": 1,
+      "requestFiles": [
+        "docs/crg-draft-identity-mapping-packet-wave12-2026-10-05.json"
+      ],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 2,
+      "rank": 9
+    },
+    {
+      "id": "takotsubo-cardiomyopathy",
+      "name": "Takotsubo cardiomyopathy",
+      "bodySystem": "Cardiovascular System",
+      "requestedAsSecondary": 1,
+      "requestFiles": [
+        "docs/crg-draft-identity-mapping-packet-wave13-2026-10-05.json"
+      ],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 2,
+      "rank": 10
+    },
+    {
+      "id": "tarsal-tunnel-syndrome",
+      "name": "Tarsal tunnel syndrome",
+      "bodySystem": "Musculoskeletal System",
+      "requestedAsSecondary": 1,
+      "requestFiles": [
+        "docs/crg-draft-identity-mapping-packet-wave13-2026-10-05.json"
+      ],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 2,
+      "rank": 11
+    },
+    {
+      "id": "toxic-epidermal-necrolysis",
+      "name": "Toxic epidermal necrolysis",
+      "bodySystem": "Skin Conditions",
+      "requestedAsSecondary": 1,
+      "requestFiles": [
+        "docs/crg-draft-identity-mapping-packet-wave13-2026-10-05.json"
+      ],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 2,
+      "rank": 12
+    },
+    {
+      "id": "tracheal-stenosis",
+      "name": "Tracheal stenosis",
+      "bodySystem": "Respiratory System",
+      "requestedAsSecondary": 1,
+      "requestFiles": [
+        "docs/crg-draft-identity-mapping-packet-wave14-2026-10-06.json"
+      ],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 2,
+      "rank": 13
+    },
+    {
+      "id": "urge-urinary-incontinence",
+      "name": "Urge urinary incontinence",
+      "bodySystem": "Genitourinary & Gynecological Systems",
+      "requestedAsSecondary": 1,
+      "requestFiles": [
+        "docs/crg-draft-identity-mapping-packet-wave9-2026-10-05.json"
+      ],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 2,
+      "rank": 14
+    },
+    {
+      "id": "vocal-cord-paralysis",
+      "name": "Vocal Cord Paralysis",
+      "bodySystem": "Respiratory System",
+      "requestedAsSecondary": 1,
+      "requestFiles": [
+        "docs/crg-draft-identity-mapping-packet-wave12-2026-10-05.json"
+      ],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 2,
+      "rank": 15
+    },
+    {
+      "id": "osteopenia",
+      "name": "Osteopenia",
+      "bodySystem": "Musculoskeletal System",
+      "requestedAsSecondary": 2,
+      "requestFiles": [
+        "docs/crg-draft-expansion-genuine-drafts-2026-10-06.json",
+        "docs/crg-draft-identity-mapping-packet-wave3-2026-10-05.json"
+      ],
+      "inboundEdges": 1,
+      "graphInboundEdges": 0,
+      "gapScore": 1.5,
+      "rank": 16
+    },
+    {
+      "id": "carpal-tunnel-syndrome",
+      "name": "Carpal Tunnel Syndrome",
+      "bodySystem": "Musculoskeletal System",
+      "requestedAsSecondary": 2,
+      "requestFiles": [
+        "docs/crg-draft-expansion-genuine-drafts-2026-10-06.json",
+        "docs/crg-draft-identity-mapping-packet-wave3-2026-10-05.json"
+      ],
+      "inboundEdges": 2,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 17
+    },
+    {
+      "id": "tardive-dyskinesia",
+      "name": "Tardive Dyskinesia",
+      "bodySystem": "Neurological",
+      "requestedAsSecondary": 1,
+      "requestFiles": [
+        "docs/crg-draft-identity-mapping-packet-wave8-2026-10-05.json"
+      ],
+      "inboundEdges": 1,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 18
+    },
+    {
+      "id": "tendinopathy",
+      "name": "Tendinitis / Tendinosis / Tendinopathy",
+      "bodySystem": "Musculoskeletal System",
+      "requestedAsSecondary": 1,
+      "requestFiles": [
+        "docs/crg-draft-identity-mapping-packet-wave12-2026-10-05.json"
+      ],
+      "inboundEdges": 1,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 19
+    },
+    {
+      "id": "tension-type-headache",
+      "name": "Tension-Type Headache",
+      "bodySystem": "Neurological",
+      "requestedAsSecondary": 1,
+      "requestFiles": [
+        "docs/crg-draft-expansion-genuine-drafts-2026-10-06.json"
+      ],
+      "inboundEdges": 1,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 20
+    },
+    {
+      "id": "trigger-finger",
+      "name": "Trigger finger",
+      "bodySystem": "Musculoskeletal System",
+      "requestedAsSecondary": 1,
+      "requestFiles": [
+        "docs/crg-draft-identity-mapping-packet-wave10-2026-10-05.json"
+      ],
+      "inboundEdges": 1,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 21
+    },
+    {
+      "id": "acquired-syndactyly",
+      "name": "Acquired syndactyly",
+      "bodySystem": "Musculoskeletal System",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 22
+    },
+    {
+      "id": "acrocyanosis",
+      "name": "Acrocyanosis",
+      "bodySystem": "Cardiovascular System",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 23
+    },
+    {
+      "id": "adjustment-disorder",
+      "name": "Adjustment Disorder",
+      "bodySystem": "Mental Disorders",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 24
+    },
+    {
+      "id": "adjustment-disorders",
+      "name": "Adjustment disorders",
+      "bodySystem": "Mental Disorders",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 25
+    },
+    {
+      "id": "alopecia",
+      "name": "Alopecia",
+      "bodySystem": "Skin Conditions",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 26
+    },
+    {
+      "id": "amputation-of-thumb-fingers-toes",
+      "name": "Amputation of Thumb / Fingers / Toes",
+      "bodySystem": "Musculoskeletal System",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 27
+    },
+    {
+      "id": "anhedonia",
+      "name": "Anhedonia",
+      "bodySystem": "Mental Disorders",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 28
+    },
+    {
+      "id": "anosmia",
+      "name": "Loss of Smell (Anosmia)",
+      "bodySystem": "Auditory & Special Senses",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 29
+    },
+    {
+      "id": "baker-s-cyst",
+      "name": "Baker's cyst",
+      "bodySystem": "Musculoskeletal System",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 30
+    },
+    {
+      "id": "balint-s-syndrome",
+      "name": "Balint's syndrome",
+      "bodySystem": "Neurological",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 31
+    },
+    {
+      "id": "basal-cell-carcinoma",
+      "name": "Basal cell carcinoma",
+      "bodySystem": "Skin Conditions",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 32
+    },
+    {
+      "id": "boutonniere-deformity",
+      "name": "Boutonniere deformity",
+      "bodySystem": "Musculoskeletal System",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 33
+    },
+    {
+      "id": "bullous-pemphigoid",
+      "name": "Bullous pemphigoid",
+      "bodySystem": "Skin Conditions",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 34
+    },
+    {
+      "id": "bursitis",
+      "name": "Bursitis",
+      "bodySystem": "Musculoskeletal System",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 35
+    },
+    {
+      "id": "byssinosis",
+      "name": "Byssinosis",
+      "bodySystem": "Respiratory System",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 36
+    },
+    {
+      "id": "camptodactyly",
+      "name": "Camptodactyly",
+      "bodySystem": "Musculoskeletal System",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 37
+    },
+    {
+      "id": "carotid-sinus-hypersensitivity",
+      "name": "Carotid sinus hypersensitivity",
+      "bodySystem": "Cardiovascular System",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 38
+    },
+    {
+      "id": "chilblains",
+      "name": "Chilblains",
+      "bodySystem": "Cardiovascular System",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 39
+    },
+    {
+      "id": "chloracne",
+      "name": "Chloracne",
+      "bodySystem": "Skin Conditions",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 40
+    },
+    {
+      "id": "chondromalacia-patellae",
+      "name": "Chondromalacia patellae",
+      "bodySystem": "Musculoskeletal System",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 41
+    },
+    {
+      "id": "clinodactyly",
+      "name": "Clinodactyly",
+      "bodySystem": "Musculoskeletal System",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 42
+    },
+    {
+      "id": "color-blindness",
+      "name": "Color blindness",
+      "bodySystem": "Auditory & Special Senses",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 43
+    },
+    {
+      "id": "common-peroneal-neuropathy",
+      "name": "Common Peroneal (Fibular) Neuropathy",
+      "bodySystem": "Neurological",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 44
+    },
+    {
+      "id": "contralateral-knee-condition",
+      "name": "Contralateral (opposite) knee condition",
+      "bodySystem": "Musculoskeletal System",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 45
+    },
+    {
+      "id": "cubital-tunnel-syndrome",
+      "name": "Cubital tunnel syndrome",
+      "bodySystem": "Musculoskeletal System",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 46
+    },
+    {
+      "id": "delusional-disorder",
+      "name": "Delusional Disorder",
+      "bodySystem": "Mental Disorders",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 47
+    },
+    {
+      "id": "depersonalization-derealization-disorder",
+      "name": "Depersonalization / Derealization Disorder",
+      "bodySystem": "Mental Disorders",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 48
+    },
+    {
+      "id": "dermatitis-herpetiformis",
+      "name": "Dermatitis herpetiformis",
+      "bodySystem": "Skin Conditions",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 49
+    },
+    {
+      "id": "dermatofibroma",
+      "name": "Dermatofibroma",
+      "bodySystem": "Skin Conditions",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 50
+    },
+    {
+      "id": "dermatofibrosarcoma-protuberans",
+      "name": "Dermatofibrosarcoma protuberans",
+      "bodySystem": "Skin Conditions",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 51
+    },
+    {
+      "id": "diabetic-amyotrophy",
+      "name": "Diabetic amyotrophy",
+      "bodySystem": "Endocrine",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 52
+    },
+    {
+      "id": "diabetic-dermopathy",
+      "name": "Diabetic dermopathy",
+      "bodySystem": "Endocrine",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 53
+    },
+    {
+      "id": "dissociative-disorder",
+      "name": "Dissociative Amnesia / Dissociative Identity Disorder",
+      "bodySystem": "Mental Disorders",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 54
+    },
+    {
+      "id": "dyspareunia",
+      "name": "Dyspareunia",
+      "bodySystem": "Genitourinary & Gynecological Systems",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 55
+    },
+    {
+      "id": "encopresis",
+      "name": "Encopresis",
+      "bodySystem": "Genitourinary & Gynecological Systems",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 56
+    },
+    {
+      "id": "epididymal-cyst",
+      "name": "Epididymal cyst",
+      "bodySystem": "Genitourinary & Gynecological Systems",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 57
+    },
+    {
+      "id": "epidural-hematoma",
+      "name": "Epidural Hematoma",
+      "bodySystem": "Neurological",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 58
+    },
+    {
+      "id": "erythema-induratum",
+      "name": "Erythema induratum",
+      "bodySystem": "Skin Conditions",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 59
+    },
+    {
+      "id": "erythema-multiforme",
+      "name": "Erythema multiforme",
+      "bodySystem": "Skin Conditions",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 60
+    },
+    {
+      "id": "erythema-nodosum",
+      "name": "Erythema nodosum",
+      "bodySystem": "Skin Conditions",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 61
+    },
+    {
+      "id": "euthyroid-sick-syndrome",
+      "name": "Euthyroid sick syndrome",
+      "bodySystem": "Endocrine",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 62
+    },
+    {
+      "id": "extensor-digitorum-brevis-strain",
+      "name": "Extensor digitorum brevis strain",
+      "bodySystem": "Musculoskeletal System",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 63
+    },
+    {
+      "id": "female-reproductive-disorders",
+      "name": "Female reproductive disorders",
+      "bodySystem": "Genitourinary & Gynecological Systems",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 64
+    },
+    {
+      "id": "female-sexual-arousal-disorder",
+      "name": "Female Sexual Arousal Disorder",
+      "bodySystem": "Genitourinary & Gynecological Systems",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 65
+    },
+    {
+      "id": "fissured-tongue",
+      "name": "Fissured tongue",
+      "bodySystem": "Dental & Oral Conditions",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 66
+    },
+    {
+      "id": "fregoli-syndrome",
+      "name": "Fregoli syndrome",
+      "bodySystem": "Mental Disorders",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 67
+    },
+    {
+      "id": "functional-neurological-symptom-disorder",
+      "name": "Functional Neurological Symptom Disorder (Conversion Disorder)",
+      "bodySystem": "Mental Disorders",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 68
+    },
+    {
+      "id": "gastrointestinal-cancers",
+      "name": "Gastrointestinal cancers",
+      "bodySystem": "Oncological Conditions",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 69
+    },
+    {
+      "id": "geographic-tongue",
+      "name": "Geographic tongue",
+      "bodySystem": "Dental & Oral Conditions",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 70
+    },
+    {
+      "id": "gerstmann-s-syndrome",
+      "name": "Gerstmann's syndrome",
+      "bodySystem": "Neurological",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 71
+    },
+    {
+      "id": "gigantism",
+      "name": "Gigantism",
+      "bodySystem": "Endocrine",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 72
+    },
+    {
+      "id": "glossitis",
+      "name": "Glossitis",
+      "bodySystem": "Dental & Oral Conditions",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 73
+    },
+    {
+      "id": "goiter",
+      "name": "Goiter",
+      "bodySystem": "Endocrine",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 74
+    },
+    {
+      "id": "granuloma-annulare",
+      "name": "Granuloma annulare",
+      "bodySystem": "Skin Conditions",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 75
+    },
+    {
+      "id": "granulomatous-disease",
+      "name": "Granulomatous disease",
+      "bodySystem": "Infectious & Tropical Diseases",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 76
+    },
+    {
+      "id": "granulomatous-rhinitis",
+      "name": "Granulomatous Rhinitis",
+      "bodySystem": "Respiratory System",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 77
+    },
+    {
+      "id": "hairy-tongue",
+      "name": "Hairy tongue",
+      "bodySystem": "Dental & Oral Conditions",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 78
+    },
+    {
+      "id": "hallux-rigidus",
+      "name": "Hallux Rigidus",
+      "bodySystem": "Musculoskeletal System",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 79
+    },
+    {
+      "id": "head-and-neck-cancers",
+      "name": "Head and neck cancers",
+      "bodySystem": "Oncological Conditions",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 80
+    },
+    {
+      "id": "hip-strain",
+      "name": "Hip strain",
+      "bodySystem": "Musculoskeletal System",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 81
+    },
+    {
+      "id": "histoplasmosis",
+      "name": "Histoplasmosis of Lung",
+      "bodySystem": "Infectious & Tropical Diseases",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 82
+    },
+    {
+      "id": "hyperpigmentation",
+      "name": "Hyperpigmentation",
+      "bodySystem": "Skin Conditions",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 83
+    },
+    {
+      "id": "hypopigmentation",
+      "name": "Hypopigmentation",
+      "bodySystem": "Skin Conditions",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 84
+    },
+    {
+      "id": "interosseous-muscle-atrophy",
+      "name": "Interosseous muscle atrophy",
+      "bodySystem": "Musculoskeletal System",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 85
+    },
+    {
+      "id": "intervertebral-disc-syndrome",
+      "name": "Intervertebral Disc Syndrome",
+      "bodySystem": "Musculoskeletal System",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 86
+    },
+    {
+      "id": "iritis",
+      "name": "Iritis",
+      "bodySystem": "Auditory & Special Senses",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 87
+    },
+    {
+      "id": "jersey-finger",
+      "name": "Jersey finger",
+      "bodySystem": "Musculoskeletal System",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 88
+    },
+    {
+      "id": "laryngitis",
+      "name": "Laryngitis",
+      "bodySystem": "Respiratory System",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 89
+    },
+    {
+      "id": "laryngocele",
+      "name": "Laryngocele",
+      "bodySystem": "Respiratory System",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 90
+    },
+    {
+      "id": "laryngospasm",
+      "name": "Laryngospasm",
+      "bodySystem": "Respiratory System",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 91
+    },
+    {
+      "id": "limitation-of-motion",
+      "name": "Limitation of motion",
+      "bodySystem": "Musculoskeletal System",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 92
+    },
+    {
+      "id": "loss-of-auricle",
+      "name": "Loss of auricle",
+      "bodySystem": "Auditory & Special Senses",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 93
+    },
+    {
+      "id": "loss-of-eyelashes",
+      "name": "Loss of eyelashes",
+      "bodySystem": "Auditory & Special Senses",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 94
+    },
+    {
+      "id": "loss-of-use-of-extremities",
+      "name": "Loss of use of extremities",
+      "bodySystem": "Musculoskeletal System",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 95
+    },
+    {
+      "id": "lumbar-strain",
+      "name": "Lumbar Strain",
+      "bodySystem": "Musculoskeletal System",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 96
+    },
+    {
+      "id": "median-neuropathy",
+      "name": "Median Neuropathy",
+      "bodySystem": "Neurological",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 97
+    },
+    {
+      "id": "micro-tbi",
+      "name": "Micro TBI",
+      "bodySystem": "Neurological",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 98
+    },
+    {
+      "id": "muscle-injury",
+      "name": "Muscle Injuries / Atrophy",
+      "bodySystem": "Musculoskeletal System",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 99
+    },
+    {
+      "id": "myasthenia-gravis",
+      "name": "Myasthenia Gravis",
+      "bodySystem": "Neurological",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 100
+    },
+    {
+      "id": "myositis",
+      "name": "Myositis",
+      "bodySystem": "Musculoskeletal System",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 101
+    },
+    {
+      "id": "myxedema-coma",
+      "name": "Myxedema coma",
+      "bodySystem": "Endocrine",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 102
+    },
+    {
+      "id": "neurobehavioral-effects",
+      "name": "Neurobehavioral effects",
+      "bodySystem": "Hemic, Lymphatic & Immune Systems",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 103
+    },
+    {
+      "id": "neurocognitive-disorders",
+      "name": "Neurocognitive disorders",
+      "bodySystem": "Mental Disorders",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 104
+    },
+    {
+      "id": "neuroleptic-malignant-syndrome",
+      "name": "Neuroleptic Malignant Syndrome",
+      "bodySystem": "Neurological",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 105
+    },
+    {
+      "id": "night-blindness",
+      "name": "Night blindness",
+      "bodySystem": "Auditory & Special Senses",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 106
+    },
+    {
+      "id": "noise-induced-hearing-loss",
+      "name": "Noise-Induced Hearing Loss",
+      "bodySystem": "Auditory & Special Senses",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 107
+    },
+    {
+      "id": "nonspecific-interstitial-pneumonia",
+      "name": "Nonspecific interstitial pneumonia",
+      "bodySystem": "Respiratory System",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 108
+    },
+    {
+      "id": "nontuberculous-mycobacterial-infections",
+      "name": "Nontuberculous Mycobacterial Infections",
+      "bodySystem": "Infectious & Tropical Diseases",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 109
+    },
+    {
+      "id": "nystagmus",
+      "name": "Nystagmus",
+      "bodySystem": "Auditory & Special Senses",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 110
+    },
+    {
+      "id": "oral-hairy-leukoplakia",
+      "name": "Oral hairy leukoplakia",
+      "bodySystem": "Dental & Oral Conditions",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 111
+    },
+    {
+      "id": "overflow-incontinence",
+      "name": "Overflow incontinence",
+      "bodySystem": "Genitourinary & Gynecological Systems",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 112
+    },
+    {
+      "id": "panner-s-disease",
+      "name": "Panner's disease",
+      "bodySystem": "Musculoskeletal System",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 113
+    },
+    {
+      "id": "paradoxical-vocal-fold-motion",
+      "name": "Paradoxical vocal fold motion",
+      "bodySystem": "Respiratory System",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 114
+    },
+    {
+      "id": "paraphimosis",
+      "name": "Paraphimosis",
+      "bodySystem": "Genitourinary & Gynecological Systems",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 115
+    },
+    {
+      "id": "patellar-instability",
+      "name": "Patellar Instability",
+      "bodySystem": "Musculoskeletal System",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 116
+    },
+    {
+      "id": "pericardial-effusion",
+      "name": "Pericardial effusion",
+      "bodySystem": "Cardiovascular System",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 117
+    },
+    {
+      "id": "piriformis-syndrome",
+      "name": "Piriformis syndrome",
+      "bodySystem": "Musculoskeletal System",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 118
+    },
+    {
+      "id": "plantar-fasciitis",
+      "name": "Plantar Fasciitis",
+      "bodySystem": "Musculoskeletal System",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 119
+    },
+    {
+      "id": "plantar-warts",
+      "name": "Plantar warts",
+      "bodySystem": "Musculoskeletal System",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 120
+    },
+    {
+      "id": "poikiloderma",
+      "name": "Poikiloderma",
+      "bodySystem": "Skin Conditions",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 121
+    },
+    {
+      "id": "posterior-tibial-tendon-dysfunction",
+      "name": "Posterior tibial tendon dysfunction",
+      "bodySystem": "Musculoskeletal System",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 122
+    },
+    {
+      "id": "preiser-s-disease",
+      "name": "Preiser's disease",
+      "bodySystem": "Musculoskeletal System",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 123
+    },
+    {
+      "id": "premature-ejaculation",
+      "name": "Premature ejaculation",
+      "bodySystem": "Genitourinary & Gynecological Systems",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 124
+    },
+    {
+      "id": "proctalgia-fugax",
+      "name": "Proctalgia fugax",
+      "bodySystem": "Digestive System",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 125
+    },
+    {
+      "id": "pronator-teres-syndrome",
+      "name": "Pronator teres syndrome",
+      "bodySystem": "Musculoskeletal System",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 126
+    },
+    {
+      "id": "prostatitis",
+      "name": "Prostatitis",
+      "bodySystem": "Genitourinary & Gynecological Systems",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 127
+    },
+    {
+      "id": "pudendal-neuralgia",
+      "name": "Pudendal neuralgia",
+      "bodySystem": "Neurological",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 128
+    },
+    {
+      "id": "pulmonary-alveolar-microlithiasis",
+      "name": "Pulmonary alveolar microlithiasis",
+      "bodySystem": "Respiratory System",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 129
+    },
+    {
+      "id": "pulmonary-edema",
+      "name": "Pulmonary edema",
+      "bodySystem": "Respiratory System",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 130
+    },
+    {
+      "id": "pulmonary-vascular-disease",
+      "name": "Pulmonary Vascular Disease",
+      "bodySystem": "Respiratory System",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 131
+    },
+    {
+      "id": "pyoderma",
+      "name": "Pyoderma",
+      "bodySystem": "Skin Conditions",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 132
+    },
+    {
+      "id": "quadrilateral-space-syndrome",
+      "name": "Quadrilateral space syndrome",
+      "bodySystem": "Neurological",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 133
+    },
+    {
+      "id": "radial-neuropathy",
+      "name": "Radial Neuropathy",
+      "bodySystem": "Neurological",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 134
+    },
+    {
+      "id": "radiculopathy-femoral",
+      "name": "radiculopathy femoral",
+      "bodySystem": "Neurological",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 135
+    },
+    {
+      "id": "radiculopathy-sciatic",
+      "name": "radiculopathy sciatic",
+      "bodySystem": "Neurological",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 136
+    },
+    {
+      "id": "radiculopathy-upper-extremity",
+      "name": "radiculopathy upper extremity",
+      "bodySystem": "Neurological",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 137
+    },
+    {
+      "id": "ranula",
+      "name": "Ranula",
+      "bodySystem": "Dental & Oral Conditions",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 138
+    },
+    {
+      "id": "reinke-s-edema",
+      "name": "Reinke's edema",
+      "bodySystem": "Respiratory System",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 139
+    },
+    {
+      "id": "reproductive-cancers",
+      "name": "Reproductive cancers",
+      "bodySystem": "Oncological Conditions",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 140
+    },
+    {
+      "id": "rickettsial-ehrlichial-anaplasma-infection",
+      "name": "Rickettsial, Ehrlichia, and Anaplasma Infections",
+      "bodySystem": "Infectious & Tropical Diseases",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 141
+    },
+    {
+      "id": "sacroiliac-joint-dysfunction",
+      "name": "Sacroiliac Joint Dysfunction",
+      "bodySystem": "Musculoskeletal System",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 142
+    },
+    {
+      "id": "schizoaffective-disorder",
+      "name": "Schizoaffective Disorder",
+      "bodySystem": "Mental Disorders",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 143
+    },
+    {
+      "id": "serotonin-syndrome",
+      "name": "Serotonin Syndrome",
+      "bodySystem": "Neurological",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 144
+    },
+    {
+      "id": "shin-splints",
+      "name": "Shin Splints",
+      "bodySystem": "Musculoskeletal System",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 145
+    },
+    {
+      "id": "skier-s-thumb",
+      "name": "Skier's thumb",
+      "bodySystem": "Musculoskeletal System",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 146
+    },
+    {
+      "id": "strongyloidiasis",
+      "name": "Strongyloidiasis",
+      "bodySystem": "Infectious & Tropical Diseases",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 147
+    },
+    {
+      "id": "subacute-thyroiditis",
+      "name": "Subacute thyroiditis",
+      "bodySystem": "Endocrine",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 148
+    },
+    {
+      "id": "superior-mesenteric-artery-syndrome",
+      "name": "Superior mesenteric artery syndrome",
+      "bodySystem": "Digestive System",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 149
+    },
+    {
+      "id": "sural-nerve-neuralgia",
+      "name": "Sural nerve neuralgia",
+      "bodySystem": "Neurological",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 150
+    },
+    {
+      "id": "sweet-s-syndrome",
+      "name": "Sweet's syndrome",
+      "bodySystem": "Skin Conditions",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 151
+    },
+    {
+      "id": "syphilis",
+      "name": "Syphilis",
+      "bodySystem": "Infectious & Tropical Diseases",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 152
+    },
+    {
+      "id": "syringobulbia",
+      "name": "Syringobulbia",
+      "bodySystem": "Neurological",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 153
+    },
+    {
+      "id": "systemic-vasculitis",
+      "name": "Systemic vasculitis",
+      "bodySystem": "Hemic, Lymphatic & Immune Systems",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 154
+    },
+    {
+      "id": "tarsal-metatarsal-malunion-nonunion",
+      "name": "Tarsal or Metatarsal Malunion / Nonunion",
+      "bodySystem": "Musculoskeletal System",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 155
+    },
+    {
+      "id": "tenosynovitis",
+      "name": "Tenosynovitis",
+      "bodySystem": "Musculoskeletal System",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 156
+    },
+    {
+      "id": "tetralogy-of-fallot",
+      "name": "Tetralogy of Fallot",
+      "bodySystem": "Cardiovascular System",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 157
+    },
+    {
+      "id": "thenar-hypothenar-atrophy",
+      "name": "Thenar / Hypothenar Atrophy",
+      "bodySystem": "Musculoskeletal System",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 158
+    },
+    {
+      "id": "thoracic-outlet-syndrome",
+      "name": "Thoracic outlet syndrome",
+      "bodySystem": "Musculoskeletal System",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 159
+    },
+    {
+      "id": "thrombophlebitis",
+      "name": "Thrombophlebitis",
+      "bodySystem": "Cardiovascular System",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 160
+    },
+    {
+      "id": "thyroid-nodules",
+      "name": "Thyroid nodules",
+      "bodySystem": "Endocrine",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 161
+    },
+    {
+      "id": "thyroid-storm",
+      "name": "Thyroid storm",
+      "bodySystem": "Endocrine",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 162
+    },
+    {
+      "id": "tibial-neuropathy",
+      "name": "Tibial Neuropathy",
+      "bodySystem": "Neurological",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 163
+    },
+    {
+      "id": "tmj-dysfunction",
+      "name": "TMJ dysfunction",
+      "bodySystem": "Dental & Oral Conditions",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 164
+    },
+    {
+      "id": "tracheitis",
+      "name": "Tracheitis",
+      "bodySystem": "Respiratory System",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 165
+    },
+    {
+      "id": "tracheomalacia",
+      "name": "Tracheomalacia",
+      "bodySystem": "Respiratory System",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 166
+    },
+    {
+      "id": "traumatic-subarachnoid-hemorrhage",
+      "name": "Traumatic Subarachnoid Hemorrhage",
+      "bodySystem": "Neurological",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 167
+    },
+    {
+      "id": "trichotillomania",
+      "name": "Trichotillomania",
+      "bodySystem": "Skin Conditions",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 168
+    },
+    {
+      "id": "trigger-thumb",
+      "name": "Trigger thumb",
+      "bodySystem": "Musculoskeletal System",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 169
+    },
+    {
+      "id": "tropical-pulmonary-eosinophilia",
+      "name": "Tropical pulmonary eosinophilia",
+      "bodySystem": "Respiratory System",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 170
+    },
+    {
+      "id": "tumid-lupus",
+      "name": "Tumid lupus",
+      "bodySystem": "Skin Conditions",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 171
+    },
+    {
+      "id": "undiagnosed-illnesses-gulf-war",
+      "name": "Undiagnosed Illnesses (Gulf War)",
+      "bodySystem": "Hemic, Lymphatic & Immune Systems",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 172
+    },
+    {
+      "id": "unexplained-gastrointestinal-issues",
+      "name": "Unexplained gastrointestinal issues",
+      "bodySystem": "Infectious & Tropical Diseases",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 173
+    },
+    {
+      "id": "unexplained-neurological-muscle-conditions-gulf-war",
+      "name": "Unexplained Neurological / Muscle Conditions (Gulf War)",
+      "bodySystem": "Hemic, Lymphatic & Immune Systems",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 174
+    },
+    {
+      "id": "unexplained-skin-conditions",
+      "name": "Unexplained skin conditions",
+      "bodySystem": "Infectious & Tropical Diseases",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 175
+    },
+    {
+      "id": "urethral-caruncle",
+      "name": "Urethral caruncle",
+      "bodySystem": "Genitourinary & Gynecological Systems",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 176
+    },
+    {
+      "id": "urethral-diverticulum",
+      "name": "Urethral diverticulum",
+      "bodySystem": "Genitourinary & Gynecological Systems",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 177
+    },
+    {
+      "id": "urinary-tract-cancer",
+      "name": "Urinary tract cancer",
+      "bodySystem": "Oncological Conditions",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 178
+    },
+    {
+      "id": "vaginismus",
+      "name": "Vaginismus",
+      "bodySystem": "Genitourinary & Gynecological Systems",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 179
+    },
+    {
+      "id": "ventricular-septal-defect",
+      "name": "Ventricular septal defect",
+      "bodySystem": "Cardiovascular System",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 180
+    },
+    {
+      "id": "vestibular-disorder",
+      "name": "Vertigo / Vestibular Disorders",
+      "bodySystem": "Auditory & Special Senses",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 181
+    },
+    {
+      "id": "vestibular-migraine",
+      "name": "Vestibular migraine",
+      "bodySystem": "Auditory & Special Senses",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 182
+    },
+    {
+      "id": "vipoma",
+      "name": "VIPoma",
+      "bodySystem": "Endocrine",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 183
+    },
+    {
+      "id": "vocal-cord-dysfunction",
+      "name": "Vocal cord dysfunction",
+      "bodySystem": "Respiratory System",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 184
+    },
+    {
+      "id": "volkmann-s-ischemic-contracture",
+      "name": "Volkmann's ischemic contracture",
+      "bodySystem": "Musculoskeletal System",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 185
+    },
+    {
+      "id": "vulvodynia-vestibulitis",
+      "name": "Vulvodynia / Vestibulitis",
+      "bodySystem": "Genitourinary & Gynecological Systems",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 186
+    },
+    {
+      "id": "wartenberg-s-syndrome",
+      "name": "Wartenberg's syndrome",
+      "bodySystem": "Musculoskeletal System",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 187
+    },
+    {
+      "id": "wernicke-korsakoff-syndrome",
+      "name": "Wernicke-Korsakoff syndrome",
+      "bodySystem": "Neurological",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 188
+    },
+    {
+      "id": "wolff-parkinson-white-syndrome",
+      "name": "Wolff-Parkinson-White syndrome",
+      "bodySystem": "Cardiovascular System",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 189
+    },
+    {
+      "id": "wrist-disarticulation",
+      "name": "Wrist disarticulation",
+      "bodySystem": "Musculoskeletal System",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 190
+    },
+    {
+      "id": "xanthelasma",
+      "name": "Xanthelasma",
+      "bodySystem": "Skin Conditions",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 191
+    },
+    {
+      "id": "xanthomas",
+      "name": "Xanthomas",
+      "bodySystem": "Skin Conditions",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 192
+    },
+    {
+      "id": "zenker-s-diverticulum",
+      "name": "Zenker's diverticulum",
+      "bodySystem": "Digestive System",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 0,
+      "graphInboundEdges": 0,
+      "gapScore": 1,
+      "rank": 193
+    },
+    {
+      "id": "post-traumatic-headache",
+      "name": "Post-Traumatic Headache",
+      "bodySystem": "Neurological",
+      "requestedAsSecondary": 1,
+      "requestFiles": [
+        "docs/crg-draft-identity-mapping-packet-2026-10-05.json"
+      ],
+      "inboundEdges": 2,
+      "graphInboundEdges": 0,
+      "gapScore": 0.6667,
+      "rank": 194
+    },
+    {
+      "id": "urticaria",
+      "name": "Urticaria (Hives)",
+      "bodySystem": "Skin Conditions",
+      "requestedAsSecondary": 1,
+      "requestFiles": [
+        "docs/crg-draft-identity-mapping-packet-wave14-2026-10-06.json"
+      ],
+      "inboundEdges": 2,
+      "graphInboundEdges": 0,
+      "gapScore": 0.6667,
+      "rank": 195
+    },
+    {
+      "id": "xerostomia",
+      "name": "Xerostomia",
+      "bodySystem": "Dental & Oral Conditions",
+      "requestedAsSecondary": 1,
+      "requestFiles": [
+        "docs/crg-draft-identity-mapping-packet-wave10-2026-10-05.json"
+      ],
+      "inboundEdges": 3,
+      "graphInboundEdges": 0,
+      "gapScore": 0.5,
+      "rank": 196
+    },
+    {
+      "id": "dentin-hypersensitivity",
+      "name": "Dentin hypersensitivity",
+      "bodySystem": "Dental & Oral Conditions",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 1,
+      "graphInboundEdges": 0,
+      "gapScore": 0.5,
+      "rank": 197
+    },
+    {
+      "id": "eczema",
+      "name": "Eczema",
+      "bodySystem": "Skin Conditions",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 1,
+      "graphInboundEdges": 0,
+      "gapScore": 0.5,
+      "rank": 198
+    },
+    {
+      "id": "loss-of-eyebrow",
+      "name": "Loss of eyebrow",
+      "bodySystem": "Auditory & Special Senses",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 1,
+      "graphInboundEdges": 0,
+      "gapScore": 0.5,
+      "rank": 199
+    },
+    {
+      "id": "mandibular-nonunion",
+      "name": "Mandibular Nonunion (Nonunion of Mandible)",
+      "bodySystem": "Dental & Oral Conditions",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 1,
+      "graphInboundEdges": 0,
+      "gapScore": 0.5,
+      "rank": 200
+    },
+    {
+      "id": "optic-neuritis",
+      "name": "Optic Neuritis",
+      "bodySystem": "Auditory & Special Senses",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 1,
+      "graphInboundEdges": 0,
+      "gapScore": 0.5,
+      "rank": 201
+    },
+    {
+      "id": "osteonecrosis-of-the-jaw",
+      "name": "Osteonecrosis of the Jaw",
+      "bodySystem": "Dental & Oral Conditions",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 1,
+      "graphInboundEdges": 0,
+      "gapScore": 0.5,
+      "rank": 202
+    },
+    {
+      "id": "patellofemoral-pain-syndrome",
+      "name": "Patellofemoral Pain Syndrome",
+      "bodySystem": "Musculoskeletal System",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 1,
+      "graphInboundEdges": 0,
+      "gapScore": 0.5,
+      "rank": 203
+    },
+    {
+      "id": "pes-cavus",
+      "name": "Acquired Pes Cavus (Claw Foot)",
+      "bodySystem": "Musculoskeletal System",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 1,
+      "graphInboundEdges": 0,
+      "gapScore": 0.5,
+      "rank": 204
+    },
+    {
+      "id": "post-concussion-syndrome",
+      "name": "Post-Concussion Syndrome / Late Effects of TBI",
+      "bodySystem": "Neurological",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 1,
+      "graphInboundEdges": 0,
+      "gapScore": 0.5,
+      "rank": 205
+    },
+    {
+      "id": "sarcopenia",
+      "name": "Sarcopenia",
+      "bodySystem": "Musculoskeletal System",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 1,
+      "graphInboundEdges": 1,
+      "gapScore": 0.5,
+      "rank": 206
+    },
+    {
+      "id": "shoulder-condition",
+      "name": "Shoulder Impingement / Instability",
+      "bodySystem": "Musculoskeletal System",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 1,
+      "graphInboundEdges": 0,
+      "gapScore": 0.5,
+      "rank": 207
+    },
+    {
+      "id": "spinal-stenosis",
+      "name": "Spinal Stenosis",
+      "bodySystem": "Musculoskeletal System",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 1,
+      "graphInboundEdges": 0,
+      "gapScore": 0.5,
+      "rank": 208
+    },
+    {
+      "id": "swan-neck-deformity",
+      "name": "Swan neck deformity",
+      "bodySystem": "Musculoskeletal System",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 1,
+      "graphInboundEdges": 0,
+      "gapScore": 0.5,
+      "rank": 209
+    },
+    {
+      "id": "tmj-disorder",
+      "name": "Temporomandibular Joint (TMJ) Disorders",
+      "bodySystem": "Dental & Oral Conditions",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 1,
+      "graphInboundEdges": 1,
+      "gapScore": 0.5,
+      "rank": 210
+    },
+    {
+      "id": "ulnar-neuropathy",
+      "name": "Ulnar Neuropathy",
+      "bodySystem": "Neurological",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 1,
+      "graphInboundEdges": 0,
+      "gapScore": 0.5,
+      "rank": 211
+    },
+    {
+      "id": "valvular-heart-disease",
+      "name": "Valvular heart disease",
+      "bodySystem": "Cardiovascular System",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 1,
+      "graphInboundEdges": 0,
+      "gapScore": 0.5,
+      "rank": 212
+    },
+    {
+      "id": "varicocele-hydrocele",
+      "name": "Varicocele / Hydrocele",
+      "bodySystem": "Genitourinary & Gynecological Systems",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 1,
+      "graphInboundEdges": 0,
+      "gapScore": 0.5,
+      "rank": 213
+    },
+    {
+      "id": "vasovagal-syncope",
+      "name": "Vasovagal syncope",
+      "bodySystem": "Cardiovascular System",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 1,
+      "graphInboundEdges": 0,
+      "gapScore": 0.5,
+      "rank": 214
+    },
+    {
+      "id": "ventricular-tachycardia-fibrillation",
+      "name": "Ventricular Tachycardia / Fibrillation",
+      "bodySystem": "Cardiovascular System",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 1,
+      "graphInboundEdges": 0,
+      "gapScore": 0.5,
+      "rank": 215
+    },
+    {
+      "id": "vocal-cord-nodules-polyps-cysts-paralysis",
+      "name": "Vocal Cord Nodules / Polyps / Cysts / Paralysis",
+      "bodySystem": "Respiratory System",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 1,
+      "graphInboundEdges": 0,
+      "gapScore": 0.5,
+      "rank": 216
+    },
+    {
+      "id": "osteomyelitis",
+      "name": "Osteomyelitis",
+      "bodySystem": "Musculoskeletal System",
+      "requestedAsSecondary": 1,
+      "requestFiles": [
+        "docs/crg-draft-identity-mapping-packet-wave7-2026-10-05.json"
+      ],
+      "inboundEdges": 4,
+      "graphInboundEdges": 0,
+      "gapScore": 0.4,
+      "rank": 217
+    },
+    {
+      "id": "peripheral-neuropathy",
+      "name": "Peripheral Neuropathy",
+      "bodySystem": "Neurological",
+      "requestedAsSecondary": 3,
+      "requestFiles": [
+        "docs/crg-draft-expansion-genuine-drafts-2026-10-06.json",
+        "docs/crg-draft-identity-mapping-packet-2026-10-05.json",
+        "docs/crg-draft-identity-mapping-packet-wave5-2026-10-05.json"
+      ],
+      "inboundEdges": 11,
+      "graphInboundEdges": 0,
+      "gapScore": 0.3333,
+      "rank": 218
+    },
+    {
+      "id": "hydronephrosis",
+      "name": "Hydronephrosis",
+      "bodySystem": "Genitourinary & Gynecological Systems",
+      "requestedAsSecondary": 1,
+      "requestFiles": [
+        "docs/crg-draft-identity-mapping-packet-wave7-2026-10-05.json"
+      ],
+      "inboundEdges": 5,
+      "graphInboundEdges": 0,
+      "gapScore": 0.3333,
+      "rank": 219
+    },
+    {
+      "id": "diplopia",
+      "name": "Diplopia (Double Vision)",
+      "bodySystem": "Auditory & Special Senses",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 2,
+      "graphInboundEdges": 0,
+      "gapScore": 0.3333,
+      "rank": 220
+    },
+    {
+      "id": "muscle-atrophy",
+      "name": "Muscle atrophy",
+      "bodySystem": "Musculoskeletal System",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 2,
+      "graphInboundEdges": 0,
+      "gapScore": 0.3333,
+      "rank": 221
+    },
+    {
+      "id": "pancreatic-cancer",
+      "name": "Pancreatic Cancer",
+      "bodySystem": "Oncological Conditions",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 2,
+      "graphInboundEdges": 0,
+      "gapScore": 0.3333,
+      "rank": 222
+    },
+    {
+      "id": "rotator-cuff-injury",
+      "name": "Rotator Cuff Tendonitis / Tear",
+      "bodySystem": "Musculoskeletal System",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 2,
+      "graphInboundEdges": 0,
+      "gapScore": 0.3333,
+      "rank": 223
+    },
+    {
+      "id": "scarring-alopecia",
+      "name": "Scarring Alopecia",
+      "bodySystem": "Skin Conditions",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 2,
+      "graphInboundEdges": 0,
+      "gapScore": 0.3333,
+      "rank": 224
+    },
+    {
+      "id": "sinusitis",
+      "name": "Sinusitis",
+      "bodySystem": "Respiratory System",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 2,
+      "graphInboundEdges": 0,
+      "gapScore": 0.3333,
+      "rank": 225
+    },
+    {
+      "id": "skin-cancer",
+      "name": "Melanoma / Non-Melanoma Skin Cancers",
+      "bodySystem": "Oncological Conditions",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 2,
+      "graphInboundEdges": 0,
+      "gapScore": 0.3333,
+      "rank": 226
+    },
+    {
+      "id": "testicular-atrophy",
+      "name": "Testicular atrophy",
+      "bodySystem": "Genitourinary & Gynecological Systems",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 2,
+      "graphInboundEdges": 0,
+      "gapScore": 0.3333,
+      "rank": 227
+    },
+    {
+      "id": "cranial-nerve-palsy",
+      "name": "Cranial Nerve Palsy",
+      "bodySystem": "Neurological",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 3,
+      "graphInboundEdges": 0,
+      "gapScore": 0.25,
+      "rank": 228
+    },
+    {
+      "id": "loss-of-teeth",
+      "name": "Loss of Occlusal Surface / Loss of Teeth",
+      "bodySystem": "Dental & Oral Conditions",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 3,
+      "graphInboundEdges": 0,
+      "gapScore": 0.25,
+      "rank": 229
+    },
+    {
+      "id": "macular-degeneration",
+      "name": "Macular Degeneration",
+      "bodySystem": "Auditory & Special Senses",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 3,
+      "graphInboundEdges": 0,
+      "gapScore": 0.25,
+      "rank": 230
+    },
+    {
+      "id": "metatarsalgia",
+      "name": "Anterior Metatarsalgia (Morton's Disease)",
+      "bodySystem": "Musculoskeletal System",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 3,
+      "graphInboundEdges": 0,
+      "gapScore": 0.25,
+      "rank": 231
+    },
+    {
+      "id": "scoliosis",
+      "name": "Scoliosis",
+      "bodySystem": "Musculoskeletal System",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 3,
+      "graphInboundEdges": 0,
+      "gapScore": 0.25,
+      "rank": 232
+    },
+    {
+      "id": "thrombocytopenia",
+      "name": "Thrombocytopenia",
+      "bodySystem": "Hemic, Lymphatic & Immune Systems",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 3,
+      "graphInboundEdges": 0,
+      "gapScore": 0.25,
+      "rank": 233
+    },
+    {
+      "id": "urinary-frequency-retention",
+      "name": "Urinary Frequency / Retention",
+      "bodySystem": "Genitourinary & Gynecological Systems",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 3,
+      "graphInboundEdges": 0,
+      "gapScore": 0.25,
+      "rank": 234
+    },
+    {
+      "id": "contractures",
+      "name": "Contractures",
+      "bodySystem": "Musculoskeletal System",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 4,
+      "graphInboundEdges": 0,
+      "gapScore": 0.2,
+      "rank": 235
+    },
+    {
+      "id": "diabetes-mellitus",
+      "name": "Diabetes mellitus",
+      "bodySystem": "Endocrine",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 4,
+      "graphInboundEdges": 0,
+      "gapScore": 0.2,
+      "rank": 236
+    },
+    {
+      "id": "leukemia",
+      "name": "Leukemia (Acute & Chronic)",
+      "bodySystem": "Oncological Conditions",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 4,
+      "graphInboundEdges": 0,
+      "gapScore": 0.2,
+      "rank": 237
+    },
+    {
+      "id": "scars",
+      "name": "Scars (Painful or Unstable)",
+      "bodySystem": "Musculoskeletal System",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 4,
+      "graphInboundEdges": 0,
+      "gapScore": 0.2,
+      "rank": 238
+    },
+    {
+      "id": "seizure-disorder",
+      "name": "Seizure Disorder / Epilepsy",
+      "bodySystem": "Neurological",
+      "requestedAsSecondary": 1,
+      "requestFiles": [
+        "docs/crg-draft-identity-mapping-packet-wave2-2026-10-05.json"
+      ],
+      "inboundEdges": 11,
+      "graphInboundEdges": 0,
+      "gapScore": 0.1667,
+      "rank": 239
+    },
+    {
+      "id": "lymphedema",
+      "name": "Lymphedema",
+      "bodySystem": "Cardiovascular System",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 5,
+      "graphInboundEdges": 0,
+      "gapScore": 0.1667,
+      "rank": 240
+    },
+    {
+      "id": "respiratory-cancer",
+      "name": "Lung Cancer / Tracheal Cancer / Bronchial Cancer",
+      "bodySystem": "Oncological Conditions",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 5,
+      "graphInboundEdges": 0,
+      "gapScore": 0.1667,
+      "rank": 241
+    },
+    {
+      "id": "post-traumatic-osteoarthritis",
+      "name": "Post-Traumatic Arthritis",
+      "bodySystem": "Musculoskeletal System",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 6,
+      "graphInboundEdges": 0,
+      "gapScore": 0.1429,
+      "rank": 242
+    },
+    {
+      "id": "urinary-incontinence",
+      "name": "Urinary Incontinence / Frequency",
+      "bodySystem": "Genitourinary & Gynecological Systems",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 8,
+      "graphInboundEdges": 0,
+      "gapScore": 0.1111,
+      "rank": 243
+    },
+    {
+      "id": "unexplained-chronic-pain",
+      "name": "Unexplained chronic pain",
+      "bodySystem": "Hemic, Lymphatic & Immune Systems",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 13,
+      "graphInboundEdges": 0,
+      "gapScore": 0.0714,
+      "rank": 244
+    },
+    {
+      "id": "visual-impairment",
+      "name": "Visual Acuity / Field Impairment",
+      "bodySystem": "Auditory & Special Senses",
+      "requestedAsSecondary": 0,
+      "requestFiles": [],
+      "inboundEdges": 18,
+      "graphInboundEdges": 0,
+      "gapScore": 0.0526,
+      "rank": 245
+    }
+  ],
+  "unresolvedRequestNames": [
+    {
+      "file": "docs/crg-draft-identity-mapping-packet-2026-10-05.json",
+      "named": "Posterior subcapsular cataract (corticosteroid-induced)"
+    },
+    {
+      "file": "docs/crg-draft-identity-mapping-packet-wave14-2026-10-06.json",
+      "named": "Clinically significant ulnar entrapment neuropathy at the elbow, distinct from diffuse diabetic polyneuropathy"
+    },
+    {
+      "file": "docs/crg-draft-identity-mapping-packet-wave8-2026-10-05.json",
+      "named": "Adrenal insufficiency (secondary/tertiary, glucocorticoid-induced)"
+    },
+    {
+      "file": "docs/crg-draft-identity-mapping-packet-wave8-2026-10-05.json",
+      "named": "Osteoradionecrosis of the jaw (maxilla or mandible)"
+    },
+    {
+      "file": "docs/crg-gap-mapping-packet-2026-10-04.json",
+      "named": "Tinnitus, recurrent"
+    }
+  ]
+}

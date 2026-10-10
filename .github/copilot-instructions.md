@@ -38,8 +38,8 @@ This application heavily relies on strict JSON file parsing and cross-file refer
 - `src/lib/secondary-workflow/` must never import `@/lib/presumptive/*` logic, and `src/lib/presumptive/` must never import `@/lib/secondary-workflow/*`, `@/lib/kb/*`, or `@/lib/engine/*` (type-only imports of shared types are allowed). The composition audit (`npm run test:composition`) fails on violations.
 
 ### 2. Security & Privacy
-- NEVER use GET requests or URL query parameters for workflow state, condition selections, or service history. All state mutations use Next.js Server Actions (POST). `/results` is a legacy hard redirect and must not process query-based health state.
-- NEVER store full workflow state in cookies. Cookies contain only short-lived, encrypted/authenticated workflow state; never surface tokens, condition selections, or PII in URLs, logs, or screenshots.
+- NEVER place workflow state, condition selections, or service history in GET query parameters. Secondary and presumptive research state is validated and stored in versioned, tab-scoped browser `sessionStorage`; no research-workflow Server Action or workflow cookie is used. `/results` is a legacy hard redirect and must not process query-based health state.
+- NEVER store full workflow state in cookies. The separate optional VA-account sandbox uses cookies only for opaque connection handles and short-lived callback binding; OAuth tokens stay in its encrypted server-side store. Never surface tokens, condition selections, or PII in URLs, logs, or screenshots.
 - NEVER send raw file bytes (PDFs/images) through Server Actions. Documents are processed browser-local in `src/lib/evidence/`; only sanitized, bounded extracted text is surfaced.
 - NEVER initialize client-side analytics, telemetry, or third-party SDKs. `connect-src` stays `'self'`.
 - NEVER weaken the nonce-based Content Security Policy in `src/proxy.ts` (no `'unsafe-inline'` for scripts, no third-party connect-src).

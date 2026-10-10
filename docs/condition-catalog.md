@@ -96,6 +96,14 @@ Clinical evidence citation counts and the qualified-human review queue are inten
 
 ## Adding or revising a condition
 
+For a new identity needed to reopen an archived draft, use the
+[reviewed catalog-identity admission path](catalog-identity-admission.md).
+It records a hash-bound owner decision and validates an isolated candidate
+through the actual schemas, runtime contract and public-corpus generator.
+The current `chronic-pain` proposal is **pending**, not an approved addition.
+Identity admission, draft restoration, clinical publication and citation
+verification remain separate decisions.
+
 1. Add the condition to the appropriate body-system catalog file or an explicitly named reviewed batch/maintenance file.
 2. Use a unique kebab-case `id`, a stable display `name`, and only unambiguous aliases.
 3. Add a traceable rating-schedule citation when one is known; leave it `verified: false` under automated authoring policy.
