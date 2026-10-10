@@ -11,14 +11,18 @@
 // entirely in-browser (worker traffic included) and that Finish Review clears
 // every registered browser storage key.
 //
-// CI runs this as an enforced step — .github/workflows/ci.yml, "Run PRIV-01
-// stage-4 browser sentinel" — for pull requests whose change set can move the
-// browser-local privacy posture (scripts/priv01-sentinel-scope.mjs) and for
-// every non-PR event. That step starts the dev server itself and points
+// CI runs this as an enforced job — .github/workflows/ci.yml, job
+// `priv01_sentinel`, step "Run PRIV-01 stage-4 browser sentinel" — for pull
+// requests whose change set can move the browser-local privacy posture
+// (scripts/priv01-sentinel-scope.mjs, answered by the `priv01_scope` job) and
+// for every non-PR event. That job starts the dev server itself and points
 // SENTINEL_APP_BASE and SENTINEL_SERVER_LOG at it, because the scan below only
 // means something when it reads the log of the server it actually drove; a
-// missing browser or unhealthy server fails the gate rather than skipping it
-// (tests/priv01-sentinel-gate-wiring.test.ts pins that wiring).
+// missing browser or unhealthy server fails the gate rather than skipping it.
+// It has its own wall-clock budget and the walk has a smaller one inside it, so
+// a wedged walk cannot spend the budget of any other gate, and `verify` fails
+// when this job fails (tests/priv01-sentinel-gate-wiring.test.ts pins that
+// wiring).
 //
 // The sentinel split is deliberate:
 //   Pass A — real UI walk. Real catalog selections (the picker only offers
@@ -39,10 +43,19 @@ import { spawn } from "node:child_process";
 import crypto from "node:crypto";
 import fs from "node:fs";
 import os from "node:os";
+import { createRequire } from "node:module";
 import path from "node:path";
 
+import { createProgressReporter } from "./lib/sentinel-progress.mjs";
+import { waitForCondition } from "./lib/sentinel-wait.mjs";
+
+// Next already ships ws. Its streaming frame decoder handles large CDP
+// getResponseBody packets (the self-hosted WASM loader is several MB), where
+// the host's native WebSocket closed with 1006 during the OCR asset capture.
+const CdpWebSocket = createRequire(import.meta.url)("next/dist/compiled/ws");
+
 const APP_BASE = process.env.SENTINEL_APP_BASE ?? "http://127.0.0.1:3107";
-const CDP_PORT = Number(process.env.SENTINEL_CDP_PORT ?? 9224);
+const CDP_PORT = Number(process.env.SENTINEL_CDP_PORT ?? 0);
 const CHROME =
   process.env.CHROME_PATH ??
   "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
@@ -175,22 +188,36 @@ function delay(ms) {
 // Waits until CDP has reported the planted control request (with its body)
 // before the surface scan snapshots the request inventory.
 async function waitForCapturedRequest(urlFragment, timeoutMs = 10_000) {
-  const deadline = Date.now() + timeoutMs;
+  const startedAt = Date.now();
+  const label = `captured request ${urlFragment}`;
+  const deadline = startedAt + timeoutMs;
   while (Date.now() < deadline) {
-    if (
-      [...requests.values()].some(
-        (entry) => entry.url.includes(urlFragment) && entry.postData,
-      )
-    ) {
-      return true;
-    }
+    const captured = [...requests.values()].some(
+      (entry) => entry.url.includes(urlFragment) && entry.postData,
+    );
+    progress.probe({
+      label,
+      elapsedMs: Date.now() - startedAt,
+      last: captured ? "request captured" : "not captured yet",
+    });
+    if (captured) return true;
     await delay(200);
   }
   return false;
 }
 
+/**
+ * Progress heartbeats, so a wedged run is diagnosable from the log alone rather
+ * than looking like a slow one. `scripts/lib/sentinel-progress.mjs` documents
+ * what each line means; the reporter is passive and never decides a result.
+ */
+const progress = createProgressReporter();
+
 function assert(name, ok, detail) {
   assertions.push({ name, ok: Boolean(ok), detail: detail ?? null });
+  // An assertion is the walk moving forward; the heartbeat reports how long ago
+  // the last one was, which is what makes a stall visible between log lines.
+  progress.event(`assertion "${name}" ${ok ? "passed" : "FAILED"}`);
   if (!ok) console.error(`FAIL  ${name}${detail ? ` — ${detail}` : ""}`);
   else console.log(`ok    ${name}`);
   return Boolean(ok);
@@ -232,42 +259,62 @@ function spawnTracked(label, command, args, env = {}) {
 }
 
 async function waitForHttp(url, label, timeoutMs = 60_000) {
-  const deadline = Date.now() + timeoutMs;
+  const startedAt = Date.now();
+  const deadline = startedAt + timeoutMs;
   let lastError;
+  let last = "no response yet";
+  let status = "value";
   while (Date.now() < deadline) {
     try {
       const response = await fetch(url, { signal: AbortSignal.timeout(2_000) });
-      if (response.status < 500) return response;
+      status = "value";
+      last = `HTTP ${response.status}`;
+      if (response.status < 500) {
+        progress.probe({ label, elapsedMs: Date.now() - startedAt, last, status });
+        return response;
+      }
       lastError = new Error(`${label} returned HTTP ${response.status}`);
     } catch (error) {
       lastError = error;
+      status = "error";
+      last = error?.message ?? "request failed";
     }
+    progress.probe({ label, elapsedMs: Date.now() - startedAt, last, status });
     await delay(300);
   }
-  throw new Error(`${label} never became ready: ${lastError?.message ?? "timeout"}`);
+  throw new Error(
+    `${label} never became ready: ${lastError?.message ?? "timeout"} — ${progress.describeWait(label)}`,
+  );
 }
 
-function send(method, params = {}, sessionId) {
+function send(method, params = {}, sessionId, timeoutMs = 60_000) {
   const id = ++nextMessageId;
   return new Promise((resolve, reject) => {
-    pendingMessages.set(id, { resolve, reject });
-    ws.send(
-      JSON.stringify({ id, method, params, ...(sessionId ? { sessionId } : {}) }),
-    );
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       if (pendingMessages.has(id)) {
         pendingMessages.delete(id);
         reject(new Error(`CDP ${method} timed out`));
       }
-    }, 60_000);
+    }, timeoutMs);
+    pendingMessages.set(id, { resolve, reject, timer, sessionId });
+    if (ws.readyState !== CdpWebSocket.OPEN) {
+      clearTimeout(timer);
+      pendingMessages.delete(id);
+      reject(new Error("CDP transport is not open; capture continuity is lost"));
+      return;
+    }
+    ws.send(
+      JSON.stringify({ id, method, params, ...(sessionId ? { sessionId } : {}) }),
+    );
   });
 }
 
-async function pageEval(expression) {
+async function pageEval(expression, timeoutMs = 60_000) {
   const result = await send(
     "Runtime.evaluate",
-    { expression, returnByValue: true, awaitPromise: true, userGesture: true },
+    { expression, returnByValue: true, awaitPromise: true, userGesture: true, timeout: timeoutMs },
     pageSessionId,
+    timeoutMs + 1_000,
   );
   if (result.exceptionDetails) {
     throw new Error(
@@ -280,26 +327,20 @@ async function pageEval(expression) {
 }
 
 async function waitForPage(expression, label, timeoutMs = 90_000) {
-  const deadline = Date.now() + timeoutMs;
-  let last = null;
-  while (Date.now() < deadline) {
-    try {
-      last = await pageEval(expression);
-      if (last === true) return;
-    } catch (error) {
-      last = error.message;
-    }
-    await delay(400);
-  }
-  let bodyTail = "";
   try {
-    bodyTail = await pageEval("document.body.innerText.slice(-500)");
-  } catch {
-    // Page gone; keep the empty diagnostic.
+    await waitForCondition({
+      probe: (budget) => pageEval(expression, budget), label, timeoutMs,
+      // Record only. The heartbeat interval owns the output, so a long wait
+      // produces one consistent line format instead of two competing ones.
+      onProgress: ({ elapsedMs, last, status }) => {
+        progress.probe({ label, elapsedMs, last, status });
+      },
+    });
+  } catch (error) {
+    // The wait says *what* was awaited. This adds whether the browser was still
+    // answering, which is the difference between a slow run and a wedge.
+    throw new Error(`${error.message} — ${progress.describeWait(label)}`);
   }
-  throw new Error(
-    `timed out waiting for ${label} (last=${JSON.stringify(last)}; bodyTail=${JSON.stringify(bodyTail)})`,
-  );
 }
 
 async function navigate(url) {
@@ -558,6 +599,13 @@ function handleCdpEvent(message) {
     }
     case "Target.detachedFromTarget":
       sessions.delete(params.sessionId);
+      for (const [id, pending] of pendingMessages) {
+        if (pending.sessionId === params.sessionId) {
+          clearTimeout(pending.timer);
+          pendingMessages.delete(id);
+          pending.reject(new Error("CDP target detached"));
+        }
+      }
       break;
     case "Network.requestWillBeSent": {
       const key = `${message.sessionId}:${params.requestId}`;
@@ -724,6 +772,8 @@ function readSessionKeys() {
 }
 
 async function run() {
+  progress.start();
+  progress.phase("scanner self-test (positive control)");
   console.log(`PRIV-01 stage-4 browser sentinel acceptance — token ${TOKEN}`);
   console.log(`App under test: ${APP_BASE}`);
 
@@ -756,6 +806,7 @@ async function run() {
   );
 
   // 1. Preconditions -------------------------------------------------------
+  progress.phase("preconditions (health, schema inventory)");
   const health = await waitForHttp(`${APP_BASE}/api/health`, "app health", 20_000);
   assert("dev server healthy before the walk", health.status === 200, `HTTP ${health.status}`);
 
@@ -806,6 +857,7 @@ async function run() {
   const traceBefore = fs.existsSync(TRACE_FILE) ? fs.statSync(TRACE_FILE).size : 0;
 
   // 2. Launch Chrome and attach -------------------------------------------
+  progress.phase("launching Chrome and attaching CDP");
   const profileDir = path.join(os.tmpdir(), `cdp-chrome-sentinel-${TOKEN}`);
   profileDirForCleanup = profileDir;
   fs.rmSync(profileDir, { recursive: true, force: true });
@@ -825,20 +877,39 @@ async function run() {
     "about:blank",
   ]);
   if (!chrome.pid) throw new Error("Chrome failed to start.");
-  await waitForHttp(`http://127.0.0.1:${CDP_PORT}/json/version`, "Chrome DevTools endpoint", 30_000);
+  // Let Chrome allocate a free port by default. Read its owned profile rather
+  // than attaching to an unrelated browser that happened to occupy 9224.
+  const activePortFile = path.join(profileDir, "DevToolsActivePort");
+  const portDeadline = Date.now() + 30_000;
+  while (!fs.existsSync(activePortFile) && Date.now() < portDeadline) {
+    if (chrome.exitCode !== null) throw new Error("Chrome exited before DevTools was ready.");
+    await delay(100);
+  }
+  const activePort = CDP_PORT || Number(fs.readFileSync(activePortFile, "utf8").split("\n")[0]);
+  await waitForHttp(`http://127.0.0.1:${activePort}/json/version`, "Chrome DevTools endpoint", 30_000);
 
   const version = await (
-    await fetch(`http://127.0.0.1:${CDP_PORT}/json/version`)
+    await fetch(`http://127.0.0.1:${activePort}/json/version`)
   ).json();
-  ws = new WebSocket(version.webSocketDebuggerUrl);
+  ws = new CdpWebSocket(version.webSocketDebuggerUrl, { maxPayload: 32 * 1024 * 1024 });
   await new Promise((resolve, reject) => {
     ws.addEventListener("open", resolve, { once: true });
     ws.addEventListener("error", reject, { once: true });
   });
+  ws.addEventListener("close", (event) => {
+    console.error(`CDP transport closed: code=${event.code} reason=${event.reason}`);
+    for (const pending of pendingMessages.values()) {
+      clearTimeout(pending.timer);
+      pending.reject(new Error(`CDP transport closed (${event.code})`));
+    }
+    pendingMessages.clear();
+  });
+  ws.addEventListener("error", () => console.error("CDP transport error"));
   ws.addEventListener("message", (event) => {
     const message = JSON.parse(String(event.data));
     if (message.id && pendingMessages.has(message.id)) {
-      const { resolve, reject } = pendingMessages.get(message.id);
+      const { resolve, reject, timer } = pendingMessages.get(message.id);
+      clearTimeout(timer);
       pendingMessages.delete(message.id);
       if (message.error) reject(new Error(`CDP error: ${message.error.message}`));
       else resolve(message.result);
@@ -847,14 +918,9 @@ async function run() {
     if (message.method) handleCdpEvent(message);
   });
 
-  // Worker sessions must pause on attach so Network.enable is in place before
-  // the worker performs its first request (tesseract worker/core/lang assets).
-  await send("Target.setAutoAttach", {
-    autoAttach: true,
-    waitForDebuggerOnStart: true,
-    flatten: true,
-    filter: [{ type: "worker" }, { type: "service_worker" }, { type: "shared_worker" }],
-  });
+  // Attach the page explicitly, then auto-attach its workers below. A second
+  // browser-level auto-attach with a worker-only filter can detach the manually
+  // attached page when worker targets change (observed on Chrome 154).
   const target = await send("Target.createTarget", { url: "about:blank" });
   const attached = await send("Target.attachToTarget", {
     targetId: target.targetId,
@@ -886,11 +952,15 @@ async function run() {
   async function recordStep(name) {
     const cookie = await pageEval("document.cookie");
     walk.steps.push({ name, url: await pageEval("location.pathname + location.search"), cookie });
+    // A completed UI step is progress; the heartbeat reports how long ago the
+    // last one was, which is what makes a stall visible between log lines.
+    progress.event(`step "${name}" recorded`);
   }
 
   // ------------------------------------------------------------------------
   // Pass A — real UI walk with sentinels in every free-text/evidence field.
   // ------------------------------------------------------------------------
+  progress.phase("Pass A — real UI walk");
 
   await navigate(`${APP_BASE}/secondary/diagnosed`);
   await waitForPage(
@@ -1012,10 +1082,14 @@ async function run() {
     60_000,
   );
   await pageEval(js(clickButtonByText, "Local OCR"));
+  // The longest single wait in the walk and the leg that wedges on a loaded
+  // host, so it gets its own phase: the heartbeat then reports the probe history
+  // for this wait specifically while it runs and when it fails.
+  progress.phase("browser-local OCR (tesseract workers)");
   await waitForPage(
     "document.body.innerText.includes('Local OCR completed for')",
     "local OCR completion message",
-    240_000,
+    Number(process.env.SENTINEL_OCR_TIMEOUT_MS ?? 240_000),
   );
   const ocrState = await pageEval(
     `(() => {
@@ -1068,6 +1142,7 @@ async function run() {
   );
 
   // ------------------------------------------------------------------------
+  progress.phase("private-field positive controls");
   // Private-field positive controls. Every field of the context schema and
   // every auxiliary store must be observed holding real walk data — and, for
   // the free-text fields, a sentinel — inside the browser before the leak scan
@@ -1250,6 +1325,7 @@ async function run() {
   // ------------------------------------------------------------------------
   // Pass B — seeded record with a sentinel in every string field of the schema.
   // ------------------------------------------------------------------------
+  progress.phase("Pass B — seeded browser record");
 
   const seededRecord = {
     version: 1,
@@ -1390,7 +1466,7 @@ async function run() {
     JSON.stringify(remainingKeys),
   );
   const clearedContainsSentinel = (clearedSnapshot?.session ?? []).some((entry) =>
-    CLEAR_KEYS.some((key) => entry.value?.includes(SENTINELS.medication)),
+    CLEAR_KEYS.includes(entry.key) && entry.value?.includes(SENTINELS.medication),
   );
   assert(
     "no sentinel remains in sessionStorage after Finish Review",
@@ -1430,6 +1506,7 @@ async function run() {
   // ------------------------------------------------------------------------
   // Sentinels, third-party hosts, workers, cookies.
   // ------------------------------------------------------------------------
+  progress.phase("surface scan, final assertions and report");
 
   // Positive control for the request-body surface. The workflow itself issues
   // only bodyless requests, which would leave "no sentinel in a request body"
@@ -1777,6 +1854,9 @@ async function run() {
     assertions,
     violations,
     observations,
+    // The same wedge diagnosis the log carries, so a run that had to be killed
+    // reports where it stalled rather than only how long it had been going.
+    progress: progress.snapshot(),
     checks: {
       serverLog: observations.serverLog,
       traceFile: observations.traceFile,
@@ -1822,6 +1902,7 @@ try {
           assertions,
           violations,
           observations,
+          progress: progress.snapshot(),
         },
         null,
         2,
@@ -1832,6 +1913,8 @@ try {
   }
   process.exitCode = 1;
 } finally {
+  // Stop the heartbeats first: nothing after this point is progress.
+  progress.stop();
   try {
     ws?.close();
   } catch {

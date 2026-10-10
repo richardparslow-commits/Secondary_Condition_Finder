@@ -195,3 +195,14 @@ This is a usable schema-compatible authoring checkpoint. It does not reduce the 
 count, register any relationship, publish any host, establish a patient-specific medical nexus,
 or clear the remaining qualified-human publication gates. Git commit/push/merge is a separate
 user-authorized repository operation and does not constitute medical publication approval.
+
+## Drift status (2026-10-09)
+
+This record is **exact for the committed tree** (`HEAD`): a rebuild from a clean worktree matches
+every manifest field, all 883 captured input hashes, and the byte-identical 65-proposal payload.
+The converter suite's two failures come from three *uncommitted* host edits
+(`degenerative-disc-disease`, `tinnitus`, `traumatic-brain-injury-residuals`), which add four
+`HOST_GOVERNANCE_REVIEW` holds and one `EXISTING_HOST_TARGET` hold without changing any staged
+content. See [the drift diagnosis](crg-staging-2026-10-06-drift-diagnosis.md) for the evidence, the
+four affected proposals, and the decision list before any re-delivery. Nothing in this directory
+was regenerated, and no recorded hash was rewritten.

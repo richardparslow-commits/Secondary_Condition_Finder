@@ -47,8 +47,8 @@ export function anchorLabel(reference: Pick<SourceReference, "sourceUrl">): stri
 
 /**
  * The hop's authored anchors, joined by (source mapping, target condition).
- * The graph edge and the authored suggestion are registered in lockstep, so a
- * missing suggestion simply yields no anchors — the surface never invents one.
+ * The validated graph requires an authored evidence join. Refuse a missing
+ * suggestion or empty citations instead of presenting an unsupported hop.
  */
 export function anchorsForHop(
   mappingById: ReadonlyMap<string, ConditionMapping>,
@@ -58,7 +58,10 @@ export function anchorsForHop(
   const suggestion = mappingById
     .get(primaryId)
     ?.suggestions.find((candidate) => candidate.conditionId === targetId);
-  return (suggestion?.sourceReferences ?? []).map((reference) => ({
+  if (!suggestion || suggestion.sourceReferences.length === 0) {
+    throw new Error(`[kb-graph] Missing authored evidence for ${primaryId} -> ${targetId}`);
+  }
+  return suggestion.sourceReferences.map((reference) => ({
     label: anchorLabel(reference),
     sourceUrl: reference.sourceUrl,
     verified: reference.verified,
@@ -69,7 +72,7 @@ export function anchorsForHop(
  * Anchor resolver for one hop. Server callers join against the authored
  * corpus via `mappingAnchorResolver`; the browser supplies the public anchor
  * index derived from the client corpus (PRIV-01 stage 2) — same view shape,
- * same fallback (no anchor data means no anchors, never an invented one).
+ * same fail-closed projection (missing anchor data is an integrity error).
  */
 export type HopAnchorResolver = (
   sourceConditionId: string,
@@ -103,17 +106,20 @@ export function projectGraphPathway(
     terminalConditionId: pathway.terminalConditionId,
     terminalConditionName: conditionName(pathway.terminalConditionId),
     compositeNexus: pathway.compositeNexus,
-    hops: pathway.hops.map<GraphPathwayHopView>((hop) => ({
-      stepIndex: hop.stepIndex,
-      sourceConditionId: hop.edge.sourceConditionId,
-      sourceConditionName: conditionName(hop.edge.sourceConditionId),
-      targetConditionId: hop.edge.targetConditionId,
-      targetConditionName: conditionName(hop.edge.targetConditionId),
-      nexusClassification: hop.edge.nexusClaim.nexusClassification,
-      anchors: resolveAnchors(
-        hop.edge.sourceConditionId,
-        hop.edge.targetConditionId,
-      ),
-    })),
+    hops: pathway.hops.map<GraphPathwayHopView>((hop) => {
+      const anchors = resolveAnchors(hop.edge.sourceConditionId, hop.edge.targetConditionId);
+      if (anchors.length === 0) {
+        throw new Error(`[kb-graph] Missing authored evidence for ${hop.edge.sourceConditionId} -> ${hop.edge.targetConditionId}`);
+      }
+      return {
+        stepIndex: hop.stepIndex,
+        sourceConditionId: hop.edge.sourceConditionId,
+        sourceConditionName: conditionName(hop.edge.sourceConditionId),
+        targetConditionId: hop.edge.targetConditionId,
+        targetConditionName: conditionName(hop.edge.targetConditionId),
+        nexusClassification: hop.edge.nexusClaim.nexusClassification,
+        anchors,
+      };
+    }),
   };
 }

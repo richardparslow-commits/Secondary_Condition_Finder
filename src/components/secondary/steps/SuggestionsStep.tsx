@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo } from "react";
+import { useEffect, useMemo } from "react";
 
 import { SymptomDiscussionReview } from "@/components/SymptomDiscussionReview";
 import { DisclaimerFooter } from "@/components/Disclaimer";
@@ -22,6 +22,7 @@ import type {
 import { AccreditedRepresentativeFinder } from "@/components/va/AccreditedRepresentativeFinder";
 import type { AccreditedRepresentativeView } from "@/lib/va/accredited-representatives";
 import type { VaApiEnvironment } from "@/lib/va/sandbox";
+import { AriaLiveRegion, describeMappedConnections, useAriaLive } from "@/lib/a11y/use-aria-live";
 import { indexById } from "@/lib/catalog/lookup";
 import { recommend } from "@/lib/engine/recommend";
 import { buildGraphPathwayMatchSectionViewFromData } from "@/lib/engine/graph-pathway-matches-core";
@@ -174,6 +175,34 @@ export function SuggestionsStep({ snapshot, vaReference, accreditedRepView }: Su
     };
   }, [corpus, context, ready, snapshot, vaReference]);
 
+  // Announce the adjacency-graph routes as the engine maps them. A multi-hop
+  // connection appearing in the results section is a state change a
+  // screen-reader user would otherwise never hear: the section renders far below
+  // the fold and nothing moves focus.
+  //
+  // These hooks are deliberately hoisted ABOVE the early returns that follow.
+  // React requires hooks to run in the same order on every render, so a hook
+  // placed after them would run on the ready path only and the component would
+  // throw "Rendered more hooks than during the previous render" the moment
+  // `ready` flipped.
+  const { announce, message: livePathwayMessage } = useAriaLive();
+  const readyGraphPathwayMatches =
+    model && model.kind === "ready" ? model.graphPathwayMatches : null;
+  const mappedConnections = useMemo(
+    () =>
+      (readyGraphPathwayMatches?.matches ?? []).map(
+        (match) => `${match.originConditionName} → ${match.terminalConditionName}`,
+      ),
+    [readyGraphPathwayMatches],
+  );
+  useEffect(() => {
+    // `describeMappedConnections` returns null when there is nothing to say, so
+    // an empty mapping never mutates the region and never triggers an
+    // announcement.
+    const announcement = describeMappedConnections(mappedConnections);
+    if (announcement) announce(announcement);
+  }, [announce, mappedConnections]);
+
   if (!ready || loading) {
     return (
       <main>
@@ -218,6 +247,11 @@ export function SuggestionsStep({ snapshot, vaReference, accreditedRepView }: Su
 
   return (
     <main>
+      {/* Visually hidden, and rendered unconditionally on this path: the same
+          routes appear in the results section below, so the announcement must
+          not duplicate them on screen — and a live region inserted at the same
+          moment as its text is not reliably announced. */}
+      <AriaLiveRegion message={livePathwayMessage} className="sr-only" />
       <header className="page-hero text-center">
         <p className="ui-kicker">Step 5 of 6</p>
         <h1>Review Your Non-Service-Connected Diagnoses</h1>

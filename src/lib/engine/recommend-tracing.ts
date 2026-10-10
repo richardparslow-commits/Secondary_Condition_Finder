@@ -32,39 +32,66 @@ import type { Intake, RecommendationResult } from "./types";
  * This wraps a `Promise`-returning function, so it always returns
  * `Promise<RecommendationResult>`. Server pages should `await` it.
  */
+export async function recommendForTraceSafely(
+  catalog: ConditionCatalog,
+  kb: KnowledgeBase,
+  intake: Intake,
+): Promise<RecommendationResult> {
+  try {
+    return recommend(catalog, kb, intake);
+  } catch {
+    // LangSmith's traceable wrapper records String(error) on rejection. Do not
+    // let upstream exception text, cause, or stack leave through that sink.
+    throw new Error("Recommendation execution failed; diagnostic details withheld.");
+  }
+}
+
+function safeTraceCount(value: unknown): number {
+  return Array.isArray(value) ? value.length : 0;
+}
+
+export function sanitizeRecommendationTraceInputs(inputs: unknown): Record<string, string | number | boolean> {
+  try {
+    const args = (inputs as { args?: unknown[] } | null)?.args;
+    const intakeArg = args?.[2] as Intake | undefined;
+    if (!intakeArg) return { input: "no-intake" };
+    return {
+      diagnosedConditionIds: safeTraceCount(intakeArg.diagnosedConditionIds),
+      primaryConditions: safeTraceCount(intakeArg.primaryConditions),
+      hasTimeline: Boolean(intakeArg.conditionTimeline && Object.keys(intakeArg.conditionTimeline).length),
+      engineVersion: ENGINE_VERSION,
+    };
+  } catch {
+    return { input: "unavailable" };
+  }
+}
+
+export function sanitizeRecommendationTraceOutputs(outputs: unknown): Record<string, string | number> {
+  try {
+    const result = outputs as RecommendationResult | null;
+    if (!result || typeof result !== "object") return { output: "unavailable" };
+    return {
+      recommendationCount: safeTraceCount(result.recommendations),
+      recognizedPrimaries: safeTraceCount(result.recognizedPrimaries),
+      unmappedPrimaries: safeTraceCount(result.unmappedPrimaries),
+    };
+  } catch {
+    return { output: "unavailable" };
+  }
+}
+
 export const recommendTraced = traceable(
-  async (
-    catalog: ConditionCatalog,
-    kb: KnowledgeBase,
-    intake: Intake,
-  ): Promise<RecommendationResult> => recommend(catalog, kb, intake),
+  recommendForTraceSafely,
   {
     name: "recommend",
     run_type: "chain",
     project_name: LANGSMITH_PROJECT_NAME,
     tags: ["secondary-condition-finder", "recommendation-engine", ENGINE_VERSION],
     // Only attach safe metadata — never raw intake text or evidence.
-    processInputs: (inputs) => {
-      // inputs is { args: [catalog, kb, intake] } when called with 3 args.
-      const args = (inputs as { args?: unknown[] }).args;
-      const intakeArg = args?.[2] as Intake | undefined;
-      if (!intakeArg) return { input: "no-intake" };
-      return {
-        diagnosedConditionIds: intakeArg.diagnosedConditionIds?.length ?? 0,
-        primaryConditions: intakeArg.primaryConditions?.length ?? 0,
-        hasTimeline: Boolean(intakeArg.conditionTimeline && Object.keys(intakeArg.conditionTimeline).length),
-        engineVersion: ENGINE_VERSION,
-      };
-    },
-    processOutputs: (outputs) => {
-      const result = outputs as unknown as RecommendationResult;
-      if (!result || typeof result !== "object") return { outputs };
-      return {
-        recommendationCount: (result as RecommendationResult).recommendations?.length ?? 0,
-        recognizedPrimaries: (result as RecommendationResult).recognizedPrimaries?.length ?? 0,
-        unmappedPrimaries: (result as RecommendationResult).unmappedPrimaries?.length ?? 0,
-      };
-    },
+    // Each callback catches malformed/unexpected inputs and returns only a
+    // fixed bounded DTO; raw values must never escape through SDK diagnostics.
+    processInputs: (inputs) => sanitizeRecommendationTraceInputs(inputs),
+    processOutputs: (outputs) => sanitizeRecommendationTraceOutputs(outputs),
   },
 );
 
@@ -82,7 +109,10 @@ export async function recommendWithTracing(
   intake: Intake,
 ): Promise<RecommendationResult> {
   if (!isLangSmithTracingEnabled()) {
-    return recommend(catalog, kb, intake);
+    return recommendForTraceSafely(catalog, kb, intake);
   }
+  // `traceable` emits a rejected error's String(error) to LangSmith. Its
+  // wrapped function is recommendForTraceSafely, so rejection details are
+  // already replaced before they reach the SDK.
   return recommendTraced(catalog, kb, intake);
 }

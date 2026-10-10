@@ -14,12 +14,12 @@ Current boundaries include:
 
 - Vercel is the production host;
 - Azure is a manual legacy fallback only;
-- workflow state uses short-lived encrypted/authenticated first-party cookies;
+- secondary and presumptive workflow state uses versioned, schema-bounded, tab-scoped browser records; retired workflow cookies are tombstoned if stale copies are presented;
 - optional evidence parsing is browser-local and bounded by file, batch, page, and extracted-text limits;
 - VA sandbox integration is disabled by default;
 - the current application does not connect to an individual Veteran's VA account or submit a disability claim;
 - production browser connectivity is constrained by the deployed Content Security Policy;
-- no application event-persistence backend is used for workflow or recommendation history.
+- no per-user event-persistence backend is used for workflow or recommendation history; allowlisted operational events are emitted to platform logs, so host retention/access settings require operator review;
 
 A material change to these boundaries requires corresponding privacy/security review.
 
@@ -29,7 +29,7 @@ The current engineering baseline includes:
 
 - server-only production secrets;
 - source-restrictive Content Security Policy and route-wide security headers;
-- encrypted/authenticated workflow cookies;
+- schema-bounded browser-local workflow records with explicit clearing; opaque HttpOnly VA-account handles only for the separate sandbox experiment;
 - browser-local evidence resource ceilings;
 - read-only active CI permissions;
 - immutable commit pins for active CI marketplace actions;
@@ -112,7 +112,7 @@ Reading the signal:
 When `kbGraph` degrades:
 
 1. Read `detail` and identify the named file.
-2. Reproduce locally: `npm run audit:crg:graph` (hard cycle gate) and `npx vitest run tests/kb-graph-loader.test.ts`.
+2. Reproduce locally: `npm run audit:crg:graph` (hard gate: no cycles **and** the ARCH-01 evidence join — every edge backed by an authored suggestion with citations and a matching nexus classification) and `npx vitest run tests/kb-graph-loader.test.ts`.
 3. Fix forward in a new deployment: correct or remove the file. Do not hand-edit data to silence validation, and do not add an edge to an identity that is not yet in the catalog — land the identity first.
 4. Re-verify: data files ship with the deployment and the loader caches per process, so redeploy and confirm `/api/health` returns `200` with `kbGraph.status: "ok"` before closing the incident.
 5. If the graph validated at build time and degrades at runtime, treat it as a data-integrity incident and inspect what the deployed commit contains under `data/knowledge-base/graph/`.

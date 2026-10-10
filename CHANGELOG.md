@@ -3,6 +3,42 @@
 All notable changes to Secondary Condition Finder. Format loosely follows
 [Keep a Changelog](https://keepachangelog.com/); merges are grouped by date, newest first.
 
+## 2026-10-09
+
+- **The VA retry policy has one home, and a 429 is obeyed rather than argued with** (`refactor`): the
+  adapter's retry classification, backoff, `Retry-After` decision and payload-validation fallback were
+  spread through `sandbox.ts`'s 849-line request loop, so "how long do we wait before touching VA
+  again?" was answerable only by reading control flow. They now live in `src/lib/va/api.ts` as the
+  policy the transport executes: `vaApiRetryDelayMs` is the only backoff generator (exponential,
+  capped at 400 ms, with jitter bounded to 20% of the term and *added* to it, never subtracted, so no
+  draw can collapse a retry into a hot loop); `VA_API_TRANSIENT_RETRY_STATUS` is `{503,504}`, with 500
+  deliberately excluded because an unhandled server error is not evidence that an immediate repeat
+  succeeds; and `parseVaApiPayload` is the single place a schema mismatch becomes `{ok:false}`. It
+  discards the Zod issue list on purpose — issue paths and received-type descriptions are derived from
+  the upstream document, so returning them would let a malformed response choose part of what a caller
+  logs or renders. `sandbox.ts` re-exports the retry constants unchanged, so the names the module spec
+  and the phase-3 notes reference keep their documented import site.
+
+  The one behavior change is a `429`, which was never retried — wrong in exactly one direction. An
+  upstream that explicitly authorizes retrying at once (`Retry-After: 0`, or an HTTP-date already past)
+  was answered by opening the circuit for the clamp's one-second minimum, turning "retry now" into a
+  one-second outage for every caller. That authorization is now retried once in-request after the
+  backoff floor. Everything else is unchanged and deliberate: `VA_API_RATE_LIMIT_RETRY_MAX_WAIT_MS`
+  sits below one second precisely because delay-seconds are whole numbers, so every value VA
+  realistically sends exceeds it and takes the audited path — immediate labelled fallback plus a
+  circuit opened for the upstream's own window, with the retry served later as the single admitted
+  probe. Holding a web request open for the instructed window is what that design avoids, so the
+  phrase "without an immediate retry" in the production-access package stays true; that sentence, the
+  submission checklist, the demo script, the operations runbook and the module spec were updated to
+  state the exception rather than contradict it. The runbook also carried a stale clamp (1–60 s) that
+  the B06 remediation had already raised to 1 s–15 min.
+
+  `tests/va-api-resilience-policy.test.ts` covers the policy directly and the transport through it:
+  backoff bounds and the jitter floor, the `Retry-After` boundary in *both* directions (a `0` is
+  retried, a whole-second value is not), the attempt cap, the shared-parser identity, and that a
+  malformed payload or body degrades to a labelled fallback instead of throwing into the router.
+  Mutation-verified: forcing the budget to `-1` fails four tests, including the in-request retry.
+
 ## 2026-09-18
 
 - **A forked copy can no longer hide in the checkout** (`test`): a folder-sync client watching this

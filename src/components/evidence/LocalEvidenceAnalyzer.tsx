@@ -671,7 +671,7 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
       <div>
         <h2 id="local-evidence-heading" className="text-xl font-bold">Local Evidence Review</h2>
         <p className="mt-1 text-sm text-slate-600">
-          PDF, DOCX, and supported text records are read in this browser tab. Raw document bytes and raw document text are not submitted to the application server, stored in workflow cookies, or written to application logs. If browser session storage is unavailable or full, the current analysis continues in memory but may not restore after navigation or reload.
+          PDF, DOCX, and supported text records are read in this browser tab. Raw document bytes and raw document text are not submitted to the application server, stored in browser-local workflow records, or written to application logs. If browser session storage is unavailable or full, the current analysis continues in memory but may not restore after navigation or reload.
         </p>
         <p className="mt-1 text-sm text-slate-600">
           OCR may save a full-text resume checkpoint in this tab’s session storage for up to 15 minutes. It is removed on successful completion, Clear local evidence, source removal, Finish, or Restart. Browser session restoration can preserve storage; tab closure is not a secure-erasure guarantee.

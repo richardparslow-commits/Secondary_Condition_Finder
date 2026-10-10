@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { useEffect } from "react";
 
+import { createClientErrorEvent } from "@/lib/observability/client-error-event";
+
 export default function RootError({
   error,
   reset,
@@ -11,16 +13,8 @@ export default function RootError({
   reset: () => void;
 }) {
   useEffect(() => {
-    // Structured log for observability — never includes sensitive payload.
-    console.error(
-      JSON.stringify({
-        timestamp: new Date().toISOString(),
-        level: "error",
-        component: "root-error-boundary",
-        message: error.message,
-        digest: error.digest ?? null,
-      }),
-    );
+    // Never serialize exception text, stack, cause, or digest to the console.
+    console.error(JSON.stringify(createClientErrorEvent("root-error-boundary", error)));
   }, [error]);
 
   return (
@@ -39,7 +33,6 @@ export default function RootError({
           Go home
         </Link>
       </div>
-      {error.digest && <p className="mt-4 text-xs text-slate-500">Error digest: {error.digest}</p>}
     </div>
   );
 }

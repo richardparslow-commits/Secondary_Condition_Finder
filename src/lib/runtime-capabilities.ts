@@ -58,6 +58,18 @@ export interface RuntimeCapability {
   /** Operator-facing explanation of the consequence, not just the label. */
   detail: string;
   /**
+   * Control-specific facts that belong beside the regime in `/api/health`.
+   *
+   * The control owns these keys and the route forwards them verbatim, so a
+   * capability's own detail cannot be invented by the endpoint that displays it.
+   * `rateLimit` uses this for the two limits of its promise — whether per-client
+   * keys rest on an asserted ingress, and whether the counters are
+   * deployment-wide — plus the ceiling it actually enforces (SEC-02). A capability
+   * that adds keys here must pin them in tests, because health asserts nothing
+   * about their shape.
+   */
+  details?: Record<string, unknown>;
+  /**
    * Modules that consult the runtime fact on this control's behalf, repo-relative.
    *
    * Declared so the guard test can compare it against what actually exists on
@@ -139,6 +151,10 @@ export function runtimeCapabilities(
         "src/lib/va/runtime-state.ts",
         "src/lib/va/sandbox.ts",
         "src/lib/va/account/store.ts",
+        // The demo fixture gate refuses to answer in any runtime the shared fact
+        // calls distributed, so it consults the fact on this capability's behalf
+        // and must be declared here rather than failing the guard test.
+        "src/lib/va/account/demo-fixtures.ts",
       ],
     },
     vaReferenceCache: {
@@ -157,6 +173,11 @@ export function runtimeCapabilities(
       full: !distributed,
       scope: limiter.scope,
       detail: limiter.detail,
+      details: {
+        identity: limiter.identity,
+        ceiling: limiter.ceiling,
+        store: limiter.store,
+      },
       sources: ["src/lib/rate-limiter.ts"],
     },
     circuitBreaker: {

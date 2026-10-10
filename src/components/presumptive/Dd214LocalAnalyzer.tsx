@@ -1,10 +1,17 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { useRef, useState } from "react";
 
 import { parseDd214Text } from "@/lib/evidence/dd214-extract";
 import { EVIDENCE_DEPTH_LIMITS } from "@/lib/evidence/limits";
 import { createLocalOcrWorker } from "@/lib/evidence/ocr-session";
+import {
+  normalizeServiceHistoryDraft,
+  persistServiceHistory,
+  SERVICE_HISTORY_MESSAGES,
+  type ServiceHistoryFailureCode,
+} from "@/lib/presumptive/browser-history";
 import { dd214ToServiceHistoryFields } from "@/lib/presumptive/dd214-adapter";
 
 type Props = {
@@ -12,6 +19,8 @@ type Props = {
 };
 
 export function Dd214LocalAnalyzer({ locations }: Props) {
+  const router = useRouter();
+  const [submitError, setSubmitError] = useState<ServiceHistoryFailureCode | null>(null);
   const [busy, setBusy] = useState(false);
   const busyRef = useRef(false);
   const [extraction, setExtraction] = useState<ReturnType<typeof parseDd214Text> | null>(null);
@@ -282,30 +291,30 @@ export function Dd214LocalAnalyzer({ locations }: Props) {
           </label>
 
           <form
-            onSubmit={(e) => {
-              e.preventDefault();
+            onSubmit={(event) => {
+              event.preventDefault();
               if (!confirmed) return;
-              // Submit to the existing presumptive Server Action via hidden form — we synthesize submission
-              // by creating a FormData compatible post. Simplest: use a real form post to the action endpoint
-              // by programmatically submitting a hidden form to saveServiceHistory.
-              const form = document.createElement("form");
-              form.method = "POST";
-              form.action = "";
-              // We cannot directly invoke the Server Action from here without a round-trip; instead we rely on
-              // the outer page's ServiceHistoryForm by populating a hidden form that posts to the same action
-              // via fetch with FormData. Use fetch to the current page's action handler.
-              const fd = new FormData();
-              editedLocations.forEach((loc) => fd.append("location", loc));
-              editedBranches.forEach((c) => fd.append("serviceBranchCode", c));
-              if (editedStart) fd.set("serviceStart", editedStart);
-              if (editedEnd) fd.set("serviceEnd", editedEnd);
-              // Use the server action via a hidden submit to /presumptive (Next Server Action boundary)
-              // Workaround: submit via the existing form action by dispatching to the server action import.
-              // We import dynamically to avoid \"use client\" boundary violation for server actions.
-              import("@/lib/actions/presumptive").then(({ saveServiceHistory }) => {
-                // Server Actions from client components are invoked as functions that POST automatically in Next.js.
-                void saveServiceHistory(fd);
-              });
+              // Confirmed service history is stored in this browser tab and read
+              // back by the results view. The retired Server Action posted these
+              // values to the server and sealed them into a cookie; this path
+              // makes no request, and the same authored-catalog membership
+              // allowlist still runs before the write.
+              const result = persistServiceHistory(
+                window.sessionStorage,
+                normalizeServiceHistoryDraft({
+                  serviceBranchCodes: editedBranches,
+                  locations: editedLocations,
+                  serviceStart: editedStart,
+                  serviceEnd: editedEnd,
+                }),
+                locations,
+              );
+              if (!result.ok) {
+                setSubmitError(result.code);
+                return;
+              }
+              setSubmitError(null);
+              router.push("/presumptive/results");
             }}
             className="flex flex-wrap gap-3"
           >
@@ -320,6 +329,13 @@ export function Dd214LocalAnalyzer({ locations }: Props) {
               Clear uploaded DD-214 from this tab
             </button>
           </form>
+
+          {submitError && (
+            <div role="alert" className="ui-callout text-sm">
+              <strong>Check the extracted service history:</strong>{" "}
+              {SERVICE_HISTORY_MESSAGES[submitError]}
+            </div>
+          )}
 
           <details className="text-xs text-slate-600">
             <summary className="cursor-pointer">Show redacted extracted text</summary>

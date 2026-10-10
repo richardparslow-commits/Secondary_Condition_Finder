@@ -346,10 +346,15 @@ describe("data preload — warmup orchestration", () => {
     const total = totalJsonFiles();
 
     // Fire-and-forget contract: warmup never throws synchronously and its
-    // await resolves even when a loader failed underneath.
+    // await resolves even when a loader failed underneath. The diagnostic
+    // sink records only a fixed event, never filesystem or parser details.
     expect(() => mod.preload.warmupDataCaches()).not.toThrow();
     await expect(mod.preload.awaitDataWarmup()).resolves.toBeUndefined();
-    expect(warnSpy).toHaveBeenCalled(); // failure logged, not hidden
+    expect(warnSpy).toHaveBeenCalledWith(
+      "[data-preload] warmup failed — falling back to per-request sync load",
+    );
+    expect(JSON.stringify(warnSpy.mock.calls)).not.toContain("0000-corrupt.json");
+    expect(JSON.stringify(warnSpy.mock.calls)).not.toContain("not valid json");
 
     // The request path still fails closed with the real error — the failed
     // warmup must not leave a half-populated cache that "works".

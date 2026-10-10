@@ -4,6 +4,14 @@ on:
     branches: [main]
   pull_request:
   workflow_dispatch:
+    inputs:
+      sentinel_acceptance:
+        description: "Run the optional acceptance sentinel job (own dev server + real browser)"
+        type: choice
+        options:
+          - "false"
+          - "true"
+        default: "false"
 
 concurrency:
   group: ci-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
@@ -15,13 +23,23 @@ permissions:
 
 jobs:
   verify:
+    # The PRIV-01 sentinel is its own job now (see `priv01_sentinel`), so this
+    # ceiling no longer pays for a walk that starts a dev server, drives Chrome
+    # and runs page-side OCR. It still covers install + full suite + build + the
+    # four real-browser E2E journeys, so it drops by less than the walk's own
+    # worst case: neither job can spend the other's time, and the walk cannot
+    # truncate every other gate into an opaque job cancellation. A CI
+    # measurement should replace the estimate, the way the fleet budget ratchet
+    # is derived rather than chosen.
+    needs: [priv01_scope, priv01_sentinel]
+    # `always()` is load-bearing, not defensive: with the default `success()`
+    # condition a failed `priv01_sentinel` would *skip* this job, a skipped
+    # required check is not a failed one, and the pull request could merge with
+    # the walk red. The aggregator below turns that failure into a failure of
+    # the single required context branch protection already watches (`verify`).
+    if: always()
     runs-on: ubuntu-latest
-    # The browser gates at the end of this job (the four real-browser journeys
-    # and the PRIV-01 sentinel walk, which starts its own dev server and runs
-    # page-side OCR) are only reachable after the build, so the ceiling has to
-    # cover install + full suite + build + both browser gates rather than the
-    # pre-sentinel budget.
-    timeout-minutes: 40
+    timeout-minutes: 35
     steps:
       - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
       - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5
@@ -262,6 +280,22 @@ jobs:
           npm run build 2>&1 | tee ci-build.log
         continue-on-error: true
         id: build
+      # Deployment-artifact gate over the build's output-file traces (REL-03).
+      # A successful `next build` says nothing about what the artifact contains:
+      # a dynamic filesystem read makes Turbopack trace the whole project, so
+      # source/tests/docs/scratch files get shipped — and a trace that omits a
+      # file the runtime reads fails only at the first production request. Both
+      # were real (REL-03 shipped the whole project in three traces) and both
+      # are invisible until deployment, so this reads the build output directly.
+      # Skipped when the build failed, because there is no artifact to audit and
+      # the build already fails the job.
+      - name: Audit deployment artifact traces
+        if: steps.build.outcome == 'success'
+        run: |
+          set -o pipefail
+          npm run audit:traces -- --json=ci-artifact-traces.json 2>&1 | tee ci-artifact-traces.log
+        continue-on-error: true
+        id: artifact_traces
       - name: Run real-browser E2E workflow
         if: steps.build.outcome == 'success'
         run: |
@@ -269,125 +303,6 @@ jobs:
           (node e2e/secondary-workflow.mjs && node e2e/validation-errors.mjs && node e2e/coi-isolation.mjs && node e2e/pathways-smoke.mjs) 2>&1 | tee ci-e2e.log
         continue-on-error: true
         id: e2e
-      # Scope detection for the PRIV-01 sentinel gate below. The walk is the
-      # privacy acceptance contract's strongest leakage evidence, but it is
-      # expensive (a live app plus headless Chrome plus page-side OCR), so it is
-      # restricted to pull requests whose change set can move the browser-local
-      # privacy posture; every non-PR event (push to main, workflow_dispatch)
-      # runs it, because that is where the contract has to hold. The scope list
-      # lives in scripts/priv01-sentinel-scope.mjs so the wiring test can prove
-      # it still covers every load-bearing module, and detection fails closed:
-      # any API problem runs the gate instead of skipping it.
-      - name: Detect PRIV-01 sentinel scope changes
-        if: github.event_name == 'pull_request'
-        id: priv01_scope
-        env:
-          GH_TOKEN: ${{ github.token }}
-          PR_NUMBER: ${{ github.event.pull_request.number }}
-        run: |
-          set -o pipefail
-          node --input-type=module - <<'NODE' 2>&1 | tee ci-priv01-scope.log
-          import { appendFileSync } from "node:fs";
-
-          const { priv01SentinelScopeMatches } = await import(
-            "./scripts/priv01-sentinel-scope.mjs",
-          );
-
-          const apiUrl = process.env.GITHUB_API_URL;
-          const repository = process.env.GITHUB_REPOSITORY;
-          const number = process.env.PR_NUMBER;
-
-          const setOutput = (changed, reason) => {
-            console.log(`priv01-sentinel scope: changed=${changed} (${reason})`);
-            if (process.env.GITHUB_OUTPUT) {
-              appendFileSync(process.env.GITHUB_OUTPUT, `changed=${changed}\n`);
-            }
-          };
-
-          try {
-            const headers = {
-              Accept: "application/vnd.github+json",
-              Authorization: `Bearer ${process.env.GH_TOKEN}`,
-              "X-GitHub-Api-Version": "2022-11-28",
-            };
-            const changedFiles = [];
-            // The PR files endpoint paginates at 100; a pull request larger than
-            // 3000 files is not worth an unbounded loop, so the last page read
-            // decides (fail closed).
-            for (let page = 1; page <= 30; page += 1) {
-              const response = await fetch(
-                `${apiUrl}/repos/${repository}/pulls/${number}/files?per_page=100&page=${page}`,
-                { headers },
-              );
-              if (!response.ok) {
-                throw new Error(`pull files lookup returned HTTP ${response.status}`);
-              }
-              const batch = await response.json();
-              if (!Array.isArray(batch)) {
-                throw new Error("pull files payload was not an array");
-              }
-              changedFiles.push(
-                ...batch
-                  .map((entry) => entry?.filename)
-                  .filter((name) => typeof name === "string"),
-              );
-              if (batch.length < 100) break;
-            }
-
-            const inScope = priv01SentinelScopeMatches(changedFiles);
-            setOutput(
-              inScope.length > 0 ? "true" : "false",
-              inScope.length > 0
-                ? `${inScope.length} in-scope file(s)`
-                : `${changedFiles.length} file(s) changed, none in scope`,
-            );
-          } catch (error) {
-            setOutput(
-              "true",
-              `change-set lookup failed (${error instanceof Error ? error.message : String(error)}); running the gate`,
-            );
-          }
-          NODE
-      # PRIV-01 stage 4 as an enforced, attributable gate. The walk plants
-      # unique sentinels in every private field and fails on a sentinel reaching
-      # any request, response, HTML/RSC payload, log, trace or storage surface —
-      # the one check that cannot be satisfied by reading source. It needs a live
-      # app, so this step starts its own dev server and points the runner at that
-      # server's log, because the walk scans the server log it drove. A missing
-      # browser or an unhealthy server is a gate failure, not a skip: a green run
-      # must mean the walk actually happened.
-      - name: Run PRIV-01 stage-4 browser sentinel
-        if: steps.build.outcome == 'success' && (github.event_name != 'pull_request' || steps.priv01_scope.outputs.changed == 'true')
-        continue-on-error: true
-        id: priv01_sentinel
-        run: |
-          set -o pipefail
-          browser="$(command -v google-chrome || command -v google-chrome-stable || command -v chromium || command -v chromium-browser || true)"
-          if [ -z "$browser" ]; then
-            echo "No Chrome/Chromium binary on this runner; the PRIV-01 sentinel gate cannot drive a browser." | tee ci-priv01-sentinel.log
-            exit 1
-          fi
-          npm run dev -- -H 127.0.0.1 -p 3117 > ci-priv01-sentinel-server.log 2>&1 &
-          server_pid=$!
-          trap 'kill "$server_pid" 2>/dev/null || true' EXIT
-          ready=false
-          for attempt in $(seq 1 60); do
-            if curl -fsS "http://127.0.0.1:3117/api/health" > /dev/null 2>&1; then
-              ready=true
-              break
-            fi
-            sleep 2
-          done
-          if [ "$ready" != "true" ]; then
-            echo "The dev server never answered /api/health; see ci-priv01-sentinel-server.log." | tee ci-priv01-sentinel.log
-            exit 1
-          fi
-          SENTINEL_APP_BASE="http://127.0.0.1:3117" \
-          SENTINEL_SERVER_LOG="$PWD/ci-priv01-sentinel-server.log" \
-          SENTINEL_REPORT_PATH="$PWD/ci-priv01-sentinel-evidence.json" \
-          CHROME_PATH="$browser" \
-          NEXT_TELEMETRY_DISABLED=1 \
-          node scripts/acceptance-browser-sentinel.mjs 2>&1 | tee ci-priv01-sentinel.log
       - name: Collect diagnostic summary
         if: always()
         id: diagnostics
@@ -416,11 +331,13 @@ jobs:
             echo "- test: ${{ steps.test.outcome }}"
             echo "- fleet-coordination: ${{ steps.fleet.outcome }}"
             echo "- build: ${{ steps.build.outcome }}"
+            echo "- artifact-traces: ${{ steps.artifact_traces.outcome }}"
             echo "- browser-e2e: ${{ steps.e2e.outcome }}"
-            echo "- priv01-sentinel: ${{ steps.priv01_sentinel.outcome }}"
+            echo "- priv01-scope job: ${{ needs.priv01_scope.result }}"
+            echo "- priv01-sentinel job: ${{ needs.priv01_sentinel.result }}"
             echo
             echo "## Failure excerpts"
-            for log in ci-governance.log ci-branch-rules.log ci-install.log ci-audit.log ci-audit-all.log ci-citations.log ci-kb-validate.log ci-me-compliance.log ci-crg.log ci-crg-graph.log ci-lint.log ci-typecheck.log ci-test-composition.log ci-test.log ci-fleet.log ci-build.log ci-e2e.log ci-priv01-scope.log ci-priv01-sentinel.log; do
+            for log in ci-governance.log ci-branch-rules.log ci-install.log ci-audit.log ci-audit-all.log ci-citations.log ci-kb-validate.log ci-me-compliance.log ci-crg.log ci-crg-graph.log ci-lint.log ci-typecheck.log ci-test-composition.log ci-test.log ci-fleet.log ci-build.log ci-artifact-traces.log ci-e2e.log; do
               if [ -f "$log" ]; then
                 echo
                 echo "### $log"
@@ -448,13 +365,306 @@ jobs:
           path: |
             ci-*.log
             ci-diagnostic-summary.md
+            ci-artifact-traces.json
             ci-priv01-sentinel-evidence.json
             .github/fleet-budget-ratchet.json
           retention-days: 14
       - name: Fail the job if any gate failed
         if: always()
         run: |
-          if [ "${{ steps.governance.outcome }}" = "failure" ] || [ "${{ steps.branch_rules.outcome }}" = "failure" ] || [ "${{ steps.install.outcome }}" = "failure" ] || [ "${{ steps.audit.outcome }}" = "failure" ] || [ "${{ steps.citations.outcome }}" = "failure" ] || [ "${{ steps.kb_validate.outcome }}" = "failure" ] || [ "${{ steps.me_compliance.outcome }}" = "failure" ] || [ "${{ steps.crg.outcome }}" = "failure" ] || [ "${{ steps.crg_graph.outcome }}" = "failure" ] || [ "${{ steps.lint.outcome }}" = "failure" ] || [ "${{ steps.typecheck.outcome }}" = "failure" ] || [ "${{ steps.test_composition.outcome }}" = "failure" ] || [ "${{ steps.test.outcome }}" = "failure" ] || [ "${{ steps.fleet.outcome }}" = "failure" ] || [ "${{ steps.build.outcome }}" = "failure" ] || [ "${{ steps.e2e.outcome }}" = "failure" ] || [ "${{ steps.priv01_sentinel.outcome }}" = "failure" ]; then
+          # The scope job must have succeeded: if it failed, `priv01_sentinel`
+          # is skipped, and "the filter never answered" must not read as "the
+          # change set was out of scope".
+          if [ "${{ needs.priv01_scope.result }}" != "success" ] || \
+             [ "${{ needs.priv01_sentinel.result }}" = "failure" ] || \
+             [ "${{ needs.priv01_sentinel.result }}" = "cancelled" ] || \
+             [ "${{ steps.governance.outcome }}" = "failure" ] || [ "${{ steps.branch_rules.outcome }}" = "failure" ] || [ "${{ steps.install.outcome }}" = "failure" ] || [ "${{ steps.audit.outcome }}" = "failure" ] || [ "${{ steps.citations.outcome }}" = "failure" ] || [ "${{ steps.kb_validate.outcome }}" = "failure" ] || [ "${{ steps.me_compliance.outcome }}" = "failure" ] || [ "${{ steps.crg.outcome }}" = "failure" ] || [ "${{ steps.crg_graph.outcome }}" = "failure" ] || [ "${{ steps.lint.outcome }}" = "failure" ] || [ "${{ steps.typecheck.outcome }}" = "failure" ] || [ "${{ steps.test_composition.outcome }}" = "failure" ] || [ "${{ steps.test.outcome }}" = "failure" ] || [ "${{ steps.fleet.outcome }}" = "failure" ] || [ "${{ steps.build.outcome }}" = "failure" ] || [ "${{ steps.artifact_traces.outcome }}" = "failure" ] || [ "${{ steps.e2e.outcome }}" = "failure" ]; then
             echo "One or more CI gates failed. See the diagnostic summary and artifact."
             exit 1
           fi
+  # Path filter for the PRIV-01 sentinel, and the reason the sentinel is a job
+  # rather than a step: a workflow skipped by path filtering leaves its required
+  # checks stuck at "Expected" forever, so the filtering has to happen inside a
+  # run that always starts. This job always runs, answers exactly one question —
+  # does this change set need the walk? — and the walk job is skipped or run
+  # from that answer. Detection fails closed: a change set it cannot read runs
+  # the gate instead of skipping it, and every non-PR event (push to main,
+  # manual dispatch) runs it, because that is where the contract has to hold.
+  priv01_scope:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      changed: ${{ steps.scope.outputs.changed }}
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+      # The scope list lives in scripts/priv01-sentinel-scope.mjs so the wiring
+      # test can prove it still covers every load-bearing module. The verdict is
+      # printed and written to the run summary: the job that consumes it is a
+      # different job, so the reason must be readable from the run itself.
+      - name: Detect PRIV-01 sentinel scope changes
+        id: scope
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          set -o pipefail
+          node --input-type=module - <<'NODE'
+          import { appendFileSync } from "node:fs";
+
+          const { priv01SentinelScopeMatches } = await import(
+            "./scripts/priv01-sentinel-scope.mjs",
+          );
+
+          const setOutput = (changed, reason) => {
+            const line = `priv01-sentinel scope: changed=${changed} (${reason})`;
+            console.log(line);
+            if (process.env.GITHUB_STEP_SUMMARY) {
+              appendFileSync(process.env.GITHUB_STEP_SUMMARY, `${line}\n`);
+            }
+            if (process.env.GITHUB_OUTPUT) {
+              appendFileSync(process.env.GITHUB_OUTPUT, `changed=${changed}\n`);
+            }
+          };
+
+          try {
+            const eventName = process.env.GITHUB_EVENT_NAME ?? "";
+            if (eventName !== "pull_request") {
+              // A push to main or a manual dispatch is where the contract has to
+              // hold outright, so the walk runs without consulting a change set.
+              setOutput("true", `${eventName || "non-PR"} event: the contract has to hold here`);
+            } else {
+              const apiUrl = process.env.GITHUB_API_URL;
+              const repository = process.env.GITHUB_REPOSITORY;
+              const number = process.env.PR_NUMBER;
+              const headers = {
+                Accept: "application/vnd.github+json",
+                Authorization: `Bearer ${process.env.GH_TOKEN}`,
+                "X-GitHub-Api-Version": "2022-11-28",
+              };
+              const changedFiles = [];
+              // The PR files endpoint paginates at 100; a pull request larger than
+              // 3000 files is not worth an unbounded loop, so the last page read
+              // decides (fail closed).
+              for (let page = 1; page <= 30; page += 1) {
+                const response = await fetch(
+                  `${apiUrl}/repos/${repository}/pulls/${number}/files?per_page=100&page=${page}`,
+                  { headers },
+                );
+                if (!response.ok) {
+                  throw new Error(`pull files lookup returned HTTP ${response.status}`);
+                }
+                const batch = await response.json();
+                if (!Array.isArray(batch)) {
+                  throw new Error("pull files payload was not an array");
+                }
+                changedFiles.push(
+                  ...batch
+                    .map((entry) => entry?.filename)
+                    .filter((name) => typeof name === "string"),
+                );
+                if (batch.length < 100) break;
+              }
+
+              const inScope = priv01SentinelScopeMatches(changedFiles);
+              setOutput(
+                inScope.length > 0 ? "true" : "false",
+                inScope.length > 0
+                  ? `${inScope.length} in-scope file(s)`
+                  : `${changedFiles.length} file(s) changed, none in scope`,
+              );
+            }
+          } catch (error) {
+            setOutput(
+              "true",
+              `change-set lookup failed (${error instanceof Error ? error.message : String(error)}); running the gate`,
+            );
+          }
+          NODE
+
+  # PRIV-01 stage 4 as an enforced, attributable job with its own time budget.
+  #
+  # The walk plants unique sentinels in every private field and fails on one
+  # reaching any request, response, HTML/RSC payload, log, trace or storage
+  # surface — the one check that cannot be satisfied by reading source. It needs
+  # a live app, so this job starts its own dev server and points the runner at
+  # that server's log, because the walk scans the server log it drove.
+  #
+  # Why its own job: the walk is the workflow's slowest and most
+  # environment-dependent gate. Sharing `verify`'s ceiling meant a wedged walk
+  # spent the budget every other gate needed, and a `verify` timeout truncated
+  # the walk into a job cancellation rather than a diagnosis. The ceiling below
+  # covers this job only, and the walk inside it has its own smaller budget, so
+  # the two can never spend each other's time.
+  #
+  # Why it is still required: `verify` needs this job and fails when the job
+  # fails, so enforcement stays on the one context branch protection already
+  # requires, and a skipped job (an out-of-scope pull request) is not a failure.
+  priv01_sentinel:
+    needs: priv01_scope
+    if: needs.priv01_scope.outputs.changed == 'true'
+    runs-on: ubuntu-latest
+    # Derived, not picked: install (≤5 min) + browser preflight (<1) + dev server
+    # ready (its own 120 s loop) + the walk (15-minute step budget of its own,
+    # whose bounded waits fail diagnosably long before this) + evidence upload
+    # (≤1) ≈ 20. It is a backstop for a hang outside the walk's polling loop,
+    # which the walk now reports as `STALLED` heartbeat lines rather than as
+    # silence.
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5
+        with:
+          node-version: 22
+          cache: npm
+      - name: Install dependencies
+        run: |
+          set -o pipefail
+          npm ci 2>&1 | tee ci-priv01-sentinel-install.log
+      # A missing browser is a gate failure, not a skip: a green run must mean
+      # the walk actually happened. This is its own step so the failure is
+      # attributed to the runner's capability rather than to the walk.
+      - name: Confirm the runner can host the walk
+        run: |
+          set -o pipefail
+          browser="$(command -v google-chrome || command -v google-chrome-stable || command -v chromium || command -v chromium-browser || true)"
+          if [ -z "$browser" ]; then
+            echo "No Chrome/Chromium binary on this runner; the PRIV-01 sentinel gate cannot drive a browser." | tee ci-priv01-sentinel.log
+            exit 1
+          fi
+          echo "CHROME_PATH=$browser" >> "$GITHUB_ENV"
+          echo "Driving the walk with $browser"
+      # Started here and stopped in the `always()` step below, so the walk can be
+      # its own step with its own budget while still pointing at the log of the
+      # server it drove.
+      - name: Start the app the walk drives
+        id: server
+        run: |
+          set -o pipefail
+          npm run dev -- -H 127.0.0.1 -p 3117 > ci-priv01-sentinel-server.log 2>&1 &
+          echo "server_pid=$!" >> "$GITHUB_OUTPUT"
+          ready=false
+          for attempt in $(seq 1 60); do
+            if curl -fsS "http://127.0.0.1:3117/api/health" > /dev/null 2>&1; then
+              ready=true
+              break
+            fi
+            sleep 2
+          done
+          if [ "$ready" != "true" ]; then
+            echo "The dev server never answered /api/health; see ci-priv01-sentinel-server.log." | tee ci-priv01-sentinel.log
+            exit 1
+          fi
+          echo "Dev server answered /api/health on 127.0.0.1:3117"
+      - name: Run PRIV-01 stage-4 browser sentinel
+        id: priv01_sentinel
+        # The walk's own bounded waits (90 s page conditions, a 240 s OCR
+        # deadline, 60 s CDP sends) all sit inside this, so an overrun here is a
+        # hang outside the polling loop — which the heartbeat lines in the log
+        # report as `STALLED:no-progress` rather than as a silent job kill.
+        timeout-minutes: 15
+        env:
+          SENTINEL_APP_BASE: "http://127.0.0.1:3117"
+          SENTINEL_SERVER_LOG: ${{ github.workspace }}/ci-priv01-sentinel-server.log
+          SENTINEL_REPORT_PATH: ${{ github.workspace }}/ci-priv01-sentinel-evidence.json
+          NEXT_TELEMETRY_DISABLED: "1"
+        run: |
+          set -o pipefail
+          node scripts/acceptance-browser-sentinel.mjs 2>&1 | tee ci-priv01-sentinel.log
+      # The heartbeat lines are the walk's own progress record: they name the
+      # phase, the wait, the probe count and whether the polled target was still
+      # answering, so a wedged walk is diagnosable from the run itself and not
+      # only from a downloaded artifact.
+      - name: Summarize where the walk stopped
+        if: always()
+        run: |
+          {
+            echo "## PRIV-01 stage-4 sentinel"
+            echo
+            echo "Walk outcome: ${{ steps.priv01_sentinel.outcome }}"
+            echo "Server step: ${{ steps.server.outcome }}"
+            echo
+            if [ -f ci-priv01-sentinel.log ]; then
+              echo "### Phases, heartbeats and stalls"
+              echo '```'
+              grep -E '^(phase|progress) |STALLED|^FAIL' ci-priv01-sentinel.log | tail -n 25 || true
+              echo '```'
+              echo "### Walk log tail"
+              echo '```'
+              tail -n 25 ci-priv01-sentinel.log
+              echo '```'
+            else
+              echo "No walk log; the job failed before the walk started."
+            fi
+          } >> "$GITHUB_STEP_SUMMARY"
+      - name: Stop the app the walk drove
+        if: always()
+        run: |
+          if [ -n "${{ steps.server.outputs.server_pid }}" ]; then
+            kill "${{ steps.server.outputs.server_pid }}" 2>/dev/null || true
+          fi
+          if command -v lsof > /dev/null 2>&1; then
+            lsof -ti tcp:3117 | xargs -r kill 2>/dev/null || true
+          fi
+      - name: Upload the sentinel evidence
+        if: always()
+        uses: actions/upload-artifact@330a01c490aca151604b8cf639adc76d48f6c5d4 # v5
+        with:
+          name: priv01-sentinel-evidence-${{ github.run_id }}
+          if-no-files-found: warn
+          path: |
+            ci-priv01-sentinel.log
+            ci-priv01-sentinel-server.log
+            ci-priv01-sentinel-evidence.json
+            ci-priv01-sentinel-install.log
+          retention-days: 14
+
+  # Optional, opt-in: the same acceptance walk the `verify` job runs, but driven
+  # end-to-end through its own npm entrypoint (scripts/run-acceptance-sentinel.mjs),
+  # which starts and stops its own dev server and exits non-zero on regression.
+  #
+  # This job is deliberately outside the merge path: it is not in the `verify`
+  # aggregator, and it runs only when a manual dispatch opts in
+  # (`sentinel_acceptance=true`), because it pays for a dev server, a real
+  # browser and page-side OCR. Its point is repeatability: an operator or a
+  # future scheduled run gets one command, one exit status and one evidence
+  # artifact, instead of a shell block that only exists inside another job.
+  sentinel-acceptance:
+    if: github.event_name == 'workflow_dispatch' && inputs.sentinel_acceptance == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5
+        with:
+          node-version: 22
+          cache: npm
+      - name: Install dependencies
+        run: npm ci
+      # Deliberately NOT `continue-on-error`: this job has no aggregator of its
+      # own, and a walk that fails has to fail the job. The evidence upload below
+      # uses `if: always()`, so it still runs when the walk regresses.
+      - name: Run the acceptance sentinel through its npm entrypoint
+        id: sentinel_entrypoint
+        run: |
+          set -o pipefail
+          browser="$(command -v google-chrome || command -v google-chrome-stable || command -v chromium || command -v chromium-browser || true)"
+          if [ -z "$browser" ]; then
+            echo "No Chrome/Chromium binary on this runner; the acceptance walk cannot drive a browser." | tee acceptance-sentinel.log
+            exit 1
+          fi
+          CHROME_PATH="$browser" \
+          npm run acceptance:sentinel -- \
+            --port 3117 \
+            --server-log "$PWD/acceptance-sentinel-server.log" \
+            --report "$PWD/acceptance-sentinel-evidence.json" 2>&1 | tee acceptance-sentinel.log
+      - name: Upload the acceptance evidence
+        if: always()
+        uses: actions/upload-artifact@330a01c490aca151604b8cf639adc76d48f6c5d4 # v5
+        with:
+          name: acceptance-sentinel-evidence
+          if-no-files-found: warn
+          path: |
+            acceptance-sentinel.log
+            acceptance-sentinel-server.log
+            acceptance-sentinel-evidence.json
+          retention-days: 14

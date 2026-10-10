@@ -16,7 +16,8 @@
  *   - the client corpus the browser fetches;
  *   - the private-context refusal layer and the proxy that wires it;
  *   - the COOP/COEP headers that make the OCR worker cross-origin isolated;
- *   - the sentinel runner, the corpus builder and this scope module — the
+ *   - the sentinel runner, its helpers (bounded waits, resumable run state,
+ *     progress heartbeats), the corpus builder and this scope module — the
  *     gate's own wiring, because changing it must re-earn the walk;
  *   - the privacy/contract suites that encode the same invariant, so a pull
  *     request that edits them re-runs the walk instead of assuming it holds.
@@ -41,7 +42,9 @@ export const PRIV01_SENTINEL_SCOPE = Object.freeze([
   /^src\/proxy\.ts$/,
   /^next\.config\.ts$/,
   /^public\/tesseract\//,
-  /^scripts\/acceptance-browser-sentinel\.mjs$/,
+  /^scripts\/(?:acceptance-browser-sentinel|run-acceptance-sentinel|copy-pdf-worker)\.mjs$/,
+  /^scripts\/lib\/sentinel-(?:wait|run-state|progress)\.mjs$/,
+  /^tests\/(?:acceptance-sentinel-harness|sentinel-resumable-wait|sentinel-progress)\.test\.ts$/,
   /^scripts\/priv01-sentinel-scope\.mjs$/,
   /^scripts\/build-client-corpus\.mjs$/,
   /^\.github\/workflows\/ci\.yml$/,

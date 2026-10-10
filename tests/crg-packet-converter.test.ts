@@ -123,11 +123,34 @@ describe("CRG packet staging converter", () => {
 
   it("runs staged graphs through the actual graph loader and cycle-audit CLI", () => {
     writeStaging(root, freshOutput, result);
-    const nodes = loadKbGraphFromDir(path.join(root, freshOutput, "graph"));
+    // Staged edges reference staged suggestions, not the still-unmodified
+    // live corpus. Keep the remaining live records (including pointer markers)
+    // so the same quarantine and evidence guards apply to this candidate KB.
+    const candidateKb = [
+      ...loadKnowledgeBase().filter(mapping => !result.authored.some(staged => staged.id === mapping.id)),
+      ...result.authored,
+    ];
+    const nodes = loadKbGraphFromDir(path.join(root, freshOutput, "graph"), candidateKb);
     expect(nodes.size).toBe(28);
     expect([...nodes.values()].flatMap((node) => node.outgoingEdges)).toHaveLength(64);
     for (const node of nodes.values()) expect(KbNodeMappingSchema.safeParse(node).success).toBe(true);
-    expect(execFileSync(process.execPath, ["--no-warnings", "scripts/audit-crg.ts", `--kb-dir=${freshOutput}/graph`], { cwd: root, encoding: "utf8" })).toContain("PASS");
+    // The adjacency gate now enforces the ARCH-01 evidence join, so it must be
+    // pointed at the candidate corpus this staging pass wrote (staged edges
+    // reference staged suggestions, not `data/knowledge-base/`). "PASS" has to
+    // appear on both verdicts — acyclic *and* every edge backed by authored
+    // evidence with a matching classification.
+    const audit = execFileSync(
+      process.execPath,
+      [
+        "--no-warnings",
+        "scripts/audit-crg.ts",
+        `--kb-dir=${freshOutput}/graph`,
+        `--kb-root=${freshOutput}/authored-mappings.json`,
+      ],
+      { cwd: root, encoding: "utf8" },
+    );
+    expect(audit).toContain("acyclic");
+    expect(audit).toContain("ARCH-01");
     assertInputsUnchanged();
     const manifest = JSON.parse(readFileSync(path.join(root, freshOutput, "manifest.json"), "utf8"));
     for (const artifact of manifest.outputFiles) expect(sha256(readFileSync(path.join(root, freshOutput, artifact.path), "utf8"))).toBe(artifact.sha256);

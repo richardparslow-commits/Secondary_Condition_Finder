@@ -4,6 +4,10 @@ import path from "node:path";
 import { describe, expect, it } from "vitest";
 
 import { CLIENT_CORPUS_PATH } from "@/lib/client-corpus";
+import {
+  presumptiveHistoryStorageKey,
+  presumptiveLocalStorageKeys,
+} from "@/lib/presumptive/browser-history";
 import { browserWorkflowContextStorageKey } from "@/lib/secondary-workflow/browser-context";
 import { secondaryWorkflowLocalStorageKeys } from "@/lib/secondary-workflow/local-state";
 
@@ -67,8 +71,30 @@ const CONTEXT_OBJECT_NAMES = [
   "sessionContext",
 ];
 
-/** `secondary-condition-finder:<name>:v<n>` — every browser-local key this workflow owns. */
-const STORAGE_KEY_PATTERN = /^secondary-condition-finder:[a-z0-9-]+:v\d+$/;
+/** `<namespace>:<name>:v<n>` — every browser-local key this app owns is namespaced and versioned. */
+const STORAGE_KEY_PATTERN = /^[a-z0-9-]+:[a-z0-9-]+:v\d+$/;
+
+/**
+ * Each workflow registers its own browser-local keys for clear-all. A key that
+ * no registry covers fails the suite, so a new store cannot ship without a
+ * documented clear-all path in the same change.
+ */
+const KEY_REGISTRIES: readonly {
+  workflow: string;
+  prefix: string;
+  keys: readonly string[];
+}[] = [
+  {
+    workflow: "secondary",
+    prefix: "secondary-condition-finder:",
+    keys: secondaryWorkflowLocalStorageKeys,
+  },
+  {
+    workflow: "presumptive",
+    prefix: "presumptive-condition-finder:",
+    keys: presumptiveLocalStorageKeys,
+  },
+];
 
 /** The only same-origin worker/OCR assets the design allows the client to load. */
 const SANCTIONED_WORKER_PATHS = new Set([
@@ -161,6 +187,14 @@ const clientSurface = [
   ...asSourceFiles(path.join(SRC, "lib", "evidence")),
   ...asSourceFiles(path.join(SRC, "components", "secondary")),
   ...asSourceFiles(path.join(SRC, "components", "evidence")),
+  // The presumptive track went browser-local on 2026-10-08, so its client
+  // modules answer to the same rules.
+  ...asSourceFiles(path.join(SRC, "components", "presumptive")),
+  readSource("src/components/ServiceHistoryForm.tsx"),
+  readSource("src/lib/presumptive/browser-history.ts"),
+  readSource("src/lib/presumptive/use-browser-history.ts"),
+  readSource("src/lib/presumptive/cross-link.ts"),
+  readSource("src/app/presumptive/results/secondary-cross-link.ts"),
 ];
 
 /** The text inside the parentheses that open at `openIndex`, or null if unbalanced. */
@@ -281,19 +315,23 @@ describe("design conformance: step pages read context only through the sanctione
     ).toEqual([]);
   });
 
-  it("keeps the record's storage key defined in exactly the sanctioned module", () => {
-    const definers = allSourceFiles
-      .filter((file) => file.source.includes(`"${browserWorkflowContextStorageKey}"`))
-      .map((file) => file.path);
+  it("keeps each record's storage key defined in exactly one sanctioned module", () => {
+    const definers = (key: string) =>
+      allSourceFiles
+        .filter((file) => file.source.includes(`"${key}"`))
+        .map((file) => file.path);
 
-    expect(definers).toEqual([
+    expect(definers(browserWorkflowContextStorageKey)).toEqual([
       "src/lib/secondary-workflow/browser-context.ts",
+    ]);
+    expect(definers(presumptiveHistoryStorageKey)).toEqual([
+      "src/lib/presumptive/browser-history.ts",
     ]);
   });
 });
 
-describe("design conformance: every browser storage key is on the clear-all registry", () => {
-  const registry = new Set<string>(secondaryWorkflowLocalStorageKeys);
+describe("design conformance: every browser storage key is on a clear-all registry", () => {
+  const registry = new Set<string>(KEY_REGISTRIES.flatMap(({ keys }) => [...keys]));
 
   it("registers exactly the versioned key literals that src/ declares", () => {
     const declared = new Set<string>();
@@ -308,12 +346,20 @@ describe("design conformance: every browser storage key is on the clear-all regi
     expect([...declared].sort()).toEqual([...registry].sort());
   });
 
-  it("keeps the registry itself versioned and duplicate-free", () => {
-    expect(registry.size).toBe(secondaryWorkflowLocalStorageKeys.length);
-    for (const key of secondaryWorkflowLocalStorageKeys) {
-      expect(key, "namespace + versioned key").toMatch(STORAGE_KEY_PATTERN);
+  it("keeps each registry namespaced, versioned, duplicate-free and disjoint", () => {
+    const seen = new Set<string>();
+    for (const { workflow, prefix, keys } of KEY_REGISTRIES) {
+      expect(keys.length, `${workflow} registry is non-empty`).toBeGreaterThan(0);
+      for (const key of keys) {
+        expect(key, `${workflow} namespace`).toMatch(new RegExp(`^${prefix}`));
+        expect(key, `${workflow} versioned key`).toMatch(STORAGE_KEY_PATTERN);
+        expect(seen.has(key), `${key} is registered twice`).toBe(false);
+        seen.add(key);
+      }
     }
+    expect(seen.size).toBe(registry.size);
     expect(registry.has(browserWorkflowContextStorageKey)).toBe(true);
+    expect(registry.has(presumptiveHistoryStorageKey)).toBe(true);
   });
 
   it("never reaches browser storage through an unregistered key", () => {
@@ -345,7 +391,7 @@ describe("design conformance: every browser storage key is on the clear-all regi
         const iteratesRegistry =
           /^[A-Za-z0-9_$]+$/.test(target) &&
           new RegExp(
-            `(?:const|let|var)\\s+${target}\\s+of\\s+secondaryWorkflowLocalStorageKeys`,
+            `(?:const|let|var)\\s+${target}\\s+of\\s+(?:secondaryWorkflowLocalStorageKeys|presumptiveLocalStorageKeys)`,
           ).test(file.source);
         if (iteratesRegistry) continue;
         offenders.push(`${file.path}: ${site.callee}(${target})`);

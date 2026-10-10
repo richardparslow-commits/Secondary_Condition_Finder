@@ -5,10 +5,9 @@ import {
 } from "./state";
 
 /**
- * The subset of workflow state that can travel as query params. Structurally
- * satisfied by both `StoredSecondaryWorkflowState` (legacy cookie) and
- * `BrowserWorkflowContext` (PRIV-01 browser-local record), so this module is
- * the one client-safe conversion both hosts share.
+ * The subset of workflow state converted to parser input fields. Structurally
+ * satisfied by `BrowserWorkflowContext` (PRIV-01 browser-local record), this
+ * module is the client-safe conversion used by browser-local workflow steps.
  *
  * Client-safe by contract: no `next/headers`, no crypto, no server-only
  * imports — the browser may call this to rebuild parser input from its own

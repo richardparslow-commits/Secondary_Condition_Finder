@@ -10,8 +10,13 @@ and the audit finding is PRIV-01 in
 The stage-4 browser sentinel run passed 20/20 assertions with zero private-field
 leakage ([evidence](../tmp/security-audit-2026-10-07/rel-01-kb-repair/priv01-stage4-evidence.json)).
 
-This is a design for **one workflow**, not a claim that the whole application is
-free of server-side veteran data; see [Residual risks and exclusions](#residual-risks-and-exclusions).
+This is a design for **two workflows**: the secondary-condition workflow (the
+subject of the layers below) and, since 2026-10-08, the DD-214 → presumptive
+service-history flow, which keeps its own private class in its own browser
+record — see [The presumptive track](#the-presumptive-track-2026-10-08). It is
+still not a claim that the whole application is free of server-side veteran
+data; the presumptive track's one remaining server call and the adjacent
+surfaces are named in [Residual risks and exclusions](#residual-risks-and-exclusions).
 
 ## The invariant
 
@@ -188,6 +193,79 @@ clears first and navigates only on confirmed success — otherwise it shows
   from `src/lib/evidence/limits.ts`; the OCR resume checkpoint
   (`src/lib/evidence/ocr-session.ts`) is tab-scoped and is on the clear-all list.
 
+### The presumptive track (2026-10-08)
+
+The DD-214 → presumptive flow joined the browser-local boundary on 2026-10-08.
+It holds a *different* private class — confirmed service history rather than
+health context — so it owns a separate record and a separate exception list,
+but it answers to the same rule: nothing derived from what a veteran entered
+reaches the server.
+
+- **The record.** `src/lib/presumptive/browser-history.ts` owns
+  `presumptive-condition-finder:service-history:v1` (version `1`): confirmed
+  service **locations, branch codes, start and end dates**, validated on every
+  read and write by the same `serviceHistorySchema` the retired Server Action
+  used, with a failed write throwing rather than truncating what the veteran
+  confirmed. Missing, corrupt, out-of-version or out-of-bounds payloads read as
+  **absent**. The key is registered in `presumptiveLocalStorageKeys`, so
+  `clearPresumptiveLocalState` owns its clear-all, and the design-conformance
+  suite fails any versioned key in `src/` that no registry covers.
+- **The read path.** `src/lib/presumptive/use-browser-history.ts` binds the
+  record with `useSyncExternalStore` (cached snapshot, server snapshot “no
+  history”), so it is never read during a server render and no `setState` runs
+  inside an effect. `/presumptive/results` is a shell that reads **no session**:
+  it loads only public data (exposure catalog, published-mapping cross-link
+  index, service-branch reference) and hands it to the client view, which reads
+  the record and runs `matchPresumptives` in the tab. The DD-214 analyzer
+  extracts and OCRs in the tab and stores nothing until the veteran confirms.
+- **The retired server boundary.** The `saveServiceHistory` Server Action
+  (`src/lib/actions/presumptive.ts`) and the sealed-cookie session module
+  (`src/lib/presumptive/session.ts`) are deleted. `src/proxy.ts` answers a stale
+  `presumptive-workflow-v1` presentation with expired, path-scoped tombstones on
+  `/presumptive` and `/`, so an old browser deletes the payload on its next
+  request. The authored-catalog membership allowlist that used to run
+  server-side now runs in the browser before the write, so a crafted value
+  cannot be stored.
+
+### The one remaining server-boundary exception in the presumptive flow
+
+The flow keeps exactly one call that leaves the tab, and it is named here
+rather than left implicit:
+
+**Accredited-representative directory lookup.** The “Find Help Near You” card on
+`/presumptive/results` — the same component the secondary track renders on
+`/secondary/suggestions` and `/secondary/evidence` — resolves the **5-digit ZIP
+the visitor types**, plus optional radius and representative type, against the
+public VA accredited-representative directory.
+
+- It sends **only** `zip` / `radiusMiles` / `type` — never a service location,
+  branch, date, health selection or evidence excerpt — and the ZIP is not
+  persisted to the browser-local record, a cookie, an account or application
+  logs.
+- It is a public-directory lookup: results are public data, not veteran PII. It
+  is gated by `VA_ACCREDITED_REP_ENABLED` behind the shared `VA_API_ENABLED`
+  fail-closed boundary, it is rate-limited, its results are cached under a key
+  hashed from the lookup parameters (so the raw ZIP is not the cache key), and
+  it falls back to a clearly labelled local view when the integration is off.
+- The ZIP still reaches the upstream directory and can appear in that provider's
+  access logs. That is the one documented exposure of this flow, it is the same
+  one the secondary track's identical finder has always had, and the privacy
+  page states it to the user.
+
+**Gate coverage is not symmetric yet.** The stage-4 browser sentinel walks the
+secondary workflow (Pass A UI walk, Pass B seeded record) and the shared
+surfaces — `proxy.ts`, the refusal layer, the public pages it visits — so it
+covers this track's *shared* boundary but not its own pages or record. The
+presumptive track's evidence is its own suites
+(`tests/presumptive-browser-local.test.ts`,
+`tests/retired-presumptive-cookie.test.ts`,
+`tests/browser-local-design-conformance.test.ts`,
+`tests/dd214-presumptive-handoff.test.ts`,
+`tests/dd214-local-analyzer-cleanup-contract.test.ts`), and a presumptive pass
+in the sentinel walk is outstanding. Changes under `src/lib/presumptive/` and
+`src/components/presumptive/` therefore do **not** currently re-trigger the
+sentinel gate.
+
 ## Enforcement
 
 | Mechanism | What it prevents | Where |
@@ -199,8 +277,13 @@ clears first and navigates only on confirmed success — otherwise it shows
 | Evidence boundary audit | evidence parser imported by a server route, bytes in cookie/log | `scripts/audit-evidence-architecture.js` (`npm run evidence:architecture`) |
 | Completion privacy | clear-all coverage and no navigation on failed cleanup | `tests/workflow-completion-privacy.test.ts`, `tests/browser-local-budget-contract.test.ts`, `tests/browser-local-persistence-failure-contract.test.ts` |
 | Retired-cookie tombstone test | a stale `secondary-workflow-v2` surviving instead of being cleared | `tests/retired-secondary-cookie.test.ts` |
+| Presumptive record boundary | confirmed service locations, branches or dates posted to a Server Action, sealed into a cookie, or placed in a URL | `tests/presumptive-browser-local.test.ts` (12 cases, including “no server transport left” and “keeps the confirmed history out of every URL”), `tests/retired-presumptive-cookie.test.ts` |
+| Presumptive design conformance | a presumptive client module reading outside its record, a new browser key without clear-all registration, or a selection-derived fetcher | `tests/browser-local-design-conformance.test.ts` (presumptive registry + client surface) |
+| Presumptive record binding | the results view reading storage during render or seeding state from a mount effect | `src/lib/presumptive/use-browser-history.ts`, `src/components/presumptive/PresumptiveResults.tsx` |
+| DD-214 analyzer cleanup | a leaked pdf.js page, OCR worker or loading task in the browser-local parser | `tests/dd214-local-analyzer-cleanup-contract.test.ts` |
 | Private-context request refusal | the server *reading* (rather than refusing) a request that carries context; a retired form-post transport reappearing | `tests/private-context-request-guard.test.ts` (`src/lib/security/private-context-request-guard.ts`) |
-| Sentinel acceptance | any private field reaching a request, HTML/RSC, log, trace or storage | `node scripts/acceptance-browser-sentinel.mjs` (requires the app on `http://127.0.0.1:3107`; enforced in CI as **Run PRIV-01 stage-4 browser sentinel** in [ci.yml](../.github/workflows/ci.yml) for pull requests touching the scope in `scripts/priv01-sentinel-scope.mjs`, and for every non-PR event) |
+| Repeatable acceptance entrypoint | a walk that needs a hand-built server and answers only to a shell status, with nobody checking the evidence it wrote | `npm run acceptance:sentinel` ([run-acceptance-sentinel.mjs](scripts/run-acceptance-sentinel.mjs); `--dry-run` plan, `--base` for an app already up, reuse of a dev server already running for this project unless `--no-reuse`, exit non-zero on regression), `tests/acceptance-sentinel-harness.test.ts` |
+| Sentinel acceptance | any private field reaching a request, HTML/RSC, log, trace or storage | `node scripts/acceptance-browser-sentinel.mjs` (requires the app on `http://127.0.0.1:3107`; enforced in CI as job `priv01_sentinel`, step **Run PRIV-01 stage-4 browser sentinel**, in [ci.yml](../.github/workflows/ci.yml), with its own time budget and a smaller budget for the walk inside it, for pull requests touching the scope in `scripts/priv01-sentinel-scope.mjs` and for every non-PR event) |
 
 The sentinel gate walks the real UI with sentinels in the free-text/evidence
 fields and re-drives Steps 5–6 from a seeded record carrying sentinels in every
@@ -242,17 +325,26 @@ fetches; third-party assets or error reporting carrying any derived identifier.
   tab, not by cryptography. Device-level protections (shared computers, profiles)
   remain the user's responsibility. Trusted Types / strict-style work is a
   separate audit item.
-- **Adjacent tracks keep their own boundaries.** The presumptive track still
-  writes the encrypted, HttpOnly `presumptive-workflow-v1` cookie, and the DD-214
-  analyzer posts **confirmed service locations, branches and dates** (never
-  diagnoses, ratings, health context or evidence bytes) to
-  `saveServiceHistory`; that documented exception is out of scope here.
+- **Adjacent tracks keep their own boundaries.** The presumptive track is
+  browser-local as of 2026-10-08 — confirmed service locations, branches and
+  dates live in its own versioned record and no longer reach a Server Action or
+  a cookie (see [The presumptive track](#the-presumptive-track-2026-10-08)) — and
+  its one remaining server call, the accredited-representative directory lookup,
+  is documented there as **this flow's only exception**: it sends a
+  visitor-typed ZIP and never any service history.
+- **The sentinel gate's scope is narrower than this design.** The stage-4 walk
+  and the CI trigger scope cover the secondary workflow, the refusal layer and
+  the proxy; the presumptive record and pages have their own suites but no
+  sentinel pass yet. Read [Gate coverage is not
+  symmetric yet](#gate-coverage-is-not-symmetric-yet) before treating a green
+  sentinel run as evidence about this track.
 - **This design does not authorize production veteran data.** Hosted
   two-account PKCE testing (COMP-01) and the human Section 508 review remain
   release gates in the audit report.
 - **Deliberately not covered:** the accreditation lookup, regulatory preflight
   API and VA account surfaces; none of them receive the private fields above, and
-  each has its own contract.
+  each has its own contract. The accreditation lookup is also the presumptive
+  flow's single documented exception.
 
 ## Related documents
 

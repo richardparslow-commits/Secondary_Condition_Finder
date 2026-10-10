@@ -89,6 +89,33 @@ export function crossOriginIsolationSource(
 
 const isAzureStaticWebAppsBuild = process.env.AZURE_STATIC_WEB_APPS_BUILD === "1";
 
+/**
+ * Directories under `data/` that must never reach a deployment artifact.
+ *
+ * `knowledge-base-quarantine/` holds retired, unapproved clinical mappings kept
+ * exactly as delivered (REL-01). Nothing loads them, and shipping them would
+ * put unreviewed drafts into production — which is what happened: the app-wide
+ * tracing include matched this directory, so every server trace and the
+ * standalone bundle carried it. This list is the single place a retirement is
+ * registered, and `npm run audit:traces` fails if a quarantined file reaches an
+ * artifact anyway (for example once a loader traces the data tree again).
+ */
+const RETIRED_DATA_DOMAINS = ["knowledge-base-quarantine"];
+
+/**
+ * Trace patterns for retired data, applied as exclusions on every route.
+ *
+ * Excluding is deliberate rather than narrowing the include: the dynamic
+ * directory reads in the loaders (`readdirSync(KB_DIR)` and friends) make the
+ * tracer pull the whole `data/` tree into the routes that use them, so the
+ * quarantine directory reached four traces and the standalone bundle even when
+ * the include named its globs domain by domain. An exclusion is applied after
+ * tracing, so it prunes a file however it was traced.
+ */
+function retiredDataTracingExcludes(): string[] {
+  return RETIRED_DATA_DOMAINS.map((domain) => `./data/${domain}/**`);
+}
+
 const nextConfig: NextConfig = {
   ...(isAzureStaticWebAppsBuild ? { output: "standalone" as const } : {}),
   reactStrictMode: true,
@@ -116,6 +143,18 @@ const nextConfig: NextConfig = {
    */
   outputFileTracingIncludes: {
     "/**": ["./data/**/*.json"],
+  },
+  /**
+   * Retired data is subtracted from every route's trace.
+   *
+   * The app-wide include above also matched data/knowledge-base-quarantine/**,
+   * which shipped retired, unapproved clinical mappings into every server trace
+   * and into the standalone bundle — data nothing loads and that REL-01 put out
+   * of reach. Retirement is registered once, in RETIRED_DATA_DOMAINS, and
+   * `npm run audit:traces` fails if such a file reaches an artifact anyway.
+   */
+  outputFileTracingExcludes: {
+    "/**": retiredDataTracingExcludes(),
   },
   /**
    * No custom `webpack()` key — a deliberate decision, not an omission.

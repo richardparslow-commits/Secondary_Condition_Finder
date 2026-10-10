@@ -6,6 +6,7 @@ import { Dd214LocalAnalyzer } from "@/components/presumptive/Dd214LocalAnalyzer"
 import { ServiceHistoryForm } from "@/components/ServiceHistoryForm";
 import { ServiceHistoryTemplateLibrary } from "@/components/presumptive/ServiceHistoryTemplateLibrary";
 import { PRESUMPTIVE_TEMPLATES } from "@/lib/presumptive/templates";
+import { SERVICE_HISTORY_MESSAGES } from "@/lib/presumptive/browser-history";
 import { loadExposureCatalog } from "@/lib/presumptive/load";
 import { listLocations } from "@/lib/presumptive/match";
 import { loadServiceBranchReference } from "@/lib/va/service-branches";
@@ -14,13 +15,18 @@ interface PresumptivePageProps {
   searchParams?: Promise<{ error?: string | string[] }>;
 }
 
-const VALIDATION_MESSAGES = {
-  "select-location": "Select at least one location where you served.",
-  "date-order": "Service start date must be on or before the end date.",
-  "invalid-date": "Enter real calendar dates in YYYY-MM-DD format or leave them blank.",
-} as const;
+/**
+ * Deep-link validation codes. The taxonomy is fixed and its copy lives in the
+ * browser-local intake module, shared with the inline alerts, so a stale
+ * bookmarked `?error=` link cannot show different wording than the form.
+ */
+const VALIDATION_CODES = [
+  "select-location",
+  "date-order",
+  "invalid-date",
+] as const;
 
-type ValidationCode = keyof typeof VALIDATION_MESSAGES;
+type ValidationCode = (typeof VALIDATION_CODES)[number];
 
 export const metadata: Metadata = {
   title: "Presumptive Research | Secondary Condition Finder",
@@ -32,8 +38,8 @@ export default async function PresumptivePage({ searchParams }: PresumptivePageP
   const errorValue = (await searchParams)?.error;
   const errorCode = Array.isArray(errorValue) ? errorValue[0] : errorValue;
   const validationMessage =
-    errorCode && Object.prototype.hasOwnProperty.call(VALIDATION_MESSAGES, errorCode)
-      ? VALIDATION_MESSAGES[errorCode as ValidationCode]
+    errorCode && (VALIDATION_CODES as readonly string[]).includes(errorCode)
+      ? SERVICE_HISTORY_MESSAGES[errorCode as ValidationCode]
       : null;
   const validationId = validationMessage ? "presumptive-validation-error" : undefined;
 
@@ -67,7 +73,7 @@ export default async function PresumptivePage({ searchParams }: PresumptivePageP
         </aside>
 
         <section className="ui-card">
-          <div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">↗</span><div><h2 className="text-2xl font-bold">Presumptive Service Connection</h2><p className="text-sm text-slate-600">Enter service history without putting it in the URL.</p></div></div>
+          <div className="ui-heading-row"><span className="ui-icon" aria-hidden="true">↗</span><div><h2 className="text-2xl font-bold">Presumptive Service Connection</h2><p className="text-sm text-slate-600">Enter service history without putting it in the URL or sending it to the server.</p></div></div>
           <p className="mb-5">For some conditions, VA presumes a relationship to service when specific legal criteria are met. This track is separate from secondary service connection, which concerns one disability causing or aggravating another.</p>
           <div role="group" aria-describedby={validationId}>
             <Dd214LocalAnalyzer locations={locations} />

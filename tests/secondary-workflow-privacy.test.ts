@@ -31,7 +31,12 @@ describe("workflow privacy", () => {
     const form = read("src/components/ServiceHistoryForm.tsx");
     const results = read("src/app/presumptive/results/page.tsx");
 
-    expect(form).toContain("action={saveServiceHistory}");
+    // The form confirms service history into the browser-local record: it
+    // declares no form action, makes no request, and reports failures inline.
+    expect(form).toContain("persistServiceHistory(");
+    expect(form).not.toContain("action={");
+    expect(form).not.toContain("fetch(");
+    expect(form).not.toContain("sendBeacon");
     expect(form).not.toMatch(/method=["']get["']/i);
     expect(form).not.toContain('action="/presumptive/results"');
     // Service history (locations/dates/branch) must not be read from query strings;
@@ -74,14 +79,20 @@ describe("workflow privacy", () => {
     expect(proxy).toContain('"secondary-workflow-v2"');
     expect(proxy).toContain("clearRetiredWorkflowCookie");
 
-    // The presumptive track keeps its hardened cookie contract.
-    const presumptive = read("src/lib/presumptive/session.ts");
+    // The presumptive track's cookie is retired with its Server Action: the
+    // 2026-10-08 follow-on moved confirmed service history into the browser, so
+    // no server module may read or write `presumptive-workflow-v1` again.
+    expect(
+      fs.existsSync(path.join(process.cwd(), "src/lib/presumptive/session.ts")),
+    ).toBe(false);
+    expect(
+      fs.existsSync(path.join(process.cwd(), "src/lib/actions/presumptive.ts")),
+    ).toBe(false);
+    expect(proxy).toContain('"presumptive-workflow-v1"');
+
+    // The generic crypto envelope stays hardened for the surfaces that still
+    // use it (VA account store, health, readiness).
     const crypto = read("src/lib/workflow-session-crypto.ts");
-    expect(presumptive).toContain("httpOnly: true");
-    expect(presumptive).toContain('sameSite: "strict"');
-    expect(presumptive).toContain("WORKFLOW_SESSION_MAX_AGE_SECONDS");
-    expect(presumptive).toContain("maxAge: WORKFLOW_SESSION_MAX_AGE_SECONDS");
-    expect(presumptive).toContain('path: "/presumptive"');
     expect(crypto).toContain("WORKFLOW_SESSION_MAX_AGE_SECONDS = 30 * 60");
     expect(crypto).toContain('createCipheriv("aes-256-gcm"');
     expect(crypto).toContain("WORKFLOW_SESSION_SECRET");

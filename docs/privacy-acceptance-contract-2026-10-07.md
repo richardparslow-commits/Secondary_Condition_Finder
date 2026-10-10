@@ -14,6 +14,9 @@ The private workflow context, exactly as the legacy sealed cookie defined it:
 - medications, treatments and free-text history entries;
 - symptom ids;
 - uploaded evidence, extracted document text and OCR transcripts;
+- confirmed service locations, service branches and service dates (the
+  presumptive/DD-214 track — added 2026-10-08, see
+  [Presumptive track](#presumptive-track--browser-local-2026-10-08));
 - any derived value that identifies which conditions a visitor selected.
 
 Public authored content is not private: the catalog, published knowledge-base
@@ -30,7 +33,9 @@ carry no visitor context.
    `secondary-workflow-v2` cookie must be rejected/cleared, not merely sealed
    (implemented in stage 3: the module is deleted and the edge proxy appends
    expired tombstones on `Path=/secondary` and `Path=/` whenever a request
-   still presents the cookie).
+   still presents the cookie). The same applies to the presumptive track's
+   `presumptive-workflow-v1` cookie (retired 2026-10-08): its session module is
+   deleted and the proxy appends an expired `Path=/presumptive` tombstone.
 3. Server-rendered HTML, RSC payloads or URLs embedding any field above.
 4. Logs, metrics attributes and tracing (including LangSmith) receiving any
    field above. The engine's tracing wrapper must never see veteran context.
@@ -59,6 +64,7 @@ evidence pipeline, enforcement and extension rules — is
 | 2 | Convert the six workflow step pages (diagnosed, service-connected, ratings, upload, suggestions, evidence) to client components reading the browser-local context; remove the PHI-bearing Server Actions | **Landed 2026-10-07** |
 | 3 | Delete the legacy cookie path: no server reader, reject/clear `secondary-workflow-v2`, retire the workflow's use of the session crypto; keep no server-side copy of context | **Landed 2026-10-07** |
 | 4 | Browser sentinel acceptance: unique sentinels in every private field, full flow, assert no sentinel in any request URL/body/header/cookie, server HTML/RSC, logs or traces; verify data-clearing covers all browser storage; re-verify upload/OCR stay local | **Landed 2026-10-07** |
+| 5 | Presumptive/DD-214 track: service locations, branches and dates move to a browser-local record; delete the `saveServiceHistory` Server Action and the sealed-cookie session module; tombstone `presumptive-workflow-v1`; name the track's one remaining server call | **Landed 2026-10-08** (this document, below) |
 
 All four stages have landed, so **the browser-local boundary in this contract
 is met**: the 2026-10-07 sentinel run left no private field in any inspected
@@ -82,6 +88,10 @@ Section 508 review remain tracked in
 - Network inspection includes workers, not only component imports —
   **satisfied** (pdf.js and tesseract worker sessions were attached and their
   requests inspected).
+- Applied to the presumptive track's own private fields — **not yet**: the
+  sentinel walk does not visit that track (see
+  [Evidence and its limits](#evidence-and-its-limits)); its evidence is the
+  focused suites listed there.
 
 ## Stage-1 evidence (2026-10-07)
 
@@ -142,9 +152,11 @@ Section 508 review remain tracked in
 - **Tests updated to the live contracts:** symptom round-trip and
   medication/treatment round-trip now assert the browser-local record; the
   privacy suite pins “no `next/headers`, no `document.cookie`, no `sendBeacon`,
-  no URL building” for the context modules and keeps the presumptive cookie
-  hardening assertions; the cookie-scope regression is presumptive-only;
-  `demo-scenarios` validates through the client-safe transport.
+  no URL building” for the context modules. Its presumptive cookie-scope suite
+  was retired on 2026-10-08 with the cookie itself: `tests/workflow-cookie-scope.test.ts`
+  no longer exists and is replaced by `tests/retired-presumptive-cookie.test.ts`,
+  the tombstone contract for `presumptive-workflow-v1`; `demo-scenarios`
+  validates through the client-safe transport.
 - **Maintainer tooling:** the VA.gov walkthrough screenshot script seeds the
   browser-local record through `sessionStorage` instead of sealing a cookie.
 - **Checks:** focused suites (10 files / 55 tests) pass; typecheck exits 0;
@@ -255,18 +267,104 @@ the 2026-10-07 stage-4 acceptance remains the contract's leakage evidence. A
 refusal path that the correct flow never triggers does not change that record;
 a completed sentinel re-run is still outstanding.
 
+## Presumptive track — browser-local (2026-10-08)
+
+The DD-214 → presumptive flow was the contract's last open item: it held
+confirmed **service locations, service branches and service dates** and shipped
+them to a Server Action, which sealed them into the encrypted,
+HttpOnly `presumptive-workflow-v1` cookie. That server boundary is retired.
+
+- **The record.** [browser-history.ts](../src/lib/presumptive/browser-history.ts)
+  owns `presumptive-condition-finder:service-history:v1` (version `1`): the same
+  `serviceHistorySchema` the retired action validated with, applied on every
+  read and write, a failed write throwing instead of truncating, and missing/
+  corrupt/out-of-version/out-of-bounds payloads reading as **absent**. The key
+  is on the track's clear-all registry (`presumptiveLocalStorageKeys`), which
+  the design-conformance suite holds against every versioned key in `src/`.
+- **The read path.** [use-browser-history.ts](../src/lib/presumptive/use-browser-history.ts)
+  binds the record with `useSyncExternalStore` (cached snapshot, server
+  snapshot “no history”), so it is never read in a server render and no
+  `setState` runs inside an effect. `/presumptive/results` reads **no session**:
+  it renders public data (exposure catalog, published-mapping cross-link index,
+  service-branch reference) and the client view reads the record and runs
+  `matchPresumptives` in the tab.
+- **The retired boundary.** `src/lib/actions/presumptive.ts` (the
+  `saveServiceHistory` Server Action) and `src/lib/presumptive/session.ts` (the
+  sealed-cookie session module) are deleted; the proxy tombstones a stale
+  `presumptive-workflow-v1` presentation on `Path=/presumptive`. The
+  authored-catalog membership allowlist that ran server-side now runs in the
+  browser before the write, so a crafted value still cannot be stored.
+- **The DD-214 analyzer** extracts PDF text or OCRs in the tab and stores
+  nothing until the veteran confirms; SSN stays masked and no document byte or
+  transcript is sent anywhere.
+
+### The track's one remaining server-boundary exception
+
+**Accredited-representative directory lookup.** The “Find Help Near You” card on
+`/presumptive/results` — the same component the secondary track renders on
+`/secondary/suggestions` and `/secondary/evidence` — resolves the 5-digit ZIP a
+visitor types against the public VA accredited-representative directory. It is
+the only call in this flow that leaves the tab, and it is recorded as an
+exception rather than left implicit:
+
+- It sends **only** `zip` / `radiusMiles` / `type`, never a service location,
+  branch, date, health selection or evidence excerpt, and the ZIP is not
+  persisted to the browser-local record, a cookie, an account or application
+  logs.
+- It is a **public-directory lookup**: results are public data, not veteran PII.
+  It is gated by `VA_ACCREDITED_REP_ENABLED` behind the shared `VA_API_ENABLED`
+  fail-closed boundary, it is rate-limited, its results are cached under a key
+  hashed from the lookup parameters (the raw ZIP is not the cache key), and it
+  falls back to a clearly labelled local view when the integration is off.
+- The ZIP still reaches the upstream directory and can appear in that provider's
+  access logs. That exposure is unchanged from the secondary track's identical
+  finder, it carries no veteran context, and the privacy page states it.
+
+### Evidence and its limits
+
+- Focused suites: `tests/presumptive-browser-local.test.ts` (record bounds,
+  fail-safe reads, the surviving validation taxonomy, and “no server transport
+  left” / “keeps the confirmed history out of every URL” over the track's client
+  modules), `tests/retired-presumptive-cookie.test.ts` (tombstone contract),
+  `tests/browser-local-design-conformance.test.ts` (the three static design
+  rules, now covering the presumptive registry and client surface),
+  `tests/dd214-presumptive-handoff.test.ts` (parse → adapt → match) and
+  `tests/dd214-local-analyzer-cleanup-contract.test.ts` (browser resource
+  cleanup).
+- **Log:** typecheck, changed-file ESLint and the focused suites (106 tests / 13 files) are recorded in
+  `tmp/security-audit-2026-10-07/priv01-presumptive-browser-local/`
+  ([tests](../tmp/security-audit-2026-10-07/priv01-presumptive-browser-local/tests.log),
+  [typecheck](../tmp/security-audit-2026-10-07/priv01-presumptive-browser-local/typecheck.log),
+  [lint](../tmp/security-audit-2026-10-07/priv01-presumptive-browser-local/lint.log)).
+- **Limit — no sentinel pass for this track yet.** The stage-4 browser sentinel
+  walks the secondary workflow and the shared surfaces (proxy, refusal layer,
+  public pages); it does not open the presumptive pages or seed this record, and
+  `scripts/priv01-sentinel-scope.mjs` does not match `src/lib/presumptive/` or
+  `src/components/presumptive/`. A green sentinel run is therefore **not**
+  evidence about this track, and a presumptive pass in the walk remains
+  outstanding. What is claimed here is the source-level and unit evidence above.
+
 ## CI enforcement (2026-10-08)
 
-Stage 4 was a maintainer-run gate; it is now enforced. The `verify` job in
-[ci.yml](../.github/workflows/ci.yml) runs a named gate,
-**Run PRIV-01 stage-4 browser sentinel**, whose failure re-fails the job (it is
-listed in the job's final aggregator, not left advisory). The step starts a dev server on its
+Stage 4 was a maintainer-run gate; it is now enforced. In
+[ci.yml](../.github/workflows/ci.yml) it is a job of its own, `priv01_sentinel`,
+whose step **Run PRIV-01 stage-4 browser sentinel** starts a dev server on its
 own port, waits for `/api/health`, points `SENTINEL_APP_BASE` and
 `SENTINEL_SERVER_LOG` at that server, and runs
 [acceptance-browser-sentinel.mjs](../scripts/acceptance-browser-sentinel.mjs)
 with the runner's Chrome. A missing browser, an unhealthy server, or a failed
-walk fails the gate — it never degrades to a skip, because a green `verify` has
-to mean the walk actually happened.
+walk fails the gate — it never degrades to a skip, because a green run has to
+mean the walk actually happened.
+
+It is required, and it has its own time budget. The walk is the workflow's
+slowest and most environment-dependent gate, so as a step on `verify`'s clock it
+could spend the budget every other gate needed, and `verify`'s ceiling could
+truncate it into an opaque job cancellation. Now the job carries its own ceiling
+and the walk has a smaller step budget inside it, and enforcement stays on the
+single required context branch protection already watches: `verify` needs this
+job, runs with `if: always()` — without which a failed sentinel job would *skip*
+the required context rather than fail it — and its aggregator fails when the
+job failed, when it was cancelled, or when the scope job did not succeed.
 
 Pull requests are selected by their change set through
 [priv01-sentinel-scope.mjs](../scripts/priv01-sentinel-scope.mjs): the
@@ -276,9 +374,32 @@ private-context refusal layer, the proxy, the COOP/COEP configuration, the
 runner itself, and the contract suites that encode the same invariant.
 Detection fails closed — an unreadable change set runs the gate rather than
 skipping it — and every non-PR event (push to main, manual dispatch) runs it
-unconditionally. [priv01-sentinel-gate-wiring.test.ts](../tests/priv01-sentinel-gate-wiring.test.ts)
+unconditionally, because that is where the contract has to hold. The filter is a
+job (`priv01_scope`) rather than a workflow-level `paths:` filter on purpose: a
+workflow skipped that way leaves its required checks waiting forever, so the
+filtering has to happen inside a run that always starts.
+[priv01-sentinel-gate-wiring.test.ts](../tests/priv01-sentinel-gate-wiring.test.ts)
 walks those directories on disk, so a new privacy-bearing module cannot land
 outside the gate's scope, and pins the wiring above.
+
+**Repeatable entrypoint (2026-10-08).** The walk is also runnable unattended
+through one command, `npm run acceptance:sentinel`
+([run-acceptance-sentinel.mjs](../scripts/run-acceptance-sentinel.mjs)), which
+owns the app server the walk needs: it resolves the browser, starts a dev server
+on its own port, waits for `/api/health`, runs the walk pointed at that server's
+log, stops the server on every path (success, failure, thrown error, or
+SIGINT/SIGTERM), and exits non-zero on any regression. It requires **two
+independent signals** — the walk's exit code *and* the evidence report it wrote
+— so a zero exit with a report that records failures, records a runner error, or
+does not exist is also a failure; a run that cannot be verified is not a pass.
+`--dry-run` resolves and prints the plan without starting anything, and
+`--base <url>` drives an app that is already running. The plan resolution,
+fail-before-the-walk behaviour, teardown and evidence cross-check are pinned by
+[acceptance-sentinel-harness.test.ts](../tests/acceptance-sentinel-harness.test.ts)
+(24 cases). CI exposes the same command as the opt-in **`sentinel-acceptance`**
+job (manual dispatch with `sentinel_acceptance=true`, evidence uploaded as an
+artifact). That job is deliberately **not** in the `verify` job's aggregator, so
+the required merge gate below is unchanged.
 
 **First CI run (PR #522, 2026-10-08): green.** Scope detection answered
 `changed=true (6 in-scope file(s))`, and the walk completed on the runner —

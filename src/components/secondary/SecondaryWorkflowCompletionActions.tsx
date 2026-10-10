@@ -8,8 +8,8 @@ import { clearSecondaryWorkflowLocalState } from "@/lib/secondary-workflow/local
 /**
  * Finish Review / Start a new review (PRIV-01 stage 2).
  *
- * The retired Server Actions cleared the encrypted workflow cookie; there is
- * no cookie anymore. Completion now clears every browser-local workflow key
+ * The retired Server Actions cleared the workflow cookie; there is no
+ * workflow cookie anymore. Completion now clears every browser-local workflow key
  * (context record, evidence excerpts, checklists, OCR transcripts, walkthrough
  * progress) and only navigates once cleanup is confirmed. If cleanup throws,
  * the review is not pretended to be finished — the user sees an actionable

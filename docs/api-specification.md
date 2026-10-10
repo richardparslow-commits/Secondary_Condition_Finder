@@ -8,7 +8,9 @@ This document describes the request/response contracts for all API endpoints and
 
 ### `GET /api/health`
 
-Health check endpoint used by Vercel's monitoring and the production readiness workflow. Returns component-level status for catalog, session crypto, the CRG adjacency graph, VA API config, and circuit breaker state.
+Health check endpoint used by Vercel's monitoring and the production readiness workflow. Returns component-level status for the catalog, crypto primitives, the legacy configured-secret readiness marker, CRG adjacency graph, VA API config, and circuit-breaker state. These crypto fields support runtime readiness; the current research workflows use browser-local state, and the optional VA-account store has independent configuration and its own `VA_ACCOUNT_SESSION_SECRET`.
+
+`sessionCrypto` proves the seal/open primitives work using an ephemeral probe secret. `workflowSession` reports whether the primary `WORKFLOW_SESSION_SECRET` passes the production crypto-readiness probe; it does not establish research-workflow persistence or VA-account store readiness. Production health treats an absent/short primary key as degraded because the runtime-readiness contract still requires it.
 
 The `kbGraph` component reports validated adjacency-graph migration state: `nodes`/`edges` count the migrated graph, and an empty graph is the valid pre-migration state. Invalid graph data never loads — the loader fails loud, so the component reports `error` and health degrades.
 
@@ -33,6 +35,11 @@ The `kbGraph` component reports validated adjacency-graph migration state: `node
       "status": "ok",
       "latencyMs": 5,
       "detail": "optional error message"
+    },
+    "workflowSession": {
+      "status": "ok",
+      "latencyMs": 1,
+      "detail": "Workflow session crypto readiness probe passed"
     },
     "kbGraph": {
       "status": "ok",
@@ -69,7 +76,26 @@ The `kbGraph` component reports validated adjacency-graph migration state: `node
       "status": "ok",
       "latencyMs": 0,
       "scope": "per-instance", // "per-instance" | "single-process"
-      "detail": "per-IP limits apply per instance, so the aggregate is roughly the configured limit x instance count; the edge WAF remains the capacity layer"
+      "detail": "per-client (key only as trustworthy as the forwarding header) limits apply per instance, so the aggregate is roughly the configured limit x instance count; the edge WAF remains the capacity layer",
+      "identity": {
+        "trustedIngress": false, // true only when RATE_LIMIT_TRUSTED_INGRESS=true
+        "identity": "self-declared", // "asserted" | "self-declared"
+        "variable": "RATE_LIMIT_TRUSTED_INGRESS",
+        "detail": "no ingress is asserted, so a per-client key is only as trustworthy as the header that carried it; the shared admission ceiling caps abuse that rotates keys either way"
+      },
+      "ceiling": {
+        "max": 6000, // read off the limiter that enforces it
+        "windowMs": 60000,
+        "variable": "RATE_LIMIT_UNATTRIBUTED_MAX",
+        "key": "unattributed:shared",
+        "detail": "unattributed requests (no valid IP literal) and any request's share of aggregate traffic are bounded by this shared budget, which is deliberately separate from the per-client limit"
+      },
+      "store": {
+        "mode": "process-local", // "process-local" is the only implemented mode
+        "distributed": false,
+        "blockedBy": "no-store-provisioned",
+        "detail": "counters live in this process only, so the enforced limit is per instance; a deployment-wide quota needs a shared counter store the operator must provision (and prove atomic in the hosting environment), and no shared store is wired for inbound admission, so none is claimed (SEC-02 remains open on that half)"
+      }
     },
     "runtime": {
       "status": "ok",
@@ -90,8 +116,8 @@ The `kbGraph` component reports validated adjacency-graph migration state: `node
 }
 ```
 
-**Healthy** (`200`): `catalog.status === "ok"` AND `sessionCrypto.status === "ok"` AND `kbGraph.status === "ok"`.
-**Degraded** (`503`): Any of `catalog`, `sessionCrypto`, or `kbGraph` is `"error"`. Invalid adjacency-graph data deliberately degrades health: it is a deployed-integrity failure, not an expected degraded state.
+**Healthy** (`200`): `catalog.status === "ok"` AND `sessionCrypto.status === "ok"` AND `workflowSession.status === "ok"` AND `kbGraph.status === "ok"`.
+**Degraded** (`503`): Any of `catalog`, `sessionCrypto`, `workflowSession`, or `kbGraph` is `"error"`. Invalid adjacency-graph data deliberately degrades health as a deployed-integrity failure. The workflow-session component specifically checks the legacy configured primary crypto-readiness marker, not the browser-local research workflows or the independent VA-account session store.
 
 `components.runtime` aggregates every control that depends on process-local state, so
 "what does this deployment give up?" has one answer: `reduced` lists capability ids below
@@ -99,7 +125,15 @@ full strength, `capabilities` maps every id to its regime (including live VA acc
 the circuit breaker, which have no component of their own), and `detail` states it in one
 sentence. A distributed runtime reports all four as reduced; that is expected, not
 degraded. The `scope`/`detail` shown inside `components.vaReferenceCache` and
-`components.rateLimit` are generated from the same report, so they cannot disagree with it.
+`components.rateLimit` are generated from the same report, so they cannot disagree with it, and
+`components.rateLimit.ceiling.max` is read off the limiter that actually enforces it, so the
+reported budget and the applied budget cannot drift apart.
+
+`components.rateLimit.identity` and `components.rateLimit.store` record the two limits of this
+control in one place: whether a per-client key rests on an asserted ingress
+(`RATE_LIMIT_TRUSTED_INGRESS=true`) or only on client-supplied headers, and whether the counters
+are deployment-wide or process-local. Neither is inferred from comments — see SEC-02 in
+`docs/security-architecture-audit-2026-10-07.md` for the hosted evidence still owed.
 
 **Runtime**: `force-dynamic`, `nodejs`.
 
@@ -142,15 +176,13 @@ Triggers a regulatory preflight cache refresh. Requires Bearer token authenticat
 
 ## Server Actions
 
-All Server Actions are defined in `src/lib/actions/` and invoked via Next.js form submissions (`<form action={...}>`). They accept a `FormData` parameter, validate input, persist, and redirect (or redirect with an error).
+The remaining workflow-area Server Action is the bounded accredited-representative directory lookup. It accepts validated public lookup fields and redirects with the lookup result or a fixed validation code; it does not persist Veteran workflow state. The separate VA-account sandbox uses same-origin Route Handlers, not these Server Actions.
 
-**Error handling pattern (remaining actions)**: On validation failure or persistence failure, the action redirects to the originating step with a `?error=<code>` query parameter. The page reads the error code and displays a user-facing message.
-
-> **PRIV-01 stage 2 (2026-10-07):** the secondary workflow no longer has Server Actions. All veteran health context (diagnoses, service-connected selections, ratings, medications, treatments, history, symptoms, chronology) lives in a browser-local record and never reaches the server. The browser-local contract that replaced the retired secondary and scenario action modules is documented below.
+> **PRIV-01 (2026-10-07 and 2026-10-08):** both secondary and presumptive research workflows now validate and persist state in versioned, browser-local records. Private context does not reach the server, and the retired secondary, scenario, and presumptive Server Actions are gone. The browser-local contracts follow.
 
 ### Validation Error Codes
 
-All secondary workflow steps share these validation codes (defined in `src/lib/secondary-workflow/validation.ts`):
+Client-side validation for the secondary workflow uses these codes (defined in `src/lib/secondary-workflow/validation.ts`):
 
 | Code | Message | Triggered by |
 |---|---|---|
@@ -188,25 +220,37 @@ Codes render inline on the current step (`role="alert"`). Only cross-step guidan
 
 ---
 
-### Presumptive Workflow Actions (`src/lib/actions/presumptive.ts`)
+### Presumptive workflow (browser-local — no Server Action, since 2026-10-08)
 
-#### `saveServiceHistory(formData)`
+The `saveServiceHistory` Server Action and its sealed-cookie session module are
+deleted. Confirmed service branch, location and date fields are validated and
+stored by `persistServiceHistory(storage, draft, knownLocations)` in
+`src/lib/presumptive/browser-history.ts`, which writes
+`presumptive-condition-finder:service-history:v1` in tab-scoped `sessionStorage`
+and performs no request.
 
-Saves service branch, location, and date information for presumptive eligibility matching.
-
-**Form fields**:
+**Input fields** (rendered by `src/components/ServiceHistoryForm.tsx` and the
+DD-214 verification step; they are read from component state, never posted):
 | Field | Type | Required | Description |
 |---|---|---|---|
-| `serviceBranchCode` | `string \| string[]` | Yes | One or more two-letter military branch codes. |
-| `location` | `string \| string[]` | Yes | At least one location code (e.g., country or theater code). |
+| `serviceBranchCode` | `string \| string[]` | No | One or more two-letter military branch codes (administrative reference only). |
+| `location` | `string \| string[]` | Yes | At least one location, from the authored exposure catalog. |
 | `serviceStart` | `string` | No | Service start date (ISO 8601 date string). |
-| `serviceEnd` | `string` | No | Service end date (must be after `serviceStart`). |
+| `serviceEnd` | `string` | No | Service end date (must not precede `serviceStart`). |
 
-**Success**: Redirects to `/presumptive/results`.
-**Validation errors** (via `?error=` query param on `/presumptive`):
-- `select-location`: No locations selected.
+**Success**: the caller navigates to `/presumptive/results`, which reads the
+record in the browser.
+**Failure codes** (`ServiceHistoryFailureCode`, surfaced as an inline `role="alert"`
+on `/presumptive` — there is no `?error=` transport any more):
+- `select-location`: No locations selected, or a location outside the authored catalog.
 - `date-order`: End date before start date.
 - `invalid-date`: Invalid date format.
+- `storage-unavailable`: the browser refused the write; the caller must not continue.
+
+**The flow's one server call**: the accredited-representative finder on
+`/presumptive/results` posts `zip` / `radiusMiles` / `type` to the public VA
+directory (see [Accredited representatives](#accredited-representative-finder)). It
+carries no service history.
 
 ---
 
@@ -222,11 +266,11 @@ An unknown id or invalid state surfaces an inline error; nothing is sent to the 
 
 ---
 
-### Accredited Representative Actions (`src/lib/actions/accredited-representatives.ts`)
+### Accredited Representative Action (`src/lib/actions/accredited-representatives.ts`)
 
 #### `searchAccreditedRepresentatives(formData)`
 
-Redirects to the suggestions page with query parameters for the accredited representative locator.
+Validates public-directory lookup fields and redirects to the selected allowed return page with query parameters for the accredited-representative locator.
 
 **Form fields**:
 | Field | Type | Required | Description |
@@ -236,7 +280,7 @@ Redirects to the suggestions page with query parameters for the accredited repre
 | `type` | `string` | No | Representative type: `"VSO"`, `"agent"`, or `"attorney"`. |
 | `returnTo` | `string` | No | Return URL (default: `/secondary/suggestions`). |
 
-**Success**: Redirects to `{returnTo}?zip={zip}&radiusMiles={radius}&type={type}`.
+**Success**: Redirects to the validated allowlisted `{returnTo}?zip={zip}&radiusMiles={radius}&type={type}`.
 **Validation errors**:
 - Invalid ZIP → `{returnTo}?error=invalid-zip`
 - Invalid radius → `/secondary/suggestions?error=invalid-radius`
@@ -338,18 +382,20 @@ for `/api/regulatory/preflight` and `/api/admin/cache-clear`, `{ "status": "rate
 for `/api/health`, and `{ "error": "Too many requests. Please try again later." }` for the
 method-scoped `POST` rule.
 
-A request carrying neither `X-Forwarded-For` nor `X-Real-IP` is **not rate limited**:
-with no client identity there is no per-client bucket to charge, and a single shared
-fallback bucket would turn the per-IP allowance into a global cap. Capacity in that
-case rests entirely with the edge WAF. Limits are also per instance, so the effective
-ceiling is roughly the configured value × instance count; `/api/health` reports this
-as `components.rateLimit.scope`.
+A request without a usable IP identity is still charged to the named shared admission
+ceiling, so missing or invalid identity does not bypass all limits. Attributed requests
+also charge that ceiling in addition to their per-client bucket. All buckets remain
+process-local and reset on cold start; `/api/health` reports the identity policy,
+aggregate ceiling, and store regime in `components.rateLimit.identity|ceiling|store`.
+Forwarding headers are trustworthy only when the deployment ingress strips client-supplied
+values and asserts that trust configuration; the application cannot verify the edge.
+Hosted, multi-instance and direct-origin behavior remain deployment checks.
 
 ---
 
 ## Security Notes
 
-- All Server Actions write to an **encrypted, authenticated session cookie** (not localStorage). See `src/lib/workflow-session-crypto.ts`.
-- The health endpoint uses an **ephemeral secret** for crypto probing — it never depends on production env config.
+- The secondary and presumptive workflows keep private context in versioned, schema-bounded, tab-scoped browser records; no workflow cookie is set and private fields are refused if submitted to a server route/action.
+- `GET /api/health` checks configured primary-secret crypto readiness and reports component/rate-limit status. Its `sessionCrypto` subcheck is an ephemeral primitive test; neither field checks research-workflow persistence or the optional VA-account session store.
 - The regulatory preflight endpoint requires **Bearer token authentication**.
-- No API endpoint transmits Veteran PII to external services. All workflow state is browser-local or cookie-encrypted.
+- No API endpoint transmits Veteran workflow context to external services. The optional VA sandbox account flow is a separate, disabled-by-default server-side token/session experiment.

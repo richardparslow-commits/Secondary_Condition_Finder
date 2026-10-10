@@ -10,7 +10,7 @@ const REQUIRED_EXECUTABLE_IMPORTS = [
   "@/lib/engine/export",
   "@/lib/kb/schema",
   "@/lib/presumptive/match",
-  "@/lib/presumptive/session",
+  "@/lib/presumptive/browser-history",
   "@/lib/workflow-session-crypto",
   "@/lib/secondary-workflow/browser-context",
   "@/lib/evidence/extract",
@@ -19,6 +19,13 @@ const REQUIRED_EXECUTABLE_IMPORTS = [
   "@/lib/va/sandbox",
   "@/lib/va/reference-cache",
   "@/lib/va/forms-finder",
+  // The outbound retry/429 policy and the sandbox demo-fixture seam. Both decide
+  // whether a VA request is made and what a caller sees when it is not, and the
+  // fixture seam additionally decides whether synthetic veteran data may be
+  // served at all — so its gate must not be able to lose its coverage quietly.
+  "@/lib/va/api",
+  "@/lib/va/account/demo-fixtures",
+  "@/lib/va/account/transport",
   "@/lib/observability/logger",
 ];
 const REQUIRED_PERCENT = 100;
@@ -95,6 +102,8 @@ const SERVER_ACTION_DIR = path.join(sourceRoot, "lib", "actions");
 const CLIENT_BOUNDARY_FORBIDDEN = [
   "@/lib/kb",
   "@/lib/workflow-session-crypto",
+  // Retired 2026-10-08 with the presumptive Server Action; kept as a guard so a
+  // server-side session module cannot reappear at this path unnoticed.
   "@/lib/presumptive/session",
   "@/lib/store",
 ];

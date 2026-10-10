@@ -4,6 +4,8 @@ import fs from "node:fs";
 import fsp from "node:fs/promises";
 import path from "node:path";
 
+import { parseDataJson } from "@/lib/data/parse-json";
+
 import { loadConditionCatalog, loadConditionCatalogAsync } from "@/lib/catalog/load";
 
 import {
@@ -35,11 +37,11 @@ async function readKnowledgeBase(): Promise<KnowledgeBase> {
   const mappings: ConditionMapping[] = [];
   for (const file of files) {
     const raw = await fsp.readFile(path.join(KB_DIR, file), "utf8");
-    const parsed = conditionMappingSchema.safeParse(JSON.parse(raw));
+    const parsed = conditionMappingSchema.safeParse(parseDataJson(raw));
 
     if (!parsed.success) {
-      console.error(`[knowledge-base] Invalid mapping in ${file}:`, parsed.error.message);
-      throw new Error(`Invalid mapping in ${file}: ${parsed.error.message}`);
+      console.error("[knowledge-base] Invalid mapping data");
+      throw new Error(`Invalid mapping in ${file}.`);
     }
 
     const expectedId = path.basename(file, ".json");
@@ -86,11 +88,11 @@ export function loadKnowledgeBase(): KnowledgeBase {
 
   const mappings: ConditionMapping[] = files.map((file) => {
     const raw = fs.readFileSync(path.join(KB_DIR, file), "utf8");
-    const parsed = conditionMappingSchema.safeParse(JSON.parse(raw));
+    const parsed = conditionMappingSchema.safeParse(parseDataJson(raw));
 
     if (!parsed.success) {
-      console.error(`[knowledge-base] Invalid mapping in ${file}:`, parsed.error.message);
-      throw new Error(`Invalid mapping in ${file}: ${parsed.error.message}`);
+      console.error("[knowledge-base] Invalid mapping data");
+      throw new Error(`Invalid mapping in ${file}.`);
     }
 
     const expectedId = path.basename(file, ".json");

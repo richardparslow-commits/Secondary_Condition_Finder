@@ -1,3 +1,6 @@
+import { readdirSync } from "node:fs";
+import { join } from "node:path";
+
 import { describe, expect, it } from "vitest";
 
 import nextConfig, {
@@ -105,13 +108,45 @@ describe("COI exemption source builder", () => {
 });
 
 describe("file-tracing scope decision", () => {
+  const include = nextConfig.outputFileTracingIncludes?.["/**"] ?? [];
+
   it("keeps the app-wide tracing include that the memoized loaders require", () => {
     // The data directory is a server-wide dependency: every secondary
     // workflow page, presumptive page, /terms, the health API, both action
     // modules, and the instrumentation warmup import the filesystem-backed
     // loaders. A per-route scope would only fail at runtime in production.
-    expect(nextConfig.outputFileTracingIncludes?.["/**"]).toContain(
-      "./data/**/*.json",
-    );
+    expect(nextConfig.outputFileTracingIncludes?.["/**"]).toBeDefined();
+    expect(include.length).toBeGreaterThan(0);
+    for (const glob of include) expect(glob.startsWith("./data/")).toBe(true);
+  });
+
+  it("derives the include from the data directory it is meant to ship", () => {
+    // Pinned against the real directory, not a hardcoded list: adding a
+    // data/ domain must not require remembering to widen the include, which
+    // is the failure mode that makes a per-route or hand-listed scope unsafe.
+    const expected = readdirSync(join(process.cwd(), "data"), { withFileTypes: true })
+      .filter((entry) =>
+        entry.isDirectory()
+          ? entry.name !== "knowledge-base-quarantine"
+          : entry.isFile() && entry.name.endsWith(".json"),
+      )
+      .map((entry) =>
+        entry.isDirectory() ? `./data/${entry.name}/**/*.json` : `./data/${entry.name}`,
+      )
+      .sort();
+
+    expect(expected.length).toBeGreaterThan(0);
+    expect(include).toEqual(expected);
+  });
+
+  it("keeps retired data out of the artifact", () => {
+    // The blanket `data/**` glob shipped data/knowledge-base-quarantine/**
+    // (retired, unapproved mappings kept only as a record) into every server
+    // trace and into the standalone bundle. It must not come back, and no
+    // traced pattern may reach the quarantine directory.
+    expect(include).not.toContain("./data/**/*.json");
+    expect(include.filter((glob) => glob.includes("knowledge-base-quarantine"))).toEqual([]);
+    // The exclusion is only meaningful while the directory actually exists.
+    expect(readdirSync(join(process.cwd(), "data"))).toContain("knowledge-base-quarantine");
   });
 });

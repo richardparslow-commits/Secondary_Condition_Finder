@@ -103,7 +103,7 @@ Describe the current server-only model:
 - Production mode remains disabled until VA grants production access.
 - No VA key is stored in source control, exposed through `NEXT_PUBLIC_*`, logged, placed in URLs, or copied into artifacts.
 - Vercel **Production** environment settings become active through a new production deployment.
-- Workflow-session security uses server-only `WORKFLOW_SESSION_SECRET` and is verified through non-sensitive `/runtime-readiness`, not by exposing the secret.
+- Research workflow state is browser-local and uses no workflow-session cookie; `/runtime-readiness` non-sensitively verifies only the legacy `WORKFLOW_SESSION_SECRET` crypto-readiness marker. It does not prove VA-account sandbox store configuration.
 
 ## PII/PHI and data-handling answer
 
@@ -114,9 +114,9 @@ State only implemented behavior:
 - `/disabilities` and service-branch list requests require no user-specific matching parameter;
 - user disability filtering stays in the browser;
 - health/disability/service-history workflow state is kept out of URLs;
-- workflow state uses short-lived encrypted/authenticated cookies;
+- workflow state uses versioned, schema-bounded, tab-scoped browser records; retired workflow cookies are tombstoned if a stale copy is presented;
 - optional evidence ingestion is browser-local and raw selected document bytes/text are not intentionally sent to application server state;
-- operational workflow/recommendation events include allowlisted action/status/route/count/duration fields and are emitted to platform logs; verify host retention and exception sanitation instead of claiming no event logging;
+- operational workflow/recommendation events include allowlisted action/status/route/count/duration fields and are emitted to platform logs; client error boundaries and optional LangSmith failures use fixed content-free messages; verify deployed trace settings and host retention/access rather than claiming no event logging;
 - VA adapter observations omit credentials, query values, response bodies, and workflow selections;
 - successful public-reference response views are cached for five minutes, including lookup parameters echoed inside cache values; hashing keys does not anonymize those values;
 - shared reference status exposes only source/environment/retrieval/cache state.
@@ -125,7 +125,7 @@ State only implemented behavior:
 
 - [ ] State default 4-second per-attempt timeout.
 - [ ] State at most three attempts for public-reference network/timeout and HTTP 503/504 failures, with bounded backoff/jitter.
-- [ ] State that HTTP 429/500 returns fallback without an immediate retry. Do not claim faithful fleet Retry-After handling until the audited circuit/coordination defects are repaired.
+- [ ] State that HTTP 429/500 returns fallback without an immediate retry, and state the single exception: an upstream that explicitly authorizes retrying at once (Retry-After of 0, or an already-past HTTP-date) is retried once in the same request after the minimum backoff delay. Do not claim faithful fleet Retry-After handling until the audited circuit/coordination defects are repaired.
 - [ ] Identify the separate read-only sandbox account transport: one bounded attempt, no background polling, no account-data fallback.
 - [ ] State invalid payloads fail closed.
 - [ ] State no background polling/bulk synchronization is implemented.
@@ -138,7 +138,7 @@ Include:
 
 - HTTPS-only VA endpoints;
 - service-specific server-only credentials;
-- encrypted/authenticated workflow cookies;
+- versioned, schema-bounded, tab-scoped browser workflow records; retired workflow cookies are tombstoned if stale copies are presented;
 - privacy-sensitive state excluded from URLs;
 - source-restrictive production CSP and route-wide security headers;
 - read-only active CI permissions and immutable action pins where applicable;

@@ -46,10 +46,10 @@ Two research paths are chosen at `/` because they need different evidence.
 - Service-connected step only shows diagnosed selections and requires an explicit Yes/No answer for each diagnosis. Diagnoses marked Yes form the already-service-connected comparison set; diagnoses marked No form the non-service-connected target set for Step 5.
 - Ratings step only shows service-connected selections and accepts 0–100 or decline.
 - Step 4 supports browser-local analysis of PDF, DOCX, supported text files, and pasted text. Raw document bytes/text are not submitted to the application server. Extracted excerpts and provenance may be retained only in the current tab's `sessionStorage` for Step 6 review.
-- Optional medication/treatment entries are bounded and are stored only in the encrypted, authenticated, short-lived secondary-workflow cookie. They are not serialized into workflow URLs and do not change recommendation ranking.
+- Optional medication/treatment entries are bounded and stored only in the versioned, schema-bounded, tab-scoped secondary-workflow browser record. They are not serialized into workflow URLs and do not change recommendation ranking.
 - Steps 2 through 6 are guarded against invalid or incomplete prior-step state.
-- Server workflow selections are carried in an HttpOnly, SameSite=Strict, AES-256-GCM-protected cookie with a 30-minute maximum age. Back navigation reads that workflow state so users can revise earlier choices without putting sensitive workflow context into the URL.
-- Finish Review and Start a new review explicitly clear the encrypted workflow cookie plus the secondary workflow's browser-local evidence/checklist stores.
+- Workflow selections remain in the versioned, schema-bounded tab-scoped browser record. Back navigation reads that state so users can revise earlier choices without putting sensitive workflow context into the URL.
+- Finish Review and Start a new review explicitly clear the secondary workflow browser record plus its browser-local evidence/checklist stores.
 
 ### FR-2 Diagnosis-centered Step 5 connection review
 
@@ -108,8 +108,8 @@ Legacy free-text/unrecognized-primary behavior remains isolated to legacy code p
 
 - At least three repeatable, explicitly synthetic scenarios live in `data/demo-scenarios.json`, including a single-primary case and a multiple-primary overlap case.
 - Scenario data is represented in current secondary-workflow terms: diagnosed ids, service-connected ids, ratings/decline, document-sharing choice, and optional bounded medication/treatment context.
-- `/scenarios` does not construct a legacy `/results?...` URL. Launching a demo submits only a bounded scenario id to a server action.
-- The server resolves the version-controlled scenario, validates it through the current workflow parser/catalog, writes the same encrypted short-lived secondary-workflow session used by normal intake, and redirects to current Step 5 connection review.
+- `/scenarios` does not construct a legacy `/results?...` URL. Launching a demo validates bundled synthetic state in the browser and saves it to the tab-scoped workflow record; no workflow context or scenario id is submitted to the server.
+- The browser resolves the version-controlled scenario, validates it through the current workflow parser/catalog, writes it into the tab-scoped browser-local workflow record used by normal intake, and navigates to current Step 5 connection review.
 - Launching a demo clears prior secondary-workflow browser-local evidence and checklist state so a synthetic demonstration cannot inherit excerpts or selections from an earlier review in the same tab.
 - A test asserts that every scenario runs through the current workflow contract and returns deterministic evidence-backed relationship results.
 
@@ -171,7 +171,7 @@ JSON in git rather than an opaque production database keeps mapping, pathway int
 | 4 | Every published relationship result includes explanation text and source references under repository policy | Met, enforced by tests/audits |
 | 5 | Raw local evidence remains browser-local and is not required for server recommendation execution | Met, enforced by privacy tests |
 | 6 | Disclaimers and non-adjudicative boundaries are visible in workflow/results views | Met, enforced by copy/contracts |
-| 7 | At least three synthetic demo scenarios launch through the current encrypted workflow rather than legacy query-state URLs | Met, enforced by `tests/demo-scenarios.test.ts` |
+| 7 | At least three synthetic demo scenarios launch through the current browser-local workflow record rather than legacy query-state URLs | Met, enforced by `tests/demo-scenarios.test.ts` |
 | 8 | Step 5 can expose bounded, authored-only pathway intelligence and source roles without changing recommendation order, scores, prevalence, or intake matching | Met, enforced by `tests/step5-pathway-intelligence.test.ts` and CI |
 | 9 | Step 6 remains constrained to the same non-service-connected diagnosis set and does not reintroduce unrelated forward-looking suggestions | Met, enforced by `tests/non-service-connected-focus.test.ts` and browser CI |
 | 10 | The current catalog contains exactly 813 one-to-one catalog/KB identities; post-expansion evidence promotion may change individual mapping publication state only after relationship-specific clinical review and must not alter the 813/813 contract | Met in repository contract; production closure requires exact-head CI and runtime readiness |

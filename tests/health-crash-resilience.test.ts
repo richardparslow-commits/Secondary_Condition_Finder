@@ -72,9 +72,10 @@ describe("health endpoint crash resilience", () => {
     expect(body.timestamp).toBeDefined();
   });
 
-  it("returns 503 degraded status instead of crashing when getCircuitSnapshot throws", async () => {
+  it("returns a content-free 503 instead of exposing circuit dependency errors", async () => {
+    const sentinel = "SYNTHETIC-CIRCUIT-DIAGNOSTIC-SECRET";
     mockGetCircuitSnapshot.mockImplementation(() => {
-      throw new Error("Circuit breaker state unavailable");
+      throw new Error(sentinel);
     });
 
     const { GET } = await import("@/app/api/health/route");
@@ -83,13 +84,15 @@ describe("health endpoint crash resilience", () => {
 
     expect(response.status).toBe(503);
     expect(body.status).toBe("degraded");
-    expect(body.error).toBe("Circuit breaker state unavailable");
+    expect(body.error).toBe("Health check failed; diagnostic details withheld.");
+    expect(JSON.stringify(body)).not.toContain(sentinel);
     expect(body.timestamp).toBeDefined();
   });
 
-  it("returns 503 degraded status instead of crashing when peekCacheCounters throws", async () => {
+  it("returns a content-free 503 instead of exposing cache dependency errors", async () => {
+    const sentinel = "SYNTHETIC-CACHE-DIAGNOSTIC-SECRET";
     mockPeekCacheCounters.mockImplementation(() => {
-      throw new Error("Cache counter unavailable");
+      throw new Error(sentinel);
     });
 
     const { GET } = await import("@/app/api/health/route");
@@ -98,7 +101,8 @@ describe("health endpoint crash resilience", () => {
 
     expect(response.status).toBe(503);
     expect(body.status).toBe("degraded");
-    expect(body.error).toBe("Cache counter unavailable");
+    expect(body.error).toBe("Health check failed; diagnostic details withheld.");
+    expect(JSON.stringify(body)).not.toContain(sentinel);
     expect(body.timestamp).toBeDefined();
   });
 });

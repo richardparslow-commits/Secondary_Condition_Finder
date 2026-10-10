@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { useEffect } from "react";
 
+import { createClientErrorEvent } from "@/lib/observability/client-error-event";
+
 export default function PresumptiveError({
   error,
   reset,
@@ -11,15 +13,7 @@ export default function PresumptiveError({
   reset: () => void;
 }) {
   useEffect(() => {
-    console.error(
-      JSON.stringify({
-        timestamp: new Date().toISOString(),
-        level: "error",
-        component: "presumptive-error-boundary",
-        message: error.message,
-        digest: error.digest ?? null,
-      }),
-    );
+    console.error(JSON.stringify(createClientErrorEvent("presumptive-error-boundary", error)));
   }, [error]);
 
   return (
@@ -40,7 +34,6 @@ export default function PresumptiveError({
           Go home
         </Link>
       </div>
-      {error.digest && <p className="mt-4 text-xs text-slate-500">Error digest: {error.digest}</p>}
     </div>
   );
 }
