@@ -368,7 +368,7 @@ Ordered by *what unblocks the most*. R-01 and R-04 are independent of each other
 | **R-01** | ~~Privacy policy: add deletion right, 45-day commitment, and a contact channel~~ **DONE, merged** (PR #531, `6caf98d8`) — new §8 "Your privacy rights and how to contact us" in the privacy policy, Terms §7 mirror, pinned by `tests/privacy-rights-contact.test.ts`; §9 of this report's operator/privacy-approver sign-off remains the human step | B-02 | Code + legal review | 0.5 day | **Yes** |
 | **R-02** | ~~Fix measured contrast failures via one design-token change~~ **DONE, merged** (PR #520, `4112e719`) — token exposed, 65 sites swept, contrast test added | H-01 | Code | 0.5 day | **Yes** (508 evidence depends on it) |
 | **R-03** | ~~Add scheduled dependency re-audit + dependency-review + SAST~~ **DONE, merged** (PR #533, `3209b1a8`) — weekly scheduled `audit:high` re-run with single-issue tracking, manifest-diff reviewer visibility on PRs, Semgrep `p/typescript` SAST gating ERROR findings (CodeQL/dependency-review-action plan-gated for this private repo — GitHub Advanced Security not purchased; see §5.3); first green scheduled run 38182406496 | M-05 | CI | 0.5 day | Recommended |
-| **R-04** | Assign owners and tracking issues to all manual/human gates | B-01, B-03, H-02 | Project management | 1 day | **Yes** |
+| **R-04** | ~~Assign owners and tracking issues to all manual/human gates~~ **DONE, merged** (2026-10-11) — all seven §5.4 gates now have a named owner, requested date/target-trigger, and explicit completion criterion in the `docs/external-manual-gates-status.md` ownership register; the three untracked gates are now issue-tracked (#537 log retention/review, #538 callback scrubbing/review, #539 privacy-language approver sign-off); #195 and #287 were reopened after premature 2026-10-11 closures because their gates' completion criteria are not met — see §5.4 status block | B-01, B-03, H-02 | Project management | 1 day | **Yes** |
 | **R-05** | ~~Add real-browser contrast + keyboard coverage to the existing WebDriver E2E job~~ **IMPLEMENTED (2026-10-11, awaiting merge)** — `e2e/a11y-contrast.mjs` runs enabled-contrast axe + keyboard visible-focus walk over 22 routes in CI; two real violations fixed on first run; pinned by `tests/a11y-contrast-gate.test.ts` | H-01, B-03 | CI | 1 day | No, but strongly recommended |
 | **R-06** | ~~Correct the scope narrative and `api-client.ts` positioning~~ **DONE, merged** (PR #535, `19fa90f8`) — exhaustive shipped-scope block verified against source, restricted Claims/Intake explicitly future-phase, Benefits Intake recorded unimplemented, GROUNDWORK STATUS header on `api-client.ts`, 9-test scope-agreement suite pinning doc↔code both ways | B-04 | Docs | 0.5 day | **Yes** |
 | **R-07** | ~~Bump disclaimer/notice text from 12px to 14px; reduce uppercase density~~ **DONE, merged** — 20 legal/safety notices plus the 24-site `.ui-kicker` class raised to 14px; `uppercase` cut 41 → 1 in components and `text-transform: uppercase` 1 → 0 in stylesheets; `tests/legal-notice-legibility.test.ts` (20 tests) added | M-01, M-02 | Code | 1 day | No |
@@ -513,6 +513,37 @@ Therefore the fix is **one line plus a sweep**, not a new colour decision:
 **Acceptance.** A high-severity prod advisory and a contrast regression each fail a required check, demonstrated with real failing runs; advisories surface on a schedule without a commit.
 
 ### 5.4 R-04 — Owners for every manual gate
+
+> **STATUS (2026-10-11): DONE.** Every gate in the table below now has a named owner, a requested
+> date or explicit target-trigger, and an explicit completion criterion, recorded in the
+> **ownership register** in `docs/external-manual-gates-status.md` (added under R-04). The three
+> previously untracked gates are now issue-tracked and assigned:
+>
+> 1. **H-02 gate A — hosting log retention and access-control review:**
+>    [#537](https://github.com/richardparslow-commits/Secondary_Condition_Finder/issues/537), assigned;
+>    completion = retention period, read access, and redaction terms reviewed and recorded for every
+>    production log sink with dates.
+> 2. **H-02 gate B — OAuth callback-URL log scrubbing review:**
+>    [#538](https://github.com/richardparslow-commits/Secondary_Condition_Finder/issues/538), assigned;
+>    completion = callback surfaces enumerated and codes/state confirmed scrubbed-or-not-retained
+>    across every sink; any finding remediated and retested.
+> 3. **Privacy-policy deletion-right language — operator/legal sign-off (i.e., the R-01 §9 human
+>    step this report left open):**
+>    [#539](https://github.com/richardparslow-commits/Secondary_Condition_Finder/issues/539), assigned;
+>    completion = approver's name/date/affiliation recorded; deletion right, 45-day commitment,
+>    and a verified live contact channel confirmed; phase3 package sign-off matrix updated.
+>
+> **Stale-state correction (escalation, per this section's acceptance rule).** #195 and #287 were
+> manually closed on 2026-10-11 (16:51 / 19:53 UTC) with closing updates that describe the events as
+> *repo-side* checkpoint merges — the workbook still has every result row NOT TESTED, and no VA
+> grant, credential, or connectivity evidence exists. Both were reopened the same day under R-04
+> with comments separating "repo-side work complete" from this gate's actual thresholds; ownership
+> and completion criteria for both are in the register. Their gates' status is unchanged from the
+> audit: #195 OPEN / HUMAN-ONLY, #287 OPEN / EXTERNALLY BLOCKED on VA production access.
+>
+> **What R-04 deliberately does not do:** issuing owner/date/criterion records is project
+> management, not gate evidence. The B-01, B-03, and H-02 close-out boxes remain governed by their
+> own evidence rules; this task only removes the "no owner, no date, untracked" failure mode.
 
 **Change.** Create or update tracking issues so each of the following has a named owner, a requested date, and an explicit completion criterion:
 
