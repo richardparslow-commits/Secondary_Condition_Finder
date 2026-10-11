@@ -1,7 +1,26 @@
 #!/usr/bin/env node
 /**
- * Register the two registerable batch-5 nexus rows into the CRG knowledge
- * base with registry + graph lockstep.
+ * HELD ARTIFACT — authoring record for the two batch-5 nexus rows.
+ *
+ * This script writes the authored corpus (data/knowledge-base/<host>.json) and
+ * the adjacency graph (data/knowledge-base/graph/<host>.json). It does NOT
+ * write the authoritative registries:
+ *
+ *   data/evidence/master-relationships.json
+ *   data/evidence/master-sources.json
+ *
+ * scripts/audit-master-registry.js enforces byte-exact lockstep between the
+ * authored suggestions and those registries, and
+ * scripts/audit-citation-verification.js enforces anti-regression ratchets on
+ * verified provenance. Running this script alone therefore writes one side of a
+ * two-sided contract and breaks the required `verify` gate — which is exactly
+ * what happened when these rows were promoted out of docs/crg-staging-2026-10-06
+ * (status STAGING_ONLY_NOT_PUBLISHABLE, publicationReady 0/65).
+ *
+ * The lockstep authorization gate below refuses to write anything until the
+ * registries, the staging holds and the semantic-rewrite authorization are all
+ * in place. See docs/crg-batch5-registration-deferral-2026-10-11.md for the
+ * exact remaining work.
  *
  * Rows:
  *   A. degenerative-disc-disease → radiculopathy   (DIRECT_CAUSATION, draft primary)
@@ -24,7 +43,7 @@
  * Usage: node scripts/register-crg-nexus-batch5.mjs
  */
 
-import { readFileSync, writeFileSync, readdirSync } from 'node:fs';
+import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 
 const ROOT = process.cwd();
@@ -92,8 +111,17 @@ const ROW_A = {
       verificationScope: 'clinical-evidence',
       authorityCategory: 'medical-scientific-evidence',
       sourceUrl: 'https://pubmed.ncbi.nlm.nih.gov/34402323/',
-      verified: false,
-      sourceCheckedOn: '2026-10-06',
+      // PRESERVED VERIFIED STATE — do not demote. PMID 34402323 is already
+      // qualified-human verified in data/evidence/master-sources.json
+      // (status active, verified true, decision approve-as-implemented on
+      // 2026-08-22). Writing verified:false here regresses verified provenance
+      // 404 -> 403 and trips the citation-debt ratchet ("verified provenance
+      // regressed"), and it invalidates the source's rawReferenceHashes
+      // snapshot. The reference object must stay byte-identical to the verified
+      // snapshot, so `note` deliberately keeps its original pre-verification
+      // wording even though the flag is now true.
+      verified: true,
+      sourceCheckedOn: '2026-08-22',
       sourceLocator: 'PMID 34402323; approved ME-13 source; guard: Require cervical degenerative disc pathology capable of nerve-root compromise and separately established anatomically concordant cervical radiculopathy. Do not infer radiculopathy from degenerative imaging, axial neck pain, nonspecific paresthesias, myelopathy, or peripheral entrapment neuropathy alone. Preserve peripheral neuropathy, plexopathy, entrapment neuropathy, spinal cord disease, nondegenerative structural lesions, and other causes as competing explanations.',
     },
     {
@@ -378,6 +406,161 @@ function validateSuggestion(suggestion, label) {
   return errors;
 }
 
+// ── Registry lockstep authorization gate ────────────────────────────────────
+// Refuses to write the authored corpus unless the authoritative registries, the
+// staging dispositions and the semantic-rewrite authorization are all already in
+// place. Writing only one side of the lockstep contract breaks the required
+// `verify` CI gate (audit-master-registry + citation-debt ratchets), and that
+// failure surfaces as ~135 failing test files rather than as a clear authoring
+// error.
+const REL_REGISTRY_PATH = join(ROOT, 'data', 'evidence', 'master-relationships.json');
+const SRC_REGISTRY_PATH = join(ROOT, 'data', 'evidence', 'master-sources.json');
+const STAGING_MANIFEST_PATH = join(ROOT, 'docs', 'crg-staging-2026-10-06', 'manifest.json');
+
+// audit-master-registry.js admits a live reference only against these statuses.
+const LIVE_SOURCE_STATUSES = new Set(['active', 'pending-verification']);
+
+/** Mirror of canonicalSourceId() in scripts/audit-master-registry.js. */
+function sourceIdForRef(ref) {
+  const fromUrl = String(ref?.sourceUrl || '').match(/pubmed\.ncbi\.nlm\.nih\.gov\/(\d{6,9})/i);
+  if (fromUrl) return `pmid-${fromUrl[1]}`;
+  const fromCitation = String(ref?.citation || '').match(/\bPMID[\s:#-]*(\d{6,9})\b/i);
+  if (fromCitation) return `pmid-${fromCitation[1]}`;
+  return null;
+}
+
+function assertRegistryLockstepAuthorization(rows) {
+  const blockers = [];
+
+  for (const p of [REL_REGISTRY_PATH, SRC_REGISTRY_PATH]) {
+    if (!existsSync(p)) blockers.push(`authoritative registry missing: ${p}`);
+  }
+  if (blockers.length) return blockers;
+
+  const rel = readJson(REL_REGISTRY_PATH);
+  const src = readJson(SRC_REGISTRY_PATH);
+  const relById = new Map((rel.relationships || []).map((r) => [r.relationshipId, r]));
+  const srcById = new Map((src.sources || []).map((s) => [s.sourceId, s]));
+
+  for (const { hostId, row, label } of rows) {
+    const rid = `rel-${hostId}-to-${row.conditionId}`;
+    const master = relById.get(rid);
+
+    if (!master) {
+      blockers.push(
+        `${label}: registry row ${rid} is ABSENT from data/evidence/master-relationships.json, ` +
+        `and this script does not author that file.`,
+      );
+    } else if (master.rationale !== row.rationale) {
+      const guard = master.publicationGuard || {};
+      if (guard.semanticRewriteAuthorized !== true) {
+        blockers.push(
+          `${label}: ${rid} would rewrite the approved rationale/classification, but the registry row records ` +
+          `publicationGuard.semanticRewriteAuthorized=${JSON.stringify(guard.semanticRewriteAuthorized ?? null)} ` +
+          `with boundarySource=${JSON.stringify(guard.boundarySource ?? null)} and ` +
+          `clinicalProposition.status=${JSON.stringify(master.clinicalProposition?.status ?? null)}. ` +
+          `A qualified-human semantic-rewrite authorization must be recorded in the registry first.`,
+        );
+      } else {
+        blockers.push(
+          `${label}: ${rid} rationale differs from the registry; the registry row must be updated in the same ` +
+          `synchronized change (rationale, clinicalProposition.text, evidenceGaps, ordered sourceIds, ` +
+          `sourceReferenceCount, publicationGuard and suggestionObjectHash).`,
+        );
+      }
+    }
+
+    for (const [i, ref] of (row.sourceReferences || []).entries()) {
+      const sid = sourceIdForRef(ref);
+      if (!sid) {
+        blockers.push(`${label}: sourceReferences[${i}] has no normalizable PMID/DOI source identity.`);
+        continue;
+      }
+      const source = srcById.get(sid);
+      if (!source) {
+        blockers.push(
+          `${label}: source entity ${sid} is ABSENT from data/evidence/master-sources.json. Under ME-29 ` +
+          `bibliographic data is never registered detached from a relationship, so the source must be authored in ` +
+          `the same synchronized change (with liveUses, liveUsageCount and rawReferenceHashes).`,
+        );
+        continue;
+      }
+      if (!LIVE_SOURCE_STATUSES.has(source.status)) {
+        blockers.push(
+          `${label}: ${sid} is status=${source.status} kind=${source.kind} ` +
+          `(supersededBy=${source.lineage?.supersededBySourceId ?? 'n/a'}). A verified:false reference must map to a ` +
+          `pending-verification clinical-evidence source, and no lineage/history-only source in the registry ` +
+          `currently carries a live use. Reactivating one is a source-status decision for a qualified human.`,
+        );
+        continue;
+      }
+      if (ref.verified === false && source.status === 'active' && source.verified === true) {
+        blockers.push(
+          `${label}: sourceReferences[${i}] (${sid}) would DEMOTE an already-verified citation ` +
+          `(decision=${source.verificationState?.qualifiedHumanCitationReviewDecision ?? 'n/a'} on ` +
+          `${source.verificationState?.qualifiedHumanCitationReviewDate ?? 'n/a'}). The citation-debt ratchet ` +
+          `forbids verified-provenance regression; preserve verified:true and the recorded sourceCheckedOn date.`,
+        );
+      }
+    }
+  }
+
+  if (existsSync(STAGING_MANIFEST_PATH)) {
+    const manifest = readJson(STAGING_MANIFEST_PATH);
+    if (manifest.status && manifest.status !== 'PUBLICATION_APPROVED') {
+      blockers.push(
+        `staging manifest docs/crg-staging-2026-10-06/manifest.json is status=${manifest.status} with ` +
+        `publicationReady=${manifest.counts?.publicationReady ?? '?'}/${manifest.counts?.proposals ?? '?'}. Its ` +
+        `holds must be cleared by a qualified human before any of it is promoted into the authored corpus.`,
+      );
+    }
+    for (const { hostId, row, label } of rows) {
+      const entries = (manifest.proposals || []).filter(
+        (p) => p.primaryId === hostId && p.secondaryId === row.conditionId,
+      );
+      if (!entries.length) {
+        blockers.push(
+          `${label}: no staged proposal for ${hostId} -> ${row.conditionId} exists in the manifest, so this row ` +
+          `has no recorded review disposition and is not part of the staged batch.`,
+        );
+        continue;
+      }
+      for (const entry of entries) {
+        for (const hold of entry.holds || []) {
+          blockers.push(
+            `${label}: unresolved staging hold ${hold.code} on ${hostId} -> ${row.conditionId}: ${hold.detail}`,
+          );
+        }
+        if (entry.stagedRank !== undefined && entry.stagedRank !== row.rank) {
+          blockers.push(
+            `${label}: rank ${row.rank} differs from the staged rank ${entry.stagedRank} for ` +
+            `${hostId} -> ${row.conditionId}.`,
+          );
+        }
+      }
+    }
+  }
+
+  return blockers;
+}
+
+function reportLockstepBlockers(blockers) {
+  console.error(`\nREGISTRY LOCKSTEP AUTHORIZATION GATE - REFUSED (${blockers.length} blocker(s))\n`);
+  console.error('Nothing was written. This script authors the corpus and the adjacency graph but not the');
+  console.error('authoritative registries, so running it alone breaks the required `verify` CI gate.\n');
+  blockers.forEach((b, i) => console.error(`  ${i + 1}. ${b}\n`));
+  console.error('To land these rows, author in ONE synchronized change:');
+  console.error('  - data/evidence/master-relationships.json: the row itself (direction, rank, rationale,');
+  console.error('    clinicalProposition.text === rationale, publicationGuard, evidenceGaps, ordered sourceIds,');
+  console.error('    sourceReferenceCount, suggestionObjectHash)');
+  console.error('  - data/evidence/master-sources.json: source entities with liveUses/liveUsageCount,');
+  console.error('    rawReferenceHashes = sha256 of the canonical reference snapshot, and the counts block');
+  console.error('  - the ratchets in scripts/audit-master-registry.js and scripts/audit-citation-verification.js');
+  console.error('  - the pinned counts in the affected tests');
+  console.error('  - then `npm run citations:queue` and `npm run authoring:tracker`');
+  console.error('\nSee docs/crg-batch5-registration-deferral-2026-10-11.md.\n');
+}
+
 // ── Main ──────────────────────────────────────────────────────────────────
 function main() {
   console.log('== CRG batch-5 nexus registration ==\n');
@@ -393,6 +576,17 @@ function main() {
     process.exit(1);
   }
   console.log('✓ All three rows pass pre-flight structural gate');
+
+  // ── 1b. Registry lockstep authorization gate (must clear before ANY write) ──
+  const lockstepBlockers = assertRegistryLockstepAuthorization([
+    { hostId: 'degenerative-disc-disease', row: ROW_A, label: 'RowA(degenerative-disc-disease→radiculopathy)' },
+    { hostId: 'traumatic-brain-injury-residuals', row: ROW_B, label: 'RowB(TBI-residuals→seizure-disorder)' },
+  ]);
+  if (lockstepBlockers.length) {
+    reportLockstepBlockers(lockstepBlockers);
+    process.exit(1);
+  }
+  console.log('✓ Registry lockstep authorization gate cleared');
 
   // ── 2. Load + confirm host files are draft ──────────────────────────────
   const hostA = readJson(join(KB, 'degenerative-disc-disease.json'));
