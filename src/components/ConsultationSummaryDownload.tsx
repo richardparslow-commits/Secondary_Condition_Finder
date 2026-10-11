@@ -29,7 +29,7 @@ export function ConsultationSummaryDownload({ recommendations }: ConsultationSum
       <button type="button" className="ui-button w-full" onClick={downloadSummary}>
         Download consultation summary
       </button>
-      <p className="mt-2 text-xs text-slate-600">
+      <p className="mt-2 text-sm text-slate-600">
         Creates a text file in this browser only. The export includes authored research recommendations,
         contributing primary conditions, evidence gaps, and citations. It does not include raw local-evidence
         excerpts or optional medication/treatment context.

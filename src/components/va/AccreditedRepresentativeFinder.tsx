@@ -131,7 +131,7 @@ export function AccreditedRepresentativeFinder({ initialView, returnTo }: Props)
         </div>
       )}
 
-      <p className="mt-4 text-xs text-muted">
+      <p className="mt-4 text-sm text-muted">
         Accredited representatives may help prepare and submit a claim at no upfront cost; representatives may only charge for services after VA issues the decision and approves a fee agreement (38 U.S.C. § 5904). Verify accreditation and contact details on VA&apos;s OGC directory before sharing personal information. This lookup does not determine eligibility and does not persist your ZIP.
       </p>
     </section>

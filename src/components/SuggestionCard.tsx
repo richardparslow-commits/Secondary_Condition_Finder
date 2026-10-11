@@ -35,7 +35,7 @@ export function SuggestionCard({
       </p>
 
       <section className="mt-4">
-        <h4 className="text-xs font-semibold uppercase tracking-wide text-muted">
+        <h4 className="text-xs font-semibold text-muted">
           How this could relate to your service-connected condition(s)
         </h4>
         <ul className="mt-2 space-y-2">
@@ -50,7 +50,7 @@ export function SuggestionCard({
 
       {recommendation.matchedIntakeContext.length > 0 && (
         <section className="mt-4">
-          <h4 className="text-xs font-semibold uppercase tracking-wide text-muted">
+          <h4 className="text-xs font-semibold text-muted">
             Context you provided
           </h4>
           <p className="mt-1 text-sm text-slate-700">
@@ -60,7 +60,7 @@ export function SuggestionCard({
       )}
 
       <section className="mt-4 rounded-md bg-slate-50 p-4">
-        <h4 className="text-xs font-semibold uppercase tracking-wide text-muted">
+        <h4 className="text-xs font-semibold text-muted">
           What a claim on this theory typically still needs
         </h4>
         <ul className="mt-2 list-disc space-y-1 pl-5 text-sm text-slate-700">
@@ -71,7 +71,7 @@ export function SuggestionCard({
       </section>
 
       <section className="mt-4">
-        <h4 className="text-xs font-semibold uppercase tracking-wide text-muted">
+        <h4 className="text-xs font-semibold text-muted">
           Starting points for verification
         </h4>
         <ul className="mt-2 space-y-1.5">

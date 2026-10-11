@@ -292,7 +292,7 @@ function PresumptiveResultsBody({
               </p>
 
               <section className="mt-4 rounded-md bg-slate-50 p-4">
-                <h3 className="text-xs font-semibold uppercase tracking-wide text-muted">
+                <h3 className="text-xs font-semibold text-muted">
                   Why this may apply to you
                 </h3>
                 <ul className="mt-2 space-y-2 text-sm text-slate-700">
@@ -319,7 +319,7 @@ function PresumptiveResultsBody({
               </section>
 
               <section className="mt-4">
-                <h3 className="text-xs font-semibold uppercase tracking-wide text-muted">
+                <h3 className="text-xs font-semibold text-muted">
                   Presumptive conditions ({conditions.length})
                 </h3>
                 {groupConditions(conditions).map(([group, items]) => (
@@ -342,7 +342,7 @@ function PresumptiveResultsBody({
               </section>
 
               <section className="mt-4 border-t border-slate-200 pt-4">
-                <h3 className="text-xs font-semibold uppercase tracking-wide text-muted">
+                <h3 className="text-xs font-semibold text-muted">
                   Sources
                 </h3>
                 <ul className="mt-2 space-y-1.5">
@@ -367,7 +367,7 @@ function PresumptiveResultsBody({
                     </li>
                   ))}
                 </ul>
-                <p className="mt-3 text-xs text-muted">
+                <p className="mt-3 text-sm text-muted">
                   List last checked against the VA source on{" "}
                   {formatDate(category.sourceCheckedOn)}. Presumptive lists
                   change; confirm at va.gov before relying on this.

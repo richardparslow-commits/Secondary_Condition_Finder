@@ -18,7 +18,7 @@ export default function ScenariosPage() {
         Repeatable synthetic walkthroughs that launch the same privacy-safe
         secondary workflow used by normal intake.
       </p>
-      <p className="mt-2 text-xs text-muted">
+      <p className="mt-2 text-sm text-muted">
         Demo content is synthetic. Launching validates the bundled scenario in
         the browser and writes it to the tab-scoped workflow record; no workflow
         state is submitted to the server or placed in the URL.

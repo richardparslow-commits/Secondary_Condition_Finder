@@ -33,6 +33,13 @@ node scripts/resolve-review-build-identity.mjs
 
 That script emits build identity and an HTTP reachability probe only. It emits no accessibility result, and an HTTP 200 is not an accessibility PASS.
 
+**Readiness update (2026-10-11).** Two automation-side blockers on *scheduling* the session have been cleared. Neither is accessibility evidence and neither moves #195 toward closure.
+
+1. **Ordering constraint satisfied.** `VA_Lighthouse_Readiness_Report.md` §7 requires the session to happen *after* remediation tasks R-02 and R-07 land, or its evidence is invalidated. R-02 merged in PR #520 (`4112e719`); R-07 merged in the follow-up type-scale and label-casing change, which raised 20 legal, privacy, safety, and verification notices from 12px to 14px plus the `.ui-kicker` eyebrow class used at 24 call sites, and removed all-caps styling from every multi-word label — components went from 41 `uppercase` occurrences to 1 (a header row whose six columns are single short words) and stylesheets from 1 `text-transform: uppercase` to 0. Both halves are locked by committed tests: `tests/design-token-contrast.test.ts` and `tests/legal-notice-legibility.test.ts`.
+2. **Workbook route matrix completed.** The matrix listed 14 route entries while the application ships 26 routes. Seven live production routes were absent — `/get-records`, `/scenarios`, `/runtime-readiness`, `/secondary/condition-caused-by`, `/secondary/condition-aggravation`, `/secondary/legal`, and `/presumptive/results` — so a tester following the workbook would have under-covered the surface #195 requires evidence for. The matrix now enumerates every shipped route, records `/results` in an explicit exclusion table as an HTTP 307 redirect shim rather than leaving it silently unlisted, and requires a route added later to be added to the matrix in the same change.
+
+**Still missing: R-05.** There is no automated real-browser contrast evidence. `e2e/` contains no axe reference, and jsdom computes no layout, so axe's `color-contrast` rule stays disabled in `tests/setup/accessibility.ts`. The manual contrast, 200%-zoom/reflow, and forced-colours checks therefore remain the project's only contrast evidence and cannot be inferred from a green automated suite.
+
 Issue #195 remains open. It may stay open until:
 
 1. every required manual item has recorded human evidence on an identified production build;

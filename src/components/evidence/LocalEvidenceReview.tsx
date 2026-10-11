@@ -73,7 +73,7 @@ export function LocalEvidenceReview() {
               <ul className="mt-3 space-y-4">
                 {nexus.map((excerpt, index) => (
                   <li key={`${excerpt.sourceName}-${excerpt.locator}-${index}`} className="rounded-xl border border-blue-200 bg-blue-50 p-4">
-                    <div className="flex flex-wrap items-center justify-between gap-2 text-xs font-semibold uppercase tracking-wide text-blue-900">
+                    <div className="flex flex-wrap items-center justify-between gap-2 text-xs font-semibold text-blue-900">
                       <span>{excerpt.category.replace(/-/g, " ")}</span>
                       <span>{excerpt.sourceName} · {excerpt.locator}</span>
                     </div>
@@ -92,7 +92,7 @@ export function LocalEvidenceReview() {
               <ul className="mt-3 space-y-3">
                 {supporting.map((excerpt, index) => (
                   <li key={`${excerpt.sourceName}-${excerpt.locator}-support-${index}`} className="rounded-xl border border-slate-200 p-4">
-                    <div className="text-xs font-semibold uppercase tracking-wide text-slate-600">{excerpt.category.replace(/-/g, " ")} · {excerpt.sourceName} · {excerpt.locator}</div>
+                    <div className="text-xs font-semibold text-slate-600">{excerpt.category.replace(/-/g, " ")} · {excerpt.sourceName} · {excerpt.locator}</div>
                     <blockquote className="mt-2 border-l-4 border-slate-300 pl-4 text-sm leading-relaxed">“{excerpt.quote}”</blockquote>
                   </li>
                 ))}

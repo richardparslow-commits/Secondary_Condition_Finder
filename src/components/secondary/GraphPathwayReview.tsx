@@ -171,7 +171,7 @@ function GraphPathwayMatchCard({ match }: { match: GraphPathwayMatchView }) {
           {match.terminalConditionName}
         </h4>
         <span
-          className={`inline-flex items-center rounded-full border px-3 py-1 text-xs font-semibold uppercase tracking-wide ${compositeBadge.className}`}
+          className={`inline-flex items-center rounded-full border px-3 py-1 text-xs font-semibold ${compositeBadge.className}`}
         >
           {compositeBadge.label}
         </span>
@@ -201,7 +201,7 @@ function GraphPathwayMatchCard({ match }: { match: GraphPathwayMatchView }) {
                   Hop {hop.stepIndex + 1}: {hop.sourceConditionName} → {hop.targetConditionName}
                 </p>
                 <span
-                  className={`inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold uppercase tracking-wide ${badge.className}`}
+                  className={`inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold ${badge.className}`}
                 >
                   {badge.label}
                 </span>
@@ -211,7 +211,7 @@ function GraphPathwayMatchCard({ match }: { match: GraphPathwayMatchView }) {
               </p>
               {hop.anchors.length > 0 && (
                 <div className="mt-2">
-                  <p className="text-xs font-semibold uppercase tracking-wide text-muted">
+                  <p className="text-xs font-semibold text-muted">
                     Citation anchors
                   </p>
                   <ul className="mt-1 space-y-1">

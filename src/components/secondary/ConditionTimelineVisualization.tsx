@@ -246,7 +246,7 @@ export function ConditionTimelineVisualization({
           and enter an approximate <em>onset year</em> and/or <em>formal diagnosis year</em> for
           each diagnosed condition. Missing dates produce no chronology conclusion.
         </div>
-        <p className="mt-3 text-xs text-muted">
+        <p className="mt-3 text-sm text-muted">
           This visualization is a research aid. It does not determine nexus, diagnose conditions,
           or replace verification against current VA guidance and your medical records.
         </p>

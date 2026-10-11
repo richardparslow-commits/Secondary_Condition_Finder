@@ -257,7 +257,7 @@ export function PathwayRecordChecklist({ results, summaryRecommendations }: Prop
             Download checklist with consultation summary
           </button>
         )}
-        <p className="text-xs text-slate-600">
+        <p className="text-sm text-slate-600">
           Creates a text file in this browser only. The export mirrors this checklist and — when combined — the
           consultation summary, without raw excerpts or optional medication/treatment context.
         </p>
@@ -267,13 +267,13 @@ export function PathwayRecordChecklist({ results, summaryRecommendations }: Prop
         <button type="button" className="ui-button-secondary" onClick={clearAll} disabled={checkedCount === 0}>
           Clear checkmarks
         </button>
-        <p className="text-xs text-slate-600">
+        <p className="text-sm text-slate-600">
           Unchecks every item in this browser tab. Finish Review and Start a new review also clear these selections
           automatically.
         </p>
       </div>
 
-      <p className="mt-3 text-xs text-slate-600">
+      <p className="mt-3 text-sm text-slate-600">
         Checkmarks are kept only in session storage for the current browser tab, so they follow you between Steps 5 and 6;
         they are cleared by Finish Review or Start a new review and are never sent to the server. Confirm current VA
         guidance with a qualified provider or accredited representative.

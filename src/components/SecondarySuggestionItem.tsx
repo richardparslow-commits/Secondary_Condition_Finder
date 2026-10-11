@@ -57,7 +57,7 @@ export function SecondarySuggestionItem({ recommendation, primaryId, vaReference
     <article className="rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
       <header className="flex items-start justify-between gap-3">
         <div>
-          <p className="text-xs uppercase tracking-wide text-muted">Possible secondary condition</p>
+          <p className="text-xs text-muted">Possible secondary condition</p>
           <h3 className="text-base font-semibold text-slate-900">{recommendation.condition}</h3>
         </div>
         <span
@@ -88,7 +88,7 @@ export function SecondarySuggestionItem({ recommendation, primaryId, vaReference
       )}
 
       <section className="mt-3 rounded-md border border-blue-200 bg-blue-50 p-3">
-        <h4 className="text-xs font-semibold uppercase tracking-wide text-blue-900">
+        <h4 className="text-xs font-semibold text-blue-900">
           VA reference information
         </h4>
         {!vaReference.live ? (
@@ -127,7 +127,7 @@ export function SecondarySuggestionItem({ recommendation, primaryId, vaReference
 
       {pathwayIntelligence && (
         <section className="mt-3 rounded-md border border-slate-200 bg-slate-50 p-3">
-          <h4 className="text-xs font-semibold uppercase tracking-wide text-slate-600">
+          <h4 className="text-xs font-semibold text-slate-600">
             Pathway to evaluate
           </h4>
           <div className="mt-2 flex flex-wrap gap-2">
@@ -146,7 +146,7 @@ export function SecondarySuggestionItem({ recommendation, primaryId, vaReference
 
           {pathwayIntelligence.causalChain && (
             <div className="mt-3">
-              <h5 className="text-xs font-semibold uppercase tracking-wide text-muted">
+              <h5 className="text-xs font-semibold text-muted">
                 Authored causal chain to review
               </h5>
               <p className="mt-1 text-sm leading-relaxed text-slate-700">
@@ -185,7 +185,7 @@ export function SecondarySuggestionItem({ recommendation, primaryId, vaReference
 
       {recommendation.matchedIntakeContext.length > 0 && (
         <section className="mt-3 rounded-md border border-blue-200 bg-blue-50 p-3">
-          <h4 className="text-xs font-semibold uppercase tracking-wide text-blue-900">
+          <h4 className="text-xs font-semibold text-blue-900">
             Reported context appearing in this authored pathway
           </h4>
           <div className="mt-2 flex flex-wrap gap-2">
@@ -202,7 +202,7 @@ export function SecondarySuggestionItem({ recommendation, primaryId, vaReference
       )}
 
       <section className="mt-3 rounded-md bg-slate-50 p-3">
-        <h4 className="text-xs font-semibold uppercase tracking-wide text-muted">
+        <h4 className="text-xs font-semibold text-muted">
           Evidence that may help
         </h4>
         <ul className="mt-1.5 list-disc space-y-1 pl-5 text-sm text-slate-700">
@@ -214,7 +214,7 @@ export function SecondarySuggestionItem({ recommendation, primaryId, vaReference
 
       {recommendation.sourceReferences.length > 0 && (
         <section className="mt-3">
-          <h4 className="text-xs font-semibold uppercase tracking-wide text-muted">
+          <h4 className="text-xs font-semibold text-muted">
             Mapped sources
           </h4>
           <ul className="mt-1.5 space-y-1.5">

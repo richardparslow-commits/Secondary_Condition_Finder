@@ -203,7 +203,7 @@ export function VaGovRecordWalkthrough({ exportFilename = "va-gov-records-downlo
         <button type="button" className="ui-button-secondary" onClick={downloadWalkthrough}>
           Download walkthrough as text
         </button>
-        <p className="text-xs text-slate-600">
+        <p className="text-sm text-slate-600">
           Creates a text file in this browser only — the same steps and links, for printing or keeping.
         </p>
       </div>
