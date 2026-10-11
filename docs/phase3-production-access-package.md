@@ -4,7 +4,15 @@
 
 **Draft for VA production-access review. Do not submit yet.**
 
-This package requests public Forms and Benefits Reference Data only. The separately gated `/va-account` experiment is sandbox-only, veteran-self-service, and read-only (ratings summary and existing claim status); it is not part of this production request. See [sandbox account setup and P0 gates](va-account-sandbox.md). No account production endpoints, Claims submission, Intake upload, or representative authorization are enabled.
+This package requests public Forms and Benefits Reference Data only. The separately gated `/va-account` experiment is sandbox-only, veteran-self-service, and read-only; it is not part of this production request. See [sandbox account setup and P0 gates](va-account-sandbox.md). No account production endpoints, Claims submission, Intake upload, or representative authorization are enabled.
+
+**Shipped integration scope (exhaustive, verified against source):**
+
+- **VA Forms API** (`va_forms`): public form metadata for the Forms Finder.
+- **Benefits Reference Data API** (`benefits-reference-data`, read-only): public disabilities and service-branch reference lists.
+- **VA Account (sandbox experiment only, OAuth 2.0 Authorization Code Grant with PKCE):** exactly two separately registered connections, one service per connection — `disability_rating_summary.read` (rating summary) and `claim.read` (existing claim status). The authorization request assembles only `openid offline_access ${service scope}` (`src/lib/va/account/oauth.ts`); there is no `profile`, `email`, or `benefits.claims.read` scope anywhere in the codebase, and the token validator hard-refuses any access token carrying a `.write` scope or missing `openid` as least-privilege evidence.
+
+**Future phase — not requested in this submission:** the restricted Claims/Intake HTTP client (`src/lib/va/api-client.ts`) is pre-built groundwork with no production caller (its only importers are its own test suites). It is retained deliberately for a separately designed, separately requested future phase; it is not a delivered integration and is not part of this request.
 
 Repository implementation is current for the selected public/reference API scope, but submission remains blocked by external/final gates:
 
@@ -102,6 +110,11 @@ VA reference data is deliberately separated from medical/evidence decision logic
 ## APIs deliberately not requested
 
 The initial request excludes Benefits Intake, Benefits Claims, Benefits Documents, Veteran health APIs, and other authenticated Veteran-specific APIs. They are not required to demonstrate the first production use case and would add unnecessary authorization/privacy obligations.
+
+Precision about two exclusions this package is often asked about:
+
+- **Benefits Claims (restricted write path).** Excluded and explicitly labelled *future phase — not requested in this submission*. The requested account sandbox `claim.read` scope is a different, already-wired, read-only path authorized against the VA-authorized sandbox identity flow only; describing it accurately is what the restricted label above exists to protect, not to erase it.
+- **Benefits Intake (document upload).** Excluded and not implemented anywhere in the codebase (grep for intake-document upload identifiers returns no application code). There is deliberately nothing to relabel here: no upload endpoint, no signed-location handling, no upload API machinery exists in this submission.
 
 ## Runtime configuration and credential handling
 

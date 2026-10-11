@@ -4,6 +4,18 @@ import { z } from "zod";
 
 import { parseRetryAfterMs } from "./circuit-breaker";
 
+/*
+ * GROUNDWORK STATUS (R-06 / report finding B-04): pre-built groundwork with
+ * NO production caller. The only importers of this module are its own test
+ * suites (`tests/va-restricted-api-client.test.ts`,
+ * `tests/phi-logging-boundary.test.ts`), which is deliberate: this submission
+ * does NOT request restricted Claims/Intake scope, and this file implements a
+ * restricted-API HTTP client for a separately designed, separately requested
+ * future phase. It is not a delivered integration. A reviewer who greps for
+ * it should read this header instead of inferring a broken integration from
+ * the absence of application callers.
+ */
+
 /**
  * Authenticated HTTP client for the restricted VA Lighthouse APIs
  * (Benefits Claims, Intake) using the Authorization Code Grant with PKCE.
