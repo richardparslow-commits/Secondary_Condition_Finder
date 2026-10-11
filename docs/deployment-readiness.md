@@ -78,7 +78,9 @@ Do **not** configure/enable these as an active production path until VA grants p
 - `VA_ACCREDITED_REP_PRODUCTION_API_KEY` (Phase 3.1 locator; optional, additionally gated by `VA_ACCREDITED_REP_ENABLED=true`)
 - optional HTTPS overrides `VA_FORMS_PRODUCTION_BASE_URL`, `VA_BENEFITS_REFERENCE_PRODUCTION_BASE_URL`, `VA_ACCREDITED_REP_PRODUCTION_BASE_URL`
 
-Merely setting `VA_API_ENV=production` must not activate production traffic. `VA_API_ENABLED=true` and the relevant service credential are also required. Forms requests use only the Forms credential; Benefits Reference Data requests use only the Benefits Reference Data credential.
+Merely setting `VA_API_ENV=production` must not activate production traffic. Production resolution also requires `VA_API_ENABLED=true`, `VA_PRODUCTION_ACCESS_GRANTED=true` and both service-specific production credentials. Forms requests use only the Forms credential; Benefits Reference Data requests use only the Benefits Reference Data credential. Distributed requests additionally require `VA_SHARED_CONSUMER_BUDGET=true` and successful shared circuit/budget admission; configuring a shared cache alone is insufficient.
+
+Before application activation, use the manual [controlled production check](va-api-runtime-configuration.md#controlled-production-connectivity-check-issue-287) with application VA access disabled. It requires a real VA grant, checks Forms/disabilities/service branches and emits bounded sanitized evidence. A successful check does not activate the app or close #287; exact-build deployed-runtime, source-status and coordination verification remain required.
 
 ## Objective workflow-session runtime verification
 

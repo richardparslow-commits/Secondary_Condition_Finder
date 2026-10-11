@@ -1,0 +1,50 @@
+name: VA Production Reference Check
+
+on:
+  workflow_dispatch:
+    inputs:
+      confirm_va_grant:
+        description: 'VA has granted Forms and Benefits Reference Data production access and authorized this check'
+        type: boolean
+        required: true
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: va-production-reference-check
+  cancel-in-progress: false
+
+jobs:
+  connectivity:
+    if: github.ref == 'refs/heads/main' && inputs.confirm_va_grant == true
+    environment: va-production-reference
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Controlled connectivity check (not application activation)
+        env:
+          VA_PRODUCTION_ACCESS_GRANTED: ${{ vars.VA_PRODUCTION_ACCESS_GRANTED }}
+          VA_API_ENABLED: 'false'
+          VA_SANDBOX_ENABLED: 'false'
+          VA_FORMS_PRODUCTION_API_KEY: ${{ secrets.VA_FORMS_PRODUCTION_API_KEY }}
+          VA_BENEFITS_REFERENCE_PRODUCTION_API_KEY: ${{ secrets.VA_BENEFITS_REFERENCE_PRODUCTION_API_KEY }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          {
+            echo '# Controlled VA production connectivity — not application activation'
+            echo "Commit: $GITHUB_SHA"
+            echo "Run: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+            echo 'No API key, raw payload, or upstream headers are retained. This check does not close #287.'
+          } >> "$GITHUB_STEP_SUMMARY"
+          node scripts/verify-va-production-reference.mts --confirm-va-production-access | tee -a "$GITHUB_STEP_SUMMARY"

@@ -13,13 +13,4 @@ import "server-only";
  * va.gov (for example a VSO's own website), so host approval is the VA
  * payload's responsibility, not a rewrite here.
  */
-export const TRUSTED_LINK_REQUIREMENT = "must be a credential-free https URL";
-
-export function isTrustedHttpsUrl(raw: string): boolean {
-  try {
-    const url = new URL(raw);
-    return url.protocol === "https:" && !url.username && !url.password;
-  } catch {
-    return false;
-  }
-}
+export { isTrustedHttpsUrl, TRUSTED_LINK_REQUIREMENT } from "./public-reference-schemas.mjs";

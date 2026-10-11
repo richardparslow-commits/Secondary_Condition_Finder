@@ -121,11 +121,19 @@ export function resolveVaReferenceMode(
   env: RuntimeEnvironment = process.env,
 ): VaReferenceModeResolution {
   const environment = resolveEnvironment(env);
+  const rawEnvironment = env.VA_API_ENV?.trim().toLowerCase();
+  if (rawEnvironment && rawEnvironment !== "sandbox" && rawEnvironment !== "production") {
+    return {
+      mode: "disabled", environment, enabled: false,
+      reason: "VA_API_ENV must be sandbox or production. Unrecognised selections fail closed.",
+    };
+  }
 
   // Backward-compatible Phase 2 flag: VA_SANDBOX_ENABLED implies sandbox intent.
   const enabledFlag =
-    readFlag(env, "VA_API_ENABLED") ??
-    (environment === "sandbox" ? readFlag(env, "VA_SANDBOX_ENABLED") : undefined);
+    env.VA_API_ENABLED === undefined
+      ? (environment === "sandbox" ? readFlag(env, "VA_SANDBOX_ENABLED") : undefined)
+      : readFlag(env, "VA_API_ENABLED");
 
   if (enabledFlag !== true) {
     return {
