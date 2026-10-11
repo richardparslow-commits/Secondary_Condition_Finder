@@ -370,7 +370,7 @@ Ordered by *what unblocks the most*. R-01 and R-04 are independent of each other
 | **R-03** | ~~Add scheduled dependency re-audit + dependency-review + SAST~~ **DONE, merged** (PR #533, `3209b1a8`) — weekly scheduled `audit:high` re-run with single-issue tracking, manifest-diff reviewer visibility on PRs, Semgrep `p/typescript` SAST gating ERROR findings (CodeQL/dependency-review-action plan-gated for this private repo — GitHub Advanced Security not purchased; see §5.3); first green scheduled run 38182406496 | M-05 | CI | 0.5 day | Recommended |
 | **R-04** | Assign owners and tracking issues to all manual/human gates | B-01, B-03, H-02 | Project management | 1 day | **Yes** |
 | **R-05** | ~~Add real-browser contrast + keyboard coverage to the existing WebDriver E2E job~~ **IMPLEMENTED (2026-10-11, awaiting merge)** — `e2e/a11y-contrast.mjs` runs enabled-contrast axe + keyboard visible-focus walk over 22 routes in CI; two real violations fixed on first run; pinned by `tests/a11y-contrast-gate.test.ts` | H-01, B-03 | CI | 1 day | No, but strongly recommended |
-| **R-06** | Correct the scope narrative and `api-client.ts` positioning | B-04 | Docs | 0.5 day | **Yes** |
+| **R-06** | ~~Correct the scope narrative and `api-client.ts` positioning~~ **DONE, merged** (PR #535, `19fa90f8`) — exhaustive shipped-scope block verified against source, restricted Claims/Intake explicitly future-phase, Benefits Intake recorded unimplemented, GROUNDWORK STATUS header on `api-client.ts`, 9-test scope-agreement suite pinning doc↔code both ways | B-04 | Docs | 0.5 day | **Yes** |
 | **R-07** | ~~Bump disclaimer/notice text from 12px to 14px; reduce uppercase density~~ **DONE, merged** — 20 legal/safety notices plus the 24-site `.ui-kicker` class raised to 14px; `uppercase` cut 41 → 1 in components and `text-transform: uppercase` 1 → 0 in stylesheets; `tests/legal-notice-legibility.test.ts` (20 tests) added | M-01, M-02 | Code | 1 day | No |
 | **R-08** | Re-verify prior audit A01–A10 against current `main` | M-04 | Review | 1–2 days | Recommended |
 
@@ -597,6 +597,25 @@ Doing so also converts part of the `ConditionTimelineVisualization` manual-evide
 **Acceptance.** Automated real-browser contrast evidence exists for all key routes and is reproducible from a pinned commit.
 
 ### 5.6 R-06 — Scope narrative and `api-client.ts` positioning
+
+> **STATUS (2026-10-11): IMPLEMENTED and MERGED** — PR #535, merge commit `19fa90f8` on
+> `main`. `docs/phase3-production-access-package.md` now carries the exhaustive
+> shipped-scope block (VA Forms `va_forms`, Benefits Reference Data read-only, and
+> the sandbox-only VA Account naming exactly `disability_rating_summary.read` and
+> `claim.read` — one service per connection, the `openid offline_access ${scope}`
+> assembly quoted from `oauth.ts`, no `profile`/`email`/`benefits.claims.read`, the
+> `.write`/missing-`openid` hard refusal cited as least-privilege evidence);
+> restricted Claims/Intake is explicitly labelled *future phase — not requested in
+> this submission* while the wired sandbox `claim.read` stays described accurately;
+> Benefits Intake is recorded as unimplemented in the codebase rather than merely
+> unrequested. `src/lib/va/api-client.ts` opens with the R-06 GROUNDWORK STATUS
+> header (no production caller; importers are its own test suites).
+> `tests/va-submission-scope-agreement.test.ts` (9 tests) pins the package↔code
+> scope contract in both directions, including the exact assembly string and the
+> header, so the narrative cannot drift from shipped integrations. Validation:
+> doc-lint 153/153, lint 0 errors, typecheck clean; the §5.6 claims/intake sweep
+> now returns only product-denial sentences and the unrelated recommendation-
+> engine term. Full CI green including the new R-03 Semgrep SAST gate.
 
 **Change.** Three documentation edits:
 
