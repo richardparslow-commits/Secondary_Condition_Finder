@@ -1,0 +1,39 @@
+name: Dependency Review
+
+# R-03.2 (VA Lighthouse readiness report §5.3, gap M-05): `verify` already gates
+# high/critical advisories across the whole production tree, but a reviewer
+# cannot see WHICH dependencies a change adds or bumps from an audit pass/fail
+# alone. actions/dependency-review-action diff the manifests on every PR and
+# post the resolved change set, so a reviewer sees scoped new transitive
+# dependencies and license/severity signal before approving, without another
+# enforcement semantics beside the existing gate.
+#
+# Read-only informational job: it fails only on the action's own
+# deny-allow edge (a high/critical advisory WITH a fix introduced by the PR),
+# which turns "you are about to ship a fixable advisory" into a review comment.
+# The advisory gate itself remains `audit:high` — a second hard gate here would
+# create two sources of truth, which §5.3 explicitly forbids.
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  dependency-review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+      - name: Review dependency manifest changes on this PR
+        uses: actions/dependency-review-action@05fe4576374b728f0c523d6a13d64c25081e0803 # v4.8.3
+        with:
+          # Informational until a reviewer asks otherwise: report every changed
+          # dependency, and refuse only a PR that itself adds a high/critical
+          # advisory with a known patched version available.
+          fail-on-severity: high
+          # Default behavior; pinned here so a future action upgrade cannot
+          # silently start blocking on missing scopes or license changes.
+          allow-licenses: MIT, Apache-2.0, BSD-2-Clause, BSD-3-Clause, ISC, CC0-1.0, Unlicense, MPL-2.0, 0BSD

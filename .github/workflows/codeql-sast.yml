@@ -1,0 +1,48 @@
+# R-03.3 (VA Lighthouse readiness report §5.3, gap M-05): SAST is absent.
+# Standard expectation in a federal security review. CodeQL scans the
+# JavaScript/TypeScript source on every PR touching it, on a weekly schedule,
+# and on demand, so a queryable code-level alert lands as a code-scanning
+# review comment rather than a shell warning.
+#
+# Scope discipline: scans src/ (the application source the report's findings
+# describe), not the tmp/ scratch dirs or generated JSON datasets (data/),
+# which are content and not code. Scripts (scripts/) are scanned with the
+# security-extended query suite so shell/node foot-guns in CI helpers are
+# also visible without being treated as application code.
+
+name: CodeQL
+
+on:
+  pull_request:
+    paths:
+      - "src/**"
+      - "scripts/**"
+      - ".github/workflows/codeql-sast.yml"
+  schedule:
+    - cron: "33 3 * * 3" # Wednesday 03:33 UTC, offset from other scheduled workflows
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  security-events: write
+
+jobs:
+  analyze:
+    name: Analyze (javascript-typescript)
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5
+        with:
+          node-version: 22
+          cache: npm
+      - name: Install dependencies (CodeQL extracts through the real build)
+        run: npm ci
+      - uses: github/codeql-action/init@9f759ee644a3e7c15c1390abf49868036c00067b # v3
+        with:
+          languages: javascript-typescript
+          queries: security-extended
+      - uses: github/codeql-action/analyze@9f759ee644a3e7c15c1390abf49868036c00067b # v3
+        with:
+          category: "/language:javascript-typescript"
