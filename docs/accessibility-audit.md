@@ -61,7 +61,7 @@ Two further suites guard properties jsdom cannot compute, by scanning source ana
 - `tests/design-token-contrast.test.ts` (8 tests) reads the real hex values out of `src/app/globals.css`, asserts the WCAG relative-luminance ratio for every text/background pair the application can produce, and scans `src/` so the off-token `text-slate-500` class that caused finding H-01 cannot be reintroduced. This is remediation task **R-02**.
 - `tests/legal-notice-legibility.test.ts` (20 tests) enforces remediation task **R-07**: no legal, privacy, safety, or verification notice may render at 12px; `uppercase` may appear only on the one allowlisted table-header row whose columns are single short words; no stylesheet may declare `text-transform: uppercase`; and the `.ui-kicker` eyebrow class must stay at ≥ 14px with no wide letter-spacing. It scans components **and** stylesheets, because a CSS class reaches the rendered page exactly as a Tailwind utility does.
 
-Both run in the normal suite and therefore gate inside the existing CI `verify` job with no additional wiring. Neither observes a rendered pixel — they are source-level contracts, not measurements, and they are **not** real-browser contrast evidence (remediation task **R-05**, still not implemented).
+Both run in the normal suite and therefore gate inside the existing CI `verify` job with no additional wiring. Neither observes a rendered pixel — they are source-level contracts, not measurements. The rendered pixel **is** now measured by remediation task **R-05** (`e2e/a11y-contrast.mjs`, implemented 2026-10-11): a separate real-browser spec runs axe's `color-contrast` rule **enabled** in live headless Chrome across 22 shipped routes, plus a Tab-walk that asserts visible focus on every focused element. It gates in the same CI job (`a11y_contrast` step, re-failed by the aggregator) and uploads per-route axe reports as artifacts. The gate was proven by seeding a sub-AA token (fails) and restoring it (passes).
 
 These assertions are regression evidence only. They do not test every applicable accessibility requirement and do not replace human browser/assistive-technology testing.
 
@@ -108,13 +108,15 @@ A route returning HTTP 200 is only reachability evidence. It does not establish 
 | Accessible validation transitions | Real-browser/source regression coverage | Partial positive evidence | Must still be confirmed with keyboard and assistive technology |
 | Accessible names / labels for interactive workflow controls | Route/component regression tests where implemented | Partial | Must be reviewed across deployed flows |
 | Legal/safety notice text size (≥14px) and label casing | Analytical source scan (`tests/legal-notice-legibility.test.ts`, R-07) | Verified structurally | Positive low-vision evidence; rendered size at 200% zoom still needs human review |
-| Design-token contrast ratios | Analytical source scan (`tests/design-token-contrast.test.ts`, R-02) | Verified structurally | Positive evidence for token pairs only; **not** a substitute for real-browser contrast (R-05 still missing) |
+| Design-token contrast ratios | Analytical source scan (`tests/design-token-contrast.test.ts`, R-02) | Verified structurally | Positive evidence for token pairs only |
+| **Real-browser color contrast** | Axe `color-contrast` (enabled) in live headless Chrome over 22 shipped routes, in CI (`e2e/a11y-contrast.mjs`, R-05, 2026-10-11) | **Verified (automated)** | Positive evidence on the dev-rendered build per CI run; specific *rendered states behind user input* on the deployed app still benefit from the manual workbook pass |
+| **Keyboard focus visibility (automated walk)** | Tab-walk asserting visible client rects on every focused element (same spec, R-05) | **Verified (automated)** | Focus *order* and trap behavior remain manual; see rows below |
 | Keyboard-only traversal and focus order | Human deployed-app test | **Pending** | Blocking manual evidence |
 | Keyboard traps / disclosure/file-input behavior | Human deployed-app test | **Pending** | Blocking manual evidence |
 | Screen-reader announcements and reading order | NVDA and VoiceOver human test | **Pending** | Blocking manual evidence |
 | Error identification and instructions | Human deployed workflow test | **Pending** | Blocking manual evidence |
 | Zoom/reflow at 200% | Human browser test | **Pending** | Blocking manual evidence |
-| Color contrast across rendered states | Contrast tooling/manual review | **Pending** | Blocking manual evidence |
+| Color contrast across rendered states | Automated real-browser axe pass (R-05) + manual review of input-dependent states | Automated base verified; rendered-state edge cases pending | Automated pass covers static render of 22 routes; the workbook's manual check adds states that only appear during user interaction |
 | Windows high-contrast / forced-colors behavior | Human OS/browser test | **Pending** | Blocking manual evidence |
 | Complete Section 508 / WCAG 2.0 A+AA conformance determination | Evidence review | **Pending** | Do not answer “Yes” until supportable |
 

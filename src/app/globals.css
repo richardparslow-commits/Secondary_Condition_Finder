@@ -88,7 +88,7 @@ button, input, select, textarea { font: inherit; }
 .ui-callout, .app-shell [role="note"] { border: 1px solid var(--border-strong) !important; border-radius: 14px !important; background: var(--primary-soft) !important; color: var(--foreground) !important; padding: 16px; }
 
 .ui-button, .ui-button-secondary,
-.app-shell a[class*="bg-red-"], .app-shell a[class*="bg-slate-9"], .app-shell a[class*="bg-green-"],
+.app-shell a[class*="bg-red-"], .app-shell a[class*="bg-slate-9"], .app-shell a[class*="bg-green-"], .app-shell a[class*="bg-blue-6"],
 .app-shell button[class*="bg-slate-9"], .app-shell button[class*="bg-green-"], .app-shell button[class*="bg-blue-6"] {
   display: inline-flex; min-height: 46px; align-items: center; justify-content: center; gap: 10px; border-radius: 10px !important;
   padding: 11px 18px; border: 2px solid var(--primary) !important; background: var(--primary) !important; color: #fff !important;
@@ -109,7 +109,13 @@ button, input, select, textarea { font: inherit; }
 /* Normalize legacy high-saturation page styling into the approved palette without touching page logic. */
 .app-shell [class*="bg-orange-"], .app-shell [class*="bg-black"], .app-shell [class*="bg-gray-8"], .app-shell [class*="bg-gray-9"], .app-shell footer[class*="bg-red-"] { background: var(--surface) !important; color: var(--foreground) !important; border-color: var(--border) !important; }
 .app-shell [class*="text-white"]:not(.ui-button):not([class*="bg-blue-"]):not([class*="bg-red-"]):not([class*="bg-green-"]):not([class*="bg-slate-9"]) { color: var(--foreground) !important; }
-.app-shell [class*="bg-red-"] { background: var(--primary) !important; }
+.app-shell [class*="bg-red-"]:not([class*="bg-red-50"]):not([class*="bg-red-100"]):not([class*="bg-red-200"]) { background: var(--primary) !important; }
+/* R-05: the rule above normalizes legacy high-saturation red page styling to
+   the approved primary, but it must not swallow soft red *callout* backgrounds
+   (bg-red-50/100/200). Those carry dark-red legal/safety text whose contrast is
+   validated against the red background — repainting them blue leaves dark red
+   text on primary blue at ~1.5:1 (the exact axe violation the real-browser
+   contrast gate now blocks on). */
 .app-shell [class*="hover:bg-red-"]:hover, .app-shell [class*="hover:bg-slate-7"]:hover { background: var(--primary-hover) !important; }
 .app-shell ul[class*="border"], .app-shell ol[class*="border"] { border-color: var(--border) !important; border-radius: 14px !important; box-shadow: 0 6px 18px rgba(15, 23, 42, 0.05); }
 .app-shell label:hover { background: var(--primary-soft); }
