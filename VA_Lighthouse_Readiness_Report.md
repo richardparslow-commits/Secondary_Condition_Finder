@@ -268,13 +268,13 @@ Neither item appears in `docs/external-manual-gates-status.md` alongside #189/#1
 
 > **STATUS (2026-10-11): uppercase half REMEDIATED and MERGED (task R-07); the raw `text-xs` count is intentionally left open.**
 >
-> **Uppercase — closed.** All 37 multi-word eyebrow labels, sentence-like headings, and nexus-classification badges (including "Association only — chain broken" and the composite `{category} · {sourceName} · {locator}` evidence labels) were returned to sentence-case across 13 files, removing the `tracking-wide`/`tracking-wider` letter-spacing that existed only to keep all-caps legible. `uppercase` now survives in exactly **3** places, all genuinely short single-word table-header rows that R-07 explicitly preserves: `PathwayEvidenceTable.tsx:176`, `PathwayEvidenceMapper.tsx:203`, `ConditionComparisonTool.tsx:114`. The current count is **3**, not 41.
+> **Uppercase — closed.** `uppercase` in `src/**/*.tsx` fell from **41 occurrences to 1**. Multi-word eyebrow labels, sentence-like headings, nexus-classification badges (including "Association only — chain broken" and the composite `{category} · {sourceName} · {locator}` evidence labels), and two table-header rows whose `<th>` labels are phrases rather than single words — "Evidence excerpt (exact quote)" in `PathwayEvidenceTable.tsx` and "Supporting evidence (exact excerpt)" in `PathwayEvidenceMapper.tsx` — were all returned to sentence-case, removing the `tracking-wide`/`tracking-wider` letter-spacing that existed only to keep all-caps legible. The single survivor is the `ConditionComparisonTool.tsx:114` header row, whose columns are one short word each (Condition, Nexus, Consensus, Citations, Gaps, Primaries). Separately, the `.ui-kicker` class in `globals.css` applied `text-transform: uppercase` with `letter-spacing: 0.08em` at **24** call sites; that declaration is removed, so stylesheets now contain **zero** `text-transform: uppercase`. A component-only sweep would have missed it and reported the cleanup complete while the rendered page still had all-caps small text.
 >
-> **`text-xs` count — deliberately open.** 286 → **261**. Only the 20 elements carrying legal, privacy, safety, or verification meaning were raised to 14px (see M-02). Blanket-upscaling every remaining decorative label would be a visual redesign rather than an accessibility fix, so it was not attempted.
+> **`text-xs` count — deliberately open.** 286 → **266** occurrences. Only the 20 elements carrying legal, privacy, safety, or verification meaning were raised to 14px (see M-02), together with `.ui-kicker` itself (0.78rem → 0.875rem). Blanket-upscaling every remaining decorative label would be a visual redesign rather than an accessibility fix, so it was not attempted.
 >
 > **Correction (2026-10-11)** to the `uppercase` row below: CSS `text-transform: uppercase` does **not** alter the DOM text node, so NVDA, JAWS, and VoiceOver announce the underlying sentence-case source and do *not* spell it letter-by-letter. Letter-by-letter announcement is real but applies to text typed in literal ALL CAPS in markup. The genuine defect here is the low-vision one the same row already names — capitalising every word destroys word-shape cues — compounded by letter-spacing on 12px text. The remediation and its rationale are unchanged; only the screen-reader mechanism is corrected.
 >
-> Both halves are locked against regression by `tests/legal-notice-legibility.test.ts` (17 tests), proven to gate by deliberate mutation in both directions.
+> Both halves are locked against regression by `tests/legal-notice-legibility.test.ts` (20 tests), which scans components **and** stylesheets and was proven to gate by deliberate mutation in both directions.
 
 Counts over `src/**/*.tsx`:
 
@@ -288,7 +288,7 @@ This is **not** a WCAG violation — no success criterion mandates a minimum fon
 
 #### M-02 — Legal disclaimer and critical safety notices sit at the smallest text size
 
-> **STATUS (2026-10-11): REMEDIATED and MERGED (task R-07).** The size half is now closed as well as the colour half. Both elements this finding names by line number were raised to `text-sm` (14px): the `Disclaimer.tsx:20` footer legal disclaimer and the `Dd214LocalAnalyzer.tsx:379` SSN notice. The sweep was then extended past the two named sites to every other element in `src/` carrying legal, privacy, safety, or verification meaning — **20 elements across 11 files** in total — because a floor applied only to the two audited examples would have left the identical defect standing in the export, checklist, record-walkthrough, and reference-filter notices. Full inventory in `docs/accessibility-audit.md`.
+> **STATUS (2026-10-11): REMEDIATED and MERGED (task R-07).** The size half is now closed as well as the colour half. Both elements this finding names by line number were raised to `text-sm` (14px): the `Disclaimer.tsx:20` footer legal disclaimer and the `Dd214LocalAnalyzer.tsx:379` SSN notice. The sweep was then extended past the two named sites to every other element in `src/` carrying legal, privacy, safety, or verification meaning — **20 elements across 11 files** in total — because a floor applied only to the two audited examples would have left the identical defect standing in the export, checklist, record-walkthrough, and reference-filter notices. The `.ui-kicker` eyebrow class was also raised from `0.78rem` (~12.5px) to `0.875rem` (14px), which carries 24 scope phrases such as "Research aid — outside the numbered workflow". Full inventory in `docs/accessibility-audit.md`.
 
 Separately actionable from M-01 because of the content's importance. `src/components/Disclaimer.tsx:20` wrapped the whole footer disclaimer in `text-xs leading-relaxed text-slate-500` — 12px text in a colour that **bypassed the app's own design token**. Note the distinction: the project's `--muted` token is `#475569` (`globals.css:7`), which measures a comfortable **7.58:1** on white and **6.92:1** on `slate-100`. The disclaimer instead hardcoded Tailwind's lighter `text-slate-500` (`#62748e` under Tailwind 4.3.3; `#475569` is *not* Tailwind 4's `slate-600`, which is `#45556c` — see the note in §3.2), measuring **4.76:1** on white and **4.35:1** on `slate-100` — the latter a real AA failure. So this is not "the muted token is too weak"; it is "65 call sites reach around a perfectly good token." This is the text telling users the tool is not legal or medical advice. `CoverageNotice.tsx` correctly uses `text-sm` for its equivalent warning; the disclaimer should match. **The colour half is fixed by R-02 (`text-muted`, now 7.58:1 / 7.24:1 on this footer's backgrounds); the `text-xs` → `text-sm` size half remains open under R-07.**
 
@@ -371,7 +371,7 @@ Ordered by *what unblocks the most*. R-01 and R-04 are independent of each other
 | **R-04** | Assign owners and tracking issues to all manual/human gates | B-01, B-03, H-02 | Project management | 1 day | **Yes** |
 | **R-05** | Add real-browser contrast + keyboard coverage to the existing WebDriver E2E job | H-01, B-03 | CI | 1 day | No, but strongly recommended |
 | **R-06** | Correct the scope narrative and `api-client.ts` positioning | B-04 | Docs | 0.5 day | **Yes** |
-| **R-07** | ~~Bump disclaimer/notice text from 12px to 14px; reduce uppercase density~~ **DONE, merged** — 20 legal/safety notices raised to 14px, 37 uppercase labels returned to sentence-case (3 short `thead` labels preserved), `tests/legal-notice-legibility.test.ts` added | M-01, M-02 | Code | 1 day | No |
+| **R-07** | ~~Bump disclaimer/notice text from 12px to 14px; reduce uppercase density~~ **DONE, merged** — 20 legal/safety notices plus the 24-site `.ui-kicker` class raised to 14px; `uppercase` cut 41 → 1 in components and `text-transform: uppercase` 1 → 0 in stylesheets; `tests/legal-notice-legibility.test.ts` (20 tests) added | M-01, M-02 | Code | 1 day | No |
 | **R-08** | Re-verify prior audit A01–A10 against current `main` | M-04 | Review | 1–2 days | Recommended |
 
 ### Sequencing
@@ -521,29 +521,44 @@ Doing so also converts part of the `ConditionTimelineVisualization` manual-evide
 > `src/components/presumptive/Dd214LocalAnalyzer.tsx:379` were raised to
 > `text-sm` as specified, and the sweep was then extended to every other
 > element in `src/` carrying legal, privacy, safety, or verification meaning:
-> **20 elements across 11 files** (`text-xs` in `src/**/*.tsx` fell 286 → 261).
-> The reference component is at `src/app/components/CoverageNotice.tsx`, not the
-> bare `CoverageNotice.tsx` cited below. The raw-text `<pre>` inside the DD-214
-> disclosure was raised too, because its own notice instructs the user to
-> "verify before sharing" and content that must be verified has to be readable.
+> **20 elements across 11 files**, with `text-xs` in `src/**/*.tsx` falling
+> **286 → 266 occurrences**. The reference component is at
+> `src/app/components/CoverageNotice.tsx`, not the bare `CoverageNotice.tsx`
+> cited below. The raw-text `<pre>` inside the DD-214 disclosure was raised too,
+> because its own notice instructs the user to "verify before sharing" and
+> content that must be verified has to be readable. The `.ui-kicker` eyebrow
+> class in `globals.css` also rose from `0.78rem` (~12.5px) to `0.875rem` (14px);
+> it carries 24 scope phrases.
 >
-> **Uppercase.** 37 instances returned to sentence-case across 13 files, with
-> the compensating `tracking-wide`/`tracking-wider` removed alongside. Exactly
-> **3** remain — the short single-word `thead`/header-row labels this section
-> says to keep.
+> **Uppercase.** `uppercase` in `src/**/*.tsx` fell **41 → 1 occurrence**, with
+> the compensating `tracking-wide`/`tracking-wider` removed alongside, and the
+> single `text-transform: uppercase` in stylesheets (`.ui-kicker`, 24 call
+> sites) was removed, leaving **zero**. The one survivor is the
+> `ConditionComparisonTool.tsx:114` header row, whose six `<th>` labels are one
+> short word each. Two header rows that this section's "keep it for genuinely
+> short `thead` labels" instruction would have covered were de-capitalised
+> anyway, because their `<th>` labels are phrases — "Evidence excerpt (exact
+> quote)" and "Supporting evidence (exact excerpt)" — not short labels.
 >
-> **Regression guard.** `tests/legal-notice-legibility.test.ts` (17 tests) now
-> enforces both halves analytically: no named notice may carry `text-xs`, and no
-> `uppercase` may appear outside the allowlisted header rows. It runs in the
-> normal suite, so it gates inside the existing `verify` job with no new CI
-> wiring — the same approach §5.2 took for the contrast test. It was proven to
-> fail by deliberate mutation in both directions.
+> **Regression guard.** `tests/legal-notice-legibility.test.ts` (20 tests) now
+> enforces both halves analytically: no named notice may carry `text-xs`, no
+> `uppercase` may appear outside the single allowlisted header row, no
+> stylesheet may declare `text-transform: uppercase`, and `.ui-kicker` must stay
+> at ≥ 0.875rem with no wide letter-spacing. It scans components **and**
+> stylesheets — a component-only scan is precisely what let `.ui-kicker` survive
+> the first pass. It runs in the normal suite, so it gates inside the existing
+> `verify` job with no new CI wiring, the same approach §5.2 took for the
+> contrast test, and it was proven to fail by deliberate mutation in both
+> directions.
 >
 > **Validation results.** `grep -n "text-xs" src/components/Disclaimer.tsx` → no
 > matches. The 508 gate is unchanged at **6 files / 36 tests**. Full suite
-> **336 files / 2843 tests** green; lint 0 errors; typecheck clean; build green;
-> doc-lint green. The screen-reader spot check in the Validation paragraph below
-> is a **human** step and was **not** performed — it folds into issue #195.
+> **336 files / 2846 tests** green; lint 0 errors; typecheck clean; build green;
+> doc-lint 153 tests green; PHI audit 254 files / 0 violations. The
+> screen-reader spot check in the Validation paragraph below is a **human** step
+> and was **not** performed — it folds into issue #195. Note that its stated
+> purpose ("labels announce as words, not letters") tests a risk CSS
+> `text-transform` does not actually create; see the correction under M-01.
 
 **Change.** Bump `src/components/Disclaimer.tsx:20` from `text-xs` to `text-sm`, matching `CoverageNotice.tsx`. Do the same for safety-critical copy — notably `Dd214LocalAnalyzer.tsx:379` ("Full SSN is never stored"). Then review the 41 `uppercase` instances: keep it for genuinely short `thead` labels where it aids scannability; remove it from multi-word eyebrow labels and anything a screen reader must parse as a sentence.
 

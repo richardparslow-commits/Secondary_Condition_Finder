@@ -15,17 +15,23 @@ All notable changes to Secondary Condition Finder. Format loosely follows
   `Dd214LocalAnalyzer.tsx:379` "Full SSN is never stored" notice, both rendering the text that
   tells a user this tool is not legal or medical advice at 12px. Both were raised to `text-sm`,
   and the sweep was then extended to every other element in `src/` carrying legal, privacy,
-  safety, or verification meaning — **20 elements across 11 files** in total, `text-xs` falling
-  286 → 261. Fixing only the two audited examples would have left the identical defect standing
-  in the consultation-summary export, the medical-record checklist, the record walkthrough, the
-  VA reference filter privacy notice, the presumptive-list currency notice and the demo-scenario
-  data-handling notice. The 261 remaining `text-xs` instances are decorative and were
+  safety, or verification meaning — **20 elements across 11 files** in total, `text-xs` in
+  `src/**/*.tsx` falling from 286 to 266 occurrences. Fixing only the two audited examples would
+  have left the identical defect standing in the consultation-summary export, the medical-record
+  checklist, the record walkthrough, the VA reference filter privacy notice, the presumptive-list
+  currency notice and the demo-scenario data-handling notice. The `.ui-kicker` eyebrow class also
+  rose from `0.78rem` (~12.5px) to `0.875rem`; it carries 24 scope phrases such as "Research aid —
+  outside the numbered workflow". The 266 remaining `text-xs` occurrences are decorative and were
   deliberately left alone: blanket-upscaling every small label is a visual redesign, not an
   accessibility fix.
 
-  The uppercase half returned **37** all-caps multi-word labels to sentence-case across 13 files,
-  dropping the `tracking-wide`/`tracking-wider` letter-spacing that existed only to keep all-caps
-  legible. Exactly **3** survive — the short single-word `thead` header rows R-07 says to keep.
+  The uppercase half took `uppercase` in `src/**/*.tsx` from **41 occurrences to 1**, dropping the
+  `tracking-wide`/`tracking-wider` letter-spacing that existed only to keep all-caps legible, and
+  removed the single `text-transform: uppercase` in stylesheets, leaving **zero**. The one survivor
+  is a comparison-table header row whose six columns are single short words. Two other header rows
+  were de-capitalised even though R-07 says to keep short `thead` labels, because their column
+  labels are phrases — "Evidence excerpt (exact quote)" and "Supporting evidence (exact excerpt)" —
+  not short labels.
   One correction to the audit that motivated this: CSS `text-transform: uppercase` does not alter
   the DOM text node, so NVDA, JAWS and VoiceOver announce the sentence-case source and do *not*
   spell it letter-by-letter; that behaviour belongs to text typed in literal ALL CAPS. The real
@@ -33,14 +39,25 @@ All notable changes to Secondary Condition Finder. Format loosely follows
   depend on — so the fix stands, but the report's stated mechanism was corrected rather than
   repeated into a federal submission.
 
-  `tests/legal-notice-legibility.test.ts` (17 tests) locks both halves: no named notice may carry
-  `text-xs`, and no `uppercase` may appear outside the allowlisted header rows. Like the R-02
+  `tests/legal-notice-legibility.test.ts` (20 tests) locks both halves: no named notice may carry
+  `text-xs`, no `uppercase` may appear outside the one allowlisted header row, no stylesheet may
+  declare `text-transform: uppercase`, and `.ui-kicker` must stay at ≥ 14px with no wide
+  letter-spacing. It scans components **and** stylesheets. Like the R-02
   contrast test it is an analytical source scan, because jsdom computes no layout and cannot
   observe a rendered font size. It runs in the normal suite, so it gates inside the existing
   `verify` job with no new CI wiring, and it is deliberately **not** added to
   `pr-508-compliance.yml` — that workflow documents a fixed 6-file / 36-test gate, and adding a
   seventh file would silently falsify a count several documents assert. Mutation-proven in both
   directions. 508 gate unchanged at 6 files / 36 tests.
+
+  Review caught two ways the first pass overstated itself, and both are worth recording because
+  they are the same failure mode wearing different clothes. The `.ui-kicker` class in
+  `globals.css` applied `text-transform: uppercase` with `0.08em` letter-spacing at 24 call sites,
+  so a sweep that walked only `.tsx` files reported the all-caps cleanup complete while the
+  rendered application still had it. And two of the three header rows initially allowlisted as
+  "short structural labels" turned out to carry multi-word column headings, which meant the
+  regression test would have permanently accepted the exact violation R-07 exists to remove. Both
+  are fixed, and the guard now covers stylesheets as well as components.
 
   Separately, the workbook's route matrix listed 14 entries while the application ships 26 routes.
   Seven live production routes were absent — `/get-records`, `/scenarios`, `/runtime-readiness`,

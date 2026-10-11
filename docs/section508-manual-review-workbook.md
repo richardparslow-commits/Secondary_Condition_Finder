@@ -69,7 +69,7 @@ Recorded so a tester does not spend a scarce session on a build that is about to
 | Task | What it changed | State |
 |---|---|---|
 | R-02 | Exposed the `--muted` design token and swept 65 off-token `text-slate-500` call sites that failed WCAG 1.4.3 on `slate-100`/`slate-200`. Guarded by `tests/design-token-contrast.test.ts`. | **Merged** — PR #520, commit `4112e719` |
-| R-07 | Raised 20 legal, privacy, safety, and verification notices from 12px to 14px, and returned 37 all-caps multi-word labels to sentence-case (3 short table-header labels deliberately kept). Guarded by `tests/legal-notice-legibility.test.ts`. | **Merged** |
+| R-07 | Raised 20 legal, privacy, safety, and verification notices from 12px to 14px, plus the `.ui-kicker` eyebrow class used at 24 call sites. Removed all-caps styling from every multi-word label: components went from 41 `uppercase` occurrences to 1 (a header row whose six columns are single short words), and stylesheets from 1 `text-transform: uppercase` to 0. Guarded by `tests/legal-notice-legibility.test.ts`. | **Merged** |
 | R-05 | Real-browser axe run with `color-contrast` **enabled** across the key routes. | **NOT IMPLEMENTED** — `e2e/` contains no axe reference |
 
 **The ordering constraint is therefore satisfied.** A session run against current `main` will not be invalidated by R-02 or R-07. If `main` advances again before the session, re-resolve the build identity at session start as described above.
@@ -82,7 +82,7 @@ This section records remediation state only. It is **not** a test result, it is 
 
 Record each route/workflow as it is exercised. A route being reachable is not itself an accessibility pass.
 
-The route list below is the complete set of routes the application ships (`src/app/**/page.tsx`, 26 routes at the time of writing), each confirmed to return HTTP 200 on the canonical production alias. Every shipped route must either be exercised or be recorded in the exclusion table below with a reason. The automated suites are **not** a substitute for this coverage: they exercise 18 of these routes in jsdom, which computes no layout and therefore proves nothing about zoom, reflow, contrast, or forced colours.
+The route list below is the complete set of routes the application ships (`src/app/**/page.tsx`, 26 routes at the time of writing), each confirmed to return HTTP 200 on the canonical production alias. Every shipped route must either be exercised or be recorded in the exclusion table below with a reason. The automated suites are **not** a substitute for this coverage: they reference 18 of these route paths, but only three full page components — `/secondary`, `/pathways`, `/presumptive` — are actually mounted in jsdom, alongside one component-level suite, and the rest of the route inventory comes from Node-based source scans and server-render assertions. jsdom computes no layout, so none of that evidence says anything about zoom, reflow, contrast, or forced colours.
 
 | Route / workflow | Tested | Notes / synthetic data used |
 |---|---|---|

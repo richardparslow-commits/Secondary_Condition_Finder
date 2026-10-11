@@ -59,7 +59,7 @@ The real-browser CI journey additionally exercises the six-step Secondary workfl
 Two further suites guard properties jsdom cannot compute, by scanning source analytically instead of rendering:
 
 - `tests/design-token-contrast.test.ts` (8 tests) reads the real hex values out of `src/app/globals.css`, asserts the WCAG relative-luminance ratio for every text/background pair the application can produce, and scans `src/` so the off-token `text-slate-500` class that caused finding H-01 cannot be reintroduced. This is remediation task **R-02**.
-- `tests/legal-notice-legibility.test.ts` (17 tests) enforces remediation task **R-07**: no legal, privacy, safety, or verification notice may render at 12px, and `uppercase` may appear only on the three allowlisted short table-header rows.
+- `tests/legal-notice-legibility.test.ts` (20 tests) enforces remediation task **R-07**: no legal, privacy, safety, or verification notice may render at 12px; `uppercase` may appear only on the one allowlisted table-header row whose columns are single short words; no stylesheet may declare `text-transform: uppercase`; and the `.ui-kicker` eyebrow class must stay at ≥ 14px with no wide letter-spacing. It scans components **and** stylesheets, because a CSS class reaches the rendered page exactly as a Tailwind utility does.
 
 Both run in the normal suite and therefore gate inside the existing CI `verify` job with no additional wiring. Neither observes a rendered pixel — they are source-level contracts, not measurements, and they are **not** real-browser contrast evidence (remediation task **R-05**, still not implemented).
 

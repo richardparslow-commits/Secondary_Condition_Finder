@@ -22,9 +22,11 @@
  *
  * Like tests/design-token-contrast.test.ts, this is an analytical source scan
  * rather than a browser assertion: jsdom computes no layout, so no rendered
- * font-size is observable here. It runs in the normal suite, so it gates inside
- * the existing `verify` job with no extra CI wiring. It is deliberately NOT
- * added to pr-508-compliance.yml, which documents a fixed 6-file / 36-test
+ * font-size is observable here. It scans **both** components and stylesheets,
+ * because a CSS class reaches the rendered page exactly as a Tailwind utility
+ * does. It runs in the normal suite, so it gates inside the existing `verify`
+ * job with no extra CI wiring. It is deliberately NOT added to
+ * pr-508-compliance.yml, which documents a fixed 6-file / 36-test
  * browser-contract gate.
  *
  * Nothing here is human accessibility evidence. Issue #195 still requires a
@@ -70,6 +72,11 @@ const NOTICE_SITES = [
     file: "src/components/secondary/PathwayRecordChecklist.tsx",
     marker: "never sent to the server",
     reason: "checklist privacy notice",
+  },
+  {
+    file: "src/components/secondary/PathwayRecordChecklist.tsx",
+    marker: "Unchecks every item in this browser tab",
+    reason: "clear-checkmarks data-loss consequence notice",
   },
   {
     file: "src/components/secondary/PathwayRecordChecklist.tsx",
@@ -124,15 +131,24 @@ const NOTICE_SITES = [
 ] as const;
 
 /**
- * The only places `uppercase` may still appear: short single-word table-header
- * labels, where capitalisation aids scannability and there is no sentence for a
- * low-vision reader to parse.
+ * The only place `uppercase` may still appear: a table-header row whose every
+ * `<th>` is a single short word ("Condition", "Nexus", "Consensus", "Citations",
+ * "Gaps", "Primaries"), where capitalisation aids scannability and there is no
+ * phrase for a low-vision reader to parse.
+ *
+ * Two other header rows were originally allowlisted here and have since been
+ * de-capitalised, because their `<th>` labels are multi-word phrases —
+ * "Evidence excerpt (exact quote)" in PathwayEvidenceTable and "Supporting
+ * evidence (exact excerpt)" in PathwayEvidenceMapper. Allowing the row would
+ * have made this suite permanently accept the very violation R-07 exists to
+ * remove.
  */
 const ALLOWED_UPPERCASE = [
-  '<thead className="bg-slate-100 text-xs uppercase tracking-wide text-slate-700">',
-  '<thead className="bg-slate-50 text-xs uppercase tracking-wide text-slate-600">',
   '<tr className="bg-slate-50 text-left text-xs uppercase tracking-wide text-slate-600">',
 ] as const;
+
+/** Smallest acceptable size for the `.ui-kicker` eyebrow class, in rem. */
+const KICKER_MIN_REM = 0.875;
 
 /** How far above the marker line to look for the element's className. */
 const CLASSNAME_LOOKBACK = 4;
@@ -142,6 +158,23 @@ function walkTsx(dir: string, out: string[] = []): string[] {
     const full = path.join(dir, entry);
     if (statSync(full).isDirectory()) walkTsx(full, out);
     else if (entry.endsWith(".tsx")) out.push(full);
+  }
+  return out;
+}
+
+/**
+ * Stylesheets are scanned separately from components. A component-only walk
+ * sees Tailwind's `uppercase` utility and nothing else, which is how the
+ * `.ui-kicker` class in globals.css survived the first pass: it applies
+ * `text-transform: uppercase` plus wide letter-spacing to 24 multi-word scope
+ * phrases, so the rendered application still had all-caps small text after the
+ * component sweep had already reported the cleanup complete.
+ */
+function walkCss(dir: string, out: string[] = []): string[] {
+  for (const entry of readdirSync(dir)) {
+    const full = path.join(dir, entry);
+    if (statSync(full).isDirectory()) walkCss(full, out);
+    else if (entry.endsWith(".css")) out.push(full);
   }
   return out;
 }
@@ -220,5 +253,54 @@ describe("uppercase is restricted to short structural labels (R-07)", () => {
         `short structural table-header label was removed or restyled: ${allowed}`,
       ).toContain(allowed);
     }
+  });
+});
+
+describe("stylesheets do not reintroduce all-caps small text (R-07)", () => {
+  it("no stylesheet applies text-transform: uppercase", () => {
+    const offenders: string[] = [];
+
+    for (const file of walkCss(SRC_ROOT)) {
+      const relative = path.relative(process.cwd(), file);
+      readFileSync(file, "utf8")
+        .split("\n")
+        .forEach((line, index) => {
+          if (!/text-transform:\s*uppercase/i.test(line)) return;
+          offenders.push(`${relative}:${index + 1}: ${line.trim()}`);
+        });
+    }
+
+    expect(
+      offenders,
+      "A CSS class reaches the rendered page exactly as Tailwind's `uppercase` " +
+        "utility does, so scanning components alone leaves a hole wide enough " +
+        "for `.ui-kicker` to slip through. Remove `text-transform: uppercase` " +
+        "from:\n" +
+        offenders.join("\n"),
+    ).toEqual([]);
+  });
+
+  it("keeps the .ui-kicker eyebrow class at >= 14px with no wide letter-spacing", () => {
+    const css = readFileSync(path.join(SRC_ROOT, "app/globals.css"), "utf8");
+    const rule = css.match(/\.ui-kicker\s*\{([^}]*)\}/);
+    expect(rule, "`.ui-kicker` rule not found in src/app/globals.css").not.toBeNull();
+
+    const declarations = rule![1];
+
+    const size = declarations.match(/font-size:\s*([0-9.]+)rem/);
+    expect(size, "`.ui-kicker` must declare its font-size in rem").not.toBeNull();
+    expect(
+      Number(size![1]),
+      "`.ui-kicker` renders 24 multi-word scope phrases such as " +
+        '"Research aid — outside the numbered workflow" and "VA ' +
+        'claim-preparation research aid", so it must stay at >= ' +
+        `${KICKER_MIN_REM}rem (14px)`,
+    ).toBeGreaterThanOrEqual(KICKER_MIN_REM);
+
+    expect(
+      declarations.match(/letter-spacing:\s*[0-9.]+em/),
+      "`.ui-kicker` must not re-add wide letter-spacing; it existed only to keep " +
+        "all-caps text legible and is harmful on sentence-case small text",
+    ).toBeNull();
   });
 });

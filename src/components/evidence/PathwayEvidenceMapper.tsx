@@ -200,7 +200,7 @@ export function PathwayEvidenceMapper({ results, recommendations }: Props) {
                     <div className="mt-3 overflow-hidden rounded-lg border border-slate-200">
                       <table className="w-full text-left text-sm">
                         <caption className="sr-only">Supporting excerpts mapped to the {row.primaryName} pathway</caption>
-                        <thead className="bg-slate-50 text-xs uppercase tracking-wide text-slate-600">
+                        <thead className="bg-slate-50 text-xs text-slate-600">
                           <tr>
                             <th scope="col" className="px-3 py-2">Supporting evidence (exact excerpt)</th>
                             <th scope="col" className="px-3 py-2">Classification</th>

@@ -173,7 +173,7 @@ function HopSection({ hop, hopNumber, excerpts, conditionNameById, baseId }: Hop
           <caption className="sr-only">
             Evidence excerpts supporting hop {hopNumber} ({sourceName} to {targetName})
           </caption>
-          <thead className="bg-slate-100 text-xs uppercase tracking-wide text-slate-700">
+          <thead className="bg-slate-100 text-xs text-slate-700">
             <tr>
               <th scope="col" className="px-3 py-2 font-semibold">
                 Evidence excerpt (exact quote)
