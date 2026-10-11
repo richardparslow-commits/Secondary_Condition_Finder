@@ -1,0 +1,98 @@
+name: Scheduled Dependency Audit
+
+# R-03.1 (VA Lighthouse readiness report §5.3, gap M-05): every scheduled workflow
+# in this repository must be able to fail visibly without a commit. `verify` runs
+# `npm run audit:high` on every push and PR, but a high/critical advisory published
+# AFTER the last push would not surface until the next unrelated merge. This
+# workflow re-runs the same script on a weekly schedule so newly published
+# advisories surface without a commit, and records the outcome as a GitHub issue
+# so the failure is triaged rather than only visible in a run history.
+#
+# Deliberately a separate workflow rather than a `schedule:` block on ci.yml:
+# fork/scheduled runs of ci.yml would carry its full 35-minute budget and its
+# issue governance steps, none of which apply to a light audit re-run, and the
+# report's own recommendation is a small dedicated workflow that opens an issue on
+# failure. The audit script itself is NOT duplicated: it is a third call of
+# `npm run audit:high`, whose gate semantics remain owned by package.json.
+
+on:
+  schedule:
+    # Monday 06:17 UTC — offset from the other scheduled workflows
+    # (citation-decay-watch) so their start-queues never align.
+    - cron: "17 6 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  audit-high-scheduled:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      DEPENDENCY_AUDIT_ISSUE_TITLE: "Scheduled dependency audit: high/critical advisory"
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+      - uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5
+        with:
+          node-version: 22
+          cache: npm
+      - name: Audit high-severity production dependencies
+        id: audit
+        run: |
+          set -o pipefail
+          npm ci 2>&1 | tail -5
+          npm run audit:high 2>&1 | tee ci-audit-scheduled.log
+
+      - name: Record audit failure as a tracking issue
+        if: steps.audit.outcome == 'failure'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          umask 077
+          tmp_dir="$(mktemp -d)"
+          trap 'rm -rf "$tmp_dir"' EXIT
+          body_file="$tmp_dir/audit-failure.md"
+
+          # Scoped search so only this workflow's own issue is reused or closed.
+          issue_url="$(gh issue list --state open --search "${DEPENDENCY_AUDIT_ISSUE_TITLE} in:title" \
+            --repo "$GITHUB_REPOSITORY" --json number --jq '.[0].number // ""')"
+
+          {
+            echo "A scheduled \`npm run audit:high\` run reported a high or critical advisory that the currently pinned production dependency tree does not satisfy."
+            echo ""
+            echo "- Run that failed: $RUN_URL"
+            echo "- Commit audited: \`${{ github.sha }}\`"
+            echo "- Generated: $(date -u +'%Y-%m-%dT%H:%M:%SZ')"
+            echo ""
+            echo "Remediate by upgrading the affected production dependency (or its replacement), not by weakening \`audit:high\`. Re-run this workflow manually (\`workflow_dispatch\`) to confirm the fix; the issue closes itself when a scheduled run is green again."
+            echo ""
+            echo "Advisory details, package names, and paths are read from the run log; nothing from the audit output is pasted into this issue body so a newly published advisory timestamp cannot be misread as a breach date."
+          } > "$body_file"
+
+          if [ -n "$issue_url" ]; then
+            gh issue comment "$issue_url" --repo "$GITHUB_REPOSITORY" --body-file "$body_file"
+            echo "Updated open tracking issue #$issue_url with the new failure." >> "$GITHUB_STEP_SUMMARY"
+          else
+            gh issue create --repo "$GITHUB_REPOSITORY" \
+              --title "$DEPENDENCY_AUDIT_ISSUE_TITLE" \
+              --body-file "$body_file"
+          fi
+
+      - name: Close resolved audit tracking issue
+        if: steps.audit.outcome == 'success'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          issue_url="$(gh issue list --state open --search "${DEPENDENCY_AUDIT_ISSUE_TITLE} in:title" \
+            --repo "$GITHUB_REPOSITORY" --json number --jq '.[0].number // ""')"
+          if [ -n "$issue_url" ]; then
+            gh issue close "$issue_url" --repo "$GITHUB_REPOSITORY" --reason completed \
+              --comment "Scheduled \`npm run audit:high\` run is green again (${GITHUB_SHA:-unknown}); closing this tracking issue automatically. Open it again with the workflow_dispatch run if it reopens."
+          fi

@@ -1,0 +1,107 @@
+name: Dependency Review
+
+# R-03.2 (VA Lighthouse readiness report §5.3, gap M-05): the report's intent is
+# that a reviewer sees WHICH dependencies a change adds or bumps, not just a
+# pass/fail audit result. actions/dependency-review-action provides exactly
+# that, but it is a GitHub Code Security feature: on this repository (private,
+# GitHub Advanced Security not purchased) the action fails with
+# "Dependency review is not supported on this repository", and no API call can
+# enable it (PATCH security_and_analysis → 422 "Advanced security has not been
+# purchased", recorded 2026-10-11). The dependency graph itself IS enabled (the
+# plan-supported half of that feature is on; Dependabot alerts were also turned
+# on), so the manifest diff — the part `audit:high` does not show — can be
+# produced with git alone and posted as a PR comment.
+#
+# This workflow therefore implements the reviewer-visibility intent with the
+# capabilities the repository's plan actually supports: a plain diff of
+# package.json / npm-shrinkwrap / package-lock manifests between the PR base
+# and head, posted as a sticky PR review comment. If the repository later has
+# GitHub Code Security/Advanced Security, ACTION-DEPENDENCY-REVIEW.md in the
+# runbook notes the one-line swap back to actions/dependency-review-action
+# (the pinned call is retained in a comment below).
+#
+# Read-only informational job: it adds visibility, it does not second-guess
+# the `audit:high` gate, which stays the single source of truth for advisory
+# enforcement (the report forbids two sources of truth).
+
+on:
+  pull_request:
+    paths:
+      - "package.json"
+      - "package-lock.json"
+      - ".github/workflows/dependency-review.yml"
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  review-manifests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    # Only comment on first-party branches; fork PRs get no write access here.
+    if: github.event.pull_request.head.repo.fork == false
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          fetch-depth: 0
+      - name: Diff dependency manifests between PR base and head
+        id: diff
+        shell: bash
+        run: |
+          set -euo pipefail
+          umask 077
+          tmp_dir="$(mktemp -d)"
+          echo "tmp_dir=$tmp_dir" >> "$GITHUB_OUTPUT"
+
+          base="${{ github.event.pull_request.base.sha }}"
+          head_sha="${{ github.event.pull_request.head.sha }}"
+          {
+            echo "## Dependency manifest changes"
+            echo ""
+            echo "Base \`$base\` → head \`$head_sha\`. Audit enforcement remains"
+            echo "\`npm run audit:high\` in CI; this comment shows the manifest surface so a"
+            echo "reviewer can see what the audit result already covers."
+            echo ""
+            echo '```diff'
+            git diff "$base" "$head_sha" -- package.json package-lock.json npm-shrinkwrap.json
+            echo '```'
+            echo ""
+            echo "Change size: \$(git diff --stat "$base" "$head_sha" -- package.json package-lock.json npm-shrinkwrap.json | tail -n 1)"
+          } > "$tmp_dir/comment.md"
+
+      # Upsert one review comment so repeat pushes do not pile up.
+      - name: Upsert PR issue-comment (manifest diff)
+        if: steps.diff.outcome != 'skipped'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          TMP_DIR: ${{ steps.diff.outputs.tmp_dir }}
+        run: |
+          set -euo pipefail
+          # An issue comment (not a diff-anchored review comment): a diff-path
+          # comment cannot be upserted after the head SHA changes, while an
+          # issue comment edits cleanly with every push. The markdown is
+          # wrapped into the {"body": ...} JSON the API expects (jq --rawfile,
+          # so the diff content is preserved verbatim).
+          comment_file="$TMP_DIR/comment.md"
+          payload="$TMP_DIR/comment-payload.json"
+          jq -n --rawfile body "$comment_file" '{body: $body}' > "$payload"
+
+          pr_comment_id="$(gh api "repos/$GITHUB_REPOSITORY/issues/$PR_NUMBER/comments" \
+            --paginate \
+            --jq "[.[] | select(.user.login == \"github-actions[bot]\" and (.body // \"\" | startswith(\"## Dependency manifest changes\")))] | first | .id // \"\"")"
+
+          if [ -n "$pr_comment_id" ]; then
+            gh api -X PATCH "repos/$GITHUB_REPOSITORY/issues/comments/$pr_comment_id" \
+              --input "$payload" > /dev/null
+          else
+            gh api -X POST "repos/$GITHUB_REPOSITORY/issues/$PR_NUMBER/comments" \
+              --input "$payload" > /dev/null
+          fi
+          echo "Manifest-diff review comment upserted on #$PR_NUMBER." >> "$GITHUB_STEP_SUMMARY"
+
+      # Actions/dependency-review-action is the preferred form once GitHub
+      # Code Security / Advanced Security is purchased for this private repo.
+      # Pinned call retained here for that swap:
+      #   actions/dependency-review-action@05fe4576374b728f0c523d6a13d64c25081e0803 # v4.8.3

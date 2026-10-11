@@ -39,12 +39,33 @@ async function delay(ms) {
   await new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-async function waitForHttp(url, label, timeoutMs = 60_000) {
+// The only fetches in this script are readiness/version probes of processes
+// THIS script just spawned on the loopback interface (Next dev server, Chrome
+// DevTools on 127.0.0.1). `fetchLoopbackOnly` enforces that boundary in code:
+// any non-loopback URL is a programmer error and is refused before connecting,
+// which is also what the SAST insecure-HTTP rule wants this dev script to
+// make explicit — plain HTTP is only acceptable here because it never leaves
+// the machine.
+function loopbackUrl(pathname, port) {
+  const url = new URL(String(pathname), `http://127.0.0.1:${port}`);
+  if (url.hostname !== "127.0.0.1" || url.protocol !== "http:") {
+    throw new Error(`Refusing non-loopback fetch: ${url.href}`);
+  }
+  return url.href;
+}
+
+async function fetchLoopbackOnly(pathname, port, init) {
+  return fetch(loopbackUrl(pathname, port), init);
+}
+
+async function waitForHttp(pathname, port, label, timeoutMs = 60_000) {
   const deadline = Date.now() + timeoutMs;
   let lastError;
   while (Date.now() < deadline) {
     try {
-      const response = await fetch(url, { signal: AbortSignal.timeout(2_000) });
+      const response = await fetchLoopbackOnly(pathname, port, {
+        signal: AbortSignal.timeout(2_000),
+      });
       if (response.status < 500) return;
       lastError = new Error(`${label} returned HTTP ${response.status}`);
     } catch (error) {
@@ -125,7 +146,7 @@ async function main() {
   spawnTracked("next", path.join(process.cwd(), "node_modules", ".bin", "next"),
     ["dev", "-H", "127.0.0.1", "-p", String(APP_PORT)],
     { WORKFLOW_SESSION_SECRET: DEV_SECRET });
-  await waitForHttp(APP_BASE, "Next dev server");
+  await waitForHttp("/", APP_PORT, "Next dev server");
 
   const chrome = spawnTracked("chrome", CHROME, [
     "--headless=new",
@@ -138,10 +159,10 @@ async function main() {
     "--window-size=1440,1000",
     "about:blank",
   ]);
-  await waitForHttp(`http://127.0.0.1:${CDP_PORT}/json/version`, "Chrome DevTools endpoint", 30_000);
+  await waitForHttp("/json/version", CDP_PORT, "Chrome DevTools endpoint", 30_000);
   if (!chrome.pid) throw new Error("Chrome failed to start.");
 
-  const version = await (await fetch(`http://127.0.0.1:${CDP_PORT}/json/version`)).json();
+  const version = await (await fetchLoopbackOnly("/json/version", CDP_PORT)).json();
   ws = new WebSocket(version.webSocketDebuggerUrl);
   await new Promise((resolve, reject) => {
     ws.addEventListener("open", resolve, { once: true });

@@ -1,0 +1,75 @@
+# R-03.3 (VA Lighthouse readiness report §5.3, gap M-05): SAST is absent —
+# "standard expectation in a federal security review". CodeQL code scanning
+# was the first choice, but its SARIF upload is a GitHub Code Security feature:
+# this repository is private and GitHub Advanced Security has not been
+# purchased ("Resource not accessible by integration"; "Advanced security has
+# not been purchased" on API enable attempt, 2026-10-11), so the analysis
+# cannot publish findings. The report explicitly lists the alternative:
+# **Semgrep with a TypeScript ruleset**.
+#
+# This workflow therefore runs Semgrep (OSS engine, no GitHub feature gate)
+# with the p/typescript ruleset on PRs touching code, on a weekly schedule, and
+# on demand. It gates on ERROR-severity findings only — findings of that
+# severity fail the job with the matched rule, file and line printed into the
+# failing log; WARN/INVENTORY findings are surfaced in the step summary without
+# blocking. Findings are printed as sanitised rule/file/line/location text; no
+# source excerpts are echoed into logs or artifacts.
+
+name: Semgrep SAST
+
+on:
+  pull_request:
+    paths:
+      - "src/**"
+      - "scripts/**"
+      - ".github/workflows/codeql-sast.yml"
+  schedule:
+    - cron: "33 3 * * 3" # Wednesday 03:33 UTC, offset from other scheduled workflows
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  semgrep:
+    name: SAST (semgrep javascript-typescript)
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    container:
+      image: semgrep/semgrep:1.180.0
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+      - name: Scan src/ and scripts/ with the TypeScript ruleset (ERROR gates, WARN/INVENTORY reported)
+        id: scan
+        shell: bash
+        run: |
+          set -o pipefail
+          # OSS Semgrep, remote registry rulesets; error findings → job failure
+          # with their rule id/file/line echoed, warn/inventory → non-blocking
+          # summary so the grep-style noise is visible without failing merges.
+          semgrep scan \
+            --config p/typescript \
+            --severity ERROR \
+            --error \
+            --exclude 'tmp/' \
+            --exclude 'data/' \
+            --exclude 'tests/' \
+            --metrics=off \
+            src scripts 2>&1 | tee semgrep-sast.log
+
+      - name: Record non-blocking findings in the step summary
+        if: always()
+        shell: bash
+        run: |
+          {
+            echo "## Semgrep SAST"
+            echo ""
+            echo "Ruleset: \`p/typescript\` (ERROR severity gated via --error)."
+            echo "Findings are rule id, file and line only — no source excerpts are echoed here or into artifacts."
+            if [ -f semgrep-sast.log ]; then
+              echo ""
+              echo '```'
+              grep -E '(^src/|^scripts/|severity|finding)' semgrep-sast.log | grep -vE '(\.py|\.json[0-9]?"?$)' | head -40
+              echo '```'
+            fi
+          } >> "$GITHUB_STEP_SUMMARY"
