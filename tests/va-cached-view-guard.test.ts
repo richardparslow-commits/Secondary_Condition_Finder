@@ -146,6 +146,16 @@ describe("cached reference view guard (audit item 12 acceptance)", () => {
     expect(isTrustedCachedLiveView(liveView({ items: [deep] }), "sandbox")).toBe(false);
   });
 
+  it("rejects a non-array items payload and an unparseable timestamp (A04 repro)", () => {
+    expect(isTrustedCachedLiveView(liveView({ items: "NOT_AN_ARRAY" }), "sandbox")).toBe(false);
+    expect(isTrustedCachedLiveView(liveView({ items: null }), "sandbox")).toBe(false);
+    expect(isTrustedCachedLiveView(liveView({ items: { 0: "x" } }), "sandbox")).toBe(false);
+    expect(isTrustedCachedLiveView(liveView({ items: undefined }), "sandbox")).toBe(false);
+    expect(isTrustedCachedLiveView(liveView({ retrievedAt: "not-a-date" }), "sandbox")).toBe(false);
+    // Null timestamps stay tolerated; only non-null values must parse.
+    expect(isTrustedCachedLiveView(liveView({ retrievedAt: null }), "sandbox")).toBe(true);
+  });
+
   it("guards the single-form reference shape too", () => {
     const reference = {
       formName: "21-526EZ",

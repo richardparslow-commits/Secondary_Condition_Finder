@@ -375,6 +375,8 @@ export function proxy(request: NextRequest) {
     (pathname === "/va-forms" ||
       pathname === "/va-forms/finder" ||
       pathname === "/va-reference" ||
+      pathname === "/va-reference/service-branches" ||
+      pathname === "/presumptive" ||
       pathname === "/presumptive/results" ||
       pathname === "/secondary/suggestions" ||
       pathname === "/secondary/evidence" ||

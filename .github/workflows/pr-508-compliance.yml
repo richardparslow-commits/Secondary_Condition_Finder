@@ -1,0 +1,62 @@
+# PR 508 gate — fast, attributable accessibility signal.
+#
+# The full suite (including every axe suite below) already runs on every PR in
+# `ci.yml`'s `verify` job, which is the required status check. That job takes
+# ~35 minutes; this workflow runs ONLY the accessibility gate files so an axe
+# regression is attributed in under two minutes instead of hiding inside the
+# full-suite log. Nothing here uses `continue-on-error`: any failing step
+# fails the job, and a failed job fails the required check and blocks merge.
+name: PR 508 compliance
+
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: pr-508-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  508-gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          # Matches package.json `engines` (22.x) and ci.yml; do not downgrade
+          # to Node 20 — the lockfile and build scripts are pinned to 22.
+          node-version: 22
+          cache: npm
+      - name: Install dependencies
+        run: |
+          set -o pipefail
+          npm ci 2>&1 | tee pr-508-install.log
+      # The complete automated accessibility gate: axe suites (jsdom) plus the
+      # structural keyboard/focus/label/announcement contracts. vitest exits
+      # non-zero on the first failing file, so an axe violation fails this
+      # step, fails the job, and blocks the PR — no aggregator needed.
+      - name: Run accessibility gate suites
+        run: |
+          set -o pipefail
+          npx vitest run \
+            tests/accessibility-automation.test.tsx \
+            tests/accessibility-form-page.test.tsx \
+            tests/accessibility-ux-reliability.test.ts \
+            tests/workflow-validation-accessibility.test.ts \
+            src/components/__tests__/accessibility.test.tsx \
+            src/app/secondary/__tests__/page.accessibility.test.tsx \
+            2>&1 | tee pr-508-gate.log
+      - name: Upload gate log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pr-508-gate-${{ github.run_id }}
+          path: |
+            pr-508-install.log
+            pr-508-gate.log
+          retention-days: 14

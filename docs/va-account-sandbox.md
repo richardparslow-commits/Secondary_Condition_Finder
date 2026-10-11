@@ -53,7 +53,7 @@ Requested scopes are only `openid offline_access` plus the selected read scope. 
 ## Routes and consent
 
 - `GET /va-account`: clearly labeled sandbox page, safe notice codes, per-service status, minimal account DTOs and disconnect controls. Disabled configuration shows a truthful blocked state, never mock “live” data.
-- `POST /va-account/oauth/{ratings|claims}/start`: requires exact same Origin and canonical request origin, form-urlencoded body ≤1 KiB and `consent=sandbox-read-only`. Returns a no-store authorization navigation URL and a browser-binding HttpOnly cookie. No GET login or implicit prefetch side effects.
+- `POST /va-account/oauth/{ratings|claims}/start`: requires exact same Origin and canonical request origin, form-urlencoded body ≤1 KiB and `consent=sandbox-read-only`. Returns a no-store authorization navigation URL and a browser-binding HttpOnly cookie. No GET login or implicit prefetch side effects on this entry point; the separate `/api/auth/login` adapter is a rate-limited GET initiator (binding-only cookie, 303 redirect) for the restricted-API integration.
 - `GET /va-account/oauth/{service}/callback`: accepts a unique bounded state/code, validates browser binding and one-use server transaction before exchanging the code. Always redirects to a fixed local safe notice; never echoes upstream error text/code/state into HTML.
 - `POST /va-account/oauth/{service}/disconnect`: same-origin protected; removes session state and browser cookies, attempts refresh/access-token revocation, and distinguishes cleanup/revocation failure from confirmed success.
 

@@ -32,12 +32,12 @@ export default async function VaFormsFinderPage({ searchParams }: PageProps = {}
         <h1 className="text-3xl font-semibold">VA Form Finder</h1>
         <span className="rounded-full bg-blue-100 px-3 py-1 text-xs font-medium text-blue-900">{reference.sourceLabel}</span>
       </div>
-      <p className="mt-2 text-sm text-slate-600">Search public VA form metadata by form number, keyword, or title.</p>
+      <p className="mt-2 text-sm text-slate-600">Search public VA form metadata by form number, keyword, or title. Never enter personal identifiers (for example, a Social Security number) — searches run as GET requests, so the text appears in the address bar and browser history.</p>
 
       <form method="get" className="mt-6 rounded-lg border border-slate-200 bg-white p-5">
         <label htmlFor="va-form-query" className="block text-sm font-semibold">Search VA forms</label>
         <div className="mt-2 flex flex-col gap-3 sm:flex-row">
-          <input id="va-form-query" name="q" type="search" maxLength={120} defaultValue={reference.query} className="min-w-0 flex-1 rounded-md border border-slate-300 px-3 py-2 text-sm" />
+          <input id="va-form-query" name="q" type="search" maxLength={120} autoComplete="off" spellCheck={false} defaultValue={reference.query} className="min-w-0 flex-1 rounded-md border border-slate-300 px-3 py-2 text-sm" />
           <button type="submit" className="rounded-md bg-slate-900 px-4 py-2 text-sm font-medium text-white">Search</button>
         </div>
       </form>

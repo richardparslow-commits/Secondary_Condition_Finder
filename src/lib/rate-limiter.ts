@@ -225,6 +225,28 @@ export const referenceReadLimiter = createRateLimiter({
   name: "reference-read",
 });
 
+/**
+ * Restricted-API login initiation: each call mints a server-side OAuth
+ * transaction, so unbounded initiation exhausts the bounded transaction
+ * store rather than merely costing CPU.
+ */
+export const accountAuthLoginLimiter = createRateLimiter({
+  windowMs: 60_000,
+  max: 30,
+  name: "account-auth-login",
+});
+
+/**
+ * Restricted-API authorization callback: each call performs an upstream
+ * token exchange (plus JWKS fetch), so it is policed tighter than login
+ * initiation, like the other upstream-forcing route.
+ */
+export const accountAuthCallbackLimiter = createRateLimiter({
+  windowMs: 60_000,
+  max: 10,
+  name: "account-auth-callback",
+});
+
 // ---------------------------------------------------------------------------
 // Runtime scope
 // ---------------------------------------------------------------------------

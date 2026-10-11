@@ -103,7 +103,7 @@ scripts/   # Audits, validators, generators (all wired as npm scripts)
 
 ## Part 3 — Workflow Privacy, Browser Security, and Infrastructure
 
-Zero-trust, privacy-first architecture — no PHI leakage, XSS, or CSRF surface. The application does not connect to a Veteran's VA account, submit claims, or persist evidence documents server-side. Full boundary statement: `SECURITY.md`; operations runbook: `docs/security-operations.md`.
+Zero-trust, privacy-first architecture — no PHI leakage, XSS, or CSRF surface. The application does not connect to a production Veteran's VA account, submit claims, or persist evidence documents server-side. The only exception is the disabled-by-default sandbox account experiment (`/privacy` §6: read-only sandbox reads, encrypted server-side session store, no production). Full boundary statement: `SECURITY.md`; operations runbook: `docs/security-operations.md`.
 
 ### 3.1 State Management & Transit
 
