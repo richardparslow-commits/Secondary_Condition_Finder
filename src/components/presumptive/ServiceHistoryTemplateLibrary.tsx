@@ -72,7 +72,7 @@ export function ServiceHistoryTemplateLibrary({ templates }: ServiceHistoryTempl
                     </span>
                   ))}
                 </p>
-                <p className="mt-1.5 text-xs text-slate-500">
+                <p className="mt-1.5 text-xs text-muted">
                   <span className="font-medium text-slate-700">{template.authorityNote}</span>
                   {template.serviceStart || template.serviceEnd ? (
                     <>
@@ -81,7 +81,7 @@ export function ServiceHistoryTemplateLibrary({ templates }: ServiceHistoryTempl
                     </>
                   ) : null}
                 </p>
-                <p className="mt-1 text-xs italic text-slate-500">{template.hint}</p>
+                <p className="mt-1 text-xs italic text-muted">{template.hint}</p>
               </div>
               <button
                 type="button"
@@ -100,7 +100,7 @@ export function ServiceHistoryTemplateLibrary({ templates }: ServiceHistoryTempl
         ))}
       </div>
 
-      <p className="mt-3 text-xs leading-relaxed text-slate-500">
+      <p className="mt-3 text-xs leading-relaxed text-muted">
         Templates cover only the two categories currently authored locally (Agent Orange, burn pits). Camp Lejeune,
         radiation, and Gulf War illness presumptions are not yet covered in this app — see the results page note.
       </p>

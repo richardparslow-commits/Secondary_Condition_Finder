@@ -39,7 +39,7 @@ export default async function ServiceBranchesPage() {
         {reference.items.map((item) => (
           <li key={`${item.code}-${item.description}`} className="rounded-lg border border-slate-200 bg-white p-4">
             <strong className="text-slate-900">{item.description}</strong>
-            <span className="mt-1 block font-mono text-xs text-slate-500">{item.code}</span>
+            <span className="mt-1 block font-mono text-xs text-muted">{item.code}</span>
           </li>
         ))}
       </ul>

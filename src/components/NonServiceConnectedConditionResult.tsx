@@ -56,7 +56,7 @@ export function NonServiceConnectedConditionResult({ result, vaReference }: Prop
     <article className="rounded-xl border border-slate-200 bg-white p-5 shadow-none">
       <header className="flex items-start justify-between gap-3">
         <div>
-          <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+          <p className="text-xs font-semibold uppercase tracking-wide text-muted">
             Diagnosed, not service connected
           </p>
           <h3 className="mt-1 text-xl font-bold text-slate-900">{result.conditionName}</h3>
@@ -206,7 +206,7 @@ export function NonServiceConnectedConditionResult({ result, vaReference }: Prop
                         <li key={`${edge.conditionId}-${edge.targetConditionId}`}>
                           <span className="font-medium">Edge {index + 1}:</span> {edge.conditionName} → {edge.targetConditionName} ({edge.nexusClassification}; {edge.etiologicalConsensus})
                           <p className="mt-1 text-xs text-slate-600">{edge.rationale}</p>
-                          <p className="mt-1 text-xs text-slate-500">Provenance: {edge.sourceReferences.map((reference) => reference.citation).join(", ")}</p>
+                          <p className="mt-1 text-xs text-muted">Provenance: {edge.sourceReferences.map((reference) => reference.citation).join(", ")}</p>
                         </li>
                       ))}
                     </ol>
@@ -266,7 +266,7 @@ export function NonServiceConnectedConditionResult({ result, vaReference }: Prop
           <p className="mt-2 text-sm text-slate-700">
             <span className="font-medium text-slate-900">VBA terminology: </span>
             {vaReference.match.term.name}
-            <span className="ml-2 font-mono text-xs text-slate-500">ID {vaReference.match.term.id}</span>
+            <span className="ml-2 font-mono text-xs text-muted">ID {vaReference.match.term.id}</span>
           </p>
         ) : (
           <p className="mt-2 text-sm text-slate-700">

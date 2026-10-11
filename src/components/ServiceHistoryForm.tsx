@@ -111,7 +111,7 @@ export function ServiceHistoryForm({
               />
               <span>
                 {branch.description}
-                <span className="ml-2 font-mono text-xs text-slate-500">{branch.code}</span>
+                <span className="ml-2 font-mono text-xs text-muted">{branch.code}</span>
               </span>
             </label>
           ))}

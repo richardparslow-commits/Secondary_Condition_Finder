@@ -246,7 +246,7 @@ export function ConditionTimelineVisualization({
           and enter an approximate <em>onset year</em> and/or <em>formal diagnosis year</em> for
           each diagnosed condition. Missing dates produce no chronology conclusion.
         </div>
-        <p className="mt-3 text-xs text-slate-500">
+        <p className="mt-3 text-xs text-muted">
           This visualization is a research aid. It does not determine nexus, diagnose conditions,
           or replace verification against current VA guidance and your medical records.
         </p>
@@ -774,7 +774,7 @@ export function ConditionTimelineVisualization({
             </div>
           )}
         </details>
-        <p className="mt-3 text-xs leading-relaxed text-slate-500">
+        <p className="mt-3 text-xs leading-relaxed text-muted">
           <strong>How to read this:</strong> Dots are placed at the condition’s approximate year
           (onset preferred, otherwise diagnosis). Lines are drawn only where the curated knowledge
           base contains an authored relationship between a service-connected condition you selected

@@ -189,7 +189,7 @@ export function UploadStep() {
                   const timeline = conditionTimeline[condition.id] ?? {};
                   return (
                     <div key={condition.id} className="grid gap-3 rounded-lg border border-slate-200 p-3 sm:grid-cols-[1fr_10rem_10rem] sm:items-end">
-                      <div><p className="font-medium">{condition.name}</p><p className="text-xs text-slate-500">{condition.bodySystem}</p></div>
+                      <div><p className="font-medium">{condition.name}</p><p className="text-xs text-muted">{condition.bodySystem}</p></div>
                       <label className="text-sm">Approximate onset year<input type="number" name={timelineField(condition.id, "onsetYear")} min={MIN_TIMELINE_YEAR} max={MAX_TIMELINE_YEAR} inputMode="numeric" defaultValue={timeline.onsetYear ?? ""} className="mt-1 w-full px-3" /></label>
                       <label className="text-sm">Formal diagnosis year<input type="number" name={timelineField(condition.id, "diagnosisYear")} min={MIN_TIMELINE_YEAR} max={MAX_TIMELINE_YEAR} inputMode="numeric" defaultValue={timeline.diagnosisYear ?? ""} className="mt-1 w-full px-3" /></label>
                     </div>
