@@ -86,8 +86,7 @@ jobs:
           # so the diff content is preserved verbatim).
           comment_file="$TMP_DIR/comment.md"
           payload="$TMP_DIR/comment-payload.json"
-          jq --rawfile body "$comment_file" '{body: $body}' \
-            "{}" > "$payload"
+          jq -n --rawfile body "$comment_file" '{body: $body}' > "$payload"
 
           pr_comment_id="$(gh api "repos/$GITHUB_REPOSITORY/issues/$PR_NUMBER/comments" \
             --paginate \
