@@ -365,7 +365,7 @@ Ordered by *what unblocks the most*. R-01 and R-04 are independent of each other
 
 | # | Workstream | Closes | Type | Est. effort | Blocks submission? |
 | --- | --- | --- | --- | --- | --- |
-| **R-01** | Privacy policy: add deletion right, 45-day commitment, and a contact channel | B-02 | Code + legal review | 0.5 day | **Yes** |
+| **R-01** | ~~Privacy policy: add deletion right, 45-day commitment, and a contact channel~~ **DONE, merged** (PR #531, `6caf98d8`) — new §8 "Your privacy rights and how to contact us" in the privacy policy, Terms §7 mirror, pinned by `tests/privacy-rights-contact.test.ts`; §9 of this report's operator/privacy-approver sign-off remains the human step | B-02 | Code + legal review | 0.5 day | **Yes** |
 | **R-02** | ~~Fix measured contrast failures via one design-token change~~ **DONE, merged** (PR #520, `4112e719`) — token exposed, 65 sites swept, contrast test added | H-01 | Code | 0.5 day | **Yes** (508 evidence depends on it) |
 | **R-03** | Add scheduled dependency re-audit + dependency-review + SAST | M-05 | CI | 0.5 day | Recommended |
 | **R-04** | Assign owners and tracking issues to all manual/human gates | B-01, B-03, H-02 | Project management | 1 day | **Yes** |
@@ -398,6 +398,25 @@ Gated on external availability (start requesting in Week 1, may land later)
 R-01, R-02, R-03, and R-06 are entirely within team control and total roughly two days of work. B-01 and B-03 are not — they depend on VA and an independent accessibility tester, which is why R-04 (getting those requests formally opened and owned) belongs in Week 1 despite being pure project management.
 
 ### 5.1 R-01 — Privacy policy deletion right and contact channel
+
+> **STATUS (2026-10-11): IMPLEMENTED and MERGED** — PR #531, merge commit `6caf98d8` on
+> `main`. The privacy policy has a new section **8. "Your privacy rights and how to
+> contact us"** with the access/correction right, the deletion right for account-
+> associated data, the **45-day** completion commitment, the narrow statutory
+> exceptions (36 CFR Chapter XII / Title 38 recordkeeping) with a reason on any
+> partial handling, an honest scope statement (what deletion does not cover), and
+> a real intake channel: monitored `privacy@secondaryconditionfinder.org` plus
+> VA's independent privacy program and phone line (explicitly labelled *not* an
+> intake channel for this app). Terms §7 mirrors the pointer. §7's retention
+> summary cross-references it; Policy changes renumbered to §9.
+> `tests/privacy-rights-contact.test.ts` (8 tests) pins the language, the ordering,
+> the no-overclaim boundaries, and the Terms mirror against source. Validation at
+> landing: typecheck clean, lint 0 errors, a11y gate 36/36, doc-lint 153, build
+> green, rendered `/privacy` and `/terms` HTML contain every required marker, PHI
+> audit 255 files / 0 violations, full suite green. Two acceptance rows remain
+> human: the **named operator/privacy-approver sign-off** in §9 of this report and
+> verification that the mailbox is monitored in practice (the code change can
+> only State the intake path, not operate it).
 
 **Change.** In `src/app/privacy/page.tsx`, extend the data-rights section (line 78) with an explicit deletion right and a 45-day commitment, and add a contact channel. Suggested structure — a new "Your rights" list item plus a contact block near the footer:
 
