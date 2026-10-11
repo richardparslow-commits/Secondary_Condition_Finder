@@ -367,7 +367,7 @@ Ordered by *what unblocks the most*. R-01 and R-04 are independent of each other
 | --- | --- | --- | --- | --- | --- |
 | **R-01** | ~~Privacy policy: add deletion right, 45-day commitment, and a contact channel~~ **DONE, merged** (PR #531, `6caf98d8`) — new §8 "Your privacy rights and how to contact us" in the privacy policy, Terms §7 mirror, pinned by `tests/privacy-rights-contact.test.ts`; §9 of this report's operator/privacy-approver sign-off remains the human step | B-02 | Code + legal review | 0.5 day | **Yes** |
 | **R-02** | ~~Fix measured contrast failures via one design-token change~~ **DONE, merged** (PR #520, `4112e719`) — token exposed, 65 sites swept, contrast test added | H-01 | Code | 0.5 day | **Yes** (508 evidence depends on it) |
-| **R-03** | Add scheduled dependency re-audit + dependency-review + SAST | M-05 | CI | 0.5 day | Recommended |
+| **R-03** | ~~Add scheduled dependency re-audit + dependency-review + SAST~~ **DONE, merged** (PR #533, `3209b1a8`) — weekly scheduled `audit:high` re-run with single-issue tracking, manifest-diff reviewer visibility on PRs, Semgrep `p/typescript` SAST gating ERROR findings (CodeQL/dependency-review-action plan-gated for this private repo — GitHub Advanced Security not purchased; see §5.3); first green scheduled run 38182406496 | M-05 | CI | 0.5 day | Recommended |
 | **R-04** | Assign owners and tracking issues to all manual/human gates | B-01, B-03, H-02 | Project management | 1 day | **Yes** |
 | **R-05** | ~~Add real-browser contrast + keyboard coverage to the existing WebDriver E2E job~~ **IMPLEMENTED (2026-10-11, awaiting merge)** — `e2e/a11y-contrast.mjs` runs enabled-contrast axe + keyboard visible-focus walk over 22 routes in CI; two real violations fixed on first run; pinned by `tests/a11y-contrast-gate.test.ts` | H-01, B-03 | CI | 1 day | No, but strongly recommended |
 | **R-06** | Correct the scope narrative and `api-client.ts` positioning | B-04 | Docs | 0.5 day | **Yes** |
@@ -456,6 +456,37 @@ Therefore the fix is **one line plus a sweep**, not a new colour decision:
 **Acceptance.** No computed text/background pair below 4.5:1 (3:1 large/UI) anywhere in `src/`, enforced by a committed test.
 
 ### 5.3 R-03 — Scheduled dependency re-audit, dependency-review, and SAST
+
+> **STATUS (2026-10-11): IMPLEMENTED and MERGED** — PR #533, merge commit `3209b1a8` on
+> `main`, with the first green scheduled run recorded ([run 38182406496](https://github.com/richardparslow-commits/Secondary_Condition_Finder/actions/runs/38182406496),
+> `workflow_dispatch` on `main`, conclusion `success`).
+>
+> **Plan constraint, proven by live attempts and recorded in the workflow headers.**
+> The dependency-review action and CodeQL code scanning (SARIF upload) are GitHub
+> Code Security / Advanced Security features; this repository is private and GHAS
+> is not purchased (`PATCH security_and_analysis` → 422 "Advanced security has not
+> been purchased"). Two fixable halves were enabled at no plan cost: the
+> **dependency graph** and **Dependabot alerts**. The report's own alternative —
+> *"CodeQL …, or Semgrep with a TypeScript ruleset"* — is what ships:
+>
+> 1. `dependency-scheduled-audit.yml` — weekly `audit:high` re-run (Mon 06:17 UTC)
+>    + manual dispatch; failure reuses/opens one repo-scoped issue, a green run
+>    closes it; no advisory content pasted into issues.
+> 2. `dependency-review.yml` — reviewer-visible manifest diff (`git diff` over
+>    package.json/lockfiles between PR base and head) upserted as one PR issue
+>    comment; the pinned `actions/dependency-review-action@v4.8.3` call is kept
+>    in-file for the one-line swap-back once Code Security is purchased.
+> 3. `codeql-sast.yml` → Semgrep SAST — `semgrep/semgrep:1.180.0`, `p/typescript`,
+>    ERROR severity gates the job via `--error`; WARN/INVENTORY summarized;
+>    source excerpts never echoed; `data/`/`tmp/` excluded.
+>
+> The single-gate rule held: no second merge-blocking vote beside `audit:high`.
+> The gate paid for itself on its first run — one real Semgrep ERROR finding
+> (`scripts/capture-va-gov-walkthrough-screens.mjs` loopback fetch) was fixed at
+> the cause with a `fetchLoopbackOnly()` guard, and the PR now runs green
+> (`SAST` + `review-manifests` checks). `tests/dependency-sast-gates.test.ts`
+> (17 tests) pins all three wirings including the constraint documentation and
+> swap-back pin.
 
 **Change.** Three additions. **Do not** add a basic `npm audit` gate — `ci.yml:176` already enforces `npm run audit:high`, and its aggregator step at line 372 re-fails the job on that outcome. Duplicating it would create two sources of truth.
 
