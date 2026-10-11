@@ -142,7 +142,10 @@ describe("VA reference product surfaces", () => {
     expect(runtimeMode).toContain("VA_SANDBOX_ENABLED");
     expect(runtimeMode).toContain("VA_PRODUCTION_ACCESS_GRANTED");
 
-    expect(docs).toContain("Issue #189 remains the separate credentialed sandbox connectivity gate");
+    expect(docs).toContain("#189 is already complete with credentialed sandbox evidence");
+    expect(docs).toContain("A fallback page returning HTTP 200 is not production API evidence");
+    expect(docs).toContain("VA_SHARED_CONSUMER_BUDGET=true");
+    expect(docs).toContain("Close #287 only after the grant, controlled evidence, deployed-runtime verification, full CI and deployment readiness");
     expect(docs).toContain("VA_PRODUCTION_ACCESS_GRANTED");
   });
 });

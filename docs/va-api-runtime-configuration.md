@@ -1,166 +1,100 @@
 # VA public-reference runtime configuration
 
-This document defines the runtime configuration contract for the app's low-sensitivity VA Forms and Benefits Reference Data integrations. These integrations provide administrative reference information only. They do not participate in medical evidence scoring, secondary-condition recommendation logic, or presumptive matching.
+This contract covers low-sensitivity VA Forms and Benefits Reference Data only. These administrative references do not participate in medical evidence scoring, secondary recommendations, or presumptive matching. Veteran-account OAuth and the optional accredited-representative locator have separate approval boundaries.
 
-## Safe default
+## Safe default and mode resolution
 
-VA API access is disabled by default. With no VA runtime variables configured, the app serves local fallback references and makes no VA public-reference request.
+Access is **disabled by default**. Unconfigured, ambiguous, or incomplete configurations serve explicitly labelled local fallback references, not VA data.
 
-The current request budget and successful-response cache are process-local controls. They are permitted only in single-process, non-production execution. Production and known distributed/serverless runtimes fail closed before a credentialed VA request and do not use the process-local reference cache. A shared rate-limit/cache coordinator must be implemented and objectively validated before live VA traffic is enabled from the horizontally scaled production runtime.
+[The resolver](../src/lib/va/runtime-state.ts) is the single tri-state decision point:
 
-## Runtime mode
+| Mode | Requirements |
+|---|---|
+| `disabled` | Default, explicit disable, invalid environment/enable value, or incomplete production configuration. No upstream request. |
+| `sandbox` | `VA_API_ENABLED=true` and `VA_API_ENV` unset/blank or `sandbox`. Only when `VA_API_ENABLED` is entirely absent can legacy `VA_SANDBOX_ENABLED=true` enable sandbox. |
+| `production` | `VA_API_ENV=production`, `VA_API_ENABLED=true`, `VA_PRODUCTION_ACCESS_GRANTED=true`, and both service-specific production keys. |
 
-Issue #287 requires a deliberate runtime mode rather than an implicit combination of flags. `resolveVaReferenceMode()` in `src/lib/va/runtime-state.ts` is the single decision point and resolves exactly one of three modes:
+The runtime accepts trimmed, case-insensitive `true`/`1`/`yes` and `false`/`0`/`no` flags. An explicitly blank or invalid `VA_API_ENABLED` never falls back to the legacy flag. Unknown nonblank `VA_API_ENV` values fail closed rather than silently choosing sandbox. Every resolution carries a non-sensitive reason that never echoes raw configuration or credentials.
 
-| Mode | Meaning | Requirements |
+A refused production selection still reports the requested `environment=production` for diagnostics, but loads sandbox endpoints and no production keys. It never silently downgrades into enabled sandbox traffic.
+
+## Production grant is not connectivity evidence
+
+`VA_PRODUCTION_ACCESS_GRANTED=true` acknowledges an actual VA grant for the requested services; it does not prove connectivity. Keep the application's `VA_API_ENABLED=false` until a controlled check succeeds. Issue #287 remains open through grant, controlled check, deliberate activation, exact-build deployment verification and live source-status checks. A fallback page returning HTTP 200 is not production API evidence.
+
+## Service-specific, server-only configuration
+
+Never use `NEXT_PUBLIC_*` credentials or paste keys into issues, chat, command arguments, logs, or committed files.
+
+| Service | Sandbox key | Production key |
 |---|---|---|
-| `disabled` | No outbound VA request is made; local fallback references are served. **Fail-closed default.** | None — this is what an unconfigured or ambiguous environment resolves to. |
-| `sandbox` | Requests target the VA sandbox endpoints. | `VA_API_ENABLED=true` (or the Phase 2 compatible `VA_SANDBOX_ENABLED=true`) and `VA_API_ENV` unset or `sandbox`. |
-| `production` | Requests target the VA production endpoints and results may be labelled production-sourced. | `VA_API_ENV=production` **and** `VA_API_ENABLED=true` **and** `VA_PRODUCTION_ACCESS_GRANTED=true` **and** both service-specific production credentials present. |
+| Forms | `VA_FORMS_SANDBOX_API_KEY` | `VA_FORMS_PRODUCTION_API_KEY` |
+| Benefits Reference Data | `VA_BENEFITS_REFERENCE_SANDBOX_API_KEY` | `VA_BENEFITS_REFERENCE_PRODUCTION_API_KEY` |
+| Optional locator | `VA_ACCREDITED_REP_SANDBOX_API_KEY` | `VA_ACCREDITED_REP_PRODUCTION_API_KEY` |
 
-Every resolution carries a non-sensitive `modeReason` explaining the outcome for operator diagnostics. Reasons never echo credential values.
+Each service sends only its own key. The optional locator additionally requires `VA_ACCREDITED_REP_ENABLED=true` and its own service approval; this runbook does not activate or verify it.
 
-The resolver fails closed to `disabled` — never silently downgrades to `sandbox` — on any of:
+Optional base URL overrides follow `VA_FORMS_{SANDBOX,PRODUCTION}_BASE_URL`, `VA_BENEFITS_REFERENCE_{SANDBOX,PRODUCTION}_BASE_URL`, and `VA_ACCREDITED_REP_{SANDBOX,PRODUCTION}_BASE_URL`. The adapter accepts credential-free HTTPS only on the matching exact VA origin (`sandbox-api.va.gov` or `api.va.gov`), refuses redirects, validates response schemas and approved HTTPS links, and caps response bodies at 2 MiB. `VA_API_TIMEOUT_MS` defaults to 4 seconds and is capped at 30 seconds; legacy `VA_SANDBOX_TIMEOUT_MS` remains a fallback. Existing bounded retry/circuit policies remain in effect in the app.
 
-- an unrecognised or falsy enable value (`VA_API_ENABLED=maybe`, `=0`, `=no`);
-- `VA_API_ENV=production` without `VA_PRODUCTION_ACCESS_GRANTED=true`;
-- `VA_PRODUCTION_ACCESS_GRANTED=true` without `VA_API_ENABLED=true` (acknowledgement is not enablement);
-- an acknowledged production selection missing any service-specific production credential.
+## Shared state is a separate activation prerequisite
 
-When production fails closed, the loaded configuration deliberately carries **sandbox** endpoints and **no** production keys, so a caller that neglected to check `enabled` still cannot reach production. The `environment` field continues to report the *requested* environment (`production`) so a refused production selection is visible rather than being mistaken for a sandbox configuration.
+Production and known distributed/serverless runtimes refuse process-local reference cache reads/writes. A shared cache alone does **not** authorize live requests. Distributed live requests require:
 
-## `VA_PRODUCTION_ACCESS_GRANTED` (issue #287 gate rule)
+1. `VA_SHARED_CONSUMER_BUDGET=true`;
+2. a configured HTTPS Redis-compatible REST URL and server-only token;
+3. a reachable shared circuit coordinator and successful consumer-budget reservation before **each** upstream attempt, including retries.
 
-```text
-VA_PRODUCTION_ACCESS_GRANTED=true
-```
+A missing opt-in, unreachable coordinator, invalid reply or exhausted budget fails closed to local fallback. The process-local circuit still protects each instance; shared markers enforce fleet cooldown and probe admission. The synchronous runtime capability report remains a conservative report of process-local support, not a liveness test or proof that a configured shared coordinator works. Verify the actual deployed request path, not just that report or configuration presence.
 
-An explicit operator acknowledgement that **VA has granted production API access**. It is separate from `VA_API_ENABLED`, which expresses only the intent to make requests. Requiring both means no single mis-set variable can repoint the public reference surfaces at production endpoints or cause data to be labelled production-sourced.
-
-Per the #287 gate rule, set this only after VA grants production access **and** live production connectivity has been objectively verified. It is intentionally unset in every current environment.
-
-## Environment selection
-
-`VA_API_ENV` selects the intended upstream environment:
-
-- `sandbox` (default)
-- `production`
-
-`VA_API_ENABLED=true` is the explicit environment-neutral enable flag. Production configuration still requires this flag, but the current production/distributed runtime boundary will refuse live adapter traffic until shared state coordination exists. This prevents merely setting `VA_API_ENV=production` from activating production traffic and prevents process-local safeguards from being misrepresented as deployment-wide controls.
-
-For backward compatibility with the Phase 2 sandbox gate, `VA_SANDBOX_ENABLED=true` still enables sandbox mode when `VA_API_ENABLED` is not set. The dedicated #189 sandbox smoke-test workflow calls the sandbox endpoints directly from one GitHub Actions job and remains separate from the application runtime boundary.
-
-## Service-specific credentials
-
-Keep every API credential server-only. Never use `NEXT_PUBLIC_*` for VA credentials.
-
-Sandbox:
-
-- `VA_FORMS_SANDBOX_API_KEY`
-- `VA_BENEFITS_REFERENCE_SANDBOX_API_KEY`
-- `VA_ACCREDITED_REP_SANDBOX_API_KEY` (Phase 3.1 locator; optional)
-
-Production:
-
-- `VA_FORMS_PRODUCTION_API_KEY`
-- `VA_BENEFITS_REFERENCE_PRODUCTION_API_KEY`
-- `VA_ACCREDITED_REP_PRODUCTION_API_KEY` (Phase 3.1 locator; optional)
-
-The Forms adapter sends only the Forms key. Benefits Reference Data requests send only the Benefits Reference Data key. The accredited-representative locator sends only its own key and is additionally gated by `VA_ACCREDITED_REP_ENABLED=true`; when that flag is `false` no directory request is made even if `VA_API_ENABLED=true`.
-
-## Optional endpoint overrides
-
-The adapter has VA defaults for each environment and accepts overrides only on the exact matching VA API origin:
-
-Sandbox:
-
-- `VA_FORMS_SANDBOX_BASE_URL`
-- `VA_BENEFITS_REFERENCE_SANDBOX_BASE_URL`
-- `VA_ACCREDITED_REP_SANDBOX_BASE_URL` (Phase 3.1 locator; optional)
-
-Production:
-
-- `VA_FORMS_PRODUCTION_BASE_URL`
-- `VA_BENEFITS_REFERENCE_PRODUCTION_BASE_URL`
-- `VA_ACCREDITED_REP_PRODUCTION_BASE_URL` (Phase 3.1 locator; optional)
-
-`VA_API_TIMEOUT_MS` controls the per-attempt timeout. `VA_SANDBOX_TIMEOUT_MS` remains a backward-compatible sandbox-era fallback.
-
-## Activation examples
-
-Single-process sandbox compatibility mode:
+Configure one URL/token pair:
 
 ```text
-VA_SANDBOX_ENABLED=true
-VA_FORMS_SANDBOX_API_KEY=<server-only value>
-VA_BENEFITS_REFERENCE_SANDBOX_API_KEY=<server-only value>
+VA_REFERENCE_SHARED_CACHE_URL=https://<operator-provisioned-rest-endpoint>
+VA_REFERENCE_SHARED_CACHE_TOKEN=<server-only value>
+VA_REFERENCE_SHARED_CACHE_PREFIX=va:ref:
+VA_SHARED_CONSUMER_BUDGET=true
 ```
 
-Single-process environment-neutral sandbox mode:
+Aliases are `VA_REFERENCE_KV_REST_URL` / `VA_REFERENCE_KV_REST_TOKEN`, `UPSTASH_REDIS_REST_URL` / `UPSTASH_REDIS_REST_TOKEN`, or `KV_REST_API_URL` / `KV_REST_API_TOKEN`. Use one complete matching pair, not a mixture of providers. All instances for a VA consumer must use the same store/prefix for its shared budget and circuit. Separate unrelated consumers to avoid unintended sharing. Before activation, verify atomic counter/circuit semantics and failure behavior on the actual deployment; configuration is not verification.
 
-```text
-VA_API_ENV=sandbox
-VA_API_ENABLED=true
-VA_FORMS_SANDBOX_API_KEY=<server-only value>
-VA_BENEFITS_REFERENCE_SANDBOX_API_KEY=<server-only value>
-```
+All five loaders use [shared cache access](../src/lib/va/reference-cache-access.ts): allowed process-local hit → shared hit → coordinated live fetch → best-effort shared write. The single-process cache is a 32-entry LRU with a five-minute TTL. It stays disabled in distributed execution even when shared KV is configured. The shared tier has five-minute TTL, a 750 ms whole-exchange deadline, size guards, allowlisted namespaces and per-namespace write admission. Cache keys hash user input; shared envelope epochs support fleet invalidation through authenticated `POST /api/admin/cache-clear`. Single-flight leases reduce duplicate cold fetches; consumer budget admission still gates every outbound attempt if a lease fails open.
 
-Production credentials may be staged only after VA production access is granted, but the current application runtime intentionally remains local-fallback-only in production/distributed execution until a shared state coordinator is implemented and verified:
+Cache trust guards require matching source/environment and safe links. Fallback results are never retained as successful VA data. Reference pages show source label, environment, retrieval time and hit/miss status only, never credentials or raw upstream payloads.
 
-```text
-VA_API_ENV=production
-VA_API_ENABLED=true
-VA_PRODUCTION_ACCESS_GRANTED=true
-VA_FORMS_PRODUCTION_API_KEY=<server-only value>
-VA_BENEFITS_REFERENCE_PRODUCTION_API_KEY=<server-only value>
-```
+## Controlled production connectivity check (issue #287)
 
-Without `VA_PRODUCTION_ACCESS_GRANTED=true` this exact configuration resolves to `disabled` and serves sandbox endpoints with no production key loaded.
+This is the missing transition step, not an application bypass. It keeps public application access disabled and makes at most **three sequential requests, once each, with no retry**:
 
+- Forms: fixed public form query `21-526EZ`;
+- Benefits Reference Data: disabilities;
+- Benefits Reference Data: service branches.
 
-Those variables alone do **not** authorize a production request under the current architecture. Issue #287 remains the production-transition gate.
+The [operator CLI](../scripts/verify-va-production-reference.mts) uses the application's [exact payload schemas](../src/lib/va/public-reference-schemas.mjs), fixed production endpoints, service-specific keys, redirect refusal, a 4-second whole-exchange timeout and 2 MiB per-response cap. It refuses before network access unless the grant is acknowledged, both production keys exist, application access remains off, and the confirmation argument is explicit. It stops on the first failure, including empty/invalid payloads, 401, 429, timeout or oversized body. It never uses sandbox keys, changes app configuration, writes caches or closes issues.
 
-## Reference caching and status
+### Operator procedure
 
-Forms search, disability terminology, service-branch, and accredited-representative reference loaders share a bounded five-minute cache. There are two tiers (all best-effort, non-authoritative):
+1. Record the real VA grant for **both** services and its approved scope. Do not invent approval evidence. #189 is already complete with credentialed sandbox evidence recorded in [gate status](external-manual-gates-status.md).
+2. Configure the GitHub environment `va-production-reference` with required human reviewers and main-only deployment protection **before** adding credentials. The workflow names this environment but does not create or configure its protection. Set environment variable `VA_PRODUCTION_ACCESS_GRANTED=true` only after the grant. Add environment secrets `VA_FORMS_PRODUCTION_API_KEY` and `VA_BENEFITS_REFERENCE_PRODUCTION_API_KEY` through GitHub's secure settings. Keep application VA access disabled.
+3. From merged `main`, manually dispatch [VA Production Reference Check](../.github/workflows/va-production-reference-check.yml) with `confirm_va_grant=true`. A false/unconfirmed or non-main dispatch skips the job: **skipped is not a pass**. Missing grant/credentials refuses and fails. The workflow records exact checkout SHA, run URL, timestamp, generated request IDs, HTTP status, validation outcome and counts only. No raw payload or key artifact is uploaded, and the workflow has no issue-write permission.
+4. Alternatively, in a controlled operator environment with server-only production keys already configured and application flags absent or false, run on Node 22.18+:
 
-- **Tier 1 — process-local LRU-32 / 5-min** (`src/lib/va/reference-cache.ts`): always checked first; `write` on every live fetch; disabled in production/distributed so a warm instance cannot be mistaken for a deployment-wide cache (unless tier 2 is configured, see below).
-- **Tier 2 — optional shared KV / edge cache** (`src/lib/va/reference-shared-cache.ts`): checked second on a `process-local miss`, and populated (best-effort `SET … EX 300`) on every live fetch. Uses a Redis-compatible **REST** API (Upstash Redis REST / Vercel KV) so it works from Node and edge/serverless runtimes without a TCP connection. Disabled when not configured — then behavior is unchanged from the process-local-only baseline.
+   ```bash
+   node scripts/verify-va-production-reference.mts --confirm-va-production-access
+   ```
 
-When the shared KV is **configured**, the `requestVaJson` distributed-runtime gate in `src/lib/va/sandbox.ts` no longer blocks live VA fetches in production/Vercel — the shared cache provides the cross-instance coordination that the production fail-closed required. The per-process outbound budget (`60/min`) and circuit breaker (`5 → open 60s → half-open`) still apply per-instance. Without a shared KV, production/distributed still fails closed to local fallback, and the shared cache is simply not consulted.
+   Do not put secrets on the command line. The command prints sanitized JSON and returns nonzero for refusal/failure. Local test fixtures are code evidence only, never live production evidence.
+5. Review and attach the successful sanitized workflow evidence to #287. This establishes controlled service connectivity **only**. It does not establish the deployed application's budget/circuit/cache behavior or approve user-facing activation.
+6. With explicit operator approval, configure the application's server-only production keys and shared coordinator, then deliberately select `VA_API_ENV=production`, `VA_PRODUCTION_ACCESS_GRANTED=true`, `VA_API_ENABLED=true`, and `VA_SHARED_CONSUMER_BUDGET=true`. Never activate the unrelated account or locator services by implication.
+7. Run full CI and Production Runtime Readiness on the exact deployed SHA. Check `/va-forms/finder` with public query `21-526EZ`, `/va-reference`, and `/va-reference/service-branches` in a real browser. Require actual `va-production-api` provenance, expected production labels, valid data, retrieval timestamp and shared hit behavior across instances. Verify disabled/missing-coordinator/outage/429 behavior and rollback; a local fallback 200 does not pass this step. Do not claim distributed correctness based on the one-process CLI.
+8. Close #287 only after the grant, controlled evidence, deployed-runtime verification, full CI and deployment readiness all have objective recorded evidence. No workflow here closes it automatically.
 
-The shared KV is wired into every reference loader (`forms-finder`, `form-reference`, `disability-reference`, `service-branches`, `accredited-representatives`) as `process-local hit` → `shared hit (rehydrate process-local, return)` → `live fetch` → `write both`. Shared reads/writes are best-effort with a `750ms` timeout, `256 KiB` value guard, and never throw — a KV hiccup just degrades to the next tier or to the local fallback.
+### Rollback
 
-The shared tier is bounded and revocable by policy, not just by TTL:
-
-- **Key policy** — only the allowlisted namespaces `forms:`, `accredited-rep:`, `disabilities:`, and `service-branches:` are read or written (lowercase `[a-z0-9:_-]`, ≤256 chars); user-supplied segments are SHA-256-hashed, never raw.
-- **Finite cardinality** — writes are admitted against a per-namespace window budget (`VA_SHARED_KEY_WRITE_WINDOW_SECONDS=300`, `VA_SHARED_KEY_WRITE_MAX_PER_WINDOW=240`), bounding residency at ≤480 keys per namespace and ≤1,920 across the allowlist. An exhausted budget or an unreachable counter skips the write (colder cache, never incorrect).
-- **Global invalidation** — entries are stored as `{envelopeVersion:2, epoch, value}` and a read is a single atomic `MGET [cache-epoch, value]` that accepts the value only under the epoch it observes. `POST /api/admin/cache-clear` (Bearer `CRON_SECRET` / `REGULATORY_SYNC_SECRET`) advances the epoch, so every instance drops previously cached shared entries immediately without a delete sweep; an unreadable epoch marker fails closed (reads miss, writes are skipped).
-- **Single-flight per key** — on a cold or expired key one instance claims a `SET … NX PX` lease (120 s, covering the longest legal logical fetch) and contenders wait a bounded 600 ms for the published value before falling back to their own fetch, so a fleet-wide TTL expiry or invalidation does not multiply upstream requests; the lease fails open (an unreachable coordinator simply means the normal fetch path, gated by the consumer budget).
-- **Read-side trust guard** — a shared hit is served only if it still matches this deployment's provenance (`source`/`environment` for the configured mode), carries bounded label metadata, and holds only credential-free HTTPS links; otherwise it counts as a miss and the loader refetches. VA-provided `url`/`website` values are additionally approved at the payload boundary (`trusted-link.ts`), so `javascript:`/`data:`/`http:`/credential-bearing links never reach a rendered `<a href>`.
-
-Configuration — configure **one** URL+token pair (all aliases are equivalent; use whichever your provider sets):
-
-```text
-VA_REFERENCE_SHARED_CACHE_URL=https://<id>.upstash.io
-VA_REFERENCE_SHARED_CACHE_TOKEN=<server-only REST token>
-VA_REFERENCE_SHARED_CACHE_PREFIX=va:ref:   # optional, default "va:ref:"
-# Aliases: VA_REFERENCE_KV_REST_URL / VA_REFERENCE_KV_REST_TOKEN
-#          UPSTASH_REDIS_REST_URL   / UPSTASH_REDIS_REST_TOKEN  (Vercel Upstash integration)
-#          KV_REST_API_URL          / KV_REST_API_TOKEN         (legacy Vercel KV)
-```
-
-The token must stay **server-only** (never `NEXT_PUBLIC_*`). `loadVaSharedCacheConfig()` validates the URL is `https:` and the key prefix defaults to `va:ref:`; `isVaSharedCacheConfigured()` is the gate used by both the loader fallback and the sandbox's production bypass. No adapter, schema, or page contract changed — only where a hit can be served from.
-
-User-facing reference pages expose only non-sensitive status: source label, environment, last successful retrieval time, and cache hit/miss state. Credentials, response payloads, and user workflow selections are never included in this status surface.
-
-Local fallback responses are not retained as successful VA cache entries in either tier. This allows a later request to recover immediately when upstream access becomes available.
+Immediately set application `VA_API_ENABLED=false` (do not rely on the legacy sandbox flag), apply through the normal deployment path, invalidate the shared reference cache through the authenticated admin endpoint, and confirm the public surfaces show local fallback rather than production data. Remove the grant acknowledgement if approval is withdrawn and rotate/revoke compromised credentials through the owning service. Retain sanitized failure evidence; do not copy upstream error bodies or credential-bearing details.
 
 ## Product boundaries
 
-- Secondary recommendations are computed before and independently from VA terminology lookup.
-- Per-result VA reference blocks are administrative annotations only.
-- The service-branch field is optional encrypted workflow context; `matchPresumptives()` does not read it.
-- No fuzzy VA terminology matching is used. Matches are normalized exact names or explicitly curated aliases.
-- Issue #189 remains the separate credentialed sandbox connectivity gate and must not be closed without its required live evidence.
-- Issue #287 remains the production-access gate and must not be closed until production access plus shared-state coordination are objectively verified.
+- Secondary recommendations are computed independently of administrative VA terminology.
+- Service-branch context does not change presumptive matching.
+- Exact normalized names or curated aliases are used, not fuzzy terminology matching.
+- #189 sandbox evidence, #195 human accessibility evidence and #287 production-transition evidence are distinct gates. Passing one cannot close another.

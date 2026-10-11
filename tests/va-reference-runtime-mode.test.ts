@@ -50,6 +50,25 @@ describe("VA public-reference runtime mode (issue #287)", () => {
       }
     });
 
+    it("never resurrects an explicit invalid or blank flag through the legacy sandbox flag", () => {
+      for (const value of ["maybe", "", "  ", "false", "0", "no"]) {
+        const env = { VA_API_ENABLED: value, VA_SANDBOX_ENABLED: "true" };
+        expect(resolveVaReferenceMode(env).mode).toBe("disabled");
+        expect(loadVaApiConfig(env).enabled).toBe(false);
+      }
+    });
+
+    it("refuses unknown environment selections rather than silently choosing sandbox", () => {
+      for (const value of ["prod", "staging", "production-typo"]) {
+        const env = { VA_API_ENV: value, VA_API_ENABLED: "true", VA_SANDBOX_ENABLED: "true" };
+        expect(resolveVaReferenceMode(env).mode).toBe("disabled");
+        expect(loadVaApiConfig(env).enabled).toBe(false);
+        expect(resolveVaReferenceMode(env).reason).toBe(
+          "VA_API_ENV must be sandbox or production. Unrecognised selections fail closed.",
+        );
+      }
+    });
+
     it("treats explicit falsy values as disabled", () => {
       for (const value of ["false", "0", "no"]) {
         expect(resolveVaReferenceMode({ VA_API_ENABLED: value }).mode).toBe("disabled");

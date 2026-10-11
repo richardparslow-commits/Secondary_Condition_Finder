@@ -61,25 +61,27 @@ The production `WORKFLOW_SESSION_SECRET` runtime gate has already been objective
 
 The issue's own gate rule is decisive: *"Do not switch the application to VA production endpoints or label data as production-sourced until VA production access is granted and live production connectivity is objectively verified."* Its final remaining item requires **live production reference checks** before closure. VA has not granted production access, so no repository change can close this issue.
 
-Repository-side work that is *not* blocked is complete:
+Repository-side runtime implementation is present. The 2026-10-11 follow-up adds a controlled connectivity procedure and corrects ambiguous flag handling; neither constitutes external VA approval or live production evidence:
 
 - **Deliberate tri-state runtime mode.** `resolveVaReferenceMode()` in `src/lib/va/runtime-state.ts` is the single decision point and resolves exactly one of `disabled` / `sandbox` / `production`. `disabled` is the fail-closed default and also the outcome for any ambiguous or incomplete production selection.
-- **Production access acknowledgement.** Production mode now additionally requires `VA_PRODUCTION_ACCESS_GRANTED=true`, separate from `VA_API_ENABLED`. This encodes the gate rule in code: no single mis-set variable can repoint the public reference surfaces at production or cause data to be labelled production-sourced. The variable is intentionally unset in every current environment.
+- **Production access acknowledgement.** Production mode requires `VA_PRODUCTION_ACCESS_GRANTED=true`, separate from `VA_API_ENABLED`. The acknowledgement represents a real VA grant, not connectivity proof. No production grant or production credential is established by this change.
+- **Ambiguous configuration fails closed.** An explicit invalid/blank generic enable flag cannot fall through to the legacy sandbox flag; unknown nonblank environment values are refused.
+- **Controlled verification before activation.** The manual, main-only [production check workflow](../.github/workflows/va-production-reference-check.yml) and [operator CLI](../scripts/verify-va-production-reference.mts) require an explicit grant and both production keys, keep application access disabled, use fixed endpoints and shared payload schemas, and emit sanitized evidence only. Required environment reviewers/protection must be configured by the operator. The check cannot close #287; see the [transition procedure and rollback](va-api-runtime-configuration.md#controlled-production-connectivity-check-issue-287).
 - **No production material on a failed-closed selection.** When production fails closed, the loaded configuration carries sandbox endpoints and no production keys, so a caller that neglected to check `enabled` still cannot reach production. The `environment` field still reports the *requested* environment so a refused production selection stays visible.
-- **Bounded caching and source-status reporting** are shared across the Forms, Benefits Reference Data (disability), service-branch, and accredited-representative datasets through `src/lib/va/reference-cache.ts`, with process-local state refused in production/distributed runtimes.
+- **Bounded caching and source-status reporting** cover Forms, disabilities, service branches and the optional locator. Process-local caching remains disabled in production/distributed runtimes; the implemented shared tier does not by itself enable live access. Distributed attempts require the explicit shared consumer-budget opt-in and successful shared circuit/budget admission. Actual deployment verification remains required.
 - **Forms Finder usage guidance** shipped in PR #288.
 
-What remains, and cannot be done from the repository:
+External/operator work still required (repository automation must not fabricate it):
 
 1. VA grants production API access;
 2. production service-specific credentials are installed server-side;
-3. production mode is deliberately enabled via the acknowledgement flag;
-4. live production connectivity is objectively verified;
-5. full CI, deployment readiness, and **live production reference checks** are run against that state.
+3. the authorized controlled check succeeds while application access remains disabled;
+4. production mode is deliberately enabled with verified shared coordination;
+5. full CI, exact-build deployment readiness, and **live production reference checks** verify the actual deployed path before closure.
 
-Current objective production state: `https://secondary-condition-finder.vercel.app/va-reference` returns HTTP 200 and reports **Local catalog fallback** with VA access **disabled**. That is the correct, expected state until VA grants access.
+Last recorded production state: `https://secondary-condition-finder.vercel.app/va-reference` returned HTTP 200 with **Local catalog fallback** and VA access **disabled**. This historical fallback check is not live VA production evidence. Recheck the exact deployment during the transition.
 
-Issue #189 remains a separate prerequisite gate for credentialed sandbox connectivity evidence.
+Issue #189's credentialed sandbox evidence is complete and recorded at the top of this file; only #287's production transition remains externally open.
 
 ## P0 account integration and approval boundary
 

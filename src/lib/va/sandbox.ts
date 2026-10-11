@@ -35,7 +35,12 @@ import {
   reserveVaSharedConsumerSlot,
   vaSharedConsumerBudgetEnabled,
 } from "./reference-shared-cache";
-import { isTrustedHttpsUrl, TRUSTED_LINK_REQUIREMENT } from "./trusted-link";
+import {
+  formsIndexSchema,
+  disabilityReferenceSchema,
+  serviceBranchReferenceSchema,
+  trustedHttpsUrlSchema,
+} from "./public-reference-schemas.mjs";
 
 const DEFAULT_FORMS_BASE_URLS = {
   sandbox: "https://sandbox-api.va.gov/services/va_forms/v0",
@@ -203,57 +208,6 @@ export function clearVaApiOutboundRateLimitState(): void {
 function sleep(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
-
-/**
- * VA-provided link (audit A-03 "approved HTTPS links"): rendered directly as
- * `<a href>`, so the schema rejects non-HTTPS schemes (`javascript:`,
- * `data:`, `http:`), credential-bearing URLs, and unparsable values instead of
- * passing them through. A payload with such a link fails validation and the
- * loader degrades to its explicit local fallback (see trusted-link.ts).
- */
-const trustedHttpsUrlSchema = z
-  .string()
-  .refine(isTrustedHttpsUrl, { message: TRUSTED_LINK_REQUIREMENT });
-
-const formIndexItemSchema = z.object({
-  id: z.string().min(1),
-  type: z.string().min(1),
-  attributes: z.object({
-    form_name: z.string().min(1),
-    url: trustedHttpsUrlSchema,
-    title: z.string().min(1),
-    last_revision_on: z.string().nullable().optional(),
-    pages: z.number().int().nonnegative().optional(),
-    sha256: z.string().nullable().optional(),
-    valid_pdf: z.boolean().optional(),
-    deleted_at: z.string().nullable().optional(),
-  }).passthrough(),
-}).passthrough();
-
-const formsIndexSchema = z.object({
-  data: z.array(formIndexItemSchema),
-}).passthrough();
-
-const disabilitySchema = z.object({
-  id: z.number().int(),
-  name: z.string().min(1),
-  endDateTime: z.string().nullable().optional(),
-}).passthrough();
-
-const disabilityReferenceSchema = z.object({
-  items: z.array(disabilitySchema),
-  totalItems: z.number().int().nonnegative().optional(),
-  totalPages: z.number().int().nonnegative().optional(),
-}).passthrough();
-
-const serviceBranchSchema = z.object({
-  code: z.string().min(1),
-  description: z.string().min(1),
-}).passthrough();
-
-const serviceBranchReferenceSchema = z.object({
-  items: z.array(serviceBranchSchema),
-}).passthrough();
 
 export type VaFormIndex = z.infer<typeof formsIndexSchema>;
 export type VaDisabilityReference = z.infer<typeof disabilityReferenceSchema>;
