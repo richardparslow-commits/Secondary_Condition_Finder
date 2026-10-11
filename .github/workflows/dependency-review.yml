@@ -76,22 +76,29 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
           PR_NUMBER: ${{ github.event.pull_request.number }}
-          BODY_FILE: ${{ steps.diff.outputs.tmp_dir }}/comment.md
+          TMP_DIR: ${{ steps.diff.outputs.tmp_dir }}
         run: |
           set -euo pipefail
           # An issue comment (not a diff-anchored review comment): a diff-path
           # comment cannot be upserted after the head SHA changes, while an
-          # issue comment edits cleanly with every push.
+          # issue comment edits cleanly with every push. The markdown is
+          # wrapped into the {"body": ...} JSON the API expects (jq --rawfile,
+          # so the diff content is preserved verbatim).
+          comment_file="$TMP_DIR/comment.md"
+          payload="$TMP_DIR/comment-payload.json"
+          jq --rawfile body "$comment_file" '{body: $body}' \
+            "{}" > "$payload"
+
           pr_comment_id="$(gh api "repos/$GITHUB_REPOSITORY/issues/$PR_NUMBER/comments" \
             --paginate \
             --jq "[.[] | select(.user.login == \"github-actions[bot]\" and (.body // \"\" | startswith(\"## Dependency manifest changes\")))] | first | .id // \"\"")"
 
           if [ -n "$pr_comment_id" ]; then
             gh api -X PATCH "repos/$GITHUB_REPOSITORY/issues/comments/$pr_comment_id" \
-              --input "$BODY_FILE" > /dev/null
+              --input "$payload" > /dev/null
           else
             gh api -X POST "repos/$GITHUB_REPOSITORY/issues/$PR_NUMBER/comments" \
-              --input "$BODY_FILE" > /dev/null
+              --input "$payload" > /dev/null
           fi
           echo "Manifest-diff review comment upserted on #$PR_NUMBER." >> "$GITHUB_STEP_SUMMARY"
 
