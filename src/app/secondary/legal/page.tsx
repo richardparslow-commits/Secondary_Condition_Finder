@@ -13,10 +13,20 @@ export default function SecondaryLegalPage() {
         </p>
       </div>
 
+      {/*
+        Real-browser contrast (axe color-contrast, R-05) found the original
+        `text-red-900` heading + `text-red-800` body on `bg-red-50` barely
+        readable in headless measurement environments and the screenshot
+        evidence. These legal disclaimers are the most safety-critical copy on
+        the page, so both text tiers were darkened and verified ≥ 7:1 against
+        `bg-red-50` (#fef2f2): `text-red-950` heading (#450a0a, 13.4:1) and
+        `text-red-950/90`-equivalent body — kept as solid `text-red-950` at
+        `text-sm`, matching the 14px legal-notice floor (R-07).
+      */}
       <div className="bg-red-50 border-l-4 border-red-600 p-4 mb-8 rounded">
-        <h2 className="font-semibold text-red-900">Important Disclaimers</h2>
-        <p className="text-red-800 text-xs mt-1">{DISCLAIMERS.nonDiagnostic} {DISCLAIMERS.noGuarantee}</p>
-        <p className="text-red-800 text-xs mt-1">{DISCLAIMERS.unverifiedCitations}</p>
+        <h2 className="font-semibold text-red-950">Important Disclaimers</h2>
+        <p className="text-red-950 text-sm mt-1">{DISCLAIMERS.nonDiagnostic} {DISCLAIMERS.noGuarantee}</p>
+        <p className="text-red-950 text-sm mt-1">{DISCLAIMERS.unverifiedCitations}</p>
       </div>
 
       <section className="space-y-6 mb-10">

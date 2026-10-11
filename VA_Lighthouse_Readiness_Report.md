@@ -369,7 +369,7 @@ Ordered by *what unblocks the most*. R-01 and R-04 are independent of each other
 | **R-02** | ~~Fix measured contrast failures via one design-token change~~ **DONE, merged** (PR #520, `4112e719`) — token exposed, 65 sites swept, contrast test added | H-01 | Code | 0.5 day | **Yes** (508 evidence depends on it) |
 | **R-03** | Add scheduled dependency re-audit + dependency-review + SAST | M-05 | CI | 0.5 day | Recommended |
 | **R-04** | Assign owners and tracking issues to all manual/human gates | B-01, B-03, H-02 | Project management | 1 day | **Yes** |
-| **R-05** | Add real-browser contrast + keyboard coverage to the existing WebDriver E2E job | H-01, B-03 | CI | 1 day | No, but strongly recommended |
+| **R-05** | ~~Add real-browser contrast + keyboard coverage to the existing WebDriver E2E job~~ **IMPLEMENTED (2026-10-11, awaiting merge)** — `e2e/a11y-contrast.mjs` runs enabled-contrast axe + keyboard visible-focus walk over 22 routes in CI; two real violations fixed on first run; pinned by `tests/a11y-contrast-gate.test.ts` | H-01, B-03 | CI | 1 day | No, but strongly recommended |
 | **R-06** | Correct the scope narrative and `api-client.ts` positioning | B-04 | Docs | 0.5 day | **Yes** |
 | **R-07** | ~~Bump disclaimer/notice text from 12px to 14px; reduce uppercase density~~ **DONE, merged** — 20 legal/safety notices plus the 24-site `.ui-kicker` class raised to 14px; `uppercase` cut 41 → 1 in components and `text-transform: uppercase` 1 → 0 in stylesheets; `tests/legal-notice-legibility.test.ts` (20 tests) added | M-01, M-02 | Code | 1 day | No |
 | **R-08** | Re-verify prior audit A01–A10 against current `main` | M-04 | Review | 1–2 days | Recommended |
@@ -482,6 +482,51 @@ Therefore the fix is **one line plus a sweep**, not a new colour decision:
 
 ### 5.5 R-05 — Real-browser contrast and keyboard pass
 
+> **STATUS (2026-10-11): IMPLEMENTED — awaiting merge.** The jsdom contrast gap is closed by
+> `e2e/a11y-contrast.mjs`, a new real-browser spec in the existing raw-WebDriver + chromedriver
+> harness (no new browser stack, per the implementation constraint below).
+>
+> **What it does.** For all 22 shipped routes it runs axe-core's `color-contrast` rule **enabled**
+> in live Chrome (blocking impacts critical/serious, the same bar as the jsdom gate), then walks
+> keyboard focus with Tab, asserting every focused element reports visible client rects and that
+> the walk advances across distinct interactive elements (bounded at 120 steps). Per-route axe
+> JSON reports plus a summary are written to `a11y-evidence/` and uploaded as CI artifacts.
+>
+> **Trusted Types preserved.** axe is read from the pinned `node_modules/axe-core` package and
+> evaluated through WebDriver `execute/sync` (bootstrap) + `execute/async` (the axe.run promise
+> completes after sync evaluation returns) — script evaluation is not a DOM injection sink, so
+> the production gate (`require-trusted-types-for 'script'`, same-origin-only, blob/data
+> refused) needed **no change**. This is pinned by `tests/a11y-contrast-gate.test.ts`, which
+> also asserts the CI wiring, aggregator re-fail, route coverage, and evidence artifacts.
+>
+> **Defects it found and immediately fixed** (the gate paid for itself on its first run):
+>
+> 1. **`/secondary/legal` disclaimers at 1.49:1.** The legacy palette-normalization rule
+>    `.app-shell [class*="bg-red-"] { background: var(--primary) !important }`
+>    ([globals.css:112](src/app/globals.css) pre-fix) was repainting the red disclaimer
+>    *callout* background to primary blue while the dark-red text stayed put — dark red on blue
+>    at ~1.5:1 across the heading and both disclaimer paragraphs (4 nodes). Fixed by exempting
+>    soft red callout backgrounds (`bg-red-50/100/200`) from the legacy-button rule; heading/body
+>    additionally raised to `text-red-950` (14.76:1 on `bg-red-50`) at `text-sm` (14px), matching
+>    the R-07 legal-notice floor.
+> 2. **`/secondary/legal` CTA link at 1.27:1.** Anchors with a `bg-blue-6*` class took Tailwind's
+>    spacing but — because the base `a { color: var(--primary) }` rule outranks the `text-white`
+>    utility — rendered in primary blue on blue-600 (4th violating node in the same report).
+>    Fixed by adding `a[class*="bg-blue-6"]` to the `.ui-button` CTA normalization group that
+>    already handles `bg-red-`/`bg-slate-9`/`bg-green-` anchors, restoring `color:#fff !important`
+>    (5.17:1 on blue-600) and proper 46px tap height.
+>
+> **Gate proven in both directions.** Seeding `--muted: #a3aebe` (a sub-AA lighter gray) makes
+> the spec exit 1 with `blocking violation(s) ... @ header > .ui-kicker`; restoring the token
+> returns exit 0 across all 22 routes (local runs captured in `/tmp/r05-*` logs; CI reproduces
+> on every PR touching the app).
+>
+> The spec uses `next dev` as its server (mirroring `secondary-workflow.mjs`), not a
+> `next start` build — dev compiles lazily, so the same source truth is measured without a
+> second production build in the job. (The `coi-isolation.mjs` production-server pattern was
+> considered; journeys that measure rendered styling do not require a production bundle to be
+> valid contrast evidence.)
+
 **Change.** The jsdom gap is structural: axe's `color-contrast` rule always returns "incomplete" in jsdom because there is no layout engine, which is why `tests/setup/accessibility.ts:49` adds it to `ignoredRules` with the comment *"jsdom has no layout engine; axe returns incomplete for color-contrast"*. The right fix is **not** a new Playwright install — the project already has a real-browser harness: `e2e/` at the repo root drives headless Chrome over the raw WebDriver protocol via `chromedriver`, and `ci.yml:299` already gates on it (`id: e2e`, re-failed by the aggregator).
 
 So: extend the existing E2E harness to run axe-core in the live Chrome page with `color-contrast` **enabled**, across the key routes (`/`, `/results`, `/dd214`, `/privacy`, `/terms`, `/va-account`). Add an automated keyboard walk asserting visible focus on every interactive element. This reuses proven infrastructure, keeps one browser-automation stack, and adds real contrast evidence to a job that already blocks merges.
@@ -591,7 +636,7 @@ What a Lighthouse reviewer can be handed today, and what is still missing.
 | Manual-gate register | `docs/external-manual-gates-status.md` (#189/#195/#213/#287) | **Available; 3 further gates untracked (R-04)** |
 | Production-access package draft | `docs/phase3-production-access-package.md` | **Available; scope narrative wrong (R-06)** |
 | **Section 508 manual test results** | `docs/section508-manual-review-workbook.md` | **MISSING — all rows `NOT TESTED`, no tester/date/AT/sign-off** |
-| **Real-browser contrast evidence** | none | **MISSING (R-05)** |
+| **Real-browser contrast evidence** | `e2e/a11y-contrast.mjs` + CI `a11y_contrast` step + `a11y-evidence/` artifacts | **IMPLEMENTED (R-05, 2026-10-11)** — 22 routes per run; seeded-violation failure proven |
 | **VA production approval / keys** | none | **MISSING — external (B-01)** |
 | **Data-deletion policy + contact route** | none | **MISSING (R-01)** |
 | **Hosting log retention / callback scrubbing review** | none | **MISSING (H-02, R-04)** |

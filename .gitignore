@@ -42,6 +42,9 @@ playwright/.cache/
 test-screenshots/
 e2e/artifacts/
 e2e-artifacts/
+# R-05 real-browser contrast evidence is produced at run time and uploaded as
+# a CI artifact; it is never committed.
+a11y-evidence/
 *.trace.zip
 chromedriver.log
 chromedriver-*.log
