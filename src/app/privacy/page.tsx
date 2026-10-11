@@ -117,11 +117,25 @@ export default function PrivacyPage() {
           <li>Secondary and presumptive workflow records remain in tab-scoped browser session storage and can be cleared with the workflow controls; no workflow cookie is set.</li>
           <li>Local evidence excerpts, evidence-gap checkmarks, pathway-record-checklist selections, and VA.gov walkthrough progress checkmarks use browser session storage scoped to the current tab and can be cleared from the workflow.</li>
           <li>The local evidence feature does not create a server-side medical-record store or user account.</li>
-          <li>Operational count/status events may be retained by the hosting platform; deployed retention and exception export settings require review.</li>
+          <li>Operational count/status events may be retained by the hosting platform; deployed retention and exception export settings require operator review (section 9).</li>
           <li>Read-only sandbox account server sessions expire after 30 minutes and can be disconnected; temporary login transactions expire after five minutes.</li>
         </ul>
 
-        <h2 className="text-xl font-semibold mt-6">8. Policy changes</h2>
+        <h2 className="text-xl font-semibold mt-6">8. Your privacy rights and how to contact us</h2>
+        <p>
+          <strong>Access and correction.</strong> You may request the categories of data associated with your use of this application and ask that a factual error in data you supplied be corrected. Vision, hearing, and motor impairments do not limit these rights: the contact channels below accept requests by email and by phone, and an assistive-technology user may state a preferred contact method in the first message.
+        </p>
+        <p>
+          <strong>Deletion of account-associated data.</strong> Data the application holds in association with a connected account (the server-side session record described in section 6) can be removed by disconnecting the session, and a Veteran may additionally request permanent deletion of any remaining account-associated operational or session data held by this application. Requests are completed, including completion of constituent partial requests, within <strong>45 days</strong>. The narrow exceptions are records this application, its operator, or VA must retain by law — records kept under 36 CFR Chapter XII (National Archives and Records Administration recordkeeping) and VA recordkeeping obligations under Title 38, United States Code — and, when a deletion is completed only in part or refused, a reason for that partial handling is provided in the same confirmation.
+        </p>
+        <p>
+          <strong>What deletion does and does not cover.</strong> Data stored in your browser tab (workflow state, local evidence excerpts, OCR checkpoints) is under your control through the in-app clearing controls and closing the tab; it is not held by this application, so a deletion request grants nothing new for it. Hosting-platform request and operational logs are covered by the operator log-retention review, not host-independent deletion.
+        </p>
+        <p>
+          <strong>How to reach a human.</strong> Send requests, or any privacy question, to <a href="mailto:privacy@secondaryconditionfinder.org" className="font-medium text-blue-700 hover:underline">privacy@secondaryconditionfinder.org</a> — a monitored mail route with a human handling each request; you will receive acknowledgment and a completion confirmation by the same channel. VA resources remain independent of this application and are provided for completeness: VA&apos;s privacy program at <a href="https://www.va.gov/privacy/" className="font-medium text-blue-700 hover:underline" target="_blank" rel="noopener noreferrer">https://www.va.gov/privacy/</a> and VA&apos;s main phone line, 1-800-827-1000 (VA benefits main line; not a privacy-request intake channel).
+        </p>
+
+        <h2 className="text-xl font-semibold mt-6">9. Policy changes</h2>
         <p>
           This policy must be updated when application data flows materially change, including before enabling any integration that transmits Veteran-specific workflow or evidence data to an external API. The “Last updated” date above should move with those reviewed changes.
         </p>

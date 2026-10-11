@@ -91,7 +91,7 @@ export default async function TermsPage() {
 
         <h2 className="mt-6 text-xl font-semibold">7. Privacy and Local Evidence Handling</h2>
         <p>
-          Use of the application is also subject to the <Link href="/privacy" className="font-medium text-blue-700 hover:underline">Privacy Policy</Link>, which describes browser-local workflow state, evidence review, session-storage retention, telemetry posture, and the current VA API boundary. Users should avoid entering unrelated sensitive information and should use the minimum information needed for the research task.
+          Use of the application is also subject to the <Link href="/privacy" className="font-medium text-blue-700 hover:underline">Privacy Policy</Link>, which describes browser-local workflow state, evidence review, session-storage retention, telemetry posture, the current VA API boundary, and <strong>your data-deletion right, its 45-day completion commitment, and the privacy contact channel</strong> — see &quot;8. Your privacy rights and how to contact us&quot; in the Privacy Policy for how to request deletion or correction. Users should avoid entering unrelated sensitive information and should use the minimum information needed for the research task.
         </p>
 
         <h2 className="mt-6 text-xl font-semibold">8. Availability and Future Integrations</h2>
