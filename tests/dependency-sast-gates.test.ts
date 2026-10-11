@@ -91,7 +91,10 @@ describe("R-03.2 — dependency manifest review on pull requests", () => {
   it("produces the reviewer-visible manifest diff the paid action would have", () => {
     expect(source).toMatch(/## Dependency manifest changes/);
     expect(source).toMatch(/git diff "\$\{?base\}?" "\$\{?head_sha\}?" -- package\.json package-lock\.json/);
-    expect(source).toContain("pulls/comments");
+    // Upserted as an issue comment: diff-anchored review comments cannot be
+    // edited after the head SHA changes.
+    expect(source).toContain("issues/$PR_NUMBER/comments");
+    expect(source).toContain("-X PATCH \"repos/$GITHUB_REPOSITORY/issues/comments/");
   });
 
   it("does not silently swallow the plan constraint but documents the swap-back", () => {

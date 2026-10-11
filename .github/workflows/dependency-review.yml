@@ -71,30 +71,29 @@ jobs:
           } > "$tmp_dir/comment.md"
 
       # Upsert one review comment so repeat pushes do not pile up.
-      - name: Find existing review comment
-        if: steps.diff.outcome != 'skipped'
-        id: find
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          comment_id="$(gh api "repos/$GITHUB_REPOSITORY/pulls/${{ github.event.pull_request.number }}/comments" \
-            --jq "[.[] | select(.user.login == \"github-actions[bot]\" and (.body // \"\" | startswith(\"## Dependency manifest changes\")))] | first | .id // \"\"")"
-          echo "comment_id=$comment_id" >> "$GITHUB_OUTPUT"
-
-      - name: Upsert PR review comment
+      - name: Upsert PR issue-comment (manifest diff)
         if: steps.diff.outcome != 'skipped'
         env:
           GH_TOKEN: ${{ github.token }}
-          COMMENT_ID: ${{ steps.find.outputs.comment_id }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
           BODY_FILE: ${{ steps.diff.outputs.tmp_dir }}/comment.md
         run: |
-          if [ -n "$COMMENT_ID" ]; then
-            gh api -X PATCH "repos/$GITHUB_REPOSITORY/pulls/comments/$COMMENT_ID" \
-              -F body="@$BODY_FILE" --input "$BODY_FILE" > /dev/null
+          set -euo pipefail
+          # An issue comment (not a diff-anchored review comment): a diff-path
+          # comment cannot be upserted after the head SHA changes, while an
+          # issue comment edits cleanly with every push.
+          pr_comment_id="$(gh api "repos/$GITHUB_REPOSITORY/issues/$PR_NUMBER/comments" \
+            --paginate \
+            --jq "[.[] | select(.user.login == \"github-actions[bot]\" and (.body // \"\" | startswith(\"## Dependency manifest changes\")))] | first | .id // \"\"")"
+
+          if [ -n "$pr_comment_id" ]; then
+            gh api -X PATCH "repos/$GITHUB_REPOSITORY/issues/comments/$pr_comment_id" \
+              --input "$BODY_FILE" > /dev/null
           else
-            gh api -X POST "repos/$GITHUB_REPOSITORY/pulls/${{ github.event.pull_request.number }}/comments" \
-              -F body="placeholder" --input "$BODY_FILE" > /dev/null
+            gh api -X POST "repos/$GITHUB_REPOSITORY/issues/$PR_NUMBER/comments" \
+              --input "$BODY_FILE" > /dev/null
           fi
+          echo "Manifest-diff review comment upserted on #$PR_NUMBER." >> "$GITHUB_STEP_SUMMARY"
 
       # Actions/dependency-review-action is the preferred form once GitHub
       # Code Security / Advanced Security is purchased for this private repo.
