@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Reflected Frame — Plan-View Lighting &amp; Reflection Diagram</title>
+<style>
+  :root{
+    --bg:#0d1117; --panel:#161b22; --line:#30363d; --ink:#e6edf3;
+    --dim:#8b949e; --warn:#f0b429; --hot:#f85149; --key:#58a6ff;
+    --fill-key:#1f6feb22; --fill-fill:#ffffff12; --fill-spec:#f8514922;
+    --grid:rgba(255,255,255,0.035);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);
+    font-family:ui-monospace,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
+    -webkit-font-smoothing:antialiased}
+  .wrap{max-width:1320px;margin:0 auto;padding:22px 24px 60px}
+  header h1{font-size:18px;font-weight:600;letter-spacing:.2px;margin:0 0 4px}
+  header .sub{color:var(--dim);font-size:12px;letter-spacing:.4px;text-transform:uppercase}
+  .legend{display:flex;flex-wrap:wrap;gap:14px 22px;margin:14px 0 18px;font-size:12px}
+  .legend .item{display:flex;align-items:center;gap:8px;color:var(--dim)}
+  .legend .sw{width:22px;height:10px;border-radius:2px;display:inline-block}
+  .grid{display:grid;grid-template-columns:1fr 300px;gap:18px}
+  @media (max-width:980px){.grid{grid-template-columns:1fr}}
+  .canvas-wrap{
+    background:var(--panel);border:1px solid var(--line);border-radius:10px;
+    padding:14px;position:relative;
+  }
+  canvas{display:block;width:100%;height:auto;border-radius:6px;background:#0a0e14;
+    touch-action:none}
+  .readout{
+    background:var(--panel);border:1px solid var(--line);border-radius:10px;
+    padding:14px;font-size:12px;line-height:1.55;color:var(--dim);
+  }
+  .readout h3{margin:0 0 8px;font-size:11px;letter-spacing:.6px;text-transform:uppercase;
+    color:var(--ink);font-weight:600}
+  .readout .row{display:flex;justify-content:space-between;gap:10px;border-bottom:1px dashed var(--line);padding:5px 0}
+  .readout .row:last-child{border-bottom:none}
+  .readout .k{color:var(--dim)}
+  .readout .v{color:var(--ink);font-variant-numeric:tabular-nums;text-align:right}
+  .readout .v.hot{color:var(--hot)}
+  .readout .v.key{color:var(--key)}
+  .note{margin-top:10px;border-left:2px solid var(--warn);padding:4px 0 4px 10px;color:var(--dim);font-size:11px;line-height:1.5}
+  .note b{color:var(--warn);font-weight:600}
+  .dims{display:flex;gap:24px;flex-wrap:wrap;margin:10px 0}
+  .dims .d{font-size:11px}
+  .dims .d b{color:var(--ink);font-weight:600}
+  .bottom{margin-top:14px;display:flex;flex-wrap:wrap;gap:10px 22px;font-size:11px;color:var(--dim)}
+  .tag{display:inline-flex;align-items:center;gap:6px}
+  .tag .dot{width:8px;height:8px;border-radius:50%;display:inline-block}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Reflected Frame — Plan-View Lighting &amp; Reflection Diagram</h1>
+    <div class="sub">Top-down set diagram · camera, flag, window source, specular lobe · crew shooting reference</div>
+  </header>
+
+  <div class="legend">
+    <div class="item"><span class="sw" style="background:linear-gradient(90deg,#f85149,#f85149)"></span> Specular lobe (Hot / glint core)</div>
+    <div class="item"><span class="sw" style="background:var(--key)"></span> Key window source (light origin)</div>
+    <div class="item"><span class="sw" style="background:#7ee787"></span> Camera / lens axis</div>
+    <div class="item"><span class="sw" style="background:#c9d1d9;border:1px dashed #f0b429"></span> Flag / cut (shadow control line)</div>
+    <div class="item"><span class="sw" style="background:#8b949e"></span> Subject / reflected surface</div>
+    <div class="item"><span class="sw" style="background:transparent;border:1px solid var(--dim)"></span> Reflection ray (source→subject→lens)</div>
+  </div>
+
+  <div class="grid">
+    <div class="canvas-wrap">
+      <canvas id="plan" width="1100" height="760" aria-label="Plan view lighting diagram"></canvas>
+    </div>
+
+    <aside class="readout">
+      <h3>Reading the diagram</h3>
+      <div class="row"><span class="k">View</span><span class="v">PLAN — top down, set floor</span></div>
+      <div class="row"><span class="k">North</span><span class="v">Up = braintree</span></div>
+      <div class="dims">
+        <div class="d">Window to subject: <b id="d_ws">—</b></div>
+        <div class="d">Subject to camera: <b id="d_sc">—</b></div>
+        <div class="d">Flag standoff: <b id="d_ff">—</b></div>
+      </div>
+      <h3 style="margin-top:12px">Angles (from plan)</h3>
+      <div class="row"><span class="k">Window→Subject bearing</span><span class="v key" id="b_ws">—</span></div>
+      <div class="row"><span class="k">Camera→Subject bearing</span><span class="v" id="b_cs">—</span></div>
+      <div class="row"><span class="k">Candidate reflection angle</span><span class="v hot" id="b_ref">—</span></div>
+      <div class="row"><span class="k">Subject azimuth from camera</span><span class="v" id="az_cs">—</span></div>
+      <div class="note">
+        <b>Specular lobe</b> is drawn around the reflection angle, not the window.
+        The glint is brightest where source→surface→lens are coplanar within the lobe.
+        Move the <b>flag</b> to kill the lobe edge, not the window — flag position is measured from the window, not the lens.
+      </div>
+      <h3 style="margin-top:12px">Crew set checklist</h3>
+      <div style="font-size:11px;line-height:1.7">
+        1. Sight the window to the subject at the bearing above.<br>
+        2. Place the flag on the window side, between window and subject, so the shadow line crosses the lobe edge you want to lose.<br>
+        3. Confirm the camera axis is not coplanar with the source ray — if it is, the lobe blows the frame.<br>
+        4. Shoot a test of the reflected surface; the glint should sit inside the drawn lobe, not spill past it.
+      </div>
+    </aside>
+  </div>
+
+  <div class="bottom">
+    <span class="tag"><span class="dot" style="background:var(--hot)"></span> Specular lobe = the controlled highlight you are protecting or killing</span>
+    <span class="tag"><span class="dot" style="background:var(--key)"></span> Window is the origin; every reflection ray starts there</span>
+    <span class="tag"><span class="dot" style="background:#c9d1d9;border:1px dashed #f0b429"></span> Flag is a cut from the window side — position it relative to the source, not the camera</span>
+  </div>
+</div>
+
+<script>
+(() => {
+  const cvs = document.getElementById('plan');
+  const ctx = cvs.getContext('2d');
+  const W = 1100, H = 760;
+
+  // ── Coordinate model (plan view, top-down, arbitrary metres) ──────────────
+  // Window = north wall light source
+  const win = { x: 170, y: 120, w: 240, h: 70 };     // window opening
+  const subj = { x: 690, y: 430 };                     // subject / reflected surface centre
+  const cam = { x: 900, y: 330 };                      // camera on its axis
+  const flag = { x: 470, y: 262 };                    // flag stand position (window side)
+
+  const d_ws = Math.hypot(subj.x-win.x, subj.y-win.y);
+  const d_sc = Math.hypot(cam.x-subj.x, cam.y-subj.y);
+  const d_ff = Math.hypot(flag.x-win.x, flag.y-win.y);
+
+  function bearing(a,b){
+    // degrees, 0 = +x (east), CCW positive; -180..180
+    let deg = Math.atan2(b.y-a.y, b.x-a.x) * 180/Math.PI;
+    return deg;
+  }
+  const b_ws = bearing(win, subj);
+  const b_cs = bearing(cam, subj);     // from camera to subject
+  const b_sw = bearing(subj, win);    // from subject back to source
+
+  // Specular/visible-reflection bearing from subject toward camera when
+  // source bounces off a planar surface point at 'subj'. For a write-up
+  // reference we show the source→subject ray and the subject→camera ray;
+  // the "lobby" of the lobe is drawn around the subject→camera direction
+  // weighted by the source direction.
+  const b_sc_out = bearing(subj, cam);   // subject radiates toward camera
+  const b_ref = b_sc_out;                // candidate visible-reflection bearing at subj
+
+  // azimuth of subject from camera (compass-ish, just for readout)
+  const az = ((bearing(cam,subj)+360)%360);
+
+  // ── Helpers ────────────────────────────────────────────────────────────────
+  const fmt = (v,d=0)=> typeof v==='number' ? v.toFixed(d) : v;
+  const align = (a)=> ((a%360)+360)%360;
+
+  function polar(cx,cy,r,deg){
+    const rad = deg*Math.PI/180;
+    return { x: cx + r*Math.cos(rad), y: cy + r*Math.sin(rad) };
+  }
+
+  function degLerp(a,b,t){ return a + (b-a)*t; }
+
+  // ── Draw ───────────────────────────────────────────────────────────────────
+  ctx.clearRect(0,0,W,H);
+
+  // grid
+  ctx.save();
+  ctx.strokeStyle = 'rgba(255,255,255,0.05)';
+  ctx.lineWidth = 1;
+  for(let x=0;x<=W;x+=40){ ctx.beginPath(); ctx.moveTo(x,0); ctx.lineTo(x,H); ctx.stroke(); }
+  for(let y=0;y<=H;y+=40){ ctx.beginPath(); ctx.moveTo(0,y); ctx.lineTo(W,y); ctx.stroke(); }
+  ctx.restore();
+
+  // compass ring
+  ctx.save();
+  ctx.strokeStyle = 'rgba(255,255,255,0.12)';
+  ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.arc(80,80,62,0,Math.PI*2); ctx.stroke();
+  ctx.fillStyle = '#8b949e';
+  ctx.font = '11px ui-monospace,monospace';
+  const cards = ['N','E','S','W'];
+  cards.forEach((c,i)=>{
+    const a = i*90 - 90; // N at top
+    const p = polar(80,80,50,a);
+    ctx.fillText(c, p.x-5, p.y+4);
+  });
+  ctx.restore();
+
+  // north arrow
+  ctx.save();
+  ctx.strokeStyle = 'rgba(255,255,255,0.25)';
+  ctx.lineWidth = 1.2;
+  ctx.beginPath();
+  ctx.moveTo(80,20); ctx.lineTo(80,92);
+  ctx.moveTo(74,86); ctx.lineTo(80,92); ctx.lineTo(86,86);
+  ctx.stroke();
+  ctx.fillStyle = '#8b949e';
+  ctx.font = '10px ui-monospace,monospace';
+  ctx.fillText('N', 72, 16);
+  ctx.restore();
+
+  // ── Floor / room boundary hint ─────────────────────────────────────────────
+  ctx.save();
+  ctx.strokeStyle = 'rgba(255,255,255,0.08)';
+  ctx.setLineDash([4,6]);
+  ctx.lineWidth = 1;
+  ctx.strokeRect(40,40,W-80,H-80);
+  ctx.setLineDash([]);
+  ctx.restore();
+
+  // ── Window (source) ────────────────────────────────────────────────────────
+  ctx.save();
+  // glow
+  const wg = ctx.createRadialGradient(win.x, win.y, 20, win.x, win.y, 220);
+  wg.addColorStop(0,'rgba(248,81,73,0.55)');
+  wg.addColorStop(1,'rgba(248,81,73,0)');
+  ctx.fillStyle = wg;
+  ctx.beginPath(); ctx.arc(win.x, win.y, 220, 0, Math.PI*2); ctx.fill();
+
+  // window opening
+  ctx.fillStyle = 'rgba(248,81,73,0.18)';
+  ctx.strokeStyle = '#f85149';
+  ctx.lineWidth = 2;
+  ctx.fillRect(win.x, win.y, win.w, win.h);
+  ctx.strokeRect(win.x, win.y, win.w, win.h);
+
+  // window mullions
+  ctx.strokeStyle = 'rgba(248,81,73,0.7)';
+  ctx.lineWidth = 1;
+  ctx.beginPath();
+  ctx.moveTo(win.x+win.w/2, win.y); ctx.lineTo(win.x+win.w/2, win.y+win.h);
+  ctx.moveTo(win.x, win.y+win.h/2); ctx.lineTo(win.x+win.w, win.y+win.h/2);
+  ctx.stroke();
+
+  // source label
+  ctx.fillStyle = '#f85149';
+  ctx.font = 'bold 12px ui-monospace,monospace';
+  ctx.textAlign = 'left';
+  ctx.fillText('WINDOW SOURCE', win.x-6, win.y - 12);
+  ctx.fillStyle = '#e6edf3';
+  ctx.font = '11px ui-monospace,monospace';
+  ctx.fillText('light origin — every reflection ray starts here', win.x-6, win.y + win.h + 16);
+  ctx.restore();
+
+  // source→subject ray (the incoming/illumination ray)
+  ctx.save();
+  ctx.strokeStyle = 'rgba(139,148,158,0.55)';
+  ctx.lineWidth = 1.4;
+  ctx.setLineDash([5,5]);
+  ctx.beginPath();
+  ctx.moveTo(win.x + win.w/2, win.y + win.h/2);
+  ctx.lineTo(subj.x, subj.y);
+  ctx.stroke();
+  ctx.setLineDash([]);
+  // incoming-angle tick at subject
+  ctx.fillStyle = '#8b949e';
+  ctx.font = '10px ui-monospace,monospace';
+  ctx.textAlign = 'left';
+  ctx.fillText('source→subject ray', win.x+win.w/2+8, win.y+win.h/2+14);
+  ctx.restore();
+
+  // ── Flag (cut) ─────────────────────────────────────────────────────────────
+  ctx.save();
+  ctx.strokeStyle = '#f0b429';
+  ctx.lineWidth = 2;
+  ctx.setLineDash([9,6]);
+  // flag line from flag stand toward subject side, blocking the lobe edge
+  ctx.beginPath();
+  ctx.moveTo(flag.x, flag.y);
+  // project a short perpendicular-ish control line toward the lobe edge
+  const fl = polar(flag.x, flag.y, 70, b_sw + 120); // standoff line
+  ctx.lineTo(fl.x, fl.y);
+  ctx.stroke();
+  ctx.setLineDash([]);
+
+  // flag stand marker
+  ctx.fillStyle = '#f0b429';
+  ctx.beginPath(); ctx.arc(flag.x, flag.y, 7, 0, Math.PI*2); ctx.fill();
+  ctx.strokeStyle = '#0d1117'; ctx.lineWidth = 1.5; ctx.stroke();
+  ctx.fillStyle = '#161b22';
+  ctx.beginPath(); ctx.arc(flag.x, flag.y, 2.5, 0, Math.PI*2); ctx.fill();
+
+  ctx.fillStyle = '#f0b429';
+  ctx.font = 'bold 12px ui-monospace,monospace';
+  ctx.textAlign = 'left';
+  ctx.fillText('FLAG / CUT', flag.x + 12, flag.y - 6);
+  ctx.fillStyle = '#8b949e';
+  ctx.font = '11px ui-monospace,monospace';
+  ctx.fillText('position from window side — drags the lobe edge', flag.x + 12, flag.y + 8);
+  ctx.restore();
+
+  // ── Subject / reflected surface ───────────────────────────────────────────
+  ctx.save();
+  // reflected-surface footprint (planar surface patch)
+  ctx.fillStyle = 'rgba(139,148,158,0.10)';
+  ctx.strokeStyle = '#8b949e';
+  ctx.lineWidth = 1.2;
+  const sPatch = 70;
+  const sp1 = polar(subj.x, subj.y, sPatch, b_sc_out + 70);
+  const sp2 = polar(subj.x, subj.y, sPatch, b_sc_out - 70);
+  ctx.beginPath();
+  ctx.moveTo(sp1.x, sp1.y);
+  ctx.lineTo(polar(subj.x, subj.y, sPatch*1.15, b_sc_out - 110).x, polar(subj.x, subj.y, sPatch*1.15, b_sc_out - 110).y);
+  ctx.lineTo(polar(subj.x, subj.y, sPatch*1.15, b_sc_out + 110).x, polar(subj.x, subj.y, sPatch*1.15, b_sc_out + 110).y);
+  ctx.lineTo(sp2.x, sp2.y);
+  ctx.closePath();
+  ctx.fill();
+  ctx.stroke();
+
+  // subject point
+  ctx.fillStyle = '#8b949e';
+  ctx.beginPath(); ctx.arc(subj.x, subj.y, 6, 0, Math.PI*2); ctx.fill();
+  ctx.strokeStyle = '#0d1117'; ctx.lineWidth = 1.5; ctx.stroke();
+
+  ctx.fillStyle = '#e6edf3';
+  ctx.font = 'bold 12px ui-monospace,monospace';
+  ctx.textAlign = 'left';
+  ctx.fillText('SUBJECT / REFLECTED SURFACE', subj.x + 12, subj.y - 8);
+  ctx.fillStyle = '#8b949e';
+  ctx.font = '11px ui-monospace,monospace';
+  ctx.fillText('specular lobe is drawn around the reflection angle here', subj.x + 12, subj.y + 8);
+  ctx.restore();
+
+  // ── Camera / lens axis ─────────────────────────────────────────────────────
+  ctx.save();
+  // lens axis line from camera back along the looking direction (toward subject)
+  const camLook = polar(cam.x, cam.y, 320, b_cs);
+  ctx.strokeStyle = 'rgba(126,231,135,0.7)';
+  ctx.lineWidth = 2.2;
+  ctx.beginPath();
+  ctx.moveTo(cam.x, cam.y);
+  ctx.lineTo(camLook.x, camLook.y);
+  ctx.stroke();
+
+  // camera body
+  ctx.fillStyle = '#7ee787';
+  ctx.strokeStyle = '#0d1117'; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.arc(cam.x, cam.y, 11, 0, Math.PI*2); ctx.fill(); ctx.stroke();
+  // lens direction tick
+  ctx.strokeStyle = '#7ee787';
+  ctx.lineWidth = 2;
+  ctx.beginPath();
+  const lp = polar(cam.x, cam.y, 16, b_cs);
+  ctx.moveTo(cam.x, cam.y); ctx.lineTo(lp.x, lp.y);
+  ctx.stroke();
+
+  ctx.fillStyle = '#7ee787';
+  ctx.font = 'bold 12px ui-monospace,monospace';
+  ctx.textAlign = 'left';
+  ctx.fillText('CAMERA / LENS AXIS', cam.x + 16, cam.y - 10);
+  ctx.fillStyle = '#8b949e';
+  ctx.font = '11px ui-monospace,monospace';
+  ctx.fillText('lens points toward subject; do NOT align coplanar with source ray', cam.x + 16, cam.y + 8);
+  ctx.restore();
+
+  // camera label placard
+  ctx.save();
+  ctx.fillStyle = 'rgba(126,231,135,0.10)';
+  ctx.strokeStyle = 'rgba(126,231,135,0.4)';
+  ctx.lineWidth = 1;
+  ctx.fillRect(cam.x + 18, cam.y - 22, 200, 38);
+  ctx.strokeRect(cam.x + 18, cam.y - 22, 200, 38);
+  ctx.fillStyle = '#7ee787';
+  ctx.font = 'bold 11px ui-monospace,monospace';
+  ctx.textAlign = 'left';
+  ctx.fillText('CAMERA AXIS', cam.x + 24, cam.y - 10);
+  ctx.fillStyle = '#8b949e';
+  ctx.font = '10px ui-monospace,monospace';
+  ctx.fillText('top-down sight line to subject', cam.x + 24, cam.y + 2);
+  ctx.restore();
+
+  // ── Specular lobe (the controlled highlight) ───────────────────────────────
+  ctx.save();
+  // lobe is a wedge centred on the subject→camera bearing, asymmetric toward source
+  const lobeHalf = 18;            // degrees each side of reflection bearing
+  const lobeLen = 300;            // how far the lobe extends from subject
+  const lobeTowardSource = 26;    // extra bloom toward source side
+
+  // wedge outer arc
+  const ax0 = polar(subj.x, subj.y, lobeLen, b_ref - lobeHalf);
+  const ax1 = polar(subj.x, subj.y, lobeLen, b_ref + lobeHalf);
+  const axS = polar(subj.x, subj.y, lobeLen*1.25, b_ref - lobeHalf - lobeTowardSource);
+  const axN = polar(subj.x, subj.y, lobeLen*1.25, b_ref + lobeHalf + lobeTowardSource);
+
+  const grad = ctx.createRadialGradient(subj.x, subj.y, 10, subj.x, subj.y, lobeLen*1.25);
+  grad.addColorStop(0, 'rgba(248,81,73,0.0)');
+  grad.addColorStop(0.25, 'rgba(248,81,73,0.10)');
+  grad.addColorStop(1, 'rgba(248,81,73,0.22)');
+
+  ctx.fillStyle = grad;
+  ctx.beginPath();
+  ctx.moveTo(subj.x, subj.y);
+  ctx.lineTo(ax0.x, ax0.y);
+  ctx.arc(subj.x, subj.y, lobeLen, (b_ref-lobeHalf)*Math.PI/180, (b_ref+lobeHalf)*Math.PI/180);
+  ctx.lineTo(subj.x, subj.y);
+  ctx.closePath();
+  ctx.fill();
+
+  // warm hot-core wedge (brighter inner)
+  ctx.fillStyle = 'rgba(248,81,73,0.16)';
+  ctx.beginPath();
+  ctx.moveTo(subj.x, subj.y);
+  ctx.lineTo(polar(subj.x, subj.y, lobeLen*0.5, b_ref - lobeHalf*0.5).x, polar(subj.x, subj.y, lobeLen*0.5, b_ref - lobeHalf*0.5).y);
+  ctx.arc(subj.x, subj.y, lobeLen*0.5, (b_ref-lobeHalf*0.5)*Math.PI/180, (b_ref+lobeHalf*0.5)*Math.PI/180);
+  ctx.lineTo(subj.x, subj.y);
+  ctx.closePath();
+  ctx.fill();
+
+  // lobe boundary arcs
+  ctx.strokeStyle = 'rgba(248,81,73,0.85)';
+  ctx.lineWidth = 1.4;
+  ctx.setLineDash([4,4]);
+  ctx.beginPath();
+  ctx.moveTo(subj.x, subj.y);
+  ctx.lineTo(ax0.x, ax0.y);
+  ctx.stroke();
+  ctx.beginPath();
+  ctx.moveTo(subj.x, subj.y);
+  ctx.lineTo(ax1.x, ax1.y);
+  ctx.stroke();
+  ctx.setLineDash([]);
+
+  // lobe core tick (brightest point on the reflection bearing)
+  ctx.strokeStyle = '#f85149';
+  ctx.lineWidth = 2;
+  ctx.beginPath();
+  const core = polar(subj.x, subj.y, lobeLen*0.75, b_ref);
+  ctx.moveTo(subj.x, subj.y); ctx.lineTo(core.x, core.y);
+  ctx.stroke();
+
+  // lobe label
+  ctx.fillStyle = '#f85149';
+  ctx.font = 'bold 12px ui-monospace,monospace';
+  ctx.textAlign = 'left';
+  ctx.fillText('SPECULAR LOBE (hot / glint core)', subj.x + 12, subj.y + 30);
+  ctx.fillStyle = '#f0b429';
+  ctx.font = '11px ui-monospace,monospace';
+  ctx.fillText('keep the glint inside this wedge — flag the edge you want gone', subj.x + 12, subj.y + 44);
+  ctx.restore();
+
+  // ── Reflection ray (source→subject→lens) ────────────────────────────────────
+  ctx.save();
+  ctx.strokeStyle = 'rgba(139,148,158,0.9)';
+  ctx.lineWidth = 1.2;
+  ctx.setLineDash([3,4]);
+  // subject→camera ray
+  ctx.beginPath();
+  ctx.moveTo(subj.x, subj.y);
+  ctx.lineTo(cam.x, cam.y);
+  ctx.stroke();
+  // arrowhead at camera end
+  const ah = 10;
+  const ang = b_cs*Math.PI/180;
+  ctx.fillStyle = 'rgba(139,148,158,0.9)';
+  ctx.beginPath();
+  ctx.moveTo(cam.x, cam.y);
+  ctx.lineTo(cam.x - ah*Math.cos(ang-0.4), cam.y - ah*Math.sin(ang-0.4));
+  ctx.lineTo(cam.x - ah*Math.cos(ang+0.4), cam.y - ah*Math.sin(ang+0.4));
+  ctx.closePath();
+  ctx.fill();
+  ctx.setLineDash([]);
+  ctx.restore();
+
+  // reflection-angle label at subject
+  ctx.save();
+  ctx.fillStyle = '#f85149';
+  ctx.font = 'bold 11px ui-monospace,monospace';
+  ctx.textAlign = 'left';
+  const lbl = polar(subj.x, subj.y, 120, b_ref);
+  ctx.fillText('reflection angle', lbl.x + 8, lbl.y);
+  ctx.restore();
+
+  // ── Measurement annotations ────────────────────────────────────────────────
+  ctx.save();
+  ctx.fillStyle = '#8b949e';
+  ctx.font = '10px ui-monospace,monospace';
+  ctx.textAlign = 'center';
+
+  // window→subject dimension
+  const m1 = polar(win.x + win.w/2, win.y + win.h/2, 26, b_sw + 90);
+  ctx.strokeStyle = 'rgba(248,81,73,0.5)';
+  ctx.lineWidth = 1;
+  ctx.beginPath();
+  ctx.moveTo(win.x + win.w/2, win.y + win.h/2);
+  ctx.lineTo(subj.x, subj.y);
+  ctx.stroke();
+  ctx.fillStyle = '#f85149';
+  ctx.font = 'bold 10px ui-monospace,monospace';
+  const dm1 = fmt(d_ws,1);
+  ctx.fillText(dm1+' m', (win.x+win.w/2+subj.x)/2, (win.y+win.h/2+subj.y)/2 - 10);
+  ctx.restore();
+
+  // ── Side panel readouts ────────────────────────────────────────────────────
+  document.getElementById('d_ws').textContent = fmt(d_ws,1)+' m';
+  document.getElementById('d_sc').textContent = fmt(d_sc,1)+' m';
+  document.getElementById('d_ff').textContent = fmt(d_ff,1)+' m';
+  document.getElementById('b_ws').textContent = fmt(align(b_sw),1)+'°';
+  document.getElementById('b_cs').textContent = fmt(align(b_cs),1)+'°';
+  document.getElementById('b_ref').textContent = fmt(align(b_ref),1)+'°';
+  document.getElementById('az_cs').textContent = fmt(az,1)+'°';
+
+  // drag interactivity: move flag (you and other designers can nudge it)
+  let dragging = false;
+  cvs.addEventListener('pointerdown', e=>{
+    const r = cvs.getBoundingClientRect();
+    const mx = (e.clientX - r.left) * (W / r.width);
+    const my = (e.clientY - r.top) * (H / r.height);
+    if(Math.hypot(mx-flag.x, my-flag.y) < 14){ dragging = true; cvs.setPointerCapture(e.pointerId); }
+  });
+  cvs.addEventListener('pointermove', e=>{
+    if(!dragging) return;
+    const r = cvs.getBoundingClientRect();
+    let mx = (e.clientX - r.left) * (W / r.width);
+    let my = (e.clientY - r.top) * (H / r.height);
+    mx = Math.max(60, Math.min(W-60, mx));
+    my = Math.max(60, Math.min(H-60, my));
+    flag.x = mx; flag.y = my;
+    draw();
+  });
+  cvs.addEventListener('pointerup', e=>{ dragging=false; });
+  cvs.addEventListener('pointercancel', e=>{ dragging=false; });
+
+  function draw(){
+    // recompute flag standoff for readout
+    const nff = Math.hypot(flag.x-win.x, flag.y-win.y);
+    document.getElementById('d_ff').textContent = fmt(nff,1)+' m';
+    // redraw everything
+    location.reload(); // simplest faithful redraw (stateless diagram)
+  }
+})();
+</script>
+</body>
+</html>

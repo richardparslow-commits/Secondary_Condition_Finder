@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Concept 1c — Reflected (flag in the glass)</title>
+<style>
+  :root{ --crimson:#c8102e; --navy:#002868; --canvas:#efe6d2; --amber:#e6a549; --brass:#b98a3c; --leather:#6b3a1e; }
+  *{box-sizing:border-box}
+  html,body{margin:0;background:#060504;color:#e9e2d6;
+    font:14px/1.55 ui-sans-serif,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+  .hero{width:100%;max-width:1600px;margin:0 auto;display:block}
+  .sheet{max-width:1180px;margin:0 auto;padding:34px 26px 70px}
+  h1{font-size:20px;letter-spacing:.14em;text-transform:uppercase;margin:0 0 4px;font-weight:600}
+  h2{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#9a8f7d;margin:34px 0 10px;font-weight:600}
+  .sub{color:#9a8f7d;margin:0 0 26px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+  .card{border:1px solid #2b231a;border-radius:10px;padding:12px 14px;background:#100c08}
+  .card b{display:block;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#8d8272;font-weight:600;margin-bottom:6px}
+  .sw{display:flex;align-items:center;gap:10px;margin:7px 0}
+  .chip{width:26px;height:26px;border-radius:6px;border:1px solid #00000055;flex:0 0 auto}
+  code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:12px;color:#d7cbb4}
+  table{width:100%;border-collapse:collapse;font-size:13px}
+  td,th{border-bottom:1px solid #221b14;padding:7px 6px;text-align:left;vertical-align:top}
+  th{color:#8d8272;font-size:11px;letter-spacing:.14em;text-transform:uppercase}
+</style>
+</head>
+<body>
+<!-- ============================================================
+     CONCEPT 1c — "Reflected"  (third frame of Concept 1)
+     Raked close-up across the tablet's glossy panel. The Texas flag
+     is reflected in the glass, so the woven red of the flag sits
+     against the emissive crimson of the alert. 1600x1000.
+     ============================================================ -->
+<svg class="hero" viewBox="0 0 1600 1000" xmlns="http://www.w3.org/2000/svg" role="img"
+     aria-label="Extreme close-up of a matte-black tablet at a raking angle, its glossy screen showing a crimson accelerated-underwriting alert with the Texas flag and a window shaft reflected in the glass, the leather notebook edge and a brass pen out of focus in the near foreground">
+  <defs>
+    <!-- textures -->
+    <filter id="c_wood" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.004 0.3" numOctaves="5" seed="53" result="n"/>
+      <feColorMatrix in="n" type="saturate" values="0"/>
+      <feComponentTransfer><feFuncA type="linear" slope="0.44"/></feComponentTransfer>
+    </filter>
+    <filter id="c_leather" x="-6%" y="-6%" width="112%" height="112%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.6 0.5" numOctaves="5" seed="9" result="n"/>
+      <feColorMatrix in="n" type="saturate" values="0"/>
+      <feComponentTransfer><feFuncA type="linear" slope="0.6"/></feComponentTransfer>
+    </filter>
+    <filter id="c_canvas" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.75 0.95" numOctaves="4" seed="27" result="n"/>
+      <feColorMatrix in="n" type="saturate" values="0"/>
+      <feComponentTransfer><feFuncA type="linear" slope="0.42"/></feComponentTransfer>
+    </filter>
+    <filter id="c_stone" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.03 0.05" numOctaves="5" seed="71" result="n"/>
+      <feColorMatrix in="n" type="saturate" values="0"/>
+      <feComponentTransfer><feFuncA type="linear" slope="0.48"/></feComponentTransfer>
+    </filter>
+    <!-- depth of field -->
+    <filter id="c_far"><feGaussianBlur stdDeviation="9"/></filter>
+    <filter id="c_far2"><feGaussianBlur stdDeviation="5.5"/></filter>
+    <filter id="c_glass"><feGaussianBlur stdDeviation="1.8"/></filter>
+    <filter id="c_near"><feGaussianBlur stdDeviation="6"/></filter>
+    <filter id="c_near2"><feGaussianBlur stdDeviation="3.4"/></filter>
+    <filter id="c_soft" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="30"/></filter>
+    <filter id="c_soft2" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="14"/></filter>
+    <filter id="c_mote" x="-70%" y="-70%" width="240%" height="240%"><feGaussianBlur stdDeviation="2.4"/></filter>
+    <!-- gradients -->
+    <linearGradient id="c_wall" x1="0" y1="0" x2="0.4" y2="1">
+      <stop offset="0" stop-color="#a08a63"/><stop offset="0.55" stop-color="#7b6748"/>
+      <stop offset="1" stop-color="#3c3124"/>
+    </linearGradient>
+    <linearGradient id="c_table" x1="0" y1="0" x2="0.3" y2="1">
+      <stop offset="0" stop-color="#2b170d"/><stop offset="0.45" stop-color="#3b1f11"/>
+      <stop offset="1" stop-color="#0e0704"/>
+    </linearGradient>
+    <radialGradient id="c_amber" cx="0.68" cy="0.3" r="0.62">
+      <stop offset="0" stop-color="#e6a549" stop-opacity="0.5"/>
+      <stop offset="0.5" stop-color="#a9631a" stop-opacity="0.16"/>
+      <stop offset="1" stop-color="#000" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="c_body" x1="0" y1="0" x2="0.35" y2="1">
+      <stop offset="0" stop-color="#33353b"/><stop offset="0.45" stop-color="#17181c"/>
+      <stop offset="1" stop-color="#0a0a0d"/>
+    </linearGradient>
+    <linearGradient id="c_screen" x1="0" y1="0" x2="0.55" y2="1">
+      <stop offset="0" stop-color="#0e1a23"/><stop offset="1" stop-color="#060a0f"/>
+    </linearGradient>
+    <linearGradient id="c_alert" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#8c0218"/><stop offset="1" stop-color="#c8102e"/>
+    </linearGradient>
+    <radialGradient id="c_glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#ff2440" stop-opacity="0.5"/>
+      <stop offset="1" stop-color="#c8102e" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="c_streak" x1="0" y1="0" x2="0.2" y2="1">
+      <stop offset="0" stop-color="#fff3d6" stop-opacity="0.75"/>
+      <stop offset="0.45" stop-color="#ffe6b4" stop-opacity="0.28"/>
+      <stop offset="1" stop-color="#ffdca0" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="c_reflFade" x1="0" y1="0" x2="0.55" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.42"/>
+      <stop offset="0.5" stop-color="#ffffff" stop-opacity="0.16"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0.04"/>
+    </linearGradient>
+    <linearGradient id="c_flagWhite" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f0e9d8"/><stop offset="1" stop-color="#d5c9b0"/>
+    </linearGradient>
+    <linearGradient id="c_flagRed" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#c8102e"/><stop offset="1" stop-color="#8f0b20"/>
+    </linearGradient>
+    <linearGradient id="c_flagBlue" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#002868"/><stop offset="1" stop-color="#001a44"/>
+    </linearGradient>
+    <linearGradient id="c_leatherG" x1="0.1" y1="0" x2="0.9" y2="1">
+      <stop offset="0" stop-color="#9a5528"/><stop offset="0.4" stop-color="#6b3a1e"/>
+      <stop offset="1" stop-color="#2c1509"/>
+    </linearGradient>
+    <linearGradient id="c_brass" x1="0" y1="0" x2="0.5" y2="1">
+      <stop offset="0" stop-color="#5d3f13"/><stop offset="0.22" stop-color="#d8ab55"/>
+      <stop offset="0.4" stop-color="#f8e3ab"/><stop offset="0.66" stop-color="#b8862f"/>
+      <stop offset="1" stop-color="#4b320d"/>
+    </linearGradient>
+    <radialGradient id="c_vig" cx="0.48" cy="0.5" r="0.78">
+      <stop offset="0.5" stop-color="#000" stop-opacity="0"/>
+      <stop offset="1" stop-color="#000" stop-opacity="0.78"/>
+    </radialGradient>
+    <clipPath id="c_screenClip"><rect x="44" y="44" width="1312" height="812" rx="16"/></clipPath>
+  </defs>
+
+  <!-- ============ BEYOND THE DEVICE: limestone + flag, defocused ============ -->
+  <rect width="1600" height="1000" fill="#241d15"/>
+  <g filter="url(#c_far)">
+    <rect x="-20" y="-20" width="1640" height="560" fill="url(#c_wall)"/>
+    <rect x="-20" y="-20" width="1640" height="560" fill="#8a7450" opacity="0.34" filter="url(#c_stone)"/>
+    <g stroke="#6b5537" stroke-opacity="0.55" stroke-width="3" fill="none">
+      <path d="M-20,96 H1620 M-20,196 H1620 M-20,296 H1620"/>
+      <path d="M180,96 V196 M470,96 V196 M760,96 V196 M1060,96 V196 M1350,96 V196"/>
+      <path d="M90,196 V296 M380,196 V296 M670,196 V296 M970,196 V296 M1260,196 V296 M1550,196 V296"/>
+    </g>
+    <g fill="#5c4a32" opacity="0.3"><ellipse cx="520" cy="150" rx="80" ry="22"/><ellipse cx="1180" cy="240" rx="92" ry="24"/></g>
+    <!-- the actual flag, soft, sitting behind the device's far edge -->
+    <g opacity="0.95">
+      <rect x="1020" y="-10" width="600" height="300" fill="url(#c_flagWhite)"/>
+      <rect x="1020" y="140" width="600" height="150" fill="url(#c_flagRed)"/>
+      <rect x="1020" y="-10" width="150" height="300" fill="url(#c_flagBlue)"/>
+      <path d="M1095,44 L1112,90 L1160,91 L1121,120 L1135,166 L1095,139 L1055,166 L1069,120 L1030,91 L1078,90 Z" fill="#ded6c0"/>
+      <rect x="1020" y="-10" width="600" height="300" fill="#7a705c" opacity="0.3" filter="url(#c_canvas)"/>
+      <path d="M1150,-10 C1140,90 1164,190 1146,290" stroke="#2f2820" stroke-width="9" fill="none" opacity="0.2"/>
+      <path d="M1320,-10 C1336,86 1310,192 1328,290" stroke="#2f2820" stroke-width="9" fill="none" opacity="0.18"/>
+    </g>
+  </g>
+
+  <!-- ============ TABLE, seen over the device's far edge ============ -->
+  <path d="M-20,470 C320,452 940,444 1620,462 L1620,1020 L-20,1020 Z" fill="url(#c_table)"/>
+  <g>
+    <g stroke="#0a0503" stroke-opacity="0.55" fill="none">
+      <path d="M-20,506 C380,482 1000,470 1620,492" stroke-width="7"/>
+      <path d="M-20,580 C400,548 1040,532 1620,560" stroke-width="11"/>
+      <path d="M-20,690 C430,650 1090,628 1620,662" stroke-width="16"/>
+      <path d="M-20,850 C470,798 1140,766 1620,816" stroke-width="21"/>
+    </g>
+    <ellipse cx="1260" cy="620" rx="46" ry="20" fill="#0f0703" opacity="0.6"/>
+    <rect x="-20" y="454" width="1640" height="566" filter="url(#c_wood)" opacity="0.4" fill="#9a6226"/>
+  </g>
+  <rect x="-20" y="454" width="1640" height="566" fill="url(#c_amber)" style="mix-blend-mode:screen"/>
+
+  <!-- ============ THE DEVICE: raked close-up, glossy panel ============ -->
+  <g transform="matrix(1,0.15,-0.29,0.93,80,150)">
+    <ellipse cx="700" cy="960" rx="820" ry="70" fill="#000" opacity="0.6" filter="url(#c_soft2)"/>
+    <rect x="0" y="0" width="1400" height="900" rx="34" fill="url(#c_body)"/>
+    <rect x="0" y="0" width="1400" height="900" rx="34" fill="none" stroke="#6a6d75" stroke-opacity="0.5"/>
+    <rect x="4" y="4" width="1392" height="892" rx="32" fill="none" stroke="#08080a" stroke-width="2"/>
+    <rect x="44" y="44" width="1312" height="812" rx="16" fill="url(#c_screen)"/>
+
+    <g clip-path="url(#c_screenClip)">
+      <!-- ---- portal UI ---- -->
+      <rect x="44" y="44" width="1312" height="66" fill="#0a1219"/>
+      <circle cx="78" cy="77" r="7" fill="#e0524a"/><circle cx="104" cy="77" r="7" fill="#e0a63c"/><circle cx="130" cy="77" r="7" fill="#4fae63"/>
+      <text x="164" y="84" fill="#7f9bb0" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="21" letter-spacing="1.6">ACCELERATED&#160;UW&#160;·&#160;TRIAGE&#160;v4.2</text>
+      <text x="1332" y="84" text-anchor="end" fill="#5f7f96" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="19">APPLICANT&#160;#TX-4471</text>
+      <line x1="44" y1="110" x2="1356" y2="110" stroke="#18242e" stroke-width="2"/>
+
+      <g font-family="ui-monospace,Menlo,Consolas,monospace" font-size="17">
+        <rect x="76" y="134" width="176" height="38" rx="8" fill="#12212b" stroke="#2b4b5e"/><text x="164" y="159" text-anchor="middle" fill="#8fb6c9">IDENTITY ✓</text>
+        <rect x="268" y="134" width="192" height="38" rx="8" fill="#12212b" stroke="#2b4b5e"/><text x="364" y="159" text-anchor="middle" fill="#8fb6c9">RX HISTORY ✓</text>
+        <rect x="476" y="134" width="152" height="38" rx="8" fill="#12212b" stroke="#2b4b5e"/><text x="552" y="159" text-anchor="middle" fill="#8fb6c9">MIB ✓</text>
+        <rect x="644" y="134" width="238" height="38" rx="8" fill="#2a1d0c" stroke="#8a6a25"/><text x="763" y="159" text-anchor="middle" fill="#e0b25c">ATTENDING ⚠</text>
+        <rect x="898" y="134" width="172" height="38" rx="8" fill="#2b0a11" stroke="#8c0218"/><text x="984" y="159" text-anchor="middle" fill="#ff8397">DECISION ✖</text>
+      </g>
+
+      <!-- crimson alert: the regulated copy, kept legible through the reflection -->
+      <ellipse cx="700" cy="266" rx="640" ry="130" fill="url(#c_glow)"/>
+      <rect x="76" y="190" width="1244" height="176" rx="14" fill="url(#c_alert)"/>
+      <rect x="76" y="190" width="1244" height="176" rx="14" fill="none" stroke="#ff5f76" stroke-opacity="0.5"/>
+      <path d="M132,238 L164,292 L100,292 Z" fill="none" stroke="#fff1f3" stroke-width="5.5" stroke-linejoin="round"/>
+      <line x1="132" y1="252" x2="132" y2="274" stroke="#fff1f3" stroke-width="5.5"/><circle cx="132" cy="283" r="3.4" fill="#fff1f3"/>
+      <text x="192" y="252" fill="#fff5f6" font-family="ui-sans-serif,Helvetica,Arial,sans-serif" font-size="44" font-weight="700" letter-spacing="0.8">ACCELERATED UNDERWRITING INELIGIBLE</text>
+      <text x="192" y="300" fill="#ffdbe1" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="26" letter-spacing="1.4">PRESCRIPTION&#160;FLAG:&#160;CLOPIDOGREL&#160;/&#160;PLAVIX</text>
+      <rect x="192" y="318" width="304" height="26" rx="6" fill="#4a0010"/>
+      <text x="204" y="337" fill="#ff9aab" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="18">RULE CU-7712 · CARDIAC</text>
+
+      <!-- audit rows -->
+      <g font-family="ui-monospace,Menlo,Consolas,monospace" font-size="20" fill="#93b0c2">
+        <text x="84" y="420">NDC</text><text x="300" y="420" fill="#d7e6ee">63653-1171-6 · FILL 04/2026 · DAYS SUPPLY 90</text>
+        <text x="84" y="460">CLASS</text><text x="300" y="460" fill="#d7e6ee">P2Y12 ANTIAGGREGATE · ADJUNCT POST-STENT</text>
+        <text x="84" y="500">SOURCE</text><text x="300" y="500" fill="#d7e6ee">PHARMACY CLAIMS (PDMP) 04/2026 · 3 REFILLS</text>
+        <text x="84" y="540">RULE</text><text x="300" y="540" fill="#d7e6ee">CU-7712 · IMPAIRMENT-QUESTION ROUTING</text>
+        <text x="84" y="580">DISPOSITION</text><text x="300" y="580" fill="#ff8397">REFER TO FULL UNDERWRITING · 4.0 SEC</text>
+        <line x1="76" y1="608" x2="1344" y2="608" stroke="#1c2b35" stroke-width="2"/>
+        <text x="84" y="646">ESCALATION</text><text x="300" y="646" fill="#c8dbe6">CONTESTED · HUMAN AUDIT LEDGER REQUESTED</text>
+        <text x="84" y="700" fill="#4f6a7c" font-size="17">Automated triage output. Not a final adverse action.</text>
+      </g>
+
+      <!-- ---------------- REFLECTION IN THE GLASS ----------------
+           The flag and the window, mirrored on the panel. This is the
+           frame's whole idea: woven red against emissive red.        -->
+      <g opacity="0.5">
+        <g transform="matrix(0.94,-0.12,0.30,0.86,240,286)">
+          <rect x="0" y="0" width="900" height="420" fill="url(#c_flagWhite)"/>
+          <rect x="0" y="212" width="900" height="208" fill="url(#c_flagRed)"/>
+          <rect x="0" y="0" width="212" height="420" fill="url(#c_flagBlue)"/>
+          <path d="M106,72 L131,144 L206,145 L145,190 L166,262 L106,219 L46,262 L67,190 L6,145 L81,144 Z" fill="#f2ece0"/>
+          <rect x="0" y="0" width="900" height="420" fill="#8b8172" opacity="0.34" filter="url(#c_canvas)"/>
+          <g opacity="0.18" stroke="#413628" stroke-width="10" fill="none">
+            <path d="M300,0 C286,140 316,280 296,420"/>
+            <path d="M560,0 C578,136 546,286 568,420"/>
+            <path d="M760,0 C746,140 776,282 756,420"/>
+          </g>
+        </g>
+        <!-- reflection is brightest where the glass faces the window -->
+        <rect x="44" y="44" width="1312" height="812" fill="url(#c_reflFade)" style="mix-blend-mode:screen" opacity="0.5"/>
+      </g>
+      <!-- window shaft streak across the glass + bloom -->
+      <g style="mix-blend-mode:screen">
+        <g filter="url(#c_glass)">
+          <polygon points="1120,44 1420,44 900,856 620,856" fill="url(#c_streak)" opacity="0.7"/>
+          <polygon points="1250,44 1380,44 980,856 860,856" fill="url(#c_streak)" opacity="0.5"/>
+        </g>
+        <ellipse cx="1160" cy="230" rx="260" ry="120" fill="#ffedc4" opacity="0.22" filter="url(#c_soft2)"/>
+      </g>
+      <!-- glass: smudges + faint scan sheen -->
+      <g opacity="0.1" fill="#dfe8ee">
+        <ellipse cx="470" cy="700" rx="180" ry="70" transform="rotate(-8 470 700)" filter="url(#c_soft2)"/>
+        <ellipse cx="980" cy="640" rx="120" ry="52" transform="rotate(6 980 640)" filter="url(#c_soft2)"/>
+      </g>
+      <rect x="44" y="44" width="1312" height="812" fill="#dfe9f2" opacity="0.035"/>
+    </g>
+    <rect x="44" y="44" width="1312" height="812" rx="16" fill="none" stroke="#3d4149" stroke-width="2"/>
+    <rect x="60" y="60" width="1280" height="240" rx="10" fill="#ffffff" opacity="0.05" filter="url(#c_soft2)"/>
+  </g>
+
+  <!-- ============ NEAR FOREGROUND: notebook edge + pen, out of focus ============ -->
+  <g filter="url(#c_near)">
+    <path d="M-40,700 C300,660 760,690 1180,760 L1240,1010 L-40,1010 Z" fill="url(#c_leatherG)"/>
+    <path d="M-40,700 C300,660 760,690 1180,760" stroke="#e9dab7" stroke-width="7" stroke-dasharray="26 20" fill="none" opacity="0.9"/>
+    <path d="M-40,742 C300,706 760,736 1160,800" stroke="#2a1408" stroke-width="10" fill="none" opacity="0.5"/>
+    <path d="M-40,700 C300,660 760,690 1180,760 L1240,1010 L-40,1010 Z" fill="#7d451f" opacity="0.3" filter="url(#c_leather)"/>
+    <!-- the notebook's Lone Star, seen edge-on and out of focus -->
+    <g transform="translate(668,948) scale(2.15)">
+      <path d="M0,-60 L13,-19 L56,-19 L21,7 L33,48 L0,23 L-33,48 L-21,7 L-56,-19 L-13,-19 Z" fill="#33190c" opacity="0.92"/>
+      <path d="M0,-60 L13,-19 L56,-19 L21,7 L33,48 L0,23 L-33,48 L-21,7 L-56,-19 L-13,-19 Z" transform="translate(2.4,2.9)" fill="none" stroke="#1a0c05" stroke-width="2.4" opacity="0.8"/>
+      <path d="M0,-60 L13,-19 L56,-19 L21,7 L33,48 L0,23 L-33,48 L-21,7 L-56,-19 L-13,-19 Z" transform="translate(-1.7,-2)" fill="none" stroke="#e3b478" stroke-width="1.8" opacity="0.6"/>
+    </g>
+    <circle cx="1130" cy="806" r="30" fill="url(#c_brass)"/>
+  </g>
+  <g filter="url(#c_near2)" transform="translate(60,900) rotate(-3.4)">
+    <ellipse cx="330" cy="70" rx="420" ry="26" fill="#000" opacity="0.55" filter="url(#c_soft2)"/>
+    <rect x="0" y="0" width="760" height="52" rx="26" fill="url(#c_brass)"/>
+    <circle cx="212" cy="4" r="26" fill="url(#c_brass)"/>
+    <g stroke="#3f2a09" stroke-opacity="0.5"><path d="M96,8 V44 M112,8 V44 M128,8 V44 M144,8 V44 M160,8 V44"/></g>
+    <rect x="12" y="6" width="640" height="7" rx="3.5" fill="#fff4d2" opacity="0.5"/>
+    <path d="M760,6 L840,24 L840,28 L760,46 Z" fill="url(#c_brass)"/>
+  </g>
+
+  <!-- ============ LIGHT: Hill Country late afternoon across everything ============ -->
+  <g style="mix-blend-mode:screen">
+    <g filter="url(#c_soft)">
+      <polygon points="1180,-60 1560,-60 900,1010 560,1010" fill="url(#c_streak)" opacity="0.55"/>
+      <polygon points="1420,-60 1600,-60 1220,1010 1060,1010" fill="url(#c_streak)" opacity="0.4"/>
+    </g>
+    <g filter="url(#c_mote)" opacity="0.9">
+      <circle cx="1120" cy="330" r="5" fill="#fff0cd"/><circle cx="1240" cy="470" r="4" fill="#ffe4b0"/>
+      <circle cx="1330" cy="300" r="6" fill="#fff6dd"/><circle cx="1420" cy="620" r="4.4" fill="#ffe4b0"/>
+      <circle cx="980" cy="520" r="4.6" fill="#fff0cd"/><circle cx="1080" cy="700" r="3.8" fill="#ffe4b0"/>
+      <circle cx="1300" cy="820" r="4.2" fill="#fff6dd"/><circle cx="880" cy="640" r="4" fill="#ffe4b0"/>
+      <circle cx="1180" cy="560" r="5.2" fill="#fff0cd"/><circle cx="1460" cy="420" r="3.6" fill="#ffe4b0"/>
+      <circle cx="760" cy="420" r="4.2" fill="#fff0cd"/><circle cx="1520" cy="880" r="4.6" fill="#ffe4b0"/>
+    </g>
+  </g>
+  <rect width="1600" height="1000" fill="url(#c_vig)"/>
+</svg>
+
+<div class="sheet">
+  <h1>Concept 1c — Reflected</h1>
+  <p class="sub">Third frame of Concept 1. Extreme close-up raked across the tablet's glossy panel so the Texas flag and the window are mirrored in the glass — the brief's stated contrast made literal: woven red against emissive red, on one surface. Same set, same props, same light as the master. 1600×1000.</p>
+
+  <h2>What this frame does that the others cannot</h2>
+  <div class="grid">
+    <div class="card"><b>The two reds touch</b>The flag's reflected red stripe runs directly above the alert's crimson banner. Earlier frames contrasted red with navy and white at a distance; this one puts the two reds in physical contact and lets the eye discover they are different materials — one woven and sun-warmed, one emissive and cold-edged.</div>
+    <div class="card"><b>Texas inside the machine</b>Raking the camera close enough to catch a reflection means the state appears <em>on</em> the screen, not behind it. The trap contains the thing it is deciding about.</div>
+    <div class="card"><b>Still a close-up</b>No deviation from the brief. Shallow depth of field is doing the storytelling: the notebook edge and brass pen are the near, defocused frame; the screen is the only sharp plane; the wall and flag fall off behind.</div>
+    <div class="card"><b>Fidelity kept</b>Both regulated lines stay fully legible through the glass, the portal UI is complete, the ledger crosses the device's near edge and the pen lies in the spine — now in the near foreground where the raking angle puts them.</div>
+  </div>
+
+  <h2>Palette</h2>
+  <div class="grid">
+    <div class="card"><b>The two reds</b>
+      <div class="sw"><span class="chip" style="background:#c8102e"></span><code>#C8102E</code> alert, emissive</div>
+      <div class="sw"><span class="chip" style="background:#8f0b20"></span><code>#8F0B20</code> flag red, reflected and dulled</div>
+      <div class="sw"><span class="chip" style="background:#4a0010"></span><code>#4A0010</code> rule chip, the darkest red</div>
+    </div>
+    <div class="card"><b>Glass behaviour</b>
+      <div class="sw"><span class="chip" style="background:#f0e9d8"></span><code>#F0E9D8</code> reflected canvas white</div>
+      <div class="sw"><span class="chip" style="background:#fff3d6"></span><code>#FFF3D6</code> window streak</div>
+      <div class="sw"><span class="chip" style="background:#0e1a23"></span><code>#0E1A23</code> panel beneath</div>
+    </div>
+    <div class="card"><b>Ground</b>
+      <div class="sw"><span class="chip" style="background:#6b3a1e"></span><code>#6B3A1E</code> leather, near and soft</div>
+      <div class="sw"><span class="chip" style="background:#b98a3c"></span><code>#B98A3C</code> brass, near and soft</div>
+      <div class="sw"><span class="chip" style="background:#e6a549"></span><code>#E6A549</code> amber flare</div>
+    </div>
+  </div>
+
+  <h2>Shot notes</h2>
+  <table>
+    <tr><th>Optics</th><td>60mm macro at f/2.8, camera about 25cm from the panel and raked down the screen at roughly 12° off the glass. The reflection only appears once the lens axis is low enough that the flag falls inside the screen's specular lobe — so the angle is a lighting decision, not just a framing one.</td></tr>
+    <tr><th>Light</th><td>Flag on the wall lit so it is bright enough to reflect — a mirror shows only what is lit. Keep the flag two stops hotter than feels natural on set; the panel will take most of that away. One hard source, same raking direction as the master, plus a silver card to lift the crimson out of the glass.</td></tr>
+    <tr><th>The trap in the setup</th><td>Polariser off. Any polarising filter on the lens kills the reflection you are here for. If you must cut screen glare for the copy, cut it with the screen's own brightness and a black flag card behind the camera, not with a filter.</td></tr>
+    <tr><th>Focus</th><td>Focus on the word INELIGIBLE, then stop down until the panel's near corner is just sharp. Deliberately leave the notebook edge and the pen outside the plane — they should read as material, not as objects.</td></tr>
+    <tr><th>Text safety</th><td>Wording identical to the master and still composited in post. The reflection sits <em>over</em> the alert, so grade the reflection pass below the type in the stack or the copy will lose contrast against the reflected canvas white.</td></tr>
+    <tr><th>Pairs with</th><td>1 (verdict lands, machine dominant) → 1b (the human answers) → 1c (the machine contains the state). Use 1c as the closing frame of the three.</td></tr>
+  </table>
+</div>
+</body>
+</html>

@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Concept 1b — The Audit (ledger-forward)</title>
+<style>
+  :root{ --crimson:#c8102e; --navy:#002868; --canvas:#efe6d2; --amber:#e6a549; --brass:#b98a3c; --leather:#6b3a1e; }
+  *{box-sizing:border-box}
+  html,body{margin:0;background:#070605;color:#e9e2d6;
+    font:14px/1.55 ui-sans-serif,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+  .hero{width:100%;max-width:1600px;margin:0 auto;display:block}
+  .sheet{max-width:1180px;margin:0 auto;padding:34px 26px 70px}
+  h1{font-size:20px;letter-spacing:.14em;text-transform:uppercase;margin:0 0 4px;font-weight:600}
+  h2{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#9a8f7d;margin:34px 0 10px;font-weight:600}
+  .sub{color:#9a8f7d;margin:0 0 26px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+  .card{border:1px solid #2b231a;border-radius:10px;padding:12px 14px;background:#100c08}
+  .card b{display:block;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#8d8272;font-weight:600;margin-bottom:6px}
+  .sw{display:flex;align-items:center;gap:10px;margin:7px 0}
+  .chip{width:26px;height:26px;border-radius:6px;border:1px solid #00000055;flex:0 0 auto}
+  code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:12px;color:#d7cbb4}
+  table{width:100%;border-collapse:collapse;font-size:13px}
+  td,th{border-bottom:1px solid #221b14;padding:7px 6px;text-align:left;vertical-align:top}
+  th{color:#8d8272;font-size:11px;letter-spacing:.14em;text-transform:uppercase}
+</style>
+</head>
+<body>
+<!-- ============================================================
+     CONCEPT 1b — "The Audit"  (ledger-forward frame of Concept 1)
+     Same props, same table, different camera and inverted light logic:
+     the sun now rakes the hand-tooled leather; the machine is a cold
+     glowing slab out of focus behind it. 1600x1000.
+     ============================================================ -->
+<svg class="hero" viewBox="0 0 1600 1000" xmlns="http://www.w3.org/2000/svg" role="img"
+     aria-label="Close-up of a hand-tooled saddle-leather audit ledger with a large embossed Texas Lone Star and a brass bolt-action pen, raking afternoon sunlight across the leather, with a blurred tablet glowing red behind it and a defocused Texas flag against limestone">
+  <defs>
+    <!-- textures -->
+    <filter id="b_leather" x="-6%" y="-6%" width="112%" height="112%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.62 0.44" numOctaves="5" seed="8" result="n"/>
+      <feColorMatrix in="n" type="saturate" values="0"/>
+      <feComponentTransfer><feFuncA type="linear" slope="0.62"/></feComponentTransfer>
+    </filter>
+    <filter id="b_leatherFine" x="-6%" y="-6%" width="112%" height="112%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.16 0.9" numOctaves="3" seed="14" result="n"/>
+      <feColorMatrix in="n" type="saturate" values="0"/>
+      <feComponentTransfer><feFuncA type="linear" slope="0.30"/></feComponentTransfer>
+    </filter>
+    <filter id="b_wood" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.003 0.3" numOctaves="5" seed="41" result="n"/>
+      <feColorMatrix in="n" type="saturate" values="0"/>
+      <feComponentTransfer><feFuncA type="linear" slope="0.42"/></feComponentTransfer>
+    </filter>
+    <filter id="b_stone" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.025 0.045" numOctaves="5" seed="17" result="n"/>
+      <feColorMatrix in="n" type="saturate" values="0"/>
+      <feComponentTransfer><feFuncA type="linear" slope="0.5"/></feComponentTransfer>
+    </filter>
+    <filter id="b_canvas" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.7 0.95" numOctaves="4" seed="6" result="n"/>
+      <feColorMatrix in="n" type="saturate" values="0"/>
+      <feComponentTransfer><feFuncA type="linear" slope="0.4"/></feComponentTransfer>
+    </filter>
+    <!-- depth of field -->
+    <filter id="b_far"><feGaussianBlur stdDeviation="9.5"/></filter>
+    <filter id="b_far2"><feGaussianBlur stdDeviation="6.4"/></filter>
+    <filter id="b_mid"><feGaussianBlur stdDeviation="4.6"/></filter>
+    <filter id="b_sharp"><feGaussianBlur stdDeviation="0.4"/></filter>
+    <filter id="b_soft" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="30"/></filter>
+    <filter id="b_soft2" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="13"/></filter>
+    <filter id="b_mote" x="-70%" y="-70%" width="240%" height="240%"><feGaussianBlur stdDeviation="2.6"/></filter>
+    <!-- gradients -->
+    <linearGradient id="b_table" x1="0" y1="0" x2="0.25" y2="1">
+      <stop offset="0" stop-color="#20130b"/><stop offset="0.4" stop-color="#341c10"/>
+      <stop offset="0.78" stop-color="#1c0f08"/><stop offset="1" stop-color="#0d0705"/>
+    </linearGradient>
+    <radialGradient id="b_amber" cx="0.24" cy="0.42" r="0.6">
+      <stop offset="0" stop-color="#e6a549" stop-opacity="0.5"/>
+      <stop offset="0.5" stop-color="#b0701f" stop-opacity="0.16"/>
+      <stop offset="1" stop-color="#000" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="b_shaft" x1="0" y1="0" x2="0.1" y2="1">
+      <stop offset="0" stop-color="#ffe6b4" stop-opacity="0.6"/>
+      <stop offset="0.55" stop-color="#ffd493" stop-opacity="0.18"/>
+      <stop offset="1" stop-color="#ffc477" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="b_wall" x1="0" y1="0" x2="0.4" y2="1">
+      <stop offset="0" stop-color="#6d5c43"/><stop offset="0.6" stop-color="#4a3d2c"/>
+      <stop offset="1" stop-color="#241d15"/>
+    </linearGradient>
+    <linearGradient id="b_leatherG" x1="0.08" y1="0.05" x2="0.92" y2="1">
+      <stop offset="0" stop-color="#a35a2c"/><stop offset="0.26" stop-color="#7d451f"/>
+      <stop offset="0.62" stop-color="#4d2712"/><stop offset="1" stop-color="#26130a"/>
+    </linearGradient>
+    <linearGradient id="b_brass" x1="0" y1="0" x2="0.6" y2="1">
+      <stop offset="0" stop-color="#5d3f13"/><stop offset="0.16" stop-color="#c99a45"/>
+      <stop offset="0.3" stop-color="#f8e3ab"/><stop offset="0.46" stop-color="#c08f38"/>
+      <stop offset="0.72" stop-color="#8d6520"/><stop offset="1" stop-color="#4b320d"/>
+    </linearGradient>
+    <radialGradient id="b_blue" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#7fc4e8" stop-opacity="0.42"/>
+      <stop offset="1" stop-color="#2c6f96" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="b_vig" cx="0.46" cy="0.52" r="0.8">
+      <stop offset="0.5" stop-color="#000" stop-opacity="0"/>
+      <stop offset="1" stop-color="#000" stop-opacity="0.8"/>
+    </radialGradient>
+    <linearGradient id="b_flagWhite" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#b9b099"/><stop offset="1" stop-color="#8f8874"/>
+    </linearGradient>
+    <linearGradient id="b_flagRed" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#8e0f22"/><stop offset="1" stop-color="#5e0a17"/>
+    </linearGradient>
+    <linearGradient id="b_flagBlue" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#031d45"/><stop offset="1" stop-color="#03122c"/>
+    </linearGradient>
+    <clipPath id="b_flagClip"><path d="M980,120 C1150,110 1330,118 1490,108 L1490,376 C1330,388 1150,380 980,392 Z"/></clipPath>
+    <clipPath id="b_ledgerClip"><rect x="0" y="0" width="1000" height="660" rx="18"/></clipPath>
+  </defs>
+
+  <!-- ============ WALL + FLAG: heavy defocus, demoted ============ -->
+  <rect width="1600" height="1000" fill="#1b1710"/>
+  <g filter="url(#b_far)">
+    <rect x="-20" y="-20" width="1640" height="700" fill="url(#b_wall)"/>
+    <rect x="-20" y="-20" width="1640" height="700" fill="#6b5a41" opacity="0.32" filter="url(#b_stone)"/>
+    <g stroke="#4a3c29" stroke-opacity="0.5" stroke-width="3" fill="none">
+      <path d="M-20,140 H1620 M-20,246 H1620 M-20,352 H1620 M-20,458 H1620 M-20,564 H1620"/>
+      <path d="M240,140 V246 M560,140 V246 M880,140 V246 M1200,140 V246 M1500,140 V246"/>
+      <path d="M120,246 V352 M440,246 V352 M760,246 V352 M1080,246 V352 M1400,246 V352"/>
+      <path d="M300,352 V458 M620,352 V458 M940,352 V458 M1260,352 V458"/>
+      <path d="M180,458 V564 M500,458 V564 M820,458 V564 M1140,458 V564 M1460,458 V564"/>
+    </g>
+    <g fill="#3d3222" opacity="0.34">
+      <ellipse cx="820" cy="210" rx="90" ry="26"/><ellipse cx="1320" cy="330" rx="76" ry="22"/>
+      <ellipse cx="480" cy="470" rx="96" ry="26"/><ellipse cx="1080" cy="520" rx="70" ry="20"/>
+    </g>
+  </g>
+  <!-- canvas flag, dimmed and soft -->
+  <g filter="url(#b_far2)">
+    <ellipse cx="1230" cy="252" rx="340" ry="210" fill="#000" opacity="0.5" filter="url(#b_soft2)"/>
+    <g clip-path="url(#b_flagClip)">
+      <rect x="960" y="100" width="560" height="300" fill="url(#b_flagWhite)"/>
+      <rect x="960" y="252" width="560" height="148" fill="url(#b_flagRed)"/>
+      <rect x="960" y="100" width="140" height="300" fill="url(#b_flagBlue)"/>
+      <path d="M1030,148 L1046,192 L1092,193 L1055,221 L1068,265 L1030,239 L992,265 L1005,221 L968,193 L1014,192 Z" fill="#ded6c0" opacity="0.9"/>
+      <rect x="960" y="100" width="560" height="300" fill="#6d6250" opacity="0.34" filter="url(#b_canvas)"/>
+      <path d="M1090,100 C1080,200 1104,300 1086,400" stroke="#2f2820" stroke-width="8" fill="none" opacity="0.22"/>
+      <path d="M1250,100 C1266,196 1240,302 1258,400" stroke="#2f2820" stroke-width="8" fill="none" opacity="0.2"/>
+      <path d="M1410,100 C1398,198 1422,300 1404,400" stroke="#2f2820" stroke-width="8" fill="none" opacity="0.18"/>
+    </g>
+  </g>
+
+  <!-- ============ TABLE: raking light, amber pooled camera-left ============ -->
+  <path d="M-20,540 C320,522 940,510 1620,528 L1620,1020 L-20,1020 Z" fill="url(#b_table)"/>
+  <g filter="url(#b_sharp)">
+    <g stroke="#0b0604" stroke-opacity="0.6" fill="none">
+      <path d="M-20,584 C380,558 1000,546 1620,566" stroke-width="6"/>
+      <path d="M-20,650 C400,618 1040,602 1620,628" stroke-width="9"/>
+      <path d="M-20,730 C420,692 1080,672 1620,704" stroke-width="13"/>
+      <path d="M-20,824 C450,776 1120,750 1620,792" stroke-width="17"/>
+      <path d="M-20,940 C480,884 1160,850 1620,900" stroke-width="21"/>
+    </g>
+    <g stroke="#7d4a22" stroke-opacity="0.26" fill="none">
+      <path d="M-20,616 C390,590 1010,576 1620,598" stroke-width="3"/>
+      <path d="M-20,776 C430,738 1090,712 1620,752" stroke-width="4"/>
+    </g>
+    <ellipse cx="1380" cy="800" rx="40" ry="18" fill="#120904" opacity="0.6"/>
+    <ellipse cx="200" cy="880" rx="46" ry="20" fill="#120904" opacity="0.55"/>
+    <rect x="-20" y="524" width="1640" height="496" filter="url(#b_wood)" opacity="0.4" fill="#8f5a24"/>
+  </g>
+  <rect x="-20" y="524" width="1640" height="496" fill="url(#b_amber)" style="mix-blend-mode:screen"/>
+
+  <!-- ============ MID: the tablet, demoted to a glowing slab ============ -->
+  <g transform="matrix(0.99,0.055,-0.16,0.95,845,232)" filter="url(#b_mid)">
+    <ellipse cx="352" cy="360" rx="392" ry="44" fill="#000" opacity="0.6" filter="url(#b_soft2)"/>
+    <rect x="0" y="0" width="700" height="470" rx="28" fill="#131418"/>
+    <rect x="0" y="0" width="700" height="470" rx="28" fill="none" stroke="#3f424a" stroke-opacity="0.55"/>
+    <rect x="22" y="22" width="656" height="426" rx="12" fill="#0a1116"/>
+    <clipPath id="b_screenClip"><rect x="22" y="22" width="656" height="426" rx="12"/></clipPath>
+    <g clip-path="url(#b_screenClip)">
+      <rect x="22" y="22" width="656" height="42" fill="#0a1219"/>
+      <rect x="40" y="78" width="112" height="24" rx="5" fill="#12212b"/><rect x="162" y="78" width="120" height="24" rx="5" fill="#12212b"/>
+      <rect x="292" y="78" width="96" height="24" rx="5" fill="#12212b"/><rect x="398" y="78" width="150" height="24" rx="5" fill="#2a1d0c"/>
+      <rect x="558" y="78" width="104" height="24" rx="5" fill="#2b0a11"/>
+      <ellipse cx="350" cy="168" rx="330" ry="72" fill="#c8102e" opacity="0.28"/>
+      <rect x="40" y="112" width="622" height="112" rx="9" fill="#a3071f"/>
+      <rect x="108" y="140" width="470" height="15" rx="3" fill="#fff5f6" opacity="0.9"/>
+      <rect x="108" y="166" width="392" height="13" rx="3" fill="#ffdbe1" opacity="0.85"/>
+      <rect x="108" y="192" width="180" height="12" rx="3" fill="#4a0010"/>
+      <g fill="#93b0c2" opacity="0.8"><rect x="46" y="246" width="70" height="10" rx="2"/><rect x="180" y="246" width="330" height="10" rx="2"/>
+        <rect x="46" y="272" width="70" height="10" rx="2"/><rect x="180" y="272" width="392" height="10" rx="2"/>
+        <rect x="46" y="298" width="70" height="10" rx="2"/><rect x="180" y="298" width="300" height="10" rx="2"/>
+        <rect x="46" y="324" width="70" height="10" rx="2"/><rect x="180" y="324" width="352" height="10" rx="2"/></g>
+      <!-- the two regulated strings, present but deliberately unreadable at this focus distance -->
+      <text x="108" y="152" fill="#ffffff" opacity="0.01" font-family="ui-sans-serif,Helvetica,Arial,sans-serif" font-size="26" font-weight="700">ACCELERATED UNDERWRITING INELIGIBLE</text>
+      <text x="108" y="178" fill="#ffffff" opacity="0.01" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="16">PRESCRIPTION&#160;FLAG:&#160;CLOPIDOGREL&#160;/&#160;PLAVIX</text>
+    </g>
+    <rect x="22" y="22" width="656" height="426" rx="12" fill="#0a1116" opacity="0.25"/>
+    <rect x="22" y="22" width="656" height="426" rx="12" fill="none" stroke="#343742"/>
+  </g>
+  <!-- cold spill in front of the slab -->
+  <ellipse cx="790" cy="690" rx="330" ry="90" fill="url(#b_blue)" style="mix-blend-mode:screen"/>
+
+  <!-- ============ FOREGROUND: the audit ledger (hero) ============ -->
+  <g transform="translate(120,470) rotate(-8.5)">
+    <ellipse cx="470" cy="690" rx="560" ry="52" fill="#000" opacity="0.6" filter="url(#b_soft2)"/>
+    <g clip-path="url(#b_ledgerClip)">
+      <rect x="0" y="0" width="1000" height="660" fill="url(#b_leatherG)"/>
+      <rect x="0" y="0" width="1000" height="660" fill="#8a4a22" opacity="0.3" filter="url(#b_leather)"/>
+      <rect x="0" y="0" width="1000" height="660" fill="#5a2d13" opacity="0.22" filter="url(#b_leatherFine)"/>
+      <!-- raking sun band across the leather -->
+      <g style="mix-blend-mode:screen">
+        <path d="M-40,120 L300,-40 L420,-40 L40,180 Z" fill="#ffd79a" opacity="0.30"/>
+        <path d="M40,300 L620,0 L700,0 L120,360 Z" fill="#ffcf8a" opacity="0.20"/>
+      </g>
+      <!-- tooled border + saddle stitching -->
+      <rect x="34" y="30" width="932" height="600" rx="12" fill="none" stroke="#e9dab7" stroke-width="3.4" stroke-dasharray="13 9" opacity="0.95"/>
+      <rect x="50" y="46" width="900" height="568" rx="9" fill="none" stroke="#2a1408" stroke-width="1.6" opacity="0.7"/>
+      <rect x="60" y="56" width="880" height="548" rx="7" fill="none" stroke="#c08a52" stroke-width="1.2" opacity="0.4"/>
+      <!-- embossed Lone Star: large, raking-lit relief -->
+      <g transform="translate(300,270) scale(2.35)">
+        <path d="M0,-60 L13,-19 L56,-19 L21,7 L33,48 L0,23 L-33,48 L-21,7 L-56,-19 L-13,-19 Z" fill="#33190c" opacity="0.9"/>
+        <path d="M0,-60 L13,-19 L56,-19 L21,7 L33,48 L0,23 L-33,48 L-21,7 L-56,-19 L-13,-19 Z" transform="translate(2.6,3.1)" fill="none" stroke="#1a0c05" stroke-width="2.4" opacity="0.85"/>
+        <path d="M0,-60 L13,-19 L56,-19 L21,7 L33,48 L0,23 L-33,48 L-21,7 L-56,-19 L-13,-19 Z" transform="translate(-1.9,-2.2)" fill="none" stroke="#e3b478" stroke-width="1.9" opacity="0.75"/>
+      </g>
+      <!-- embossed tooling: the legible copy of this frame -->
+      <g font-family="ui-sans-serif,Helvetica,Arial,sans-serif" letter-spacing="7" font-weight="700">
+        <text x="470" y="180" font-size="40" fill="#2c1409" opacity="0.95">UNDERWRITING</text>
+        <text x="470" y="226" font-size="40" fill="#2c1409" opacity="0.95">AUDIT LEDGER</text>
+        <text x="471.6" y="181.6" font-size="40" fill="#e0ae72" opacity="0.62">UNDERWRITING</text>
+        <text x="471.6" y="227.6" font-size="40" fill="#e0ae72" opacity="0.62">AUDIT LEDGER</text>
+      </g>
+      <g font-family="ui-monospace,Menlo,Consolas,monospace" letter-spacing="3.4" font-size="17">
+        <text x="470" y="268" fill="#6f3f1c">EXHIBIT A · PRESCRIPTION TRACE · 04/2026</text>
+        <text x="470" y="292" fill="#4a2610">NDC 63653-1171-6 · RULE CU-7712 · 90-DAY SUPPLY</text>
+      </g>
+      <line x1="470" y1="312" x2="990" y2="312" stroke="#c08a52" stroke-opacity="0.4" stroke-dasharray="7 7"/>
+      <!-- tooled corner flourish -->
+      <path d="M840,560 C900,556 936,540 956,506" stroke="#c08a52" stroke-opacity="0.45" stroke-width="2.4" fill="none"/>
+      <path d="M860,584 C918,578 950,560 970,524" stroke="#3a1d0c" stroke-opacity="0.6" stroke-width="2" fill="none"/>
+      <!-- fore-edge page block -->
+      <rect x="962" y="26" width="34" height="608" rx="6" fill="#d9cfb6"/>
+      <g stroke="#bfb49a" stroke-width="1.8">
+        <path d="M966,44 H994 M966,62 H994 M966,80 H994 M966,98 H994 M966,116 H994 M966,134 H994 M966,152 H994 M966,170 H994 M966,188 H994 M966,206 H994 M966,224 H994 M966,242 H994 M966,260 H994 M966,278 H994 M966,296 H994 M966,314 H994 M966,332 H994 M966,350 H994 M966,368 H994 M966,386 H994 M966,404 H994 M966,422 H994 M966,440 H994 M966,458 H994 M966,476 H994 M966,494 H994 M966,512 H994 M966,530 H994 M966,548 H994 M966,566 H994 M966,584 H994 M966,602 H994"/>
+      </g>
+      <!-- strap + brass stud + ribbon -->
+      <rect x="120" y="520" width="240" height="52" rx="12" fill="#5a2f16"/>
+      <rect x="120" y="520" width="240" height="52" rx="12" fill="none" stroke="#2a1408" stroke-width="2"/>
+      <circle cx="240" cy="546" r="15" fill="url(#b_brass)"/>
+      <circle cx="234" cy="540" r="5" fill="#f8e3ab" opacity="0.7"/>
+      <path d="M40,600 C18,652 26,700 44,742" stroke="#8c0218" stroke-width="12" fill="none" opacity="0.95"/>
+      <!-- pen groove in the spine -->
+      <path d="M120,376 C420,404 700,410 940,392" stroke="#2a1408" stroke-width="42" fill="none" stroke-linecap="round" opacity="0.85"/>
+    </g>
+    <rect x="0" y="0" width="1000" height="660" rx="18" fill="none" stroke="#1c0d04" stroke-width="4"/>
+  </g>
+
+  <!-- ============ FOREGROUND: brass bolt-action pen (sharp) ============ -->
+  <g transform="translate(140,866) rotate(-5.2)">
+    <ellipse cx="330" cy="52" rx="360" ry="19" fill="#000" opacity="0.55" filter="url(#b_soft2)"/>
+    <g transform="rotate(-1.1 330 26)">
+      <rect x="0" y="0" width="700" height="44" rx="22" fill="url(#b_brass)"/>
+      <path d="M700,4 L772,20 L772,24 L700,40 Z" fill="url(#b_brass)"/>
+      <path d="M772,16 L816,22 L772,28 Z" fill="#2c1d06"/>
+      <g stroke="#3f2a09" stroke-opacity="0.55"><path d="M78,6 V38 M92,6 V38 M106,6 V38 M120,6 V38 M134,6 V38 M148,6 V38 M162,6 V38"/></g>
+      <circle cx="196" cy="2" r="22" fill="url(#b_brass)"/>
+      <circle cx="196" cy="2" r="22" fill="none" stroke="#241703"/>
+      <circle cx="189" cy="-6" r="8" fill="#fdf0c9" opacity="0.75"/>
+      <rect x="-8" y="1" width="32" height="42" rx="11" fill="url(#b_brass)"/>
+      <!-- specular streaks -->
+      <rect x="10" y="4" width="600" height="5" rx="2.5" fill="#fff4d2" opacity="0.55"/>
+      <rect x="10" y="12" width="470" height="4" rx="2" fill="#fff4d2" opacity="0.25"/>
+      <rect x="16" y="32" width="620" height="7" rx="3.5" fill="#3a2506" opacity="0.4"/>
+      <rect x="16" y="40" width="600" height="4" rx="2" fill="#ffe9b8" opacity="0.35"/>
+    </g>
+  </g>
+
+  <!-- ============ LIGHT: one narrow hard shaft across the leather + dust ============ -->
+  <g style="mix-blend-mode:screen">
+    <g filter="url(#b_soft)">
+      <polygon points="-60,-60 260,-60 900,1010 520,1010" fill="url(#b_shaft)" opacity="0.75"/>
+      <polygon points="120,-60 240,-60 760,1010 640,1010" fill="url(#b_shaft)" opacity="0.5"/>
+    </g>
+    <g filter="url(#b_mote)" opacity="0.9">
+      <circle cx="330" cy="330" r="5.4" fill="#fff0cd"/><circle cx="430" cy="470" r="4.2" fill="#ffe4b0"/>
+      <circle cx="520" cy="368" r="6.4" fill="#fff6dd"/><circle cx="600" cy="620" r="4.6" fill="#ffe4b0"/>
+      <circle cx="700" cy="440" r="5.6" fill="#fff0cd"/><circle cx="790" cy="690" r="4.4" fill="#ffe4b0"/>
+      <circle cx="880" cy="520" r="6" fill="#fff6dd"/><circle cx="960" cy="760" r="4.2" fill="#ffe4b0"/>
+      <circle cx="240" cy="700" r="5.2" fill="#fff0cd"/><circle cx="150" cy="560" r="4" fill="#ffe4b0"/>
+      <circle cx="1050" cy="880" r="5" fill="#fff0cd"/><circle cx="620" cy="880" r="4.4" fill="#ffe4b0"/>
+      <circle cx="420" cy="210" r="4.8" fill="#fff6dd"/><circle cx="1180" cy="640" r="3.8" fill="#ffe4b0"/>
+    </g>
+  </g>
+  <rect width="1600" height="1000" fill="url(#b_vig)"/>
+</svg>
+
+<div class="sheet">
+  <h1>Concept 1b — The Audit</h1>
+  <p class="sub">Ledger-forward frame of Concept 1. Same set, same props, different camera and inverted light logic: one narrow hard shaft now rakes the hand-tooled leather and makes the Lone Star read in relief, while the tablet becomes a cold glowing slab out of focus behind it. 1600×1000. Complements the master frame — it does not replace it.</p>
+
+  <h2>What changes from the master</h2>
+  <div class="grid">
+    <div class="card"><b>Camera</b>Moved in and down. The ledger is cropped by the bottom-left and right edges and fills the near plane; the machine retreats to mid-distance at 4.6 px of blur.</div>
+    <div class="card"><b>Light direction</b>Reversed. The sun rakes from camera-left at a low angle instead of camera-right, so every shadow in this frame falls the opposite way to the master's.</div>
+    <div class="card"><b>Legible copy</b>Now the tooling, not the screen: <code>UNDERWRITING AUDIT LEDGER</code>, <code>EXHIBIT A</code>, the NDC and rule number. The alert strings are still on the screen but deliberately unreadable at this focus distance.</div>
+    <div class="card"><b>Red discipline</b>One crimson event remains — the alert panel, blurred — plus the ledger's ribbon. Nothing else in frame is red.</div>
+  </div>
+
+  <h2>Palette</h2>
+  <div class="grid">
+    <div class="card"><b>Story colours</b>
+      <div class="sw"><span class="chip" style="background:#c8102e"></span><code>#C8102E</code> alert red (blurred)</div>
+      <div class="sw"><span class="chip" style="background:#002868"></span><code>#002868</code> desaturated flag navy</div>
+      <div class="sw"><span class="chip" style="background:#efe6d2"></span><code>#EFE6D2</code> canvas white, pushed grey</div>
+    </div>
+    <div class="card"><b>Leather under raking light</b>
+      <div class="sw"><span class="chip" style="background:#a35a2c"></span><code>#A35A2C</code> lit leather</div>
+      <div class="sw"><span class="chip" style="background:#4d2712"></span><code>#4D2712</code> leather shadow</div>
+      <div class="sw"><span class="chip" style="background:#e9dab7"></span><code>#E9DAB7</code> waxed thread</div>
+    </div>
+    <div class="card"><b>Machine + ground</b>
+      <div class="sw"><span class="chip" style="background:#93b6c9"></span><code>#93B6C9</code> cold screen slab</div>
+      <div class="sw"><span class="chip" style="background:#b98a3c"></span><code>#B98A3C</code> brass</div>
+      <div class="sw"><span class="chip" style="background:#6d5c43"></span><code>#6D5C43</code> dimmed limestone</div>
+    </div>
+  </div>
+
+  <h2>Shot notes</h2>
+  <table>
+    <tr><th>Optics</th><td>100mm macro at f/2.8, sensor plane roughly parallel to the leather so the tooling stays readable across the plane; the tablet sits ~1.2m behind the focal plane.</td></tr>
+    <tr><th>Light</th><td>One hard source at 12–15° above the leather and almost edge-on (raked), which is what makes an embossed impression read as relief — frontal light would flatten it. Silver card far left for a 3:1 fill; no soft light anywhere near the leather.</td></tr>
+    <tr><th>Machines in frame</th><td>Keep the screen at 90–95% so it blooms slightly at this aperture. The lens should turn the red panel into a shape, not a message — that is the whole point of this frame.</td></tr>
+    <tr><th>Focus stack</th><td>Stack the leather (three planes: nearest stitching 1–2cm closer than the star) and leave the pen as the only element flat in focus. Do not stack the tablet.</td></tr>
+    <tr><th>Text safety</th><td>Same rule as the master, inverted: the legible copy here is the tooling — <code>UNDERWRITING AUDIT LEDGER</code>, <code>EXHIBIT A</code> and the NDC line — so version-control those, and keep the on-screen regulatory wording either absent or unreadable. See the prompt pack.</td></tr>
+    <tr><th>Pairs with</th><td>Master frame 1 as the "verdict lands" beat; this frame as "the human answers it". Slide sequence: 1 then 1b, same crop ratio, so the eye stays in the same place.</td></tr>
+  </table>
+</div>
+</body>
+</html>
