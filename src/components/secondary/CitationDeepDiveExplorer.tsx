@@ -85,7 +85,7 @@ export function CitationDeepDiveExplorer({ sourceReferences, conditionName }: Ci
       aria-label={conditionName ? `Sources for ${conditionName}` : "Sources supporting the mapped relationship(s)"}
       className="mt-4"
     >
-      <h4 className="text-xs font-semibold uppercase tracking-wide text-slate-600">
+      <h4 className="text-xs font-semibold text-slate-600">
         Sources supporting the mapped relationship(s) — deep dive
       </h4>
       <p className="mt-1 text-xs leading-relaxed text-slate-600">

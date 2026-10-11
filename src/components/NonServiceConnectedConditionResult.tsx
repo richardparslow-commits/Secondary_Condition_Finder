@@ -56,7 +56,7 @@ export function NonServiceConnectedConditionResult({ result, vaReference }: Prop
     <article className="rounded-xl border border-slate-200 bg-white p-5 shadow-none">
       <header className="flex items-start justify-between gap-3">
         <div>
-          <p className="text-xs font-semibold uppercase tracking-wide text-muted">
+          <p className="text-xs font-semibold text-muted">
             Diagnosed, not service connected
           </p>
           <h3 className="mt-1 text-xl font-bold text-slate-900">{result.conditionName}</h3>
@@ -102,7 +102,7 @@ export function NonServiceConnectedConditionResult({ result, vaReference }: Prop
                 });
                 return (
                   <section key={primary.id} className="rounded-lg border border-blue-200 bg-blue-50 p-4">
-                    <p className="text-xs font-semibold uppercase tracking-wide text-blue-800">
+                    <p className="text-xs font-semibold text-blue-800">
                       Already service connected
                     </p>
                     <h5 className="mt-1 font-bold text-blue-950">{primary.name}</h5>
@@ -120,7 +120,7 @@ export function NonServiceConnectedConditionResult({ result, vaReference }: Prop
 
                     {pathwayIntelligence && (
                       <div className="mt-3 border-t border-blue-200 pt-3">
-                        <p className="text-xs font-semibold uppercase tracking-wide text-blue-800">
+                        <p className="text-xs font-semibold text-blue-800">
                           Authored pathway to evaluate
                         </p>
                         <div className="mt-2 flex flex-wrap gap-2">
@@ -164,7 +164,7 @@ export function NonServiceConnectedConditionResult({ result, vaReference }: Prop
                         )}
                         {spicerGuidance.active && (
                           <div className="mt-3 rounded-lg border border-teal-300 bg-teal-50 p-3" role="note">
-                            <p className="text-xs font-semibold uppercase tracking-wide text-teal-900">
+                            <p className="text-xs font-semibold text-teal-900">
                               {spicerGuidance.heading}
                             </p>
                             <p className="mt-2 text-sm leading-relaxed text-teal-950">{spicerGuidance.explanation}</p>
@@ -193,7 +193,7 @@ export function NonServiceConnectedConditionResult({ result, vaReference }: Prop
 
           {(recommendation.intermediatePathways?.length ?? 0) > 0 && (
             <section className="mt-4 rounded-lg border border-violet-300 bg-violet-50 p-4">
-              <h4 className="text-xs font-semibold uppercase tracking-wide text-violet-900">Intermediate-chain research pathway</h4>
+              <h4 className="text-xs font-semibold text-violet-900">Intermediate-chain research pathway</h4>
               <p className="mt-2 text-sm text-violet-950">
                 This bounded two-step path is shown because both published edges connect a selected service-connected condition to this diagnosed condition through an intermediate condition. It is not a synthetic direct relationship or an individual nexus finding; each edge requires separate clinical support.
               </p>
@@ -220,7 +220,7 @@ export function NonServiceConnectedConditionResult({ result, vaReference }: Prop
 
           {(recommendation.clinicalFrictionWarnings?.length ?? 0) > 0 && (
             <section className="mt-4 rounded-lg border border-amber-300 bg-amber-50 p-4">
-              <h4 className="text-xs font-semibold uppercase tracking-wide text-amber-900">Alternative-etiology review</h4>
+              <h4 className="text-xs font-semibold text-amber-900">Alternative-etiology review</h4>
               <p className="mt-2 text-sm text-amber-950">Your reported history overlaps with an alternative cause listed for this authored mapping. This is a clinical-friction warning for discussion, not a finding that the alternative cause is present or that the mapped relationship fails.</p>
               <ul className="mt-2 list-disc space-y-1 pl-5 text-sm text-amber-950">{recommendation.clinicalFrictionWarnings?.map((warning) => <li key={`${warning.primaryId}-${warning.message}`}>{warning.message}</li>)}</ul>
             </section>
@@ -228,7 +228,7 @@ export function NonServiceConnectedConditionResult({ result, vaReference }: Prop
 
           {(recommendation.chronologyWarnings?.length ?? 0) > 0 && (
             <section className="mt-4 rounded-lg border border-orange-300 bg-orange-50 p-4">
-              <h4 className="text-xs font-semibold uppercase tracking-wide text-orange-900">Chronology question to resolve</h4>
+              <h4 className="text-xs font-semibold text-orange-900">Chronology question to resolve</h4>
               <p className="mt-2 text-sm text-orange-950">Approximate dates created a chronology question for this authored theory. Dates may reflect delayed diagnosis rather than onset, so review the underlying records with a qualified provider or representative.</p>
               <ul className="mt-2 list-disc space-y-1 pl-5 text-sm text-orange-950">{recommendation.chronologyWarnings?.map((warning) => <li key={`${warning.primaryId}-${warning.message}`}>{warning.message}</li>)}</ul>
             </section>
@@ -236,7 +236,7 @@ export function NonServiceConnectedConditionResult({ result, vaReference }: Prop
 
           {recommendation.evidenceGaps.length > 0 && (
             <section className="mt-4 rounded-lg bg-slate-50 p-4">
-              <h4 className="text-xs font-semibold uppercase tracking-wide text-slate-600">
+              <h4 className="text-xs font-semibold text-slate-600">
                 Evidence questions for this non-service-connected diagnosis
               </h4>
               <ul className="mt-2 list-disc space-y-1 pl-5 text-sm text-slate-700">
@@ -255,7 +255,7 @@ export function NonServiceConnectedConditionResult({ result, vaReference }: Prop
       )}
 
       <section className="mt-4 rounded-md border border-slate-200 p-3">
-        <h4 className="text-xs font-semibold uppercase tracking-wide text-slate-600">
+        <h4 className="text-xs font-semibold text-slate-600">
           VA reference terminology for this diagnosis
         </h4>
         {!vaReference.live ? (

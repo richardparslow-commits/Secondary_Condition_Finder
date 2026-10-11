@@ -60,37 +60,80 @@ These values were previously pinned in this workbook as a starter template. They
 
 No human accessibility evidence was recorded against these builds. Every result table below remains `NOT TESTED`.
 
+## Remediation state of the build under review
+
+Recorded so a tester does not spend a scarce session on a build that is about to change underneath them.
+
+`VA_Lighthouse_Readiness_Report.md` §7 imposes an ordering constraint: the manual session must happen **after** remediation tasks R-02 and R-07 land, because testing the pre-fix build produces evidence that the fix then invalidates.
+
+| Task | What it changed | State |
+|---|---|---|
+| R-02 | Exposed the `--muted` design token and swept 65 off-token `text-slate-500` call sites that failed WCAG 1.4.3 on `slate-100`/`slate-200`. Guarded by `tests/design-token-contrast.test.ts`. | **Merged** — PR #520, commit `4112e719` |
+| R-07 | Raised 20 legal, privacy, safety, and verification notices from 12px to 14px, and returned 37 all-caps multi-word labels to sentence-case (3 short table-header labels deliberately kept). Guarded by `tests/legal-notice-legibility.test.ts`. | **Merged** |
+| R-05 | Real-browser axe run with `color-contrast` **enabled** across the key routes. | **NOT IMPLEMENTED** — `e2e/` contains no axe reference |
+
+**The ordering constraint is therefore satisfied.** A session run against current `main` will not be invalidated by R-02 or R-07. If `main` advances again before the session, re-resolve the build identity at session start as described above.
+
+**Known limitation the tester must not assume away.** Because R-05 is absent there is still **no automated real-browser contrast evidence**. jsdom computes no layout, so axe's `color-contrast` rule is disabled in `tests/setup/accessibility.ts` and can only report "incomplete". The manual contrast, 200%-zoom/reflow, and forced-colours checks in this workbook are consequently the *only* contrast evidence the project holds. They cannot be skipped, and they cannot be inferred from a green automated suite.
+
+This section records remediation state only. It is **not** a test result, it is not sign-off, and it does not close issue #195.
+
 ## Required route and workflow coverage
 
 Record each route/workflow as it is exercised. A route being reachable is not itself an accessibility pass.
+
+The route list below is the complete set of routes the application ships (`src/app/**/page.tsx`, 26 routes at the time of writing), each confirmed to return HTTP 200 on the canonical production alias. Every shipped route must either be exercised or be recorded in the exclusion table below with a reason. The automated suites are **not** a substitute for this coverage: they exercise 18 of these routes in jsdom, which computes no layout and therefore proves nothing about zoom, reflow, contrast, or forced colours.
 
 | Route / workflow | Tested | Notes / synthetic data used |
 |---|---|---|
 | `/` | [ ] | |
 | `/about` | [ ] | |
 | `/secondary` | [ ] | |
-| Secondary Step 1 — diagnosed conditions | [ ] | |
-| Secondary Step 2 — service-connected answers | [ ] | |
-| Secondary Step 3 — ratings | [ ] | |
-| Secondary Step 4 — supporting documents / evidence | [ ] | |
-| Secondary Step 5 — suggestions | [ ] | |
-| Secondary Step 6 — evidence/results | [ ] | |
+| Secondary Step 1 — diagnosed conditions (`/secondary/diagnosed`) | [ ] | |
+| Secondary Step 2 — service-connected answers (`/secondary/service-connected`) | [ ] | |
+| Secondary Step 3 — ratings (`/secondary/ratings`) | [ ] | |
+| Secondary Step 4 — supporting documents / evidence (`/secondary/upload`) | [ ] | |
+| Secondary Step 5 — suggestions (`/secondary/suggestions`) | [ ] | |
+| Secondary Step 6 — evidence/results (`/secondary/evidence`) | [ ] | |
+| `/secondary/condition-caused-by` — direct-causation theory intake | [ ] | |
+| `/secondary/condition-aggravation` — aggravation theory intake | [ ] | |
+| `/secondary/legal` — 38 CFR § 3.310 authority reference | [ ] | |
 | Priority 1/1B local evidence upload/review with synthetic PDF | [ ] | |
 | Priority 1/1B local evidence upload/review with synthetic DOCX | [ ] | |
 | Priority 1/1B local evidence upload/review with synthetic text | [ ] | |
 | `/presumptive` | [ ] | |
+| `/presumptive/results` — results view after a presumptive lookup | [ ] | |
 | `/presumptive` — DD-214 upload + browser-local OCR (image) | [ ] | |
 | `/presumptive` — DD-214 upload + browser-local OCR (scanned/mixed PDF) | [ ] | |
 | `/presumptive` — DD-214 extracted-field verification and confirm controls | [ ] | |
+| `/presumptive` — masked-SSN block: Show/Hide control and redaction-limit notice | [ ] | |
+| `/presumptive` — "Show extracted text" disclosure and scrollable raw-text region | [ ] | |
 | `/pathways` | [ ] | |
 | `/va-account` — sandbox read-only account (disabled state and consent copy) | [ ] | |
 | Workflow completion controls (confirm, clear, download, finish/restart) | [ ] | |
 | `/va-forms` | [ ] | |
 | `/va-forms/finder` | [ ] | |
 | `/va-reference` | [ ] | |
+| `/va-reference` — filter privacy notice and filtered-result count announcement | [ ] | |
 | `/va-reference/service-branches` | [ ] | |
+| `/get-records` — how to obtain VA medical records | [ ] | |
+| `/scenarios` — demo-scenario launcher and synthetic-data notice | [ ] | |
 | `/privacy` | [ ] | |
 | `/terms` | [ ] | |
+| `/runtime-readiness` — operational readiness status page | [ ] | |
+| Global footer legal disclaimer on every route that renders it | [ ] | |
+
+### Routes excluded from manual review
+
+Record an exclusion only when the route genuinely presents no reviewable surface. An unlisted route is an unreviewed route.
+
+| Route | Reason for exclusion |
+|---|---|
+| `/results` | Redirect shim only. Returns HTTP 307 to `/secondary` and renders no content of its own, so there is nothing to test. Confirm the redirect lands on an accessible page; do not record it as a reviewed route. |
+
+### Keeping this matrix current
+
+When a route is added to or removed from `src/app`, update this matrix in the same change. A route that ships without appearing here will be silently missed by the manual review, and issue #195 requires evidence for **every** required manual item on the identified production build.
 
 ## Result vocabulary
 

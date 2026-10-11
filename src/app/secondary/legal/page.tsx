@@ -6,7 +6,7 @@ export default function SecondaryLegalPage() {
   return (
     <main className="max-w-4xl mx-auto px-4 py-8 text-gray-900">
       <div className="border-b border-gray-200 pb-5 mb-6">
-        <span className="text-xs font-semibold text-blue-700 uppercase tracking-wider">38 CFR § 3.310 Authority</span>
+        <span className="text-xs font-semibold text-blue-700">38 CFR § 3.310 Authority</span>
         <h1 className="text-3xl font-bold mt-1">Secondary Service Connection Legal & Policy Framework</h1>
         <p className="text-sm text-gray-600 mt-2">
           A comprehensive research guide to the governing statutes, VA M21-1 adjudication manuals, and 38 CFR regulations governing secondary claims.

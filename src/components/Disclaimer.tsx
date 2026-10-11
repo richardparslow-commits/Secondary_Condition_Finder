@@ -17,7 +17,7 @@ export function DisclaimerBanner() {
 
 export function DisclaimerFooter() {
   return (
-    <footer className="mt-12 border-t border-slate-200 pt-6 text-xs leading-relaxed text-muted">
+    <footer className="mt-12 border-t border-slate-200 pt-6 text-sm leading-relaxed text-muted">
       <p>
         Suggestions come from a curated knowledge base, not from your medical
         records, and are not ranked by likelihood of approval. Citations are

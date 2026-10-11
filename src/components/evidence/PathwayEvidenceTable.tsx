@@ -162,7 +162,7 @@ function HopSection({ hop, hopNumber, excerpts, conditionNameById, baseId }: Hop
         <h3 id={headingId} className="text-lg font-bold text-slate-900">
           Hop {hopNumber}: {sourceName} → {targetName}
         </h3>
-        <span className={`inline-flex items-center rounded-full border px-3 py-1 text-xs font-semibold uppercase tracking-wide ${badge.className}`}>
+        <span className={`inline-flex items-center rounded-full border px-3 py-1 text-xs font-semibold ${badge.className}`}>
           {badge.label}
         </span>
       </div>

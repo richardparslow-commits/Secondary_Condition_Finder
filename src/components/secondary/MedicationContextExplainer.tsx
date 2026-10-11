@@ -48,7 +48,7 @@ export function MedicationContextExplainer({
     >
       <div className="flex items-start justify-between gap-3">
         <div>
-          <h4 className="text-xs font-semibold uppercase tracking-wide text-slate-600">
+          <h4 className="text-xs font-semibold text-slate-600">
             Reported treatment context appearing in authored mapping text
           </h4>
           <p className="mt-1 text-xs leading-relaxed text-slate-600">

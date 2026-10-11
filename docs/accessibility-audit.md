@@ -56,24 +56,39 @@ The current repository/hosting lineage has objective Vercel production and runti
 
 The real-browser CI journey additionally exercises the six-step Secondary workflow at a phone-sized viewport, horizontal-overflow checks, app-owned validation transitions, and partial-answer preservation. Other route-specific tests cover selected form-label, source-label, privacy, evidence-processing, and workflow behaviors.
 
+Two further suites guard properties jsdom cannot compute, by scanning source analytically instead of rendering:
+
+- `tests/design-token-contrast.test.ts` (8 tests) reads the real hex values out of `src/app/globals.css`, asserts the WCAG relative-luminance ratio for every text/background pair the application can produce, and scans `src/` so the off-token `text-slate-500` class that caused finding H-01 cannot be reintroduced. This is remediation task **R-02**.
+- `tests/legal-notice-legibility.test.ts` (17 tests) enforces remediation task **R-07**: no legal, privacy, safety, or verification notice may render at 12px, and `uppercase` may appear only on the three allowlisted short table-header rows.
+
+Both run in the normal suite and therefore gate inside the existing CI `verify` job with no additional wiring. Neither observes a rendered pixel — they are source-level contracts, not measurements, and they are **not** real-browser contrast evidence (remediation task **R-05**, still not implemented).
+
 These assertions are regression evidence only. They do not test every applicable accessibility requirement and do not replace human browser/assistive-technology testing.
 
 ## Required manual route and workflow scope
 
-Issue #195 and the workbook require at minimum:
+Issue #195 and the workbook require at minimum every route the application ships. `docs/section508-manual-review-workbook.md` holds the authoritative, complete matrix; this list is the summary:
 
 - `/`;
 - `/about`;
 - `/secondary`;
-- Secondary Steps 1–6: diagnosed conditions, service-connected answers, ratings, supporting documents/evidence, suggestions, and evidence/results;
+- Secondary Steps 1–6: diagnosed conditions (`/secondary/diagnosed`), service-connected answers (`/secondary/service-connected`), ratings (`/secondary/ratings`), supporting documents/evidence (`/secondary/upload`, `/secondary/evidence`), suggestions (`/secondary/suggestions`), and evidence/results;
+- the theory-specific intake routes `/secondary/condition-caused-by`, `/secondary/condition-aggravation`, and the `/secondary/legal` authority reference;
 - Priority 1/1B local evidence upload/review using synthetic PDF, DOCX, and text documents;
-- `/presumptive`;
+- `/presumptive` and `/presumptive/results`, including DD-214 browser-local OCR, extracted-field verification, the masked-SSN block, and the extracted-text disclosure;
+- `/pathways`;
+- `/va-account` (disabled sandbox state and consent copy);
 - `/va-forms`;
 - `/va-forms/finder`;
 - `/va-reference`;
 - `/va-reference/service-branches`;
+- `/get-records`;
+- `/scenarios`;
 - `/privacy`;
-- `/terms`.
+- `/terms`;
+- `/runtime-readiness`.
+
+`/results` is excluded: it is an HTTP 307 redirect shim to `/secondary` and renders no content of its own. The exclusion is recorded in the workbook rather than left implicit, so an unlisted route is never mistaken for a reviewed one.
 
 A route returning HTTP 200 is only reachability evidence. It does not establish an accessibility pass.
 
@@ -92,6 +107,8 @@ A route returning HTTP 200 is only reachability evidence. It does not establish 
 | Selected dynamic status announcements | Source-level regression contracts for VA reference filtering and local evidence status surfaces | Verified structurally | Must still be confirmed with screen reader on deployed app |
 | Accessible validation transitions | Real-browser/source regression coverage | Partial positive evidence | Must still be confirmed with keyboard and assistive technology |
 | Accessible names / labels for interactive workflow controls | Route/component regression tests where implemented | Partial | Must be reviewed across deployed flows |
+| Legal/safety notice text size (≥14px) and label casing | Analytical source scan (`tests/legal-notice-legibility.test.ts`, R-07) | Verified structurally | Positive low-vision evidence; rendered size at 200% zoom still needs human review |
+| Design-token contrast ratios | Analytical source scan (`tests/design-token-contrast.test.ts`, R-02) | Verified structurally | Positive evidence for token pairs only; **not** a substitute for real-browser contrast (R-05 still missing) |
 | Keyboard-only traversal and focus order | Human deployed-app test | **Pending** | Blocking manual evidence |
 | Keyboard traps / disclosure/file-input behavior | Human deployed-app test | **Pending** | Blocking manual evidence |
 | Screen-reader announcements and reading order | NVDA and VoiceOver human test | **Pending** | Blocking manual evidence |

@@ -3,6 +3,63 @@
 All notable changes to Secondary Condition Finder. Format loosely follows
 [Keep a Changelog](https://keepachangelog.com/); merges are grouped by date, newest first.
 
+## 2026-10-11
+
+- **The manual Section 508 session was blocked on a remediation that had not landed, and the
+  review matrix did not cover the routes that ship** (`a11y`): issue #195 is a human-only gate,
+  but `VA_Lighthouse_Readiness_Report.md` §7 puts an ordering constraint in front of it — the
+  session must happen *after* R-02 and R-07 land, because testing the pre-fix build produces
+  evidence the fix then invalidates. R-02 merged in PR #520; R-07 had not. This lands R-07.
+
+  R-07 named two sites: the `Disclaimer.tsx:20` footer disclaimer and the
+  `Dd214LocalAnalyzer.tsx:379` "Full SSN is never stored" notice, both rendering the text that
+  tells a user this tool is not legal or medical advice at 12px. Both were raised to `text-sm`,
+  and the sweep was then extended to every other element in `src/` carrying legal, privacy,
+  safety, or verification meaning — **20 elements across 11 files** in total, `text-xs` falling
+  286 → 261. Fixing only the two audited examples would have left the identical defect standing
+  in the consultation-summary export, the medical-record checklist, the record walkthrough, the
+  VA reference filter privacy notice, the presumptive-list currency notice and the demo-scenario
+  data-handling notice. The 261 remaining `text-xs` instances are decorative and were
+  deliberately left alone: blanket-upscaling every small label is a visual redesign, not an
+  accessibility fix.
+
+  The uppercase half returned **37** all-caps multi-word labels to sentence-case across 13 files,
+  dropping the `tracking-wide`/`tracking-wider` letter-spacing that existed only to keep all-caps
+  legible. Exactly **3** survive — the short single-word `thead` header rows R-07 says to keep.
+  One correction to the audit that motivated this: CSS `text-transform: uppercase` does not alter
+  the DOM text node, so NVDA, JAWS and VoiceOver announce the sentence-case source and do *not*
+  spell it letter-by-letter; that behaviour belongs to text typed in literal ALL CAPS. The real
+  harm is the low-vision one — capitalising every word destroys the word-shape cues readers
+  depend on — so the fix stands, but the report's stated mechanism was corrected rather than
+  repeated into a federal submission.
+
+  `tests/legal-notice-legibility.test.ts` (17 tests) locks both halves: no named notice may carry
+  `text-xs`, and no `uppercase` may appear outside the allowlisted header rows. Like the R-02
+  contrast test it is an analytical source scan, because jsdom computes no layout and cannot
+  observe a rendered font size. It runs in the normal suite, so it gates inside the existing
+  `verify` job with no new CI wiring, and it is deliberately **not** added to
+  `pr-508-compliance.yml` — that workflow documents a fixed 6-file / 36-test gate, and adding a
+  seventh file would silently falsify a count several documents assert. Mutation-proven in both
+  directions. 508 gate unchanged at 6 files / 36 tests.
+
+  Separately, the workbook's route matrix listed 14 entries while the application ships 26 routes.
+  Seven live production routes were absent — `/get-records`, `/scenarios`, `/runtime-readiness`,
+  `/secondary/condition-caused-by`, `/secondary/condition-aggravation`, `/secondary/legal` and
+  `/presumptive/results` — so a tester following the workbook in good faith would have
+  under-covered the surface #195 demands evidence for, and the resulting record would have looked
+  complete while not being so. The matrix now enumerates every shipped route, and `/results`
+  moves into an explicit exclusion table as the HTTP 307 redirect shim it is, so an unlisted route
+  can never be mistaken for a reviewed one.
+
+  **What did not happen.** No accessibility result was recorded and #195 was not closed. Every
+  result cell in the workbook still reads `NOT TESTED`, because keyboard, assistive-technology,
+  200%-zoom, contrast and forced-colours testing on an identified production build is human work
+  with a human sign-off, and automation cannot truthfully record PASS for a test nobody performed.
+  The ordering constraint is now satisfied and the session can be scheduled — that is the whole of
+  this change. R-05 (real-browser axe with `color-contrast` enabled) is still not implemented, so
+  the project continues to hold **no** automated contrast evidence and the manual contrast checks
+  carry that burden alone.
+
 ## 2026-10-09
 
 - **The VA retry policy has one home, and a 429 is obeyed rather than argued with** (`refactor`): the

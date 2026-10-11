@@ -9,7 +9,7 @@ export function SymptomDiscussionReview({ prompts }: Props) {
 
   return (
     <section className="rounded-lg border border-violet-300 bg-violet-50 p-4" aria-labelledby="symptom-discussion-heading">
-      <h3 id="symptom-discussion-heading" className="text-sm font-bold uppercase tracking-wide text-violet-900">
+      <h3 id="symptom-discussion-heading" className="text-sm font-bold text-violet-900">
         Symptoms to discuss with a provider
       </h3>
       <p className="mt-2 text-sm text-violet-950">

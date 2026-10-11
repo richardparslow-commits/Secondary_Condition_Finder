@@ -32,7 +32,7 @@ export function DisabilityReferenceExplorer({ items }: Props) {
       <label htmlFor="va-disability-reference-search" className="block text-sm font-semibold text-slate-900">
         Filter reference terms
       </label>
-      <p className="mt-1 text-xs leading-relaxed text-slate-600">
+      <p className="mt-1 text-sm leading-relaxed text-slate-600">
         Filtering happens only in your browser after the public reference list is loaded. Your search text is not submitted to VA or added to the page URL.
       </p>
       <input

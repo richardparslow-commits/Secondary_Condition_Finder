@@ -365,18 +365,18 @@ export function Dd214LocalAnalyzer({ locations }: Props) {
       {extraction && (
         <div className="mt-5 space-y-4 rounded-lg bg-slate-50 p-4">
           <h3 className="font-semibold">Verify your service history</h3>
-          <p className="text-xs text-slate-600">Review and correct the extracted fields. Nothing is saved until you confirm below.</p>
+          <p className="text-sm text-slate-600">Review and correct the extracted fields. Nothing is saved until you confirm below.</p>
 
           {extraction.fields.maskedSsn && (
             <div className="rounded-md border border-slate-200 bg-white p-3">
-              <p className="text-xs font-medium text-slate-700">SSN (masked)</p>
+              <p className="text-sm font-medium text-slate-700">SSN (masked)</p>
               <p className="mt-1 font-mono text-sm">
                 {showSsn ? extraction.fields.maskedSsn : "XXX-XX-••••"}
-                <button type="button" onClick={() => setShowSsn((v) => !v)} className="ml-3 text-xs underline">
+                <button type="button" onClick={() => setShowSsn((v) => !v)} className="ml-3 text-sm underline">
                   {showSsn ? "Hide" : "Show"}
                 </button>
               </p>
-              <p className="mt-1 text-xs text-muted">Full SSN is never stored. This preview is in-memory only.</p>
+              <p className="mt-1 text-sm text-muted">Full SSN is never stored. This preview is in-memory only.</p>
             </div>
           )}
 
@@ -499,10 +499,10 @@ export function Dd214LocalAnalyzer({ locations }: Props) {
             </div>
           )}
 
-          <details className="text-xs text-slate-600">
+          <details className="text-sm text-slate-600">
             <summary className="cursor-pointer">Show extracted text (common SSN layouts redacted)</summary>
-            <pre className="mt-2 max-h-48 overflow-auto whitespace-pre-wrap rounded bg-white p-3 text-xs">{extraction.rawText.slice(0, 4000)}</pre>
-            <p className="mt-1 text-xs text-muted">Redaction covers common SSN layouts; unusual OCR spacing may remain — verify before sharing.</p>
+            <pre className="mt-2 max-h-48 overflow-auto whitespace-pre-wrap rounded bg-white p-3 text-sm">{extraction.rawText.slice(0, 4000)}</pre>
+            <p className="mt-1 text-sm text-muted">Redaction covers common SSN layouts; unusual OCR spacing may remain — verify before sharing.</p>
           </details>
         </div>
       )}

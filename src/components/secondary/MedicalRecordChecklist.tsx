@@ -125,12 +125,12 @@ export function MedicalRecordChecklist({ groups }: Props) {
         <button type="button" className="ui-button" onClick={downloadChecklist}>
           Download checklist
         </button>
-        <p className="text-xs text-slate-600">
+        <p className="text-sm text-slate-600">
           Creates a text file in this browser only. It mirrors the consultation summary export — authored gaps, typed by evidence kind — without raw excerpts or medication/treatment context.
         </p>
       </div>
 
-      <p className="mt-3 text-xs text-slate-600">
+      <p className="mt-3 text-sm text-slate-600">
         Checklist is generated from the current published mappings only. If no published relationship exists for a diagnosis, no checklist is shown for it. Confirm current VA guidance with a qualified provider or accredited representative.
       </p>
     </section>
