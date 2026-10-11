@@ -301,6 +301,8 @@ const REFERENCE_READ_PATHS = [
   "/va-forms",
   "/va-forms/finder",
   "/va-reference",
+  "/va-reference/service-branches",
+  "/presumptive",
   "/presumptive/results",
   "/secondary/suggestions",
   "/secondary/evidence",
@@ -314,6 +316,7 @@ describe("public reference page rate-limit coverage (SEC-02)", () => {
       "loadClaimFormReference",
       "loadVaFormsFinder",
       "loadDisabilityReference",
+      "loadServiceBranchReference",
       "loadAccreditedRepresentatives",
       "prepareRegulatoryReview",
     ];

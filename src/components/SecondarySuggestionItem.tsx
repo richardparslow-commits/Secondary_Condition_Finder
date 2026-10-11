@@ -57,7 +57,7 @@ export function SecondarySuggestionItem({ recommendation, primaryId, vaReference
     <article className="rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
       <header className="flex items-start justify-between gap-3">
         <div>
-          <p className="text-xs uppercase tracking-wide text-slate-500">Possible secondary condition</p>
+          <p className="text-xs uppercase tracking-wide text-muted">Possible secondary condition</p>
           <h3 className="text-base font-semibold text-slate-900">{recommendation.condition}</h3>
         </div>
         <span
@@ -67,7 +67,7 @@ export function SecondarySuggestionItem({ recommendation, primaryId, vaReference
           {CONSENSUS_LABEL[recommendation.etiologicalConsensus]}
         </span>
       </header>
-      <p className="mt-1.5 text-xs text-slate-500">
+      <p className="mt-1.5 text-xs text-muted">
         {CONSENSUS_EXPLANATION[recommendation.etiologicalConsensus]}
       </p>
 
@@ -100,7 +100,7 @@ export function SecondarySuggestionItem({ recommendation, primaryId, vaReference
             <p>
               <span className="font-medium text-slate-900">VBA terminology: </span>
               {vaReference.match.term.name}
-              <span className="ml-2 font-mono text-xs text-slate-500">
+              <span className="ml-2 font-mono text-xs text-muted">
                 ID {vaReference.match.term.id}
               </span>
             </p>
@@ -146,7 +146,7 @@ export function SecondarySuggestionItem({ recommendation, primaryId, vaReference
 
           {pathwayIntelligence.causalChain && (
             <div className="mt-3">
-              <h5 className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+              <h5 className="text-xs font-semibold uppercase tracking-wide text-muted">
                 Authored causal chain to review
               </h5>
               <p className="mt-1 text-sm leading-relaxed text-slate-700">
@@ -202,7 +202,7 @@ export function SecondarySuggestionItem({ recommendation, primaryId, vaReference
       )}
 
       <section className="mt-3 rounded-md bg-slate-50 p-3">
-        <h4 className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+        <h4 className="text-xs font-semibold uppercase tracking-wide text-muted">
           Evidence that may help
         </h4>
         <ul className="mt-1.5 list-disc space-y-1 pl-5 text-sm text-slate-700">
@@ -214,7 +214,7 @@ export function SecondarySuggestionItem({ recommendation, primaryId, vaReference
 
       {recommendation.sourceReferences.length > 0 && (
         <section className="mt-3">
-          <h4 className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+          <h4 className="text-xs font-semibold uppercase tracking-wide text-muted">
             Mapped sources
           </h4>
           <ul className="mt-1.5 space-y-1.5">
@@ -231,7 +231,7 @@ export function SecondarySuggestionItem({ recommendation, primaryId, vaReference
                     unverified
                   </span>
                 )}
-                <span className="mt-0.5 block text-xs text-slate-500">{reference.note}</span>
+                <span className="mt-0.5 block text-xs text-muted">{reference.note}</span>
               </li>
             ))}
           </ul>

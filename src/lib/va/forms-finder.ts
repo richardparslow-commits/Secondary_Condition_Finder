@@ -93,7 +93,13 @@ export async function loadVaFormsFinder(
     hashedCacheKeySegment(normalizedQuery.toLowerCase()),
   );
 
-  return withVaReferenceCache<VaFormsFinderView>(
+  // A01 cache-value slice: the cached *value* never carries the raw query —
+  // only the hashed key does. The loader builds cacheable views with an empty
+  // query and the request's normalized text is re-attached after the cache
+  // tiers, so a shared-KV dump, key listing, or promoted process-local entry
+  // cannot replay what the user typed. The GET URL, browser history, and the
+  // live upstream query still carry legitimate text by design (see page note).
+  const cached = await withVaReferenceCache<VaFormsFinderView>(
     cacheKey,
     async () => {
       const result = await fetchVaForms(normalizedQuery, { config });
@@ -116,7 +122,7 @@ export async function loadVaFormsFinder(
       return {
         cacheable: true,
         view: {
-          query: normalizedQuery,
+          query: "",
           items: result.data.data
             .filter((item) => !item.attributes.deleted_at)
             .slice(0, 25)
@@ -144,6 +150,11 @@ export async function loadVaFormsFinder(
         isTrustedCachedLiveView(view, configuredEnvironment),
     },
   );
+
+  // Re-attach the request's text for display only — it was never written to
+  // either cache tier. Fallbacks already carry it (they are never cached).
+  if (!cached.live) return cached;
+  return { ...cached, query: normalizedQuery };
 }
 
 /**

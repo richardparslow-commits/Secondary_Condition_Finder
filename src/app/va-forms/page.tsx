@@ -42,7 +42,7 @@ export default async function VaFormsPage() {
         </div>
 
         <p className="mt-3 text-sm text-slate-700">{reference.title}</p>
-        <p className="mt-2 text-xs text-slate-500">
+        <p className="mt-2 text-xs text-muted">
           {formatRevision(reference.lastRevisionOn)}
         </p>
 

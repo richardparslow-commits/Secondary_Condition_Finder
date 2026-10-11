@@ -140,7 +140,7 @@ export function PathwayExplorer({ view }: { view: GraphPathwayExplorerView }) {
           </p>
         )}
         {view.totalAnchors > 0 && (
-          <p className="mt-1 text-xs leading-relaxed text-slate-500">{CITATION_TRIAGE_GUARD}</p>
+          <p className="mt-1 text-xs leading-relaxed text-muted">{CITATION_TRIAGE_GUARD}</p>
         )}
       </div>
 
@@ -156,7 +156,7 @@ export function PathwayExplorer({ view }: { view: GraphPathwayExplorerView }) {
               <h2 id={`pathway-origin-${origin.originConditionId}`} className="text-xl font-bold">
                 {origin.originConditionName}
               </h2>
-              <p className="font-mono text-xs text-slate-500">{origin.originConditionId}</p>
+              <p className="font-mono text-xs text-muted">{origin.originConditionId}</p>
             </div>
           </div>
 
@@ -240,7 +240,7 @@ function PathwayCard({ pathway }: { pathway: GraphPathwayView }) {
               </p>
               {hop.anchors.length > 0 && (
                 <div className="mt-2">
-                  <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                  <p className="text-xs font-semibold uppercase tracking-wide text-muted">
                     Citation anchors
                   </p>
                   <ul className="mt-1 space-y-1">

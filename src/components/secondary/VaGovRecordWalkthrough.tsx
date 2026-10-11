@@ -189,7 +189,7 @@ export function VaGovRecordWalkthrough({ exportFilename = "va-gov-records-downlo
                   </span>
                   <span className="mt-1 block leading-relaxed text-slate-700">{step.detail}</span>
                   {step.note && (
-                    <span className="mt-1 block text-xs leading-relaxed text-slate-500">{step.note}</span>
+                    <span className="mt-1 block text-xs leading-relaxed text-muted">{step.note}</span>
                   )}
                   <StepLink step={step} />
                 </span>

@@ -313,7 +313,7 @@ const EGRESS_PATTERN =
 /**
  * Reviewed egress allowlist.
  *
- * The five `src/lib/va/*` modules are server-side and target VA endpoints pinned
+ * The four `src/lib/va/*` modules are server-side and target VA endpoints pinned
  * by `config.ts` (discovery-verified paths on `sandbox-api.va.gov`, disabled by
  * default). `SandboxConnectForm` is the one client-side call and posts to
  * `form.action` — its own page, same-origin, which `form-action 'self'` and
@@ -327,12 +327,15 @@ const EGRESS_PATTERN =
  * one again without this list changing — which is the check working, not an
  * exemption being granted. The demo fixture module deliberately has no egress at
  * all: it only answers requests, and `transport.ts` falls through for the rest.
+ * `api-client.ts` is the restricted-API (Claims/Intake) counterpart: server-only,
+ * bearer tokens pinned to the configured VA origin, redirects refused, no logger
+ * or console sink, failures returned as values.
  */
 const REVIEWED_EGRESS_FILES = [
   "src/components/va-account/SandboxConnectForm.tsx",
   "src/lib/va/account/store.ts",
   "src/lib/va/account/transport.ts",
-  "src/lib/va/index.ts",
+  "src/lib/va/api-client.ts",
   "src/lib/va/reference-shared-cache.ts",
   "src/lib/va/sandbox.ts",
 ].sort();

@@ -18,6 +18,8 @@
  */
 
 import {
+  accountAuthCallbackLimiter,
+  accountAuthLoginLimiter,
   adminCacheClearLimiter,
   healthLimiter,
   regulatoryPreflightLimiter,
@@ -73,6 +75,26 @@ export const API_ROUTE_LIMIT_POLICIES: readonly ApiRouteLimitPolicy[] = [
     limitedBody: { status: "rate_limited" },
     rationale:
       "Public and unauthenticated, so it is the cheapest route to hammer and the one an operator polls.",
+  },
+  {
+    path: "/api/auth/login",
+    limiter: accountAuthLoginLimiter,
+    limitedBody: {
+      ok: false,
+      error: "Rate limit exceeded. Please try again later.",
+    },
+    rationale:
+      "Every initiation mints a server-side OAuth transaction; unbounded calls exhaust the bounded transaction store.",
+  },
+  {
+    path: "/api/auth/callback",
+    limiter: accountAuthCallbackLimiter,
+    limitedBody: {
+      ok: false,
+      error: "Rate limit exceeded. Please try again later.",
+    },
+    rationale:
+      "Every callback performs an upstream token exchange plus a JWKS fetch; it is policed like the other upstream-forcing route.",
   },
 ];
 

@@ -148,7 +148,7 @@ export function DiagnosedStep() {
                       <input type="checkbox" name="diagnosed" value={condition.id} defaultChecked={selectedDiagnosed.has(condition.id)} className="mt-1 h-5 w-5 rounded border-slate-300" />
                       <span className="min-w-0 text-sm">
                         <span className="block font-semibold text-slate-900">{condition.name}</span>
-                        <span className="block text-xs text-slate-500">{condition.bodySystem}</span>
+                        <span className="block text-xs text-muted">{condition.bodySystem}</span>
                       </span>
                       <ConditionBadges conditionId={condition.id} mapped={mapped.has(condition.id)} />
                     </label>

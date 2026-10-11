@@ -177,7 +177,7 @@ function PresumptiveResultsBody({
       <p className="mt-2 text-sm text-slate-600">
         Based on {history.locations.join(", ")}{serviceDateSummary}.
       </p>
-      <p className="mt-1 text-xs text-slate-500">
+      <p className="mt-1 text-xs text-muted">
         This service history is stored in this browser tab only. It is not sent
         to the server and is not saved in a cookie.
       </p>
@@ -286,13 +286,13 @@ function PresumptiveResultsBody({
               <h2 className="text-lg font-semibold text-slate-900">
                 {category.name}
               </h2>
-              <p className="mt-1 text-xs text-slate-500">{category.authority}</p>
+              <p className="mt-1 text-xs text-muted">{category.authority}</p>
               <p className="mt-3 text-sm leading-relaxed text-slate-700">
                 {category.summary}
               </p>
 
               <section className="mt-4 rounded-md bg-slate-50 p-4">
-                <h3 className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                <h3 className="text-xs font-semibold uppercase tracking-wide text-muted">
                   Why this may apply to you
                 </h3>
                 <ul className="mt-2 space-y-2 text-sm text-slate-700">
@@ -309,7 +309,7 @@ function PresumptiveResultsBody({
                         </span>
                       )}
                       {period.note && (
-                        <span className="mt-0.5 block text-xs text-slate-500">
+                        <span className="mt-0.5 block text-xs text-muted">
                           {period.note}
                         </span>
                       )}
@@ -319,7 +319,7 @@ function PresumptiveResultsBody({
               </section>
 
               <section className="mt-4">
-                <h3 className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                <h3 className="text-xs font-semibold uppercase tracking-wide text-muted">
                   Presumptive conditions ({conditions.length})
                 </h3>
                 {groupConditions(conditions).map(([group, items]) => (
@@ -342,7 +342,7 @@ function PresumptiveResultsBody({
               </section>
 
               <section className="mt-4 border-t border-slate-200 pt-4">
-                <h3 className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+                <h3 className="text-xs font-semibold uppercase tracking-wide text-muted">
                   Sources
                 </h3>
                 <ul className="mt-2 space-y-1.5">
@@ -361,13 +361,13 @@ function PresumptiveResultsBody({
                           unverified
                         </span>
                       )}
-                      <span className="mt-0.5 block text-xs text-slate-500">
+                      <span className="mt-0.5 block text-xs text-muted">
                         {reference.note}
                       </span>
                     </li>
                   ))}
                 </ul>
-                <p className="mt-3 text-xs text-slate-500">
+                <p className="mt-3 text-xs text-muted">
                   List last checked against the VA source on{" "}
                   {formatDate(category.sourceCheckedOn)}. Presumptive lists
                   change; confirm at va.gov before relying on this.

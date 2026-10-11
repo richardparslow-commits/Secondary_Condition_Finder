@@ -74,7 +74,7 @@ Route structure (all workflow steps live under the `/secondary/` group — there
 - `/scenarios/` — demo workflow launcher (`data/demo-scenarios.json`, bounded `scenarioId`).
 - `/about/`, `/privacy/`, `/terms/` — static content.
 - `/runtime-readiness/` — dynamic, non-sensitive check of the configured primary `WORKFLOW_SESSION_SECRET` crypto-readiness marker; CI separately verifies deployment identity, alias convergence and the public route matrix.
-- `/api/health`, `/api/regulatory/preflight`, `/api/admin/cache-clear`, `/api/csp-report`, and `/va-account/oauth/*` — health, protected operations/reporting, and the separately gated sandbox account flow.
+- `/api/health`, `/api/regulatory/preflight`, `/api/admin/cache-clear`, `/api/csp-report`, `/api/auth/*`, and `/va-account/oauth/*` — health, protected operations/reporting, and the separately gated sandbox account flow (the `/api/auth/*` pair are thin adapters over the same flow, separately rate-limited).
 
 Server Components by default; interactive elements are Client Components (`"use client"`).
 The only current Server Action is the bounded accredited-representative public-directory lookup;

@@ -18,7 +18,7 @@ export default function ScenariosPage() {
         Repeatable synthetic walkthroughs that launch the same privacy-safe
         secondary workflow used by normal intake.
       </p>
-      <p className="mt-2 text-xs text-slate-500">
+      <p className="mt-2 text-xs text-muted">
         Demo content is synthetic. Launching validates the bundled scenario in
         the browser and writes it to the tab-scoped workflow record; no workflow
         state is submitted to the server or placed in the URL.
@@ -36,7 +36,7 @@ export default function ScenariosPage() {
             <p className="mt-1 text-sm leading-relaxed text-slate-600">
               {scenario.description}
             </p>
-            <p className="mt-3 text-xs text-slate-500">
+            <p className="mt-3 text-xs text-muted">
               Diagnosed condition ids: {scenario.workflow.diagnosedConditionIds.join(", ")}
             </p>
             <ScenarioLaunchForm scenarioId={scenario.id} />
