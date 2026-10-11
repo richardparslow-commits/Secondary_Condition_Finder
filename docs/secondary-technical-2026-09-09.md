@@ -160,7 +160,7 @@ The application is a research and reference tool that does not maintain persiste
 
 - **recommend.ts** (`ENGINE_VERSION="phase-2-crg"`): `recommend(catalog, kb, intake)` — `CONSENSUS_ORDER` `WELL_ESTABLISHED(0)→IATROGENIC→PROBABLE→CONTESTED→NOT_ESTABLISHED(4)`, `rankWeight=1/rank`, multi-primary accumulation (deduped gaps/refs/warnings), `HISTORY_SIGNAL_ALIASES` alternative-etiology overlap, `findChronologyWarnings` (onsetYear/diagnosisYear typed chronology), `findIntermediatePathways` (bounded two-edge `INTERMEDIATE_CHAIN` via `publishedMappings` only, never promoted to direct nexus), `matchIntakeContext` literal overlap (excludes `pathwayIntelligence`), then Focus Engine filter `diagnosedConditionIds` strict boundary + `score desc → name` sort; emits `recordRecommendationLatency` + `logger.info("recommendation executed", {durationMs, primaryCount, recommendationCount})` via `src/lib/observability/logger.ts`
 - **types.ts / evaluation.ts / ingestion.ts / export.ts / scenario-adapter.ts**: Shared engine types, evaluation helpers, ingestion normalization, export serialization, and scenario adaptation
-- **Crypto foundation:** `src/lib/workflow-session-crypto.ts` (see Server Actions above) — single source for `WORKFLOW_SESSION_SECRET` / `SECONDARY_WORKFLOW_SESSION_SECRET` fallback (non-prod), `sealSessionPayload`/`openSessionPayload`/`workflowSessionRuntimeReady`
+- **Crypto foundation:** `src/lib/workflow-session-crypto.ts` (see Server Actions above) — single source for `WORKFLOW_SESSION_SECRET` (`SECONDARY_WORKFLOW_SESSION_SECRET` fallback retired 2026-10-10), `sealSessionPayload`/`openSessionPayload`/`workflowSessionRuntimeReady`
 
 #### Regulatory Intelligence (src/lib/regulatory/ + src/lib/regulatory/preflight/)
 
@@ -179,7 +179,7 @@ The application is a research and reference tool that does not maintain persiste
 - **reference-cache.ts** (`server-only`): Process-local bounded LRU cache — `VA_REFERENCE_CACHE_TTL_MS=300000` (5 min), `VA_REFERENCE_CACHE_MAX_ENTRIES=32`, `VA_REFERENCE_CACHE_MAX_KEY_LENGTH=256`; `readVaReferenceCache` (fail-closed `null` when distributed, TTL-expiry prune, LRU refresh on hit), `writeVaReferenceCache` (prune → evict oldest while `size≥32`), `clearVaReferenceCache(prefix?)`; key `disabilities:{env}` etc.
 - **disability-reference.ts** (`server-only`): `loadDisabilityReference(fetcher=fetchVaDisabilityReference)` — `loadVaApiConfig` → cache-key `disabilities:{env}` via `readVaReferenceCache` on default fetcher only (hit → `{...cached, cacheStatus:"hit"}`), else `fetcher()` → `localFallback()` on `!success|!data|0 items` (catalog names sorted, `source:"local-fallback"`, `live:false`, explicit notice that fallback is not VA), else filter `!endDateTime`, sort, build `DisabilityReferenceView extends VaReferenceSourceStatus {source, sourceLabel:"VA sandbox|production reference", notice, live:true, environment, retrievedAt:ISO, cacheStatus:"miss", items:{id,name}[]}` and `writeVaReferenceCache`; `clearDisabilityReferenceCache()` by prefix
 - **form-reference.ts / forms-finder.ts**: VA Forms Finder — bounded public-form search (`query` param), validated `formIndexItemSchema`, same 5-min cache / status / local fallback contract
-- **service-branches.ts / terminology-match.ts / condition-reference.ts**: Service-branch reference + normalized-exact (no fuzzy) `buildConditionVaReferenceMap` per-result administrative blocks (display-only, never fed into `recommend()`); `src/lib/va/index.ts` re-exports environment-aware adapter surface
+- **service-branches.ts / terminology-match.ts / condition-reference.ts**: Service-branch reference + normalized-exact (no fuzzy) `buildConditionVaReferenceMap` per-result administrative blocks (display-only, never fed into `recommend()`); the legacy rating adapter (`src/lib/va/index.ts`, retired 2026-10-10 with zero application callers) is gone — the live VA surface is `sandbox.ts` plus the `api.ts` resilience policy
 - **circuit-breaker.ts** (`server-only`): Per-service breaker `VaCircuitService="va-forms"|"benefits-reference-data"`, `CircuitBreakerState {failures, openedAt, state:"closed"|"open"|"half-open"}`, `FAILURE_THRESHOLD=5` failures → `open` for `HALF_OPEN_PROBE_AFTER_MS=60000` → `half-open` single probe (`isCircuitOpen` flips to `half-open` and logs `circuit half-open; probing`), `recordCircuitSuccess` (reset to `closed`, log `circuit closed after success`), `recordCircuitFailure` (half-open → re-open, else increment; ≥5 in `closed` → `open` + log `circuit opened`/`re-opened from half-open`), `getCircuitSnapshot`/`clearCircuitBreakerState`/`readCircuitState`; `VaApiObservation.outcome` extended with `"circuit-open"`
 
 ### 4. UI Components (src/components/ — 30 files; +5 Phase 1+2 research-aid components in `01ac471`/`a6bed87`)
@@ -257,7 +257,7 @@ Counts and identities are contract-enforced: `npm run kb:validate` + `tests/…c
 - **Session Tokens**: AES-256-GCM encryption + HMAC-SHA256 authentication
 - **Token Structure**: Encrypted payload includes expiry timestamp; server validates both token signature and timestamp
 - **Secret Rotation**: `WORKFLOW_SESSION_SECRET` must be at least 32 characters in production; missing/short secrets fail closed
-- **Fallback**: `SECONDARY_WORKFLOW_SESSION_SECRET` for backward compatibility (non-production only)
+- **Fallback**: `SECONDARY_WORKFLOW_SESSION_SECRET` retired 2026-10-10 (REL-04 follow-up); only `WORKFLOW_SESSION_SECRET` is read
 
 ### Content Security Policy
 
@@ -310,7 +310,7 @@ Counts and identities are contract-enforced: `npm run kb:validate` + `tests/…c
 | Variable | Default | Purpose |
 |----------|---------|---------|
 | `WORKFLOW_SESSION_SECRET` | dev fallback outside prod | AES-256-GCM workflow token key (HMAC, `v2`, `1800s` maxAge, `3800B` cookie cap). **Production requires ≥32 chars — fails closed** (`workflowSessionSecret()` throws, `workflowSessionRuntimeReady()` → `false`). |
-| `SECONDARY_WORKFLOW_SESSION_SECRET` | unset | Non-production backward-compat fallback. Prefer `WORKFLOW_SESSION_SECRET`. |
+| `SECONDARY_WORKFLOW_SESSION_SECRET` | retired (unset) | Retired 2026-10-10: no longer read. Set `WORKFLOW_SESSION_SECRET`. |
 | `VA_API_ENV` | `sandbox` | VA adapter environment `sandbox`|`production` (via `loadVaApiConfig`). |
 | `VA_API_ENABLED` | `false` (disabled) | Generic enable flag — `true` required for any live VA traffic. |
 | `VA_SANDBOX_ENABLED` | `false` | Legacy sandbox-only gate when `VA_API_ENABLED` is unset. |

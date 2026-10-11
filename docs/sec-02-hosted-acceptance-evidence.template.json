@@ -1,0 +1,233 @@
+{
+  "template": true,
+  "status": "unfilled",
+  "finding": "SEC-02",
+  "title": "Inbound admission at the real edge — hosted acceptance evidence",
+  "runbook": "docs/sec-02-hosted-acceptance-runbook-2026-10-09.md",
+  "instructions": "Copy this file next to the run's logs, then fill every null. A file whose top-level status is 'unfilled', or that leaves any criteria entry's 'met' as null, is not evidence and must not be attached to the finding as a pass. Group status is one of pass | fail | not-applicable; 'not-applicable' requires notApplicableReason. Record test-only configuration overrides and confirm they were restored. Redact secrets, bypass tokens, session payloads and any raw response body that could carry Veteran data (see docs/security-operations.md).",
+  "statusValues": {
+    "unfilled": "Not yet performed. Never evidence.",
+    "pass": "Performed, and every criterion in the group is met true.",
+    "fail": "Performed, and at least one criterion is met false.",
+    "not-applicable": "Cannot be performed in this environment for the stated reason; recorded, not counted as a pass."
+  },
+  "environment": {
+    "host": null,
+    "hostDetail": null,
+    "edge": {
+      "product": null,
+      "controlReferences": [],
+      "setsForwardingHeaders": null,
+      "overwritesClientSuppliedForwardingHeaders": null,
+      "stripsClientSuppliedForwardingHeaders": null
+    },
+    "originProtection": {
+      "control": null,
+      "configurationReference": null,
+      "originDirectlyReachable": null
+    },
+    "commitSha": null,
+    "deploymentIds": [],
+    "instanceCount": null,
+    "testWindowStartUtc": null,
+    "testWindowEndUtc": null,
+    "operator": null,
+    "harnessDeviationsFromProduction": [],
+    "testOnlyOverrides": {
+      "RATE_LIMIT_UNATTRIBUTED_MAX": {
+        "testValue": null,
+        "productionIntendedValue": null,
+        "appliedToGroups": [],
+        "restored": null,
+        "restoredAtUtc": null
+      },
+      "RATE_LIMIT_TRUSTED_INGRESS": {
+        "valueDuringRun": null,
+        "setOnlyAfterGroupAPassed": null
+      }
+    }
+  },
+  "healthSurface": [
+    {
+      "instance": null,
+      "url": null,
+      "scope": null,
+      "identity": {
+        "trustedIngress": null,
+        "identity": null
+      },
+      "ceiling": {
+        "max": null,
+        "windowMs": null,
+        "key": null
+      },
+      "store": {
+        "mode": null,
+        "distributed": null,
+        "blockedBy": null
+      }
+    }
+  ],
+  "groups": {
+    "A_spoofedAndMissingHeaders": {
+      "status": "unfilled",
+      "notApplicableReason": null,
+      "route": null,
+      "ceilingDuringA2": null,
+      "ceilingDuringA3": null,
+      "observations": [
+        {
+          "probe": "A1_singleClaimedIdentity",
+          "requestsSent": null,
+          "accepted": null,
+          "refused": null,
+          "refusalStatus": null,
+          "note": null
+        },
+        {
+          "probe": "A2_rotatingClaimedIdentities",
+          "requestsSent": null,
+          "accepted": null,
+          "refused": null,
+          "freshAllowanceGrantedPerHeader": null,
+          "note": null
+        },
+        {
+          "probe": "A3_unattributedOrNonLiteral",
+          "requestsSent": null,
+          "accepted": null,
+          "refused": null,
+          "boundedByCeiling": null,
+          "note": null
+        },
+        {
+          "probe": "A4_xRealIpFallback",
+          "edgeSetsOrOverwritesXRealIp": null,
+          "note": null
+        }
+      ],
+      "criteria": [
+        {
+          "check": "A2: rotating valid forwarding values did not mint a fresh allowance per request",
+          "met": null
+        },
+        {
+          "check": "A3: unattributed traffic was bounded by the shared ceiling, or is not-applicable because the edge overwrites the client-supplied value",
+          "met": null
+        },
+        {
+          "check": "The edge sets (not merely passes through) the forwarding header",
+          "met": null
+        }
+      ],
+      "evidenceFiles": []
+    },
+    "B_directOriginRefusal": {
+      "status": "unfilled",
+      "notApplicableReason": null,
+      "observations": {
+        "originPathExists": null,
+        "originPathDescription": null,
+        "directRequestStatus": null,
+        "directRequestReturnedApplicationBody": null,
+        "headerSmugglingChangedAdmission": null,
+        "bypassTokenExposedToClients": null
+      },
+      "criteria": [
+        {
+          "check": "No origin is reachable without the edge, or a direct request is refused",
+          "met": null
+        },
+        {
+          "check": "No direct request returned the application's own body",
+          "met": null
+        },
+        {
+          "check": "A client-supplied header the edge is expected to strip has no effect on admission",
+          "met": null
+        }
+      ],
+      "evidenceFiles": []
+    },
+    "C_twoInstances": {
+      "status": "unfilled",
+      "notApplicableReason": null,
+      "observations": {
+        "measuredAggregateRefusalPoint": null,
+        "ceilingConfigured": null,
+        "instancesInvolved": null,
+        "multiplicationObserved": null,
+        "sharedStoreProvisioned": null,
+        "storeProduct": null,
+        "storeAtomicPrimitive": null,
+        "storeTtlSeconds": null,
+        "storeFailureBehaviourWhenUnreachable": null
+      },
+      "criteria": [
+        {
+          "check": "C1: each instance's components.rateLimit was recorded verbatim",
+          "met": null
+        },
+        {
+          "check": "C2: the per-instance aggregate was measured and recorded as roughly ceiling x instances",
+          "met": null
+        },
+        {
+          "check": "C3: with a shared store, the aggregate across instances is approximately the ceiling (not ceiling x instances)",
+          "met": null
+        },
+        {
+          "check": "C3: concurrent increments from both instances lose no updates",
+          "met": null
+        },
+        {
+          "check": "C3: the store fails closed when unreachable",
+          "met": null
+        }
+      ],
+      "evidenceFiles": []
+    },
+    "D_coldStart": {
+      "status": "unfilled",
+      "notApplicableReason": null,
+      "observations": {
+        "instanceRestarted": null,
+        "refusedClientAdmittedAfterRestart": null,
+        "resetWindowSeconds": null,
+        "edgeBudgetSurvivedRestart": null,
+        "sharedStoreCountersSurvivedRestart": null
+      },
+      "criteria": [
+        {
+          "check": "D1: the post-restart counter reset was observed and its duration measured",
+          "met": null
+        },
+        {
+          "check": "D1: the edge enforced an independent budget across the restart, or the reset is recorded as a named residual risk",
+          "met": null
+        },
+        {
+          "check": "D2: with a shared store, a restart of one instance did not reset the deployment-wide ceiling",
+          "met": null
+        }
+      ],
+      "evidenceFiles": []
+    }
+  },
+  "storeDecision": {
+    "mode": null,
+    "distributedQuotaVerified": null,
+    "evidence": [],
+    "residualLimitation": null
+  },
+  "closure": {
+    "closeableAs": null,
+    "closeableAsOptions": [
+      "per-instance-quota-documented",
+      "deployment-wide-quota-verified",
+      "stays-open"
+    ],
+    "remainingLimitations": [],
+    "attestation": null
+  }
+}

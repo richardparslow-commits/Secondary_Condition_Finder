@@ -14,12 +14,12 @@ Current boundaries include:
 
 - Vercel is the production host;
 - Azure is a manual legacy fallback only;
-- workflow state uses short-lived encrypted/authenticated first-party cookies;
+- secondary and presumptive workflow state uses versioned, schema-bounded, tab-scoped browser records; retired workflow cookies are tombstoned if stale copies are presented;
 - optional evidence parsing is browser-local and bounded by file, batch, page, and extracted-text limits;
 - VA sandbox integration is disabled by default;
 - the current application does not connect to an individual Veteran's VA account or submit a disability claim;
 - production browser connectivity is constrained by the deployed Content Security Policy;
-- no application event-persistence backend is used for workflow or recommendation history.
+- no per-user event-persistence backend is used for workflow or recommendation history; allowlisted operational events are emitted to platform logs, so host retention/access settings require operator review;
 
 A material change to these boundaries requires corresponding privacy/security review.
 
@@ -29,7 +29,7 @@ The current engineering baseline includes:
 
 - server-only production secrets;
 - source-restrictive Content Security Policy and route-wide security headers;
-- encrypted/authenticated workflow cookies;
+- schema-bounded browser-local workflow records with explicit clearing; opaque HttpOnly VA-account handles only for the separate sandbox experiment;
 - browser-local evidence resource ceilings;
 - read-only active CI permissions;
 - immutable commit pins for active CI marketplace actions;
@@ -39,7 +39,7 @@ The current engineering baseline includes:
 - shared VA reference cache is bounded and revocable: only allowlisted key namespaces are read or written, entries are `{envelopeVersion:2, epoch, value}` envelopes accepted only under the currently observed epoch, every write is admitted against a finite per-namespace window budget, and `POST /api/admin/cache-clear` advances the store-wide invalidation epoch so stale shared values are discarded fleet-wide without a delete sweep — an expired or invalidated popular key is fetched once, not once per instance, via a per-key 120 s single-flight lease with a bounded 600 ms contender wait (the lease covers the longest legal logical fetch: three 30 s attempts plus backoff and the shared write) (the lease fails open; the consumer budget remains the safety control); a shared-store outage fails the fleet closed rather than open — cached values stop being served, the decision is reported as a coordination outage, and no upstream request or quota reservation is attempted; a split network is simulated as well: the partitioned half serves only labelled local fallbacks while the reachable half keeps operating, and after healing it refetches under the reachable half's epoch bump instead of resurrecting pre-bump values (`tests/va-fleet-simulation.test.ts`, wired into CI as the named `fleet` gate under a ratcheted wall-clock budget — the enforced limit is the tighter of the committed environment cap and a budget derived from recent measured runs (`.github/fleet-budget-ratchet.json`), so the gate tightens automatically as timing stabilizes and cannot silently drift looser, every coordination path is additionally held to its own committed per-scenario real-time bound, and an unbounded coordination regression fails the build instead of only running longer);
 - cached reference values are re-checked on read (`src/lib/va/cached-view-guard.ts`): a hit must carry this deployment's live source/environment, bounded label metadata, and credential-free HTTPS links, or it is treated as a miss and refetched — a poisoned or stale-shaped cache entry cannot set the UI's source labels or links;
 - VA-provided links are approved at the payload boundary (`src/lib/va/trusted-link.ts`): only credential-free HTTPS URLs pass the Forms/directory schemas; `javascript:`, `data:`, `http:`, and credential-bearing URLs fail validation and the loader degrades to its explicit local fallback;
-- credential-bearing outbound requests refuse redirects (`redirect: "error"`): the VA JSON transport, the shared-store KV transport, the legacy sandbox adapter, and the regulatory preflight source fetch treat any redirect as a failed exchange, so an API key or Bearer token is never replayed to a redirected origin (`tests/va-shared-reference-cache.test.ts`, `tests/va-adapter-resilience.test.ts`, `tests/regulatory-preflight.test.ts`);
+- credential-bearing outbound requests refuse redirects (`redirect: "error"`): the VA JSON transport, the shared-store KV transport, and the regulatory preflight source fetch treat any redirect as a failed exchange, so an API key or Bearer token is never replayed to a redirected origin (`tests/va-account-sandbox.test.ts`, `tests/va-shared-reference-cache.test.ts`, `tests/regulatory-preflight.test.ts`);
 - citation audit and knowledge-base validation;
 - lint, typecheck, tests, and production build;
 - real Chrome/ChromeDriver end-to-end validation;
@@ -112,7 +112,7 @@ Reading the signal:
 When `kbGraph` degrades:
 
 1. Read `detail` and identify the named file.
-2. Reproduce locally: `npm run audit:crg:graph` (hard cycle gate) and `npx vitest run tests/kb-graph-loader.test.ts`.
+2. Reproduce locally: `npm run audit:crg:graph` (hard gate: no cycles **and** the ARCH-01 evidence join — every edge backed by an authored suggestion with citations and a matching nexus classification) and `npx vitest run tests/kb-graph-loader.test.ts`.
 3. Fix forward in a new deployment: correct or remove the file. Do not hand-edit data to silence validation, and do not add an edge to an identity that is not yet in the catalog — land the identity first.
 4. Re-verify: data files ship with the deployment and the loader caches per process, so redeploy and confirm `/api/health` returns `200` with `kbGraph.status: "ok"` before closing the incident.
 5. If the graph validated at build time and degrades at runtime, treat it as a data-integrity incident and inspect what the deployed commit contains under `data/knowledge-base/graph/`.

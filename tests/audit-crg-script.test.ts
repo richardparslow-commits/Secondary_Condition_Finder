@@ -5,7 +5,10 @@ import path from "node:path";
 
 import { afterEach, describe, expect, it } from "vitest";
 
+import { loadKnowledgeBase } from "@/lib/kb/load";
 import { KbEdgeSchema, KbNodeMappingSchema } from "@/lib/kb/schema";
+
+import { node } from "./helpers/pathway-fixtures";
 
 /**
  * End-to-end contracts for scripts/audit-crg.ts (the CRG adjacency cycle gate).
@@ -29,20 +32,22 @@ function fixtureDir(files: Record<string, unknown>): string {
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), "audit-crg-"));
   tempDirs.push(dir);
   for (const [name, content] of Object.entries(files)) {
+    const target = path.join(dir, name);
+    fs.mkdirSync(path.dirname(target), { recursive: true });
     fs.writeFileSync(
-      path.join(dir, name),
+      target,
       typeof content === "string" ? content : JSON.stringify(content),
     );
   }
   return dir;
 }
 
-function run(dir: string): { status: number; stdout: string; stderr: string } {
+function run(dir: string, extraArgs: string[] = []): { status: number; stdout: string; stderr: string } {
   // spawnSync captures both streams on success too: the vacuous-migration
   // notice is deliberately emitted on stderr as a warning.
   const result = spawnSync(
     process.execPath,
-    ["--no-warnings", SCRIPT, `--kb-dir=${dir}`],
+    ["--no-warnings", SCRIPT, `--kb-dir=${dir}`, ...extraArgs],
     { encoding: "utf8" },
   );
   return {
@@ -146,5 +151,109 @@ describe("audit-crg.ts fail-closed behavior", () => {
     const result = run(fixtureDir({ "alpha.json": nodeA, "beta.json": nodeB }));
     expect(result.status).toBe(1);
     expect(result.stderr).toContain("circular");
+  });
+});
+
+/**
+ * ARCH-01: the adjacency gate also refuses unsupported edges.
+ *
+ * Acyclicity and authored support are independent failures, and the gate is
+ * where CI should attribute the second one — otherwise a graph edge that no
+ * authored record backs is only discovered by whichever test happens to load
+ * the graph, and a review that only reads this gate's verdict would see a
+ * green "acyclic" on a claim nothing supports.
+ */
+describe("audit-crg.ts authored-evidence join (ARCH-01)", () => {
+  const SOURCE = "liver-cancer";
+  const TARGET = "sarcopenia";
+  // A real authored mapping: supports liver-cancer → sarcopenia with three
+  // citations and an ASSOCIATION_ONLY classification.
+  const authored = () =>
+    structuredClone(loadKnowledgeBase().find((mapping) => mapping.id === SOURCE)!);
+  const matchingNode = () => node(SOURCE, [TARGET, 1, "ASSOCIATION_ONLY"]);
+
+  function stagedGraph(nodeMapping: unknown, mapping: unknown): string {
+    return fixtureDir({
+      [`${SOURCE}.json`]: mapping,
+      [`graph/${SOURCE}.json`]: nodeMapping,
+    });
+  }
+
+  it("passes an acyclic graph whose edges have matching authored evidence", () => {
+    const dir = stagedGraph(matchingNode(), authored());
+    const result = run(path.join(dir, "graph"), [`--kb-root=${dir}`]);
+
+    expect(result.status, result.stderr).toBe(0);
+    expect(result.stdout).toContain("acyclic");
+    expect(result.stdout).toContain("ARCH-01");
+  });
+
+  it("fails an acyclic edge with no authored suggestion", () => {
+    const mapping = authored();
+    mapping.suggestions = [];
+    const dir = stagedGraph(matchingNode(), mapping);
+    const result = run(path.join(dir, "graph"), [`--kb-root=${dir}`]);
+
+    expect(result.status).toBe(1);
+    expect(result.stderr).toContain("Missing authored evidence");
+    expect(result.stderr).toContain(`${SOURCE} -> ${TARGET}`);
+  });
+
+  it("fails an acyclic edge whose classification disagrees with the authored suggestion", () => {
+    // Both records are individually valid; they just claim different nexuses.
+    const dir = stagedGraph(node(SOURCE, [TARGET, 1]), authored());
+    const result = run(path.join(dir, "graph"), [`--kb-root=${dir}`]);
+
+    expect(result.status).toBe(1);
+    expect(result.stderr).toContain("Nexus classification mismatch");
+  });
+
+  it("fails an acyclic edge with no authored evidence, as evidence rather than as a cycle", () => {
+    const mapping = authored();
+    mapping.suggestions = [];
+    const dir = stagedGraph(matchingNode(), mapping);
+    const result = run(path.join(dir, "graph"), [`--kb-root=${dir}`]);
+
+    expect(result.status).toBe(1);
+    expect(result.stderr).toContain("Missing authored evidence");
+    expect(result.stderr).not.toContain("circular");
+  });
+
+  it("fails loudly on a malformed evidence record instead of skipping it", () => {
+    // The join's own empty-citation branch is unreachable through this path
+    // because the authored schema refuses a citation-less suggestion first.
+    // What matters is that the refusal happens: a malformed record must not be
+    // dropped from the corpus and let the gate report PASS.
+    const mapping = authored();
+    mapping.suggestions[0].sourceReferences = [];
+    const dir = stagedGraph(matchingNode(), mapping);
+    const result = run(path.join(dir, "graph"), [`--kb-root=${dir}`]);
+
+    expect(result.status).toBe(1);
+    expect(result.stderr).toContain("not a valid condition mapping");
+  });
+
+  it("fails closed when no authored corpus can be located", () => {
+    // A fixture graph outside the project must not make the gate read an
+    // arbitrary parent directory, and it must not silently skip the join.
+    const dir = stagedGraph(matchingNode(), authored());
+    const result = run(path.join(dir, "graph"));
+
+    expect(result.status).toBe(1);
+    expect(result.stderr).toContain("no authored corpus directory was found");
+    expect(result.stderr).toContain("--kb-root");
+  });
+
+  it("fails closed when the authored corpus holds no mappings", () => {
+    const dir = fixtureDir({
+      [`graph/${SOURCE}.json`]: matchingNode(),
+      // Not a mapping: kb:validate's business, so the join must not treat it as
+      // evidence — but its absence of mappings must not pass either.
+      "notes.json": { hello: "world" },
+    });
+    const result = run(path.join(dir, "graph"), [`--kb-root=${dir}`]);
+
+    expect(result.status).toBe(1);
+    expect(result.stderr).toContain("no authored condition mappings");
   });
 });

@@ -15,12 +15,13 @@ import "server-only";
  *   - Shares the same module-level `cached`/`inflight` as the sync loaders,
  *     so a completed warmup turns the first `loadConditionCatalog()` etc. into
  *     a pure in-memory hit (zero filesystem work on the request path).
- *   - Best-effort. Errors are logged but never thrown; the sync fallback
- *     remains on the request path if warmup races or fails.
+ *   - Best-effort. A fixed, content-free event records a failure but the
+ *     exception is never serialized; the sync fallback remains on the request
+ *     path if warmup races or fails.
  *   - Preserves existing validation semantics: throws on invalid JSON or
  *     duplicate ids would still surface on first request, never swallowed
- *     silently. Warmup failures are *logged*, not hidden — `load*Async`
- *     rejects are captured here and will re-throw on the sync path.
+ *     silently. Warmup failures are recorded without their diagnostic detail;
+ *     `load*Async` rejects are captured here and will re-throw on the sync path.
  *   - Idempotent. Multiple register() calls (e.g. in tests) dedupe via the
  *     per-loader `inflight` promise so concurrent warmups do not fan out to
  *     N × file-count parallel reads.
@@ -49,8 +50,10 @@ async function doWarmup(): Promise<void> {
 
     const elapsed = Date.now() - started;
     console.log(`[data-preload] warmup complete in ${elapsed}ms`);
-  } catch (error) {
-    console.warn("[data-preload] warmup failed — falling back to per-request sync load", error);
+  } catch {
+    // Warmup errors can include filesystem paths or validation payloads; emit
+    // only a fixed event name to the platform log sink.
+    console.warn("[data-preload] warmup failed — falling back to per-request sync load");
   }
 }
 

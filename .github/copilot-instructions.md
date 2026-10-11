@@ -38,8 +38,8 @@ This application heavily relies on strict JSON file parsing and cross-file refer
 - `src/lib/secondary-workflow/` must never import `@/lib/presumptive/*` logic, and `src/lib/presumptive/` must never import `@/lib/secondary-workflow/*`, `@/lib/kb/*`, or `@/lib/engine/*` (type-only imports of shared types are allowed). The composition audit (`npm run test:composition`) fails on violations.
 
 ### 2. Security & Privacy
-- NEVER use GET requests or URL query parameters for workflow state, condition selections, or service history. All state mutations use Next.js Server Actions (POST). `/results` is a legacy hard redirect and must not process query-based health state.
-- NEVER store full workflow state in cookies. Cookies contain only short-lived, encrypted/authenticated workflow state; never surface tokens, condition selections, or PII in URLs, logs, or screenshots.
+- NEVER place workflow state, condition selections, or service history in GET query parameters. Secondary and presumptive research state is validated and stored in versioned, tab-scoped browser `sessionStorage`; no research-workflow Server Action or workflow cookie is used. `/results` is a legacy hard redirect and must not process query-based health state.
+- NEVER store full workflow state in cookies. The separate optional VA-account sandbox uses cookies only for opaque connection handles and short-lived callback binding; OAuth tokens stay in its encrypted server-side store. Never surface tokens, condition selections, or PII in URLs, logs, or screenshots.
 - NEVER send raw file bytes (PDFs/images) through Server Actions. Documents are processed browser-local in `src/lib/evidence/`; only sanitized, bounded extracted text is surfaced.
 - NEVER initialize client-side analytics, telemetry, or third-party SDKs. `connect-src` stays `'self'`.
 - NEVER weaken the nonce-based Content Security Policy in `src/proxy.ts` (no `'unsafe-inline'` for scripts, no third-party connect-src).
@@ -48,7 +48,7 @@ This application heavily relies on strict JSON file parsing and cross-file refer
 ### 3. File Placement
 - ALL Server Actions must reside in `src/lib/actions/` and begin with `"use server";` as the first statement. `npm run test:composition` fails on any `"use server"` file outside that directory.
 - `src/lib/evidence/` PDF parsing (`extract.ts`, `document-extract.ts`) MUST be imported only from `"use client"` components or browser-local lib modules — never from `src/app/` pages, actions, or route handlers.
-- `src/lib/kb/`, `src/lib/workflow-session-crypto`, `src/lib/secondary-workflow/session`, `src/lib/presumptive/session`, and `src/lib/store/` MUST NEVER be imported in `"use client"` components.
+- `src/lib/kb/`, `src/lib/workflow-session-crypto`, `src/lib/presumptive/session`, and `src/lib/store/` MUST NEVER be imported in `"use client"` components. (The secondary workflow is browser-local since PRIV-01; its context lives in `src/lib/secondary-workflow/browser-context.ts`, which is intentionally client-safe.)
 
 ### 4. Mandatory CI/CD Gates
 Before any PR is merged it must pass: `npm run kb:validate`, `npm run citations:audit`, `npm run test:composition`, `npm run lint`, `npm run typecheck`, and `npm test`. `npm run citations:decay` (link-rot/staleness scan) is run deliberately by maintainers; it performs live network probes and is not wired into per-PR CI.

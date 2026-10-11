@@ -38,6 +38,8 @@ Use [.env.example](../.env.example). No real values should be committed, logged 
 | Corresponding `*_CLIENT_SECRET` | Required only for `client_secret_basic`; supplying one with `none` fails closed rather than ignoring it. |
 | `VA_ACCOUNT_STORE_URL` / `VA_ACCOUNT_STORE_TOKEN` | Separate HTTPS Redis-REST store/credential with atomic SET NX, GETDEL and EVAL/CAS. Do not use the public-reference cache for token records. |
 | `VA_ACCOUNT_LOCAL_ONLY` | Explicit `true` permits capped process-local encrypted storage only on loopback development/test, never production or hosted markers. |
+| `VA_ACCOUNT_DEMO_FIXTURES` | Rehearsal only. Explicit `true` answers the authorization, token, JWKS, read and revocation calls from a synthetic provider at the network boundary (`src/lib/va/account/demo-fixtures.ts`, entered through `account/transport.ts`). The real PKCE, transaction, cookie, CSRF and revocation code still runs, no route serves veteran-shaped data, and the gate refuses any runtime the shared fact calls distributed. Never use it for a live review. |
+| `VA_ACCOUNT_DEMO_FAULT` | Rehearsal only, and only meaningful with the flag above: `none` (default), `timeout`, `503`, `429`, `invalid-payload`, or `401`, so the failure demonstrations are reproducible without asking the provider to fail. Any unrecognized value means no fault. |
 
 Register these exact callback URLs with VA, substituting the exact approved APP_URL origin:
 
@@ -51,7 +53,7 @@ Requested scopes are only `openid offline_access` plus the selected read scope. 
 ## Routes and consent
 
 - `GET /va-account`: clearly labeled sandbox page, safe notice codes, per-service status, minimal account DTOs and disconnect controls. Disabled configuration shows a truthful blocked state, never mock “live” data.
-- `POST /va-account/oauth/{ratings|claims}/start`: requires exact same Origin and canonical request origin, form-urlencoded body ≤1 KiB and `consent=sandbox-read-only`. Returns a no-store authorization navigation URL and a browser-binding HttpOnly cookie. No GET login or implicit prefetch side effects.
+- `POST /va-account/oauth/{ratings|claims}/start`: requires exact same Origin and canonical request origin, form-urlencoded body ≤1 KiB and `consent=sandbox-read-only`. Returns a no-store authorization navigation URL and a browser-binding HttpOnly cookie. No GET login or implicit prefetch side effects on this entry point; the separate `/api/auth/login` adapter is a rate-limited GET initiator (binding-only cookie, 303 redirect) for the restricted-API integration.
 - `GET /va-account/oauth/{service}/callback`: accepts a unique bounded state/code, validates browser binding and one-use server transaction before exchanging the code. Always redirects to a fixed local safe notice; never echoes upstream error text/code/state into HTML.
 - `POST /va-account/oauth/{service}/disconnect`: same-origin protected; removes session state and browser cookies, attempts refresh/access-token revocation, and distinguishes cleanup/revocation failure from confirmed success.
 
@@ -60,7 +62,7 @@ The client sends a same-origin POST then navigates at top level to the fixed san
 ## Security and data lifecycle
 
 - Cryptographically random state, nonce, verifier and handles; S256 verifier remains server-side; transaction expires after five minutes and is atomically consumed.
-- Callback browser-binding cookie is HttpOnly/SameSite=Lax, service-path scoped for cross-site GET return. Connected handle is HttpOnly/SameSite=Strict, scoped to `/va-account`. HTTPS cookies are Secure. Existing research workflow cookies remain unchanged.
+- Callback browser-binding cookie is HttpOnly/SameSite=Lax, service-path scoped for cross-site GET return. Connected handle is HttpOnly/SameSite=Strict, scoped to `/va-account`. HTTPS cookies are Secure. Research workflows use no cookie-backed state; retired workflow-cookie names are expired by the edge proxy when still presented.
 - Tokens are encrypted/authenticated with existing AES-256-GCM envelope code using a separate secret. Browser cookies contain only random opaque handles; store keys hash handles, values include service/client fingerprint and verified subject.
 - ID tokens are cryptographically verified with bounded JWKS fetched from a fixed official sandbox URL. RS256, issuer, audience, subject, expiry, issued-at, nonce and authorized-party semantics are checked; unverified JWT decoding is not identity.
 - Claims/ratings authorization is the token's signed-in veteran context. No user-supplied ICN, SSN, claim ID selector or representative headers are supported.

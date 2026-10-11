@@ -1,0 +1,3554 @@
+{
+  "formatVersion": 1,
+  "status": "PENDING_OWNER_DECISION",
+  "identity": "chronic-pain",
+  "ownerDecision": {
+    "formatVersion": 1,
+    "proposalId": "chronic-pain-admission-v1",
+    "proposalSha256": "8bc2145429eb73267b6fe6762c6383565ee5e0f2ebad944fbfb0a7c60ad34ae5",
+    "baselineSha256": "4c7442f57c93d42217f12aa86f4e2fdd8c990662ceb1a1c29a372afd8e984f0e",
+    "outcome": "pending",
+    "reason": "Owner has requested process and a pending proposal only; no identity or restoration approval has been granted."
+  },
+  "inputs": [
+    {
+      "path": "data/citation-retirements.json",
+      "sha256": "a70c3715b16e1cedae00f0df409a0490a54f1347af15998041daa9ccd67f5775"
+    },
+    {
+      "path": "data/conditions/auditory-and-special-senses.json",
+      "sha256": "03406806ab74d14aa074d360ded06ce96c67eb0c66e09c0bf9c5b888544e3a72"
+    },
+    {
+      "path": "data/conditions/cardiovascular-expansion-wave-3.json",
+      "sha256": "8f854016bd10b0b9bbf2e988fdc2f5f0694e4743955ad03628dd858e2299be1c"
+    },
+    {
+      "path": "data/conditions/cardiovascular.json",
+      "sha256": "5e971c2f6436d861e0dabcf95ab79648acc0f14a7a81d1d2dafb740f3f31efae"
+    },
+    {
+      "path": "data/conditions/carried-over.json",
+      "sha256": "8116244078632011fe3f91abc9a43eb50edc0b3381fe18042d2e1e8253fc6ff3"
+    },
+    {
+      "path": "data/conditions/dental-and-oral.json",
+      "sha256": "7588f0902f6aeabc32f7f0d104e95f087fcc9c84b18e1db41cfb8a4eb2a0ba19"
+    },
+    {
+      "path": "data/conditions/dental-oral-expansion-wave-7.json",
+      "sha256": "3e08a4b160aeee7ad1d1f6ea72d33fb7402761f7d2cb9ed8e84ad06919e4c77a"
+    },
+    {
+      "path": "data/conditions/digestive-expansion-wave-5.json",
+      "sha256": "9f98b36dad0d985c2ad9620a1c3ccdb093a0ad68ebf0d7b6c476922a86a23a90"
+    },
+    {
+      "path": "data/conditions/digestive.json",
+      "sha256": "676d6b6f8832b01177126488f3ce68d7c428422895b5e936a84ec54f8c4e9627"
+    },
+    {
+      "path": "data/conditions/endocrine-expansion-wave-3.json",
+      "sha256": "701512782a435ada502e2f931e99cf68fccaff74af1cc7995a2f27782d919cb9"
+    },
+    {
+      "path": "data/conditions/endocrine.json",
+      "sha256": "f33e32c393c73d131f7ff2437c7ad16bc927cc16d7539bb598f44aebd5117a55"
+    },
+    {
+      "path": "data/conditions/genitourinary-and-gynecological.json",
+      "sha256": "69b994ffc37bb5a4ae35ffe32940e643a4f4b2ccc7dc192a479f5d671b9737fe"
+    },
+    {
+      "path": "data/conditions/genitourinary-expansion-wave-5.json",
+      "sha256": "f0e8bbf954839d90dfe586516eb4b5ab03bc73ccebb553379351b43780110470"
+    },
+    {
+      "path": "data/conditions/hemic-lymphatic-expansion-wave-6.json",
+      "sha256": "208250a052e7b09f50a40fc0734fdbef93720c1c0506ff769f06e825a8989525"
+    },
+    {
+      "path": "data/conditions/hemic-lymphatic-immune.json",
+      "sha256": "8fc81e8222f1c3879f59a895cf1bc320906b9947ca7ba3377319bbb38b88611a"
+    },
+    {
+      "path": "data/conditions/infectious-and-tropical.json",
+      "sha256": "e3f94a6543c772b06cc6f59cb392082cfcc6129ce68eefa719cca2186743b143"
+    },
+    {
+      "path": "data/conditions/infectious-expansion-wave-7.json",
+      "sha256": "3b62e3b83c2c88f671995f3aa530e460213c01ac74657138d4d9d8c9229df1fb"
+    },
+    {
+      "path": "data/conditions/mental-disorders-expansion-wave-6.json",
+      "sha256": "4b545ea21ec484be98bf9b3d95fc9dbf79bc8155ea62f2cf1314cbcefc26a37a"
+    },
+    {
+      "path": "data/conditions/mental-disorders.json",
+      "sha256": "de83885f5fa6aa8b13b0866e932422c3035d0232a48e7401a4411fa07e18d6cd"
+    },
+    {
+      "path": "data/conditions/musculoskeletal-expansion-wave-1.json",
+      "sha256": "64d3e7ff28cc7e5c596c9f9a1aa3646b481a2c2a5e0b6714157213c9482ede15"
+    },
+    {
+      "path": "data/conditions/musculoskeletal-expansion-wave-2.json",
+      "sha256": "4757ea315059c8c37e3bab6cd5ad67ffb285c8e70508d5a232b29ae07e59eefa"
+    },
+    {
+      "path": "data/conditions/musculoskeletal-quality-maintenance.json",
+      "sha256": "2418e8c52363da260a94e22952506e9d22d6fafbb12f9802fe7cf64cc9b7b445"
+    },
+    {
+      "path": "data/conditions/musculoskeletal.json",
+      "sha256": "8e60de846c30b3ea9b9741eed00c95945aeb7a0f825dc15feede80f3743cc7a0"
+    },
+    {
+      "path": "data/conditions/neurological-expansion-wave-1.json",
+      "sha256": "85a873b4350066cc76a5feae292ccd8655904782eefc7136d33afe22100986f2"
+    },
+    {
+      "path": "data/conditions/neurological-expansion-wave-2.json",
+      "sha256": "24f761e496afbd044d7bc4d5eca7d15f83a78d0b19a169b4da5d3292a230b352"
+    },
+    {
+      "path": "data/conditions/neurological-expansion-wave-4.json",
+      "sha256": "0bbc68aa6ce97c503d5e372027fd567ea38f99f93e818383e0d648a27fa335c5"
+    },
+    {
+      "path": "data/conditions/neurological.json",
+      "sha256": "f294289e5f3ef82311766537a3a23c18ae38375f3fc9e7e93c73d154441a4342"
+    },
+    {
+      "path": "data/conditions/oncological-expansion-wave-7.json",
+      "sha256": "65b7fa855c354ace694df6093ab7576db6c2ed1fb61c58a1ab1aa063016b3c8d"
+    },
+    {
+      "path": "data/conditions/oncological.json",
+      "sha256": "ead38aadfe5ce2417e6b58f1acd8d90214d33fee584e7cb33ea10e6951c2f22e"
+    },
+    {
+      "path": "data/conditions/ophthalmologic-expansion-wave-4.json",
+      "sha256": "330086aacbfadc0f73929c1612038da58aff20e4f8609059b0d4f5a49078e7bc"
+    },
+    {
+      "path": "data/conditions/respiratory-expansion-wave-4.json",
+      "sha256": "8361514a685c518764965c3fd6f45192abf00afe784902e4c5df688850b60fca"
+    },
+    {
+      "path": "data/conditions/respiratory.json",
+      "sha256": "4afc9fcc7e7db334658fabf934b9f56f7acafcf3396136a9784cfd5e391869d8"
+    },
+    {
+      "path": "data/conditions/skin-expansion-wave-6.json",
+      "sha256": "290beb818828d3187c2f635aec4a7d4d224748dc3ea891051c2fe910ee9876a3"
+    },
+    {
+      "path": "data/conditions/skin.json",
+      "sha256": "a722d5fe911c9d345a83cb74e05e68cf42732ce9dec081b3516edbdf3a58c429"
+    },
+    {
+      "path": "data/demo-scenarios.json",
+      "sha256": "5dece25017d06427deae27c038a1229917066c5814c53dfab0aa2fdaad284df6"
+    },
+    {
+      "path": "data/evidence/master-relationships.json",
+      "sha256": "6923d8db6cafba1a6edbd48b6e96a98f0dc82ea0257ea968eaf18feed05e8094"
+    },
+    {
+      "path": "data/evidence/master-sources.json",
+      "sha256": "3bef86125ebd7abc05cbd60321e40a4876b30eb0faa8614fc234004635cea04f"
+    },
+    {
+      "path": "data/expansion-dispositions.json",
+      "sha256": "0c5f4b9666c2e473d12ace462b63c9ad8cb7d782b286d352b165612bb4dc0276"
+    },
+    {
+      "path": "data/knowledge-base/abdominal-hernia.json",
+      "sha256": "d95e3302a515ce8c52bbca524c77bed22090f7c55bdf736d0ec741820f904c3e"
+    },
+    {
+      "path": "data/knowledge-base/abdominal-migraine.json",
+      "sha256": "50e0808f7c3c5a25fba5c4546d5ae502270864406b1b321ca59c50c49abddb71"
+    },
+    {
+      "path": "data/knowledge-base/abscesses.json",
+      "sha256": "2151c871fc51a47c975203e903f5d932657dbc716959c0916b9c33b1caf5b58e"
+    },
+    {
+      "path": "data/knowledge-base/acanthosis-nigricans.json",
+      "sha256": "d39101a1853ad7c750cc20219692225e0ac822279d3ba5548647fdf25c307d3c"
+    },
+    {
+      "path": "data/knowledge-base/achalasia.json",
+      "sha256": "081dd16c810bf911dcdb7bdc389ead280c5452dc8b3fd147b430686822ed16b1"
+    },
+    {
+      "path": "data/knowledge-base/achilles-tendinopathy-rupture.json",
+      "sha256": "58b02ff48ce6c528f0c9e5139aab8269836c7abc6420574d2f873bd6f19ec267"
+    },
+    {
+      "path": "data/knowledge-base/acl-injury.json",
+      "sha256": "9871925c830bd69bdac0d32103e74d0db24ebefacca1721f2fa477aa5cdce61d"
+    },
+    {
+      "path": "data/knowledge-base/acne-scarring.json",
+      "sha256": "ab38709b89b5b040f3309316f6bb030e7b6bfcb757df6538344fee4364c97071"
+    },
+    {
+      "path": "data/knowledge-base/acne.json",
+      "sha256": "7e51ee598d6f7449300f3a551cec32ed5766a131bc9a9d75539bd64a008810ce"
+    },
+    {
+      "path": "data/knowledge-base/acoustic-neuroma.json",
+      "sha256": "75f184ca949489869e468d786a21b0f0a74893cf573984e6ec927e281b609203"
+    },
+    {
+      "path": "data/knowledge-base/acquired-syndactyly.json",
+      "sha256": "edb1f8c5723132c428f8ec7ad2a3090b4c2f39198a3b1c97ca9f9d6eb3b45c4a"
+    },
+    {
+      "path": "data/knowledge-base/acrocyanosis.json",
+      "sha256": "f8b7ca7315a8c0d1aebc6d48ca97078072ea13cba67af17833b63c729b9bb530"
+    },
+    {
+      "path": "data/knowledge-base/acromegaly.json",
+      "sha256": "3f92899f2bc7596e4fa24c813be9c4f68cdf150973542e9180498a601ebe4b32"
+    },
+    {
+      "path": "data/knowledge-base/actinic-keratosis.json",
+      "sha256": "97b8c0665221425dc10f4d1fcd96fcbaa619cf63bc738f092a24d4a1ee51a8c8"
+    },
+    {
+      "path": "data/knowledge-base/actinomycosis.json",
+      "sha256": "2bc923f9da5a4ba5b7be5da5c9796d1e32aafd204b253c6d6f25f6d4e97295aa"
+    },
+    {
+      "path": "data/knowledge-base/acute-interstitial-pneumonia.json",
+      "sha256": "2612da21dbd2cc6a2e41f058786ebd2b41295ff0a2e13ff9d09f1bfa015dc293"
+    },
+    {
+      "path": "data/knowledge-base/acute-stress-reaction.json",
+      "sha256": "5eca6b62f9d74e6610be9d986432302830a5712c43e980bb57c590ba063bb5a0"
+    },
+    {
+      "path": "data/knowledge-base/addisons-disease.json",
+      "sha256": "04bbc19b034af6f1d0d2a463702ddad69e59ec3114cb24e8ec3ea1790a846631"
+    },
+    {
+      "path": "data/knowledge-base/adenomyosis.json",
+      "sha256": "7a880d3273b6b6b715fd06ebaf5c9a64d60e533cee68deefd4b07808d3d51091"
+    },
+    {
+      "path": "data/knowledge-base/adjustment-disorder.json",
+      "sha256": "291c415f39159ee93be5c333cd78bec5c278f45a6198c67b6651b1174c1a4330"
+    },
+    {
+      "path": "data/knowledge-base/adjustment-disorders.json",
+      "sha256": "1e0ae5b780410dec7f7f139aaf60a84537a5b51e7bf021e63b8e9f565e4bc7e7"
+    },
+    {
+      "path": "data/knowledge-base/adrenal-histoplasmosis.json",
+      "sha256": "48f425c26bce3feb4214a6cc9575761f8ef9c5c4d67e0280e826774b57505859"
+    },
+    {
+      "path": "data/knowledge-base/ageusia.json",
+      "sha256": "92e86205ec577605fc3d0b127ebc9050535fdfe793b95a7c044b06734fa28b90"
+    },
+    {
+      "path": "data/knowledge-base/agoraphobia.json",
+      "sha256": "c8e7b8646d145d33bb17570f791e5eab6d36275777552ca7c9722aba73603161"
+    },
+    {
+      "path": "data/knowledge-base/agranulocytosis.json",
+      "sha256": "f42da4f647fe2e3697ab758a8f5f2401a22f78122fc74191c317bec72d157604"
+    },
+    {
+      "path": "data/knowledge-base/al-amyloidosis.json",
+      "sha256": "24be88d023e464d2d4e6b487a489e67e53e0b998c9e8a9cc409179248d5ab5f2"
+    },
+    {
+      "path": "data/knowledge-base/alcohol-use-disorder.json",
+      "sha256": "05f2ca220722dfb02883a103bc78304067d9a31545c7a53613dd0fd56ea8658d"
+    },
+    {
+      "path": "data/knowledge-base/alice-in-wonderland-syndrome.json",
+      "sha256": "f6469d3714b7c880e96c8e64c644566ec92698d66cd36d89e527b4be3db2a3f2"
+    },
+    {
+      "path": "data/knowledge-base/allergic-rhinitis.json",
+      "sha256": "9c49ea79299616ee06d1cab8b16f7a5d575984b297e4e45de8612cd47658e01c"
+    },
+    {
+      "path": "data/knowledge-base/alopecia-areata.json",
+      "sha256": "9e807eec3877ef7846944f9b67897c62b51b5a0554f0ed621bd6b1bc6cc19bec"
+    },
+    {
+      "path": "data/knowledge-base/alopecia.json",
+      "sha256": "c246eb5bb24747bb7e32a2387d0b38792efc02b13ee96c1bf1fd19b573e661af"
+    },
+    {
+      "path": "data/knowledge-base/als.json",
+      "sha256": "825b1480db3c9d14d3ff93f4eff98461b5b97b97dd006f7a052e73275024227c"
+    },
+    {
+      "path": "data/knowledge-base/alzheimer-s-disease.json",
+      "sha256": "0c302b2e891bd3dcc750a5abdfab432e2f4bc73b95135a9e69f47b0b08d4d9cf"
+    },
+    {
+      "path": "data/knowledge-base/amebiasis.json",
+      "sha256": "4a277949471ef1d4739b2122deb80235eebc1d9d67d844ac89161b7be3044222"
+    },
+    {
+      "path": "data/knowledge-base/amebic-liver-abscess.json",
+      "sha256": "bf8ed4bedf6d39354bdd17cadcd0fc6bb6fd34e94ca7c7adacc10207304e1e18"
+    },
+    {
+      "path": "data/knowledge-base/amputation-of-arm.json",
+      "sha256": "973369271517e9bad88e722fd3464bab32743342d15737791249bf1205118999"
+    },
+    {
+      "path": "data/knowledge-base/amputation-of-foot.json",
+      "sha256": "2c47ef71c6d296305a6aefc3a216872dc38b25aa501b9040d12e8019f007aeec"
+    },
+    {
+      "path": "data/knowledge-base/amputation-of-hand.json",
+      "sha256": "0cd68ec8a9f30ca1316ae1b62bd55bd04115374bfb7458f79e6e9c569b15925e"
+    },
+    {
+      "path": "data/knowledge-base/amputation-of-leg.json",
+      "sha256": "95e91d3cb05315182203ebc148ee8326a3b7fd4c91f123de12f166cd1e2c7572"
+    },
+    {
+      "path": "data/knowledge-base/amputation-of-thumb-fingers-toes.json",
+      "sha256": "88065ba1bb667d08ab83a0150c8df540cc4cffee94887e612eb7f096df57f050"
+    },
+    {
+      "path": "data/knowledge-base/amputation-or-loss-of-use.json",
+      "sha256": "5a7cf20faa81e0fefa9746386c318d5ecea35c634f1983872c4adedd26d693ff"
+    },
+    {
+      "path": "data/knowledge-base/anal-fissure.json",
+      "sha256": "86c27ff51a1694a97be40644c2777e6780442833aaa882641b1f17dc4d9df20e"
+    },
+    {
+      "path": "data/knowledge-base/anal-fistula.json",
+      "sha256": "7e45f236c093a8b99c09f59faedf25eee8afd1d19087799ceb5c3d6e0c4eee33"
+    },
+    {
+      "path": "data/knowledge-base/anemia.json",
+      "sha256": "ee714658a97c96c48122dfa3bda801ad054e8f9070281e79259927f170242b43"
+    },
+    {
+      "path": "data/knowledge-base/anhedonia.json",
+      "sha256": "9501e65fee8c8f565861108f92f4df7fae7e0fe9efb3e7ed8c5812ab48f4c42b"
+    },
+    {
+      "path": "data/knowledge-base/anismus-pelvic-floor-dyssynergia.json",
+      "sha256": "e7bbcbb2fe4b84b0ecff013453f5d5d178243ce3a3295894da5f01811771424b"
+    },
+    {
+      "path": "data/knowledge-base/ankle-disarticulation.json",
+      "sha256": "3f5dd7691ede761c678d2b4cc26e4ed1ddbb2db98f524fb7f26bb428e5088d5f"
+    },
+    {
+      "path": "data/knowledge-base/ankle-strain.json",
+      "sha256": "2da3884b725ae0514807031271b56229cc5161ad3cdcc6f739151ba3f598858c"
+    },
+    {
+      "path": "data/knowledge-base/ankyloglossia.json",
+      "sha256": "22c49e905bc6a747bc76b88ca40f4533279d433cd91e6c7235adbcf49c5ba34c"
+    },
+    {
+      "path": "data/knowledge-base/ankylosing-spondylitis.json",
+      "sha256": "fbde5f80682ffbdfeaeb722258de2bf3edda41cfce0694e2f1b35e5ac5623e12"
+    },
+    {
+      "path": "data/knowledge-base/ankylosis.json",
+      "sha256": "03a40fcc22f3e41b94631590da2e603d1e8fb7dc66b153a1ecedf436a51908ae"
+    },
+    {
+      "path": "data/knowledge-base/anorectal-stricture.json",
+      "sha256": "d3596e21004697002b3cca158cdeb3c8eee384d7797ae13e8eae8310e5b58c8c"
+    },
+    {
+      "path": "data/knowledge-base/anorexia-nervosa.json",
+      "sha256": "193546aa4d49bd0b1ef2f7cda3ca7a8c5fb99c9914da13bf1c5b2805911e893f"
+    },
+    {
+      "path": "data/knowledge-base/anorgasmia.json",
+      "sha256": "2665a305bb43ed7951b10bdaedbbc7db12816a8e71081739cad8ea9730d1a219"
+    },
+    {
+      "path": "data/knowledge-base/anosmia.json",
+      "sha256": "d7eb3f1ac41f23ad89db3eb0552c91a62608dad00deadc0499b0913b919e850d"
+    },
+    {
+      "path": "data/knowledge-base/anterior-cord-syndrome.json",
+      "sha256": "85fcd04480396d5ee86c1bb2d3568c9009315732f5d9aa694d706f5162db6af3"
+    },
+    {
+      "path": "data/knowledge-base/anterior-interosseous-nerve-syndrome.json",
+      "sha256": "85fe118f7d9dc8d0e36d4177e565cfb8b098fbe40c8c3483a735520e4da9103f"
+    },
+    {
+      "path": "data/knowledge-base/anxiety-disorder.json",
+      "sha256": "0c7b495a0a90fb9a312a992c74cc1dfa8420f8d57c53b5768173fa285673789f"
+    },
+    {
+      "path": "data/knowledge-base/aortic-aneurysm.json",
+      "sha256": "233209a2a5695674adc0fcd1105b236a0bea9d059d66f8fb2bd221604469da1d"
+    },
+    {
+      "path": "data/knowledge-base/apathy.json",
+      "sha256": "5053eb4eaeaffe824d3f909a2961dd75f96acb4ff0b3c2627fc41f2f4f7bf3a0"
+    },
+    {
+      "path": "data/knowledge-base/aphakia.json",
+      "sha256": "437fec6804693f23ccbbe370457b6918c32029cdeba5adb418af995a585ec121"
+    },
+    {
+      "path": "data/knowledge-base/aphasia-dysphasia.json",
+      "sha256": "211a875175104c99fffe546c359bf22bc9a09fdae43b69735e1b1e19f2e7144e"
+    },
+    {
+      "path": "data/knowledge-base/aphonia.json",
+      "sha256": "bc8e699942f754fa1bc56c2ddf02c386c5a2cf4f973f7b63d04d75ca620c9364"
+    },
+    {
+      "path": "data/knowledge-base/appendicitis.json",
+      "sha256": "168ca3e27a69375f22da8d873398b29ba54683e1934665e501dc6915cc381bdb"
+    },
+    {
+      "path": "data/knowledge-base/apraxia.json",
+      "sha256": "0bb606173e08e67f1002059b17259e3fba7ab3f7e2e7dda34bb1d93a8881fe55"
+    },
+    {
+      "path": "data/knowledge-base/arnold-chiari-malformation.json",
+      "sha256": "1a5db6577cd5e321b1734e4b017e8075088a26250273cd15773e2077b485118d"
+    },
+    {
+      "path": "data/knowledge-base/arrhythmogenic-right-ventricular-dysplasia.json",
+      "sha256": "53c4786bb9823e803df62658336b1522dc2153081748dd2706c88bd33a784ec1"
+    },
+    {
+      "path": "data/knowledge-base/arteriosclerosis.json",
+      "sha256": "8cfe3ac4532c70805383fcf6cdc9d4fbea65e1619b49718c8dd47877b8855610"
+    },
+    {
+      "path": "data/knowledge-base/arteriovenous-fistula.json",
+      "sha256": "d3af19e5821a11c463d7bc96891d9f919d0ffc61e124ff703bf790a4224c2fec"
+    },
+    {
+      "path": "data/knowledge-base/asthma.json",
+      "sha256": "6b5a48de29be3774f77a3aba30aec40325e1fd177ff1f386068999e8e8d16afa"
+    },
+    {
+      "path": "data/knowledge-base/astigmatism.json",
+      "sha256": "a9430f6005a2c86baffb100b638bc1c82ada288a80cebddf18c5d51ef30a2f05"
+    },
+    {
+      "path": "data/knowledge-base/atopic-dermatitis-eczema.json",
+      "sha256": "b8086745f5cd45796306fa4df16c7ca98c2fdc14038212d667288fa4b237d8a3"
+    },
+    {
+      "path": "data/knowledge-base/atrial-flutter.json",
+      "sha256": "f650044282bee593fe2c6e9c4b03958b2a64343927a6116fed6d83af1906df53"
+    },
+    {
+      "path": "data/knowledge-base/atrial-septal-defect.json",
+      "sha256": "7cff3b326feacc145baa703ed6b15a04348a9d81badc47b8a522f31a1eb8e020"
+    },
+    {
+      "path": "data/knowledge-base/atrophic-glossitis.json",
+      "sha256": "37d0dd0e542a9a46391a517e4c1288b53aa924657928e81d1d7a38f2c39c7d72"
+    },
+    {
+      "path": "data/knowledge-base/atypical-odontalgia.json",
+      "sha256": "5d56ef34cf22ffdfda5912dee72834cf3c77199747ac2449c1224b276c00d44d"
+    },
+    {
+      "path": "data/knowledge-base/auriculotemporal-neuralgia.json",
+      "sha256": "7b1d793ce0adf29beaf9157ffb793230fa7c96b88ff507d7417189651bae7eb5"
+    },
+    {
+      "path": "data/knowledge-base/autoimmune-metaplastic-atrophic-gastritis.json",
+      "sha256": "18512cf7ea9262559d433da3f376c962b510681e2850e0ed599c68cbf2aa5137"
+    },
+    {
+      "path": "data/knowledge-base/avascular-necrosis.json",
+      "sha256": "d2cf82cfcfdabdfb286ae3ac6109c1b37410fdb2c9abf4b6b85ed36f283d86ac"
+    },
+    {
+      "path": "data/knowledge-base/bacterial-rhinitis.json",
+      "sha256": "3ce8d747ccd0cb75c12eb8fc767b945612df5a5c7997c2f4aed48a60b8cc0e8e"
+    },
+    {
+      "path": "data/knowledge-base/bagassosis.json",
+      "sha256": "3ad96f6a7bdf63a65fb7c679eadec16bf0fe339f705d151be51e98bf4bed476c"
+    },
+    {
+      "path": "data/knowledge-base/baker-s-cyst.json",
+      "sha256": "39c6188ed286bcfa6166357007df7c8deda64e60eb5c9d4229fbbf9a5046b236"
+    },
+    {
+      "path": "data/knowledge-base/balanitis-balanoposthitis.json",
+      "sha256": "e7a34abfdd9d61ee66addd7bcf5d7c9846de021c128b3ea59a514c36db12606f"
+    },
+    {
+      "path": "data/knowledge-base/balint-s-syndrome.json",
+      "sha256": "384d164948d14485942935280c4eebfe97d4e460325128e2cff035cd7530ce33"
+    },
+    {
+      "path": "data/knowledge-base/bankart-lesion.json",
+      "sha256": "b7cc4a097245079871a6d21cc21c4df060b2e92a09ba51ebc3e1b2a2692ececd"
+    },
+    {
+      "path": "data/knowledge-base/barretts-esophagus.json",
+      "sha256": "a02e9b59f68148ef39bae6e5a9742403f4796f186ab4a5cd4b46a873d03adcff"
+    },
+    {
+      "path": "data/knowledge-base/basal-cell-carcinoma.json",
+      "sha256": "06cd13992b7240ddf8c4bf0c514d0369d5b070d5938137636b81afc05d1638de"
+    },
+    {
+      "path": "data/knowledge-base/bell-s-palsy.json",
+      "sha256": "a856898ba049fa5698a8506e00f98b3af7e09437f26cd894ec999a3b52af0649"
+    },
+    {
+      "path": "data/knowledge-base/benign-migratory-glossitis.json",
+      "sha256": "bb3723a161d12d9a330132e532bfe864f00bcdf94970ca6088c847789e776c0b"
+    },
+    {
+      "path": "data/knowledge-base/benign-paroxysmal-positional-vertigo.json",
+      "sha256": "2c8973e02455bbff28b38f4243cc1d4d6b79afd1d8f505664eb90a41ca58e478"
+    },
+    {
+      "path": "data/knowledge-base/benign-prostatic-hyperplasia.json",
+      "sha256": "ca09cec4f2b99e3c814b7540b080c7ef03ae5a149b65fa5be59a8af0647f3284"
+    },
+    {
+      "path": "data/knowledge-base/beriberi.json",
+      "sha256": "6210cf78799de1501e927ece6bd1aef943634b450f6676ac175334ce74668458"
+    },
+    {
+      "path": "data/knowledge-base/bicipital-tendinitis.json",
+      "sha256": "e4654baa1e0e390276614c6a55d79d1410a7e5ed86eb0929aecfb718d496a9cf"
+    },
+    {
+      "path": "data/knowledge-base/bile-reflux-gastritis.json",
+      "sha256": "ed235459479f937e990e5d17cda9db1d8d661c57a081d3bd3f50688f6c292303"
+    },
+    {
+      "path": "data/knowledge-base/biliary-tract-cancer.json",
+      "sha256": "e34399efa05794a6d147e2b05c005279c962c4a9afb21fed8d8f3a3052e980a6"
+    },
+    {
+      "path": "data/knowledge-base/binge-eating-disorder.json",
+      "sha256": "221a3aff80689f576adad081c67ae74f746bbcb1d027f51702bd7c2151d2cf25"
+    },
+    {
+      "path": "data/knowledge-base/bipolar-disorder.json",
+      "sha256": "ee84f7d557d2b6216bd5e64a5ac6c2b9a179325038785f36e081516a334b72d2"
+    },
+    {
+      "path": "data/knowledge-base/bird-fancier-s-lung.json",
+      "sha256": "c26e053d07ce949b2679f159788e3089b15d35829b3e687b013f748768450b45"
+    },
+    {
+      "path": "data/knowledge-base/bladder-cancer.json",
+      "sha256": "c2b926c08c7b87ce25b3600547523ad8d9face9020369b166024baefc7cbe0b4"
+    },
+    {
+      "path": "data/knowledge-base/bladder-contracture.json",
+      "sha256": "fff273c6c93fa65d2ffaef9ae7e2cfbf6f701dd4e2f81f85edb2aeca1e69a45f"
+    },
+    {
+      "path": "data/knowledge-base/bladder-pain-syndrome-interstitial-cystitis.json",
+      "sha256": "17c6759623a2e2420f6172ae2a8fa8aaf013a017e7b61c892ba5fcae887e186f"
+    },
+    {
+      "path": "data/knowledge-base/blind-loop-syndrome.json",
+      "sha256": "85a4c09b0674e89dd5093e84a33e250dbc6bd56cb60eeae4fc21822d1ec1686d"
+    },
+    {
+      "path": "data/knowledge-base/blindness.json",
+      "sha256": "af54774a3978e0c405e5d75708e5ef277a7244619f11b521a699f0d4bddb6f08"
+    },
+    {
+      "path": "data/knowledge-base/body-dysmorphic-disorder.json",
+      "sha256": "750c6c2112fafe3ef41cd3aad95bfac527c432d6928061adb42aa4df9926606b"
+    },
+    {
+      "path": "data/knowledge-base/bone-cysts.json",
+      "sha256": "7487f00f16d3665b90e474f389f0e43549a359375387b7bac41d8accb3e6d50e"
+    },
+    {
+      "path": "data/knowledge-base/bone-tumors.json",
+      "sha256": "c55e303a390aa168c53dd14cdf6dec556c2ce2f30ef9be8f67387178b64bbd72"
+    },
+    {
+      "path": "data/knowledge-base/boutonniere-deformity.json",
+      "sha256": "b279a6b17733a9dfd1afd60b64407d65eeb8df30c86f7d2484c8e7c2add2fa9a"
+    },
+    {
+      "path": "data/knowledge-base/bowen-s-disease.json",
+      "sha256": "73ffbc280f19e1ea8cd79fd0c39b749a3eccfdf3a5a7def0c996122ce3c56c07"
+    },
+    {
+      "path": "data/knowledge-base/brain-abscess.json",
+      "sha256": "b25db45c3497866d6e909a057d7fd653d68d4534ea142cb1c18a499ade444be5"
+    },
+    {
+      "path": "data/knowledge-base/brain-cancer.json",
+      "sha256": "34daaecf41d860c7ce396d21a50d7c9b4efa97743f224eeb3706a24ae8414714"
+    },
+    {
+      "path": "data/knowledge-base/brain-tumors.json",
+      "sha256": "254fcc9afdfe978f6b9928f6a99712c3793dd94667b6b181dca66c7d3be4a859"
+    },
+    {
+      "path": "data/knowledge-base/breast-cancer.json",
+      "sha256": "8bfdac0bf62813ae27f4916f1518631b9cc0cb7e02e93108048604760783c113"
+    },
+    {
+      "path": "data/knowledge-base/bronchiectasis.json",
+      "sha256": "4aae823d6f0f97bb3ec04bd1f7d5437711f2b1dcd8d367e86910a601fe0ce737"
+    },
+    {
+      "path": "data/knowledge-base/bronchiolitis.json",
+      "sha256": "e98d7f90467238a6ebe2823c75c30ae2c42e0c37b38051c17a158d52c4597763"
+    },
+    {
+      "path": "data/knowledge-base/bronchitis.json",
+      "sha256": "c6813700dfbd23588ef8d990c1dd4dcb2fe936538b05c6d43b467dfaf6a070c0"
+    },
+    {
+      "path": "data/knowledge-base/broncho-alveolar-carcinoma.json",
+      "sha256": "15904b00c122d63c440dca3f76fc37259c627535eb217dfe0171328799439c46"
+    },
+    {
+      "path": "data/knowledge-base/bronchomalacia.json",
+      "sha256": "ac673ce300f75943988c1d215e4454d82dfa44fda5815137afc88b3f5ee21eaf"
+    },
+    {
+      "path": "data/knowledge-base/brown-s-quard-syndrome.json",
+      "sha256": "1bdfd93bca46b2525cb4f110503cee84235b69c96d6ea76f42817812020f98a1"
+    },
+    {
+      "path": "data/knowledge-base/brucellosis.json",
+      "sha256": "e7a6eca4077778ef2fb0420529da137cbca376803d13ad2cade1535b1a50d300"
+    },
+    {
+      "path": "data/knowledge-base/brugada-syndrome.json",
+      "sha256": "41a3c0964e52c6f28ba3b2bd22bd80d324cec240ba9ef83d8dbae1052f0f1023"
+    },
+    {
+      "path": "data/knowledge-base/bruxism-awake-sleep.json",
+      "sha256": "20685fb5d90d7930849ca1432d46175b6ea00dcae4327fe840ba4acd54f5a879"
+    },
+    {
+      "path": "data/knowledge-base/bulimia-nervosa.json",
+      "sha256": "8383f06511e57001464f3639c8237b63a37048cdaeee043a38b6ad818eb61e0d"
+    },
+    {
+      "path": "data/knowledge-base/bullosis-diabeticorum.json",
+      "sha256": "79385e355834bd0a03fa867efff46b2003b5b49e0222804e3a7b19b0fc497c91"
+    },
+    {
+      "path": "data/knowledge-base/bullous-pemphigoid.json",
+      "sha256": "1d074bf020a51d1a8483fab5c7bbeedc2fb08327600b124b5af032aa0be1af1e"
+    },
+    {
+      "path": "data/knowledge-base/bundle-branch-block.json",
+      "sha256": "f771ffa9b8ec3094d301997e9d775a88d88199fc7a4ca1d448b42f4900125f78"
+    },
+    {
+      "path": "data/knowledge-base/burning-mouth-syndrome.json",
+      "sha256": "4b25148913fd95bc8c7f560144627c2190f6df76653520b14b119d9259a1d882"
+    },
+    {
+      "path": "data/knowledge-base/burns.json",
+      "sha256": "825118565e606e085c306f1e2aab1d44d545d2f59fdb21358f6fca1931608fb0"
+    },
+    {
+      "path": "data/knowledge-base/bursitis.json",
+      "sha256": "c37503943a7b2f815af706967ed58194e646c543eebc535fee35ab637833a6ed"
+    },
+    {
+      "path": "data/knowledge-base/byssinosis.json",
+      "sha256": "9be7e8505ebaafae2de3b0872c808825d954ff32159ef3aad3eeab0eb4aa9c79"
+    },
+    {
+      "path": "data/knowledge-base/camptodactyly.json",
+      "sha256": "4d78e218eeb500bc7bce2b81b6e04fc6a4e6f117a8847b50ba97a12e38d01d3d"
+    },
+    {
+      "path": "data/knowledge-base/campylobacter-jejuni-infection.json",
+      "sha256": "076fd4186dc82800952f052aba6f27cd8aeb4d035ec5eb29eb6a604fe87c4df9"
+    },
+    {
+      "path": "data/knowledge-base/cannabinoid-hyperemesis-syndrome.json",
+      "sha256": "a8ba148f404e5e4066198c47552434db6a010c87ac8388872c2cb114db654604"
+    },
+    {
+      "path": "data/knowledge-base/capgras-syndrome.json",
+      "sha256": "6c86cd8dc000dc9868937c55bd956c040597c1b2453bdec9c2d9bd4c7a151e92"
+    },
+    {
+      "path": "data/knowledge-base/carcinoid-syndrome.json",
+      "sha256": "abdf0a283bac9b217acf93c0b46fa3c8de5d33026476a771fabaca90f743d6b9"
+    },
+    {
+      "path": "data/knowledge-base/cardiac-arrhythmia.json",
+      "sha256": "3f489caf2dbbd64b22cf250f1052af6eee9771496c3b7a908e76599ac6e7cbac"
+    },
+    {
+      "path": "data/knowledge-base/cardiac-inflammatory-disease.json",
+      "sha256": "f8929035032a7f6c315a046d6a05693b1025fd947c3905d73591881b422e2c7b"
+    },
+    {
+      "path": "data/knowledge-base/cardiomyopathy.json",
+      "sha256": "3bd3915d6621bb534b3b7c78c219f136c83444703e6a17f1223062ec60ef1a09"
+    },
+    {
+      "path": "data/knowledge-base/carotid-sinus-hypersensitivity.json",
+      "sha256": "abb90df34262b9218ac78d7bd0fc766a5d16326ae224ad4285809d7b8928c744"
+    },
+    {
+      "path": "data/knowledge-base/carpal-tunnel-syndrome.json",
+      "sha256": "195d04b0eafd1526dccd90d1dee20b0079b1b39617f76af576edf360d99a5a0c"
+    },
+    {
+      "path": "data/knowledge-base/cataracts.json",
+      "sha256": "4fc2ab63188f0dd5b6d7ad52f32d15e106f55e0970f9b8603853d6b27c451f16"
+    },
+    {
+      "path": "data/knowledge-base/cauda-equina-syndrome.json",
+      "sha256": "1d054de9a58fc08cdca86a00f2368dc325b78e317e2bf644d8e13b070f94d7fd"
+    },
+    {
+      "path": "data/knowledge-base/celiac-disease.json",
+      "sha256": "e693b33e1d43d97f6afa0143add36d54a3e3a37f0bb5d4b947e37fca684491aa"
+    },
+    {
+      "path": "data/knowledge-base/cellulitis.json",
+      "sha256": "7a4a06ce894e2c67aa792b952fb47d0531c17626d7e93be4ac19b1c7d8009924"
+    },
+    {
+      "path": "data/knowledge-base/central-cord-syndrome.json",
+      "sha256": "dd1bea0aca5f25a39b3186c78c2ed9c4418ada7718893327f3c45dfd24ba5f08"
+    },
+    {
+      "path": "data/knowledge-base/cerebral-contusion-diffuse-axonal-injury.json",
+      "sha256": "9f69139c4beec490fb20c736dbba0fc3fd02c7da5b6cb22d6043264d74a2c6e2"
+    },
+    {
+      "path": "data/knowledge-base/cerebral-contusion.json",
+      "sha256": "d065790e57eefbde64d9e16b6a45423af2afbcad47ea5b2342ca7a594190faca"
+    },
+    {
+      "path": "data/knowledge-base/cerebral-palsy.json",
+      "sha256": "171237b730a1c097c44b050858a5c0bd8f0f7c96638df0f277e1c3c85f98f750"
+    },
+    {
+      "path": "data/knowledge-base/cerebrovascular-accident-stroke-residuals.json",
+      "sha256": "aa4795a4c8777bc3e271541aa4f1ba3f457275eeac201fa0044efc89e2481f55"
+    },
+    {
+      "path": "data/knowledge-base/cervical-strain.json",
+      "sha256": "a9a6493f152a733d0ebdbbfb09f7a8cfe7ed6c739a08daaa3579f15ffb2c543a"
+    },
+    {
+      "path": "data/knowledge-base/chalazion.json",
+      "sha256": "76c0c7a7146b3b1703ad7cb8e0adbba5ae374f6f054fd91ffe31cd0078dd185a"
+    },
+    {
+      "path": "data/knowledge-base/charcot-arthropathy.json",
+      "sha256": "a954e6cc4f96c081d98d2d68499558e96c35257458c39074a772e568f518db39"
+    },
+    {
+      "path": "data/knowledge-base/charles-bonnet-syndrome.json",
+      "sha256": "1f90a160cd4c1b1dd085c64daa185e7689147615ad622fdac5855a69409a4163"
+    },
+    {
+      "path": "data/knowledge-base/chemical-pneumonitis.json",
+      "sha256": "06e62d94e9ccf21cae5007e1fec5b01140c9e0d3165fa76101333076b07974f2"
+    },
+    {
+      "path": "data/knowledge-base/chilblains.json",
+      "sha256": "4692c0c4e511930b40c42b79ee1c17b29a77f0bc5be280a743d2c5cc9e32aec8"
+    },
+    {
+      "path": "data/knowledge-base/chloracne.json",
+      "sha256": "6ed6ea4e85b386641986c01617ccbd940dd8d6b0ccb938d6347fecc150fcfcd4"
+    },
+    {
+      "path": "data/knowledge-base/cholelithiasis.json",
+      "sha256": "c9544f411144a5be7a71096978bc6c05cd3c90d30839a5af646e77ae02b76e03"
+    },
+    {
+      "path": "data/knowledge-base/cholesteatoma.json",
+      "sha256": "2094a2ea0422b771251957494f3bc6f1c3e1ca7c6417cd3c775e0c183784fdb7"
+    },
+    {
+      "path": "data/knowledge-base/chondromalacia-patellae.json",
+      "sha256": "6907b84aab23dc39d54803b5966333399815c6bc5bd1b595f5723f836e89463c"
+    },
+    {
+      "path": "data/knowledge-base/choroiditis.json",
+      "sha256": "da940ba7b33ec750145ff4f05bf51ab0a3ac49c3858e4f85e0a8a782a22fdb38"
+    },
+    {
+      "path": "data/knowledge-base/chronic-b-cell-leukemias.json",
+      "sha256": "8786f46139c068f3e3184019d02ffed905db16b5b6ee3965c280a56ec823f5c1"
+    },
+    {
+      "path": "data/knowledge-base/chronic-bronchitis.json",
+      "sha256": "281f142917cd7f597ece0449db6a6b62608598a8fb6aea7fc52fd33164b7b1ca"
+    },
+    {
+      "path": "data/knowledge-base/chronic-fatigue-syndrome.json",
+      "sha256": "510b9003a94756dcfd5d16064b407aa83b8ed170ffec5e3295591eff892e6972"
+    },
+    {
+      "path": "data/knowledge-base/chronic-intestinal-pseudo-obstruction.json",
+      "sha256": "a43c40d5420d114179555cc2e2b0887579ac21c47a137d1bdd34e670cd2d4eba"
+    },
+    {
+      "path": "data/knowledge-base/chronic-kidney-disease.json",
+      "sha256": "a17c434ec0a2cef9edd953542dd438e16f836f02951f17f1274edc2b6692090b"
+    },
+    {
+      "path": "data/knowledge-base/chronic-laryngitis.json",
+      "sha256": "58940d4b5cb70ab1fde79b4aaf83028815a8459e070496e2fc5203a60745e4b5"
+    },
+    {
+      "path": "data/knowledge-base/chronic-liver-disease.json",
+      "sha256": "41e1b2c5ade3c0cddbd8b76ebd222d5e53d1c0bf57972be834d7eb402dd1b1f6"
+    },
+    {
+      "path": "data/knowledge-base/chronic-pelvic-pain-syndrome.json",
+      "sha256": "4d8ad9fe9f31cfc2c50b495389c46675de775fbe710f9db8de202e49e8f9c5ca"
+    },
+    {
+      "path": "data/knowledge-base/chronic-pyelonephritis.json",
+      "sha256": "58c8b4f23ead768354274e4054dc9ee5f647ade1caff8b2801c2e0f5c6eabff4"
+    },
+    {
+      "path": "data/knowledge-base/chronic-rhinitis.json",
+      "sha256": "77c93b10bbe44cb44dcc50090667029ff9f60b9ec0fd3c04eea915518ac2f2cb"
+    },
+    {
+      "path": "data/knowledge-base/chronic-sinusitis.json",
+      "sha256": "ef451f37f12cbb7f3f49fdc2f112632504f5505c0f86b3f78a504cb6b1fa0407"
+    },
+    {
+      "path": "data/knowledge-base/churg-strauss-syndrome.json",
+      "sha256": "52a4020632627334880be8ca900b027ef4f7daa7ef0f5063ba59b41e7306fc1e"
+    },
+    {
+      "path": "data/knowledge-base/cicatricial-pemphigoid.json",
+      "sha256": "0c0d9ab3aab3a19247b92fa00a3ec47e5cc6c1af87783816e5201ecf565281a6"
+    },
+    {
+      "path": "data/knowledge-base/circadian-rhythm-sleep-wake-phase-disorders.json",
+      "sha256": "9861b287ccc4825b830ba91432f85f1bd9aa7dd6aff75bfc1beea35f14e4da95"
+    },
+    {
+      "path": "data/knowledge-base/cirrhosis-of-the-liver.json",
+      "sha256": "490132894148e9f6e248b61c22d716f3c850fef31847f0c70a1e8aacb52722b0"
+    },
+    {
+      "path": "data/knowledge-base/cleft-lip-palate-residuals.json",
+      "sha256": "f6785f5a477edb623e3e36a95ea2d4896d0789d360cdad70eaf175f2c147151e"
+    },
+    {
+      "path": "data/knowledge-base/clinodactyly.json",
+      "sha256": "00140657d007e80602df6b5f8f0dfbffa001a25e6e1ca3eedb01341c1df415ea"
+    },
+    {
+      "path": "data/knowledge-base/cluster-headache.json",
+      "sha256": "64c725cd2f5e7d78f2d38daaff214873ee4157458679cc6562859c2db86d6d6c"
+    },
+    {
+      "path": "data/knowledge-base/coarctation-of-the-aorta.json",
+      "sha256": "5cd3c852804d3c60c8264b06acbf47bc563601c4fabe08cdd7cf56f1d1721dd5"
+    },
+    {
+      "path": "data/knowledge-base/coccydynia.json",
+      "sha256": "94b2f69966b62c045feedf97866a7a857269a299581c47003a6583c8baef905c"
+    },
+    {
+      "path": "data/knowledge-base/cognitive-disorder.json",
+      "sha256": "2b0dacbae3d017497843bf384a356818285a80cac7068de3f1e59572fae0f15d"
+    },
+    {
+      "path": "data/knowledge-base/cold-injury-residuals.json",
+      "sha256": "1e05a9e8f7ecba8eae80e210d8aaa688d76032b2afdae186b2b842253ffec6c0"
+    },
+    {
+      "path": "data/knowledge-base/color-blindness.json",
+      "sha256": "c74aa2f171e02b097f43051b7a81d56d802083df14fe876214fae68c2d2c230f"
+    },
+    {
+      "path": "data/knowledge-base/colorectal-cancer.json",
+      "sha256": "15c2b180f5bed3b652670532a314056f3b08f153ceb191af593087383871e785"
+    },
+    {
+      "path": "data/knowledge-base/common-peroneal-neuropathy.json",
+      "sha256": "c7126e7c32e1c15f4b122118ee7ceea7f8d9504c765cf2954af449b06f349952"
+    },
+    {
+      "path": "data/knowledge-base/complex-regional-pain-syndrome.json",
+      "sha256": "a1c08003804a438145b62627d25675fd814d2f7ccd5621174b6c8145534bf343"
+    },
+    {
+      "path": "data/knowledge-base/conductive-hearing-loss.json",
+      "sha256": "85f9c16be6dc0fe7fb79fc5c97641b125319305bbb679b8c378db5ae51008623"
+    },
+    {
+      "path": "data/knowledge-base/congestive-heart-failure.json",
+      "sha256": "5e24f05ee3f9fa8e3f62c9ed54e6a0ce2ee1c076345a9fae60a2395496798c54"
+    },
+    {
+      "path": "data/knowledge-base/conjunctivitis.json",
+      "sha256": "049636fc9a71c84a815463db6ed2e274533480e184162e61cdfdc8e25c45f08e"
+    },
+    {
+      "path": "data/knowledge-base/contact-dermatitis.json",
+      "sha256": "d2bb53af222098819b906b0b3d0bada67f801a7b4a8e619a11e314cfa34b2946"
+    },
+    {
+      "path": "data/knowledge-base/contractures.json",
+      "sha256": "280fac4ecc25e9ed07dac834b8815edcc0991a99e337238525c7f52a75298d28"
+    },
+    {
+      "path": "data/knowledge-base/contralateral-knee-condition.json",
+      "sha256": "a1495c6532e41f424136735dadfbd808f57924b69d1077787606b15dc6e3a688"
+    },
+    {
+      "path": "data/knowledge-base/conus-medullaris-syndrome.json",
+      "sha256": "16006f21f0c85eed1ece3d4cdbc81acf8421689d731d28522339a0a2b01c2635"
+    },
+    {
+      "path": "data/knowledge-base/copd.json",
+      "sha256": "0f7cf830a9c0e3eea88a0c4f2f3c1dcc4578b92bb694d8080e9b4570f60c0a48"
+    },
+    {
+      "path": "data/knowledge-base/corneal-scarring.json",
+      "sha256": "2152bc3ca8e82ba4a99c4c6e06485a490af4b2df45a6d72df3c280aa57999582"
+    },
+    {
+      "path": "data/knowledge-base/coronary-bypass-residuals.json",
+      "sha256": "5f5015bd2628ce9a9a08c663493a8b8c4581b7356cdab8b73281a3527ea15907"
+    },
+    {
+      "path": "data/knowledge-base/cotard-s-syndrome.json",
+      "sha256": "91cd4f0d0f4a77ffe1c2e2883ab7c1d2c9a84ec5d5a58e4c7ac564ecdf8001a6"
+    },
+    {
+      "path": "data/knowledge-base/cracked-tooth-syndrome.json",
+      "sha256": "ff1484e3d15a6213534177797c88a88a4c34dacd58742372ccef8361ac52906f"
+    },
+    {
+      "path": "data/knowledge-base/cranial-nerve-palsy.json",
+      "sha256": "1d356f5e721e962d7324a8d44264559eed9774a171bc20c1dd263be151222ef4"
+    },
+    {
+      "path": "data/knowledge-base/cryptogenic-organizing-pneumonia.json",
+      "sha256": "7e86930a49e5b5e59d4ae105d5e5f59bd1ea51575b363e00c9ec30cf022f2446"
+    },
+    {
+      "path": "data/knowledge-base/cubital-tunnel-syndrome.json",
+      "sha256": "26a31f5e4898b130802a5fff1d8841a7b228e9d9fe06580013be3cdc4d52f291"
+    },
+    {
+      "path": "data/knowledge-base/cushings-syndrome.json",
+      "sha256": "dbf145fd4b24002c365193cd49cbe54a2a004cd0ab31688b5e1398eb45dc172c"
+    },
+    {
+      "path": "data/knowledge-base/cyclic-vomiting-syndrome.json",
+      "sha256": "307981b25da81064a2b02c8ce4621360378c93f9ab19898f2b10c1d77df17fa2"
+    },
+    {
+      "path": "data/knowledge-base/cyclothymic-disorder.json",
+      "sha256": "2e277e3f6155dbc3c7015cc525f0d44a48d1a782a9ace9927049e54cebefc5a7"
+    },
+    {
+      "path": "data/knowledge-base/cystitis-or-neurogenic-bladder.json",
+      "sha256": "af378387b65e0eb994ab8caf66d668a35a8f0de1b9a3be4a1a752e917ca28ddf"
+    },
+    {
+      "path": "data/knowledge-base/cystitis.json",
+      "sha256": "249f56b54bbb025917446862a6d3ea27b8afd82e7ad8a2fc97f40333fe847e1f"
+    },
+    {
+      "path": "data/knowledge-base/dandy-walker-syndrome.json",
+      "sha256": "dc7cd29da17cbd7a4194c023cf33d88e00d11a8607ab218f00d7fb1f7718666c"
+    },
+    {
+      "path": "data/knowledge-base/de-quervain-s-tenosynovitis.json",
+      "sha256": "a78f3fdd7f544c05375ed4dad3608c3bce80c134d832e4b11fc0a37eb31831b4"
+    },
+    {
+      "path": "data/knowledge-base/decubitus-ulcers.json",
+      "sha256": "7182c5cd7abc52d28499b7e047410b232680a6741d34c3fa8c4b1faed71940cd"
+    },
+    {
+      "path": "data/knowledge-base/deep-vein-thrombosis.json",
+      "sha256": "96b9d23f161a655200529e0ab1905ad0590d93fd15557f6ed60ef87f45ea48f9"
+    },
+    {
+      "path": "data/knowledge-base/degenerative-disc-disease.json",
+      "sha256": "088da95ec8e2a0c7291ceac671c600ea6f2db47b197a1d047082659564fe65a9"
+    },
+    {
+      "path": "data/knowledge-base/delayed-ejaculation.json",
+      "sha256": "5adb2202133e1fa61f169d4e9ffe7d80aad82fe359c6afe392519db6574f7fc6"
+    },
+    {
+      "path": "data/knowledge-base/delusional-disorder.json",
+      "sha256": "be7c3f4ea8a8f9f4285fe7dbf3112ce80ba739cdcf27e4e572bfc2fc524754a0"
+    },
+    {
+      "path": "data/knowledge-base/dementia.json",
+      "sha256": "7c3212a66f8900e1021439ae0fa8804cfd5df48e1e1490de6a8b433c5616430e"
+    },
+    {
+      "path": "data/knowledge-base/dental-abrasion-erosion-abfraction.json",
+      "sha256": "6f330a24866b0980704d148857ffcee8cdb6d73c3d0a07eb572831759c459239"
+    },
+    {
+      "path": "data/knowledge-base/dentin-hypersensitivity.json",
+      "sha256": "e996b96e3a70f7234c2683f0a8701aec3c5c220ee4b047fe8bf85220cdbf686b"
+    },
+    {
+      "path": "data/knowledge-base/depersonalization-derealization-disorder.json",
+      "sha256": "d9d1d0f43d6dbfcc1316494f75b286a15a20aae8b1cbf421309f11a7a2f9d6ad"
+    },
+    {
+      "path": "data/knowledge-base/depressive-disorder.json",
+      "sha256": "2ebc328d27a6d340f1dabc453e854a48d4c9380b0decad39064eb3611530e214"
+    },
+    {
+      "path": "data/knowledge-base/dermatitis-herpetiformis.json",
+      "sha256": "5c66b55beca48f1f42f10156bcd3e6b7ecfb97d267c968d4391317f344cbe2fb"
+    },
+    {
+      "path": "data/knowledge-base/dermatitis.json",
+      "sha256": "8086920142853a8542fecfb7b970c66ee58a92311ff0cad43836b136b2132c33"
+    },
+    {
+      "path": "data/knowledge-base/dermatofibroma.json",
+      "sha256": "26b40a68ab3d944486993c8e1f6b4d1ae71b419979ec95998397016f854319f5"
+    },
+    {
+      "path": "data/knowledge-base/dermatofibrosarcoma-protuberans.json",
+      "sha256": "f14eec8fc8738dd93cba64119b9cf3358864a10e5e5a781c5c3e8fa8bb8d9184"
+    },
+    {
+      "path": "data/knowledge-base/dermatomyositis.json",
+      "sha256": "82db673d628ede460ac914bed267c78ae3348f8a087fcf429fd0a1b0b9825e21"
+    },
+    {
+      "path": "data/knowledge-base/deviated-nasal-septum.json",
+      "sha256": "7830f7decf3900531a6da032f86786b958ca3c9591e85fd2cc8476a8bbeccd46"
+    },
+    {
+      "path": "data/knowledge-base/diabetes-insipidus.json",
+      "sha256": "7891fe236ce5117ffd0a37a18735af96623e86ff2dfacc3291996b173c746a9e"
+    },
+    {
+      "path": "data/knowledge-base/diabetes-mellitus-type-1.json",
+      "sha256": "ee6533c784fb3bfa28cfb24f93ecdb0d9192184fc07541cd7bd8929dee0e359f"
+    },
+    {
+      "path": "data/knowledge-base/diabetes-mellitus-type-2.json",
+      "sha256": "d096405e8b2993661fe96bbfef63c2b3c5ac4a5f91f77539d02a658cfc6e965d"
+    },
+    {
+      "path": "data/knowledge-base/diabetes-mellitus.json",
+      "sha256": "b97557a6d2fad8ecf5f1142fb7bbd9b34e5c0851507468e2994fab285d37eead"
+    },
+    {
+      "path": "data/knowledge-base/diabetic-amyotrophy.json",
+      "sha256": "9a6e5c3348e2f2909b99ee23d4410f6b8a8f9f1a35e2fda4ee8e8859be7c4dea"
+    },
+    {
+      "path": "data/knowledge-base/diabetic-dermopathy.json",
+      "sha256": "d74a3f82055091364a4141bde30fd63244284676de5f426063d4c2d77d19c788"
+    },
+    {
+      "path": "data/knowledge-base/diabetic-gastroparesis.json",
+      "sha256": "a9f59b66f6c969b30ba99e89b9cbe4d07819195fada4c52460afe449cf1ed903"
+    },
+    {
+      "path": "data/knowledge-base/diabetic-nephropathy.json",
+      "sha256": "a5eedf8e736691bad22c479f3b36bdeba675a7cb968d42182e033d6d6e7ce3c6"
+    },
+    {
+      "path": "data/knowledge-base/diabetic-retinopathy.json",
+      "sha256": "38bbea05fd19911712077961057ce43ed67c53a7802fd503a4ebe58f741e2ced"
+    },
+    {
+      "path": "data/knowledge-base/diaphragm-paralysis.json",
+      "sha256": "8c16243afac257ae031b6b7dded83bbb4f56ed3589af25423e67cd8d4c9c5869"
+    },
+    {
+      "path": "data/knowledge-base/diffuse-axonal-injury.json",
+      "sha256": "0663143e14a9234ba8eaeb95fb1b7b1891a8b4008debfed4e9c04e29f3172d95"
+    },
+    {
+      "path": "data/knowledge-base/diffuse-esophageal-spasm.json",
+      "sha256": "1370e5bf130edb03898d78a2e188c9aeb72f023d374adca36c7ef53804e9ae29"
+    },
+    {
+      "path": "data/knowledge-base/diplopia.json",
+      "sha256": "b14ef406aa7fe0c21f1e07a75276a5473ee355b01144d05a91d4d2ddbbcfa96f"
+    },
+    {
+      "path": "data/knowledge-base/discoid-lupus.json",
+      "sha256": "872b3585718c975d43a334d5e94c4e457be06f09ae83b7854d942aef234ac1e3"
+    },
+    {
+      "path": "data/knowledge-base/dissociative-disorder.json",
+      "sha256": "a50e98730e9839c6548e19e4e2bbd82cdb4aec634b5b2bb6cdbc0be5a0928139"
+    },
+    {
+      "path": "data/knowledge-base/diverticulitis.json",
+      "sha256": "22765a10d455a268d859c591a191c839e92aa6cee178312339d77c9f4ba76acc"
+    },
+    {
+      "path": "data/knowledge-base/diverticulosis.json",
+      "sha256": "862d31197dafe962079077049d85ce5ede51e3b9c444f29449aae98106bb12c9"
+    },
+    {
+      "path": "data/knowledge-base/dizziness.json",
+      "sha256": "1b7dc3f013638dc48a8e3d31adcf4d96da587517993948a4e174be2a2d4c2f02"
+    },
+    {
+      "path": "data/knowledge-base/drug-induced-parkinsonism.json",
+      "sha256": "12368780fce1b4b7b91b5e1b900068195530ab9012967eb272e6387aeda571f2"
+    },
+    {
+      "path": "data/knowledge-base/dry-eye-syndrome.json",
+      "sha256": "55f0f64d82fd5caa4a930e7c4c9b0ee45ae1edfdd23c81f81eb48854ff517a4a"
+    },
+    {
+      "path": "data/knowledge-base/dumping-syndrome.json",
+      "sha256": "159b4a9688f13744fa848e3b48a77fe754579ab1eb013cc44bd5872ffb4868d6"
+    },
+    {
+      "path": "data/knowledge-base/dupuytren-s-contracture.json",
+      "sha256": "01b97e897b6ce17a9aec6b4f7ed7a27a27224e9ce948cf339670861588242b2e"
+    },
+    {
+      "path": "data/knowledge-base/dwarfism.json",
+      "sha256": "6e69d433b447918955009c96990dbc61aab3de8fe5346b7e4b2b2b6358a9ee87"
+    },
+    {
+      "path": "data/knowledge-base/dyspareunia.json",
+      "sha256": "490ca72500ebef4356d37802d39e947f501f741dddad3753722d2da1a62a4385"
+    },
+    {
+      "path": "data/knowledge-base/dysphagia.json",
+      "sha256": "31f7f52a58102176e3f4a0e22de88daf76aaec27c36d44c9ba853f3efb5cd894"
+    },
+    {
+      "path": "data/knowledge-base/dysplastic-nevus-syndrome.json",
+      "sha256": "84841ed5a64193d1ddc224af173a0859f59cf2b82cb7dbc4e3016625efeb5ff4"
+    },
+    {
+      "path": "data/knowledge-base/early-onset-peripheral-neuropathy.json",
+      "sha256": "1c85d92259619d51cdaadc6910fc69d9f6a64c3c9921bcbf0799e74f6fc409f7"
+    },
+    {
+      "path": "data/knowledge-base/eczema.json",
+      "sha256": "c68af07cb4098da21b9a029d9ace092186604e7d6b921019c6dd390e4bbcc8d8"
+    },
+    {
+      "path": "data/knowledge-base/elbow-disarticulation.json",
+      "sha256": "a6ae20e335fde61a36cdc8f7e382f940b08d8eca4001b243d495ada22362b931"
+    },
+    {
+      "path": "data/knowledge-base/emphysema.json",
+      "sha256": "47cbb744669ed1f94c04508865bdde39fec59b854df2fcd49ee370fc01eb9afa"
+    },
+    {
+      "path": "data/knowledge-base/empty-nose-syndrome.json",
+      "sha256": "d8bdc6f410cf87041f73ebd9a08e4a38d7197dd8810229be945ba20f60f6be8b"
+    },
+    {
+      "path": "data/knowledge-base/encephalitis.json",
+      "sha256": "237c3e4230dc0fd5a01882b2d7d0db267b33401f40389a4891b8fe0cabd53780"
+    },
+    {
+      "path": "data/knowledge-base/encopresis.json",
+      "sha256": "005653480dada3c777f0405ac7d29ae00b3c4088e61d9218b10ec4967b3d7346"
+    },
+    {
+      "path": "data/knowledge-base/endometrial-cancer.json",
+      "sha256": "03b465d8d833965c01915743958f3724e844656a0fbb94c032edad53f1dc7996"
+    },
+    {
+      "path": "data/knowledge-base/endometriosis.json",
+      "sha256": "5ced2b5a1241b6191b74658b9d841f288ec03a5db9c46939dec8a205069ee142"
+    },
+    {
+      "path": "data/knowledge-base/enophthalmos.json",
+      "sha256": "d9e976a2102331551a100a8141f25a8830e1a2df98ba16f8b9f70c31a2ef0df3"
+    },
+    {
+      "path": "data/knowledge-base/eosinophilic-bronchitis.json",
+      "sha256": "32cc48bd7a3e2c9c881c56f9918e06ec80a244bf112285d34685e2a13fcf53fc"
+    },
+    {
+      "path": "data/knowledge-base/eosinophilic-esophagitis.json",
+      "sha256": "ab304f1bc9fde752a9efbed4867c8b120ca73fb68b5f6968dcacf8ad8da9017e"
+    },
+    {
+      "path": "data/knowledge-base/eosinophilic-gastroenteritis.json",
+      "sha256": "7db330c079a51593bf8801b334fd1fcbad849d62e7948885d394afdce9c9a6ba"
+    },
+    {
+      "path": "data/knowledge-base/eosinophilic-myocarditis.json",
+      "sha256": "a089603f54eb2b3613c46dad988a86892f6dd8e6b16fb9908ea445435f1da7ad"
+    },
+    {
+      "path": "data/knowledge-base/epicondylitis.json",
+      "sha256": "3a87e3a25d20af90bd9aedede69544c0bfc8a9e29a76c215ca7806a41054158d"
+    },
+    {
+      "path": "data/knowledge-base/epidermolysis-bullosa-acquired.json",
+      "sha256": "51f5ef2be3af88c620f65fd0a72bcf27c9681d83811839df33fd7a0364efb0d9"
+    },
+    {
+      "path": "data/knowledge-base/epididymal-cyst.json",
+      "sha256": "01ce8f099b1cb8cc2cc85de05f06237eb9770d7d60c21e1bfa808255a689f415"
+    },
+    {
+      "path": "data/knowledge-base/epididymitis-orchitis.json",
+      "sha256": "268671c5ea6ec538a8dbee68692ac3b45aedc163a9922c24ccaca4119b5809dc"
+    },
+    {
+      "path": "data/knowledge-base/epidural-hematoma.json",
+      "sha256": "50db3956b8ec7aa5775df68c3a18afea9219bb630544c0bca3f74311b5fd2a2f"
+    },
+    {
+      "path": "data/knowledge-base/epilepsy.json",
+      "sha256": "7991cbbca3e06788999ca5f611edf283e219ca2d390ff62523037c0f7b6d89e6"
+    },
+    {
+      "path": "data/knowledge-base/episcleritis.json",
+      "sha256": "dd9cab9ef90f7c5d4b83afaa8d3bb55813710fed21947b9cc9b4a47666186d4d"
+    },
+    {
+      "path": "data/knowledge-base/erectile-dysfunction.json",
+      "sha256": "bd85c3948e161ab99bc83fff2f76d08aff8b74b8ec7e47c231e8ea6cb8b99463"
+    },
+    {
+      "path": "data/knowledge-base/erythema-induratum.json",
+      "sha256": "7a449a4b40335159bbd14f854944d49d251d49221c1d9d26af5b0825cd1c0bd3"
+    },
+    {
+      "path": "data/knowledge-base/erythema-multiforme.json",
+      "sha256": "b31d6b252d7c7d93caaee8e810792244004b53d601a6881527da50fccb82ab76"
+    },
+    {
+      "path": "data/knowledge-base/erythema-nodosum.json",
+      "sha256": "aa051a8958d9909b7cbd83db50f1c301d4ca6f3225640322dd8d72c8cb9289e2"
+    },
+    {
+      "path": "data/knowledge-base/erythromelalgia.json",
+      "sha256": "086f4fddbdd8e5abcf6aa435a5745ef8c8931a12922956ee9c87dc045fc363df"
+    },
+    {
+      "path": "data/knowledge-base/erythroplakia.json",
+      "sha256": "77aec90fca8238bbcd7b16b1435c9bbcfe25465fc6cdab0721f7cca1fca0cd1f"
+    },
+    {
+      "path": "data/knowledge-base/erythroplasia-of-queyrat.json",
+      "sha256": "c8b5ade11c2c9043a7b8b12d13ef71e05dd834ea2e9a67f1c2471a505a0516f0"
+    },
+    {
+      "path": "data/knowledge-base/erythropoietic-protoporphyria.json",
+      "sha256": "a0f350665ba1d6c91b6ef1abd2e4719ca6d9680fafd30ee62943e1dd08e2a368"
+    },
+    {
+      "path": "data/knowledge-base/esophageal-cancer.json",
+      "sha256": "cd4e8e0077961c6b7b4ff205f352ca81f9262dbb16157059ae997c46ad1b7957"
+    },
+    {
+      "path": "data/knowledge-base/esophageal-stricture.json",
+      "sha256": "a4a6fca3b7316a0f1bef72452dcd6b952805a13f5b8f1705de1ca7be5dc4315e"
+    },
+    {
+      "path": "data/knowledge-base/esophagitis.json",
+      "sha256": "3e4b967175169f8cedf3bb8e0ecf21174d7c3ed7322ef0ae3fd17a70823bf471"
+    },
+    {
+      "path": "data/knowledge-base/essential-thrombocythemia.json",
+      "sha256": "0e2f49c7b1b7725beb1726789bd2db7e819d407b8feaf9876513ab3473a1b24d"
+    },
+    {
+      "path": "data/knowledge-base/euthyroid-sick-syndrome.json",
+      "sha256": "6df657d592aee0d52de22cbaed3be2be7e851b50eb5997db15f7317169934db7"
+    },
+    {
+      "path": "data/knowledge-base/excoriation-disorder.json",
+      "sha256": "8a80bc59e415a144a60dba0dcdf9421b7490b069f32f3a68be0d483f2ea3986e"
+    },
+    {
+      "path": "data/knowledge-base/exophthalmos.json",
+      "sha256": "01308f39add12450b16df93380195a37091f702ccfa2b84c4d444b50ad9ec59a"
+    },
+    {
+      "path": "data/knowledge-base/exploding-head-syndrome.json",
+      "sha256": "829426e0af649326d3edc27363db98517fdff0f30d36bee64f73810f6d7bdff0"
+    },
+    {
+      "path": "data/knowledge-base/extensor-digitorum-brevis-strain.json",
+      "sha256": "d150ae37be096f121e59926de80229a0351bd7f01e155a9c12688990840c6c31"
+    },
+    {
+      "path": "data/knowledge-base/factitious-disorder.json",
+      "sha256": "6ab1811f574b28069c315d5f746b2d189de7e855239ba7d91ccaef7349a4c145"
+    },
+    {
+      "path": "data/knowledge-base/farmer-s-lung.json",
+      "sha256": "c9ae56895006be0385ff21021c7fb93f4f1363f80cd5b28aa9fa3b92b6866697"
+    },
+    {
+      "path": "data/knowledge-base/fasciitis.json",
+      "sha256": "07443d85aa8bb4768cda12d49fd8704f985d8e8beba84006a0d5882d23472dee"
+    },
+    {
+      "path": "data/knowledge-base/fecal-impaction.json",
+      "sha256": "2454e65012e62d2b30be5016b61842bd51e36db0fe38985d7db61bf1cf84c9c9"
+    },
+    {
+      "path": "data/knowledge-base/fecal-incontinence.json",
+      "sha256": "7a7c71cbf4b35025714967eed5850cf412e27d9fcbc415abb6a249878ae01a94"
+    },
+    {
+      "path": "data/knowledge-base/female-infertility.json",
+      "sha256": "1f7bf5e306610e8f9364bc936c5fa5c7008cee1d9b874563ae341d0ae5f1a477"
+    },
+    {
+      "path": "data/knowledge-base/female-reproductive-disorders.json",
+      "sha256": "1a9a2250dc2b5cf94f176f4adfdff8abf7a75f3b03eebdda4319dcc1657afc03"
+    },
+    {
+      "path": "data/knowledge-base/female-sexual-arousal-disorder.json",
+      "sha256": "f4d216ed4e3302c3f01405f6fbedf8f50a09a8709eab1aab4c87e00446c67e78"
+    },
+    {
+      "path": "data/knowledge-base/femoral-neuropathy.json",
+      "sha256": "48334209c6b1fe0fcf19022c121e20f88e1b0b9bdeca9a939496c309acf382ea"
+    },
+    {
+      "path": "data/knowledge-base/femoroacetabular-impingement.json",
+      "sha256": "385a408d574de4d5ce9abef81a8c6a8d15ebaca983f7f5ad90b085a734afca72"
+    },
+    {
+      "path": "data/knowledge-base/fibromyalgia.json",
+      "sha256": "c01787de9b87109769078a750c9c69e54e23e039bc8179eac9ca430ce990bb34"
+    },
+    {
+      "path": "data/knowledge-base/fissured-tongue.json",
+      "sha256": "adbe5def3568cd91092116c3775af7cc8197e1ac77270374255c97e735b6599e"
+    },
+    {
+      "path": "data/knowledge-base/fitz-hugh-curtis-syndrome.json",
+      "sha256": "b00f4f7b0dd7cbf48dfb16d7d144423e810e30d25de06c45313a01d5a239729f"
+    },
+    {
+      "path": "data/knowledge-base/flatfoot.json",
+      "sha256": "5bdba88f25a1b57dbedf6bb4abe4cc5af040f7f0462db17642e1a2efe1f75199"
+    },
+    {
+      "path": "data/knowledge-base/flexor-hallucis-longus-tendinitis.json",
+      "sha256": "1682233350a7bac7f93d55e0553e544e1f70f100b30d39b19862904345d8ed11"
+    },
+    {
+      "path": "data/knowledge-base/fournier-s-gangrene.json",
+      "sha256": "f51c8f67595926be65fa48350a9bcf277152d297f4a5d7cb78a328ef1a456f02"
+    },
+    {
+      "path": "data/knowledge-base/fregoli-syndrome.json",
+      "sha256": "20880d591c8e82d9e3637272a56251fc8691573532f9a06eb1852ac6f8042f9a"
+    },
+    {
+      "path": "data/knowledge-base/freiberg-s-infraction.json",
+      "sha256": "70ead7df3823366e338b49dcbe1f797689353a0cbe7c088d0cae0abea3ab6e09"
+    },
+    {
+      "path": "data/knowledge-base/frontal-fibrosizing-alopecia.json",
+      "sha256": "74fa5cb68572c155438e2348ef2150a12a2db380aaa1504b020ff592a999f3ae"
+    },
+    {
+      "path": "data/knowledge-base/functional-neurological-symptom-disorder.json",
+      "sha256": "2ba8974b9e224ce7cc476ae38cf8c117464e43c88c32a6714ed66b3f57f77eb1"
+    },
+    {
+      "path": "data/knowledge-base/fungal-skin-infection.json",
+      "sha256": "52c989ce3a031503d22796017619e38a4c276f3978b59852bae5fb2a0e56458a"
+    },
+    {
+      "path": "data/knowledge-base/gallbladder-disease.json",
+      "sha256": "d78bf810e177ecaa2bd32badff1e17acf7ee0f22ba4a255538059fd3162d5724"
+    },
+    {
+      "path": "data/knowledge-base/gamekeeper-s-thumb.json",
+      "sha256": "1cc14cc7244f67edeeac35e378f644bd442d47bdb0f7cd5a14e744caed05c97e"
+    },
+    {
+      "path": "data/knowledge-base/ganglion-cysts.json",
+      "sha256": "a2b9ae9f924fff9c92902614605b3d497992cfb0e230983ef9534e4c8f264db5"
+    },
+    {
+      "path": "data/knowledge-base/gastrinoma.json",
+      "sha256": "641983b6323033a4a5437756fcf6491ffd3bf8d04b9813b0dea2505454052fa5"
+    },
+    {
+      "path": "data/knowledge-base/gastritis.json",
+      "sha256": "8687b0d66449bf7437d52ebb977c2f0865f4106bdbfbd5dbeb57197efd9d6f32"
+    },
+    {
+      "path": "data/knowledge-base/gastrointestinal-cancers.json",
+      "sha256": "ac13ee6b70b381350d39f85ff34004b6ad8e4b82c1fe402e42d5278b8526e92b"
+    },
+    {
+      "path": "data/knowledge-base/gastrointestinal-stromal-tumors.json",
+      "sha256": "1753cda699bd46acfb13af2aab8d02faf3aadb0c20ce8850bab58423bb8771ad"
+    },
+    {
+      "path": "data/knowledge-base/gastroparesis.json",
+      "sha256": "ca046f03ae4c1c6c41c4b36ca95962b60543eb2bd05c4069702c2edb544914f6"
+    },
+    {
+      "path": "data/knowledge-base/genitofemoral-nerve-neuralgia.json",
+      "sha256": "effe02db25dbfd56851ecf5ac15e71b18b679a5a421210bb5e72d05210648a2c"
+    },
+    {
+      "path": "data/knowledge-base/geographic-tongue.json",
+      "sha256": "dbb18f3cc05636b3e6953e5d5982260e7e95eaf701f3e7c2b7e1920c16c1c72f"
+    },
+    {
+      "path": "data/knowledge-base/gerd.json",
+      "sha256": "507a5413a8afc3d424ab60b9587512218537c0f212585d6b8a8de40942db9b92"
+    },
+    {
+      "path": "data/knowledge-base/gerstmann-s-syndrome.json",
+      "sha256": "dfdb5912ff18cfad45044eb53462f302ca82c668e8f21aebe668f40a1c066cc3"
+    },
+    {
+      "path": "data/knowledge-base/giant-cell-myocarditis.json",
+      "sha256": "5f887bfe16279268c1cc92717639df00f4e5421018b907e6e3950044276a7ed7"
+    },
+    {
+      "path": "data/knowledge-base/gigantism.json",
+      "sha256": "474aef8051ec39943ce1068a53f61399bc8fecd0bb20084fa0874a36c8197d54"
+    },
+    {
+      "path": "data/knowledge-base/gingivitis.json",
+      "sha256": "354a4391456a0fbcb353d02ed58611ec3982155e04c8b2d5f776f32f8637658f"
+    },
+    {
+      "path": "data/knowledge-base/glaucoma.json",
+      "sha256": "d7c3947b7929710b78e65424168c94e8675f38d79c8d3c5d59edaf4a51208a59"
+    },
+    {
+      "path": "data/knowledge-base/glomus-tumor.json",
+      "sha256": "d3a80b566b12610d5318f0ce65aab8678c4a72c2d4d5a561250589814d219d6b"
+    },
+    {
+      "path": "data/knowledge-base/glossitis.json",
+      "sha256": "48cb99168ce63c6db11100875b863bdc0f783645d52c9446478c9fdf1b69a763"
+    },
+    {
+      "path": "data/knowledge-base/glucagonoma.json",
+      "sha256": "48c461a439869f0923f1d703e1cf2725203c584961284f537d7417cbcdf7b6cc"
+    },
+    {
+      "path": "data/knowledge-base/goiter.json",
+      "sha256": "27c896ccaec230e05f93b05720e25652f40c3e8d1bb3a3e38cf22f4ff3391390"
+    },
+    {
+      "path": "data/knowledge-base/goodpasture-syndrome.json",
+      "sha256": "081f708760394b0169ec95321b1574ee244e249730c80a39c293257b8262a16a"
+    },
+    {
+      "path": "data/knowledge-base/gout.json",
+      "sha256": "81c5dd8107832baeb0b4ac2395a1df59f2b403f40c554d961858f0eb3fc2c44c"
+    },
+    {
+      "path": "data/knowledge-base/granuloma-annulare.json",
+      "sha256": "f34937fd0dcd3eb11ebe951d5e651dff82dd63015ee89ca93d3456536d594e7e"
+    },
+    {
+      "path": "data/knowledge-base/granulomatosis-with-polyangiitis.json",
+      "sha256": "c406b83ea61244ca572723bc140653ce839f7b393cab47977ea58ca06e1349c1"
+    },
+    {
+      "path": "data/knowledge-base/granulomatous-disease.json",
+      "sha256": "7516eb9da990cc9e5f95fddfaef2465d7433cc66dcd7ea3b0f0169ec64a41e9a"
+    },
+    {
+      "path": "data/knowledge-base/granulomatous-rhinitis.json",
+      "sha256": "0127637755df32c6a46239fc7b1d0fff2a01bb104cafcedb1f8fee1995816552"
+    },
+    {
+      "path": "data/knowledge-base/graph/alcohol-use-disorder.json",
+      "sha256": "0b8f08a9cdab5e06119e0b3c71dd3c066c5bbf999aa37271e851e0d2a17e3bfd"
+    },
+    {
+      "path": "data/knowledge-base/graph/bruxism-awake-sleep.json",
+      "sha256": "8fe4125d2858aacd8fa0061eedc824b4a6ffe6f79de6b62df7ba79fd7fc8b12b"
+    },
+    {
+      "path": "data/knowledge-base/graph/liver-cancer.json",
+      "sha256": "39e8f6332bc08a73b8bf58e428f3d466b7a767889457a31429067bf5afb72dbf"
+    },
+    {
+      "path": "data/knowledge-base/graph/stress-fractures.json",
+      "sha256": "a163ea0abcbb5b61c9a671e83fa88674bb8d4a17307b281e54faaf1151963d69"
+    },
+    {
+      "path": "data/knowledge-base/graph/stress-urinary-incontinence.json",
+      "sha256": "580c58540afc371c667cae81fd7072f7bc5d914f1c6a3831b110c4518c360b66"
+    },
+    {
+      "path": "data/knowledge-base/greater-trochanteric-pain-syndrome.json",
+      "sha256": "8e63b9a9b84215f653458fe2ca152fc9f949c9ce68fe23a1b86554fbc4e0bfbe"
+    },
+    {
+      "path": "data/knowledge-base/guillain-barre-syndrome.json",
+      "sha256": "7f7456f26f21d5b09f8fb612f5d21e6909632a377ed7b3b21f3cd71f94734a0c"
+    },
+    {
+      "path": "data/knowledge-base/guyon-s-canal-syndrome.json",
+      "sha256": "9be1ff0bb9d1f4fa934261044ec5c9d1ac6f38d72b37265bc93ccf8e73c57dc0"
+    },
+    {
+      "path": "data/knowledge-base/hairy-cell-leukemia.json",
+      "sha256": "362cad482795e5e50a08cfd70bd1e37612ab5b8ff025513f32c9e0ba62631375"
+    },
+    {
+      "path": "data/knowledge-base/hairy-tongue.json",
+      "sha256": "247ce50cac865ef37d3160c3c385d47ab77039a83f4512be01dca706a4590b43"
+    },
+    {
+      "path": "data/knowledge-base/halitosis.json",
+      "sha256": "dd54f4e2b0b87ae43fe32694b0f616632ed9205a055262e26bddf22eb9f8d676"
+    },
+    {
+      "path": "data/knowledge-base/hallux-rigidus.json",
+      "sha256": "941b8e525eb720f439c8d85666f2cb90e2782ba6f30f05778193a364344dfb16"
+    },
+    {
+      "path": "data/knowledge-base/hallux-valgus.json",
+      "sha256": "cdc759071e3be0a980c147dd9e74f4c9dc6de4e0cca5063a71b77169bc8cbcf1"
+    },
+    {
+      "path": "data/knowledge-base/halo-nevus.json",
+      "sha256": "15f9d6f7f704a6d37401e89d97f4af127f952e296505bc79db181fdf26ca0753"
+    },
+    {
+      "path": "data/knowledge-base/hammertoe.json",
+      "sha256": "3da6851b82db6f5bf84d3826661ffcc19823091399feeae61b0ad3002df3f83f"
+    },
+    {
+      "path": "data/knowledge-base/hashimoto-s-encephalopathy.json",
+      "sha256": "a34cb694c876a1368d379edb0935fe918052eda67d578c21e267bd4c5a8cffae"
+    },
+    {
+      "path": "data/knowledge-base/head-and-neck-cancers.json",
+      "sha256": "59eae9e0edfcfed0d4838bc1c882750b9c2df45ae4376e97baa59590a2b48894"
+    },
+    {
+      "path": "data/knowledge-base/hearing-loss.json",
+      "sha256": "4ab7519562cc03f5fdc119056528c1237e57bb85162c3fbb6cc1454934eb4dab"
+    },
+    {
+      "path": "data/knowledge-base/heart-block.json",
+      "sha256": "e7535c4d546142c69a4373ebd359c1dfc6715ea0c8643412ddc4c9b077d8ea98"
+    },
+    {
+      "path": "data/knowledge-base/heart-transplant-residuals.json",
+      "sha256": "5b1f9d6c7d5eabf623f2d9062fc16f0c080287df5025c8554e454813f5b7af03"
+    },
+    {
+      "path": "data/knowledge-base/heart-valve-disorders.json",
+      "sha256": "8ff2cd07400601016bffc599c5da31ad7bd4730824f9dacb255b121e6983497c"
+    },
+    {
+      "path": "data/knowledge-base/heart-valve-replacement-residuals.json",
+      "sha256": "86cea7af7d30467be33603a43a90b5e46f26d30f37b97952ca0d2f835deed927"
+    },
+    {
+      "path": "data/knowledge-base/hemangioma.json",
+      "sha256": "e3b24a50526ee477f42932d3d25e613c951f8cfb94025d4e2acf817f1a2524f6"
+    },
+    {
+      "path": "data/knowledge-base/hemipelvectomy.json",
+      "sha256": "33d14e7d1fac1f4aee0046b33f98fda23b8b51a66697d8b1fbfeaa014bb0575a"
+    },
+    {
+      "path": "data/knowledge-base/hemorrhoids.json",
+      "sha256": "614ebefe9a0c353d41804d2cdf7f62981230f93abf1687dc5a0614d1a42f0091"
+    },
+    {
+      "path": "data/knowledge-base/hemothorax.json",
+      "sha256": "7f59cbb03af03df288a7273a49fe8dff32a33d1c0bd360fc9e933cf959977cd6"
+    },
+    {
+      "path": "data/knowledge-base/hepatic-steatosis.json",
+      "sha256": "79a81331bdaff698337bd8b5c20fd3ad034d1bb0e311b83e84e336a78a22ce13"
+    },
+    {
+      "path": "data/knowledge-base/hepatitis.json",
+      "sha256": "9c35a5c82193f76322b1ed39ba1579b3d890c756b3f1c77d408222b331abc51b"
+    },
+    {
+      "path": "data/knowledge-base/heterotopic-ossification.json",
+      "sha256": "bfc5b6997f69987d9ce2f6eb63dfd8601d61cc0a2f7ad20baffe47dbd79df169"
+    },
+    {
+      "path": "data/knowledge-base/hiatal-hernia.json",
+      "sha256": "9a9349c05a72e2bba4db50e022db72e28abd5f1936b3bc0dabb566f99262c3b9"
+    },
+    {
+      "path": "data/knowledge-base/hidradenitis-suppurativa.json",
+      "sha256": "b916f9647a78ce9530a68c5fca884300f887e8dae351a4f6d1e92bef6b1a31e5"
+    },
+    {
+      "path": "data/knowledge-base/hill-sachs-lesion.json",
+      "sha256": "90ae36a67a82087c0b3d74499592efd285c8608b88d3b4554afcc202a1d2d5c6"
+    },
+    {
+      "path": "data/knowledge-base/hip-disarticulation.json",
+      "sha256": "691b3dbee848935f9834da55673f9bd64b03fbfaac5de854d183bfeda480c90b"
+    },
+    {
+      "path": "data/knowledge-base/hip-labral-tear.json",
+      "sha256": "ea0cea626e95a935abf3a50c09b31830cc099d19d2c45d4b98910a8c32b94b4f"
+    },
+    {
+      "path": "data/knowledge-base/hip-strain.json",
+      "sha256": "716c1fefc178d6249278daa0a9467f565e67c56f9b2d9e8b605b9e019fede96e"
+    },
+    {
+      "path": "data/knowledge-base/histoplasmosis.json",
+      "sha256": "37f7bedc80c467567b7eca703f84e912ff77e91aa19f0cb73badb1441b7c5826"
+    },
+    {
+      "path": "data/knowledge-base/hiv-aids.json",
+      "sha256": "c9ce8f0b273a0f6ead1952bf2b313041ed7eab8d33952ff69db77fca67ba7b8b"
+    },
+    {
+      "path": "data/knowledge-base/hoarding-disorder.json",
+      "sha256": "1cbf8b1844fb90ce2b27b030c82f5d5fe8a95be0b862da523f4bd53fda3f5f3b"
+    },
+    {
+      "path": "data/knowledge-base/hodgkins-lymphoma.json",
+      "sha256": "a0c11db8c38e47ac168e35789eb80b0ddc01a3cc9bade0cfa0ab1421626b6909"
+    },
+    {
+      "path": "data/knowledge-base/hydrocephalus.json",
+      "sha256": "d8541df44f955f6fcf224a475f803b901cc0cf2ff5a7f150528b3cc16ec8c416"
+    },
+    {
+      "path": "data/knowledge-base/hydronephrosis.json",
+      "sha256": "cb59bea2684c650b3621159c038658f88dcb23fe811bb84ca6945e9473f9c8d9"
+    },
+    {
+      "path": "data/knowledge-base/hyperaldosteronism.json",
+      "sha256": "484d2b69478610fd699ee4a8158ca1709965b6acd26b13d8a15ec615a9ba382a"
+    },
+    {
+      "path": "data/knowledge-base/hyperhidrosis.json",
+      "sha256": "355783ce1bf0b28997161c7f90e8833d5cfa38720ccaef261ffccc03d3de15a0"
+    },
+    {
+      "path": "data/knowledge-base/hyperinsulinism.json",
+      "sha256": "ad0ddb01c2bdd9b365e064dd88b1b3ea62d5ba8720c51bd36c8bd8a63ef7acc3"
+    },
+    {
+      "path": "data/knowledge-base/hyperopia.json",
+      "sha256": "730628a21b9a2e4747c8b2fa135332dd11c7680577ef04ed49ef9788cf396b74"
+    },
+    {
+      "path": "data/knowledge-base/hyperparathyroidism.json",
+      "sha256": "0582821d36c3bedec79090521dd1e251f72fe8eaa7b386a6f38decf19ad2f5c3"
+    },
+    {
+      "path": "data/knowledge-base/hyperpigmentation.json",
+      "sha256": "df08dc3fedcd62aaabf74681091f6b8e500ecd77c22ff08685d8de8f6c8c2d8b"
+    },
+    {
+      "path": "data/knowledge-base/hyperpituitarism.json",
+      "sha256": "5aa92652dd7616d945cf368fa2328f727b3c18583ee38797cc3ed7bab9203d49"
+    },
+    {
+      "path": "data/knowledge-base/hypertension.json",
+      "sha256": "259de3e9b8d74b076f93d734664961afdf489e2487368ed30d91115a9af644c3"
+    },
+    {
+      "path": "data/knowledge-base/hypertensive-heart-disease.json",
+      "sha256": "d1b005f03bfcf1017094203f3914561d1c6af8dfb2ec6716225f60879a455d75"
+    },
+    {
+      "path": "data/knowledge-base/hypertensive-retinopathy.json",
+      "sha256": "7657a0358c3e589a4b6264e4ae239f1b7b578426ea2fe05da2764cbd2ad85d42"
+    },
+    {
+      "path": "data/knowledge-base/hyperthyroidism.json",
+      "sha256": "a4aaf1c5ee8fe02c90415bfcf380ffc6bb3800c2c961d853b7894ffd164b1a79"
+    },
+    {
+      "path": "data/knowledge-base/hypertrophic-obstructive-cardiomyopathy.json",
+      "sha256": "5ea7bd1547cbf4efa40b070f2bd6f5c3865a5669313727214c382801e36c3a03"
+    },
+    {
+      "path": "data/knowledge-base/hypoglycemia.json",
+      "sha256": "e7bedea14b18c2dba3515d0b9c3eab61ba0638087e785992981fdd826e89c3d4"
+    },
+    {
+      "path": "data/knowledge-base/hypogonadism.json",
+      "sha256": "a21181ec0b6a500945ce19df6886a67721d8f6809971b74624de56aea68780cf"
+    },
+    {
+      "path": "data/knowledge-base/hypoparathyroidism.json",
+      "sha256": "e491329796dfc1fcaa01c2dc691d1bc184b90224d3367fa2d291cdfb802b6df3"
+    },
+    {
+      "path": "data/knowledge-base/hypopigmentation.json",
+      "sha256": "23144560012a355a2bb8f6dfff9553084e6e4a72af555fc7bd4c403a2539e91f"
+    },
+    {
+      "path": "data/knowledge-base/hypopituitarism.json",
+      "sha256": "01e27d0f20ea962b5b33d6b73045c3d7b8b4264d827a309622777361742c5c88"
+    },
+    {
+      "path": "data/knowledge-base/hypotension.json",
+      "sha256": "3fbb246aca8dda43c24ff20a49cd2cbda7ee2af2ffa3cd9597de25d1e9324a9e"
+    },
+    {
+      "path": "data/knowledge-base/hypothyroidism.json",
+      "sha256": "9bcd80a2e4a4baec9219369e52412db3d719b09d6355368e48e17336960265de"
+    },
+    {
+      "path": "data/knowledge-base/ichthyosis.json",
+      "sha256": "a33315defc3cc6c38d5ff480a5c64218656762bfdd2c3db13501a57d12026a0c"
+    },
+    {
+      "path": "data/knowledge-base/iliohypogastric-ilioinguinal-nerve-neuralgia.json",
+      "sha256": "af3573885ffa38fb79962f757e2212bae832962df4f831a2cadc35bf9cb17a01"
+    },
+    {
+      "path": "data/knowledge-base/illness-anxiety-disorder.json",
+      "sha256": "54a9d573732b1c89c1b688b724c5d31f5235f87389640d5ce16a0e51737eaf68"
+    },
+    {
+      "path": "data/knowledge-base/impetigo.json",
+      "sha256": "4ec6f98012969a0c3cfd14623376ca5594358304c8bf2695e3541fe6dc946f67"
+    },
+    {
+      "path": "data/knowledge-base/implantable-cardiac-pacemaker.json",
+      "sha256": "42021042f697d396012a85c14caf98836ffc0c0b40f5a2476723a74709c7f0fe"
+    },
+    {
+      "path": "data/knowledge-base/inappropriate-sinus-tachycardia.json",
+      "sha256": "95d1755a77eb17b9816983d490676d7b03323dfac70be5c560f6f7d916074d29"
+    },
+    {
+      "path": "data/knowledge-base/inflammatory-bowel-disease.json",
+      "sha256": "bb7ebef26729b4a03e029391d79276345cef34ae51f02115af800b37781016c7"
+    },
+    {
+      "path": "data/knowledge-base/insomnia.json",
+      "sha256": "f5cae50e6717085cf2f10585eb6b1317558e86645e5ce5cb51bde6eeb9090c2d"
+    },
+    {
+      "path": "data/knowledge-base/insulin-resistance-syndrome.json",
+      "sha256": "3101655a650575c56e4cf4acea2ed187d100bb32ffa78adf8d5923570f5b93d7"
+    },
+    {
+      "path": "data/knowledge-base/insulinoma.json",
+      "sha256": "457d5ee4a3994400967aec9994d649299aaba9d41944d809ad65c4c62e7b4779"
+    },
+    {
+      "path": "data/knowledge-base/interosseous-muscle-atrophy.json",
+      "sha256": "2fe35e9a85895f5798439cb45509e97257fd8df913b98e9dd9f62ccc4c1520f2"
+    },
+    {
+      "path": "data/knowledge-base/interstitial-lung-disease.json",
+      "sha256": "aaad3270b2680b70639894049f19b87fdf61802fc851a885015ae8c7217fa5bd"
+    },
+    {
+      "path": "data/knowledge-base/intervertebral-disc-syndrome.json",
+      "sha256": "fc703cf1a2f8a7be4a499658d636fed789ae914987fda3225882f2d970185e10"
+    },
+    {
+      "path": "data/knowledge-base/intracranial-injury-without-skull-fracture.json",
+      "sha256": "f85695e5e8b05fd681a2107d8a1a079a33bf845dbd026e499bd8169aabe91155"
+    },
+    {
+      "path": "data/knowledge-base/iritis.json",
+      "sha256": "2cd92535272f54f877836a084fe54de2d0ef1b0bdff6c7bbfbc1973ec4e34eeb"
+    },
+    {
+      "path": "data/knowledge-base/irritable-bowel-syndrome.json",
+      "sha256": "6f67874699878554e3dc3eb493bd7961681b091c6f5856d1125f0e2f438bf34c"
+    },
+    {
+      "path": "data/knowledge-base/ischemic-heart-disease.json",
+      "sha256": "153513b7c662fc13b638d910a1d063abd9fa76323ee38520191da77093962ed8"
+    },
+    {
+      "path": "data/knowledge-base/jersey-finger.json",
+      "sha256": "f7e71d130a30fb5b3ec5aac9a6b9d47dba7daf4fb87ed86087b8bfecb340088c"
+    },
+    {
+      "path": "data/knowledge-base/joint-replacement-residuals.json",
+      "sha256": "7a32b01e86b00fc0edf59c9078012c4a691b28b4d01399b29d125adab5fe4e60"
+    },
+    {
+      "path": "data/knowledge-base/kaposi-s-sarcoma.json",
+      "sha256": "ca0e0164cec6a64f0099e9c472bc980ebf883085b6baf7f85c71c7797e7f98ad"
+    },
+    {
+      "path": "data/knowledge-base/katayama-fever.json",
+      "sha256": "e8f8535fc1923e5a31e9355ac640f553f622fcf407fdd39bd16d12f688530722"
+    },
+    {
+      "path": "data/knowledge-base/keloids.json",
+      "sha256": "908f7b4fd98c3a1695ed358355c360eab796be9450cad7ab00446c9e6cc0e2e3"
+    },
+    {
+      "path": "data/knowledge-base/keratitis.json",
+      "sha256": "26ab114958060951cdc921d50fda1d9995ac4ed93fc2a4ade3c249907c6e49d9"
+    },
+    {
+      "path": "data/knowledge-base/kidney-cancer.json",
+      "sha256": "6af7d3a07257a6ba2605552ad9634bb176d1035575070b450a397b081c6d2aaa"
+    },
+    {
+      "path": "data/knowledge-base/kidney-stones.json",
+      "sha256": "b61da3fe2f39a3121ed34b797c85249f88eccdc609bc0f4d1ba02418c5c0a25a"
+    },
+    {
+      "path": "data/knowledge-base/kienbock-s-disease.json",
+      "sha256": "f2e8b6c97822bff683f85f74894b0ed2d5eaa5ff953faeed460a95d13c885f48"
+    },
+    {
+      "path": "data/knowledge-base/knee-disarticulation.json",
+      "sha256": "d935097ebd640894b591b33604615e9d02b9fb105a3d5a39cdf8cdbe9571764e"
+    },
+    {
+      "path": "data/knowledge-base/knee-injury.json",
+      "sha256": "1c76abccebaaa950affc89e73153d376052b98a1436e366709f485b8f6eab557"
+    },
+    {
+      "path": "data/knowledge-base/labyrinthitis.json",
+      "sha256": "ff7f3bf7d7160484ce548cf6bc5ff2fa1f61ddb4e33fc1f533d50a5e0eaf129c"
+    },
+    {
+      "path": "data/knowledge-base/laryngeal-cancer.json",
+      "sha256": "8efe2019df2c5a6c99eb65b74a9ed1ad4dd0c7ad7ab074f590944e618c661d63"
+    },
+    {
+      "path": "data/knowledge-base/laryngeal-stenosis.json",
+      "sha256": "10c58d4efaaabab6ba55748eedb08b6cb1e57952ff478b456c07e81576e104ba"
+    },
+    {
+      "path": "data/knowledge-base/laryngitis.json",
+      "sha256": "0fd32cf1370728570fb5b6673de0809593a7ce84b990362db9d9803f7cadcf79"
+    },
+    {
+      "path": "data/knowledge-base/laryngocele.json",
+      "sha256": "a995e2c76d02fbfbdc0e2ee3ea8de32794b68eb84f97c7a70b602dbbe373cfc9"
+    },
+    {
+      "path": "data/knowledge-base/laryngomalacia.json",
+      "sha256": "7719dc655ce46d0d9cc1aaaec4d34dd2508b194f098e709d25c8fe9d4dd8aba7"
+    },
+    {
+      "path": "data/knowledge-base/laryngospasm.json",
+      "sha256": "cdfce70adbfc8b2739238dbde2cfe4e38c202ada50f0350a21883fc9f2dc74a9"
+    },
+    {
+      "path": "data/knowledge-base/legg-calve-perthes-disease.json",
+      "sha256": "6518b99e4decee2bf9c6ef3bd77ca4b9ff593be5498ba87e2a63b87ae20351db"
+    },
+    {
+      "path": "data/knowledge-base/leishmaniasis.json",
+      "sha256": "b1fcddeba72c3f1d8a14a11cd5f82c13e99277668500116aea5a604d6207e879"
+    },
+    {
+      "path": "data/knowledge-base/leukemia.json",
+      "sha256": "a7cc5db20ec75e340fbe7298028966ad39169f600856eae7bc7d8fb4441e7426"
+    },
+    {
+      "path": "data/knowledge-base/leukoplakia.json",
+      "sha256": "d4705d09449fdfc586e40d9f8be3bd4b97ae9f0dcd71920e9ec15c1226d29800"
+    },
+    {
+      "path": "data/knowledge-base/levator-ani-syndrome.json",
+      "sha256": "a2d71136849ae54b37940161c0d17b822c513fd6089fe5ec4198f9585da448f2"
+    },
+    {
+      "path": "data/knowledge-base/libman-sacks-endocarditis.json",
+      "sha256": "d0a4cd6992352a363a6e8fb6b3b33520177973b94d7713e5db35b9fb1f90ccb7"
+    },
+    {
+      "path": "data/knowledge-base/lichen-planopilaris.json",
+      "sha256": "d502f6cb94ebb578c3a5bf47f232253e8023633fef3d9a716f4c9efcd1b43a4e"
+    },
+    {
+      "path": "data/knowledge-base/lichen-planus.json",
+      "sha256": "9d8228e36733ef57584563e3b811e4b487533ee8bf92ed8d091522750789fa1f"
+    },
+    {
+      "path": "data/knowledge-base/lichen-sclerosus.json",
+      "sha256": "df8541683299fbd587461266c68678a7e5d5198da0363521a02450a8630e0c3e"
+    },
+    {
+      "path": "data/knowledge-base/lichen-simplex-chronicus.json",
+      "sha256": "73e918f35a7d9d5e5de7abf2365a6eaa2c0a495f873dc3d59c8854ade14200cc"
+    },
+    {
+      "path": "data/knowledge-base/limitation-of-motion.json",
+      "sha256": "bd232aa2c0614141c5574a405fa3ad6e6d1bf320f3da44da405184abb8e419d3"
+    },
+    {
+      "path": "data/knowledge-base/linear-iga.json",
+      "sha256": "6a06dbb875c0064d5d12a6a7949783b56b0965ba10c25adc8259d2269fad39ef"
+    },
+    {
+      "path": "data/knowledge-base/lingual-neuralgia.json",
+      "sha256": "6da74be6b537d274836eb885ebe06cd4da3888736079855651a5b2271b143e62"
+    },
+    {
+      "path": "data/knowledge-base/lipoid-pneumonia.json",
+      "sha256": "7130a879ff43d91e6b99819d09e37f166909253256fac0f6eb57d758af2c1c41"
+    },
+    {
+      "path": "data/knowledge-base/livedo-reticularis.json",
+      "sha256": "a451f02178ad85f4b68bd10587fb97e64767015dc22f310b40ad2fbb5c083e5a"
+    },
+    {
+      "path": "data/knowledge-base/liver-abscess.json",
+      "sha256": "efbc68243d9620bdec3db054efe8386b36dd485f0cf093efc07de6fe130a703a"
+    },
+    {
+      "path": "data/knowledge-base/liver-cancer.json",
+      "sha256": "db57373974a387cb5496c84c3f0df7a692882f9aa7ace81d4becc40646328a03"
+    },
+    {
+      "path": "data/knowledge-base/loeffler-s-endocarditis.json",
+      "sha256": "11495ca632da1a461e7aef863ba2fd1aefe76f1c46a827a915ecfd08d91efaa8"
+    },
+    {
+      "path": "data/knowledge-base/long-qt-syndrome.json",
+      "sha256": "470a9014ade6508471f59b29a06c4822ad399e4a4b815edc640bb29a035bbc64"
+    },
+    {
+      "path": "data/knowledge-base/loss-of-auricle.json",
+      "sha256": "fa08806a155a09fe73ed6ec70f3853c08448e31e89a3512999f116829ac32487"
+    },
+    {
+      "path": "data/knowledge-base/loss-of-eyebrow.json",
+      "sha256": "9f84335ba1dbe17ed1e4e57ecb4139d136d80864e55f0ec9ed0f6ce067e40365"
+    },
+    {
+      "path": "data/knowledge-base/loss-of-eyelashes.json",
+      "sha256": "513fbc9d53d6ca407b435121d4763f286e0e9f58cfc6759f71cab26a88a24f39"
+    },
+    {
+      "path": "data/knowledge-base/loss-of-eyelids.json",
+      "sha256": "517269cea04a19aed11edcddbd887e7d406a99a0b1b072c1e7d8b3dbf7dd58c9"
+    },
+    {
+      "path": "data/knowledge-base/loss-of-jaw.json",
+      "sha256": "c60cc629742f374e86d405bb7bf12b5ee25506bac4d25e9334d84605a26a3c6f"
+    },
+    {
+      "path": "data/knowledge-base/loss-of-teeth.json",
+      "sha256": "eb564ec196febb5463fcbac6f64864021a17bc79648e5ae31a829389ec89bee8"
+    },
+    {
+      "path": "data/knowledge-base/loss-of-testicle.json",
+      "sha256": "953755d8c6755c31cdb6bd29f7b446341af1437658d65a516bba060afdf29c5c"
+    },
+    {
+      "path": "data/knowledge-base/loss-of-tongue.json",
+      "sha256": "0b26877c158fcce02b2d223fb192f52448a599b6af0c5d85db72c02c36a0db1c"
+    },
+    {
+      "path": "data/knowledge-base/loss-of-use-of-extremities.json",
+      "sha256": "5dac2e3c955ba6a0815d0a392677b9bee2d2b0e6e0d9515c233b9f3a0fe6b680"
+    },
+    {
+      "path": "data/knowledge-base/lumbar-spinal-stenosis.json",
+      "sha256": "926188243f177660d90c0c7ca709549a76152c2b85903c37c46e1bc7c514ff43"
+    },
+    {
+      "path": "data/knowledge-base/lumbar-strain.json",
+      "sha256": "0ee2a32e783ea4f8d525d839615cbdb78a82455a104bd7cfcb4e9754234c316d"
+    },
+    {
+      "path": "data/knowledge-base/lung-abscess.json",
+      "sha256": "144a117c10f55a869b66755aae7e6a2aeb04b2759eebcd27af214e572714475d"
+    },
+    {
+      "path": "data/knowledge-base/lupus-profundus.json",
+      "sha256": "ab2dbd03c49a3789ff1b1a2a69048c1624d88a0a5e01c313577b65ebcf9c6514"
+    },
+    {
+      "path": "data/knowledge-base/lyme-disease.json",
+      "sha256": "5d7863a0a7f29b970b483940d5003ae7dbbbc75398117c9afb9c8b296ff7508a"
+    },
+    {
+      "path": "data/knowledge-base/lymphangioleiomyomatosis.json",
+      "sha256": "9d7089a90a9194e8f192b0fd222d60ce80f09d2726f9197268e49f2e512423f6"
+    },
+    {
+      "path": "data/knowledge-base/lymphangioma.json",
+      "sha256": "56388d2df0a33059332970fafcfd07fab0c471b5d16d1344d16bedbad0c824b7"
+    },
+    {
+      "path": "data/knowledge-base/lymphedema.json",
+      "sha256": "dbbe22694740c732b331d00432641c9d16ea6d81c220e1995e6205290441fd8f"
+    },
+    {
+      "path": "data/knowledge-base/macroglossia.json",
+      "sha256": "fd4b074a564ab54f5bee602066b02fea83623216bbaf80148bfdfc45e44969b0"
+    },
+    {
+      "path": "data/knowledge-base/macular-degeneration.json",
+      "sha256": "7eed38e7e38578f204592af53248638f061970527500c039f1fb5cf0763cabb5"
+    },
+    {
+      "path": "data/knowledge-base/malabsorption-syndrome.json",
+      "sha256": "ea91b03d31562a7035a194fa1adf9ba9f1990bc51a43785213006ead8352b75a"
+    },
+    {
+      "path": "data/knowledge-base/malaria.json",
+      "sha256": "d242164b95a9952af9e5da3a11da8d83981d7b27c831f5bc57020e9988470fd9"
+    },
+    {
+      "path": "data/knowledge-base/mallet-finger.json",
+      "sha256": "bff7ae4a4cf4978e938a9b872e374944ea1bf8f41b5e7c01e41fbd20ac78d642"
+    },
+    {
+      "path": "data/knowledge-base/mallet-toes.json",
+      "sha256": "f623c7c8a28547e9738d97c328c855f1e545767ab9d31b1fe1e7bf28770cec89"
+    },
+    {
+      "path": "data/knowledge-base/malnutrition-residuals.json",
+      "sha256": "ccaac0268205bdad3f98442e74c320edf39e3207f66849e217fe93433685d1a7"
+    },
+    {
+      "path": "data/knowledge-base/malocclusion.json",
+      "sha256": "575f8890eaa0511f38115eb4b90482d18a8817a0199d8188c1ed64ae276891da"
+    },
+    {
+      "path": "data/knowledge-base/malunion-nonunion-of-fractures.json",
+      "sha256": "fa156fd4c6a48d81a28e41c979ca197e25e4b996ed5eb0e4fa9fe009235904a4"
+    },
+    {
+      "path": "data/knowledge-base/mandibular-nonunion.json",
+      "sha256": "4df79e0b87bfa0ca21c7962a34ec7f85fc5bbfa3e1d067588e109cc3cb51986b"
+    },
+    {
+      "path": "data/knowledge-base/marantic-endocarditis.json",
+      "sha256": "3c3a209631d29c4e572cdc98ad07a37232e8605c09879eb7f4bda615b6b91508"
+    },
+    {
+      "path": "data/knowledge-base/mastoiditis.json",
+      "sha256": "ba6c5d0cd69a55d776ff7d5f597fb3aee863314d30fa08403bb6e49cdd5c13bb"
+    },
+    {
+      "path": "data/knowledge-base/maxillofacial-fracture.json",
+      "sha256": "d47af49991aa76e6a9c7b78fecfe8abfe413d07f89fb5b3a554b11f9c1442e5b"
+    },
+    {
+      "path": "data/knowledge-base/meatal-stenosis.json",
+      "sha256": "67a260b32a352ffc79b88932053a7af022f092e31126c9cea924cd9dcccc5ee2"
+    },
+    {
+      "path": "data/knowledge-base/median-neuropathy.json",
+      "sha256": "d288fb80bafa5097f35b6828156430fb34f4124d261fd7eb15813b0afa4c6313"
+    },
+    {
+      "path": "data/knowledge-base/median-rhomboid-glossitis.json",
+      "sha256": "5bb0d65638e513cd68200b81fddaaac942f883ffc38a75efb2b8206b266bd736"
+    },
+    {
+      "path": "data/knowledge-base/memory-loss.json",
+      "sha256": "e0d703389fec03a85ce5dcc1ae31b2b145d34bd8b99269fb7ff661a5f7e9753f"
+    },
+    {
+      "path": "data/knowledge-base/menetrier-s-disease.json",
+      "sha256": "2fe9267c7aa05697a7abeb5362d3b3f04be1153ab23187e3a985fc78d5853403"
+    },
+    {
+      "path": "data/knowledge-base/menieres-disease.json",
+      "sha256": "136239d26c2d9ba1e54259be8ce80a5f72d9041ae07b5e94d810b40781592b35"
+    },
+    {
+      "path": "data/knowledge-base/meningitis.json",
+      "sha256": "ee4047b4933e8fb770d69d1cceb93231d358e3be2d37f46a522e9f75269f2c83"
+    },
+    {
+      "path": "data/knowledge-base/menstrual-disorders.json",
+      "sha256": "9a203a5a5652c57d3855286fafe68fb880dbb6d4ebb35716a4ae5e796f14b531"
+    },
+    {
+      "path": "data/knowledge-base/meralgia-paresthetica.json",
+      "sha256": "0e0f65dc8c06af320dd8c9f1bee4ee5663ed0296e08d79ba594d3925b832c745"
+    },
+    {
+      "path": "data/knowledge-base/metabolic-syndrome.json",
+      "sha256": "8cce8dcf5520ff7f96a5cce4a59a0ce51fd3f3221d75a686f29b29fef3a68025"
+    },
+    {
+      "path": "data/knowledge-base/metatarsalgia.json",
+      "sha256": "69020fbe1b55f439ddda0ec7b249786d3f431d250960b9653040d14ce31b2c2c"
+    },
+    {
+      "path": "data/knowledge-base/micro-tbi.json",
+      "sha256": "27740459ff05e1eec9d09bfaf010c043a64aa955d8801fb821de0a46a62347d5"
+    },
+    {
+      "path": "data/knowledge-base/microscopic-colitis.json",
+      "sha256": "8abe372e7614e686bd7635fb5965ac6064847e0ed18e533acd8e946c42ebf61e"
+    },
+    {
+      "path": "data/knowledge-base/microscopic-polyangiitis.json",
+      "sha256": "d9dd456ba5c8822c5baffae63753d4ebc81e9c8efa6d2e1804f21a8173384df4"
+    },
+    {
+      "path": "data/knowledge-base/migraine-headaches.json",
+      "sha256": "ce87621ad7404e93b9f8381b5a0d331d73e89c171a7a00a60f68c69a30bfe105"
+    },
+    {
+      "path": "data/knowledge-base/mild-tbi.json",
+      "sha256": "7f06d99604d2638ea6544f7d93df60925f83118bbd9b61594b6a062312f4b978"
+    },
+    {
+      "path": "data/knowledge-base/miscarriage.json",
+      "sha256": "ff38e96f96de74df76d9d52178acc2a2257e973f9973f1f44f2c938c92911496"
+    },
+    {
+      "path": "data/knowledge-base/mixed-connective-tissue-disease.json",
+      "sha256": "fdeecfc6feec7662cdd2530fbec50182fc80727334aa6a642a20fcc79f190ec0"
+    },
+    {
+      "path": "data/knowledge-base/mixed-urinary-incontinence.json",
+      "sha256": "9bb1d6ef6f6c798c0b6e244462b9f582beffb531a31dc0eab3f95e1cdb51cd1a"
+    },
+    {
+      "path": "data/knowledge-base/morton-s-neuroma.json",
+      "sha256": "34ff711ee4bf36fa7e802bf05442104c1ea875fccbf330d1dbdd01666ffee182"
+    },
+    {
+      "path": "data/knowledge-base/mucocele.json",
+      "sha256": "b1f492780e78ac27ed7ac8235d71521476f7c4609ae119cc0744dbbaa15a82e6"
+    },
+    {
+      "path": "data/knowledge-base/multiple-endocrine-neoplasia.json",
+      "sha256": "92acc1337b86058c0954e13650419091a8ee33640bb4c0e31d125756af7f076c"
+    },
+    {
+      "path": "data/knowledge-base/multiple-myeloma.json",
+      "sha256": "2280e91cb6351c1085c543d86e81d5e6472161f24d28c65e61d274e7818f1894"
+    },
+    {
+      "path": "data/knowledge-base/multiple-sclerosis.json",
+      "sha256": "8568d7ae736acfecfa71981c40589103462eabd3067c558d0e715ada7b97ea75"
+    },
+    {
+      "path": "data/knowledge-base/muscle-atrophy.json",
+      "sha256": "3f8af6c79f1397616141d784b196dac3db7759f99ef62f192f5b54b25830c206"
+    },
+    {
+      "path": "data/knowledge-base/muscle-hernias.json",
+      "sha256": "a70969a756a87e6ddc21e0e44015dd84eff0a74a5088fb11d71edd0fd421b639"
+    },
+    {
+      "path": "data/knowledge-base/muscle-injury.json",
+      "sha256": "84322dc05489de973ee5934c846294076a3206b964eccefe67bf0969d9240e87"
+    },
+    {
+      "path": "data/knowledge-base/muscular-dystrophy.json",
+      "sha256": "623d907f196475df8a37ec328dda5e684337ddac1136099cd3c8bc26aba76cc5"
+    },
+    {
+      "path": "data/knowledge-base/myasthenia-gravis.json",
+      "sha256": "43f2779bd90e500f1a3516c4146b5a55d134c12af5ce021391ab006b6eefd506"
+    },
+    {
+      "path": "data/knowledge-base/myelodysplastic-syndrome.json",
+      "sha256": "2526f7266d313f5ce63983bac7083977a5a4ca9da3913208299b7794841573bc"
+    },
+    {
+      "path": "data/knowledge-base/myocardial-infarction.json",
+      "sha256": "43347cbb00e0cbeecb2445587114c7d239182e8a116e49045aa79ff57c2afa61"
+    },
+    {
+      "path": "data/knowledge-base/myopia.json",
+      "sha256": "3d27498211e91a9c6308b27ac270533ff15d82f5445aae2c8447edef7b0dff4f"
+    },
+    {
+      "path": "data/knowledge-base/myositis.json",
+      "sha256": "58e3326ab1a5cb64f93eeb4405b671bf3a4300914e29f8780883a6bbaf2583f4"
+    },
+    {
+      "path": "data/knowledge-base/myxedema-coma.json",
+      "sha256": "0333c62e3781627ba086248cbf4dc2bb260968a278d59a8397d6465ac8fd435a"
+    },
+    {
+      "path": "data/knowledge-base/narcolepsy.json",
+      "sha256": "6ef62ab0ab2fbb0820adfc6be7a9dbf5a02c760fdfc8cb1d96cdf6e0b2258a7e"
+    },
+    {
+      "path": "data/knowledge-base/nasal-polyps.json",
+      "sha256": "36cd571dc53b9a3554cdf4a3a8ef9efba3b349d0d7736eb8ac5aaf165ffb3985"
+    },
+    {
+      "path": "data/knowledge-base/nasal-valve-collapse.json",
+      "sha256": "bfa3ac481fa696d70a13ecf17bb0a7dedd0a74997bb6059bbcfcb58bdc85b312"
+    },
+    {
+      "path": "data/knowledge-base/necrobiosis-lipoidica.json",
+      "sha256": "efb11f41aaab9a3b49c4ddb147d942587b287de5ee25af1cf2be49baaa9ce22e"
+    },
+    {
+      "path": "data/knowledge-base/necrobiotic-xanthogranuloma.json",
+      "sha256": "443d2144606bd0f6064014a72bbda5bc9574cea7d1fa7e307ace880f88221449"
+    },
+    {
+      "path": "data/knowledge-base/nephritis.json",
+      "sha256": "f2d8460a731db15701ab4620764bfb179251c68e1d10c8bb6d6f9317e34c12ac"
+    },
+    {
+      "path": "data/knowledge-base/nephrosis.json",
+      "sha256": "da86f603f2c49b5dc4e244a3c85fa00714e79b1fb1ad2eec1abb17a19e66b8dc"
+    },
+    {
+      "path": "data/knowledge-base/neurobehavioral-effects.json",
+      "sha256": "f00d5ddbb927a6e527bdfa4dac53e9c6de83f7fd8740ff5f40d3bbb4687224de"
+    },
+    {
+      "path": "data/knowledge-base/neuroblastoma.json",
+      "sha256": "6358602bbff0523a808aaf0ad94b0b1934cfc074ecf60f6fb5e7a0aeb1a1fc8a"
+    },
+    {
+      "path": "data/knowledge-base/neurocognitive-disorders.json",
+      "sha256": "12aead9cf099f7935bbde093a4f680e46b573eaf90e2ba54a693911d38ce746a"
+    },
+    {
+      "path": "data/knowledge-base/neuroleptic-malignant-syndrome.json",
+      "sha256": "98f0204a5d558625d702dc89a7358719913a898f5446b76dbf0a372e2f708742"
+    },
+    {
+      "path": "data/knowledge-base/night-blindness.json",
+      "sha256": "58f91c94c3523bf9f33158d4add3d27233027a4a205fc0932e5d45b40d7d884a"
+    },
+    {
+      "path": "data/knowledge-base/nightmare-disorder.json",
+      "sha256": "00fce65aa070bf152ecb37f8c700c4b1ded40cd0ed766153a0efb33a71942040"
+    },
+    {
+      "path": "data/knowledge-base/nocardiosis.json",
+      "sha256": "ba98a5cae67f596f1a7948b5d752236163d84de21633e674010616d082ba8c63"
+    },
+    {
+      "path": "data/knowledge-base/nocturnal-enuresis.json",
+      "sha256": "4a520e1afbfaf233ae124b776ba8d61c2303c7e585b5269a2f09945ac7f83e34"
+    },
+    {
+      "path": "data/knowledge-base/noise-induced-hearing-loss.json",
+      "sha256": "5a7657db62e534e7c7be9c95e1d76342118627e2bd50f4138e5869d30b308983"
+    },
+    {
+      "path": "data/knowledge-base/non-hodgkins-lymphoma.json",
+      "sha256": "3ad7bf9233f7f39c74f525a3f49204079552b45368ad38c6f0a5a84915611d11"
+    },
+    {
+      "path": "data/knowledge-base/nonspecific-interstitial-pneumonia.json",
+      "sha256": "7742d3ab3f01fdd27215a0802eaf554e927c5d90a0124c6cf49de4d646f53627"
+    },
+    {
+      "path": "data/knowledge-base/nontoxic-thyroid-enlargement.json",
+      "sha256": "4d725c393aa9d05df574b7797a4eaeb0ae321b97abcdc4d1733881fea26409af"
+    },
+    {
+      "path": "data/knowledge-base/nontuberculous-mycobacterial-infections.json",
+      "sha256": "db42f11ca4ae6e45a56b1fe7bd78334373a981fc5f84070dd082a6ad6ec025ab"
+    },
+    {
+      "path": "data/knowledge-base/normal-pressure-hydrocephalus.json",
+      "sha256": "7d36afe0aa4775ab457020171ddc8095594ed644634bbf53175c82e042ea5596"
+    },
+    {
+      "path": "data/knowledge-base/nutcracker-esophagus.json",
+      "sha256": "97073eba49d2a827dddf5654696aca89a77d4383c1eee64d174d90dbaeaa308a"
+    },
+    {
+      "path": "data/knowledge-base/nystagmus.json",
+      "sha256": "c4533191813d4b08aeed47bc5e05f6c7f94ecc6b4dc60bbefc9c578f15261d8f"
+    },
+    {
+      "path": "data/knowledge-base/occipital-neuralgia.json",
+      "sha256": "32aa959b53211c579340acc184c0d1709a428345ccdd1d22a220b275cbbcd477"
+    },
+    {
+      "path": "data/knowledge-base/ocd.json",
+      "sha256": "7f382a83d2010ea2582822a920163ffa61b1cb5373d3970a3e5fa32812eaf0a4"
+    },
+    {
+      "path": "data/knowledge-base/optic-atrophy.json",
+      "sha256": "943ff2490e77efc06d2f09a1fa4b5e51ff9859b7b2448f3ca4eee94808ff70ca"
+    },
+    {
+      "path": "data/knowledge-base/optic-neuritis.json",
+      "sha256": "9320d3f9a95e0ca7436c668931b47e15505ad29249a9b03b30ba08b8769d7936"
+    },
+    {
+      "path": "data/knowledge-base/oral-cancer.json",
+      "sha256": "58638fac0d2ec86120e4179d7569a5d9427c95a4cf19b83c13d98af51defb30d"
+    },
+    {
+      "path": "data/knowledge-base/oral-candidiasis.json",
+      "sha256": "8b2f2da2b917102f16e95d62d4eedceaa9e371fb207c7e42e0285f57f076c2a8"
+    },
+    {
+      "path": "data/knowledge-base/oral-hairy-leukoplakia.json",
+      "sha256": "ceea867bdf23144567bf6215005ea2636891776b20c298b3c1c78d8a5bed5379"
+    },
+    {
+      "path": "data/knowledge-base/oral-lichen-planus-lichenoid-lesions.json",
+      "sha256": "08c50eed8d22e17843e0d86f9234590da20f0cba581f9b039d2fb22157b573a5"
+    },
+    {
+      "path": "data/knowledge-base/orthostatic-hypotension.json",
+      "sha256": "be00866a2cea5d7e531832c7eddae22791bdeb49612dc4ff001e501080f1d41a"
+    },
+    {
+      "path": "data/knowledge-base/osgood-schlatter-disease.json",
+      "sha256": "fd27f5662ea7c79b5477ceccdcfb7f28606e1a7c65cec9805853ce391c05c7cc"
+    },
+    {
+      "path": "data/knowledge-base/osteitis-deformans.json",
+      "sha256": "6993cfc3c5cfa815b35a7e50e5087ffc78655147f8e4be0a399842c3c7c3778d"
+    },
+    {
+      "path": "data/knowledge-base/osteoarthritis.json",
+      "sha256": "393470a7ba358452940fd3c8803e44e2e871a7d4ca6311f0da5b55042ab6105c"
+    },
+    {
+      "path": "data/knowledge-base/osteomalacia.json",
+      "sha256": "b0c70e6d4200477106d028a698f27cce41634a9bb6bda19878b759409166b21b"
+    },
+    {
+      "path": "data/knowledge-base/osteomyelitis.json",
+      "sha256": "3cc680d03fd46fb700845f4384d3c9b6265f3180371587e654f7735e72dadcb9"
+    },
+    {
+      "path": "data/knowledge-base/osteonecrosis-of-the-jaw.json",
+      "sha256": "d3952c4b419e7f8f1839d17d95289d12574ca38f0fc065087fc1b00ffaa82602"
+    },
+    {
+      "path": "data/knowledge-base/osteopenia.json",
+      "sha256": "37fa059bdd1b1d64db12dfef81420515c842ad454e53629f6b40df0b50d9198a"
+    },
+    {
+      "path": "data/knowledge-base/osteoporosis.json",
+      "sha256": "3e92ec28b34348a7f7188cfc58b33eb31f3b5abae368b4b468c7e971c257a4c1"
+    },
+    {
+      "path": "data/knowledge-base/otitis-externa.json",
+      "sha256": "ec8d036bce1b5a7860e65d7b107101a895c74e794c904fbb0d373fe1e4730307"
+    },
+    {
+      "path": "data/knowledge-base/otitis-media.json",
+      "sha256": "a10352c4457865ad5e3f8449f4330a859d9ccd43de95476edbc58e52d26c83a1"
+    },
+    {
+      "path": "data/knowledge-base/otosclerosis.json",
+      "sha256": "7b529773df81ee28521a0512a2f31517eb60746c47425180f99a618fe5bd9bb3"
+    },
+    {
+      "path": "data/knowledge-base/ovarian-cancer.json",
+      "sha256": "eeec44a30ae9cb879844617eaf0dd22beca3699d756a57c1fff63bcef25bb520"
+    },
+    {
+      "path": "data/knowledge-base/ovarian-cysts.json",
+      "sha256": "1058808668f2123f8eff50588f6a173d2a9c1bb02c6b17e397219a2e9e8f4c69"
+    },
+    {
+      "path": "data/knowledge-base/overactive-bladder.json",
+      "sha256": "4cdc6614fadaf60c37619b7fcf6af714da0765ea7ae8f5ec558e45e1b02c7c15"
+    },
+    {
+      "path": "data/knowledge-base/overflow-incontinence.json",
+      "sha256": "f2bac370c6e8ed460936c4fadfa474161b1f3b024cf7f142d63a9379b5c7582b"
+    },
+    {
+      "path": "data/knowledge-base/pancreatic-cancer.json",
+      "sha256": "5da2b5a48afa52d4c0039e20b87366ba146dba6d9c71546863d1fc09b3a6736e"
+    },
+    {
+      "path": "data/knowledge-base/pancreatitis.json",
+      "sha256": "223612683b9fcc464c32385606d66879c5679a0234211277b2b6c8eeb0586051"
+    },
+    {
+      "path": "data/knowledge-base/panic-disorder.json",
+      "sha256": "87e7858588bb522058a3fe92ad4a5b817cec5971fc3338189f74bd0df36b27b9"
+    },
+    {
+      "path": "data/knowledge-base/panner-s-disease.json",
+      "sha256": "ba0a3d42e936547bf6516998dc994942ddba9803ae9c6bfb5756177862c431f1"
+    },
+    {
+      "path": "data/knowledge-base/papilledema.json",
+      "sha256": "166901aa3d795f3bb8a7d23b53d7bfe77d2b95442de3405f171a3340062778b6"
+    },
+    {
+      "path": "data/knowledge-base/paradoxical-vocal-fold-motion.json",
+      "sha256": "7ea1a12a946c279d3f18b5fab581f87de938df4ddbee61d747b27540f88ee031"
+    },
+    {
+      "path": "data/knowledge-base/paraganglioma.json",
+      "sha256": "ed43efcb79acfc226d973e2cde0ce8203022b9a61f7a406d9945ebc07364674d"
+    },
+    {
+      "path": "data/knowledge-base/paraphimosis.json",
+      "sha256": "4e5e8c0704916e355a2c2585c751b7db7ecccab0085813521c98fa457cf945dc"
+    },
+    {
+      "path": "data/knowledge-base/parkinsons-disease.json",
+      "sha256": "b87cd69eb8ba35552650e6346d92a5e48dd266347b61362068c40715a45dc918"
+    },
+    {
+      "path": "data/knowledge-base/patellar-instability.json",
+      "sha256": "40a28069f6b4cfdca9547fba67e62924d28d491c54b6ae193c58dd491d8b33b3"
+    },
+    {
+      "path": "data/knowledge-base/patellar-subluxation.json",
+      "sha256": "d6b3db9059bcc92f4c71673b02fb95ed55e6c32fb1d7ccfae36af96ce4a8a9c0"
+    },
+    {
+      "path": "data/knowledge-base/patellofemoral-pain-syndrome.json",
+      "sha256": "7a0385df6daa48d5400ec0c1f8283825c7160b504c04615b67788fd9127e9364"
+    },
+    {
+      "path": "data/knowledge-base/patent-ductus-arteriosus.json",
+      "sha256": "4600696a9a5c6b6f170ca10476a5c7a18bc55d02ab6a26ad6db502bf34e9adf0"
+    },
+    {
+      "path": "data/knowledge-base/pcl-injury.json",
+      "sha256": "17c0fe229e2225a094b08339c040c14380bf75a2569faaab312b9821663e027b"
+    },
+    {
+      "path": "data/knowledge-base/pelvic-inflammatory-disease.json",
+      "sha256": "b82eece365e5349aadf53839eb75f66c05d28e9b127dde37c2a8f4ed14db2ecc"
+    },
+    {
+      "path": "data/knowledge-base/penetrating-head-trauma.json",
+      "sha256": "a35597f8516d4663a79ec9bc813101546dd9100d73a03eeef5df3422ab530685"
+    },
+    {
+      "path": "data/knowledge-base/peptic-ulcer-disease.json",
+      "sha256": "710773693fefe8a642879dcd0bce2dd1c6c8813a9aa756c71d1e346df29013a7"
+    },
+    {
+      "path": "data/knowledge-base/perforated-eardrum.json",
+      "sha256": "c30df7d15e6afdcfb69aab9544d3f91b860df88161a7b5bcb2e0281d0c568e8d"
+    },
+    {
+      "path": "data/knowledge-base/pericardial-effusion.json",
+      "sha256": "4db088f4af29358396fb77f5893abd3d59325d90bf7dd3c07f74c9ed8a9a3e50"
+    },
+    {
+      "path": "data/knowledge-base/periodontal-disease.json",
+      "sha256": "3cebb1fc69b6c278063dbaeb323f9dc155c19c94111318e9d2643e76e41ff85e"
+    },
+    {
+      "path": "data/knowledge-base/periodontitis.json",
+      "sha256": "3f6df6b9be85db20c6666eebd960f8357b716e6db7fb9b9563860b8641b0ccf1"
+    },
+    {
+      "path": "data/knowledge-base/peripheral-aneurysm.json",
+      "sha256": "739640d6e9dd59ecec8d40c3b9095918bd561a2772ff300e4c319d009e88ab04"
+    },
+    {
+      "path": "data/knowledge-base/peripheral-nerve-paralysis.json",
+      "sha256": "1711d694329ce0b5608f77cfa956894bedf16a2e448f7b9c877bc9938ca8f6fc"
+    },
+    {
+      "path": "data/knowledge-base/peripheral-neuropathy.json",
+      "sha256": "dc003b28e1d2953d75d140269856a1519fde297f64ccb2cf5d92724eec4bd14a"
+    },
+    {
+      "path": "data/knowledge-base/peripheral-vascular-disease.json",
+      "sha256": "1fe020d1aa472c7b4d43a6561781908f6bb4c87be9581b0b19ea2fab79a98d3b"
+    },
+    {
+      "path": "data/knowledge-base/peritoneal-adhesions.json",
+      "sha256": "3a9ce70afa0bd36bd65216262e76335f5f69b7b9b639ad4cdca2b141007ab4ef"
+    },
+    {
+      "path": "data/knowledge-base/persistent-depressive-disorder.json",
+      "sha256": "be9ef8261e508fdd92d9e7bac2f4cf81aff60cb3cdf2cdf50a7e82919284c847"
+    },
+    {
+      "path": "data/knowledge-base/persistent-postural-perceptual-dizziness.json",
+      "sha256": "21a3392e277907e340fe9e7a5a4ae9768763848d8f680b9d8186669fb461267c"
+    },
+    {
+      "path": "data/knowledge-base/pes-cavus.json",
+      "sha256": "9784ff4586d17fafd0bfabf5dbfcdd39053a68d51ed581f168b05c1f9697518b"
+    },
+    {
+      "path": "data/knowledge-base/phantom-limb-pain.json",
+      "sha256": "23c30143d2ee6c0374ecca521644781e6fddd4e49133dd830caa43f7efc5ae8a"
+    },
+    {
+      "path": "data/knowledge-base/pheochromocytoma.json",
+      "sha256": "925ad04ac7935919a786f71c8df0082d06a299b2f4a591b07311703e307c4b98"
+    },
+    {
+      "path": "data/knowledge-base/phimosis.json",
+      "sha256": "500f1a1dea7590b342ba0b23a33f4647bd1f780d30537642f7c2695605a3dea1"
+    },
+    {
+      "path": "data/knowledge-base/piriformis-syndrome.json",
+      "sha256": "d8f28a03b57829ea4dba53f320ae470e80b323493a7faea3b2fa0844bdbb9957"
+    },
+    {
+      "path": "data/knowledge-base/pituitary-neoplasm.json",
+      "sha256": "bef4856162c7e58519e58984aec530110e34af2f6d4a2ef7e0681df894611ebb"
+    },
+    {
+      "path": "data/knowledge-base/plantar-fasciitis.json",
+      "sha256": "d2659852b35e7e98f08167e1248b9ed43fb3480b7cf96566242d1681878c3b72"
+    },
+    {
+      "path": "data/knowledge-base/plantar-warts.json",
+      "sha256": "9f77cf7298ec78de5a93a128f49e54e683806545d2a4dd76bf799b87999dc0ae"
+    },
+    {
+      "path": "data/knowledge-base/pleura-cancer.json",
+      "sha256": "f4660e3725925e9beb2f09dd279b40de5a40719722bd5beffb365d8bf28303c3"
+    },
+    {
+      "path": "data/knowledge-base/pleural-effusion.json",
+      "sha256": "4691abeb56e93055729d6a250fceb3300b536793c5b47e444debe5b92af96ccb"
+    },
+    {
+      "path": "data/knowledge-base/pleurisy.json",
+      "sha256": "7d0d6538af4fb73353c53fcc48ff1783cd1a4e03e795a5ba57d570fc34e79338"
+    },
+    {
+      "path": "data/knowledge-base/pneumoconiosis.json",
+      "sha256": "ef08efe4c428bb0409ab572434742fefaac2e85a7a3cc5434d54b9f46dfe30f8"
+    },
+    {
+      "path": "data/knowledge-base/pneumonia-residuals.json",
+      "sha256": "436a6df093140ab05f2aa91a4a3c640dbf5b559ca9122216be5a43252ad4c076"
+    },
+    {
+      "path": "data/knowledge-base/pneumothorax.json",
+      "sha256": "759229a3400b15c416299db13474b2e8ec5d3f6db4b093e5c5e47e8a787fff84"
+    },
+    {
+      "path": "data/knowledge-base/poikiloderma.json",
+      "sha256": "26d578a4c41295d0bce55eb7fa0cbfda31d0ad42d25e67355f941b022a008432"
+    },
+    {
+      "path": "data/knowledge-base/polycystic-ovary-syndrome.json",
+      "sha256": "3ad064f6a1c6a9a90105a333e8c5987de594da72bf39eb080dcf27587a9cbe35"
+    },
+    {
+      "path": "data/knowledge-base/polycythemia-vera.json",
+      "sha256": "9fad0bd6b5306338aaaf542960f7e177da99710566d05d00e6d9fd0f7257a2ab"
+    },
+    {
+      "path": "data/knowledge-base/polymyalgia-rheumatica.json",
+      "sha256": "7c677b2c77f89d40e7d45d4dbe0c618f16b863b88a91de5c6b9b31a9cd538f0c"
+    },
+    {
+      "path": "data/knowledge-base/polymyositis.json",
+      "sha256": "ccf9c958665968887fb23415011629c6c7c20118a8aaa291f71c3a777b13b55e"
+    },
+    {
+      "path": "data/knowledge-base/porphyria-cutanea-tarda.json",
+      "sha256": "5644bae3ba304eef8e4b4413a125a6275964c0beae2f6d9894d33c46c85614db"
+    },
+    {
+      "path": "data/knowledge-base/post-concussion-syndrome.json",
+      "sha256": "345aa9e8dad9a7357a623df77045a40eceb49ce9eabb455f9a301a6f03b865fb"
+    },
+    {
+      "path": "data/knowledge-base/post-traumatic-headache.json",
+      "sha256": "82e23f537a67c6c09866076d2bdb953ed32cceb419eb6da3db1c8b96af3ce663"
+    },
+    {
+      "path": "data/knowledge-base/post-traumatic-osteoarthritis.json",
+      "sha256": "4c49977c0ccb1cd7468e9d636ad87d1dd08158a7d3a9ddeb81b5e5116c219c74"
+    },
+    {
+      "path": "data/knowledge-base/posterior-tibial-tendon-dysfunction.json",
+      "sha256": "924b2e6ea9d7d591825c66c8fdb02f03142477fd687ad3c3561ab7f01c469a86"
+    },
+    {
+      "path": "data/knowledge-base/postherpetic-neuralgia.json",
+      "sha256": "352776505ccf7d756b3722eea8fcc9adb3d208ad9958a5a059b82ec9b7936781"
+    },
+    {
+      "path": "data/knowledge-base/postpartum-thyroiditis.json",
+      "sha256": "792dc774781906b9eafb839c92d681404d12c2e8aac87d78da36a4864ce72b5a"
+    },
+    {
+      "path": "data/knowledge-base/postural-orthostatic-tachycardia-syndrome.json",
+      "sha256": "10e23681a22a2db3ccfc305b24801d96f1e88f5091a49ba09b342d4ce49cd979"
+    },
+    {
+      "path": "data/knowledge-base/preiser-s-disease.json",
+      "sha256": "053584e4fd9a56d7dc5c4f1371cfb491297c22958be66c3e3ba7cddb31cdbb33"
+    },
+    {
+      "path": "data/knowledge-base/premature-atrial-ventricular-contractions.json",
+      "sha256": "b2f564f3e36230b7894f7233d1deff8a6c2f8afc31d4a89f2331c9a3cbaa316d"
+    },
+    {
+      "path": "data/knowledge-base/premature-ejaculation.json",
+      "sha256": "60f9ed1b99c7fb72ece64285492121f980eae64b5200b134a27a1642ba830aa6"
+    },
+    {
+      "path": "data/knowledge-base/primary-myelofibrosis.json",
+      "sha256": "88bff38d2c17b3fd3fce00d0882a524519f46d0887fac009648fa3ce959e85d1"
+    },
+    {
+      "path": "data/knowledge-base/proctalgia-fugax.json",
+      "sha256": "b5bd868d73240758cca4bc31bc784d5647d76caf599fe39388d867ad5d1ff009"
+    },
+    {
+      "path": "data/knowledge-base/pronator-teres-syndrome.json",
+      "sha256": "b2bb1704dce351185a695393e33ddc3cde0b07017e54f23091515652b534f04f"
+    },
+    {
+      "path": "data/knowledge-base/prostate-cancer.json",
+      "sha256": "bf723c6317dcf2fe5e3f45d79ccdbafb7e1fbe9c3ed5039e9c8fb4a85c93b982"
+    },
+    {
+      "path": "data/knowledge-base/prostatitis.json",
+      "sha256": "3deee7adecd56c3094161a158d802da0bd8ad33122772526e735c67f236e97d1"
+    },
+    {
+      "path": "data/knowledge-base/prurigo-nodularis.json",
+      "sha256": "ed6941b501d499475c0db452256966bc80eedc96da92bc30ba5669eac6c5b9c6"
+    },
+    {
+      "path": "data/knowledge-base/pruritus-ani.json",
+      "sha256": "70884dde400243ee7b9e8f024f0fc6dab4bd9525ba6ee6fa0584c78acd9b1f75"
+    },
+    {
+      "path": "data/knowledge-base/pseudobulbar-affect.json",
+      "sha256": "361d942d83aa43e793330ac5a47f5d6a838b3157ad2848791822ccc2bc616a1d"
+    },
+    {
+      "path": "data/knowledge-base/pseudophakia.json",
+      "sha256": "59371897db6e5319fc4f2f670d3cbe03ac344559197a06e594c0a660912c4e1e"
+    },
+    {
+      "path": "data/knowledge-base/psoriasis.json",
+      "sha256": "31481f3d2b912786c388ff1117210a54218b847de7a4e33bc914ae5e77ccf89e"
+    },
+    {
+      "path": "data/knowledge-base/psoriatic-arthritis.json",
+      "sha256": "8adfba3c8115ea0992345b03d7c4a30541b934961bba85eb5db1abb3b9452407"
+    },
+    {
+      "path": "data/knowledge-base/ptosis.json",
+      "sha256": "3f3e70734261a2f137dd00f81d2821b60ce1cbe420b9025daf4a9e3e7f21998e"
+    },
+    {
+      "path": "data/knowledge-base/ptsd.json",
+      "sha256": "5f12b003295dbcfd20c7c2ba0a748e17fa2dd22281ad4579563a536a23dc72a3"
+    },
+    {
+      "path": "data/knowledge-base/pudendal-neuralgia.json",
+      "sha256": "7142af51a500c291262fc6890022934f7e15e73c2c0d5d1b907ce39135ddd9d7"
+    },
+    {
+      "path": "data/knowledge-base/pulmonary-alveolar-microlithiasis.json",
+      "sha256": "3c2ee568b2b6682d068c5c8fdfdbbaefc88a44a0e8ffe34e4f34a592dd37acbb"
+    },
+    {
+      "path": "data/knowledge-base/pulmonary-edema.json",
+      "sha256": "2ecd009a9624ddc3750ac29f5f2f1743137d26a962dc70e743e46577cbcd8d6e"
+    },
+    {
+      "path": "data/knowledge-base/pulmonary-embolism.json",
+      "sha256": "c460959c2b79664439650957076cd2b8345d250217f25300b4522fa149be0a21"
+    },
+    {
+      "path": "data/knowledge-base/pulmonary-fibrosis.json",
+      "sha256": "77cf3e671b8f59edb76d84054492c64213b80afa67aa8287969124fa215df6cb"
+    },
+    {
+      "path": "data/knowledge-base/pulmonary-hypertension.json",
+      "sha256": "7d8563c55f5052342b2843e32a9739ce0e70335b0699846f31577104ef5d2fa9"
+    },
+    {
+      "path": "data/knowledge-base/pulmonary-langerhans-cell-histiocytosis.json",
+      "sha256": "8b9319c9be7c8512b792c61c34a86948329e1efa7da790f1e688ebeece2740de"
+    },
+    {
+      "path": "data/knowledge-base/pulmonary-vascular-disease.json",
+      "sha256": "2cba5526611ea9e37c6a3692b4edd24e51d827edbe957045ad33af4ed67bf890"
+    },
+    {
+      "path": "data/knowledge-base/pyoderma-gangrenosum.json",
+      "sha256": "94d269feee75cf24c5ccbdc205f624515eab3a511d55df13b6e3aa1384050ad1"
+    },
+    {
+      "path": "data/knowledge-base/pyoderma.json",
+      "sha256": "ee79a2ec0cc4698e64f4511e5646e586223f068ae11f4b4bb6325df0efd7f0ea"
+    },
+    {
+      "path": "data/knowledge-base/q-fever.json",
+      "sha256": "a228cccd7055c1667373d62efd1c97e7134baa2dd8db199e458ab64879911cef"
+    },
+    {
+      "path": "data/knowledge-base/quadrilateral-space-syndrome.json",
+      "sha256": "d61627ae5c0f965da4f1711c3dfceca5b00782dd5970ceedd2cd381159463c64"
+    },
+    {
+      "path": "data/knowledge-base/radial-neuropathy.json",
+      "sha256": "96b4084988bd48e322cbb0fe0c45e0b876a67c6e5eb1bbea7de4b8bff76debe4"
+    },
+    {
+      "path": "data/knowledge-base/radiculopathy-femoral.json",
+      "sha256": "c978fb6195a2297c5c600c4794cffa6c669fb66fca2dfd420e4798a8d1e259da"
+    },
+    {
+      "path": "data/knowledge-base/radiculopathy-sciatic.json",
+      "sha256": "3745f2c1b8dd08914c483d1decf4294ce47b4b6b4e5ef190922b7daa70815ac8"
+    },
+    {
+      "path": "data/knowledge-base/radiculopathy-upper-extremity.json",
+      "sha256": "12c45392cffedbc913c1a29cbff4be1e92d61e0a0eaa7a2235efa4daaac4b76e"
+    },
+    {
+      "path": "data/knowledge-base/radiculopathy.json",
+      "sha256": "118b8a966197fa502b52fe5180c9c14a12b7a09897d697293ad3fbf3cfb36d49"
+    },
+    {
+      "path": "data/knowledge-base/ranula.json",
+      "sha256": "afa2addd295f88abb8ac4f3f1bea3ed37023d8d1d6de849ac757aa1e915687e9"
+    },
+    {
+      "path": "data/knowledge-base/raynaud-s-phenomenon.json",
+      "sha256": "8f2a14e182e05149e069e3b66718de666dd80e3a79468b8ba9fff0887cc0d111"
+    },
+    {
+      "path": "data/knowledge-base/raynauds-syndrome.json",
+      "sha256": "dbaf47feef17031204ec9f7284ec15efcfea296896da880d1d8ff8f1cefd1aa8"
+    },
+    {
+      "path": "data/knowledge-base/reactive-arthritis.json",
+      "sha256": "321acf0b208aa88e21da61f261e0e9849ffc7d87ee9d423030b1bf6b91b21233"
+    },
+    {
+      "path": "data/knowledge-base/rectal-prolapse.json",
+      "sha256": "6673c744b14d41b04475a6047bd3dafd66f58b2b7a78acd9de9a0cb1470b9788"
+    },
+    {
+      "path": "data/knowledge-base/reinke-s-edema.json",
+      "sha256": "f39dc040a421bd3cb5390fbcef6d3c840303495193c4a0fc29ad262e5359c9a8"
+    },
+    {
+      "path": "data/knowledge-base/rem-sleep-disorder.json",
+      "sha256": "3875643d0f299ceb98c3d1f6ac68c3ab62f9fbdccb40278de46903282dadb1c6"
+    },
+    {
+      "path": "data/knowledge-base/renal-toxicity.json",
+      "sha256": "6613b8a1fecd296f38ae48a635af6fa26317a38713ce20ad23ab1f4f5374827c"
+    },
+    {
+      "path": "data/knowledge-base/reproductive-cancers.json",
+      "sha256": "d5b2a38984a7f01a858ff110f65d57d370294d28def7c4d192864493b7e1ebc0"
+    },
+    {
+      "path": "data/knowledge-base/respiratory-cancer.json",
+      "sha256": "9fe73080baade60cdc1ca8012fd3a44afb490cfa6c73fd0350ccc9613072e09f"
+    },
+    {
+      "path": "data/knowledge-base/restless-leg-syndrome.json",
+      "sha256": "6daf28324620d24213bf450e2425386b44ad42d9e319a5a0c3199c2f32127dee"
+    },
+    {
+      "path": "data/knowledge-base/retinal-detachment.json",
+      "sha256": "c9ce561c4b4f68f3f2ef4a28f6a9c07a2e701ae68ebd4dc0c22eac2c57b4ad64"
+    },
+    {
+      "path": "data/knowledge-base/retinal-dystrophy.json",
+      "sha256": "e4ec0156f4431ed27e1b900aa0df3a6f6cf519e4f728f2bde44e007dc0ea8955"
+    },
+    {
+      "path": "data/knowledge-base/retinitis.json",
+      "sha256": "2046329f3a4f5d0ad61c8d8a9affbe3e735d830141b9b70c4d625fa164b0cf16"
+    },
+    {
+      "path": "data/knowledge-base/retrograde-ejaculation.json",
+      "sha256": "94a78601e54ae70d501ad2d3361fe26d8df08582485700455ed22dc55b40c21f"
+    },
+    {
+      "path": "data/knowledge-base/rheumatoid-arthritis.json",
+      "sha256": "8fd85a94b5c2ba8730d955bda0d943c26062eb3f130dd4484daf431d9f228f83"
+    },
+    {
+      "path": "data/knowledge-base/rhinitis-vasomotor.json",
+      "sha256": "1c94e30aadc71ac538332de09b35d85321573c28568c267d8f2062a063f6bb12"
+    },
+    {
+      "path": "data/knowledge-base/rickets.json",
+      "sha256": "07174f1466afaab69487985c63ca8d295c1158a313847f1569db3165d23c98a5"
+    },
+    {
+      "path": "data/knowledge-base/rickettsial-ehrlichial-anaplasma-infection.json",
+      "sha256": "65c82a30a89bf648f79dece4c936f5406281d75409a11ff72bacfa67f9646531"
+    },
+    {
+      "path": "data/knowledge-base/riedel-s-thyroiditis.json",
+      "sha256": "5870efff963ea03ebb91b9aaf9505056a856f3f355a345e72bfb96497e8e70cb"
+    },
+    {
+      "path": "data/knowledge-base/rosacea.json",
+      "sha256": "9ec24b921b1035815f6245911b0e81ebd6d6ac7cd1b7b798d85003ddf8725d49"
+    },
+    {
+      "path": "data/knowledge-base/rotator-cuff-injury.json",
+      "sha256": "f2815a668acf9723d94d6f89b37ef0f0e7a2a654f61f479edaee738d85936c18"
+    },
+    {
+      "path": "data/knowledge-base/rotator-cuff-tear.json",
+      "sha256": "a5585f8b10a06ceab7637454def2d799f7241b04f4f1daa2593ca0d326e93d4d"
+    },
+    {
+      "path": "data/knowledge-base/rumination-syndrome.json",
+      "sha256": "9b7f647986703e5e5b01ecd7d871deef0035aeac70b9d9faa808065db1a6f850"
+    },
+    {
+      "path": "data/knowledge-base/sacroiliac-joint-dysfunction.json",
+      "sha256": "7785a98ec2665fd09d860a7bd4a5a4f1f742f835a463db54409ae23697849e30"
+    },
+    {
+      "path": "data/knowledge-base/salivary-gland-cancer.json",
+      "sha256": "b0be68eec69e2e7cc28e569d99ca3b59b4b6e89c3cb401e0835496723fa4b5f6"
+    },
+    {
+      "path": "data/knowledge-base/samter-s-triad.json",
+      "sha256": "1f0e100ecd6d7d3b1f09f858e6b23c92033f57283a127edc1c91dae1c88d7acc"
+    },
+    {
+      "path": "data/knowledge-base/sarcoidosis.json",
+      "sha256": "9fddea460a4f3436ed5097441174ee3d07e69c07344ef5ec19243445535bf1b0"
+    },
+    {
+      "path": "data/knowledge-base/sarcopenia.json",
+      "sha256": "bf41c321ee721583e3e6d79115a54529d9f0bf0cb60656cd2a5a069eb2f1f8f0"
+    },
+    {
+      "path": "data/knowledge-base/scarring-alopecia.json",
+      "sha256": "ffa2bcbc828d2ca9a113cee8aca88bf8656dfabf6b3cca716b2f7b0a14a5057f"
+    },
+    {
+      "path": "data/knowledge-base/scars.json",
+      "sha256": "57a0034f2c8e279435e57d9a3cd3c8e691bf473cbcc57eb700583f1e9732045c"
+    },
+    {
+      "path": "data/knowledge-base/schizoaffective-disorder.json",
+      "sha256": "92e7b5d4bbe25dafb8ff1e17a1bdd2bb39c5b0e9cbcbbdad402bfabf80098f97"
+    },
+    {
+      "path": "data/knowledge-base/schizophrenia.json",
+      "sha256": "0183aeb5183ae46518c476515f0be725fa4ece28915bb621e83729d46d145bcd"
+    },
+    {
+      "path": "data/knowledge-base/scleredema.json",
+      "sha256": "970fff61124af08fccd0bc0557f6f3c42b94694b77e46527c791001c1f770839"
+    },
+    {
+      "path": "data/knowledge-base/scleritis.json",
+      "sha256": "9bec2cb56ece3ca4796abf9f6de2d5a7a4070b4a2e8638a67381b00cf2ff94e6"
+    },
+    {
+      "path": "data/knowledge-base/scleroderma.json",
+      "sha256": "a29e755d51358b3aab368c3a18ade2238c2a83833cdf52bcdfc31f8d43c3d6a3"
+    },
+    {
+      "path": "data/knowledge-base/scoliosis.json",
+      "sha256": "eba01cb53649a650f6165158bf42c3ad2cfc773dfbf7410389dbc44fae515ff7"
+    },
+    {
+      "path": "data/knowledge-base/scotoma.json",
+      "sha256": "69c1b3839ba9542fce9cf34f73311b7e39f40f827c94e2cde738628028dbd9d3"
+    },
+    {
+      "path": "data/knowledge-base/seborrheic-dermatitis.json",
+      "sha256": "218142501fe10ffb8e8c8681b3e630159af8d63d0e5644cb3a9fe00a2b49e752"
+    },
+    {
+      "path": "data/knowledge-base/seborrheic-keratosis.json",
+      "sha256": "d7a8f516478f3ebd70913f23e5fc7f51e6189a31d8ecb772dd31ad78abdf7858"
+    },
+    {
+      "path": "data/knowledge-base/seizure-disorder.json",
+      "sha256": "f5936bb153a304a2831e6f19e30c05703d65c06d398c19b31cb63622a16c56ff"
+    },
+    {
+      "path": "data/knowledge-base/selective-mutism.json",
+      "sha256": "fe76d726580bbfb012392d3c69cc563de6053851b4ef0089826f21d1f0a2f2db"
+    },
+    {
+      "path": "data/knowledge-base/separation-anxiety-disorder.json",
+      "sha256": "8017488c805172a7cbd5a581a33068287f1399e9957224465dd112f2e9b59f9d"
+    },
+    {
+      "path": "data/knowledge-base/serotonin-syndrome.json",
+      "sha256": "b0eaff7803b043761cd3c8de850e51187b772025da0f0dda257b9b2b803c1eac"
+    },
+    {
+      "path": "data/knowledge-base/sever-s-disease.json",
+      "sha256": "01842f9198bebe88813f87b0271e65bc32b52634327fc62f382c791a34e4a711"
+    },
+    {
+      "path": "data/knowledge-base/shigella-or-salmonella.json",
+      "sha256": "3d817b9b937167804e3eae8271d925361d46a362110afda58b02d4531ba2bfe7"
+    },
+    {
+      "path": "data/knowledge-base/shin-splints.json",
+      "sha256": "cf24d9cb85b7a21d3041b3be751084718367827d3b21a2ad17b1cded0f50a8c9"
+    },
+    {
+      "path": "data/knowledge-base/short-bowel-syndrome.json",
+      "sha256": "a6ce4a4feb1cac4fb5ba702042f865e06836737d7a74b159971d83befec715e4"
+    },
+    {
+      "path": "data/knowledge-base/short-qt-syndrome.json",
+      "sha256": "eccf9f24e8f193176b7d12af46ca1a720b54ff104dd701bc5b84728a8fdebfa6"
+    },
+    {
+      "path": "data/knowledge-base/shoulder-condition.json",
+      "sha256": "036f7e7ff47d1b785b5debcf87ea7b8339afa2bc3516822de7eb8160cc3fbe84"
+    },
+    {
+      "path": "data/knowledge-base/shoulder-disarticulation.json",
+      "sha256": "7616b4cbbb5e0d34e4a2c4e0c9be9ade7f1cd9d11a3d2ff8d1d9dd69caf7a8d1"
+    },
+    {
+      "path": "data/knowledge-base/sialadenitis.json",
+      "sha256": "6201b0b254f9dff24f4753c4afa10bf33fef6a9b3e62b15e707a80fb395880de"
+    },
+    {
+      "path": "data/knowledge-base/sialolithiasis.json",
+      "sha256": "bfcd336f1c488d5135100e8f7ad0b335131cc712422f927f9b8ae63789c5b9f7"
+    },
+    {
+      "path": "data/knowledge-base/sick-sinus-syndrome.json",
+      "sha256": "dc25d08b449fc7c4a3cb345cc2fd3fde2880060cd093050dd42d95b4ac4c20c7"
+    },
+    {
+      "path": "data/knowledge-base/sinusitis.json",
+      "sha256": "45256898df9ff6c2500bd22bad24fc3705414e978c24bf212690e96c1d589a24"
+    },
+    {
+      "path": "data/knowledge-base/sjogren-s-syndrome.json",
+      "sha256": "093010b1c73ee12540532d782bc9d8dc476ddfc72559776b317ab1b1e55747af"
+    },
+    {
+      "path": "data/knowledge-base/skier-s-thumb.json",
+      "sha256": "ba35ec13204626e12a61f045e2d1dba7b454b90a3e10b69cef132f70f9cc82e5"
+    },
+    {
+      "path": "data/knowledge-base/skin-cancer.json",
+      "sha256": "accbe91d42861b57df6cf4a8993c7d1be0b2e92fd3f4bf85c573c7923ab06a40"
+    },
+    {
+      "path": "data/knowledge-base/skull-fracture-non-basilar-and-basal.json",
+      "sha256": "3a49d1db1f6c49f8cd13bf19ab314e3d040c71ce186c7841f95640634b371ac9"
+    },
+    {
+      "path": "data/knowledge-base/slap-tear.json",
+      "sha256": "4a5cceb67481b87b7f5abab3fc002df6e98abe1ab3e486da4641fbe9137f4583"
+    },
+    {
+      "path": "data/knowledge-base/sleep-apnea.json",
+      "sha256": "597f1b91c5b3a2bb9884e4556c04fcbd7416a23cd8d9a8b34cdf890c5a6a08fe"
+    },
+    {
+      "path": "data/knowledge-base/sleep-related-eating-disorder.json",
+      "sha256": "5595253e586775d85dace9b53615aa6c4b65417a15a8d73a5a52420730e0d6be"
+    },
+    {
+      "path": "data/knowledge-base/sleep-terror-disorder.json",
+      "sha256": "dd493e2c959916990632e4f0fa1086c3ecdd38e79090b8514f954a3ab4d66ada"
+    },
+    {
+      "path": "data/knowledge-base/sleepwalking-disorder.json",
+      "sha256": "54be9b78a02afa0124958932d10826d4ca192204775e35f3d8acc8f794886986"
+    },
+    {
+      "path": "data/knowledge-base/small-intestine-cancer.json",
+      "sha256": "2268d3da3d6c4f106bc3c8985b9d52dc2f4f267f531a53c88f25211d0ecaa037"
+    },
+    {
+      "path": "data/knowledge-base/social-anxiety-disorder.json",
+      "sha256": "709375a284a55757c67c9a034bdd2839cc7543c4d1f9a8ed6ad49428a4775067"
+    },
+    {
+      "path": "data/knowledge-base/soft-tissue-sarcomas.json",
+      "sha256": "697ba74ba13a13af0e7b4e391ceb59ae1479e7ac77cdde48463f8d99a9c6a482"
+    },
+    {
+      "path": "data/knowledge-base/solitary-rectal-ulcer-syndrome.json",
+      "sha256": "004fe2b5d9957d9b40087c63dbcb8c7be0b8a9bf0b9b229ce39c44c6b65bab80"
+    },
+    {
+      "path": "data/knowledge-base/somatic-symptom-disorder.json",
+      "sha256": "06dfd62c06cb59f11f9313ddb59118d8f99c76c2d898c536d091618ec7da4a03"
+    },
+    {
+      "path": "data/knowledge-base/somatostatinoma.json",
+      "sha256": "7453ee882bacdec080ae3ef411138e5987bc81df9b30f5f788069ade702a72a0"
+    },
+    {
+      "path": "data/knowledge-base/spasmodic-dysphonia.json",
+      "sha256": "74f53a790f8d28557989ab196552933e40fc59a66c59d4bcbad2a2533c19f62d"
+    },
+    {
+      "path": "data/knowledge-base/specific-phobia.json",
+      "sha256": "2ef566f6f8b0cbdae880339a9ccbb9bdb6311e987b71f009404a4d9891ca2530"
+    },
+    {
+      "path": "data/knowledge-base/spermatocele.json",
+      "sha256": "64fc4b38d2f19349c12d2a539704b9c3ebea6e2fc272abdeaf78b2b35c34b7cb"
+    },
+    {
+      "path": "data/knowledge-base/spina-bifida.json",
+      "sha256": "aa0787cf3307f828c15476c0ef1c197f9ac0b9d5c9047e36bb799c675c4f276c"
+    },
+    {
+      "path": "data/knowledge-base/spinal-stenosis.json",
+      "sha256": "7111e69689170a13dc46526250982d6818af3f9b1d22e6633a63f4f9370c9f17"
+    },
+    {
+      "path": "data/knowledge-base/squamous-cell-carcinoma.json",
+      "sha256": "2398f7ee49b7ba12fea9b4f082021950b7f212930624d2a24791e6c2ab667f76"
+    },
+    {
+      "path": "data/knowledge-base/stevens-johnson-syndrome.json",
+      "sha256": "8928c179e0533b617ebc9f16f6ba00f99a25f1bb8bdcc9b03d961e187cba68c1"
+    },
+    {
+      "path": "data/knowledge-base/stomach-cancer.json",
+      "sha256": "1899de51908bbb54643cd709df32f98140c849dca50b43665e2db8c843ae80ac"
+    },
+    {
+      "path": "data/knowledge-base/stomatitis.json",
+      "sha256": "933cfbdf274bb4baf56b357ff079f2b3276633a0541fceb9a5fc1c6469d3d20e"
+    },
+    {
+      "path": "data/knowledge-base/strabismus.json",
+      "sha256": "c28dd06a2a7cc22f20e45dfb7249d91190e5e52a5fa20c0c0a5340aaf31bc4fa"
+    },
+    {
+      "path": "data/knowledge-base/stress-fractures.json",
+      "sha256": "a0f2dda5a1e506987e1c694b15c9662a44d27d64f21f2bb5276130a14302566f"
+    },
+    {
+      "path": "data/knowledge-base/stress-urinary-incontinence.json",
+      "sha256": "406de5852326fa639988f6b40cd92e158218fb108e18a8ddcd7ebdaaaa45d533"
+    },
+    {
+      "path": "data/knowledge-base/strongyloidiasis.json",
+      "sha256": "ada679b3f2d2929dc7cd36c9e53bfbaa1a0576d0843a8fff96df05e03e31e2f4"
+    },
+    {
+      "path": "data/knowledge-base/subacute-cutaneous-lupus.json",
+      "sha256": "d330b610e1568b3d880931d6e21888d6c53489e4bb2e58f9c77356eccf064c35"
+    },
+    {
+      "path": "data/knowledge-base/subacute-thyroiditis.json",
+      "sha256": "f67d22f93d9cea15b53d3791e1faf7508c23738ccfb9d54ac134503326506b02"
+    },
+    {
+      "path": "data/knowledge-base/subdural-hematoma.json",
+      "sha256": "02a419791237cb56cbc679377fd21e4954d15ad496f151c3889638f9d217621b"
+    },
+    {
+      "path": "data/knowledge-base/substance-use-disorder.json",
+      "sha256": "faf582ac4382563edf6b33941e85a312a3cb6f772336b74396c2ec900426893d"
+    },
+    {
+      "path": "data/knowledge-base/superior-mesenteric-artery-syndrome.json",
+      "sha256": "99b8d791d21a21e2c9943a0695541b894c29728045f2572aa52349dffc2befda"
+    },
+    {
+      "path": "data/knowledge-base/superior-semicircular-canal-dehiscence.json",
+      "sha256": "25e159f543bbc477e5db6a749a40477fb01925f9cedda646cc6cdd9843643d4a"
+    },
+    {
+      "path": "data/knowledge-base/sural-nerve-neuralgia.json",
+      "sha256": "6dce3bb50abc0e7e58d9d686da30ef4980a1984d3020962e6d377fcfb5409622"
+    },
+    {
+      "path": "data/knowledge-base/swan-neck-deformity.json",
+      "sha256": "e617103a123ffcfe8569d14ab06dde3593ff72ed12b6510156330855baae90d6"
+    },
+    {
+      "path": "data/knowledge-base/sweet-s-syndrome.json",
+      "sha256": "64e464252d65e7ac25e83e7beda28089387ed03d31ce9f81a08c64d06f7d8948"
+    },
+    {
+      "path": "data/knowledge-base/syphilis.json",
+      "sha256": "3f5392bde8bc9a10d63d083471e078da680eec29c01402db4c6ac3d752fc3be0"
+    },
+    {
+      "path": "data/knowledge-base/syringobulbia.json",
+      "sha256": "d41c260824b9d7b87ba6a7000a307c35921b37a3f32688b0a67a6de39eaad24a"
+    },
+    {
+      "path": "data/knowledge-base/syringomyelia.json",
+      "sha256": "fe935783682489f4e16f4893526a2b8febbbcae6e20177461dd15cbfa8a44a46"
+    },
+    {
+      "path": "data/knowledge-base/systemic-lupus-erythematosus.json",
+      "sha256": "f902f849d6240a8a667605846fee2945341a1cabb4d8d03d8da17ec2872ad78a"
+    },
+    {
+      "path": "data/knowledge-base/systemic-vasculitis.json",
+      "sha256": "66e5280c4b95636b44d0843053bd11ecc2a4a0d770f1d36c5fb48f3b438792e8"
+    },
+    {
+      "path": "data/knowledge-base/takotsubo-cardiomyopathy.json",
+      "sha256": "d20e6395b4e14f34dc65f7a28b331574227169e5bfbcfeae29bd34dedd7e764d"
+    },
+    {
+      "path": "data/knowledge-base/tardive-dyskinesia.json",
+      "sha256": "e5de774ddc195c91a13fd8c03c7dd6f0caa6baf0d21e11235fb8c190a425c062"
+    },
+    {
+      "path": "data/knowledge-base/tarsal-metatarsal-malunion-nonunion.json",
+      "sha256": "49f8267241dba4f72a12548015a7c1b3563776ea7112e26fa5475d076ad6b3e2"
+    },
+    {
+      "path": "data/knowledge-base/tarsal-tunnel-syndrome.json",
+      "sha256": "c970917bcd75558bfb3a9f9446d13ef2c75003bbf294feaccab57fcc2fd636b8"
+    },
+    {
+      "path": "data/knowledge-base/tendinopathy.json",
+      "sha256": "b06fd977c5630d407d64a94a715e01053ff72ecf5faefe39771ace3cdea36bee"
+    },
+    {
+      "path": "data/knowledge-base/tenosynovitis.json",
+      "sha256": "4fe2d6412f132bf9eb41bf29cacff96401289dbfccb5b61ce19e2a56537f23ab"
+    },
+    {
+      "path": "data/knowledge-base/tension-type-headache.json",
+      "sha256": "3ffe60c968857e1194e97309c1a1e66cec7cd0decc4da1dbbe1462f705a0747b"
+    },
+    {
+      "path": "data/knowledge-base/testicular-atrophy.json",
+      "sha256": "5afc9b109d583f388cb82e1ffa83cacfc06c49d5bc86d309e5645261f7ae4e14"
+    },
+    {
+      "path": "data/knowledge-base/testicular-cancer.json",
+      "sha256": "c85afdae34001ead7f61c88f261135bb489632bd7202b34343ca4bdaa979fd10"
+    },
+    {
+      "path": "data/knowledge-base/testicular-torsion.json",
+      "sha256": "1001e403de0c4bffe72f1b6ec0f44308ae88bfa838bb0410026bc4cc47fdfd88"
+    },
+    {
+      "path": "data/knowledge-base/tetralogy-of-fallot.json",
+      "sha256": "4573ba0b4994792ba91c9f1c76f7f2caa969ec60185def0b2e53c9623b7db4be"
+    },
+    {
+      "path": "data/knowledge-base/thenar-hypothenar-atrophy.json",
+      "sha256": "f996c43d5c306663a1828bcde6e6d9e3714de7d305bbcfd79958839316ff961a"
+    },
+    {
+      "path": "data/knowledge-base/thoracic-outlet-syndrome.json",
+      "sha256": "fed62a181758a1ae7ce11a49b027f26c3ee3bd8411f64759921e7c12abd1d059"
+    },
+    {
+      "path": "data/knowledge-base/thromboangiitis-obliterans.json",
+      "sha256": "fac3b1c36e8801ed639d89c2a9e781f359f94470d2b9bdcd49b40c45b3ee9cff"
+    },
+    {
+      "path": "data/knowledge-base/thrombocytopenia.json",
+      "sha256": "f800bd899c64749d16d4489163ceaf906a9ade926ccb7e26a179431aa20b6977"
+    },
+    {
+      "path": "data/knowledge-base/thrombophlebitis.json",
+      "sha256": "6dd19c1bbbf5f12773a53d03e09cd1a78ee21e8302cd02e49572bd0bb024f42e"
+    },
+    {
+      "path": "data/knowledge-base/thyroid-cancer.json",
+      "sha256": "afd33e7c5c55e0a1ebf7f560b9d82ef38ff67e97cbad2ee1f4b10fee0737adc7"
+    },
+    {
+      "path": "data/knowledge-base/thyroid-nodules.json",
+      "sha256": "c0ba107df6b122a220526e5140d62f94ddd3e98a434d7a42cf60d5617471435c"
+    },
+    {
+      "path": "data/knowledge-base/thyroid-storm.json",
+      "sha256": "956374b0550ae6fe04b791697bff86f4d29354962e280566cf2abfd1bf4d904b"
+    },
+    {
+      "path": "data/knowledge-base/thyroiditis.json",
+      "sha256": "ed756e48692a70f8a020b540edfe45ce0b7537ce1d5b220c780880d27a41b85a"
+    },
+    {
+      "path": "data/knowledge-base/tibial-neuropathy.json",
+      "sha256": "250910eb7e0a52e92eee1d1daff2d712e56760eac484831dee48693f767324f0"
+    },
+    {
+      "path": "data/knowledge-base/tinnitus.json",
+      "sha256": "5e1e494e43813474d3c93e63c5523b8194e05251779ec2808747a8f1d5f7fb30"
+    },
+    {
+      "path": "data/knowledge-base/tmj-disorder.json",
+      "sha256": "aac85b113890894988b3239dbc467fe28a7bffe0281a39a1d39c0c846017d6ff"
+    },
+    {
+      "path": "data/knowledge-base/tmj-dysfunction.json",
+      "sha256": "30054b0e5efbd771e7ced0dfe105ff9e9d382f343b93dd9cf08ba3cd132416a8"
+    },
+    {
+      "path": "data/knowledge-base/toxic-epidermal-necrolysis.json",
+      "sha256": "b345a5bd8a60eddd32f49aecd1782e1d37db1750ef80151693d945d382f20b55"
+    },
+    {
+      "path": "data/knowledge-base/tracheal-stenosis.json",
+      "sha256": "773de3a18cbd0d5e3b7ce56448b5e7dab6f263120bb3ba24c0e8d1ed0b84f005"
+    },
+    {
+      "path": "data/knowledge-base/tracheitis.json",
+      "sha256": "6ff6dd9a9956c9d9959f5dff1dbd96898a71dbd7f8ef2ffa24bd7d96fc06165a"
+    },
+    {
+      "path": "data/knowledge-base/tracheomalacia.json",
+      "sha256": "e40ff0c2563eb5594e6c6e87d762984c77fa8420e372075230d6d18ec2704042"
+    },
+    {
+      "path": "data/knowledge-base/transient-ischemic-attack-residuals.json",
+      "sha256": "384bc10b69dc0a2947af810f9cdb3e478d126fa65974954c61cdbb935ad3e23d"
+    },
+    {
+      "path": "data/knowledge-base/traumatic-brain-injury-residuals.json",
+      "sha256": "10fd54f6da3b807ccd46eadfe392ccf0e14d05aaa972611670d33a76157a1d68"
+    },
+    {
+      "path": "data/knowledge-base/traumatic-subarachnoid-hemorrhage.json",
+      "sha256": "cf1898a80fd0b7aad953642243203db235523d9d4e12c46c49c75f5128aad3ae"
+    },
+    {
+      "path": "data/knowledge-base/trichotillomania.json",
+      "sha256": "a03d688c89fc162882bb7831469ba98d43e1cea47402f2399813a1303f6fcaf6"
+    },
+    {
+      "path": "data/knowledge-base/trigeminal-neuralgia.json",
+      "sha256": "6d1b0d5ee07f3a105a4171a29789a82d53e8361be00c6c366e0aeb047e12126e"
+    },
+    {
+      "path": "data/knowledge-base/trigger-finger.json",
+      "sha256": "0742fdf54607fb0663ee66d22aad078ef5ec77e744bb6fa1448f27518b7837e5"
+    },
+    {
+      "path": "data/knowledge-base/trigger-thumb.json",
+      "sha256": "43e90800c39038a60be806b2bd5f985445875f8865887588fd8d7ff3e7501d64"
+    },
+    {
+      "path": "data/knowledge-base/tropical-pulmonary-eosinophilia.json",
+      "sha256": "18c8bd6fcccbaaec6e28a1946f5bccb31015be88654b9ffd17de2933cf93ecd4"
+    },
+    {
+      "path": "data/knowledge-base/tuberculosis.json",
+      "sha256": "951aaa69b979edefb771a2ac6a3b0d528ea007c569783dd503fa6340d13bced1"
+    },
+    {
+      "path": "data/knowledge-base/tumid-lupus.json",
+      "sha256": "1e2fb7c9fdc51aab8fc64335d1e59dd937b1c032ebc480192009486b77e2065f"
+    },
+    {
+      "path": "data/knowledge-base/typhoid-fever.json",
+      "sha256": "ee15e212c69650ca8502eccffaf834d7c493c7d58cdf7fdf09615434980afd8d"
+    },
+    {
+      "path": "data/knowledge-base/ulnar-neuropathy.json",
+      "sha256": "2f5eb2a500552e402e7bf0c95db7c3e5798fc075e5e764963d3e634439a95f48"
+    },
+    {
+      "path": "data/knowledge-base/undiagnosed-illnesses-gulf-war.json",
+      "sha256": "99e8949bec6f2939d183f6f195c6ebb76822279b550c012b8119606f6702532e"
+    },
+    {
+      "path": "data/knowledge-base/unexplained-chronic-pain.json",
+      "sha256": "d4db3a0917a17d0e23987066f1f7c3b02849c407d4bad4f0d6a7874738312beb"
+    },
+    {
+      "path": "data/knowledge-base/unexplained-gastrointestinal-issues.json",
+      "sha256": "d15a97fdafe6fa3fcb295d36d4a7a732e1ad14b90c02495a9fddc52849f60459"
+    },
+    {
+      "path": "data/knowledge-base/unexplained-neurological-muscle-conditions-gulf-war.json",
+      "sha256": "ad678da7ff2294251ad3f32740e0b28818a9e38be48795216c237e27b0ce7add"
+    },
+    {
+      "path": "data/knowledge-base/unexplained-skin-conditions.json",
+      "sha256": "142fa2734595b272c2f495e4dd7c964af58b2153c2181d50a2dcbe4dd9cca8e0"
+    },
+    {
+      "path": "data/knowledge-base/urethral-caruncle.json",
+      "sha256": "b45138caabb57703681b4e4447eeede6d08a5453ed76bbf2dc2e52231bef3b9c"
+    },
+    {
+      "path": "data/knowledge-base/urethral-diverticulum.json",
+      "sha256": "3caecfdb749d30bb158479cd3a4b5698e31c0c7addd3d257f98064e6e17d666d"
+    },
+    {
+      "path": "data/knowledge-base/urethral-stricture.json",
+      "sha256": "5cb5c2b35d607fdfd8e0fbd7df5d6397920d033008ee93523d844ddbaf3d6ab5"
+    },
+    {
+      "path": "data/knowledge-base/urge-urinary-incontinence.json",
+      "sha256": "e65b7f7664cd5e908c55a160fd031c14e405e4ca661992e86503ba19bf86d347"
+    },
+    {
+      "path": "data/knowledge-base/urinary-frequency-retention.json",
+      "sha256": "1a1984de2acdd3dc05077c41de9a8dabd16b4a851e780784c78026182af46c44"
+    },
+    {
+      "path": "data/knowledge-base/urinary-incontinence.json",
+      "sha256": "d488fa3345da3b28516be2f61aee141b6eaf99f14811e7c53fb2cdf27df98419"
+    },
+    {
+      "path": "data/knowledge-base/urinary-tract-cancer.json",
+      "sha256": "4154a217aed406afd2d3c88a6dbd1faa9c55e3cb7958e0c7815e936cfc19493a"
+    },
+    {
+      "path": "data/knowledge-base/urticaria.json",
+      "sha256": "15c33e2fbd98d91f3f3f58e66a48d372ce150862a50046a2e0221df824c90339"
+    },
+    {
+      "path": "data/knowledge-base/uterine-fibroids.json",
+      "sha256": "219c991f8e97bddfb76a2822e8d0eb42756f21d97cafb173216b858754362356"
+    },
+    {
+      "path": "data/knowledge-base/uveitis.json",
+      "sha256": "270a5fe982395f847272a0fc3f79287fa9131d2c7d270ad06cbc1d14659215c6"
+    },
+    {
+      "path": "data/knowledge-base/vaginismus.json",
+      "sha256": "73f250dc971db7b1abceb137d93bbc263bd101e6f3fb656fab8c95e7fa02a1b3"
+    },
+    {
+      "path": "data/knowledge-base/valvular-heart-disease.json",
+      "sha256": "2cda946688c9dde4fad632ff2572a0af1d45e52c2ad13ce80aa736af895226e4"
+    },
+    {
+      "path": "data/knowledge-base/varicocele-hydrocele.json",
+      "sha256": "4ef14af30c2b677369e3f13599f48163e0356da56a77999907fbe0022d7aee9e"
+    },
+    {
+      "path": "data/knowledge-base/varicose-veins.json",
+      "sha256": "225e9a377f542c50c5c2d9ab51beb37aedbf5265ed23fb2edfb5c03e37b72f3d"
+    },
+    {
+      "path": "data/knowledge-base/vasovagal-syncope.json",
+      "sha256": "88de9cd9b088d6427b5b03691f3cb3c75f09f02ecaf4587b39e24d7d494a271f"
+    },
+    {
+      "path": "data/knowledge-base/ventricular-septal-defect.json",
+      "sha256": "2a1b907a4f7aee756516bbaa3b825b09dbad313769b8f2b03daf849cbac25da9"
+    },
+    {
+      "path": "data/knowledge-base/ventricular-tachycardia-fibrillation.json",
+      "sha256": "71e4a43fde4eaf19fa531a13df3a70f19c78bbb45cb1c5cf463e8741a3f3a6a5"
+    },
+    {
+      "path": "data/knowledge-base/vestibular-disorder.json",
+      "sha256": "e03949a89d042cb32cb4181e809ad5708b7c1a79228a09eeec8abaa1e023c903"
+    },
+    {
+      "path": "data/knowledge-base/vestibular-migraine.json",
+      "sha256": "3fd85bac462bb35ffdbd540b120645f059951bf07760741c459ce50d09617312"
+    },
+    {
+      "path": "data/knowledge-base/vipoma.json",
+      "sha256": "94c0022ad6c6aed6463d25ecfc6d5bb03726513cdf7038537f151db2ab47db37"
+    },
+    {
+      "path": "data/knowledge-base/visual-impairment.json",
+      "sha256": "fe3680090fc05ae1469f6b520be802c7ed77d6052e912b53ddf29e83efb71eed"
+    },
+    {
+      "path": "data/knowledge-base/vitiligo.json",
+      "sha256": "fa0f3e4f7ae4dfd6fea78f0c3971a17b9ab4560f23bc200861f4957cd5517b8c"
+    },
+    {
+      "path": "data/knowledge-base/vocal-cord-dysfunction.json",
+      "sha256": "167500d5af243888f25e73d4c0a2d556c6ee63250bd8bd953d03e53574dfc8d5"
+    },
+    {
+      "path": "data/knowledge-base/vocal-cord-nodules-polyps-cysts-paralysis.json",
+      "sha256": "2f37d939b48ef28e62750a518e6490bd7782b145e2cff16ba0a5201a58618910"
+    },
+    {
+      "path": "data/knowledge-base/vocal-cord-paralysis.json",
+      "sha256": "67c90330655584d085853906a5b987c82e34fa941cc9557bdff02f2b3ac87707"
+    },
+    {
+      "path": "data/knowledge-base/volkmann-s-ischemic-contracture.json",
+      "sha256": "b8813d2af9f99ad0d0d2cb4bae90c6d731e0e06d073bf2c2975ae28fe7ac4539"
+    },
+    {
+      "path": "data/knowledge-base/vulvodynia-vestibulitis.json",
+      "sha256": "d17b77ef2cd717340dde144196e8ab509e8173567181d13da3c564bc34b8d06a"
+    },
+    {
+      "path": "data/knowledge-base/wartenberg-s-syndrome.json",
+      "sha256": "b9ce218d30cd1fdd9b0b2b35875eba5c5346d7bb4e825c62bb3b5734687cd214"
+    },
+    {
+      "path": "data/knowledge-base/wernicke-korsakoff-syndrome.json",
+      "sha256": "6a92148202ce09b296139d093987844c0b9eedf5631535aa2cacbb0d9f8d59ea"
+    },
+    {
+      "path": "data/knowledge-base/wolff-parkinson-white-syndrome.json",
+      "sha256": "d79968a745e2b33402f2db14b0b2a1c4c665e76097f4b1621eb8109236dc0ac8"
+    },
+    {
+      "path": "data/knowledge-base/wrist-disarticulation.json",
+      "sha256": "9a3f70a2c560ff1835a504c341b1bd477442fda0351538a068012fc599ddb790"
+    },
+    {
+      "path": "data/knowledge-base/xanthelasma.json",
+      "sha256": "2aeef7d270dac60e06592b5056d63a3e21d6c6499c8f6867eff41a29292ab6ef"
+    },
+    {
+      "path": "data/knowledge-base/xanthomas.json",
+      "sha256": "4ff11e41977a41eaf98b86b9745f899bd19ad638b796e3234bae9bbb884bd186"
+    },
+    {
+      "path": "data/knowledge-base/xerostomia.json",
+      "sha256": "c254b43538c520aa41a74af31ba797d0e4c506d56b661b612e5c05e1ec603d6a"
+    },
+    {
+      "path": "data/knowledge-base/zenker-s-diverticulum.json",
+      "sha256": "ccb408a0979f70c25e74cab39b52a75b0315c12a0dac82b42e51285cde8a2d37"
+    },
+    {
+      "path": "data/knowledge-base-quarantine/2026-10-07-rel-01/graph/degenerative-disc-disease-2.json",
+      "sha256": "6edc2e0b48bdf6351972e9a16cfdd154fbbf1ee628b4ca4c1fec0c51d08e113f"
+    },
+    {
+      "path": "data/knowledge-base-quarantine/2026-10-07-rel-01/graph/tinnitus-2.json",
+      "sha256": "a5bc313b4744fc9d0241c60057083e0bd8710d264c6208f0ddddf6b8d7d339c6"
+    },
+    {
+      "path": "data/knowledge-base-quarantine/2026-10-07-rel-01/graph/tinnitus.json",
+      "sha256": "f5bcf6a8202539fda88d2031e5f113fad2c5624ad0ef9724b6a043429083b6e5"
+    },
+    {
+      "path": "data/knowledge-base-quarantine/2026-10-07-rel-01/MANIFEST.json",
+      "sha256": "818bf47ff984195fb8a19bf1e5b08111cffab9f798eb8b3b165d42ff21cd6732"
+    },
+    {
+      "path": "data/knowledge-base-quarantine/2026-10-07-rel-01/mappings/chronic-pain.json",
+      "sha256": "3997981cacec6926f9dadc17e5fadc5b6cd79e9c350954674061ad0b15df2c4e"
+    },
+    {
+      "path": "data/knowledge-base-quarantine/2026-10-07-rel-01/mappings/major-depressive-disorder.json",
+      "sha256": "72653877a3376f60ae4c5e669baaa52243f729f14b9e1cd9af4c7921abbc68b6"
+    },
+    {
+      "path": "data/knowledge-base-quarantine/2026-10-07-rel-01/mappings/post-traumatic-stress-disorder.json",
+      "sha256": "e3b87da1d2e3eace44a8038b64e9ee6c322b9e767183599330dd102997de45d6"
+    },
+    {
+      "path": "data/knowledge-base-quarantine/2026-10-07-rel-01/RECONCILIATION.md",
+      "sha256": "81a247c1254c2ba04d6d5dd200f19bb3a9007072ba99ccede258a1c2bb9d58a2"
+    },
+    {
+      "path": "data/presumptives/agent-orange.json",
+      "sha256": "1e650f2a1cf2d157e20322a1fd06fe09d12825fe0397dc8ee88ca2ce46850d26"
+    },
+    {
+      "path": "data/presumptives/burn-pits.json",
+      "sha256": "1c8fe0fd205a993de2dbcaf0f4c6719998fdc39044c2b618bafbf9849463e54c"
+    },
+    {
+      "path": "data/regulatory-actions/2900-AR32.json",
+      "sha256": "8d1ca6ac0f5b7e23ca326a9180c36e2ea5ea1acb86bb55baf3f245178ed99fbc"
+    },
+    {
+      "path": "data/regulatory-actions/2900-AR75.json",
+      "sha256": "faf57b7cc7ebe482de33807405b9db3efe8c1d9d8f1457c35e67107347f4920d"
+    },
+    {
+      "path": "data/regulatory-actions/2900-AS40.json",
+      "sha256": "132b7d966337bbd1d4fff9b460e7bf5e6b0e31d8cb4da8df49f36c383a2e86f9"
+    },
+    {
+      "path": "data/regulatory-actions/2900-AS49.json",
+      "sha256": "8ff7df84f9ac52b833257cf41875215a2dd38e178e2c60f9f26f1ca5b63797cc"
+    },
+    {
+      "path": "data/regulatory-actions/README.md",
+      "sha256": "21061650a4380b3ec97b1e3b3aa297c79d705b8cea5841e7679f908d8f836601"
+    }
+  ],
+  "restoredFrom": {
+    "originalPath": "data/knowledge-base/chronic-pain.json",
+    "quarantinePath": "data/knowledge-base-quarantine/2026-10-07-rel-01/mappings/chronic-pain.json",
+    "sha256": "3997981cacec6926f9dadc17e5fadc5b6cd79e9c350954674061ad0b15df2c4e",
+    "bytes": 7474,
+    "reason": "Primary condition id \"chronic-pain\" is not present in data/conditions. Catalog alternatives (e.g. unexplained-chronic-pain) are not medically interchangeable, so the root cannot be guessed. Needs owner re-rooting or a reviewed catalog addition."
+  },
+  "counts": {
+    "before": 819,
+    "after": 820
+  },
+  "boundaries": {
+    "liveDataWritten": false,
+    "quarantineModified": false,
+    "mappingBytesPreserved": true,
+    "publicationApproved": false,
+    "citationVerificationPerformed": false,
+    "graphNodesAdded": 0
+  },
+  "checks": [
+    {
+      "name": "proposal-preflight",
+      "passed": true,
+      "detail": "Shared catalog/mapping schemas, unique lookup identity, explicit scope distinctions, quarantine hash/size, draft state, targets and pointer guards passed. No owner approval inferred."
+    }
+  ],
+  "landingRequirements": [
+    "Owner decision is an attestation, not a cryptographic identity check; reviewed PR provenance must establish who approved it.",
+    "Coordinate the versioned identity-count pins, coverage ledger and historical/current-state documents before landing the two candidate additions in a reviewed PR.",
+    "Run the full test suite, citation audit, client corpus build and deployment-artifact checks on the landing commit. No automatic pin rewrite or promotion is authorized."
+  ]
+}

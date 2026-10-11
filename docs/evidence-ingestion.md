@@ -6,7 +6,7 @@ Step 4 can optionally identify exact evidence excerpts that may help a Veteran o
 
 ## Privacy boundary
 
-Raw supporting-document bytes and text stay in the browser. The application server receives only the existing `documentsShared` yes/no workflow choice. Raw medical text and locally extracted quotations are not written to application logs, aggregate recommendation events, workflow cookies, URLs, or user accounts.
+Raw supporting-document bytes and text stay in the browser. The application server receives neither those bytes/text nor a `documentsShared` workflow field; workflow context is browser-local. Raw medical text and locally extracted quotations are not written to application logs, aggregate recommendation events, URLs, or user accounts.
 
 The browser stores only the extracted excerpt objects needed for Step 6 in `sessionStorage`. That storage is tab-scoped, is removed when the tab is closed, and can be cleared manually from Step 4.
 

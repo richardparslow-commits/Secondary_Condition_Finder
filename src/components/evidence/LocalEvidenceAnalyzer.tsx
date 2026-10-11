@@ -154,6 +154,18 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
   // `busyRef.current || busy` and sets both synchronously before any await.
   // Pinned by `tests/evidence-storage-parse-warning: busyRef guard at every entry point`.
   const busyRef = useRef(false);
+  // A07: extraction generation fence. Finish/restart navigates away
+  // (unmount), so a detached async loop must stop before its next write —
+  // otherwise a chunk-boundary checkpoint or excerpt commit resurrects data
+  // that cleanup just cleared. Each run captures the current generation and
+  // abandons itself when it no longer matches; unmount invalidates it.
+  const extractionGenerationRef = useRef(0);
+
+  useEffect(() => {
+    return () => {
+      extractionGenerationRef.current += 1;
+    };
+  }, []);
 
   useEffect(() => {
     const restoreTimer = window.setTimeout(() => {
@@ -341,6 +353,8 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
     }
     busyRef.current = true;
     setBusy(true);
+    const generation = (extractionGenerationRef.current += 1);
+    const isCurrentGeneration = () => generation === extractionGenerationRef.current;
     setWarnings([]);
     setMessage(null);
 
@@ -349,6 +363,7 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
     let processed = 0;
     try {
       for (const row of targets) {
+        if (!isCurrentGeneration()) return;
         const result = await analyzeOneFile(row, remainingBatchBytes);
         nextWarnings.push(...result.warnings);
         processed += result.processed;
@@ -356,6 +371,7 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
         if (!result.skipped) setRowOutcome(row.id, result.hint);
       }
 
+      if (!isCurrentGeneration()) return;
       setWarnings(nextWarnings);
       setMessage(
         processed > 0
@@ -363,8 +379,10 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
           : "No document produced extractable text or passed the active limits.",
       );
     } finally {
-      busyRef.current = false;
-      setBusy(false);
+      if (isCurrentGeneration()) {
+        busyRef.current = false;
+        setBusy(false);
+      }
     }
   }
 
@@ -375,6 +393,8 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
 
     busyRef.current = true;
     setBusy(true);
+    const generation = (extractionGenerationRef.current += 1);
+    const isCurrentGeneration = () => generation === extractionGenerationRef.current;
     setWarnings([]);
     setMessage(null);
 
@@ -384,6 +404,7 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
         current.map((item) => (item.id === id ? updated : item)),
       );
       const result = await analyzeOneFile(updated, Number.MAX_SAFE_INTEGER);
+      if (!isCurrentGeneration()) return;
       setWarnings(result.warnings);
       setRowOutcome(id, result.hint);
       setMessage(
@@ -392,8 +413,10 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
           : `${updated.sourceName} produced no new analysis under the selected author.`,
       );
     } finally {
-      busyRef.current = false;
-      setBusy(false);
+      if (isCurrentGeneration()) {
+        busyRef.current = false;
+        setBusy(false);
+      }
     }
   }
 
@@ -412,6 +435,8 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
     }
     busyRef.current = true;
     setBusy(true);
+    const generation = (extractionGenerationRef.current += 1);
+    const isCurrentGeneration = () => generation === extractionGenerationRef.current;
     setMessage(null);
     setWarnings([]);
     setOcrProgress("Preparing the browser-local OCR worker…");
@@ -469,6 +494,9 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
           let abortedForDeadWorker = false;
           let downscaledWarned = false;
           for (let pageNumber = resumeFromPage + 1; pageNumber <= readLimit; pageNumber += 1) {
+            // A07 fence: abandon a detached run at the next page boundary
+            // instead of recognizing and checkpointing on.
+            if (!isCurrentGeneration()) return;
             setOcrProgress(`OCR page ${pageNumber} of ${readLimit} in ${row.sourceName}…`);
             let page: Awaited<ReturnType<typeof pdfDocument.getPage>> | null = null;
             try {
@@ -559,6 +587,9 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
             // checkpoint so an interrupted/crashed job resumes where it
             // stopped instead of re-recognizing from page 1.
             if (pageNumber % OCR_PAGES_PER_CHUNK === 0) {
+              // A07 fence: stop a detached loop before it can resurrect the
+              // checkpoint that finish/restart cleanup just cleared.
+              if (!isCurrentGeneration()) return;
               await yieldToBrowser();
               if (checkpointEnabled) {
                 const persisted = saveOcrCheckpoint(storage, {
@@ -579,6 +610,9 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
               }
             }
           }
+          // A07 fence: never commit analysis or touch the checkpoint for a
+          // detached run — finish/restart cleanup already ran.
+          if (!isCurrentGeneration()) return;
           if (abortedForDeadWorker) {
             // Keep the checkpoint so the next Local OCR run resumes where the
             // dead worker stopped.
@@ -613,8 +647,10 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
       setMessage(`${row.sourceName} could not be OCR'd locally.`);
     } finally {
       setWarnings(nextWarnings);
-      busyRef.current = false;
-      setBusy(false);
+      if (isCurrentGeneration()) {
+        busyRef.current = false;
+        setBusy(false);
+      }
       setOcrProgress(null);
     }
   }
@@ -671,7 +707,7 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
       <div>
         <h2 id="local-evidence-heading" className="text-xl font-bold">Local Evidence Review</h2>
         <p className="mt-1 text-sm text-slate-600">
-          PDF, DOCX, and supported text records are read in this browser tab. Raw document bytes and raw document text are not submitted to the application server, stored in workflow cookies, or written to application logs. If browser session storage is unavailable or full, the current analysis continues in memory but may not restore after navigation or reload.
+          PDF, DOCX, and supported text records are read in this browser tab. Raw document bytes and raw document text are not submitted to the application server, stored in browser-local workflow records, or written to application logs. If browser session storage is unavailable or full, the current analysis continues in memory but may not restore after navigation or reload.
         </p>
         <p className="mt-1 text-sm text-slate-600">
           OCR may save a full-text resume checkpoint in this tab’s session storage for up to 15 minutes. It is removed on successful completion, Clear local evidence, source removal, Finish, or Restart. Browser session restoration can preserve storage; tab closure is not a secure-erasure guarantee.
@@ -751,14 +787,14 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
                 <li key={row.id} className="grid gap-2 rounded-lg border border-slate-200 bg-white p-3 sm:grid-cols-[1fr_auto_auto_auto] sm:items-center">
                   <div className="min-w-0">
                     <p className="truncate text-sm font-medium" title={row.sourceName}>{row.sourceName}</p>
-                    <p className="text-xs text-slate-500">
+                    <p className="text-xs text-muted">
                       {(row.file.size / (1024 * 1024)).toFixed(1)} MB{row.analyzed ? " · analyzed" : " · not yet analyzed"}
                     </p>
                     {row.hint === "va-decision-letter" && (
                       <p className="mt-1 text-xs font-medium text-amber-700">Looks like a VA decision letter or adjudication text — set Author to “Non-clinician” unless a clinician wrote the medical opinion.</p>
                     )}
                     {row.hint === "clinical-note" && (
-                      <p className="mt-1 text-xs text-slate-500">Looks like a clinical note.</p>
+                      <p className="mt-1 text-xs text-muted">Looks like a clinical note.</p>
                     )}
                   </div>
                   <label className="block text-xs font-medium text-slate-600">
@@ -874,7 +910,7 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
                   {analysis.excerpts.slice(0, limits.storedExcerptsPerSource).map((excerpt, index) => (
                     <li key={`${excerpt.locator}-${index}`} className="text-sm">
                       <span className={`mr-2 rounded px-1.5 py-0.5 text-xs ${excerpt.strength === "nexus-relevant" ? "bg-blue-100 text-blue-900" : "bg-slate-200 text-slate-800"}`}>{excerpt.strength}</span>
-                      <q>{excerpt.quote}</q> <span className="text-xs text-slate-500">— {excerpt.locator}</span>
+                      <q>{excerpt.quote}</q> <span className="text-xs text-muted">— {excerpt.locator}</span>
                     </li>
                   ))}
                 </ul>

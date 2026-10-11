@@ -52,16 +52,21 @@ describe("health endpoint adjacency-graph state", () => {
     expect(body.components.kbGraph).toMatchObject({ status: "ok", nodes: 0, edges: 0 });
   });
 
-  it("degrades to 503 when the loader rejects invalid graph data", async () => {
+  it("degrades to 503 on invalid graph data without exposing exception details", async () => {
+    const sentinel = "SYNTHETIC-GRAPH-DIAGNOSTIC-SECRET";
     mockLoadKbGraph.mockImplementation(() => {
-      throw new Error("[kb-graph] Invalid node mapping in bad.json: invalid data");
+      throw new Error(`[kb-graph] Invalid node mapping in ${sentinel}: sensitive details`);
     });
 
     const { response, body } = await health();
     expect(response.status).toBe(503);
     expect(body.status).toBe("degraded");
-    expect(body.components.kbGraph.status).toBe("error");
-    expect(body.components.kbGraph.detail).toContain("Invalid node mapping");
+    expect(body.components.kbGraph).toMatchObject({
+      status: "error",
+      detail: "Knowledge graph validation failed.",
+    });
     expect(body.components.catalog.status).toBe("ok");
+    expect(JSON.stringify(body)).not.toContain(sentinel);
+    expect(JSON.stringify(body)).not.toContain("sensitive details");
   });
 });

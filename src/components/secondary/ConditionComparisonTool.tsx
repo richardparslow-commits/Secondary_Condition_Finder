@@ -92,7 +92,7 @@ export function ConditionComparisonTool({ results, catalog }: Props) {
                   disabled={!isSelected && selected.length >= MAX_SELECT}
                 />
                 <span>{result.conditionName}</span>
-                <span className="text-xs text-slate-500">({result.bodySystem})</span>
+                <span className="text-xs text-muted">({result.bodySystem})</span>
               </label>
             );
           })}

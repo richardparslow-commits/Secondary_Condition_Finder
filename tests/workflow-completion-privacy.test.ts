@@ -5,21 +5,27 @@ import { describe, expect, it } from "vitest";
 
 import {
   clearSecondaryWorkflowLocalState,
+  evidenceDepthStorageKey,
   evidenceGapReviewStorageKey,
   pathwayRecordChecklistStorageKey,
   secondaryWorkflowLocalStorageKeys,
   vaGovRecordWalkthroughStorageKey,
 } from "../src/lib/secondary-workflow/local-state";
+import { browserWorkflowContextStorageKey } from "../src/lib/secondary-workflow/browser-context";
 import { evidenceAnalysisStorageKey } from "../src/lib/evidence/extract";
 import { OCR_CHECKPOINT_STORAGE_KEY } from "../src/lib/evidence/ocr-session";
-import { evidenceDepthStorageKey } from "../src/lib/secondary-workflow/local-state";
 
 function readRepoFile(relativePath: string): string {
   return fs.readFileSync(path.join(process.cwd(), relativePath), "utf8");
 }
 
+/**
+ * PRIV-01 stage 2: completion no longer clears a server cookie (there is no
+ * cookie in the workflow path); it clears every browser-local workflow key and
+ * navigates only after cleanup is confirmed.
+ */
 describe("secondary workflow completion privacy lifecycle", () => {
-  it("clears all six registered browser-local workflow stores", () => {
+  it("clears all seven registered browser-local workflow stores", () => {
     const removed: string[] = [];
     const storage = {
       removeItem(key: string) {
@@ -30,6 +36,7 @@ describe("secondary workflow completion privacy lifecycle", () => {
     clearSecondaryWorkflowLocalState(storage);
 
     expect(secondaryWorkflowLocalStorageKeys).toEqual([
+      browserWorkflowContextStorageKey,
       evidenceAnalysisStorageKey,
       evidenceGapReviewStorageKey,
       pathwayRecordChecklistStorageKey,
@@ -38,6 +45,7 @@ describe("secondary workflow completion privacy lifecycle", () => {
       evidenceDepthStorageKey,
     ]);
     expect(removed).toEqual([
+      browserWorkflowContextStorageKey,
       evidenceAnalysisStorageKey,
       evidenceGapReviewStorageKey,
       pathwayRecordChecklistStorageKey,
@@ -47,24 +55,28 @@ describe("secondary workflow completion privacy lifecycle", () => {
     ]);
   });
 
-  it("uses server actions to clear the encrypted cookie before completion redirects", () => {
-    const actions = readRepoFile("src/lib/actions/secondary.ts");
-
-    expect(actions).toContain("clearSecondaryWorkflowSession");
-    expect(actions).toMatch(/finishSecondaryWorkflow[\s\S]*await clearSecondaryWorkflowSession\(\);[\s\S]*redirect\("\/secondary"\)/);
-    expect(actions).toMatch(/restartSecondaryWorkflow[\s\S]*await clearSecondaryWorkflowSession\(\);[\s\S]*redirect\("\/secondary\/diagnosed"\)/);
-  });
-
-  it("clears browser-local state before both user-reachable completion submissions", () => {
+  it("clears browser-local state before either completion navigation", () => {
     const controls = readRepoFile("src/components/secondary/SecondaryWorkflowCompletionActions.tsx");
-    const evidencePage = readRepoFile("src/app/secondary/evidence/page.tsx");
 
     expect(controls).toContain("clearSecondaryWorkflowLocalState(window.sessionStorage)");
-    expect(controls).toContain("action={finishSecondaryWorkflow}");
-    expect(controls).toContain("action={restartSecondaryWorkflow}");
-    expect(controls).toContain("onSubmit={clearBrowserLocalWorkflowState}");
-    expect(evidencePage).toContain("<SecondaryWorkflowCompletionActions />");
-    expect(evidencePage).toContain("<SecondaryWorkflowRestartButton label=\"Clear saved review state and start over\" />");
+    expect(controls).toContain('clearAndLeave("/secondary")');
+    expect(controls).toContain('clearAndLeave("/secondary/diagnosed")');
+    // A failed cleanup must not navigate: the error is surfaced instead.
+    expect(controls).toContain("setError(");
+    expect(controls).toContain("cleanup could not be confirmed");
+  });
+
+  it("surfaces the same completion controls on Step 6", () => {
+    const evidenceStep = readRepoFile("src/components/secondary/steps/EvidenceStep.tsx");
+
+    expect(evidenceStep).toContain("<SecondaryWorkflowCompletionActions />");
+    expect(evidenceStep).toContain(
+      '<SecondaryWorkflowRestartButton label="Clear saved review state and start over" />',
+    );
+  });
+
+  it("keeps the retired server completion actions deleted", () => {
+    expect(fs.existsSync(path.join(process.cwd(), "src/lib/actions/secondary.ts"))).toBe(false);
   });
 
   it("does not add clearing-time network or telemetry channels", () => {

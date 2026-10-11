@@ -151,7 +151,7 @@ export function SecondarySuggestionsTabs({
         {active === "timeline" ? (
           <ConditionTimelineVisualization conditions={conditions} connections={connections} />
         ) : null}
-        <p className="mt-3 text-xs leading-relaxed text-slate-500">
+        <p className="mt-3 text-xs leading-relaxed text-muted">
           Timeline is derived only from the approximate years you entered in Step 4 and the authored
           relationships reviewed in the List view. It does not add diagnoses, estimate likelihood of
           approval, or replace review of your records and current VA guidance with a qualified

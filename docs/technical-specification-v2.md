@@ -10,15 +10,17 @@
 
 Secondary Condition Finder is a full-stack Next.js application deployed on Vercel with an optional
 Azure Static Web Apps fallback. It implements a privacy-first, browser-local architecture: sensitive
-workflow state stays client-side and encrypted, while the server provides stateless recommendation
-logic, curated knowledge-base data, and credential-gated public reference integrations.
+private workflow state stays in schema-bounded, tab-scoped browser storage and is not sent to
+the server; public authored data and credential-gated public-reference integrations are served
+separately.
 
 Core layers:
 
 - **Edge & Proxy Layer** — `src/proxy.ts`: per-request cryptographically unique CSP nonce, security
   headers, nonce propagation via `x-nonce` (consumed in `src/app/layout.tsx` through `connection()`).
-- **Application Layer** — Next.js App Router with Server Actions; all mutations are POST form
-  submissions; workflow routes are `force-dynamic` and cookie-backed (no query-state routing).
+- **Application Layer** — Next.js App Router; the browser-local secondary and presumptive
+  workflows use client-side state, while Server Actions serve only explicitly bounded public
+  operations. Workflow context is neither cookie-backed nor query-state routed.
 - **Data Layer** — JSON condition catalog, knowledge base, and presumptive/exposure catalogs in
   version control, loaded synchronously and cached in-process; no database.
 - **Client Layer** — React 19 interactive UI; browser-local evidence processing (pdf.js,
@@ -34,11 +36,11 @@ Core layers:
 | Runtime & Framework | Next.js 16.3 (App Router), Node.js 22.x | Full-stack React with server components, server actions, edge proxy; Node 22 LTS |
 | UI Framework | React 19.2, TypeScript ^5 | Type safety, JSX, hooks |
 | Styling | Tailwind CSS ^4 | Utility-first CSS; postcss plugin |
-| State Management | Server Actions (POST) + HttpOnly encrypted cookies | No client-side global state; workflow state AES-256-GCM encrypted in cookies |
+| State Management | Browser-local versioned workflow records; Server Actions only for bounded public-directory lookup | No per-user server workflow state; tab-scoped `sessionStorage` context with schema validation |
 | Schema & Validation | Zod ^4.5 | Runtime validation of JSON data and form inputs; strict unknown-key rejection |
 | Testing | Vitest ^4.1 + Chrome/ChromeDriver E2E | Fast ESM-native regression suite; real-browser journey gates in CI. Suite size is whatever `vitest run` reports — not pinned here |
 | Document Processing | pdfjs-dist 6.3, Tesseract.js ^6.0 (WASM OCR), Mammoth 1.12 | Browser-local PDF/DOCX extraction; OCR without server transmission |
-| Cryptography | Node.js crypto (AES-256-GCM) | Encrypted/authenticated workflow cookies; no external crypto libraries |
+| Cryptography | Node.js crypto (AES-256-GCM) | Used for the separate VA sandbox account server session store; no workflow-context encryption cookies |
 | Observability | @opentelemetry/api 1.9 (no SDK/exporter registered; automatic trace export disabled by policy) | Server-side metric helpers only; no client telemetry |
 | Build & Deployment | Vercel (primary), Azure Static Web Apps (`npm run build:azure` standalone packaging; legacy, manual) | Serverless deployment, edge middleware, build caching |
 | HTTP Client | Native fetch (Node 22) | VA reference adapters and regulatory preflight |
@@ -67,29 +69,26 @@ Route structure (all workflow steps live under the `/secondary/` group — there
   `upload/` (Step 4, browser-local evidence), `suggestions/` (Step 5),
   `evidence/` (Step 6 — evidence review, pathway mapping, checklists).
 - `/presumptive/` — presumptive workflow entry; `/results/` — deterministic match output.
-- `/va-forms/`, `/va-reference/` — credential-gated reference explorers.
+- `/va-forms/`, `/va-reference/` — credential-gated public-reference explorers.
+- `/va-account/` — optional, disabled-by-default VA sandbox self-service account experiment for bounded read-only rating-summary and claim-status data.
 - `/scenarios/` — demo workflow launcher (`data/demo-scenarios.json`, bounded `scenarioId`).
 - `/about/`, `/privacy/`, `/terms/` — static content.
-- `/runtime-readiness/` — post-deploy identity/readiness validation.
-- `/api/health`, `/api/regulatory/preflight` — the only API routes.
+- `/runtime-readiness/` — dynamic, non-sensitive check of the configured primary `WORKFLOW_SESSION_SECRET` crypto-readiness marker; CI separately verifies deployment identity, alias convergence and the public route matrix.
+- `/api/health`, `/api/regulatory/preflight`, `/api/admin/cache-clear`, `/api/csp-report`, `/api/auth/*`, and `/va-account/oauth/*` — health, protected operations/reporting, and the separately gated sandbox account flow (the `/api/auth/*` pair are thin adapters over the same flow, separately rate-limited).
 
-Server Components by default; interactive elements are Client Components (`"use client"`); all
-mutations go through Server Actions.
+Server Components by default; interactive elements are Client Components (`"use client"`).
+The only current Server Action is the bounded accredited-representative public-directory lookup;
+workflow state changes remain client-side.
 
 ### C3: Server Actions (`src/lib/actions/`)
 
-Verified exported actions (names matter — the v1.0 paste invented several):
-
-- `secondary.ts`: `saveDiagnosedSelection`, `saveServiceConnectedSelection`, `saveRatingsSelection`,
-  `saveDocumentsSelection`, `finishSecondaryWorkflow`, `restartSecondaryWorkflow`.
-- `presumptive.ts`: `saveServiceHistory`.
-- `scenarios.ts`: `launchDemoScenario` (bounded `z.string().min(1).max(80)` id, catalog lookup,
-  session write, redirect to `/secondary/suggestions`).
-
-Error handling follows the validation-redirect pattern (`?error={code}` → `role=alert` surface),
-never JSON errors to the client. There is **no** `saveLegalTrack` (the legal step is a content
-page between service-connected and ratings) and **no** `saveDocumentsShared` (the real action is
-`saveDocumentsSelection`, which records the `documentsShared` flag plus bounded context fields).
+The only current workflow-area Server Action is
+`src/lib/actions/accredited-representatives.ts`:
+`searchAccreditedRepresentatives` validates bounded public-directory lookup inputs and returns
+public search results. Secondary and presumptive workflow mutations, including synthetic scenario
+launch, validate and update browser-local records; retired private-context actions are deleted.
+The remaining API routes are health/status, protected regulatory preflight, administrative cache
+clear, and CSP reporting; they do not receive veteran workflow context.
 
 ### C4: Condition Catalog (`src/lib/catalog/`)
 
@@ -139,8 +138,8 @@ page between service-connected and ratings) and **no** `saveDocumentsShared` (th
 
 - Modules: `schema.ts`, `load.ts`, `match.ts` (deterministic location/date-window Boolean
   matching — no probabilistic judgment), `pactAct.ts` (burn-pit alias/open-window handling),
-  `session.ts` (encrypted HttpOnly service-history cookie), `dd214-adapter.ts`, `templates.ts`,
-  `types.ts`.
+  `browser-history.ts` (versioned, schema-bounded tab-scoped service-history record),
+  `dd214-adapter.ts`, `templates.ts`, `types.ts`.
 - Data: `data/presumptives/` (2 authored categories: PACT Act burn-pit + Agent Orange).
 - Incomplete date ranges produce an explicit "unconfirmed dates" warning rather than a match.
 
@@ -155,14 +154,19 @@ page between service-connected and ratings) and **no** `saveDocumentsShared` (th
 - OCR: Tesseract.js WASM in-tab; CSP grants `'wasm-unsafe-eval'` for exactly this use; no
   external OCR service exists.
 
-### C9: Workflow Session & State (`src/lib/secondary-workflow/`, `src/lib/workflow-session-crypto.ts`)
+### C9: Browser-Local Workflow State and Session Crypto
 
-- State (`SecondaryWorkflowState`): diagnosed/service-connected condition id lists,
+- Secondary state (`SecondaryWorkflowState`): diagnosed/service-connected condition id lists,
   `ratingsByConditionId`, `documentsShared`, optional `medications`/`treatments`/`history`,
-  optional `symptomIds` symptom bridge, optional `conditionTimeline` (onset/diagnosis years).
-- Crypto: AES-256-GCM; `WORKFLOW_SESSION_SECRET` (≥32 chars enforced in production; missing →
-  fail-closed session ops and `/runtime-readiness` reports not-ready); 30-minute embedded TTL;
-  `HttpOnly; Secure; SameSite=Strict` cookie; no URL serialization of state.
+  optional `symptomIds` symptom bridge, optional `conditionTimeline` (onset/diagnosis years). It is
+  versioned, schema-bounded, and kept in tab-scoped `sessionStorage`; it is not encrypted in a
+  cookie or serialized into a URL. Presumptive service history follows the same browser-local
+  storage boundary in its own record.
+- `src/lib/workflow-session-crypto.ts` provides AES-256-GCM envelopes for the separate optional
+  VA-account sandbox server store, which uses `VA_ACCOUNT_SESSION_SECRET`. The legacy
+  `WORKFLOW_SESSION_SECRET` is required for the production crypto-readiness marker at
+  `/runtime-readiness` and `/api/health`; it is not used to encrypt research-workflow records or
+  VA-account tokens. The VA-account feature has separate enablement, store, and registration gates.
 
 ### C10: VA Public Reference Adapters (`src/lib/va/`)
 
@@ -196,15 +200,17 @@ page between service-connected and ratings) and **no** `saveDocumentsShared` (th
 - `data/evidence/` — `master-sources.json`, `master-relationships.json`, `regulatory-actions/`.
 - `data/demo-scenarios.json` — E2E/demo fixtures.
 
-Secondary data flow: form → Server Action → Zod validation against catalog → encrypted cookie
-write → clean redirect (no URL state) → next step renders from cookie → optional browser-local
-document extraction at Step 4 (`sessionStorage`, only the `documentsShared` flag + bounded
-context reach the server) → Step 5 locks a regulatory snapshot (`regSnapshot`) before
-`recommend()` → Step 6 reviews evidence against the same locked snapshot → completion clears
-sessionStorage and destroys the cookie.
+Secondary data flow: browser form → client-side schema validation and write to the versioned,
+schema-bounded `sessionStorage` workflow record → next step reads the same tab-local record →
+optional browser-local document extraction at Step 4 → Step 5 locks a public regulatory snapshot
+(`regSnapshot`) before local `recommend()` → Step 6 reviews evidence against the same locked
+snapshot → completion clears registered browser-local workflow/evidence state. Private context
+is not submitted to a Server Action or route handler.
 
-Presumptive data flow: service history form → `saveServiceHistory` → encrypted cookie →
-results page reads cookie → `matchPresumptives()` deterministic match → user can refine inputs.
+Presumptive data flow: service-history form → client-side validation and write to the separate
+versioned, schema-bounded browser-local service-history record → results page reads that record
+and runs `matchPresumptives()` deterministically → user can refine inputs. Private service history
+is not submitted to the server.
 
 CI gates on data: `kb:validate` (schema + referential integrity + draft/published rules),
 `audit:me-compliance` (ME-1..ME-39), `citations:audit` (unverified-citation ceiling ratchet),
@@ -212,13 +218,15 @@ CI gates on data: `kb:validate` (schema + referential integrity + draft/publishe
 
 ## Security Architecture
 
-**S1 — AuthN/AuthZ:** no user authentication; anonymous workflow scoped to an encrypted
-HttpOnly cookie; all routes public. Adding login requires a separate security review.
+**S1 — AuthN/AuthZ:** research workflows have no user authentication and use public routes;
+their private context remains in the browser and is refused if submitted to the server. The
+separate optional VA-account sandbox has its own explicit sign-in and account-session flow.
+Adding authenticated research-workflow accounts requires a separate security review.
 
-**S2 — Input validation:** every Server Action parses `FormData` through Zod and redirects with
-a validation code on failure; catalog/KB data validated at load with strict schemas (unknown
-keys rejected); no eval or dynamic code execution; client-side constraints are UX only and
-never trusted.
+**S2 — Input validation:** public Server Actions parse bounded public lookup inputs through
+Zod; the browser validates local workflow records against strict schemas (unknown keys rejected).
+Catalog/KB data is validated at load; no eval or dynamic code execution. Client-side validation
+protects the local workflow contract, while the server refuses private-context request fields.
 
 **S3 — Output encoding & CSP (verified against `src/proxy.ts`):**
 
@@ -237,9 +245,10 @@ never trusted.
 - Evidence excerpts are sanitized (control characters stripped, character limits enforced)
   before display; no Markdown/HTML rendering of extracted text.
 
-**S4 — Secrets:** `WORKFLOW_SESSION_SECRET` (cookie crypto), per-service `VA_*_API_KEY`s,
+**S4 — Secrets:** the VA account session-store encryption secret, per-service `VA_*_API_KEY`s,
 `REGULATIONS_GOV_API_KEY` (optional), `REGULATORY_SYNC_SECRET`/`CRON_SECRET` (preflight
-bearer). Server-only modules; never committed; rotation via deployment secret store.
+bearer). Server-only modules; never committed; rotation via deployment secret store. Workflow
+context itself is not encrypted or stored by the server.
 
 **S5 — Incident response:** private advisory channel per `SECURITY.md`; remediation through
 reviewed PR + full CI gate; good-faith safe-harbor for researchers.
@@ -259,23 +268,27 @@ reviewed PR + full CI gate; good-faith safe-harbor for researchers.
   `e2e/coi-isolation.mjs` under ChromeDriver and the `e2e/pathways-smoke.mjs` fetch-only smoke
   check, both against the production build), with
   diagnostic-log collection and an explicit fail-the-job aggregation step.
-- **Post-merge:** automatic Vercel deploy; `/runtime-readiness` confirms deployment identity;
+- **Post-merge:** automatic Vercel deploy; CI verifies deployment identity and alias convergence;
+  `/runtime-readiness` reports the configured primary session-secret crypto marker, while
   `/api/health` returns component latencies + circuit-breaker snapshot.
 - **Manual gates:** `citations:decay` (link-rot probe), `deploy:guard:vercel` (deploy freeze).
 
 ## API Design
 
-- **A1 — Server Actions** (`FormData`-based, type-safe, CSRF-protected by framework design):
-  see C3 for the verified action inventory. Redirect-on-success, `?error={code}`-on-failure.
-- **A2 — Public API routes** (the only two): `GET /api/health` (component health + breaker
-  snapshot) and bearer-protected `GET /api/regulatory/preflight`.
-- **A3 — Reference/workflow routes are SSR HTML only** (no JSON API): `/secondary/suggestions`,
-  `/va-forms/finder`, `/va-reference/`.
+- **A1 — Server Action** (`FormData`-based, type-safe, framework CSRF protections):
+  `searchAccreditedRepresentatives` accepts only bounded public-directory lookup parameters.
+- **A2 — API routes:** `GET /api/health`, bearer-protected `GET /api/regulatory/preflight`,
+  protected administrative cache-clear `POST`, and CSP-report `POST`; none accepts private
+  workflow context.
+- **A3 — Workflow/reference pages:** workflow shells serve public content; private context and
+  recommendation state are processed in the browser, while bounded reference lookups run through
+  their server loaders.
 
 ## Testing Strategy
 
-- **T1 — Unit/integration (Vitest):** catalog, KB, engine, presumptive matcher, evidence
-  parsers, session crypto, workflow state parsers, research-aid contracts, locator contracts —
+- **T1 — Unit/integration (Vitest):** catalog, KB, recommendation engine, presumptive matcher,
+  evidence parsers, VA account session crypto, browser-local workflow record parsers,
+  research-aid contracts, locator contracts —
   full suite, enforced fail-on-any per PR (live counts are whatever `vitest run` reports).
 - **T2 — Composition/architecture:** `npm run test:composition` — critical-module test imports,
   Server Action placement, client boundaries, secondary/presumptive track separation,
@@ -298,7 +311,7 @@ reviewed PR + full CI gate; good-faith safe-harbor for researchers.
 | Recommendation engine | <200ms budget | Measured single-digit ms on E2E journeys |
 | PDF extraction (10 pages) | <500ms | Browser-local pdf.js |
 | OCR per scanned page | 500ms–3s | Browser-dependent WASM |
-| Server Action latency | <100ms | Validate + encrypt + set cookie + redirect |
+| Public Server Action latency | <100ms | Validate bounded public-directory lookup input and return the lookup result |
 | Edge CSP nonce | <10ms | Per-request crypto |
 | First Contentful Paint | <1.5s | Vercel edge |
 | Time to Interactive | <2.5s | Hydration |
@@ -306,13 +319,12 @@ reviewed PR + full CI gate; good-faith safe-harbor for researchers.
 ## Future Roadmap (Deferred)
 
 - Build-time sharded CRG indexer (current load is synchronous JSON).
-- Authenticated user sessions (claim-history persistence; representative multi-client
-  management) — requires separate security review.
+- Authenticated research-workflow accounts (claim-history persistence; representative
+  multi-client management) — requires separate security review.
 - Credentialed VA API integration (auto-fetch service history) — separate security review.
 - Rating automation beyond the informational Rating Guide (currently manual VA lookup).
 - Multilingual support.
 
 ---
 
-**Version**: 2.0 — regenerated from the 2026-09-11 conformance audit (`08cda5b`); supersedes the
-v1.0 circulated paste. Living source of truth: `docs/technical-specification.md` (v1.6).
+**Version**: 2.1 — corrects the route inventory and distinguishes browser-local workflow records from the separate VA-account store and legacy crypto-readiness marker (2026-10-09). Living source of truth: `docs/technical-specification.md` (v1.7); the original 2026-09-11 conformance-audit snapshot is retained in repository history.

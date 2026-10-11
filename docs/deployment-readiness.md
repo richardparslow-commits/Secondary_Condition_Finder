@@ -33,14 +33,20 @@ Issue #213 is the completed historical evidence record for the first verified Ve
 
 Configure server-only values in the Vercel project's **Production** environment. Never expose secrets through `NEXT_PUBLIC_*` variables.
 
-### Workflow-session security
+### Runtime crypto-readiness marker
 
-| Setting | Required | Behavior |
+The secondary and presumptive research workflows keep state in browser `sessionStorage`; they do not require a server-side workflow cookie or workflow-session encryption secret. The legacy runtime marker below remains a production health/readiness gate, but it is not proof of research-workflow persistence or optional VA-account readiness.
+
+| Setting | Required for readiness marker | Behavior |
 |---|---:|---|
-| `WORKFLOW_SESSION_SECRET` | Yes | Cryptographically random server-only value of at least 32 characters. Production fails closed when absent/too short. |
-| `SECONDARY_WORKFLOW_SESSION_SECRET` | Legacy only | Backward-compatible fallback; new deployments must use `WORKFLOW_SESSION_SECRET`. |
+| `WORKFLOW_SESSION_SECRET` | Yes | Server-only value, at least 32 characters. Production `/api/health` and `/runtime-readiness` fail readiness when absent/too short; this marker does not encrypt research workflow context. |
+| `SECONDARY_WORKFLOW_SESSION_SECRET` | Retired | Retired 2026-10-10 (REL-04 follow-up): no longer read; the crypto helper and the readiness probe both require primary `WORKFLOW_SESSION_SECRET`. |
 
-Vercel environment-variable changes apply to newly created deployments. After adding or rotating the workflow-session secret, create a new production deployment and require a fresh successful Production Runtime Readiness result.
+Vercel environment-variable changes apply to newly created deployments. After adding or rotating the primary readiness-marker secret, create a new production deployment and require a fresh successful Production Runtime Readiness result.
+
+### Separate VA-account sandbox session store
+
+The optional VA-account sandbox is disabled by default and uses its own encryption key and store configuration. To configure that feature, see [VA account sandbox](va-account-sandbox.md): `VA_ACCOUNT_SESSION_SECRET` (at least 32 characters), `VA_ACCOUNT_STORE_URL` / `VA_ACCOUNT_STORE_TOKEN` for a hosted store, exact `APP_URL`, and issued client registration settings. The generic runtime readiness marker does not confirm this feature is configured.
 
 ### VA public-reference environment selection
 
@@ -78,7 +84,7 @@ Merely setting `VA_API_ENV=production` must not activate production traffic. `VA
 
 `/runtime-readiness` is force-dynamic and deliberately non-sensitive. It does not return the secret, its length, a hash, derived key material, cookie content, or environment-variable values.
 
-The route reports `data-runtime-readiness="ready"` only when the deployed runtime is production, the primary `WORKFLOW_SESSION_SECRET` satisfies the production requirement, and the real AES-256-GCM workflow-session implementation can seal and reopen an in-memory probe.
+The route reports `data-runtime-readiness="ready"` only when the deployed runtime is production, the primary `WORKFLOW_SESSION_SECRET` satisfies the production requirement, and the AES-256-GCM helper can seal and reopen an in-memory probe. This verifies the legacy crypto-readiness marker only; it does not inspect browser-local research workflow state or the independent VA-account session store.
 
 ### Automated evidence contract
 
@@ -117,7 +123,7 @@ VA administrative reference data remains outside the decision logic:
 
 - secondary recommendations are computed independently of VA terminology lookup;
 - per-result VA reference blocks are annotations only;
-- optional service-branch context is stored in the encrypted presumptive session but is not read by `matchPresumptives()`.
+- optional service-branch context is stored in the browser-local presumptive service-history record and is not read by `matchPresumptives()`.
 
 ## Browser security baseline
 
@@ -168,6 +174,22 @@ Sources over the active depth's limits are rejected rather than silently truncat
 ## Legacy Azure manual fallback
 
 The former Azure Static Web Apps path remains **manual legacy fallback only**. It has no `push` or `pull_request` trigger and is not a production readiness signal. The normal production host is Vercel.
+
+## Shared admission ceiling (SEC-02)
+
+`src/lib/rate-limiter.ts` charges one **shared admission ceiling** on every limited surface, in addition to the per-client bucket. It bounds traffic that presents no usable identity and traffic that rotates identities so no bucket ever accumulates; it is also the per-instance throughput floor for limited surfaces, because honest requests pay into it too. The default is **6000 charges per 60-second window per instance** (`RATE_LIMIT_UNATTRIBUTED_MAX`); the derivation, its failure directions and the triggers that force a re-derivation are recorded in [the ceiling-default decision](sec-02-admission-ceiling-default-2026-10-09.md).
+
+**Read it.** `GET /api/health` reports the ceiling as `components.rateLimit.ceiling` (`max`, `windowMs`, `variable`, `key`), beside `components.rateLimit.identity`, `.scope` (`single-process` | `per-instance`) and `.store` (`mode`, `distributed`, `blockedBy`). `max` is read off the limiter that actually enforces it, so the reported value and the applied value cannot drift apart.
+
+**Verify it after every deployment.** The reported `ceiling.max` must equal the value you intended. Only plain decimal digits parse: `1e9`, `0x10`, `5.0`, `5x` or an empty value **silently fall back to the default**, so such a typo shows up as the number you did not set rather than as an error. After changing `RATE_LIMIT_UNATTRIBUTED_MAX`, re-read `/api/health` and confirm the new value took effect.
+
+**Read it per instance.** The counter is per process, so a fleet-wide reading needs a request to each instance (or a platform that pins them). `components.rateLimit.scope` reports the *classification* — `per-instance` whenever `NODE_ENV=production` or a distributed-runtime marker is set — not a measured instance count.
+
+**Read a refusal.** Every limiter answers `429` with `Retry-After` and the same body, so a single response does not say which budget refused. Distinguish by breadth: many *different* client identities refused within the same minute indicates the shared ceiling is saturated; the same identity refused repeatedly is its own per-client bucket. The refusal reason (`refusedBy`) is computed inside `chargeAdmission` but is not currently logged or returned, so ceiling saturation is not directly alertable today — close that gap before treating a 429 count as a capacity signal.
+
+**When it trips.** The ceiling is a last-resort aggregate bound, not a target. If honest traffic can reach it, raise the value and record the new derivation; if it trips only under abuse, reduce pressure at the edge instead of raising the number, which would trade the abuse bound for nothing.
+
+**What it is not.** The counter is process-local, so the fleet aggregate is roughly the ceiling × instance count, and `components.rateLimit.store` says so (`mode: "process-local"`, `blockedBy: "no-store-provisioned"`). This is **not** a deployment-wide quota; the evidence required before it may be described as one is the operator procedure in [the SEC-02 hosted acceptance runbook](sec-02-hosted-acceptance-runbook-2026-10-09.md).
 
 ## Production verification checklist
 

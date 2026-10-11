@@ -31,7 +31,7 @@ If you are unsure whether an activity falls inside this policy, ask us first thr
 
 ### A Useful Report Includes
 
-- The affected route, component, dependency, workflow, or configuration. Explicitly note if the issue involves Next.js Server Actions (`src/lib/actions/`), the edge proxy/middleware (`src/proxy.ts`), CSP nonce handling, the encrypted/authenticated workflow cookie, or a Content Security Policy bypass.
+- The affected route, component, dependency, workflow, or configuration. Explicitly note if the issue involves Next.js Server Actions (`src/lib/actions/`), the edge proxy/middleware (`src/proxy.ts`), CSP nonce handling, the VA account session cookie/store, or a Content Security Policy bypass.
 - The affected commit SHA or deployment identifier when known.
 - A concise description of the security impact (e.g., State Tampering, XSS, SSRF, Information Disclosure, Supply Chain).
 - Reproducible steps using **synthetic/non-sensitive data**.
@@ -42,7 +42,7 @@ If you are unsure whether an activity falls inside this policy, ask us first thr
 
 ## Handling Expectations
 
-The project will triage reports based on exploitability and potential impact to confidentiality, integrity, availability, credentials, deployment controls, and user data. This policy does not promise a fixed remediation or disclosure timeline, though critical vulnerabilities affecting the encrypted workflow session cookie, the edge proxy/CSP layer, or Server Action payload handling will be prioritized.
+The project will triage reports based on exploitability and potential impact to confidentiality, integrity, availability, credentials, deployment controls, and user data. This policy does not promise a fixed remediation or disclosure timeline, though critical vulnerabilities affecting the VA-account sandbox session store/cookies, retired-workflow-cookie cleanup, the edge proxy/CSP layer, or Server Action payload handling will be prioritized.
 
 Security fixes should follow the normal reviewed-PR path and pass the repository's full CI gate (including `npm run kb:validate`, `npm run citations:audit`, `npm run test:composition`, strict Zod schema checks, lint, typecheck, and the full test suite) before production deployment, unless immediate containment requires disabling or rolling back an affected feature first.
 
@@ -50,17 +50,17 @@ The operational response process, credential-rotation rules, evidence-handling r
 
 ## Current Data Boundary & Attack Surface
 
-The current production scope is strictly limited to a client-side claim-preparation research accelerator. **The application does not:**
+The current production scope is a browser-local claim-preparation research accelerator, with a separate, disabled-by-default sandbox-only account experiment. **The application does not:**
 
-1. Connect to an individual Veteran's VA account (no VA API integration, no credentialed VA access).
+1. Connect to an individual Veteran's production VA account (production access is not configured or authorized).
 2. Submit disability claims or communicate with VA adjudication systems.
 3. Upload, transmit, or persistently store browser-local evidence-review source documents (PDFs/images) to the application server. Documents and extracted text remain in the browser; only sanitized, bounded extracted-text summaries are surfaced in the workflow.
-4. Store full workflow state in client-visible cookies, or persist workflow history server-side. Workflow state is held in short-lived, encrypted/authenticated first-party cookies. Operational workflow/recommendation events emit allowlisted action/status/route/count/duration fields to platform logs; host retention and exception sanitation must be reviewed rather than described as absent.
+4. Store full workflow state in cookies or persist per-user workflow history server-side. Secondary and presumptive workflow state is kept in versioned, schema-bounded, tab-scoped browser records; retired workflow cookies are tombstoned if a stale browser presents them. The separate optional VA sandbox account experiment stores an opaque handle cookie while encrypted tokens stay in its isolated server session store. Operational workflow/recommendation events emit allowlisted action/status/route/count/duration fields to platform logs; client error boundaries and traced recommendation failures withhold exception content. Verify host retention/access and deployed tracing configuration rather than describing event logging as absent.
 5. Initialize client-side analytics or third-party telemetry SDKs. Browser connectivity is constrained by the deployed Content Security Policy (`connect-src 'self'`).
 
-VA sandbox integration is disabled by default, and credentialed sandbox verification remains a separately governed future gate.
+VA production account access remains unavailable; the separate sandbox account experiment is disabled by default, and credentialed sandbox verification remains a separately governed gate.
 
-**Future Boundary Changes:** A future change that introduces Veteran-specific external API transmission, authenticated VA access, persistent sensitive-data storage, server-side workflow state, or alters the Next.js Server Action payload limits must update this privacy/security documentation and receive separate architectural review before it is treated as production-ready.
+**Future Boundary Changes:** A future change that introduces Veteran-specific external API transmission beyond the separately gated VA sandbox experiment, production-account access, persistent sensitive-data storage, server-side research-workflow state, or alters the Next.js Server Action payload limits must update this privacy/security documentation and receive separate architectural review before it is treated as production-ready.
 
 ## Content Security Policy
 
@@ -159,7 +159,7 @@ Production deployments (Vercel primary; Azure static web apps as the legacy manu
 
 ### Application-level rate limiting (defense-in-depth)
 
-In addition to edge WAF controls, the application implements server-side rate limiting via `src/lib/rate-limiter.ts` (fixed-window, in-memory, per-process, hard-capped key map). Fixed windows can admit up to 2× the nominal rate across a window boundary; that is accepted for this secondary layer behind the edge. Key extraction trusts `X-Forwarded-For`, so the deployed proxy/WAF must strip client-supplied values — recorded as an operator input in the 2026-10-03 audit (§9.3), not assumed here.
+In addition to edge WAF controls, the application implements server-side rate limiting via `src/lib/rate-limiter.ts` (fixed-window, in-memory, per-process, hard-capped key map). Fixed windows can admit up to 2× the nominal rate across a window boundary; that is accepted for this secondary layer behind the edge. A per-client key is used only when `X-Forwarded-For` (then `X-Real-IP`) carries a syntactically valid IP literal; a hostname, path fragment or random token is not an identity. Those headers are client-supplied until an ingress overwrites them, so the deployed proxy/WAF must strip client-supplied values — the deployment records whether it asserts that (`RATE_LIMIT_TRUSTED_INGRESS=true`, reported as `components.rateLimit.identity` on `/api/health`) rather than assuming it here.
 
 | Route / Operation | Limiter | Window | Max | Key |
 |---|---|---|---|---|
@@ -167,7 +167,9 @@ In addition to edge WAF controls, the application implements server-side rate li
 | `/api/regulatory/preflight` (authenticated, expensive) | `regulatoryPreflightLimiter` | 60 s | 5 | IP |
 | `/api/admin/cache-clear` (authenticated, destructive) | `adminCacheClearLimiter` | 60 s | 5 | IP |
 | `/api/health` (public, lightweight) | `healthLimiter` | 60 s | 30 | IP |
+| Public reference page reads (`/va-forms`, `/va-forms/finder`, `/va-reference`, `/secondary/evidence`, …) | `referenceReadLimiter` | 60 s | 30 | IP |
+| **All limited surfaces combined** (shared admission ceiling) | `unattributedAdmissionLimiter` | 60 s | 6000 (`RATE_LIMIT_UNATTRIBUTED_MAX`) | one shared budget |
 
-Rate limiting is enforced in `src/proxy.ts` (Next.js middleware/proxy). Exceeded limits return `429 Too Many Requests` with a `Retry-After` header. All limiters are process-local and reset on cold start — this is intentional for serverless and acceptable as a secondary layer behind the edge.
+Rate limiting is enforced in `src/proxy.ts` (Next.js middleware/proxy). Every limited surface charges that shared ceiling as well as its own bucket, so a request with no usable identity is bounded rather than skipped, and a client presenting a different valid IP on every request cannot draw an unbounded series of fresh allowances. Exceeded limits return `429 Too Many Requests` with a `Retry-After` header. All limiters are process-local and reset on cold start — intentional for serverless, and reported as such (`components.rateLimit.store`).
 
 Researchers should not attempt Denial of Service (DoS) testing, brute-force attacks, credential stuffing, or edge-payload flooding. These will be automatically blocked by edge controls and may result in IP bans. Report rate-limiting or edge-configuration concerns through the private reporting channels above instead.

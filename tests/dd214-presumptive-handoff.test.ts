@@ -8,10 +8,12 @@ import { loadExposureCatalog } from "@/lib/presumptive/load";
 
 /**
  * Phase 4 item D closure: the DD-214 → presumptive hand-off is one click in
- * the UI (upload → verify → "Confirm and continue" posts saveServiceHistory
- * directly). These contracts pin the headless half of that hand-off: a
- * realistic DD-214 text body parses into fields, adapts into a valid
- * ServiceHistory draft, and matches the expected presumptive category —
+ * the UI (upload → verify → "Confirm and continue"). Since 2026-10-08 that
+ * confirmation persists the browser-local service-history record directly
+ * (`src/lib/presumptive/browser-history.ts`); the retired Server Action that
+ * used to receive it is gone. These contracts pin the headless half of the
+ * hand-off: a realistic DD-214 text body parses into fields, adapts into a
+ * valid ServiceHistory draft, and matches the expected presumptive category —
  * the exact chain the browser component drives.
  */
 

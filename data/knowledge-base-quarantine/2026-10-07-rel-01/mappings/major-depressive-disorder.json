@@ -1,0 +1,91 @@
+{
+  "id": "major-depressive-disorder",
+  "draft": true,
+  "todo": [
+    "Confirm the veteran is actually receiving an SSRI or other serotonergic antidepressant for the service-connected mood disorder and that the sexual dysfunction is temporally related to that pharmacotherapy before using this edge.",
+    "Distinguish antidepressant-emergent sexual dysfunction from a primary sexual dysfunction attributable to the mood disorder, vascular disease, endocrine disorder, or relationship stressors."
+  ],
+  "governanceNotes": [
+    "This draft edge is authored under major-depressive-disorder as the service-connected primary and is intended to support a medication/treatment-complication framing (antidepressant pharmacotherapy -> secondary sexual dysfunction) rather than a direct disease-progression claim; the nexus classification is ASSOCIATION_ONLY pending individual-degree assessment because the relationship is treatment-mediated and the located evidence supports a recognized adverse effect rather than a proven individual causation chain.",
+    "Where the veteran is not on an antidepressant, or the sexual dysfunction predates pharmacotherapy, this edge must not be used."
+  ],
+  "suggestions": [
+    {
+      "conditionId": "sexual-dysfunction",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "associationBasis": "Clinical literature documents that antidepressants, particularly serotonergic agents such as SSRIs, can be associated with sexual dysfunction as an adverse treatment effect, but the located evidence describes a recognized medication-related adverse effect rather than a proven individual causation chain from the service-connected mood disorder itself to sexual dysfunction; the relationship is carried here as a bounded clinical proposition pending individual-degree assessment.",
+        "causationStatus": "Neither causation nor aggravation under 38 CFR § 3.310 is established by the current evidence at the level of a direct disease-causation chain; the relevant pathway is a recognized treatment-related adverse effect that requires individualized attribution."
+      },
+      "causalMechanism": {
+        "mechanismCategory": "PHARMACOLOGICAL_IATROGENIC",
+        "primaryVector": "Antidepressant pharmacotherapy, particularly serotonergic agents, is hypothesized to be associated with sexual dysfunction through serotonergic inhibition of sexual response pathways (e.g., reduced dopaminergic and oxytocinergic facilitation, increased serotonin-mediated inhibition of sexual arousal and orgasm), with effect that may depend on agent, dose, and individual susceptibility.",
+        "iatrogenicFactor": "Antidepressant pharmacotherapy (particularly SSRI-class agents) for the service-connected mood disorder.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "IATROGENIC_TREATMENT_EFFECT",
+        "vaNexusProbabilityAlignment": "AT_LEAST_AS_LIKELY_AS_NOT",
+        "conservativeRationale": "The reviewed literature supports a recognized association between antidepressives (especially SSRIs) and sexual dysfunction as a treatment-related adverse effect; the edge is intentionally constrained to association because the claim ultimately turns on individualized attribution (agent, timing, dose, exclusion of competing causes) rather than a proven intrinsic disease-causation pathway from the mood disorder to sexual dysfunction.",
+        "evidenceGaps": "Confirmation that the veteran is receiving an antidepressant (agent, dose, duration); temporal relationship between pharmacotherapy initiation and onset of sexual dysfunction; exclusion of competing or concurrent causes (primary sexual dysfunction, vascular disease, endocrine disorder, relationship stressors, other medications); consideration of whether dose reduction, drug holiday, or agent change is clinically appropriate and whether dysfunction persists beyond pharmacologic effect.",
+        "alternativeEtiologiesToRuleOut": [
+          "Primary sexual dysfunction unrelated to pharmacotherapy",
+          "Vascular disease or endothelial contribution to sexual dysfunction",
+          "Endocrine disorder (e.g., hypogonadism, thyroid disease, diabetes) causing sexual dysfunction",
+          "Mood disorder itself contributing to reduced libido or sexual function",
+          "Relationship stressors, pain, fatigue, or sleep disturbance affecting sexual function",
+          "Other concurrent medications contributing to sexual dysfunction"
+        ],
+        "alternativeEtiologyTags": ["primary-sexual", "vascular", "endocrine", "mood-disorder", "psychosocial", "medication"],
+        "requiresSpecificDbqEvidence": true
+      },
+      "rationale": "Antidepressant pharmacotherapy, particularly SSRIs, is a recognized contributor to sexual dysfunction as a treatment-related adverse effect; the edge is constrained to association because the claim requires individualized attribution and exclusion of competing causes, and the current evidence best supports a recognized treatment-effect framing rather than a direct disease-causation chain from the mood disorder.",
+      "claimTheories": ["secondary-aggravation", "secondary-causation"],
+      "nexusRequirement": "individual-medical-opinion",
+      "pathwayIntelligence": {
+        "pathways": ["medication-related", "treatment-complication"],
+        "causalChain": "service-connected major depressive disorder -> antidepressant / SSRI pharmacotherapy -> serotonergic inhibition of sexual response (hypothesized mediator) -> sexual dysfunction; association only pending individualized attribution and exclusion of competing causes",
+        "developmentQuestions": [
+          "Which antidepressant is the veteran taking, at what dose and for how long, and did sexual dysfunction onset follow pharmacotherapy initiation?",
+          "Have competing or concurrent causes of sexual dysfunction been excluded or accounted for (vascular, endocrine, primary, psychosocial, other medications)?",
+          "Is the dysfunction persisting, improving, or resolving with dose adjustment, drug holiday, or agent change where clinically appropriate?"
+        ],
+        "issuesToResolve": [
+          "Determine whether this is best characterized as a treatment-complication claim versus a primary sexual dysfunction claim unrelated to pharmacotherapy.",
+          "Assess whether persistent post-treatment sexual dysfunction framing is supported by the veteran's presentation or whether the dysfunction is plausibly limited to active pharmacologic exposure."
+        ]
+      },
+      "evidenceGaps": [
+        "Confirmation of current antidepressant pharmacotherapy (agent, dose, duration)",
+        "Temporal relationship between pharmacotherapy and onset of sexual dysfunction",
+        "Exclusion of vascular, endocrine, primary, mood-disorder, psychosocial, and other medication contributors",
+        "Individual medical opinion on attribution and clinical management (dose/agent change where appropriate)"
+      ],
+      "sourceReferences": [
+        {
+          "citation": "Sexual Dysfunction in Male Patients After Initiating Treatment with Antidepressants. Drug Saf. 2026 Apr;49(4):493-503. PMID 41203969.",
+          "note": "Mapping OT-877 supporting evidence for sexual dysfunction after initiating antidepressant treatment. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "propositionRole": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/41203969/",
+          "verified": false,
+          "sourceCheckedOn": "2026-10-06",
+          "sourceLocator": "PMID 41203969; Sexual Dysfunction in Male Patients After Initiating Treatment with Antidepressants (Drug Saf 2026); guard: treatment-related adverse effect, individualized attribution required."
+        },
+        {
+          "citation": "Pharmacological treatment of antidepressant-induced sexual dysfunction in women: A systematic review and meta-analysis of randomized clinical trials. Clinics (Sao Paulo). 2025;80:100602. PMID 39985829.",
+          "note": "Mapping OT-877 supporting evidence for pharmacological treatment of antidepressant-induced sexual dysfunction in women. Mapping approval is not citation verification; this source enters verified:false pending separate qualified-human citation review.",
+          "verificationScope": "clinical-evidence",
+          "authorityCategory": "medical-scientific-evidence",
+          "propositionRole": "clinical-evidence",
+          "sourceUrl": "https://pubmed.ncbi.nlm.nih.gov/39985829/",
+          "verified": false,
+          "sourceCheckedOn": "2026-10-06",
+          "sourceLocator": "PMID 39985829; Pharmacological treatment of antidepressant-induced sexual dysfunction in women (Clinics 2025); guard: treatment-related adverse effect, individualized attribution required."
+        }
+      ]
+    }
+  ]
+}

@@ -21,6 +21,10 @@ import { isTrustedHttpsUrl } from "./trusted-link";
  * that decide labels, links, and trust (`source`, `sourceLabel`, `notice`,
  * `live`, `environment`, `retrievedAt`, link-like keys anywhere in the value)
  * while leaving the loader's own reference data fields to the loader.
+ * A04 crash-path slice: `items` must be an array (every live view serves one;
+ * a non-array `items` crashes the UI's list rendering) and a non-null
+ * `retrievedAt` must parse as a date, not merely fit a length bound. Timestamps
+ * stay tolerant of `null`; per-loader field DTOs remain the loader's job.
  */
 
 const MAX_LABEL_LENGTH = 200;
@@ -94,8 +98,16 @@ export function isTrustedCachedLiveView(
   if (!hasTrustedProvenance(view, environment)) return false;
   if (view.live !== true) return false;
   if (view.environment !== environment) return false;
-  if (view.retrievedAt !== null && !isBoundedText(view.retrievedAt, MAX_TIMESTAMP_LENGTH)) {
-    return false;
+  // A04: a non-array `items` passes every check above and then crashes the
+  // UI's list rendering — the exact `items: "NOT_AN_ARRAY"` repro.
+  if (!Array.isArray(view.items)) return false;
+  if (view.retrievedAt !== null) {
+    if (!isBoundedText(view.retrievedAt, MAX_TIMESTAMP_LENGTH)) return false;
+    // `isBoundedText` is a plain boolean (not a narrowing predicate), so the
+    // string check below is what lets `Date.parse` type-check.
+    if (typeof view.retrievedAt !== "string" || Number.isNaN(Date.parse(view.retrievedAt))) {
+      return false;
+    }
   }
   return hasTrustedLinks(view);
 }

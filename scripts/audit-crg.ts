@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 import { existsSync, readdirSync, readFileSync } from "node:fs";
-import { join } from "node:path";
+import { dirname, join, relative } from "node:path";
 
+import { assertGraphEvidenceJoins } from "../src/lib/kb/graph-evidence-joins.mts";
 import { KB_GRAPH_DIR_RELATIVE } from "../src/lib/kb/graph-layout.ts";
 import { conditionMappingSchema, KbNodeMappingSchema } from "../src/lib/kb/schema.ts";
 
@@ -19,12 +20,25 @@ import { conditionMappingSchema, KbNodeMappingSchema } from "../src/lib/kb/schem
  * script builds the master adjacency list across all files and runs a
  * 3-color DFS to prove the graph is acyclic before CI allows a merge.
  *
- * Exit codes: 0 = acyclic (or an explicitly tolerated empty state),
- * 1 = parse failure, malformed graph, or at least one detected cycle.
+ * It also enforces the ARCH-01 evidence join, so this gate refuses an edge that
+ * has no authored suggestion/citations behind it or whose nexus classification
+ * disagrees with the authored suggestion for the same (source, target) pair.
+ * Structural acyclicity and evidence agreement are different failures, and a
+ * graph can be perfectly acyclic while claiming a relationship no authored
+ * record supports — which is why both run here and not only in the runtime
+ * loader, where the first request pays for the discovery.
  *
- * Usage: node scripts/audit-crg.ts [--kb-dir=<path>]
+ * Exit codes: 0 = acyclic with every edge backed by authored evidence (or an
+ * explicitly tolerated empty state), 1 = parse failure, malformed graph, at
+ * least one detected cycle, or an edge whose authored evidence is missing or
+ * differently classified.
+ *
+ * Usage: node scripts/audit-crg.ts [--kb-dir=<path>] [--kb-root=<path>]
  * CI runs with the default graph directory; --kb-dir exists so fixture
  * directories can exercise the DFS in tests without touching the real graph.
+ * The authored corpus is read from the graph directory's parent (the layout
+ * `data/knowledge-base/graph/` mirrors the staging layout `staged/graph/`),
+ * or from --kb-root when that parent is not a directory inside this project.
  */
 
 /** Node color states for the 3-color DFS (see section 2 below). */
@@ -42,6 +56,28 @@ function summarizeParseError(error: unknown): string {
 
 const KB_DIR = process.argv.find((arg) => arg.startsWith("--kb-dir="))?.split("=")[1] ?? KB_GRAPH_DIR_RELATIVE;
 
+/**
+ * Where the authored condition mappings live, for the ARCH-01 evidence join.
+ *
+ * Default: the graph directory's parent, which is correct for the real layout
+ * (`data/knowledge-base/graph/` → `data/knowledge-base/`). A fixture graph
+ * directory outside the project is never used as a search root — reading an
+ * arbitrary parent directory is not a safe default — so it must pass
+ * --kb-root explicitly, and a graph with edges and no locatable corpus fails
+ * closed. `--kb-root` also accepts a `.json` file holding an array of
+ * mappings, which is how the packet converter writes a candidate corpus
+ * (`authored-mappings.json`) before any of it lands in the live directory.
+ */
+const KB_ROOT_ARG = process.argv.find((arg) => arg.startsWith("--kb-root="))?.split("=")[1];
+
+function isInsideProject(candidate: string): boolean {
+  const relativePath = relative(process.cwd(), candidate);
+  return relativePath !== "" && !relativePath.startsWith("..") && !relativePath.startsWith("/");
+}
+
+const derivedKbRoot = dirname(KB_DIR);
+const KB_ROOT = KB_ROOT_ARG ?? (isInsideProject(derivedKbRoot) ? derivedKbRoot : null);
+
 /* ─── 1. Load and parse the adjacency list ────────────────────────────────
  * Every .json file must parse as a KbNodeMapping. Any parse failure or
  * duplicate nodeId is a hard error: an ambiguous adjacency list would make
@@ -50,6 +86,8 @@ const KB_DIR = process.argv.find((arg) => arg.startsWith("--kb-dir="))?.split("=
 
 /** Master adjacency list: nodeId → its distinct outgoing target IDs. */
 const graph = new Map<string, string[]>();
+/** The same nodes, unsummarized, for the ARCH-01 evidence join. */
+const parsedNodes: import("../src/lib/kb/schema.ts").KbNodeMapping[] = [];
 // An absent directory is the same transitional state as an empty one: the
 // graph has not been migrated (or all files were withdrawn) yet.
 const fileNames = existsSync(KB_DIR)
@@ -90,6 +128,7 @@ for (const name of fileNames) {
   let node: import("../src/lib/kb/schema.ts").KbNodeMapping;
   try {
     node = KbNodeMappingSchema.parse(raw); // precise issue paths on malformed data
+    parsedNodes.push(node);
   } catch (error) {
     parseFailures.push(`${name}: ${summarizeParseError(error)}`);
     if (looksLikeAdjacencyFile(raw)) {
@@ -221,3 +260,96 @@ if (cycles.length > 0) {
 }
 
 console.log("audit-crg: PASS — CRG adjacency list is acyclic (no multi-hop circular dependencies).");
+
+/* ─── 4. ARCH-01 authored-evidence join ────────────────────────────────────
+ * Acyclicity says nothing about whether an edge is *supported*. Every edge
+ * must reference an authored suggestion with at least one citation and the
+ * same nexus classification, or the traversal would present a multi-hop claim
+ * whose evidence says something else (or nothing at all). The same guard runs
+ * in the runtime loader, both corpus builders and the pathway projection; it
+ * runs here too so CI attributes the failure to the named structural gate
+ * instead of to whichever test happens to load the graph first.
+ * ────────────────────────────────────────────────────────────────────────── */
+
+if (KB_ROOT === null) {
+  console.error(
+    `audit-crg: FAIL — ${parsedNodes.length} adjacency node(s) but no authored corpus directory was found. ` +
+      `Pass --kb-root=<path> to the directory holding the condition mappings (the graph directory's parent by default).`,
+  );
+  process.exit(1);
+}
+
+const authoredMappings: import("../src/lib/kb/schema.ts").ConditionMapping[] = [];
+
+/** Read one candidate mapping object, or fail on an unreadable record. */
+function addMapping(raw: unknown, origin: string): void {
+  const parsed = conditionMappingSchema.safeParse(raw);
+  if (parsed.success) {
+    authoredMappings.push(parsed.data);
+    return;
+  }
+  // A record that claims to be a mapping (`id`) but fails the schema is
+  // corruption, not something to skip: skipping it would quietly shrink the
+  // corpus the join runs over, and a malformed evidence record is exactly what
+  // the join must not be allowed to overlook. Non-mapping JSON in a corpus
+  // directory is kb:validate's business and is ignored here.
+  if (raw && typeof raw === "object" && "id" in (raw as Record<string, unknown>)) {
+    console.error(
+      `audit-crg: FAIL — ${origin} is not a valid condition mapping — ${summarizeParseError(parsed.error)}`,
+    );
+    process.exit(1);
+  }
+}
+
+if (KB_ROOT.endsWith(".json")) {
+  let raw: unknown;
+  try {
+    raw = JSON.parse(readFileSync(KB_ROOT, "utf8")) as unknown;
+  } catch (error) {
+    console.error(`audit-crg: FAIL — candidate corpus ${KB_ROOT} is not readable JSON — ${summarizeParseError(error)}`);
+    process.exit(1);
+  }
+  if (!Array.isArray(raw)) {
+    console.error(`audit-crg: FAIL — candidate corpus ${KB_ROOT} must be a JSON array of condition mappings.`);
+    process.exit(1);
+  }
+  for (const [index, entry] of raw.entries()) addMapping(entry, `${KB_ROOT}[${index}]`);
+} else {
+  const mappingFileNames = existsSync(KB_ROOT)
+    ? readdirSync(KB_ROOT).filter((name) => name.endsWith(".json")).sort()
+    : [];
+  for (const name of mappingFileNames) {
+    // `graph/` is a subdirectory, not a file, so the mapping walk never sees
+    // the adjacency files.
+    const full = join(KB_ROOT, name);
+    if (!existsSync(full)) continue;
+    let raw: unknown;
+    try {
+      raw = JSON.parse(readFileSync(full, "utf8")) as unknown;
+    } catch (error) {
+      console.error(`audit-crg: FAIL — authored corpus file ${name} is not valid JSON — ${summarizeParseError(error)}`);
+      process.exit(1);
+    }
+    addMapping(raw, `authored corpus file ${name}`);
+  }
+}
+
+if (authoredMappings.length === 0) {
+  console.error(
+    `audit-crg: FAIL — ${parsedNodes.length} adjacency node(s) but no authored condition mappings in ${KB_ROOT}. ` +
+      "An edge cannot be shown to have authored evidence, so the gate fails closed.",
+  );
+  process.exit(1);
+}
+
+try {
+  assertGraphEvidenceJoins(authoredMappings, parsedNodes);
+} catch (error) {
+  console.error(`audit-crg: FAIL — ${error instanceof Error ? error.message : String(error)}`);
+  console.error("audit-crg: every edge needs an authored suggestion with citations and the same nexus classification before merge.");
+  process.exit(1);
+}
+
+console.log(
+  `audit-crg: PASS — ARCH-01: all ${parsedNodes.reduce((sum, node) => sum + node.outgoingEdges.length, 0)} edge(s) reference authored evidence with matching nexus classifications.`,
+);

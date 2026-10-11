@@ -1,7 +1,29 @@
 import { readFileSync } from "node:fs";
 
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import { renderToStaticMarkup } from "react-dom/server";
+
+/**
+ * These routes are rendered with a bare `renderToStaticMarkup`, which mounts no
+ * app router. Every route in a real App Router render has one, and client
+ * components that navigate on submit (`ServiceHistoryForm`,
+ * `Dd214LocalAnalyzer`) legitimately call `useRouter()` — Next.js itself
+ * rejects location-based navigation in client handlers
+ * (@next/next/no-location-assign-relative-destination). The stub only supplies
+ * that always-present context so these landmark/heading assertions can render
+ * the routes; no assertion below is relaxed by it.
+ */
+vi.mock("next/navigation", async (importOriginal) => ({
+  ...(await importOriginal<typeof import("next/navigation")>()),
+  useRouter: () => ({
+    push: () => {},
+    replace: () => {},
+    back: () => {},
+    forward: () => {},
+    refresh: () => {},
+    prefetch: () => {},
+  }),
+}));
 
 import AboutPage from "@/app/about/page";
 import HomePage from "@/app/page";

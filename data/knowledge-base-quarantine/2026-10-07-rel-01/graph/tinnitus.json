@@ -1,0 +1,124 @@
+{
+  "nodeId": "tinnitus",
+  "outgoingEdges": [
+    {
+      "sourceConditionId": "tinnitus",
+      "targetConditionId": "depressive-disorder",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "hypothesizedOnly": true,
+        "status": "NOT_ESTABLISHED"
+      },
+      "causalMechanism": {
+        "mechanismCategory": "PHARMACOLOGICAL_IATROGENIC",
+        "primaryVector": "Mapping Expansion Batch ME-17 adds this relationship only as the user-approved bounded clinical proposition. The cited systematic review found a median depression prevalence of approximately one third across tinnitus patient samples, with total sample prevalence estimates ranging widely; the association direction is not established. Require independently established chronic tinnitus and a separately established depressive disorder; the cited systematic review reported frequent depressive comorbidity across tinnitus patient samples and does not establish onset order or direction.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "This relationship is supported as an association only. Mapping Expansion Batch ME-17 adds this relationship only as the user-approved bounded clinical proposition. The cited systematic review found a median depression prevalence of approximately one third across tinnitus patient samples, with total sample prevalence estimates ranging widely; the association direction is not established. Require independently established chronic tinnitus and a separately established depressive disorder; the cited systematic review reported frequent depressive comorbidity across tinnitus patient samples and does not establish onset order or direction. It is not asserted that the primary caused or aggravated the secondary in any individual.",
+        "evidenceGaps": [
+          "Independent documentation of tinnitus and depressive-disorder; Chronology compatible with the approved bounded proposition; Phenotype/treatment boundary: population-level-comorbidity-association; Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes; Resolution of publication guard: Require independently established chronic tinnitus and a separately established depressive disorder; the cited systematic review reported frequent depressive comorbidity across tinnitus patient samples and does not establish onset order or direction. Preserve hearing loss, otologic disease, noise exposure, medications, substance use, chronic pain, and other psychiatric illness as competing explanations. Do not infer a depressive disorder from tinnitus-related distre"
+        ],
+        "alternativeEtiologiesToRuleOut": [
+          "hearing loss",
+          "otologic disease",
+          "noise exposure",
+          "medications",
+          "substance use",
+          "chronic pain"
+        ],
+        "requiresSpecificDbqEvidence": false
+      },
+      "rationale": "Mapping Expansion Batch ME-17 adds this relationship only as the user-approved bounded clinical proposition. The cited systematic review found a median depression prevalence of approximately one third across tinnitus patient samples, with total sample prevalence estimates ranging widely; the association direction is not established. Require independently established chronic tinnitus and a separately established depressive disorder; the cited systematic review reported frequent depressive comorbidity across tinnitus patient samples and does not establish onset order or direction. Preserve hearing loss, otologic disease, noise exposure, medications, substance use, chronic pain, and other psychiatric illness as competing explanations. Do not infer a depressive disorder from tinnitus-related distress, sleep disturbance, or impairment alone, and do not treat this population-level association as proof that tinnitus caused an individual's depressive disorder. The cited literature supports only this constrained proposition and does not, by itself, establish an individual medical nexus.",
+      "evidenceGaps": [
+        "Independent documentation of tinnitus and depressive-disorder",
+        "Chronology compatible with the approved bounded proposition",
+        "Phenotype/treatment boundary: population-level-comorbidity-association",
+        "Assessment of shared risk factors, reverse direction, treatment effects, and other competing causes",
+        "Resolution of publication guard: Require independently established chronic tinnitus and a separately established depressive disorder; the cited systematic review reported frequent depressive comorbidity across tinnitus patient samples and does not establish onset order or direction. Preserve hearing loss, otologic disease, noise exposure, medications, substance use, chronic pain, and other psychiatric illness as competing explanations. Do not infer a depressive disorder from tinnitus-related distress, sleep disturbance, or impairment alone, and do not treat this population-level association as proof that tinnitus caused an individual's depressive disorder."
+      ]
+    },
+    {
+      "sourceConditionId": "tinnitus",
+      "targetConditionId": "insomnia",
+      "rank": 2,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "hypothesizedOnly": true,
+        "status": "NOT_ESTABLISHED"
+      },
+      "causalMechanism": {
+        "mechanismCategory": "PSYCHOPHYSIOLOGICAL",
+        "primaryVector": "A hypothesized hyperarousal pathway: persistent tinnitus signal is held to sustain auditory-limbic-autonomic arousal (thalamocortical dysrhythmia and conditioned-distress models) that raises sleep-onset latency and fragments sleep continuity, the pathway the pooled sleep-impairment prevalence is consistent with; neither anchor measures the pathway directly, so whether tinnitus produced any individual's sleep disturbance rather than mood, hearing loss or a shared arousal trait remains hypothesized until the sleep findings are read against the tinnitus and mood chronology.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "Authored at ASSOCIATION_ONLY at systematic-review-and-meta-analysis prevalence class, following the symptom-disrupted-sleep convention the restless-leg-syndrome to insomnia edge established (batch 78) with the same instrument limits carried openly: the primary anchor is a single-arm pooled prevalence with I-squared 97.8 percent and no comparator arm, and the second anchor pools odds across outcomes and age strata. A TARGET-SCOPE DISCLOSURE is carried on the face of the edge: the catalog identity is Chronic insomnia while the anchors measure sleep impairment and poor sleep quality by PSQI-class instruments, so the evidence supports a sleep-disruption window and does not by itself meet the chronic-insomnia diagnostic standard. ONE-WINDOW-PER-CLAIM DISCIPLINE IS RECORDED: this file already holds the registered tinnitus to depressive-disorder window and the registry holds the registered insomnia to depressive-disorder window, so a tinnitus to insomnia to depressive-disorder mediation reading is plausible in the literature but NO CHAIN IS CLAIMED HERE, each window stands on its own anchors, and the depression window remains governed by its ME-17 review; the edge adds no parallel-targeting pair to the CRG redundancy question because it targets a different identity from the registered mood edge.",
+        "evidenceGaps": [
+          "NO located anchor establishes onset order between tinnitus and the sleep complaint; the primary anchor is a single-arm prevalence meta-analysis of only seven studies with extreme heterogeneity (I-squared 97.8 percent) and no tinnitus-free comparator; both anchors measure PSQI-class sleep quality rather than diagnosed chronic insomnia; the primary anchor's regional subgroup figures are internally inconsistent (non-Asia 56.6 percent stated as lower than Asia 34.5 percent, apparently transposed); the second anchor's pooled estimates merge case-control and cohort designs and several cognitive-psychiatric outcomes, with stronger signals above age 60 that bound extrapolation to younger claimants; and no anchor reports incident insomnia in a tinnitus cohort free of baseline sleep disorder."
+        ],
+        "alternativeEtiologiesToRuleOut": [
+          "Obstructive sleep apnea and other sleep-disordered breathing, which co-travels with tinnitus and with the older population the anchors weight most heavily",
+          "Restless legs syndrome and periodic limb movements of sleep as independent sleep-onset and continuity disruptors",
+          "Hearing-loss severity, noise exposure and otologic disease as the shared substrate behind both tinnitus and sleep complaint",
+          "Major depressive disorder, anxiety disorders and PTSD, whose registered windows overlap this population and which independently disrupt sleep",
+          "Caffeine, alcohol, stimulants and medication effects (including sedative-hypnotic withdrawal) and chronic pain, plus age-related sleep change"
+        ],
+        "requiresSpecificDbqEvidence": false
+      },
+      "rationale": "Authoring registers this edge because the request-driven corpus review identified the tinnitus sleep window as unmapped against quantified meta-analytic prevalence, because the file's standing todo asks for condition-specific clinical evidence before publication, and because the sleep window follows the established symptom-disrupted-sleep convention with its instrument limits carried openly; the edge is registered at association only with the chronic-insomnia phenotype boundary, the transposed regional figures, the single-arm comparator gap and the one-window-per-claim discipline against any tinnitus-insomnia-depression chain carried on every face. The corpus's own mappings were BVA decision letters and NONE is registered here; the two registered anchors are peer-reviewed PubMed sources confirmed absent from data/evidence/master-sources.json and cleared by source-status preflight on 2026-09-29 with zero blocking flags. All references enter verified:false pending qualified-human citation review under docs/citation-verification-sop.md.",
+      "evidenceGaps": [
+        "NO located anchor establishes onset order between tinnitus and the sleep complaint; the primary anchor is a single-arm prevalence meta-analysis of only seven studies with extreme heterogeneity (I-squared 97.8 percent) and no tinnitus-free comparator; both anchors measure PSQI-class sleep quality rather than diagnosed chronic insomnia; the primary anchor's regional subgroup figures are internally inconsistent (non-Asia 56.6 percent stated as lower than Asia 34.5 percent, apparently transposed); the second anchor's pooled estimates merge case-control and cohort designs and several cognitive-psychiatric outcomes, with stronger signals above age 60 that bound extrapolation to younger claimants; and no anchor reports incident insomnia in a tinnitus cohort free of baseline sleep disorder."
+      ]
+    },
+    {
+      "sourceConditionId": "tinnitus",
+      "targetConditionId": "migraine-headaches",
+      "rank": 3,
+      "nexusClaim": {
+        "nexusClassification": "ASSOCIATION_ONLY",
+        "hypothesizedOnly": true,
+        "status": "NOT_ESTABLISHED"
+      },
+      "causalMechanism": {
+        "mechanismCategory": "NOT_ESTABLISHED",
+        "primaryVector": "The proposed link is a shared central-auditory and trigeminocervical sensitisation model in which persistent tinnitus-related neural activity is held to lower the threshold of a trigeminovascular system that already generates migraine, with cortical excitability, sleep fragmentation and autonomic arousal offered as plausible amplifiers rather than proven mediators; no located anchor measures the cascade directly, and the located evidence runs largely in the opposite direction.",
+        "hypothesizedOnly": true
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "NOT_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "NOT_ASSERTED",
+        "conservativeRationale": "Authored at ASSOCIATION_ONLY and deliberately not beyond the two located cross-sectional anchors. The conservative posture is that a tinnitus and migraine association is real and reproducible at population scale but that its direction is unresolved: every located anchor runs from headache or migraine as the exposure to tinnitus as the outcome, which is the reverse of the arrow claimed here, and a cross-sectional design cannot establish which came first in any individual. Shared susceptibility - cortical excitability, sleep fragmentation, autonomic arousal - could generate the association without either condition producing the other, and migraine carries common competing triggers and competing primary-headache diagnoses. Because neither the mechanism nor the direction is established, this row requires a qualified primary-headache diagnosis, dated onset records showing that tinnitus preceded or materially worsened the headache disorder, headache and medication diaries excluding medication-overuse headache, and an individual medical opinion that separates temporomandibular, cervicogenic and sleep-related contributors.",
+        "evidenceGaps": [
+          "Anchor limits: both located anchors are cross-sectional, both take headache or migraine as the exposure and tinnitus as the outcome, neither reports incident migraine in a tinnitus cohort, and the primary anchor examines headache as a category with migraine as a subgroup rather than requiring a qualified primary-headache diagnosis. Target-phenotype boundary: the catalog identity is the migraine and headache disorder while the anchors measure tinnitus in migraine populations, so the evidence supports a co-occurrence window and not a tinnitus-caused headache disorder. Direction: no located anchor fixes temporal order, so onset order must be documented from the individual record rather than inferred. Competing contributors: tension-type and other primary headache disorders, medication-overuse headache, temporomandibular and cervicogenic pain, obstructive sleep apnea, and sleep or mood disturbance all require assessment. Individual-level trajectory: no anchor reports how many tinnitus patients develop migraine per follow-up, or separates shared susceptibility from a causal contribution."
+        ],
+        "alternativeEtiologiesToRuleOut": [
+          "Tension-type or other primary headache disorder misclassified as migraine",
+          "Medication-overuse headache",
+          "Temporomandibular joint dysfunction and cervicogenic headache",
+          "Obstructive sleep apnea, sleep deprivation, and mood disturbance as shared triggers"
+        ],
+        "alternativeEtiologyTags": [
+          "tension-type-headache",
+          "medication-overuse",
+          "tmj-dysfunction",
+          "sleep-apnea"
+        ],
+        "requiresSpecificDbqEvidence": true
+      },
+      "rationale": "Authoring registers the held CRG draft-expansion proposal for a tinnitus to migraine-headaches window as this file's rank-3 draft window on 2026-10-06, at association only and with the DIRECTION PROBLEM carried on its face rather than buried. The located evidence reports a genuine and reproducible co-occurrence between migraine-class headache and tinnitus: a cross-sectional cohort of young adults found headache and tinnitus associated, strongest for migraine with aura (PMID 27197786), and a United States population cross-sectional analysis found tinnitus and subjective hearing loss more common in migraine (PMID 34238896). Both anchors take migraine or headache as the EXPOSURE and tinnitus as the OUTCOME, which is the reverse of the arrow claimed here, so neither can be read as proof that tinnitus produced a migraine disorder, and a cross-sectional design cannot establish which came first in any individual. Shared susceptibility (cortical excitability, sleep fragmentation, autonomic arousal) could generate the association without either condition causing the other, and migraine carries common competing triggers and competing primary-headache diagnoses. The row is therefore a bounded association requiring a qualified primary-headache diagnosis, chronology showing that the tinnitus preceded or materially worsened the headache disorder, headache and medication diaries, and assessment of the temporomandibular, cervicogenic, sleep-apnea and mood contributors. One-window-per-claim discipline is recorded: this file already holds the registered rank-1 tinnitus to depressive-disorder window, so no tinnitus-to-migraine-to-depression chain is claimed and each window stands on its own anchors. All references enter verified:false pending qualified-human citation verification under docs/citation-verification-sop.md.",
+      "evidenceGaps": [
+        "A qualified primary-headache diagnosis separating migraine from tension-type and other headache disorders",
+        "Documented tinnitus history with onset and severity",
+        "Chronological evidence that tinnitus preceded or materially worsened the headache disorder rather than the reverse",
+        "Headache and medication diaries excluding medication-overuse headache",
+        "Assessment of temporomandibular dysfunction, cervicogenic pain, obstructive sleep apnea, and sleep or mood disturbance"
+      ]
+    }
+  ]
+}

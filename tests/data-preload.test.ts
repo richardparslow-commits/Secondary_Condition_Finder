@@ -346,10 +346,15 @@ describe("data preload — warmup orchestration", () => {
     const total = totalJsonFiles();
 
     // Fire-and-forget contract: warmup never throws synchronously and its
-    // await resolves even when a loader failed underneath.
+    // await resolves even when a loader failed underneath. The diagnostic
+    // sink records only a fixed event, never filesystem or parser details.
     expect(() => mod.preload.warmupDataCaches()).not.toThrow();
     await expect(mod.preload.awaitDataWarmup()).resolves.toBeUndefined();
-    expect(warnSpy).toHaveBeenCalled(); // failure logged, not hidden
+    expect(warnSpy).toHaveBeenCalledWith(
+      "[data-preload] warmup failed — falling back to per-request sync load",
+    );
+    expect(JSON.stringify(warnSpy.mock.calls)).not.toContain("0000-corrupt.json");
+    expect(JSON.stringify(warnSpy.mock.calls)).not.toContain("not valid json");
 
     // The request path still fails closed with the real error — the failed
     // warmup must not leave a half-populated cache that "works".
@@ -483,6 +488,40 @@ describe("data preload — per-domain in-flight dedup, reset, and fail-closed er
       expect(healed).toBe(domain.loadSync());
     },
   );
+});
+
+describe("data preload — published mapping index", () => {
+  it("keeps sync/async index reads identical, cached and mutation-isolated", async () => {
+    freshState();
+    const expected = new Set(
+      [...vfs.files.entries()]
+        .filter(([file]) => path.dirname(file) === path.resolve(DATA_DIRS.kb) && file.endsWith(".json"))
+        .map(([, raw]) => JSON.parse(raw) as { id: string; draft?: boolean })
+        .filter((mapping) => mapping.draft !== true)
+        .map((mapping) => mapping.id),
+    );
+    const cost = countJsonFiles(DATA_DIRS.kb);
+
+    const sync = mod.kb.loadPublishedMappingIds();
+    expect(sync).toEqual(expected);
+    expect(vfs.readCount).toBe(cost);
+    sync.clear();
+    expect(mod.kb.loadPublishedMappingIds()).toEqual(expected);
+    expect(vfs.readCount).toBe(cost);
+
+    mod.kb.resetKnowledgeBaseCache();
+    const [first, second] = await Promise.all([
+      mod.kb.loadPublishedMappingIdsAsync(),
+      mod.kb.loadPublishedMappingIdsAsync(),
+    ]);
+    expect(first).toEqual(expected);
+    expect(second).toEqual(expected);
+    expect(first).not.toBe(second);
+    expect(vfs.readCount).toBe(cost * 2);
+    first.clear();
+    expect(mod.kb.loadPublishedMappingIds()).toEqual(expected);
+    expect(vfs.readCount).toBe(cost * 2);
+  });
 });
 
 /* ── Domain-specific graceful degradation ──────────────────────────────────── */

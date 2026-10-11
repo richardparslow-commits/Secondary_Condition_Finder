@@ -47,8 +47,8 @@ export function anchorLabel(reference: Pick<SourceReference, "sourceUrl">): stri
 
 /**
  * The hop's authored anchors, joined by (source mapping, target condition).
- * The graph edge and the authored suggestion are registered in lockstep, so a
- * missing suggestion simply yields no anchors — the surface never invents one.
+ * The validated graph requires an authored evidence join. Refuse a missing
+ * suggestion or empty citations instead of presenting an unsupported hop.
  */
 export function anchorsForHop(
   mappingById: ReadonlyMap<string, ConditionMapping>,
@@ -58,7 +58,10 @@ export function anchorsForHop(
   const suggestion = mappingById
     .get(primaryId)
     ?.suggestions.find((candidate) => candidate.conditionId === targetId);
-  return (suggestion?.sourceReferences ?? []).map((reference) => ({
+  if (!suggestion || suggestion.sourceReferences.length === 0) {
+    throw new Error(`[kb-graph] Missing authored evidence for ${primaryId} -> ${targetId}`);
+  }
+  return suggestion.sourceReferences.map((reference) => ({
     label: anchorLabel(reference),
     sourceUrl: reference.sourceUrl,
     verified: reference.verified,
@@ -66,36 +69,57 @@ export function anchorsForHop(
 }
 
 /**
+ * Anchor resolver for one hop. Server callers join against the authored
+ * corpus via `mappingAnchorResolver`; the browser supplies the public anchor
+ * index derived from the client corpus (PRIV-01 stage 2) — same view shape,
+ * same fail-closed projection (missing anchor data is an integrity error).
+ */
+export type HopAnchorResolver = (
+  sourceConditionId: string,
+  targetConditionId: string,
+) => GraphPathwayAnchorView[];
+
+export function mappingAnchorResolver(
+  mappingById: ReadonlyMap<string, ConditionMapping>,
+): HopAnchorResolver {
+  return (sourceConditionId, targetConditionId) =>
+    anchorsForHop(mappingById, sourceConditionId, targetConditionId);
+}
+
+/**
  * Project one traversed pathway into the client-safe view shape: terminal
  * display name, the derived composite nexus verbatim, and one labelled hop
- * per edge with its joined anchors.
+ * per edge with its resolved anchors.
  *
  * @param pathway - A validated `ClaimPathway` from the graph traversal.
  * @param conditionName - Catalog ID → display name; missing IDs fall back to
  *   the ID, exactly as the surfaces render them.
- * @param mappingById - Authored-corpus index for the read-only anchor join.
+ * @param resolveAnchors - Hop anchor resolver (authored-corpus join on the
+ *   server, public client-corpus anchor index in the browser).
  */
 export function projectGraphPathway(
   pathway: ClaimPathway,
   conditionName: (conditionId: string) => string,
-  mappingById: ReadonlyMap<string, ConditionMapping>,
+  resolveAnchors: HopAnchorResolver,
 ): GraphPathwayView {
   return {
     terminalConditionId: pathway.terminalConditionId,
     terminalConditionName: conditionName(pathway.terminalConditionId),
     compositeNexus: pathway.compositeNexus,
-    hops: pathway.hops.map<GraphPathwayHopView>((hop) => ({
-      stepIndex: hop.stepIndex,
-      sourceConditionId: hop.edge.sourceConditionId,
-      sourceConditionName: conditionName(hop.edge.sourceConditionId),
-      targetConditionId: hop.edge.targetConditionId,
-      targetConditionName: conditionName(hop.edge.targetConditionId),
-      nexusClassification: hop.edge.nexusClaim.nexusClassification,
-      anchors: anchorsForHop(
-        mappingById,
-        hop.edge.sourceConditionId,
-        hop.edge.targetConditionId,
-      ),
-    })),
+    hops: pathway.hops.map<GraphPathwayHopView>((hop) => {
+      const anchors = resolveAnchors(hop.edge.sourceConditionId, hop.edge.targetConditionId);
+      if (anchors.length === 0) {
+        throw new Error(`[kb-graph] Missing authored evidence for ${hop.edge.sourceConditionId} -> ${hop.edge.targetConditionId}`);
+      }
+      return {
+        stepIndex: hop.stepIndex,
+        sourceConditionId: hop.edge.sourceConditionId,
+        sourceConditionName: conditionName(hop.edge.sourceConditionId),
+        targetConditionId: hop.edge.targetConditionId,
+        targetConditionName: conditionName(hop.edge.targetConditionId),
+        nexusClassification: hop.edge.nexusClaim.nexusClassification,
+        anchors,
+      };
+    }),
   };
 }

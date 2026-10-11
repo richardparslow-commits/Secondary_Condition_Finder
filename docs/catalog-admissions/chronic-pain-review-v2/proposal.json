@@ -1,0 +1,35 @@
+{
+  "formatVersion": 1,
+  "proposalId": "chronic-pain-admission-v1",
+  "condition": {
+    "id": "chronic-pain",
+    "name": "Chronic pain (documented cause; proposed treatment-context identity)",
+    "aliases": [],
+    "bodySystem": "Unassigned — owner rating-scope review required",
+    "ratingSchedule": [],
+    "reviewNotes": [
+      "Pending proposal only. No diagnosis-specific diagnostic code, universal body-system assignment, compensability or rating framework is asserted. Owner review must decide whether this broad treatment-context identity belongs in a diagnosis catalog at all.",
+      "Not a synonym for unexplained-chronic-pain, fibromyalgia or any underlying pain diagnosis. The proposed identity cannot be used to infer a diagnosis from pain symptoms or to duplicate compensation for the underlying disability.",
+      "Identity admission and unchanged draft restoration would not publish the NSAID-mediated hypertension aggravation edge, approve its individual probability framing or verify PMID 32322101. Clinical/legal and citation review remain separate."
+    ]
+  },
+  "scope": {
+    "definition": "Proposed primary context for documented chronic pain of an established cause treated with chronic NSAIDs. It is not unexplained chronic pain, a new inferred disease or a generic direct pain-to-hypertension claim. Owner must elect the identity definition, appropriate placement and rating boundary before approval.",
+    "ratingRationale": "No defensible single rating authority was supplied for this broad construct. Rating references are intentionally empty rather than borrowing the unexplained-chronic-pain framework or inventing a code; owner rating-scope review is an unresolved blocker.",
+    "distinctFrom": [
+      {
+        "conditionId": "unexplained-chronic-pain",
+        "rationale": "The archived draft describes NSAID treatment for pain of any documented cause, not an exclusion-based unexplained-pain diagnosis. The owner declined re-rooting on 2026-10-08."
+      },
+      {
+        "conditionId": "fibromyalgia",
+        "rationale": "The draft does not establish fibromyalgia or its diagnosis-specific rating identity. Shared chronic pain symptoms or treatment do not make the conditions interchangeable."
+      }
+    ]
+  },
+  "restore": {
+    "manifestPath": "data/knowledge-base-quarantine/2026-10-07-rel-01/MANIFEST.json",
+    "quarantinePath": "data/knowledge-base-quarantine/2026-10-07-rel-01/mappings/chronic-pain.json",
+    "sha256": "3997981cacec6926f9dadc17e5fadc5b6cd79e9c350954674061ad0b15df2c4e"
+  }
+}

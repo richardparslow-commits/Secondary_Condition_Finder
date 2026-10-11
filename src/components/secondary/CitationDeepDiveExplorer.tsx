@@ -199,7 +199,7 @@ export function CitationDeepDiveExplorer({ sourceReferences, conditionName }: Ci
                             {reference.sourceUrl}
                           </a>
                         ) : (
-                          <span className="text-slate-500">No canonical URL provided — verify via the citation text.</span>
+                          <span className="text-muted">No canonical URL provided — verify via the citation text.</span>
                         )}
                       </dd>
                     </div>
@@ -234,14 +234,14 @@ export function CitationDeepDiveExplorer({ sourceReferences, conditionName }: Ci
                           .map((sibling) => (
                             <li key={sibling.citation}>
                               <span className="font-mono">{sibling.citation}</span>
-                              <span className="text-slate-500"> — {sibling.note.slice(0, 120)}{sibling.note.length > 120 ? "…" : ""}</span>
+                              <span className="text-muted"> — {sibling.note.slice(0, 120)}{sibling.note.length > 120 ? "…" : ""}</span>
                             </li>
                           ))}
                       </ul>
                     </div>
                   )}
 
-                  <p className="text-xs leading-relaxed text-slate-500">
+                  <p className="text-xs leading-relaxed text-muted">
                     How to use this: Check that the source URL still resolves, that the “checked on” date is recent,
                     and that any applicability/effective-date note matches your claim date. When a Federal Register
                     source is shown, a final rule is binding guidance; a proposed rule or notice is history only. A
@@ -255,7 +255,7 @@ export function CitationDeepDiveExplorer({ sourceReferences, conditionName }: Ci
         })}
       </ul>
 
-      <p className="mt-3 text-xs leading-relaxed text-slate-500">
+      <p className="mt-3 text-xs leading-relaxed text-muted">
         Citations are research starting points to verify. An “unverified” badge does not mean the source is wrong —
         it means a qualified human has not yet confirmed this exact locator and scope.
       </p>

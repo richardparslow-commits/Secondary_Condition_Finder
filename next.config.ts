@@ -1,3 +1,6 @@
+import { readdirSync } from "node:fs";
+import { join } from "node:path";
+
 import type { NextConfig } from "next";
 
 /**
@@ -89,6 +92,42 @@ export function crossOriginIsolationSource(
 
 const isAzureStaticWebAppsBuild = process.env.AZURE_STATIC_WEB_APPS_BUILD === "1";
 
+/**
+ * Directories under `data/` that must never reach a deployment artifact.
+ *
+ * `knowledge-base-quarantine/` holds retired, unapproved clinical mappings kept
+ * exactly as delivered (REL-01). Nothing loads them, and shipping them would
+ * put unreviewed drafts into production — which is what happened: the app-wide
+ * tracing include matched this directory, so every server trace and the
+ * standalone bundle carried it. This list is the single place a retirement is
+ * registered, and `npm run audit:traces` fails if a quarantined file reaches an
+ * artifact anyway (for example once a loader traces the data tree again).
+ */
+const RETIRED_DATA_DOMAINS = ["knowledge-base-quarantine"];
+
+/**
+ * Include every live data domain app-wide, without first including retired
+ * content. Discover domains at build time so a new runtime domain is not
+ * silently omitted from deployment. Keep route exclusions as defense-in-depth;
+ * instrumentation's dynamic reads must preserve their own directory boundary.
+ */
+function runtimeDataTracingIncludes(): string[] {
+  return readdirSync(join(process.cwd(), "data"), { withFileTypes: true })
+    .filter((entry) =>
+      entry.isDirectory()
+        ? !RETIRED_DATA_DOMAINS.includes(entry.name)
+        : entry.isFile() && entry.name.endsWith(".json"),
+    )
+    .map((entry) =>
+      entry.isDirectory() ? `./data/${entry.name}/**/*.json` : `./data/${entry.name}`,
+    )
+    .sort();
+}
+
+function retiredDataTracingExcludes(): string[] {
+  return RETIRED_DATA_DOMAINS.map((domain) => `./data/${domain}/**`);
+}
+
 const nextConfig: NextConfig = {
   ...(isAzureStaticWebAppsBuild ? { output: "standalone" as const } : {}),
   reactStrictMode: true,
@@ -109,13 +148,25 @@ const nextConfig: NextConfig = {
    * `loadConditionCatalog()` — a silent failure mode that only appears at
    * runtime as ENOENT in production, not in the build.
    *
-   * The whole directory is ~7.2MB across ~857 files — comfortably inside the
-   * ~50MB serverless function budget. If it ever approaches that limit, the
-   * correct lever is narrowing per *domain* (e.g. drop a retired data/
-   * subdirectory from the glob), never per route.
+   * Live domains are discovered below; retired domains are never included.
+   * If the data approaches the serverless function budget, narrow per domain,
+   * never per route.
    */
   outputFileTracingIncludes: {
-    "/**": ["./data/**/*.json"],
+    "/**": runtimeDataTracingIncludes(),
+  },
+  /**
+   * Retired data is subtracted from every route's trace.
+   *
+   * Dynamic loader tracing can still find retired data even though the
+   * explicit include omits it. Retirement is registered once, in
+   * RETIRED_DATA_DOMAINS, and `npm run audit:traces` fails if such a file reaches
+   * any artifact, including the instrumentation trace and standalone bundle.
+   * Instrumentation is not an App Router route, so its loader paths must remain
+   * statically bounded rather than depending on these route exclusions.
+   */
+  outputFileTracingExcludes: {
+    "/**": retiredDataTracingExcludes(),
   },
   /**
    * No custom `webpack()` key — a deliberate decision, not an omission.

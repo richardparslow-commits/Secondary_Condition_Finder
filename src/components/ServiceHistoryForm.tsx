@@ -1,32 +1,42 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
-import { saveServiceHistory } from "@/lib/actions/presumptive";
+import {
+  normalizeServiceHistoryDraft,
+  persistServiceHistory,
+  SERVICE_HISTORY_MESSAGES,
+  type ServiceHistoryFailureCode,
+} from "@/lib/presumptive/browser-history";
 
 interface ServiceBranchOption {
   code: string;
   description: string;
 }
 
-interface Props {
+const fieldClass =
+  "w-full rounded-md border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-slate-900 focus:outline-none focus:ring-1 focus:ring-slate-900";
+
+export interface ServiceHistoryFormProps {
   locations: string[];
   serviceBranches: ServiceBranchOption[];
   serviceBranchSourceLabel: string;
   serviceBranchNotice: string;
 }
 
-const fieldClass =
-  "w-full rounded-md border border-slate-300 px-3 py-2 text-sm shadow-sm focus:border-slate-900 focus:outline-none focus:ring-1 focus:ring-slate-900";
-
 export function ServiceHistoryForm({
   locations,
   serviceBranches,
   serviceBranchSourceLabel,
   serviceBranchNotice,
-}: Props) {
+}: ServiceHistoryFormProps) {
+  const router = useRouter();
   const [selected, setSelected] = useState<string[]>([]);
   const [selectedBranches, setSelectedBranches] = useState<string[]>([]);
+  const [serviceStart, setServiceStart] = useState("");
+  const [serviceEnd, setServiceEnd] = useState("");
+  const [error, setError] = useState<ServiceHistoryFailureCode | null>(null);
 
   function toggle(location: string) {
     setSelected((current) =>
@@ -44,8 +54,39 @@ export function ServiceHistoryForm({
     );
   }
 
+  /**
+   * Service history is confirmed and stored in this browser tab; nothing is
+   * posted. The membership allowlist still runs (against the authored catalog
+   * labels this form rendered), so a crafted value cannot be stored.
+   */
+  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const result = persistServiceHistory(
+      window.sessionStorage,
+      normalizeServiceHistoryDraft({
+        serviceBranchCodes: selectedBranches,
+        locations: selected,
+        serviceStart,
+        serviceEnd,
+      }),
+      locations,
+    );
+
+    if (!result.ok) {
+      setError(result.code);
+      return;
+    }
+    setError(null);
+    router.push("/presumptive/results");
+  }
+
   return (
-    <form action={saveServiceHistory} className="space-y-8">
+    <form onSubmit={handleSubmit} className="space-y-8">
+      <p className="text-sm text-slate-600">
+        Everything you enter here stays in this browser tab. It is not sent to
+        the server and is not written to a cookie.
+      </p>
+
       <fieldset>
         <legend className="text-sm font-semibold text-slate-900">
           Which service branch or branches apply to you?
@@ -70,7 +111,7 @@ export function ServiceHistoryForm({
               />
               <span>
                 {branch.description}
-                <span className="ml-2 font-mono text-xs text-slate-500">{branch.code}</span>
+                <span className="ml-2 font-mono text-xs text-muted">{branch.code}</span>
               </span>
             </label>
           ))}
@@ -125,14 +166,33 @@ export function ServiceHistoryForm({
         <div className="mt-3 grid gap-4 sm:grid-cols-2">
           <label className="block">
             <span className="text-sm text-slate-700">Start date</span>
-            <input type="date" name="serviceStart" className={`mt-1 ${fieldClass}`} />
+            <input
+              type="date"
+              name="serviceStart"
+              value={serviceStart}
+              onChange={(event) => setServiceStart(event.target.value)}
+              className={`mt-1 ${fieldClass}`}
+            />
           </label>
           <label className="block">
             <span className="text-sm text-slate-700">End date</span>
-            <input type="date" name="serviceEnd" className={`mt-1 ${fieldClass}`} />
+            <input
+              type="date"
+              name="serviceEnd"
+              value={serviceEnd}
+              onChange={(event) => setServiceEnd(event.target.value)}
+              className={`mt-1 ${fieldClass}`}
+            />
           </label>
         </div>
       </fieldset>
+
+      {error && (
+        <div role="alert" className="ui-callout text-sm">
+          <strong>Check the service history form:</strong>{" "}
+          {SERVICE_HISTORY_MESSAGES[error]}
+        </div>
+      )}
 
       <button
         type="submit"

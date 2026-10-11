@@ -83,7 +83,7 @@ VA reference capabilities are supporting administrative enrichments. The core re
 - `/va-reference` loads the public `/disabilities` list without user disability-search text; browser filtering occurs after the list is loaded.
 - `/va-reference/service-branches` loads standardized service-branch reference values.
 - Secondary result cards can display VA/VBA administrative terminology and reference ID after local conservative matching against the already loaded reference list.
-- Presumptive intake can store optional standardized service-branch context in the encrypted workflow session.
+- Presumptive intake can store optional standardized service-branch context in its versioned, schema-bounded, tab-scoped browser record.
 
 **Why necessary:** Benefits Reference Data provides standardized VBA administrative terminology that can improve consistency and reduce ambiguity in claim-preparation research.
 
@@ -133,7 +133,7 @@ Credentials are stored only in the hosting platform's protected server environme
 
 ### Workflow state
 
-Secondary and presumptive state is stored in short-lived first-party cookies encrypted/authenticated with AES-256-GCM. Cookies are HttpOnly, SameSite=Strict, path-scoped, and expire after 30 minutes. Sensitive workflow values are not propagated through query strings.
+Secondary and presumptive workflow state is stored in versioned, schema-bounded, tab-scoped browser `sessionStorage` records; no workflow cookie is set and private context is not sent to the server. Legacy workflow cookies are tombstoned at the edge if a stale browser presents them. Sensitive workflow values are not propagated through query strings.
 
 ### Browser-local evidence analysis
 
@@ -157,7 +157,7 @@ The adapter uses bounded behavior:
 
 - default per-attempt timeout: 4 seconds;
 - at most three public-reference attempts for HTTP 503/504 or transient timeout/network failure, with bounded backoff/jitter;
-- immediate fallback without retry for HTTP 429/500; audited shared circuit/coordination defects remain to be repaired before faithful fleet backoff can be claimed;
+- immediate labelled fallback without an immediate retry for HTTP 429/500, with one exception: an upstream that explicitly authorizes retrying at once (Retry-After of 0, or an already-past HTTP-date) is retried once in the same request after the minimum backoff delay, because the circuit breaker's one-second floor would otherwise turn a documented immediate retry into a one-second outage; audited shared circuit/coordination defects remain to be repaired before faithful fleet backoff can be claimed;
 - invalid payloads fail closed;
 - HTTPS-only configurable endpoints;
 - upstream failure falls back locally and does not break core intake/recommendation/presumptive flows;
@@ -168,7 +168,7 @@ The adapter uses bounded behavior:
 Current controls include:
 
 - server-only API credentials with service separation;
-- encrypted/authenticated workflow cookies;
+- versioned, schema-bounded, tab-scoped browser workflow records; retired workflow cookies are tombstoned if stale copies are presented;
 - privacy-sensitive workflow state excluded from URLs;
 - browser-local evidence parsing/resource ceilings;
 - source-restrictive production CSP and route-wide security headers;

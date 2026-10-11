@@ -147,6 +147,32 @@ const workerGuardSource = `/*
     }
   }
 
+  // Convert transferred page bitmaps to encoded bytes OFF the page's main
+  // thread. Stop the original event before the pinned Tesseract handler sees
+  // it, then redispatch its exact protocol packet with the encoded image.
+  self.addEventListener("message", async function (event) {
+    var packet = event.data;
+    var image = packet && packet.payload && packet.payload.image;
+    if (!(image instanceof ImageBitmap)) return;
+    event.stopImmediatePropagation();
+    var canvas;
+    try {
+      canvas = new OffscreenCanvas(image.width, image.height);
+      var context = canvas.getContext("2d");
+      if (!context) throw new Error("OCR image context unavailable");
+      context.drawImage(image, 0, 0);
+      var blob = await canvas.convertToBlob({ type: "image/png" });
+      packet.payload.image = new Uint8Array(await blob.arrayBuffer());
+      self.dispatchEvent(new MessageEvent("message", { data: packet }));
+    } catch (_) {
+      // Fixed diagnostic only: document contents never appear in worker logs.
+      self.postMessage({ workerId: packet.workerId, jobId: packet.jobId,
+        action: packet.action, status: "reject", data: "OCR image preparation failed" });
+    } finally {
+      image.close();
+      if (canvas) { canvas.width = 0; canvas.height = 0; }
+    }
+  }, true);
   importScripts("/tesseract/worker.min.js");
 })();
 `;

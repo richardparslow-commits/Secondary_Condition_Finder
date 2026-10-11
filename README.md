@@ -98,8 +98,8 @@ clear progress store](docs/assets/va-gov-walkthrough.png)
 
 The screenshot is regenerable with `node
 scripts/capture-va-gov-walkthrough-screens.mjs` (starts a dev server and
-headless Chrome, seals a dev-only workflow cookie, and captures the card via
-the DevTools Protocol).
+headless Chrome, seeds the browser-local workflow record in `sessionStorage`,
+and captures the card via the DevTools Protocol).
 
 ### Step 5–6 research aids
 
@@ -190,9 +190,9 @@ Open `http://localhost:3000`. `/scenarios` contains repeatable demo walkthroughs
 | `npm run lint` | ESLint |
 | `npm run kb:validate` | Knowledge-base structural/integrity validation |
 | `npm run citations:audit` | Citation safety, provenance, and verification-debt audit |
-| `npm run audit:me-compliance` | Audits all mappings (incl. every ME-1..ME-33 relationship) against the CRG schema, nexus-arm, consensus, guard-honesty, citation, and quarantine rules |
+| `npm run audit:me-compliance` | Audits all mappings against the CRG schema, nexus-arm, consensus, guard-honesty, citation, and quarantine rules, and joins the ME approval ledgers to the corpus in both directions: every `mapping-expansion-me<N>-approved-implementation-ledger.json` is read in whatever shape it stores its approvals (`rows`, `relationships`, `mappings`), an unreadable or unrecognized ledger fails closed instead of being skipped, and a declared-but-absent approved relationship is reported rather than silently lowering a count |
 | `npm run audit:crg` | CRG structural audit: simple-cycle enumeration, bidirectional-pair governance notes, and a transitive-redundancy report. Self-loops, duplicate edges, and pure-causation cycles hard-fail; the review and redundancy backlogs are ratcheted so they can shrink but not grow (`--strict` upgrades every review finding to a violation). CI gate |
-| `npm run audit:crg:graph` | Adjacency-graph audit over `data/knowledge-base/graph/`: 3-color DFS cycle detection across `KbNodeMapping` files. A hard gate since the first node migrated 2026-10-03 (`docs/crg-adjacency-migration-checklist.md`). CI gate |
+| `npm run audit:crg:graph` | Adjacency-graph audit over `data/knowledge-base/graph/`: 3-color DFS cycle detection across `KbNodeMapping` files, plus the ARCH-01 evidence join (every edge needs an authored suggestion with citations and the same nexus classification; the authored corpus is read from the graph directory's parent or `--kb-root=`, and an unlocatable corpus fails closed). A hard gate since the first node migrated 2026-10-03 (`docs/crg-adjacency-migration-checklist.md`). CI gate |
 | `npm run citations:decay` | Live link-rot/staleness probe for citations (deliberate maintainer gate, not per-PR CI) |
 | `npm run citations:weak` | Weak-citation report (references below the repository's provenance bar) |
 | `npm run citations:queue` | Reports the qualified-human citation-verification queue as markdown |
@@ -207,15 +207,17 @@ the secondary workflow and validation/error behavior, plus a production-boot
 smoke check (`e2e/pathways-smoke.mjs`) that fetches `/pathways` and asserts the
 chain-break semantics and the absence of raw nexus enum values in the served
 body and its embedded RSC payload. After successful `main`
-CI, Production Runtime Readiness confirms the exact Vercel deployment, canonical
-alias, the full public route matrix, and the runtime-session readiness marker.
+CI, Production Runtime Readiness verifies exact Vercel deployment lineage,
+canonical-alias convergence, the public route matrix, and the separate
+`WORKFLOW_SESSION_SECRET` crypto-readiness marker; the marker does not indicate
+research-workflow state or VA-account store readiness.
 
 ## Configuration
 
 | Variable | Default | Purpose |
 |----------|---------|---------|
-| `WORKFLOW_SESSION_SECRET` | development-only fallback outside production | Server-only secret for AES-256-GCM workflow tokens. Production requires at least 32 characters and fails closed if missing. |
-| `SECONDARY_WORKFLOW_SESSION_SECRET` | unset | Backward-compatible non-production fallback. Prefer `WORKFLOW_SESSION_SECRET`. |
+| `WORKFLOW_SESSION_SECRET` | development-only fallback outside production | Legacy server-only crypto-readiness marker checked by `/api/health` and `/runtime-readiness`; production requires at least 32 characters. It does not encrypt research-workflow records or VA-account tokens. |
+| `SECONDARY_WORKFLOW_SESSION_SECRET` | retired (unset) | Retired 2026-10-10 (REL-04 follow-up): no longer read by the crypto helper; set `WORKFLOW_SESSION_SECRET`. |
 | `VA_API_ENV` | `sandbox` | Selects the VA adapter environment: `sandbox` or `production`. |
 | `VA_API_ENABLED` | disabled | Explicit generic enable flag. Production requests require this to be `true`. |
 | `VA_SANDBOX_ENABLED` | disabled | Legacy sandbox-only enable flag when `VA_API_ENABLED` is unset. |
@@ -272,11 +274,11 @@ data/evidence/            Master source and relationship registries (lineage sou
 data/regulatory-actions/  Provenanced VA regulatory action seed records
 data/demo-scenarios.json
 src/proxy.ts              Edge proxy (Next 16 middleware): per-request nonce CSP, x-nonce, route headers
-src/lib/actions/          All Server Actions ("use server") — secondary, presumptive, scenarios
+src/lib/actions/          Server Actions for bounded public operations (currently the accredited-representative lookup)
 src/lib/catalog/          Zod schema, loader, lookup; condition identity
 src/lib/kb/               Zod schema, loader, mapping helpers
 src/lib/engine/           Recommendation and export logic
-src/lib/presumptive/      Service-history matcher and encrypted session wrapper
+src/lib/presumptive/      Service-history matcher and browser-local history store
 src/lib/evidence/         Browser-local evidence extraction/evaluation helpers
 src/lib/regulatory/       Regulatory intelligence and preflight (Federal Register / OIRA / Regulations.gov)
 src/lib/va/               Environment-aware public-reference adapters/cache
@@ -326,27 +328,28 @@ holds the provenanced seed records behind it. See
 The public security posture and vulnerability-reporting process (including Safe
 Harbor) live in [`SECURITY.md`](SECURITY.md); the operations runbook lives in
 [`docs/security-operations.md`](docs/security-operations.md). All Server Actions
-reside in `src/lib/actions/`.
+reside in `src/lib/actions/`. The optional VA-account sandbox uses separate
+same-origin Route Handlers at `/va-account/oauth/*`.
 
-- Secondary health/disability state is submitted with server actions rather than
-  encoded into query strings; the codebase does not expose a helper that
-  serializes complete secondary-workflow state back into a URL.
-- Presumptive service locations and dates are also submitted with a server
-  action rather than GET query parameters.
-- Workflow state is stored in short-lived encrypted/authenticated HttpOnly,
-  SameSite=Strict cookies scoped to the appropriate workflow path. The server
-  authenticates issuance and expiry inside the encrypted token rather than
-  relying on browser `Max-Age` alone.
+- Secondary health/disability and presumptive service-history state stays in
+  versioned, schema-bounded, tab-scoped browser `sessionStorage` records; the
+  workflow does not submit private context to Server Actions or encode it into
+  query strings.
+- The edge proxy refuses requests carrying private workflow-context fields and
+  tombstones retired workflow cookies if a stale browser presents one.
+- The separate optional VA sandbox account experiment uses an opaque HttpOnly
+  handle cookie; its encrypted tokens remain in an isolated server session store.
 - Back links use clean route paths so selections do not enter browser history,
   referrer headers, or copied URLs.
 - Optional local evidence documents are processed in-browser; raw bytes/text are
-  not placed in workflow cookies or application logs.
+  not placed in browser-local workflow records, URLs, or application logs.
 - Local OCR runs entirely in the tab against same-origin assets; the production
   CSP adds only a narrow `'wasm-unsafe-eval'` allowance for the OCR WASM core
   while `connect-src` stays first-party only.
-- The application does not initialize a client analytics/telemetry SDK or a
-  workflow/recommendation event-history logger. Production `connect-src` remains
-  first-party only.
+- The application does not initialize a client analytics/telemetry SDK. It does
+  emit allowlisted workflow/recommendation operational events to platform logs;
+  these are not a per-user history database, and host retention/access must be
+  reviewed. Production `connect-src` remains first-party only.
 - Production script execution uses a per-request nonce CSP generated by
   `src/proxy.ts`; production `script-src` does not use `'unsafe-inline'`.
   Request-time rendering is intentional so Next.js can attach the nonce to its
@@ -473,10 +476,18 @@ association list. Strict Zod schemas enforce that every suggestion carries:
 
 Enforcement and auditing:
 
-- `npm run audit:me-compliance` audits every mapping — including each
-  ME-1..ME-33 relationship — for nexus-arm validity, consensus/alignment
-  consistency, guard-disclaimer honesty, citation discipline, and quarantine
-  compliance as a CI gate.
+- `npm run audit:me-compliance` audits every mapping for nexus-arm validity,
+  consensus/alignment consistency, guard-disclaimer honesty, citation
+  discipline, and quarantine compliance as a CI gate. It also joins the ME
+  approval ledgers to the corpus in both directions. The ledgers do not share
+  one shape (`rows` for ME-1..ME-25, `relationships` for ME-29+, `mappings` for
+  ME-26..ME-28), so the join reads all three and reports any pair row held under
+  a shape it does not recognize; a ledger that cannot be parsed is a violation,
+  not a batch quietly dropped from the audit; and a declared approved
+  relationship missing from the corpus is reported unless it is named in the
+  exact-pair `ME_LEDGER_ABSENT_ALLOWLIST`. Reading only `rows` and skipping
+  unparsable ledgers left 15 of 39 ledgers and 71 of 191 approved relationships
+  unaudited while the gate reported a green count.
 - `npm run audit:crg` and `npm run audit:crg:graph` are CI gates over the
   relationship graph's structure. Self-loops, duplicate edges, and cycles built
   entirely from `DIRECT_CAUSATION` hard-fail, because circular causation is not

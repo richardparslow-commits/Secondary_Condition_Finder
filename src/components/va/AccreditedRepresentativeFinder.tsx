@@ -82,7 +82,7 @@ export function AccreditedRepresentativeFinder({ initialView, returnTo }: Props)
 
       {initialView && (
         <div className="mt-5">
-          <p className="text-xs text-slate-500">
+          <p className="text-xs text-muted">
             Source: {initialView.sourceLabel} · {initialView.live ? "live" : "local fallback"} · {initialView.cacheStatus === "hit" ? "cache hit" : initialView.cacheStatus}
             {initialView.retrievedAt ? ` · ${initialView.retrievedAt}` : ""} · {initialView.environment ?? "n/a"}
           </p>
@@ -111,7 +111,7 @@ export function AccreditedRepresentativeFinder({ initialView, returnTo }: Props)
                       {item.specializations.join(", ")}
                     </p>
                   )}
-                  <p className="text-xs text-slate-500">
+                  <p className="text-xs text-muted">
                     {item.address ? `${item.address} · ` : ""}
                     {item.zip}
                     {item.distanceMiles != null ? ` · ${item.distanceMiles.toFixed(1)} mi` : ""}
@@ -131,7 +131,7 @@ export function AccreditedRepresentativeFinder({ initialView, returnTo }: Props)
         </div>
       )}
 
-      <p className="mt-4 text-xs text-slate-500">
+      <p className="mt-4 text-xs text-muted">
         Accredited representatives may help prepare and submit a claim at no upfront cost; representatives may only charge for services after VA issues the decision and approves a fee agreement (38 U.S.C. § 5904). Verify accreditation and contact details on VA&apos;s OGC directory before sharing personal information. This lookup does not determine eligibility and does not persist your ZIP.
       </p>
     </section>

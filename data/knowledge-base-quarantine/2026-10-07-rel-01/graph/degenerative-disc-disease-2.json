@@ -1,0 +1,46 @@
+{
+  "nodeId": "degenerative-disc-disease",
+  "outgoingEdges": [
+    {
+      "sourceConditionId": "degenerative-disc-disease",
+      "targetConditionId": "radiculopathy",
+      "rank": 1,
+      "nexusClaim": {
+        "nexusClassification": "DIRECT_CAUSATION"
+      },
+      "causalMechanism": {
+        "mechanismCategory": "MECHANICAL_OR_COMPRESSIVE",
+        "primaryVector": "Disc degeneration reduces disc height and competence, permitting annular tears, disc protrusion and frank herniation; mechanical compression of the exiting nerve root and dorsal root ganglion, compounded by local inflammatory mediators released from the degenerate disc, produces ectopic nerve-root firing and the segmental pain, paraesthesia and weakness that define radiculopathy. Both the compressive and the inflammatory arms are described in the registered literature and neither requires an unproven step.",
+        "secondaryVector": "Loss of disc height and the consequent facet loading can narrow the neural foramen and the lateral recess, so foraminal and canal stenosis can contribute to the same nerve-root compromise as the disc protrusion itself.",
+        "hypothesizedOnly": false
+      },
+      "evidentiaryProfile": {
+        "etiologicalConsensus": "WELL_ESTABLISHED",
+        "vaNexusProbabilityAlignment": "AT_LEAST_AS_LIKELY_AS_NOT",
+        "conservativeRationale": "The conservative posture is that mechanical and inflammatory nerve-root compromise by degenerate and herniated disc material is an established mechanism, so the dispute in an individual case is almost never whether the mechanism exists but whether this person's radicular findings are anatomically concordant with the documented degenerative level and are not better explained by another lesion. The proposition is therefore accepted with the ME-13 anatomical-concordance requirement intact and load-bearing: imaging must demonstrate degenerative disc pathology capable of nerve-root compromise, and the clinical and electrodiagnostic findings must correspond to that level and side. The added mechanism anchor studies contralateral lumbar radiculopathy and is registered as the pathophysiology source only, not as a laterality model.",
+        "evidenceGaps": "Anchor scope: the added pathophysiology anchor's population is contralateral lumbar radiculopathy, a less common presentation, so it supports the mechanism and not any particular laterality, level or side. Concordance: no anchor substitutes for imaging at a level and side capable of compromising the claimed nerve root together with clinical or electrodiagnostic concordance. Competing explanations: peripheral entrapment neuropathy, plexopathy, spinal stenosis or myelopathy, and non-degenerative structural lesions including tumour, infection and fracture must all be excluded at the same level. Individual-level trajectory: no anchor reports how many individuals with degenerative disc disease develop radiculopathy per follow-up, and neither anchor separates discogenic from foraminal or stenotic contributions in an individual. Verification state: the added reference enters verified:false pending qualified-human citation review.",
+        "alternativeEtiologiesToRuleOut": [
+          "Peripheral entrapment neuropathy such as carpal or cubital tunnel syndrome",
+          "Brachial or lumbar plexopathy",
+          "Spinal stenosis or myelopathy rather than isolated nerve-root compromise",
+          "Non-degenerative structural lesion including tumour, infection, or fracture"
+        ],
+        "alternativeEtiologyTags": [
+          "entrapment-neuropathy",
+          "plexopathy",
+          "spinal-stenosis",
+          "structural-lesion"
+        ],
+        "requiresSpecificDbqEvidence": true
+      },
+      "rationale": "Authoring registers the held CRG draft-expansion proposal for the degenerative-disc-disease to radiculopathy window on 2026-10-06, SUPERSEDING the ME-13 association-only framing of this same rank-1 row at the maintainer's direction and preserving the ME-13 anatomical-concordance guard in full. Degenerative disc disease and its nerve-root consequence form one of the clearest mechanical secondary-connection relationships in the rating schedule: disc desiccation, loss of disc height, annular disruption and protrusion or herniation displace disc material against the exiting nerve root and the dorsal root ganglion, while the degenerate disc simultaneously releases local inflammatory mediators, so compression and chemical irritation act on the same structure. The ME-13 meta-analysis already registered on this row is a cervical radiculopathy population selected on degenerative disc disease and reports measured operative outcomes at that level (PMID 34402323), and the added pathophysiology anchor is a systematic review of how a herniated disc produces radicular pain and deficit, including the contralateral presentations that simple one-sided compression cannot explain (PMID 32281018). The classification therefore moves to DIRECT_CAUSATION and the evidentiary tier to WELL_ESTABLISHED, because the dispute in an individual case is attribution and level-and-side concordance rather than the existence of the mechanism, and the ME-13 publication guard accordingly remains load-bearing and was left byte-identical to its approved text. Two boundaries are carried rather than buried: the added anchor's own population is contralateral lumbar radiculopathy, a less common presentation whose laterality is unusual, so it is registered as the pathophysiology source and not as a laterality model, and the row continues to require imaging at a level and side capable of compromising the claimed nerve root together with clinical or electrodiagnostic findings concordant with that level. All references remain subject to qualified-human citation verification under docs/citation-verification-sop.md.",
+      "evidenceGaps": [
+        "Imaging demonstrating degenerative disc disease at a level and side capable of compromising the claimed nerve root, with the level and side recorded",
+        "Clinical and electrodiagnostic findings concordant with that level, including dermatomal sensory loss, myotomal weakness and reflex change",
+        "Exclusion of peripheral entrapment neuropathy such as carpal or cubital tunnel syndrome, and of brachial or lumbar plexopathy",
+        "Exclusion of spinal stenosis or myelopathy as the explanation of the findings",
+        "Resolution of publication guard: Require cervical degenerative disc pathology capable of nerve-root compromise and separately established anatomically concordant cervical radiculopathy. Do not infer radiculopathy from degenerative imaging, axial neck pain, nonspecific paresthesias, myelopathy, or peripheral entrapment neuropathy alone. Preserve peripheral neuropathy, plexopathy, entrapment neuropathy, spinal cord disease, nondegenerative structural lesions, and other causes as competing explanations."
+      ]
+    }
+  ]
+}

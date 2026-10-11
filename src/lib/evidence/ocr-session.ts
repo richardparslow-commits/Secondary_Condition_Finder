@@ -174,14 +174,74 @@ export const LOCAL_OCR_WORKER_OPTIONS = {
 } as const;
 
 /**
- * Spawns the shared browser-local OCR worker (eng, LSTM-only) with the
- * Trusted-Types-compatible options above. The `tesseract.js` import stays
- * dynamic so the WASM OCR bundle is only fetched on an explicit user action;
- * callers are responsible for `worker.terminate()`.
+ * Direct client for the pinned Tesseract v6 worker protocol. No OCR library,
+ * image encoding, model initialization or inference runs on the page. Canvas
+ * inputs cross the boundary as transferable bitmaps; worker-guard.js encodes
+ * them using OffscreenCanvas before handing them to Tesseract. File/Blob bytes
+ * are read asynchronously and transferred, never posted to an HTTP endpoint.
  */
 export async function createLocalOcrWorker() {
-  const { createWorker } = await import("tesseract.js");
-  return createWorker("eng", 1, LOCAL_OCR_WORKER_OPTIONS);
+  const worker = new Worker("/tesseract/worker-guard.js");
+  let sequence = 0;
+  let closed = false;
+  const pending = new Map<string, {
+    resolve: (result: { data: { text?: string } }) => void;
+    reject: (error: Error) => void;
+  }>();
+  const fail = (error: Error) => {
+    for (const job of pending.values()) job.reject(error);
+    pending.clear();
+    closed = true;
+    worker.terminate();
+  };
+  worker.onerror = () => fail(new Error("Browser-local OCR worker failed."));
+  worker.onmessageerror = () => fail(new Error("Browser-local OCR worker message failed."));
+  worker.onmessage = ({ data }) => {
+    const job = pending.get(data.jobId);
+    if (!job || data.status === "progress") return;
+    pending.delete(data.jobId);
+    if (data.status === "resolve") job.resolve({ data: data.data });
+    else job.reject(new Error("Browser-local OCR operation failed."));
+  };
+  const send = (action: string, payload: object, transfer: Transferable[] = []) => {
+    if (closed) return Promise.reject(new Error("Browser-local OCR worker is closed."));
+    const jobId = `local-ocr-${++sequence}`;
+    return new Promise<{ data: { text?: string } }>((resolve, reject) => {
+      pending.set(jobId, { resolve, reject });
+      try {
+        worker.postMessage({ workerId: "local-ocr", jobId, action, payload }, transfer);
+      } catch {
+        fail(new Error("Could not send input to the browser-local OCR worker."));
+      }
+    });
+  };
+  try {
+    await send("load", { options: { lstmOnly: true, corePath: LOCAL_OCR_WORKER_OPTIONS.corePath, logging: false } });
+    await send("loadLanguage", { langs: "eng", options: { langPath: LOCAL_OCR_WORKER_OPTIONS.langPath, gzip: true, lstmOnly: true } });
+    await send("initialize", { langs: "eng", oem: 1, config: {} });
+  } catch (error) {
+    fail(new Error("Could not initialize browser-local OCR."));
+    throw error;
+  }
+  return {
+    async recognize(input: HTMLCanvasElement | File | Blob) {
+      if (input instanceof Blob) {
+        const buffer = await input.arrayBuffer();
+        return send("recognize", { image: new Uint8Array(buffer), options: {}, output: { text: true } }, [buffer]);
+      }
+      // createImageBitmap is asynchronous; PNG encoding happens in the worker,
+      // not via canvas.toBlob/toDataURL on the page's main thread.
+      const image = await createImageBitmap(input);
+      try {
+        return await send("recognize", { image, options: {}, output: { text: true } }, [image]);
+      } finally {
+        image.close();
+      }
+    },
+    async terminate() {
+      fail(new Error("Browser-local OCR was terminated."));
+    },
+  };
 }
 
 export interface OcrWorkerHealthProbe {

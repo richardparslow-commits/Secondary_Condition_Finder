@@ -3,7 +3,11 @@ import { NextResponse } from "next/server";
 import { loadConditionCatalog } from "@/lib/catalog/load";
 import { loadKbGraph } from "@/lib/kb/graph";
 import { runtimeCapabilities } from "@/lib/runtime-capabilities";
-import { openSessionPayload, sealSessionPayload } from "@/lib/workflow-session-crypto";
+import {
+  openSessionPayload,
+  sealSessionPayload,
+  workflowSessionRuntimeReady,
+} from "@/lib/workflow-session-crypto";
 import { loadVaApiConfig } from "@/lib/va/sandbox";
 import { getCircuitSnapshot } from "@/lib/va/circuit-breaker";
 import { peekCacheCounters } from "@/lib/va/reference-cache";
@@ -22,11 +26,11 @@ async function checkCatalog(): Promise<ComponentCheck & { count?: number }> {
   try {
     const catalog = loadConditionCatalog();
     return { status: "ok", latencyMs: Date.now() - started, count: catalog.length };
-  } catch (error) {
+  } catch {
     return {
       status: "error",
       latencyMs: Date.now() - started,
-      detail: error instanceof Error ? error.message : String(error),
+      detail: "Catalog validation failed.",
     };
   }
 }
@@ -41,13 +45,51 @@ async function checkSessionCrypto(): Promise<ComponentCheck> {
     const opened = openSessionPayload(sealed, secret) as typeof probe | null;
     if (!opened || opened.kind !== probe.kind) throw new Error("Session crypto round-trip failed");
     return { status: "ok", latencyMs: Date.now() - started };
-  } catch (error) {
+  } catch {
     return {
       status: "error",
       latencyMs: Date.now() - started,
-      detail: error instanceof Error ? error.message : String(error),
+      detail: "Session crypto probe failed.",
     };
   }
+}
+
+/**
+ * Workflow-session readiness: can this deployment actually seal and open a
+ * workflow session right now?
+ *
+ * `checkSessionCrypto` above proves the *primitives* work using an ephemeral
+ * probe secret, which is deliberate — it must not fail because of configuration.
+ * That is exactly why it cannot answer this question: a deployment whose
+ * production secret is missing or too short seals nothing, while the primitive
+ * check stays green. Measured independently, a missing key produced
+ * `workflowSessionRuntimeReady() === false` alongside a `200 healthy` health
+ * body (REL-04). This component is the missing half.
+ *
+ * Development is `ok` on purpose: non-production runs on a documented
+ * development-only fallback secret, so the workflow genuinely works there, and
+ * reporting it as broken would train operators to ignore the field. Production
+ * requires the real secret, proved by a round trip rather than by presence, so
+ * a configured-but-unusable key is an `error` here instead of a silent one.
+ * Nothing about the secret is returned — the detail is a fixed string.
+ */
+function checkWorkflowSession(): ComponentCheck {
+  const started = Date.now();
+  let ready: boolean;
+  try {
+    ready = process.env.NODE_ENV !== "production" || workflowSessionRuntimeReady();
+  } catch {
+    ready = false;
+  }
+  return {
+    status: ready ? "ok" : "error",
+    latencyMs: Date.now() - started,
+    detail: ready
+      ? process.env.NODE_ENV === "production"
+        ? "Workflow session secret configured and round-trip verified"
+        : "Workflow session using the development-only fallback secret"
+      : "Workflow session configuration unusable",
+  };
 }
 
 /**
@@ -69,11 +111,11 @@ function checkKbGraph(): ComponentCheck & { nodes?: number; edges?: number } {
       nodes: graph.size,
       edges,
     };
-  } catch (error) {
+  } catch {
     return {
       status: "error",
       latencyMs: Date.now() - started,
-      detail: error instanceof Error ? error.message : String(error),
+      detail: "Knowledge graph validation failed.",
     };
   }
 }
@@ -92,11 +134,11 @@ function checkVaConfig(): ComponentCheck & { enabled?: boolean; environment?: st
       environment: config.environment ?? null,
       detail,
     };
-  } catch (error) {
+  } catch {
     return {
       status: "error",
       latencyMs: Date.now() - started,
-      detail: error instanceof Error ? error.message : String(error),
+      detail: "VA configuration unavailable.",
     };
   }
 }
@@ -106,21 +148,30 @@ function checkVaConfig(): ComponentCheck & { enabled?: boolean; environment?: st
  *
  * Health check endpoint used by Vercel monitoring and the production readiness
  * workflow. Returns component-level status for catalog, session crypto, the
- * CRG adjacency graph, VA API config, and circuit breaker state.
+ * configured workflow session, the CRG adjacency graph, VA API config, and
+ * circuit breaker state.
  *
  * Response schema (see docs/api-specification.md):
  * - status: "healthy" | "degraded"
  * - components.catalog: { status, latencyMs, count?, detail? }
- * - components.sessionCrypto: { status, latencyMs, detail? }
+ * - components.sessionCrypto: { status, latencyMs, detail? } — primitives only,
+ *   on an ephemeral probe secret; unrelated to configured readiness
+ * - components.workflowSession: { status, latencyMs, detail? } — the configured
+ *   workflow session, i.e. whether this deployment can seal/read one at all
  * - components.kbGraph: { status, latencyMs, nodes?, edges?, detail? }
  * - components.vaConfig: { status, latencyMs, enabled?, environment?, detail? }
  * - components.circuitBreaker: { status, latencyMs, detail, snapshot }
  * - components.vaReferenceCache: { scope, detail, hits, misses, hitRate } —
  *   `scope: "disabled"` means the counters are structurally frozen at zero and
  *   must not be read as "a cache that has not been used yet"
- * - components.rateLimit: { status, latencyMs, scope, detail } — whether
- *   application-level rate limiting is per-instance here, since the effective
- *   limit scales with instance count and is not otherwise observable
+ * - components.rateLimit: { status, latencyMs, scope, detail, identity, ceiling,
+ *   store } — whether application-level rate limiting is per-instance here,
+ *   since the effective limit scales with instance count and is not otherwise
+ *   observable; `identity` records whether per-client keys rest on an asserted
+ *   ingress or on client-supplied headers, `ceiling` is the shared budget that
+ *   bounds unattributed and key-rotating traffic (read off the limiter that
+ *   enforces it, so the report and the behaviour are one number), and `store`
+ *   records whether those counters are deployment-wide or process-local
  * - components.runtime: { status, latencyMs, distributed, reduced, capabilities,
  *   detail } — the aggregate answer to "what does this deployment give up?",
  *   covering every process-local control (including live VA access and the
@@ -129,15 +180,16 @@ function checkVaConfig(): ComponentCheck & { enabled?: boolean; environment?: st
  * - latencyMs: total endpoint latency
  * - timestamp: ISO 8601
  *
- * HTTP 200 when catalog + sessionCrypto + kbGraph are ok; 503 when any is
- * error — invalid adjacency data is a deployed-integrity failure, not a
- * degraded-but-expected state.
+ * HTTP 200 when catalog + sessionCrypto + workflowSession + kbGraph are ok; 503
+ * when any is error — invalid adjacency data and an unusable workflow secret are
+ * both deployed-integrity/readiness failures, not degraded-but-expected states.
  */
 export async function GET() {
   const started = Date.now();
 
   try {
     const [catalog, sessionCrypto] = await Promise.all([checkCatalog(), checkSessionCrypto()]);
+    const workflowSession = checkWorkflowSession();
     const kbGraph = checkKbGraph();
     const vaConfig = checkVaConfig();
     const circuit = getCircuitSnapshot();
@@ -151,6 +203,7 @@ export async function GET() {
     const components = {
       catalog,
       sessionCrypto,
+      workflowSession,
       kbGraph,
       vaConfig,
       circuitBreaker: {
@@ -174,6 +227,9 @@ export async function GET() {
         latencyMs: 0,
         scope: rateLimit.scope,
         detail: rateLimit.detail,
+        // The control's own facts (identity trust, enforced ceiling, store
+        // regime), forwarded rather than re-derived here.
+        ...rateLimit.details,
       },
       runtime: {
         status: "ok" as const,
@@ -186,7 +242,10 @@ export async function GET() {
     };
 
     const healthy =
-      catalog.status === "ok" && sessionCrypto.status === "ok" && kbGraph.status === "ok";
+      catalog.status === "ok" &&
+      sessionCrypto.status === "ok" &&
+      workflowSession.status === "ok" &&
+      kbGraph.status === "ok";
     const status = healthy ? 200 : 503;
 
     return NextResponse.json(
@@ -198,18 +257,19 @@ export async function GET() {
       },
       { status },
     );
-  } catch (error) {
-    // Health endpoint must never crash — return 503 with the failure detail
-    // so monitoring systems see "degraded" rather than a 500 opaque error.
+  } catch {
+    // Health endpoint must never crash — return a content-free 503 so
+    // monitoring sees "degraded" without exporting exception details.
     return NextResponse.json(
       {
         status: "degraded",
         components: {
           catalog: { status: "error", latencyMs: 0, detail: "Health check aborted" },
           sessionCrypto: { status: "error", latencyMs: 0, detail: "Health check aborted" },
+          workflowSession: { status: "error", latencyMs: 0, detail: "Health check aborted" },
           kbGraph: { status: "error", latencyMs: 0, detail: "Health check aborted" },
         },
-        error: error instanceof Error ? error.message : String(error),
+        error: "Health check failed; diagnostic details withheld.",
         latencyMs: Date.now() - started,
         timestamp: new Date().toISOString(),
       },

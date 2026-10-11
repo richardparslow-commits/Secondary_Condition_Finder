@@ -120,7 +120,7 @@ export function MedicationContextExplainer({
         </div>
       )}
 
-      <p className="mt-3 text-xs text-slate-500">
+      <p className="mt-3 text-xs text-muted">
         Your medication/treatment entries are optional, bounded, and stored only in the encrypted short-lived workflow
         cookie for this review. They are not written to recommendation logs, telemetry, or VA APIs.
       </p>

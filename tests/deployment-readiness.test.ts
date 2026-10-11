@@ -241,3 +241,108 @@ describe("production deployment readiness", () => {
     expect(runbook).not.toContain("VA_SANDBOX_API_KEY`");
   });
 });
+
+/**
+ * REL-04: `/api/health` must answer the *readiness* question, not only the
+ * liveness one.
+ *
+ * `components.sessionCrypto` proves the seal/open primitives work using an
+ * ephemeral probe secret, which is deliberate — it must not fail because of
+ * configuration. That is exactly why it cannot report a missing production
+ * secret: the primitives stay green while every workflow write fails. These
+ * cases pin the second component that closes that gap, and pin that it never
+ * leaks the configured value.
+ */
+describe("health readiness truthfulness (REL-04)", () => {
+  async function health(): Promise<{ status: number; body: Record<string, unknown> }> {
+    const { GET } = await import("@/app/api/health/route");
+    const response = await GET();
+    return { status: response.status, body: (await response.json()) as Record<string, unknown> };
+  }
+
+  function component(body: Record<string, unknown>, name: string) {
+    const components = body.components as Record<string, Record<string, unknown>>;
+    return components[name];
+  }
+
+  it("degrades when the configured production workflow secret is unusable", async () => {
+    vi.stubEnv("NODE_ENV", "production");
+    vi.stubEnv("WORKFLOW_SESSION_SECRET", "");
+    vi.stubEnv("SECONDARY_WORKFLOW_SESSION_SECRET", "");
+
+    const { status, body } = await health();
+
+    expect(status).toBe(503);
+    expect(body.status).toBe("degraded");
+    expect(component(body, "workflowSession").status).toBe("error");
+    expect(component(body, "workflowSession").detail).toBe("Workflow session configuration unusable");
+    // The distinction that made this a false green: the primitive check stays
+    // ok, so its verdict is not evidence about configuration.
+    expect(component(body, "sessionCrypto").status).toBe("ok");
+  });
+
+  it("reports ready when the configured secret survives a real round trip", async () => {
+    vi.stubEnv("NODE_ENV", "production");
+    vi.stubEnv(
+      "WORKFLOW_SESSION_SECRET",
+      "primary-production-secret-that-is-long-enough-for-tests",
+    );
+    vi.stubEnv("SECONDARY_WORKFLOW_SESSION_SECRET", "");
+
+    const { status, body } = await health();
+
+    expect(status).toBe(200);
+    expect(body.status).toBe("healthy");
+    expect(component(body, "workflowSession").status).toBe("ok");
+    expect(component(body, "workflowSession").detail).toMatch(/round-trip verified/);
+  });
+
+  it("never echoes the configured secret, its length, or an exception value", async () => {
+    const secret = "primary-production-secret-that-is-long-enough-for-tests";
+    vi.stubEnv("NODE_ENV", "production");
+    vi.stubEnv("WORKFLOW_SESSION_SECRET", secret);
+
+    const { body } = await health();
+    const serialized = JSON.stringify(body);
+
+    expect(serialized).not.toContain(secret);
+    expect(serialized).not.toContain("WORKFLOW_SESSION_SECRET=");
+  });
+
+  it("treats the development-only fallback as ready outside production", async () => {
+    vi.stubEnv("NODE_ENV", "test");
+    vi.stubEnv("WORKFLOW_SESSION_SECRET", "");
+    vi.stubEnv("SECONDARY_WORKFLOW_SESSION_SECRET", "");
+
+    const { status, body } = await health();
+
+    // Non-production runs on the documented development-only fallback, where
+    // workflows genuinely work. Reporting it broken would train operators to
+    // ignore the field that exists to be trusted.
+    expect(status).toBe(200);
+    expect(component(body, "workflowSession").status).toBe("ok");
+    expect(component(body, "workflowSession").detail).toMatch(/development-only fallback/);
+  });
+
+  it("reports the enforced rate-limit identity, ceiling and store regime", async () => {
+    vi.stubEnv("NODE_ENV", "production");
+
+    const { body } = await health();
+    const rateLimit = component(body, "rateLimit") as {
+      identity: Record<string, unknown>;
+      ceiling: Record<string, unknown>;
+      store: Record<string, unknown>;
+    };
+
+    // SEC-02's reporting half: the trust decision, the enforced ceiling and the
+    // store regime are readable from the deployment rather than from comments.
+    expect(rateLimit.identity.identity).toBe("self-declared");
+    expect(rateLimit.identity.variable).toBe("RATE_LIMIT_TRUSTED_INGRESS");
+    expect(rateLimit.ceiling.variable).toBe("RATE_LIMIT_UNATTRIBUTED_MAX");
+    expect(typeof rateLimit.ceiling.max).toBe("number");
+    expect((rateLimit.ceiling.max as number)).toBeGreaterThan(0);
+    expect(rateLimit.store.mode).toBe("process-local");
+    expect(rateLimit.store.distributed).toBe(false);
+    expect(rateLimit.store.blockedBy).toBe("no-store-provisioned");
+  });
+});

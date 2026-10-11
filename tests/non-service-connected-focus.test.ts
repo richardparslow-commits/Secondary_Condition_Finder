@@ -121,11 +121,11 @@ describe("buildNonServiceConnectedConditionResults", () => {
 
 describe("Step 5 diagnosis-centered contract", () => {
   const suggestionsPage = fs.readFileSync(
-    path.join(process.cwd(), "src/app/secondary/suggestions/page.tsx"),
+    path.join(process.cwd(), "src/components/secondary/steps/SuggestionsStep.tsx"),
     "utf8",
   );
   const evidencePage = fs.readFileSync(
-    path.join(process.cwd(), "src/app/secondary/evidence/page.tsx"),
+    path.join(process.cwd(), "src/components/secondary/steps/EvidenceStep.tsx"),
     "utf8",
   );
 

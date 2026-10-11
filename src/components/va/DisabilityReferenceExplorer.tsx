@@ -48,7 +48,7 @@ export function DisabilityReferenceExplorer({ items }: Props) {
       {query.trim() && (
         <div role="status" aria-live="polite" className="mt-3 rounded-md bg-slate-50 p-3 text-xs text-slate-700">
           {exactMatch ? (
-            <span>Exact VA reference match: <strong>{exactMatch.name}</strong> <span className="text-slate-500">(ID {exactMatch.id})</span></span>
+            <span>Exact VA reference match: <strong>{exactMatch.name}</strong> <span className="text-muted">(ID {exactMatch.id})</span></span>
           ) : (
             <span>No exact VA reference-name match for the entered text.</span>
           )}
@@ -78,7 +78,7 @@ export function DisabilityReferenceExplorer({ items }: Props) {
           {matches.map((item) => (
             <li key={item.id} className="px-4 py-3 text-sm text-slate-800">
               {item.name}
-              <span className="ml-2 font-mono text-xs text-slate-500">{item.id}</span>
+              <span className="ml-2 font-mono text-xs text-muted">{item.id}</span>
             </li>
           ))}
         </ul>

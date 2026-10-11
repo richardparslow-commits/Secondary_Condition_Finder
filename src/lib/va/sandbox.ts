@@ -17,7 +17,15 @@ import {
   vaProcessLocalStateAllowed,
   type VaReferenceMode,
 } from "./runtime-state";
-import { parseRetryAfterMs } from "./circuit-breaker";
+import {
+  parseRetryAfterMs,
+  parseVaApiPayload,
+  planVaApiRateLimitRetry,
+  vaApiRetryDelayMs,
+  VA_API_MAX_RETRIES,
+  VA_API_RATE_LIMIT_STATUS,
+  VA_API_TRANSIENT_RETRY_STATUS,
+} from "./api";
 import {
   abandonVaOutboundCircuitProbe,
   evaluateVaOutboundCircuit,
@@ -57,27 +65,47 @@ export const VA_API_MAX_TIMEOUT_MS = 30_000;
  * their caps identically.
  */
 export const VA_API_MAX_RESPONSE_BYTES = 2 * 1024 * 1024;
-const RETRYABLE_STATUS = new Set([503, 504]);
 export const VA_API_OUTBOUND_WINDOW_MS = 60_000;
 export const VA_API_OUTBOUND_MAX_REQUESTS_PER_SERVICE = 60;
-export const VA_API_RETRY_BASE_DELAY_MS = 100;
-export const VA_API_RETRY_MAX_DELAY_MS = 400;
-export const VA_API_MAX_RETRIES = 2;
-/** @deprecated Use VA_API_RETRY_BASE_DELAY_MS; retained for test compatibility. */
-export const VA_API_RETRY_DELAY_MS = VA_API_RETRY_BASE_DELAY_MS;
 
 /**
- * Deterministic backoff with bounded jitter. Jitter spreads retries across
- * instances so a shared upstream incident does not get a synchronized retry
- * wave; the bound keeps the base/max contract testable.
+ * Re-exported from `api.ts`, where the retry policy now lives. This module is
+ * the established import site for these constants (the technical specification
+ * and phase-3 notes name them under `sandbox.ts`), so relocating their
+ * definitions must not relocate their public name.
  */
-function vaApiRetryDelayMs(attempt: number, random: () => number = Math.random): number {
-  const base = Math.min(
-    VA_API_RETRY_BASE_DELAY_MS * 2 ** (attempt - 1),
-    VA_API_RETRY_MAX_DELAY_MS,
-  );
-  const jitter = Math.floor(base * 0.2 * random());
-  return base + jitter;
+export {
+  VA_API_MAX_RETRIES,
+  VA_API_RETRY_BASE_DELAY_MS,
+  VA_API_RETRY_DELAY_MS,
+  VA_API_RETRY_MAX_DELAY_MS,
+} from "./api";
+
+/**
+ * How long to wait before retrying this response, or null when it is terminal.
+ *
+ * A named function rather than a chain of conditionals at the call site, so the
+ * policy reads as the two families it is: a transient 503/504 that says nothing
+ * about timing and gets exponential backoff plus jitter, and a 429 that is
+ * obeyed on its own terms and only retried in-request when its instruction fits
+ * `VA_API_RATE_LIMIT_RETRY_MAX_WAIT_MS`. Everything else is terminal and falls
+ * through to the laboured fallback plus, for a 429, the circuit window.
+ */
+function retryDelayForResponse(args: {
+  status: number;
+  attempt: number;
+  retryAfterMs: number | null | undefined;
+}): number | null {
+  if (VA_API_TRANSIENT_RETRY_STATUS.has(args.status)) {
+    return args.attempt <= VA_API_MAX_RETRIES ? vaApiRetryDelayMs(args.attempt) : null;
+  }
+  if (args.status !== VA_API_RATE_LIMIT_STATUS) return null;
+
+  const plan = planVaApiRateLimitRetry({
+    attempt: args.attempt,
+    retryAfterMs: args.retryAfterMs,
+  });
+  return plan.retry ? plan.delayMs : null;
 }
 
 type VaApiEnvironmentVariables = Record<string, string | undefined>;
@@ -493,17 +521,21 @@ async function requestVaJson<T>(args: {
         recordVaApiLatency(durationMs, { service: args.service, outcome: "http-error", environment });
         recordVaApiError({ service: args.service, outcome: "http-error", environment, status: response.status });
 
-        // Do not retry a 429: failing over immediately reduces pressure on the
-        // upstream rate limit. The 429 also opens the circuit for the clamped
-        // Retry-After window (see `recordVaOutboundCircuitOutcome`), so the
-        // whole consumer — not just this request — backs off. Transient
-        // 503/504 responses are retried with exponential backoff (100ms, 200ms)
-        // plus bounded jitter up to VA_API_MAX_RETRIES attempts.
-        if (
-          attempt <= VA_API_MAX_RETRIES &&
-          RETRYABLE_STATUS.has(response.status)
-        ) {
-          const delayMs = vaApiRetryDelayMs(attempt);
+        const rateLimited = response.status === VA_API_RATE_LIMIT_STATUS;
+        const retryAfterMs = rateLimited
+          ? parseRetryAfterMs(response.headers.get("retry-after"))
+          : undefined;
+
+        // A retry re-enters the loop, so it claims its own budget slot and runs
+        // under its own attempt timeout instead of extending this one.
+        const delayMs = retryDelayForResponse({
+          status: response.status,
+          attempt,
+          retryAfterMs,
+        });
+        if (delayMs !== null) {
+          // Logged under the allowlisted transient-retry message; `status`
+          // distinguishes a 429 retry from a 503/504 retry in the sink.
           vaApiLogger.info("va request retrying after transient error", {
             requestId,
             service: args.service,
@@ -515,15 +547,18 @@ async function requestVaJson<T>(args: {
           await sleep(delayMs);
           continue;
         }
-        const rateLimited = response.status === 429;
+
+        // Terminal. A 429 opens the circuit for the clamped `Retry-After`
+        // window (see `recordVaOutboundCircuitOutcome`), so the whole consumer —
+        // not just this request — backs off and the retry is served later, once,
+        // as the admitted probe. A long instruction is honored exactly as an
+        // absolute deadline rather than holding this request open for it.
         await recordVaOutboundCircuitOutcome({
           service: args.service,
           distributed,
           success: false,
           rateLimited,
-          retryAfterMs: rateLimited
-            ? parseRetryAfterMs(response.headers.get("retry-after"))
-            : undefined,
+          retryAfterMs,
           probeAdmitted,
           admission: circuit,
         });
@@ -588,8 +623,8 @@ async function requestVaJson<T>(args: {
         );
       }
 
-      const parsed = args.schema.safeParse(payload);
-      if (!parsed.success) {
+      const parsed = parseVaApiPayload(args.schema, payload);
+      if (!parsed.ok) {
         const durationMs = Date.now() - startedAt;
         const observation: VaApiObservation = {
           requestId,

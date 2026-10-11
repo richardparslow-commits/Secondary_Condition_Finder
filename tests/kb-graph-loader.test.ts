@@ -6,7 +6,7 @@ import { afterEach, describe, expect, it } from "vitest";
 
 import { generateCatalogClaimPathways } from "@/lib/engine/graph-pathways";
 import { generateClaimPathways } from "@/lib/engine/pathway-generator";
-import { loadKbGraph, loadKbGraphFromDir, resetKbGraphCache } from "@/lib/kb/graph";
+import { assertNoCausationCycles, loadKbGraph, loadKbGraphFromDir, resetKbGraphCache } from "@/lib/kb/graph";
 import { KB_GRAPH_DIR_RELATIVE } from "@/lib/kb/graph-layout";
 
 import { node } from "./helpers/pathway-fixtures";
@@ -18,9 +18,9 @@ import { node } from "./helpers/pathway-fixtures";
  * The loader is the runtime data path for the multi-hop traversal, so its
  * failures must be loud and specific: invalid JSON, schema-invalid nodes,
  * filename/nodeId drift, duplicate nodes, and catalog-unknown nodes or targets
- * all throw instead of degrading to a partial graph. Fixture graphs use real
- * catalog identities (`ptsd`, `hypertension`, `sleep-apnea`) because the
- * loader validates against the shipped catalog, and the end-to-end case runs
+ * all throw instead of degrading to a partial graph. The traversal fixture
+ * uses the authored hypertension → CKD → anemia route with matching classes
+ * because the loader validates evidence joins too, and the end-to-end case runs
  * a loaded fixture graph through the path generator.
  */
 
@@ -44,6 +44,26 @@ afterEach(() => {
 });
 
 describe("adjacency-graph loader", () => {
+  it("keeps the runtime filesystem anchor literal and aligned with the shared layout (REL-03)", () => {
+    // Turbopack must see every segment at the filesystem callsite; an imported
+    // relative-directory constant previously expanded traces to the project root.
+    // A production-build trace inspection is still required beyond this guard.
+    const source = fs.readFileSync(path.join(process.cwd(), "src/lib/kb/graph.ts"), "utf8");
+    const literal = source.match(
+      /const KB_GRAPH_DIR = path\.join\(process\.cwd\(\), "([^"]+)", "([^"]+)", "([^"]+)"\);/,
+    );
+    expect(literal, "runtime graph path must be statically anchored").not.toBeNull();
+    expect(literal?.slice(1).join("/")).toBe(KB_GRAPH_DIR_RELATIVE);
+  });
+
+  it("preserves the uncached default-directory tooling seam", () => {
+    const first = loadKbGraphFromDir();
+    const second = loadKbGraphFromDir();
+    expect(first).not.toBe(second);
+    expect([...first]).toEqual([...second]);
+    expect([...first]).toEqual([...loadKbGraph()]);
+  });
+
   it("loads the shipped graph directory and caches the result", () => {
     const graphDir = path.join(process.cwd(), KB_GRAPH_DIR_RELATIVE);
     const fileCount = fs
@@ -103,17 +123,17 @@ describe("adjacency-graph loader", () => {
 
   it("parses a fixture graph through the loader into generator pathways", () => {
     const dir = fixtureDir({
-      "ptsd.json": node("ptsd", ["hypertension", 1]),
-      "hypertension.json": node("hypertension", ["sleep-apnea", 1]),
+      "hypertension.json": node("hypertension", ["chronic-kidney-disease", 1]),
+      "chronic-kidney-disease.json": node("chronic-kidney-disease", ["anemia", 1, "ASSOCIATION_ONLY"]),
     });
 
     const graph = loadKbGraphFromDir(dir);
-    expect([...graph.keys()].sort()).toEqual(["hypertension", "ptsd"]);
+    expect([...graph.keys()].sort()).toEqual(["chronic-kidney-disease", "hypertension"]);
 
-    const pathways = generateClaimPathways("ptsd", graph);
+    const pathways = generateClaimPathways("hypertension", graph);
     expect(pathways.map((pathway) => pathway.terminalConditionId)).toEqual([
-      "hypertension",
-      "sleep-apnea",
+      "chronic-kidney-disease",
+      "anemia",
     ]);
   });
 
@@ -130,23 +150,41 @@ describe("adjacency-graph loader", () => {
     expect(loadKbGraphFromDir(withExtra).size).toBe(0);
   });
 
-  it("fails loud on invalid JSON", () => {
-    const dir = fixtureDir({ "ptsd.json": "{not-json" });
-    expect(() => loadKbGraphFromDir(dir)).toThrowError(/Invalid JSON in ptsd\.json/);
+  it("fails loud on invalid JSON without disclosing parser diagnostics", () => {
+    const sentinel = "SYNTHETIC-GRAPH-PARSER-SECRET";
+    const dir = fixtureDir({ "ptsd.json": `{"private":"${sentinel}"` });
+    let thrown: unknown;
+    try {
+      loadKbGraphFromDir(dir);
+    } catch (error) {
+      thrown = error;
+    }
+    expect(thrown).toBeInstanceOf(Error);
+    expect((thrown as Error).message).toBe("[kb-graph] Invalid JSON in ptsd.json.");
+    expect(String(thrown)).not.toContain(sentinel);
   });
 
-  it("fails loud on a schema-invalid node mapping", () => {
+  it("fails loud on a schema-invalid node mapping without disclosing validation details", () => {
+    const sentinel = "SYNTHETIC-GRAPH-SCHEMA-SECRET";
     const dir = fixtureDir({
-      "ptsd.json": { id: "ptsd", draft: true, suggestions: [] },
+      "ptsd.json": { id: sentinel, draft: true, suggestions: [] },
     });
-    expect(() => loadKbGraphFromDir(dir)).toThrowError(/Invalid node mapping in ptsd\.json/);
+    let thrown: unknown;
+    try {
+      loadKbGraphFromDir(dir);
+    } catch (error) {
+      thrown = error;
+    }
+    expect(thrown).toBeInstanceOf(Error);
+    expect((thrown as Error).message).toBe("[kb-graph] Invalid node mapping in ptsd.json.");
+    expect(String(thrown)).not.toContain(sentinel);
   });
 
   it("fails loud when the file name disagrees with nodeId", () => {
     const dir = fixtureDir({
       "hypertension.json": node("ptsd", ["hypertension", 1]),
     });
-    expect(() => loadKbGraphFromDir(dir)).toThrowError(/Node id mismatch in hypertension\.json/);
+    expect(() => loadKbGraphFromDir(dir)).toThrowError("[kb-graph] Node id mismatch in hypertension.json.");
   });
 
   it("fails loud on a nodeId that is not a catalog identity", () => {
@@ -154,7 +192,7 @@ describe("adjacency-graph loader", () => {
       "not-a-real-condition.json": node("not-a-real-condition", ["ptsd", 1]),
     });
     expect(() => loadKbGraphFromDir(dir)).toThrowError(
-      /Node "not-a-real-condition" has no matching condition in the catalog/,
+      "[kb-graph] A node has no matching condition in the catalog.",
     );
   });
 
@@ -163,7 +201,65 @@ describe("adjacency-graph loader", () => {
       "ptsd.json": node("ptsd", ["not-a-real-condition", 1]),
     });
     expect(() => loadKbGraphFromDir(dir)).toThrowError(
-      /targeting unknown condition "not-a-real-condition"/,
+      "[kb-graph] An edge targets an unknown condition.",
     );
+  });
+
+  it("rejects an all-causation bidirectional pair at load (A08)", () => {
+    // The exact audit repro shape: a valid synthetic bidirectional graph used
+    // to load successfully. A closed proximate-cause loop is never a
+    // legitimate research relationship, so it fails closed here; CI owns the
+    // review of everything subtler.
+    const dir = fixtureDir({
+      "hypertension.json": node("hypertension", ["chronic-kidney-disease", 1]),
+      "chronic-kidney-disease.json": node("chronic-kidney-disease", ["hypertension", 1]),
+    });
+    expect(() => loadKbGraphFromDir(dir)).toThrowError("[kb-graph] Causation cycle detected.");
+  });
+
+  it("rejects longer all-causation cycles at load", () => {
+    const ring = fixtureDir({
+      "hypertension.json": node("hypertension", ["chronic-kidney-disease", 1]),
+      "chronic-kidney-disease.json": node("chronic-kidney-disease", ["anemia", 1]),
+      "anemia.json": node("anemia", ["hypertension", 1]),
+    });
+    expect(() => loadKbGraphFromDir(ring)).toThrowError("[kb-graph] Causation cycle detected.");
+  });
+
+  it("never sees a self-loop: the edge schema rejects self-reference first", () => {
+    // Defense in depth by construction — a one-node causation cycle cannot be
+    // authored, so the loader check only handles multi-node loops.
+    expect(() => node("ptsd", ["ptsd", 1])).toThrowError(/self-referential/);
+  });
+
+  it("leaves association-only bidirectional pairs intact (A08)", () => {
+    // Medically legitimate directions must not be removed to make a check
+    // green: an association hop breaks the legal chain, so this pair is a CI
+    // review shape, not a load-time rejection. Asserted at the check level
+    // because the loader's evidence-join gate (correctly) refuses fixture
+    // edges with no authored suggestion behind them.
+    const pair = [
+      node("hypertension", ["chronic-kidney-disease", 1, "ASSOCIATION_ONLY"]),
+      node("chronic-kidney-disease", ["hypertension", 1, "ASSOCIATION_ONLY"]),
+    ];
+    expect(() => assertNoCausationCycles(pair)).not.toThrow();
+  });
+
+  it("leaves mixed and aggravation cycles for CI review instead of rejecting them", () => {
+    // One association hop breaks the causation loop; an aggravation loop is a
+    // clinical-review question, not a structural impossibility.
+    // `scripts/audit-crg-graph.js` adjudicates them.
+    const mixed = [
+      node("hypertension", ["chronic-kidney-disease", 1]),
+      node("chronic-kidney-disease", ["anemia", 1]),
+      node("anemia", ["hypertension", 1, "ASSOCIATION_ONLY"]),
+    ];
+    expect(() => assertNoCausationCycles(mixed)).not.toThrow();
+
+    const aggravation = [
+      node("hypertension", ["chronic-kidney-disease", 1, "AGGRAVATION"]),
+      node("chronic-kidney-disease", ["hypertension", 1, "AGGRAVATION"]),
+    ];
+    expect(() => assertNoCausationCycles(aggravation)).not.toThrow();
   });
 });

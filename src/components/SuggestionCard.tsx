@@ -30,12 +30,12 @@ export function SuggestionCard({
           {CONSENSUS_LABEL[recommendation.etiologicalConsensus]}
         </span>
       </header>
-      <p className="mt-2 text-xs text-slate-500">
+      <p className="mt-2 text-xs text-muted">
         {CONSENSUS_EXPLANATION[recommendation.etiologicalConsensus]}
       </p>
 
       <section className="mt-4">
-        <h4 className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+        <h4 className="text-xs font-semibold uppercase tracking-wide text-muted">
           How this could relate to your service-connected condition(s)
         </h4>
         <ul className="mt-2 space-y-2">
@@ -50,7 +50,7 @@ export function SuggestionCard({
 
       {recommendation.matchedIntakeContext.length > 0 && (
         <section className="mt-4">
-          <h4 className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+          <h4 className="text-xs font-semibold uppercase tracking-wide text-muted">
             Context you provided
           </h4>
           <p className="mt-1 text-sm text-slate-700">
@@ -60,7 +60,7 @@ export function SuggestionCard({
       )}
 
       <section className="mt-4 rounded-md bg-slate-50 p-4">
-        <h4 className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+        <h4 className="text-xs font-semibold uppercase tracking-wide text-muted">
           What a claim on this theory typically still needs
         </h4>
         <ul className="mt-2 list-disc space-y-1 pl-5 text-sm text-slate-700">
@@ -71,7 +71,7 @@ export function SuggestionCard({
       </section>
 
       <section className="mt-4">
-        <h4 className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+        <h4 className="text-xs font-semibold uppercase tracking-wide text-muted">
           Starting points for verification
         </h4>
         <ul className="mt-2 space-y-1.5">
@@ -85,7 +85,7 @@ export function SuggestionCard({
                   unverified
                 </span>
               )}
-              <span className="mt-0.5 block text-xs text-slate-500">
+              <span className="mt-0.5 block text-xs text-muted">
                 {reference.note}
               </span>
             </li>

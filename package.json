@@ -16,15 +16,19 @@
   },
   "scripts": {
     "dev": "next dev",
+    "predev": "npm run build:client-corpus",
+    "build:client-corpus": "node scripts/build-client-corpus.mjs",
+    "prebuild": "npm run build:client-corpus",
     "build": "next build",
     "build:azure": "AZURE_STATIC_WEB_APPS_BUILD=1 next build && node scripts/package-next-standalone.mjs",
     "start": "next start",
-    "postinstall": "node scripts/copy-pdf-worker.mjs",
+    "postinstall": "node scripts/copy-pdf-worker.mjs && node scripts/build-client-corpus.mjs",
     "lint": "eslint",
     "test": "vitest run",
     "test:watch": "vitest",
     "test:composition": "node scripts/audit-test-composition.js",
     "test:fleet": "node scripts/run-fleet-simulation.mjs",
+    "acceptance:sentinel": "node scripts/run-acceptance-sentinel.mjs",
     "test:doc-lint": "vitest run tests/doc-lint.test.ts tests/doc-example-schema.test.ts tests/readme-consistency.test.ts",
     "ci:failure-report": "node scripts/ci-failure-report.js",
     "readme:snapshot": "node scripts/readme-snapshot-table.js",
@@ -39,6 +43,7 @@
     "probe:va-gov-walkthrough": "node scripts/probe-va-gov-links.js",
     "audit:me-compliance": "node scripts/audit-me-compliance.js",
     "kb:validate": "node scripts/validate-knowledge-base.js",
+    "catalog:admission": "node --no-warnings scripts/catalog-identity-admission.ts",
     "coverage:ledger": "node scripts/report-mapping-coverage.js",
     "authoring:tracker": "node scripts/generate-authoring-tracker.js",
     "authoring:backlog": "node scripts/report-authoring-backlog.js",
@@ -46,6 +51,8 @@
     "audit:high:all": "npm audit --audit-level=high",
     "audit:crg": "node scripts/audit-crg-graph.js",
     "audit:crg:graph": "node --no-warnings scripts/audit-crg.ts",
+    "audit:traces": "node scripts/audit-artifact-traces.mjs",
+    "audit:phi-logging": "node scripts/audit-phi-logging.mjs",
     "crg:triage": "node scripts/report-crg-triage.js",
     "evidence:architecture": "node scripts/audit-evidence-architecture.js",
     "evidence:architecture:markdown": "node scripts/audit-evidence-architecture.js --markdown",
@@ -73,22 +80,26 @@
     "@eslint/config-array": ">=0.23.5",
     "postcss": ">=8.5.18",
     "js-yaml": "4.3.2",
-    "nanoid": "3.3.18"
+    "nanoid": "3.3.18",
+    "sharp": "0.35.5"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "4.3.3",
+    "@testing-library/react": "^16.3.3",
     "@types/node": "22.20.1",
     "@types/react": "19.2.17",
     "@types/react-dom": "19.2.3",
     "@vitejs/plugin-react": "6.0.4",
+    "axe-core": "^4.14.0",
     "eslint": "9.39.5",
     "eslint-config-next": "16.3.8",
+    "jsdom": "^30.1.2",
     "tailwindcss": "4.3.3",
     "typescript": "5.9.3",
     "vitest": "4.1.11"
   },
   "allowScripts": {
-    "sharp@0.35.0": true,
+    "sharp@0.35.5": true,
     "unrs-resolver@1.12.2": true
   }
 }

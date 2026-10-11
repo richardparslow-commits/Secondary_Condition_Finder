@@ -161,14 +161,56 @@ describe("read-only veteran data", () => {
     expect(claimStatusesSchema.parse({ data: [{ id: "PRIVATE_CLAIM_ID", attributes: { claim_type: "Compensation", date_filed: "2020-01-01", status: "Complete", open: false, evss_id: 42 } }] })).toEqual([{ claim_type: "Compensation", date_filed: "2020-01-01", status: "Complete", open: false }]);
     expect(claimStatusesSchema.safeParse({ data: [{ attributes: { status: "invented" } }] }).success).toBe(false);
   });
-  it.each([401, 403, 429, 500, 503])("handles HTTP %i without retrying or exposing upstream errors", async (status) => {
+  it.each([403, 429, 500, 503])("handles HTTP %i without a token refresh or upstream exposure", async (status) => {
     const { store, handle, token } = await connected();
-    const fetcher = vi.fn(async () => json({ detail: "SENSITIVE_SENTINEL" }, status)); vi.stubGlobal("fetch", fetcher);
+    const fetcher = vi.fn(async (input: string | URL | Request) => json({ detail: "SENSITIVE_SENTINEL", at: String(input) }, status)); vi.stubGlobal("fetch", fetcher);
     const result = await loadAccountData(config, store, handle);
-    expect(result.status).toBe(status === 401 || status === 403 ? "disconnected" : status === 429 ? "rate-limited" : "unavailable");
+    expect(result.status).toBe(status === 403 ? "disconnected" : status === 429 ? "rate-limited" : "unavailable");
+    // A refusal that is not a rejected credential must not mint a new one: one
+    // platform call, and the token endpoint is never touched.
     expect(fetcher).toHaveBeenCalledTimes(1);
+    expect(fetcher.mock.calls.every(([url]) => String(url) === config.apiUrl)).toBe(true);
     expect(JSON.stringify(result)).not.toContain("SENSITIVE_SENTINEL");
     expect(token).toBeTruthy();
+  });
+  it("tries exactly one refresh on 401 and never replays the rejected token", async () => {
+    const { store, handle } = await connected();
+    // Everything is refused, the refresh included: the access token the
+    // platform already rejected must not be sent again, and the attempt must
+    // not become a loop.
+    const fetcher = vi.fn(async (input: string | URL | Request) => json({ detail: "SENSITIVE_SENTINEL", at: String(input) }, 401));
+    vi.stubGlobal("fetch", fetcher);
+    const result = await loadAccountData(config, store, handle);
+    expect(result.status).toBe("disconnected");
+    expect(fetcher.mock.calls.filter(([url]) => String(url) === config.apiUrl)).toHaveLength(1);
+    expect(fetcher.mock.calls.filter(([url]) => String(url) === config.tokenUrl)).toHaveLength(1);
+    expect(JSON.stringify(result)).not.toContain("SENSITIVE_SENTINEL");
+    // The dead generation is gone, so the page cannot keep showing data.
+    expect(await readAccountSession(config, store, handle)).toBeNull();
+  });
+  it("recovers a lapsed access token with one refresh and one replay", async () => {
+    const { store, handle, token } = await connected();
+    const presented: Array<string | null> = [];
+    const fetcher = vi.fn(async (input: string | URL | Request, init?: RequestInit) => {
+      const url = String(input);
+      if (url === config.keysUrl) return json(jwks);
+      if (url === config.tokenUrl) {
+        return json({ access_token: "ROTATED_ACCESS", refresh_token: "ROTATED_REFRESH", token_type: "Bearer", expires_in: 300, scope: `openid offline_access ${config.scope}`, id_token: token });
+      }
+      presented.push(new Headers(init?.headers).get("authorization"));
+      return presented.length === 1
+        ? json({ detail: "expired" }, 401)
+        : json({ data: { attributes: { combined_disability_rating: 40, combined_effective_date: "2020-01-01", legal_effective_date: null, individual_ratings: null } } });
+    });
+    vi.stubGlobal("fetch", fetcher);
+
+    const result = await loadAccountData(config, store, handle);
+
+    // The veteran sees their data instead of a forced re-consent round trip.
+    expect(result).toMatchObject({ status: "connected", service: "ratings", data: { combined_disability_rating: 40 } });
+    // Two platform calls, and the replay carries the token the refresh minted —
+    // not the one the platform had just rejected.
+    expect(presented).toEqual(["Bearer SYNTHETIC_ACCESS", "Bearer ROTATED_ACCESS"]);
   });
   it("rejects an oversized API response with no fallback veteran data", async () => {
     const { store, handle } = await connected();

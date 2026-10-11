@@ -3,12 +3,11 @@
 //
 //   node scripts/capture-va-gov-walkthrough-screens.mjs
 //
-// Starts a Next dev server and headless Chrome, seals a real secondary
-// workflow cookie (dev-only secret) for the Step 4 route, waits for the
+// Starts a Next dev server and headless Chrome, seeds the browser-local
+// workflow record (PRIV-01 stages 2–3) for the Step 4 route, waits for the
 // client-rendered content, and writes @2x PNGs to docs/assets/. Chrome is
-// driven over the DevTools Protocol because its CLI cannot inject cookies.
+// driven over the DevTools Protocol because its CLI cannot seed sessionStorage.
 import { spawn } from "node:child_process";
-import { createCipheriv, createHash, randomBytes } from "node:crypto";
 import fs from "node:fs";
 import path from "node:path";
 
@@ -54,24 +53,6 @@ async function waitForHttp(url, label, timeoutMs = 60_000) {
     await delay(300);
   }
   throw new Error(`${label} never became ready: ${lastError?.message ?? "timeout"}`);
-}
-
-function sealWorkflowCookie(payload, secret) {
-  // Mirrors src/lib/workflow-session-crypto.ts v2 envelope (dev-only helper).
-  const key = createHash("sha256").update(secret, "utf8").digest();
-  const iv = randomBytes(12);
-  const cipher = createCipheriv("aes-256-gcm", key, iv, { authTagLength: 16 });
-  cipher.setAAD(Buffer.from("v2", "utf8"));
-  const plaintext = Buffer.from(
-    JSON.stringify({
-      issuedAt: Date.now(),
-      expiresAt: Date.now() + 30 * 60 * 1000,
-      payload,
-    }),
-    "utf8",
-  );
-  const ciphertext = Buffer.concat([cipher.update(plaintext), cipher.final()]);
-  return ["v2", iv.toString("base64url"), ciphertext.toString("base64url"), cipher.getAuthTag().toString("base64url")].join(".");
 }
 
 function send(method, params = {}, sessionId) {
@@ -176,25 +157,31 @@ async function main() {
     }
   });
 
-  const cookieValue = sealWorkflowCookie({
-    diagnosedConditionIds: ["Sleep Apnea (Obstructive, Central, Mixed)"],
-    serviceConnectedConditionIds: ["Post-Traumatic Stress Disorder (PTSD)"],
-    serviceConnectedAnswerDraft: { "Sleep Apnea (Obstructive, Central, Mixed)": "no" },
-    ratingsByConditionId: { "Post-Traumatic Stress Disorder (PTSD)": 70 },
+  // The workflow context is browser-local (PRIV-01): seed it through the page's
+  // own sessionStorage instead of the retired cookie. The Step 4 shell renders
+  // its empty-state guard first, so load the origin, write the record, then
+  // navigate cleanly and wait for the populated form.
+  const browserRecord = {
+    version: 1,
+    diagnosedConditionIds: ["ptsd", "sleep-apnea"],
+    serviceConnectedConditionIds: ["ptsd"],
+    serviceConnectedAnswerDraft: { "sleep-apnea": "no" },
+    ratingsByConditionId: { ptsd: 70 },
     documentsShared: false,
-  }, DEV_SECRET);
+  };
 
   const step4 = await send("Target.createTarget", { url: "about:blank" });
   const step4Session = (await send("Target.attachToTarget", { targetId: step4.targetId, flatten: true })).sessionId;
   await send("Page.enable", {}, step4Session);
   await send("Network.enable", {}, step4Session);
-  await send("Network.setCookie", {
-    name: "secondary-workflow-v2",
-    value: cookieValue,
-    domain: "127.0.0.1",
-    path: "/",
-    httpOnly: true,
-    url: APP_BASE,
+  await navigateAndWait(step4Session, `${APP_BASE}/secondary/upload`,
+    "Enter ratings first", "Step 4 empty-state guard");
+  await send("Runtime.enable", {}, step4Session);
+  await send("Runtime.evaluate", {
+    expression: `sessionStorage.setItem(${JSON.stringify(
+      "secondary-condition-finder:secondary-workflow:v1",
+    )}, ${JSON.stringify(JSON.stringify(browserRecord))})`,
+    returnByValue: true,
   }, step4Session);
   await navigateAndWait(step4Session, `${APP_BASE}/secondary/upload`,
     "Need your full VA medical record? Guided VA.gov download", "Step 4 upload route");

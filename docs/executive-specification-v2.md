@@ -71,10 +71,10 @@ Aggravation" from the home page.
 | 5 | `/secondary/suggestions` | Diagnosis-centered connection review: for each non-service-connected diagnosis, list only service-connected conditions with an authored published relationship — rationale, evidence gaps, citations, consensus badge, condition comparison, combination insights, rating guide, action plan, pathway record checklist, Find Help locator. |
 | 6 | `/secondary/evidence` | Evidence review with Pathway Evidence Mapping (excerpts grouped under authored pathways), gap coverage, printable consultation summary/action card. Steps 5→6 share the locked regulatory snapshot (`regSnapshot`; missing lock fails closed). |
 
-Data flow: selections → encrypted HttpOnly `SameSite=Strict` workflow cookie (AES-256-GCM,
-30-minute TTL, no URL state) → Server Actions validate and hydrate session → React UI
-renders from the cached knowledge base. Steps 2–6 are guarded against invalid or
-incomplete prior-step state.
+Data flow: selections → versioned, schema-bounded tab-scoped browser record
+(`sessionStorage`; no workflow cookie; browser-session lifetime; no URL state) → React UI
+renders from the cached knowledge base. Steps 2–6 validate and guard against invalid or
+incomplete prior-step state in the browser.
 
 ### R2: Presumptive Service Connection Workflow
 
@@ -86,7 +86,7 @@ Trigger: user selects "Presumptive Service Connection" from the home page.
    Orange), their presumptive conditions, and a date-confirmation prompt when only a
    partial range was supplied.
 
-Data flow: service history → encrypted workflow cookie → deterministic Boolean
+Data flow: service history → versioned, schema-bounded tab-scoped browser record → deterministic Boolean
 location/date matching against `data/presumptives/*.json`. Matching is **deterministic,
 not probabilistic**: a qualifying match is presumed; no clinical judgment is applied.
 

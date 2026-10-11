@@ -5,7 +5,8 @@ import React from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it, vi } from "vitest";
 
-import SuggestionsStepPage from "@/app/secondary/suggestions/page";
+import { readFileSync } from "node:fs";
+
 import {
   CHAIN_BREAK_NOTICE,
   CITATION_TRIAGE_GUARD,
@@ -16,7 +17,12 @@ import {
   GRAPH_ROUTE_SECTION_HEADING,
   GraphPathwayReview,
 } from "@/components/secondary/GraphPathwayReview";
+import {
+  clientCorpusGraphAnchorIndex,
+  parseClientCorpus,
+} from "@/lib/client-corpus";
 import { buildGraphPathwayMatchSectionView } from "@/lib/engine/graph-pathway-matches";
+import { buildGraphPathwayMatchSectionViewFromData } from "@/lib/engine/graph-pathway-matches-core";
 import type {
   GraphPathwayMatchSectionView,
   GraphPathwayMatchView,
@@ -295,21 +301,29 @@ describe("GraphPathwayReview surface", () => {
   });
 });
 
-describe("Step 5 results page integration", () => {
-  it("surfaces the shipped graph route for matching selections with its chain broken", async () => {
-    const html = renderToStaticMarkup(
-      await SuggestionsStepPage({
-        workflowState: {
-          diagnosedConditionIds: ["liver-cancer", "sarcopenia"],
-          serviceConnectedConditionIds: ["liver-cancer"],
-          ratingsByConditionId: { "liver-cancer": 100 },
-          documentsShared: true,
-        },
-        searchParams: Promise.resolve({ regSnapshot: "reg-results-graph-test" }),
-      }),
-    );
+describe("Step 5 results page integration (client corpus path)", () => {
+  // PRIV-01 stage 2: Step 5 runs the same builders in the browser over the
+  // public corpus artifact. This exercises the exact client data path — the
+  // generated corpus, the data-in builder, and the shared surface — so a
+  // corpus that lost the graph routes or their anchor flags still fails here.
+  const corpus = parseClientCorpus(
+    JSON.parse(
+      readFileSync(path.join(process.cwd(), "public", "kb", "client-corpus.json"), "utf8"),
+    ),
+  );
+  const corpusGraph = new Map(corpus.graph.map((node) => [node.nodeId, node] as const));
 
-    expect(html).toContain("Review Your Non-Service-Connected Diagnoses");
+  it("surfaces the shipped graph route for matching selections with its chain broken", () => {
+    const view = buildGraphPathwayMatchSectionViewFromData(
+      corpus.conditions,
+      corpus.publishedMappings,
+      corpusGraph,
+      ["liver-cancer"],
+      ["sarcopenia"],
+      clientCorpusGraphAnchorIndex(corpus),
+    );
+    const html = renderToStaticMarkup(GraphPathwayReview({ view }));
+
     expect(html).toContain(GRAPH_ROUTE_SECTION_HEADING);
     expect(html).toContain("Liver Cancer → Sarcopenia");
     expect(html).toContain("Association only — chain broken");
@@ -320,44 +334,47 @@ describe("Step 5 results page integration", () => {
     expect(html).not.toContain("ASSOCIATION_ONLY");
   });
 
-  it("omits the section when the graph connects none of the selections", async () => {
-    const html = renderToStaticMarkup(
-      await SuggestionsStepPage({
-        workflowState: {
-          diagnosedConditionIds: ["ptsd", "tinnitus"],
-          serviceConnectedConditionIds: ["ptsd"],
-          ratingsByConditionId: { ptsd: 70 },
-          documentsShared: true,
-        },
-        searchParams: Promise.resolve({ regSnapshot: "reg-results-graph-test" }),
-      }),
+  it("omits the section when the graph connects none of the selections", () => {
+    const view = buildGraphPathwayMatchSectionViewFromData(
+      corpus.conditions,
+      corpus.publishedMappings,
+      corpusGraph,
+      ["ptsd"],
+      ["sarcopenia"],
     );
+    const html = renderToStaticMarkup(GraphPathwayReview({ view }));
 
-    expect(html).toContain("Review Your Non-Service-Connected Diagnoses");
     expect(html).not.toContain(GRAPH_ROUTE_SECTION_HEADING);
     expect(html).not.toContain(CHAIN_BREAK_NOTICE);
   });
 });
 
 describe("results-UI graph-pathway architecture", () => {
-  it("keeps the component plain-data and the builder server-only", () => {
+  it("keeps the component plain-data and the builder data-in on both hosts", () => {
     const componentSource = read("src/components/secondary/GraphPathwayReview.tsx");
-    const builderSource = read("src/lib/engine/graph-pathway-matches.ts");
-    const pageSource = read("src/app/secondary/suggestions/page.tsx");
+    const coreSource = read("src/lib/engine/graph-pathway-matches-core.ts");
+    const serverSource = read("src/lib/engine/graph-pathway-matches.ts");
+    const stepSource = read("src/components/secondary/steps/SuggestionsStep.tsx");
 
     // The component is a presentation layer: it must not reach for loaders.
     expect(componentSource).not.toContain("server-only");
     expect(componentSource).not.toContain("@/lib/kb");
     expect(componentSource).not.toContain("@/lib/engine/graph-pathway-matches");
 
-    // The builder is the sanctioned server-only graph consumer.
-    expect(builderSource).toContain('import "server-only"');
-    expect(builderSource).toContain("loadKbGraph");
-    expect(builderSource).toContain("generateClaimPathways");
+    // The data-in core is client-safe: no server marker, no file loaders.
+    expect(coreSource).not.toContain("server-only");
+    expect(coreSource).not.toContain("@/lib/kb/load");
+    expect(coreSource).toContain("generateClaimPathways");
 
-    // The page composes the builder and the section.
-    expect(pageSource).toContain("buildGraphPathwayMatchSectionView");
-    expect(pageSource).toContain("<GraphPathwayReview");
+    // The server wrapper is a thin loader that delegates to the core.
+    expect(serverSource).toContain('import "server-only"');
+    expect(serverSource).toContain("loadKbGraph");
+    expect(serverSource).toContain("buildGraphPathwayMatchSectionViewFromData");
+
+    // The client step composes the core builder and the section from the
+    // public corpus.
+    expect(stepSource).toContain("buildGraphPathwayMatchSectionViewFromData");
+    expect(stepSource).toContain("<GraphPathwayReview");
   });
 
   it("shares the explorer's disclosure constants so the two surfaces cannot drift", () => {
