@@ -1,0 +1,261 @@
+# Daily production runtime drift probe.
+#
+# The Production Runtime Readiness workflow only runs after a successful `main`
+# CI — between deploys (or on a deploy that failed post-merge) it records
+# nothing. This workflow closes that gap: once a day it probes the live
+# production surface for the two signals the readiness gate verifies, and
+# reports drift if either is no longer what closest-known-good deployment
+# serving the canonical alias reported.
+#
+# What counts as drift (either one fails the probe):
+#   - `/runtime-readiness`: HTTP 200 with `data-runtime-readiness="ready"`.
+#     Anything else — non-200, "not_ready", network error, unexpected payload —
+#     is drift.
+#   - `/api/health`: HTTP 200 with `status: "healthy"`. A 503 "degraded" body,
+#     a non-JSON body, or a network failure are all drift.
+#
+# This probe does not verify exact-commit Vercel lineage, does not run the
+# route matrix, does not record evidence on issue #213, and never closes that
+# issue. It is a lighter between-deploy whistle: if it fails, a dedicated
+# tracking issue is opened/updated (same pattern as citation-decay-watch) and
+# is auto-edited back and closed when the next scheduled run is green again.
+#
+# Scheduled daily at 04:11 UTC, off the hour to avoid the scheduled-run
+# thundering herd, and offset from the other scheduled workflows
+# (citation-decay-watch Monday 06:07, CodeQL Wednesday 03:33) so they never
+# share the same minute.
+
+name: Runtime Drift Probe
+
+on:
+  schedule:
+    # Daily at 04:11 UTC, off the hour to avoid the scheduled-run thundering herd.
+    - cron: "11 4 * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+concurrency:
+  group: runtime-drift-probe
+  cancel-in-progress: false
+
+env:
+  PRODUCTION_BASE_URL: https://secondary-condition-finder.vercel.app
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    outputs:
+      drifted: ${{ steps.check.outputs.drifted }}
+      summary_lines: ${{ steps.check.outputs.summary_lines }}
+    steps:
+      - name: Probe production readiness and health
+        id: check
+        shell: bash
+        run: |
+          set -uo pipefail
+          umask 077
+          tmp_dir="$(mktemp -d)"
+          trap 'rm -rf "$tmp_dir"' EXIT
+
+          drift=()
+          probe_json() {
+            local path="$1"
+            local accept="$2"
+            local body_file="$3"
+            local http_status="000"
+            set +e
+            http_status="$(curl --silent --show-error --location \
+              --connect-timeout 10 \
+              --max-time 20 \
+              --header "Accept: $accept" \
+              --output "$body_file" \
+              --write-out '%{http_code}' \
+              "$PRODUCTION_BASE_URL$path")"
+            local curl_status=$?
+            set -e
+            printf '%s%s' "$http_status" "$curl_status"
+          }
+
+          # --- /runtime-readiness ------------------------------------------------
+          readiness_body="$tmp_dir/readiness.html"
+          readiness_probe="$(probe_json /runtime-readiness 'text/html' "$readiness_body")"
+          readiness_status="${readiness_probe:0:3}"
+          readiness_ready=false
+          readiness_outcome="payload_not_ready"
+          if [ "$readiness_status" = "200" ] && grep -Fq 'data-runtime-readiness="ready"' "$readiness_body"; then
+            readiness_ready=true
+            readiness_outcome="ready"
+          elif [ "$readiness_status" = "000" ]; then
+            readiness_outcome="network_error"
+          elif grep -Fq 'data-runtime-readiness="not_ready"' "$readiness_body"; then
+            readiness_outcome="payload_not_ready"
+          else
+            readiness_outcome="unexpected_payload"
+          fi
+          if [ "$readiness_ready" != true ]; then
+            drift+=("readiness: HTTP ${readiness_status} / ${readiness_outcome}")
+          fi
+
+          # --- /api/health ------------------------------------------------------
+          health_body="$tmp_dir/health.json"
+          health_probe="$(probe_json /api/health 'application/json' "$health_body")"
+          health_status="${health_probe:0:3}"
+          health_verdict="unresolved"
+          health_detail=""
+          if [ "$health_status" = "200" ]; then
+            # Status must be exactly "healthy" — "degraded" or any other
+            # top-level value at HTTP 200 is drift, not merely informational.
+            health_verdict="$(jq -r '.status // "unexpected_payload_no_status"' "$health_body")"
+            if [ "$health_verdict" = "healthy" ]; then
+              # Report the leaf component states in the step summary without
+          # inventing schema — these four gate the 200/503 verdict in the app.
+              for component in catalog sessionCrypto workflowSession kbGraph; do
+                comp_status="$(jq -r --arg c "$component" '.components[$c].status // "missing"' "$health_body")"
+                health_detail="${health_detail}${component}=${comp_status} "
+              done
+            else
+              drift+=("health: HTTP 200 but status=${health_verdict}")
+            fi
+          elif [ "$health_status" = "000" ]; then
+            drift+=("health: network error")
+            health_verdict="network_error"
+          else
+            drift+=("health: HTTP ${health_status}")
+            health_verdict="http_${health_status}"
+          fi
+
+          {
+            echo "## Runtime drift probe — $(date -u +'%Y-%m-%dT%H:%M:%SZ')"
+            echo "- production URL: \`$PRODUCTION_BASE_URL\`"
+            echo "- /runtime-readiness: HTTP ${readiness_status} — ${readiness_outcome} (ready=${readiness_ready})"
+            echo "- /api/health: HTTP ${health_status} — status=${health_verdict}"
+            echo "- components: ${health_detail:-unresolved}"
+            if [ "${#drift[@]}" -gt 0 ]; then
+              echo ""
+              echo "### Drifted"
+              for entry in "${drift[@]}"; do echo "- $entry"; done
+            else
+              echo ""
+              echo "### No drift"
+            fi
+            echo ''
+            echo 'Route probes record status codes only; temporary response bodies are deleted and are not printed or attached. No secret value, secret length, hash, derived key material, cookie payload, or environment-variable value is recorded.'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+          summary_lines="$(grep -c '^' "$GITHUB_STEP_SUMMARY")"
+          if [ "${#drift[@]}" -gt 0 ]; then
+            echo "drifted=true" >> "$GITHUB_OUTPUT"
+            printf '%s\n' "${drift[@]}" > "$tmp_dir/drift.txt"
+            cp "$tmp_dir/drift.txt" ./drift.txt
+            exit 1
+          else
+            echo "drifted=false" >> "$GITHUB_OUTPUT"
+            echo "Drift probe green: readiness ready=true, health healthy."
+            exit 0
+          fi
+
+  report-drift:
+    needs: probe
+    if: failure() && needs.probe.result == 'failure'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: write
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+      - name: Download drift details from the probe job
+        uses: actions/download-artifact@634f93cb2916e3fdff6788551b99b062d0335ce0 # v5
+        with:
+          name: runtime-drift-details-${{ github.run_id }}
+      - name: Open or update runtime drift tracking issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -o pipefail
+          node --input-type=module - <<'NODE'
+          import { execFileSync } from "node:child_process";
+          import { readFileSync } from "node:fs";
+
+          const driftLines = readFileSync("drift.txt", "utf8").trim().split("\n");
+          const title = "Production runtime readiness or health has drifted from ready/healthy";
+          const marker = "<!-- runtime-drift-probe -->";
+
+          const body = [
+            marker,
+            "The scheduled runtime drift probe found the production surface no",
+            "longer reporting the required state. This issue is maintained by the",
+            "runtime-drift-probe workflow: it updates in place while drift",
+            "persists and is auto-closed by the next green scheduled run.",
+            "Manual remediation happens in whatever operator path applies",
+            "(e.g. redeploy the last green SHA, restore the workflow session",
+            "secret, re-run Production Runtime Readiness on the fixed commit).",
+            "",
+            "## Current drift",
+            ...driftLines.map((line) => `- ${line}`),
+            "",
+            `Run: ${process.env.GITHUB_SERVER_URL}/${process.env.GITHUB_REPOSITORY}/actions/runs/${process.env.GITHUB_RUN_ID}`,
+            "",
+            "This probe does not verify exact-commit Vercel lineage or the",
+            "route matrix; Production Runtime Readiness (on the next main CI)",
+            "still owns that. It checks the canary surface only.",
+          ].join("\n");
+
+          const gh = (args) => execFileSync("gh", args, { encoding: "utf8" });
+          const existing = gh(["issue", "list", "--state", "open", "--limit", "50", "--json", "number,title", "--search", title]);
+          const matches = JSON.parse(existing || "[]").filter((issue) => issue.title === title);
+
+          if (matches.length > 0) {
+            gh(["issue", "edit", String(matches[0].number), "--body", body]);
+            console.log(`Updated tracking issue #${matches[0].number}`);
+          } else {
+            gh(["issue", "create", "--title", title, "--body", body]);
+            console.log("Opened new tracking issue");
+          }
+          NODE
+
+  clear-drift:
+    needs: probe
+    if: success() && needs.probe.result == 'success'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: write
+      actions: read
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+      - name: Close resolved runtime drift tracking issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -o pipefail
+          title="Production runtime readiness or health has drifted from ready/healthy"
+          existing="$(gh issue list --state open --limit 50 --json number,title --search "$title")"
+          matches="$(jq -r --arg t "$title" '[.[] | select(.title == $t)][0].number // ""' <<< "$existing")"
+          if [ -n "$matches" ]; then
+            timestamp="$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
+            gh issue close "$matches" --comment "Scheduled runtime drift probe is green again at $timestamp (readiness ready=true, health healthy per /api/health). Closing this tracking issue automatically; it opens again on the next drift.
+          Run: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+            echo "Closed tracking issue #$matches" >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "No open tracking issue; nothing to close." >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+  upload-drift-artifact:
+    needs: probe
+    if: failure() && needs.probe.result == 'failure'
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Upload drift details
+        uses: actions/upload-artifact@330a01c490aca151604b8cf639adc76d48f6c5d4 # v5
+        with:
+          name: runtime-drift-details-${{ github.run_id }}
+          path: drift.txt
+          retention-days: 30
