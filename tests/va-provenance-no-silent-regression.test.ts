@@ -51,7 +51,9 @@ describe("every VA production reference surface carries explicit provenance", ()
     { path: "src/app/va-reference/page.tsx", view: "reference" },
     { path: "src/app/va-reference/service-branches/page.tsx", view: "reference" },
     { path: "src/app/va-forms/page.tsx", view: "reference" },
-    { path: "src/app/va-forms/finder/page.tsx", view: "reference" },
+    // Audit A01 moved the finder's rendered surface from the page into the
+    // action-driven component; the binding requirement is unchanged.
+    { path: "src/components/va/VaFormsFinder.tsx", view: "reference" },
     {
       path: "src/components/va/AccreditedRepresentativeFinder.tsx",
       view: "initialView",

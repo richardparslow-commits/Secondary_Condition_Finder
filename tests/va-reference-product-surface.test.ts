@@ -73,7 +73,11 @@ describe("VA reference product surfaces", () => {
 
   it("ships a searchable Forms Finder with current-record filtering and visible source status", () => {
     const loader = source("src/lib/va/forms-finder.ts");
-    const page = source("src/app/va-forms/finder/page.tsx");
+    // The search surface moved from the page into the action-driven component
+    // (audit A01: the query is no longer URL-borne, so the form is owned by the
+    // client component that submits it). Every assertion below is unchanged —
+    // only the file that renders them is.
+    const page = source("src/components/va/VaFormsFinder.tsx");
 
     expect(loader).toContain("fetchVaForms(normalizedQuery, { config })");
     expect(loader).toContain("cacheStatus: \"hit\"");
