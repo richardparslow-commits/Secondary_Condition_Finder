@@ -321,7 +321,7 @@ Application-level rate limiting is enforced in the proxy middleware (`src/proxy.
 | `/api/regulatory/preflight` | 60s | 5 | IP |
 | `/api/admin/cache-clear` | 60s | 5 | IP |
 | `/api/health` | 60s | 30 | IP |
-| Public reference page reads (`/va-forms`, `/va-forms/finder`, `/va-reference`, `/secondary/evidence`, …) | 60s | 30 | IP |
+| Public reference page reads (`/va-forms`, `/va-forms/finder`, `/va-reference`, `/secondary/evidence`, …) — GET/HEAD, plus the reference Server Action POSTs that replaced the finder's GET search | 60s | 30 | IP |
 | **All limited surfaces combined** (shared ceiling, attributed or not) | 60s | `RATE_LIMIT_UNATTRIBUTED_MAX`, default 6000 | one shared budget |
 
 **Client identity.** The key is the first usable hop of `X-Forwarded-For`, falling
