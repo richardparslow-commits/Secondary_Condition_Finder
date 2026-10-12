@@ -148,6 +148,18 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
   const [pending, setPending] = useState<PendingEvidenceFile[]>([]);
   const [ocrProgress, setOcrProgress] = useState<string | null>(null);
   const limits: EvidenceLimits = EVIDENCE_DEPTH_LIMITS[depth];
+  // A07: the committed snapshot, mirrored in a ref so persistence can happen
+  // outside the React state updater. React may invoke an updater more than
+  // once (StrictMode double-invoke, replayed renders), and a storage write
+  // inside it then runs once per invocation — measured directly by
+  // tests/local-evidence-extraction-fence.test.tsx.
+  const analysesRef = useRef<EvidenceAnalysis[]>([]);
+
+  /** Commits a new snapshot to state and to the ref the persistence path reads. */
+  function applyAnalyses(next: EvidenceAnalysis[]) {
+    analysesRef.current = next;
+    setAnalyses(next);
+  }
   // F-07: dual guard — `busyRef` is the synchronous guard across `await` gaps
   // (React state `busy` is async and would re-introduce a race if relied on
   // alone); `busy` drives the disabled UI. Every handler checks
@@ -160,10 +172,30 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
   // that cleanup just cleared. Each run captures the current generation and
   // abandons itself when it no longer matches; unmount invalidates it.
   const extractionGenerationRef = useRef(0);
+  // A07: the in-flight browser-local OCR worker and PDF loading task, so
+  // unmount (Finish, Restart, or leaving this step) stops recognition
+  // immediately instead of waiting for the next page boundary to notice. The
+  // run's own finally chain still releases both on every path; these refs add
+  // cancellation, not a second teardown.
+  const activeOcrWorkerRef = useRef<Awaited<ReturnType<typeof createLocalOcrWorker>> | null>(null);
+  const activePdfTaskRef = useRef<{ destroy: () => Promise<void> } | null>(null);
 
   useEffect(() => {
     return () => {
       extractionGenerationRef.current += 1;
+    };
+  }, []);
+
+  // Declared after the invalidation cleanup above, so React runs that fence
+  // before this teardown and a detached run cannot be resurrected by it.
+  useEffect(() => {
+    return () => {
+      const worker = activeOcrWorkerRef.current;
+      const task = activePdfTaskRef.current;
+      activeOcrWorkerRef.current = null;
+      activePdfTaskRef.current = null;
+      void worker?.terminate().catch(() => {});
+      void task?.destroy().catch(() => {});
     };
   }, []);
 
@@ -172,7 +204,7 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
       const { analyses, parseError } = loadStoredEvidenceWithWarning(
         getSessionStorage(),
       );
-      setAnalyses(analyses);
+      applyAnalyses(analyses);
       if (parseError) {
         setWarnings((prev) =>
           prev.includes(STORAGE_CORRUPTED_WARNING)
@@ -201,7 +233,7 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
         getSessionStorage(),
         EVIDENCE_DEPTH_LIMITS[depth],
       );
-      setAnalyses(analyses);
+      applyAnalyses(analyses);
       if (parseError) {
         setWarnings((prev) =>
           prev.includes(STORAGE_CORRUPTED_WARNING)
@@ -222,29 +254,31 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
   );
 
   function commitAnalysis(analysis: EvidenceAnalysis) {
-    setAnalyses((current) => {
-      const next = [...current.filter((existing) => existing.sourceName !== analysis.sourceName), analysis].slice(-limits.storedSources);
-      const info = serializeStoredEvidenceWithInfo(next, limits);
-      if (info.dropped > 0) {
-        // Defer warning to avoid calling setState inside the setAnalyses updater (#3 silent-data-loss)
-        queueMicrotask(() => {
-          setWarnings((prev) => {
-            const msg = `Storage limit reached (${formatLimitBytes(limits.storedBytes)}): ${info.dropped} older analyzed source(s) were dropped to fit. Clear old analyses or switch to Extended depth to retain more.`;
-            return prev.includes(msg) ? prev : [...prev, msg];
-          });
+    // A07: derived and persisted outside the state updater — the updater stays
+    // a pure state transition, so a replayed invocation cannot write twice.
+    const next = [
+      ...analysesRef.current.filter((existing) => existing.sourceName !== analysis.sourceName),
+      analysis,
+    ].slice(-limits.storedSources);
+    const info = serializeStoredEvidenceWithInfo(next, limits);
+    if (info.dropped > 0) {
+      // Defer the warning out of this call so a drop notice never blocks the
+      // commit that produced it (#3 silent-data-loss).
+      queueMicrotask(() => {
+        setWarnings((prev) => {
+          const msg = `Storage limit reached (${formatLimitBytes(limits.storedBytes)}): ${info.dropped} older analyzed source(s) were dropped to fit. Clear old analyses or switch to Extended depth to retain more.`;
+          return prev.includes(msg) ? prev : [...prev, msg];
         });
-      }
-      saveStored(next, limits);
-      return next;
-    });
+      });
+    }
+    saveStored(next, limits);
+    applyAnalyses(next);
   }
 
   function dropAnalysis(sourceName: string) {
-    setAnalyses((current) => {
-      const next = current.filter((existing) => existing.sourceName !== sourceName);
-      saveStored(next, limits);
-      return next;
-    });
+    const next = analysesRef.current.filter((existing) => existing.sourceName !== sourceName);
+    saveStored(next, limits);
+    applyAnalyses(next);
   }
 
   function setRowOutcome(id: number, hint?: EvidenceDocumentKindHint) {
@@ -300,9 +334,16 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
     if (row?.analyzed) dropAnalysis(row.sourceName);
   }
 
+  /**
+   * `isCurrentGeneration` is passed in rather than read from state so the
+   * commit inside this function is fenced by the generation the caller
+   * started with. Extraction is an async boundary, and a caller-side check
+   * after the call cannot undo a write that happened in here (A07).
+   */
   async function analyzeOneFile(
     row: PendingEvidenceFile,
     remainingBatchBytes: number,
+    isCurrentGeneration: () => boolean,
   ): Promise<{ processed: number; warnings: string[]; skipped: boolean; hint?: EvidenceDocumentKindHint }> {
     const nextWarnings: string[] = [];
     if (row.file.size > limits.fileBytes) {
@@ -320,6 +361,11 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
 
     try {
       const extracted = await extractLocalEvidenceDocument(row.file, limits);
+      // A07: re-check after the parse. Finish/Restart clears browser-local
+      // state and leaving this step unmounts the component while the
+      // extraction is suspended; committing an excerpt here would resurrect
+      // data that cleanup just removed. A stale run reports no committed work.
+      if (!isCurrentGeneration()) return { processed: 0, warnings: [], skipped: true };
       nextWarnings.push(...extracted.warnings.map((warning) => `${row.sourceName}: ${warning}`));
       if (extracted.segments.length === 0) {
         return { processed: 0, warnings: nextWarnings, skipped: false, hint: undefined };
@@ -364,7 +410,8 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
     try {
       for (const row of targets) {
         if (!isCurrentGeneration()) return;
-        const result = await analyzeOneFile(row, remainingBatchBytes);
+        const result = await analyzeOneFile(row, remainingBatchBytes, isCurrentGeneration);
+        if (!isCurrentGeneration()) return;
         nextWarnings.push(...result.warnings);
         processed += result.processed;
         remainingBatchBytes -= result.skipped ? 0 : Math.min(row.file.size, limits.batchBytes);
@@ -403,7 +450,7 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
       setPending((current) =>
         current.map((item) => (item.id === id ? updated : item)),
       );
-      const result = await analyzeOneFile(updated, Number.MAX_SAFE_INTEGER);
+      const result = await analyzeOneFile(updated, Number.MAX_SAFE_INTEGER, isCurrentGeneration);
       if (!isCurrentGeneration()) return;
       setWarnings(result.warnings);
       setRowOutcome(id, result.hint);
@@ -455,9 +502,11 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
         pdfjs.GlobalWorkerOptions.workerSrc = "/pdf.worker.min.mjs";
       }
       const worker = await createLocalOcrWorker();
+      activeOcrWorkerRef.current = worker;
       try {
         const bytes = new Uint8Array(await row.file.arrayBuffer());
         const loadingTask = pdfjs.getDocument({ data: bytes });
+        activePdfTaskRef.current = loadingTask;
         const pdfDocument = await loadingTask.promise;
         try {
           // #7: validate untrusted page count before using it as a loop bound
@@ -591,6 +640,11 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
               // checkpoint that finish/restart cleanup just cleared.
               if (!isCurrentGeneration()) return;
               await yieldToBrowser();
+              // A07: the yield is itself an async boundary — Finish/Restart can
+              // clear browser-local state while this run is suspended — so
+              // staleness is re-checked immediately before the write, not only
+              // before the yield.
+              if (!isCurrentGeneration()) return;
               if (checkpointEnabled) {
                 const persisted = saveOcrCheckpoint(storage, {
                   version: 1,
@@ -646,12 +700,16 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
       nextWarnings.push(`${row.sourceName}: browser-local OCR failed (${detail}).`);
       setMessage(`${row.sourceName} could not be OCR'd locally.`);
     } finally {
-      setWarnings(nextWarnings);
+      activeOcrWorkerRef.current = null;
+      activePdfTaskRef.current = null;
+      // A07: a detached run writes no state either — its warnings and progress
+      // belong to the run the user abandoned.
       if (isCurrentGeneration()) {
+        setWarnings(nextWarnings);
         busyRef.current = false;
         setBusy(false);
+        setOcrProgress(null);
       }
-      setOcrProgress(null);
     }
   }
 
@@ -686,7 +744,7 @@ export function LocalEvidenceAnalyzer({ conditionTerms }: Props) {
     const storage = getSessionStorage();
     const excerptsCleared = clearStoredEvidence(storage);
     const checkpointCleared = clearOcrCheckpoint(storage);
-    setAnalyses([]);
+    applyAnalyses([]);
     setPending([]);
     setPastedText("");
     setPastedSourceName("Pasted medical record text");
