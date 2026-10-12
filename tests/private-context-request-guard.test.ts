@@ -213,6 +213,16 @@ describe("private context request guard (PRIV-01)", () => {
     }
   });
 
+  it("admits the finder's Server Action POST, which carries no query parameter", () => {
+    // Audit A01: the Forms Finder search is a Server Action POST to this path,
+    // so its search text never appears as a query parameter. The write rule
+    // covers the `/secondary` workflow area only, which is what keeps this
+    // transport admitted — a POST refused here would take the whole finder down
+    // with a 400 while every GET-shaped test still passed.
+    const response = proxy(workflowRequest("/va-forms/finder", { method: "POST" }));
+    expect(response.status).toBe(200);
+  });
+
   it("leaves every legitimate request shape alone", () => {
     const allowed = [
       "/secondary/diagnosed",

@@ -368,10 +368,17 @@ export function proxy(request: NextRequest) {
   // workflow limiter above only covers POSTs and the registry below only
   // matches `/api/*` routes. HEAD can execute the same page loader as GET,
   // so it consumes the same budget. Query/RSC/prefetch variants are not exempt.
+  //
+  // POST is included because the Forms Finder search is a Server Action now
+  // (audit A01): the visitor's text travels in the request body instead of the
+  // URL, and the request still reaches the same reference loader. Leaving POST
+  // out would have moved the search off the reference budget rather than off
+  // the URL, which is the regression this branch exists to prevent. A reference
+  // POST therefore consumes both this budget and the method-scoped POST bucket.
   // Pinned by the page-loader inventory and behavioral coverage tests in
   // tests/api-route-rate-limit-coverage.test.ts (SEC-02).
   if (
-    (method === "GET" || method === "HEAD") &&
+    (method === "GET" || method === "HEAD" || method === "POST") &&
     (pathname === "/va-forms" ||
       pathname === "/va-forms/finder" ||
       pathname === "/va-reference" ||

@@ -1,0 +1,41 @@
+/**
+ * Forms Finder search contract — shared by the Server Action and the client
+ * surface that renders its result (audit A01).
+ *
+ * These live outside `src/lib/actions/va-forms-finder.ts` deliberately: a
+ * Server Action module may only export async functions, and its non-function
+ * exports do not exist at all in the client graph. Importing the bound or the
+ * refusal copy from the action module compiled, type-checked, and then answered
+ * **500** in the browser ("Export … doesn't exist in target module"), because
+ * Next replaces the module with an action reference in the client bundle. The
+ * unit tests could not see that: they import the action directly and never
+ * build the client graph, which is why the split is pinned by a source pin in
+ * `tests/va-forms-finder-no-url-exposure.test.ts` and exercised end to end by
+ * the action-driven surface the tests mount.
+ *
+ * The architecture audit requires the server-action directive to appear only
+ * under `src/lib/actions/`, which is another reason this module holds plain
+ * values and types rather than an action.
+ */
+import type { VaFormsFinderView } from "./forms-finder";
+
+/**
+ * Bound on the search text. Matches the loader's own 120-character slice, so a
+ * request cannot carry text longer than the page ever displays.
+ */
+export const FORMS_FINDER_QUERY_MAX_LENGTH = 120;
+
+/** Copy shown for any refusal. Names no submitted value. */
+export const FORMS_FINDER_REFUSAL_MESSAGE =
+  "That search was not run. Search by VA form number, keyword, or title — never enter personal identifiers.";
+
+/** Action state rendered by the finder component. Plain JSON, safe to return. */
+export interface VaFormsFinderSearchState {
+  view: VaFormsFinderView;
+  /**
+   * Canonical refusal code when the input was rejected, `null` otherwise. A
+   * fixed constant — never the submitted text — so the response is not a
+   * reflection channel.
+   */
+  refusal: "phi-shaped-field" | "oversized-value" | null;
+}

@@ -368,6 +368,33 @@ describe("public reference page rate-limit coverage (SEC-02)", () => {
   });
 
   it.each(["/va-forms/finder", "/secondary/evidence"])(
+    "charges a reference Server Action POST to the shared reference budget on %s",
+    (pathname) => {
+      // Audit A01 moved the Forms Finder search (and the locator form on the
+      // workflow steps) to Server Action POSTs, so the request body carries the
+      // text and the URL does not. The request still reaches the same reference
+      // loader, so POST must consume this budget rather than sit outside it —
+      // otherwise moving the search off the URL would have moved it off the
+      // reference admission control instead.
+      const send = (method: string) => proxy(new NextRequest(`https://example.test${pathname}`, {
+        method,
+        headers: { "x-forwarded-for": "203.0.113.67" },
+      }));
+
+      // Five Server Action POSTs...
+      for (let i = 0; i < 5; i += 1) {
+        expect(send("POST").status, `POST ${i + 1}`).toBe(200);
+      }
+      // ...leave exactly 25 of the 30 admissions for reads.
+      for (let i = 0; i < referenceReadLimiter.max - 5; i += 1) {
+        expect(send("GET").status, `GET ${i + 1}`).toBe(200);
+      }
+      expect(send("GET").status).toBe(429);
+      expect(send("POST").status).toBe(429);
+    },
+  );
+
+  it.each(["/va-forms/finder", "/secondary/evidence"])(
     "does not grant a fresh budget for query, slash, or RSC variants of %s",
     (pathname) => {
       const variants = [

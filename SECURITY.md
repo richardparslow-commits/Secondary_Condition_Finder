@@ -167,7 +167,7 @@ In addition to edge WAF controls, the application implements server-side rate li
 | `/api/regulatory/preflight` (authenticated, expensive) | `regulatoryPreflightLimiter` | 60 s | 5 | IP |
 | `/api/admin/cache-clear` (authenticated, destructive) | `adminCacheClearLimiter` | 60 s | 5 | IP |
 | `/api/health` (public, lightweight) | `healthLimiter` | 60 s | 30 | IP |
-| Public reference page reads (`/va-forms`, `/va-forms/finder`, `/va-reference`, `/secondary/evidence`, …) | `referenceReadLimiter` | 60 s | 30 | IP |
+| Public reference page reads (`/va-forms`, `/va-forms/finder`, `/va-reference`, `/secondary/evidence`, …) — GET/HEAD and the reference Server Action POSTs | `referenceReadLimiter` | 60 s | 30 | IP |
 | **All limited surfaces combined** (shared admission ceiling) | `unattributedAdmissionLimiter` | 60 s | 6000 (`RATE_LIMIT_UNATTRIBUTED_MAX`) | one shared budget |
 
 Rate limiting is enforced in `src/proxy.ts` (Next.js middleware/proxy). Every limited surface charges that shared ceiling as well as its own bucket, so a request with no usable identity is bounded rather than skipped, and a client presenting a different valid IP on every request cannot draw an unbounded series of fresh allowances. Exceeded limits return `429 Too Many Requests` with a `Retry-After` header. All limiters are process-local and reset on cold start — intentional for serverless, and reported as such (`components.rateLimit.store`).

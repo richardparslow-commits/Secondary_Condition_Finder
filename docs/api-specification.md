@@ -176,7 +176,7 @@ Triggers a regulatory preflight cache refresh. Requires Bearer token authenticat
 
 ## Server Actions
 
-The remaining workflow-area Server Action is the bounded accredited-representative directory lookup. It accepts validated public lookup fields and redirects with the lookup result or a fixed validation code; it does not persist Veteran workflow state. The separate VA-account sandbox uses same-origin Route Handlers, not these Server Actions.
+Two Server Actions remain, both bounded public-reference operations that persist no Veteran workflow state: the accredited-representative directory lookup (redirects with its lookup result or a fixed validation code) and the Forms Finder search (`searchVaFormsFinder`, which returns its result as action state so the visitor's search text is never placed in a URL — audit A01). The separate VA-account sandbox uses same-origin Route Handlers, not these Server Actions.
 
 > **PRIV-01 (2026-10-07 and 2026-10-08):** both secondary and presumptive research workflows now validate and persist state in versioned, browser-local records. Private context does not reach the server, and the retired secondary, scenario, and presumptive Server Actions are gone. The browser-local contracts follow.
 
@@ -265,6 +265,20 @@ carries no service history.
 An unknown id or invalid state surfaces an inline error; nothing is sent to the server and no workflow data is placed in a URL.
 
 ---
+
+### Forms Finder Action (`src/lib/actions/va-forms-finder.ts`)
+
+#### `searchVaFormsFinder(previousState, formData)`
+
+| Field | Type | Required | Notes |
+| --- | --- | --- | --- |
+| `q` | `string` | Yes | Public form number, keyword, or title. Trimmed and bounded to `FORMS_FINDER_QUERY_MAX_LENGTH` (120); a whole-input identifier is refused by the loader. |
+
+**Success**: returns `{ view, refusal: null }` — the same `VaFormsFinderView` the loader produces, rendered by the client component. It returns state instead of redirecting precisely so the URL never carries the search text (audit A01).
+
+**Refusal**: returns `{ view: <default view>, refusal }` with `refusal` one of `oversized-value` or `phi-shaped-field`; the submitted text is never echoed in the response body, and no field name or value from the request is reflected. Input is validated through the PHI-free Server Action contract (`src/lib/security/phi-free-action-input.ts`).
+
+**Rate limiting**: a POST to `/va-forms/finder` consumes both the method-scoped POST bucket and the shared reference-read bucket (`src/proxy.ts`), because the request still reaches the VA reference loader.
 
 ### Accredited Representative Action (`src/lib/actions/accredited-representatives.ts`)
 

@@ -74,7 +74,7 @@ VA reference capabilities are supporting administrative enrichments. The core re
 **Implemented value:**
 
 - `/va-forms` provides the direct Form 21-526EZ reference surface.
-- `/va-forms/finder` accepts bounded public form number/title/keyword search text and displays validated current-record metadata such as title, revision date, page count, PDF validity, and official form link.
+- `/va-forms/finder` accepts bounded public form number/title/keyword search text and displays validated current-record metadata such as title, revision date, page count, PDF validity, and official form link. The search is submitted in the request body, so the visitor's text never appears in the page URL, browser history, or a copied link (audit A01).
 - Successful live responses use the shared five-minute reference cache and non-sensitive source/retrieval/cache status.
 - Failure or disabled mode degrades to clearly labeled local/reference behavior rather than breaking the product.
 

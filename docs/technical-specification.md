@@ -394,8 +394,10 @@ Counts and identities are contract-enforced: `npm run kb:validate` + `tests/…c
 
 ### Server Actions (bounded public operations — `use server` + `server-only` unless noted)
 
-The current sole Server Action is `searchAccreditedRepresentatives` in
-`src/lib/actions/accredited-representatives.ts`; it performs a validated public-directory lookup.
+Two Server Actions remain, both public-reference only: `searchAccreditedRepresentatives` in
+`src/lib/actions/accredited-representatives.ts` (validated public-directory lookup) and
+`searchVaFormsFinder` in `src/lib/actions/va-forms-finder.ts` (bounded public form-metadata search,
+audit A01 — it returns its result as action state so the visitor's search text never enters a URL).
 The secondary and presumptive workflow actions were retired: the browser validates and updates
 private workflow records locally. API routes provide health, protected regulatory preflight,
 protected cache administration, and CSP reporting; they do not accept veteran context.
@@ -403,10 +405,11 @@ protected cache administration, and CSP reporting; they do not accept veteran co
 ```
 Client-side `/presumptive` submit → validate the service-history draft, persist the browser-local record, then navigate to `/presumptive/results`
 Server Action `searchAccreditedRepresentatives(FormData)` → bounded public zip/radius/type directory lookup; no Veteran workflow context
+Server Action `searchVaFormsFinder(prevState, FormData)` → bounded public form number/keyword/title search; returns the view as state (no URL, no redirect); no Veteran workflow context
 ```
 
 - **Browser-local secondary steps (no Server Action — PRIV-01 stage 2):** the six `/secondary/*` steps validate and persist entirely in the browser via `src/lib/secondary-workflow/client-steps.ts` → `src/lib/secondary-workflow/browser-context.ts` (`sessionStorage`); no request carries diagnoses, service-connected answers, ratings, medications, treatments, or history. The server serves only uniform public data (client corpus, scope-free regulatory snapshot, public VA reference). Completion/restart are client-side clear-all + navigate.
-- **Input:** The remaining directory action accepts bounded public `FormData`; health, protected regulatory preflight, cache administration, and CSP reporting use their documented API methods. No action accepts secondary or presumptive Veteran workflow context. The retired secondary actions' `appendFormData` helper and Zod bounds now run client-side in `client-steps.ts`.
+- **Input:** Both remaining reference actions accept bounded public `FormData` (the finder's text is additionally bounded by `FORMS_FINDER_QUERY_MAX_LENGTH=120` and passes through the PHI-free action-input contract); health, protected regulatory preflight, cache administration, and CSP reporting use their documented API methods. No action accepts secondary or presumptive Veteran workflow context. The retired secondary actions' `appendFormData` helper and Zod bounds now run client-side in `client-steps.ts`.
 - **Validation:** `MAX_CONTEXT_ITEMS=20` × `MAX_CONTEXT_ITEM_LENGTH=160`, `MIN/MAX_TIMELINE_YEAR 1900–2100`, `VALID_RATINGS` + `decline→null`, and `serviceHistorySchema` location/date-order rules are enforced in browser-local code; failed writes surface an in-place error without transmitting private context.
 - **Output:** The public-directory action returns only public lookup results; browser workflow steps navigate only after a successful local write. Fixed validation codes may be used for user guidance, but private workflow state never appears in URLs, history, or referrers.
 - **Security:** The bounded public-directory action uses Next.js CSRF protection and server-only boundaries. Neither workflow writes or reads a workflow cookie; the proxy tombstones stale retired workflow cookies and refuses private-context requests.
@@ -430,7 +433,7 @@ Server Action `searchAccreditedRepresentatives(FormData)` → bounded public zip
 - `GET /scenarios` — Lists `data/demo-scenarios.json`; the scenario is launched entirely in the browser by `ScenarioLaunchForm` (bundled JSON + client-corpus validation + browser-local persist)
 - `GET /privacy` — Publishes Standard/Extended limits verbatim from `src/lib/evidence/limits.ts` (`EVIDENCE_DEPTH_LABELS`) + browser-local privacy contract
 - `GET /runtime-readiness` — The configured primary `WORKFLOW_SESSION_SECRET` crypto-readiness marker only; it does not validate deployment lineage, the route matrix, research-workflow state, or VA-account store configuration.
-- `GET /va-forms` / `/va-forms/finder?query=` + `GET /va-reference` / `/va-reference/service-branches` — VA public-reference pages (disabled by default, local fallback + `sourceLabel`/`cacheStatus`); filtering stays local to browser
+- `GET /va-forms` / `GET /va-forms/finder` + `GET /va-reference` / `/va-reference/service-branches` — VA public-reference pages (disabled by default, local fallback + `sourceLabel`/`cacheStatus`); filtering stays local to browser. The Finder's search is a `POST` Server Action (`searchVaFormsFinder`) whose text travels in the request body, so no URL for this surface ever carries the query (audit A01); a reference-path POST is charged to the shared reference-read budget in `src/proxy.ts`.
 
 ## Testing Strategy
 
