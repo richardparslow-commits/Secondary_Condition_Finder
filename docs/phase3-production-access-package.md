@@ -168,9 +168,9 @@ Forms search, disability terminology, and service branches share a bounded five-
 
 The adapter uses bounded behavior:
 
-- default per-attempt timeout: 4 seconds;
+- default per-attempt timeout: 4 seconds (`VA_API_TIMEOUT_MS`, capped by `VA_API_MAX_TIMEOUT_MS`; legacy alias `VA_SANDBOX_TIMEOUT_MS` is still honored);
 - at most three public-reference attempts for HTTP 503/504 or transient timeout/network failure, with bounded backoff/jitter;
-- immediate labelled fallback without an immediate retry for HTTP 429/500, with one exception: an upstream that explicitly authorizes retrying at once (Retry-After of 0, or an already-past HTTP-date) is retried once in the same request after the minimum backoff delay, because the circuit breaker's one-second floor would otherwise turn a documented immediate retry into a one-second outage; audited shared circuit/coordination defects remain to be repaired before faithful fleet backoff can be claimed;
+- immediate labelled fallback without an immediate retry for HTTP 429/500, with one exception: an upstream that explicitly authorizes retrying at once (Retry-After of 0, or an already-past HTTP-date) is retried once in the same request after the minimum backoff delay, because the circuit breaker's one-second floor would otherwise turn a documented immediate retry into a one-second outage; the B06/B07 shared coordination defects (unfenced cooldown recovery, Retry-After truncation, false-success and lease-ownership races) were repaired locally per the October 4 audit §9, but live fleet verification at production enablement is still required;
 - invalid payloads fail closed;
 - HTTPS-only configurable endpoints;
 - upstream failure falls back locally and does not break core intake/recommendation/presumptive flows;

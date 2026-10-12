@@ -41,7 +41,7 @@ Rotation is intentionally **small-blast-radius**: Forms and Benefits Reference D
 
 1. In Vercel → Project → **Settings → Environment Variables**, select the **Production** environment.
 2. Add or update the single key being rotated (e.g., `VA_FORMS_PRODUCTION_API_KEY`) with the new value. **Do not delete the old key until the new deployment is verified** if your provider supports dual-validity; Vercel will use the newly saved value for the next deployment only.
-3. If the base URL is also changing, update `VA_FORMS_PRODUCTION_BASE_URL` / `VA_BENEFITS_REFERENCE_PRODUCTION_BASE_URL` in the same step (must remain `https://api.va.gov/...`; see `src/lib/va/sandbox.ts` trusted-origin check).
+3. If the base URL is also changing, update `VA_FORMS_PRODUCTION_BASE_URL` / `VA_BENEFITS_REFERENCE_PRODUCTION_BASE_URL` in the same step (must remain `https://api.va.gov/...`; see `src/lib/va/sandbox.ts` trusted-origin check). Production base-URL overrides are additionally gated on `VA_PRODUCTION_ACCESS_GRANTED=true` in the mode resolver (`resolveVaReferenceMode`), so a partial activation cannot happen.
 
 ### 2. Create a new production deployment
 
@@ -76,7 +76,7 @@ If the new credential is bad (5xx/invalid-payload/timeout spike, circuit opens):
 
 1. Restore the **previous** known-good value in Vercel Production.
 2. Re-deploy the same commit again.
-3. Re-run the verification in §3. The breaker half-opens after 60s — allow one probe request before concluding the rollback succeeded.
+3. Re-run the verification in §3. The breaker opens for the clamped `Retry-After` window when the upstream returns 429, and for the stale-failure window after repeated 5xx/timeouts (`open 60 s` by default at `FAILURE_THRESHOLD=5`, see `src/lib/va/circuit-breaker.ts`); after the window it half-opens and admits a single probe — allow that probe to resolve before concluding the rollback succeeded.
 4. Record the incident: commit SHA, deployment ID, timestamps, status codes, sanitized error category — no secret values in the record (`docs/security-operations.md`).
 
 ---

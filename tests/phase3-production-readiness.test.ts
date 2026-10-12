@@ -113,6 +113,66 @@ describe("Phase 3 production-access package contracts", () => {
     expect(accessibility).toContain("https://secondary-condition-finder.vercel.app");
   });
 
+  it.each([
+    { issue: 189, status: "COMPLETE / CLOSED", securityStatus: "CLOSED" },
+    { issue: 195, status: "OPEN / HUMAN-ONLY", securityStatus: "OPEN" },
+    { issue: 213, status: "COMPLETE / CLOSED", securityStatus: "CLOSED" },
+    { issue: 287, status: "OPEN / EXTERNALLY BLOCKED", securityStatus: "OPEN" },
+    { issue: 537, status: "OPEN / EXTERNALLY OPERATED", securityStatus: "OPEN" },
+    { issue: 538, status: "OPEN / EXTERNALLY OPERATED", securityStatus: "OPEN" },
+    { issue: 539, status: "OPEN / HUMAN-APPROVAL", securityStatus: "OPEN" },
+  ])("names the accountable owner for R-04 gate #$issue in the register and runbooks", ({ issue, status, securityStatus }) => {
+    const gates = readRepoFile("docs/external-manual-gates-status.md");
+    const deployment = readRepoFile("docs/deployment-readiness.md");
+    const security = readRepoFile("docs/security-operations.md");
+    const issueUrl = `https://github.com/richardparslow-commits/Secondary_Condition_Finder/issues/${issue}`;
+
+    // Bound each assertion to its own gate: another gate's owner or status
+    // must not make an unowned/mislabelled row pass.
+    const section = gates.split(`## Issue #${issue} — `)[1]?.split("\n## ")[0];
+    expect(section, `missing gate section #${issue}`).toBeDefined();
+    expect(section).toContain(status);
+    expect(section).toContain("Richard Parslow (`richardparslow-commits`)");
+
+    const register = gates.split("## R-04 ownership register")[1]?.split("\n## ")[0];
+    const registerRows = register?.split("\n").filter((line) => line.startsWith("| ") && line.includes(`](${issueUrl})`));
+    expect(registerRows).toHaveLength(1);
+    const registerCells = registerRows![0]!.split("|").map((cell) => cell.trim());
+    expect(registerCells[3]).toContain(status);
+    expect(registerCells[4]).toContain("Richard Parslow (`richardparslow-commits`)");
+    expect(registerCells[6]).toMatch(/\d{4}-\d{2}-\d{2}/);
+    expect(registerCells[7]).not.toBe("");
+    expect(registerCells[8]).not.toBe("");
+
+    const boundary = deployment.split("## Known external verification boundaries")[1];
+    const runbookRows = boundary?.split("\n").filter((line) => line.startsWith("| ") && line.includes(`](${issueUrl})`));
+    expect(runbookRows).toHaveLength(1);
+    const runbookCells = runbookRows![0]!.split("|").map((cell) => cell.trim());
+    expect(runbookCells[3]).toBe(status);
+    expect(runbookCells[4]).toBe("Richard Parslow (`richardparslow-commits`)");
+    expect(runbookCells[5]).not.toBe("");
+
+    const securityBoundary = security.split("## External gates")[1];
+    const securityRows = securityBoundary?.split("\n").filter((line) => line.startsWith(`- **#${issue} — `));
+    expect(securityRows).toHaveLength(1);
+    expect(securityRows![0]).toContain(`:** ${securityStatus}; Richard Parslow`);
+  });
+
+  it("requires explicit ownership handoff without substituting assignment for human evidence", () => {
+    const deployment = readRepoFile("docs/deployment-readiness.md").split("## Known external verification boundaries")[1];
+    const security = readRepoFile("docs/security-operations.md").split("## External gates")[1];
+
+    for (const boundary of [deployment, security]) {
+      expect(boundary).toContain("named successor");
+      expect(boundary).toMatch(/escalat/i);
+      expect(boundary).toContain("independent tester");
+      expect(boundary).toContain("separate legal approver");
+    }
+    expect(deployment).toContain("Never close a gate merely because ownership is recorded");
+    expect(security).toContain("This ownership update closes no human/operator gate");
+    expect(security).not.toContain("#189 remains the deferred");
+  });
+
   it("covers VA review fields without inventing unresolved applicant facts", () => {
     const request = readRepoFile("docs/phase3-production-access-package.md");
     const checklist = readRepoFile("docs/phase3-submission-checklist.md");
