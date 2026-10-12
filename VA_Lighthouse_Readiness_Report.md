@@ -302,6 +302,8 @@ Separately actionable from M-01 because of the content's importance. `src/compon
 
 **One change is confirmed:** the legacy adapter at `src/lib/va/index.ts` cited in A10 no longer exists — `src/lib/va/` now holds 23 modules plus the `account/` package, and no `index.ts`. The remaining A-items should be re-verified against current `main` before submission rather than assumed closed or assumed open.
 
+> **STATUS (2026-10-12): REVIEW COMPLETE by R-08; architectural remediation is not complete.** The independently reverified [dated addendum](docs/r08-audit-verification-addendum-2026-10-12.md) pins main `276c0d8813c5406f02644b5fed3a999f17967321` and supersedes the preliminary closure claims. **CLOSED:** A05, A09 (standard CI build), and **A07** (remediated and behaviourally tested 2026-10-12). **STILL OPEN, with partial improvements recorded:** A01, A02, A03, A04, A06, A08, A10. This resolves M-04's unknown-disposition gap, not the residual defects, tooling advisory chain, or external evidence gates.
+
 #### M-05 — Dependency audit is enforced on commit but never re-runs on a schedule, and there is no SAST
 
 **What already works — credit where due.** `ci.yml:176` runs `npm run audit:high` as an *enforced* gate. It carries `continue-on-error: true`, which looks like a loophole but is not: the aggregator step at `ci.yml:372` ("Fail the job if any gate failed") explicitly re-fails the job when `steps.audit.outcome == "failure"`, alongside 15 other gates. The intent is documented in a comment at lines 170–175, including why the dev-tree advisory is inventoried separately rather than weakening the prod gate. A second step (`ci.yml:187`) runs `audit:high:all` as a deliberately non-blocking full-tree inventory. This is a well-reasoned control, and it is **not** a finding.
@@ -368,11 +370,11 @@ Ordered by *what unblocks the most*. R-01 and R-04 are independent of each other
 | **R-01** | ~~Privacy policy: add deletion right, 45-day commitment, and a contact channel~~ **DONE, merged** (PR #531, `6caf98d8`) — new §8 "Your privacy rights and how to contact us" in the privacy policy, Terms §7 mirror, pinned by `tests/privacy-rights-contact.test.ts`; §9 of this report's operator/privacy-approver sign-off remains the human step | B-02 | Code + legal review | 0.5 day | **Yes** |
 | **R-02** | ~~Fix measured contrast failures via one design-token change~~ **DONE, merged** (PR #520, `4112e719`) — token exposed, 65 sites swept, contrast test added | H-01 | Code | 0.5 day | **Yes** (508 evidence depends on it) |
 | **R-03** | ~~Add scheduled dependency re-audit + dependency-review + SAST~~ **DONE, merged** (PR #533, `3209b1a8`) — weekly scheduled `audit:high` re-run with single-issue tracking, manifest-diff reviewer visibility on PRs, Semgrep `p/typescript` SAST gating ERROR findings (CodeQL/dependency-review-action plan-gated for this private repo — GitHub Advanced Security not purchased; see §5.3); first green scheduled run 38182406496 | M-05 | CI | 0.5 day | Recommended |
-| **R-04** | ~~Assign owners and tracking issues to all manual/human gates~~ **DONE, merged** (2026-10-11) — all seven §5.4 gates now have a named owner, requested date/target-trigger, and explicit completion criterion in the `docs/external-manual-gates-status.md` ownership register; the three untracked gates are now issue-tracked (#537 log retention/review, #538 callback scrubbing/review, #539 privacy-language approver sign-off); #195 and #287 were reopened after premature 2026-10-11 closures because their gates' completion criteria are not met — see §5.4 status block | B-01, B-03, H-02 | Project management | 1 day | **Yes** |
+| **R-04** | ~~Assign owners and tracking issues to all manual/human gates~~ **Administrative tracking verified 2026-10-12** — all seven §5.4 gates have named accountable owners and dated tracking/closure records; all five open trackers are assigned to Richard Parslow (`richardparslow-commits`) with targets/triggers and completion criteria in the [ownership register](docs/external-manual-gates-status.md); the three previously untracked gates are #537 (hosting logs), #538 (callback scrubbing), and #539 (privacy approval); human/operator evidence remains pending | Ownership/tracking only; B-01, B-03, H-02 remain evidence-gated | Project management | 1 day | **Yes** |
 | **R-05** | ~~Add real-browser contrast + keyboard coverage to the existing WebDriver E2E job~~ **IMPLEMENTED (2026-10-11, awaiting merge)** — `e2e/a11y-contrast.mjs` runs enabled-contrast axe + keyboard visible-focus walk over 22 routes in CI; two real violations fixed on first run; pinned by `tests/a11y-contrast-gate.test.ts` | H-01, B-03 | CI | 1 day | No, but strongly recommended |
 | **R-06** | ~~Correct the scope narrative and `api-client.ts` positioning~~ **DONE, merged** (PR #535, `19fa90f8`) — exhaustive shipped-scope block verified against source, restricted Claims/Intake explicitly future-phase, Benefits Intake recorded unimplemented, GROUNDWORK STATUS header on `api-client.ts`, 9-test scope-agreement suite pinning doc↔code both ways | B-04 | Docs | 0.5 day | **Yes** |
 | **R-07** | ~~Bump disclaimer/notice text from 12px to 14px; reduce uppercase density~~ **DONE, merged** — 20 legal/safety notices plus the 24-site `.ui-kicker` class raised to 14px; `uppercase` cut 41 → 1 in components and `text-transform: uppercase` 1 → 0 in stylesheets; `tests/legal-notice-legibility.test.ts` (20 tests) added | M-01, M-02 | Code | 1 day | No |
-| **R-08** | Re-verify prior audit A01–A10 against current `main` | M-04 | Review | 1–2 days | Recommended |
+| **R-08** | ~~Re-verify prior audit A01–A10 against current `main`~~ **REVIEW DONE (2026-10-12)** — [per-item addendum](docs/r08-audit-verification-addendum-2026-10-12.md) disposes all ten findings against pinned main `276c0d88`: A05/A09 CLOSED, **A07 CLOSED 2026-10-12** after its recorded gaps were fixed and pinned by mounted lifecycle tests, A01–A04/A06/A08/A10 still open with recorded partial improvements and closure criteria; the residual engineering/operator follow-ups remain | M-04 | Review | 1–2 days | Recommended |
 
 ### Sequencing
 
@@ -514,10 +516,12 @@ Therefore the fix is **one line plus a sweep**, not a new colour decision:
 
 ### 5.4 R-04 — Owners for every manual gate
 
-> **STATUS (2026-10-11): DONE.** Every gate in the table below now has a named owner, a requested
-> date or explicit target-trigger, and an explicit completion criterion, recorded in the
-> **ownership register** in `docs/external-manual-gates-status.md` (added under R-04). The three
-> previously untracked gates are now issue-tracked and assigned:
+> **STATUS (live GitHub recheck, 2026-10-12): ADMINISTRATIVE TRACKING COMPLETE.** Every gate in the
+> table below has a named accountable owner and a dated tracking request or historical closure
+> record in the [ownership register](docs/external-manual-gates-status.md). All five open trackers
+> are assigned to **Richard Parslow (`richardparslow-commits`)** and carry explicit target/trigger,
+> completion criterion, and pending-dependency escalation records. No duplicate issue was needed
+> during this recheck. The three previously untracked gates were created on 2026-10-11:
 >
 > 1. **H-02 gate A — hosting log retention and access-control review:**
 >    [#537](https://github.com/richardparslow-commits/Secondary_Condition_Finder/issues/537), assigned;
@@ -547,15 +551,19 @@ Therefore the fix is **one line plus a sweep**, not a new colour decision:
 
 **Change.** Create or update tracking issues so each of the following has a named owner, a requested date, and an explicit completion criterion:
 
-| Gate | Current status | Needed |
-| --- | --- | --- |
-| #189 Production keys | Open | Request submitted to Lighthouse; owner; expected date |
-| #195 Independent 508 review | Open | Tester identified; build ID and deploy URL pinned |
-| #213 VA security review | Open | Package submitted; owner tracking |
-| #287 VA public-reference production transition | Open | VA grant received; authorized connectivity check scheduled |
-| Hosting log retention / access controls | **Untracked** (H-02) | New issue; operator review |
-| Callback-URL log scrubbing | **Untracked** (H-02) | New issue; operator review |
-| Privacy-policy legal sign-off (R-01) | **Untracked** | New issue; named approver |
+The original planning table misidentified #189/#213 and predated #537/#538/#539. The table below reflects live issue purposes, states, and ownership as of 2026-10-12; assignment and tracking dates are not evidence that the underlying gates passed.
+
+| Gate / tracker | Verified status | Accountable owner | Tracking requested date / historical closure | Remaining evidence / completion criterion |
+| --- | --- | --- | --- | --- |
+| [#189 — credentialed VA sandbox smoke test](https://github.com/richardparslow-commits/Secondary_Condition_Finder/issues/189) | COMPLETE / CLOSED | Richard Parslow (`richardparslow-commits`), historical evidence owner | Closed 2026-09-05 | Sanitized credentialed sandbox run 33997305230 recorded; preserve completed evidence |
+| [#195 — manual Section 508 review](https://github.com/richardparslow-commits/Secondary_Condition_Finder/issues/195) | OPEN / HUMAN-ONLY | Richard Parslow (`richardparslow-commits`), assigned commissioning/evidence owner | 2026-10-12 | Engage independent tester; complete exact-build workbook, material-finding remediation/retests, tester/reviewer sign-off, and audit/checklist updates; session date pending |
+| [#213 — production workflow-session secret](https://github.com/richardparslow-commits/Secondary_Condition_Finder/issues/213) | COMPLETE / CLOSED | Richard Parslow (`richardparslow-commits`), historical evidence owner | Closed 2026-08-13 | Runtime crypto-path and exact-deployment verification recorded; preserve completed evidence |
+| [#287 — VA public-reference production transition](https://github.com/richardparslow-commits/Secondary_Condition_Finder/issues/287) | OPEN / EXTERNALLY BLOCKED | Richard Parslow (`richardparslow-commits`), assigned VA request/operator owner | 2026-10-12 | Real VA grant, server-only credentials, authorized controlled check before activation, verified shared coordination, full CI/exact-build readiness and live reference checks; VA request/response timing pending |
+| [#537 — hosting log retention / access controls](https://github.com/richardparslow-commits/Secondary_Condition_Finder/issues/537) | OPEN / EXTERNALLY OPERATED (H-02) | Richard Parslow (`richardparslow-commits`), assigned hosting-review owner | 2026-10-12 | Dated review of every production sink's retention/policy date, read/export access and redaction terms; operator session before submission, date pending |
+| [#538 — callback-URL log scrubbing](https://github.com/richardparslow-commits/Secondary_Condition_Finder/issues/538) | OPEN / EXTERNALLY OPERATED (H-02) | Richard Parslow (`richardparslow-commits`), assigned scrubbing-review owner | 2026-10-12 | Actual callback-route/sink inventory, codes/state scrubbed or not retained in every sink, sanitized dated outcomes, remediation/retest; coordinate with #537 before submission, date pending |
+| [#539 — privacy-policy approval / monitored contact](https://github.com/richardparslow-commits/Secondary_Condition_Finder/issues/539) | OPEN / HUMAN-APPROVAL (R-01) | Richard Parslow (`richardparslow-commits`), assigned approval/contact-verification owner | 2026-10-12 | Approver name/date/affiliation and decision on deletion right/45-day commitment; verified monitored contact, named handler, send/receive test and procedure; sign-off/package updated before submission, approval date pending |
+
+Tracking requested dates record ownership/scheduling requests, not confirmed sessions, external VA applications, or approval dates. The independent tester, any separate legal approver, and the VA grant source must be identified from real engagement/evidence rather than invented.
 
 **Validation.** `docs/external-manual-gates-status.md` lists every gate with an owner and a date; `npm run test:doc-lint` still passes after the edit.
 
@@ -713,7 +721,9 @@ Doing so also converts part of the `ConditionTimelineVisualization` manual-evide
 
 ### 5.8 R-08 — Re-verify prior audit A01–A10
 
-**Change.** Walk each architectural finding in `docs/security-va-production-audit-2026-10-04.md` §3 against current `main` and record one of *closed / still open / no longer applicable*, with commit or file evidence. A10 is already confirmed resolved (no `src/lib/va/index.ts`). Prioritise A01 (reference-search text exposure), A02 (inbound rate-limit route coverage), and A05 (cache revocation on feature disable) — those three touch PHI-adjacent paths.
+> **STATUS (2026-10-12): REVIEW DONE; residual remediation remains.** [The per-item addendum](docs/r08-audit-verification-addendum-2026-10-12.md) independently walks all ten findings against pinned main `276c0d88`, prioritizing A01/A02/A05. A05 and A09 are CLOSED; A01/A02/A03/A04/A06/A08/A10 remain STILL OPEN with exact partial improvements and closure criteria. Verification includes 356 committed targeted tests, seven synthetic observation probes, typecheck, the current adjacency CLI, fresh dependency audits, and exact-SHA CI trace artifacts. The full tooling audit still fails; neither it nor the delayed-yield probe is called safe because structural tests pass. **A07 is CLOSED (2026-10-12):** the delayed-yield checkpoint gap, the unfenced commit inside `analyzeOneFile`, the storage write inside the React state updater, and the absent worker/PDF cancellation were each fixed and pinned by mounted lifecycle tests that suspend the real run at the real boundary, clear the stores, unmount, and resume it — each fence falsified by removal. M-04 is resolved as a review gap, not as closure of the remaining findings.
+
+**Change.** Walk each architectural finding in `docs/security-va-production-audit-2026-10-04.md` §3 against current `main` and record one of *closed / still open / no longer applicable*, with commit or file evidence. A10's legacy-adapter sub-finding is already resolved (no `src/lib/va/index.ts`); its separate development-dependency debt still requires verification and disposition. Prioritise A01 (reference-search text exposure), A02 (inbound rate-limit route coverage), and A05 (cache revocation on feature disable) — those three touch PHI-adjacent paths.
 
 **Validation.** A short dated addendum in `docs/` recording per-item disposition; `npm run test:doc-lint` passes.
 
@@ -732,14 +742,14 @@ What a Lighthouse reviewer can be handed today, and what is still missing.
 | PHI non-logging proof | `scripts/audit-phi-logging.mjs` output — 254 files, 0 violations | **Available** |
 | Automated accessibility results | `pr-508-compliance.yml:43-52` — 6 named files, 36 tests passing | **Available, contrast excluded** |
 | Dependency posture | `npm audit --omit=dev` — 3 moderate, 0 high/critical | **Available, and gated in CI (`ci.yml:176`)** |
-| Prior security audit | `docs/security-va-production-audit-2026-10-04.md` | **Available; A-items need re-verification (R-08)** |
-| Manual-gate register | `docs/external-manual-gates-status.md` (#189/#195/#213/#287) | **Available; 3 further gates untracked (R-04)** |
+| Prior security audit | `docs/security-va-production-audit-2026-10-04.md` and [R-08 addendum](docs/r08-audit-verification-addendum-2026-10-12.md) | **A01–A10 reverified on main `276c0d88`; A05/A09 closed; A07 closed 2026-10-12 after remediation; seven findings still open** |
+| Manual-gate register | [External/manual gates register](docs/external-manual-gates-status.md) (#189/#195/#213/#287/#537/#538/#539) | **Available; all seven tracked, all five open issues assigned to Richard Parslow; tracking dates/criteria verified 2026-10-12** |
 | Production-access package draft | `docs/phase3-production-access-package.md` | **Available; scope narrative wrong (R-06)** |
 | **Section 508 manual test results** | `docs/section508-manual-review-workbook.md` | **MISSING — all rows `NOT TESTED`, no tester/date/AT/sign-off** |
 | **Real-browser contrast evidence** | `e2e/a11y-contrast.mjs` + CI `a11y_contrast` step + `a11y-evidence/` artifacts | **IMPLEMENTED (R-05, 2026-10-11)** — 22 routes per run; seeded-violation failure proven |
 | **VA production approval / keys** | none | **MISSING — external (B-01)** |
 | **Data-deletion policy + contact route** | none | **MISSING (R-01)** |
-| **Hosting log retention / callback scrubbing review** | none | **MISSING (H-02, R-04)** |
+| **Hosting log retention / callback scrubbing review** | [#537](https://github.com/richardparslow-commits/Secondary_Condition_Finder/issues/537), [#538](https://github.com/richardparslow-commits/Secondary_Condition_Finder/issues/538), [ownership register](docs/external-manual-gates-status.md) | **Tracking/ownership available (R-04); actual operator review evidence still MISSING (H-02)** |
 
 ---
 
@@ -785,7 +795,7 @@ The disposition flips from NO-GO to GO only when **every** line below is true:
 - [ ] **H-01** — No text/background pair below 4.5:1 (3:1 large/UI) in `src/`, enforced by a committed test. *(R-02. **Committed and merged on `main`** — PR #520, merge commit `4112e719`. Verified at landing: 130 co-occurring pairs audited, 0 below threshold; `tests/design-token-contrast.test.ts` (8 tests) added and proven to gate via three deliberate mutations; 508 gate unchanged at 6 files / 36 tests; build/lint/typecheck/full suite/PHI/doc-lint all green. This box still ticks only against the final submission SHA, so it stays unchecked until §7 is re-run on that pinned commit.)*
 - [ ] **H-02** — Hosting log retention/access and callback-URL scrubbing both reviewed, recorded, and issue-tracked. *(R-04 + operator.)*
 - [ ] **M-05** — Scheduled dependency re-audit (CodeQL + dependency-review on a timer) added to CI. *(R-03. Note: dependency auditing itself is already enforced via `audit:high`; this line covers only the scheduled re-audit/SAST gap.)*
-- [ ] All seven gates in §5.4 have a named owner and a date. *(R-04.)*
+- [x] All seven gates in §5.4 have a named owner and a date. *(R-04 administrative tracking verified against GitHub 2026-10-12; all five open issues assigned, with tracking request dates, targets/triggers, and criteria. This does not complete B-01, B-03, H-02, or privacy approval.)*
 - [ ] §7 re-test suite green on a single pinned SHA, with every artifact referencing that same SHA.
 
 M-05 is the only Medium listed above as GO-blocking, and only because it is a CI change the team fully controls. The remaining Medium and Low items (M-01…M-04, L-01…L-05) do **not** block GO, but each needs either a fix or a written, dated acceptance of the risk. Silent deferral is what turns a Medium into a finding at review time.
