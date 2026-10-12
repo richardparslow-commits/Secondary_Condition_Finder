@@ -1,23 +1,63 @@
 "use client";
 
-import { useState } from "react";
+import { useActionState, useState } from "react";
 
 import { searchAccreditedRepresentatives } from "@/lib/actions/accredited-representatives";
-import type {
-  AccreditedRepresentativeView,
-} from "@/lib/va/accredited-representatives";
+import {
+  ACCREDITED_REP_VALIDATION_MESSAGES,
+  APPROVED_RADIUS_MILES,
+} from "@/lib/va/accredited-representative-constants";
+// Constants and the state type come from the plain shared module, not the
+// Server Action module: a Server Action module has no non-function exports in
+// the client graph and importing them from there answers 500 in the browser.
+import {
+  ACCREDITED_REP_REFUSAL_MESSAGE,
+  type AccreditedRepSearchState,
+} from "@/lib/va/accredited-rep-search";
 
 interface Props {
-  initialView?: AccreditedRepresentativeView | null;
+  /**
+   * The page this finder is rendered on. It is submitted with the search and
+   * used **only** to attribute the audit event — it is never concatenated into
+   * a URL, because the action returns its result as state instead of
+   * redirecting (audit A01).
+   */
   returnTo: string;
 }
 
-const RADIUS_OPTIONS = [25, 50, 100] as const;
+const RADIUS_OPTIONS = APPROVED_RADIUS_MILES;
 
-export function AccreditedRepresentativeFinder({ initialView, returnTo }: Props) {
-  const [zip, setZip] = useState(initialView?.params.zip ?? "");
-  const [radiusMiles, setRadiusMiles] = useState<number>(initialView?.params.radiusMiles ?? 50);
-  const [type, setType] = useState<string>(initialView?.params.type ?? "");
+/**
+ * Accredited-representative locator (audit A01).
+ *
+ * The lookup is submitted through a Server Action, so the ZIP travels in the
+ * request **body**. This surface never navigates and never rewrites browser
+ * history: there is no `?zip=` URL, no client-side navigation, and no redirect
+ * built from the lookup. That is the point of this component — a URL is copied,
+ * bookmarked, synced, and written to the hosting request line, and a ZIP is a
+ * quasi-identifier that the visitor does not owe the log a copy of.
+ * (`tests/va-accredited-rep-no-url-exposure.test.ts` pins the absence of every
+ * URL-building and navigation API here.)
+ */
+export function AccreditedRepresentativeFinder({ returnTo }: Props) {
+  const [state, formAction, pending] = useActionState<
+    AccreditedRepSearchState,
+    FormData
+  >(searchAccreditedRepresentatives, { view: null, error: null });
+
+  const [zip, setZip] = useState("");
+  const [radiusMiles, setRadiusMiles] = useState<number>(50);
+  const [type, setType] = useState<string>("");
+
+  const view = state.view;
+  // The alert shows a fixed constant: for a field validation it is the
+  // locator's own copy, and for any other refusal it is the PHI-free contract's
+  // generic message. Neither branch names or echoes a submitted value.
+  const errorMessage = state.error
+    ? state.error === "refused"
+      ? ACCREDITED_REP_REFUSAL_MESSAGE
+      : ACCREDITED_REP_VALIDATION_MESSAGES[state.error]
+    : null;
 
   return (
     <section className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm" aria-labelledby="accredited-rep-heading">
@@ -25,10 +65,10 @@ export function AccreditedRepresentativeFinder({ initialView, returnTo }: Props)
         Find an accredited representative near you
       </h2>
       <p className="mt-1 text-sm text-slate-600">
-        Public directory lookup by ZIP. Your workflow selections and evidence are not sent with this request. Results are public directory data, not Veteran PII.
+        Public directory lookup by ZIP. Your workflow selections and evidence are not sent with this request. The ZIP is submitted in the request body, so it is not written into the page URL or your browser history. Results are public directory data, not Veteran PII.
       </p>
 
-      <form action={searchAccreditedRepresentatives} className="mt-4 space-y-4">
+      <form action={formAction} className="mt-4 space-y-4">
         <input type="hidden" name="returnTo" value={returnTo} />
         <div className="grid gap-4 sm:grid-cols-3">
           <label className="block text-sm font-medium text-slate-700">
@@ -38,6 +78,7 @@ export function AccreditedRepresentativeFinder({ initialView, returnTo }: Props)
               inputMode="numeric"
               pattern="\d{5}"
               maxLength={5}
+              autoComplete="off"
               value={zip}
               onChange={(e) => setZip(e.target.value.replace(/\D/g, "").slice(0, 5))}
               placeholder="12345"
@@ -75,22 +116,35 @@ export function AccreditedRepresentativeFinder({ initialView, returnTo }: Props)
             </select>
           </label>
         </div>
-        <button type="submit" className="rounded-md bg-slate-900 px-4 py-2 text-sm font-medium text-white hover:bg-slate-700">
-          Search directory
+        <button
+          type="submit"
+          disabled={pending}
+          className="rounded-md bg-slate-900 px-4 py-2 text-sm font-medium text-white hover:bg-slate-700 disabled:opacity-60"
+        >
+          {pending ? "Searching…" : "Search directory"}
         </button>
       </form>
 
-      {initialView && (
+      {errorMessage && (
+        <p
+          role="alert"
+          className="mt-4 rounded-md border border-red-300 bg-red-50 p-4 text-sm text-red-900"
+        >
+          {errorMessage}
+        </p>
+      )}
+
+      {view && (
         <div className="mt-5">
           <p className="text-xs text-muted">
-            Source: {initialView.sourceLabel} · {initialView.live ? "live" : "local fallback"} · {initialView.cacheStatus === "hit" ? "cache hit" : initialView.cacheStatus}
-            {initialView.retrievedAt ? ` · ${initialView.retrievedAt}` : ""} · {initialView.environment ?? "n/a"}
+            Source: {view.sourceLabel} · {view.live ? "live" : "local fallback"} · {view.cacheStatus === "hit" ? "cache hit" : view.cacheStatus}
+            {view.retrievedAt ? ` · ${view.retrievedAt}` : ""} · {view.environment ?? "n/a"}
           </p>
-          <p className="mt-1 text-xs text-slate-600">{initialView.notice}</p>
+          <p className="mt-1 text-xs text-slate-600">{view.notice}</p>
 
-          {initialView.items.length === 0 ? (
+          {view.items.length === 0 ? (
             <p className="mt-4 rounded-md border border-slate-200 bg-slate-50 p-4 text-sm text-slate-700">
-              No accredited representatives found within {initialView.params.radiusMiles ?? 50} miles of {initialView.params.zip}. Try a larger radius or search{" "}
+              No accredited representatives found within {view.params.radiusMiles ?? 50} miles of {view.params.zip}. Try a larger radius or search{" "}
               <a href="https://www.va.gov/ogc/apps/accreditation/index.asp" target="_blank" rel="noreferrer" className="underline">
                 va.gov/ogc/apps/accreditation
               </a>
@@ -98,7 +152,7 @@ export function AccreditedRepresentativeFinder({ initialView, returnTo }: Props)
             </p>
           ) : (
             <ul className="mt-4 space-y-3">
-              {initialView.items.map((item) => (
+              {view.items.map((item) => (
                 <li key={item.id} className="rounded-lg border border-slate-200 p-4">
                   <p className="text-sm font-semibold text-slate-900">
                     {item.name}

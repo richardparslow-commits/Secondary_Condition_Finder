@@ -12,14 +12,13 @@ export const ACCREDITED_REP_VALIDATION_MESSAGES = {
   "invalid-type": `Type must be one of ${ACCREDITED_REP_TYPE_VALUES.join(", ")}.`,
 } as const;
 
+/**
+ * The locator's validation vocabulary, consumed by the Server Action (which
+ * picks the code) and by the rendered alert (which shows the copy).
+ *
+ * The predecessor of this list was read back out of an `?error=` query
+ * parameter; audit A01 took the lookup out of the URL, so the code now travels
+ * as action state and the URL-parameter reader was deleted rather than left as
+ * a second, unused transport.
+ */
 export type AccreditedRepValidationCode = keyof typeof ACCREDITED_REP_VALIDATION_MESSAGES;
-
-export function accreditedRepValidationMessage(
-  value: string | string[] | undefined,
-): string | null {
-  const code = Array.isArray(value) ? value[0] : value;
-  if (!code || !Object.prototype.hasOwnProperty.call(ACCREDITED_REP_VALIDATION_MESSAGES, code)) {
-    return null;
-  }
-  return ACCREDITED_REP_VALIDATION_MESSAGES[code as AccreditedRepValidationCode];
-}

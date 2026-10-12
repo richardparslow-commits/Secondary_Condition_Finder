@@ -510,20 +510,10 @@ async function runJourney() {
   checkpoint("verify Find Help accredited-representative locator on Step 5");
   await setInputValue("//input[@name='zip']", LOCATOR_ZIP);
   await clickXpath("//button[contains(normalize-space(.), 'Search directory')]");
-  // The fee note is static in the form, so it cannot signal navigation; wait
-  // for the server-action redirect to carry the validated zip first.
-  let locatorUrl = "";
-  const redirectDeadline = Date.now() + 20_000;
-  while (Date.now() < redirectDeadline) {
-    locatorUrl = await webdriver("GET", `/session/${sessionId}/url`);
-    if (locatorUrl.includes("zip=22101")) break;
-    await delay(500);
-  }
-  if (!locatorUrl.includes("zip=22101")) {
-    throw new Error(`Locator search did not redirect with the validated zip param: ${locatorUrl}`);
-  }
-  // Results render server-side with the directory (or fallback) view; poll
-  // for the provenance line, which only exists in the results state.
+  // Audit A01: the lookup is a Server Action that returns the directory view as
+  // state, so the results appear in place — there is no navigation and the ZIP
+  // never reaches the URL. Poll for the provenance line, which only exists in
+  // the results state.
   let locatorText = "";
   const resultsDeadline = Date.now() + 20_000;
   while (Date.now() < resultsDeadline) {
@@ -534,6 +524,13 @@ async function runJourney() {
   if (!locatorText.includes("Source:")) {
     throw new Error("Locator results are missing the provenance/source line.");
   }
+  const locatorUrl = await webdriver("GET", `/session/${sessionId}/url`);
+  if (!locatorUrl.includes("/secondary/suggestions")) {
+    throw new Error(`Locator search navigated away from Step 5: ${locatorUrl}`);
+  }
+  if (locatorUrl.includes("zip=")) {
+    throw new Error(`Locator search put the lookup ZIP in the URL: ${locatorUrl}`);
+  }
   if (!locatorText.includes("Find an accredited representative near you")) {
     throw new Error("Locator card is missing its heading after the directory search.");
   }
@@ -543,7 +540,7 @@ async function runJourney() {
   if (!locatorText.includes("va.gov/ogc/apps/accreditation")) {
     throw new Error("Locator is missing the OGC directory reference (fallback guidance or notice).");
   }
-  checkpoint("locator search redirected with zip; fee note + provenance + OGC guidance rendered");
+  checkpoint("locator search returned results in place with no zip in the URL; fee note + provenance + OGC guidance rendered");
 
   // Idea #6 compliant surface: the fixture selects the sleep-apnea symptom at
   // Step 4, so the vetted provider-discussion prompt must render on Step 5.

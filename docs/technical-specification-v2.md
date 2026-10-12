@@ -84,8 +84,11 @@ workflow state changes remain client-side.
 
 The only current workflow-area Server Action is
 `src/lib/actions/accredited-representatives.ts`:
-`searchAccreditedRepresentatives` validates bounded public-directory lookup inputs and returns
-public search results. Secondary and presumptive workflow mutations, including synthetic scenario
+`searchAccreditedRepresentatives` validates bounded public-directory lookup inputs (PHI-free
+action-input contract) and returns the public directory view as **action state** — it does not
+redirect, so the lookup ZIP stays out of the page URL and browser history (audit A01). (The Forms
+Finder action, `searchVaFormsFinder`, follows the same state-not-redirect contract.) Secondary and
+presumptive workflow mutations, including synthetic scenario
 launch, validate and update browser-local records; retired private-context actions are deleted.
 The remaining API routes are health/status, protected regulatory preflight, administrative cache
 clear, and CSP reporting; they do not receive veteran workflow context.
@@ -276,7 +279,8 @@ reviewed PR + full CI gate; good-faith safe-harbor for researchers.
 ## API Design
 
 - **A1 — Server Action** (`FormData`-based, type-safe, framework CSRF protections):
-  `searchAccreditedRepresentatives` accepts only bounded public-directory lookup parameters.
+  `searchAccreditedRepresentatives` accepts only bounded public-directory lookup parameters and
+  returns the directory view as action state, so the lookup ZIP is never a query value.
 - **A2 — API routes:** `GET /api/health`, bearer-protected `GET /api/regulatory/preflight`,
   protected administrative cache-clear `POST`, and CSP-report `POST`; none accepts private
   workflow context.

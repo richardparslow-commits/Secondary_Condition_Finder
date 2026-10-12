@@ -20,7 +20,6 @@ import type {
   TimelineConnectionInput,
 } from "@/components/secondary/ConditionTimelineVisualization";
 import { AccreditedRepresentativeFinder } from "@/components/va/AccreditedRepresentativeFinder";
-import type { AccreditedRepresentativeView } from "@/lib/va/accredited-representatives";
 import type { VaApiEnvironment } from "@/lib/va/sandbox";
 import { AriaLiveRegion, describeMappedConnections, useAriaLive } from "@/lib/a11y/use-aria-live";
 import { indexById } from "@/lib/catalog/lookup";
@@ -48,7 +47,6 @@ export interface SuggestionsVaReferenceView {
 export interface SuggestionsStepProps {
   snapshot: RegulatoryPreflightSnapshot;
   vaReference: SuggestionsVaReferenceView;
-  accreditedRepView: AccreditedRepresentativeView | null;
 }
 
 /**
@@ -58,7 +56,7 @@ export interface SuggestionsStepProps {
  * timeline) never leaves the tab. The regulatory snapshot and VA reference
  * arrive as uniform public props computed by the server shell.
  */
-export function SuggestionsStep({ snapshot, vaReference, accreditedRepView }: SuggestionsStepProps) {
+export function SuggestionsStep({ snapshot, vaReference }: SuggestionsStepProps) {
   const { corpus, loading, error: corpusError } = useClientCorpus();
   const { context, ready } = useBrowserWorkflowContext();
 
@@ -316,7 +314,7 @@ export function SuggestionsStep({ snapshot, vaReference, accreditedRepView }: Su
       <RatingGuide results={nonServiceConnectedResults} catalog={catalog} />
       <ActionPlan results={nonServiceConnectedResults} />
       <PathwayRecordChecklist results={nonServiceConnectedResults} summaryRecommendations={checklistSummaryRecommendations} />
-      <AccreditedRepresentativeFinder initialView={accreditedRepView} returnTo="/secondary/suggestions" />
+      <AccreditedRepresentativeFinder returnTo="/secondary/suggestions" />
 
       <div className="ui-actions"><Link href="/secondary/upload" className="ui-button-secondary">← Back to Documents</Link><Link href={evidenceHref} className="ui-button">Review Evidence for These Connections <span aria-hidden="true">→</span><span className="hidden" aria-hidden="true">Open Evidence Checklist</span></Link></div>
       <DisclaimerFooter />

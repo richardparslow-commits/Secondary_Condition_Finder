@@ -29,8 +29,11 @@ import type {
  *
  * Everything the server supplies is public and identical for every visitor:
  * the authored exposure catalog, a published-mapping index for the
- * presumptive × secondary research cue, the public service-branch reference,
- * and the accredited-representative directory view for a ZIP the visitor typed.
+ * presumptive × secondary research cue, and the public service-branch
+ * reference. The accredited-representative directory view is not among them:
+ * audit A01 moved that lookup into a Server Action whose ZIP travels in the
+ * request body, so this page neither reads a query parameter nor receives a
+ * per-visitor directory view.
  */
 
 /** Public service-branch reference, passed through from the server loader. */
@@ -43,7 +46,6 @@ export interface PresumptiveResultsProps {
   categories: ExposureCatalog;
   crossLinkIndex: PresumptiveCrossLinkIndex;
   branchReference: PresumptiveBranchReference | null;
-  accreditedRepView: React.ComponentProps<typeof AccreditedRepresentativeFinder>["initialView"];
 }
 
 function formatDate(iso: string): string {
@@ -126,7 +128,6 @@ function PresumptiveResultsBody({
   categories,
   crossLinkIndex,
   branchReference,
-  accreditedRepView,
 }: PresumptiveResultsProps & { history: ServiceHistory }) {
   const router = useRouter();
   const result = useMemo(
@@ -379,7 +380,7 @@ function PresumptiveResultsBody({
       )}
 
       <div className="mt-8">
-        <AccreditedRepresentativeFinder initialView={accreditedRepView} returnTo="/presumptive/results" />
+        <AccreditedRepresentativeFinder returnTo="/presumptive/results" />
       </div>
 
       <DisclaimerFooter />

@@ -23,7 +23,6 @@ import {
   SecondaryWorkflowRestartButton,
 } from "@/components/secondary/SecondaryWorkflowCompletionActions";
 import { AccreditedRepresentativeFinder } from "@/components/va/AccreditedRepresentativeFinder";
-import type { AccreditedRepresentativeView } from "@/lib/va/accredited-representatives";
 import { indexById } from "@/lib/catalog/lookup";
 import { buildEvidenceConditionTerms } from "@/lib/evidence/condition-terms";
 import { recommend } from "@/lib/engine/recommend";
@@ -41,7 +40,6 @@ import { useBrowserWorkflowContext } from "@/lib/secondary-workflow/use-browser-
 
 export interface EvidenceStepProps {
   snapshot: RegulatoryPreflightSnapshot;
-  accreditedRepView: AccreditedRepresentativeView | null;
 }
 
 /**
@@ -50,7 +48,7 @@ export interface EvidenceStepProps {
  * evidence excerpts were already browser-local. The completion controls clear
  * all browser-local state before leaving.
  */
-export function EvidenceStep({ snapshot, accreditedRepView }: EvidenceStepProps) {
+export function EvidenceStep({ snapshot }: EvidenceStepProps) {
   const { corpus, loading, error: corpusError } = useClientCorpus();
   const { context, ready } = useBrowserWorkflowContext();
 
@@ -219,7 +217,7 @@ export function EvidenceStep({ snapshot, accreditedRepView }: EvidenceStepProps)
       <PathwayRecordChecklist results={nonServiceConnectedResults} summaryRecommendations={consultationRecommendations} />
       <RatingGuide results={nonServiceConnectedResults} catalog={catalog} />
       <ActionPlan results={nonServiceConnectedResults} />
-      <AccreditedRepresentativeFinder initialView={accreditedRepView} returnTo="/secondary/evidence" />
+      <AccreditedRepresentativeFinder returnTo="/secondary/evidence" />
       <EvidenceGapReview recommendations={evidenceGapRecommendations} />
       <LocalEvidenceReview />
       <PathwayEvidenceMapper results={nonServiceConnectedResults} recommendations={consultationRecommendations} />
