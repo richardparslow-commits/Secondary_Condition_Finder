@@ -209,8 +209,16 @@ After every production deployment:
 
 ## Known external verification boundaries
 
-Repository CI, Vercel deployment status, browser E2E, and Production Runtime Readiness do **not** prove:
+Repository CI, Vercel deployment status, browser E2E, and Production Runtime Readiness do **not** prove completion of external/manual gates. The [R-04 ownership register](external-manual-gates-status.md) is the canonical record for dates, targets/triggers, completion criteria, and pending dependencies. Every gate below has a named accountable owner; the five open trackers are assigned to Richard Parslow in GitHub.
 
-- credentialed VA sandbox access — tracked by issue #189;
-- Section 508 conformance — tracked by issue #195;
-- VA production API access — tracked by issue #287 until granted and objectively verified.
+| External/manual gate | Tracking issue | Status | Named accountable owner | Owner responsibility |
+| --- | --- | --- | --- | --- |
+| Credentialed VA sandbox smoke test | [issue #189](https://github.com/richardparslow-commits/Secondary_Condition_Finder/issues/189) | COMPLETE / CLOSED | Richard Parslow (`richardparslow-commits`) | Preserve historical credentialed success evidence; no new assignment |
+| Manual Section 508 accessibility review | [issue #195](https://github.com/richardparslow-commits/Secondary_Condition_Finder/issues/195) | OPEN / HUMAN-ONLY | Richard Parslow (`richardparslow-commits`) | Commission independent tester, schedule exact-build session, coordinate evidence/retests/sign-off |
+| Production workflow-session secret | [issue #213](https://github.com/richardparslow-commits/Secondary_Condition_Finder/issues/213) | COMPLETE / CLOSED | Richard Parslow (`richardparslow-commits`) | Preserve historical runtime-verification evidence; require fresh lineage after later deployments |
+| VA public-reference production transition | [issue #287](https://github.com/richardparslow-commits/Secondary_Condition_Finder/issues/287) | OPEN / EXTERNALLY BLOCKED | Richard Parslow (`richardparslow-commits`) | Coordinate VA request/grant evidence, protected credentials, controlled check and deliberate verified activation |
+| Hosting log retention and access-control review | [issue #537](https://github.com/richardparslow-commits/Secondary_Condition_Finder/issues/537) | OPEN / EXTERNALLY OPERATED | Richard Parslow (`richardparslow-commits`) | Inventory every production log sink; record retention, read/export access and redaction review |
+| OAuth callback-URL log scrubbing review | [issue #538](https://github.com/richardparslow-commits/Secondary_Condition_Finder/issues/538) | OPEN / EXTERNALLY OPERATED | Richard Parslow (`richardparslow-commits`) | Inventory actual callbacks/sinks; verify codes/state scrubbed or not retained; remediate and retest |
+| Privacy-policy approval and monitored contact | [issue #539](https://github.com/richardparslow-commits/Secondary_Condition_Finder/issues/539) | OPEN / HUMAN-APPROVAL | Richard Parslow (`richardparslow-commits`) | Coordinate named approver decision and verified contact/handler/fulfillment procedure |
+
+Ownership was verified against GitHub on **2026-10-12**. Accountability is not a human test result, VA grant, legal approval, or completed operator review. The independent tester, any separate legal approver, and the VA reviewer must be identified from actual engagement; do not invent them. If a gate's accountable owner changes or becomes unavailable, record the named successor in its issue and the register, update this table, and escalate any gap rather than leaving a role-only or unassigned owner. Never close a gate merely because ownership is recorded.

@@ -69,7 +69,7 @@ Do not copy real medical-record text, credentials, cookies, or other sensitive p
 
 Credentials remain provider-managed server-side values. When exposure is suspected, the responsible operator should follow the issuing provider's revocation/rotation process and then require a fresh reviewed deployment and readiness verification before treating the affected integration as recovered.
 
-Sandbox and production VA credentials, when they eventually exist, must remain separated. The current credentialed VA sandbox gate is intentionally deferred and must not be represented as complete.
+Sandbox and production VA credentials must remain separated. The credentialed public-reference sandbox gate #189 is complete with historical sanitized success evidence; that record does not establish VA production access or current deployment connectivity. Richard Parslow (`richardparslow-commits`) is the accountable evidence owner; see the [external/manual gates register](external-manual-gates-status.md).
 
 ## Sensitive-data incident boundary
 
@@ -123,9 +123,18 @@ This section is the operational contract for `kbGraph` degradation; keep it curr
 
 ## External gates
 
-This document does not complete either external readiness gate:
+The [R-04 ownership register](external-manual-gates-status.md) records every external/manual gate's dates, targets/triggers, completion criteria, and pending dependencies. The [production runbook owner table](deployment-readiness.md) mirrors all seven named owners.
 
-- issue #189 remains the deferred credentialed VA sandbox verification gate;
-- issue #195 remains the manual Section 508 evidence gate.
+**Named accountable owner for every gate: Richard Parslow (`richardparslow-commits`).** Responsibilities remain gate-specific:
 
-Green CI, Vercel deployment, or this runbook must not be used as a substitute for those separate evidence requirements.
+- **#189 — credentialed VA sandbox smoke test:** CLOSED; Richard Parslow preserves historical sanitized success evidence. No new work assignment or current production-connectivity claim.
+- **#195 — manual Section 508 review:** OPEN; Richard Parslow commissions the independent tester and coordinates exact-build evidence, remediation/retests, and sign-off.
+- **#213 — production workflow-session secret:** CLOSED; Richard Parslow preserves historical runtime-verification evidence. Later deployments still require fresh exact-build lineage.
+- **#287 — VA public-reference production transition:** OPEN; Richard Parslow coordinates the VA request/grant, protected credentials, controlled verification, and deliberate activation.
+- **#537 — hosting log retention/access:** OPEN; Richard Parslow reviews every production log sink's retention, access/export controls, and redaction terms.
+- **#538 — callback-URL scrubbing:** OPEN; Richard Parslow inventories actual callbacks and sinks, verifies codes/state handling, and coordinates remediation/retests.
+- **#539 — privacy approval/monitored contact:** OPEN; Richard Parslow coordinates the named approver decision and verified monitored contact, handler, and fulfillment procedure.
+
+All five open issues are assigned to Richard Parslow; ownership was verified on **2026-10-12**. If ownership changes or the owner is unavailable, record a named successor in the issue/register and production runbook, escalating any unowned dependency. An independent tester, any separate legal approver, and the VA grant reviewer are evidence providers, not fabricated substitutes for the accountable owner.
+
+Green CI, Vercel deployment, ownership assignment, or this runbook must not be used as a substitute for those separate evidence requirements. This ownership update closes no human/operator gate.

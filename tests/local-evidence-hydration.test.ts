@@ -33,8 +33,12 @@ describe("local evidence hydration contract", () => {
     // so a corrupted store surfaces a warning instead of resetting silently;
     // the async-restore (setTimeout) shape that keeps SSR/first render equal
     // is unchanged.
+    // `applyAnalyses` (not a bare `setAnalyses`) is required here: it commits
+    // the snapshot and keeps the ref the persistence path reads in step, so
+    // the restored state and the next commit cannot disagree. See
+    // tests/local-evidence-extraction-fence.test.tsx for the A07 contract.
     expect(analyzer).toContain(
-      "const restoreTimer = window.setTimeout(() => {\n      const { analyses, parseError } = loadStoredEvidenceWithWarning(\n        getSessionStorage(),\n      );\n      setAnalyses(analyses);",
+      "const restoreTimer = window.setTimeout(() => {\n      const { analyses, parseError } = loadStoredEvidenceWithWarning(\n        getSessionStorage(),\n      );\n      applyAnalyses(analyses);",
     );
     expect(analyzer).toContain(
       "return () => window.clearTimeout(restoreTimer);",
@@ -43,7 +47,7 @@ describe("local evidence hydration contract", () => {
     const initialState = analyzer.indexOf(
       'const [analyses, setAnalyses] = useState<EvidenceAnalysis[]>([]);',
     );
-    const restoreEffect = analyzer.indexOf("setAnalyses(analyses);");
+    const restoreEffect = analyzer.indexOf("applyAnalyses(analyses);");
     expect(initialState).toBeGreaterThanOrEqual(0);
     expect(restoreEffect).toBeGreaterThan(initialState);
   });

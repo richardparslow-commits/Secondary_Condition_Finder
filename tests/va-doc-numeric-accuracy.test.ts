@@ -1,4 +1,4 @@
-import { readFileSync } from "node:fs";
+import { readFileSync, readdirSync, statSync } from "node:fs";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 
@@ -21,6 +21,15 @@ import { describe, expect, it } from "vitest";
  * actually quote, keyed to the spellings documented at authoring time. It is
  * not an inventory requirement — a constant a document never names imposes no
  * obligation here (the per-doc "if mentioned" rule inside each check).
+ *
+ * It also carries a **configuration-name contract** for the same documents:
+ * a `VA_*` name that a document presents as configuration is not necessarily
+ * a source constant — most of them are environment variables, and a renamed or
+ * retired variable is exactly as invisible in prose as a stale number. Every
+ * such name must therefore be read from the environment somewhere under
+ * `src/` (or belong to a declared `envPrefix` family) and be listed in
+ * `.env.example`, so an operator copying a name out of a document cannot land
+ * on configuration the code never reads or the example never mentions.
  */
 
 const REPO_ROOT = process.cwd();
@@ -253,6 +262,13 @@ describe("VA documented numeric constants match source", () => {
 
     for (const { doc, name, docValue } of mentions) {
       const sourceValue = sourceConstants.get(name);
+      // An environment variable can legitimately be written in assignment form
+      // to show its configurable default (`VA_API_TIMEOUT_MS=4000`). It then
+      // owns no source constant, so the obligation moves to the
+      // configuration-name contract below — which requires the name to be
+      // read by source and listed in `.env.example`. A name that is neither a
+      // constant nor live configuration still fails here.
+      if (sourceValue === undefined && readBySource(name) && envExampleNames.has(name)) continue;
       expect(
         sourceValue,
         `${doc} mentions \`${name}\`; it must exist as an exported numeric constant (docs are not allowed to pin numbers the source does not define)`,
@@ -398,3 +414,167 @@ function checkBacktickedNumber(
     ).toBe(0);
   }
 }
+
+/* ─── Configuration-name contract ───────────────────────────────────────────
+
+Every VA_* name the operational documentation presents as configuration must
+resolve to real configuration: read from the environment under `src/`, and
+listed in `.env.example`. A doc-only name is a rename that was never finished;
+an `.env.example`-only name is a variable nothing reads.
+ */
+
+/**
+ * The documents an operator copies VA_* names out of: the three living ops
+ * documents above plus the runtime-configuration, deployment, account,
+ * rotation, activation and production-access surfaces. Historical packets with
+ * no configuration content are deliberately absent.
+ */
+const ENV_DOCS = [
+  ...TARGET_DOCS,
+  "docs/va-api-runtime-configuration.md",
+  "docs/deployment-readiness.md",
+  "docs/va-account-sandbox.md",
+  "docs/credential-rotation-sop.md",
+  "docs/va-production-activation-commands.md",
+  "docs/phase3-production-access-package.md",
+  "docs/data-retention-policy.md",
+] as const;
+
+/** Every TypeScript module under `src/`, the only place a VA_* name can be real. */
+function sourceModules(dir: string): string[] {
+  const found: string[] = [];
+  for (const entry of readdirSync(dir)) {
+    const full = join(dir, entry);
+    if (statSync(full).isDirectory()) found.push(...sourceModules(full));
+    else if (/\.[cm]?tsx?$/.test(entry)) found.push(full);
+  }
+  return found;
+}
+
+const sourceText = sourceModules(join(REPO_ROOT, "src"))
+  .map((file) => readFileSync(file, "utf8"))
+  .join("\n");
+
+/**
+ * `VA_*` names in a document, ignoring wildcard family references
+ * (`VA_FORMS_*`, `VA_FORMS_{SANDBOX,PRODUCTION}_BASE_URL`): those name a family
+ * of variables, not one variable that has to exist under that exact name.
+ */
+function vaNamesIn(text: string): Set<string> {
+  const names = new Set<string>();
+  for (const match of text.matchAll(/\bVA_[A-Z0-9_]+/g)) {
+    const next = text[match.index + match[0].length] ?? "";
+    if (next === "*" || next === "{") continue;
+    names.add(match[0]);
+  }
+  return names;
+}
+
+/** Names declared `export const NAME` under `src/` — governed by the numeric contract above. */
+const exportedNames = new Set(
+  [...sourceText.matchAll(/export\s+const\s+([A-Z][A-Z0-9_]*)/g)].map((match) => match[1]),
+);
+
+/**
+ * Service-scoped credentials are composed from a declared prefix
+ * (`envPrefix: "VA_ACCOUNT_RATINGS"` plus `${prefix}_CLIENT_ID`), so the full
+ * name never appears in source. The declared prefix is the code's own proof
+ * that the family is read.
+ */
+const envPrefixes = [...sourceText.matchAll(/envPrefix:\s*"([A-Z][A-Z0-9_]*)"/g)].map(
+  (match) => match[1],
+);
+
+/** Whether `src/` reads this name from the environment (directly, by literal, or by prefix family). */
+function readBySource(name: string): boolean {
+  if (envPrefixes.some((prefix) => name.startsWith(`${prefix}_`))) return true;
+  return new RegExp(
+    `(?:\\benv\\.${name}\\b|process\\.env\\.${name}\\b|process\\.env\\[\\s*["']${name}["']\\s*\\]|["']${name}["'])`,
+  ).test(sourceText);
+}
+
+const envExampleNames = vaNamesIn(read(".env.example"));
+
+/**
+ * Names the documentation presents as retired or back-compatibility aliases.
+ * They must still be read by source (asserted below) but are deliberately
+ * absent from `.env.example`, which lists only variables an operator should
+ * set: advertising a legacy alias invites configuring it.
+ */
+const LEGACY_ALIASES: ReadonlyMap<string, string> = new Map([
+  ["VA_SANDBOX_ENABLED", "Phase 2 sandbox-only enable flag, superseded by VA_API_ENABLED"],
+  ["VA_SANDBOX_TIMEOUT_MS", "sandbox-era timeout fallback, superseded by VA_API_TIMEOUT_MS"],
+]);
+
+const envDocSources: Record<string, string> = Object.fromEntries(
+  ENV_DOCS.map((doc) => [doc, read(doc)]),
+);
+
+/** Documented configuration names, with the documents that mention each. */
+const documentedEnvNames: Map<string, string[]> = (() => {
+  const mentions = new Map<string, string[]>();
+  for (const doc of ENV_DOCS) {
+    for (const name of vaNamesIn(envDocSources[doc])) {
+      // A source constant the same doc also names is the numeric contract's job.
+      if (exportedNames.has(name)) continue;
+      mentions.set(name, [...(mentions.get(name) ?? []), doc]);
+    }
+  }
+  return mentions;
+})();
+
+describe("VA documented configuration names match real configuration", () => {
+  it("every VA_* configuration name in the docs is read by source and listed in .env.example", () => {
+    // Guard against a vacuous pass if the document list or the tokenizer breaks.
+    expect(
+      documentedEnvNames.size,
+      "the operational documents must still mention VA_* configuration names",
+    ).toBeGreaterThanOrEqual(20);
+
+    for (const [name, docs] of documentedEnvNames) {
+      const where = docs.join(", ");
+      expect(
+        readBySource(name),
+        `${where}: \`${name}\` is presented as configuration but nothing under src/ reads it — a renamed or removed variable the docs never caught up with`,
+      ).toBe(true);
+      if (LEGACY_ALIASES.has(name)) continue;
+      expect(
+        envExampleNames.has(name),
+        `${where}: \`${name}\` is documented configuration but missing from .env.example — add it there, or record it in LEGACY_ALIASES with a reason`,
+      ).toBe(true);
+    }
+  });
+
+  it("every VA_* name in .env.example is read by source (no retired variable lingers)", () => {
+    expect(
+      envExampleNames.size,
+      ".env.example must still declare VA_* variables for this check to mean anything",
+    ).toBeGreaterThanOrEqual(20);
+
+    for (const name of envExampleNames) {
+      expect(
+        readBySource(name),
+        `.env.example lists \`${name}\` but nothing under src/ reads it — remove the variable or restore the read`,
+      ).toBe(true);
+    }
+  });
+
+  it("every LEGACY_ALIASES exemption is still live", () => {
+    // An exemption that outlives the alias it excuses hides the next drift: it
+    // would silently permit a name no doc mentions and no code reads.
+    for (const [name, reason] of LEGACY_ALIASES) {
+      expect(
+        documentedEnvNames.has(name),
+        `\`${name}\` is exempted as "${reason}" but no operational document mentions it — drop the exemption`,
+      ).toBe(true);
+      expect(
+        readBySource(name),
+        `\`${name}\` is exempted as "${reason}" but nothing under src/ reads it — drop the exemption`,
+      ).toBe(true);
+      expect(
+        envExampleNames.has(name),
+        `\`${name}\` now appears in .env.example, so it needs no exemption — drop it from LEGACY_ALIASES`,
+      ).toBe(false);
+    }
+  });
+});

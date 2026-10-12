@@ -61,18 +61,26 @@ describe("local extraction cancellation fence (audit A07)", () => {
       expect(count(body, STALE_RETURN)).toBeGreaterThanOrEqual(1);
       expect(count(body, GUARDED_RESET)).toBe(1);
     }
-    expect(count(analyzer, STALE_RETURN)).toBe(6);
+    expect(count(analyzer, STALE_RETURN)).toBe(8);
     expect(count(analyzer, GUARDED_RESET)).toBe(3);
   });
 
-  it("checks staleness at every OCR page boundary and before the checkpoint write", () => {
+  it("fences the checkpoint write after the yield, not only before it", () => {
     const ocr = bodyOf("async function runLocalOcr(", "function analyzePastedText(");
-    expect(count(ocr, STALE_RETURN)).toBe(3);
+    expect(count(ocr, STALE_RETURN)).toBe(4);
 
+    // The load-bearing ordering (audit A07): a fence *before* the yield cannot
+    // see an unmount or a Finish/Restart cleanup that happens while the run is
+    // suspended there, so the checkpoint write needs its own fence after the
+    // boundary. Behaviourally covered by
+    // tests/local-evidence-extraction-fence.test.tsx.
+    const yieldIndex = ocr.indexOf("await yieldToBrowser();");
     const saveIndex = ocr.indexOf("saveOcrCheckpoint(storage, {");
-    expect(saveIndex).toBeGreaterThan(-1);
-    const fenceIndex = ocr.lastIndexOf("isCurrentGeneration()", saveIndex);
-    expect(fenceIndex).toBeGreaterThan(saveIndex - 400);
+    expect(yieldIndex).toBeGreaterThan(-1);
+    expect(saveIndex).toBeGreaterThan(yieldIndex);
+    const fenceAfterYield = ocr.indexOf(STALE_RETURN, yieldIndex);
+    expect(fenceAfterYield).toBeGreaterThan(yieldIndex);
+    expect(fenceAfterYield).toBeLessThan(saveIndex);
   });
 
   it("never commits analysis or touches the checkpoint for a detached OCR run", () => {
