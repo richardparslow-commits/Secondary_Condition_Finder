@@ -31,6 +31,7 @@ describe("workflow privacy", () => {
     const form = read("src/components/ServiceHistoryForm.tsx");
     const results = read("src/app/presumptive/results/page.tsx");
 
+
     // The form confirms service history into the browser-local record: it
     // declares no form action, makes no request, and reports failures inline.
     expect(form).toContain("persistServiceHistory(");
@@ -39,17 +40,15 @@ describe("workflow privacy", () => {
     expect(form).not.toContain("sendBeacon");
     expect(form).not.toMatch(/method=["']get["']/i);
     expect(form).not.toContain('action="/presumptive/results"');
-    // Service history (locations/dates/branch) must not be read from query strings;
-    // a narrow ZIP lookup for the accredited-representative public directory is allowed.
+    // Service history (locations/dates/branch) must not be read from query strings.
+    // The one public-directory lookup that used to surface here as a ZIP query
+    // parameter (audit A01) is a Server Action now: its ZIP travels in the request
+    // body, so this page reads no query string at all.
     expect(results).not.toContain("params.location");
     expect(results).not.toContain("params.serviceStart");
     expect(results).not.toContain("params.serviceEnd");
-    if (results.includes("searchParams")) {
-      expect(results).toContain("zip");
-      // The ZIP lookup must not also propagate service-history fields via the query string.
-      expect(results).not.toMatch(/qpZip\?\.(location|serviceStart|serviceEnd)/);
-      expect(results).not.toMatch(/searchParams[^]*\bparams\.location\b/);
-    }
+    expect(results).not.toContain("searchParams");
+    expect(results).not.toContain("URLSearchParams");
   });
 
   it("keeps secondary workflow state in the browser-local record, not cookies", () => {

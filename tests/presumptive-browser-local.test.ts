@@ -292,7 +292,12 @@ describe("presumptive flow has no server transport left", () => {
     expect(shell).not.toMatch(/next\/headers/);
     expect(shell).not.toMatch(/cookies\s*\(/);
     expect(shell).not.toMatch(/readPresumptive/);
-    // The only query value it honours is the public accredited-rep directory lookup.
-    expect(shell).toContain("zip");
+    // Audit A01: the results shell used to honour one query value — the public
+    // accredited-rep directory ZIP — and now honours none. The locator's lookup
+    // is a Server Action that returns the directory view as state, so the page
+    // reads no query string at all and a stale `?zip=` bookmark is inert rather
+    // than a second transport.
+    expect(shell).not.toContain("searchParams");
+    expect(shell).not.toMatch(/\bqueryParams\b|URLSearchParams/);
   });
 });

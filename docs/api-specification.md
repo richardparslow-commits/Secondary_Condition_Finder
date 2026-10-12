@@ -248,9 +248,10 @@ on `/presumptive` — there is no `?error=` transport any more):
 - `storage-unavailable`: the browser refused the write; the caller must not continue.
 
 **The flow's one server call**: the accredited-representative finder on
-`/presumptive/results` posts `zip` / `radiusMiles` / `type` to the public VA
-directory (see [Accredited representatives](#accredited-representative-finder)). It
-carries no service history.
+`/presumptive/results` posts `zip` / `radiusMiles` / `type` **in the request body** to
+the public VA directory (see
+[Accredited representatives](#accredited-representative-finder)). It carries no
+service history, and it is not a navigation — the ZIP never becomes a query value.
 
 ---
 
@@ -282,9 +283,11 @@ An unknown id or invalid state surfaces an inline error; nothing is sent to the 
 
 ### Accredited Representative Action (`src/lib/actions/accredited-representatives.ts`)
 
-#### `searchAccreditedRepresentatives(formData)`
+#### `searchAccreditedRepresentatives(previousState, formData)`
 
-Validates public-directory lookup fields and redirects to the selected allowed return page with query parameters for the accredited-representative locator.
+Validates public-directory lookup fields and returns the directory view as **action state**. It
+does not redirect, so a searched ZIP never enters the page URL, browser history, a copied link, or
+the hosting request line (audit A01).
 
 **Form fields**:
 | Field | Type | Required | Description |
@@ -292,13 +295,24 @@ Validates public-directory lookup fields and redirects to the selected allowed r
 | `zip` | `string` | Yes | 5-digit US ZIP code. |
 | `radiusMiles` | `string` | No | Search radius: `"25"`, `"50"`, or `"100"`. |
 | `type` | `string` | No | Representative type: `"VSO"`, `"agent"`, or `"attorney"`. |
-| `returnTo` | `string` | No | Return URL (default: `/secondary/suggestions`). |
+| `returnTo` | `string` | No | Page that renders the finder. Used **only** to attribute the audit event — it is never concatenated into a URL. Allowlisted; anything else falls back to `/secondary/suggestions`. |
 
-**Success**: Redirects to the validated allowlisted `{returnTo}?zip={zip}&radiusMiles={radius}&type={type}`.
-**Validation errors**:
-- Invalid ZIP → `{returnTo}?error=invalid-zip`
-- Invalid radius → `/secondary/suggestions?error=invalid-radius`
-- Invalid type → `/secondary/suggestions?error=invalid-type`
+**Success**: returns `{ view, error: null }` — the same `AccreditedRepresentativeView` the loader
+produces, rendered by the client component. The surface renders the returned view in place, with no
+navigation and no history rewrite.
+
+**Refusals**: return `{ view: null, error }` with a fixed code — `invalid-zip`, `invalid-radius`,
+`invalid-type`, or `refused` (the PHI-free Server Action contract). No submitted value or key is
+ever echoed, and a refusal clears any previously rendered result rather than leaving it on screen.
+
+**Rate limiting**: a POST to `/secondary/suggestions`, `/secondary/evidence`, or
+`/presumptive/results` consumes both the method-scoped POST bucket and the shared reference-read
+bucket (`src/proxy.ts`), because the request still reaches the directory loader.
+
+**Upstream (unclosed half of A01)**: while live VA access is enabled, the ZIP is still sent to the
+configured VA accredited-representative directory as a query parameter. That request is the
+upstream contract; host/CDN retention for whichever requests the operator runs remains an operator
+review.
 
 ---
 

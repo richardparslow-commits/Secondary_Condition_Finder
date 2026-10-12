@@ -311,6 +311,10 @@ exception rather than left implicit:
   branch, date, health selection or evidence excerpt, and the ZIP is not
   persisted to the browser-local record, a cookie, an account or application
   logs.
+- The lookup is submitted through a Server Action that returns the directory view
+  as action state (no redirect), so the ZIP travels in the request **body** and is
+  never a query value: it does not reach the page URL, browser history, or a
+  copied link (audit A01, 2026-10-12).
 - It is a **public-directory lookup**: results are public data, not veteran PII.
   It is gated by `VA_ACCREDITED_REP_ENABLED` behind the shared `VA_API_ENABLED`
   fail-closed boundary, it is rate-limited, its results are cached under a key

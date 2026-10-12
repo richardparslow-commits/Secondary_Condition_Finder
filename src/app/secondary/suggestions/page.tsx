@@ -4,11 +4,10 @@ import {
   missingLockedRegulatorySnapshot,
   prepareRegulatoryReview,
 } from "@/lib/regulatory/preflight";
-import { loadAccreditedRepresentatives } from "@/lib/va/accredited-representatives";
 import { loadDisabilityReference } from "@/lib/va/disability-reference";
 
 interface SuggestionsPageProps {
-  searchParams?: Promise<{ regSnapshot?: string | string[]; zip?: string; radiusMiles?: string; type?: string }>;
+  searchParams?: Promise<{ regSnapshot?: string | string[] }>;
 }
 export const dynamic = "force-dynamic";
 
@@ -17,10 +16,14 @@ const firstParam = (value: string | string[] | undefined): string | undefined =>
 
 /**
  * Uniform shell (PRIV-01 stage 2): prepares a scope-free regulatory snapshot
- * (identical for every visitor), loads the public VA reference, and resolves
- * the optional accredited-representative lookup from URL parameters — none of
- * which accept veteran health context. The client step reads the
+ * (identical for every visitor) and loads the public VA reference — neither of
+ * which accepts veteran health context. The client step reads the
  * browser-local context and runs the engine locally.
+ *
+ * Audit A01: the accredited-representative locator reads no query parameter
+ * here any more. Its lookup is a Server Action whose ZIP travels in the request
+ * body, so this page's URL cannot carry a searched ZIP into browser history or
+ * the hosting request line; the locator renders whatever the action returns.
  */
 export default async function SuggestionsStepPage({ searchParams }: SuggestionsPageProps = {}) {
   const queryParams = await searchParams;
@@ -37,19 +40,7 @@ export default async function SuggestionsStepPage({ searchParams }: SuggestionsP
       ? missingLockedRegulatorySnapshot(lockedSnapshotId)
       : (await prepareRegulatoryReview()).snapshot;
 
-  const zipParam = typeof queryParams?.zip === "string" ? queryParams.zip : undefined;
-  const radiusParam = typeof queryParams?.radiusMiles === "string" ? queryParams.radiusMiles : undefined;
-  const typeParam = typeof queryParams?.type === "string" ? queryParams.type : undefined;
-  const [vaReference, accreditedRepView] = await Promise.all([
-    loadDisabilityReference(),
-    zipParam && /^\d{5}$/.test(zipParam)
-      ? loadAccreditedRepresentatives({
-          zip: zipParam,
-          radiusMiles: radiusParam ? Number(radiusParam) : 50,
-          type: (typeParam as "VSO" | "agent" | "attorney" | undefined),
-        })
-      : Promise.resolve(null),
-  ]);
+  const vaReference = await loadDisabilityReference();
 
   return (
     <SuggestionsStep
@@ -60,7 +51,6 @@ export default async function SuggestionsStepPage({ searchParams }: SuggestionsP
         environment: vaReference.environment,
         items: vaReference.items,
       }}
-      accreditedRepView={accreditedRepView}
     />
   );
 }
