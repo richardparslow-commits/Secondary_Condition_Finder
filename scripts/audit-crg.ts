@@ -2,8 +2,19 @@
 import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { dirname, join, relative } from "node:path";
 
+import {
+  assertNoCausationCycle,
+  bidirectionalPairs,
+  canonicalCycleKey,
+  canonicalPairKey,
+  enumerateAdjacencyCycles,
+  GRAPH_GOVERNANCE_VERSION,
+  isGovernedCycleFinding,
+  reconcileGovernance,
+  type GraphGovernanceLedger,
+} from "../src/lib/kb/graph-cycle-policy.ts";
 import { assertGraphEvidenceJoins } from "../src/lib/kb/graph-evidence-joins.mts";
-import { KB_GRAPH_DIR_RELATIVE } from "../src/lib/kb/graph-layout.ts";
+import { KB_GRAPH_DIR_RELATIVE, KB_GRAPH_GOVERNANCE_RELATIVE } from "../src/lib/kb/graph-layout.ts";
 import { conditionMappingSchema, KbNodeMappingSchema } from "../src/lib/kb/schema.ts";
 
 /**
@@ -28,21 +39,43 @@ import { conditionMappingSchema, KbNodeMappingSchema } from "../src/lib/kb/schem
  * record supports — which is why both run here and not only in the runtime
  * loader, where the first request pays for the discovery.
  *
- * Exit codes: 0 = acyclic with every edge backed by authored evidence (or an
- * explicitly tolerated empty state), 1 = parse failure, malformed graph, at
- * least one detected cycle, or an edge whose authored evidence is missing or
- * differently classified.
+ * The cycle verdict is **classified**, not blanket (audit A08). This gate used
+ * to reject every cycle it found while the runtime loader rejected only
+ * all-DIRECT_CAUSATION cycles, so a medically legitimate association-only
+ * bidirectional pair would load in production and fail CI. It now consumes the
+ * one shared contract in `src/lib/kb/graph-cycle-policy.ts`, which the runtime
+ * loader imports too:
+ *
+ *   - an all-DIRECT_CAUSATION cycle is a violation and fails the gate (the
+ *     loader also runs `assertNoCausationCycle` directly, so the runtime and CI
+ *     verdicts come from the same function rather than from two similar
+ *     re-implementations);
+ *   - an association-only, mixed, or aggravation cycle, and any bidirectional
+ *     pair, are review findings that are admitted only when a recorded
+ *     disposition exists in the governance ledger
+ *     (`docs/crg-adjacency-governance-ledger.json`, or --governance=<path>).
+ *     A two-node cycle is the pair, not a separate finding, so it is booked
+ *     once — through the pair entry — exactly as the corpus audit does.
+ *     The ledger must match the live graph in BOTH directions: an ungoverned
+ *     finding fails (`CRG-ADJACENCY-REVIEW-UNGOVERNED`) and a stale entry that
+ *     no longer describes anything fails (`CRG-ADJACENCY-GOVERNANCE-STALE`).
+ * Deleting a defensible direction to make a blanket DAG check pass is
+ * explicitly not the remedy, which is why the ledger exists instead.
+ *
+ * Exit codes: 0 = no violation cycles, every review-class finding governed,
+ * every edge backed by authored evidence (or an explicitly tolerated empty
+ * state); 1 = parse failure, malformed graph, an all-causation cycle, an
+ * ungoverned or stale review finding, a missing/unreadable governance ledger,
+ * or an edge whose authored evidence is missing or differently classified.
  *
  * Usage: node scripts/audit-crg.ts [--kb-dir=<path>] [--kb-root=<path>]
+ *                                  [--governance=<path>]
  * CI runs with the default graph directory; --kb-dir exists so fixture
  * directories can exercise the DFS in tests without touching the real graph.
  * The authored corpus is read from the graph directory's parent (the layout
  * `data/knowledge-base/graph/` mirrors the staging layout `staged/graph/`),
  * or from --kb-root when that parent is not a directory inside this project.
  */
-
-/** Node color states for the 3-color DFS (see section 2 below). */
-type NodeColor = "UNVISITED" | "VISITING" | "VISITED";
 
 /** Concise single-line summary of a Zod parse failure for CI logs. */
 function summarizeParseError(error: unknown): string {
@@ -69,6 +102,16 @@ const KB_DIR = process.argv.find((arg) => arg.startsWith("--kb-dir="))?.split("=
  * (`authored-mappings.json`) before any of it lands in the live directory.
  */
 const KB_ROOT_ARG = process.argv.find((arg) => arg.startsWith("--kb-root="))?.split("=")[1];
+
+/**
+ * The reviewed-disposition ledger. Default: the shared layout constant, so the
+ * gate and any future tooling read one path. A fixture graph passes its own
+ * path so the gate can be exercised against synthetic review-class shapes.
+ */
+const GOVERNANCE_PATH_ARG = process.argv
+  .find((arg) => arg.startsWith("--governance="))
+  ?.split("=")[1];
+const GOVERNANCE_PATH = GOVERNANCE_PATH_ARG ?? KB_GRAPH_GOVERNANCE_RELATIVE;
 
 function isInsideProject(candidate: string): boolean {
   const relativePath = relative(process.cwd(), candidate);
@@ -203,63 +246,204 @@ if (parseFailures.length > 0) {
 
 console.log(`audit-crg: loaded ${graph.size} nodes from ${graph.size === fileNames.length ? `${fileNames.length} files` : `a subset of ${fileNames.length} files`} without parse failures.`);
 
-/* ─── 2. 3-color DFS cycle detection ──────────────────────────────────────
- * Each node carries one of three colors:
- *   - UNVISITED: not reached yet.
- *   - VISITING:  on the current recursion stack (its subtree is being
- *                explored). The recursion stack IS `path`.
- *   - VISITED:   fully processed and proven cycle-free — never re-entered,
- *                which keeps the whole scan O(V + E).
- * A back-edge to a VISITING node closes a directed cycle. Because `path`
- * mirrors the recursion stack, the loop is exactly the slice of `path` from
- * that node's position to the top, closed by the current edge.
+/* ─── 2. Classified cycle detection (shared policy) ───────────────────────
+ * The classification table, the enumerator and the causation-only DFS all come
+ * from `src/lib/kb/graph-cycle-policy.ts`, the same module the runtime loader
+ * imports, so this gate cannot drift from what production enforces. The
+ * enumerator reports every simple cycle once, classified; the DFS is run too,
+ * and a disagreement between the two would fail the gate loudly rather than
+ * silently choosing one verdict.
  * ────────────────────────────────────────────────────────────────────────── */
 
-const color = new Map<string, NodeColor>([...graph.keys()].map((id) => [id, "UNVISITED" as const]));
-const cycles: string[][] = [];
-
-/** Node IDs on the current recursion stack, in visit order. */
-const path: string[] = [];
-
-function dfs(nodeId: string): void {
-  color.set(nodeId, "VISITING");
-  path.push(nodeId);
-
-  for (const target of graph.get(nodeId) ?? []) {
-    const targetColor = color.get(target) ?? "UNVISITED";
-    if (targetColor === "VISITING") {
-      // Back-edge: the loop runs from target's stack position through the
-      // current node, and the current edge closes it.
-      const start = path.indexOf(target);
-      cycles.push([...path.slice(start), target]);
-    } else if (targetColor === "UNVISITED") {
-      dfs(target);
-    }
-    // VISITED: subtree already proven acyclic — skip.
-  }
-
-  path.pop();
-  color.set(nodeId, "VISITED");
-}
-
-// Iterate over sorted roots so cycle reporting is deterministic across runs
-// (the same SCC always yields the same rotated representation).
-for (const root of [...graph.keys()].sort()) {
-  if (color.get(root) === "UNVISITED") dfs(root);
-}
-
-/* ─── 3. Report and enforce ──────────────────────────────────────────────── */
-
-if (cycles.length > 0) {
-  console.error(`audit-crg: FAIL — ${cycles.length} multi-hop circular ${cycles.length === 1 ? "dependency" : "dependencies"} detected in the CRG:\n`);
-  for (const [index, cycle] of cycles.entries()) {
-    console.error(`  ${index + 1}. ${cycle.join(" → ")}`);
-  }
-  console.error(`\naudit-crg: every cycle must be resolved (re-rank, re-parent, or remove an edge) before merge.`);
+const enumeration = enumerateAdjacencyCycles(parsedNodes);
+if (enumeration.truncated) {
+  console.error(
+    "audit-crg: FAIL — cycle enumeration exceeded its analysis budget, so the structural verdict would be incomplete. " +
+      "Split the graph, resolve existing cycles, or deliberately raise CYCLE_ENUMERATION_MAX_STEPS/MAX_CYCLES in src/lib/kb/graph-cycle-policy.ts.",
+  );
   process.exit(1);
 }
 
-console.log("audit-crg: PASS — CRG adjacency list is acyclic (no multi-hop circular dependencies).");
+const violationCycles = enumeration.cycles.filter((cycle) => cycle.severity === "violation");
+// A two-node cycle IS a bidirectional pair, so it is governed by its pair entry
+// rather than by a cycle entry — the same split the corpus audit uses, so one
+// shape is never booked twice (`isGovernedCycleFinding`).
+const reviewCycles = enumeration.cycles.filter(isGovernedCycleFinding);
+const pairCoveredCycles = enumeration.cycles.filter(
+  (cycle) => cycle.severity === "review" && !isGovernedCycleFinding(cycle),
+);
+const pairs = bidirectionalPairs(parsedNodes);
+
+if (violationCycles.length > 0) {
+  // Run the runtime assertion as well: if the enumerator and the loader's DFS
+  // ever disagreed about a causation cycle, CI would be certifying a graph the
+  // loader refuses (or the reverse). Agreement is the point of the shared module.
+  let runtimeAgrees = false;
+  try {
+    assertNoCausationCycle(parsedNodes);
+  } catch {
+    runtimeAgrees = true;
+  }
+  if (!runtimeAgrees) {
+    console.error(
+      "audit-crg: FAIL — the enumerator and the runtime causation-cycle check disagree; the shared policy in src/lib/kb/graph-cycle-policy.ts is inconsistent.",
+    );
+    process.exit(1);
+  }
+  console.error(
+    `audit-crg: FAIL — ${violationCycles.length} multi-hop circular ${violationCycles.length === 1 ? "dependency" : "dependencies"} detected in the CRG:\n`,
+  );
+  for (const [index, cycle] of violationCycles.entries()) {
+    console.error(`  ${index + 1}. ${cycle.path}  [${cycle.code}]`);
+  }
+  console.error(
+    "\naudit-crg: a cycle of only DIRECT_CAUSATION edges is never a defensible etiology; re-rank, re-parent, or remove an edge before merge.",
+  );
+  process.exit(1);
+}
+
+/* ─── 3. Governance ledger reconciliation ─────────────────────────────────
+ * Review-class shapes (association/mixed/aggravation cycles and bidirectional
+ * pairs) are legitimate, so they are admitted — but only with a recorded
+ * disposition. Both directions are enforced: an ungoverned live finding fails,
+ * and a ledger entry that no longer matches anything fails, so the record
+ * cannot rot into a claim about a graph that no longer exists.
+ * ────────────────────────────────────────────────────────────────────────── */
+
+function failGovernance(message: string): never {
+  console.error(`audit-crg: FAIL — ${message}`);
+  process.exit(1);
+}
+
+function parseGovernanceLedger(raw: unknown, origin: string): GraphGovernanceLedger {
+  const fail = (detail: string): never =>
+    failGovernance(
+      `governance ledger ${origin} is not a valid reviewed-disposition record — ${detail}. ` +
+        `Expected { version: ${GRAPH_GOVERNANCE_VERSION}, reviewedCycles: [{ nodes, disposition }], reviewedBidirectionalPairs: [{ pair, disposition }] }.`,
+    );
+  if (!raw || typeof raw !== "object" || Array.isArray(raw)) return fail("not a JSON object");
+  const record = raw as Record<string, unknown>;
+  if (record.version !== GRAPH_GOVERNANCE_VERSION) {
+    return fail(`unsupported version ${String(record.version)}`);
+  }
+  const cyclesRaw = record.reviewedCycles;
+  const pairsRaw = record.reviewedBidirectionalPairs;
+  if (!Array.isArray(cyclesRaw)) return fail("reviewedCycles must be an array");
+  if (!Array.isArray(pairsRaw)) return fail("reviewedBidirectionalPairs must be an array");
+
+  const reviewedCycles: GraphGovernanceLedger["reviewedCycles"] = [];
+  for (const [index, entry] of cyclesRaw.entries()) {
+    if (!entry || typeof entry !== "object") return fail(`reviewedCycles[${index}] is not an object`);
+    const { nodes, disposition } = entry as { nodes?: unknown; disposition?: unknown };
+    if (!Array.isArray(nodes) || nodes.length < 2 || nodes.some((id) => typeof id !== "string" || id.length === 0)) {
+      return fail(`reviewedCycles[${index}].nodes must be at least two non-empty condition ids`);
+    }
+    if (nodes.length === 2) {
+      // Fail closed on the double-bookkeeping shape instead of accepting an
+      // entry that can only ever be reported stale: a two-node cycle is the
+      // pair, and pairs are recorded under reviewedBidirectionalPairs.
+      return fail(
+        `reviewedCycles[${index}] describes a two-node cycle (${nodes.join(" -> ")}), which is a bidirectional pair — record it in reviewedBidirectionalPairs so the same relationship is not governed twice`,
+      );
+    }
+    if (typeof disposition !== "string" || disposition.trim().length === 0) {
+      return fail(`reviewedCycles[${index}].disposition must be a non-empty reference to the recorded decision`);
+    }
+    reviewedCycles.push({ nodes: [...(nodes as string[])], disposition });
+  }
+
+  const reviewedBidirectionalPairs: GraphGovernanceLedger["reviewedBidirectionalPairs"] = [];
+  for (const [index, entry] of pairsRaw.entries()) {
+    if (!entry || typeof entry !== "object") return fail(`reviewedBidirectionalPairs[${index}] is not an object`);
+    const { pair, disposition } = entry as { pair?: unknown; disposition?: unknown };
+    if (
+      !Array.isArray(pair) ||
+      pair.length !== 2 ||
+      pair.some((id) => typeof id !== "string" || id.length === 0) ||
+      pair[0] === pair[1]
+    ) {
+      return fail(`reviewedBidirectionalPairs[${index}].pair must be two distinct condition ids`);
+    }
+    if (typeof disposition !== "string" || disposition.trim().length === 0) {
+      return fail(`reviewedBidirectionalPairs[${index}].disposition must be a non-empty reference to the recorded decision`);
+    }
+    reviewedBidirectionalPairs.push({ pair: [pair[0], pair[1]], disposition });
+  }
+
+  return { version: GRAPH_GOVERNANCE_VERSION, reviewedCycles, reviewedBidirectionalPairs };
+}
+
+const ledgerExists = existsSync(GOVERNANCE_PATH);
+if (reviewCycles.length === 0 && pairs.length === 0 && !ledgerExists) {
+  console.log(
+    "audit-crg: PASS — CRG adjacency list is acyclic: no multi-hop circular dependency and no review-class shape; no governance ledger is present and none is needed.",
+  );
+} else {
+  if (!ledgerExists) {
+    failGovernance(
+      `${reviewCycles.length} review-class cycle(s) and ${pairs.length} bidirectional pair(s) need a reviewed disposition, but ${GOVERNANCE_PATH} does not exist. ` +
+        "Create the ledger and record the qualified-human decision for each finding (a direction may not be deleted merely to make this gate pass).",
+    );
+  }
+  let ledgerRaw: unknown;
+  try {
+    ledgerRaw = JSON.parse(readFileSync(GOVERNANCE_PATH, "utf8")) as unknown;
+  } catch (error) {
+    failGovernance(`governance ledger ${GOVERNANCE_PATH} is not readable JSON — ${summarizeParseError(error)}`);
+  }
+  const ledger = parseGovernanceLedger(ledgerRaw, GOVERNANCE_PATH);
+  const reconciliation = reconcileGovernance(enumeration.cycles, pairs, ledger);
+
+  if (reconciliation.ungoverned.length > 0 || reconciliation.ungovernedPairs.length > 0) {
+    console.error("audit-crg: FAIL — CRG-ADJACENCY-REVIEW-UNGOVERNED: review-class findings with no recorded disposition:\n");
+    for (const cycle of reconciliation.ungoverned) {
+      console.error(`  cycle ${cycle.path}  [${cycle.code}]`);
+    }
+    for (const pair of reconciliation.ungovernedPairs) {
+      console.error(
+        `  pair ${pair.key}  [${pair.aToB} / ${pair.bToA}]${
+          pair.requiresGovernance
+            ? " — a direction here claims causation or aggravation, so each direction needs its own justification"
+            : " — association-only in both directions"
+        }`,
+      );
+    }
+    console.error(
+      `\naudit-crg: each of these is a legitimate review shape, not an automatic failure — record the qualified-human decision in ${GOVERNANCE_PATH} (reviewedCycles / reviewedBidirectionalPairs) with a disposition reference. Deleting a defensible direction is not the remedy.`,
+    );
+    process.exit(1);
+  }
+
+  if (reconciliation.staleCycles.length > 0 || reconciliation.stalePairs.length > 0) {
+    console.error("audit-crg: FAIL — CRG-ADJACENCY-GOVERNANCE-STALE: ledger entries that match no live finding:\n");
+    for (const key of reconciliation.staleCycles) console.error(`  cycle ${key}`);
+    for (const key of reconciliation.stalePairs) console.error(`  pair ${key}`);
+    console.error(
+      `\naudit-crg: remove the resolved entr${reconciliation.staleCycles.length + reconciliation.stalePairs.length === 1 ? "y" : "ies"} from ${GOVERNANCE_PATH} so the ledger keeps describing the graph it governs (a canonical cycle key rotates to start at its lowest-ordered node).`,
+    );
+    process.exit(1);
+  }
+
+  // The ledger is reconciled whenever it exists, even against a currently
+  // clean graph: otherwise the last resolved finding's entry would linger
+  // unexamined, and the record would stop describing the graph it governs.
+  console.log(
+    reviewCycles.length === 0 && pairs.length === 0
+      ? `audit-crg: PASS — CRG adjacency list is acyclic: no multi-hop circular dependency and no review-class shape; ${GOVERNANCE_PATH} describes no live finding.`
+      : `audit-crg: PASS — no causation cycle; ${reviewCycles.length} review-class cycle(s) and ${pairs.length} bidirectional pair(s) all carry a recorded disposition in ${GOVERNANCE_PATH}.`,
+  );
+  for (const cycle of reviewCycles) {
+    console.log(`  reviewed cycle ${canonicalCycleKey(cycle.nodeIds)}  [${cycle.code}]`);
+  }
+  for (const pair of pairs) {
+    console.log(`  reviewed pair ${canonicalPairKey(pair.a, pair.b)}  [${pair.aToB} / ${pair.bToA}]`);
+  }
+  for (const cycle of pairCoveredCycles) {
+    console.log(
+      `  review-class cycle ${canonicalCycleKey(cycle.nodeIds)}  [${cycle.code}] is a two-node cycle: governed by its pair entry above.`,
+    );
+  }
+}
 
 /* ─── 4. ARCH-01 authored-evidence join ────────────────────────────────────
  * Acyclicity says nothing about whether an edge is *supported*. Every edge

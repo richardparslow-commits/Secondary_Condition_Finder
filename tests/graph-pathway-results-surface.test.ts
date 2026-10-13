@@ -77,6 +77,8 @@ const emptyView: GraphPathwayMatchSectionView = {
   matches: [],
   totalAnchors: 0,
   unverifiedAnchors: 0,
+  draftAuthoredMatches: 0,
+  cappedOrigins: 0,
 };
 
 function sectionView(matches: GraphPathwayMatchView[]): GraphPathwayMatchSectionView {
@@ -85,6 +87,8 @@ function sectionView(matches: GraphPathwayMatchView[]): GraphPathwayMatchSection
     matches,
     totalAnchors: anchors.length,
     unverifiedAnchors: anchors.filter((anchor) => !anchor.verified).length,
+    draftAuthoredMatches: matches.filter((match) => match.includesDraftAuthoredEvidence).length,
+    cappedOrigins: 0,
   };
 }
 
@@ -106,6 +110,7 @@ const associationMatch: GraphPathwayMatchView = {
   terminalConditionId: "fixture-terminal",
   terminalConditionName: "Fixture Terminal",
   compositeNexus: "ASSOCIATION_ONLY_CHAIN_BROKEN",
+  includesDraftAuthoredEvidence: false,
   hops: [
     {
       stepIndex: 0,
@@ -114,6 +119,7 @@ const associationMatch: GraphPathwayMatchView = {
       targetConditionId: "fixture-terminal",
       targetConditionName: "Fixture Terminal",
       nexusClassification: "ASSOCIATION_ONLY",
+      authoredDraft: false,
       anchors: [verifiedAnchor, unverifiedAnchor],
     },
   ],
@@ -125,6 +131,7 @@ const directMatch: GraphPathwayMatchView = {
   terminalConditionId: "fixture-terminal",
   terminalConditionName: "Fixture Terminal",
   compositeNexus: "DIRECT_CAUSATION",
+  includesDraftAuthoredEvidence: false,
   hops: [
     {
       stepIndex: 0,
@@ -133,6 +140,7 @@ const directMatch: GraphPathwayMatchView = {
       targetConditionId: "fixture-terminal",
       targetConditionName: "Fixture Terminal",
       nexusClassification: "DIRECT_CAUSATION",
+      authoredDraft: false,
       anchors: [verifiedAnchor],
     },
   ],
@@ -144,6 +152,7 @@ const aggravationMatch: GraphPathwayMatchView = {
   terminalConditionId: "fixture-terminal",
   terminalConditionName: "Fixture Terminal",
   compositeNexus: "AGGRAVATION",
+  includesDraftAuthoredEvidence: false,
   hops: [
     {
       stepIndex: 0,
@@ -152,6 +161,7 @@ const aggravationMatch: GraphPathwayMatchView = {
       targetConditionId: "fixture-midpoint",
       targetConditionName: "Fixture Midpoint",
       nexusClassification: "AGGRAVATION",
+      authoredDraft: false,
       anchors: [],
     },
     {
@@ -161,6 +171,7 @@ const aggravationMatch: GraphPathwayMatchView = {
       targetConditionId: "fixture-terminal",
       targetConditionName: "Fixture Terminal",
       nexusClassification: "DIRECT_CAUSATION",
+      authoredDraft: false,
       anchors: [verifiedAnchor],
     },
   ],

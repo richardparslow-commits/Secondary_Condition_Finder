@@ -1,4 +1,4 @@
-import { MAX_PATHWAY_HOPS } from "@/lib/kb/pathway-depth";
+import { MAX_PATHWAY_HOPS, MAX_PATHWAYS_PER_ORIGIN } from "@/lib/kb/pathway-depth";
 import {
   ClaimPathwaySchema,
   type ClaimPathway,
@@ -39,6 +39,15 @@ import { deriveCompositeNexus } from "@/lib/kb/utils";
  * MAX_PATHWAY_HOPS + 1 frames. Combined with the branch set, the traversal
  * visits at most (out-degree of origin) × (out-degree of each mid-node)
  * edges — linear in the depth-2 frontier, never the whole graph.
+ *
+ * ## Total-output bound
+ *
+ * Depth is not output: a dense frontier makes one origin's output grow with
+ * its depth-2 neighbourhood, so the traversal also stops at
+ * `MAX_PATHWAYS_PER_ORIGIN` (audit A08) and reports that it stopped
+ * (`generateClaimPathwaysBounded().capped`). The bound exists so a future
+ * dense graph cannot hold a tab or a request open emitting pathways; the
+ * reporting exists so a bounded prefix is never rendered as the whole graph.
  *
  * ## Chain breaking
  *
@@ -90,10 +99,25 @@ import { deriveCompositeNexus } from "@/lib/kb/utils";
  *   hop are included for transparency but are never extended.
  */
 export function generateClaimPathways(originConditionId: string, graph: ReadonlyMap<string, KbNodeMapping>): ClaimPathway[] {
+  return generateClaimPathwaysBounded(originConditionId, graph).pathways;
+}
+
+/**
+ * The traversal plus its truncation signal: `capped` is true when the origin's
+ * output reached `MAX_PATHWAYS_PER_ORIGIN` and the walk stopped early, so a
+ * surface can disclose a bounded prefix instead of presenting it as complete.
+ * `generateClaimPathways` is the same traversal without the signal.
+ */
+export function generateClaimPathwaysBounded(
+  originConditionId: string,
+  graph: ReadonlyMap<string, KbNodeMapping>,
+): { pathways: ClaimPathway[]; capped: boolean } {
   const origin = graph.get(originConditionId);
-  if (!origin) return [];
+  if (!origin) return { pathways: [], capped: false };
 
   const pathways: ClaimPathway[] = [];
+  /** Set when the walk stopped at the total-output bound (audit A08). */
+  let capped = false;
 
   /** Condition IDs on the current origin→here path (see cycle detection). */
   const branchNodes = new Set<string>([originConditionId]);
@@ -112,6 +136,13 @@ export function generateClaimPathways(originConditionId: string, graph: Readonly
 
     const outgoing = [...node.outgoingEdges].sort((a, b) => a.rank - b.rank);
     for (const edge of outgoing) {
+      // Total-output bound: stop before emitting past the cap. `capped` is set
+      // only when output actually ran into the bound, so an ordinary graph
+      // never reports truncation.
+      if (pathways.length >= MAX_PATHWAYS_PER_ORIGIN) {
+        capped = true;
+        return;
+      }
       const target = edge.targetConditionId;
 
       // Cycle guard: an ancestor (including the origin) is already on this
@@ -147,5 +178,5 @@ export function generateClaimPathways(originConditionId: string, graph: Readonly
 
   visit(originConditionId);
 
-  return pathways;
+  return { pathways, capped };
 }

@@ -4,10 +4,11 @@ import type { KbNodeMapping, KnowledgeBase } from "@/lib/kb/schema";
 
 import {
   mappingAnchorResolver,
+  mappingProvenanceResolver,
   projectGraphPathway,
   type HopAnchorResolver,
 } from "./graph-pathway-projection";
-import { generateClaimPathways } from "./pathway-generator";
+import { generateClaimPathwaysBounded } from "./pathway-generator";
 import type {
   GraphPathwayAnchorView,
   GraphPathwayMatchSectionView,
@@ -44,17 +45,27 @@ export function buildGraphPathwayMatchSectionViewFromData(
     : mappingAnchorResolver(mappingById);
   const conditionName = (conditionId: string): string =>
     byId.get(conditionId)?.name ?? conditionId;
+  // The server wrapper passes the FULL authored corpus (authoritative `draft`
+  // flag); the browser passes the published-only corpus, where an absent
+  // mapping means the edge is draft-backed (audit A08 provenance separation).
+  const resolveProvenance = mappingProvenanceResolver(mappingById);
 
   const terminalSet = new Set(terminalConditionIds);
   const matches: GraphPathwayMatchView[] = [];
+  let cappedOrigins = 0;
 
   for (const originConditionId of [...new Set(originConditionIds)].sort()) {
-    for (const pathway of generateClaimPathways(originConditionId, graph)) {
+    const { pathways: traversed, capped } = generateClaimPathwaysBounded(
+      originConditionId,
+      graph,
+    );
+    if (capped) cappedOrigins += 1;
+    for (const pathway of traversed) {
       if (!terminalSet.has(pathway.terminalConditionId)) continue;
       matches.push({
         originConditionId,
         originConditionName: conditionName(originConditionId),
-        ...projectGraphPathway(pathway, conditionName, resolveAnchors),
+        ...projectGraphPathway(pathway, conditionName, resolveAnchors, resolveProvenance),
       });
     }
   }
@@ -74,5 +85,9 @@ export function buildGraphPathwayMatchSectionViewFromData(
     matches,
     totalAnchors: allAnchors.length,
     unverifiedAnchors: allAnchors.filter((anchor) => !anchor.verified).length,
+    draftAuthoredMatches: matches.filter(
+      (match) => match.includesDraftAuthoredEvidence,
+    ).length,
+    cappedOrigins,
   };
 }

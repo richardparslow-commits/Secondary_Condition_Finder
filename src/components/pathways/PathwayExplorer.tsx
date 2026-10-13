@@ -61,6 +61,31 @@ export const EMPTY_ORIGIN_NOTICE =
   "No outgoing adjacency edges are authored for this condition yet. An empty result is not a finding: it is not evidence for or against any relationship.";
 
 /**
+ * Draft-provenance disclosure (audit A08), shown on every pathway whose hops
+ * rest on draft-authored evidence and, as a section total, wherever any do.
+ *
+ * The authored corpus is the publication layer — its `draft` flag gates what
+ * the recommendation engine may emit — while the adjacency graph is a research
+ * layer whose signed routes may cite evidence that is not published yet. That
+ * separation is deliberate, so the surfaces state it per route instead of
+ * leaving a research route to read like a published-relationship result.
+ * Exported so both graph surfaces render one string and tests pin its meaning.
+ */
+export const DRAFT_EVIDENCE_NOTICE =
+  "This route rests on draft-authored evidence: the adjacency graph is a research layer and may cite mappings that are not published, so this route is not part of the published-relationship results and cannot be. Draft status is the authored corpus's own flag, shown here unchanged.";
+
+/**
+ * Bounded-output disclosure (audit A08): shown when an origin's traversal hit
+ * `MAX_PATHWAYS_PER_ORIGIN`. A bounded prefix is never presented as the whole
+ * graph.
+ */
+export const CAP_NOTICE =
+  "One or more origin conditions here reach the traversal's total-output bound, so their route lists stop early. Those lists are deliberately bounded rather than exhaustive — an absent route in a bounded list is not a finding.";
+
+/** Short badge label for a draft-backed route (per-card, per-section). */
+export const DRAFT_EVIDENCE_BADGE = "Draft-authored evidence";
+
+/**
  * Reviewer-triage explanation shown once above the anchor lists. The anchors
  * are the authored corpus's `sourceReferences`, joined to each hop for index
  * purposes; their `Verified` / `Unverified` status is the corpus's own flag,
@@ -128,6 +153,16 @@ export function PathwayExplorer({ view }: { view: GraphPathwayExplorerView }) {
               } legal chain is broken below.`}
         </p>
         <p className="mt-2 text-sm leading-relaxed text-slate-700">{POPULATION_LEVEL_GUARD}</p>
+        {view.draftAuthoredPathways > 0 && (
+          <p className="mt-2 text-sm leading-relaxed text-slate-700">
+            {plural(view.draftAuthoredPathways, "pathway rests", "pathways rest")} on
+            draft-authored evidence and {view.draftAuthoredPathways === 1 ? "is" : "are"} labelled below.{" "}
+            {DRAFT_EVIDENCE_NOTICE}
+          </p>
+        )}
+        {view.cappedOrigins > 0 && (
+          <p className="mt-2 text-sm leading-relaxed text-slate-700">{CAP_NOTICE}</p>
+        )}
         {view.totalAnchors > 0 && (
           <p className="mt-2 text-sm leading-relaxed text-slate-700">
             {view.unverifiedAnchors === 0
@@ -165,6 +200,12 @@ export function PathwayExplorer({ view }: { view: GraphPathwayExplorerView }) {
               {EMPTY_ORIGIN_NOTICE}
             </p>
           ) : (
+            <>
+            {origin.pathwaysCapped && (
+              <p role="status" className="mt-3 text-sm leading-relaxed text-slate-700">
+                {CAP_NOTICE}
+              </p>
+            )}
             <ul className="mt-4 space-y-4">
               {origin.pathways.map((pathway, pathwayIndex) => (
                 <PathwayCard
@@ -177,6 +218,7 @@ export function PathwayExplorer({ view }: { view: GraphPathwayExplorerView }) {
                 />
               ))}
             </ul>
+            </>
           )}
         </section>
       ))}
@@ -214,6 +256,16 @@ function PathwayCard({ pathway }: { pathway: GraphPathwayView }) {
         >
           <p className="font-semibold">Chain broken — a research lead, not a nexus.</p>
           <p className="mt-1">{CHAIN_BREAK_NOTICE}</p>
+        </div>
+      )}
+
+      {pathway.includesDraftAuthoredEvidence && (
+        <div
+          role="note"
+          className="mt-3 rounded-md border border-slate-300 bg-slate-100 p-3 text-sm leading-relaxed text-slate-800"
+        >
+          <p className="font-semibold">{DRAFT_EVIDENCE_BADGE}</p>
+          <p className="mt-1">{DRAFT_EVIDENCE_NOTICE}</p>
         </div>
       )}
 

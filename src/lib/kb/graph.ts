@@ -6,6 +6,7 @@ import path from "node:path";
 import { loadConditionCatalog } from "@/lib/catalog/load";
 import { indexById } from "@/lib/catalog/lookup";
 
+import { assertNoCausationCycle } from "./graph-cycle-policy";
 import { loadKnowledgeBase } from "./load";
 import { KbNodeMappingSchema, type KbNodeMapping, type KnowledgeBase } from "./schema";
 import { assertGraphEvidenceJoins } from "./graph-evidence-joins.mts";
@@ -44,6 +45,14 @@ import { assertNoQuarantinedPointerGraphNodes } from "./validate";
  * `scripts/audit-crg-graph.js`), which is where medically legitimate
  * directions are adjudicated. The traversal itself is cycle-safe regardless
  * (see `pathway-generator.ts`).
+ *
+ * The classification table and the DFS below live in
+ * `./graph-cycle-policy.ts` — the ONE directed-cycle contract shared with the
+ * CI adjacency gate and the corpus audit (audit A08). Before that module the
+ * loader and the gate disagreed: the gate rejected every cycle it found, so a
+ * legitimate association-only pair loaded in production and failed CI. A
+ * reviewer changing the policy changes it in the shared module, and every
+ * enforcement point moves together.
  */
 
 // Keep every segment literal so Turbopack scopes filesystem tracing to the
@@ -98,62 +107,18 @@ function assertGraphInCatalog(nodes: readonly KbNodeMapping[]): void {
 /**
  * Reject a graph containing a directed cycle of only DIRECT_CAUSATION edges.
  *
- * This is the runtime half of the A08 invariant; CI (`scripts/audit-crg.ts`)
- * is the other half. Only causation edges are traversed here because only a
- * closed proximate-cause loop is load-time invalid: an ASSOCIATION_ONLY hop
- * breaks the legal chain by construction (see `utils.ts`), an AGGRAVATION
- * cycle is a clinical-review question rather than a structural impossibility,
- * and a bidirectional pair with a non-causation direction is exactly the
- * medically legitimate shape the audit says must not be removed to make a
- * check green. Iterative 3-color DFS: WHITE unvisited, GRAY on the current
- * path (a causation edge into a GRAY node closes the loop), BLACK proven
- * cycle-free. Self-loops are one-node cycles and are rejected the same way.
+ * The runtime half of the A08 invariant, delegating to the shared policy in
+ * `./graph-cycle-policy.ts` so the loader and the CI adjacency gate cannot
+ * disagree about which cycles are violations. Only a closed proximate-cause
+ * loop is load-time invalid: an ASSOCIATION_ONLY hop breaks the legal chain by
+ * construction (see `utils.ts`), an AGGRAVATION cycle is a clinical-review
+ * question rather than a structural impossibility, and a bidirectional pair
+ * with a non-causation direction is exactly the medically legitimate shape the
+ * audit says must not be removed to make a check green. Those review-class
+ * shapes are reconciled against a recorded disposition at the CI boundary.
  */
 export function assertNoCausationCycles(nodes: readonly KbNodeMapping[]): void {
-  const causationTargets = new Map<string, string[]>();
-  for (const node of nodes) {
-    const targets: string[] = [];
-    for (const edge of node.outgoingEdges) {
-      if (edge.nexusClaim.nexusClassification === "DIRECT_CAUSATION") {
-        targets.push(edge.targetConditionId);
-      }
-    }
-    causationTargets.set(node.nodeId, targets);
-  }
-
-  const WHITE = 0;
-  const GRAY = 1;
-  const BLACK = 2;
-  const color = new Map<string, number>();
-  const stack: Array<{ id: string; next: number }> = [];
-
-  for (const root of causationTargets.keys()) {
-    if ((color.get(root) ?? WHITE) !== WHITE) continue;
-    stack.push({ id: root, next: 0 });
-    color.set(root, GRAY);
-    while (stack.length > 0) {
-      const frame = stack[stack.length - 1]!;
-      const targets = causationTargets.get(frame.id) ?? [];
-      if (frame.next >= targets.length) {
-        color.set(frame.id, BLACK);
-        stack.pop();
-        continue;
-      }
-      const target = targets[frame.next]!;
-      frame.next += 1;
-      // Edges into catalog identities with no adjacency node are leaves;
-      // only nodes in this graph can continue a cycle.
-      if (!causationTargets.has(target)) continue;
-      const targetColor = color.get(target) ?? WHITE;
-      if (targetColor === GRAY) {
-        throw new Error("[kb-graph] Causation cycle detected.");
-      }
-      if (targetColor === WHITE) {
-        color.set(target, GRAY);
-        stack.push({ id: target, next: 0 });
-      }
-    }
-  }
+  assertNoCausationCycle(nodes);
 }
 
 /**

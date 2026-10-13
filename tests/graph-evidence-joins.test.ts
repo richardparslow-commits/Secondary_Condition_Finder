@@ -86,8 +86,9 @@ describe("graph evidence joins (ARCH-01)", () => {
 
   it("refuses to project a pathway without authored citation anchors", () => {
     const pathway = generateClaimPathways(source, fixtureGraph())[0];
-    expect(() => projectGraphPathway(pathway, id => id, mappingAnchorResolver(new Map()))).toThrow(/Missing authored evidence.*liver-cancer.*sarcopenia/);
-    expect(() => projectGraphPathway(pathway, id => id, () => [])).toThrow(/Missing authored evidence.*liver-cancer.*sarcopenia/);
+    const published = () => false;
+    expect(() => projectGraphPathway(pathway, id => id, mappingAnchorResolver(new Map()), published)).toThrow(/Missing authored evidence.*liver-cancer.*sarcopenia/);
+    expect(() => projectGraphPathway(pathway, id => id, () => [], published)).toThrow(/Missing authored evidence.*liver-cancer.*sarcopenia/);
   });
 
   it.each(["missing", "empty", "duplicate"])("rejects a %s client anchor entry", defect => {

@@ -1,0 +1,6 @@
+{
+  "version": 1,
+  "note": "Reviewed-disposition ledger for the CRG adjacency layer (audit A08). The adjacency gate (scripts/audit-crg.ts, npm run audit:crg:graph) admits a cycle or bidirectional pair that is NOT composed entirely of DIRECT_CAUSATION edges only when it appears here with a disposition reference to the recorded qualified-human decision. An all-DIRECT_CAUSATION cycle is a violation everywhere and cannot be admitted by an entry. The reconciliation runs in both directions: a live review-class finding with no entry fails the gate (CRG-ADJACENCY-REVIEW-UNGOVERNED) and an entry that matches no live finding fails it too (CRG-ADJACENCY-GOVERNANCE-STALE), so the ledger cannot rot into a claim about a graph that no longer exists. Cycle keys rotate to start at the lowest-ordered node of the cycle; pair keys are min<->max. Deleting a defensible direction to make a blanket DAG check pass is explicitly not the remedy. Policy: src/lib/kb/graph-cycle-policy.ts; layout: src/lib/kb/graph-layout.ts; narrative: docs/crg-adjacency-migration-checklist.md.",
+  "reviewedCycles": [],
+  "reviewedBidirectionalPairs": []
+}

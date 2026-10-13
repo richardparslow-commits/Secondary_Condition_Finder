@@ -151,6 +151,14 @@ export interface GraphPathwayHopView {
   targetConditionName: string;
   nexusClassification: NexusClassificationView;
   /**
+   * True when this hop's authored backing is a DRAFT mapping (audit A08). The
+   * adjacency layer is a research layer whose routes may rest on evidence that
+   * is not published, while the recommendation layer only ever reads published
+   * mappings; the flag makes that difference visible per hop instead of
+   * leaving it to a section-level caveat.
+   */
+  authoredDraft: boolean;
+  /**
    * Citation anchors for this hop, joined from the authored corpus. Empty when
    * the hop's source mapping records no registered suggestion for this pair.
    */
@@ -164,6 +172,11 @@ export interface GraphPathwayView {
   /** Derived legal nexus of the whole chain — never recomputed in the UI. */
   compositeNexus: CompositeNexusView;
   hops: GraphPathwayHopView[];
+  /**
+   * True when any hop of this pathway rests on draft-authored evidence — the
+   * pathway is a research route, not a published-relationship result.
+   */
+  includesDraftAuthoredEvidence: boolean;
 }
 
 /**
@@ -175,6 +188,12 @@ export interface GraphPathwayOriginView {
   originConditionId: string;
   originConditionName: string;
   pathways: GraphPathwayView[];
+  /**
+   * True when this origin's pathway list was cut off by
+   * `MAX_PATHWAYS_PER_ORIGIN` (audit A08 total-output bound). The surface must
+   * say so rather than present a prefix as the whole graph.
+   */
+  pathwaysCapped: boolean;
 }
 
 /** Read-only projection of the whole adjacency graph for the explorer surface. */
@@ -183,6 +202,10 @@ export interface GraphPathwayExplorerView {
   totalPathways: number;
   /** Pathways whose composite nexus is `ASSOCIATION_ONLY_CHAIN_BROKEN`. */
   chainBrokenPathways: number;
+  /** Pathways that rest on at least one draft-authored hop. */
+  draftAuthoredPathways: number;
+  /** Origins whose pathway list hit the total-output bound. */
+  cappedOrigins: number;
   /** Citation anchors across every hop on the page. */
   totalAnchors: number;
   /** Anchors still awaiting qualified-human citation verification. */
@@ -212,8 +235,8 @@ export interface GraphPathwayMatchView extends GraphPathwayView {
 }
 
 /**
- * A results-UI section's worth of graph-pathway matches, plus the anchor
- * totals the surface uses to frame the view honestly.
+ * A results-UI section's worth of graph-pathway matches, plus the totals the
+ * surface uses to frame the view honestly.
  */
 export interface GraphPathwayMatchSectionView {
   matches: GraphPathwayMatchView[];
@@ -221,4 +244,11 @@ export interface GraphPathwayMatchSectionView {
   totalAnchors: number;
   /** Anchors still awaiting qualified-human citation verification. */
   unverifiedAnchors: number;
+  /** Matches resting on at least one draft-authored hop (audit A08). */
+  draftAuthoredMatches: number;
+  /**
+   * Origins whose traversal hit `MAX_PATHWAYS_PER_ORIGIN`, so a matching route
+   * could be outside the bounded prefix (audit A08 total-output bound).
+   */
+  cappedOrigins: number;
 }
