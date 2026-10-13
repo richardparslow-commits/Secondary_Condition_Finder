@@ -259,6 +259,68 @@ async function waitForText(needle, label, timeoutMs = 20_000) {
   throw new Error(`Timed out waiting for ${label} to render text: ${needle}`);
 }
 
+async function readHistoryLength() {
+  return webdriver("POST", `/session/${sessionId}/execute/sync`, {
+    script: "return window.history.length;",
+    args: [],
+  });
+}
+
+async function readReferrer() {
+  return webdriver("POST", `/session/${sessionId}/execute/sync`, {
+    script: "return document.referrer;",
+    args: [],
+  });
+}
+
+/**
+ * Audit A01: the accredited-representative lookup must leave the page URL
+ * untouched.
+ *
+ * Asserting only `!url.includes("zip=")` would pass on a redirect that carried
+ * `radiusMiles=`/`type=` instead — the same exposure with a different key — so
+ * this proves the full URL is byte-identical after the search, that no lookup
+ * value (nor the ZIP a visitor typed) appears in it, and that no navigation put
+ * the lookup into the referrer of the next document.
+ */
+async function assertLocatorUrlUnchanged(before, after, surface) {
+  if (after !== before) {
+    throw new Error(
+      `Locator search on ${surface} changed the page URL: "${before}" -> "${after}"`,
+    );
+  }
+  for (const needle of ["zip=", "radiusMiles=", "type=", LOCATOR_ZIP]) {
+    if (after.includes(needle)) {
+      throw new Error(
+        `Locator search on ${surface} put the lookup in the URL (matched \`${needle}\`): ${after}`,
+      );
+    }
+  }
+  const referrer = await readReferrer();
+  if (referrer.includes("zip=") || referrer.includes(LOCATOR_ZIP)) {
+    throw new Error(
+      `Locator search on ${surface} leaked the lookup into the next document's referrer: ${referrer}`,
+    );
+  }
+}
+
+/**
+ * Polls for the locator's results state and returns the body text once it is
+ * rendered. The provenance line (source label plus live/local-fallback mode)
+ * only exists in the results state, so a generic string like `Source:` cannot
+ * satisfy this before the search has returned.
+ */
+async function waitForLocatorResults(label, timeoutMs = 20_000) {
+  const deadline = Date.now() + timeoutMs;
+  let text = "";
+  while (Date.now() < deadline) {
+    text = await bodyText();
+    if (text.includes("Source:") && /·\s*(?:live|local fallback)/.test(text)) return text;
+    await delay(400);
+  }
+  throw new Error(`${label} locator results never rendered their provenance line.`);
+}
+
 async function setInputValue(xpath, value) {
   const elementId = await findByXpath(xpath);
   const applied = await webdriver(
@@ -508,28 +570,27 @@ async function runJourney() {
   await waitForSelected(PATHWAY_CHECKBOX_XPATH, true);
 
   checkpoint("verify Find Help accredited-representative locator on Step 5");
+  // Audit A01: the lookup is a Server Action that returns the directory view as
+  // state, so the results appear in place. The URL and the history entry count
+  // are captured BEFORE the search so the assertions prove the URL did not
+  // change at all — not merely that it lacks `zip=`. A redirect carrying
+  // `radiusMiles=`/`type=` instead would satisfy a substring check while
+  // reintroducing exactly the exposure this finding closed.
+  const locatorUrlBefore = await webdriver("GET", `/session/${sessionId}/url`);
+  const locatorHistoryBefore = await readHistoryLength();
   await setInputValue("//input[@name='zip']", LOCATOR_ZIP);
   await clickXpath("//button[contains(normalize-space(.), 'Search directory')]");
-  // Audit A01: the lookup is a Server Action that returns the directory view as
-  // state, so the results appear in place — there is no navigation and the ZIP
-  // never reaches the URL. Poll for the provenance line, which only exists in
-  // the results state.
-  let locatorText = "";
-  const resultsDeadline = Date.now() + 20_000;
-  while (Date.now() < resultsDeadline) {
-    locatorText = await bodyText();
-    if (locatorText.includes("Source:")) break;
-    await delay(500);
-  }
-  if (!locatorText.includes("Source:")) {
-    throw new Error("Locator results are missing the provenance/source line.");
-  }
+  const locatorText = await waitForLocatorResults("Step 5");
   const locatorUrl = await webdriver("GET", `/session/${sessionId}/url`);
+  await assertLocatorUrlUnchanged(locatorUrlBefore, locatorUrl, "Step 5");
+  const locatorHistoryAfter = await readHistoryLength();
+  if (locatorHistoryAfter !== locatorHistoryBefore) {
+    throw new Error(
+      `Locator search on Step 5 added a browser history entry (${locatorHistoryBefore} → ${locatorHistoryAfter}); the lookup must not navigate.`,
+    );
+  }
   if (!locatorUrl.includes("/secondary/suggestions")) {
     throw new Error(`Locator search navigated away from Step 5: ${locatorUrl}`);
-  }
-  if (locatorUrl.includes("zip=")) {
-    throw new Error(`Locator search put the lookup ZIP in the URL: ${locatorUrl}`);
   }
   if (!locatorText.includes("Find an accredited representative near you")) {
     throw new Error("Locator card is missing its heading after the directory search.");
@@ -540,7 +601,7 @@ async function runJourney() {
   if (!locatorText.includes("va.gov/ogc/apps/accreditation")) {
     throw new Error("Locator is missing the OGC directory reference (fallback guidance or notice).");
   }
-  checkpoint("locator search returned results in place with no zip in the URL; fee note + provenance + OGC guidance rendered");
+  checkpoint("locator search returned results in place with the Step 5 URL byte-identical and no history entry; fee note + provenance + OGC guidance rendered");
 
   // Idea #6 compliant surface: the fixture selects the sleep-apnea symptom at
   // Step 4, so the vetted provider-discussion prompt must render on Step 5.
@@ -585,6 +646,23 @@ async function runJourney() {
   }
   await waitForSelected(PATHWAY_CHECKBOX_XPATH, true);
   checkpoint("pathway evidence mapping rendered with theory-matched excerpt; checklist followed 5 → 6");
+
+  // Audit A01, second hosting surface: the same locator renders on Step 6
+  // (`/secondary/evidence`), and the no-URL guarantee has to hold there too.
+  // This page's URL already carries `?regSnapshot=…`, so the equality assertion
+  // additionally proves the search leaves an existing query string untouched
+  // rather than rebuilding it from the lookup.
+  checkpoint("verify the locator on Step 6 keeps the lookup out of the URL too");
+  const step6LocatorUrlBefore = await webdriver("GET", `/session/${sessionId}/url`);
+  await setInputValue("//input[@name='zip']", LOCATOR_ZIP);
+  await clickXpath("//button[contains(normalize-space(.), 'Search directory')]");
+  const step6LocatorText = await waitForLocatorResults("Step 6");
+  const step6LocatorUrl = await webdriver("GET", `/session/${sessionId}/url`);
+  await assertLocatorUrlUnchanged(step6LocatorUrlBefore, step6LocatorUrl, "Step 6");
+  if (!step6LocatorText.includes("Find an accredited representative near you")) {
+    throw new Error("Locator card is missing its heading on Step 6 after the directory search.");
+  }
+  checkpoint("Step 6 locator returned results in place with the existing query string untouched");
 
   checkpoint("verify the Clear checkmarks control resets the pathway checklist store");
   await clickXpath("//button[contains(normalize-space(.), 'Clear checkmarks')]");
