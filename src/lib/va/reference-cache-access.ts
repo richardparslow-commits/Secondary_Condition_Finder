@@ -101,7 +101,7 @@ export interface WithVaReferenceCacheOptions<T> {
    * trusted links or provenance labels this deployment never wrote. A value
    * the guard rejects is treated as a miss. Omit to accept any cached value.
    */
-  acceptSharedCached?: (view: T) => boolean;
+  acceptSharedCached?: (view: unknown) => boolean;
   /**
    * Per-key single-flight for shared-cache misses (audit A-03): one instance
    * claims a short lease and fetches while contenders wait a bounded window for
@@ -139,7 +139,7 @@ export async function withVaReferenceCache<T>(
     singleFlight = false,
   } = options;
   const asHit = (view: T): T => (decorateHit ? decorateHit(view) : view);
-  const trusted = (view: T): boolean =>
+  const trusted = (view: unknown): boolean =>
     acceptSharedCached ? acceptSharedCached(view) : true;
 
   if (!enabled) {

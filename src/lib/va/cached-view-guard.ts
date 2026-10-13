@@ -1,5 +1,9 @@
 import "server-only";
 
+import { z } from "zod";
+
+import { ACCREDITED_REP_TYPE_VALUES, APPROVED_RADIUS_MILES } from "./accredited-representative-constants";
+import { vaProvenanceCopy, type VaReferenceSurface } from "./provenance";
 import { liveSource, type VaApiEnvironment } from "./sandbox";
 import { isTrustedHttpsUrl } from "./trusted-link";
 
@@ -7,24 +11,16 @@ import { isTrustedHttpsUrl } from "./trusted-link";
  * Read-side trust guard for cached VA reference views (audit item 12:
  * "invalid cache values cannot set trusted links/source labels").
  *
- * Envelope versioning in `reference-shared-cache.ts` proves the bytes came
- * from an application write, but not that the value still looks like what this
- * loader would have produced. A shared hit is served as a **live VA-labelled**
+ * Envelope versioning in `reference-shared-cache.ts` checks the storage format,
+ * not authorship or that the value still looks like what this loader produces. A shared hit is served as a **live VA-labelled**
  * view, so the cached value must carry this deployment's provenance (source +
  * environment), bounded labels, and only credential-free HTTPS links. A value
  * that fails the guard is treated as a miss — the caller refetches instead of
- * displaying it. Process-local entries are written only through this same path
- * (validated shared hit or the loader's own freshly built view), so the
- * process-local tier does not need a second guard.
- *
- * Deliberately structural, not schema-per-loader: it constrains the fields
- * that decide labels, links, and trust (`source`, `sourceLabel`, `notice`,
- * `live`, `environment`, `retrievedAt`, link-like keys anywhere in the value)
- * while leaving the loader's own reference data fields to the loader.
- * A04 crash-path slice: `items` must be an array (every live view serves one;
- * a non-array `items` crashes the UI's list rendering) and a non-null
- * `retrievedAt` must parse as a date, not merely fit a length bound. Timestamps
- * stay tolerant of `null`; per-loader field DTOs remain the loader's job.
+ * displaying it. The structural helpers below retain the original crash-path
+ * checks. Loaders use the stricter per-loader Zod cache DTOs at the end of this
+ * module: exact provenance copy, bounded fields/items/dates, and lookup binding
+ * without storing raw search text or a lookup ZIP. Envelope versions/epochs and
+ * lookup hashes establish consistency, not cryptographic writer authenticity.
  */
 
 const MAX_LABEL_LENGTH = 200;
@@ -133,4 +129,117 @@ export function isTrustedCachedClaimFormReference(
     return false;
   }
   return hasTrustedLinks(view);
+}
+
+/** App cache DTO limits, not VA API limits. Keep validation work bounded. */
+export const VA_CACHE_DTO_MAX_ITEMS = 200;
+export const VA_FORMS_CACHE_MAX_ITEMS = 25;
+const boundedText = (max: number) => z.string().min(1).max(max);
+const cachedUrl = boundedText(2_048).refine(isTrustedHttpsUrl);
+const revisionDate = z.union([
+  z.iso.date(),
+  z.iso.datetime({ offset: true }).max(MAX_TIMESTAMP_LENGTH),
+]).nullable();
+
+function provenanceDto(surface: VaReferenceSurface, environment: VaApiEnvironment) {
+  const copy = vaProvenanceCopy(surface, environment);
+  return {
+    source: z.literal(liveSource(environment)),
+    sourceLabel: z.literal(copy.sourceLabel),
+    notice: z.literal(copy.notice),
+  };
+}
+
+function liveStatusDto(surface: VaReferenceSurface, environment: VaApiEnvironment) {
+  return {
+    ...provenanceDto(surface, environment),
+    live: z.literal(true),
+    environment: z.literal(environment),
+    retrievedAt: z.iso.datetime({ offset: true }).max(MAX_TIMESTAMP_LENGTH),
+    cacheStatus: z.enum(["hit", "miss"]),
+  };
+}
+
+const formItemDto = z.strictObject({
+  formName: boundedText(MAX_LABEL_LENGTH),
+  title: boundedText(MAX_LABEL_LENGTH),
+  url: cachedUrl,
+  lastRevisionOn: revisionDate,
+  pages: z.number().int().min(0).max(1_000).nullable(),
+  validPdf: z.boolean().nullable(),
+});
+
+/**
+ * Bind redacted lookup DTOs to the exact cache key requested. The key already
+ * hashes normalized text/ZIP; never restore those inputs to the stored value.
+ * Old/unbound entries deliberately miss until refreshed (five-minute TTL).
+ */
+export function formsFinderCacheDto(environment: VaApiEnvironment, lookupKey: string) {
+  return z.strictObject({
+    ...liveStatusDto("forms-finder", environment),
+    lookupKey: z.literal(lookupKey),
+    query: z.literal(""),
+    items: z.array(formItemDto).max(VA_FORMS_CACHE_MAX_ITEMS),
+  });
+}
+
+export function claimFormReferenceCacheDto(environment: VaApiEnvironment) {
+  return z.strictObject({
+    ...provenanceDto("form-reference", environment),
+    formName: boundedText(MAX_LABEL_LENGTH).refine((name) => name.toUpperCase() === "21-526EZ"),
+    title: boundedText(MAX_LABEL_LENGTH),
+    url: cachedUrl,
+    lastRevisionOn: revisionDate,
+  });
+}
+
+export function serviceBranchCacheDto(environment: VaApiEnvironment) {
+  return z.strictObject({
+    ...liveStatusDto("service-branches", environment),
+    items: z.array(z.strictObject({
+      code: boundedText(50),
+      description: boundedText(MAX_LABEL_LENGTH),
+    })).min(1).max(VA_CACHE_DTO_MAX_ITEMS),
+  });
+}
+
+export function disabilityReferenceCacheDto(environment: VaApiEnvironment) {
+  return z.strictObject({
+    ...liveStatusDto("disability-reference", environment),
+    items: z.array(z.strictObject({
+      id: boundedText(20).regex(/^-?\d+$/),
+      name: boundedText(MAX_LABEL_LENGTH),
+    })).min(1).max(VA_CACHE_DTO_MAX_ITEMS),
+  });
+}
+
+const accreditedRepresentativeCacheItemDto = z.strictObject({
+  id: boundedText(MAX_LABEL_LENGTH),
+  name: boundedText(MAX_LABEL_LENGTH),
+  organization: boundedText(MAX_LABEL_LENGTH).nullable().optional(),
+  accreditationType: z.enum(ACCREDITED_REP_TYPE_VALUES),
+  specializations: z.array(boundedText(MAX_LABEL_LENGTH)).max(20).nullable().optional(),
+  phone: boundedText(50).nullable().optional(),
+  website: cachedUrl.nullable().optional(),
+  address: boundedText(500).nullable().optional(),
+  zip: z.string().regex(/^\d{5}$/),
+  distanceMiles: z.number().min(0).max(10_000).nullable().optional(),
+});
+
+export function accreditedRepresentativeCacheDto(
+  environment: VaApiEnvironment,
+  lookupKey: string,
+  params: { radiusMiles?: number; type?: "VSO" | "agent" | "attorney" },
+) {
+  return z.strictObject({
+    ...liveStatusDto("accredited-representatives", environment),
+    lookupKey: z.literal(lookupKey),
+    params: z.strictObject({
+      zip: z.literal(""),
+      radiusMiles: z.literal(APPROVED_RADIUS_MILES)
+        .refine((radius) => radius === (params.radiusMiles ?? 50)),
+      type: params.type === undefined ? z.undefined().optional() : z.literal(params.type),
+    }),
+    items: z.array(accreditedRepresentativeCacheItemDto).max(VA_CACHE_DTO_MAX_ITEMS),
+  });
 }

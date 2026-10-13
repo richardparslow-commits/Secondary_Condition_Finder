@@ -1,6 +1,6 @@
 import "server-only";
 
-import { isTrustedCachedLiveView } from "./cached-view-guard";
+import { accreditedRepresentativeCacheDto } from "./cached-view-guard";
 import {
   resolveVaResultEnvironment,
   vaFallbackStatus,
@@ -90,9 +90,10 @@ export async function loadAccreditedRepresentatives(
   // Fallbacks already carry params and are never cached (cacheable: false).
   const redactedParams: AccreditedRepresentativeSearchParams = {
     zip: "",
-    radiusMiles: params.radiusMiles,
+    radiusMiles: params.radiusMiles ?? 50,
     type: params.type,
   };
+  const cacheDto = accreditedRepresentativeCacheDto(configuredEnvironment, cacheKey, params);
   const cached = await withVaReferenceCache<AccreditedRepresentativeView>(
     cacheKey,
     async () => {
@@ -101,7 +102,19 @@ export async function loadAccreditedRepresentatives(
         return { view: localFallback(params), cacheable: false };
       }
 
-      const items = [...result.data.data].sort((a, b) => {
+      // The upstream schema allows extra provider fields; cache only our DTO.
+      const items = result.data.data.map((item) => ({
+        id: item.id,
+        name: item.name,
+        organization: item.organization,
+        accreditationType: item.accreditationType,
+        specializations: item.specializations,
+        phone: item.phone,
+        website: item.website,
+        address: item.address,
+        zip: item.zip,
+        distanceMiles: item.distanceMiles,
+      })).sort((a, b) => {
         const da = a.distanceMiles ?? Number.MAX_SAFE_INTEGER;
         const db = b.distanceMiles ?? Number.MAX_SAFE_INTEGER;
         if (da !== db) return da - db;
@@ -115,6 +128,7 @@ export async function loadAccreditedRepresentatives(
       return {
         cacheable: true,
         view: {
+          lookupKey: cacheKey,
           params: redactedParams,
           items,
           ...vaLiveStatus(
@@ -131,10 +145,8 @@ export async function loadAccreditedRepresentatives(
       enabled: cacheActive,
       singleFlight: cacheActive,
       decorateHit: (view) => ({ ...view, cacheStatus: "hit" }),
-      // Read-side guard: a shared value may only be served if it still carries
-      // this deployment's provenance and only credential-free HTTPS links.
-      acceptSharedCached: (view) =>
-        isTrustedCachedLiveView(view, configuredEnvironment),
+      // A04: exact ZIP-hash/radius/type binding and bounded directory records.
+      acceptSharedCached: (view) => cacheDto.safeParse(view).success,
     },
   );
 
