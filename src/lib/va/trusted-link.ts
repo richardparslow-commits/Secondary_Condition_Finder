@@ -9,8 +9,16 @@ import "server-only";
  * schemas (`sandbox.ts`) and the cached-view guard so a value written to the
  * cache and a value read back are held to the same rule.
  *
- * Only the scheme is constrained: legitimate directory data can point outside
- * va.gov (for example a VSO's own website), so host approval is the VA
- * payload's responsibility, not a rewrite here.
+ * Two rules, chosen per surface (audit A04): `isTrustedHttpsUrl` requires only a
+ * credential-free HTTPS URL, and `isTrustedVaOfficialUrl` additionally requires
+ * an official VA host. Form metadata uses the second; directory records — which
+ * legitimately point at a VSO's own site — use the first. Host approval is
+ * otherwise the calling surface's responsibility, not a rewrite here.
  */
-export { isTrustedHttpsUrl, TRUSTED_LINK_REQUIREMENT } from "./public-reference-schemas.mjs";
+export {
+  isTrustedHttpsUrl,
+  isTrustedVaOfficialUrl,
+  TRUSTED_LINK_REQUIREMENT,
+  VA_OFFICIAL_LINK_REQUIREMENT,
+  VA_OFFICIAL_LINK_HOSTS,
+} from "./public-reference-schemas.mjs";

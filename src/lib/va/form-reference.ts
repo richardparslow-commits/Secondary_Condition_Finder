@@ -106,8 +106,12 @@ export async function loadClaimFormReference(
       // entirely when it is off.
       enabled: cacheActive,
       singleFlight: cacheActive,
-      // A04: this key serves only 21-526EZ, with bounded metadata/dates.
-      acceptSharedCached: (view) => cacheDto.safeParse(view).success,
+      // A04: this key serves only 21-526EZ, with bounded metadata/dates and a
+      // VA-host link, applied at every tier including this loader's fresh view.
+      cacheTrust: {
+        accepts: (view) => cacheDto.safeParse(view).success,
+        degradedView: () => LOCAL_FORM_REFERENCE,
+      },
     },
   );
 }

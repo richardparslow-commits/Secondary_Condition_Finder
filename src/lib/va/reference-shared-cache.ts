@@ -17,9 +17,29 @@ const VA_SHARED_CACHE_PREFIX_DEFAULT = "va:ref:";
 // upstream timeout (4s) and retries. The deadline covers the *whole* exchange
 // (headers **and** body), not just the response headers.
 const SHARED_CACHE_TIMEOUT_MS = 750;
-const SHARED_CACHE_MAX_VALUE_BYTES = 256 * 1024; // 256 KiB guard — reference views are small
-const SHARED_CACHE_MAX_RESPONSE_BYTES = 64 * 1024; // bounded read for KV command replies
 const SHARED_CACHE_MAX_KEY_LENGTH = 256;
+
+/**
+ * Shared-store byte budgets (audit A04: the read and write envelopes must be
+ * the *same* envelope).
+ *
+ * The previous pair was 256 KiB admitted on write and 64 KiB bounded on read,
+ * so a value between the two was written successfully and then returned a cache
+ * miss on every later read — a silent, permanent no-op that also consumed the
+ * per-namespace write budget. A Redis-REST reply wraps the stored envelope in a
+ * JSON string (`{ result: [epoch, value] }`), so every quote or backslash
+ * inside the envelope costs an extra byte on the way back; the size that
+ * matters is therefore the **projected reply**, not the raw value.
+ *
+ * A write is admitted only when that projection fits the read budget minus
+ * `VA_SHARED_CACHE_REPLY_RESERVE_BYTES`, a small reserve for reply framing the
+ * projection does not model. Anything larger would be unreadable, so it is
+ * refused up front instead of being stored. `readBoundedJsonObject` still caps
+ * the body at the same budget and fails closed (a miss) rather than buffering
+ * an oversized or hostile reply.
+ */
+export const VA_SHARED_CACHE_MAX_REPLY_BYTES = 64 * 1024;
+export const VA_SHARED_CACHE_REPLY_RESERVE_BYTES = 512;
 
 /**
  * Cache-key policy (audit A-03 item 5): the shared store is a cache, not a
@@ -214,7 +234,7 @@ async function postRedisCommand(
  */
 async function readBoundedJsonObject(
   response: Response,
-  maxBytes = SHARED_CACHE_MAX_RESPONSE_BYTES,
+  maxBytes = VA_SHARED_CACHE_MAX_REPLY_BYTES,
 ): Promise<Record<string, unknown> | null> {
   const body = response.body;
   if (!body) return null;
@@ -250,6 +270,37 @@ async function readBoundedJsonObject(
   } catch {
     return null;
   }
+}
+
+function serializeEnvelope(epoch: string, value: unknown): string | null {
+  try {
+    return JSON.stringify({
+      envelopeVersion: VA_SHARED_CACHE_ENVELOPE_VERSION,
+      epoch,
+      value,
+    });
+  } catch {
+    return null;
+  }
+}
+
+/** Bytes the store would return for `serialized`, using the reader's own shape. */
+function replyBytesFor(epoch: string, serialized: string): number {
+  return Buffer.byteLength(JSON.stringify({ result: [epoch, serialized] }), "utf8");
+}
+
+/**
+ * Project the KV reply byte count for a candidate value, or null when it cannot
+ * be serialized. Exported so the write budget is a measurable number a test can
+ * check against the read budget instead of a re-declared constant.
+ */
+export function vaSharedCacheReplyBytes(
+  value: unknown,
+  epoch: string = VA_SHARED_CACHE_EPOCH_DEFAULT,
+): number | null {
+  const serialized = serializeEnvelope(epoch, value);
+  if (serialized === null) return null;
+  return replyBytesFor(epoch, serialized);
 }
 
 export async function readVaSharedReferenceCache<T>(
@@ -327,20 +378,19 @@ export async function writeVaSharedReferenceCache<T>(
     return;
   }
 
-  let serialized: string;
-  try {
-    serialized = JSON.stringify({
-      envelopeVersion: VA_SHARED_CACHE_ENVELOPE_VERSION,
-      epoch,
-      value,
-    });
-  } catch {
+  const serialized = serializeEnvelope(epoch, value);
+  if (serialized === null) {
     sharedLogger.warn("va shared cache write skipped — unserializable value");
     return;
   }
-  const bytes = Buffer.byteLength(serialized, "utf8");
-  if (bytes > SHARED_CACHE_MAX_VALUE_BYTES) {
-    sharedLogger.warn("va shared cache write skipped — value too large", { bytes });
+  // A04: refuse anything a reader could not return, measured as the reply the
+  // reader actually parses rather than the value's own byte count.
+  const bytes = replyBytesFor(epoch, serialized);
+  const budget = VA_SHARED_CACHE_MAX_REPLY_BYTES - VA_SHARED_CACHE_REPLY_RESERVE_BYTES;
+  if (bytes > budget) {
+    sharedLogger.warn("va shared cache write skipped — reply would exceed the read budget", {
+      bytes,
+    });
     return;
   }
 

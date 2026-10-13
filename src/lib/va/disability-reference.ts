@@ -99,7 +99,11 @@ export async function loadDisabilityReference(
       enabled: cacheActive,
       singleFlight: cacheActive,
       decorateHit: (view) => ({ ...view, cacheStatus: "hit" }),
-      acceptSharedCached: (view) => cacheDto.safeParse(view).success,
+      // A04: bounded condition records, applied at every tier.
+      cacheTrust: {
+        accepts: (view) => cacheDto.safeParse(view).success,
+        degradedView: () => localFallback(),
+      },
     },
   );
 }

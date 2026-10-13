@@ -5,14 +5,14 @@ import { z } from "zod";
 import { ACCREDITED_REP_TYPE_VALUES, APPROVED_RADIUS_MILES } from "./accredited-representative-constants";
 import { vaProvenanceCopy, type VaReferenceSurface } from "./provenance";
 import { liveSource, type VaApiEnvironment } from "./sandbox";
-import { isTrustedHttpsUrl } from "./trusted-link";
+import { isTrustedHttpsUrl, isTrustedVaOfficialUrl } from "./trusted-link";
 
 /**
  * Read-side trust guard for cached VA reference views (audit item 12:
  * "invalid cache values cannot set trusted links/source labels").
  *
  * Envelope versioning in `reference-shared-cache.ts` checks the storage format,
- * not authorship or that the value still looks like what this loader produces. A shared hit is served as a **live VA-labelled**
+ * not authorship or that the value still looks like what this loader produces. A cached hit is served as a **live VA-labelled**
  * view, so the cached value must carry this deployment's provenance (source +
  * environment), bounded labels, and only credential-free HTTPS links. A value
  * that fails the guard is treated as a miss — the caller refetches instead of
@@ -21,6 +21,24 @@ import { isTrustedHttpsUrl } from "./trusted-link";
  * module: exact provenance copy, bounded fields/items/dates, and lookup binding
  * without storing raw search text or a lookup ZIP. Envelope versions/epochs and
  * lookup hashes establish consistency, not cryptographic writer authenticity.
+ *
+ * **Where the DTO is applied (audit A04).** `withVaReferenceCache` runs the
+ * loader's trust policy at every tier, not only on a shared read: a
+ * process-local hit, an ordinary shared hit, a contender-published hit, and the
+ * loader's own fresh view before either tier is written. An invalid cached
+ * candidate is a miss; an invalid fresh view becomes the loader's labelled
+ * local fallback instead of being rendered as live VA data. The structural
+ * helpers exported below are the coarse layer used by the guard tests and by
+ * any future caller without a loader DTO — they cannot know which surface a
+ * list belongs to.
+ *
+ * **Loader-specific link rules.** `isTrustedHttpsUrl` (credential-free HTTPS,
+ * any host) is the structural rule: it is what a directory record may need,
+ * because a VSO's or attorney's own site is legitimately outside va.gov. The
+ * per-loader DTOs add the host rule where the surface's own data is expected to
+ * be VA-hosted: a VA Forms item URL and the single-form reference URL must be
+ * on `va.gov` (see `isTrustedVaOfficialUrl`), while a representative `website`
+ * keeps the structural rule.
  */
 
 const MAX_LABEL_LENGTH = 200;
@@ -121,7 +139,8 @@ export function isTrustedCachedClaimFormReference(
   if (!hasTrustedProvenance(view, environment)) return false;
   if (!isBoundedText(view.formName, MAX_LABEL_LENGTH)) return false;
   if (!isBoundedText(view.title, MAX_LABEL_LENGTH)) return false;
-  if (typeof view.url !== "string" || !isTrustedHttpsUrl(view.url)) return false;
+  // Single-form metadata is VA-hosted by definition (A04 link-origin policy).
+  if (typeof view.url !== "string" || !isTrustedVaOfficialUrl(view.url)) return false;
   if (
     view.lastRevisionOn !== null &&
     !isBoundedText(view.lastRevisionOn, MAX_TIMESTAMP_LENGTH)
@@ -135,7 +154,10 @@ export function isTrustedCachedClaimFormReference(
 export const VA_CACHE_DTO_MAX_ITEMS = 200;
 export const VA_FORMS_CACHE_MAX_ITEMS = 25;
 const boundedText = (max: number) => z.string().min(1).max(max);
+/** Directory records may point at an external site; see the module note above. */
 const cachedUrl = boundedText(2_048).refine(isTrustedHttpsUrl);
+/** VA Forms payloads are expected to be VA-hosted. */
+const vaHostedUrl = boundedText(2_048).refine(isTrustedVaOfficialUrl);
 const revisionDate = z.union([
   z.iso.date(),
   z.iso.datetime({ offset: true }).max(MAX_TIMESTAMP_LENGTH),
@@ -163,7 +185,7 @@ function liveStatusDto(surface: VaReferenceSurface, environment: VaApiEnvironmen
 const formItemDto = z.strictObject({
   formName: boundedText(MAX_LABEL_LENGTH),
   title: boundedText(MAX_LABEL_LENGTH),
-  url: cachedUrl,
+  url: vaHostedUrl,
   lastRevisionOn: revisionDate,
   pages: z.number().int().min(0).max(1_000).nullable(),
   validPdf: z.boolean().nullable(),
@@ -188,7 +210,7 @@ export function claimFormReferenceCacheDto(environment: VaApiEnvironment) {
     ...provenanceDto("form-reference", environment),
     formName: boundedText(MAX_LABEL_LENGTH).refine((name) => name.toUpperCase() === "21-526EZ"),
     title: boundedText(MAX_LABEL_LENGTH),
-    url: cachedUrl,
+    url: vaHostedUrl,
     lastRevisionOn: revisionDate,
   });
 }
