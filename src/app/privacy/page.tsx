@@ -12,7 +12,7 @@ export default function PrivacyPage() {
   return (
     <main className="max-w-4xl mx-auto px-4 py-8 text-gray-900">
       <h1 className="text-3xl font-bold mb-4">Privacy Policy</h1>
-      <p className="text-sm text-gray-600 mb-6">Last updated: October 4, 2026</p>
+      <p className="text-sm text-gray-600 mb-6">Last updated: October 13, 2026</p>
 
       <section className="space-y-4 text-sm leading-relaxed">
         <div className="bg-blue-50 border-l-4 border-blue-600 p-4 rounded">
@@ -130,6 +130,16 @@ export default function PrivacyPage() {
         </p>
         <p>
           <strong>What deletion does and does not cover.</strong> Data stored in your browser tab (workflow state, local evidence excerpts, OCR checkpoints) is under your control through the in-app clearing controls and closing the tab; it is not held by this application, so a deletion request grants nothing new for it. Hosting-platform request and operational logs are covered by the operator log-retention review, not host-independent deletion.
+        </p>
+        <p>
+          <strong>How to start a request.</strong> The{" "}
+          <Link href="/privacy/request" className="font-medium text-blue-700 hover:underline">
+            privacy request intake page
+          </Link>{" "}
+          prepares a deletion, access, correction, or question message and opens your own email application, so
+          the request is never sent to this application: it travels from your email account to the monitored
+          address below. Sending that message is what starts a request — there is no server record and no
+          account involved, and no identifying detail is entered on this site.
         </p>
         <p>
           <strong>How to reach a human.</strong> Send requests, or any privacy question, to <a href="mailto:privacy@secondaryconditionfinder.org" className="font-medium text-blue-700 hover:underline">privacy@secondaryconditionfinder.org</a> — a monitored mail route with a human handling each request; you will receive acknowledgment and a completion confirmation by the same channel. VA resources remain independent of this application and are provided for completeness: VA&apos;s privacy program at <a href="https://www.va.gov/privacy/" className="font-medium text-blue-700 hover:underline" target="_blank" rel="noopener noreferrer">https://www.va.gov/privacy/</a> and VA&apos;s main phone line, 1-800-827-1000 (VA benefits main line; not a privacy-request intake channel).

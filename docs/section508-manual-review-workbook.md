@@ -122,6 +122,7 @@ The route list below is the complete set of routes the application ships (`src/a
 | `/get-records` — how to obtain VA medical records | [ ] | |
 | `/scenarios` — demo-scenario launcher and synthetic-data notice | [ ] | |
 | `/privacy` | [ ] | |
+| `/privacy/request` — privacy request intake (prepared mailto links, copyable message text, no form) | [ ] | |
 | `/terms` | [ ] | |
 | `/runtime-readiness` — operational readiness status page | [ ] | |
 | Global footer legal disclaimer on every route that renders it | [ ] | |

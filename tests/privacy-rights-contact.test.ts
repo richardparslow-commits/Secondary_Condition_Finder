@@ -63,6 +63,14 @@ describe("privacy policy deletion right and contact channel (R-01 / B-02)", () =
     expect(terms).toMatch(/7\. Privacy and Local Evidence Handling/);
   });
 
+  it("points at the intake path a visitor can actually start a request from", () => {
+    // R-01 also requires a working intake path: the policy must name the route
+    // that prepares a request, and that route must not ship a placeholder.
+    expect(privacy).toContain('href="/privacy/request"');
+    expect(privacy).not.toMatch(/REPLACE_WITH/);
+    expect(terms).toContain('href="/privacy/request"');
+  });
+
   it("does not claim an intake form or postal channel that does not exist", () => {
     expect(privacy).not.toMatch(/request form|postal (address|mail)|PO Box/);
     expect(privacy).not.toMatch(/within (3|7|14|30) days/);

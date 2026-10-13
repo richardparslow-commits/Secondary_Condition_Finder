@@ -18,6 +18,7 @@ const EXPECTED_PAGE_TITLES = [
   ["src/app/va-forms/page.tsx", "VA Form Reference | Secondary Condition Finder"],
   ["src/app/va-reference/page.tsx", "Disability Reference | Secondary Condition Finder"],
   ["src/app/pathways/page.tsx", "Claim Pathways | Secondary Condition Finder"],
+  ["src/app/privacy/request/page.tsx", "Privacy Request | Secondary Condition Finder"],
 ] as const;
 
 const EXPECTED_LAYOUT_TITLES = [
@@ -50,6 +51,7 @@ describe("manual accessibility route document titles", () => {
       ["/", "src/app/layout.tsx"],
       ["/about", "src/app/about/page.tsx"],
       ["/privacy", "src/app/privacy/layout.tsx"],
+      ["/privacy/request", "src/app/privacy/request/page.tsx"],
       ["/terms", "src/app/terms/page.tsx"],
       ["/secondary", "src/app/secondary/page.tsx"],
       ["/secondary/diagnosed", "src/app/secondary/diagnosed/page.tsx"],
@@ -69,6 +71,7 @@ describe("manual accessibility route document titles", () => {
       "/",
       "/about",
       "/privacy",
+      "/privacy/request",
       "/terms",
       "/secondary",
       "/secondary/diagnosed",
