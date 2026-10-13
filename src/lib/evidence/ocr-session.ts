@@ -41,6 +41,29 @@ export const OCR_MAX_CANVAS_AREA_PX = 16_777_216;
 /** Never render below this scale even for absurdly large pages. */
 export const OCR_MIN_RENDER_SCALE = 0.1;
 
+/**
+ * Hard ceiling on the **decoded** pixel count of a direct image upload
+ * (audit A06). The canvas area cap bounds the render target, but a direct
+ * image upload is decoded at its own intrinsic size first, so a
+ * decompression bomb (a few hundred KB declaring 60,000 × 60,000) would
+ * allocate gigabytes before any cap applied. Accepted containers therefore
+ * declare their dimensions in a header this module reads **before** any
+ * decode: 40 MP comfortably covers a 24 MP phone photo and a 300 dpi
+ * letter-size scan (~8.7 MP) while refusing bomb-shaped inputs.
+ */
+export const OCR_MAX_IMAGE_PIXELS = 40_000_000;
+
+/** Hard ceiling on either declared image dimension (px). */
+export const OCR_MAX_IMAGE_DIMENSION = 20_000;
+
+/**
+ * Hard elapsed-work budget for one browser-local OCR job. The per-page loop
+ * checks this at every page boundary, and the owning component arms a timer
+ * that fires it so a `recognize()` promise which never settles still ends the
+ * job and terminates the worker instead of pinning the tab forever.
+ */
+export const OCR_JOB_DEADLINE_MS = 5 * 60 * 1000;
+
 /** Pages recognized per continuous burst before a browser yield + checkpoint. */
 export const OCR_PAGES_PER_CHUNK = 8;
 
@@ -110,6 +133,339 @@ export function computeOcrRenderMetrics(
   }
 
   return { scale, canvasWidth, canvasHeight, downscaled: scale < OCR_BASE_RENDER_SCALE };
+}
+
+export interface OcrJobDeadline {
+  /** True once the elapsed-work budget has been reached. */
+  exceeded(): boolean;
+  /** Cancels the timer. Safe to call more than once. */
+  clear(): void;
+}
+
+/**
+ * Arms the elapsed-work budget for one OCR job.
+ *
+ * `onExpire` runs exactly once, at the deadline, so the owner can terminate a
+ * worker whose `recognize()` promise may never settle — the case a per-page
+ * boundary check alone cannot reach, because a hung await never returns to the
+ * boundary. The callback is isolated: a throw inside teardown must not defeat
+ * the budget or escape as an unhandled rejection.
+ */
+export function startOcrJobDeadline(
+  budgetMs: number = OCR_JOB_DEADLINE_MS,
+  onExpire: () => void = () => {},
+): OcrJobDeadline {
+  let expired = false;
+  if (!(Number.isFinite(budgetMs) && budgetMs > 0)) {
+    return { exceeded: () => false, clear: () => {} };
+  }
+  const timer = setTimeout(() => {
+    expired = true;
+    try {
+      onExpire();
+    } catch {
+      // Teardown failure must not defeat the budget it was arming.
+    }
+  }, budgetMs);
+  // Do not let a pending budget keep a Node process (tests, SSR imports) alive.
+  (timer as unknown as { unref?: () => void }).unref?.();
+  return {
+    exceeded: () => expired,
+    clear: () => {
+      clearTimeout(timer);
+    },
+  };
+}
+
+export interface ImageDimensions {
+  width: number;
+  height: number;
+}
+
+function asciiAt(bytes: Uint8Array, offset: number, text: string): boolean {
+  if (offset < 0 || offset + text.length > bytes.length) return false;
+  for (let i = 0; i < text.length; i += 1) {
+    if (bytes[offset + i] !== text.charCodeAt(i)) return false;
+  }
+  return true;
+}
+
+function u16be(bytes: Uint8Array, offset: number): number | null {
+  if (offset < 0 || offset + 2 > bytes.length) return null;
+  return (bytes[offset]! << 8) | bytes[offset + 1]!;
+}
+
+function u16le(bytes: Uint8Array, offset: number): number | null {
+  if (offset < 0 || offset + 2 > bytes.length) return null;
+  return bytes[offset]! | (bytes[offset + 1]! << 8);
+}
+
+function u32be(bytes: Uint8Array, offset: number): number | null {
+  if (offset < 0 || offset + 4 > bytes.length) return null;
+  return (
+    bytes[offset]! * 0x1000000 +
+    bytes[offset + 1]! * 0x10000 +
+    bytes[offset + 2]! * 0x100 +
+    bytes[offset + 3]!
+  );
+}
+
+function u32le(bytes: Uint8Array, offset: number): number | null {
+  if (offset < 0 || offset + 4 > bytes.length) return null;
+  return (
+    bytes[offset]! +
+    bytes[offset + 1]! * 0x100 +
+    bytes[offset + 2]! * 0x10000 +
+    bytes[offset + 3]! * 0x1000000
+  );
+}
+
+function i32le(bytes: Uint8Array, offset: number): number | null {
+  const value = u32le(bytes, offset);
+  if (value === null) return null;
+  return value >= 0x80000000 ? value - 0x100000000 : value;
+}
+
+function u24le(bytes: Uint8Array, offset: number): number | null {
+  if (offset < 0 || offset + 3 > bytes.length) return null;
+  return bytes[offset]! | (bytes[offset + 1]! << 8) | (bytes[offset + 2]! << 16);
+}
+
+function valid(dimensions: ImageDimensions | null): ImageDimensions | null {
+  if (!dimensions) return null;
+  const { width, height } = dimensions;
+  if (!Number.isInteger(width) || !Number.isInteger(height)) return null;
+  if (width <= 0 || height <= 0) return null;
+  return dimensions;
+}
+
+function pngDimensions(bytes: Uint8Array): ImageDimensions | null {
+  const signature = [0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a];
+  if (bytes.length < 24) return null;
+  if (!signature.every((byte, index) => bytes[index] === byte)) return null;
+  // IHDR must be the first chunk; its width/height are big-endian uint32 at
+  // bytes 16..19 and 20..23.
+  if (!asciiAt(bytes, 12, "IHDR")) return null;
+  const width = u32be(bytes, 16);
+  const height = u32be(bytes, 20);
+  if (width === null || height === null) return null;
+  return valid({ width, height });
+}
+
+/** Start-of-frame markers carry the JPEG's real dimensions (not the thumbnail). */
+function isJpegStartOfFrame(marker: number): boolean {
+  return (
+    (marker >= 0xc0 && marker <= 0xc3) ||
+    (marker >= 0xc5 && marker <= 0xc7) ||
+    (marker >= 0xc9 && marker <= 0xcb) ||
+    (marker >= 0xcd && marker <= 0xcf)
+  );
+}
+
+function jpegDimensions(bytes: Uint8Array): ImageDimensions | null {
+  if (bytes.length < 4 || bytes[0] !== 0xff || bytes[1] !== 0xd8) return null;
+  let pos = 2;
+  while (pos + 3 < bytes.length) {
+    if (bytes[pos] !== 0xff) {
+      pos += 1; // resynchronize on a malformed/embedded byte
+      continue;
+    }
+    const marker = bytes[pos + 1]!;
+    if (marker === 0xff || marker === 0x00) {
+      pos += 1;
+      continue;
+    }
+    if (marker === 0x01 || (marker >= 0xd0 && marker <= 0xd7)) {
+      pos += 2; // standalone markers carry no length
+      continue;
+    }
+    if (marker === 0xda || marker === 0xd9) return null; // entropy scan: no SOF
+    const length = u16be(bytes, pos + 2);
+    if (length === null || length < 2) return null;
+    if (isJpegStartOfFrame(marker)) {
+      const height = u16be(bytes, pos + 5);
+      const width = u16be(bytes, pos + 7);
+      if (width === null || height === null) return null;
+      return valid({ width, height });
+    }
+    pos += 2 + length;
+  }
+  return null;
+}
+
+function gifDimensions(bytes: Uint8Array): ImageDimensions | null {
+  if (!asciiAt(bytes, 0, "GIF87a") && !asciiAt(bytes, 0, "GIF89a")) return null;
+  const width = u16le(bytes, 6);
+  const height = u16le(bytes, 8);
+  if (width === null || height === null) return null;
+  return valid({ width, height });
+}
+
+function bmpDimensions(bytes: Uint8Array): ImageDimensions | null {
+  if (!asciiAt(bytes, 0, "BM")) return null;
+  const width = i32le(bytes, 18);
+  // A negative height means a top-down bitmap; the magnitude is the height.
+  const height = i32le(bytes, 22);
+  if (width === null || height === null) return null;
+  return valid({ width, height: Math.abs(height) });
+}
+
+function webpDimensions(bytes: Uint8Array): ImageDimensions | null {
+  if (!asciiAt(bytes, 0, "RIFF") || !asciiAt(bytes, 8, "WEBP")) return null;
+  if (asciiAt(bytes, 12, "VP8X")) {
+    const width = u24le(bytes, 24);
+    const height = u24le(bytes, 27);
+    if (width === null || height === null) return null;
+    return valid({ width: width + 1, height: height + 1 });
+  }
+  if (asciiAt(bytes, 12, "VP8L")) {
+    // Signature byte 0x2f at 20, then 14-bit (width-1) and (height-1),
+    // little-endian bit order.
+    if (bytes[20] !== 0x2f) return null;
+    const bits = u32le(bytes, 21);
+    if (bits === null) return null;
+    return valid({ width: (bits & 0x3fff) + 1, height: ((bits >>> 14) & 0x3fff) + 1 });
+  }
+  if (asciiAt(bytes, 12, "VP8 ")) {
+    // Lossy frame header: 3-byte tag, then the 0x9d012a sync code at 23..25.
+    if (bytes[23] !== 0x9d || bytes[24] !== 0x01 || bytes[25] !== 0x2a) return null;
+    const width = u16le(bytes, 26);
+    const height = u16le(bytes, 28);
+    if (width === null || height === null) return null;
+    return valid({ width: width & 0x3fff, height: height & 0x3fff });
+  }
+  return null;
+}
+
+function tiffDimensions(bytes: Uint8Array): ImageDimensions | null {
+  const littleEndian = bytes[0] === 0x49 && bytes[1] === 0x49;
+  const bigEndian = bytes[0] === 0x4d && bytes[1] === 0x4d;
+  if (!littleEndian && !bigEndian) return null;
+  const u16 = (offset: number) => (littleEndian ? u16le(bytes, offset) : u16be(bytes, offset));
+  const u32 = (offset: number) => (littleEndian ? u32le(bytes, offset) : u32be(bytes, offset));
+  if (u16(2) !== 42) return null;
+  const ifdOffset = u32(4);
+  if (ifdOffset === null) return null;
+  const entryCount = u16(ifdOffset);
+  if (entryCount === null) return null;
+  let width: number | null = null;
+  let height: number | null = null;
+  // Bounded scan: a hostile IFD cannot make this loop unbounded work.
+  for (let index = 0; index < Math.min(entryCount, 512); index += 1) {
+    const entry = ifdOffset + 2 + index * 12;
+    const tag = u16(entry);
+    const type = u16(entry + 2);
+    if (tag === null || type === null) break;
+    if (tag !== 256 && tag !== 257) continue;
+    const value = type === 3 ? u16(entry + 8) : type === 4 ? u32(entry + 8) : null;
+    if (value === null || value <= 0) continue;
+    if (tag === 256) width = value;
+    else height = value;
+  }
+  if (width === null || height === null) return null;
+  return valid({ width, height });
+}
+
+/**
+ * Declared dimensions for every container the DD-214 upload accepts
+ * (PNG, JPEG, GIF, BMP, WebP, TIFF), read from the file header alone.
+ * Returns null when the header is truncated, malformed, or unrecognized —
+ * the caller must treat "unknown" as "cannot bound this decode".
+ */
+export function readImageDimensions(bytes: Uint8Array): ImageDimensions | null {
+  return (
+    pngDimensions(bytes) ??
+    jpegDimensions(bytes) ??
+    gifDimensions(bytes) ??
+    bmpDimensions(bytes) ??
+    webpDimensions(bytes) ??
+    tiffDimensions(bytes)
+  );
+}
+
+export type ImageDecodeRejection =
+  | "unknown-dimensions"
+  | "too-many-pixels"
+  | "dimension-too-large";
+
+export interface ImageDecodePlan {
+  accepted: boolean;
+  /** Why the image was refused; `"ok"` when accepted. */
+  reason: "ok" | ImageDecodeRejection;
+  dimensions: ImageDimensions | null;
+  /** Bounded render target for `recognize` (null when refused). */
+  metrics: OcrRenderMetrics | null;
+}
+
+/**
+ * Decides whether a direct image upload may be decoded, and at what bounded
+ * size, **before** any decode happens (audit A06). The declared dimensions are
+ * checked against a hard pixel ceiling and a per-dimension ceiling; an accepted
+ * image then renders through the same canvas area cap the PDF path uses, so the
+ * input handed to the OCR worker is bounded by construction.
+ */
+export function planImageDecode(
+  bytes: Uint8Array,
+  maxAreaPx: number = OCR_MAX_CANVAS_AREA_PX,
+): ImageDecodePlan {
+  const dimensions = readImageDimensions(bytes);
+  if (!dimensions) {
+    return { accepted: false, reason: "unknown-dimensions", dimensions: null, metrics: null };
+  }
+  if (
+    dimensions.width > OCR_MAX_IMAGE_DIMENSION ||
+    dimensions.height > OCR_MAX_IMAGE_DIMENSION
+  ) {
+    return { accepted: false, reason: "dimension-too-large", dimensions, metrics: null };
+  }
+  if (dimensions.width * dimensions.height > OCR_MAX_IMAGE_PIXELS) {
+    return { accepted: false, reason: "too-many-pixels", dimensions, metrics: null };
+  }
+  return {
+    accepted: true,
+    reason: "ok",
+    dimensions,
+    metrics: computeOcrRenderMetrics(dimensions.width, dimensions.height, maxAreaPx),
+  };
+}
+
+/**
+ * Joins per-page recognized text **in page order** under one character budget.
+ *
+ * The mixed-document path recognized text pages and image-only pages in
+ * separate passes, so appending each pass's results put every OCR'd page after
+ * every text-layer page — a re-ordered document whose dates and duty stations
+ * could be misread. Slots are indexed by page and joined here, and the character
+ * budget is applied in page order, so a truncated review is the document's
+ * prefix rather than whichever pass ran first.
+ */
+export function assemblePageOrderedText(
+  pageTexts: ReadonlyArray<string | null | undefined>,
+  textChars: number,
+): { text: string; truncated: boolean; keptChars: number } {
+  const budget = Number.isFinite(textChars) && textChars > 0 ? Math.floor(textChars) : 0;
+  const parts: string[] = [];
+  let kept = 0;
+  let truncated = false;
+  for (const raw of pageTexts) {
+    const text = typeof raw === "string" ? raw.trim() : "";
+    if (!text) continue;
+    const separator = parts.length > 0 ? 1 : 0;
+    const room = budget - kept - separator;
+    if (room <= 0) {
+      truncated = true;
+      break;
+    }
+    const slice = text.slice(0, room);
+    if (separator === 1) kept += 1;
+    parts.push(slice);
+    kept += slice.length;
+    if (slice.length < text.length) {
+      truncated = true;
+      break;
+    }
+  }
+  return { text: parts.join("\n"), truncated, keptChars: kept };
 }
 
 /**
