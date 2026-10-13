@@ -6,8 +6,11 @@ import type {
 } from "@/lib/engine/pathway-view";
 import { COMPOSITE_NEXUS_SUMMARY, NEXUS_CLAIM_LABEL } from "@/lib/evidence/pathway-mapper";
 import {
+  CAP_NOTICE,
   CHAIN_BREAK_NOTICE,
   CITATION_TRIAGE_GUARD,
+  DRAFT_EVIDENCE_BADGE,
+  DRAFT_EVIDENCE_NOTICE,
   POPULATION_LEVEL_GUARD,
 } from "@/components/pathways/PathwayExplorer";
 
@@ -37,6 +40,10 @@ import {
  *     published-relationship results above, that the graph is deliberately
  *     incomplete and may include draft mappings, and that an absent route is
  *     not a finding;
+ *   - a route whose hops rest on draft-authored evidence carries the shared
+ *     draft-provenance notice (audit A08), and a route list cut off by the
+ *     traversal's total-output bound says so — provenance and boundedness are
+ *     per-route facts here, not a section-level caveat;
  *   - the population-level guard and per-hop citation anchors travel with the
  *     authored corpus's own `verified` flag, so unverified evidence is
  *     triageable from the page;
@@ -126,6 +133,17 @@ export function GraphPathwayReview({ view }: { view: GraphPathwayMatchSectionVie
         </p>
         <p className="mt-2 text-sm leading-relaxed text-slate-700">{GRAPH_ROUTE_SECTION_GUARD}</p>
         <p className="mt-2 text-sm leading-relaxed text-slate-700">{POPULATION_LEVEL_GUARD}</p>
+        {view.draftAuthoredMatches > 0 && (
+          <p className="mt-2 text-sm leading-relaxed text-slate-700">
+            {view.draftAuthoredMatches === 1
+              ? "1 route below rests on draft-authored evidence and is labelled."
+              : `${view.draftAuthoredMatches} routes below rest on draft-authored evidence and are labelled.`}{" "}
+            {DRAFT_EVIDENCE_NOTICE}
+          </p>
+        )}
+        {view.cappedOrigins > 0 && (
+          <p className="mt-2 text-sm leading-relaxed text-slate-700">{CAP_NOTICE}</p>
+        )}
         {view.totalAnchors > 0 && (
           <p className="mt-2 text-sm leading-relaxed text-slate-700">
             {view.unverifiedAnchors === 0
@@ -188,6 +206,16 @@ function GraphPathwayMatchCard({ match }: { match: GraphPathwayMatchView }) {
         >
           <p className="font-semibold">Chain broken — a research lead, not a nexus.</p>
           <p className="mt-1">{CHAIN_BREAK_NOTICE}</p>
+        </div>
+      )}
+
+      {match.includesDraftAuthoredEvidence && (
+        <div
+          role="note"
+          className="mt-3 rounded-md border border-slate-300 bg-slate-100 p-3 text-sm leading-relaxed text-slate-800"
+        >
+          <p className="font-semibold">{DRAFT_EVIDENCE_BADGE}</p>
+          <p className="mt-1">{DRAFT_EVIDENCE_NOTICE}</p>
         </div>
       )}
 

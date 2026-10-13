@@ -55,6 +55,8 @@ const emptyView: GraphPathwayExplorerView = {
   origins: [],
   totalPathways: 0,
   chainBrokenPathways: 0,
+  draftAuthoredPathways: 0,
+  cappedOrigins: 0,
   totalAnchors: 0,
   unverifiedAnchors: 0,
 };
@@ -79,12 +81,17 @@ function singleOriginView(pathways: GraphPathwayView[]): GraphPathwayExplorerVie
         originConditionId: "fixture-origin",
         originConditionName: "Fixture Origin",
         pathways,
+        pathwaysCapped: false,
       },
     ],
     totalPathways: pathways.length,
     chainBrokenPathways: pathways.filter(
       (pathway) => pathway.compositeNexus === "ASSOCIATION_ONLY_CHAIN_BROKEN",
     ).length,
+    draftAuthoredPathways: pathways.filter(
+      (pathway) => pathway.includesDraftAuthoredEvidence,
+    ).length,
+    cappedOrigins: 0,
     totalAnchors: anchors.length,
     unverifiedAnchors: anchors.filter((anchor) => !anchor.verified).length,
   };
@@ -95,6 +102,7 @@ const associationOnlyView = singleOriginView([
     terminalConditionId: "fixture-terminal",
     terminalConditionName: "Fixture Terminal",
     compositeNexus: "ASSOCIATION_ONLY_CHAIN_BROKEN",
+    includesDraftAuthoredEvidence: false,
     hops: [
       {
         stepIndex: 0,
@@ -103,6 +111,7 @@ const associationOnlyView = singleOriginView([
         targetConditionId: "fixture-terminal",
         targetConditionName: "Fixture Terminal",
         nexusClassification: "ASSOCIATION_ONLY",
+        authoredDraft: false,
         anchors: [verifiedAnchor, unverifiedAnchor],
       },
     ],
@@ -114,6 +123,7 @@ const directCausationView = singleOriginView([
     terminalConditionId: "fixture-terminal",
     terminalConditionName: "Fixture Terminal",
     compositeNexus: "DIRECT_CAUSATION",
+    includesDraftAuthoredEvidence: false,
     hops: [
       {
         stepIndex: 0,
@@ -122,6 +132,7 @@ const directCausationView = singleOriginView([
         targetConditionId: "fixture-terminal",
         targetConditionName: "Fixture Terminal",
         nexusClassification: "DIRECT_CAUSATION",
+        authoredDraft: false,
         anchors: [verifiedAnchor],
       },
     ],
@@ -133,6 +144,7 @@ const aggravationView = singleOriginView([
     terminalConditionId: "fixture-terminal",
     terminalConditionName: "Fixture Terminal",
     compositeNexus: "AGGRAVATION",
+    includesDraftAuthoredEvidence: false,
     hops: [
       {
         stepIndex: 0,
@@ -141,6 +153,7 @@ const aggravationView = singleOriginView([
         targetConditionId: "fixture-midpoint",
         targetConditionName: "Fixture Midpoint",
         nexusClassification: "AGGRAVATION",
+        authoredDraft: false,
         anchors: [],
       },
       {
@@ -150,6 +163,7 @@ const aggravationView = singleOriginView([
         targetConditionId: "fixture-terminal",
         targetConditionName: "Fixture Terminal",
         nexusClassification: "DIRECT_CAUSATION",
+        authoredDraft: false,
         anchors: [verifiedAnchor],
       },
     ],

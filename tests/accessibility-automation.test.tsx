@@ -50,6 +50,7 @@ function hop(
   targetConditionId: string,
   targetConditionName: string,
   nexusClassification: GraphPathwayHopView["nexusClassification"] = "DIRECT_CAUSATION",
+  authoredDraft = false,
 ): GraphPathwayHopView {
   return {
     stepIndex,
@@ -58,6 +59,7 @@ function hop(
     targetConditionId,
     targetConditionName,
     nexusClassification,
+    authoredDraft,
     anchors: [
       { label: "PMID 12345678", sourceUrl: "https://pubmed.ncbi.nlm.nih.gov/12345678/", verified: true },
       { label: "example.gov", verified: false },
@@ -81,6 +83,7 @@ const EXPLORER_VIEW: GraphPathwayExplorerView = {
           terminalConditionId: "sleep-apnea",
           terminalConditionName: "Sleep apnea",
           compositeNexus: "DIRECT_CAUSATION",
+          includesDraftAuthoredEvidence: false,
           hops: [
             hop(0, "ptsd", "Post-traumatic stress disorder", "sleep-apnea", "Sleep apnea"),
           ],
@@ -89,12 +92,14 @@ const EXPLORER_VIEW: GraphPathwayExplorerView = {
           terminalConditionId: "hypertension",
           terminalConditionName: "Hypertension",
           compositeNexus: "DIRECT_CAUSATION",
+          includesDraftAuthoredEvidence: false,
           hops: [
             hop(0, "ptsd", "Post-traumatic stress disorder", "sleep-apnea", "Sleep apnea"),
             hop(1, "sleep-apnea", "Sleep apnea", "hypertension", "Hypertension", "AGGRAVATION"),
           ],
         },
       ],
+      pathwaysCapped: false,
     },
     {
       originConditionId: "tinnitus",
@@ -104,20 +109,27 @@ const EXPLORER_VIEW: GraphPathwayExplorerView = {
           terminalConditionId: "insomnia",
           terminalConditionName: "Insomnia",
           compositeNexus: "ASSOCIATION_ONLY_CHAIN_BROKEN",
+          // Draft-backed on purpose: the axe gate then renders the draft
+          // provenance notice as well as the chain-break notice (audit A08).
+          includesDraftAuthoredEvidence: true,
           hops: [
-            hop(0, "tinnitus", "Tinnitus", "insomnia", "Insomnia", "ASSOCIATION_ONLY"),
+            hop(0, "tinnitus", "Tinnitus", "insomnia", "Insomnia", "ASSOCIATION_ONLY", true),
           ],
         },
       ],
+      pathwaysCapped: true,
     },
     {
       originConditionId: "no-edges",
       originConditionName: "Condition with no authored edges",
       pathways: [],
+      pathwaysCapped: false,
     },
   ],
   totalPathways: 3,
   chainBrokenPathways: 1,
+  draftAuthoredPathways: 1,
+  cappedOrigins: 1,
   totalAnchors: 6,
   unverifiedAnchors: 3,
 };
@@ -130,11 +142,14 @@ const MATCH_SECTION_VIEW: GraphPathwayMatchSectionView = {
       terminalConditionId: "sleep-apnea",
       terminalConditionName: "Sleep apnea",
       compositeNexus: "DIRECT_CAUSATION",
+      includesDraftAuthoredEvidence: false,
       hops: [hop(0, "ptsd", "Post-traumatic stress disorder", "sleep-apnea", "Sleep apnea")],
     },
   ],
   totalAnchors: 2,
   unverifiedAnchors: 1,
+  draftAuthoredMatches: 0,
+  cappedOrigins: 0,
 };
 
 describe("axe gate — the multi-hop DAG visualizer", () => {
@@ -146,6 +161,10 @@ describe("axe gate — the multi-hop DAG visualizer", () => {
     expect(container.textContent).toContain("Post-traumatic stress disorder");
     expect(container.textContent).toContain("Chain broken");
     expect(container.textContent).toContain("No outgoing adjacency edges");
+    // The draft-provenance and bounded-output disclosures are part of the
+    // shipped markup, so the axe gate must cover them (audit A08).
+    expect(container.textContent).toContain("Draft-authored evidence");
+    expect(container.textContent).toContain("total-output bound");
 
     await expectNoBlockingA11yViolations(container);
   });

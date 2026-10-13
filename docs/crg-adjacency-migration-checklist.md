@@ -35,9 +35,77 @@ valid, not an error. The loader fails loud on:
 4. a duplicate `nodeId` (defense-in-depth while the filename check holds);
 5. a `nodeId` or edge `targetConditionId` that is not a catalog identity.
 
-Acyclicness is not re-checked in the loader: `scripts/audit-crg.ts` enforces it
-in CI, and the traversal itself is cycle-safe by construction (branch-set
-ancestor guard + shared `MAX_PATHWAY_HOPS`).
+The loader also rejects a directed cycle composed entirely of `DIRECT_CAUSATION`
+edges (fail-closed, content-free message `[kb-graph] Causation cycle detected.`).
+That check and the CI gate's verdict come from one shared contract, so they
+cannot disagree — see the invariant section below. The traversal is additionally
+cycle-safe by construction (branch-set ancestor guard, shared `MAX_PATHWAY_HOPS`,
+and a total-output bound).
+
+## Cycle, governance, and provenance invariants (audit A08)
+
+The A08 finding was that graph safety and DAG integrity were being treated as one
+property while three enforcement points implemented different rules: the runtime
+loader rejected only all-causation cycles, the adjacency gate rejected **every**
+cycle, and the corpus audit stated the intended policy a third time. The rule now
+lives once, in **`src/lib/kb/graph-cycle-policy.ts`**, which the loader and
+`npm run audit:crg:graph` both import:
+
+| Shape | Verdict | Where it is enforced |
+| --- | --- | --- |
+| Cycle whose every edge is `DIRECT_CAUSATION` | **violation** — a closed proximate-cause loop is not a defensible etiology | runtime loader (fail-closed at load) **and** `npm run audit:crg:graph` (both call `assertNoCausationCycle`) |
+| Cycle containing an `ASSOCIATION_ONLY` hop | **review finding** | adjacency gate requires a recorded disposition; `npm run audit:crg` reports it against `CRG_REVIEW_BASELINE` |
+| All-`AGGRAVATION` or mixed classification cycle | **review finding** | as above |
+| Two-node cycle (a bidirectional pair) | causation both ways → **violation**; otherwise a **review finding governed as the pair** | loader (causation only) and both audits — a reciprocal relationship is booked once, as the pair, never twice |
+
+The review class exists because a bidirectional pair with an association or
+aggravation direction is a *medically legitimate* shape whose directions must be
+independently guarded. Deleting a defensible direction to make a blanket DAG
+check pass is explicitly **not** the remedy; a recorded disposition is.
+
+**Reviewed-disposition ledger.** `docs/crg-adjacency-governance-ledger.json`
+(`KB_GRAPH_GOVERNANCE_RELATIVE`; override with `--governance=<path>` for fixture
+graphs) records that disposition. Reconciliation runs in **both** directions: a
+live review-class finding with no entry fails the gate
+(`CRG-ADJACENCY-REVIEW-UNGOVERNED`), and an entry that matches no live finding
+fails it too (`CRG-ADJACENCY-GOVERNANCE-STALE`) — so the ledger cannot rot into a
+claim about a graph that no longer exists. Cycle keys rotate to start at the
+lowest-ordered node; pair keys are `min<->max`; a two-node entry under
+`reviewedCycles` is refused outright, because that shape is the pair.
+
+**Bidirectional-association governance in the authored corpus.** The corpus audit
+(`npm run audit:crg`) separately requires every *published* bidirectional pair to
+carry a `governanceNotes` justification on **both** mapping files
+(`CRG-BIDIRECTIONAL-GOVERNANCE`: review class, a violation under `--strict`), so a
+new reciprocal direction cannot land without a reasoned, file-local
+justification. The two records are complementary and deliberately not merged: the
+ledger governs the adjacency files, the mapping notes govern the authored corpus.
+
+**Publication vs. research — the two representations, stated explicitly.** The
+authored corpus is the **publication** layer: its `draft` flag gates
+recommendation output, so a draft mapping can never reach a published result. The
+adjacency graph is a **research** layer: it may cite draft-authored evidence. That
+difference is now rendered per hop and per route rather than left implicit:
+
+- every hop carries `authoredDraft`, every route `includesDraftAuthoredEvidence`,
+  and both graph surfaces render the shared `DRAFT_EVIDENCE_NOTICE` on any route
+  resting on drafted evidence (`GraphPathwayReview` section totals included);
+- one provenance resolver (`mappingProvenanceResolver`) serves the server (full
+  authored corpus, where the authored flag is authoritative) and the browser
+  (published-only client corpus, where an absent mapping means draft-backed) — a
+  published hop is never mislabelled;
+- a bounded route list says so: the traversal stops at `MAX_PATHWAYS_PER_ORIGIN`
+  and reports `pathwaysCapped` / `cappedOrigins`, so a bounded prefix is never
+  presented as the whole graph.
+
+Pinned by `tests/crg-invariant-parity.test.ts` (runtime, adjacency gate and corpus
+audit agree on the same synthetic shapes) and
+`tests/graph-pathway-provenance.test.ts` (both representations label the same
+route, the browser cannot see the draft, the published case stays unlabelled, and
+the engine and graph builder are wired to the same published-only corpus). The
+corpus-audit rule table is a second statement of the policy by necessity (that
+script runs over authored mappings and cannot import the TypeScript module under
+the CI Node runtime), which is exactly why the parity suite exists.
 
 ## First migration — 2026-10-03
 
@@ -241,21 +309,31 @@ and authored the third adjacency node and its route in lockstep with the authore
    outgoing ranks are unique and gapless from 1.
 2. `nodeId` and every `targetConditionId` exist in the condition catalog.
 3. `npm run audit:crg:graph` exits 0 in hard mode: it loads ≥ 1 node, finds no
-   cycles, **and** confirms the ARCH-01 evidence join — every edge has an
-   authored suggestion for that (source, target) pair, with at least one
+   causation cycle, **and** confirms the ARCH-01 evidence join — every edge has
+   an authored suggestion for that (source, target) pair, with at least one
    citation and the same nexus classification. The gate reads the authored
    corpus from the graph directory's parent (or `--kb-root=`), and fails closed
-   when it cannot locate one.
-4. `tests/kb-graph-loader.test.ts` stays green (add cases for new failure
+   when it cannot locate one. A review-class shape (association/mixed/aggravation
+   cycle, or any bidirectional pair) additionally requires a recorded disposition
+   in `docs/crg-adjacency-governance-ledger.json` — unauthorised review shapes fail
+   the gate, and stale entries fail it too. Never resolve a finding by deleting a
+   defensible direction.
+4. A new edge whose source mapping is a **draft** is a research route: it must
+   stay out of the published layer and carry the draft-provenance disclosure on
+   every surface that shows it (the projection sets it; do not hand-render a
+   pathway view around it). See the invariant section above.
+5. `tests/kb-graph-loader.test.ts` stays green (add cases for new failure
    modes rather than weakening existing ones).
-5. `npm run kb:validate`, the authoring tracker, and the identity pins are
+6. `npm run kb:validate`, the authoring tracker, and the identity pins are
    untouched (this is why graph files stay out of the corpus root).
-6. For an **edge** migration, first settle the open narrative-preservation
+7. For an **edge** migration, first settle the open narrative-preservation
    decision below; then follow the ordinary evidence discipline: PubMed
    anchors, absent-check + `npm run citations:preflight`, citation purity
    (published mappings accept only `verified: true`), and one window per
    claim with redundancy reviewed through `npm run audit:crg`.
-7. Re-run the recommendation and UI pins affected by any new edge.
+8. Re-run the recommendation and UI pins affected by any new edge, including
+   `tests/graph-pathway-provenance.test.ts` and
+   `tests/crg-invariant-parity.test.ts`.
 
 ## Redundancy triage record
 

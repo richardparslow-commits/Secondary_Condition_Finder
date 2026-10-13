@@ -22,7 +22,9 @@ import { node } from "./helpers/pathway-fixtures";
  *   - invalid JSON              → hard failure
  *   - adjacency keys + bad body → hard failure
  *   - non-mapping JSON objects  → hard failure
- *   - a real cycle              → hard failure
+ *   - an all-causation cycle    → hard failure (a violation everywhere)
+ *   - a review-class shape      → hard failure until a recorded disposition
+ *                                 exists in the governance ledger (audit A08)
  */
 
 const SCRIPT = path.join(process.cwd(), "scripts", "audit-crg.ts");
@@ -113,15 +115,15 @@ describe("audit-crg.ts fail-closed behavior", () => {
     expect(result.stderr).toContain("neither KbNodeMapping adjacency files nor valid authored");
   });
 
-  it("detects a real multi-hop cycle in adjacency files", () => {
+  it("hard-fails a pure-causation cycle in adjacency files", () => {
     const edge = (sourceConditionId: string, targetConditionId: string) =>
       KbEdgeSchema.parse({
         sourceConditionId,
         targetConditionId,
         rank: 1,
         // Canonical graph-edge shape: ASSOCIATION_ONLY literals materialize
-        // from defaults; any cycle is a failure regardless of classification.
-        nexusClaim: { nexusClassification: "ASSOCIATION_ONLY" },
+        // from defaults; a causation cycle is a violation in every point.
+        nexusClaim: { nexusClassification: "DIRECT_CAUSATION" },
         causalMechanism: {
           mechanismCategory: "NOT_ESTABLISHED",
           primaryVector: "Synthetic fixture vector for adjacency gate coverage.",
@@ -151,8 +153,139 @@ describe("audit-crg.ts fail-closed behavior", () => {
     const result = run(fixtureDir({ "alpha.json": nodeA, "beta.json": nodeB }));
     expect(result.status).toBe(1);
     expect(result.stderr).toContain("circular");
+    expect(result.stderr).toContain("CRG-PURE-CAUSATION-CYCLE");
+  });
+
+  it("holds an association-only reciprocal pair for a recorded disposition instead of rejecting a defensible direction", () => {
+    // The A08 repro shape: this pair used to be rejected as a cycle by the gate
+    // while the runtime loader accepted it. Both directions are legitimate, so
+    // the gate now admits the shape once a qualified human records the decision
+    // — and fails closed until then, so it cannot land unreviewed either.
+    const ungoverned = run(fixtureDir(reciprocalAssociationPairFiles()));
+    expect(ungoverned.status).toBe(1);
+    expect(ungoverned.stderr).toContain("CRG-ADJACENCY-REVIEW-UNGOVERNED");
+    expect(ungoverned.stderr).toContain("alpha<->beta");
+    // Not a blanket "circular" rejection: the pair is legitimate, the review is
+    // what is missing.
+    expect(ungoverned.stderr).not.toContain("circular");
+
+    const withLedger = fixtureDir({
+      ...reciprocalAssociationPairFiles("graph/"),
+      ...authoredAssociationPairCorpus(),
+      "ledger.json": {
+        version: 1,
+        reviewedCycles: [],
+        reviewedBidirectionalPairs: [
+          { pair: ["alpha", "beta"], disposition: "Synthetic recorded decision for the gate contract." },
+        ],
+      },
+    });
+
+    const governed = run(path.join(withLedger, "graph"), [
+      `--kb-root=${withLedger}`,
+      `--governance=${path.join(withLedger, "ledger.json")}`,
+    ]);
+    // Admitted end to end: the pair is legitimate, the record exists, and the
+    // authored join still has to hold.
+    expect(governed.status, governed.stderr).toBe(0);
+    expect(governed.stdout).toContain("reviewed pair alpha<->beta");
+    expect(governed.stdout).toContain("ARCH-01");
+  });
+
+  it("fails a ledger entry that describes no live finding, even on a currently clean graph", () => {
+    // Otherwise the last resolved finding's entry would linger unexamined and
+    // the record would quietly stop describing the graph it governs.
+    const associationOnly = {
+      version: 1,
+      reviewedCycles: [],
+      reviewedBidirectionalPairs: [
+        { pair: ["gone-a", "gone-b"], disposition: "Resolved; entry left behind." },
+      ],
+    };
+    const dir = fixtureDir({
+      "graph/alpha.json": KbNodeMappingSchema.parse({
+        nodeId: "alpha",
+        outgoingEdges: [edgeSchema("alpha", "beta")],
+      }),
+      "ledger.json": associationOnly,
+    });
+    const result = run(path.join(dir, "graph"), [
+      `--governance=${path.join(dir, "ledger.json")}`,
+    ]);
+
+    expect(result.status).toBe(1);
+    expect(result.stderr).toContain("CRG-ADJACENCY-GOVERNANCE-STALE");
+    expect(result.stderr).toContain("gone-a<->gone-b");
   });
 });
+
+/**
+ * Minimal parsed graph edge for the governance cases. Association-only edges
+ * carry the canonical hypothesized shape, mirroring the shared traversal
+ * fixtures; a causation edge carries the asserted shape.
+ */
+function edgeSchema(
+  sourceConditionId: string,
+  targetConditionId: string,
+  classification: "DIRECT_CAUSATION" | "AGGRAVATION" | "ASSOCIATION_ONLY" = "DIRECT_CAUSATION",
+) {
+  const associationOnly = classification === "ASSOCIATION_ONLY";
+  return KbEdgeSchema.parse({
+    sourceConditionId,
+    targetConditionId,
+    rank: 1,
+    nexusClaim: { nexusClassification: classification },
+    causalMechanism: {
+      mechanismCategory: associationOnly ? "NOT_ESTABLISHED" : "PSYCHOPHYSIOLOGICAL",
+      primaryVector: "Synthetic fixture vector for the adjacency gate governance contract.",
+      hypothesizedOnly: associationOnly,
+    },
+    evidentiaryProfile: {
+      etiologicalConsensus: associationOnly ? "NOT_ESTABLISHED" : "PROBABLE",
+      vaNexusProbabilityAlignment: associationOnly ? "NOT_ASSERTED" : "AT_LEAST_AS_LIKELY_AS_NOT",
+      conservativeRationale: "Synthetic fixture rationale for the adjacency gate governance contract.",
+      evidenceGaps: "Synthetic fixture gap.",
+      alternativeEtiologiesToRuleOut: ["Synthetic alternative"],
+      requiresSpecificDbqEvidence: false,
+    },
+    rationale: "Synthetic fixture edge used only to exercise governance entry reconciliation.",
+    evidenceGaps: ["Synthetic fixture gap for governance reconciliation."],
+  });
+}
+
+/** A reciprocal association-only pair — the A08 repro shape, as adjacency files. */
+function reciprocalAssociationPairFiles(prefix = "") {
+  return {
+    [`${prefix}alpha.json`]: KbNodeMappingSchema.parse({
+      nodeId: "alpha",
+      outgoingEdges: [edgeSchema("alpha", "beta", "ASSOCIATION_ONLY")],
+    }),
+    [`${prefix}beta.json`]: KbNodeMappingSchema.parse({
+      nodeId: "beta",
+      outgoingEdges: [edgeSchema("beta", "alpha", "ASSOCIATION_ONLY")],
+    }),
+  };
+}
+
+/**
+ * Authored evidence for the pair above: cloned from a real published-association
+ * record (three citations, ASSOCIATION_ONLY) with fixture identities only, so
+ * the join runs against evidence the shipped corpus actually carries rather than
+ * a hand-written suggestion. `beta.json` carries the reciprocal suggestion so
+ * each direction is its own authored claim, which is what the corpus audit's
+ * governance-note rule and this gate's ledger both model.
+ */
+function authoredAssociationPairCorpus() {
+  const base = loadKnowledgeBase().find((mapping) => mapping.id === "liver-cancer");
+  if (!base) throw new Error("Fixture base mapping liver-cancer is missing from the shipped corpus.");
+  const alpha = structuredClone(base);
+  alpha.id = "alpha";
+  alpha.suggestions = alpha.suggestions.map((suggestion) => ({ ...suggestion, conditionId: "beta" }));
+  const beta = structuredClone(base);
+  beta.id = "beta";
+  beta.suggestions = beta.suggestions.map((suggestion) => ({ ...suggestion, conditionId: "alpha" }));
+  return { "alpha.json": alpha, "beta.json": beta };
+}
 
 /**
  * ARCH-01: the adjacency gate also refuses unsupported edges.

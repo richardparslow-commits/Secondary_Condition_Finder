@@ -15,7 +15,7 @@ import {
   NEXUS_CLAIM_LABEL,
 } from "@/lib/evidence/pathway-mapper";
 import { KB_GRAPH_DIR_RELATIVE } from "@/lib/kb/graph-layout";
-import { MAX_PATHWAY_HOPS } from "@/lib/kb/pathway-depth";
+import { MAX_PATHWAY_HOPS, MAX_PATHWAYS_PER_ORIGIN } from "@/lib/kb/pathway-depth";
 
 /**
  * End-to-end rendering contract for `/pathways` over the SHIPPED catalog and
@@ -89,6 +89,7 @@ interface OracleHop {
   targetConditionId: string;
   targetConditionName: string;
   nexusClassification: NexusClassification;
+  authoredDraft: boolean;
   anchors: OracleAnchor[];
 }
 
@@ -96,6 +97,7 @@ interface OraclePathway {
   terminalConditionId: string;
   terminalConditionName: string;
   compositeNexus: CompositeNexus;
+  includesDraftAuthoredEvidence: boolean;
   hops: OracleHop[];
 }
 
@@ -103,12 +105,15 @@ interface OracleOrigin {
   originConditionId: string;
   originConditionName: string;
   pathways: OraclePathway[];
+  pathwaysCapped: boolean;
 }
 
 interface OracleView {
   origins: OracleOrigin[];
   totalPathways: number;
   chainBrokenPathways: number;
+  draftAuthoredPathways: number;
+  cappedOrigins: number;
   totalAnchors: number;
   unverifiedAnchors: number;
 }
@@ -229,6 +234,21 @@ function readAuthoredAnchors(
   }));
 }
 
+/**
+ * The authored corpus's own `draft` flag for one condition, read from raw disk:
+ * the oracle's independent statement of the publication/research split (A08).
+ * The server view is what the `/pathways` page renders, so the authored flag is
+ * authoritative there — a hop is draft-authored exactly when its source mapping
+ * says so. A missing mapping file throws rather than defaulting, because an
+ * absent authored backing is an integrity failure, not a provenance state.
+ */
+function readMappingDraft(conditionId: string): boolean {
+  const parsed = readJsonFile(path.join(KB_DIR, `${conditionId}.json`)) as {
+    draft?: boolean;
+  };
+  return parsed.draft === true;
+}
+
 /** VA proximate-cause precedence: association-only breaks the chain. */
 function deriveOracleComposite(
   classifications: readonly NexusClassification[],
@@ -270,6 +290,7 @@ function oraclePathways(
         targetConditionId: edge.targetConditionId,
         targetConditionName: nameOf(edge.targetConditionId),
         nexusClassification: edge.nexusClassification as NexusClassification,
+        authoredDraft: readMappingDraft(currentId),
         anchors: readAuthoredAnchors(currentId, edge.targetConditionId),
       });
       const compositeNexus = deriveOracleComposite(
@@ -280,6 +301,7 @@ function oraclePathways(
         terminalConditionId: edge.targetConditionId,
         terminalConditionName: nameOf(edge.targetConditionId),
         compositeNexus,
+        includesDraftAuthoredEvidence: chain.some((hop) => hop.authoredDraft),
         hops: chain.map((hop) => ({ ...hop })),
       });
 
@@ -306,11 +328,18 @@ function buildOracleView(): OracleView {
   const nameOf = (conditionId: string): string =>
     names.get(conditionId) ?? conditionId;
 
-  const origins: OracleOrigin[] = nodes.map((node) => ({
-    originConditionId: node.nodeId,
-    originConditionName: nameOf(node.nodeId),
-    pathways: oraclePathways(node.nodeId, nodesById, nameOf),
-  }));
+  const origins: OracleOrigin[] = nodes.map((node) => {
+    const pathways = oraclePathways(node.nodeId, nodesById, nameOf);
+    return {
+      originConditionId: node.nodeId,
+      originConditionName: nameOf(node.nodeId),
+      pathways,
+      // The oracle states the bound independently: it emits every route the
+      // traversal would, so a capped list would only appear if the shipped
+      // corpus actually reached `MAX_PATHWAYS_PER_ORIGIN`.
+      pathwaysCapped: pathways.length >= MAX_PATHWAYS_PER_ORIGIN,
+    };
+  });
 
   const allPathways = origins.flatMap((origin) => origin.pathways);
   const allAnchors = allPathways
@@ -323,6 +352,10 @@ function buildOracleView(): OracleView {
     chainBrokenPathways: allPathways.filter(
       (pathway) => pathway.compositeNexus === "ASSOCIATION_ONLY_CHAIN_BROKEN",
     ).length,
+    draftAuthoredPathways: allPathways.filter(
+      (pathway) => pathway.includesDraftAuthoredEvidence,
+    ).length,
+    cappedOrigins: origins.filter((origin) => origin.pathwaysCapped).length,
     totalAnchors: allAnchors.length,
     unverifiedAnchors: allAnchors.filter((anchor) => !anchor.verified).length,
   };

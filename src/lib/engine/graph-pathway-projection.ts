@@ -79,6 +79,46 @@ export type HopAnchorResolver = (
   targetConditionId: string,
 ) => GraphPathwayAnchorView[];
 
+/**
+ * Publication/provenance resolver for one hop (audit A08): true when the hop's
+ * authored backing is a DRAFT mapping. It is a REQUIRED parameter of the
+ * projection so a new surface cannot silently render a research route without
+ * its provenance.
+ *
+ * The two representations are deliberately different layers, and this is the
+ * fact that makes the difference visible instead of implicit:
+ *
+ *   - the **authored corpus** is the publication layer. Its `draft` flag gates
+ *     recommendation output (`publishedMappings` / `recommend()`), so a draft
+ *     mapping cannot reach a published result.
+ *   - the **adjacency graph** is a research layer. It may cite draft-authored
+ *     evidence — that is the point of the signed design's research routes — so
+ *     a graph pathway can rest on evidence that is not published.
+ *
+ * Rather than pretend the two are in parity, every graph surface derives this
+ * flag and discloses it, and `tests/graph-pathway-provenance.test.ts` pins that
+ * a draft-backed route stays out of the published/recommendation layer while
+ * being labelled as draft-backed where it is shown.
+ */
+export type HopProvenanceResolver = (sourceConditionId: string) => boolean;
+
+/**
+ * Provenance resolver over a corpus map: absent ⇒ draft-backed.
+ *
+ * The server passes the FULL authored corpus, so the authored `draft` flag is
+ * authoritative. The browser passes the published-only corpus (PRIV-01), where
+ * a mapping absent from the map means the edge is backed by a draft — the
+ * client cannot see the draft, so it must not report it as published.
+ */
+export function mappingProvenanceResolver(
+  mappingById: ReadonlyMap<string, ConditionMapping>,
+): HopProvenanceResolver {
+  return (sourceConditionId: string): boolean => {
+    const mapping = mappingById.get(sourceConditionId);
+    return mapping ? mapping.draft === true : true;
+  };
+}
+
 export function mappingAnchorResolver(
   mappingById: ReadonlyMap<string, ConditionMapping>,
 ): HopAnchorResolver {
@@ -96,30 +136,38 @@ export function mappingAnchorResolver(
  *   the ID, exactly as the surfaces render them.
  * @param resolveAnchors - Hop anchor resolver (authored-corpus join on the
  *   server, public client-corpus anchor index in the browser).
+ * @param resolveProvenance - Hop publication resolver; the projection is
+ *   required to state, per hop and per pathway, whether the route rests on
+ *   draft-authored evidence (audit A08).
  */
 export function projectGraphPathway(
   pathway: ClaimPathway,
   conditionName: (conditionId: string) => string,
   resolveAnchors: HopAnchorResolver,
+  resolveProvenance: HopProvenanceResolver,
 ): GraphPathwayView {
+  const hops = pathway.hops.map<GraphPathwayHopView>((hop) => {
+    const anchors = resolveAnchors(hop.edge.sourceConditionId, hop.edge.targetConditionId);
+    if (anchors.length === 0) {
+      throw new Error(`[kb-graph] Missing authored evidence for ${hop.edge.sourceConditionId} -> ${hop.edge.targetConditionId}`);
+    }
+    return {
+      stepIndex: hop.stepIndex,
+      sourceConditionId: hop.edge.sourceConditionId,
+      sourceConditionName: conditionName(hop.edge.sourceConditionId),
+      targetConditionId: hop.edge.targetConditionId,
+      targetConditionName: conditionName(hop.edge.targetConditionId),
+      nexusClassification: hop.edge.nexusClaim.nexusClassification,
+      authoredDraft: resolveProvenance(hop.edge.sourceConditionId),
+      anchors,
+    };
+  });
+
   return {
     terminalConditionId: pathway.terminalConditionId,
     terminalConditionName: conditionName(pathway.terminalConditionId),
     compositeNexus: pathway.compositeNexus,
-    hops: pathway.hops.map<GraphPathwayHopView>((hop) => {
-      const anchors = resolveAnchors(hop.edge.sourceConditionId, hop.edge.targetConditionId);
-      if (anchors.length === 0) {
-        throw new Error(`[kb-graph] Missing authored evidence for ${hop.edge.sourceConditionId} -> ${hop.edge.targetConditionId}`);
-      }
-      return {
-        stepIndex: hop.stepIndex,
-        sourceConditionId: hop.edge.sourceConditionId,
-        sourceConditionName: conditionName(hop.edge.sourceConditionId),
-        targetConditionId: hop.edge.targetConditionId,
-        targetConditionName: conditionName(hop.edge.targetConditionId),
-        nexusClassification: hop.edge.nexusClaim.nexusClassification,
-        anchors,
-      };
-    }),
+    hops,
+    includesDraftAuthoredEvidence: hops.some((hop) => hop.authoredDraft),
   };
 }

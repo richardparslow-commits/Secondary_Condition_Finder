@@ -38,6 +38,14 @@
  *    findings. Without the ratchet a gate that exits 0 on REVIEW could absorb
  *    unbounded new structural debt while still reporting green.
  *
+ * The classification table above is stated a second time, in TypeScript, by
+ * `src/lib/kb/graph-cycle-policy.ts` — the contract the runtime loader and the
+ * adjacency gate import. This script runs over authored mappings rather than
+ * adjacency files and cannot import that module under the CI Node runtime, so
+ * `tests/crg-invariant-parity.test.ts` pins the two against each other on
+ * synthetic shapes: a divergence between this audit's verdict and the runtime /
+ * adjacency-gate verdict fails a test instead of shipping (audit A08).
+ *
  * This audit is enforced by CI (.github/workflows/ci.yml, steps "Audit CRG
  * graph structure" and "Audit CRG adjacency graph"). Wiring is load-bearing:
  * an audit whose FAIL path no job executes cannot signal anything, no matter

@@ -5,8 +5,12 @@ import { indexById } from "@/lib/catalog/lookup";
 import { loadKbGraph } from "@/lib/kb/graph";
 import { loadKnowledgeBase } from "@/lib/kb/load";
 
-import { mappingAnchorResolver, projectGraphPathway } from "./graph-pathway-projection";
-import { generateClaimPathways } from "./pathway-generator";
+import {
+  mappingAnchorResolver,
+  mappingProvenanceResolver,
+  projectGraphPathway,
+} from "./graph-pathway-projection";
+import { generateClaimPathwaysBounded } from "./pathway-generator";
 import type {
   GraphPathwayExplorerView,
   GraphPathwayOriginView,
@@ -48,19 +52,27 @@ export function buildPathwayExplorerView(): GraphPathwayExplorerView {
   );
   const conditionName = (conditionId: string): string =>
     byId.get(conditionId)?.name ?? conditionId;
+  const resolveAnchors = mappingAnchorResolver(mappingById);
+  // Full authored corpus ⇒ the authored `draft` flag is authoritative for
+  // provenance (audit A08).
+  const resolveProvenance = mappingProvenanceResolver(mappingById);
 
   const origins: GraphPathwayOriginView[] = [...graph.keys()]
     .sort()
     .map((originConditionId) => {
-      const pathways: GraphPathwayView[] = generateClaimPathways(
+      const { pathways: traversed, capped } = generateClaimPathwaysBounded(
         originConditionId,
         graph,
-      ).map((pathway) => projectGraphPathway(pathway, conditionName, mappingAnchorResolver(mappingById)));
+      );
+      const pathways: GraphPathwayView[] = traversed.map((pathway) =>
+        projectGraphPathway(pathway, conditionName, resolveAnchors, resolveProvenance),
+      );
 
       return {
         originConditionId,
         originConditionName: conditionName(originConditionId),
         pathways,
+        pathwaysCapped: capped,
       };
     });
 
@@ -75,6 +87,10 @@ export function buildPathwayExplorerView(): GraphPathwayExplorerView {
     chainBrokenPathways: allPathways.filter(
       (pathway) => pathway.compositeNexus === "ASSOCIATION_ONLY_CHAIN_BROKEN",
     ).length,
+    draftAuthoredPathways: allPathways.filter(
+      (pathway) => pathway.includesDraftAuthoredEvidence,
+    ).length,
+    cappedOrigins: origins.filter((origin) => origin.pathwaysCapped).length,
     totalAnchors: allAnchors.length,
     unverifiedAnchors: allAnchors.filter((anchor) => !anchor.verified).length,
   };

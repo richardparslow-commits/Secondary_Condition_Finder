@@ -8,6 +8,16 @@ import type { KbNodeMapping, KnowledgeBase } from "./schema";
  *
  * Type-only imports keep this usable by the native Node corpus generator as
  * well as the server loader and browser-safe corpus builder.
+ *
+ * Publication is a *separate* fact from this join (audit A08): the join accepts
+ * draft-backed edges because the adjacency graph is a research layer, while the
+ * authored corpus's `draft` flag is the publication layer that gates
+ * recommendation output. Rather than pretend the two are in parity, each
+ * surface derives the hop's publication state through
+ * `mappingProvenanceResolver` (`src/lib/engine/graph-pathway-projection.ts`, one
+ * implementation for the server's full corpus and the browser's published-only
+ * corpus) and discloses it per route; `tests/graph-pathway-provenance.test.ts`
+ * pins that separation across both representations.
  */
 export function assertGraphEvidenceJoins(
   kb: KnowledgeBase,

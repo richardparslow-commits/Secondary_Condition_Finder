@@ -35,3 +35,20 @@ export const MAX_PATHWAY_HOPS = 2;
 export function isWithinPathwayDepth(length: number): boolean {
   return length <= MAX_PATHWAY_HOPS;
 }
+
+/**
+ * Total-output bound per traversal origin (audit A08).
+ *
+ * `MAX_PATHWAY_HOPS` bounds the DEPTH of one pathway; it does not bound how
+ * many pathways one origin can emit, because output grows with the depth-2
+ * frontier (out-degree × out-degree). The authored corpus today yields a
+ * handful of routes per origin, so the traversal had no independent total cap
+ * — a future dense frontier could emit thousands of legally-coherent pathways
+ * from one node and hold a browser tab (or a request) open doing it.
+ *
+ * The cap is deliberately far above any current origin's output: it exists to
+ * bound work, not to trim normal results. When it is reached the traversal
+ * stops and REPORTS that it was reached (`pathwaysCapped` on the origin view),
+ * so a bounded prefix is never presented as the whole graph.
+ */
+export const MAX_PATHWAYS_PER_ORIGIN = 256;
