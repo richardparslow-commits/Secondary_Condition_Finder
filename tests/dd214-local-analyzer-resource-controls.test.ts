@@ -28,6 +28,22 @@ import { describe, expect, it } from "vitest";
  *    the current generation resets busy state (same contract as the A07
  *    fence in LocalEvidenceAnalyzer).
  * 9. The raw-text preview is labeled by its actual redaction scope.
+ *
+ * The 2026-10-13 A06 closure added the direct-image and elapsed-work half of
+ * the contract:
+ *
+ * 10. A direct image is bounded **before** decode through `planImageDecode`
+ *     (declared dimensions, never the raw file, handed to OCR as a bounded
+ *     canvas), and a refusal is explained instead of silently failing.
+ * 11. Each run is armed with `startOcrJobDeadline`, whose expiry terminates
+ *     the live worker/task so an awaited `recognize()` that never settles
+ *     cannot pin the tab; Cancel and unmount use the same teardown path.
+ * 12. Retained text is assembled in page order under the review budget via
+ *     `assemblePageOrderedText`, replacing append-per-pass collection.
+ *
+ * Behaviour for 10–12 is mounted in
+ * tests/dd214-image-decode-bounds-mounted.test.tsx; these assertions pin the
+ * wiring so the component cannot quietly drop it.
  */
 const analyzer = fs.readFileSync(
   path.join(process.cwd(), "src/components/presumptive/Dd214LocalAnalyzer.tsx"),
@@ -88,5 +104,36 @@ describe("DD-214 analyzer resource/integrity controls (A06)", () => {
   it("labels the raw-text preview by its actual redaction scope", () => {
     expect(analyzer).toContain("Show extracted text (common SSN layouts redacted)");
     expect(analyzer).not.toContain("Show redacted extracted text");
+  });
+
+  it("bounds a direct image before decode and refuses with an explanation", () => {
+    expect(analyzer).toContain("planImageDecode(imageBytes)");
+    expect(analyzer).toContain("if (!plan.accepted || !plan.metrics || !plan.dimensions)");
+    expect(analyzer).toContain("imageRefusalMessage(plan.reason, plan.dimensions)");
+    // The bounded canvas is what reaches OCR in the normal path.
+    expect(analyzer).toContain("worker.recognize(canvas)");
+    expect(analyzer).toContain("ctx.drawImage(source, 0, 0, canvas.width, canvas.height)");
+    // The decoded bitmap is released, not left to GC.
+    expect(analyzer).toContain("source.close()");
+  });
+
+  it("arms an elapsed-work budget that terminates the live worker on expiry", () => {
+    expect(analyzer).toContain("startOcrJobDeadline(OCR_JOB_DEADLINE_MS");
+    expect(analyzer).toContain("terminateActiveRun()");
+    expect(analyzer).toContain("deadline.clear();");
+    // Cancel and unmount go through the same teardown, so "cancelled" cannot
+    // mean three slightly different things.
+    expect(analyzer).toContain("requestCancel");
+    expect(analyzer).toContain("deadlineRef.current?.clear();");
+    expect(analyzer).toContain("await worker.terminate()");
+    expect(analyzer).toContain("await task.destroy()");
+  });
+
+  it("assembles retained text in page order under the review budget", () => {
+    expect(analyzer).toContain("assemblePageOrderedText(pageTexts, limits.textChars)");
+    expect(analyzer).toContain("pageTexts[page - 1] = text");
+    // The old append-per-pass collection is gone.
+    expect(analyzer).not.toMatch(/pageSegments?\.push\(/);
+    expect(analyzer).not.toMatch(/rawText \+=/);
   });
 });

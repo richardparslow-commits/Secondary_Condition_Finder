@@ -44,11 +44,22 @@ function maskSsn(value: string): string | undefined {
   return `XXX-XX-${last4}`;
 }
 
+/**
+ * One SSN shape instead of a list of the layouts we happened to think of
+ * (audit A06, preview minimization). Three digits, two digits, four digits
+ * separated by **any run of up to three non-digit characters** — hyphen,
+ * spaces, dots, underscores, en/em dashes, NBSP, or nothing at all — which is
+ * what scanned and OCR'd forms actually produce. The previous pattern list
+ * covered only hyphen, space, and bare-digit forms, so `123.45.6789`,
+ * `123–45–6789`, and `123_45_6789` survived into the raw preview.
+ *
+ * The 3-3-4 phone shape stays readable by construction: after a 3-digit group,
+ * a separator, and a 2-digit group, a phone's next character is a digit, which
+ * neither `[^\d\n]{0,3}` nor the following 4-digit group can consume.
+ */
+const SSN_SEPARATOR = "[^\\d\\n]{0,3}";
 const SSN_PATTERNS = [
-  /\b(\d{3}-\d{2}-\d{4})\b/g,
-  /\b(\d{9})\b/g,
-  // Common OCR variant with space separators
-  /\b(\d{3}\s+\d{2}\s+\d{4})\b/g,
+  new RegExp(`\\b(\\d{3}${SSN_SEPARATOR}\\d{2}${SSN_SEPARATOR}\\d{4})\\b`, "g"),
 ];
 
 function extractMaskedSsn(text: string): string | undefined {
@@ -82,11 +93,29 @@ const DATE_REGEXES: RegExp[] = [
   /\b(\d{1,2})\s+(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)[a-z]*\s+(\d{4})\b/gi,
 ];
 
+const DAYS_IN_MONTH = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+
+function isLeapYear(year: number): boolean {
+  return (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
+}
+
+function daysInMonth(year: number, month: number): number {
+  if (month === 2 && isLeapYear(year)) return 29;
+  return DAYS_IN_MONTH[month - 1] ?? 0;
+}
+
+/**
+ * Real calendar validation (audit A06). The previous bound was `d <= 31`, so
+ * `02/31/2020` was emitted as an ISO-shaped date and only the downstream
+ * adapter could object. A date that does not exist is not a date: it is
+ * dropped so the Veteran verifies it instead of confirming a value the app
+ * invented.
+ */
 function toIso(y: number, m: number, d: number): string | null {
   if (!Number.isInteger(y) || !Number.isInteger(m) || !Number.isInteger(d)) return null;
   if (y < 1900 || y > 2100) return null;
   if (m < 1 || m > 12) return null;
-  if (d < 1 || d > 31) return null;
+  if (d < 1 || d > daysInMonth(y, m)) return null;
   const mm = String(m).padStart(2, "0");
   const dd = String(d).padStart(2, "0");
   return `${y}-${mm}-${dd}`;
@@ -169,15 +198,28 @@ function redactSsnFromRaw(text: string): string {
 
 export function parseDd214Text(
   rawText: string,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars -- limits reserved for future bounds; keep signature symmetric with document-extract
-  _limits: EvidenceLimits,
+  limits: EvidenceLimits,
 ): Dd214Extraction {
-  const trimmed = rawText.slice(0, 200_000);
+  // A06: honor the caller's character budget instead of a private constant.
+  // The analyzer retains `limits.textChars` (500,000 in Standard depth) and the
+  // parser used to slice at 200,000 regardless, so a caller that passed a
+  // smaller budget (or a larger one) got a different bound than it asked for —
+  // silently, and without any disclosure that the tail was never inspected.
+  const budget =
+    Number.isFinite(limits.textChars) && limits.textChars > 0
+      ? Math.floor(limits.textChars)
+      : 0;
+  const trimmed = rawText.slice(0, budget);
   const branches = extractBranches(trimmed);
   const ssn = extractMaskedSsn(trimmed);
   const { start, end, warnings: dateWarnings } = extractServiceDates(trimmed);
   const locations = extractLocations(trimmed);
   const warnings: string[] = [...dateWarnings];
+  if (trimmed.length < rawText.length) {
+    warnings.push(
+      `Only the first ${trimmed.length.toLocaleString("en-US")} characters were analyzed — verify dates and locations against your DD-214.`,
+    );
+  }
   if (!ssn) warnings.push("No SSN pattern detected — manual entry preserved.");
   if (!start && !end) warnings.push("Service dates not detected — verify dates/locations before proceeding.");
   if (locations.length === 0) warnings.push("Duty-station/location not detected — verify and edit before matching.");

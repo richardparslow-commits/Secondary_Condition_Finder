@@ -6,11 +6,16 @@ import { useEffect, useRef, useState } from "react";
 import { parseDd214Text } from "@/lib/evidence/dd214-extract";
 import { EVIDENCE_DEPTH_LIMITS } from "@/lib/evidence/limits";
 import {
+  assemblePageOrderedText,
   computeOcrRenderMetrics,
   createLocalOcrWorker,
+  OCR_JOB_DEADLINE_MS,
+  planImageDecode,
   probeWorkerHealth,
   releaseCanvas,
+  startOcrJobDeadline,
   yieldToBrowser,
+  type ImageDecodeRejection,
 } from "@/lib/evidence/ocr-session";
 import {
   normalizeServiceHistoryDraft,
@@ -23,6 +28,22 @@ import { dd214ToServiceHistoryFields } from "@/lib/presumptive/dd214-adapter";
 type Props = {
   locations: string[];
 };
+
+/**
+ * Copy for a refused image upload (A06 decode bounds). The refusal names the
+ * measured size so the Veteran can pick a smaller copy, and restates that the
+ * file never left the tab.
+ */
+function imageRefusalMessage(
+  reason: ImageDecodeRejection | "ok",
+  dimensions: { width: number; height: number } | null,
+): string {
+  const size = dimensions ? `${dimensions.width}×${dimensions.height}` : "unknown dimensions";
+  if (reason === "too-many-pixels" || reason === "dimension-too-large") {
+    return `This image is too large to analyze safely in this browser (${size}). Try a smaller or lower-resolution copy — the file never leaves this tab.`;
+  }
+  return "This image could not be read in this browser. Try a PNG or JPEG copy — the file never leaves this tab.";
+}
 
 export function Dd214LocalAnalyzer({ locations }: Props) {
   const router = useRouter();
@@ -45,14 +66,51 @@ export function Dd214LocalAnalyzer({ locations }: Props) {
   // still runs through the existing finally chain.
   const extractionGenerationRef = useRef(0);
   const cancelRequestedRef = useRef(false);
+  // A06: prompt-teardown handles. Flags alone only take effect at the next page
+  // boundary, so an in-flight render or `recognize()` that never settles would
+  // keep the worker alive and the tab busy forever. These refs let cancel and
+  // the elapsed-work deadline terminate the live worker/task immediately, which
+  // rejects the awaited promise so the run unwinds through its own finally.
+  const workerRef = useRef<Awaited<ReturnType<typeof createLocalOcrWorker>> | null>(null);
+  const pdfTaskRef = useRef<{ destroy: () => Promise<void> } | null>(null);
+  const deadlineRef = useRef<{ exceeded(): boolean; clear(): void } | null>(null);
 
   useEffect(() => () => {
     extractionGenerationRef.current += 1;
+    // Unmount must tear the live job down too, not just invalidate it: the
+    // completion controls navigate away, and a detached run must not keep a
+    // worker (or a pdf.js document) alive behind the new page.
+    cancelRequestedRef.current = true;
+    const worker = workerRef.current;
+    workerRef.current = null;
+    if (worker) void worker.terminate().catch(() => {});
+    const task = pdfTaskRef.current;
+    pdfTaskRef.current = null;
+    if (task) void task.destroy().catch(() => {});
+    deadlineRef.current?.clear();
+    deadlineRef.current = null;
   }, []);
+
+  /**
+   * Stops whatever is running right now. Used by the Cancel button, the
+   * elapsed-work deadline, and unmount — one teardown path, so "cancelled"
+   * cannot mean three slightly different things.
+   */
+  function terminateActiveRun() {
+    const worker = workerRef.current;
+    workerRef.current = null;
+    if (worker) void worker.terminate().catch(() => {});
+    const task = pdfTaskRef.current;
+    pdfTaskRef.current = null;
+    if (task) void task.destroy().catch(() => {});
+  }
 
   function requestCancel() {
     cancelRequestedRef.current = true;
     extractionGenerationRef.current += 1;
+    terminateActiveRun();
+    deadlineRef.current?.clear();
+    deadlineRef.current = null;
     busyRef.current = false;
     setBusy(false);
     setProgress(null);
@@ -66,6 +124,29 @@ export function Dd214LocalAnalyzer({ locations }: Props) {
     const generation = (extractionGenerationRef.current += 1);
     const isCurrentGeneration = () => generation === extractionGenerationRef.current;
     const abandoned = () => cancelRequestedRef.current || !isCurrentGeneration();
+    let deadlineExpired = false;
+    // A06: elapsed-work budget. The per-page checks stop at the next boundary;
+    // this timer also reaches a page whose render or `recognize()` never
+    // settles, by terminating the live worker/task so the awaited promise
+    // rejects and the run unwinds through its normal finally chain.
+    const deadline = startOcrJobDeadline(OCR_JOB_DEADLINE_MS, () => {
+      deadlineExpired = true;
+      cancelRequestedRef.current = true;
+      terminateActiveRun();
+    });
+    deadlineRef.current = deadline;
+    // One owner for worker teardown. Cancel, the elapsed-work deadline, and
+    // unmount all go through `terminateActiveRun()`, which already terminated
+    // the live worker and cleared the ref; the run's own finally must then not
+    // terminate it a second time, because a second terminate can reject inside
+    // a finally and mask the outcome it was cleaning up after.
+    const finishWorker = async (
+      worker: Awaited<ReturnType<typeof createLocalOcrWorker>>,
+    ): Promise<void> => {
+      if (workerRef.current !== worker) return;
+      workerRef.current = null;
+      await worker.terminate();
+    };
     setBusy(true);
     setMessage(null);
     setProgress("Preparing browser-local extraction…");
@@ -87,6 +168,28 @@ export function Dd214LocalAnalyzer({ locations }: Props) {
       // Page-level notices (page cap, skips, downscales) merge into the
       // extraction warnings below so partial results are never silent.
       const pageWarnings: string[] = [];
+      const reviewBudgetWarning = `Only the first ${limits.textChars.toLocaleString("en-US")} characters will be reviewed.`;
+      // A06: one slot per reviewed page. The text-layer pass and the OCR pass
+      // both write here, so the assembled text follows page order rather than
+      // pass order — previously every OCR'd page was appended after every
+      // text-layer page, silently re-ordering the document.
+      const pageTexts: Array<string | null> = [];
+      const setPageText = (page: number, text: string): void => {
+        pageTexts[page - 1] = text;
+      };
+      const knownChars = (): number =>
+        pageTexts.reduce((total, text) => total + (text?.length ?? 0), 0);
+      const warnReviewBudget = (): void => {
+        if (!pageWarnings.includes(reviewBudgetWarning)) pageWarnings.push(reviewBudgetWarning);
+      };
+      // One spawn path for both surfaces, so every live worker is reachable by
+      // `terminateActiveRun()` for cancel, deadline, and unmount.
+      const spawnWorker = async () => {
+        if (deadlineExpired || abandoned()) return null;
+        const created = await createLocalOcrWorker();
+        workerRef.current = created;
+        return created;
+      };
       if (isPdf) {
         // Legacy main build + legacy worker: see scripts/copy-pdf-worker.mjs
         // for why the modern build is unusable on older browsers.
@@ -94,40 +197,20 @@ export function Dd214LocalAnalyzer({ locations }: Props) {
         if (!pdfjs.GlobalWorkerOptions.workerSrc) pdfjs.GlobalWorkerOptions.workerSrc = "/pdf.worker.min.mjs";
         const bytes = new Uint8Array(await file.arrayBuffer());
         const task = pdfjs.getDocument({ data: bytes });
+        pdfTaskRef.current = task;
         const doc = await task.promise;
         try {
           const total = doc.numPages;
           const limit = Math.min(total, limits.pdfPages);
-          const segments: string[] = [];
           if (total > limit) {
             pageWarnings.push(
               `This PDF has ${total} pages; only the first ${limit} pages will be reviewed.`,
             );
           }
-          // Bounded retention: a many-page text layer can exceed the in-tab
-          // budget, so keep only the first textChars characters and say so.
-          let keptChars = 0;
-          let budgetExhausted = false;
-          const pushSegment = (text: string): void => {
-            if (budgetExhausted || !text) return;
-            const room = limits.textChars - keptChars;
-            if (room <= 0) {
-              budgetExhausted = true;
-              pageWarnings.push(
-                `Only the first ${limits.textChars.toLocaleString("en-US")} characters will be reviewed.`,
-              );
-              return;
-            }
-            const slice = text.slice(0, room);
-            segments.push(slice);
-            keptChars += slice.length;
-            if (slice.length < text.length) {
-              budgetExhausted = true;
-              pageWarnings.push(
-                `Only the first ${limits.textChars.toLocaleString("en-US")} characters will be reviewed.`,
-              );
-            }
-          };
+          // Bounded work: the page-order budget is checked before starting more
+          // OCR, so a dense text layer cannot make the OCR pass run across
+          // pages whose text the review will never keep.
+          const budgetReached = (): boolean => knownChars() >= limits.textChars;
           // Per-page OCR with the shared main-surface controls: pixel-capped
           // render, prompt canvas release, worker-health probe, and a browser
           // yield between pages. Runs either the full page set (no text
@@ -137,8 +220,11 @@ export function Dd214LocalAnalyzer({ locations }: Props) {
             pages: number[],
           ): Promise<"done" | "worker-dead" | "cancelled"> => {
             for (const p of pages) {
-              if (abandoned()) return "cancelled";
-              if (budgetExhausted) return "done";
+              if (deadlineExpired || abandoned()) return "cancelled";
+              if (budgetReached()) {
+                warnReviewBudget();
+                return "done";
+              }
               setProgress(`OCR page ${p} of ${limit}…`);
               const page = await doc.getPage(p);
               let canvas: HTMLCanvasElement | null = null;
@@ -160,8 +246,12 @@ export function Dd214LocalAnalyzer({ locations }: Props) {
                 }
                 const result = await worker.recognize(canvas);
                 const text = (result?.data?.text ?? "").trim();
-                if (text) pushSegment(text);
-                else pageWarnings.push(`Page ${p} produced no recognizable text and was skipped.`);
+                if (text) {
+                  setPageText(p, text);
+                  if (budgetReached()) warnReviewBudget();
+                } else {
+                  pageWarnings.push(`Page ${p} produced no recognizable text and was skipped.`);
+                }
               } catch (ocrError) {
                 pageError = ocrError;
               } finally {
@@ -193,21 +283,19 @@ export function Dd214LocalAnalyzer({ locations }: Props) {
             return "done";
           };
           // If PDF has a text layer, use it; otherwise fall back to OCR per page.
-          let usedTextLayer = false;
           const textlessPages: number[] = [];
           for (let p = 1; p <= limit; p += 1) {
-            if (abandoned()) return;
-            if (budgetExhausted) break;
+            if (deadlineExpired || abandoned()) return;
+            if (budgetReached()) {
+              warnReviewBudget();
+              break;
+            }
             const page = await doc.getPage(p);
             try {
               const content = await page.getTextContent();
               const t = (content.items as unknown as { str?: string }[]).map((i) => i.str ?? "").join(" ").trim();
-              if (t) {
-                usedTextLayer = true;
-                pushSegment(t);
-              } else {
-                textlessPages.push(p);
-              }
+              if (t) setPageText(p, t);
+              else textlessPages.push(p);
             } finally {
               try { page.cleanup(); } catch {}
             }
@@ -215,20 +303,18 @@ export function Dd214LocalAnalyzer({ locations }: Props) {
           // Abandonment during the spawn await is still fenced: runOcrPages
           // returns cancelled at its first boundary and the caller's finally
           // terminates the worker, so nothing leaks on any path.
-          const spawnOcrWorker = async () => {
-            if (abandoned()) return null;
-            return createLocalOcrWorker();
-          };
-          if (!usedTextLayer || !segments.join("\n").trim()) {
+          const hasTextLayer = pageTexts.some((text) => (text ?? "").trim().length > 0);
+          if (!hasTextLayer) {
             // OCR path — same Tesseract contract as LocalEvidenceAnalyzer
+            pageTexts.length = 0;
             setProgress("Running browser-local OCR…");
-            const worker = await spawnOcrWorker();
+            const worker = await spawnWorker();
             if (worker) {
               try {
                 const outcome = await runOcrPages(worker, Array.from({ length: limit }, (_, i) => i + 1));
                 if (outcome === "cancelled") return;
               } finally {
-                await worker.terminate();
+                await finishWorker(worker);
               }
             }
           } else if (textlessPages.length > 0) {
@@ -238,32 +324,100 @@ export function Dd214LocalAnalyzer({ locations }: Props) {
               `${textlessPages.length} of ${limit} pages had no extractable text; those pages were read with browser-local OCR.`,
             );
             setProgress("Running browser-local OCR…");
-            const worker = await spawnOcrWorker();
+            const worker = await spawnWorker();
             if (worker) {
               try {
                 const outcome = await runOcrPages(worker, textlessPages);
                 if (outcome === "cancelled") return;
               } finally {
-                await worker.terminate();
+                await finishWorker(worker);
               }
             }
           }
-          rawText = segments.join("\n");
+          // A06: assembled in page order under the review budget, so a
+          // truncated review is the document's prefix instead of whichever
+          // pass happened to run first.
+          const assembled = assemblePageOrderedText(pageTexts, limits.textChars);
+          if (assembled.truncated) warnReviewBudget();
+          rawText = assembled.text;
           if (abandoned()) return;
         } finally {
-          await task.destroy();
+          // Same once-only rule for the pdf.js loading task: `terminateActiveRun`
+          // already destroyed it on a cancel/deadline/unmount, so skip a second
+          // destroy rather than depend on the library's idempotency.
+          if (pdfTaskRef.current === task) {
+            pdfTaskRef.current = null;
+            await task.destroy();
+          }
         }
       } else {
-        // Image file: direct OCR
-        const worker = await createLocalOcrWorker();
+        // Image file. A06: bound the decode **before** it happens. The declared
+        // dimensions come from the container header, so a decompression bomb is
+        // refused without allocating a bitmap; an accepted image then renders
+        // through the same pixel-area cap the PDF path uses, so what reaches the
+        // OCR worker is bounded by construction rather than by luck.
+        setProgress("Preparing browser-local image analysis…");
+        const imageBytes = new Uint8Array(await file.arrayBuffer());
+        const plan = planImageDecode(imageBytes);
+        if (!plan.accepted || !plan.metrics || !plan.dimensions) {
+          setMessage(imageRefusalMessage(plan.reason, plan.dimensions));
+          return;
+        }
+        if (plan.metrics.downscaled) {
+          pageWarnings.push(
+            `This image was downscaled to ${plan.metrics.canvasWidth}×${plan.metrics.canvasHeight} to stay within the browser memory budget.`,
+          );
+        }
+        const worker = await spawnWorker();
+        if (!worker) return;
+        let canvas: HTMLCanvasElement | null = null;
+        let source: ImageBitmap | null = null;
         try {
           if (abandoned()) return;
           setProgress("Running browser-local OCR…");
-          const result = await worker.recognize(file);
+          canvas = document.createElement("canvas");
+          canvas.width = plan.metrics.canvasWidth;
+          canvas.height = plan.metrics.canvasHeight;
+          const ctx = canvas.getContext("2d");
+          if (!ctx) throw new Error("Canvas 2D context unavailable for image rendering.");
+          ctx.fillStyle = "#fff";
+          ctx.fillRect(0, 0, canvas.width, canvas.height);
+          try {
+            // Ask the browser to decode straight to the bounded size where it
+            // supports that. The header check above is the guarantee; this is
+            // the cheap path.
+            source = await createImageBitmap(file, {
+              resizeWidth: canvas.width,
+              resizeHeight: canvas.height,
+              resizeQuality: "low",
+            });
+          } catch {
+            try {
+              source = await createImageBitmap(file);
+            } catch {
+              // A container this browser cannot decode (e.g. TIFF). Its
+              // declared dimensions already passed the pixel ceiling, so the
+              // original path still runs inside a bound — but say so, because
+              // the render cap itself did not apply.
+              pageWarnings.push(
+                "This image could not be re-rendered at a bounded size in this browser, so OCR ran on the original file within its declared-dimension limit.",
+              );
+            }
+          }
+          if (source) ctx.drawImage(source, 0, 0, canvas.width, canvas.height);
+          const result = source
+            ? await worker.recognize(canvas)
+            : await worker.recognize(file);
           if (abandoned()) return;
           rawText = (result?.data?.text ?? "").trim();
         } finally {
-          await worker.terminate();
+          if (canvas) {
+            try { releaseCanvas(canvas); } catch {}
+          }
+          if (source) {
+            try { source.close(); } catch {}
+          }
+          await finishWorker(worker);
         }
       }
 
@@ -293,12 +447,25 @@ export function Dd214LocalAnalyzer({ locations }: Props) {
         setMessage(err instanceof Error ? err.message : "Could not extract DD-214 locally.");
       }
     } finally {
+      deadline.clear();
+      if (deadlineRef.current === deadline) deadlineRef.current = null;
       // Reset busy state only when still current — a cancelled or superseded
       // run must not clear the state of the run that replaced it.
       if (isCurrentGeneration() && !cancelRequestedRef.current) {
         busyRef.current = false;
         setBusy(false);
         setProgress(null);
+      } else if (deadlineExpired && isCurrentGeneration()) {
+        // The budget, not the Veteran, stopped this run. Report it and hand the
+        // tab back — leaving the surface stuck busy is the failure mode the
+        // deadline exists to prevent.
+        cancelRequestedRef.current = false;
+        busyRef.current = false;
+        setBusy(false);
+        setProgress(null);
+        setMessage(
+          `Browser-local extraction reached the ${OCR_JOB_DEADLINE_MS / 60000}-minute limit and was stopped. Try a smaller file or enter service history manually.`,
+        );
       }
     }
   }

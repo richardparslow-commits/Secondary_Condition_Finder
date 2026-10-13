@@ -20,7 +20,8 @@ Evidence parsers (`src/lib/evidence/`) execute **exclusively in the browser**. T
 |---|---|---|
 | `src/lib/evidence/extract.ts` | Text classification (nexus-relevant, supporting, diagnosis, etc.) | None (pure regex) |
 | `src/lib/evidence/document-extract.ts` | PDF/DOCX/text extraction from `File` objects | `pdfjs-dist`, `mammoth`, `File.arrayBuffer()`, `File.text()` |
-| `src/lib/evidence/dd214-extract.ts` | DD-214 structured data extraction | `File` API |
+| `src/lib/evidence/dd214-extract.ts` | DD-214 structured data extraction; slices at the caller's `EvidenceLimits.textChars` and discloses truncation, validates real calendar dates, and minimizes SSN layouts by shape | `File` API |
+| `src/lib/evidence/ocr-session.ts` | Browser-local OCR primitives: canvas pixel-area cap, declared-dimension image-decode bound (`planImageDecode`) with no decode on the refusal path, five-minute elapsed-work budget (`startOcrJobDeadline`), page-ordered text assembly under the review budget, page-burst yields, resume checkpoints, worker health probe, factory-only worker spawn | `canvas`, `sessionStorage`, `createImageBitmap`, `Worker` |
 | `src/lib/evidence/storage.ts` | `sessionStorage` read/write for extracted evidence | `sessionStorage` |
 | `src/lib/evidence/limits.ts` | Byte/char/page limits for Standard and Extended depth modes | None |
 | `src/lib/evidence/document-kind.ts` | Document kind detection | None |
@@ -85,6 +86,15 @@ When adding a new evidence parser (e.g., `dd214-extract.ts`):
 4. Add it to the `REQUIRED_EXECUTABLE_IMPORTS` array if it exports functions that tests should exercise
 5. Verify `npm run test:composition` passes
 6. Add `tests/ingestion-privacy.test.ts` coverage for the new module
+
+## Browser-local resource bounds (audit A06)
+
+Every browser-local extraction is bounded **before** it allocates, because a Veteran's tab — not a server process — pays for an unbounded decode:
+
+- **Elapsed work.** An OCR job runs under a five-minute budget. A per-page boundary check cannot stop a `recognize()` or `page.render()` promise that never settles, so the owning component arms a timer that terminates the live worker and loading task, which rejects the awaited promise and unwinds the run through its normal teardown.
+- **Decode size.** A direct image upload is measured from its container header (PNG, JPEG, GIF, BMP, WebP, TIFF) and refused when the declared pixel count or either dimension exceeds the ceiling, or when the header cannot be read at all. An accepted image renders through the same canvas pixel-area cap the PDF path uses, so what reaches the OCR worker is bounded by construction. Refusals are shown with the measured size and always restate that the file never left the tab.
+- **Retained text.** Per-page text is joined in **page order** under the depth limit's character budget, so a truncated review is the document's prefix rather than whichever pass (text layer or OCR) ran first, and truncation is disclosed.
+- **Teardown.** Cancel, the elapsed-work deadline, and unmount share one teardown path; a worker or pdf.js task already terminated by that path is not terminated a second time inside a `finally`.
 
 ## Cross-References
 
