@@ -2,7 +2,7 @@ import "server-only";
 
 import { loadConditionCatalog } from "@/lib/catalog/load";
 
-import { isTrustedCachedLiveView } from "./cached-view-guard";
+import { disabilityReferenceCacheDto } from "./cached-view-guard";
 import {
   resolveVaResultEnvironment,
   vaFallbackStatus,
@@ -63,6 +63,7 @@ export async function loadDisabilityReference(
     configuredEnvironment,
   );
 
+  const cacheDto = disabilityReferenceCacheDto(configuredEnvironment);
   return withVaReferenceCache<DisabilityReferenceView>(
     cacheKey,
     async () => {
@@ -98,10 +99,7 @@ export async function loadDisabilityReference(
       enabled: cacheActive,
       singleFlight: cacheActive,
       decorateHit: (view) => ({ ...view, cacheStatus: "hit" }),
-      // Read-side guard: a shared value may only be served if it still carries
-      // this deployment's provenance and only credential-free HTTPS links.
-      acceptSharedCached: (view) =>
-        isTrustedCachedLiveView(view, configuredEnvironment),
+      acceptSharedCached: (view) => cacheDto.safeParse(view).success,
     },
   );
 }

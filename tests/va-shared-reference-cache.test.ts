@@ -20,6 +20,7 @@ import {
   type VaApiConfig,
 } from "@/lib/va/sandbox";
 import { loadVaFormsFinder } from "@/lib/va/forms-finder";
+import { vaLiveStatus } from "@/lib/va/provenance";
 import { loadDisabilityReference } from "@/lib/va/disability-reference";
 
 import { createFakeSharedKv, type FakeSharedKv } from "./helpers/fake-shared-kv";
@@ -329,17 +330,12 @@ describe("VA shared reference cache — finding #3 (multi-instance miss rate)", 
     vi.stubEnv("VA_API_ENABLED", "true");
     stubSharedKvEnv();
     const view = {
-      query: "21-526EZ",
+      query: "",
+      lookupKey: `forms-finder:sandbox:q:${hashedCacheKeySegment("21-526ez")}`,
       items: [
         { formName: "21-526EZ", title: "t", url: "https://x", lastRevisionOn: null, pages: null, validPdf: true },
       ],
-      source: "va-sandbox-api" as const,
-      sourceLabel: "VA Forms sandbox",
-      notice: "sandbox notice",
-      live: true as const,
-      environment: "sandbox" as const,
-      retrievedAt: "2026-09-13T00:00:00.000Z",
-      cacheStatus: "miss" as const,
+      ...vaLiveStatus("forms-finder", "sandbox", "va-sandbox-api"),
     };
     const fetchSpy = vi
       .fn()
@@ -366,7 +362,7 @@ describe("VA shared reference cache — finding #3 (multi-instance miss rate)", 
     vi.stubEnv("VA_FORMS_SANDBOX_API_KEY", "forms-test-key");
     stubSharedKvEnv();
     const kv = createFakeSharedKv();
-    const key = `forms:sandbox:q:${hashedCacheKeySegment("21-526ez")}`;
+    const key = `forms-finder:sandbox:q:${hashedCacheKeySegment("21-526ez")}`;
     kv.seed(
       `va:ref:${key}`,
       JSON.stringify({

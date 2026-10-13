@@ -1,6 +1,6 @@
 import "server-only";
 
-import { isTrustedCachedLiveView } from "./cached-view-guard";
+import { formsFinderCacheDto, VA_FORMS_CACHE_MAX_ITEMS } from "./cached-view-guard";
 import {
   resolveVaResultEnvironment,
   vaFallbackStatus,
@@ -93,6 +93,8 @@ export async function loadVaFormsFinder(
     hashedCacheKeySegment(normalizedQuery.toLowerCase()),
   );
 
+  const cacheDto = formsFinderCacheDto(configuredEnvironment, cacheKey);
+
   // A01 cache-value slice: the cached *value* never carries the raw query —
   // only the hashed key does. The loader builds cacheable views with an empty
   // query and the request's normalized text is re-attached after the cache
@@ -122,10 +124,11 @@ export async function loadVaFormsFinder(
       return {
         cacheable: true,
         view: {
+          lookupKey: cacheKey,
           query: "",
           items: result.data.data
             .filter((item) => !item.attributes.deleted_at)
-            .slice(0, 25)
+            .slice(0, VA_FORMS_CACHE_MAX_ITEMS)
             .map((item) => ({
               formName: item.attributes.form_name,
               title: item.attributes.title,
@@ -144,10 +147,8 @@ export async function loadVaFormsFinder(
       enabled: config.enabled,
       singleFlight: config.enabled,
       decorateHit: (view) => ({ ...view, cacheStatus: "hit" }),
-      // Read-side guard: a shared value may only be served if it still carries
-      // this deployment's provenance and only credential-free HTTPS links.
-      acceptSharedCached: (view) =>
-        isTrustedCachedLiveView(view, configuredEnvironment),
+      // A04: exact redacted lookup binding plus bounded per-loader fields.
+      acceptSharedCached: (view) => cacheDto.safeParse(view).success,
     },
   );
 

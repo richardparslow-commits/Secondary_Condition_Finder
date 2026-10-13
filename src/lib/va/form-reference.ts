@@ -1,6 +1,6 @@
 import "server-only";
 
-import { isTrustedCachedClaimFormReference } from "./cached-view-guard";
+import { claimFormReferenceCacheDto } from "./cached-view-guard";
 import {
   resolveVaResultEnvironment,
   vaFallbackCopy,
@@ -64,6 +64,7 @@ export async function loadClaimFormReference(
     configuredEnvironment,
   );
 
+  const cacheDto = claimFormReferenceCacheDto(configuredEnvironment);
   return withVaReferenceCache<ClaimFormReference>(
     cacheKey,
     async () => {
@@ -105,10 +106,8 @@ export async function loadClaimFormReference(
       // entirely when it is off.
       enabled: cacheActive,
       singleFlight: cacheActive,
-      // Read-side guard (see cached-view-guard.ts): reject a shared value whose
-      // provenance, shape, or links do not match this deployment.
-      acceptSharedCached: (view) =>
-        isTrustedCachedClaimFormReference(view, configuredEnvironment),
+      // A04: this key serves only 21-526EZ, with bounded metadata/dates.
+      acceptSharedCached: (view) => cacheDto.safeParse(view).success,
     },
   );
 }

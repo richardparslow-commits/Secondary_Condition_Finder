@@ -1,6 +1,6 @@
 import "server-only";
 
-import { isTrustedCachedLiveView } from "./cached-view-guard";
+import { serviceBranchCacheDto } from "./cached-view-guard";
 import {
   resolveVaResultEnvironment,
   vaFallbackStatus,
@@ -60,6 +60,7 @@ export async function loadServiceBranchReference(
     configuredEnvironment,
   );
 
+  const cacheDto = serviceBranchCacheDto(configuredEnvironment);
   return withVaReferenceCache<ServiceBranchReferenceView>(
     cacheKey,
     async () => {
@@ -75,9 +76,9 @@ export async function loadServiceBranchReference(
       return {
         cacheable: true,
         view: {
-          items: [...result.data.items].sort((a, b) =>
-            a.description.localeCompare(b.description),
-          ),
+          items: result.data.items
+            .map(({ code, description }) => ({ code, description }))
+            .sort((a, b) => a.description.localeCompare(b.description)),
           ...vaLiveStatus("service-branches", environment, result.source),
         },
       };
@@ -88,10 +89,7 @@ export async function loadServiceBranchReference(
       enabled: cacheActive,
       singleFlight: cacheActive,
       decorateHit: (view) => ({ ...view, cacheStatus: "hit" }),
-      // Read-side guard: a shared value may only be served if it still carries
-      // this deployment's provenance and only credential-free HTTPS links.
-      acceptSharedCached: (view) =>
-        isTrustedCachedLiveView(view, configuredEnvironment),
+      acceptSharedCached: (view) => cacheDto.safeParse(view).success,
     },
   );
 }

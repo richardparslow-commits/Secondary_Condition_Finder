@@ -191,7 +191,8 @@ function storedFormsKey(query: string): string {
 /** A live view shaped exactly as the loader writes it, for warming the store. */
 function warmFormsView(query: string, title: string) {
   return {
-    query,
+    query: "",
+    lookupKey: formsKey(query),
     items: [
       {
         formName: "21-526EZ",
