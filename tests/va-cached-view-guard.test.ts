@@ -107,6 +107,25 @@ describe("cached reference view guard (audit item 12 acceptance)", () => {
     expect(isTrustedCachedLiveView(liveView({ retrievedAt: "T".repeat(41) }), "sandbox")).toBe(false);
   });
 
+  it("keeps the structural rule for list views, whose records may legitimately be external", () => {
+    // The live-view helper is the coarse layer and serves every list surface at
+    // once, so it cannot require a VA host: an accredited representative's own
+    // site is external by design. The per-loader DTOs add the host rule for the
+    // surfaces whose data is VA-hosted (see `tests/va-cache-boundary-trust.ts`).
+    expect(
+      isTrustedCachedLiveView(
+        liveView({ items: [{ website: "https://vso.example.org/help" }] }),
+        "sandbox",
+      ),
+    ).toBe(true);
+    expect(
+      isTrustedCachedLiveView(
+        liveView({ items: [{ website: "http://vso.example.org/help" }] }),
+        "sandbox",
+      ),
+    ).toBe(false);
+  });
+
   it("rejects any untrusted link anywhere in the value", () => {
     expect(
       isTrustedCachedLiveView(
@@ -170,6 +189,12 @@ describe("cached reference view guard (audit item 12 acceptance)", () => {
     expect(isTrustedCachedClaimFormReference({ ...reference, url: "javascript:alert(1)" }, "sandbox")).toBe(
       false,
     );
+    // A04 link-origin policy: single-form metadata is VA-hosted, so a
+    // credential-free but off-host link is not accepted where the generic rule
+    // would have been satisfied.
+    expect(
+      isTrustedCachedClaimFormReference({ ...reference, url: "https://collect.example.org/form.pdf" }, "sandbox"),
+    ).toBe(false);
     expect(
       isTrustedCachedClaimFormReference({ ...reference, source: "va-production-api" }, "sandbox"),
     ).toBe(false);

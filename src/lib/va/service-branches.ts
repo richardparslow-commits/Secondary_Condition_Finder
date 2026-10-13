@@ -89,7 +89,11 @@ export async function loadServiceBranchReference(
       enabled: cacheActive,
       singleFlight: cacheActive,
       decorateHit: (view) => ({ ...view, cacheStatus: "hit" }),
-      acceptSharedCached: (view) => cacheDto.safeParse(view).success,
+      // A04: bounded branch records, applied at every tier.
+      cacheTrust: {
+        accepts: (view) => cacheDto.safeParse(view).success,
+        degradedView: () => localFallback(),
+      },
     },
   );
 }

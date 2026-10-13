@@ -147,8 +147,18 @@ export async function loadVaFormsFinder(
       enabled: config.enabled,
       singleFlight: config.enabled,
       decorateHit: (view) => ({ ...view, cacheStatus: "hit" }),
-      // A04: exact redacted lookup binding plus bounded per-loader fields.
-      acceptSharedCached: (view) => cacheDto.safeParse(view).success,
+      // A04: exact redacted lookup binding, bounded per-loader fields, and VA
+      // Forms links restricted to official VA hosts — applied to process-local
+      // hits, shared hits, contender-published hits, and this loader's own
+      // fresh view. A result outside those bounds is never rendered as live.
+      cacheTrust: {
+        accepts: (view) => cacheDto.safeParse(view).success,
+        degradedView: () => ({
+          query: normalizedQuery,
+          items: localResults(normalizedQuery),
+          ...vaFallbackStatus("forms-finder"),
+        }),
+      },
     },
   );
 

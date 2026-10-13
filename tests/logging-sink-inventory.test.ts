@@ -78,6 +78,11 @@ describe("logging-sink inventory (B08)", () => {
         "src/lib/observability/audit.ts",
         "src/lib/security/csrf.ts",
         "src/lib/va/circuit-breaker.ts",
+        // A04: a cached candidate or a fresh view its own loader DTO rejects is
+        // otherwise a silent degradation. Reviewed fields are operational-only:
+        // a fixed `outcome` enum and, for the shared store, a byte count — never
+        // a cached value, a lookup key, or a search text.
+        "src/lib/va/reference-cache-access.ts",
         "src/lib/va/reference-shared-cache.ts",
         "src/lib/va/sandbox.ts",
         "src/lib/va/shared-circuit.ts",

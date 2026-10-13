@@ -191,6 +191,8 @@ for (const loader of loaders) {
         ["overlong title", (view) => ({ ...view, title: "x".repeat(201) })],
         ["invalid revision date", (view) => ({ ...view, lastRevisionOn: "2026-02-31" })],
         ["credential URL", (view) => ({ ...view, url: "https://user:pass@www.va.gov/form" })],
+        // A04 link-origin policy: form metadata is VA-hosted.
+        ["off-host URL", (view) => ({ ...view, url: "https://collect.example.org/form.pdf" })],
       );
     } else {
       invalid.push(
@@ -217,6 +219,9 @@ for (const loader of loaders) {
         ["too many pages", itemPatch({ pages: 1_001 })],
         ["non-boolean validPdf", itemPatch({ validPdf: "true" })],
         ["untrusted URL", itemPatch({ url: "javascript:alert(1)" })],
+        // A04 link-origin policy: a VA Forms item link must be VA-hosted, not
+        // merely credential-free HTTPS.
+        ["off-host form URL", itemPatch({ url: "https://collect.example.org/form.pdf" })],
       );
       if (loader.name === "disabilities") invalid.push(
         ["object name", itemPatch({ name: {} })],

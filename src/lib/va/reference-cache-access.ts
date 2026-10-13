@@ -1,5 +1,7 @@
 import "server-only";
 
+import { createLogger } from "@/lib/observability/logger";
+
 import {
   clearVaReferenceCache,
   readVaReferenceCache,
@@ -85,6 +87,32 @@ export interface VaReferenceCacheLoad<T> {
   cacheable: boolean;
 }
 
+const accessLogger = createLogger("va-reference-cache");
+
+/**
+ * The one trust rule a loader applies to its own views (audit A04).
+ *
+ * Both halves are required together, deliberately. `accepts` is the loader's
+ * DTO and is evaluated at *every* boundary this module owns: a process-local
+ * hit, an ordinary shared hit, a contender-published hit, and the loader's own
+ * fresh view before either tier is written. `degradedView` is what the caller
+ * gets instead when a **fresh** view fails its own DTO — the value came from an
+ * upstream response this deployment cannot vouch for, so it is not rendered as
+ * live VA data and it is not cached.
+ *
+ * Requiring both in one object is what makes "a loader cannot validate without
+ * also saying what it serves instead" structural rather than a convention. A
+ * read-side-only guard was the original defect: it left process-local hits and
+ * fresh writes unvalidated, so the same value could be rejected on one path and
+ * served as live on another.
+ */
+export interface VaCacheTrustPolicy<T> {
+  /** Accepts a cached candidate or a fresh live view. */
+  accepts: (view: unknown) => boolean;
+  /** Labelled local fallback served when a fresh view fails `accepts`. Never cached. */
+  degradedView: () => T;
+}
+
 export interface WithVaReferenceCacheOptions<T> {
   /**
    * Set `false` when the caller injected a fetcher (tests, scenarios): skips
@@ -96,12 +124,10 @@ export interface WithVaReferenceCacheOptions<T> {
   /** Shared-tier TTL. Defaults to `VA_REFERENCE_CACHE_TTL_MS`. */
   ttlMs?: number;
   /**
-   * Read-side trust guard for shared-tier values (audit item 12): a shared hit
-   * is served as a live VA-labelled view, so an unguarded value could set
-   * trusted links or provenance labels this deployment never wrote. A value
-   * the guard rejects is treated as a miss. Omit to accept any cached value.
+   * Per-loader DTO plus the fallback for a fresh view it rejects (audit A04).
+   * Omit only for a loader with no cacheable surface of its own.
    */
-  acceptSharedCached?: (view: unknown) => boolean;
+  cacheTrust?: VaCacheTrustPolicy<T>;
   /**
    * Per-key single-flight for shared-cache misses (audit A-03): one instance
    * claims a short lease and fetches while contenders wait a bounded window for
@@ -125,6 +151,13 @@ export interface WithVaReferenceCacheOptions<T> {
  * The process-local tier is inert in production and distributed runtimes
  * (see `vaProcessLocalStateAllowed`), which is safe: every step degrades to the
  * tier below it, and the shared tier carries the load when configured.
+ *
+ * `cacheTrust.accepts` gates every step that can hand a value to the caller, so
+ * "is this value still what this loader produces" has one answer regardless of
+ * which tier it came from. An entry that fails is dropped from the process-local
+ * tier instead of being re-validated on every later request, and a fresh view
+ * that fails is replaced by the loader's degraded view before any write — see
+ * `VaCacheTrustPolicy`.
  */
 export async function withVaReferenceCache<T>(
   cacheKey: string,
@@ -135,12 +168,12 @@ export async function withVaReferenceCache<T>(
     enabled = true,
     decorateHit,
     ttlMs = VA_REFERENCE_CACHE_TTL_MS,
-    acceptSharedCached,
+    cacheTrust,
     singleFlight = false,
   } = options;
   const asHit = (view: T): T => (decorateHit ? decorateHit(view) : view);
   const trusted = (view: unknown): boolean =>
-    acceptSharedCached ? acceptSharedCached(view) : true;
+    cacheTrust ? cacheTrust.accepts(view) : true;
 
   if (!enabled) {
     const { view } = await load();
@@ -148,7 +181,17 @@ export async function withVaReferenceCache<T>(
   }
 
   const localCached = readVaReferenceCache<T>(cacheKey);
-  if (localCached) return asHit(localCached);
+  if (localCached) {
+    if (trusted(localCached)) return asHit(localCached);
+    // A process-local entry was previously served on the strength of being
+    // local: the old read-side guard ran on shared values only. Drop it so this
+    // and every later request is a miss rather than a re-validation of the same
+    // rejected entry, then fall through to the tiers below.
+    clearVaReferenceCache(cacheKey);
+    accessLogger.warn("va reference cache entry rejected by loader DTO", {
+      outcome: "process-local-hit-rejected",
+    });
+  }
 
   const sharedCached = await readVaSharedReferenceCache<T>(cacheKey);
   if (sharedCached && trusted(sharedCached)) {
@@ -172,6 +215,18 @@ export async function withVaReferenceCache<T>(
 
   try {
     const { view, cacheable } = await load();
+    if (cacheable && !trusted(view)) {
+      // The loader asked to cache a live view that fails its own DTO. That is
+      // reachable when an upstream response is outside this app's bounds (an
+      // off-host form link, an over-long field), and the old code wrote it to
+      // both tiers anyway — so the value was simultaneously served as live and
+      // rejected as a cached candidate by the next request. Serve the labelled
+      // local fallback instead, and cache nothing.
+      accessLogger.warn("va reference cache write skipped — fresh view rejected by loader DTO", {
+        outcome: "fresh-view-rejected",
+      });
+      return cacheTrust ? cacheTrust.degradedView() : view;
+    }
     if (cacheable) {
       writeVaReferenceCache(cacheKey, view);
       // Awaited (not fire-and-forget): a floating promise can be torn down with

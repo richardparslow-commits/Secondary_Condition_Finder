@@ -333,7 +333,15 @@ describe("VA shared reference cache — finding #3 (multi-instance miss rate)", 
       query: "",
       lookupKey: `forms-finder:sandbox:q:${hashedCacheKeySegment("21-526ez")}`,
       items: [
-        { formName: "21-526EZ", title: "t", url: "https://x", lastRevisionOn: null, pages: null, validPdf: true },
+        {
+          formName: "21-526EZ",
+          title: "t",
+          // Real form links are VA-hosted; the loader DTO enforces that (A04).
+          url: "https://www.va.gov/find-forms/about-form-21-526ez/",
+          lastRevisionOn: null,
+          pages: null,
+          validPdf: true,
+        },
       ],
       ...vaLiveStatus("forms-finder", "sandbox", "va-sandbox-api"),
     };

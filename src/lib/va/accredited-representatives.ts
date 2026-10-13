@@ -145,8 +145,14 @@ export async function loadAccreditedRepresentatives(
       enabled: cacheActive,
       singleFlight: cacheActive,
       decorateHit: (view) => ({ ...view, cacheStatus: "hit" }),
-      // A04: exact ZIP-hash/radius/type binding and bounded directory records.
-      acceptSharedCached: (view) => cacheDto.safeParse(view).success,
+      // A04: exact ZIP-hash/radius/type binding and bounded directory records,
+      // applied at every tier. A representative's `website` keeps the
+      // credential-free-HTTPS rule rather than the VA-host rule: a VSO or
+      // attorney site is legitimately outside va.gov.
+      cacheTrust: {
+        accepts: (view) => cacheDto.safeParse(view).success,
+        degradedView: () => localFallback(params),
+      },
     },
   );
 
