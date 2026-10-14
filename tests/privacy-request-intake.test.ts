@@ -149,7 +149,13 @@ describe("privacy request intake (R-01 / B-02)", () => {
 
   it("states the commitment, the exceptions and the verification step on the page", () => {
     const copy = flat(page);
-    expect(copy).toContain("45 days");
+    // The page renders the commitment from the module constant rather than
+    // writing the number a second time, so a constant change cannot leave the
+    // heading at 45 days while the sentence says something else. The rendered
+    // number is asserted in the mounted suite; here the source is pinned to a
+    // single source for it.
+    expect(copy).toContain("Completion within {PRIVACY_COMPLETION_DAYS} days.");
+    expect(copy).not.toMatch(/within \d+ days/);
     expect(copy).toContain("36 CFR Chapter XII");
     expect(copy).toContain("Title 38, United States Code");
     expect(copy).toContain("constituent partial request");

@@ -808,12 +808,15 @@ This report is an assessment only. **No code, configuration, documentation, or C
 
 Per the release constraint quoted at the top of this document, all remediation is scoped as local work; no commit, push, PR, deployment, or feature-flag enablement is authorized by this report.
 
-| Role | Name | Decision | Date |
-| --- | --- | --- | --- |
-| Auditor | *(this assessment)* | NO-GO — 4 Blockers, 3 High | 2026-10-10 |
-| Engineering owner | | ☐ Approve Phase 2 as scoped ☐ Approve with changes ☐ Reject | |
-| Operator / privacy approver | | ☐ Accept R-01 language ☐ Accept H-02 review ownership | |
-| Accessibility owner | | ☐ Commission #195 manual session on post-fix build | |
+| Role | Full name | Organization / affiliation | Decision | Date |
+| --- | --- | --- | --- | --- |
+| Auditor | *(this assessment)* | — | NO-GO — 4 Blockers, 3 High | 2026-10-10 |
+| Engineering owner | | | ☐ Approve Phase 2 as scoped ☐ Approve with changes ☐ Reject | |
+| Operator / privacy approver — R-01 language ([#539](https://github.com/richardparslow-commits/Secondary_Condition_Finder/issues/539)) | | | ☐ Accept the deletion right and the 45-day commitment as published ☐ Accept with changes ☐ Reject; confirm the monitored mailbox and a named handler | |
+| Operator — H-02 review ownership ([#537](https://github.com/richardparslow-commits/Secondary_Condition_Finder/issues/537) / [#538](https://github.com/richardparslow-commits/Secondary_Condition_Finder/issues/538)) | | | ☐ Accept the log-retention and callback-scrubbing review ownership | |
+| Accessibility owner ([#195](https://github.com/richardparslow-commits/Secondary_Condition_Finder/issues/195)) | | | ☐ Commission the manual session on the post-fix build | |
+
+**No approval is recorded in this matrix.** Every blank cell is a pending human decision, and the R-01 row is the human step issue [#539](https://github.com/richardparslow-commits/Secondary_Condition_Finder/issues/539) tracks: it closes only when the approver's full name, affiliation, decision and date are recorded, with the monitored mailbox confirmed live and a named handler. The row carries an affiliation column precisely because the gate's criterion requires it. The one language correction since the 2026-10-10 assessment is part of what the approver reviews: the policy's access-and-correction paragraph no longer claims a phone intake channel this application does not operate (VA's benefits line remains published and explicitly labeled not an intake channel for this application).
 
 **Recommended next action:** approve §5 and begin R-01, R-02, R-03, R-04, and R-06 in parallel. Those five are entirely within team control, total roughly three days of work, and close two Blockers plus two High findings. R-02 must land before the manual 508 session is scheduled.
 
