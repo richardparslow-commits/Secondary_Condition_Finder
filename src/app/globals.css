@@ -89,12 +89,23 @@ button, input, select, textarea { font: inherit; }
 .ui-divider { height: 1px; margin: 18px 0; background: var(--border); }
 .ui-callout, .app-shell [role="note"] { border: 1px solid var(--border-strong) !important; border-radius: 14px !important; background: var(--primary-soft) !important; color: var(--foreground) !important; padding: 16px; }
 
+/* R-09/L-02: the surface colour is deliberately NOT in this transition list.
+   The enabled and disabled states sit at opposite ends of the lightness scale
+   (--primary #1d4ed8 vs slate-200 #e2e8f0) while the text colour flips between
+   #fff and --muted, and a transition animates each property on its own clock:
+   the text lands instantly while the surface is still mostly slate-200. That
+   is not a theoretical frame — measured in the shipped browser, the button
+   computes rgb(207, 217, 238) behind #fff 16ms into the 160ms ease = 1.42:1,
+   and the R-05 real-browser gate failed the pull request that added the
+   disabled state on that frame ("white on #ced8ee", 1.43:1, on /scenarios —
+   the three scenario launcher buttons). Border and transform still ease; the
+   surface now changes atomically with the text that sits on it. */
 .ui-button, .ui-button-secondary,
 .app-shell a[class*="bg-red-"], .app-shell a[class*="bg-slate-9"], .app-shell a[class*="bg-green-"], .app-shell a[class*="bg-blue-6"],
 .app-shell button[class*="bg-slate-9"], .app-shell button[class*="bg-green-"], .app-shell button[class*="bg-blue-6"] {
   display: inline-flex; min-height: 46px; align-items: center; justify-content: center; gap: 10px; border-radius: 10px !important;
   padding: 11px 18px; border: 2px solid var(--primary) !important; background: var(--primary) !important; color: #fff !important;
-  font-weight: 700; text-decoration: none; transition: background 160ms ease, border-color 160ms ease, transform 160ms ease;
+  font-weight: 700; text-decoration: none; transition: border-color 160ms ease, transform 160ms ease;
 }
 .ui-button:hover, .app-shell a[class*="bg-red-"]:hover, .app-shell a[class*="bg-slate-9"]:hover, .app-shell a[class*="bg-green-"]:hover,
 .app-shell button[class*="bg-slate-9"]:hover, .app-shell button[class*="bg-green-"]:hover, .app-shell button[class*="bg-blue-6"]:hover {
@@ -126,16 +137,19 @@ button, input, select, textarea { font: inherit; }
    rule existed: the disabled submit on /presumptive computed to
    rgb(29, 78, 216) on #fff — identical to the enabled control, opacity 1 —
    while its class list still carried `disabled:bg-slate-300`. The disabled
-   state is therefore declared where it wins on specificity. --muted #475569 on
-   slate-200 #e2e8f0 = 6.15:1; no opacity is applied, because translucency
-   would lower the text contrast this rule exists to keep. Enforced by
+   state is therefore declared where it wins on specificity, including opacity:
+   the components still ship Tailwind's `disabled:opacity-60`, and translucency
+   composites the reviewed pair away — measured through axe, that 0.6 rendering
+   is fg #8d96a3 on bg #eef1f6 = 2.64:1, less than half the ratio this rule is
+   for. --muted #475569 on slate-200 #e2e8f0 at full opacity = 6.15:1, so
+   opacity is pinned to 1 rather than left to the utility. Enforced by
    tests/design-token-contrast.test.ts. */
 .ui-button:disabled,
 .ui-button-secondary:disabled,
 .app-shell button[class*="bg-slate-9"]:disabled,
 .app-shell button[class*="bg-green-"]:disabled,
 .app-shell button[class*="bg-blue-6"]:disabled {
-  background: #e2e8f0 !important; border-color: var(--border) !important; color: var(--muted) !important;
+  background: #e2e8f0 !important; border-color: var(--border) !important; color: var(--muted) !important; opacity: 1 !important;
 }
 .app-shell ul[class*="border"], .app-shell ol[class*="border"] { border-color: var(--border) !important; border-radius: 14px !important; box-shadow: 0 6px 18px rgba(15, 23, 42, 0.05); }
 .app-shell label:hover { background: var(--primary-soft); }

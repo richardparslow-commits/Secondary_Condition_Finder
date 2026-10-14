@@ -74,6 +74,29 @@ function ratio(fg: string, bg: string): number {
 }
 
 /**
+ * `top` painted at `alpha` over the opaque `bottom`, as the browser composites
+ * a translucent element over the surface behind it.
+ */
+function blendOver(top: string, bottom: string, alpha: number): string {
+  const channels = [1, 3, 5].map((i) =>
+    Math.round(
+      alpha * parseInt(top.slice(i, i + 2), 16) +
+        (1 - alpha) * parseInt(bottom.slice(i, i + 2), 16),
+    ),
+  );
+  return `#${channels.map((c) => c.toString(16).padStart(2, "0")).join("")}`;
+}
+
+/** sRGB interpolation — what a CSS transition interpolates in. */
+function lerpHex(from: string, to: string, t: number): string {
+  const channels = [1, 3, 5].map((i) => {
+    const start = parseInt(from.slice(i, i + 2), 16);
+    return Math.round(start + t * (parseInt(to.slice(i, i + 2), 16) - start));
+  });
+  return `#${channels.map((c) => c.toString(16).padStart(2, "0")).join("")}`;
+}
+
+/**
  * Backgrounds muted body text can legitimately sit on. slate-100 and slate-200
  * are the two that produced the measured H-01 failures (badge containers and
  * hover/active tab states).
@@ -187,6 +210,17 @@ const FORM_COMPONENT = "src/components/ServiceHistoryForm.tsx";
 const DISABLED_SURFACE = "#e2e8f0";
 
 /**
+ * The most generous of the `disabled:opacity-*` values the normalized buttons
+ * still ship (the launchers use `opacity-60`, the DD-214 submit `opacity-50`).
+ * Testing the highest one is the strict case: every lower value composites
+ * further toward the background and measures worse.
+ */
+const DISABLED_OPACITY = 0.6;
+
+/** The shared button treatment rule — the one that carries the easing. */
+const BUTTON_TREATMENT_RULE = /\.ui-button,[\s\S]*?\{([^}]*)\}/;
+
+/**
  * The rule that forces every `bg-slate-9` button to primary + white with
  * `!important`. It is why the disabled state cannot be expressed as a Tailwind
  * variant on the component.
@@ -218,6 +252,14 @@ function walkSources(dir: string, extensions: string[], out: string[] = []): str
  * `opacity: 1` — while the source read as if the disabled state were styled.
  * The real defect was therefore that a disabled control had no visual
  * affordance at all, and the fix belongs in the stylesheet, not the component.
+ *
+ * The first version of that fix was still two things short, and both are
+ * measured here rather than argued: it left the state translucent (the
+ * components keep their own `disabled:opacity-60`, so the rendered pair was
+ * 2.64:1, not the 6.15:1 the rule is for), and it left the surface in the
+ * shared `background` transition, which rendered a real 1.43:1 frame during
+ * the enabled⇄disabled flip — the frame the R-05 real-browser gate failed the
+ * pull request over.
  */
 describe("a disabled control declares its state where the cascade lets it win (L-02)", () => {
   it("still carries the normalization rule that makes component-level disabled colours ineffective", () => {
@@ -266,11 +308,70 @@ describe("a disabled control declares its state where the cascade lets it win (L
         "read is worse than one they cannot see is disabled",
     ).toBeGreaterThanOrEqual(NORMAL_TEXT_MIN);
 
+    // Not "does it declare an opacity" but "does it pin one". The components
+    // still ship Tailwind's `disabled:opacity-60`, so a rule that stayed silent
+    // about opacity would leave the control translucent, at the rendering the
+    // next test measures.
     expect(
       declarations,
-      "no opacity on the disabled state: translucency would lower exactly the " +
-        "contrast this rule exists to keep",
-    ).not.toMatch(/opacity/);
+      "the disabled rule must pin `opacity: 1`: the components' own " +
+        "`disabled:opacity-60` utility otherwise composites the reviewed pair " +
+        "down to 2.64:1 (measured through axe: fg #8d96a3 on bg #eef1f6)",
+    ).toMatch(/opacity:\s*1\s*!important/);
+  });
+
+  it("measures what the component's own disabled opacity renders, and why 1 is pinned", () => {
+    // Composite model: the control paints its surface and text, then the whole
+    // group is blended at `alpha` over the white card behind it. axe measured
+    // this pair at 2.64:1 with the shipped `disabled:opacity-60` in force. The
+    // model below lands at 2.54:1 — the two differ only in blend order (axe
+    // composites the text toward the already-blended surface), which is far
+    // more precision than the question needs: the pair is below the floor
+    // either way.
+    const translucentBg = blendOver(DISABLED_SURFACE, BACKGROUNDS.surface, DISABLED_OPACITY);
+    const translucentFg = blendOver(tokenHex("muted"), BACKGROUNDS.surface, DISABLED_OPACITY);
+    const measured = ratio(translucentFg, translucentBg);
+    console.log(
+      `disabled control at opacity ${DISABLED_OPACITY}: ${translucentFg} on ${translucentBg} = ` +
+        `${measured.toFixed(2)}:1`,
+    );
+    expect(
+      measured,
+      "translucency is exactly what this rule exists to keep away from a " +
+        "disabled control's text",
+    ).toBeLessThan(NORMAL_TEXT_MIN);
+  });
+
+  it("changes the surface atomically with its text, so no low-contrast frame renders", () => {
+    // Measured twice. The shared button rule used to ease `background` over
+    // 160ms while the text colour switched instantly, so the enabled⇄disabled
+    // flip painted #fff over a surface still close to slate-200: frozen 16ms
+    // into that ease the button computed rgb(207, 217, 238), and the R-05
+    // real-browser gate reported the same frame as `white on #ced8ee` = 1.43:1
+    // on /scenarios. Both endpoints of the transition pass; the frames between
+    // them do not, which is why the surface is no longer transitioned at all.
+    const rule = GLOBALS_CSS_TEXT.match(BUTTON_TREATMENT_RULE);
+    expect(rule, "the shared button treatment rule is gone").not.toBeNull();
+
+    const transition = rule![1]!.match(/transition:\s*([^;]+);/)?.[1] ?? "";
+    expect(transition, "the button treatment must still declare its easing").not.toBe("");
+    expect(
+      transition,
+      "`background` is transitioned again: the text colour flips atomically, " +
+        "so a surface transition paints ~160ms of white text on a pale surface " +
+        "(measured: 1.43:1, the frame the R-05 real-browser gate caught)",
+    ).not.toMatch(/background/);
+    expect(transition, "border and transform easing should stay").toContain("border-color");
+
+    // The frame that transition used to render, recomputed from the stylesheet's
+    // own values rather than quoted from the gate's log.
+    const earlyFrame = lerpHex(DISABLED_SURFACE, tokenHex("primary"), 0.1);
+    const frame = ratio("#ffffff", earlyFrame);
+    console.log(`transitioned disabled frame: #ffffff on ${earlyFrame} = ${frame.toFixed(2)}:1`);
+    expect(
+      frame,
+      "a transitioned surface would render this frame behind white text",
+    ).toBeLessThan(NORMAL_TEXT_MIN);
   });
 
   it("keeps no disabled colour utility in the component, where it cannot take effect", () => {
