@@ -749,7 +749,7 @@ What a Lighthouse reviewer can be handed today, and what is still missing.
 | **Real-browser contrast evidence** | `e2e/a11y-contrast.mjs` + CI `a11y_contrast` step + `a11y-evidence/` artifacts | **IMPLEMENTED (R-05, 2026-10-11)** — 22 routes per run; seeded-violation failure proven |
 | **VA production approval / keys** | none | **MISSING — external (B-01)** |
 | **Data-deletion policy + contact route** | none | **MISSING (R-01)** |
-| **Hosting log retention / callback scrubbing review** | [#537](https://github.com/richardparslow-commits/Secondary_Condition_Finder/issues/537), [#538](https://github.com/richardparslow-commits/Secondary_Condition_Finder/issues/538), [ownership register](docs/external-manual-gates-status.md) | **Tracking/ownership available (R-04); actual operator review evidence still MISSING (H-02)** |
+| **Hosting log retention / callback scrubbing review** | [#537](https://github.com/richardparslow-commits/Secondary_Condition_Finder/issues/537), [#538](https://github.com/richardparslow-commits/Secondary_Condition_Finder/issues/538), [ownership register](docs/external-manual-gates-status.md), [code-side inventory](docs/hosting-log-and-callback-inventory.md) | **Tracking/ownership available (R-04); code-side sink + callback inventory recorded and pinned 2026-10-13; actual operator review evidence still MISSING (H-02)** |
 
 ---
 

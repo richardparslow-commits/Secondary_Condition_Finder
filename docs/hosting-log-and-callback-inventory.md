@@ -1,0 +1,172 @@
+# Hosting log sinks and OAuth callback surfaces — H-02 inventory
+
+H-02 (`VA_Lighthouse_Readiness_Report.md` §5.4) asks for two reviews: hosting log
+retention and access controls ([#537](https://github.com/richardparslow-commits/Secondary_Condition_Finder/issues/537),
+gate A), and OAuth callback-URL log scrubbing ([#538](https://github.com/richardparslow-commits/Secondary_Condition_Finder/issues/538),
+gate B). Both need live hosting-account inspection, which repository automation
+cannot perform.
+
+What the repository *can* do is prepare the inventory the operator review reads
+from: exactly which sinks the application can write to, exactly which callback
+surfaces ship, and what the code already guarantees about a `code` or `state`.
+That is what this document records, verified against the working tree on
+**2026-10-13**.
+
+**This document is not the operator review.** It is not evidence for gates A or
+B, it does not establish a retention period or an access control, and it does
+not close #537 or #538. Both gates stay
+**OPEN / EXTERNALLY OPERATED** in the [ownership register](external-manual-gates-status.md).
+The live half stays with the accountable operator, and the register records what
+that half must produce.
+
+## Part 1 — Application log sinks (code side)
+
+The reviewed application sink set is pinned against the working tree by
+[`tests/logging-sink-inventory.test.ts`](../tests/logging-sink-inventory.test.ts)
+rather than transcribed here, so a new sink fails CI instead of shipping
+silently. In summary, every application-emitted record goes through one of:
+
+- **One redacting logger choke point** (`src/lib/observability/logger.ts`), with a
+  pinned list of reviewed client modules; the modules that log veteran-workflow
+  fields are enumerated there and their fields are operational-only.
+- **Reviewed `auditLog` callers** — a pinned list of routes/actions emitting
+  action/status/counter events. The event names and field shapes are a closed
+  set in `src/lib/observability/audit.ts`, which drops any key it does not
+  recognize.
+- **Fixed-string `console.*` call sites** in a pinned file list, whose argument
+  *shapes* are governed by
+  [`tests/phi-logging-boundary.test.ts`](../tests/phi-logging-boundary.test.ts),
+  the ESLint rule `eslint-rules/no-unsafe-logging.mjs`, and the pre-commit
+  scanner `scripts/lib/phi-logging-scan.mjs` (two independent implementations of
+  one rule, cross-checked in CI).
+- **No external log or trace collector.** LangSmith wiring lives in one
+  `server-only` module with no `src/` caller and export defaults off; the OTel
+  meters are no-ops because `registerOTel` is never called
+  ([`tests/telemetry-policy.test.ts`](../tests/telemetry-policy.test.ts)).
+- **A content-free violation-report intake** (`/api/csp-report`): bounded status
+  codes only, and the raw report body is never logged.
+
+The repository declares **no log drain and no custom sink configuration**: there
+is no `vercel.json` and no drain/collector configuration in the tree. The only
+sinks that can receive these records are therefore the hosting provider's own
+request, runtime and edge logs — which is exactly why gate A is
+externally operated and cannot be answered from source.
+
+## Part 2 — Callback surfaces that actually ship
+
+Issue #538 warns against assuming that historical `api/auth/callback` references
+describe a shipped route. Both routes named there **do** ship; the inventory
+below is the current source of truth, and
+[`tests/oauth-callback-surface-inventory.test.ts`](../tests/oauth-callback-surface-inventory.test.ts)
+fails if this set changes.
+
+| Surface | Route | Method | Callback values | Admission control | What it writes |
+| --- | --- | --- | --- | --- | --- |
+| Canonical callback (the registered `redirect_uri`) | `/va-account/oauth/{service}/callback` | GET | `code`, `state`, `error` in the query, passed whole to the reviewed exchange | reference-read budget in `src/proxy.ts` | session handle cookie (HttpOnly, Secure, SameSite=Strict, path `/va-account`); 303 to a fixed notice code |
+| Adapter callback | `/api/auth/callback` | GET | same | `accountAuthCallbackLimiter` via `src/lib/api-route-policies.ts` | same session handle cookie and fixed-notice redirect |
+| Login initiator (page) | `POST /va-account/oauth/{service}/start` | POST | none inbound; mints `state`/verifier/nonce | reference-read budget; same-origin POST required | JSON `{ authorizationUrl }`; binding-only transaction cookie scoped to `/va-account/oauth/{service}` |
+| Login initiator (adapter) | `GET /api/auth/login` | GET | none inbound | `accountAuthLoginLimiter` | 303 to the configured VA authorization URL; binding-only transaction cookie scoped to `/api/auth` |
+| Disconnect | `POST /va-account/oauth/{service}/disconnect` | POST | none | reference-read budget; same-origin POST required | upstream revocation attempt; clears session and transaction cookies |
+| Account page | `/va-account` | GET | `notice` — a fixed code only | reference-read budget | reads the sealed server-side session; renders status |
+
+The exchange itself lives in exactly one reviewed place
+(`src/lib/va/account/oauth.ts`): both callback surfaces hand it the full
+parameter set, so neither surface reads `code` or `state` by name, and neither
+can echo, store or serialize one.
+
+## Part 3 — What the code already guarantees, and what it cannot
+
+Guarantees, each pinned by
+[`tests/oauth-callback-surface-inventory.test.ts`](../tests/oauth-callback-surface-inventory.test.ts):
+
+1. **Inventory.** Exactly two surfaces redeem an authorization code, exactly two
+   start a login, and exactly one disconnects. A new callback or initiator route
+   fails the suite and this table must be updated with it.
+2. **No sink on the callback path.** The callback-path modules (both route
+   handlers plus the account config/store/transport/exchange modules) contain no
+   logging sink at all — no `console.*`, no logger construction, no audit event.
+   The exchange cannot log a code because it cannot log.
+3. **No request-derived text in any sink, corpus-wide.** Every logging call site
+   under `src/` is inspected: an argument mentioning a request URL, the query
+   string, or a `code`/`state` read fails CI, so a future route cannot add
+   `logger.info(request.url)` and call it reviewed. The detector is itself
+   falsified with planted violations, so the fence cannot pass vacuously.
+4. **Failure text is fixed, and the URL cannot leak onward.** The only error the
+   exchange raises is `AccountUnavailable` with a constant message; both routes
+   swallow it into a fixed notice code (`connected`, `connection-failed`,
+   `unavailable`, `disconnected`, `revocation-unconfirmed`,
+   `cleanup-unconfirmed` — a pinned set). Every callback response is
+   `Cache-Control: private, no-store` + `Referrer-Policy: no-referrer`, so the
+   code-bearing callback URL cannot leak onward through a `Referer` header, and
+   the temporary transaction cookie is cleared on every callback path.
+5. **The code is single-use.** The transaction is consumed before the token
+   exchange and the callback is bound to an HttpOnly transaction cookie, so a
+   replayed or CSRF-crafted callback fails closed. This bounds the value of a
+   leaked code; it is not log evidence.
+
+What the code cannot establish — the actual gate:
+
+- The hosting provider's request/access logs may still retain the callback
+  **request line**, which contains `code` and `state`. Those logs are
+  platform-side; the repository can neither read nor scrub them.
+- Whether the platform scrubs query parameters on the way in, how long request
+  and runtime logs (and any drain destination) are retained, and who can read or
+  export them are hosting-account facts, not source facts.
+
+No code-side sink gap was found in this inventory. The residual for gate B is
+therefore external: the platform's own logs.
+
+## Part 4 — Operator review procedure
+
+Run this against the exact production deployment. Record sanitized facts only.
+
+Gate A — retention and access controls, per sink:
+
+1. Enumerate every sink that can receive request, runtime or build logs for the
+   project (platform request logs, runtime/edge logs, and any configured drain
+   destination).
+2. Record, for each: the retention period and the date it was set, whether the
+   retention is configurable and at what value, and the policy/plan tier it comes
+   from.
+3. Record the read and export access controls: which roles/accounts can read the
+   logs, whether access requires SSO or MFA, and what restricts export or
+   forwarding.
+4. Record the data-handling/redaction terms applicable to retained log content,
+   with the date the terms were reviewed.
+
+Gate B — callback-URL scrubbing:
+
+1. Confirm the shipped callback surfaces from Part 2 against the deployment (a
+   route inventory, not a memory of the issue text).
+2. Check whether the platform's request logging captures the full request line
+   including the query string, and whether any configured scrubbing rule removes
+   `code`, `state` or all query parameters.
+3. If the sandbox account config is enabled in the deployment, exercise the
+   synthetic callback path with a test account and search each sink for the
+   callback request line for the review window; otherwise record that the
+   sandbox was disabled and inspect a captured request-log sample instead.
+4. Record the outcome as one of: confirmed not retained; confirmed scrubbed;
+   retained and remediated (with the remediation and a retest date). A retained
+   code/state is a finding and must be remediated and retested before the gate
+   closes.
+
+Record for each gate: review date (UTC), hosting account/project, the sink
+identifiers, the retention/access/scrubbing facts, and the reviewer.
+
+**Never record as evidence:** log excerpts, callback URLs with query strings,
+authorization codes, `state` values, tokens, cookies, account identifiers, or
+any Veteran data. Sink and policy *names* and dates are the evidence.
+
+## Part 5 — What would close these gates
+
+- **#537 (gate A)** closes when the dated, per-sink retention/access/redaction
+  record above is entered in the issue and in the
+  [ownership register](external-manual-gates-status.md), with the reviewer named.
+- **#538 (gate B)** closes when the callback-surface inventory, the
+  platform-scrubbing finding, and the fixed-outcome statement are recorded the
+  same way, with any finding remediated and retested.
+
+Repository tests, a green CI run, a passing HTTP check, or this document cannot
+close either gate. Until the operator evidence lands, both stay
+**OPEN / EXTERNALLY OPERATED**, and the code-side inventory above is the
+operator's input rather than the review.
