@@ -227,14 +227,31 @@ Before submission, complete issue #195 against the exact deployed build using sy
 
 Use `SECURITY.md` and `docs/security-operations.md` as the operating sources. Responses should describe private reporting, minimum/sanitized incident records, containment, credential rotation where needed, reviewed remediation through full CI, exact-commit production recovery verification, and post-incident review. Do not invent a universal notification deadline; obligations depend on applicable facts and agreements.
 
+## Privacy approval and monitored contact
+
+The published deletion right, the 45-day completion commitment, the narrow statutory exceptions, and the monitored contact channel are in the [privacy policy](/privacy) section 8, mirrored in Terms section 7, and reachable through the `/privacy/request` intake page. The application does not operate a phone intake channel; VA's benefits line is published for completeness and labeled as not an intake channel for this application.
+
+This package carries the approval surface for that language, because issue [#539](https://github.com/richardparslow-commits/Secondary_Condition_Finder/issues/539) closes only with recorded human sign-off. **No approval is recorded here yet** — the fields below are unset, and nothing on this page may be read as an approval, a verified mailbox, or a completed send/receive test.
+
+| Field | Recorded value |
+| --- | --- |
+| Approver full name | *(not recorded)* |
+| Approver organization / affiliation | *(not recorded)* |
+| Decision on the deletion right and the 45-day commitment | *(not recorded)* |
+| Decision date | *(not recorded)* |
+| Monitored contact channel confirmed live | *(not recorded — mailbox `privacy@secondaryconditionfinder.org` is published; liveness is unverified here)* |
+| Named handler for the channel | *(not recorded)* |
+| Sanitized send/receive test outcome and fulfillment procedure | *(not recorded)* |
+
 ## Current readiness status
 
 Repository implementation and production runtime lineage are healthy on the current checkpoint. Submission is **not ready** until:
 
 - issue #189 has objective credentialed sandbox success evidence;
 - issue #195 has objective manual accessibility evidence;
+- issue #539 has the operator/privacy approval recorded above, with the monitored channel confirmed live and a named handler;
 - applicant/business facts and final public URLs are supplied;
 - final deployed-app rehearsal passes; and
 - fresh exact-commit production readiness is verified immediately before submission.
 
-Issue #287 remains the external VA production-reference transition gate. Configuration readiness is not the same as granted/verified production API access.
+Issues #287 and #537/#538 remain the external gates for VA production-reference access and the hosting log retention/callback-scrubbing reviews. Configuration readiness is not the same as granted/verified production API access, and no operator review is implied by this package.

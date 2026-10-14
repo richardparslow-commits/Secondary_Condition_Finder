@@ -53,9 +53,10 @@ export default function PrivacyRequestPage() {
           </li>
           <li>
             <strong>Completion within {PRIVACY_COMPLETION_DAYS} days.</strong>{" "}
-            A verified request is completed within 45 days of receipt, including
-            any constituent partial request. If part of a request cannot be
-            completed, the same confirmation says what was not done and why.
+            A verified request is completed within {PRIVACY_COMPLETION_DAYS} days
+            of receipt, including any constituent partial request. If part of a
+            request cannot be completed, the same confirmation says what was not
+            done and why.
           </li>
           <li>
             <strong>By the same channel.</strong> The acknowledgement and the

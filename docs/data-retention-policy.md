@@ -71,7 +71,11 @@ There is no central user table to delete. A user can delete their own transient 
 2. Clearing site cookies + `sessionStorage` in the browser, or closing the tab (evidence and workflow records are `sessionStorage`-scoped).
 3. Clearing the presumptive browser-local service-history record via the presumptive clear action.
 
-For logs/metrics that may contain sanitized operational traces, file a request through the channel in `SECURITY.md` with the time window and route — the operator will confirm provider-side retention handling. Do not include sensitive payloads in the request.
+Self-service clearing covers everything this application stores in the browser. For the server-side records a request can reach — the sealed read-only account session described in the privacy policy's section 6, and operational records that identify the requester — use the published channel of record: requests are accepted at **`privacy@secondaryconditionfinder.org`**, and the `/privacy/request` intake page pre-composes a deletion, access, correction, or question message in the requester's own mail client (nothing is submitted to this application).
+
+A verified request is completed **within 45 days** of receipt, including any constituent partial request. Where a record must be retained under the narrow statutory exceptions — records kept under 36 CFR Chapter XII (National Archives and Records Administration recordkeeping) and VA recordkeeping obligations under Title 38, United States Code — or where a request is completed only in part or refused, the completion confirmation states what was retained and why.
+
+Hosting-platform request and operational logs are addressed by the [operator log-retention review](external-manual-gates-status.md) rather than by host-independent deletion; when a request needs provider-side handling, the operator confirms that outcome in the same completion confirmation. Security vulnerabilities are reported through `SECURITY.md`, which is not the privacy-request channel. Do not include sensitive payloads — medical records, a claim number, or a Social Security number — in a request.
 
 ### Future multi-user basis (not yet applicable)
 
@@ -95,6 +99,7 @@ Review this policy whenever workflow state shape, evidence handling, VA integrat
 
 ## Links
 
+- Published rights and channel: [privacy policy](https://secondary-condition-finder.vercel.app/privacy) section 8 and the `/privacy/request` intake page (`src/app/privacy/page.tsx`, `src/app/privacy/request/page.tsx`)
 - Product scope: `docs/product-spec.md`, `docs/master-specification.md`
 - Production runbook: `docs/deployment-readiness.md`
 - VA runtime contract: `docs/va-api-runtime-configuration.md`
