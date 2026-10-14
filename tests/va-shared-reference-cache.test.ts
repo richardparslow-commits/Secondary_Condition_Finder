@@ -460,6 +460,11 @@ describe("VA shared reference cache — finding #3 (multi-instance miss rate)", 
         if (command[0] === "MGET") return okJson({ result: [null, null] });
         // Shared circuit coordination read: no cooldown marker is published.
         if (command[0] === "GET") return okJson({ result: null });
+        // Redis answers EXPIRE with integer 1 when it set the timeout. The
+        // consumer budget validates that reply (audit A03), so a fixture that
+        // answered "OK" here would be stubbing a reply the store never sends
+        // and would fail the admission closed.
+        if (command[0] === "EXPIRE") return okJson({ result: 1 });
         return okJson({ result: "OK" });
       }
       return new Response(JSON.stringify({ data: [] }), {

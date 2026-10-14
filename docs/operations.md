@@ -29,6 +29,7 @@ The application uses a two-tier cache for VA public reference data (forms, disab
 - Finite cardinality: at most `VA_SHARED_KEY_WRITE_MAX_PER_WINDOW=240` admitted writes per namespace per `VA_SHARED_KEY_WRITE_WINDOW_SECONDS=300` window, so ≤480 resident keys per namespace (≤1,920 across the allowlist). A refused or failed budget check skips the write — the cache is colder, never wrong
 - Single-flight per key: one instance claims a 120 s `SET … NX PX` lease (`VA_SHARED_FETCH_LEASE_MS`) for a cold/expired key, sized to cover the longest legal logical fetch (three 30 s attempts plus inter-attempt backoff and the shared write), and other instances wait up to 600 ms for that value to be published instead of issuing their own upstream request. The lease fails open (an unreachable coordinator just means the normal path) and expires on its own if the holder dies
 - Degraded store: every KV exchange is capped by the 750 ms deadline, so a store that is slow (rather than unreachable) costs a fail-closed render at most three deadlines (~2.25 s: cache read, lease claim, circuit gate) and never waits for the store's real latency; nothing is cached, no quota is reserved, and no upstream request is made while the coordinator is unusable
+- Consumer budget: in a distributed runtime every upstream attempt reserves a shared slot first, and the reservation is a **rolling** window — the current bucket's atomic count is charged together with the weighted share of the previous bucket the current instant still overlaps, so the fleet cannot admit `VA_SHARED_CONSUMER_MAX_REQUESTS=60` at the end of one bucket and another 60 at the start of the next (that boundary burst was audit A03), and it refills gradually as the overlap decays. Counters must be non-negative safe integers and each window's counter lifetime is validated, so a fractional, erroring, or un-expirable counter fails closed instead of authorising a slot; a refused attempt still consumes its slot, which makes the budget more conservative, never looser
 
 ### Monitoring Cache Effectiveness
 
@@ -126,7 +127,7 @@ Keys are prefixed in the shared store (`va:ref:` by default). User-supplied segm
 | Service branches | `service-branches:{env}` | `va:ref:service-branches:sandbox` |
 | Accredited representatives | `accredited-rep:{env}:{hash}` | `va:ref:accredited-rep:sandbox:41ab…` |
 
-Coordination keys live under the same prefix but never carry lookup values: `cache-epoch` (invalidation marker), `cardinality:{namespace}:{window}` (write budget), `budget:{window}` (consumer quota), and `circuit:{service}` / `circuit-probe:{service}` (fleet cooldown and probe lease).
+Coordination keys live under the same prefix but never carry lookup values: `cache-epoch` (invalidation marker), `cardinality:{namespace}:{window}` (write budget), `budget:{bucket}` (consumer quota — one counter per rolling window, read together with its predecessor), and `circuit:{service}` / `circuit-probe:{service}` (fleet cooldown and probe lease).
 
 The `prefix` query parameter filters **process-local** keys only (e.g. `?prefix=forms-finder:`); the shared-tier invalidation epoch is always advanced store-wide:
 

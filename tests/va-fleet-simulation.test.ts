@@ -7,8 +7,8 @@ import { clearVaReferenceCache, hashedCacheKeySegment } from "@/lib/va/reference
 import {
   VA_SHARED_CACHE_ENVELOPE_VERSION,
   VA_SHARED_CACHE_EPOCH_DEFAULT,
+  VA_SHARED_CONSUMER_COUNTER_TTL_SECONDS,
   VA_SHARED_CONSUMER_MAX_REQUESTS,
-  VA_SHARED_CONSUMER_WINDOW_SECONDS,
   VA_SHARED_KEY_WRITE_MAX_PER_WINDOW,
   bumpVaSharedCacheEpoch,
   readVaSharedReferenceCache,
@@ -299,6 +299,9 @@ describe("VA fleet simulation — unique-query storm", () => {
 
       // No upstream request may start before a budget reservation, and every
       // reservation uses the same window bucket with a bounded counter lifetime.
+      // The storm runs at one instant, so the rolling window's predecessor term
+      // is read at most — never incremented — and one bucket holds the whole
+      // storm.
       const firstBudgetIncr = fleet.events.findIndex(
         (event) =>
           event.kind === "kv" &&
@@ -321,7 +324,7 @@ describe("VA fleet simulation — unique-query storm", () => {
           .some(
             (command) =>
               command[1] === [...budgetKeys][0] &&
-              command[2] === String(VA_SHARED_CONSUMER_WINDOW_SECONDS),
+              command[2] === String(VA_SHARED_CONSUMER_COUNTER_TTL_SECONDS),
           ),
       ).toBe(true);
 
