@@ -55,6 +55,10 @@ function stubDistributedKv(options: { upstreamPayload: unknown }): string[][] {
           return okJson({ result: command.slice(1).map(() => null) });
         }
         if (command[0] === "INCR") return okJson({ result: 1 });
+        // Redis answers EXPIRE with integer 1 when it set the timeout, and the
+        // consumer budget validates that reply (audit A03). A fixture that
+        // answered "OK" here would be stubbing a reply the store never sends.
+        if (command[0] === "EXPIRE") return okJson({ result: 1 });
         return okJson({ result: "OK" });
       }
       return okJson(options.upstreamPayload);
