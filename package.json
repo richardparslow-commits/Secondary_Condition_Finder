@@ -49,6 +49,8 @@
     "authoring:backlog": "node scripts/report-authoring-backlog.js",
     "audit:high": "npm audit --audit-level=high --omit=dev",
     "audit:high:all": "npm audit --audit-level=high",
+    "audit:disposition": "node scripts/audit-dependency-disposition.mjs",
+    "audit:disposition:registry": "node scripts/audit-dependency-disposition.mjs --check-registry",
     "audit:crg": "node scripts/audit-crg-graph.js",
     "audit:crg:graph": "node --no-warnings scripts/audit-crg.ts",
     "audit:traces": "node scripts/audit-artifact-traces.mjs",

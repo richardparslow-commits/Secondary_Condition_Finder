@@ -271,7 +271,7 @@ Informational projections of authored KB/catalog data via `recommend()` — no n
 - Evidence-document processing must complete in-browser without server transmission (enforced by `src/lib/evidence/storage.ts`, `audit:evidence-architecture`, and `ingestion-privacy` tests)
 - VA API integration is disabled by default; sandbox/production access is a separately governed future gate (issue #189, `docs/va-api-runtime-configuration.md`)
 - Session tokens must include server-authenticated expiry; browser `Max-Age` alone is not sufficient
-- All deployments to production must pass the full CI gate including `npm run kb:validate`, `npm run citations:audit`, `npm run audit:me-compliance`, `npm run test:composition`, `typecheck`, `lint`, `test`, and `npm audit --audit-level=high --omit=dev` (`npm run audit:high`; dev-tooling advisories are inventoried non-blockingly via `npm run audit:high:all`)
+- All deployments to production must pass the full CI gate including `npm run kb:validate`, `npm run citations:audit`, `npm run audit:me-compliance`, `npm run test:composition`, `typecheck`, `lint`, `test`, and `npm audit --audit-level=high --omit=dev` (`npm run audit:high`; dev-tooling advisories are inventoried via `npm run audit:high:all` and every reported advisory must be classified in `docs/dependency-advisory-disposition.json`, which `npm run audit:disposition` enforces as a CI gate — an unclassified advisory, a record that no longer matches the tree, a repaired release that now exists, or an expired review window fails the build)
 - Rating context is condition identity/rating information only and must not be presented as clinical nexus evidence
 
 ### Assumptions

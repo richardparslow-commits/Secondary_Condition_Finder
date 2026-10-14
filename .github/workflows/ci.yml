@@ -189,6 +189,20 @@ jobs:
           set -o pipefail
           npm run audit:high:all 2>&1 | tee ci-audit-all.log || true
         id: audit_all_inventory
+      # A10 (audit issue list, item 25). The inventory step above is a log line,
+      # so an advisory with no published fix could not block a merge and was
+      # indistinguishable from no advisory at all. This gate holds every
+      # advisory the full-tree audit reports to a dated, evidence-based record
+      # in docs/dependency-advisory-disposition.json, and fails on unclassified
+      # debt or on a record that no longer matches the tree. Severity
+      # enforcement for production dependencies stays with `audit:high` above;
+      # this gate governs inventory completeness, classification and freshness.
+      - name: Gate dependency advisory dispositions (A10)
+        run: |
+          set -o pipefail
+          npm run audit:disposition 2>&1 | tee ci-audit-disposition.log
+        continue-on-error: true
+        id: audit_disposition
       - name: Audit citation verification
         run: |
           set -o pipefail
@@ -334,6 +348,7 @@ jobs:
             echo "- install: ${{ steps.install.outcome }}"
             echo "- audit (production deps): ${{ steps.audit.outcome }}"
             echo "- audit-all (informational): ${{ steps.audit_all_inventory.outcome }}"
+            echo "- audit-disposition (A10): ${{ steps.audit_disposition.outcome }}"
             echo "- citations: ${{ steps.citations.outcome }}"
             echo "- kb-validate: ${{ steps.kb_validate.outcome }}"
             echo "- me-compliance: ${{ steps.me_compliance.outcome }}"
@@ -352,7 +367,7 @@ jobs:
             echo "- priv01-sentinel job: ${{ needs.priv01_sentinel.result }}"
             echo
             echo "## Failure excerpts"
-            for log in ci-governance.log ci-branch-rules.log ci-install.log ci-audit.log ci-audit-all.log ci-citations.log ci-kb-validate.log ci-me-compliance.log ci-crg.log ci-crg-graph.log ci-lint.log ci-typecheck.log ci-test-composition.log ci-test.log ci-fleet.log ci-build.log ci-artifact-traces.log ci-e2e.log ci-a11y-contrast.log; do
+            for log in ci-governance.log ci-branch-rules.log ci-install.log ci-audit.log ci-audit-all.log ci-audit-disposition.log ci-citations.log ci-kb-validate.log ci-me-compliance.log ci-crg.log ci-crg-graph.log ci-lint.log ci-typecheck.log ci-test-composition.log ci-test.log ci-fleet.log ci-build.log ci-artifact-traces.log ci-e2e.log ci-a11y-contrast.log; do
               if [ -f "$log" ]; then
                 echo
                 echo "### $log"
@@ -394,7 +409,7 @@ jobs:
           if [ "${{ needs.priv01_scope.result }}" != "success" ] || \
              [ "${{ needs.priv01_sentinel.result }}" = "failure" ] || \
              [ "${{ needs.priv01_sentinel.result }}" = "cancelled" ] || \
-             [ "${{ steps.governance.outcome }}" = "failure" ] || [ "${{ steps.branch_rules.outcome }}" = "failure" ] || [ "${{ steps.install.outcome }}" = "failure" ] || [ "${{ steps.audit.outcome }}" = "failure" ] || [ "${{ steps.citations.outcome }}" = "failure" ] || [ "${{ steps.kb_validate.outcome }}" = "failure" ] || [ "${{ steps.me_compliance.outcome }}" = "failure" ] || [ "${{ steps.crg.outcome }}" = "failure" ] || [ "${{ steps.crg_graph.outcome }}" = "failure" ] || [ "${{ steps.lint.outcome }}" = "failure" ] || [ "${{ steps.typecheck.outcome }}" = "failure" ] || [ "${{ steps.test_composition.outcome }}" = "failure" ] || [ "${{ steps.test.outcome }}" = "failure" ] || [ "${{ steps.fleet.outcome }}" = "failure" ] || [ "${{ steps.build.outcome }}" = "failure" ] ||             [ "${{ steps.artifact_traces.outcome }}" = "failure" ] || [ "${{ steps.e2e.outcome }}" = "failure" ] || [ "${{ steps.a11y_contrast.outcome }}" = "failure" ]; then
+             [ "${{ steps.governance.outcome }}" = "failure" ] || [ "${{ steps.branch_rules.outcome }}" = "failure" ] || [ "${{ steps.install.outcome }}" = "failure" ] || [ "${{ steps.audit.outcome }}" = "failure" ] || [ "${{ steps.audit_disposition.outcome }}" = "failure" ] || [ "${{ steps.citations.outcome }}" = "failure" ] || [ "${{ steps.kb_validate.outcome }}" = "failure" ] || [ "${{ steps.me_compliance.outcome }}" = "failure" ] || [ "${{ steps.crg.outcome }}" = "failure" ] || [ "${{ steps.crg_graph.outcome }}" = "failure" ] || [ "${{ steps.lint.outcome }}" = "failure" ] || [ "${{ steps.typecheck.outcome }}" = "failure" ] || [ "${{ steps.test_composition.outcome }}" = "failure" ] || [ "${{ steps.test.outcome }}" = "failure" ] || [ "${{ steps.fleet.outcome }}" = "failure" ] || [ "${{ steps.build.outcome }}" = "failure" ] ||             [ "${{ steps.artifact_traces.outcome }}" = "failure" ] || [ "${{ steps.e2e.outcome }}" = "failure" ] || [ "${{ steps.a11y_contrast.outcome }}" = "failure" ]; then
             echo "One or more CI gates failed. See the diagnostic summary and artifact."
             exit 1
           fi
