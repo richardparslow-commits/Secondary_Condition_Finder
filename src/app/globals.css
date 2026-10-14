@@ -6,6 +6,8 @@
   --foreground: #0f172a;
   --muted: #475569;
   --border: #cbd5e1;
+  /* DECORATIVE ONLY — 1.80:1 on white. Fails WCAG 1.4.11 (3:1) if used as a
+     form-field or control boundary. Use --border (#cbd5e1) or darker for those. */
   --border-strong: #93c5fd;
   --primary: #1d4ed8;
   --primary-hover: #1e3a8a;
@@ -117,6 +119,24 @@ button, input, select, textarea { font: inherit; }
    text on primary blue at ~1.5:1 (the exact axe violation the real-browser
    contrast gate now blocks on). */
 .app-shell [class*="hover:bg-red-"]:hover, .app-shell [class*="hover:bg-slate-7"]:hover { background: var(--primary-hover) !important; }
+/* L-02: a disabled control has to look disabled *and* stay readable. The
+   normalization rule above forces every bg-slate-9 button to primary + #fff
+   with !important, so a component-level `disabled:bg-*` / `disabled:text-*`
+   utility can never take effect here. Measured in a real browser before this
+   rule existed: the disabled submit on /presumptive computed to
+   rgb(29, 78, 216) on #fff — identical to the enabled control, opacity 1 —
+   while its class list still carried `disabled:bg-slate-300`. The disabled
+   state is therefore declared where it wins on specificity. --muted #475569 on
+   slate-200 #e2e8f0 = 6.15:1; no opacity is applied, because translucency
+   would lower the text contrast this rule exists to keep. Enforced by
+   tests/design-token-contrast.test.ts. */
+.ui-button:disabled,
+.ui-button-secondary:disabled,
+.app-shell button[class*="bg-slate-9"]:disabled,
+.app-shell button[class*="bg-green-"]:disabled,
+.app-shell button[class*="bg-blue-6"]:disabled {
+  background: #e2e8f0 !important; border-color: var(--border) !important; color: var(--muted) !important;
+}
 .app-shell ul[class*="border"], .app-shell ol[class*="border"] { border-color: var(--border) !important; border-radius: 14px !important; box-shadow: 0 6px 18px rgba(15, 23, 42, 0.05); }
 .app-shell label:hover { background: var(--primary-soft); }
 

@@ -177,3 +177,200 @@ describe("off-token muted text is not reintroduced", () => {
     ).toBeGreaterThanOrEqual(65);
   });
 });
+
+/* ─── R-09: the two design-token boundary rules this suite owns ─────────── */
+
+const GLOBALS_CSS_TEXT = readFileSync(GLOBALS_CSS, "utf8");
+const FORM_COMPONENT = "src/components/ServiceHistoryForm.tsx";
+
+/** Tailwind slate-200 — the reviewed disabled surface. */
+const DISABLED_SURFACE = "#e2e8f0";
+
+/**
+ * The rule that forces every `bg-slate-9` button to primary + white with
+ * `!important`. It is why the disabled state cannot be expressed as a Tailwind
+ * variant on the component.
+ */
+const BUTTON_NORMALIZATION_RULE = /\.app-shell button\[class\*="bg-slate-9"\][^{}]*\{([^}]*)\}/;
+
+/** The `:disabled` state declared in the stylesheet, where it does win. */
+const DISABLED_STATE_RULE = /[^{}]*\[class\*="bg-slate-9"\]:disabled[^{}]*\{([^}]*)\}/;
+
+function walkSources(dir: string, extensions: string[], out: string[] = []): string[] {
+  for (const entry of readdirSync(dir)) {
+    const full = path.join(dir, entry);
+    if (statSync(full).isDirectory()) walkSources(full, extensions, out);
+    else if (extensions.some((extension) => entry.endsWith(extension))) out.push(full);
+  }
+  return out;
+}
+
+/**
+ * L-02 — a disabled control has to look disabled and stay readable.
+ *
+ * The audit recorded this as `text-white` on `disabled:bg-slate-300` = 1.49:1
+ * measured from the *class list*. Measured in a real browser, that pair is not
+ * what ships: the legacy palette normalization above matches
+ * `button[class*="bg-slate-9"]` and forces `background: var(--primary)`,
+ * `color: #fff` and the border with `!important`, so `disabled:bg-slate-300`
+ * never renders. The disabled submit on `/presumptive` computed to
+ * `rgb(29, 78, 216)` on `#fff` — byte-identical to the enabled control, at
+ * `opacity: 1` — while the source read as if the disabled state were styled.
+ * The real defect was therefore that a disabled control had no visual
+ * affordance at all, and the fix belongs in the stylesheet, not the component.
+ */
+describe("a disabled control declares its state where the cascade lets it win (L-02)", () => {
+  it("still carries the normalization rule that makes component-level disabled colours ineffective", () => {
+    const rule = GLOBALS_CSS_TEXT.match(BUTTON_NORMALIZATION_RULE);
+    expect(
+      rule,
+      "the bg-slate-9 button normalization rule is gone. If the palette " +
+        "normalization was deliberately removed, the disabled state can move back " +
+        "into the component and this suite should be re-aimed",
+    ).not.toBeNull();
+    expect(rule![1], "that rule forces the surface with !important").toMatch(
+      /background:[^;]*!important/,
+    );
+    expect(rule![1], "and the colour with !important").toMatch(/color:[^;]*!important/);
+  });
+
+  it("declares a readable disabled state for those buttons in the stylesheet", () => {
+    const rule = GLOBALS_CSS_TEXT.match(DISABLED_STATE_RULE);
+    expect(
+      rule,
+      "no `:disabled` rule for the normalized buttons. Without one, a disabled " +
+        "control renders exactly like an enabled one (measured: identical " +
+        "computed background, colour and opacity)",
+    ).not.toBeNull();
+
+    const declarations = rule![1]!;
+    const background = declarations.match(/background:\s*(#[0-9a-fA-F]{6})/)?.[1]?.toLowerCase();
+    expect(background, "the disabled state must set an explicit background").toBeDefined();
+    expect(
+      background,
+      "slate-200 is the reviewed disabled surface; slate-300 was the audited " +
+        "pair and is not reachable through this rule either",
+    ).toBe(DISABLED_SURFACE);
+    expect(
+      declarations,
+      "the disabled text must use the --muted token, not a Tailwind slate utility",
+    ).toContain("color: var(--muted)");
+
+    const measured = ratio(tokenHex("muted"), background!);
+    console.log(
+      `disabled control: --muted ${tokenHex("muted")} on ${background} = ${measured.toFixed(2)}:1`,
+    );
+    expect(
+      measured,
+      "the disabled state must clear 4.5:1 — a control a low-vision user cannot " +
+        "read is worse than one they cannot see is disabled",
+    ).toBeGreaterThanOrEqual(NORMAL_TEXT_MIN);
+
+    expect(
+      declarations,
+      "no opacity on the disabled state: translucency would lower exactly the " +
+        "contrast this rule exists to keep",
+    ).not.toMatch(/opacity/);
+  });
+
+  it("keeps no disabled colour utility in the component, where it cannot take effect", () => {
+    const form = readFileSync(path.join(process.cwd(), FORM_COMPONENT), "utf8")
+      // The comments in this component name the dead utilities on purpose, to
+      // explain why the state lives in the stylesheet. Only real code counts.
+      .replace(/\{\/\*[\s\S]*?\*\/\}/g, "")
+      .replace(/\/\*[\s\S]*?\*\//g, "");
+    expect(
+      form.match(/disabled:(?:bg|text)-\S+/g) ?? [],
+      "a `disabled:bg-*` / `disabled:text-*` utility on this button renders " +
+        "nothing — the normalization rule above wins with !important — while the " +
+        "source reads as though the disabled state were styled there. Declare it " +
+        "in globals.css instead.",
+    ).toEqual([]);
+  });
+});
+
+/**
+ * L-03 — `--border-strong` is decorative and must not become a control boundary.
+ *
+ * It measures well below the 3:1 that SC 1.4.11 requires of a form field's or
+ * control's boundary, which is fine for the callout and footer-note edges it is
+ * used on and a conformance failure the moment it is reused for an input. The
+ * audit asked for a comment at the definition; a comment alone rots, so the
+ * documented ratio is checked against the token's real value and the token's
+ * usage is a closed inventory.
+ */
+describe("--border-strong stays decorative (L-03)", () => {
+  const lines = GLOBALS_CSS_TEXT.split("\n");
+  const definitionIndex = lines.findIndex((line) => /--border-strong:\s*#[0-9a-fA-F]{6}/.test(line));
+  const warning = lines.slice(Math.max(0, definitionIndex - 6), definitionIndex).join("\n");
+
+  const usages = walkSources(SRC_ROOT, [".tsx", ".css"]).flatMap((file) =>
+    readFileSync(file, "utf8")
+      .split("\n")
+      .flatMap((text, index) =>
+        text.includes("border-strong")
+          ? [{ file: path.relative(process.cwd(), file).split(path.sep).join("/"), index, text }]
+          : [],
+      ),
+  );
+
+  it("warns at the definition, with the ratio that makes the warning true", () => {
+    expect(definitionIndex, "--border-strong is not defined in globals.css").toBeGreaterThan(-1);
+    expect(warning, "the decorative-only warning was removed or moved").toContain("DECORATIVE ONLY");
+    expect(warning, "the warning must name the success criterion it fails").toContain("1.4.11");
+
+    const measured = ratio(tokenHex("border-strong"), BACKGROUNDS.surface);
+    console.log(`decorative border: --border-strong ${tokenHex("border-strong")} on surface = ${measured.toFixed(2)}:1`);
+    expect(
+      measured,
+      "this rule only exists while the token is below the 3:1 non-text minimum",
+    ).toBeLessThan(LARGE_TEXT_MIN);
+    expect(
+      warning,
+      `the warning quotes a ratio that no longer matches the token (measured ${measured.toFixed(2)}:1)`,
+    ).toContain(`${measured.toFixed(2)}:1`);
+  });
+
+  it("is used only by the reviewed decorative surfaces, all in the stylesheet", () => {
+    expect(
+      [...new Set(usages.map((usage) => usage.file))],
+      "a component reached for --border-strong directly; components must use " +
+        "--border (or darker) for any boundary a user has to perceive",
+    ).toEqual(["src/app/globals.css"]);
+
+    const texts = usages.map((usage) => usage.text);
+    expect(usages.length, "a new --border-strong usage appeared; review it before allowing it").toBe(3);
+    expect(
+      texts.some((text) => /--border-strong:\s*#[0-9a-fA-F]{6}/.test(text)),
+      "the token definition itself must still be one of the usages",
+    ).toBe(true);
+    for (const [selector, reason] of [
+      [".ui-callout", "callout border"],
+      [".ui-footer-note", "footer-note border"],
+    ] as const) {
+      expect(
+        texts.some((text) => text.includes(selector) && text.includes("var(--border-strong)")),
+        `the reviewed ${reason} (${selector}) no longer uses the token`,
+      ).toBe(true);
+    }
+  });
+
+  it("is not a control boundary, and controls keep using --border", () => {
+    for (const usage of usages) {
+      expect(
+        usage.text,
+        `--border-strong is on a form-control boundary at ${usage.file}:${usage.index + 1}. ` +
+          `It measures 1.80:1, below the 3:1 SC 1.4.11 requires there.`,
+      ).not.toMatch(
+        /(?:^|[^\w-])(?:input|select|textarea|fieldset|checkbox|radio)\b|\brole="?textbox"?/i,
+      );
+    }
+
+    const controlRule = GLOBALS_CSS_TEXT.match(/\.app-shell input\[type="text"\][^{}]*\{([^}]*)\}/);
+    expect(controlRule, "the shared control boundary rule is gone").not.toBeNull();
+    expect(
+      controlRule![1],
+      "form controls must keep the compliant --border boundary",
+    ).toContain("border: 1px solid var(--border)");
+  });
+});

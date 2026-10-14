@@ -712,10 +712,15 @@ export function ConditionTimelineVisualization({
           })}
         </svg>
 
-        {/* html tooltip */}
+        {/* html tooltip. L-04: body text is 14px, not 12px — this is the only
+            place two values on the drawn timeline can be read together, so it
+            may not be the smallest text on the surface. Its contrast was
+            already well clear (text-white on bg-slate-900, 17.6:1), and the
+            year table below the graphic stays the DOM alternative for the same
+            data. Guarded by tests/canvas-rendered-surface.test.ts. */}
         {tooltip && (
           <div
-            className="pointer-events-none absolute z-10 max-w-[min(22rem,90%)] rounded-lg border border-slate-200 bg-slate-900 px-3 py-2 text-xs leading-relaxed text-white shadow-xl"
+            className="pointer-events-none absolute z-10 max-w-[min(22rem,90%)] rounded-lg border border-slate-200 bg-slate-900 px-3 py-2 text-sm leading-relaxed text-white shadow-xl"
             style={{
               left: Math.min(contentW - 240, Math.max(8, tooltip.x)),
               top: Math.max(8, tooltip.y - 56),
