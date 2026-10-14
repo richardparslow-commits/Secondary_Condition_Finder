@@ -532,17 +532,69 @@ export async function runVaSharedKvCommand(
 }
 
 /**
- * VA enforces a per-consumer request quota (60/minute) across all instances.
- * A shared GET/SET cache is not a rate limiter, so the distributed gate must
- * atomically reserve a slot in the shared store before every upstream attempt,
- * including retries. Fails closed (false) when the coordinator is missing,
- * unreachable, or returns a non-numeric result.
+ * Conservative **rolling** consumer budget (audit A03).
+ *
+ * VA enforces a per-consumer request quota across all instances, and a shared
+ * GET/SET cache is not a rate limiter, so the distributed gate atomically
+ * reserves a slot in the shared store before every upstream attempt, including
+ * retries. It fails closed (false) when the coordinator is missing,
+ * unreachable, or answers anything this module cannot read as a counter.
+ *
+ * Two defects of the original fixed-minute counter are closed here:
+ *
+ *   - **No boundary burst.** `floor(now / 60000)` admitted 60 reservations at
+ *     59,999 ms and another 60 at 60,000 ms — 120 admissions against a budget
+ *     of 60, one millisecond apart. Admission is now a rolling window: the
+ *     current bucket's count is charged together with a weighted share of the
+ *     predecessor bucket's count, the weight being the fraction of that window
+ *     the current instant still overlaps. `Math.ceil` on the product keeps the
+ *     approximation conservative, so the burst above is refused, and pacing
+ *     recovers gradually as the overlap decays. This is conservative pacing
+ *     rather than a hard atomic sliding window: the current-bucket term is
+ *     atomic (one `INCR`), while the predecessor term is a separate read.
+ *   - **Strict command validation.** A counter reply must be a non-negative
+ *     safe integer; a fractional, negative, non-numeric, or erroring reply
+ *     refuses the slot instead of being coerced (`Number.isFinite` accepted
+ *     `1.5`). The counter's lifetime is applied once per window and its reply is
+ *     validated: a counter that cannot be given a lifetime is not a bounded
+ *     budget, so the slot is refused and the key is removed instead of being
+ *     left to accumulate in the store.
+ *
+ * A refused reservation still consumes a slot, exactly as before, because the
+ * counter is incremented before the decision. That over-count keeps the budget
+ * conservative: a refused attempt can only reduce traffic against VA.
+ *
+ * Still unconfirmed, and therefore still an operator item: the issued
+ * consumer's rolling/fixed/reset semantics, and whether its
+ * `ratelimit-remaining`/reset guidance may adapt this pacing. Issue #287 owns
+ * that evidence; this module does not guess at it.
  *
  * This is only consulted when `VA_SHARED_CONSUMER_BUDGET=true`; see
  * `vaSharedConsumerBudgetEnabled`.
  */
-export const VA_SHARED_CONSUMER_WINDOW_SECONDS = 120;
+export const VA_SHARED_CONSUMER_WINDOW_MS = 60_000;
 export const VA_SHARED_CONSUMER_MAX_REQUESTS = 60;
+/**
+ * Lifetime of one window's counter. Longer than the window itself, so the next
+ * window can still read it as its pacing predecessor, and short enough that a
+ * counter cannot accumulate in the store.
+ */
+export const VA_SHARED_CONSUMER_COUNTER_TTL_SECONDS = 120;
+
+/**
+ * Read a Redis-REST integer reply strictly. Accepts a non-negative safe integer
+ * or its bare digit-string form and rejects fractions (`1.5`), negatives,
+ * exponents, and anything else, so no coerced value can authorise a slot.
+ */
+function readStrictCounter(reply: unknown): number | null {
+  if (typeof reply === "number") {
+    return Number.isSafeInteger(reply) && reply >= 0 ? reply : null;
+  }
+  if (typeof reply === "string" && /^\d{1,15}$/.test(reply)) {
+    return Number.isSafeInteger(Number(reply)) ? Number(reply) : null;
+  }
+  return null;
+}
 
 export async function reserveVaSharedConsumerSlot(
   env: Env = process.env as Env,
@@ -550,23 +602,75 @@ export async function reserveVaSharedConsumerSlot(
 ): Promise<boolean> {
   const config = loadVaSharedCacheConfig(env);
   if (!config) return false;
+  // A clock the bucket arithmetic cannot represent would key a counter by
+  // `NaN` or a negative index; refuse instead of pretending that is a window.
+  if (!Number.isSafeInteger(now) || now < 0) return false;
 
-  const windowKey = `${config.prefix}budget:${Math.floor(now / 60_000)}`;
+  const budgetKey = (index: number) => `${config.prefix}budget:${index}`;
+  const bucket = Math.floor(now / VA_SHARED_CONSUMER_WINDOW_MS);
   try {
-    const increment = await postRedisCommand(config, ["INCR", windowKey]);
-    if (!increment.ok || !increment.payload) return false;
-    const count = Number(increment.payload.result);
-    if (!Number.isFinite(count) || count < 1) return false;
+    const increment = await postRedisCommand(config, ["INCR", budgetKey(bucket)]);
+    if (!increment.ok || !increment.payload || increment.payload.error !== undefined) {
+      return false;
+    }
+    const count = readStrictCounter(increment.payload.result);
+    if (count === null || count < 1) return false;
 
     if (count === 1) {
       // Bound the counter so an abandoned window cannot accumulate forever.
-      await postRedisCommand(config, [
+      const expire = await postRedisCommand(config, [
         "EXPIRE",
-        windowKey,
-        String(VA_SHARED_CONSUMER_WINDOW_SECONDS),
+        budgetKey(bucket),
+        String(VA_SHARED_CONSUMER_COUNTER_TTL_SECONDS),
       ]);
+      const ttlApplied =
+        expire.ok &&
+        expire.payload !== null &&
+        expire.payload.error === undefined &&
+        readStrictCounter(expire.payload.result) === 1;
+      if (!ttlApplied) {
+        // A counter without a lifetime is not a bounded budget: remove it so the
+        // store cannot collect one permanent key per window, and fail closed.
+        await postRedisCommand(config, ["DEL", budgetKey(bucket)]);
+        sharedLogger.warn("va shared consumer budget unavailable", {
+          outcome: "counter-lifetime-refused",
+        });
+        return false;
+      }
     }
-    return count <= VA_SHARED_CONSUMER_MAX_REQUESTS;
+
+    // The predecessor bucket only exists from bucket 1 onward. While the current
+    // instant is still inside its own window the overlap weight is in (0, 1],
+    // and an absent predecessor counter means nothing to carry.
+    let carry = 0;
+    if (bucket > 0) {
+      const previous = await postRedisCommand(config, ["GET", budgetKey(bucket - 1)]);
+      if (!previous.ok || !previous.payload || previous.payload.error !== undefined) {
+        sharedLogger.warn("va shared consumer budget unavailable", {
+          outcome: "predecessor-unreadable",
+        });
+        return false;
+      }
+      const raw = previous.payload.result;
+      if (raw !== null && raw !== undefined) {
+        const previousCount = readStrictCounter(raw);
+        if (previousCount === null) {
+          sharedLogger.warn("va shared consumer budget unavailable", {
+            outcome: "predecessor-invalid",
+          });
+          return false;
+        }
+        const elapsed = now - bucket * VA_SHARED_CONSUMER_WINDOW_MS;
+        const carryWeight = 1 - elapsed / VA_SHARED_CONSUMER_WINDOW_MS;
+        carry = Math.ceil(previousCount * carryWeight);
+      }
+    }
+
+    const admitted = count + carry <= VA_SHARED_CONSUMER_MAX_REQUESTS;
+    if (!admitted) {
+      sharedLogger.warn("va shared consumer budget exhausted", { outcome: "refused" });
+    }
+    return admitted;
   } catch {
     sharedLogger.warn("va shared consumer budget unavailable");
     return false;
