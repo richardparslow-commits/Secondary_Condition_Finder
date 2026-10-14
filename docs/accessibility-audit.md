@@ -65,6 +65,52 @@ Both run in the normal suite and therefore gate inside the existing CI `verify` 
 
 These assertions are regression evidence only. They do not test every applicable accessibility requirement and do not replace human browser/assistive-technology testing.
 
+## R-09 — the runbook's remaining findings (2026-10-14)
+
+The Lighthouse remediation runbook's remaining task after R-01…R-08 is its "remaining findings" list (`M-03`, `L-02`–`L-05`). Each item below is either fixed and held by a committed guard, or recorded as an explicit, dated residual — silent deferral is what turns a Low finding into a review objection. Everything here is repository-side evidence: no human accessibility review is claimed, and issue #195 is unchanged by it.
+
+| Item | Disposition (2026-10-14) | Held by |
+|---|---|---|
+| M-03 | Fixed — privacy §6 now carries one idea per sentence | `tests/privacy-policy-readability.test.ts` |
+| L-02 | Fixed — a disabled control both looks disabled and renders 6.15:1 at full opacity, with no low-contrast frame between states | `src/app/globals.css`, `tests/design-token-contrast.test.ts` |
+| L-03 | Fixed — the decorative border token carries its warning and a closed usage inventory | `src/app/globals.css`, `tests/design-token-contrast.test.ts` |
+| L-04 | Fixed — the timeline tooltip renders at 14px | `tests/canvas-rendered-surface.test.ts` |
+| L-05 | Residual, recorded — canvas content has no automated pixel evidence | `tests/canvas-rendered-surface.test.ts` and this section |
+
+### M-03 — §6 of the privacy policy reads one idea at a time
+
+The audit measured a single **163-word** sentence in §6 ("VA API and claim-submission boundary"). That sentence was split during the R-01 privacy work, but later additions to the same section reintroduced a **73-word** and a **39-word** sentence, so the finding's subject had regressed. Both are now split, with no technical claim changed — only sentence structure. The target is stated in the guard as **no sentence in §6 above 35 words**, and the guard prints its measurement into the test log (currently **34 sentences, longest 32 words**).
+
+§8's clauses are deliberately excluded. They are the operator/legal sentences pinned *verbatim* in `tests/privacy-rights-contact.test.ts` as the text an approver is asked to accept, and two of them run 63 and 45 words; shortening approved legal text is a re-approval, not a readability fix. The guard asserts that exemption is a real pin rather than a hole someone widened. No reading-grade figure is claimed, because the audit declined to assert one it had not reliably measured.
+
+### L-02 — a disabled control has to look disabled, not only be dark enough
+
+The audit recorded this as `text-white` on `disabled:bg-slate-300` = **1.49:1**, measured from the class list. Measured in headless Chrome against the shipped stylesheet, that pair is not what the page renders. The legacy palette normalization in `src/app/globals.css` matches `button[class*="bg-slate-9"]` and forces `background: var(--primary)`, `color: #fff` and the border with `!important`, so the component's `disabled:bg-slate-300` never applied. The disabled submit on `/presumptive` computed to `rgb(29, 78, 216)` on `#fff` — byte-identical to the enabled control, at `opacity: 1`. The defect the user could actually experience was therefore that **a disabled control had no visual affordance at all**.
+
+The disabled state is now declared where it wins on specificity: `--muted` on slate-200, **6.15:1**, with `opacity: 1` pinned. The pin is load-bearing, not decorative. The components still ship Tailwind's own `disabled:opacity-60`, and a rule that merely declined to declare an opacity would have left the control translucent — measured through axe, that rendering composites to **2.64:1** (`fg #8d96a3` on `bg #eef1f6`), less than half the ratio the rule exists for. The utility stays in those components: the pin states the invariant once, in the stylesheet, rather than relying on five call sites staying clean. The dead `disabled:bg-*` utility is gone from the component, so the source stops reading as though the state were styled there. The guard checks both directions and refuses if the normalization rule disappears — at which point the state can legitimately move back into the component.
+
+The pull request for this item then failed the **R-05 real-browser contrast gate** on `/scenarios`: `white on #ced8ee` = **1.43:1** on the three "Run scenario" buttons. That report was accurate and reproducible, and the cause was the second half of L-02 rather than anything in the page. The shared button rule eases `background` over 160ms, while a control's text colour switches between `#fff` and `--muted` atomically; a CSS transition animates each property on its own clock, so the enabled⇄disabled flip paints white text over a surface that is still mostly slate-200. Frozen mid-transition in the shipped browser, the button computes `rgb(207, 217, 238)` behind `#ffffff` at 16ms into the 160ms ease — the same frame the gate named, and a real low-contrast rendering rather than a measurement artifact. Both endpoints of that transition pass on their own; only the frames between them fail, so the surface is no longer transitioned (border-colour and transform still ease). `tests/design-token-contrast.test.ts` recomputes that frame's ratio from the stylesheet's own values (1.42:1 against the gate's 1.43:1 for the frame one tick earlier), fails if `background` returns to the transition list, fails if the `:disabled` rule stops pinning opacity, and prints what the component's own `disabled:opacity-60` would render.
+
+### L-03 — the decorative border token cannot become a control boundary
+
+`--border-strong` (`#93c5fd`) measures **1.80:1** on white: correct for the callout and footer-note edges it is used on, and a SC 1.4.11 (3:1) failure the moment it is reused as a form-field or control boundary. The definition now carries the warning the audit asked for, and the guard verifies more than the presence of a comment: the warning's quoted ratio is compared against the token's real value so it cannot drift, the token's usages are a closed inventory (its definition plus `.ui-callout` / `[role="note"]` and `.ui-footer-note`, all in the stylesheet, so no component can reach for it), and each usage is checked not to sit on a control boundary while the shared input rule keeps the compliant `--border`. A comment on its own would rot; these numbers are recomputed on every run.
+
+### L-04 — the timeline tooltip renders at 14px
+
+`ConditionTimelineVisualization`'s tooltip — the one place two drawn values can be read together — shipped at 12px. It is now 14px. Its contrast was never the problem and is unchanged: measured against the surface it actually paints (`bg-slate-900` resolves to `#0f172b` in this stylesheet), `text-white` is **17.83:1** and the body's `text-slate-200` is **14.46:1**. The year table below the graphic remains the DOM alternative for the same data. This is a usability fix and is not described as a WCAG violation: WCAG 2.1 AA sets no minimum font size, and the audit explicitly declined to call it one.
+
+### L-05 — Canvas-rendered surfaces (L-05): a recorded residual
+
+jsdom has no rasterizer, so the accessibility run emits `Not implemented: HTMLCanvasElement's getContext()` and canvas content has no automated pixel evidence. Three surfaces use a bitmap canvas; they are now a closed, classified inventory in `tests/canvas-rendered-surface.test.ts`:
+
+| Surface | Classification | What covers it |
+|---|---|---|
+| `src/components/evidence/LocalEvidenceAnalyzer.tsx` | decode-only — pdf.js page raster before local OCR | the mounted extraction suites drive the real path with a stubbed 2D context; the raster is an input, never an output |
+| `src/components/presumptive/Dd214LocalAnalyzer.tsx` | decode-only — image downscale before local OCR | the mounted DD-214 decode suite asserts the bounded canvas handed to the worker |
+| `src/components/secondary/ConditionTimelineVisualization.tsx` | drawn content, plus a user-initiated PNG export | the `<details>`-wrapped year table carries the same data as DOM text, and the mounted axe suite renders the component |
+
+**Residual, not waived:** no automated check in this repository inspects rasterized pixels, so a defect that changed only the drawing would still pass CI. The drawn surface's meaning stays reachable without the bitmap (the table fallback) and its raster export is user-initiated, which is why this is recorded rather than engineered around: installing a native `canvas` package would put a rasterizer into a node-environment suite for evidence that still could not certify what the graphic looks like. Verifying the drawing itself belongs to the human review in `docs/section508-manual-review-workbook.md` (#195), with the other manual items. The jsdom `Not implemented` line is expected under this disposition and is not a failure.
+
 ## Required manual route and workflow scope
 
 Issue #195 and the workbook require at minimum every route the application ships. `docs/section508-manual-review-workbook.md` holds the authoritative, complete matrix; this list is the summary:
@@ -119,6 +165,10 @@ A route returning HTTP 200 is only reachability evidence. It does not establish 
 | Color contrast across rendered states | Automated real-browser axe pass (R-05) + manual review of input-dependent states | Automated base verified; rendered-state edge cases pending | Automated pass covers static render of 22 routes; the workbook's manual check adds states that only appear during user interaction |
 | Windows high-contrast / forced-colors behavior | Human OS/browser test | **Pending** | Blocking manual evidence |
 | Complete Section 508 / WCAG 2.0 A+AA conformance determination | Evidence review | **Pending** | Do not answer “Yes” until supportable |
+| Disabled-control affordance, its text contrast, and the flip between states | Analytical source scan plus real-browser computed-style measurements (`tests/design-token-contrast.test.ts`, R-09/L-02) | Verified structurally and measured | Positive evidence for the normalized buttons at their resting disabled state; other disabled states remain a manual review item |
+| Decorative border token kept off control boundaries | Analytical source scan with a closed usage inventory (`tests/design-token-contrast.test.ts`, R-09/L-03) | Verified structurally | Positive evidence, limited to the token and the surfaces it is used on |
+| Timeline tooltip text size and contrast | Analytical scan plus the painted surface measured from the stylesheet (`tests/canvas-rendered-surface.test.ts`, R-09/L-04) | Verified structurally | Positive evidence for two text pairs on one surface |
+| Canvas-rendered content (the drawing itself) | No automated pixel evidence; the DOM alternative is asserted instead (`tests/canvas-rendered-surface.test.ts`, R-09/L-05) | **Residual — manual** | The graphic's data is reachable as text; what it looks like is unverified by automation |
 
 ## Manual deployed-app protocol
 

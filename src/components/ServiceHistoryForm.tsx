@@ -194,10 +194,15 @@ export function ServiceHistoryForm({
         </div>
       )}
 
+      {/* The disabled colours are declared in globals.css, not here: the legacy
+          bg-slate-9 palette normalization wins with !important, so a
+          `disabled:bg-*` utility in this class list renders nothing while
+          reading as if the disabled state were styled. See L-02 in
+          globals.css and tests/design-token-contrast.test.ts. */}
       <button
         type="submit"
         disabled={selected.length === 0}
-        className="w-full rounded-md bg-slate-900 px-4 py-2.5 text-sm font-medium text-white hover:bg-slate-700 disabled:cursor-not-allowed disabled:bg-slate-300 sm:w-auto"
+        className="w-full rounded-md bg-slate-900 px-4 py-2.5 text-sm font-medium text-white hover:bg-slate-700 disabled:cursor-not-allowed sm:w-auto"
       >
         Show presumptive conditions
       </button>
